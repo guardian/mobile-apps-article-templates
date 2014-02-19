@@ -1,0 +1,318 @@
+.card {
+	background-color: $white;
+	border-top: 1px solid $news-pri;
+	border-bottom: 1px solid $shadow;
+	position: relative;
+
+	@include mq($to: col1) {
+		margin: $base-1 / 1.5 $base-1 / 1.5 0 $base-1 / 1.5;
+	}
+	
+	@include mq($from: col1) {
+		margin-bottom: $base-1;
+		float: left;
+		&:before {
+			content: "";
+			padding-top: 133%;
+			display: block;
+		}
+	}
+	@include mq(col1, col2) {
+		margin: $base-2 $base-2 0 0;
+		width: cols($base-2, 4);
+		&:nth-child(2n) {
+			margin-right: 0;
+		}
+	}
+	@include mq(col2, col3) {
+		margin: $base-3 $base-3 0 0;
+		width: cols($base-3, 4);
+		&:nth-child(3n) {
+			margin-right: 0;
+		}
+	}
+	@include mq($from: col3) {
+		margin: $base-4 $base-4 0 0;
+		width: cols($base-4, 4);
+		&:nth-child(4n) {
+			margin-right: 0;
+		}
+	}
+
+	.card-container {
+		@include mq($to: col1) {
+			display: -webkit-flex;
+			display: flex;
+			-webkit-flex-direction: column;
+			flex-direction: column;
+		}
+		@include mq($from: col1) {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+		}
+	}
+
+	.card-header,
+	.card-object {
+		@include padding(0.25, 0.5, 0, 0.5);
+		@include mq($from: col1) {
+			height: 50%;
+			overflow: hidden;
+		}
+	}
+
+	.card-header {
+		margin-bottom: 1em;
+		@include mq($to: col1) {
+			-webkit-flex: 1;
+			flex: 1;
+			-webkit-order: 1;
+			order: 1;
+		}
+	}
+
+	.card-object {
+		@include mq($to: col1) {
+			-webkit-flex: 1;
+			flex: 1;
+			-webkit-order: 2;
+			order: 2;
+		}
+		@include mq($from: col1) {
+			overflow: hidden;
+			width: 100%;
+			position: absolute;
+			bottom: 0;
+		}
+	}
+	&.has-image .card-object {
+		padding: 0;
+		@include mq($to: col1) {
+			-webkit-order: 3;
+			order: 3;
+		}
+		.card-image {
+			@include mq($from: col1) {
+				height: 100%;
+				width: auto;
+				margin-bottom: -1px;
+			}
+		}
+	}
+
+	.card-footer {
+		color: $meta;
+		font-family: $AS32;
+		font-size: $meta-size-1;
+		line-height: 1;
+		margin-top: 1em;
+		overflow: hidden;
+		@include mq($to: col1) {
+			-webkit-flex: 1;
+			flex: 1;
+			-webkit-order: 3;
+			order: 3;
+		}
+		@include mq($from: col1) {
+			position: absolute;
+			z-index: 1;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+		}
+	}
+	&.has-image {
+		.card-footer {
+			bottom: 50%;
+			@include mq($to: col1) {
+				-webkit-order: 2;
+				order: 2;
+			}
+		}
+	}
+
+	.card-title,
+	.card-byline,
+	.card-rating {
+		font-family: $DE2;
+		font-size: 2.2rem;
+		line-height: 2.6rem;
+		text-rendering: optimizeLegibility;
+	}
+
+	.card-rating {
+		color: $meta;
+		font-size: 18px;
+		line-height: 28px;
+	}
+	.card-rating-1 .icon:nth-child(-n+1),
+	.card-rating-2 .icon:nth-child(-n+2),
+	.card-rating-3 .icon:nth-child(-n+3),
+	.card-rating-4 .icon:nth-child(-n+4),
+	.card-rating-5 .icon:nth-child(-n+5) {
+		color: $news-sec;
+	}
+
+	.standfirst {
+		color: $standfirst;
+		font-family: $EgyptianText;
+		font-size: 1.4rem;
+		line-height: 1.8rem;
+		text-rendering: optimizeLegibility;
+	}
+
+	.video-button {
+		position: absolute;
+		bottom: 0;
+		z-index: 2;
+		@include padding(0.5);
+		.icon-circle {
+			background-color: $media-pri;
+			color: $media-sec;
+			display: table-cell;
+			vertical-align: middle;
+			.icon {
+				position: relative;
+				top: 2px;
+			}
+		}
+		p {
+			font-size: 1.4rem;
+			line-height: 1;
+			font-family: $AS32;
+			font-weight: bold;
+			color: $media-pri;
+			display: table-cell;
+			vertical-align: middle;
+			padding-left: 8px;
+		}
+	}
+
+	.card-image {
+		width: 100%;
+		display: block;
+	}
+
+	.card-cutout {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		z-index: 0;
+	}
+
+	.card-meta {
+		width: cols($base-1, 1);
+		height: 24px;
+		@include padding(0, 0, 0, 0.5);
+		border-left: 1px solid $shadow;
+		display: block;
+		float: left;
+		&:first-child {
+			border-left: 0 none;
+		}
+		.icon {
+			margin-right: 3px;
+		}
+	}
+
+	// Feature
+	&.tone-feature {
+		background-color: $features-pri;
+		border-top-color: transparent;
+		* {
+			color: $white;
+		}
+		.card-meta {
+			border-color: fade-out($shadow, 0.66);
+		}
+	}
+
+	// Media
+	&.tone-media {
+		background-color: $media-sec;
+		border-top-color: $media-pri;
+		.card-title {
+			color: $white;
+			.icon {
+				color: $media-pri;
+				margin-right: 6px;
+			}
+		}
+		.standfirst {
+			color: $meta;
+		}
+		.series {
+			color: $media-pri;
+			&:after {
+				content:"\a";
+				white-space: pre;
+			}
+		}
+		.card-meta {
+			border-color: fade-out($shadow, 0.66);
+		}
+		.card-duration {
+			color: $media-pri;
+			font-weight: bold;
+		}
+	}
+
+	// Comment
+	&.tone-comment {
+		background-color: $comment-bg;
+		border-top-color: $comment-sec;
+		.card-title {
+			.icon {
+				color: $meta;
+				font-size: 150%;
+				margin-right: 6px;
+				line-height: 0.1%;
+				top: 6px;
+			}
+		}
+		.card-byline {
+			color: $comment-pri;
+		}
+		.standfirst {
+			padding-right: $base-4*2;
+			position: relative;
+			z-index: 1;
+		}
+		.card-footer {
+			bottom: 0;
+		}
+	}
+
+	// Live
+	&.tone-live {
+		border-top-color: $live-pri;
+		.card-timestamp {
+			color: $live-pri;
+			font-weight: bold;
+			&:before {
+				content: "";
+				width: 12px;
+				height: 12px;
+				background-color: $live-pri;
+				border-radius: 100%;
+				display: block;
+				float: left;
+				margin-right: 3px;
+				margin-top: 2px;
+			}
+		}
+	}
+}
+
+// Module Specific
+#module-related {
+	@include mq(col2, col3) {
+		.card:nth-of-type(4) {
+			display: none;
+		}
+	}
+}

@@ -1,0 +1,58 @@
+.comment {
+	a {
+		color: $comment-pri;
+	}
+	.icon-circle {
+		background-color: $comment-pri;
+	}
+	
+	#container {
+		border-top-color: $comment-sec;
+		background-color: $comment-bg;
+
+		#header {
+			.inner-header {
+				-webkit-order: 1;
+				order: 1;
+				position: relative;
+				overflow: auto;
+				#alert {
+					position: absolute;
+					bottom: 0;
+					display: block;
+					@include margin(0,0,1,0);
+				}
+				h1 {
+					@include margin(0,0,6,0);
+					span {
+						display: block;
+						color: $comment-pri;
+					}
+				}
+			}
+		
+			.standfirst {
+				-webkit-order: 5;
+				order: 5;
+				@include margin(1, 0, 1, 0);
+			}
+		
+			#meta {
+				-webkit-order: 2;
+				order: 2;
+				margin-top: 0;
+			}
+		
+			.figure-wide {
+				-webkit-order: 3;
+				order: 3;
+			}
+		
+			.byline {
+				-webkit-order: 4;
+				order: 4;
+				display: none;
+			}
+		}
+	}
+}

@@ -1,0 +1,119 @@
+.block {
+	border-bottom: 2px solid $shadow;
+	background-color: $white;
+	@include padding(1, 0, 1, 0);
+	@include margin(1, 0, 1, 0);
+	overflow: hidden;
+	
+	.block-time {
+		color: $standfirst;
+		font-family: $AS32;
+		@include padding(0, 1, 0, 1);
+	}
+
+	.block-elements {
+		@include padding(0, 1, 0, 1);
+
+		.block-updated {
+			color: $meta;
+			font-family: $AS32;
+			font-size: $meta-size-1;
+			line-height: $meta-lead-1;
+			margin: 0;
+			clear: left;
+		}
+		> :last-child {
+			margin-bottom: 0;
+		}
+
+		figure {
+			@include margin(1, 0, 1, 0);
+			figcaption {
+				@include padding(0.5, 0, 1, 0);
+			}
+			@include mq($from: col2) {
+				width: 100%;
+			}
+			&:last-child {
+				margin-bottom: 0;
+				figcaption {
+					border-bottom: 0 none;
+				}
+			}
+		}
+
+		blockquote {
+			margin-left: 0;
+		}
+	}
+
+	&.key-event h2 {
+		color: $alert;
+	}
+}
+
+@include mq($to: col1) {
+	.block {
+		margin: $base-1 / 1.5;
+	}
+}
+
+@include mq(col1, col2) {
+	.block {
+		
+	}
+}
+
+@include mq(col2, col3) {
+	.block {
+		.block-time {
+			float: left;
+			width: cols($base-3, 4);
+			min-height: 1px; // While javascript populates fix
+		}
+		.block-elements {
+			float: left;
+			position: relative;
+			width: cols($base-3, 8, 1);
+			p:first-child {
+				padding-top: 2px; // Match baseline with that of timestamp
+			}
+			blockquote:before {
+				position: absolute;
+				left: -50px;
+				margin-top: 4px;
+			}
+			blockquote.twitter-tweet:before {
+				left: -40px;
+				margin-top: 12px;
+			}
+		}
+	}
+}
+
+@include mq($from: col3) {
+	.block {
+		.block-time {
+			float: left;
+			width: cols($base-4, 5);
+			min-height: 1px; // While javascript populates fix
+		}
+		.block-elements {
+			float: left;
+			position: relative;
+			width: cols($base-4, 11, 1);
+			p:first-child {
+				padding-top: 2px; // Match baseline with that of timestamp
+			}
+			blockquote:before {
+				position: absolute;
+				left: -50px;
+				margin-top: 4px;
+			}
+			blockquote.twitter-tweet:before {
+				left: -40px;
+				margin-top: 12px;
+			}
+		}
+	}
+}

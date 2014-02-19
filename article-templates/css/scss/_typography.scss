@@ -1,0 +1,213 @@
+// Web font file locations
+@font-face {
+	font-family: "DE1";
+	src: url('../fonts/GdnEgyDE1Thi.otf');
+}
+@font-face {
+	font-family: "DE2";
+	src: url('../fonts/GdnEgyDE2Lig.otf');
+}
+@font-face {
+	font-family: "DE5";
+	src: url('../fonts/GdnEgyDE5Sem.otf');
+}
+@font-face {
+	font-family: "DE6";
+	src: url('../fonts/GdnEgyDE6Bol.otf');
+}
+@font-face {
+	font-family: "EgyptianText";
+	src: url('../fonts/EgyptianText-Regular.ttf');
+}
+@font-face {
+	font-family: "EgyptianText";
+	font-style: italic;
+	src: url('../fonts/EgyptianText-RegularItalic.ttf');
+}
+@font-face {
+	font-family: "EgyptianText";
+	font-weight: bold;
+	src: url('../fonts/EgyptianText-Medium.ttf');
+}
+@font-face {
+	font-family: "Titlepiece";
+	src: url('../fonts/GdnTitlepiece.otf');
+}
+@font-face {
+	font-family: "AS32";
+	src: url('../fonts/GdnAgaSanTwoAS32Reg.otf');
+}
+@font-face {
+	font-family: "AS32";
+	font-style: italic;
+	src: url('../fonts/GdnAgaSanTwoAS32RegIta.otf');
+}
+@font-face {
+	font-family: "AS32";
+	font-weight: bold;
+	src: url('../fonts/GdnAgaSanTwoAS62Bol.otf');
+}
+@font-face {
+	font-family: "AS32";
+	font-weight: bold;
+	font-style: italic;
+	src: url('../fonts/GdnAgaSanTwoAS62BolIta.otf');
+}
+@font-face {
+	font-family: "GuardianIcons";
+	src: url('../fonts/guardianicons.ttf');
+}
+
+// Fonts
+$DE1: "DE1", Georgia,serif;
+$DE2: "DE2", Georgia,serif;
+$DE3: "DE3", Georgia,serif;
+$DE5: "DE6", Georgia,serif;
+$DE6: "DE6", Georgia,serif;
+$Titlepiece: "Titlepiece", "DE6", sans-serif;
+$AS32: "AS32", sans-serif;
+$EgyptianText: "EgyptianText", Georgia, serif;
+$icon: "GuardianIcons", Georgia, serif;
+
+// Font Sizes
+$headline-size-1: 3.0rem;
+$headline-size-2: 4rem;
+$headline-size-3: 4.8rem;
+$headline-size-4: 4.8rem;
+$headline-lead-1: 3.2rem;
+$headline-lead-2: 4.0rem;
+$headline-lead-3: 4.8rem;
+$headline-lead-4: 4.8rem;
+
+$body-size-1: 1.6rem;
+$body-size-2: 1.6rem;
+$body-size-3: 1.8rem;
+$body-size-4: 1.8rem;
+$body-lead-1: 2.4rem;
+$body-lead-2: 2.4rem;
+$body-lead-3: 2.6rem;
+$body-lead-4: 2.6rem;
+
+$meta-size-1: 1.4rem;
+$meta-size-2: 1.4rem;
+$meta-size-3: 1.6rem;
+$meta-size-4: 1.6rem;
+$meta-lead-1: 2.0rem;
+$meta-lead-2: 2.0rem;
+$meta-lead-3: 2.2rem;
+$meta-lead-4: 2.2rem;
+
+$standfirst-size-1: 1.7rem;
+$standfirst-size-2: 1.7rem;
+$standfirst-size-3: 2.2rem;
+$standfirst-size-4: 2.2rem;
+$standfirst-lead-1: 2.2rem;
+$standfirst-lead-2: 2.2rem;
+$standfirst-lead-3: 3.0rem;
+$standfirst-lead-4: 3.0rem;
+
+// Base Sizes
+html {
+	font-size: 62.5%;
+	font-family: $EgyptianText;
+}
+@include mq($to: col1) {
+	body {
+		font-size: 1.6em;
+		line-height: 1.5em;
+	}
+}
+@include mq(col1, col2) {
+	body {
+		font-size: 1.6em;
+		line-height: 1.5em;
+	}
+}
+@include mq(col2, col3) {
+	body {
+		font-size: 1.8em;
+		line-height: 1.444em;
+	}
+}
+@include mq($from: col3) {
+	body {
+		font-size: 1.8em;
+		line-height: 1.444em;
+	}
+}
+
+@mixin headline() {
+	@include mq($to: col1) {
+		font-size: $headline-size-1;
+		line-height: $headline-lead-1;
+	}
+	@include mq(col1, col2) {
+		font-size: $headline-size-2;
+		line-height: $headline-lead-2;
+	}
+	@include mq(col2, col3) {
+		font-size: $headline-size-3;
+		line-height: $headline-lead-3;
+	}
+	@include mq($from: col3) {
+		font-size: $headline-size-4;
+		line-height: $headline-lead-4;
+	}
+}
+
+@mixin body() {
+	@include mq($to: col1) {
+		font-size: $body-size-1;
+		line-height: $body-lead-1;
+	}
+	@include mq(col1, col2) {
+		font-size: $body-size-2;
+		line-height: $body-lead-2;
+	}
+	@include mq(col2, col3) {
+		font-size: $body-size-3;
+		line-height: $body-lead-3;
+	}
+	@include mq($from: col3) {
+		font-size: $body-size-4;
+		line-height: $body-lead-4;
+	}
+}
+
+@mixin standfirst() {
+	@include mq($to: col1) {
+		font-size: $standfirst-size-1;
+		line-height: $standfirst-lead-1;
+	}
+	@include mq(col1, col2) {
+		font-size: $standfirst-size-2;
+		line-height: $standfirst-lead-2;
+	}
+	@include mq(col2, col3) {
+		font-size: $standfirst-size-3;
+		line-height: $standfirst-lead-3;
+	}
+	@include mq($from: col3) {
+		font-size: $standfirst-size-4;
+		line-height: $standfirst-lead-4;
+	}
+}
+
+@mixin meta() {
+	@include mq($to: col1) {
+		font-size: $meta-size-1;
+		line-height: $meta-lead-1;
+	}
+	@include mq(col1, col2) {
+		font-size: $meta-size-2;
+		line-height: $meta-lead-2;
+	}
+	@include mq(col2, col3) {
+		font-size: $meta-size-3;
+		line-height: $meta-lead-3;
+	}
+	@include mq($from: col3) {
+		font-size: $meta-size-4;
+		line-height: $meta-lead-4;
+	}
+}

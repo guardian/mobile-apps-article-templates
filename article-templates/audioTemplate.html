@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title>Audio</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+	<link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__css/style.css" />
+
+	<script type='text/javascript'>
+		var googletag = googletag || {};
+		googletag.cmd = googletag.cmd || [];
+		(function() {
+			var gads = document.createElement('script');
+			gads.async = true;
+			gads.type = 'text/javascript';
+			var useSSL = 'https:' == document.location.protocol;
+			gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
+			var node = document.getElementsByTagName('script')[0];
+			node.parentNode.insertBefore(gads, node);
+		})();
+	</script>
+
+	<script type='text/javascript'>
+		var windowWidth = window.innerWidth;
+		var windowHeight = window.innerHeight;
+		var bannerWidth = 900;
+		var bannerHeight = 250;
+	
+		if (windowWidth < 300) {
+			bannerWidth = 216;
+			bannerHeight = 36;
+		};
+		if (windowWidth < 728 && windowWidth >= 300) {
+			bannerWidth = 300;
+			bannerHeight = 50;
+		};
+		if (windowWidth < 900 && windowWidth >= 728) {
+			bannerWidth = 728;
+			bannerHeight = 90;
+		};
+
+		googletag.cmd.push(function() {
+			googletag.defineSlot('/__AD_NETWORK_ID__/__AD_UNIT_IDENTIFIER__', [[300, 250]], 'advert-mpu').addService(googletag.pubads());
+			googletag.defineSlot('/__AD_NETWORK_ID__/__AD_UNIT_IDENTIFIER__', [[300, 250]], 'advert-mobile-mpu').addService(googletag.pubads());
+			googletag.defineSlot('/__AD_NETWORK_ID__/__AD_UNIT_IDENTIFIER__', [[bannerWidth, bannerHeight]], 'advert-banner-content').addService(googletag.pubads());
+			googletag.pubads().enableSingleRequest();
+			__AD_KEYWORD_TARGETING__
+			googletag.enableServices();
+		});
+	</script>
+</head>
+
+<body id="audio" class="__SECTION_TONE__ __FONT_SIZE__">
+	<div id="container" style="margin-top: __ACTIONBARHEIGHT__px;">
+		<div id="header">
+			<div class="inner-header">
+				<div class="media-title">
+					<h3 class="lead-tag"><a href="">__SECTION__</a></h3>
+					<h1>__TITLE__</h1>
+					<p>__AUTHORS__</p>
+				</div>
+			</div>
+
+			<div id="meta">
+				<div class="inner-meta">
+					<p class="timestamp">__PUBDATE__</p>
+				</div>
+				__COMMENT_CTA__
+			</div>
+
+			<div class="audio-presenter">
+				<img src="__TEMPLATES_DIRECTORY__css/img/podcast.png" />
+			</div>
+		</div>
+
+		<div class="audio-player">
+			<div class="audio-button" onclick="javascript:window.location.href='x-gu://playaudio/__AUDIO_URI__'">
+				<span class="icon icon-circle">&#xe04b;</span>
+			</div>
+
+			<div id="audio-slider">
+				<input type="text" id="audio-scrubber" />
+				<input type="text" id="audio-scrubber-left" />
+				<div class="audio-track"></div>
+				<div class="audio-knob" role="slider"></div>
+			</div>
+		</div>
+			
+		<div class="body">
+			<div class="standfirst">
+				__STANDFIRST__
+			</div>
+
+			__BODY__
+		</div>
+
+		<div id="tags">
+			<ul>
+				
+			</ul>
+		</div>
+	</div>
+
+	__COMMENTS_MODULE__
+
+	<!-- Javascript -->
+	<script type="text/javascript">var adsEnabled = __ADS_ENABLED__;</script>
+	<script type="text/javascript" src="__TEMPLATES_DIRECTORY__js/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="__TEMPLATES_DIRECTORY__js/js.mobilerangeslider.js"></script>
+	<script type="text/javascript" src="__TEMPLATES_DIRECTORY__js/js.fastclick.js"></script>
+	<script type="text/javascript" src="__TEMPLATES_DIRECTORY__js/guardian.main.js"></script>
+	<script type="text/javascript" src="__TEMPLATES_DIRECTORY__js/guardian.audio.js"></script>
+	<script type="text/javascript" src="__TEMPLATES_DIRECTORY__js/guardian.article.ads.js"></script>
+	__MODULE_JS__
+</body>
+</html>

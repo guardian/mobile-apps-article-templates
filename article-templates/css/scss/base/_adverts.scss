@@ -1,0 +1,133 @@
+#advert-mobile-mpu,
+#advert-mpu {
+	float: right;
+	width: 300px;
+	border-top: 1px dotted $shadow;
+	.advert-wrapper {
+		padding-top: 250px;
+	}
+}
+
+#advert-mpu,
+#advert-mobile-mpu,
+#advert-banner,
+#advert.block {
+	font-family: $AS32;
+	color: $standfirst;
+	background: $advert;
+	display: none;
+	overflow: auto;
+	div, img {
+		vertical-align: middle;
+	}
+	.advert-label {
+		overflow: auto;
+		padding: 6px;
+		.icon-container {
+			float: right;
+			margin-bottom: 4px;
+			.icon {
+				font-size: 20px;
+			}
+			.icon-circle-secondary {
+				border-color: $advert;
+			}
+		}
+	}
+	.advert-wrapper {
+		position: relative;
+		background-color: $shadow;
+		overflow: hidden;
+		#advert-mpu-content,
+		#advert-banner-content,
+		#advert-mobile-mpu-content {
+			position: absolute;
+			bottom: 0;
+		}
+	}
+}
+
+#advert-mpu {
+	margin-left: 20px;
+	margin-bottom: 12px;
+}
+
+@include mq($to: col1) {
+	#advert-banner,
+	#advert-mobile-mpu,
+	#advert.block {
+		display: block;
+		font-size: $meta-size-1;
+		line-height: $meta-lead-1;
+		padding: 0;
+		.advert-label {
+			padding: 6px 0;
+			.icon-container {
+				margin-bottom: 4px;
+			}
+		}
+	}
+
+	#advert-banner,
+	#advert-mobile-mpu {
+		.advert-label {
+			padding: 6px 0;
+			margin: 0 auto;
+			width: 300px;
+		}
+		.advert-wrapper {
+			margin: 0 auto;
+			width: 300px;
+		}
+	}
+
+	#advert-banner {
+		width: 100%;
+		padding-bottom: $base-1 / 1.5;
+		.advert-wrapper {
+			padding-top: 50px;
+		}
+	}
+
+	#advert-mobile-mpu {
+		margin: $base-1 / 1.5 auto;
+		width: 300px;
+		.advert-label {
+			padding: 6px;
+		}
+	}
+
+	#advert-mobile-mpu,
+	#advert.block {
+		float: none;
+	}
+}
+
+@include mq(col1, col2) {
+	#advert-mpu,
+	#advert.block {
+		display: block;
+		font-size: $meta-size-2;
+		line-height: $meta-lead-2;
+	}
+}
+
+@include mq(col2, col3) {
+	#advert-mpu,
+	#advert.block {
+		display: block;
+		font-size: $meta-size-3;
+		line-height: $meta-lead-3;
+		margin-right: -(cols($base-3, 4))+$base-3;
+	}
+}
+
+@include mq($from: col3) {
+	#advert-mpu,
+	#advert.block {
+		display: block;
+		font-size: $meta-size-4;
+		line-height: $meta-lead-4;
+		margin-right: -(cols($base-4, 5));
+	}
+}

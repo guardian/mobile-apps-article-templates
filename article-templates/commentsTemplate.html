@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title>Comments</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+	<link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__css/style.css" />
+</head>
+
+<body id="comments" class="__SECTION_TONE__ comments-__COMMENTS_COUNT__ __COMMENTS_CLOSED__ __FONT_SIZE__">
+	<div id="container" style="margin-top: __ACTIONBARHEIGHT__px;">
+		<div class="comments-header">
+			<h3>Comments <span class="comments-count">__COMMENTS_COUNT__</span></h3>
+			<h1>__TITLE__</h1>
+				
+			<div class="comments-controls">
+				<div class="comments-sorter">
+					<a href="x-gu://newestfirst" id="comments-ordering">__COMMENTS_ORDER__<span class="icon">&#xe04b;</span></a>
+				</div>
+				<div class="comments-action">
+					<a href="x-gu://leavecomment">Leave a comment</a>
+					<div onclick="javascript:window.location.href='x-gu://leavecomment'" class="icon-circle"><span class="icon">&#xe03c;</span></div>
+					<span class="comments-closed-label">Comments are closed</span>
+				</div>
+			</div>
+		</div>
+		
+		<div id="comments" class="comments-container">
+			<div class="comments-loading">
+				<img src="__TEMPLATES_DIRECTORY__css/img/loading.gif" />
+			</div>
+			
+			<div class="comments-empty">
+				Open for comments. <a href='x-gu://leavecomment'> Be the first to join the debate</a>
+			</div>
+			
+			<div class="comments-failed">
+				Comments are currently unavailable. Please try again later.
+			</div>
+		</div>
+	</div>
+
+	<!-- Javascript -->
+	<script type="text/javascript" src="__TEMPLATES_DIRECTORY__js/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="__TEMPLATES_DIRECTORY__js/js.fastclick.js"></script>
+	<script type="text/javascript" src="__TEMPLATES_DIRECTORY__js/guardian.main.js"></script>
+	<script type="text/javascript" src="__TEMPLATES_DIRECTORY__js/guardian.comments.js"></script>
+</body>
+</html>

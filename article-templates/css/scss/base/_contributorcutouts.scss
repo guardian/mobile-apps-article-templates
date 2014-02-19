@@ -1,0 +1,54 @@
+#header.cutout {
+	#meta {
+		margin-top: 0;
+	}
+
+	.inner-header {
+		background-repeat: no-repeat;
+		background-position: right bottom -10px;
+		overflow: auto;
+		@include mq($to: col1) {
+			min-height: 200px;
+			background-size: $base-1 * 9 auto;
+			h1 {
+				padding-bottom: 120px;
+			}
+			p {
+				padding-right: $base-1 * 12;
+			}
+		}
+	
+		@include mq(col1, col2) {
+			min-height: 240px;
+			background-size: $base-2 * 14 auto;
+			h1 {
+				padding-bottom: 30px;
+			}
+			h3, h1, p {
+				padding-right: $base-2 * 14;
+			}
+		}
+		
+		@include mq(col2, col3) {
+			min-height: 400px;
+			background-size: $base-3 * 21 auto;
+			h1 {
+				padding-bottom: 30px;
+			}
+			h3, h1, p {
+				padding-right: $base-3 * 2;
+			}
+		}
+		
+		@include mq($from: col3) {
+			min-height: 340px;
+			background-size: $base-4 * 21 auto;
+			h1 {
+				padding-bottom: 30px;
+			}
+		}
+	}
+	h3, h1, p {
+		box-sizing: border-box;
+	}
+}
