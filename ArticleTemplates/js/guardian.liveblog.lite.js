@@ -12,17 +12,3 @@ $(window).load(function() {
 	});
 
 });
-
-// Timestamps
-function liveblogTime() {
-	if ( $(".live-tag").length > 0 ) {
-		$("p.block-time").timeago();
-	} else {
-		$("p.block-time").each(function() {
-			$(this).html($(this).attr("title"));
-		});
-	}
-
-}
-
-liveblogTime();
