@@ -1,4 +1,8 @@
 .article__header.cutout {
+	h3, h1, p {
+		box-sizing: border-box;
+	}
+
 	.article__meta {
 		margin-top: 0;
 	}
@@ -10,7 +14,7 @@
 		@include mq($to: col1) {
 			min-height: 200px;
 			background-size: $base-1 * 9 auto;
-			h1 {
+			.article__headline {
 				padding-bottom: 120px;
 			}
 			p {
@@ -21,7 +25,7 @@
 		@include mq(col1, col2) {
 			min-height: 240px;
 			background-size: $base-2 * 14 auto;
-			h1 {
+			.article__headline {
 				padding-bottom: 30px;
 			}
 			h3, h1, p {
@@ -32,7 +36,7 @@
 		@include mq(col2, col3) {
 			min-height: 400px;
 			background-size: $base-3 * 21 auto;
-			h1 {
+			.article__headline {
 				padding-bottom: 30px;
 			}
 			h3, h1, p {
@@ -43,12 +47,9 @@
 		@include mq($from: col3) {
 			min-height: 340px;
 			background-size: contain;
-			h1 {
+			.article__headline {
 				padding-bottom: 30px;
 			}
 		}
-	}
-	h3, h1, p {
-		box-sizing: border-box;
 	}
 }

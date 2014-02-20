@@ -485,6 +485,22 @@ html {
     font-family: "Egyptian Display", Georgia, serif;
     font-weight: 600;
     margin: 0; }
+    @media all and (max-width: 28.115em) {
+      .article__header .article__section {
+        font-size: 1.5rem;
+        line-height: 1.6rem; } }
+    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      .article__header .article__section {
+        font-size: 2rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      .article__header .article__section {
+        font-size: 2.4rem;
+        line-height: 2.4rem; } }
+    @media all and (min-width: 56.25em) {
+      .article__header .article__section {
+        font-size: 2.4rem;
+        line-height: 2.4rem; } }
     @media all and (max-width: 18.75em) {
       .article__header .article__section {
         padding: 6px 12px 6px 12px; } }
@@ -803,8 +819,6 @@ html {
       .article__header .article__meta .article__comments .comment-label {
         display: none; } }
   @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    .article__header .article__section {
-      font-size: 2rem; }
     .article__header .article__meta .inner-meta {
       width: 74.46809%; }
     .article__header .article__meta .article__comments {
@@ -815,8 +829,6 @@ html {
     .article__header .article__headline,
     .article__header .article__standfirst {
       width: 74.64789%; }
-    .article__header .article__section {
-      font-size: 2.4rem; }
     .article__header .article__meta .inner-meta {
       width: 76.05634%; }
     .article__header .article__meta .article__comments {
@@ -825,13 +837,13 @@ html {
     .article__header .article__headline,
     .article__header .article__standfirst {
       width: 74.73684%; }
-    .article__header .article__section {
-      font-size: 2.4rem; }
     .article__header .article__meta .inner-meta {
       width: 75.78947%; }
     .article__header .article__meta .article__comments {
       width: 24.21053%; } }
 
+.article__header.cutout h3, .article__header.cutout h1, .article__header.cutout p {
+  box-sizing: border-box; }
 .article__header.cutout .article__meta {
   margin-top: 0; }
 .article__header.cutout .inner-header {
@@ -842,7 +854,7 @@ html {
     .article__header.cutout .inner-header {
       min-height: 200px;
       background-size: 39.13043% auto; }
-      .article__header.cutout .inner-header h1 {
+      .article__header.cutout .inner-header .article__headline {
         padding-bottom: 120px; }
       .article__header.cutout .inner-header p {
         padding-right: 52.17391%; } }
@@ -850,7 +862,7 @@ html {
     .article__header.cutout .inner-header {
       min-height: 240px;
       background-size: 29.78723% auto; }
-      .article__header.cutout .inner-header h1 {
+      .article__header.cutout .inner-header .article__headline {
         padding-bottom: 30px; }
       .article__header.cutout .inner-header h3, .article__header.cutout .inner-header h1, .article__header.cutout .inner-header p {
         padding-right: 29.78723%; } }
@@ -858,7 +870,7 @@ html {
     .article__header.cutout .inner-header {
       min-height: 400px;
       background-size: 29.57746% auto; }
-      .article__header.cutout .inner-header h1 {
+      .article__header.cutout .inner-header .article__headline {
         padding-bottom: 30px; }
       .article__header.cutout .inner-header h3, .article__header.cutout .inner-header h1, .article__header.cutout .inner-header p {
         padding-right: 2.8169%; } }
@@ -866,10 +878,8 @@ html {
     .article__header.cutout .inner-header {
       min-height: 340px;
       background-size: contain; }
-      .article__header.cutout .inner-header h1 {
+      .article__header.cutout .inner-header .article__headline {
         padding-bottom: 30px; } }
-.article__header.cutout h3, .article__header.cutout h1, .article__header.cutout p {
-  box-sizing: border-box; }
 
 ul.tabs li {
   border-top: 2px solid #dcdad5;
