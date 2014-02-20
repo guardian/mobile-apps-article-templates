@@ -14,10 +14,10 @@ define([
             blockUpdates: function () {
                 var newBlockHtml = '',
                     updateCounter = 0,
-                    liveblogStartPos = $('.body-container').offset(),
+                    liveblogStartPos = $('.live-container').offset(),
 
                     liveblogNewBlockDump = function () {
-                        $(newBlockHtml).hide().prependTo('.liveblog-body').show().addClass('animated bounceIn');
+                        $(newBlockHtml).hide().prependTo('.article__body').show().addClass('animated bounceIn');
                         window.articleImageSizer();
                         window.liveblogTime();
                         newBlockHtml = '';
@@ -67,7 +67,7 @@ define([
                 window.liveblogLoadMore = function (html) {
                     html = bonzo.create(html);
                     $('.live-more-loading').hide();
-                    $(html).hide().appendTo('.liveblog-body').show().addClass('animated bounceIn');
+                    $(html).hide().appendTo('.article__body').show().addClass('animated bounceIn');
 
                     // See Common bootstrap
                     window.articleImageSizer();
