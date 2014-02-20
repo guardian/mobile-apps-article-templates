@@ -19,6 +19,7 @@ var nativeFunctionCalls = [
     'commentsFailed',
     'footballMatchInfo',
     'footballMatchInfoFailed',
+    'liveblogDeleteBlock',
     'liveblogNewBlock'
 ];
 

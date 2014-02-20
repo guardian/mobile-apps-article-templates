@@ -81,6 +81,8 @@ define([
                         $('.live-more').hide();
                     }
                 };
+
+                window.applyNativeFunctionCall('liveblogDeleteBlock');
             }
         },
 
