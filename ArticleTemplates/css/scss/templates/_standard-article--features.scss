@@ -13,18 +13,6 @@
 			background-color: $features-ter;
 			@include margin(0, 0, 1, 0);
 
-			.article__section,
-			.inner-header,
-			.article__standfirst,
-			.article__byline {
-				@include mq(col2, col3) {
-					padding-left: cols($base-3, 1);
-				}
-				@include mq($from: col3) {
-					padding-left: cols($base-4, 1);
-				}
-			}
-
 			.article__section {
 				background-color: $background;
 			}
@@ -36,12 +24,7 @@
 
 				.article__headline {
 					color: #fff;
-					@include mq($to: col1) {
-						margin: $base-1 0;
-					}
-					@include mq(col1, col2) {
-						margin: $base-2 0;
-					}
+					@include margin(1, 0, 2, 0);
 					@include mq($from: col2) {
 						font-size: 4em; // 64px
 						font-weight: 100;
@@ -118,7 +101,7 @@
 					left: 0;
 				}
 				@include mq($from: col2) {
-					margin-bottom: -51px;
+					margin-bottom: -62px;
 				}
 
 				figcaption {
@@ -135,10 +118,23 @@
 			.article__byline {
 				color: rgba(255, 255, 255, 0.9);
 				border: 0 none;
+				@include padding(0, 1, 0, 1);
 				-webkit-order: 4;
 				order: 4;
 				a {
 					color: #fff;
+				}
+			}
+
+			.article__section,
+			.inner-header,
+			.article__standfirst,
+			.article__byline {
+				@include mq(col2, col3) {
+					padding-left: cols($base-3, 1);
+				}
+				@include mq($from: col3) {
+					padding-left: cols($base-4, 1);
 				}
 			}
 		}
