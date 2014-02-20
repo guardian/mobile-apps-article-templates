@@ -14,7 +14,6 @@ figure {
 		line-height: $meta-lead-1;
 		@include padding(0.5, 1, 1, 1);
 		border-bottom: 1px dotted $shadow;
-
 		@include mq(col2, col3) {
 			padding-right: cols($base-3, 3);
 		}
@@ -23,7 +22,7 @@ figure {
 		}
 	}
 
-	// Image (full width)
+	// Full width
 	&.figure-wide {
 		img {
 			width: 100%;
@@ -31,7 +30,7 @@ figure {
 		}
 	}
 
-	// Image (inline)
+	// Inline
 	&.figure-inline {
 		@include mq($to: col1) {
 			img {
