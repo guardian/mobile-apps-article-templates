@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title>Audio</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+	<link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__css/style.css" />
+
+	<script type="text/javascript" src="__TEMPLATES_DIRECTORY__js/amd/shim.js"></script>
+</head>
+
+<body id="audio" class="__SECTION_TONE__ __FONT_SIZE__" data-content-type="audio" data-ads-enabled="__ADS_ENABLED__" data-ads-slot="/__AD_NETWORK_ID__/__AD_UNIT_IDENTIFIER__">
+	<div class="article" style="margin-top: __ACTIONBARHEIGHT__px;">
+		<div class="article__header">
+			<div class="inner-header">
+				<div class="media-title">
+					<h3 class="article__section"><a href="">__SECTION__</a></h3>
+					<h1 class="article__headline">__TITLE__</h1>
+					__BYLINE__
+				</div>
+			</div>
+
+			<div class="article__meta">
+				<div class="inner-meta">
+					<p class="article__pubdate">__PUBDATE__</p>
+				</div>
+				__COMMENT_CTA__
+			</div>
+
+			<div class="audio-presenter">
+				<img src="__TEMPLATES_DIRECTORY__css/img/podcast.png" />
+			</div>
+		</div>
+
+		<div class="audio-player">
+			<div class="audio-button" onclick="javascript:window.location.href='x-gu://playaudio/__AUDIO_URI__'">
+				<span class="icon icon-circle">&#xe04b;</span>
+			</div>
+
+			<div id="audio-slider">
+				<input type="text" id="audio-scrubber" />
+				<input type="text" id="audio-scrubber-left" />
+				<div class="audio-track"></div>
+				<div class="audio-knob" role="slider"></div>
+			</div>
+		</div>
+			
+		<div class="article__body">
+			<div class="article__standfirst">
+				__STANDFIRST__
+			</div>
+
+			__BODY__
+		</div>
+
+		<div class="article__tags">
+			<ul class="list">
+				
+			</ul>
+		</div>
+	</div>
+
+	__COMMENTS_MODULE__
+
+<!-- AMD Javascript -->
+	<script type="text/javascript" src="__TEMPLATES_DIRECTORY__js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="__TEMPLATES_DIRECTORY__js/guardian.main.lite.js"></script>
+
+	<script type="text/javascript" id="gu" src="__TEMPLATES_DIRECTORY__js/amd/components/require.min.js" data-main="__TEMPLATES_DIRECTORY__js/amd/app.js" data-js-dir="__TEMPLATES_DIRECTORY__js" async></script>
+</body>
+</html>

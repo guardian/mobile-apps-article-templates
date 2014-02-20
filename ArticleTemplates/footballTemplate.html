@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title>Football</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+	<link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__css/style.css" />
+
+    <script type="text/javascript" src="__TEMPLATES_DIRECTORY__js/amd/shim.js"></script>
+</head>
+
+<body id="football" class="__SECTION_TONE__" data-content-type="football" data-ads-enabled="__ADS_ENABLED__" data-ads-slot="/__AD_NETWORK_ID__/__AD_UNIT_IDENTIFIER__">
+	<div class="article" style="margin-top: __ACTIONBARHEIGHT__px;">
+		<div class="article__header football-header __IS_ALERTS__">
+			<div class="inner-header">
+				<div class="football-status __FOOTBALL_STATUS_CLASS__"><!-- This should be populated with the status as a useable class name, lower case, no spaces. 1st and 2nd need to be converted to first and second respectively. Do not populate with the time, it will default to that style -->
+					<p>__FOOTBALL_STATUS__</p>
+				</div>
+
+				<div class="football-divider"></div>
+
+				__FOOTBALL_ALERTS__
+			
+				<div class="football-match-info">
+					<p>__FOOTBALL_COMPETITION__ <span>__FOOTBALL_ROUND__</span></p>
+					<p>__FOOTBALL_VENUE__</p>
+				</div>
+
+				<div class="football-team-home">
+					<div class="football-badge">
+						__FOOTBALL_HOME_CREST__
+					</div>
+					
+					<div class="football-info">
+						<h1 onclick="javascript:window.location.href='x-gu://team/__FOOTBALL_HOME_TEAM_TAG__'">__FOOTBALL_HOME_NAME__</h1>
+						__FOOTBALL_HOME_SCORER__
+					</div>
+					
+					<div class="football-score">
+						<h1>__FOOTBALL_HOME_SCORE__ <span>__FOOTBALL_HOME_AGG_SCORE__</span></h1>
+					</div>
+				</div>
+
+				<div class="football-team-away">
+					<div class="football-score">
+						<h1>__FOOTBALL_AWAY_SCORE__ <span>__FOOTBALL_AWAY_AGG_SCORE__</span></h1>
+					</div>
+					
+					<div class="football-info">
+						<h1 onclick="javascript:window.location.href='x-gu://team/__FOOTBALL_AWAY_TEAM_TAG__'">__FOOTBALL_AWAY_NAME__</h1>
+						__FOOTBALL_AWAY_SCORER__
+					</div>
+					
+					<div class="football-badge">
+						__FOOTBALL_AWAY_CREST__
+					</div>
+				</div>
+				
+				<div class="football-team-away football-team-away-mobile">
+					<div class="football-badge">
+						__FOOTBALL_AWAY_CREST__
+					</div>
+
+					<div class="football-info">
+						<h1 onclick="javascript:window.location.href='x-gu://team/__FOOTBALL_AWAY_TEAM_TAG__'">__FOOTBALL_AWAY_NAME__</h1>
+						__FOOTBALL_AWAY_SCORER__
+					</div>
+					
+					<div class="football-score">
+						<h1>__FOOTBALL_AWAY_SCORE__ <span>__FOOTBALL_AWAY_AGG_SCORE__</span></h1>
+					</div>
+				</div>
+
+				__FOOTBALL_COMMENT__
+			</div>
+		</div><!-- End of Header -->
+		
+		<ul class="tabs football-tabs">
+			__FOOTBALL_TABS__
+		</ul>
+
+		__FOOTBALL_REPORT__
+
+		__FOOTBALL_LIVEBLOG__
+
+		<div class="football-tabs football-tabs-stats">
+			
+		</div>
+	</div>
+
+	<!-- Javascript -->
+	<script type="text/javascript" src="__TEMPLATES_DIRECTORY__js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="__TEMPLATES_DIRECTORY__js/jquery.dotdotdot.min.js"></script>
+	<script type="text/javascript" src="__TEMPLATES_DIRECTORY__js/jquery.timeago.js"></script>
+	<script type="text/javascript" src="__TEMPLATES_DIRECTORY__js/guardian.main.lite.js"></script>
+
+	<script type="text/javascript" id="gu" src="__TEMPLATES_DIRECTORY__js/amd/components/require.min.js" data-main="__TEMPLATES_DIRECTORY__js/amd/app.js" data-js-dir="__TEMPLATES_DIRECTORY__js" async></script>
+</body>
+</html>

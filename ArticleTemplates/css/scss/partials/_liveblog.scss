@@ -1,0 +1,258 @@
+#liveblog {
+	.article {
+		background-color: $background;
+		border-bottom: none;
+		border-top-color: $alert;
+	}
+	.article__header {
+		background-color: $white;
+		border-bottom: 2px solid $shadow;
+		position: relative;
+		
+		.live-tag {
+			color: $alert;
+			font-family: $agate-sans;
+			font-weight: bold;
+			@include body();
+			position: absolute;
+			left: 0;
+			top: 0;
+			@include padding(0.75, 0, 0, 1);
+			span {
+				-webkit-animation: blink 1.5s ease-in infinite;
+			}
+		}
+
+		.live-summary {
+			overflow: hidden;
+			font-family: $egyptian-text;
+			@include body();
+			p {
+				margin-bottom: 18px;
+			}
+			figure, img {
+				display: none;
+			}
+		}
+
+		.live-summary-more {
+			font-family: $agate-sans;
+			font-weight: bold;
+			display: none;
+			width: 100%;
+		}
+
+		.article__byline {
+			padding: 0;
+			border-bottom: 0 none;
+			margin-bottom: 0px;
+		}
+		.article__pubdate {
+			margin-bottom: 0px;
+		}
+		.article__meta {
+			border-bottom: none;
+		}
+	}
+	#advert {
+		float: none;
+		width: 100%;
+		margin-left: 0;
+		background-color: #e6e6e6;
+		padding-top: 0;
+		padding-bottom: 0;
+		border-bottom: none;
+		img {
+			width: 100%;
+			vertical-align: middle;
+		}
+	}
+	.article__meta {
+		.article__alerts--liveblog {
+			border-right: 1px dotted $shadow;
+			left: 0;
+		}
+	}
+	
+	.live-more {
+		min-height: 44px;
+		font-family: $agate-sans;
+		font-weight: bold;
+	}
+	.live-more-loading {
+		display: none;
+		text-align: center;
+		img {
+			width: 44px;
+			height: 44px;
+		}
+	}
+	.live-updates {
+		font-family: $agate-sans;
+		font-weight: bold;
+		color: $alert;
+		background-color: $background;
+		position: fixed;
+		z-index: 99;
+		border-bottom: 2px solid $alert;
+		top: 0;
+		overflow: auto;
+		width: 100%;
+		box-sizing: content-box;
+		display: none;
+		.live-updates-inner {
+			display: table;
+		}
+		.live-updates-label {
+			display: table-cell;
+			vertical-align: middle;
+		}
+		.icon-circle {
+			-webkit-transform: rotate(-90deg);
+		}
+	}
+
+	@include mq($to: col1) {
+		.article__header {
+			.article__section {
+				padding-left: 4.5em;
+			}
+			.live-summary-body {
+				max-height: 175px;
+			}
+			.article__alerts {
+				margin-top: $base-1;
+			}
+			.article__meta {
+				.article__alerts--liveblog {
+					display: none;
+				}
+			}
+		}
+	}
+
+	@include mq(col1, col2) {
+		.article__header {
+			.article__section {
+				padding-left: 3.5em;
+			}
+			.live-summary-body {
+				max-height: 175px;
+			}
+			.article__alerts {
+				margin-top: $base-2;
+			}
+			.article__meta {
+				.article__alerts--liveblog {
+					display: none;
+				}
+			}
+		}
+	}
+
+	@include mq(col2, col3) {
+		.article__header {
+			.article__section {
+				padding-left: cols($base-3, 4, 1);
+			}
+			.inner-header {
+				margin-left: cols($base-3, 4);
+				.article__alerts {
+					display: none;
+				}
+			}
+			.live-summary-body {
+				max-height: 240px;
+			}
+			.article__meta {
+				.article__alerts--liveblog {
+					width: cols($base-3, 4);
+				}
+				.inner-meta {
+					width: cols($base-3, 5, 1);
+					margin-left: cols($base-3, 4);
+				}
+			}
+		}
+		.article__tags {
+			margin-left: $base-3 * 24;
+			padding-left: 0;
+			padding-right: 0;
+			padding-bottom: $base-3 * 4;
+			width: auto;
+		}
+	}
+
+	@include mq($from: col3) {
+		.article__header {
+			.article__section {
+				padding-left: cols($base-4, 5, 1);
+			}
+			.inner-header {
+				margin-left: cols($base-4, 5);
+				.article__alerts {
+					display: none;
+				}
+			}
+			.live-summary-body {
+				max-height: 240px;
+			}
+			.article__meta {
+				.inner-meta {
+					width: cols($base-4, 6);
+					margin-left: cols($base-4, 5);
+				}
+				.article__alerts--liveblog {
+					width: cols($base-4, 5);
+				}
+			}
+		}
+		.article__tags {
+			margin-left: $base-4 * 30;
+			padding-left: 0;
+			padding-right: 0;
+			padding-bottom: $base-4 * 4;
+			width: auto;
+		}
+		.live-updates-inner {
+			padding: $base-4 / 1.5;
+			width: 100%;
+		}
+	}
+}
+
+.live-more {
+	min-height: 44px;
+	font-family: $agate-sans;
+	font-weight: bold;
+	@include body();
+	@include margin(0, 0, 1, 0);
+	@include padding(1);
+	@include mq(col2, col3) {
+		padding-left: $base-3 * 24;
+	}
+	@include mq($from: col3) {
+		padding-left: $base-4 * 30;
+	}
+}
+.live-more-loading {
+	display: none;
+	text-align: center;
+	@include padding(1);
+	@include margin(0, 0, 1, 0);
+	img {
+		width: 44px;
+		height: 44px;
+	}
+}
+
+@-webkit-keyframes blink {
+	0% { opacity: 0; }
+	50% { opacity: 1; }
+	100% { opacity: 0; }
+}
+@keyframes blink {
+	0% { opacity: 0; }
+	50% { opacity: 1; }
+	100% { opacity: 0; }
+}

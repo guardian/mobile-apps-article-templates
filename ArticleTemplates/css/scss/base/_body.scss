@@ -1,0 +1,104 @@
+.article {
+	font-family: $egyptian-text;
+	background-color: $white;
+	border-bottom: 2px solid $shadow;
+	border-top: 4px solid $news-sec;
+	overflow: hidden;
+
+	@include mq($to: col1) {
+		border-top: none;
+		margin-bottom: $base-1 * 2;
+	}
+	@include mq(col1, col2) {
+		margin-bottom: $base-2 * 3;
+	}
+	@include mq(col2, col3) {
+		margin-bottom: $base-3 * 3;
+	}
+	@include mq($from: col3) {
+		margin-bottom: $base-4 * 3;
+	}
+
+	p,
+	ul,
+	ol {
+		@include margin(0, 0, 1, 0);
+		br:first-child {
+			display: none;
+		}
+	}
+
+	blockquote {
+		color: $standfirst;
+		font-style: italic;
+		@include margin(0, 2, 2, 2);
+		&.quoted {
+			font-style: normal;
+		}
+		&:before {
+			font-family: $icon;
+			font-size: 48px;
+			color: $meta;
+			display: block;
+			margin-bottom: 2px;
+		}
+		&.quoted:before {
+			content: "\e029";
+		}
+	}
+
+	h2 {
+		font-family: $egyptian-display;
+		font-weight: 600;
+		font-size: 1em;
+		margin-bottom: 1px;
+		strong, b {
+			font-weight: normal;
+		}
+	}
+	p + h2 {
+		margin-top: 20px;
+	}
+
+	em, i {
+		font-style: italic;
+	}
+	strong, b {
+		font-weight: bold;
+	}
+	strike {
+		text-decoration: line-through;
+	}
+
+	hr {
+		border: 0;
+		height: 1px;
+		background: $shadow;
+	}
+
+	.article__body {
+		@include body();
+
+		ul > li {
+			position: relative;
+			text-indent: 22px;
+			&:before {
+				color: $meta;
+				font-size: 48px;
+				content: "\2022";
+				position: absolute;
+				top: 1px;
+				left: -22px;
+			}
+		}
+
+		ol {
+			counter-reset: li;
+		}
+
+		ol > li:before {
+			content: counter(li)". ";
+			counter-increment: li;
+		}
+	}
+}

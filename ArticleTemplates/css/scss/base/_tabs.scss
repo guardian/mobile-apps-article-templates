@@ -1,0 +1,67 @@
+ul.tabs {
+	li {
+		border-top: 2px solid $shadow;
+		padding-top: 2px;
+		display: inline-table;
+		font-family: $agate-sans;
+		color: $standfirst;
+	}
+	li.selected {
+		border-top: 4px solid $news-pri;
+		font-weight: bold;
+		color: $news-pri;
+	}
+
+	@include mq($to: col1) {
+		padding: $base-1 $base-1 / 2;
+		font-size: $meta-size-1;
+		display: table;
+		width: 100%;
+		box-sizing: border-box;
+		table-layout: fixed;
+		li {
+			display: table-cell;
+			width: auto;
+			padding: 4px $base-1 $base-1 0;
+		}
+		li.selected {
+			padding-top: 2px;
+		}
+	}
+
+	@include mq(col1, col2) {
+		margin: $base-2 * 1 0;
+		font-size: $meta-size-2;
+		li {
+			width: $base-2 * 10;
+			padding: 4px $base-2 * 2 $base-2 * 2 0;
+		}
+		li.selected {
+			padding-top: 2px;
+		}
+	}
+
+	@include mq(col2, col3) {
+		margin: $base-3 * 1 0;
+		font-size: $meta-size-3;
+		li {
+			width: $base-3 * 18;
+			padding: 4px 0 $base-3 * 2 0;
+		}
+		li.selected {
+			padding-top: 2px;
+		}
+	}
+
+	@include mq($from: col3) {
+		margin: $base-4 * 1 0;
+		font-size: $meta-size-4;
+		li {
+			width: $base-4 * 24;
+			padding: 4px 0 $base-4 * 2 0;
+		}
+		li.selected {
+			padding-top: 2px;
+		}
+	}
+}

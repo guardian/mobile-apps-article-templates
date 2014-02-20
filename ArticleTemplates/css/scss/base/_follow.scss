@@ -1,0 +1,22 @@
+.article__alerts {
+	font-family: $agate-sans;
+	font-weight: bold;
+	color: $news-pri;
+	span.icon {
+		color: $standfirst;
+	}
+	.state-follow {
+		display: none;
+		span.icon {
+			color: $news-sec;
+		}
+	}
+	&.following {
+		.state-follow {
+			display: block;
+		}
+		.state-unfollow {
+			display: none;
+		}
+	}
+}

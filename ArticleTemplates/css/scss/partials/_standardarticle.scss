@@ -1,0 +1,11 @@
+#standard-article {
+	.article__body {
+		@include padding(0.5, 1, 1, 1);
+		@include mq(col2, col3) {
+			padding-right: cols($base-3, 3);
+		}
+		@include mq($from: col3) {
+			padding-right: cols($base-4, 4);
+		}
+	}
+}

@@ -1,0 +1,35 @@
+.article__tags {
+	font-family: $agate-sans;
+	@include meta();
+	border-top: 1px dotted $shadow;
+	@include padding(0.5, 1, 1, 1);
+	width: 100%;
+
+	.list {
+		color: $meta;
+		overflow: hidden;
+
+		@include mq(col2, col3) {
+			width: cols($base-3, 9);
+		}
+		@include mq($from: col3) {
+			width: cols($base-4, 12);
+		}
+	}
+
+	.list__item {
+		float: left;
+		white-space: nowrap;
+		display: inline-block;
+		&:after {
+			content: "\00B7";
+			margin: 0 4px;
+		}
+		&:last-of-type:after {
+			display: none;
+		}
+		&:first-of-type {
+			font-weight: bold;
+		}
+	}
+}

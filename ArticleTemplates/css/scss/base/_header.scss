@@ -1,0 +1,176 @@
+.article__header {
+	background-image: none; // Hide Cif elements from non-Cif pages
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	flex-direction: column;
+
+	ul > li {
+		font-family: $egyptian-text;
+		color: $standfirst;
+	}
+	ul > li:before {
+		content: "\2022  ";
+		font-family: $egyptian-display;
+		font-weight: 600;
+		color: $shadow;
+	}
+
+	.inner-header,
+	.article__standfirst,
+	.article__meta,
+	.article__image,
+	.article__byline {
+		-webkit-flex: 1;
+		flex: 1;
+	}
+
+	.article__section {
+		font-family: $egyptian-display;
+		font-weight: 600;
+		margin: 0;
+		@include padding(0.5, 1, 0.5, 1);
+	}
+
+	.inner-header {
+		@include padding(0, 1, 0, 1);
+	}
+
+	 .article__headline {
+		color: $headline;
+		font-family: $egyptian-display;
+		font-weight: 200;
+		@include headline();
+		@include margin(0, 0, 3, 0);
+		span {
+			display: none; // Hide Cif elements from non-Cif pages
+		}
+	}
+
+	.article__standfirst {
+		color: $standfirst;
+		font-family: $egyptian-text;
+		@include standfirst();
+		@include padding(0.5, 1, 0, 1);
+	}
+
+	.article__alerts {
+		@include meta();
+	}
+
+	.article__meta {
+		@include meta();
+		border-top: 1px dotted $shadow;
+		border-bottom: 1px dotted $shadow;
+		@include margin(1.5, 0, 0, 0);
+		position: relative;
+		overflow: hidden;
+
+		.article__pubdate {
+			color: $meta;
+			font-family: $agate-sans;
+		}
+
+		.article__alerts--liveblog,
+		.inner-meta,
+		.article__comments {
+			@include padding(0.5, 1, 2, 1);
+		}
+		.article__comments,
+		.article__alerts--liveblog {
+			font-family: $agate-sans;
+			font-weight: bold;
+			min-height: 100%;
+			position: absolute;
+			top: 0;
+			a {
+				padding-bottom: 100px;
+			}
+		}
+		.article__comments {
+			border-left: 1px dotted $shadow;
+			right: 0;
+		}
+	}
+
+	.article__byline {
+		@include padding(0.5, 1, 2, 1);
+		@include margin(0, 0, 1, 0);
+		border-bottom: 1px dotted $shadow;
+		#contributor-link {
+			font-weight: bold;
+		}
+	}
+
+	@include mq($to: col1) {
+		.article__section {
+			font-size: $body-size-1;
+		}
+		.article__meta {
+			.inner-meta {
+				width: cols($base-1, 3);
+			}
+			.article__comments {
+				width: cols($base-1, 1, 1);
+				.comment-label {
+					display: none;
+				}
+			}
+		}
+	}
+
+	@include mq(col1, col2) {
+		.article__section {
+			font-size: $headline-size-2 / 2;
+		}
+		.article__meta {
+			.inner-meta {
+				width: cols($base-2, 6);
+			}
+			.article__comments {
+				width: cols($base-2, 2, 1);
+				.comment-label {
+					display: none;
+				}
+			}
+		}
+	}
+
+	@include mq(col2, col3) {
+		.article__headline,
+		.article__standfirst {
+			width: cols($base-3, 9);
+		}
+		.article__section {
+			font-size: $headline-size-3 / 2;
+		}
+		.article__meta {
+			position: relative;
+			.inner-meta {
+				width: cols($base-3, 9);
+			}
+			.article__comments {
+				width: cols($base-3, 3, 1);
+			}
+		}
+	}
+
+	@include mq($from: col3) {
+		.article__headline,
+		.article__standfirst {
+			width: cols($base-4, 12);
+		}
+		.article__section {
+			font-size: $headline-size-4 / 2;
+		}
+		.article__meta {
+			position: relative;
+			.inner-meta {
+				width: cols($base-4, 11);
+			}
+			.article__comments {
+				width: cols($base-4, 5, 1);
+			}
+		}
+	}
+}

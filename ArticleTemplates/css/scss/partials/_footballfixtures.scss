@@ -1,0 +1,113 @@
+#football-fixtures {
+	.article {
+		border-top-color: $headline;
+		background-color: transparent;
+		border-bottom: none;
+	}
+}
+
+.football-fixtures-header {
+	h1 {
+		text-align: right; 
+		font-family: $titlepiece;
+		@include padding(1);
+		@include headline();
+	}
+	@include mq($to: col1) {
+		display: none;
+	}
+}
+
+.football-fixtures-row {
+	display: table;
+	table-layout:fixed;
+	width: 100%;
+	@include body();
+	font-family: $agate-sans;
+	& > div {
+		display: table-cell;
+		border-top: 1px solid $shadow;
+		.football-col-2, .football-col-4 {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		}
+		@include padding(0.25, 0, 1, 0);
+		&.football-col-1, &.football-col-3 {
+			@include rbase-1(0.75);
+			@include rbase-2(1);
+			@include rbase-3(1.5);
+			@include rbase-4(1.5);
+		}
+		&.football-col-2 {
+			@include rbase-1(1);
+			@include rbase-2(2.5);
+			@include rbase-3(3.5,1);
+			@include rbase-4(6.5,1);
+		}
+		&.football-col-4 {
+			@include rbase-1(1.5);
+			@include rbase-2(3.5,1);
+			@include rbase-3(5.5,1);
+			@include rbase-4(8.5,1);
+		}
+		@include mq($to: col1) {
+			&.football-col-1 {
+				@include padding(0.25,0,1,1);
+			}
+		}
+	}
+	&.date, &.competition {
+		.football-col-1 {
+			font-weight: bold;
+			@include rbase-1(1.5);
+			@include rbase-2(2.5);
+			@include rbase-3(3.5,1);
+			@include rbase-4(6.5,1);
+		}
+		.football-col-2 {
+			@include rbase-1(0.5);
+			@include rbase-2(1);
+			@include rbase-3(1.5);
+			@include rbase-4(1.5);
+		}
+		.football-col-4 {
+			color: $standfirst;
+			@include mq($to: col1) {
+				display: none;
+			}
+		}
+	}
+	&.match {
+		background-color: $white;
+		& > div {
+			border-top-color: $news-sec;
+		}
+		.football-col-1 {
+			color: $meta;
+			@include padding(0,0.5,0,0);
+			@include mq($to: col1) {
+				@include padding(0,0.5,0,1);
+			}
+		}
+		.football-col-2 {
+			text-align: right;
+		}
+		.football-col-3 {
+			color: $standfirst;
+			text-align: center;
+		}
+		&.has-ended {
+			.football-col-1 {
+				font-weight: bold;
+				color: $meta;
+			}
+		}
+		&.is-live {
+			font-weight: bold;
+			.football-col-1 {
+				color: $news-sec;
+			}
+		}
+	}
+}
