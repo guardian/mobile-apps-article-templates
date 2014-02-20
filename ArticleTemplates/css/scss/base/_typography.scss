@@ -132,78 +132,78 @@ html {
 	}
 }
 
-@mixin headline() {
+@mixin headline($multiple:1) {
 	@include mq($to: col1) {
-		font-size: $headline-size-1;
-		line-height: $headline-lead-1;
+		font-size: $headline-size-1 * $multiple;
+		line-height: $headline-lead-1 * $multiple;
 	}
 	@include mq(col1, col2) {
-		font-size: $headline-size-2;
-		line-height: $headline-lead-2;
+		font-size: $headline-size-2 * $multiple;
+		line-height: $headline-lead-2 * $multiple;
 	}
 	@include mq(col2, col3) {
-		font-size: $headline-size-3;
-		line-height: $headline-lead-3;
+		font-size: $headline-size-3 * $multiple;
+		line-height: $headline-lead-3 * $multiple;
 	}
 	@include mq($from: col3) {
-		font-size: $headline-size-4;
-		line-height: $headline-lead-4;
+		font-size: $headline-size-4 * $multiple;
+		line-height: $headline-lead-4 * $multiple;
 	}
 }
 
-@mixin body() {
+@mixin body($multiple:1) {
 	@include mq($to: col1) {
-		font-size: $body-size-1;
-		line-height: $body-lead-1;
+		font-size: $body-size-1 * $multiple;
+		line-height: $body-lead-1 * $multiple;
 	}
 	@include mq(col1, col2) {
-		font-size: $body-size-2;
-		line-height: $body-lead-2;
+		font-size: $body-size-2 * $multiple;
+		line-height: $body-lead-2 * $multiple;
 	}
 	@include mq(col2, col3) {
-		font-size: $body-size-3;
-		line-height: $body-lead-3;
+		font-size: $body-size-3 * $multiple;
+		line-height: $body-lead-3 * $multiple;
 	}
 	@include mq($from: col3) {
-		font-size: $body-size-4;
-		line-height: $body-lead-4;
+		font-size: $body-size-4 * $multiple;
+		line-height: $body-lead-4 * $multiple;
 	}
 }
 
-@mixin standfirst() {
+@mixin standfirst($multiple:1) {
 	@include mq($to: col1) {
-		font-size: $standfirst-size-1;
-		line-height: $standfirst-lead-1;
+		font-size: $standfirst-size-1 * $multiple;
+		line-height: $standfirst-lead-1 * $multiple;
 	}
 	@include mq(col1, col2) {
-		font-size: $standfirst-size-2;
-		line-height: $standfirst-lead-2;
+		font-size: $standfirst-size-2 * $multiple;
+		line-height: $standfirst-lead-2 * $multiple;
 	}
 	@include mq(col2, col3) {
-		font-size: $standfirst-size-3;
-		line-height: $standfirst-lead-3;
+		font-size: $standfirst-size-3 * $multiple;
+		line-height: $standfirst-lead-3 * $multiple;
 	}
 	@include mq($from: col3) {
-		font-size: $standfirst-size-4;
-		line-height: $standfirst-lead-4;
+		font-size: $standfirst-size-4 * $multiple;
+		line-height: $standfirst-lead-4 * $multiple;
 	}
 }
 
-@mixin meta() {
+@mixin meta($multiple:1) {
 	@include mq($to: col1) {
-		font-size: $meta-size-1;
-		line-height: $meta-lead-1;
+		font-size: $meta-size-1 * $multiple;
+		line-height: $meta-lead-1 * $multiple;
 	}
 	@include mq(col1, col2) {
-		font-size: $meta-size-2;
-		line-height: $meta-lead-2;
+		font-size: $meta-size-2 * $multiple;
+		line-height: $meta-lead-2 * $multiple;
 	}
 	@include mq(col2, col3) {
-		font-size: $meta-size-3;
-		line-height: $meta-lead-3;
+		font-size: $meta-size-3 * $multiple;
+		line-height: $meta-lead-3 * $multiple;
 	}
 	@include mq($from: col3) {
-		font-size: $meta-size-4;
-		line-height: $meta-lead-4;
+		font-size: $meta-size-4 * $multiple;
+		line-height: $meta-lead-4 * $multiple;
 	}
 }
