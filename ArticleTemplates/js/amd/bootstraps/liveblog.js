@@ -2,10 +2,12 @@
 define([
     'bean',
     'bonzo',
+    'modules/relativeDates',
     'modules/$'
 ], function (
     bean,
     bonzo,
+    relativeDates,
     $
 ) {
     'use strict';
@@ -74,6 +76,15 @@ define([
                     window.articleImageSizer();
                     window.liveblogTime();
                 };
+                window.liveblogTime = function () {
+                    if ($('.live-tag').length > 0) {
+                        relativeDates.init('p.block-time', 'title');
+                    } else {
+                        $('p.block-time').each(function (el) {
+                            $(el).html(el.getAttribute('title'));
+                        });
+                    }
+                };
                 window.showLiveMore = function (show) {
                     if (show) {
                         $('.live-more').show();
@@ -90,6 +101,7 @@ define([
                 modules.blockUpdates();
                 modules.liveMore();
                 modules.setupGlobals();
+                window.liveblogTime();
                 // console.info("Liveblog ready");
             }
         };
