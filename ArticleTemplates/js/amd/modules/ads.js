@@ -70,7 +70,7 @@ define([
                                             "</div>" +
                                         "</div>";
 
-                    $(".body > p:nth-of-type(1)").before(tabletMpuHtml);
+                    $(".article__body > p:nth-of-type(1)").before(tabletMpuHtml);
 
                     googletag.cmd.push(function () {
                         googletag.display(tabletMpuId);
@@ -97,7 +97,7 @@ define([
                                         "</div>" +
                                      "</div>";
 
-                    $(".body > p:nth-of-type(6)").after(mobileMpuHtml);
+                    $(".article__body > p:nth-of-type(6)").after(mobileMpuHtml);
                     $("body").prepend(bannerHtml);
 
                     googletag.cmd.push(function () {
