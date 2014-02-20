@@ -24,16 +24,42 @@ figure {
 		}
 	}
 	
-	.element-image-inner {
+	.element-image-inner,
+	.element-video-inner {
 		background-color: $background;
 		padding-bottom: 60%;
 		position: relative;
 		img {
 			position: absolute;
+			width: 100%;
 			top: 0;
 			right: 0;
 			bottom: 0;
 			left: 0;
+		}
+	}
+	
+	.element-video-inner {
+		padding-bottom: 56.25%; // 16:9 image ratio
+		.element-video__button {
+			position: absolute;
+			bottom: 0;
+			z-index: 2;
+			@include padding(0,0,1,1);
+			.icon-circle {
+				background-color: $media-pri;
+				color: $headline;
+				display: table-cell;
+				vertical-align: middle;
+			}
+			.element-video__button__duration {
+				color: $media-pri;
+				font-family: $agate-sans;
+				font-weight: bold;
+				display: table-cell;
+				@include padding(0,0,0,1);
+				vertical-align: middle;
+			}
 		}
 	}
 
@@ -71,7 +97,7 @@ figure {
 	&.element-video {
 		width: 100%;
 		position: relative;
-		padding-bottom: 60%;
+		padding-bottom: 56.25%;
 		overflow: hidden;
 		iframe, object, embed, video {
 			width: 100%;
@@ -83,10 +109,19 @@ figure {
 		video {
 			background-color: #000;
 		}
+		@include mq($to: col2) {
+			width: 100%;
+			padding-bottom: 61.4215%; // Compensation for width being 109%
+		}
 		@include mq($from: col2) {
 			width: 100%;
-			padding-bottom: 79.8%;
+			padding-bottom: 75.375%; // Compensation for width being 134%
 		}
+	}
+	
+	// Video thumbnails
+	&.element-video-thumb {
+		width: 100%;
 	}
 
 	// Tweet
@@ -142,12 +177,18 @@ figure {
 			}
 		}
 	}
+	
+	// Note: Do comment embeds – Usually found on pre-match football liveblogs
 
 	// Images, video and interactives within article body
 	.article__body &.figure-wide,
 	.article__body &.element-video,
-	.article__body &.element-interactive {
+	.article__body &.element-interactive,
+	.article__body &.element-video-thumb {
 		@include margin(0, -1, 1.5, -1);
+		@include mq($to: col2) {
+			width: 109%;
+		}
 		@include mq($from: col2) {
 			width: 134%;
 		}
