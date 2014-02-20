@@ -28,6 +28,7 @@
 	.article__section {
 		font-family: $egyptian-display;
 		font-weight: 600;
+		@include headline(0.5);
 		margin: 0;
 		@include padding(0.5, 1, 0.5, 1);
 	}
@@ -77,6 +78,7 @@
 		.article__alerts, {
 			@include padding(0.5, 1, 2, 1);
 		}
+
 		.article__comments,
 		.article__alerts {
 			font-family: $agate-sans;
@@ -88,6 +90,7 @@
 				padding-bottom: 100px;
 			}
 		}
+
 		.article__comments {
 			border-left: 1px dotted $shadow;
 			right: 0;
@@ -121,9 +124,6 @@
 	}
 
 	@include mq(col1, col2) {
-		.article__section {
-			font-size: $headline-size-2 / 2;
-		}
 		.article__meta {
 			.inner-meta {
 				width: cols($base-2, 6);
@@ -142,9 +142,6 @@
 		.article__standfirst {
 			width: cols($base-3, 9);
 		}
-		.article__section {
-			font-size: $headline-size-3 / 2;
-		}
 		.article__meta {
 			.inner-meta {
 				width: cols($base-3, 9, 1);
@@ -159,9 +156,6 @@
 		.article__headline,
 		.article__standfirst {
 			width: cols($base-4, 12);
-		}
-		.article__section {
-			font-size: $headline-size-4 / 2;
 		}
 		.article__meta {
 			.inner-meta {

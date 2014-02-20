@@ -7,5 +7,19 @@
 		@include mq($from: col3) {
 			padding-right: cols($base-4, 4);
 		}
+		
+		// Images, video and interactives within article body
+		.figure-wide,
+		.element-video,
+		.element-interactive,
+		.element-video-thumb {
+			@include margin(0, -1, 1.5, -1);
+			@include mq($to: col2) {
+				width: 109%;
+			}
+			@include mq($from: col2) {
+				width: 134%;
+			}
+		}
 	}
 }

@@ -10,33 +10,32 @@
 		border-top-color: $headline;
 		border-bottom: none;
 	}
-	.comments-header {
+
+	.article__header {
 		@include padding(0.5);
 		@include mq($to: col2) {
-			font-size: 2.4rem;
-			line-height: 2.6rem;
+			//font-size: 2.4rem;
+			//line-height: 2.6rem;
 		}
 		@include mq($from: col2) {
-			font-size: 3.0rem;
-			line-height: 3.2rem;
+			//font-size: 3.0rem;
+			//line-height: 3.2rem;
 		}
-		h3 {
-			font-family: $egyptian-display;
-			font-weight: 600;
-			span {
+		.article__section {
+			.comment-count {
 				color: $meta;
 			}
 		}
-		h1 {
-			font-family: $egyptian-display;
-			font-weight: 200;
+		.article__headline {
 			@include margin(0,0,4,0);
 		}
 	}
+
 	.comments-controls {
 		overflow: auto;
 		font-family: $agate-sans;
 		font-weight: bold;
+		@include meta();
 		display: table;
 		width: 100%;
 		& > div {
@@ -50,6 +49,9 @@
 				vertical-align: middle;
 				height: auto;
 				padding-right: 6px;
+				@include mq($to: col2) {
+					display: none;
+				}
 			}
 			.comments-closed-label {
 				display: none;
@@ -57,550 +59,48 @@
 			}
 		}
 	}
-	.comments-view-more {
-		font-weight: bold;
+
+	.comments-view-more,
+	.comments-empty,
+	.comments-failed {
 		font-family: $agate-sans;
+		font-weight: bold;
+		@include margin(0.75, 0, 0.75, 0);
+		@include padding(0.75, 0, 0, 0);
+	}
+	.comments-view-more {
 		color: $news-pri;
 		border-top: 1px dotted $shadow;
 	}
-	.comments-block {
-		background-color: white;
+	.comments-empty,
+	.comments-failed {
+		display: none;
+		color: $standfirst;
+		@include meta();
 		border-top: 1px solid $headline;
-		overflow: auto;
-		display: table;
-		width: 100%;
-		max-width: 100%;
-		font-family: $agate-sans;
-		overflow: hidden;
-		.comments-body {
-			word-break: break-word;
-			word-wrap: break-word;
-		}
-		.comments-avatar {
-			height: 44px;
-			width: 44px;
-			-webkit-border-radius: 30px;
-			overflow: hidden;
-			img {
-				width: 100%;
-				height: 100%;
-			}
-		}
-		.comments-meta, .comments-meta-response {
-			overflow: auto;
-			word-wrap: break-word;
-			span {
-				display: block;
-			}
-			.comments-username {
-				font-weight: bold;
-				color: $headline;
-			}
-			.comments-username-response {
-				display: none;
-				font-weight: bold;
-			}
-			.comments-timestamp {
-				color: $meta;
-			}
-		}
-		.comments-meta-response {
-			display: none;
-		}
-		&.is-response {
-			margin-top: 0;
-			border-top: none;
-			.comments-table {
-				border-top: $shadow 1px dotted;
-			}
-			.comments-body {
-				color: $standfirst;
-			}
-			.comments-username {
-				display: inline;
-			}
-			.comments-avatar-container {
-				display: none;
-			}
-			.comments-meta {
-				padding-bottom: 4px;
-				span {
-					display: none;
-				}
-				.comments-username-response, .comments-username {
-					display: inline-block;
-					.icon {
-						position: relative;
-						top: 3px;
-					}
-				}
-			}
-			.comments-meta-response {
-				display: block;
-				span {
-					display: none;
-				}
-				span.comments-timestamp {
-					display: inline;
-				}
-			}
-			.comments-username-response {
-				display: inline;
-				color: $standfirst;
-				.icon {
-					display: inline;
-					color: $meta;
-				}
-			}
-		}
-		&.is-response-hidden {
-			display: none; 
-		}
-		.comments-recommends-container {
-			text-align: center;
-			.icon-circle, span {
-				-webkit-transition: 0.2s all ease-in;
-			}
-			.icon-circle .icon {
-				font-size: 14px;
-			}
-			&.increase {
-				font-weight: bold;
-				.icon-circle {
-					color: $white;
-					border-color: $news-sec;
-					background-color: $news-sec !important;
-				}
-			}
-		}
-		.comments-options {
-			overflow: auto;
-			display: none;
-			a, span.divider {
-				display: table-cell;
-				vertical-align: middle;
-				padding-right: 8px;
-			}
-			a {
-				font-weight: bold;
-			}
-			a:first-of-type {
-				padding-left: 12px;
-			}
-			.comments-options-reply {
-				float: left;
-			}
-			.comments-options-report {
-				float: right;
-			}
-		}
-		&.blocked {
-			color: $meta;
-			.comments-body, .comments-username-response, .comments-username {
-				color: $meta;
-			}
-			.comments-recommends-container {
-				display: none;
-			}
-			.comments-avatar {
-				opacity: 0.5;
-			}
-		}
 	}
+
 	.comments-loading {
 		text-align: center;
+		@include padding(0.75);
 		img {
 			width: 44px;
 			height: 44px;
 		}
 	}
-	.comments-empty, .comments-failed {
-		display: none;
-		color: $standfirst;
-		font-weight: bold;
-		font-family: $agate-sans;
-		border-top: 1px solid $headline;
-	}
-
-	@include mq($to: col1) {
-		margin-bottom: $base-1;
-		.comments-controls {
-			font-size: $meta-size-1;
-			line-height: $meta-lead-1;
-			.comments-action a {
-				display: none;
-			}
-		}
-		.comments-block {
-			display: block;
-			position: relative;
-			padding: $base-1 / 1.5;
-			margin: $base-1 / 1.5 $base-1 / 1.5 0 $base-1 / 1.5;
-			width: auto;
-			max-width: auto;
-			font-size: $body-size-1;
-			line-height: $body-lead-1;
-			margin-top: $base-1;
-			&:first-of-type {
-				margin-top: none;
-			}
-			.comments-table {
-				width: 100%;
-				display: table;
-				padding-bottom: $base-1 / 1.5;
-			}
-			.comments-avatar-container, .comments-meta, .comments-block.is-response .comments-meta-response, .comments-recommends-container {
-				display: table-cell;
-				table-layout: fixed;
-				vertical-align: top;
-			}
-			.comments-avatar-container {
-				width: 44px;
-			}
-			.comments-recommends-container {
-				width: 54px;
-				.icon-circle {
-				float: left;
-				}
-			}
-			.comments-avatar-container {
-				padding-right: $base-1 / 1.5;
-			}
-			.comments-meta, .comments-meta-response {
-				word-break: break-all;
-				line-height: $meta-lead-1;
-				.comments-role, .comments-username {
-					display: inline;
-				}
-			}
-			.comments-body {
-				clear: both;
-				p {
-					margin-bottom: 18px;
-				}
-			}
-			.comments-options {
-				margin-top: $base-1 / 1.5;
-			}
-			.comments-tablet {
-				display: none;
-			}
-			&.is-response .comments-table {
-				padding-top: $base-1 / 1.5;
-			}
-		}
-		.comments-block.is-response {
-			padding-top: 0;
-			.comments-table, .comments-body {
-				padding-left: 52px;
-			}
-		}
-		.comments-view-more {
-			margin: $base-1 / 1.5 0;
-			padding-top: $base-1 / 1.5;
-		}
-		.comments-loading {
-			padding: $base-1 / 1.5;
-		}
-		.comments-empty, .comments-failed {
-			font-size: $meta-size-1;
-			line-height: $meta-lead-1;
-			margin: $base-1 / 1.5;
-			padding-top: $base-1 / 1.5;
-		}
-	}
-
-	@include mq(col1, col2) {
-		margin-bottom: $base-2 / 1,5;
-		.comments-controls {
-			font-size: $meta-size-2;
-			line-height: $meta-lead-2;
-			.comments-action a {
-				display: none;
-			}
-		}
-		.comments-block {
-			display: block;
-			position: relative;
-			padding: $base-2 / 1.5;
-			font-size: $body-size-2;
-			line-height: 1.5em;
-			margin-top: $base-2;
-			.comments-table {
-				width: 100%;
-				display: table;
-				padding-bottom: $base-2;
-			}
-			.comments-avatar-container, .comments-meta, .comments-block.is-response .comments-meta-response, .comments-recommends-container {
-				display: table-cell;
-				table-layout: fixed;
-				vertical-align: top;
-			}
-			.comments-avatar-container {
-				width: 44px;
-			}
-			.comments-recommends-container {
-				width: 60px;
-				.icon-circle {
-				float: left;
-				}
-			}
-			.comments-avatar-container {
-				padding-right: $base-2 / 1.5;
-			}
-			.comments-meta, .comments-meta-response {
-				word-break: break-all;
-				line-height: 1.4em;
-				.comments-role, .comments-username {
-					display: inline;
-				}
-			}
-			.comments-body {
-				clear: both;
-				p {
-					margin-bottom: 18px;
-				}
-			}
-			.comments-options {
-				margin-top: $base-2 / 1.5;
-			}
-			.comments-tablet {
-				display: none;
-			}
-			&.is-response {
-				.comments-table {
-					padding-top: $base-2 / 1.5;
-				}
-				.comments-table, .comments-body {
-					padding-left: 52px;
-				}
-			}
-		}
-		.comments-loading {
-			padding: $base-2 / 1.5;
-		}
-		.comments-view-more {
-			margin: $base-2 / 1.5 0;
-			padding-top: $base-2 / 1.5;
-		}
-		.comments-empty, .comments-failed {
-			font-size: $meta-size-2;
-			line-height: $meta-lead-2;
-			margin: $base-2 / 1.5 0;
-			padding-top: $base-2 / 1.5;
-		}
-	}
-	
-	@include mq(col2, col3) {
-		margin-bottom: $base-3 / 1.5;
-		.comments-controls {
-			font-size: $meta-size-3;
-			line-height: $meta-lead-3;
-		}
-		.comments-block {
-			padding: $base-3 / 1.5;
-			font-size: $body-size-3;
-			line-height: 1.5em;
-			margin-top: $base-3;
-			min-height: 80px;
-			.comments-body, .comments-recommends-container, .comments-avatar-container, .comments-meta,  .comments-block.is-response .comments-meta-response {
-				display: table-cell;
-				vertical-align: top;
-				table-layout: fixed;
-				overflow: hidden;
-			}
-			.comments-recommends-container, .comments-avatar-container {
-				width: 29px;
-				overflow: hidden;
-			}
-			.comments-meta, .comments-meta-response {
-				word-break: break-all;
-				padding-left: 12px;
-				line-height: 1.4em;
-			}
-			.comments-body {
-				width: cols($base-3, 8);
-				padding-right: $base-3 * 6;
-				p {
-					margin-bottom: 18px;
-				}
-			}
-			.comments-options {
-				margin: $base-3 * 2 0;
-			}
-			.comments-recommends-container {
-				position: absolute;
-				right: $base-3 / 1.5;
-
-			}
-			.comments-mobile {
-				display: none;
-			}
-			&.is-response {
-				.comments-body, .comments-table {
-					display: block;
-					width: cols($base-3, 8);
-					float: right;
-				}
-				.comments-table, .comments-recommends-container {
-					padding-top: $base-3 / 1.5;
-				}
-				.comments-avatar-container {
-					margin-left: -56px;
-				}
-				.comments-meta, .comments-meta-response {
-					padding-left: 0;
-				}
-				.comments-avatar-container {
-					float: left;
-				}
-			}
-		}
-		.comments-loading {
-			padding: $base-3 / 1.5;
-		}
-		.comments-view-more {
-			margin: $base-3 / 1.5 0;
-			padding-top: $base-3 / 1.5;
-		}
-		.comments-empty, .comments-failed {
-			font-size: $meta-size-3;
-			line-height: $meta-lead-3;
-			margin: $base-3 / 1.5 0;
-			padding-top: $base-3 / 1.5;
-		}
-	}
-	
-	@include mq($from: col3) {
-		margin-bottom: $base-4 / 1.5;
-		.comments-controls {
-			font-size: $meta-size-3;
-			line-height: $meta-lead-3;
-		}
-		.comments-block {
-			padding: $base-4 / 1.5;
-			font-size: $body-size-4;
-			line-height: 1.5em;
-			margin-top: $base-4;
-			min-height: 100px;
-			.comments-body, .comments-recommends-container, .comments-avatar-container, .comments-meta,  .comments-block.is-response .comments-meta-response {
-				display: table-cell;
-				vertical-align: top;
-				table-layout: fixed;
-			}
-			.comments-recommends-container, .comments-avatar-container {
-				width: 29px;
-				overflow: hidden;
-			}
-			.comments-meta, .comments-meta-response {
-				word-break: break-all;
-				padding-left: 12px;
-				line-height: 1.4em;
-			}
-			.comments-body {
-				width: cols($base-4, 11);
-				padding-right: $base-4 * 6;
-				padding-bottom: $base-4 * 1;
-				p {
-					margin-bottom: 18px;
-				}
-			}
-			.comments-options {
-				margin-top: $base-4 * 3;
-			}
-			.comments-recommends-container {
-				position: absolute;
-				right: $base-4 / 1.5;
-
-			}
-			.comments-mobile {
-				display: none;
-			}
-			&.is-response {
-				.comments-body, .comments-table {
-					display: block;
-					width: cols($base-4, 11);
-					float: right;
-				}
-				.comments-table, .comments-recommends-container {
-					padding-top: $base-4 / 1.5;
-				}
-				.comments-avatar-container {
-					margin-left: -56px;
-				}
-				.comments-meta, .comments-meta-response {
-					padding-left: 0;
-				}
-				.comments-avatar-container {
-					float: left;
-				}
-			}
-		}
-		.comments-loading {
-			padding: $base-4 / 1.5;
-		}
-		.comments-view-more {
-			margin: $base-4 / 1.5 0;
-			padding-top: $base-4 / 1.5;
-		}
-		.comments-empty, .comments-failed {
-			font-size: $meta-size-4;
-			line-height: $meta-lead-4;
-			margin: $base-4 / 1.5 0;
-			padding-top: $base-4 / 1.5;
-		}
-	}
-}
-
-// Module Specific
-
-#module-comments {
-	.comments-view-more {
-		font-weight: bold;
-		font-family: $agate-sans;
-		color: $news-pri;
-	}
-	@include mq($to: col1) {
-		.comments-view-more {
-			margin: 0 $base-1 / 1.5;
-			font-size: $body-size-1;
-			line-height: $body-lead-1;
-		}
-	}
-
-	@include mq(col1, col2) {
-		.comments-view-more {
-			margin: $base-2 / 1.5;
-			font-size: $body-size-2;
-			line-height: $body-lead-2;
-		}
-	}
-
-	@include mq(col2, col3) {
-		.comments-view-more {
-			margin: $base-3 / 1.5;
-			font-size: $body-size-3;
-			line-height: $body-lead-3;
-		}
-	}
-
-	@include mq($from: col3) {
-		.comments-view-more {
-			margin: $base-4 / 1.5;
-			font-size: $body-size-4;
-			line-height: $body-lead-4;
-		}
-	}
 }
 
 // Failure States
-.comments-0, .comments-has-failed {
+.comments-0,
+.comments-has-failed {
 	.comments-view-more {
 		display: none;
 	}
 }
 
-.comments-0, .comments-1, .comments-has-failed {
+.comments-0,
+.comments-1,
+.comments-has-failed {
 	.comments-sorter a {
 		color: $standfirst;
 	}
@@ -613,6 +113,20 @@
 		}
 		.icon-circle, a {
 			display: none !important;
+		}
+	}
+}
+
+// Module Specific
+#module-comments {
+	.comments-view-more {
+		color: $news-pri;
+		font-family: $agate-sans;
+		font-weight: bold;
+		@include body();
+		@include margin(0.75);
+		@include mq($to: col1) {
+			margin-top: 0;
 		}
 	}
 }

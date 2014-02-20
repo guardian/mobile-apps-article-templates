@@ -14,7 +14,6 @@ figure {
 		line-height: $meta-lead-1;
 		@include padding(0.5, 1, 1, 1);
 		border-bottom: 1px dotted $shadow;
-
 		@include mq(col2, col3) {
 			padding-right: cols($base-3, 3);
 		}
@@ -23,7 +22,7 @@ figure {
 		}
 	}
 
-	// Image (full width)
+	// Full width
 	&.figure-wide {
 		img {
 			width: 100%;
@@ -31,7 +30,7 @@ figure {
 		}
 	}
 
-	// Image (inline)
+	// Inline
 	&.figure-inline {
 		@include mq($to: col1) {
 			img {
@@ -50,22 +49,6 @@ figure {
 		}
 		@include mq($from: col3) {
 			padding-right: $base-4;
-		}
-	}
-
-	// TO-DO: Comment embeds – Usually found on pre-match football liveblogs
-
-	// Images, video and interactives within article body
-	.article__body &.figure-wide,
-	.article__body &.element-video,
-	.article__body &.element-interactive,
-	.article__body &.element-video-thumb {
-		@include margin(0, -1, 1.5, -1);
-		@include mq($to: col2) {
-			width: 109%;
-		}
-		@include mq($from: col2) {
-			width: 134%;
 		}
 	}
 }
