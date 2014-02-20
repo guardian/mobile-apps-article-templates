@@ -827,16 +827,84 @@ figure figcaption {
   @media all and (min-width: 56.25em) {
     figure figcaption {
       padding-right: 24.21053%; } }
-figure .element-image-inner {
+figure .element-image-inner,
+figure .element-video-inner {
   background-color: #f6f6f6;
   padding-bottom: 60%;
   position: relative; }
-  figure .element-image-inner img {
+  figure .element-image-inner img,
+  figure .element-video-inner img {
     position: absolute;
+    width: 100%;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0; }
+figure .element-video-inner {
+  padding-bottom: 56.25%; }
+  figure .element-video-inner .element-video__button {
+    position: absolute;
+    bottom: 0;
+    z-index: 2; }
+    @media all and (max-width: 18.75em) {
+      figure .element-video-inner .element-video__button {
+        padding: 0px 0px 12px 12px; } }
+    @media all and (min-width: 18.75em) and (max-width: 25em) {
+      figure .element-video-inner .element-video__button {
+        padding: 0px 0px 14px 14px; } }
+    @media all and (min-width: 25em) and (max-width: 28.115em) {
+      figure .element-video-inner .element-video__button {
+        padding: 0px 0px 18px 18px; } }
+    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      figure .element-video-inner .element-video__button {
+        padding: 0px 0px 12px 12px; } }
+    @media all and (min-width: 40.625em) and (max-width: 50em) {
+      figure .element-video-inner .element-video__button {
+        padding: 0px 0px 10px 10px; } }
+    @media all and (min-width: 50em) and (max-width: 56.24em) {
+      figure .element-video-inner .element-video__button {
+        padding: 0px 0px 12px 12px; } }
+    @media all and (min-width: 56.25em) and (max-width: 68.75em) {
+      figure .element-video-inner .element-video__button {
+        padding: 0px 0px 10px 10px; } }
+    @media all and (min-width: 68.75em) {
+      figure .element-video-inner .element-video__button {
+        padding: 0px 0px 12px 12px; } }
+    figure .element-video-inner .element-video__button .icon-circle {
+      background-color: #ffbb00;
+      color: #333333;
+      display: table-cell;
+      vertical-align: middle; }
+    figure .element-video-inner .element-video__button .element-video__button__duration {
+      color: #ffbb00;
+      font-family: "Agate Sans", sans-serif;
+      font-weight: bold;
+      display: table-cell;
+      vertical-align: middle; }
+      @media all and (max-width: 18.75em) {
+        figure .element-video-inner .element-video__button .element-video__button__duration {
+          padding: 0px 0px 0px 12px; } }
+      @media all and (min-width: 18.75em) and (max-width: 25em) {
+        figure .element-video-inner .element-video__button .element-video__button__duration {
+          padding: 0px 0px 0px 14px; } }
+      @media all and (min-width: 25em) and (max-width: 28.115em) {
+        figure .element-video-inner .element-video__button .element-video__button__duration {
+          padding: 0px 0px 0px 18px; } }
+      @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+        figure .element-video-inner .element-video__button .element-video__button__duration {
+          padding: 0px 0px 0px 12px; } }
+      @media all and (min-width: 40.625em) and (max-width: 50em) {
+        figure .element-video-inner .element-video__button .element-video__button__duration {
+          padding: 0px 0px 0px 10px; } }
+      @media all and (min-width: 50em) and (max-width: 56.24em) {
+        figure .element-video-inner .element-video__button .element-video__button__duration {
+          padding: 0px 0px 0px 12px; } }
+      @media all and (min-width: 56.25em) and (max-width: 68.75em) {
+        figure .element-video-inner .element-video__button .element-video__button__duration {
+          padding: 0px 0px 0px 10px; } }
+      @media all and (min-width: 68.75em) {
+        figure .element-video-inner .element-video__button .element-video__button__duration {
+          padding: 0px 0px 0px 12px; } }
 figure.figure-wide img {
   width: 100%;
   height: auto; }
@@ -859,7 +927,7 @@ figure.figure-wide img {
 figure.element-video {
   width: 100%;
   position: relative;
-  padding-bottom: 60%;
+  padding-bottom: 56.25%;
   overflow: hidden; }
   figure.element-video iframe, figure.element-video object, figure.element-video embed, figure.element-video video {
     width: 100%;
@@ -869,10 +937,16 @@ figure.element-video {
     position: absolute; }
   figure.element-video video {
     background-color: #000; }
+  @media all and (max-width: 40.615em) {
+    figure.element-video {
+      width: 100%;
+      padding-bottom: 61.4215%; } }
   @media all and (min-width: 40.625em) {
     figure.element-video {
       width: 100%;
-      padding-bottom: 79.8%; } }
+      padding-bottom: 75.375%; } }
+figure.element-video-thumb {
+  width: 100%; }
 figure.element-tweet blockquote {
   color: #999999;
   font-family: "Agate Sans", sans-serif;
@@ -948,31 +1022,34 @@ figure.element-witness {
     figure.element-witness .element-witness--date:before {
       content: "\00B7   "; }
 @media all and (max-width: 18.75em) {
-  .article__body figure.figure-wide, .article__body figure.element-video, .article__body figure.element-interactive {
+  .article__body figure.figure-wide, .article__body figure.element-video, .article__body figure.element-interactive, .article__body figure.element-video-thumb {
     margin: 0px -12px 18px -12px; } }
 @media all and (min-width: 18.75em) and (max-width: 25em) {
-  .article__body figure.figure-wide, .article__body figure.element-video, .article__body figure.element-interactive {
+  .article__body figure.figure-wide, .article__body figure.element-video, .article__body figure.element-interactive, .article__body figure.element-video-thumb {
     margin: 0px -14px 21px -14px; } }
 @media all and (min-width: 25em) and (max-width: 28.115em) {
-  .article__body figure.figure-wide, .article__body figure.element-video, .article__body figure.element-interactive {
+  .article__body figure.figure-wide, .article__body figure.element-video, .article__body figure.element-interactive, .article__body figure.element-video-thumb {
     margin: 0px -18px 27px -18px; } }
 @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-  .article__body figure.figure-wide, .article__body figure.element-video, .article__body figure.element-interactive {
+  .article__body figure.figure-wide, .article__body figure.element-video, .article__body figure.element-interactive, .article__body figure.element-video-thumb {
     margin: 0px -12px 18px -12px; } }
 @media all and (min-width: 40.625em) and (max-width: 50em) {
-  .article__body figure.figure-wide, .article__body figure.element-video, .article__body figure.element-interactive {
+  .article__body figure.figure-wide, .article__body figure.element-video, .article__body figure.element-interactive, .article__body figure.element-video-thumb {
     margin: 0px -10px 15px -10px; } }
 @media all and (min-width: 50em) and (max-width: 56.24em) {
-  .article__body figure.figure-wide, .article__body figure.element-video, .article__body figure.element-interactive {
+  .article__body figure.figure-wide, .article__body figure.element-video, .article__body figure.element-interactive, .article__body figure.element-video-thumb {
     margin: 0px -12px 18px -12px; } }
 @media all and (min-width: 56.25em) and (max-width: 68.75em) {
-  .article__body figure.figure-wide, .article__body figure.element-video, .article__body figure.element-interactive {
+  .article__body figure.figure-wide, .article__body figure.element-video, .article__body figure.element-interactive, .article__body figure.element-video-thumb {
     margin: 0px -10px 15px -10px; } }
 @media all and (min-width: 68.75em) {
-  .article__body figure.figure-wide, .article__body figure.element-video, .article__body figure.element-interactive {
+  .article__body figure.figure-wide, .article__body figure.element-video, .article__body figure.element-interactive, .article__body figure.element-video-thumb {
     margin: 0px -12px 18px -12px; } }
+@media all and (max-width: 40.615em) {
+  .article__body figure.figure-wide, .article__body figure.element-video, .article__body figure.element-interactive, .article__body figure.element-video-thumb {
+    width: 109%; } }
 @media all and (min-width: 40.625em) {
-  .article__body figure.figure-wide, .article__body figure.element-video, .article__body figure.element-interactive {
+  .article__body figure.figure-wide, .article__body figure.element-video, .article__body figure.element-interactive, .article__body figure.element-video-thumb {
     width: 134%; } }
 
 .article__alerts {
