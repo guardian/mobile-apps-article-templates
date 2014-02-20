@@ -14,30 +14,14 @@
 		}
 	}
 	
-	.gallery-thumbnails {
-		@include padding(1);
-		img {
-			vertical-align: bottom;
-		}
-	}
-	
 	.media-meta {
 		@include margin(1,1,0.5,1);
-		@include mq($from: col2) {
-			display: table;
-			margin: 0;
-		}
 	}
 	
 	.media-meta__description {
 		font-family: $egyptian-text;
 		color: $white;
 		@include margin(0,0,1,0);
-		@include mq($from: col2) {
-			padding: 12px 12px 24px 12px;
-			display: table-cell;
-		}
-		// Compensation if it includes p tags
 		p {
 			margin-bottom: 18px;
 		}
@@ -51,13 +35,6 @@
 		@include mq($to: col2) {
 			margin-top: 12px;
 		}
-		@include mq($from: col2) {
-			padding-top: 12px;
-			display: table-cell;
-			border-left: 1px dotted $standfirst;
-		}
-		@include rbase-3(4);
-		@include rbase-4(4);
 		.article__byline,
 		.media-meta__misc__timestamp,
 		.media-meta__misc__tags {
@@ -68,16 +45,6 @@
 			border-top: 1px dotted $standfirst;
 			&:empty {
 				display: none;
-			}
-			@include mq($from: col2) {
-				padding-left: 6px;
-				padding-right: 6px;
-			}
-		}
-		@include mq($from: col2) {
-			& > *:first-child {
-				border-top: none;
-				padding-top: 0px;
 			}
 		}
 		.article__byline a {

@@ -1,0 +1,42 @@
+#video {
+
+	.media-meta {
+		@include mq($from: col2) {
+			display: table;
+			margin: 0;
+		}
+	}
+
+	.media-meta__description {
+		@include mq($from: col2) {
+			padding: 12px 12px 24px 12px;
+			display: table-cell;
+		}
+	}
+	
+	.media-meta__misc {
+		@include mq($from: col2) {
+			padding-top: 12px;
+			display: table-cell;
+			border-left: 1px dotted $standfirst;
+		}
+		@include rbase-3(4);
+		@include rbase-4(4);
+		.article__byline,
+		.media-meta__misc__timestamp,
+		.media-meta__misc__tags {
+			@include mq($from: col2) {
+				padding-left: 6px;
+				padding-right: 6px;
+			}
+		}
+		& > *:first-child {
+			@include mq($from: col2) {
+				border-top: none;
+				padding-top: 0px;
+			}
+		}
+	}
+
+
+}
