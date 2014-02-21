@@ -3,17 +3,17 @@
 	function articleCommentsInserter(html) {
 		
        	if (! html) {
-	  		$(".comments-empty").show();
-	  		$(".comments-loading").hide();
+	  		$(".comments__empty").show();
+	  		$(".comments__loading").hide();
     	} else {
-    		$(".comments-loading").hide();
+    		$(".comments__loading").hide();
 		    $(html).appendTo("#comments");	
     	}
 	
 	};
 	
 	function articleCommentsFailed() {
-		$(".comments-failed").show();
-		$(".comments-loading").hide();
+		$(".comments__failed").show();
+		$(".comments__loading").hide();
 		$("#module-comments").addClass("comments-has-failed");
 	}
