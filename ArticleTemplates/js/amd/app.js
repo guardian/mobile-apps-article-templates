@@ -27,7 +27,7 @@ require([
     'bootstraps/article',
     'bootstraps/audio',
     'bootstraps/football',
-    'bootstraps/liveblog'
+    'bootstraps/liveblog',
     'modules/$'
 ], function (
     domReady,
@@ -35,7 +35,7 @@ require([
     Article,
     Audio,
     Football,
-    Liveblog
+    Liveblog,
     $
 ) {
     'use strict';
