@@ -27,14 +27,16 @@ require([
     'bootstraps/article',
     'bootstraps/audio',
     'bootstraps/football',
-    'bootstraps/liveblog'
+    'bootstraps/liveblog',
+    'modules/$'
 ], function (
     domReady,
     Common,
     Article,
     Audio,
     Football,
-    Liveblog
+    Liveblog,
+    $
 ) {
     'use strict';
 
@@ -63,6 +65,12 @@ require([
 
         if (config.contentType === 'football') {
             Football.init();
+
+            // Football liveblogs don't use the liveblog template,
+            // init liveblog template JS if required
+            if ($('.article__body').length > 0) {
+                Liveblog.init();
+            }
         }
     });
 

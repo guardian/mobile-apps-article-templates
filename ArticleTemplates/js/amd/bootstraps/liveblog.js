@@ -100,10 +100,10 @@ define([
         ready = function () {
             if (!this.initialised) {
                 this.initialised = true;
+                modules.setupGlobals();
                 window.liveblogTime();
                 modules.blockUpdates();
                 modules.liveMore();
-                modules.setupGlobals();
                 // console.info("Liveblog ready");
             }
         };
