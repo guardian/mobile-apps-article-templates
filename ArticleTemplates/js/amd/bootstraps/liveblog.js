@@ -20,7 +20,7 @@ define([
 
                     liveblogNewBlockDump = function () {
                         newBlockHtml = bonzo.create(newBlockHtml);
-                        $(newBlockHtml).hide().prependTo('.article__body').show().addClass('animated bounceIn');
+                        $(newBlockHtml).hide().prependTo('.article__body--liveblog').show().addClass('animated bounceIn');
                         window.articleImageSizer();
                         window.liveblogTime();
                         newBlockHtml = '';
