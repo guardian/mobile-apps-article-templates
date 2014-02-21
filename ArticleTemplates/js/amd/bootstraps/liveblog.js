@@ -49,7 +49,6 @@ define([
 
                 bean.on(window, 'scroll', function () {
                     if (liveblogStartPos.top > window.scrollY) {
-                    	console.log(liveblogStartPos);
                         liveblogNewBlockDump();
                     }
                 });
