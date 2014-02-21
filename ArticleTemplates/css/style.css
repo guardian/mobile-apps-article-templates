@@ -1857,7 +1857,8 @@ ul.tabs li.selected {
 .element .element-video-inner {
   background-color: #f6f6f6;
   padding-bottom: 60%;
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
   .element .element-image-inner img,
   .element .element-video-inner img {
     position: absolute;
@@ -3809,6 +3810,10 @@ figure.figure-wide img {
     #football .football-tabs-stats .football-fixtures .football-match .football-match-score {
       color: #676767;
       text-align: center; }
+    #football .football-tabs-stats .football-fixtures .football-match .football-match-home, #football .football-tabs-stats .football-fixtures .football-match .football-match-away {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
   #football .football-tabs-stats .football-table .football-table-entry {
     border-top: 1px solid #f6f6f6; }
     #football .football-tabs-stats .football-table .football-table-entry > div {
@@ -4977,8 +4982,7 @@ figure.figure-wide img {
       -webkit-order: 1;
       order: 1;
       position: relative;
-      z-index: 1;
-      overflow: hidden; }
+      z-index: 1; }
       #standard-article.features .article .article__header .article__image:after {
         content: "";
         background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.5) 100%);
