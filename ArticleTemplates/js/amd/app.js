@@ -27,7 +27,7 @@ require([
     'bootstraps/article',
     'bootstraps/audio',
     'bootstraps/football',
-    'bootstraps/liveblog'
+    'bootstraps/liveblog',
     'modules/$'
 ], function (
     domReady,
@@ -35,7 +35,7 @@ require([
     Article,
     Audio,
     Football,
-    Liveblog
+    Liveblog,
     $
 ) {
     'use strict';
@@ -68,7 +68,7 @@ require([
 
             // Football liveblogs don't use the liveblog template,
             // init liveblog template JS if required
-            if ($('.liveblog-body').length > 0) {
+            if ($('.article__body--liveblog').length > 0) {
                 Liveblog.init();
             }
         }
