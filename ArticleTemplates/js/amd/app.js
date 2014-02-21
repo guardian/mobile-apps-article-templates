@@ -68,7 +68,7 @@ require([
 
             // Football liveblogs don't use the liveblog template,
             // init liveblog template JS if required
-            if ($('.liveblog-body').length > 0) {
+            if ($('.article__body').length > 0) {
                 Liveblog.init();
             }
         }
