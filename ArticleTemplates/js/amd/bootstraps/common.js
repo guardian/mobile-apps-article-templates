@@ -60,11 +60,12 @@ define([
             },
             
             loadEmbeds: function() {
-	            // Boot Fenced Embeds
-		            require([fence], function(fence) {
-			            var node = document.querySelector('iframe.fenced');
-						fence.render(node);
-		            });
+                // Boot Fenced Embeds
+                require(['fence'], function(fence) {
+                    $("iframe.fenced").each(function(node) {
+                        fence.render(node);
+                    });
+                });
             },
 
             imageSizer: function () {
@@ -124,7 +125,7 @@ define([
             setupOfflineSwitch: function() {
                 // Function that allows templates to better handle offline, called by native code
                 window.offlineSwitch = function () {
-	                $(document.body).addClass("offline");
+                    $(document.body).addClass("offline");
                 }
             },
 
