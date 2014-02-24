@@ -17,28 +17,29 @@ define([
                     [homeTeam, $(".football-chart").attr("data-home")]
                 ],
 
-                    width = 250,
-                    height = 250,
-                    radius = Math.min(height, width) / 2,
+                width = 250,
+                height = 250,
+                radius = Math.min(height, width) / 2,
 
-                    arc = d3.svg.arc()
-                        .outerRadius(radius)
-                        .innerRadius(radius / 3),
+                arc = d3.svg.arc()
+                    .outerRadius(radius)
+                    .innerRadius(radius / 3),
 
-                    pie = d3.layout.pie()
-                        .sort(null)
-                        .value(function (d) {
-                            return d[1];
-                        }),
+                pie = d3.layout.pie()
+                    .sort(null)
+                    .value(function (d) {
+                        return d[1];
+                    }),
 
-                    // Init d3 chart
-                    vis = d3.select(".football-chart")
-                        .attr("height", height)
-                        .attr("width", width)
-                        .attr("preserveAspectRatio", "xMinYMin slice")
-                        .attr("viewBox", "0 0 250 250")
-                        .append("g")
-                        .attr("transform", "translate(" + width / 2 + "," + width / 2 + ")");
+                // Init d3 chart
+                vis = d3.select(".football-chart")
+                    .attr("height", height)
+                    .attr("width", width)
+                    .attr("preserveAspectRatio", "xMinYMin slice")
+                    .attr("viewBox", "0 0 250 250")
+                    .append("g")
+                    .attr("class", "football-chart__inner")
+                    .attr("transform", "translate(" + width / 2 + "," + width / 2 + ")");
 
                 // Add percentage symbol to center
                 vis.append("text")
@@ -49,39 +50,41 @@ define([
                 // Background
                 var backgroundData = [["null", 100]],
 
-                    backgroundarc = d3.svg.arc()
-                        .outerRadius(radius - 1)
-                        .innerRadius((radius / 3) + 1);
+                backgroundarc = d3.svg.arc()
+                    .outerRadius(radius - 1)
+                    .innerRadius((radius / 3) + 1);
 
                 vis.append("path")
-                        .data(pie(backgroundData))
-                        .attr("d", backgroundarc)
-                        .attr("fill", "#333333");
+                    .data(pie(backgroundData))
+                    .attr("d", backgroundarc)
+                    .attr("fill", "#333333");
 
                 // Draw Segements
                 var g = vis.selectAll(".arc")
-                        .data(pie(data))
-                        .enter().append("g")
-                        .attr("class", "arc");
+                    .data(pie(data))
+                    .enter().append("g")
+                    .attr("class", "arc");
 
                 g.append("path")
                     .attr("d", arc);
+                    
 
                 // Add Text Labels
-                var tblock = g.append("foreignObject")
-                    .attr("class", "foreignObject")
+                var tblock = vis.selectAll(".foreignObject")
+                	.data(pie(data))
+                	.enter().append("foreignObject")
+                	.attr("class", "foreignObject")
                     .attr("transform", function (d) {
                         d.innerRadius = 0;
                         d.outerRadius = radius;
                         var textpoint = arc.centroid(d);
-                        textpoint = [textpoint[0], textpoint[1] - 25];
+                        textpoint = [textpoint[0] - 35, textpoint[1] - 25];
                         return "translate(" + textpoint + ")";
                     })
-                    .attr("x", "-36")
                     .attr("width", 75)
                     .attr("height", 50)
                     .attr("text-anchor", "middle");
-
+					
                 tblock.append("xhtml:div")
                     .attr("class", "arc-team")
                     .attr("x", 0)

@@ -77,7 +77,7 @@ define([
                     window.liveblogTime();
                 };
                 window.liveblogTime = function () {
-                    if ($('.live-tag').length > 0) {
+                    if ($('.live-tag').length > 0 || $(".article__body--liveblog").hasClass("is-live")) {
                         relativeDates.init('p.block-time', 'title');
                     } else {
                         $('p.block-time').each(function (el) {
