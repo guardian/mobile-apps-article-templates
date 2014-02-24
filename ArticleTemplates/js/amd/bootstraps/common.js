@@ -2,6 +2,7 @@
 define([
     'bean',
     'bonzo',
+    'fence',
     'fastClick',
     'modules/ads',
     'modules/comments',
@@ -9,6 +10,7 @@ define([
 ], function (
     bean,
     bonzo,
+    fence,
     FastClick,
     Ads,
     Comments,
@@ -55,6 +57,14 @@ define([
                         interactive.boot(el, document.body);
                     });
                 });
+            },
+            
+            loadEmbeds: function() {
+	            // Boot Fenced Embeds
+		            require([fence], function(fence) {
+			            var node = document.querySelector('iframe.fenced');
+						fence.render(node);
+		            });
             },
 
             imageSizer: function () {
@@ -157,6 +167,7 @@ define([
                 modules.insertTags();
                 modules.loadAdverts(config);
                 modules.loadComments();
+                modules.loadEmbeds();
                 modules.loadInteractives();
                 modules.setupOfflineSwitch();
                 modules.setupAlertSwitch();
