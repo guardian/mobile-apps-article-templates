@@ -39,12 +39,6 @@
 		float: right;
 		vertical-align: middle;
 
-		& .module__header {
-			@include mq($to: col2) {
-				display: none;
-			}
-		}
-
 		a {
 			@include meta();
 			white-space: nowrap;
@@ -52,6 +46,14 @@
 			padding-right: 8px;
 			height: auto;
 			display: table-cell;
+		}
+	}
+
+	.module__header {
+		.module__action a {
+			@include mq($to: col2) {
+				display: none;
+			}
 		}
 	}
 }

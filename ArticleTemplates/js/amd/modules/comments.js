@@ -74,6 +74,16 @@ define([
                         $(html).appendTo($('#comments'));
                     }
                 };
+                window.commentsInserter = function (html) {
+                    if (!html) {
+                        $('.discussion__empty').show();
+                        $('.discussion__loading').hide();
+                    } else {
+                        html = bonzo.create(html);
+                        $(html).appendTo($('#comments'));
+                    }
+                    $('.discussion__loading').appendTo('#comments');
+                };
                 window.articleCommentsFailed = function () {
                     $('.discussion__failed').show();
                     $('.discussion__loading').hide();
@@ -86,16 +96,6 @@ define([
                 };
                 window.commentsEnd = function () {
                     $('.discussion__loading').remove();
-                };
-                window.commentsInserter = function (html) {
-                    if (!html) {
-                        $('.discussion__empty').show();
-                        $('.discussion__loading').hide();
-                    } else {
-                        html = bonzo.create(html);
-                        $(html).appendTo($('.article__body--comments'));
-                    }
-                    $('.discussion__loading').appendTo('.article__body--comments');
                 };
                 window.commentsRecommendIncrease = function (id, number) {
                     var target = '#' + id + ' .discussion__recommend';
