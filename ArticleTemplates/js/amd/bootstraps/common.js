@@ -83,6 +83,7 @@ define([
                 };
                 window.applyNativeFunctionCall('articleTagInserter');
             },
+            
 
             setupAlertSwitch: function () {
                 // Global function to switch follow alerts, called by native code
@@ -108,6 +109,15 @@ define([
                     $(document.body).removeClass(current).addClass(replacement);
                 };
             },
+            
+
+            setupOfflineSwitch: function() {
+                // Function that allows templates to better handle offline, called by native code
+                window.offlineSwitch = function () {
+	                $(document.body).addClass("offline");
+                }
+            },
+
 
             showTabs: function () {
                 // Set up tab events, show only first child
@@ -148,6 +158,7 @@ define([
                 modules.loadAdverts(config);
                 modules.loadComments();
                 modules.loadInteractives();
+                modules.setupOfflineSwitch();
                 modules.setupAlertSwitch();
                 modules.setupFontSizing();
                 modules.showTabs();

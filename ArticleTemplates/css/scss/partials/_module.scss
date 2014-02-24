@@ -1,12 +1,13 @@
 .module {
 	@include margin(0, 0, 2, 0);
+	border-top: 2px solid $headline;
 
 	.module__header,
 	.module__footer {
 		overflow: auto;
 		font-family: $agate-sans;
 		font-weight: bold;
-		@include padding(1, 0, 1, 0);
+		@include padding(1, 0, 2, 0);
 		display: table;
 		width: 100%;
 
@@ -16,14 +17,18 @@
 
 		& > div {
 			display: table-cell;
-			vertical-align: middle;
 		}
 	}
-
+	
 	.module__title {
-		font-family: $egyptian-display;
-		font-weight: 600;
-		@include body(1.5);
+		vertical-align: top;
+
+		.module__title__label {
+			font-family: $egyptian-display;
+			font-weight: 600;
+			@include body(1.5);
+			margin-top: -2px;
+		}
 
 		.comments-count {
 			color: $meta;
@@ -32,6 +37,7 @@
 
 	.module__action {
 		float: right;
+		vertical-align: middle;
 
 		& .module__header {
 			@include mq($to: col2) {

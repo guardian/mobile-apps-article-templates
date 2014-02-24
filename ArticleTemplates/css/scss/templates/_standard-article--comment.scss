@@ -10,7 +10,7 @@
 
 #standard-article.comment {
 	.article {
-		border-top-color: $comment-sec;
+		border-top-color: $comment-pri;
 		background-color: $comment-bg;
 
 		.article__header {
@@ -36,8 +36,9 @@
 
 			.article__standfirst {
 				-webkit-order: 5;
+				color: $comment-sec;
 				order: 5;
-				@include margin(1, 0, 1, 0);
+				@include margin(0.25, 0, 1, 0);
 			}
 
 			.article__meta {
