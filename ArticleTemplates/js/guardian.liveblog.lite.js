@@ -2,7 +2,7 @@
 // Summary Truncator
 $(window).load(function() {
 
-	$(".live-summary-body").dotdotdot({
+	$(".live-summary").dotdotdot({
 		after: ".live-summary-more"
 	});
 

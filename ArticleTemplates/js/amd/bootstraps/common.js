@@ -2,6 +2,7 @@
 define([
     'bean',
     'bonzo',
+    'fence',
     'fastClick',
     'modules/ads',
     'modules/comments',
@@ -9,6 +10,7 @@ define([
 ], function (
     bean,
     bonzo,
+    fence,
     FastClick,
     Ads,
     Comments,
@@ -53,6 +55,15 @@ define([
                         // We pass the standard context and config here, but also inject the
                         // mediator so the external interactive can respond to our events.
                         interactive.boot(el, document.body);
+                    });
+                });
+            },
+            
+            loadEmbeds: function() {
+                // Boot Fenced Embeds
+                require(['fence'], function(fence) {
+                    $("iframe.fenced").each(function(node) {
+                        fence.render(node);
                     });
                 });
             },
@@ -114,7 +125,7 @@ define([
             setupOfflineSwitch: function() {
                 // Function that allows templates to better handle offline, called by native code
                 window.offlineSwitch = function () {
-	                $(document.body).addClass("offline");
+                    $(document.body).addClass("offline");
                 }
             },
 
@@ -157,6 +168,7 @@ define([
                 modules.insertTags();
                 modules.loadAdverts(config);
                 modules.loadComments();
+                modules.loadEmbeds();
                 modules.loadInteractives();
                 modules.setupOfflineSwitch();
                 modules.setupAlertSwitch();
