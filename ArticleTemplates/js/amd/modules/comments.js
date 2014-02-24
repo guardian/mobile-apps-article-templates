@@ -19,7 +19,7 @@ define([
                         if (block.hasClass('is-response')) {
                             counter += 1;
                             if (counter === 4) {
-                                $('.discussion__body', block.previous()).append("<div class='comments__view-more'><span class='icon'>&#xe002;</span> View more replies</div>");
+                                $('.discussion__container', block.previous()).after("<div class='discussion__view-more'><span class='icon'>&#xe002;</span> View more replies</div>");
                             }
                             if (counter > 3) {
                                 block.hide().addClass('comments-hidden');
@@ -30,7 +30,7 @@ define([
                         block.addClass('checked');
                     }
 
-                    bean.on(el, 'click', function () {
+                    bean.on(el, 'click', '.discussion__container', function () {
                         block = $(el);
                         if (block.hasClass('visible')) {
                             if (block.hasClass('comments-open') === false) {
@@ -42,7 +42,7 @@ define([
                         }
                     });
 
-                    bean.on(el, 'click', '.comments__view-more', function () {
+                    bean.on(el, 'click', '.discussion__view-more', function () {
                         var viewMore = $(el);
                         $(el).hide();
                         $('.discussion').each(function () {
@@ -54,8 +54,8 @@ define([
                         });
                     });
 
-                    bean.on(el, 'click', 'a, .comments__view-more, .discussion__reply, .discussion__recommend', function (event) {
-                        if (this.tagName.toLowerCase() === 'a' || $(this).hasClass('comments__view-more discussion__reply discussion__recommend')) {
+                    bean.on(el, 'click', 'a, .discussion__view-more, .discussion__reply, .discussion__recommend', function (event) {
+                        if (this.tagName.toLowerCase() === 'a' || $(this).hasClass('discussion__view-more discussion__reply discussion__recommend')) {
                             event.stopPropagation();
                         }
                     });
@@ -66,36 +66,36 @@ define([
                 // Global function to handle comments, called by native code
                 window.articleCommentsInserter = function (html) {
                     if (!html) {
-                        $('.comments__empty').show();
-                        $('.comments__loading').hide();
+                        $('.discussion__empty').show();
+                        $('.discussion__loading').hide();
                     } else {
-                        $('.comments__loading').hide();
+                        $('.discussion__loading').hide();
                         html = bonzo.create(html);
                         $(html).appendTo($('#comments'));
                     }
                 };
                 window.articleCommentsFailed = function () {
-                    $('.comments__failed').show();
-                    $('.comments__loading').hide();
+                    $('.discussion__failed').show();
+                    $('.discussion__loading').hide();
                     $('#module-comments').addClass('comments-has-failed');
                 };
                 window.commentsFailed = function () {
-                    $('.comments__loading').hide();
-                    $('.comments__failed').show();
+                    $('.discussion__loading').hide();
+                    $('.discussion__failed').show();
                     $('#comments').addClass('comments-has-failed');
                 };
                 window.commentsEnd = function () {
-                    $('.comments__loading').remove();
+                    $('.discussion__loading').remove();
                 };
                 window.commentsInserter = function (html) {
                     if (!html) {
-                        $('.comments__empty').show();
-                        $('.comments__loading').hide();
+                        $('.discussion__empty').show();
+                        $('.discussion__loading').hide();
                     } else {
                         html = bonzo.create(html);
                         $(html).appendTo($('.article__body--comments'));
                     }
-                    $('.comments__loading').appendTo('.article__body--comments');
+                    $('.discussion__loading').appendTo('.article__body--comments');
                 };
                 window.commentsRecommendIncrease = function (id, number) {
                     var target = '#' + id + ' .discussion__recommend';

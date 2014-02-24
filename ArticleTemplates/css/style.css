@@ -1539,381 +1539,931 @@ ul.tabs li.selected {
   .module--related .card:nth-of-type(4) {
     display: none; } }
 
-.discussion {
+.discussion,
+.discussion__empty,
+.discussion__failed {
   font-family: "Agate Sans", sans-serif;
-  border-top: 1px solid #333333;
   background-color: white;
+  border-top: 1px solid #333333;
   overflow: hidden;
-  position: relative; }
+  box-shadow: 0 -10px 0 0 #f6f6f6, 0 -12px 0 0 #dcdad5; }
   @media all and (max-width: 28.115em) {
-    .discussion {
+    .discussion,
+    .discussion__empty,
+    .discussion__failed {
       font-size: 1.6rem;
       line-height: 2.4rem; } }
   @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    .discussion {
+    .discussion,
+    .discussion__empty,
+    .discussion__failed {
       font-size: 1.6rem;
       line-height: 2.4rem; } }
   @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    .discussion {
+    .discussion,
+    .discussion__empty,
+    .discussion__failed {
       font-size: 1.8rem;
       line-height: 2.6rem; } }
   @media all and (min-width: 56.25em) {
-    .discussion {
+    .discussion,
+    .discussion__empty,
+    .discussion__failed {
       font-size: 1.8rem;
       line-height: 2.6rem; } }
   @media all and (max-width: 18.75em) {
-    .discussion {
+    .discussion,
+    .discussion__empty,
+    .discussion__failed {
       margin: 12px 0px 0px 0px; } }
   @media all and (min-width: 18.75em) and (max-width: 25em) {
-    .discussion {
+    .discussion,
+    .discussion__empty,
+    .discussion__failed {
       margin: 14px 0px 0px 0px; } }
   @media all and (min-width: 25em) and (max-width: 28.115em) {
-    .discussion {
+    .discussion,
+    .discussion__empty,
+    .discussion__failed {
       margin: 18px 0px 0px 0px; } }
   @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    .discussion {
+    .discussion,
+    .discussion__empty,
+    .discussion__failed {
       margin: 12px 0px 0px 0px; } }
   @media all and (min-width: 40.625em) and (max-width: 50em) {
-    .discussion {
+    .discussion,
+    .discussion__empty,
+    .discussion__failed {
       margin: 10px 0px 0px 0px; } }
   @media all and (min-width: 50em) and (max-width: 56.24em) {
-    .discussion {
+    .discussion,
+    .discussion__empty,
+    .discussion__failed {
       margin: 12px 0px 0px 0px; } }
   @media all and (min-width: 56.25em) and (max-width: 68.75em) {
-    .discussion {
+    .discussion,
+    .discussion__empty,
+    .discussion__failed {
       margin: 10px 0px 0px 0px; } }
   @media all and (min-width: 68.75em) {
-    .discussion {
+    .discussion,
+    .discussion__empty,
+    .discussion__failed {
       margin: 12px 0px 0px 0px; } }
   @media all and (max-width: 18.75em) {
-    .discussion {
-      padding: 0px 9px 18px 9px; } }
+    .discussion,
+    .discussion__empty,
+    .discussion__failed {
+      padding: 9px 9px 9px 9px; } }
   @media all and (min-width: 18.75em) and (max-width: 25em) {
-    .discussion {
-      padding: 0px 10.5px 21px 10.5px; } }
+    .discussion,
+    .discussion__empty,
+    .discussion__failed {
+      padding: 10.5px 10.5px 10.5px 10.5px; } }
   @media all and (min-width: 25em) and (max-width: 28.115em) {
-    .discussion {
-      padding: 0px 13.5px 27px 13.5px; } }
+    .discussion,
+    .discussion__empty,
+    .discussion__failed {
+      padding: 13.5px 13.5px 13.5px 13.5px; } }
   @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    .discussion {
-      padding: 0px 9px 18px 9px; } }
+    .discussion,
+    .discussion__empty,
+    .discussion__failed {
+      padding: 9px 9px 9px 9px; } }
   @media all and (min-width: 40.625em) and (max-width: 50em) {
-    .discussion {
-      padding: 0px 7.5px 15px 7.5px; } }
+    .discussion,
+    .discussion__empty,
+    .discussion__failed {
+      padding: 7.5px 7.5px 7.5px 7.5px; } }
   @media all and (min-width: 50em) and (max-width: 56.24em) {
-    .discussion {
-      padding: 0px 9px 18px 9px; } }
+    .discussion,
+    .discussion__empty,
+    .discussion__failed {
+      padding: 9px 9px 9px 9px; } }
   @media all and (min-width: 56.25em) and (max-width: 68.75em) {
-    .discussion {
-      padding: 0px 7.5px 15px 7.5px; } }
+    .discussion,
+    .discussion__empty,
+    .discussion__failed {
+      padding: 7.5px 7.5px 7.5px 7.5px; } }
   @media all and (min-width: 68.75em) {
-    .discussion {
-      padding: 0px 9px 18px 9px; } }
+    .discussion,
+    .discussion__empty,
+    .discussion__failed {
+      padding: 9px 9px 9px 9px; } }
   @media all and (max-width: 28.115em) {
-    .discussion {
-      padding: 2.89855%;
+    .discussion,
+    .discussion__empty,
+    .discussion__failed {
       margin: 2.89855% 2.89855% 0 2.89855%;
       display: block; } }
-  @media all and (max-width: 18.75em) {
-    .discussion .discussion__header {
-      padding: 9px 0px 18px 9px; } }
-  @media all and (min-width: 18.75em) and (max-width: 25em) {
-    .discussion .discussion__header {
-      padding: 10.5px 0px 21px 10.5px; } }
-  @media all and (min-width: 25em) and (max-width: 28.115em) {
-    .discussion .discussion__header {
-      padding: 13.5px 0px 27px 13.5px; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    .discussion .discussion__header {
-      padding: 9px 0px 18px 9px; } }
-  @media all and (min-width: 40.625em) and (max-width: 50em) {
-    .discussion .discussion__header {
-      padding: 7.5px 0px 15px 7.5px; } }
-  @media all and (min-width: 50em) and (max-width: 56.24em) {
-    .discussion .discussion__header {
-      padding: 9px 0px 18px 9px; } }
-  @media all and (min-width: 56.25em) and (max-width: 68.75em) {
-    .discussion .discussion__header {
-      padding: 7.5px 0px 15px 7.5px; } }
-  @media all and (min-width: 68.75em) {
-    .discussion .discussion__header {
-      padding: 9px 0px 18px 9px; } }
-  @media all and (min-width: 40.625em) {
-    .discussion .discussion__header {
-      position: absolute;
-      top: 0;
-      left: 0; } }
-  .discussion .discussion__body {
-    word-break: break-word;
-    word-wrap: break-word; }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      .discussion .discussion__body {
-        margin-right: 7.04225%;
-        margin-left: 32.39437%; } }
-    @media all and (min-width: 56.25em) {
-      .discussion .discussion__body {
-        margin-right: 5.26316%;
-        margin-left: 30.52632%; } }
-  .discussion .discussion__avatar {
-    height: 44px;
-    width: 44px;
-    border-radius: 100%;
-    overflow: hidden; }
-    .discussion .discussion__avatar img {
-      width: 100%;
-      height: 100%; }
-  .discussion .discussion__meta {
+  .discussion .discussion__container,
+  .discussion__empty .discussion__container,
+  .discussion__failed .discussion__container {
+    min-height: 64px;
+    position: relative; }
+  .discussion .discussion__header,
+  .discussion__empty .discussion__header,
+  .discussion__failed .discussion__header {
     overflow: auto;
     word-break: break-all;
     word-wrap: break-word; }
     @media all and (max-width: 28.115em) {
-      .discussion .discussion__meta {
+      .discussion .discussion__header,
+      .discussion__empty .discussion__header,
+      .discussion__failed .discussion__header {
         font-size: 1.4rem;
         line-height: 2rem; } }
     @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      .discussion .discussion__meta {
+      .discussion .discussion__header,
+      .discussion__empty .discussion__header,
+      .discussion__failed .discussion__header {
         font-size: 1.4rem;
         line-height: 2rem; } }
     @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      .discussion .discussion__meta {
+      .discussion .discussion__header,
+      .discussion__empty .discussion__header,
+      .discussion__failed .discussion__header {
         font-size: 1.6rem;
         line-height: 2.2rem; } }
     @media all and (min-width: 56.25em) {
-      .discussion .discussion__meta {
+      .discussion .discussion__header,
+      .discussion__empty .discussion__header,
+      .discussion__failed .discussion__header {
         font-size: 1.6rem;
         line-height: 2.2rem; } }
+    @media all and (max-width: 18.75em) {
+      .discussion .discussion__header,
+      .discussion__empty .discussion__header,
+      .discussion__failed .discussion__header {
+        padding: 3px 0px 9px 0px; } }
+    @media all and (min-width: 18.75em) and (max-width: 25em) {
+      .discussion .discussion__header,
+      .discussion__empty .discussion__header,
+      .discussion__failed .discussion__header {
+        padding: 3.5px 0px 10.5px 0px; } }
+    @media all and (min-width: 25em) and (max-width: 28.115em) {
+      .discussion .discussion__header,
+      .discussion__empty .discussion__header,
+      .discussion__failed .discussion__header {
+        padding: 4.5px 0px 13.5px 0px; } }
+    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      .discussion .discussion__header,
+      .discussion__empty .discussion__header,
+      .discussion__failed .discussion__header {
+        padding: 3px 0px 9px 0px; } }
+    @media all and (min-width: 40.625em) and (max-width: 50em) {
+      .discussion .discussion__header,
+      .discussion__empty .discussion__header,
+      .discussion__failed .discussion__header {
+        padding: 2.5px 0px 7.5px 0px; } }
+    @media all and (min-width: 50em) and (max-width: 56.24em) {
+      .discussion .discussion__header,
+      .discussion__empty .discussion__header,
+      .discussion__failed .discussion__header {
+        padding: 3px 0px 9px 0px; } }
+    @media all and (min-width: 56.25em) and (max-width: 68.75em) {
+      .discussion .discussion__header,
+      .discussion__empty .discussion__header,
+      .discussion__failed .discussion__header {
+        padding: 2.5px 0px 7.5px 0px; } }
+    @media all and (min-width: 68.75em) {
+      .discussion .discussion__header,
+      .discussion__empty .discussion__header,
+      .discussion__failed .discussion__header {
+        padding: 3px 0px 9px 0px; } }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      .discussion .discussion__header,
+      .discussion__empty .discussion__header,
+      .discussion__failed .discussion__header {
+        width: 32.39437%;
+        float: left; } }
+    @media all and (min-width: 56.25em) {
+      .discussion .discussion__header,
+      .discussion__empty .discussion__header,
+      .discussion__failed .discussion__header {
+        width: 30.52632%;
+        float: left; } }
+  .discussion .discussion__body,
+  .discussion__empty .discussion__body,
+  .discussion__failed .discussion__body {
+    word-break: break-word;
+    word-wrap: break-word; }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      .discussion .discussion__body,
+      .discussion__empty .discussion__body,
+      .discussion__failed .discussion__body {
+        margin-right: 7.04225%;
+        margin-left: 32.39437%; } }
+    @media all and (min-width: 56.25em) {
+      .discussion .discussion__body,
+      .discussion__empty .discussion__body,
+      .discussion__failed .discussion__body {
+        margin-right: 5.26316%;
+        margin-left: 30.52632%; } }
+  .discussion .discussion__avatar,
+  .discussion__empty .discussion__avatar,
+  .discussion__failed .discussion__avatar {
+    margin-right: 8px;
+    border-radius: 100%;
+    height: 44px;
+    width: 44px;
+    float: left;
+    overflow: hidden; }
+    .discussion .discussion__avatar img,
+    .discussion__empty .discussion__avatar img,
+    .discussion__failed .discussion__avatar img {
+      width: 100%;
+      height: 100%; }
   .discussion .discussion__role,
-  .discussion .discussion__username {
+  .discussion .discussion__username,
+  .discussion__empty .discussion__role,
+  .discussion__empty .discussion__username,
+  .discussion__failed .discussion__role,
+  .discussion__failed .discussion__username {
     display: block; }
     @media all and (max-width: 40.615em) {
       .discussion .discussion__role,
-      .discussion .discussion__username {
+      .discussion .discussion__username,
+      .discussion__empty .discussion__role,
+      .discussion__empty .discussion__username,
+      .discussion__failed .discussion__role,
+      .discussion__failed .discussion__username {
         display: inline; } }
-  .discussion .discussion__username {
+  .discussion .discussion__username,
+  .discussion__empty .discussion__username,
+  .discussion__failed .discussion__username {
     color: #333333;
     font-weight: bold; }
-  .discussion .discussion__responseto {
+  .discussion .discussion__responseto,
+  .discussion__empty .discussion__responseto,
+  .discussion__failed .discussion__responseto {
     font-weight: bold;
     display: none; }
-  .discussion .discussion__timestamp {
+  .discussion .discussion__timestamp,
+  .discussion__empty .discussion__timestamp,
+  .discussion__failed .discussion__timestamp {
     color: #999999;
+    font-size: 1.4rem;
     display: block; }
-  .discussion .discussion__recommend {
+  .discussion .discussion__recommend,
+  .discussion__empty .discussion__recommend,
+  .discussion__failed .discussion__recommend {
     text-align: center;
+    width: auto;
     position: absolute;
     display: block;
     top: 0;
     right: 0; }
     @media all and (max-width: 28.115em) {
-      .discussion .discussion__recommend {
+      .discussion .discussion__recommend,
+      .discussion__empty .discussion__recommend,
+      .discussion__failed .discussion__recommend {
         font-size: 1.4rem;
         line-height: 2rem; } }
     @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      .discussion .discussion__recommend {
+      .discussion .discussion__recommend,
+      .discussion__empty .discussion__recommend,
+      .discussion__failed .discussion__recommend {
         font-size: 1.4rem;
         line-height: 2rem; } }
     @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      .discussion .discussion__recommend {
+      .discussion .discussion__recommend,
+      .discussion__empty .discussion__recommend,
+      .discussion__failed .discussion__recommend {
         font-size: 1.6rem;
         line-height: 2.2rem; } }
     @media all and (min-width: 56.25em) {
-      .discussion .discussion__recommend {
+      .discussion .discussion__recommend,
+      .discussion__empty .discussion__recommend,
+      .discussion__failed .discussion__recommend {
         font-size: 1.6rem;
         line-height: 2.2rem; } }
-    @media all and (max-width: 18.75em) {
-      .discussion .discussion__recommend {
-        margin: 9px 9px 9px 9px; } }
-    @media all and (min-width: 18.75em) and (max-width: 25em) {
-      .discussion .discussion__recommend {
-        margin: 10.5px 10.5px 10.5px 10.5px; } }
-    @media all and (min-width: 25em) and (max-width: 28.115em) {
-      .discussion .discussion__recommend {
-        margin: 13.5px 13.5px 13.5px 13.5px; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      .discussion .discussion__recommend {
-        margin: 9px 9px 9px 9px; } }
-    @media all and (min-width: 40.625em) and (max-width: 50em) {
-      .discussion .discussion__recommend {
-        margin: 7.5px 7.5px 7.5px 7.5px; } }
-    @media all and (min-width: 50em) and (max-width: 56.24em) {
-      .discussion .discussion__recommend {
-        margin: 9px 9px 9px 9px; } }
-    @media all and (min-width: 56.25em) and (max-width: 68.75em) {
-      .discussion .discussion__recommend {
-        margin: 7.5px 7.5px 7.5px 7.5px; } }
-    @media all and (min-width: 68.75em) {
-      .discussion .discussion__recommend {
-        margin: 9px 9px 9px 9px; } }
     .discussion .discussion__recommend .icon-circle,
-    .discussion .discussion__recommend span {
-      -webkit-transition: 0.2s all ease-in; }
-    .discussion .discussion__recommend .icon-circle .icon {
+    .discussion__empty .discussion__recommend .icon-circle,
+    .discussion__failed .discussion__recommend .icon-circle {
+      display: inline-block;
       font-size: 14px; }
-    .discussion .discussion__recommend.increase {
-      font-weight: bold; }
-      .discussion .discussion__recommend.increase .icon-circle {
-        color: white;
-        border-color: #4bc6df;
-        background-color: #4bc6df !important; }
-    @media all and (max-width: 28.115em) {
-      .discussion .discussion__recommend {
-        width: 54px; }
-        .discussion .discussion__recommend .icon-circle {
+      @media all and (max-width: 40.615em) {
+        .discussion .discussion__recommend .icon-circle,
+        .discussion__empty .discussion__recommend .icon-circle,
+        .discussion__failed .discussion__recommend .icon-circle {
           float: left; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      .discussion .discussion__recommend {
-        width: 60px; }
-        .discussion .discussion__recommend .icon-circle {
-          float: left; } }
-  .discussion .discussion__options {
-    overflow: auto;
+    .discussion .discussion__recommend .icon-circle,
+    .discussion .discussion__recommend span,
+    .discussion__empty .discussion__recommend .icon-circle,
+    .discussion__empty .discussion__recommend span,
+    .discussion__failed .discussion__recommend .icon-circle,
+    .discussion__failed .discussion__recommend span {
+      -webkit-transition: 0.2s all ease-in; }
+    .discussion .discussion__recommend .increase .icon-circle,
+    .discussion__empty .discussion__recommend .increase .icon-circle,
+    .discussion__failed .discussion__recommend .increase .icon-circle {
+      color: white;
+      border-color: #4bc6df;
+      background-color: #4bc6df !important; }
+  .discussion .discussion__recommend__count,
+  .discussion__empty .discussion__recommend__count,
+  .discussion__failed .discussion__recommend__count {
+    color: #999999;
+    font-size: 1.4rem;
+    margin-top: 5px;
+    display: block; }
+    @media all and (max-width: 40.615em) {
+      .discussion .discussion__recommend__count,
+      .discussion__empty .discussion__recommend__count,
+      .discussion__failed .discussion__recommend__count {
+        margin-left: 8px;
+        float: right; } }
+  .discussion .discussion__options,
+  .discussion__empty .discussion__options,
+  .discussion__failed .discussion__options {
+    background-color: white;
+    overflow: hidden;
     display: none; }
     @media all and (max-width: 28.115em) {
-      .discussion .discussion__options {
+      .discussion .discussion__options,
+      .discussion__empty .discussion__options,
+      .discussion__failed .discussion__options {
         font-size: 1.4rem;
         line-height: 2rem; } }
     @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      .discussion .discussion__options {
+      .discussion .discussion__options,
+      .discussion__empty .discussion__options,
+      .discussion__failed .discussion__options {
         font-size: 1.4rem;
         line-height: 2rem; } }
     @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      .discussion .discussion__options {
+      .discussion .discussion__options,
+      .discussion__empty .discussion__options,
+      .discussion__failed .discussion__options {
         font-size: 1.6rem;
         line-height: 2.2rem; } }
     @media all and (min-width: 56.25em) {
-      .discussion .discussion__options {
+      .discussion .discussion__options,
+      .discussion__empty .discussion__options,
+      .discussion__failed .discussion__options {
         font-size: 1.6rem;
         line-height: 2.2rem; } }
     @media all and (max-width: 18.75em) {
-      .discussion .discussion__options {
-        padding: 9px 0px 0px 0px; } }
+      .discussion .discussion__options,
+      .discussion__empty .discussion__options,
+      .discussion__failed .discussion__options {
+        padding: 9px 0px 9px 0px; } }
     @media all and (min-width: 18.75em) and (max-width: 25em) {
-      .discussion .discussion__options {
-        padding: 10.5px 0px 0px 0px; } }
+      .discussion .discussion__options,
+      .discussion__empty .discussion__options,
+      .discussion__failed .discussion__options {
+        padding: 10.5px 0px 10.5px 0px; } }
     @media all and (min-width: 25em) and (max-width: 28.115em) {
-      .discussion .discussion__options {
-        padding: 13.5px 0px 0px 0px; } }
+      .discussion .discussion__options,
+      .discussion__empty .discussion__options,
+      .discussion__failed .discussion__options {
+        padding: 13.5px 0px 13.5px 0px; } }
     @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      .discussion .discussion__options {
-        padding: 9px 0px 0px 0px; } }
+      .discussion .discussion__options,
+      .discussion__empty .discussion__options,
+      .discussion__failed .discussion__options {
+        padding: 9px 0px 9px 0px; } }
     @media all and (min-width: 40.625em) and (max-width: 50em) {
-      .discussion .discussion__options {
-        padding: 7.5px 0px 0px 0px; } }
+      .discussion .discussion__options,
+      .discussion__empty .discussion__options,
+      .discussion__failed .discussion__options {
+        padding: 7.5px 0px 7.5px 0px; } }
     @media all and (min-width: 50em) and (max-width: 56.24em) {
-      .discussion .discussion__options {
-        padding: 9px 0px 0px 0px; } }
+      .discussion .discussion__options,
+      .discussion__empty .discussion__options,
+      .discussion__failed .discussion__options {
+        padding: 9px 0px 9px 0px; } }
     @media all and (min-width: 56.25em) and (max-width: 68.75em) {
-      .discussion .discussion__options {
-        padding: 7.5px 0px 0px 0px; } }
+      .discussion .discussion__options,
+      .discussion__empty .discussion__options,
+      .discussion__failed .discussion__options {
+        padding: 7.5px 0px 7.5px 0px; } }
     @media all and (min-width: 68.75em) {
-      .discussion .discussion__options {
-        padding: 9px 0px 0px 0px; } }
-    .discussion .discussion__options .icon {
-      display: inline-block; }
-    .discussion .discussion__options .discussion__reply {
+      .discussion .discussion__options,
+      .discussion__empty .discussion__options,
+      .discussion__failed .discussion__options {
+        padding: 9px 0px 9px 0px; } }
+    .discussion .discussion__options .discussion__reply,
+    .discussion__empty .discussion__options .discussion__reply,
+    .discussion__failed .discussion__options .discussion__reply {
       font-weight: bold;
-      float: left; }
-    .discussion .discussion__options .discussion__report {
+      padding-left: 32px;
+      float: left;
+      position: relative; }
+      .discussion .discussion__options .discussion__reply .icon,
+      .discussion__empty .discussion__options .discussion__reply .icon,
+      .discussion__failed .discussion__options .discussion__reply .icon {
+        position: absolute;
+        left: 0;
+        top: -2px; }
+    .discussion .discussion__options .discussion__report,
+    .discussion__empty .discussion__options .discussion__report,
+    .discussion__failed .discussion__options .discussion__report {
       float: right; }
-  .discussion.is-response {
-    margin-top: 0;
-    border-top: none; }
+  .discussion .discussion__view-more,
+  .discussion__empty .discussion__view-more,
+  .discussion__failed .discussion__view-more {
+    font-weight: bold;
+    border-top: 1px dotted #dcdad5; }
     @media all and (max-width: 18.75em) {
-      .discussion.is-response {
-        padding: 0px 9px 48px 9px; } }
+      .discussion .discussion__view-more,
+      .discussion__empty .discussion__view-more,
+      .discussion__failed .discussion__view-more {
+        margin: 6px 0px 0px 0px; } }
     @media all and (min-width: 18.75em) and (max-width: 25em) {
-      .discussion.is-response {
-        padding: 0px 10.5px 56px 10.5px; } }
+      .discussion .discussion__view-more,
+      .discussion__empty .discussion__view-more,
+      .discussion__failed .discussion__view-more {
+        margin: 7px 0px 0px 0px; } }
     @media all and (min-width: 25em) and (max-width: 28.115em) {
-      .discussion.is-response {
-        padding: 0px 13.5px 72px 13.5px; } }
+      .discussion .discussion__view-more,
+      .discussion__empty .discussion__view-more,
+      .discussion__failed .discussion__view-more {
+        margin: 9px 0px 0px 0px; } }
     @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      .discussion.is-response {
-        padding: 0px 9px 48px 9px; } }
+      .discussion .discussion__view-more,
+      .discussion__empty .discussion__view-more,
+      .discussion__failed .discussion__view-more {
+        margin: 6px 0px 0px 0px; } }
     @media all and (min-width: 40.625em) and (max-width: 50em) {
-      .discussion.is-response {
-        padding: 0px 7.5px 40px 7.5px; } }
+      .discussion .discussion__view-more,
+      .discussion__empty .discussion__view-more,
+      .discussion__failed .discussion__view-more {
+        margin: 5px 0px 0px 0px; } }
     @media all and (min-width: 50em) and (max-width: 56.24em) {
-      .discussion.is-response {
-        padding: 0px 9px 48px 9px; } }
+      .discussion .discussion__view-more,
+      .discussion__empty .discussion__view-more,
+      .discussion__failed .discussion__view-more {
+        margin: 6px 0px 0px 0px; } }
     @media all and (min-width: 56.25em) and (max-width: 68.75em) {
-      .discussion.is-response {
-        padding: 0px 7.5px 40px 7.5px; } }
+      .discussion .discussion__view-more,
+      .discussion__empty .discussion__view-more,
+      .discussion__failed .discussion__view-more {
+        margin: 5px 0px 0px 0px; } }
     @media all and (min-width: 68.75em) {
-      .discussion.is-response {
-        padding: 0px 9px 48px 9px; } }
-    .discussion.is-response .discussion__header {
+      .discussion .discussion__view-more,
+      .discussion__empty .discussion__view-more,
+      .discussion__failed .discussion__view-more {
+        margin: 6px 0px 0px 0px; } }
+    @media all and (max-width: 18.75em) {
+      .discussion .discussion__view-more,
+      .discussion__empty .discussion__view-more,
+      .discussion__failed .discussion__view-more {
+        padding: 9px 0px 12px 0px; } }
+    @media all and (min-width: 18.75em) and (max-width: 25em) {
+      .discussion .discussion__view-more,
+      .discussion__empty .discussion__view-more,
+      .discussion__failed .discussion__view-more {
+        padding: 10.5px 0px 14px 0px; } }
+    @media all and (min-width: 25em) and (max-width: 28.115em) {
+      .discussion .discussion__view-more,
+      .discussion__empty .discussion__view-more,
+      .discussion__failed .discussion__view-more {
+        padding: 13.5px 0px 18px 0px; } }
+    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      .discussion .discussion__view-more,
+      .discussion__empty .discussion__view-more,
+      .discussion__failed .discussion__view-more {
+        padding: 9px 0px 12px 0px; } }
+    @media all and (min-width: 40.625em) and (max-width: 50em) {
+      .discussion .discussion__view-more,
+      .discussion__empty .discussion__view-more,
+      .discussion__failed .discussion__view-more {
+        padding: 7.5px 0px 10px 0px; } }
+    @media all and (min-width: 50em) and (max-width: 56.24em) {
+      .discussion .discussion__view-more,
+      .discussion__empty .discussion__view-more,
+      .discussion__failed .discussion__view-more {
+        padding: 9px 0px 12px 0px; } }
+    @media all and (min-width: 56.25em) and (max-width: 68.75em) {
+      .discussion .discussion__view-more,
+      .discussion__empty .discussion__view-more,
+      .discussion__failed .discussion__view-more {
+        padding: 7.5px 0px 10px 0px; } }
+    @media all and (min-width: 68.75em) {
+      .discussion .discussion__view-more,
+      .discussion__empty .discussion__view-more,
+      .discussion__failed .discussion__view-more {
+        padding: 9px 0px 12px 0px; } }
+    @media all and (max-width: 40.615em) {
+      .discussion .discussion__view-more,
+      .discussion__empty .discussion__view-more,
+      .discussion__failed .discussion__view-more {
+        margin-left: 52px; } }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      .discussion .discussion__view-more,
+      .discussion__empty .discussion__view-more,
+      .discussion__failed .discussion__view-more {
+        margin-left: 32.39437%; } }
+    @media all and (min-width: 56.25em) {
+      .discussion .discussion__view-more,
+      .discussion__empty .discussion__view-more,
+      .discussion__failed .discussion__view-more {
+        margin-left: 30.52632%; } }
+    .discussion .discussion__view-more:hover,
+    .discussion__empty .discussion__view-more:hover,
+    .discussion__failed .discussion__view-more:hover {
+      background-color: red; }
+  .discussion.is-response,
+  .discussion__empty.is-response,
+  .discussion__failed.is-response {
+    box-shadow: none;
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0; }
+    @media all and (max-width: 18.75em) {
+      .discussion.is-response .discussion__container,
+      .discussion__empty.is-response .discussion__container,
+      .discussion__failed.is-response .discussion__container {
+        padding: 0px 0px 36px 0px; } }
+    @media all and (min-width: 18.75em) and (max-width: 25em) {
+      .discussion.is-response .discussion__container,
+      .discussion__empty.is-response .discussion__container,
+      .discussion__failed.is-response .discussion__container {
+        padding: 0px 0px 42px 0px; } }
+    @media all and (min-width: 25em) and (max-width: 28.115em) {
+      .discussion.is-response .discussion__container,
+      .discussion__empty.is-response .discussion__container,
+      .discussion__failed.is-response .discussion__container {
+        padding: 0px 0px 54px 0px; } }
+    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      .discussion.is-response .discussion__container,
+      .discussion__empty.is-response .discussion__container,
+      .discussion__failed.is-response .discussion__container {
+        padding: 0px 0px 36px 0px; } }
+    @media all and (min-width: 40.625em) and (max-width: 50em) {
+      .discussion.is-response .discussion__container,
+      .discussion__empty.is-response .discussion__container,
+      .discussion__failed.is-response .discussion__container {
+        padding: 0px 0px 30px 0px; } }
+    @media all and (min-width: 50em) and (max-width: 56.24em) {
+      .discussion.is-response .discussion__container,
+      .discussion__empty.is-response .discussion__container,
+      .discussion__failed.is-response .discussion__container {
+        padding: 0px 0px 36px 0px; } }
+    @media all and (min-width: 56.25em) and (max-width: 68.75em) {
+      .discussion.is-response .discussion__container,
+      .discussion__empty.is-response .discussion__container,
+      .discussion__failed.is-response .discussion__container {
+        padding: 0px 0px 30px 0px; } }
+    @media all and (min-width: 68.75em) {
+      .discussion.is-response .discussion__container,
+      .discussion__empty.is-response .discussion__container,
+      .discussion__failed.is-response .discussion__container {
+        padding: 0px 0px 36px 0px; } }
+    .discussion.is-response .discussion__header,
+    .discussion__empty.is-response .discussion__header,
+    .discussion__failed.is-response .discussion__header {
       border-top: #dcdad5 1px dotted;
-      position: static;
-      padding-left: 0; }
-      @media all and (max-width: 28.115em) {
-        .discussion.is-response .discussion__header {
-          margin-left: 15.21739%; } }
+      padding-left: 0;
+      width: auto;
+      float: none;
+      position: static; }
+      @media all and (max-width: 18.75em) {
+        .discussion.is-response .discussion__header,
+        .discussion__empty.is-response .discussion__header,
+        .discussion__failed.is-response .discussion__header {
+          padding: 9px 0px 6px 0px; } }
+      @media all and (min-width: 18.75em) and (max-width: 25em) {
+        .discussion.is-response .discussion__header,
+        .discussion__empty.is-response .discussion__header,
+        .discussion__failed.is-response .discussion__header {
+          padding: 10.5px 0px 7px 0px; } }
+      @media all and (min-width: 25em) and (max-width: 28.115em) {
+        .discussion.is-response .discussion__header,
+        .discussion__empty.is-response .discussion__header,
+        .discussion__failed.is-response .discussion__header {
+          padding: 13.5px 0px 9px 0px; } }
       @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-        .discussion.is-response .discussion__header {
-          margin-left: 10.6383%; } }
+        .discussion.is-response .discussion__header,
+        .discussion__empty.is-response .discussion__header,
+        .discussion__failed.is-response .discussion__header {
+          padding: 9px 0px 6px 0px; } }
+      @media all and (min-width: 40.625em) and (max-width: 50em) {
+        .discussion.is-response .discussion__header,
+        .discussion__empty.is-response .discussion__header,
+        .discussion__failed.is-response .discussion__header {
+          padding: 7.5px 0px 5px 0px; } }
+      @media all and (min-width: 50em) and (max-width: 56.24em) {
+        .discussion.is-response .discussion__header,
+        .discussion__empty.is-response .discussion__header,
+        .discussion__failed.is-response .discussion__header {
+          padding: 9px 0px 6px 0px; } }
+      @media all and (min-width: 56.25em) and (max-width: 68.75em) {
+        .discussion.is-response .discussion__header,
+        .discussion__empty.is-response .discussion__header,
+        .discussion__failed.is-response .discussion__header {
+          padding: 7.5px 0px 5px 0px; } }
+      @media all and (min-width: 68.75em) {
+        .discussion.is-response .discussion__header,
+        .discussion__empty.is-response .discussion__header,
+        .discussion__failed.is-response .discussion__header {
+          padding: 9px 0px 6px 0px; } }
+      @media all and (max-width: 40.615em) {
+        .discussion.is-response .discussion__header,
+        .discussion__empty.is-response .discussion__header,
+        .discussion__failed.is-response .discussion__header {
+          margin-left: 52px;
+          padding-right: 64px; } }
       @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-        .discussion.is-response .discussion__header {
+        .discussion.is-response .discussion__header,
+        .discussion__empty.is-response .discussion__header,
+        .discussion__failed.is-response .discussion__header {
           margin-left: 32.39437%; } }
       @media all and (min-width: 56.25em) {
-        .discussion.is-response .discussion__header {
+        .discussion.is-response .discussion__header,
+        .discussion__empty.is-response .discussion__header,
+        .discussion__failed.is-response .discussion__header {
           margin-left: 30.52632%; } }
-    .discussion.is-response .discussion__avatar {
+    .discussion.is-response .discussion__body,
+    .discussion__empty.is-response .discussion__body,
+    .discussion__failed.is-response .discussion__body {
+      color: #676767; }
+      @media all and (max-width: 40.615em) {
+        .discussion.is-response .discussion__body,
+        .discussion__empty.is-response .discussion__body,
+        .discussion__failed.is-response .discussion__body {
+          margin-left: 52px; } }
+    .discussion.is-response .discussion__avatar,
+    .discussion__empty.is-response .discussion__avatar,
+    .discussion__failed.is-response .discussion__avatar {
       display: none; }
-    .discussion.is-response .discussion__username {
-      display: inline; }
-    .discussion.is-response .discussion__timestamp {
+    .discussion.is-response .discussion__username,
+    .discussion__empty.is-response .discussion__username,
+    .discussion__failed.is-response .discussion__username {
+      display: inline-block; }
+    .discussion.is-response .discussion__timestamp,
+    .discussion__empty.is-response .discussion__timestamp,
+    .discussion__failed.is-response .discussion__timestamp {
       position: absolute;
       bottom: 0; }
       @media all and (max-width: 18.75em) {
-        .discussion.is-response .discussion__timestamp {
-          padding: 0px 0px 12px 0px; } }
+        .discussion.is-response .discussion__timestamp,
+        .discussion__empty.is-response .discussion__timestamp,
+        .discussion__failed.is-response .discussion__timestamp {
+          margin: 0px 0px 9px 0px; } }
       @media all and (min-width: 18.75em) and (max-width: 25em) {
-        .discussion.is-response .discussion__timestamp {
-          padding: 0px 0px 14px 0px; } }
+        .discussion.is-response .discussion__timestamp,
+        .discussion__empty.is-response .discussion__timestamp,
+        .discussion__failed.is-response .discussion__timestamp {
+          margin: 0px 0px 10.5px 0px; } }
       @media all and (min-width: 25em) and (max-width: 28.115em) {
-        .discussion.is-response .discussion__timestamp {
-          padding: 0px 0px 18px 0px; } }
+        .discussion.is-response .discussion__timestamp,
+        .discussion__empty.is-response .discussion__timestamp,
+        .discussion__failed.is-response .discussion__timestamp {
+          margin: 0px 0px 13.5px 0px; } }
       @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-        .discussion.is-response .discussion__timestamp {
-          padding: 0px 0px 12px 0px; } }
+        .discussion.is-response .discussion__timestamp,
+        .discussion__empty.is-response .discussion__timestamp,
+        .discussion__failed.is-response .discussion__timestamp {
+          margin: 0px 0px 9px 0px; } }
       @media all and (min-width: 40.625em) and (max-width: 50em) {
-        .discussion.is-response .discussion__timestamp {
-          padding: 0px 0px 10px 0px; } }
+        .discussion.is-response .discussion__timestamp,
+        .discussion__empty.is-response .discussion__timestamp,
+        .discussion__failed.is-response .discussion__timestamp {
+          margin: 0px 0px 7.5px 0px; } }
       @media all and (min-width: 50em) and (max-width: 56.24em) {
-        .discussion.is-response .discussion__timestamp {
-          padding: 0px 0px 12px 0px; } }
+        .discussion.is-response .discussion__timestamp,
+        .discussion__empty.is-response .discussion__timestamp,
+        .discussion__failed.is-response .discussion__timestamp {
+          margin: 0px 0px 9px 0px; } }
       @media all and (min-width: 56.25em) and (max-width: 68.75em) {
-        .discussion.is-response .discussion__timestamp {
-          padding: 0px 0px 10px 0px; } }
+        .discussion.is-response .discussion__timestamp,
+        .discussion__empty.is-response .discussion__timestamp,
+        .discussion__failed.is-response .discussion__timestamp {
+          margin: 0px 0px 7.5px 0px; } }
       @media all and (min-width: 68.75em) {
-        .discussion.is-response .discussion__timestamp {
-          padding: 0px 0px 12px 0px; } }
+        .discussion.is-response .discussion__timestamp,
+        .discussion__empty.is-response .discussion__timestamp,
+        .discussion__failed.is-response .discussion__timestamp {
+          margin: 0px 0px 9px 0px; } }
     .discussion.is-response .discussion__responseto,
-    .discussion.is-response .discussion__username {
-      display: inline-block; }
-    .discussion.is-response .discussion__responseto {
-      display: inline;
+    .discussion__empty.is-response .discussion__responseto,
+    .discussion__failed.is-response .discussion__responseto {
+      display: inline-block;
+      white-space: nowrap;
       color: #676767; }
-      .discussion.is-response .discussion__responseto .icon {
+      .discussion.is-response .discussion__responseto .icon,
+      .discussion__empty.is-response .discussion__responseto .icon,
+      .discussion__failed.is-response .discussion__responseto .icon {
         display: inline;
         color: #999999; }
-    .discussion.is-response .discussion__body {
-      color: #676767; }
-      @media all and (max-width: 28.115em) {
-        .discussion.is-response .discussion__body {
-          margin-left: 15.21739%; } }
-      @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-        .discussion.is-response .discussion__body {
-          margin-left: 10.6383%; } }
-  .discussion.is-response-hidden {
+    @media all and (max-width: 18.75em) {
+      .discussion.is-response .discussion__recommend,
+      .discussion__empty.is-response .discussion__recommend,
+      .discussion__failed.is-response .discussion__recommend {
+        margin: 9px 0px 0px 0px; } }
+    @media all and (min-width: 18.75em) and (max-width: 25em) {
+      .discussion.is-response .discussion__recommend,
+      .discussion__empty.is-response .discussion__recommend,
+      .discussion__failed.is-response .discussion__recommend {
+        margin: 10.5px 0px 0px 0px; } }
+    @media all and (min-width: 25em) and (max-width: 28.115em) {
+      .discussion.is-response .discussion__recommend,
+      .discussion__empty.is-response .discussion__recommend,
+      .discussion__failed.is-response .discussion__recommend {
+        margin: 13.5px 0px 0px 0px; } }
+    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      .discussion.is-response .discussion__recommend,
+      .discussion__empty.is-response .discussion__recommend,
+      .discussion__failed.is-response .discussion__recommend {
+        margin: 9px 0px 0px 0px; } }
+    @media all and (min-width: 40.625em) and (max-width: 50em) {
+      .discussion.is-response .discussion__recommend,
+      .discussion__empty.is-response .discussion__recommend,
+      .discussion__failed.is-response .discussion__recommend {
+        margin: 7.5px 0px 0px 0px; } }
+    @media all and (min-width: 50em) and (max-width: 56.24em) {
+      .discussion.is-response .discussion__recommend,
+      .discussion__empty.is-response .discussion__recommend,
+      .discussion__failed.is-response .discussion__recommend {
+        margin: 9px 0px 0px 0px; } }
+    @media all and (min-width: 56.25em) and (max-width: 68.75em) {
+      .discussion.is-response .discussion__recommend,
+      .discussion__empty.is-response .discussion__recommend,
+      .discussion__failed.is-response .discussion__recommend {
+        margin: 7.5px 0px 0px 0px; } }
+    @media all and (min-width: 68.75em) {
+      .discussion.is-response .discussion__recommend,
+      .discussion__empty.is-response .discussion__recommend,
+      .discussion__failed.is-response .discussion__recommend {
+        margin: 9px 0px 0px 0px; } }
+    .discussion.is-response .discussion__recommend__count,
+    .discussion__empty.is-response .discussion__recommend__count,
+    .discussion__failed.is-response .discussion__recommend__count {
+      margin-top: 2px; }
+    .discussion.is-response .discussion__options,
+    .discussion__empty.is-response .discussion__options,
+    .discussion__failed.is-response .discussion__options {
+      position: absolute;
+      bottom: 0;
+      right: 0; }
+      @media all and (max-width: 40.615em) {
+        .discussion.is-response .discussion__options,
+        .discussion__empty.is-response .discussion__options,
+        .discussion__failed.is-response .discussion__options {
+          left: 52px; } }
+      @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+        .discussion.is-response .discussion__options,
+        .discussion__empty.is-response .discussion__options,
+        .discussion__failed.is-response .discussion__options {
+          left: 32.39437%; } }
+      @media all and (min-width: 56.25em) {
+        .discussion.is-response .discussion__options,
+        .discussion__empty.is-response .discussion__options,
+        .discussion__failed.is-response .discussion__options {
+          left: 30.52632%; } }
+  .discussion.is-response-hidden,
+  .discussion__empty.is-response-hidden,
+  .discussion__failed.is-response-hidden {
     display: none; }
-  .discussion.blocked {
+  .discussion.blocked,
+  .discussion__empty.blocked,
+  .discussion__failed.blocked {
     color: #999999; }
-    .discussion.blocked .discussion__meta {
+    .discussion.blocked .discussion__header,
+    .discussion__empty.blocked .discussion__header,
+    .discussion__failed.blocked .discussion__header {
       opacity: 0.5; }
-    .discussion.blocked .discussion__recommend {
+    .discussion.blocked .discussion__recommend,
+    .discussion__empty.blocked .discussion__recommend,
+    .discussion__failed.blocked .discussion__recommend {
       display: none; }
+
+.discussion:nth-child(3) {
+  box-shadow: none; }
+
+@media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  .discussion__view-more,
+  .discussion__empty,
+  .discussion__failed {
+    padding-left: 32.39437%; } }
+@media all and (min-width: 56.25em) {
+  .discussion__view-more,
+  .discussion__empty,
+  .discussion__failed {
+    padding-left: 30.52632%; } }
+
+.discussion__empty,
+.discussion__failed {
+  display: none;
+  color: #676767;
+  box-shadow: none;
+  border-top: 1px solid #333333; }
+  @media all and (max-width: 28.115em) {
+    .discussion__empty,
+    .discussion__failed {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    .discussion__empty,
+    .discussion__failed {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    .discussion__empty,
+    .discussion__failed {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  @media all and (min-width: 56.25em) {
+    .discussion__empty,
+    .discussion__failed {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+
+.discussion__loading {
+  text-align: center;
+  box-shadow: 0 -10px 0 0 #f6f6f6, 0 -12px 0 0 #dcdad5; }
+  @media all and (max-width: 18.75em) {
+    .discussion__loading {
+      padding: 9px 9px 9px 9px; } }
+  @media all and (min-width: 18.75em) and (max-width: 25em) {
+    .discussion__loading {
+      padding: 10.5px 10.5px 10.5px 10.5px; } }
+  @media all and (min-width: 25em) and (max-width: 28.115em) {
+    .discussion__loading {
+      padding: 13.5px 13.5px 13.5px 13.5px; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    .discussion__loading {
+      padding: 9px 9px 9px 9px; } }
+  @media all and (min-width: 40.625em) and (max-width: 50em) {
+    .discussion__loading {
+      padding: 7.5px 7.5px 7.5px 7.5px; } }
+  @media all and (min-width: 50em) and (max-width: 56.24em) {
+    .discussion__loading {
+      padding: 9px 9px 9px 9px; } }
+  @media all and (min-width: 56.25em) and (max-width: 68.75em) {
+    .discussion__loading {
+      padding: 7.5px 7.5px 7.5px 7.5px; } }
+  @media all and (min-width: 68.75em) {
+    .discussion__loading {
+      padding: 9px 9px 9px 9px; } }
+  .discussion__loading img {
+    width: 44px;
+    height: 44px; }
+
+.comments-0 .discussion__view-more,
+.comments-has-failed .discussion__view-more {
+  display: none; }
+
+.comments-0 .article__controls__sorter a,
+.comments-1 .article__controls__sorter a,
+.comments-has-failed .article__controls__sorter a {
+  color: #676767; }
+
+.comments-closed .article__controls__action .comments-closed-label {
+  display: block !important; }
+.comments-closed .article__controls__action .icon-circle, .comments-closed .article__controls__action a {
+  display: none !important; }
+
+#module-comments .discussion__view-more {
+  font-family: "Agate Sans", sans-serif;
+  font-weight: bold; }
+  @media all and (max-width: 28.115em) {
+    #module-comments .discussion__view-more {
+      font-size: 1.6rem;
+      line-height: 2.4rem; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    #module-comments .discussion__view-more {
+      font-size: 1.6rem;
+      line-height: 2.4rem; } }
+  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    #module-comments .discussion__view-more {
+      font-size: 1.8rem;
+      line-height: 2.6rem; } }
+  @media all and (min-width: 56.25em) {
+    #module-comments .discussion__view-more {
+      font-size: 1.8rem;
+      line-height: 2.6rem; } }
+  @media all and (max-width: 18.75em) {
+    #module-comments .discussion__view-more {
+      margin: 9px 9px 9px 9px; } }
+  @media all and (min-width: 18.75em) and (max-width: 25em) {
+    #module-comments .discussion__view-more {
+      margin: 10.5px 10.5px 10.5px 10.5px; } }
+  @media all and (min-width: 25em) and (max-width: 28.115em) {
+    #module-comments .discussion__view-more {
+      margin: 13.5px 13.5px 13.5px 13.5px; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    #module-comments .discussion__view-more {
+      margin: 9px 9px 9px 9px; } }
+  @media all and (min-width: 40.625em) and (max-width: 50em) {
+    #module-comments .discussion__view-more {
+      margin: 7.5px 7.5px 7.5px 7.5px; } }
+  @media all and (min-width: 50em) and (max-width: 56.24em) {
+    #module-comments .discussion__view-more {
+      margin: 9px 9px 9px 9px; } }
+  @media all and (min-width: 56.25em) and (max-width: 68.75em) {
+    #module-comments .discussion__view-more {
+      margin: 7.5px 7.5px 7.5px 7.5px; } }
+  @media all and (min-width: 68.75em) {
+    #module-comments .discussion__view-more {
+      margin: 9px 9px 9px 9px; } }
+  @media all and (max-width: 28.115em) {
+    #module-comments .discussion__view-more {
+      margin-top: 0; } }
 
 .element.element-video {
   width: 100%;
@@ -2165,8 +2715,7 @@ figure.figure-wide img {
   width: 44px;
   background-color: #005689;
   border-radius: 100%;
-  display: table-cell;
-  vertical-align: middle; }
+  display: table-cell; }
   .icon-circle.icon-circle-secondary {
     background-color: transparent !important;
     border: 1px solid #dcdad5;
@@ -2917,208 +3466,6 @@ figure.figure-wide img {
   #comments .article__controls__action .comments-closed-label {
     display: none;
     color: #676767; }
-#comments .comments__view-more,
-#comments .comments__empty,
-#comments .comments__failed {
-  font-family: "Agate Sans", sans-serif;
-  font-weight: bold; }
-  @media all and (max-width: 18.75em) {
-    #comments .comments__view-more,
-    #comments .comments__empty,
-    #comments .comments__failed {
-      margin: 9px 0px 9px 0px; } }
-  @media all and (min-width: 18.75em) and (max-width: 25em) {
-    #comments .comments__view-more,
-    #comments .comments__empty,
-    #comments .comments__failed {
-      margin: 10.5px 0px 10.5px 0px; } }
-  @media all and (min-width: 25em) and (max-width: 28.115em) {
-    #comments .comments__view-more,
-    #comments .comments__empty,
-    #comments .comments__failed {
-      margin: 13.5px 0px 13.5px 0px; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    #comments .comments__view-more,
-    #comments .comments__empty,
-    #comments .comments__failed {
-      margin: 9px 0px 9px 0px; } }
-  @media all and (min-width: 40.625em) and (max-width: 50em) {
-    #comments .comments__view-more,
-    #comments .comments__empty,
-    #comments .comments__failed {
-      margin: 7.5px 0px 7.5px 0px; } }
-  @media all and (min-width: 50em) and (max-width: 56.24em) {
-    #comments .comments__view-more,
-    #comments .comments__empty,
-    #comments .comments__failed {
-      margin: 9px 0px 9px 0px; } }
-  @media all and (min-width: 56.25em) and (max-width: 68.75em) {
-    #comments .comments__view-more,
-    #comments .comments__empty,
-    #comments .comments__failed {
-      margin: 7.5px 0px 7.5px 0px; } }
-  @media all and (min-width: 68.75em) {
-    #comments .comments__view-more,
-    #comments .comments__empty,
-    #comments .comments__failed {
-      margin: 9px 0px 9px 0px; } }
-  @media all and (max-width: 18.75em) {
-    #comments .comments__view-more,
-    #comments .comments__empty,
-    #comments .comments__failed {
-      padding: 9px 0px 0px 0px; } }
-  @media all and (min-width: 18.75em) and (max-width: 25em) {
-    #comments .comments__view-more,
-    #comments .comments__empty,
-    #comments .comments__failed {
-      padding: 10.5px 0px 0px 0px; } }
-  @media all and (min-width: 25em) and (max-width: 28.115em) {
-    #comments .comments__view-more,
-    #comments .comments__empty,
-    #comments .comments__failed {
-      padding: 13.5px 0px 0px 0px; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    #comments .comments__view-more,
-    #comments .comments__empty,
-    #comments .comments__failed {
-      padding: 9px 0px 0px 0px; } }
-  @media all and (min-width: 40.625em) and (max-width: 50em) {
-    #comments .comments__view-more,
-    #comments .comments__empty,
-    #comments .comments__failed {
-      padding: 7.5px 0px 0px 0px; } }
-  @media all and (min-width: 50em) and (max-width: 56.24em) {
-    #comments .comments__view-more,
-    #comments .comments__empty,
-    #comments .comments__failed {
-      padding: 9px 0px 0px 0px; } }
-  @media all and (min-width: 56.25em) and (max-width: 68.75em) {
-    #comments .comments__view-more,
-    #comments .comments__empty,
-    #comments .comments__failed {
-      padding: 7.5px 0px 0px 0px; } }
-  @media all and (min-width: 68.75em) {
-    #comments .comments__view-more,
-    #comments .comments__empty,
-    #comments .comments__failed {
-      padding: 9px 0px 0px 0px; } }
-#comments .comments__view-more {
-  border-top: 1px dotted #dcdad5; }
-#comments .comments__empty,
-#comments .comments__failed {
-  display: none;
-  color: #676767;
-  border-top: 1px solid #333333; }
-  @media all and (max-width: 28.115em) {
-    #comments .comments__empty,
-    #comments .comments__failed {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    #comments .comments__empty,
-    #comments .comments__failed {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    #comments .comments__empty,
-    #comments .comments__failed {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-  @media all and (min-width: 56.25em) {
-    #comments .comments__empty,
-    #comments .comments__failed {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-#comments .comments__loading {
-  text-align: center; }
-  @media all and (max-width: 18.75em) {
-    #comments .comments__loading {
-      padding: 9px 9px 9px 9px; } }
-  @media all and (min-width: 18.75em) and (max-width: 25em) {
-    #comments .comments__loading {
-      padding: 10.5px 10.5px 10.5px 10.5px; } }
-  @media all and (min-width: 25em) and (max-width: 28.115em) {
-    #comments .comments__loading {
-      padding: 13.5px 13.5px 13.5px 13.5px; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    #comments .comments__loading {
-      padding: 9px 9px 9px 9px; } }
-  @media all and (min-width: 40.625em) and (max-width: 50em) {
-    #comments .comments__loading {
-      padding: 7.5px 7.5px 7.5px 7.5px; } }
-  @media all and (min-width: 50em) and (max-width: 56.24em) {
-    #comments .comments__loading {
-      padding: 9px 9px 9px 9px; } }
-  @media all and (min-width: 56.25em) and (max-width: 68.75em) {
-    #comments .comments__loading {
-      padding: 7.5px 7.5px 7.5px 7.5px; } }
-  @media all and (min-width: 68.75em) {
-    #comments .comments__loading {
-      padding: 9px 9px 9px 9px; } }
-  #comments .comments__loading img {
-    width: 44px;
-    height: 44px; }
-
-.comments-0 .comments__view-more,
-.comments-has-failed .comments__view-more {
-  display: none; }
-
-.comments-0 .article__controls__sorter a,
-.comments-1 .article__controls__sorter a,
-.comments-has-failed .article__controls__sorter a {
-  color: #676767; }
-
-.comments-closed .article__controls__action .comments-closed-label {
-  display: block !important; }
-.comments-closed .article__controls__action .icon-circle, .comments-closed .article__controls__action a {
-  display: none !important; }
-
-#module-comments .comments__view-more {
-  font-family: "Agate Sans", sans-serif;
-  font-weight: bold; }
-  @media all and (max-width: 28.115em) {
-    #module-comments .comments__view-more {
-      font-size: 1.6rem;
-      line-height: 2.4rem; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    #module-comments .comments__view-more {
-      font-size: 1.6rem;
-      line-height: 2.4rem; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    #module-comments .comments__view-more {
-      font-size: 1.8rem;
-      line-height: 2.6rem; } }
-  @media all and (min-width: 56.25em) {
-    #module-comments .comments__view-more {
-      font-size: 1.8rem;
-      line-height: 2.6rem; } }
-  @media all and (max-width: 18.75em) {
-    #module-comments .comments__view-more {
-      margin: 9px 9px 9px 9px; } }
-  @media all and (min-width: 18.75em) and (max-width: 25em) {
-    #module-comments .comments__view-more {
-      margin: 10.5px 10.5px 10.5px 10.5px; } }
-  @media all and (min-width: 25em) and (max-width: 28.115em) {
-    #module-comments .comments__view-more {
-      margin: 13.5px 13.5px 13.5px 13.5px; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    #module-comments .comments__view-more {
-      margin: 9px 9px 9px 9px; } }
-  @media all and (min-width: 40.625em) and (max-width: 50em) {
-    #module-comments .comments__view-more {
-      margin: 7.5px 7.5px 7.5px 7.5px; } }
-  @media all and (min-width: 50em) and (max-width: 56.24em) {
-    #module-comments .comments__view-more {
-      margin: 9px 9px 9px 9px; } }
-  @media all and (min-width: 56.25em) and (max-width: 68.75em) {
-    #module-comments .comments__view-more {
-      margin: 7.5px 7.5px 7.5px 7.5px; } }
-  @media all and (min-width: 68.75em) {
-    #module-comments .comments__view-more {
-      margin: 9px 9px 9px 9px; } }
-  @media all and (max-width: 28.115em) {
-    #module-comments .comments__view-more {
-      margin-top: 0; } }
 
 #comments.preview {
   background-color: #333333; }
@@ -4844,7 +5191,8 @@ figure.figure-wide img {
   #standard-article .article__body .element-video-thumb {
     width: 134%; } }
 
-.comment a {
+.comment a,
+.comment .discussion__view-more {
   color: #e6711b; }
 .comment .icon-circle {
   background-color: #e6711b; }
@@ -4953,7 +5301,8 @@ figure.figure-wide img {
   #standard-article.comment .article .article__header .article__alerts {
     display: block; }
 
-.features a {
+.features a,
+.features .discussion__view-more {
   color: #951c55; }
 .features .icon-circle {
   background-color: #951c55; }
