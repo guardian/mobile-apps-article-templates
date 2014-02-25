@@ -26,6 +26,9 @@
 			background-image: url("../css/img/football_symbols_time.svg");
 			color: $standfirst;
 			z-index: 10;
+			&.f p {
+				font-size: 1.2rem;
+			}
 			&.first, &.second, &.ht, &.ft, &.et, &.p {
 				font-weight: bold;
 				color: $news-sec;
@@ -218,6 +221,10 @@
 		font-family: $agate-sans;
 		background-color: $white;
 		@include padding(1,0,0,0);
+		.football__label {
+			font-family: $egyptian-display;
+			@include body();
+		}
 		.football-lineups {
 			overflow-y: hidden;
 			border-bottom: 1px dotted $shadow;
@@ -423,6 +430,9 @@
 					white-space: nowrap;
 					overflow: hidden;
 					text-overflow: ellipsis;
+				}
+				.football-match-home {
+					text-align: right;
 				}
 			}
 		}
@@ -1270,6 +1280,12 @@
 }
 
 #football .football-header.is-alerts {
+	.article__alerts {
+		display: block;
+		@include mq($to: col1) {
+			display: inline-block;
+		}
+	}
 	.football-team-away, .football-team-home {
 		@include mq(col1, col2) {
 			padding-bottom: $base-2 * 4;

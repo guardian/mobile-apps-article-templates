@@ -111,11 +111,11 @@ define([
         ready = function (config) {
             if (!this.initialised) {
                 this.initialised = true;
-
-                if (config.adsEnabled) {
+                
+                if (config.adsEnabled == "true") {
                     modules.addGoogleTags(config);
                     modules.insertAds();
-                }
+                } 
                 // console.info("Ads ready");
             }
         };
