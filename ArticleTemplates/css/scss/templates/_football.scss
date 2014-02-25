@@ -1280,6 +1280,12 @@
 }
 
 #football .football-header.is-alerts {
+	.article__alerts {
+		display: block;
+		@include mq($to: col1) {
+			display: inline-block;
+		}
+	}
 	.football-team-away, .football-team-home {
 		@include mq(col1, col2) {
 			padding-bottom: $base-2 * 4;
