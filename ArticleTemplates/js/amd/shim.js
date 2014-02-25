@@ -17,6 +17,7 @@ var nativeFunctionCalls = [
     'articleCommentsInserter',
 	'articleTagInserter',
     'commentsFailed',
+    'commentsReplyFormatting',
     'footballMatchInfo',
     'footballMatchInfoFailed',
     'liveblogDeleteBlock',

@@ -22,23 +22,22 @@
 	
 	.module__title {
 		vertical-align: top;
+
 		.module__title__label {
 			font-family: $egyptian-display;
 			font-weight: 600;
 			@include body(1.5);
 			margin-top: -2px;
 		}
+
+		.comments-count {
+			color: $meta;
+		}
 	}
 
 	.module__action {
 		float: right;
 		vertical-align: middle;
-
-		& .module__header {
-			@include mq($to: col2) {
-				display: none;
-			}
-		}
 
 		a {
 			@include meta();
@@ -47,6 +46,14 @@
 			padding-right: 8px;
 			height: auto;
 			display: table-cell;
+		}
+	}
+
+	.module__header {
+		.module__action a {
+			@include mq($to: col2) {
+				display: none;
+			}
 		}
 	}
 }

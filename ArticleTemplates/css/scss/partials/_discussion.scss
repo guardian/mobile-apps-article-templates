@@ -1,0 +1,338 @@
+.discussion,
+.discussion__empty,
+.discussion__failed {
+	font-family: $agate-sans;
+	@include body();
+	background-color: white;
+	border-top: 1px solid $headline;
+	@include margin(1, 0, 0, 0);
+	overflow: hidden;
+	@include padding(0.75);
+	box-shadow: 0 -10px 0 0 $background, 0 -12px 0 0 $shadow;
+	@include mq($to: col1) {
+		margin: $base-1 / 1.5 $base-1 / 1.5 0 $base-1 / 1.5;
+		display: block;
+	}
+
+	.discussion__container {
+		min-height: 64px;
+		position: relative;
+	}
+
+	.discussion__header {
+		@include meta();
+		@include padding(0.25, 0, 0.75, 0);
+		overflow: auto;
+		word-break: break-all;
+		word-wrap: break-word;
+		@include mq(col2, col3) {
+			width: cols($base-3, 4);
+			float: left;
+		}
+		@include mq($from: col3) {
+			width: cols($base-4, 5);
+			float: left;
+		}
+	}
+
+	.discussion__body, {
+		word-break: break-word;
+		word-wrap: break-word;
+		@include mq(col2, col3) {
+			margin-right: cols($base-3, 1);
+			margin-left: cols($base-3, 4);
+		}
+		@include mq($from: col3) {
+			margin-right: cols($base-4, 1);
+			margin-left: cols($base-4, 5);
+		}
+	}
+
+	.discussion__avatar {
+		margin-right: 8px;
+		border-radius: 100%;
+		height: 44px;
+		width: 44px;
+		float: left;
+		overflow: hidden;
+
+		img {
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	.discussion__role,
+	.discussion__username {
+		display: block;
+		@include mq($to: col2) {
+			display: inline;
+		}
+	}
+	.discussion__username {
+		color: $headline;
+		font-weight: bold;
+	}
+
+	.discussion__responseto {
+		font-weight: bold;
+		display: none;
+	}
+
+	.discussion__timestamp {
+		color: $meta;
+		font-size: $meta-size-1;
+		display: block;
+	}
+
+	.discussion__recommend {
+		@include meta();
+		text-align: center;
+		width: auto;
+		position: absolute;
+		display: block;
+		top: 0;
+		right: 0;
+
+		.icon-circle {
+			display: inline-block;
+			font-size: 14px;
+			@include mq($to: col2) {
+				float: left;
+			}
+		}
+		.icon-circle,
+		span {
+			-webkit-transition: 0.2s all ease-in;
+		}
+
+		&.increase .icon-circle {
+			color: $white;
+			border-color: $news-sec;
+			background-color: $news-sec !important;
+		}
+	}
+
+	.discussion__recommend__count {
+		color: $meta;
+		font-size: $meta-size-1;
+		margin-top: 5px;
+		display: block;
+		@include mq($to: col2) {
+			margin-left: 8px;
+			float: right;
+		}
+	}
+
+	.discussion__options {
+		@include meta();
+		background-color: $white;
+		@include padding(0.75, 0, 0.75, 0);
+		overflow: hidden;
+		display: none;
+
+		.discussion__reply {
+			font-weight: bold;
+			padding-left: 32px;
+			float: left;
+			position: relative;
+			.icon {
+				position: absolute;
+				left: 0;
+				top: -2px;
+			}
+		}
+		.discussion__report {
+			float: right;
+		}
+	}
+	
+	.discussion__view-more {
+		@include margin(0.5, 0, 0, 0);
+		@include padding(0.75, 0, 1, 0);
+		font-weight: bold;
+		border-top: 1px dotted $shadow;
+		@include mq($to: col2) {
+			margin-left: 52px;
+		}
+		@include mq(col2, col3) {
+			margin-left: cols($base-3, 4);
+		}
+		@include mq($from: col3) {
+			margin-left: cols($base-4, 5);
+		}
+	}
+
+	// Response
+	&.is-response {
+		box-shadow: none;
+		border-top: none;
+		padding-top: 0;
+		margin-top: 0;
+
+		.discussion__container {
+			@include padding(0, 0, 3, 0);
+		}
+
+		.discussion__header {
+			border-top: $shadow 1px dotted;
+			padding-left: 0;
+			width: auto;
+			float: none;
+			position: static;
+			@include padding(0.75, 0, 0.5, 0);
+			@include mq($to: col2) {
+				margin-left: 52px;
+				padding-right: 64px;
+			}
+			@include mq(col2, col3) {
+				margin-left: cols($base-3, 4);
+			}
+			@include mq($from: col3) {
+				margin-left: cols($base-4, 5);
+			}
+		}
+
+		.discussion__body {
+			color: $standfirst;
+			@include mq($to: col2) {
+				margin-left: 52px;
+			}
+		}
+
+		.discussion__avatar {
+			display: none;
+		}
+
+		.discussion__username {
+			display: inline-block;
+		}
+
+		.discussion__timestamp {
+			@include margin(0, 0, 0.75, 0);
+			position: absolute;
+			bottom: 0;
+		}
+
+		.discussion__responseto {
+			display: inline-block;
+			white-space: nowrap;
+			color: $standfirst;
+			.icon {
+				display: inline;
+				color: $meta;
+			}
+		}
+
+		.discussion__recommend {
+			@include margin(0.75, 0, 0, 0);
+		}
+
+		.discussion__recommend__count {
+			margin-top: 2px;
+		}
+
+		.discussion__options {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			@include mq($to: col2) {
+				left: 52px;
+			}
+			@include mq(col2, col3) {
+				left: cols($base-3, 4);
+			}
+			@include mq($from: col3) {
+				left: cols($base-4, 5);
+			}
+		}
+	}
+
+	// Hidden response
+	&.is-response-hidden {
+		display: none;
+	}
+
+	// Blocked
+	&.blocked {
+		color: $meta;
+		.discussion__header {
+			opacity: 0.5;
+		}
+		.discussion__recommend {
+			display: none;
+		}
+	}
+}
+
+.discussion:nth-child(3) {
+	box-shadow: none;
+}
+
+.discussion__view-more,
+.discussion__empty,
+.discussion__failed {
+	@include mq(col2, col3) {
+		padding-left: cols($base-3, 4);
+	}
+	@include mq($from: col3) {
+		padding-left: cols($base-4, 5);
+	}
+}
+.discussion__empty,
+.discussion__failed {
+	display: none;
+	color: $standfirst;
+	@include meta();
+	box-shadow: none;
+	border-top: 1px solid $headline;
+}
+
+.discussion__loading {
+	text-align: center;
+	box-shadow: 0 -10px 0 0 $background, 0 -12px 0 0 $shadow;
+	@include padding(0.75);
+	img {
+		width: 44px;
+		height: 44px;
+	}
+}
+
+
+// Failure States
+.comments-0,
+.comments-has-failed {
+	.discussion__view-more {
+		display: none;
+	}
+}
+.comments-0,
+.comments-1,
+.comments-has-failed {
+	.article__controls__sorter a {
+		color: $standfirst;
+	}
+}
+.comments-closed {
+	.article__controls__action {
+		.comments-closed-label {
+			display: block !important;
+		}
+		.icon-circle, a {
+			display: none !important;
+		}
+	}
+}
+
+// Module Specific
+//.module--comments {
+//	.discussion__view-more {
+//		font-family: $agate-sans;
+//		font-weight: bold;
+//		@include body();
+//		@include margin(0.75);
+//		@include mq($to: col1) {
+//			margin-top: 0;
+//		}
+//	}
+//}

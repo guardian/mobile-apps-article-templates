@@ -1,10 +1,4 @@
-#comments {
-	&.module__body {
-		.comments-block:nth-child(1) {
-			border-top: none;
-			margin-top: 0;
-		}
-	}
+#discussion {
 	.article {
 		background-color: transparent;
 		border-top-color: $headline;
@@ -12,26 +6,25 @@
 	}
 
 	.article__header {
-		@include padding(0.5);
-		@include mq($to: col2) {
-			//font-size: 2.4rem;
-			//line-height: 2.6rem;
-		}
-		@include mq($from: col2) {
-			//font-size: 3.0rem;
-			//line-height: 3.2rem;
-		}
-		.article__section {
-			.comment-count {
-				color: $meta;
-			}
-		}
-		.article__headline {
-			@include margin(0,0,4,0);
+		@include mq($to: col1) {
+			padding: 0 $base-1 / 1.5;
 		}
 	}
 
-	.comments-controls {
+	.article__section {
+		padding-left: 0;
+
+		.comments-count {
+			color: $meta;
+		}
+	}
+
+	.article__headline {
+		@include headline(0.75);
+		@include margin(0,0,4,0);
+	}
+
+	.article__controls {
 		overflow: auto;
 		font-family: $agate-sans;
 		font-weight: bold;
@@ -42,91 +35,22 @@
 			display: table-cell;
 			vertical-align: middle;
 		}
-		.comments-action {
-			float: right;
-			a {
-				display: table-cell;
-				vertical-align: middle;
-				height: auto;
-				padding-right: 6px;
-				@include mq($to: col2) {
-					display: none;
-				}
-			}
-			.comments-closed-label {
+	}
+
+	.article__controls__action {
+		float: right;
+		a {
+			display: table-cell;
+			vertical-align: middle;
+			height: auto;
+			padding-right: 6px;
+			@include mq($to: col2) {
 				display: none;
-				color: $standfirst;
 			}
 		}
-	}
-
-	.comments-view-more,
-	.comments-empty,
-	.comments-failed {
-		font-family: $agate-sans;
-		font-weight: bold;
-		@include margin(0.75, 0, 0.75, 0);
-		@include padding(0.75, 0, 0, 0);
-	}
-	.comments-view-more {
-		color: $news-pri;
-		border-top: 1px dotted $shadow;
-	}
-	.comments-empty,
-	.comments-failed {
-		display: none;
-		color: $standfirst;
-		@include meta();
-		border-top: 1px solid $headline;
-	}
-
-	.comments-loading {
-		text-align: center;
-		@include padding(0.75);
-		img {
-			width: 44px;
-			height: 44px;
-		}
-	}
-}
-
-// Failure States
-.comments-0,
-.comments-has-failed {
-	.comments-view-more {
-		display: none;
-	}
-}
-
-.comments-0,
-.comments-1,
-.comments-has-failed {
-	.comments-sorter a {
-		color: $standfirst;
-	}
-}
-
-.comments-closed {
-	.comments-controls .comments-action {
 		.comments-closed-label {
-			display: block !important;
-		}
-		.icon-circle, a {
-			display: none !important;
-		}
-	}
-}
-
-// Module Specific
-#module-comments {
-	.comments-view-more {
-		color: $news-pri;
-		font-family: $agate-sans;
-		font-weight: bold;
-		@include body();
-		@include margin(0.75);
-		@include mq($to: col1) {
-			margin-top: 0;
+			display: none;
+			color: $standfirst;
 		}
 	}
 }
