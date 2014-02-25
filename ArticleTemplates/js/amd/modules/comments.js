@@ -11,58 +11,58 @@ define([
     'use strict';
 
     var modules = {
-            commentsReplyFormatting: function () {
-                var counter = 0;
-                $('.discussion').each(function (el) {
-                    var block = $(el);
-                    if (block.hasClass('checked') === false) {
-                        if (block.hasClass('is-response')) {
-                            counter += 1;
-                            if (counter === 4) {
-                                $('.discussion__container', block.previous()).after("<div class='discussion__view-more'><span class='icon'>&#xe002;</span> View more replies</div>");
-                            }
-                            if (counter > 3) {
-                                block.hide().addClass('comments-hidden');
-                            }
-                        } else {
-                            counter = 0;
-                        }
-                        block.addClass('checked');
-                    }
-
-                    bean.on(el, 'click', '.discussion__container', function () {
-                        block = $(el);
-                        if (block.hasClass('visible')) {
-                            if (block.hasClass('comments-open') === false) {
-                                $('.comments-open .discussion__options').toggle();
-                                $('.comments-open').removeClass('comments-open');
-                            }
-                            block.toggleClass('comments-open');
-                            $('.discussion__options', el).toggle(null, 'block');
-                        }
-                    });
-
-                    bean.on(el, 'click', '.discussion__view-more', function () {
-                        var viewMore = $(el);
-                        $(el).hide();
-                        $('.discussion').each(function () {
-                            if (viewMore.hasClass('is-response')) {
-                                viewMore.show();
+            setupGlobals: function () {
+                window.commentsReplyFormatting = function () {
+                    var counter = 0;
+                    
+                    $('.discussion').each(function (el) {
+                        var block = $(el);
+                        if (block.hasClass('checked') === false) {
+                            if (block.hasClass('is-response')) {
+                                counter += 1;
+                                if (counter === 4) {
+                                    $('.discussion__container', block.previous()).after("<div class='discussion__view-more'><span class='icon'>&#xe002;</span> View more replies</div>");
+                                }
+                                if (counter > 3) {
+                                    block.hide().addClass('comments-hidden');
+                                }
                             } else {
-                                return false;
+                                counter = 0;
+                            }
+                            block.addClass('checked');
+                        }
+     
+                        bean.on(el, 'click', '.discussion__container', function () {
+                            block = $(el);
+                            if (block.hasClass('visible')) {
+                                if (block.hasClass('comments-open') === false) {
+                                    $('.comments-open .discussion__options').toggle();
+                                    $('.comments-open').removeClass('comments-open');
+                                }
+                                block.toggleClass('comments-open');
+                                $('.discussion__options', el).toggle(null, 'block');
+                            }
+                        });
+     
+                        bean.on(el, 'click', '.discussion__view-more', function () {
+                            var viewMore = $(el);
+                            $(el).hide();
+                            $('.discussion').each(function () {
+                                if (viewMore.hasClass('is-response')) {
+                                    viewMore.show();
+                                } else {
+                                    return false;
+                                }
+                            });
+                        });
+     
+                        bean.on(el, 'click', 'a, .discussion__view-more, .discussion__reply, .discussion__recommend', function (event) {
+                            if (this.tagName.toLowerCase() === 'a' || $(this).hasClass('discussion__view-more discussion__reply discussion__recommend')) {
+                                event.stopPropagation();
                             }
                         });
                     });
-
-                    bean.on(el, 'click', 'a, .discussion__view-more, .discussion__reply, .discussion__recommend', function (event) {
-                        if (this.tagName.toLowerCase() === 'a' || $(this).hasClass('discussion__view-more discussion__reply discussion__recommend')) {
-                            event.stopPropagation();
-                        }
-                    });
-                });
-            },
-
-            setupGlobals: function () {
+                };
                 // Global function to handle comments, called by native code
                 window.articleCommentsInserter = function (html) {
                     if (!html) {
@@ -112,13 +112,13 @@ define([
                 };
                 window.applyNativeFunctionCall('articleCommentsInserter');
                 window.applyNativeFunctionCall('commentsFailed');
+                window.applyNativeFunctionCall('commentsReplyFormatting');
             }
         },
 
         ready = function () {
             if (!this.initialised) {
                 this.initialised = true;
-                modules.commentsReplyFormatting();
                 modules.setupGlobals();
                 // console.info("Comments ready");
             }
