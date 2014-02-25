@@ -100,7 +100,6 @@ define([
                     $('.discussion__loading').remove();
                 };
                 window.commentsRecommendIncrease = function (id, number) {
-                	alert("INCREASE!");
                     var target = '#' + id + ' .discussion__recommend';
                     $(target).addClass('increase');
                     $(target + ' .discussion__recommend__count').text(number);
