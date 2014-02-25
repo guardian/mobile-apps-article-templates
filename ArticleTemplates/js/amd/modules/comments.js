@@ -57,14 +57,9 @@ define([
                         });
      
                         bean.on(el, 'click', '.discussion__view-more', function () {
-                            var viewMore = $(el);
-                            $(el).hide();
+                            $(this).hide();
                             $('.discussion').each(function () {
-                                if (viewMore.hasClass('is-response')) {
-                                    viewMore.show();
-                                } else {
-                                    return false;
-                                }
+                                $(this).show();
                             });
                         });
                         
