@@ -1,50 +1,89 @@
 #audio {
 	.article__header {
-		background-color: $news-sec;
-		overflow: hidden;
-		position: relative;
-		background: -webkit-canvas(squares) $news-sec;
-		.article__section {
-			display: none;
-		}
 		.inner-header {
-			z-index: 2;
+			background-color: $news-sec;
+			padding-bottom: 4.5em;
+			position: relative;
+			
 			.article__headline {
-				color: white;
-				span {
-					color: $headline;
-					display: block;
-				}
+				color: $white;
+				@include margin(0, 0, 1, 0);
 			}
-			p {
-				color: white;
-				font-family: $egyptian-text;
+
+			.article__byline {
+				color: fade-out($white, 0.1);
+				border: 0 none;
 				a {
-					font-weight: bold;
+					color: $white;
+				}
+				@include mq($to: col1) {
+					display: none;
+				}
+			}
+		}
+		.article__byline--mobile {
+			display: block;
+			@include mq($from: col1) {
+				display: none;
+			}
+		}
+
+		.article__standfirst {
+			color: $headline;
+			@include margin(0.25, 0, 1, 0);
+		}
+
+		.article__meta {
+			border: 0 none;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+
+			.article__pubdate {
+				color: $white;
+				width: auto;
+			}
+
+			.article__comments {
+				border-left-color: fade-out($news-pri, 0.25);
+				@include mq($to: col1) {
+					border-left-color: fade-out($white, 0.25);
+					width: cols($base-1, 1);
+					a {
+						color: $white;
+					}
+				}
+				@include mq(col1, col2) {
+					border-left-color: fade-out($white, 0.25);
+					width: cols($base-2, 2);
+					a {
+						color: $white;
+					}
+				}
+				@include mq(col2, col3) {
+					width: cols($base-3, 6);
+				}
+				@include mq($from: col3) {
+					width: cols($base-4, 10);
 				}
 			}
 		}
 	}
-	.article__meta {
-		border-top: none;
-		.article__pubdate {
-			color: $white;
+
+	.article__body {
+		@include padding(0, 1, 0, 1);
+		@include mq(col2, col3) {
+			padding-right: cols($base-3, 3);
 		}
-		.article__comments {
-			border-left-color: rgba(0,0,0,0.2);
-		}
-	}
-	.audio-presenter {
-		position: absolute;
-		right: 0;
-		top: 20px;
-		img {
-			width: 100%;
-			vertical-align: middle;
+		@include mq($from: col3) {
+			padding-right: cols($base-4, 4);
 		}
 	}
+
 	.audio-player {
 		background-color: $headline;
+		@include padding(0.75);
 		display: table;
 		width: 100%;
 		.audio-button {
@@ -84,210 +123,19 @@
 				cursor: pointer;
 			}
 			input {
+				color: $white;
+				@include meta();
+				font-family: $agate-sans;
+				font-weight: normal;
+				background: transparent;
 				position: absolute;
 				border: 0;
 				padding: 0;
 				margin: 0;
-				background: transparent;
-				color: $white;
-				font-family: $agate-sans;
-				font-weight: normal;
 			}
 			input:nth-child(2) {
 				right: 0;
 				text-align: right;
-			}
-		}
-	}
-
-	.article__body {
-		@include padding(0.5, 1, 1, 1);
-		@include mq(col2, col3) {
-			padding-right: cols($base-3, 3);
-		}
-		@include mq($from: col3) {
-			padding-right: cols($base-4, 4);
-		}
-	}
-
-	@include mq($to: col1) {
-		.article__header { 
-			.inner-header {
-				width: $base-1 * 15;
-				h1 {
-					margin-bottom: 4px;
-				}
-				p {
-					display: none;
-					font-size: $meta-size-1;
-					line-height: $meta-lead-1;
-					margin-bottom: $base-1;
-					padding-right: $base-1 * 6;
-				}
-			}
-			.article__meta {
-				padding-top: 0;
-				padding-bottom:$base-1;
-				.article__comments {
-					display: none;
-					width: $base-1 * 6;
-					padding-top: 0;
-					margin-right: $base-1 * 23;
-				}
-				.inner-meta {
-					width: $base-1 * 12;
-					p {
-						width: 100%;
-					}
-				}
-			}
-			.audio-presenter {
-				width: $base-1 * 10;
-			}
-		}
-		.audio-player {
-			padding: $base-1 / 1.5;
-			input {
-				font-size: $meta-size-1;
-			}
-		}
-		#article {
-			.article__standfirst {
-				font-size: $standfirst-size-1;
-				line-height: $standfirst-lead-1;
-			}
-		}
-	}
-
-	@include mq(col1, col2) {
-		.article__header {
-			.inner-header {
-				width: $base-2 * 29;
-				.article__headline {
-					margin-bottom: 4px;
-				}
-				p {
-					font-size: $meta-size-2;
-					line-height: $meta-lead-2;
-					margin-bottom: $base-2 * 6;
-					padding-right: $base-2 * 6;
-				}
-			}
-			.article__meta {
-				padding-top: 0;
-				.article__comments {
-					width: $base-2 * 6;
-					padding-top: 0;
-					margin-right: $base-2 * 23;
-				}
-				.inner-meta {
-					width: $base-2 * 16;
-					p {
-						width: 100%;
-					}
-				}
-			}
-			.audio-presenter {
-				width: $base-2 * 23;
-			}
-		}
-		.audio-player {
-			padding: $base-2 / 1.5;
-			input {
-				font-size: $meta-size-2;
-			}
-		}
-		#article {
-			.article__standfirst {
-				font-size: $standfirst-size-2;
-				line-height: $standfirst-lead-2;
-			}
-		}
-	}
-
-	@include mq(col2, col3) {
-		.article__header { 
-			.inner-header {
-				.article__headline {
-					margin-bottom: 4px;
-				}
-				p {
-					font-size: $meta-size-3;
-					line-height: $meta-lead-3;
-					margin-bottom: $base-3 * 6;
-					padding-right: $base-3 * 6;
-				}
-			}
-			.article__meta {
-				padding-top: 0;
-				.article__comments {
-					padding-top: 0;
-					margin-right: $base-3 * 23;
-				}
-				.inner-meta {
-					width: cols($base-3, 8);
-					p {
-						width: 100%;
-					}
-				}
-			}
-			.audio-presenter {
-				width: cols($base-3, 4);
-			}
-		}
-		.audio-player {
-			padding: $base-3 / 1.5;
-			input {
-				font-size: $meta-size-3;
-			}
-		}
-		#article {
-			.article__standfirst {
-				font-size: $standfirst-size-3;
-				line-height: $standfirst-lead-3;
-			}
-		}
-	}
-	
-	@include mq($from: col3) {
-		.article__header {
-			.inner-header {
-				.article__headline {
-					margin-bottom: 4px;
-				}
-				p {
-					font-size: $meta-size-4;
-					line-height: $meta-lead-4;
-					margin-bottom: $base-4 * 6;
-				}
-			}
-			.article__meta {
-				padding-top: 0;
-				.article__comments {
-					padding-top: 0;
-					margin-right: $base-4 * 23;
-				}
-				.inner-meta {
-					width: cols($base-4, 8);
-					p {
-						width: 100%;
-					}
-				}
-			}
-			.audio-presenter {
-				width: cols($base-4, 4);
-			}
-		}
-		.audio-player {
-			padding: $base-4 / 1.5;
-			input {
-				font-size: $meta-size-4;
-			}
-		}
-		#article {
-			.article__standfirst {
-				font-size: $standfirst-size-4;
-				line-height: $standfirst-lead-4;
 			}
 		}
 	}

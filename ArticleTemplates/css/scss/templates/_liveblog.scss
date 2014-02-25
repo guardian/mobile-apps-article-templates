@@ -9,6 +9,10 @@
 		border-bottom: 2px solid $shadow;
 		position: relative;
 		
+		.inner-header {
+			padding: 0;
+		}
+		
 		.live-tag {
 			color: $alert;
 			font-family: $agate-sans;
@@ -24,9 +28,10 @@
 		}
 
 		.live-summary {
-			overflow: hidden;
 			font-family: $egyptian-text;
 			@include body();
+			@include padding(0, 1, 1, 1);
+			overflow: hidden;
 			p {
 				margin-bottom: 18px;
 			}
@@ -42,17 +47,13 @@
 			width: 100%;
 		}
 
-		.article__headline {
-			width: auto;
-		}
-
 		.article__byline {
 			padding: 0;
 			border-bottom: 0 none;
-			margin-bottom: 0px;
+			margin-bottom: 0;
 		}
 		.article__pubdate {
-			margin-bottom: 0px;
+			margin-bottom: 0;
 		}
 		.article__meta {
 			border-bottom: none;
