@@ -738,6 +738,7 @@ html {
       .article__header .article__standfirst {
         padding: 6px 12px 0px 12px; } }
   .article__header .article__alerts {
+    width: 100%;
     display: none; }
     @media all and (max-width: 28.115em) {
       .article__header .article__alerts {
@@ -965,13 +966,13 @@ html {
 
 .article__header.cutout .inner-header {
   background-repeat: no-repeat;
-  background-position: right bottom -10px;
+  background-position: right -20px bottom 0;
   overflow: auto; }
   @media all and (max-width: 28.115em) {
     .article__header.cutout .inner-header {
       min-height: 280px;
       background-size: 39.13043% auto;
-      padding-right: 34.78261%; } }
+      padding-right: 21.73913%; } }
   @media all and (min-width: 28.125em) and (max-width: 40.615em) {
     .article__header.cutout .inner-header {
       min-height: 280px;
@@ -2946,37 +2947,45 @@ figure.figure-wide img {
 #audio .article__header .inner-header {
   background-color: #4bc6df;
   position: relative; }
-#audio .article__header .article__headline {
-  color: white; }
-  @media all and (max-width: 18.75em) {
-    #audio .article__header .article__headline {
-      margin: 0px 0px 12px 0px; } }
-  @media all and (min-width: 18.75em) and (max-width: 25em) {
-    #audio .article__header .article__headline {
-      margin: 0px 0px 14px 0px; } }
-  @media all and (min-width: 25em) and (max-width: 28.115em) {
-    #audio .article__header .article__headline {
-      margin: 0px 0px 18px 0px; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    #audio .article__header .article__headline {
-      margin: 0px 0px 12px 0px; } }
-  @media all and (min-width: 40.625em) and (max-width: 50em) {
-    #audio .article__header .article__headline {
-      margin: 0px 0px 10px 0px; } }
-  @media all and (min-width: 50em) and (max-width: 56.24em) {
-    #audio .article__header .article__headline {
-      margin: 0px 0px 12px 0px; } }
-  @media all and (min-width: 56.25em) and (max-width: 68.75em) {
-    #audio .article__header .article__headline {
-      margin: 0px 0px 10px 0px; } }
-  @media all and (min-width: 68.75em) {
-    #audio .article__header .article__headline {
-      margin: 0px 0px 12px 0px; } }
-#audio .article__header .article__byline {
-  color: rgba(255, 255, 255, 0.9);
-  border: 0 none; }
-  #audio .article__header .article__byline a {
+  #audio .article__header .inner-header .article__headline {
     color: white; }
+    @media all and (max-width: 18.75em) {
+      #audio .article__header .inner-header .article__headline {
+        margin: 0px 0px 12px 0px; } }
+    @media all and (min-width: 18.75em) and (max-width: 25em) {
+      #audio .article__header .inner-header .article__headline {
+        margin: 0px 0px 14px 0px; } }
+    @media all and (min-width: 25em) and (max-width: 28.115em) {
+      #audio .article__header .inner-header .article__headline {
+        margin: 0px 0px 18px 0px; } }
+    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      #audio .article__header .inner-header .article__headline {
+        margin: 0px 0px 12px 0px; } }
+    @media all and (min-width: 40.625em) and (max-width: 50em) {
+      #audio .article__header .inner-header .article__headline {
+        margin: 0px 0px 10px 0px; } }
+    @media all and (min-width: 50em) and (max-width: 56.24em) {
+      #audio .article__header .inner-header .article__headline {
+        margin: 0px 0px 12px 0px; } }
+    @media all and (min-width: 56.25em) and (max-width: 68.75em) {
+      #audio .article__header .inner-header .article__headline {
+        margin: 0px 0px 10px 0px; } }
+    @media all and (min-width: 68.75em) {
+      #audio .article__header .inner-header .article__headline {
+        margin: 0px 0px 12px 0px; } }
+  #audio .article__header .inner-header .article__byline {
+    color: rgba(255, 255, 255, 0.9);
+    border: 0 none; }
+    #audio .article__header .inner-header .article__byline a {
+      color: white; }
+    @media all and (max-width: 28.115em) {
+      #audio .article__header .inner-header .article__byline {
+        display: none; } }
+#audio .article__header .article__byline--mobile {
+  display: block; }
+  @media all and (min-width: 28.125em) {
+    #audio .article__header .article__byline--mobile {
+      display: none; } }
 #audio .article__header .article__standfirst {
   color: #333333; }
   @media all and (max-width: 18.75em) {

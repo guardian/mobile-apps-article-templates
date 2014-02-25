@@ -3,18 +3,27 @@
 		.inner-header {
 			background-color: $news-sec;
 			position: relative;
-		}
-
-		.article__headline {
-			color: $white;
-			@include margin(0, 0, 1, 0);
-		}
-
-		.article__byline {
-			color: fade-out($white, 0.1);
-			border: 0 none;
-			a {
+			
+			.article__headline {
 				color: $white;
+				@include margin(0, 0, 1, 0);
+			}
+
+			.article__byline {
+				color: fade-out($white, 0.1);
+				border: 0 none;
+				a {
+					color: $white;
+				}
+				@include mq($to: col1) {
+					display: none;
+				}
+			}
+		}
+		.article__byline--mobile {
+			display: block;
+			@include mq($from: col1) {
+				display: none;
 			}
 		}
 
