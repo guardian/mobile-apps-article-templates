@@ -32,7 +32,7 @@ body, html {
   max-width: 100%;
   -webkit-font-smoothing: antialiased;
   -webkit-font-feature-settings: "kern" 1;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   outline: 0; }
 
 body {
@@ -65,48 +65,60 @@ a {
   font-family: "Egyptian Display";
   font-weight: 100;
   src: url("../fonts/GdnEgyDE1Thi.otf"); }
+
 @font-face {
   font-family: "Egyptian Display";
   font-weight: 200;
   src: url("../fonts/GdnEgyDE2Lig.otf"); }
+
 @font-face {
   font-family: "Egyptian Display";
   font-weight: 600;
   src: url("../fonts/GdnEgyDE6Bol.otf"); }
+
 @font-face {
   font-family: "Egyptian Text";
   src: url("../fonts/EgyptianText-Regular.ttf"); }
+
 @font-face {
   font-family: "Egyptian Text";
   font-style: italic;
   src: url("../fonts/EgyptianText-RegularItalic.ttf"); }
+
 @font-face {
   font-family: "Egyptian Text";
   font-weight: bold;
   src: url("../fonts/EgyptianText-Medium.ttf"); }
+
 @font-face {
   font-family: "Titlepiece";
   font-weight: 600;
   src: url("../fonts/GdnTitlepiece.otf"); }
+
 @font-face {
   font-family: "Agate Sans";
   src: url("../fonts/GdnAgaSanTwoAS32Reg.otf"); }
+
 @font-face {
   font-family: "Agate Sans";
   font-style: italic;
   src: url("../fonts/GdnAgaSanTwoAS32RegIta.otf"); }
+
 @font-face {
   font-family: "Agate Sans";
   font-weight: bold;
   src: url("../fonts/GdnAgaSanTwoAS62Bol.otf"); }
+
 @font-face {
   font-family: "Agate Sans";
   font-weight: bold;
   font-style: italic;
   src: url("../fonts/GdnAgaSanTwoAS62BolIta.otf"); }
+
 @font-face {
   font-family: "Guardian Icons";
   src: url("../fonts/guardianicons.ttf"); }
+
 html {
   font-size: 62.5%;
   font-family: "Egyptian Text", Georgia, serif; }
@@ -2544,85 +2556,6 @@ ul.tabs li.selected {
     .element.element-video {
       width: 100%;
       padding-bottom: 75.375%; } }
-.element .element-image-inner,
-.element .element-video-inner {
-  background-color: #dcdad5;
-  padding-bottom: 60%;
-  position: relative;
-  overflow: hidden; }
-  .element .element-image-inner img,
-  .element .element-video-inner img {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0; }
-.element .element-video-inner {
-  padding-bottom: 56.25%; }
-  .element .element-video-inner .element-video__button {
-    position: absolute;
-    bottom: 0;
-    z-index: 2; }
-    @media all and (max-width: 18.75em) {
-      .element .element-video-inner .element-video__button {
-        padding: 0px 0px 12px 12px; } }
-    @media all and (min-width: 18.75em) and (max-width: 25em) {
-      .element .element-video-inner .element-video__button {
-        padding: 0px 0px 14px 14px; } }
-    @media all and (min-width: 25em) and (max-width: 28.115em) {
-      .element .element-video-inner .element-video__button {
-        padding: 0px 0px 18px 18px; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      .element .element-video-inner .element-video__button {
-        padding: 0px 0px 12px 12px; } }
-    @media all and (min-width: 40.625em) and (max-width: 50em) {
-      .element .element-video-inner .element-video__button {
-        padding: 0px 0px 10px 10px; } }
-    @media all and (min-width: 50em) and (max-width: 56.24em) {
-      .element .element-video-inner .element-video__button {
-        padding: 0px 0px 12px 12px; } }
-    @media all and (min-width: 56.25em) and (max-width: 68.75em) {
-      .element .element-video-inner .element-video__button {
-        padding: 0px 0px 10px 10px; } }
-    @media all and (min-width: 68.75em) {
-      .element .element-video-inner .element-video__button {
-        padding: 0px 0px 12px 12px; } }
-    .element .element-video-inner .element-video__button .touchpoint {
-      background-color: #ffbb00;
-      color: #333333;
-      display: table-cell;
-      vertical-align: middle; }
-    .element .element-video-inner .element-video__button .element-video__button__duration {
-      color: #ffbb00;
-      font-family: "Agate Sans", sans-serif;
-      font-weight: bold;
-      display: table-cell;
-      vertical-align: middle; }
-      @media all and (max-width: 18.75em) {
-        .element .element-video-inner .element-video__button .element-video__button__duration {
-          padding: 0px 0px 0px 12px; } }
-      @media all and (min-width: 18.75em) and (max-width: 25em) {
-        .element .element-video-inner .element-video__button .element-video__button__duration {
-          padding: 0px 0px 0px 14px; } }
-      @media all and (min-width: 25em) and (max-width: 28.115em) {
-        .element .element-video-inner .element-video__button .element-video__button__duration {
-          padding: 0px 0px 0px 18px; } }
-      @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-        .element .element-video-inner .element-video__button .element-video__button__duration {
-          padding: 0px 0px 0px 12px; } }
-      @media all and (min-width: 40.625em) and (max-width: 50em) {
-        .element .element-video-inner .element-video__button .element-video__button__duration {
-          padding: 0px 0px 0px 10px; } }
-      @media all and (min-width: 50em) and (max-width: 56.24em) {
-        .element .element-video-inner .element-video__button .element-video__button__duration {
-          padding: 0px 0px 0px 12px; } }
-      @media all and (min-width: 56.25em) and (max-width: 68.75em) {
-        .element .element-video-inner .element-video__button .element-video__button__duration {
-          padding: 0px 0px 0px 10px; } }
-      @media all and (min-width: 68.75em) {
-        .element .element-video-inner .element-video__button .element-video__button__duration {
-          padding: 0px 0px 0px 12px; } }
 .element.element-video-thumb {
   width: 100%; }
 .element.element-tweet blockquote {
@@ -2705,6 +2638,87 @@ ul.tabs li.selected {
   width: 100%; }
 .element.element-embed iframe {
   width: 100%; }
+
+.element-image-inner,
+.element-video-inner {
+  background-color: #dcdad5;
+  padding-bottom: 60%;
+  position: relative;
+  overflow: hidden; }
+  .element-image-inner img,
+  .element-video-inner img {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; }
+
+.element-video-inner {
+  padding-bottom: 56.25%; }
+  .element-video-inner .element-video__button {
+    position: absolute;
+    bottom: 0;
+    z-index: 2; }
+    @media all and (max-width: 18.75em) {
+      .element-video-inner .element-video__button {
+        padding: 0px 0px 12px 12px; } }
+    @media all and (min-width: 18.75em) and (max-width: 25em) {
+      .element-video-inner .element-video__button {
+        padding: 0px 0px 14px 14px; } }
+    @media all and (min-width: 25em) and (max-width: 28.115em) {
+      .element-video-inner .element-video__button {
+        padding: 0px 0px 18px 18px; } }
+    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      .element-video-inner .element-video__button {
+        padding: 0px 0px 12px 12px; } }
+    @media all and (min-width: 40.625em) and (max-width: 50em) {
+      .element-video-inner .element-video__button {
+        padding: 0px 0px 10px 10px; } }
+    @media all and (min-width: 50em) and (max-width: 56.24em) {
+      .element-video-inner .element-video__button {
+        padding: 0px 0px 12px 12px; } }
+    @media all and (min-width: 56.25em) and (max-width: 68.75em) {
+      .element-video-inner .element-video__button {
+        padding: 0px 0px 10px 10px; } }
+    @media all and (min-width: 68.75em) {
+      .element-video-inner .element-video__button {
+        padding: 0px 0px 12px 12px; } }
+    .element-video-inner .element-video__button .touchpoint {
+      background-color: #ffbb00;
+      color: #333333;
+      display: table-cell;
+      vertical-align: middle; }
+    .element-video-inner .element-video__button .element-video__button__duration {
+      color: #ffbb00;
+      font-family: "Agate Sans", sans-serif;
+      font-weight: bold;
+      display: table-cell;
+      vertical-align: middle; }
+      @media all and (max-width: 18.75em) {
+        .element-video-inner .element-video__button .element-video__button__duration {
+          padding: 0px 0px 0px 12px; } }
+      @media all and (min-width: 18.75em) and (max-width: 25em) {
+        .element-video-inner .element-video__button .element-video__button__duration {
+          padding: 0px 0px 0px 14px; } }
+      @media all and (min-width: 25em) and (max-width: 28.115em) {
+        .element-video-inner .element-video__button .element-video__button__duration {
+          padding: 0px 0px 0px 18px; } }
+      @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+        .element-video-inner .element-video__button .element-video__button__duration {
+          padding: 0px 0px 0px 12px; } }
+      @media all and (min-width: 40.625em) and (max-width: 50em) {
+        .element-video-inner .element-video__button .element-video__button__duration {
+          padding: 0px 0px 0px 10px; } }
+      @media all and (min-width: 50em) and (max-width: 56.24em) {
+        .element-video-inner .element-video__button .element-video__button__duration {
+          padding: 0px 0px 0px 12px; } }
+      @media all and (min-width: 56.25em) and (max-width: 68.75em) {
+        .element-video-inner .element-video__button .element-video__button__duration {
+          padding: 0px 0px 0px 10px; } }
+      @media all and (min-width: 68.75em) {
+        .element-video-inner .element-video__button .element-video__button__duration {
+          padding: 0px 0px 0px 12px; } }
 
 figure img {
   display: block; }
@@ -2921,6 +2935,17 @@ figure.figure-wide img {
     height: 28px;
     width: 28px; }
 
+.offline .element-video,
+.offline .element-embed,
+.offline .element-map,
+.offline .element-audio {
+  background-color: #dcdad5; }
+  .offline .element-video figcaption,
+  .offline .element-embed figcaption,
+  .offline .element-map figcaption,
+  .offline .element-audio figcaption {
+    background-color: white; }
+
 #help {
   font-family: "Agate Sans", sans-serif;
   font-size: 1.6rem;
@@ -3122,7 +3147,7 @@ figure.figure-wide img {
     display: table-cell;
     position: relative;
     -webkit-user-select: none;
-    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-text-size-adjust: none;
     -webkit-touch-callout: none;
     outline: 0;
@@ -3929,6 +3954,7 @@ figure.figure-wide img {
 
   100% {
     opacity: 0; } }
+
 @keyframes blink {
   0% {
     opacity: 0; }
@@ -3938,6 +3964,7 @@ figure.figure-wide img {
 
   100% {
     opacity: 0; } }
+
 #football .article {
   background-color: transparent;
   border-bottom: none; }
@@ -5096,31 +5123,30 @@ figure.figure-wide img {
     @media all and (min-width: 56.25em) {
       .football-fixtures-row > div.football-col-4 {
         width: 53.68421%; } }
-@media all and (max-width: 28.115em) and (max-width: 18.75em) {
-  .football-fixtures-row > div.football-col-1 {
-    padding: 3px 0px 12px 12px; } }
-@media all and (max-width: 28.115em) and (min-width: 18.75em) and (max-width: 25em) {
-  .football-fixtures-row > div.football-col-1 {
-    padding: 3.5px 0px 14px 14px; } }
-@media all and (max-width: 28.115em) and (min-width: 25em) and (max-width: 28.115em) {
-  .football-fixtures-row > div.football-col-1 {
-    padding: 4.5px 0px 18px 18px; } }
-@media all and (max-width: 28.115em) and (min-width: 28.125em) and (max-width: 40.615em) {
-  .football-fixtures-row > div.football-col-1 {
-    padding: 3px 0px 12px 12px; } }
-@media all and (max-width: 28.115em) and (min-width: 40.625em) and (max-width: 50em) {
-  .football-fixtures-row > div.football-col-1 {
-    padding: 2.5px 0px 10px 10px; } }
-@media all and (max-width: 28.115em) and (min-width: 50em) and (max-width: 56.24em) {
-  .football-fixtures-row > div.football-col-1 {
-    padding: 3px 0px 12px 12px; } }
-@media all and (max-width: 28.115em) and (min-width: 56.25em) and (max-width: 68.75em) {
-  .football-fixtures-row > div.football-col-1 {
-    padding: 2.5px 0px 10px 10px; } }
-@media all and (max-width: 28.115em) and (min-width: 68.75em) {
-  .football-fixtures-row > div.football-col-1 {
-    padding: 3px 0px 12px 12px; } }
-
+    @media all and (max-width: 28.115em) and (max-width: 18.75em) {
+      .football-fixtures-row > div.football-col-1 {
+        padding: 3px 0px 12px 12px; } }
+    @media all and (max-width: 28.115em) and (min-width: 18.75em) and (max-width: 25em) {
+      .football-fixtures-row > div.football-col-1 {
+        padding: 3.5px 0px 14px 14px; } }
+    @media all and (max-width: 28.115em) and (min-width: 25em) and (max-width: 28.115em) {
+      .football-fixtures-row > div.football-col-1 {
+        padding: 4.5px 0px 18px 18px; } }
+    @media all and (max-width: 28.115em) and (min-width: 28.125em) and (max-width: 40.615em) {
+      .football-fixtures-row > div.football-col-1 {
+        padding: 3px 0px 12px 12px; } }
+    @media all and (max-width: 28.115em) and (min-width: 40.625em) and (max-width: 50em) {
+      .football-fixtures-row > div.football-col-1 {
+        padding: 2.5px 0px 10px 10px; } }
+    @media all and (max-width: 28.115em) and (min-width: 50em) and (max-width: 56.24em) {
+      .football-fixtures-row > div.football-col-1 {
+        padding: 3px 0px 12px 12px; } }
+    @media all and (max-width: 28.115em) and (min-width: 56.25em) and (max-width: 68.75em) {
+      .football-fixtures-row > div.football-col-1 {
+        padding: 2.5px 0px 10px 10px; } }
+    @media all and (max-width: 28.115em) and (min-width: 68.75em) {
+      .football-fixtures-row > div.football-col-1 {
+        padding: 3px 0px 12px 12px; } }
   .football-fixtures-row.date .football-col-1, .football-fixtures-row.competition .football-col-1 {
     font-weight: bold; }
     @media all and (max-width: 28.115em) {
@@ -5182,31 +5208,30 @@ figure.figure-wide img {
       @media all and (min-width: 68.75em) {
         .football-fixtures-row.match .football-col-1 {
           padding: 0px 6px 0px 0px; } }
-@media all and (max-width: 28.115em) and (max-width: 18.75em) {
-  .football-fixtures-row.match .football-col-1 {
-    padding: 0px 6px 0px 12px; } }
-@media all and (max-width: 28.115em) and (min-width: 18.75em) and (max-width: 25em) {
-  .football-fixtures-row.match .football-col-1 {
-    padding: 0px 7px 0px 14px; } }
-@media all and (max-width: 28.115em) and (min-width: 25em) and (max-width: 28.115em) {
-  .football-fixtures-row.match .football-col-1 {
-    padding: 0px 9px 0px 18px; } }
-@media all and (max-width: 28.115em) and (min-width: 28.125em) and (max-width: 40.615em) {
-  .football-fixtures-row.match .football-col-1 {
-    padding: 0px 6px 0px 12px; } }
-@media all and (max-width: 28.115em) and (min-width: 40.625em) and (max-width: 50em) {
-  .football-fixtures-row.match .football-col-1 {
-    padding: 0px 5px 0px 10px; } }
-@media all and (max-width: 28.115em) and (min-width: 50em) and (max-width: 56.24em) {
-  .football-fixtures-row.match .football-col-1 {
-    padding: 0px 6px 0px 12px; } }
-@media all and (max-width: 28.115em) and (min-width: 56.25em) and (max-width: 68.75em) {
-  .football-fixtures-row.match .football-col-1 {
-    padding: 0px 5px 0px 10px; } }
-@media all and (max-width: 28.115em) and (min-width: 68.75em) {
-  .football-fixtures-row.match .football-col-1 {
-    padding: 0px 6px 0px 12px; } }
-
+      @media all and (max-width: 28.115em) and (max-width: 18.75em) {
+        .football-fixtures-row.match .football-col-1 {
+          padding: 0px 6px 0px 12px; } }
+      @media all and (max-width: 28.115em) and (min-width: 18.75em) and (max-width: 25em) {
+        .football-fixtures-row.match .football-col-1 {
+          padding: 0px 7px 0px 14px; } }
+      @media all and (max-width: 28.115em) and (min-width: 25em) and (max-width: 28.115em) {
+        .football-fixtures-row.match .football-col-1 {
+          padding: 0px 9px 0px 18px; } }
+      @media all and (max-width: 28.115em) and (min-width: 28.125em) and (max-width: 40.615em) {
+        .football-fixtures-row.match .football-col-1 {
+          padding: 0px 6px 0px 12px; } }
+      @media all and (max-width: 28.115em) and (min-width: 40.625em) and (max-width: 50em) {
+        .football-fixtures-row.match .football-col-1 {
+          padding: 0px 5px 0px 10px; } }
+      @media all and (max-width: 28.115em) and (min-width: 50em) and (max-width: 56.24em) {
+        .football-fixtures-row.match .football-col-1 {
+          padding: 0px 6px 0px 12px; } }
+      @media all and (max-width: 28.115em) and (min-width: 56.25em) and (max-width: 68.75em) {
+        .football-fixtures-row.match .football-col-1 {
+          padding: 0px 5px 0px 10px; } }
+      @media all and (max-width: 28.115em) and (min-width: 68.75em) {
+        .football-fixtures-row.match .football-col-1 {
+          padding: 0px 6px 0px 12px; } }
     .football-fixtures-row.match .football-col-2 {
       text-align: right; }
     .football-fixtures-row.match .football-col-3 {
@@ -5540,7 +5565,7 @@ figure.figure-wide img {
       z-index: 1; }
       #standard-article.features .article .article__header .article__image:after {
         content: "";
-        background-image: linear-gradient(-180deg, transparent 80%, rgba(0, 0, 0, 0.5) 100%);
+        background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.5) 100%);
         display: block;
         position: absolute;
         top: 0;
