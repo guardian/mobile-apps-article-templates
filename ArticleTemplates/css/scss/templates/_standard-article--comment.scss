@@ -2,9 +2,15 @@
 	a,
 	.discussion__view-more {
 		color: $comment-pri;
+		&:active {
+			color: $comment-pri-accent;
+		}
 	}
-	.icon-circle {
+	.touchpoint {
 		background-color: $comment-pri;
+		&:active {
+			background-color: $comment-pri-accent;
+		}
 	}
 }
 
@@ -19,13 +25,15 @@
 				order: 1;
 				position: relative;
 				overflow: auto;
-				@include padding(0,0,2,0);
+				padding-bottom: 2em;
+
 				.article__alerts {
 					position: absolute;
 					bottom: 0;
 					display: block;
 					@include margin(0,0,1,0);
 				}
+
 				.article__headline {
 					span {
 						display: block;

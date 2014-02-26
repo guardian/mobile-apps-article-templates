@@ -94,22 +94,19 @@
 		top: 0;
 		right: 0;
 
-		.icon-circle {
-			display: inline-block;
+		.touchpoint {
+			background-color: transparent;
 			font-size: 14px;
+			display: inline-block;
 			@include mq($to: col2) {
 				float: left;
 			}
 		}
-		.icon-circle,
-		span {
-			-webkit-transition: 0.2s all ease-in;
-		}
 
-		&.increase .icon-circle {
+		&.increase .touchpoint {
 			color: $white;
 			border-color: $news-sec;
-			background-color: $news-sec !important;
+			background-color: $news-sec;
 		}
 	}
 
@@ -318,7 +315,7 @@
 		.comments-closed-label {
 			display: block !important;
 		}
-		.icon-circle, a {
+		.touchpoint, a {
 			display: none !important;
 		}
 	}
