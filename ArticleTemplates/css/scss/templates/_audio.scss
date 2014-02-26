@@ -42,30 +42,25 @@
 
 			.article__pubdate {
 				color: $white;
-				width: auto;
 			}
 
 			.article__comments {
 				border-left-color: fade-out($news-pri, 0.25);
 				@include mq($to: col1) {
+					color: $white;
 					border-left-color: fade-out($white, 0.25);
-					width: cols($base-1, 1);
-					a {
-						color: $white;
-					}
+					//width: cols($base-1, 1);
 				}
 				@include mq(col1, col2) {
+					color: $white;
 					border-left-color: fade-out($white, 0.25);
-					width: cols($base-2, 2);
-					a {
-						color: $white;
-					}
+					//width: cols($base-2, 2);
 				}
 				@include mq(col2, col3) {
-					width: cols($base-3, 6);
+					//width: cols($base-3, 6);
 				}
 				@include mq($from: col3) {
-					width: cols($base-4, 10);
+					//width: cols($base-4, 10);
 				}
 			}
 		}

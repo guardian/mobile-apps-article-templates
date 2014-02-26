@@ -38,6 +38,7 @@
 	.discussion__body, {
 		word-break: break-word;
 		word-wrap: break-word;
+		margin-top: 0;
 		@include mq(col2, col3) {
 			margin-right: cols($base-3, 1);
 			margin-left: cols($base-3, 4);
@@ -72,6 +73,7 @@
 	.discussion__username {
 		color: $headline;
 		font-weight: bold;
+		white-space: nowrap;
 	}
 
 	.discussion__responseto {
@@ -83,6 +85,7 @@
 		color: $meta;
 		font-size: $meta-size-1;
 		display: block;
+		white-space: nowrap;
 	}
 
 	.discussion__recommend {
@@ -97,7 +100,6 @@
 		.touchpoint {
 			background-color: transparent;
 			font-size: 14px;
-			display: inline-block;
 			@include mq($to: col2) {
 				float: left;
 			}
@@ -320,16 +322,3 @@
 		}
 	}
 }
-
-// Module Specific
-//.module--comments {
-//	.discussion__view-more {
-//		font-family: $agate-sans;
-//		font-weight: bold;
-//		@include body();
-//		@include margin(0.75);
-//		@include mq($to: col1) {
-//			margin-top: 0;
-//		}
-//	}
-//}
