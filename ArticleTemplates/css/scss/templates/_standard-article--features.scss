@@ -32,6 +32,7 @@
 			}
 
 			.inner-header {
+				padding-right: 0;
 				-webkit-order: 2;
 				order: 2;
 				z-index: 2;
@@ -140,7 +141,6 @@
 				}
 			}
 
-			.article__section,
 			.inner-header,
 			.article__standfirst,
 			.article__byline {
@@ -154,10 +154,11 @@
 		}
 
 		.article__body {
-			p:first-of-type:first-letter {
+			> p:first-of-type:first-letter {
 				color: $features-ter;
 				font-family: $egyptian-display;
 				font-weight: 100;
+				font-style: normal;
 				font-size: 3.3334em;
 				line-height: 1;
 				margin-bottom: -12px;
@@ -166,13 +167,13 @@
 			}
 			@include mq(col2, col3) {
 				padding-left: cols($base-3, 1);
-				p:first-of-type:first-letter {
+				> p:first-of-type:first-letter {
 					font-size: 5em;
 				}
 			}
 			@include mq($from: col3) {
 				padding-left: cols($base-4, 1);
-				p:first-of-type:first-letter {
+				> p:first-of-type:first-letter {
 					font-size: 5em;
 				}
 			}
