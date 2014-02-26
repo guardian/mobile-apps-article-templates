@@ -72,7 +72,7 @@
 			font-family: $agate-sans;
 		}
 
-		.inner-meta,
+		.article__pubdate,
 		.article__comments,
 		.article__alerts, {
 			@include padding(0.5, 1, 2, 1);
@@ -89,6 +89,7 @@
 
 		.article__comments {
 			border-left: 1px dotted $shadow;
+			display: block;
 			right: 0;
 		}
 	}
@@ -97,7 +98,7 @@
 		line-height: 1.25;
 		margin: 0;
 		border-bottom: 1px dotted $shadow;
-		@include padding(0.5, 1, 2, 1);
+		@include padding(0.75, 1, 2, 1);
 		#contributor-link {
 			font-weight: bold;
 		}
@@ -107,29 +108,25 @@
 		.article__section {
 			font-size: $body-size-1;
 		}
-		.article__meta {
-			.inner-meta {
-				width: cols($base-1, 3);
-			}
-			.article__comments {
-				width: cols($base-1, 1, 1);
-				.comment-label {
-					display: none;
-				}
+		.article__pubdate {
+			width: cols($base-1, 3);
+		}
+		.article__comments {
+			width: cols($base-1, 1, 1);
+			.comment-label {
+				display: none;
 			}
 		}
 	}
 
 	@include mq(col1, col2) {
-		.article__meta {
-			.inner-meta {
-				width: cols($base-2, 6);
-			}
-			.article__comments {
-				width: cols($base-2, 2, 1);
-				.comment-label {
-					display: none;
-				}
+		.article__pubdate {
+			width: cols($base-2, 6, 1);
+		}
+		.article__comments {
+			width: cols($base-2, 2);
+			.comment-label {
+				display: none;
 			}
 		}
 	}
@@ -139,14 +136,11 @@
 		.article__standfirst {
 			padding-right: cols($base-3, 3);
 		}
-
-		.article__meta {
-			.inner-meta {
-				width: cols($base-3, 9, 1);
-			}
-			.article__comments {
-				width: cols($base-3, 3);
-			}
+		.article__pubdate {
+			width: cols($base-3, 9, 1);
+		}
+		.article__comments {
+			width: cols($base-3, 3);
 		}
 	}
 
@@ -155,14 +149,11 @@
 		.article__standfirst {
 			padding-right: cols($base-4, 4);
 		}
-
-		.article__meta {
-			.inner-meta {
-				width: cols($base-4, 12, 1);
-			}
-			.article__comments {
-				width: cols($base-4, 4);
-			}
+		.article__pubdate {
+			width: cols($base-4, 12, 1);
+		}
+		.article__comments {
+			width: cols($base-4, 4);
 		}
 	}
 }
