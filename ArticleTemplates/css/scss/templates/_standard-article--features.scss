@@ -4,6 +4,9 @@
 		color: $features-ter;
 		&:active {
 			color: $features-ter-accent;
+			.touchpoint {
+				background-color: $features-ter-accent;
+			}
 		}
 	}
 	.touchpoint {
@@ -40,11 +43,11 @@
 				.article__headline {
 					color: #fff;
 					@include margin(1, 0, 2, 0);
-					padding: 0;
 					@include mq($from: col2) {
 						font-size: 4em; // 64px
 						font-weight: 100;
 						line-height: 0.875; // 56px
+						padding: 0;
 					}
 					@include mq(col2, col3) {
 						width: cols($base-3, 11);

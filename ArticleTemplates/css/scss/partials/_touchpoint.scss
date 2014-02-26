@@ -1,6 +1,5 @@
 .icon {
 	font-family: $icon;
-	position: relative;
 }
 
 .touchpoint {
@@ -12,12 +11,12 @@
 	width: 44px;
 	background-color: $news-pri;
 	border-radius: 100%;
-	display: table-cell;
+	display: inline-block;
 	&:active {
 		background-color: $news-sec;
 	}
 
-	&.touchpoint-secondary {
+	&.touchpoint--secondary {
 		color: $standfirst;
 		background-color: transparent;
 		border: 1px solid $shadow;
@@ -28,10 +27,20 @@
 		}
 	}
 
-	&.touchpoint-small {
+	&.touchpoint--small {
 		font-size: 18px;
 		line-height: 28px;
 		height: 28px;
 		width: 28px;
+	}
+}
+
+.touchpoint-container {
+	@include meta();
+	white-space: nowrap;
+
+	.touchpoint {
+		vertical-align: middle;
+		@include margin(0, 0, 0, 0.5);
 	}
 }

@@ -199,17 +199,17 @@ html {
       #advert-banner .advert-label .icon-container .icon,
       #advert.block .advert-label .icon-container .icon {
         font-size: 20px; }
-      #advert-mpu .advert-label .icon-container .touchpoint-secondary,
-      #advert-mobile-mpu .advert-label .icon-container .touchpoint-secondary,
-      #advert-banner .advert-label .icon-container .touchpoint-secondary,
-      #advert.block .advert-label .icon-container .touchpoint-secondary {
+      #advert-mpu .advert-label .icon-container .touchpoint--secondary,
+      #advert-mobile-mpu .advert-label .icon-container .touchpoint--secondary,
+      #advert-banner .advert-label .icon-container .touchpoint--secondary,
+      #advert.block .advert-label .icon-container .touchpoint--secondary {
         color: #aaaaaa;
         background-color: transparent;
         border-color: #aaaaaa; }
-        #advert-mpu .advert-label .icon-container .touchpoint-secondary:active,
-        #advert-mobile-mpu .advert-label .icon-container .touchpoint-secondary:active,
-        #advert-banner .advert-label .icon-container .touchpoint-secondary:active,
-        #advert.block .advert-label .icon-container .touchpoint-secondary:active {
+        #advert-mpu .advert-label .icon-container .touchpoint--secondary:active,
+        #advert-mobile-mpu .advert-label .icon-container .touchpoint--secondary:active,
+        #advert-banner .advert-label .icon-container .touchpoint--secondary:active,
+        #advert.block .advert-label .icon-container .touchpoint--secondary:active {
           color: white;
           background-color: #aaaaaa; }
   #advert-mpu .advert-wrapper,
@@ -329,7 +329,7 @@ html {
 
 .article__body,
 .discussion__body {
-  margin-top: 1em; }
+  margin-top: 0.5em; }
   @media all and (max-width: 28.115em) {
     .article__body,
     .discussion__body {
@@ -1863,7 +1863,8 @@ ul.tabs li.selected {
   .discussion__empty .discussion__body,
   .discussion__failed .discussion__body {
     word-break: break-word;
-    word-wrap: break-word; }
+    word-wrap: break-word;
+    margin-top: 0; }
     @media all and (min-width: 40.625em) and (max-width: 56.24em) {
       .discussion .discussion__body,
       .discussion__empty .discussion__body,
@@ -1909,7 +1910,8 @@ ul.tabs li.selected {
   .discussion__empty .discussion__username,
   .discussion__failed .discussion__username {
     color: #333333;
-    font-weight: bold; }
+    font-weight: bold;
+    white-space: nowrap; }
   .discussion .discussion__responseto,
   .discussion__empty .discussion__responseto,
   .discussion__failed .discussion__responseto {
@@ -1920,7 +1922,8 @@ ul.tabs li.selected {
   .discussion__failed .discussion__timestamp {
     color: #999999;
     font-size: 1.4rem;
-    display: block; }
+    display: block;
+    white-space: nowrap; }
   .discussion .discussion__recommend,
   .discussion__empty .discussion__recommend,
   .discussion__failed .discussion__recommend {
@@ -1958,8 +1961,7 @@ ul.tabs li.selected {
     .discussion__empty .discussion__recommend .touchpoint,
     .discussion__failed .discussion__recommend .touchpoint {
       background-color: transparent;
-      font-size: 14px;
-      display: inline-block; }
+      font-size: 14px; }
       @media all and (max-width: 40.615em) {
         .discussion .discussion__recommend .touchpoint,
         .discussion__empty .discussion__recommend .touchpoint,
@@ -2863,37 +2865,13 @@ figure.figure-wide img {
     .module .module__title .comments-count {
       color: #999999; }
   .module .module__action {
-    float: right;
-    vertical-align: middle; }
-    .module .module__action a {
-      white-space: nowrap;
-      vertical-align: middle;
-      padding-right: 8px;
-      height: auto;
-      display: table-cell; }
-      @media all and (max-width: 28.115em) {
-        .module .module__action a {
-          font-size: 1.4rem;
-          line-height: 2rem; } }
-      @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-        .module .module__action a {
-          font-size: 1.4rem;
-          line-height: 2rem; } }
-      @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-        .module .module__action a {
-          font-size: 1.6rem;
-          line-height: 2.2rem; } }
-      @media all and (min-width: 56.25em) {
-        .module .module__action a {
-          font-size: 1.6rem;
-          line-height: 2.2rem; } }
+    float: right; }
   @media all and (max-width: 40.615em) {
     .module .module__header .module__action a {
       display: none; } }
 
 .icon {
-  font-family: "Guardian Icons", Georgia, serif;
-  position: relative; }
+  font-family: "Guardian Icons", Georgia, serif; }
 
 .touchpoint {
   color: white;
@@ -2904,22 +2882,67 @@ figure.figure-wide img {
   width: 44px;
   background-color: #005689;
   border-radius: 100%;
-  display: table-cell; }
+  display: inline-block; }
   .touchpoint:active {
     background-color: #4bc6df; }
-  .touchpoint.touchpoint-secondary {
+  .touchpoint.touchpoint--secondary {
     color: #676767;
     background-color: transparent;
     border: 1px solid #dcdad5; }
-    .touchpoint.touchpoint-secondary:active {
+    .touchpoint.touchpoint--secondary:active {
       color: white;
       background-color: #676767;
       border-color: transparent; }
-  .touchpoint.touchpoint-small {
+  .touchpoint.touchpoint--small {
     font-size: 18px;
     line-height: 28px;
     height: 28px;
     width: 28px; }
+
+.touchpoint-container {
+  white-space: nowrap; }
+  @media all and (max-width: 28.115em) {
+    .touchpoint-container {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    .touchpoint-container {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    .touchpoint-container {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  @media all and (min-width: 56.25em) {
+    .touchpoint-container {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  .touchpoint-container .touchpoint {
+    vertical-align: middle; }
+    @media all and (max-width: 18.75em) {
+      .touchpoint-container .touchpoint {
+        margin: 0px 0px 0px 6px; } }
+    @media all and (min-width: 18.75em) and (max-width: 25em) {
+      .touchpoint-container .touchpoint {
+        margin: 0px 0px 0px 7px; } }
+    @media all and (min-width: 25em) and (max-width: 28.115em) {
+      .touchpoint-container .touchpoint {
+        margin: 0px 0px 0px 9px; } }
+    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      .touchpoint-container .touchpoint {
+        margin: 0px 0px 0px 6px; } }
+    @media all and (min-width: 40.625em) and (max-width: 50em) {
+      .touchpoint-container .touchpoint {
+        margin: 0px 0px 0px 5px; } }
+    @media all and (min-width: 50em) and (max-width: 56.24em) {
+      .touchpoint-container .touchpoint {
+        margin: 0px 0px 0px 6px; } }
+    @media all and (min-width: 56.25em) and (max-width: 68.75em) {
+      .touchpoint-container .touchpoint {
+        margin: 0px 0px 0px 5px; } }
+    @media all and (min-width: 68.75em) {
+      .touchpoint-container .touchpoint {
+        margin: 0px 0px 0px 6px; } }
 
 #help {
   font-family: "Agate Sans", sans-serif;
@@ -3454,49 +3477,51 @@ figure.figure-wide img {
   #discussion .article__header {
     padding: 0 2.89855%; } }
 #discussion .article__section {
-  padding-left: 0; }
+  padding: 0; }
   #discussion .article__section .comments-count {
     color: #999999; }
-@media all and (max-width: 28.115em) {
-  #discussion .article__headline {
-    font-size: 2.25rem;
-    line-height: 2.4rem; } }
-@media all and (min-width: 28.125em) and (max-width: 40.615em) {
-  #discussion .article__headline {
-    font-size: 3rem;
-    line-height: 3rem; } }
-@media all and (min-width: 40.625em) and (max-width: 56.24em) {
-  #discussion .article__headline {
-    font-size: 3.6rem;
-    line-height: 3.6rem; } }
-@media all and (min-width: 56.25em) {
-  #discussion .article__headline {
-    font-size: 3.6rem;
-    line-height: 3.6rem; } }
-@media all and (max-width: 18.75em) {
-  #discussion .article__headline {
-    margin: 0px 0px 48px 0px; } }
-@media all and (min-width: 18.75em) and (max-width: 25em) {
-  #discussion .article__headline {
-    margin: 0px 0px 56px 0px; } }
-@media all and (min-width: 25em) and (max-width: 28.115em) {
-  #discussion .article__headline {
-    margin: 0px 0px 72px 0px; } }
-@media all and (min-width: 28.125em) and (max-width: 40.615em) {
-  #discussion .article__headline {
-    margin: 0px 0px 48px 0px; } }
-@media all and (min-width: 40.625em) and (max-width: 50em) {
-  #discussion .article__headline {
-    margin: 0px 0px 40px 0px; } }
-@media all and (min-width: 50em) and (max-width: 56.24em) {
-  #discussion .article__headline {
-    margin: 0px 0px 48px 0px; } }
-@media all and (min-width: 56.25em) and (max-width: 68.75em) {
-  #discussion .article__headline {
-    margin: 0px 0px 40px 0px; } }
-@media all and (min-width: 68.75em) {
-  #discussion .article__headline {
-    margin: 0px 0px 48px 0px; } }
+#discussion .article__headline {
+  padding: 0; }
+  @media all and (max-width: 28.115em) {
+    #discussion .article__headline {
+      font-size: 2.25rem;
+      line-height: 2.4rem; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    #discussion .article__headline {
+      font-size: 3rem;
+      line-height: 3rem; } }
+  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    #discussion .article__headline {
+      font-size: 3.6rem;
+      line-height: 3.6rem; } }
+  @media all and (min-width: 56.25em) {
+    #discussion .article__headline {
+      font-size: 3.6rem;
+      line-height: 3.6rem; } }
+  @media all and (max-width: 18.75em) {
+    #discussion .article__headline {
+      margin: 0px 0px 48px 0px; } }
+  @media all and (min-width: 18.75em) and (max-width: 25em) {
+    #discussion .article__headline {
+      margin: 0px 0px 56px 0px; } }
+  @media all and (min-width: 25em) and (max-width: 28.115em) {
+    #discussion .article__headline {
+      margin: 0px 0px 72px 0px; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    #discussion .article__headline {
+      margin: 0px 0px 48px 0px; } }
+  @media all and (min-width: 40.625em) and (max-width: 50em) {
+    #discussion .article__headline {
+      margin: 0px 0px 40px 0px; } }
+  @media all and (min-width: 50em) and (max-width: 56.24em) {
+    #discussion .article__headline {
+      margin: 0px 0px 48px 0px; } }
+  @media all and (min-width: 56.25em) and (max-width: 68.75em) {
+    #discussion .article__headline {
+      margin: 0px 0px 40px 0px; } }
+  @media all and (min-width: 68.75em) {
+    #discussion .article__headline {
+      margin: 0px 0px 48px 0px; } }
 #discussion .article__controls {
   overflow: auto;
   font-family: "Agate Sans", sans-serif;
@@ -3524,14 +3549,9 @@ figure.figure-wide img {
     vertical-align: middle; }
 #discussion .article__controls__action {
   float: right; }
-  #discussion .article__controls__action a {
-    display: table-cell;
-    vertical-align: middle;
-    height: auto;
-    padding-right: 6px; }
-    @media all and (max-width: 40.615em) {
-      #discussion .article__controls__action a {
-        display: none; } }
+  @media all and (max-width: 40.615em) {
+    #discussion .article__controls__action a {
+      display: none; } }
   #discussion .article__controls__action .comments-closed-label {
     display: none;
     color: #676767; }
@@ -5226,6 +5246,9 @@ figure.figure-wide img {
   .news a:active,
   .news .discussion__view-more:active {
     color: #4bc6df; }
+    .news a:active .touchpoint,
+    .news .discussion__view-more:active .touchpoint {
+      background-color: #4bc6df; }
 .news .touchpoint {
   background-color: #005689; }
   .news .touchpoint:active {
@@ -5328,6 +5351,9 @@ figure.figure-wide img {
   .comment a:active,
   .comment .discussion__view-more:active {
     color: #f39f33; }
+    .comment a:active .touchpoint,
+    .comment .discussion__view-more:active .touchpoint {
+      background-color: #f39f33; }
 .comment .touchpoint {
   background-color: #e6711b; }
   .comment .touchpoint:active {
@@ -5421,6 +5447,9 @@ figure.figure-wide img {
   .features a:active,
   .features .discussion__view-more:active {
     color: #e02b7f; }
+    .features a:active .touchpoint,
+    .features .discussion__view-more:active .touchpoint {
+      background-color: #e02b7f; }
 .features .touchpoint {
   background-color: #951c55; }
   .features .touchpoint:active {
@@ -5467,8 +5496,7 @@ figure.figure-wide img {
       order: 2;
       z-index: 2; }
       #standard-article.features .article .article__header .inner-header .article__headline {
-        color: #fff;
-        padding: 0; }
+        color: #fff; }
         @media all and (max-width: 18.75em) {
           #standard-article.features .article .article__header .inner-header .article__headline {
             margin: 12px 0px 24px 0px; } }
@@ -5497,7 +5525,8 @@ figure.figure-wide img {
           #standard-article.features .article .article__header .inner-header .article__headline {
             font-size: 4em;
             font-weight: 100;
-            line-height: 0.875; } }
+            line-height: 0.875;
+            padding: 0; } }
         @media all and (min-width: 40.625em) and (max-width: 56.24em) {
           #standard-article.features .article .article__header .inner-header .article__headline {
             width: 91.5493%; } }
