@@ -3,7 +3,7 @@
 	position: relative;
 }
 
-.icon-circle {
+.touchpoint {
 	color: $white;
 	text-align: center;
 	font-size: 24px;
@@ -13,13 +13,22 @@
 	background-color: $news-pri;
 	border-radius: 100%;
 	display: table-cell;
-
-	&.icon-circle-secondary {
-		background-color: transparent !important;
-		border: 1px solid $shadow;
-		color: $standfirst;
+	&:active {
+		background-color: $news-sec;
 	}
-	&.icon-circle-small {
+
+	&.touchpoint-secondary {
+		color: $standfirst;
+		background-color: transparent;
+		border: 1px solid $shadow;
+		&:active {
+			color: $white;
+			background-color: $standfirst;
+			border-color: transparent;
+		}
+	}
+
+	&.touchpoint-small {
 		font-size: 18px;
 		line-height: 28px;
 		height: 28px;

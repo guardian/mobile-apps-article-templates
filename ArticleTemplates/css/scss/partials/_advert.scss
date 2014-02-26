@@ -12,8 +12,9 @@
 #advert-mobile-mpu,
 #advert-banner,
 #advert.block {
-	font-family: $agate-sans;
 	color: $standfirst;
+	font-family: $agate-sans;
+	@include meta();
 	background: $advert;
 	display: none;
 	overflow: auto;
@@ -30,8 +31,14 @@
 			.icon {
 				font-size: 20px;
 			}
-			.icon-circle-secondary {
-				border-color: $advert;
+			.touchpoint-secondary {
+				color: $advert-accent;
+				background-color: transparent;
+				border-color: $advert-accent;
+				&:active {
+					color: $white;
+					background-color: $advert-accent;
+				}
 			}
 		}
 	}
@@ -58,8 +65,6 @@
 	#advert-mobile-mpu,
 	#advert.block {
 		display: block;
-		font-size: $meta-size-1;
-		line-height: $meta-lead-1;
 		padding: 0;
 		.advert-label {
 			padding: 6px 0;
@@ -108,8 +113,6 @@
 	#advert-mpu,
 	#advert.block {
 		display: block;
-		font-size: $meta-size-2;
-		line-height: $meta-lead-2;
 	}
 }
 
@@ -117,8 +120,6 @@
 	#advert-mpu,
 	#advert.block {
 		display: block;
-		font-size: $meta-size-3;
-		line-height: $meta-lead-3;
 		margin-right: -(cols($base-3, 4))+$base-3;
 	}
 }
@@ -127,8 +128,6 @@
 	#advert-mpu,
 	#advert.block {
 		display: block;
-		font-size: $meta-size-4;
-		line-height: $meta-lead-4;
 		margin-right: -(cols($base-4, 5));
 	}
 }

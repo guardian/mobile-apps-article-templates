@@ -2,9 +2,15 @@
 	a,
 	.discussion__view-more {
 		color: $features-ter;
+		&:active {
+			color: $features-ter-accent;
+		}
 	}
-	.icon-circle {
+	.touchpoint {
 		background-color: $features-ter;
+		&:active {
+			background-color: $features-ter-accent;
+		}
 	}
 }
 
@@ -15,9 +21,14 @@
 		.article__header {
 			background-color: $features-ter;
 			@include margin(0, 0, 1, 0);
+			padding-top: 32px;
 
 			.article__section {
 				background-color: $background;
+				position: absolute;
+				top: 4px;
+				left: 0;
+				right: 0;
 			}
 
 			.inner-header {
@@ -28,6 +39,7 @@
 				.article__headline {
 					color: #fff;
 					@include margin(1, 0, 2, 0);
+					padding: 0;
 					@include mq($from: col2) {
 						font-size: 4em; // 64px
 						font-weight: 100;
@@ -120,7 +132,7 @@
 			.article__byline {
 				color: rgba(255, 255, 255, 0.9);
 				border: 0 none;
-				@include padding(0, 1, 0, 1);
+				@include padding(0, 1, 2, 1);
 				-webkit-order: 4;
 				order: 4;
 				a {

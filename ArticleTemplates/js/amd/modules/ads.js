@@ -60,7 +60,7 @@ define([
                     var tabletMpuHtml = "<div id='advert-mpu'>" +
                                             "<div class='advert-label'>Advertisement " +
                                                 "<div class='icon-container' onclick='javascript:window.location.href=&quot;x-gu://subscribe&quot;'>" +
-                                                    "<div class='icon-circle icon-circle-secondary'>" +
+                                                    "<div class='touchpoint touchpoint-secondary'>" +
                                                         "<span class='icon'>&#xe040;</span>" +
                                                     "</div>" +
                                                 "</div>" +
@@ -80,7 +80,7 @@ define([
                     var mobileMpuHtml = "<div id='advert-mobile-mpu'>" +
                                             "<div class='advert-label'>Advertisement " +
                                                 "<div class='icon-container' onclick='javascript:window.location.href=&quot;x-gu://subscribe&quot;'>" +
-                                                    "<div class='icon-circle icon-circle-secondary'>" +
+                                                    "<div class='touchpoint touchpoint-secondary'>" +
                                                         "<span class='icon'>&#xe040;</span>" +
                                                     "</div>" +
                                                 "</div>" +
