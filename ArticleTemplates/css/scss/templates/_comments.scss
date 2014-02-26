@@ -13,7 +13,6 @@
 
 	.article__section {
 		padding-left: 0;
-
 		.comments-count {
 			color: $meta;
 		}
@@ -22,6 +21,7 @@
 	.article__headline {
 		@include headline(0.75);
 		@include margin(0,0,4,0);
+		padding: 0;
 	}
 
 	.article__controls {
@@ -40,10 +40,6 @@
 	.article__controls__action {
 		float: right;
 		a {
-			display: table-cell;
-			vertical-align: middle;
-			height: auto;
-			padding-right: 6px;
 			@include mq($to: col2) {
 				display: none;
 			}
