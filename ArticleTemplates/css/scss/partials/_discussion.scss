@@ -99,26 +99,26 @@
 		.touchpoint__button {
 			background-color: transparent;
 			font-size: 14px;
-			@include mq($to: col2) {
-				float: left;
+			@include mq($from: col2) {
+				margin: 0 auto;
+				display: block;
 			}
 		}
 
 		&.increase .touchpoint__button {
 			color: $white;
-			border-color: $news-sec;
 			background-color: $news-sec;
+			border-color: transparent;
 		}
-	}
 
-	.discussion__recommend__count {
-		color: $meta;
-		font-size: $meta-size-1;
-		margin-top: 5px;
-		display: block;
-		@include mq($to: col2) {
-			margin-left: 8px;
-			float: right;
+		.touchpoint__label {
+			color: $meta;
+			font-weight: normal;
+			@include mq($from: col2) {
+				margin-top: 1px;
+				display: block;
+				padding: 0;
+			}
 		}
 	}
 
@@ -128,21 +128,24 @@
 		@include padding(0.75, 0, 0.75, 0);
 		overflow: hidden;
 		display: none;
+		@include mq(col2, col3) {
+			margin-left: cols($base-3, 4);
+		}
+		@include mq($from: col3) {
+			margin-left: cols($base-4, 5);
+		}
 
 		.discussion__reply {
 			font-weight: bold;
-			padding-left: 32px;
 			float: left;
-			position: relative;
-			.icon {
-				position: absolute;
-				left: 0;
-				top: -2px;
-			}
 		}
 		.discussion__report {
 			float: right;
+			.touchpoint__label {
+				font-weight: normal;
+			}
 		}
+
 	}
 	
 	.discussion__view-more {
@@ -225,22 +228,19 @@
 			@include margin(0.75, 0, 0, 0);
 		}
 
-		.discussion__recommend__count {
-			margin-top: 2px;
-		}
-
 		.discussion__options {
 			position: absolute;
 			bottom: 0;
 			right: 0;
+			left: 0;
 			@include mq($to: col2) {
-				left: 52px;
+				margin-left: 52px;
 			}
 			@include mq(col2, col3) {
-				left: cols($base-3, 4);
+				margin-left: cols($base-3, 4);
 			}
 			@include mq($from: col3) {
-				left: cols($base-4, 5);
+				margin-left: cols($base-4, 5);
 			}
 		}
 	}

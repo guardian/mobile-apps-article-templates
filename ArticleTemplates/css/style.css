@@ -1962,30 +1962,30 @@ ul.tabs li.selected {
     .discussion__failed .discussion__recommend .touchpoint__button {
       background-color: transparent;
       font-size: 14px; }
-      @media all and (max-width: 40.615em) {
+      @media all and (min-width: 40.625em) {
         .discussion .discussion__recommend .touchpoint__button,
         .discussion__empty .discussion__recommend .touchpoint__button,
         .discussion__failed .discussion__recommend .touchpoint__button {
-          float: left; } }
+          margin: 0 auto;
+          display: block; } }
     .discussion .discussion__recommend.increase .touchpoint__button,
     .discussion__empty .discussion__recommend.increase .touchpoint__button,
     .discussion__failed .discussion__recommend.increase .touchpoint__button {
       color: white;
-      border-color: #4bc6df;
-      background-color: #4bc6df; }
-  .discussion .discussion__recommend__count,
-  .discussion__empty .discussion__recommend__count,
-  .discussion__failed .discussion__recommend__count {
-    color: #999999;
-    font-size: 1.4rem;
-    margin-top: 5px;
-    display: block; }
-    @media all and (max-width: 40.615em) {
-      .discussion .discussion__recommend__count,
-      .discussion__empty .discussion__recommend__count,
-      .discussion__failed .discussion__recommend__count {
-        margin-left: 8px;
-        float: right; } }
+      background-color: #4bc6df;
+      border-color: transparent; }
+    .discussion .discussion__recommend .touchpoint__label,
+    .discussion__empty .discussion__recommend .touchpoint__label,
+    .discussion__failed .discussion__recommend .touchpoint__label {
+      color: #999999;
+      font-weight: normal; }
+      @media all and (min-width: 40.625em) {
+        .discussion .discussion__recommend .touchpoint__label,
+        .discussion__empty .discussion__recommend .touchpoint__label,
+        .discussion__failed .discussion__recommend .touchpoint__label {
+          margin-top: 1px;
+          display: block;
+          padding: 0; } }
   .discussion .discussion__options,
   .discussion__empty .discussion__options,
   .discussion__failed .discussion__options {
@@ -2056,23 +2056,29 @@ ul.tabs li.selected {
       .discussion__empty .discussion__options,
       .discussion__failed .discussion__options {
         padding: 9px 0px 9px 0px; } }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      .discussion .discussion__options,
+      .discussion__empty .discussion__options,
+      .discussion__failed .discussion__options {
+        margin-left: 32.39437%; } }
+    @media all and (min-width: 56.25em) {
+      .discussion .discussion__options,
+      .discussion__empty .discussion__options,
+      .discussion__failed .discussion__options {
+        margin-left: 30.52632%; } }
     .discussion .discussion__options .discussion__reply,
     .discussion__empty .discussion__options .discussion__reply,
     .discussion__failed .discussion__options .discussion__reply {
       font-weight: bold;
-      padding-left: 32px;
-      float: left;
-      position: relative; }
-      .discussion .discussion__options .discussion__reply .icon,
-      .discussion__empty .discussion__options .discussion__reply .icon,
-      .discussion__failed .discussion__options .discussion__reply .icon {
-        position: absolute;
-        left: 0;
-        top: -2px; }
+      float: left; }
     .discussion .discussion__options .discussion__report,
     .discussion__empty .discussion__options .discussion__report,
     .discussion__failed .discussion__options .discussion__report {
       float: right; }
+      .discussion .discussion__options .discussion__report .touchpoint__label,
+      .discussion__empty .discussion__options .discussion__report .touchpoint__label,
+      .discussion__failed .discussion__options .discussion__report .touchpoint__label {
+        font-weight: normal; }
   .discussion .discussion__view-more,
   .discussion__empty .discussion__view-more,
   .discussion__failed .discussion__view-more {
@@ -2396,31 +2402,28 @@ ul.tabs li.selected {
       .discussion__empty.is-response .discussion__recommend,
       .discussion__failed.is-response .discussion__recommend {
         margin: 9px 0px 0px 0px; } }
-    .discussion.is-response .discussion__recommend__count,
-    .discussion__empty.is-response .discussion__recommend__count,
-    .discussion__failed.is-response .discussion__recommend__count {
-      margin-top: 2px; }
     .discussion.is-response .discussion__options,
     .discussion__empty.is-response .discussion__options,
     .discussion__failed.is-response .discussion__options {
       position: absolute;
       bottom: 0;
-      right: 0; }
+      right: 0;
+      left: 0; }
       @media all and (max-width: 40.615em) {
         .discussion.is-response .discussion__options,
         .discussion__empty.is-response .discussion__options,
         .discussion__failed.is-response .discussion__options {
-          left: 52px; } }
+          margin-left: 52px; } }
       @media all and (min-width: 40.625em) and (max-width: 56.24em) {
         .discussion.is-response .discussion__options,
         .discussion__empty.is-response .discussion__options,
         .discussion__failed.is-response .discussion__options {
-          left: 32.39437%; } }
+          margin-left: 32.39437%; } }
       @media all and (min-width: 56.25em) {
         .discussion.is-response .discussion__options,
         .discussion__empty.is-response .discussion__options,
         .discussion__failed.is-response .discussion__options {
-          left: 30.52632%; } }
+          margin-left: 30.52632%; } }
   .discussion.is-response-hidden,
   .discussion__empty.is-response-hidden,
   .discussion__failed.is-response-hidden {
