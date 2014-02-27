@@ -108,40 +108,40 @@
 
 .element-image-inner,
 .element-video-inner {
-    background-color: $shadow;
-    padding-bottom: 60%;
-    position: relative;
-    overflow: hidden;
-    img {
-    	position: absolute;
-    	width: 100%;
-    	top: 0;
-    	right: 0;
-    	bottom: 0;
-    	left: 0;
-    }
+	background-color: $shadow;
+	padding-bottom: 60%;
+	position: relative;
+	overflow: hidden;
+	img {
+		position: absolute;
+		width: 100%;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
 }
 
 .element-video-inner {
-    padding-bottom: 56.25%; // 16:9 image ratio
-    .element-video__button {
-    	position: absolute;
-    	bottom: 0;
-    	z-index: 2;
-    	@include padding(0,0,1,1);
-    	.touchpoint {
-    		background-color: $media-pri;
-    		color: $headline;
-    		display: table-cell;
-    		vertical-align: middle;
-    	}
-    	.element-video__button__duration {
-    		color: $media-pri;
-    		font-family: $agate-sans;
-    		font-weight: bold;
-    		display: table-cell;
-    		@include padding(0,0,0,1);
-    		vertical-align: middle;
-    	}
-    }
+	padding-bottom: 56.25%; // 16:9 image ratio
+	.element-video__button {
+		position: absolute;
+		bottom: 0;
+		z-index: 2;
+		@include padding(0,0,1,1);
+		.touchpoint {
+			background-color: $media-pri;
+			color: $headline;
+			display: table-cell;
+			vertical-align: middle;
+		}
+		.element-video__button__duration {
+			color: $media-pri;
+			font-family: $agate-sans;
+			font-weight: bold;
+			display: table-cell;
+			@include padding(0,0,0,1);
+			vertical-align: middle;
+		}
+	}
 }
