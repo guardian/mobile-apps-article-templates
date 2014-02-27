@@ -124,24 +124,30 @@
 
 .element-video-inner {
 	padding-bottom: 56.25%; // 16:9 image ratio
+
 	.element-video__button {
 		position: absolute;
 		bottom: 0;
 		z-index: 2;
 		@include padding(0,0,1,1);
-		.touchpoint {
-			background-color: $media-pri;
+		.touchpoint__button {
 			color: $headline;
-			display: table-cell;
-			vertical-align: middle;
+			background-color: $media-pri;
+			&:active {
+				color: $media-pri;
+				background-color: $headline;
+			}
 		}
-		.element-video__button__duration {
+		.touchpoint__label {
 			color: $media-pri;
-			font-family: $agate-sans;
-			font-weight: bold;
-			display: table-cell;
-			@include padding(0,0,0,1);
-			vertical-align: middle;
+			text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+		}
+	}
+
+	&:active {
+		.touchpoint__button {
+			color: $media-pri;
+			background-color: $headline;
 		}
 	}
 }

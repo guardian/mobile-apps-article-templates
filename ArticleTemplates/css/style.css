@@ -199,17 +199,17 @@ html {
       #advert-banner .advert-label .icon-container .icon,
       #advert.block .advert-label .icon-container .icon {
         font-size: 20px; }
-      #advert-mpu .advert-label .icon-container .touchpoint--secondary,
-      #advert-mobile-mpu .advert-label .icon-container .touchpoint--secondary,
-      #advert-banner .advert-label .icon-container .touchpoint--secondary,
-      #advert.block .advert-label .icon-container .touchpoint--secondary {
+      #advert-mpu .advert-label .icon-container .touchpoint__button--secondary,
+      #advert-mobile-mpu .advert-label .icon-container .touchpoint__button--secondary,
+      #advert-banner .advert-label .icon-container .touchpoint__button--secondary,
+      #advert.block .advert-label .icon-container .touchpoint__button--secondary {
         color: #aaaaaa;
         background-color: transparent;
         border-color: #aaaaaa; }
-        #advert-mpu .advert-label .icon-container .touchpoint--secondary:active,
-        #advert-mobile-mpu .advert-label .icon-container .touchpoint--secondary:active,
-        #advert-banner .advert-label .icon-container .touchpoint--secondary:active,
-        #advert.block .advert-label .icon-container .touchpoint--secondary:active {
+        #advert-mpu .advert-label .icon-container .touchpoint__button--secondary:active,
+        #advert-mobile-mpu .advert-label .icon-container .touchpoint__button--secondary:active,
+        #advert-banner .advert-label .icon-container .touchpoint__button--secondary:active,
+        #advert.block .advert-label .icon-container .touchpoint__button--secondary:active {
           color: white;
           background-color: #aaaaaa; }
   #advert-mpu .advert-wrapper,
@@ -1532,12 +1532,12 @@ ul.tabs li.selected {
     @media all and (min-width: 68.75em) {
       .card .video-button {
         padding: 6px 6px 6px 6px; } }
-    .card .video-button .touchpoint {
+    .card .video-button .touchpoint__button {
       background-color: #ffbb00;
       color: #333333;
       display: table-cell;
       vertical-align: middle; }
-      .card .video-button .touchpoint .icon {
+      .card .video-button .touchpoint__button .icon {
         position: relative;
         top: 2px; }
     .card .video-button p {
@@ -1957,19 +1957,19 @@ ul.tabs li.selected {
       .discussion__failed .discussion__recommend {
         font-size: 1.6rem;
         line-height: 2.2rem; } }
-    .discussion .discussion__recommend .touchpoint,
-    .discussion__empty .discussion__recommend .touchpoint,
-    .discussion__failed .discussion__recommend .touchpoint {
+    .discussion .discussion__recommend .touchpoint__button,
+    .discussion__empty .discussion__recommend .touchpoint__button,
+    .discussion__failed .discussion__recommend .touchpoint__button {
       background-color: transparent;
       font-size: 14px; }
       @media all and (max-width: 40.615em) {
-        .discussion .discussion__recommend .touchpoint,
-        .discussion__empty .discussion__recommend .touchpoint,
-        .discussion__failed .discussion__recommend .touchpoint {
+        .discussion .discussion__recommend .touchpoint__button,
+        .discussion__empty .discussion__recommend .touchpoint__button,
+        .discussion__failed .discussion__recommend .touchpoint__button {
           float: left; } }
-    .discussion .discussion__recommend.increase .touchpoint,
-    .discussion__empty .discussion__recommend.increase .touchpoint,
-    .discussion__failed .discussion__recommend.increase .touchpoint {
+    .discussion .discussion__recommend.increase .touchpoint__button,
+    .discussion__empty .discussion__recommend.increase .touchpoint__button,
+    .discussion__failed .discussion__recommend.increase .touchpoint__button {
       color: white;
       border-color: #4bc6df;
       background-color: #4bc6df; }
@@ -2519,7 +2519,7 @@ ul.tabs li.selected {
 
 .comments-closed .article__controls__action .comments-closed-label {
   display: block !important; }
-.comments-closed .article__controls__action .touchpoint, .comments-closed .article__controls__action a {
+.comments-closed .article__controls__action .touchpoint__button, .comments-closed .article__controls__action a {
   display: none !important; }
 
 #discussion.android {
@@ -2698,41 +2698,18 @@ ul.tabs li.selected {
     @media all and (min-width: 68.75em) {
       .element-video-inner .element-video__button {
         padding: 0px 0px 12px 12px; } }
-    .element-video-inner .element-video__button .touchpoint {
-      background-color: #ffbb00;
+    .element-video-inner .element-video__button .touchpoint__button {
       color: #333333;
-      display: table-cell;
-      vertical-align: middle; }
-    .element-video-inner .element-video__button .element-video__button__duration {
+      background-color: #ffbb00; }
+      .element-video-inner .element-video__button .touchpoint__button:active {
+        color: #ffbb00;
+        background-color: #333333; }
+    .element-video-inner .element-video__button .touchpoint__label {
       color: #ffbb00;
-      font-family: "Agate Sans", sans-serif;
-      font-weight: bold;
-      display: table-cell;
-      vertical-align: middle; }
-      @media all and (max-width: 18.75em) {
-        .element-video-inner .element-video__button .element-video__button__duration {
-          padding: 0px 0px 0px 12px; } }
-      @media all and (min-width: 18.75em) and (max-width: 25em) {
-        .element-video-inner .element-video__button .element-video__button__duration {
-          padding: 0px 0px 0px 14px; } }
-      @media all and (min-width: 25em) and (max-width: 28.115em) {
-        .element-video-inner .element-video__button .element-video__button__duration {
-          padding: 0px 0px 0px 18px; } }
-      @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-        .element-video-inner .element-video__button .element-video__button__duration {
-          padding: 0px 0px 0px 12px; } }
-      @media all and (min-width: 40.625em) and (max-width: 50em) {
-        .element-video-inner .element-video__button .element-video__button__duration {
-          padding: 0px 0px 0px 10px; } }
-      @media all and (min-width: 50em) and (max-width: 56.24em) {
-        .element-video-inner .element-video__button .element-video__button__duration {
-          padding: 0px 0px 0px 12px; } }
-      @media all and (min-width: 56.25em) and (max-width: 68.75em) {
-        .element-video-inner .element-video__button .element-video__button__duration {
-          padding: 0px 0px 0px 10px; } }
-      @media all and (min-width: 68.75em) {
-        .element-video-inner .element-video__button .element-video__button__duration {
-          padding: 0px 0px 0px 12px; } }
+      text-shadow: 0 0 4px rgba(0, 0, 0, 0.5); }
+  .element-video-inner:active .touchpoint__button {
+    color: #ffbb00;
+    background-color: #333333; }
 
 figure img {
   display: block; }
@@ -2893,7 +2870,7 @@ figure.figure-wide img {
   .module .module__action {
     float: right; }
   @media all and (max-width: 40.615em) {
-    .module .module__header .module__action a {
+    .module .module__header .module__action .touchpoint__label {
       display: none; } }
 
 @media all and (max-width: 18.75em) {
@@ -2925,75 +2902,55 @@ figure.figure-wide img {
   font-family: "Guardian Icons", Georgia, serif; }
 
 .touchpoint {
-  color: white;
-  text-align: center;
-  font-size: 24px;
-  line-height: 44px;
-  height: 44px;
-  width: 44px;
-  background-color: #005689;
-  border-radius: 100%;
-  display: inline-block; }
-  .touchpoint:active {
-    background-color: #4bc6df; }
-  .touchpoint.touchpoint--secondary {
+  display: block; }
+  .touchpoint .touchpoint__button {
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    line-height: 44px;
+    vertical-align: middle;
+    background-color: #005689;
+    border-radius: 100%;
+    display: inline-block;
+    height: 44px;
+    width: 44px; }
+    .touchpoint .touchpoint__button:active {
+      background-color: #4bc6df; }
+  .touchpoint .touchpoint__button--secondary {
     color: #676767;
     background-color: transparent;
     border: 1px solid #dcdad5; }
-    .touchpoint.touchpoint--secondary:active {
+    .touchpoint .touchpoint__button--secondary:active {
       color: white;
       background-color: #676767;
       border-color: transparent; }
-  .touchpoint.touchpoint--small {
+  .touchpoint .touchpoint__button--small {
     font-size: 18px;
     line-height: 28px;
     height: 28px;
     width: 28px; }
-
-.touchpoint-container {
-  white-space: nowrap; }
-  @media all and (max-width: 28.115em) {
-    .touchpoint-container {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    .touchpoint-container {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    .touchpoint-container {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-  @media all and (min-width: 56.25em) {
-    .touchpoint-container {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-  .touchpoint-container .touchpoint {
-    vertical-align: middle; }
-    @media all and (max-width: 18.75em) {
-      .touchpoint-container .touchpoint {
-        margin: 0px 0px 0px 6px; } }
-    @media all and (min-width: 18.75em) and (max-width: 25em) {
-      .touchpoint-container .touchpoint {
-        margin: 0px 0px 0px 7px; } }
-    @media all and (min-width: 25em) and (max-width: 28.115em) {
-      .touchpoint-container .touchpoint {
-        margin: 0px 0px 0px 9px; } }
+  .touchpoint .touchpoint__label {
+    font-family: "Agate Sans", sans-serif;
+    font-weight: bold;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 0 6px; }
+    @media all and (max-width: 28.115em) {
+      .touchpoint .touchpoint__label {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
     @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      .touchpoint-container .touchpoint {
-        margin: 0px 0px 0px 6px; } }
-    @media all and (min-width: 40.625em) and (max-width: 50em) {
-      .touchpoint-container .touchpoint {
-        margin: 0px 0px 0px 5px; } }
-    @media all and (min-width: 50em) and (max-width: 56.24em) {
-      .touchpoint-container .touchpoint {
-        margin: 0px 0px 0px 6px; } }
-    @media all and (min-width: 56.25em) and (max-width: 68.75em) {
-      .touchpoint-container .touchpoint {
-        margin: 0px 0px 0px 5px; } }
-    @media all and (min-width: 68.75em) {
-      .touchpoint-container .touchpoint {
-        margin: 0px 0px 0px 6px; } }
+      .touchpoint .touchpoint__label {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      .touchpoint .touchpoint__label {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
+    @media all and (min-width: 56.25em) {
+      .touchpoint .touchpoint__label {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
 
 .offline .element-video,
 .offline .element-embed,
@@ -3806,7 +3763,7 @@ figure.figure-wide img {
   #liveblog .live-updates .live-updates-label {
     display: table-cell;
     vertical-align: middle; }
-  #liveblog .live-updates .touchpoint {
+  #liveblog .live-updates .touchpoint__button {
     -webkit-transform: rotate(-90deg); }
 @media all and (max-width: 28.115em) {
   #liveblog .article__header .live-summary-body {
@@ -5366,12 +5323,12 @@ figure.figure-wide img {
   .news a:active,
   .news .discussion__view-more:active {
     color: #4bc6df; }
-    .news a:active .touchpoint,
-    .news .discussion__view-more:active .touchpoint {
+    .news a:active .touchpoint__button,
+    .news .discussion__view-more:active .touchpoint__button {
       background-color: #4bc6df; }
-.news .touchpoint {
+.news .touchpoint__button {
   background-color: #005689; }
-  .news .touchpoint:active {
+  .news .touchpoint__button:active {
     background-color: #4bc6df; }
 
 @media all and (max-width: 18.75em) {
@@ -5471,12 +5428,12 @@ figure.figure-wide img {
   .comment a:active,
   .comment .discussion__view-more:active {
     color: #f39f33; }
-    .comment a:active .touchpoint,
-    .comment .discussion__view-more:active .touchpoint {
+    .comment a:active .touchpoint__button,
+    .comment .discussion__view-more:active .touchpoint__button {
       background-color: #f39f33; }
-.comment .touchpoint {
+.comment .touchpoint__button {
   background-color: #e6711b; }
-  .comment .touchpoint:active {
+  .comment .touchpoint__button:active {
     background-color: #f39f33; }
 
 #standard-article.comment .article {
@@ -5567,19 +5524,20 @@ figure.figure-wide img {
   .features a:active,
   .features .discussion__view-more:active {
     color: #e02b7f; }
-    .features a:active .touchpoint,
-    .features .discussion__view-more:active .touchpoint {
+    .features a:active .touchpoint__button,
+    .features .discussion__view-more:active .touchpoint__button {
       background-color: #e02b7f; }
-.features .touchpoint {
+.features .touchpoint__button {
   background-color: #951c55; }
-  .features .touchpoint:active {
+  .features .touchpoint__button:active {
     background-color: #e02b7f; }
 
 #standard-article.features .article {
   border-top-color: #951c55; }
   #standard-article.features .article .article__header {
     background-color: #951c55;
-    padding-top: 32px; }
+    padding-top: 32px;
+    position: relative; }
     @media all and (max-width: 18.75em) {
       #standard-article.features .article .article__header {
         margin: 0px 0px 12px 0px; } }
