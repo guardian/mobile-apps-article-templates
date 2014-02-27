@@ -21,19 +21,14 @@ aside {
 		@include rbase-3(4);
 		@include rbase-4(4);
 		border-top: 1px dotted $shadow;
-		@include padding(1);
+		@include padding(1, 1, 1, 0);
 		
 		@include mq($to: col1) {
-			padding-left: 0;
 			padding-right: 0;
 			margin-bottom: 18px;
 			border-bottom: 1px dotted $shadow;
 			display: flex;
 			align-items: center;
-		}
-		
-		@include mq($from: col1) {
-			padding-left: 0px;
 		}
 		
 		.aside-witness__touchpoint {
@@ -43,7 +38,7 @@ aside {
 				color: $witness;
 			}
 			@include mq($to: col1) {
-				margin-right: 12px;
+				margin-right: 18px;
 				min-width: 44px;
 			}
 		}
@@ -59,7 +54,7 @@ aside {
 		}
 		
 		.aside-witness__powered {
-			min-width: 108px;
+			width: 108px;
 			height: auto;
 			@include mq($to: col1) {
 				min-width: 94px;
