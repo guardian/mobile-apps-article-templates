@@ -7,22 +7,42 @@
 	.article__header {
 		background-color: $white;
 		border-bottom: 2px solid $shadow;
-		position: relative;
+		
 		
 		.inner-header {
 			padding: 0;
 		}
-		
-		.live-tag {
+
+		.article__section {
+			position: relative;
+			@include mq($to: col1) {
+				padding-left: 4.5em;
+			}
+			@include mq(col1, col2) {
+				padding-left: 4em;
+			}
+			@include mq(col2, col3) {
+				padding-left: cols($base-3, 4, 1);
+			}
+			@include mq($from: col3) {
+				padding-left: cols($base-4, 5, 1);
+			}
+		}
+
+		.article__section__live {
 			color: $alert;
 			font-family: $agate-sans;
 			font-weight: bold;
-			@include body();
 			position: absolute;
 			left: 0;
 			top: 0;
-			@include padding(0.75, 0, 0, 1);
-			span {
+			@include headline(0.5);
+			@include padding(0.5, 1, 0.5, 1);
+			@include mq($from: col2) {
+				font-size: $body-size-1;
+			}
+			&:before {
+				content: "• ";
 				-webkit-animation: blink 1.5s ease-in infinite;
 			}
 		}
@@ -120,9 +140,6 @@
 
 	@include mq($to: col1) {
 		.article__header {
-			.article__section {
-				padding-left: 4.5em;
-			}
 			.live-summary-body {
 				max-height: 175px;
 			}
@@ -140,9 +157,6 @@
 
 	@include mq(col1, col2) {
 		.article__header {
-			.article__section {
-				padding-left: 3.5em;
-			}
 			.live-summary-body {
 				max-height: 175px;
 			}
@@ -160,9 +174,6 @@
 
 	@include mq(col2, col3) {
 		.article__header {
-			.article__section {
-				padding-left: cols($base-3, 4, 1);
-			}
 			.inner-header {
 				margin-left: cols($base-3, 4);
 				.article__alerts {
@@ -197,9 +208,6 @@
 
 	@include mq($from: col3) {
 		.article__header {
-			.article__section {
-				padding-left: cols($base-4, 5, 1);
-			}
 			.inner-header {
 				margin-left: cols($base-4, 5);
 				.article__alerts {
