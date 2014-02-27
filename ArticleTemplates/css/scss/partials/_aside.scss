@@ -16,9 +16,6 @@ aside {
 	
 	// Witness
 	&.aside-witness {
-		@include rbase-2(3);
-		@include rbase-3(4);
-		@include rbase-4(4);
 		border-top: 1px dotted $shadow;
 		@include padding(1, 1, 1, 0);
 		
@@ -29,6 +26,15 @@ aside {
 			border-bottom: 1px dotted $shadow;
 			display: flex;
 			align-items: center;
+		}
+		@include mq(col1, col2) {
+			width: cols($base-2, 3);
+		}
+		@include mq(col2, col3) {
+			width: cols($base-3, 4);
+		}
+		@include mq($from: col3) {
+			width: cols($base-4, 4);
 		}
 		
 		.aside-witness__touchpoint {
