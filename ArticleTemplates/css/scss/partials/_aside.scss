@@ -1,0 +1,71 @@
+aside {
+	float: right;
+	width: 100%;
+	@include margin(0, 0, 2, 1);
+	
+	@include mq(col1, col2) {
+		margin-right: -$base-2;
+	}
+	
+	@include mq(col2, col3) {
+		margin-right: -(cols($base-3, 4));
+	}
+	
+	@include mq($from: col3) {
+		margin-right: -(cols($base-4, 5)+$base-4*2);
+	}
+	
+	// Witness
+	&.aside-witness {
+		@include rbase-2(3);
+		@include rbase-3(4);
+		@include rbase-4(4);
+		border-top: 1px dotted $shadow;
+		@include padding(1);
+		
+		@include mq($to: col1) {
+			padding-left: 0;
+			padding-right: 0;
+			margin-bottom: 18px;
+			border-bottom: 1px dotted $shadow;
+			display: flex;
+			align-items: center;
+		}
+		
+		@include mq($from: col1) {
+			padding-left: 0px;
+		}
+		
+		.aside-witness__touchpoint {
+			background-color: $witness;
+			color: $news-sec;
+			&:active {
+				color: $witness;
+			}
+			@include mq($to: col1) {
+				margin-right: 18px;
+				min-width: 44px;
+			}
+		}
+		
+		.aside-witness__label {
+			font-family: $agate-sans;
+			font-weight: bold;
+			@include meta();
+			@include margin(0.5, 0, 0.5, 0);
+			@include mq($to: col1) {
+				margin: 0;
+			}
+		}
+		
+		.aside-witness__powered {
+			width: 108px;
+			height: auto;
+			@include mq($to: col1) {
+				min-width: 94px;
+				height: 30px;
+				margin-left: 12px;
+			}
+		}
+	}
+}
