@@ -80,12 +80,45 @@
 		background-color: $white;
 		border-top: none;
 		border-bottom: 2px solid $shadow;
-		@include margin(1, 0, 1, 0);
+		@include margin(1);
 		@include padding(1);
-		width: 100%;
+		width: auto;
 		
-		aside-witness__touchpoint {
+		@include mq($from: col1) {
+			margin-left: 0px;
+			margin-right: 0px;
+		}
+		
+		.aside-witness__touchpoint {
 			display: inline-block;
+			vertical-align: middle;
+			@include rbase-3(4);
+			@include rbase-4(5);
+			@include mq($to: col2) {
+				padding-right: 12px;
+				margin-top: -2px;
+			}
+		}
+		
+		.aside-witness__label {
+			display: inline-block;
+			vertical-align: middle;
+			margin: 0;
+			@include mq($from: col1) {
+				height: 44px;
+				width: 180px;
+			}
+		}
+		
+		.aside-witness__powered {
+			float: right;
+			display: inline-block;
+			margin-top: 4px;
+			width: auto;
+			@include mq($from: col1) {
+				height: 36px;
+				margin-top: 0px;
+			}
 		}
 		
 	}

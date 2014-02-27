@@ -32,13 +32,16 @@ aside {
 		}
 		
 		.aside-witness__touchpoint {
-			background-color: $witness;
-			color: $news-sec;
-			&:active {
-				color: $witness;
+			.touchpoint {
+				background-color: $witness;
+				color: $news-sec;
+				&:active {
+					background-color: $news-sec;
+					color: $witness;
+				}
 			}
 			@include mq($to: col1) {
-				margin-right: 18px;
+				margin-right: 12px;
 				min-width: 44px;
 			}
 		}
