@@ -1,6 +1,5 @@
 aside {
 	float: right;
-	width: 100%;
 	@include margin(0, 0, 2, 2);
 	
 	@include mq(col1, col2) {
@@ -24,6 +23,7 @@ aside {
 		@include padding(1, 1, 1, 0);
 		
 		@include mq($to: col1) {
+			width: 100%;
 			padding-right: 0;
 			margin-bottom: 18px;
 			border-bottom: 1px dotted $shadow;
