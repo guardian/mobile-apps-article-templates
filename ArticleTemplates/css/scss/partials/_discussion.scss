@@ -8,7 +8,6 @@
 	@include margin(1, 0, 0, 0);
 	overflow: hidden;
 	@include padding(0.75);
-	box-shadow: 0 -10px 0 0 $background, 0 -12px 0 0 $shadow;
 	@include mq($to: col1) {
 		margin: $base-1 / 1.5 $base-1 / 1.5 0 $base-1 / 1.5;
 		display: block;
@@ -164,7 +163,6 @@
 
 	// Response
 	&.is-response {
-		box-shadow: none;
 		border-top: none;
 		padding-top: 0;
 		margin-top: 0;
@@ -264,8 +262,8 @@
 	}
 }
 
-.discussion:nth-child(3) {
-	box-shadow: none;
+.discussion__thread {
+	border-bottom: 2px solid $shadow;
 }
 
 .discussion__view-more,
@@ -283,13 +281,11 @@
 	display: none;
 	color: $standfirst;
 	@include meta();
-	box-shadow: none;
 	border-top: 1px solid $headline;
 }
 
 .discussion__loading {
 	text-align: center;
-	box-shadow: 0 -10px 0 0 $background, 0 -12px 0 0 $shadow;
 	@include padding(0.75);
 	img {
 		width: 44px;
@@ -321,4 +317,22 @@
 			display: none !important;
 		}
 	}
+}
+
+// Module Specific
+//.module--comments {
+//	.discussion__view-more {
+//		font-family: $agate-sans;
+//		font-weight: bold;
+//		@include body();
+//		@include margin(0.75);
+//		@include mq($to: col1) {
+//			margin-top: 0;
+//		}
+//	}
+//}
+
+#discussion.android {
+	@include padding(0,1,0,1);
+	box-sizing: border-box;
 }

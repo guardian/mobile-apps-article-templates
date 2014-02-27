@@ -32,7 +32,7 @@ body, html {
   max-width: 100%;
   -webkit-font-smoothing: antialiased;
   -webkit-font-feature-settings: "kern" 1;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   outline: 0; }
 
 body {
@@ -64,48 +64,60 @@ a {
   font-family: "Egyptian Display";
   font-weight: 100;
   src: url("../fonts/GdnEgyDE1Thi.otf"); }
+
 @font-face {
   font-family: "Egyptian Display";
   font-weight: 200;
   src: url("../fonts/GdnEgyDE2Lig.otf"); }
+
 @font-face {
   font-family: "Egyptian Display";
   font-weight: 600;
   src: url("../fonts/GdnEgyDE6Bol.otf"); }
+
 @font-face {
   font-family: "Egyptian Text";
   src: url("../fonts/EgyptianText-Regular.ttf"); }
+
 @font-face {
   font-family: "Egyptian Text";
   font-style: italic;
   src: url("../fonts/EgyptianText-RegularItalic.ttf"); }
+
 @font-face {
   font-family: "Egyptian Text";
   font-weight: bold;
   src: url("../fonts/EgyptianText-Medium.ttf"); }
+
 @font-face {
   font-family: "Titlepiece";
   font-weight: 600;
   src: url("../fonts/GdnTitlepiece.otf"); }
+
 @font-face {
   font-family: "Agate Sans";
   src: url("../fonts/GdnAgaSanTwoAS32Reg.otf"); }
+
 @font-face {
   font-family: "Agate Sans";
   font-style: italic;
   src: url("../fonts/GdnAgaSanTwoAS32RegIta.otf"); }
+
 @font-face {
   font-family: "Agate Sans";
   font-weight: bold;
   src: url("../fonts/GdnAgaSanTwoAS62Bol.otf"); }
+
 @font-face {
   font-family: "Agate Sans";
   font-weight: bold;
   font-style: italic;
   src: url("../fonts/GdnAgaSanTwoAS62BolIta.otf"); }
+
 @font-face {
   font-family: "Guardian Icons";
   src: url("../fonts/guardianicons.ttf"); }
+
 html {
   font-size: 62.5%;
   font-family: "Egyptian Text", Georgia, serif; }
@@ -310,6 +322,9 @@ html {
   @media all and (min-width: 56.25em) {
     .article {
       margin-bottom: 3.15789%; } }
+
+.android .article {
+  border-top: none; }
 
 .article__alerts {
   font-family: "Agate Sans", sans-serif;
@@ -1660,8 +1675,7 @@ ul.tabs li.selected {
   font-family: "Agate Sans", sans-serif;
   background-color: white;
   border-top: 1px solid #333333;
-  overflow: hidden;
-  box-shadow: 0 -10px 0 0 #f6f6f6, 0 -12px 0 0 #dcdad5; }
+  overflow: hidden; }
   @media all and (max-width: 28.115em) {
     .discussion,
     .discussion__empty,
@@ -2176,7 +2190,6 @@ ul.tabs li.selected {
   .discussion.is-response,
   .discussion__empty.is-response,
   .discussion__failed.is-response {
-    box-shadow: none;
     border-top: none;
     padding-top: 0;
     margin-top: 0; }
@@ -2439,8 +2452,8 @@ ul.tabs li.selected {
     .discussion__failed.blocked .discussion__recommend {
       display: none; }
 
-.discussion:nth-child(3) {
-  box-shadow: none; }
+.discussion__thread {
+  border-bottom: 2px solid #dcdad5; }
 
 @media all and (min-width: 40.625em) and (max-width: 56.24em) {
   .discussion__view-more,
@@ -2457,7 +2470,6 @@ ul.tabs li.selected {
 .discussion__failed {
   display: none;
   color: #676767;
-  box-shadow: none;
   border-top: 1px solid #333333; }
   @media all and (max-width: 28.115em) {
     .discussion__empty,
@@ -2481,8 +2493,7 @@ ul.tabs li.selected {
       line-height: 2.2rem; } }
 
 .discussion__loading {
-  text-align: center;
-  box-shadow: 0 -10px 0 0 #f6f6f6, 0 -12px 0 0 #dcdad5; }
+  text-align: center; }
   @media all and (max-width: 18.75em) {
     .discussion__loading {
       padding: 9px 9px 9px 9px; } }
@@ -2524,6 +2535,33 @@ ul.tabs li.selected {
   display: block !important; }
 .comments-closed .article__controls__action .touchpoint, .comments-closed .article__controls__action a {
   display: none !important; }
+
+#discussion.android {
+  box-sizing: border-box; }
+  @media all and (max-width: 18.75em) {
+    #discussion.android {
+      padding: 0px 12px 0px 12px; } }
+  @media all and (min-width: 18.75em) and (max-width: 25em) {
+    #discussion.android {
+      padding: 0px 14px 0px 14px; } }
+  @media all and (min-width: 25em) and (max-width: 28.115em) {
+    #discussion.android {
+      padding: 0px 18px 0px 18px; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    #discussion.android {
+      padding: 0px 12px 0px 12px; } }
+  @media all and (min-width: 40.625em) and (max-width: 50em) {
+    #discussion.android {
+      padding: 0px 10px 0px 10px; } }
+  @media all and (min-width: 50em) and (max-width: 56.24em) {
+    #discussion.android {
+      padding: 0px 12px 0px 12px; } }
+  @media all and (min-width: 56.25em) and (max-width: 68.75em) {
+    #discussion.android {
+      padding: 0px 10px 0px 10px; } }
+  @media all and (min-width: 68.75em) {
+    #discussion.android {
+      padding: 0px 12px 0px 12px; } }
 
 .element.element-video {
   width: 100%;
@@ -2872,6 +2910,31 @@ figure.figure-wide img {
     .module .module__header .module__action a {
       display: none; } }
 
+@media all and (max-width: 18.75em) {
+  .android .module {
+    margin: 0px 12px 0px 12px; } }
+@media all and (min-width: 18.75em) and (max-width: 25em) {
+  .android .module {
+    margin: 0px 14px 0px 14px; } }
+@media all and (min-width: 25em) and (max-width: 28.115em) {
+  .android .module {
+    margin: 0px 18px 0px 18px; } }
+@media all and (min-width: 28.125em) and (max-width: 40.615em) {
+  .android .module {
+    margin: 0px 12px 0px 12px; } }
+@media all and (min-width: 40.625em) and (max-width: 50em) {
+  .android .module {
+    margin: 0px 10px 0px 10px; } }
+@media all and (min-width: 50em) and (max-width: 56.24em) {
+  .android .module {
+    margin: 0px 12px 0px 12px; } }
+@media all and (min-width: 56.25em) and (max-width: 68.75em) {
+  .android .module {
+    margin: 0px 10px 0px 10px; } }
+@media all and (min-width: 68.75em) {
+  .android .module {
+    margin: 0px 12px 0px 12px; } }
+
 .icon {
   font-family: "Guardian Icons", Georgia, serif; }
 
@@ -3147,7 +3210,7 @@ figure.figure-wide img {
     display: table-cell;
     position: relative;
     -webkit-user-select: none;
-    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-text-size-adjust: none;
     -webkit-touch-callout: none;
     outline: 0;
@@ -3951,6 +4014,7 @@ figure.figure-wide img {
 
   100% {
     opacity: 0; } }
+
 @keyframes blink {
   0% {
     opacity: 0; }
@@ -3960,6 +4024,7 @@ figure.figure-wide img {
 
   100% {
     opacity: 0; } }
+
 #football .article {
   background-color: transparent;
   border-bottom: none; }
@@ -5149,31 +5214,30 @@ figure.figure-wide img {
     @media all and (min-width: 56.25em) {
       .football-fixtures-row > div.football-col-4 {
         width: 53.68421%; } }
-@media all and (max-width: 28.115em) and (max-width: 18.75em) {
-  .football-fixtures-row > div.football-col-1 {
-    padding: 3px 0px 12px 12px; } }
-@media all and (max-width: 28.115em) and (min-width: 18.75em) and (max-width: 25em) {
-  .football-fixtures-row > div.football-col-1 {
-    padding: 3.5px 0px 14px 14px; } }
-@media all and (max-width: 28.115em) and (min-width: 25em) and (max-width: 28.115em) {
-  .football-fixtures-row > div.football-col-1 {
-    padding: 4.5px 0px 18px 18px; } }
-@media all and (max-width: 28.115em) and (min-width: 28.125em) and (max-width: 40.615em) {
-  .football-fixtures-row > div.football-col-1 {
-    padding: 3px 0px 12px 12px; } }
-@media all and (max-width: 28.115em) and (min-width: 40.625em) and (max-width: 50em) {
-  .football-fixtures-row > div.football-col-1 {
-    padding: 2.5px 0px 10px 10px; } }
-@media all and (max-width: 28.115em) and (min-width: 50em) and (max-width: 56.24em) {
-  .football-fixtures-row > div.football-col-1 {
-    padding: 3px 0px 12px 12px; } }
-@media all and (max-width: 28.115em) and (min-width: 56.25em) and (max-width: 68.75em) {
-  .football-fixtures-row > div.football-col-1 {
-    padding: 2.5px 0px 10px 10px; } }
-@media all and (max-width: 28.115em) and (min-width: 68.75em) {
-  .football-fixtures-row > div.football-col-1 {
-    padding: 3px 0px 12px 12px; } }
-
+    @media all and (max-width: 28.115em) and (max-width: 18.75em) {
+      .football-fixtures-row > div.football-col-1 {
+        padding: 3px 0px 12px 12px; } }
+    @media all and (max-width: 28.115em) and (min-width: 18.75em) and (max-width: 25em) {
+      .football-fixtures-row > div.football-col-1 {
+        padding: 3.5px 0px 14px 14px; } }
+    @media all and (max-width: 28.115em) and (min-width: 25em) and (max-width: 28.115em) {
+      .football-fixtures-row > div.football-col-1 {
+        padding: 4.5px 0px 18px 18px; } }
+    @media all and (max-width: 28.115em) and (min-width: 28.125em) and (max-width: 40.615em) {
+      .football-fixtures-row > div.football-col-1 {
+        padding: 3px 0px 12px 12px; } }
+    @media all and (max-width: 28.115em) and (min-width: 40.625em) and (max-width: 50em) {
+      .football-fixtures-row > div.football-col-1 {
+        padding: 2.5px 0px 10px 10px; } }
+    @media all and (max-width: 28.115em) and (min-width: 50em) and (max-width: 56.24em) {
+      .football-fixtures-row > div.football-col-1 {
+        padding: 3px 0px 12px 12px; } }
+    @media all and (max-width: 28.115em) and (min-width: 56.25em) and (max-width: 68.75em) {
+      .football-fixtures-row > div.football-col-1 {
+        padding: 2.5px 0px 10px 10px; } }
+    @media all and (max-width: 28.115em) and (min-width: 68.75em) {
+      .football-fixtures-row > div.football-col-1 {
+        padding: 3px 0px 12px 12px; } }
   .football-fixtures-row.date .football-col-1, .football-fixtures-row.competition .football-col-1 {
     font-weight: bold; }
     @media all and (max-width: 28.115em) {
@@ -5213,53 +5277,52 @@ figure.figure-wide img {
       color: #999999; }
       @media all and (max-width: 18.75em) {
         .football-fixtures-row.match .football-col-1 {
-          padding: 0px 6px 0px 0px; } }
+          padding: 0px 6px 0px 6px; } }
       @media all and (min-width: 18.75em) and (max-width: 25em) {
         .football-fixtures-row.match .football-col-1 {
-          padding: 0px 7px 0px 0px; } }
+          padding: 0px 7px 0px 7px; } }
       @media all and (min-width: 25em) and (max-width: 28.115em) {
         .football-fixtures-row.match .football-col-1 {
-          padding: 0px 9px 0px 0px; } }
+          padding: 0px 9px 0px 9px; } }
       @media all and (min-width: 28.125em) and (max-width: 40.615em) {
         .football-fixtures-row.match .football-col-1 {
-          padding: 0px 6px 0px 0px; } }
+          padding: 0px 6px 0px 6px; } }
       @media all and (min-width: 40.625em) and (max-width: 50em) {
         .football-fixtures-row.match .football-col-1 {
-          padding: 0px 5px 0px 0px; } }
+          padding: 0px 5px 0px 5px; } }
       @media all and (min-width: 50em) and (max-width: 56.24em) {
         .football-fixtures-row.match .football-col-1 {
-          padding: 0px 6px 0px 0px; } }
+          padding: 0px 6px 0px 6px; } }
       @media all and (min-width: 56.25em) and (max-width: 68.75em) {
         .football-fixtures-row.match .football-col-1 {
-          padding: 0px 5px 0px 0px; } }
+          padding: 0px 5px 0px 5px; } }
       @media all and (min-width: 68.75em) {
         .football-fixtures-row.match .football-col-1 {
-          padding: 0px 6px 0px 0px; } }
-@media all and (max-width: 28.115em) and (max-width: 18.75em) {
-  .football-fixtures-row.match .football-col-1 {
-    padding: 0px 6px 0px 12px; } }
-@media all and (max-width: 28.115em) and (min-width: 18.75em) and (max-width: 25em) {
-  .football-fixtures-row.match .football-col-1 {
-    padding: 0px 7px 0px 14px; } }
-@media all and (max-width: 28.115em) and (min-width: 25em) and (max-width: 28.115em) {
-  .football-fixtures-row.match .football-col-1 {
-    padding: 0px 9px 0px 18px; } }
-@media all and (max-width: 28.115em) and (min-width: 28.125em) and (max-width: 40.615em) {
-  .football-fixtures-row.match .football-col-1 {
-    padding: 0px 6px 0px 12px; } }
-@media all and (max-width: 28.115em) and (min-width: 40.625em) and (max-width: 50em) {
-  .football-fixtures-row.match .football-col-1 {
-    padding: 0px 5px 0px 10px; } }
-@media all and (max-width: 28.115em) and (min-width: 50em) and (max-width: 56.24em) {
-  .football-fixtures-row.match .football-col-1 {
-    padding: 0px 6px 0px 12px; } }
-@media all and (max-width: 28.115em) and (min-width: 56.25em) and (max-width: 68.75em) {
-  .football-fixtures-row.match .football-col-1 {
-    padding: 0px 5px 0px 10px; } }
-@media all and (max-width: 28.115em) and (min-width: 68.75em) {
-  .football-fixtures-row.match .football-col-1 {
-    padding: 0px 6px 0px 12px; } }
-
+          padding: 0px 6px 0px 6px; } }
+      @media all and (max-width: 28.115em) and (max-width: 18.75em) {
+        .football-fixtures-row.match .football-col-1 {
+          padding: 0px 6px 0px 12px; } }
+      @media all and (max-width: 28.115em) and (min-width: 18.75em) and (max-width: 25em) {
+        .football-fixtures-row.match .football-col-1 {
+          padding: 0px 7px 0px 14px; } }
+      @media all and (max-width: 28.115em) and (min-width: 25em) and (max-width: 28.115em) {
+        .football-fixtures-row.match .football-col-1 {
+          padding: 0px 9px 0px 18px; } }
+      @media all and (max-width: 28.115em) and (min-width: 28.125em) and (max-width: 40.615em) {
+        .football-fixtures-row.match .football-col-1 {
+          padding: 0px 6px 0px 12px; } }
+      @media all and (max-width: 28.115em) and (min-width: 40.625em) and (max-width: 50em) {
+        .football-fixtures-row.match .football-col-1 {
+          padding: 0px 5px 0px 10px; } }
+      @media all and (max-width: 28.115em) and (min-width: 50em) and (max-width: 56.24em) {
+        .football-fixtures-row.match .football-col-1 {
+          padding: 0px 6px 0px 12px; } }
+      @media all and (max-width: 28.115em) and (min-width: 56.25em) and (max-width: 68.75em) {
+        .football-fixtures-row.match .football-col-1 {
+          padding: 0px 5px 0px 10px; } }
+      @media all and (max-width: 28.115em) and (min-width: 68.75em) {
+        .football-fixtures-row.match .football-col-1 {
+          padding: 0px 6px 0px 12px; } }
     .football-fixtures-row.match .football-col-2 {
       text-align: right; }
     .football-fixtures-row.match .football-col-3 {
@@ -5272,6 +5335,35 @@ figure.figure-wide img {
       font-weight: bold; }
       .football-fixtures-row.match.is-live .football-col-1 {
         color: #4bc6df; }
+
+#football-fixtures.android {
+  box-sizing: border-box; }
+  @media all and (max-width: 18.75em) {
+    #football-fixtures.android {
+      padding: 12px 12px 0px 12px; } }
+  @media all and (min-width: 18.75em) and (max-width: 25em) {
+    #football-fixtures.android {
+      padding: 14px 14px 0px 14px; } }
+  @media all and (min-width: 25em) and (max-width: 28.115em) {
+    #football-fixtures.android {
+      padding: 18px 18px 0px 18px; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    #football-fixtures.android {
+      padding: 12px 12px 0px 12px; } }
+  @media all and (min-width: 40.625em) and (max-width: 50em) {
+    #football-fixtures.android {
+      padding: 10px 10px 0px 10px; } }
+  @media all and (min-width: 50em) and (max-width: 56.24em) {
+    #football-fixtures.android {
+      padding: 12px 12px 0px 12px; } }
+  @media all and (min-width: 56.25em) and (max-width: 68.75em) {
+    #football-fixtures.android {
+      padding: 10px 10px 0px 10px; } }
+  @media all and (min-width: 68.75em) {
+    #football-fixtures.android {
+      padding: 12px 12px 0px 12px; } }
+  #football-fixtures.android .football-fixtures-header {
+    display: none; }
 
 .news a,
 .news .discussion__view-more {
@@ -5601,7 +5693,7 @@ figure.figure-wide img {
       z-index: 1; }
       #standard-article.features .article .article__header .article__image:after {
         content: "";
-        background-image: linear-gradient(-180deg, transparent 80%, rgba(0, 0, 0, 0.5) 100%);
+        background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.5) 100%);
         display: block;
         position: absolute;
         top: 0;

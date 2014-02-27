@@ -85,7 +85,7 @@
 		}
 		.football-col-1 {
 			color: $meta;
-			@include padding(0,0.5,0,0);
+			@include padding(0,0.5,0,0.5);
 			@include mq($to: col1) {
 				@include padding(0,0.5,0,1);
 			}
@@ -109,5 +109,14 @@
 				color: $news-sec;
 			}
 		}
+	}
+}
+
+#football-fixtures.android {
+	@include padding(1,1,0,1);
+	box-sizing: border-box;
+	
+	.football-fixtures-header {
+		display: none;
 	}
 }
