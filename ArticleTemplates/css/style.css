@@ -5568,7 +5568,7 @@ figure.figure-wide img {
     #standard-article.features .article .article__header .article__section {
       background-color: #f6f6f6;
       position: absolute;
-      top: 4px;
+      top: 0;
       left: 0;
       right: 0; }
     #standard-article.features .article .article__header .inner-header {
@@ -5614,7 +5614,7 @@ figure.figure-wide img {
       #standard-article.features .article .article__header .inner-header .article__alerts {
         display: none; }
     #standard-article.features .article .article__header .article__standfirst {
-      color: #fff;
+      color: rgba(255, 255, 255, 0.9);
       margin-bottom: 1em;
       -webkit-order: 3;
       order: 3; }
@@ -5647,25 +5647,23 @@ figure.figure-wide img {
       order: 1;
       position: relative;
       z-index: 1; }
-      #standard-article.features .article .article__header .article__image:after {
-        content: "";
-        background-image: linear-gradient(-180deg, transparent 80%, rgba(0, 0, 0, 0.5) 100%);
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0; }
       @media all and (min-width: 40.625em) {
         #standard-article.features .article .article__header .article__image {
           margin-bottom: -62px; } }
+      @media all and (min-width: 40.625em) {
+        #standard-article.features .article .article__header .article__image:after {
+          content: "";
+          background-image: linear-gradient(-180deg, transparent 80%, rgba(0, 0, 0, 0.5) 100%);
+          display: block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0; } }
       #standard-article.features .article .article__header .article__image figcaption {
         color: rgba(255, 255, 255, 0.9);
-        background-color: rgba(0, 0, 0, 0.3);
-        border: 0 none;
-        position: absolute;
-        top: 0;
-        right: 0; }
+        background-color: rgba(0, 0, 0, 0.25);
+        border: 0 none; }
         @media all and (max-width: 18.75em) {
           #standard-article.features .article .article__header .article__image figcaption {
             padding: 6px 12px 6px 12px; } }
@@ -5690,6 +5688,11 @@ figure.figure-wide img {
         @media all and (min-width: 68.75em) {
           #standard-article.features .article .article__header .article__image figcaption {
             padding: 6px 12px 6px 12px; } }
+        @media all and (min-width: 40.625em) {
+          #standard-article.features .article .article__header .article__image figcaption {
+            position: absolute;
+            top: 0;
+            right: 0; } }
     #standard-article.features .article .article__header .article__byline {
       color: rgba(255, 255, 255, 0.9);
       border: 0 none;

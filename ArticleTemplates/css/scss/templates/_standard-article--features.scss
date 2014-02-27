@@ -30,7 +30,7 @@
 			.article__section {
 				background-color: $background;
 				position: absolute;
-				top: 4px;
+				top: 0;
 				left: 0;
 				right: 0;
 			}
@@ -61,7 +61,7 @@
 			}
 
 			.article__standfirst {
-				color: #fff;
+				color: rgba(255, 255, 255, 0.9);
 				margin-bottom: 1em;
 				-webkit-order: 3;
 				order: 3;
@@ -106,28 +106,32 @@
 				order: 1;
 				position: relative;
 				z-index: 1;
-				&:after {
-					content: "";
-					background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.5) 100%);
-					display: block;
-					position: absolute;
-					top: 0;
-					right: 0;
-					bottom: 0;
-					left: 0;
-				}
 				@include mq($from: col2) {
 					margin-bottom: -62px;
+				}
+				&:after {
+					@include mq($from: col2) {
+						content: "";
+						background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.5) 100%);
+						display: block;
+						position: absolute;
+						top: 0;
+						right: 0;
+						bottom: 0;
+						left: 0;
+					}
 				}
 
 				figcaption {
 					color: rgba(255, 255, 255, 0.9);
-					background-color: rgba(0, 0, 0, 0.3);
-					@include padding(0.5, 1, 0.5, 1);
+					background-color: rgba(0, 0, 0, 0.25);
 					border: 0 none;
-					position: absolute;
-					top: 0;
-					right: 0;
+					@include padding(0.5, 1, 0.5, 1);
+					@include mq($from: col2) {
+						position: absolute;
+						top: 0;
+						right: 0;
+					}
 				}
 			}
 
