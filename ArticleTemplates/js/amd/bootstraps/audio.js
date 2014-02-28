@@ -130,7 +130,7 @@ define([
 						ctx.beginPath();
 						ctx.arc(x[i], y[i], size, 0, Math.PI * 2, true);
 						ctx.closePath();
-						ctx.fillStyle = "rgba(0,0,0,0.15)";
+						ctx.fillStyle = "rgba(0, 86, 137, 0.15)";
 						ctx.fill();
 						size = size * 1.3;
 					}
