@@ -80,6 +80,14 @@ define([
 				window.audioStop = function () {
 					$('.audio-player__button .touchpoint').html("&#xe04b;");
 				};
+				window.audioLoad = function () {
+					$(".audio-player__button").hide();
+					$(".audio-player__button--loading").show();
+				}
+				window.audioFinishLoad = function () {
+					$(".audio-player__button").show();
+					$(".audio-player__button--loading").hide();
+				}
 				window.audioBackground = function (duration) {
 					// Copied directly, needs cleaning
 					var numOfCircles = Math.floor((duration / 60) / 10) + 2,
