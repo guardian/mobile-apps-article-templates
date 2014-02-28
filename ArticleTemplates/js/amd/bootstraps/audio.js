@@ -91,8 +91,8 @@ define([
 				window.audioBackground = function (duration) {
 					// Copied directly, needs cleaning
 					var numOfCircles = Math.floor((duration / 60) / 10) + 2,
-						h = $("#header").offset().height,
-						w = $("#header").offset().width,
+						h = $(".inner-header").offset().height,
+						w = $(".inner-header").offset().width,
 						size = (h * w) / 8000,
 						x = [],
 						y = [];
