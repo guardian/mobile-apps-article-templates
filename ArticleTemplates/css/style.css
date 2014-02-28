@@ -33,7 +33,7 @@ body, html {
   max-width: 100%;
   -webkit-font-smoothing: antialiased;
   -webkit-font-feature-settings: "kern" 1;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   outline: 0; }
 
 body {
@@ -65,48 +65,60 @@ a {
   font-family: "Egyptian Display";
   font-weight: 100;
   src: url("../fonts/GdnEgyDE1Thi.otf"); }
+
 @font-face {
   font-family: "Egyptian Display";
   font-weight: 200;
   src: url("../fonts/GdnEgyDE2Lig.otf"); }
+
 @font-face {
   font-family: "Egyptian Display";
   font-weight: 600;
   src: url("../fonts/GdnEgyDE6Bol.otf"); }
+
 @font-face {
   font-family: "Egyptian Text";
   src: url("../fonts/EgyptianText-Regular.ttf"); }
+
 @font-face {
   font-family: "Egyptian Text";
   font-style: italic;
   src: url("../fonts/EgyptianText-RegularItalic.ttf"); }
+
 @font-face {
   font-family: "Egyptian Text";
   font-weight: bold;
   src: url("../fonts/EgyptianText-Medium.ttf"); }
+
 @font-face {
   font-family: "Titlepiece";
   font-weight: 600;
   src: url("../fonts/GdnTitlepiece.otf"); }
+
 @font-face {
   font-family: "Agate Sans";
   src: url("../fonts/GdnAgaSanTwoAS32Reg.otf"); }
+
 @font-face {
   font-family: "Agate Sans";
   font-style: italic;
   src: url("../fonts/GdnAgaSanTwoAS32RegIta.otf"); }
+
 @font-face {
   font-family: "Agate Sans";
   font-weight: bold;
   src: url("../fonts/GdnAgaSanTwoAS62Bol.otf"); }
+
 @font-face {
   font-family: "Agate Sans";
   font-weight: bold;
   font-style: italic;
   src: url("../fonts/GdnAgaSanTwoAS62BolIta.otf"); }
+
 @font-face {
   font-family: "Guardian Icons";
   src: url("../fonts/guardianicons.ttf"); }
+
 html {
   font-size: 62.5%;
   font-family: "Egyptian Text", Georgia, serif; }
@@ -2992,54 +3004,58 @@ figure.figure-wide img {
 
 .touchpoint {
   display: block; }
-  .touchpoint .touchpoint__button {
+
+.touchpoint__button {
+  color: white;
+  text-align: center;
+  font-size: 24px;
+  line-height: 44px;
+  vertical-align: middle;
+  background-color: #005689;
+  border-radius: 100%;
+  display: inline-block;
+  height: 44px;
+  width: 44px; }
+  .touchpoint__button:active {
+    background-color: #4bc6df; }
+
+.touchpoint__button--secondary {
+  color: #676767;
+  background-color: transparent;
+  border: 1px solid #dcdad5; }
+  .touchpoint__button--secondary:active {
     color: white;
-    text-align: center;
-    font-size: 24px;
-    line-height: 44px;
-    vertical-align: middle;
-    background-color: #005689;
-    border-radius: 100%;
-    display: inline-block;
-    height: 44px;
-    width: 44px; }
-    .touchpoint .touchpoint__button:active {
-      background-color: #4bc6df; }
-  .touchpoint .touchpoint__button--secondary {
-    color: #676767;
-    background-color: transparent;
-    border: 1px solid #dcdad5; }
-    .touchpoint .touchpoint__button--secondary:active {
-      color: white;
-      background-color: #676767;
-      border-color: transparent; }
-  .touchpoint .touchpoint__button--small {
-    font-size: 18px;
-    line-height: 28px;
-    height: 28px;
-    width: 28px; }
-  .touchpoint .touchpoint__label {
-    font-family: "Agate Sans", sans-serif;
-    font-weight: bold;
-    vertical-align: middle;
-    display: inline-block;
-    padding: 0 6px; }
-    @media all and (max-width: 28.115em) {
-      .touchpoint .touchpoint__label {
-        font-size: 1.4rem;
-        line-height: 2rem; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      .touchpoint .touchpoint__label {
-        font-size: 1.4rem;
-        line-height: 2rem; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      .touchpoint .touchpoint__label {
-        font-size: 1.6rem;
-        line-height: 2.2rem; } }
-    @media all and (min-width: 56.25em) {
-      .touchpoint .touchpoint__label {
-        font-size: 1.6rem;
-        line-height: 2.2rem; } }
+    background-color: #676767;
+    border-color: transparent; }
+
+.touchpoint__button--small {
+  font-size: 18px;
+  line-height: 28px;
+  height: 28px;
+  width: 28px; }
+
+.touchpoint__label {
+  font-family: "Agate Sans", sans-serif;
+  font-weight: bold;
+  vertical-align: middle;
+  display: inline-block;
+  padding: 0 6px; }
+  @media all and (max-width: 28.115em) {
+    .touchpoint__label {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    .touchpoint__label {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    .touchpoint__label {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  @media all and (min-width: 56.25em) {
+    .touchpoint__label {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
 
 .offline .element-video,
 .offline .element-embed,
@@ -3378,20 +3394,70 @@ aside {
   @media all and (min-width: 68.75em) {
     #audio .audio-player {
       padding: 9px 9px 9px 9px; } }
-  #audio .audio-player .audio-button {
-    display: table-cell;
-    min-width: 54px; }
-  #audio .audio-player #audio-slider {
+  @media all and (max-width: 18.75em) {
+    #audio .audio-player .audio-player__button {
+      margin: 0px 12px 0px 0px; } }
+  @media all and (min-width: 18.75em) and (max-width: 25em) {
+    #audio .audio-player .audio-player__button {
+      margin: 0px 14px 0px 0px; } }
+  @media all and (min-width: 25em) and (max-width: 28.115em) {
+    #audio .audio-player .audio-player__button {
+      margin: 0px 18px 0px 0px; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    #audio .audio-player .audio-player__button {
+      margin: 0px 12px 0px 0px; } }
+  @media all and (min-width: 40.625em) and (max-width: 50em) {
+    #audio .audio-player .audio-player__button {
+      margin: 0px 10px 0px 0px; } }
+  @media all and (min-width: 50em) and (max-width: 56.24em) {
+    #audio .audio-player .audio-player__button {
+      margin: 0px 12px 0px 0px; } }
+  @media all and (min-width: 56.25em) and (max-width: 68.75em) {
+    #audio .audio-player .audio-player__button {
+      margin: 0px 10px 0px 0px; } }
+  @media all and (min-width: 68.75em) {
+    #audio .audio-player .audio-player__button {
+      margin: 0px 12px 0px 0px; } }
+  #audio .audio-player .audio-player__button--loading {
+    width: 44px;
+    height: 44px;
+    display: none;
+    vertical-align: middle; }
+    @media all and (max-width: 18.75em) {
+      #audio .audio-player .audio-player__button--loading {
+        margin: 0px 12px 0px 0px; } }
+    @media all and (min-width: 18.75em) and (max-width: 25em) {
+      #audio .audio-player .audio-player__button--loading {
+        margin: 0px 14px 0px 0px; } }
+    @media all and (min-width: 25em) and (max-width: 28.115em) {
+      #audio .audio-player .audio-player__button--loading {
+        margin: 0px 18px 0px 0px; } }
+    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      #audio .audio-player .audio-player__button--loading {
+        margin: 0px 12px 0px 0px; } }
+    @media all and (min-width: 40.625em) and (max-width: 50em) {
+      #audio .audio-player .audio-player__button--loading {
+        margin: 0px 10px 0px 0px; } }
+    @media all and (min-width: 50em) and (max-width: 56.24em) {
+      #audio .audio-player .audio-player__button--loading {
+        margin: 0px 12px 0px 0px; } }
+    @media all and (min-width: 56.25em) and (max-width: 68.75em) {
+      #audio .audio-player .audio-player__button--loading {
+        margin: 0px 10px 0px 0px; } }
+    @media all and (min-width: 68.75em) {
+      #audio .audio-player .audio-player__button--loading {
+        margin: 0px 12px 0px 0px; } }
+  #audio .audio-player .audio-player__slider {
     display: table-cell;
     position: relative;
     -webkit-user-select: none;
-    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-text-size-adjust: none;
     -webkit-touch-callout: none;
     outline: 0;
     height: 40px;
     width: 100%; }
-    #audio .audio-player #audio-slider .audio-track {
+    #audio .audio-player .audio-player__slider .audio-player__slider__track {
       position: absolute;
       top: 22px;
       left: 0;
@@ -3400,7 +3466,7 @@ aside {
       width: 100%;
       background-color: #999999;
       text-align: center; }
-    #audio .audio-player #audio-slider .audio-knob {
+    #audio .audio-player .audio-player__slider .audio-player__slider__knob {
       position: absolute;
       margin-top: 14px;
       padding: 0;
@@ -3411,7 +3477,7 @@ aside {
       -moz-border-radius: 25px;
       border-radius: 25px;
       cursor: pointer; }
-    #audio .audio-player #audio-slider input {
+    #audio .audio-player .audio-player__slider input {
       color: white;
       font-family: "Agate Sans", sans-serif;
       font-weight: normal;
@@ -3421,22 +3487,22 @@ aside {
       padding: 0;
       margin: 0; }
       @media all and (max-width: 28.115em) {
-        #audio .audio-player #audio-slider input {
+        #audio .audio-player .audio-player__slider input {
           font-size: 1.4rem;
           line-height: 2rem; } }
       @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-        #audio .audio-player #audio-slider input {
+        #audio .audio-player .audio-player__slider input {
           font-size: 1.4rem;
           line-height: 2rem; } }
       @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-        #audio .audio-player #audio-slider input {
+        #audio .audio-player .audio-player__slider input {
           font-size: 1.6rem;
           line-height: 2.2rem; } }
       @media all and (min-width: 56.25em) {
-        #audio .audio-player #audio-slider input {
+        #audio .audio-player .audio-player__slider input {
           font-size: 1.6rem;
           line-height: 2.2rem; } }
-    #audio .audio-player #audio-slider input:nth-child(2) {
+    #audio .audio-player .audio-player__slider input:nth-child(2) {
       right: 0;
       text-align: right; }
 
@@ -4284,6 +4350,7 @@ aside {
 
   100% {
     opacity: 0; } }
+
 @keyframes blink {
   0% {
     opacity: 0; }
@@ -4293,6 +4360,7 @@ aside {
 
   100% {
     opacity: 0; } }
+
 #football .article {
   background-color: transparent;
   border-bottom: none; }
@@ -5482,31 +5550,30 @@ aside {
     @media all and (min-width: 56.25em) {
       .football-fixtures-row > div.football-col-4 {
         width: 53.68421%; } }
-@media all and (max-width: 28.115em) and (max-width: 18.75em) {
-  .football-fixtures-row > div.football-col-1 {
-    padding: 3px 0px 12px 12px; } }
-@media all and (max-width: 28.115em) and (min-width: 18.75em) and (max-width: 25em) {
-  .football-fixtures-row > div.football-col-1 {
-    padding: 3.5px 0px 14px 14px; } }
-@media all and (max-width: 28.115em) and (min-width: 25em) and (max-width: 28.115em) {
-  .football-fixtures-row > div.football-col-1 {
-    padding: 4.5px 0px 18px 18px; } }
-@media all and (max-width: 28.115em) and (min-width: 28.125em) and (max-width: 40.615em) {
-  .football-fixtures-row > div.football-col-1 {
-    padding: 3px 0px 12px 12px; } }
-@media all and (max-width: 28.115em) and (min-width: 40.625em) and (max-width: 50em) {
-  .football-fixtures-row > div.football-col-1 {
-    padding: 2.5px 0px 10px 10px; } }
-@media all and (max-width: 28.115em) and (min-width: 50em) and (max-width: 56.24em) {
-  .football-fixtures-row > div.football-col-1 {
-    padding: 3px 0px 12px 12px; } }
-@media all and (max-width: 28.115em) and (min-width: 56.25em) and (max-width: 68.75em) {
-  .football-fixtures-row > div.football-col-1 {
-    padding: 2.5px 0px 10px 10px; } }
-@media all and (max-width: 28.115em) and (min-width: 68.75em) {
-  .football-fixtures-row > div.football-col-1 {
-    padding: 3px 0px 12px 12px; } }
-
+    @media all and (max-width: 28.115em) and (max-width: 18.75em) {
+      .football-fixtures-row > div.football-col-1 {
+        padding: 3px 0px 12px 12px; } }
+    @media all and (max-width: 28.115em) and (min-width: 18.75em) and (max-width: 25em) {
+      .football-fixtures-row > div.football-col-1 {
+        padding: 3.5px 0px 14px 14px; } }
+    @media all and (max-width: 28.115em) and (min-width: 25em) and (max-width: 28.115em) {
+      .football-fixtures-row > div.football-col-1 {
+        padding: 4.5px 0px 18px 18px; } }
+    @media all and (max-width: 28.115em) and (min-width: 28.125em) and (max-width: 40.615em) {
+      .football-fixtures-row > div.football-col-1 {
+        padding: 3px 0px 12px 12px; } }
+    @media all and (max-width: 28.115em) and (min-width: 40.625em) and (max-width: 50em) {
+      .football-fixtures-row > div.football-col-1 {
+        padding: 2.5px 0px 10px 10px; } }
+    @media all and (max-width: 28.115em) and (min-width: 50em) and (max-width: 56.24em) {
+      .football-fixtures-row > div.football-col-1 {
+        padding: 3px 0px 12px 12px; } }
+    @media all and (max-width: 28.115em) and (min-width: 56.25em) and (max-width: 68.75em) {
+      .football-fixtures-row > div.football-col-1 {
+        padding: 2.5px 0px 10px 10px; } }
+    @media all and (max-width: 28.115em) and (min-width: 68.75em) {
+      .football-fixtures-row > div.football-col-1 {
+        padding: 3px 0px 12px 12px; } }
   .football-fixtures-row.date .football-col-1, .football-fixtures-row.competition .football-col-1 {
     font-weight: bold; }
     @media all and (max-width: 28.115em) {
@@ -5568,31 +5635,30 @@ aside {
       @media all and (min-width: 68.75em) {
         .football-fixtures-row.match .football-col-1 {
           padding: 0px 6px 0px 6px; } }
-@media all and (max-width: 28.115em) and (max-width: 18.75em) {
-  .football-fixtures-row.match .football-col-1 {
-    padding: 0px 6px 0px 12px; } }
-@media all and (max-width: 28.115em) and (min-width: 18.75em) and (max-width: 25em) {
-  .football-fixtures-row.match .football-col-1 {
-    padding: 0px 7px 0px 14px; } }
-@media all and (max-width: 28.115em) and (min-width: 25em) and (max-width: 28.115em) {
-  .football-fixtures-row.match .football-col-1 {
-    padding: 0px 9px 0px 18px; } }
-@media all and (max-width: 28.115em) and (min-width: 28.125em) and (max-width: 40.615em) {
-  .football-fixtures-row.match .football-col-1 {
-    padding: 0px 6px 0px 12px; } }
-@media all and (max-width: 28.115em) and (min-width: 40.625em) and (max-width: 50em) {
-  .football-fixtures-row.match .football-col-1 {
-    padding: 0px 5px 0px 10px; } }
-@media all and (max-width: 28.115em) and (min-width: 50em) and (max-width: 56.24em) {
-  .football-fixtures-row.match .football-col-1 {
-    padding: 0px 6px 0px 12px; } }
-@media all and (max-width: 28.115em) and (min-width: 56.25em) and (max-width: 68.75em) {
-  .football-fixtures-row.match .football-col-1 {
-    padding: 0px 5px 0px 10px; } }
-@media all and (max-width: 28.115em) and (min-width: 68.75em) {
-  .football-fixtures-row.match .football-col-1 {
-    padding: 0px 6px 0px 12px; } }
-
+      @media all and (max-width: 28.115em) and (max-width: 18.75em) {
+        .football-fixtures-row.match .football-col-1 {
+          padding: 0px 6px 0px 12px; } }
+      @media all and (max-width: 28.115em) and (min-width: 18.75em) and (max-width: 25em) {
+        .football-fixtures-row.match .football-col-1 {
+          padding: 0px 7px 0px 14px; } }
+      @media all and (max-width: 28.115em) and (min-width: 25em) and (max-width: 28.115em) {
+        .football-fixtures-row.match .football-col-1 {
+          padding: 0px 9px 0px 18px; } }
+      @media all and (max-width: 28.115em) and (min-width: 28.125em) and (max-width: 40.615em) {
+        .football-fixtures-row.match .football-col-1 {
+          padding: 0px 6px 0px 12px; } }
+      @media all and (max-width: 28.115em) and (min-width: 40.625em) and (max-width: 50em) {
+        .football-fixtures-row.match .football-col-1 {
+          padding: 0px 5px 0px 10px; } }
+      @media all and (max-width: 28.115em) and (min-width: 50em) and (max-width: 56.24em) {
+        .football-fixtures-row.match .football-col-1 {
+          padding: 0px 6px 0px 12px; } }
+      @media all and (max-width: 28.115em) and (min-width: 56.25em) and (max-width: 68.75em) {
+        .football-fixtures-row.match .football-col-1 {
+          padding: 0px 5px 0px 10px; } }
+      @media all and (max-width: 28.115em) and (min-width: 68.75em) {
+        .football-fixtures-row.match .football-col-1 {
+          padding: 0px 6px 0px 12px; } }
     .football-fixtures-row.match .football-col-2 {
       text-align: right; }
     .football-fixtures-row.match .football-col-3 {
@@ -5974,7 +6040,7 @@ aside {
       @media all and (min-width: 40.625em) {
         #standard-article.features .article .article__header .article__image:after {
           content: "";
-          background-image: linear-gradient(-180deg, transparent 80%, rgba(0, 0, 0, 0.5) 100%);
+          background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.5) 100%);
           display: block;
           position: absolute;
           top: 0;
