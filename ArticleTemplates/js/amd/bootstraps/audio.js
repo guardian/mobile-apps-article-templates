@@ -82,7 +82,7 @@ define([
 				};
 				window.audioLoad = function () {
 					$(".audio-player__button").hide();
-					$(".audio-player__button--loading").show();
+					$(".audio-player__button--loading").css({"display": "inline-block"});
 				}
 				window.audioFinishLoad = function () {
 					$(".audio-player__button").show();
