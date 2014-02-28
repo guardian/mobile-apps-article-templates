@@ -106,24 +106,16 @@ define([
 			footballGoal: function() {
 				// Allows the header to be updated when there is a goal
 				window.footballGoal = function (side, newScore, scorerHtml) {
-					if (side == "home") {
-						$(".football-team-home .football-score h1").text(newScore);
-						$(".football-team-home .football-info p").remove();
-						$(".football-team-home .football-info").append(scorerHtml);
-					} else if (side == "away") {
-						$(".football-team-away .football-score h1").text(newScore);
-						$(".football-team-away-mobile .football-score h1").text(newScore);
-						$(".football-team-away .football-info p").remove();
-						$(".football-team-away-mobile .football-info p").remove();
-						$(".football-team-away .football-info").append(scorerHtml);
-						$(".football-team-away-mobile .football-info").append(scorerHtml);
-					}
+					$(".football-team-" + side + " .football-score h1").text(newScore);
+					$(".football-team-" + side + " .football-info p").remove();
+					$(".football-team-" + side + " .football-info").append(scorerHtml);
 				};
 			},
 			
 			footballStatus: function() {
 				window.footballStatus = function(className, label) {
 					$(".football-status").attr("class", "football-status").addClass(className);
+					$(".football-status p").text(label);
 				}
 			},
 
