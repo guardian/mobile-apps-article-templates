@@ -3,20 +3,25 @@
 }
 
 .touchpoint {
-	color: $white;
-	text-align: center;
-	font-size: 24px;
-	line-height: 44px;
-	height: 44px;
-	width: 44px;
-	background-color: $news-pri;
-	border-radius: 100%;
-	display: inline-block;
-	&:active {
-		background-color: $news-sec;
+	display: block;
+
+	.touchpoint__button {
+		color: $white;
+		text-align: center;
+		font-size: 24px;
+		line-height: 44px;
+		vertical-align: middle;
+		background-color: $news-pri;
+		border-radius: 100%;
+		display: inline-block;
+		height: 44px;
+		width: 44px;
+		&:active {
+			background-color: $news-sec;
+		}
 	}
 
-	&.touchpoint--secondary {
+	.touchpoint__button--secondary {
 		color: $standfirst;
 		background-color: transparent;
 		border: 1px solid $shadow;
@@ -27,20 +32,19 @@
 		}
 	}
 
-	&.touchpoint--small {
+	.touchpoint__button--small {
 		font-size: 18px;
 		line-height: 28px;
 		height: 28px;
 		width: 28px;
 	}
-}
 
-.touchpoint-container {
-	@include meta();
-	white-space: nowrap;
-
-	.touchpoint {
+	.touchpoint__label {
+		@include meta();
+		font-family: $agate-sans;
+		font-weight: bold;
 		vertical-align: middle;
-		@include margin(0, 0, 0, 0.5);
+		display: inline-block;
+		padding: 0 6px;
 	}
 }

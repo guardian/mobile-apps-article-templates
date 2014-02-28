@@ -4,12 +4,12 @@
 		color: $news-pri;
 		&:active {
 			color: $news-sec;
-			.touchpoint {
+			.touchpoint__button {
 				background-color: $news-sec;
 			}
 		}
 	}
-	.touchpoint {
+	.touchpoint__button {
 		background-color: $news-pri;
 		&:active {
 			background-color: $news-sec;
@@ -33,8 +33,11 @@
 		.element-interactive,
 		.element-video-thumb {
 			@include margin(0, -1, 1.5, -1);
+			@include mq(0px, 9999px) {
+				margin-top: -1px; //this horrible hack, requires margin() mixin refactor
+			}
 			@include mq($to: col2) {
-				width: 109%;
+				width: 110%;
 			}
 			@include mq($from: col2) {
 				width: 134%;
