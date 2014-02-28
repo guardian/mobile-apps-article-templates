@@ -81,11 +81,10 @@
 		@include padding(0.75);
 		display: table;
 		width: 100%;
-		.audio-button {
-			display: table-cell;
-			min-width: 54px;
+		.audio-player__button {
+			@include margin(0, 1, 0, 0);
 		}
-		#audio-slider {
+		.audio-player__slider {
 			display: table-cell;
 			position: relative;
 			-webkit-user-select: none;
@@ -95,7 +94,7 @@
 			outline: 0;
 			height: 40px;
 			width: 100%;
-			.audio-track {
+			.audio-player__slider__track {
 				position: absolute;
 				top: 22px;
 				left: 0;
@@ -105,7 +104,7 @@
 				background-color: $meta;
 				text-align: center;
 			}
-			.audio-knob {
+			.audio-player__slider__knob {
 				position: absolute;
 				margin-top: 14px;
 				padding: 0;

@@ -3394,10 +3394,31 @@ aside {
   @media all and (min-width: 68.75em) {
     #audio .audio-player {
       padding: 9px 9px 9px 9px; } }
-  #audio .audio-player .audio-button {
-    display: table-cell;
-    min-width: 54px; }
-  #audio .audio-player #audio-slider {
+  @media all and (max-width: 18.75em) {
+    #audio .audio-player .audio-player__button {
+      margin: 0px 12px 0px 0px; } }
+  @media all and (min-width: 18.75em) and (max-width: 25em) {
+    #audio .audio-player .audio-player__button {
+      margin: 0px 14px 0px 0px; } }
+  @media all and (min-width: 25em) and (max-width: 28.115em) {
+    #audio .audio-player .audio-player__button {
+      margin: 0px 18px 0px 0px; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    #audio .audio-player .audio-player__button {
+      margin: 0px 12px 0px 0px; } }
+  @media all and (min-width: 40.625em) and (max-width: 50em) {
+    #audio .audio-player .audio-player__button {
+      margin: 0px 10px 0px 0px; } }
+  @media all and (min-width: 50em) and (max-width: 56.24em) {
+    #audio .audio-player .audio-player__button {
+      margin: 0px 12px 0px 0px; } }
+  @media all and (min-width: 56.25em) and (max-width: 68.75em) {
+    #audio .audio-player .audio-player__button {
+      margin: 0px 10px 0px 0px; } }
+  @media all and (min-width: 68.75em) {
+    #audio .audio-player .audio-player__button {
+      margin: 0px 12px 0px 0px; } }
+  #audio .audio-player .audio-player__slider {
     display: table-cell;
     position: relative;
     -webkit-user-select: none;
@@ -3407,7 +3428,7 @@ aside {
     outline: 0;
     height: 40px;
     width: 100%; }
-    #audio .audio-player #audio-slider .audio-track {
+    #audio .audio-player .audio-player__slider .audio-player__slider__track {
       position: absolute;
       top: 22px;
       left: 0;
@@ -3416,7 +3437,7 @@ aside {
       width: 100%;
       background-color: #999999;
       text-align: center; }
-    #audio .audio-player #audio-slider .audio-knob {
+    #audio .audio-player .audio-player__slider .audio-player__slider__knob {
       position: absolute;
       margin-top: 14px;
       padding: 0;
@@ -3427,7 +3448,7 @@ aside {
       -moz-border-radius: 25px;
       border-radius: 25px;
       cursor: pointer; }
-    #audio .audio-player #audio-slider input {
+    #audio .audio-player .audio-player__slider input {
       color: white;
       font-family: "Agate Sans", sans-serif;
       font-weight: normal;
@@ -3437,22 +3458,22 @@ aside {
       padding: 0;
       margin: 0; }
       @media all and (max-width: 28.115em) {
-        #audio .audio-player #audio-slider input {
+        #audio .audio-player .audio-player__slider input {
           font-size: 1.4rem;
           line-height: 2rem; } }
       @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-        #audio .audio-player #audio-slider input {
+        #audio .audio-player .audio-player__slider input {
           font-size: 1.4rem;
           line-height: 2rem; } }
       @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-        #audio .audio-player #audio-slider input {
+        #audio .audio-player .audio-player__slider input {
           font-size: 1.6rem;
           line-height: 2.2rem; } }
       @media all and (min-width: 56.25em) {
-        #audio .audio-player #audio-slider input {
+        #audio .audio-player .audio-player__slider input {
           font-size: 1.6rem;
           line-height: 2.2rem; } }
-    #audio .audio-player #audio-slider input:nth-child(2) {
+    #audio .audio-player .audio-player__slider input:nth-child(2) {
       right: 0;
       text-align: right; }
 
