@@ -1,21 +1,29 @@
 #audio {
+	.article {
+		border-top-color: $headline;
+	}
 	.article__header {
 		.inner-header {
-			background-color: $news-sec;
+			background: -webkit-canvas(squares) $news-sec;
 			padding-bottom: 4.5em;
 			position: relative;
-			
+
+			.article__section {
+				display: none;
+			}
+
 			.article__headline {
 				color: $white;
-				@include margin(0, 0, 1, 0);
+				@include margin(0.5, 0, 1, 0);
+				span {
+					color: $headline;
+					display: block;
+				}
 			}
 
 			.article__byline {
 				color: fade-out($white, 0.1);
 				border: 0 none;
-				a {
-					color: $white;
-				}
 				@include mq($to: col1) {
 					display: none;
 				}
@@ -42,25 +50,25 @@
 
 			.article__pubdate {
 				color: $white;
+				padding-top: 0;
 			}
 
 			.article__comments {
 				border-left-color: fade-out($news-pri, 0.25);
+				padding-top: 0px;
 				@include mq($to: col1) {
-					color: $white;
 					border-left-color: fade-out($white, 0.25);
-					//width: cols($base-1, 1);
+					width: cols($base-1, 1);
 				}
 				@include mq(col1, col2) {
-					color: $white;
 					border-left-color: fade-out($white, 0.25);
-					//width: cols($base-2, 2);
+					width: cols($base-2, 2);
 				}
 				@include mq(col2, col3) {
-					//width: cols($base-3, 6);
+					width: cols($base-3, 6);
 				}
 				@include mq($from: col3) {
-					//width: cols($base-4, 10);
+					width: cols($base-4, 10);
 				}
 			}
 		}
@@ -81,11 +89,17 @@
 		@include padding(0.75);
 		display: table;
 		width: 100%;
-		.audio-button {
-			display: table-cell;
-			min-width: 54px;
+		.audio-player__button {
+			@include margin(0, 1, 0, 0);
 		}
-		#audio-slider {
+		.audio-player__button--loading {
+			@include margin(0, 1, 0, 0);
+			width: 44px;
+			height: 44px;
+			display: none;
+			vertical-align: middle;
+		}
+		.audio-player__slider {
 			display: table-cell;
 			position: relative;
 			-webkit-user-select: none;
@@ -95,7 +109,7 @@
 			outline: 0;
 			height: 40px;
 			width: 100%;
-			.audio-track {
+			.audio-player__slider__track {
 				position: absolute;
 				top: 22px;
 				left: 0;
@@ -105,7 +119,7 @@
 				background-color: $meta;
 				text-align: center;
 			}
-			.audio-knob {
+			.audio-player__slider__knob {
 				position: absolute;
 				margin-top: 14px;
 				padding: 0;
