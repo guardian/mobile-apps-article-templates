@@ -4403,6 +4403,9 @@ aside {
   @media all and (min-width: 68.75em) {
     #football .football__header {
       margin: 0px 0px 12px 0px; } }
+  @media all and (min-width: 28.125em) {
+    #football .football__header {
+      position: relative; } }
   #football .football__header .inner-header {
     padding-top: 0;
     overflow: auto; }
@@ -4436,6 +4439,14 @@ aside {
       @media all and (max-width: 28.115em) {
         #football .football__header .inner-header .article__headline {
           margin-bottom: 1px; } }
+      @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+        #football .football__header .inner-header .article__headline {
+          font-size: 3.2rem;
+          margin-bottom: 2px; } }
+      @media all and (min-width: 40.625em) {
+        #football .football__header .inner-header .article__headline {
+          margin-bottom: 4px;
+          font-size: 4.0rem; } }
   #football .football__header p {
     font-family: "Agate Sans", sans-serif;
     margin-bottom: 0px;
@@ -4673,6 +4684,34 @@ aside {
     table-layout: fixed;
     hyphens: auto;
     word-break: break-word; }
+    @media all and (max-width: 28.115em) {
+      #football .football__header .football__header__home,
+      #football .football__header .football__header__away {
+        display: -webkit-flex;
+        display: flex;
+        margin-bottom: 2.17391%;
+        padding-top: 2.17391%;
+        width: 100%; } }
+    @media all and (min-width: 28.125em) {
+      #football .football__header .football__header__home,
+      #football .football__header .football__header__away {
+        width: 50%;
+        float: left; } }
+    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      #football .football__header .football__header__home,
+      #football .football__header .football__header__away {
+        padding-bottom: 4.25532%;
+        padding-top: 10.6383%; } }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      #football .football__header .football__header__home,
+      #football .football__header .football__header__away {
+        padding-bottom: 2.8169%;
+        padding-top: 8.4507%; } }
+    @media all and (min-width: 56.25em) {
+      #football .football__header .football__header__home,
+      #football .football__header .football__header__away {
+        padding-bottom: 2.10526%;
+        padding-top: 6.31579%; } }
     #football .football__header .football__header__home .football__header__badge,
     #football .football__header .football__header__home .football__header__info,
     #football .football__header .football__header__home .football__header__score,
@@ -4682,9 +4721,29 @@ aside {
       display: table-cell;
       vertical-align: top; }
     @media all and (max-width: 28.115em) {
+      #football .football__header .football__header__home .football__header__score,
+      #football .football__header .football__header__away .football__header__score {
+        min-width: 50px; } }
+    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      #football .football__header .football__header__home .football__header__score,
+      #football .football__header .football__header__away .football__header__score {
+        width: 14.89362%; } }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      #football .football__header .football__header__home .football__header__score,
+      #football .football__header .football__header__away .football__header__score {
+        width: 14.08451%; } }
+    @media all and (min-width: 56.25em) {
+      #football .football__header .football__header__home .football__header__score,
+      #football .football__header .football__header__away .football__header__score {
+        width: 12.63158%; } }
+    @media all and (max-width: 28.115em) {
       #football .football__header .football__header__home .football__header__score .football__header__score__label,
       #football .football__header .football__header__away .football__header__score .football__header__score__label {
         text-align: right; } }
+    @media all and (max-width: 28.115em) {
+      #football .football__header .football__header__home .football__header__info,
+      #football .football__header .football__header__away .football__header__info {
+        width: 100%; } }
     #football .football__header .football__header__home .football__header__info h1,
     #football .football__header .football__header__away .football__header__info h1 {
       text-overflow: ellipsis;
@@ -4696,6 +4755,26 @@ aside {
     #football .football__header .football__header__home .football__header__badge,
     #football .football__header .football__header__away .football__header__badge {
       height: 60px; }
+      @media all and (max-width: 28.115em) {
+        #football .football__header .football__header__home .football__header__badge,
+        #football .football__header .football__header__away .football__header__badge {
+          min-width: 44px;
+          max-width: 44px;
+          margin-right: 8px; } }
+      @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+        #football .football__header .football__header__home .football__header__badge,
+        #football .football__header .football__header__away .football__header__badge {
+          padding-top: 4px;
+          width: 17.02128%; } }
+      @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+        #football .football__header .football__header__home .football__header__badge,
+        #football .football__header .football__header__away .football__header__badge {
+          width: 14.08451%; } }
+      @media all and (min-width: 56.25em) {
+        #football .football__header .football__header__home .football__header__badge,
+        #football .football__header .football__header__away .football__header__badge {
+          width: 12.63158%;
+          padding-top: 6px; } }
       #football .football__header .football__header__home .football__header__badge img,
       #football .football__header .football__header__away .football__header__badge img {
         width: auto;
@@ -4704,25 +4783,78 @@ aside {
         max-height: 60px;
         display: block;
         margin: 2px auto 0 auto; }
-      #football .football__header .football__header__home .football__header__badge .svg-container,
-      #football .football__header .football__header__away .football__header__badge .svg-container {
-        display: inline-block;
-        position: relative;
-        width: 100%;
-        padding-bottom: 100%;
-        vertical-align: middle;
-        overflow: hidden; }
-        #football .football__header .football__header__home .football__header__badge .svg-container svg,
-        #football .football__header .football__header__away .football__header__badge .svg-container svg {
-          display: inline-block;
-          position: absolute;
-          top: 1px;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          shape-rendering: geometricPrecision; }
-  #football .football__header .football__header__away-mobile {
-    display: none; }
+  @media all and (max-width: 28.115em) {
+    #football .football__header .football__header__home {
+      border-top: 1px dotted #dcdad5; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    #football .football__header .football__header__home {
+      padding-right: 2.12766%; } }
+  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    #football .football__header .football__header__home {
+      padding-right: 1.40845%; } }
+  @media all and (min-width: 56.25em) {
+    #football .football__header .football__header__home {
+      padding-right: 1.05263%; } }
+  @media all and (min-width: 28.125em) {
+    #football .football__header .football__header__home .football__header__score {
+      text-align: right; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    #football .football__header .football__header__home .football__header__score {
+      padding-left: 4.25532%; } }
+  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    #football .football__header .football__header__home .football__header__score {
+      padding-left: 2.8169%; } }
+  @media all and (min-width: 56.25em) {
+    #football .football__header .football__header__home .football__header__score {
+      padding-left: 2.10526%; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    #football .football__header .football__header__home .football__header__badge {
+      padding-right: 4.25532%; } }
+  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    #football .football__header .football__header__home .football__header__badge {
+      padding-right: 2.8169%; } }
+  @media all and (min-width: 56.25em) {
+    #football .football__header .football__header__home .football__header__badge {
+      padding-right: 2.10526%; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    #football .football__header .football__header__away {
+      padding-left: 2.12766%; } }
+  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    #football .football__header .football__header__away {
+      padding-left: 1.40845%; } }
+  @media all and (min-width: 56.25em) {
+    #football .football__header .football__header__away {
+      padding-left: 1.05263%; } }
+  @media all and (max-width: 28.115em) {
+    #football .football__header .football__header__away .football__header__badge {
+      -webkit-order: 1;
+      order: 1; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    #football .football__header .football__header__away .football__header__badge {
+      padding-left: 4.25532%; } }
+  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    #football .football__header .football__header__away .football__header__badge {
+      padding-left: 2.8169%; } }
+  @media all and (min-width: 56.25em) {
+    #football .football__header .football__header__away .football__header__badge {
+      padding-left: 2.8169%; } }
+  @media all and (max-width: 28.115em) {
+    #football .football__header .football__header__away .football__header__info {
+      -webkit-order: 2;
+      order: 2; } }
+  @media all and (max-width: 28.115em) {
+    #football .football__header .football__header__away .football__header__score {
+      -webkit-order: 3;
+      order: 3; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    #football .football__header .football__header__away .football__header__score {
+      padding-right: 4.25532%; } }
+  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    #football .football__header .football__header__away .football__header__score {
+      padding-right: 2.8169%; } }
+  @media all and (min-width: 56.25em) {
+    #football .football__header .football__header__away .football__header__score {
+      padding-right: 2.10526%; } }
   #football .football__header .football-comment {
     width: 100%;
     position: relative; }
@@ -5009,35 +5141,6 @@ aside {
 #football .football-tabs-liveblog .article {
   padding-top: 0; }
 @media all and (max-width: 28.115em) {
-  #football .football__header .football__header__home,
-  #football .football__header .football__header__away {
-    display: -webkit-flex;
-    display: flex;
-    margin-bottom: 2.17391%;
-    padding-top: 2.17391%;
-    width: 100%; }
-    #football .football__header .football__header__home .football__header__badge,
-    #football .football__header .football__header__away .football__header__badge {
-      min-width: 44px;
-      max-width: 44px;
-      margin-right: 8px; }
-    #football .football__header .football__header__home .football__header__info,
-    #football .football__header .football__header__away .football__header__info {
-      width: 100%; }
-    #football .football__header .football__header__home .football__header__score,
-    #football .football__header .football__header__away .football__header__score {
-      min-width: 50px; }
-  #football .football__header .football__header__home {
-    border-top: 1px dotted #dcdad5; }
-  #football .football__header .football__header__away .football__header__badge {
-    -webkit-order: 1;
-    order: 1; }
-  #football .football__header .football__header__away .football__header__info {
-    -webkit-order: 2;
-    order: 2; }
-  #football .football__header .football__header__away .football__header__score {
-    -webkit-order: 3;
-    order: 3; }
   #football .football-tabs-stats h2 {
     padding-left: 0;
     margin-bottom: 4px; }
@@ -5136,34 +5239,6 @@ aside {
         width: 15%;
         text-align: right; } }
 @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-  #football .football__header {
-    position: relative; }
-    #football .football__header h1 {
-      margin-bottom: 1.41844%;
-      font-size: 3.2rem; }
-    #football .football__header .football__header__home, #football .football__header .football__header__away {
-      width: 50%;
-      float: left;
-      padding-bottom: 4.25532%;
-      padding-top: 10.6383%; }
-      #football .football__header .football__header__home .football__header__score, #football .football__header .football__header__away .football__header__score {
-        width: 14.89362%; }
-      #football .football__header .football__header__home .football__header__badge, #football .football__header .football__header__away .football__header__badge {
-        width: 17.02128%;
-        padding-top: 4px; }
-    #football .football__header .football__header__home {
-      padding-right: 2.12766%; }
-      #football .football__header .football__header__home .football__header__score {
-        text-align: right;
-        padding-left: 4.25532%; }
-      #football .football__header .football__header__home .football__header__badge {
-        padding-right: 4.25532%; }
-    #football .football__header .football__header__away {
-      padding-left: 2.12766%; }
-      #football .football__header .football__header__away .football__header__score {
-        padding-right: 4.25532%; }
-      #football .football__header .football__header__away .football__header__badge {
-        padding-left: 4.25532%; }
   #football .football-tabs-stats h2 {
     padding-left: 8.51064%;
     margin-bottom: 4px; }
@@ -5269,34 +5344,6 @@ aside {
           width: 15%;
           text-align: right; } }
 @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-  #football .football__header {
-    position: relative; }
-    #football .football__header h1 {
-      margin-bottom: 0.93897%;
-      font-size: 4.0rem; }
-    #football .football__header .football__header__home, #football .football__header .football__header__away {
-      width: 50%;
-      float: left;
-      padding-bottom: 2.8169%;
-      padding-top: 8.4507%; }
-      #football .football__header .football__header__home .football__header__score, #football .football__header .football__header__away .football__header__score {
-        width: 14.08451%; }
-      #football .football__header .football__header__home .football__header__badge, #football .football__header .football__header__away .football__header__badge {
-        width: 16.90141%; }
-    #football .football__header .football__header__home {
-      padding-right: 1.40845%; }
-      #football .football__header .football__header__home .football__header__score {
-        text-align: right;
-        padding-left: 2.8169%; }
-      #football .football__header .football__header__home .football__header__badge {
-        padding-right: 2.8169%;
-        padding-top: 4px; }
-    #football .football__header .football__header__away {
-      padding-left: 1.40845%; }
-      #football .football__header .football__header__away .football__header__score {
-        padding-right: 2.8169%; }
-      #football .football__header .football__header__away .football__header__badge {
-        padding-left: 2.8169%; }
   #football .football-tabs-stats h2 {
     padding-left: 8.4507%;
     margin-bottom: 4px; }
@@ -5404,33 +5451,10 @@ aside {
           width: 15%;
           text-align: right; } }
 @media all and (min-width: 56.25em) {
-  #football .football__header {
-    position: relative; }
-    #football .football__header h1 {
-      margin-bottom: 4px;
-      font-size: 4.0rem; }
-    #football .football__header .football__header__home, #football .football__header .football__header__away {
-      width: 50%;
-      float: left;
-      padding-bottom: 2.10526%;
-      padding-top: 6.31579%; }
-      #football .football__header .football__header__home .football__header__score, #football .football__header .football__header__home .football__header__badge, #football .football__header .football__header__away .football__header__score, #football .football__header .football__header__away .football__header__badge {
-        width: 12.63158%; }
-      #football .football__header .football__header__home .football__header__badge, #football .football__header .football__header__away .football__header__badge {
-        padding-top: 6px; }
-    #football .football__header .football__header__home {
-      padding-right: 1.05263%; }
-      #football .football__header .football__header__home .football__header__score {
-        text-align: right;
-        padding-left: 2.10526%; }
-      #football .football__header .football__header__home .football__header__badge {
-        padding-right: 2.10526%; }
-    #football .football__header .football__header__away {
-      padding-left: 1.05263%; }
-      #football .football__header .football__header__away .football__header__score {
-        padding-right: 2.10526%; }
-      #football .football__header .football__header__away .football__header__badge {
-        padding-left: 2.10526%; }
+  #football .football__header .football__header__away .football__header__score {
+    padding-right: 2.10526%; }
+  #football .football__header .football__header__away .football__header__badge {
+    padding-left: 2.10526%; }
   #football .football-tabs-stats h2 {
     padding-left: 6.31579%;
     margin-bottom: 4px; }
@@ -5535,16 +5559,6 @@ aside {
         #football .football-tabs-stats .football-today .football-table .football-table-entry .football-table-goaldiff, #football .football-tabs-stats .football-today .football-table .football-table-entry .football-table-points, #football .football-tabs-stats .football-today .football-table .football-table-entry .football-table-played {
           width: 15%;
           text-align: right; } }
-
-@media all and (min-width: 28.125em) and (max-width: 40.615em) {
-  #football .football__header.is-alerts .football__header__away, #football .football__header.is-alerts .football__header__home {
-    padding-bottom: 8.51064%; } }
-@media all and (min-width: 40.625em) and (max-width: 56.24em) {
-  #football .football__header.is-alerts .football__header__away, #football .football__header.is-alerts .football__header__home {
-    padding-bottom: 5.6338%; } }
-@media all and (min-width: 56.25em) {
-  #football .football__header.is-alerts .football__header__away, #football .football__header.is-alerts .football__header__home {
-    padding-bottom: 4.21053%; } }
 
 #football-fixtures .article {
   border-top-color: #333333;
