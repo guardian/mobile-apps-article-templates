@@ -114,7 +114,6 @@
 			color: $meta;
 			font-size: 50%;
 			line-height: 70%;
-			padding: 0px 3px;
 			& > span {
 				display: none;
 			}
@@ -127,14 +126,7 @@
 				}
 			}
 		}
-		.is-agg {
-			h1 > span {
-				display: block;
-				@include mq($to: col1) {
-					display: inline-block;
-				}
-			}
-		}
+		
 		// Horrible divider fix
 		.football-divider {
 			width: 50%;
@@ -146,6 +138,7 @@
 				display: none;
 			}
 		}
+		
 		.football-team-home, .football-team-away {
 			display: table;
 			table-layout: fixed;
@@ -1306,5 +1299,19 @@
 		@include mq($from: col3) {
 			padding-bottom: $base-4 * 4;
 		}	
+	}
+}
+
+
+#football {
+	.is-agg {
+		.article__headline > span {
+			display: block;
+			@include mq($to: col1) {
+				display: inline-block;
+				margin-top: 2px;
+				margin-right: 7px;
+			}
+		}
 	}
 }
