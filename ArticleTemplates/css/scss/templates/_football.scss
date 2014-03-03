@@ -7,6 +7,11 @@
 	.football__header {
 		background-color: white;
 		@include margin(0,0,1,0);
+		
+		@include mq($to: col1) {
+			margin-bottom: 0;
+		}
+		
 		@include mq($from: col1) {
 			position: relative;
 		}
@@ -385,6 +390,7 @@
 				
 				@include mq($to: col1) {
 					-webkit-order: 3;
+					padding: 0;
 					order: 3;
 				}
 			}
@@ -699,6 +705,10 @@
 		.article {
 			padding-top: 0;
 		}
+		
+		.block:first-of-type {
+			margin-top: 0;
+		}	
 	}
 
 	@include mq($to: col1) {
