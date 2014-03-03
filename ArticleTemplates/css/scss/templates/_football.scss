@@ -143,15 +143,18 @@
 			}
 		}
 		
-		.article__alerts {
+		// Alerts
+		.football__header__alerts {
 			text-align: center;
 			font-size: 200%;
 			font-weight: normal;
 			position: relative;
 			z-index: 20;
+			@include margin(0.5, 0, 0, 0);
 			span {
 				background-color: white;
 			}
+			
 			@include mq($to: col1) {
 				display: inline-block;
 				float: right;
@@ -159,6 +162,13 @@
 				padding: 0;
 				width: auto;
 			}
+			
+			@include mq($from: col1) {
+				position: absolute;
+				left:0;
+				right:0;
+			}
+			
 			@include mq(col1, col2) {
 				padding-top: $base-2 * 9;
 			}
@@ -167,6 +177,28 @@
 			}
 			@include mq($from: col3) {
 				padding-top: $base-4 * 11;
+			}
+		}
+		
+		&.is-alerts {
+			.football__header__alerts {
+				display: block;
+				@include mq($to: col1) {
+					display: inline-block;
+				}
+			}
+			
+			.football__header__home,
+			.football__header__away {
+				@include mq(col1, col2) {
+					padding-bottom: $base-2 * 4;
+				}
+				@include mq(col2, col3) {
+					padding-bottom: $base-3 * 4;
+				}
+				@include mq($from: col3) {
+					padding-bottom: $base-4 * 4;
+				}
 			}
 		}
 		
@@ -744,12 +776,6 @@
 				margin-bottom: $base-2 / 1.5;
 				font-size: 3.2rem;
 			}
-			.article__alerts {
-				position: absolute;
-				left:0;
-				right:0;
-				margin: $base-2 / 2 auto 0 auto;
-			}
 			.football__header__home, .football__header__away {
 				width: 50%;
 				float: left;
@@ -940,12 +966,6 @@
 			h1 {
 				margin-bottom: $base-3 / 1.5;
 				font-size: 4.0rem;
-			}
-			.article__alerts {
-				position: absolute;
-				left:0;
-				right:0;
-				margin: $base-3 / 1.5 auto 0 auto;
 			}
 			.football__header__home, .football__header__away {
 				width: 50%;
@@ -1140,12 +1160,6 @@
 				margin-bottom: 4px;
 				font-size: 4.0rem;
 			}
-			.article__alerts {
-				position: absolute;
-				left:0;
-				right:0;
-				margin: $base-4 / 1.5 auto 0 auto;
-			}
 			.football__header__home, .football__header__away {
 				width: 50%;
 				float: left;
@@ -1330,12 +1344,6 @@
 }
 
 #football .football__header.is-alerts {
-	.article__alerts {
-		display: block;
-		@include mq($to: col1) {
-			display: inline-block;
-		}
-	}
 	.football__header__away, .football__header__home {
 		@include mq(col1, col2) {
 			padding-bottom: $base-2 * 4;

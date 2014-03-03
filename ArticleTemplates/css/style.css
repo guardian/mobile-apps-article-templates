@@ -4571,30 +4571,76 @@ aside {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden; }
-  #football .football__header .article__alerts {
+  #football .football__header .football__header__alerts {
     text-align: center;
     font-size: 200%;
     font-weight: normal;
     position: relative;
     z-index: 20; }
-    #football .football__header .article__alerts span {
+    @media all and (max-width: 18.75em) {
+      #football .football__header .football__header__alerts {
+        margin: 6px 0px 0px 0px; } }
+    @media all and (min-width: 18.75em) and (max-width: 25em) {
+      #football .football__header .football__header__alerts {
+        margin: 7px 0px 0px 0px; } }
+    @media all and (min-width: 25em) and (max-width: 28.115em) {
+      #football .football__header .football__header__alerts {
+        margin: 9px 0px 0px 0px; } }
+    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      #football .football__header .football__header__alerts {
+        margin: 6px 0px 0px 0px; } }
+    @media all and (min-width: 40.625em) and (max-width: 50em) {
+      #football .football__header .football__header__alerts {
+        margin: 5px 0px 0px 0px; } }
+    @media all and (min-width: 50em) and (max-width: 56.24em) {
+      #football .football__header .football__header__alerts {
+        margin: 6px 0px 0px 0px; } }
+    @media all and (min-width: 56.25em) and (max-width: 68.75em) {
+      #football .football__header .football__header__alerts {
+        margin: 5px 0px 0px 0px; } }
+    @media all and (min-width: 68.75em) {
+      #football .football__header .football__header__alerts {
+        margin: 6px 0px 0px 0px; } }
+    #football .football__header .football__header__alerts span {
       background-color: white; }
     @media all and (max-width: 28.115em) {
-      #football .football__header .article__alerts {
+      #football .football__header .football__header__alerts {
         display: inline-block;
         float: right;
         margin-top: 5.43478%;
         padding: 0;
         width: auto; } }
+    @media all and (min-width: 28.125em) {
+      #football .football__header .football__header__alerts {
+        position: absolute;
+        left: 0;
+        right: 0; } }
     @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      #football .football__header .article__alerts {
+      #football .football__header .football__header__alerts {
         padding-top: 19.14894%; } }
     @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      #football .football__header .article__alerts {
+      #football .football__header .football__header__alerts {
         padding-top: 15.49296%; } }
     @media all and (min-width: 56.25em) {
-      #football .football__header .article__alerts {
+      #football .football__header .football__header__alerts {
         padding-top: 11.57895%; } }
+  #football .football__header.is-alerts .football__header__alerts {
+    display: block; }
+    @media all and (max-width: 28.115em) {
+      #football .football__header.is-alerts .football__header__alerts {
+        display: inline-block; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    #football .football__header.is-alerts .football__header__home,
+    #football .football__header.is-alerts .football__header__away {
+      padding-bottom: 8.51064%; } }
+  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    #football .football__header.is-alerts .football__header__home,
+    #football .football__header.is-alerts .football__header__away {
+      padding-bottom: 5.6338%; } }
+  @media all and (min-width: 56.25em) {
+    #football .football__header.is-alerts .football__header__home,
+    #football .football__header.is-alerts .football__header__away {
+      padding-bottom: 4.21053%; } }
   #football .football__header .football__header__score__agg {
     display: none;
     color: #999999;
@@ -5095,11 +5141,6 @@ aside {
     #football .football__header h1 {
       margin-bottom: 1.41844%;
       font-size: 3.2rem; }
-    #football .football__header .article__alerts {
-      position: absolute;
-      left: 0;
-      right: 0;
-      margin: 1.06383% auto 0 auto; }
     #football .football__header .football__header__home, #football .football__header .football__header__away {
       width: 50%;
       float: left;
@@ -5233,11 +5274,6 @@ aside {
     #football .football__header h1 {
       margin-bottom: 0.93897%;
       font-size: 4.0rem; }
-    #football .football__header .article__alerts {
-      position: absolute;
-      left: 0;
-      right: 0;
-      margin: 0.93897% auto 0 auto; }
     #football .football__header .football__header__home, #football .football__header .football__header__away {
       width: 50%;
       float: left;
@@ -5373,11 +5409,6 @@ aside {
     #football .football__header h1 {
       margin-bottom: 4px;
       font-size: 4.0rem; }
-    #football .football__header .article__alerts {
-      position: absolute;
-      left: 0;
-      right: 0;
-      margin: 0.70175% auto 0 auto; }
     #football .football__header .football__header__home, #football .football__header .football__header__away {
       width: 50%;
       float: left;
@@ -5505,11 +5536,6 @@ aside {
           width: 15%;
           text-align: right; } }
 
-#football .football__header.is-alerts .article__alerts {
-  display: block; }
-  @media all and (max-width: 28.115em) {
-    #football .football__header.is-alerts .article__alerts {
-      display: inline-block; } }
 @media all and (min-width: 28.125em) and (max-width: 40.615em) {
   #football .football__header.is-alerts .football__header__away, #football .football__header.is-alerts .football__header__home {
     padding-bottom: 8.51064%; } }
