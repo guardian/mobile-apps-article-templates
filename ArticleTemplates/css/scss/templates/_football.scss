@@ -261,29 +261,13 @@
 			@include mq($to: col1) {
 				display: -webkit-flex;
 				display: flex;
-				margin-bottom: $base-1 / 2;
-				padding-top: $base-1 / 2;
 				width: 100%;
+				padding: 10px 0 !important;
 			}
 			
 			@include mq($from: col1) {
 				width: 50%;
 				float: left;
-			}
-			
-			@include mq(col1, col2) {
-				padding-bottom: $base-2 * 2;
-				padding-top: $base-2 * 5;
-			}
-			
-			@include mq(col2, col3) {
-				padding-bottom: $base-3 * 2;
-				padding-top: $base-3 * 6;
-			}
-			
-			@include mq($from: col3) {
-				padding-bottom: $base-4 * 2;
-				padding-top: $base-4 * 6;
 			}
 			
 			.football__header__badge,
@@ -338,8 +322,11 @@
 					margin-right: 8px;
 				}
 				
-				@include mq(col1, col2) {
+				@include mq($from: col1) {
 					padding-top: 4px;
+				}
+				
+				@include mq(col1, col2) {
 					width: $base-2 * 8;
 				}
 				
@@ -349,7 +336,6 @@
 				
 				@include mq($from: col3) {
 					width: $base-4 * 12;
-					padding-top: 6px;
 				}
 				
 				img {
@@ -364,37 +350,15 @@
 		}
 		
 		.football__header__home {
+			@include padding(6, 1, 2, 0);
 			@include mq($to: col1) {
 				border-top: 1px dotted $shadow;
 			}
 			
-			@include mq(col1, col2) {
-				padding-right: $base-2;
-			}
-			
-			@include mq(col2, col3) {
-				padding-right: $base-3;
-			}
-			
-			@include mq($from: col3) {
-				padding-right: $base-4;
-			}
-			
 			.football__header__score {
+				@include padding(0, 0, 0, 1);
 				@include mq($from: col1) {
 					text-align: right;
-				}
-				
-				@include mq(col1, col2) {
-					padding-left: $base-2 * 2;
-				}
-				
-				@include mq(col2, col3) {
-					padding-left: $base-3 * 2;
-				}
-				
-				@include mq($from: col3) {
-					padding-left: $base-4 * 2;
 				}
 			}
 			
@@ -414,16 +378,15 @@
 		}
 		
 		.football__header__away {
-			@include mq(col1, col2) {
-				padding-left: $base-2;
-			}
+			@include padding(6, 0, 2, 1);
 			
-			@include mq(col2, col3) {
-				padding-left: $base-3;
-			}
-			
-			@include mq($from: col3) {
-				padding-left: $base-4;
+			.football__header__score {
+				@include padding(0, 1, 0, 0);
+				
+				@include mq($to: col1) {
+					-webkit-order: 3;
+					order: 3;
+				}
 			}
 			
 			.football__header__badge {
@@ -448,24 +411,6 @@
 				@include mq($to: col1) {
 					-webkit-order: 2;
 					order: 2;
-				}
-			}
-			.football__header__score {
-				@include mq($to: col1) {
-					-webkit-order: 3;
-					order: 3;
-				}
-				
-				@include mq(col1, col2) {
-					padding-right: $base-2 * 2;
-				}
-				
-				@include mq(col2, col3) {
-					padding-right: $base-3 * 2;
-				}
-				
-				@include mq($from: col3) {
-					padding-right: $base-4 * 2;
 				}
 			}
 		}
