@@ -9,10 +9,16 @@
 		color: $standfirst;
 		font-family: $agate-sans;
 		@include padding(0, 1, 0, 1);
+		margin-top: 0;
 	}
 
 	.block-elements {
 		@include padding(0, 1, 0, 1);
+		
+		> * {
+			padding-top: 0;
+			margin-top: 0;
+		}
 
 		.block-updated {
 			color: $meta;
