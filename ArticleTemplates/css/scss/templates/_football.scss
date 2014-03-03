@@ -7,18 +7,29 @@
 	.football__header {
 		background-color: white;
 		@include margin(0,0,1,0);
+		
 		.inner-header {
 			padding-top: 0;
 			@include padding(0,1,0,1);
 			overflow: auto;
+			
 			.article__headline {
 				padding: 0;
+				width: 100%;
+				@include mq($to: col1) {
+					margin-bottom: 1px;
+				}
+				
 			}
 		}
+		
 		p {
 			font-family: $agate-sans;
 			margin-bottom: 0px;
+			@include meta();
+			width: 100%;
 		}
+		
 		.football__header__status {
 			display: inline-block;
 			background-color: white;
@@ -30,44 +41,78 @@
 			background-image: url("../css/img/football_symbols_time.svg");
 			color: $standfirst;
 			z-index: 10;
-			&.f p {
+			@include margin(0.5, 0, 0, 0);
+			
+			@include mq($to: col1) {
+				float: left;
+				margin-right: 8px;
+			}
+			
+			@include mq($from: col1) {
+				position: absolute;
+				left: 0;
+				right: 0;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			
+			&.football__header__status--f p {
 				font-size: 1.2rem;
 			}
-			&.first, &.second, &.ht, &.ft, &.et, &.p {
+			
+			&.football__header__status--first,
+			&.football__header__status--second,
+			&.football__header__status--ht,
+			&.football__header__status--ft,
+			&.football__header__status--et,
+			&.football__header__status--p {
 				font-weight: bold;
 				color: $news-sec;
 			}
-			&.first {
+			
+			&.football__header__status--first {
 				background-image: url("../css/img/football_symbols_1st.svg");
 			}
-			&.second {
+			
+			&.football__header__status--second {
 				background-image: url("../css/img/football_symbols_2nd.svg");
 			}
-			&.ht {
+			
+			&.football__header__status--ht {
 				background-image: url("../css/img/football_symbols_HT.svg");
 			}
-			&.ft {
+			
+			&.football__header__status--ft {
 				background-image: url("../css/img/football_symbols_FT.svg");
 			}
-			&.et {
+			
+			&.football__header__status--et {
 				background-image: url("../css/img/football_symbols_ET.svg");
 			}
-			&.p {
+			
+			&.football__header__status--p {
 				background-image: url("../css/img/football_symbols_P.svg");
 			}
-			&.a, &.c, &.s {
+			
+			&.football__header__status--a,
+			&.football__header__status--c,
+			&.football__header__status--s {
 				font-weight: bold;
 				color: $alert;
 			}
-			&.a {
+			
+			&.football__header__status--a {
 				background-image: url("../css/img/football_symbols_A.svg");
 			}
-			&.c {
+			
+			&.football__header__status--c {
 				background-image: url("../css/img/football_symbols_C.svg");
 			}
-			&.s {
+			
+			&.football__header__status--s {
 				background-image: url("../css/img/football_symbols_S.svg");
 			}
+			
 			p {
 				display: table-cell;
 				vertical-align: middle;
@@ -75,6 +120,29 @@
 				width: 100%;
 			}
 		}
+		
+		.football__header__match-info {
+			@include margin(0.5, 0, 1, 0);
+			@include mq($to: col1) {
+				padding: 0 52px;
+			}
+			@include mq($from: col1) {
+				position: absolute;
+				width: 50%;
+			}
+			.football__header__match-info__round {
+				@include mq(col1, col2) {
+					display: none;
+				}
+			}
+			
+			p {
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+			}
+		}
+		
 		.article__alerts {
 			text-align: center;
 			font-size: 200%;
@@ -101,40 +169,31 @@
 				padding-top: $base-4 * 11;
 			}
 		}
-		h1, p {
-			width: 100%;
-		}
-		@include mq($to: col1) {
-			.football__header__score h1 {
-				text-align: right
-			}
-		}
-		h1 > span {
+		
+		// Aggregate Scores
+		.football__header__score__agg {
 			display: none;
 			color: $meta;
 			font-size: 50%;
 			line-height: 70%;
-			padding: 0px 3px;
-			& > span {
-				display: none;
-			}
+			padding: 0 2px;
 			@include mq($to: col1) {
 				font-size: 75%;
 				width: 40px;
+				padding: 4px 8px;
 				text-align: right;
-				& > span {
-					display: inline-block;
-				}
 			}
 		}
-		.is-agg {
-			h1 > span {
+		
+		&.is-agg {
+			.football__header__score__agg {
 				display: block;
 				@include mq($to: col1) {
 					display: inline-block;
 				}
 			}
 		}
+		
 		// Horrible divider fix
 		.football__header__divider {
 			width: 50%;
@@ -146,15 +205,29 @@
 				display: none;
 			}
 		}
-		.football__header__home, .football__header__away {
+		
+		.football__header__home,
+		.football__header__away {
 			display: table;
 			table-layout: fixed;
 			hyphens: auto;
 			word-break: break-word;
-			.football__header__badge, .football__header__info, .football__header__score {
+			
+			.football__header__badge,
+			.football__header__info,
+			.football__header__score {
 				display: table-cell;
 				vertical-align: top;
 			}
+			
+			.football__header__score {
+				.football__header__score__label {
+					@include mq($to: col1) {
+						text-align: right;
+					}
+				}
+			}
+			
 			.football__header__info h1 {
 				text-overflow: ellipsis;
 				white-space: nowrap;
@@ -482,30 +555,6 @@
 
 	@include mq($to: col1) {
 		.football__header {
-			p {
-				font-size: $meta-size-1;
-				line-height: $meta-lead-1;
-			}
-			h1 {
-				margin-bottom: 1px;
-			}
-			.football__header__match-info {
-				margin-top: $base-1 / 2;
-				margin-bottom: $base-1 / 1.5;
-				padding: 0 52px;
-				p {
-					text-overflow: ellipsis;
-					white-space: nowrap;
-					overflow: hidden;
-				}
-			}
-			.football__header__status {
-				float: left;
-				margin-top: $base-1 / 2;
-				margin-right: 8px;
-				width: 44px;
-				height: 44px;
-			}
 			.football__header__home,
 			.football__header__away {
 				display: -webkit-flex;
@@ -691,27 +740,15 @@
 	@include mq(col1, col2) {
 		.football__header {
 			position: relative;
-			p {
-				font-size: $meta-size-2;
-				line-height: $meta-lead-2;
-			}
 			h1 {
 				margin-bottom: $base-2 / 1.5;
 				font-size: 3.2rem;
 			}
-			.football__header__status, .article__alerts {
+			.article__alerts {
 				position: absolute;
 				left:0;
 				right:0;
 				margin: $base-2 / 2 auto 0 auto;
-			}
-			.football__header__match-info {
-				margin-top: $base-2 / 2;
-				position: absolute;
-				width: 50%;
-				span {
-					display: none;
-				}
 			}
 			.football__header__home, .football__header__away {
 				width: 50%;
@@ -900,24 +937,15 @@
 	@include mq(col2, col3) {
 		.football__header {
 			position: relative;
-			p {
-				font-size: $meta-size-3;
-				line-height: $meta-lead-3;
-			}
 			h1 {
 				margin-bottom: $base-3 / 1.5;
 				font-size: 4.0rem;
 			}
-			.football__header__status, .article__alerts {
+			.article__alerts {
 				position: absolute;
 				left:0;
 				right:0;
 				margin: $base-3 / 1.5 auto 0 auto;
-			}
-			.football__header__match-info {
-				margin-top: $base-3 / 1.5;
-				position: absolute;
-				width: 50%;
 			}
 			.football__header__home, .football__header__away {
 				width: 50%;
@@ -1108,24 +1136,15 @@
 	@include mq($from: col3) {
 		.football__header {
 			position: relative;
-			p {
-				font-size: $meta-size-4;
-				line-height: $meta-lead-4;
-			}
 			h1 {
 				margin-bottom: 4px;
 				font-size: 4.0rem;
 			}
-			.football__header__status, .article__alerts {
+			.article__alerts {
 				position: absolute;
 				left:0;
 				right:0;
 				margin: $base-4 / 1.5 auto 0 auto;
-			}
-			.football__header__match-info {
-				margin-top: $base-4 / 1.5;
-				position: absolute;
-				width: 50%;
 			}
 			.football__header__home, .football__header__away {
 				width: 50%;

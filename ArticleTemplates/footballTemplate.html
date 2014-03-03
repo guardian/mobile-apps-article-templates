@@ -13,7 +13,7 @@
 	<div class="article">
 		<div class="article__header football__header __IS_ALERTS__ __IS_AGG__"><!-- populate __IS_AGG__ with is-agg if game has an aggregate score to show-->
 			<div class="inner-header">
-				<div class="football__header__status __FOOTBALL_STATUS_CLASS__"><!-- This should be populated with the status as a useable class name, lower case, no spaces. 1st and 2nd need to be converted to first and second respectively. Do not populate with the time, it will default to that style -->
+				<div class="football__header__status football__header__status--__FOOTBALL_STATUS_CLASS__"><!-- This should be populated with the status as a useable class name, lower case, no spaces. 1st and 2nd need to be converted to first and second respectively. Do not populate with the time, it will default to that style -->
 					<p>__FOOTBALL_STATUS__</p>
 				</div>
 
@@ -22,7 +22,7 @@
 				__FOOTBALL_ALERTS__
 			
 				<div class="football__header__match-info">
-					<p class="football__header__match-info__competition">__FOOTBALL_COMPETITION__ <span>__FOOTBALL_ROUND__</span></p>
+					<p class="football__header__match-info__competition">__FOOTBALL_COMPETITION__ <span class="football__header__match-info__round">__FOOTBALL_ROUND__</span></p>
 					<p class="football__header__match-info__venue">__FOOTBALL_VENUE__</p>
 				</div>
 
@@ -37,13 +37,13 @@
 					</div>
 					
 					<div class="football__header__score">
-						<h1 class="football__header__score__label football__header__home__score__label article__headline">__FOOTBALL_HOME_SCORE__ <span>__FOOTBALL_HOME_AGG_SCORE__</span></h1>
+						<h1 class="football__header__score__label football__header__home__score__label article__headline">__FOOTBALL_HOME_SCORE__ <span class="football__header__score__agg">__FOOTBALL_HOME_AGG_SCORE__</span></h1>
 					</div>
 				</div>
 
 				<div class="football__header__away">
 					<div class="football__header__score">
-						<h1 class="article__headline">__FOOTBALL_AWAY_SCORE__ <span>__FOOTBALL_AWAY_AGG_SCORE__</span></h1>
+						<h1 class="football__header__score__label football__header__away__score__label article__headline">__FOOTBALL_AWAY_SCORE__ <span class="football__header__score__agg">__FOOTBALL_AWAY_AGG_SCORE__</span></h1>
 					</div>
 					
 					<div class="football__header__info">
@@ -51,7 +51,7 @@
 						__FOOTBALL_AWAY_SCORER__
 					</div>
 					
-					<div class="football__header__badge">
+					<div class="football__header__badge football__header__away__badge">
 						__FOOTBALL_AWAY_CREST__
 					</div>
 				</div>
