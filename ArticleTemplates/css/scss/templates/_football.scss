@@ -140,12 +140,11 @@
 		}
 		
 		.football__header__match-info {
-			@include margin(0.5, 0, 1, 0);
+			@include margin(0.5, 0, 0.5, 0);
 			@include mq($to: col1) {
 				padding: 0 52px;
 			}
 			@include mq($from: col1) {
-				position: absolute;
 				width: 50%;
 			}
 			.football__header__match-info__round {
@@ -227,11 +226,16 @@
 			font-size: 50%;
 			line-height: 70%;
 			padding: 0 2px;
+			
 			@include mq($to: col1) {
 				font-size: 75%;
 				width: 40px;
 				padding: 4px 8px;
 				text-align: right;
+			}
+			
+			@include mq($from: col1) {
+				margin-top: 10px;
 			}
 		}
 		
@@ -336,7 +340,7 @@
 				}
 				
 				@include mq(col2, col3) {
-					width: $base-3 * 10;
+					width: $base-3 * 11;
 				}
 				
 				@include mq($from: col3) {
@@ -355,7 +359,7 @@
 		}
 		
 		.football__header__home {
-			@include padding(6, 1, 2, 0);
+			@include padding(0, 1, 2, 0);
 			@include mq($to: col1) {
 				border-top: 1px dotted $shadow;
 			}
@@ -383,7 +387,7 @@
 		}
 		
 		.football__header__away {
-			@include padding(6, 0, 2, 1);
+			@include padding(0, 0, 2, 1);
 			
 			.football__header__score {
 				@include padding(0, 1, 0, 0);
