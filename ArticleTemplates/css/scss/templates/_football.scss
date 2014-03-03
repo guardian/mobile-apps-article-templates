@@ -492,7 +492,7 @@
 			.football__header__match-info {
 				margin-top: $base-1 / 2;
 				margin-bottom: $base-1 / 1.5;
-				padding: 0 44px;
+				padding: 0 52px;
 				p {
 					text-overflow: ellipsis;
 					white-space: nowrap;
@@ -502,33 +502,49 @@
 			.football__header__status {
 				float: left;
 				margin-top: $base-1 / 2;
-				margin-left: -4px;
 				margin-right: 8px;
-				width: 40px;
-				height: 40px;
+				width: 44px;
+				height: 44px;
 			}
-			.football__header__home, .football__header__away {
+			.football__header__home,
+			.football__header__away {
+				display: -webkit-flex;
+				display: flex;
 				margin-bottom: $base-1 / 2;
 				padding-top: $base-1 / 2;
 				width: 100%;
 				.football__header__badge {
-					width: 44px;
-					padding-right: 8px;
+					min-width: 44px;
+					max-width: 44px;
+					margin-right: 8px;
+				}
+				.football__header__info {
+					width: 100%;
 				}
 				.football__header__score {
-					width: 50px;
+					min-width: 50px;
 				}
 			}
+			
 			.football__header__home {
 				border-top: 1px dotted $shadow;
 			}
+			
 			.football__header__away {
-				display: none;
-				margin-bottom: $base-1;
+				.football__header__badge {
+					-webkit-order: 1;
+					order: 1;
+				}
+				.football__header__info {
+					-webkit-order: 2;
+					order: 2;
+				}
+				.football__header__score {
+					-webkit-order: 3;
+					order: 3;
+				}
 			}
-			.football__header__away-mobile.football__header__away {
-				display: table;
-			}
+			
 		}
 		.football-tabs-stats {
 			h2 {
