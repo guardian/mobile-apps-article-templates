@@ -226,7 +226,9 @@
 			font-size: 50%;
 			line-height: 70%;
 			padding: 0 2px;
-			
+			& > span {
+				display: none;
+			}
 			@include mq($to: col1) {
 				font-size: 75%;
 				width: 40px;
@@ -247,7 +249,7 @@
 				}
 			}
 		}
-		
+
 		// Horrible divider fix
 		.football__header__divider {
 			width: 50%;
