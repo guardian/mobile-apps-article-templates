@@ -4,7 +4,7 @@
 		border-bottom: none;
 	}
 	
-	.football-header {
+	.football__header {
 		background-color: white;
 		@include margin(0,0,1,0);
 		.inner-header {
@@ -19,7 +19,7 @@
 			font-family: $agate-sans;
 			margin-bottom: 0px;
 		}
-		.football-status {
+		.football__header__status {
 			display: inline-block;
 			background-color: white;
 			width: 44px;
@@ -105,7 +105,7 @@
 			width: 100%;
 		}
 		@include mq($to: col1) {
-			.football-score h1 {
+			.football__header__score h1 {
 				text-align: right
 			}
 		}
@@ -136,7 +136,7 @@
 			}
 		}
 		// Horrible divider fix
-		.football-divider {
+		.football__header__divider {
 			width: 50%;
 			border-right: 1px solid $shadow;
 			height: 100%;
@@ -146,16 +146,16 @@
 				display: none;
 			}
 		}
-		.football-team-home, .football-team-away {
+		.football__header__home, .football__header__away {
 			display: table;
 			table-layout: fixed;
 			hyphens: auto;
 			word-break: break-word;
-			.football-badge, .football-info, .football-score {
+			.football__header__badge, .football__header__info, .football__header__score {
 				display: table-cell;
 				vertical-align: top;
 			}
-			.football-info h1 {
+			.football__header__info h1 {
 				text-overflow: ellipsis;
 				white-space: nowrap;
 				overflow: hidden;
@@ -163,7 +163,7 @@
 				position: relative;
 				z-index: 25;
 			}
-			.football-badge {
+			.football__header__badge {
 				height: 60px;
 				img {
 					width: auto;
@@ -192,7 +192,8 @@
 				}
 			}
 		}
-		.football-team-away-mobile {
+		
+		.football__header__away-mobile {
 			display: none;
 		}
 		.football-comment {
@@ -220,6 +221,9 @@
 		}
 		.article__header h3 {
 			display: none;
+		}
+		.article__headline {
+			@include padding(0.5, 1, 0, 1);
 		}
 	}
 	.football-tabs-stats {
@@ -477,7 +481,7 @@
 	}
 
 	@include mq($to: col1) {
-		.football-header {
+		.football__header {
 			p {
 				font-size: $meta-size-1;
 				line-height: $meta-lead-1;
@@ -485,7 +489,7 @@
 			h1 {
 				margin-bottom: 1px;
 			}
-			.football-match-info {
+			.football__header__match-info {
 				margin-top: $base-1 / 2;
 				margin-bottom: $base-1 / 1.5;
 				padding: 0 44px;
@@ -495,7 +499,7 @@
 					overflow: hidden;
 				}
 			}
-			.football-status {
+			.football__header__status {
 				float: left;
 				margin-top: $base-1 / 2;
 				margin-left: -4px;
@@ -503,26 +507,26 @@
 				width: 40px;
 				height: 40px;
 			}
-			.football-team-home, .football-team-away {
+			.football__header__home, .football__header__away {
 				margin-bottom: $base-1 / 2;
 				padding-top: $base-1 / 2;
 				width: 100%;
-				.football-badge {
+				.football__header__badge {
 					width: 44px;
 					padding-right: 8px;
 				}
-				.football-score {
+				.football__header__score {
 					width: 50px;
 				}
 			}
-			.football-team-home {
+			.football__header__home {
 				border-top: 1px dotted $shadow;
 			}
-			.football-team-away {
+			.football__header__away {
 				display: none;
 				margin-bottom: $base-1;
 			}
-			.football-team-away-mobile.football-team-away {
+			.football__header__away-mobile.football__header__away {
 				display: table;
 			}
 		}
@@ -669,7 +673,7 @@
 	}
 
 	@include mq(col1, col2) {
-		.football-header {
+		.football__header {
 			position: relative;
 			p {
 				font-size: $meta-size-2;
@@ -679,13 +683,13 @@
 				margin-bottom: $base-2 / 1.5;
 				font-size: 3.2rem;
 			}
-			.football-status, .article__alerts {
+			.football__header__status, .article__alerts {
 				position: absolute;
 				left:0;
 				right:0;
 				margin: $base-2 / 2 auto 0 auto;
 			}
-			.football-match-info {
+			.football__header__match-info {
 				margin-top: $base-2 / 2;
 				position: absolute;
 				width: 50%;
@@ -693,35 +697,35 @@
 					display: none;
 				}
 			}
-			.football-team-home, .football-team-away {
+			.football__header__home, .football__header__away {
 				width: 50%;
 				float: left;
 				padding-bottom: $base-2 * 2;
 				padding-top: $base-2 * 5;
-				.football-score {
+				.football__header__score {
 					width: $base-2 * 7;
 				}
-				.football-badge {
+				.football__header__badge {
 					width: $base-2 * 8;
 					padding-top: 4px;
 				}
 			}
-			.football-team-home {
+			.football__header__home {
 				padding-right: $base-2 * 1;
-				.football-score {
+				.football__header__score {
 					text-align: right;
 					padding-left: $base-2 * 2;
 				}
-				.football-badge {
+				.football__header__badge {
 					padding-right: $base-2 * 2;
 				}
 			}
-			.football-team-away {
+			.football__header__away {
 				padding-left: $base-2 * 1;
-				.football-score {
+				.football__header__score {
 					padding-right: $base-2 * 2;
 				}
-				.football-badge {
+				.football__header__badge {
 					padding-left: $base-2 * 2;
 				}
 			}
@@ -878,7 +882,7 @@
 	}
 
 	@include mq(col2, col3) {
-		.football-header {
+		.football__header {
 			position: relative;
 			p {
 				font-size: $meta-size-3;
@@ -888,46 +892,46 @@
 				margin-bottom: $base-3 / 1.5;
 				font-size: 4.0rem;
 			}
-			.football-status, .article__alerts {
+			.football__header__status, .article__alerts {
 				position: absolute;
 				left:0;
 				right:0;
 				margin: $base-3 / 1.5 auto 0 auto;
 			}
-			.football-match-info {
+			.football__header__match-info {
 				margin-top: $base-3 / 1.5;
 				position: absolute;
 				width: 50%;
 			}
-			.football-team-home, .football-team-away {
+			.football__header__home, .football__header__away {
 				width: 50%;
 				float: left;
 				padding-bottom: $base-3 * 2;
 				padding-top: $base-3 * 6;
-				.football-score {
+				.football__header__score {
 					width: $base-3 * 10;
 				}
-				.football-badge{
+				.football__header__badge{
 					width: $base-3 * 12;
 				}
 			}
-			.football-team-home {
+			.football__header__home {
 				padding-right: $base-3 * 1;
-				.football-score {
+				.football__header__score {
 					text-align: right;
 					padding-left: $base-3 * 2;
 				}
-				.football-badge {
+				.football__header__badge {
 					padding-right: $base-3 * 2;
 					padding-top: 4px;
 				}
 			}
-			.football-team-away {
+			.football__header__away {
 				padding-left: $base-3 * 1;
-				.football-score {
+				.football__header__score {
 					padding-right: $base-3 * 2;
 				}
-				.football-badge {
+				.football__header__badge {
 					padding-left: $base-3 * 2;
 				}
 			}
@@ -1086,7 +1090,7 @@
 	}
 
 	@include mq($from: col3) {
-		.football-header {
+		.football__header {
 			position: relative;
 			p {
 				font-size: $meta-size-4;
@@ -1096,45 +1100,45 @@
 				margin-bottom: 4px;
 				font-size: 4.0rem;
 			}
-			.football-status, .article__alerts {
+			.football__header__status, .article__alerts {
 				position: absolute;
 				left:0;
 				right:0;
 				margin: $base-4 / 1.5 auto 0 auto;
 			}
-			.football-match-info {
+			.football__header__match-info {
 				margin-top: $base-4 / 1.5;
 				position: absolute;
 				width: 50%;
 			}
-			.football-team-home, .football-team-away {
+			.football__header__home, .football__header__away {
 				width: 50%;
 				float: left;
 				padding-bottom: $base-4 * 2;
 				padding-top: $base-4 * 6;
-				.football-score, .football-badge {
+				.football__header__score, .football__header__badge {
 					width: $base-4 * 12;
 				}
-				.football-badge {
+				.football__header__badge {
 					padding-top: 6px;
 				}
 			}
-			.football-team-home {
+			.football__header__home {
 				padding-right: $base-4 * 1;
-				.football-score {
+				.football__header__score {
 					text-align: right;
 					padding-left: $base-4 * 2;
 				}
-				.football-badge {
+				.football__header__badge {
 					padding-right: $base-4 * 2;
 				}
 			}
-			.football-team-away {
+			.football__header__away {
 				padding-left: $base-4 * 1;
-				.football-score {
+				.football__header__score {
 					padding-right: $base-4 * 2;
 				}
-				.football-badge {
+				.football__header__badge {
 					padding-left: $base-4 * 2;
 				}
 			}
@@ -1290,14 +1294,14 @@
 	}
 }
 
-#football .football-header.is-alerts {
+#football .football__header.is-alerts {
 	.article__alerts {
 		display: block;
 		@include mq($to: col1) {
 			display: inline-block;
 		}
 	}
-	.football-team-away, .football-team-home {
+	.football__header__away, .football__header__home {
 		@include mq(col1, col2) {
 			padding-bottom: $base-2 * 4;
 		}
