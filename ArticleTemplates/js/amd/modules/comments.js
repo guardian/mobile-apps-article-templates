@@ -50,13 +50,12 @@ define([
 						
 					});
 				};
-				// Global function to handle comments, called by native code
+				// Global functions to handle comments, called by native code
 				window.articleCommentsInserter = function (html) {
+					$('.discussion__loading').hide();
 					if (!html) {
 						$('.discussion__empty').show();
-						$('.discussion__loading').hide();
 					} else {
-						$('.discussion__loading').hide();
 						html = bonzo.create(html);
 						$(html).appendTo($('#comments'));
 					}
@@ -84,6 +83,8 @@ define([
 				window.commentsEnd = function () {
 					$('.discussion__loading').remove();
 				};
+				
+				// Functions for feedback on recommend buttons
 				window.commentsRecommendIncrease = function (id, number) {
 					var target = '#' + id + ' .discussion__recommend';
 					$(target).addClass('increase');
