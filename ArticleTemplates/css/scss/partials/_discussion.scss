@@ -86,8 +86,8 @@
 	}
 
 	.discussion__timestamp {
+		@include meta();
 		color: $meta;
-		font-size: $meta-size-1;
 		display: block;
 		white-space: nowrap;
 	}
@@ -267,20 +267,21 @@
 	}
 }
 
+// Expanding Logic
 .discussion__thread {
 	border-bottom: 2px solid $shadow;
+	.discussion:nth-of-type(n+5) {
+		display: none;
+	}
 }
 
-.discussion__view-more,
-.discussion__empty,
-.discussion__failed {
-	@include mq(col2, col3) {
-		padding-left: cols($base-3, 4);
-	}
-	@include mq($from: col3) {
-		padding-left: cols($base-4, 5);
+.discussion__thread.expand {
+	.discussion {
+		display: block;
 	}
 }
+
+// Styling Different States
 .discussion__empty,
 .discussion__failed {
 	display: none;
@@ -298,14 +299,22 @@
 	}
 }
 
-
 // Failure States
-.comments-0,
 .comments-has-failed {
+	.discussion__failed {
+		display: block;
+	}
 	.discussion__view-more {
 		display: none;
 	}
 }
+
+.comments-0 {
+	.discussion__empty {
+		display: block;
+	}
+}
+
 .comments-0,
 .comments-1,
 .comments-has-failed {
