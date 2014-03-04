@@ -17,7 +17,15 @@ define([
 					var counter = 0;
 					var stopPropagation = 0;
 					
-					$(".discussion__thread .discussion:nth-of-type(4)").append("<div class='discussion__view-more'><span class='icon'>&#xe002;</span> View more replies</div>");
+					$(".discussion__thread").each(function(el) {
+						if (!$(this).hasClass("discussion__thread--checked")) {
+							if (typeof $(this)[0].children[4] !== "undefined") {
+								var blockID = "#" + $(this)[0].children[3].id;
+								$(blockID).append("<div class='discussion__view-more'><span class='icon'>&#xe002;</span> View more replies</div>");
+							}
+						}
+						$(this).addClass("discussion__thread--checked");
+					});
 
 					$(".discussion").each(function(el) {
 					

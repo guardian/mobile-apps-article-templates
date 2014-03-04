@@ -86,8 +86,8 @@
 	}
 
 	.discussion__timestamp {
+		@include meta();
 		color: $meta;
-		font-size: $meta-size-1;
 		display: block;
 		white-space: nowrap;
 	}
@@ -282,16 +282,6 @@
 }
 
 // Styling Different States
-.discussion__view-more,
-.discussion__empty,
-.discussion__failed {
-	@include mq(col2, col3) {
-		padding-left: cols($base-3, 4);
-	}
-	@include mq($from: col3) {
-		padding-left: cols($base-4, 5);
-	}
-}
 .discussion__empty,
 .discussion__failed {
 	display: none;

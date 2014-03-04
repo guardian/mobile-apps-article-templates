@@ -2005,9 +2005,32 @@ ul.tabs li.selected {
   .discussion__empty .discussion__timestamp,
   .discussion__failed .discussion__timestamp {
     color: #999999;
-    font-size: 1.4rem;
     display: block;
     white-space: nowrap; }
+    @media all and (max-width: 28.115em) {
+      .discussion .discussion__timestamp,
+      .discussion__empty .discussion__timestamp,
+      .discussion__failed .discussion__timestamp {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      .discussion .discussion__timestamp,
+      .discussion__empty .discussion__timestamp,
+      .discussion__failed .discussion__timestamp {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      .discussion .discussion__timestamp,
+      .discussion__empty .discussion__timestamp,
+      .discussion__failed .discussion__timestamp {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
+    @media all and (min-width: 56.25em) {
+      .discussion .discussion__timestamp,
+      .discussion__empty .discussion__timestamp,
+      .discussion__failed .discussion__timestamp {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
   .discussion .discussion__recommend,
   .discussion__empty .discussion__recommend,
   .discussion__failed .discussion__recommend {
@@ -2532,17 +2555,6 @@ ul.tabs li.selected {
 
 .discussion__thread.expand .discussion {
   display: block; }
-
-@media all and (min-width: 40.625em) and (max-width: 56.24em) {
-  .discussion__view-more,
-  .discussion__empty,
-  .discussion__failed {
-    padding-left: 32.39437%; } }
-@media all and (min-width: 56.25em) {
-  .discussion__view-more,
-  .discussion__empty,
-  .discussion__failed {
-    padding-left: 30.52632%; } }
 
 .discussion__empty,
 .discussion__failed {
