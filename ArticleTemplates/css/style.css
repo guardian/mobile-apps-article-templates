@@ -2056,9 +2056,32 @@ ul.tabs li.selected {
   .discussion__empty .discussion__timestamp,
   .discussion__failed .discussion__timestamp {
     color: #999999;
-    font-size: 1.4rem;
     display: block;
     white-space: nowrap; }
+    @media all and (max-width: 28.115em) {
+      .discussion .discussion__timestamp,
+      .discussion__empty .discussion__timestamp,
+      .discussion__failed .discussion__timestamp {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      .discussion .discussion__timestamp,
+      .discussion__empty .discussion__timestamp,
+      .discussion__failed .discussion__timestamp {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      .discussion .discussion__timestamp,
+      .discussion__empty .discussion__timestamp,
+      .discussion__failed .discussion__timestamp {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
+    @media all and (min-width: 56.25em) {
+      .discussion .discussion__timestamp,
+      .discussion__empty .discussion__timestamp,
+      .discussion__failed .discussion__timestamp {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
   .discussion .discussion__recommend,
   .discussion__empty .discussion__recommend,
   .discussion__failed .discussion__recommend {
@@ -2578,17 +2601,11 @@ ul.tabs li.selected {
 
 .discussion__thread {
   border-bottom: 2px solid #dcdad5; }
+  .discussion__thread .discussion:nth-of-type(n+5) {
+    display: none; }
 
-@media all and (min-width: 40.625em) and (max-width: 56.24em) {
-  .discussion__view-more,
-  .discussion__empty,
-  .discussion__failed {
-    padding-left: 32.39437%; } }
-@media all and (min-width: 56.25em) {
-  .discussion__view-more,
-  .discussion__empty,
-  .discussion__failed {
-    padding-left: 30.52632%; } }
+.discussion__thread.expand .discussion {
+  display: block; }
 
 .discussion__empty,
 .discussion__failed {
@@ -2646,9 +2663,13 @@ ul.tabs li.selected {
     width: 44px;
     height: 44px; }
 
-.comments-0 .discussion__view-more,
+.comments-has-failed .discussion__failed {
+  display: block; }
 .comments-has-failed .discussion__view-more {
   display: none; }
+
+.comments-0 .discussion__empty {
+  display: block; }
 
 .comments-0 .article__controls__sorter a,
 .comments-1 .article__controls__sorter a,
