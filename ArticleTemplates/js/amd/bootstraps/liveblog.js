@@ -55,6 +55,9 @@ define([
 				window.liveblogDeleteBlock = function (blockID) {
 					$('#' + blockID).remove();
 				};
+				window.liveblogUpdateBlock = function (blockID, html) {
+					$("#" + blockID).replaceWith(html);
+				}
 				window.liveblogLoadMore = function (html) {
 					html = bonzo.create(html);
 					$('.live-more-loading').hide();
