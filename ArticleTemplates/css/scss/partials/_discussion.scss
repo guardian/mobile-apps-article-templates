@@ -267,14 +267,17 @@
 	}
 }
 
+// Expanding Logic
+
 .discussion__thread {
 	border-bottom: 2px solid $shadow;
-	
 	.discussion:nth-of-type(n+5) {
 		display: none;
 	}
-	
-	.discussion.show {
+}
+
+.discussion__thread.expand {
+	.discussion {
 		display: block;
 	}
 }

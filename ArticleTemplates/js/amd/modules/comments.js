@@ -45,16 +45,7 @@ define([
 		 
 						bean.on(el, 'click', '.discussion__view-more', function () {
 							$(this).hide();
-							
-							var parent = $(this).parent().parent()[0].children;
-							console.log(parent);
-							
-							$($(parent)).each(function () {
-								var id = ($(this)[0].id);
-								console.log(id);
-								$("#" + id).addClass("show");
-							});
-
+							$(this).parent().parent().addClass("expand");
 						});
 						
 					});
