@@ -18,30 +18,18 @@ define([
                     updateCounter = 0,
                     liveblogStartPos = $('.live-container').offset(),
 
-                    liveblogNewBlockDump = function () {
+					liveblogNewBlockDump = function () {
                         newBlockHtml = bonzo.create(newBlockHtml);
-                        $(newBlockHtml).hide().prependTo('.article__body--liveblog').show().addClass('animated bounceIn');
+                        $(newBlockHtml).prependTo('.article__body--liveblog');
                         window.articleImageSizer();
                         window.liveblogTime();
                         newBlockHtml = '';
-                        updateCounter = 0;
-                        $('.live-updates').hide();
-                        $('.live-updates-label').text(' new update');
                     };
 
                 window.liveblogNewBlock = function (html) {
                     newBlockHtml = html + newBlockHtml;
                     if (liveblogStartPos.top > window.scrollY) {
                         liveblogNewBlockDump();
-                    } else {
-                        if (updateCounter === 0) {
-                            updateCounter += 1;
-                            $('.live-updates-label').prepend(updateCounter);
-                            $('.live-updates').show();
-                        } else {
-                            updateCounter += 1;
-                            $('.live-updates-label').text(updateCounter + ' new updates');
-                        }
                     }
                 };
 
