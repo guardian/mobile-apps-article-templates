@@ -4032,6 +4032,8 @@ aside {
       font-size: 1.6rem; } }
   #liveblog .article__section__live:before {
     content: "• ";
+    display: inline-block;
+    margin-right: 4px;
     -webkit-animation: blink 1.5s ease-in infinite; }
 #liveblog.is-live .article__section__live {
   display: block; }
@@ -4261,7 +4263,6 @@ aside {
   #liveblog .article__tags {
     margin-left: 33.80282%;
     padding-left: 0;
-    padding-right: 0;
     padding-bottom: 5.6338%;
     width: auto; }
     #liveblog .article__tags .list {
@@ -4282,7 +4283,6 @@ aside {
   #liveblog .article__tags {
     margin-left: 31.57895%;
     padding-left: 0;
-    padding-right: 0;
     padding-bottom: 4.21053%;
     width: auto; }
     #liveblog .article__tags .list {
@@ -4294,7 +4294,8 @@ aside {
 .live-more {
   min-height: 44px;
   font-family: "Agate Sans", sans-serif;
-  font-weight: bold; }
+  font-weight: bold;
+  color: #005689; }
   @media all and (max-width: 28.115em) {
     .live-more {
       font-size: 1.6rem;
@@ -4337,34 +4338,36 @@ aside {
       margin: 0px 0px 12px 0px; } }
   @media all and (max-width: 18.75em) {
     .live-more {
-      padding: 12px 12px 12px 12px; } }
+      padding: 0px 12px 12px 12px; } }
   @media all and (min-width: 18.75em) and (max-width: 25em) {
     .live-more {
-      padding: 14px 14px 14px 14px; } }
+      padding: 0px 14px 14px 14px; } }
   @media all and (min-width: 25em) and (max-width: 28.115em) {
     .live-more {
-      padding: 18px 18px 18px 18px; } }
+      padding: 0px 18px 18px 18px; } }
   @media all and (min-width: 28.125em) and (max-width: 40.615em) {
     .live-more {
-      padding: 12px 12px 12px 12px; } }
+      padding: 0px 12px 12px 12px; } }
   @media all and (min-width: 40.625em) and (max-width: 50em) {
     .live-more {
-      padding: 10px 10px 10px 10px; } }
+      padding: 0px 10px 10px 10px; } }
   @media all and (min-width: 50em) and (max-width: 56.24em) {
     .live-more {
-      padding: 12px 12px 12px 12px; } }
+      padding: 0px 12px 12px 12px; } }
   @media all and (min-width: 56.25em) and (max-width: 68.75em) {
     .live-more {
-      padding: 10px 10px 10px 10px; } }
+      padding: 0px 10px 10px 10px; } }
   @media all and (min-width: 68.75em) {
     .live-more {
-      padding: 12px 12px 12px 12px; } }
+      padding: 0px 12px 12px 12px; } }
   @media all and (min-width: 40.625em) and (max-width: 56.24em) {
     .live-more {
       padding-left: 33.80282%; } }
   @media all and (min-width: 56.25em) {
     .live-more {
       padding-left: 31.57895%; } }
+  .live-more:active {
+    color: #4bc6df; }
 
 .live-more-loading {
   display: none;
@@ -4421,24 +4424,6 @@ aside {
     width: 44px;
     height: 44px; }
 
-@-webkit-keyframes blink {
-  0% {
-    opacity: 0; }
-
-  50% {
-    opacity: 1; }
-
-  100% {
-    opacity: 0; } }
-@keyframes blink {
-  0% {
-    opacity: 0; }
-
-  50% {
-    opacity: 1; }
-
-  100% {
-    opacity: 0; } }
 #football .article {
   background-color: transparent;
   border-bottom: none; }
