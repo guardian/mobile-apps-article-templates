@@ -257,7 +257,6 @@
 		.article__tags {
 			margin-left: $base-3 * 24;
 			padding-left: 0;
-			padding-right: 0;
 			padding-bottom: $base-3 * 4;
 			width: auto;
 			.list {
@@ -291,7 +290,6 @@
 		.article__tags {
 			margin-left: $base-4 * 30;
 			padding-left: 0;
-			padding-right: 0;
 			padding-bottom: $base-4 * 4;
 			width: auto;
 			.list {
@@ -309,14 +307,18 @@
 	min-height: 44px;
 	font-family: $agate-sans;
 	font-weight: bold;
+	color: $news-pri;
 	@include body();
 	@include margin(0, 0, 1, 0);
-	@include padding(1);
+	@include padding(0, 1, 1, 1);
 	@include mq(col2, col3) {
 		padding-left: $base-3 * 24;
 	}
 	@include mq($from: col3) {
 		padding-left: $base-4 * 30;
+	}
+	&:active {
+		color: $news-sec;
 	}
 }
 .live-more-loading {
@@ -339,4 +341,10 @@
 	0% { opacity: 0; }
 	50% { opacity: 1; }
 	100% { opacity: 0; }
+}
+
+#liveblog.android {
+	.live-container {
+		@include margin(1);
+	}
 }
