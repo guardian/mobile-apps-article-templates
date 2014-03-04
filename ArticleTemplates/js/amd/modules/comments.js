@@ -31,7 +31,7 @@ define([
 		 
 						bean.on(el, 'click', function () {
 							if (stopPropagation == 0) {
-								block = $(el);
+								var block = $(el);
 								if (block.hasClass('visible')) {
 									if (block.hasClass('comments-open') === false) {
 										$('.comments-open .discussion__options').toggle();
