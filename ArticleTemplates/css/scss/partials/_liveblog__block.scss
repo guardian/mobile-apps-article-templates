@@ -5,6 +5,11 @@
 	@include margin(1, 0, 1, 0);
 	overflow: hidden;
 	
+	@include mq($to: col1) {
+		margin: $base-1;
+		padding: $base-1 / 2;
+	}
+	
 	.block-time {
 		color: $standfirst;
 		font-family: $agate-sans;
@@ -70,13 +75,6 @@
 	}
 }
 
-@include mq($to: col1) {
-	.block {
-		margin: $base-1;
-		padding: $base-1 / 2 0;
-	}
-}
-
 @include mq(col2, col3) {
 	.block {
 		.block-time {
@@ -128,5 +126,11 @@
 				margin-top: 12px;
 			}
 		}
+	}
+}
+
+.android {
+	.block {
+		@include margin(1);
 	}
 }
