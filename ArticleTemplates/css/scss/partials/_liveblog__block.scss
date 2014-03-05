@@ -13,8 +13,12 @@
 	.block-time {
 		color: $standfirst;
 		font-family: $agate-sans;
-		@include padding(0, 1, 0, 1);
+		@include padding(0.5, 1, 0, 1);
 		margin-top: 0;
+		
+		@include mq($from: col1) {
+			padding-top: 0;
+		}
 	}
 
 	.block-elements {
@@ -32,9 +36,6 @@
 			line-height: $meta-lead-1;
 			margin: 0;
 			clear: left;
-		}
-		> :last-child {
-			margin-bottom: 0;
 		}
 
 		figure {
