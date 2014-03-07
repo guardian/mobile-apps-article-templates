@@ -3060,7 +3060,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   .article__header .article__byline {
     line-height: 1.25;
     margin: 0;
-    border-bottom: 1px dotted #dcdad5; }
+    border-bottom: 1px dotted #dcdad5;
+    overflow: hidden; }
     @media all and (max-width: 18.75em) {
       .article__header .article__byline {
         padding: 9px 12px 24px 12px; } }
@@ -3087,6 +3088,45 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         padding: 9px 12px 24px 12px; } }
     .article__header .article__byline #contributor-link {
       font-weight: bold; }
+    @media all and (max-width: 18.75em) {
+      .article__header .article__byline.has-byline-image {
+        padding: 9px 12px 12px 12px; } }
+    @media all and (min-width: 18.75em) and (max-width: 25em) {
+      .article__header .article__byline.has-byline-image {
+        padding: 10.5px 14px 14px 14px; } }
+    @media all and (min-width: 25em) and (max-width: 28.115em) {
+      .article__header .article__byline.has-byline-image {
+        padding: 13.5px 18px 18px 18px; } }
+    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      .article__header .article__byline.has-byline-image {
+        padding: 9px 12px 12px 12px; } }
+    @media all and (min-width: 40.625em) and (max-width: 50em) {
+      .article__header .article__byline.has-byline-image {
+        padding: 7.5px 10px 10px 10px; } }
+    @media all and (min-width: 50em) and (max-width: 56.24em) {
+      .article__header .article__byline.has-byline-image {
+        padding: 9px 12px 12px 12px; } }
+    @media all and (min-width: 56.25em) and (max-width: 68.75em) {
+      .article__header .article__byline.has-byline-image {
+        padding: 7.5px 10px 10px 10px; } }
+    @media all and (min-width: 68.75em) {
+      .article__header .article__byline.has-byline-image {
+        padding: 9px 12px 12px 12px; } }
+    .article__header .article__byline.has-byline-image .article__alerts {
+      font-weight: normal;
+      margin: 0.3334em 0;
+      display: block; }
+  .article__header .article__byline__image {
+    background-color: #f6f6f6;
+    border-radius: 32px;
+    width: 64px;
+    height: 64px;
+    overflow: hidden;
+    vertical-align: middle;
+    float: left;
+    margin-right: 0.5em; }
+    .article__header .article__byline__image img {
+      width: 64px; }
   @media all and (max-width: 28.115em) {
     .article__header .article__pubdate {
       width: 73.91304%; }

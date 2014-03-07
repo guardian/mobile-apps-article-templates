@@ -97,9 +97,32 @@
 		line-height: 1.25;
 		margin: 0;
 		border-bottom: 1px dotted $shadow;
+		overflow: hidden;
 		@include padding(0.75, 1, 2, 1);
 		#contributor-link {
 			font-weight: bold;
+		}
+		&.has-byline-image {
+			@include padding(0.75, 1, 1, 1);
+			.article__alerts {
+				font-weight: normal;
+				margin: 0.3334em 0;
+				display: block;
+			}
+		}
+	}
+	
+	.article__byline__image {
+		background-color: $background;
+		border-radius: 32px;
+		width: 64px;
+		height: 64px;
+		overflow: hidden;
+		vertical-align: middle;
+		float: left;
+		margin-right: 0.5em;
+		img {
+			width: 64px;
 		}
 	}
 
