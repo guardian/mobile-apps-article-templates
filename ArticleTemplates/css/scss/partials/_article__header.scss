@@ -50,6 +50,18 @@
 		@include standfirst();
 		@include padding(0.5, 1, 0, 1);
 	}
+	
+	.article__review-rating {
+		color: $standfirst;
+		
+		.article__review-rating--1 .icon:nth-child(-n+1),
+		.article__review-rating--2 .icon:nth-child(-n+2),
+		.article__review-rating--3 .icon:nth-child(-n+3),
+		.article__review-rating--4 .icon:nth-child(-n+4),
+		.article__review-rating--5 .icon:nth-child(-n+5) {
+			color: $news-sec;
+		}
+	}
 
 	.article__alerts {
 		@include meta();
