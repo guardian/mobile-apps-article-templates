@@ -104,15 +104,10 @@ define([
 											"</div>" +
 										"</div>",
 
-						bannerHtml = "<div id='advert-banner'>" +
-										"<div class='advert-label'>Advertisement </div>" +
-										"<div class='advert-wrapper'>" +
-											"<div id=" + bannerHtmlId + "></div>" +
-										"</div>" +
-									 "</div>";
+						bannerHtml =  "<div id=" + bannerHtmlId + "></div>";
 
 					$(".article__body > p:nth-of-type(6)").after(mobileMpuHtml);
-					$("body").prepend(bannerHtml);
+					$(".advert-wrapper").prepend(bannerHtml);
 
 					googletag.cmd.push(function () {
 						googletag.display(mobileMpuId);
