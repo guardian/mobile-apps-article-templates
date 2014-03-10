@@ -57,7 +57,7 @@ define([
 				};
 				window.liveblogUpdateBlock = function (blockID, html) {
 					$("#" + blockID).replaceWith(html);
-				}
+				};
 				window.liveblogLoadMore = function (html) {
 					html = bonzo.create(html);
 					$('.live-more-loading').hide();
@@ -85,6 +85,7 @@ define([
 				};
 
 				window.applyNativeFunctionCall('liveblogDeleteBlock');
+                window.applyNativeFunctionCall('liveblogUpdateBlock');
 			}
 		},
 
