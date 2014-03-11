@@ -1,4 +1,4 @@
-.features {
+.featurdddes {
 	a,
 	.discussion__view-more {
 		color: $features-ter;
@@ -17,7 +17,7 @@
 	}
 }
 
-#standard-article.features {
+#standard-article.featuredds {
 	.article {
 		border-top-color: $features-ter;
 
@@ -74,13 +74,27 @@
 					color: #fff;
 				}
 			}
+			
+			.article__review-rating {
+				-webkit-order: 4;
+				order: 4;
+				@include margin(0, 0, 1, 0);
+			}
+			
+			.article__review-rating--1 .icon:nth-child(-n+1),
+			.article__review-rating--2 .icon:nth-child(-n+2),
+			.article__review-rating--3 .icon:nth-child(-n+3),
+			.article__review-rating--4 .icon:nth-child(-n+4),
+			.article__review-rating--5 .icon:nth-child(-n+5) {
+			    color: $features-ter-accent;
+			}
 
 			.article__meta {
 				color: rgba(255, 255, 255, 0.9);
 				background-color: $features-ter-accent;
 				border: 0 none;
-				-webkit-order: 5;
-				order: 5;
+				-webkit-order: 6;
+				order: 6;
 
 				.article__pubdate {
 					color: #fff;
@@ -140,8 +154,8 @@
 				color: rgba(255, 255, 255, 0.9);
 				border: 0 none;
 				@include padding(0, 1, 2, 1);
-				-webkit-order: 4;
-				order: 4;
+				-webkit-order: 5;
+				order: 5;
 				a {
 					color: #fff;
 				}
@@ -154,7 +168,8 @@
 
 			.inner-header,
 			.article__standfirst,
-			.article__byline {
+			.article__byline,
+			.article__review-rating {
 				@include mq(col2, col3) {
 					padding-left: cols($base-3, 1);
 				}
