@@ -63,6 +63,7 @@
 			.article__standfirst {
 				color: rgba(255, 255, 255, 0.9);
 				margin-bottom: 1em;
+				padding-right: 0;
 				-webkit-order: 3;
 				order: 3;
 				@include mq(col2, col3) {
@@ -90,7 +91,7 @@
 
 			.article__meta {
 				color: rgba(255, 255, 255, 0.9);
-				background-color: $white;
+				background-color: $features-ter-accent;
 				border: 0 none;
 				-webkit-order: 6;
 				order: 6;
@@ -100,7 +101,6 @@
 				}
 
 				.article__pubdate {
-					background-color: $features-ter-accent;
 					border: 0 none;
 					@include mq(col2, col3) {
 						padding-left: $base-3 * 5;
@@ -111,7 +111,8 @@
 				}
 
 				.article__comments {
-					border: 0 none;
+					color: #fff;
+					border-left: 1px solid $features-ter;
 				}
 			}
 		
@@ -158,6 +159,11 @@
 				a {
 					color: #fff;
 				}
+			}
+
+			.article__byline__image,
+			.article__alerts {
+				display: none;
 			}
 
 			.inner-header,
