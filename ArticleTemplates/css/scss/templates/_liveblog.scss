@@ -56,26 +56,6 @@
 		display: block;
 	}
 
-	.live-summary {
-		font-family: $egyptian-text;
-		@include body();
-		@include padding(0, 1, 1, 1);
-		overflow: hidden;
-		p {
-			margin-bottom: 18px;
-		}
-		figure, img {
-			display: none;
-		}
-	}
-
-	.live-summary-more {
-		font-family: $agate-sans;
-		font-weight: bold;
-		display: none;
-		width: 100%;
-	}
-
 	.article__pubdate {
 		width: auto;
 	}
@@ -101,6 +81,39 @@
 			width: 100%;
 			vertical-align: middle;
 		}
+	}
+	
+	.article__body--liveblog__pinned {
+		.summary {
+			.block-elements {
+				height: 350px;
+				@include mq($to: col1) {
+					height: 150px;
+				}
+				
+				p:last-child {
+					margin-bottom: 0;
+				}
+				
+				&.expanded {
+					height: auto;
+				}
+				
+				.live-summary-more {
+					display: block;
+					font-family: $agate-sans;
+					font-weight: bold;
+					display: none;
+					width: 100%;
+				}
+			}
+		}
+	}
+	
+	
+	
+	.live-summary-more {
+		display: none;
 	}
 	
 	aside.aside-witness {

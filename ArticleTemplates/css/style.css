@@ -3482,6 +3482,8 @@ ul.tabs li.selected {
       border-bottom: 0 none; }
   .block .block-elements blockquote {
     margin-left: 0; }
+  .block .block-elements .live-summary-more {
+    display: none; }
   .block.key-event h2 {
     color: #da1d1d; }
   .block.summary {
@@ -6206,58 +6208,6 @@ aside {
     -webkit-animation: blink 1.5s ease-in infinite; }
 #liveblog.is-live .article__section__live {
   display: block; }
-#liveblog .live-summary {
-  font-family: "Egyptian Text", Georgia, serif;
-  overflow: hidden; }
-  @media all and (max-width: 28.115em) {
-    #liveblog .live-summary {
-      font-size: 1.6rem;
-      line-height: 2.4rem; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    #liveblog .live-summary {
-      font-size: 1.6rem;
-      line-height: 2.4rem; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    #liveblog .live-summary {
-      font-size: 1.8rem;
-      line-height: 2.6rem; } }
-  @media all and (min-width: 56.25em) {
-    #liveblog .live-summary {
-      font-size: 1.8rem;
-      line-height: 2.6rem; } }
-  @media all and (max-width: 18.75em) {
-    #liveblog .live-summary {
-      padding: 0px 12px 12px 12px; } }
-  @media all and (min-width: 18.75em) and (max-width: 25em) {
-    #liveblog .live-summary {
-      padding: 0px 14px 14px 14px; } }
-  @media all and (min-width: 25em) and (max-width: 28.115em) {
-    #liveblog .live-summary {
-      padding: 0px 18px 18px 18px; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    #liveblog .live-summary {
-      padding: 0px 12px 12px 12px; } }
-  @media all and (min-width: 40.625em) and (max-width: 50em) {
-    #liveblog .live-summary {
-      padding: 0px 10px 10px 10px; } }
-  @media all and (min-width: 50em) and (max-width: 56.24em) {
-    #liveblog .live-summary {
-      padding: 0px 12px 12px 12px; } }
-  @media all and (min-width: 56.25em) and (max-width: 68.75em) {
-    #liveblog .live-summary {
-      padding: 0px 10px 10px 10px; } }
-  @media all and (min-width: 68.75em) {
-    #liveblog .live-summary {
-      padding: 0px 12px 12px 12px; } }
-  #liveblog .live-summary p {
-    margin-bottom: 18px; }
-  #liveblog .live-summary figure, #liveblog .live-summary img {
-    display: none; }
-#liveblog .live-summary-more {
-  font-family: "Agate Sans", sans-serif;
-  font-weight: bold;
-  display: none;
-  width: 100%; }
 #liveblog .article__pubdate {
   width: auto; }
 #liveblog .article__byline {
@@ -6277,6 +6227,23 @@ aside {
   #liveblog #advert img {
     width: 100%;
     vertical-align: middle; }
+#liveblog .article__body--liveblog__pinned .summary .block-elements {
+  height: 350px; }
+  @media all and (max-width: 28.115em) {
+    #liveblog .article__body--liveblog__pinned .summary .block-elements {
+      height: 150px; } }
+  #liveblog .article__body--liveblog__pinned .summary .block-elements p:last-child {
+    margin-bottom: 0; }
+  #liveblog .article__body--liveblog__pinned .summary .block-elements.expanded {
+    height: auto; }
+  #liveblog .article__body--liveblog__pinned .summary .block-elements .live-summary-more {
+    display: block;
+    font-family: "Agate Sans", sans-serif;
+    font-weight: bold;
+    display: none;
+    width: 100%; }
+#liveblog .live-summary-more {
+  display: none; }
 #liveblog aside.aside-witness {
   float: none;
   background-color: white;
