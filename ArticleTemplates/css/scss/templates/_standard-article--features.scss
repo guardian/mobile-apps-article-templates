@@ -1,28 +1,6 @@
-.featurdddes {
-	a,
-	.discussion__view-more {
-		color: $features-ter;
-		&:active {
-			color: $features-ter-accent;
-			.touchpoint__button {
-				background-color: $features-ter-accent;
-			}
-		}
-	}
-	.touchpoint__button {
-		background-color: $features-ter;
-		&:active {
-			background-color: $features-ter-accent;
-		}
-	}
-}
-
-#standard-article.featuredds {
+#standard-article[class*="feature"] {
 	.article {
-		border-top-color: $features-ter;
-
 		.article__header {
-			background-color: $features-ter;
 			@include margin(0, 0, 1, 0);
 			padding-top: 32px;
 			position: relative;
@@ -181,7 +159,6 @@
 
 		.article__body {
 			> p:first-of-type:first-letter {
-				color: $features-ter;
 				font-family: $egyptian-display;
 				font-weight: 100;
 				font-style: normal;
@@ -234,6 +211,99 @@
 			@include mq($from: col3) {
 				padding-left: cols($base-4, 1);
 			}
+		}
+	}
+}
+
+.feature1 {
+	a,
+	.discussion__view-more {
+		color: $features-pri;
+		&:active {
+			color: $features-pri-accent;
+			.touchpoint__button {
+				background-color: $features-pri-accent;
+			}
+		}
+	}
+	.touchpoint__button {
+		background-color: $features-pri;
+		&:active {
+			background-color: $features-pri-accent;
+		}
+	}
+	.article {
+		border-top-color: $features-pri;
+		.article__header {
+			background-color: $features-pri;
+		}
+		.article__pubdate {
+			background-color: $features-pri-accent;
+		}
+		.article__body > p:first-of-type:first-letter {
+			color: $features-pri;
+		}
+	}
+}
+
+.feature2 {
+	a,
+	.discussion__view-more {
+		color: $features-sec;
+		&:active {
+			color: $features-sec-accent;
+			.touchpoint__button {
+				background-color: $features-sec-accent;
+			}
+		}
+	}
+	.touchpoint__button {
+		background-color: $features-sec;
+		&:active {
+			background-color: $features-sec-accent;
+		}
+	}
+	.article {
+		border-top-color: $features-sec;
+		.article__header {
+			background-color: $features-sec;
+		}
+		.article__pubdate {
+			background-color: $features-sec-accent;
+		}
+		.article__body > p:first-of-type:first-letter {
+			color: $features-sec;
+		}
+	}
+}
+
+.feature3 {
+	a,
+	.discussion__view-more {
+		color: $features-ter;
+		&:active {
+			color: $features-ter-accent;
+			.touchpoint__button {
+				background-color: $features-ter-accent;
+			}
+		}
+	}
+	.touchpoint__button {
+		background-color: $features-ter;
+		&:active {
+			background-color: $features-ter-accent;
+		}
+	}
+	.article {
+		border-top-color: $features-ter;
+		.article__header {
+			background-color: $features-ter;
+		}
+		.article__pubdate {
+			background-color: $features-ter-accent;
+		}
+		.article__body > p:first-of-type:first-letter {
+			color: $features-ter;
 		}
 	}
 }
