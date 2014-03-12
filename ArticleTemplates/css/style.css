@@ -2611,9 +2611,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   .discussion__body ul > li:before {
     color: #999999;
     font-size: 48px;
+    line-height: 0.5;
     content: "\2022";
     position: absolute;
-    top: 1px;
+    top: 0;
     left: -22px; }
 .article__body ol,
 .discussion__body ol {
@@ -5416,62 +5417,44 @@ aside {
     @media all and (min-width: 56.25em) {
       aside.aside-witness {
         width: 24.21053%; } }
-    aside.aside-witness .aside-witness__touchpoint .touchpoint__button {
-      background-color: #3e454c;
-      color: #4bc6df; }
-      aside.aside-witness .aside-witness__touchpoint .touchpoint__button:active {
+    aside.aside-witness .touchpoint {
+      display: inline-block; }
+      aside.aside-witness .touchpoint .touchpoint__button {
+        background-color: #3e454c;
+        color: #4bc6df;
+        margin-right: 6px; }
+      aside.aside-witness .touchpoint .touchpoint__label {
+        color: #3e454c;
+        padding: 0; }
+        @media all and (max-width: 18.75em) {
+          aside.aside-witness .touchpoint .touchpoint__label {
+            margin: 6px 0px 6px 0px; } }
+        @media all and (min-width: 18.75em) and (max-width: 25em) {
+          aside.aside-witness .touchpoint .touchpoint__label {
+            margin: 7px 0px 7px 0px; } }
+        @media all and (min-width: 25em) and (max-width: 28.115em) {
+          aside.aside-witness .touchpoint .touchpoint__label {
+            margin: 9px 0px 9px 0px; } }
+        @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+          aside.aside-witness .touchpoint .touchpoint__label {
+            margin: 6px 0px 6px 0px; } }
+        @media all and (min-width: 40.625em) and (max-width: 50em) {
+          aside.aside-witness .touchpoint .touchpoint__label {
+            margin: 5px 0px 5px 0px; } }
+        @media all and (min-width: 50em) and (max-width: 56.24em) {
+          aside.aside-witness .touchpoint .touchpoint__label {
+            margin: 6px 0px 6px 0px; } }
+        @media all and (min-width: 56.25em) and (max-width: 68.75em) {
+          aside.aside-witness .touchpoint .touchpoint__label {
+            margin: 5px 0px 5px 0px; } }
+        @media all and (min-width: 68.75em) {
+          aside.aside-witness .touchpoint .touchpoint__label {
+            margin: 6px 0px 6px 0px; } }
+      aside.aside-witness .touchpoint:active .touchpoint__button {
         background-color: #4bc6df;
         color: #3e454c; }
-    @media all and (max-width: 28.115em) {
-      aside.aside-witness .aside-witness__touchpoint {
-        margin-right: 12px;
-        min-width: 44px; } }
-    aside.aside-witness .aside-witness__label {
-      font-family: "Agate Sans", sans-serif;
-      font-weight: bold; }
-      @media all and (max-width: 28.115em) {
-        aside.aside-witness .aside-witness__label {
-          font-size: 1.4rem;
-          line-height: 2rem; } }
-      @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-        aside.aside-witness .aside-witness__label {
-          font-size: 1.4rem;
-          line-height: 2rem; } }
-      @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-        aside.aside-witness .aside-witness__label {
-          font-size: 1.6rem;
-          line-height: 2.2rem; } }
-      @media all and (min-width: 56.25em) {
-        aside.aside-witness .aside-witness__label {
-          font-size: 1.6rem;
-          line-height: 2.2rem; } }
-      @media all and (max-width: 18.75em) {
-        aside.aside-witness .aside-witness__label {
-          margin: 6px 0px 6px 0px; } }
-      @media all and (min-width: 18.75em) and (max-width: 25em) {
-        aside.aside-witness .aside-witness__label {
-          margin: 7px 0px 7px 0px; } }
-      @media all and (min-width: 25em) and (max-width: 28.115em) {
-        aside.aside-witness .aside-witness__label {
-          margin: 9px 0px 9px 0px; } }
-      @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-        aside.aside-witness .aside-witness__label {
-          margin: 6px 0px 6px 0px; } }
-      @media all and (min-width: 40.625em) and (max-width: 50em) {
-        aside.aside-witness .aside-witness__label {
-          margin: 5px 0px 5px 0px; } }
-      @media all and (min-width: 50em) and (max-width: 56.24em) {
-        aside.aside-witness .aside-witness__label {
-          margin: 6px 0px 6px 0px; } }
-      @media all and (min-width: 56.25em) and (max-width: 68.75em) {
-        aside.aside-witness .aside-witness__label {
-          margin: 5px 0px 5px 0px; } }
-      @media all and (min-width: 68.75em) {
-        aside.aside-witness .aside-witness__label {
-          margin: 6px 0px 6px 0px; } }
-      @media all and (max-width: 28.115em) {
-        aside.aside-witness .aside-witness__label {
-          margin: 0; } }
+      aside.aside-witness .touchpoint:active .touchpoint__label {
+        color: #4bc6df; }
     aside.aside-witness .aside-witness__powered {
       width: 108px;
       height: auto; }
@@ -6294,7 +6277,8 @@ aside {
   background-color: white;
   border-top: none;
   border-bottom: 2px solid #dcdad5;
-  width: auto; }
+  width: auto;
+  position: relative; }
   @media all and (max-width: 18.75em) {
     #liveblog aside.aside-witness {
       margin: 12px 12px 12px 12px; } }
@@ -6347,27 +6331,20 @@ aside {
     #liveblog aside.aside-witness {
       margin-left: 0px;
       margin-right: 0px; } }
-  #liveblog aside.aside-witness .aside-witness__touchpoint {
-    display: inline-block;
-    vertical-align: middle; }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      #liveblog aside.aside-witness .aside-witness__touchpoint {
-        width: 32.39437%; } }
-    @media all and (min-width: 56.25em) {
-      #liveblog aside.aside-witness .aside-witness__touchpoint {
-        width: 30.52632%; } }
-    @media all and (max-width: 40.615em) {
-      #liveblog aside.aside-witness .aside-witness__touchpoint {
-        padding-right: 12px;
-        margin-top: -2px; } }
-  #liveblog aside.aside-witness .aside-witness__label {
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0; }
-    @media all and (min-width: 28.125em) {
-      #liveblog aside.aside-witness .aside-witness__label {
-        height: 44px;
-        width: 180px; } }
+  @media all and (min-width: 40.625em) {
+    #liveblog aside.aside-witness .touchpoint__label {
+      height: 44px;
+      width: 180px;
+      position: absolute;
+      top: 0; } }
+  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    #liveblog aside.aside-witness .touchpoint__label {
+      padding-left: 1.40845%;
+      left: 32.39437%; } }
+  @media all and (min-width: 56.25em) {
+    #liveblog aside.aside-witness .touchpoint__label {
+      padding-left: 1.05263%;
+      left: 30.52632%; } }
   #liveblog aside.aside-witness .aside-witness__powered {
     float: right;
     width: auto; }
