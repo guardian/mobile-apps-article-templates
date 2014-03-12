@@ -52,13 +52,12 @@
 					color: #fff;
 				}
 			}
-			
+
 			.article__review-rating {
 				-webkit-order: 4;
 				order: 4;
 				@include margin(0, 0, 1, 0);
 			}
-			
 			.article__review-rating--1 .icon:nth-child(-n+1),
 			.article__review-rating--2 .icon:nth-child(-n+2),
 			.article__review-rating--3 .icon:nth-child(-n+3),
@@ -69,7 +68,6 @@
 
 			.article__meta {
 				color: rgba(255, 255, 255, 0.9);
-				background-color: $features-ter-accent;
 				border: 0 none;
 				-webkit-order: 6;
 				order: 6;
@@ -90,7 +88,7 @@
 
 				.article__comments {
 					color: #fff;
-					border-left: 1px solid $features-ter;
+					border-left: 1px solid $background;
 				}
 			}
 		
@@ -150,9 +148,11 @@
 			.article__review-rating {
 				@include mq(col2, col3) {
 					padding-left: cols($base-3, 1);
+					padding-right: cols($base-3, 1);
 				}
 				@include mq($from: col3) {
 					padding-left: cols($base-4, 1);
+					padding-right: cols($base-4, 1);
 				}
 			}
 		}
@@ -237,7 +237,7 @@
 		.article__header {
 			background-color: $features-pri;
 		}
-		.article__pubdate {
+		.article__meta {
 			background-color: $features-pri-accent;
 		}
 		.article__body > p:first-of-type:first-letter {
@@ -268,7 +268,7 @@
 		.article__header {
 			background-color: $features-sec;
 		}
-		.article__pubdate {
+		.article__meta {
 			background-color: $features-sec-accent;
 		}
 		.article__body > p:first-of-type:first-letter {
@@ -299,7 +299,7 @@
 		.article__header {
 			background-color: $features-ter;
 		}
-		.article__pubdate {
+		.article__meta {
 			background-color: $features-ter-accent;
 		}
 		.article__body > p:first-of-type:first-letter {
