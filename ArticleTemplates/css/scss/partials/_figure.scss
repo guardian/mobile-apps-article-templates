@@ -42,13 +42,17 @@ figure {
 			float: left;
 		}
 		@include mq(col1, col2) {
-			padding-right: $base-2;
+			margin-right: $base-2 * 2;
 		}
 		@include mq(col2, col3) {
-			padding-right: $base-3;
+			margin-right: $base-3 * 2;
 		}
 		@include mq($from: col3) {
-			padding-right: $base-4;
+			margin-right: $base-4 * 2;
+		}
+		figcaption {
+			padding-left: 0;
+			padding-right: 0;
 		}
 	}
 }
