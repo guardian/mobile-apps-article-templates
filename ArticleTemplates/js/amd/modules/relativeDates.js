@@ -81,13 +81,28 @@ define([
             return delta + 's';
 
         } else if (delta < (55 * 60)) {
-            return (Math.round(delta / 60, 10)) + ' minutes ago';
+            var minutesAgo = Math.round(delta / 60, 10);
+            if (minutesAgo == 1) {
+                return '1 minute ago';
+            } else {
+                return (minutesAgo) + ' minutes ago';
+            }
 
         } else if (isToday(then) || (isWithin24Hours(then) && opts.format === 'short')) {
-            return (Math.round(delta / 3600)) + ' hours ago';
+            var hoursAgo = Math.round(delta / 3600);
+            if (hoursAgo == 1) {
+                return '1 hour ago';
+            } else {
+                return (hoursAgo) + ' hours ago';
+            }
 
         } else if (isWithinPastWeek(then) && opts.format === 'short') {
-            return (Math.round(delta / 3600 / 24)) + ' days ago';
+            var daysAgo = Math.round(delta / 3600 / 24);
+            if (daysAgo == 1) {
+                return '1 day ago';
+            } else {
+                return (daysAgo) + ' days ago';
+            }
 
         } else if (isYesterday(then)) { // yesterday
             return 'Yesterday' + withTime(then);

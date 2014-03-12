@@ -68,7 +68,7 @@ define([
 					window.liveblogTime();
 				};
 				window.liveblogTime = function () {
-					if ($('.article__section__live').length > 0 || $("#liveblog").hasClass("is-live")) {
+					if ($('.article__section__live').length > 0 || $("#liveblog").hasClass("is-live") || $("#liveblog .article__body--liveblog").hasClass("is-live")) {
 						relativeDates.init('p.block-time', 'title');
 					} else {
 						$('p.block-time').each(function (el) {
