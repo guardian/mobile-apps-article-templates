@@ -132,44 +132,46 @@
 		@include margin(1);
 		@include padding(1);
 		width: auto;
+		position: relative;
+		overflow: hidden;
 		
 		@include mq($from: col1) {
 			margin-left: 0px;
 			margin-right: 0px;
 		}
-		
-		.aside-witness__touchpoint {
-			display: inline-block;
-			vertical-align: middle;
-			@include rbase-3(4);
-			@include rbase-4(5);
-			@include mq($to: col2) {
-				padding-right: 12px;
-				margin-top: -2px;
-			}
-		}
-		
-		.aside-witness__label {
-			display: inline-block;
-			vertical-align: middle;
-			margin: 0;
-			@include mq($from: col1) {
+
+		.touchpoint__label {
+			margin-bottom: 0;
+			@include mq($to: 719px) {
 				height: 44px;
 				width: 180px;
 			}
+			@include mq($from: col2) {
+				position: absolute;
+				top: 0;
+				float: left;
+			}
+			@include mq(col2, col3) {
+				padding-left: $base-3;
+				left: cols($base-3, 4);
+			}
+			@include mq($from: 720px) {
+				padding-top: 15px;
+			}
+			@include mq($from: col3) {
+				padding-left: $base-4;
+				left: cols($base-4, 5);
+			}
 		}
-		
+
 		.aside-witness__powered {
 			float: right;
 			width: auto;
-			@include mq($from: col1) {
-				height: 36px;
-				margin-top: 4px
-			}
+			margin-top: 4px;
+			height: 36px;
 		}
-		
 	}
-	
+
 	.article__meta {
 		.article__alerts--liveblog {
 			border-right: 1px dotted $shadow;

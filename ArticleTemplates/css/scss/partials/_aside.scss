@@ -39,31 +39,32 @@ aside {
 			width: cols($base-4, 4);
 		}
 		
-		.aside-witness__touchpoint {
+		.touchpoint {
+			display: inline-block;
+
 			.touchpoint__button {
 				background-color: $witness;
 				color: $news-sec;
-				&:active {
+				margin-right: 6px;
+			}
+		
+			.touchpoint__label {
+				color: $witness;
+				padding: 0;
+				@include margin(0.5, 0, 0.5, 0);
+			}
+			
+			&:active {
+				.touchpoint__button {
 					background-color: $news-sec;
 					color: $witness;
 				}
-			}
-			@include mq($to: col1) {
-				margin-right: 12px;
-				min-width: 44px;
-			}
-		}
-		
-		.aside-witness__label {
-			font-family: $agate-sans;
-			font-weight: bold;
-			@include meta();
-			@include margin(0.5, 0, 0.5, 0);
-			@include mq($to: col1) {
-				margin: 0;
+				.touchpoint__label {
+					color: $news-sec;
+				}
 			}
 		}
-		
+
 		.aside-witness__powered {
 			width: 108px;
 			height: auto;
