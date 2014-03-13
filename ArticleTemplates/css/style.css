@@ -6278,7 +6278,8 @@ aside {
   border-top: none;
   border-bottom: 2px solid #dcdad5;
   width: auto;
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
   @media all and (max-width: 18.75em) {
     #liveblog aside.aside-witness {
       margin: 12px 12px 12px 12px; } }
@@ -6331,27 +6332,33 @@ aside {
     #liveblog aside.aside-witness {
       margin-left: 0px;
       margin-right: 0px; } }
-  @media all and (min-width: 40.625em) {
-    #liveblog aside.aside-witness .touchpoint__label {
-      height: 44px;
-      width: 180px;
-      position: absolute;
-      top: 0; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    #liveblog aside.aside-witness .touchpoint__label {
-      padding-left: 1.40845%;
-      left: 32.39437%; } }
-  @media all and (min-width: 56.25em) {
-    #liveblog aside.aside-witness .touchpoint__label {
-      padding-left: 1.05263%;
-      left: 30.52632%; } }
+  #liveblog aside.aside-witness .touchpoint__label {
+    margin-bottom: 0; }
+    @media all and (max-width: 44.9375em) {
+      #liveblog aside.aside-witness .touchpoint__label {
+        height: 44px;
+        width: 180px; } }
+    @media all and (min-width: 40.625em) {
+      #liveblog aside.aside-witness .touchpoint__label {
+        position: absolute;
+        top: 0;
+        float: left; } }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      #liveblog aside.aside-witness .touchpoint__label {
+        padding-left: 1.40845%;
+        left: 32.39437%; } }
+    @media all and (min-width: 45em) {
+      #liveblog aside.aside-witness .touchpoint__label {
+        padding-top: 15px; } }
+    @media all and (min-width: 56.25em) {
+      #liveblog aside.aside-witness .touchpoint__label {
+        padding-left: 1.05263%;
+        left: 30.52632%; } }
   #liveblog aside.aside-witness .aside-witness__powered {
     float: right;
-    width: auto; }
-    @media all and (min-width: 28.125em) {
-      #liveblog aside.aside-witness .aside-witness__powered {
-        height: 36px;
-        margin-top: 4px; } }
+    width: auto;
+    margin-top: 4px;
+    height: 36px; }
 #liveblog .article__meta .article__alerts--liveblog {
   border-right: 1px dotted #dcdad5;
   left: 0; }

@@ -133,6 +133,7 @@
 		@include padding(1);
 		width: auto;
 		position: relative;
+		overflow: hidden;
 		
 		@include mq($from: col1) {
 			margin-left: 0px;
@@ -140,15 +141,22 @@
 		}
 
 		.touchpoint__label {
-			@include mq($from: col2) {
+			margin-bottom: 0;
+			@include mq($to: 719px) {
 				height: 44px;
 				width: 180px;
+			}
+			@include mq($from: col2) {
 				position: absolute;
 				top: 0;
+				float: left;
 			}
 			@include mq(col2, col3) {
 				padding-left: $base-3;
 				left: cols($base-3, 4);
+			}
+			@include mq($from: 720px) {
+				padding-top: 15px;
 			}
 			@include mq($from: col3) {
 				padding-left: $base-4;
@@ -159,10 +167,8 @@
 		.aside-witness__powered {
 			float: right;
 			width: auto;
-			@include mq($from: col1) {
-				height: 36px;
-				margin-top: 4px
-			}
+			margin-top: 4px;
+			height: 36px;
 		}
 	}
 
