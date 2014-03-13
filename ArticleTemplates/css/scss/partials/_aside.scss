@@ -18,6 +18,7 @@ aside {
 	&.aside-witness {
 		border-top: 1px dotted $shadow;
 		@include padding(1, 1, 1, 0);
+		position: relative;
 		
 		@include mq($to: col1) {
 			width: 100%;
@@ -27,7 +28,7 @@ aside {
 			display: -webkit-box;
 			display: -webkit-flex;
 			display: flex;
-			align-items: center;
+			align-items: top;
 		}
 		@include mq(col1, col2) {
 			width: cols($base-2, 3);
@@ -66,13 +67,10 @@ aside {
 		}
 
 		.aside-witness__powered {
-			width: 108px;
-			height: auto;
-			@include mq($to: col1) {
-				min-width: 94px;
-				height: 30px;
-				margin-left: 12px;
-			}
+			width: 110px;
+			height: 35px;
+			-webkit-flex-shrink: 0;
+			flex-shrink: 0;
 		}
 	}
 }
