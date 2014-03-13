@@ -20,7 +20,7 @@ define([
 
 					liveblogNewBlockDump = function () {
 						newBlockHtml = bonzo.create(newBlockHtml);
-						$(".article__blody--liveblog__pinned").after(newBlockHtml);
+						$(".article__body--liveblog__pinned").after(newBlockHtml);
 						window.articleImageSizer();
 						window.liveblogTime();
 						newBlockHtml = '';
