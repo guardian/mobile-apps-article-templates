@@ -118,7 +118,7 @@ define([
 				window.alertSwitch = function (following, followid) {
 					var followObject = $('.article__alerts[follow-alert-id="' + followid + '"]');
 					if (followObject.length) {
-						if (following === 1) {
+						if (following == 1) {
 							if (followObject.hasClass('following') === false) {
 								followObject.addClass('following');
 							}
