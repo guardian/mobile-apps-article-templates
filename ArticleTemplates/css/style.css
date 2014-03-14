@@ -8535,52 +8535,53 @@ aside {
     order: 1;
     position: relative;
     z-index: 1; }
-    @media all and (min-width: 40.625em) {
-      #standard-article[class*="feature"] .article .article__header .article__image {
-        margin-bottom: -62px; } }
-    @media all and (min-width: 40.625em) {
-      #standard-article[class*="feature"] .article .article__header .article__image:after {
-        content: "";
-        background-image: linear-gradient(-180deg, transparent 80%, rgba(0, 0, 0, 0.5) 100%);
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0; } }
     #standard-article[class*="feature"] .article .article__header .article__image figcaption {
       color: rgba(255, 255, 255, 0.9);
-      background-color: rgba(0, 0, 0, 0.25);
-      border: 0 none; }
-      @media all and (max-width: 18.75em) {
-        #standard-article[class*="feature"] .article .article__header .article__image figcaption {
-          padding: 6px 12px 6px 12px; } }
-      @media all and (min-width: 18.75em) and (max-width: 25em) {
-        #standard-article[class*="feature"] .article .article__header .article__image figcaption {
-          padding: 7px 14px 7px 14px; } }
-      @media all and (min-width: 25em) and (max-width: 28.115em) {
-        #standard-article[class*="feature"] .article .article__header .article__image figcaption {
-          padding: 9px 18px 9px 18px; } }
-      @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-        #standard-article[class*="feature"] .article .article__header .article__image figcaption {
-          padding: 6px 12px 6px 12px; } }
-      @media all and (min-width: 40.625em) and (max-width: 50em) {
-        #standard-article[class*="feature"] .article .article__header .article__image figcaption {
-          padding: 5px 10px 5px 10px; } }
-      @media all and (min-width: 50em) and (max-width: 56.24em) {
-        #standard-article[class*="feature"] .article .article__header .article__image figcaption {
-          padding: 6px 12px 6px 12px; } }
-      @media all and (min-width: 56.25em) and (max-width: 68.75em) {
-        #standard-article[class*="feature"] .article .article__header .article__image figcaption {
-          padding: 5px 10px 5px 10px; } }
-      @media all and (min-width: 68.75em) {
-        #standard-article[class*="feature"] .article .article__header .article__image figcaption {
-          padding: 6px 12px 6px 12px; } }
-      @media all and (min-width: 40.625em) {
-        #standard-article[class*="feature"] .article .article__header .article__image figcaption {
-          position: absolute;
-          top: 0;
-          right: 0; } }
+      border: 0 none;
+      padding: 0;
+      position: absolute;
+      bottom: 0;
+      left: 0; }
+  #standard-article[class*="feature"] .article .article__header .article__image-caption__icon {
+    line-height: 44px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.33);
+    width: 44px;
+    height: 44px;
+    display: inline-block; }
+  #standard-article[class*="feature"] .article .article__header .article__image-caption__text {
+    background-color: rgba(0, 0, 0, 0.33);
+    display: none;
+    max-height: 0;
+    overflow: hidden; }
+    @media all and (max-width: 18.75em) {
+      #standard-article[class*="feature"] .article .article__header .article__image-caption__text {
+        padding: 6px 12px 6px 12px; } }
+    @media all and (min-width: 18.75em) and (max-width: 25em) {
+      #standard-article[class*="feature"] .article .article__header .article__image-caption__text {
+        padding: 7px 14px 7px 14px; } }
+    @media all and (min-width: 25em) and (max-width: 28.115em) {
+      #standard-article[class*="feature"] .article .article__header .article__image-caption__text {
+        padding: 9px 18px 9px 18px; } }
+    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      #standard-article[class*="feature"] .article .article__header .article__image-caption__text {
+        padding: 6px 12px 6px 12px; } }
+    @media all and (min-width: 40.625em) and (max-width: 50em) {
+      #standard-article[class*="feature"] .article .article__header .article__image-caption__text {
+        padding: 5px 10px 5px 10px; } }
+    @media all and (min-width: 50em) and (max-width: 56.24em) {
+      #standard-article[class*="feature"] .article .article__header .article__image-caption__text {
+        padding: 6px 12px 6px 12px; } }
+    @media all and (min-width: 56.25em) and (max-width: 68.75em) {
+      #standard-article[class*="feature"] .article .article__header .article__image-caption__text {
+        padding: 5px 10px 5px 10px; } }
+    @media all and (min-width: 68.75em) {
+      #standard-article[class*="feature"] .article .article__header .article__image-caption__text {
+        padding: 6px 12px 6px 12px; } }
+    #standard-article[class*="feature"] .article .article__header .article__image-caption__text.is-visible {
+      display: block;
+      min-height: 44px;
+      max-height: 999px; }
   #standard-article[class*="feature"] .article .article__header .article__byline {
     color: rgba(255, 255, 255, 0.9);
     border: 0 none;
@@ -8694,7 +8695,7 @@ aside {
   .feature1 .touchpoint__button:active {
     background-color: #8006c2; }
 .feature1 .article {
-  border-top-color: #4e0375; }
+  border-top-color: #8006c2; }
   .feature1 .article .article__header {
     background-color: #4e0375; }
   .feature1 .article .article__meta {
@@ -8716,7 +8717,7 @@ aside {
   .feature2 .touchpoint__button:active {
     background-color: #c900a8; }
 .feature2 .article {
-  border-top-color: #7d0068; }
+  border-top-color: #c900a8; }
   .feature2 .article .article__header {
     background-color: #7d0068; }
   .feature2 .article .article__meta {
@@ -8738,7 +8739,7 @@ aside {
   .feature3 .touchpoint__button:active {
     background-color: #e02b7f; }
 .feature3 .article {
-  border-top-color: #951c55; }
+  border-top-color: #e02b7f; }
   .feature3 .article .article__header {
     background-color: #951c55; }
   .feature3 .article .article__meta {
