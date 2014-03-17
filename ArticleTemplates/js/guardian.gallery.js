@@ -9,11 +9,11 @@ if (windowWidth < 450 ) {
 }
 
 $('.gallery__thumbnails').collagePlus({
-        'targetHeight' : imageHeight
-    });
+		'targetHeight' : imageHeight
+	});
 
 $(window).resize(function() {
-    $('.gallery__thumbnails').collagePlus({
-        'targetHeight' : imageHeight
-    });
+	$('.gallery__thumbnails').collagePlus({
+		'targetHeight' : imageHeight
+	});
 });
