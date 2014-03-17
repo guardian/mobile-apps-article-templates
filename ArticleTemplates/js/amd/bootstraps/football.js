@@ -106,9 +106,9 @@ define([
 			footballGoal: function() {
 				// Allows the header to be updated when there is a goal
 				window.footballGoal = function (side, newScore, scorerHtml) {
-					$(".football-team-" + side + " .football__header__score h1").text(newScore);
-					$(".football-team-" + side + " .football-info p").remove();
-					$(".football-team-" + side + " .football-info").append(scorerHtml);
+					$(".football__header__" + side + "__score__label").text(newScore);
+					$(".football__header__" + side + "__info p").remove();
+					$(".football__header__" + side + "__info").append(scorerHtml);
 				};
 			},
 			
