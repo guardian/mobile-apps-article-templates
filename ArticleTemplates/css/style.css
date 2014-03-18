@@ -2657,16 +2657,16 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 .article__body ul > li,
 .discussion__body ul > li {
   position: relative;
-  text-indent: 22px; }
+  text-indent: 1.3334em; }
   .article__body ul > li:before,
   .discussion__body ul > li:before {
     color: #999999;
-    font-size: 48px;
+    font-size: 3.3334em;
     line-height: 0.5;
     content: "\2022";
     position: absolute;
     top: 0;
-    left: -22px; }
+    left: -0.4667em; }
 .article__body ol,
 .discussion__body ol {
   counter-reset: li; }
@@ -2716,10 +2716,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   .article__body blockquote:before,
   .discussion__body blockquote:before {
     font-family: "Guardian Icons", Georgia, serif;
-    font-size: 48px;
+    font-size: 2.6667em;
     color: #999999;
-    display: block;
-    margin-bottom: 2px; }
+    display: block; }
   .article__body blockquote.quoted:before,
   .discussion__body blockquote.quoted:before {
     content: "\e029"; }
@@ -2740,7 +2739,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     font-weight: bold; }
 .article__body p + h2,
 .discussion__body p + h2 {
-  margin-top: 20px; }
+  margin-top: 1em; }
 .article__body em, .article__body i,
 .discussion__body em,
 .discussion__body i {
@@ -3537,6 +3536,8 @@ ul.tabs li.selected {
       border-bottom: 0 none; }
   .block .block-elements blockquote {
     margin-left: 0; }
+    .block .block-elements blockquote:before {
+      margin-bottom: -0.5em; }
   .block .block-elements .live-summary-more {
     display: none; }
   .block.key-event h2 {
@@ -3564,11 +3565,11 @@ ul.tabs li.selected {
       padding-top: 2px; }
     .block .block-elements blockquote:before {
       position: absolute;
-      left: -50px;
-      margin-top: 4px; }
+      left: -1em;
+      margin-top: -0.25em; }
     .block .block-elements blockquote.twitter-tweet:before {
-      left: -40px;
-      margin-top: 12px; } }
+      left: -0.8334em;
+      margin-top: 0.25em; } }
 @media all and (min-width: 56.25em) {
   .block .block-time {
     float: left;
@@ -3582,11 +3583,11 @@ ul.tabs li.selected {
       padding-top: 2px; }
     .block .block-elements blockquote:before {
       position: absolute;
-      left: -50px;
-      margin-top: 4px; }
+      left: -1em;
+      margin-top: -0.25em; }
     .block .block-elements blockquote.twitter-tweet:before {
-      left: -40px;
-      margin-top: 12px; } }
+      left: -0.8334em;
+      margin-top: 0.25em; } }
 @media all and (max-width: 18.75em) {
   .android .block {
     margin: 12px 12px 12px 12px; } }
@@ -6407,6 +6408,7 @@ aside {
   border-right: 1px dotted #dcdad5;
   left: 0; }
 #liveblog .live-summary-more {
+  text-indent: 0;
   display: none; }
 #liveblog .live-more {
   min-height: 44px;
