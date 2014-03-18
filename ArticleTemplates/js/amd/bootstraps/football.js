@@ -117,8 +117,9 @@ define([
 			
 			footballStatus: function() {
 				window.footballStatus = function(className, label) {
-					$(".football-status").attr("class", "football-status").addClass(className);
-					$(".football-status p").text(label);
+					// Clear old status and reapply class before adding new status
+					$(".football__header__status").attr("class", "football__header__status").addClass("football__header__status--" + className);
+					$(".football__header__status p").text(label);
 				}
 			},
 
