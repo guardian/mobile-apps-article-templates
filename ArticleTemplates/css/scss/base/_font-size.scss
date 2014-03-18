@@ -1,0 +1,10 @@
+.article__body,
+.discussion__body,
+.media-meta__description {
+	@for $i from 1 through 10 {
+		.font-size-#{$i} & {
+			font-size: 60% + ($i * 10%);
+			line-height: 1.5;
+		}
+	}
+}
