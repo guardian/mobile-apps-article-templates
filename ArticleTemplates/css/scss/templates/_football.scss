@@ -7,11 +7,9 @@
 	.football__header {
 		background-color: white;
 		@include margin(0,0,1,0);
-		
 		@include mq($to: col1) {
 			margin-bottom: 0;
 		}
-		
 		@include mq($from: col1) {
 			position: relative;
 		}
@@ -20,24 +18,21 @@
 			padding-top: 0;
 			@include padding(0,1,0,1);
 			overflow: auto;
-			
+
 			.article__headline {
 				padding: 0;
 				width: 100%;
 				@include mq($to: col1) {
 					margin-bottom: 1px;
 				}
-				
 				@include mq(col1, col2) {
 					font-size: 3.2rem;
 					margin-bottom: 2px;
 				}
-				
 				@include mq($from: col2) {
 					margin-bottom: 4px;
 					font-size: 4.0rem;
 				}
-				
 			}
 		}
 		
@@ -168,10 +163,6 @@
 			position: relative;
 			z-index: 20;
 			@include margin(0.5, 0, 0, 0);
-			span {
-				background-color: white;
-			}
-			
 			@include mq($to: col1) {
 				display: inline-block;
 				float: right;
@@ -179,13 +170,11 @@
 				padding: 0;
 				width: auto;
 			}
-			
 			@include mq($from: col1) {
 				position: absolute;
 				left:0;
 				right:0;
 			}
-			
 			@include mq(col1, col2) {
 				padding-top: $base-2 * 9;
 			}
@@ -194,6 +183,10 @@
 			}
 			@include mq($from: col3) {
 				padding-top: $base-4 * 11;
+			}
+
+			span {
+				background-color: white;
 			}
 		}
 		
@@ -225,17 +218,12 @@
 			color: $meta;
 			font-size: 50%;
 			line-height: 70%;
-			//padding: 0 2px;
 			& > span {
 				display: none;
 			}
 			@include mq($to: col1) {
 				font-size: 75%;
-				//width: 40px;
-				//padding: 4px 8px;
-				//text-align: right;
 			}
-			
 			@include mq($from: col1) {
 				margin-top: 10px;
 			}
@@ -274,7 +262,6 @@
 				width: 100%;
 				padding: 10px 0 !important;
 			}
-			
 			@include mq($from: col1) {
 				width: 50%;
 				float: left;
@@ -306,17 +293,12 @@
 				@include mq($from: col3) {
 					width: $base-4 * 12;
 				}
-
-				.football__header__score__label {
-					@include mq($to: col1) {
-						//text-align: right;
-					}
-				}
 			}
 			
 			.football__header__info {
 				@include mq($to: col1) {
 					width: 65%;
+					padding-left: 8px;
 				}
 				h1 {
 					text-overflow: ellipsis;
@@ -332,22 +314,16 @@
 				@include mq($to: col1) {
 					width: 20%;
 					min-width: 44px;
-					//max-width: 44px;
-					margin-right: 8px;
 				}
-				
 				@include mq($from: col1) {
 					padding-top: 4px;
 				}
-				
 				@include mq(col1, col2) {
 					width: $base-2 * 8;
 				}
-				
 				@include mq(col2, col3) {
 					width: $base-3 * 11;
 				}
-				
 				@include mq($from: col3) {
 					width: $base-4 * 12;
 				}
@@ -370,7 +346,6 @@
 			}
 			
 			.football__header__score {
-				//@include padding(0, 0, 0, 1);
 				@include mq($from: col1) {
 					text-align: right;
 				}
@@ -380,11 +355,9 @@
 				@include mq(col1, col2) {
 					padding-right: $base-2 * 2;
 				}
-				
 				@include mq(col2, col3) {
 					padding-right: $base-3 * 2;
 				}
-				
 				@include mq($from: col3) {
 					padding-right: $base-4 * 2;
 				}
@@ -397,7 +370,6 @@
 			
 			.football__header__score {
 				@include padding(0, 1, 0, 0);
-				
 				@include mq($to: col1) {
 					padding: 0;
 				}
@@ -407,11 +379,9 @@
 				@include mq(col1, col2) {
 					padding-left: $base-2 * 2;
 				}
-				
 				@include mq(col2, col3) {
 					padding-left: $base-3 * 2;
 				}
-				
 				@include mq($from: col3) {
 					padding-left: $base-3 * 2;
 				}
