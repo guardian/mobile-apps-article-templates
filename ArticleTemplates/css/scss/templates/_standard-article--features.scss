@@ -15,8 +15,7 @@
 
 			.inner-header {
 				padding-right: 0;
-				-webkit-order: 2;
-				order: 2;
+				@include order(2);
 				z-index: 2;
 
 				.article__headline {
@@ -42,8 +41,7 @@
 				color: rgba(255, 255, 255, 0.9);
 				margin-bottom: 1em;
 				padding-right: 0;
-				-webkit-order: 3;
-				order: 3;
+				@include order(3);
 				@include mq(col2, col3) {
 					width: cols($base-3, 11);
 				}
@@ -54,8 +52,7 @@
 			}
 
 			.article__review-rating {
-				-webkit-order: 4;
-				order: 4;
+				@include order(4);
 				@include margin(0, 0, 1, 0);
 			}
 			.article__review-rating--1 .icon:nth-child(-n+1),
@@ -69,8 +66,7 @@
 			.article__meta {
 				color: rgba(255, 255, 255, 0.9);
 				border: 0 none;
-				-webkit-order: 6;
-				order: 6;
+				@include order(6);
 
 				.article__pubdate {
 					color: #fff;
@@ -93,8 +89,7 @@
 			}
 		
 			.article__image {
-				-webkit-order: 1;
-				order: 1;
+				@include order(1);
 				position: relative;
 				z-index: 1;
 				@include mq($from: col2) {
@@ -130,8 +125,7 @@
 				color: rgba(255, 255, 255, 0.9);
 				border: 0 none;
 				@include padding(0, 1, 2, 1);
-				-webkit-order: 5;
-				order: 5;
+				@include order(5);
 				a {
 					color: #fff;
 				}

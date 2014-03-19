@@ -24,8 +24,7 @@
 
 		.article__header {
 			.inner-header {
-				-webkit-order: 1;
-				order: 1;
+				@include order(1);
 				position: relative;
 				overflow: auto;
 				padding-bottom: 2em;
@@ -34,7 +33,7 @@
 					position: absolute;
 					bottom: 0;
 					display: block;
-					@include margin(0,0,1,0);
+					@include margin(0, 0, 1, 0);
 				}
 
 				.article__headline {
@@ -46,26 +45,21 @@
 			}
 
 			.article__standfirst {
-				-webkit-order: 5;
 				color: $comment-sec;
-				order: 5;
+				@include order(5);
 				@include margin(0.25, 0, 1, 0);
 			}
 
 			.article__meta {
-				-webkit-order: 2;
-				order: 2;
+				@include order(2);
 				margin-top: 0;
 			}
 
 			.article__image {
-				-webkit-order: 3;
-				order: 3;
+				@include order(3);
 			}
 
 			.article__byline {
-				-webkit-order: 4;
-				order: 4;
 				display: none;
 			}
 
