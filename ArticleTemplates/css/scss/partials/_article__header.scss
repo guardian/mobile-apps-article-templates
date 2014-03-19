@@ -1,9 +1,7 @@
 .article__header {
 	background-image: none; // Hide Cif elements from non-Cif pages
-	display: -webkit-flex;
-	display: flex;
-	-webkit-flex-direction: column;
-	flex-direction: column;
+	@include flexbox;
+	@include flex-direction(column);
 
 	ul > li {
 		font-family: $egyptian-text;
@@ -22,8 +20,7 @@
 	.article__image,
 	.article__byline,
 	.article__review-rating {
-		-webkit-flex: 1;
-		flex: 1;
+		@include flex(1);
 	}
 
 	.article__section {

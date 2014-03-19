@@ -1,34 +1,32 @@
 aside {
 	float: right;
 	@include margin(0, 0, 2, 2);
-	
+
 	@include mq(col1, col2) {
 		margin-right: -$base-2;
 	}
-	
+
 	@include mq(col2, col3) {
 		margin-right: -(cols($base-3, 4));
 	}
-	
+
 	@include mq($from: col3) {
 		margin-right: -(cols($base-4, 5)+$base-4*2);
 	}
-	
+
 	// Witness
 	&.aside-witness {
 		border-top: 1px dotted $shadow;
 		@include padding(1, 1, 1, 0);
 		position: relative;
-		
+
 		@include mq($to: col1) {
 			width: 100%;
 			padding-right: 0;
 			margin-bottom: 18px;
 			border-bottom: 1px dotted $shadow;
-			display: -webkit-box;
-			display: -webkit-flex;
-			display: flex;
-			align-items: top;
+			@include flexbox;
+			@include align-items(top);
 		}
 		@include mq(col1, col2) {
 			width: cols($base-2, 3);
@@ -39,7 +37,7 @@ aside {
 		@include mq($from: col3) {
 			width: cols($base-4, 4);
 		}
-		
+
 		.touchpoint {
 			display: inline-block;
 
@@ -69,8 +67,7 @@ aside {
 		.aside-witness__powered {
 			width: 110px;
 			height: 35px;
-			-webkit-flex-shrink: 0;
-			flex-shrink: 0;
+			@include flex-shrink(0);
 		}
 	}
 }
