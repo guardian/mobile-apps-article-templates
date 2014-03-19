@@ -395,21 +395,17 @@
 		
 		.football__header__away {
 			@include padding(0, 0, 2, 1);
+			@include flex-direction(row-reverse);
 			
 			.football__header__score {
 				@include padding(0, 1, 0, 0);
 				
 				@include mq($to: col1) {
 					padding: 0;
-					@include order(3);
 				}
 			}
 			
 			.football__header__badge {
-				@include mq($to: col1) {
-					@include order(1);
-				}
-				
 				@include mq(col1, col2) {
 					padding-left: $base-2 * 2;
 				}
@@ -420,11 +416,6 @@
 				
 				@include mq($from: col3) {
 					padding-left: $base-3 * 2;
-				}
-			}
-			.football__header__info {
-				@include mq($to: col1) {
-					@include order(2);
 				}
 			}
 		}
