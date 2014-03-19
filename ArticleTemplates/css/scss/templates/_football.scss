@@ -225,15 +225,15 @@
 			color: $meta;
 			font-size: 50%;
 			line-height: 70%;
-			padding: 0 2px;
+			//padding: 0 2px;
 			& > span {
 				display: none;
 			}
 			@include mq($to: col1) {
 				font-size: 75%;
-				width: 40px;
-				padding: 4px 8px;
-				text-align: right;
+				//width: 40px;
+				//padding: 4px 8px;
+				//text-align: right;
 			}
 			
 			@include mq($from: col1) {
@@ -244,9 +244,6 @@
 		&.is-agg {
 			.football__header__score__agg {
 				display: block;
-				@include mq($to: col1) {
-					display: inline-block;
-				}
 			}
 			.football__header__alerts {
 				@include mq($from: col1) {
@@ -269,11 +266,8 @@
 		
 		.football__header__home,
 		.football__header__away {
-//			display: table;
-//			table-layout: fixed;
 			hyphens: auto;
 			word-break: break-word;
-			
 			@include mq($to: col1) {
 				@include flexbox;
 				@include flex-direction(row);
@@ -284,42 +278,45 @@
 			@include mq($from: col1) {
 				width: 50%;
 				float: left;
+				display: table;
+				table-layout: fixed;
 			}
 			
 			.football__header__badge,
 			.football__header__info,
 			.football__header__score {
-//				display: table-cell;
 				vertical-align: top;
+				@include mq($from: col1) {
+					display: table-cell;
+				}
 			}
 			
 			.football__header__score {
 				@include mq($to: col1) {
+					width: 15%;
 					min-width: 50px;
+					text-align: right;
 				}
-				
 				@include mq(col1, col2) {
 					width: $base-2 * 7;
 				}
-				
 				@include mq(col2, col3) {
 					width: $base-3 * 10;
 				}
-				
 				@include mq($from: col3) {
 					width: $base-4 * 12;
 				}
-			
+
 				.football__header__score__label {
 					@include mq($to: col1) {
-						text-align: right;
+						//text-align: right;
 					}
 				}
 			}
 			
 			.football__header__info {
 				@include mq($to: col1) {
-					width: 100%;
+					width: 65%;
 				}
 				h1 {
 					text-overflow: ellipsis;
@@ -333,8 +330,9 @@
 			.football__header__badge {
 				height: 60px;
 				@include mq($to: col1) {
+					width: 20%;
 					min-width: 44px;
-					max-width: 44px;
+					//max-width: 44px;
 					margin-right: 8px;
 				}
 				
@@ -372,7 +370,7 @@
 			}
 			
 			.football__header__score {
-				@include padding(0, 0, 0, 1);
+				//@include padding(0, 0, 0, 1);
 				@include mq($from: col1) {
 					text-align: right;
 				}
