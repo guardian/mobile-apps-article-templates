@@ -64,6 +64,8 @@ define([
 					$(html).hide().appendTo('.article__body').show().addClass('animated bounceIn');
 
 					// See Common bootstrap
+					window.loadEmbeds();
+					window.loadInteractives();
 					window.articleImageSizer();
 					window.liveblogTime();
 				};
