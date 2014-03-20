@@ -106,9 +106,10 @@ define([
 			footballGoal: function() {
 				// Allows the header to be updated when there is a goal
 				window.footballGoal = function (side, newScore, scorerHtml, aggScore) {
-					$(".football__header__" + side + "__score__label").text(newScore);
 					if (aggScore) {
-						$(".football__header__" + side + "__score__label").append("<span class='football__header__score__agg'>" + aggScore + "</span>");
+						$(".football__header__" + side + "__score__label").html(newScore + " <span class=\"football__header__score__agg\">" + aggScore + "</span>");
+					} else {
+						$(".football__header__" + side + "__score__label").html(newScore + " <span class=\"football__header__score__agg\"></span>");
 					}
 					$(".football__header__" + side + "__info p").remove();
 					$(".football__header__" + side + "__info").append(scorerHtml);
