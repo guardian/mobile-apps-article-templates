@@ -15,10 +15,16 @@
 	.article__header {
 		.inner-header {
 			background-color: $media-bg;
+			min-height: 0px;
 		}
 		
 		.article__section {
 			display: block;
+		}
+		
+		.article__byline,
+		.article__meta {
+			display: none;
 		}
 		
 		.audio-player {
@@ -32,5 +38,21 @@
 		.article__standfirst {
 			color: $white;
 		}	
+	}
+	
+	.media-meta {
+		@include rbase-3(9);
+		@include rbase-4(12);
+		
+		.media-meta__misc {
+			.media-meta__misc__timestamp, 
+			.article__byline {
+				display: block;
+			}
+		
+			.media-meta__misc__tags {
+				border-top-color: $standfirst;
+			}
+		}
 	}
 }
