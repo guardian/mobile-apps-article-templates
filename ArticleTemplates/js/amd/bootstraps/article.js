@@ -11,7 +11,7 @@ define([
 			// Moves the Witness aside to better place (4 paragraphs in)
 			var bodyLength = $(".article__body p").length;
 			if (bodyLength > 4) {
-				$(".aside-witness").addClass("positioned").prependTo(".article__body p:nth-of-type(2)");
+				$(".aside-witness").addClass("positioned").prependTo(".article__body p:nth-of-type(5)");
 			} else {
 				bodyLength = bodyLength - 1;
 				$(".aside-witness").addClass("positioned").prependTo(".article__body p:nth-of-type(" + bodyLength + ")");
