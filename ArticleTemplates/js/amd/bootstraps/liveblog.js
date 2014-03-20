@@ -21,8 +21,12 @@ define([
 					liveblogNewBlockDump = function () {
 						newBlockHtml = bonzo.create(newBlockHtml);
 						$(".article__body--liveblog__pinned").after(newBlockHtml);
+
+						// See Common bootstrap
 						window.articleImageSizer();
 						window.liveblogTime();
+						window.loadEmbeds();
+						window.loadInteractives();
 						newBlockHtml = '';
 					};
 
@@ -66,6 +70,8 @@ define([
 					// See Common bootstrap
 					window.articleImageSizer();
 					window.liveblogTime();
+					window.loadEmbeds();
+					window.loadInteractives();
 				};
 				window.liveblogTime = function () {
 					if ($('.article__section__live').length > 0 || $("#liveblog").hasClass("is-live") || $("#liveblog .article__body--liveblog").hasClass("is-live")) {

@@ -47,25 +47,33 @@ define([
 
 			loadInteractives: function () {
 				// Boot interactives
-				$('figure.interactive').each(function (el) {
-					var bootUrl = el.getAttribute('data-interactive');
-					// The contract here is that the interactive module MUST return an object
-					// with a method called 'boot'.
-					require([bootUrl], function (interactive) {
-						// We pass the standard context and config here, but also inject the
-						// mediator so the external interactive can respond to our events.
-						interactive.boot(el, document.body);
+				window.loadInteractives = function () {
+					$('figure.interactive').each(function (el) {
+						var bootUrl = el.getAttribute('data-interactive');
+						// The contract here is that the interactive module MUST return an object
+						// with a method called 'boot'.
+						require([bootUrl], function (interactive) {
+							// We pass the standard context and config here, but also inject the
+							// mediator so the external interactive can respond to our events.
+							interactive.boot(el, document.body);
+						});
 					});
-				});
+				};
+				window.loadInteractives();
 			},
-			
+
 			loadEmbeds: function() {
 				// Boot Fenced Embeds
-				require(['fence'], function(fence) {
-					$("iframe.fenced").each(function(node) {
-						fence.render(node);
+				window.loadEmbeds = function () {
+					require(['fence'], function(fence) {
+						$("iframe.fenced").each(function(node) {
+							alert("Found a fence");
+							fence.render(node);
+						});
 					});
-				});
+					
+				};
+				window.loadEmbeds();
 			},
 
 			imageSizer: function () {
