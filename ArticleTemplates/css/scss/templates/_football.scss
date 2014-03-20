@@ -80,7 +80,7 @@
 			&.football__header__status--et,
 			&.football__header__status--p {
 				font-weight: bold;
-				color: $news-sec;
+				color: $news-accent;
 			}
 			
 			&.football__header__status--first {
@@ -142,12 +142,13 @@
 			@include mq($from: col1) {
 				width: 50%;
 			}
+
 			.football__header__match-info__round {
 				@include mq(col1, col2) {
 					display: none;
 				}
 			}
-			
+
 			p {
 				text-overflow: ellipsis;
 				white-space: nowrap;
@@ -223,7 +224,6 @@
 			}
 			@include mq($to: col1) {
 				font-size: 75%;
-				margin-top: 6px;
 			}
 			@include mq($from: col1) {
 				margin-top: 10px;
@@ -406,7 +406,7 @@
 	
 	.football-tabs-stats,
 	.football-tabs-article {
-		border-top: 2px solid $news-sec;
+		border-top: 2px solid $news-accent;
 	}
 	.football-tabs-article {
 		.article {
@@ -606,7 +606,7 @@
 			.football-match {
 				border-top: 1px solid $background;
 				&:first-of-type {
-					border-top: 2px solid $news-sec;
+					border-top: 2px solid $news-accent;
 				}
 				& > div {
 					display: inline-block;
@@ -620,7 +620,7 @@
 				&.is-live {
 					font-weight: bold;
 					.football-match-status {
-						color: $news-sec;
+						color: $news-accent;
 					}
 				}
 				.football-match-status {
@@ -629,10 +629,8 @@
 				.football-match-score {
 					color: $standfirst;
 					text-align: center;
-					overflow: hidden;
 				}
-				.football-match-home,
-				.football-match-away {
+				.football-match-home, .football-match-away {
 					white-space: nowrap;
 					overflow: hidden;
 					text-overflow: ellipsis;
@@ -651,7 +649,7 @@
 				}
 				&.football-table-key {
 					font-weight: bold;
-					border-top: 2px solid $news-sec;
+					border-top: 2px solid $news-accent;
 					.football-table-position {
 						color: $headline;
 					}
@@ -674,13 +672,6 @@
 	.football-tabs-liveblog {
 		.article {
 			padding-top: 0;
-		}
-		
-		.article__header {
-			.article__meta {
-				margin-top: 0px;
-				border-top: 2px solid $news-sec;
-			}
 		}
 		
 		.block:first-of-type {
