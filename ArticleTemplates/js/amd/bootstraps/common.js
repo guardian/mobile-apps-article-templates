@@ -67,7 +67,6 @@ define([
 				window.loadEmbeds = function () {
 					require(['fence'], function(fence) {
 						$("iframe.fenced").each(function(node) {
-							alert("Found a fence");
 							fence.render(node);
 						});
 					});
