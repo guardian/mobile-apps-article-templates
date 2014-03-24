@@ -300,15 +300,6 @@
 }
 
 // Failure States
-.comments-has-failed {
-	.discussion__failed {
-		display: block;
-	}
-	.discussion__view-more {
-		display: none;
-	}
-}
-
 .comments-0 {
 	.discussion__empty {
 		display: block;
@@ -330,6 +321,16 @@
 		.touchpoint__button, a {
 			display: none !important;
 		}
+	}
+}
+
+.comments-has-failed {
+	.discussion__failed {
+		display: block;
+	}
+	.discussion__view-more,
+	.discussion__empty {
+		display: none;
 	}
 }
 
