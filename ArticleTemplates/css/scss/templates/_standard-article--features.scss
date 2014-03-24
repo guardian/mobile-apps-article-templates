@@ -1,210 +1,210 @@
 #standard-article[class*="feature"] {
-	.article {
-		.article__header {
-			@include margin(0, 0, 1, 0);
-			padding-top: 32px;
-			position: relative;
+	.article__headline,
+	.article__standfirst,
+	.article__byline,
+	.article__pubdate {
+		@include mq(col2, col3) {
+			margin-left: cols($base-3, 1, 0);
+			padding-right: cols($base-3, 0.5, 0);
+		}
+		@include mq($from: col3) {
+			margin-left: cols($base-4, 1, 0);
+			padding-right: cols($base-4, 0.5, 0);
+		}
+	}
 
-			.article__section {
-				background-color: $background;
+	.article__header {
+		@include mq(col2, 800px) {
+			padding-top: 34px;
+		}
+		@include mq(800px, col3) {
+			padding-top: 36px;
+		}
+		@include mq(col3, 1100px) {
+			padding-top: 34px;
+		}
+		@include mq($from: 1100px) {
+			padding-top: 36px;
+		}
+
+		.inner-header {
+			padding-right: 0;
+			@include order(2);
+		}
+	}
+
+	.article__section {
+		@include mq($to: col2) {
+			a {
+				color: #fff;
+			}
+		}
+		@include mq($from: col2) {
+			background-color: $background;
+			position: absolute;
+			top: 4px;
+			right: 0;
+			left: 0;
+		}
+	}
+
+	.article__headline {
+		color: #fff;
+		position: relative;
+		z-index: 20;
+		@include mq($from: col2) {
+			font-size: 3.5556em; // 64px
+			font-weight: 100;
+			line-height: 0.875; // 56px
+			margin-top: -46px;
+		}
+	}
+
+	.article__standfirst {
+		@include order(3);
+	}
+
+	.article__byline {
+		border: 0 none;
+		@include order(5);
+	}
+
+	.article__meta {
+		border: 0 none;
+		@include order(6);
+	}
+
+	.article__byline__image,
+	.article__alerts {
+		display: none;
+	}
+
+	.article__standfirst,
+	.article__byline,
+	.article__pubdate,
+	.article__comments {
+		color: rgba(255, 255, 255, 0.85);
+
+		a {
+			color: #fff;
+		}
+	}
+
+	.article__image {
+		position: relative;
+		@include order(1);
+		&:after {
+			@include mq($from: col2) {
+				content: "";
+				background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.67) 100%);
+				display: block;
 				position: absolute;
 				top: 0;
-				left: 0;
 				right: 0;
-			}
-
-			.inner-header {
-				padding-right: 0;
-				@include order(2);
-				z-index: 2;
-
-				.article__headline {
-					color: #fff;
-					@include margin(1, 0, 2, 0);
-					@include mq($from: col2) {
-						font-size: 4em; // 64px
-						font-weight: 100;
-						line-height: 0.875; // 56px
-						padding: 0;
-					}
-					@include mq(col2, col3) {
-						width: cols($base-3, 11);
-					}
-				}
-
-				.article__alerts {
-					display: none;
-				}
-			}
-
-			.article__standfirst {
-				color: rgba(255, 255, 255, 0.9);
-				margin-bottom: 1em;
-				padding-right: 0;
-				@include order(3);
-				@include mq(col2, col3) {
-					width: cols($base-3, 11);
-				}
-
-				a {
-					color: #fff;
-				}
-			}
-
-			.article__review-rating {
-				@include order(4);
-				@include margin(0, 0, 1, 0);
-			}
-			.article__review-rating--1 .icon:nth-child(-n+1),
-			.article__review-rating--2 .icon:nth-child(-n+2),
-			.article__review-rating--3 .icon:nth-child(-n+3),
-			.article__review-rating--4 .icon:nth-child(-n+4),
-			.article__review-rating--5 .icon:nth-child(-n+5) {
-			    color: $feature3-accent;
-			}
-
-			.article__meta {
-				color: rgba(255, 255, 255, 0.9);
-				border: 0 none;
-				@include order(6);
-
-				.article__pubdate {
-					color: #fff;
-				}
-
-				.article__pubdate {
-					border: 0 none;
-					@include mq(col2, col3) {
-						padding-left: $base-3 * 5;
-					}
-					@include mq($from: col3) {
-						padding-left: $base-4 * 5;
-					}
-				}
-
-				.article__comments {
-					color: #fff;
-					border-left: 1px solid $background;
-				}
-			}
-		
-			.article__image {
-				@include order(1);
-				position: relative;
+				bottom: 0;
+				left: 0;
 				z-index: 1;
-				@include mq($from: col2) {
-					margin-bottom: -62px;
-				}
-				&:after {
-					@include mq($from: col2) {
-						content: "";
-						background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.5) 100%);
-						display: block;
-						position: absolute;
-						top: 0;
-						right: 0;
-						bottom: 0;
-						left: 0;
-					}
-				}
-
-				figcaption {
-					color: rgba(255, 255, 255, 0.9);
-					background-color: rgba(0, 0, 0, 0.25);
-					border: 0 none;
-					@include padding(0.5, 1, 0.5, 1);
-					@include mq($from: col2) {
-						position: absolute;
-						top: 0;
-						right: 0;
-					}
-				}
-			}
-
-			.article__byline {
-				color: rgba(255, 255, 255, 0.9);
-				border: 0 none;
-				@include padding(0, 1, 2, 1);
-				@include order(5);
-				a {
-					color: #fff;
-				}
-			}
-
-			.article__byline__image,
-			.article__alerts {
-				display: none;
-			}
-
-			.inner-header,
-			.article__standfirst,
-			.article__byline,
-			.article__review-rating {
-				@include mq(col2, col3) {
-					padding-left: cols($base-3, 1);
-					padding-right: cols($base-3, 1);
-				}
-				@include mq($from: col3) {
-					padding-left: cols($base-4, 1);
-					padding-right: cols($base-4, 1);
-				}
 			}
 		}
+	}
 
-		.article__body {
+	.article__image-caption {
+		color: rgba(255, 255, 255, 0.9);
+		border: 0 none;
+		padding: 0;
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		z-index: 10;
+	}
+
+	.article__image-caption__icon {
+		line-height: 44px;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.33);
+		border-right: 1px solid rgba(255, 255, 255, 0.2);
+		width: 44px;
+		height: 44px;
+		display: inline-block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		&:active {
+			background-color: rgba(0, 0, 0, 0.66);
+		}
+	}
+
+	.article__image-caption__text {
+		background-color: rgba(0, 0, 0, 0.33);
+		@include padding(0.5, 1, 0.5, 1);
+		display: none;
+		max-height: 0;
+		overflow: hidden;
+		position: absolute;
+		left: 44px;
+		right: 0;
+		top: 0;
+		&.is-visible {
+			display: block;
+			min-height: 44px;
+			max-height: 999px;
+		}
+	}
+
+	.article__body {
+		> p:first-of-type:first-letter {
+			font-family: $egyptian-display;
+			font-weight: 100;
+			font-style: normal;
+			font-size: 3.3334em;
+			line-height: 1;
+			margin-bottom: -12px;
+			padding-right: 0.125em; // 6px
+			float: left;
+		}
+		@include mq(col2, col3) {
+			padding-left: cols($base-3, 1, 1);
 			> p:first-of-type:first-letter {
-				font-family: $egyptian-display;
-				font-weight: 100;
-				font-style: normal;
-				font-size: 3.3334em;
-				line-height: 1;
-				margin-bottom: -12px;
-				padding-right: 0.125em; // 6px
-				float: left;
+				font-size: 5em;
 			}
-			@include mq(col2, col3) {
-				padding-left: cols($base-3, 1);
-				> p:first-of-type:first-letter {
-					font-size: 5em;
-				}
-			}
-			@include mq($from: col3) {
-				padding-left: cols($base-4, 1);
-				> p:first-of-type:first-letter {
-					font-size: 5em;
-				}
-			}
-
-			.figure-wide,
-			.element-video,
-			.element-interactive {
-				@include mq($from: col2) {
-					width: 145.4545%;
-				}
-				@include mq(col2, col3) {
-					margin-left: -(cols($base-3, 1.4));
-					margin-right: -(cols($base-3, 1.4));
-					figcaption {
-						padding-left: cols($base-3, 1);
-					}
-				}
-				@include mq($from: col3) {
-					margin-left: -(cols($base-4, 1.4));
-					margin-right: -(cols($base-4, 1.4));
-					figcaption {
-						padding-left: cols($base-4, 1);
-					}
-				}
+		}
+		@include mq($from: col3) {
+			padding-left: cols($base-4, 1, 1);
+			> p:first-of-type:first-letter {
+				font-size: 5em;
 			}
 		}
 
-		.article__tags {
+		.figure-wide,
+		.element-video,
+		.element-interactive {
+			@include mq($from: col2) {
+				width: 145.4545%;
+			}
 			@include mq(col2, col3) {
-				padding-left: cols($base-3, 1);
+				margin-left: -(cols($base-3, 1.4));
+				margin-right: -(cols($base-3, 1.4));
+				figcaption {
+					padding-left: cols($base-3, 1);
+				}
 			}
 			@include mq($from: col3) {
-				padding-left: cols($base-4, 1);
+				margin-left: -(cols($base-4, 1.4));
+				margin-right: -(cols($base-4, 1.4));
+				figcaption {
+					padding-left: cols($base-4, 1);
+				}
 			}
+		}
+	}
+
+	.article__tags {
+		@include mq(col2, col3) {
+			padding-left: cols($base-3, 1, 1);
+		}
+		@include mq($from: col3) {
+			padding-left: cols($base-4, 1, 1);
 		}
 	}
 }
@@ -227,11 +227,12 @@
 		}
 	}
 	.article {
-		border-top-color: $feature1;
+		border-top-color: $feature1-accent;
 		.article__header {
 			background-color: $feature1;
 		}
-		.article__meta {
+		.article__standfirst,
+		.article__byline {
 			background-color: $feature1-accent;
 		}
 		.article__body > p:first-of-type:first-letter {
@@ -258,11 +259,12 @@
 		}
 	}
 	.article {
-		border-top-color: $feature2;
+		border-top-color: $feature2-accent;
 		.article__header {
 			background-color: $feature2;
 		}
-		.article__meta {
+		.article__standfirst,
+		.article__byline {
 			background-color: $feature2-accent;
 		}
 		.article__body > p:first-of-type:first-letter {
@@ -289,11 +291,12 @@
 		}
 	}
 	.article {
-		border-top-color: $feature3;
+		border-top-color: $feature3-accent;
 		.article__header {
 			background-color: $feature3;
 		}
-		.article__meta {
+		.article__standfirst,
+		.article__byline {
 			background-color: $feature3-accent;
 		}
 		.article__body > p:first-of-type:first-letter {

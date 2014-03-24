@@ -91,7 +91,7 @@ define([
 				};
 
 				window.applyNativeFunctionCall('liveblogDeleteBlock');
-                window.applyNativeFunctionCall('liveblogUpdateBlock');
+				window.applyNativeFunctionCall('liveblogUpdateBlock');
 			}
 		},
 
@@ -109,5 +109,4 @@ define([
 	return {
 		init: ready
 	};
-
 });
