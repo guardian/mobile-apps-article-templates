@@ -1,0 +1,58 @@
+#audio.media {
+	.article {
+		border-top-color: $media;
+		color: $white;
+		background-color: $media-bg;
+		
+		a {
+			color: $media;
+		}
+		.touchpoint__button {
+			background-color: $media;
+			color: $media-bg;
+		}
+	}
+	.article__header {
+		.inner-header {
+			background-color: $media-bg;
+			min-height: 0px;
+		}
+		
+		.article__section {
+			display: block;
+		}
+		
+		.article__byline,
+		.article__meta {
+			display: none;
+		}
+		
+		.audio-player {
+			background-color: $standfirst;
+			
+			.audio-player__slider__knob {
+				background-color: lighten($media, 20%);
+			}
+		}
+		
+		.article__standfirst {
+			color: $white;
+		}	
+	}
+	
+	.media-meta {
+		@include rbase-3(9);
+		@include rbase-4(12);
+		
+		.media-meta__misc {
+			.media-meta__misc__timestamp, 
+			.article__byline {
+				display: block;
+			}
+		
+			.media-meta__misc__tags {
+				border-top-color: $standfirst;
+			}
+		}
+	}
+}
