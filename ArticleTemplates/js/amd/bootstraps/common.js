@@ -199,7 +199,7 @@ define([
 				modules.setupFontSizing();
 				modules.showTabs();
 
-				// window.location.href = 'x-gu://ready';
+				window.location.href = 'x-gu://ready';
 				// console.info("Common ready");
 			}
 		};
