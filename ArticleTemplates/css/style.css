@@ -4491,6 +4491,7 @@ ul.tabs li.selected {
   .discussion__empty .discussion__view-more,
   .discussion__failed .discussion__view-more {
     font-weight: bold;
+    color: #005689;
     border-top: 1px dotted #dcdad5; }
     @media all and (max-width: 18.75em) {
       .discussion .discussion__view-more,
@@ -4587,6 +4588,10 @@ ul.tabs li.selected {
       .discussion__empty .discussion__view-more,
       .discussion__failed .discussion__view-more {
         margin-left: 30.52632%; } }
+    .discussion .discussion__view-more .icon,
+    .discussion__empty .discussion__view-more .icon,
+    .discussion__failed .discussion__view-more .icon {
+      font-size: 80%; }
   .discussion.is-response,
   .discussion__empty.is-response,
   .discussion__failed.is-response {
@@ -5324,12 +5329,14 @@ figure.figure-inline figcaption {
   font-size: 24px;
   line-height: 44px;
   vertical-align: middle;
-  background-color: #005689;
   border-radius: 100%;
   display: inline-block;
   height: 44px;
   width: 44px; }
-  .touchpoint__button:active {
+
+.touchpoint__button--primary {
+  background-color: #005689; }
+  .touchpoint__button--primary:active {
     background-color: #4bc6df; }
 
 .touchpoint__button--secondary {
@@ -6358,6 +6365,8 @@ aside {
     font-weight: bold;
     display: none;
     width: 100%; }
+    #liveblog .article__body--liveblog__pinned .summary .block-elements .live-summary-more .icon {
+      font-size: 80%; }
 #liveblog aside.aside-witness {
   float: none;
   background-color: white;
