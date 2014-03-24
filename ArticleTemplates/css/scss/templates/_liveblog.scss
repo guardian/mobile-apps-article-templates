@@ -15,17 +15,7 @@
 	}
 
 	.article__live-summary {
-		@include padding(0.5, 1, 0, 1);
-	}
-
-	.article__body {
-		-webkit-user-select: text;
-		-webkit-touch-callout: default;
-
-		p {
-			-webkit-user-select: text;
-			-webkit-touch-callout: default;
-		}
+		@include padding(0.5, 1, 2, 1);
 	}
 
 	.article__section {
@@ -181,6 +171,7 @@
 	}
 
 	.live-summary-more {
+		text-indent: 0;
 		display: none;
 	}
 	.live-more {
@@ -336,7 +327,7 @@
 	min-height: 44px;
 	font-family: $agate-sans;
 	font-weight: bold;
-	color: $news-pri;
+	color: $news;
 	@include body();
 	@include margin(0, 0, 1, 0);
 	@include padding(0, 1, 1, 1);
@@ -347,7 +338,7 @@
 		padding-left: $base-4 * 30;
 	}
 	&:active {
-		color: $news-sec;
+		color: $news-accent;
 	}
 }
 .live-more-loading {

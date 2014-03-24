@@ -16,15 +16,15 @@
 
 	ul > li {
 		position: relative;
-		text-indent: 22px;
+		text-indent: 1.3334em; // 24px
 		&:before {
 			color: $meta;
-			font-size: 48px;
+			font-size: 3.3334em; // 60px
 			line-height: 0.5;
 			content: "\2022";
 			position: absolute;
 			top: 0;
-			left: -22px;
+			left: -0.4667em; // 28px
 		}
 	}
 
@@ -46,10 +46,9 @@
 		}
 		&:before {
 			font-family: $icon;
-			font-size: 48px;
+			font-size: 2.6667em; // 48px
 			color: $meta;
 			display: block;
-			margin-bottom: 2px;
 		}
 		&.quoted:before {
 			content: "\e029";
@@ -72,7 +71,7 @@
 		}
 	}
 	p + h2 {
-		margin-top: 20px;
+		margin-top: 1em;
 	}
 
 	em, i {
@@ -83,13 +82,5 @@
 	}
 	strike {
 		text-decoration: line-through;
-	}
-
-	// Font resizing for articles based on user input –– This might be to be seperated into a new sass module as it will be used across different templates
-	@for $i from 1 through 10 {
-		.font-size-#{$i} & {
-			font-size: $i * 25%;
-			line-height: 1.5;
-		}
 	}
 }

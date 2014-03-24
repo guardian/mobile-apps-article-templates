@@ -1,6 +1,6 @@
 .card {
 	background-color: $white;
-	border-top: 1px solid $news-pri;
+	border-top: 1px solid $news;
 	border-bottom: 1px solid $shadow;
 	position: relative;
 
@@ -41,10 +41,8 @@
 
 	.card__container {
 		@include mq($to: col1) {
-			display: -webkit-flex;
-			display: flex;
-			-webkit-flex-direction: column;
-			flex-direction: column;
+			@include flexbox;
+			@include flex-direction(column);
 		}
 		@include mq($from: col1) {
 			position: absolute;
@@ -67,19 +65,15 @@
 	.card__header {
 		margin-bottom: 1em;
 		@include mq($to: col1) {
-			-webkit-flex: 1;
-			flex: 1;
-			-webkit-order: 1;
-			order: 1;
+			@include flex(1);
+			@include order(1);
 		}
 	}
 
 	.card__object {
 		@include mq($to: col1) {
-			-webkit-flex: 1;
-			flex: 1;
-			-webkit-order: 2;
-			order: 2;
+			@include flex(1);
+			@include order(2);
 		}
 		@include mq($from: col1) {
 			overflow: hidden;
@@ -91,8 +85,8 @@
 	&.has-image .card__object {
 		padding: 0;
 		@include mq($to: col1) {
-			-webkit-order: 3;
-			order: 3;
+			@include flex(1);
+			@include order(3);
 		}
 		.card__image {
 			@include mq($from: col1) {
@@ -111,10 +105,8 @@
 		margin-top: 1em;
 		overflow: hidden;
 		@include mq($to: col1) {
-			-webkit-flex: 1;
-			flex: 1;
-			-webkit-order: 3;
-			order: 3;
+			@include flex(1);
+			@include order(3);
 		}
 		@include mq($from: col1) {
 			position: absolute;
@@ -129,8 +121,8 @@
 		.card__footer {
 			bottom: 50%;
 			@include mq($to: col1) {
-				-webkit-order: 2;
-				order: 2;
+				@include flex(1);
+				@include order(2);
 			}
 		}
 	}
@@ -155,7 +147,7 @@
 	.card__rating--3 .icon:nth-child(-n+3),
 	.card__rating--4 .icon:nth-child(-n+4),
 	.card__rating--5 .icon:nth-child(-n+5) {
-		color: $news-sec;
+		color: $news-accent;
 	}
 
 	.standfirst {
@@ -172,8 +164,8 @@
 		z-index: 2;
 		@include padding(0.5);
 		.touchpoint__button {
-			background-color: $media-pri;
-			color: $media-sec;
+			background-color: $media;
+			color: $media-bg;
 			display: table-cell;
 			vertical-align: middle;
 			.icon {
@@ -186,7 +178,7 @@
 			line-height: 1;
 			font-family: $agate-sans;
 			font-weight: bold;
-			color: $media-pri;
+			color: $media;
 			display: table-cell;
 			vertical-align: middle;
 			padding-left: 8px;
@@ -222,7 +214,7 @@
 
 	// Feature
 	&.card--feature {
-		background-color: $features-pri;
+		background-color: $feature1;
 		border-top-color: transparent;
 		* {
 			color: $white;
@@ -234,12 +226,12 @@
 
 	// Media
 	&.card--media {
-		background-color: $media-sec;
-		border-top-color: $media-pri;
+		background-color: $media-bg;
+		border-top-color: $media;
 		.card__title {
 			color: $white;
 			.icon {
-				color: $media-pri;
+				color: $media;
 				margin-right: 6px;
 			}
 		}
@@ -247,7 +239,7 @@
 			color: $meta;
 		}
 		.series {
-			color: $media-pri;
+			color: $media;
 			&:after {
 				content:"\a";
 				white-space: pre;
@@ -257,7 +249,7 @@
 			border-color: fade-out($shadow, 0.66);
 		}
 		.card__duration {
-			color: $media-pri;
+			color: $media;
 			font-weight: bold;
 		}
 	}
@@ -265,7 +257,7 @@
 	// Comment
 	&.card--comment {
 		background-color: $comment-bg;
-		border-top-color: $comment-sec;
+		border-top-color: $comment;
 		.card__title {
 			.icon {
 				color: $meta;
@@ -276,7 +268,7 @@
 			}
 		}
 		.card__byline {
-			color: $comment-pri;
+			color: $comment;
 		}
 		.standfirst {
 			padding-right: $base-4*2;
@@ -290,15 +282,15 @@
 
 	// Live
 	&.card--live {
-		border-top-color: $live-pri;
+		border-top-color: $live;
 		.card__timestamp {
-			color: $live-pri;
+			color: $live;
 			font-weight: bold;
 			&:before {
 				content: "";
 				width: 12px;
 				height: 12px;
-				background-color: $live-pri;
+				background-color: $live;
 				border-radius: 100%;
 				display: block;
 				float: left;

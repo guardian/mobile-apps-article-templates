@@ -1,31 +1,24 @@
 .news {
 	a,
 	.discussion__view-more {
-		color: $news-pri;
+		color: $news;
 		&:active {
-			color: $news-sec;
+			color: $news-accent;
 			.touchpoint__button {
-				background-color: $news-sec;
+				background-color: $news-accent;
 			}
 		}
 	}
 	.touchpoint__button {
-		background-color: $news-pri;
+		background-color: $news;
 		&:active {
-			background-color: $news-sec;
+			background-color: $news-accent;
 		}
 	}
 }
 
 #standard-article {
 	.article__body {
-		-webkit-user-select: text;
-		-webkit-touch-callout: default;
-
-		p { 
-			-webkit-user-select: text;
-			-webkit-touch-callout: default;
-		}
 		@include padding(0, 1, 0, 1);
 		@include mq(col2, col3) {
 			padding-right: cols($base-3, 3);

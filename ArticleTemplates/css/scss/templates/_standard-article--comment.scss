@@ -1,31 +1,30 @@
 .comment {
 	a,
 	.discussion__view-more {
-		color: $comment-pri;
+		color: $comment;
 		&:active {
-			color: $comment-pri-accent;
+			color: $comment-accent-light;
 			.touchpoint__button {
-				background-color: $comment-pri-accent;
+				background-color: $comment-accent-light;
 			}
 		}
 	}
 	.touchpoint__button {
-		background-color: $comment-pri;
+		background-color: $comment;
 		&:active {
-			background-color: $comment-pri-accent;
+			background-color: $comment-accent-light;
 		}
 	}
 }
 
 #standard-article.comment {
 	.article {
-		border-top-color: $comment-pri;
 		background-color: $comment-bg;
+		border-top-color: $comment;
 
 		.article__header {
 			.inner-header {
-				-webkit-order: 1;
-				order: 1;
+				@include order(1);
 				position: relative;
 				overflow: auto;
 				padding-bottom: 2em;
@@ -34,38 +33,37 @@
 					position: absolute;
 					bottom: 0;
 					display: block;
-					@include margin(0,0,1,0);
+					@include margin(0, 0, 1, 0);
 				}
 
 				.article__headline {
 					span {
 						display: block;
-						color: $comment-pri;
+						color: $comment;
 					}
 				}
 			}
 
 			.article__standfirst {
-				-webkit-order: 5;
-				color: $comment-sec;
-				order: 5;
+				color: $comment-accent-dark;
+				@include order(5);
 				@include margin(0.25, 0, 1, 0);
+				@include mq($to: col2) {
+					font-size: 1.25em;
+					line-height: 1.25em;
+				}
 			}
 
 			.article__meta {
-				-webkit-order: 2;
-				order: 2;
+				@include order(2);
 				margin-top: 0;
 			}
 
 			.article__image {
-				-webkit-order: 3;
-				order: 3;
+				@include order(3);
 			}
 
 			.article__byline {
-				-webkit-order: 4;
-				order: 4;
 				display: none;
 			}
 

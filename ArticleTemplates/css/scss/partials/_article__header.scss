@@ -1,9 +1,7 @@
 .article__header {
 	background-image: none; // Hide Cif elements from non-Cif pages
-	display: -webkit-flex;
-	display: flex;
-	-webkit-flex-direction: column;
-	flex-direction: column;
+	@include flexbox;
+	@include flex-direction(column);
 
 	ul > li {
 		font-family: $egyptian-text;
@@ -22,8 +20,7 @@
 	.article__image,
 	.article__byline,
 	.article__review-rating {
-		-webkit-flex: 1;
-		flex: 1;
+		@include flex(1);
 	}
 
 	.article__section {
@@ -43,17 +40,13 @@
 		span {
 			display: none; // Hide Cif elements from non-Cif pages
 		}
-		-webkit-user-select: text;
-		-webkit-touch-callout: default;	
 	}
 
 	.article__standfirst {
 		color: $standfirst;
 		font-family: $egyptian-text;
 		@include standfirst();
-		@include padding(0.5, 1, 2, 1);
-		-webkit-user-select: text;
-		-webkit-touch-callout: default;
+		@include padding(0.5, 1, 0, 1);
 	}
 
 	.article__review-rating {
@@ -66,7 +59,7 @@
 	.article__review-rating--3 .icon:nth-child(-n+3),
 	.article__review-rating--4 .icon:nth-child(-n+4),
 	.article__review-rating--5 .icon:nth-child(-n+5) {
-		color: $news-sec;
+		color: $news-accent;
 	}
 
 	.article__alerts {
@@ -139,8 +132,11 @@
 		vertical-align: middle;
 		float: left;
 		margin-right: 0.5em;
+		position: relative;
 		img {
-			width: 64px;
+			height: 100%;
+			position: absolute;
+			left: -10%;
 		}
 	}
 

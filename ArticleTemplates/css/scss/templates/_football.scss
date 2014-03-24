@@ -7,11 +7,9 @@
 	.football__header {
 		background-color: white;
 		@include margin(0,0,1,0);
-		
 		@include mq($to: col1) {
 			margin-bottom: 0;
 		}
-		
 		@include mq($from: col1) {
 			position: relative;
 		}
@@ -20,24 +18,21 @@
 			padding-top: 0;
 			@include padding(0,1,0,1);
 			overflow: auto;
-			
+
 			.article__headline {
 				padding: 0;
 				width: 100%;
 				@include mq($to: col1) {
 					margin-bottom: 1px;
 				}
-				
 				@include mq(col1, col2) {
 					font-size: 3.2rem;
 					margin-bottom: 2px;
 				}
-				
 				@include mq($from: col2) {
 					margin-bottom: 4px;
 					font-size: 4.0rem;
 				}
-				
 			}
 		}
 		
@@ -85,7 +80,7 @@
 			&.football__header__status--et,
 			&.football__header__status--p {
 				font-weight: bold;
-				color: $news-sec;
+				color: $news-accent;
 			}
 			
 			&.football__header__status--first {
@@ -147,12 +142,13 @@
 			@include mq($from: col1) {
 				width: 50%;
 			}
+
 			.football__header__match-info__round {
 				@include mq(col1, col2) {
 					display: none;
 				}
 			}
-			
+
 			p {
 				text-overflow: ellipsis;
 				white-space: nowrap;
@@ -168,10 +164,6 @@
 			position: relative;
 			z-index: 20;
 			@include margin(0.5, 0, 0, 0);
-			span {
-				background-color: white;
-			}
-			
 			@include mq($to: col1) {
 				display: inline-block;
 				float: right;
@@ -179,13 +171,11 @@
 				padding: 0;
 				width: auto;
 			}
-			
 			@include mq($from: col1) {
 				position: absolute;
 				left:0;
 				right:0;
 			}
-			
 			@include mq(col1, col2) {
 				padding-top: $base-2 * 9;
 			}
@@ -194,6 +184,10 @@
 			}
 			@include mq($from: col3) {
 				padding-top: $base-4 * 11;
+			}
+
+			span {
+				background-color: white;
 			}
 		}
 		
@@ -225,17 +219,12 @@
 			color: $meta;
 			font-size: 50%;
 			line-height: 70%;
-			padding: 0 2px;
 			& > span {
 				display: none;
 			}
 			@include mq($to: col1) {
 				font-size: 75%;
-				width: 40px;
-				padding: 4px 8px;
-				text-align: right;
 			}
-			
 			@include mq($from: col1) {
 				margin-top: 10px;
 			}
@@ -244,9 +233,6 @@
 		&.is-agg {
 			.football__header__score__agg {
 				display: block;
-				@include mq($to: col1) {
-					display: inline-block;
-				}
 			}
 			.football__header__alerts {
 				@include mq($from: col1) {
@@ -269,58 +255,51 @@
 		
 		.football__header__home,
 		.football__header__away {
-			display: table;
-			table-layout: fixed;
 			hyphens: auto;
 			word-break: break-word;
-			
 			@include mq($to: col1) {
-				display: -webkit-box;
-				display: -webkit-flex;
-				display: flex;
+				@include flexbox;
+				@include flex-direction(row);
 				width: 100%;
 				padding: 10px 0 !important;
 			}
-			
 			@include mq($from: col1) {
 				width: 50%;
 				float: left;
+				display: table;
+				table-layout: fixed;
 			}
 			
 			.football__header__badge,
 			.football__header__info,
 			.football__header__score {
-				display: table-cell;
 				vertical-align: top;
+				@include mq($from: col1) {
+					display: table-cell;
+				}
 			}
 			
 			.football__header__score {
 				@include mq($to: col1) {
+					width: 15%;
 					min-width: 50px;
+					text-align: right;
 				}
-				
 				@include mq(col1, col2) {
 					width: $base-2 * 7;
 				}
-				
 				@include mq(col2, col3) {
 					width: $base-3 * 10;
 				}
-				
 				@include mq($from: col3) {
 					width: $base-4 * 12;
-				}
-			
-				.football__header__score__label {
-					@include mq($to: col1) {
-						text-align: right;
-					}
 				}
 			}
 			
 			.football__header__info {
 				@include mq($to: col1) {
-					width: 100%;
+					width: 65%;
+					padding-left: 8px;
 				}
 				h1 {
 					text-overflow: ellipsis;
@@ -334,23 +313,18 @@
 			.football__header__badge {
 				height: 60px;
 				@include mq($to: col1) {
+					width: 20%;
 					min-width: 44px;
-					max-width: 44px;
-					margin-right: 8px;
 				}
-				
 				@include mq($from: col1) {
 					padding-top: 4px;
 				}
-				
 				@include mq(col1, col2) {
 					width: $base-2 * 8;
 				}
-				
 				@include mq(col2, col3) {
 					width: $base-3 * 11;
 				}
-				
 				@include mq($from: col3) {
 					width: $base-4 * 12;
 				}
@@ -373,7 +347,6 @@
 			}
 			
 			.football__header__score {
-				@include padding(0, 0, 0, 1);
 				@include mq($from: col1) {
 					text-align: right;
 				}
@@ -383,11 +356,9 @@
 				@include mq(col1, col2) {
 					padding-right: $base-2 * 2;
 				}
-				
 				@include mq(col2, col3) {
 					padding-right: $base-3 * 2;
 				}
-				
 				@include mq($from: col3) {
 					padding-right: $base-4 * 2;
 				}
@@ -396,45 +367,24 @@
 		
 		.football__header__away {
 			@include padding(0, 0, 2, 1);
+			@include flex-direction(row-reverse);
 			
 			.football__header__score {
 				@include padding(0, 1, 0, 0);
-				
 				@include mq($to: col1) {
 					padding: 0;
-					-webkit-box-ordinal-group: 3;
-					box-ordinal-group: 3;
-					-webkit-order: 3;
-					order: 3;
 				}
 			}
 			
 			.football__header__badge {
-				@include mq($to: col1) {
-					-webkit-box-ordinal-group: 1;
-					box-ordinal-group: 1;
-					-webkit-order: 1;
-					order: 1;
-				}
-				
 				@include mq(col1, col2) {
 					padding-left: $base-2 * 2;
 				}
-				
 				@include mq(col2, col3) {
 					padding-left: $base-3 * 2;
 				}
-				
 				@include mq($from: col3) {
 					padding-left: $base-3 * 2;
-				}
-			}
-			.football__header__info {
-				@include mq($to: col1) {
-					-webkit-box-ordinal-group: 2;
-					box-ordinal-group: 2;
-					-webkit-order: 2;
-					order: 2;
 				}
 			}
 		}
@@ -456,7 +406,7 @@
 	
 	.football-tabs-stats,
 	.football-tabs-article {
-		border-top: 2px solid $news-sec;
+		border-top: 2px solid $news-accent;
 	}
 	.football-tabs-article {
 		.article {
@@ -656,7 +606,7 @@
 			.football-match {
 				border-top: 1px solid $background;
 				&:first-of-type {
-					border-top: 2px solid $news-sec;
+					border-top: 2px solid $news-accent;
 				}
 				& > div {
 					display: inline-block;
@@ -670,7 +620,7 @@
 				&.is-live {
 					font-weight: bold;
 					.football-match-status {
-						color: $news-sec;
+						color: $news-accent;
 					}
 				}
 				.football-match-status {
@@ -699,7 +649,7 @@
 				}
 				&.football-table-key {
 					font-weight: bold;
-					border-top: 2px solid $news-sec;
+					border-top: 2px solid $news-accent;
 					.football-table-position {
 						color: $headline;
 					}

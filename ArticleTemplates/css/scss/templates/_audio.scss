@@ -4,7 +4,7 @@
 	}
 	.article__header {
 		.inner-header {
-			background: -webkit-canvas(squares) $news-sec;
+			background: -webkit-canvas(squares) $news-accent;
 			padding-bottom: 4.5em;
 			position: relative;
 
@@ -54,7 +54,7 @@
 			}
 
 			.article__comments {
-				border-left-color: fade-out($news-pri, 0.25);
+				border-left-color: fade-out($news, 0.25);
 				padding-top: 0px;
 				@include mq($to: col1) {
 					border-left-color: fade-out($white, 0.25);
@@ -125,7 +125,7 @@
 				padding: 0;
 				height: 16px;
 				width: 16px;
-				background-color: $news-sec;
+				background-color: $news-accent;
 				-webkit-border-radius: 25px;
 				-moz-border-radius: 25px;
 				border-radius: 25px;
@@ -146,6 +146,17 @@
 				right: 0;
 				text-align: right;
 			}
+		}
+	}
+	
+	.media-meta {
+		.article__byline,
+		.media-meta__misc__timestamp {
+			display: none;
+		}
+		
+		.media-meta__misc__tags {
+			border-top-color: $shadow;
 		}
 	}
 }

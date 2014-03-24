@@ -105,17 +105,23 @@ define([
 			
 			footballGoal: function() {
 				// Allows the header to be updated when there is a goal
-				window.footballGoal = function (side, newScore, scorerHtml) {
-					$(".football-team-" + side + " .football__header__score h1").text(newScore);
-					$(".football-team-" + side + " .football-info p").remove();
-					$(".football-team-" + side + " .football-info").append(scorerHtml);
+				window.footballGoal = function (side, newScore, scorerHtml, aggScore) {
+					if (aggScore) {
+						$(".football__header").addClass("is-agg");
+						$(".football__header__" + side + "__score__label").html(newScore + " <span class=\"football__header__score__agg\">" + aggScore + "</span>");
+					} else {
+						$(".football__header__" + side + "__score__label").html(newScore + " <span class=\"football__header__score__agg\"></span>");
+					}
+					$(".football__header__" + side + "__info p").remove();
+					$(".football__header__" + side + "__info").append(scorerHtml);
 				};
 			},
 			
 			footballStatus: function() {
 				window.footballStatus = function(className, label) {
-					$(".football-status").attr("class", "football-status").addClass(className);
-					$(".football-status p").text(label);
+					// Clear old status and reapply class before adding new status
+					$(".football__header__status").attr("class", "football__header__status").addClass("football__header__status--" + className);
+					$(".football__header__status p").text(label);
 				}
 			},
 

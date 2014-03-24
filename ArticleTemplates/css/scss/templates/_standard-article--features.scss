@@ -15,8 +15,7 @@
 
 			.inner-header {
 				padding-right: 0;
-				-webkit-order: 2;
-				order: 2;
+				@include order(2);
 				z-index: 2;
 
 				.article__headline {
@@ -41,11 +40,9 @@
 			.article__standfirst {
 				color: rgba(255, 255, 255, 0.9);
 				padding-right: 0;
-				-webkit-order: 3;
-				order: 3;
-
-				a {
-					color: #fff;
+				@include order(3);
+				@include mq(col2, col3) {
+					width: cols($base-3, 11);
 				}
 			}
 
@@ -85,8 +82,7 @@
 			}
 
 			.article__review-rating {
-				-webkit-order: 4;
-				order: 4;
+				@include order(4);
 				@include margin(0, 0, 1, 0);
 			}
 			.article__review-rating--1 .icon:nth-child(-n+1),
@@ -94,14 +90,13 @@
 			.article__review-rating--3 .icon:nth-child(-n+3),
 			.article__review-rating--4 .icon:nth-child(-n+4),
 			.article__review-rating--5 .icon:nth-child(-n+5) {
-			    color: $features-ter-accent;
+			    color: $feature3-accent;
 			}
 
 			.article__meta {
 				color: rgba(255, 255, 255, 0.9);
 				border: 0 none;
-				-webkit-order: 6;
-				order: 6;
+				@include order(6);
 
 				.article__pubdate {
 					color: #fff;
@@ -124,8 +119,7 @@
 			}
 		
 			.article__image {
-				-webkit-order: 1;
-				order: 1;
+				@include order(1);
 				position: relative;
 				z-index: 1;
 				@include mq($from: col2) {
@@ -154,6 +148,16 @@
 				}
 			}
 
+			.article__byline {
+				color: rgba(255, 255, 255, 0.9);
+				border: 0 none;
+				@include padding(0, 1, 2, 1);
+				@include order(5);
+				a {
+					color: #fff;
+				}
+			}
+
 			.article__image-caption__icon {
 				line-height: 44px;
 				text-align: center;
@@ -177,8 +181,6 @@
 			}
 
 			.inner-header,
-//			.article__standfirst,
-//			.article__byline,
 			.article__review-rating {
 				@include mq(col2, col3) {
 					padding-left: cols($base-3, 1);
@@ -252,31 +254,30 @@
 .feature1 {
 	a,
 	.discussion__view-more {
-		color: $features-pri;
+		color: $feature1;
 		&:active {
-			color: $features-pri-accent;
+			color: $feature1-accent;
 			.touchpoint__button {
-				background-color: $features-pri-accent;
+				background-color: $feature1-accent;
 			}
 		}
 	}
 	.touchpoint__button {
-		background-color: $features-pri;
+		background-color: $feature1;
 		&:active {
-			background-color: $features-pri-accent;
+			background-color: $feature1-accent;
 		}
 	}
 	.article {
-		border-top-color: $features-pri-accent;
+		border-top-color: $feature1;
 		.article__header {
-			background-color: $features-pri;
+			background-color: $feature1;
 		}
-		.article__standfirst,
-		.article__byline {
-			background-color: $features-pri-accent;
+		.article__meta {
+			background-color: $feature1-accent;
 		}
 		.article__body > p:first-of-type:first-letter {
-			color: $features-pri;
+			color: $feature1;
 		}
 	}
 }
@@ -284,31 +285,30 @@
 .feature2 {
 	a,
 	.discussion__view-more {
-		color: $features-sec;
+		color: $feature2;
 		&:active {
-			color: $features-sec-accent;
+			color: $feature2-accent;
 			.touchpoint__button {
-				background-color: $features-sec-accent;
+				background-color: $feature2-accent;
 			}
 		}
 	}
 	.touchpoint__button {
-		background-color: $features-sec;
+		background-color: $feature2;
 		&:active {
-			background-color: $features-sec-accent;
+			background-color: $feature2-accent;
 		}
 	}
 	.article {
-		border-top-color: $features-sec-accent;
+		border-top-color: $feature2;
 		.article__header {
-			background-color: $features-sec;
+			background-color: $feature2;
 		}
-		.article__standfirst,
-		.article__byline {
-			background-color: $features-sec-accent;
+		.article__meta {
+			background-color: $feature2-accent;
 		}
 		.article__body > p:first-of-type:first-letter {
-			color: $features-sec;
+			color: $feature2;
 		}
 	}
 }
@@ -316,31 +316,30 @@
 .feature3 {
 	a,
 	.discussion__view-more {
-		color: $features-ter;
+		color: $feature3;
 		&:active {
-			color: $features-ter-accent;
+			color: $feature3-accent;
 			.touchpoint__button {
-				background-color: $features-ter-accent;
+				background-color: $feature3-accent;
 			}
 		}
 	}
 	.touchpoint__button {
-		background-color: $features-ter;
+		background-color: $feature3;
 		&:active {
-			background-color: $features-ter-accent;
+			background-color: $feature3-accent;
 		}
 	}
 	.article {
-		border-top-color: $features-ter-accent;
+		border-top-color: $feature3;
 		.article__header {
-			background-color: $features-ter;
+			background-color: $feature3;
 		}
-		.article__standfirst,
-		.article__byline {
-			background-color: $features-ter-accent;
+		.article__meta {
+			background-color: $feature3-accent;
 		}
 		.article__body > p:first-of-type:first-letter {
-			color: $features-ter;
+			color: $feature3;
 		}
 	}
 }
