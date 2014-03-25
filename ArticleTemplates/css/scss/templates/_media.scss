@@ -11,6 +11,9 @@
 		}
 		a {
 			color: $media;
+			&:active {
+				color: $media-accent;
+			}
 		}
 	}
 }
@@ -23,6 +26,8 @@
     font-family: $egyptian-text;
     color: $white;
     @include margin(0,0,1,0);
+    @include text-underline($media, $media-bg, $media-accent);
+    
     p {
     	margin-bottom: 18px;
     }

@@ -4,6 +4,7 @@
 		color: $news;
 		&:active {
 			color: $news-accent;
+			// background-color: aqua !important;
 			.touchpoint__button--primary {
 				background-color: $news-accent;
 			}
@@ -23,7 +24,7 @@
 	}
 
 	.article__body {
-		@include padding(0, 1, 0, 1);
+		@include padding(0, 1);
 		@include mq(col2, col3) {
 			padding-right: cols($base-3, 3);
 		}
