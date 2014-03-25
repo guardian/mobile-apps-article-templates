@@ -126,7 +126,7 @@ define([
 					var followObject = $('.article__alerts[follow-alert-id="' + followid + '"]');
 					if (followObject.length) {
 						if (following == 1) {
-							if (followObject.hasClass('following') === false) {
+							if (followObject.hasClass('following') == false) {
 								followObject.addClass('following');
 							}
 						} else {
