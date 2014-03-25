@@ -67,7 +67,7 @@
 
 	.article__meta {
 		@include meta();
-		@include padding(0.75, 1, 1.5, 1);
+		@include padding(0.5, 1, 2, 1);
 		margin: -1px 0;
 		border-top: 1px dotted $shadow;
 		border-bottom: 1px dotted $shadow;
@@ -89,10 +89,15 @@
 		@include padding(0.5, 1, 2, 1);
 		border-left: 1px dotted $shadow;
 		display: block;
-		right: 0;
 		min-height: 100%;
 		position: absolute;
 		top: 0;
+		right: 0;
+		bottom: 0;
+		
+		a {
+			display: block;
+		}
 	}
 
 	.article__author__image {
@@ -104,6 +109,7 @@
 		vertical-align: middle;
 		float: left;
 		margin-right: 0.5em;
+		margin-bottom: -1em;
 		position: relative;
 		img {
 			height: 100%;
@@ -117,7 +123,7 @@
 	}
 
 	.article__image-caption__icon {
-		color: $meta;
+		display: none;
 	}
 
 	@include mq($to: col1) {
