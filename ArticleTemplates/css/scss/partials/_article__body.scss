@@ -1,7 +1,11 @@
 .article__body,
 .discussion__body {
 	@include body();
-
+	
+	p a {
+		@include text-underline($news, $white);
+	}
+	
 	p,
 	ul,
 	ol {

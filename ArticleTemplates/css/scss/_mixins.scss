@@ -121,3 +121,12 @@
 		}
 	}
 }
+
+// Link Underline Style
+@mixin text-underline($color, $background) {
+		background-image: linear-gradient(to bottom,$background 50%,lighten($color, 18%) 50%);
+		background-repeat: repeat-x;
+		background-size: 2px 2px;
+		background-position: 0 bottom;
+		text-shadow: 4px 2px $background, 3px 2px $background, 2px 2px $background, 1px 2px $background, 0px 2px $background, -1px 2px $background, -2px 2px $background, -3px 2px $background, -4px 2px $background; 
+}
