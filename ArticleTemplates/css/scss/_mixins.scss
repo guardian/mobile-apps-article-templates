@@ -5,11 +5,11 @@
 		$right: 1;
 		$bottom: 1;
 		$left: 1;
-	} @else if $right and $bottom and $left == "" {
+	} @else if $right == "" and $bottom == "" and $left == "" {
 		$right: $top;
 		$bottom: $top;
 		$left: $top;
-	} @else if $bottom and $left == "" {
+	} @else if $bottom == "" and $left == "" {
 		$bottom: $top;
 		$left: $right;
 	}
@@ -25,11 +25,11 @@
 		$right: 1;
 		$bottom: 1;
 		$left: 1;
-	} @else if $right and $bottom and $left == "" {
+	} @else if $right == "" and $bottom == "" and $left == "" {
 		$right: $top;
 		$bottom: $top;
 		$left: $top;
-	} @else if $bottom and $left == "" {
+	} @else if $bottom == "" and $left == "" {
 		$bottom: $top;
 		$left: $right;
 	}
