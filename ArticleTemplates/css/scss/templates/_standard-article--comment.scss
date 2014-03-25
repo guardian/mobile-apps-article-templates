@@ -54,21 +54,21 @@
 				}
 			}
 
+			.article__alerts {
+				display: block;
+			}
+
 			.article__meta {
 				@include order(2);
-				margin-top: 0;
+
+				.article__author,
+				.article__author__image {
+					display: none;
+				}
 			}
 
 			.article__image {
 				@include order(3);
-			}
-
-			.article__byline {
-				display: none;
-			}
-
-			.article__alerts {
-				display: block;
 			}
 		}
 	}

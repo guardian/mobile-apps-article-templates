@@ -10,9 +10,7 @@ figure {
 	figcaption {
 		color: $standfirst;
 		font-family: $agate-sans;
-		font-size: $meta-size-1;
-		line-height: $meta-lead-1;
-		@include padding(0.5, 1, 2, 1);
+		@include meta();
 		border-bottom: 1px dotted $shadow;
 		@include mq(col2, col3) {
 			padding-right: cols($base-3, 3);
@@ -27,6 +25,9 @@ figure {
 		img {
 			width: 100%;
 			height: auto;
+		}
+		figcaption {
+			@include padding(0.5, 1, 2, 1);
 		}
 	}
 
@@ -51,8 +52,7 @@ figure {
 			margin-right: $base-4 * 2;
 		}
 		figcaption {
-			padding-left: 0;
-			padding-right: 0;
+			@include padding(0.5, 0, 2, 0);
 		}
 	}
 }
