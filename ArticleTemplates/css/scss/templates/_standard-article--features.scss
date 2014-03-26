@@ -51,11 +51,12 @@
 		color: #fff;
 		position: relative;
 		z-index: 20;
-		@include padding(1, 0, 0, 0);
+		@include padding(0, 1, 0, 1);
 		@include mq($from: col2) {
 			font-size: 3.5556em; // 64px
 			font-weight: 100;
 			line-height: 0.875; // 56px
+			@include padding(1, 1, 0, 1);
 		}
 	}
 
@@ -63,9 +64,7 @@
 		@include order(3);
 		@include padding(1, 1, 6, 1);
 
-		br + a {
-			display: block;
-			margin-top: -1em;
+		a {
 			@include body();
 		}
 	}
@@ -110,8 +109,10 @@
 
 	.article__image {
 		position: relative;
-		margin-bottom: -58px;
 		@include order(1);
+		@include mq($from: col2) {
+			margin-bottom: -58px;
+		}
 		&:after {
 			@include mq($from: col2) {
 				content: "";
@@ -178,41 +179,40 @@
 			font-style: normal;
 			font-size: 3.3334em;
 			line-height: 1;
-			margin-bottom: -12px;
+			margin-bottom: -16px;
 			padding-right: 0.125em; // 6px
 			float: left;
 		}
 		@include mq(col2, col3) {
 			padding-left: cols($base-3, 1, 1);
 			> p:first-of-type:first-letter {
-				font-size: 5em;
+				font-size: 5.2222em;
 			}
 		}
 		@include mq($from: col3) {
 			padding-left: cols($base-4, 1, 1);
 			> p:first-of-type:first-letter {
-				font-size: 5em;
+				font-size: 5.2222em;
 			}
 		}
 
 		.figure-wide,
 		.element-video,
 		.element-interactive {
-			@include mq($from: col2) {
-				width: 145.4545%;
-			}
 			@include mq(col2, col3) {
-				margin-left: -(cols($base-3, 1.4));
-				margin-right: -(cols($base-3, 1.4));
+				width: 148%;
+				margin-left: -(cols($base-3, 1.66));
+
 				figcaption {
-					padding-left: cols($base-3, 1);
+					padding-left: cols($base-3, 1, 1);
 				}
 			}
 			@include mq($from: col3) {
-				margin-left: -(cols($base-4, 1.4));
-				margin-right: -(cols($base-4, 1.4));
+				width: 144%;
+				margin-left: -(cols($base-4, 1.66));
+
 				figcaption {
-					padding-left: cols($base-4, 1);
+					padding-left: cols($base-4, 1, 1);
 				}
 			}
 		}
