@@ -2542,19 +2542,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 .article__body figure + p,
 .discussion__body figure + p {
   margin: -8.4px 0px 12px 0px; }
-.article__body ul > li,
-.discussion__body ul > li {
-  position: relative;
-  text-indent: 1.3334em; }
-  .article__body ul > li:before,
-  .discussion__body ul > li:before {
-    color: #999999;
-    font-size: 3.3334em;
-    line-height: 0.5;
-    content: "\2022";
-    position: absolute;
-    top: 0;
-    left: -0.4667em; }
 .article__body ol,
 .discussion__body ol {
   counter-reset: li; }
@@ -4183,6 +4170,29 @@ aside {
     display: -webkit-box;
     display: -webkit-flex;
     display: flex; }
+
+.bullet {
+  color: transparent;
+  display: inline-block;
+  width: 1.0em; }
+
+.article__body ul > li,
+.bullet {
+  position: relative;
+  text-indent: 1.3334em; }
+  .article__body ul > li:before,
+  .bullet:before {
+    display: block;
+    color: #999999;
+    font-size: 2.8em;
+    line-height: 0.5em;
+    content: "\2022";
+    position: absolute;
+    left: -0.4667em; }
+    @media all and (min-width: 40.625em) {
+      .article__body ul > li:before,
+      .bullet:before {
+        top: 1px; } }
 
 #help {
   font-family: "Agate Sans", sans-serif;
