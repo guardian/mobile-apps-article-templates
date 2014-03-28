@@ -6,19 +6,18 @@
 	ul > li {
 		font-family: $egyptian-text;
 		color: $standfirst;
-	}
-	ul > li:before {
-		content: "\2022  ";
-		font-family: $egyptian-display;
-		font-weight: 600;
-		color: $shadow;
+		&:before {
+			content: "\2022  ";
+			font-family: $egyptian-display;
+			font-weight: 600;
+			color: $shadow;
+		}
 	}
 
 	.inner-header,
 	.article__standfirst,
 	.article__meta,
 	.article__image,
-	.article__byline,
 	.article__review-rating {
 		@include flex(1);
 	}
@@ -31,7 +30,7 @@
 		@include padding(0.5, 1, 0.5, 1);
 	}
 
-	 .article__headline {
+	.article__headline {
 		color: $headline;
 		font-family: $egyptian-display;
 		font-weight: 200;
@@ -47,14 +46,19 @@
 		color: $standfirst;
 		font-family: $egyptian-text;
 		@include standfirst();
-		@include padding(0.5, 1, 2, 1);
+		@include padding(0.5, 1, 1.5, 1);
+	}
+
+	.article__alerts {
+		@include padding(0, 1, 0, 1);
 	}
 
 	.article__review-rating {
 		color: $meta;
-		@include padding(0, 1, 0, 1);
+		@include padding(0, 1, 1.5, 1);
+		margin-top: -18px;
 	}
-	
+
 	.article__review-rating--1 .icon:nth-child(-n+1),
 	.article__review-rating--2 .icon:nth-child(-n+2),
 	.article__review-rating--3 .icon:nth-child(-n+3),
@@ -63,68 +67,42 @@
 		color: $news-accent;
 	}
 
-	.article__alerts {
-		@include meta();
-		@include padding(0, 1, 0, 1);
-		width: 100%;
-		display: none;
-	}
-
 	.article__meta {
 		@include meta();
+		@include padding(0.5, 1, 2, 1);
+		margin: -1px 0;
 		border-top: 1px dotted $shadow;
 		border-bottom: 1px dotted $shadow;
-		margin: 0;
 		position: relative;
-		overflow: hidden;
 
-		.article__pubdate {
-			color: $meta;
-			font-family: $agate-sans;
-		}
-
-		.article__pubdate,
-		.article__comments,
-		.article__alerts, {
-			@include padding(0.5, 1, 2, 1);
-		}
-
-		.article__comments,
-		.article__alerts {
-			font-family: $agate-sans;
+		.article__author {
 			font-weight: bold;
-			min-height: 100%;
-			position: absolute;
-			top: 0;
 		}
+	}
 
-		.article__comments {
-			border-left: 1px dotted $shadow;
+	.article__pubdate {
+		color: $meta;
+		font-family: $agate-sans;
+	}
+
+	.article__comments {
+		font-family: $agate-sans;
+		font-weight: bold;
+		@include padding(0.5, 1, 2, 1);
+		border-left: 1px dotted $shadow;
+		display: block;
+		min-height: 100%;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+
+		a {
 			display: block;
-			right: 0;
 		}
 	}
 
-	.article__byline {
-		line-height: 1.25;
-		margin: 0;
-		border-bottom: 1px dotted $shadow;
-		overflow: hidden;
-		@include padding(0.75, 1, 2, 1);
-		#contributor-link {
-			font-weight: bold;
-		}
-		&.has-byline-image {
-			@include padding(0.75, 1, 1, 1);
-			.article__alerts {
-				font-weight: normal;
-				margin: 0.3334em 0;
-				display: block;
-			}
-		}
-	}
-	
-	.article__byline__image {
+	.article__author__image {
 		background-color: $background;
 		border-radius: 32px;
 		width: 64px;
@@ -133,45 +111,47 @@
 		vertical-align: middle;
 		float: left;
 		margin-right: 0.5em;
-		position: relative;
+		margin-bottom: -1em;
+
 		img {
 			height: 100%;
-			position: absolute;
-			left: -10%;
+			margin-left: -10%;
 		}
 	}
 
+	.article__image-caption__icon {
+		display: none;
+	}
+
 	@include mq($to: col1) {
-		.article__pubdate {
-			width: cols($base-1, 3);
+		.article__meta {
+			padding-right: cols($base-1, 1, 1);
 		}
 		.article__comments {
-			width: cols($base-1, 1, 1);
-			.comment-label {
-				display: none;
-			}
+			width: cols($base-1, 1);
+		}
+		.article__comments__label {
+			display: none;
 		}
 	}
 
 	@include mq(col1, col2) {
-		.article__pubdate {
-			width: cols($base-2, 6, 1);
+		.article__meta {
+			padding-right: cols($base-2, 2, 1);
 		}
 		.article__comments {
 			width: cols($base-2, 2);
-			.comment-label {
-				display: none;
-			}
+		}
+		.article__comments__label {
+			display: none;
 		}
 	}
 
 	@include mq(col2, col3) {
 		.inner-header,
-		.article__standfirst {
-			padding-right: cols($base-3, 3);
-		}
-		.article__pubdate {
-			width: cols($base-3, 9, 1);
+		.article__standfirst,
+		.article__meta {
+			padding-right: cols($base-3, 3, 1);
 		}
 		.article__comments {
 			width: cols($base-3, 3);
@@ -180,11 +160,9 @@
 
 	@include mq($from: col3) {
 		.inner-header,
-		.article__standfirst {
-			padding-right: cols($base-4, 4);
-		}
-		.article__pubdate {
-			width: cols($base-4, 12, 1);
+		.article__standfirst,
+		.article__meta {
+			padding-right: cols($base-4, 4, 1);
 		}
 		.article__comments {
 			width: cols($base-4, 4);

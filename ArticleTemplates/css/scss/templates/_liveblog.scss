@@ -10,12 +10,12 @@
 		border-bottom: 2px solid $shadow;
 
 		.inner-header {
-			padding: 0;
+			padding-right: 0;
 		}
 	}
 
 	.article__live-summary {
-		@include padding(0.5, 1, 2, 1);
+		@include padding(0.5, 1, 3, 1);
 	}
 
 	.article__section {
@@ -62,17 +62,13 @@
 		display: block;
 	}
 
-	.article__pubdate {
-		width: auto;
-	}
-
-	.article__byline {
-		margin-bottom: 0;
-		border-bottom: 0 none;
-		padding-bottom: 0;
-	}
 	.article__meta {
 		border-bottom: none;
+	}
+
+	.article__alerts {
+		position: absolute;
+		left: 0;
 	}
 	
 	#advert {
@@ -83,6 +79,7 @@
 		padding-top: 0;
 		padding-bottom: 0;
 		border-bottom: none;
+
 		img {
 			width: 100%;
 			vertical-align: middle;
@@ -96,22 +93,22 @@
 				@include mq($to: col1) {
 					height: 150px;
 				}
-				
+
 				p:last-child {
 					margin-bottom: 0;
 				}
-				
+
 				&.expanded {
 					height: auto;
 				}
-				
+
 				.live-summary-more {
 					display: block;
 					font-family: $agate-sans;
 					font-weight: bold;
 					display: none;
 					width: 100%;
-					
+
 					.icon {
 						font-size: 80%;
 					}
@@ -167,13 +164,6 @@
 		}
 	}
 
-	.article__meta {
-		.article__alerts--liveblog {
-			border-right: 1px dotted $shadow;
-			left: 0;
-		}
-	}
-
 	.live-summary-more {
 		text-indent: 0;
 		display: none;
@@ -216,42 +206,13 @@
 		}
 	}
 
-	@include mq($to: col1) {
+	@include mq($to: col2) {
 		.article__header {
 			.live-summary-body {
 				max-height: 175px;
 			}
 			.article__alerts {
-				margin-top: $base-1;
-				display: block;
-			}
-			.article__meta {
-				.article__alerts {
-					display: none;
-				}
-				.inner-meta {
-					width: cols($base-1, 3);
-				}
-			}
-		}
-	}
-
-	@include mq(col1, col2) {
-		.article__header {
-			.live-summary-body {
-				max-height: 175px;
-			}
-			.article__alerts {
-				margin-top: $base-2;
-				display: block;
-			}
-			.article__meta {
-				.article__alerts {
-					display: none;
-				}
-				.inner-meta {
-					width: cols($base-2, 6, 1);
-				}
+				top: -2em;
 			}
 		}
 	}
@@ -260,21 +221,15 @@
 		.article__header {
 			.inner-header {
 				margin-left: cols($base-3, 4);
-				.article__alerts {
-					display: none;
-				}
 			}
 			.live-summary-body {
 				max-height: 240px;
 			}
 			.article__meta {
+				padding-left: cols($base-3, 4, 1);
+
 				.article__alerts {
 					width: cols($base-3, 4);
-					display: block;
-				}
-				.inner-meta {
-					width: cols($base-3, 5, 1);
-					margin-left: cols($base-3, 4);
 				}
 			}
 		}
@@ -293,21 +248,15 @@
 		.article__header {
 			.inner-header {
 				margin-left: cols($base-4, 5);
-				.article__alerts {
-					display: none;
-				}
 			}
 			.live-summary-body {
 				max-height: 240px;
 			}
 			.article__meta {
-				.inner-meta {
-					width: cols($base-4, 7, 1);
-					margin-left: cols($base-4, 5);
-				}
+				padding-left: cols($base-4, 5, 1);
+
 				.article__alerts {
 					width: cols($base-4, 5);
-					display: block;
 				}
 			}
 		}

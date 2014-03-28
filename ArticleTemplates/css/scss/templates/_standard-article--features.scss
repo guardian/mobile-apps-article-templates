@@ -1,8 +1,7 @@
 #standard-article[class*="feature"] {
 	.article__headline,
 	.article__standfirst,
-	.article__byline,
-	.article__pubdate {
+	.article__meta {
 		@include mq(col2, col3) {
 			margin-left: cols($base-3, 1, 0);
 			padding-right: cols($base-3, 0.5, 0);
@@ -52,29 +51,41 @@
 		color: #fff;
 		position: relative;
 		z-index: 20;
+		@include padding(0, 1, 0, 1);
 		@include mq($from: col2) {
 			font-size: 3.5556em; // 64px
 			font-weight: 100;
 			line-height: 0.875; // 56px
-			margin-top: -46px;
+			@include padding(1, 1, 0, 1);
 		}
 	}
 
 	.article__standfirst {
 		@include order(3);
+		@include padding(1, 1, 6, 1);
+
+		a {
+			@include body();
+		}
 	}
 
 	.article__byline {
-		border: 0 none;
-		@include order(5);
+		@include padding(1);
+		margin: 0;
+		position: absolute;
+		top: -100%;
+		left: 0;
+		right: 0;
 	}
 
 	.article__meta {
 		border: 0 none;
+		margin-top: 0;
+		margin-bottom: 0;
 		@include order(6);
 	}
 
-	.article__byline__image,
+	.article__author__image,
 	.article__alerts {
 		display: none;
 	}
@@ -89,10 +100,19 @@
 			color: #fff;
 		}
 	}
+	
+	.article__comments__label {
+		@include mq(col2, col3) {
+			display: none;
+		}
+	}
 
 	.article__image {
 		position: relative;
 		@include order(1);
+		@include mq($from: col2) {
+			margin-bottom: -58px;
+		}
 		&:after {
 			@include mq($from: col2) {
 				content: "";
@@ -159,41 +179,40 @@
 			font-style: normal;
 			font-size: 3.3334em;
 			line-height: 1;
-			margin-bottom: -12px;
+			margin-bottom: -16px;
 			padding-right: 0.125em; // 6px
 			float: left;
 		}
 		@include mq(col2, col3) {
 			padding-left: cols($base-3, 1, 1);
 			> p:first-of-type:first-letter {
-				font-size: 5em;
+				font-size: 5.2222em;
 			}
 		}
 		@include mq($from: col3) {
 			padding-left: cols($base-4, 1, 1);
 			> p:first-of-type:first-letter {
-				font-size: 5em;
+				font-size: 5.2222em;
 			}
 		}
 
 		.figure-wide,
 		.element-video,
 		.element-interactive {
-			@include mq($from: col2) {
-				width: 145.4545%;
-			}
 			@include mq(col2, col3) {
-				margin-left: -(cols($base-3, 1.4));
-				margin-right: -(cols($base-3, 1.4));
+				width: 148%;
+				margin-left: -(cols($base-3, 1.66));
+
 				figcaption {
-					padding-left: cols($base-3, 1);
+					padding-left: cols($base-3, 1, 1);
 				}
 			}
 			@include mq($from: col3) {
-				margin-left: -(cols($base-4, 1.4));
-				margin-right: -(cols($base-4, 1.4));
+				width: 144%;
+				margin-left: -(cols($base-4, 1.66));
+
 				figcaption {
-					padding-left: cols($base-4, 1);
+					padding-left: cols($base-4, 1, 1);
 				}
 			}
 		}
@@ -235,6 +254,9 @@
 		.article__byline {
 			background-color: $feature1-accent;
 		}
+		.article__comments {
+			border-left-color: $feature1-accent;
+		}
 		.article__body > p:first-of-type:first-letter,
 		.article__section {
 			color: $feature1;
@@ -273,6 +295,9 @@
 		.article__byline {
 			background-color: $feature2-accent;
 		}
+		.article__comments {
+			border-left-color: $feature2-accent;
+		}
 		.article__body > p:first-of-type:first-letter,
 		.article__section {
 			color: $feature2;
@@ -310,6 +335,9 @@
 		.article__standfirst,
 		.article__byline {
 			background-color: $feature3-accent;
+		}
+		.article__comments {
+			border-left-color: $feature3-accent;
 		}
 		.article__body > p:first-of-type:first-letter,
 		.article__section {

@@ -24,7 +24,7 @@
 	.block-elements {
 		@include padding(0, 1, 0, 1);
 		
-		> * {
+		> *:first-child {
 			padding-top: 0;
 			margin-top: 0;
 		}
@@ -39,7 +39,6 @@
 		}
 
 		figure {
-			@include margin(1, 0, 1, 0);
 			figcaption {
 				@include padding(0.5, 0, 1, 0);
 			}
@@ -51,6 +50,14 @@
 				figcaption {
 					border-bottom: 0 none;
 				}
+			}
+			&.figure-inline {
+				float: none;
+				clear: both;
+			}
+			&.figure-inline {
+				float: none;
+				clear: both;
 			}
 		}
 

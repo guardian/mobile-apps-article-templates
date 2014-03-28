@@ -8,14 +8,12 @@
 	
 	p,
 	ul,
-	ol {
+	ol,
+	figure {
 		@include margin(1, 0, 1, 0);
 		br:first-child {
 			display: none;
 		}
-	}
-	figure + p {
-		@include margin(-0.7, 0, 1, 0);
 	}
 
 	ol {
@@ -55,21 +53,20 @@
 		font-family: $egyptian-display;
 		font-weight: 600;
 		font-size: 1em;
-		margin-bottom: 1px;
+		margin: 1.5em 0 -0.5em 0;
 		strong, b {
 			font-weight: bold;
 		}
-	}
-	p + h2 {
-		margin-top: 1em;
 	}
 
 	em, i {
 		font-style: italic;
 	}
+
 	strong, b {
 		font-weight: bold;
 	}
+
 	strike {
 		text-decoration: line-through;
 	}

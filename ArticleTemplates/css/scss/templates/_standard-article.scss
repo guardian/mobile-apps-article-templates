@@ -1,4 +1,28 @@
+.news {
+	a,
+	.discussion__view-more {
+		color: $news;
+		&:active {
+			color: $news-accent;
+
+			.touchpoint__button--primary {
+				background-color: $news-accent;
+			}
+		}
+	}
+	.touchpoint__button--primary {
+		background-color: $news;
+		&:active {
+			background-color: $news-accent;
+		}
+	}
+}
+
 #standard-article {
+	.article__alerts {
+		display: none;
+	}
+
 	.article__body {
 		@include padding(0, 1);
 		@include mq(col2, col3) {
@@ -13,10 +37,7 @@
 		.element-video,
 		.element-interactive,
 		.element-video-thumb {
-			@include margin(0, -1, 1.5, -1);
-			@include mq(0px, 9999px) {
-				margin-top: -1px; //this horrible hack, requires margin() mixin refactor
-			}
+			@include margin(1, -1, 1, -1);
 			@include mq($to: col2) {
 				width: 110%;
 			}

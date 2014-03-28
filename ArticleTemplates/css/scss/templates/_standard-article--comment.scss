@@ -34,51 +34,40 @@
 				position: relative;
 				overflow: auto;
 				padding-bottom: 2em;
+			}
 
-				.article__section {
-					color: $comment;
-				}
-
-				.article__alerts {
-					position: absolute;
-					bottom: 0;
-					display: block;
-					@include margin(0, 0, 1, 0);
-				}
-
-				.article__headline {
-					span {
-						display: block;
-						color: $comment;
-					}
-				}
+			.article__section
+			.article__headline span {
+				color: $comment;
 			}
 
 			.article__standfirst {
 				color: $comment-accent-dark;
-				@include order(5);
-				@include margin(0.25, 0, 1, 0);
+				@include margin(0.5, 0, 0, 0);
+				@include order(4);
 				@include mq($to: col2) {
 					font-size: 1.25em;
 					line-height: 1.25em;
 				}
 			}
 
-			.article__meta {
-				@include order(2);
-				margin-top: 0;
+			.article__alerts {
+				position: absolute;
+				bottom: 0;
+				display: block;
+				@include margin(0, 0, 1, 0);
 			}
 
-			.article__image {
-				@include order(3);
+			.article__meta {
+				@include order(2);
 			}
 
 			.article__byline {
 				display: none;
 			}
 
-			.article__alerts {
-				display: block;
+			.article__image {
+				@include order(3);
 			}
 		}
 	}
