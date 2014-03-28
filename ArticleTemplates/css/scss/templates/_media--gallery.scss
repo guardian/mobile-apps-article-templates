@@ -1,21 +1,24 @@
 #gallery {
+	.article__body {
+		padding-bottom: 12px;
+	}
 
 	.gallery__thumbnails {
 		@include padding(1,1,0,1);
-		
 		@include mq($to: col1) {
 			padding: 4px;
 		}
+
 		.gallery__thumbnails__anchor {
 			background-color: lighten($media-bg, 10%);
 		}
+
 		.gallery__thumbnails__image {
 			vertical-align: bottom;
 		}
 	}
-	
+
 	.media-meta {
-		margin-top: 0px;
 		@include rbase-3(9);
 		@include rbase-4(12);
 	}

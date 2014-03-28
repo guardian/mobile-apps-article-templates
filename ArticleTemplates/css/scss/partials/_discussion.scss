@@ -1,13 +1,11 @@
-.discussion,
-.discussion__empty,
-.discussion__failed {
+.discussion {
 	font-family: $agate-sans;
 	@include body();
 	background-color: white;
 	border-top: 1px solid $headline;
 	@include margin(1, 0, 0, 0);
+	@include padding(0, 1, 1, 1);
 	overflow: hidden;
-	@include padding(0.75);
 	@include mq($to: col1) {
 		margin: $base-1 / 1.5 $base-1 / 1.5 0 $base-1 / 1.5;
 		display: block;
@@ -40,7 +38,7 @@
 		}
 	}
 
-	.discussion__body, {
+	.discussion__body {
 		word-break: break-word;
 		word-wrap: break-word;
 		@include mq(col2, col3) {
@@ -96,8 +94,8 @@
 		@include meta();
 		text-align: center;
 		width: auto;
-		position: absolute;
 		display: block;
+		position: absolute;
 		top: 0;
 		right: 0;
 
@@ -108,6 +106,11 @@
 				margin: 0 auto;
 				display: block;
 			}
+		}
+
+		.touchpoint__button:active {
+			color: $white;
+			background-color: $shadow;
 		}
 
 		&.increase .touchpoint__button {
@@ -168,7 +171,7 @@
 		@include mq($from: col3) {
 			margin-left: cols($base-4, 5);
 		}
-		
+
 		.icon {
 			font-size: 80%;	
 		}
@@ -338,19 +341,6 @@
 		display: none;
 	}
 }
-
-// Module Specific
-//.module--comments {
-//	.discussion__view-more {
-//		font-family: $agate-sans;
-//		font-weight: bold;
-//		@include body();
-//		@include margin(0.75);
-//		@include mq($to: col1) {
-//			margin-top: 0;
-//		}
-//	}
-//}
 
 #discussion.android {
 	@include padding(0,1,0,1);

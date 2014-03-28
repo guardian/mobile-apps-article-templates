@@ -1,11 +1,10 @@
-.article__body,
-.discussion__body {
+.prose {
 	@include body();
-	
+
 	p {
 		@include text-underline($news, $white, $news-accent);
 	}
-	
+
 	p,
 	ul,
 	ol,
@@ -29,17 +28,18 @@
 		color: $standfirst;
 		font-style: italic;
 		@include margin(0, 2, 2, 2);
-		&.quoted {
-			font-style: normal;
-		}
 		&:before {
 			font-family: $icon;
 			font-size: 2.6667em; // 48px
 			color: $meta;
 			display: block;
 		}
-		&.quoted:before {
-			content: "\e029";
+
+		&.quoted {
+			font-style: normal;
+			&:before {
+				content: "\e029";
+			}
 		}
 	}
 
