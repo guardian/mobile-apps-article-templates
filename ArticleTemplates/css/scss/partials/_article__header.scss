@@ -1,4 +1,8 @@
 .article__header {
+	* {
+		outline: 1px solid rgba(255, 0, 0, 0.33);
+	}
+
 	background-image: none; // Hide Cif elements from non-Cif pages
 	@include flexbox;
 	@include flex-direction(column);
@@ -6,12 +10,12 @@
 	ul > li {
 		font-family: $egyptian-text;
 		color: $standfirst;
-	}
-	ul > li:before {
-		content: "\2022  ";
-		font-family: $egyptian-display;
-		font-weight: 600;
-		color: $shadow;
+		&:before {
+			content: "\2022  ";
+			font-family: $egyptian-display;
+			font-weight: 600;
+			color: $shadow;
+		}
 	}
 
 	.inner-header,
@@ -57,7 +61,7 @@
 		@include padding(0, 1, 1.5, 1);
 		margin-top: -18px;
 	}
-	
+
 	.article__review-rating--1 .icon:nth-child(-n+1),
 	.article__review-rating--2 .icon:nth-child(-n+2),
 	.article__review-rating--3 .icon:nth-child(-n+3),
@@ -95,7 +99,7 @@
 		top: 0;
 		right: 0;
 		bottom: 0;
-		
+
 		a {
 			display: block;
 		}
@@ -111,14 +115,11 @@
 		float: left;
 		margin-right: 0.5em;
 		margin-bottom: -1em;
+
 		img {
 			height: 100%;
 			margin-left: -10%;
 		}
-	}
-
-	.article__image-caption {
-		//border-bottom: 0 none;
 	}
 
 	.article__image-caption__icon {
