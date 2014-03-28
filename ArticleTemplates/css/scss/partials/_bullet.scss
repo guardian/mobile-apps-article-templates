@@ -1,0 +1,23 @@
+.bullet {
+	color: transparent;
+	display: inline-block;
+	width: 1.0em;
+}
+
+.article__body ul > li,
+.bullet {
+	position: relative;
+	text-indent: 1.3334em;
+	&:before {
+		display: block;
+		color: $meta;
+		font-size: 2.8em;
+		line-height: 0.5em;
+		content: "\2022";
+		position: absolute;
+		left: -0.4667em;
+		@include mq($from: col2) {
+			top: 1px;
+		}
+	}
+}
