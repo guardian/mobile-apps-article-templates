@@ -2543,19 +2543,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   .discussion__body ol br:first-child,
   .discussion__body figure br:first-child {
     display: none; }
-.article__body ul > li,
-.discussion__body ul > li {
-  position: relative;
-  text-indent: 1.3334em; }
-  .article__body ul > li:before,
-  .discussion__body ul > li:before {
-    color: #999999;
-    font-size: 3.3334em;
-    line-height: 0.5;
-    content: "\2022";
-    position: absolute;
-    top: 0;
-    left: -0.4667em; }
 .article__body ol,
 .discussion__body ol {
   counter-reset: li; }
@@ -2637,6 +2624,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   .article__header .article__section {
     font-family: "Egyptian Display", Georgia, serif;
     font-weight: 600;
+    color: #005689;
     padding: 6px 12px 6px 12px; }
     @media all and (max-width: 28.115em) {
       .article__header .article__section {
@@ -4168,6 +4156,29 @@ aside {
     display: -webkit-flex;
     display: flex; }
 
+.bullet {
+  color: transparent;
+  display: inline-block;
+  width: 1.0em; }
+
+.article__body ul > li,
+.bullet {
+  position: relative;
+  text-indent: 1.3334em; }
+  .article__body ul > li:before,
+  .bullet:before {
+    display: block;
+    color: #999999;
+    font-size: 2.8em;
+    line-height: 0.5em;
+    content: "\2022";
+    position: absolute;
+    left: -0.4667em; }
+    @media all and (min-width: 40.625em) {
+      .article__body ul > li:before,
+      .bullet:before {
+        top: 1px; } }
+
 #help {
   font-family: "Agate Sans", sans-serif;
   font-size: 1.6rem;
@@ -4336,7 +4347,8 @@ aside {
   background-color: #333333;
   min-height: 0px; }
 #audio.media .article__header .article__section {
-  display: block; }
+  display: block;
+  color: #333333; }
 #audio.media .article__header .article__byline,
 #audio.media .article__header .article__meta {
   display: none; }
@@ -4369,6 +4381,9 @@ aside {
       #gallery .article .article__header h1,
       #video .article .article__header h1 {
         margin-bottom: 24px; } }
+  #gallery .article .article__section,
+  #video .article .article__section {
+    color: #ffbb00; }
   #gallery .article a,
   #video .article a {
     color: #ffbb00; }
@@ -4493,7 +4508,8 @@ aside {
   #discussion .article__header {
     padding: 0 2.89855%; } }
 #discussion .article__section {
-  padding-left: 0; }
+  padding-left: 0;
+  color: #333333; }
   #discussion .article__section .comments-count {
     color: #999999; }
 #discussion .article__headline {
@@ -6046,8 +6062,8 @@ aside {
     position: relative;
     overflow: auto;
     padding-bottom: 2em; }
-  #standard-article.comment .article .article__header .article__headline span {
-    display: block;
+  #standard-article.comment .article .article__header .article__section
+  .article__headline span {
     color: #e6711b; }
   #standard-article.comment .article .article__header .article__standfirst {
     color: #2d2a26;
@@ -6299,7 +6315,8 @@ aside {
     background-color: #e02b7f; }
   .feature1 .article .article__comments {
     border-left-color: #e02b7f; }
-  .feature1 .article .article__body > p:first-of-type:first-letter {
+  .feature1 .article .article__body > p:first-of-type:first-letter,
+  .feature1 .article .article__section {
     color: #951c55; }
   .feature1 .article .article__body p a {
     background-image: linear-gradient(to bottom, white 50%, rgba(149, 28, 85, 0.67) 50%);
@@ -6332,7 +6349,8 @@ aside {
     background-color: #8006c2; }
   .feature2 .article .article__comments {
     border-left-color: #8006c2; }
-  .feature2 .article .article__body > p:first-of-type:first-letter {
+  .feature2 .article .article__body > p:first-of-type:first-letter,
+  .feature2 .article .article__section {
     color: #4e0375; }
   .feature2 .article .article__body p a {
     background-image: linear-gradient(to bottom, white 50%, rgba(78, 3, 117, 0.67) 50%);
@@ -6365,7 +6383,8 @@ aside {
     background-color: #c900a8; }
   .feature3 .article .article__comments {
     border-left-color: #c900a8; }
-  .feature3 .article .article__body > p:first-of-type:first-letter {
+  .feature3 .article .article__body > p:first-of-type:first-letter,
+  .feature3 .article .article__section {
     color: #7d0068; }
   .feature3 .article .article__body p a {
     background-image: linear-gradient(to bottom, white 50%, rgba(125, 0, 104, 0.67) 50%);
