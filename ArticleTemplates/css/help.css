@@ -1,62 +1,146 @@
-/*
-Syntax error: File to import not found or unreadable: scss/base/_reset.
-              Load paths:
-                /Users/plloyd/guardian/ios-live/mobile-apps-article-templates (DEPRECATED)
-                /Users/plloyd/guardian/ios-live/mobile-apps-article-templates/ArticleTemplates/css
-        on line 6 of ./ArticleTemplates/css/help.scss
-
-1: // Variables and mixins
-2: @import "scss/_variables";
-3: @import "scss/_functions";
-4: @import "scss/_mixins";
-5: @import "scss/vendor/sass-mq/_mq";
-6: @import "scss/base/_reset";
-7: @import "scss/base/_typography";
-8: 
-9: #help {
-10: 	font-family: $agate-sans;
-11: 	font-size: $body-size-1;
-
-Backtrace:
-./ArticleTemplates/css/help.scss:6
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/tree/import_node.rb:66:in `rescue in import'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/tree/import_node.rb:45:in `import'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/tree/import_node.rb:28:in `imported_file'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/tree/import_node.rb:37:in `css_import?'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/tree/visitors/perform.rb:283:in `visit_import'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/tree/visitors/perform.rb:152:in `block in visit'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/stack.rb:79:in `block in with_base'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/stack.rb:121:in `with_frame'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/stack.rb:79:in `with_base'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/tree/visitors/perform.rb:152:in `visit'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/tree/visitors/base.rb:52:in `map'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/tree/visitors/perform.rb:161:in `block in visit_children'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/tree/visitors/perform.rb:173:in `with_environment'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/tree/visitors/perform.rb:160:in `visit_children'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/tree/visitors/perform.rb:180:in `visit_root'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/tree/visitors/perform.rb:151:in `visit'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/tree/visitors/perform.rb:8:in `visit'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/tree/root_node.rb:36:in `css_tree'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/tree/root_node.rb:20:in `render'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/engine.rb:274:in `render'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/plugin/compiler.rb:414:in `update_stylesheet'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/plugin/compiler.rb:189:in `block in update_stylesheets'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/plugin/compiler.rb:186:in `each'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/plugin/compiler.rb:186:in `update_stylesheets'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/plugin/compiler.rb:393:in `on_file_changed'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/sass-3.3.1/lib/sass/plugin/compiler.rb:248:in `block in watch'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/listen-2.4.1/lib/listen/listener.rb:151:in `call'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/listen-2.4.1/lib/listen/listener.rb:151:in `block in _wait_for_changes'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/listen-2.4.1/lib/listen/listener.rb:146:in `loop'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/listen-2.4.1/lib/listen/listener.rb:146:in `_wait_for_changes'
-/Users/plloyd/.rvm/gems/ruby-2.0.0-p353/gems/listen-2.4.1/lib/listen/listener.rb:44:in `block in start'
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+   Edited by Sam Morris
 */
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: File to import not found or unreadable: scss/base/_reset.\A               Load paths:\A                 /Users/plloyd/guardian/ios-live/mobile-apps-article-templates (DEPRECATED)\A                 /Users/plloyd/guardian/ios-live/mobile-apps-article-templates/ArticleTemplates/css\A         on line 6 of ./ArticleTemplates/css/help.scss\A \A 1: // Variables and mixins\A 2: @import \"scss/_variables\";\A 3: @import \"scss/_functions\";\A 4: @import \"scss/_mixins\";\A 5: @import \"scss/vendor/sass-mq/_mq\";\A 6: @import \"scss/base/_reset\";\A 7: @import \"scss/base/_typography\";\A 8: \A 9: #help {\A 10: 	font-family: $agate-sans;\A 11: 	font-size: $body-size-1;"; }
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  /* Disable selection/copy in UIWebView */
+  user-select: none; }
+
+article, aside, details, figcaption, figure, footer, header, nav, section {
+  display: block; }
+
+body, html {
+  width: 100%;
+  max-width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  outline: 0; }
+
+body {
+  background-color: #f6f6f6;
+  color: #333333; }
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+  blockquote:after, q:after {
+    content: "";
+    content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+a {
+  color: #005689;
+  text-decoration: none; }
+
+@font-face {
+  font-family: "Egyptian Display";
+  font-weight: 100;
+  src: url("../fonts/GdnEgyDE1Thi.otf"); }
+@font-face {
+  font-family: "Egyptian Display";
+  font-weight: 200;
+  src: url("../fonts/GdnEgyDE2Lig.otf"); }
+@font-face {
+  font-family: "Egyptian Display";
+  font-weight: 600;
+  src: url("../fonts/GdnEgyDE6Bol.otf"); }
+@font-face {
+  font-family: "Egyptian Text";
+  src: url("../fonts/EgyptianText-Regular.ttf"); }
+@font-face {
+  font-family: "Egyptian Text";
+  font-style: italic;
+  src: url("../fonts/EgyptianText-RegularItalic.ttf"); }
+@font-face {
+  font-family: "Egyptian Text";
+  font-weight: bold;
+  src: url("../fonts/EgyptianText-Medium.ttf"); }
+@font-face {
+  font-family: "Egyptian Text";
+  font-style: italic;
+  font-weight: bold;
+  src: url("../fonts/EgyptianText-MediumItalic.otf"); }
+@font-face {
+  font-family: "Titlepiece";
+  font-weight: 600;
+  src: url("../fonts/GdnTitlepiece.otf"); }
+@font-face {
+  font-family: "Agate Sans";
+  src: url("../fonts/GdnAgaSanTwoAS32Reg.otf"); }
+@font-face {
+  font-family: "Agate Sans";
+  font-style: italic;
+  src: url("../fonts/GdnAgaSanTwoAS32RegIta.otf"); }
+@font-face {
+  font-family: "Agate Sans";
+  font-weight: bold;
+  src: url("../fonts/GdnAgaSanTwoAS62Bol.otf"); }
+@font-face {
+  font-family: "Agate Sans";
+  font-weight: bold;
+  font-style: italic;
+  src: url("../fonts/GdnAgaSanTwoAS62BolIta.otf"); }
+@font-face {
+  font-family: "Guardian Icons";
+  src: url("../fonts/guardianicons.ttf"); }
+html {
+  font-size: 62.5%;
+  font-family: "Egyptian Text", Georgia, serif; }
+
+@media all and (max-width: 28.115em) {
+  body {
+    font-size: 1.6em;
+    line-height: 1.5em; } }
+@media all and (min-width: 28.125em) and (max-width: 40.615em) {
+  body {
+    font-size: 1.6em;
+    line-height: 1.5em; } }
+@media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  body {
+    font-size: 1.8em;
+    line-height: 1.444em; } }
+@media all and (min-width: 56.25em) {
+  body {
+    font-size: 1.8em;
+    line-height: 1.444em; } }
+#help {
+  font-family: "Agate Sans", sans-serif;
+  font-size: 1.6rem;
+  color: #333333;
+  padding: 12px 12px 12px 12px; }
+  #help .help-container {
+    padding: 12px; }
+  #help p {
+    margin-bottom: 20px; }
+  #help strong, #help h2 {
+    font-weight: bold;
+    margin-bottom: 0; }
+  #help a {
+    color: #005689; }
