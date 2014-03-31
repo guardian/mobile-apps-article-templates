@@ -30,6 +30,13 @@
 			padding-right: 0;
 			@include order(2);
 		}
+
+		.bullet,
+		ul > li {
+			&:before {
+				color: rgba(255, 255, 255, 0.8);
+			}
+		}
 	}
 
 	.article__section {
@@ -64,8 +71,8 @@
 		@include order(3);
 		@include padding(1, 1, 6, 1);
 
-		a {
-			@include body();
+		strong {
+			font-weight: normal;
 		}
 	}
 
@@ -94,7 +101,7 @@
 	.article__byline,
 	.article__pubdate,
 	.article__comments {
-		color: rgba(255, 255, 255, 0.85);
+		color: rgba(255, 255, 255, 0.8);
 
 		a {
 			color: #fff;
