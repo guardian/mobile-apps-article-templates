@@ -6,6 +6,7 @@
 	}
 
 	.article__header {
+		background-color: transparent;
 		@include mq($to: col1) {
 			padding: 0 $base-1 / 1.5;
 		}
@@ -14,6 +15,7 @@
 	.article__section {
 		padding-left: 0;
 		color: $headline;
+
 		.comments-count {
 			color: $meta;
 		}
@@ -40,11 +42,13 @@
 
 	.article__controls__action {
 		float: right;
+
 		a {
 			@include mq($to: col2) {
 				display: none;
 			}
 		}
+
 		.comments-closed-label {
 			display: none;
 			color: $standfirst;

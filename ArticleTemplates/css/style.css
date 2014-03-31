@@ -1026,10 +1026,6 @@ ul.tabs li.selected {
     .discussion {
       margin: 2.89855% 2.89855% 0 2.89855%;
       display: block; } }
-  .discussion p,
-  .discussion ul,
-  .discussion ol {
-    margin: 0px 0px 12px 0px; }
   .discussion .discussion__container {
     min-height: 64px;
     position: relative; }
@@ -2181,9 +2177,11 @@ aside {
   background-color: transparent;
   border-top-color: #333333;
   border-bottom: none; }
-@media all and (max-width: 28.115em) {
-  #discussion .article__header {
-    padding: 0 2.89855%; } }
+#discussion .article__header {
+  background-color: transparent; }
+  @media all and (max-width: 28.115em) {
+    #discussion .article__header {
+      padding: 0 2.89855%; } }
 #discussion .article__section {
   padding-left: 0;
   color: #333333; }
@@ -3738,13 +3736,13 @@ aside {
   background-color: #e6711b; }
   .comment .touchpoint__button--primary:active {
     background-color: #f39f33; }
-.comment .article__body p a {
+.comment .prose p a {
   background-image: linear-gradient(to bottom, #eeebe8 50%, rgba(230, 113, 27, 0.67) 50%);
   background-repeat: repeat-x;
   background-size: 2px 2px;
   background-position: 0 bottom;
   text-shadow: 4px 2px #eeebe8, 3px 2px #eeebe8, 2px 2px #eeebe8, 1px 2px #eeebe8, 0px 2px #eeebe8, -1px 2px #eeebe8, -2px 2px #eeebe8, -3px 2px #eeebe8, -4px 2px #eeebe8; }
-.comment .article__body p a:active {
+.comment .prose p a:active {
   background-image: linear-gradient(to bottom, #eeebe8 50%, rgba(243, 159, 51, 0.67) 50%); }
 
 #standard-article.comment .article {
@@ -4002,6 +4000,14 @@ aside {
   background-color: #951c55; }
   .feature1 .touchpoint__button--primary:active {
     background-color: #e02b7f; }
+.feature1 .prose p a {
+  background-image: linear-gradient(to bottom, white 50%, rgba(149, 28, 85, 0.67) 50%);
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  background-position: 0 bottom;
+  text-shadow: 4px 2px white, 3px 2px white, 2px 2px white, 1px 2px white, 0px 2px white, -1px 2px white, -2px 2px white, -3px 2px white, -4px 2px white; }
+.feature1 .prose p a:active {
+  background-image: linear-gradient(to bottom, white 50%, rgba(224, 43, 127, 0.67) 50%); }
 .feature1 .article {
   border-top-color: #e02b7f; }
   .feature1 .article .article__header {
@@ -4014,14 +4020,6 @@ aside {
   .feature1 .article .article__body > p:first-of-type:first-letter,
   .feature1 .article .article__section {
     color: #951c55; }
-  .feature1 .article .article__body p a {
-    background-image: linear-gradient(to bottom, white 50%, rgba(149, 28, 85, 0.67) 50%);
-    background-repeat: repeat-x;
-    background-size: 2px 2px;
-    background-position: 0 bottom;
-    text-shadow: 4px 2px white, 3px 2px white, 2px 2px white, 1px 2px white, 0px 2px white, -1px 2px white, -2px 2px white, -3px 2px white, -4px 2px white; }
-  .feature1 .article .article__body p a:active {
-    background-image: linear-gradient(to bottom, white 50%, rgba(224, 43, 127, 0.67) 50%); }
 
 .feature2 a,
 .feature2 .discussion__view-more {
@@ -4032,10 +4030,18 @@ aside {
     .feature2 a:active .touchpoint__button,
     .feature2 .discussion__view-more:active .touchpoint__button {
       background-color: #8006c2; }
-.feature2 .touchpoint__button {
+.feature2 .touchpoint__button--primary {
   background-color: #4e0375; }
-  .feature2 .touchpoint__button:active {
+  .feature2 .touchpoint__button--primary:active {
     background-color: #8006c2; }
+.feature2 .prose p a {
+  background-image: linear-gradient(to bottom, white 50%, rgba(78, 3, 117, 0.67) 50%);
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  background-position: 0 bottom;
+  text-shadow: 4px 2px white, 3px 2px white, 2px 2px white, 1px 2px white, 0px 2px white, -1px 2px white, -2px 2px white, -3px 2px white, -4px 2px white; }
+.feature2 .prose p a:active {
+  background-image: linear-gradient(to bottom, white 50%, rgba(128, 6, 194, 0.67) 50%); }
 .feature2 .article {
   border-top-color: #8006c2; }
   .feature2 .article .article__header {
@@ -4048,14 +4054,6 @@ aside {
   .feature2 .article .article__body > p:first-of-type:first-letter,
   .feature2 .article .article__section {
     color: #4e0375; }
-  .feature2 .article .article__body p a {
-    background-image: linear-gradient(to bottom, white 50%, rgba(78, 3, 117, 0.67) 50%);
-    background-repeat: repeat-x;
-    background-size: 2px 2px;
-    background-position: 0 bottom;
-    text-shadow: 4px 2px white, 3px 2px white, 2px 2px white, 1px 2px white, 0px 2px white, -1px 2px white, -2px 2px white, -3px 2px white, -4px 2px white; }
-  .feature2 .article .article__body p a:active {
-    background-image: linear-gradient(to bottom, white 50%, rgba(128, 6, 194, 0.67) 50%); }
 
 .feature3 a,
 .feature3 .discussion__view-more {
@@ -4066,10 +4064,18 @@ aside {
     .feature3 a:active .touchpoint__button,
     .feature3 .discussion__view-more:active .touchpoint__button {
       background-color: #c900a8; }
-.feature3 .touchpoint__button {
+.feature3 .touchpoint__button--primary {
   background-color: #7d0068; }
-  .feature3 .touchpoint__button:active {
+  .feature3 .touchpoint__button--primary:active {
     background-color: #c900a8; }
+.feature3 .prose p a {
+  background-image: linear-gradient(to bottom, white 50%, rgba(125, 0, 104, 0.67) 50%);
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  background-position: 0 bottom;
+  text-shadow: 4px 2px white, 3px 2px white, 2px 2px white, 1px 2px white, 0px 2px white, -1px 2px white, -2px 2px white, -3px 2px white, -4px 2px white; }
+.feature3 .prose p a:active {
+  background-image: linear-gradient(to bottom, white 50%, rgba(201, 0, 168, 0.67) 50%); }
 .feature3 .article {
   border-top-color: #c900a8; }
   .feature3 .article .article__header {
@@ -4082,11 +4088,3 @@ aside {
   .feature3 .article .article__body > p:first-of-type:first-letter,
   .feature3 .article .article__section {
     color: #7d0068; }
-  .feature3 .article .article__body p a {
-    background-image: linear-gradient(to bottom, white 50%, rgba(125, 0, 104, 0.67) 50%);
-    background-repeat: repeat-x;
-    background-size: 2px 2px;
-    background-position: 0 bottom;
-    text-shadow: 4px 2px white, 3px 2px white, 2px 2px white, 1px 2px white, 0px 2px white, -1px 2px white, -2px 2px white, -3px 2px white, -4px 2px white; }
-  .feature3 .article .article__body p a:active {
-    background-image: linear-gradient(to bottom, white 50%, rgba(201, 0, 168, 0.67) 50%); }
