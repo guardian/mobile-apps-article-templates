@@ -1342,86 +1342,92 @@ ul.tabs li.selected {
   padding: 0px 12px 0px 12px;
   box-sizing: border-box; }
 
-.element.element-video {
+.element-video {
   width: 100%;
   position: relative;
   padding-bottom: 56.25%;
   overflow: hidden; }
-  .element.element-video iframe, .element.element-video object, .element.element-video embed, .element.element-video video {
+  .element-video iframe, .element-video object, .element-video embed, .element-video video {
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     position: absolute; }
-  .element.element-video video {
+  .element-video video {
     background-color: #000; }
   @media all and (max-width: 40.615em) {
-    .element.element-video {
+    .element-video {
       width: 100%;
       padding-bottom: 61.4215%; } }
   @media all and (min-width: 40.625em) {
-    .element.element-video {
+    .element-video {
       width: 100%;
       padding-bottom: 75.375%; } }
-.element.element-video-thumb {
+
+.element-video-thumb {
   width: 100%; }
-.element.element-tweet blockquote {
+
+.element-audio iframe {
+  width: 100%; }
+
+.element-tweet blockquote {
   color: #999999;
   font-family: "Agate Sans", sans-serif;
   font-style: normal;
   font-size: 1.4rem;
   line-height: 2rem; }
-  .element.element-tweet blockquote p {
-    color: #666666;
-    font-size: 1.6rem;
-    line-height: 2.2rem;
-    margin: 0; }
-  .element.element-tweet blockquote:before {
+  .element-tweet blockquote:before {
     content: "\e06b";
     font-size: 32px;
     font-style: normal;
     margin-bottom: 4px; }
-.element.element-witness {
+  .element-tweet blockquote p {
+    color: #666666;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    margin: 0; }
+
+.element-map iframe {
+  width: 100%; }
+
+.element-embed iframe {
+  width: 100%; }
+
+.element-witness {
   font-family: "Agate Sans", sans-serif; }
   @media all and (max-width: 28.115em) {
-    .element.element-witness {
+    .element-witness {
       font-size: 1.4rem;
       line-height: 2rem; } }
   @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    .element.element-witness {
+    .element-witness {
       font-size: 1.4rem;
       line-height: 2rem; } }
   @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    .element.element-witness {
+    .element-witness {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
   @media all and (min-width: 56.25em) {
-    .element.element-witness {
+    .element-witness {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
-  .element.element-witness img {
+  .element-witness img {
     max-width: 100%; }
-  .element.element-witness p {
+  .element-witness p {
     color: #666666;
     margin: 0; }
-  .element.element-witness .element-witness--title {
+  .element-witness .element-witness--title {
     font-weight: bold; }
-  .element.element-witness .element-witness--footer {
+  .element-witness .element-witness--footer {
     color: #999999;
     font-size: 1.4rem;
     padding: 6px 0px 12px 0px; }
-  .element.element-witness .element-witness--author {
+  .element-witness .element-witness--author {
     display: inline; }
-  .element.element-witness .element-witness--date {
+  .element-witness .element-witness--date {
     display: inline; }
-    .element.element-witness .element-witness--date:before {
+    .element-witness .element-witness--date:before {
       content: "\00B7   "; }
-.element.element-audio iframe {
-  width: 100%; }
-.element.element-map iframe {
-  width: 100%; }
-.element.element-embed iframe {
-  width: 100%; }
 
 .element-image-inner,
 .element-video-inner {
@@ -3723,6 +3729,11 @@ aside {
       #standard-article .article__body .element-interactive,
       #standard-article .article__body .element-video-thumb {
         width: 134%; } }
+    #standard-article .article__body .figure-wide:first-of-type,
+    #standard-article .article__body .element-video:first-of-type,
+    #standard-article .article__body .element-interactive:first-of-type,
+    #standard-article .article__body .element-video-thumb:first-of-type {
+      margin-top: 0; }
 
 .comment a,
 .comment .discussion__view-more {
