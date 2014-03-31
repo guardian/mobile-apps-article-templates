@@ -11,12 +11,6 @@
 		display: block;
 	}
 
-	p,
-	ul,
-	ol {
-		@include margin(0, 0, 1, 0);
-	}
-
 	.discussion__container {
 		min-height: 64px;
 		position: relative;
@@ -278,6 +272,7 @@
 // Expanding Logic
 .discussion__thread {
 	border-bottom: 2px solid $shadow;
+
 	.discussion:nth-of-type(n+5) {
 		display: none;
 	}
