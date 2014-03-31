@@ -123,7 +123,7 @@ define([
 			setupAlertSwitch: function () {
 				// Global function to switch follow alerts, called by native code
 				window.alertSwitch = function (following, followid) {
-					var followObject = $('.article__alerts[follow-alert-id="' + followid + '"]');
+					var followObject = $('[data-follow-alert-id="' + followid + '"]');
 					if (followObject.length) {
 						if (following == 1) {
 							if (followObject.hasClass('following') == false) {
