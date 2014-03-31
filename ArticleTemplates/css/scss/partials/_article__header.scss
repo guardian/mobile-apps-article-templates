@@ -3,17 +3,6 @@
 	@include flexbox;
 	@include flex-direction(column);
 
-	ul > li {
-		font-family: $egyptian-text;
-		color: $standfirst;
-		&:before {
-			content: "\2022  ";
-			font-family: $egyptian-display;
-			font-weight: 600;
-			color: $shadow;
-		}
-	}
-
 	.inner-header,
 	.article__standfirst,
 	.article__meta,
@@ -44,7 +33,8 @@
 
 	.article__standfirst {
 		color: $standfirst;
-		font-family: $egyptian-text;
+		font-family: $egyptian-display;
+		font-weight: 300;
 		@include standfirst();
 		@include padding(0.5, 1, 1.5, 1);
 	}
