@@ -29,7 +29,7 @@
 		color: $standfirst;
 		font-family: $egyptian-display;
 		font-weight: 300;
-		@include padding(0.5, 1, 3, 1);
+		@include padding(0.5, 1, 1.5, 1);
 	}
 
 	.article__section {
@@ -78,13 +78,13 @@
 
 	.article__meta {
 		border-bottom: none;
+
+		.article__alerts {
+			position: absolute;
+			left: 0;
+		}
 	}
 
-	.article__alerts {
-		position: absolute;
-		left: 0;
-	}
-	
 	#advert {
 		float: none;
 		width: 100%;
@@ -117,11 +117,11 @@
 				}
 
 				.live-summary-more {
-					display: block;
 					font-family: $agate-sans;
 					font-weight: bold;
 					display: none;
 					width: 100%;
+					@include text-underline($news, $background, $news-accent);
 
 					.icon {
 						font-size: 80%;
@@ -225,8 +225,42 @@
 			.live-summary-body {
 				max-height: 175px;
 			}
-			.article__alerts {
-				top: -2em;
+			.inner-header {
+				.article__alerts {
+					display: block;
+				}
+			}
+			.article__meta {
+				.article__alerts {
+					display: none;
+				}
+			}
+		}
+	}
+
+	@include mq($from: col2) {
+		.article__header {
+			.inner-header {
+				.article__alerts {
+					display: none;
+				}
+			}
+			.live-summary-body {
+				max-height: 240px;
+			}
+			.article__meta {
+				.article__alerts {
+					display: block;
+				}
+			}
+		}
+
+		.article__tags {
+			padding-left: 0;
+			width: auto;
+
+			.list {
+				width: 100%;
 			}
 		}
 	}
@@ -236,9 +270,7 @@
 			.inner-header {
 				margin-left: cols($base-3, 4);
 			}
-			.live-summary-body {
-				max-height: 240px;
-			}
+
 			.article__meta {
 				padding-left: cols($base-3, 4, 1);
 
@@ -247,14 +279,10 @@
 				}
 			}
 		}
+
 		.article__tags {
 			margin-left: $base-3 * 24;
-			padding-left: 0;
 			padding-bottom: $base-3 * 4;
-			width: auto;
-			.list {
-				width: 100%;
-			}
 		}
 	}
 
@@ -263,9 +291,7 @@
 			.inner-header {
 				margin-left: cols($base-4, 5);
 			}
-			.live-summary-body {
-				max-height: 240px;
-			}
+
 			.article__meta {
 				padding-left: cols($base-4, 5, 1);
 
@@ -274,15 +300,12 @@
 				}
 			}
 		}
+
 		.article__tags {
 			margin-left: $base-4 * 30;
-			padding-left: 0;
 			padding-bottom: $base-4 * 4;
-			width: auto;
-			.list {
-				width: 100%;
-			}
 		}
+
 		.live-updates-inner {
 			padding: $base-4 / 1.5;
 			width: 100%;
