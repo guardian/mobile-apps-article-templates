@@ -1,20 +1,27 @@
 .article__alerts {
+	color: $news;
 	font-family: $agate-sans;
 	font-weight: bold;
-	color: $news;
+	@include padding(0, 1, 1, 1);
+	display: none;
+
 	span.icon {
 		color: $standfirst;
 	}
+
 	.state-follow {
 		display: none;
+
 		span.icon {
 			color: $news-accent;
 		}
 	}
+
 	&.following {
 		.state-follow {
 			display: block;
 		}
+
 		.state-unfollow {
 			display: none;
 		}
