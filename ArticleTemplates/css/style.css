@@ -416,7 +416,7 @@ html {
         font-size: 2.2rem;
         line-height: 3rem; } }
   .article__header .article__alerts {
-    padding: 0px 12px 0px 12px; }
+    padding: 0px 12px 12px 12px; }
   .article__header .article__review-rating {
     color: #999999;
     padding: 0px 12px 18px 12px;
@@ -1838,6 +1838,7 @@ aside {
 
 .bullet {
   color: transparent;
+  vertical-align: middle;
   margin-right: -0.25em;
   width: 1.111em;
   display: inline-block;
@@ -2295,7 +2296,7 @@ aside {
   color: #666666;
   font-family: "Egyptian Display", Georgia, serif;
   font-weight: 300;
-  padding: 6px 12px 36px 12px; }
+  padding: 6px 12px 18px 12px; }
 #liveblog .article__section {
   position: relative; }
   @media all and (min-width: 40.625em) and (max-width: 56.24em) {
@@ -2347,9 +2348,9 @@ aside {
   display: block; }
 #liveblog .article__meta {
   border-bottom: none; }
-#liveblog .article__alerts {
-  position: absolute;
-  left: 0; }
+  #liveblog .article__meta .article__alerts {
+    position: absolute;
+    left: 0; }
 #liveblog #advert {
   float: none;
   width: 100%;
@@ -2371,11 +2372,18 @@ aside {
   #liveblog .article__body--liveblog__pinned .summary .block-elements.expanded {
     height: auto; }
   #liveblog .article__body--liveblog__pinned .summary .block-elements .live-summary-more {
-    display: block;
     font-family: "Agate Sans", sans-serif;
     font-weight: bold;
     display: none;
     width: 100%; }
+    #liveblog .article__body--liveblog__pinned .summary .block-elements .live-summary-more a {
+      background-image: linear-gradient(to bottom, #f6f6f6 50%, rgba(0, 86, 137, 0.67) 50%);
+      background-repeat: repeat-x;
+      background-size: 2px 2px;
+      background-position: 0 bottom;
+      text-shadow: 4px 2px #f6f6f6, 3px 2px #f6f6f6, 2px 2px #f6f6f6, 1px 2px #f6f6f6, 0px 2px #f6f6f6, -1px 2px #f6f6f6, -2px 2px #f6f6f6, -3px 2px #f6f6f6, -4px 2px #f6f6f6; }
+    #liveblog .article__body--liveblog__pinned .summary .block-elements .live-summary-more a:active {
+      background-image: linear-gradient(to bottom, #f6f6f6 50%, rgba(75, 198, 223, 0.67) 50%); }
     #liveblog .article__body--liveblog__pinned .summary .block-elements .live-summary-more .icon {
       font-size: 80%; }
 #liveblog aside.aside-witness {
@@ -2454,40 +2462,42 @@ aside {
 @media all and (max-width: 40.615em) {
   #liveblog .article__header .live-summary-body {
     max-height: 175px; }
-  #liveblog .article__header .article__alerts {
-    top: -2em; } }
+  #liveblog .article__header .inner-header .article__alerts {
+    display: block; }
+  #liveblog .article__header .article__meta .article__alerts {
+    display: none; } }
+@media all and (min-width: 40.625em) {
+  #liveblog .article__header .inner-header .article__alerts {
+    display: none; }
+  #liveblog .article__header .live-summary-body {
+    max-height: 240px; }
+  #liveblog .article__header .article__meta .article__alerts {
+    display: block; }
+  #liveblog .article__tags {
+    padding-left: 0;
+    width: auto; }
+    #liveblog .article__tags .list {
+      width: 100%; } }
 @media all and (min-width: 40.625em) and (max-width: 56.24em) {
   #liveblog .article__header .inner-header {
     margin-left: 32.39437%; }
-  #liveblog .article__header .live-summary-body {
-    max-height: 240px; }
   #liveblog .article__header .article__meta {
     padding-left: 33.80282%; }
     #liveblog .article__header .article__meta .article__alerts {
       width: 32.39437%; }
   #liveblog .article__tags {
     margin-left: 33.80282%;
-    padding-left: 0;
-    padding-bottom: 5.6338%;
-    width: auto; }
-    #liveblog .article__tags .list {
-      width: 100%; } }
+    padding-bottom: 5.6338%; } }
 @media all and (min-width: 56.25em) {
   #liveblog .article__header .inner-header {
     margin-left: 30.52632%; }
-  #liveblog .article__header .live-summary-body {
-    max-height: 240px; }
   #liveblog .article__header .article__meta {
     padding-left: 31.57895%; }
     #liveblog .article__header .article__meta .article__alerts {
       width: 30.52632%; }
   #liveblog .article__tags {
     margin-left: 31.57895%;
-    padding-left: 0;
-    padding-bottom: 4.21053%;
-    width: auto; }
-    #liveblog .article__tags .list {
-      width: 100%; }
+    padding-bottom: 4.21053%; }
   #liveblog .live-updates-inner {
     padding: 0.70175%;
     width: 100%; } }
@@ -3071,7 +3081,8 @@ aside {
       border-top: 2px solid #4bc6df; }
     #football .football-tabs-stats .football-fixtures .football-match > div {
       display: inline-block;
-      margin-right: -4px; }
+      margin-right: -4px;
+      overflow: hidden; }
     #football .football-tabs-stats .football-fixtures .football-match.has-ended .football-match-status {
       font-weight: bold; }
     #football .football-tabs-stats .football-fixtures .football-match.is-live {
@@ -3784,8 +3795,7 @@ aside {
   #standard-article.comment .article .article__header .article__alerts {
     position: absolute;
     bottom: 0;
-    display: block;
-    margin: 0px 0px 12px 0px; }
+    display: block; }
   #standard-article.comment .article .article__header .article__meta {
     -webkit-box-ordinal-group: 3;
     -webkit-order: 2;
