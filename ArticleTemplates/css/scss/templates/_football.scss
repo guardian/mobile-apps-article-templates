@@ -3,20 +3,16 @@
 		background-color: transparent;
 		border-bottom: none;
 	}
-	
+
 	.football__header {
 		background-color: white;
-		@include margin(0,0,1,0);
-		@include mq($to: col1) {
-			margin-bottom: 0;
-		}
 		@include mq($from: col1) {
+			@include margin(0, 0, 1, 0);
 			position: relative;
 		}
-		
+
 		.inner-header {
-			padding-top: 0;
-			@include padding(0,1,0,1);
+			@include padding(0, 1, 1, 1);
 			overflow: auto;
 
 			.article__headline {
@@ -38,11 +34,11 @@
 		
 		p {
 			font-family: $agate-sans;
-			margin-bottom: 0px;
+			margin-bottom: 0;
 			@include meta();
 			width: 100%;
 		}
-		
+
 		.football__header__status {
 			display: inline-block;
 			background-color: white;
@@ -55,12 +51,10 @@
 			color: $standfirst;
 			z-index: 10;
 			@include margin(0.5, 0, 0, 0);
-			
 			@include mq($to: col1) {
 				float: left;
 				margin-right: 8px;
 			}
-			
 			@include mq($from: col1) {
 				position: absolute;
 				left: 0;
@@ -68,11 +62,11 @@
 				margin-left: auto;
 				margin-right: auto;
 			}
-			
+
 			&.football__header__status--f p {
 				font-size: 1.2rem;
 			}
-			
+
 			&.football__header__status--first,
 			&.football__header__status--second,
 			&.football__header__status--ht,
@@ -82,50 +76,50 @@
 				font-weight: bold;
 				color: $news-accent;
 			}
-			
+
 			&.football__header__status--first {
 				background-image: url("../css/img/football_symbols_1st.svg");
 			}
-			
+
 			&.football__header__status--second {
 				background-image: url("../css/img/football_symbols_2nd.svg");
 			}
-			
+
 			&.football__header__status--ht {
 				background-image: url("../css/img/football_symbols_HT.svg");
 			}
-			
+
 			&.football__header__status--ft {
 				background-image: url("../css/img/football_symbols_FT.svg");
 			}
-			
+
 			&.football__header__status--et {
 				background-image: url("../css/img/football_symbols_ET.svg");
 			}
-			
+
 			&.football__header__status--p {
 				background-image: url("../css/img/football_symbols_P.svg");
 			}
-			
+
 			&.football__header__status--a,
 			&.football__header__status--c,
 			&.football__header__status--s {
 				font-weight: bold;
 				color: $alert;
 			}
-			
+
 			&.football__header__status--a {
 				background-image: url("../css/img/football_symbols_A.svg");
 			}
-			
+
 			&.football__header__status--c {
 				background-image: url("../css/img/football_symbols_C.svg");
 			}
-			
+
 			&.football__header__status--s {
 				background-image: url("../css/img/football_symbols_S.svg");
 			}
-			
+
 			p {
 				display: table-cell;
 				vertical-align: middle;
@@ -155,7 +149,12 @@
 				overflow: hidden;
 			}
 		}
-		
+
+		&.is-alerts .article__alerts,
+		&.is-agg .football__header__score__agg {
+			display: block;
+		}
+
 		// Alerts
 		.article__alerts {
 			text-align: center;
@@ -163,56 +162,24 @@
 			font-weight: normal;
 			position: relative;
 			z-index: 20;
-			@include margin(0.5, 0, 0, 0);
 			@include mq($to: col1) {
 				display: inline-block;
 				float: right;
-				margin-top: $base-1 * 1.25;
-				padding: 0;
+				@include padding(1, 0, 0, 0);
 				width: auto;
 			}
 			@include mq($from: col1) {
 				position: absolute;
-				left:0;
-				right:0;
-			}
-			@include mq(col1, col2) {
-				padding-top: $base-2 * 9;
-			}
-			@include mq(col2, col3) {
-				padding-top: $base-3 * 11;
-			}
-			@include mq($from: col3) {
-				padding-top: $base-4 * 11;
+				left: 0;
+				right: 0;
+				bottom: 0;
 			}
 
 			span {
 				background-color: white;
 			}
 		}
-		
-		&.is-alerts {
-			.article__alerts {
-				display: block;
-				@include mq($to: col1) {
-					display: inline-block;
-				}
-			}
-			
-			.football__header__home,
-			.football__header__away {
-				@include mq(col1, col2) {
-					padding-bottom: $base-2 * 4;
-				}
-				@include mq(col2, col3) {
-					padding-bottom: $base-3 * 4;
-				}
-				@include mq($from: col3) {
-					padding-bottom: $base-4 * 4;
-				}
-			}
-		}
-		
+
 		// Aggregate Scores
 		.football__header__score__agg {
 			display: none;
@@ -230,17 +197,6 @@
 				margin-top: 10px;
 			}
 		}
-		
-		&.is-agg {
-			.football__header__score__agg {
-				display: block;
-			}
-			.article__alerts {
-				@include mq($from: col1) {
-					padding-top: 144px;
-				}
-			}
-		}
 
 		// Horrible divider fix
 		.football__header__divider {
@@ -253,7 +209,7 @@
 				display: none;
 			}
 		}
-		
+
 		.football__header__home,
 		.football__header__away {
 			hyphens: auto;
@@ -269,8 +225,9 @@
 				float: left;
 				display: table;
 				table-layout: fixed;
+				padding-bottom: 0;
 			}
-			
+
 			.football__header__badge,
 			.football__header__info,
 			.football__header__score {
@@ -279,7 +236,7 @@
 					display: table-cell;
 				}
 			}
-			
+
 			.football__header__score {
 				@include mq($to: col1) {
 					width: 15%;
@@ -296,7 +253,7 @@
 					width: $base-4 * 12;
 				}
 			}
-			
+
 			.football__header__info {
 				@include mq($to: col1) {
 					width: 65%;
@@ -311,6 +268,7 @@
 					z-index: 25;
 				}
 			}
+
 			.football__header__badge {
 				height: 60px;
 				@include mq($to: col1) {
@@ -329,7 +287,7 @@
 				@include mq($from: col3) {
 					width: $base-4 * 12;
 				}
-				
+
 				img {
 					width: auto;
 					max-width: 100%;
@@ -340,19 +298,19 @@
 				}
 			}
 		}
-		
+
 		.football__header__home {
 			@include padding(0, 1, 2, 0);
 			@include mq($to: col1) {
 				border-top: 1px dotted $shadow;
 			}
-			
+
 			.football__header__score {
 				@include mq($from: col1) {
 					text-align: right;
 				}
 			}
-			
+
 			.football__header__badge {
 				@include mq(col1, col2) {
 					padding-right: $base-2 * 2;
@@ -365,18 +323,18 @@
 				}
 			}
 		}
-		
+
 		.football__header__away {
 			@include padding(0, 0, 2, 1);
 			@include flex-direction(row-reverse);
-			
+
 			.football__header__score {
 				@include padding(0, 1, 0, 0);
 				@include mq($to: col1) {
 					padding: 0;
 				}
 			}
-			
+
 			.football__header__badge {
 				@include mq(col1, col2) {
 					padding-left: $base-2 * 2;
@@ -389,10 +347,11 @@
 				}
 			}
 		}
-		
+
 		.football-comment {
 			width: 100%;
 			position: relative;
+
 			div {
 				padding: 6px 8px;
 				margin: 0 auto;
@@ -404,11 +363,12 @@
 			}
 		}
 	}
-	
+
 	.football-tabs-stats,
 	.football-tabs-article {
 		border-top: 2px solid $news-accent;
 	}
+
 	.football-tabs-article {
 		.article {
 			border-top: none;
@@ -422,6 +382,7 @@
 			@include padding(0.5, 1, 0, 1);
 		}
 	}
+
 	.football-tabs-stats {
 		font-family: $agate-sans;
 		background-color: $white;
@@ -473,6 +434,7 @@
 				}
 			}
 		}
+
 		.football-stats {
 			overflow-y: auto;
 			border-bottom: 1px dotted $shadow;
