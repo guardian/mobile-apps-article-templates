@@ -1196,9 +1196,9 @@ figure.figure-inline {
     display: none; }
 .prose ol {
   counter-reset: li; }
-.prose ol > li:before {
-  content: counter(li) ". ";
-  counter-increment: li; }
+  .prose ol > li:before {
+    content: counter(li) ". ";
+    counter-increment: li; }
 .prose blockquote {
   color: #666666;
   font-style: italic;
@@ -1225,12 +1225,6 @@ figure.figure-inline {
     font-weight: bold; }
 .prose h2 + p {
   margin-top: 0; }
-.prose em, .prose i {
-  font-style: italic; }
-.prose strong, .prose b {
-  font-weight: bold; }
-.prose strike {
-  text-decoration: line-through; }
 
 .font-size-1 .resizable {
   font-size: 70%;

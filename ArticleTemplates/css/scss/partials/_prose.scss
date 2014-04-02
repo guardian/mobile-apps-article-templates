@@ -16,11 +16,11 @@
 
 	ol {
 		counter-reset: li;
-	}
 
-	ol > li:before {
-		content: counter(li)". ";
-		counter-increment: li;
+		> li:before {
+			content: counter(li)". ";
+			counter-increment: li;
+		}
 	}
 
 	blockquote {
@@ -60,17 +60,5 @@
 
 	h2 + p {
 		margin-top: 0;
-	}
-
-	em, i {
-		font-style: italic;
-	}
-
-	strong, b {
-		font-weight: bold;
-	}
-
-	strike {
-		text-decoration: line-through;
 	}
 }
