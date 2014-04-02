@@ -25,7 +25,7 @@ define([
 			bean.on($('.article__image-caption__icon')[0], 'click', function () {
 				$('.article__image-caption__text').toggleClass('is-visible');
 			});
-		},
+		}
 	},
 
 	ready = function () {

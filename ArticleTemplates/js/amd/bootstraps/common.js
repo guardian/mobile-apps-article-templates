@@ -4,6 +4,7 @@ define([
 	'bonzo',
 	'fence',
 	'fastClick',
+	'smoothScroll',
 	'modules/ads',
 	'modules/comments',
 	'modules/$'
@@ -12,6 +13,7 @@ define([
 	bonzo,
 	fence,
 	FastClick,
+	smoothScroll,
 	Ads,
 	Comments,
 	$
@@ -73,6 +75,10 @@ define([
 					
 				};
 				window.loadEmbeds();
+			},
+
+			scrollToAnchor: function () {
+				window.smoothScroll.init();
 			},
 
 			imageSizer: function () {
@@ -192,6 +198,7 @@ define([
 				modules.loadAdverts(config);
 				modules.loadComments();
 				modules.loadEmbeds();
+				modules.scrollToAnchor();
 				modules.loadInteractives();
 				modules.offline();
 				modules.setupOfflineSwitch();
