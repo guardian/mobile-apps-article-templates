@@ -7,8 +7,7 @@
 
 	p,
 	ul,
-	ol,
-	figure {
+	ol {
 		@include margin(1, 0, 1, 0);
 		br:first-child {
 			display: none;
@@ -53,10 +52,14 @@
 		font-family: $egyptian-display;
 		font-weight: 600;
 		font-size: 1em;
-		margin: 1.5em 0 -0.5em 0;
+		margin: 1.5em 0 0 0;
 		strong, b {
 			font-weight: bold;
 		}
+	}
+
+	h2 + p {
+		margin-top: 0;
 	}
 
 	em, i {
