@@ -1,22 +1,13 @@
 @charset "UTF-8";
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-   Edited by Sam Morris
-*/
-html, body, div, span, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i,
+html, body, object, iframe,
+div, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+span, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, mark, q, s, samp, small, strike, strong, sub, sup, time, tt, var, b, u, i,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
-figure, figcaption, footer, header,
-menu, nav, section, summary,
-time, mark, audio, video {
+figure, figcaption, footer, header, nav, section, summary,
+audio, video {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -110,22 +101,15 @@ html {
   font-size: 62.5%;
   font-family: "Egyptian Text", Georgia, serif; }
 
-@media all and (max-width: 28.115em) {
+@media all and (max-width: 40.615em) {
   body {
     font-size: 1.6em;
     line-height: 1.5em; } }
-@media all and (min-width: 28.125em) and (max-width: 40.615em) {
-  body {
-    font-size: 1.6em;
-    line-height: 1.5em; } }
-@media all and (min-width: 40.625em) and (max-width: 56.24em) {
+@media all and (min-width: 40.625em) {
   body {
     font-size: 1.8em;
     line-height: 1.444em; } }
-@media all and (min-width: 56.25em) {
-  body {
-    font-size: 1.8em;
-    line-height: 1.444em; } }
+
 #advert-mobile-mpu,
 #advert-mpu {
   float: right;
@@ -144,28 +128,14 @@ html {
   background: rgba(0, 0, 0, 0.07);
   display: none;
   overflow: auto; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 40.615em) {
     #advert-mpu,
     #advert-mobile-mpu,
     #advert-banner,
     #advert.block {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    #advert-mpu,
-    #advert-mobile-mpu,
-    #advert-banner,
-    #advert.block {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    #advert-mpu,
-    #advert-mobile-mpu,
-    #advert-banner,
-    #advert.block {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-  @media all and (min-width: 56.25em) {
+  @media all and (min-width: 40.625em) {
     #advert-mpu,
     #advert-mobile-mpu,
     #advert-banner,
@@ -364,11 +334,7 @@ html {
       .article__header .article__section {
         font-size: 2rem;
         line-height: 2rem; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      .article__header .article__section {
-        font-size: 2.4rem;
-        line-height: 2.4rem; } }
-    @media all and (min-width: 56.25em) {
+    @media all and (min-width: 40.625em) {
       .article__header .article__section {
         font-size: 2.4rem;
         line-height: 2.4rem; } }
@@ -386,11 +352,7 @@ html {
       .article__header .article__headline {
         font-size: 4rem;
         line-height: 4rem; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      .article__header .article__headline {
-        font-size: 4.8rem;
-        line-height: 4.8rem; } }
-    @media all and (min-width: 56.25em) {
+    @media all and (min-width: 40.625em) {
       .article__header .article__headline {
         font-size: 4.8rem;
         line-height: 4.8rem; } }
@@ -401,19 +363,11 @@ html {
     font-family: "Egyptian Display", Georgia, serif;
     font-weight: 300;
     padding: 6px 12px 18px 12px; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 40.615em) {
       .article__header .article__standfirst {
         font-size: 1.7rem;
         line-height: 2.2rem; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      .article__header .article__standfirst {
-        font-size: 1.7rem;
-        line-height: 2.2rem; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      .article__header .article__standfirst {
-        font-size: 2.2rem;
-        line-height: 3rem; } }
-    @media all and (min-width: 56.25em) {
+    @media all and (min-width: 40.625em) {
       .article__header .article__standfirst {
         font-size: 2.2rem;
         line-height: 3rem; } }
@@ -428,34 +382,24 @@ html {
   .article__header .article__review-rating--5 .icon:nth-child(-n+5) {
     color: #4bc6df; }
   .article__header .article__meta {
+    color: #999999;
+    font-family: "Agate Sans", sans-serif;
     padding: 6px 12px 24px 12px;
     margin: -1px 0;
     border-top: 1px dotted #dcdad5;
     border-bottom: 1px dotted #dcdad5;
     position: relative; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 40.615em) {
       .article__header .article__meta {
         font-size: 1.4rem;
         line-height: 2rem; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      .article__header .article__meta {
-        font-size: 1.4rem;
-        line-height: 2rem; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      .article__header .article__meta {
-        font-size: 1.6rem;
-        line-height: 2.2rem; } }
-    @media all and (min-width: 56.25em) {
+    @media all and (min-width: 40.625em) {
       .article__header .article__meta {
         font-size: 1.6rem;
         line-height: 2.2rem; } }
     .article__header .article__meta .article__author {
       font-weight: bold; }
-  .article__header .article__pubdate {
-    color: #999999;
-    font-family: "Agate Sans", sans-serif; }
   .article__header .article__comments {
-    font-family: "Agate Sans", sans-serif;
     font-weight: bold;
     padding: 6px 12px 24px 12px;
     border-left: 1px dotted #dcdad5;
@@ -562,7 +506,7 @@ ul.tabs li.selected {
 @media all and (min-width: 28.125em) and (max-width: 40.615em) {
   ul.tabs {
     margin: 2.12766% 0;
-    font-size: 1.4rem; }
+    font-size: 1.6rem; }
     ul.tabs li {
       width: 21.2766%;
       padding: 4px 4.25532% 4.25532% 0; }
@@ -592,19 +536,11 @@ ul.tabs li.selected {
   border-top: 1px dotted #dcdad5;
   padding: 6px 12px 12px 12px;
   width: 100%; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 40.615em) {
     .article__tags {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    .article__tags {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    .article__tags {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-  @media all and (min-width: 56.25em) {
+  @media all and (min-width: 40.625em) {
     .article__tags {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -737,265 +673,6 @@ ul.tabs li.selected {
 .android .block {
   margin: 12px 12px 12px 12px; }
 
-.card {
-  background-color: white;
-  border-top: 1px solid #005689;
-  border-bottom: 1px solid #dcdad5;
-  position: relative; }
-  @media all and (max-width: 28.115em) {
-    .card {
-      margin: 2.89855% 2.89855% 0 2.89855%; } }
-  @media all and (min-width: 28.125em) {
-    .card {
-      margin-bottom: 4.34783%;
-      float: left; }
-      .card:before {
-        content: "";
-        padding-top: 133%;
-        display: block; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    .card {
-      margin: 2.12766% 2.12766% 0 0;
-      width: 48.93617%; }
-      .card:nth-child(2n) {
-        margin-right: 0; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    .card {
-      margin: 1.40845% 1.40845% 0 0;
-      width: 32.39437%; }
-      .card:nth-child(3n) {
-        margin-right: 0; } }
-  @media all and (min-width: 56.25em) {
-    .card {
-      margin: 1.05263% 1.05263% 0 0;
-      width: 24.21053%; }
-      .card:nth-child(4n) {
-        margin-right: 0; } }
-  @media all and (max-width: 28.115em) {
-    .card .card__container {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-box-direction: normal;
-      -webkit-box-orient: vertical;
-      -webkit-flex-direction: column;
-      flex-direction: column; } }
-  @media all and (min-width: 28.125em) {
-    .card .card__container {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0; } }
-  .card .card__header,
-  .card .card__object {
-    padding: 3px 6px 0px 6px; }
-    @media all and (min-width: 28.125em) {
-      .card .card__header,
-      .card .card__object {
-        height: 50%;
-        overflow: hidden; } }
-  .card .card__header {
-    margin-bottom: 1em; }
-    @media all and (max-width: 28.115em) {
-      .card .card__header {
-        -webkit-box-flex: 1;
-        -webkit-flex: 1;
-        flex: 1;
-        -webkit-box-ordinal-group: 2;
-        -webkit-order: 1;
-        order: 1; } }
-  @media all and (max-width: 28.115em) {
-    .card .card__object {
-      -webkit-box-flex: 1;
-      -webkit-flex: 1;
-      flex: 1;
-      -webkit-box-ordinal-group: 3;
-      -webkit-order: 2;
-      order: 2; } }
-  @media all and (min-width: 28.125em) {
-    .card .card__object {
-      overflow: hidden;
-      width: 100%;
-      position: absolute;
-      bottom: 0; } }
-  .card.has-image .card__object {
-    padding: 0; }
-    @media all and (max-width: 28.115em) {
-      .card.has-image .card__object {
-        -webkit-box-flex: 1;
-        -webkit-flex: 1;
-        flex: 1;
-        -webkit-box-ordinal-group: 4;
-        -webkit-order: 3;
-        order: 3; } }
-    @media all and (min-width: 28.125em) {
-      .card.has-image .card__object .card__image {
-        height: 100%;
-        width: auto;
-        margin-bottom: -1px; } }
-  .card .card__footer {
-    color: #999999;
-    font-family: "Agate Sans", sans-serif;
-    font-size: 1.4rem;
-    line-height: 1;
-    margin-top: 1em;
-    overflow: hidden; }
-    @media all and (max-width: 28.115em) {
-      .card .card__footer {
-        -webkit-box-flex: 1;
-        -webkit-flex: 1;
-        flex: 1;
-        -webkit-box-ordinal-group: 4;
-        -webkit-order: 3;
-        order: 3; } }
-    @media all and (min-width: 28.125em) {
-      .card .card__footer {
-        position: absolute;
-        z-index: 1;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        width: 100%; } }
-  .card.has-image .card__footer {
-    bottom: 50%; }
-    @media all and (max-width: 28.115em) {
-      .card.has-image .card__footer {
-        -webkit-box-flex: 1;
-        -webkit-flex: 1;
-        flex: 1;
-        -webkit-box-ordinal-group: 3;
-        -webkit-order: 2;
-        order: 2; } }
-  .card .card__title,
-  .card .card__byline,
-  .card .card__rating {
-    font-family: "Egyptian Display", Georgia, serif;
-    font-weight: 200;
-    font-size: 2.2rem;
-    line-height: 2.6rem;
-    text-rendering: optimizeLegibility; }
-  .card .card__rating {
-    color: #999999;
-    font-size: 18px;
-    line-height: 28px; }
-  .card .card__rating--1 .icon:nth-child(-n+1),
-  .card .card__rating--2 .icon:nth-child(-n+2),
-  .card .card__rating--3 .icon:nth-child(-n+3),
-  .card .card__rating--4 .icon:nth-child(-n+4),
-  .card .card__rating--5 .icon:nth-child(-n+5) {
-    color: #4bc6df; }
-  .card .standfirst {
-    color: #666666;
-    font-family: "Egyptian Text", Georgia, serif;
-    font-size: 1.4rem;
-    line-height: 1.8rem;
-    text-rendering: optimizeLegibility; }
-  .card .video-button {
-    position: absolute;
-    bottom: 0;
-    z-index: 2;
-    padding: 6px 6px 6px 6px; }
-    .card .video-button .touchpoint__button--primary {
-      background-color: #ffbb00;
-      color: #333333;
-      display: table-cell;
-      vertical-align: middle; }
-      .card .video-button .touchpoint__button--primary .icon {
-        position: relative;
-        top: 2px; }
-    .card .video-button p {
-      font-size: 1.4rem;
-      line-height: 1;
-      font-family: "Agate Sans", sans-serif;
-      font-weight: bold;
-      color: #ffbb00;
-      display: table-cell;
-      vertical-align: middle;
-      padding-left: 8px; }
-  .card .card__image {
-    width: 100%;
-    display: block; }
-  .card .card__cutout {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    z-index: 0; }
-  .card .card__meta {
-    width: 21.73913%;
-    height: 24px;
-    padding: 0px 0px 0px 6px;
-    border-left: 1px solid #dcdad5;
-    display: block;
-    float: left; }
-    .card .card__meta:first-child {
-      border-left: 0 none; }
-    .card .card__meta .icon {
-      margin-right: 3px; }
-  .card.card--feature {
-    background-color: #951c55;
-    border-top-color: transparent; }
-    .card.card--feature * {
-      color: white; }
-    .card.card--feature .card__meta {
-      border-color: rgba(220, 218, 213, 0.34); }
-  .card.card--media {
-    background-color: #333333;
-    border-top-color: #ffbb00; }
-    .card.card--media .card__title {
-      color: white; }
-      .card.card--media .card__title .icon {
-        color: #ffbb00;
-        margin-right: 6px; }
-    .card.card--media .standfirst {
-      color: #999999; }
-    .card.card--media .series {
-      color: #ffbb00; }
-      .card.card--media .series:after {
-        content: "\a";
-        white-space: pre; }
-    .card.card--media .card__meta {
-      border-color: rgba(220, 218, 213, 0.34); }
-    .card.card--media .card__duration {
-      color: #ffbb00;
-      font-weight: bold; }
-  .card.card--comment {
-    background-color: #eeebe8;
-    border-top-color: #e6711b; }
-    .card.card--comment .card__title .icon {
-      color: #999999;
-      font-size: 150%;
-      margin-right: 6px;
-      line-height: 0.1%;
-      top: 6px; }
-    .card.card--comment .card__byline {
-      color: #e6711b; }
-    .card.card--comment .standfirst {
-      padding-right: 2.10526%;
-      position: relative;
-      z-index: 1; }
-    .card.card--comment .card__footer {
-      bottom: 0; }
-  .card.card--live {
-    border-top-color: #da1d1d; }
-    .card.card--live .card__timestamp {
-      color: #da1d1d;
-      font-weight: bold; }
-      .card.card--live .card__timestamp:before {
-        content: "";
-        width: 12px;
-        height: 12px;
-        background-color: #da1d1d;
-        border-radius: 100%;
-        display: block;
-        float: left;
-        margin-right: 3px;
-        margin-top: 2px; }
-
-@media all and (min-width: 40.625em) and (max-width: 56.24em) {
-  .module--related .card:nth-of-type(4) {
-    display: none; } }
-
 .discussion {
   font-family: "Agate Sans", sans-serif;
   background-color: white;
@@ -1003,19 +680,11 @@ ul.tabs li.selected {
   margin: 12px 0px 0px 0px;
   padding: 0px 12px 12px 12px;
   overflow: hidden; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 40.615em) {
     .discussion {
       font-size: 1.6rem;
       line-height: 2.4rem; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    .discussion {
-      font-size: 1.6rem;
-      line-height: 2.4rem; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    .discussion {
-      font-size: 1.8rem;
-      line-height: 2.6rem; } }
-  @media all and (min-width: 56.25em) {
+  @media all and (min-width: 40.625em) {
     .discussion {
       font-size: 1.8rem;
       line-height: 2.6rem; } }
@@ -1031,19 +700,11 @@ ul.tabs li.selected {
     overflow: auto;
     word-break: break-all;
     word-wrap: break-word; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 40.615em) {
       .discussion .discussion__header {
         font-size: 1.4rem;
         line-height: 2rem; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      .discussion .discussion__header {
-        font-size: 1.4rem;
-        line-height: 2rem; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      .discussion .discussion__header {
-        font-size: 1.6rem;
-        line-height: 2.2rem; } }
-    @media all and (min-width: 56.25em) {
+    @media all and (min-width: 40.625em) {
       .discussion .discussion__header {
         font-size: 1.6rem;
         line-height: 2.2rem; } }
@@ -1094,19 +755,11 @@ ul.tabs li.selected {
     color: #999999;
     display: block;
     white-space: nowrap; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 40.615em) {
       .discussion .discussion__timestamp {
         font-size: 1.4rem;
         line-height: 2rem; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      .discussion .discussion__timestamp {
-        font-size: 1.4rem;
-        line-height: 2rem; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      .discussion .discussion__timestamp {
-        font-size: 1.6rem;
-        line-height: 2.2rem; } }
-    @media all and (min-width: 56.25em) {
+    @media all and (min-width: 40.625em) {
       .discussion .discussion__timestamp {
         font-size: 1.6rem;
         line-height: 2.2rem; } }
@@ -1117,19 +770,11 @@ ul.tabs li.selected {
     position: absolute;
     top: 0;
     right: 0; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 40.615em) {
       .discussion .discussion__recommend {
         font-size: 1.4rem;
         line-height: 2rem; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      .discussion .discussion__recommend {
-        font-size: 1.4rem;
-        line-height: 2rem; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      .discussion .discussion__recommend {
-        font-size: 1.6rem;
-        line-height: 2.2rem; } }
-    @media all and (min-width: 56.25em) {
+    @media all and (min-width: 40.625em) {
       .discussion .discussion__recommend {
         font-size: 1.6rem;
         line-height: 2.2rem; } }
@@ -1160,19 +805,11 @@ ul.tabs li.selected {
     padding: 9px 0px 9px 0px;
     overflow: hidden;
     display: none; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 40.615em) {
       .discussion .discussion__options {
         font-size: 1.4rem;
         line-height: 2rem; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      .discussion .discussion__options {
-        font-size: 1.4rem;
-        line-height: 2rem; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      .discussion .discussion__options {
-        font-size: 1.6rem;
-        line-height: 2.2rem; } }
-    @media all and (min-width: 56.25em) {
+    @media all and (min-width: 40.625em) {
       .discussion .discussion__options {
         font-size: 1.6rem;
         line-height: 2.2rem; } }
@@ -1287,22 +924,12 @@ ul.tabs li.selected {
   display: none;
   color: #666666;
   border-top: 1px solid #333333; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 40.615em) {
     .discussion__empty,
     .discussion__failed {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    .discussion__empty,
-    .discussion__failed {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    .discussion__empty,
-    .discussion__failed {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-  @media all and (min-width: 56.25em) {
+  @media all and (min-width: 40.625em) {
     .discussion__empty,
     .discussion__failed {
       font-size: 1.6rem;
@@ -1391,19 +1018,11 @@ ul.tabs li.selected {
 
 .element-witness {
   font-family: "Agate Sans", sans-serif; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 40.615em) {
     .element-witness {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    .element-witness {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    .element-witness {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-  @media all and (min-width: 56.25em) {
+  @media all and (min-width: 40.625em) {
     .element-witness {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -1468,19 +1087,11 @@ figure figcaption {
   color: #666666;
   font-family: "Agate Sans", sans-serif;
   border-bottom: 1px dotted #dcdad5; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 40.615em) {
     figure figcaption {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    figure figcaption {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    figure figcaption {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-  @media all and (min-width: 56.25em) {
+  @media all and (min-width: 40.625em) {
     figure figcaption {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -1495,24 +1106,26 @@ figure.figure-wide img {
   height: auto; }
 figure.figure-wide figcaption {
   padding: 6px 12px 24px 12px; }
-@media all and (max-width: 28.115em) {
-  figure.figure-inline img {
-    width: 100%;
-    height: auto; } }
-@media all and (min-width: 28.125em) {
-  figure.figure-inline {
-    float: left; } }
-@media all and (min-width: 28.125em) and (max-width: 40.615em) {
-  figure.figure-inline {
-    margin-right: 4.25532%; } }
-@media all and (min-width: 40.625em) and (max-width: 56.24em) {
-  figure.figure-inline {
-    margin-right: 2.8169%; } }
-@media all and (min-width: 56.25em) {
-  figure.figure-inline {
-    margin-right: 2.10526%; } }
-figure.figure-inline figcaption {
-  padding: 6px 0px 24px 0px; }
+figure.figure-inline {
+  margin: 12px 0px 12px 0px; }
+  @media all and (max-width: 28.115em) {
+    figure.figure-inline img {
+      width: 100%;
+      height: auto; } }
+  @media all and (min-width: 28.125em) {
+    figure.figure-inline {
+      float: left; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    figure.figure-inline {
+      margin-right: 4.25532%; } }
+  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    figure.figure-inline {
+      margin-right: 2.8169%; } }
+  @media all and (min-width: 56.25em) {
+    figure.figure-inline {
+      margin-right: 2.10526%; } }
+  figure.figure-inline figcaption {
+    padding: 6px 0px 24px 0px; }
 
 .module {
   margin: 0px 0px 24px 0px;
@@ -1538,19 +1151,11 @@ figure.figure-inline figcaption {
       font-family: "Egyptian Display", Georgia, serif;
       font-weight: 600;
       margin-top: -2px; }
-      @media all and (max-width: 28.115em) {
+      @media all and (max-width: 40.615em) {
         .module .module__title .module__title__label {
           font-size: 2.4rem;
           line-height: 3.6rem; } }
-      @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-        .module .module__title .module__title__label {
-          font-size: 2.4rem;
-          line-height: 3.6rem; } }
-      @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-        .module .module__title .module__title__label {
-          font-size: 2.7rem;
-          line-height: 3.9rem; } }
-      @media all and (min-width: 56.25em) {
+      @media all and (min-width: 40.625em) {
         .module .module__title .module__title__label {
           font-size: 2.7rem;
           line-height: 3.9rem; } }
@@ -1565,19 +1170,11 @@ figure.figure-inline figcaption {
 .android .module {
   margin: 0px 12px 0px 12px; }
 
-@media all and (max-width: 28.115em) {
+@media all and (max-width: 40.615em) {
   .prose {
     font-size: 1.6rem;
     line-height: 2.4rem; } }
-@media all and (min-width: 28.125em) and (max-width: 40.615em) {
-  .prose {
-    font-size: 1.6rem;
-    line-height: 2.4rem; } }
-@media all and (min-width: 40.625em) and (max-width: 56.24em) {
-  .prose {
-    font-size: 1.8rem;
-    line-height: 2.6rem; } }
-@media all and (min-width: 56.25em) {
+@media all and (min-width: 40.625em) {
   .prose {
     font-size: 1.8rem;
     line-height: 2.6rem; } }
@@ -1591,13 +1188,11 @@ figure.figure-inline figcaption {
   background-image: linear-gradient(to bottom, white 50%, rgba(75, 198, 223, 0.67) 50%); }
 .prose p,
 .prose ul,
-.prose ol,
-.prose figure {
+.prose ol {
   margin: 12px 0px 12px 0px; }
   .prose p br:first-child,
   .prose ul br:first-child,
-  .prose ol br:first-child,
-  .prose figure br:first-child {
+  .prose ol br:first-child {
     display: none; }
 .prose ol {
   counter-reset: li; }
@@ -1625,9 +1220,11 @@ figure.figure-inline figcaption {
   font-family: "Egyptian Display", Georgia, serif;
   font-weight: 600;
   font-size: 1em;
-  margin: 1.5em 0 -0.5em 0; }
+  margin: 1.5em 0 0 0; }
   .prose h2 strong, .prose h2 b {
     font-weight: bold; }
+.prose h2 + p {
+  margin-top: 0; }
 .prose em, .prose i {
   font-style: italic; }
 .prose strong, .prose b {
@@ -1714,19 +1311,11 @@ figure.figure-inline figcaption {
   vertical-align: middle;
   display: inline-block;
   padding: 0 6px; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 40.615em) {
     .touchpoint__label {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    .touchpoint__label {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    .touchpoint__label {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-  @media all and (min-width: 56.25em) {
+  @media all and (min-width: 40.625em) {
     .touchpoint__label {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -1990,19 +1579,11 @@ aside {
       border: 0;
       padding: 0;
       margin: 0; }
-      @media all and (max-width: 28.115em) {
+      @media all and (max-width: 40.615em) {
         #audio .audio-player .audio-player__slider input {
           font-size: 1.4rem;
           line-height: 2rem; } }
-      @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-        #audio .audio-player .audio-player__slider input {
-          font-size: 1.4rem;
-          line-height: 2rem; } }
-      @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-        #audio .audio-player .audio-player__slider input {
-          font-size: 1.6rem;
-          line-height: 2.2rem; } }
-      @media all and (min-width: 56.25em) {
+      @media all and (min-width: 40.625em) {
         #audio .audio-player .audio-player__slider input {
           font-size: 1.6rem;
           line-height: 2.2rem; } }
@@ -2088,19 +1669,11 @@ aside {
 .media-meta {
   margin: 12px 12px 6px 12px; }
 
-@media all and (max-width: 28.115em) {
+@media all and (max-width: 40.615em) {
   .media-meta__misc {
     font-size: 1.4rem;
     line-height: 2rem; } }
-@media all and (min-width: 28.125em) and (max-width: 40.615em) {
-  .media-meta__misc {
-    font-size: 1.4rem;
-    line-height: 2rem; } }
-@media all and (min-width: 40.625em) and (max-width: 56.24em) {
-  .media-meta__misc {
-    font-size: 1.6rem;
-    line-height: 2.2rem; } }
-@media all and (min-width: 56.25em) {
+@media all and (min-width: 40.625em) {
   .media-meta__misc {
     font-size: 1.6rem;
     line-height: 2.2rem; } }
@@ -2202,11 +1775,7 @@ aside {
     #discussion .article__headline {
       font-size: 3rem;
       line-height: 3rem; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    #discussion .article__headline {
-      font-size: 3.6rem;
-      line-height: 3.6rem; } }
-  @media all and (min-width: 56.25em) {
+  @media all and (min-width: 40.625em) {
     #discussion .article__headline {
       font-size: 3.6rem;
       line-height: 3.6rem; } }
@@ -2216,19 +1785,11 @@ aside {
   font-weight: bold;
   display: table;
   width: 100%; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 40.615em) {
     #discussion .article__controls {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    #discussion .article__controls {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    #discussion .article__controls {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-  @media all and (min-width: 56.25em) {
+  @media all and (min-width: 40.625em) {
     #discussion .article__controls {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -2328,11 +1889,7 @@ aside {
     #liveblog .article__section__live {
       font-size: 2rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    #liveblog .article__section__live {
-      font-size: 2.4rem;
-      line-height: 2.4rem; } }
-  @media all and (min-width: 56.25em) {
+  @media all and (min-width: 40.625em) {
     #liveblog .article__section__live {
       font-size: 2.4rem;
       line-height: 2.4rem; } }
@@ -2509,19 +2066,11 @@ aside {
   color: #005689;
   margin: 0px 0px 12px 0px;
   padding: 0px 12px 12px 12px; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 40.615em) {
     .live-more {
       font-size: 1.6rem;
       line-height: 2.4rem; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    .live-more {
-      font-size: 1.6rem;
-      line-height: 2.4rem; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    .live-more {
-      font-size: 1.8rem;
-      line-height: 2.6rem; } }
-  @media all and (min-width: 56.25em) {
+  @media all and (min-width: 40.625em) {
     .live-more {
       font-size: 1.8rem;
       line-height: 2.6rem; } }
@@ -2576,19 +2125,11 @@ aside {
     font-family: "Agate Sans", sans-serif;
     margin-bottom: 0;
     width: 100%; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 40.615em) {
       #football .football__header p {
         font-size: 1.4rem;
         line-height: 2rem; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      #football .football__header p {
-        font-size: 1.4rem;
-        line-height: 2rem; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      #football .football__header p {
-        font-size: 1.6rem;
-        line-height: 2.2rem; } }
-    @media all and (min-width: 56.25em) {
+    @media all and (min-width: 40.625em) {
       #football .football__header p {
         font-size: 1.6rem;
         line-height: 2.2rem; } }
@@ -2873,19 +2414,11 @@ aside {
   padding: 12px 0px 0px 0px; }
   #football .football-tabs-stats .football__label {
     font-family: "Egyptian Display", Georgia, serif; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 40.615em) {
       #football .football-tabs-stats .football__label {
         font-size: 1.6rem;
         line-height: 2.4rem; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      #football .football-tabs-stats .football__label {
-        font-size: 1.6rem;
-        line-height: 2.4rem; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      #football .football-tabs-stats .football__label {
-        font-size: 1.8rem;
-        line-height: 2.6rem; } }
-    @media all and (min-width: 56.25em) {
+    @media all and (min-width: 40.625em) {
       #football .football-tabs-stats .football__label {
         font-size: 1.8rem;
         line-height: 2.6rem; } }
@@ -2964,19 +2497,11 @@ aside {
           text-align: center;
           white-space: nowrap;
           overflow: hidden; }
-          @media all and (max-width: 28.115em) {
+          @media all and (max-width: 40.615em) {
             #football .football-tabs-stats .football-stats .football-possession .football-possession-wrapper .football-chart .arc-team {
               font-size: 1.4rem;
               line-height: 2rem; } }
-          @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-            #football .football-tabs-stats .football-stats .football-possession .football-possession-wrapper .football-chart .arc-team {
-              font-size: 1.4rem;
-              line-height: 2rem; } }
-          @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-            #football .football-tabs-stats .football-stats .football-possession .football-possession-wrapper .football-chart .arc-team {
-              font-size: 1.6rem;
-              line-height: 2.2rem; } }
-          @media all and (min-width: 56.25em) {
+          @media all and (min-width: 40.625em) {
             #football .football-tabs-stats .football-stats .football-possession .football-possession-wrapper .football-chart .arc-team {
               font-size: 1.6rem;
               line-height: 2.2rem; } }
@@ -2984,19 +2509,11 @@ aside {
           font-family: "Egyptian Display", Georgia, serif;
           font-weight: 600;
           text-align: center; }
-          @media all and (max-width: 28.115em) {
+          @media all and (max-width: 40.615em) {
             #football .football-tabs-stats .football-stats .football-possession .football-possession-wrapper .football-chart .arc-percent {
               font-size: 1.7rem;
               line-height: 2.2rem; } }
-          @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-            #football .football-tabs-stats .football-stats .football-possession .football-possession-wrapper .football-chart .arc-percent {
-              font-size: 1.7rem;
-              line-height: 2.2rem; } }
-          @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-            #football .football-tabs-stats .football-stats .football-possession .football-possession-wrapper .football-chart .arc-percent {
-              font-size: 2.2rem;
-              line-height: 3rem; } }
-          @media all and (min-width: 56.25em) {
+          @media all and (min-width: 40.625em) {
             #football .football-tabs-stats .football-stats .football-possession .football-possession-wrapper .football-chart .arc-percent {
               font-size: 2.2rem;
               line-height: 3rem; } }
@@ -3198,8 +2715,8 @@ aside {
     #football .football-tabs-stats .football-lineups .football-team:nth-of-type(2) {
       padding-left: 1.41844%; }
     #football .football-tabs-stats .football-lineups .football-team .football-player {
-      font-size: 1.4rem;
-      line-height: 2rem;
+      font-size: 1.6rem;
+      line-height: 2.2rem;
       width: 100%; }
       #football .football-tabs-stats .football-lineups .football-team .football-player .football-player-number {
         width: 17.02128%; }
@@ -3208,16 +2725,16 @@ aside {
   #football .football-tabs-stats .football-stats {
     margin: 1.41844%; }
     #football .football-tabs-stats .football-stats p {
-      font-size: 1.4rem;
-      line-height: 2rem; }
+      font-size: 1.6rem;
+      line-height: 2.2rem; }
     #football .football-tabs-stats .football-stats .football-possession {
       margin: -2px 0% 8px 4.25532%;
       width: 42.55319%; }
       #football .football-tabs-stats .football-stats .football-possession p {
         padding-left: 10.6383%; }
       #football .football-tabs-stats .football-stats .football-possession .football-possession-wrapper .football-possession-labels {
-        font-size: 1.4rem;
-        line-height: 2rem; }
+        font-size: 1.6rem;
+        line-height: 2.2rem; }
         #football .football-tabs-stats .football-stats .football-possession .football-possession-wrapper .football-possession-labels span {
           margin-top: 4px;
           font-size: 2.8rem; }
@@ -3258,8 +2775,8 @@ aside {
       border-right: 1px dotted #f6f6f6;
       vertical-align: top; }
       #football .football-tabs-stats .football-today .football-fixtures .football-match {
-        font-size: 1.4rem;
-        line-height: 2rem;
+        font-size: 1.6rem;
+        line-height: 2.2rem;
         padding: 3px 6.38298% 0 17.02128%;
         margin-bottom: 8px;
         position: relative; }
@@ -3278,8 +2795,8 @@ aside {
       width: 50%;
       vertical-align: top; }
       #football .football-tabs-stats .football-today .football-table .football-table-entry {
-        font-size: 1.4rem;
-        line-height: 2rem;
+        font-size: 1.6rem;
+        line-height: 2.2rem;
         padding: 3px 0 0 17.02128%;
         margin-bottom: 8px;
         position: relative; }
@@ -3523,11 +3040,7 @@ aside {
     .football-fixtures-header h1 {
       font-size: 4rem;
       line-height: 4rem; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    .football-fixtures-header h1 {
-      font-size: 4.8rem;
-      line-height: 4.8rem; } }
-  @media all and (min-width: 56.25em) {
+  @media all and (min-width: 40.625em) {
     .football-fixtures-header h1 {
       font-size: 4.8rem;
       line-height: 4.8rem; } }
@@ -3540,19 +3053,11 @@ aside {
   table-layout: fixed;
   width: 100%;
   font-family: "Agate Sans", sans-serif; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 40.615em) {
     .football-fixtures-row {
       font-size: 1.6rem;
       line-height: 2.4rem; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    .football-fixtures-row {
-      font-size: 1.6rem;
-      line-height: 2.4rem; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    .football-fixtures-row {
-      font-size: 1.8rem;
-      line-height: 2.6rem; } }
-  @media all and (min-width: 56.25em) {
+  @media all and (min-width: 40.625em) {
     .football-fixtures-row {
       font-size: 1.8rem;
       line-height: 2.6rem; } }
@@ -3707,11 +3212,9 @@ aside {
       #standard-article .article__body .element-interactive,
       #standard-article .article__body .element-video-thumb {
         width: 134%; } }
-    #standard-article .article__body .figure-wide:first-of-type,
-    #standard-article .article__body .element-video:first-of-type,
-    #standard-article .article__body .element-interactive:first-of-type,
-    #standard-article .article__body .element-video-thumb:first-of-type {
-      margin-top: 0; }
+  #standard-article .article__body > .figure-wide:first-of-type,
+  #standard-article .article__body > .element:first-of-type {
+    margin-top: 0; }
 
 .comment a,
 .comment .discussion__view-more {
@@ -3798,16 +3301,18 @@ aside {
 @media all and (min-width: 68.75em) {
   #standard-article[class*="feature"] .article__header {
     padding-top: 36px; } }
+#standard-article[class*="feature"] .article__header a {
+  color: #fff; }
+#standard-article[class*="feature"] .article__header .bullet:before,
+#standard-article[class*="feature"] .article__header ul > li:before {
+  color: rgba(255, 255, 255, 0.8); }
 #standard-article[class*="feature"] .article__header .inner-header {
   padding-right: 0;
   -webkit-box-ordinal-group: 3;
   -webkit-order: 2;
   order: 2; }
-#standard-article[class*="feature"] .article__header .bullet:before,
-#standard-article[class*="feature"] .article__header ul > li:before {
-  color: rgba(255, 255, 255, 0.8); }
 @media all and (max-width: 40.615em) {
-  #standard-article[class*="feature"] .article__section a {
+  #standard-article[class*="feature"] .article__section {
     color: #fff; } }
 @media all and (min-width: 40.625em) {
   #standard-article[class*="feature"] .article__section {
@@ -3828,13 +3333,15 @@ aside {
       line-height: 0.875;
       padding: 12px 12px 0px 12px; } }
 #standard-article[class*="feature"] .article__standfirst {
+  color: rgba(255, 255, 255, 0.8);
+  padding: 12px 12px 72px 12px;
   -webkit-box-ordinal-group: 4;
   -webkit-order: 3;
-  order: 3;
-  padding: 12px 12px 72px 12px; }
+  order: 3; }
   #standard-article[class*="feature"] .article__standfirst strong {
     font-weight: normal; }
 #standard-article[class*="feature"] .article__byline {
+  color: rgba(255, 255, 255, 0.8);
   padding: 12px 12px 12px 12px;
   margin: 0;
   position: absolute;
@@ -3842,6 +3349,7 @@ aside {
   left: 0;
   right: 0; }
 #standard-article[class*="feature"] .article__meta {
+  color: rgba(255, 255, 255, 0.8);
   border: 0 none;
   margin-top: 0;
   margin-bottom: 0;
@@ -3851,70 +3359,43 @@ aside {
 #standard-article[class*="feature"] .article__author__image,
 #standard-article[class*="feature"] .article__alerts {
   display: none; }
-#standard-article[class*="feature"] .article__standfirst,
-#standard-article[class*="feature"] .article__byline,
-#standard-article[class*="feature"] .article__pubdate,
-#standard-article[class*="feature"] .article__comments {
-  color: rgba(255, 255, 255, 0.8); }
-  #standard-article[class*="feature"] .article__standfirst a,
-  #standard-article[class*="feature"] .article__byline a,
-  #standard-article[class*="feature"] .article__pubdate a,
-  #standard-article[class*="feature"] .article__comments a {
-    color: #fff; }
 @media all and (min-width: 40.625em) and (max-width: 56.24em) {
   #standard-article[class*="feature"] .article__comments__label {
     display: none; } }
 #standard-article[class*="feature"] .article__image {
-  position: relative;
-  -webkit-box-ordinal-group: 2;
-  -webkit-order: 1;
-  order: 1; }
-  @media all and (min-width: 40.625em) {
-    #standard-article[class*="feature"] .article__image {
-      margin-bottom: -58px; } }
-  @media all and (min-width: 40.625em) {
-    #standard-article[class*="feature"] .article__image:after {
-      content: "";
-      background-image: linear-gradient(-180deg, transparent 80%, rgba(0, 0, 0, 0.67) 100%);
-      display: block;
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: 1; } }
+  position: relative; }
 #standard-article[class*="feature"] .article__image-caption {
   color: rgba(255, 255, 255, 0.9);
   border: 0 none;
   padding: 0;
   position: absolute;
-  top: 0;
   right: 0;
+  bottom: 0;
   left: 0;
   z-index: 10; }
 #standard-article[class*="feature"] .article__image-caption__icon {
   line-height: 44px;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.33);
-  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.4);
+  margin-right: 1px;
   width: 44px;
   height: 44px;
   display: inline-block;
   position: absolute;
-  left: 0;
-  top: 0; }
+  bottom: 0;
+  left: 0; }
   #standard-article[class*="feature"] .article__image-caption__icon:active {
     background-color: rgba(0, 0, 0, 0.66); }
 #standard-article[class*="feature"] .article__image-caption__text {
-  background-color: rgba(0, 0, 0, 0.33);
+  background-color: rgba(0, 0, 0, 0.4);
   padding: 6px 12px 6px 12px;
   display: none;
   max-height: 0;
   overflow: hidden;
   position: absolute;
-  left: 44px;
   right: 0;
-  top: 0; }
+  bottom: 0;
+  left: 44px; }
   #standard-article[class*="feature"] .article__image-caption__text.is-visible {
     display: block;
     min-height: 44px;
@@ -3988,16 +3469,16 @@ aside {
   background-image: linear-gradient(to bottom, white 50%, rgba(224, 43, 127, 0.67) 50%); }
 .feature1 .article {
   border-top-color: #e02b7f; }
-  .feature1 .article .article__header {
-    background-color: #951c55; }
-  .feature1 .article .article__standfirst,
-  .feature1 .article .article__byline {
-    background-color: #e02b7f; }
-  .feature1 .article .article__comments {
-    border-left-color: #e02b7f; }
-  .feature1 .article .article__body > p:first-of-type:first-letter,
-  .feature1 .article .article__section {
-    color: #951c55; }
+.feature1 .article__header {
+  background-color: #951c55; }
+.feature1 .article__standfirst,
+.feature1 .article__byline {
+  background-color: #e02b7f; }
+.feature1 .article__comments {
+  border-left-color: #e02b7f; }
+.feature1 .article__body > p:first-of-type:first-letter,
+.feature1 .article__section {
+  color: #951c55; }
 
 .feature2 a,
 .feature2 .discussion__view-more {
@@ -4022,16 +3503,16 @@ aside {
   background-image: linear-gradient(to bottom, white 50%, rgba(128, 6, 194, 0.67) 50%); }
 .feature2 .article {
   border-top-color: #8006c2; }
-  .feature2 .article .article__header {
-    background-color: #4e0375; }
-  .feature2 .article .article__standfirst,
-  .feature2 .article .article__byline {
-    background-color: #8006c2; }
-  .feature2 .article .article__comments {
-    border-left-color: #8006c2; }
-  .feature2 .article .article__body > p:first-of-type:first-letter,
-  .feature2 .article .article__section {
-    color: #4e0375; }
+.feature2 .article__header {
+  background-color: #4e0375; }
+.feature2 .article__standfirst,
+.feature2 .article__byline {
+  background-color: #8006c2; }
+.feature2 .article__comments {
+  border-left-color: #8006c2; }
+.feature2 .article__body > p:first-of-type:first-letter,
+.feature2 .article__section {
+  color: #4e0375; }
 
 .feature3 a,
 .feature3 .discussion__view-more {
@@ -4056,13 +3537,13 @@ aside {
   background-image: linear-gradient(to bottom, white 50%, rgba(201, 0, 168, 0.67) 50%); }
 .feature3 .article {
   border-top-color: #c900a8; }
-  .feature3 .article .article__header {
-    background-color: #7d0068; }
-  .feature3 .article .article__standfirst,
-  .feature3 .article .article__byline {
-    background-color: #c900a8; }
-  .feature3 .article .article__comments {
-    border-left-color: #c900a8; }
-  .feature3 .article .article__body > p:first-of-type:first-letter,
-  .feature3 .article .article__section {
-    color: #7d0068; }
+.feature3 .article__header {
+  background-color: #7d0068; }
+.feature3 .article__standfirst,
+.feature3 .article__byline {
+  background-color: #c900a8; }
+.feature3 .article__comments {
+  border-left-color: #c900a8; }
+.feature3 .article__body > p:first-of-type:first-letter,
+.feature3 .article__section {
+  color: #7d0068; }
