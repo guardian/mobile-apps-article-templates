@@ -577,9 +577,9 @@ ul.tabs li.selected {
 .block {
   border-bottom: 2px solid #dcdad5;
   background-color: white;
+  overflow: hidden;
   padding: 12px 0px 12px 0px;
-  margin: 12px 0px 12px 0px;
-  overflow: hidden; }
+  margin: 12px 0px 12px 0px; }
   @media all and (max-width: 28.115em) {
     .block {
       margin: 4.34783%;
@@ -587,16 +587,48 @@ ul.tabs li.selected {
   .block .block-time {
     color: #666666;
     font-family: "Agate Sans", sans-serif;
-    padding: 6px 12px 0px 12px;
-    margin-top: 0; }
-    @media all and (min-width: 28.125em) {
+    padding: 0px 12px 0px 12px; }
+    @media all and (min-width: 40.625em) {
       .block .block-time {
-        padding-top: 0; } }
+        float: left;
+        min-height: 1px; } }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      .block .block-time {
+        width: 32.39437%; } }
+    @media all and (min-width: 56.25em) {
+      .block .block-time {
+        width: 30.52632%; } }
   .block .block-elements {
     padding: 0px 12px 0px 12px; }
+    @media all and (min-width: 40.625em) {
+      .block .block-elements {
+        float: left; }
+        .block .block-elements .quoted,
+        .block .block-elements .twitter-tweet {
+          position: relative; }
+          .block .block-elements .quoted:before,
+          .block .block-elements .twitter-tweet:before {
+            position: absolute;
+            left: -5rem; } }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      .block .block-elements {
+        width: 67.60563%; } }
+    @media all and (min-width: 56.25em) {
+      .block .block-elements {
+        width: 69.47368%; } }
     .block .block-elements > *:first-child {
       padding-top: 0;
       margin-top: 0; }
+    @media all and (min-width: 40.625em) {
+      .block .block-elements figure {
+        width: 100%; } }
+    .block .block-elements figure figcaption {
+      padding: 6px 0px 12px 0px; }
+    .block .block-elements figure.figure-inline {
+      float: none;
+      clear: both; }
+    .block .block-elements blockquote {
+      margin: 24px 0px 24px 0px; }
     .block .block-elements .block-updated {
       color: #999999;
       font-family: "Agate Sans", sans-serif;
@@ -604,25 +636,6 @@ ul.tabs li.selected {
       line-height: 2rem;
       margin: 0;
       clear: left; }
-    .block .block-elements figure figcaption {
-      padding: 6px 0px 12px 0px; }
-    @media all and (min-width: 40.625em) {
-      .block .block-elements figure {
-        width: 100%; } }
-    .block .block-elements figure:last-child {
-      margin-bottom: 0; }
-      .block .block-elements figure:last-child figcaption {
-        border-bottom: 0 none; }
-    .block .block-elements figure.figure-inline {
-      float: none;
-      clear: both; }
-    .block .block-elements figure.figure-inline {
-      float: none;
-      clear: both; }
-    .block .block-elements blockquote {
-      margin-left: 0; }
-      .block .block-elements blockquote:before {
-        margin-bottom: -0.5em; }
     .block .block-elements .live-summary-more {
       display: none; }
   .block.key-event h2 {
@@ -637,42 +650,6 @@ ul.tabs li.selected {
       font-weight: bold;
       width: 100%; }
 
-@media all and (min-width: 40.625em) and (max-width: 56.24em) {
-  .block .block-time {
-    float: left;
-    width: 32.39437%;
-    min-height: 1px; }
-  .block .block-elements {
-    float: left;
-    position: relative;
-    width: 67.60563%; }
-    .block .block-elements p:first-child {
-      padding-top: 2px; }
-    .block .block-elements blockquote:before {
-      position: absolute;
-      left: -1em;
-      margin-top: -0.25em; }
-    .block .block-elements blockquote.twitter-tweet:before {
-      left: -0.8334em;
-      margin-top: 0.25em; } }
-@media all and (min-width: 56.25em) {
-  .block .block-time {
-    float: left;
-    width: 30.52632%;
-    min-height: 1px; }
-  .block .block-elements {
-    float: left;
-    position: relative;
-    width: 69.47368%; }
-    .block .block-elements p:first-child {
-      padding-top: 2px; }
-    .block .block-elements blockquote:before {
-      position: absolute;
-      left: -1em;
-      margin-top: -0.25em; }
-    .block .block-elements blockquote.twitter-tweet:before {
-      left: -0.8334em;
-      margin-top: 0.25em; } }
 .android .block {
   margin: 12px 12px 12px 12px; }
 
@@ -993,30 +970,9 @@ ul.tabs li.selected {
 .element-video-thumb {
   width: 100%; }
 
-.element-audio iframe {
-  width: 100%; }
-
-.element-tweet blockquote {
-  color: #999999;
-  font-family: "Agate Sans", sans-serif;
-  font-style: normal;
-  font-size: 1.4rem;
-  line-height: 2rem; }
-  .element-tweet blockquote:before {
-    content: "\e06b";
-    font-size: 32px;
-    font-style: normal;
-    margin-bottom: 4px; }
-  .element-tweet blockquote p {
-    color: #666666;
-    font-size: 1.6rem;
-    line-height: 2.2rem;
-    margin: 0; }
-
+.element-audio iframe,
+.element-embed iframe,
 .element-map iframe {
-  width: 100%; }
-
-.element-embed iframe {
   width: 100%; }
 
 .element-witness {
@@ -1205,16 +1161,29 @@ figure.figure-inline {
 .prose blockquote {
   color: #666666;
   font-style: italic;
-  margin: 0px 24px 24px 24px; }
+  margin: 24px 24px 24px 24px; }
   .prose blockquote:before {
-    font-family: "Guardian Icons", Georgia, serif;
-    font-size: 2.6667em;
     color: #999999;
+    font-family: "Guardian Icons", Georgia, serif;
+    font-size: 4rem;
+    font-style: normal;
+    line-height: 1;
+    margin-bottom: -0.5rem;
     display: block; }
-  .prose blockquote.quoted {
-    font-style: normal; }
-    .prose blockquote.quoted:before {
-      content: "\e029"; }
+  .prose blockquote.quoted:before {
+    content: "\e029";
+    margin-top: -0.75rem; }
+  .prose blockquote.twitter-tweet {
+    font-family: "Agate Sans", sans-serif;
+    font-size: 1.4rem;
+    line-height: 2rem; }
+    .prose blockquote.twitter-tweet:before {
+      content: "\e06b"; }
+    .prose blockquote.twitter-tweet p {
+      color: #666666;
+      font-size: 1.6rem;
+      line-height: 2.2rem;
+      margin: 6px 0px 6px 0px; }
 .prose hr {
   border: 0;
   height: 1px;

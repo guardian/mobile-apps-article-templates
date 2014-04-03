@@ -1,10 +1,9 @@
 .block {
 	border-bottom: 2px solid $shadow;
 	background-color: $white;
+	overflow: hidden;
 	@include padding(1, 0, 1, 0);
 	@include margin(1, 0, 1, 0);
-	overflow: hidden;
-	
 	@include mq($to: col1) {
 		margin: $base-1;
 		padding: $base-1 / 2;
@@ -13,20 +12,62 @@
 	.block-time {
 		color: $standfirst;
 		font-family: $agate-sans;
-		@include padding(0.5, 1, 0, 1);
-		margin-top: 0;
-		
-		@include mq($from: col1) {
-			padding-top: 0;
+		@include padding(0, 1);
+		@include mq($from: col2) {
+			float: left;
+			min-height: 1px; // While javascript populates fix
+		}
+		@include mq(col2, col3) {
+			width: cols($base-3, 4);
+		}
+		@include mq($from: col3) {
+			width: cols($base-4, 5);
 		}
 	}
 
 	.block-elements {
 		@include padding(0, 1, 0, 1);
-		
+		@include mq($from: col2) {
+			float: left;
+
+			.quoted,
+			.twitter-tweet {
+				position: relative;
+				&:before {
+					position: absolute;
+					left: -5rem;
+				}
+			}
+		}
+		@include mq(col2, col3) {
+			width: cols($base-3, 8, 1);
+		}
+		@include mq($from: col3) {
+			width: cols($base-4, 11, 1);
+		}
+
 		> *:first-child {
 			padding-top: 0;
 			margin-top: 0;
+		}
+
+		figure {
+			@include mq($from: col2) {
+				width: 100%;
+			}
+
+			figcaption {
+				@include padding(0.5, 0, 1, 0);
+			}
+
+			&.figure-inline {
+				float: none;
+				clear: both;
+			}
+		}
+
+		blockquote {
+			@include margin(2, 0);
 		}
 
 		.block-updated {
@@ -38,36 +79,6 @@
 			clear: left;
 		}
 
-		figure {
-			figcaption {
-				@include padding(0.5, 0, 1, 0);
-			}
-			@include mq($from: col2) {
-				width: 100%;
-			}
-			&:last-child {
-				margin-bottom: 0;
-				figcaption {
-					border-bottom: 0 none;
-				}
-			}
-			&.figure-inline {
-				float: none;
-				clear: both;
-			}
-			&.figure-inline {
-				float: none;
-				clear: both;
-			}
-		}
-
-		blockquote {
-			margin-left: 0;
-			&:before {
-				margin-bottom: -0.5em;
-			}
-		}
-
 		.live-summary-more {
 			display: none;
 		}
@@ -76,70 +87,19 @@
 	&.key-event h2 {
 		color: $alert;
 	}
+
 	&.summary {
 		background-color: transparent;
 		border: 1px dotted $shadow;
+
 		.block-time {
 			font-weight: bold;
 		}
+
 		.live-summary-more {
 			font-family: $agate-sans;
 			font-weight: bold;
 			width: 100%;
-		}
-	}
-}
-
-@include mq(col2, col3) {
-	.block {
-		.block-time {
-			float: left;
-			width: cols($base-3, 4);
-			min-height: 1px; // While javascript populates fix
-		}
-		.block-elements {
-			float: left;
-			position: relative;
-			width: cols($base-3, 8, 1);
-			p:first-child {
-				padding-top: 2px; // Match baseline with that of timestamp
-			}
-			blockquote:before {
-				position: absolute;
-				left: -1em;
-				margin-top: -0.25em;
-			}
-			blockquote.twitter-tweet:before {
-				left: -0.8334em;
-				margin-top: 0.25em;
-			}
-		}
-	}
-}
-
-@include mq($from: col3) {
-	.block {
-		.block-time {
-			float: left;
-			width: cols($base-4, 5);
-			min-height: 1px; // While javascript populates fix
-		}
-		.block-elements {
-			float: left;
-			position: relative;
-			width: cols($base-4, 11, 1);
-			p:first-child {
-				padding-top: 2px; // Match baseline with that of timestamp
-			}
-			blockquote:before {
-				position: absolute;
-				left: -1em;
-				margin-top: -0.25em;
-			}
-			blockquote.twitter-tweet:before {
-				left: -0.8334em;
-				margin-top: 0.25em;
-			}
 		}
 	}
 }

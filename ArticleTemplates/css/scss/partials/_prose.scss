@@ -8,7 +8,7 @@
 	p,
 	ul,
 	ol {
-		@include margin(1, 0, 1, 0);
+		@include margin(1, 0);
 		br:first-child {
 			display: none;
 		}
@@ -26,18 +26,37 @@
 	blockquote {
 		color: $standfirst;
 		font-style: italic;
-		@include margin(0, 2, 2, 2);
+		@include margin(2);
 		&:before {
-			font-family: $icon;
-			font-size: 2.6667em; // 48px
 			color: $meta;
+			font-family: $icon;
+			font-size: 4rem; // 40px
+			font-style: normal;
+			line-height: 1;
+			margin-bottom: -0.5rem;
 			display: block;
 		}
 
 		&.quoted {
-			font-style: normal;
 			&:before {
 				content: "\e029";
+				margin-top: -0.75rem;
+			}
+		}
+
+		&.twitter-tweet {
+			font-family: $agate-sans;
+			font-size: $meta-size-1;
+			line-height: $meta-lead-1;
+			&:before {
+				content: "\e06b";
+			}
+
+			p {
+				color: $standfirst;
+				font-size: $meta-size-2;
+				line-height: $meta-lead-2;
+				@include margin(0.5, 0);
 			}
 		}
 	}
