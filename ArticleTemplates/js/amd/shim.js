@@ -15,8 +15,8 @@
 
 var nativeFunctionCalls = [
     'articleCommentsInserter',
-	'articleTagInserter',
-	'audioBackground',
+    'articleTagInserter',
+    'audioBackground',
     'commentsFailed',
     'commentsReplyFormatting',
     'footballMatchInfo',

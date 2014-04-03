@@ -13,7 +13,8 @@ require.config({
         mobileSlider: 'components/mobile-range-slider',
         fastClick: 'components/fastclick',
         qwery: 'components/qwery.min',
-        fence: 'components/fence'
+        fence: 'components/fence',
+        smoothScroll: 'components/smooth-scroll'
     },
     shim: {
         d3: {
