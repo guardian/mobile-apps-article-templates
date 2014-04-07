@@ -1,6 +1,5 @@
 #standard-article[class*="feature"] {
 	.article__headline,
-	.article__standfirst,
 	.article__meta {
 		@include mq(col2, col3) {
 			margin-left: cols($base-3, 1, 0);
@@ -73,6 +72,12 @@
 		color: rgba(255, 255, 255, 0.8);
 		@include padding(1, 1, 6, 1);
 		@include order(3);
+		@include mq(col2, col3) {
+			padding-left: cols($base-3, 1, 1);
+		}
+		@include mq($from: col3) {
+			padding-left: cols($base-4, 1, 1);
+		}
 
 		strong {
 			font-weight: normal;
@@ -158,27 +163,11 @@
 	}
 
 	.article__body {
-		> p:first-of-type:first-letter {
-			font-family: $egyptian-display;
-			font-weight: 100;
-			font-style: normal;
-			font-size: 3.3334em;
-			line-height: 1;
-			margin-bottom: -16px;
-			padding-right: 0.125em; // 6px
-			float: left;
-		}
 		@include mq(col2, col3) {
 			padding-left: cols($base-3, 1, 1);
-			> p:first-of-type:first-letter {
-				font-size: 5.2222em;
-			}
 		}
 		@include mq($from: col3) {
 			padding-left: cols($base-4, 1, 1);
-			> p:first-of-type:first-letter {
-				font-size: 5.2222em;
-			}
 		}
 
 		.figure-wide,
@@ -230,10 +219,8 @@
 			background-color: $feature1-accent;
 		}
 	}
-	.prose {
-		p {
-			@include text-underline($feature1, $white, $feature1-accent);
-		}
+	.prose p {
+		@include text-underline($feature1, $white, $feature1-accent);
 	}
 	.article {
 		border-top-color: $feature1-accent;
@@ -271,10 +258,8 @@
 			background-color: $feature2-accent;
 		}
 	}
-	.prose {
-		p {
-			@include text-underline($feature2, $white, $feature2-accent);
-		}
+	.prose p {
+		@include text-underline($feature2, $white, $feature2-accent);
 	}
 	.article {
 		border-top-color: $feature2-accent;
@@ -312,10 +297,8 @@
 			background-color: $feature3-accent;
 		}
 	}
-	.prose {
-		p {
-			@include text-underline($feature3, $white, $feature3-accent);
-		}
+	.prose p {
+		@include text-underline($feature3, $white, $feature3-accent);
 	}
 	.article {
 		border-top-color: $feature3-accent;
