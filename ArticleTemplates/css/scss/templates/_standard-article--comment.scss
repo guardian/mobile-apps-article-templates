@@ -1,27 +1,3 @@
-.comment {
-	a,
-	.discussion__view-more {
-		color: $comment;
-		&:active {
-			color: $comment-accent-light;
-			.touchpoint__button--primary {
-				background-color: $comment-accent-light;
-			}
-		}
-	}
-	.touchpoint__button--primary {
-		background-color: $comment;
-		&:active {
-			background-color: $comment-accent-light;
-		}
-	}
-	.prose {
-		p {
-			@include text-underline($comment, $comment-bg, $comment-accent-light);
-		}
-	}
-}
-
 #standard-article.comment {
 	.article {
 		background-color: $comment-bg;
@@ -69,5 +45,27 @@
 				@include order(3);
 			}
 		}
+	}
+}
+
+.comment {
+	a,
+	.discussion__view-more {
+		color: $comment;
+		&:active {
+			color: $comment-accent-light;
+			.touchpoint__button--primary {
+				background-color: $comment-accent-light;
+			}
+		}
+	}
+	.touchpoint__button--primary {
+		background-color: $comment;
+		&:active {
+			background-color: $comment-accent-light;
+		}
+	}
+	.prose p {
+		@include text-underline($comment, $comment-bg, $comment-accent-light);
 	}
 }

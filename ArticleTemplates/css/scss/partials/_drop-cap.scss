@@ -1,0 +1,18 @@
+#standard-article[class*="feature"],
+#standard-article.comment {
+	.prose {
+		> p:first-of-type:first-letter {
+			font-family: $egyptian-display;
+			font-weight: 100;
+			font-style: normal;
+			font-size: 3.3334em;
+			line-height: 1;
+			margin-bottom: -16px;
+			padding-right: 0.1em; // 6px
+			float: left;
+			@include mq($from: col2) {
+				font-size: 5.2222em;
+			}
+		}
+	}
+}
