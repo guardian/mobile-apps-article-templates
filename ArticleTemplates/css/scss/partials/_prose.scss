@@ -1,6 +1,20 @@
 .prose {
 	@include body();
 
+	h2 {
+		font-family: $egyptian-display;
+		font-weight: 600;
+		font-size: 1em;
+		margin: 1.5em 0 0 0;
+		strong, b {
+			font-weight: bold;
+		}
+	}
+
+	h2 + p {
+		margin-top: 0;
+	}
+
 	p {
 		@include text-underline($news, $white, $news-accent);
 	}
@@ -21,6 +35,12 @@
 			content: counter(li)". ";
 			counter-increment: li;
 		}
+	}
+
+	hr {
+		border: 0;
+		height: 1px;
+		background: $shadow;
 	}
 
 	blockquote {
@@ -59,25 +79,5 @@
 				@include margin(0.5, 0);
 			}
 		}
-	}
-
-	hr {
-		border: 0;
-		height: 1px;
-		background: $shadow;
-	}
-
-	h2 {
-		font-family: $egyptian-display;
-		font-weight: 600;
-		font-size: 1em;
-		margin: 1.5em 0 0 0;
-		strong, b {
-			font-weight: bold;
-		}
-	}
-
-	h2 + p {
-		margin-top: 0;
 	}
 }

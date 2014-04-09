@@ -1,4 +1,9 @@
 #football {
+	.prose table,
+	.table {
+		border-top-color: $news-accent;
+	}
+	
 	.article {
 		background-color: transparent;
 		border-bottom: none;
@@ -598,35 +603,6 @@
 				}
 			}
 		}
-		.football-table {
-			.football-table-entry {
-				border-top: 1px solid $background;
-				& > div {
-					display: inline-block;
-					margin-right: -4px;
-					overflow: hidden;
-				}
-				&.football-table-key {
-					font-weight: bold;
-					border-top: 2px solid $news-accent;
-					.football-table-position {
-						color: $headline;
-					}
-				}
-				&.divider {
-					border-top: 1px solid $shadow;
-				}
-				.football-table-position {
-					color: $meta;
-					.icon.up {
-						color: #85c54b;
-					}
-					.icon.down {
-						color: $alert;
-					}
-				}
-			}
-		}
 	}
 	.football-tabs-liveblog {
 		.article {
@@ -758,25 +734,8 @@
 					}
 				}
 			}
-			.football-table {
-				padding: $base-1 / 1.5;
-				.football-table-entry {
-					font-size: $meta-size-1;
-					line-height: $meta-lead-1;
-					padding: 3px 0 3px 44px;
-					margin-bottom: 8px;
-					.football-table-position {
-						width: 44px;
-						margin-left: -44px;
-					}
-					.football-table-team {
-						width: 56%;
-					}
-					.football-table-goaldiff, .football-table-points, .football-table-played {
-						width: 15%;
-						text-align: right;
-					}
-				}
+			.football-today {
+				margin: $base-1 / 1.5;
 			}
 		}
 	}
@@ -874,9 +833,6 @@
 			.football-today {
 				display: table;
 				width: 100%;
-				h2 {
-					padding-left: $base-2 * 8;
-				}
 				.football-fixtures {
 					padding: $base-2 / 1.5;
 					display: inline-block;
@@ -895,7 +851,8 @@
 							position: absolute;
 							left: 0;
 						}
-						.football-match-home, .football-match-away {
+						.football-match-home,
+						.football-match-away {
 							width: 40%;
 						}
 						.football-match-score {
@@ -903,30 +860,15 @@
 						}
 					}
 				}
-				.football-table {
-					padding: $base-2 / 1.5;
-					display: inline-block;
+				.table--football--caption {
+					padding-left: $base-2 * 8;
+				}
+				.table--football {
+					margin: $base-2 / 1.5;
+					margin-top: 0;
 					width: 50%;
-					vertical-align: top;
-					.football-table-entry {
-						font-size: $meta-size-2;
-						line-height: $meta-lead-2;
-						padding: 3px 0 0 $base-2 * 8;
-						margin-bottom: 8px;
-						position: relative;
-						.football-table-position {
-							width: $base-2 * 8;
-							float: left;
-							position: absolute;
-							left: 0;
-						}
-						.football-table-team {
-							width: 56%;
-						}
-						.football-table-goaldiff, .football-table-points, .football-table-played {
-							width: 15%;
-							text-align: right;
-						}
+					.football-stat--postition {
+						width: $base-2 * 8;
 					}
 				}
 			}
@@ -1026,9 +968,6 @@
 			.football-today {
 				display: table;
 				width: 100%;
-				h2 {
-					padding-left: $base-3 * 12;
-				}
 				.football-fixtures {
 					padding: $base-3 / 1.5;
 					display: inline-block;
@@ -1048,7 +987,8 @@
 							left: 0;
 							padding-left: $base-3;
 						}
-						.football-match-home, .football-match-away {
+						.football-match-home,
+						.football-match-away {
 							width: 40%;
 						}
 						.football-match-score {
@@ -1056,31 +996,15 @@
 						}
 					}
 				}
-				.football-table {
-					padding: $base-3 / 1.5;
-					display: inline-block;
+				.table--football--caption {
+					padding-left: $base-3 * 12;
+				}
+				.table--football {
+					margin: $base-3 / 1.5;
+					margin-top: 0;
 					width: 50%;
-					vertical-align: top;
-					.football-table-entry {
-						font-size: $meta-size-2;
-						line-height: $meta-lead-2;
-						padding: 3px 0 3px $base-3 * 12;
-						margin-bottom: 4px;
-						position: relative;
-						.football-table-position {
-							width: $base-3 * 12;
-							float: left;
-							position: absolute;
-							left: 0;
-							padding-left: $base-3;
-						}
-						.football-table-team {
-							width: 50%;
-						}
-						.football-table-goaldiff, .football-table-points, .football-table-played {
-							width: 15%;
-							text-align: right;
-						}
+					.football-stat--postition {
+						width: $base-3 * 12;
 					}
 				}
 			}
@@ -1177,9 +1101,6 @@
 			.football-today {
 				display: table;
 				width: 100%;
-				h2 {
-					padding-left: $base-4 * 12;
-				}
 				.football-fixtures {
 					padding: $base-4 / 1.5;
 					display: inline-block;
@@ -1199,7 +1120,8 @@
 							left: 0;
 							padding-left: $base-4;
 						}
-						.football-match-home, .football-match-away {
+						.football-match-home,
+						.football-match-away {
 							width: 40%;
 						}
 						.football-match-score {
@@ -1207,31 +1129,15 @@
 						}
 					}
 				}
-				.football-table {
-					padding: $base-4 / 1.5;
-					display: inline-block;
+				.table--football--caption {
+					padding-left: $base-4 * 12;
+				}
+				.table--football {
+					margin: $base-4 / 1.5;
+					margin-top: 0;
 					width: 50%;
-					vertical-align: top;
-					.football-table-entry {
-						font-size: $meta-size-2;
-						line-height: $meta-lead-2;
-						padding: 3px 0 3px $base-4 * 12;
-						margin-bottom: 4px;
-						position: relative;
-						.football-table-position {
-							width: $base-4 * 12;
-							float: left;
-							position: absolute;
-							left: 0;
-							padding-left: $base-4;
-						}
-						.football-table-team {
-							width: 55%;
-						}
-						.football-table-goaldiff, .football-table-points, .football-table-played {
-							width: 15%;
-							text-align: right;
-						}
+					.football-stat--postition {
+						width: $base-4 * 12;
 					}
 				}
 			}

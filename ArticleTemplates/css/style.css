@@ -1239,6 +1239,15 @@ figure.figure-inline {
   .prose {
     font-size: 1.8rem;
     line-height: 2.6rem; } }
+.prose h2 {
+  font-family: "Egyptian Display", Georgia, serif;
+  font-weight: 600;
+  font-size: 1em;
+  margin: 1.5em 0 0 0; }
+  .prose h2 strong, .prose h2 b {
+    font-weight: bold; }
+.prose h2 + p {
+  margin-top: 0; }
 .prose p a {
   background-image: linear-gradient(to bottom, white 50%, rgba(0, 86, 137, 0.67) 50%);
   background-repeat: repeat-x;
@@ -1260,6 +1269,10 @@ figure.figure-inline {
   .prose ol > li:before {
     content: counter(li) ". ";
     counter-increment: li; }
+.prose hr {
+  border: 0;
+  height: 1px;
+  background: #dcdad5; }
 .prose blockquote {
   color: #666666;
   font-style: italic;
@@ -1286,19 +1299,6 @@ figure.figure-inline {
       font-size: 1.6rem;
       line-height: 2.2rem;
       margin: 6px 0px 6px 0px; }
-.prose hr {
-  border: 0;
-  height: 1px;
-  background: #dcdad5; }
-.prose h2 {
-  font-family: "Egyptian Display", Georgia, serif;
-  font-weight: 600;
-  font-size: 1em;
-  margin: 1.5em 0 0 0; }
-  .prose h2 strong, .prose h2 b {
-    font-weight: bold; }
-.prose h2 + p {
-  margin-top: 0; }
 
 .font-size-1 .resizable {
   font-size: 70%;
@@ -1335,6 +1335,64 @@ figure.figure-inline {
 .selectable * {
   -webkit-user-select: text;
   -webkit-touch-callout: default; }
+
+.table,
+.prose table {
+  font-family: "Agate Sans", sans-serif;
+  margin: 12px 0px 12px 0px;
+  border-top: 2px solid #dcdad5; }
+  @media all and (max-width: 40.615em) {
+    .table,
+    .prose table {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) {
+    .table,
+    .prose table {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  .table td, .table th,
+  .prose table td,
+  .prose table th {
+    text-align: left;
+    vertical-align: top; }
+  .table th,
+  .prose table th {
+    padding: 3px 36px 12px 0px; }
+  .table td,
+  .prose table td {
+    border-top: 1px solid #f6f6f6;
+    padding: 3px 36px 12px 0px; }
+
+.table--football .table--football--caption {
+  font-family: "Egyptian Display", Georgia, serif;
+  font-weight: 600;
+  text-align: left;
+  margin: 0px 0px 6px 0px; }
+  @media all and (max-width: 40.615em) {
+    .table--football .table--football--caption {
+      font-size: 1.6rem;
+      line-height: 2.4rem; } }
+  @media all and (min-width: 40.625em) {
+    .table--football .table--football--caption {
+      font-size: 1.8rem;
+      line-height: 2.6rem; } }
+.table--football td.football-stat--postition {
+  color: #999999; }
+  .table--football td.football-stat--postition .icon.up {
+    color: #85c54b; }
+  .table--football td.football-stat--postition .icon.down {
+    color: #da1d1d; }
+.table--football .football-stat--team {
+  width: 55%; }
+.table--football .football-stat--played,
+.table--football .football-stat--difference,
+.table--football .football-stat--points {
+  text-align: right;
+  padding: 3px 0px 12px 36px;
+  width: 15%; }
+.table--football .football-stat--points {
+  font-weight: bold; }
 
 .icon {
   font-family: "Guardian Icons", Georgia, serif; }
@@ -2163,6 +2221,9 @@ aside {
 #liveblog.android .aside-witness {
   margin: 12px 12px 12px 12px; }
 
+#football .prose table,
+#football .table {
+  border-top-color: #4bc6df; }
 #football .article {
   background-color: transparent;
   border-bottom: none; }
@@ -2649,25 +2710,6 @@ aside {
       text-overflow: ellipsis; }
     #football .football-tabs-stats .football-fixtures .football-match .football-match-home {
       text-align: right; }
-  #football .football-tabs-stats .football-table .football-table-entry {
-    border-top: 1px solid #f6f6f6; }
-    #football .football-tabs-stats .football-table .football-table-entry > div {
-      display: inline-block;
-      margin-right: -4px;
-      overflow: hidden; }
-    #football .football-tabs-stats .football-table .football-table-entry.football-table-key {
-      font-weight: bold;
-      border-top: 2px solid #4bc6df; }
-      #football .football-tabs-stats .football-table .football-table-entry.football-table-key .football-table-position {
-        color: #333333; }
-    #football .football-tabs-stats .football-table .football-table-entry.divider {
-      border-top: 1px solid #dcdad5; }
-    #football .football-tabs-stats .football-table .football-table-entry .football-table-position {
-      color: #999999; }
-      #football .football-tabs-stats .football-table .football-table-entry .football-table-position .icon.up {
-        color: #85c54b; }
-      #football .football-tabs-stats .football-table .football-table-entry .football-table-position .icon.down {
-        color: #da1d1d; }
 #football .football-tabs-liveblog .article {
   padding-top: 0; }
 #football .football-tabs-liveblog .block:first-of-type {
@@ -2755,21 +2797,8 @@ aside {
         width: 40%; }
       #football .football-tabs-stats .football-fixtures .football-match .football-match-score {
         width: 20%; }
-  #football .football-tabs-stats .football-table {
-    padding: 2.89855%; }
-    #football .football-tabs-stats .football-table .football-table-entry {
-      font-size: 1.4rem;
-      line-height: 2rem;
-      padding: 3px 0 3px 44px;
-      margin-bottom: 8px; }
-      #football .football-tabs-stats .football-table .football-table-entry .football-table-position {
-        width: 44px;
-        margin-left: -44px; }
-      #football .football-tabs-stats .football-table .football-table-entry .football-table-team {
-        width: 56%; }
-      #football .football-tabs-stats .football-table .football-table-entry .football-table-goaldiff, #football .football-tabs-stats .football-table .football-table-entry .football-table-points, #football .football-tabs-stats .football-table .football-table-entry .football-table-played {
-        width: 15%;
-        text-align: right; } }
+  #football .football-tabs-stats .football-today {
+    margin: 2.89855%; } }
 @media all and (min-width: 28.125em) and (max-width: 40.615em) {
   #football .football-tabs-stats h2 {
     padding-left: 8.51064%;
@@ -2831,8 +2860,6 @@ aside {
   #football .football-tabs-stats .football-today {
     display: table;
     width: 100%; }
-    #football .football-tabs-stats .football-today h2 {
-      padding-left: 17.02128%; }
     #football .football-tabs-stats .football-today .football-fixtures {
       padding: 1.41844%;
       display: inline-block;
@@ -2850,31 +2877,19 @@ aside {
           float: left;
           position: absolute;
           left: 0; }
-        #football .football-tabs-stats .football-today .football-fixtures .football-match .football-match-home, #football .football-tabs-stats .football-today .football-fixtures .football-match .football-match-away {
+        #football .football-tabs-stats .football-today .football-fixtures .football-match .football-match-home,
+        #football .football-tabs-stats .football-today .football-fixtures .football-match .football-match-away {
           width: 40%; }
         #football .football-tabs-stats .football-today .football-fixtures .football-match .football-match-score {
           width: 20%; }
-    #football .football-tabs-stats .football-today .football-table {
-      padding: 1.41844%;
-      display: inline-block;
-      width: 50%;
-      vertical-align: top; }
-      #football .football-tabs-stats .football-today .football-table .football-table-entry {
-        font-size: 1.6rem;
-        line-height: 2.2rem;
-        padding: 3px 0 0 17.02128%;
-        margin-bottom: 8px;
-        position: relative; }
-        #football .football-tabs-stats .football-today .football-table .football-table-entry .football-table-position {
-          width: 17.02128%;
-          float: left;
-          position: absolute;
-          left: 0; }
-        #football .football-tabs-stats .football-today .football-table .football-table-entry .football-table-team {
-          width: 56%; }
-        #football .football-tabs-stats .football-today .football-table .football-table-entry .football-table-goaldiff, #football .football-tabs-stats .football-today .football-table .football-table-entry .football-table-points, #football .football-tabs-stats .football-today .football-table .football-table-entry .football-table-played {
-          width: 15%;
-          text-align: right; } }
+    #football .football-tabs-stats .football-today .table--football--caption {
+      padding-left: 17.02128%; }
+    #football .football-tabs-stats .football-today .table--football {
+      margin: 1.41844%;
+      margin-top: 0;
+      width: 50%; }
+      #football .football-tabs-stats .football-today .table--football .football-stat--postition {
+        width: 17.02128%; } }
 @media all and (min-width: 40.625em) and (max-width: 56.24em) {
   #football .football-tabs-stats h2 {
     padding-left: 8.4507%;
@@ -2936,8 +2951,6 @@ aside {
   #football .football-tabs-stats .football-today {
     display: table;
     width: 100%; }
-    #football .football-tabs-stats .football-today h2 {
-      padding-left: 16.90141%; }
     #football .football-tabs-stats .football-today .football-fixtures {
       padding: 0.93897%;
       display: inline-block;
@@ -2956,32 +2969,19 @@ aside {
           position: absolute;
           left: 0;
           padding-left: 1.40845%; }
-        #football .football-tabs-stats .football-today .football-fixtures .football-match .football-match-home, #football .football-tabs-stats .football-today .football-fixtures .football-match .football-match-away {
+        #football .football-tabs-stats .football-today .football-fixtures .football-match .football-match-home,
+        #football .football-tabs-stats .football-today .football-fixtures .football-match .football-match-away {
           width: 40%; }
         #football .football-tabs-stats .football-today .football-fixtures .football-match .football-match-score {
           width: 20%; }
-    #football .football-tabs-stats .football-today .football-table {
-      padding: 0.93897%;
-      display: inline-block;
-      width: 50%;
-      vertical-align: top; }
-      #football .football-tabs-stats .football-today .football-table .football-table-entry {
-        font-size: 1.6rem;
-        line-height: 2.2rem;
-        padding: 3px 0 3px 16.90141%;
-        margin-bottom: 4px;
-        position: relative; }
-        #football .football-tabs-stats .football-today .football-table .football-table-entry .football-table-position {
-          width: 16.90141%;
-          float: left;
-          position: absolute;
-          left: 0;
-          padding-left: 1.40845%; }
-        #football .football-tabs-stats .football-today .football-table .football-table-entry .football-table-team {
-          width: 50%; }
-        #football .football-tabs-stats .football-today .football-table .football-table-entry .football-table-goaldiff, #football .football-tabs-stats .football-today .football-table .football-table-entry .football-table-points, #football .football-tabs-stats .football-today .football-table .football-table-entry .football-table-played {
-          width: 15%;
-          text-align: right; } }
+    #football .football-tabs-stats .football-today .table--football--caption {
+      padding-left: 16.90141%; }
+    #football .football-tabs-stats .football-today .table--football {
+      margin: 0.93897%;
+      margin-top: 0;
+      width: 50%; }
+      #football .football-tabs-stats .football-today .table--football .football-stat--postition {
+        width: 16.90141%; } }
 @media all and (min-width: 56.25em) {
   #football .football-tabs-stats h2 {
     padding-left: 6.31579%;
@@ -3041,8 +3041,6 @@ aside {
   #football .football-tabs-stats .football-today {
     display: table;
     width: 100%; }
-    #football .football-tabs-stats .football-today h2 {
-      padding-left: 12.63158%; }
     #football .football-tabs-stats .football-today .football-fixtures {
       padding: 0.70175%;
       display: inline-block;
@@ -3061,32 +3059,19 @@ aside {
           position: absolute;
           left: 0;
           padding-left: 1.05263%; }
-        #football .football-tabs-stats .football-today .football-fixtures .football-match .football-match-home, #football .football-tabs-stats .football-today .football-fixtures .football-match .football-match-away {
+        #football .football-tabs-stats .football-today .football-fixtures .football-match .football-match-home,
+        #football .football-tabs-stats .football-today .football-fixtures .football-match .football-match-away {
           width: 40%; }
         #football .football-tabs-stats .football-today .football-fixtures .football-match .football-match-score {
           width: 20%; }
-    #football .football-tabs-stats .football-today .football-table {
-      padding: 0.70175%;
-      display: inline-block;
-      width: 50%;
-      vertical-align: top; }
-      #football .football-tabs-stats .football-today .football-table .football-table-entry {
-        font-size: 1.6rem;
-        line-height: 2.2rem;
-        padding: 3px 0 3px 12.63158%;
-        margin-bottom: 4px;
-        position: relative; }
-        #football .football-tabs-stats .football-today .football-table .football-table-entry .football-table-position {
-          width: 12.63158%;
-          float: left;
-          position: absolute;
-          left: 0;
-          padding-left: 1.05263%; }
-        #football .football-tabs-stats .football-today .football-table .football-table-entry .football-table-team {
-          width: 55%; }
-        #football .football-tabs-stats .football-today .football-table .football-table-entry .football-table-goaldiff, #football .football-tabs-stats .football-today .football-table .football-table-entry .football-table-points, #football .football-tabs-stats .football-today .football-table .football-table-entry .football-table-played {
-          width: 15%;
-          text-align: right; } }
+    #football .football-tabs-stats .football-today .table--football--caption {
+      padding-left: 12.63158%; }
+    #football .football-tabs-stats .football-today .table--football {
+      margin: 0.70175%;
+      margin-top: 0;
+      width: 50%; }
+      #football .football-tabs-stats .football-today .table--football .football-stat--postition {
+        width: 12.63158%; } }
 
 #football-fixtures .article {
   border-top-color: #333333;
@@ -3249,6 +3234,9 @@ aside {
   background-color: #005689; }
   .news .touchpoint__button--primary:active {
     background-color: #4bc6df; }
+.news .prose table,
+.news .table {
+  border-top-color: #4bc6df; }
 
 #standard-article .article__alerts {
   display: none; }
@@ -3280,6 +3268,11 @@ aside {
   #standard-article .article__body > .figure-wide:first-of-type,
   #standard-article .article__body > .element:first-of-type {
     margin-top: 0; }
+  @media all and (min-width: 28.125em) {
+    #standard-article .article__body .player-card {
+      margin: 12px 0px 12px 12px;
+      width: 50%;
+      float: right; } }
 
 #standard-article.comment .article {
   background-color: #eeebe8;
@@ -3341,6 +3334,9 @@ aside {
   text-shadow: 4px 2px #eeebe8, 3px 2px #eeebe8, 2px 2px #eeebe8, 1px 2px #eeebe8, 0px 2px #eeebe8, -1px 2px #eeebe8, -2px 2px #eeebe8, -3px 2px #eeebe8, -4px 2px #eeebe8; }
 .comment .prose p a:active {
   background-image: linear-gradient(to bottom, #eeebe8 50%, rgba(243, 159, 51, 0.67) 50%); }
+.comment .prose table,
+.comment .table {
+  border-top-color: #e6711b; }
 
 @media all and (min-width: 40.625em) and (max-width: 56.24em) {
   #standard-article[class*="feature"] .article__headline,
@@ -3478,21 +3474,25 @@ aside {
 @media all and (min-width: 40.625em) and (max-width: 56.24em) {
   #standard-article[class*="feature"] .article__body .figure-wide,
   #standard-article[class*="feature"] .article__body .element-video,
+  #standard-article[class*="feature"] .article__body .element-video-thumb,
   #standard-article[class*="feature"] .article__body .element-interactive {
     width: 148%;
     margin-left: -12.61972%; }
     #standard-article[class*="feature"] .article__body .figure-wide figcaption,
     #standard-article[class*="feature"] .article__body .element-video figcaption,
+    #standard-article[class*="feature"] .article__body .element-video-thumb figcaption,
     #standard-article[class*="feature"] .article__body .element-interactive figcaption {
       padding-left: 8.4507%; } }
 @media all and (min-width: 56.25em) {
   #standard-article[class*="feature"] .article__body .figure-wide,
   #standard-article[class*="feature"] .article__body .element-video,
+  #standard-article[class*="feature"] .article__body .element-video-thumb,
   #standard-article[class*="feature"] .article__body .element-interactive {
     width: 144%;
     margin-left: -9.43158%; }
     #standard-article[class*="feature"] .article__body .figure-wide figcaption,
     #standard-article[class*="feature"] .article__body .element-video figcaption,
+    #standard-article[class*="feature"] .article__body .element-video-thumb figcaption,
     #standard-article[class*="feature"] .article__body .element-interactive figcaption {
       padding-left: 6.31579%; } }
 @media all and (min-width: 40.625em) and (max-width: 56.24em) {
@@ -3523,6 +3523,9 @@ aside {
   text-shadow: 4px 2px white, 3px 2px white, 2px 2px white, 1px 2px white, 0px 2px white, -1px 2px white, -2px 2px white, -3px 2px white, -4px 2px white; }
 .feature1 .prose p a:active {
   background-image: linear-gradient(to bottom, white 50%, rgba(224, 43, 127, 0.67) 50%); }
+.feature1 .prose table,
+.feature1 .table {
+  border-top-color: #e02b7f; }
 .feature1 .article {
   border-top-color: #e02b7f; }
 .feature1 .article__header {
@@ -3557,6 +3560,9 @@ aside {
   text-shadow: 4px 2px white, 3px 2px white, 2px 2px white, 1px 2px white, 0px 2px white, -1px 2px white, -2px 2px white, -3px 2px white, -4px 2px white; }
 .feature2 .prose p a:active {
   background-image: linear-gradient(to bottom, white 50%, rgba(128, 6, 194, 0.67) 50%); }
+.feature2 .prose table,
+.feature2 .table {
+  border-top-color: #8006c2; }
 .feature2 .article {
   border-top-color: #8006c2; }
 .feature2 .article__header {
@@ -3591,6 +3597,9 @@ aside {
   text-shadow: 4px 2px white, 3px 2px white, 2px 2px white, 1px 2px white, 0px 2px white, -1px 2px white, -2px 2px white, -3px 2px white, -4px 2px white; }
 .feature3 .prose p a:active {
   background-image: linear-gradient(to bottom, white 50%, rgba(201, 0, 168, 0.67) 50%); }
+.feature3 .prose table,
+.feature3 .table {
+  border-top-color: #c900a8; }
 .feature3 .article {
   border-top-color: #c900a8; }
 .feature3 .article__header {
