@@ -603,6 +603,9 @@
 				}
 			}
 		}
+		.table--football {
+			margin-top: 0;
+		}
 	}
 	.football-tabs-liveblog {
 		.article {
@@ -716,7 +719,6 @@
 				}
 			}
 			.football-fixtures {
-				padding: $base-1 / 1.5;
 				.football-match {
 					font-size: $meta-size-1;
 					line-height: $meta-lead-1;
@@ -735,7 +737,10 @@
 				}
 			}
 			.football-today {
-				margin: $base-1 / 1.5;
+				.football-fixtures,
+				.football-table {
+					padding: $base-1 / 1.5;
+				}
 			}
 		}
 	}
@@ -833,12 +838,18 @@
 			.football-today {
 				display: table;
 				width: 100%;
-				.football-fixtures {
+				.football__label {
+					padding-left: $base-2 * 8;
+				}
+				.football-fixtures,
+				.football-table {
 					padding: $base-2 / 1.5;
 					display: inline-block;
 					width: 50%;
-					border-right: 1px dotted $background;
 					vertical-align: top;
+				}
+				.football-fixtures {
+					border-right: 1px dotted $background;
 					.football-match {
 						font-size: $meta-size-2;
 						line-height: $meta-lead-2;
@@ -860,13 +871,7 @@
 						}
 					}
 				}
-				.table--football--caption {
-					padding-left: $base-2 * 8;
-				}
 				.table--football {
-					margin: $base-2 / 1.5;
-					margin-top: 0;
-					width: 50%;
 					.football-stat--postition {
 						width: $base-2 * 8;
 					}
@@ -968,12 +973,19 @@
 			.football-today {
 				display: table;
 				width: 100%;
-				.football-fixtures {
-					padding: $base-3 / 1.5;
-					display: inline-block;
-					width: 50%;
-					border-right: 1px dotted $background;
+				.football__label {
+					padding-left: $base-3 * 12;
+				}
+				.football-fixtures,
+				.football-table {
 					vertical-align: top;
+					padding: $base-3 / 1.5;
+					width: 50%;
+					display: inline-block;
+				}
+				
+				.football-fixtures {
+					border-right: 1px dotted $background;
 					.football-match {
 						font-size: $meta-size-2;
 						line-height: $meta-lead-2;
@@ -996,13 +1008,7 @@
 						}
 					}
 				}
-				.table--football--caption {
-					padding-left: $base-3 * 12;
-				}
 				.table--football {
-					margin: $base-3 / 1.5;
-					margin-top: 0;
-					width: 50%;
 					.football-stat--postition {
 						width: $base-3 * 12;
 					}
@@ -1101,12 +1107,18 @@
 			.football-today {
 				display: table;
 				width: 100%;
-				.football-fixtures {
-					padding: $base-4 / 1.5;
-					display: inline-block;
-					width: 50%;
-					border-right: 1px dotted $background;
+				.football__label {
+					padding-left: $base-4 * 12;
+				}
+				.football-fixtures,
+				.football-table {
 					vertical-align: top;
+					padding: $base-4 / 1.5;
+					width: 50%;
+					display: inline-block;
+				}
+				.football-fixtures {
+					border-right: 1px dotted $background;
 					.football-match {
 						font-size: $meta-size-2;
 						line-height: $meta-lead-2;
@@ -1129,13 +1141,7 @@
 						}
 					}
 				}
-				.table--football--caption {
-					padding-left: $base-4 * 12;
-				}
 				.table--football {
-					margin: $base-4 / 1.5;
-					margin-top: 0;
-					width: 50%;
 					.football-stat--postition {
 						width: $base-4 * 12;
 					}
