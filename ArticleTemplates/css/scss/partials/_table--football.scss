@@ -1,4 +1,6 @@
 .table--football {
+	width: 100%;
+
 	td.football-stat--postition {
 		color: $meta;
 		.icon.up {
@@ -9,16 +11,15 @@
 		}
 	}
 
-	.football-stat--team {
-		width: 55%;
-	}
-
 	.football-stat--played,
 	.football-stat--difference,
 	.football-stat--points {
 		text-align: right;
-		@include padding(0.25, 0, 1, 3);
-		width: 15%;
+		@include padding(0.25, 0, 1, 1);
+		@include mq($from: col2) {
+			@include padding(0.25, 0, 1, 3);
+			width: 15%;
+		}
 	}
 
 	.football-stat--points {
