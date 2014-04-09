@@ -1,0 +1,82 @@
+$player-card-avatar: (
+	default: 44px,
+	large: 100px
+);
+
+
+/**
+ * The Markup for these classes come from the content API
+ * Which in turn gets the content from our Football tool
+ * You can find the templates here:
+ * https://github.com/guardian/frontend/tree/master/admin/app/views/football/player/cards
+ **/
+.player-card {
+	background: $background;
+	border-top: 2px solid $news;
+	@include padding(1);
+	@include margin(1, 0);
+	@include mq($from: col3) {
+		@include margin(1, 0, 1, 1);
+		width: 50%;
+		float: right;
+	}
+}
+
+.player-card__image-container {
+	float: right;
+}
+.player-card__image {
+	border-radius: 50%;
+	width: map-get($player-card-avatar, default);
+	height: map-get($player-card-avatar, default);
+	float: right;
+	@include mq($from: col1) {
+		width: map-get($player-card-avatar, large);
+		height: map-get($player-card-avatar, large);
+	}
+}
+
+.player-card__player {
+	@include margin(0, 0, 1, 0);
+	padding-right: map-get($player-card-avatar, default);
+	min-height: map-get($player-card-avatar, default);
+	@include mq($from: col1) {
+		padding-right: map-get($player-card-avatar, large);
+		min-height: map-get($player-card-avatar, large);
+	}
+}
+.player-card__name {
+	font-family: $egyptian-display;
+	@include standfirst();
+}
+.player-card__position {
+	color: $news;
+	font-family: $agate-sans;
+	@include meta();
+}
+
+.player-card__stats {
+	margin: 0;
+	padding: 0;
+}
+.player-card__stat-name,
+.player-card__stat-value {
+	@include padding(0.25, 0, 0.5, 0);
+}
+.player-card__stat-name {
+	font-family: $agate-sans;
+	font-size: $meta-size-1;
+	line-height: $meta-lead-1;
+	display: block;
+	float: left;
+	font-weight: normal;
+}
+.player-card__stat-value {
+	font-family: $agate-sans;
+	font-weight: bold;
+	font-size: $meta-size-1;
+	line-height: $meta-lead-1;
+	text-align: right;
+	border-top: 1px solid $shadow;
+	padding-left: 85%;
+}
