@@ -68,7 +68,6 @@
 	#advert-banner,
 	#advert-mobile-mpu,
 	#advert.block {
-		display: block;
 		padding: 0;
 		.advert-label {
 			padding: 6px 0;
@@ -113,7 +112,15 @@
 	}
 }
 
-@include mq(col1, col2) {
+.ads-mobile {
+	#advert-banner,
+	#advert-mobile-mpu,
+	#advert.block {
+		display: block;
+	}
+}
+
+.ads-tablet {
 	#advert-mpu,
 	#advert.block {
 		display: block;
@@ -123,7 +130,6 @@
 @include mq(col2, col3) {
 	#advert-mpu,
 	#advert.block {
-		display: block;
 		margin-right: -(cols($base-3, 4))+$base-3;
 	}
 }
@@ -131,7 +137,6 @@
 @include mq($from: col3) {
 	#advert-mpu,
 	#advert.block {
-		display: block;
 		margin-right: -(cols($base-4, 5));
 	}
 }

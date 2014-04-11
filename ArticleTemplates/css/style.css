@@ -214,7 +214,6 @@ html {
   #advert-banner,
   #advert-mobile-mpu,
   #advert.block {
-    display: block;
     padding: 0; }
     #advert-banner .advert-label,
     #advert-mobile-mpu .advert-label,
@@ -250,19 +249,22 @@ html {
   #advert-mobile-mpu,
   #advert.block {
     float: none; } }
-@media all and (min-width: 28.125em) and (max-width: 40.615em) {
-  #advert-mpu,
-  #advert.block {
-    display: block; } }
+.ads-mobile #advert-banner,
+.ads-mobile #advert-mobile-mpu,
+.ads-mobile #advert.block {
+  display: block; }
+
+.ads-tablet #advert-mpu,
+.ads-tablet #advert.block {
+  display: block; }
+
 @media all and (min-width: 40.625em) and (max-width: 56.24em) {
   #advert-mpu,
   #advert.block {
-    display: block;
     margin-right: -30.98592%; } }
 @media all and (min-width: 56.25em) {
   #advert-mpu,
   #advert.block {
-    display: block;
     margin-right: -30.52632%; } }
 .article {
   font-family: "Egyptian Text", Georgia, serif;
