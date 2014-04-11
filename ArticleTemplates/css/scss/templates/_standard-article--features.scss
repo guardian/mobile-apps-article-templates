@@ -172,6 +172,7 @@
 
 		.figure-wide,
 		.element-video,
+		.element-video-thumb,
 		.element-interactive {
 			@include mq(col2, col3) {
 				width: 148%;
@@ -222,6 +223,10 @@
 	.prose p {
 		@include text-underline($feature1, $white, $feature1-accent);
 	}
+	.prose table,
+	.table {
+		border-top-color: $feature1-accent;
+	}
 	.article {
 		border-top-color: $feature1-accent;
 	}
@@ -261,6 +266,10 @@
 	.prose p {
 		@include text-underline($feature2, $white, $feature2-accent);
 	}
+	.prose table,
+	.table {
+		border-top-color: $feature2-accent;
+	}
 	.article {
 		border-top-color: $feature2-accent;
 	}
@@ -299,6 +308,10 @@
 	}
 	.prose p {
 		@include text-underline($feature3, $white, $feature3-accent);
+	}
+	.prose table,
+	.table {
+		border-top-color: $feature3-accent;
 	}
 	.article {
 		border-top-color: $feature3-accent;

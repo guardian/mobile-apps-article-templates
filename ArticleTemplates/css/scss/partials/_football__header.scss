@@ -1,0 +1,354 @@
+.football__header {
+	background-color: white;
+	@include mq($from: col1) {
+		@include margin(0, 0, 1, 0);
+		position: relative;
+	}
+
+	.inner-header {
+		@include padding(0, 1);
+		overflow: auto;
+
+		.article__headline {
+			padding: 0;
+			width: 100%;
+			@include mq($to: col1) {
+				margin-bottom: 1px;
+			}
+			@include mq(col1, col2) {
+				font-size: 3.2rem;
+				margin-bottom: 2px;
+			}
+			@include mq($from: col2) {
+				margin-bottom: 4px;
+				font-size: 4.0rem;
+			}
+		}
+	}
+	
+	p {
+		font-family: $agate-sans;
+		margin-bottom: 0;
+		@include meta();
+		width: 100%;
+	}
+
+	.football__header__status {
+		display: inline-block;
+		background-color: white;
+		width: 44px;
+		height: 44px;
+		display: table;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-image: url("../css/img/football_symbols_time.svg");
+		color: $standfirst;
+		z-index: 10;
+		@include margin(0.5, 0, 0, 0);
+		@include mq($to: col1) {
+			float: left;
+			margin-right: 8px;
+		}
+		@include mq($from: col1) {
+			position: absolute;
+			left: 0;
+			right: 0;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		&.football__header__status--f p {
+			font-size: 1.2rem;
+		}
+
+		&.football__header__status--first,
+		&.football__header__status--second,
+		&.football__header__status--ht,
+		&.football__header__status--ft,
+		&.football__header__status--et,
+		&.football__header__status--p {
+			font-weight: bold;
+			color: $news-accent;
+		}
+
+		&.football__header__status--first {
+			background-image: url("../css/img/football_symbols_1st.svg");
+		}
+
+		&.football__header__status--second {
+			background-image: url("../css/img/football_symbols_2nd.svg");
+		}
+
+		&.football__header__status--ht {
+			background-image: url("../css/img/football_symbols_HT.svg");
+		}
+
+		&.football__header__status--ft {
+			background-image: url("../css/img/football_symbols_FT.svg");
+		}
+
+		&.football__header__status--et {
+			background-image: url("../css/img/football_symbols_ET.svg");
+		}
+
+		&.football__header__status--p {
+			background-image: url("../css/img/football_symbols_P.svg");
+		}
+
+		&.football__header__status--a,
+		&.football__header__status--c,
+		&.football__header__status--s {
+			font-weight: bold;
+			color: $alert;
+		}
+
+		&.football__header__status--a {
+			background-image: url("../css/img/football_symbols_A.svg");
+		}
+
+		&.football__header__status--c {
+			background-image: url("../css/img/football_symbols_C.svg");
+		}
+
+		&.football__header__status--s {
+			background-image: url("../css/img/football_symbols_S.svg");
+		}
+
+		p {
+			display: table-cell;
+			vertical-align: middle;
+			text-align: center;
+			width: 100%;
+		}
+	}
+	
+	.football__header__match-info {
+		@include margin(0.5, 0, 0.5, 0);
+		@include mq($to: col1) {
+			padding: 0 52px;
+		}
+		@include mq($from: col1) {
+			width: 50%;
+		}
+
+		p {
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+	}
+
+	&.is-alerts .article__alerts,
+	&.is-agg .football__header__score__agg {
+		display: block;
+	}
+
+	// Alerts
+	.article__alerts {
+		text-align: center;
+		font-size: 200%;
+		font-weight: normal;
+		position: relative;
+		z-index: 20;
+		@include mq($to: col1) {
+			display: inline-block;
+			float: right;
+			@include padding(1, 0, 0, 0);
+			width: auto;
+		}
+		@include mq($from: col1) {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+
+		span {
+			background-color: white;
+		}
+	}
+
+	// Aggregate Scores
+	.football__header__score__agg {
+		display: none;
+		color: $meta;
+		font-size: 50%;
+		line-height: 70%;
+		& > span {
+			display: none;
+		}
+		@include mq($to: col1) {
+			font-size: 75%;
+			margin-top: 6px;
+		}
+		@include mq($from: col1) {
+			margin-top: 10px;
+		}
+	}
+
+	// Horrible divider fix
+	.football__header__divider {
+		width: 50%;
+		border-right: 1px solid $shadow;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		@include mq($to: col1) {
+			display: none;
+		}
+	}
+
+	.football__header__home,
+	.football__header__away {
+		hyphens: auto;
+		word-break: break-word;
+		@include mq($to: col1) {
+			@include flexbox;
+			@include flex-direction(row);
+			width: 100%;
+			padding: 10px 0 !important;
+		}
+		@include mq($from: col1) {
+			width: 50%;
+			float: left;
+			display: table;
+			table-layout: fixed;
+			padding-bottom: 0;
+		}
+
+		.football__header__badge,
+		.football__header__info,
+		.football__header__score {
+			vertical-align: top;
+			@include mq($from: col1) {
+				display: table-cell;
+			}
+		}
+
+		.football__header__score {
+			@include mq($to: col1) {
+				width: 15%;
+				min-width: 50px;
+				text-align: right;
+			}
+			@include mq(col1, col2) {
+				width: $base-2 * 7;
+			}
+			@include mq(col2, col3) {
+				width: $base-3 * 10;
+			}
+			@include mq($from: col3) {
+				width: $base-4 * 12;
+			}
+		}
+
+		.football__header__info {
+			@include mq($to: col1) {
+				width: 65%;
+				padding-left: 8px;
+			}
+			h1 {
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+				padding-bottom: 2px;
+				position: relative;
+				z-index: 25;
+			}
+		}
+
+		.football__header__badge {
+			height: 60px;
+			@include mq($to: col1) {
+				width: 20%;
+				min-width: 44px;
+			}
+			@include mq($from: col1) {
+				padding-top: 4px;
+			}
+			@include mq(col1, col2) {
+				width: $base-2 * 8;
+			}
+			@include mq(col2, col3) {
+				width: $base-3 * 11;
+			}
+			@include mq($from: col3) {
+				width: $base-4 * 12;
+			}
+
+			img {
+				width: auto;
+				max-width: 100%;
+				height: auto;
+				max-height: 60px;
+				display: block;
+				margin: 2px auto 0 auto;
+			}
+		}
+	}
+
+	.football__header__home {
+		@include padding(0, 1, 2, 0);
+		@include mq($to: col1) {
+			border-top: 1px dotted $shadow;
+		}
+
+		.football__header__score {
+			@include mq($from: col1) {
+				text-align: right;
+			}
+		}
+
+		.football__header__badge {
+			@include mq(col1, col2) {
+				padding-right: $base-2 * 2;
+			}
+			@include mq(col2, col3) {
+				padding-right: $base-3 * 2;
+			}
+			@include mq($from: col3) {
+				padding-right: $base-4 * 2;
+			}
+		}
+	}
+
+	.football__header__away {
+		@include padding(0, 0, 2, 1);
+		@include flex-direction(row-reverse);
+
+		.football__header__score {
+			@include padding(0, 1, 0, 0);
+			@include mq($to: col1) {
+				padding: 0;
+			}
+		}
+
+		.football__header__badge {
+			@include mq(col1, col2) {
+				padding-left: $base-2 * 2;
+			}
+			@include mq(col2, col3) {
+				padding-left: $base-3 * 2;
+			}
+			@include mq($from: col3) {
+				padding-left: $base-3 * 2;
+			}
+		}
+	}
+
+	.football__header__comment {
+		width: 100%;
+		position: relative;
+		clear: both;
+
+		p {
+			@include padding(0.5, 1);
+			margin: 0 auto;
+			background-color: $white;
+			border: 1px solid $shadow;
+			border-bottom: none;
+			width: auto;
+			display: table;
+		}
+	}
+}

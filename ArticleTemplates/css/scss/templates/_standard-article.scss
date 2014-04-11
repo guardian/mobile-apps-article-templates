@@ -45,10 +45,18 @@
 			}
 		}
 
-		> .figure-wide,
-		> .element {
+		.figure-wide,
+		.element {
 			&:first-of-type {
 				margin-top: 0;
+			}
+		}
+		
+		@include mq($from: col1) {
+			.player-card {
+				@include margin (1, 0, 1, 1);
+				width: 50%;
+				float: right;
 			}
 		}
 	}
