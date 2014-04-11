@@ -46,6 +46,11 @@
 			}
 		}
 
+		.football__sublabel {
+			@include meta();
+			margin-bottom: 4px;
+		}
+
 		.football-lineups {
 			@include padding(1);
 			overflow-y: hidden;
@@ -124,8 +129,6 @@
 			position: relative;
 
 			.football__sublabel {
-				@include meta();
-				margin-bottom: 4px;
 				@include mq($to: col1) {
 					margin-left: -$base-1*4;
 					margin-right: -$base-1*4;
