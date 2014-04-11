@@ -6,7 +6,7 @@
 	}
 
 	.inner-header {
-		@include padding(0, 1, 1, 1);
+		@include padding(0, 1);
 		overflow: auto;
 
 		.article__headline {
@@ -336,18 +336,19 @@
 		}
 	}
 
-	.football-comment {
+	.football__header__comment {
 		width: 100%;
 		position: relative;
+		clear: both;
 
-		div {
-			padding: 6px 8px;
+		p {
+			@include padding(0.5, 1);
 			margin: 0 auto;
-			display: table;
-			text-align: center;
 			background-color: $white;
 			border: 1px solid $shadow;
 			border-bottom: none;
+			width: auto;
+			display: table;
 		}
 	}
 }

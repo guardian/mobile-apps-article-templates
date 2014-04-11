@@ -1,15 +1,15 @@
 			<div class="football-stats">
 				<h2 class="football__label">Stats</h2>
 					<div class="football-possession">
-						<p>Possession</p>
+						<p class="football__sublabel">Possession</p>
 						<div class="football-possession-wrapper">
 							<svg class="football-chart" data-home="__FOOTBALL_HOME_POSSESSION__" data-away="__FOOTBALL_AWAY_POSSESSION__"></svg>
 						</div>
 					</div>
 					
 					<div class="football-stats-column">
-						<p>Goal Attempts</p>
-						<div class="football-shots-wrapper">
+						<p class="football__sublabel">Goal Attempts</p>
+						<div class="football-shots">
 							<div class="football-shots-home">
 								<p>Off target <span>__FOOTBALL_HOME_SHOTS_OFF__</span></p>
 								<p>On target <span>__FOOTBALL_HOME_SHOTS_ON__</span></p>
@@ -21,13 +21,13 @@
 							</div>
 						</div>
 							
-						<p>Corners</p>
+						<p class="football__sublabel">Corners</p>
 						<div class="football-line">
 							<div class="football-line-home" style="width: __FOOTBALL_HOME_CORNERS_PERCENT__%">__FOOTBALL_HOME_CORNERS__</div>
 							__FOOTBALL_AWAY_CORNERS__
 						</div>
 						
-						<p>Fouls</p>
+						<p class="football__sublabel">Fouls</p>
 						<div class="football-line">
 							<div class="football-line-home" style="width: __FOOTBALL_HOME_FOULS_PERCENT__%">__FOOTBALL_HOME_FOULS__</div>
 							__FOOTBALL_AWAY_FOULS__
@@ -72,5 +72,4 @@
 					svg.football-chart .foreignObject:nth-of-type(1) {
 						color: __FOOTBALL_AWAY_TEXT_COLOUR__ !important;
 					}
-					
 				</style>
