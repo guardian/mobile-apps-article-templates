@@ -110,110 +110,80 @@ html {
     font-size: 1.8em;
     line-height: 1.444em; } }
 
-#advert-mpu,
-#advert-mobile-mpu,
-#advert-banner {
+.advert-slot {
   color: #666666;
   font-family: "Agate Sans", sans-serif;
   background: rgba(0, 0, 0, 0.07);
   display: none;
   overflow: auto; }
   @media all and (max-width: 40.615em) {
-    #advert-mpu,
-    #advert-mobile-mpu,
-    #advert-banner {
+    .advert-slot {
       font-size: 1.4rem;
       line-height: 2rem; } }
   @media all and (min-width: 40.625em) {
-    #advert-mpu,
-    #advert-mobile-mpu,
-    #advert-banner {
+    .advert-slot {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
-  #advert-mpu div, #advert-mpu img,
-  #advert-mobile-mpu div,
-  #advert-mobile-mpu img,
-  #advert-banner div,
-  #advert-banner img {
+  .advert-slot div, .advert-slot img {
     vertical-align: middle; }
-  #advert-mpu .advert-label,
-  #advert-mobile-mpu .advert-label,
-  #advert-banner .advert-label {
+  .advert-slot .advert-slot__label {
     overflow: auto; }
-  #advert-mpu .advert-wrapper,
-  #advert-mobile-mpu .advert-wrapper,
-  #advert-banner .advert-wrapper {
+  .advert-slot .advert-slot__wrapper {
     position: relative;
     background-color: #dcdad5;
     overflow: hidden; }
-    #advert-mpu .advert-wrapper #advert-mpu-content,
-    #advert-mpu .advert-wrapper #advert-banner-content,
-    #advert-mpu .advert-wrapper #advert-mobile-mpu-content,
-    #advert-mobile-mpu .advert-wrapper #advert-mpu-content,
-    #advert-mobile-mpu .advert-wrapper #advert-banner-content,
-    #advert-mobile-mpu .advert-wrapper #advert-mobile-mpu-content,
-    #advert-banner .advert-wrapper #advert-mpu-content,
-    #advert-banner .advert-wrapper #advert-banner-content,
-    #advert-banner .advert-wrapper #advert-mobile-mpu-content {
+    .advert-slot .advert-slot__wrapper .advert-slot__wrapper__content {
       position: absolute;
       bottom: 0; }
 
-#advert-banner,
-#advert-mobile-mpu {
-  padding: 0; }
-  #advert-banner .advert-label,
-  #advert-mobile-mpu .advert-label {
-    margin: 0 auto;
-    width: 300px; }
-  #advert-banner .advert-wrapper,
-  #advert-mobile-mpu .advert-wrapper {
-    margin: 0 auto; }
-
-#advert-banner {
+.advert-slot--banner {
   width: 100%;
   padding-bottom: 12px; }
-  #advert-banner .advert-label {
+  .advert-slot--banner .advert-slot__label {
     padding: 6px 0px 6px 0px; }
-  #advert-banner .advert-wrapper {
-    padding-top: 50px; }
+  .advert-slot--banner .advert-slot__wrapper {
+    padding-top: 50px;
+    width: 300px; }
 
-#advert-mobile-mpu,
-#advert-mpu {
+.advert-slot--mpu {
   width: 300px;
   border-top: 1px dotted #dcdad5; }
   @media all and (min-width: 40.625em) {
-    #advert-mobile-mpu,
-    #advert-mpu {
+    .advert-slot--mpu {
       float: right;
       margin-left: 20px;
       margin-bottom: 12px; } }
   @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    #advert-mobile-mpu,
-    #advert-mpu {
+    .advert-slot--mpu {
       margin-right: -30.98592%; } }
   @media all and (min-width: 56.25em) {
-    #advert-mobile-mpu,
-    #advert-mpu {
+    .advert-slot--mpu {
       margin-right: -30.52632%; } }
-  #advert-mobile-mpu .advert-label,
-  #advert-mpu .advert-label {
+  .advert-slot--mpu .advert-slot__label {
     padding: 6px 0px 24px 6px; }
-  #advert-mobile-mpu .advert-wrapper,
-  #advert-mpu .advert-wrapper {
+  .advert-slot--mpu .advert-slot__wrapper {
     padding-top: 250px; }
 
 @media all and (max-width: 40.615em) {
-  #advert-mpu {
+  .advert-slot--mpu--tablet {
     margin: 12px auto 0 auto; } }
 
-#advert-banner.false {
+.advert-slot--false {
   display: none; }
 
-.advert-config--mobile #advert-banner,
-.advert-config--mobile #advert-mobile-mpu {
-  display: block; }
+.advert-config--mobile .advert-slot--banner,
+.advert-config--mobile .advert-slot--mpu--mobile {
+  display: block;
+  padding: 0; }
+  .advert-config--mobile .advert-slot--banner .advert-slot__label,
+  .advert-config--mobile .advert-slot--mpu--mobile .advert-slot__label {
+    margin: 0 auto;
+    width: 300px; }
+  .advert-config--mobile .advert-slot--banner .advert-slot__wrapper,
+  .advert-config--mobile .advert-slot--mpu--mobile .advert-slot__wrapper {
+    margin: 0 auto; }
 
-.advert-config--tablet #advert-mpu {
+.advert-config--tablet .advert-slot--mpu--tablet {
   display: block; }
 
 .article {

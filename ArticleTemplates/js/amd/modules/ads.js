@@ -71,10 +71,10 @@ define([
 				});
 
 				if (config.adsConfig == "tablet" && counter == 3) {
-					var tabletMpuHtml = "<div id='advert-mpu'>" +
-											"<div class='advert-label'>Advertisement</div>" +
-											"<div class='advert-wrapper'>" +
-												"<div id=" + tabletMpuId + "></div>" +
+					var tabletMpuHtml = "<div class='advert-slot advert-slot--mpu advert-slot--mpu--tablet'>" +
+											"<div class='advert-slot__label'>Advertisement</div>" +
+											"<div class='advert-slot__wrapper'>" +
+												"<div class='advert-slot__wrapper__content' id=" + tabletMpuId + "></div>" +
 											"</div>" +
 										"</div>";
 
@@ -85,17 +85,17 @@ define([
 					});
 
 				} else if (config.adsConfig == "mobile") {
-					var mobileMpuHtml = "<div id='advert-mobile-mpu'>" +
-											"<div class='advert-label'>Advertisement</div>" +
-											"<div class='advert-wrapper'>" +
-												"<div id=" + mobileMpuId + "></div>" +
+					var mobileMpuHtml = "<div class='advert-slot advert-slot--mpu advert-slot--mpu--mobile'>" +
+											"<div class='advert-slot__label'>Advertisement</div>" +
+											"<div class='advert-slot__wrapper'>" +
+												"<div class='advert-slot__wrapper__content' id=" + mobileMpuId + "></div>" +
 											"</div>" +
 										"</div>",
 
-						bannerHtml =  "<div id=" + bannerHtmlId + "></div>";
+						bannerHtml =  "<div class='advert-slot__wrapper__content' id=" + bannerHtmlId + "></div>";
 
 					$(".article__body > p:nth-of-type(6)").after(mobileMpuHtml);
-					$(".advert-wrapper").prepend(bannerHtml);
+					$(".advert-slot__wrapper").prepend(bannerHtml);
 
 					googletag.cmd.push(function () {
 						googletag.display(mobileMpuId);

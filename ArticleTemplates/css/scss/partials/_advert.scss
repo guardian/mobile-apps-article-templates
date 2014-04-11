@@ -1,6 +1,4 @@
-#advert-mpu,
-#advert-mobile-mpu,
-#advert-banner {
+.advert-slot {
 	color: $standfirst;
 	font-family: $agate-sans;
 	@include meta();
@@ -12,54 +10,38 @@
 		vertical-align: middle;
 	}
 
-	.advert-label {
+	.advert-slot__label {
 		overflow: auto;
 	}
 
-	.advert-wrapper {
+	.advert-slot__wrapper {
 		position: relative;
 		background-color: $shadow;
 		overflow: hidden;
 
 		// This can be simplified if we add a single class
-		#advert-mpu-content,
-		#advert-banner-content,
-		#advert-mobile-mpu-content {
+		.advert-slot__wrapper__content {
 			position: absolute;
 			bottom: 0;
 		}
 	}
 }
 
-#advert-banner,
-#advert-mobile-mpu {
-	padding: 0;
-
-	.advert-label {
-		margin: 0 auto;
-		width: 300px;
-	}
-
-	.advert-wrapper {
-		margin: 0 auto;
-	}
-}
-
-#advert-banner {
+.advert-slot--banner {
 	width: 100%;
 	padding-bottom: 12px;
 	
-	.advert-label {
+	.advert-slot__label {
 		@include padding(0.5, 0);
 	}
 
-	.advert-wrapper {
+	.advert-slot__wrapper {
 		padding-top: 50px;
+		width: 300px;
 	}
 }
 
-#advert-mobile-mpu,
-#advert-mpu {
+.advert-slot--mpu {
 	width: 300px;
 	border-top: 1px dotted $shadow;
 	@include mq($from: col2) {
@@ -74,36 +56,46 @@
 		margin-right: -(cols($base-4, 5));
 	}
 
-	.advert-label {
+	.advert-slot__label {
 		@include padding(0.5, 0, 2, 0.5);
 	}
 
-	.advert-wrapper {
+	.advert-slot__wrapper {
 		padding-top: 250px;
 	}
 }
 
-#advert-mpu {
+.advert-slot--mpu--tablet {
 	@include mq($to: col2) {
 		margin: 12px auto 0 auto;
 	}
 }
 
 // Hides the pre-inserted banner for subscribers
-#advert-banner.false {
+.advert-slot--false {
 	display: none;
 }
 
 // Classes set on the body that determine the placement of adverts
 .advert-config--mobile {
-	#advert-banner,
-	#advert-mobile-mpu {
+	.advert-slot--banner,
+	.advert-slot--mpu--mobile {
 		display: block;
+		padding: 0;
+	
+		.advert-slot__label {
+			margin: 0 auto;
+			width: 300px;
+		}
+	
+		.advert-slot__wrapper {
+			margin: 0 auto;
+		}
 	}
 }
 
 .advert-config--tablet {
-	#advert-mpu {
+	.advert-slot--mpu--tablet {
 		display: block;
 	}
 }
