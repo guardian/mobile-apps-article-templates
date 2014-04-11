@@ -1,137 +1,100 @@
-#advert-mobile-mpu,
-#advert-mpu {
-	float: right;
-	width: 300px;
-	border-top: 1px dotted $shadow;
-	.advert-wrapper {
-		padding-top: 250px;
-	}
-}
-
-#advert-mpu,
-#advert-mobile-mpu,
-#advert-banner,
-#advert.block {
+.advert-slot {
 	color: $standfirst;
 	font-family: $agate-sans;
 	@include meta();
 	background: $advert-bg;
 	display: none;
 	overflow: auto;
+
 	div, img {
 		vertical-align: middle;
 	}
-	.advert-label {
+
+	.advert-slot__label {
 		overflow: auto;
-		@include margin(0.5, 0, 2, 0.5);
-		.icon-container {
-			display: none;
-			float: right;
-			margin-bottom: 4px;
-			.icon {
-				font-size: 20px;
-			}
-			.touchpoint__button--secondary {
-				color: $advert;
-				background-color: transparent;
-				border-color: $advert;
-				&:active {
-					color: $white;
-					background-color: $advert;
-				}
-			}
-		}
 	}
-	.advert-wrapper {
+
+	.advert-slot__wrapper {
 		position: relative;
 		background-color: $shadow;
 		overflow: hidden;
-		#advert-mpu-content,
-		#advert-banner-content,
-		#advert-mobile-mpu-content {
+
+		// This can be simplified if we add a single class
+		.advert-slot__wrapper__content {
 			position: absolute;
 			bottom: 0;
 		}
 	}
 }
 
-#advert-mpu {
-	margin-left: 20px;
-	margin-bottom: 12px;
+.advert-slot--banner {
+	width: 100%;
+	@include padding(0, 0, 1, 0);
+	
+	.advert-slot__label {
+		@include padding(0.5, 0);
+	}
+
+	.advert-slot__wrapper {
+		padding-top: 50px;
+		width: 300px;
+	}
 }
 
-#advert-banner.false {
+.advert-slot--mpu {
+	width: 300px;
+	border-top: 1px dotted $shadow;
+	@include mq($from: col2) {
+		float: right;
+		margin-left: 20px;
+		margin-bottom: 12px;
+	}
+	@include mq(col2, col3) {
+		margin-right: -(cols($base-3, 4))+$base-3;
+	}
+	@include mq($from: col3) {
+		margin-right: -(cols($base-4, 5));
+	}
+
+	.advert-slot__label {
+		@include padding(0.5, 0, 2, 0.5);
+	}
+
+	.advert-slot__wrapper {
+		padding-top: 250px;
+	}
+}
+
+.advert-slot--mpu--tablet {
+	@include mq($to: col2) {
+		margin: 12px auto 0 auto;
+	}
+}
+
+// Hides the pre-inserted banner for subscribers
+.advert-slot--false {
 	display: none;
 }
 
-@include mq($to: col1) {
-	#advert-banner,
-	#advert-mobile-mpu,
-	#advert.block {
+// Classes set on the body that determine the placement of adverts
+.advert-config--mobile {
+	.advert-slot--banner,
+	.advert-slot--mpu--mobile {
 		display: block;
-		padding: 0;
-		.advert-label {
-			padding: 6px 0;
-			.icon-container {
-				margin-bottom: 4px;
-			}
-		}
-	}
-
-	#advert-banner,
-	#advert-mobile-mpu {
-		.advert-label {
-			padding: 6px 0;
+		
+		.advert-slot__label {
 			margin: 0 auto;
 			width: 300px;
 		}
-		.advert-wrapper {
+	
+		.advert-slot__wrapper {
 			margin: 0 auto;
-			width: 300px;
 		}
-	}
-
-	#advert-banner {
-		width: 100%;
-		padding-bottom: $base-1 / 1.5;
-		.advert-wrapper {
-			padding-top: 50px;
-		}
-	}
-
-	#advert-mobile-mpu {
-		margin: $base-1 / 1.5 auto;
-		width: 300px;
-		.advert-label {
-			padding: 6px;
-		}
-	}
-
-	#advert-mobile-mpu,
-	#advert.block {
-		float: none;
 	}
 }
 
-@include mq(col1, col2) {
-	#advert-mpu,
-	#advert.block {
+.advert-config--tablet {
+	.advert-slot--mpu--tablet {
 		display: block;
-	}
-}
-
-@include mq(col2, col3) {
-	#advert-mpu,
-	#advert.block {
-		display: block;
-		margin-right: -(cols($base-3, 4))+$base-3;
-	}
-}
-
-@include mq($from: col3) {
-	#advert-mpu,
-	#advert.block {
-		display: block;
-		margin-right: -(cols($base-4, 5));
 	}
 }
