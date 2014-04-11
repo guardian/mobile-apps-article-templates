@@ -110,19 +110,9 @@ html {
     font-size: 1.8em;
     line-height: 1.444em; } }
 
-#advert-mobile-mpu,
-#advert-mpu {
-  float: right;
-  width: 300px;
-  border-top: 1px dotted #dcdad5; }
-  #advert-mobile-mpu .advert-wrapper,
-  #advert-mpu .advert-wrapper {
-    padding-top: 250px; }
-
 #advert-mpu,
 #advert-mobile-mpu,
-#advert-banner,
-#advert.block {
+#advert-banner {
   color: #666666;
   font-family: "Agate Sans", sans-serif;
   background: rgba(0, 0, 0, 0.07);
@@ -131,60 +121,28 @@ html {
   @media all and (max-width: 40.615em) {
     #advert-mpu,
     #advert-mobile-mpu,
-    #advert-banner,
-    #advert.block {
+    #advert-banner {
       font-size: 1.4rem;
       line-height: 2rem; } }
   @media all and (min-width: 40.625em) {
     #advert-mpu,
     #advert-mobile-mpu,
-    #advert-banner,
-    #advert.block {
+    #advert-banner {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
   #advert-mpu div, #advert-mpu img,
   #advert-mobile-mpu div,
   #advert-mobile-mpu img,
   #advert-banner div,
-  #advert-banner img,
-  #advert.block div,
-  #advert.block img {
+  #advert-banner img {
     vertical-align: middle; }
   #advert-mpu .advert-label,
   #advert-mobile-mpu .advert-label,
-  #advert-banner .advert-label,
-  #advert.block .advert-label {
-    overflow: auto;
-    margin: 6px 0px 24px 6px; }
-    #advert-mpu .advert-label .icon-container,
-    #advert-mobile-mpu .advert-label .icon-container,
-    #advert-banner .advert-label .icon-container,
-    #advert.block .advert-label .icon-container {
-      display: none;
-      float: right;
-      margin-bottom: 4px; }
-      #advert-mpu .advert-label .icon-container .icon,
-      #advert-mobile-mpu .advert-label .icon-container .icon,
-      #advert-banner .advert-label .icon-container .icon,
-      #advert.block .advert-label .icon-container .icon {
-        font-size: 20px; }
-      #advert-mpu .advert-label .icon-container .touchpoint__button--secondary,
-      #advert-mobile-mpu .advert-label .icon-container .touchpoint__button--secondary,
-      #advert-banner .advert-label .icon-container .touchpoint__button--secondary,
-      #advert.block .advert-label .icon-container .touchpoint__button--secondary {
-        color: #aaaaaa;
-        background-color: transparent;
-        border-color: #aaaaaa; }
-        #advert-mpu .advert-label .icon-container .touchpoint__button--secondary:active,
-        #advert-mobile-mpu .advert-label .icon-container .touchpoint__button--secondary:active,
-        #advert-banner .advert-label .icon-container .touchpoint__button--secondary:active,
-        #advert.block .advert-label .icon-container .touchpoint__button--secondary:active {
-          color: white;
-          background-color: #aaaaaa; }
+  #advert-banner .advert-label {
+    overflow: auto; }
   #advert-mpu .advert-wrapper,
   #advert-mobile-mpu .advert-wrapper,
-  #advert-banner .advert-wrapper,
-  #advert.block .advert-wrapper {
+  #advert-banner .advert-wrapper {
     position: relative;
     background-color: #dcdad5;
     overflow: hidden; }
@@ -196,76 +154,68 @@ html {
     #advert-mobile-mpu .advert-wrapper #advert-mobile-mpu-content,
     #advert-banner .advert-wrapper #advert-mpu-content,
     #advert-banner .advert-wrapper #advert-banner-content,
-    #advert-banner .advert-wrapper #advert-mobile-mpu-content,
-    #advert.block .advert-wrapper #advert-mpu-content,
-    #advert.block .advert-wrapper #advert-banner-content,
-    #advert.block .advert-wrapper #advert-mobile-mpu-content {
+    #advert-banner .advert-wrapper #advert-mobile-mpu-content {
       position: absolute;
       bottom: 0; }
 
-#advert-mpu {
-  margin-left: 20px;
-  margin-bottom: 12px; }
-
-#advert-banner.false {
-  display: none; }
-
-@media all and (max-width: 28.115em) {
-  #advert-banner,
-  #advert-mobile-mpu,
-  #advert.block {
-    padding: 0; }
-    #advert-banner .advert-label,
-    #advert-mobile-mpu .advert-label,
-    #advert.block .advert-label {
-      padding: 6px 0; }
-      #advert-banner .advert-label .icon-container,
-      #advert-mobile-mpu .advert-label .icon-container,
-      #advert.block .advert-label .icon-container {
-        margin-bottom: 4px; }
-
+#advert-banner,
+#advert-mobile-mpu {
+  padding: 0; }
   #advert-banner .advert-label,
   #advert-mobile-mpu .advert-label {
-    padding: 6px 0;
     margin: 0 auto;
     width: 300px; }
   #advert-banner .advert-wrapper,
   #advert-mobile-mpu .advert-wrapper {
-    margin: 0 auto;
-    width: 300px; }
+    margin: 0 auto; }
 
-  #advert-banner {
-    width: 100%;
-    padding-bottom: 2.89855%; }
-    #advert-banner .advert-wrapper {
-      padding-top: 50px; }
+#advert-banner {
+  width: 100%;
+  padding-bottom: 12px; }
+  #advert-banner .advert-label {
+    padding: 6px 0px 6px 0px; }
+  #advert-banner .advert-wrapper {
+    padding-top: 50px; }
 
-  #advert-mobile-mpu {
-    margin: 2.89855% auto;
-    width: 300px; }
-    #advert-mobile-mpu .advert-label {
-      padding: 6px; }
+#advert-mobile-mpu,
+#advert-mpu {
+  width: 300px;
+  border-top: 1px dotted #dcdad5; }
+  @media all and (min-width: 40.625em) {
+    #advert-mobile-mpu,
+    #advert-mpu {
+      float: right;
+      margin-left: 20px;
+      margin-bottom: 12px; } }
+  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    #advert-mobile-mpu,
+    #advert-mpu {
+      margin-right: -30.98592%; } }
+  @media all and (min-width: 56.25em) {
+    #advert-mobile-mpu,
+    #advert-mpu {
+      margin-right: -30.52632%; } }
+  #advert-mobile-mpu .advert-label,
+  #advert-mpu .advert-label {
+    padding: 6px 0px 24px 6px; }
+  #advert-mobile-mpu .advert-wrapper,
+  #advert-mpu .advert-wrapper {
+    padding-top: 250px; }
 
-  #advert-mobile-mpu,
-  #advert.block {
-    float: none; } }
+@media all and (max-width: 40.615em) {
+  #advert-mpu {
+    margin: 12px auto 0 auto; } }
+
+#advert-banner.false {
+  display: none; }
+
 .ads-mobile #advert-banner,
-.ads-mobile #advert-mobile-mpu,
-.ads-mobile #advert.block {
+.ads-mobile #advert-mobile-mpu {
   display: block; }
 
-.ads-tablet #advert-mpu,
-.ads-tablet #advert.block {
+.ads-tablet #advert-mpu {
   display: block; }
 
-@media all and (min-width: 40.625em) and (max-width: 56.24em) {
-  #advert-mpu,
-  #advert.block {
-    margin-right: -30.98592%; } }
-@media all and (min-width: 56.25em) {
-  #advert-mpu,
-  #advert.block {
-    margin-right: -30.52632%; } }
 .article {
   font-family: "Egyptian Text", Georgia, serif;
   background-color: white;

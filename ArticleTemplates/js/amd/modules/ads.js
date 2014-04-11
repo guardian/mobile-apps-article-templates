@@ -72,13 +72,7 @@ define([
 
 				if (windowWidth > 450 && counter == 3) {
 					var tabletMpuHtml = "<div id='advert-mpu'>" +
-											"<div class='advert-label'>Advertisement " +
-												"<div class='icon-container' onclick='javascript:window.location.href=&quot;x-gu://subscribe&quot;'>" +
-													"<div class='touchpoint touchpoint--secondary'>" +
-														"<span class='icon'>&#xe040;</span>" +
-													"</div>" +
-												"</div>" +
-											"</div>" +
+											"<div class='advert-label'>Advertisement</div>" +
 											"<div class='advert-wrapper'>" +
 												"<div id=" + tabletMpuId + "></div>" +
 											"</div>" +
@@ -92,13 +86,7 @@ define([
 
 				} else if (windowWidth <= 450) {
 					var mobileMpuHtml = "<div id='advert-mobile-mpu'>" +
-											"<div class='advert-label'>Advertisement " +
-												"<div class='icon-container' onclick='javascript:window.location.href=&quot;x-gu://subscribe&quot;'>" +
-													"<div class='touchpoint touchpoint--secondary'>" +
-														"<span class='icon'>&#xe040;</span>" +
-													"</div>" +
-												"</div>" +
-											"</div>" +
+											"<div class='advert-label'>Advertisement</div>" +
 											"<div class='advert-wrapper'>" +
 												"<div id=" + mobileMpuId + "></div>" +
 											"</div>" +
