@@ -52,7 +52,7 @@ define([
 				});
 			},
 
-			insertAds: function () {
+			insertAds: function (config) {
 				var googletag = window.googletag,
 					windowWidth = window.innerWidth;
 				
@@ -70,7 +70,7 @@ define([
 					
 				});
 
-				if (windowWidth > 450 && counter == 3) {
+				if (config.adsConfig == "tablet" && counter == 3) {
 					var tabletMpuHtml = "<div id='advert-mpu'>" +
 											"<div class='advert-label'>Advertisement</div>" +
 											"<div class='advert-wrapper'>" +
@@ -84,7 +84,7 @@ define([
 						googletag.display(tabletMpuId);
 					});
 
-				} else if (windowWidth <= 450) {
+				} else if (config.adsConfig == "mobile") {
 					var mobileMpuHtml = "<div id='advert-mobile-mpu'>" +
 											"<div class='advert-label'>Advertisement</div>" +
 											"<div class='advert-wrapper'>" +
@@ -111,7 +111,7 @@ define([
 				
 				if (config.adsEnabled == "true") {
 					modules.addGoogleTags(config);
-					modules.insertAds();
+					modules.insertAds(config);
 				} 
 				// console.info("Ads ready");
 			}
