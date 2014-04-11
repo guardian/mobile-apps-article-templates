@@ -52,7 +52,7 @@ define([
 				});
 			},
 
-			insertAds: function () {
+			insertAds: function (config) {
 				var googletag = window.googletag,
 					windowWidth = window.innerWidth;
 				
@@ -70,17 +70,11 @@ define([
 					
 				});
 
-				if (windowWidth > 450 && counter == 3) {
-					var tabletMpuHtml = "<div id='advert-mpu'>" +
-											"<div class='advert-label'>Advertisement " +
-												"<div class='icon-container' onclick='javascript:window.location.href=&quot;x-gu://subscribe&quot;'>" +
-													"<div class='touchpoint touchpoint--secondary'>" +
-														"<span class='icon'>&#xe040;</span>" +
-													"</div>" +
-												"</div>" +
-											"</div>" +
-											"<div class='advert-wrapper'>" +
-												"<div id=" + tabletMpuId + "></div>" +
+				if (config.adsConfig == "tablet" && counter == 3) {
+					var tabletMpuHtml = "<div class='advert-slot advert-slot--mpu advert-slot--mpu--tablet'>" +
+											"<div class='advert-slot__label'>Advertisement</div>" +
+											"<div class='advert-slot__wrapper'>" +
+												"<div class='advert-slot__wrapper__content' id=" + tabletMpuId + "></div>" +
 											"</div>" +
 										"</div>";
 
@@ -90,24 +84,18 @@ define([
 						googletag.display(tabletMpuId);
 					});
 
-				} else if (windowWidth <= 450) {
-					var mobileMpuHtml = "<div id='advert-mobile-mpu'>" +
-											"<div class='advert-label'>Advertisement " +
-												"<div class='icon-container' onclick='javascript:window.location.href=&quot;x-gu://subscribe&quot;'>" +
-													"<div class='touchpoint touchpoint--secondary'>" +
-														"<span class='icon'>&#xe040;</span>" +
-													"</div>" +
-												"</div>" +
-											"</div>" +
-											"<div class='advert-wrapper'>" +
-												"<div id=" + mobileMpuId + "></div>" +
+				} else if (config.adsConfig == "mobile") {
+					var mobileMpuHtml = "<div class='advert-slot advert-slot--mpu advert-slot--mpu--mobile'>" +
+											"<div class='advert-slot__label'>Advertisement</div>" +
+											"<div class='advert-slot__wrapper'>" +
+												"<div class='advert-slot__wrapper__content' id=" + mobileMpuId + "></div>" +
 											"</div>" +
 										"</div>",
 
-						bannerHtml =  "<div id=" + bannerHtmlId + "></div>";
+						bannerHtml =  "<div class='advert-slot__wrapper__content' id=" + bannerHtmlId + "></div>";
 
 					$(".article__body > p:nth-of-type(6)").after(mobileMpuHtml);
-					$(".advert-wrapper").prepend(bannerHtml);
+					$(".advert-slot__wrapper").prepend(bannerHtml);
 
 					googletag.cmd.push(function () {
 						googletag.display(mobileMpuId);
@@ -123,7 +111,7 @@ define([
 				
 				if (config.adsEnabled == "true") {
 					modules.addGoogleTags(config);
-					modules.insertAds();
+					modules.insertAds(config);
 				} 
 				// console.info("Ads ready");
 			}
