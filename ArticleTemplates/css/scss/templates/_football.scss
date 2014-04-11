@@ -1,9 +1,4 @@
 #football {
-	.prose table,
-	.table {
-		border-top-color: $news-accent;
-	}
-	
 	.article {
 		background-color: transparent;
 	}
@@ -222,7 +217,7 @@
 						float: left;
 						p {
 							color: $white;
-							@include padding(0.5);
+							@include padding(0.25, 0.5);
 							span {
 								display: block;
 								font-family: $egyptian-display;
@@ -260,13 +255,13 @@
 					@include standfirst();
 					text-align: right;
 					margin-bottom: 12px;
-					padding: 4px;
+					@include padding(0.25, 0.5);
 					width: 100%;
 					position: relative;
 
 					.football-line-home {
 						text-align: left;
-						padding: 4px;
+						@include padding(0.25, 0.5);
 						width: 50%;
 						position: absolute;
 						top: 0;
@@ -296,18 +291,18 @@
 				}
 			}
 
+			.football-fixtures {
+				@include mq($from: col1) {
+					padding-right: 12px;
+				}
+			}
+
 			.football-fixtures,
 			.football-table {
 				@include mq($from: col1) {
 					vertical-align: top;
 					width: 50%;
 					display: inline-block;
-				}
-			}
-
-			.football-fixtures {
-				@include mq($from: col1) {
-					padding-right: 12px;
 				}
 			}
 
