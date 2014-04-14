@@ -1,16 +1,4 @@
 #standard-article[class*="feature"] {
-	.article__headline,
-	.article__meta {
-		@include mq(col2, col3) {
-			margin-left: cols($base-3, 1, 0);
-			padding-right: cols($base-3, 0.5, 0);
-		}
-		@include mq($from: col3) {
-			margin-left: cols($base-4, 1, 0);
-			padding-right: cols($base-4, 0.5, 0);
-		}
-	}
-
 	.article__header {
 		@include mq(col2, 800px) {
 			padding-top: 34px;
@@ -66,11 +54,19 @@
 			line-height: 0.875; // 56px
 			@include padding(1, 1, 0, 1);
 		}
+		@include mq(col2, col3) {
+			margin-left: cols($base-3, 1, 0);
+			padding-right: cols($base-3, 0.5, 0);
+		}
+		@include mq($from: col3) {
+			margin-left: cols($base-4, 1, 0);
+			padding-right: cols($base-4, 0.5, 0);
+		}
 	}
 
 	.article__standfirst {
 		color: rgba(255, 255, 255, 0.8);
-		@include padding(0.5, 1, 5.5, 1);
+		@include padding(0.5, 1, 2, 1);
 		@include order(3);
 		@include mq(col2, col3) {
 			padding-left: cols($base-3, 1, 1);
@@ -84,22 +80,18 @@
 		}
 	}
 
-	.article__byline {
-		color: rgba(255, 255, 255, 0.8);
-		margin: 0;
-		@include padding(0.5, 1, 2, 1);
-		position: absolute;
-		top: -100%;
-		left: 0;
-		right: 0;
-	}
-
 	.article__meta {
 		color: rgba(255, 255, 255, 0.8);
 		border: 0 none;
 		margin-top: 0;
 		margin-bottom: 0;
 		@include order(6);
+		@include mq(col2, col3) {
+			margin-left: cols($base-3, 1, 0);
+		}
+		@include mq($from: col3) {
+			margin-left: cols($base-4, 1, 0);
+		}
 	}
 
 	.article__author__image,
@@ -111,6 +103,10 @@
 		@include mq(col2, col3) {
 			display: none;
 		}
+	}
+
+	.article__byline {
+		color: $white;
 	}
 
 	.article__image {
@@ -162,6 +158,10 @@
 		}
 	}
 
+	.article__pubdate {
+		color: rgba(255, 255, 255, 0.8);
+	}
+
 	.article__body {
 		@include mq(col2, col3) {
 			padding-left: cols($base-3, 1, 1);
@@ -205,129 +205,90 @@
 
 .feature1 {
 	a,
-	.discussion__view-more {
+	.discussion__view-more,
+	.article__body > p:first-of-type:first-letter,
+	.article__section {
 		color: $feature1;
-		&:active {
-			color: $feature1-accent;
-			.touchpoint__button--primary {
-				background-color: $feature1-accent;
-			}
-		}
 	}
+	a:active,
+	.discussion__view-more:active {
+		color: $feature1-accent;
+	}
+	.article__header,
 	.touchpoint__button--primary {
 		background-color: $feature1;
-		&:active {
-			background-color: $feature1-accent;
-		}
+	}
+	.article__standfirst,
+	.touchpoint__button--primary:active {
+		background-color: $feature1-accent;
 	}
 	.prose p {
 		@include text-underline($feature1, $white, $feature1-accent);
 	}
 	.prose table,
-	.table {
-		border-top-color: $feature1-accent;
-	}
-	.article {
-		border-top-color: $feature1-accent;
-	}
-	.article__header {
-		background-color: $feature1;
-	}
-	.article__standfirst,
-	.article__byline {
-		background-color: $feature1-accent;
-	}
+	.table,
+	.article,
 	.article__comments {
-		border-left-color: $feature1-accent;
-	}
-	.article__body > p:first-of-type:first-letter,
-	.article__section {
-		color: $feature1;
+		border-color: $feature1-accent;
 	}
 }
 
 .feature2 {
 	a,
-	.discussion__view-more {
+	.discussion__view-more,
+	.article__body > p:first-of-type:first-letter,
+	.article__section {
 		color: $feature2;
-		&:active {
-			color: $feature2-accent;
-			.touchpoint__button {
-				background-color: $feature2-accent;
-			}
-		}
 	}
+	a:active,
+	.discussion__view-more:active {
+		color: $feature2-accent;
+	}
+	.article__header,
 	.touchpoint__button--primary {
 		background-color: $feature2;
-		&:active {
-			background-color: $feature2-accent;
-		}
+	}
+	.article__standfirst,
+	.touchpoint__button--primary:active {
+		background-color: $feature2-accent;
 	}
 	.prose p {
 		@include text-underline($feature2, $white, $feature2-accent);
 	}
 	.prose table,
-	.table {
-		border-top-color: $feature2-accent;
-	}
-	.article {
-		border-top-color: $feature2-accent;
-	}
-	.article__header {
-		background-color: $feature2;
-	}
-	.article__standfirst,
-	.article__byline {
-		background-color: $feature2-accent;
-	}
+	.table,
+	.article,
 	.article__comments {
-		border-left-color: $feature2-accent;
-	}
-	.article__body > p:first-of-type:first-letter,
-	.article__section {
-		color: $feature2;
+		border-color: $feature2-accent;
 	}
 }
 
 .feature3 {
 	a,
-	.discussion__view-more {
+	.discussion__view-more,
+	.article__body > p:first-of-type:first-letter,
+	.article__section {
 		color: $feature3;
-		&:active {
-			color: $feature3-accent;
-			.touchpoint__button {
-				background-color: $feature3-accent;
-			}
-		}
 	}
+	a:active,
+	.discussion__view-more:active {
+		color: $feature3-accent;
+	}
+	.article__header,
 	.touchpoint__button--primary {
 		background-color: $feature3;
-		&:active {
-			background-color: $feature3-accent;
-		}
+	}
+	.article__standfirst,
+	.touchpoint__button--primary:active {
+		background-color: $feature3-accent;
 	}
 	.prose p {
 		@include text-underline($feature3, $white, $feature3-accent);
 	}
 	.prose table,
-	.table {
-		border-top-color: $feature3-accent;
-	}
-	.article {
-		border-top-color: $feature3-accent;
-	}
-	.article__header {
-		background-color: $feature3;
-	}
-	.article__standfirst,
-	.article__byline {
-		background-color: $feature3-accent;
-	}
+	.table,
+	.article,
 	.article__comments {
-		border-left-color: $feature3-accent;
-	}
-	.article__body > p:first-of-type:first-letter,
-	.article__section {
-		color: $feature3;
+		border-color: $feature3-accent;
 	}
 }
