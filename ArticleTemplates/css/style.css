@@ -800,6 +800,15 @@ ul.tabs li.selected {
     .discussion.blocked .discussion__recommend {
       display: none; }
 
+.article__controls__action {
+  float: right; }
+  @media all and (max-width: 40.615em) {
+    .article__controls__action a {
+      display: none; } }
+  .article__controls__action .comments-closed-label {
+    display: none;
+    color: #666666; }
+
 .discussion__thread {
   border-bottom: 2px solid #dcdad5; }
   .discussion__thread .discussion:nth-of-type(n+5) {
@@ -2135,14 +2144,6 @@ aside {
   #discussion .article__controls > div {
     display: table-cell;
     vertical-align: middle; }
-#discussion .article__controls__action {
-  float: right; }
-  @media all and (max-width: 40.615em) {
-    #discussion .article__controls__action a {
-      display: none; } }
-  #discussion .article__controls__action .comments-closed-label {
-    display: none;
-    color: #666666; }
 
 #comments.preview {
   background-color: #333333; }
