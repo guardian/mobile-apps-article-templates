@@ -800,6 +800,15 @@ ul.tabs li.selected {
     .discussion.blocked .discussion__recommend {
       display: none; }
 
+.article__controls__action {
+  float: right; }
+  @media all and (max-width: 40.615em) {
+    .article__controls__action a {
+      display: none; } }
+  .article__controls__action .comments-closed-label {
+    display: none;
+    color: #666666; }
+
 .discussion__thread {
   border-bottom: 2px solid #dcdad5; }
   .discussion__thread .discussion:nth-of-type(n+5) {
@@ -1568,6 +1577,8 @@ figure.figure-inline {
 .table--football {
   width: 100%;
   table-layout: fixed; }
+  .table--football .football-stat--postition {
+    width: 15%; }
   .table--football td.football-stat--postition {
     color: #999999; }
     .table--football td.football-stat--postition .icon.up {
@@ -2136,14 +2147,6 @@ aside {
   #discussion .article__controls > div {
     display: table-cell;
     vertical-align: middle; }
-#discussion .article__controls__action {
-  float: right; }
-  @media all and (max-width: 40.615em) {
-    #discussion .article__controls__action a {
-      display: none; } }
-  #discussion .article__controls__action .comments-closed-label {
-    display: none;
-    color: #666666; }
 
 #comments.preview {
   background-color: #333333; }
@@ -2776,7 +2779,7 @@ aside {
   .football-fixtures-row > div {
     display: table-cell;
     border-top: 1px solid #dcdad5;
-    padding: 3px 0px 12px 0px; }
+    padding: 3px 6px 12px 6px; }
     .football-fixtures-row > div.football-col-2, .football-fixtures-row > div.football-col-4 {
       white-space: nowrap;
       overflow: hidden;
@@ -3029,6 +3032,9 @@ aside {
     top: 4px;
     right: 0;
     left: 0; } }
+@media all and (min-width: 40.625em) {
+  #standard-article[class*="feature"].android .article__section {
+    top: 0; } }
 #standard-article[class*="feature"] .article__headline {
   color: #fff;
   position: relative;

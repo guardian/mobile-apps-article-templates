@@ -269,6 +269,21 @@
 	}
 }
 
+.article__controls__action {
+	float: right;
+
+	a {
+		@include mq($to: col2) {
+			display: none;
+		}
+	}
+	
+	.comments-closed-label {
+		display: none;
+		color: $standfirst;
+	}
+}
+
 // Expanding Logic
 .discussion__thread {
 	border-bottom: 2px solid $shadow;
