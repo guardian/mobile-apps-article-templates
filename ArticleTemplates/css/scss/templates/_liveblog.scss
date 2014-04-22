@@ -27,7 +27,9 @@
 
 	.article__byline,
 	.article__pubdate {
-		padding-left: 0;
+		@include mq($from: col2) {
+			padding-left: 0;
+		}
 	}
 
 	.article__live-summary {
