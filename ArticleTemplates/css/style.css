@@ -395,57 +395,32 @@ html {
       min-height: 320px;
       background-size: contain; } }
 
-ul.tabs li {
-  border-top: 2px solid #dcdad5;
-  padding-top: 2px;
-  display: inline-table;
-  font-family: "Agate Sans", sans-serif;
-  color: #666666; }
-ul.tabs li.selected {
-  border-top: 4px solid #005689;
-  font-weight: bold;
-  color: #005689; }
-@media all and (max-width: 28.115em) {
-  ul.tabs {
-    padding: 4.34783% 2.17391%;
-    font-size: 1.4rem;
-    display: table;
-    width: 100%;
-    box-sizing: border-box;
-    table-layout: fixed; }
-    ul.tabs li {
-      display: table-cell;
-      width: auto;
-      padding: 4px 4.34783% 4.34783% 0; }
-    ul.tabs li.selected {
-      padding-top: 2px; } }
-@media all and (min-width: 28.125em) and (max-width: 40.615em) {
-  ul.tabs {
-    margin: 2.12766% 0;
-    font-size: 1.6rem; }
-    ul.tabs li {
-      width: 21.2766%;
-      padding: 4px 4.25532% 4.25532% 0; }
-    ul.tabs li.selected {
-      padding-top: 2px; } }
-@media all and (min-width: 40.625em) and (max-width: 56.24em) {
-  ul.tabs {
-    margin: 1.40845% 0;
-    font-size: 1.6rem; }
-    ul.tabs li {
-      width: 25.35211%;
-      padding: 4px 0 2.8169% 0; }
-    ul.tabs li.selected {
-      padding-top: 2px; } }
-@media all and (min-width: 56.25em) {
-  ul.tabs {
-    margin: 1.05263% 0;
-    font-size: 1.6rem; }
-    ul.tabs li {
-      width: 25.26316%;
-      padding: 4px 0 2.10526% 0; }
-    ul.tabs li.selected {
-      padding-top: 2px; } }
+ul.tabs {
+  margin: 12px 0px 12px 0px; }
+  @media all and (max-width: 40.615em) {
+    ul.tabs {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) {
+    ul.tabs {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  ul.tabs li {
+    width: 33.3%;
+    padding: 6px 12px 24px 2.4px;
+    border-top: 2px solid #dcdad5;
+    display: inline-table;
+    font-family: "Agate Sans", sans-serif;
+    color: #666666;
+    margin-right: -4px; }
+    @media all and (max-width: 40.615em) {
+      ul.tabs li {
+        margin-right: -3px; } }
+  ul.tabs li.selected {
+    border-top: 4px solid #005689;
+    font-weight: bold;
+    color: #005689;
+    padding-top: 4px; }
 
 .article__tags {
   font-family: "Agate Sans", sans-serif;
