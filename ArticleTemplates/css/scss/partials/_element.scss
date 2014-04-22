@@ -60,7 +60,6 @@
 
 	.element-witness--footer {
 		color: $meta;
-		font-size: $meta-size-1;
 		@include padding(0.5, 0, 1, 0);
 	}
 
@@ -76,6 +75,33 @@
 	}
 }
 
+// Comment Embed
+.element-comment {
+	font-size: $meta-size-2;
+				line-height: $meta-lead-2;
+	font-family: $agate-sans;
+	
+	.d2-avatar {
+		@include margin(0.25, 0.5, 0, 0);
+		border-radius: 100%;
+		float: left;
+		width: 44px;
+		height: 44px;
+	}
+	
+	.d2-username {
+		color: $headline;
+		font-weight: bold;
+	}
+	
+	.d2-datetime {
+		color: $meta;
+	}
+	
+	.d2-badge {
+		display: none;
+	}
+}
 
 .element-image-inner,
 .element-video-inner {
