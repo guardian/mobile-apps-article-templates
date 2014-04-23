@@ -92,6 +92,10 @@ define([
 					$('.discussion__loading').remove();
 				};
 				
+				window.commentsClosed = function (state) {
+					$(".module--comments, #discussion").addClass("comments--" + state);
+				};
+				
 				// Functions for feedback on recommend buttons
 				window.commentsRecommendIncrease = function (id, number) {
 					var target = '#' + id + ' .discussion__recommend';
