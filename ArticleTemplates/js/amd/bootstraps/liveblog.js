@@ -102,6 +102,7 @@ define([
 				window.liveblogTime();
 				modules.blockUpdates();
 				modules.liveMore();
+				setInterval(liveblogTime, 30000);
 				// console.info("Liveblog ready");
 			}
 		};
