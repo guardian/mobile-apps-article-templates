@@ -113,6 +113,7 @@ define([
 				window.applyNativeFunctionCall('articleCommentsInserter');
 				window.applyNativeFunctionCall('commentsFailed');
 				window.applyNativeFunctionCall('commentsReplyFormatting');
+				window.applyNativeFunctionCall('commentsClosed');
 			}
 		},
 

@@ -18,6 +18,7 @@ var nativeFunctionCalls = [
     'articleTagInserter',
     'audioBackground',
     'commentsFailed',
+    'commentsClosed',
     'commentsReplyFormatting',
     'footballMatchInfo',
     'footballMatchInfoFailed',
