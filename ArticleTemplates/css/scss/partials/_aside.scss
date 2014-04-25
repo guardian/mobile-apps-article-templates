@@ -25,8 +25,10 @@ aside {
 			padding-right: 0;
 			margin-bottom: 18px;
 			border-bottom: 1px dotted $shadow;
+/*
 			@include flexbox;
 			@include align-items(center);
+*/
 		}
 		@include mq(col1, col2) {
 			width: cols($base-2, 3);
@@ -45,6 +47,10 @@ aside {
 				@include flexbox;
 				@include align-items(center);
 			}
+			
+			& > * {
+				display: block;
+			}
 
 			.touchpoint__button--primary {
 				background-color: $witness;
@@ -52,6 +58,8 @@ aside {
 				margin-right: 10px;
 				@include mq($to: col1) {
 					@include flex-shrink(0);
+					min-width: 44px;
+					-webkit-box-flex: 1;
 				}
 			}
 		
@@ -59,6 +67,7 @@ aside {
 				color: $witness;
 				padding: 0;
 				@include margin(0.5, 0, 0.5, 0);
+				-webkit-box-flex: 2;
 			}
 			
 			&:active {
@@ -77,6 +86,8 @@ aside {
 			height: 35px;
 			@include mq($to: col1) {
 				@include flex-shrink(0);
+				-webkit-box-flex: 3;
+				min-width: 90px;
 				width: 90px;
 				height: auto;
 			}
@@ -91,7 +102,7 @@ aside {
 		&.positioned {
 			display: block;
 			@include mq($to: col1) {
-				@include flexbox;
+				// @include flexbox;
 			}
 		}
 	}

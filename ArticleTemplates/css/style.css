@@ -1717,12 +1717,10 @@ aside {
         padding-right: 0;
         margin-bottom: 18px;
         border-bottom: 1px dotted #dcdad5;
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-box-align: center;
-        -webkit-align-items: center;
-        align-items: center; } }
+        /*
+        			@include flexbox;
+        			@include align-items(center);
+        */ } }
     @media all and (min-width: 28.125em) and (max-width: 40.615em) {
       aside.aside-witness {
         width: 36.17021%; } }
@@ -1742,6 +1740,8 @@ aside {
           -webkit-box-align: center;
           -webkit-align-items: center;
           align-items: center; } }
+      aside.aside-witness .touchpoint > * {
+        display: block; }
       aside.aside-witness .touchpoint .touchpoint__button--primary {
         background-color: #3e454c;
         color: #4bc6df;
@@ -1749,11 +1749,14 @@ aside {
         @media all and (max-width: 28.115em) {
           aside.aside-witness .touchpoint .touchpoint__button--primary {
             -webkit-flex-shrink: 0;
-            flex-shrink: 0; } }
+            flex-shrink: 0;
+            min-width: 44px;
+            -webkit-box-flex: 1; } }
       aside.aside-witness .touchpoint .touchpoint__label {
         color: #3e454c;
         padding: 0;
-        margin: 6px 0px 6px 0px; }
+        margin: 6px 0px 6px 0px;
+        -webkit-box-flex: 2; }
       aside.aside-witness .touchpoint:active .touchpoint__button {
         background-color: #4bc6df;
         color: #3e454c; }
@@ -1766,6 +1769,8 @@ aside {
         aside.aside-witness .aside-witness__powered {
           -webkit-flex-shrink: 0;
           flex-shrink: 0;
+          -webkit-box-flex: 3;
+          min-width: 90px;
           width: 90px;
           height: auto; } }
 
@@ -1773,11 +1778,6 @@ aside {
   display: none; }
   #standard-article aside.aside-witness.positioned {
     display: block; }
-    @media all and (max-width: 28.115em) {
-      #standard-article aside.aside-witness.positioned {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: flex; } }
 
 .bullet {
   color: transparent;
