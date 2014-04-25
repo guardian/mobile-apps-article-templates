@@ -50,7 +50,9 @@ aside {
 				background-color: $witness;
 				color: $news-accent;
 				margin-right: 10px;
-				@include flex-shrink(0);
+				@include mq($to: col1) {
+					@include flex-shrink(0);
+				}
 			}
 		
 			.touchpoint__label {
@@ -73,8 +75,8 @@ aside {
 		.aside-witness__powered {
 			width: 110px;
 			height: 35px;
-			@include flex-shrink(0);
 			@include mq($to: col1) {
+				@include flex-shrink(0);
 				width: 90px;
 				height: auto;
 			}
@@ -87,7 +89,10 @@ aside {
 		// Is made visible through js when it's correctly positioned
 		display: none;
 		&.positioned {
-			@include flexbox;
+			display: block;
+			@include mq($to: col1) {
+				@include flexbox;
+			}
 		}
 	}
 }
