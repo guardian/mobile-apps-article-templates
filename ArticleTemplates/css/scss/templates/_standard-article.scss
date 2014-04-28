@@ -44,6 +44,14 @@
 				width: 134%;
 			}
 		}
+		.element-video {
+			@include mq($to: col2) {
+				padding-bottom: 61.875%; // Compensation for width being 110%
+			}
+			@include mq($from: col2) {
+				padding-bottom: 75.375%; // Compensation for width being 134%
+			}
+		}
 
 		.figure-wide,
 		.element {

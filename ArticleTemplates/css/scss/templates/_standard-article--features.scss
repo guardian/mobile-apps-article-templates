@@ -197,6 +197,14 @@
 				}
 			}
 		}
+		.element-video {
+			@include mq(col2, col3) {
+				padding-bottom: 83.25%; // Compensation for width being 148%
+			}
+			@include mq($from: col3) {
+				padding-bottom: 81%; // Compensation for width being 144%
+			}
+		}
 	}
 
 	.article__tags {

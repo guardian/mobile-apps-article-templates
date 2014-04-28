@@ -865,21 +865,12 @@ ul.tabs {
   padding-bottom: 56.25%;
   overflow: hidden; }
   .element-video iframe, .element-video object, .element-video embed, .element-video video {
+    background-color: #000;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     position: absolute; }
-  .element-video video {
-    background-color: #000; }
-  @media all and (max-width: 40.615em) {
-    .element-video {
-      width: 100%;
-      padding-bottom: 61.4215%; } }
-  @media all and (min-width: 40.625em) {
-    .element-video {
-      width: 100%;
-      padding-bottom: 75.375%; } }
 
 .element-video-thumb {
   width: 100%; }
@@ -976,7 +967,8 @@ figure video {
 figure figcaption {
   color: #666666;
   font-family: "Agate Sans", sans-serif;
-  border-bottom: 1px dotted #dcdad5; }
+  border-bottom: 1px dotted #dcdad5;
+  padding: 6px 0px 24px 0px; }
   @media all and (max-width: 40.615em) {
     figure figcaption {
       font-size: 1.4rem;
@@ -1014,8 +1006,6 @@ figure.figure-inline {
   @media all and (min-width: 56.25em) {
     figure.figure-inline {
       margin-right: 2.10526%; } }
-  figure.figure-inline figcaption {
-    padding: 6px 0px 24px 0px; }
 
 .football__header {
   background-color: white; }
@@ -2931,6 +2921,12 @@ aside {
       #standard-article .article__body .element-interactive,
       #standard-article .article__body .element-video-thumb {
         width: 134%; } }
+  @media all and (max-width: 40.615em) {
+    #standard-article .article__body .element-video {
+      padding-bottom: 61.875%; } }
+  @media all and (min-width: 40.625em) {
+    #standard-article .article__body .element-video {
+      padding-bottom: 75.375%; } }
   #standard-article .article__body .figure-wide:first-of-type,
   #standard-article .article__body .element:first-of-type {
     margin-top: 0; }
@@ -3161,6 +3157,12 @@ aside {
     #standard-article[class*="feature"] .article__body .element-video-thumb figcaption,
     #standard-article[class*="feature"] .article__body .element-interactive figcaption {
       padding-left: 6.31579%; } }
+@media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  #standard-article[class*="feature"] .article__body .element-video {
+    padding-bottom: 83.25%; } }
+@media all and (min-width: 56.25em) {
+  #standard-article[class*="feature"] .article__body .element-video {
+    padding-bottom: 81%; } }
 @media all and (min-width: 40.625em) and (max-width: 56.24em) {
   #standard-article[class*="feature"] .article__tags {
     padding-left: 8.4507%; } }
