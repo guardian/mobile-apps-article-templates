@@ -12,6 +12,7 @@ figure {
 		font-family: $agate-sans;
 		@include meta();
 		border-bottom: 1px dotted $shadow;
+		@include padding(0.5, 0, 2, 0);
 		@include mq(col2, col3) {
 			padding-right: cols($base-3, 3);
 		}
@@ -51,9 +52,6 @@ figure {
 		}
 		@include mq($from: col3) {
 			margin-right: $base-4 * 2;
-		}
-		figcaption {
-			@include padding(0.5, 0, 2, 0);
 		}
 	}
 }

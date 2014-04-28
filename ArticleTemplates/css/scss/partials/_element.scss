@@ -1,41 +1,84 @@
-// Video
-.element-video {
-	width: 100%;
-	position: relative;
-	padding-bottom: 56.25%;
-	overflow: hidden;
-	iframe, object, embed, video {
-		width: 100%;
-		height: 100%;
-		top: 0;
-		left: 0;
-		position: absolute;
-	}
-	video {
-		background-color: #000;
-	}
-	@include mq($to: col2) {
-		width: 100%;
-		padding-bottom: 61.4215%; // Compensation for width being 109%
-	}
-	@include mq($from: col2) {
-		width: 100%;
-		padding-bottom: 75.375%; // Compensation for width being 134%
-	}
-}
-
-// Video thumbnail
-.element-video-thumb {
-	width: 100%;
-}
-
-
 // Audio, maps, and generic embeds
 .element-audio,
 .element-embed,
 .element-map {
 	iframe {
 		width: 100%;
+	}
+}
+
+
+// Video
+.element-video {
+	padding-bottom: 56.25%;
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+
+	iframe, object, embed, video {
+		background-color: #000;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		position: absolute;
+	}
+}
+
+
+// Video placeholder
+.element-placeholder {
+	width: 100%;
+
+	.element-placeholder__button {
+		@include padding(0,0,1,1);
+		position: absolute;
+		bottom: 0;
+		z-index: 2;
+
+		.touchpoint__button {
+			color: $headline;
+			background-color: $media;
+			&:active {
+				color: $media;
+				background-color: $headline;
+			}
+		}
+
+		.touchpoint__label {
+			color: $media;
+			text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+		}
+	}
+
+	&:active {
+		.touchpoint__button {
+			color: $media;
+			background-color: $headline;
+		}
+	}
+
+	.element-placeholder__inner {
+		padding-bottom: 56.25%; // Maintain 16:9 video ratio
+	}
+}
+
+
+// Image/video placeholder ratio containers
+.element-image__inner,
+.element-placeholder__inner {
+	background-color: $shadow;
+	padding-bottom: 60%;
+	position: relative;
+	overflow: hidden;
+
+	img {
+		position: absolute;
+		width: 100%;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
 	}
 }
 
@@ -75,12 +118,13 @@
 	}
 }
 
+
 // Comment Embed
 .element-comment {
-	font-size: $meta-size-2;
-				line-height: $meta-lead-2;
 	font-family: $agate-sans;
-	
+	font-size: $meta-size-2;
+	line-height: $meta-lead-2;
+
 	.d2-avatar {
 		@include margin(0.25, 0.5, 0, 0);
 		border-radius: 100%;
@@ -88,67 +132,17 @@
 		width: 44px;
 		height: 44px;
 	}
-	
+
 	.d2-username {
 		color: $headline;
 		font-weight: bold;
 	}
-	
+
 	.d2-datetime {
 		color: $meta;
 	}
-	
+
 	.d2-badge {
 		display: none;
-	}
-}
-
-.element-image-inner,
-.element-video-inner {
-	background-color: $shadow;
-	padding-bottom: 60%;
-	position: relative;
-	overflow: hidden;
-
-	img {
-		position: absolute;
-		width: 100%;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-	}
-}
-
-
-.element-video-inner {
-	padding-bottom: 56.25%; // 16:9 image ratio
-
-	.element-video__button {
-		position: absolute;
-		bottom: 0;
-		z-index: 2;
-		@include padding(0,0,1,1);
-
-		.touchpoint__button--primary {
-			color: $headline;
-			background-color: $media;
-			&:active {
-				color: $media;
-				background-color: $headline;
-			}
-		}
-
-		.touchpoint__label {
-			color: $media;
-			text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-		}
-	}
-
-	&:active {
-		.touchpoint__button {
-			color: $media;
-			background-color: $headline;
-		}
 	}
 }

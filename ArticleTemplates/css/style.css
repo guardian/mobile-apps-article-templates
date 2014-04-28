@@ -859,35 +859,60 @@ ul.tabs {
     #standard-article.comment .article__body > p:first-of-type:first-letter {
       font-size: 5.2222em; } }
 
+.element-audio iframe,
+.element-embed iframe,
+.element-map iframe {
+  width: 100%; }
+
 .element-video {
+  padding-bottom: 56.25%;
   width: 100%;
   position: relative;
-  padding-bottom: 56.25%;
   overflow: hidden; }
   .element-video iframe, .element-video object, .element-video embed, .element-video video {
+    background-color: #000;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     position: absolute; }
-  .element-video video {
-    background-color: #000; }
-  @media all and (max-width: 40.615em) {
-    .element-video {
-      width: 100%;
-      padding-bottom: 61.4215%; } }
-  @media all and (min-width: 40.625em) {
-    .element-video {
-      width: 100%;
-      padding-bottom: 75.375%; } }
 
-.element-video-thumb {
+.element-placeholder {
   width: 100%; }
+  .element-placeholder .element-placeholder__button {
+    padding: 0px 0px 12px 12px;
+    position: absolute;
+    bottom: 0;
+    z-index: 2; }
+    .element-placeholder .element-placeholder__button .touchpoint__button {
+      color: #333333;
+      background-color: #ffbb00; }
+      .element-placeholder .element-placeholder__button .touchpoint__button:active {
+        color: #ffbb00;
+        background-color: #333333; }
+    .element-placeholder .element-placeholder__button .touchpoint__label {
+      color: #ffbb00;
+      text-shadow: 0 0 4px rgba(0, 0, 0, 0.5); }
+  .element-placeholder:active .touchpoint__button {
+    color: #ffbb00;
+    background-color: #333333; }
+  .element-placeholder .element-placeholder__inner {
+    padding-bottom: 56.25%; }
 
-.element-audio iframe,
-.element-embed iframe,
-.element-map iframe {
-  width: 100%; }
+.element-image__inner,
+.element-placeholder__inner {
+  background-color: #dcdad5;
+  padding-bottom: 60%;
+  position: relative;
+  overflow: hidden; }
+  .element-image__inner img,
+  .element-placeholder__inner img {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; }
 
 .element-witness {
   font-family: "Agate Sans", sans-serif; }
@@ -917,9 +942,9 @@ ul.tabs {
       content: "\00B7   "; }
 
 .element-comment {
+  font-family: "Agate Sans", sans-serif;
   font-size: 1.6rem;
-  line-height: 2.2rem;
-  font-family: "Agate Sans", sans-serif; }
+  line-height: 2.2rem; }
   .element-comment .d2-avatar {
     margin: 3px 6px 0px 0px;
     border-radius: 100%;
@@ -934,41 +959,6 @@ ul.tabs {
   .element-comment .d2-badge {
     display: none; }
 
-.element-image-inner,
-.element-video-inner {
-  background-color: #dcdad5;
-  padding-bottom: 60%;
-  position: relative;
-  overflow: hidden; }
-  .element-image-inner img,
-  .element-video-inner img {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0; }
-
-.element-video-inner {
-  padding-bottom: 56.25%; }
-  .element-video-inner .element-video__button {
-    position: absolute;
-    bottom: 0;
-    z-index: 2;
-    padding: 0px 0px 12px 12px; }
-    .element-video-inner .element-video__button .touchpoint__button--primary {
-      color: #333333;
-      background-color: #ffbb00; }
-      .element-video-inner .element-video__button .touchpoint__button--primary:active {
-        color: #ffbb00;
-        background-color: #333333; }
-    .element-video-inner .element-video__button .touchpoint__label {
-      color: #ffbb00;
-      text-shadow: 0 0 4px rgba(0, 0, 0, 0.5); }
-  .element-video-inner:active .touchpoint__button {
-    color: #ffbb00;
-    background-color: #333333; }
-
 figure img {
   display: block; }
 figure video {
@@ -976,7 +966,8 @@ figure video {
 figure figcaption {
   color: #666666;
   font-family: "Agate Sans", sans-serif;
-  border-bottom: 1px dotted #dcdad5; }
+  border-bottom: 1px dotted #dcdad5;
+  padding: 6px 0px 24px 0px; }
   @media all and (max-width: 40.615em) {
     figure figcaption {
       font-size: 1.4rem;
@@ -1014,8 +1005,6 @@ figure.figure-inline {
   @media all and (min-width: 56.25em) {
     figure.figure-inline {
       margin-right: 2.10526%; } }
-  figure.figure-inline figcaption {
-    padding: 6px 0px 24px 0px; }
 
 .football__header {
   background-color: white; }
@@ -2916,21 +2905,27 @@ aside {
       padding-right: 24.21053%; } }
   #standard-article .article__body .figure-wide,
   #standard-article .article__body .element-video,
-  #standard-article .article__body .element-interactive,
-  #standard-article .article__body .element-video-thumb {
+  #standard-article .article__body .element-placeholder,
+  #standard-article .article__body .element-interactive {
     margin: 12px -12px 12px -12px; }
     @media all and (max-width: 40.615em) {
       #standard-article .article__body .figure-wide,
       #standard-article .article__body .element-video,
-      #standard-article .article__body .element-interactive,
-      #standard-article .article__body .element-video-thumb {
+      #standard-article .article__body .element-placeholder,
+      #standard-article .article__body .element-interactive {
         width: 110%; } }
     @media all and (min-width: 40.625em) {
       #standard-article .article__body .figure-wide,
       #standard-article .article__body .element-video,
-      #standard-article .article__body .element-interactive,
-      #standard-article .article__body .element-video-thumb {
+      #standard-article .article__body .element-placeholder,
+      #standard-article .article__body .element-interactive {
         width: 134%; } }
+  @media all and (max-width: 40.615em) {
+    #standard-article .article__body .element-video {
+      padding-bottom: 61.875%; } }
+  @media all and (min-width: 40.625em) {
+    #standard-article .article__body .element-video {
+      padding-bottom: 75.375%; } }
   #standard-article .article__body .figure-wide:first-of-type,
   #standard-article .article__body .element:first-of-type {
     margin-top: 0; }
@@ -3140,27 +3135,33 @@ aside {
 @media all and (min-width: 40.625em) and (max-width: 56.24em) {
   #standard-article[class*="feature"] .article__body .figure-wide,
   #standard-article[class*="feature"] .article__body .element-video,
-  #standard-article[class*="feature"] .article__body .element-video-thumb,
+  #standard-article[class*="feature"] .article__body .element-placeholder,
   #standard-article[class*="feature"] .article__body .element-interactive {
     width: 148%;
     margin-left: -12.61972%; }
     #standard-article[class*="feature"] .article__body .figure-wide figcaption,
     #standard-article[class*="feature"] .article__body .element-video figcaption,
-    #standard-article[class*="feature"] .article__body .element-video-thumb figcaption,
+    #standard-article[class*="feature"] .article__body .element-placeholder figcaption,
     #standard-article[class*="feature"] .article__body .element-interactive figcaption {
       padding-left: 8.4507%; } }
 @media all and (min-width: 56.25em) {
   #standard-article[class*="feature"] .article__body .figure-wide,
   #standard-article[class*="feature"] .article__body .element-video,
-  #standard-article[class*="feature"] .article__body .element-video-thumb,
+  #standard-article[class*="feature"] .article__body .element-placeholder,
   #standard-article[class*="feature"] .article__body .element-interactive {
     width: 144%;
     margin-left: -9.43158%; }
     #standard-article[class*="feature"] .article__body .figure-wide figcaption,
     #standard-article[class*="feature"] .article__body .element-video figcaption,
-    #standard-article[class*="feature"] .article__body .element-video-thumb figcaption,
+    #standard-article[class*="feature"] .article__body .element-placeholder figcaption,
     #standard-article[class*="feature"] .article__body .element-interactive figcaption {
       padding-left: 6.31579%; } }
+@media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  #standard-article[class*="feature"] .article__body .element-video {
+    padding-bottom: 83.25%; } }
+@media all and (min-width: 56.25em) {
+  #standard-article[class*="feature"] .article__body .element-video {
+    padding-bottom: 81%; } }
 @media all and (min-width: 40.625em) and (max-width: 56.24em) {
   #standard-article[class*="feature"] .article__tags {
     padding-left: 8.4507%; } }

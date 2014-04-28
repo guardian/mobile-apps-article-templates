@@ -178,7 +178,7 @@
 
 		.figure-wide,
 		.element-video,
-		.element-video-thumb,
+		.element-placeholder,
 		.element-interactive {
 			@include mq(col2, col3) {
 				width: 148%;
@@ -195,6 +195,14 @@
 				figcaption {
 					padding-left: cols($base-4, 1, 1);
 				}
+			}
+		}
+		.element-video {
+			@include mq(col2, col3) {
+				padding-bottom: 83.25%; // Compensation for width being 148%
+			}
+			@include mq($from: col3) {
+				padding-bottom: 81%; // Compensation for width being 144%
 			}
 		}
 	}
