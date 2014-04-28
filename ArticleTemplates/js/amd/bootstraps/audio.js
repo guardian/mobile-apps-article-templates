@@ -30,6 +30,10 @@ define([
 					
 					$(".audio-player__slider__knob").removeAttr("style");
 					
+					console.log(current);
+					console.log(duration);
+					console.log(platform);
+					
 					slider1 = new MobileRangeSlider('audio-player__slider', {
 						value: current,
 						min: 0,
@@ -135,6 +139,10 @@ define([
 						size = size * 1.3;
 					}
 				};
+
+				window.applyNativeFunctionCall('audioBackground');
+				window.applyNativeFunctionCall('superAudioSlider');
+
 			}
 		},
 

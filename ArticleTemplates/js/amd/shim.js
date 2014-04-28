@@ -17,6 +17,7 @@ var nativeFunctionCalls = [
     'articleCommentsInserter',
     'articleTagInserter',
     'audioBackground',
+    'superAudioSlider',
     'commentsFailed',
     'commentsClosed',
     'commentsReplyFormatting',
