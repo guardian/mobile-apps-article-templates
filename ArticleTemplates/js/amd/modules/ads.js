@@ -64,7 +64,7 @@ define([
 					
 					if (tagName == "P" || tagName == "H2" || tagName == "BLOCKQUOTE") {
 						counter++;
-					} else if (tagName == "FIGURE" && $(this).hasClass("element-video-thumb") || $(this).hasClass("element-video")) {
+					} else if (tagName == "FIGURE" && $(this).hasClass("element-placeholder") || $(this).hasClass("element-video")) {
 						counter++;
 					}
 					
