@@ -559,7 +559,6 @@ ul.tabs {
       line-height: 2.6rem; } }
   @media all and (max-width: 28.115em) {
     .discussion {
-      margin: 2.89855% 2.89855% 0 2.89855%;
       display: block; } }
   @media all and (min-width: 40.625em) {
     .discussion {
@@ -695,7 +694,8 @@ ul.tabs {
       font-weight: bold;
       float: left; }
     .discussion .discussion__options .discussion__report {
-      float: right; }
+      float: right;
+      margin-top: 3px; }
       .discussion .discussion__options .discussion__report .touchpoint__label {
         font-weight: normal; }
   .discussion .discussion__view-more {
@@ -792,6 +792,9 @@ ul.tabs {
 
 .discussion__thread {
   border-bottom: 2px solid #dcdad5; }
+  @media all and (max-width: 28.115em) {
+    .discussion__thread {
+      margin: 12px 12px 12px 12px; } }
   .discussion__thread .discussion:nth-of-type(n+5) {
     display: none; }
   .discussion__thread.discussion__thread--orphan .discussion {
