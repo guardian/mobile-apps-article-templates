@@ -21,7 +21,12 @@ define([
 						if (!$(this).hasClass("discussion__thread--checked")) {
 							if (typeof $(this)[0].children[4] !== "undefined") {
 								var blockID = "#" + $(this)[0].children[3].id;
-								$(blockID).append("<div class='discussion__view-more'><span class='icon'>&#xe050;</span> View more replies</div>");
+								var numOfComments = $(this)[0].children.length - 4;
+								if (numOfComments == 1) {
+									$(this).addClass("discussion__thread--orphan");
+								} else {
+									$(blockID).append("<div class='discussion__view-more'><span class='icon'>&#xe050;</span> Show " + numOfComments + " more replies</div>");
+								}
 							}
 						}
 						$(this).addClass("discussion__thread--checked");
@@ -36,21 +41,34 @@ define([
 						bean.on(el, 'click', '.discussion__header, .discussion__body', function (event) {
 							stopPropagation = 0;
 						});
-		 
+
 						bean.on(el, 'click', function () {
 							if (stopPropagation == 0) {
 								var block = $(el);
 								if (block.hasClass('visible')) {
-									if (block.hasClass('comments-open') === false) {
-										$('.comments-open .discussion__options').toggle();
-										$('.comments-open').removeClass('comments-open');
+									// Remove existing classes as the user either wants to hide or focus on new comment
+									$(".discussion--open").removeAttr("style");
+									$(".discussion--open").removeClass("discussion--open");
+									$(".discussion__options").removeClass("animated fadeInRight");
+									$(".discussion__timestamp").removeClass("animated scaleOut");
+									
+									// Add classes if not already shown
+									if (block.hasClass("discussion--open") === false) {
+										if (block.hasClass("is-response")) {
+											$(".discussion__timestamp", el).addClass("animated scaleOut");
+											$('.discussion__options', el).addClass("animated fadeInRight");
+										} else {
+											el.style.minHeight = block[0].clientHeight + 46;
+											setTimeout(function() {
+												$('.discussion__options', el).addClass("animated fadeInRight")
+											}, 350);
+										}
+										block.addClass('discussion--open');
 									}
-									block.toggleClass('comments-open');
-									$('.discussion__options', el).toggle(null, 'block');
 								}
 							}
 						});
-		 
+
 						bean.on(el, 'click', '.discussion__view-more', function () {
 							$(this).hide();
 							$(this).parent().parent().addClass("expand");
@@ -121,6 +139,7 @@ define([
 			if (!this.initialised) {
 				this.initialised = true;
 				modules.setupGlobals();
+				commentsReplyFormatting();
 				// console.info("Comments ready");
 			}
 		};
