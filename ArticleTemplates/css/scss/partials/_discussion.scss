@@ -6,6 +6,9 @@
 	@include margin(1, 0, 0, 0);
 	@include padding(1);
 	overflow: hidden;
+	-webkit-transition: min-height 300ms ease-in-out;
+	transition: min-height 300ms ease-in-out;
+	
 	@include mq($to: col1) {
 		display: block;
 	}
@@ -219,7 +222,7 @@
 		}
 
 		.discussion__timestamp {
-			@include margin(0, 0, 0.75, 0);
+			@include margin(0, 0, 1, 0);
 			position: absolute;
 			bottom: 0;
 		}
@@ -269,6 +272,13 @@
 		.discussion__recommend {
 			display: none;
 		}
+	}
+}
+
+.discussion--open {
+
+	.animated {
+		display: block;
 	}
 }
 
