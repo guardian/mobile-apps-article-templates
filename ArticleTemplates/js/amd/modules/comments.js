@@ -21,7 +21,12 @@ define([
 						if (!$(this).hasClass("discussion__thread--checked")) {
 							if (typeof $(this)[0].children[4] !== "undefined") {
 								var blockID = "#" + $(this)[0].children[3].id;
-								$(blockID).append("<div class='discussion__view-more'><span class='icon'>&#xe050;</span> View more replies</div>");
+								var numOfComments = $(this)[0].children.length - 4;
+								if (numOfComments == 1) {
+									$(this).addClass("discussion__thread--orphan");
+								} else {
+									$(blockID).append("<div class='discussion__view-more'><span class='icon'>&#xe050;</span> Show " + numOfComments + " more replies</div>");
+								}
 							}
 						}
 						$(this).addClass("discussion__thread--checked");
