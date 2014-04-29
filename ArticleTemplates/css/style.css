@@ -865,17 +865,17 @@ ul.tabs {
   width: 100%; }
 
 .element-video {
+  background-color: #000;
   padding-bottom: 56.25%;
   width: 100%;
   position: relative;
   overflow: hidden; }
   .element-video iframe, .element-video object, .element-video embed, .element-video video {
-    background-color: #000;
     width: 100%;
     height: 100%;
+    position: absolute;
     top: 0;
-    left: 0;
-    position: absolute; }
+    left: 0; }
 
 .element-placeholder {
   width: 100%; }
@@ -907,8 +907,8 @@ ul.tabs {
   overflow: hidden; }
   .element-image__inner img,
   .element-placeholder__inner img {
-    position: absolute;
     width: 100%;
+    position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
@@ -2908,22 +2908,14 @@ aside {
   #standard-article .article__body .element-video,
   #standard-article .article__body .element-placeholder,
   #standard-article .article__body .element-interactive {
-    margin: 12px -12px 12px -12px; }
-    @media all and (max-width: 40.615em) {
-      #standard-article .article__body .figure-wide,
-      #standard-article .article__body .element-video,
-      #standard-article .article__body .element-placeholder,
-      #standard-article .article__body .element-interactive {
-        width: 110%; } }
+    margin: 12px -12px 12px -12px;
+    width: auto; }
     @media all and (min-width: 40.625em) {
       #standard-article .article__body .figure-wide,
       #standard-article .article__body .element-video,
       #standard-article .article__body .element-placeholder,
       #standard-article .article__body .element-interactive {
         width: 134%; } }
-  @media all and (max-width: 40.615em) {
-    #standard-article .article__body .element-video {
-      padding-bottom: 61.875%; } }
   @media all and (min-width: 40.625em) {
     #standard-article .article__body .element-video {
       padding-bottom: 75.375%; } }
