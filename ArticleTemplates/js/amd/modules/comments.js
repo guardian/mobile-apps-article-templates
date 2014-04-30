@@ -52,7 +52,8 @@ define([
 									$(".discussion__timestamp").removeClass("animated scaleOut");
 									if (block.hasClass("discussion--open")) {
 										// Hide the buttons
-										$(".discussion--open", el).removeClass("discussion--open");
+										block.removeClass("discussion--open");
+										console.log("Removed");
 									} else {
 										// Hide previously opened block
 										$(".discussion--open").removeClass("discussion--open");
@@ -63,10 +64,15 @@ define([
 										} else {
 											// Calculate height to animate initial comments
 											var originalHeight = block[0].clientHeight;
-											el.style.minHeight = originalHeight + 46;
+											// 110px is the smallest height an initial comment can be with options expanded
+											if (originalHeight > 110) {
+												block.css("min-height", originalHeight + 46);
+											} else {
+												block.css("min-height", "110px");
+											}
 											setTimeout(function() {
 												$('.discussion__options', el).addClass("animated fadeInRight");
-												el.style.minHeight = originalHeight;
+												block.css("min-height", originalHeight);
 											}, 350);
 										}
 										block.addClass('discussion--open');
