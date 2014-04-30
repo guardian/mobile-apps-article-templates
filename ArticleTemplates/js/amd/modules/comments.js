@@ -16,7 +16,7 @@ define([
 				window.commentsReplyFormatting = function () {
 					var counter = 0;
 					var stopPropagation = 0;
-					
+
 					$(".discussion__thread").each(function(el) {
 						if (!$(this).hasClass("discussion__thread--checked")) {
 							if (typeof $(this)[0].children[4] !== "undefined") {
@@ -33,11 +33,11 @@ define([
 					});
 
 					$(".discussion").each(function(el) {
-					
+
 						bean.on(el, 'click', 'a, .discussion__view-more, .discussion__reply, .discussion__recommend', function (event) {
 							stopPropagation = 1;
 						});
-						
+
 						bean.on(el, 'click', '.discussion__header, .discussion__body', function (event) {
 							stopPropagation = 0;
 						});
@@ -45,22 +45,28 @@ define([
 						bean.on(el, 'click', function () {
 							if (stopPropagation == 0) {
 								var block = $(el);
+								// If comment is replyable allow buttons
 								if (block.hasClass('visible')) {
-									// Remove existing classes as the user either wants to hide or focus on new comment
-									$(".discussion--open").removeAttr("style");
-									$(".discussion--open").removeClass("discussion--open");
+									// Remove any previous animation classes
 									$(".discussion__options").removeClass("animated fadeInRight");
 									$(".discussion__timestamp").removeClass("animated scaleOut");
-									
-									// Add classes if not already shown
-									if (block.hasClass("discussion--open") === false) {
+									if (block.hasClass("discussion--open")) {
+										// Hide the buttons
+										$(".discussion--open", el).removeClass("discussion--open");
+									} else {
+										// Hide previously opened block
+										$(".discussion--open").removeClass("discussion--open");
+										// Different animations for different block types
 										if (block.hasClass("is-response")) {
 											$(".discussion__timestamp", el).addClass("animated scaleOut");
 											$('.discussion__options', el).addClass("animated fadeInRight");
 										} else {
-											el.style.minHeight = block[0].clientHeight + 46;
+											// Calculate height to animate initial comments
+											var originalHeight = block[0].clientHeight;
+											el.style.minHeight = originalHeight + 46;
 											setTimeout(function() {
-												$('.discussion__options', el).addClass("animated fadeInRight")
+												$('.discussion__options', el).addClass("animated fadeInRight");
+												el.style.minHeight = originalHeight;
 											}, 350);
 										}
 										block.addClass('discussion--open');
