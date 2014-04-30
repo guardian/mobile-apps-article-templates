@@ -16,7 +16,7 @@ define([
 				window.commentsReplyFormatting = function () {
 					var counter = 0;
 					var stopPropagation = 0;
-					
+
 					$(".discussion__thread").each(function(el) {
 						if (!$(this).hasClass("discussion__thread--checked")) {
 							if (typeof $(this)[0].children[4] !== "undefined") {
@@ -65,7 +65,7 @@ define([
 											var originalHeight = block[0].clientHeight;
 											el.style.minHeight = originalHeight + 46;
 											setTimeout(function() {
-												$('.discussion__options', el).addClass("animated fadeInRight")
+												$('.discussion__options', el).addClass("animated fadeInRight");
 												el.style.minHeight = originalHeight;
 											}, 350);
 										}
