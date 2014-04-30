@@ -145,6 +145,28 @@ html {
   -webkit-animation-name: scaleOut;
   animation-name: scaleOut; }
 
+@-webkit-keyframes blink {
+  0% {
+    opacity: 0; }
+
+  50% {
+    opacity: 1; }
+
+  100% {
+    opacity: 0; } }
+@keyframes blink {
+  0% {
+    opacity: 0; }
+
+  50% {
+    opacity: 1; }
+
+  100% {
+    opacity: 0; } }
+.blink {
+  -webkit-animation-name: blink;
+  animation-name: blink; }
+
 .advert-slot {
   color: #666666;
   font-family: "Agate Sans", sans-serif;
@@ -1692,7 +1714,7 @@ figure.figure-inline {
   background-color: #005689; }
 
 .touchpoint__button--secondary {
-  color: #666666;
+  color: #999999;
   background-color: transparent;
   border: 1px solid #999999; }
 
@@ -2198,24 +2220,6 @@ aside {
     #comments.preview .article__body--comments .discussion__username {
       color: #4bc6df; }
 
-@-webkit-keyframes blink {
-  0% {
-    opacity: 0; }
-
-  50% {
-    opacity: 1; }
-
-  100% {
-    opacity: 0; } }
-@keyframes blink {
-  0% {
-    opacity: 0; }
-
-  50% {
-    opacity: 1; }
-
-  100% {
-    opacity: 0; } }
 #liveblog .article {
   background-color: #f6f6f6;
   border-bottom: none;
@@ -2285,6 +2289,8 @@ aside {
     padding: 6px 6px 6px 6px;
     position: absolute;
     left: 0; }
+#liveblog .article__comments__label {
+  display: none; }
 #liveblog #advert {
   float: none;
   width: 100%;
