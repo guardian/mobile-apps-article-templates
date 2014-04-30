@@ -8,6 +8,15 @@
 	text-shadow: none !important;
 }
 
+.touchpoint__label {
+	@include meta();
+	font-family: $agate-sans;
+	font-weight: bold;
+	vertical-align: middle;
+	display: inline-block;
+	padding: 0 6px;
+}
+
 .touchpoint__button {
 	color: $white;
 	text-align: center;
@@ -20,24 +29,6 @@
 	width: 44px;
 }
 
-.touchpoint__button--primary {
-	background-color: $news;
-	&:active {
-		background-color: $news-accent;
-	}
-}
-
-.touchpoint__button--secondary {
-	color: $standfirst;
-	background-color: transparent;
-	border: 1px solid $shadow;
-	&:active {
-		color: $white;
-		background-color: $standfirst;
-		border-color: transparent;
-	}
-}
-
 .touchpoint__button--small {
 	font-size: 18px;
 	line-height: 28px;
@@ -45,28 +36,30 @@
 	width: 28px;
 }
 
-.touchpoint__label {
-	@include meta();
-	font-family: $agate-sans;
-	font-weight: bold;
-	vertical-align: middle;
-	display: inline-block;
-	padding: 0 6px;
+.touchpoint__button--primary {
+	background-color: $news;
 }
 
-a,
-.discussion__view-more {
+.touchpoint__button--secondary {
+	color: $standfirst;
+	background-color: transparent;
+	border: 1px solid $meta;
+}
+
+a {
 	color: $news;
+	text-decoration: none;
 	&:active {
 		color: $news-accent;
+
 		.touchpoint__button--primary {
 			background-color: $news-accent;
 		}
-	}
-}
-.touchpoint__button--primary {
-	background-color: $news;
-	&:active {
-		background-color: $news-accent;
+
+		.touchpoint__button--secondary {
+			color: $white;
+			background-color: $meta;
+			border: 0;
+		}
 	}
 }

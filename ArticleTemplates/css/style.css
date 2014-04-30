@@ -37,10 +37,6 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-a {
-  color: #005689;
-  text-decoration: none; }
-
 @font-face {
   font-family: "Egyptian Display";
   font-weight: 100;
@@ -1360,7 +1356,7 @@ figure.figure-inline {
     overflow: auto;
     font-family: "Agate Sans", sans-serif;
     font-weight: bold;
-    padding: 12px 0px 24px 0px;
+    padding: 8.0px 2.0px 24px 2.0px;
     display: table;
     width: 100%; }
     @media all and (max-width: 28.115em) {
@@ -1375,7 +1371,7 @@ figure.figure-inline {
     .module .module__title .module__title__label {
       font-family: "Egyptian Display", Georgia, serif;
       font-weight: 600;
-      margin-top: -2px; }
+      margin-top: -1px; }
       @media all and (max-width: 40.615em) {
         .module .module__title .module__title__label {
           font-size: 2.4rem;
@@ -1385,7 +1381,8 @@ figure.figure-inline {
           font-size: 2.7rem;
           line-height: 3.9rem; } }
     .module .module__title .comments-count {
-      color: #999999; }
+      color: #999999;
+      font-weight: 300; }
   .module .module__action {
     float: right; }
   @media all and (max-width: 40.615em) {
@@ -1659,37 +1656,6 @@ figure.figure-inline {
   background-image: none !important;
   text-shadow: none !important; }
 
-.touchpoint__button {
-  color: white;
-  text-align: center;
-  font-size: 24px;
-  line-height: 44px;
-  vertical-align: middle;
-  border-radius: 100%;
-  display: inline-block;
-  height: 44px;
-  width: 44px; }
-
-.touchpoint__button--primary {
-  background-color: #005689; }
-  .touchpoint__button--primary:active {
-    background-color: #4bc6df; }
-
-.touchpoint__button--secondary {
-  color: #666666;
-  background-color: transparent;
-  border: 1px solid #dcdad5; }
-  .touchpoint__button--secondary:active {
-    color: white;
-    background-color: #666666;
-    border-color: transparent; }
-
-.touchpoint__button--small {
-  font-size: 18px;
-  line-height: 28px;
-  height: 28px;
-  width: 28px; }
-
 .touchpoint__label {
   font-family: "Agate Sans", sans-serif;
   font-weight: bold;
@@ -1705,20 +1671,42 @@ figure.figure-inline {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
 
-a,
-.discussion__view-more {
-  color: #005689; }
-  a:active,
-  .discussion__view-more:active {
-    color: #4bc6df; }
-    a:active .touchpoint__button--primary,
-    .discussion__view-more:active .touchpoint__button--primary {
-      background-color: #4bc6df; }
+.touchpoint__button {
+  color: white;
+  text-align: center;
+  font-size: 24px;
+  line-height: 44px;
+  vertical-align: middle;
+  border-radius: 100%;
+  display: inline-block;
+  height: 44px;
+  width: 44px; }
+
+.touchpoint__button--small {
+  font-size: 18px;
+  line-height: 28px;
+  height: 28px;
+  width: 28px; }
 
 .touchpoint__button--primary {
   background-color: #005689; }
-  .touchpoint__button--primary:active {
-    background-color: #4bc6df; }
+
+.touchpoint__button--secondary {
+  color: #666666;
+  background-color: transparent;
+  border: 1px solid #999999; }
+
+a {
+  color: #005689;
+  text-decoration: none; }
+  a:active {
+    color: #4bc6df; }
+    a:active .touchpoint__button--primary {
+      background-color: #4bc6df; }
+    a:active .touchpoint__button--secondary {
+      color: white;
+      background-color: #999999;
+      border: 0; }
 
 .offline .element-video,
 .offline .element-embed,
@@ -1813,7 +1801,7 @@ aside {
 
 .bullet {
   color: transparent;
-  vertical-align: middle;
+  vertical-align: baseline;
   margin-right: -0.25em;
   width: 1.111em;
   display: inline-block;
@@ -2777,29 +2765,18 @@ aside {
         width: 12.63158%; } }
 
 #football-fixtures .article {
-  border-top-color: #333333;
+  border-top-color: #4bc6df;
   background-color: transparent;
   border-bottom: none; }
-
-.football-fixtures-header h1 {
-  text-align: right;
-  font-family: "Titlepiece", "Egyptian Display", sans-serif;
-  padding: 12px 12px 12px 12px; }
+#football-fixtures .football-fixtures-header {
+  height: 114px; }
   @media all and (max-width: 28.115em) {
-    .football-fixtures-header h1 {
-      font-size: 3rem;
-      line-height: 3.2rem; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    .football-fixtures-header h1 {
-      font-size: 4rem;
-      line-height: 4rem; } }
-  @media all and (min-width: 40.625em) {
-    .football-fixtures-header h1 {
-      font-size: 4.8rem;
-      line-height: 4.8rem; } }
-@media all and (max-width: 28.115em) {
-  .football-fixtures-header {
-    display: none; } }
+    #football-fixtures .football-fixtures-header {
+      display: none; } }
+  #football-fixtures .football-fixtures-header h1 {
+    font-family: "Titlepiece", "Egyptian Display", sans-serif;
+    font-size: 1.6667em;
+    line-height: 1.6; }
 
 .football-fixtures-row {
   display: table;
@@ -2924,20 +2901,6 @@ aside {
   #football-fixtures.android .football-fixtures-header {
     display: none; }
 
-.news a,
-.news .discussion__view-more {
-  color: #005689; }
-  .news a:active,
-  .news .discussion__view-more:active {
-    color: #4bc6df; }
-    .news a:active .touchpoint__button--primary,
-    .news .discussion__view-more:active .touchpoint__button--primary {
-      background-color: #4bc6df; }
-.news .touchpoint__button--primary {
-  background-color: #005689; }
-  .news .touchpoint__button--primary:active {
-    background-color: #4bc6df; }
-
 #standard-article .article__alerts {
   display: none; }
 #standard-article .article__body {
@@ -3010,14 +2973,11 @@ aside {
     -webkit-order: 3;
     order: 3; }
 
-.comment a,
-.comment .discussion__view-more {
+.comment a {
   color: #e6711b; }
-  .comment a:active,
-  .comment .discussion__view-more:active {
+  .comment a:active {
     color: #f39f33; }
-    .comment a:active .touchpoint__button--primary,
-    .comment .discussion__view-more:active .touchpoint__button--primary {
+    .comment a:active .touchpoint__button--primary {
       background-color: #f39f33; }
 .comment .touchpoint__button--primary {
   background-color: #e6711b; }
@@ -3207,18 +3167,16 @@ aside {
     padding-left: 6.31579%; } }
 
 .feature1 a,
-.feature1 .discussion__view-more,
 .feature1 .article__body > p:first-of-type:first-letter,
 .feature1 .article__section {
   color: #951c55; }
-.feature1 a:active,
-.feature1 .discussion__view-more:active {
+.feature1 a:active {
   color: #e02b7f; }
 .feature1 .article__header,
 .feature1 .touchpoint__button--primary {
   background-color: #951c55; }
 .feature1 .article__standfirst,
-.feature1 .touchpoint__button--primary:active {
+.feature1 a:active .touchpoint__button--primary {
   background-color: #e02b7f; }
 .feature1 .prose p a {
   background-image: linear-gradient(to bottom, white 50%, rgba(149, 28, 85, 0.67) 50%);
@@ -3235,18 +3193,16 @@ aside {
   border-top-color: #e02b7f; }
 
 .feature2 a,
-.feature2 .discussion__view-more,
 .feature2 .article__body > p:first-of-type:first-letter,
 .feature2 .article__section {
   color: #4e0375; }
-.feature2 a:active,
-.feature2 .discussion__view-more:active {
+.feature2 a:active {
   color: #8006c2; }
 .feature2 .article__header,
 .feature2 .touchpoint__button--primary {
   background-color: #4e0375; }
 .feature2 .article__standfirst,
-.feature2 .touchpoint__button--primary:active {
+.feature2 a:active .touchpoint__button--primary {
   background-color: #8006c2; }
 .feature2 .prose p a {
   background-image: linear-gradient(to bottom, white 50%, rgba(78, 3, 117, 0.67) 50%);
@@ -3263,18 +3219,16 @@ aside {
   border-top-color: #8006c2; }
 
 .feature3 a,
-.feature3 .discussion__view-more,
 .feature3 .article__body > p:first-of-type:first-letter,
 .feature3 .article__section {
   color: #7d0068; }
-.feature3 a:active,
-.feature3 .discussion__view-more:active {
+.feature3 a:active {
   color: #c900a8; }
 .feature3 .article__header,
 .feature3 .touchpoint__button--primary {
   background-color: #7d0068; }
 .feature3 .article__standfirst,
-.feature3 .touchpoint__button--primary:active {
+.feature3 a:active .touchpoint__button--primary {
   background-color: #c900a8; }
 .feature3 .prose p a {
   background-image: linear-gradient(to bottom, white 50%, rgba(125, 0, 104, 0.67) 50%);
