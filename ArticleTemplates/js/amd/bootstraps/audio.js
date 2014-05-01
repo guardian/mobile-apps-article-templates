@@ -65,7 +65,7 @@ define([
 					this.removeEvents("move");
 					this.removeEvents("end");
 					var iframe = document.createElement("iframe");
-					iframe.setAttribute("src", "setPlayerTime:" + audioCurrent);
+					iframe.setAttribute("src", "x-gu://setPlayerTime/" + audioCurrent);
 					document.documentElement.appendChild(iframe);
 					iframe.parentNode.removeChild(iframe);
 					iframe = null;
