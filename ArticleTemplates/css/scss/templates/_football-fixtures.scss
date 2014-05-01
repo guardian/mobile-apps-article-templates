@@ -1,22 +1,24 @@
 #football-fixtures {
 	.article {
-		border-top-color: $headline;
+		border-top-color: $news-accent;
 		background-color: transparent;
 		border-bottom: none;
 	}
+
+	.football-fixtures-header {
+		height: 114px;
+		@include mq($to: col1) {
+			display: none;
+		}
+
+		h1 {
+			font-family: $titlepiece;
+			font-size: 1.6667em; // 30px
+			line-height: 1.6;
+		}
+	}
 }
 
-.football-fixtures-header {
-	h1 {
-		text-align: right; 
-		font-family: $titlepiece;
-		@include padding(1);
-		@include headline();
-	}
-	@include mq($to: col1) {
-		display: none;
-	}
-}
 
 .football-fixtures-row {
 	display: table;
