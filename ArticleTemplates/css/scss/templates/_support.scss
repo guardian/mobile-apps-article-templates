@@ -4,7 +4,14 @@
 	background-color: $white;
 	@include padding(1);
 	
-	.prose > :first-child {
-		margin-top: 0;
+	.prose {
+		> :first-child,
+		h2 + p {
+			margin-top: 0;
+		}
+		h2 {
+			@include standfirst();
+			margin-bottom: 0;
+		}
 	}
 }
