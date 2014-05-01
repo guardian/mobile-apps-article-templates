@@ -40,6 +40,7 @@
 	.discussion__body {
 		word-break: break-word;
 		word-wrap: break-word;
+		@include margin(0, 0, 1, 0);
 		@include mq(col2, col3) {
 			margin-right: cols($base-3, 1);
 			margin-left: cols($base-3, 4);
@@ -47,6 +48,10 @@
 		@include mq($from: col3) {
 			margin-right: cols($base-4, 1);
 			margin-left: cols($base-4, 5);
+		}
+
+		p:last-child {
+			margin-bottom: 0px;
 		}
 	}
 
