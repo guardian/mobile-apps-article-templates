@@ -1,13 +1,13 @@
 #football {
 	.article {
 		background-color: transparent;
+		border-bottom: none;
 	}
 
 	.football-tabs-article {
 		.article {
 			background-color: $white;
 			border-top: 2px solid $news-accent;
-			border-bottom: none;
 			margin-bottom: 0;
 		}
 		.article__section {
@@ -19,10 +19,8 @@
 	}
 
 	.football-tabs-liveblog {
-		.article {
-			padding-top: 0;
-		}
-		.block:first-of-type {
+		.article__meta {
+			border-top: 2px solid $news-accent;
 			margin-top: 0;
 		}
 	}
@@ -129,10 +127,6 @@
 			position: relative;
 
 			.football__sublabel {
-				@include mq($to: col1) {
-					margin-left: -$base-1*4;
-					margin-right: -$base-1*4;
-				}
 			}
 
 			.football-possession {

@@ -121,7 +121,7 @@ define([
 				window.commentsEnd = function () {
 					$('.discussion__loading').remove();
 				};
-				
+
 				window.commentsClosed = function () {
 					$(".module--comments, #discussion").addClass("comments--closed");
 				};
