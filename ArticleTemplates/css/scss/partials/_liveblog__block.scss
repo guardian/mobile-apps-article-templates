@@ -1,4 +1,5 @@
 .block {
+	border-top: 1px solid $meta;
 	border-bottom: 2px solid $shadow;
 	background-color: $white;
 	overflow: hidden;
@@ -85,8 +86,11 @@
 		}
 	}
 
-	&.key-event h2 {
-		color: $alert;
+	&.key-event {
+		border-top: 2px solid $live-accent;
+		h2 {
+			color: $live;
+		}
 	}
 
 	&.summary {

@@ -1,48 +1,60 @@
 #standard-article.comment {
 	.article {
 		background-color: $comment-bg;
-		border-top-color: $comment;
+		border-top-color: $comment-accent-light;
+	}
 
-		.article__header {
-			.inner-header {
-				@include order(1);
-				position: relative;
-				overflow: auto;
-				padding-bottom: 2em;
-			}
+	.article__header {
+		.inner-header {
+			@include order(1);
+			position: relative;
+			overflow: auto;
+			padding-bottom: 2em;
+		}
 
-			.article__section,
-			.article__headline span {
-				color: $comment;
-				display: block;
-			}
+		.article__section,
+		.article__headline span {
+			color: $comment;
+			display: block;
+		}
 
-			.article__standfirst {
-				color: $comment-accent-dark;
-				@include order(4);
-				@include mq($to: col2) {
-					font-size: 1.25em;
-					line-height: 1.25em;
-				}
+		.article__standfirst {
+			color: $comment-accent-dark;
+			@include order(4);
+			@include mq($to: col2) {
+				font-size: 1.25em;
+				line-height: 1.25em;
 			}
+		}
 
-			.article__alerts {
-				position: absolute;
-				bottom: 0;
-				display: block;
-			}
+		.article__alerts {
+			position: absolute;
+			bottom: 0;
+			display: block;
+		}
 
-			.article__meta {
-				@include order(2);
-			}
+		.article__meta {
+			color: $white;
+			background-color: $comment-accent-light;
+			border: 0;
+			margin: 0;
+			@include order(2);
 
-			.article__byline {
-				display: none;
+			a {
+				color: $white;
 			}
+		}
+		
+		.article__comments {
+			border-color: rgba(255, 255, 255, 0.4);
+		}
 
-			.article__image {
-				@include order(3);
-			}
+		.article__byline {
+			display: none;
+		}
+
+		.article__image {
+			@include order(3);
 		}
 	}
 }

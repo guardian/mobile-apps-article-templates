@@ -2,16 +2,34 @@
 	.article {
 		background-color: $background;
 		border-bottom: none;
-		border-top-color: $alert;
+		border-top-color: $live-accent;
 	}
 
 	.article__header {
-		background-color: $white;
+		color: $white;
+		background-color: $live;
 		border-bottom: 2px solid $shadow;
+
+		a {
+			color: $white;
+		}
+
+		.bullet,
+		ul > li {
+			&:before {
+				color: rgba(255, 255, 255, 0.8);
+			}
+		}
 
 		.inner-header {
 			padding-right: 0;
 		}
+	}
+
+	.article__headline,
+	.article__byline,
+	.article__alerts span.icon {
+		color: $white;
 	}
 
 	.article__byline,
@@ -22,13 +40,14 @@
 	}
 
 	.article__live-summary {
-		color: $standfirst;
+		color: rgba(255, 255, 255, 0.8);
 		font-family: $egyptian-display;
 		font-weight: 300;
 		@include padding(0.5, 1, 1.5, 1);
 	}
 
 	.article__section {
+		color: $white;
 		position: relative;
 		@include mq(col2, col3) {
 			padding-left: cols($base-3, 4, 1);
@@ -48,7 +67,7 @@
 	}
 
 	.article__section__live {
-		color: $alert;
+		color: $white;
 		font-family: $agate-sans;
 		font-weight: bold;
 		display: none;
@@ -73,13 +92,24 @@
 	}
 
 	.article__meta {
-		border-bottom: none;
+		color: rgba(255, 255, 255, 0.8);
+		background-color: $live-accent;
+		border: 0;
+		margin: 0;
+
+		a {
+			color: $white;
+		}
 
 		.article__alerts {
 			@include padding(0.5);
 			position: absolute;
 			left: 0;
 		}
+	}
+
+	.article__comments {
+		border-color: rgba(255, 255, 255, 0.6);
 	}
 
 	.article__comments__label {
@@ -173,11 +203,11 @@
 	.live-updates {
 		font-family: $agate-sans;
 		font-weight: bold;
-		color: $alert;
+		color: $live;
 		background-color: $background;
 		position: fixed;
 		z-index: 99;
-		border-bottom: 2px solid $alert;
+		border-bottom: 2px solid $live;
 		top: 0;
 		overflow: auto;
 		width: 100%;
