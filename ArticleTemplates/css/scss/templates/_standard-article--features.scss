@@ -1,20 +1,7 @@
 #standard-article[class*="feature"] {
 	.article__header {
-		@include mq(col2, 800px) {
-			padding-top: 34px;
-		}
-		@include mq(800px, col3) {
-			padding-top: 36px;
-		}
-		@include mq(col3, 1100px) {
-			padding-top: 34px;
-		}
-		@include mq($from: 1100px) {
-			padding-top: 36px;
-		}
-
 		a {
-			color: #fff;
+			color: $white;
 		}
 
 		.bullet,
@@ -31,35 +18,23 @@
 	}
 
 	.article__section {
-		@include mq($to: col2) {
-			color: #fff;
+		color: $white;
+		@include mq(col2, col3) {
+			padding-left: cols($base-3, 1, 1);
 		}
-		@include mq($from: col2) {
-			background-color: $background;
-			position: absolute;
-			top: 4px;
-			right: 0;
-			left: 0;
-		}
-	}
-
-	&.android {
-		.article__section {
-			@include mq($from: col2) {
-				top: 0;
-			}
+		@include mq($from: col3) {
+			padding-left: cols($base-4, 1, 1);
 		}
 	}
 
 	.article__headline {
-		color: #fff;
-		padding-top: 12px;
+		color: $white;
 		position: relative;
 		z-index: 20;
 		@include mq($from: col2) {
 			font-size: 3.5556em; // 64px
 			font-weight: 100;
-			line-height: 0.875; // 56px
+			line-height: 0.9375; // 60px
 		}
 		@include mq(col2, col3) {
 			margin-left: cols($base-3, 1, 0);
@@ -89,9 +64,8 @@
 
 	.article__meta {
 		color: rgba(255, 255, 255, 0.8);
-		border: 0 none;
-		margin-top: 0;
-		margin-bottom: 0;
+		border: 0;
+		margin: 0;
 		@include order(6);
 		@include mq(col2, col3) {
 			margin-left: cols($base-3, 1, 0);
@@ -104,6 +78,10 @@
 	.article__author__image,
 	.article__alerts {
 		display: none;
+	}
+
+	.article__comments {
+		border-color: rgba(255, 255, 255, 0.5);
 	}
 
 	.article__comments__label {
@@ -219,8 +197,7 @@
 
 .feature1 {
 	a,
-	.article__body > p:first-of-type:first-letter,
-	.article__section {
+	.article__body > p:first-of-type:first-letter {
 		color: $feature1;
 	}
 	a:active {
@@ -239,16 +216,14 @@
 	}
 	.prose table,
 	.table,
-	.article,
-	.article__comments {
+	.article {
 		border-top-color: $feature1-accent;
 	}
 }
 
 .feature2 {
 	a,
-	.article__body > p:first-of-type:first-letter,
-	.article__section {
+	.article__body > p:first-of-type:first-letter {
 		color: $feature2;
 	}
 	a:active {
@@ -267,16 +242,14 @@
 	}
 	.prose table,
 	.table,
-	.article,
-	.article__comments {
+	.article {
 		border-top-color: $feature2-accent;
 	}
 }
 
 .feature3 {
 	a,
-	.article__body > p:first-of-type:first-letter,
-	.article__section {
+	.article__body > p:first-of-type:first-letter {
 		color: $feature3;
 	}
 	a:active {
@@ -295,8 +268,7 @@
 	}
 	.prose table,
 	.table,
-	.article,
-	.article__comments {
+	.article {
 		border-top-color: $feature3-accent;
 	}
 }
