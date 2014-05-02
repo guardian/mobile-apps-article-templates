@@ -5,22 +5,26 @@ ul.tabs {
 		@include margin(1);
 	}
 	li {
-		width: 33.3%;
-		@include padding(0.5, 1, 2, 0.2);
-		border-top: 2px solid $shadow;
-		display: inline-table;
-		font-family: $agate-sans;
 		color: $standfirst;
+		font-family: $agate-sans;
+		border-top: 2px solid $shadow;
 		margin-right: -4px;
+		@include padding(0.5, 1, 2, 0.2);
+		width: 33.3%;
+		display: inline-table;
 		@include mq($to: col2) {
 			margin-right: -3px;
 		}
 	}
 	li.selected {
-		border-top: 4px solid $news;
-		font-weight: bold;
 		color: $news;
+		font-weight: bold;
+		border-top: 4px solid $news;
 		padding-top: 4px;
+	}
+	li[data-href=".football-tabs-liveblog"].selected {
+		color: $live;
+		border-top-color: $live-accent;
 	}
 }
 
