@@ -36,26 +36,11 @@
 			font-weight: 100;
 			line-height: 0.9375; // 60px
 		}
-		@include mq(col2, col3) {
-			margin-left: cols($base-3, 1, 0);
-			padding-right: cols($base-3, 0.5, 0);
-		}
-		@include mq($from: col3) {
-			margin-left: cols($base-4, 1, 0);
-			padding-right: cols($base-4, 0.5, 0);
-		}
 	}
 
 	.article__standfirst {
 		color: rgba(255, 255, 255, 0.8);
-		@include padding(0.5, 1, 2, 1);
 		@include order(3);
-		@include mq(col2, col3) {
-			padding-left: cols($base-3, 1, 1);
-		}
-		@include mq($from: col3) {
-			padding-left: cols($base-4, 1, 1);
-		}
 
 		strong {
 			font-weight: normal;
@@ -67,12 +52,6 @@
 		border: 0;
 		margin: 0;
 		@include order(6);
-		@include mq(col2, col3) {
-			margin-left: cols($base-3, 1, 0);
-		}
-		@include mq($from: col3) {
-			margin-left: cols($base-4, 1, 0);
-		}
 	}
 
 	.article__author__image,
@@ -144,54 +123,6 @@
 
 	.article__pubdate {
 		color: rgba(255, 255, 255, 0.8);
-	}
-
-	.article__body {
-		@include mq(col2, col3) {
-			padding-left: cols($base-3, 1, 1);
-		}
-		@include mq($from: col3) {
-			padding-left: cols($base-4, 1, 1);
-		}
-
-		.figure-wide,
-		.element-video,
-		.element-placeholder,
-		.element-interactive {
-			@include mq(col2, col3) {
-				width: 148%;
-				margin-left: -(cols($base-3, 1.66));
-
-				figcaption {
-					padding-left: cols($base-3, 1, 1);
-				}
-			}
-			@include mq($from: col3) {
-				width: 144%;
-				margin-left: -(cols($base-4, 1.66));
-
-				figcaption {
-					padding-left: cols($base-4, 1, 1);
-				}
-			}
-		}
-		.element-video {
-			@include mq(col2, col3) {
-				padding-bottom: 83.25%; // Compensation for width being 148%
-			}
-			@include mq($from: col3) {
-				padding-bottom: 81%; // Compensation for width being 144%
-			}
-		}
-	}
-
-	.article__tags {
-		@include mq(col2, col3) {
-			padding-left: cols($base-3, 1, 1);
-		}
-		@include mq($from: col3) {
-			padding-left: cols($base-4, 1, 1);
-		}
 	}
 }
 
