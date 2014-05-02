@@ -1,6 +1,9 @@
 ul.tabs {
 	@include meta;
 	@include margin(1, 0);
+	@include mq($to: col1) {
+		@include margin(1);
+	}
 	li {
 		width: 33.3%;
 		@include padding(0.5, 1, 2, 0.2);
@@ -18,5 +21,11 @@ ul.tabs {
 		font-weight: bold;
 		color: $news;
 		padding-top: 4px;
+	}
+}
+
+.android {
+	ul.tabs {
+		@include margin(1);
 	}
 }
