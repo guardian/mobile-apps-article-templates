@@ -53,7 +53,7 @@ define([
 			liveMore: function () {
 				bean.on($('.live-more')[0], 'click', function () {
 					$(this).hide();
-					$('.live-more-loading').show();
+					$('.live-more-loading').addClass("live-more-loading--visible");
 					window.location.href = 'x-gu://showmore';
 				});
 			},
@@ -68,7 +68,7 @@ define([
 				};
 				window.liveblogLoadMore = function (html) {
 					html = bonzo.create(html);
-					$('.live-more-loading').hide();
+					$('.live-more-loading').removeClass("live-more-loading--visible");
 					$(html).each(function() {
 						$(this).addClass("animated slideInRight");
 					});
