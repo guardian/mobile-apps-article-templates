@@ -102,38 +102,8 @@
 	}
 	
 	.article__body--liveblog__pinned {
-		.summary {
-			.block-elements {
-				max-height: 350px;
-				@include mq($to: col1) {
-					max-height: 150px;
-				}
-
-				p:last-child {
-					margin-bottom: 0;
-				}
-
-				&.expanded {
-					max-height: none;
-				}
-
-				.live-summary-more {
-					font-family: $agate-sans;
-					font-weight: bold;
-					display: none;
-					width: 100%;
-
-					a {
-					text-shadow: none;
-					background-image: none;
-					}
-
-					.icon {
-						font-size: 80%;
-					}
-				}
-			}
-		}
+		// Temporary fix while this element is removed from the html render
+		display: none;
 	}
 
 	aside.aside-witness {
