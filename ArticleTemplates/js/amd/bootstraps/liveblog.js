@@ -35,7 +35,6 @@ define([
 
 				window.liveblogNewBlock = function (html) {
 					newBlockHtml = html + newBlockHtml;
-					console.log(newBlockHtml);
 					if (liveblogStartPos.top > window.scrollY) {
 						liveblogNewBlockDump();
 					}
