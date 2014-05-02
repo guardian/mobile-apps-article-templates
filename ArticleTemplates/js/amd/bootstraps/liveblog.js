@@ -20,6 +20,9 @@ define([
 
 					liveblogNewBlockDump = function () {
 						newBlockHtml = bonzo.create(newBlockHtml);
+						$(newBlockHtml).each(function() {
+							$(this).addClass("animated slideInRight");
+						});
 						$(".article__body--liveblog__pinned").after(newBlockHtml);
 
 						// See Common bootstrap
@@ -49,7 +52,7 @@ define([
 			liveMore: function () {
 				bean.on($('.live-more')[0], 'click', function () {
 					$(this).hide();
-					$('.live-more-loading').show();
+					$('.live-more-loading').addClass("live-more-loading--visible");
 					window.location.href = 'x-gu://showmore';
 				});
 			},
@@ -64,8 +67,11 @@ define([
 				};
 				window.liveblogLoadMore = function (html) {
 					html = bonzo.create(html);
-					$('.live-more-loading').hide();
-					$(html).hide().appendTo('.article__body').show().addClass('animated bounceIn');
+					$('.live-more-loading').removeClass("live-more-loading--visible");
+					$(html).each(function() {
+						$(this).addClass("animated slideInRight");
+					});
+					$(html).appendTo('.article__body');
 
 					// See Common bootstrap
 					window.articleImageSizer();

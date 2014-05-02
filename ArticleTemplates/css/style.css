@@ -132,6 +132,19 @@ html {
   -webkit-animation-name: fadeInRight;
   animation-name: fadeInRight; }
 
+@-webkit-keyframes slideInRight {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(2000px);
+    transform: translateX(2000px); }
+
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0); } }
+.slideInRight {
+  -webkit-animation-name: slideInRight;
+  animation-name: slideInRight; }
+
 @-webkit-keyframes scaleOut {
   0% {
     -webkit-transform: translateX(0);
@@ -2396,6 +2409,8 @@ aside {
 #liveblog .live-more-loading {
   display: none;
   text-align: center; }
+  #liveblog .live-more-loading.live-more-loading--visible {
+    display: block; }
   #liveblog .live-more-loading img {
     width: 44px;
     height: 44px; }
