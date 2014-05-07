@@ -621,6 +621,12 @@ ul.tabs {
 .android .block {
   margin: 12px 12px 12px 12px; }
 
+.liveBlog .block a {
+  color: #005689;
+  text-decoration: none; }
+  .liveBlog .block a:active {
+    color: #4bc6df; }
+
 .discussion {
   font-family: "Agate Sans", sans-serif;
   background-color: white;
@@ -740,7 +746,7 @@ ul.tabs {
         .discussion .discussion__recommend .touchpoint__button {
           margin: 0 auto;
           display: block; } }
-    .discussion .discussion__recommend .touchpoint__button:active {
+    .discussion .discussion__recommend:active .touchpoint__button {
       color: white;
       background-color: #dcdad5; }
     .discussion .discussion__recommend.increase .touchpoint__button {
@@ -2346,6 +2352,8 @@ aside {
   border-color: rgba(255, 255, 255, 0.6); }
 #liveblog .article__comments__label {
   display: none; }
+#liveblog .article__tags {
+  border-top: 0; }
 #liveblog #advert {
   float: none;
   width: 100%;
@@ -2405,7 +2413,8 @@ aside {
 #liveblog .live-more {
   min-height: 44px;
   font-family: "Agate Sans", sans-serif;
-  font-weight: bold; }
+  font-weight: bold;
+  border-bottom: 1px dotted #dcdad5; }
 #liveblog .live-more-loading {
   display: none;
   text-align: center; }
@@ -2481,9 +2490,8 @@ aside {
   min-height: 44px;
   font-family: "Agate Sans", sans-serif;
   font-weight: bold;
-  color: #005689;
-  margin: 0px 0px 12px 0px;
-  padding: 0px 12px 12px 12px; }
+  color: #b51800;
+  margin: 0px 12px 12px 12px; }
   @media all and (max-width: 40.615em) {
     .live-more {
       font-size: 1.6rem;
@@ -2494,12 +2502,12 @@ aside {
       line-height: 2.6rem; } }
   @media all and (min-width: 40.625em) and (max-width: 56.24em) {
     .live-more {
-      padding-left: 33.80282%; } }
+      padding-left: 32.39437%; } }
   @media all and (min-width: 56.25em) {
     .live-more {
-      padding-left: 31.57895%; } }
+      padding-left: 30.52632%; } }
   .live-more:active {
-    color: #4bc6df; }
+    color: #cc2b12; }
 
 .live-more-loading {
   display: none;
@@ -2512,6 +2520,18 @@ aside {
 
 #liveblog.android .aside-witness {
   margin: 12px 12px 12px 12px; }
+
+.liveBlog a {
+  color: #b51800; }
+  .liveBlog a:active {
+    color: #cc2b12; }
+    .liveBlog a:active .touchpoint__button--primary {
+      background-color: #cc2b12; }
+.liveBlog .touchpoint__button--primary {
+  background-color: #b51800; }
+.liveBlog .prose table,
+.liveBlog .table {
+  border-top-color: #b51800; }
 
 #football .article {
   background-color: transparent;
@@ -3030,8 +3050,6 @@ aside {
       background-color: #f39f33; }
 .comment .touchpoint__button--primary {
   background-color: #e6711b; }
-  .comment .touchpoint__button--primary:active {
-    background-color: #f39f33; }
 .comment .prose p a {
   background-image: linear-gradient(to bottom, #eeebe8 50%, rgba(230, 113, 27, 0.67) 50%);
   background-repeat: repeat-x;
