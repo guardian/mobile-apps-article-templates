@@ -19,6 +19,7 @@ var nativeFunctionCalls = [
     'audioBackground',
     'superAudioSlider',
     'commentsFailed',
+    'articleCommentsFailed',
     'commentsClosed',
     'commentsReplyFormatting',
     'footballMatchInfo',
