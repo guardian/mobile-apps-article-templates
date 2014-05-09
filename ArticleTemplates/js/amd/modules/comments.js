@@ -143,7 +143,6 @@ define([
 				};
 				window.applyNativeFunctionCall('articleCommentsInserter');
 				window.applyNativeFunctionCall('commentsFailed');
-				window.applyNativeFunctionCall('commentsReplyFormatting');
 				window.applyNativeFunctionCall('commentsClosed');
 			}
 		},
@@ -152,7 +151,6 @@ define([
 			if (!this.initialised) {
 				this.initialised = true;
 				modules.setupGlobals();
-				commentsReplyFormatting();
 				// console.info("Comments ready");
 			}
 		};
