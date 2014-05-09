@@ -15,7 +15,7 @@
 window.smoothScroll = (function (window, document, undefined) {
 
 	'use strict';
-
+	
 	// Default settings
 	// Private {object} variable
 	var _defaults = {
@@ -124,6 +124,8 @@ window.smoothScroll = (function (window, document, undefined) {
 	// Public method
 	// Runs functions
 	var animateScroll = function ( toggle, anchor, options, event ) {
+	
+		window.location.href='x-gu://SCROLL';
 
 		// Options and overrides
 		options = _mergeObjects( _defaults, options || {} ); // Merge user options with defaults
