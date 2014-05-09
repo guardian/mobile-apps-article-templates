@@ -144,6 +144,7 @@ define([
 				window.applyNativeFunctionCall('articleCommentsInserter');
 				window.applyNativeFunctionCall('commentsFailed');
 				window.applyNativeFunctionCall('commentsClosed');
+				window.applyNativeFunctionCall('articleCommentsFailed');
 			}
 		},
 
