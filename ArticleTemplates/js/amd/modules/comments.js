@@ -53,7 +53,6 @@ define([
 									if (block.hasClass("discussion--open")) {
 										// Hide the buttons
 										block.removeClass("discussion--open");
-										console.log("Removed");
 									} else {
 										// Hide previously opened block
 										$(".discussion--open").removeClass("discussion--open");
@@ -96,6 +95,7 @@ define([
 					} else {
 						html = bonzo.create(html);
 						$(html).appendTo($('#comments'));
+						commentsReplyFormatting();
 					}
 				};
 				window.commentsInserter = function (html) {
@@ -105,6 +105,7 @@ define([
 					} else {
 						html = bonzo.create(html);
 						$(html).appendTo($('#comments'));
+						commentsReplyFormatting();
 					}
 					$('.discussion__loading').appendTo('#comments');
 				};
@@ -142,7 +143,6 @@ define([
 				};
 				window.applyNativeFunctionCall('articleCommentsInserter');
 				window.applyNativeFunctionCall('commentsFailed');
-				window.applyNativeFunctionCall('articleCommentsFailed');
 				window.applyNativeFunctionCall('commentsReplyFormatting');
 				window.applyNativeFunctionCall('commentsClosed');
 			}
@@ -153,7 +153,7 @@ define([
 				this.initialised = true;
 				modules.setupGlobals();
 				commentsReplyFormatting();
-				console.info("Comments ready");
+				// console.info("Comments ready");
 			}
 		};
 
