@@ -47,7 +47,8 @@ require([
             contentType: document.body.getAttribute('data-content-type'),
             adsEnabled: document.body.getAttribute('data-ads-enabled'),
             adsSlot: document.body.getAttribute('data-ads-slot'),
-            adsConfig: document.body.getAttribute('data-ads-config')
+            adsConfig: document.body.getAttribute('data-ads-config'),
+            adsKeywordTargeting: document.body.getAttribute('data-ads-keyword')
         };
 
         // Common bootstrap
