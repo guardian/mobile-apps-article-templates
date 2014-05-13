@@ -48,7 +48,7 @@ define([
 					googletag.defineSlot(config.adsSlot, [[300, 250]], mobileMpuId).addService(googletag.pubads());
 					googletag.defineSlot(config.adsSlot, [[bannerWidth, bannerHeight]], bannerHtmlId).addService(googletag.pubads());
 					googletag.pubads().enableSingleRequest();
-                    googletag.pubads().setTargeting('k', [config.adsKeywordTargeting]);
+                    googletag.pubads().setTargeting('k', config.adsKeywordTargeting);
 					googletag.enableServices();
 				});
 			},
