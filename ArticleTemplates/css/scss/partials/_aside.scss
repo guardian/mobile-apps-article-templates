@@ -19,8 +19,6 @@ aside {
 		border-top: 1px dotted $shadow;
 		@include padding(1, 1, 1, 0);
 		position: relative;
-		-webkit-touch-callout: none;
-		-webkit-user-select: none;
 		clear: right;
 
 		@include mq($to: col1) {
@@ -41,6 +39,8 @@ aside {
 
 		.touchpoint {
 			display: inline-block;
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
 			
 			@include mq($to: col1) {
 				@include flexbox;
