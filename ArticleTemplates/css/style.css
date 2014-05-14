@@ -1760,7 +1760,19 @@ a {
 .offline .element-embed,
 .offline .element-map,
 .offline .element-audio {
+  overflow: hidden;
+  position: relative;
   background-color: #dcdad5; }
+  .offline .element-video:before,
+  .offline .element-embed:before,
+  .offline .element-map:before,
+  .offline .element-audio:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: #dcdad5;
+    position: absolute;
+    z-index: 20; }
   .offline .element-video figcaption,
   .offline .element-embed figcaption,
   .offline .element-map figcaption,
