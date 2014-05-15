@@ -13,7 +13,7 @@ $('.gallery__thumbnails').collagePlus({
 	});
 
 $(window).resize(function() {
-	$('.gallery__thumbnails').collagePlus({
+	$('.gallery__thumbnails').removeAttr("style").collagePlus({
 		'targetHeight' : imageHeight
 	});
 });
