@@ -3,10 +3,19 @@
 		border-top-color: $media;
 		color: $white;
 		background-color: $media-bg;
-		
-		a {
-			color: $media;
+
+		.article__body {
+			@include text-underline($media, $media-bg, $media-accent);
 		}
+		
+		.article__body,
+		.article__standfirst,
+		.media-meta {
+			a {
+				color: $media;
+			}
+		}
+
 		.touchpoint__button--primary {
 			background-color: $media;
 			color: $media-bg;
@@ -20,7 +29,7 @@
 		
 		.article__section {
 			display: block;
-			color: $media-bg;
+			color: $media;
 		}
 		
 		.article__byline,

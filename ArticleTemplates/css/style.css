@@ -1934,7 +1934,8 @@ aside {
   padding-bottom: 4.5em;
   position: relative; }
   #audio .article__header .inner-header .article__section {
-    display: none; }
+    display: none;
+    padding-bottom: 0; }
   #audio .article__header .inner-header .article__headline {
     color: white;
     padding: 6px 12px 12px 12px; }
@@ -2069,7 +2070,17 @@ aside {
   border-top-color: #ffbb00;
   color: white;
   background-color: #333333; }
-  #audio.media .article a {
+  #audio.media .article .article__body a {
+    background-image: linear-gradient(to bottom, #333333 50%, rgba(255, 187, 0, 0.67) 50%);
+    background-repeat: repeat-x;
+    background-size: 2px 2px;
+    background-position: 0 bottom;
+    text-shadow: 4px 2px #333333, 3px 2px #333333, 2px 2px #333333, 1px 2px #333333, 0px 2px #333333, -1px 2px #333333, -2px 2px #333333, -3px 2px #333333, -4px 2px #333333; }
+  #audio.media .article .article__body a:active {
+    background-image: linear-gradient(to bottom, #333333 50%, rgba(255, 211, 92, 0.67) 50%); }
+  #audio.media .article .article__body a,
+  #audio.media .article .article__standfirst a,
+  #audio.media .article .media-meta a {
     color: #ffbb00; }
   #audio.media .article .touchpoint__button--primary {
     background-color: #ffbb00;
@@ -2079,7 +2090,7 @@ aside {
   min-height: 0px; }
 #audio.media .article__header .article__section {
   display: block;
-  color: #333333; }
+  color: #ffbb00; }
 #audio.media .article__header .article__byline,
 #audio.media .article__header .article__meta {
   display: none; }
