@@ -51,7 +51,11 @@
 		}
 		
 		blockquote:first-child {
-			@include margin (1, 0);
+			@include margin (1, 2);
+		}
+		
+		br {
+			display: none;
 		}
 
 		p:last-child {
@@ -277,7 +281,7 @@
 	// Blocked
 	&.blocked {
 		color: $meta;
-		@include padding(1, 0, 0, 0);
+		@include padding(1);
 		.discussion__header {
 			opacity: 0.5;
 		}
