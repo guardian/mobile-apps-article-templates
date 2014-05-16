@@ -49,6 +49,14 @@
 			margin-right: cols($base-4, 1);
 			margin-left: cols($base-4, 5);
 		}
+		
+		blockquote:first-child {
+			@include margin (1, 2);
+		}
+		
+		br {
+			display: none;
+		}
 
 		p:last-child {
 			margin-bottom: 0px;
@@ -273,6 +281,7 @@
 	// Blocked
 	&.blocked {
 		color: $meta;
+		@include padding(1);
 		.discussion__header {
 			opacity: 0.5;
 		}
