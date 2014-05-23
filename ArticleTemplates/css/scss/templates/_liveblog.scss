@@ -181,10 +181,16 @@
 			vertical-align: middle;
 		}
 	}
-	
+
 	.article__body--liveblog__pinned {
-		// Temporary fix while this element is removed from the html render
-		display: none;
+		.element {
+			@include margin(1, 0);
+		}
+
+		figcaption {
+			@include padding(0.5, 0, 2, 0);
+			border-bottom: none;
+		}
 	}
 
 	aside.aside-witness {
@@ -401,5 +407,11 @@
 #liveblog.android {
 	.aside-witness {
 		@include margin(1);
+	}
+	
+	.article__body--liveblog__pinned {
+		figcaption {
+			@include padding(0.5, 1, 2, 1 );
+		}
 	}
 }
