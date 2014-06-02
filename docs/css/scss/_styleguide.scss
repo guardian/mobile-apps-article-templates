@@ -1,0 +1,42 @@
+.styleguide__banner {
+	@include padding(1);
+}
+
+.styleguide__title {
+	font-family: $egyptian-display;
+	font-weight: 300;
+	@include headline();
+}
+
+.styleguide__main {
+	@include padding(1);
+	overflow: hidden;
+}
+
+.styleguide__navigation {
+	@include padding(0, 1, 1, 0);
+	width: 25%;
+	float: left;
+
+	.nav__item {
+		font-family: $egyptian-display;
+		font-weight: 600;
+		border-top: 1px solid $news-accent;
+		@include padding(0.25, 1, 2, 0.25);
+	}
+}
+
+.styleguide__article {
+	@include padding(1);
+	width: 75%;
+	float: right;
+}
+
+.styleguide__contentinfo {
+	color: $standfirst;
+	font-family: $agate-sans;
+	@include meta();
+	border-top: 1px dotted $shadow;
+	@include padding(1);
+	clear: both;
+}
