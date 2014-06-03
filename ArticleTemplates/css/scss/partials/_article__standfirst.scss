@@ -1,0 +1,26 @@
+/*doc
+---
+title: Standfirst
+name: standfirst
+category: Partials
+---
+Used to display the standfirst of an article. Any emboldened text is normalised within this style.
+
+```html_example
+<div class="article__standfirst">
+	<p>While riders will have some freedom to move, they won't have the ability to move without others watching and storing their data</p>
+</div>
+```
+*/
+
+.article__standfirst {
+	color: $standfirst;
+	font-family: $egyptian-display;
+	font-weight: 300;
+	@include standfirst();
+	@include padding(0.5, 1, 1.5, 1);
+
+	strong {
+		font-weight: 400;
+	}
+}

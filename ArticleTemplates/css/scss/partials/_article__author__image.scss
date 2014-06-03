@@ -1,0 +1,26 @@
+/*doc
+---
+title: Author images
+name: author-image
+category: Partials
+---
+Used to display an image of an article's author.
+
+```html_example
+<a class="article__author__image" href="#"><img src="http://png-resizer.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2014/3/13/1394733739319/IanSample.png?width=300"></a>
+```
+*/
+
+.article__author__image {
+	background-color: $background;
+	border-radius: 50%;
+	@include margin(0, 0.75, 1, 0);
+	width: 60px;
+	height: 60px;
+	overflow: hidden;
+	display: block;
+
+	img {
+		height: 100%;
+	}
+}

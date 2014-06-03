@@ -1,0 +1,69 @@
+/*doc
+---
+title: Review Rating
+name: review-rating
+category: Partials
+---
+Used to indicate the number of stars a review has been rated with
+
+```html_example
+<div class="article__review-rating article__review-rating--0">
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+</div>
+
+<div class="article__review-rating article__review-rating--1">
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+</div>
+
+<div class="article__review-rating article__review-rating--2">
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+</div>
+
+<div class="article__review-rating article__review-rating--3">
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+</div>
+
+<div class="article__review-rating article__review-rating--4">
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+</div>
+
+<div class="article__review-rating article__review-rating--5">
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+</div>
+```
+*/
+
+.article__review-rating {
+	color: $meta;
+}
+.article__review-rating--1 .icon:nth-child(-n+1),
+.article__review-rating--2 .icon:nth-child(-n+2),
+.article__review-rating--3 .icon:nth-child(-n+3),
+.article__review-rating--4 .icon:nth-child(-n+4),
+.article__review-rating--5 .icon:nth-child(-n+5) {
+	color: $news-accent;
+}

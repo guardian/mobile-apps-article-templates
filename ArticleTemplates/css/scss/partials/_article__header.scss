@@ -11,54 +11,17 @@
 		@include flex(1);
 	}
 
-	.article__section {
-		font-family: $egyptian-display;
-		font-weight: 600;
-		color: $news;
-		@include headline(0.5);
-		@include padding(0.5, 1);
-	}
-
-	.article__headline {
-		color: $headline;
-		font-family: $egyptian-display;
-		font-weight: 200;
-		@include headline();
-		@include padding(0, 1, 2.5, 1);
-		span {
-			display: none; // Hide Cif elements from non-Cif pages
-		}
-	}
-
-	.article__standfirst {
-		color: $standfirst;
-		font-family: $egyptian-display;
-		font-weight: 300;
-		@include standfirst();
-		@include padding(0.5, 1, 1.5, 1);
-		
-		strong {
-			font-weight: 400;
-		}
+	.article__alerts {
+		@include padding(0, 1, 1, 1);
+		display: none; // Hidden by default
 	}
 
 	.article__review-rating {
-		color: $meta;
 		@include padding(0, 1, 1.5, 1);
 		margin-top: -18px;
 	}
-	.article__review-rating--1 .icon:nth-child(-n+1),
-	.article__review-rating--2 .icon:nth-child(-n+2),
-	.article__review-rating--3 .icon:nth-child(-n+3),
-	.article__review-rating--4 .icon:nth-child(-n+4),
-	.article__review-rating--5 .icon:nth-child(-n+5) {
-		color: $news-accent;
-	}
 
 	.article__meta {
-		color: $meta;
-		font-family: $agate-sans;
-		@include meta();
 		margin: -1px 0;
 		border-top: 1px dotted $shadow;
 		border-bottom: 1px dotted $shadow;
@@ -73,27 +36,10 @@
 		display: table-cell;
 	}
 
-	.article__byline {
-		color: $headline;
-		font-family: $egyptian-text;
-		@include padding(0.6667, 1, 0, 1);
-		
-		.article__author {
-			font-weight: bold;
-		}
-	}
-
 	.article__author__image {
-		background-color: $background;
-		border-radius: 50%;
-		@include margin(0, 0.75, 1, 0);
-		width: 60px;
-		height: 60px;
-		overflow: hidden;
 		float: left;
 
 		img {
-			height: 100%;
 			margin-left: -10%;
 		}
 	}

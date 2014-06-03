@@ -1,0 +1,22 @@
+/*doc
+---
+title: Byline
+name: byline
+category: Partials
+---
+Used to display the byline of an article.
+
+```html_example
+<p class="article__byline"><a class="article__author" href="#">Harriet Sherwood</a>, <a class="article__author" href="#">Helena Smith</a> in Athens, <a class="article__author" href="#">Lizzy Davies</a> in Rome and <a class="article__author" href="#">Harriet Grant</a></p>
+```
+*/
+
+.article__byline {
+	color: $headline;
+	font-family: $egyptian-text;
+	@include padding(0.6667, 1, 0, 1);
+	
+	.article__author {
+		font-weight: bold;
+	}
+}

@@ -30,6 +30,39 @@
 	@include padding(1);
 	width: 75%;
 	float: right;
+
+	> h1 {
+		color: $headline;
+		font-weight: 400;
+		@include margin(0, 0, 1, 0);
+	}
+	> p {
+		color: $headline;
+		@include margin(0, 0, 0.5, 0);
+	}
+
+	.highlight pre {
+		white-space: pre-wrap;
+	}
+}
+
+.styleguide__article__nav {
+	@include margin(0, 0, 4, 0);
+	
+	.nav__item {
+		font-family: $agate-sans;
+		@include meta();
+		display: inline-block;
+
+		&:after {
+			content: " \2022";
+			font-weight: bold;
+			color: $meta;
+		}
+		&:last-of-type:after {
+			display: none;
+		}
+	}
 }
 
 .styleguide__contentinfo {

@@ -34,92 +34,21 @@
 	}
 
 	.football__header__status {
-		display: inline-block;
-		background-color: white;
-		width: 44px;
-		height: 44px;
-		display: table;
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-image: url("../css/img/football_symbols_time.svg");
-		color: $standfirst;
 		z-index: 10;
 		@include margin(0.5, 0, 0, 0);
 		@include mq($to: col1) {
 			float: left;
-			background-size: 44px 44px;
 			width: 20%;
-			background-position: center;
 		}
 		@include mq($from: col1) {
+			margin-left: auto;
+			margin-right: auto;
 			position: absolute;
 			left: 0;
 			right: 0;
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-		&.football__header__status--f p {
-			font-size: 1.2rem;
-		}
-
-		&.football__header__status--first,
-		&.football__header__status--second,
-		&.football__header__status--ht,
-		&.football__header__status--ft,
-		&.football__header__status--et,
-		&.football__header__status--p {
-			font-weight: bold;
-			color: $news-accent;
-		}
-
-		&.football__header__status--first {
-			background-image: url("../css/img/football_symbols_1st.svg");
-		}
-
-		&.football__header__status--second {
-			background-image: url("../css/img/football_symbols_2nd.svg");
-		}
-
-		&.football__header__status--ht {
-			background-image: url("../css/img/football_symbols_HT.svg");
-		}
-
-		&.football__header__status--ft {
-			background-image: url("../css/img/football_symbols_FT.svg");
-		}
-
-		&.football__header__status--et {
-			background-image: url("../css/img/football_symbols_ET.svg");
-		}
-
-		&.football__header__status--p {
-			background-image: url("../css/img/football_symbols_P.svg");
-		}
-
-		&.football__header__status--a,
-		&.football__header__status--c,
-		&.football__header__status--s {
-			font-weight: bold;
-			color: $live;
-		}
-
-		&.football__header__status--a {
-			background-image: url("../css/img/football_symbols_A.svg");
-		}
-
-		&.football__header__status--c {
-			background-image: url("../css/img/football_symbols_C.svg");
-		}
-
-		&.football__header__status--s {
-			background-image: url("../css/img/football_symbols_S.svg");
 		}
 
 		p {
-			display: table-cell;
-			vertical-align: middle;
-			text-align: center;
 			width: 100%;
 		}
 	}
@@ -133,7 +62,7 @@
 			width: 50%;
 		}
 
-		p {
+		p { // TODO: Give this a class name!
 			text-overflow: ellipsis;
 			white-space: nowrap;
 			overflow: hidden;

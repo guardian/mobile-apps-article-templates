@@ -1,0 +1,142 @@
+/*doc
+---
+title: Match Status
+name: football-match-status
+category: Football
+---
+Future
+
+```html_example
+<div class="football__header__status football__header__status--f"><p>18:00</p></div>
+```
+
+Postponed
+
+```html_example
+<div class="football__header__status football__header__status--p"><p>P</p></div>
+```
+
+Abandonded
+
+```html_example
+<div class="football__header__status football__header__status--a"><p>A</p></div>
+```
+
+Cancelled
+
+```html_example
+<div class="football__header__status football__header__status--c"><p>C</p></div>
+```
+
+Suspended
+
+```html_example
+<div class="football__header__status football__header__status--s"><p>S</p></div>
+```
+
+First half
+
+```html_example
+<div class="football__header__status football__header__status--first"><p>1st</p></div>
+```
+
+Half time
+
+```html_example
+<div class="football__header__status football__header__status--ht"><p>HT</p></div>
+```
+
+Second half
+
+```html_example
+<div class="football__header__status football__header__status--second"><p>2nd</p></div>
+```
+
+Extra time
+
+```html_example
+<div class="football__header__status football__header__status--et"><p>ET</p></div>
+```
+
+Full time
+
+```html_example
+<div class="football__header__status football__header__status--ft"><p>FT</p></div>
+```
+*/
+
+.football__header__status {
+	color: $standfirst;
+	font-family: $agate-sans;
+	font-weight: bold;
+	@include meta();
+	background-color: white;
+	background-image: url("../css/img/football_symbols_time.svg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 44px;
+	height: 44px;
+	display: table;
+	@include mq($to: col1) {
+		background-size: 44px 44px;
+		background-position: center;
+	}
+
+	&.football__header__status--f {
+		p {
+			font-size: 1.2rem;
+			font-weight: normal;
+		}
+	}
+
+	&.football__header__status--a {
+		color: $live;
+		background-image: url("../css/img/football_symbols_A.svg");
+	}
+
+	&.football__header__status--c {
+		color: $live;
+		background-image: url("../css/img/football_symbols_C.svg");
+	}
+
+	&.football__header__status--p {
+		color: $news-accent;
+		background-image: url("../css/img/football_symbols_P.svg");
+	}
+
+	&.football__header__status--s {
+		color: $live;
+		background-image: url("../css/img/football_symbols_S.svg");
+	}
+
+	&.football__header__status--first {
+		color: $news-accent;
+		background-image: url("../css/img/football_symbols_1st.svg");
+	}
+
+	&.football__header__status--second {
+		color: $news-accent;
+		background-image: url("../css/img/football_symbols_2nd.svg");
+	}
+
+	&.football__header__status--ht {
+		color: $news-accent;
+		background-image: url("../css/img/football_symbols_HT.svg");
+	}
+
+	&.football__header__status--ft {
+		color: $news-accent;
+		background-image: url("../css/img/football_symbols_FT.svg");
+	}
+
+	&.football__header__status--et {
+		color: $news-accent;
+		background-image: url("../css/img/football_symbols_ET.svg");
+	}
+
+	p { // TODO: Give this a class name!
+		vertical-align: middle;
+		text-align: center;
+		display: table-cell;
+	}
+}
