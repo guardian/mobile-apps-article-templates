@@ -1,0 +1,202 @@
+#standard-article[class*="feature"] {
+	.article__header {
+		a {
+			color: $white;
+			&:active {
+				opacity: 0.8;
+			}
+		}
+
+		.bullet,
+		ul > li {
+			&:before {
+				color: rgba(255, 255, 255, 0.8);
+			}
+		}
+
+		.inner-header {
+			padding-right: 0;
+			@include order(2);
+		}
+	}
+
+	.article__section {
+		color: $white;
+	}
+
+	.article__headline {
+		color: $white;
+		position: relative;
+		z-index: 20;
+		@include mq($from: col2) {
+			font-size: 3.5556em; // 64px
+			font-weight: 100;
+			line-height: 0.9375; // 60px
+		}
+	}
+
+	.article__standfirst {
+		color: rgba(255, 255, 255, 0.8);
+		@include order(3);
+
+		strong {
+			font-weight: normal;
+		}
+	}
+
+	.article__meta {
+		color: rgba(255, 255, 255, 0.8);
+		border: 0;
+		margin: 0;
+		@include order(6);
+	}
+
+	.article__author__image,
+	.article__alerts {
+		display: none;
+	}
+
+	.article__comments {
+		border-color: rgba(255, 255, 255, 0.5);
+	}
+
+	.article__comments__label {
+		@include mq(col2, col3) {
+			display: none;
+		}
+	}
+
+	.article__byline {
+		color: $white;
+	}
+
+	.article__image {
+		position: relative;
+	}
+
+	.article__image-caption {
+		color: rgba(255, 255, 255, 0.9);
+		border: 0 none;
+		padding: 0;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 10;
+	}
+
+	.article__image-caption__icon {
+		line-height: 44px;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.4);
+		width: 44px;
+		height: 44px;
+		display: inline-block;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		&:active {
+			background-color: rgba(0, 0, 0, 0.66);
+		}
+	}
+
+	.article__image-caption__text {
+		background-color: rgba(0, 0, 0, 0.4);
+		@include padding(0.5, 1, 0.5, 1);
+		display: none;
+		max-height: 0;
+		overflow: hidden;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		right: 45px;
+
+		&.is-visible {
+			display: block;
+			min-height: 44px;
+			max-height: 999px;
+		}
+	}
+
+	.article__pubdate {
+		color: rgba($white, 0.8);
+	}
+}
+
+.feature1 {
+	a,
+	.article__body > p:first-of-type:first-letter {
+		color: $feature1;
+	}
+	a:active {
+		color: $feature1-accent;
+	}
+	.article__header,
+	.touchpoint__button--primary {
+		background-color: $feature1;
+	}
+	.article__standfirst,
+	a:active .touchpoint__button--primary {
+		background-color: $feature1-accent;
+	}
+	.prose p {
+		@include text-underline($feature1, $white, $feature1-accent);
+	}
+	.prose table,
+	.table,
+	.article {
+		border-top-color: $feature1-accent;
+	}
+}
+
+.feature2 {
+	a,
+	.article__body > p:first-of-type:first-letter {
+		color: $feature2;
+	}
+	a:active {
+		color: $feature2-accent;
+	}
+	.article__header,
+	.touchpoint__button--primary {
+		background-color: $feature2;
+	}
+	.article__standfirst,
+	a:active .touchpoint__button--primary {
+		background-color: $feature2-accent;
+	}
+	.prose p {
+		@include text-underline($feature2, $white, $feature2-accent);
+	}
+	.prose table,
+	.table,
+	.article {
+		border-top-color: $feature2-accent;
+	}
+}
+
+.feature3 {
+	a,
+	.article__body > p:first-of-type:first-letter {
+		color: $feature3;
+	}
+	a:active {
+		color: $feature3-accent;
+	}
+	.article__header,
+	.touchpoint__button--primary {
+		background-color: $feature3;
+	}
+	.article__standfirst,
+	a:active .touchpoint__button--primary {
+		background-color: $feature3-accent;
+	}
+	.prose p {
+		@include text-underline($feature3, $white, $feature3-accent);
+	}
+	.prose table,
+	.table,
+	.article {
+		border-top-color: $feature3-accent;
+	}
+}

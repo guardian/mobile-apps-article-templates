@@ -1,0 +1,546 @@
+/*doc
+---
+title: Standard article
+name: 1-standard
+category: Cards
+---
+Headline and standfirst
+
+```html_example
+<div class="card">
+	<div class="card__container">
+		<div class="card__header">
+			<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+		</div>
+		<div class="card__object">
+			<p class="standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
+		</div>
+		<div class="card__footer">
+			<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+			<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+		</div>
+	</div>
+</div>
+```
+
+Headline and image
+
+```html_example
+<div class="card has-image">
+	<div class="card__container">
+		<div class="card__header">
+			<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+		</div>
+		<div class="card__object">
+			<img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
+		</div>
+		<div class="card__footer">
+			<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+			<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+		</div>
+	</div>
+</div>
+```
+*/
+
+.card {
+	outline: 2px solid red;
+
+	background-color: $white;
+	border-top: 1px solid $news-accent;
+	border-bottom: 1px solid $shadow;
+	position: relative;
+
+	@include mq($to: col1) {
+		margin: $base-1 / 1.5 $base-1 / 1.5 0 $base-1 / 1.5;
+	}
+	
+	@include mq($from: col1) {
+		margin-bottom: $base-1;
+		&:before {
+			content: "";
+			padding-top: 133%;
+			display: block;
+		}
+	}
+	@include mq(col1, col2) {
+		margin: $base-2 $base-2 0 0;
+		width: cols($base-2, 4);
+		&:nth-child(2n) {
+			margin-right: 0;
+		}
+	}
+	@include mq(col2, col3) {
+		margin: $base-3 $base-3 0 0;
+		width: cols($base-3, 4);
+		&:nth-child(3n) {
+			margin-right: 0;
+		}
+	}
+	@include mq($from: col3) {
+		margin: $base-4 $base-4 0 0;
+		width: cols($base-4, 4);
+		&:nth-child(4n) {
+			margin-right: 0;
+		}
+	}
+
+	.card__container {
+		@include mq($to: col1) {
+			@include flexbox;
+			@include flex-direction(column);
+		}
+		@include mq($from: col1) {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+		}
+	}
+
+	.card__header,
+	.card__object {
+		@include padding(0.25, 0.5, 0, 0.5);
+		@include mq($from: col1) {
+			height: 50%;
+			overflow: hidden;
+		}
+	}
+
+	.card__header {
+		margin-bottom: 1em;
+		@include mq($to: col1) {
+			@include flex(1);
+			@include order(1);
+		}
+	}
+
+	.card__object {
+		@include mq($to: col1) {
+			@include flex(1);
+			@include order(2);
+		}
+		@include mq($from: col1) {
+			overflow: hidden;
+			width: 100%;
+			position: absolute;
+			bottom: 0;
+		}
+	}
+	&.has-image .card__object {
+		padding: 0;
+		@include mq($to: col1) {
+			@include flex(1);
+			@include order(3);
+		}
+		.card__image {
+			@include mq($from: col1) {
+				height: 100%;
+				width: auto;
+				margin-bottom: -1px;
+			}
+		}
+	}
+
+	.card__footer {
+		color: $meta;
+		font-family: $agate-sans;
+		font-size: $meta-size-1;
+		line-height: 1;
+		margin-top: 1em;
+		overflow: hidden;
+		@include mq($to: col1) {
+			@include flex(1);
+			@include order(3);
+		}
+		@include mq($from: col1) {
+			position: absolute;
+			z-index: 1;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+		}
+	}
+	&.has-image {
+		.card__footer {
+			bottom: 50%;
+			@include mq($to: col1) {
+				@include flex(1);
+				@include order(2);
+			}
+		}
+	}
+
+	.card__title,
+	.card__byline,
+	.card__rating {
+		font-family: $egyptian-display;
+		font-weight: 200;
+		font-size: 2.2rem;
+		line-height: 2.6rem;
+		text-rendering: optimizeLegibility;
+	}
+
+	.card__rating { // TODO: Used shared rating class
+		color: $meta;
+		font-size: 18px;
+		line-height: 28px;
+	}
+	.card__rating--1 .icon:nth-child(-n+1),
+	.card__rating--2 .icon:nth-child(-n+2),
+	.card__rating--3 .icon:nth-child(-n+3),
+	.card__rating--4 .icon:nth-child(-n+4),
+	.card__rating--5 .icon:nth-child(-n+5) {
+		color: $news-accent;
+	}
+
+	.standfirst {
+		color: $standfirst;
+		font-family: $egyptian-text;
+		font-size: 1.4rem;
+		line-height: 1.8rem;
+		text-rendering: optimizeLegibility;
+	}
+
+	.touchpoint {
+		position: absolute;
+		bottom: 0;
+		z-index: 2;
+		@include padding(0.5);
+	}
+
+	.card__image {
+		width: 100%;
+		display: block;
+	}
+
+	.card__cutout {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		z-index: 0;
+	}
+
+	.card__meta {
+		width: cols($base-1, 1);
+		height: 24px;
+		@include padding(0, 0, 0, 0.5);
+		border-left: 1px solid $shadow;
+		display: block;
+		float: left;
+		&:first-child {
+			border-left: 0 none;
+		}
+		.icon {
+			margin-right: 3px;
+		}
+	}
+
+	.card__timestamp {
+		@include padding(0, 5, 0, 0.5);
+	}
+}
+
+/*doc
+---
+title: Feature article
+name: 2-feature
+category: Cards
+---
+Headline and standfirst
+
+```html_example
+<div class="card card--feature">
+	<div class="card__container">
+		<div class="card__header">
+			<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+		</div>
+		<div class="card__object">
+			<p class="standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
+		</div>
+		<div class="card__footer">
+			<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+			<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+		</div>
+	</div>
+</div>
+```
+
+Headline and image
+
+```html_example
+<div class="card card--feature has-image">
+	<div class="card__container">
+		<div class="card__header">
+			<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+		</div>
+		<div class="card__object">
+			<img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
+		</div>
+		<div class="card__footer">
+			<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+			<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+		</div>
+	</div>
+</div>
+```
+*/
+
+.card.card--feature {
+	background-color: $feature1;
+	border-top-color: transparent;
+	* {
+		color: $white;
+	}
+	.card__meta {
+		border-color: fade-out($shadow, 0.66);
+	}
+}
+
+/*doc
+---
+title: Media article
+name: 3-media
+category: Cards
+---
+Headline and standfirst
+
+```html_example
+<div class="card card--media">
+	<div class="card__container">
+		<div class="card__header">
+			<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+		</div>
+		<div class="card__object">
+			<p class="standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
+		</div>
+		<div class="card__footer">
+			<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+			<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+		</div>
+	</div>
+</div>
+```
+
+Headline and image
+
+```html_example
+<div class="card card--media has-image">
+	<div class="card__container">
+		<div class="card__header">
+			<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+		</div>
+		<div class="card__object">
+			<img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
+		</div>
+		<div class="card__footer">
+			<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+			<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+		</div>
+	</div>
+</div>
+```
+
+Headline and video
+
+```html_example
+<div class="card card--media has-image">
+	<div class="card__container">
+		<div class="card__header">
+			<h3 class="card__title"><span class="icon">&#xe043;</span><span class="series">Series title:</span> Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+		</div>
+		<div class="card__object">
+			<img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
+			<a class="touchpoint" href="#">
+				<span class="touchpoint__button touchpoint__button--primary"><span class="icon">&#xe04B;</span></span>
+				<span class="touchpoint__label">2:19</span>
+			</a>
+		</div>
+	</div>
+</div>
+```
+*/
+
+.card.card--media {
+	background-color: $media-bg;
+	border-top-color: $media;
+	.card__title {
+		color: $white;
+		.icon {
+			color: $media;
+			margin-right: 6px;
+		}
+	}
+	.standfirst {
+		color: $meta;
+	}
+	.series {
+		color: $media;
+		&:after {
+			content:"\a";
+			white-space: pre;
+		}
+	}
+	.touchpoint__button--primary {
+		background-color: $media;
+		color: $media-bg;
+	}
+	.touchpoint__label {
+		color: $media;
+		font-weight: bold;
+	}
+}
+
+/*doc
+---
+title: Comment article
+name: 4-comment
+category: Cards
+---
+Headline and standfirst
+
+```html_example
+<div class="card card--comment">
+	<div class="card__container">
+		<div class="card__header">
+			<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+		</div>
+		<div class="card__object">
+			<p class="standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
+		</div>
+		<div class="card__footer">
+			<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+			<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+		</div>
+	</div>
+</div>
+```
+
+Headline and image
+
+```html_example
+<div class="card card--comment has-image">
+	<div class="card__container">
+		<div class="card__header">
+			<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+		</div>
+		<div class="card__object">
+			<img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
+		</div>
+		<div class="card__footer">
+			<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+			<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+		</div>
+	</div>
+</div>
+```
+*/
+
+.card.card--comment {
+	background-color: $comment-bg;
+	border-top-color: $comment;
+	.card__title {
+		.icon {
+			color: $meta;
+			font-size: 150%;
+			margin-right: 6px;
+			line-height: 0.1%;
+			top: 6px;
+		}
+	}
+	.card__byline {
+		color: $comment;
+	}
+	.standfirst {
+		padding-right: $base-4*2;
+		position: relative;
+		z-index: 1;
+	}
+	.card__footer {
+		bottom: 0;
+	}
+}
+
+/*doc
+---
+title: Live blog
+name: 5-live
+category: Cards
+---
+Headline and standfirst
+
+```html_example
+<div class="card card--live">
+	<div class="card__container">
+		<div class="card__header">
+			<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+		</div>
+		<div class="card__object">
+			<p class="standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
+		</div>
+		<div class="card__footer">
+			<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+			<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+		</div>
+	</div>
+</div>
+```
+
+Headline and image
+
+```html_example
+<div class="card card--live has-image">
+	<div class="card__container">
+		<div class="card__header">
+			<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+		</div>
+		<div class="card__object">
+			<img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
+		</div>
+		<div class="card__footer">
+			<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+			<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+		</div>
+	</div>
+</div>
+```
+*/
+
+.card.card--live {
+	border-top-color: $live;
+	.card__timestamp {
+		color: $live;
+		font-weight: bold;
+		&:before {
+			content: "";
+			width: 12px;
+			height: 12px;
+			background-color: $live;
+			border-radius: 100%;
+			display: block;
+			float: left;
+			margin-right: 3px;
+			margin-top: 2px;
+		}
+	}
+}
+
+
+// Module Specific
+.module {
+	@include mq($from: col1) {
+		.card {
+			float: left;
+		}
+	}
+}
+
+.module--related {
+	@include mq(col2, col3) {
+		.card:nth-of-type(4) {
+			display: none;
+		}
+	}
+}

@@ -1,0 +1,166 @@
+// Headline font sizing
+@mixin headline($multiple: 1) {
+	$headline-size-1: 3.0rem;
+	$headline-lead-1: 3.2rem;
+	$headline-size-2: 4.0rem;
+	$headline-lead-2: 4.0rem;
+	$headline-size-3: 4.8rem;
+	$headline-lead-3: 4.8rem;
+	
+	@include mq($to: col1) {
+		font-size: $headline-size-1 * $multiple;
+		line-height: $headline-lead-1 * $multiple;
+	}
+	@include mq(col1, col2) {
+		font-size: $headline-size-2 * $multiple;
+		line-height: $headline-lead-2 * $multiple;
+	}
+	@include mq($from: col2) {
+		font-size: $headline-size-3 * $multiple;
+		line-height: $headline-lead-3 * $multiple;
+	}
+}
+
+// Standfirst font sizing
+@mixin standfirst($multiple: 1) {
+	$standfirst-size-1: 1.7rem;
+	$standfirst-lead-1: 2.2rem;
+	$standfirst-size-2: 2.2rem;
+	$standfirst-lead-2: 3.0rem;
+	
+	@include mq($to: col2) {
+		font-size: $standfirst-size-1 * $multiple;
+		line-height: $standfirst-lead-1 * $multiple;
+	}
+	@include mq($from: col2) {
+		font-size: $standfirst-size-2 * $multiple;
+		line-height: $standfirst-lead-2 * $multiple;
+	}
+}
+
+// Body font sizing
+$body-size-1: 1.6rem;
+$body-lead-1: 2.4rem;
+$body-size-2: 1.8rem;
+$body-lead-2: 2.6rem;
+
+@mixin body($multiple: 1) {
+	@include mq($to: col2) {
+		font-size: $body-size-1 * $multiple;
+		line-height: $body-lead-1 * $multiple;
+	}
+	@include mq($from: col2) {
+		font-size: $body-size-2 * $multiple;
+		line-height: $body-lead-2 * $multiple;
+	}
+}
+
+// Meta font sizing
+$meta-size-1: 1.4rem;
+$meta-lead-1: 2.0rem;
+$meta-size-2: 1.6rem;
+$meta-lead-2: 2.2rem;
+
+@mixin meta($multiple: 1) {
+	@include mq($to: col2) {
+		font-size: $meta-size-1 * $multiple;
+		line-height: $meta-lead-1 * $multiple;
+	}
+	@include mq($from: col2) {
+		font-size: $meta-size-2 * $multiple;
+		line-height: $meta-lead-2 * $multiple;
+	}
+}
+
+// Padding (based on the NGA grid)
+@mixin padding($top: "", $right: "", $bottom: "", $left: "") {
+	@if $top == "" {
+		$top: 1;
+		$right: 1;
+		$bottom: 1;
+		$left: 1;
+	} @else if $right == "" and $bottom == "" and $left == "" {
+		$right: $top;
+		$bottom: $top;
+		$left: $top;
+	} @else if $bottom == "" and $left == "" {
+		$bottom: $top;
+		$left: $right;
+	}
+
+	// Output padding for each size
+	padding: 12px * $top 12px * $right 12px * $bottom 12px * $left;
+}
+
+// Margins (based on the NGA grid)
+@mixin margin($top: "", $right: "", $bottom: "", $left: "") {
+	@if $top == "" {
+		$top: 1;
+		$right: 1;
+		$bottom: 1;
+		$left: 1;
+	} @else if $right == "" and $bottom == "" and $left == "" {
+		$right: $top;
+		$bottom: $top;
+		$left: $top;
+	} @else if $bottom == "" and $left == "" {
+		$bottom: $top;
+		$left: $right;
+	}
+
+	// Output margin for each size
+	margin: 12px * $top 12px * $right 12px * $bottom 12px * $left;
+}
+
+// Define widths based on the NGA grid
+@mixin rbase-1($cols, $gutcomp:"") {
+	@include mq($to: col1) {
+		@if $gutcomp == 1 {
+			width: (($base-1 * 5) * $cols) + ($base-1 * ($cols));
+		} @else {
+			width: (($base-1 * 5) * $cols) + ($base-1 * ($cols - 1));
+		}
+	}
+}
+@mixin rbase-2($cols, $gutcomp:"") {
+	@include mq(col1, col2) {
+		@if $gutcomp == 1 {
+			width: (($base-2 * 5) * $cols) + ($base-2 * ($cols));
+		} @else {
+			width: (($base-2 * 5) * $cols) + ($base-2 * ($cols - 1));
+		}
+	}
+}
+@mixin rbase-3($cols, $gutcomp:"") {
+	@include mq(col2, col3) {
+		@if $gutcomp == 1 {
+			width: (($base-3 * 5) * $cols) + ($base-3 * ($cols));
+		} @else {
+			width: (($base-3 * 5) * $cols) + ($base-3 * ($cols - 1));
+		}
+	}
+}
+@mixin rbase-4($cols, $gutcomp:"") {
+	@include mq($from: col3) {
+		@if $gutcomp == 1 {
+			width: (($base-4 * 5) * $cols) + ($base-4 * ($cols));
+		} @else {
+			width: (($base-4 * 5) * $cols) + ($base-4 * ($cols - 1));
+		}
+	}
+}
+
+// Link Underline Style
+@mixin text-underline($color, $background, $color-accent) {
+	a {
+		background-image: linear-gradient(to bottom, $background 50%, fade_out($color, 0.33) 50%);
+		background-repeat: repeat-x;
+		background-size: 2px 2px;
+		background-position: 0 bottom;
+		text-shadow: 4px 0px $background, 3px 0px $background, 2px 0px $background, 1px 0px $background, 0px 0px $background, -1px 0px $background, -2px 0px $background, -3px 0px $background, -4px 0px $background;
+	}
+	
+	a:active {
+		background-image: linear-gradient(to bottom, $background 50%, fade_out($color-accent, 0.33) 50%);
+	}
+}
