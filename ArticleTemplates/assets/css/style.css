@@ -352,6 +352,35 @@ Makes a block of text selectable. Useful for portions of text a user may wish to
 
 /*doc
 ---
+title: Headline
+name: headline
+category: Modules
+---
+Display the title of an article.
+
+```html_example
+<h1 class="headline">Google’s driverless cars are a boon for safety and climate, but not for privacy</h1>
+```
+*/
+.headline {
+  color: #333333;
+  font-family: "Egyptian Display", Georgia, serif;
+  font-weight: 200; }
+  @media all and (max-width: 28.115em) {
+    .headline {
+      font-size: 3rem;
+      line-height: 3.2rem; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    .headline {
+      font-size: 4rem;
+      line-height: 4rem; } }
+  @media all and (min-width: 40.625em) {
+    .headline {
+      font-size: 4.8rem;
+      line-height: 4.8rem; } }
+
+/*doc
+---
 title: Tags
 name: tags
 category: Modules
@@ -670,8 +699,12 @@ Used to display the byline of an article.
     -webkit-box-flex: 1;
     -webkit-flex: 1;
     flex: 1; }
+  .article__header .headline {
+    padding: 0px 12px 30px 12px; }
   .article__header .standfirst {
     padding: 6px 12px 18px 12px; }
+  .article__header .article__author {
+    display: none; }
   .article__header .article__alerts {
     padding: 0px 12px 12px 12px;
     display: none; }
@@ -753,38 +786,6 @@ Used to display the byline of an article.
     .article__header.cutout .inner-header {
       min-height: 320px;
       background-size: contain; } }
-
-/*doc
----
-title: Headline
-name: headline
-category: Partials
----
-Used to display the title of an article. A byline is included in the headline, but only displayed in comment articles
-
-```html_example
-<h1 class="article__headline selectable">Google's driverless cars are a boon for safety and climate, but not for privacy <span><a class="article__author" href="#">Dan Gillmor</a></span></h1>
-```
-*/
-.article__headline {
-  color: #333333;
-  font-family: "Egyptian Display", Georgia, serif;
-  font-weight: 200;
-  padding: 0px 12px 30px 12px; }
-  @media all and (max-width: 28.115em) {
-    .article__headline {
-      font-size: 3rem;
-      line-height: 3.2rem; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    .article__headline {
-      font-size: 4rem;
-      line-height: 4rem; } }
-  @media all and (min-width: 40.625em) {
-    .article__headline {
-      font-size: 4.8rem;
-      line-height: 4.8rem; } }
-  .article__headline span {
-    display: none; }
 
 /*doc
 ---
@@ -1974,18 +1975,18 @@ figure.figure-inline {
   .football__header .inner-header {
     padding: 0px 12px 0px 12px;
     overflow: auto; }
-    .football__header .inner-header .article__headline {
+    .football__header .inner-header .headline {
       padding: 0;
       width: 100%; }
       @media all and (max-width: 28.115em) {
-        .football__header .inner-header .article__headline {
+        .football__header .inner-header .headline {
           margin-bottom: 1px; } }
       @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-        .football__header .inner-header .article__headline {
+        .football__header .inner-header .headline {
           font-size: 3.2rem;
           margin-bottom: 2px; } }
       @media all and (min-width: 40.625em) {
-        .football__header .inner-header .article__headline {
+        .football__header .inner-header .headline {
           margin-bottom: 4px;
           font-size: 4.0rem; } }
   .football__header p {
@@ -3171,10 +3172,10 @@ category: Partials
   #audio .article__header .inner-header .article__section {
     display: none;
     padding-bottom: 0; }
-  #audio .article__header .inner-header .article__headline {
+  #audio .article__header .inner-header .headline {
     color: white;
     padding: 6px 12px 12px 12px; }
-    #audio .article__header .inner-header .article__headline span {
+    #audio .article__header .inner-header .headline span {
       color: #333333;
       display: block; }
   #audio .article__header .inner-header .article__byline {
@@ -3479,19 +3480,19 @@ category: Partials
   color: #333333; }
   #discussion .article__section .comments-count {
     color: #999999; }
-#discussion .article__headline {
+#discussion .headline {
   margin: 0px 0px 48px 0px;
   padding: 0; }
   @media all and (max-width: 28.115em) {
-    #discussion .article__headline {
+    #discussion .headline {
       font-size: 2.25rem;
       line-height: 2.4rem; } }
   @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    #discussion .article__headline {
+    #discussion .headline {
       font-size: 3rem;
       line-height: 3rem; } }
   @media all and (min-width: 40.625em) {
-    #discussion .article__headline {
+    #discussion .headline {
       font-size: 3.6rem;
       line-height: 3.6rem; } }
 #discussion .article__controls {
@@ -3593,7 +3594,7 @@ category: Partials
   #liveblog.is-live .article__header .bullet:before,
   #liveblog.is-live .article__header ul > li:before {
     color: rgba(255, 255, 255, 0.8); }
-#liveblog.is-live .article__headline,
+#liveblog.is-live .headline,
 #liveblog.is-live .article__byline,
 #liveblog.is-live .article__alerts span.icon,
 #liveblog.is-live .article__section {
@@ -3838,7 +3839,7 @@ category: Partials
   border-top: 2px solid #4bc6df; }
 #football .football-tabs-article .article__section {
   display: none; }
-#football .football-tabs-article .article__headline {
+#football .football-tabs-article .headline {
   padding: 6px 12px 0px 12px; }
 #football .football-tabs-liveblog .article__meta {
   border-top: 2px solid #b51800;
@@ -4303,7 +4304,7 @@ category: Partials
   overflow: auto;
   padding-bottom: 2em; }
 #standard-article.comment .article__header .article__section,
-#standard-article.comment .article__header .article__headline span {
+#standard-article.comment .article__header .article__author {
   color: #e6711b;
   display: block; }
 #standard-article.comment .article__header .standfirst {
@@ -4375,12 +4376,12 @@ category: Partials
   order: 2; }
 #standard-article[class*="feature"] .article__section {
   color: white; }
-#standard-article[class*="feature"] .article__headline {
+#standard-article[class*="feature"] .headline {
   color: white;
   position: relative;
   z-index: 20; }
   @media all and (min-width: 40.625em) {
-    #standard-article[class*="feature"] .article__headline {
+    #standard-article[class*="feature"] .headline {
       font-size: 3.5556em;
       font-weight: 100;
       line-height: 0.9375; } }
