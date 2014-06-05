@@ -2,7 +2,7 @@
 ---
 title: Player card
 name: player-card
-category: Partials
+category: Football
 ---
 The Markup for these classes come from the content API, which in turn gets the content from our Football tool. You can find the templates [here](https://github.com/guardian/frontend/tree/master/admin/app/views/football/player/cards).
 
@@ -18,16 +18,12 @@ The Markup for these classes come from the content API, which in turn gets the c
 	<dl class="player-card__stats">
 		<dt class="player-card__stat-name">Appearances</dt>
 		<dd class="player-card__stat-value">24</dd>
-
 		<dt class="player-card__stat-name">Goals</dt>
 		<dd class="player-card__stat-value">1</dd>
-
 		<dt class="player-card__stat-name">Shots</dt>
 		<dd class="player-card__stat-value">32</dd>
-
 		<dt class="player-card__stat-name">Shots on target</dt>
 		<dd class="player-card__stat-value">28%</dd>
-
 		<dt class="player-card__stat-name">Offsides</dt>
 		<dd class="player-card__stat-value">7</dd>
 	</dl>
@@ -42,9 +38,9 @@ $player-card-avatar: (
 
 .player-card {
 	background: $background;
+	@include margin(1, 0);
 	border-top: 2px solid $news;
 	@include padding(1);
-	@include margin(1, 0);
 
 	// When shown within body copy, float right (at larger breakpoints)
 	.prose & {
@@ -59,6 +55,7 @@ $player-card-avatar: (
 .player-card__image-container {
 	float: right;
 }
+
 .player-card__image {
 	border-radius: 50%;
 	width: map-get($player-card-avatar, default);
@@ -79,10 +76,12 @@ $player-card-avatar: (
 		min-height: map-get($player-card-avatar, large);
 	}
 }
+
 .player-card__name {
 	font-family: $egyptian-display;
 	@include standfirst();
 }
+
 .player-card__position {
 	color: $news;
 	font-family: $agate-sans;
@@ -93,6 +92,7 @@ $player-card-avatar: (
 	margin: 0;
 	padding: 0;
 }
+
 .player-card__stat-name,
 .player-card__stat-value {
 	@include padding(0.25, 0, 0.5, 0);
@@ -106,8 +106,8 @@ $player-card-avatar: (
 	font-weight: normal;
 }
 .player-card__stat-value {
-	font-family: $agate-sans;
 	font-weight: bold;
+	font-family: $agate-sans;
 	font-size: $meta-size-1;
 	line-height: $meta-lead-1;
 	text-align: right;

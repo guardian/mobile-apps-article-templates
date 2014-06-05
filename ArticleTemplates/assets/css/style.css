@@ -763,6 +763,119 @@ Display the standfirst of an article. Emboldened text is normalised.
   .standfirst strong {
     font-weight: 400; }
 
+/*doc
+---
+title: Player card
+name: player-card
+category: Football
+---
+The Markup for these classes come from the content API, which in turn gets the content from our Football tool. You can find the templates [here](https://github.com/guardian/frontend/tree/master/admin/app/views/football/player/cards).
+
+```html_example
+<div class="player-card player-card--football">
+	<div class="player-card__image-container">
+		<img class="player-card__image" src="http://sport.guim.co.uk/football/player-images/100/399337.jpg" alt="Photo of Ricky van Wolfswinkel">
+	</div>
+	<div class="player-card__player">
+		<div class="player-card__position" itemprop="jobTitle">Striker</div>
+		<div class="player-card__name" itemprop="name">Ricky van Wolfswinkel</div>
+	</div>
+	<dl class="player-card__stats">
+		<dt class="player-card__stat-name">Appearances</dt>
+		<dd class="player-card__stat-value">24</dd>
+		<dt class="player-card__stat-name">Goals</dt>
+		<dd class="player-card__stat-value">1</dd>
+		<dt class="player-card__stat-name">Shots</dt>
+		<dd class="player-card__stat-value">32</dd>
+		<dt class="player-card__stat-name">Shots on target</dt>
+		<dd class="player-card__stat-value">28%</dd>
+		<dt class="player-card__stat-name">Offsides</dt>
+		<dd class="player-card__stat-value">7</dd>
+	</dl>
+</div>
+```
+*/
+.player-card {
+  background: #f6f6f6;
+  margin: 12px 0px 12px 0px;
+  border-top: 2px solid #005689;
+  padding: 12px 12px 12px 12px; }
+  @media all and (min-width: 56.25em) {
+    .prose .player-card {
+      margin: 12px 0px 12px 12px;
+      width: 50%;
+      float: right; } }
+
+.player-card__image-container {
+  float: right; }
+
+.player-card__image {
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  float: right; }
+  @media all and (min-width: 28.125em) {
+    .player-card__image {
+      width: 100px;
+      height: 100px; } }
+
+.player-card__player {
+  margin: 0px 0px 12px 0px;
+  padding-right: 44px;
+  min-height: 44px; }
+  @media all and (min-width: 28.125em) {
+    .player-card__player {
+      padding-right: 100px;
+      min-height: 100px; } }
+
+.player-card__name {
+  font-family: "Egyptian Display", Georgia, serif; }
+  @media all and (max-width: 40.615em) {
+    .player-card__name {
+      font-size: 1.7rem;
+      line-height: 2.2rem; } }
+  @media all and (min-width: 40.625em) {
+    .player-card__name {
+      font-size: 2.2rem;
+      line-height: 3rem; } }
+
+.player-card__position {
+  color: #005689;
+  font-family: "Agate Sans", sans-serif; }
+  @media all and (max-width: 40.615em) {
+    .player-card__position {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) {
+    .player-card__position {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+
+.player-card__stats {
+  margin: 0;
+  padding: 0; }
+
+.player-card__stat-name,
+.player-card__stat-value {
+  padding: 3px 0px 6px 0px; }
+
+.player-card__stat-name {
+  font-family: "Agate Sans", sans-serif;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  display: block;
+  float: left;
+  font-weight: normal; }
+
+.player-card__stat-value {
+  font-weight: bold;
+  font-family: "Agate Sans", sans-serif;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  text-align: right;
+  border-top: 1px solid #dcdad5;
+  padding-left: 85%; }
+
 .advert-slot {
   color: #666666;
   font-family: "Agate Sans", sans-serif;
@@ -2471,123 +2584,6 @@ Full time
 
 .android .module {
   margin: 0px 12px 0px 12px; }
-
-/*doc
----
-title: Player card
-name: player-card
-category: Partials
----
-The Markup for these classes come from the content API, which in turn gets the content from our Football tool. You can find the templates [here](https://github.com/guardian/frontend/tree/master/admin/app/views/football/player/cards).
-
-```html_example
-<div class="player-card player-card--football">
-	<div class="player-card__image-container">
-		<img class="player-card__image" src="http://sport.guim.co.uk/football/player-images/100/399337.jpg" alt="Photo of Ricky van Wolfswinkel">
-	</div>
-	<div class="player-card__player">
-		<div class="player-card__position" itemprop="jobTitle">Striker</div>
-		<div class="player-card__name" itemprop="name">Ricky van Wolfswinkel</div>
-	</div>
-	<dl class="player-card__stats">
-		<dt class="player-card__stat-name">Appearances</dt>
-		<dd class="player-card__stat-value">24</dd>
-
-		<dt class="player-card__stat-name">Goals</dt>
-		<dd class="player-card__stat-value">1</dd>
-
-		<dt class="player-card__stat-name">Shots</dt>
-		<dd class="player-card__stat-value">32</dd>
-
-		<dt class="player-card__stat-name">Shots on target</dt>
-		<dd class="player-card__stat-value">28%</dd>
-
-		<dt class="player-card__stat-name">Offsides</dt>
-		<dd class="player-card__stat-value">7</dd>
-	</dl>
-</div>
-```
-*/
-.player-card {
-  background: #f6f6f6;
-  border-top: 2px solid #005689;
-  padding: 12px 12px 12px 12px;
-  margin: 12px 0px 12px 0px; }
-  @media all and (min-width: 56.25em) {
-    .prose .player-card {
-      margin: 12px 0px 12px 12px;
-      width: 50%;
-      float: right; } }
-
-.player-card__image-container {
-  float: right; }
-
-.player-card__image {
-  border-radius: 50%;
-  width: 44px;
-  height: 44px;
-  float: right; }
-  @media all and (min-width: 28.125em) {
-    .player-card__image {
-      width: 100px;
-      height: 100px; } }
-
-.player-card__player {
-  margin: 0px 0px 12px 0px;
-  padding-right: 44px;
-  min-height: 44px; }
-  @media all and (min-width: 28.125em) {
-    .player-card__player {
-      padding-right: 100px;
-      min-height: 100px; } }
-
-.player-card__name {
-  font-family: "Egyptian Display", Georgia, serif; }
-  @media all and (max-width: 40.615em) {
-    .player-card__name {
-      font-size: 1.7rem;
-      line-height: 2.2rem; } }
-  @media all and (min-width: 40.625em) {
-    .player-card__name {
-      font-size: 2.2rem;
-      line-height: 3rem; } }
-
-.player-card__position {
-  color: #005689;
-  font-family: "Agate Sans", sans-serif; }
-  @media all and (max-width: 40.615em) {
-    .player-card__position {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
-    .player-card__position {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-
-.player-card__stats {
-  margin: 0;
-  padding: 0; }
-
-.player-card__stat-name,
-.player-card__stat-value {
-  padding: 3px 0px 6px 0px; }
-
-.player-card__stat-name {
-  font-family: "Agate Sans", sans-serif;
-  font-size: 1.4rem;
-  line-height: 2rem;
-  display: block;
-  float: left;
-  font-weight: normal; }
-
-.player-card__stat-value {
-  font-family: "Agate Sans", sans-serif;
-  font-weight: bold;
-  font-size: 1.4rem;
-  line-height: 2rem;
-  text-align: right;
-  border-top: 1px solid #dcdad5;
-  padding-left: 85%; }
 
 /*doc
 ---
