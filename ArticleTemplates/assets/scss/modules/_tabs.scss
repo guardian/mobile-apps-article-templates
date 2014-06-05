@@ -1,0 +1,52 @@
+/*doc
+---
+title: Tabs
+name: tabs
+category: Modules
+---
+Used to navigate between different sections of an article.
+
+```html_example
+<div class="tabs">
+	<ul class="inline-list">
+		<li class="inline-list__item selected">Report</li><!--
+	 --><li class="inline-list__item">Minute-by-minute</li><!--
+	 --><li class="inline-list__item">Match Info</li>
+	</ul>
+</div>
+```
+*/
+
+.tabs {
+	color: $standfirst;
+	font-family: $agate-sans;
+	@include meta;
+	@include margin(1, 0);
+	@include mq($to: col1) {
+		@include margin(1);
+	}
+
+	.inline-list__item {
+		border-top: 2px solid $shadow;
+		@include padding(0.5, 1, 2, 0.25);
+		width: 33.3%;
+	}
+
+	.inline-list__item.selected {
+		color: $news;
+		font-weight: bold;
+		border-top: 4px solid $news;
+		padding-top: 4px;
+	}
+
+	.inline-list__item[data-href=".football-tabs-liveblog"].selected {
+		color: $live;
+		border-top-color: $live-accent;
+	}
+}
+
+.android {
+	.tabs {
+		@include margin(1);
+	}
+}

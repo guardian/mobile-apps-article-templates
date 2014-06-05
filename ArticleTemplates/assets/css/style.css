@@ -356,14 +356,14 @@ title: Tags
 name: tags
 category: Modules
 ---
-Used to display which labels and article has been tagged with.
+Used to display which keywords and article has been tagged with.
 
 ```html_example
 <div class="tags">
 	<ul class="inline-list">
-		<li class="inline-list__item"><a href="#">Guardian</a></li>
-		<li class="inline-list__item"><a href="#">Mobile</a></li>
-		<li class="inline-list__item"><a href="#">Applications</a></li>
+		<li class="inline-list__item"><a href="#">Guardian</a></li><!--
+	 --><li class="inline-list__item"><a href="#">Mobile</a></li><!--
+	 --><li class="inline-list__item"><a href="#">Applications</a></li>
 	</ul>
 </div>
 ```
@@ -398,6 +398,55 @@ Used to display which labels and article has been tagged with.
     font-weight: bold; }
   .tags .inline-list__item:last-of-type:after {
     display: none; }
+
+/*doc
+---
+title: Tabs
+name: tabs
+category: Modules
+---
+Used to navigate between different sections of an article.
+
+```html_example
+<div class="tabs">
+	<ul class="inline-list">
+		<li class="inline-list__item selected">Report</li><!--
+	 --><li class="inline-list__item">Minute-by-minute</li><!--
+	 --><li class="inline-list__item">Match Info</li>
+	</ul>
+</div>
+```
+*/
+.tabs {
+  color: #666666;
+  font-family: "Agate Sans", sans-serif;
+  margin: 12px 0px 12px 0px; }
+  @media all and (max-width: 40.615em) {
+    .tabs {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) {
+    .tabs {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  @media all and (max-width: 28.115em) {
+    .tabs {
+      margin: 12px 12px 12px 12px; } }
+  .tabs .inline-list__item {
+    border-top: 2px solid #dcdad5;
+    padding: 6px 12px 24px 3px;
+    width: 33.3%; }
+  .tabs .inline-list__item.selected {
+    color: #005689;
+    font-weight: bold;
+    border-top: 4px solid #005689;
+    padding-top: 4px; }
+  .tabs .inline-list__item[data-href=".football-tabs-liveblog"].selected {
+    color: #b51800;
+    border-top-color: #cc2b12; }
+
+.android .tabs {
+  margin: 12px 12px 12px 12px; }
 
 .advert-slot {
   color: #666666;
@@ -857,58 +906,6 @@ Used to display the standfirst of an article. Any emboldened text is normalised 
       line-height: 3rem; } }
   .article__standfirst strong {
     font-weight: 400; }
-
-/*doc
----
-title: Tabs
-name: tags
-category: Partials
----
-Used to navigate between different sections of an article. <mark>Make naming convention consistent with `.article__tabs`</mark>
-
-```html_example
-<ul class="tabs">
-	<li class="nav__item selected">Report</li>
-	<li class="nav__item">Minute-by-minute</li>
-	<li class="nav__item">Match Info</li>
-</ul>
-```
-*/
-ul.tabs {
-  margin: 12px 0px 12px 0px; }
-  @media all and (max-width: 40.615em) {
-    ul.tabs {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
-    ul.tabs {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-  @media all and (max-width: 28.115em) {
-    ul.tabs {
-      margin: 12px 12px 12px 12px; } }
-  ul.tabs li {
-    color: #666666;
-    font-family: "Agate Sans", sans-serif;
-    border-top: 2px solid #dcdad5;
-    margin-right: -4px;
-    padding: 6px 12px 24px 2.4px;
-    width: 33.3%;
-    display: inline-table; }
-    @media all and (max-width: 40.615em) {
-      ul.tabs li {
-        margin-right: -3px; } }
-  ul.tabs li.selected {
-    color: #005689;
-    font-weight: bold;
-    border-top: 4px solid #005689;
-    padding-top: 4px; }
-  ul.tabs li[data-href=".football-tabs-liveblog"].selected {
-    color: #b51800;
-    border-top-color: #cc2b12; }
-
-.android ul.tabs {
-  margin: 12px 12px 12px 12px; }
 
 /*doc
 ---
