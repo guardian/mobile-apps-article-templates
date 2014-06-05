@@ -479,6 +479,74 @@ Used to navigate between different sections of an article.
 
 /*doc
 ---
+title: Review Rating
+name: review-rating
+category: Modules
+---
+Used to indicate the number of stars a review has been rated with
+
+```html_example
+<div class="review-rating review-rating--0">
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+</div>
+
+<div class="review-rating review-rating--1">
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+</div>
+
+<div class="review-rating review-rating--2">
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+</div>
+
+<div class="review-rating review-rating--3">
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+</div>
+
+<div class="review-rating review-rating--4">
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+</div>
+
+<div class="review-rating review-rating--5">
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+</div>
+```
+*/
+.review-rating {
+  color: #999999; }
+
+.review-rating--1 .icon:nth-child(-n+1),
+.review-rating--2 .icon:nth-child(-n+2),
+.review-rating--3 .icon:nth-child(-n+3),
+.review-rating--4 .icon:nth-child(-n+4),
+.review-rating--5 .icon:nth-child(-n+5) {
+  color: #4bc6df; }
+
+/*doc
+---
 title: Section
 name: section
 category: Modules
@@ -724,7 +792,7 @@ Used to display the byline of an article.
   .article__header .standfirst,
   .article__header .article__meta,
   .article__header .article__image,
-  .article__header .article__review-rating {
+  .article__header .review-rating {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
     flex: 1; }
@@ -739,7 +807,7 @@ Used to display the byline of an article.
   .article__header .article__alerts {
     padding: 0px 12px 12px 12px;
     display: none; }
-  .article__header .article__review-rating {
+  .article__header .review-rating {
     padding: 0px 12px 18px 12px;
     margin-top: -18px; }
   .article__header .article__meta {
@@ -841,74 +909,6 @@ Used to display date and time an article was published.
     .article__pubdate {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
-
-/*doc
----
-title: Review Rating
-name: review-rating
-category: Partials
----
-Used to indicate the number of stars a review has been rated with
-
-```html_example
-<div class="article__review-rating article__review-rating--0">
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-</div>
-
-<div class="article__review-rating article__review-rating--1">
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-</div>
-
-<div class="article__review-rating article__review-rating--2">
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-</div>
-
-<div class="article__review-rating article__review-rating--3">
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-</div>
-
-<div class="article__review-rating article__review-rating--4">
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-</div>
-
-<div class="article__review-rating article__review-rating--5">
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-</div>
-```
-*/
-.article__review-rating {
-  color: #999999; }
-
-.article__review-rating--1 .icon:nth-child(-n+1),
-.article__review-rating--2 .icon:nth-child(-n+2),
-.article__review-rating--3 .icon:nth-child(-n+3),
-.article__review-rating--4 .icon:nth-child(-n+4),
-.article__review-rating--5 .icon:nth-child(-n+5) {
-  color: #4bc6df; }
 
 /*doc
 ---
@@ -1092,16 +1092,9 @@ Headline and image
     font-size: 2.2rem;
     line-height: 2.6rem;
     text-rendering: optimizeLegibility; }
-  .card .card__rating {
-    color: #999999;
+  .card .review-rating {
     font-size: 18px;
     line-height: 28px; }
-  .card .card__rating--1 .icon:nth-child(-n+1),
-  .card .card__rating--2 .icon:nth-child(-n+2),
-  .card .card__rating--3 .icon:nth-child(-n+3),
-  .card .card__rating--4 .icon:nth-child(-n+4),
-  .card .card__rating--5 .icon:nth-child(-n+5) {
-    color: #4bc6df; }
   .card .standfirst {
     color: #666666;
     font-family: "Egyptian Text", Georgia, serif;
