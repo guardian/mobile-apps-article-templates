@@ -352,6 +352,44 @@ Makes a block of text selectable. Useful for portions of text a user may wish to
 
 /*doc
 ---
+title: Avatar
+name: avatar
+category: Modules
+---
+Display image of author or user.
+
+```html_example
+<a class="avatar avatar--author" href="#">
+	<img class="avatar__img" src="http://png-resizer.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2014/3/13/1394733739319/IanSample.png?width=300"/>
+</a>
+
+<span class="avatar avatar--user">
+	<img class="avatar__img" src="http://static.guim.co.uk/sys-images/Guardian/Pix/site_furniture/2010/09/01/no-user-image.gif"/>
+</span>
+```
+*/
+.avatar {
+  background-color: #f6f6f6;
+  border-radius: 100%;
+  overflow: hidden;
+  display: block; }
+  .avatar .avatar__img {
+    width: 100%;
+    height: 100%; }
+
+.avatar--author {
+  width: 64px;
+  height: 64px; }
+  .avatar--author .avatar__img {
+    width: auto;
+    margin-left: -10%; }
+
+.avatar--user {
+  height: 44px;
+  width: 44px; }
+
+/*doc
+---
 title: Headline
 name: headline
 category: Modules
@@ -739,29 +777,6 @@ Used to toggle alerts on an article.
 
 /*doc
 ---
-title: Author images
-name: author-image
-category: Partials
----
-Used to display an image of an article's author.
-
-```html_example
-<a class="article__author__image" href="#"><img src="http://png-resizer.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2014/3/13/1394733739319/IanSample.png?width=300"></a>
-```
-*/
-.article__author__image {
-  background-color: #f6f6f6;
-  border-radius: 50%;
-  margin: 0px 9px 12px 0px;
-  width: 60px;
-  height: 60px;
-  overflow: hidden;
-  display: block; }
-  .article__author__image img {
-    height: 100%; }
-
-/*doc
----
 title: Byline
 name: byline
 category: Partials
@@ -831,10 +846,9 @@ Used to display the byline of an article.
       .article__header .article__comments {
         font-size: 1.6rem;
         line-height: 2.2rem; } }
-  .article__header .article__author__image {
+  .article__header .avatar--author {
+    margin: 0px 9px 12px 0px;
     float: left; }
-    .article__header .article__author__image img {
-      margin-left: -10%; }
   .article__header .article__image-caption__icon {
     display: none; }
   .article__header .article__pubdate {
@@ -1543,16 +1557,9 @@ Headline and image
       display: none; }
     .discussion .discussion__body p:last-child {
       margin-bottom: 0px; }
-  .discussion .discussion__avatar {
+  .discussion .avatar--user {
     margin-right: 8px;
-    border-radius: 100%;
-    height: 44px;
-    width: 44px;
-    float: left;
-    overflow: hidden; }
-    .discussion .discussion__avatar img {
-      width: 100%;
-      height: 100%; }
+    float: left; }
   .discussion .discussion__role,
   .discussion .discussion__username {
     display: block; }
@@ -3402,7 +3409,7 @@ category: Partials
   .media-meta__misc .media-meta__misc__timestamp:empty,
   .media-meta__misc .media-meta__misc__tags:empty {
     display: none; }
-.media-meta__misc .article__author__image {
+.media-meta__misc .avatar--author {
   display: none; }
 .media-meta__misc .article__byline a {
   font-weight: bold; }
@@ -4393,7 +4400,7 @@ category: Partials
   -webkit-box-ordinal-group: 7;
   -webkit-order: 6;
   order: 6; }
-#standard-article[class*="feature"] .article__author__image,
+#standard-article[class*="feature"] .avatar--author,
 #standard-article[class*="feature"] .article__alerts {
   display: none; }
 #standard-article[class*="feature"] .article__comments {
