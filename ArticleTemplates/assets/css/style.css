@@ -765,6 +765,161 @@ Display the standfirst of an article. Emboldened text is normalised.
 
 /*doc
 ---
+title: Match Status
+name: football-match-status
+category: Football
+---
+Future
+
+```html_example
+<div class="match-status match-status--f">
+	<p class="match-status__time">18:00</p>
+</div>
+```
+
+Postponed
+
+```html_example
+<div class="match-status match-status--p">
+	<p class="match-status__time">P</p>
+</div>
+```
+
+Abandonded
+
+```html_example
+<div class="match-status match-status--a">
+	<p class="match-status__time">A</p>
+</div>
+```
+
+Cancelled
+
+```html_example
+<div class="match-status match-status--c">
+	<p class="match-status__time">C</p>
+</div>
+```
+
+Suspended
+
+```html_example
+<div class="match-status match-status--s">
+	<p class="match-status__time">S</p>
+</div>
+```
+
+First half
+
+```html_example
+<div class="match-status match-status--first">
+	<p class="match-status__time">1st</p>
+</div>
+```
+
+Half time
+
+```html_example
+<div class="match-status match-status--ht">
+	<p class="match-status__time">HT</p>
+</div>
+```
+
+Second half
+
+```html_example
+<div class="match-status match-status--second">
+	<p class="match-status__time">2nd</p>
+</div>
+```
+
+Extra time
+
+```html_example
+<div class="match-status match-status--et">
+	<p class="match-status__time">ET</p>
+</div>
+```
+
+Full time
+
+```html_example
+<div class="match-status match-status--ft">
+	<p class="match-status__time">FT</p>
+</div>
+```
+*/
+.match-status {
+  color: #666666;
+  font-family: "Agate Sans", sans-serif;
+  font-weight: bold;
+  background-color: white;
+  background-image: url("../img/football_symbols_time.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 44px;
+  height: 44px;
+  display: table; }
+  @media all and (max-width: 40.615em) {
+    .match-status {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) {
+    .match-status {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  @media all and (max-width: 28.115em) {
+    .match-status {
+      background-size: 44px 44px;
+      background-position: center; } }
+
+.match-status__time {
+  vertical-align: middle;
+  text-align: center;
+  display: table-cell; }
+
+.match-status--f .match-status__time {
+  font-size: 1.2rem;
+  font-weight: normal; }
+
+.match-status--a {
+  color: #b51800;
+  background-image: url("../img/football_symbols_A.svg"); }
+
+.match-status--c {
+  color: #b51800;
+  background-image: url("../img/football_symbols_C.svg"); }
+
+.match-status--p {
+  color: #4bc6df;
+  background-image: url("../img/football_symbols_P.svg"); }
+
+.match-status--s {
+  color: #b51800;
+  background-image: url("../img/football_symbols_S.svg"); }
+
+.match-status--first {
+  color: #4bc6df;
+  background-image: url("../img/football_symbols_1st.svg"); }
+
+.match-status--second {
+  color: #4bc6df;
+  background-image: url("../img/football_symbols_2nd.svg"); }
+
+.match-status--ht {
+  color: #4bc6df;
+  background-image: url("../img/football_symbols_HT.svg"); }
+
+.match-status--ft {
+  color: #4bc6df;
+  background-image: url("../img/football_symbols_FT.svg"); }
+
+.match-status--et {
+  color: #4bc6df;
+  background-image: url("../img/football_symbols_ET.svg"); }
+
+/*doc
+---
 title: Player card
 name: player-card
 category: Football
@@ -2190,21 +2345,21 @@ figure.figure-inline {
       .football__header p {
         font-size: 1.6rem;
         line-height: 2.2rem; } }
-  .football__header .football__header__status {
+  .football__header .match-status {
     z-index: 10;
     margin: 6px 0px 0px 0px; }
     @media all and (max-width: 28.115em) {
-      .football__header .football__header__status {
+      .football__header .match-status {
         float: left;
         width: 20%; } }
     @media all and (min-width: 28.125em) {
-      .football__header .football__header__status {
+      .football__header .match-status {
         margin-left: auto;
         margin-right: auto;
         position: absolute;
         left: 0;
         right: 0; } }
-    .football__header .football__header__status p {
+    .football__header .match-status .match-status__time {
       width: 100%; }
   .football__header .football__header__match-info {
     margin: 9px 0px 9px 0px; }
@@ -2416,130 +2571,6 @@ figure.figure-inline {
       border-bottom: none;
       width: auto;
       display: table; }
-
-/*doc
----
-title: Match Status
-name: football-match-status
-category: Football
----
-Future
-
-```html_example
-<div class="football__header__status football__header__status--f"><p>18:00</p></div>
-```
-
-Postponed
-
-```html_example
-<div class="football__header__status football__header__status--p"><p>P</p></div>
-```
-
-Abandonded
-
-```html_example
-<div class="football__header__status football__header__status--a"><p>A</p></div>
-```
-
-Cancelled
-
-```html_example
-<div class="football__header__status football__header__status--c"><p>C</p></div>
-```
-
-Suspended
-
-```html_example
-<div class="football__header__status football__header__status--s"><p>S</p></div>
-```
-
-First half
-
-```html_example
-<div class="football__header__status football__header__status--first"><p>1st</p></div>
-```
-
-Half time
-
-```html_example
-<div class="football__header__status football__header__status--ht"><p>HT</p></div>
-```
-
-Second half
-
-```html_example
-<div class="football__header__status football__header__status--second"><p>2nd</p></div>
-```
-
-Extra time
-
-```html_example
-<div class="football__header__status football__header__status--et"><p>ET</p></div>
-```
-
-Full time
-
-```html_example
-<div class="football__header__status football__header__status--ft"><p>FT</p></div>
-```
-*/
-.football__header__status {
-  color: #666666;
-  font-family: "Agate Sans", sans-serif;
-  font-weight: bold;
-  background-color: white;
-  background-image: url("../css/img/football_symbols_time.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 44px;
-  height: 44px;
-  display: table; }
-  @media all and (max-width: 40.615em) {
-    .football__header__status {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
-    .football__header__status {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-  @media all and (max-width: 28.115em) {
-    .football__header__status {
-      background-size: 44px 44px;
-      background-position: center; } }
-  .football__header__status.football__header__status--f p {
-    font-size: 1.2rem;
-    font-weight: normal; }
-  .football__header__status.football__header__status--a {
-    color: #b51800;
-    background-image: url("../css/img/football_symbols_A.svg"); }
-  .football__header__status.football__header__status--c {
-    color: #b51800;
-    background-image: url("../css/img/football_symbols_C.svg"); }
-  .football__header__status.football__header__status--p {
-    color: #4bc6df;
-    background-image: url("../css/img/football_symbols_P.svg"); }
-  .football__header__status.football__header__status--s {
-    color: #b51800;
-    background-image: url("../css/img/football_symbols_S.svg"); }
-  .football__header__status.football__header__status--first {
-    color: #4bc6df;
-    background-image: url("../css/img/football_symbols_1st.svg"); }
-  .football__header__status.football__header__status--second {
-    color: #4bc6df;
-    background-image: url("../css/img/football_symbols_2nd.svg"); }
-  .football__header__status.football__header__status--ht {
-    color: #4bc6df;
-    background-image: url("../css/img/football_symbols_HT.svg"); }
-  .football__header__status.football__header__status--ft {
-    color: #4bc6df;
-    background-image: url("../css/img/football_symbols_FT.svg"); }
-  .football__header__status.football__header__status--et {
-    color: #4bc6df;
-    background-image: url("../css/img/football_symbols_ET.svg"); }
-  .football__header__status p {
-    vertical-align: middle;
-    text-align: center;
-    display: table-cell; }
 
 .module {
   margin: 0px 0px 24px 0px;

@@ -17,8 +17,8 @@
 	<div class="article">
 		<div class="article__header football__header __IS_ALERTS__ __IS_AGG__"><!-- populate __IS_AGG__ with is-agg if game has an aggregate score to show-->
 			<div class="inner-header">
-				<div class="football__header__status football__header__status--__FOOTBALL_STATUS_CLASS__"><!-- This should be populated with the status as a useable class name, lower case, no spaces. 1st and 2nd need to be converted to first and second respectively. Do not populate with the time, it will default to that style -->
-					<p>__FOOTBALL_STATUS__</p>
+				<div class="match-status match-status--__FOOTBALL_STATUS_CLASS__"><!-- This should be populated with the status as a useable class name, lower case, no spaces. 1st and 2nd need to be converted to first and second respectively. Do not populate with the time, it will default to that style -->
+					<p class="match-status__time">__FOOTBALL_STATUS__</p>
 				</div>
 
 				<div class="football__header__divider"></div>
@@ -51,7 +51,7 @@
 					</div>
 					
 					<div class="football__header__info football__header__away__info">
-						<h1 class="article" onclick="javascript:window.location.href='x-gu://team/__FOOTBALL_AWAY_TEAM_TAG__'">__FOOTBALL_AWAY_NAME__</h1>
+						<h1 class="football__header__info__label football__header__away__info__label headline" onclick="javascript:window.location.href='x-gu://team/__FOOTBALL_AWAY_TEAM_TAG__'">__FOOTBALL_AWAY_NAME__</h1>
 						__FOOTBALL_AWAY_SCORER__
 					</div>
 					

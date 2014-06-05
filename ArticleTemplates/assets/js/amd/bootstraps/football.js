@@ -120,8 +120,8 @@ define([
 			footballStatus: function() {
 				window.footballStatus = function(className, label) {
 					// Clear old status and reapply class before adding new status
-					$(".football__header__status").attr("class", "football__header__status").addClass("football__header__status--" + className);
-					$(".football__header__status p").text(label);
+					$(".match-status").attr("class", "match-status").addClass("match-status--" + className);
+					$(".match-status__time").text(label);
 				}
 			},
 
@@ -138,11 +138,11 @@ define([
 				};
 				window.footballMatchInfoFailed = function () {
 					$(".football-tabs-stats").remove();
-					if ($("ul.tabs [data-href='.football-tabs-stats']").hasClass("selected")) {
-						$("ul.tabs li:first-of-type").addClass("selected");
-						$($("ul.tabs .selected").attr("data-href")).show();
+					if ($(".tabs [data-href='.football-tabs-stats']").hasClass("selected")) {
+						$(".tabs li:first-of-type").addClass("selected");
+						$($(".tabs .selected").attr("data-href")).show();
 					}
-					$("ul.tabs [data-href='.football-tabs-stats']").remove();
+					$(".tabs [data-href='.football-tabs-stats']").remove();
 				}
 				window.applyNativeFunctionCall('footballMatchInfo');
 				window.applyNativeFunctionCall('footballMatchInfoFailed');
@@ -162,5 +162,4 @@ define([
 	return {
 		init: ready
 	};
-
 });

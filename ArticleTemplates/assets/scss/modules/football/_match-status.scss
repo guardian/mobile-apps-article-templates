@@ -1,0 +1,153 @@
+/*doc
+---
+title: Match Status
+name: football-match-status
+category: Football
+---
+Future
+
+```html_example
+<div class="match-status match-status--f">
+	<p class="match-status__time">18:00</p>
+</div>
+```
+
+Postponed
+
+```html_example
+<div class="match-status match-status--p">
+	<p class="match-status__time">P</p>
+</div>
+```
+
+Abandonded
+
+```html_example
+<div class="match-status match-status--a">
+	<p class="match-status__time">A</p>
+</div>
+```
+
+Cancelled
+
+```html_example
+<div class="match-status match-status--c">
+	<p class="match-status__time">C</p>
+</div>
+```
+
+Suspended
+
+```html_example
+<div class="match-status match-status--s">
+	<p class="match-status__time">S</p>
+</div>
+```
+
+First half
+
+```html_example
+<div class="match-status match-status--first">
+	<p class="match-status__time">1st</p>
+</div>
+```
+
+Half time
+
+```html_example
+<div class="match-status match-status--ht">
+	<p class="match-status__time">HT</p>
+</div>
+```
+
+Second half
+
+```html_example
+<div class="match-status match-status--second">
+	<p class="match-status__time">2nd</p>
+</div>
+```
+
+Extra time
+
+```html_example
+<div class="match-status match-status--et">
+	<p class="match-status__time">ET</p>
+</div>
+```
+
+Full time
+
+```html_example
+<div class="match-status match-status--ft">
+	<p class="match-status__time">FT</p>
+</div>
+```
+*/
+
+.match-status {
+	color: $standfirst;
+	font-family: $agate-sans;
+	font-weight: bold;
+	@include meta();
+	background-color: white;
+	background-image: url("../img/football_symbols_time.svg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 44px;
+	height: 44px;
+	display: table;
+	@include mq($to: col1) {
+		background-size: 44px 44px;
+		background-position: center;
+	}
+}
+
+.match-status__time {
+	vertical-align: middle;
+	text-align: center;
+	display: table-cell;
+}
+
+.match-status--f {
+	.match-status__time {
+		font-size: 1.2rem;
+		font-weight: normal;
+	}
+}
+.match-status--a {
+	color: $live;
+	background-image: url("../img/football_symbols_A.svg");
+}
+.match-status--c {
+	color: $live;
+	background-image: url("../img/football_symbols_C.svg");
+}
+.match-status--p {
+	color: $news-accent;
+	background-image: url("../img/football_symbols_P.svg");
+}
+.match-status--s {
+	color: $live;
+	background-image: url("../img/football_symbols_S.svg");
+}
+.match-status--first {
+	color: $news-accent;
+	background-image: url("../img/football_symbols_1st.svg");
+}
+.match-status--second {
+	color: $news-accent;
+	background-image: url("../img/football_symbols_2nd.svg");
+}
+.match-status--ht {
+	color: $news-accent;
+	background-image: url("../img/football_symbols_HT.svg");
+}
+.match-status--ft {
+	color: $news-accent;
+	background-image: url("../img/football_symbols_FT.svg");
+}
+.match-status--et {
+	color: $news-accent;
+	background-image: url("../img/football_symbols_ET.svg");
+}
