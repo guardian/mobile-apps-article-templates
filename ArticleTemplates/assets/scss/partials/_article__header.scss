@@ -11,16 +11,20 @@
 		@include flex(1);
 	}
 
+	.section {
+		@include padding(0.5, 1);
+	}
+
 	.headline {
 		@include padding(0, 1, 2.5, 1);
+		
+		.article__author {
+			display: none; // TODO: Remove this when templates are split
+		}
 	}
 
 	.standfirst {
 		@include padding(0.5, 1, 1.5, 1);
-	}
-
-	.article__author {
-		display: none; // Hide Cif elements from non-Cif pages
 	}
 
 	.article__alerts {

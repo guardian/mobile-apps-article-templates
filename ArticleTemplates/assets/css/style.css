@@ -479,6 +479,35 @@ Used to navigate between different sections of an article.
 
 /*doc
 ---
+title: Section
+name: section
+category: Modules
+---
+Used to indicate which section an article falls under.
+
+```html_example
+<h3 class="section">Football</h3>
+```
+*/
+.section {
+  color: #005689;
+  font-family: "Egyptian Display", Georgia, serif;
+  font-weight: 600; }
+  @media all and (max-width: 28.115em) {
+    .section {
+      font-size: 1.5rem;
+      line-height: 1.6rem; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    .section {
+      font-size: 2rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) {
+    .section {
+      font-size: 2.4rem;
+      line-height: 2.4rem; } }
+
+/*doc
+---
 title: Standfirst
 name: standfirst
 category: Modules
@@ -699,12 +728,14 @@ Used to display the byline of an article.
     -webkit-box-flex: 1;
     -webkit-flex: 1;
     flex: 1; }
+  .article__header .section {
+    padding: 6px 12px 6px 12px; }
   .article__header .headline {
     padding: 0px 12px 30px 12px; }
+    .article__header .headline .article__author {
+      display: none; }
   .article__header .standfirst {
     padding: 6px 12px 18px 12px; }
-  .article__header .article__author {
-    display: none; }
   .article__header .article__alerts {
     padding: 0px 12px 12px 12px;
     display: none; }
@@ -878,36 +909,6 @@ Used to indicate the number of stars a review has been rated with
 .article__review-rating--4 .icon:nth-child(-n+4),
 .article__review-rating--5 .icon:nth-child(-n+5) {
   color: #4bc6df; }
-
-/*doc
----
-title: Section
-name: section
-category: Partials
----
-Used to indicate which section an article falls under.
-
-```html_example
-<h3 class="article__section">Football</h3>
-```
-*/
-.article__section {
-  font-family: "Egyptian Display", Georgia, serif;
-  font-weight: 600;
-  color: #005689;
-  padding: 6px 12px 6px 12px; }
-  @media all and (max-width: 28.115em) {
-    .article__section {
-      font-size: 1.5rem;
-      line-height: 1.6rem; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    .article__section {
-      font-size: 2rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
-    .article__section {
-      font-size: 2.4rem;
-      line-height: 2.4rem; } }
 
 /*doc
 ---
@@ -3169,7 +3170,7 @@ category: Partials
   background: -webkit-canvas(squares) #4bc6df;
   padding-bottom: 4.5em;
   position: relative; }
-  #audio .article__header .inner-header .article__section {
+  #audio .article__header .inner-header .section {
     display: none;
     padding-bottom: 0; }
   #audio .article__header .inner-header .headline {
@@ -3324,7 +3325,7 @@ category: Partials
 #audio.media .article__header .inner-header {
   background-color: #333333;
   min-height: 0px; }
-#audio.media .article__header .article__section {
+#audio.media .article__header .section {
   display: block;
   color: #ffbb00; }
 #audio.media .article__header .article__byline,
@@ -3359,8 +3360,8 @@ category: Partials
       #gallery .article .article__header h1,
       #video .article .article__header h1 {
         margin-bottom: 24px; } }
-  #gallery .article .article__section,
-  #video .article .article__section {
+  #gallery .article .section,
+  #video .article .section {
     color: #ffbb00; }
   #gallery .article a,
   #video .article a {
@@ -3475,10 +3476,10 @@ category: Partials
   @media all and (max-width: 28.115em) {
     #discussion .article__header {
       padding: 0 2.89855%; } }
-#discussion .article__section {
+#discussion .section {
   padding-left: 0;
   color: #333333; }
-  #discussion .article__section .comments-count {
+  #discussion .section .comments-count {
     color: #999999; }
 #discussion .headline {
   margin: 0px 0px 48px 0px;
@@ -3551,13 +3552,13 @@ category: Partials
   font-family: "Egyptian Display", Georgia, serif;
   font-weight: 300;
   padding: 6px 12px 18px 12px; }
-#liveblog .article__section {
+#liveblog .section {
   position: relative; }
   @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    #liveblog .article__section {
+    #liveblog .section {
       padding-left: 33.80282%; } }
   @media all and (min-width: 56.25em) {
-    #liveblog .article__section {
+    #liveblog .section {
       padding-left: 31.57895%; } }
 #liveblog.is-live .article {
   border-top-color: #cc2b12; }
@@ -3597,7 +3598,7 @@ category: Partials
 #liveblog.is-live .headline,
 #liveblog.is-live .article__byline,
 #liveblog.is-live .article__alerts span.icon,
-#liveblog.is-live .article__section {
+#liveblog.is-live .section {
   color: white; }
 #liveblog.is-live .article__live-summary {
   color: rgba(255, 255, 255, 0.8); }
@@ -3611,10 +3612,10 @@ category: Partials
 #liveblog.is-live .article__comments {
   border-color: rgba(255, 255, 255, 0.2); }
 @media all and (max-width: 28.115em) {
-  #liveblog.is-live .article__section {
+  #liveblog.is-live .section {
     padding-left: 4.5em; } }
 @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-  #liveblog.is-live .article__section {
+  #liveblog.is-live .section {
     padding-left: 4em; } }
 #liveblog .article__section__live {
   color: white;
@@ -3837,7 +3838,7 @@ category: Partials
 #football .football-tabs-article .article {
   background-color: white;
   border-top: 2px solid #4bc6df; }
-#football .football-tabs-article .article__section {
+#football .football-tabs-article .section {
   display: none; }
 #football .football-tabs-article .headline {
   padding: 6px 12px 0px 12px; }
@@ -4303,8 +4304,8 @@ category: Partials
   position: relative;
   overflow: auto;
   padding-bottom: 2em; }
-#standard-article.comment .article__header .article__section,
-#standard-article.comment .article__header .article__author {
+#standard-article.comment .article__header .section,
+#standard-article.comment .article__header .headline .article__author {
   color: #e6711b;
   display: block; }
 #standard-article.comment .article__header .standfirst {
@@ -4374,7 +4375,7 @@ category: Partials
   -webkit-box-ordinal-group: 3;
   -webkit-order: 2;
   order: 2; }
-#standard-article[class*="feature"] .article__section {
+#standard-article[class*="feature"] .section {
   color: white; }
 #standard-article[class*="feature"] .headline {
   color: white;

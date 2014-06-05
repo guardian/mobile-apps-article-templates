@@ -2,19 +2,18 @@
 ---
 title: Section
 name: section
-category: Partials
+category: Modules
 ---
 Used to indicate which section an article falls under.
 
 ```html_example
-<h3 class="article__section">Football</h3>
+<h3 class="section">Football</h3>
 ```
 */
 
-.article__section {
+.section {
+	color: $news; // Default
 	font-family: $egyptian-display;
 	font-weight: 600;
-	color: $news;
 	@include headline(0.5);
-	@include padding(0.5, 1);
 }
