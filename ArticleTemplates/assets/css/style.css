@@ -352,6 +352,104 @@ Makes a block of text selectable. Useful for portions of text a user may wish to
 
 /*doc
 ---
+title: Audio Player
+name: audio-player
+category: Modules
+---
+Play a piece of audio, i.e. a podcast.
+
+```html_example
+<div class="audio-player">
+	<a href="#audio.mp3">
+		<div class="audio-player__button touchpoint__button touchpoint__button--primary">
+			<span class="icon touchpoint">&#xe04B;</span>
+		</div>
+	</a>
+
+	<img class="audio-player__button--loading" src="/ArticleTemplates/assets/img/loading.gif">
+
+	<div class="audio-player__slider">
+		<input class="audio-player__slider__played" type="text" id="audio-scrubber" value="3:00"/>
+		<input class="audio-player__slider__remaining" type="text" id="audio-scrubber-left" value="-12:00"/>
+		<div class="audio-player__slider__track"></div>
+		<div class="audio-player__slider__knob" role="slider" style="-webkit-transform: translate3d(0px, 0, 0);"></div>
+	</div>
+</div>
+```
+*/
+.audio-player {
+  background-color: #333333;
+  padding: 9px 9px 9px 9px;
+  display: table;
+  width: 100%; }
+
+.audio-player__button {
+  margin: 0px 12px 0px 0px; }
+
+.audio-player__button--loading {
+  vertical-align: middle;
+  margin: 0px 12px 0px 0px;
+  width: 44px;
+  height: 44px;
+  display: none; }
+
+.audio-player__slider {
+  outline: 0;
+  display: table-cell;
+  height: 40px;
+  width: 100%;
+  position: relative;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: none;
+  -webkit-touch-callout: none; }
+
+.audio-player__slider__played,
+.audio-player__slider__remaining {
+  color: white;
+  font-family: "Agate Sans", sans-serif;
+  font-weight: normal;
+  background: transparent;
+  position: absolute;
+  border: 0;
+  padding: 0;
+  margin: 0; }
+  @media all and (max-width: 40.615em) {
+    .audio-player__slider__played,
+    .audio-player__slider__remaining {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) {
+    .audio-player__slider__played,
+    .audio-player__slider__remaining {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+
+.audio-player__slider__remaining {
+  text-align: right;
+  right: 0; }
+
+.audio-player__slider__track {
+  text-align: center;
+  background-color: #999999;
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  top: 22px;
+  right: 0;
+  left: 0; }
+
+.audio-player__slider__knob {
+  background-color: #4bc6df;
+  margin-top: 15px;
+  border-radius: 50%;
+  padding: 0;
+  height: 16px;
+  width: 16px;
+  position: absolute; }
+
+/*doc
+---
 title: Avatar
 name: avatar
 category: Modules
@@ -3211,69 +3309,6 @@ category: Partials
   @media all and (min-width: 56.25em) {
     #audio .article__body {
       padding-right: 24.21053%; } }
-#audio .audio-player {
-  background-color: #333333;
-  padding: 9px 9px 9px 9px;
-  display: table;
-  width: 100%; }
-  #audio .audio-player .audio-player__button {
-    margin: 0px 12px 0px 0px; }
-  #audio .audio-player .audio-player__button--loading {
-    margin: 0px 12px 0px 0px;
-    width: 44px;
-    height: 44px;
-    display: none;
-    vertical-align: middle; }
-  #audio .audio-player .audio-player__slider {
-    display: table-cell;
-    position: relative;
-    -webkit-user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-text-size-adjust: none;
-    -webkit-touch-callout: none;
-    outline: 0;
-    height: 40px;
-    width: 100%; }
-    #audio .audio-player .audio-player__slider .audio-player__slider__track {
-      position: absolute;
-      top: 22px;
-      left: 0;
-      right: 0;
-      height: 2px;
-      width: 100%;
-      background-color: #999999;
-      text-align: center; }
-    #audio .audio-player .audio-player__slider .audio-player__slider__knob {
-      position: absolute;
-      margin-top: 14px;
-      padding: 0;
-      height: 16px;
-      width: 16px;
-      background-color: #4bc6df;
-      -webkit-border-radius: 25px;
-      -moz-border-radius: 25px;
-      border-radius: 25px;
-      cursor: pointer; }
-    #audio .audio-player .audio-player__slider input {
-      color: white;
-      font-family: "Agate Sans", sans-serif;
-      font-weight: normal;
-      background: transparent;
-      position: absolute;
-      border: 0;
-      padding: 0;
-      margin: 0; }
-      @media all and (max-width: 40.615em) {
-        #audio .audio-player .audio-player__slider input {
-          font-size: 1.4rem;
-          line-height: 2rem; } }
-      @media all and (min-width: 40.625em) {
-        #audio .audio-player .audio-player__slider input {
-          font-size: 1.6rem;
-          line-height: 2.2rem; } }
-    #audio .audio-player .audio-player__slider input:nth-child(2) {
-      right: 0;
-      text-align: right; }
 #audio .media-meta .article__byline,
 #audio .media-meta .media-meta__misc__timestamp {
   display: none; }

@@ -1,0 +1,96 @@
+/*doc
+---
+title: Audio Player
+name: audio-player
+category: Modules
+---
+Play a piece of audio, i.e. a podcast.
+
+```html_example
+<div class="audio-player">
+	<a href="#audio.mp3">
+		<div class="audio-player__button touchpoint__button touchpoint__button--primary">
+			<span class="icon touchpoint">&#xe04B;</span>
+		</div>
+	</a>
+
+	<img class="audio-player__button--loading" src="/ArticleTemplates/assets/img/loading.gif">
+
+	<div class="audio-player__slider">
+		<input class="audio-player__slider__played" type="text" id="audio-scrubber" value="3:00"/>
+		<input class="audio-player__slider__remaining" type="text" id="audio-scrubber-left" value="-12:00"/>
+		<div class="audio-player__slider__track"></div>
+		<div class="audio-player__slider__knob" role="slider" style="-webkit-transform: translate3d(0px, 0, 0);"></div>
+	</div>
+</div>
+```
+*/
+
+.audio-player {
+	background-color: $headline;
+	@include padding(0.75);
+	display: table;
+	width: 100%;
+}
+
+.audio-player__button {
+	@include margin(0, 1, 0, 0);
+}
+
+.audio-player__button--loading {
+	vertical-align: middle;
+	@include margin(0, 1, 0, 0);
+	width: 44px;
+	height: 44px;
+	display: none;
+}
+
+.audio-player__slider {
+	outline: 0;
+	display: table-cell;
+	height: 40px;
+	width: 100%;
+	position: relative;
+	-webkit-user-select: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-text-size-adjust: none;
+	-webkit-touch-callout: none;
+}
+
+.audio-player__slider__played,
+.audio-player__slider__remaining {
+	color: $white;
+	@include meta();
+	font-family: $agate-sans;
+	font-weight: normal;
+	background: transparent;
+	position: absolute;
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+.audio-player__slider__remaining {
+	text-align: right;
+	right: 0;
+}
+
+.audio-player__slider__track {
+	text-align: center;
+	background-color: $meta;
+	height: 2px;
+	width: 100%;
+	position: absolute;
+	top: 22px;
+	right: 0;
+	left: 0;
+}
+
+.audio-player__slider__knob {
+	background-color: $news-accent;
+	margin-top: 15px;
+	border-radius: 50%;
+	padding: 0;
+	height: 16px;
+	width: 16px;
+	position: absolute;
+}
