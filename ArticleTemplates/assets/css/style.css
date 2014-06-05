@@ -419,6 +419,30 @@ Display the title of an article.
 
 /*doc
 ---
+title: Meta data
+name: meta
+category: Modules
+---
+Used to display date and time an article was published.
+
+```html_example
+<p class="meta">19:07 GMT+1 Monday, 02 June 2014</p>
+```
+*/
+.meta {
+  color: #999999;
+  font-family: "Agate Sans", sans-serif; }
+  @media all and (max-width: 40.615em) {
+    .meta {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) {
+    .meta {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+
+/*doc
+---
 title: Tags
 name: tags
 category: Modules
@@ -832,20 +856,10 @@ Used to display the byline of an article.
     width: 100%;
     display: table; }
   .article__header .article__comments {
-    color: #999999;
-    font-family: "Agate Sans", sans-serif;
     font-weight: bold;
     padding: 6px 6px 12px 12px;
     border-left: 1px dotted #dcdad5;
     display: table-cell; }
-    @media all and (max-width: 40.615em) {
-      .article__header .article__comments {
-        font-size: 1.4rem;
-        line-height: 2rem; } }
-    @media all and (min-width: 40.625em) {
-      .article__header .article__comments {
-        font-size: 1.6rem;
-        line-height: 2.2rem; } }
   .article__header .avatar--author {
     margin: 0px 9px 12px 0px;
     float: left; }
@@ -899,30 +913,6 @@ Used to display the byline of an article.
     .article__header.cutout .inner-header {
       min-height: 320px;
       background-size: contain; } }
-
-/*doc
----
-title: Published date
-name: pubdate
-category: Partials
----
-Used to display date and time an article was published.
-
-```html_example
-<p class="article__pubdate">19:07 GMT+1 Monday, 02 June 2014</p>
-```
-*/
-.article__pubdate {
-  color: #999999;
-  font-family: "Agate Sans", sans-serif; }
-  @media all and (max-width: 40.615em) {
-    .article__pubdate {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
-    .article__pubdate {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
 
 /*doc
 ---
@@ -1467,10 +1457,6 @@ Headline and image
     .block .block-elements blockquote {
       margin: 24px 0px 24px 0px; }
     .block .block-elements .block-updated {
-      color: #999999;
-      font-family: "Agate Sans", sans-serif;
-      font-size: 1.4rem;
-      line-height: 2rem;
       margin: 0;
       clear: left; }
     .block .block-elements .live-summary-more {
@@ -1575,17 +1561,8 @@ Headline and image
     font-weight: bold;
     display: none; }
   .discussion .discussion__timestamp {
-    color: #999999;
     display: block;
     white-space: nowrap; }
-    @media all and (max-width: 40.615em) {
-      .discussion .discussion__timestamp {
-        font-size: 1.4rem;
-        line-height: 2rem; } }
-    @media all and (min-width: 40.625em) {
-      .discussion .discussion__timestamp {
-        font-size: 1.6rem;
-        line-height: 2.2rem; } }
   .discussion .discussion__recommend {
     text-align: center;
     width: auto;
@@ -3413,9 +3390,6 @@ category: Partials
   display: none; }
 .media-meta__misc .article__byline a {
   font-weight: bold; }
-.media-meta__misc .media-meta__misc__timestamp {
-  font-family: "Agate Sans", sans-serif;
-  color: #999999; }
 .media-meta__misc .media-meta__misc__tags .list {
   width: auto; }
 
