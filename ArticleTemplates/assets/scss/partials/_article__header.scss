@@ -4,11 +4,15 @@
 	@include flex-direction(column);
 
 	.inner-header,
-	.article__standfirst,
+	.standfirst,
 	.article__meta,
 	.article__image,
 	.article__review-rating {
 		@include flex(1);
+	}
+
+	.standfirst {
+		@include padding(0.5, 1, 1.5, 1);
 	}
 
 	.article__alerts {
@@ -75,7 +79,7 @@
 
 	@include mq(col2, col3) {
 		.inner-header,
-		.article__standfirst {
+		.standfirst {
 			padding-right: cols($base-3, 3, 1);
 		}
 		.article__comments {
@@ -85,7 +89,7 @@
 
 	@include mq($from: col3) {
 		.inner-header,
-		.article__standfirst {
+		.standfirst {
 			padding-right: cols($base-4, 4, 1);
 		}
 		.article__comments {

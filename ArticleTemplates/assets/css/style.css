@@ -448,6 +448,35 @@ Used to navigate between different sections of an article.
 .android .tabs {
   margin: 12px 12px 12px 12px; }
 
+/*doc
+---
+title: Standfirst
+name: standfirst
+category: Modules
+---
+Display the standfirst of an article. Emboldened text is normalised.
+
+```html_example
+<div class="standfirst">
+	<p>While riders will have some freedom to move, they won't have the ability to move without others watching and storing their data</p>
+</div>
+```
+*/
+.standfirst {
+  color: #666666;
+  font-family: "Egyptian Display", Georgia, serif;
+  font-weight: 300; }
+  @media all and (max-width: 40.615em) {
+    .standfirst {
+      font-size: 1.7rem;
+      line-height: 2.2rem; } }
+  @media all and (min-width: 40.625em) {
+    .standfirst {
+      font-size: 2.2rem;
+      line-height: 3rem; } }
+  .standfirst strong {
+    font-weight: 400; }
+
 .advert-slot {
   color: #666666;
   font-family: "Agate Sans", sans-serif;
@@ -634,13 +663,15 @@ Used to display the byline of an article.
   -webkit-flex-direction: column;
   flex-direction: column; }
   .article__header .inner-header,
-  .article__header .article__standfirst,
+  .article__header .standfirst,
   .article__header .article__meta,
   .article__header .article__image,
   .article__header .article__review-rating {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
     flex: 1; }
+  .article__header .standfirst {
+    padding: 6px 12px 18px 12px; }
   .article__header .article__alerts {
     padding: 0px 12px 12px 12px;
     display: none; }
@@ -688,13 +719,13 @@ Used to display the byline of an article.
       display: none; } }
   @media all and (min-width: 40.625em) and (max-width: 56.24em) {
     .article__header .inner-header,
-    .article__header .article__standfirst {
+    .article__header .standfirst {
       padding-right: 25.35211%; }
     .article__header .article__comments {
       width: 23.94366%; } }
   @media all and (min-width: 56.25em) {
     .article__header .inner-header,
-    .article__header .article__standfirst {
+    .article__header .standfirst {
       padding-right: 25.26316%; }
     .article__header .article__comments {
       width: 24.21053%; } }
@@ -876,36 +907,6 @@ Used to indicate which section an article falls under.
     .article__section {
       font-size: 2.4rem;
       line-height: 2.4rem; } }
-
-/*doc
----
-title: Standfirst
-name: standfirst
-category: Partials
----
-Used to display the standfirst of an article. Any emboldened text is normalised within this style.
-
-```html_example
-<div class="article__standfirst">
-	<p>While riders will have some freedom to move, they won't have the ability to move without others watching and storing their data</p>
-</div>
-```
-*/
-.article__standfirst {
-  color: #666666;
-  font-family: "Egyptian Display", Georgia, serif;
-  font-weight: 300;
-  padding: 6px 12px 18px 12px; }
-  @media all and (max-width: 40.615em) {
-    .article__standfirst {
-      font-size: 1.7rem;
-      line-height: 2.2rem; } }
-  @media all and (min-width: 40.625em) {
-    .article__standfirst {
-      font-size: 2.2rem;
-      line-height: 3rem; } }
-  .article__standfirst strong {
-    font-weight: 400; }
 
 /*doc
 ---
@@ -3190,10 +3191,10 @@ category: Partials
   @media all and (min-width: 28.125em) {
     #audio .article__header .article__byline--mobile {
       display: none; } }
-#audio .article__header .article__standfirst {
+#audio .article__header .standfirst {
   color: #333333; }
   @media all and (max-width: 40.615em) {
-    #audio .article__header .article__standfirst {
+    #audio .article__header .standfirst {
       font-size: 1.25em;
       line-height: 1.25em; } }
 #audio .article__header .article__meta {
@@ -3313,7 +3314,7 @@ category: Partials
   #audio.media .article .article__body a:active {
     background-image: linear-gradient(to bottom, #333333 50%, rgba(255, 211, 92, 0.67) 50%); }
   #audio.media .article .article__body a,
-  #audio.media .article .article__standfirst a,
+  #audio.media .article .standfirst a,
   #audio.media .article .media-meta a {
     color: #ffbb00; }
   #audio.media .article .touchpoint__button--primary {
@@ -3332,7 +3333,7 @@ category: Partials
   background-color: #666666; }
   #audio.media .article__header .audio-player .audio-player__slider__knob {
     background-color: #ffd666; }
-#audio.media .article__header .article__standfirst {
+#audio.media .article__header .standfirst {
   color: white; }
 @media all and (min-width: 40.625em) and (max-width: 56.24em) {
   #audio.media .media-meta {
@@ -4305,13 +4306,13 @@ category: Partials
 #standard-article.comment .article__header .article__headline span {
   color: #e6711b;
   display: block; }
-#standard-article.comment .article__header .article__standfirst {
+#standard-article.comment .article__header .standfirst {
   color: #2d2a26;
   -webkit-box-ordinal-group: 5;
   -webkit-order: 4;
   order: 4; }
   @media all and (max-width: 40.615em) {
-    #standard-article.comment .article__header .article__standfirst {
+    #standard-article.comment .article__header .standfirst {
       font-size: 1.25em;
       line-height: 1.25em; } }
 #standard-article.comment .article__header .article__alerts {
@@ -4383,12 +4384,12 @@ category: Partials
       font-size: 3.5556em;
       font-weight: 100;
       line-height: 0.9375; } }
-#standard-article[class*="feature"] .article__standfirst {
+#standard-article[class*="feature"] .standfirst {
   color: rgba(255, 255, 255, 0.8);
   -webkit-box-ordinal-group: 4;
   -webkit-order: 3;
   order: 3; }
-  #standard-article[class*="feature"] .article__standfirst strong {
+  #standard-article[class*="feature"] .standfirst strong {
     font-weight: normal; }
 #standard-article[class*="feature"] .article__meta {
   color: rgba(255, 255, 255, 0.8);
@@ -4455,7 +4456,7 @@ category: Partials
 .feature1 .article__header,
 .feature1 .touchpoint__button--primary {
   background-color: #951c55; }
-.feature1 .article__standfirst,
+.feature1 .standfirst,
 .feature1 a:active .touchpoint__button--primary {
   background-color: #e02b7f; }
 .feature1 .prose p a {
@@ -4479,7 +4480,7 @@ category: Partials
 .feature2 .article__header,
 .feature2 .touchpoint__button--primary {
   background-color: #4e0375; }
-.feature2 .article__standfirst,
+.feature2 .standfirst,
 .feature2 a:active .touchpoint__button--primary {
   background-color: #8006c2; }
 .feature2 .prose p a {
@@ -4503,7 +4504,7 @@ category: Partials
 .feature3 .article__header,
 .feature3 .touchpoint__button--primary {
   background-color: #7d0068; }
-.feature3 .article__standfirst,
+.feature3 .standfirst,
 .feature3 a:active .touchpoint__button--primary {
   background-color: #c900a8; }
 .feature3 .prose p a {
