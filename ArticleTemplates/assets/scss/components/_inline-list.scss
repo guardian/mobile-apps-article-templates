@@ -1,0 +1,27 @@
+/*doc
+---
+title: Unstyled inline list
+name: inline-list
+category: Components
+---
+Removes bullets, padding and margins from lists.
+
+```html_example
+<ul class="inline-list">
+	<li class="inline-list__item"><a href="#">Guardian</a></li>
+	<li class="inline-list__item"><a href="#">Mobile</a></li>
+	<li class="inline-list__item"><a href="#">Applications</a></li>
+</ul>
+```
+*/
+
+.inline-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.inline-list__item {
+	white-space: nowrap;
+	display: inline-block;
+}

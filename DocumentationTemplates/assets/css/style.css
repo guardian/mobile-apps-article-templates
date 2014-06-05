@@ -1,93 +1,23 @@
-@font-face {
-  font-family: "Egyptian Display";
-  font-weight: 100;
-  src: url("../fonts/GdnEgyDE1Thi.otf"); }
-@font-face {
-  font-family: "Egyptian Display";
-  font-weight: 200;
-  src: url("../fonts/GdnEgyDE2Lig.otf"); }
-@font-face {
-  font-family: "Egyptian Display";
-  font-weight: 300;
-  src: url("../fonts/GdnEgyDE3Reg.otf"); }
-@font-face {
-  font-family: "Egyptian Display";
-  font-weight: 400;
-  src: url("../fonts/GdnEgyDE4Med.otf"); }
-@font-face {
-  font-family: "Egyptian Display";
-  font-weight: 600;
-  src: url("../fonts/GdnEgyDE6Bol.otf"); }
-@font-face {
-  font-family: "Egyptian Text";
-  src: url("../fonts/EgyptianText-Regular.otf"); }
-@font-face {
-  font-family: "Egyptian Text";
-  font-style: italic;
-  src: url("../fonts/EgyptianText-RegularItalic.otf"); }
-@font-face {
-  font-family: "Egyptian Text";
-  font-weight: bold;
-  src: url("../fonts/EgyptianText-Medium.otf"); }
-@font-face {
-  font-family: "Egyptian Text";
-  font-style: italic;
-  font-weight: bold;
-  src: url("../fonts/EgyptianText-MediumItalic.otf"); }
-@font-face {
-  font-family: "Titlepiece";
-  font-weight: 600;
-  src: url("../fonts/GdnTitlepiece.otf"); }
-@font-face {
-  font-family: "Agate Sans";
-  src: url("../fonts/GdnAgaSanTwoAS32Reg.otf"); }
-@font-face {
-  font-family: "Agate Sans";
-  font-style: italic;
-  src: url("../fonts/GdnAgaSanTwoAS32RegIta.otf"); }
-@font-face {
-  font-family: "Agate Sans";
-  font-weight: bold;
-  src: url("../fonts/GdnAgaSanTwoAS62Bol.otf"); }
-@font-face {
-  font-family: "Agate Sans";
-  font-weight: bold;
-  font-style: italic;
-  src: url("../fonts/GdnAgaSanTwoAS62BolIta.otf"); }
-@font-face {
-  font-family: "Guardian Icons";
-  src: url("../fonts/guardianicons.ttf"); }
-html {
-  font-size: 62.5%;
-  font-family: "Egyptian Text", Georgia, serif; }
-
-@media all and (max-width: 40.615em) {
-  body {
-    font-size: 1.6em;
-    line-height: 1.5em; } }
-@media all and (min-width: 40.625em) {
-  body {
-    font-size: 1.8em;
-    line-height: 1.444em; } }
 .styleguide__banner {
-  padding: 12px 12px 12px 12px; }
+  padding: 12px 12px 12px 12px;
+  background-color: red; }
 
 .styleguide__title {
   font-family: "Egyptian Display", Georgia, serif;
   font-weight: 300; }
+  @media all and (max-width: 28.115em) {
+    .styleguide__title {
+      font-size: 3rem;
+      line-height: 3.2rem; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    .styleguide__title {
+      font-size: 4rem;
+      line-height: 4rem; } }
+  @media all and (min-width: 40.625em) {
+    .styleguide__title {
+      font-size: 4.8rem;
+      line-height: 4.8rem; } }
 
-@media all and (max-width: 28.115em) {
-  .styleguide__title {
-    font-size: 3rem;
-    line-height: 3.2rem; } }
-@media all and (min-width: 28.125em) and (max-width: 40.615em) {
-  .styleguide__title {
-    font-size: 4rem;
-    line-height: 4rem; } }
-@media all and (min-width: 40.625em) {
-  .styleguide__title {
-    font-size: 4.8rem;
-    line-height: 4.8rem; } }
 .styleguide__main {
   padding: 12px 12px 12px 12px;
   overflow: hidden; }
@@ -96,52 +26,45 @@ html {
   padding: 0px 12px 12px 0px;
   width: 25%;
   float: left; }
-
-.styleguide__navigation .nav__item {
-  font-family: "Egyptian Display", Georgia, serif;
-  font-weight: 600;
-  border-top: 1px solid #4bc6df;
-  padding: 3px 12px 24px 3px; }
+  .styleguide__navigation .nav__item {
+    font-family: "Egyptian Display", Georgia, serif;
+    font-weight: 600;
+    border-top: 1px solid #4bc6df;
+    padding: 3px 12px 24px 3px; }
 
 .styleguide__article {
   padding: 12px 12px 12px 12px;
   width: 75%;
   float: right; }
-
-.styleguide__article > h1 {
-  color: #333333;
-  font-weight: 400;
-  margin: 0px 0px 12px 0px; }
-
-.styleguide__article > p {
-  color: #333333;
-  margin: 0px 0px 6px 0px; }
-
-.styleguide__article .highlight pre {
-  white-space: pre-wrap; }
+  .styleguide__article > h1 {
+    color: #333333;
+    font-weight: 400;
+    margin: 0px 0px 12px 0px; }
+  .styleguide__article > p {
+    color: #333333;
+    margin: 0px 0px 6px 0px; }
+  .styleguide__article .highlight pre {
+    white-space: pre-wrap; }
 
 .styleguide__article__nav {
   margin: 0px 0px 48px 0px; }
-
-.styleguide__article__nav .nav__item {
-  font-family: "Agate Sans", sans-serif;
-  display: inline-block; }
-
-@media all and (max-width: 40.615em) {
   .styleguide__article__nav .nav__item {
-    font-size: 1.4rem;
-    line-height: 2rem; } }
-@media all and (min-width: 40.625em) {
-  .styleguide__article__nav .nav__item {
-    font-size: 1.6rem;
-    line-height: 2.2rem; } }
-.styleguide__article__nav .nav__item:after {
-  content: " \2022";
-  font-weight: bold;
-  color: #999999; }
-
-.styleguide__article__nav .nav__item:last-of-type:after {
-  display: none; }
+    font-family: "Agate Sans", sans-serif;
+    display: inline-block; }
+    @media all and (max-width: 40.615em) {
+      .styleguide__article__nav .nav__item {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.625em) {
+      .styleguide__article__nav .nav__item {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
+    .styleguide__article__nav .nav__item:after {
+      content: " \2022";
+      font-weight: bold;
+      color: #999999; }
+    .styleguide__article__nav .nav__item:last-of-type:after {
+      display: none; }
 
 .styleguide__contentinfo {
   color: #666666;
@@ -149,44 +72,43 @@ html {
   border-top: 1px dotted #dcdad5;
   padding: 12px 12px 12px 12px;
   clear: both; }
+  @media all and (max-width: 40.615em) {
+    .styleguide__contentinfo {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) {
+    .styleguide__contentinfo {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
 
-@media all and (max-width: 40.615em) {
-  .styleguide__contentinfo {
-    font-size: 1.4rem;
-    line-height: 2rem; } }
-@media all and (min-width: 40.625em) {
-  .styleguide__contentinfo {
-    font-size: 1.6rem;
-    line-height: 2.2rem; } }
 .codeExample {
   margin: 0px 0px 36px 0px;
   border: 1px solid #dcdad5;
   border-radius: 4px; }
-
-.codeExample:before {
-  color: #333333;
-  content: "Example";
-  font-family: "Agate Sans", sans-serif;
-  background-color: rgba(246, 246, 246, 0.5);
-  border: 1px solid rgba(220, 218, 213, 0.5);
-  border-radius: 4px;
-  border-bottom-left-radius: 0;
-  border-top-right-radius: 0;
-  padding: 9px 12px 9px 12px;
-  width: 3.5em;
-  display: block;
-  position: relative;
-  top: -1px;
-  left: -1px; }
-
-@media all and (max-width: 40.615em) {
   .codeExample:before {
-    font-size: 1.4rem;
-    line-height: 2rem; } }
-@media all and (min-width: 40.625em) {
-  .codeExample:before {
-    font-size: 1.6rem;
-    line-height: 2.2rem; } }
+    color: #333333;
+    content: "Example";
+    font-family: "Agate Sans", sans-serif;
+    background-color: rgba(246, 246, 246, 0.5);
+    border: 1px solid rgba(220, 218, 213, 0.5);
+    border-radius: 4px;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 9px 12px 9px 12px;
+    width: 3.5em;
+    display: block;
+    position: relative;
+    top: -1px;
+    left: -1px; }
+    @media all and (max-width: 40.615em) {
+      .codeExample:before {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.625em) {
+      .codeExample:before {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
+
 .codeBlock,
 .exampleOutput {
   padding: 12px 12px 12px 12px; }

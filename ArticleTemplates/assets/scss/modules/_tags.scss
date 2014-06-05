@@ -8,24 +8,24 @@ Used to display which labels and article has been tagged with.
 
 ```html_example
 <div class="tags">
-	<ul class="list">
-		<li class="list__item"><a href="#">Guardian</a></li>
-		<li class="list__item"><a href="#">Mobile</a></li>
-		<li class="list__item"><a href="#">Applications</a></li>
+	<ul class="inline-list">
+		<li class="inline-list__item"><a href="#">Guardian</a></li>
+		<li class="inline-list__item"><a href="#">Mobile</a></li>
+		<li class="inline-list__item"><a href="#">Applications</a></li>
 	</ul>
 </div>
 ```
 */
 
 .tags {
+	color: $meta;
 	font-family: $agate-sans;
 	@include meta();
 	border-top: 1px dotted $shadow;
 	@include padding(0.5, 1, 1, 1);
 	width: 100%;
 
-	.list {
-		color: $meta;
+	.inline-list {
 		@include mq(col2, col3) {
 			width: cols($base-3, 9);
 		}
@@ -34,10 +34,7 @@ Used to display which labels and article has been tagged with.
 		}
 	}
 
-	.list__item {
-		float: left;
-		white-space: nowrap;
-		display: inline-block;
+	.inline-list__item {
 		@include mq($to: col1) {
 			margin-bottom: 4px;
 		}
@@ -45,11 +42,11 @@ Used to display which labels and article has been tagged with.
 			content: "\00B7";
 			margin: 0 4px;
 		}
-		&:last-of-type:after {
-			display: none;
-		}
 		&:first-of-type {
 			font-weight: bold;
+		}
+		&:last-of-type:after {
+			display: none;
 		}
 	}
 }

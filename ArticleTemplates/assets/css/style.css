@@ -267,25 +267,28 @@ A comprehensive collection fo bespoke icons based on the design of Guardian Eygp
 
 /*doc
 ---
-title: Unstyled list
-name: list
+title: Unstyled inline list
+name: inline-list
 category: Components
 ---
 Removes bullets, padding and margins from lists.
 
 ```html_example
-<ul class="list">
-	<li class="list__item"><a href="#">Guardian</a></li>
-	<li class="list__item"><a href="#">Mobile</a></li>
-	<li class="list__item"><a href="#">Applications</a></li>
+<ul class="inline-list">
+	<li class="inline-list__item"><a href="#">Guardian</a></li>
+	<li class="inline-list__item"><a href="#">Mobile</a></li>
+	<li class="inline-list__item"><a href="#">Applications</a></li>
 </ul>
 ```
 */
-.list {
+.inline-list {
   list-style: none;
   padding: 0;
-  margin: 0;
-  overflow: hidden; }
+  margin: 0; }
+
+.inline-list__item {
+  white-space: nowrap;
+  display: inline-block; }
 
 /*doc
 ---
@@ -357,15 +360,16 @@ Used to display which labels and article has been tagged with.
 
 ```html_example
 <div class="tags">
-	<ul class="list">
-		<li class="list__item"><a href="#">Guardian</a></li>
-		<li class="list__item"><a href="#">Mobile</a></li>
-		<li class="list__item"><a href="#">Applications</a></li>
+	<ul class="inline-list">
+		<li class="inline-list__item"><a href="#">Guardian</a></li>
+		<li class="inline-list__item"><a href="#">Mobile</a></li>
+		<li class="inline-list__item"><a href="#">Applications</a></li>
 	</ul>
 </div>
 ```
 */
 .tags {
+  color: #999999;
   font-family: "Agate Sans", sans-serif;
   border-top: 1px dotted #dcdad5;
   padding: 6px 12px 12px 12px;
@@ -378,28 +382,22 @@ Used to display which labels and article has been tagged with.
     .tags {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
-  .tags .list {
-    color: #999999; }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      .tags .list {
-        width: 74.64789%; } }
-    @media all and (min-width: 56.25em) {
-      .tags .list {
-        width: 74.73684%; } }
-  .tags .list__item {
-    float: left;
-    white-space: nowrap;
-    display: inline-block; }
-    @media all and (max-width: 28.115em) {
-      .tags .list__item {
-        margin-bottom: 4px; } }
-    .tags .list__item:after {
-      content: "\00B7";
-      margin: 0 4px; }
-    .tags .list__item:last-of-type:after {
-      display: none; }
-    .tags .list__item:first-of-type {
-      font-weight: bold; }
+  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    .tags .inline-list {
+      width: 74.64789%; } }
+  @media all and (min-width: 56.25em) {
+    .tags .inline-list {
+      width: 74.73684%; } }
+  @media all and (max-width: 28.115em) {
+    .tags .inline-list__item {
+      margin-bottom: 4px; } }
+  .tags .inline-list__item:after {
+    content: "\00B7";
+    margin: 0 4px; }
+  .tags .inline-list__item:first-of-type {
+    font-weight: bold; }
+  .tags .inline-list__item:last-of-type:after {
+    display: none; }
 
 .advert-slot {
   color: #666666;

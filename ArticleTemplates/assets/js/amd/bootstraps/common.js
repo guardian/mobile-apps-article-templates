@@ -103,7 +103,7 @@ define([
 				// Tag Function
 				window.articleTagInserter = function (html) {
 					html = bonzo.create(html);
-					$(html).appendTo('.tags .list');
+					$(html).appendTo('.tags .inline-list');
 				};
 				window.applyNativeFunctionCall('articleTagInserter');
 			},
