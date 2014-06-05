@@ -1,0 +1,102 @@
+/*doc
+---
+title: Match Stats
+name: match-stats
+category: Football
+---
+Display statistics about a particular match
+
+```html_example
+<div class="match-stats">
+	<p class="match-stats__caption meta">Goal Attempts</p>
+	<div class="match-stats__shots">
+		<div class="match-stats__shots__home match-stats__home">
+			<p class="match-stats__shots__off">Off target <span>19</span></p>
+			<p class="match-stats__shots__on">On target <span>7</span></p>
+		</div>
+		<div class="match-stats__shots__away match-stats__away">
+			<p class="match-stats__shots__off">Off target <span>9</span></p>
+			<p class="match-stats__shots__on">On target <span>3</span></p>
+		</div>
+	</div>
+		
+	<p class="match-stats__caption meta">Corners</p>
+	<div class="match-stats__corners bar-chart match-stats__away">
+		<span class="match-stats__home bar-chart__value" style="width: 70%">7</span>
+		3
+	</div>
+	
+	<p class="match-stats__caption meta">Fouls</p>
+	<div class="match-stats__fouls bar-chart match-stats__away">
+		<span class="match-stats__home bar-chart__value" style="width: 48%">17</span>
+		18
+	</div>
+</div>
+```
+*/
+
+.match-stats {
+	font-family: $agate-sans;
+
+	.bar-chart,
+	.match-stats__shots span {
+		font-family: $egyptian-display;
+		font-weight: 600;
+		@include standfirst();
+		@include margin(0, 0, 1, 0);
+		display: block;
+	}
+}
+
+.match-stats__caption {
+	color: $headline;
+	@include meta();
+	@include margin(0, 0, 0.25, 0);
+}
+
+.match-stats__home,
+.match-stats__home .match-stats__shots__on {
+	color: $white;
+	background-color: $news;
+}
+
+.match-stats__away,
+.match-stats__away .match-stats__shots__on {
+	color: $headline;
+	background-color: $news-accent;
+}
+
+.match-stats__shots {
+	@include margin(0, 0, 1, 0);
+	overflow: hidden;
+}
+
+.match-stats__shots__off,
+.match-stats__shots__on {
+	@include meta();
+	@include padding(0.25, 0.5);
+}
+.match-stats__shots__on {
+	width: 75%;
+	border: 2px solid $white;
+	border-bottom: none;
+}
+
+.match-stats__shots__home,
+.match-stats__shots__away {
+	background-image: url('../img/hor_bg.png');
+	background-size: 8px;
+	width: 50%;
+	float: left;
+}
+.match-stats__shots__home {
+	.match-stats__shots__on {
+		float: right;
+		border-right: none;
+	}
+}
+.match-stats__shots__away {
+	.match-stats__shots__on {
+		border-left: none;
+	}
+}

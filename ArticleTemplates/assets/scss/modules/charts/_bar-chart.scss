@@ -1,0 +1,34 @@
+/*doc
+---
+title: Bar Chart
+name: bar-chart
+category: Charts
+---
+Display statistics about a particular match
+
+```html_example
+<div class="bar-chart">
+	<span class="bar-chart__value" style="width: 70%">7</span>
+	3
+</div>
+```
+*/
+
+.bar-chart {
+	text-align: right;
+	background-color: $shadow;
+	@include padding(0.25, 0.5);
+	width: 100%;
+	position: relative;
+}
+
+.bar-chart__value {
+	color: $white;
+	text-align: left;
+	background-color: $meta;
+	@include padding(0.25, 0.5);
+	width: 50%; // Default
+	position: absolute;
+	top: 0;
+	left: 0;
+}

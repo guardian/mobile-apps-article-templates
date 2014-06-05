@@ -204,67 +204,6 @@
 				@include mq($from: col3) {
 					padding: 0 0 $base-4*2 $base-4*6;
 				}
-
-				.football-shots {
-					overflow: hidden;
-					margin-bottom: 12px;
-					& > div {
-						background-size: 8px;
-						width: 50%;
-						float: left;
-						p {
-							color: $white;
-							@include padding(0.25, 0.5);
-							span {
-								display: block;
-								font-family: $egyptian-display;
-								font-weight: 600;
-								@include standfirst();
-								margin-bottom: 12px;
-							}
-						}
-						p:nth-child(2) {
-							width: 75%;
-							border: 2px solid $white;
-							border-bottom: none;
-						}
-					}
-					.football-shots-home {
-						p:nth-child(2) {
-							float: right;
-							border-right: none;
-						}
-					}
-					.football-shots-away {
-						p:nth-child(1) {
-							color: transparent;
-						}
-						p:nth-child(2) {
-							color: transparent;
-							border-left: none;
-						}
-					}
-				}
-
-				.football-line {
-					font-family: $egyptian-display;
-					font-weight: 600;
-					@include standfirst();
-					text-align: right;
-					margin-bottom: 12px;
-					@include padding(0.25, 0.5);
-					width: 100%;
-					position: relative;
-
-					.football-line-home {
-						text-align: left;
-						@include padding(0.25, 0.5);
-						width: 50%;
-						position: absolute;
-						top: 0;
-						left: 0;
-					}
-				}
 			}
 		}
 
