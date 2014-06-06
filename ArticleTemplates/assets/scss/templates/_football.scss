@@ -53,69 +53,24 @@
 			@include padding(1);
 			overflow-y: hidden;
 
-			.football-team {
+			.team-lineup {
 				width: 50%;
 				float: left;
 				padding-right: 12px;
-				
-				.football-player {
-					@include meta();
-					margin-bottom: 4px;
-					display: table;
-					width: 100%;
-					.football-player-number,
-					.football-player-name {
-						display: table-cell;
-						vertical-align: top;
-					}
-					.football-player-number {
-						color: $meta;
-						padding-right: 6px;
-						
-						@include mq($to: col1) {
-							width: $base-1 * 6;
-						}
-						@include mq(col1, col2) {
-							width: $base-2 * 8;
-						}
-						@include mq(col2, col3) {
-							width: $base-3 * 11;
-						}
-						@include mq($from: col3) {
-							width: $base-4 * 12;
-						}
-					}
-					.football-player-forename {
-						@include mq($to: col1) {
-							display: none;
-						}
-					}
-					.football-player-name-replacement {
-						display: none;
-					}
-					.replacement .football-player-name-replacement {
-						display: inline;
-						@include mq($to: col1) {
-							display: block;
-						}
-					}
-					.football-player-card {
-						display: none;
-					}
-					.yellow > .football-player-card.yellow,
-					.yellow-red > .football-player-card.yellow-red,
-					.red > .football-player-card.red {
-						display: inline-block;
-						margin-bottom: -1px;
-					}
-					&:last-of-type {
-						@include margin(2, 0, 0, 0);
+			}
 
-						.used {
-							color: $meta;
-							text-decoration: line-through;
-						}
-					}
+			.team-lineup__player__number {
+				@include mq($to: col1) {
+					width: $base-1 * 6;
+				}
+				@include mq(col1, col2) {
+					width: $base-2 * 8;
+				}
+				@include mq(col2, col3) {
+					width: $base-3 * 11;
+				}
+				@include mq($from: col3) {
+					width: $base-4 * 12;
 				}
 			}
 		}
