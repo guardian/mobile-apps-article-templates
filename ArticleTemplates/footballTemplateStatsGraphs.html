@@ -1,9 +1,11 @@
 			<div class="football-stats">
 				<h2 class="football__label">Stats</h2>
-					<div class="football-possession">
-						<p class="football__sublabel">Possession</p>
-						<div class="football-possession-wrapper">
-							<svg class="football-chart" data-home="__FOOTBALL_HOME_POSSESSION__" data-away="__FOOTBALL_AWAY_POSSESSION__"></svg>
+					<div class="football-possession-column">
+						<div class="match-stats">
+							<p class="match-stats__caption">Possession</p>
+							<div class="match-stats__posession">
+								<svg class="pie-chart pie-chart--possession" data-home="__FOOTBALL_HOME_POSSESSION__" data-away="__FOOTBALL_AWAY_POSSESSION__"></svg>
+							</div>
 						</div>
 					</div>
 					
@@ -11,54 +13,55 @@
 						<div class="match-stats">
 							<p class="match-stats__caption">Goal Attempts</p>
 							<div class="match-stats__shots">
-								<div class="match-stats__shots__home match-stats__home">
+								<div class="match-stats__shots--home match-colours--home">
 									<p class="match-stats__shots__off">Off target <span>__FOOTBALL_HOME_SHOTS_OFF__</span></p>
-									<p class="match-stats__shots__on">On target <span>__FOOTBALL_HOME_SHOTS_ON__</span></p>
+									<p class="match-stats__shots__on match-colours--home">On target <span>__FOOTBALL_HOME_SHOTS_ON__</span></p>
 								</div>
-							
-								<div class="match-stats__shots__away match-stats__away">
+								<div class="match-stats__shots--away match-colours--away">
 									<p class="match-stats__shots__off">Off target <span>__FOOTBALL_AWAY_SHOTS_OFF__</span></p>
-									<p class="match-stats__shots__on">On target <span>__FOOTBALL_AWAY_SHOTS_ON__</span></p>
+									<p class="match-stats__shots__on match-colours--away">On target <span>__FOOTBALL_AWAY_SHOTS_ON__</span></p>
 								</div>
 							</div>
 							
 							<p class="match-stats__caption">Corners</p>
-							<div class="match-stats__corners bar-chart match-stats__away">
-								<div class="match-stats__home bar-chart__value" style="width: __FOOTBALL_HOME_CORNERS_PERCENT__%">__FOOTBALL_HOME_CORNERS__</div>
-								__FOOTBALL_AWAY_CORNERS__
+							<div class="match-stats__corners">
+								<div class="bar-chart match-colours--away">
+									<span class="bar-chart__value match-colours--home" style="width: __FOOTBALL_HOME_CORNERS_PERCENT__%">__FOOTBALL_HOME_CORNERS__</span>
+									<span>__FOOTBALL_AWAY_CORNERS__</span>
+								</div>
 							</div>
 						
 							<p class="match-stats__caption">Fouls</p>
-							<div class="match-stats__fouls bar-chart match-stats__away">
-								<div class="match-stats__home bar-chart__value" style="width: __FOOTBALL_HOME_FOULS_PERCENT__%">__FOOTBALL_HOME_FOULS__</div>
-								__FOOTBALL_AWAY_FOULS__
+							<div class="match-stats__fouls">
+								<div class="bar-chart match-colours--away">
+									<span class="bar-chart__value match-colours--home" style="width: __FOOTBALL_HOME_FOULS_PERCENT__%">__FOOTBALL_HOME_FOULS__</span>
+									<span>__FOOTBALL_AWAY_FOULS__</span>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 				
 				<style>
-					.match-stats__home,
-					.match-stats__home .match-stats__shots__on {
-						color: __FOOTBALL_HOME_TEXT_COLOUR__ !important;
-						background-color: __FOOTBALL_HOME_COLOUR__ !important;
+					.match-colours--home {
+						color: __FOOTBALL_HOME_TEXT_COLOUR__;
+						background-color: __FOOTBALL_HOME_COLOUR__;
 					}
-					svg.football-chart g .arc:nth-of-type(2) path {
-						fill: __FOOTBALL_HOME_COLOUR__ !important;
+					.pie-chart--possession .pie-chart__segment-arc--home {
+						fill: __FOOTBALL_HOME_COLOUR__;
 					}
-					svg.football-chart .foreignObject:nth-of-type(2)  {
+					.pie-chart--possession .pie-chart__label--home  {
 						color: __FOOTBALL_HOME_TEXT_COLOUR__;
 					}
 
-					.match-stats__away,
-					.match-stats__away .match-stats__shots__on {
-						color: __FOOTBALL_AWAY_TEXT_COLOUR__ !important;
-						background-color: __FOOTBALL_AWAY_COLOUR__ !important;
+					.match-colours--away {
+						color: __FOOTBALL_AWAY_TEXT_COLOUR__;
+						background-color: __FOOTBALL_AWAY_COLOUR__;
 					}
-					svg.football-chart g .arc:nth-of-type(1) path {
-						fill: __FOOTBALL_AWAY_COLOUR__ !important;
+					.pie-chart--possession .pie-chart__segment-arc--away {
+						fill: __FOOTBALL_AWAY_COLOUR__;
 					}
-					svg.football-chart .foreignObject:nth-of-type(1) {
-						color: __FOOTBALL_AWAY_TEXT_COLOUR__ !important;
+					.pie-chart--possession .pie-chart__label--away {
+						color: __FOOTBALL_AWAY_TEXT_COLOUR__;
 					}
 				</style>

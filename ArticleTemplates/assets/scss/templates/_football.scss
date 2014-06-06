@@ -126,10 +126,7 @@
 			overflow-y: auto;
 			position: relative;
 
-			.football__sublabel {
-			}
-
-			.football-possession {
+			.football-possession-column {
 				float: left;
 				width: 50%;
 				@include mq($to: col1) {
@@ -147,42 +144,18 @@
 					padding: 0 $base-4*6 $base-4*2;
 				}
 
-				.football-possession-wrapper {
+				.match-stats__possession {
 					position: relative;
 					padding-bottom: 100%;
 					vertical-align: top;
-					.football-chart {
+					
+					.pie-chart--posession {
 						position: absolute;
 						top: 0;
 						left: 0;
 						width: 108%;
 						height: 108%;
 						margin: -4%;
-						shape-rendering: optimizeSpeed;
-						g .arc path {
-							fill: $standfirst;
-						}
-						.arc-team {
-							font-family: $agate-sans;
-							@include meta();
-							width: 75px;
-							text-overflow: ellipsis;
-							text-align: center;
-							white-space: nowrap;
-							overflow: hidden;
-						}
-						.arc-percent {
-							font-family: $egyptian-display;
-							font-weight: 600;
-							@include standfirst();
-							text-align: center;
-						}
-						.arc-key {
-							fill: $meta;
-							font-family: $egyptian-display;
-							font-weight: 600;
-							font-size: 220%;
-						}
 					}
 				}
 			}

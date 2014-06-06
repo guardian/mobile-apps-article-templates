@@ -1,0 +1,66 @@
+/*doc
+---
+title: Pie chart
+name: pie-chart
+category: Charts
+---
+Display comparison of goal attempts, corners and fouls that occurred during a match.
+
+```html_example
+<svg class="pie-chart" height="250" width="250" preserveAspectRatio="xMinYMin slice" viewBox="0 0 250 250">
+	<!-- Contents of SVG injected via D3.js -->
+	<g class="pie-chart__inner" transform="translate(125,125)">
+		<text class="pie-chart__key" transform="translate(-18,15)">%</text>
+		<path class="pie-chart__pie" d="M0,124A124,124 0 1,1 0,-124A124,124 0 1,1 0,124M0,42.67A42.67,42.67 0 1,0 0,-42.67A42.67,42.67 0 1,0 0,42.67Z"/>
+		<g class="pie-chart__segment">
+			<path class="pie-chart__segment-arc" d="M7.6540e-15,-125A125,125 0 1,1 -31.0862,121.0729L-10.3621,40.3576A41.67,41.67 0 1,0 2.5513e-15,-41.67Z"/>
+		</g>
+		<g class="pie-chart__segment">
+			<path class="pie-chart__segment-arc" d="M-31.0862,121.0729A125,125 0 0,1 -2.2962e-14,-125L-7.6540e-15,-41.67A41.67,41.67 0 0,0 -10.3621,40.3576Z"/>
+		</g>
+		<foreignObject class="pie-chart__label" width="75" height="50" text-anchor="middle" transform="translate(47.6762,-14.5556)">
+			<div class="pie-chart__label-text" width="50" x="0" dy="1.2em">Against</div>
+			<div class="pie-chart__label-value" x="0" dy="1.2em">54</div>
+		</foreignObject>
+		<foreignObject class="pie-chart__label" width="75" height="50" text-anchor="middle" transform="translate(-117.6762,-35.4444)">
+			<div class="pie-chart__label-text" width="50" x="0" dy="1.2em">For</div>
+			<div class="pie-chart__label-value" x="0" dy="1.2em">46</div>
+		</foreignObject>
+	</g>
+</svg>
+```
+*/
+
+.pie-chart {
+	height: 100%;
+	width: 100%;
+	shape-rendering: optimizeSpeed;
+
+	.pie-chart__pie {
+		fill: $shadow;
+	}
+
+	.pie-chart__key {
+		font-family: $egyptian-display;
+		font-weight: 600;
+		font-size: 220%;
+		fill: $meta;
+	}
+
+	.pie-chart__label-text {
+		font-family: $agate-sans;
+		@include meta();
+		text-align: center;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		width: 75px;
+	}
+
+	.pie-chart__label-value {
+		font-family: $egyptian-display;
+		font-weight: 600;
+		@include standfirst();
+		text-align: center;
+	}
+}

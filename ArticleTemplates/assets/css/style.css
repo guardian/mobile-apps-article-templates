@@ -782,11 +782,11 @@ Display ratio in a single bar chart.
   text-align: right;
   background-color: #dcdad5;
   padding: 3px 6px 3px 6px;
+  margin: 0px 0px 12px 0px;
   width: 100%;
   position: relative; }
 
 .bar-chart__value {
-  color: white;
   text-align: left;
   background-color: #999999;
   padding: 3px 6px 3px 6px;
@@ -797,38 +797,162 @@ Display ratio in a single bar chart.
 
 /*doc
 ---
-title: Match Stats
-name: match-stats
-category: Football
+title: Pie chart
+name: pie-chart
+category: Charts
 ---
 Display comparison of goal attempts, corners and fouls that occurred during a match.
 
 ```html_example
+<svg class="pie-chart" height="250" width="250" preserveAspectRatio="xMinYMin slice" viewBox="0 0 250 250">
+	<!-- Contents of SVG injected via D3.js -->
+	<g class="pie-chart__inner" transform="translate(125,125)">
+		<text class="pie-chart__key" transform="translate(-18,15)">%</text>
+		<path class="pie-chart__pie" d="M0,124A124,124 0 1,1 0,-124A124,124 0 1,1 0,124M0,42.67A42.67,42.67 0 1,0 0,-42.67A42.67,42.67 0 1,0 0,42.67Z"/>
+		<g class="pie-chart__segment">
+			<path class="pie-chart__segment-arc" d="M7.6540e-15,-125A125,125 0 1,1 -31.0862,121.0729L-10.3621,40.3576A41.67,41.67 0 1,0 2.5513e-15,-41.67Z"/>
+		</g>
+		<g class="pie-chart__segment">
+			<path class="pie-chart__segment-arc" d="M-31.0862,121.0729A125,125 0 0,1 -2.2962e-14,-125L-7.6540e-15,-41.67A41.67,41.67 0 0,0 -10.3621,40.3576Z"/>
+		</g>
+		<foreignObject class="pie-chart__label" width="75" height="50" text-anchor="middle" transform="translate(47.6762,-14.5556)">
+			<div class="pie-chart__label-text" width="50" x="0" dy="1.2em">Against</div>
+			<div class="pie-chart__label-value" x="0" dy="1.2em">54</div>
+		</foreignObject>
+		<foreignObject class="pie-chart__label" width="75" height="50" text-anchor="middle" transform="translate(-117.6762,-35.4444)">
+			<div class="pie-chart__label-text" width="50" x="0" dy="1.2em">For</div>
+			<div class="pie-chart__label-value" x="0" dy="1.2em">46</div>
+		</foreignObject>
+	</g>
+</svg>
+```
+*/
+.pie-chart {
+  height: 100%;
+  width: 100%;
+  shape-rendering: optimizeSpeed; }
+  .pie-chart .pie-chart__pie {
+    fill: #dcdad5; }
+  .pie-chart .pie-chart__key {
+    font-family: "Egyptian Display", Georgia, serif;
+    font-weight: 600;
+    font-size: 220%;
+    fill: #999999; }
+  .pie-chart .pie-chart__label-text {
+    font-family: "Agate Sans", sans-serif;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 75px; }
+    @media all and (max-width: 40.615em) {
+      .pie-chart .pie-chart__label-text {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.625em) {
+      .pie-chart .pie-chart__label-text {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
+  .pie-chart .pie-chart__label-value {
+    font-family: "Egyptian Display", Georgia, serif;
+    font-weight: 600;
+    text-align: center; }
+    @media all and (max-width: 40.615em) {
+      .pie-chart .pie-chart__label-value {
+        font-size: 1.7rem;
+        line-height: 2.2rem; } }
+    @media all and (min-width: 40.625em) {
+      .pie-chart .pie-chart__label-value {
+        font-size: 2.2rem;
+        line-height: 3rem; } }
+
+/*doc
+---
+title: Match Stats
+name: match-stats
+category: Football
+---
+Display comparison of possession, goal attempts, corners and fouls that occurred during a match. Colours are provided by style declarations provided on the same page.
+
+```html_example
 <div class="match-stats">
-	<p class="match-stats__caption meta">Goal Attempts</p>
-	<div class="match-stats__shots">
-		<div class="match-stats__shots__home match-stats__home">
-			<p class="match-stats__shots__off">Off target <span>19</span></p>
-			<p class="match-stats__shots__on">On target <span>7</span></p>
-		</div>
-		<div class="match-stats__shots__away match-stats__away">
-			<p class="match-stats__shots__off">Off target <span>9</span></p>
-			<p class="match-stats__shots__on">On target <span>3</span></p>
-		</div>
+	<p class="match-stats__caption">Possession</p>
+	<div class="match-stats__posession">
+		<svg class="pie-chart pie-chart--possession" height="250" width="250" preserveAspectRatio="xMinYMin slice" viewBox="0 0 250 250">
+			<!-- Contents of SVG injected via D3.js -->
+			<g class="pie-chart__inner" transform="translate(125,125)">
+				<text class="pie-chart__key" transform="translate(-18,15)">%</text>
+				<path class="pie-chart__pie" d="M0,124A124,124 0 1,1 0,-124A124,124 0 1,1 0,124M0,42.67A42.67,42.67 0 1,0 0,-42.67A42.67,42.67 0 1,0 0,42.67Z"/>
+				<g class="pie-chart__segment">
+					<path class="pie-chart__segment-arc pie-chart__segment-arc--away" d="M7.6540e-15,-125A125,125 0 1,1 -31.0862,121.0729L-10.3621,40.3576A41.67,41.67 0 1,0 2.5513e-15,-41.67Z"/>
+				</g>
+				<g class="pie-chart__segment">
+					<path class="pie-chart__segment-arc pie-chart__segment-arc--home" d="M-31.0862,121.0729A125,125 0 0,1 -2.2962e-14,-125L-7.6540e-15,-41.67A41.67,41.67 0 0,0 -10.3621,40.3576Z"/>
+				</g>
+				<foreignObject class="pie-chart__label pie-chart__label--away" width="75" height="50" text-anchor="middle" transform="translate(47.6762,-14.5556)">
+					<div class="pie-chart__label-text" width="50" x="0" dy="1.2em">Hull</div>
+					<div class="pie-chart__label-value" x="0" dy="1.2em">54</div>
+				</foreignObject>
+				<foreignObject class="pie-chart__label pie-chart__label--home" width="75" height="50" text-anchor="middle" transform="translate(-117.6762,-35.4444)">
+					<div class="pie-chart__label-text" width="50" x="0" dy="1.2em">Arsenal</div>
+					<div class="pie-chart__label-value" x="0" dy="1.2em">46</div>
+				</foreignObject>
+			</g>
+		</svg>
 	</div>
-		
-	<p class="match-stats__caption meta">Corners</p>
-	<div class="match-stats__corners bar-chart match-stats__away">
-		<span class="match-stats__home bar-chart__value" style="width: 70%">7</span>
-		3
+
+	<p class="match-stats__caption">Goal Attempts</p>
+	<div class="match-stats__shots">
+		<div class="match-stats__shots--home match-colours--home">
+			<p class="match-stats__shots__off">Off target <span>19</span></p>
+			<p class="match-stats__shots__on match-colours--home">On target <span>7</span></p>
+		</div>
+		<div class="match-stats__shots--away match-colours--away">
+			<p class="match-stats__shots__off">Off target <span>9</span></p>
+			<p class="match-stats__shots__on match-colours--away">On target <span>3</span></p>
+		</div>
 	</div>
 	
-	<p class="match-stats__caption meta">Fouls</p>
-	<div class="match-stats__fouls bar-chart match-stats__away">
-		<span class="match-stats__home bar-chart__value" style="width: 48%">17</span>
-		18
+	<p class="match-stats__caption">Corners</p>
+	<div class="match-stats__corners">
+		<div class="bar-chart match-colours--away">
+			<span class="bar-chart__value match-colours--home" style="width: 70%">7</span>
+			<span>3</span>
+		</div>
+	</div>
+
+	<p class="match-stats__caption">Fouls</p>
+	<div class="match-stats__fouls">
+		<div class="bar-chart match-colours--away">
+			<span class="bar-chart__value match-colours--home" style="width: 48%">17</span>
+			<span>18</span>
+		</div>
 	</div>
 </div>
+
+<style>
+	.match-colours--home {
+		color: #FFFFFF;
+		background-color: #C40007;
+	}
+	.pie-chart--possession .pie-chart__segment-arc--home {
+		fill: #C40007;
+	}
+	.pie-chart--possession .pie-chart__label--home  {
+		color: #FFFFFF;
+	}
+
+	.match-colours--away {
+		color: #333333;
+		background-color: #F2B100;
+	}
+	.pie-chart--possession .pie-chart__segment-arc--away {
+		fill: #F2B100;
+	}
+	.pie-chart--possession .pie-chart__label--away {
+		color: #333333;
+	}
+</style>
 ```
 */
 .match-stats {
@@ -862,16 +986,6 @@ Display comparison of goal attempts, corners and fouls that occurred during a ma
       font-size: 1.6rem;
       line-height: 2.2rem; } }
 
-.match-stats__home,
-.match-stats__home .match-stats__shots__on {
-  color: white;
-  background-color: #005689; }
-
-.match-stats__away,
-.match-stats__away .match-stats__shots__on {
-  color: #333333;
-  background-color: #4bc6df; }
-
 .match-stats__shots {
   margin: 0px 0px 12px 0px;
   overflow: hidden; }
@@ -895,18 +1009,18 @@ Display comparison of goal attempts, corners and fouls that occurred during a ma
   border: 2px solid white;
   border-bottom: none; }
 
-.match-stats__shots__home,
-.match-stats__shots__away {
+.match-stats__shots--home,
+.match-stats__shots--away {
   background-image: url("../img/hor_bg.png");
   background-size: 8px;
   width: 50%;
   float: left; }
 
-.match-stats__shots__home .match-stats__shots__on {
+.match-stats__shots--home .match-stats__shots__on {
   float: right;
   border-right: none; }
 
-.match-stats__shots__away .match-stats__shots__on {
+.match-stats__shots--away .match-stats__shots__on {
   border-left: none; }
 
 /*doc
@@ -4125,69 +4239,34 @@ category: Partials
     padding: 12px 12px 12px 12px;
     overflow-y: auto;
     position: relative; }
-    #football .football-tabs-stats .football-stats .football-possession {
+    #football .football-tabs-stats .football-stats .football-possession-column {
       float: left;
       width: 50%; }
       @media all and (max-width: 28.115em) {
-        #football .football-tabs-stats .football-stats .football-possession {
+        #football .football-tabs-stats .football-stats .football-possession-column {
           padding: 0 13.04348% 8.69565%;
           width: 100%;
           float: none; } }
       @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-        #football .football-tabs-stats .football-stats .football-possession {
+        #football .football-tabs-stats .football-stats .football-possession-column {
           padding: 0 8.51064% 4.25532%; } }
       @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-        #football .football-tabs-stats .football-stats .football-possession {
+        #football .football-tabs-stats .football-stats .football-possession-column {
           padding: 0 7.74648% 2.8169%; } }
       @media all and (min-width: 56.25em) {
-        #football .football-tabs-stats .football-stats .football-possession {
+        #football .football-tabs-stats .football-stats .football-possession-column {
           padding: 0 6.31579% 2.10526%; } }
-      #football .football-tabs-stats .football-stats .football-possession .football-possession-wrapper {
+      #football .football-tabs-stats .football-stats .football-possession-column .match-stats__possession {
         position: relative;
         padding-bottom: 100%;
         vertical-align: top; }
-        #football .football-tabs-stats .football-stats .football-possession .football-possession-wrapper .football-chart {
+        #football .football-tabs-stats .football-stats .football-possession-column .match-stats__possession .pie-chart--posession {
           position: absolute;
           top: 0;
           left: 0;
           width: 108%;
           height: 108%;
-          margin: -4%;
-          shape-rendering: optimizeSpeed; }
-          #football .football-tabs-stats .football-stats .football-possession .football-possession-wrapper .football-chart g .arc path {
-            fill: #666666; }
-          #football .football-tabs-stats .football-stats .football-possession .football-possession-wrapper .football-chart .arc-team {
-            font-family: "Agate Sans", sans-serif;
-            width: 75px;
-            text-overflow: ellipsis;
-            text-align: center;
-            white-space: nowrap;
-            overflow: hidden; }
-            @media all and (max-width: 40.615em) {
-              #football .football-tabs-stats .football-stats .football-possession .football-possession-wrapper .football-chart .arc-team {
-                font-size: 1.4rem;
-                line-height: 2rem; } }
-            @media all and (min-width: 40.625em) {
-              #football .football-tabs-stats .football-stats .football-possession .football-possession-wrapper .football-chart .arc-team {
-                font-size: 1.6rem;
-                line-height: 2.2rem; } }
-          #football .football-tabs-stats .football-stats .football-possession .football-possession-wrapper .football-chart .arc-percent {
-            font-family: "Egyptian Display", Georgia, serif;
-            font-weight: 600;
-            text-align: center; }
-            @media all and (max-width: 40.615em) {
-              #football .football-tabs-stats .football-stats .football-possession .football-possession-wrapper .football-chart .arc-percent {
-                font-size: 1.7rem;
-                line-height: 2.2rem; } }
-            @media all and (min-width: 40.625em) {
-              #football .football-tabs-stats .football-stats .football-possession .football-possession-wrapper .football-chart .arc-percent {
-                font-size: 2.2rem;
-                line-height: 3rem; } }
-          #football .football-tabs-stats .football-stats .football-possession .football-possession-wrapper .football-chart .arc-key {
-            fill: #999999;
-            font-family: "Egyptian Display", Georgia, serif;
-            font-weight: 600;
-            font-size: 220%; }
+          margin: -4%; }
     #football .football-tabs-stats .football-stats .football-stats-column {
       width: 50%;
       float: left; }
