@@ -358,6 +358,100 @@ Makes a block of text selectable. Useful for portions of text a user may wish to
 
 /*doc
 ---
+title: Advert Slot
+name: advert-slot
+category: Modules
+---
+Create a placeholder tp allow an advert to be placed with an article.
+
+Banner
+
+```html_example
+<div class="advert-slot advert-slot--banner">
+	<div class="advert-slot__label">Advertisement</div>
+	<div class="advert-slot__wrapper">
+		<div class="advert-slot__wrapper__content">
+			<!-- Advert injected here using JavaScript -->
+		</div>
+	</div>
+</div>
+```
+
+MPU
+
+```html_example
+<div class="advert-slot advert-slot--mpu">
+	<div class="advert-slot__label">Advertisement</div>
+	<div class="advert-slot__wrapper">
+		<div class="advert-slot__wrapper__content">
+			<!-- Advert injected here using JavaScript -->
+		</div>
+	</div>
+</div>
+```
+*/
+.advert-slot {
+  color: #666666;
+  font-family: "Agate Sans", sans-serif;
+  background: rgba(0, 0, 0, 0.07);
+  display: none;
+  overflow: auto; }
+  @media all and (max-width: 40.615em) {
+    .advert-slot {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) {
+    .advert-slot {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  .advert-slot div, .advert-slot img {
+    vertical-align: middle; }
+  .advert-slot .advert-slot__label {
+    overflow: auto; }
+  .advert-slot .advert-slot__wrapper {
+    background-color: #dcdad5;
+    position: relative;
+    overflow: hidden; }
+  .advert-slot .advert-slot__wrapper__content {
+    position: absolute;
+    bottom: 0; }
+
+.advert-slot--banner {
+  width: 100%;
+  padding: 0px 0px 12px 0px; }
+  .advert-slot--banner .advert-slot__label {
+    padding: 6px 0px 6px 0px; }
+  .advert-slot--banner .advert-slot__wrapper {
+    padding-top: 50px;
+    width: 300px; }
+
+.advert-slot--mpu {
+  width: 300px;
+  border-top: 1px dotted #dcdad5; }
+  .advert-slot--mpu .advert-slot__label {
+    padding: 6px 0px 24px 6px; }
+  .advert-slot--mpu .advert-slot__wrapper {
+    padding-top: 250px; }
+
+.advert-config--mobile .advert-slot--banner,
+.advert-config--mobile .advert-slot--mpu--mobile {
+  display: block; }
+  .advert-config--mobile .advert-slot--banner .advert-slot__label,
+  .advert-config--mobile .advert-slot--mpu--mobile .advert-slot__label {
+    margin: 0 auto;
+    width: 300px; }
+  .advert-config--mobile .advert-slot--banner .advert-slot__wrapper,
+  .advert-config--mobile .advert-slot--mpu--mobile .advert-slot__wrapper {
+    margin: 0 auto; }
+
+.advert-config--tablet .advert-slot--mpu--tablet {
+  display: block; }
+
+.advert-slot--false {
+  display: none !important; }
+
+/*doc
+---
 title: Alerts
 name: alerts
 category: Modules
@@ -1722,81 +1816,6 @@ Display a team line-up including substitutions and bookings.
       .replacement .team-lineup__player__replacement {
         display: block; } }
 
-.advert-slot {
-  color: #666666;
-  font-family: "Agate Sans", sans-serif;
-  background: rgba(0, 0, 0, 0.07);
-  display: none;
-  overflow: auto; }
-  @media all and (max-width: 40.615em) {
-    .advert-slot {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
-    .advert-slot {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-  .advert-slot div, .advert-slot img {
-    vertical-align: middle; }
-  .advert-slot .advert-slot__label {
-    overflow: auto; }
-  .advert-slot .advert-slot__wrapper {
-    position: relative;
-    background-color: #dcdad5;
-    overflow: hidden; }
-    .advert-slot .advert-slot__wrapper .advert-slot__wrapper__content {
-      position: absolute;
-      bottom: 0; }
-
-.advert-slot--banner {
-  width: 100%;
-  padding: 0px 0px 12px 0px; }
-  .advert-slot--banner .advert-slot__label {
-    padding: 6px 0px 6px 0px; }
-  .advert-slot--banner .advert-slot__wrapper {
-    padding-top: 50px;
-    width: 300px; }
-
-.advert-slot--mpu {
-  width: 300px;
-  border-top: 1px dotted #dcdad5; }
-  @media all and (min-width: 35em) {
-    .advert-slot--mpu {
-      float: right;
-      margin-left: 20px;
-      margin-bottom: 12px; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    .advert-slot--mpu {
-      margin-right: -30.98592%; } }
-  @media all and (min-width: 56.25em) {
-    .advert-slot--mpu {
-      margin-right: -30.52632%; } }
-  .advert-slot--mpu .advert-slot__label {
-    padding: 6px 0px 24px 6px; }
-  .advert-slot--mpu .advert-slot__wrapper {
-    padding-top: 250px; }
-
-@media all and (max-width: 34.9375em) {
-  .advert-slot--mpu--tablet {
-    margin: 12px auto 0 auto; } }
-
-.advert-config--mobile .advert-slot--banner,
-.advert-config--mobile .advert-slot--mpu--mobile {
-  display: block; }
-  .advert-config--mobile .advert-slot--banner .advert-slot__label,
-  .advert-config--mobile .advert-slot--mpu--mobile .advert-slot__label {
-    margin: 0 auto;
-    width: 300px; }
-  .advert-config--mobile .advert-slot--banner .advert-slot__wrapper,
-  .advert-config--mobile .advert-slot--mpu--mobile .advert-slot__wrapper {
-    margin: 0 auto; }
-
-.advert-config--tablet .advert-slot--mpu--tablet {
-  display: block; }
-
-.advert-slot--false {
-  display: none !important; }
-
 .article {
   font-family: "Egyptian Text", Georgia, serif;
   background-color: white;
@@ -1819,6 +1838,21 @@ Display a team line-up including substitutions and bookings.
 
 .android .article {
   border-top: none; }
+
+@media all and (min-width: 35em) {
+  .article__body .advert-slot--mpu {
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 12px; } }
+@media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  .article__body .advert-slot--mpu {
+    margin-right: -30.98592%; } }
+@media all and (min-width: 56.25em) {
+  .article__body .advert-slot--mpu {
+    margin-right: -30.52632%; } }
+@media all and (max-width: 34.9375em) {
+  .article__body .advert-slot--mpu--tablet {
+    margin: 12px auto 0 auto; } }
 
 /*doc
 ---
