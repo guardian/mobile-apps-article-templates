@@ -1,4 +1,4 @@
-#liveblog {
+.template--liveblog {
 	.article {
 		background-color: $background;
 		border-bottom: none;
@@ -52,11 +52,11 @@
 			}
 		}
 
-		.touchpoint--primary .touchpoint__button {
+		#module-comments .touchpoint--primary .touchpoint__button {
 			background-color: $live;
 		}
 		
-		.touchpoint--primary:active .touchpoint__button {
+		#module-comments .touchpoint--primary:active .touchpoint__button {
 			background-color: $live-accent;
 		}
 
@@ -411,7 +411,7 @@
 	}
 }
 
-#liveblog.android {
+.template--liveblog.android {
 	.aside-witness {
 		@include margin(1);
 	}
