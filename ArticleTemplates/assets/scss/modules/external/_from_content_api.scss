@@ -1,13 +1,13 @@
 /*doc
 ---
-title: Prose
-name: prose
-category: Utilities
+title: From Content API
+name: from-content-api
+category: External
 ---
-Adds typographic styling to a block of text.
+Adds typographic styling to content taken from the Guardian Content API.
 
 ```html_example
-<div class="prose">
+<div class="from-content-api">
 	<h2>Sub-heading</h2>
 	<p>The <code>h2</code> element represents a sub-heading, used for article-level headings.</p>
 
@@ -94,11 +94,40 @@ Adds typographic styling to a block of text.
 	<h2>Strong importance</h2>
 	<p>The <code>strong</code> element is used to denote text with strong importance. Where bolding is used for stylistic differentiation, the <code>b</code> element may be preferable. Example:</p> 
 	<p><strong>Don&#8217;t</strong> stick nails in the electrical outlet.</p>
+
+	<h2>Table</h2>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Fruit</th>
+				<th>Colour</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Apple</td>
+				<td>Green</td>
+			</tr>
+			<tr>
+				<td>Orange</td>
+				<td>Orange</td>
+			</tr>
+			<tr>
+				<td>Banana</td>
+				<td>Yellow</td>
+			</tr>
+			<tr>
+				<td>Peach</td>
+				<td>Peach</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 ```
 */
 
-.prose {
+.prose, // temporary selector: keeping for backwards compatibility
+.from-content-api {
 	@include body();
 
 	h2 {
@@ -195,5 +224,28 @@ Adds typographic styling to a block of text.
 				@include margin(0.5, 0);
 			}
 		}
+	}
+}
+
+.prose table, // temporary selector: keeping for backwards compatibility
+.from-content-api table,
+.table {
+	font-family: $agate-sans;
+	@include meta();
+	@include margin(1, 0);
+	border-top: 2px solid $news-accent;
+
+	td, th {
+		text-align: left;
+		vertical-align: top;
+	}
+
+	th {
+		@include padding(0.25, 1, 1, 0);
+	}
+
+	td {
+		border-top: 1px solid $background;
+		@include padding(0.25, 1, 1, 0);
 	}
 }

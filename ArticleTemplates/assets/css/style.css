@@ -1152,6 +1152,277 @@ Display a comment taken from the discussion API.
 
 /*doc
 ---
+title: From Content API
+name: from-content-api
+category: External
+---
+Adds typographic styling to content taken from the Guardian Content API.
+
+```html_example
+<div class="from-content-api">
+	<h2>Sub-heading</h2>
+	<p>The <code>h2</code> element represents a sub-heading, used for article-level headings.</p>
+
+	<h2>Paragraph</h2>
+	<p>Paragraphs are (or at least should be) wrapped in <code>p</code> tags.
+
+	<h2>Horizontal rule</h2>
+	<p>The <code>hr</code> element represents a paragraph-level thematic break, e.g. a scene change in a story, or a transition to another topic within a section of a reference book as follows:</p>
+	<hr/>
+
+	<h2>Blockquote</h2>
+	<p>The <code>blockquote</code> element represents a section that is being quoted from another source.</p>
+	<blockquote>
+		<p>Many forms of Government have been tried, and will be tried in this world of sin and woe. No one pretends that democracy is perfect or all-wise. Indeed, it has been said that democracy is the worst form of government except all those other forms that have been tried from time to time.</p>
+	</blockquote>
+
+	<h2>Ordered list</h2>
+	<p>The <code>ol</code> element denotes an ordered list. Each item requires a surrounding <code>&lt;li&gt;</code> and <code>&lt;/li&gt;</code> tag, to denote individual items within the list.</p>
+	<ol>
+		<li>This is an ordered list.</li>
+		<li>
+			This is the second item, which contains a sub list
+			<ol>
+				<li>This is the sub list, which is also ordered.</li>
+				<li>It has two items.</li>
+			</ol>
+		</li>
+		<li>This is the final item on this list.</li>
+	</ol>
+
+	<h2>Unordered list</h2>
+	<p>The <code>ul</code> element denotes an unordered list (ie. a list of loose items that don&#8217;t require numbering, or a bulleted list). Again, each item requires a surrounding <code>&lt;li&gt;</code> and <code>&lt;/li&gt;</code> tag, to denote individual items. Here is an example list showing the constituent parts of the British Isles:</p>
+	<ul>
+		<li>
+			United Kingdom of Great Britain and Northern Ireland:
+			<ul>
+				<li>England</li>
+				<li>Scotland</li>
+				<li>Wales</li>
+				<li>Northern Ireland</li>
+			</ul>
+		</li>
+		<li>Republic of Ireland</li>
+		<li>Isle of Man</li>
+		<li>
+			Channel Islands:
+			<ul>
+				<li>Bailiwick of Guernsey</li>
+				<li>Bailiwick of Jersey</li>
+			</ul>
+		</li>
+	</ul>
+
+	<p>Sometimes we may want each list item to contain block elements, typically a paragraph or two.</p>
+	<ul>
+		<li>
+			<p>The British Isles is an archipelago consisting of the two large islands of Great Britain and Ireland, and many smaller surrounding islands.</p>
+		</li>
+		<li>
+			<p>Great Britain is the largest island of the archipelago. Ireland is the second largest island of the archipelago and lies directly to the west of Great Britain.</p>
+		</li>
+	</ul>
+
+	<h2>Definition list</h2>
+	<p>The <code>dl</code> element is for another type of list called a definition list. Instead of list items, the content of a <code>dl</code> consists of <code>dt</code> (definition term) and <code>dd</code> (definition description) pairs.</p>
+	<dl>
+		<dt>This is a term.</dt>
+		<dd>This is the definition of that term, which both live in a <code>dl</code>.</dd>
+		<dt>Here is another term.</dt>
+		<dd>And it gets a definition too, which is this line.</dd>
+		<dt>Here is term that shares a definition with the term below.</dt>
+		<dt>Here is a defined term.</dt>
+		<dd><code>dt</code> terms may stand on their own without an accompanying <code>dd</code>, but in that case they <em>share</em> descriptions with the next available <code>dt</code>. You may not have a <code>dd</code> without a parent <code>dt</code>.</dd>
+	</dl>
+
+	<h2>Links and anchors</h2>
+	<p>The <code>a</code> element is used to hyperlink text, be that to another page, a named fragment on the current page or any other location on the web. Example:</p>
+	<p><a href="/">Go to the home page</a> or <a href="#banner">return to the top of this page</a>.</p>
+
+	<h2>Stressed emphasis</h2>
+	<p>The <code>em</code> element is used to denote text with stressed emphasis, i.e., something you&#8217;d pronounce differently. Where italicizing is required for stylistic differentiation, the <code>i</code> element may be preferable. Example:</p>
+	<p>You simply <em>must</em> try the negitoro maki!</p>
+
+	<h2>Strong importance</h2>
+	<p>The <code>strong</code> element is used to denote text with strong importance. Where bolding is used for stylistic differentiation, the <code>b</code> element may be preferable. Example:</p> 
+	<p><strong>Don&#8217;t</strong> stick nails in the electrical outlet.</p>
+
+	<h2>Table</h2>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Fruit</th>
+				<th>Colour</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Apple</td>
+				<td>Green</td>
+			</tr>
+			<tr>
+				<td>Orange</td>
+				<td>Orange</td>
+			</tr>
+			<tr>
+				<td>Banana</td>
+				<td>Yellow</td>
+			</tr>
+			<tr>
+				<td>Peach</td>
+				<td>Peach</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+```
+*/
+@media all and (max-width: 40.615em) {
+  .prose,
+  .from-content-api {
+    font-size: 1.6rem;
+    line-height: 2.4rem; } }
+@media all and (min-width: 40.625em) {
+  .prose,
+  .from-content-api {
+    font-size: 1.8rem;
+    line-height: 2.6rem; } }
+.prose h2,
+.from-content-api h2 {
+  font-family: "Egyptian Display", Georgia, serif;
+  font-weight: 600;
+  font-size: 1em;
+  margin: 0.75em 0; }
+  .prose h2 + p,
+  .from-content-api h2 + p {
+    margin-top: -12px; }
+  .prose h2 strong, .prose h2 b,
+  .from-content-api h2 strong,
+  .from-content-api h2 b {
+    font-weight: bold; }
+.prose hr,
+.from-content-api hr {
+  border: 0;
+  height: 1px;
+  background: #dcdad5; }
+.prose p a, .prose li a,
+.from-content-api p a,
+.from-content-api li a {
+  background-image: linear-gradient(to bottom, white 50%, rgba(0, 86, 137, 0.67) 50%);
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  background-position: 0 bottom;
+  text-shadow: 4px 0px white, 3px 0px white, 2px 0px white, 1px 0px white, 0px 0px white, -1px 0px white, -2px 0px white, -3px 0px white, -4px 0px white; }
+.prose p a:active, .prose li a:active,
+.from-content-api p a:active,
+.from-content-api li a:active {
+  background-image: linear-gradient(to bottom, white 50%, rgba(75, 198, 223, 0.67) 50%); }
+.prose p,
+.from-content-api p {
+  margin: 12px 0px 12px 0px; }
+.prose ul,
+.prose ol,
+.prose dl,
+.from-content-api ul,
+.from-content-api ol,
+.from-content-api dl {
+  margin: 12px 0px 12px 0px; }
+  .prose ul ul,
+  .prose ul ol,
+  .prose ol ul,
+  .prose ol ol,
+  .prose dl ul,
+  .prose dl ol,
+  .from-content-api ul ul,
+  .from-content-api ul ol,
+  .from-content-api ol ul,
+  .from-content-api ol ol,
+  .from-content-api dl ul,
+  .from-content-api dl ol {
+    margin: 0px 0px 12px 24px; }
+.prose ol,
+.from-content-api ol {
+  counter-reset: li; }
+  .prose ol > li:before,
+  .from-content-api ol > li:before {
+    content: counter(li) ". ";
+    counter-increment: li; }
+.prose dl dt,
+.from-content-api dl dt {
+  font-weight: bold; }
+.prose dl dd,
+.from-content-api dl dd {
+  margin: 0px 0px 12px 24px; }
+.prose blockquote,
+.from-content-api blockquote {
+  color: #666666;
+  font-style: italic;
+  margin: 24px 24px 24px 24px; }
+  .prose blockquote:before,
+  .from-content-api blockquote:before {
+    color: #999999;
+    font-family: "Guardian Icons", Georgia, serif;
+    font-size: 4rem;
+    font-style: normal;
+    line-height: 1;
+    margin-bottom: -0.5rem;
+    display: block; }
+  .prose blockquote.quoted:before,
+  .from-content-api blockquote.quoted:before {
+    content: "\e029";
+    margin-top: -0.75rem; }
+  .prose blockquote.twitter-tweet,
+  .from-content-api blockquote.twitter-tweet {
+    font-family: "Agate Sans", sans-serif;
+    font-size: 1.4rem;
+    line-height: 2rem; }
+    .prose blockquote.twitter-tweet:before,
+    .from-content-api blockquote.twitter-tweet:before {
+      content: "\e06b"; }
+    .prose blockquote.twitter-tweet p,
+    .from-content-api blockquote.twitter-tweet p {
+      color: #666666;
+      font-size: 1.6rem;
+      line-height: 2.2rem;
+      margin: 6px 0px 6px 0px; }
+
+.prose table,
+.from-content-api table,
+.table {
+  font-family: "Agate Sans", sans-serif;
+  margin: 12px 0px 12px 0px;
+  border-top: 2px solid #4bc6df; }
+  @media all and (max-width: 40.615em) {
+    .prose table,
+    .from-content-api table,
+    .table {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) {
+    .prose table,
+    .from-content-api table,
+    .table {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  .prose table td, .prose table th,
+  .from-content-api table td,
+  .from-content-api table th,
+  .table td,
+  .table th {
+    text-align: left;
+    vertical-align: top; }
+  .prose table th,
+  .from-content-api table th,
+  .table th {
+    padding: 3px 12px 12px 0px; }
+  .prose table td,
+  .from-content-api table td,
+  .table td {
+    border-top: 1px solid #f6f6f6;
+    padding: 3px 12px 12px 0px; }
+
+/*doc
+---
 title: Guardian Witness embed
 name: witness
 category: External
@@ -1563,7 +1834,7 @@ Display a player card embed. The markup for these classes comes from the content
   border-top: 2px solid #005689;
   padding: 12px 12px 12px 12px; }
   @media all and (min-width: 56.25em) {
-    .prose .player-card {
+    .article__body .player-card {
       margin: 12px 0px 12px 12px;
       width: 50%;
       float: right; } }
@@ -3377,246 +3648,6 @@ figure.figure-inline {
 .android .module {
   margin: 0px 12px 0px 12px; }
 
-/*doc
----
-title: Prose
-name: prose
-category: Utilities
----
-Adds typographic styling to a block of text.
-
-```html_example
-<div class="prose">
-	<h2>Sub-heading</h2>
-	<p>The <code>h2</code> element represents a sub-heading, used for article-level headings.</p>
-
-	<h2>Paragraph</h2>
-	<p>Paragraphs are (or at least should be) wrapped in <code>p</code> tags.
-
-	<h2>Horizontal rule</h2>
-	<p>The <code>hr</code> element represents a paragraph-level thematic break, e.g. a scene change in a story, or a transition to another topic within a section of a reference book as follows:</p>
-	<hr/>
-
-	<h2>Blockquote</h2>
-	<p>The <code>blockquote</code> element represents a section that is being quoted from another source.</p>
-	<blockquote>
-		<p>Many forms of Government have been tried, and will be tried in this world of sin and woe. No one pretends that democracy is perfect or all-wise. Indeed, it has been said that democracy is the worst form of government except all those other forms that have been tried from time to time.</p>
-	</blockquote>
-
-	<h2>Ordered list</h2>
-	<p>The <code>ol</code> element denotes an ordered list. Each item requires a surrounding <code>&lt;li&gt;</code> and <code>&lt;/li&gt;</code> tag, to denote individual items within the list.</p>
-	<ol>
-		<li>This is an ordered list.</li>
-		<li>
-			This is the second item, which contains a sub list
-			<ol>
-				<li>This is the sub list, which is also ordered.</li>
-				<li>It has two items.</li>
-			</ol>
-		</li>
-		<li>This is the final item on this list.</li>
-	</ol>
-
-	<h2>Unordered list</h2>
-	<p>The <code>ul</code> element denotes an unordered list (ie. a list of loose items that don&#8217;t require numbering, or a bulleted list). Again, each item requires a surrounding <code>&lt;li&gt;</code> and <code>&lt;/li&gt;</code> tag, to denote individual items. Here is an example list showing the constituent parts of the British Isles:</p>
-	<ul>
-		<li>
-			United Kingdom of Great Britain and Northern Ireland:
-			<ul>
-				<li>England</li>
-				<li>Scotland</li>
-				<li>Wales</li>
-				<li>Northern Ireland</li>
-			</ul>
-		</li>
-		<li>Republic of Ireland</li>
-		<li>Isle of Man</li>
-		<li>
-			Channel Islands:
-			<ul>
-				<li>Bailiwick of Guernsey</li>
-				<li>Bailiwick of Jersey</li>
-			</ul>
-		</li>
-	</ul>
-
-	<p>Sometimes we may want each list item to contain block elements, typically a paragraph or two.</p>
-	<ul>
-		<li>
-			<p>The British Isles is an archipelago consisting of the two large islands of Great Britain and Ireland, and many smaller surrounding islands.</p>
-		</li>
-		<li>
-			<p>Great Britain is the largest island of the archipelago. Ireland is the second largest island of the archipelago and lies directly to the west of Great Britain.</p>
-		</li>
-	</ul>
-
-	<h2>Definition list</h2>
-	<p>The <code>dl</code> element is for another type of list called a definition list. Instead of list items, the content of a <code>dl</code> consists of <code>dt</code> (definition term) and <code>dd</code> (definition description) pairs.</p>
-	<dl>
-		<dt>This is a term.</dt>
-		<dd>This is the definition of that term, which both live in a <code>dl</code>.</dd>
-		<dt>Here is another term.</dt>
-		<dd>And it gets a definition too, which is this line.</dd>
-		<dt>Here is term that shares a definition with the term below.</dt>
-		<dt>Here is a defined term.</dt>
-		<dd><code>dt</code> terms may stand on their own without an accompanying <code>dd</code>, but in that case they <em>share</em> descriptions with the next available <code>dt</code>. You may not have a <code>dd</code> without a parent <code>dt</code>.</dd>
-	</dl>
-
-	<h2>Links and anchors</h2>
-	<p>The <code>a</code> element is used to hyperlink text, be that to another page, a named fragment on the current page or any other location on the web. Example:</p>
-	<p><a href="/">Go to the home page</a> or <a href="#banner">return to the top of this page</a>.</p>
-
-	<h2>Stressed emphasis</h2>
-	<p>The <code>em</code> element is used to denote text with stressed emphasis, i.e., something you&#8217;d pronounce differently. Where italicizing is required for stylistic differentiation, the <code>i</code> element may be preferable. Example:</p>
-	<p>You simply <em>must</em> try the negitoro maki!</p>
-
-	<h2>Strong importance</h2>
-	<p>The <code>strong</code> element is used to denote text with strong importance. Where bolding is used for stylistic differentiation, the <code>b</code> element may be preferable. Example:</p> 
-	<p><strong>Don&#8217;t</strong> stick nails in the electrical outlet.</p>
-</div>
-```
-*/
-@media all and (max-width: 40.615em) {
-  .prose {
-    font-size: 1.6rem;
-    line-height: 2.4rem; } }
-@media all and (min-width: 40.625em) {
-  .prose {
-    font-size: 1.8rem;
-    line-height: 2.6rem; } }
-.prose h2 {
-  font-family: "Egyptian Display", Georgia, serif;
-  font-weight: 600;
-  font-size: 1em;
-  margin: 0.75em 0; }
-  .prose h2 + p {
-    margin-top: -12px; }
-  .prose h2 strong, .prose h2 b {
-    font-weight: bold; }
-.prose hr {
-  border: 0;
-  height: 1px;
-  background: #dcdad5; }
-.prose p a, .prose li a {
-  background-image: linear-gradient(to bottom, white 50%, rgba(0, 86, 137, 0.67) 50%);
-  background-repeat: repeat-x;
-  background-size: 2px 2px;
-  background-position: 0 bottom;
-  text-shadow: 4px 0px white, 3px 0px white, 2px 0px white, 1px 0px white, 0px 0px white, -1px 0px white, -2px 0px white, -3px 0px white, -4px 0px white; }
-.prose p a:active, .prose li a:active {
-  background-image: linear-gradient(to bottom, white 50%, rgba(75, 198, 223, 0.67) 50%); }
-.prose p {
-  margin: 12px 0px 12px 0px; }
-.prose ul,
-.prose ol,
-.prose dl {
-  margin: 12px 0px 12px 0px; }
-  .prose ul ul,
-  .prose ul ol,
-  .prose ol ul,
-  .prose ol ol,
-  .prose dl ul,
-  .prose dl ol {
-    margin: 0px 0px 12px 24px; }
-.prose ol {
-  counter-reset: li; }
-  .prose ol > li:before {
-    content: counter(li) ". ";
-    counter-increment: li; }
-.prose dl dt {
-  font-weight: bold; }
-.prose dl dd {
-  margin: 0px 0px 12px 24px; }
-.prose blockquote {
-  color: #666666;
-  font-style: italic;
-  margin: 24px 24px 24px 24px; }
-  .prose blockquote:before {
-    color: #999999;
-    font-family: "Guardian Icons", Georgia, serif;
-    font-size: 4rem;
-    font-style: normal;
-    line-height: 1;
-    margin-bottom: -0.5rem;
-    display: block; }
-  .prose blockquote.quoted:before {
-    content: "\e029";
-    margin-top: -0.75rem; }
-  .prose blockquote.twitter-tweet {
-    font-family: "Agate Sans", sans-serif;
-    font-size: 1.4rem;
-    line-height: 2rem; }
-    .prose blockquote.twitter-tweet:before {
-      content: "\e06b"; }
-    .prose blockquote.twitter-tweet p {
-      color: #666666;
-      font-size: 1.6rem;
-      line-height: 2.2rem;
-      margin: 6px 0px 6px 0px; }
-
-/*doc
----
-title: Table
-name: table
-category: Partials
----
-```html_example
-<table class="table">
-	<thead>
-		<tr>
-			<th>Fruit</th>
-			<th>Colour</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Apple</td>
-			<td>Green</td>
-		</tr>
-		<tr>
-			<td>Orange</td>
-			<td>Orange</td>
-		</tr>
-		<tr>
-			<td>Banana</td>
-			<td>Yellow</td>
-		</tr>
-		<tr>
-			<td>Peach</td>
-			<td>Peach</td>
-		</tr>
-	</tbody>
-</table>
-```
-*/
-.table,
-.prose table {
-  font-family: "Agate Sans", sans-serif;
-  margin: 12px 0px 12px 0px;
-  border-top: 2px solid #4bc6df; }
-  @media all and (max-width: 40.615em) {
-    .table,
-    .prose table {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
-    .table,
-    .prose table {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-  .table td, .table th,
-  .prose table td,
-  .prose table th {
-    text-align: left;
-    vertical-align: top; }
-  .table th,
-  .prose table th {
-    padding: 3px 12px 12px 0px; }
-  .table td,
-  .prose table td {
-    border-top: 1px solid #f6f6f6;
-    padding: 3px 12px 12px 0px; }
-
 .offline .element-video,
 .offline .element-embed,
 .offline .element-map,
@@ -3748,12 +3779,12 @@ category: Partials
   overflow: hidden; }
 
 .bullet,
-.prose ul > li,
+.from-content-api ul > li,
 .article__header ul > li {
   text-indent: 1.111em;
   position: relative; }
   .bullet:before,
-  .prose ul > li:before,
+  .from-content-api ul > li:before,
   .article__header ul > li:before {
     content: "\2022";
     color: #999999;
@@ -3775,21 +3806,21 @@ category: Partials
     .template--support {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
-  .template--support .prose > :first-child,
-  .template--support .prose h2 + p,
-  .template--support .prose h2 + ul,
-  .template--support .prose h3 + p {
+  .template--support .from-content-api > :first-child,
+  .template--support .from-content-api h2 + p,
+  .template--support .from-content-api h2 + ul,
+  .template--support .from-content-api h3 + p {
     margin-top: 0; }
-  .template--support .prose h2 + h3 {
+  .template--support .from-content-api h2 + h3 {
     margin: 9px 0px 0px 0px; }
-  .template--support .prose h2 {
+  .template--support .from-content-api h2 {
     margin-bottom: 0; }
   @media all and (max-width: 40.615em) {
-    .template--support .prose h3 {
+    .template--support .from-content-api h3 {
       font-size: 1.6rem;
       line-height: 2.4rem; } }
   @media all and (min-width: 40.625em) {
-    .template--support .prose h3 {
+    .template--support .from-content-api h3 {
       font-size: 1.8rem;
       line-height: 2.6rem; } }
 
@@ -4137,7 +4168,7 @@ category: Partials
   background-color: #b51800; }
 .template--liveblog.is-live #module-comments .touchpoint--primary:active .touchpoint__button {
   background-color: #cc2b12; }
-.template--liveblog.is-live .prose table,
+.template--liveblog.is-live .from-content-api table,
 .template--liveblog.is-live .table {
   border-top-color: #b51800; }
 .template--liveblog.is-live .discussion__empty p a {
@@ -4780,15 +4811,15 @@ category: Partials
   background-color: #e6711b; }
 .tone--comment .touchpoint--primary:active .touchpoint__button {
   background-color: #f39f33; }
-.tone--comment .prose p a {
+.tone--comment .from-content-api p a {
   background-image: linear-gradient(to bottom, #eeebe8 50%, rgba(230, 113, 27, 0.67) 50%);
   background-repeat: repeat-x;
   background-size: 2px 2px;
   background-position: 0 bottom;
   text-shadow: 4px 0px #eeebe8, 3px 0px #eeebe8, 2px 0px #eeebe8, 1px 0px #eeebe8, 0px 0px #eeebe8, -1px 0px #eeebe8, -2px 0px #eeebe8, -3px 0px #eeebe8, -4px 0px #eeebe8; }
-.tone--comment .prose p a:active {
+.tone--comment .from-content-api p a:active {
   background-image: linear-gradient(to bottom, #eeebe8 50%, rgba(243, 159, 51, 0.67) 50%); }
-.tone--comment .prose table,
+.tone--comment .from-content-api table,
 .tone--comment .table {
   border-top-color: #e6711b; }
 
@@ -4890,15 +4921,15 @@ category: Partials
 .tone--feature1 .standfirst,
 .tone--feature1 .touchpoint--primary:active .touchpoint__button {
   background-color: #e02b7f; }
-.tone--feature1 .prose p a {
+.tone--feature1 .from-content-api p a {
   background-image: linear-gradient(to bottom, white 50%, rgba(149, 28, 85, 0.67) 50%);
   background-repeat: repeat-x;
   background-size: 2px 2px;
   background-position: 0 bottom;
   text-shadow: 4px 0px white, 3px 0px white, 2px 0px white, 1px 0px white, 0px 0px white, -1px 0px white, -2px 0px white, -3px 0px white, -4px 0px white; }
-.tone--feature1 .prose p a:active {
+.tone--feature1 .from-content-api p a:active {
   background-image: linear-gradient(to bottom, white 50%, rgba(224, 43, 127, 0.67) 50%); }
-.tone--feature1 .prose table,
+.tone--feature1 .from-content-api table,
 .tone--feature1 .table,
 .tone--feature1 .article {
   border-top-color: #e02b7f; }
@@ -4914,15 +4945,15 @@ category: Partials
 .tone--feature2 .standfirst,
 .tone--feature2 .touchpoint--primary:active .touchpoint__button {
   background-color: #8006c2; }
-.tone--feature2 .prose p a {
+.tone--feature2 .from-content-api p a {
   background-image: linear-gradient(to bottom, white 50%, rgba(78, 3, 117, 0.67) 50%);
   background-repeat: repeat-x;
   background-size: 2px 2px;
   background-position: 0 bottom;
   text-shadow: 4px 0px white, 3px 0px white, 2px 0px white, 1px 0px white, 0px 0px white, -1px 0px white, -2px 0px white, -3px 0px white, -4px 0px white; }
-.tone--feature2 .prose p a:active {
+.tone--feature2 .from-content-api p a:active {
   background-image: linear-gradient(to bottom, white 50%, rgba(128, 6, 194, 0.67) 50%); }
-.tone--feature2 .prose table,
+.tone--feature2 .from-content-api table,
 .tone--feature2 .table,
 .tone--feature2 .article {
   border-top-color: #8006c2; }
@@ -4938,15 +4969,15 @@ category: Partials
 .tone--feature3 .standfirst,
 .tone--feature3 .touchpoint--primary:active .touchpoint__button {
   background-color: #c900a8; }
-.tone--feature3 .prose p a {
+.tone--feature3 .from-content-api p a {
   background-image: linear-gradient(to bottom, white 50%, rgba(125, 0, 104, 0.67) 50%);
   background-repeat: repeat-x;
   background-size: 2px 2px;
   background-position: 0 bottom;
   text-shadow: 4px 0px white, 3px 0px white, 2px 0px white, 1px 0px white, 0px 0px white, -1px 0px white, -2px 0px white, -3px 0px white, -4px 0px white; }
-.tone--feature3 .prose p a:active {
+.tone--feature3 .from-content-api p a:active {
   background-image: linear-gradient(to bottom, white 50%, rgba(201, 0, 168, 0.67) 50%); }
-.tone--feature3 .prose table,
+.tone--feature3 .from-content-api table,
 .tone--feature3 .table,
 .tone--feature3 .article {
   border-top-color: #c900a8; }
