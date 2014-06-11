@@ -71,13 +71,13 @@
 		color: $comment;
 		&:active {
 			color: $comment-accent-light;
-			.touchpoint__button--primary {
-				background-color: $comment-accent-light;
-			}
 		}
 	}
-	.touchpoint__button--primary {
+	.touchpoint--primary .touchpoint__button {
 		background-color: $comment;
+	}
+	.touchpoint--primary:active .touchpoint__button {
+		background-color: $comment-accent-light;
 	}
 	.prose p {
 		@include text-underline($comment, $comment-bg, $comment-accent-light);

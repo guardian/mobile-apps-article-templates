@@ -37,6 +37,12 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+a {
+  color: #005689;
+  text-decoration: none; }
+  a:active {
+    color: #4bc6df; }
+
 @font-face {
   font-family: "Egyptian Display";
   font-weight: 100;
@@ -396,10 +402,8 @@ Play a piece of audio, i.e. a podcast.
 
 ```html_example
 <div class="audio-player">
-	<a href="#audio.mp3">
-		<div class="audio-player__button touchpoint__button touchpoint__button--primary">
-			<span class="icon touchpoint">&#xe04B;</span>
-		</div>
+	<a class="audio-player__button touchpoint touchpoint--primary" href="#audio.mp3">
+		<span class="touchpoint__button icon">&#xe04b;</span>
 	</a>
 
 	<img class="audio-player__button--loading" src="/ArticleTemplates/assets/img/loading.gif">
@@ -798,6 +802,103 @@ Display the standfirst of an article. Emboldened text is normalised.
       line-height: 3rem; } }
   .standfirst strong {
     font-weight: 400; }
+
+/*doc
+---
+title: Touchpoint
+name: touchpoint
+category: Modules
+---
+Display a call to action. Available in primary and secondary styles, large (default) and small sizes.
+
+<a href="#">Link</a>
+
+Primary
+
+```html_example
+<a class="touchpoint touchpoint--primary" href="#">
+	<span class="touchpoint__label">View more</span>
+	<span class="touchpoint__button icon">&#xe00b;</span>
+</a>
+```
+
+Secondary
+
+```html_example
+<a class="touchpoint touchpoint--secondary" href="#">
+	<span class="touchpoint__label">View more</span>
+	<span class="touchpoint__button icon">&#xe00b;</span>
+</a>
+```
+
+Small
+
+```html_example
+<a class="touchpoint touchpoint--primary touchpoint--small" href="#">
+	<span class="touchpoint__label">View more</span>
+	<span class="touchpoint__button icon">&#xe00b;</span>
+</a>
+```
+
+Secondary and small
+
+```html_example
+<a class="touchpoint touchpoint--secondary touchpoint--small" href="#">
+	<span class="touchpoint__label">View more</span>
+	<span class="touchpoint__button icon">&#xe00b;</span>
+</a>
+```
+*/
+.touchpoint {
+  display: block;
+  background-image: none !important;
+  text-shadow: none !important; }
+
+.touchpoint__label {
+  font-family: "Agate Sans", sans-serif;
+  font-weight: bold;
+  vertical-align: middle;
+  display: inline-block;
+  padding: 0 6px; }
+  @media all and (max-width: 40.615em) {
+    .touchpoint__label {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) {
+    .touchpoint__label {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+
+.touchpoint__button {
+  text-align: center;
+  font-size: 24px;
+  line-height: 44px;
+  vertical-align: middle;
+  border-radius: 100%;
+  display: inline-block;
+  height: 44px;
+  width: 44px; }
+
+.touchpoint--primary .touchpoint__button {
+  color: white;
+  background-color: #005689; }
+.touchpoint--primary:active .touchpoint__button {
+  background-color: #4bc6df; }
+
+.touchpoint--secondary .touchpoint__button {
+  color: #999999;
+  background-color: transparent;
+  border: 1px solid #999999; }
+.touchpoint--secondary:active .touchpoint__button {
+  color: white;
+  background-color: #999999;
+  border: 0; }
+
+.touchpoint--small .touchpoint__button {
+  font-size: 18px;
+  line-height: 28px;
+  height: 28px;
+  width: 28px; }
 
 /*doc
 ---
@@ -2159,8 +2260,8 @@ Headline and video
 		</div>
 		<div class="card__object">
 			<img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
-			<a class="touchpoint" href="#">
-				<span class="touchpoint__button touchpoint__button--primary"><span class="icon">&#xe04B;</span></span>
+			<a class="touchpoint touchpoint--primary" href="#">
+				<span class="touchpoint__button icon">&#xe04B;</span>
 				<span class="touchpoint__label">2:19</span>
 			</a>
 		</div>
@@ -2183,7 +2284,7 @@ Headline and video
     .card.card--media .series:after {
       content: "\a";
       white-space: pre; }
-  .card.card--media .touchpoint__button--primary {
+  .card.card--media .touchpoint--primary .toubchpoint__button {
     background-color: #ffbb00;
     color: #333333; }
   .card.card--media .touchpoint__label {
@@ -3411,115 +3512,6 @@ category: Partials
     border-top: 1px solid #f6f6f6;
     padding: 3px 12px 12px 0px; }
 
-/*doc
----
-title: Touchpoint
-name: touchpoint
-category: Partials
----
-```html_example
-<a class="touchpoint" href="#">
-	<span class="touchpoint__label">View more</span>
-	<span class="touchpoint__button"><span class="icon">&#xe00b;</span></span>
-</a>
-```
-*/
-.touchpoint {
-  display: block;
-  background-image: none !important;
-  text-shadow: none !important; }
-
-.touchpoint__label {
-  font-family: "Agate Sans", sans-serif;
-  font-weight: bold;
-  vertical-align: middle;
-  display: inline-block;
-  padding: 0 6px; }
-  @media all and (max-width: 40.615em) {
-    .touchpoint__label {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
-    .touchpoint__label {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-
-.touchpoint__button {
-  color: white;
-  text-align: center;
-  font-size: 24px;
-  line-height: 44px;
-  vertical-align: middle;
-  border-radius: 100%;
-  display: inline-block;
-  height: 44px;
-  width: 44px; }
-
-/*doc
----
-title: Touchpoint (small)
-name: touchpoint-small
-category: Partials
----
-```html_example
-<a class="touchpoint" href="#">
-	<span class="touchpoint__label">View more</span>
-	<span class="touchpoint__button touchpoint__button--small"><span class="icon">&#xe00b;</span></span>
-</a>
-```
-*/
-.touchpoint__button--small {
-  font-size: 18px;
-  line-height: 28px;
-  height: 28px;
-  width: 28px; }
-
-/*doc
----
-title: Touchpoint (primary)
-name: touchpoint-primary
-category: Partials
----
-```html_example
-<a class="touchpoint" href="#">
-	<span class="touchpoint__label">View more</span>
-	<span class="touchpoint__button touchpoint__button--primary"><span class="icon">&#xe00b;</span></span>
-</a>
-```
-*/
-.touchpoint__button--primary {
-  background-color: #005689; }
-
-/*doc
----
-title: Touchpoint (secondary)
-name: touchpoint-secondary
-category: Partials
----
-```html_example
-<a class="touchpoint" href="#">
-	<span class="touchpoint__label">View more</span>
-	<span class="touchpoint__button touchpoint__button--secondary"><span class="icon">&#xe00b;</span></span>
-</a>
-```
-*/
-.touchpoint__button--secondary {
-  color: #999999;
-  background-color: transparent;
-  border: 1px solid #999999; }
-
-a {
-  color: #005689;
-  text-decoration: none; }
-  a:active {
-    color: #4bc6df; }
-    a:active .touchpoint__button--primary {
-      background-color: #4bc6df; }
-    a:active .touchpoint__button--secondary {
-      color: white;
-      background-color: #999999;
-      border: 0; }
-
 .offline .element-video,
 .offline .element-embed,
 .offline .element-map,
@@ -3606,12 +3598,12 @@ aside {
           align-items: center; } }
       aside.aside-witness .touchpoint > * {
         display: block; }
-      aside.aside-witness .touchpoint .touchpoint__button--primary {
+      aside.aside-witness .touchpoint .touchpoint__button {
         background-color: #3e454c;
         color: #4bc6df;
         margin-right: 10px; }
         @media all and (max-width: 28.115em) {
-          aside.aside-witness .touchpoint .touchpoint__button--primary {
+          aside.aside-witness .touchpoint .touchpoint__button {
             -webkit-flex-shrink: 0;
             flex-shrink: 0;
             min-width: 44px;
@@ -3788,7 +3780,7 @@ category: Partials
   #audio.media .article .standfirst a,
   #audio.media .article .media-meta a {
     color: #ffbb00; }
-  #audio.media .article .touchpoint__button--primary {
+  #audio.media .article .touchpoint--primary .touchpoint__button {
     background-color: #ffbb00;
     color: #333333; }
 #audio.media .article__header .inner-header {
@@ -4030,16 +4022,16 @@ category: Partials
   border-top-color: #cc2b12; }
 #liveblog.is-live a.touchpoint,
 #liveblog.is-live .live-more,
-#liveblog.is-live .article__tags a {
+#liveblog.is-live .tags a {
   color: #b51800; }
   #liveblog.is-live a.touchpoint:active,
   #liveblog.is-live .live-more:active,
-  #liveblog.is-live .article__tags a:active {
+  #liveblog.is-live .tags a:active {
     color: #cc2b12; }
-#liveblog.is-live .touchpoint__button--primary {
+#liveblog.is-live .touchpoint--primary .touchpoint__button {
   background-color: #b51800; }
-  #liveblog.is-live .touchpoint__button--primary:active {
-    background-color: #cc2b12; }
+#liveblog.is-live .touchpoint--primary:active .touchpoint__button {
+  background-color: #cc2b12; }
 #liveblog.is-live .prose table,
 #liveblog.is-live .table {
   border-top-color: #b51800; }
@@ -4679,10 +4671,10 @@ category: Partials
   color: #e6711b; }
   .comment a:active {
     color: #f39f33; }
-    .comment a:active .touchpoint__button--primary {
-      background-color: #f39f33; }
-.comment .touchpoint__button--primary {
+.comment .touchpoint--primary .touchpoint__button {
   background-color: #e6711b; }
+.comment .touchpoint--primary:active .touchpoint__button {
+  background-color: #f39f33; }
 .comment .prose p a {
   background-image: linear-gradient(to bottom, #eeebe8 50%, rgba(230, 113, 27, 0.67) 50%);
   background-repeat: repeat-x;
@@ -4788,10 +4780,10 @@ category: Partials
 .feature1 a:active {
   color: #e02b7f; }
 .feature1 .article__header,
-.feature1 .touchpoint__button--primary {
+.feature1 .touchpoint--primary .touchpoint__button {
   background-color: #951c55; }
 .feature1 .standfirst,
-.feature1 a:active .touchpoint__button--primary {
+.feature1 .touchpoint--primary:active .touchpoint__button {
   background-color: #e02b7f; }
 .feature1 .prose p a {
   background-image: linear-gradient(to bottom, white 50%, rgba(149, 28, 85, 0.67) 50%);
@@ -4812,10 +4804,10 @@ category: Partials
 .feature2 a:active {
   color: #8006c2; }
 .feature2 .article__header,
-.feature2 .touchpoint__button--primary {
+.feature2 .touchpoint--primary .touchpoint__button {
   background-color: #4e0375; }
 .feature2 .standfirst,
-.feature2 a:active .touchpoint__button--primary {
+.feature2 .touchpoint--primary:active .touchpoint__button {
   background-color: #8006c2; }
 .feature2 .prose p a {
   background-image: linear-gradient(to bottom, white 50%, rgba(78, 3, 117, 0.67) 50%);
@@ -4836,10 +4828,10 @@ category: Partials
 .feature3 a:active {
   color: #c900a8; }
 .feature3 .article__header,
-.feature3 .touchpoint__button--primary {
+.feature3 .touchpoint--primary .touchpoint__button {
   background-color: #7d0068; }
 .feature3 .standfirst,
-.feature3 a:active .touchpoint__button--primary {
+.feature3 .touchpoint--primary:active .touchpoint__button {
   background-color: #c900a8; }
 .feature3 .prose p a {
   background-image: linear-gradient(to bottom, white 50%, rgba(125, 0, 104, 0.67) 50%);

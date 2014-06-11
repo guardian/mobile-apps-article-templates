@@ -44,7 +44,7 @@
 		
 		a.touchpoint,
 		.live-more,
-		.article__tags a {
+		.tags a {
 			color: $live;
 			
 			&:active {
@@ -52,12 +52,12 @@
 			}
 		}
 
-		.touchpoint__button--primary {
+		.touchpoint--primary .touchpoint__button {
 			background-color: $live;
-			
-			&:active {
-				background-color: $live-accent;
-			}
+		}
+		
+		.touchpoint--primary:active .touchpoint__button {
+			background-color: $live-accent;
 		}
 
 		.prose table,

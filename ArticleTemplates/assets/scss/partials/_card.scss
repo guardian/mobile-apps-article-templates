@@ -343,8 +343,8 @@ Headline and video
 		</div>
 		<div class="card__object">
 			<img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
-			<a class="touchpoint" href="#">
-				<span class="touchpoint__button touchpoint__button--primary"><span class="icon">&#xe04B;</span></span>
+			<a class="touchpoint touchpoint--primary" href="#">
+				<span class="touchpoint__button icon">&#xe04B;</span>
 				<span class="touchpoint__label">2:19</span>
 			</a>
 		</div>
@@ -373,9 +373,11 @@ Headline and video
 			white-space: pre;
 		}
 	}
-	.touchpoint__button--primary {
-		background-color: $media;
-		color: $media-bg;
+	.touchpoint--primary {
+		.toubchpoint__button {
+			background-color: $media;
+			color: $media-bg;
+		}
 	}
 	.touchpoint__label {
 		color: $media;
