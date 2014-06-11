@@ -91,7 +91,7 @@
 
 		.headline,
 		.article__byline,
-		.article__alerts span.icon,
+		.alerts .icon,
 		.section {
 			color: $white;
 		}
@@ -155,7 +155,7 @@
 		margin: 0;
 		border-bottom: 0;
 
-		.article__alerts {
+		.alerts {
 			@include padding(0.5);
 			position: absolute;
 			left: 0;
@@ -296,12 +296,12 @@
 				max-height: 175px;
 			}
 			.inner-header {
-				.article__alerts {
+				.alerts {
 					display: block;
 				}
 			}
 			.article__meta {
-				.article__alerts {
+				.alerts {
 					display: none;
 				}
 			}
@@ -311,7 +311,7 @@
 	@include mq($from: col2) {
 		.article__header {
 			.inner-header {
-				.article__alerts {
+				.alerts {
 					display: none;
 				}
 			}
@@ -319,7 +319,7 @@
 				max-height: 240px;
 			}
 			.article__meta {
-				.article__alerts {
+				.alerts {
 					display: block;
 				}
 			}
@@ -344,7 +344,7 @@
 			.article__meta {
 				padding-left: cols($base-3, 4, 1);
 
-				.article__alerts {
+				.alerts {
 					width: cols($base-3, 4);
 				}
 			}
@@ -365,7 +365,7 @@
 			.article__meta {
 				padding-left: cols($base-4, 5, 1);
 
-				.article__alerts {
+				.alerts {
 					width: cols($base-4, 5);
 				}
 			}

@@ -352,6 +352,42 @@ Makes a block of text selectable. Useful for portions of text a user may wish to
 
 /*doc
 ---
+title: Alerts
+name: alerts
+category: Modules
+---
+Display an alerts toggle.
+
+```html_example
+<a class="alerts">
+	<span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> Follow contributor</span>
+	<span class="alerts__state--follow"><span class="icon">&#xe049;</span> Following contributor</span>
+</a>
+
+<a class="alerts following">
+	<span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> Follow contributor</span>
+	<span class="alerts__state--follow"><span class="icon">&#xe049;</span> Following contributor</span>
+</a>
+```
+*/
+.alerts {
+  color: #005689;
+  font-family: "Agate Sans", sans-serif;
+  font-weight: bold;
+  display: block; }
+  .alerts .icon {
+    color: #666666; }
+  .alerts .alerts__state--follow {
+    display: none; }
+    .alerts .alerts__state--follow .icon {
+      color: #4bc6df; }
+  .alerts.following .alerts__state--follow {
+    display: block; }
+  .alerts.following .alerts__state--unfollow {
+    display: none; }
+
+/*doc
+---
 title: Audio Player
 name: audio-player
 category: Modules
@@ -1687,42 +1723,6 @@ Display a team line-up including substitutions and bookings.
 
 /*doc
 ---
-title: Alerts
-name: alerts
-category: Partials
----
-Used to toggle alerts on an article.
-
-```html_example
-<a class="article__alerts">
-	<span class="state-unfollow"><span class="icon">&#xe048;</span> Follow contributor</span>
-	<span class="state-follow"><span class="icon">&#xe049;</span> Following contributor</span>
-</a>
-
-<a class="article__alerts following">
-	<span class="state-unfollow"><span class="icon">&#xe048;</span> Follow contributor</span>
-	<span class="state-follow"><span class="icon">&#xe049;</span> Following contributor</span>
-</a>
-```
-*/
-.article__alerts {
-  color: #005689;
-  font-family: "Agate Sans", sans-serif;
-  font-weight: bold;
-  display: block; }
-  .article__alerts span.icon {
-    color: #666666; }
-  .article__alerts .state-follow {
-    display: none; }
-    .article__alerts .state-follow span.icon {
-      color: #4bc6df; }
-  .article__alerts.following .state-follow {
-    display: block; }
-  .article__alerts.following .state-unfollow {
-    display: none; }
-
-/*doc
----
 title: Byline
 name: byline
 category: Partials
@@ -1765,7 +1765,7 @@ Used to display the byline of an article.
       display: none; }
   .article__header .standfirst {
     padding: 6px 12px 18px 12px; }
-  .article__header .article__alerts {
+  .article__header .alerts {
     padding: 0px 12px 12px 12px;
     display: none; }
   .article__header .review-rating {
@@ -2929,29 +2929,29 @@ figure.figure-inline {
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden; }
-  .football__header.is-alerts .article__alerts, .football__header.is-agg .football__header__score__agg {
+  .football__header.is-alerts .alerts, .football__header.is-agg .football__header__score__agg {
     display: block; }
-  .football__header .article__alerts {
+  .football__header .alerts {
     text-align: center;
     font-size: 200%;
     font-weight: normal;
     position: relative;
     z-index: 20; }
     @media all and (max-width: 28.115em) {
-      .football__header .article__alerts {
+      .football__header .alerts {
         display: inline-block;
         float: right;
         padding: 12px 0px 0px 0px;
         width: auto; } }
     @media all and (min-width: 28.125em) {
-      .football__header .article__alerts {
+      .football__header .alerts {
         margin: 0 auto;
         width: 60px;
         position: absolute;
         left: 0;
         right: 0;
         bottom: 0; } }
-    .football__header .article__alerts span {
+    .football__header .alerts span {
       background-color: white; }
   .football__header .football__header__score__agg {
     display: none;
@@ -4064,7 +4064,7 @@ category: Partials
     color: rgba(255, 255, 255, 0.8); }
 #liveblog.is-live .headline,
 #liveblog.is-live .article__byline,
-#liveblog.is-live .article__alerts span.icon,
+#liveblog.is-live .alerts .icon,
 #liveblog.is-live .section {
   color: white; }
 #liveblog.is-live .article__live-summary {
@@ -4118,7 +4118,7 @@ category: Partials
 #liveblog .article__meta {
   margin: 0;
   border-bottom: 0; }
-  #liveblog .article__meta .article__alerts {
+  #liveblog .article__meta .alerts {
     padding: 6px 6px 6px 6px;
     position: absolute;
     left: 0; }
@@ -4221,16 +4221,16 @@ category: Partials
 @media all and (max-width: 40.615em) {
   #liveblog .article__header .live-summary-body {
     max-height: 175px; }
-  #liveblog .article__header .inner-header .article__alerts {
+  #liveblog .article__header .inner-header .alerts {
     display: block; }
-  #liveblog .article__header .article__meta .article__alerts {
+  #liveblog .article__header .article__meta .alerts {
     display: none; } }
 @media all and (min-width: 40.625em) {
-  #liveblog .article__header .inner-header .article__alerts {
+  #liveblog .article__header .inner-header .alerts {
     display: none; }
   #liveblog .article__header .live-summary-body {
     max-height: 240px; }
-  #liveblog .article__header .article__meta .article__alerts {
+  #liveblog .article__header .article__meta .alerts {
     display: block; }
   #liveblog .article__tags {
     padding-left: 0;
@@ -4242,7 +4242,7 @@ category: Partials
     margin-left: 32.39437%; }
   #liveblog .article__header .article__meta {
     padding-left: 33.80282%; }
-    #liveblog .article__header .article__meta .article__alerts {
+    #liveblog .article__header .article__meta .alerts {
       width: 32.39437%; }
   #liveblog .article__tags {
     margin-left: 33.80282%;
@@ -4252,7 +4252,7 @@ category: Partials
     margin-left: 30.52632%; }
   #liveblog .article__header .article__meta {
     padding-left: 31.57895%; }
-    #liveblog .article__header .article__meta .article__alerts {
+    #liveblog .article__header .article__meta .alerts {
       width: 30.52632%; }
   #liveblog .article__tags {
     margin-left: 31.57895%;
@@ -4593,7 +4593,7 @@ category: Partials
   #football-fixtures.android .football-fixtures-header {
     display: none; }
 
-#standard-article .article__alerts {
+#standard-article .alerts {
   display: none; }
 #standard-article .article__body {
   padding: 0px 12px 0px 12px; }
@@ -4650,7 +4650,7 @@ category: Partials
     #standard-article.comment .article__header .standfirst {
       font-size: 1.25em;
       line-height: 1.25em; } }
-#standard-article.comment .article__header .article__alerts {
+#standard-article.comment .article__header .alerts {
   position: absolute;
   bottom: 0;
   display: block; }
@@ -4734,7 +4734,7 @@ category: Partials
   -webkit-order: 6;
   order: 6; }
 #standard-article[class*="feature"] .avatar--author,
-#standard-article[class*="feature"] .article__alerts {
+#standard-article[class*="feature"] .alerts {
   display: none; }
 #standard-article[class*="feature"] .article__comments {
   border-color: rgba(255, 255, 255, 0.5); }

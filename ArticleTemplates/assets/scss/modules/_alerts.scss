@@ -1,0 +1,49 @@
+/*doc
+---
+title: Alerts
+name: alerts
+category: Modules
+---
+Display an alerts toggle.
+
+```html_example
+<a class="alerts">
+	<span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> Follow contributor</span>
+	<span class="alerts__state--follow"><span class="icon">&#xe049;</span> Following contributor</span>
+</a>
+
+<a class="alerts following">
+	<span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> Follow contributor</span>
+	<span class="alerts__state--follow"><span class="icon">&#xe049;</span> Following contributor</span>
+</a>
+```
+*/
+
+.alerts {
+	color: $news;
+	font-family: $agate-sans;
+	font-weight: bold;
+	display: block;
+
+	.icon {
+		color: $standfirst;
+	}
+
+	.alerts__state--follow {
+		display: none;
+
+		.icon {
+			color: $news-accent;
+		}
+	}
+
+	&.following {
+		.alerts__state--follow {
+			display: block;
+		}
+
+		.alerts__state--unfollow {
+			display: none;
+		}
+	}
+}
