@@ -1184,7 +1184,7 @@ title: Player card
 name: player-card
 category: Football
 ---
-Display a plater card embed. The markup for these classes come from the content API, which in turn gets the content from our Football tool. [You can find the templates here](https://github.com/guardian/frontend/tree/master/admin/app/views/football/player/cards).
+Display a player card embed. The markup for these classes comes from the content API, which in turn gets the content from the football admin tool. [You can find the templates here](https://github.com/guardian/frontend/tree/master/admin/app/views/football/player/cards).
 
 ```html_example
 <div class="player-card player-card--football">
@@ -1290,6 +1290,134 @@ Display a plater card embed. The markup for these classes come from the content 
   text-align: right;
   border-top: 1px solid #dcdad5;
   padding-left: 85%; }
+
+/*doc
+---
+title: Table
+name: table-football
+category: Football
+---
+Display a  league table (which may sometimes be an embed). The markup for these classes comes from the content API, which in turn gets the content from the football admin tool. [You can find the templates here](https://github.com/guardian/frontend/blob/master/admin/app/views/football/leagueTables/).
+
+```html_example
+<table class="table table--football">
+	<thead>
+		<tr>
+			<th class="football-stat--postition table-column--sub"><abbr title="Position">Pos</abbr></th>
+			<th class="football-stat--team table-column--main">Team</th>
+			<th class="football-stat--played"><abbr title="Played">P</abbr></th>
+			<th class="football-stat--difference"><abbr title="Goal difference">GD</abbr></th>
+			<th class="football-stat--points"><abbr title="Points">Pts</abbr></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="football-stat--postition table-column--sub">1</td>
+			<td class="football-stat--team table-column--main">Man City</td>
+			<td class="football-stat--played">37</td>
+			<td class="football-stat--difference">63</td>
+			<td class="football-stat--points">83</td>
+		</tr>
+		<tr>
+			<td class="football-stat--postition table-column--sub">2</td>
+			<td class="football-stat--team table-column--main">Liverpool</td>
+			<td class="football-stat--played">37</td>
+			<td class="football-stat--difference">50</td>
+			<td class="football-stat--points">81</td>
+		</tr>
+		<tr>
+			<td class="football-stat--postition table-column--sub">3</td>
+			<td class="football-stat--team table-column--main">Chelsea</td>
+			<td class="football-stat--played">37</td>
+			<td class="football-stat--difference">43</td>
+			<td class="football-stat--points">79</td>
+		</tr>
+	</tbody>
+</table>
+```
+
+Display a fixtures table.
+
+```html_example
+<table class="table table--football">
+	<tbody>
+		<tr class="football-match has-ended">
+			<td class="football-match--status">FT</td>
+			<td class="football-match--home">Costa Rica</td>
+			<td class="football-match--score">1 - 3</td>
+			<td class="football-match--away">Japan</td>
+		</tr>
+ 		<tr class="football-match is-live">
+			<td class="football-match--status">HT</td>
+			<td class="football-match--home">United Arab Emirates</td>
+			<td class="football-match--score">0 - 0</td>
+			<td class="football-match--away">Georgia</td>
+		</tr>
+ 		<tr class="football-match">
+			<td class="football-match--status">19:30</td>
+			<td class="football-match--home">Czech Republic</td>
+			<td class="football-match--score">v</td>
+			<td class="football-match--away">Austria</td>
+		</tr>
+ 		<tr class="football-match">
+			<td class="football-match--status">19:30</td>
+			<td class="football-match--home">Switzerland</td>
+			<td class="football-match--score">v</td>
+			<td class="football-match--away">Peru</td>
+		</tr>
+ 		<tr class="football-match">
+			<td class="football-match--status">20:00</td>
+			<td class="football-match--home">Brazil</td>
+			<td class="football-match--score">v</td>
+			<td class="football-match--away">Panama</td>
+		</tr>
+	</tbody>
+</table>
+```
+*/
+.table--football {
+  width: 100%;
+  table-layout: fixed; }
+  .table--football .football-stat--postition {
+    width: 15%; }
+  .table--football td.football-stat--postition {
+    color: #999999; }
+    .table--football td.football-stat--postition .icon.up {
+      color: #68a948; }
+    .table--football td.football-stat--postition .icon.down {
+      color: #df1f1f; }
+  .table--football .football-stat--team {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 0; }
+  .table--football .football-stat--played,
+  .table--football .football-stat--difference,
+  .table--football .football-stat--points {
+    text-align: right;
+    width: 15%; }
+  .table--football .football-stat--points {
+    font-weight: bold; }
+  .table--football .football-match.has-ended .football-match--status {
+    font-weight: bold; }
+  .table--football .football-match.is-live {
+    font-weight: bold; }
+    .table--football .football-match.is-live .football-match--status {
+      color: #4bc6df; }
+  .table--football .football-match--status {
+    color: #999999; }
+  .table--football .football-match--score {
+    color: #666666;
+    text-align: center;
+    width: 20%; }
+  .table--football .football-match--home,
+  .table--football .football-match--away {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 40%; }
+  .table--football .football-match--home {
+    text-align: right; }
 
 /*doc
 ---
@@ -3283,131 +3411,6 @@ category: Partials
   .prose table td {
     border-top: 1px solid #f6f6f6;
     padding: 3px 12px 12px 0px; }
-
-/*doc
----
-title: Table (football)
-name: table-football
-category: Partials
----
-League Table
-
-```html_example
-<table class="table table--football">
-	<thead>
-		<tr>
-			<th class="football-stat--postition table-column--sub"><abbr title="Position">Pos</abbr></th>
-			<th class="football-stat--team table-column--main">Team</th>
-			<th class="football-stat--played"><abbr title="Played">P</abbr></th>
-			<th class="football-stat--difference"><abbr title="Goal difference">GD</abbr></th>
-			<th class="football-stat--points"><abbr title="Points">Pts</abbr></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="football-stat--postition table-column--sub">1</td>
-			<td class="football-stat--team table-column--main">Man City</td>
-			<td class="football-stat--played">37</td><td class="football-stat--difference">63</td>
-			<td class="football-stat--points">83</td>
-		</tr>
-		<tr>
-			<td class="football-stat--postition table-column--sub">2</td>
-			<td class="football-stat--team table-column--main">Liverpool</td>
-			<td class="football-stat--played">37</td><td class="football-stat--difference">50</td>
-			<td class="football-stat--points">81</td>
-		</tr>
-		<tr>
-			<td class="football-stat--postition table-column--sub">3</td>
-			<td class="football-stat--team table-column--main">Chelsea</td>
-			<td class="football-stat--played">37</td><td class="football-stat--difference">43</td>
-			<td class="football-stat--points">79</td>
-		</tr>
-	</tbody>
-</table>
-```
-
-Fixtures Table
-
-```html_example
-<table class="table table--football">
-	<tbody>
-		<tr class="football-match has-ended">
-			<td class="football-match--status">FT</td>
-			<td class="football-match--home">Costa Rica</td>
-			<td class="football-match--score">1 - 3</td>
-			<td class="football-match--away">Japan</td>
-		</tr>
- 		<tr class="football-match">
-			<td class="football-match--status">18:00</td>
-			<td class="football-match--home">United Arab Emirates</td>
-			<td class="football-match--score">v</td>
-			<td class="football-match--away">Georgia</td>
-		</tr>
- 		<tr class="football-match">
-			<td class="football-match--status">19:30</td>
-			<td class="football-match--home">Czech Republic</td>
-			<td class="football-match--score">v</td>
-			<td class="football-match--away">Austria</td>
-		</tr>
- 		<tr class="football-match">
-			<td class="football-match--status">19:30</td>
-			<td class="football-match--home">Switzerland</td>
-			<td class="football-match--score">v</td>
-			<td class="football-match--away">Peru</td>
-		</tr>
- 		<tr class="football-match">
-			<td class="football-match--status">20:00</td>
-			<td class="football-match--home">Brazil</td>
-			<td class="football-match--score">v</td>
-			<td class="football-match--away">Panama</td>
-		</tr>
-	</tbody>
-</table>
-```
-*/
-.table--football {
-  width: 100%;
-  table-layout: fixed; }
-  .table--football .football-stat--postition {
-    width: 15%; }
-  .table--football td.football-stat--postition {
-    color: #999999; }
-    .table--football td.football-stat--postition .icon.up {
-      color: #68a948; }
-    .table--football td.football-stat--postition .icon.down {
-      color: #df1f1f; }
-  .table--football .football-stat--team {
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding-right: 0; }
-  .table--football .football-stat--played,
-  .table--football .football-stat--difference,
-  .table--football .football-stat--points {
-    text-align: right;
-    width: 15%; }
-  .table--football .football-stat--points {
-    font-weight: bold; }
-  .table--football .football-match.has-ended .football-match--status {
-    font-weight: bold; }
-  .table--football .football-match.is-live {
-    font-weight: bold; }
-    .table--football .football-match.is-live .football-match--status {
-      color: #4bc6df; }
-  .table--football .football-match--status {
-    color: #999999; }
-  .table--football .football-match--score {
-    color: #666666;
-    text-align: center;
-    width: 20%; }
-  .table--football .football-match--home,
-  .table--football .football-match--away {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 40%; }
-  .table--football .football-match--home {
-    text-align: right; }
 
 /*doc
 ---
