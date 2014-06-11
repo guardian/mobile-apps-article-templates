@@ -358,7 +358,7 @@ Makes a block of text selectable. Useful for portions of text a user may wish to
 
 /*doc
 ---
-title: Advert Slot
+title: Advert slot
 name: advert-slot
 category: Modules
 ---
@@ -488,7 +488,7 @@ Display an alerts toggle.
 
 /*doc
 ---
-title: Audio Player
+title: Audio player
 name: audio-player
 category: Modules
 ---
@@ -773,7 +773,7 @@ Navigate between different sections of a page.
 
 /*doc
 ---
-title: Review Rating
+title: Review rating
 name: review-rating
 category: Modules
 ---
@@ -994,7 +994,7 @@ Secondary and small
 
 /*doc
 ---
-title: Bar Chart
+title: Bar chart
 name: bar-chart
 category: Charts
 ---
@@ -1101,7 +1101,7 @@ title: D2 comment embed
 name: d2-comment
 category: External
 ---
-Display a comment taken from the duscussion API.
+Display a comment taken from the discussion API.
 
 ```html_example
 <div class="d2-comment-embedded" itemtype="http://schema.org/Comment">
@@ -1149,6 +1149,69 @@ Display a comment taken from the duscussion API.
 
 .d2-body {
   clear: left; }
+
+/*doc
+---
+title: Guardian Witness embed
+name: witness
+category: External
+---
+Display a Guardian Witness submission.
+
+```html_example
+<figure class="element element-witness element-witness-image" itemtype="http://schema.org/ImageObject" data-media-id="https://witness.theguardian.com/assignment/516fe68ee4b0b434f8243dbf/294536">
+	<div class="element-witness--main">
+		<a href="https://witness.theguardian.com/assignment/516fe68ee4b0b434f8243dbf/294536" itemprop="url">
+			<img src="https://n0tice-static.s3.amazonaws.com/images/reports/microblogs/mediumoriginalaspectdouble/d8c87361658f6be886c652597695db0f.jpg" alt="Craggy Island" itemprop="contentURL">
+		</a>
+		<figcaption>
+			<h3 class="element-witness--title" itemprop="name"><a href="https://witness.theguardian.com/assignment/516fe68ee4b0b434f8243dbf/294536" itemprop="url">Craggy Island</a></h3>
+			<div itemprop="description">
+				<p>Father Teds house. Not on an Island, but in the Burren in Co. Clare.</p>
+				<p>The Burren is 100 sq miles of rocky limestone 'karst' landscape famous for its unusual flora and fauna.</p>
+			</div>
+		</figcaption>
+	</div>
+	<footer class="element-witness--footer">
+		<p class="element-witness--source">Sent via <a class="element-witness--brand" href="https://witness.theguardian.com/" itemprop="provider">GuardianWitness</a></p>
+		<div class="element-witness--metadata">
+			<p class="element-witness--author" itemprop="author" itemtype="http://schema.org/Person">By <a class="element-witness--author-name" href="https://witness.theguardian.com/user/peddyr" itemprop="name">peddyr</a></p>
+			<p class="element-witness--date"><time itemprop="dateCreated" datetime="2013-04-25T21:29:23Z">25 April 2013, 22:29</time></p>
+		</div>
+	</footer>
+</figure>
+```
+*/
+.element-witness {
+  font-family: "Agate Sans", sans-serif; }
+  @media all and (max-width: 40.615em) {
+    .element-witness {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) {
+    .element-witness {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  .element-witness img {
+    max-width: 100%; }
+  .element-witness p {
+    color: #666666;
+    margin: 0; }
+
+.element-witness--title {
+  font-weight: bold; }
+
+.element-witness--footer {
+  color: #999999;
+  padding: 6px 0px 12px 0px; }
+
+.element-witness--author {
+  display: inline; }
+
+.element-witness--date {
+  display: inline; }
+  .element-witness--date:before {
+    content: "\00B7   "; }
 
 /*doc
 ---
@@ -2960,33 +3023,6 @@ Headline and image
     right: 0;
     bottom: 0;
     left: 0; }
-
-.element-witness {
-  font-family: "Agate Sans", sans-serif; }
-  @media all and (max-width: 40.615em) {
-    .element-witness {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
-    .element-witness {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-  .element-witness img {
-    max-width: 100%; }
-  .element-witness p {
-    color: #666666;
-    margin: 0; }
-  .element-witness .element-witness--title {
-    font-weight: bold; }
-  .element-witness .element-witness--footer {
-    color: #999999;
-    padding: 6px 0px 12px 0px; }
-  .element-witness .element-witness--author {
-    display: inline; }
-  .element-witness .element-witness--date {
-    display: inline; }
-    .element-witness .element-witness--date:before {
-      content: "\00B7   "; }
 
 figure img {
   display: block; }
