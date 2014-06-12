@@ -159,8 +159,26 @@ $meta-lead-2: 2.2rem;
 		background-position: 0 bottom;
 		text-shadow: 4px 0px $background, 3px 0px $background, 2px 0px $background, 1px 0px $background, 0px 0px $background, -1px 0px $background, -2px 0px $background, -3px 0px $background, -4px 0px $background;
 	}
-	
+
 	a:active {
 		background-image: linear-gradient(to bottom, $background 50%, fade_out($color-accent, 0.33) 50%);
+	}
+}
+
+// Drop cap
+@mixin dropcap($dropcap-color:"") {
+	&:first-of-type:first-letter {
+		color: $dropcap-color;
+		font-family: $egyptian-display;
+		font-weight: 100;
+		font-style: normal;
+		font-size: 3.3334em;
+		line-height: 1;
+		margin-bottom: -16px;
+		padding-right: 0.1em; // 6px
+		float: left;
+		@include mq($from: col2) {
+			font-size: 5.2222em;
+		}
 	}
 }
