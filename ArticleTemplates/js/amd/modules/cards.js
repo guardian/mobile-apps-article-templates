@@ -14,7 +14,7 @@ define([
 			setupGlobals: function () {
 				// Global functions to handle comments, called by native code
 				window.articleCardsInserter = function (html) {
-					$(html).appendTo(".related-container");
+					$(html).appendTo(".module--related .module__body");
 				};
 				window.applyNativeFunctionCall('articleCardsInserter');
 			}
@@ -24,7 +24,7 @@ define([
 			if (!this.initialised) {
 				this.initialised = true;
 				modules.setupGlobals();
-				// console.info("Comments ready");
+				// console.info("Cards ready");
 			}
 		};
 

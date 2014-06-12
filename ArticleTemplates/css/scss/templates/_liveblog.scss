@@ -187,12 +187,16 @@
 			@include margin(1, 0);
 		}
 
-		figcaption {
+		.article__image-caption {
 			@include padding(0.5, 0, 2, 0);
 			border-bottom: none;
-			
+
 			@include mq($to: col1) {
 				@include padding(0.5, 1, 2, 1);
+			}
+
+			.article__image-caption__icon {
+				display: none;
 			}
 		}
 	}
