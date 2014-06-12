@@ -1227,6 +1227,489 @@ Secondary and small
 
 /*doc
 ---
+title: Blog post
+name: block--blog
+category: Blocks
+---
+Display a post that forms part of a liveblog.
+
+```html_example
+<div class="block blog">
+	<p class="block-time" title="14:40">14:40</p>
+	<div class="block-elements from-content-api resizable selectable">
+		<p>Uber is going to provide work for lawyers. Here's what Fiona Scolding, barrister at Hardwicke chambers, has to say.</p>
+		<blockquote class="quoted">
+			<p>Uber seeks to argue that their services are not metered. The LTDA believe that they are. Both sides are seeking the view of the court but the court may indicate that this is a case of technology outpacing regulations.</p>
+		</blockquote>
+	</div>
+</div>
+```
+*/
+.block {
+  border-top: 1px solid #999999;
+  border-bottom: 2px solid #dcdad5;
+  background-color: white;
+  overflow: hidden;
+  padding: 12px 0px 12px 0px;
+  margin: 12px 0px 12px 0px; }
+  @media all and (max-width: 28.115em) {
+    .block {
+      margin: 4.34783%;
+      padding: 2.17391%; } }
+  .block .block-time {
+    color: #666666;
+    font-family: "Agate Sans", sans-serif;
+    padding: 0px 12px 0px 12px; }
+    @media all and (min-width: 40.625em) {
+      .block .block-time {
+        float: left;
+        min-height: 1px; } }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      .block .block-time {
+        width: 32.39437%; } }
+    @media all and (min-width: 56.25em) {
+      .block .block-time {
+        width: 30.52632%; } }
+  .block .block-elements {
+    padding: 0px 12px 0px 12px; }
+    @media all and (min-width: 40.625em) {
+      .block .block-elements {
+        float: left; }
+        .block .block-elements .quoted,
+        .block .block-elements .twitter-tweet {
+          position: relative; }
+          .block .block-elements .quoted:before,
+          .block .block-elements .twitter-tweet:before {
+            position: absolute;
+            left: -5rem; } }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      .block .block-elements {
+        width: 67.60563%; } }
+    @media all and (min-width: 56.25em) {
+      .block .block-elements {
+        width: 69.47368%; } }
+    .block .block-elements > *:first-child,
+    .block .block-elements blockquote:first-of-type {
+      padding-top: 0;
+      margin-top: 0; }
+    @media all and (min-width: 40.625em) {
+      .block .block-elements figure {
+        width: 100%; } }
+    .block .block-elements figure figcaption {
+      padding: 6px 0px 12px 0px; }
+    .block .block-elements figure.figure-inline {
+      float: none;
+      clear: both; }
+    .block .block-elements blockquote {
+      margin: 24px 0px 24px 0px; }
+    .block .block-elements .block-updated {
+      margin: 0;
+      clear: left; }
+    .block .block-elements .live-summary-more {
+      display: none; }
+  .block.key-event {
+    border-top: 2px solid #cc2b12; }
+    .block.key-event h2 {
+      color: #b51800; }
+  .block.summary {
+    background-color: transparent;
+    border: 1px dotted #dcdad5; }
+    .block.summary .block-time {
+      font-weight: bold; }
+    .block.summary .live-summary-more {
+      font-family: "Agate Sans", sans-serif;
+      font-weight: bold;
+      width: 100%; }
+
+.android .block {
+  margin: 12px 12px 12px 12px; }
+
+/*doc
+---
+title: Discussion
+name: block--discussion
+category: Blocks
+---
+Display a discussion thread.
+
+```html_example
+<div class="discussion__thread discussion__thread--checked">
+	<div id="36832610" class="discussion visible">
+		<div class="discussion__container">
+			<div class="discussion__header">
+				<span class="avatar avatar--user">
+					<img class="avatar__img" src="http://static.guim.co.uk/sys-images/Guardian/Pix/site_furniture/2010/09/01/no-user-image.gif">
+				</span>
+				<span class="discussion__username">beaupuss</span>
+				<span class="discussion__responseto"><span class="icon">&#xe061;</span> </span>
+				<span class="discussion__role"></span>
+				<span class="discussion__timestamp meta">yesterday</span>
+			</div>
+
+			<div class="discussion__body prose resizable selectable">
+				<p>Tie up the streets around Trafalgar Square? Will anyone notice the difference?</p>
+			</div>
+
+			<div class="discussion__options">
+				<a class="discussion__reply touchpoint touchpoint--primary touchpoint--small" href="x-gu://leavereply/36832610">
+					<span class="touchpoint__button icon"></span>
+					<span class="touchpoint__label">Reply</span>
+				</a>
+				<a class="discussion__report touchpoint" href="x-gu://reportabuse/36832610">
+					<span class="touchpoint__label">Report</span>
+				</a>
+			</div>
+
+			<a class="discussion__recommend touchpoint touchpoint--secondary touchpoint--small" href="x-gu://recommendcomment/36832610">
+				<span class="touchpoint__button icon"></span>
+				<span class="touchpoint__label discussion__recommend__count">24</span>
+			</a>
+		</div>
+	</div>
+
+	<div id="36834532" class="discussion is-response visible">
+		<div class="discussion__container">
+			<div class="discussion__header">
+				<span class="avatar avatar--user">
+					<img class="avatar__img" src="http://static.guim.co.uk/sys-images/Guardian/Pix/site_furniture/2010/09/01/no-user-image.gif">
+				</span>
+				<span class="discussion__username">LynW</span>
+				<span class="discussion__responseto"><span class="icon">&#xe061;</span> beaupuss</span>
+				<span class="discussion__role"></span>
+				<span class="discussion__timestamp meta">yesterday</span>
+			</div>
+
+			<div class="discussion__body prose resizable selectable">
+				<p>I work in an office just across the river. We're certainly noticing the difference. Snarled streets. And circling, deafening, news helicopters... which seems like overkill, frankly.</p>
+			</div>
+		
+			<div class="discussion__options">
+				<a class="discussion__reply touchpoint touchpoint--primary touchpoint--small" href="x-gu://leavereply/36834532">
+					<span class="touchpoint__button icon"></span>
+					<span class="touchpoint__label">Reply</span>
+				</a>
+				<a class="discussion__report touchpoint" href="x-gu://reportabuse/36834532">
+					<span class="touchpoint__label">Report</span>
+				</a>
+			</div>
+
+			<a class="discussion__recommend touchpoint touchpoint--secondary touchpoint--small" href="x-gu://recommendcomment/36834532">
+				<span class="touchpoint__button icon"></span>
+				<span class="touchpoint__label discussion__recommend__count">12</span>
+			</a>
+		</div>
+	</div>
+</div>
+```
+*/
+.discussion {
+  font-family: "Agate Sans", sans-serif;
+  background-color: white;
+  border-top: 1px solid #999999;
+  margin: 12px 0px 0px 0px;
+  padding: 12px 12px 12px 12px;
+  overflow: hidden;
+  -webkit-transition: min-height 300ms ease-in-out;
+  transition: min-height 300ms ease-in-out; }
+  @media all and (max-width: 40.615em) {
+    .discussion {
+      font-size: 1.6rem;
+      line-height: 2.4rem; } }
+  @media all and (min-width: 40.625em) {
+    .discussion {
+      font-size: 1.8rem;
+      line-height: 2.6rem; } }
+  @media all and (max-width: 28.115em) {
+    .discussion {
+      display: block; } }
+  @media all and (min-width: 40.625em) {
+    .discussion {
+      padding-top: 0; } }
+  .discussion .discussion__container {
+    min-height: 64px;
+    position: relative; }
+  .discussion .discussion__header {
+    padding: 3px 0px 9px 0px;
+    overflow: auto;
+    word-break: break-all;
+    word-wrap: break-word; }
+    @media all and (max-width: 40.615em) {
+      .discussion .discussion__header {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.625em) {
+      .discussion .discussion__header {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      .discussion .discussion__header {
+        width: 32.39437%;
+        float: left; } }
+    @media all and (min-width: 56.25em) {
+      .discussion .discussion__header {
+        width: 30.52632%;
+        float: left; } }
+  .discussion .discussion__body {
+    word-break: break-word;
+    word-wrap: break-word;
+    margin: 0px 0px 12px 0px; }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      .discussion .discussion__body {
+        margin-right: 7.04225%;
+        margin-left: 32.39437%; } }
+    @media all and (min-width: 56.25em) {
+      .discussion .discussion__body {
+        margin-right: 5.26316%;
+        margin-left: 30.52632%; } }
+    .discussion .discussion__body blockquote:first-child {
+      margin: 12px 24px 12px 24px; }
+    .discussion .discussion__body br {
+      display: none; }
+    .discussion .discussion__body p:last-child {
+      margin-bottom: 0px; }
+  .discussion .avatar--user {
+    margin-right: 8px;
+    float: left; }
+  .discussion .discussion__role,
+  .discussion .discussion__username {
+    display: block; }
+    @media all and (max-width: 40.615em) {
+      .discussion .discussion__role,
+      .discussion .discussion__username {
+        display: inline; } }
+  .discussion .discussion__username {
+    color: #333333;
+    font-weight: bold;
+    white-space: nowrap; }
+  .discussion .discussion__responseto {
+    font-weight: bold;
+    display: none; }
+  .discussion .discussion__timestamp {
+    display: block;
+    white-space: nowrap; }
+  .discussion .discussion__recommend {
+    text-align: center;
+    width: auto;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0; }
+    @media all and (max-width: 40.615em) {
+      .discussion .discussion__recommend {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.625em) {
+      .discussion .discussion__recommend {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
+    .discussion .discussion__recommend .touchpoint__button {
+      background-color: transparent;
+      font-size: 14px; }
+      @media all and (min-width: 40.625em) {
+        .discussion .discussion__recommend .touchpoint__button {
+          margin: 0 auto;
+          display: block; } }
+    .discussion .discussion__recommend:active .touchpoint__button {
+      color: white;
+      background-color: #dcdad5; }
+    .discussion .discussion__recommend.increase .touchpoint__button {
+      color: white;
+      background-color: #4bc6df;
+      border-color: transparent; }
+    .discussion .discussion__recommend .touchpoint__label {
+      color: #999999;
+      font-weight: normal; }
+      @media all and (min-width: 40.625em) {
+        .discussion .discussion__recommend .touchpoint__label {
+          margin-top: 1px;
+          display: block;
+          padding: 0; } }
+  .discussion .discussion__options {
+    background-color: white;
+    padding: 9px 0px 9px 0px;
+    overflow: hidden;
+    display: none; }
+    @media all and (max-width: 40.615em) {
+      .discussion .discussion__options {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.625em) {
+      .discussion .discussion__options {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      .discussion .discussion__options {
+        margin-left: 32.39437%; } }
+    @media all and (min-width: 56.25em) {
+      .discussion .discussion__options {
+        margin-left: 30.52632%; } }
+    .discussion .discussion__options .discussion__reply {
+      font-weight: bold;
+      float: left; }
+    .discussion .discussion__options .discussion__report {
+      float: right;
+      margin-top: 3px; }
+      .discussion .discussion__options .discussion__report .touchpoint__label {
+        font-weight: normal; }
+  .discussion .discussion__view-more {
+    margin: 6px 0px 0px 0px;
+    padding: 9px 0px 12px 0px;
+    font-weight: bold;
+    color: #005689;
+    border-top: 1px dotted #dcdad5; }
+    @media all and (max-width: 40.615em) {
+      .discussion .discussion__view-more {
+        margin-left: 52px; } }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      .discussion .discussion__view-more {
+        margin-left: 32.39437%; } }
+    @media all and (min-width: 56.25em) {
+      .discussion .discussion__view-more {
+        margin-left: 30.52632%; } }
+    .discussion .discussion__view-more .icon {
+      font-size: 80%; }
+  .discussion.is-response {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0; }
+    .discussion.is-response .discussion__container {
+      padding: 0px 0px 36px 0px; }
+    .discussion.is-response .discussion__header {
+      border-top: #dcdad5 1px dotted;
+      padding-left: 0;
+      width: auto;
+      float: none;
+      position: static;
+      padding: 9px 0px 6px 0px; }
+      @media all and (max-width: 40.615em) {
+        .discussion.is-response .discussion__header {
+          margin-left: 52px;
+          padding-right: 64px; } }
+      @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+        .discussion.is-response .discussion__header {
+          margin-left: 32.39437%; } }
+      @media all and (min-width: 56.25em) {
+        .discussion.is-response .discussion__header {
+          margin-left: 30.52632%; } }
+    .discussion.is-response .discussion__body {
+      color: #666666; }
+      @media all and (max-width: 40.615em) {
+        .discussion.is-response .discussion__body {
+          margin-left: 52px; } }
+    .discussion.is-response .discussion__avatar {
+      display: none; }
+    .discussion.is-response .discussion__username {
+      display: inline-block; }
+    .discussion.is-response .discussion__timestamp {
+      margin: 0px 0px 12px 0px;
+      position: absolute;
+      bottom: 0; }
+    .discussion.is-response .discussion__responseto {
+      display: inline-block;
+      white-space: nowrap;
+      color: #666666; }
+      .discussion.is-response .discussion__responseto .icon {
+        display: inline;
+        color: #999999; }
+    .discussion.is-response .discussion__recommend {
+      margin: 9px 0px 0px 0px; }
+    .discussion.is-response .discussion__options {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0; }
+      @media all and (max-width: 40.615em) {
+        .discussion.is-response .discussion__options {
+          margin-left: 52px; } }
+      @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+        .discussion.is-response .discussion__options {
+          margin-left: 32.39437%; } }
+      @media all and (min-width: 56.25em) {
+        .discussion.is-response .discussion__options {
+          margin-left: 30.52632%; } }
+  .discussion.is-response-hidden {
+    display: none; }
+  .discussion.blocked {
+    color: #999999;
+    padding: 12px 12px 12px 12px; }
+    .discussion.blocked .discussion__header {
+      opacity: 0.5; }
+    .discussion.blocked .discussion__recommend {
+      display: none; }
+
+.discussion--open .animated {
+  display: block; }
+
+.discussion__thread {
+  border-bottom: 2px solid #dcdad5; }
+  @media all and (max-width: 28.115em) {
+    .discussion__thread {
+      margin: 12px 12px 12px 12px; } }
+  .discussion__thread .discussion:nth-of-type(n+5) {
+    display: none; }
+  .discussion__thread.discussion__thread--orphan .discussion {
+    display: block; }
+
+.discussion__thread.expand .discussion {
+  display: block; }
+
+.discussion__empty,
+.discussion__failed {
+  display: none;
+  color: #666666;
+  border-top: 1px solid #333333; }
+  @media all and (max-width: 40.615em) {
+    .discussion__empty,
+    .discussion__failed {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) {
+    .discussion__empty,
+    .discussion__failed {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+
+.discussion__loading {
+  text-align: center;
+  padding: 9px 9px 9px 9px; }
+  .discussion__loading img {
+    width: 44px;
+    height: 44px; }
+
+.comments-0 .discussion__empty {
+  display: block; }
+
+.comments-0 .container__action--sort a,
+.comments-1 .container__action--sort a,
+.comments-has-failed .container__action--sort a {
+  color: #666666; }
+.comments-0 .container__action--view-more,
+.comments-1 .container__action--view-more,
+.comments-has-failed .container__action--view-more {
+  display: none; }
+
+.container__action .comments-closed-label {
+  display: none;
+  color: #666666;
+  text-align: right; }
+
+.comments--closed .container__action .comments-closed-label {
+  display: block !important; }
+.comments--closed .container__action .touchpoint__button, .comments--closed .container__action a {
+  display: none !important; }
+
+.comments-has-failed .discussion__failed {
+  display: block; }
+.comments-has-failed .discussion__view-more,
+.comments-has-failed .discussion__empty {
+  display: none; }
+
+#discussion.android {
+  padding: 0px 12px 0px 12px;
+  box-sizing: border-box; }
+
+/*doc
+---
 title: Card (standard article)
 name: card
 category: Containers
@@ -3215,391 +3698,6 @@ Display a Guardian Witness submission.
     .article__header.cutout .inner-header {
       min-height: 320px;
       background-size: contain; } }
-
-.block {
-  border-top: 1px solid #999999;
-  border-bottom: 2px solid #dcdad5;
-  background-color: white;
-  overflow: hidden;
-  padding: 12px 0px 12px 0px;
-  margin: 12px 0px 12px 0px; }
-  @media all and (max-width: 28.115em) {
-    .block {
-      margin: 4.34783%;
-      padding: 2.17391%; } }
-  .block .block-time {
-    color: #666666;
-    font-family: "Agate Sans", sans-serif;
-    padding: 0px 12px 0px 12px; }
-    @media all and (min-width: 40.625em) {
-      .block .block-time {
-        float: left;
-        min-height: 1px; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      .block .block-time {
-        width: 32.39437%; } }
-    @media all and (min-width: 56.25em) {
-      .block .block-time {
-        width: 30.52632%; } }
-  .block .block-elements {
-    padding: 0px 12px 0px 12px; }
-    @media all and (min-width: 40.625em) {
-      .block .block-elements {
-        float: left; }
-        .block .block-elements .quoted,
-        .block .block-elements .twitter-tweet {
-          position: relative; }
-          .block .block-elements .quoted:before,
-          .block .block-elements .twitter-tweet:before {
-            position: absolute;
-            left: -5rem; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      .block .block-elements {
-        width: 67.60563%; } }
-    @media all and (min-width: 56.25em) {
-      .block .block-elements {
-        width: 69.47368%; } }
-    .block .block-elements > *:first-child,
-    .block .block-elements blockquote:first-of-type {
-      padding-top: 0;
-      margin-top: 0; }
-    @media all and (min-width: 40.625em) {
-      .block .block-elements figure {
-        width: 100%; } }
-    .block .block-elements figure figcaption {
-      padding: 6px 0px 12px 0px; }
-    .block .block-elements figure.figure-inline {
-      float: none;
-      clear: both; }
-    .block .block-elements blockquote {
-      margin: 24px 0px 24px 0px; }
-    .block .block-elements .block-updated {
-      margin: 0;
-      clear: left; }
-    .block .block-elements .live-summary-more {
-      display: none; }
-  .block.key-event {
-    border-top: 2px solid #cc2b12; }
-    .block.key-event h2 {
-      color: #b51800; }
-  .block.summary {
-    background-color: transparent;
-    border: 1px dotted #dcdad5; }
-    .block.summary .block-time {
-      font-weight: bold; }
-    .block.summary .live-summary-more {
-      font-family: "Agate Sans", sans-serif;
-      font-weight: bold;
-      width: 100%; }
-
-.android .block {
-  margin: 12px 12px 12px 12px; }
-
-.discussion {
-  font-family: "Agate Sans", sans-serif;
-  background-color: white;
-  border-top: 1px solid #999999;
-  margin: 12px 0px 0px 0px;
-  padding: 12px 12px 12px 12px;
-  overflow: hidden;
-  -webkit-transition: min-height 300ms ease-in-out;
-  transition: min-height 300ms ease-in-out; }
-  @media all and (max-width: 40.615em) {
-    .discussion {
-      font-size: 1.6rem;
-      line-height: 2.4rem; } }
-  @media all and (min-width: 40.625em) {
-    .discussion {
-      font-size: 1.8rem;
-      line-height: 2.6rem; } }
-  @media all and (max-width: 28.115em) {
-    .discussion {
-      display: block; } }
-  @media all and (min-width: 40.625em) {
-    .discussion {
-      padding-top: 0; } }
-  .discussion .discussion__container {
-    min-height: 64px;
-    position: relative; }
-  .discussion .discussion__header {
-    padding: 3px 0px 9px 0px;
-    overflow: auto;
-    word-break: break-all;
-    word-wrap: break-word; }
-    @media all and (max-width: 40.615em) {
-      .discussion .discussion__header {
-        font-size: 1.4rem;
-        line-height: 2rem; } }
-    @media all and (min-width: 40.625em) {
-      .discussion .discussion__header {
-        font-size: 1.6rem;
-        line-height: 2.2rem; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      .discussion .discussion__header {
-        width: 32.39437%;
-        float: left; } }
-    @media all and (min-width: 56.25em) {
-      .discussion .discussion__header {
-        width: 30.52632%;
-        float: left; } }
-  .discussion .discussion__body {
-    word-break: break-word;
-    word-wrap: break-word;
-    margin: 0px 0px 12px 0px; }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      .discussion .discussion__body {
-        margin-right: 7.04225%;
-        margin-left: 32.39437%; } }
-    @media all and (min-width: 56.25em) {
-      .discussion .discussion__body {
-        margin-right: 5.26316%;
-        margin-left: 30.52632%; } }
-    .discussion .discussion__body blockquote:first-child {
-      margin: 12px 24px 12px 24px; }
-    .discussion .discussion__body br {
-      display: none; }
-    .discussion .discussion__body p:last-child {
-      margin-bottom: 0px; }
-  .discussion .avatar--user {
-    margin-right: 8px;
-    float: left; }
-  .discussion .discussion__role,
-  .discussion .discussion__username {
-    display: block; }
-    @media all and (max-width: 40.615em) {
-      .discussion .discussion__role,
-      .discussion .discussion__username {
-        display: inline; } }
-  .discussion .discussion__username {
-    color: #333333;
-    font-weight: bold;
-    white-space: nowrap; }
-  .discussion .discussion__responseto {
-    font-weight: bold;
-    display: none; }
-  .discussion .discussion__timestamp {
-    display: block;
-    white-space: nowrap; }
-  .discussion .discussion__recommend {
-    text-align: center;
-    width: auto;
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0; }
-    @media all and (max-width: 40.615em) {
-      .discussion .discussion__recommend {
-        font-size: 1.4rem;
-        line-height: 2rem; } }
-    @media all and (min-width: 40.625em) {
-      .discussion .discussion__recommend {
-        font-size: 1.6rem;
-        line-height: 2.2rem; } }
-    .discussion .discussion__recommend .touchpoint__button {
-      background-color: transparent;
-      font-size: 14px; }
-      @media all and (min-width: 40.625em) {
-        .discussion .discussion__recommend .touchpoint__button {
-          margin: 0 auto;
-          display: block; } }
-    .discussion .discussion__recommend:active .touchpoint__button {
-      color: white;
-      background-color: #dcdad5; }
-    .discussion .discussion__recommend.increase .touchpoint__button {
-      color: white;
-      background-color: #4bc6df;
-      border-color: transparent; }
-    .discussion .discussion__recommend .touchpoint__label {
-      color: #999999;
-      font-weight: normal; }
-      @media all and (min-width: 40.625em) {
-        .discussion .discussion__recommend .touchpoint__label {
-          margin-top: 1px;
-          display: block;
-          padding: 0; } }
-  .discussion .discussion__options {
-    background-color: white;
-    padding: 9px 0px 9px 0px;
-    overflow: hidden;
-    display: none; }
-    @media all and (max-width: 40.615em) {
-      .discussion .discussion__options {
-        font-size: 1.4rem;
-        line-height: 2rem; } }
-    @media all and (min-width: 40.625em) {
-      .discussion .discussion__options {
-        font-size: 1.6rem;
-        line-height: 2.2rem; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      .discussion .discussion__options {
-        margin-left: 32.39437%; } }
-    @media all and (min-width: 56.25em) {
-      .discussion .discussion__options {
-        margin-left: 30.52632%; } }
-    .discussion .discussion__options .discussion__reply {
-      font-weight: bold;
-      float: left; }
-    .discussion .discussion__options .discussion__report {
-      float: right;
-      margin-top: 3px; }
-      .discussion .discussion__options .discussion__report .touchpoint__label {
-        font-weight: normal; }
-  .discussion .discussion__view-more {
-    margin: 6px 0px 0px 0px;
-    padding: 9px 0px 12px 0px;
-    font-weight: bold;
-    color: #005689;
-    border-top: 1px dotted #dcdad5; }
-    @media all and (max-width: 40.615em) {
-      .discussion .discussion__view-more {
-        margin-left: 52px; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      .discussion .discussion__view-more {
-        margin-left: 32.39437%; } }
-    @media all and (min-width: 56.25em) {
-      .discussion .discussion__view-more {
-        margin-left: 30.52632%; } }
-    .discussion .discussion__view-more .icon {
-      font-size: 80%; }
-  .discussion.is-response {
-    border-top: none;
-    padding-top: 0;
-    margin-top: 0; }
-    .discussion.is-response .discussion__container {
-      padding: 0px 0px 36px 0px; }
-    .discussion.is-response .discussion__header {
-      border-top: #dcdad5 1px dotted;
-      padding-left: 0;
-      width: auto;
-      float: none;
-      position: static;
-      padding: 9px 0px 6px 0px; }
-      @media all and (max-width: 40.615em) {
-        .discussion.is-response .discussion__header {
-          margin-left: 52px;
-          padding-right: 64px; } }
-      @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-        .discussion.is-response .discussion__header {
-          margin-left: 32.39437%; } }
-      @media all and (min-width: 56.25em) {
-        .discussion.is-response .discussion__header {
-          margin-left: 30.52632%; } }
-    .discussion.is-response .discussion__body {
-      color: #666666; }
-      @media all and (max-width: 40.615em) {
-        .discussion.is-response .discussion__body {
-          margin-left: 52px; } }
-    .discussion.is-response .discussion__avatar {
-      display: none; }
-    .discussion.is-response .discussion__username {
-      display: inline-block; }
-    .discussion.is-response .discussion__timestamp {
-      margin: 0px 0px 12px 0px;
-      position: absolute;
-      bottom: 0; }
-    .discussion.is-response .discussion__responseto {
-      display: inline-block;
-      white-space: nowrap;
-      color: #666666; }
-      .discussion.is-response .discussion__responseto .icon {
-        display: inline;
-        color: #999999; }
-    .discussion.is-response .discussion__recommend {
-      margin: 9px 0px 0px 0px; }
-    .discussion.is-response .discussion__options {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      left: 0; }
-      @media all and (max-width: 40.615em) {
-        .discussion.is-response .discussion__options {
-          margin-left: 52px; } }
-      @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-        .discussion.is-response .discussion__options {
-          margin-left: 32.39437%; } }
-      @media all and (min-width: 56.25em) {
-        .discussion.is-response .discussion__options {
-          margin-left: 30.52632%; } }
-  .discussion.is-response-hidden {
-    display: none; }
-  .discussion.blocked {
-    color: #999999;
-    padding: 12px 12px 12px 12px; }
-    .discussion.blocked .discussion__header {
-      opacity: 0.5; }
-    .discussion.blocked .discussion__recommend {
-      display: none; }
-
-.discussion--open .animated {
-  display: block; }
-
-.discussion__thread {
-  border-bottom: 2px solid #dcdad5; }
-  @media all and (max-width: 28.115em) {
-    .discussion__thread {
-      margin: 12px 12px 12px 12px; } }
-  .discussion__thread .discussion:nth-of-type(n+5) {
-    display: none; }
-  .discussion__thread.discussion__thread--orphan .discussion {
-    display: block; }
-
-.discussion__thread.expand .discussion {
-  display: block; }
-
-.discussion__empty,
-.discussion__failed {
-  display: none;
-  color: #666666;
-  border-top: 1px solid #333333; }
-  @media all and (max-width: 40.615em) {
-    .discussion__empty,
-    .discussion__failed {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
-    .discussion__empty,
-    .discussion__failed {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-
-.discussion__loading {
-  text-align: center;
-  padding: 9px 9px 9px 9px; }
-  .discussion__loading img {
-    width: 44px;
-    height: 44px; }
-
-.comments-0 .discussion__empty {
-  display: block; }
-
-.comments-0 .container__action--sort a,
-.comments-1 .container__action--sort a,
-.comments-has-failed .container__action--sort a {
-  color: #666666; }
-.comments-0 .container__action--view-more,
-.comments-1 .container__action--view-more,
-.comments-has-failed .container__action--view-more {
-  display: none; }
-
-.container__action .comments-closed-label {
-  display: none;
-  color: #666666;
-  text-align: right; }
-
-.comments--closed .container__action .comments-closed-label {
-  display: block !important; }
-.comments--closed .container__action .touchpoint__button, .comments--closed .container__action a {
-  display: none !important; }
-
-.comments-has-failed .discussion__failed {
-  display: block; }
-.comments-has-failed .discussion__view-more,
-.comments-has-failed .discussion__empty {
-  display: none; }
-
-#discussion.android {
-  padding: 0px 12px 0px 12px;
-  box-sizing: border-box; }
 
 figure img {
   display: block; }

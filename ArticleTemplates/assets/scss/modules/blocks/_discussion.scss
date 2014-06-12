@@ -1,3 +1,82 @@
+/*doc
+---
+title: Discussion
+name: block--discussion
+category: Blocks
+---
+Display a discussion thread.
+
+```html_example
+<div class="discussion__thread discussion__thread--checked">
+	<div id="36832610" class="discussion visible">
+		<div class="discussion__container">
+			<div class="discussion__header">
+				<span class="avatar avatar--user">
+					<img class="avatar__img" src="http://static.guim.co.uk/sys-images/Guardian/Pix/site_furniture/2010/09/01/no-user-image.gif">
+				</span>
+				<span class="discussion__username">beaupuss</span>
+				<span class="discussion__responseto"><span class="icon">&#xe061;</span> </span>
+				<span class="discussion__role"></span>
+				<span class="discussion__timestamp meta">yesterday</span>
+			</div>
+
+			<div class="discussion__body prose resizable selectable">
+				<p>Tie up the streets around Trafalgar Square? Will anyone notice the difference?</p>
+			</div>
+
+			<div class="discussion__options">
+				<a class="discussion__reply touchpoint touchpoint--primary touchpoint--small" href="x-gu://leavereply/36832610">
+					<span class="touchpoint__button icon"></span>
+					<span class="touchpoint__label">Reply</span>
+				</a>
+				<a class="discussion__report touchpoint" href="x-gu://reportabuse/36832610">
+					<span class="touchpoint__label">Report</span>
+				</a>
+			</div>
+
+			<a class="discussion__recommend touchpoint touchpoint--secondary touchpoint--small" href="x-gu://recommendcomment/36832610">
+				<span class="touchpoint__button icon"></span>
+				<span class="touchpoint__label discussion__recommend__count">24</span>
+			</a>
+		</div>
+	</div>
+
+	<div id="36834532" class="discussion is-response visible">
+		<div class="discussion__container">
+			<div class="discussion__header">
+				<span class="avatar avatar--user">
+					<img class="avatar__img" src="http://static.guim.co.uk/sys-images/Guardian/Pix/site_furniture/2010/09/01/no-user-image.gif">
+				</span>
+				<span class="discussion__username">LynW</span>
+				<span class="discussion__responseto"><span class="icon">&#xe061;</span> beaupuss</span>
+				<span class="discussion__role"></span>
+				<span class="discussion__timestamp meta">yesterday</span>
+			</div>
+
+			<div class="discussion__body prose resizable selectable">
+				<p>I work in an office just across the river. We're certainly noticing the difference. Snarled streets. And circling, deafening, news helicopters... which seems like overkill, frankly.</p>
+			</div>
+		
+			<div class="discussion__options">
+				<a class="discussion__reply touchpoint touchpoint--primary touchpoint--small" href="x-gu://leavereply/36834532">
+					<span class="touchpoint__button icon"></span>
+					<span class="touchpoint__label">Reply</span>
+				</a>
+				<a class="discussion__report touchpoint" href="x-gu://reportabuse/36834532">
+					<span class="touchpoint__label">Report</span>
+				</a>
+			</div>
+
+			<a class="discussion__recommend touchpoint touchpoint--secondary touchpoint--small" href="x-gu://recommendcomment/36834532">
+				<span class="touchpoint__button icon"></span>
+				<span class="touchpoint__label discussion__recommend__count">12</span>
+			</a>
+		</div>
+	</div>
+</div>
+```
+*/
+
 .discussion {
 	font-family: $agate-sans;
 	@include body();
