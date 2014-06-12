@@ -24,7 +24,7 @@ define([
 			if (!this.initialised) {
 				this.initialised = true;
 				modules.setupGlobals();
-				// console.info("Comments ready");
+				// console.info("Cards ready");
 			}
 		};
 
