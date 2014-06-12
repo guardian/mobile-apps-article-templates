@@ -1,5 +1,5 @@
 .article__header {
-	background-image: none; // Hide Cif elements from non-Cif pages
+	background-image: none; // Hide Cif elements from non-Cif pages (TODO: Remove this when templates are split)
 	@include flexbox;
 	@include flex-direction(column);
 
@@ -18,13 +18,17 @@
 	.headline {
 		@include padding(0, 1, 2.5, 1);
 		
-		.article__author {
+		.byline__author {
 			display: none; // TODO: Remove this when templates are split
 		}
 	}
 
 	.standfirst {
 		@include padding(0.5, 1, 1.5, 1);
+	}
+
+	.byline {
+		@include padding(0.6667, 1, 0, 1);
 	}
 
 	.alerts {
