@@ -595,6 +595,145 @@ Display an article's byline.
 
 /*doc
 ---
+title: Element
+name: element
+category: Modules
+---
+Display an embedded element. Element embeds are typically shown as figures, and can optionally include a supporting caption.
+
+```html_example
+<figure class="element element-image">
+	<div class="element__inner">
+		<img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/11/1402512126497/Matt-Kenyon-on-Birmingham-014.jpg?width=900&amp;height=540&amp;quality=60">
+	</div>
+</figure>
+```
+
+```html_example
+<figure class="element element-video">
+	<iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/hBpN5ngEIo4?wmode=opaque&amp;feature=oembed&amp;start=19" height="259" width="460"></iframe>
+</figure>
+```
+
+```html_example
+<figure class="element element-placeholder">
+	<div class="element__inner">
+		<img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/audio/video/2014/6/11/1402520604664/An-Iraqi-Kurdish-security-011.jpg?width=900&amp;height=540&amp;quality=60">
+		<span class="element-placeholder__button touchpoint">
+			<span class="touchpoint__button icon">&#xe04B;</span>
+			<span class="touchpoint__label">01:31</span>
+		</span>
+	</div>
+</figure>
+```
+
+```html_example
+<figure class="element element-embed">
+	<iframe class="fenced" srcdoc="&lt;img src=&quot;http://static.guim.co.uk/ni/1400070661837/Romania_bison_release2.svg&quot; style=&quot;width:100%;&quot; /&gt;"></iframe>
+	<figcaption>
+		The European bison's initial range covers 15 hectares, but by September the animals would be able to roam freely over a 160-hectare area.
+	</figcaption>
+</figure>
+```
+*/
+.element__inner {
+  background-color: #dcdad5;
+  padding-bottom: 60%;
+  position: relative;
+  overflow: hidden; }
+  .element__inner img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; }
+
+.element-audio iframe,
+.element-embed iframe,
+.element-map iframe {
+  width: 100%; }
+
+.element-video {
+  background-color: #000;
+  padding-bottom: 56.25%;
+  width: 100%;
+  position: relative;
+  overflow: hidden; }
+  .element-video iframe,
+  .element-video embed,
+  .element-video object,
+  .element-video video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0; }
+
+.element-placeholder {
+  width: 100%; }
+  .element-placeholder .element-placeholder__button {
+    padding: 0px 0px 12px 12px;
+    position: absolute;
+    bottom: 0;
+    z-index: 2; }
+    .element-placeholder .element-placeholder__button .touchpoint__button {
+      color: #333333;
+      background-color: #ffbb00; }
+      .element-placeholder .element-placeholder__button .touchpoint__button:active {
+        color: #ffbb00;
+        background-color: #333333; }
+    .element-placeholder .element-placeholder__button .touchpoint__label {
+      color: #ffbb00;
+      text-shadow: 0 0 4px rgba(0, 0, 0, 0.5); }
+  .element-placeholder:active .touchpoint__button {
+    color: #ffbb00;
+    background-color: #333333; }
+  .element-placeholder .element__inner {
+    padding-bottom: 56.25%; }
+
+.offline .element-audio,
+.offline .element-embed,
+.offline .element-map,
+.offline .element-video {
+  overflow: hidden;
+  position: relative;
+  background-color: #dcdad5; }
+  .offline .element-audio:before,
+  .offline .element-embed:before,
+  .offline .element-map:before,
+  .offline .element-video:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: #dcdad5;
+    position: absolute;
+    z-index: 20; }
+  .offline .element-audio iframe,
+  .offline .element-audio embed,
+  .offline .element-audio object,
+  .offline .element-audio video,
+  .offline .element-embed iframe,
+  .offline .element-embed embed,
+  .offline .element-embed object,
+  .offline .element-embed video,
+  .offline .element-map iframe,
+  .offline .element-map embed,
+  .offline .element-map object,
+  .offline .element-map video,
+  .offline .element-video iframe,
+  .offline .element-video embed,
+  .offline .element-video object,
+  .offline .element-video video {
+    z-index: -5; }
+  .offline .element-audio figcaption,
+  .offline .element-embed figcaption,
+  .offline .element-map figcaption,
+  .offline .element-video figcaption {
+    background-color: white; }
+
+/*doc
+---
 title: Headline
 name: headline
 category: Modules
@@ -3297,101 +3436,6 @@ Display a Guardian Witness submission.
 #discussion.android {
   padding: 0px 12px 0px 12px;
   box-sizing: border-box; }
-
-.element-audio iframe,
-.element-embed iframe,
-.element-map iframe {
-  width: 100%; }
-
-.element-video {
-  background-color: #000;
-  padding-bottom: 56.25%;
-  width: 100%;
-  position: relative;
-  overflow: hidden; }
-  .element-video iframe, .element-video object, .element-video embed, .element-video video {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0; }
-
-.element-placeholder {
-  width: 100%; }
-  .element-placeholder .element-placeholder__button {
-    padding: 0px 0px 12px 12px;
-    position: absolute;
-    bottom: 0;
-    z-index: 2; }
-    .element-placeholder .element-placeholder__button .touchpoint__button {
-      color: #333333;
-      background-color: #ffbb00; }
-      .element-placeholder .element-placeholder__button .touchpoint__button:active {
-        color: #ffbb00;
-        background-color: #333333; }
-    .element-placeholder .element-placeholder__button .touchpoint__label {
-      color: #ffbb00;
-      text-shadow: 0 0 4px rgba(0, 0, 0, 0.5); }
-  .element-placeholder:active .touchpoint__button {
-    color: #ffbb00;
-    background-color: #333333; }
-  .element-placeholder .element-placeholder__inner {
-    padding-bottom: 56.25%; }
-
-.element-image__inner,
-.element-placeholder__inner {
-  background-color: #dcdad5;
-  padding-bottom: 60%;
-  position: relative;
-  overflow: hidden; }
-  .element-image__inner img,
-  .element-placeholder__inner img {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0; }
-
-.offline .element-video,
-.offline .element-embed,
-.offline .element-map,
-.offline .element-audio {
-  overflow: hidden;
-  position: relative;
-  background-color: #dcdad5; }
-  .offline .element-video:before,
-  .offline .element-embed:before,
-  .offline .element-map:before,
-  .offline .element-audio:before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    background-color: #dcdad5;
-    position: absolute;
-    z-index: 20; }
-  .offline .element-video iframe,
-  .offline .element-video object,
-  .offline .element-video embed,
-  .offline .element-video video,
-  .offline .element-embed iframe,
-  .offline .element-embed object,
-  .offline .element-embed embed,
-  .offline .element-embed video,
-  .offline .element-map iframe,
-  .offline .element-map object,
-  .offline .element-map embed,
-  .offline .element-map video,
-  .offline .element-audio iframe,
-  .offline .element-audio object,
-  .offline .element-audio embed,
-  .offline .element-audio video {
-    z-index: -5; }
-  .offline .element-video figcaption,
-  .offline .element-embed figcaption,
-  .offline .element-map figcaption,
-  .offline .element-audio figcaption {
-    background-color: white; }
 
 figure img {
   display: block; }
