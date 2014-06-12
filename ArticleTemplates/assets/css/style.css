@@ -488,6 +488,46 @@ Display an alerts toggle.
 
 /*doc
 ---
+title: Aside
+name: aside
+category: Modules
+---
+Positions a piece of text or HTML component to the right-hand side of any running text.
+
+```html_example
+<aside class="aside">
+	<p class="meta">Standing nearly two metres tall and weighing as much as a car, <strong>the European bison</strong> is the continent's largest land mammal. Bison bonasus eat grasses and herbs, and are capable of consuming 32kg each day.</p>
+</aside>
+
+<p><i>Bison bonasus</i> was driven to extinction in the wild across Europe in 1927 after decades of decline from hunting and habitat loss. But it has become that rare endangered species: a conservation success story. There are now thousands in the wild, all descended from the 54 individuals in captivity when the last wild one was killed in Poland's Bialowieza forest. Despite the increase in numbers, the European bison is still rarer than other high profile species, such as the black rhino, even with the reintroductions. There are over 5,000 European bison, with about 3,200 in the wild.</p>
+```
+*/
+.aside {
+  border-top: 1px dotted #dcdad5;
+  float: right;
+  clear: right; }
+  @media all and (max-width: 28.115em) {
+    .aside {
+      margin: 24px 0px 24px 0px;
+      border-bottom: 1px dotted #dcdad5;
+      padding: 12px 0px 12px 0px;
+      width: 100%; } }
+  @media all and (min-width: 28.125em) {
+    .aside {
+      margin: 0px 0px 24px 24px;
+      padding: 12px 12px 12px 0px; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    .aside {
+      width: 36.17021%; } }
+  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    .aside {
+      width: 32.39437%; } }
+  @media all and (min-width: 56.25em) {
+    .aside {
+      width: 24.21053%; } }
+
+/*doc
+---
 title: Audio player
 name: audio-player
 category: Modules
@@ -944,7 +984,9 @@ Secondary and small
 .touchpoint {
   display: block;
   background-image: none !important;
-  text-shadow: none !important; }
+  text-shadow: none !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none; }
 
 .touchpoint__label {
   font-family: "Agate Sans", sans-serif;
@@ -1423,9 +1465,41 @@ Adds typographic styling to content taken from the Guardian Content API.
 
 /*doc
 ---
+title: Guardian Witness contribute call to action
+name: witness-contribute
+category: Witness
+---
+Display a call to action to contribute to a Guardian Witness assignment.
+
+```html_example
+<aside class="aside aside-witness js--positioned">
+	<a class="touchpoint touchpoint--primary" href="x-gu://witness/52eb8ebee4b06a13a3531a7a">
+		<span class="touchpoint__button icon">&#xe050;</span>
+		<span class="touchpoint__label">Contribute to this story with GuardianWitness</span>
+	</a>
+</aside>
+
+<p>You could be in with the chance to win a money-can't-buy opportunity to mingle with the stars simply by uploading a picture or video of you recreating a scene from one of this year's Bafta-nominated movies. One lucky person who, in the eyes of our judges, uploads the best entry will win a pair of tickets to the Bafta awards ceremony at London's Royal Opera House on Sunday 16 February.</p>
+```
+*/
+.aside-witness .touchpoint .touchpoint__button {
+  background-color: #3e454c;
+  color: #4bc6df; }
+.aside-witness .touchpoint .touchpoint__label {
+  color: #3e454c;
+  margin: 6px 0px 6px 0px;
+  padding: 0; }
+.aside-witness .touchpoint:active .touchpoint__button {
+  background-color: #4bc6df;
+  color: #3e454c; }
+.aside-witness .touchpoint:active .touchpoint__label {
+  color: #4bc6df; }
+
+/*doc
+---
 title: Guardian Witness embed
 name: witness
-category: External
+category: Witness
 ---
 Display a Guardian Witness submission.
 
@@ -2242,6 +2316,15 @@ Display a team line-up including substitutions and bookings.
 @media all and (max-width: 34.9375em) {
   .article__body .advert-slot--mpu--tablet {
     margin: 12px auto 0 auto; } }
+@media all and (min-width: 28.125em) and (max-width: 40.615em) {
+  .article__body .aside {
+    margin-right: -2.12766%; } }
+@media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  .article__body .aside {
+    margin-right: -32.39437%; } }
+@media all and (min-width: 56.25em) {
+  .article__body .aside {
+    margin-right: -32.63158%; } }
 
 /*doc
 ---
@@ -3673,78 +3756,6 @@ figure.figure-inline {
   .offline .element-audio figcaption {
     background-color: white; }
 
-aside {
-  float: right;
-  margin: 0px 0px 24px 24px; }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    aside {
-      margin-right: -2.12766%; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    aside {
-      margin-right: -32.39437%; } }
-  @media all and (min-width: 56.25em) {
-    aside {
-      margin-right: -32.63158%; } }
-  aside.aside-witness {
-    border-top: 1px dotted #dcdad5;
-    padding: 12px 12px 12px 0px;
-    position: relative;
-    clear: right; }
-    @media all and (max-width: 28.115em) {
-      aside.aside-witness {
-        width: 100%;
-        padding-right: 0;
-        margin-bottom: 18px;
-        border-bottom: 1px dotted #dcdad5; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      aside.aside-witness {
-        width: 36.17021%; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      aside.aside-witness {
-        width: 32.39437%; } }
-    @media all and (min-width: 56.25em) {
-      aside.aside-witness {
-        width: 24.21053%; } }
-    aside.aside-witness .touchpoint {
-      display: inline-block;
-      -webkit-touch-callout: none;
-      -webkit-user-select: none; }
-      @media all and (max-width: 28.115em) {
-        aside.aside-witness .touchpoint {
-          display: -webkit-box;
-          display: -webkit-flex;
-          display: flex;
-          -webkit-box-align: center;
-          -webkit-align-items: center;
-          align-items: center; } }
-      aside.aside-witness .touchpoint > * {
-        display: block; }
-      aside.aside-witness .touchpoint .touchpoint__button {
-        background-color: #3e454c;
-        color: #4bc6df;
-        margin-right: 10px; }
-        @media all and (max-width: 28.115em) {
-          aside.aside-witness .touchpoint .touchpoint__button {
-            -webkit-flex-shrink: 0;
-            flex-shrink: 0;
-            min-width: 44px;
-            -webkit-box-flex: 1; } }
-      aside.aside-witness .touchpoint .touchpoint__label {
-        color: #3e454c;
-        padding: 0;
-        margin: 6px 0px 6px 0px;
-        -webkit-box-flex: 2; }
-      aside.aside-witness .touchpoint:active .touchpoint__button {
-        background-color: #4bc6df;
-        color: #3e454c; }
-      aside.aside-witness .touchpoint:active .touchpoint__label {
-        color: #4bc6df; }
-
-#standard-article aside.aside-witness {
-  display: none; }
-  #standard-article aside.aside-witness.positioned {
-    display: block; }
-
 /*doc
 ---
 title: Bullet
@@ -4257,10 +4268,10 @@ category: Partials
   @media all and (max-width: 28.115em) {
     .template--liveblog .article__body--liveblog__pinned figcaption {
       padding: 6px 12px 24px 12px; } }
-.template--liveblog aside.aside-witness {
+.template--liveblog .aside-witness {
   float: none;
   background-color: white;
-  border-top: none;
+  border-top: 1px solid #999999;
   border-bottom: 2px solid #dcdad5;
   margin: 12px 12px 12px 12px;
   padding: 12px 12px 12px 12px;
@@ -4268,30 +4279,24 @@ category: Partials
   position: relative;
   overflow: hidden; }
   @media all and (min-width: 28.125em) {
-    .template--liveblog aside.aside-witness {
+    .template--liveblog .aside-witness {
       margin-left: 0;
       margin-right: 0; } }
-  .template--liveblog aside.aside-witness .touchpoint__label {
-    margin-bottom: 0;
-    margin-right: 12px; }
-    @media all and (max-width: 44.9375em) {
-      .template--liveblog aside.aside-witness .touchpoint__label {
-        height: 44px;
-        width: 180px; } }
-    @media all and (min-width: 45em) {
-      .template--liveblog aside.aside-witness .touchpoint__label {
-        padding-top: 15px; } }
+  .template--liveblog .aside-witness .touchpoint__label {
+    margin: 3px 0px 3px 0px;
+    padding-left: 4.34783%;
+    width: 220px; }
     @media all and (min-width: 40.625em) {
-      .template--liveblog aside.aside-witness .touchpoint__label {
-        position: absolute;
-        top: 0;
-        float: left; } }
+      .template--liveblog .aside-witness .touchpoint__label {
+        margin: 0;
+        padding-left: 2.12766%;
+        position: absolute; } }
     @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      .template--liveblog aside.aside-witness .touchpoint__label {
+      .template--liveblog .aside-witness .touchpoint__label {
         padding-left: 1.40845%;
         left: 32.39437%; } }
     @media all and (min-width: 56.25em) {
-      .template--liveblog aside.aside-witness .touchpoint__label {
+      .template--liveblog .aside-witness .touchpoint__label {
         padding-left: 1.05263%;
         left: 30.52632%; } }
 .template--liveblog .live-summary-more {
@@ -4738,6 +4743,10 @@ category: Partials
       margin: 12px 0px 12px 12px;
       width: 50%;
       float: right; } }
+.template--standard-article .aside-witness {
+  display: none; }
+  .template--standard-article .aside-witness.js--positioned {
+    display: block; }
 
 .template--standard-article.tone--comment .article {
   background-color: #eeebe8;

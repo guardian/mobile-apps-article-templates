@@ -1,0 +1,44 @@
+/*doc
+---
+title: Guardian Witness contribute call to action
+name: witness-contribute
+category: Witness
+---
+Display a call to action to contribute to a Guardian Witness assignment.
+
+```html_example
+<aside class="aside aside-witness js--positioned">
+	<a class="touchpoint touchpoint--primary" href="x-gu://witness/52eb8ebee4b06a13a3531a7a">
+		<span class="touchpoint__button icon">&#xe050;</span>
+		<span class="touchpoint__label">Contribute to this story with GuardianWitness</span>
+	</a>
+</aside>
+
+<p>You could be in with the chance to win a money-can't-buy opportunity to mingle with the stars simply by uploading a picture or video of you recreating a scene from one of this year's Bafta-nominated movies. One lucky person who, in the eyes of our judges, uploads the best entry will win a pair of tickets to the Bafta awards ceremony at London's Royal Opera House on Sunday 16 February.</p>
+```
+*/
+
+.aside-witness {
+	.touchpoint {
+		.touchpoint__button {
+			background-color: $witness;
+			color: $news-accent;
+		}
+
+		.touchpoint__label {
+			color: $witness;
+			@include margin(0.5, 0);
+			padding: 0;
+		}
+
+		&:active {
+			.touchpoint__button {
+				background-color: $news-accent;
+				color: $witness;
+			}
+			.touchpoint__label {
+				color: $news-accent;
+			}
+		}
+	}
+}

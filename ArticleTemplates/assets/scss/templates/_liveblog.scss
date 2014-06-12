@@ -200,10 +200,10 @@
 		}
 	}
 
-	aside.aside-witness {
+	.aside-witness {
 		float: none;
 		background-color: $white;
-		border-top: none;
+		border-top: 1px solid $meta;
 		border-bottom: 2px solid $shadow;
 		@include margin(1);
 		@include padding(1);
@@ -217,19 +217,14 @@
 		}
 
 		.touchpoint__label {
-			margin-bottom: 0;
-			margin-right: 12px;
-			@include mq($to: 719px) {
-				height: 44px;
-				width: 180px;
-			}
-			@include mq($from: 720px) {
-				padding-top: 15px;
-			}
+			@include margin(0.25, 0);
+			padding-left: $base-1;
+			width: 220px;
+
 			@include mq($from: col2) {
+				margin: 0;
+				padding-left: $base-2;
 				position: absolute;
-				top: 0;
-				float: left;
 			}
 			@include mq(col2, col3) {
 				padding-left: $base-3;

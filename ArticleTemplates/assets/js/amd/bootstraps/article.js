@@ -13,10 +13,10 @@ define([
 			// Moves the Witness aside to better place (4 paragraphs in)
 			var bodyLength = $(".article__body p").length;
 			if (bodyLength > 4) {
-				$(".aside-witness").addClass("positioned").prependTo(".article__body p:nth-of-type(4)");
+				$(".aside-witness").addClass("js--positioned").prependTo(".article__body p:nth-of-type(4)");
 			} else {
 				bodyLength = bodyLength - 1;
-				$(".aside-witness").addClass("positioned").prependTo(".article__body p:nth-of-type(" + bodyLength + ")");
+				$(".aside-witness").addClass("js--positioned").prependTo(".article__body p:nth-of-type(" + bodyLength + ")");
 			}
 		},
 
