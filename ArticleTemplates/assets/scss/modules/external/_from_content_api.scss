@@ -151,12 +151,12 @@ Adds typographic styling to content taken from the Guardian Content API.
 		background: $shadow;
 	}
 
-	p, li {
-		@include text-underline($news, $white, $news-accent);
-	}
-
 	p {
 		@include margin(1, 0);
+	}
+
+	p, li {
+		@include text-underline($news, $white, $news-accent);
 	}
 
 	ul,
@@ -168,6 +168,10 @@ Adds typographic styling to content taken from the Guardian Content API.
 		ol {
 			@include margin(0, 0, 1, 2);
 		}
+	}
+
+	ul > li {
+		@include bullet();
 	}
 
 	ol {

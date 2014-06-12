@@ -577,6 +577,36 @@ Display the image of author or user.
 
 /*doc
 ---
+title: Bullet
+name: bullet
+category: Modules
+---
+Hides an inline bullet and replaces it with a more stylistic glyph.
+
+```html_example
+<span class="bullet">•</span> Squad prepare for Ecuador friendly on Wednesday
+```
+*/
+.bullet {
+  color: transparent;
+  vertical-align: baseline;
+  margin-right: -0.25em;
+  width: 1.111em;
+  display: inline-block;
+  overflow: hidden;
+  text-indent: 1.111em;
+  position: relative; }
+  .bullet:before {
+    content: "\2022";
+    color: #999999;
+    font-family: "Egyptian Display", Georgia, serif;
+    font-weight: 300;
+    display: inline-block;
+    position: absolute;
+    left: -1.111em; }
+
+/*doc
+---
 title: Byline
 name: byline
 category: Modules
@@ -1977,6 +2007,9 @@ Adds typographic styling to content taken from the Guardian Content API.
   border: 0;
   height: 1px;
   background: #dcdad5; }
+.prose p,
+.from-content-api p {
+  margin: 12px 0px 12px 0px; }
 .prose p a, .prose li a,
 .from-content-api p a,
 .from-content-api li a {
@@ -1989,9 +2022,6 @@ Adds typographic styling to content taken from the Guardian Content API.
 .from-content-api p a:active,
 .from-content-api li a:active {
   background-image: linear-gradient(to bottom, white 50%, rgba(75, 198, 223, 0.67) 50%); }
-.prose p,
-.from-content-api p {
-  margin: 12px 0px 12px 0px; }
 .prose ul,
 .prose ol,
 .prose dl,
@@ -2012,6 +2042,19 @@ Adds typographic styling to content taken from the Guardian Content API.
   .from-content-api dl ul,
   .from-content-api dl ol {
     margin: 0px 0px 12px 24px; }
+.prose ul > li,
+.from-content-api ul > li {
+  text-indent: 1.111em;
+  position: relative; }
+  .prose ul > li:before,
+  .from-content-api ul > li:before {
+    content: "\2022";
+    color: #999999;
+    font-family: "Egyptian Display", Georgia, serif;
+    font-weight: 300;
+    display: inline-block;
+    position: absolute;
+    left: -1.111em; }
 .prose ol,
 .from-content-api ol {
   counter-reset: li; }
@@ -2965,6 +3008,17 @@ Display a Guardian Witness submission.
   -webkit-box-orient: vertical;
   -webkit-flex-direction: column;
   flex-direction: column; }
+  .article__header ul > li {
+    text-indent: 1.111em;
+    position: relative; }
+    .article__header ul > li:before {
+      content: "\2022";
+      color: #999999;
+      font-family: "Egyptian Display", Georgia, serif;
+      font-weight: 300;
+      display: inline-block;
+      position: absolute;
+      left: -1.111em; }
   .article__header .inner-header,
   .article__header .standfirst,
   .article__header .article__meta,
@@ -3789,40 +3843,6 @@ figure.figure-inline {
 
 .android .module {
   margin: 0px 12px 0px 12px; }
-
-/*doc
----
-title: Bullet
-name: bullet
-category: Partials
----
-```html_example
-<span class="bullet">•</span> Squad prepare for Ecuador friendly on Wednesday
-```
-*/
-.bullet {
-  color: transparent;
-  vertical-align: baseline;
-  margin-right: -0.25em;
-  width: 1.111em;
-  display: inline-block;
-  overflow: hidden; }
-
-.bullet,
-.from-content-api ul > li,
-.article__header ul > li {
-  text-indent: 1.111em;
-  position: relative; }
-  .bullet:before,
-  .from-content-api ul > li:before,
-  .article__header ul > li:before {
-    content: "\2022";
-    color: #999999;
-    font-family: "Egyptian Display", Georgia, serif;
-    font-weight: 300;
-    display: inline-block;
-    position: absolute;
-    left: -1.111em; }
 
 .template--support {
   font-family: "Agate Sans", sans-serif;

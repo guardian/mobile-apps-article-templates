@@ -1,0 +1,22 @@
+/*doc
+---
+title: Bullet
+name: bullet
+category: Modules
+---
+Hides an inline bullet and replaces it with a more stylistic glyph.
+
+```html_example
+<span class="bullet">•</span> Squad prepare for Ecuador friendly on Wednesday
+```
+*/
+
+.bullet {
+	color: transparent;
+	vertical-align: baseline;
+	margin-right: -0.25em;
+	width: 1.111em;
+	display: inline-block;
+	overflow: hidden;
+	@include bullet();
+}

@@ -165,6 +165,21 @@ $meta-lead-2: 2.2rem;
 	}
 }
 
+// Bullet
+@mixin bullet() {
+	text-indent: 1.111em;
+	position: relative;
+	&:before {
+		content: "\2022";
+		color: $meta;
+		font-family: $egyptian-display;
+		font-weight: 300;
+		display: inline-block;
+		position: absolute;
+		left: -1.111em;
+	}
+}
+
 // Drop cap
 @mixin dropcap($dropcap-color:"") {
 	&:first-of-type:first-letter {
