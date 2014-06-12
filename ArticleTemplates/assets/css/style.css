@@ -1058,7 +1058,7 @@ category: Modules
 Display the section for which an article falls under.
 
 ```html_example
-<h3 class="section">Football</h3>
+<h3 class="section">Football <span class="section__meta">In Brief</span></h3>
 ```
 */
 .section {
@@ -1077,6 +1077,10 @@ Display the section for which an article falls under.
     .section {
       font-size: 2.4rem;
       line-height: 2.4rem; } }
+
+.section__meta {
+  color: #999999;
+  font-weight: 300; }
 
 /*doc
 ---
@@ -1230,7 +1234,7 @@ category: Containers
 Display a standard article card.
 
 ```html_example
-<div class="container">
+<div class="container__body">
 	<div class="card">
 		<div class="card__container">
 			<div class="card__header">
@@ -1436,14 +1440,12 @@ Display a standard article card.
   .card .card__timestamp {
     padding: 0px 60px 0px 6px; }
 
-.container {
-  overflow: hidden; }
-  @media all and (min-width: 28.125em) {
-    .container .card {
-      float: left; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    .container .card:nth-of-type(4) {
-      display: none; } }
+@media all and (min-width: 28.125em) {
+  .container__body .card {
+    float: left; } }
+@media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  .container__body .card:nth-of-type(4) {
+    display: none; } }
 
 /*doc
 ---
@@ -1454,7 +1456,7 @@ category: Containers
 Display a comment article card.
 
 ```html_example
-<div class="container">
+<div class="container__body">
 	<div class="card card--comment">
 		<div class="card__container">
 			<div class="card__header">
@@ -1514,7 +1516,7 @@ category: Containers
 Display a feature article card.
 
 ```html_example
-<div class="container">
+<div class="container__body">
 	<div class="card card--feature">
 		<div class="card__container">
 			<div class="card__header">
@@ -1566,7 +1568,7 @@ category: Containers
 Display a liveblog card.
 
 ```html_example
-<div class="container">
+<div class="container__body">
 	<div class="card card--live">
 		<div class="card__container">
 			<div class="card__header">
@@ -1624,7 +1626,7 @@ category: Containers
 Display a media article card.
 
 ```html_example
-<div class="container">
+<div class="container__body">
 	<div class="card card--media">
 		<div class="card__container">
 			<div class="card__header">
@@ -1693,6 +1695,112 @@ Display a media article card.
   .card--media .touchpoint__label {
     color: #ffbb00;
     font-weight: bold; }
+
+/*doc
+---
+title: Container
+name: container
+category: Containers
+---
+Display a standard article card.
+
+```html_example
+<div class="container">
+	<div class="container__header">
+		<div class="container__title">
+			<h2 class="container__title__label"><a class="container__title__link" href="#">Comments <span class="container__title__meta">350</span></a></h2>
+		</div>
+		
+		<div class="container__action container__action--right">
+			<a class="touchpoint touchpoint--primary" href="#">
+				<span class="touchpoint__label">Leave a comment</span>
+				<span class="touchpoint__button icon">&#xe03d;</span>
+			</a>
+		</div>
+	</div>
+
+	<div class="container__body">
+		<p>Container content</p>
+	</div>
+
+	<div class="container__footer">
+		<div class="container__action container__action--right">
+			<a class="touchpoint touchpoint--secondary" href="#">
+				<span class="touchpoint__label">View more</span>
+				<span class="touchpoint__button icon">&#xe00b;</span>
+			</a>
+		</div>
+	</div>
+</div>
+```
+*/
+.container {
+  margin: 0px 0px 24px 0px;
+  border-top: 2px solid #333333; }
+
+.container__header,
+.container__footer {
+  overflow: auto;
+  font-family: "Agate Sans", sans-serif;
+  font-weight: bold;
+  padding: 8.0px 2.0px 24px 2.0px;
+  display: table;
+  width: 100%; }
+  @media all and (max-width: 28.115em) {
+    .container__header,
+    .container__footer {
+      padding: 2.89855%; } }
+
+.container__title {
+  color: #333333;
+  vertical-align: top;
+  display: table-cell; }
+
+.container__title__label {
+  font-family: "Egyptian Display", Georgia, serif;
+  font-weight: 600;
+  margin-top: -1px; }
+  @media all and (max-width: 40.615em) {
+    .container__title__label {
+      font-size: 2.4rem;
+      line-height: 3.6rem; } }
+  @media all and (min-width: 40.625em) {
+    .container__title__label {
+      font-size: 2.7rem;
+      line-height: 3.9rem; } }
+
+.container__title__link {
+  color: #333333; }
+
+.container__title__meta {
+  color: #999999;
+  font-weight: 300; }
+
+.container__action {
+  vertical-align: middle;
+  display: table-cell; }
+  @media all and (max-width: 40.615em) {
+    .container__action {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) {
+    .container__action {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+
+.container__action--comment,
+.container__action--view-more {
+  float: right; }
+
+@media all and (max-width: 40.615em) {
+  .container__header .container__action .touchpoint__label {
+    display: none; } }
+
+.container__body {
+  overflow: hidden; }
+
+.android .container {
+  margin: 0px 12px 0px 12px; }
 
 /*doc
 ---
@@ -3425,13 +3533,6 @@ Display a Guardian Witness submission.
 .discussion--open .animated {
   display: block; }
 
-.article__controls__action {
-  float: right; }
-  .article__controls__action .comments-closed-label {
-    display: none;
-    color: #666666;
-    text-align: right; }
-
 .discussion__thread {
   border-bottom: 2px solid #dcdad5; }
   @media all and (max-width: 28.115em) {
@@ -3471,14 +3572,23 @@ Display a Guardian Witness submission.
 .comments-0 .discussion__empty {
   display: block; }
 
-.comments-0 .article__controls__sorter a,
-.comments-1 .article__controls__sorter a,
-.comments-has-failed .article__controls__sorter a {
+.comments-0 .container__action--sort a,
+.comments-1 .container__action--sort a,
+.comments-has-failed .container__action--sort a {
   color: #666666; }
+.comments-0 .container__action--view-more,
+.comments-1 .container__action--view-more,
+.comments-has-failed .container__action--view-more {
+  display: none; }
 
-.comments--closed .article__controls__action .comments-closed-label {
+.container__action .comments-closed-label {
+  display: none;
+  color: #666666;
+  text-align: right; }
+
+.comments--closed .container__action .comments-closed-label {
   display: block !important; }
-.comments--closed .article__controls__action .touchpoint__button, .comments--closed .article__controls__action a {
+.comments--closed .container__action .touchpoint__button, .comments--closed .container__action a {
   display: none !important; }
 
 .comments-has-failed .discussion__failed {
@@ -3800,50 +3910,6 @@ figure.figure-inline {
       width: auto;
       display: table; }
 
-.module {
-  margin: 0px 0px 24px 0px;
-  border-top: 2px solid #333333; }
-  .module .module__header,
-  .module .module__footer {
-    overflow: auto;
-    font-family: "Agate Sans", sans-serif;
-    font-weight: bold;
-    padding: 8.0px 2.0px 24px 2.0px;
-    display: table;
-    width: 100%; }
-    @media all and (max-width: 28.115em) {
-      .module .module__header,
-      .module .module__footer {
-        padding: 2.89855%; } }
-    .module .module__header > div,
-    .module .module__footer > div {
-      display: table-cell; }
-  .module .module__title {
-    vertical-align: top; }
-    .module .module__title .module__title__label {
-      font-family: "Egyptian Display", Georgia, serif;
-      font-weight: 600;
-      margin-top: -1px; }
-      @media all and (max-width: 40.615em) {
-        .module .module__title .module__title__label {
-          font-size: 2.4rem;
-          line-height: 3.6rem; } }
-      @media all and (min-width: 40.625em) {
-        .module .module__title .module__title__label {
-          font-size: 2.7rem;
-          line-height: 3.9rem; } }
-    .module .module__title .comments-count {
-      color: #999999;
-      font-weight: 300; }
-  .module .module__action {
-    float: right; }
-  @media all and (max-width: 40.615em) {
-    .module .module__header .module__action .touchpoint__label {
-      display: none; } }
-
-.android .module {
-  margin: 0px 12px 0px 12px; }
-
 .template--support {
   font-family: "Agate Sans", sans-serif;
   background-color: white;
@@ -4121,8 +4187,6 @@ figure.figure-inline {
 .template--discussion .section {
   padding-left: 0;
   color: #333333; }
-  .template--discussion .section .comments-count {
-    color: #999999; }
 .template--discussion .headline {
   margin: 0px 0px 48px 0px;
   padding: 0; }
@@ -4138,43 +4202,31 @@ figure.figure-inline {
     .template--discussion .headline {
       font-size: 3.6rem;
       line-height: 3.6rem; } }
-.template--discussion .article__controls {
-  overflow: auto;
-  font-family: "Agate Sans", sans-serif;
-  font-weight: bold;
-  display: table;
-  width: 100%; }
-  @media all and (max-width: 40.615em) {
-    .template--discussion .article__controls {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
-    .template--discussion .article__controls {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-  .template--discussion .article__controls > div {
-    display: table-cell;
-    vertical-align: middle; }
+.template--discussion .container {
+  margin: 0;
+  border-top: 0; }
+.template--discussion .container__header {
+  padding-bottom: 0; }
 
 .template--discussion.preview {
   background-color: #333333; }
   .template--discussion.preview .article {
     border: none; }
-  .template--discussion.preview .article__body--comments {
+  .template--discussion.preview .article__body {
     background-color: #333333;
     color: white;
     border-top: none; }
-    .template--discussion.preview .article__body--comments .discussion {
+    .template--discussion.preview .article__body .discussion {
       margin-top: 0;
       background-color: transparent;
       background-color: #333333; }
-    .template--discussion.preview .article__body--comments .discussion__body {
+    .template--discussion.preview .article__body .discussion__body {
       height: 100px;
       overflow: hidden;
       text-overflow: ellipsis; }
-    .template--discussion.preview .article__body--comments .discussion__recommend {
+    .template--discussion.preview .article__body .discussion__recommend {
       display: none; }
-    .template--discussion.preview .article__body--comments .discussion__username {
+    .template--discussion.preview .article__body .discussion__username {
       color: #4bc6df; }
 
 .template--liveblog .article {
@@ -4212,9 +4264,9 @@ figure.figure-inline {
   .template--liveblog.is-live .live-more:active,
   .template--liveblog.is-live .tags a:active {
     color: #cc2b12; }
-.template--liveblog.is-live #module-comments .touchpoint--primary .touchpoint__button {
+.template--liveblog.is-live #comments .touchpoint--primary .touchpoint__button {
   background-color: #b51800; }
-.template--liveblog.is-live #module-comments .touchpoint--primary:active .touchpoint__button {
+.template--liveblog.is-live #comments .touchpoint--primary:active .touchpoint__button {
   background-color: #cc2b12; }
 .template--liveblog.is-live .from-content-api table,
 .template--liveblog.is-live .table {

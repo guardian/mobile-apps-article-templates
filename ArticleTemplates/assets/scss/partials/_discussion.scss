@@ -286,16 +286,6 @@
 	}
 }
 
-.article__controls__action {
-	float: right;
-
-	.comments-closed-label {
-		display: none;
-		color: $standfirst;
-		text-align: right;
-	}
-}
-
 // Expanding Logic
 .discussion__thread {
 	border-bottom: 2px solid $shadow;
@@ -320,7 +310,7 @@
 	}
 }
 
-// Styling Different States
+// Styling different states
 .discussion__empty,
 .discussion__failed {
 	display: none;
@@ -338,7 +328,7 @@
 	}
 }
 
-// Failure States
+// Failure states
 .comments-0 {
 	.discussion__empty {
 		display: block;
@@ -348,12 +338,24 @@
 .comments-0,
 .comments-1,
 .comments-has-failed {
-	.article__controls__sorter a {
+	.container__action--sort a {
 		color: $standfirst;
+	}
+	.container__action--view-more {
+		display: none;
+	}
+}
+
+// Closed/open states
+.container__action {
+	.comments-closed-label {
+		display: none;
+		color: $standfirst;
+		text-align: right;
 	}
 }
 .comments--closed {
-	.article__controls__action {
+	.container__action {
 		.comments-closed-label {
 			display: block !important;
 		}

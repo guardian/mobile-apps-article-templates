@@ -7,7 +7,7 @@ category: Containers
 Display a standard article card.
 
 ```html_example
-<div class="container">
+<div class="container__body">
 	<div class="card">
 		<div class="card__container">
 			<div class="card__header">
@@ -230,11 +230,8 @@ Display a standard article card.
 	}
 }
 
-
-// Container
-.container {
-	overflow: hidden;
-
+// Container context
+.container__body {
 	@include mq($from: col1) {
 		.card {
 			float: left;

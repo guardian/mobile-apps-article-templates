@@ -1,0 +1,108 @@
+/*doc
+---
+title: Container
+name: container
+category: Containers
+---
+Display a standard article card.
+
+```html_example
+<div class="container">
+	<div class="container__header">
+		<div class="container__title">
+			<h2 class="container__title__label"><a class="container__title__link" href="#">Comments <span class="container__title__meta">350</span></a></h2>
+		</div>
+		
+		<div class="container__action container__action--right">
+			<a class="touchpoint touchpoint--primary" href="#">
+				<span class="touchpoint__label">Leave a comment</span>
+				<span class="touchpoint__button icon">&#xe03d;</span>
+			</a>
+		</div>
+	</div>
+
+	<div class="container__body">
+		<p>Container content</p>
+	</div>
+
+	<div class="container__footer">
+		<div class="container__action container__action--right">
+			<a class="touchpoint touchpoint--secondary" href="#">
+				<span class="touchpoint__label">View more</span>
+				<span class="touchpoint__button icon">&#xe00b;</span>
+			</a>
+		</div>
+	</div>
+</div>
+```
+*/
+
+.container {
+	@include margin(0, 0, 2, 0);
+	border-top: 2px solid $headline;
+}
+
+.container__header,
+.container__footer {
+	overflow: auto;
+	font-family: $agate-sans;
+	font-weight: bold;
+	@include padding(0.666667, 0.166667, 2, 0.166667);
+	display: table;
+	width: 100%;
+
+	@include mq($to: col1) {
+		padding: $base-1 / 1.5;
+	}
+}
+
+.container__title {
+	color: $headline;
+	vertical-align: top;
+	display: table-cell;
+}
+
+.container__title__label {
+	font-family: $egyptian-display;
+	font-weight: 600;
+	@include body(1.5);
+	margin-top: -1px;
+}
+
+.container__title__link {
+	color: $headline;
+}
+
+.container__title__meta {
+	color: $meta;
+	font-weight: 300;
+}
+
+.container__action {
+	vertical-align: middle;
+	@include meta();
+	display: table-cell;
+}
+
+.container__action--comment,
+.container__action--view-more {
+	float: right;
+}
+
+.container__header {
+	.container__action .touchpoint__label {
+		@include mq($to: col2) {
+			display: none;
+		}
+	}
+}
+
+.container__body {
+	overflow: hidden;
+}
+
+.android {
+	.container {
+		@include margin(0, 1, 0, 1);
+	}
+}

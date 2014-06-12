@@ -94,7 +94,7 @@ define([
 						$('.discussion__empty').show();
 					} else {
 						html = bonzo.create(html);
-						$(html).appendTo($('#comments'));
+						$(html).appendTo($('#comments .container__body'));
 						commentsReplyFormatting();
 					}
 				};
@@ -104,27 +104,27 @@ define([
 						$('.discussion__loading').hide();
 					} else {
 						html = bonzo.create(html);
-						$(html).appendTo($('#comments'));
+						$(html).appendTo($('#comments .container__body'));
 						commentsReplyFormatting();
 					}
-					$('.discussion__loading').appendTo('#comments');
+					$('.discussion__loading').appendTo('#comments .container__body');
 				};
 				window.articleCommentsFailed = function () {
 					$('.discussion__failed').show();
 					$('.discussion__loading').hide();
-					$('#module-comments').addClass('comments-has-failed');
+					$('#comments').addClass('comments-has-failed');
 				};
 				window.commentsFailed = function () {
 					$('.discussion__loading').hide();
 					$('.discussion__failed').show();
-					$('#comments').addClass('comments-has-failed');
+					$('#comments .container__body').addClass('comments-has-failed');
 				};
 				window.commentsEnd = function () {
 					$('.discussion__loading').remove();
 				};
 
 				window.commentsClosed = function () {
-					$(".module--comments, #discussion").addClass("comments--closed");
+					$("#comments, #discussion").addClass("comments--closed");
 				};
 				
 				// Functions for feedback on recommend buttons
@@ -139,7 +139,7 @@ define([
 					$(target + ' .discussion__recommend__count').text(number);
 				};
 				window.scrollToComments = function () {
-					window.location.href = '#module-comments';
+					window.location.href = '#comments';
 				};
 				window.applyNativeFunctionCall('articleCommentsInserter');
 				window.applyNativeFunctionCall('commentsFailed');

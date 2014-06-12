@@ -7,7 +7,7 @@ category: Modules
 Display the section for which an article falls under.
 
 ```html_example
-<h3 class="section">Football</h3>
+<h3 class="section">Football <span class="section__meta">In Brief</span></h3>
 ```
 */
 
@@ -16,4 +16,9 @@ Display the section for which an article falls under.
 	font-family: $egyptian-display;
 	font-weight: 600;
 	@include headline(0.5);
+}
+
+.section__meta {
+	color: $meta;
+	font-weight: 300;
 }
