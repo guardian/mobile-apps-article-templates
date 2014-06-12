@@ -81,3 +81,36 @@
 		left: 0;
 	}
 }
+
+
+// Replace elements with empty boxes when no network connection
+.offline {
+	.element-video,
+	.element-embed,
+	.element-map,
+	.element-audio {
+		overflow: hidden;
+		position: relative;
+		background-color: $shadow;
+		
+		&:before {
+			content: "";
+			width: 100%;
+			height: 100%;
+			background-color: $shadow;
+			position: absolute;
+			z-index: 20;
+		}
+		
+		iframe,
+		object,
+		embed,
+		video {
+			z-index: -5;
+		}
+		
+		figcaption {
+			background-color: $white;
+		}
+	}
+}

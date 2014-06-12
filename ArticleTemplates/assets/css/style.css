@@ -43,78 +43,6 @@ a {
   a:active {
     color: #4bc6df; }
 
-@font-face {
-  font-family: "Egyptian Display";
-  font-weight: 100;
-  src: url("../fonts/GdnEgyDE1Thi.otf"); }
-@font-face {
-  font-family: "Egyptian Display";
-  font-weight: 200;
-  src: url("../fonts/GdnEgyDE2Lig.otf"); }
-@font-face {
-  font-family: "Egyptian Display";
-  font-weight: 300;
-  src: url("../fonts/GdnEgyDE3Reg.otf"); }
-@font-face {
-  font-family: "Egyptian Display";
-  font-weight: 400;
-  src: url("../fonts/GdnEgyDE4Med.otf"); }
-@font-face {
-  font-family: "Egyptian Display";
-  font-weight: 600;
-  src: url("../fonts/GdnEgyDE6Bol.otf"); }
-@font-face {
-  font-family: "Egyptian Text";
-  src: url("../fonts/EgyptianText-Regular.otf"); }
-@font-face {
-  font-family: "Egyptian Text";
-  font-style: italic;
-  src: url("../fonts/EgyptianText-RegularItalic.otf"); }
-@font-face {
-  font-family: "Egyptian Text";
-  font-weight: bold;
-  src: url("../fonts/EgyptianText-Medium.otf"); }
-@font-face {
-  font-family: "Egyptian Text";
-  font-style: italic;
-  font-weight: bold;
-  src: url("../fonts/EgyptianText-MediumItalic.otf"); }
-@font-face {
-  font-family: "Titlepiece";
-  font-weight: 600;
-  src: url("../fonts/GdnTitlepiece.otf"); }
-@font-face {
-  font-family: "Agate Sans";
-  src: url("../fonts/GdnAgaSanTwoAS32Reg.otf"); }
-@font-face {
-  font-family: "Agate Sans";
-  font-style: italic;
-  src: url("../fonts/GdnAgaSanTwoAS32RegIta.otf"); }
-@font-face {
-  font-family: "Agate Sans";
-  font-weight: bold;
-  src: url("../fonts/GdnAgaSanTwoAS62Bol.otf"); }
-@font-face {
-  font-family: "Agate Sans";
-  font-weight: bold;
-  font-style: italic;
-  src: url("../fonts/GdnAgaSanTwoAS62BolIta.otf"); }
-@font-face {
-  font-family: "Guardian Icons";
-  src: url("../fonts/guardianicons.ttf"); }
-html {
-  font-size: 62.5%;
-  font-family: "Egyptian Text", Georgia, serif; }
-
-@media all and (max-width: 40.615em) {
-  body {
-    font-size: 1.6em;
-    line-height: 1.5em; } }
-@media all and (min-width: 40.625em) {
-  body {
-    font-size: 1.8em;
-    line-height: 1.444em; } }
-
 .animated {
   -webkit-animation-duration: 0.6s;
   animation-duration: 0.6s;
@@ -192,7 +120,7 @@ title: Icons
 name: icons
 category: Components
 ---
-A comprehensive collection fo bespoke icons based on the design of Guardian Eygptian.
+A comprehensive collection of bespoke icons based on the design of Guardian Eygptian.
 
 ```html_example
 <span class="icon">&#xe000;</span> <!-- Double chevron, up -->
@@ -271,90 +199,77 @@ A comprehensive collection fo bespoke icons based on the design of Guardian Eygp
 .icon {
   font-family: "Guardian Icons", Georgia, serif; }
 
-/*doc
----
-title: Unstyled inline list
-name: inline-list
-category: Components
----
-Removes bullets, padding and margins from lists.
+@font-face {
+  font-family: "Egyptian Display";
+  font-weight: 100;
+  src: url("../fonts/GdnEgyDE1Thi.otf"); }
+@font-face {
+  font-family: "Egyptian Display";
+  font-weight: 200;
+  src: url("../fonts/GdnEgyDE2Lig.otf"); }
+@font-face {
+  font-family: "Egyptian Display";
+  font-weight: 300;
+  src: url("../fonts/GdnEgyDE3Reg.otf"); }
+@font-face {
+  font-family: "Egyptian Display";
+  font-weight: 400;
+  src: url("../fonts/GdnEgyDE4Med.otf"); }
+@font-face {
+  font-family: "Egyptian Display";
+  font-weight: 600;
+  src: url("../fonts/GdnEgyDE6Bol.otf"); }
+@font-face {
+  font-family: "Egyptian Text";
+  src: url("../fonts/EgyptianText-Regular.otf"); }
+@font-face {
+  font-family: "Egyptian Text";
+  font-style: italic;
+  src: url("../fonts/EgyptianText-RegularItalic.otf"); }
+@font-face {
+  font-family: "Egyptian Text";
+  font-weight: bold;
+  src: url("../fonts/EgyptianText-Medium.otf"); }
+@font-face {
+  font-family: "Egyptian Text";
+  font-style: italic;
+  font-weight: bold;
+  src: url("../fonts/EgyptianText-MediumItalic.otf"); }
+@font-face {
+  font-family: "Titlepiece";
+  font-weight: 600;
+  src: url("../fonts/GdnTitlepiece.otf"); }
+@font-face {
+  font-family: "Agate Sans";
+  src: url("../fonts/GdnAgaSanTwoAS32Reg.otf"); }
+@font-face {
+  font-family: "Agate Sans";
+  font-style: italic;
+  src: url("../fonts/GdnAgaSanTwoAS32RegIta.otf"); }
+@font-face {
+  font-family: "Agate Sans";
+  font-weight: bold;
+  src: url("../fonts/GdnAgaSanTwoAS62Bol.otf"); }
+@font-face {
+  font-family: "Agate Sans";
+  font-weight: bold;
+  font-style: italic;
+  src: url("../fonts/GdnAgaSanTwoAS62BolIta.otf"); }
+@font-face {
+  font-family: "Guardian Icons";
+  src: url("../fonts/guardianicons.ttf"); }
+html {
+  font-size: 62.5%;
+  font-family: "Egyptian Text", Georgia, serif; }
 
-```html_example
-<ul class="inline-list">
-	<li class="inline-list__item"><a href="#">Guardian</a></li>
-	<li class="inline-list__item"><a href="#">Mobile</a></li>
-	<li class="inline-list__item"><a href="#">Applications</a></li>
-</ul>
-```
-*/
-.inline-list {
-  list-style: none;
-  padding: 0;
-  margin: 0; }
-
-.inline-list__item {
-  white-space: nowrap;
-  display: inline-block; }
-
-/*doc
----
-title: Resizable
-name: resizable
-category: Components
----
-Makes a block of text resizable, based on user text size setting.
-
-```html_example
-<div class="resizable">Italian authorities warn of crisis as data shows sharp increase in those making treacherous sea crossing to southern Europe.</div>
-```
-*/
-.font-size-1 .resizable {
-  font-size: 70%;
-  line-height: 1.5; }
-.font-size-2 .resizable {
-  font-size: 80%;
-  line-height: 1.5; }
-.font-size-3 .resizable {
-  font-size: 90%;
-  line-height: 1.5; }
-.font-size-4 .resizable {
-  font-size: 100%;
-  line-height: 1.5; }
-.font-size-5 .resizable {
-  font-size: 110%;
-  line-height: 1.5; }
-.font-size-6 .resizable {
-  font-size: 120%;
-  line-height: 1.5; }
-.font-size-7 .resizable {
-  font-size: 130%;
-  line-height: 1.5; }
-.font-size-8 .resizable {
-  font-size: 140%;
-  line-height: 1.5; }
-.font-size-9 .resizable {
-  font-size: 150%;
-  line-height: 1.5; }
-.font-size-10 .resizable {
-  font-size: 160%;
-  line-height: 1.5; }
-
-/*doc
----
-title: Selectable
-name: selectable
-category: Components
----
-Makes a block of text selectable. Useful for portions of text a user may wish to copy and paste.
-
-```html_example
-<div class="selectable">Lib Dem leader aiming to convince supporters that coalition remains worthwhile, as his ratings plummet.</div>
-```
-*/
-.selectable,
-.selectable * {
-  -webkit-user-select: text;
-  -webkit-touch-callout: default; }
+@media all and (max-width: 40.615em) {
+  body {
+    font-size: 1.6em;
+    line-height: 1.5em; } }
+@media all and (min-width: 40.625em) {
+  body {
+    font-size: 1.8em;
+    line-height: 1.444em; } }
 
 /*doc
 ---
@@ -684,7 +599,7 @@ title: Headline
 name: headline
 category: Modules
 ---
-Display the title of an article.
+Display an article's headline.
 
 ```html_example
 <h1 class="headline">Google’s driverless cars are a boon for safety and climate, but not for privacy</h1>
@@ -706,6 +621,31 @@ Display the title of an article.
     .headline {
       font-size: 4.8rem;
       line-height: 4.8rem; } }
+
+/*doc
+---
+title: Unstyled inline list
+name: inline-list
+category: Modules
+---
+Removes bullets, padding and margins from lists.
+
+```html_example
+<ul class="inline-list">
+	<li class="inline-list__item"><a href="#">Guardian</a></li>
+	<li class="inline-list__item"><a href="#">Mobile</a></li>
+	<li class="inline-list__item"><a href="#">Applications</a></li>
+</ul>
+```
+*/
+.inline-list {
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+
+.inline-list__item {
+  white-space: nowrap;
+  display: inline-block; }
 
 /*doc
 ---
@@ -831,6 +771,49 @@ Navigate between different sections of a page.
 
 /*doc
 ---
+title: Resizable
+name: resizable
+category: Modules
+---
+Makes a block of text resizable, based on user text size setting.
+
+```html_example
+<div class="resizable">Italian authorities warn of crisis as data shows sharp increase in those making treacherous sea crossing to southern Europe.</div>
+```
+*/
+.font-size-1 .resizable {
+  font-size: 70%;
+  line-height: 1.5; }
+.font-size-2 .resizable {
+  font-size: 80%;
+  line-height: 1.5; }
+.font-size-3 .resizable {
+  font-size: 90%;
+  line-height: 1.5; }
+.font-size-4 .resizable {
+  font-size: 100%;
+  line-height: 1.5; }
+.font-size-5 .resizable {
+  font-size: 110%;
+  line-height: 1.5; }
+.font-size-6 .resizable {
+  font-size: 120%;
+  line-height: 1.5; }
+.font-size-7 .resizable {
+  font-size: 130%;
+  line-height: 1.5; }
+.font-size-8 .resizable {
+  font-size: 140%;
+  line-height: 1.5; }
+.font-size-9 .resizable {
+  font-size: 150%;
+  line-height: 1.5; }
+.font-size-10 .resizable {
+  font-size: 160%;
+  line-height: 1.5; }
+
+/*doc
+---
 title: Review rating
 name: review-rating
 category: Modules
@@ -925,6 +908,23 @@ Display the section for which an article falls under.
     .section {
       font-size: 2.4rem;
       line-height: 2.4rem; } }
+
+/*doc
+---
+title: Selectable
+name: selectable
+category: Modules
+---
+Makes a block of text selectable. Useful for portions of text a user may wish to copy and paste.
+
+```html_example
+<div class="selectable">Lib Dem leader aiming to convince supporters that coalition remains worthwhile, as his ratings plummet.</div>
+```
+*/
+.selectable,
+.selectable * {
+  -webkit-user-select: text;
+  -webkit-touch-callout: default; }
 
 /*doc
 ---
@@ -3363,6 +3363,46 @@ Headline and image
     right: 0;
     bottom: 0;
     left: 0; }
+
+.offline .element-video,
+.offline .element-embed,
+.offline .element-map,
+.offline .element-audio {
+  overflow: hidden;
+  position: relative;
+  background-color: #dcdad5; }
+  .offline .element-video:before,
+  .offline .element-embed:before,
+  .offline .element-map:before,
+  .offline .element-audio:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: #dcdad5;
+    position: absolute;
+    z-index: 20; }
+  .offline .element-video iframe,
+  .offline .element-video object,
+  .offline .element-video embed,
+  .offline .element-video video,
+  .offline .element-embed iframe,
+  .offline .element-embed object,
+  .offline .element-embed embed,
+  .offline .element-embed video,
+  .offline .element-map iframe,
+  .offline .element-map object,
+  .offline .element-map embed,
+  .offline .element-map video,
+  .offline .element-audio iframe,
+  .offline .element-audio object,
+  .offline .element-audio embed,
+  .offline .element-audio video {
+    z-index: -5; }
+  .offline .element-video figcaption,
+  .offline .element-embed figcaption,
+  .offline .element-map figcaption,
+  .offline .element-audio figcaption {
+    background-color: white; }
 
 figure img {
   display: block; }
