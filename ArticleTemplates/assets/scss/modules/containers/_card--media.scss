@@ -1,0 +1,95 @@
+/*doc
+---
+title: Card (media article)
+name: card--media
+category: Containers
+---
+Display a media article card.
+
+```html_example
+<div class="container">
+	<div class="card card--media">
+		<div class="card__container">
+			<div class="card__header">
+				<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+			</div>
+			<div class="card__object">
+				<p class="standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
+			</div>
+			<div class="card__footer">
+				<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+				<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="card card--media has-image">
+		<div class="card__container">
+			<div class="card__header">
+				<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+			</div>
+			<div class="card__object">
+				<img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
+			</div>
+			<div class="card__footer">
+				<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+				<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="card card--media has-image">
+		<div class="card__container">
+			<div class="card__header">
+				<h3 class="card__title"><span class="icon">&#xe043;</span><span class="series">Series title:</span> Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+			</div>
+			<div class="card__object">
+				<img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
+				<a class="touchpoint touchpoint--primary" href="#">
+					<span class="touchpoint__button icon">&#xe04B;</span>
+					<span class="touchpoint__label">2:19</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+```
+*/
+
+.card--media {
+	background-color: $media-bg;
+	border-top-color: $media;
+
+	.card__title {
+		color: $white;
+
+		.icon {
+			color: $media;
+			margin-right: 6px;
+		}
+	}
+
+	.standfirst {
+		color: $white;
+	}
+
+	.series {
+		color: $media;
+		&:after {
+			content:"\a";
+			white-space: pre;
+		}
+	}
+
+	.touchpoint--primary {
+		.touchpoint__button {
+			background-color: $media;
+			color: $media-bg;
+		}
+	}
+
+	.touchpoint__label {
+		color: $media;
+		font-weight: bold;
+	}
+}

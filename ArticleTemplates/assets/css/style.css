@@ -1054,6 +1054,479 @@ Secondary and small
 
 /*doc
 ---
+title: Card (standard article)
+name: card
+category: Containers
+---
+Display a standard article card.
+
+```html_example
+<div class="container">
+	<div class="card">
+		<div class="card__container">
+			<div class="card__header">
+				<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+			</div>
+			<div class="card__object">
+				<p class="standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
+			</div>
+			<div class="card__footer">
+				<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+				<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="card has-image">
+		<div class="card__container">
+			<div class="card__header">
+				<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+			</div>
+			<div class="card__object">
+				<img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
+			</div>
+			<div class="card__footer">
+				<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+				<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+			</div>
+		</div>
+	</div>
+</div>
+```
+*/
+.card {
+  background-color: white;
+  border-top: 1px solid #4bc6df;
+  border-bottom: 1px solid #dcdad5;
+  position: relative; }
+  @media all and (max-width: 28.115em) {
+    .card {
+      margin: 2.89855% 2.89855% 0 2.89855%; } }
+  @media all and (min-width: 28.125em) {
+    .card {
+      margin-bottom: 4.34783%; }
+      .card:before {
+        content: "";
+        padding-top: 133%;
+        display: block; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    .card {
+      margin: 2.12766% 2.12766% 0 0;
+      width: 48.93617%; }
+      .card:nth-child(2n) {
+        margin-right: 0; } }
+  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    .card {
+      margin: 1.40845% 1.40845% 0 0;
+      width: 32.39437%; }
+      .card:nth-child(3n) {
+        margin-right: 0; } }
+  @media all and (min-width: 56.25em) {
+    .card {
+      margin: 1.05263% 1.05263% 0 0;
+      width: 24.21053%; }
+      .card:nth-child(4n) {
+        margin-right: 0; } }
+  @media all and (max-width: 28.115em) {
+    .card .card__container {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-direction: normal;
+      -webkit-box-orient: vertical;
+      -webkit-flex-direction: column;
+      flex-direction: column; } }
+  @media all and (min-width: 28.125em) {
+    .card .card__container {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0; } }
+  .card .card__header,
+  .card .card__object {
+    padding: 3px 6px 0px 6px; }
+    @media all and (min-width: 28.125em) {
+      .card .card__header,
+      .card .card__object {
+        height: 50%;
+        overflow: hidden; } }
+  .card .card__header {
+    margin-bottom: 1em; }
+    @media all and (max-width: 28.115em) {
+      .card .card__header {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        -webkit-box-ordinal-group: 2;
+        -webkit-order: 1;
+        order: 1; } }
+  @media all and (max-width: 28.115em) {
+    .card .card__object {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      flex: 1;
+      -webkit-box-ordinal-group: 3;
+      -webkit-order: 2;
+      order: 2; } }
+  @media all and (min-width: 28.125em) {
+    .card .card__object {
+      overflow: hidden;
+      width: 100%;
+      position: absolute;
+      bottom: 0; } }
+  .card.has-image .card__object {
+    padding: 0; }
+    @media all and (max-width: 28.115em) {
+      .card.has-image .card__object {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        -webkit-box-ordinal-group: 4;
+        -webkit-order: 3;
+        order: 3; } }
+    @media all and (min-width: 28.125em) {
+      .card.has-image .card__object .card__image {
+        height: 100%;
+        width: auto;
+        margin-bottom: -1px; } }
+  .card .card__footer {
+    color: #999999;
+    font-family: "Agate Sans", sans-serif;
+    font-size: 1.4rem;
+    line-height: 1;
+    margin-top: 1em;
+    overflow: hidden; }
+    @media all and (max-width: 28.115em) {
+      .card .card__footer {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        -webkit-box-ordinal-group: 4;
+        -webkit-order: 3;
+        order: 3; } }
+    @media all and (min-width: 28.125em) {
+      .card .card__footer {
+        position: absolute;
+        z-index: 1;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%; } }
+  .card.has-image .card__footer {
+    bottom: 50%; }
+    @media all and (max-width: 28.115em) {
+      .card.has-image .card__footer {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        -webkit-box-ordinal-group: 3;
+        -webkit-order: 2;
+        order: 2; } }
+  .card .card__title,
+  .card .card__byline,
+  .card .card__rating {
+    font-family: "Egyptian Display", Georgia, serif;
+    font-weight: 200;
+    font-size: 2.2rem;
+    line-height: 2.6rem;
+    text-rendering: optimizeLegibility; }
+  .card .review-rating {
+    font-size: 18px;
+    line-height: 28px; }
+  .card .standfirst {
+    color: #666666;
+    font-family: "Egyptian Text", Georgia, serif;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    text-rendering: optimizeLegibility; }
+  .card .touchpoint {
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+    padding: 6px 6px 6px 6px; }
+  .card .card__image {
+    width: 100%;
+    display: block; }
+  .card .card__cutout {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 0; }
+  .card .card__meta {
+    width: 21.73913%;
+    height: 24px;
+    padding: 0px 0px 0px 6px;
+    border-left: 1px solid #dcdad5;
+    display: block;
+    float: left; }
+    .card .card__meta:first-child {
+      border-left: 0 none; }
+    .card .card__meta .icon {
+      margin-right: 3px; }
+  .card .card__timestamp {
+    padding: 0px 60px 0px 6px; }
+
+.container {
+  overflow: hidden; }
+  @media all and (min-width: 28.125em) {
+    .container .card {
+      float: left; } }
+  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    .container .card:nth-of-type(4) {
+      display: none; } }
+
+/*doc
+---
+title: Card (comment article)
+name: card--comment
+category: Containers
+---
+Display a comment article card.
+
+```html_example
+<div class="container">
+	<div class="card card--comment">
+		<div class="card__container">
+			<div class="card__header">
+				<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+			</div>
+			<div class="card__object">
+				<p class="standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
+			</div>
+			<div class="card__footer">
+				<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+				<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="card card--comment has-image">
+		<div class="card__container">
+			<div class="card__header">
+				<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+			</div>
+			<div class="card__object">
+				<img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
+			</div>
+			<div class="card__footer">
+				<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+				<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+			</div>
+		</div>
+	</div>
+</div>
+```
+*/
+.card--comment {
+  background-color: #eeebe8;
+  border-top-color: #e6711b; }
+  .card--comment .card__title .icon {
+    color: #999999;
+    font-size: 150%;
+    margin-right: 6px;
+    line-height: 0.1%;
+    top: 6px; }
+  .card--comment .card__byline {
+    color: #e6711b; }
+  .card--comment .standfirst {
+    padding-right: 2.10526%;
+    position: relative;
+    z-index: 1; }
+  .card--comment .card__footer {
+    bottom: 0; }
+
+/*doc
+---
+title: Card (feature article)
+name: card--feature
+category: Containers
+---
+Display a feature article card.
+
+```html_example
+<div class="container">
+	<div class="card card--feature">
+		<div class="card__container">
+			<div class="card__header">
+				<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+			</div>
+			<div class="card__object">
+				<p class="standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
+			</div>
+			<div class="card__footer">
+				<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+				<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="card card--feature has-image">
+		<div class="card__container">
+			<div class="card__header">
+				<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+			</div>
+			<div class="card__object">
+				<img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
+			</div>
+			<div class="card__footer">
+				<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+				<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+			</div>
+		</div>
+	</div>
+</div>
+```
+*/
+.card--feature {
+  background-color: #951c55;
+  border-top-color: transparent; }
+  .card--feature * {
+    color: white; }
+  .card--feature .standfirst {
+    color: white; }
+  .card--feature .card__meta {
+    border-color: rgba(220, 218, 213, 0.34); }
+
+/*doc
+---
+title: Card (liveblog)
+name: card--live
+category: Containers
+---
+Display a liveblog card.
+
+```html_example
+<div class="container">
+	<div class="card card--live">
+		<div class="card__container">
+			<div class="card__header">
+				<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+			</div>
+			<div class="card__object">
+				<p class="standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
+			</div>
+			<div class="card__footer">
+				<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+				<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="card card--live has-image">
+		<div class="card__container">
+			<div class="card__header">
+				<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+			</div>
+			<div class="card__object">
+				<img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
+			</div>
+			<div class="card__footer">
+				<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+				<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+			</div>
+		</div>
+	</div>
+</div>
+```
+*/
+.card--live {
+  border-top-color: #b51800; }
+  .card--live .card__timestamp {
+    color: #b51800;
+    font-weight: bold; }
+    .card--live .card__timestamp:before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      background-color: #b51800;
+      border-radius: 100%;
+      display: block;
+      float: left;
+      margin-right: 3px;
+      margin-top: 2px; }
+
+/*doc
+---
+title: Card (media article)
+name: card--media
+category: Containers
+---
+Display a media article card.
+
+```html_example
+<div class="container">
+	<div class="card card--media">
+		<div class="card__container">
+			<div class="card__header">
+				<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+			</div>
+			<div class="card__object">
+				<p class="standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
+			</div>
+			<div class="card__footer">
+				<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+				<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="card card--media has-image">
+		<div class="card__container">
+			<div class="card__header">
+				<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+			</div>
+			<div class="card__object">
+				<img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
+			</div>
+			<div class="card__footer">
+				<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+				<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="card card--media has-image">
+		<div class="card__container">
+			<div class="card__header">
+				<h3 class="card__title"><span class="icon">&#xe043;</span><span class="series">Series title:</span> Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+			</div>
+			<div class="card__object">
+				<img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
+				<a class="touchpoint touchpoint--primary" href="#">
+					<span class="touchpoint__button icon">&#xe04B;</span>
+					<span class="touchpoint__label">2:19</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+```
+*/
+.card--media {
+  background-color: #333333;
+  border-top-color: #ffbb00; }
+  .card--media .card__title {
+    color: white; }
+    .card--media .card__title .icon {
+      color: #ffbb00;
+      margin-right: 6px; }
+  .card--media .standfirst {
+    color: white; }
+  .card--media .series {
+    color: #ffbb00; }
+    .card--media .series:after {
+      content: "\a";
+      white-space: pre; }
+  .card--media .touchpoint--primary .touchpoint__button {
+    background-color: #ffbb00;
+    color: #333333; }
+  .card--media .touchpoint__label {
+    color: #ffbb00;
+    font-weight: bold; }
+
+/*doc
+---
 title: Bar chart
 name: bar-chart
 category: Charts
@@ -1480,101 +1953,6 @@ Adds typographic styling to content taken from the Guardian Content API.
   .table td {
     border-top: 1px solid #f6f6f6;
     padding: 3px 12px 12px 0px; }
-
-/*doc
----
-title: Call-to-action
-name: aside-witness
-category: GuardianWitness
----
-Display a call-to-action asking for contributions to a Guardian Witness assignment.
-
-```html_example
-<aside class="aside aside-witness js--positioned">
-	<a class="touchpoint touchpoint--primary" href="x-gu://witness/52eb8ebee4b06a13a3531a7a">
-		<span class="touchpoint__button icon">&#xe050;</span>
-		<span class="touchpoint__label">Contribute to this story with GuardianWitness</span>
-	</a>
-</aside>
-
-<p>You could be in with the chance to win a money-can't-buy opportunity to mingle with the stars simply by uploading a picture or video of you recreating a scene from one of this year's Bafta-nominated movies. One lucky person who, in the eyes of our judges, uploads the best entry will win a pair of tickets to the Bafta awards ceremony at London's Royal Opera House on Sunday 16 February.</p>
-```
-*/
-.aside-witness .touchpoint .touchpoint__button {
-  background-color: #3e454c;
-  color: #4bc6df; }
-.aside-witness .touchpoint .touchpoint__label {
-  color: #3e454c;
-  margin: 6px 0px 6px 0px;
-  padding: 0; }
-.aside-witness .touchpoint:active .touchpoint__button {
-  background-color: #4bc6df;
-  color: #3e454c; }
-.aside-witness .touchpoint:active .touchpoint__label {
-  color: #4bc6df; }
-
-/*doc
----
-title: Embed
-name: element-witness
-category: GuardianWitness
----
-Display a Guardian Witness submission.
-
-```html_example
-<figure class="element element-witness element-witness-image" itemtype="http://schema.org/ImageObject" data-media-id="https://witness.theguardian.com/assignment/516fe68ee4b0b434f8243dbf/294536">
-	<div class="element-witness--main">
-		<a href="https://witness.theguardian.com/assignment/516fe68ee4b0b434f8243dbf/294536" itemprop="url">
-			<img src="https://n0tice-static.s3.amazonaws.com/images/reports/microblogs/mediumoriginalaspectdouble/d8c87361658f6be886c652597695db0f.jpg" alt="Craggy Island" itemprop="contentURL">
-		</a>
-		<figcaption>
-			<h3 class="element-witness--title" itemprop="name"><a href="https://witness.theguardian.com/assignment/516fe68ee4b0b434f8243dbf/294536" itemprop="url">Craggy Island</a></h3>
-			<div itemprop="description">
-				<p>Father Teds house. Not on an Island, but in the Burren in Co. Clare.</p>
-				<p>The Burren is 100 sq miles of rocky limestone 'karst' landscape famous for its unusual flora and fauna.</p>
-			</div>
-		</figcaption>
-	</div>
-	<footer class="element-witness--footer">
-		<p class="element-witness--source">Sent via <a class="element-witness--brand" href="https://witness.theguardian.com/" itemprop="provider">GuardianWitness</a></p>
-		<div class="element-witness--metadata">
-			<p class="element-witness--author" itemprop="author" itemtype="http://schema.org/Person">By <a class="element-witness--author-name" href="https://witness.theguardian.com/user/peddyr" itemprop="name">peddyr</a></p>
-			<p class="element-witness--date"><time itemprop="dateCreated" datetime="2013-04-25T21:29:23Z">25 April 2013, 22:29</time></p>
-		</div>
-	</footer>
-</figure>
-```
-*/
-.element-witness {
-  font-family: "Agate Sans", sans-serif; }
-  @media all and (max-width: 40.615em) {
-    .element-witness {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
-    .element-witness {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-  .element-witness img {
-    max-width: 100%; }
-  .element-witness p {
-    color: #666666;
-    margin: 0; }
-
-.element-witness--title {
-  font-weight: bold; }
-
-.element-witness--footer {
-  color: #999999;
-  padding: 6px 0px 12px 0px; }
-
-.element-witness--author {
-  display: inline; }
-
-.element-witness--date {
-  display: inline; }
-  .element-witness--date:before {
-    content: "\00B7   "; }
 
 /*doc
 ---
@@ -2297,6 +2675,101 @@ Display a team line-up including substitutions and bookings.
       .replacement .team-lineup__player__replacement {
         display: block; } }
 
+/*doc
+---
+title: Call-to-action
+name: aside-witness
+category: GuardianWitness
+---
+Display a call-to-action asking for contributions to a Guardian Witness assignment.
+
+```html_example
+<aside class="aside aside-witness js--positioned">
+	<a class="touchpoint touchpoint--primary" href="x-gu://witness/52eb8ebee4b06a13a3531a7a">
+		<span class="touchpoint__button icon">&#xe050;</span>
+		<span class="touchpoint__label">Contribute to this story with GuardianWitness</span>
+	</a>
+</aside>
+
+<p>You could be in with the chance to win a money-can't-buy opportunity to mingle with the stars simply by uploading a picture or video of you recreating a scene from one of this year's Bafta-nominated movies. One lucky person who, in the eyes of our judges, uploads the best entry will win a pair of tickets to the Bafta awards ceremony at London's Royal Opera House on Sunday 16 February.</p>
+```
+*/
+.aside-witness .touchpoint .touchpoint__button {
+  background-color: #3e454c;
+  color: #4bc6df; }
+.aside-witness .touchpoint .touchpoint__label {
+  color: #3e454c;
+  margin: 6px 0px 6px 0px;
+  padding: 0; }
+.aside-witness .touchpoint:active .touchpoint__button {
+  background-color: #4bc6df;
+  color: #3e454c; }
+.aside-witness .touchpoint:active .touchpoint__label {
+  color: #4bc6df; }
+
+/*doc
+---
+title: Embed
+name: element-witness
+category: GuardianWitness
+---
+Display a Guardian Witness submission.
+
+```html_example
+<figure class="element element-witness element-witness-image" itemtype="http://schema.org/ImageObject" data-media-id="https://witness.theguardian.com/assignment/516fe68ee4b0b434f8243dbf/294536">
+	<div class="element-witness--main">
+		<a href="https://witness.theguardian.com/assignment/516fe68ee4b0b434f8243dbf/294536" itemprop="url">
+			<img src="https://n0tice-static.s3.amazonaws.com/images/reports/microblogs/mediumoriginalaspectdouble/d8c87361658f6be886c652597695db0f.jpg" alt="Craggy Island" itemprop="contentURL">
+		</a>
+		<figcaption>
+			<h3 class="element-witness--title" itemprop="name"><a href="https://witness.theguardian.com/assignment/516fe68ee4b0b434f8243dbf/294536" itemprop="url">Craggy Island</a></h3>
+			<div itemprop="description">
+				<p>Father Teds house. Not on an Island, but in the Burren in Co. Clare.</p>
+				<p>The Burren is 100 sq miles of rocky limestone 'karst' landscape famous for its unusual flora and fauna.</p>
+			</div>
+		</figcaption>
+	</div>
+	<footer class="element-witness--footer">
+		<p class="element-witness--source">Sent via <a class="element-witness--brand" href="https://witness.theguardian.com/" itemprop="provider">GuardianWitness</a></p>
+		<div class="element-witness--metadata">
+			<p class="element-witness--author" itemprop="author" itemtype="http://schema.org/Person">By <a class="element-witness--author-name" href="https://witness.theguardian.com/user/peddyr" itemprop="name">peddyr</a></p>
+			<p class="element-witness--date"><time itemprop="dateCreated" datetime="2013-04-25T21:29:23Z">25 April 2013, 22:29</time></p>
+		</div>
+	</footer>
+</figure>
+```
+*/
+.element-witness {
+  font-family: "Agate Sans", sans-serif; }
+  @media all and (max-width: 40.615em) {
+    .element-witness {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) {
+    .element-witness {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  .element-witness img {
+    max-width: 100%; }
+  .element-witness p {
+    color: #666666;
+    margin: 0; }
+
+.element-witness--title {
+  font-weight: bold; }
+
+.element-witness--footer {
+  color: #999999;
+  padding: 6px 0px 12px 0px; }
+
+.element-witness--author {
+  display: inline; }
+
+.element-witness--date {
+  display: inline; }
+  .element-witness--date:before {
+    content: "\00B7   "; }
+
 .article {
   font-family: "Egyptian Text", Georgia, serif;
   background-color: white;
@@ -2441,490 +2914,6 @@ Display a team line-up including substitutions and bookings.
     .article__header.cutout .inner-header {
       min-height: 320px;
       background-size: contain; } }
-
-/*doc
----
-title: Standard article
-name: 1-standard
-category: Partials
----
-Headline and standfirst
-
-```html_example
-<div class="card">
-	<div class="card__container">
-		<div class="card__header">
-			<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-		</div>
-		<div class="card__object">
-			<p class="standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
-		</div>
-		<div class="card__footer">
-			<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
-			<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
-		</div>
-	</div>
-</div>
-```
-
-Headline and image
-
-```html_example
-<div class="card has-image">
-	<div class="card__container">
-		<div class="card__header">
-			<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-		</div>
-		<div class="card__object">
-			<img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
-		</div>
-		<div class="card__footer">
-			<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
-			<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
-		</div>
-	</div>
-</div>
-```
-*/
-.card {
-  background-color: white;
-  border-top: 1px solid #4bc6df;
-  border-bottom: 1px solid #dcdad5;
-  position: relative; }
-  @media all and (max-width: 28.115em) {
-    .card {
-      margin: 2.89855% 2.89855% 0 2.89855%; } }
-  @media all and (min-width: 28.125em) {
-    .card {
-      margin-bottom: 4.34783%; }
-      .card:before {
-        content: "";
-        padding-top: 133%;
-        display: block; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    .card {
-      margin: 2.12766% 2.12766% 0 0;
-      width: 48.93617%; }
-      .card:nth-child(2n) {
-        margin-right: 0; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    .card {
-      margin: 1.40845% 1.40845% 0 0;
-      width: 32.39437%; }
-      .card:nth-child(3n) {
-        margin-right: 0; } }
-  @media all and (min-width: 56.25em) {
-    .card {
-      margin: 1.05263% 1.05263% 0 0;
-      width: 24.21053%; }
-      .card:nth-child(4n) {
-        margin-right: 0; } }
-  @media all and (max-width: 28.115em) {
-    .card .card__container {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-box-direction: normal;
-      -webkit-box-orient: vertical;
-      -webkit-flex-direction: column;
-      flex-direction: column; } }
-  @media all and (min-width: 28.125em) {
-    .card .card__container {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0; } }
-  .card .card__header,
-  .card .card__object {
-    padding: 3px 6px 0px 6px; }
-    @media all and (min-width: 28.125em) {
-      .card .card__header,
-      .card .card__object {
-        height: 50%;
-        overflow: hidden; } }
-  .card .card__header {
-    margin-bottom: 1em; }
-    @media all and (max-width: 28.115em) {
-      .card .card__header {
-        -webkit-box-flex: 1;
-        -webkit-flex: 1;
-        flex: 1;
-        -webkit-box-ordinal-group: 2;
-        -webkit-order: 1;
-        order: 1; } }
-  @media all and (max-width: 28.115em) {
-    .card .card__object {
-      -webkit-box-flex: 1;
-      -webkit-flex: 1;
-      flex: 1;
-      -webkit-box-ordinal-group: 3;
-      -webkit-order: 2;
-      order: 2; } }
-  @media all and (min-width: 28.125em) {
-    .card .card__object {
-      overflow: hidden;
-      width: 100%;
-      position: absolute;
-      bottom: 0; } }
-  .card.has-image .card__object {
-    padding: 0; }
-    @media all and (max-width: 28.115em) {
-      .card.has-image .card__object {
-        -webkit-box-flex: 1;
-        -webkit-flex: 1;
-        flex: 1;
-        -webkit-box-ordinal-group: 4;
-        -webkit-order: 3;
-        order: 3; } }
-    @media all and (min-width: 28.125em) {
-      .card.has-image .card__object .card__image {
-        height: 100%;
-        width: auto;
-        margin-bottom: -1px; } }
-  .card .card__footer {
-    color: #999999;
-    font-family: "Agate Sans", sans-serif;
-    font-size: 1.4rem;
-    line-height: 1;
-    margin-top: 1em;
-    overflow: hidden; }
-    @media all and (max-width: 28.115em) {
-      .card .card__footer {
-        -webkit-box-flex: 1;
-        -webkit-flex: 1;
-        flex: 1;
-        -webkit-box-ordinal-group: 4;
-        -webkit-order: 3;
-        order: 3; } }
-    @media all and (min-width: 28.125em) {
-      .card .card__footer {
-        position: absolute;
-        z-index: 1;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        width: 100%; } }
-  .card.has-image .card__footer {
-    bottom: 50%; }
-    @media all and (max-width: 28.115em) {
-      .card.has-image .card__footer {
-        -webkit-box-flex: 1;
-        -webkit-flex: 1;
-        flex: 1;
-        -webkit-box-ordinal-group: 3;
-        -webkit-order: 2;
-        order: 2; } }
-  .card .card__title,
-  .card .card__byline,
-  .card .card__rating {
-    font-family: "Egyptian Display", Georgia, serif;
-    font-weight: 200;
-    font-size: 2.2rem;
-    line-height: 2.6rem;
-    text-rendering: optimizeLegibility; }
-  .card .review-rating {
-    font-size: 18px;
-    line-height: 28px; }
-  .card .standfirst {
-    color: #666666;
-    font-family: "Egyptian Text", Georgia, serif;
-    font-size: 1.4rem;
-    line-height: 1.8rem;
-    text-rendering: optimizeLegibility; }
-  .card .touchpoint {
-    position: absolute;
-    bottom: 0;
-    z-index: 2;
-    padding: 6px 6px 6px 6px; }
-  .card .card__image {
-    width: 100%;
-    display: block; }
-  .card .card__cutout {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    z-index: 0; }
-  .card .card__meta {
-    width: 21.73913%;
-    height: 24px;
-    padding: 0px 0px 0px 6px;
-    border-left: 1px solid #dcdad5;
-    display: block;
-    float: left; }
-    .card .card__meta:first-child {
-      border-left: 0 none; }
-    .card .card__meta .icon {
-      margin-right: 3px; }
-  .card .card__timestamp {
-    padding: 0px 60px 0px 6px; }
-
-/*doc
----
-title: Feature article
-name: 2-feature
-category: Partials
----
-Headline and standfirst
-
-```html_example
-<div class="card card--feature">
-	<div class="card__container">
-		<div class="card__header">
-			<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-		</div>
-		<div class="card__object">
-			<p class="standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
-		</div>
-		<div class="card__footer">
-			<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
-			<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
-		</div>
-	</div>
-</div>
-```
-
-Headline and image
-
-```html_example
-<div class="card card--feature has-image">
-	<div class="card__container">
-		<div class="card__header">
-			<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-		</div>
-		<div class="card__object">
-			<img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
-		</div>
-		<div class="card__footer">
-			<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
-			<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
-		</div>
-	</div>
-</div>
-```
-*/
-.card.card--feature {
-  background-color: #951c55;
-  border-top-color: transparent; }
-  .card.card--feature * {
-    color: white; }
-  .card.card--feature .card__meta {
-    border-color: rgba(220, 218, 213, 0.34); }
-
-/*doc
----
-title: Media article
-name: 3-media
-category: Partials
----
-Headline and standfirst
-
-```html_example
-<div class="card card--media">
-	<div class="card__container">
-		<div class="card__header">
-			<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-		</div>
-		<div class="card__object">
-			<p class="standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
-		</div>
-		<div class="card__footer">
-			<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
-			<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
-		</div>
-	</div>
-</div>
-```
-
-Headline and image
-
-```html_example
-<div class="card card--media has-image">
-	<div class="card__container">
-		<div class="card__header">
-			<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-		</div>
-		<div class="card__object">
-			<img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
-		</div>
-		<div class="card__footer">
-			<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
-			<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
-		</div>
-	</div>
-</div>
-```
-
-Headline and video
-
-```html_example
-<div class="card card--media has-image">
-	<div class="card__container">
-		<div class="card__header">
-			<h3 class="card__title"><span class="icon">&#xe043;</span><span class="series">Series title:</span> Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-		</div>
-		<div class="card__object">
-			<img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
-			<a class="touchpoint touchpoint--primary" href="#">
-				<span class="touchpoint__button icon">&#xe04B;</span>
-				<span class="touchpoint__label">2:19</span>
-			</a>
-		</div>
-	</div>
-</div>
-```
-*/
-.card.card--media {
-  background-color: #333333;
-  border-top-color: #ffbb00; }
-  .card.card--media .card__title {
-    color: white; }
-    .card.card--media .card__title .icon {
-      color: #ffbb00;
-      margin-right: 6px; }
-  .card.card--media .standfirst {
-    color: #999999; }
-  .card.card--media .series {
-    color: #ffbb00; }
-    .card.card--media .series:after {
-      content: "\a";
-      white-space: pre; }
-  .card.card--media .touchpoint--primary .toubchpoint__button {
-    background-color: #ffbb00;
-    color: #333333; }
-  .card.card--media .touchpoint__label {
-    color: #ffbb00;
-    font-weight: bold; }
-
-/*doc
----
-title: Comment article
-name: 4-comment
-category: Partials
----
-Headline and standfirst
-
-```html_example
-<div class="card card--comment">
-	<div class="card__container">
-		<div class="card__header">
-			<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-		</div>
-		<div class="card__object">
-			<p class="standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
-		</div>
-		<div class="card__footer">
-			<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
-			<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
-		</div>
-	</div>
-</div>
-```
-
-Headline and image
-
-```html_example
-<div class="card card--comment has-image">
-	<div class="card__container">
-		<div class="card__header">
-			<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-		</div>
-		<div class="card__object">
-			<img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
-		</div>
-		<div class="card__footer">
-			<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
-			<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
-		</div>
-	</div>
-</div>
-```
-*/
-.card.card--comment {
-  background-color: #eeebe8;
-  border-top-color: #e6711b; }
-  .card.card--comment .card__title .icon {
-    color: #999999;
-    font-size: 150%;
-    margin-right: 6px;
-    line-height: 0.1%;
-    top: 6px; }
-  .card.card--comment .card__byline {
-    color: #e6711b; }
-  .card.card--comment .standfirst {
-    padding-right: 2.10526%;
-    position: relative;
-    z-index: 1; }
-  .card.card--comment .card__footer {
-    bottom: 0; }
-
-/*doc
----
-title: Live blog
-name: 5-live
-category: Partials
----
-Headline and standfirst
-
-```html_example
-<div class="card card--live">
-	<div class="card__container">
-		<div class="card__header">
-			<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-		</div>
-		<div class="card__object">
-			<p class="standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
-		</div>
-		<div class="card__footer">
-			<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
-			<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
-		</div>
-	</div>
-</div>
-```
-
-Headline and image
-
-```html_example
-<div class="card card--live has-image">
-	<div class="card__container">
-		<div class="card__header">
-			<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-		</div>
-		<div class="card__object">
-			<img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
-		</div>
-		<div class="card__footer">
-			<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
-			<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
-		</div>
-	</div>
-</div>
-```
-*/
-.card.card--live {
-  border-top-color: #b51800; }
-  .card.card--live .card__timestamp {
-    color: #b51800;
-    font-weight: bold; }
-    .card.card--live .card__timestamp:before {
-      content: "";
-      width: 12px;
-      height: 12px;
-      background-color: #b51800;
-      border-radius: 100%;
-      display: block;
-      float: left;
-      margin-right: 3px;
-      margin-top: 2px; }
-
-@media all and (min-width: 28.125em) {
-  .module .card {
-    float: left; } }
-
-@media all and (min-width: 40.625em) and (max-width: 56.24em) {
-  .module--related .card:nth-of-type(4) {
-    display: none; } }
 
 .block {
   border-top: 1px solid #999999;
@@ -3756,46 +3745,6 @@ figure.figure-inline {
 
 .android .module {
   margin: 0px 12px 0px 12px; }
-
-.offline .element-video,
-.offline .element-embed,
-.offline .element-map,
-.offline .element-audio {
-  overflow: hidden;
-  position: relative;
-  background-color: #dcdad5; }
-  .offline .element-video:before,
-  .offline .element-embed:before,
-  .offline .element-map:before,
-  .offline .element-audio:before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    background-color: #dcdad5;
-    position: absolute;
-    z-index: 20; }
-  .offline .element-video iframe,
-  .offline .element-video object,
-  .offline .element-video embed,
-  .offline .element-video video,
-  .offline .element-embed iframe,
-  .offline .element-embed object,
-  .offline .element-embed embed,
-  .offline .element-embed video,
-  .offline .element-map iframe,
-  .offline .element-map object,
-  .offline .element-map embed,
-  .offline .element-map video,
-  .offline .element-audio iframe,
-  .offline .element-audio object,
-  .offline .element-audio embed,
-  .offline .element-audio video {
-    z-index: -5; }
-  .offline .element-video figcaption,
-  .offline .element-embed figcaption,
-  .offline .element-map figcaption,
-  .offline .element-audio figcaption {
-    background-color: white; }
 
 /*doc
 ---
