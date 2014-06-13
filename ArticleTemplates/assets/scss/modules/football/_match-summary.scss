@@ -1,0 +1,338 @@
+/*doc
+---
+title: Match summary
+name: match-summary
+category: Football
+---
+Display a match summary. The score is updated during the match.
+
+```html_example
+<div class="match-summary is-alerts is-agg">
+
+	<div class="match-status match-status--ft">
+		<p class="match-status__time">FT</p>
+	</div>
+
+	<a class="alerts">
+		<span class="alerts__state--unfollow"><span class="icon">&#xe048;</span></span>
+		<span class="alerts__state--follow"><span class="icon">&#xe049;</span></span>
+	</a>
+
+	<div class="match-summary__meta">
+		<p class="match-summary__meta__competition">Europa League Semi-Final </p>
+		<p class="match-summary__meta__venue">Mestalla</p>
+	</div>
+
+	<div class="match-summary__home">
+		<div class="match-summary__badge">
+			<img src="http://png-resizer.mobile-apps.guardianapis.com/sport/football/crests/26316.png?width=300">
+		</div>
+
+		<div class="match-summary__info match-summary__home__info">
+			<h1 class="match-summary__info__label match-summary__home__info__label headline" onclick="javascript:window.location.href='x-gu://team/http://mobile-apps.guardianapis.com/lists/tag/football/valencia'">Valencia</h1>
+			<p>Sofiane Feghouli&nbsp;14'</p><p>Antonio Beto&nbsp;26' (o.g.)</p><p>Jeremy Mathieu&nbsp;69'</p>
+		</div>
+
+		<div class="match-summary__score">
+			<h1 class="match-summary__score__label match-summary__home__score__label headline">3 <span class="match-summary__score__agg">3</span></h1>
+		</div>
+	</div>
+
+	<div class="match-summary__away">
+		<div class="match-summary__score">
+			<h1 class="match-summary__score__label match-summary__away__score__label headline">1 <span class="match-summary__score__agg">3</span></h1>
+		</div>
+
+		<div class="match-summary__info match-summary__away__info">
+			<h1 class="match-summary__info__label match-summary__away__info__label headline" onclick="javascript:window.location.href='x-gu://team/http://mobile-apps.guardianapis.com/lists/tag/football/sevilla'">Sevilla</h1>
+			<p>Stephane Mbia&nbsp;90' (+4:27)</p>
+		</div>
+
+		<div class="match-summary__badge">
+			<img src="http://png-resizer.mobile-apps.guardianapis.com/sport/football/crests/27821.png?width=300">
+		</div>
+	</div>
+
+	<div class="match-summary__comment">
+		<p class="match-summary__comment__text">Sevilla win on away goals rule</p>
+	</div>
+</div>
+```
+*/
+
+.match-summary {
+	@include padding(1, 1, 0, 1);
+	background-color: $white;
+	position: relative;
+
+	@include mq($from: col1) {
+		&:after {
+			content: " ";
+			background-color: $shadow;
+			display: block;
+			width: 1px;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			right: 50%;
+			bottom: 0;
+			left: 50%;
+		}
+	}
+
+	.headline {
+		@include mq(col1, col2) {
+			font-size: 3.2rem;
+		}
+		@include mq($from: col2) {
+			font-size: 4.0rem;
+		}
+	}
+
+	.match-status {
+		z-index: 10;
+		@include mq($to: col1) {
+			float: left;
+			width: 20%;
+		}
+		@include mq($from: col1) {
+			margin-left: auto;
+			margin-right: auto;
+			position: absolute;
+			left: 0;
+			right: 0;
+		}
+	}
+
+	.match-status__time {
+		width: 100%;
+	}
+
+	&.is-alerts .alerts,
+	&.is-agg .match-summary__score__agg {
+		display: block;
+	}
+
+	// Alerts
+	.alerts {
+		text-align: center;
+		font-size: 200%;
+		font-weight: normal;
+		position: relative;
+		z-index: 20;
+		@include mq($to: col1) {
+			display: inline-block;
+			float: right;
+			@include padding(1, 0, 0, 0);
+			width: auto;
+		}
+		@include mq($from: col1) {
+			margin: 0 auto;
+			width: 60px;
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+
+		span {
+			background-color: white;
+		}
+	}
+}
+
+.match-summary__meta {
+	font-family: $agate-sans;
+	@include meta();
+
+	@include mq($to: col1) {
+		padding: 0 22%;
+	}
+	@include mq($from: col1) {
+		width: 50%;
+	}
+}
+
+.match-summary__meta__competition,
+.match-summary__meta__venue {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.match-summary__home,
+.match-summary__away {
+	hyphens: auto;
+	word-break: break-word;
+	@include mq($to: col1) {
+		@include flexbox;
+		@include flex-direction(row);
+		width: 100%;
+		padding: 10px 0 !important;
+	}
+	@include mq($from: col1) {
+		margin-top: 12px;
+		width: 50%;
+		float: left;
+		display: table;
+		table-layout: fixed;
+	}
+
+	.match-summary__badge,
+	.match-summary__info,
+	.match-summary__score {
+		vertical-align: top;
+		@include mq($from: col1) {
+			display: table-cell;
+		}
+	}
+
+	.match-summary__score {
+		@include mq($to: col1) {
+			width: 15%;
+			min-width: 50px;
+			text-align: right;
+		}
+		@include mq(col1, col2) {
+			width: $base-2 * 7;
+		}
+		@include mq(col2, col3) {
+			width: $base-3 * 10;
+		}
+		@include mq($from: col3) {
+			width: $base-4 * 12;
+		}
+	}
+
+	.match-summary__info {
+		font-family: $agate-sans;
+		@include meta();
+
+		@include mq($to: col1) {
+			width: 65%;
+			padding-left: 8px;
+		}
+		h1 {
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+			padding-bottom: 2px;
+			position: relative;
+			z-index: 25;
+		}
+	}
+
+	.match-summary__badge {
+		height: 60px;
+		@include mq($to: col1) {
+			width: 20%;
+			min-width: 44px;
+		}
+		@include mq($from: col1) {
+			padding-top: 4px;
+		}
+		@include mq(col1, col2) {
+			width: $base-2 * 8;
+		}
+		@include mq(col2, col3) {
+			width: $base-3 * 11;
+		}
+		@include mq($from: col3) {
+			width: $base-4 * 12;
+		}
+
+		img {
+			width: auto;
+			max-width: 100%;
+			height: auto;
+			max-height: 60px;
+			display: block;
+			margin: 2px auto 0 auto;
+		}
+	}
+}
+
+.match-summary__home {
+	@include padding(0, 1, 2, 0);
+	@include mq($to: col1) {
+		border-top: 1px dotted $shadow;
+	}
+
+	.match-summary__score {
+		@include mq($from: col1) {
+			text-align: right;
+		}
+	}
+
+	.match-summary__badge {
+		@include mq(col1, col2) {
+			padding-right: $base-2 * 2;
+		}
+		@include mq(col2, col3) {
+			padding-right: $base-3 * 2;
+		}
+		@include mq($from: col3) {
+			padding-right: $base-4 * 2;
+		}
+	}
+}
+
+.match-summary__away {
+	@include padding(0, 0, 2, 1);
+	@include flex-direction(row-reverse);
+
+	.match-summary__score {
+		@include padding(0, 1, 0, 0);
+		@include mq($to: col1) {
+			padding: 0;
+		}
+	}
+
+	.match-summary__badge {
+		@include mq(col1, col2) {
+			padding-left: $base-2 * 2;
+		}
+		@include mq(col2, col3) {
+			padding-left: $base-3 * 2;
+		}
+		@include mq($from: col3) {
+			padding-left: $base-3 * 2;
+		}
+	}
+}
+
+// Aggregate Scores
+.match-summary__score__agg {
+	display: none;
+	color: $meta;
+	font-size: 50%;
+	line-height: 70%;
+	& > span {
+		display: none;
+	}
+	@include mq($to: col1) {
+		font-size: 75%;
+		margin-top: 6px;
+	}
+	@include mq($from: col1) {
+		margin-top: 10px;
+	}
+}
+
+.match-summary__comment {
+	width: 100%;
+	position: relative;
+	clear: both;
+}
+
+.match-summary .match-summary__comment__text {
+	font-family: $agate-sans;
+	@include meta();
+	@include padding(0.5, 1);
+	background-color: $white;
+	margin: 0 auto;
+	border: 1px solid $shadow;
+	border-bottom: none;
+	width: auto;
+	display: table;
+}

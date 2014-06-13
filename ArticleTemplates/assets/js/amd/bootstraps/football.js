@@ -111,13 +111,13 @@ define([
 			// Allows the header to be updated when there is a goal
 			window.footballGoal = function (side, newScore, scorerHtml, aggScore) {
 				if (aggScore) {
-					$(".football__header").addClass("is-agg");
-					$(".football__header__" + side + "__score__label").html(newScore + " <span class=\"football__header__score__agg\">" + aggScore + "</span>");
+					$(".match-summary").addClass("is-agg");
+					$(".match-summary__" + side + "__score__label").html(newScore + " <span class=\"match-summary__score__agg\">" + aggScore + "</span>");
 				} else {
-					$(".football__header__" + side + "__score__label").html(newScore + " <span class=\"football__header__score__agg\"></span>");
+					$(".match-summary__" + side + "__score__label").html(newScore + " <span class=\"match-summary__score__agg\"></span>");
 				}
-				$(".football__header__" + side + "__info p").remove();
-				$(".football__header__" + side + "__info").append(scorerHtml);
+				$(".match-summary__" + side + "__info p").remove();
+				$(".match-summary__" + side + "__info").append(scorerHtml);
 			};
 		},
 

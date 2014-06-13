@@ -2930,7 +2930,7 @@ Adds typographic styling to content taken from the Guardian Content API.
 
 /*doc
 ---
-title: Match Stats
+title: Match stats
 name: match-stats
 category: Football
 ---
@@ -3087,7 +3087,7 @@ Display comparison of possession, goal attempts, corners and fouls that occurred
 
 /*doc
 ---
-title: Match Status
+title: Match status
 name: match-status
 category: Football
 ---
@@ -3179,6 +3179,7 @@ Full time
   background-image: url("../img/match-status.svg");
   background-repeat: no-repeat;
   background-size: cover;
+  border-radius: 22px;
   width: 44px;
   height: 44px;
   display: table; }
@@ -3239,6 +3240,345 @@ Full time
 .match-status--et {
   color: #4bc6df;
   background-image: url("../img/match-status--et.svg"); }
+
+/*doc
+---
+title: Match summary
+name: match-summary
+category: Football
+---
+Display a match summary. The score is updated during the match.
+
+```html_example
+<div class="match-summary is-alerts is-agg">
+
+	<div class="match-status match-status--ft">
+		<p class="match-status__time">FT</p>
+	</div>
+
+	<a class="alerts">
+		<span class="alerts__state--unfollow"><span class="icon">&#xe048;</span></span>
+		<span class="alerts__state--follow"><span class="icon">&#xe049;</span></span>
+	</a>
+
+	<div class="match-summary__meta">
+		<p class="match-summary__meta__competition">Europa League Semi-Final </p>
+		<p class="match-summary__meta__venue">Mestalla</p>
+	</div>
+
+	<div class="match-summary__home">
+		<div class="match-summary__badge">
+			<img src="http://png-resizer.mobile-apps.guardianapis.com/sport/football/crests/26316.png?width=300">
+		</div>
+
+		<div class="match-summary__info match-summary__home__info">
+			<h1 class="match-summary__info__label match-summary__home__info__label headline" onclick="javascript:window.location.href='x-gu://team/http://mobile-apps.guardianapis.com/lists/tag/football/valencia'">Valencia</h1>
+			<p>Sofiane Feghouli&nbsp;14'</p><p>Antonio Beto&nbsp;26' (o.g.)</p><p>Jeremy Mathieu&nbsp;69'</p>
+		</div>
+
+		<div class="match-summary__score">
+			<h1 class="match-summary__score__label match-summary__home__score__label headline">3 <span class="match-summary__score__agg">3</span></h1>
+		</div>
+	</div>
+
+	<div class="match-summary__away">
+		<div class="match-summary__score">
+			<h1 class="match-summary__score__label match-summary__away__score__label headline">1 <span class="match-summary__score__agg">3</span></h1>
+		</div>
+
+		<div class="match-summary__info match-summary__away__info">
+			<h1 class="match-summary__info__label match-summary__away__info__label headline" onclick="javascript:window.location.href='x-gu://team/http://mobile-apps.guardianapis.com/lists/tag/football/sevilla'">Sevilla</h1>
+			<p>Stephane Mbia&nbsp;90' (+4:27)</p>
+		</div>
+
+		<div class="match-summary__badge">
+			<img src="http://png-resizer.mobile-apps.guardianapis.com/sport/football/crests/27821.png?width=300">
+		</div>
+	</div>
+
+	<div class="match-summary__comment">
+		<p class="match-summary__comment__text">Sevilla win on away goals rule</p>
+	</div>
+</div>
+```
+*/
+.match-summary {
+  padding: 12px 12px 0px 12px;
+  background-color: white;
+  position: relative; }
+  @media all and (min-width: 28.125em) {
+    .match-summary:after {
+      content: " ";
+      background-color: #dcdad5;
+      display: block;
+      width: 1px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 50%;
+      bottom: 0;
+      left: 50%; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    .match-summary .headline {
+      font-size: 3.2rem; } }
+  @media all and (min-width: 40.625em) {
+    .match-summary .headline {
+      font-size: 4.0rem; } }
+  .match-summary .match-status {
+    z-index: 10; }
+    @media all and (max-width: 28.115em) {
+      .match-summary .match-status {
+        float: left;
+        width: 20%; } }
+    @media all and (min-width: 28.125em) {
+      .match-summary .match-status {
+        margin-left: auto;
+        margin-right: auto;
+        position: absolute;
+        left: 0;
+        right: 0; } }
+  .match-summary .match-status__time {
+    width: 100%; }
+  .match-summary.is-alerts .alerts, .match-summary.is-agg .match-summary__score__agg {
+    display: block; }
+  .match-summary .alerts {
+    text-align: center;
+    font-size: 200%;
+    font-weight: normal;
+    position: relative;
+    z-index: 20; }
+    @media all and (max-width: 28.115em) {
+      .match-summary .alerts {
+        display: inline-block;
+        float: right;
+        padding: 12px 0px 0px 0px;
+        width: auto; } }
+    @media all and (min-width: 28.125em) {
+      .match-summary .alerts {
+        margin: 0 auto;
+        width: 60px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0; } }
+    .match-summary .alerts span {
+      background-color: white; }
+
+.match-summary__meta {
+  font-family: "Agate Sans", sans-serif; }
+  @media all and (max-width: 40.615em) {
+    .match-summary__meta {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) {
+    .match-summary__meta {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  @media all and (max-width: 28.115em) {
+    .match-summary__meta {
+      padding: 0 22%; } }
+  @media all and (min-width: 28.125em) {
+    .match-summary__meta {
+      width: 50%; } }
+
+.match-summary__meta__competition,
+.match-summary__meta__venue {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden; }
+
+.match-summary__home,
+.match-summary__away {
+  hyphens: auto;
+  word-break: break-word; }
+  @media all and (max-width: 28.115em) {
+    .match-summary__home,
+    .match-summary__away {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-direction: normal;
+      -webkit-box-orient: horizontal;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      width: 100%;
+      padding: 10px 0 !important; } }
+  @media all and (min-width: 28.125em) {
+    .match-summary__home,
+    .match-summary__away {
+      margin-top: 12px;
+      width: 50%;
+      float: left;
+      display: table;
+      table-layout: fixed; } }
+  .match-summary__home .match-summary__badge,
+  .match-summary__home .match-summary__info,
+  .match-summary__home .match-summary__score,
+  .match-summary__away .match-summary__badge,
+  .match-summary__away .match-summary__info,
+  .match-summary__away .match-summary__score {
+    vertical-align: top; }
+    @media all and (min-width: 28.125em) {
+      .match-summary__home .match-summary__badge,
+      .match-summary__home .match-summary__info,
+      .match-summary__home .match-summary__score,
+      .match-summary__away .match-summary__badge,
+      .match-summary__away .match-summary__info,
+      .match-summary__away .match-summary__score {
+        display: table-cell; } }
+  @media all and (max-width: 28.115em) {
+    .match-summary__home .match-summary__score,
+    .match-summary__away .match-summary__score {
+      width: 15%;
+      min-width: 50px;
+      text-align: right; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    .match-summary__home .match-summary__score,
+    .match-summary__away .match-summary__score {
+      width: 14.89362%; } }
+  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    .match-summary__home .match-summary__score,
+    .match-summary__away .match-summary__score {
+      width: 14.08451%; } }
+  @media all and (min-width: 56.25em) {
+    .match-summary__home .match-summary__score,
+    .match-summary__away .match-summary__score {
+      width: 12.63158%; } }
+  .match-summary__home .match-summary__info,
+  .match-summary__away .match-summary__info {
+    font-family: "Agate Sans", sans-serif; }
+    @media all and (max-width: 40.615em) {
+      .match-summary__home .match-summary__info,
+      .match-summary__away .match-summary__info {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.625em) {
+      .match-summary__home .match-summary__info,
+      .match-summary__away .match-summary__info {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
+    @media all and (max-width: 28.115em) {
+      .match-summary__home .match-summary__info,
+      .match-summary__away .match-summary__info {
+        width: 65%;
+        padding-left: 8px; } }
+    .match-summary__home .match-summary__info h1,
+    .match-summary__away .match-summary__info h1 {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      padding-bottom: 2px;
+      position: relative;
+      z-index: 25; }
+  .match-summary__home .match-summary__badge,
+  .match-summary__away .match-summary__badge {
+    height: 60px; }
+    @media all and (max-width: 28.115em) {
+      .match-summary__home .match-summary__badge,
+      .match-summary__away .match-summary__badge {
+        width: 20%;
+        min-width: 44px; } }
+    @media all and (min-width: 28.125em) {
+      .match-summary__home .match-summary__badge,
+      .match-summary__away .match-summary__badge {
+        padding-top: 4px; } }
+    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      .match-summary__home .match-summary__badge,
+      .match-summary__away .match-summary__badge {
+        width: 17.02128%; } }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      .match-summary__home .match-summary__badge,
+      .match-summary__away .match-summary__badge {
+        width: 15.49296%; } }
+    @media all and (min-width: 56.25em) {
+      .match-summary__home .match-summary__badge,
+      .match-summary__away .match-summary__badge {
+        width: 12.63158%; } }
+    .match-summary__home .match-summary__badge img,
+    .match-summary__away .match-summary__badge img {
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: 60px;
+      display: block;
+      margin: 2px auto 0 auto; }
+
+.match-summary__home {
+  padding: 0px 12px 24px 0px; }
+  @media all and (max-width: 28.115em) {
+    .match-summary__home {
+      border-top: 1px dotted #dcdad5; } }
+  @media all and (min-width: 28.125em) {
+    .match-summary__home .match-summary__score {
+      text-align: right; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    .match-summary__home .match-summary__badge {
+      padding-right: 4.25532%; } }
+  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    .match-summary__home .match-summary__badge {
+      padding-right: 2.8169%; } }
+  @media all and (min-width: 56.25em) {
+    .match-summary__home .match-summary__badge {
+      padding-right: 2.10526%; } }
+
+.match-summary__away {
+  padding: 0px 0px 24px 12px;
+  -webkit-box-direction: reverse;
+  -webkit-box-orient: horizontal;
+  -webkit-flex-direction: row-reverse;
+  flex-direction: row-reverse; }
+  .match-summary__away .match-summary__score {
+    padding: 0px 12px 0px 0px; }
+    @media all and (max-width: 28.115em) {
+      .match-summary__away .match-summary__score {
+        padding: 0; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    .match-summary__away .match-summary__badge {
+      padding-left: 4.25532%; } }
+  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    .match-summary__away .match-summary__badge {
+      padding-left: 2.8169%; } }
+  @media all and (min-width: 56.25em) {
+    .match-summary__away .match-summary__badge {
+      padding-left: 2.8169%; } }
+
+.match-summary__score__agg {
+  display: none;
+  color: #999999;
+  font-size: 50%;
+  line-height: 70%; }
+  .match-summary__score__agg > span {
+    display: none; }
+  @media all and (max-width: 28.115em) {
+    .match-summary__score__agg {
+      font-size: 75%;
+      margin-top: 6px; } }
+  @media all and (min-width: 28.125em) {
+    .match-summary__score__agg {
+      margin-top: 10px; } }
+
+.match-summary__comment {
+  width: 100%;
+  position: relative;
+  clear: both; }
+
+.match-summary .match-summary__comment__text {
+  font-family: "Agate Sans", sans-serif;
+  padding: 6px 12px 6px 12px;
+  background-color: white;
+  margin: 0 auto;
+  border: 1px solid #dcdad5;
+  border-bottom: none;
+  width: auto;
+  display: table; }
+  @media all and (max-width: 40.615em) {
+    .match-summary .match-summary__comment__text {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) {
+    .match-summary .match-summary__comment__text {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
 
 /*doc
 ---
@@ -3901,268 +4241,6 @@ Display a Guardian Witness submission.
     .article__header.cutout .inner-header {
       min-height: 320px;
       background-size: contain; } }
-
-.football__header {
-  background-color: white; }
-  @media all and (min-width: 28.125em) {
-    .football__header {
-      margin: 0px 0px 12px 0px;
-      position: relative; } }
-  .football__header .inner-header {
-    padding: 0px 12px 0px 12px;
-    overflow: auto; }
-    .football__header .inner-header .headline {
-      padding: 0;
-      width: 100%; }
-      @media all and (max-width: 28.115em) {
-        .football__header .inner-header .headline {
-          margin-bottom: 1px; } }
-      @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-        .football__header .inner-header .headline {
-          font-size: 3.2rem;
-          margin-bottom: 2px; } }
-      @media all and (min-width: 40.625em) {
-        .football__header .inner-header .headline {
-          margin-bottom: 4px;
-          font-size: 4.0rem; } }
-  .football__header p {
-    font-family: "Agate Sans", sans-serif;
-    margin-bottom: 0;
-    width: 100%; }
-    @media all and (max-width: 40.615em) {
-      .football__header p {
-        font-size: 1.4rem;
-        line-height: 2rem; } }
-    @media all and (min-width: 40.625em) {
-      .football__header p {
-        font-size: 1.6rem;
-        line-height: 2.2rem; } }
-  .football__header .match-status {
-    z-index: 10;
-    margin: 6px 0px 0px 0px; }
-    @media all and (max-width: 28.115em) {
-      .football__header .match-status {
-        float: left;
-        width: 20%; } }
-    @media all and (min-width: 28.125em) {
-      .football__header .match-status {
-        margin-left: auto;
-        margin-right: auto;
-        position: absolute;
-        left: 0;
-        right: 0; } }
-    .football__header .match-status .match-status__time {
-      width: 100%; }
-  .football__header .football__header__match-info {
-    margin: 9px 0px 9px 0px; }
-    @media all and (max-width: 28.115em) {
-      .football__header .football__header__match-info {
-        padding: 0 22%; } }
-    @media all and (min-width: 28.125em) {
-      .football__header .football__header__match-info {
-        width: 50%; } }
-    .football__header .football__header__match-info p {
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden; }
-  .football__header.is-alerts .alerts, .football__header.is-agg .football__header__score__agg {
-    display: block; }
-  .football__header .alerts {
-    text-align: center;
-    font-size: 200%;
-    font-weight: normal;
-    position: relative;
-    z-index: 20; }
-    @media all and (max-width: 28.115em) {
-      .football__header .alerts {
-        display: inline-block;
-        float: right;
-        padding: 12px 0px 0px 0px;
-        width: auto; } }
-    @media all and (min-width: 28.125em) {
-      .football__header .alerts {
-        margin: 0 auto;
-        width: 60px;
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0; } }
-    .football__header .alerts span {
-      background-color: white; }
-  .football__header .football__header__score__agg {
-    display: none;
-    color: #999999;
-    font-size: 50%;
-    line-height: 70%; }
-    .football__header .football__header__score__agg > span {
-      display: none; }
-    @media all and (max-width: 28.115em) {
-      .football__header .football__header__score__agg {
-        font-size: 75%;
-        margin-top: 6px; } }
-    @media all and (min-width: 28.125em) {
-      .football__header .football__header__score__agg {
-        margin-top: 10px; } }
-  .football__header .football__header__divider {
-    width: 50%;
-    border-right: 1px solid #dcdad5;
-    height: 100%;
-    position: absolute;
-    left: 0; }
-    @media all and (max-width: 28.115em) {
-      .football__header .football__header__divider {
-        display: none; } }
-  .football__header .football__header__home,
-  .football__header .football__header__away {
-    hyphens: auto;
-    word-break: break-word; }
-    @media all and (max-width: 28.115em) {
-      .football__header .football__header__home,
-      .football__header .football__header__away {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-box-direction: normal;
-        -webkit-box-orient: horizontal;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        width: 100%;
-        padding: 10px 0 !important; } }
-    @media all and (min-width: 28.125em) {
-      .football__header .football__header__home,
-      .football__header .football__header__away {
-        width: 50%;
-        float: left;
-        display: table;
-        table-layout: fixed;
-        padding-bottom: 0; } }
-    .football__header .football__header__home .football__header__badge,
-    .football__header .football__header__home .football__header__info,
-    .football__header .football__header__home .football__header__score,
-    .football__header .football__header__away .football__header__badge,
-    .football__header .football__header__away .football__header__info,
-    .football__header .football__header__away .football__header__score {
-      vertical-align: top; }
-      @media all and (min-width: 28.125em) {
-        .football__header .football__header__home .football__header__badge,
-        .football__header .football__header__home .football__header__info,
-        .football__header .football__header__home .football__header__score,
-        .football__header .football__header__away .football__header__badge,
-        .football__header .football__header__away .football__header__info,
-        .football__header .football__header__away .football__header__score {
-          display: table-cell; } }
-    @media all and (max-width: 28.115em) {
-      .football__header .football__header__home .football__header__score,
-      .football__header .football__header__away .football__header__score {
-        width: 15%;
-        min-width: 50px;
-        text-align: right; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      .football__header .football__header__home .football__header__score,
-      .football__header .football__header__away .football__header__score {
-        width: 14.89362%; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      .football__header .football__header__home .football__header__score,
-      .football__header .football__header__away .football__header__score {
-        width: 14.08451%; } }
-    @media all and (min-width: 56.25em) {
-      .football__header .football__header__home .football__header__score,
-      .football__header .football__header__away .football__header__score {
-        width: 12.63158%; } }
-    @media all and (max-width: 28.115em) {
-      .football__header .football__header__home .football__header__info,
-      .football__header .football__header__away .football__header__info {
-        width: 65%;
-        padding-left: 8px; } }
-    .football__header .football__header__home .football__header__info h1,
-    .football__header .football__header__away .football__header__info h1 {
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-      padding-bottom: 2px;
-      position: relative;
-      z-index: 25; }
-    .football__header .football__header__home .football__header__badge,
-    .football__header .football__header__away .football__header__badge {
-      height: 60px; }
-      @media all and (max-width: 28.115em) {
-        .football__header .football__header__home .football__header__badge,
-        .football__header .football__header__away .football__header__badge {
-          width: 20%;
-          min-width: 44px; } }
-      @media all and (min-width: 28.125em) {
-        .football__header .football__header__home .football__header__badge,
-        .football__header .football__header__away .football__header__badge {
-          padding-top: 4px; } }
-      @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-        .football__header .football__header__home .football__header__badge,
-        .football__header .football__header__away .football__header__badge {
-          width: 17.02128%; } }
-      @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-        .football__header .football__header__home .football__header__badge,
-        .football__header .football__header__away .football__header__badge {
-          width: 15.49296%; } }
-      @media all and (min-width: 56.25em) {
-        .football__header .football__header__home .football__header__badge,
-        .football__header .football__header__away .football__header__badge {
-          width: 12.63158%; } }
-      .football__header .football__header__home .football__header__badge img,
-      .football__header .football__header__away .football__header__badge img {
-        width: auto;
-        max-width: 100%;
-        height: auto;
-        max-height: 60px;
-        display: block;
-        margin: 2px auto 0 auto; }
-  .football__header .football__header__home {
-    padding: 0px 12px 24px 0px; }
-    @media all and (max-width: 28.115em) {
-      .football__header .football__header__home {
-        border-top: 1px dotted #dcdad5; } }
-    @media all and (min-width: 28.125em) {
-      .football__header .football__header__home .football__header__score {
-        text-align: right; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      .football__header .football__header__home .football__header__badge {
-        padding-right: 4.25532%; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      .football__header .football__header__home .football__header__badge {
-        padding-right: 2.8169%; } }
-    @media all and (min-width: 56.25em) {
-      .football__header .football__header__home .football__header__badge {
-        padding-right: 2.10526%; } }
-  .football__header .football__header__away {
-    padding: 0px 0px 24px 12px;
-    -webkit-box-direction: reverse;
-    -webkit-box-orient: horizontal;
-    -webkit-flex-direction: row-reverse;
-    flex-direction: row-reverse; }
-    .football__header .football__header__away .football__header__score {
-      padding: 0px 12px 0px 0px; }
-      @media all and (max-width: 28.115em) {
-        .football__header .football__header__away .football__header__score {
-          padding: 0; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      .football__header .football__header__away .football__header__badge {
-        padding-left: 4.25532%; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      .football__header .football__header__away .football__header__badge {
-        padding-left: 2.8169%; } }
-    @media all and (min-width: 56.25em) {
-      .football__header .football__header__away .football__header__badge {
-        padding-left: 2.8169%; } }
-  .football__header .football__header__comment {
-    width: 100%;
-    position: relative;
-    clear: both; }
-    .football__header .football__header__comment p {
-      padding: 6px 12px 6px 12px;
-      margin: 0 auto;
-      background-color: white;
-      border: 1px solid #dcdad5;
-      border-bottom: none;
-      width: auto;
-      display: table; }
 
 .template--support {
   font-family: "Agate Sans", sans-serif;
