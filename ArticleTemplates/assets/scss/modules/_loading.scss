@@ -1,0 +1,32 @@
+/*doc
+---
+title: Loading
+name: loading
+category: Modules
+---
+Display loading animation to provide feedback to the user.
+
+```html_example
+<div class="loading">
+	<img src="/ArticleTemplates/assets/img/loading.gif">
+</div>
+```
+*/
+
+.loading {
+	text-align: center;
+	@include padding(1);
+
+	img {
+		width: 44px;
+		height: 44px;
+	}
+}
+
+.loading--liveblog {
+	display: none; // Hidden by default, revealed when user clicks on view more
+
+	&.loading--visible {
+		display: block;
+	}
+}

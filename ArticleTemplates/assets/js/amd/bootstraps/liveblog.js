@@ -50,9 +50,9 @@ define([
 			},
 
 			liveMore: function () {
-				bean.on($('.live-more')[0], 'click', function () {
+				bean.on($('.more--live-blogs')[0], 'click', function () {
 					$(this).hide();
-					$('.live-more-loading').addClass("live-more-loading--visible");
+					$('.loading--liveblog').addClass("loading--visible");
 					window.location.href = 'x-gu://showmore';
 				});
 			},
@@ -67,7 +67,7 @@ define([
 				};
 				window.liveblogLoadMore = function (html) {
 					html = bonzo.create(html);
-					$('.live-more-loading').removeClass("live-more-loading--visible");
+					$('.loading--liveblog').removeClass("loading--visible");
 					$(html).each(function() {
 						$(this).addClass("animated slideInRight");
 					});
@@ -90,9 +90,9 @@ define([
 				};
 				window.showLiveMore = function (show) {
 					if (show) {
-						$('.live-more').show();
+						$('.more--live-blogs').show();
 					} else {
-						$('.live-more').hide();
+						$('.more--live-blogs').hide();
 					}
 				};
 

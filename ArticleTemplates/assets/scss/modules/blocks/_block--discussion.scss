@@ -7,409 +7,63 @@ category: Blocks
 Display a discussion thread.
 
 ```html_example
-<div class="discussion__thread discussion__thread--checked">
-	<div id="36832610" class="discussion visible">
-		<div class="discussion__container">
-			<div class="discussion__header">
-				<span class="avatar avatar--user">
-					<img class="avatar__img" src="http://static.guim.co.uk/sys-images/Guardian/Pix/site_furniture/2010/09/01/no-user-image.gif">
-				</span>
-				<span class="discussion__username">beaupuss</span>
-				<span class="discussion__responseto"><span class="icon">&#xe061;</span> </span>
-				<span class="discussion__role"></span>
-				<span class="discussion__timestamp meta">yesterday</span>
-			</div>
+<div class="block block--discussion-thread">
+	<p>A dicussion thread contains indvidual comments. See the <a href="#comment">comment markup pattern</a>.</p>
+</div>
 
-			<div class="discussion__body prose resizable selectable">
-				<p>Tie up the streets around Trafalgar Square? Will anyone notice the difference?</p>
-			</div>
-
-			<div class="discussion__options">
-				<a class="discussion__reply touchpoint touchpoint--primary touchpoint--small" href="x-gu://leavereply/36832610">
-					<span class="touchpoint__button icon"></span>
-					<span class="touchpoint__label">Reply</span>
-				</a>
-				<a class="discussion__report touchpoint" href="x-gu://reportabuse/36832610">
-					<span class="touchpoint__label">Report</span>
-				</a>
-			</div>
-
-			<a class="discussion__recommend touchpoint touchpoint--secondary touchpoint--small" href="x-gu://recommendcomment/36832610">
-				<span class="touchpoint__button icon"></span>
-				<span class="touchpoint__label discussion__recommend__count">24</span>
-			</a>
+<div class="comments-0">
+	<div class="block block--discussion-empty">
+		<div class="prose resizable">
+			<p>Open for comments. <a href="x-gu://leavecomment">Be the first to join the debate</a></p>
 		</div>
 	</div>
+</div>
 
-	<div id="36834532" class="discussion is-response visible">
-		<div class="discussion__container">
-			<div class="discussion__header">
-				<span class="avatar avatar--user">
-					<img class="avatar__img" src="http://static.guim.co.uk/sys-images/Guardian/Pix/site_furniture/2010/09/01/no-user-image.gif">
-				</span>
-				<span class="discussion__username">LynW</span>
-				<span class="discussion__responseto"><span class="icon">&#xe061;</span> beaupuss</span>
-				<span class="discussion__role"></span>
-				<span class="discussion__timestamp meta">yesterday</span>
-			</div>
-
-			<div class="discussion__body prose resizable selectable">
-				<p>I work in an office just across the river. We're certainly noticing the difference. Snarled streets. And circling, deafening, news helicopters... which seems like overkill, frankly.</p>
-			</div>
-		
-			<div class="discussion__options">
-				<a class="discussion__reply touchpoint touchpoint--primary touchpoint--small" href="x-gu://leavereply/36834532">
-					<span class="touchpoint__button icon"></span>
-					<span class="touchpoint__label">Reply</span>
-				</a>
-				<a class="discussion__report touchpoint" href="x-gu://reportabuse/36834532">
-					<span class="touchpoint__label">Report</span>
-				</a>
-			</div>
-
-			<a class="discussion__recommend touchpoint touchpoint--secondary touchpoint--small" href="x-gu://recommendcomment/36834532">
-				<span class="touchpoint__button icon"></span>
-				<span class="touchpoint__label discussion__recommend__count">12</span>
-			</a>
+<div class="comments-has-failed">
+	<div class="block block--discussion-failed">
+		<div class="prose resizable">
+			<p>Comments are currently unavailable. Please try again later.</p>
 		</div>
 	</div>
 </div>
 ```
 */
 
-.discussion {
+[class*="block--discussion-"] {
 	font-family: $agate-sans;
 	@include body();
-	background-color: white;
-	border-top: 1px solid $meta;
-	@include margin(1, 0, 0, 0);
-	@include padding(1);
-	overflow: hidden;
-	-webkit-transition: min-height 300ms ease-in-out;
-	transition: min-height 300ms ease-in-out;
-	
-	@include mq($to: col1) {
-		display: block;
-	}
-	@include mq($from: col2) {
-		padding-top: 0;
-	}
-
-	.discussion__container {
-		min-height: 64px;
-		position: relative;
-	}
-
-	.discussion__header {
-		@include meta();
-		@include padding(0.25, 0, 0.75, 0);
-		overflow: auto;
-		word-break: break-all;
-		word-wrap: break-word;
-		@include mq(col2, col3) {
-			width: cols($base-3, 4);
-			float: left;
-		}
-		@include mq($from: col3) {
-			width: cols($base-4, 5);
-			float: left;
-		}
-	}
-
-	.discussion__body {
-		word-break: break-word;
-		word-wrap: break-word;
-		@include margin(0, 0, 1, 0);
-		@include mq(col2, col3) {
-			margin-right: cols($base-3, 1);
-			margin-left: cols($base-3, 4);
-		}
-		@include mq($from: col3) {
-			margin-right: cols($base-4, 1);
-			margin-left: cols($base-4, 5);
-		}
-		
-		blockquote:first-child {
-			@include margin (1, 2);
-		}
-		
-		br {
-			display: none;
-		}
-
-		p:last-child {
-			margin-bottom: 0px;
-		}
-	}
-
-	.avatar--user {
-		margin-right: 8px;
-		float: left;
-	}
-
-	.discussion__role,
-	.discussion__username {
-		display: block;
-		@include mq($to: col2) {
-			display: inline;
-		}
-	}
-	.discussion__username {
-		color: $headline;
-		font-weight: bold;
-		white-space: nowrap;
-	}
-
-	.discussion__responseto {
-		font-weight: bold;
-		display: none;
-	}
-
-	.discussion__timestamp {
-		display: block;
-		white-space: nowrap;
-	}
-
-	.discussion__recommend {
-		@include meta();
-		text-align: center;
-		width: auto;
-		display: block;
-		position: absolute;
-		top: 0;
-		right: 0;
-
-		.touchpoint__button {
-			background-color: transparent;
-			font-size: 14px;
-			@include mq($from: col2) {
-				margin: 0 auto;
-				display: block;
-			}
-		}
-
-		&:active {
-			.touchpoint__button {
-				color: $white;
-				background-color: $shadow;
-			}
-		}
-
-		&.increase .touchpoint__button {
-			color: $white;
-			background-color: $news-accent;
-			border-color: transparent;
-		}
-
-		.touchpoint__label {
-			color: $meta;
-			font-weight: normal;
-			@include mq($from: col2) {
-				margin-top: 1px;
-				display: block;
-				padding: 0;
-			}
-		}
-	}
-
-	.discussion__options {
-		@include meta();
-		background-color: $white;
-		@include padding(0.75, 0, 0.75, 0);
-		overflow: hidden;
-		display: none;
-		@include mq(col2, col3) {
-			margin-left: cols($base-3, 4);
-		}
-		@include mq($from: col3) {
-			margin-left: cols($base-4, 5);
-		}
-
-		.discussion__reply {
-			font-weight: bold;
-			float: left;
-		}
-		.discussion__report {
-			float: right;
-			margin-top: 3px;
-			.touchpoint__label {
-				font-weight: normal;
-			}
-		}
-
-	}
-	
-	.discussion__view-more {
-		@include margin(0.5, 0, 0, 0);
-		@include padding(0.75, 0, 1, 0);
-		font-weight: bold;
-		color: $news;
-		border-top: 1px dotted $shadow;
-		@include mq($to: col2) {
-			margin-left: 52px;
-		}
-		@include mq(col2, col3) {
-			margin-left: cols($base-3, 4);
-		}
-		@include mq($from: col3) {
-			margin-left: cols($base-4, 5);
-		}
-
-		.icon {
-			font-size: 80%;	
-		}
-	}
-
-	// Response
-	&.is-response {
-		border-top: none;
-		padding-top: 0;
-		margin-top: 0;
-
-		.discussion__container {
-			@include padding(0, 0, 3, 0);
-		}
-
-		.discussion__header {
-			border-top: $shadow 1px dotted;
-			padding-left: 0;
-			width: auto;
-			float: none;
-			position: static;
-			@include padding(0.75, 0, 0.5, 0);
-			@include mq($to: col2) {
-				margin-left: 52px;
-				padding-right: 64px;
-			}
-			@include mq(col2, col3) {
-				margin-left: cols($base-3, 4);
-			}
-			@include mq($from: col3) {
-				margin-left: cols($base-4, 5);
-			}
-		}
-
-		.discussion__body {
-			color: $standfirst;
-			@include mq($to: col2) {
-				margin-left: 52px;
-			}
-		}
-
-		.discussion__avatar {
-			display: none;
-		}
-
-		.discussion__username {
-			display: inline-block;
-		}
-
-		.discussion__timestamp {
-			@include margin(0, 0, 1, 0);
-			position: absolute;
-			bottom: 0;
-		}
-
-		.discussion__responseto {
-			display: inline-block;
-			white-space: nowrap;
-			color: $standfirst;
-			.icon {
-				display: inline;
-				color: $meta;
-			}
-		}
-
-		.discussion__recommend {
-			@include margin(0.75, 0, 0, 0);
-		}
-
-		.discussion__options {
-			position: absolute;
-			bottom: 0;
-			right: 0;
-			left: 0;
-			@include mq($to: col2) {
-				margin-left: 52px;
-			}
-			@include mq(col2, col3) {
-				margin-left: cols($base-3, 4);
-			}
-			@include mq($from: col3) {
-				margin-left: cols($base-4, 5);
-			}
-		}
-	}
-
-	// Hidden response
-	&.is-response-hidden {
-		display: none;
-	}
-
-	// Blocked
-	&.blocked {
-		color: $meta;
-		@include padding(1);
-		.discussion__header {
-			opacity: 0.5;
-		}
-		.discussion__recommend {
-			display: none;
-		}
-	}
-}
-
-.discussion--open {
-	.animated {
-		display: block;
-	}
 }
 
 // Expanding Logic
-.discussion__thread {
-	border-bottom: 2px solid $shadow;
-	@include mq($to: col1) {
-		@include margin(1);
-	}
-
-	.discussion:nth-of-type(n+5) {
+.block--discussion-thread {
+	.comment:nth-of-type(n+5) {
 		display: none;
 	}
-	
-	&.discussion__thread--orphan {
-		.discussion {
+
+	&.block--discussion-thread--orphan {
+		.comment {
 			display: block;
 		}
 	}
 }
 
-.discussion__thread.expand {
-	.discussion {
+.block--discussion-thread.expand {
+	.comment {
 		display: block;
 	}
 }
 
 // Styling different states
-.discussion__empty,
-.discussion__failed {
+.block--discussion-empty,
+.block--discussion-failed {
 	display: none;
 	color: $standfirst;
 	@include meta();
-	border-top: 1px solid $headline;
-}
-
-.discussion__loading {
-	text-align: center;
-	@include padding(0.75);
-	img {
-		width: 44px;
-		height: 44px;
-	}
 }
 
 // Failure states
 .comments-0 {
-	.discussion__empty {
+	.block--discussion-empty {
 		display: block;
 	}
 }
@@ -445,16 +99,11 @@ Display a discussion thread.
 }
 
 .comments-has-failed {
-	.discussion__failed {
+	.block--discussion-failed {
 		display: block;
 	}
-	.discussion__view-more,
-	.discussion__empty {
+	.more--comments,
+	.block--discussion-empty {
 		display: none;
 	}
-}
-
-#discussion.android {
-	@include padding(0,1,0,1);
-	box-sizing: border-box;
 }

@@ -1,6 +1,6 @@
 /*doc
 ---
-title: Liveblog post
+title: Liveblog
 name: block--live
 category: Blocks
 ---
@@ -25,7 +25,7 @@ Highlight a key event:
 	<p class="block__time" title="20:04">20:04</p>
 	<div class="block__body">
 		<div class="from-content-api resizable selectable">
-			<h2>Brazil v Croatia - line-ups</h2>
+			<h2 class="block__title">Brazil v Croatia - line-ups</h2>
 			<p><b>Brazil:</b> Cesar; Alves, Silva, Luiz, Marcelo; Paulinho, Gustavo; Hulk, Oscar, Neymar; Fred.</p>
 			<p><b>Croatia:</b> Pletikosa; Srna, Corluka, Lovren, Vrsaijko; Kovacic, Modric; Rakitic, Perisic, Olic; Jelavic.</p>
 		</div>
@@ -41,11 +41,12 @@ Provide a summary of events:
 	<p class="block__time" title="2014-06-13T05:28:14Z">5 hours ago</p>
 	<div class="block__body">
 		<div class="from-content-api resizable selectable">
-			<h2>Day two starts here</h2>
+			<h2 class="block__title">Day two starts here</h2>
 			<p>Hello world, whatever time of day it may be for you. Finally the World Cup is up and running, and we'll be bringing you all the reaction to the opening game (Brazil won, you may have heard) and looking forward to the next three, which take place this evening, late at night or early tomorrow morning, depending on where you are.</p>
 		</div>
 	</div>
 </div>
+```
 */
 
 [class*="block--live-"] {
@@ -115,7 +116,6 @@ Provide a summary of events:
 		}
 	}
 }
-
 
 .block--live-key-event {
 	border-top: 2px solid $live-accent;

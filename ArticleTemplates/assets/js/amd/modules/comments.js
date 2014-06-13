@@ -17,28 +17,28 @@ define([
 					var counter = 0;
 					var stopPropagation = 0;
 
-					$(".discussion__thread").each(function(el) {
-						if (!$(this).hasClass("discussion__thread--checked")) {
+					$(".block--discussion-thread").each(function(el) {
+						if (!$(this).hasClass("block--discussion-thread--checked")) {
 							if (typeof $(this)[0].children[4] !== "undefined") {
 								var blockID = "#" + $(this)[0].children[3].id;
 								var numOfComments = $(this)[0].children.length - 4;
 								if (numOfComments == 1) {
-									$(this).addClass("discussion__thread--orphan");
+									$(this).addClass("block--discussion-thread--orphan");
 								} else {
-									$(blockID).append("<div class='discussion__view-more'><span class='icon'>&#xe050;</span> Show " + numOfComments + " more replies</div>");
+									$(blockID).append("<div class='more more--comments'><span class='icon'>&#xe050;</span> Show " + numOfComments + " more replies</div>");
 								}
 							}
 						}
-						$(this).addClass("discussion__thread--checked");
+						$(this).addClass("block--discussion-thread--checked");
 					});
 
-					$(".discussion").each(function(el) {
+					$(".comment").each(function(el) {
 
-						bean.on(el, 'click', 'a, .discussion__view-more, .discussion__reply, .discussion__recommend', function (event) {
+						bean.on(el, 'click', 'a, .more--comments, .comment__reply, .comment__recommend', function (event) {
 							stopPropagation = 1;
 						});
 
-						bean.on(el, 'click', '.discussion__header, .discussion__body', function (event) {
+						bean.on(el, 'click', '.comment__header, .comment__body', function (event) {
 							stopPropagation = 0;
 						});
 
@@ -48,18 +48,18 @@ define([
 								// If comment is replyable allow buttons
 								if (block.hasClass('visible')) {
 									// Remove any previous animation classes
-									$(".discussion__options").removeClass("animated fadeInRight");
-									$(".discussion__timestamp").removeClass("animated scaleOut");
-									if (block.hasClass("discussion--open")) {
+									$(".comment__options").removeClass("animated fadeInRight");
+									$(".comment__timestamp").removeClass("animated scaleOut");
+									if (block.hasClass("comment--open")) {
 										// Hide the buttons
-										block.removeClass("discussion--open");
+										block.removeClass("comment--open");
 									} else {
 										// Hide previously opened block
-										$(".discussion--open").removeClass("discussion--open");
+										$(".comment--open").removeClass("comment--open");
 										// Different animations for different block types
 										if (block.hasClass("is-response")) {
-											$(".discussion__timestamp", el).addClass("animated scaleOut");
-											$('.discussion__options', el).addClass("animated fadeInRight");
+											$(".comment__timestamp", el).addClass("animated scaleOut");
+											$('.comment__options', el).addClass("animated fadeInRight");
 										} else {
 											// Calculate height to animate initial comments
 											var originalHeight = block[0].clientHeight;
@@ -70,17 +70,17 @@ define([
 												block.css("min-height", "110px");
 											}
 											setTimeout(function() {
-												$('.discussion__options', el).addClass("animated fadeInRight");
+												$('.comment__options', el).addClass("animated fadeInRight");
 												block.css("min-height", originalHeight);
 											}, 350);
 										}
-										block.addClass('discussion--open');
+										block.addClass('comment--open');
 									}
 								}
 							}
 						});
 
-						bean.on(el, 'click', '.discussion__view-more', function () {
+						bean.on(el, 'click', '.more--comments', function () {
 							$(this).hide();
 							$(this).parent().parent().addClass("expand");
 						});
@@ -89,9 +89,9 @@ define([
 				};
 				// Global functions to handle comments, called by native code
 				window.articleCommentsInserter = function (html) {
-					$('.discussion__loading').hide();
+					$('.loading--discussion').hide();
 					if (!html) {
-						$('.discussion__empty').show();
+						$('.block--discussion-empty').show();
 					} else {
 						html = bonzo.create(html);
 						$(html).appendTo($('#comments .container__body'));
@@ -100,27 +100,27 @@ define([
 				};
 				window.commentsInserter = function (html) {
 					if (!html) {
-						$('.discussion__empty').show();
-						$('.discussion__loading').hide();
+						$('.block--discussion-empty').show();
+						$('.loading--discussion').hide();
 					} else {
 						html = bonzo.create(html);
 						$(html).appendTo($('#comments .container__body'));
 						commentsReplyFormatting();
 					}
-					$('.discussion__loading').appendTo('#comments .container__body');
+					$('.loading--discussion').appendTo('#comments .container__body');
 				};
 				window.articleCommentsFailed = function () {
-					$('.discussion__failed').show();
-					$('.discussion__loading').hide();
+					$('.block--discussion-failed').show();
+					$('.loading--discussion').hide();
 					$('#comments').addClass('comments-has-failed');
 				};
 				window.commentsFailed = function () {
-					$('.discussion__loading').hide();
-					$('.discussion__failed').show();
+					$('.loading--discussion').hide();
+					$('.block--discussion-failed').show();
 					$('#comments .container__body').addClass('comments-has-failed');
 				};
 				window.commentsEnd = function () {
-					$('.discussion__loading').remove();
+					$('.loading--discussion').remove();
 				};
 
 				window.commentsClosed = function () {
@@ -129,14 +129,14 @@ define([
 				
 				// Functions for feedback on recommend buttons
 				window.commentsRecommendIncrease = function (id, number) {
-					var target = '#' + id + ' .discussion__recommend';
+					var target = '#' + id + ' .comment__recommend';
 					$(target).addClass('increase');
-					$(target + ' .discussion__recommend__count').text(number);
+					$(target + ' .comment__recommend__count').text(number);
 				};
 				window.commentsRecommendDecrease = function (id, number) {
-					var target = '#' + id + ' .discussion__recommend';
+					var target = '#' + id + ' .comment__recommend';
 					$(target).removeClass('increase');
-					$(target + ' .discussion__recommend__count').text(number);
+					$(target + ' .comment__recommend__count').text(number);
 				};
 				window.scrollToComments = function () {
 					window.location.href = '#comments';

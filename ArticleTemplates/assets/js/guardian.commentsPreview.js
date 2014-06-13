@@ -1,4 +1,4 @@
 $(document).ready(function() {
-	$(".discussion__body").dotdotdot({
+	$(".comment__body").dotdotdot({
 	});	
 });

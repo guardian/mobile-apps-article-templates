@@ -1,0 +1,330 @@
+/*doc
+---
+title: Comment
+name: comment
+category: Blocks
+---
+Display an individual comment.
+
+```html_example
+<div class="comment visible" id="36832610">
+	<div class="comment__container">
+		<div class="comment__header">
+			<span class="avatar avatar--user">
+				<img class="avatar__img" src="http://static.guim.co.uk/sys-images/Guardian/Pix/site_furniture/2010/09/01/no-user-image.gif">
+			</span>
+			<span class="comment__username">beaupuss</span>
+			<span class="comment__responseto"><span class="icon">&#xe061;</span> </span>
+			<span class="comment__role"></span>
+			<span class="comment__timestamp meta">yesterday</span>
+		</div>
+
+		<div class="comment__body prose resizable selectable">
+			<p>Tie up the streets around Trafalgar Square? Will anyone notice the difference?</p>
+		</div>
+
+		<div class="comment__options">
+			<a class="comment__reply touchpoint touchpoint--primary touchpoint--small" href="x-gu://leavereply/36832610">
+				<span class="touchpoint__button icon">&#xe061;</span>
+				<span class="touchpoint__label">Reply</span>
+			</a>
+			<a class="comment__report touchpoint" href="x-gu://reportabuse/36832610">
+				<span class="touchpoint__label">Report</span>
+			</a>
+		</div>
+
+		<a class="comment__recommend touchpoint touchpoint--secondary touchpoint--small" href="x-gu://recommendcomment/36832610">
+			<span class="touchpoint__button icon">&#xe066;</span>
+			<span class="touchpoint__label comment__recommend__count">24</span>
+		</a>
+	</div>
+</div>
+
+<div class="comment is-response" id="36834532">
+	<div class="comment__container">
+		<div class="comment__header">
+			<span class="avatar avatar--user">
+				<img class="avatar__img" src="http://static.guim.co.uk/sys-images/Guardian/Pix/site_furniture/2010/09/01/no-user-image.gif">
+			</span>
+			<span class="comment__username">LynW</span>
+			<span class="comment__responseto"><span class="icon">&#xe061;</span> beaupuss</span>
+			<span class="comment__role"></span>
+			<span class="comment__timestamp meta">yesterday</span>
+		</div>
+
+		<div class="comment__body prose resizable selectable">
+			<p>I work in an office just across the river. We're certainly noticing the difference. Snarled streets. And circling, deafening, news helicopters... which seems like overkill, frankly.</p>
+		</div>
+
+		<div class="comment__options">
+			<a class="comment__reply touchpoint touchpoint--primary touchpoint--small" href="x-gu://leavereply/36834532">
+				<span class="touchpoint__button icon">>&#xe061;</span>
+				<span class="touchpoint__label">Reply</span>
+			</a>
+			<a class="comment__report touchpoint" href="x-gu://reportabuse/36834532">
+				<span class="touchpoint__label">Report</span>
+			</a>
+		</div>
+
+		<a class="comment__recommend touchpoint touchpoint--secondary touchpoint--small" href="x-gu://recommendcomment/36834532">
+			<span class="touchpoint__button icon">&#xe066;</span>
+			<span class="touchpoint__label comment__recommend__count">12</span>
+		</a>
+	</div>
+</div>
+```
+*/
+
+.comment {
+	-webkit-transition: min-height 300ms ease-in-out;
+	transition: min-height 300ms ease-in-out;
+}
+
+.comment__container {
+	min-height: 64px;
+	position: relative;
+}
+
+.comment__header {
+	@include meta();
+	@include padding(0.25, 0, 0.75, 0);
+	overflow: auto;
+	word-break: break-all;
+	word-wrap: break-word;
+	@include mq(col2, col3) {
+		width: cols($base-3, 4);
+		float: left;
+	}
+	@include mq($from: col3) {
+		width: cols($base-4, 5);
+		float: left;
+	}
+
+	.avatar--user {
+		margin-right: 8px;
+		float: left;
+	}
+}
+
+.comment__body {
+	word-break: break-word;
+	word-wrap: break-word;
+	@include margin(0, 0, 1, 0);
+	@include mq(col2, col3) {
+		margin-right: cols($base-3, 1);
+		margin-left: cols($base-3, 4);
+	}
+	@include mq($from: col3) {
+		margin-right: cols($base-4, 1);
+		margin-left: cols($base-4, 5);
+	}
+
+	blockquote:first-child {
+		@include margin (1, 2);
+	}
+
+	br {
+		display: none;
+	}
+
+	p:last-child {
+		margin-bottom: 0px;
+	}
+}
+
+.comment__role,
+.comment__username {
+	display: block;
+	@include mq($to: col2) {
+		display: inline;
+	}
+}
+
+.comment__username {
+	color: $headline;
+	font-weight: bold;
+	white-space: nowrap;
+}
+
+.comment__responseto {
+	font-weight: bold;
+	display: none;
+}
+
+.comment__timestamp {
+	display: block;
+	white-space: nowrap;
+}
+
+.comment__recommend {
+	@include meta();
+	text-align: center;
+	width: auto;
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	.touchpoint__button {
+		background-color: transparent;
+		font-size: 14px;
+		@include mq($from: col2) {
+			margin: 0 auto;
+			display: block;
+		}
+	}
+
+	&:active {
+		.touchpoint__button {
+			color: $white;
+			background-color: $shadow;
+		}
+	}
+
+	&.increase .touchpoint__button {
+		color: $white;
+		background-color: $news-accent;
+		border-color: transparent;
+	}
+
+	.touchpoint__label {
+		color: $meta;
+		font-weight: normal;
+		@include mq($from: col2) {
+			margin-top: 1px;
+			padding: 0;
+			display: block;
+		}
+	}
+}
+
+.comment__options {
+	@include meta();
+	background-color: $white;
+	@include padding(0.75, 0, 0.75, 0);
+	overflow: hidden;
+	display: none;
+	@include mq(col2, col3) {
+		margin-left: cols($base-3, 4);
+	}
+	@include mq($from: col3) {
+		margin-left: cols($base-4, 5);
+	}
+
+	.comment__reply {
+		font-weight: bold;
+		float: left;
+	}
+
+	.comment__report {
+		float: right;
+		margin-top: 3px;
+
+		.touchpoint__label {
+			font-weight: normal;
+		}
+	}
+}
+
+// Response
+.comment.is-response {
+	.comment__container {
+		@include padding(0, 0, 3, 0);
+	}
+
+	.comment__header {
+		border-top: $shadow 1px dotted;
+		padding-left: 0;
+		width: auto;
+		float: none;
+		position: static;
+		@include padding(0.75, 0, 0.5, 0);
+		@include mq($to: col2) {
+			margin-left: 52px;
+			padding-right: 64px;
+		}
+		@include mq(col2, col3) {
+			margin-left: cols($base-3, 4);
+		}
+		@include mq($from: col3) {
+			margin-left: cols($base-4, 5);
+		}
+	}
+
+	.comment__body {
+		color: $standfirst;
+		@include mq($to: col2) {
+			margin-left: 52px;
+		}
+	}
+
+	.comment__avatar {
+		display: none;
+	}
+
+	.comment__username {
+		display: inline-block;
+	}
+
+	.comment__timestamp {
+		@include margin(0, 0, 1, 0);
+		position: absolute;
+		bottom: 0;
+	}
+
+	.comment__responseto {
+		display: inline-block;
+		white-space: nowrap;
+		color: $standfirst;
+
+		.icon {
+			display: inline;
+			color: $meta;
+		}
+	}
+
+	.comment__recommend {
+		@include margin(0.75, 0, 0, 0);
+	}
+
+	.comment__options {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		@include mq($to: col2) {
+			margin-left: 52px;
+		}
+		@include mq(col2, col3) {
+			margin-left: cols($base-3, 4);
+		}
+		@include mq($from: col3) {
+			margin-left: cols($base-4, 5);
+		}
+	}
+}
+
+// Hidden response
+.comment.is-response-hidden {
+	display: none;
+}
+
+// Blocked
+.comment.blocked {
+	color: $meta;
+	@include padding(1);
+
+	.comment__header {
+		opacity: 0.5;
+	}
+
+	.comment__recommend {
+		display: none;
+	}
+}
+
+.comment--open {
+	.animated {
+		display: block;
+	}
+}
