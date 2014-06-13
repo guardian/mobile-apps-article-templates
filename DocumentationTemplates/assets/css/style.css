@@ -114,6 +114,11 @@
   background-color: #f6f6f6; }
   .exampleOutput:before {
     content: "Example:"; }
+  .exampleOutput:before, .exampleOutput:after {
+    content: " ";
+    display: table; }
+  .exampleOutput:after {
+    clear: both; }
 
 .codeBlock {
   background-color: rgba(246, 246, 246, 0.5);

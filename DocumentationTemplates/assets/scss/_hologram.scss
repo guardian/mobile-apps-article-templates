@@ -20,9 +20,19 @@
 
 .exampleOutput {
 	background-color: $background;
-	
+
 	&:before {
 		content: "Example:";
+	}
+
+	&:before,
+	&:after {
+	    content: " ";
+	    display: table;
+	}
+
+	&:after {
+	    clear: both;
 	}
 }
 
