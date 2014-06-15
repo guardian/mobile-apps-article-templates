@@ -106,22 +106,35 @@ define([
 			footballGoal: function() {
 				// Allows the header to be updated when there is a goal
 				window.footballGoal = function (side, newScore, scorerHtml, aggScore) {
-					if (aggScore) {
-						$(".football__header").addClass("is-agg");
-						$(".football__header__" + side + "__score__label").html(newScore + " <span class=\"football__header__score__agg\">" + aggScore + "</span>");
-					} else {
-						$(".football__header__" + side + "__score__label").html(newScore + " <span class=\"football__header__score__agg\"></span>");
+					dodgy = false;
+					if ((newScore === 0) && (scorerHtml === '') && !aggScore) {
+						// this could be a dodgy call from iOS
+						oldScore = $(".football__header__" + side + "__score__label").html().substring(0, 1);
+						if ((oldScore === "1") || (oldScore === "2") || (oldScore === "3") || (oldScore === "4") || (oldScore === "5") || (oldScore === "6") || (oldScore === "7") || (oldScore === "8") || (oldScore === "9")) {
+							// this is most likely a dodgy call from iOS, the score shouldn't go from (for example) 2 to 0
+							dodgy = true;
+						}
 					}
-					$(".football__header__" + side + "__info p").remove();
-					$(".football__header__" + side + "__info").append(scorerHtml);
+					if (!dodgy) {
+						if (aggScore) {
+							$(".football__header").addClass("is-agg");
+							$(".football__header__" + side + "__score__label").html(newScore + " <span class=\"football__header__score__agg\">" + aggScore + "</span>");
+						} else {
+							$(".football__header__" + side + "__score__label").html(newScore + " <span class=\"football__header__score__agg\"></span>");
+						}
+						$(".football__header__" + side + "__info p").remove();
+						$(".football__header__" + side + "__info").append(scorerHtml);
+					}
 				};
 			},
 			
 			footballStatus: function() {
 				window.footballStatus = function(className, label) {
 					// Clear old status and reapply class before adding new status
-					$(".football__header__status").attr("class", "football__header__status").addClass("football__header__status--" + className);
-					$(".football__header__status p").text(label);
+					if ((className !== '(null)') && (label !== '(null)')) {
+						$(".football__header__status").attr("class", "football__header__status").addClass("football__header__status--" + className);
+						$(".football__header__status p").text(label);
+					}
 				}
 			},
 
