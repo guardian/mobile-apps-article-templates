@@ -375,13 +375,13 @@ Display an alerts toggle.
 
 ```html_example
 <a class="alerts">
-	<span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> Follow contributor</span>
-	<span class="alerts__state--follow"><span class="icon">&#xe049;</span> Following contributor</span>
+	<span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> <span class="alerts__label">Follow contributor</span></span>
+	<span class="alerts__state--follow"><span class="icon">&#xe049;</span> <span class="alerts__label">Following contributor</span></span>
 </a>
 
 <a class="alerts following">
-	<span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> Follow contributor</span>
-	<span class="alerts__state--follow"><span class="icon">&#xe049;</span> Following contributor</span>
+	<span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> <span class="alerts__label">Follow contributor</span></span>
+	<span class="alerts__state--follow"><span class="icon">&#xe049;</span> <span class="alerts__label">Following contributor</span></span>
 </a>
 ```
 */
@@ -389,9 +389,7 @@ Display an alerts toggle.
   color: #005689;
   font-family: "Agate Sans", sans-serif;
   font-weight: bold;
-  display: block; }
-  .alerts .icon {
-    color: #666666; }
+  display: inline-block; }
   .alerts .alerts__state--follow {
     display: none; }
     .alerts .alerts__state--follow .icon {
@@ -670,7 +668,8 @@ Display an embedded element. Element embeds are typically shown as figures, and 
   background-color: #dcdad5;
   padding-bottom: 60%;
   position: relative;
-  overflow: hidden; }
+  overflow: hidden;
+  display: block; }
   .element__inner img {
     width: 100%;
     position: absolute;
@@ -794,52 +793,50 @@ Inline (floats to the left of any running text):
 <p>Miliband was also confronted by a number of Labour MPs, including Steve Rotheram, the member for for Liverpool Walton. According to a source cited by the Liverpool Echo, Miliband apologised to the MPs. The source is quoted as saying: “Ed Miliband said he was very, very sorry.”</p>
 ```
 */
-figure {
-  margin: 12px 0px 12px 0px; }
-  figure img {
-    display: block; }
-  figure video {
-    width: 100%; }
-  figure figcaption {
-    color: #666666;
-    font-family: "Agate Sans", sans-serif;
-    border-bottom: 1px dotted #dcdad5;
-    padding: 6px 0px 24px 0px; }
-    @media all and (max-width: 40.615em) {
-      figure figcaption {
-        font-size: 1.4rem;
-        line-height: 2rem; } }
-    @media all and (min-width: 40.625em) {
-      figure figcaption {
-        font-size: 1.6rem;
-        line-height: 2.2rem; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      figure figcaption {
-        padding-right: 23.94366%; } }
-    @media all and (min-width: 56.25em) {
-      figure figcaption {
-        padding-right: 24.21053%; } }
-  figure.figure-wide img {
-    width: 100%;
-    height: auto; }
-  figure.figure-wide figcaption {
-    padding: 6px 12px 24px 12px; }
-  @media all and (max-width: 28.115em) {
-    figure.figure-inline img {
-      width: 100%;
-      height: auto; } }
-  @media all and (min-width: 28.125em) {
-    figure.figure-inline {
-      float: left; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    figure.figure-inline {
-      margin-right: 4.25532%; } }
+figure img {
+  display: block; }
+figure video {
+  width: 100%; }
+figure figcaption {
+  color: #666666;
+  font-family: "Agate Sans", sans-serif;
+  border-bottom: 1px dotted #dcdad5;
+  padding: 6px 0px 24px 0px; }
+  @media all and (max-width: 40.615em) {
+    figure figcaption {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) {
+    figure figcaption {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
   @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    figure.figure-inline {
-      margin-right: 2.8169%; } }
+    figure figcaption {
+      padding-right: 23.94366%; } }
   @media all and (min-width: 56.25em) {
-    figure.figure-inline {
-      margin-right: 2.10526%; } }
+    figure figcaption {
+      padding-right: 24.21053%; } }
+figure.figure-wide img {
+  width: 100%;
+  height: auto; }
+figure.figure-wide figcaption {
+  padding: 6px 12px 24px 12px; }
+@media all and (max-width: 28.115em) {
+  figure.figure-inline img {
+    width: 100%;
+    height: auto; } }
+@media all and (min-width: 28.125em) {
+  figure.figure-inline {
+    float: left; } }
+@media all and (min-width: 28.125em) and (max-width: 40.615em) {
+  figure.figure-inline {
+    margin-right: 4.25532%; } }
+@media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  figure.figure-inline {
+    margin-right: 2.8169%; } }
+@media all and (min-width: 56.25em) {
+  figure.figure-inline {
+    margin-right: 2.10526%; } }
 
 /*doc
 ---
@@ -1075,7 +1072,8 @@ Navigate between different sections of a page.
 .tabs {
   color: #666666;
   font-family: "Agate Sans", sans-serif;
-  margin: 12px 0px 12px 0px; }
+  margin: 12px 0px 12px 0px;
+  clear: left; }
   @media all and (max-width: 40.615em) {
     .tabs {
       font-size: 1.4rem;
@@ -1155,7 +1153,39 @@ category: Modules
 Display the number of stars with which a review has been rated
 
 ```html_example
-<div class="review-rating review-rating--0">
+<p class="review-rating review-rating--0">
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+</p>
+
+<p class="review-rating review-rating--1">
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+</p>
+
+<p class="review-rating review-rating--2">
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+</p>
+
+<p class="review-rating review-rating--3">
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+	<span class="icon">&#xe036;</span>
+</p>
+
+<p class="review-rating review-rating--4">
 	<span class="icon">&#xe036;</span>
 	<span class="icon">&#xe036;</span>
 	<span class="icon">&#xe036;</span>
@@ -1163,45 +1193,13 @@ Display the number of stars with which a review has been rated
 	<span class="icon">&#xe036;</span>
 </div>
 
-<div class="review-rating review-rating--1">
+<p class="review-rating review-rating--5">
 	<span class="icon">&#xe036;</span>
 	<span class="icon">&#xe036;</span>
 	<span class="icon">&#xe036;</span>
 	<span class="icon">&#xe036;</span>
 	<span class="icon">&#xe036;</span>
-</div>
-
-<div class="review-rating review-rating--2">
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-</div>
-
-<div class="review-rating review-rating--3">
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-</div>
-
-<div class="review-rating review-rating--4">
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-</div>
-
-<div class="review-rating review-rating--5">
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-	<span class="icon">&#xe036;</span>
-</div>
+</p>
 ```
 */
 .review-rating {
@@ -2892,6 +2890,9 @@ Adds typographic styling to content taken from the Guardian Content API.
       font-size: 1.6rem;
       line-height: 2.2rem;
       margin: 6px 0px 6px 0px; }
+.prose figure,
+.from-content-api figure {
+  margin: 12px 0px 12px 0px; }
 
 .prose table,
 .from-content-api table,
@@ -3303,7 +3304,8 @@ Display a match summary. The score is updated during the match.
 .match-summary {
   padding: 12px 12px 0px 12px;
   background-color: white;
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
   @media all and (min-width: 28.125em) {
     .match-summary:after {
       content: " ";
@@ -4105,114 +4107,87 @@ Display a Guardian Witness submission.
 .android .article {
   border-top: none; }
 
-.article__header {
-  background-image: none;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-direction: normal;
-  -webkit-box-orient: vertical;
-  -webkit-flex-direction: column;
-  flex-direction: column; }
-  .article__header ul > li {
-    text-indent: 1.111em;
-    position: relative; }
-    .article__header ul > li:before {
-      content: "\2022";
-      color: #999999;
-      font-family: "Egyptian Display", Georgia, serif;
-      font-weight: 300;
-      display: inline-block;
-      position: absolute;
-      left: -1.111em; }
-  .article__header .inner-header,
-  .article__header .standfirst,
-  .article__header .article__meta,
-  .article__header .article__image,
-  .article__header .review-rating {
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-    flex: 1; }
-  .article__header .section {
-    padding: 6px 12px 6px 12px; }
-  .article__header .headline {
-    padding: 0px 12px 30px 12px; }
-    .article__header .headline .byline__author {
-      display: none; }
-  .article__header .standfirst {
-    padding: 6px 12px 18px 12px; }
-  .article__header .byline {
-    padding: 8.0004px 12px 0px 12px; }
-  .article__header .alerts {
-    padding: 0px 12px 12px 12px;
-    display: none; }
-  .article__header .review-rating {
-    padding: 0px 12px 18px 12px;
-    margin-top: -18px; }
-  .article__header .article__meta {
-    margin: -1px 0;
-    border-top: 1px dotted #dcdad5;
-    border-bottom: 1px dotted #dcdad5;
-    width: 100%;
-    display: table; }
+.article__header ul > li {
+  text-indent: 1.111em;
+  position: relative; }
+  .article__header ul > li:before {
+    content: "\2022";
+    color: #999999;
+    font-family: "Egyptian Display", Georgia, serif;
+    font-weight: 300;
+    display: inline-block;
+    position: absolute;
+    left: -1.111em; }
+.article__header .section {
+  padding: 6px 12px 6px 12px; }
+.article__header .headline {
+  padding: 0px 12px 30px 12px; }
+.article__header .standfirst {
+  padding: 6px 12px 18px 12px; }
+.article__header .byline {
+  padding: 8.0004px 12px 0px 12px; }
+.article__header .article__meta {
+  margin: -1px 0;
+  border-top: 1px dotted #dcdad5;
+  border-bottom: 1px dotted #dcdad5;
+  width: 100%;
+  display: table; }
+.article__header .article__comments {
+  font-weight: bold;
+  padding: 6px 6px 12px 12px;
+  border-left: 1px dotted #dcdad5;
+  display: table-cell; }
+.article__header .avatar--author {
+  margin: 0px 9px 12px 0px;
+  float: left; }
+.article__header .article__image-caption__icon {
+  display: none; }
+.article__header .article__pubdate {
+  padding: 0px 12px 24px 12px; }
+@media all and (max-width: 28.115em) {
   .article__header .article__comments {
-    font-weight: bold;
-    padding: 6px 6px 12px 12px;
-    border-left: 1px dotted #dcdad5;
-    display: table-cell; }
-  .article__header .avatar--author {
-    margin: 0px 9px 12px 0px;
-    float: left; }
-  .article__header .article__image {
-    margin-top: 0; }
-  .article__header .article__image-caption__icon {
-    display: none; }
-  .article__header .article__pubdate {
-    padding: 0px 12px 24px 12px; }
-  @media all and (max-width: 28.115em) {
-    .article__header .article__comments {
-      width: 21.73913%; }
-    .article__header .article__comments__label {
-      display: none; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    .article__header .article__comments {
-      width: 23.40426%; }
-    .article__header .article__comments__label {
-      display: none; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    .article__header .inner-header,
-    .article__header .standfirst {
-      padding-right: 25.35211%; }
-    .article__header .article__comments {
-      width: 23.94366%; } }
-  @media all and (min-width: 56.25em) {
-    .article__header .inner-header,
-    .article__header .standfirst {
-      padding-right: 25.26316%; }
-    .article__header .article__comments {
-      width: 24.21053%; } }
+    width: 21.73913%; }
+  .article__header .article__comments__label {
+    display: none; } }
+@media all and (min-width: 28.125em) and (max-width: 40.615em) {
+  .article__header .article__comments {
+    width: 23.40426%; }
+  .article__header .article__comments__label {
+    display: none; } }
+@media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  .article__header .headline,
+  .article__header .standfirst {
+    padding-right: 25.35211%; }
+  .article__header .article__comments {
+    width: 23.94366%; } }
+@media all and (min-width: 56.25em) {
+  .article__header .headline,
+  .article__header .standfirst {
+    padding-right: 25.26316%; }
+  .article__header .article__comments {
+    width: 24.21053%; } }
 
-.article__header.cutout .inner-header {
+.article__header.cutout .cutout__container {
   background-repeat: no-repeat;
   background-position: right bottom;
   background-position: right -15% bottom 0;
   overflow: auto; }
   @media all and (max-width: 28.115em) {
-    .article__header.cutout .inner-header {
+    .article__header.cutout .cutout__container {
       min-height: 245px;
       background-size: 52.17391% auto;
       padding-right: 21.73913%; } }
   @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    .article__header.cutout .inner-header {
+    .article__header.cutout .cutout__container {
       min-height: 280px;
       background-size: 42.55319% auto;
       padding-right: 23.40426%; } }
   @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    .article__header.cutout .inner-header {
+    .article__header.cutout .cutout__container {
       min-height: 400px;
       background-size: 47.88732% auto; } }
   @media all and (min-width: 56.25em) {
-    .article__header.cutout .inner-header {
+    .article__header.cutout .cutout__container {
       min-height: 320px;
       background-size: contain; } }
 
@@ -4272,26 +4247,31 @@ Display a Guardian Witness submission.
 
 .template--audio .article {
   border-top-color: #333333; }
-.template--audio .article__header .inner-header {
+.template--audio .article__header .cutout__container {
   background: -webkit-canvas(squares) #4bc6df;
   padding-bottom: 4.5em;
   position: relative; }
-  .template--audio .article__header .inner-header .section {
-    display: none;
-    padding-bottom: 0; }
-  .template--audio .article__header .inner-header .headline {
-    color: white;
-    padding: 6px 12px 12px 12px; }
-    .template--audio .article__header .inner-header .headline span {
-      color: #333333;
-      display: block; }
-  .template--audio .article__header .inner-header .byline {
-    color: rgba(255, 255, 255, 0.9);
-    border: 0 none;
-    padding: 0px 0px 0px 12px; }
-    @media all and (max-width: 28.115em) {
-      .template--audio .article__header .inner-header .byline {
-        display: none; } }
+.template--audio .article__header .section {
+  display: none; }
+.template--audio .article__header .headline {
+  color: white;
+  padding: 6px 12px 12px 12px; }
+  .template--audio .article__header .headline span {
+    color: #333333;
+    display: block; }
+.template--audio .article__header .standfirst {
+  color: #333333; }
+  @media all and (max-width: 40.615em) {
+    .template--audio .article__header .standfirst {
+      font-size: 1.25em;
+      line-height: 1.25em; } }
+.template--audio .article__header .byline {
+  color: rgba(255, 255, 255, 0.9);
+  border: 0 none;
+  padding: 0px 0px 0px 12px; }
+  @media all and (max-width: 28.115em) {
+    .template--audio .article__header .byline {
+      display: none; } }
 .template--audio .article__header .byline--mobile {
   padding: 0px 0px 12px 0px;
   border-bottom: 1px dotted #dcdad5;
@@ -4299,12 +4279,6 @@ Display a Guardian Witness submission.
   @media all and (min-width: 28.125em) {
     .template--audio .article__header .byline--mobile {
       display: none; } }
-.template--audio .article__header .standfirst {
-  color: #333333; }
-  @media all and (max-width: 40.615em) {
-    .template--audio .article__header .standfirst {
-      font-size: 1.25em;
-      line-height: 1.25em; } }
 .template--audio .article__header .article__meta {
   margin: 0;
   border: 0 none;
@@ -4365,7 +4339,7 @@ Display a Guardian Witness submission.
   .template--audio.tone--media .article .touchpoint--primary .touchpoint__button {
     background-color: #ffbb00;
     color: #333333; }
-.template--audio.tone--media .article__header .inner-header {
+.template--audio.tone--media .article__header .cutout__container {
   background-color: #333333;
   min-height: 0px; }
 .template--audio.tone--media .article__header .section {
@@ -4396,22 +4370,18 @@ Display a Guardian Witness submission.
 .template--video .article {
   background-color: #333333;
   border-top-color: #ffbb00; }
-  .template--gallery .article .article__header h1,
-  .template--video .article .article__header h1 {
-    color: white; }
-    @media all and (max-width: 28.115em) {
-      .template--gallery .article .article__header h1,
-      .template--video .article .article__header h1 {
-        margin-bottom: 24px; } }
-  .template--gallery .article .section,
-  .template--video .article .section {
-    color: #ffbb00; }
   .template--gallery .article a,
   .template--video .article a {
     color: #ffbb00; }
     .template--gallery .article a:active,
     .template--video .article a:active {
       color: #ffd35c; }
+.template--gallery .article__header .section,
+.template--video .article__header .section {
+  color: #ffbb00; }
+.template--gallery .article__header .headline,
+.template--video .article__header .headline {
+  color: white; }
 .template--gallery .article__body,
 .template--video .article__body {
   color: white; }
@@ -4514,24 +4484,24 @@ Display a Guardian Witness submission.
   @media all and (max-width: 28.115em) {
     .template--discussion .article__header {
       padding: 0 2.89855%; } }
-.template--discussion .section {
-  padding-left: 0;
-  color: #333333; }
-.template--discussion .headline {
-  margin: 0px 0px 48px 0px;
-  padding: 0; }
-  @media all and (max-width: 28.115em) {
-    .template--discussion .headline {
-      font-size: 2.25rem;
-      line-height: 2.4rem; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    .template--discussion .headline {
-      font-size: 3rem;
-      line-height: 3rem; } }
-  @media all and (min-width: 40.625em) {
-    .template--discussion .headline {
-      font-size: 3.6rem;
-      line-height: 3.6rem; } }
+  .template--discussion .article__header .section {
+    padding-left: 0;
+    color: #333333; }
+  .template--discussion .article__header .headline {
+    margin: 0px 0px 48px 0px;
+    padding: 0; }
+    @media all and (max-width: 28.115em) {
+      .template--discussion .article__header .headline {
+        font-size: 2.25rem;
+        line-height: 2.4rem; } }
+    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      .template--discussion .article__header .headline {
+        font-size: 3rem;
+        line-height: 3rem; } }
+    @media all and (min-width: 40.625em) {
+      .template--discussion .article__header .headline {
+        font-size: 3.6rem;
+        line-height: 3.6rem; } }
 .template--discussion .container {
   margin: 0;
   border-top: 0; }
@@ -4570,24 +4540,21 @@ Display a Guardian Witness submission.
   color: #333333;
   border-bottom: 2px solid #dcdad5;
   background-color: white; }
-  .template--liveblog .article__header .inner-header {
+  .template--liveblog .article__header .headline,
+  .template--liveblog .article__header .standfirst {
     padding-right: 0; }
-@media all and (min-width: 40.625em) {
-  .template--liveblog .byline,
-  .template--liveblog .article__pubdate {
-    padding-left: 0; } }
-.template--liveblog .article__live-summary {
-  font-family: "Egyptian Display", Georgia, serif;
-  font-weight: 300;
-  padding: 6px 12px 18px 12px; }
-.template--liveblog .section {
-  position: relative; }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    .template--liveblog .section {
-      padding-left: 33.80282%; } }
-  @media all and (min-width: 56.25em) {
-    .template--liveblog .section {
-      padding-left: 31.57895%; } }
+  @media all and (min-width: 40.625em) {
+    .template--liveblog .article__header .byline,
+    .template--liveblog .article__header .article__pubdate {
+      padding-left: 0; } }
+  .template--liveblog .article__header .section {
+    position: relative; }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      .template--liveblog .article__header .section {
+        padding-left: 33.80282%; } }
+    @media all and (min-width: 56.25em) {
+      .template--liveblog .article__header .section {
+        padding-left: 31.57895%; } }
 .template--liveblog.is-live .article {
   border-top-color: #cc2b12; }
 .template--liveblog.is-live a.touchpoint,
@@ -4615,28 +4582,28 @@ Display a Guardian Witness submission.
   .template--liveblog.is-live .article__header .bullet:before,
   .template--liveblog.is-live .article__header ul > li:before {
     color: rgba(255, 255, 255, 0.8); }
-.template--liveblog.is-live .headline,
-.template--liveblog.is-live .byline,
-.template--liveblog.is-live .alerts .icon,
-.template--liveblog.is-live .section {
-  color: white; }
-.template--liveblog.is-live .article__live-summary {
-  color: rgba(255, 255, 255, 0.8); }
-  .template--liveblog.is-live .article__live-summary a {
+  .template--liveblog.is-live .article__header .headline,
+  .template--liveblog.is-live .article__header .byline,
+  .template--liveblog.is-live .article__header .alerts .icon,
+  .template--liveblog.is-live .article__header .section {
     color: white; }
-.template--liveblog.is-live .article__meta {
-  border-color: rgba(255, 255, 255, 0.2);
-  background-color: #cc2b12; }
-.template--liveblog.is-live .article__pubdate {
-  color: rgba(255, 255, 255, 0.8); }
-.template--liveblog.is-live .article__comments {
-  border-color: rgba(255, 255, 255, 0.2); }
-@media all and (max-width: 28.115em) {
-  .template--liveblog.is-live .section {
-    padding-left: 4.5em; } }
-@media all and (min-width: 28.125em) and (max-width: 40.615em) {
-  .template--liveblog.is-live .section {
-    padding-left: 4em; } }
+  .template--liveblog.is-live .article__header .standfirst {
+    color: rgba(255, 255, 255, 0.8); }
+    .template--liveblog.is-live .article__header .standfirst a {
+      color: white; }
+  .template--liveblog.is-live .article__header .article__meta {
+    border-color: rgba(255, 255, 255, 0.2);
+    background-color: #cc2b12; }
+  .template--liveblog.is-live .article__header .article__pubdate {
+    color: rgba(255, 255, 255, 0.8); }
+  .template--liveblog.is-live .article__header .article__comments {
+    border-color: rgba(255, 255, 255, 0.2); }
+  @media all and (max-width: 28.115em) {
+    .template--liveblog.is-live .article__header .section {
+      padding-left: 4.5em; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    .template--liveblog.is-live .article__header .section {
+      padding-left: 4em; } }
 .template--liveblog .article__section__live {
   color: white;
   font-family: "Agate Sans", sans-serif;
@@ -4754,40 +4721,42 @@ Display a Guardian Witness submission.
 @media all and (max-width: 40.615em) {
   .template--liveblog .article__header .live-summary-body {
     max-height: 175px; }
-  .template--liveblog .article__header .inner-header .alerts {
+  .template--liveblog .article__header .standfirst .alerts {
     display: block; }
   .template--liveblog .article__header .article__meta .alerts {
     display: none; } }
 @media all and (min-width: 40.625em) {
-  .template--liveblog .article__header .inner-header .alerts {
-    display: none; }
   .template--liveblog .article__header .live-summary-body {
     max-height: 240px; }
+  .template--liveblog .article__header .standfirst .alerts {
+    display: none; }
   .template--liveblog .article__header .article__meta .alerts {
     display: block; }
-  .template--liveblog .article__tags {
+  .template--liveblog .tags {
     padding-left: 0;
     width: auto; }
-    .template--liveblog .article__tags .list {
+    .template--liveblog .tags .list {
       width: 100%; } }
 @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-  .template--liveblog .article__header .inner-header {
+  .template--liveblog .article__header .headline,
+  .template--liveblog .article__header .standfirst {
     margin-left: 32.39437%; }
   .template--liveblog .article__header .article__meta {
     padding-left: 33.80282%; }
     .template--liveblog .article__header .article__meta .alerts {
       width: 32.39437%; }
-  .template--liveblog .article__tags {
+  .template--liveblog .tags {
     margin-left: 33.80282%;
     padding-bottom: 5.6338%; } }
 @media all and (min-width: 56.25em) {
-  .template--liveblog .article__header .inner-header {
+  .template--liveblog .article__header .headline,
+  .template--liveblog .article__header .standfirst {
     margin-left: 30.52632%; }
   .template--liveblog .article__header .article__meta {
     padding-left: 31.57895%; }
     .template--liveblog .article__header .article__meta .alerts {
       width: 30.52632%; }
-  .template--liveblog .article__tags {
+  .template--liveblog .tags {
     margin-left: 31.57895%;
     padding-bottom: 4.21053%; }
   .template--liveblog .live-updates-inner {
@@ -4803,6 +4772,8 @@ Display a Guardian Witness submission.
   background-color: transparent;
   border-bottom: none;
   margin-bottom: 0; }
+.template--football .article__header .alerts__label {
+  display: none; }
 .template--football .football-tabs-article .article {
   background-color: white;
   border-top: 2px solid #4bc6df; }
@@ -5094,7 +5065,7 @@ Display a Guardian Witness submission.
   .template--football-fixtures.android .football-fixtures-header {
     display: none; }
 
-.template--standard-article .alerts {
+.template--standard-article .article__header .alerts__label {
   display: none; }
 .template--standard-article .article__body {
   padding: 0px 12px 0px 12px; }
@@ -5135,37 +5106,27 @@ Display a Guardian Witness submission.
 .template--standard-article.tone--comment .article {
   background-color: #eeebe8;
   border-top-color: #f39f33; }
-.template--standard-article.tone--comment .article__header .inner-header {
-  -webkit-box-ordinal-group: 2;
-  -webkit-order: 1;
-  order: 1;
+.template--standard-article.tone--comment .article__header .cutout__container {
   position: relative;
   overflow: auto;
   padding-bottom: 2em; }
 .template--standard-article.tone--comment .article__header .section,
-.template--standard-article.tone--comment .article__header .headline .byline__author {
-  color: #e6711b;
-  display: block; }
+.template--standard-article.tone--comment .article__header .byline__author {
+  color: #e6711b; }
 .template--standard-article.tone--comment .article__header .standfirst {
-  color: #2d2a26;
-  -webkit-box-ordinal-group: 5;
-  -webkit-order: 4;
-  order: 4; }
+  color: #2d2a26; }
   @media all and (max-width: 40.615em) {
     .template--standard-article.tone--comment .article__header .standfirst {
       font-size: 1.25em;
       line-height: 1.25em; } }
 .template--standard-article.tone--comment .article__header .alerts {
+  padding: 0px 12px 12px 12px;
   position: absolute;
-  bottom: 0;
-  display: block; }
+  bottom: 0; }
 .template--standard-article.tone--comment .article__header .article__meta {
   background-color: #f39f33;
   border: 0;
-  margin: 0;
-  -webkit-box-ordinal-group: 3;
-  -webkit-order: 2;
-  order: 2; }
+  margin: 0; }
   .template--standard-article.tone--comment .article__header .article__meta a {
     color: white; }
     .template--standard-article.tone--comment .article__header .article__meta a:active {
@@ -5174,12 +5135,6 @@ Display a Guardian Witness submission.
   color: white; }
 .template--standard-article.tone--comment .article__header .article__comments {
   border-color: rgba(255, 255, 255, 0.4); }
-.template--standard-article.tone--comment .article__header .byline {
-  display: none; }
-.template--standard-article.tone--comment .article__header .article__image {
-  -webkit-box-ordinal-group: 4;
-  -webkit-order: 3;
-  order: 3; }
 .template--standard-article.tone--comment .article__body > p:first-of-type:first-letter {
   color: "";
   font-family: "Egyptian Display", Georgia, serif;
@@ -5221,49 +5176,48 @@ Display a Guardian Witness submission.
 [class*="tone--feature"] .article__header .bullet:before,
 [class*="tone--feature"] .article__header ul > li:before {
   color: rgba(255, 255, 255, 0.8); }
-[class*="tone--feature"] .article__header .inner-header {
-  padding-right: 0;
-  -webkit-box-ordinal-group: 3;
-  -webkit-order: 2;
-  order: 2; }
-[class*="tone--feature"] .section {
+[class*="tone--feature"] .article__header .section {
   color: white; }
-[class*="tone--feature"] .headline {
+[class*="tone--feature"] .article__header .headline {
   color: white;
   position: relative;
   z-index: 20; }
   @media all and (min-width: 40.625em) {
-    [class*="tone--feature"] .headline {
+    [class*="tone--feature"] .article__header .headline {
       font-size: 3.5556em;
       font-weight: 100;
       line-height: 0.9375; } }
-[class*="tone--feature"] .standfirst {
-  color: rgba(255, 255, 255, 0.8);
-  -webkit-box-ordinal-group: 4;
-  -webkit-order: 3;
-  order: 3; }
-  [class*="tone--feature"] .standfirst strong {
+[class*="tone--feature"] .article__header .alerts__label {
+  display: none; }
+[class*="tone--feature"] .article__header .standfirst {
+  color: rgba(255, 255, 255, 0.8); }
+  [class*="tone--feature"] .article__header .standfirst strong {
+    color: white;
     font-weight: normal; }
-[class*="tone--feature"] .article__meta {
+[class*="tone--feature"] .article__header .review-rating {
+  color: rgba(255, 255, 255, 0.5); }
+[class*="tone--feature"] .article__header .review-rating--1 .icon:nth-child(-n+1),
+[class*="tone--feature"] .article__header .review-rating--2 .icon:nth-child(-n+2),
+[class*="tone--feature"] .article__header .review-rating--3 .icon:nth-child(-n+3),
+[class*="tone--feature"] .article__header .review-rating--4 .icon:nth-child(-n+4),
+[class*="tone--feature"] .article__header .review-rating--5 .icon:nth-child(-n+5) {
+  color: white; }
+[class*="tone--feature"] .article__header .article__meta {
   color: rgba(255, 255, 255, 0.8);
   border: 0;
-  margin: 0;
-  -webkit-box-ordinal-group: 7;
-  -webkit-order: 6;
-  order: 6; }
-[class*="tone--feature"] .avatar--author,
-[class*="tone--feature"] .alerts {
-  display: none; }
-[class*="tone--feature"] .article__comments {
+  margin: 0; }
+[class*="tone--feature"] .article__header .article__pubdate {
+  color: rgba(255, 255, 255, 0.8); }
+[class*="tone--feature"] .article__header .article__comments {
   border-color: rgba(255, 255, 255, 0.5); }
 @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-  [class*="tone--feature"] .article__comments__label {
+  [class*="tone--feature"] .article__header .article__comments__label {
     display: none; } }
-[class*="tone--feature"] .byline {
+[class*="tone--feature"] .article__header .byline {
   color: white; }
-[class*="tone--feature"] .article__image {
+[class*="tone--feature"] .article__header .article__image {
   position: relative; }
-[class*="tone--feature"] .article__image-caption {
+[class*="tone--feature"] .article__header .article__image-caption {
   color: rgba(255, 255, 255, 0.9);
   border: 0 none;
   padding: 0;
@@ -5272,7 +5226,7 @@ Display a Guardian Witness submission.
   bottom: 0;
   left: 0;
   z-index: 10; }
-[class*="tone--feature"] .article__image-caption__icon {
+[class*="tone--feature"] .article__header .article__image-caption__icon {
   line-height: 44px;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.4);
@@ -5282,9 +5236,9 @@ Display a Guardian Witness submission.
   position: absolute;
   bottom: 0;
   right: 0; }
-  [class*="tone--feature"] .article__image-caption__icon:active {
+  [class*="tone--feature"] .article__header .article__image-caption__icon:active {
     background-color: rgba(0, 0, 0, 0.66); }
-[class*="tone--feature"] .article__image-caption__text {
+[class*="tone--feature"] .article__header .article__image-caption__text {
   background-color: rgba(0, 0, 0, 0.4);
   padding: 6px 12px 6px 12px;
   display: none;
@@ -5294,12 +5248,10 @@ Display a Guardian Witness submission.
   right: 0;
   bottom: 0;
   right: 45px; }
-  [class*="tone--feature"] .article__image-caption__text.is-visible {
+  [class*="tone--feature"] .article__header .article__image-caption__text.is-visible {
     display: block;
     min-height: 44px;
     max-height: 999px; }
-[class*="tone--feature"] .article__pubdate {
-  color: rgba(255, 255, 255, 0.8); }
 [class*="tone--feature"] .article__body > p:first-of-type:first-letter {
   color: "";
   font-family: "Egyptian Display", Georgia, serif;

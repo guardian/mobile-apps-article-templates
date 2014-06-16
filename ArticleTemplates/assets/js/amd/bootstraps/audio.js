@@ -92,10 +92,10 @@ define([
 				}
 				window.audioBackground = function (duration) {
 					// Copied directly, needs cleaning
-					if ($(".inner-header").attr("data-background") == null && !$("body").hasClass("media")) {
+					if ($(".cutout__container").attr("data-background") == null && !$("body").hasClass("media")) {
 						var numOfCircles = Math.floor((duration / 60) / 10) + 2,
-							h = $(".inner-header").offset().height,
-							w = $(".inner-header").offset().width,
+							h = $(".cutout__container").offset().height,
+							w = $(".cutout__container").offset().width,
 							size = (h * w) / 8000,
 							x = [],
 							y = [];
@@ -138,7 +138,7 @@ define([
 							size = size * 1.3;
 						}
 
-						$(".inner-header").attr("data-background", "true");
+						$(".cutout__container").attr("data-background", "true");
 					}
 				};
 

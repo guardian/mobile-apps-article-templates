@@ -2,41 +2,24 @@
 	.article {
 		border-top-color: $headline;
 	}
+
 	.article__header {
-		.inner-header {
+		.cutout__container {
 			background: -webkit-canvas(squares) $news-accent;
 			padding-bottom: 4.5em;
 			position: relative;
-
-			.section {
-				display: none;
-				padding-bottom: 0;
-			}
-
-			.headline {
-				color: $white;
-				@include padding(0.5, 1, 1, 1);
-				span {
-					color: $headline;
-					display: block;
-				}
-			}
-
-			.byline {
-				color: fade-out($white, 0.1);
-				border: 0 none;
-				@include padding(0, 0, 0, 1);
-				@include mq($to: col1) {
-					display: none;
-				}
-			}
 		}
-		.byline--mobile {
-			@include padding(0, 0, 1, 0);
-			border-bottom: 1px dotted $shadow;
-			display: block;
-			@include mq($from: col1) {
-				display: none;
+
+		.section {
+			display: none;
+		}
+
+		.headline {
+			color: $white;
+			@include padding(0.5, 1, 1, 1);
+			span {
+				color: $headline;
+				display: block;
 			}
 		}
 
@@ -45,6 +28,24 @@
 			@include mq($to: col2) {
 				font-size: 1.25em;
 				line-height: 1.25em;
+			}
+		}
+
+		.byline {
+			color: fade-out($white, 0.1);
+			border: 0 none;
+			@include padding(0, 0, 0, 1);
+			@include mq($to: col1) {
+				display: none;
+			}
+		}
+
+		.byline--mobile {
+			@include padding(0, 0, 1, 0);
+			border-bottom: 1px dotted $shadow;
+			display: block;
+			@include mq($from: col1) {
+				display: none;
 			}
 		}
 
@@ -91,7 +92,7 @@
 			padding-right: cols($base-4, 4);
 		}
 	}
-	
+
 	.media-meta {
 		.byline,
 		.media-meta__misc__timestamp {

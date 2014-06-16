@@ -3,20 +3,22 @@
 	.article {
 		background-color: $media-bg;
 		border-top-color: $media;
-		.article__header h1 {
-			color: $white;
-			@include mq($to: col1) {
-				margin-bottom: 24px;
-			}
-		}
-		.section {
-			color: $media;
-		}
+
 		a {
 			color: $media;
 			&:active {
 				color: $media-accent;
 			}
+		}
+	}
+
+	.article__header {
+		.section {
+			color: $media;
+		}
+
+		.headline {
+			color: $white;
 		}
 	}
 

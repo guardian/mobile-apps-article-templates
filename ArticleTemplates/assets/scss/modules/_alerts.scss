@@ -8,13 +8,13 @@ Display an alerts toggle.
 
 ```html_example
 <a class="alerts">
-	<span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> Follow contributor</span>
-	<span class="alerts__state--follow"><span class="icon">&#xe049;</span> Following contributor</span>
+	<span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> <span class="alerts__label">Follow contributor</span></span>
+	<span class="alerts__state--follow"><span class="icon">&#xe049;</span> <span class="alerts__label">Following contributor</span></span>
 </a>
 
 <a class="alerts following">
-	<span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> Follow contributor</span>
-	<span class="alerts__state--follow"><span class="icon">&#xe049;</span> Following contributor</span>
+	<span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> <span class="alerts__label">Follow contributor</span></span>
+	<span class="alerts__state--follow"><span class="icon">&#xe049;</span> <span class="alerts__label">Following contributor</span></span>
 </a>
 ```
 */
@@ -23,11 +23,7 @@ Display an alerts toggle.
 	color: $news;
 	font-family: $agate-sans;
 	font-weight: bold;
-	display: block;
-
-	.icon {
-		color: $standfirst;
-	}
+	display: inline-block;
 
 	.alerts__state--follow {
 		display: none;

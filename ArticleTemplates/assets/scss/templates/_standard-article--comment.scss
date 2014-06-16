@@ -5,22 +5,19 @@
 	}
 
 	.article__header {
-		.inner-header {
-			@include order(1);
+		.cutout__container {
 			position: relative;
 			overflow: auto;
 			padding-bottom: 2em;
 		}
 
 		.section,
-		.headline .byline__author {
+		.byline__author {
 			color: $comment;
-			display: block;
 		}
 
 		.standfirst {
 			color: $comment-accent-dark;
-			@include order(4);
 			@include mq($to: col2) {
 				font-size: 1.25em;
 				line-height: 1.25em;
@@ -28,16 +25,15 @@
 		}
 
 		.alerts {
+			@include padding(0, 1, 1, 1);
 			position: absolute;
 			bottom: 0;
-			display: block;
 		}
 
 		.article__meta {
 			background-color: $comment-accent-light;
 			border: 0;
 			margin: 0;
-			@include order(2);
 
 			a {
 				color: $white;
@@ -51,17 +47,9 @@
 		.article__pubdate {
 			color: $white;
 		}
-		
+
 		.article__comments {
 			border-color: rgba(255, 255, 255, 0.4);
-		}
-
-		.byline {
-			display: none;
-		}
-
-		.article__image {
-			@include order(3);
 		}
 	}
 

@@ -1,18 +1,6 @@
 .article__header {
-	background-image: none; // Hide Cif elements from non-Cif pages (TODO: Remove this when templates are split)
-	@include flexbox;
-	@include flex-direction(column);
-
 	ul > li {
 		@include bullet();
-	}
-
-	.inner-header,
-	.standfirst,
-	.article__meta,
-	.article__image,
-	.review-rating {
-		@include flex(1);
 	}
 
 	.section {
@@ -21,10 +9,6 @@
 
 	.headline {
 		@include padding(0, 1, 2.5, 1);
-		
-		.byline__author {
-			display: none; // TODO: Remove this when templates are split
-		}
 	}
 
 	.standfirst {
@@ -33,16 +17,6 @@
 
 	.byline {
 		@include padding(0.6667, 1, 0, 1);
-	}
-
-	.alerts {
-		@include padding(0, 1, 1, 1);
-		display: none; // Hidden by default
-	}
-
-	.review-rating {
-		@include padding(0, 1, 1.5, 1);
-		margin-top: -18px;
 	}
 
 	.article__meta {
@@ -63,10 +37,6 @@
 	.avatar--author {
 		@include margin(0, 0.75, 1, 0);
 		float: left;
-	}
-
-	.article__image {
-		margin-top: 0;
 	}
 
 	.article__image-caption__icon {
@@ -96,7 +66,7 @@
 	}
 
 	@include mq(col2, col3) {
-		.inner-header,
+		.headline,
 		.standfirst {
 			padding-right: cols($base-3, 3, 1);
 		}
@@ -106,7 +76,7 @@
 	}
 
 	@include mq($from: col3) {
-		.inner-header,
+		.headline,
 		.standfirst {
 			padding-right: cols($base-4, 4, 1);
 		}
