@@ -29,6 +29,7 @@ require([
     'bootstraps/article',
     'bootstraps/audio',
     'bootstraps/football',
+    'bootstraps/gallery',
     'bootstraps/liveblog',
     'modules/$'
 ], function (
@@ -37,6 +38,7 @@ require([
     Article,
     Audio,
     Football,
+    Gallery,
     Liveblog,
     $
 ) {
@@ -65,6 +67,10 @@ require([
 
         if (config.contentType === 'audio') {
             Audio.init();
+        }
+
+        if (config.contentType === 'gallery') {
+            Gallery.init();
         }
 
         if (config.contentType === 'football') {
