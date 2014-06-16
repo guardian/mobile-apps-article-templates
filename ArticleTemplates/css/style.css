@@ -2289,8 +2289,10 @@ aside {
     border-top: none; }
     #comments.preview .article__body--comments .discussion {
       margin-top: 0;
-      background-color: transparent;
+      border-top: none;
       background-color: #333333; }
+    #comments.preview .article__body--comments .discussion__header {
+      padding: 0; }
     #comments.preview .article__body--comments .discussion__body {
       height: 100px;
       overflow: hidden;
@@ -2299,6 +2301,13 @@ aside {
       display: none; }
     #comments.preview .article__body--comments .discussion__username {
       color: #4bc6df; }
+  #comments.preview .comments--preview__graident {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    background-image: linear-gradient(to bottom, rgba(51, 51, 51, 0) 70%, #333333 100%);
+    width: 100%;
+    height: 100%; }
 
 #liveblog .article {
   background-color: #f6f6f6;
