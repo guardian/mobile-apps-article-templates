@@ -4,7 +4,6 @@ var gu = document.getElementById('gu'),
     baseUrl = gu.getAttribute('data-js-dir');
 
 require.config({
-    baseUrl: baseUrl + '',
     paths: {
         bonzo: 'components/bonzo.min',
         bean: 'components/bean.min',
