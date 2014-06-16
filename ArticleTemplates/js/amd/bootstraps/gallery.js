@@ -26,13 +26,7 @@ define([
 			$('.gallery__thumbnails').collagePlus({
 					'targetHeight' : imageHeight
 				});
-			
-			$(window).resize(function() {
-				$('.gallery__thumbnails').removeAttr("style").collagePlus({
-					'targetHeight' : imageHeight
-				});
-			});
-*/
+			*/
 		}
 	},
 
@@ -41,9 +35,10 @@ define([
 			this.initialised = true;
 			modules.galleryLayout();
 			
-			// $(window).on("resize", console.log("asdf"));
-			
-			
+			window.onresize=function(){
+				modules.galleryLayout();
+			};
+
 			// console.info("Gallery ready");
 		}
 	};
