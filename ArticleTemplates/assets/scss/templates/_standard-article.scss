@@ -27,31 +27,8 @@
 		}
 		.element-video {
 			@include mq($from: col2) {
-				padding-bottom: 75.375%; // Compensation for width being 134%
+				padding-bottom: 75.375%; // Compensation for width being 135%
 			}
-		}
-
-		.figure-wide,
-		.element {
-			&:first-of-type {
-				margin-top: 0;
-			}
-		}
-		
-		@include mq($from: col1) {
-			.player-card {
-				@include margin (1, 0, 1, 1);
-				width: 50%;
-				float: right;
-			}
-		}
-	}
-
-	 // Hide witness adside until correctly positioned with JavaScript
-	.aside-witness {
-		display: none;
-		&.js--positioned {
-			display: block;
 		}
 	}
 }

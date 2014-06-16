@@ -19,12 +19,21 @@
 		@include padding(0.6667, 1, 0, 1);
 	}
 
+	.avatar--author {
+		@include margin(0, 0.75, 1, 0);
+		float: left;
+	}
+
 	.article__meta {
 		margin: -1px 0;
 		border-top: 1px dotted $shadow;
 		border-bottom: 1px dotted $shadow;
 		width: 100%;
 		display: table;
+	}
+
+	.article__pubdate {
+		@include padding(0, 1, 2, 1);
 	}
 
 	.article__comments {
@@ -34,17 +43,8 @@
 		display: table-cell;
 	}
 
-	.avatar--author {
-		@include margin(0, 0.75, 1, 0);
-		float: left;
-	}
-
 	.article__image-caption__icon {
 		display: none;
-	}
-	
-	.article__pubdate {
-		@include padding(0, 1, 2, 1);
 	}
 
 	@include mq($to: col1) {

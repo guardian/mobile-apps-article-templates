@@ -4085,7 +4085,6 @@ Display a Guardian Witness submission.
     content: "\00B7   "; }
 
 .article {
-  font-family: "Egyptian Text", Georgia, serif;
   background-color: white;
   border-bottom: 2px solid #dcdad5;
   border-top: 4px solid #4bc6df;
@@ -4126,24 +4125,24 @@ Display a Guardian Witness submission.
   padding: 6px 12px 18px 12px; }
 .article__header .byline {
   padding: 8.0004px 12px 0px 12px; }
+.article__header .avatar--author {
+  margin: 0px 9px 12px 0px;
+  float: left; }
 .article__header .article__meta {
   margin: -1px 0;
   border-top: 1px dotted #dcdad5;
   border-bottom: 1px dotted #dcdad5;
   width: 100%;
   display: table; }
+.article__header .article__pubdate {
+  padding: 0px 12px 24px 12px; }
 .article__header .article__comments {
   font-weight: bold;
   padding: 6px 6px 12px 12px;
   border-left: 1px dotted #dcdad5;
   display: table-cell; }
-.article__header .avatar--author {
-  margin: 0px 9px 12px 0px;
-  float: left; }
 .article__header .article__image-caption__icon {
   display: none; }
-.article__header .article__pubdate {
-  padding: 0px 12px 24px 12px; }
 @media all and (max-width: 28.115em) {
   .article__header .article__comments {
     width: 21.73913%; }
@@ -4190,53 +4189,43 @@ Display a Guardian Witness submission.
       min-height: 320px;
       background-size: contain; } }
 
-.article__header.cutout .cutout__container {
-  background-repeat: no-repeat;
-  background-position: right bottom;
-  background-position: right -15% bottom 0;
-  overflow: auto; }
-  @media all and (max-width: 28.115em) {
-    .article__header.cutout .cutout__container {
-      min-height: 245px;
-      background-size: 52.17391% auto;
-      padding-right: 21.73913%; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    .article__header.cutout .cutout__container {
-      min-height: 280px;
-      background-size: 42.55319% auto;
-      padding-right: 23.40426%; } }
+.article__body {
+  font-family: "Egyptian Text", Georgia, serif; }
+  .article__body .figure-wide:first-of-type,
+  .article__body .element:first-of-type {
+    margin-top: 0; }
+  @media all and (min-width: 28.125em) {
+    .article__body .player-card {
+      margin: 12px 0px 12px 12px;
+      width: 50%;
+      float: right; } }
+  @media all and (min-width: 35em) {
+    .article__body .advert-slot--mpu {
+      float: right;
+      margin-left: 20px;
+      margin-bottom: 12px; } }
   @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    .article__header.cutout .cutout__container {
-      min-height: 400px;
-      background-size: 47.88732% auto; } }
+    .article__body .advert-slot--mpu {
+      margin-right: -30.98592%; } }
   @media all and (min-width: 56.25em) {
-    .article__header.cutout .cutout__container {
-      min-height: 320px;
-      background-size: contain; } }
-
-@media all and (min-width: 35em) {
-  .article__body .advert-slot--mpu {
-    float: right;
-    margin-left: 20px;
-    margin-bottom: 12px; } }
-@media all and (min-width: 40.625em) and (max-width: 56.24em) {
-  .article__body .advert-slot--mpu {
-    margin-right: -30.98592%; } }
-@media all and (min-width: 56.25em) {
-  .article__body .advert-slot--mpu {
-    margin-right: -30.52632%; } }
-@media all and (max-width: 34.9375em) {
-  .article__body .advert-slot--mpu--tablet {
-    margin: 12px auto 0 auto; } }
-@media all and (min-width: 28.125em) and (max-width: 40.615em) {
-  .article__body .aside {
-    margin-right: -2.12766%; } }
-@media all and (min-width: 40.625em) and (max-width: 56.24em) {
-  .article__body .aside {
-    margin-right: -32.39437%; } }
-@media all and (min-width: 56.25em) {
-  .article__body .aside {
-    margin-right: -32.63158%; } }
+    .article__body .advert-slot--mpu {
+      margin-right: -30.52632%; } }
+  @media all and (max-width: 34.9375em) {
+    .article__body .advert-slot--mpu--tablet {
+      margin: 12px auto 0 auto; } }
+  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    .article__body .aside {
+      margin-right: -2.12766%; } }
+  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    .article__body .aside {
+      margin-right: -32.39437%; } }
+  @media all and (min-width: 56.25em) {
+    .article__body .aside {
+      margin-right: -32.63158%; } }
+  .article__body .aside-witness {
+    display: none; }
+    .article__body .aside-witness.js--positioned {
+      display: block; }
 
 .template--support {
   font-family: "Agate Sans", sans-serif;
@@ -5113,29 +5102,16 @@ Display a Guardian Witness submission.
   @media all and (min-width: 40.625em) {
     .template--standard-article .article__body .element-video {
       padding-bottom: 75.375%; } }
-  .template--standard-article .article__body .figure-wide:first-of-type,
-  .template--standard-article .article__body .element:first-of-type {
-    margin-top: 0; }
-  @media all and (min-width: 28.125em) {
-    .template--standard-article .article__body .player-card {
-      margin: 12px 0px 12px 12px;
-      width: 50%;
-      float: right; } }
-.template--standard-article .aside-witness {
-  display: none; }
-  .template--standard-article .aside-witness.js--positioned {
-    display: block; }
 
-.template--standard-article.tone--comment .article {
-  background-color: #eeebe8;
-  border-top-color: #f39f33; }
 .template--standard-article.tone--comment .article__header .cutout__container {
   position: relative;
   overflow: auto;
   padding-bottom: 2em; }
-.template--standard-article.tone--comment .article__header .section,
-.template--standard-article.tone--comment .article__header .byline__author {
+.template--standard-article.tone--comment .article__header .section {
   color: #e6711b; }
+.template--standard-article.tone--comment .article__header .byline__author {
+  color: #e6711b;
+  white-space: nowrap; }
 .template--standard-article.tone--comment .article__header .standfirst {
   color: #2d2a26; }
   @media all and (max-width: 40.615em) {
@@ -5143,9 +5119,11 @@ Display a Guardian Witness submission.
       font-size: 1.25em;
       line-height: 1.25em; } }
 .template--standard-article.tone--comment .article__header .alerts {
-  padding: 0px 12px 12px 12px;
+  padding: 12px 12px 12px 12px;
   position: absolute;
   bottom: 0; }
+.template--standard-article.tone--comment .article__header .alerts__label {
+  display: inline-block; }
 .template--standard-article.tone--comment .article__header .article__meta {
   background-color: #f39f33;
   border: 0;
@@ -5176,6 +5154,9 @@ Display a Guardian Witness submission.
   color: #e6711b; }
   .tone--comment a:active {
     color: #f39f33; }
+.tone--comment .article {
+  background-color: #eeebe8;
+  border-top-color: #f39f33; }
 .tone--comment .touchpoint--primary .touchpoint__button {
   background-color: #e6711b; }
 .tone--comment .touchpoint--primary:active .touchpoint__button {
@@ -5203,6 +5184,7 @@ Display a Guardian Witness submission.
   color: white; }
 [class*="tone--feature"] .article__header .headline {
   color: white;
+  padding-right: 0;
   position: relative;
   z-index: 20; }
   @media all and (min-width: 40.625em) {
@@ -5210,8 +5192,6 @@ Display a Guardian Witness submission.
       font-size: 3.5556em;
       font-weight: 100;
       line-height: 0.9375; } }
-[class*="tone--feature"] .article__header .alerts__label {
-  display: none; }
 [class*="tone--feature"] .article__header .standfirst {
   color: rgba(255, 255, 255, 0.8); }
   [class*="tone--feature"] .article__header .standfirst strong {
@@ -5225,6 +5205,10 @@ Display a Guardian Witness submission.
 [class*="tone--feature"] .article__header .review-rating--4 .icon:nth-child(-n+4),
 [class*="tone--feature"] .article__header .review-rating--5 .icon:nth-child(-n+5) {
   color: white; }
+[class*="tone--feature"] .article__header .byline {
+  color: white; }
+[class*="tone--feature"] .article__header .alerts__label {
+  display: none; }
 [class*="tone--feature"] .article__header .article__meta {
   color: rgba(255, 255, 255, 0.8);
   border: 0;
@@ -5236,8 +5220,6 @@ Display a Guardian Witness submission.
 @media all and (min-width: 40.625em) and (max-width: 56.24em) {
   [class*="tone--feature"] .article__header .article__comments__label {
     display: none; } }
-[class*="tone--feature"] .article__header .byline {
-  color: white; }
 [class*="tone--feature"] .article__header .article__image {
   position: relative; }
 [class*="tone--feature"] .article__header .article__image-caption {

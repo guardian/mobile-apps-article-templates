@@ -1,9 +1,4 @@
 .template--standard-article.tone--comment {
-	.article {
-		background-color: $comment-bg;
-		border-top-color: $comment-accent-light;
-	}
-
 	.article__header {
 		.cutout__container {
 			position: relative;
@@ -11,9 +6,13 @@
 			padding-bottom: 2em;
 		}
 
-		.section,
+		.section {
+			color: $comment;
+		}
+
 		.byline__author {
 			color: $comment;
+			white-space: nowrap;
 		}
 
 		.standfirst {
@@ -25,9 +24,13 @@
 		}
 
 		.alerts {
-			@include padding(0, 1, 1, 1);
+			@include padding(1);
 			position: absolute;
 			bottom: 0;
+		}
+
+		.alerts__label {
+			display: inline-block;
 		}
 
 		.article__meta {
@@ -37,7 +40,7 @@
 
 			a {
 				color: $white;
-				
+
 				&:active {
 					opacity: 0.8;
 				}
@@ -64,6 +67,10 @@
 		&:active {
 			color: $comment-accent-light;
 		}
+	}
+	.article {
+		background-color: $comment-bg;
+		border-top-color: $comment-accent-light;
 	}
 	.touchpoint--primary .touchpoint__button {
 		background-color: $comment;

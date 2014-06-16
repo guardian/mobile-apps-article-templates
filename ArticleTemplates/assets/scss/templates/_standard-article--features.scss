@@ -20,6 +20,7 @@
 
 		.headline {
 			color: $white;
+			padding-right: 0;
 			position: relative;
 			z-index: 20;
 			@include mq($from: col2) {
@@ -27,10 +28,6 @@
 				font-weight: 100;
 				line-height: 0.9375; // 60px
 			}
-		}
-
-		.alerts__label {
-			display: none;
 		}
 
 		.standfirst {
@@ -53,6 +50,14 @@
 			color: $white;
 		}
 
+		.byline {
+			color: $white;
+		}
+
+		.alerts__label {
+			display: none;
+		}
+
 		.article__meta {
 			color: rgba(255, 255, 255, 0.8);
 			border: 0;
@@ -71,10 +76,6 @@
 			@include mq(col2, col3) {
 				display: none;
 			}
-		}
-
-		.byline {
-			color: $white;
 		}
 
 		.article__image {
