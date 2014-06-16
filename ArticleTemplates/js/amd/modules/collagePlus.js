@@ -80,7 +80,7 @@ define([
 	function init (selector, children) {
 		// Set defaults based off window size
 		var imageHeight;
-		
+
 		if (window.innerWidth < 450) {
 			imageHeight = 150;
 		} else {
@@ -110,20 +110,17 @@ define([
 			var w = this.width,
 				h = this.height;
 
-			// Store these values for resize?!?
-			
 			console.log(settings.albumWidth);
 
 			var nw = Math.ceil(w/h*settings.targetHeight),
 				nh = Math.ceil(settings.targetHeight);
-			
+
 			elements.push([this, nw, nh]);
-			
+
 			row += nw + settings.padding;
-			
+
 			if (row > settings.albumWidth && elements.length != 0) {
 				resizeRow(elements, (row - settings.padding), settings, rownum);
-
 				row = 0;
 				elements = [];
 				rownum += 1;
@@ -131,7 +128,6 @@ define([
 			
 			if (settings.images.length-1 == index && elements.length != 0) {
 				resizeRow(elements, row, settings, rownum);
-				
 				row = 0;
 				elements = [];
 				rownum += 1;
