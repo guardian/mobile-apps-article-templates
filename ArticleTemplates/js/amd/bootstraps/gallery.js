@@ -12,7 +12,8 @@ define([
 
 	var modules = {
 		galleryLayout: function () {
-			collagePlus.init();
+			collagePlus.init(".gallery__thumbnails", ".gallery__thumbnails__image");
+			/*
 			var windowWidth = window.innerWidth;
 			var imageHeight;
 			
@@ -31,6 +32,7 @@ define([
 					'targetHeight' : imageHeight
 				});
 			});
+*/
 		}
 	},
 
@@ -38,6 +40,10 @@ define([
 		if (!this.initialised) {
 			this.initialised = true;
 			modules.galleryLayout();
+			
+			// $(window).on("resize", console.log("asdf"));
+			
+			
 			// console.info("Gallery ready");
 		}
 	};
