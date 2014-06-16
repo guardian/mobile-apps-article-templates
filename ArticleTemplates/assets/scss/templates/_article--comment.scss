@@ -1,0 +1,31 @@
+.article--comment {
+	.article__header {
+		.cutout__container {
+			position: relative;
+			overflow: auto;
+			padding-bottom: 2em;
+		}
+
+		.standfirst {
+			color: $comment-accent-dark;
+			@include mq($to: col2) {
+				font-size: 1.25em;
+				line-height: 1.25em;
+			}
+		}
+
+		.alerts {
+			@include padding(1);
+			position: absolute;
+			bottom: 0;
+		}
+
+		.alerts__label {
+			display: inline-block;
+		}
+	}
+
+	.article__body > p {
+		@include dropcap();
+	}
+}

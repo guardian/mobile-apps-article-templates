@@ -8,8 +8,8 @@
 	<script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/js/amd/shim.js"></script>
 </head>
 
-<body class="template--discussion tone--__SECTION_TONE__ comments-__COMMENTS_COUNT__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__">
-	<div class="article" style="margin-top: __ACTIONBARHEIGHT__px;" id="comments">
+<body class="tone--__SECTION_TONE__ comments-__COMMENTS_COUNT__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__">
+	<div class="article article--discussion" style="margin-top: __ACTIONBARHEIGHT__px;" id="comments">
 		<div class="article__header">
 			<h3 class="section">Comments <span class="section__meta">__COMMENTS_COUNT__</span></h3>
 			<h1 class="headline">__TITLE__</h1>
@@ -34,13 +34,17 @@
 
 				<div class="container__body">
 					<div class="block block--discussion-empty">
-						<div class="prose resizable">
-							<p>Open for comments. <a href="x-gu://leavecomment">Be the first to join the debate</a></p>
+						<div class="block__body">
+							<div class="prose resizable">
+								<p>Open for comments. <a href="x-gu://leavecomment">Be the first to join the debate</a></p>
+							</div>
 						</div>
 					</div>
 					<div class="block block--discussion-failed">
-						<div class="prose resizable">
-							<p>Comments are currently unavailable. Please try again later.</p>
+						<div class="block__body">
+							<div class="prose resizable">
+								<p>Comments are currently unavailable. Please try again later.</p>
+							</div>
 						</div>
 					</div>
 					<div class="loading loading--discussion">

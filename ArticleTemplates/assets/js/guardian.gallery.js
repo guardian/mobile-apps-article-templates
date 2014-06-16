@@ -8,12 +8,12 @@ if (windowWidth < 450 ) {
 	imageHeight = 300;
 }
 
-$('.gallery__thumbnails').collagePlus({
+$('.gallery').collagePlus({
 		'targetHeight' : imageHeight
 	});
 
 $(window).resize(function() {
-	$('.gallery__thumbnails').removeAttr("style").collagePlus({
+	$('.gallery').removeAttr("style").collagePlus({
 		'targetHeight' : imageHeight
 	});
 });

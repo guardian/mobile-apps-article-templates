@@ -1,0 +1,56 @@
+.tone--media {
+	a {
+		color: darken($media, 3%);
+		&:active {
+			color: $media-accent;
+		}
+	}
+
+	.touchpoint--primary {
+		.touchpoint__label {
+			color: darken($media, 3%);
+		}
+		.touchpoint__button {
+			background-color: $media;
+		}
+		&:active .touchpoint__button {
+			background-color: $media-accent;
+		}
+	}
+
+	// Template specific styles
+	.article--audio,
+	.article--visual {
+		background-color: $media-bg;
+		border-top-color: $media;
+
+		.from-content-api p {
+			@include text-underline($media, $media-bg, $media-accent);
+		}
+		.from-content-api table,
+		.table {
+			border-top-color: $media;
+		}
+
+		.audio-player {
+			background-color: darken($media-bg, 10%);
+		}
+
+		.article__header {
+			.section {
+				color: $media;
+			}
+
+			.headline,
+			.standfirst,
+			.byline {
+				color: $white;
+			}
+		}
+
+		.article__body {
+			color: $white;
+			@include text-underline($media, $media-bg, $media-accent);
+		}
+	}
+}

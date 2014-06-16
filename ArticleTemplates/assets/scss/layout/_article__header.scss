@@ -19,6 +19,10 @@
 		@include padding(0.6667, 1, 0, 1);
 	}
 
+	.alerts__label {
+		display: none;
+	}
+
 	.avatar--author {
 		@include margin(0, 0.75, 1, 0);
 		float: left;
@@ -62,26 +66,6 @@
 		}
 		.article__comments__label {
 			display: none;
-		}
-	}
-
-	@include mq(col2, col3) {
-		.headline,
-		.standfirst {
-			padding-right: cols($base-3, 3, 1);
-		}
-		.article__comments {
-			width: cols($base-3, 3);
-		}
-	}
-
-	@include mq($from: col3) {
-		.headline,
-		.standfirst {
-			padding-right: cols($base-4, 4, 1);
-		}
-		.article__comments {
-			width: cols($base-4, 4);
 		}
 	}
 

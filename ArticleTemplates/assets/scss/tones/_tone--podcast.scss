@@ -1,0 +1,58 @@
+.tone--podcast {
+	.audio-player__button {
+		&.touchpoint--primary .touchpoint__button {
+			color: $white;
+			background-color: $news;
+
+			&:active {
+				background-color: $news-accent;
+			}
+		}
+	}
+
+	.audio-player__slider__knob {
+		background-color: $news-accent;
+	}
+
+	.article {
+		border-top-color: $headline;
+	}
+
+	.article__header {
+		.cutout__container {
+			background: -webkit-canvas(squares) $news-accent;
+		}
+
+		.section {
+			display: none;
+		}
+
+		.headline {
+			color: $white;
+			padding-right: 0;
+
+			span {
+				color: $headline;
+				display: block;
+			}
+		}
+
+		.standfirst {
+			color: $headline;
+			@include mq($to: col2) {
+				font-size: 1.25em;
+				line-height: 1.25em;
+			}
+		}
+	}
+
+	.article__body {
+		@include padding(0, 1);
+		@include mq(col2, col3) {
+			padding-right: cols($base-3, 3);
+		}
+		@include mq($from: col3) {
+			padding-right: cols($base-4, 4);
+		}
+	}
+}

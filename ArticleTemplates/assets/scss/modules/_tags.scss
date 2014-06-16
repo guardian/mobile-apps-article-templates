@@ -25,15 +25,6 @@ Display which keywords an article has been tagged with.
 	@include padding(0.5, 1, 1, 1);
 	width: 100%;
 
-	.inline-list {
-		@include mq(col2, col3) {
-			width: cols($base-3, 9);
-		}
-		@include mq($from: col3) {
-			width: cols($base-4, 12);
-		}
-	}
-
 	.inline-list__item {
 		@include mq($to: col1) {
 			margin-bottom: 4px;

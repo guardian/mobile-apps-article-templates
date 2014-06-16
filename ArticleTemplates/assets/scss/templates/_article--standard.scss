@@ -1,0 +1,63 @@
+.article--standard,
+.article--comment,
+.article--feature {
+	.article__header {
+		@include mq(col2, col3) {
+			.headline,
+			.standfirst {
+				padding-right: cols($base-3, 3, 1);
+			}
+			.article__comments {
+				width: cols($base-3, 3);
+			}
+		}
+
+		@include mq($from: col3) {
+			.headline,
+			.standfirst {
+				padding-right: cols($base-4, 4, 1);
+			}
+			.article__comments {
+				width: cols($base-4, 4);
+			}
+		}
+	}
+
+	.article__body {
+		@include padding(0, 1);
+		@include mq(col2, col3) {
+			padding-right: cols($base-3, 3);
+		}
+		@include mq($from: col3) {
+			padding-right: cols($base-4, 4);
+		}
+
+		// Images, video and interactives within article body
+		.figure-wide,
+		.element-video,
+		.element-placeholder,
+		.element-interactive {
+			margin-left: -12px;
+			margin-right: -12px;
+			width: auto;
+			@include mq($from: col2) {
+				width: 135%;
+			}
+		}
+		.element-video {
+			@include mq($from: col2) {
+				padding-bottom: 75.375%; // Compensation for width being 135%
+			}
+		}
+	}
+
+	// Ensure tags match width of .article__body
+	.tags .inline-list {
+		@include mq(col2, col3) {
+			width: cols($base-3, 9);
+		}
+		@include mq($from: col3) {
+			width: cols($base-4, 12);
+		}
+	}
+}

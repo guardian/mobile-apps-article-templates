@@ -1,9 +1,7 @@
-.template--discussion {
-	.article {
-		background-color: transparent;
-		border-top-color: $headline;
-		border-bottom: none;
-	}
+.article--discussion {
+	background-color: transparent;
+	border-top-color: $headline;
+	border-bottom: none;
 
 	.article__header {
 		background-color: transparent;
@@ -33,7 +31,9 @@
 	}
 }
 
-.template--discussion.android {
-	@include padding(0,1,0,1);
-	box-sizing: border-box;
+.android {
+	.article--discussion {
+		@include padding(0,1,0,1);
+		box-sizing: border-box;
+	}
 }

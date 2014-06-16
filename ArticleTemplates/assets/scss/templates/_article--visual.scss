@@ -1,0 +1,44 @@
+.article--audio,
+.article--visual {
+	.article__header {
+		.avatar--author {
+			display: none;
+		}
+
+		.article__meta {
+			border-top: 1px dotted $shadow;
+			@include mq($from: col2) {
+				display: table;
+			}
+
+			.byline {
+				border-bottom: 1px dotted $shadow;
+				padding-bottom: 12px;
+				margin-bottom: 6px;
+			}
+		}
+
+		.media-meta__misc {
+			@include mq($from: col2) {
+				display: table-cell;
+				border-left: 1px dotted $shadow;
+			}
+			@include mq(col2, col3) {
+				width: cols($base-3, 4);
+			}
+			@include mq($from: col3) {
+				width: cols($base-4, 4);
+			}
+		}
+	}
+
+	.article__body {
+		@include padding(0, 1);
+		@include mq(col2, col3) {
+			padding-right: cols($base-3, 3);
+		}
+		@include mq($from: col3) {
+			padding-right: cols($base-4, 4);
+		}
+	}
+}

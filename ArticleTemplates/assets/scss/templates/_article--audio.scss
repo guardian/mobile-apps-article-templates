@@ -1,0 +1,29 @@
+.article--audio {
+	.article__header {
+		.cutout__container {
+			padding-bottom: 4.5em;
+			position: relative;
+		}
+
+		.article__meta {
+			position: absolute;
+			bottom: 0;
+		}
+
+		.byline {
+			@include padding(0, 0, 0, 1);
+			@include mq($to: col1) {
+				display: none;
+			}
+		}
+
+		.byline--mobile {
+			@include padding(0, 0, 1, 0);
+			border-bottom: 1px dotted $shadow;
+			display: block;
+			@include mq($from: col1) {
+				display: none;
+			}
+		}
+	}
+}

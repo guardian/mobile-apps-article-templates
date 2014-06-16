@@ -8,15 +8,16 @@
 	<script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/js/amd/shim.js"></script>
 </head>
 
-<body class="template--audio tone--__SECTION_TONE__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__ advert-config--__ADS_CONFIG__" data-content-type="audio" data-ads-enabled="__ADS_ENABLED__" data-ads-slot="/__AD_NETWORK_ID__/__AD_UNIT_IDENTIFIER__" data-ads-config="__ADS_CONFIG__" data-ads-keyword="__AD_KEYWORD_TARGETING__" style="margin-top: __ACTIONBARHEIGHT__px;">
+<body class="tone--__SECTION_TONE__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__ advert-config--__ADS_CONFIG__" data-content-type="audio" data-ads-enabled="__ADS_ENABLED__" data-ads-slot="/__AD_NETWORK_ID__/__AD_UNIT_IDENTIFIER__" data-ads-config="__ADS_CONFIG__" data-ads-keyword="__AD_KEYWORD_TARGETING__" style="margin-top: __ACTIONBARHEIGHT__px;">
 	<div class="advert-slot advert-slot--banner advert-slot--__ADS_ENABLED__">
-		<div class="advert-slot__label">Advertisement </div>
+		<div class="advert-slot__label">Advertisement</div>
 		<div class="advert-slot__wrapper"></div>
 	</div>
-	<div class="article">
+
+	<div class="article article--audio">
 		<div class="article__header cutout">
 			<div class="cutout__container" __CUTOUT__>
-				<h3 class="section">__SECTION__</h3>
+				<h3 class="section"><span class="icon">&#xe047;</span> __SECTION__</h3>
 				<h1 class="headline selectable">__TITLE__</h1>
 				<p class="byline">
 					__BYLINE__
@@ -28,11 +29,11 @@
 			</div>
 
 			<div class="audio-player">
+				<img class="audio-player__button--loading" src="__TEMPLATES_DIRECTORY__assets/img/loading.gif" />
+
 				<a class="audio-player__button touchpoint touchpoint--primary" href="x-gu://playaudio/__AUDIO_URI__">
 					<span class="touchpoint__button icon">&#xe04b;</span>
 				</a>
-
-				<img class="audio-player__button--loading" src="__TEMPLATES_DIRECTORY__assets/img/loading.gif" />
 
 				<div class="audio-player__slider">
 					<input type="text" class="audio-player__slider__played" id="audio-scrubber" />
@@ -55,18 +56,10 @@
 			__BODY__
 		</div>
 
-		<div class="media-meta">
-			<div class="media-meta__misc">
-				__BYLINE__
-				<div class="media-meta__misc__timestamp meta">
-					__PUBDATE__
-				</div>
-				<div class="tags media-meta__misc__tags">
-					<ul class="list">
-						
-					</ul>
-				</div>
-			</div>
+		<div class="tags">
+			<ul class="inline-list">
+				
+			</ul>
 		</div>
 	</div>
 
