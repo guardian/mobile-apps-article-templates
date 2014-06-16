@@ -1,6 +1,6 @@
 /*!
  *
- * jQuery collagePlus Plugin v0.3.2
+ * collagePlus Plugin v0.3.2
  * https://github.com/ed-lea/jquery-collagePlus
  *
  * Copyright 2012, Ed Lea twitter.com/ed_lea
