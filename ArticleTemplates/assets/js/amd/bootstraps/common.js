@@ -7,6 +7,7 @@ define([
 	'smoothScroll',
 	'modules/ads',
 	'modules/comments',
+	'modules/cards',
 	'modules/$'
 ], function (
 	bean,
@@ -16,6 +17,7 @@ define([
 	smoothScroll,
 	Ads,
 	Comments,
+	Cards,
 	$
 ) {
 	'use strict';
@@ -45,6 +47,10 @@ define([
 			loadComments: function () {
 				//
 				Comments.init();
+			},
+
+			loadCards: function() {
+				Cards.init();
 			},
 
 			loadInteractives: function () {
@@ -197,6 +203,7 @@ define([
 				modules.insertTags();
 				modules.loadAdverts(config);
 				modules.loadComments();
+				modules.loadCards();
 				modules.loadEmbeds();
 				modules.scrollToAnchor();
 				modules.loadInteractives();
