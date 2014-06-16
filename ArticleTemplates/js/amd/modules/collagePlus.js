@@ -125,14 +125,13 @@ define([
 				elements = [];
 				rownum += 1;
 			}
-			
+
 			if (settings.images.length-1 == index && elements.length != 0) {
 				resizeRow(elements, row, settings, rownum);
 				row = 0;
 				elements = [];
 				rownum += 1;
 			}
-			
 		});
 
 		if (!this.initialised) {

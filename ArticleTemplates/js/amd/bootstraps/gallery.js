@@ -14,7 +14,7 @@ define([
 		galleryLayout: function () {
 			collagePlus.init(".gallery__thumbnails", ".gallery__thumbnails__image");
 
-			window.onorientationchange = function(){
+			window.onresize = function(){
 				$(".gallery__thumbnails")[0].removeAttribute("style");
 				collagePlus.init(".gallery__thumbnails", ".gallery__thumbnails__image");
 			}
