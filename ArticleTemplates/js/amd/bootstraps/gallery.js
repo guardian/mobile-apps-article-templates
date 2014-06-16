@@ -13,20 +13,11 @@ define([
 	var modules = {
 		galleryLayout: function () {
 			collagePlus.init(".gallery__thumbnails", ".gallery__thumbnails__image");
-			/*
-			var windowWidth = window.innerWidth;
-			var imageHeight;
-			
-			if (windowWidth < 450 ) {
-				imageHeight = 150; 
-			} else {
-				imageHeight = 300;
+
+			window.onorientationchange = function(){
+				$(".gallery__thumbnails")[0].removeAttribute("style");
+				collagePlus.init(".gallery__thumbnails", ".gallery__thumbnails__image");
 			}
-			
-			$('.gallery__thumbnails').collagePlus({
-					'targetHeight' : imageHeight
-				});
-			*/
 		}
 	},
 
@@ -34,11 +25,6 @@ define([
 		if (!this.initialised) {
 			this.initialised = true;
 			modules.galleryLayout();
-			
-			window.onresize=function(){
-				modules.galleryLayout();
-			};
-
 			// console.info("Gallery ready");
 		}
 	};
