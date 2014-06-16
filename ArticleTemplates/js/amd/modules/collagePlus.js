@@ -78,10 +78,22 @@ define([
 	}
 
 	function init (selector, children) {
+		// Set defaults based off window size
+		var imageHeight;
+		
+		if (window.innerWidth < 450) {
+			imageHeight = 150;
+		} else {
+			imageHeight = 300;
+		}
+
+		var padding = getComputedStyle(document.getElementsByClassName("gallery__thumbnails")[0]).getPropertyValue("padding-left");
+			padding = parseInt(padding.substring(0, padding.length - 2));
+
 		var settings = {
-			"targetHeight"			: 400,
-			"albumWidth"			: $(selector)[0].clientWidth - 24,
-			"padding"				: 12,
+			"targetHeight"			: imageHeight,
+			"albumWidth"			: $(selector)[0].clientWidth - (padding * 2),
+			"padding"				: padding,
 			"images"				: $(children),
 			"fadeSpeed"				: "fast",
 			"display"				: "inline-block",
