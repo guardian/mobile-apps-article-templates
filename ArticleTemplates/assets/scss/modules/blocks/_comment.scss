@@ -7,68 +7,72 @@ category: Blocks
 Display an individual comment.
 
 ```html_example
-<div class="comment visible" id="36832610">
+<div class="block block--discussion-thread block--discussion-thread--checked">
+	<div class="comment  visible" id="37064238">
 	<div class="comment__container">
 		<div class="comment__header">
 			<span class="avatar avatar--user">
 				<img class="avatar__img" src="http://static.guim.co.uk/sys-images/Guardian/Pix/site_furniture/2010/09/01/no-user-image.gif">
 			</span>
-			<span class="comment__username">beaupuss</span>
-			<span class="comment__responseto"><span class="icon">&#xe061;</span> </span>
+			<span class="comment__username">grumpyhistorian</span>
+			<span class="comment__responseto"><span class="icon"></span> </span>
 			<span class="comment__role"></span>
-			<span class="comment__timestamp meta">yesterday</span>
+			<span class="comment__timestamp meta">5 hours ago</span>
 		</div>
 
-		<div class="comment__body prose resizable selectable">
-			<p>Tie up the streets around Trafalgar Square? Will anyone notice the difference?</p>
+		<div class="comment__body">
+			<div class="prose resizable selectable">
+				<p>phew thats ok then. I mean govt officials would never lie about the legality of their actions right?</p>
+			</div>
 		</div>
 
 		<div class="comment__options">
-			<a class="comment__reply touchpoint touchpoint--primary touchpoint--small" href="x-gu://leavereply/36832610">
-				<span class="touchpoint__button icon">&#xe061;</span>
-				<span class="touchpoint__label">Reply</span>
-			</a>
-			<a class="comment__report touchpoint" href="x-gu://reportabuse/36832610">
-				<span class="touchpoint__label">Report</span>
-			</a>
+			<a class="comment__reply touchpoint touchpoint--primary touchpoint--small" href="x-gu://leavereply/37064238">
+				<span class="touchpoint__button icon"></span>
+				<span class="touchpoint__label">Reply</span></a>
+			
+			<a class="comment__report touchpoint" href="x-gu://reportabuse/37064238">
+				<span class="touchpoint__label">Report</span></a>
+			
 		</div>
 
-		<a class="comment__recommend touchpoint touchpoint--secondary touchpoint--small" href="x-gu://recommendcomment/36832610">
-			<span class="touchpoint__button icon">&#xe066;</span>
-			<span class="touchpoint__label comment__recommend__count">24</span>
+		<a class="comment__recommend touchpoint touchpoint--secondary touchpoint--small" href="x-gu://recommendcomment/37064238">
+			<span class="touchpoint__button icon"></span>
+			<span class="touchpoint__label comment__recommend__count">295</span>
 		</a>
 	</div>
 </div>
-
-<div class="comment is-response" id="36834532">
+<div class="comment is-response visible" id="37065948">
 	<div class="comment__container">
 		<div class="comment__header">
 			<span class="avatar avatar--user">
-				<img class="avatar__img" src="http://static.guim.co.uk/sys-images/Guardian/Pix/site_furniture/2010/09/01/no-user-image.gif">
+				<img class="avatar__img" src="http://static.guim.co.uk/sys-images/discussion/avatars/2012/12/19/4780434/1816263f-962a-4b24-8e96-1218886e083e/60x60.png">
 			</span>
-			<span class="comment__username">LynW</span>
-			<span class="comment__responseto"><span class="icon">&#xe061;</span> beaupuss</span>
+			<span class="comment__username">FredericMoreau</span>
+			<span class="comment__responseto"><span class="icon"></span> grumpyhistorian</span>
 			<span class="comment__role"></span>
-			<span class="comment__timestamp meta">yesterday</span>
+			<span class="comment__timestamp meta">5 hours ago</span>
 		</div>
 
-		<div class="comment__body prose resizable selectable">
-			<p>I work in an office just across the river. We're certainly noticing the difference. Snarled streets. And circling, deafening, news helicopters... which seems like overkill, frankly.</p>
+		<div class="comment__body">
+			<div class="prose resizable selectable">
+				<p>When it's tax-avoiders and evaders, the government vows to close legal "loop-holes" - when it comes to mass surveillance, they see an opportunity to be exploited. </p> <p>We're told that Parliament has spent far more time on recess this last year than it has sitting, and that the government is running out of things to do - they genuinely think they've fixed everything that needs fixing.</p> <p>After Edward Snowdon, surely there had to be a new Bill put forward, with the aim of replacing RIPA and having a Parliamentary and public debate on the issue? All we've had so far is Malcolm Rifkind sneering on the news about "national security."</p>
+			</div>
 		</div>
 
 		<div class="comment__options">
-			<a class="comment__reply touchpoint touchpoint--primary touchpoint--small" href="x-gu://leavereply/36834532">
-				<span class="touchpoint__button icon">>&#xe061;</span>
-				<span class="touchpoint__label">Reply</span>
-			</a>
-			<a class="comment__report touchpoint" href="x-gu://reportabuse/36834532">
-				<span class="touchpoint__label">Report</span>
-			</a>
+			<a class="comment__reply touchpoint touchpoint--primary touchpoint--small" href="x-gu://leavereply/37065948">
+				<span class="touchpoint__button icon"></span>
+				<span class="touchpoint__label">Reply</span></a>
+			
+			<a class="comment__report touchpoint" href="x-gu://reportabuse/37065948">
+				<span class="touchpoint__label">Report</span></a>
+			
 		</div>
 
-		<a class="comment__recommend touchpoint touchpoint--secondary touchpoint--small" href="x-gu://recommendcomment/36834532">
-			<span class="touchpoint__button icon">&#xe066;</span>
-			<span class="touchpoint__label comment__recommend__count">12</span>
+		<a class="comment__recommend touchpoint touchpoint--secondary touchpoint--small" href="x-gu://recommendcomment/37065948">
+			<span class="touchpoint__button icon"></span>
+			<span class="touchpoint__label comment__recommend__count">109</span>
 		</a>
 	</div>
 </div>
@@ -125,6 +129,10 @@ Display an individual comment.
 
 	br {
 		display: none;
+	}
+	
+	p:first-child {
+		// margin-top: 0;
 	}
 
 	p:last-child {

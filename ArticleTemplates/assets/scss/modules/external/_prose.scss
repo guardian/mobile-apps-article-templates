@@ -7,7 +7,7 @@ category: External
 Adds typographic styling to content taken from the Guardian Content API.
 
 ```html_example
-<div class="from-content-api">
+<div class="prose">
 	<h2>Sub-heading</h2>
 	<p>The <code>h2</code> element represents a sub-heading, used for article-level headings.</p>
 
@@ -133,8 +133,7 @@ Adds typographic styling to content taken from the Guardian Content API.
 ```
 */
 
-.prose, // temporary selector: keeping for backwards compatibility
-.from-content-api {
+.prose {
 	@include body();
 
 	h2 {
@@ -242,8 +241,7 @@ Adds typographic styling to content taken from the Guardian Content API.
 	}
 }
 
-.prose table, // temporary selector: keeping for backwards compatibility
-.from-content-api table,
+.prose table
 .table {
 	font-family: $agate-sans;
 	@include meta();
