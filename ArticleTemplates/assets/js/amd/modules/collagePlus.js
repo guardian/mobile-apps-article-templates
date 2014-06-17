@@ -87,7 +87,7 @@ define([
 			imageHeight = 300;
 		}
 
-		var padding = getComputedStyle(document.getElementsByClassName("gallery__thumbnails")[0]).getPropertyValue("padding-left");
+		var padding = getComputedStyle(document.getElementsByClassName("gallery")[0]).getPropertyValue("padding-left");
 			padding = parseInt(padding.substring(0, padding.length - 2));
 
 		var settings = {
