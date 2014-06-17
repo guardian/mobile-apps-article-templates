@@ -9,8 +9,12 @@
 
 		.comment {
 			margin-top: 0;
-			background-color: transparent;
+			border-top: none;
 			background-color: $headline;
+		}
+		
+		.discussion__header {
+			padding: 0;
 		}
 
 		.comment__body {
@@ -26,5 +30,14 @@
 		.comment__username {
 			color: $news-accent;
 		}
+	}
+	
+	.comments--preview__graident {
+		position: absolute;
+		z-index: 2;
+		top: 0;
+		background-image: linear-gradient(to bottom, rgba($headline, 0) 70%, $headline 100%);
+		width: 100%;
+		height: 100%;
 	}
 }
