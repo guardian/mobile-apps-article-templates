@@ -57,13 +57,12 @@ Provide a summary of events:
 		@include mq($from: col2) {
 			@include padding(0, 1, 0, 0);
 			float: left;
-			//min-height: 1px; // While javascript populates fix
 		}
 		@include mq(col2, col3) {
-			width: cols($base-3, 4);
+			width: cols($base-3, 4, 1);
 		}
 		@include mq($from: col3) {
-			width: cols($base-4, 5);
+			width: cols($base-4, 5, 1);
 		}
 	}
 
@@ -81,10 +80,10 @@ Provide a summary of events:
 			}
 		}
 		@include mq(col2, col3) {
-			width: cols($base-3, 8, 1);
+			width: cols($base-3, 8);
 		}
 		@include mq($from: col3) {
-			width: cols($base-4, 11, 1);
+			width: cols($base-4, 11);
 		}
 
 		.from-content-api {
@@ -114,6 +113,12 @@ Provide a summary of events:
 				}
 			}
 		}
+	}
+
+	.block__updated {
+		color: $meta;
+		font-family: $agate-sans;
+		@include meta();
 	}
 }
 

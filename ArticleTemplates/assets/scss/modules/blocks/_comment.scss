@@ -87,16 +87,16 @@ Display an individual comment.
 
 .comment__header {
 	@include meta();
-	@include padding(0.25, 0, 0.75, 0);
+	@include padding(0.25, 1, 0.75, 0);
 	overflow: auto;
 	word-break: break-all;
 	word-wrap: break-word;
 	@include mq(col2, col3) {
-		width: cols($base-3, 4);
+		width: cols($base-3, 4, 1);
 		float: left;
 	}
 	@include mq($from: col3) {
-		width: cols($base-4, 5);
+		width: cols($base-4, 5, 1);
 		float: left;
 	}
 
@@ -112,11 +112,11 @@ Display an individual comment.
 	@include margin(0, 0, 1, 0);
 	@include mq(col2, col3) {
 		margin-right: cols($base-3, 1);
-		margin-left: cols($base-3, 4);
+		margin-left: cols($base-3, 4, 1);
 	}
 	@include mq($from: col3) {
 		margin-right: cols($base-4, 1);
-		margin-left: cols($base-4, 5);
+		margin-left: cols($base-4, 5, 1);
 	}
 
 	blockquote:first-child {
@@ -152,6 +152,9 @@ Display an individual comment.
 }
 
 .comment__timestamp {
+	color: $meta;
+	font-family: $agate-sans;
+	@include meta();
 	display: block;
 	white-space: nowrap;
 }
@@ -205,10 +208,10 @@ Display an individual comment.
 	overflow: hidden;
 	display: none;
 	@include mq(col2, col3) {
-		margin-left: cols($base-3, 4);
+		margin-left: cols($base-3, 4, 1);
 	}
 	@include mq($from: col3) {
-		margin-left: cols($base-4, 5);
+		margin-left: cols($base-4, 5, 1);
 	}
 
 	.comment__reply {
@@ -234,20 +237,19 @@ Display an individual comment.
 
 	.comment__header {
 		border-top: $shadow 1px dotted;
-		padding-left: 0;
 		width: auto;
 		float: none;
 		position: static;
-		@include padding(0.75, 0, 0.5, 0);
+		@include padding(0.75, 1, 0.5, 0);
 		@include mq($to: col2) {
 			margin-left: 52px;
 			padding-right: 64px;
 		}
 		@include mq(col2, col3) {
-			margin-left: cols($base-3, 4);
+			margin-left: cols($base-3, 4, 1);
 		}
 		@include mq($from: col3) {
-			margin-left: cols($base-4, 5);
+			margin-left: cols($base-4, 5, 1);
 		}
 	}
 

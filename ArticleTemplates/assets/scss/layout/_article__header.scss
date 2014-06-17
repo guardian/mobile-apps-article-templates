@@ -16,7 +16,7 @@
 	}
 
 	.byline {
-		@include padding(0.6667, 1, 0, 1);
+		@include padding(0.6667, 0.3334, 0, 1);
 	}
 
 	.alerts__label {
@@ -29,44 +29,49 @@
 	}
 
 	.article__meta {
-		margin: -1px 0;
-		border-top: 1px dotted $shadow;
-		border-bottom: 1px dotted $shadow;
+		@include meta();
 		width: 100%;
 		display: table;
 	}
 
-	.article__pubdate {
-		@include padding(0, 1, 2, 1);
+	.article__meta__pubdate {
+		color: $meta;
+		font-family: $agate-sans;
+		@include padding(0.6667, 1, 2, 1);
 	}
 
-	.article__comments {
+	.article__meta__comments {
+		font-family: $agate-sans;
 		font-weight: bold;
+		vertical-align: top;
 		@include padding(0.5, 0.5, 1, 1);
-		border-left: 1px dotted $shadow;
 		display: table-cell;
+		@include mq($to: col1) {
+			width: cols($base-1, 1);
+		}
+		@include mq(col1, col2) {
+			width: cols($base-2, 2);
+		}
+		@include mq(col2, col3) {
+			width: cols($base-3, 3);
+		}
+		@include mq($from: col3) {
+			width: cols($base-4, 4);
+		}
+	}
+
+	.article__meta__comments__label {
+		@include mq($to: col2) {
+			display: none;
+		}
+	}
+
+	.article__image {
+		position: relative;
 	}
 
 	.article__image-caption__icon {
 		display: none;
-	}
-
-	@include mq($to: col1) {
-		.article__comments {
-			width: cols($base-1, 1);
-		}
-		.article__comments__label {
-			display: none;
-		}
-	}
-
-	@include mq(col1, col2) {
-		.article__comments {
-			width: cols($base-2, 2);
-		}
-		.article__comments__label {
-			display: none;
-		}
 	}
 
 	&.cutout {

@@ -37,6 +37,10 @@
 			}
 		}
 
+		.byline {
+			color: $white;
+		}
+
 		.standfirst {
 			color: $headline;
 			@include mq($to: col2) {
@@ -44,6 +48,20 @@
 				line-height: 1.25em;
 			}
 		}
+	}
+
+	.article__meta,
+	.article__meta__pubdate {
+		color: rgba($white, 0.8);
+	}
+
+	.article__meta {
+		margin-top: -1px;
+		border-top: 1px dotted $news;
+	}
+
+	.article__meta__comments {
+		border-left: 1px dotted $news;
 	}
 
 	.article__body {

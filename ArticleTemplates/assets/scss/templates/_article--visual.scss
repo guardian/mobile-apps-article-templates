@@ -5,23 +5,14 @@
 			display: none;
 		}
 
-		.article__meta {
-			border-top: 1px dotted $shadow;
-			@include mq($from: col2) {
-				display: table;
-			}
-
-			.byline {
-				border-bottom: 1px dotted $shadow;
-				padding-bottom: 12px;
-				margin-bottom: 6px;
-			}
+		.article__meta__pubdate {
+			padding-top: 9px;
 		}
 
-		.media-meta__misc {
+		.article__meta__misc {
 			@include mq($from: col2) {
 				display: table-cell;
-				border-left: 1px dotted $shadow;
+				border-left: 1px dotted $standfirst;
 			}
 			@include mq(col2, col3) {
 				width: cols($base-3, 4);
