@@ -78,6 +78,15 @@ Display an individual comment.
 .comment {
 	-webkit-transition: min-height 300ms ease-in-out;
 	transition: min-height 300ms ease-in-out;
+
+	// Remove margin above first paragraph of initial comment in a thread
+	&:first-of-type {
+		.comment__body  {
+			p:first-child {
+				margin-top: 0;
+			}
+		}
+	}
 }
 
 .comment__container {
@@ -125,6 +134,10 @@ Display an individual comment.
 
 	br {
 		display: none;
+	}
+	
+	p:first-child {
+		// margin-top: 0;
 	}
 
 	p:last-child {
