@@ -15,67 +15,25 @@ Display a discussion thread.
 
 <div class="comments-0">
 	<div class="block block--discussion-empty">
-		<div class="prose resizable">
-			<p>Open for comments. <a href="x-gu://leavecomment">Be the first to join the debate</a></p>
+		<div class="comment">
+			<div class="prose resizable">
+				<p>Open for comments. <a href="x-gu://leavecomment">Be the first to join the debate</a></p>
+			</div>
 		</div>
 	</div>
 </div>
 
 <div class="comments-has-failed">
 	<div class="block block--discussion-failed">
-		<div class="prose resizable">
-			<p>Comments are currently unavailable. Please try again later.</p>
-		</div>
-	</div>
-</div>
-
-<div class="block block--discussion-preview">
-	<div class="block__body">
-		<div class="comment visible" id="37089601">
-			<div class="comment__container">
-				<div class="comment__header">
-					<span class="avatar avatar--user">
-						<img class="avatar__img" src="http://static.guim.co.uk/sys-images/discussion/avatars/2012/02/26/TechnicalEphemera/ee18a40d-1f30-4197-9d3a-76fe081b99a0/60x60.png">
-					</span>
-					<span class="comment__username">TechnicalEphemera</span>
-					<span class="comment__responseto"><span class="icon"></span> </span>
-					<span class="comment__role"></span>
-					<span class="comment__timestamp">16 hours ago</span>
-				</div>
-
-				<div class="comment__body">
-					<div class="prose resizable selectable">
-						<p>Well he has certainly cocked this up in a spectacularly inept way.</p>
-						<p>Why pick a fight so publicly if you don't know you are going to win.</p>
-						<p>If Cameron had shut up nobody in the UK would even care who Juncker was. Now he is utterly humiliated, as Merkel has abandoned him - and the incoming head of the commission hates him personally.</p>
-					</div>
-				</div>
-
-				<div class="comment__options">
-					<a class="comment__reply touchpoint touchpoint--primary touchpoint--small" href="x-gu://leavereply/37089601">
-						<span class="touchpoint__button icon"></span>
-						<span class="touchpoint__label">Reply</span>
-					</a>
-					<a class="comment__report touchpoint" href="x-gu://reportabuse/37089601">
-						<span class="touchpoint__label">Report</span>
-					</a>
-				</div>
-
-				<a class="comment__recommend touchpoint touchpoint--secondary touchpoint--small" href="x-gu://recommendcomment/37089601">
-					<span class="touchpoint__button icon"></span>
-					<span class="touchpoint__label comment__recommend__count">273</span>
-				</a>
+		<div class="comment">
+			<div class="prose resizable">
+				<p>Comments are currently unavailable. Please try again later.</p>
 			</div>
 		</div>
 	</div>
 </div>
 ```
 */
-
-[class*="block--discussion-"] {
-	font-family: $agate-sans;
-	@include body();
-}
 
 // Discussion thread
 .block--discussion-thread {
@@ -93,51 +51,6 @@ Display a discussion thread.
 .block--discussion-thread.expand {
 	.comment {
 		display: block;
-	}
-}
-
-// Discussion preview
-.block--discussion-preview {
-	background-color: $headline;
-	margin: 0;
-	border: none;
-	position: relative;
-
-	.block__body {
-		background-color: $headline;
-		color: white;
-		border-top: none;
-		&::after {
-			content: " ";
-			background-image: linear-gradient(to bottom, rgba($headline, 0) 66%, $headline 100%);
-			display: block;
-			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			z-index: 2;
-		}
-
-		.comment {
-			margin-top: 0;
-			border-top: none;
-			background-color: $headline;
-		}
-
-		.comment__body {
-			height: 100px;
-			overflow: hidden;
-			text-overflow: ellipsis;
-		}
-
-		.comment__recommend {
-			display: none;
-		}
-
-		.comment__username {
-			color: $news-accent;
-		}
 	}
 }
 
