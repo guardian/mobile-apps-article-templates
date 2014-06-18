@@ -1,15 +1,3 @@
-.article--liveblog {
-	.article__meta {
-		margin: -1px 0;
-		border-top: 1px dotted $shadow;
-		border-bottom: 1px dotted $shadow;
-	}
-
-	.article__meta__comments {
-		border-left: 1px dotted $shadow;
-	}
-}
-
 .tone--liveBlog.is-live {
 	a.touchpoint, .more--live-blogs, .tags a {
 		color: $live;
@@ -62,75 +50,71 @@
 				color: $white;
 			}
 
+			.section {
+				@include mq(col2, col3) {
+					padding-left: cols($base-3, 4, 1);
+				}
+				@include mq($from: col3) {
+					padding-left: cols($base-4, 5, 1);
+				}
+			}
+
+			.headline,
+			.standfirst {
+				@include mq(col2, col3) {
+					margin-left: cols($base-3, 4);
+				}
+				@include mq($from: col3) {
+					margin-left: cols($base-4, 5);
+				}
+			}
+
 			.standfirst {
 				color: rgba($white, 0.8);
+
 				a {
 					color: $white;
 				}
 			}
+		}
 
-			.article__meta {
-				background-color: $live-accent;
-				border-top: 0;
-				border-bottom: 0;
-				border-left: 1px dotted rgba($white, 0.2);
-				margin: 0;
-			}
-
-			.article__meta__pubdate {
-				color: rgba($white, 0.8);
-			}
-
-			.article__meta__comments {
-				border-left: 1px dotted rgba($white, 0.2);
-			}
-
+		.article__meta {
+			background-color: $live-accent;
+			border: 0;
+			border-left: 1px dotted rgba($white, 0.2);
+			margin: 0;
 			@include mq(col2, col3) {
-				.section {
-					padding-left: cols($base-3, 4, 1);
-				}
-				
-				.headline,
-				.standfirst {
-					margin-left: cols($base-3, 4);
-				}
+				padding-left: cols($base-3, 4);
 
-				.article__meta {
-					padding-left: cols($base-3, 4);
-
-					.alerts {
-						width: cols($base-3, 4);
-					}
-				}
-
-				.tags {
-					padding-left: cols($base-3, 4, 1);
-					padding-bottom: $base-3 * 4;
+				.alerts {
+					width: cols($base-3, 4);
 				}
 			}
-
 			@include mq($from: col3) {
-				.section {
-					padding-left: cols($base-4, 5, 1);
-				}
-				
-				.headline,
-				.standfirst {
-					margin-left: cols($base-4, 5);
-				}
+				padding-left: cols($base-4, 5);
 
-				.article__meta {
-					padding-left: cols($base-4, 5);
-
-					.alerts {
-						width: cols($base-4, 5);
-					}
+				.alerts {
+					width: cols($base-4, 5);
 				}
+			}
+		}
 
-				.tags {
-					padding-left: cols($base-4, 5, 1);
-					padding-bottom: $base-4 * 4;
-				}
+		.article__meta__pubdate {
+			color: rgba($white, 0.8);
+		}
+
+		.article__meta__comments {
+			border-left-color: rgba($white, 0.2);
+		}
+
+		.tags {
+			@include mq(col2, col3) {
+				padding-left: cols($base-3, 4, 1);
+				padding-bottom: $base-3 * 4;
+			}
+			@include mq($from: col3) {
+				padding-left: cols($base-4, 5, 1);
+				padding-bottom: $base-4 * 4;
 			}
 		}
 	}
