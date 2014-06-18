@@ -90,11 +90,11 @@ Display an individual comment.
 }
 
 .comment__header {
+	word-break: break-all;
+	word-wrap: break-word;
 	@include meta();
 	@include padding(0.25, 1, 0.75, 0);
 	overflow: auto;
-	word-break: break-all;
-	word-wrap: break-word;
 	@include mq(col2, col3) {
 		width: cols($base-3, 4, 1);
 		float: left;
@@ -129,14 +129,6 @@ Display an individual comment.
 
 	br {
 		display: none;
-	}
-	
-	p:first-child {
-		// margin-top: 0;
-	}
-
-	p:last-child {
-		margin-bottom: 0px;
 	}
 }
 
@@ -333,7 +325,7 @@ Display an individual comment.
 	}
 }
 
-.comment--open {
+.comment.comment--open {
 	.animated {
 		display: block;
 	}
