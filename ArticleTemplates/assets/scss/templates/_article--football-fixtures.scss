@@ -31,23 +31,48 @@
 				text-overflow: ellipsis;
 			}
 			@include padding(0.25, 0.5, 1, 0.5);
-			&.football-col-1, &.football-col-3 {
-				@include rbase-1(0.75);
-				@include rbase-2(1);
-				@include rbase-3(1.5);
-				@include rbase-4(1.5);
+			&.football-col-1,
+			&.football-col-3 {
+				@include mq($to: col1) {
+					width: cols($base-1, 0.75);
+				}
+				@include mq(col1, col2) {
+					width: cols($base-2, 1);
+				}
+				@include mq(col2, col3) {
+					width: cols($base-3, 1.5);
+				}
+				@include mq($from: col3) {
+					width: cols($base-4, 1.5);
+				}
 			}
 			&.football-col-2 {
-				@include rbase-1(1);
-				@include rbase-2(2.5);
-				@include rbase-3(3.5,1);
-				@include rbase-4(6.5,1);
+				@include mq($to: col1) {
+					width: cols($base-1, 1);
+				}
+				@include mq(col1, col2) {
+					width: cols($base-2, 2.5);
+				}
+				@include mq(col2, col3) {
+					width: cols($base-3, 3.5, 1);
+				}
+				@include mq($from: col3) {
+					width: cols($base-4, 6.5, 1);
+				}
 			}
 			&.football-col-4 {
-				@include rbase-1(1.5);
-				@include rbase-2(3.5,1);
-				@include rbase-3(5.5,1);
-				@include rbase-4(8.5,1);
+				@include mq($to: col1) {
+					width: cols($base-1, 1.5);
+				}
+				@include mq(col1, col2) {
+					width: cols($base-2, 3.5, 1);
+				}
+				@include mq(col2, col3) {
+					width: cols($base-3, 5.5, 1);
+				}
+				@include mq($from: col3) {
+					width: cols($base-4, 8.5, 1);
+				}
 			}
 			@include mq($to: col1) {
 				&.football-col-1 {
@@ -59,16 +84,32 @@
 		&.competition {
 			.football-col-1 {
 				font-weight: bold;
-				@include rbase-1(1.5);
-				@include rbase-2(2.5);
-				@include rbase-3(3.5,1);
-				@include rbase-4(6.5,1);
+				@include mq($to: col1) {
+					width: cols($base-1, 1.5);
+				}
+				@include mq(col1, col2) {
+					width: cols($base-2, 2.5);
+				}
+				@include mq(col2, col3) {
+					width: cols($base-3, 3.5, 1);
+				}
+				@include mq($from: col3) {
+					width: cols($base-4, 6.5, 1);
+				}
 			}
 			.football-col-2 {
-				@include rbase-1(0.5);
-				@include rbase-2(1);
-				@include rbase-3(1.5);
-				@include rbase-4(1.5);
+				@include mq($to: col1) {
+					width: cols($base-1, 0.5);
+				}
+				@include mq(col1, col2) {
+					width: cols($base-2, 1);
+				}
+				@include mq(col2, col3) {
+					width: cols($base-3, 1.5);
+				}
+				@include mq($from: col3) {
+					width: cols($base-4, 1.5);
+				}
 			}
 			.football-col-4 {
 				color: $standfirst;
@@ -90,9 +131,9 @@
 			}
 			.football-col-1 {
 				color: $standfirst;
-				@include padding(0,0.5,0,0.5);
+				@include padding(0, 0.5, 0, 0.5);
 				@include mq($to: col1) {
-					@include padding(0,0.5,0,1);
+					@include padding(0, 0.5, 0, 1);
 				}
 			}
 			.football-col-2 {

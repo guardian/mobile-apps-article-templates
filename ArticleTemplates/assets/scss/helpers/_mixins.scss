@@ -112,44 +112,6 @@ $meta-lead-2: 2.2rem;
 	margin: 12px * $top 12px * $right 12px * $bottom 12px * $left;
 }
 
-// Define widths based on the NGA grid
-@mixin rbase-1($cols, $gutcomp:"") {
-	@include mq($to: col1) {
-		@if $gutcomp == 1 {
-			width: (($base-1 * 5) * $cols) + ($base-1 * ($cols));
-		} @else {
-			width: (($base-1 * 5) * $cols) + ($base-1 * ($cols - 1));
-		}
-	}
-}
-@mixin rbase-2($cols, $gutcomp:"") {
-	@include mq(col1, col2) {
-		@if $gutcomp == 1 {
-			width: (($base-2 * 5) * $cols) + ($base-2 * ($cols));
-		} @else {
-			width: (($base-2 * 5) * $cols) + ($base-2 * ($cols - 1));
-		}
-	}
-}
-@mixin rbase-3($cols, $gutcomp:"") {
-	@include mq(col2, col3) {
-		@if $gutcomp == 1 {
-			width: (($base-3 * 5) * $cols) + ($base-3 * ($cols));
-		} @else {
-			width: (($base-3 * 5) * $cols) + ($base-3 * ($cols - 1));
-		}
-	}
-}
-@mixin rbase-4($cols, $gutcomp:"") {
-	@include mq($from: col3) {
-		@if $gutcomp == 1 {
-			width: (($base-4 * 5) * $cols) + ($base-4 * ($cols));
-		} @else {
-			width: (($base-4 * 5) * $cols) + ($base-4 * ($cols - 1));
-		}
-	}
-}
-
 // Link Underline Style
 @mixin text-underline($color, $background, $color-accent) {
 	a {
