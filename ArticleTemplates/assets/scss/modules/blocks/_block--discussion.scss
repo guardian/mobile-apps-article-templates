@@ -58,9 +58,9 @@ Display a discussion thread.
 // Styling different states
 .block--discussion-empty,
 .block--discussion-failed {
-	display: none;
 	color: $standfirst;
 	@include meta();
+	display: none;
 }
 
 // Failure states
@@ -84,9 +84,9 @@ Display a discussion thread.
 // Closed/open states
 .container__action {
 	.comments-closed-label {
-		display: none;
 		color: $standfirst;
 		text-align: right;
+		display: none;
 	}
 }
 .comments--closed {
@@ -94,7 +94,8 @@ Display a discussion thread.
 		.comments-closed-label {
 			display: block !important;
 		}
-		.touchpoint__button, a {
+		.touchpoint__button,
+		a {
 			display: none !important;
 		}
 	}
