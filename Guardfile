@@ -1,5 +1,5 @@
-# Compile article template styles
-guard 'sass', :output => 'ArticleTemplates/assets/css', :syntax => :scss do
+# Compile article template styles (minified)
+guard 'sass', :output => 'ArticleTemplates/assets/css', :syntax => :scss, :style => :compressed do
   watch(%r{ArticleTemplates/assets/scss/.+})
 end
 

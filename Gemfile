@@ -1,6 +1,8 @@
 source "https://rubygems.org"
 
-gem 'sass'
-gem 'hologram'
-gem 'guard-hologram', :require => false
-gem 'guard-sass', :require => false
+group :development do
+  gem 'sass'
+  gem 'hologram'
+  gem 'guard-hologram', :require => false
+  gem 'guard-sass', :require => false
+end
