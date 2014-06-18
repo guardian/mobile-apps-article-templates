@@ -29,14 +29,14 @@ Display which keywords an article has been tagged with.
 		@include mq($to: col1) {
 			margin-bottom: 4px;
 		}
-		&:after {
+		&::after {
 			content: "\00B7";
 			margin: 0 4px;
 		}
 		&:first-of-type {
 			font-weight: bold;
 		}
-		&:last-of-type:after {
+		&:last-of-type::after {
 			display: none;
 		}
 	}

@@ -141,11 +141,11 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 		font-weight: 600;
 		font-size: 1em;
 		margin: 0.75em 0;
-		
+
 		& + p {
 			margin-top: -12px;
 		}
-		
+
 		strong, b {
 			font-weight: bold;
 		}
@@ -183,7 +183,7 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 	ol {
 		counter-reset: li;
 
-		> li:before {
+		> li::before {
 			content: counter(li)". ";
 			counter-increment: li;
 		}
@@ -202,7 +202,7 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 		color: $standfirst;
 		font-style: italic;
 		@include margin(2);
-		&:before {
+		&::before {
 			color: $meta;
 			font-family: $icon;
 			font-size: 4rem; // 40px
@@ -213,7 +213,7 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 		}
 
 		&.quoted {
-			&:before {
+			&::before {
 				content: "\e029";
 				margin-top: -0.75rem;
 			}
@@ -223,7 +223,7 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 			font-family: $agate-sans;
 			font-size: $meta-size-1;
 			line-height: $meta-lead-1;
-			&:before {
+			&::before {
 				content: "\e06b";
 			}
 
