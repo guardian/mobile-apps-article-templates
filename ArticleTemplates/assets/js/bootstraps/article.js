@@ -18,21 +18,13 @@ define([
 				bodyLength = bodyLength - 1;
 				$(".aside-witness").addClass("js--positioned").prependTo(".article__body p:nth-of-type(" + bodyLength + ")");
 			}
-		},
-
-		figcaptionToggle: function () {
-			// Show/hides figure caption
-			bean.on($('.article__image-caption__icon')[0], 'click', function () {
-				$('.article__image-caption__text').toggleClass('is-visible');
-			});
-		},
+		}
 	},
 
 	ready = function () {
 		if (!this.initialised) {
 			this.initialised = true;
 			modules.asideWitness();
-			modules.figcaptionToggle();
 			// console.info("Article ready");
 		}
 	};

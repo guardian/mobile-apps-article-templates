@@ -1,0 +1,90 @@
+/*doc
+---
+title: Main media
+name: main-media
+category: Modules
+---
+Display the main visual media for an article.
+
+```html_example
+<div class="main-media">
+	<figure class="element element-image figure-wide">
+		<div class="element__inner" style="padding-bottom: 60%;">
+			<img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/13/1402658128646/Ambassadors-014.jpg?width=900&amp;height=540&amp;quality=60">
+		</div>
+		<figcaption class="main-media__caption">
+			<span class="main-media__caption__icon" href="#"><span class="icon">&#xe044;</span></span>
+			<span class="main-media__caption__text">David Mitchell and Robert Webb in The Ambassadors. Photograph: Colin Hutton/BBC/Big Talk</span>
+		</figcaption>
+	</figure>
+</div>
+```
+
+Can also be displayed with the caption initially hidden:
+
+```html_example
+<div class="main-media main-media--hidden-caption">
+	<figure class="element element-image figure-wide">
+		<div class="element__inner" style="padding-bottom: 60%;">
+			<img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/13/1402658128646/Ambassadors-014.jpg?width=900&amp;height=540&amp;quality=60">
+		</div>
+		<figcaption class="main-media__caption">
+			<span class="main-media__caption__icon" href="#"><span class="icon">&#xe044;</span></span>
+			<span class="main-media__caption__text">David Mitchell and Robert Webb in The Ambassadors. Photograph: Colin Hutton/BBC/Big Talk</span>
+		</figcaption>
+	</figure>
+</div>
+```
+*/
+
+.main-media__caption__icon {
+	display: none;
+}
+
+.main-media--hidden-caption {
+	position: relative;
+
+	.main-media__caption {
+		color: rgba(255, 255, 255, 0.9);
+		border: 0 none;
+		padding: 0;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 10;
+	}
+
+	.main-media__caption__icon {
+		line-height: 44px;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.4);
+		width: 44px;
+		height: 44px;
+		display: inline-block;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		&:active {
+			background-color: rgba(0, 0, 0, 0.66);
+		}
+	}
+
+	.main-media__caption__text {
+		background-color: rgba(0, 0, 0, 0.4);
+		@include padding(0.5, 1, 0.5, 1);
+		display: none;
+		max-height: 0;
+		overflow: hidden;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		right: 45px;
+
+		&.is-visible {
+			display: block;
+			min-height: 44px;
+			max-height: 999px;
+		}
+	}
+}

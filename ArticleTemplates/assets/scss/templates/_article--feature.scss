@@ -10,48 +10,4 @@
 			}
 		}
 	}
-
-	.article__image-caption {
-		color: rgba(255, 255, 255, 0.9);
-		border: 0 none;
-		padding: 0;
-		position: absolute;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		z-index: 10;
-	}
-
-	.article__image-caption__icon {
-		line-height: 44px;
-		text-align: center;
-		background-color: rgba(0, 0, 0, 0.4);
-		width: 44px;
-		height: 44px;
-		display: inline-block;
-		position: absolute;
-		bottom: 0;
-		right: 0;
-		&:active {
-			background-color: rgba(0, 0, 0, 0.66);
-		}
-	}
-
-	.article__image-caption__text {
-		background-color: rgba(0, 0, 0, 0.4);
-		@include padding(0.5, 1, 0.5, 1);
-		display: none;
-		max-height: 0;
-		overflow: hidden;
-		position: absolute;
-		right: 0;
-		bottom: 0;
-		right: 45px;
-
-		&.is-visible {
-			display: block;
-			min-height: 44px;
-			max-height: 999px;
-		}
-	}
 }

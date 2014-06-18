@@ -39,6 +39,13 @@ define([
 			});
 		},
 
+		figcaptionToggle: function () {
+			// Show/hides figure caption
+			bean.on($('.main-media__caption__icon')[0], 'click', function () {
+				$('.main-media__caption__text').toggleClass('is-visible');
+			});
+		},
+
 		loadAdverts: function (config) {
 			// Setup ad tags, insert containers
 			Ads.init(config);
@@ -197,6 +204,7 @@ define([
 
 			modules.attachFastClick();
 			modules.correctCaptions();
+			modules.figcaptionToggle();
 			modules.imageSizer();
 			modules.insertTags();
 			modules.loadAdverts(config);
