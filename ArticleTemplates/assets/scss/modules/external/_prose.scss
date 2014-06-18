@@ -238,6 +238,37 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 
 	figure {
 		@include margin(1, 0);
+
+		// Full width
+		&.figure-wide {
+			img {
+				width: 100%;
+				height: auto;
+			}
+
+			figcaption {
+				@include padding(0.5, 1, 2, 1);
+				@include mq(col2, col3) {
+					padding-right: cols($base-3, 3);
+				}
+				@include mq($from: col3) {
+					padding-right: cols($base-4, 4);
+				}
+			}
+		}
+
+		// Inline
+		&.figure-inline {
+			@include mq($from: col1) {
+				@include margin(0.5, 1, 0, 0);
+				float: left;
+
+				img {
+					width: 100%;
+					height: auto;
+				}
+			}
+		}
 	}
 
 	*:first-child {
