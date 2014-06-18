@@ -128,7 +128,7 @@ define([
 							}
 						}
 
-						var ctx = document.getCSSCanvasContext("2d", "squares", w, h);
+						var ctx = document.getCSSCanvasContext("2d", "circles", w, h);
 						for (var i = 0; i < numOfCircles; i++) {
 							ctx.beginPath();
 							ctx.arc(x[i], y[i], size, 0, Math.PI * 2, true);
