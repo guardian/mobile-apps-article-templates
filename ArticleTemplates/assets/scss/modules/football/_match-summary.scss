@@ -67,6 +67,7 @@ Display a match summary. The score is updated during the match.
 	overflow: hidden;
 
 	@include mq($from: col1) {
+		@include padding(0.5, 1, 0, 1);
 		&::after {
 			content: " ";
 			background-color: $shadow;
@@ -88,7 +89,10 @@ Display a match summary. The score is updated during the match.
 			line-height: 4.0rem;
 		}
 		@include mq($from: col2) {
+			@include margin(0, 0, 0.5, 0);
+			margin-top: -10px; // Offset to align with badges
 			font-size: 4.0rem;
+			line-height: 4.8rem;
 		}
 	}
 
@@ -170,9 +174,10 @@ Display a match summary. The score is updated during the match.
 		@include flexbox;
 		@include flex-direction(row);
 		width: 100%;
+		@include padding(1, 0);
 	}
 	@include mq($from: col1) {
-		margin-top: 12px;
+		@include margin(1, 0, 2, 0);
 		width: 50%;
 		float: left;
 		display: table;
@@ -189,10 +194,14 @@ Display a match summary. The score is updated during the match.
 	}
 
 	.match-summary__score {
+		width: 44px;
+		@include padding(0, 0.5);
+		
 		@include mq($to: col1) {
 			width: 15%;
 			min-width: 50px;
 			text-align: right;
+			padding-right: 0;
 		}
 		@include mq(col1, col2) {
 			width: $base-2 * 7;
@@ -208,10 +217,10 @@ Display a match summary. The score is updated during the match.
 	.match-summary__info {
 		font-family: $agate-sans;
 		@include meta();
+		@include padding(0, 0, 0, 0.66666);
 
 		@include mq($to: col1) {
-			width: 65%;
-			padding-left: 8px;
+			width: 100%;
 		}
 	}
 
@@ -228,7 +237,7 @@ Display a match summary. The score is updated during the match.
 		background-size: contain;
 		
 		@include mq($to: col1) {
-			width: 44px;
+			min-width: 44px;
 		}
 		@include mq($from: col1) {
 			padding-top: 4px;
@@ -246,7 +255,6 @@ Display a match summary. The score is updated during the match.
 }
 
 .match-summary__team--home {
-	// @include padding(0, 1, 2, 0);
 	@include mq($to: col1) {
 		border-top: 1px dotted $shadow;
 	}
@@ -271,15 +279,7 @@ Display a match summary. The score is updated during the match.
 }
 
 .match-summary__team--away {
-	// @include padding(0, 0, 2, 1);
 	@include flex-direction(row-reverse);
-
-	.match-summary__score {
-		@include padding(0, 1, 0, 0);
-		@include mq($to: col1) {
-			padding: 0;
-		}
-	}
 
 	.match-summary__badge {
 		@include mq(col1, col2) {
