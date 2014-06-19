@@ -92,10 +92,10 @@ define([
 				}
 				window.audioBackground = function (duration) {
 					// Copied directly, needs cleaning
-					if ($(".cutout__container").attr("data-background") == null && !$("body").hasClass("media")) {
+					if ($(".article__header").attr("data-background") == null && !$("body").hasClass("media")) {
 						var numOfCircles = Math.floor((duration / 60) / 10) + 2,
-							h = $(".cutout__container").offset().height,
-							w = $(".cutout__container").offset().width,
+							h = $(".article__header").offset().height,
+							w = $(".article__header").offset().width,
 							size = (h * w) / 8000,
 							x = [],
 							y = [];
