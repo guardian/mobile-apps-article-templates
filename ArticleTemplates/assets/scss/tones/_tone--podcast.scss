@@ -19,10 +19,7 @@
 
 	.article__header {
 		background-color: $news-accent;
-
-		.cutout__container {
-			background: -webkit-canvas(circles);
-		}
+		background-image: -webkit-canvas(circles);
 
 		.section {
 			display: none;
@@ -30,9 +27,8 @@
 
 		.headline {
 			color: $white;
-			padding-right: 0;
 
-			span {
+			.headline__accent {
 				color: $headline;
 				display: block;
 			}
@@ -57,10 +53,10 @@
 	}
 
 	.meta {
-		border-top-color: $news;
+		border-top-color: rgba($news, 0.4);
 	}
 
 	.meta__comments {
-		border-left-color: $news;
+		border-left-color: rgba($news, 0.4);
 	}
 }

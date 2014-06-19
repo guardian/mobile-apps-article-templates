@@ -1,12 +1,17 @@
 .article--audio {
 	.article__header {
 		.cutout__container {
+			padding-right: 0;
 			padding-bottom: 4.5em;
 			position: relative;
 		}
 
+		.headline {
+			padding-right: cols($base-3, 3, 1);
+		}
+
 		.meta {
-			margin-bottom: 0;
+			margin-bottom: 1px; // Prevents header showing 1px scroll weirdness
 			border-bottom: 0;
 			position: absolute;
 			right: 0;
@@ -15,7 +20,7 @@
 		}
 
 		.byline {
-			@include mq($to: col1) {
+			@include mq($to: col2) {
 				display: none;
 			}
 		}
@@ -31,7 +36,7 @@
 			border-bottom: 1px dotted $shadow;
 			@include padding(0, 0, 1, 0);
 			display: block;
-			@include mq($from: col1) {
+			@include mq($from: col2) {
 				display: none;
 			}
 		}
