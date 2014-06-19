@@ -1,10 +1,19 @@
 .front {
 	border-top: 4px solid $news-accent;
+
+	.android & {
+		border-top: 0;
+		@include padding(1,1,0,1);
+	}
 }
 
 .front__header {
 	height: 114px;
 	@include mq($to: col1) {
+		display: none;
+	}
+
+	.android & {
 		display: none;
 	}
 }
@@ -13,16 +22,4 @@
 	font-family: $titlepiece;
 	font-size: 1.6667em; // 30px
 	line-height: 1.6;
-}
-
-// Android adaptions
-.android {
-	.front {
-		border-top: 0;
-		@include padding(1,1,0,1);
-		box-sizing: border-box;
-	}
-	.front__header {
-		display: none;
-	}
 }

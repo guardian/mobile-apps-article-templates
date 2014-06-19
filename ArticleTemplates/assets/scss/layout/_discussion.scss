@@ -1,21 +1,9 @@
 .discussion {
 	border-top: 4px solid $headline;
 
-	.discussion__header {
-		background-color: transparent;
-		@include mq($to: col1) {
-			padding: 0 $base-1 / 1.5;
-		}
-
-		.section {
-			@include padding(0.5, 1, 0.5, 0);
-			color: $headline;
-		}
-
-		.headline {
-			@include headline(0.75);
-			@include margin(0,0,4,0);
-		}
+	.android & {
+		border-top: 0;
+		@include padding(0,1,0,1);
 	}
 
 	.container {
@@ -28,11 +16,19 @@
 	}
 }
 
-// Android adaptions
-.android {
-	.discussion {
-		border-top: 0;
-		@include padding(0,1,0,1);
-		box-sizing: border-box;
+.discussion__header {
+	background-color: transparent;
+	@include mq($to: col1) {
+		padding: 0 $base-1 / 1.5;
+	}
+
+	.section {
+		@include padding(0.5, 1, 0.5, 0);
+		color: $headline;
+	}
+
+	.headline {
+		@include headline(0.75);
+		@include margin(0,0,4,0);
 	}
 }
