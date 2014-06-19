@@ -84,6 +84,45 @@ Comment response:
 </div>
 ```
 
+Comment blocked:
+
+```html_example
+<div class="comment blocked" id="9454526">
+	<div class="comment__container">
+		<div class="comment__header">
+			<span class="avatar avatar--user">
+				<img class="avatar__img" src="http://static.guim.co.uk/sys-images/discussion/avatars/2012/12/19/4780434/1816263f-962a-4b24-8e96-1218886e083e/60x60.png">
+			</span>
+			<span class="comment__username">FredericMoreau</span>
+			<span class="comment__responseto" data-icon="&#xe061;">grumpyhistorian</span>
+			<span class="comment__role"></span>
+			<span class="comment__timestamp">5 hours ago</span>
+		</div>
+
+		<div class="comment__body">
+			<div class="prose resizable selectable">
+				This comment was removed by a moderator because it didn't abide by our <a href="http://www.theguardian.com/community-standards">community standards</a>. Replies may also be deleted. For more detail see <a href="http://www.guardian.co.uk/community-faqs">our FAQs</a>.
+			</div>
+		</div>
+
+		<div class="comment__options">
+			<a class="comment__reply touchpoint touchpoint--primary touchpoint--small" href="x-gu://leavereply/37065948">
+				<span class="touchpoint__button icon">&#xe061;</span>
+				<span class="touchpoint__label">Reply</span>
+			</a>
+			<a class="comment__report touchpoint" href="x-gu://reportabuse/37065948">
+				<span class="touchpoint__label">Report</span>
+			</a>
+		</div>
+
+		<a class="comment__recommend touchpoint touchpoint--secondary touchpoint--small" href="x-gu://recommendcomment/37065948">
+			<span class="touchpoint__button icon">&#xe066;</span>
+			<span class="touchpoint__label comment__recommend__count">109</span>
+		</a>
+	</div>
+</div>
+```
+
 Comment preview:
 
 ```html_example
@@ -364,7 +403,6 @@ Comment preview:
 // Blocked
 .comment.blocked {
 	color: $meta;
-	@include padding(1);
 
 	.comment__header {
 		opacity: 0.5;
