@@ -275,6 +275,12 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 
 		// Inline
 		&.figure-inline {
+			@include mq($to: col1) {
+				figcaption {
+					padding-left: 0;
+					padding-right: 0;
+				}
+			}
 			@include mq($from: col1) {
 				@include margin(0.5, 1, 0, 0);
 				float: left;
