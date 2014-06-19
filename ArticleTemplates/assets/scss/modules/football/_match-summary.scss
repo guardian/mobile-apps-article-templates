@@ -8,49 +8,50 @@ Display a match summary. The score is updated during the match.
 
 ```html_example
 <div class="match-summary is-alerts is-agg">
-
 	<div class="match-status match-status--ft">
 		<p class="match-status__time">FT</p>
 	</div>
 
-	<a class="alerts">
-		<span class="alerts__state--unfollow"><span class="icon">&#xe048;</span></span>
-		<span class="alerts__state--follow"><span class="icon">&#xe049;</span></span>
+	<a class="alerts " href="x-gu://follow/football-match///3689902" data-follow-alert-id="football-match///3689902">
+		<span class="alerts__state--unfollow"><span class="icon"></span> <span class="alerts__label">Match alerts</span></span>
+		<span class="alerts__state--follow"><span class="icon"></span> <span class="alerts__label">Match alerts on</span></span>
 	</a>
 
 	<div class="match-summary__meta">
-		<p class="match-summary__meta__competition">Europa League Semi-Final </p>
-		<p class="match-summary__meta__venue">Mestalla</p>
+		<p class="match-summary__meta__competition">World Cup 2014 Group B </p>
+		<p class="match-summary__meta__venue">Estadio Beira-Rio</p>
 	</div>
 
-	<div class="match-summary__home">
-		<div class="match-summary__badge">
-			<img src="http://png-resizer.mobile-apps.guardianapis.com/sport/football/crests/26316.png?width=300">
-		</div>
-
+	<div class="match-summary__team match-summary__team--home">
+		<div class="match-summary__badge" style="background-image: url(http://png-resizer.mobile-apps.guardianapis.com/sport/football/crests/7317.png?width=300);"></div>
+		
 		<div class="match-summary__info match-summary__home__info">
-			<h1 class="match-summary__info__label match-summary__home__info__label headline" onclick="javascript:window.location.href='x-gu://team/http://mobile-apps.guardianapis.com/lists/tag/football/valencia'">Valencia</h1>
-			<p>Sofiane Feghouli&nbsp;14'</p><p>Antonio Beto&nbsp;26' (o.g.)</p><p>Jeremy Mathieu&nbsp;69'</p>
+			<h1 class="match-summary__info__label match-summary__home__info__label headline" onclick="javascript:window.location.href='x-gu://team/http://mobile-apps.guardianapis.com/lists/tag/football/australia'">Austgralia</h1>
+			<p>Tim Cahill&nbsp;21'</p> <p>Mile Jedinak&nbsp;54' (Pen)</p>
 		</div>
-
+		
 		<div class="match-summary__score">
-			<h1 class="match-summary__score__label match-summary__home__score__label headline">3 <span class="match-summary__score__agg">3</span></h1>
+			<h1 class="match-summary__score__label match-summary__home__score__label headline">
+				2
+				<span class="match-summary__score__agg">4</span>
+			</h1>
 		</div>
 	</div>
 
-	<div class="match-summary__away">
+	<div class="match-summary__team match-summary__team--away">
 		<div class="match-summary__score">
-			<h1 class="match-summary__score__label match-summary__away__score__label headline">1 <span class="match-summary__score__agg">3</span></h1>
+			<h1 class="match-summary__score__label match-summary__away__score__label headline">
+				3
+				<span class="match-summary__score__agg">3</span>
+			</h1>
 		</div>
-
+		
 		<div class="match-summary__info match-summary__away__info">
-			<h1 class="match-summary__info__label match-summary__away__info__label headline" onclick="javascript:window.location.href='x-gu://team/http://mobile-apps.guardianapis.com/lists/tag/football/sevilla'">Sevilla</h1>
-			<p>Stephane Mbia&nbsp;90' (+4:27)</p>
+			<h1 class="match-summary__info__label match-summary__away__info__label headline" onclick="javascript:window.location.href='x-gu://team/http://mobile-apps.guardianapis.com/lists/tag/football/holland'">Holland</h1>
+			<p>Arjen Robben&nbsp;20'</p> <p>Robin van Persie&nbsp;58'</p> <p>Memphis Depay&nbsp;68'</p>
 		</div>
-
-		<div class="match-summary__badge">
-			<img src="http://png-resizer.mobile-apps.guardianapis.com/sport/football/crests/27821.png?width=300">
-		</div>
+		
+		<div class="match-summary__badge" style="background-image: url(http://png-resizer.mobile-apps.guardianapis.com/sport/football/crests/631.png?width=300);"></div>
 	</div>
 
 	<div class="match-summary__comment">
@@ -122,28 +123,23 @@ Display a match summary. The score is updated during the match.
 
 	// Alerts
 	.alerts {
-		font-size: 150%;
 		font-weight: normal;
 		text-align: center;
 		position: relative;
 		z-index: 20;
+		@include padding(0.5, 0, 0, 0);
+		width: auto;
+		display: inline-block;
+		float: right;
+		
 		@include mq($to: col1) {
-			@include padding(0.5, 0, 0, 0);
-			width: auto;
-			display: inline-block;
-			float: right;
+			font-size: 150%;
 		}
-		@include mq($from: col1) {
-			margin: 0 auto;
-			width: 60px;
-			position: absolute;
-			left: 0;
-			right: 0;
-			bottom: 0;
-		}
-
-		span {
-			background-color: white;
+		
+		.alerts__label {
+			@include mq($to: col1) {
+				display: none;
+			}
 		}
 	}
 }
@@ -203,15 +199,6 @@ Display a match summary. The score is updated during the match.
 			text-align: right;
 			padding-right: 0;
 		}
-		@include mq(col1, col2) {
-			width: $base-2 * 7;
-		}
-		@include mq(col2, col3) {
-			width: $base-3 * 10;
-		}
-		@include mq($from: col3) {
-			width: $base-4 * 12;
-		}
 	}
 
 	.match-summary__info {
@@ -240,16 +227,8 @@ Display a match summary. The score is updated during the match.
 			min-width: 44px;
 		}
 		@include mq($from: col1) {
-			padding-top: 4px;
-		}
-		@include mq(col1, col2) {
-			width: $base-2 * 8;
-		}
-		@include mq(col2, col3) {
-			width: $base-3 * 11;
-		}
-		@include mq($from: col3) {
-			width: $base-4 * 12;
+			@include padding(0.3333, 0, 0, 0);
+			width: 54px;
 		}
 	}
 }
@@ -264,34 +243,10 @@ Display a match summary. The score is updated during the match.
 			text-align: right;
 		}
 	}
-
-	.match-summary__badge {
-		@include mq(col1, col2) {
-			padding-right: $base-2 * 2;
-		}
-		@include mq(col2, col3) {
-			padding-right: $base-3 * 2;
-		}
-		@include mq($from: col3) {
-			padding-right: $base-4 * 2;
-		}
-	}
 }
 
 .match-summary__team--away {
 	@include flex-direction(row-reverse);
-
-	.match-summary__badge {
-		@include mq(col1, col2) {
-			padding-left: $base-2 * 2;
-		}
-		@include mq(col2, col3) {
-			padding-left: $base-3 * 2;
-		}
-		@include mq($from: col3) {
-			padding-left: $base-3 * 2;
-		}
-	}
 }
 
 // Aggregate Scores
@@ -313,12 +268,6 @@ Display a match summary. The score is updated during the match.
 }
 
 .match-summary__comment {
-	width: 100%;
-	position: relative;
-	clear: both;
-}
-
-.match-summary__comment__text {
 	font-family: $agate-sans;
 	@include meta();
 	@include padding(0.5, 1);
@@ -328,4 +277,6 @@ Display a match summary. The score is updated during the match.
 	border-bottom: none;
 	width: auto;
 	display: table;
+	position: relative;
+	z-index: 20;
 }
