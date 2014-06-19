@@ -1,77 +1,101 @@
-.styleguide__banner {
-  padding: 12px 12px 12px 12px; }
-
-.styleguide__title {
-  font-family: "Egyptian Display", Georgia, serif;
-  font-weight: 300; }
-  @media all and (max-width: 28.115em) {
-    .styleguide__title {
-      font-size: 3rem;
-      line-height: 3.2rem; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    .styleguide__title {
-      font-size: 4rem;
-      line-height: 4rem; } }
-  @media all and (min-width: 40.625em) {
-    .styleguide__title {
-      font-size: 4.8rem;
-      line-height: 4.8rem; } }
-
 .styleguide__main {
-  padding: 12px 12px 12px 12px;
-  overflow: hidden; }
+  padding: 57px 0px 12px 0px;
+  position: relative; }
 
 .styleguide__navigation {
-  padding: 0px 12px 12px 0px;
-  width: 25%;
-  float: left; }
+  background-color: #ececec;
+  width: 14em;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: -14em;
+  visibility: hidden;
+  overflow-y: auto;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  border-right: 12px solid #f6f6f6; }
   .styleguide__navigation .nav__item {
     font-family: "Egyptian Display", Georgia, serif;
     font-weight: 600;
-    border-top: 1px solid #4bc6df;
-    padding: 3px 12px 24px 3px; }
+    border-top: 1px solid #4bc6df; }
+    .styleguide__navigation .nav__item a {
+      padding: 3px 12px 27.99996px 3px;
+      display: block; }
+
+.styleguide__navigation-checkbox {
+  display: none; }
+
+.styleguide__navigation-toggle {
+  background-color: #f6f6f6;
+  border-bottom: 1px solid #4bc6df;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0; }
+  .styleguide__navigation-toggle .icon {
+    color: white;
+    text-align: center;
+    background-color: #005689;
+    border-radius: 50%;
+    padding: 1rem 0;
+    margin: 0.75rem 0.5rem;
+    width: 44px;
+    height: 44px;
+    display: block;
+    cursor: pointer; }
+  .styleguide__navigation-toggle:active .icon {
+    background-color: #4bc6df; }
+
+.styleguide__main,
+.styleguide__navigation,
+.styleguide__navigation-toggle {
+  -webkit-backface-visibility: hidden; }
+
+.styleguide__main,
+.styleguide__navigation-toggle {
+  -webkit-transition: -webkit-transform .3s ease-in-out;
+  transition: transform .3s ease-in-out; }
+
+#styleguide__navigation-checkbox:checked + .styleguide__navigation {
+  visibility: visible; }
+
+#styleguide__navigation-checkbox:checked ~ .styleguide__main,
+#styleguide__navigation-checkbox:checked ~ .styleguide__navigation,
+#styleguide__navigation-checkbox:checked ~ .styleguide__navigation-toggle {
+  -webkit-transform: translateX(14em);
+  transform: translateX(14em); }
 
 .styleguide__article {
-  padding: 12px 12px 12px 12px;
-  width: 75%;
-  float: right; }
-  .styleguide__article > h1 {
+  background-color: white;
+  border-bottom: 2px solid #dcdad5;
+  overflow: hidden; }
+  .styleguide__article .tags .inline-list__item:first-of-type {
+    font-weight: normal; }
+
+.styleguide__article__header .headline {
+  padding: 0px 12px 30px 12px; }
+
+.styleguide__article__body {
+  padding: 12px 12px 12px 12px; }
+  .styleguide__article__body > h1 {
     color: #333333;
-    font-weight: 400;
+    font-family: "Egyptian Display", Georgia, serif;
+    font-size: 1.125em;
+    font-weight: 600;
+    margin: 0px 0px 3px 0px; }
+  .styleguide__article__body > p {
+    color: #333333;
     margin: 0px 0px 12px 0px; }
-  .styleguide__article > p {
-    color: #333333;
-    margin: 0px 0px 6px 0px; }
-  .styleguide__article .highlight pre {
+  .styleguide__article__body .highlight pre {
     line-height: 1.2;
     white-space: pre-wrap; }
-
-.styleguide__article__nav {
-  margin: 0px 0px 48px 0px; }
-  .styleguide__article__nav .nav__item {
-    font-family: "Agate Sans", sans-serif;
-    display: inline-block; }
-    @media all and (max-width: 40.615em) {
-      .styleguide__article__nav .nav__item {
-        font-size: 1.4rem;
-        line-height: 2rem; } }
-    @media all and (min-width: 40.625em) {
-      .styleguide__article__nav .nav__item {
-        font-size: 1.6rem;
-        line-height: 2.2rem; } }
-    .styleguide__article__nav .nav__item:after {
-      content: " \2022";
-      font-weight: bold;
-      color: #999999; }
-    .styleguide__article__nav .nav__item:last-of-type:after {
-      display: none; }
+  .styleguide__article__body .advert-slot {
+    display: block !important; }
 
 .styleguide__contentinfo {
   color: #666666;
   font-family: "Agate Sans", sans-serif;
-  border-top: 1px dotted #dcdad5;
-  padding: 12px 12px 12px 12px;
-  clear: both; }
+  padding: 12px 12px 24px 12px; }
   @media all and (max-width: 40.615em) {
     .styleguide__contentinfo {
       font-size: 1.4rem;
@@ -81,50 +105,47 @@
       font-size: 1.6rem;
       line-height: 2.2rem; } }
 
-.styleguide .advert-slot {
-  display: block !important; }
-
 .codeExample {
-  margin: 0px 0px 36px 0px;
-  border: 1px solid #dcdad5;
-  border-radius: 4px; }
+  margin: 0px 0px 48px 0px;
+  border: 1px solid rgba(220, 218, 213, 0.75); }
 
 .exampleOutput,
 .codeBlock {
   padding: 12px 12px 12px 12px; }
-  .exampleOutput:before,
-  .codeBlock:before {
+  .exampleOutput::before,
+  .codeBlock::before {
     color: #999999;
     font-family: "Agate Sans", sans-serif;
     padding: 0px 0px 12px 0px;
     display: block;
     position: relative; }
     @media all and (max-width: 40.615em) {
-      .exampleOutput:before,
-      .codeBlock:before {
+      .exampleOutput::before,
+      .codeBlock::before {
         font-size: 1.26rem;
         line-height: 1.8rem; } }
     @media all and (min-width: 40.625em) {
-      .exampleOutput:before,
-      .codeBlock:before {
+      .exampleOutput::before,
+      .codeBlock::before {
         font-size: 1.44rem;
         line-height: 1.98rem; } }
 
 .exampleOutput {
-  background-color: #f6f6f6; }
-  .exampleOutput:before {
+  background-image: linear-gradient(45deg, rgba(246, 246, 246, 0.75) 25%, transparent 25%, transparent 75%, rgba(246, 246, 246, 0.75) 75%, rgba(246, 246, 246, 0.75)), linear-gradient(45deg, rgba(246, 246, 246, 0.75) 25%, transparent 25%, transparent 75%, rgba(246, 246, 246, 0.75) 75%, rgba(246, 246, 246, 0.75));
+  background-size: 44px 44px;
+  background-position: 0 0, 22px 22px; }
+  .exampleOutput::before {
     content: "Example:"; }
-  .exampleOutput:before, .exampleOutput:after {
+  .exampleOutput::after {
     content: " ";
     display: table; }
-  .exampleOutput:after {
+  .exampleOutput::after {
     clear: both; }
 
 .codeBlock {
   background-color: rgba(246, 246, 246, 0.5);
-  border-top: 1px solid rgba(220, 218, 213, 0.75);
   box-shadow: inset 0 2px 0 rgba(220, 218, 213, 0.25); }
-  .codeBlock:before {
+  .codeBlock::before {
     content: "Markup:"; }
 
 .c {

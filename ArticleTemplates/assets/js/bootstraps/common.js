@@ -189,7 +189,6 @@ define([
 					$(classToShow).show();
 				});
 			});
-
 		}
 	},
 

@@ -1,15 +1,14 @@
-.article--audio,
 .article--visual {
 	.article__header {
 		.avatar--author {
 			display: none;
 		}
 
-		.article__meta__pubdate {
+		.meta__pubdate {
 			padding-top: 9px;
 		}
 
-		.article__meta__misc {
+		.meta__misc {
 			@include mq($from: col2) {
 				display: table-cell;
 				border-left: 1px dotted $standfirst;
@@ -31,5 +30,9 @@
 		@include mq($from: col3) {
 			padding-right: cols($base-4, 4);
 		}
+	}
+
+	.tags {
+		border-top-color: $standfirst;
 	}
 }

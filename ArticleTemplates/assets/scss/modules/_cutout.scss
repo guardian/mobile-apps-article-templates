@@ -1,0 +1,43 @@
+/*doc
+---
+title: Cutout
+name: cutout
+category: Modules
+---
+Display a large image of contributor in background of container.
+
+```html_example
+<div class="cutout">
+	<div class="cutout__container" style="background-image: url(http://png-resizer.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2014/3/13/1394733748508/SeumasMilne.png?width=600);" id="cutout">
+		<!--Content-->
+	</div>
+</div>
+```
+*/
+
+.cutout {
+	.cutout__container {
+		background-repeat: no-repeat;
+		background-position: right bottom; // Android <4.3 doesn't understand four value syntax
+		background-position: right -15% bottom 0;
+		overflow: auto;
+		@include mq($to: col1) {
+			min-height: 245px;
+			background-size: $base-1 * 12 auto;
+			padding-right: cols($base-1, 1);
+		}
+		@include mq(col1, col2) {
+			min-height: 280px;
+			background-size: $base-2 * 20 auto;
+			padding-right: cols($base-2, 2);
+		}
+		@include mq(col2, col3) {
+			min-height: 400px;
+			background-size: $base-3 * 34 auto;
+		}
+		@include mq($from: col3) {
+			min-height: 320px;
+			background-size: contain;
+		}
+	}
+}

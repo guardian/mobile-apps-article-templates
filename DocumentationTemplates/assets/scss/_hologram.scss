@@ -1,14 +1,13 @@
 .codeExample {
-	@include margin(0, 0, 3, 0);
-	border: 1px solid $shadow;
-	border-radius: 4px;
+	@include margin(0, 0, 4, 0);
+	border: 1px solid fade-out($shadow, 0.25);
 }
 
 .exampleOutput,
 .codeBlock {
 	@include padding(1);
-	
-	&:before {
+
+	&::before {
 		color: $meta;
 		font-family: $agate-sans;
 		@include meta(0.9);
@@ -19,29 +18,31 @@
 }
 
 .exampleOutput {
-	background-color: $background;
+	background-image: 
+		linear-gradient(45deg, fade-out($background, 0.25) 25%, transparent 25%, transparent 75%, fade-out($background, 0.25) 75%, fade-out($background, 0.25)),
+		linear-gradient(45deg, fade-out($background, 0.25) 25%, transparent 25%, transparent 75%, fade-out($background, 0.25) 75%, fade-out($background, 0.25));
+	background-size: 44px 44px;
+	background-position: 0 0, 22px 22px;
 
-	&:before {
+	&::before {
 		content: "Example:";
 	}
 
-	&:before,
-	&:after {
+	&::after {
 	    content: " ";
 	    display: table;
 	}
 
-	&:after {
+	&::after {
 	    clear: both;
 	}
 }
 
 .codeBlock {
 	background-color: fade-out($background, 0.5);
-	border-top: 1px solid fade-out($shadow, 0.25);
 	box-shadow: inset 0 2px 0 fade-out($shadow, 0.75);
 
-	&:before {
+	&::before {
 		content: "Markup:";
 	}
 }

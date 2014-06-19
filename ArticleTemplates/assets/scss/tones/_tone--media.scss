@@ -1,6 +1,6 @@
 .tone--media {
 	a {
-		color: darken($media, 3%);
+		color: darken($media, 5%);
 		&:active {
 			color: $media-accent;
 		}
@@ -8,7 +8,7 @@
 
 	.touchpoint--primary {
 		.touchpoint__label {
-			color: darken($media, 3%);
+			color: darken($media, 5%);
 		}
 		.touchpoint__button {
 			background-color: $media;
@@ -21,11 +21,10 @@
 	// Template specific styles
 	.article--audio,
 	.article--visual {
-		background-color: $media-bg;
 		border-top-color: $media;
 
 		.prose p {
-			@include text-underline($media, $media-bg, $media-accent);
+			@include text-underline(darken($media, 5%), $white, $media-accent);
 		}
 		.prose table,
 		.table {
@@ -34,6 +33,11 @@
 
 		.audio-player {
 			background-color: darken($media-bg, 10%);
+		}
+
+		.article__header,
+		.tags {
+			background-color: $media-bg;
 		}
 
 		.article__header {
@@ -48,22 +52,13 @@
 			}
 		}
 
-		.article__meta {
+		.meta {
 			margin-top: -1px;
 			border-top: 1px dotted $standfirst;
 		}
 
-		.article__meta__comments {
+		.meta__comments {
 			border-left: 1px dotted $standfirst;
-		}
-
-		.article__body {
-			color: $white;
-			@include text-underline($media, $media-bg, $media-accent);
-		}
-
-		.tags {
-			border-top-color: $standfirst;
 		}
 	}
 }

@@ -6,28 +6,13 @@ category: Modules
 ---
 Display an embedded element. Element embeds are typically shown as figures, and can optionally include a supporting caption.
 
-Wide (stretches to fit the full width of its container):
-
 ```html_example
-<figure class="figure-wide">
+<figure>
 	<img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/11/1402512126497/Matt-Kenyon-on-Birmingham-014.jpg?width=900&amp;height=540&amp;quality=60"/>
 	<figcaption>
 		‘The absurdity of the inspectors’ findings is clearest in the case of Gracelands, whose staff were taken to task for failing to ensure its 2- to 4-year-olds were protected against ‘extreme and radical behaviour'.' Illustration: Matt Kenyon
 	</figcaption>
 </figure>
-```
-
-Inline (floats to the left of any running text):
-
-```html_example
-<figure class="figure-inline">
-	<img src="http://i.guim.co.uk/w-620/h--/q-95/sys-images/Guardian/Pix/pictures/2014/6/13/1402656896541/phpdKmNwRAM.jpg" alt="Mil" width="193" class="gu-image"/>
-	<figcaption>
-		The Sun's picture of Miliband that offended people in Liverpool
-	</figcaption>
-</figure>
-
-<p>Miliband was also confronted by a number of Labour MPs, including Steve Rotheram, the member for for Liverpool Walton. According to a source cited by the Liverpool Echo, Miliband apologised to the MPs. The source is quoted as saying: “Ed Miliband said he was very, very sorry.”</p>
 ```
 */
 
@@ -45,6 +30,9 @@ figure {
 		font-family: $agate-sans;
 		@include meta();
 		border-bottom: 1px dotted $shadow;
-		@include padding(0.5, 1, 2, 1);
+		@include padding(0.5, 0, 2, 0);
+		@include mq($from: col1) {
+			@include padding(0.5, 1, 2, 1);
+		}
 	}
 }

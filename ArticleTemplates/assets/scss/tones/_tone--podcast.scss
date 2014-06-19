@@ -22,7 +22,7 @@
 		background-color: $news-accent;
 
 		.cutout__container {
-			background: -webkit-canvas(squares);
+			background: -webkit-canvas(circles);
 		}
 
 		.section {
@@ -52,27 +52,16 @@
 		}
 	}
 
-	.article__meta,
-	.article__meta__pubdate {
+	.meta,
+	.meta__pubdate {
 		color: rgba($white, 0.8);
 	}
 
-	.article__meta {
-		margin-top: -1px;
-		border-top: 1px dotted $news;
+	.meta {
+		border-top-color: $news;
 	}
 
-	.article__meta__comments {
-		border-left: 1px dotted $news;
-	}
-
-	.article__body {
-		@include padding(0, 1);
-		@include mq(col2, col3) {
-			padding-right: cols($base-3, 3);
-		}
-		@include mq($from: col3) {
-			padding-right: cols($base-4, 4);
-		}
+	.meta__comments {
+		border-left-color: $news;
 	}
 }
