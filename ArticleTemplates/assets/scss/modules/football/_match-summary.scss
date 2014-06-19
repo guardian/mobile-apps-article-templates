@@ -68,6 +68,7 @@ Display a match summary. The score is updated during the match.
 
 	@include mq($from: col1) {
 		@include padding(0.5, 1, 0, 1);
+		min-height: 150px;
 		&::after {
 			content: " ";
 			background-color: $shadow;
@@ -136,6 +137,7 @@ Display a match summary. The score is updated during the match.
 		}
 
 		.alerts__label {
+			font-weight: bold;
 			@include mq($to: col1) {
 				display: none;
 			}
