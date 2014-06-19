@@ -41,9 +41,11 @@ define([
 
 		figcaptionToggle: function () {
 			// Show/hides figure caption
-			bean.on($('.main-media__caption__icon')[0], 'click', function () {
-				$('.main-media__caption__text').toggleClass('is-visible');
-			});
+			if ($('.main-media__caption__icon')[0]) {
+				bean.on($('.main-media__caption__icon')[0], 'click', function () {
+					$('.main-media__caption__text').toggleClass('is-visible');
+				});
+			}
 		},
 
 		loadAdverts: function (config) {
