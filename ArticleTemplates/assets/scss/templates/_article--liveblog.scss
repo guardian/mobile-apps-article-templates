@@ -10,40 +10,32 @@
 		.alerts__label {
 			display: inline-block;
 		}
+
 		.section {
 			position: relative;
 		}
-	}
 
-	.article__section__live {
-		color: $white;
-		font-family: $agate-sans;
-		font-weight: bold;
-		display: none;
-		position: absolute;
-		left: 0;
-		top: 0;
-		@include headline(0.5);
-		@include padding(0.5, 1, 0.5, 1);
-		@include mq($from: col2) {
-			font-size: $body-size-1;
-		}
-		&::before {
-			content: "• ";
-			display: inline-block;
-			margin-right: 4px;
-			-webkit-animation: blink 1.5s ease-in infinite;
-		}
-	}
-
-	.meta {
-		position: relative;
-
-		.alerts {
-			@include padding(0.5);
+		.section__live {
+			color: $white;
+			@include padding(0.5, 1, 0.5, 1);
+			display: none;
 			position: absolute;
 			left: 0;
 			top: 0;
+		}
+
+		.alerts {
+			@include padding(0.5, 1);
+		}
+
+		.meta {
+			position: relative;
+
+			.alerts {
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
 		}
 
 		.meta__comments__label {
@@ -114,7 +106,7 @@
 	}
 
 	@include mq($to: col2) {
-		.standfirst .alerts {
+		.article__header > .alerts {
 			display: block;
 		}
 		.meta .alerts {
@@ -123,7 +115,7 @@
 	}
 
 	@include mq($from: col2) {
-		.standfirst .alerts {
+		.article__header > .alerts {
 			display: none;
 		}
 		.meta .alerts {
@@ -139,7 +131,7 @@
 }
 
 .is-live {
-	.article__section__live {
+	.section__live {
 		display: block;
 	}
 	.article--liveblog {
