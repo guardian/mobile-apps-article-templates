@@ -3,7 +3,6 @@
 	border-bottom: none;
 
 	.article__header {
-		color: $headline;
 		border-bottom: 2px solid $shadow;
 		background-color: $white;
 
@@ -27,6 +26,12 @@
 		.alerts {
 			@include padding(0.5, 1);
 		}
+		
+		& > .alerts {
+			@include mq($from: col2) {
+				display: none;
+			}
+		}
 
 		.meta {
 			position: relative;
@@ -35,6 +40,10 @@
 				position: absolute;
 				left: 0;
 				top: 0;
+				
+				@include mq($to: col2) {
+					display: none;
+				}
 			}
 		}
 
@@ -45,20 +54,11 @@
 
 	.tags {
 		border-top: 0;
-	}
-
-	#advert {
-		float: none;
-		width: 100%;
-		margin-left: 0;
-		background-color: #e6e6e6;
-		padding-top: 0;
-		padding-bottom: 0;
-		border-bottom: none;
-
-		img {
-			width: 100%;
-			vertical-align: middle;
+		@include mq(col2, col3) {
+			padding-left: cols($base-3, 4, 1);
+		}
+		@include mq($from: col3) {
+			padding-left: cols($base-4, 5, 1);
 		}
 	}
 
@@ -104,32 +104,9 @@
 			}
 		}
 	}
-
-	@include mq($to: col2) {
-		.article__header > .alerts {
-			display: block;
-		}
-		.meta .alerts {
-			display: none;
-		}
-	}
-
-	@include mq($from: col2) {
-		.article__header > .alerts {
-			display: none;
-		}
-		.meta .alerts {
-			display: block;
-		}
-
-		.tags {
-			.inline-list {
-				width: 100%;
-			}
-		}
-	}
 }
 
+// Should this move to tone--live or do we need an article--liveblog--is-live partial?
 .is-live {
 	.article--liveblog {
 		.article__header {
