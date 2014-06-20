@@ -50,11 +50,11 @@ Provide a summary of events:
 */
 
 [class*="block--live-"] {
-	@include padding(0.5, 1, 1, 1);
 	.block__time {
 		color: $standfirst;
 		font-family: $agate-sans;
 		@include padding(0, 0, 1, 0);
+		margin-top: -4px; // Offset for space above in our fonts to align text to top of block rule
 		@include mq($from: col2) {
 			@include padding(0, 1, 0, 0);
 			float: left;
@@ -108,9 +108,14 @@ Provide a summary of events:
 					clear: both;
 				}
 			}
-			
+
+			// Offsets for space above in our fonts to align text to top of block rule
 			p:first-child {
-				margin-top: 2px;
+				margin-top: -2px;
+			}
+			
+			h2:first-child {
+				margin-top: -3px;
 			}
 		}
 	}
