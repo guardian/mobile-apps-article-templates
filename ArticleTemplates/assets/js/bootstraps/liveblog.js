@@ -95,7 +95,6 @@ define([
 						$('.more--live-blogs').hide();
 					}
 				};
-
 				window.applyNativeFunctionCall('liveblogDeleteBlock');
 				window.applyNativeFunctionCall('liveblogUpdateBlock');
 			}
