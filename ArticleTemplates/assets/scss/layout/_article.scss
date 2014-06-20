@@ -44,12 +44,14 @@
 	font-family: $egyptian-text;
 
 	// First figure/element in body should sit flush with .article__header
-	.figure-wide,
-	.element {
-		&:first-child{
-			margin-top: -12px;
+	& > .prose {
+		.figure-wide,
+		.element {
+			&:first-child{
+				margin-top: -12px;
+			}
 		}
-	}
+	} 
 
 	// Football player cards should appear floated right above mobile breakpoint
 	.player-card {
