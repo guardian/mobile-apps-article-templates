@@ -149,8 +149,8 @@ define([
 				html = bonzo.create(html);
 				$(html).appendTo('.football__tab--stats');
 				modules.footballChart(homeTeam, awayTeam);
-				if (!$('ul.tabs [data-href=".football__tab--stats"]').hasClass('selected')) {
-					$('.football__tab--stats').hide();
+				if (!$('.tabs [data-href=".football-tabs-stats"]').hasClass('selected')) {
+					$('.football-tabs-stats').hide();
 				}
 			};
 			window.footballMatchInfoFailed = function () {

@@ -50,6 +50,7 @@ Provide a summary of events:
 */
 
 [class*="block--live-"] {
+	@include padding(0.5, 1, 1, 1);
 	.block__time {
 		color: $standfirst;
 		font-family: $agate-sans;
@@ -106,6 +107,10 @@ Provide a summary of events:
 					float: none;
 					clear: both;
 				}
+			}
+			
+			p:first-child {
+				margin-top: 2px;
 			}
 		}
 	}
