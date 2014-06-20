@@ -4,7 +4,7 @@
 	border-bottom: 2px solid $shadow;
 	overflow: hidden;
 	@include mq($to: col1) {
-		border-top: none;
+		border-top-width: 0;
 		margin-bottom: $base-1 * 2;
 	}
 	@include mq(col1, col2) {
@@ -18,7 +18,7 @@
 	}
 
 	.android & {
-		border-top: 0;
+		border-top-width: 0;
 	}
 }
 

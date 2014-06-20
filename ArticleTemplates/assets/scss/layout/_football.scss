@@ -1,0 +1,121 @@
+.football {
+	@include mq($from: col1) {
+		border-top: 4px solid $news-accent;
+	}
+
+	.tabs {
+		[data-href=".football__tab--liveblog"].selected {
+			color: $live;
+			border-top-color: $live-accent;
+		}
+	}
+}
+
+// Tab containers
+.football__tab {
+	.article {
+		border-top-width: 2px;
+	}
+}
+
+.football__tab--article {
+	.section {
+		display: none;
+	}
+
+	.headline {
+		padding-top: 6px;
+	}
+}
+
+.football__tab--stats {
+	font-family: $agate-sans;
+}
+
+// Helpers (headings and columns)
+.football__label {
+	font-family: $egyptian-display;
+	@include body();
+	@include mq($from: col1) {
+		@include padding(0, 0, 0, 5);
+	}
+}
+
+.football__sublabel {
+	@include meta();
+	margin-bottom: 4px;
+}
+
+.football__column {
+	@include padding(0, 0, 1, 0);
+	width: 50%;
+	float: left;
+	@include mq($from: col1) {
+		@include padding(0, 0, 1, 5);
+	}
+	@include mq($from: col3) {
+		@include padding(0, 5, 1, 5);
+	}
+}
+
+// Match info page layout
+.football__lineups {
+	@include padding(1);
+	overflow-y: hidden;
+
+	.football__column {
+		@include mq($from: col1) {
+			@include padding(0, 0, 1, 0);
+		}
+	}
+}
+
+.football__stats,
+.football__today {
+	.football__column {
+		@include mq($to: col1) {
+			width: 100%;
+			float: none;
+		}
+	}
+}
+
+.football__stats {
+	border-top: 1px dotted $shadow;
+	@include padding(1);
+	overflow-y: auto;
+	position: relative;
+}
+
+.football__today {
+	border-top: 1px dotted $shadow;
+	@include padding(1);
+	@include mq($from: col1) {
+		display: table;
+		width: 100%;
+	}
+}
+
+.football__today__fixtures {
+	@include mq($from: col1) {
+		@include padding(0, 0, 1, 0);
+	}
+}
+
+.football__today__fixtures,
+.football__today__table {
+	@include mq($from: col1) {
+		vertical-align: top;
+		width: 50%;
+		display: inline-block;
+	}
+}
+
+.football__lineups .team-lineup__player__number,
+.football__today__fixtures .football-match--status,
+.football__today__table .football-stat--postition {
+	width: 42px; // x3.5
+	@include mq($from: col1) {
+		width: 60px; // x5
+	}
+}
