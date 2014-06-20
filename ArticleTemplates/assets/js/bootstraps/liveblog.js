@@ -51,6 +51,7 @@ define([
 
 			liveMore: function () {
 				bean.on($('.more--live-blogs')[0], 'click', function () {
+					console.log("asdf");
 					$(this).hide();
 					$('.loading--liveblog').addClass("loading--visible");
 					window.location.href = 'x-gu://showmore';
@@ -80,7 +81,7 @@ define([
 					window.loadInteractives();
 				};
 				window.liveblogTime = function () {
-					if ($("tone--liveBlog").hasClass("is-live") {
+					if ($(".tone--liveBlog").hasClass("is-live")) {
 						relativeDates.init('.block__time', 'title');
 					} else {
 						$('.block__time').each(function (el) {
