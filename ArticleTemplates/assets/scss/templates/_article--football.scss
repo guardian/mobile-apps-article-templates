@@ -1,44 +1,30 @@
-.article--football {
-	background-color: transparent;
-	border-bottom: none;
+.football {
+	border-top: 4px solid $news-accent;
 
-	& > .article {
-		background-color: transparent;
-		border-bottom: none;
-		margin-bottom: 0;
-	}
-
-	.article__header {
-		.alerts__label {
-			display: none;
+	.tabs {
+		[data-href=".football__tab--liveblog"].selected {
+			color: $live;
+			border-top-color: $live-accent;
 		}
 	}
 
-	.football-tabs-article {
+	.football__tab {
 		.article {
-			background-color: $white;
-			border-top: 2px solid $news-accent;
+			border-top-width: 2px;
 		}
+	}
+
+	.football__tab--article {
 		.section {
 			display: none;
 		}
 		.headline {
-			@include padding(0.5, 1, 2, 1);
+			padding-top: 6px;
 		}
 	}
 
-	.football-tabs-liveblog {
-		.meta {
-			background-color: $white;
-			border-top: 2px solid $live;
-			margin-top: 0;
-		}
-	}
-
-	.football-tabs-stats {
+	.football__tab--stats {
 		font-family: $agate-sans;
-		border-top: 2px solid $news-accent;
-		background-color: $white;
 
 		.football__label {
 			font-family: $egyptian-display;

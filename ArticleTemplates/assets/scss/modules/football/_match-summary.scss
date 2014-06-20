@@ -7,7 +7,7 @@ category: Football
 Display a match summary. The score is updated during the match.
 
 ```html_example
-<div class="match-summary is-alerts is-agg">
+<div class="match-summary is-agg">
 	<div class="match-status match-status--ft">
 		<p class="match-status__time">FT</p>
 	</div>
@@ -114,11 +114,6 @@ Display a match summary. The score is updated during the match.
 
 	.match-status__time {
 		width: 100%;
-	}
-
-	&.is-alerts .alerts,
-	&.is-agg .match-summary__score__agg {
-		display: block;
 	}
 
 	// Alerts
@@ -265,6 +260,9 @@ Display a match summary. The score is updated during the match.
 	}
 	@include mq($from: col1) {
 		margin-top: 10px;
+	}
+	.is-agg & {
+		display: block;
 	}
 }
 

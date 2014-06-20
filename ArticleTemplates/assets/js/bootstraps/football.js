@@ -145,21 +145,21 @@ define([
 		setupGlobals: function () {
 			// Global function to handle football, called by native code
 			window.footballMatchInfo = function (html, replaceContent, homeTeam, awayTeam) {
-				$('.football-tabs-stats').empty();
+				$('.football__tab--stats').empty();
 				html = bonzo.create(html);
-				$(html).appendTo('.football-tabs-stats');
+				$(html).appendTo('.football__tab--stats');
 				modules.footballChart(homeTeam, awayTeam);
-				if (!$('ul.tabs [data-href=".football-tabs-stats"]').hasClass('selected')) {
-					$('.football-tabs-stats').hide();
+				if (!$('ul.tabs [data-href=".football__tab--stats"]').hasClass('selected')) {
+					$('.football__tab--stats').hide();
 				}
 			};
 			window.footballMatchInfoFailed = function () {
-				$(".football-tabs-stats").remove();
-				if ($(".tabs [data-href='.football-tabs-stats']").hasClass("selected")) {
+				$(".football__tab--stats").remove();
+				if ($(".tabs [data-href='.football__tab--stats']").hasClass("selected")) {
 					$(".tabs li:first-of-type").addClass("selected");
 					$($(".tabs .selected").attr("data-href")).show();
 				}
-				$(".tabs [data-href='.football-tabs-stats']").remove();
+				$(".tabs [data-href='.football__tab--stats']").remove();
 			}
 			window.applyNativeFunctionCall('footballMatchInfo');
 			window.applyNativeFunctionCall('footballMatchInfoFailed');
