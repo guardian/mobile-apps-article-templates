@@ -16,7 +16,7 @@ define([
 			blockUpdates: function () {
 				var newBlockHtml = '',
 					updateCounter = 0,
-					liveblogStartPos = $('.live-container').offset(),
+					liveblogStartPos = $('.article__body--liveblog').offset(),
 
 					liveblogNewBlockDump = function () {
 						newBlockHtml = bonzo.create(newBlockHtml);
