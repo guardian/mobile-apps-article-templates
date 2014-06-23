@@ -48,12 +48,22 @@
 			}
 
 			.section {
+				@include mq($to: col1) {
+					padding-left: 4.5em;
+				}
+				@include mq(col1, col2) {
+					padding-left: 4em;
+				}
 				@include mq(col2, col3) {
 					padding-left: cols($base-3, 4, 1);
 				}
 				@include mq($from: col3) {
 					padding-left: cols($base-4, 5, 1);
 				}
+			}
+
+			.section__live {
+				display: block;
 			}
 
 			.headline,

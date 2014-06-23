@@ -6,10 +6,6 @@
 		border-bottom: 2px solid $shadow;
 		background-color: $white;
 
-		.alerts__label {
-			display: inline-block;
-		}
-
 		.section {
 			position: relative;
 		}
@@ -17,7 +13,7 @@
 		.section__live {
 			color: $white;
 			@include padding(0.5, 1, 0.5, 1);
-			display: none;
+			display: none; // Default
 			position: absolute;
 			left: 0;
 			top: 0;
@@ -26,11 +22,15 @@
 		.alerts {
 			@include padding(0.5, 1);
 		}
-		
+
 		& > .alerts {
 			@include mq($from: col2) {
 				display: none;
 			}
+		}
+
+		.alerts__label {
+			display: inline-block;
 		}
 
 		.meta {
@@ -40,7 +40,7 @@
 				position: absolute;
 				left: 0;
 				top: 0;
-				
+
 				@include mq($to: col2) {
 					display: none;
 				}
@@ -78,7 +78,6 @@
 		width: auto;
 		position: relative;
 		overflow: hidden;
-
 		@include mq($from: col1) {
 			margin-left: 0;
 			margin-right: 0;
@@ -88,7 +87,6 @@
 			@include margin(0.25, 0);
 			padding-left: $base-1;
 			width: 220px;
-
 			@include mq($from: col2) {
 				margin: 0;
 				padding-left: $base-2;
@@ -101,25 +99,6 @@
 			@include mq($from: col3) {
 				padding-left: $base-4;
 				left: cols($base-4, 5);
-			}
-		}
-	}
-}
-
-// Should this move to tone--live or do we need an article--liveblog--is-live partial?
-.is-live {
-	.article--liveblog {
-		.article__header {
-			.section {
-				@include mq($to: col1) {
-					padding-left: 4.5em;
-				}
-				@include mq(col1, col2) {
-					padding-left: 4em;
-				}
-			}
-			.section__live {
-				display: block;
 			}
 		}
 	}

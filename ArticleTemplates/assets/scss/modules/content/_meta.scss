@@ -19,8 +19,8 @@ Display an article's meta information.
 				</span>
 			</span>
 			<a class="alerts" href="x-gu://follow/tag-contributor///profile/michaelbillington" data-follow-alert-id="tag-contributor///profile/michaelbillington">
-				<span class="alerts__state--unfollow"><span class="icon"></span> <span class="alerts__label">Follow contributor</span></span>
-				<span class="alerts__state--follow"><span class="icon"></span> <span class="alerts__label">Following contributor</span></span>
+				<span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> <span class="alerts__label">Follow contributor</span></span>
+				<span class="alerts__state--follow"><span class="icon">&#xe049;</span> <span class="alerts__label">Following contributor</span></span>
 			</a>
 		</div>
 		<p class="meta__pubdate">23:00 GMT+1 Wednesday, 18 June 2014</p>
@@ -34,7 +34,6 @@ Display an article's meta information.
 
 .meta {
 	@include meta();
-	
 	margin: -1px 0;
 	border-top: 1px dotted $shadow;
 	border-bottom: 1px dotted $shadow;
@@ -46,9 +45,8 @@ Display an article's meta information.
 		float: left;
 	}
 
-	// Why are we hiding this by default?
 	.alerts__label {
-		display: none;
+		display: none; // Hide alert label when shown within meta block
 	}
 }
 

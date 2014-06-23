@@ -118,7 +118,6 @@ Display a match summary. The score is updated during the match.
 
 	// Alerts
 	.alerts {
-		font-weight: normal;
 		text-align: center;
 		position: relative;
 		z-index: 20;
@@ -126,16 +125,14 @@ Display a match summary. The score is updated during the match.
 		width: auto;
 		display: inline-block;
 		float: right;
-
 		@include mq($to: col1) {
 			font-size: 150%;
 		}
+	}
 
-		.alerts__label {
-			font-weight: bold;
-			@include mq($to: col1) {
-				display: none;
-			}
+	.alerts__label {
+		@include mq($to: col1) {
+			display: none;
 		}
 	}
 }
@@ -143,7 +140,6 @@ Display a match summary. The score is updated during the match.
 .match-summary__meta {
 	font-family: $agate-sans;
 	@include meta();
-
 	@include mq($to: col1) {
 		@include padding(0, 3, 1, 4.5);
 	}
@@ -188,7 +184,6 @@ Display a match summary. The score is updated during the match.
 	.match-summary__score {
 		width: 44px;
 		@include padding(0, 0.5);
-		
 		@include mq($to: col1) {
 			width: 15%;
 			min-width: 50px;
@@ -201,7 +196,6 @@ Display a match summary. The score is updated during the match.
 		font-family: $agate-sans;
 		@include meta();
 		@include padding(0, 0, 0, 0.5);
-
 		@include mq($to: col1) {
 			width: 100%;
 		}
@@ -218,7 +212,6 @@ Display a match summary. The score is updated during the match.
 	.match-summary__badge {
 		background-repeat: no-repeat;
 		background-size: contain;
-		
 		@include mq($to: col1) {
 			min-width: 44px;
 		}
@@ -261,6 +254,7 @@ Display a match summary. The score is updated during the match.
 	@include mq($from: col1) {
 		margin-top: 10px;
 	}
+
 	.is-agg & {
 		display: block;
 	}
