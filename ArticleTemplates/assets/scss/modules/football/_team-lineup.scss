@@ -141,12 +141,12 @@ Display a team line-up including substitutions and bookings.
 	}
 
 	.used {
-		color: gu-color(neutral-3);
+		color: color(neutral-3);
 		text-decoration: line-through;
 	}
 
 	&:last-of-type td { // Subs
-		@include padding(2, 0.5, 0, 0);
+		padding: base-px(2, 0.5, 0, 0);
 	}
 }
 
@@ -155,11 +155,11 @@ Display a team line-up including substitutions and bookings.
 .team-lineup__player__name {
 	text-align: left;
 	vertical-align: top;
-	@include padding(0, 0.5, 0.25, 0);
+	padding: base-px(0, 0.5, 0.25, 0);
 }
 
 .team-lineup__player__number {
-	color: gu-color(neutral-3);
+	color: color(neutral-3);
 }
 
 .team-lineup__player__forename {

@@ -51,12 +51,12 @@ Provide a summary of events:
 
 [class*="block--live-"] {
 	.block__time {
-		color: gu-color(neutral-2);
+		color: color(neutral-2);
 		font-family: $agate-sans;
-		@include padding(0, 0, 1, 0);
+		padding: base-px(0, 0, 1, 0);
 		margin-top: -5px; // Offset for space above in our fonts to align text to top of block rule
 		@include mq($from: col2) {
-			@include padding(0, 1, 0, 0);
+			padding: base-px(0, 1, 0, 0);
 			float: left;
 		}
 		@include mq(col2, col3) {
@@ -100,7 +100,7 @@ Provide a summary of events:
 				}
 
 				figcaption {
-					@include padding(0.5, 0, 1, 0);
+					padding: base-px(0.5, 0, 1, 0);
 				}
 
 				&.figure-inline {
@@ -127,23 +127,23 @@ Provide a summary of events:
 	}
 
 	.block__updated {
-		color: gu-color(neutral-3);
+		color: color(neutral-3);
 		font-family: $agate-sans;
 		@include meta();
 	}
 }
 
 .block--live-key-event {
-	border-top: 2px solid gu-color(tone-live-accent);;
+	border-top: 2px solid color(tone-live-accent);;
 
 	.block__title {
-		color: gu-color(tone-live);
+		color: color(tone-live);
 	}
 }
 
 .block--live-summary {
 	background-color: transparent;
-	border: 1px dotted gu-color(neutral-7);
+	border: 1px dotted color(neutral-7);
 
 	.block__time {
 		font-weight: bold;

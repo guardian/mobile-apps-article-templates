@@ -35,13 +35,13 @@ Display an article's meta information.
 .meta {
 	@include meta();
 	margin: -1px 0;
-	border-top: 1px dotted gu-color(neutral-7);
-	border-bottom: 1px dotted gu-color(neutral-7);
+	border-top: 1px dotted color(neutral-7);
+	border-bottom: 1px dotted color(neutral-7);
 	width: 100%;
 	display: table;
 
 	.avatar--author {
-		@include margin(0, 0.75, 1, 0);
+		margin: base-px(0, 0.75, 1, 0);
 		float: left;
 	}
 
@@ -51,11 +51,11 @@ Display an article's meta information.
 }
 
 .meta__misc {
-	@include padding(0.6667, 1, 2, 1);
+	padding: base-px(0.6667, 1, 2, 1);
 }
 
 .meta__pubdate {
-	color: gu-color(neutral-3);
+	color: color(neutral-3);
 	font-family: $agate-sans;
 }
 
@@ -63,8 +63,8 @@ Display an article's meta information.
 	font-family: $agate-sans;
 	font-weight: bold;
 	vertical-align: top;
-	border-left: 1px dotted gu-color(neutral-7);
-	@include padding(0.5, 0.5, 1, 1);
+	border-left: 1px dotted color(neutral-7);
+	padding: base-px(0.5, 0.5, 1, 1);
 	display: table-cell;
 	@include mq($to: col1) {
 		width: cols($base-1, 1);

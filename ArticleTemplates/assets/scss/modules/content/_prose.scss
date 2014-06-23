@@ -171,25 +171,25 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 	hr {
 		border: 0;
 		height: 1px;
-		background: gu-color(neutral-7);
+		background: color(neutral-7);
 	}
 
 	p {
-		@include margin(1, 0);
+		margin: base-px(1, 0);
 	}
 
 	p, li {
-		@include text-underline(gu-color(tone-news), #fff, gu-color(tone-news-accent));
+		@include text-underline(color(tone-news), #fff, color(tone-news-accent));
 	}
 
 	ul,
 	ol,
 	dl {
-		@include margin(1, 0);
+		margin: base-px(1, 0);
 
 		ul,
 		ol {
-			@include margin(0, 0, 1, 2);
+			margin: base-px(0, 0, 1, 2);
 		}
 	}
 
@@ -211,16 +211,16 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 			font-weight: bold;
 		}
 		dd {
-			@include margin(0, 0, 1, 2);
+			margin: base-px(0, 0, 1, 2);
 		}
 	}
 
 	blockquote {
-		color: gu-color(neutral-2);
+		color: color(neutral-2);
 		font-style: italic;
-		@include margin(2);
+		margin: base-px(2);
 		&::before {
-			color: gu-color(neutral-3);
+			color: color(neutral-3);
 			font-family: $icon;
 			font-size: 4rem; // 40px
 			font-style: normal;
@@ -245,16 +245,16 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 			}
 
 			p {
-				color: gu-color(neutral-2);
+				color: color(neutral-2);
 				font-size: $meta-size-2;
 				line-height: $meta-lead-2;
-				@include margin(0.5, 0);
+				margin: base-px(0.5, 0);
 			}
 		}
 	}
 
 	figure {
-		@include margin(1, 0);
+		margin: base-px(1, 0);
 
 		// Full width
 		&.figure-wide {
@@ -276,7 +276,7 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 		// Inline
 		&.figure-inline {
 			@include mq($from: col1) {
-				@include margin(0.5, 1, 0, 0);
+				margin: base-px(0.5, 1, 0, 0);
 				float: left;
 
 				img {
@@ -301,8 +301,8 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 .table {
 	font-family: $agate-sans;
 	@include meta();
-	@include margin(1, 0);
-	border-top: 2px solid gu-color(tone-news-accent);
+	margin: base-px(1, 0);
+	border-top: 2px solid color(tone-news-accent);
 
 	td, th {
 		text-align: left;
@@ -310,11 +310,11 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 	}
 
 	th {
-		@include padding(0.25, 1, 1, 0);
+		padding: base-px(0.25, 1, 1, 0);
 	}
 
 	td {
-		border-top: 1px solid gu-color(neutral-8);
-		@include padding(0.25, 1, 1, 0);
+		border-top: 1px solid color(neutral-8);
+		padding: base-px(0.25, 1, 1, 0);
 	}
 }

@@ -183,7 +183,7 @@ Comment preview:
 	word-break: break-all;
 	word-wrap: break-word;
 	@include meta();
-	@include padding(0.25, 1, 0.75, 0);
+	padding: base-px(0.25, 1, 0.75, 0);
 	overflow: auto;
 	@include mq(col2, col3) {
 		width: cols($base-3, 4, 1);
@@ -203,7 +203,7 @@ Comment preview:
 .comment__body {
 	word-break: break-word;
 	word-wrap: break-word;
-	@include margin(0, 0, 1, 0);
+	margin: base-px(0, 0, 1, 0);
 	@include mq(col2, col3) {
 		margin-right: cols($base-3, 1);
 		margin-left: cols($base-3, 4, 1);
@@ -231,7 +231,7 @@ Comment preview:
 }
 
 .comment__username {
-	color: gu-color(neutral-1);
+	color: color(neutral-1);
 	font-weight: bold;
 	white-space: nowrap;
 }
@@ -242,7 +242,7 @@ Comment preview:
 }
 
 .comment__timestamp {
-	color: gu-color(neutral-3);
+	color: color(neutral-3);
 	font-family: $agate-sans;
 	@include meta();
 	display: block;
@@ -270,18 +270,18 @@ Comment preview:
 	&:active {
 		.touchpoint__button {
 			color: #fff;
-			background-color: gu-color(neutral-7);
+			background-color: color(neutral-7);
 		}
 	}
 
 	&.increase .touchpoint__button {
 		color: #fff;
-		background-color: gu-color(tone-news-accent);
+		background-color: color(tone-news-accent);
 		border-color: transparent;
 	}
 
 	.touchpoint__label {
-		color: gu-color(neutral-3);
+		color: color(neutral-3);
 		font-weight: normal;
 		@include mq($from: col2) {
 			margin-top: 1px;
@@ -294,7 +294,7 @@ Comment preview:
 .comment__options {
 	@include meta();
 	background-color: #fff;
-	@include padding(0.75, 0, 0.75, 0);
+	padding: base-px(0.75, 0, 0.75, 0);
 	overflow: hidden;
 	display: none;
 	@include mq(col2, col3) {
@@ -322,15 +322,15 @@ Comment preview:
 // Response
 .comment.is-response {
 	.comment__container {
-		@include padding(0, 0, 3, 0);
+		padding: base-px(0, 0, 3, 0);
 	}
 
 	.comment__header {
-		border-top: gu-color(neutral-7) 1px dotted;
+		border-top: color(neutral-7) 1px dotted;
 		width: auto;
 		float: none;
 		position: static;
-		@include padding(0.75, 1, 0.5, 0);
+		padding: base-px(0.75, 1, 0.5, 0);
 		@include mq($to: col2) {
 			margin-left: 52px;
 			padding-right: 64px;
@@ -344,7 +344,7 @@ Comment preview:
 	}
 
 	.comment__body {
-		color: gu-color(neutral-2);
+		color: color(neutral-2);
 		@include mq($to: col2) {
 			margin-left: 52px;
 		}
@@ -359,7 +359,7 @@ Comment preview:
 	}
 
 	.comment__timestamp {
-		@include margin(0, 0, 1, 0);
+		margin: base-px(0, 0, 1, 0);
 		position: absolute;
 		bottom: 0;
 	}
@@ -367,15 +367,15 @@ Comment preview:
 	.comment__responseto {
 		display: inline-block;
 		white-space: nowrap;
-		color: gu-color(neutral-2);
+		color: color(neutral-2);
 
 		&::before {
-			color: gu-color(neutral-3);
+			color: color(neutral-3);
 		}
 	}
 
 	.comment__recommend {
-		@include margin(0.75, 0, 0, 0);
+		margin: base-px(0.75, 0, 0, 0);
 	}
 
 	.comment__options {
@@ -402,7 +402,7 @@ Comment preview:
 
 // Blocked
 .comment.blocked {
-	color: gu-color(neutral-3);
+	color: color(neutral-3);
 
 	.comment__header {
 		opacity: 0.5;
@@ -421,9 +421,9 @@ Comment preview:
 
 // Preview
 .discussion--preview {
-	background-color: gu-color(neutral-1);
+	background-color: color(neutral-1);
 	border: none;
-	@include padding(1);
+	padding: base-px(1);
 
 	.comment {
 		position: relative;
@@ -431,7 +431,7 @@ Comment preview:
 
 	.comment__body {
 		color: #fff;
-		background-color: gu-color(neutral-1);
+		background-color: color(neutral-1);
 		border-top: none;
 		height: 100px;
 		overflow: hidden;
@@ -439,7 +439,7 @@ Comment preview:
 
 		&::after {
 			content: " ";
-			background-image: linear-gradient(to bottom, rgba(gu-color(neutral-1), 0) 66%, gu-color(neutral-1) 100%);
+			background-image: linear-gradient(to bottom, rgba(color(neutral-1), 0) 66%, color(neutral-1) 100%);
 			display: block;
 			position: absolute;
 			top: 0;
@@ -455,6 +455,6 @@ Comment preview:
 	}
 
 	.comment__username {
-		color: gu-color(tone-news-accent);
+		color: color(tone-news-accent);
 	}
 }

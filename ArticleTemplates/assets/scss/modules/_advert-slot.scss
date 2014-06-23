@@ -34,10 +34,10 @@ MPU
 */
 
 .advert-slot {
-	color: gu-color(neutral-2);
+	color: color(neutral-2);
 	font-family: $agate-sans;
 	@include meta();
-	background: rgba(gu-color(neutral-6), 0.07);
+	background: rgba(color(neutral-6), 0.07);
 	display: none;
 	overflow: auto;
 
@@ -51,7 +51,7 @@ MPU
 	}
 
 	.advert-slot__wrapper {
-		background-color: gu-color(neutral-7);
+		background-color: color(neutral-7);
 		position: relative;
 		overflow: hidden;
 	}
@@ -64,11 +64,11 @@ MPU
 
 // Banner-size advert
 .advert-slot--banner {
-	@include padding(0, 0, 1, 0);
+	padding: base-px(0, 0, 1, 0);
 	width: 100%;
 
 	.advert-slot__label {
-		@include padding(0.5, 0);
+		padding: base-px(0.5, 0);
 	}
 
 	.advert-slot__wrapper {
@@ -80,11 +80,11 @@ MPU
 
 // MPU-size advert
 .advert-slot--mpu {
-	border-top: 1px dotted gu-color(neutral-7);
+	border-top: 1px dotted color(neutral-7);
 	width: 300px;
 
 	.advert-slot__label {
-		@include padding(0.5, 0, 2, 0.5);
+		padding: base-px(0.5, 0, 2, 0.5);
 	}
 
 	.advert-slot__wrapper {
