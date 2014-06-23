@@ -1,0 +1,86 @@
+/*doc
+---
+title: Colours
+name: colour
+category: Base
+---
+A comprehensive collection of bespoke icons based on the design of Guardian Eygptian.
+
+```html_example
+<div class="c--neutral-1 clear"></div>
+<div class="c--neutral-2"></div>
+<div class="c--neutral-3"></div>
+<div class="c--neutral-6"></div>
+<div class="c--neutral-7"></div>
+<div class="c--neutral-8"></div>
+
+<div class="c--tone-news clear"></div>
+<div class="c--tone-news-accent"></div>
+
+<div class="c--tone-live"></div>
+<div class="c--tone-live-accent"></div>
+
+<div class="c--tone-media"></div>
+<div class="c--tone-media-accent"></div>
+
+<div class="c--tone-feature1"></div>
+<div class="c--tone-feature1-accent"></div>
+
+<div class="c--tone-feature2"></div>
+<div class="c--tone-feature2-accent"></div>
+
+<div class="c--tone-feature3"></div>
+<div class="c--tone-feature3-accent"></div>
+
+<div class="c--tone-comment-text"></div>
+<div class="c--tone-comment-bg"></div>
+<div class="c--tone-comment"></div>
+<div class="c--tone-comment-accent"></div>
+
+<div class="c--witness clear"></div>
+<div class="c--witness-bg"></div>
+```
+*/
+
+$gu-colours: (
+	// Neutral shades
+	neutral-1:				#333333,
+	neutral-2:				#666666,
+	neutral-3:				#999999,
+	neutral-6:				#eaeaea,
+	neutral-7:				#dcdad5,
+	neutral-8:				#f6f6f6,
+
+	// Tonal colours
+	tone-news:				#005689,
+	tone-news-accent:		#4bc6df,
+
+	tone-live:				#b51800,
+	tone-live-accent:		#cc2b12,
+
+	tone-media:				#ffbb00,
+	tone-media-accent:		#ffd35c,
+
+	tone-feature1:			#951c55,
+	tone-feature1-accent:	#e02B7f,
+
+	tone-feature2:			#4e0375,
+	tone-feature2-accent: 	#8006c2,
+
+	tone-feature3:			#7d0068,
+	tone-feature3-accent:	#c900a8,
+
+	tone-comment:			#e6711b,
+	tone-comment-accent:	#f39f33,
+	tone-comment-text:		#2d2a26,
+	tone-comment-bg:		#eeebe8,
+
+	// Witness
+	witness:				#213583,
+	witness-bg:				#3e454c,
+);
+
+// Colour palette
+@function gu-color($name, $palette: $gu-colours) {
+	@return map-get($gu-colours, $name);
+}

@@ -1,61 +1,61 @@
 .tone--media {
 	a {
-		color: darken($media, 5%);
+		color: darken(gu-color(tone-media), 5%);
 		&:active {
-			color: $media-accent;
+			color: gu-color(tone-media-accent);
 		}
 	}
 
 	.touchpoint--primary {
 		.touchpoint__button {
-			background-color: $media;
+			background-color: gu-color(tone-media);
 		}
 		&:active .touchpoint__button {
-			background-color: $media-accent;
+			background-color: gu-color(tone-media-accent);
 		}
 	}
 
 	// Template specific styles
 	.article--audio,
 	.article--visual {
-		border-top-color: $media;
+		border-top-color: gu-color(tone-media);
 
 		.prose p {
-			@include text-underline(darken($media, 5%), $white, $media-accent);
+			@include text-underline(darken(gu-color(tone-media), 5%), #fff, gu-color(tone-media-accent));
 		}
 		.prose table,
 		.table {
-			border-top-color: $media;
+			border-top-color: gu-color(tone-media);
 		}
 
 		.audio-player {
-			background-color: darken($media-bg, 10%);
+			background-color: darken(gu-color(neutral-1), 10%);
 		}
 
 		.article__header,
 		.tags {
-			background-color: $media-bg;
+			background-color: gu-color(neutral-1);
 		}
 
 		.article__header {
 			.section {
-				color: $media;
+				color: gu-color(tone-media);
 			}
 
 			.headline,
 			.standfirst,
 			.byline {
-				color: $white;
+				color: #fff;
 			}
 		}
 
 		.meta {
 			margin-top: -1px;
-			border-top: 1px dotted $standfirst;
+			border-top: 1px dotted gu-color(neutral-2);
 		}
 
 		.meta__comments {
-			border-left: 1px dotted $standfirst;
+			border-left: 1px dotted gu-color(neutral-2);
 		}
 	}
 }

@@ -171,7 +171,7 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 	hr {
 		border: 0;
 		height: 1px;
-		background: $shadow;
+		background: gu-color(neutral-7);
 	}
 
 	p {
@@ -179,7 +179,7 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 	}
 
 	p, li {
-		@include text-underline($news, $white, $news-accent);
+		@include text-underline(gu-color(tone-news), #fff, gu-color(tone-news-accent));
 	}
 
 	ul,
@@ -216,11 +216,11 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 	}
 
 	blockquote {
-		color: $standfirst;
+		color: gu-color(neutral-2);
 		font-style: italic;
 		@include margin(2);
 		&::before {
-			color: $meta;
+			color: gu-color(neutral-3);
 			font-family: $icon;
 			font-size: 4rem; // 40px
 			font-style: normal;
@@ -245,7 +245,7 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 			}
 
 			p {
-				color: $standfirst;
+				color: gu-color(neutral-2);
 				font-size: $meta-size-2;
 				line-height: $meta-lead-2;
 				@include margin(0.5, 0);
@@ -302,7 +302,7 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 	font-family: $agate-sans;
 	@include meta();
 	@include margin(1, 0);
-	border-top: 2px solid $news-accent;
+	border-top: 2px solid gu-color(tone-news-accent);
 
 	td, th {
 		text-align: left;
@@ -314,7 +314,7 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 	}
 
 	td {
-		border-top: 1px solid $background;
+		border-top: 1px solid gu-color(neutral-8);
 		@include padding(0.25, 1, 1, 0);
 	}
 }

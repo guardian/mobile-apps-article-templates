@@ -25,7 +25,7 @@ Play a piece of audio, i.e. a podcast.
 */
 
 .audio-player {
-	background-color: $media-bg;
+	background-color: gu-color(neutral-1);
 	@include padding(0.75);
 	display: table;
 	width: 100%;
@@ -35,10 +35,10 @@ Play a piece of audio, i.e. a podcast.
 	@include margin(0, 1, 0, 0);
 
 	&.touchpoint--primary .touchpoint__button {
-		color: $media-bg;
-		background-color: $media;
+		color: gu-color(neutral-1);
+		background-color: gu-color(tone-media);
 		&:active {
-			background-color: $media-accent;
+			background-color: gu-color(tone-media-accent);
 		}
 	}
 }
@@ -65,7 +65,7 @@ Play a piece of audio, i.e. a podcast.
 
 .audio-player__slider__played,
 .audio-player__slider__remaining {
-	color: $white;
+	color: #fff;
 	@include meta();
 	font-family: $agate-sans;
 	font-weight: normal;
@@ -82,7 +82,7 @@ Play a piece of audio, i.e. a podcast.
 
 .audio-player__slider__track {
 	text-align: center;
-	background-color: $meta;
+	background-color: gu-color(neutral-3);
 	height: 2px;
 	width: 100%;
 	position: absolute;
@@ -92,7 +92,7 @@ Play a piece of audio, i.e. a podcast.
 }
 
 .audio-player__slider__knob {
-	background-color: $media-accent;
+	background-color: gu-color(tone-media-accent);
 	margin-top: 15px;
 	border-radius: 50%;
 	padding: 0;

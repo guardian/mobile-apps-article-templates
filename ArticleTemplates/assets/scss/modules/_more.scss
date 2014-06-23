@@ -14,7 +14,7 @@ Display a link to view more.
 */
 
 .more {
-	color: $news;
+	color: gu-color(tone-news);
 	font-family: $agate-sans;
 	font-weight: bold;
 	@include body();
@@ -28,7 +28,7 @@ Display a link to view more.
 
 // View more comments
 .more--comments {
-	border-top: 1px dotted $shadow;
+	border-top: 1px dotted gu-color(neutral-7);
 	@include mq($to: col2) {
 		margin-left: 52px;
 	}
@@ -42,7 +42,7 @@ Display a link to view more.
 
 // View more live blog updates
 .more--live-blogs {
-	border-bottom: 1px dotted $shadow;
+	border-bottom: 1px dotted gu-color(neutral-7);
 	@include mq($to: col2) {
 		@include margin(0, 1);
 	}

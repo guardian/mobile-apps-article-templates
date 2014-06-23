@@ -61,7 +61,7 @@ Display a match summary. The score is updated during the match.
 */
 
 .match-summary {
-	background-color: $white;
+	background-color: #fff;
 	@include padding(1, 1, 0, 1);
 	position: relative;
 	overflow: hidden;
@@ -71,7 +71,7 @@ Display a match summary. The score is updated during the match.
 		min-height: 150px;
 		&::after {
 			content: " ";
-			background-color: $shadow;
+			background-color: gu-color(neutral-7);
 			display: block;
 			width: 1px;
 			height: 100%;
@@ -224,7 +224,7 @@ Display a match summary. The score is updated during the match.
 
 .match-summary__team--home {
 	@include mq($to: col1) {
-		border-top: 1px dotted $shadow;
+		border-top: 1px dotted gu-color(neutral-7);
 	}
 
 	.match-summary__score {
@@ -240,7 +240,7 @@ Display a match summary. The score is updated during the match.
 
 // Aggregate Scores
 .match-summary__score__agg {
-	color: $meta;
+	color: gu-color(neutral-3);
 	font-size: 50%;
 	line-height: 70%;
 	display: none;
@@ -264,9 +264,9 @@ Display a match summary. The score is updated during the match.
 	font-family: $agate-sans;
 	@include meta();
 	@include padding(0.5, 1);
-	background-color: $white;
+	background-color: #fff;
 	margin: 0 auto;
-	border: 1px solid $shadow;
+	border: 1px solid gu-color(neutral-7);
 	border-bottom: none;
 	width: auto;
 	display: table;

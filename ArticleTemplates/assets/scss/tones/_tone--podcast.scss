@@ -1,24 +1,24 @@
 .tone--podcast {
 	.audio-player__button {
 		&.touchpoint--primary .touchpoint__button {
-			color: $white;
-			background-color: $news;
+			color: #fff;
+			background-color: gu-color(tone-news);
 			&:active {
-				background-color: $news-accent;
+				background-color: gu-color(tone-news-accent);
 			}
 		}
 	}
 
 	.audio-player__slider__knob {
-		background-color: $news-accent;
+		background-color: gu-color(tone-news-accent);
 	}
 
 	.article {
-		border-top-color: $headline;
+		border-top-color: gu-color(neutral-1);
 	}
 
 	.article__header {
-		background-color: $news-accent;
+		background-color: gu-color(tone-news-accent);
 		background-image: -webkit-canvas(circles);
 
 		.section {
@@ -26,20 +26,20 @@
 		}
 
 		.headline {
-			color: $white;
+			color: #fff;
 
 			.headline__accent {
-				color: $headline;
+				color: gu-color(neutral-1);
 				display: block;
 			}
 		}
 
 		.byline {
-			color: $white;
+			color: #fff;
 		}
 
 		.standfirst {
-			color: $headline;
+			color: gu-color(neutral-1);
 			@include mq($to: col2) {
 				font-size: 1.25em;
 				line-height: 1.25em;
@@ -49,14 +49,14 @@
 
 	.meta,
 	.meta__pubdate {
-		color: rgba($white, 0.8);
+		color: rgba(#fff, 0.8);
 	}
 
 	.meta {
-		border-top-color: rgba($news, 0.4);
+		border-top-color: rgba(gu-color(tone-news), 0.4);
 	}
 
 	.meta__comments {
-		border-left-color: rgba($news, 0.4);
+		border-left-color: rgba(gu-color(tone-news), 0.4);
 	}
 }

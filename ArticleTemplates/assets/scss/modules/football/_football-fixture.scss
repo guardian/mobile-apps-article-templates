@@ -41,7 +41,7 @@ Display today's football fixtures; upcoming, in progress and ended.
 */
 
 .football-fixture {
-	color: $headline;
+	color: gu-color(neutral-1);
 	font-family: $agate-sans;
 	@include body();
 	display: table;
@@ -50,7 +50,7 @@ Display today's football fixtures; upcoming, in progress and ended.
 }
 
 .football-fixture__data {
-	border-top: 1px solid $shadow;
+	border-top: 1px solid gu-color(neutral-7);
 	@include padding(0.25, 0.5, 1, 0.5);
 	display: table-cell;
 
@@ -152,7 +152,7 @@ Display today's football fixtures; upcoming, in progress and ended.
 	}
 
 	.football-fixture__data--4 {
-		color: $standfirst;
+		color: gu-color(neutral-2);
 		@include mq($to: col1) {
 			display: none;
 		}
@@ -162,19 +162,19 @@ Display today's football fixtures; upcoming, in progress and ended.
 .football-fixture.competition {
 	.football-fixture__data--1 {
 		font-weight: normal;
-		color: $standfirst;
+		color: gu-color(neutral-2);
 	}
 }
 
 .football-fixture.match {
-	background-color: $white;
+	background-color: #fff;
 
 	.football-fixture__data {
-		border-top-color: $news-accent;
+		border-top-color: gu-color(tone-news-accent);
 	}
 
 	.football-fixture__data--1 {
-		color: $standfirst;
+		color: gu-color(neutral-2);
 		@include padding(0, 0.5, 0, 0.5);
 		@include mq($to: col1) {
 			@include padding(0, 0.5, 0, 1);
@@ -186,7 +186,7 @@ Display today's football fixtures; upcoming, in progress and ended.
 	}
 
 	.football-fixture__data--3 {
-		color: $standfirst;
+		color: gu-color(neutral-2);
 		text-align: center;
 	}
 }
@@ -194,7 +194,7 @@ Display today's football fixtures; upcoming, in progress and ended.
 .football-fixture.match.has-ended {
 	.football-fixture__data--1 {
 		font-weight: bold;
-		color: $headline;
+		color: gu-color(neutral-1);
 	}
 }
 
@@ -202,6 +202,6 @@ Display today's football fixtures; upcoming, in progress and ended.
 	font-weight: bold;
 
 	.football-fixture__data--1 {
-		color: $news-accent;
+		color: gu-color(tone-news-accent);
 	}
 }

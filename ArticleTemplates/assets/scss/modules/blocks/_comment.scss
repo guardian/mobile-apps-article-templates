@@ -231,7 +231,7 @@ Comment preview:
 }
 
 .comment__username {
-	color: $headline;
+	color: gu-color(neutral-1);
 	font-weight: bold;
 	white-space: nowrap;
 }
@@ -242,7 +242,7 @@ Comment preview:
 }
 
 .comment__timestamp {
-	color: $meta;
+	color: gu-color(neutral-3);
 	font-family: $agate-sans;
 	@include meta();
 	display: block;
@@ -269,19 +269,19 @@ Comment preview:
 
 	&:active {
 		.touchpoint__button {
-			color: $white;
-			background-color: $shadow;
+			color: #fff;
+			background-color: gu-color(neutral-7);
 		}
 	}
 
 	&.increase .touchpoint__button {
-		color: $white;
-		background-color: $news-accent;
+		color: #fff;
+		background-color: gu-color(tone-news-accent);
 		border-color: transparent;
 	}
 
 	.touchpoint__label {
-		color: $meta;
+		color: gu-color(neutral-3);
 		font-weight: normal;
 		@include mq($from: col2) {
 			margin-top: 1px;
@@ -293,7 +293,7 @@ Comment preview:
 
 .comment__options {
 	@include meta();
-	background-color: $white;
+	background-color: #fff;
 	@include padding(0.75, 0, 0.75, 0);
 	overflow: hidden;
 	display: none;
@@ -326,7 +326,7 @@ Comment preview:
 	}
 
 	.comment__header {
-		border-top: $shadow 1px dotted;
+		border-top: gu-color(neutral-7) 1px dotted;
 		width: auto;
 		float: none;
 		position: static;
@@ -344,7 +344,7 @@ Comment preview:
 	}
 
 	.comment__body {
-		color: $standfirst;
+		color: gu-color(neutral-2);
 		@include mq($to: col2) {
 			margin-left: 52px;
 		}
@@ -367,10 +367,10 @@ Comment preview:
 	.comment__responseto {
 		display: inline-block;
 		white-space: nowrap;
-		color: $standfirst;
+		color: gu-color(neutral-2);
 
 		&::before {
-			color: $meta;
+			color: gu-color(neutral-3);
 		}
 	}
 
@@ -402,7 +402,7 @@ Comment preview:
 
 // Blocked
 .comment.blocked {
-	color: $meta;
+	color: gu-color(neutral-3);
 
 	.comment__header {
 		opacity: 0.5;
@@ -421,7 +421,7 @@ Comment preview:
 
 // Preview
 .discussion--preview {
-	background-color: $headline;
+	background-color: gu-color(neutral-1);
 	border: none;
 	@include padding(1);
 
@@ -430,8 +430,8 @@ Comment preview:
 	}
 
 	.comment__body {
-		color: $white;
-		background-color: $headline;
+		color: #fff;
+		background-color: gu-color(neutral-1);
 		border-top: none;
 		height: 100px;
 		overflow: hidden;
@@ -439,7 +439,7 @@ Comment preview:
 
 		&::after {
 			content: " ";
-			background-image: linear-gradient(to bottom, rgba($headline, 0) 66%, $headline 100%);
+			background-image: linear-gradient(to bottom, rgba(gu-color(neutral-1), 0) 66%, gu-color(neutral-1) 100%);
 			display: block;
 			position: absolute;
 			top: 0;
@@ -455,6 +455,6 @@ Comment preview:
 	}
 
 	.comment__username {
-		color: $news-accent;
+		color: gu-color(tone-news-accent);
 	}
 }

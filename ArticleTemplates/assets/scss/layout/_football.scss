@@ -1,12 +1,12 @@
 .football {
 	@include mq($from: col1) {
-		border-top: 4px solid $news-accent;
+		border-top: 4px solid gu-color(tone-news-accent);
 	}
 
 	.tabs {
 		[data-href=".football__tab--liveblog"].selected {
-			color: $live;
-			border-top-color: $live-accent;
+			color: gu-color(tone-live);
+			border-top-color: gu-color(tone-live-accent);;
 		}
 	}
 }
@@ -81,14 +81,14 @@
 }
 
 .football__stats {
-	border-top: 1px dotted $shadow;
+	border-top: 1px dotted gu-color(neutral-7);
 	@include padding(1);
 	overflow-y: auto;
 	position: relative;
 }
 
 .football__today {
-	border-top: 1px dotted $shadow;
+	border-top: 1px dotted gu-color(neutral-7);
 	@include padding(1);
 	@include mq($from: col1) {
 		display: table;

@@ -51,7 +51,7 @@ Provide a summary of events:
 
 [class*="block--live-"] {
 	.block__time {
-		color: $standfirst;
+		color: gu-color(neutral-2);
 		font-family: $agate-sans;
 		@include padding(0, 0, 1, 0);
 		margin-top: -5px; // Offset for space above in our fonts to align text to top of block rule
@@ -127,23 +127,23 @@ Provide a summary of events:
 	}
 
 	.block__updated {
-		color: $meta;
+		color: gu-color(neutral-3);
 		font-family: $agate-sans;
 		@include meta();
 	}
 }
 
 .block--live-key-event {
-	border-top: 2px solid $live-accent;
+	border-top: 2px solid gu-color(tone-live-accent);;
 
 	.block__title {
-		color: $live;
+		color: gu-color(tone-live);
 	}
 }
 
 .block--live-summary {
 	background-color: transparent;
-	border: 1px dotted $shadow;
+	border: 1px dotted gu-color(neutral-7);
 
 	.block__time {
 		font-weight: bold;

@@ -1,42 +1,42 @@
 .tone--liveBlog.is-live {
 	a.touchpoint, .more--live-blogs, .tags a {
-		color: $live;
+		color: gu-color(tone-live);
 		&:active {
-			color: $live-accent;
+			color: gu-color(tone-live-accent);;
 		}
 	}
 
 	#comments .touchpoint--primary .touchpoint__button {
-		background-color: $live;
+		background-color: gu-color(tone-live);
 	}
 	#comments .touchpoint--primary:active .touchpoint__button {
-		background-color: $live-accent;
+		background-color: gu-color(tone-live-accent);;
 	}
 
 	// Template specific styles
 	.article--liveblog {
-		border-top-color: $live-accent;
+		border-top-color: gu-color(tone-live-accent);;
 
 		.prose table,
 		.table {
-			border-top-color: $live;
+			border-top-color: gu-color(tone-live);
 		}
 
 		.article__header {
-			background-color: $live;
-			color: $white;
+			background-color: gu-color(tone-live);
+			color: #fff;
 
 			a {
-				color: $white;
+				color: #fff;
 				&:active {
-					opacity: rgba($white, 0.8);
+					opacity: rgba(#fff, 0.8);
 				}
 			}
 
 			.bullet,
 			ul > li {
 				&::before {
-					color: rgba($white, 0.8);
+					color: rgba(#fff, 0.8);
 				}
 			}
 
@@ -44,7 +44,7 @@
 			.byline,
 			.alerts .icon,
 			.section {
-				color: $white;
+				color: #fff;
 			}
 
 			.section {
@@ -77,18 +77,18 @@
 			}
 
 			.standfirst {
-				color: rgba($white, 0.8);
+				color: rgba(#fff, 0.8);
 
 				a {
-					color: $white;
+					color: #fff;
 				}
 			}
 		}
 
 		.meta {
-			background-color: $live-accent;
+			background-color: gu-color(tone-live-accent);;
 			border: 0;
-			border-left: 1px dotted rgba($white, 0.2);
+			border-left: 1px dotted rgba(#fff, 0.2);
 			margin: 0;
 			@include mq(col2, col3) {
 				padding-left: cols($base-3, 4);
@@ -107,11 +107,11 @@
 		}
 
 		.meta__pubdate {
-			color: rgba($white, 0.8);
+			color: rgba(#fff, 0.8);
 		}
 
 		.meta__comments {
-			border-left-color: rgba($white, 0.4);
+			border-left-color: rgba(#fff, 0.4);
 		}
 
 		.tags {

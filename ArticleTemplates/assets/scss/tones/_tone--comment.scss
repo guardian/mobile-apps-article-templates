@@ -1,58 +1,58 @@
 .tone--comment {
 	a {
-		color: $comment;
+		color: gu-color(tone-comment);
 		&:active {
-			color: $comment-accent-light;
+			color: gu-color(tone-comment-accent);
 		}
 	}
 
 	.touchpoint--primary {
 		.touchpoint__button {
-			background-color: $comment;
+			background-color: gu-color(tone-comment);
 		}
 		&:active .touchpoint__button {
-			background-color: $comment-accent-light;
+			background-color: gu-color(tone-comment-accent);
 		}
 	}
 
 	// Template specific styles
 	.article--comment {
-		background-color: $comment-bg;
-		border-top-color: $comment-accent-light;
+		background-color: gu-color(tone-comment-bg);
+		border-top-color: gu-color(tone-comment-accent);
 
 		.prose p {
-			@include text-underline($comment, $comment-bg, $comment-accent-light);
+			@include text-underline(gu-color(tone-comment), gu-color(tone-comment-bg), gu-color(tone-comment-accent));
 		}
 		.prose table,
 		.table {
-			border-top-color: $comment;
+			border-top-color: gu-color(tone-comment);
 		}
 
 		.article__header {
 			.section,
 			.byline__author {
-				color: $comment;
+				color: gu-color(tone-comment);
 			}
 		}
 
 		.meta {
-			background-color: $comment-accent-light;
+			background-color: gu-color(tone-comment-accent);
 			margin: 0;
 			border: 0;
 
 			a {
-				color: $white;
+				color: #fff;
 				&:active {
-					color: rgba($white, 0.8);
+					color: rgba(#fff, 0.8);
 				}
 			}
 
 			.meta__pubdate {
-				color: $white;
+				color: #fff;
 			}
 
 			.meta__comments {
-				border-left-color: rgba($white, 0.4);
+				border-left-color: rgba(#fff, 0.4);
 			}
 		}
 	}

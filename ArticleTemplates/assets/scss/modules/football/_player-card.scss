@@ -37,9 +37,9 @@ $player-card-avatar: (
 );
 
 .player-card {
-	background: $background;
+	background: gu-color(neutral-8);
 	@include margin(1, 0);
-	border-top: 2px solid $news;
+	border-top: 2px solid gu-color(tone-news);
 	@include padding(1);
 
 	// When shown within body copy, float right (at larger breakpoints)
@@ -83,7 +83,7 @@ $player-card-avatar: (
 }
 
 .player-card__position {
-	color: $news;
+	color: gu-color(tone-news);
 	font-family: $agate-sans;
 	@include meta();
 }
@@ -111,6 +111,6 @@ $player-card-avatar: (
 	font-size: $meta-size-1;
 	line-height: $meta-lead-1;
 	text-align: right;
-	border-top: 1px solid $shadow;
+	border-top: 1px solid gu-color(neutral-7);
 	padding-left: 85%;
 }

@@ -44,7 +44,7 @@ Display an embedded element. Element embeds are typically shown as figures, and 
 
 // Maintain ratio of embedded media item
 .element__inner {
-	background-color: $shadow;
+	background-color: gu-color(neutral-7);
 	padding-bottom: 60%;
 	position: relative;
 	overflow: hidden;
@@ -104,23 +104,23 @@ Display an embedded element. Element embeds are typically shown as figures, and 
 		z-index: 2;
 
 		.touchpoint__button {
-			color: $headline;
-			background-color: $media;
+			color: gu-color(neutral-1);
+			background-color: gu-color(tone-media);
 			&:active {
-				color: $media;
-				background-color: $headline;
+				color: gu-color(tone-media);
+				background-color: gu-color(neutral-1);
 			}
 		}
 
 		.touchpoint__label {
-			color: $media;
+			color: gu-color(tone-media);
 			text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
 		}
 	}
 	&:active {
 		.touchpoint__button {
-			color: $media;
-			background-color: $headline;
+			color: gu-color(tone-media);
+			background-color: gu-color(neutral-1);
 		}
 	}
 
@@ -137,13 +137,13 @@ Display an embedded element. Element embeds are typically shown as figures, and 
 	.element-video {
 		overflow: hidden;
 		position: relative;
-		background-color: $shadow;
+		background-color: gu-color(neutral-7);
 
 		&::before {
 			content: "";
 			width: 100%;
 			height: 100%;
-			background-color: $shadow;
+			background-color: gu-color(neutral-7);
 			position: absolute;
 			z-index: 20;
 		}
@@ -156,7 +156,7 @@ Display an embedded element. Element embeds are typically shown as figures, and 
 		}
 
 		figcaption {
-			background-color: $white;
+			background-color: #fff;
 		}
 	}
 }
