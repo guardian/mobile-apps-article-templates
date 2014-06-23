@@ -18,10 +18,10 @@ Display a post that forms part of a liveblog.
 	border-bottom: 2px solid $shadow;
 	background-color: $white;
 	overflow: hidden;
-	@include margin(1, 0);
-	@include padding(1);
+	margin: base-px(1, 0);
+	padding: base-px(1);
 	@include mq($to: col1) {
-		@include margin(1);
+		margin: base-px(1);
 	}
 
 	.prose {
@@ -36,6 +36,6 @@ Display a post that forms part of a liveblog.
 
 .android {
 	.block {
-		@include margin(1);
+		margin: base-px(1);
 	}
 }

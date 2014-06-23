@@ -51,12 +51,12 @@ Display today's football fixtures; upcoming, in progress and ended.
 
 .football-fixture__data {
 	border-top: 1px solid $shadow;
-	@include padding(0.25, 0.5, 1, 0.5);
+	padding: base-px(0.25, 0.5, 1, 0.5);
 	display: table-cell;
 
 	&.football-fixture__data--1 {
 		@include mq($to: col1) {
-			@include padding(0.25,0,1,1);
+			padding: base-px(0.25,0,1,1);
 		}
 	}
 
@@ -175,9 +175,9 @@ Display today's football fixtures; upcoming, in progress and ended.
 
 	.football-fixture__data--1 {
 		color: $standfirst;
-		@include padding(0, 0.5, 0, 0.5);
+		padding: base-px(0, 0.5, 0, 0.5);
 		@include mq($to: col1) {
-			@include padding(0, 0.5, 0, 1);
+			padding: base-px(0, 0.5, 0, 1);
 		}
 	}
 

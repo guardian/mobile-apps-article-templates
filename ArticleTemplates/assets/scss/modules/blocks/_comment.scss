@@ -183,7 +183,7 @@ Comment preview:
 	word-break: break-all;
 	word-wrap: break-word;
 	@include meta();
-	@include padding(0.25, 1, 0.75, 0);
+	padding: base-px(0.25, 1, 0.75, 0);
 	overflow: auto;
 	@include mq(col2, col3) {
 		width: cols($base-3, 4, 1);
@@ -203,7 +203,7 @@ Comment preview:
 .comment__body {
 	word-break: break-word;
 	word-wrap: break-word;
-	@include margin(0, 0, 1, 0);
+	margin: base-px(0, 0, 1, 0);
 	@include mq(col2, col3) {
 		margin-right: cols($base-3, 1);
 		margin-left: cols($base-3, 4, 1);
@@ -294,7 +294,7 @@ Comment preview:
 .comment__options {
 	@include meta();
 	background-color: $white;
-	@include padding(0.75, 0, 0.75, 0);
+	padding: base-px(0.75, 0, 0.75, 0);
 	overflow: hidden;
 	display: none;
 	@include mq(col2, col3) {
@@ -322,7 +322,7 @@ Comment preview:
 // Response
 .comment.is-response {
 	.comment__container {
-		@include padding(0, 0, 3, 0);
+		padding: base-px(0, 0, 3, 0);
 	}
 
 	.comment__header {
@@ -330,7 +330,7 @@ Comment preview:
 		width: auto;
 		float: none;
 		position: static;
-		@include padding(0.75, 1, 0.5, 0);
+		padding: base-px(0.75, 1, 0.5, 0);
 		@include mq($to: col2) {
 			margin-left: 52px;
 			padding-right: 64px;
@@ -359,7 +359,7 @@ Comment preview:
 	}
 
 	.comment__timestamp {
-		@include margin(0, 0, 1, 0);
+		margin: base-px(0, 0, 1, 0);
 		position: absolute;
 		bottom: 0;
 	}
@@ -375,7 +375,7 @@ Comment preview:
 	}
 
 	.comment__recommend {
-		@include margin(0.75, 0, 0, 0);
+		margin: base-px(0.75, 0, 0, 0);
 	}
 
 	.comment__options {
@@ -423,7 +423,7 @@ Comment preview:
 .discussion--preview {
 	background-color: $headline;
 	border: none;
-	@include padding(1);
+	padding: base-px(1);
 
 	.comment {
 		position: relative;

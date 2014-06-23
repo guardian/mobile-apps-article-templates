@@ -95,7 +95,7 @@ Display a standard article card.
 
 	.card__header,
 	.card__object {
-		@include padding(0.25, 0.5, 0, 0.5);
+		padding: base-px(0.25, 0.5, 0, 0.5);
 		@include mq($from: col1) {
 			height: 50%;
 			overflow: hidden;
@@ -194,7 +194,7 @@ Display a standard article card.
 		position: absolute;
 		bottom: 0;
 		z-index: 2;
-		@include padding(0.5);
+		padding: base-px(0.5);
 	}
 
 	.card__image {
@@ -212,7 +212,7 @@ Display a standard article card.
 	.card__meta {
 		width: cols($base-1, 1);
 		height: 24px;
-		@include padding(0, 0, 0, 0.5);
+		padding: base-px(0, 0, 0, 0.5);
 		border-left: 1px solid $shadow;
 		display: block;
 		float: left;
@@ -226,7 +226,7 @@ Display a standard article card.
 	}
 
 	.card__timestamp {
-		@include padding(0, 5, 0, 0.5);
+		padding: base-px(0, 5, 0, 0.5);
 	}
 }
 

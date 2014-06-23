@@ -21,16 +21,16 @@ Navigate between different sections of a page.
 	color: $standfirst;
 	font-family: $agate-sans;
 	@include meta;
-	@include margin(1, 0);
+	margin: base-px(1, 0);
 	clear: left;
 	@include mq($to: col1) {
-		@include margin(1);
+		margin: base-px(1);
 	}
 
 	.inline-list__item {
 		vertical-align: top;
 		border-top: 2px solid $shadow;
-		@include padding(0.5, 1, 2, 0.25);
+		padding: base-px(0.5, 1, 2, 0.25);
 		width: 33.3%;
 	}
 
@@ -42,6 +42,6 @@ Navigate between different sections of a page.
 	}
 
 	.android & {
-		@include margin(1);
+		margin: base-px(1);
 	}
 }

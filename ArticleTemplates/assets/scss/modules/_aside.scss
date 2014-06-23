@@ -21,14 +21,14 @@ Positions a piece of text or HTML component to the right-hand side of any runnin
 	clear: right;
 
 	@include mq($to: col1) {
-		@include margin(2, 0);
+		margin: base-px(2, 0);
 		border-bottom: 1px dotted $shadow;
-		@include padding(1, 0);
+		padding: base-px(1, 0);
 		width: 100%;
 	}
 	@include mq($from: col1) {
-		@include margin(0, 0, 2, 2);
-		@include padding(1, 1, 1, 0);
+		margin: base-px(0, 0, 2, 2);
+		padding: base-px(1, 1, 1, 0);
 	}
 	@include mq(col1, col2) {
 		width: cols($base-2, 3);

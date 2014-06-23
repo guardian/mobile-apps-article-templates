@@ -38,14 +38,14 @@ $player-card-avatar: (
 
 .player-card {
 	background: $background;
-	@include margin(1, 0);
+	margin: base-px(1, 0);
 	border-top: 2px solid $news;
-	@include padding(1);
+	padding: base-px(1);
 
 	// When shown within body copy, float right (at larger breakpoints)
 	.article__body & {
 		@include mq($from: col3) {
-			@include margin(1, 0, 1, 1);
+			margin: base-px(1, 0, 1, 1);
 			width: 50%;
 			float: right;
 		}
@@ -68,7 +68,7 @@ $player-card-avatar: (
 }
 
 .player-card__player {
-	@include margin(0, 0, 1, 0);
+	margin: base-px(0, 0, 1, 0);
 	padding-right: map-get($player-card-avatar, default);
 	min-height: map-get($player-card-avatar, default);
 	@include mq($from: col1) {
@@ -95,7 +95,7 @@ $player-card-avatar: (
 
 .player-card__stat-name,
 .player-card__stat-value {
-	@include padding(0.25, 0, 0.5, 0);
+	padding: base-px(0.25, 0, 0.5, 0);
 }
 .player-card__stat-name {
 	font-family: $agate-sans;

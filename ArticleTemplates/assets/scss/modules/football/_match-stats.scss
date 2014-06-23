@@ -96,7 +96,7 @@ Display comparison of possession, goal attempts, corners and fouls that occurred
 		font-family: $egyptian-display;
 		font-weight: 600;
 		@include standfirst();
-		@include margin(0, 0, 1, 0);
+		margin: base-px(0, 0, 1, 0);
 		display: block;
 	}
 }
@@ -104,18 +104,18 @@ Display comparison of possession, goal attempts, corners and fouls that occurred
 .match-stats__caption {
 	color: $headline;
 	@include meta();
-	@include margin(0, 0, 0.25, 0);
+	margin: base-px(0, 0, 0.25, 0);
 }
 
 .match-stats__shots {
-	@include margin(0, 0, 1, 0);
+	margin: base-px(0, 0, 1, 0);
 	overflow: hidden;
 }
 
 .match-stats__shots__off,
 .match-stats__shots__on {
 	@include meta();
-	@include padding(0.25, 0.5);
+	padding: base-px(0.25, 0.5);
 }
 .match-stats__shots__on {
 	width: 75%;

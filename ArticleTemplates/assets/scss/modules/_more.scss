@@ -18,7 +18,7 @@ Display a link to view more.
 	font-family: $agate-sans;
 	font-weight: bold;
 	@include body();
-	@include padding(1, 0, 2, 0);
+	padding: base-px(1, 0, 2, 0);
 	min-height: 44px;
 
 	&::before {
@@ -44,7 +44,7 @@ Display a link to view more.
 .more--live-blogs {
 	border-bottom: 1px dotted $shadow;
 	@include mq($to: col2) {
-		@include margin(0, 1);
+		margin: base-px(0, 1);
 	}
 	@include mq(col2, col3) {
 		padding-left: cols($base-3, 4, 1);

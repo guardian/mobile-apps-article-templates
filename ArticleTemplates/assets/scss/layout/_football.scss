@@ -37,7 +37,7 @@
 	font-family: $egyptian-display;
 	@include body();
 	@include mq($from: col1) {
-		@include padding(0, 0, 0, 5);
+		padding: base-px(0, 0, 0, 5);
 	}
 }
 
@@ -47,25 +47,25 @@
 }
 
 .football__column {
-	@include padding(0, 0, 1, 0);
+	padding: base-px(0, 0, 1, 0);
 	width: 50%;
 	float: left;
 	@include mq($from: col1) {
-		@include padding(0, 0, 1, 5);
+		padding: base-px(0, 0, 1, 5);
 	}
 	@include mq($from: col3) {
-		@include padding(0, 5, 1, 5);
+		padding: base-px(0, 5, 1, 5);
 	}
 }
 
 // Match info page layout
 .football__lineups {
-	@include padding(1);
+	padding: base-px(1);
 	overflow-y: hidden;
 
 	.football__column {
 		@include mq($from: col1) {
-			@include padding(0, 0, 1, 0);
+			padding: base-px(0, 0, 1, 0);
 		}
 	}
 }
@@ -82,14 +82,14 @@
 
 .football__stats {
 	border-top: 1px dotted $shadow;
-	@include padding(1);
+	padding: base-px(1);
 	overflow-y: auto;
 	position: relative;
 }
 
 .football__today {
 	border-top: 1px dotted $shadow;
-	@include padding(1);
+	padding: base-px(1);
 	@include mq($from: col1) {
 		display: table;
 		width: 100%;
@@ -98,7 +98,7 @@
 
 .football__today__fixtures {
 	@include mq($from: col1) {
-		@include padding(0, 0, 1, 0);
+		padding: base-px(0, 0, 1, 0);
 	}
 }
 
