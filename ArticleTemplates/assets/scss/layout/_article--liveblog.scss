@@ -12,7 +12,7 @@
 
 		.section__live {
 			color: $white;
-			@include padding(0.5, 1, 0.5, 1);
+			padding: base-px(0.5, 1, 0.5, 1);
 			display: none; // Default
 			position: absolute;
 			left: 0;
@@ -20,7 +20,7 @@
 		}
 
 		.alerts {
-			@include padding(0.5, 1);
+			padding: base-px(0.5, 1);
 		}
 
 		& > .alerts {
@@ -64,7 +64,7 @@
 
 	.article__body--liveblog__pinned {
 		.element {
-			@include margin(1, 0);
+			margin: base-px(1, 0);
 		}
 	}
 
@@ -73,8 +73,8 @@
 		background-color: $white;
 		border-top: 1px solid $meta;
 		border-bottom: 2px solid $shadow;
-		@include margin(1);
-		@include padding(1);
+		margin: base-px(1);
+		padding: base-px(1);
 		width: auto;
 		position: relative;
 		overflow: hidden;
@@ -84,7 +84,7 @@
 		}
 
 		.touchpoint__label {
-			@include margin(0.25, 0);
+			margin: base-px(0.25, 0);
 			padding-left: $base-1;
 			width: 220px;
 			@include mq($from: col2) {
@@ -107,12 +107,12 @@
 .android {
 	.article--liveblog {
 		.aside-witness {
-			@include margin(1);
+			margin: base-px(1);
 		}
 
 		.article__body--liveblog__pinned {
 			figcaption {
-				@include padding(0.5, 1, 2, 1 );
+				padding: base-px(0.5, 1, 2, 1 );
 			}
 		}
 	}
