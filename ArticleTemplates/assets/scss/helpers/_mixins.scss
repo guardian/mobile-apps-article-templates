@@ -115,14 +115,14 @@ $meta-lead-2: 2.2rem;
 // Link Underline Style
 @mixin text-underline($color, $background, $color-accent) {
 	a {
-		background-image: linear-gradient(to bottom, color(neutral-8) 50%, rgba($color, 0.66) 50%);
+		background-image: linear-gradient(to bottom, $background 50%, rgba($color, 0.66) 50%);
 		background-repeat: repeat-x;
 		background-size: 2px 2px;
 		background-position: 0 bottom;
-		text-shadow: 4px 0px color(neutral-8), 3px 0px color(neutral-8), 2px 0px color(neutral-8), 1px 0px color(neutral-8), 0px 0px color(neutral-8), -1px 0px color(neutral-8), -2px 0px color(neutral-8), -3px 0px color(neutral-8), -4px 0px color(neutral-8);
+		text-shadow: 4px 0 $background, 3px 0 $background, 2px 0 $background, 1px 0 $background, 0 0 $background, -1px 0 $background, -2px 0 $background, -3px 0 $background, -4px 0 $background;
 	}
 	a:active {
-		background-image: linear-gradient(to bottom, color(neutral-8) 50%, rgba($color-accent, 0.66) 50%);
+		background-image: linear-gradient(to bottom, $background 50%, rgba($color-accent, 0.66) 50%);
 	}
 }
 
