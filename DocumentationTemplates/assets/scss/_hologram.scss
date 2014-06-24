@@ -1,17 +1,17 @@
 .codeExample {
-	@include margin(0, 0, 4, 0);
-	border: 1px solid fade-out(color(neutral-7), 0.25);
+	margin: base-px(0, 0, 4, 0);
+	border: 1px solid fade-out(color(shade-4), 0.25);
 }
 
 .exampleOutput,
 .codeBlock {
-	@include padding(1);
+	padding: base-px(1);
 
 	&::before {
-		color: color(neutral-2);
+		color: color(shade-2);
 		font-family: $agate-sans;
 		@include meta(0.9);
-		@include padding(0, 0, 1, 0);
+		padding: base-px(0, 0, 1, 0);
 		display: block;
 		position: relative;
 	}
@@ -19,8 +19,8 @@
 
 .exampleOutput {
 	background-image: 
-		linear-gradient(45deg, fade-out(color(neutral-8), 0.25) 25%, transparent 25%, transparent 75%, fade-out(color(neutral-8), 0.25) 75%, fade-out(color(neutral-8), 0.25)),
-		linear-gradient(45deg, fade-out(color(neutral-8), 0.25) 25%, transparent 25%, transparent 75%, fade-out(color(neutral-8), 0.25) 75%, fade-out(color(neutral-8), 0.25));
+		linear-gradient(45deg, fade-out(color(shade-5), 0.25) 25%, transparent 25%, transparent 75%, fade-out(color(shade-5), 0.25) 75%, fade-out(color(shade-5), 0.25)),
+		linear-gradient(45deg, fade-out(color(shade-5), 0.25) 25%, transparent 25%, transparent 75%, fade-out(color(shade-5), 0.25) 75%, fade-out(color(shade-5), 0.25));
 	background-size: 44px 44px;
 	background-position: 0 0, 22px 22px;
 
@@ -39,7 +39,7 @@
 }
 
 .exampleOutput__heading {
-	color: color(neutral-2);
+	color: color(shade-2);
 	font-family: $agate-sans;
 	font-size: 1em;
 	margin-bottom: 0.5em;
@@ -47,8 +47,8 @@
 }
 
 .codeBlock {
-	background-color: fade-out(color(neutral-8), 0.5);
-	box-shadow: inset 0 2px 0 fade-out(color(neutral-7), 0.75);
+	background-color: fade-out(color(shade-5), 0.5);
+	box-shadow: inset 0 2px 0 fade-out(color(shade-4), 0.75);
 
 	&::before {
 		content: "Markup:";

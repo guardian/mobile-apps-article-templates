@@ -1,11 +1,11 @@
 .styleguide__main {
-	@include padding(4.75, 0, 1, 0);
+	padding: base-px(4.75, 0, 1, 0);
 	position: relative;
 }
 
 .styleguide__navigation {
 	background-color: #ececec;
-	border-right: 12px solid color(neutral-8);
+	border-right: 12px solid color(shade-5);
 	width: 14em;
 	position: fixed;
 	top: 0;
@@ -22,7 +22,7 @@
 		border-top: 1px solid color(tone-news-accent);
 
 		a {
-			@include padding(0.25, 1, 2.33333, 0.25);
+			padding: base-px(0.25, 1, 2.33333, 0.25);
 			display: block;
 		}
 	}
@@ -33,7 +33,7 @@
 }
 
 .styleguide__navigation-toggle {
-	background-color: color(neutral-8);
+	background-color: color(shade-5);
 	border-bottom: 1px solid color(tone-news-accent);
 	position: fixed;
 	top: 0;
@@ -82,7 +82,7 @@
 
 .styleguide__article {
 	background-color: #fff;
-	border-bottom: 2px solid color(neutral-7);
+	border-bottom: 2px solid color(shade-4);
 	overflow: hidden;
 
 	.tags {
@@ -96,24 +96,24 @@
 
 .styleguide__article__header {
 	.headline {
-		@include padding(0, 1, 2.5, 1);
+		padding: base-px(0, 1, 2.5, 1);
 	}
 }
 
 .styleguide__article__body {
-	@include padding(1);
+	padding: base-px(1);
 
 	> h1 {
-		color: color(neutral-1);
+		color: color(shade-1);
 		font-family: $egyptian-display;
 		font-size: 1.125em;
 		font-weight: 600;
-		@include margin(0, 0, 0.25, 0);
+		margin: base-px(0, 0, 0.25, 0);
 	}
 
 	> p {
-		color: color(neutral-1);
-		@include margin(0, 0, 1, 0);
+		color: color(shade-1);
+		margin: base-px(0, 0, 1, 0);
 	}
 
 	.highlight pre {
@@ -127,10 +127,10 @@
 }
 
 .styleguide__contentinfo {
-	color: color(neutral-2);
+	color: color(shade-2);
 	font-family: $agate-sans;
 	@include meta();
-	@include padding(1, 1, 2, 1);
+	padding: base-px(1, 1, 2, 1);
 }
 
 // Colour swatches
