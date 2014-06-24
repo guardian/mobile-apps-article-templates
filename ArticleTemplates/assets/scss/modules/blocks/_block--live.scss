@@ -92,49 +92,49 @@ Provide a summary of events:
 		@include mq($from: col3) {
 			width: cols($base-4, 11);
 		}
-
-		.prose {
-			blockquote {
-				margin-right: 0;
-				margin-left: 0;
-			}
-
-			figure {
-				@include mq($from: col2) {
-					width: 100%;
-				}
-
-				&.figure-inline {
-					float: none;
-					clear: both;
-				}
-
-				&:last-child {
-					figcaption {
-						border-bottom: 0;
-					}
-				}
-			}
-
-			figcaption {
-				padding: base-px(.5, 0, 1, 0);
-			}
-
-			// Offsets for space above in our fonts to align text to top of block rule
-			p:first-child {
-				margin-top: -2px;
-			}
-
-			h2:first-child {
-				margin-top: -3px;
-			}
-		}
 	}
 
 	.block__updated {
 		color: color(neutral-3);
 		font-family: $agate-sans;
 		@include meta();
+	}
+
+	.prose {
+		blockquote {
+			margin-right: 0;
+			margin-left: 0;
+		}
+
+		figure {
+			@include mq($from: col2) {
+				width: 100%;
+			}
+
+			&.figure-inline {
+				float: none;
+				clear: both;
+			}
+
+			&:last-child {
+				figcaption {
+					border-bottom: 0;
+				}
+			}
+		}
+
+		figcaption {
+			padding: base-px(.5, 0, 1, 0);
+		}
+
+		// Offsets for space above in our fonts to align text to top of block rule
+		p:first-child {
+			margin-top: -2px;
+		}
+
+		h2:first-child {
+			margin-top: -3px;
+		}
 	}
 }
 
