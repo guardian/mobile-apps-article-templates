@@ -104,7 +104,7 @@ Display comparison of possession, goal attempts, corners and fouls that occurred
 .match-stats__caption {
 	color: color(shade-1);
 	@include meta();
-	margin: base-px(0, 0, 0.25, 0);
+	margin: base-px(0, 0, .25, 0);
 }
 
 .match-stats__shots {
@@ -115,12 +115,13 @@ Display comparison of possession, goal attempts, corners and fouls that occurred
 .match-stats__shots__off,
 .match-stats__shots__on {
 	@include meta();
-	padding: base-px(0.25, 0.5);
+	padding: base-px(.25, .5);
 }
+
 .match-stats__shots__on {
 	width: 75%;
 	border: 2px solid #fff;
-	border-bottom: none;
+	border-bottom: 0;
 }
 
 .match-stats__shots--home,
@@ -130,14 +131,16 @@ Display comparison of possession, goal attempts, corners and fouls that occurred
 	width: 50%;
 	float: left;
 }
+
 .match-stats__shots--home {
 	.match-stats__shots__on {
 		float: right;
-		border-right: none;
+		border-right: 0;
 	}
 }
+
 .match-stats__shots--away {
 	.match-stats__shots__on {
-		border-left: none;
+		border-left: 0;
 	}
 }

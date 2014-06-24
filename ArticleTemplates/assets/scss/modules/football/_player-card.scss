@@ -61,6 +61,7 @@ $player-card-avatar: (
 	width: map-get($player-card-avatar, default);
 	height: map-get($player-card-avatar, default);
 	float: right;
+
 	@include mq($from: col1) {
 		width: map-get($player-card-avatar, large);
 		height: map-get($player-card-avatar, large);
@@ -71,6 +72,7 @@ $player-card-avatar: (
 	margin: base-px(0, 0, 1, 0);
 	padding-right: map-get($player-card-avatar, default);
 	min-height: map-get($player-card-avatar, default);
+
 	@include mq($from: col1) {
 		padding-right: map-get($player-card-avatar, large);
 		min-height: map-get($player-card-avatar, large);
@@ -95,7 +97,7 @@ $player-card-avatar: (
 
 .player-card__stat-name,
 .player-card__stat-value {
-	padding: base-px(0.25, 0, 0.5, 0);
+	padding: base-px(.25, 0, .5, 0);
 }
 
 .player-card__stat-name {

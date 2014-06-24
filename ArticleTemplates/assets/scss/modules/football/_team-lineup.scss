@@ -14,7 +14,7 @@ Display a team line-up including substitutions and bookings.
 			<td class="team-lineup__player__number">21</td>
 			<td class="team-lineup__player__name"><span>
 				<span class="team-lineup__player__forename">Lukasz</span> <span class="team-lineup__player__surname">Fabianski</span>
-				<span class="team-lineup__player__replacement"> ( )</span>
+				<span class="team-lineup__player__replacement"> ()</span>
 			</span></td>
 		</tr>
  		<tr class="team-lineup__player">
@@ -122,19 +122,22 @@ Display a team line-up including substitutions and bookings.
 	.red::after,
 	.yellow::after,
 	.yellow-red::after {
-		content: " ";
+		content: ' ';
 		background-repeat: no-repeat;
-		margin-left: base-px(0.33333);
+		margin-left: base-px(.33333);
 		height: 14px;
 		width: 12px;
 		display: inline-block;
 	}
+
 	.red::after {
 		background-image: url('../img/team-lineup__card--red.svg');
 	}
+
 	.yellow::after {
 		background-image: url('../img/team-lineup__card--yellow.svg');
 	}
+
 	.yellow-red::after {
 		background-image: url('../img/team-lineup__card--yellow-red.svg');
 		width: 26px;
@@ -146,7 +149,7 @@ Display a team line-up including substitutions and bookings.
 	}
 
 	&:last-of-type td { // Subs
-		padding: base-px(2, 0.5, 0, 0);
+		padding: base-px(2, .5, 0, 0);
 	}
 }
 
@@ -155,7 +158,7 @@ Display a team line-up including substitutions and bookings.
 .team-lineup__player__name {
 	text-align: left;
 	vertical-align: top;
-	padding: base-px(0, 0.5, 0.25, 0);
+	padding: base-px(0, .5, .25, 0);
 }
 
 .team-lineup__player__number {
@@ -173,6 +176,7 @@ Display a team line-up including substitutions and bookings.
 
 	.replacement & {
 		display: inline;
+
 		@include mq($to: col1) {
 			display: block;
 		}
