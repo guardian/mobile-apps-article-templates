@@ -1,65 +1,65 @@
 .tone--media {
-	a {
-		color: darken(color(tone-media), 5%);
+    a {
+        color: darken(color(tone-media), 5%);
 
-		&:active {
-			color: color(tone-media-accent);
-		}
-	}
+        &:active {
+            color: color(tone-media-accent);
+        }
+    }
 
-	.touchpoint--primary {
-		.touchpoint__button {
-			background-color: color(tone-media);
-		}
+    .touchpoint--primary {
+        .touchpoint__button {
+            background-color: color(tone-media);
+        }
 
-		&:active .touchpoint__button {
-			background-color: color(tone-media-accent);
-		}
-	}
+        &:active .touchpoint__button {
+            background-color: color(tone-media-accent);
+        }
+    }
 
-	// Template specific styles
-	.article--audio,
-	.article--visual {
-		border-top-color: color(tone-media);
+    // Template specific styles
+    .article--audio,
+    .article--visual {
+        border-top-color: color(tone-media);
 
-		.prose p,
-		.prose li {
-			@include text-underline(darken(color(tone-media), 5%), #fff, color(tone-media-accent));
-		}
+        .prose p,
+        .prose li {
+            @include text-underline(darken(color(tone-media), 5%), #fff, color(tone-media-accent));
+        }
 
-		.prose table,
-		.table {
-			border-top-color: color(tone-media);
-		}
+        .prose table,
+        .table {
+            border-top-color: color(tone-media);
+        }
 
-		.audio-player {
-			background-color: darken(color(shade-1), 10%);
-		}
+        .audio-player {
+            background-color: darken(color(shade-1), 10%);
+        }
 
-		.article__header,
-		.tags {
-			background-color: color(shade-1);
-		}
+        .article__header,
+        .tags {
+            background-color: color(shade-1);
+        }
 
-		.article__header {
-			.section {
-				color: color(tone-media);
-			}
+        .article__header {
+            .section {
+                color: color(tone-media);
+            }
 
-			.headline,
-			.standfirst,
-			.byline {
-				color: #fff;
-			}
-		}
+            .headline,
+            .standfirst,
+            .byline {
+                color: #fff;
+            }
+        }
 
-		.meta {
-			border-top: 1px dotted color(shade-2);
-			margin-top: -1px;
-		}
+        .meta {
+            border-top: 1px dotted color(shade-2);
+            margin-top: -1px;
+        }
 
-		.meta__comments {
-			border-left: 1px dotted color(shade-2);
-		}
-	}
+        .meta__comments {
+            border-left: 1px dotted color(shade-2);
+        }
+    }
 }

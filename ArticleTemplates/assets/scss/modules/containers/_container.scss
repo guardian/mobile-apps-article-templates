@@ -8,105 +8,105 @@ Display a standard article card.
 
 ```html_example
 <div class="container">
-	<div class="container__header">
-		<div class="container__title">
-			<h2 class="container__title__label"><a class="container__title__link" href="#">Comments <span class="container__title__meta">350</span></a></h2>
-		</div>
-		
-		<div class="container__action container__action--comment">
-			<a class="touchpoint touchpoint--primary" href="#">
-				<span class="touchpoint__label">Leave a comment</span>
-				<span class="touchpoint__button icon">&#xe03d;</span>
-			</a>
-		</div>
-	</div>
+    <div class="container__header">
+        <div class="container__title">
+            <h2 class="container__title__label"><a class="container__title__link" href="#">Comments <span class="container__title__meta">350</span></a></h2>
+        </div>
+        
+        <div class="container__action container__action--comment">
+            <a class="touchpoint touchpoint--primary" href="#">
+                <span class="touchpoint__label">Leave a comment</span>
+                <span class="touchpoint__button icon">&#xe03d;</span>
+            </a>
+        </div>
+    </div>
 
-	<div class="container__body">
-		<p>Container content</p>
-	</div>
+    <div class="container__body">
+        <p>Container content</p>
+    </div>
 
-	<div class="container__footer">
-		<div class="container__action container__action--view-more">
-			<a class="touchpoint touchpoint--secondary" href="#">
-				<span class="touchpoint__label">View more</span>
-				<span class="touchpoint__button icon">&#xe00b;</span>
-			</a>
-		</div>
-	</div>
+    <div class="container__footer">
+        <div class="container__action container__action--view-more">
+            <a class="touchpoint touchpoint--secondary" href="#">
+                <span class="touchpoint__label">View more</span>
+                <span class="touchpoint__button icon">&#xe00b;</span>
+            </a>
+        </div>
+    </div>
 </div>
 ```
 */
 
 .container {
-	margin: base-px(0, 0, 2, 0);
-	border-top: 2px solid color(shade-1);
+    margin: base-px(0, 0, 2, 0);
+    border-top: 2px solid color(shade-1);
 }
 
 .container__header,
 .container__footer {
-	overflow: auto;
-	font-family: $agate-sans;
-	font-weight: bold;
-	padding: base-px(.666667, .166667, 2, .166667);
-	display: table;
-	width: 100%;
+    overflow: auto;
+    font-family: $agate-sans;
+    font-weight: bold;
+    padding: base-px(.666667, .166667, 2, .166667);
+    display: table;
+    width: 100%;
 
-	@include mq($to: col1) {
-		padding: $base-1 / 1.5;
-	}
+    @include mq($to: col1) {
+        padding: $base-1 / 1.5;
+    }
 }
 
 .container__title {
-	color: color(shade-1);
-	vertical-align: top;
-	display: table-cell;
+    color: color(shade-1);
+    vertical-align: top;
+    display: table-cell;
 }
 
 .container__title__label {
-	font-family: $egyptian-display;
-	font-weight: 600;
-	@include body(1.5);
-	margin-top: -1px;
+    font-family: $egyptian-display;
+    font-weight: 600;
+    @include body(1.5);
+    margin-top: -1px;
 
-	.container__title__link {
-		color: color(shade-1);
+    .container__title__link {
+        color: color(shade-1);
 
-		&:active {
-			color: color(shade-1);
-		}
-	}
+        &:active {
+            color: color(shade-1);
+        }
+    }
 }
 
 .container__title__meta {
-	color: color(neutral-3);
-	font-weight: 300;
+    color: color(neutral-3);
+    font-weight: 300;
 }
 
 .container__action {
-	vertical-align: middle;
-	@include meta();
-	display: table-cell;
+    vertical-align: middle;
+    @include meta();
+    display: table-cell;
 }
 
 .container__action--comment,
 .container__action--view-more {
-	float: right;
+    float: right;
 }
 
 .container__header {
-	.container__action .touchpoint__label {
-		@include mq($to: col2) {
-			display: none;
-		}
-	}
+    .container__action .touchpoint__label {
+        @include mq($to: col2) {
+            display: none;
+        }
+    }
 }
 
 .container__body {
-	overflow: hidden;
+    overflow: hidden;
 }
 
 .android {
-	.container {
-		margin: base-px(0, 1, 0, 1);
-	}
+    .container {
+        margin: base-px(0, 1, 0, 1);
+    }
 }

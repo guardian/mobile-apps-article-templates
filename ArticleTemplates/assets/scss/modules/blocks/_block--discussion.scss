@@ -8,107 +8,107 @@ Display a discussion thread.
 
 ```html_example
 <div class="block block--discussion-thread">
-	<div class="prose resizable">
-		<p>A dicussion thread contains indvidual comments. See the <a href="#comment">comment markup pattern</a>.</p>
-	</div>
+    <div class="prose resizable">
+        <p>A dicussion thread contains indvidual comments. See the <a href="#comment">comment markup pattern</a>.</p>
+    </div>
 </div>
 
 <div class="comments-0">
-	<div class="block block--discussion-empty">
-		<div class="comment">
-			<div class="prose resizable">
-				<p>Open for comments. <a href="x-gu://leavecomment">Be the first to join the debate</a></p>
-			</div>
-		</div>
-	</div>
+    <div class="block block--discussion-empty">
+        <div class="comment">
+            <div class="prose resizable">
+                <p>Open for comments. <a href="x-gu://leavecomment">Be the first to join the debate</a></p>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="comments-has-failed">
-	<div class="block block--discussion-failed">
-		<div class="comment">
-			<div class="prose resizable">
-				<p>Comments are currently unavailable. Please try again later.</p>
-			</div>
-		</div>
-	</div>
+    <div class="block block--discussion-failed">
+        <div class="comment">
+            <div class="prose resizable">
+                <p>Comments are currently unavailable. Please try again later.</p>
+            </div>
+        </div>
+    </div>
 </div>
 ```
 */
 
 // Discussion thread
 .block--discussion-thread {
-	.comment:nth-of-type(n+5) {
-		display: none;
-	}
+    .comment:nth-of-type(n+5) {
+        display: none;
+    }
 
-	&.expand {
-		.comment {
-			display: block;
-		}
-	}
+    &.expand {
+        .comment {
+            display: block;
+        }
+    }
 
-	&.block--discussion-thread--orphan {
-		.comment {
-			display: block;
-		}
-	}
+    &.block--discussion-thread--orphan {
+        .comment {
+            display: block;
+        }
+    }
 }
 
 // Discussion thread states
 .block--discussion-empty,
 .block--discussion-failed {
-	color: color(shade-2);
-	@include meta();
-	display: none;
+    color: color(shade-2);
+    @include meta();
+    display: none;
 }
 
 .comments-0 {
-	.block--discussion-empty {
-		display: block;
-	}
+    .block--discussion-empty {
+        display: block;
+    }
 }
 
 .comments-0,
 .comments-1,
 .comments-has-failed {
-	.container__action--sort a {
-		color: color(shade-2);
-	}
+    .container__action--sort a {
+        color: color(shade-2);
+    }
 
-	.container__action--view-more {
-		display: none;
-	}
+    .container__action--view-more {
+        display: none;
+    }
 }
 
 // Closed/open states
 .container__action {
-	.comments-closed-label {
-		color: color(shade-2);
-		text-align: right;
-		display: none;
-	}
+    .comments-closed-label {
+        color: color(shade-2);
+        text-align: right;
+        display: none;
+    }
 }
 
 .comments--closed {
-	.container__action {
-		.comments-closed-label {
-			display: block !important;
-		}
+    .container__action {
+        .comments-closed-label {
+            display: block !important;
+        }
 
-		.touchpoint__button,
-		a {
-			display: none !important;
-		}
-	}
+        .touchpoint__button,
+        a {
+            display: none !important;
+        }
+    }
 }
 
 .comments-has-failed {
-	.block--discussion-failed {
-		display: block;
-	}
+    .block--discussion-failed {
+        display: block;
+    }
 
-	.more--comments,
-	.block--discussion-empty {
-		display: none;
-	}
+    .more--comments,
+    .block--discussion-empty {
+        display: none;
+    }
 }

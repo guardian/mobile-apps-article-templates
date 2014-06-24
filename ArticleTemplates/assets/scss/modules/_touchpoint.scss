@@ -10,8 +10,8 @@ Primary
 
 ```html_example
 <a class="touchpoint touchpoint--primary" href="#">
-	<span class="touchpoint__label">View more</span>
-	<span class="touchpoint__button icon">&#xe00b;</span>
+    <span class="touchpoint__label">View more</span>
+    <span class="touchpoint__button icon">&#xe00b;</span>
 </a>
 ```
 
@@ -19,8 +19,8 @@ Secondary
 
 ```html_example
 <a class="touchpoint touchpoint--secondary" href="#">
-	<span class="touchpoint__label">View more</span>
-	<span class="touchpoint__button icon">&#xe00b;</span>
+    <span class="touchpoint__label">View more</span>
+    <span class="touchpoint__button icon">&#xe00b;</span>
 </a>
 ```
 
@@ -28,8 +28,8 @@ Small
 
 ```html_example
 <a class="touchpoint touchpoint--primary touchpoint--small" href="#">
-	<span class="touchpoint__label">View more</span>
-	<span class="touchpoint__button icon">&#xe00b;</span>
+    <span class="touchpoint__label">View more</span>
+    <span class="touchpoint__button icon">&#xe00b;</span>
 </a>
 ```
 
@@ -37,73 +37,73 @@ Secondary and small
 
 ```html_example
 <a class="touchpoint touchpoint--secondary touchpoint--small" href="#">
-	<span class="touchpoint__label">View more</span>
-	<span class="touchpoint__button icon">&#xe00b;</span>
+    <span class="touchpoint__label">View more</span>
+    <span class="touchpoint__button icon">&#xe00b;</span>
 </a>
 ```
 */
 
 .touchpoint {
-	display: block;
-	background-image: none !important;
-	text-shadow: none !important;
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
+    display: block;
+    background-image: none !important;
+    text-shadow: none !important;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
 }
 
 .touchpoint__label {
-	@include meta();
-	font-family: $agate-sans;
-	font-weight: bold;
-	vertical-align: middle;
-	display: inline-block;
-	padding: 0 6px;
+    @include meta();
+    font-family: $agate-sans;
+    font-weight: bold;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 0 6px;
 }
 
 .touchpoint__button {
-	text-align: center;
-	font-size: 24px;
-	line-height: 44px;
-	vertical-align: middle;
-	border-radius: 100%;
-	display: inline-block;
-	height: 44px;
-	width: 44px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 44px;
+    vertical-align: middle;
+    border-radius: 100%;
+    display: inline-block;
+    height: 44px;
+    width: 44px;
 }
 
 // Primary button
 .touchpoint--primary {
-	.touchpoint__button {
-		color: #fff;
-		background-color: color(tone-news);
-	}
+    .touchpoint__button {
+        color: #fff;
+        background-color: color(tone-news);
+    }
 
-	&:active .touchpoint__button {
-		background-color: color(tone-news-accent);
-	}
+    &:active .touchpoint__button {
+        background-color: color(tone-news-accent);
+    }
 }
 
 // Secondary button
 .touchpoint--secondary {
-	.touchpoint__button {
-		color: color(neutral-3);
-		background-color: transparent;
-		border: 1px solid color(neutral-3);
-	}
+    .touchpoint__button {
+        color: color(neutral-3);
+        background-color: transparent;
+        border: 1px solid color(neutral-3);
+    }
 
-	&:active .touchpoint__button {
-		color: #fff;
-		background-color: color(neutral-3);
-		border: 0;
-	}
+    &:active .touchpoint__button {
+        color: #fff;
+        background-color: color(neutral-3);
+        border: 0;
+    }
 }
 
 // Small button
 .touchpoint--small {
-	.touchpoint__button {
-		font-size: 18px;
-		line-height: 28px;
-		height: 28px;
-		width: 28px;
-	}
+    .touchpoint__button {
+        font-size: 18px;
+        line-height: 28px;
+        height: 28px;
+        width: 28px;
+    }
 }

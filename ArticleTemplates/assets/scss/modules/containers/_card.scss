@@ -8,261 +8,261 @@ Display a standard article card.
 
 ```html_example
 <div class="container__body">
-	<div class="card">
-		<div class="card__container">
-			<div class="card__header">
-				<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-			</div>
-			<div class="card__object">
-				<p class="standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
-			</div>
-			<div class="card__footer">
-				<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
-				<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
-			</div>
-		</div>
-	</div>
+    <div class="card">
+        <div class="card__container">
+            <div class="card__header">
+                <h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+            </div>
+            <div class="card__object">
+                <p class="standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
+            </div>
+            <div class="card__footer">
+                <span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+                <span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+            </div>
+        </div>
+    </div>
 
-	<div class="card has-image">
-		<div class="card__container">
-			<div class="card__header">
-				<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-			</div>
-			<div class="card__object">
-				<img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
-			</div>
-			<div class="card__footer">
-				<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
-				<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
-			</div>
-		</div>
-	</div>
+    <div class="card has-image">
+        <div class="card__container">
+            <div class="card__header">
+                <h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+            </div>
+            <div class="card__object">
+                <img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
+            </div>
+            <div class="card__footer">
+                <span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+                <span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+            </div>
+        </div>
+    </div>
 </div>
 ```
 */
 
 .card {
-	background-color: #fff;
-	border-top: 1px solid color(tone-news-accent);
-	border-bottom: 1px solid color(shade-4);
-	position: relative;
+    background-color: #fff;
+    border-top: 1px solid color(tone-news-accent);
+    border-bottom: 1px solid color(shade-4);
+    position: relative;
 
-	@include mq($to: col1) {
-		margin: $base-1 / 1.5 $base-1 / 1.5 0; // TODO: Move to base-px()
-	}
+    @include mq($to: col1) {
+        margin: $base-1 / 1.5 $base-1 / 1.5 0; // TODO: Move to base-px()
+    }
 
-	@include mq($from: col1) {
-		margin-bottom: $base-1;
+    @include mq($from: col1) {
+        margin-bottom: $base-1;
 
-		&::before {
-			content: '';
-			padding-top: 133%;
-			display: block;
-		}
-	}
+        &::before {
+            content: '';
+            padding-top: 133%;
+            display: block;
+        }
+    }
 
-	@include mq(col1, col2) {
-		margin: $base-2 $base-2 0 0;
-		width: cols($base-2, 4);
+    @include mq(col1, col2) {
+        margin: $base-2 $base-2 0 0;
+        width: cols($base-2, 4);
 
-		&:nth-child(2n) {
-			margin-right: 0;
-		}
-	}
+        &:nth-child(2n) {
+            margin-right: 0;
+        }
+    }
 
-	@include mq(col2, col3) {
-		margin: $base-3 $base-3 0 0;
-		width: cols($base-3, 4);
+    @include mq(col2, col3) {
+        margin: $base-3 $base-3 0 0;
+        width: cols($base-3, 4);
 
-		&:nth-child(3n) {
-			margin-right: 0;
-		}
-	}
+        &:nth-child(3n) {
+            margin-right: 0;
+        }
+    }
 
-	@include mq($from: col3) {
-		margin: $base-4 $base-4 0 0;
-		width: cols($base-4, 4);
+    @include mq($from: col3) {
+        margin: $base-4 $base-4 0 0;
+        width: cols($base-4, 4);
 
-		&:nth-child(4n) {
-			margin-right: 0;
-		}
-	}
+        &:nth-child(4n) {
+            margin-right: 0;
+        }
+    }
 
-	.card__container {
-		@include mq($to: col1) {
-			@include flexbox;
-			@include flex-direction(column);
-		}
+    .card__container {
+        @include mq($to: col1) {
+            @include flexbox;
+            @include flex-direction(column);
+        }
 
-		@include mq($from: col1) {
-			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-		}
-	}
+        @include mq($from: col1) {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    }
 
-	.card__header,
-	.card__object {
-		padding: base-px(.25, .5, 0, .5);
+    .card__header,
+    .card__object {
+        padding: base-px(.25, .5, 0, .5);
 
-		@include mq($from: col1) {
-			height: 50%;
-			overflow: hidden;
-		}
-	}
+        @include mq($from: col1) {
+            height: 50%;
+            overflow: hidden;
+        }
+    }
 
-	.card__header {
-		margin-bottom: 1em;
+    .card__header {
+        margin-bottom: 1em;
 
-		@include mq($to: col1) {
-			@include flex(1);
-			@include order(1);
-		}
-	}
+        @include mq($to: col1) {
+            @include flex(1);
+            @include order(1);
+        }
+    }
 
-	.card__object {
-		@include mq($to: col1) {
-			@include flex(1);
-			@include order(2);
-		}
+    .card__object {
+        @include mq($to: col1) {
+            @include flex(1);
+            @include order(2);
+        }
 
-		@include mq($from: col1) {
-			overflow: hidden;
-			width: 100%;
-			position: absolute;
-			bottom: 0;
-		}
-	}
+        @include mq($from: col1) {
+            overflow: hidden;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+        }
+    }
 
-	.card__footer {
-		color: color(neutral-3);
-		font-family: $agate-sans;
-		font-size: $meta-size-1;
-		line-height: 1;
-		margin-top: 1em;
-		overflow: hidden;
+    .card__footer {
+        color: color(neutral-3);
+        font-family: $agate-sans;
+        font-size: $meta-size-1;
+        line-height: 1;
+        margin-top: 1em;
+        overflow: hidden;
 
-		@include mq($to: col1) {
-			@include flex(1);
-			@include order(3);
-		}
+        @include mq($to: col1) {
+            @include flex(1);
+            @include order(3);
+        }
 
-		@include mq($from: col1) {
-			position: absolute;
-			z-index: 1;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			width: 100%;
-		}
-	}
+        @include mq($from: col1) {
+            position: absolute;
+            z-index: 1;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+    }
 
 
-	&.has-image {
-		.card__object {
-			padding: 0;
+    &.has-image {
+        .card__object {
+            padding: 0;
 
-			@include mq($to: col1) {
-				@include flex(1);
-				@include order(3);
-			}
+            @include mq($to: col1) {
+                @include flex(1);
+                @include order(3);
+            }
 
-			.card__image {
-				@include mq($from: col1) {
-					height: 100%;
-					width: auto;
-					margin-bottom: -1px;
-				}
-			}
-		}
+            .card__image {
+                @include mq($from: col1) {
+                    height: 100%;
+                    width: auto;
+                    margin-bottom: -1px;
+                }
+            }
+        }
 
-		.card__footer {
-			bottom: 50%;
+        .card__footer {
+            bottom: 50%;
 
-			@include mq($to: col1) {
-				@include flex(1);
-				@include order(2);
-			}
-		}
-	}
+            @include mq($to: col1) {
+                @include flex(1);
+                @include order(2);
+            }
+        }
+    }
 
-	.card__title,
-	.card__byline,
-	.card__rating {
-		font-family: $egyptian-display;
-		font-weight: 200;
-		font-size: 2.2rem;
-		line-height: 2.6rem;
-		text-rendering: optimizeLegibility;
-	}
+    .card__title,
+    .card__byline,
+    .card__rating {
+        font-family: $egyptian-display;
+        font-weight: 200;
+        font-size: 2.2rem;
+        line-height: 2.6rem;
+        text-rendering: optimizeLegibility;
+    }
 
-	.review-rating {
-		font-size: 18px;
-		line-height: 28px;
-	}
+    .review-rating {
+        font-size: 18px;
+        line-height: 28px;
+    }
 
-	.standfirst {
-		color: color(shade-2);
-		font-family: $egyptian-text;
-		font-size: 1.4rem;
-		line-height: 1.8rem;
-		text-rendering: optimizeLegibility;
-	}
+    .standfirst {
+        color: color(shade-2);
+        font-family: $egyptian-text;
+        font-size: 1.4rem;
+        line-height: 1.8rem;
+        text-rendering: optimizeLegibility;
+    }
 
-	.touchpoint {
-		position: absolute;
-		bottom: 0;
-		z-index: 2;
-		padding: base-px(.5);
-	}
+    .touchpoint {
+        position: absolute;
+        bottom: 0;
+        z-index: 2;
+        padding: base-px(.5);
+    }
 
-	.card__image {
-		width: 100%;
-		display: block;
-	}
+    .card__image {
+        width: 100%;
+        display: block;
+    }
 
-	.card__cutout {
-		position: absolute;
-		right: 0;
-		bottom: 0;
-		z-index: 0;
-	}
+    .card__cutout {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+    }
 
-	.card__meta {
-		width: cols($base-1, 1);
-		height: 24px;
-		padding: base-px(0, 0, 0, .5);
-		border-left: 1px solid color(shade-4);
-		display: block;
-		float: left;
+    .card__meta {
+        width: cols($base-1, 1);
+        height: 24px;
+        padding: base-px(0, 0, 0, .5);
+        border-left: 1px solid color(shade-4);
+        display: block;
+        float: left;
 
-		&:first-child {
-			border-left: 0 none;
-		}
+        &:first-child {
+            border-left: 0 none;
+        }
 
-		.icon {
-			margin-right: 3px;
-		}
-	}
+        .icon {
+            margin-right: 3px;
+        }
+    }
 
-	.card__timestamp {
-		padding: base-px(0, 5, 0, .5);
-	}
+    .card__timestamp {
+        padding: base-px(0, 5, 0, .5);
+    }
 }
 
 // Container context
 .container__body {
-	@include mq($from: col1) {
-		.card {
-			float: left;
-		}
-	}
+    @include mq($from: col1) {
+        .card {
+            float: left;
+        }
+    }
 
-	@include mq(col2, col3) {
-		.card:nth-of-type(4) {
-			display: none;
-		}
-	}
+    @include mq(col2, col3) {
+        .card:nth-of-type(4) {
+            display: none;
+        }
+    }
 }

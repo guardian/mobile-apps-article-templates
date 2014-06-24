@@ -1,64 +1,64 @@
 .tone--comment {
-	a {
-		color: color(tone-comment);
+    a {
+        color: color(tone-comment);
 
-		&:active {
-			color: color(tone-comment-accent);
-		}
-	}
+        &:active {
+            color: color(tone-comment-accent);
+        }
+    }
 
-	.touchpoint--primary {
-		.touchpoint__button {
-			background-color: color(tone-comment);
-		}
+    .touchpoint--primary {
+        .touchpoint__button {
+            background-color: color(tone-comment);
+        }
 
-		&:active .touchpoint__button {
-			background-color: color(tone-comment-accent);
-		}
-	}
+        &:active .touchpoint__button {
+            background-color: color(tone-comment-accent);
+        }
+    }
 
-	// Template specific styles
-	.article--comment {
-		background-color: color(tone-comment-bg);
-		border-top-color: color(tone-comment-accent);
+    // Template specific styles
+    .article--comment {
+        background-color: color(tone-comment-bg);
+        border-top-color: color(tone-comment-accent);
 
-		.prose p,
-		.prose li {
-			@include text-underline(color(tone-comment), color(tone-comment-bg), color(tone-comment-accent));
-		}
+        .prose p,
+        .prose li {
+            @include text-underline(color(tone-comment), color(tone-comment-bg), color(tone-comment-accent));
+        }
 
-		.prose table,
-		.table {
-			border-top-color: color(tone-comment);
-		}
+        .prose table,
+        .table {
+            border-top-color: color(tone-comment);
+        }
 
-		.article__header {
-			.section,
-			.byline__author {
-				color: color(tone-comment);
-			}
-		}
+        .article__header {
+            .section,
+            .byline__author {
+                color: color(tone-comment);
+            }
+        }
 
-		.meta {
-			border: 0;
-			margin: 0;
-			background-color: color(tone-comment-accent);
+        .meta {
+            border: 0;
+            margin: 0;
+            background-color: color(tone-comment-accent);
 
-			a {
-				color: #fff;
+            a {
+                color: #fff;
 
-				&:active {
-					color: rgba(#fff, .8);
-				}
-			}
+                &:active {
+                    color: rgba(#fff, .8);
+                }
+            }
 
-			.meta__pubdate {
-				color: #fff;
-			}
+            .meta__pubdate {
+                color: #fff;
+            }
 
-			.meta__comments {
-				border-left-color: rgba(#fff, .4);
-			}
-		}
-	}
+            .meta__comments {
+                border-left-color: rgba(#fff, .4);
+            }
+        }
+    }
 }

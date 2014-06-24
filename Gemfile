@@ -5,6 +5,6 @@ group :development do
   gem 'hologram'
   gem 'guard-hologram', :require => false
   gem 'guard-sass', :require => false
-  gem 'scss-lint'
+  gem 'scss-lint', '0.24.0'
   gem 'guard-shell'
 end

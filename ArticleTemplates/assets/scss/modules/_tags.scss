@@ -8,39 +8,39 @@ Display which keywords an article has been tagged with.
 
 ```html_example
 <div class="tags">
-	<ul class="inline-list">
-		<li class="inline-list__item"><a href="#">Guardian</a></li><!--
-	 --><li class="inline-list__item"><a href="#">Mobile</a></li><!--
-	 --><li class="inline-list__item"><a href="#">Applications</a></li>
-	</ul>
+    <ul class="inline-list">
+        <li class="inline-list__item"><a href="#">Guardian</a></li><!--
+     --><li class="inline-list__item"><a href="#">Mobile</a></li><!--
+     --><li class="inline-list__item"><a href="#">Applications</a></li>
+    </ul>
 </div>
 ```
 */
 
 .tags {
-	color: color(neutral-3);
-	font-family: $agate-sans;
-	@include meta();
-	border-top: 1px dotted color(shade-4);
-	padding: base-px(.5, 1, 1, 1);
-	width: 100%;
+    color: color(neutral-3);
+    font-family: $agate-sans;
+    @include meta();
+    border-top: 1px dotted color(shade-4);
+    padding: base-px(.5, 1, 1, 1);
+    width: 100%;
 
-	.inline-list__item {
-		@include mq($to: col1) {
-			margin-bottom: 4px;
-		}
+    .inline-list__item {
+        @include mq($to: col1) {
+            margin-bottom: 4px;
+        }
 
-		&::after {
-			content: '\00B7';
-			margin: 0 4px;
-		}
+        &::after {
+            content: '\00B7';
+            margin: 0 4px;
+        }
 
-		&:first-of-type {
-			font-weight: bold;
-		}
+        &:first-of-type {
+            font-weight: bold;
+        }
 
-		&:last-of-type::after {
-			display: none;
-		}
-	}
+        &:last-of-type::after {
+            display: none;
+        }
+    }
 }

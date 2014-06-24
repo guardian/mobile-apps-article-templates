@@ -8,56 +8,56 @@ Display a liveblog card.
 
 ```html_example
 <div class="container__body">
-	<div class="card card--live">
-		<div class="card__container">
-			<div class="card__header">
-				<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-			</div>
-			<div class="card__object">
-				<p class="standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
-			</div>
-			<div class="card__footer">
-				<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
-				<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
-			</div>
-		</div>
-	</div>
+    <div class="card card--live">
+        <div class="card__container">
+            <div class="card__header">
+                <h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+            </div>
+            <div class="card__object">
+                <p class="standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
+            </div>
+            <div class="card__footer">
+                <span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+                <span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+            </div>
+        </div>
+    </div>
 
-	<div class="card card--live has-image">
-		<div class="card__container">
-			<div class="card__header">
-				<h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-			</div>
-			<div class="card__object">
-				<img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
-			</div>
-			<div class="card__footer">
-				<span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
-				<span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
-			</div>
-		</div>
-	</div>
+    <div class="card card--live has-image">
+        <div class="card__container">
+            <div class="card__header">
+                <h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+            </div>
+            <div class="card__object">
+                <img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
+            </div>
+            <div class="card__footer">
+                <span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
+                <span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+            </div>
+        </div>
+    </div>
 </div>
 ```
 */
 
 .card--live {
-	border-top-color: color(tone-live);
+    border-top-color: color(tone-live);
 
-	.card__timestamp {
-		color: color(tone-live);
-		font-weight: bold;
+    .card__timestamp {
+        color: color(tone-live);
+        font-weight: bold;
 
-		&::before {
-			content: '';
-			width: 12px;
-			height: 12px;
-			background-color: color(tone-live);
-			border-radius: 100%;
-			display: block;
-			float: left;
-			margin-right: 3px;
-			margin-top: 2px;
-		}
-	}
+        &::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background-color: color(tone-live);
+            border-radius: 100%;
+            display: block;
+            float: left;
+            margin-right: 3px;
+            margin-top: 2px;
+        }
+    }
 }

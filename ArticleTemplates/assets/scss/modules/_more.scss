@@ -14,48 +14,48 @@ Display a link to view more.
 */
 
 .more {
-	color: color(tone-news);
-	font-family: $agate-sans;
-	font-weight: bold;
-	@include body();
-	padding: base-px(1, 0, 2, 0);
-	min-height: 44px;
+    color: color(tone-news);
+    font-family: $agate-sans;
+    font-weight: bold;
+    @include body();
+    padding: base-px(1, 0, 2, 0);
+    min-height: 44px;
 
-	&::before {
-		font-size: 85%;
-	}
+    &::before {
+        font-size: 85%;
+    }
 }
 
 // View more comments
 .more--comments {
-	border-top: 1px dotted color(shade-4);
+    border-top: 1px dotted color(shade-4);
 
-	@include mq($to: col2) {
-		margin-left: base-px(4.33333);
-	}
+    @include mq($to: col2) {
+        margin-left: base-px(4.33333);
+    }
 
-	@include mq(col2, col3) {
-		margin-left: cols($base-3, 4);
-	}
+    @include mq(col2, col3) {
+        margin-left: cols($base-3, 4);
+    }
 
-	@include mq($from: col3) {
-		margin-left: cols($base-4, 5);
-	}
+    @include mq($from: col3) {
+        margin-left: cols($base-4, 5);
+    }
 }
 
 // View more live blog updates
 .more--live-blogs {
-	border-bottom: 1px dotted color(shade-4);
+    border-bottom: 1px dotted color(shade-4);
 
-	@include mq($to: col2) {
-		margin: base-px(0, 1);
-	}
+    @include mq($to: col2) {
+        margin: base-px(0, 1);
+    }
 
-	@include mq(col2, col3) {
-		padding-left: cols($base-3, 4, 1);
-	}
+    @include mq(col2, col3) {
+        padding-left: cols($base-3, 4, 1);
+    }
 
-	@include mq($from: col3) {
-		padding-left: cols($base-4, 5, 1);
-	}
+    @include mq($from: col3) {
+        padding-left: cols($base-4, 5, 1);
+    }
 }

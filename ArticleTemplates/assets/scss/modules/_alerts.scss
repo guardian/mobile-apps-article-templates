@@ -8,46 +8,46 @@ Display an alerts toggle.
 
 ```html_example
 <a class="alerts">
-	<span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> <span class="alerts__label">Follow contributor</span></span>
-	<span class="alerts__state--follow"><span class="icon">&#xe049;</span> <span class="alerts__label">Following contributor</span></span>
+    <span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> <span class="alerts__label">Follow contributor</span></span>
+    <span class="alerts__state--follow"><span class="icon">&#xe049;</span> <span class="alerts__label">Following contributor</span></span>
 </a>
 
 <a class="alerts following">
-	<span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> <span class="alerts__label">Follow contributor</span></span>
-	<span class="alerts__state--follow"><span class="icon">&#xe049;</span> <span class="alerts__label">Following contributor</span></span>
+    <span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> <span class="alerts__label">Follow contributor</span></span>
+    <span class="alerts__state--follow"><span class="icon">&#xe049;</span> <span class="alerts__label">Following contributor</span></span>
 </a>
 ```
 */
 
 .alerts {
-	color: color(tone-news);
-	font-family: $agate-sans;
-	display: inline-block;
+    color: color(tone-news);
+    font-family: $agate-sans;
+    display: inline-block;
 
-	.icon {
-		margin-right: 4px;
-		font-size: 85%;
-	}
+    .icon {
+        margin-right: 4px;
+        font-size: 85%;
+    }
 
-	.alerts__state--follow {
-		display: none;
+    .alerts__state--follow {
+        display: none;
 
-		.icon {
-			color: color(tone-news-accent);
-		}
-	}
+        .icon {
+            color: color(tone-news-accent);
+        }
+    }
 
-	&.following {
-		.alerts__state--follow {
-			display: block;
-		}
+    &.following {
+        .alerts__state--follow {
+            display: block;
+        }
 
-		.alerts__state--unfollow {
-			display: none;
-		}
-	}
+        .alerts__state--unfollow {
+            display: none;
+        }
+    }
 }
 
 .alerts__label {
-	font-weight: bold;
+    font-weight: bold;
 }

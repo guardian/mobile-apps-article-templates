@@ -8,7 +8,7 @@ Future
 
 ```html_example
 <div class="match-status match-status--f">
-	<p class="match-status__time">18:00</p>
+    <p class="match-status__time">18:00</p>
 </div>
 ```
 
@@ -16,7 +16,7 @@ Postponed
 
 ```html_example
 <div class="match-status match-status--p">
-	<p class="match-status__time">P</p>
+    <p class="match-status__time">P</p>
 </div>
 ```
 
@@ -24,7 +24,7 @@ Abandonded
 
 ```html_example
 <div class="match-status match-status--a">
-	<p class="match-status__time">A</p>
+    <p class="match-status__time">A</p>
 </div>
 ```
 
@@ -32,7 +32,7 @@ Cancelled
 
 ```html_example
 <div class="match-status match-status--c">
-	<p class="match-status__time">C</p>
+    <p class="match-status__time">C</p>
 </div>
 ```
 
@@ -40,7 +40,7 @@ Suspended
 
 ```html_example
 <div class="match-status match-status--s">
-	<p class="match-status__time">S</p>
+    <p class="match-status__time">S</p>
 </div>
 ```
 
@@ -48,7 +48,7 @@ First half
 
 ```html_example
 <div class="match-status match-status--first">
-	<p class="match-status__time">1st</p>
+    <p class="match-status__time">1st</p>
 </div>
 ```
 
@@ -56,7 +56,7 @@ Half time
 
 ```html_example
 <div class="match-status match-status--ht">
-	<p class="match-status__time">HT</p>
+    <p class="match-status__time">HT</p>
 </div>
 ```
 
@@ -64,7 +64,7 @@ Second half
 
 ```html_example
 <div class="match-status match-status--second">
-	<p class="match-status__time">2nd</p>
+    <p class="match-status__time">2nd</p>
 </div>
 ```
 
@@ -72,7 +72,7 @@ Extra time
 
 ```html_example
 <div class="match-status match-status--et">
-	<p class="match-status__time">ET</p>
+    <p class="match-status__time">ET</p>
 </div>
 ```
 
@@ -80,83 +80,83 @@ Full time
 
 ```html_example
 <div class="match-status match-status--ft">
-	<p class="match-status__time">FT</p>
+    <p class="match-status__time">FT</p>
 </div>
 ```
 */
 
 .match-status {
-	color: color(shade-2);
-	font-family: $agate-sans;
-	font-weight: bold;
-	@include meta();
-	background-image: url('../img/match-status.svg');
-	background-repeat: no-repeat;
-	background-size: cover;
-	width: 44px;
-	height: 44px;
-	display: table;
+    color: color(shade-2);
+    font-family: $agate-sans;
+    font-weight: bold;
+    @include meta();
+    background-image: url('../img/match-status.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 44px;
+    height: 44px;
+    display: table;
 
-	@include mq($to: col1) {
-		background-size: 44px 44px;
-		background-position: center;
-	}
+    @include mq($to: col1) {
+        background-size: 44px 44px;
+        background-position: center;
+    }
 }
 
 .match-status__time {
-	vertical-align: middle;
-	text-align: center;
-	display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    display: table-cell;
 }
 
 .match-status--f {
-	.match-status__time {
-		font-size: 1.2rem;
-		font-weight: normal;
-	}
+    .match-status__time {
+        font-size: 1.2rem;
+        font-weight: normal;
+    }
 }
 
 .match-status--a {
-	color: color(tone-live);
-	background-image: url('../img/match-status--a.svg');
+    color: color(tone-live);
+    background-image: url('../img/match-status--a.svg');
 }
 
 .match-status--c {
-	color: color(tone-live);
-	background-image: url('../img/match-status--c.svg');
+    color: color(tone-live);
+    background-image: url('../img/match-status--c.svg');
 }
 
 .match-status--p {
-	color: color(tone-news-accent);
-	background-image: url('../img/match-status--p.svg');
+    color: color(tone-news-accent);
+    background-image: url('../img/match-status--p.svg');
 }
 
 .match-status--s {
-	color: color(tone-live);
-	background-image: url('../img/match-status--s.svg');
+    color: color(tone-live);
+    background-image: url('../img/match-status--s.svg');
 }
 
 .match-status--first {
-	color: color(tone-news-accent);
-	background-image: url('../img/match-status--first.svg');
+    color: color(tone-news-accent);
+    background-image: url('../img/match-status--first.svg');
 }
 
 .match-status--second {
-	color: color(tone-news-accent);
-	background-image: url('../img/match-status--second.svg');
+    color: color(tone-news-accent);
+    background-image: url('../img/match-status--second.svg');
 }
 
 .match-status--ht {
-	color: color(tone-news-accent);
-	background-image: url('../img/match-status--ht.svg');
+    color: color(tone-news-accent);
+    background-image: url('../img/match-status--ht.svg');
 }
 
 .match-status--ft {
-	color: color(tone-news-accent);
-	background-image: url('../img/match-status--ft.svg');
+    color: color(tone-news-accent);
+    background-image: url('../img/match-status--ft.svg');
 }
 
 .match-status--et {
-	color: color(tone-news-accent);
-	background-image: url('../img/match-status--et.svg');
+    color: color(tone-news-accent);
+    background-image: url('../img/match-status--et.svg');
 }
