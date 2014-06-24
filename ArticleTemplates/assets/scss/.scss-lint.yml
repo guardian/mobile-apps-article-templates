@@ -5,6 +5,11 @@ linters:
   Indentation:
     enabled: false
 
+  CapitalizationInSelector:
+    enabled: true
+    exclude:
+      - tones/_tone--live.scss # Tone comes from MAPI as 'liveBlog'
+
   Comment:
     enabled: false
 
@@ -14,10 +19,12 @@ linters:
   SelectorDepth:
     enabled: true
     max_depth: 4
+    exclude:
+      - tones/** # Tones require extra specificity
 
   SingleLinePerSelector:
     exclude:
-        - base/_reset.scss
+      - base/_reset.scss
 
   NameFormat:
     enabled: false
