@@ -185,10 +185,12 @@ Comment preview:
 	@include meta();
 	padding: base-px(0.25, 1, 0.75, 0);
 	overflow: auto;
+
 	@include mq(col2, col3) {
 		width: cols($base-3, 4, 1);
 		float: left;
 	}
+
 	@include mq($from: col3) {
 		width: cols($base-4, 5, 1);
 		float: left;
@@ -225,6 +227,7 @@ Comment preview:
 .comment__role,
 .comment__username {
 	display: block;
+
 	@include mq($to: col2) {
 		display: inline;
 	}
@@ -261,6 +264,7 @@ Comment preview:
 	.touchpoint__button {
 		background-color: transparent;
 		font-size: 14px;
+
 		@include mq($from: col2) {
 			margin: 0 auto;
 			display: block;
@@ -283,6 +287,7 @@ Comment preview:
 	.touchpoint__label {
 		color: color(neutral-3);
 		font-weight: normal;
+
 		@include mq($from: col2) {
 			margin-top: 1px;
 			padding: 0;
@@ -297,9 +302,11 @@ Comment preview:
 	padding: base-px(0.75, 0, 0.75, 0);
 	overflow: hidden;
 	display: none;
+
 	@include mq(col2, col3) {
 		margin-left: cols($base-3, 4, 1);
 	}
+
 	@include mq($from: col3) {
 		margin-left: cols($base-4, 5, 1);
 	}
@@ -331,13 +338,16 @@ Comment preview:
 		float: none;
 		position: static;
 		padding: base-px(0.75, 1, 0.5, 0);
+
 		@include mq($to: col2) {
 			margin-left: base-px(4.33333);
 			padding-right: base-px(5.33333);
 		}
+
 		@include mq(col2, col3) {
 			margin-left: cols($base-3, 4, 1);
 		}
+
 		@include mq($from: col3) {
 			margin-left: cols($base-4, 5, 1);
 		}
@@ -375,7 +385,7 @@ Comment preview:
 	}
 
 	.comment__recommend {
-		margin: base-px(0.75, 0, 0, 0);
+		margin: base-px(.75, 0, 0, 0);
 	}
 
 	.comment__options {
@@ -405,7 +415,7 @@ Comment preview:
 	color: color(neutral-3);
 
 	.comment__header {
-		opacity: 0.5;
+		opacity: .5;
 	}
 
 	.comment__recommend {
