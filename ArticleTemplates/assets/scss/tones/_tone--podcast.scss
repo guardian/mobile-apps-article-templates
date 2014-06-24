@@ -1,8 +1,9 @@
 .tone--podcast {
 	.audio-player__button {
 		&.touchpoint--primary .touchpoint__button {
-			color: #fff;
 			background-color: color(tone-news);
+			color: #fff;
+
 			&:active {
 				background-color: color(tone-news-accent);
 			}
@@ -40,6 +41,7 @@
 
 		.standfirst {
 			color: color(shade-1);
+
 			@include mq($to: col2) {
 				font-size: 1.25em;
 				line-height: 1.25em;
@@ -49,14 +51,14 @@
 
 	.meta,
 	.meta__pubdate {
-		color: rgba(#fff, 0.8);
+		color: rgba(#fff, .8);
 	}
 
 	.meta {
-		border-top-color: rgba(color(tone-news), 0.4);
+		border-top-color: rgba(color(tone-news), .4);
 	}
 
 	.meta__comments {
-		border-left-color: rgba(color(tone-news), 0.4);
+		border-left-color: rgba(color(tone-news), .4);
 	}
 }
