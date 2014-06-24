@@ -67,10 +67,11 @@ Display a match summary. The score is updated during the match.
 	overflow: hidden;
 
 	@include mq($from: col1) {
-		padding: base-px(0.5, 1, 0, 1);
+		padding: base-px(.5, 1, 0, 1);
 		min-height: 150px;
+
 		&::after {
-			content: " ";
+			content: '';
 			background-color: color(shade-4);
 			display: block;
 			width: 1px;
@@ -87,22 +88,25 @@ Display a match summary. The score is updated during the match.
 		@include mq($to: col2) {
 			margin-top: -8px; // Offset to align with badges
 			font-size: 3.2rem;
-			line-height: 4.0rem;
+			line-height: 4rem;
 		}
+
 		@include mq($from: col2) {
-			margin: base-px(0, 0, 0.5, 0);
+			margin: base-px(0, 0, .5, 0);
 			margin-top: -10px; // Offset to align with badges
-			font-size: 4.0rem;
+			font-size: 4rem;
 			line-height: 4.8rem;
 		}
 	}
 
 	.match-status {
 		z-index: 10;
+
 		@include mq($to: col1) {
 			float: left;
 			width: 44px;
 		}
+
 		@include mq($from: col1) {
 			margin-left: auto;
 			margin-right: auto;
@@ -121,10 +125,11 @@ Display a match summary. The score is updated during the match.
 		text-align: center;
 		position: relative;
 		z-index: 20;
-		padding: base-px(0.5, 0, 0, 0);
+		padding: base-px(.5, 0, 0, 0);
 		width: auto;
 		display: inline-block;
 		float: right;
+
 		@include mq($to: col1) {
 			font-size: 150%;
 		}
@@ -140,9 +145,11 @@ Display a match summary. The score is updated during the match.
 .match-summary__meta {
 	font-family: $agate-sans;
 	@include meta();
+
 	@include mq($to: col1) {
 		padding: base-px(0, 3, 1, 4.5);
 	}
+
 	@include mq($from: col1) {
 		width: 50%;
 	}
@@ -158,12 +165,14 @@ Display a match summary. The score is updated during the match.
 .match-summary__team {
 	hyphens: auto;
 	word-break: break-word;
+
 	@include mq($to: col1) {
 		@include flexbox;
 		@include flex-direction(row);
 		width: 100%;
 		padding: base-px(1, 0);
 	}
+
 	@include mq($from: col1) {
 		margin: base-px(1, 0, 2, 0);
 		width: 50%;
@@ -176,6 +185,7 @@ Display a match summary. The score is updated during the match.
 	.match-summary__info,
 	.match-summary__score {
 		vertical-align: top;
+
 		@include mq($from: col1) {
 			display: table-cell;
 		}
@@ -183,7 +193,8 @@ Display a match summary. The score is updated during the match.
 
 	.match-summary__score {
 		width: 44px;
-		padding: base-px(0, 0.5);
+		padding: base-px(0, .5);
+
 		@include mq($to: col1) {
 			width: 15%;
 			min-width: 50px;
@@ -195,7 +206,8 @@ Display a match summary. The score is updated during the match.
 	.match-summary__info {
 		font-family: $agate-sans;
 		@include meta();
-		padding: base-px(0, 0, 0, 0.5);
+		padding: base-px(0, 0, 0, .5);
+
 		@include mq($to: col1) {
 			width: 100%;
 		}
@@ -212,11 +224,13 @@ Display a match summary. The score is updated during the match.
 	.match-summary__badge {
 		background-repeat: no-repeat;
 		background-size: contain;
+
 		@include mq($to: col1) {
 			min-width: 44px;
 		}
+
 		@include mq($from: col1) {
-			padding: base-px(0.3333, 0, 0, 0);
+			padding: base-px(.3333, 0, 0, 0);
 			width: 54px;
 		}
 	}
@@ -244,13 +258,16 @@ Display a match summary. The score is updated during the match.
 	font-size: 50%;
 	line-height: 70%;
 	display: none;
+
 	& > span {
 		display: none;
 	}
+
 	@include mq($to: col1) {
 		font-size: 75%;
 		margin-top: 6px;
 	}
+
 	@include mq($from: col1) {
 		margin-top: 10px;
 	}
@@ -263,11 +280,11 @@ Display a match summary. The score is updated during the match.
 .match-summary__comment {
 	font-family: $agate-sans;
 	@include meta();
-	padding: base-px(0.5, 1);
+	padding: base-px(.5, 1);
 	background-color: #fff;
 	margin: 0 auto;
 	border: 1px solid color(shade-4);
-	border-bottom: none;
+	border-bottom: 0;
 	width: auto;
 	display: table;
 	position: relative;
