@@ -41,16 +41,16 @@ Display a discussion thread.
 		display: none;
 	}
 
-	&.block--discussion-thread--orphan {
+	&.expand {
 		.comment {
 			display: block;
 		}
 	}
-}
 
-.block--discussion-thread.expand {
-	.comment {
-		display: block;
+	&.block--discussion-thread--orphan {
+		.comment {
+			display: block;
+		}
 	}
 }
 
@@ -74,6 +74,7 @@ Display a discussion thread.
 	.container__action--sort a {
 		color: color(shade-2);
 	}
+
 	.container__action--view-more {
 		display: none;
 	}
@@ -92,6 +93,7 @@ Display a discussion thread.
 		.comments-closed-label {
 			display: block !important;
 		}
+
 		.touchpoint__button,
 		a {
 			display: none !important;
@@ -103,6 +105,7 @@ Display a discussion thread.
 	.block--discussion-failed {
 		display: block;
 	}
+
 	.more--comments,
 	.block--discussion-empty {
 		display: none;
