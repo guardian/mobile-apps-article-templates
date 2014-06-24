@@ -51,10 +51,10 @@
 
 			.section {
 				@include mq($to: col1) {
-					padding-left: 4.5em;
+					padding-left: base-px(5);
 				}
 				@include mq(col1, col2) {
-					padding-left: 4em;
+					padding-left: base-px(6.5);
 				}
 				@include mq(col2, col3) {
 					padding-left: cols($base-3, 4, 1);
@@ -114,17 +114,6 @@
 
 		.meta__comments {
 			border-left-color: rgba(#fff, 0.4);
-		}
-
-		.tags {
-			@include mq(col2, col3) {
-				padding-left: cols($base-3, 4, 1);
-				padding-bottom: $base-3 * 4;
-			}
-			@include mq($from: col3) {
-				padding-left: cols($base-4, 5, 1);
-				padding-bottom: $base-4 * 4;
-			}
 		}
 	}
 }

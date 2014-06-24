@@ -39,7 +39,7 @@
 		.figure-wide,
 		.element {
 			&:first-child{
-				margin-top: -12px;
+				margin-top: base-px(-1);
 			}
 		}
 	} 
@@ -57,8 +57,8 @@
 	.advert-slot--mpu {
 		@include mq($from: 560px) {
 			float: right;
-			margin-left: 20px;
-			margin-bottom: 12px;
+			margin-left: base-px(1.5);
+			margin-bottom: base-px(1);
 		}
 		@include mq(col2, col3) {
 			margin-right: -(cols($base-3, 4))+$base-3;
@@ -77,7 +77,7 @@
 	// Position of asides within article body
 	.aside {
 		@include mq(col1, col2) {
-			margin-right: -$base-2;
+			margin-right: base-px(1);
 		}
 		@include mq(col2, col3) {
 			margin-right: -(cols($base-3, 4));
