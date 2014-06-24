@@ -5,13 +5,13 @@ var gu = document.getElementById('gu'),
 
 require.config({
     paths: {
-        bonzo: 'components/bonzo.min',
-        bean: 'components/bean.min',
-        d3: 'components/d3.min',
-        domReady: 'components/ready.min',
+        bonzo: 'components/bonzo',
+        bean: 'components/bean',
+        d3: 'components/d3',
+        domReady: 'components/ready',
         mobileSlider: 'components/mobile-range-slider',
         fastClick: 'components/fastclick',
-        qwery: 'components/qwery.min',
+        qwery: 'components/qwery',
         fence: 'components/fence',
         smoothScroll: 'components/smooth-scroll'
     },
