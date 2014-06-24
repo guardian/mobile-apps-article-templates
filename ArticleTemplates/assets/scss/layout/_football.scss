@@ -24,7 +24,7 @@
 	}
 
 	.headline {
-		padding-top: base-px(0.5);
+		padding-top: base-px(.5);
 	}
 }
 
@@ -50,9 +50,11 @@
 	padding: base-px(0, 0, 1, 0);
 	width: 50%;
 	float: left;
+
 	@include mq($from: col1) {
 		padding: base-px(0, 0, 1, 5);
 	}
+
 	@include mq($from: col3) {
 		padding: base-px(0, 5, 1, 5);
 	}
@@ -115,6 +117,7 @@
 .football__today__fixtures .football-match--status,
 .football__today__table .football-stat--postition {
 	width: 42px; // x3.5
+
 	@include mq($from: col1) {
 		width: 60px; // x5
 	}

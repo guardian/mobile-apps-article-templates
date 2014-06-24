@@ -1,9 +1,9 @@
 // Headline font sizing
 @mixin headline($multiple: 1) {
-	$headline-size-1: 3.0rem;
+	$headline-size-1: 3rem;
 	$headline-lead-1: 3.2rem;
-	$headline-size-2: 4.0rem;
-	$headline-lead-2: 4.0rem;
+	$headline-size-2: 4rem;
+	$headline-lead-2: 4rem;
 	$headline-size-3: 4.8rem;
 	$headline-lead-3: 4.8rem;
 	
@@ -11,32 +11,37 @@
 		font-size: $headline-size-1 * $multiple;
 		line-height: $headline-lead-1 * $multiple;
 	}
+
 	@include mq(col1, col2) {
 		font-size: $headline-size-2 * $multiple;
 		line-height: $headline-lead-2 * $multiple;
 	}
+
 	@include mq($from: col2) {
 		font-size: $headline-size-3 * $multiple;
 		line-height: $headline-lead-3 * $multiple;
 	}
 }
 
+
 // Standfirst font sizing
 @mixin standfirst($multiple: 1) {
 	$standfirst-size-1: 1.7rem;
 	$standfirst-lead-1: 2.2rem;
 	$standfirst-size-2: 2.2rem;
-	$standfirst-lead-2: 3.0rem;
+	$standfirst-lead-2: 3rem;
 	
 	@include mq($to: col2) {
 		font-size: $standfirst-size-1 * $multiple;
 		line-height: $standfirst-lead-1 * $multiple;
 	}
+
 	@include mq($from: col2) {
 		font-size: $standfirst-size-2 * $multiple;
 		line-height: $standfirst-lead-2 * $multiple;
 	}
 }
+
 
 // Body font sizing
 $body-size-1: 1.6rem;
@@ -49,15 +54,17 @@ $body-lead-2: 2.6rem;
 		font-size: $body-size-1 * $multiple;
 		line-height: $body-lead-1 * $multiple;
 	}
+
 	@include mq($from: col2) {
 		font-size: $body-size-2 * $multiple;
 		line-height: $body-lead-2 * $multiple;
 	}
 }
 
+
 // Meta font sizing
 $meta-size-1: 1.4rem;
-$meta-lead-1: 2.0rem;
+$meta-lead-1: 2rem;
 $meta-size-2: 1.6rem;
 $meta-lead-2: 2.2rem;
 
@@ -66,30 +73,35 @@ $meta-lead-2: 2.2rem;
 		font-size: $meta-size-1 * $multiple;
 		line-height: $meta-lead-1 * $multiple;
 	}
+
 	@include mq($from: col2) {
 		font-size: $meta-size-2 * $multiple;
 		line-height: $meta-lead-2 * $multiple;
 	}
 }
 
+
 // Link Underline Style
 @mixin text-underline($color, $background, $color-accent) {
 	a {
-		background-image: linear-gradient(to bottom, $background 50%, rgba($color, 0.66) 50%);
+		background-image: linear-gradient(to bottom, $background 50%, rgba($color, .66) 50%);
 		background-repeat: repeat-x;
 		background-size: 2px 2px;
 		background-position: 0 bottom;
 		text-shadow: 4px 0 $background, 3px 0 $background, 2px 0 $background, 1px 0 $background, 0 0 $background, -1px 0 $background, -2px 0 $background, -3px 0 $background, -4px 0 $background;
 	}
+
 	a:active {
-		background-image: linear-gradient(to bottom, $background 50%, rgba($color-accent, 0.66) 50%);
+		background-image: linear-gradient(to bottom, $background 50%, rgba($color-accent, .66) 50%);
 	}
 }
+
 
 // Bullet
 @mixin bullet() {
 	text-indent: 1.111em;
 	position: relative;
+
 	&::before {
 		content: "\2022";
 		color: color(neutral-3);
@@ -100,6 +112,7 @@ $meta-lead-2: 2.2rem;
 		left: -1.111em;
 	}
 }
+
 
 // Drop cap
 @mixin dropcap($dropcap-color:"") {
@@ -112,8 +125,9 @@ $meta-lead-2: 2.2rem;
 		line-height: 1;
 		margin-top: -2px;
 		margin-bottom: base-px(-1.33333);
-		padding-right: base-px(0.5);
+		padding-right: base-px(.5);
 		float: left;
+
 		@include mq($from: col2) {
 			font-size: 5.2222em;
 		}

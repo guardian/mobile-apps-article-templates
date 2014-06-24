@@ -4,9 +4,11 @@
 .article--audio {
 	.article__body {
 		padding: base-px(1, 1, 0, 1);
+
 		@include mq(col2, col3) {
 			padding-right: cols($base-3, 3);
 		}
+
 		@include mq($from: col3) {
 			padding-right: cols($base-4, 4);
 		}
@@ -19,6 +21,7 @@
 			margin-left: base-px(-1);
 			margin-right: base-px(-1);
 			width: auto;
+
 			@include mq($from: col2) {
 				width: 135%;
 			}

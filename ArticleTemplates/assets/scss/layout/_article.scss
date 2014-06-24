@@ -19,7 +19,7 @@
 	}
 
 	.section {
-		padding: base-px(0.5, 1);
+		padding: base-px(.5, 1);
 	}
 
 	.headline {
@@ -27,7 +27,7 @@
 	}
 
 	.standfirst {
-		padding: base-px(0.5, 1, 1.5, 1);
+		padding: base-px(.5, 1, 1.5, 1);
 	}
 }
 
@@ -38,7 +38,7 @@
 	& > .prose {
 		.figure-wide,
 		.element {
-			&:first-child{
+			&:first-child {
 				margin-top: base-px(-1);
 			}
 		}
@@ -60,9 +60,11 @@
 			margin-left: base-px(1.5);
 			margin-bottom: base-px(1);
 		}
+
 		@include mq(col2, col3) {
 			margin-right: -(cols($base-3, 4))+$base-3;
 		}
+
 		@include mq($from: col3) {
 			margin-right: -(cols($base-4, 5));
 		}
@@ -70,7 +72,7 @@
 
 	.advert-slot--mpu--tablet {
 		@include mq($to: 559px) {
-			margin: 12px auto 0 auto;
+			margin: 12px auto 0;
 		}
 	}
 
@@ -79,9 +81,11 @@
 		@include mq(col1, col2) {
 			margin-right: base-px(1);
 		}
+
 		@include mq(col2, col3) {
 			margin-right: -(cols($base-3, 4));
 		}
+
 		@include mq($from: col3) {
 			margin-right: -(cols($base-4, 5)+$base-4*2);
 		}
@@ -90,6 +94,7 @@
 	 // Hide witness call-out until correctly positioned by JavaScript
 	.aside-witness {
 		display: none;
+
 		&.js--positioned {
 			display: block;
 		}
