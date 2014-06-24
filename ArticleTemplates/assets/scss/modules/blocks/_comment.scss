@@ -183,7 +183,7 @@ Comment preview:
 	word-break: break-all;
 	word-wrap: break-word;
 	@include meta();
-	padding: base-px(0.25, 1, 0.75, 0);
+	padding: base-px(.25, 1, .75, 0);
 	overflow: auto;
 
 	@include mq(col2, col3) {
@@ -197,7 +197,7 @@ Comment preview:
 	}
 
 	.avatar--user {
-		margin-right: base-px(0.66666);
+		margin-right: base-px(.66666);
 		float: left;
 	}
 }
@@ -206,10 +206,12 @@ Comment preview:
 	word-break: break-word;
 	word-wrap: break-word;
 	margin: base-px(0, 0, 1, 0);
+
 	@include mq(col2, col3) {
 		margin-right: cols($base-3, 1);
 		margin-left: cols($base-3, 4, 1);
 	}
+
 	@include mq($from: col3) {
 		margin-right: cols($base-4, 1);
 		margin-left: cols($base-4, 5, 1);
@@ -299,7 +301,7 @@ Comment preview:
 .comment__options {
 	@include meta();
 	background-color: #fff;
-	padding: base-px(0.75, 0, 0.75, 0);
+	padding: base-px(.75, 0, .75, 0);
 	overflow: hidden;
 	display: none;
 
@@ -337,7 +339,7 @@ Comment preview:
 		width: auto;
 		float: none;
 		position: static;
-		padding: base-px(0.75, 1, 0.5, 0);
+		padding: base-px(.75, 1, .5, 0);
 
 		@include mq($to: col2) {
 			margin-left: base-px(4.33333);
@@ -355,6 +357,7 @@ Comment preview:
 
 	.comment__body {
 		color: color(shade-2);
+
 		@include mq($to: col2) {
 			margin-left: base-px(4.33333);
 		}
@@ -393,12 +396,15 @@ Comment preview:
 		bottom: 0;
 		right: 0;
 		left: 0;
+
 		@include mq($to: col2) {
 			margin-left: base-px(5.33333);
 		}
+
 		@include mq(col2, col3) {
 			margin-left: cols($base-3, 4);
 		}
+
 		@include mq($from: col3) {
 			margin-left: cols($base-4, 5);
 		}
@@ -432,7 +438,7 @@ Comment preview:
 // Preview
 .discussion--preview {
 	background-color: color(shade-1);
-	border: none;
+	border: 0;
 	padding: base-px(1);
 
 	.comment {
@@ -442,13 +448,13 @@ Comment preview:
 	.comment__body {
 		color: #fff;
 		background-color: color(shade-1);
-		border-top: none;
+		border-top: 0;
 		height: 100px;
 		overflow: hidden;
 		text-overflow: ellipsis;
 
 		&::after {
-			content: " ";
+			content: '';
 			background-image: linear-gradient(to bottom, rgba(color(shade-1), 0) 66%, color(shade-1) 100%);
 			display: block;
 			position: absolute;

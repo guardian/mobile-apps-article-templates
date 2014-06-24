@@ -51,26 +51,29 @@ Display today's football fixtures; upcoming, in progress and ended.
 
 .football-fixture__data {
 	border-top: 1px solid color(shade-4);
-	padding: base-px(0.25, 0.5, 1, 0.5);
+	padding: base-px(.25, .5, 1, .5);
 	display: table-cell;
 
 	&.football-fixture__data--1 {
 		@include mq($to: col1) {
-			padding: base-px(0.25,0,1,1);
+			padding: base-px(.25, 0, 1, 1);
 		}
 	}
 
 	&.football-fixture__data--1,
 	&.football-fixture__data--3 {
 		@include mq($to: col1) {
-			width: cols($base-1, 0.75);
+			width: cols($base-1, .75);
 		}
+
 		@include mq(col1, col2) {
 			width: cols($base-2, 1);
 		}
+
 		@include mq(col2, col3) {
 			width: cols($base-3, 1.5);
 		}
+
 		@include mq($from: col3) {
 			width: cols($base-4, 1.5);
 		}
@@ -87,12 +90,15 @@ Display today's football fixtures; upcoming, in progress and ended.
 		@include mq($to: col1) {
 			width: cols($base-1, 1);
 		}
+
 		@include mq(col1, col2) {
 			width: cols($base-2, 2.5);
 		}
+
 		@include mq(col2, col3) {
 			width: cols($base-3, 3.5, 1);
 		}
+
 		@include mq($from: col3) {
 			width: cols($base-4, 6.5, 1);
 		}
@@ -106,12 +112,15 @@ Display today's football fixtures; upcoming, in progress and ended.
 		@include mq($to: col1) {
 			width: cols($base-1, 1.5);
 		}
+
 		@include mq(col1, col2) {
 			width: cols($base-2, 3.5, 1);
 		}
+
 		@include mq(col2, col3) {
 			width: cols($base-3, 5.5, 1);
 		}
+
 		@include mq($from: col3) {
 			width: cols($base-4, 8.5, 1);
 		}
@@ -122,15 +131,19 @@ Display today's football fixtures; upcoming, in progress and ended.
 .football-fixture.competition {
 	.football-fixture__data--1 {
 		font-weight: bold;
+
 		@include mq($to: col1) {
 			width: cols($base-1, 1.5);
 		}
+
 		@include mq(col1, col2) {
 			width: cols($base-2, 2.5);
 		}
+
 		@include mq(col2, col3) {
 			width: cols($base-3, 3.5, 1);
 		}
+
 		@include mq($from: col3) {
 			width: cols($base-4, 6.5, 1);
 		}
@@ -138,14 +151,17 @@ Display today's football fixtures; upcoming, in progress and ended.
 
 	.football-fixture__data--2 {
 		@include mq($to: col1) {
-			width: cols($base-1, 0.5);
+			width: cols($base-1, .5);
 		}
+
 		@include mq(col1, col2) {
 			width: cols($base-2, 1);
 		}
+
 		@include mq(col2, col3) {
 			width: cols($base-3, 1.5);
 		}
+
 		@include mq($from: col3) {
 			width: cols($base-4, 1.5);
 		}
@@ -153,6 +169,7 @@ Display today's football fixtures; upcoming, in progress and ended.
 
 	.football-fixture__data--4 {
 		color: color(shade-2);
+
 		@include mq($to: col1) {
 			display: none;
 		}
@@ -175,9 +192,10 @@ Display today's football fixtures; upcoming, in progress and ended.
 
 	.football-fixture__data--1 {
 		color: color(shade-2);
-		padding: base-px(0, 0.5, 0, 0.5);
+		padding: base-px(0, .5, 0, .5);
+
 		@include mq($to: col1) {
-			padding: base-px(0, 0.5, 0, 1);
+			padding: base-px(0, .5, 0, 1);
 		}
 	}
 

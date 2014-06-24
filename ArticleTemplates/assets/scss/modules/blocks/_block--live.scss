@@ -55,13 +55,16 @@ Provide a summary of events:
 		font-family: $agate-sans;
 		padding: base-px(0, 0, 1, 0);
 		margin-top: -5px; // Offset for space above in our fonts to align text to top of block rule
+
 		@include mq($from: col2) {
 			padding: base-px(0, 1, 0, 0);
 			float: left;
 		}
+
 		@include mq(col2, col3) {
 			width: cols($base-3, 4, 1);
 		}
+
 		@include mq($from: col3) {
 			width: cols($base-4, 5, 1);
 		}
@@ -74,21 +77,23 @@ Provide a summary of events:
 			.quoted,
 			.twitter-tweet {
 				position: relative;
+
 				&::before {
 					position: absolute;
 					left: -5rem;
 				}
 			}
 		}
+
 		@include mq(col2, col3) {
 			width: cols($base-3, 8);
 		}
+
 		@include mq($from: col3) {
 			width: cols($base-4, 11);
 		}
 
 		.prose {
-
 			blockquote {
 				margin-right: 0;
 				margin-left: 0;
@@ -99,27 +104,27 @@ Provide a summary of events:
 					width: 100%;
 				}
 
-				figcaption {
-					padding: base-px(.5, 0, 1, 0);
-				}
-
 				&.figure-inline {
 					float: none;
 					clear: both;
 				}
-				
+
 				&:last-child {
 					figcaption {
-						border-bottom: none;
+						border-bottom: 0;
 					}
 				}
+			}
+
+			figcaption {
+				padding: base-px(.5, 0, 1, 0);
 			}
 
 			// Offsets for space above in our fonts to align text to top of block rule
 			p:first-child {
 				margin-top: -2px;
 			}
-			
+
 			h2:first-child {
 				margin-top: -3px;
 			}

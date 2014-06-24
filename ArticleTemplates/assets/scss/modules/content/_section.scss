@@ -21,7 +21,7 @@ With live indicator:
 	color: color(tone-news); // Default
 	font-family: $egyptian-display;
 	font-weight: 600;
-	@include headline(0.5);
+	@include headline(.5);
 }
 
 .section__meta {
@@ -32,12 +32,14 @@ With live indicator:
 .section__live {
 	font-family: $agate-sans;
 	font-weight: bold;
-	@include headline(0.5);
+	@include headline(.5);
+
 	@include mq($from: col2) {
 		font-size: $body-size-1;
 	}
+
 	&::before {
-		content: "• ";
+		content: '• ';
 		display: inline-block;
 		margin-right: 4px;
 		-webkit-animation: blink 1.5s ease-in infinite;

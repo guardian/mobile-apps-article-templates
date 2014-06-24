@@ -71,7 +71,7 @@ Display a match summary. The score is updated during the match.
 		min-height: 150px;
 
 		&::after {
-			content: ' ';
+			content: '';
 			background-color: color(shade-4);
 			display: block;
 			width: 1px;
@@ -88,13 +88,13 @@ Display a match summary. The score is updated during the match.
 		@include mq($to: col2) {
 			margin-top: -8px; // Offset to align with badges
 			font-size: 3.2rem;
-			line-height: 4.0rem;
+			line-height: 4rem;
 		}
 
 		@include mq($from: col2) {
 			margin: base-px(0, 0, .5, 0);
 			margin-top: -10px; // Offset to align with badges
-			font-size: 4.0rem;
+			font-size: 4rem;
 			line-height: 4.8rem;
 		}
 	}

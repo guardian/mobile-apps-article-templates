@@ -46,34 +46,43 @@ Display a standard article card.
 	border-top: 1px solid color(tone-news-accent);
 	border-bottom: 1px solid color(shade-4);
 	position: relative;
+
 	@include mq($to: col1) {
-		margin: $base-1 / 1.5 $base-1 / 1.5 0 $base-1 / 1.5;
+		margin: $base-1 / 1.5 $base-1 / 1.5 0; // TODO: Move to base-px()
 	}
+
 	@include mq($from: col1) {
 		margin-bottom: $base-1;
+
 		&::before {
-			content: "";
+			content: '';
 			padding-top: 133%;
 			display: block;
 		}
 	}
+
 	@include mq(col1, col2) {
 		margin: $base-2 $base-2 0 0;
 		width: cols($base-2, 4);
+
 		&:nth-child(2n) {
 			margin-right: 0;
 		}
 	}
+
 	@include mq(col2, col3) {
 		margin: $base-3 $base-3 0 0;
 		width: cols($base-3, 4);
+
 		&:nth-child(3n) {
 			margin-right: 0;
 		}
 	}
+
 	@include mq($from: col3) {
 		margin: $base-4 $base-4 0 0;
 		width: cols($base-4, 4);
+
 		&:nth-child(4n) {
 			margin-right: 0;
 		}
@@ -84,6 +93,7 @@ Display a standard article card.
 			@include flexbox;
 			@include flex-direction(column);
 		}
+
 		@include mq($from: col1) {
 			position: absolute;
 			top: 0;
@@ -95,7 +105,8 @@ Display a standard article card.
 
 	.card__header,
 	.card__object {
-		padding: base-px(0.25, 0.5, 0, 0.5);
+		padding: base-px(.25, .5, 0, .5);
+
 		@include mq($from: col1) {
 			height: 50%;
 			overflow: hidden;
@@ -104,6 +115,7 @@ Display a standard article card.
 
 	.card__header {
 		margin-bottom: 1em;
+
 		@include mq($to: col1) {
 			@include flex(1);
 			@include order(1);
@@ -115,6 +127,7 @@ Display a standard article card.
 			@include flex(1);
 			@include order(2);
 		}
+
 		@include mq($from: col1) {
 			overflow: hidden;
 			width: 100%;
@@ -122,12 +135,15 @@ Display a standard article card.
 			bottom: 0;
 		}
 	}
+
 	&.has-image .card__object {
 		padding: 0;
+
 		@include mq($to: col1) {
 			@include flex(1);
 			@include order(3);
 		}
+
 		.card__image {
 			@include mq($from: col1) {
 				height: 100%;
@@ -144,10 +160,12 @@ Display a standard article card.
 		line-height: 1;
 		margin-top: 1em;
 		overflow: hidden;
+
 		@include mq($to: col1) {
 			@include flex(1);
 			@include order(3);
 		}
+
 		@include mq($from: col1) {
 			position: absolute;
 			z-index: 1;
@@ -157,9 +175,11 @@ Display a standard article card.
 			width: 100%;
 		}
 	}
+
 	&.has-image {
 		.card__footer {
 			bottom: 50%;
+
 			@include mq($to: col1) {
 				@include flex(1);
 				@include order(2);
@@ -194,7 +214,7 @@ Display a standard article card.
 		position: absolute;
 		bottom: 0;
 		z-index: 2;
-		padding: base-px(0.5);
+		padding: base-px(.5);
 	}
 
 	.card__image {
@@ -212,10 +232,11 @@ Display a standard article card.
 	.card__meta {
 		width: cols($base-1, 1);
 		height: 24px;
-		padding: base-px(0, 0, 0, 0.5);
+		padding: base-px(0, 0, 0, .5);
 		border-left: 1px solid color(shade-4);
 		display: block;
 		float: left;
+
 		&:first-child {
 			border-left: 0 none;
 		}
@@ -226,7 +247,7 @@ Display a standard article card.
 	}
 
 	.card__timestamp {
-		padding: base-px(0, 5, 0, 0.5);
+		padding: base-px(0, 5, 0, .5);
 	}
 }
 
@@ -237,6 +258,7 @@ Display a standard article card.
 			float: left;
 		}
 	}
+
 	@include mq(col2, col3) {
 		.card:nth-of-type(4) {
 			display: none;
