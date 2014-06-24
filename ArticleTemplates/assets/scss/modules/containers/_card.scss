@@ -64,6 +64,7 @@ Display a standard article card.
 	@include mq(col1, col2) {
 		margin: $base-2 $base-2 0 0;
 		width: cols($base-2, 4);
+
 		&:nth-child(2n) {
 			margin-right: 0;
 		}
@@ -72,6 +73,7 @@ Display a standard article card.
 	@include mq(col2, col3) {
 		margin: $base-3 $base-3 0 0;
 		width: cols($base-3, 4);
+
 		&:nth-child(3n) {
 			margin-right: 0;
 		}
@@ -80,6 +82,7 @@ Display a standard article card.
 	@include mq($from: col3) {
 		margin: $base-4 $base-4 0 0;
 		width: cols($base-4, 4);
+
 		&:nth-child(4n) {
 			margin-right: 0;
 		}
@@ -135,10 +138,12 @@ Display a standard article card.
 
 	&.has-image .card__object {
 		padding: 0;
+
 		@include mq($to: col1) {
 			@include flex(1);
 			@include order(3);
 		}
+
 		.card__image {
 			@include mq($from: col1) {
 				height: 100%;

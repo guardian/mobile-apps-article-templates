@@ -157,13 +157,14 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 		font-family: $egyptian-display;
 		font-weight: 600;
 		font-size: 1em;
-		margin: 0.75em 0;
+		margin: .75em 0;
 
 		& + p {
 			margin-top: base-px(-1);
 		}
 
-		strong, b {
+		strong,
+		b {
 			font-weight: bold;
 		}
 	}
@@ -202,7 +203,7 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 		counter-reset: li;
 
 		> li::before {
-			content: counter(li)". ";
+			content: counter(li)'. ';
 			counter-increment: li;
 		}
 	}
@@ -211,6 +212,7 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 		dt {
 			font-weight: bold;
 		}
+
 		dd {
 			margin: base-px(0, 0, 1, 2);
 		}
@@ -220,20 +222,21 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 		color: color(shade-2);
 		font-style: italic;
 		margin: base-px(2);
+
 		&::before {
 			color: color(neutral-3);
 			font-family: $icon;
 			font-size: 4rem; // 40px
 			font-style: normal;
 			line-height: 1;
-			margin-bottom: -0.5rem;
+			margin-bottom: -.5rem;
 			display: block;
 		}
 
 		&.quoted {
 			&::before {
-				content: "\e029";
-				margin-top: -0.75rem;
+				content: '\e029';
+				margin-top: -.75rem;
 			}
 		}
 
@@ -241,15 +244,16 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 			font-family: $agate-sans;
 			font-size: $meta-size-1;
 			line-height: $meta-lead-1;
+
 			&::before {
-				content: "\e06b";
+				content: '\e06b';
 			}
 
 			p {
 				color: color(shade-2);
 				font-size: $meta-size-2;
 				line-height: $meta-lead-2;
-				margin: base-px(0.5, 0);
+				margin: base-px(.5, 0);
 			}
 		}
 	}
@@ -268,6 +272,7 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 				@include mq(col2, col3) {
 					padding-right: cols($base-3, 3);
 				}
+
 				@include mq($from: col3) {
 					padding-right: cols($base-4, 4);
 				}
@@ -277,7 +282,7 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 		// Inline
 		&.figure-inline {
 			@include mq($from: col1) {
-				margin: base-px(0.5, 1, 0, 0);
+				margin: base-px(.5, 1, 0, 0);
 				float: left;
 
 				img {
@@ -305,17 +310,18 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 	margin: base-px(1, 0);
 	border-top: 2px solid color(tone-news-accent);
 
-	td, th {
+	td,
+	th {
 		text-align: left;
 		vertical-align: top;
 	}
 
 	th {
-		padding: base-px(0.25, 1, 1, 0);
+		padding: base-px(.25, 1, 1, 0);
 	}
 
 	td {
 		border-top: 1px solid color(shade-5);
-		padding: base-px(0.25, 1, 1, 0);
+		padding: base-px(.25, 1, 1, 0);
 	}
 }
