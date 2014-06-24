@@ -47,6 +47,107 @@ Display today's football fixtures; upcoming, in progress and ended.
 	display: table;
 	table-layout: fixed;
 	width: 100%;
+
+	// Match
+	&.match {
+		background-color: #fff;
+
+		.football-fixture__data {
+			border-top-color: color(tone-news-accent);
+		}
+
+		.football-fixture__data--1 {
+			color: color(shade-2);
+			padding: base-px(0, .5, 0, .5);
+
+			@include mq($to: col1) {
+				padding: base-px(0, .5, 0, 1);
+			}
+		}
+
+		.football-fixture__data--2 {
+			text-align: right;
+		}
+
+		.football-fixture__data--3 {
+			color: color(shade-2);
+			text-align: center;
+		}
+	}
+
+	// Match - finished
+	&.has-ended {
+		.football-fixture__data--1 {
+			font-weight: bold;
+			color: color(shade-1);
+		}
+	}
+
+	// Match - live
+	&.is-live {
+		font-weight: bold;
+
+		.football-fixture__data--1 {
+			color: color(tone-news-accent);
+		}
+	}
+
+	// Date and competition heading
+	&.date,
+	&.competition {
+		.football-fixture__data--1 {
+			font-weight: bold;
+
+			@include mq($to: col1) {
+				width: cols($base-1, 1.5);
+			}
+
+			@include mq(col1, col2) {
+				width: cols($base-2, 2.5);
+			}
+
+			@include mq(col2, col3) {
+				width: cols($base-3, 3.5, 1);
+			}
+
+			@include mq($from: col3) {
+				width: cols($base-4, 6.5, 1);
+			}
+		}
+
+		.football-fixture__data--2 {
+			@include mq($to: col1) {
+				width: cols($base-1, .5);
+			}
+
+			@include mq(col1, col2) {
+				width: cols($base-2, 1);
+			}
+
+			@include mq(col2, col3) {
+				width: cols($base-3, 1.5);
+			}
+
+			@include mq($from: col3) {
+				width: cols($base-4, 1.5);
+			}
+		}
+
+		.football-fixture__data--4 {
+			color: color(shade-2);
+
+			@include mq($to: col1) {
+				display: none;
+			}
+		}
+	}
+
+	&.competition {
+		.football-fixture__data--1 {
+			font-weight: normal;
+			color: color(shade-2);
+		}
+	}
 }
 
 .football-fixture__data {
@@ -124,102 +225,5 @@ Display today's football fixtures; upcoming, in progress and ended.
 		@include mq($from: col3) {
 			width: cols($base-4, 8.5, 1);
 		}
-	}
-}
-
-.football-fixture.date,
-.football-fixture.competition {
-	.football-fixture__data--1 {
-		font-weight: bold;
-
-		@include mq($to: col1) {
-			width: cols($base-1, 1.5);
-		}
-
-		@include mq(col1, col2) {
-			width: cols($base-2, 2.5);
-		}
-
-		@include mq(col2, col3) {
-			width: cols($base-3, 3.5, 1);
-		}
-
-		@include mq($from: col3) {
-			width: cols($base-4, 6.5, 1);
-		}
-	}
-
-	.football-fixture__data--2 {
-		@include mq($to: col1) {
-			width: cols($base-1, .5);
-		}
-
-		@include mq(col1, col2) {
-			width: cols($base-2, 1);
-		}
-
-		@include mq(col2, col3) {
-			width: cols($base-3, 1.5);
-		}
-
-		@include mq($from: col3) {
-			width: cols($base-4, 1.5);
-		}
-	}
-
-	.football-fixture__data--4 {
-		color: color(shade-2);
-
-		@include mq($to: col1) {
-			display: none;
-		}
-	}
-}
-
-.football-fixture.competition {
-	.football-fixture__data--1 {
-		font-weight: normal;
-		color: color(shade-2);
-	}
-}
-
-.football-fixture.match {
-	background-color: #fff;
-
-	.football-fixture__data {
-		border-top-color: color(tone-news-accent);
-	}
-
-	.football-fixture__data--1 {
-		color: color(shade-2);
-		padding: base-px(0, .5, 0, .5);
-
-		@include mq($to: col1) {
-			padding: base-px(0, .5, 0, 1);
-		}
-	}
-
-	.football-fixture__data--2 {
-		text-align: right;
-	}
-
-	.football-fixture__data--3 {
-		color: color(shade-2);
-		text-align: center;
-	}
-}
-
-.football-fixture.match.has-ended {
-	.football-fixture__data--1 {
-		font-weight: bold;
-		color: color(shade-1);
-	}
-}
-
-.football-fixture.match.is-live {
-	font-weight: bold;
-
-	.football-fixture__data--1 {
-		color: color(tone-news-accent);
 	}
 }

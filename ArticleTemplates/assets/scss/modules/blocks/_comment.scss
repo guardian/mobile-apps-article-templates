@@ -172,6 +172,31 @@ Comment preview:
 	@include body();
 	-webkit-transition: min-height 300ms ease-in-out;
 	transition: min-height 300ms ease-in-out;
+
+	// Open
+	&.comment--open {
+		.animated {
+			display: block;
+		}
+	}
+
+	// Hidden response
+	&.is-response-hidden {
+		display: none;
+	}
+
+	// Blocked
+	&.blocked {
+		color: color(neutral-3);
+
+		.comment__header {
+			opacity: .5;
+		}
+
+		.comment__recommend {
+			display: none;
+		}
+	}
 }
 
 .comment__container {
@@ -328,8 +353,8 @@ Comment preview:
 	}
 }
 
-// Response
-.comment.is-response {
+// Response 
+.is-response { // TODO: Rename .comment--response
 	.comment__container {
 		padding: base-px(0, 0, 3, 0);
 	}
@@ -408,30 +433,6 @@ Comment preview:
 		@include mq($from: col3) {
 			margin-left: cols($base-4, 5);
 		}
-	}
-}
-
-// Hidden response
-.comment.is-response-hidden {
-	display: none;
-}
-
-// Blocked
-.comment.blocked {
-	color: color(neutral-3);
-
-	.comment__header {
-		opacity: .5;
-	}
-
-	.comment__recommend {
-		display: none;
-	}
-}
-
-.comment.comment--open {
-	.animated {
-		display: block;
 	}
 }
 

@@ -136,23 +136,6 @@ Display a standard article card.
 		}
 	}
 
-	&.has-image .card__object {
-		padding: 0;
-
-		@include mq($to: col1) {
-			@include flex(1);
-			@include order(3);
-		}
-
-		.card__image {
-			@include mq($from: col1) {
-				height: 100%;
-				width: auto;
-				margin-bottom: -1px;
-			}
-		}
-	}
-
 	.card__footer {
 		color: color(neutral-3);
 		font-family: $agate-sans;
@@ -176,7 +159,25 @@ Display a standard article card.
 		}
 	}
 
+
 	&.has-image {
+		.card__object {
+			padding: 0;
+
+			@include mq($to: col1) {
+				@include flex(1);
+				@include order(3);
+			}
+
+			.card__image {
+				@include mq($from: col1) {
+					height: 100%;
+					width: auto;
+					margin-bottom: -1px;
+				}
+			}
+		}
+
 		.card__footer {
 			bottom: 50%;
 
