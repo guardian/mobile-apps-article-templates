@@ -1,0 +1,203 @@
+.styleguide__main {
+    padding: base-px(4.75, 0, 1, 0);
+    position: relative;
+}
+
+.styleguide__navigation {
+    background-color: #ececec;
+    border-right: 12px solid color(shade-5);
+    width: 14em;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -14em;
+    visibility: hidden;
+    overflow-y: auto;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+
+    .nav__item {
+        font-family: $egyptian-display;
+        font-weight: 600;
+        border-top: 1px solid color(tone-news-accent);
+
+        a {
+            padding: base-px(0.25, 1, 2.33333, 0.25);
+            display: block;
+        }
+    }
+}
+
+.styleguide__navigation-checkbox {
+  display: none;
+}
+
+.styleguide__navigation-toggle {
+    background-color: color(shade-5);
+    border-bottom: 1px solid color(tone-news-accent);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+
+    .icon {
+        color: #fff;
+        text-align: center;
+        background-color: color(tone-news);
+        border-radius: 50%;
+        padding: 1rem 0;
+        margin: 0.75rem 0.5rem;
+        width: 44px;
+        height: 44px;
+        display: block;
+        cursor: pointer;
+    }
+    &:active {
+        .icon {
+            background-color: color(tone-news-accent);
+        }
+    }
+}
+
+.styleguide__main,
+.styleguide__navigation,
+.styleguide__navigation-toggle {
+    -webkit-backface-visibility: hidden;
+}
+.styleguide__main,
+.styleguide__navigation-toggle {
+    -webkit-transition: -webkit-transform .3s ease-in-out;
+    transition: transform .3s ease-in-out;
+}
+#styleguide__navigation-checkbox:checked + .styleguide__navigation {
+    visibility: visible;
+}
+#styleguide__navigation-checkbox:checked ~ .styleguide__main,
+#styleguide__navigation-checkbox:checked ~ .styleguide__navigation,
+#styleguide__navigation-checkbox:checked ~ .styleguide__navigation-toggle {
+    -webkit-transform: translateX(14em);
+    transform: translateX(14em);
+}
+
+.styleguide__article {
+    background-color: #fff;
+    border-bottom: 2px solid color(shade-4);
+    overflow: hidden;
+
+    .tags {
+        .inline-list__item {
+            &:first-of-type {
+                font-weight: normal;
+            }
+        }
+    }
+}
+
+.styleguide__article__header {
+    .headline {
+        padding: base-px(0, 1, 2.5, 1);
+    }
+}
+
+.styleguide__article__body {
+    padding: base-px(1);
+
+    > h1 {
+        color: color(shade-1);
+        font-family: $egyptian-display;
+        font-size: 1.125em;
+        font-weight: 600;
+        margin: base-px(0, 0, 0.25, 0);
+    }
+
+    > p {
+        color: color(shade-1);
+        margin: base-px(0, 0, 1, 0);
+    }
+
+    .highlight pre {
+        line-height: 1.2;
+        white-space: pre-wrap;
+    }
+
+    .advert-slot {
+        display: block !important; // Overrides default advert-slot visability
+    }
+}
+
+.styleguide__contentinfo {
+    color: color(shade-2);
+    font-family: $agate-sans;
+    @include meta();
+    padding: base-px(1, 1, 2, 1);
+}
+
+// Helpers
+.clear {
+    clear: left;
+}
+
+// Animation examples
+.anim {
+    background-color: color(shade-3);
+    margin: 0 0 0.5em -1px;
+    width: 100%;
+    height: 2em;
+    position: relative;
+
+    &::after {
+        content: 'Hover to play';
+        color: rgba(color(shade-5), 0.75);
+        font-family: $agate-sans;
+        @include meta(0.9);
+        text-align: center;
+        padding: 0.5em 0;
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+    > span {
+        background-color: color(shade-1);
+        width: 2em;
+        height: 2em;
+        display: block;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+        -webkit-animation-play-state: paused;
+        animation-play-state: paused;
+    }
+
+    &:hover {
+        > span {
+            -webkit-animation-play-state: running;
+            animation-play-state: running;
+        }
+    }
+}
+
+// Colour swatches
+[class^=c-] {
+    color: #333;
+    font-family: $agate-sans;
+    text-align: center;
+    text-shadow: #ffffff 0 0 2px;
+    vertical-align: middle;
+    box-shadow: inset 1px 1px 0 rgba(#000, .1), inset -1px -1px 0 rgba(#000, .1);
+    margin: 0 0 0.5em -1px;
+    width: 8em;
+    height: 8em;
+    float: left;
+}
+
+[class*=-accent] {
+    margin-right: 0.5em;
+}
+
+@include generate-colour-classes($palette: $gu-colours, $property: background);
+
+@include show-colour-meta($palette: $gu-colours);
