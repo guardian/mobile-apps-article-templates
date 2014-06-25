@@ -106,7 +106,7 @@
 
 .styleguide__article__header {
     .headline {
-        padding: base-px(0, 1, 2.5, 1);
+        padding: base-px(0.5, 1, 2.5, 1);
     }
 }
 
@@ -118,11 +118,13 @@
         font-family: $egyptian-display;
         font-size: 1.125em;
         font-weight: 600;
-        margin: base-px(0, 0, 0.25, 0);
+        margin: base-px(0, 0, 0.5, 0);
+        padding-top: base-px(0.25);
     }
 
     > p {
         color: color(shade-1);
+        @include meta();
         margin: base-px(0, 0, 1, 0);
     }
 

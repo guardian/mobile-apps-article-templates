@@ -125,7 +125,7 @@ A standard colour palette used across the Guardian’s digital products.
     font-weight: normal; }
 
 .styleguide__article__header .headline {
-  padding: 0px 12px 30px 12px; }
+  padding: 6px 12px 30px 12px; }
 
 .styleguide__article__body {
   padding: 12px; }
@@ -134,10 +134,19 @@ A standard colour palette used across the Guardian’s digital products.
     font-family: "Egyptian Display", Georgia, serif;
     font-size: 1.125em;
     font-weight: 600;
-    margin: 0px 0px 3px 0px; }
+    margin: 0px 0px 6px 0px;
+    padding-top: 3px; }
   .styleguide__article__body > p {
     color: #333333;
     margin: 0px 0px 12px 0px; }
+    @media all and (max-width: 40.615em) {
+      .styleguide__article__body > p {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.625em) {
+      .styleguide__article__body > p {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
   .styleguide__article__body .highlight pre {
     line-height: 1.2;
     white-space: pre-wrap; }
@@ -640,36 +649,35 @@ A standard colour palette used across the Guardian’s digital products.
     content: "#3e454c"; }
 
 .codeExample {
-  margin: 0px 0px 48px 0px;
-  border: 1px solid rgba(220, 218, 213, 0.75); }
+  margin: 0px -12px 48px -12px; }
 
-.exampleOutput,
-.codeBlock {
-  padding: 12px; }
-  .exampleOutput::before,
-  .codeBlock::before {
-    color: #666666;
-    font-family: "Agate Sans", sans-serif;
-    padding: 0px 0px 12px 0px;
-    display: block;
-    position: relative; }
-    @media all and (max-width: 40.615em) {
-      .exampleOutput::before,
-      .codeBlock::before {
-        font-size: 1.26rem;
-        line-height: 1.8rem; } }
-    @media all and (min-width: 40.625em) {
-      .exampleOutput::before,
-      .codeBlock::before {
-        font-size: 1.44rem;
-        line-height: 1.98rem; } }
+.exampleOutput::before,
+.codeBlock::before {
+  color: #999999;
+  font-family: "Agate Sans", sans-serif;
+  text-transform: uppercase;
+  padding: 0px 0px 12px 0px;
+  display: block;
+  position: relative; }
+  @media all and (max-width: 40.615em) {
+    .exampleOutput::before,
+    .codeBlock::before {
+      font-size: 1.26rem;
+      line-height: 1.8rem; } }
+  @media all and (min-width: 40.625em) {
+    .exampleOutput::before,
+    .codeBlock::before {
+      font-size: 1.44rem;
+      line-height: 1.98rem; } }
 
 .exampleOutput {
   background-image: linear-gradient(45deg, rgba(246, 246, 246, 0.75) 25%, transparent 25%, transparent 75%, rgba(246, 246, 246, 0.75) 75%, rgba(246, 246, 246, 0.75)), linear-gradient(45deg, rgba(246, 246, 246, 0.75) 25%, transparent 25%, transparent 75%, rgba(246, 246, 246, 0.75) 75%, rgba(246, 246, 246, 0.75));
   background-size: 44px 44px;
-  background-position: 0 0, 22px 22px; }
+  background-position: 0 0, 22px 22px;
+  padding: 12px 0px; }
   .exampleOutput::before {
-    content: 'Example:'; }
+    content: 'Example:';
+    padding: 0px 0px 12px 12px; }
   .exampleOutput::after {
     content: '';
     display: table; }
@@ -684,8 +692,8 @@ A standard colour palette used across the Guardian’s digital products.
   clear: both; }
 
 .codeBlock {
-  background-color: rgba(246, 246, 246, 0.5);
-  box-shadow: inset 0 2px 0 rgba(220, 218, 213, 0.25); }
+  background-color: rgba(246, 246, 246, 0.75);
+  padding: 12px; }
   .codeBlock::before {
     content: 'Markup:'; }
 
