@@ -55,7 +55,6 @@ require([
         // Common bootstrap
         Common.init(config);
 
-        // Template-specific bootstrap
         if (config.contentType === 'article') {
             Article.init();
         }

@@ -29,16 +29,16 @@ define([
     
     function resizeRow(obj, row, settings, rownum) {
         var imageExtras             = (settings.padding * (obj.length - 1)),
-            albumWidthAdjusted         = settings.albumWidth - imageExtras,
+            albumWidthAdjusted      = settings.albumWidth - imageExtras,
             overPercent             = albumWidthAdjusted / (row - imageExtras),
-            trackWidth                 = imageExtras,
+            trackWidth              = imageExtras,
             lastRow                 = (row < settings.albumWidth ? true : false);
 
         for (var i = 0; i < obj.length; i++) {
-            var $obj                 = $(obj[i][0]),
-                fw                    = Math.floor(obj[i][1] * overPercent),
-                fh                     = Math.floor(obj[i][2] * overPercent),
-                isNotLast            = !!(( i < obj.length - 1));
+            var $obj                = $(obj[i][0]),
+                fw                  = Math.floor(obj[i][1] * overPercent),
+                fh                  = Math.floor(obj[i][2] * overPercent),
+                isNotLast           = !!(( i < obj.length - 1));
 
             if (settings.allowPartialLastRow === true && lastRow === true) {
                 fw = obj[i][1];
@@ -68,12 +68,12 @@ define([
     function applyModifications($obj, isNotLast, settings) {
         var css = {
             marginBottom            : settings.padding,
-            marginRight                : (isNotLast) ? settings.padding : 0,
-            display                    : settings.display,
-            verticalAlign            : "bottom",
+            marginRight             : (isNotLast) ? settings.padding : 0,
+            display                 : settings.display,
+            verticalAlign           : "bottom",
             overflow                : "hidden"
         };
-        
+
         return $obj.parent().css(css);
     }
 
@@ -91,15 +91,15 @@ define([
             padding = parseInt(padding.substring(0, padding.length - 2));
 
         var settings = {
-            "targetHeight"            : imageHeight,
+            "targetHeight"          : imageHeight,
             "albumWidth"            : $(selector)[0].clientWidth - (padding * 2),
-            "padding"                : padding,
+            "padding"               : padding,
             "images"                : $(children),
-            "fadeSpeed"                : "fast",
-            "display"                : "inline-block",
+            "fadeSpeed"             : "fast",
+            "display"               : "inline-block",
             "effect"                : "default",
-            "direction"                : "vertical",
-            "allowPartialLastRow"    : false
+            "direction"             : "vertical",
+            "allowPartialLastRow"   : false
         }
 
         var row = 0,

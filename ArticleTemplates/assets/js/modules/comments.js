@@ -48,8 +48,8 @@ define([
                                 // If comment is replyable allow buttons
                                 if (block.hasClass('visible')) {
                                     // Remove any previous animation classes
-                                    $(".comment__options").removeClass("animated fadeInRight");
-                                    $(".comment__timestamp").removeClass("animated scaleOut");
+                                    $(".comment__options").removeClass("animated fadeinright");
+                                    $(".comment__timestamp").removeClass("animated scaleout");
                                     if (block.hasClass("comment--open")) {
                                         // Hide the buttons
                                         block.removeClass("comment--open");
@@ -58,8 +58,8 @@ define([
                                         $(".comment--open").removeClass("comment--open");
                                         // Different animations for different block types
                                         if (block.hasClass("is-response")) {
-                                            $(".comment__timestamp", el).addClass("animated scaleOut");
-                                            $('.comment__options', el).addClass("animated fadeInRight");
+                                            $(".comment__timestamp", el).addClass("animated scaleout");
+                                            $('.comment__options', el).addClass("animated fadeinright");
                                         } else {
                                             // Calculate height to animate initial comments
                                             var originalHeight = block[0].clientHeight;
@@ -70,7 +70,7 @@ define([
                                                 block.css("min-height", "110px");
                                             }
                                             setTimeout(function() {
-                                                $('.comment__options', el).addClass("animated fadeInRight");
+                                                $('.comment__options', el).addClass("animated fadeinright");
                                                 block.css("min-height", originalHeight);
                                             }, 350);
                                         }

@@ -149,6 +149,48 @@ A standard colour palette used across the Guardian’s digital products.
       font-size: 1.6rem;
       line-height: 2.2rem; } }
 
+.clear {
+  clear: left; }
+
+.anim {
+  background-color: #999999;
+  margin: 0 0 0.5em -1px;
+  width: 100%;
+  height: 2em;
+  position: relative; }
+  .anim::after {
+    content: 'Hover to play';
+    color: rgba(246, 246, 246, 0.75);
+    font-family: "Agate Sans", sans-serif;
+    text-align: center;
+    padding: 0.5em 0;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; }
+    @media all and (max-width: 40.615em) {
+      .anim::after {
+        font-size: 1.26rem;
+        line-height: 1.8rem; } }
+    @media all and (min-width: 40.625em) {
+      .anim::after {
+        font-size: 1.44rem;
+        line-height: 1.98rem; } }
+  .anim > span {
+    background-color: #333333;
+    width: 2em;
+    height: 2em;
+    display: block;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused; }
+  .anim:hover > span {
+    -webkit-animation-play-state: running;
+    animation-play-state: running; }
+
 [class^=c-] {
   color: #333;
   font-family: "Agate Sans", sans-serif;
@@ -163,9 +205,6 @@ A standard colour palette used across the Guardian’s digital products.
 
 [class*=-accent] {
   margin-right: 0.5em; }
-
-.clear {
-  clear: left; }
 
 .c--shade-1 {
   background: #333333; }
@@ -622,9 +661,9 @@ A standard colour palette used across the Guardian’s digital products.
   background-size: 44px 44px;
   background-position: 0 0, 22px 22px; }
   .exampleOutput::before {
-    content: "Example:"; }
+    content: 'Example:'; }
   .exampleOutput::after {
-    content: " ";
+    content: '';
     display: table; }
   .exampleOutput::after {
     clear: both; }
@@ -640,7 +679,7 @@ A standard colour palette used across the Guardian’s digital products.
   background-color: rgba(246, 246, 246, 0.5);
   box-shadow: inset 0 2px 0 rgba(220, 218, 213, 0.25); }
   .codeBlock::before {
-    content: "Markup:"; }
+    content: 'Markup:'; }
 
 .c {
   color: #999988;
