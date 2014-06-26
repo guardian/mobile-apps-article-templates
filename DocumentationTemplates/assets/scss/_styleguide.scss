@@ -71,7 +71,7 @@
     right: 0;
     z-index: 9999;
 
-    .icon {
+    [data-icon] {
         color: #fff;
         text-align: center;
         background-color: color(tone-news);
@@ -85,7 +85,7 @@
     }
 
     &:active {
-        .icon {
+        [data-icon] {
             background-color: color(tone-news-accent);
         }
     }
@@ -225,7 +225,7 @@
     min-width: 12em;
     display: inline-block;
 
-    &[data-icon]::before {
+    [data-icon]::before {
         color: color(shade-1);
         font-size: 250%;
         vertical-align: middle;
