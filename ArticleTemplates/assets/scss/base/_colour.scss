@@ -1,0 +1,84 @@
+/*doc
+---
+title: Colours
+name: colour
+category: Base
+---
+A standard colour palette used across the Guardian’s digital products.
+
+```html_example
+<div class="c--shade-1"></div>
+<div class="c--shade-2"></div>
+<div class="c--shade-3"></div>
+<div class="c--shade-4"></div>
+<div class="c--shade-5"></div>
+
+<div class="c--tone-news clear"></div>
+<div class="c--tone-news-accent"></div>
+
+<div class="c--tone-live"></div>
+<div class="c--tone-live-accent"></div>
+
+<div class="c--tone-media"></div>
+<div class="c--tone-media-accent"></div>
+
+<div class="c--tone-feature1"></div>
+<div class="c--tone-feature1-accent"></div>
+
+<div class="c--tone-feature2"></div>
+<div class="c--tone-feature2-accent"></div>
+
+<div class="c--tone-feature3"></div>
+<div class="c--tone-feature3-accent"></div>
+
+<div class="c--tone-comment-text"></div>
+<div class="c--tone-comment-bg"></div>
+<div class="c--tone-comment"></div>
+<div class="c--tone-comment-accent"></div>
+
+<div class="c--witness clear"></div>
+<div class="c--witness-bg"></div>
+```
+*/
+
+$gu-colours: (
+    // Neutral shades
+    shade-1:                #333,
+    shade-2:                #666,
+    shade-3:                #999,
+    shade-4:                #dcdad5,
+    shade-5:                #f6f6f6,
+
+    // Tonal colours
+    tone-news:                #005689,
+    tone-news-accent:        #4bc6df,
+
+    tone-live:                #b51800,
+    tone-live-accent:        #cc2b12,
+
+    tone-media:                #fb0,
+    tone-media-accent:        #ffd35c,
+
+    tone-feature1:            #951c55,
+    tone-feature1-accent:    #e02b7f,
+
+    tone-feature2:            #4e0375,
+    tone-feature2-accent:    #8006c2,
+
+    tone-feature3:            #7d0068,
+    tone-feature3-accent:    #c900a8,
+
+    tone-comment:            #e6711b,
+    tone-comment-accent:    #f39f33,
+    tone-comment-text:        #2d2a26,
+    tone-comment-bg:        #eeebe8,
+
+    // Witness
+    witness:                #213583,
+    witness-bg:                #3e454c,
+);
+
+// Colour palette
+@function color($name, $palette: $gu-colours) {
+    @return map-get($gu-colours, $name);
+}

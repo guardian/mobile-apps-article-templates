@@ -1,0 +1,34 @@
+/*doc
+---
+title: Bar chart
+name: bar-chart
+category: Charts
+---
+Display ratio in a single bar chart.
+
+```html_example
+<div class="bar-chart">
+    <span class="bar-chart__value" style="width: 70%">7</span>
+    3
+</div>
+```
+*/
+
+.bar-chart {
+    text-align: right;
+    background-color: color(shade-4);
+    padding: base-px(.25, .5);
+    margin: base-px(0, 0, 1, 0);
+    width: 100%;
+    position: relative;
+}
+
+.bar-chart__value {
+    text-align: left;
+    background-color: color(shade-3);
+    padding: base-px(.25, .5);
+    width: 50%; // Default
+    position: absolute;
+    top: 0;
+    left: 0;
+}

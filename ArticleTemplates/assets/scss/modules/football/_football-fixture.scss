@@ -1,0 +1,229 @@
+/*doc
+---
+title: Football fixtures
+name: football-fixtures
+category: Football
+---
+Display today's football fixtures; upcoming, in progress and ended.
+
+```html_example
+<a class="football-fixture date">
+    <div class="football-fixture__data football-fixture__data--1">Today's matches</div>
+    <div class="football-fixture__data football-fixture__data--2"></div>
+    <div class="football-fixture__data football-fixture__data--3"></div>
+    <div class="football-fixture__data football-fixture__data--4">Wednesday 18 June 2014</div>
+</a>
+<a class="football-fixture competition">
+    <div class="football-fixture__data football-fixture__data--1">World Cup 2014</div>
+    <div class="football-fixture__data football-fixture__data--2"></div>
+    <div class="football-fixture__data football-fixture__data--3"></div>
+    <div class="football-fixture__data football-fixture__data--4"></div>
+</a>
+<a class="football-fixture match" href="#match">
+    <div class="football-fixture__data football-fixture__data--1">17:00</div>
+    <div class="football-fixture__data football-fixture__data--2">Australia</div>
+    <div class="football-fixture__data football-fixture__data--3">v</div>
+    <div class="football-fixture__data football-fixture__data--4">Holland</div>
+</a>
+<a class="football-fixture match is-live" href="#match">
+    <div class="football-fixture__data football-fixture__data--1">1st</div>
+    <div class="football-fixture__data football-fixture__data--2">Spain</div>
+    <div class="football-fixture__data football-fixture__data--3">2 - 1</div>
+    <div class="football-fixture__data football-fixture__data--4">Chile</div>
+</a>
+<a class="football-fixture match has-ended" href="#match">
+    <div class="football-fixture__data football-fixture__data--1">FT</div>
+    <div class="football-fixture__data football-fixture__data--2">Cameroon</div>
+    <div class="football-fixture__data football-fixture__data--3">1 - 1</div>
+    <div class="football-fixture__data football-fixture__data--4">Croatia</div>
+</a>
+```
+*/
+
+.football-fixture {
+    color: color(shade-1);
+    font-family: $agate-sans;
+    @include body();
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+
+    // Match
+    &.match {
+        background-color: #fff;
+
+        .football-fixture__data {
+            border-top-color: color(tone-news-accent);
+        }
+
+        .football-fixture__data--1 {
+            color: color(shade-2);
+            padding: base-px(0, .5, 0, .5);
+
+            @include mq($to: col1) {
+                padding: base-px(0, .5, 0, 1);
+            }
+        }
+
+        .football-fixture__data--2 {
+            text-align: right;
+        }
+
+        .football-fixture__data--3 {
+            color: color(shade-2);
+            text-align: center;
+        }
+    }
+
+    // Match - finished
+    &.has-ended {
+        .football-fixture__data--1 {
+            font-weight: bold;
+            color: color(shade-1);
+        }
+    }
+
+    // Match - live
+    &.is-live {
+        font-weight: bold;
+
+        .football-fixture__data--1 {
+            color: color(tone-news-accent);
+        }
+    }
+
+    // Date and competition heading
+    &.date,
+    &.competition {
+        .football-fixture__data--1 {
+            font-weight: bold;
+
+            @include mq($to: col1) {
+                width: cols($base-1, 1.5);
+            }
+
+            @include mq(col1, col2) {
+                width: cols($base-2, 2.5);
+            }
+
+            @include mq(col2, col3) {
+                width: cols($base-3, 3.5, 1);
+            }
+
+            @include mq($from: col3) {
+                width: cols($base-4, 6.5, 1);
+            }
+        }
+
+        .football-fixture__data--2 {
+            @include mq($to: col1) {
+                width: cols($base-1, .5);
+            }
+
+            @include mq(col1, col2) {
+                width: cols($base-2, 1);
+            }
+
+            @include mq(col2, col3) {
+                width: cols($base-3, 1.5);
+            }
+
+            @include mq($from: col3) {
+                width: cols($base-4, 1.5);
+            }
+        }
+
+        .football-fixture__data--4 {
+            color: color(shade-2);
+
+            @include mq($to: col1) {
+                display: none;
+            }
+        }
+    }
+
+    &.competition {
+        .football-fixture__data--1 {
+            font-weight: normal;
+            color: color(shade-2);
+        }
+    }
+}
+
+.football-fixture__data {
+    border-top: 1px solid color(shade-4);
+    padding: base-px(.25, .5, 1, .5);
+    display: table-cell;
+
+    &.football-fixture__data--1 {
+        @include mq($to: col1) {
+            padding: base-px(.25, 0, 1, 1);
+        }
+    }
+
+    &.football-fixture__data--1,
+    &.football-fixture__data--3 {
+        @include mq($to: col1) {
+            width: cols($base-1, .75);
+        }
+
+        @include mq(col1, col2) {
+            width: cols($base-2, 1);
+        }
+
+        @include mq(col2, col3) {
+            width: cols($base-3, 1.5);
+        }
+
+        @include mq($from: col3) {
+            width: cols($base-4, 1.5);
+        }
+    }
+
+    &.football-fixture__data--2,
+    &.football-fixture__data--4 {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &.football-fixture__data--2 {
+        @include mq($to: col1) {
+            width: cols($base-1, 1);
+        }
+
+        @include mq(col1, col2) {
+            width: cols($base-2, 2.5);
+        }
+
+        @include mq(col2, col3) {
+            width: cols($base-3, 3.5, 1);
+        }
+
+        @include mq($from: col3) {
+            width: cols($base-4, 6.5, 1);
+        }
+    }
+
+    &.football-fixture__data--3 {
+        white-space: nowrap;
+    }
+
+    &.football-fixture__data--4 {
+        @include mq($to: col1) {
+            width: cols($base-1, 1.5);
+        }
+
+        @include mq(col1, col2) {
+            width: cols($base-2, 3.5, 1);
+        }
+
+        @include mq(col2, col3) {
+            width: cols($base-3, 5.5, 1);
+        }
+
+        @include mq($from: col3) {
+            width: cols($base-4, 8.5, 1);
+        }
+    }
+}

@@ -1,0 +1,35 @@
+# Custom config for scss-lint
+# Find an example of all options here: https://github.com/causes/scss-lint/blob/master/config/default.yml
+
+linters:
+  Indentation:
+    enabled: true
+    width: 4
+
+  CapitalizationInSelector:
+    enabled: true
+    exclude:
+      - tones/_tone--live.scss # Tone comes from MAPI as 'liveBlog'
+
+  Comment:
+    enabled: false
+
+  PropertySortOrder:
+    enabled: false
+
+  SelectorDepth:
+    enabled: true
+    max_depth: 4
+    exclude:
+      - tones/** # Tones require extra specificity
+
+  SingleLinePerSelector:
+    exclude:
+      - base/_reset.scss
+
+  NameFormat:
+    enabled: false
+    convention: BEM
+
+  UnnecessaryMantissa:
+    enabled: false

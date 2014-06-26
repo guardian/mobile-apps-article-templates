@@ -1,0 +1,65 @@
+/*doc
+---
+title: More
+name: more
+category: Modules
+---
+Display a link to view more.
+
+```html_example
+<div class="more more--comments">
+    <span class="more__label" data-icon="&#xe050;">Show 3 more replies</span>
+</div>
+
+<div class="more more--live-blogs">
+    <span class="more__label" data-icon="&#xe050;">View more updates</span>
+</div>
+```
+*/
+
+.more {
+    color: color(tone-news);
+    font-family: $agate-sans;
+    font-weight: bold;
+    @include body();
+    padding: base-px(1, 0, 2, 0);
+    min-height: 44px;
+
+    &::before {
+        font-size: 85%;
+    }
+}
+
+// View more comments
+.more--comments {
+    border-top: 1px dotted color(shade-4);
+
+    @include mq($to: col2) {
+        margin-left: base-px(4.33333);
+    }
+
+    @include mq(col2, col3) {
+        margin-left: cols($base-3, 4);
+    }
+
+    @include mq($from: col3) {
+        margin-left: cols($base-4, 5);
+    }
+}
+
+// View more live blog updates
+.more--live-blogs {
+    border-bottom: 1px dotted color(shade-4);
+
+    @include mq($to: col2) {
+        margin: base-px(0, 1);
+    }
+
+    @include mq(col2, col3) {
+        padding-left: cols($base-3, 4, 1);
+    }
+
+    @include mq($from: col3) {
+        padding-left: cols($base-4, 5, 1);
+    }
+}

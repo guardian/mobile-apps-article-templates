@@ -1,68 +1,70 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-	<title>Liveblog</title>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="initial-scale=1, maximum-scale=1" />
-	<link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__css/style.css" />
-
-	<script type="text/javascript" src="__TEMPLATES_DIRECTORY__js/amd/shim.js"></script>
+    <title>Liveblog</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/style.css" />
+    <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/js/shim.js"></script>
 </head>
 
-<body id="liveblog" class="__SECTION_TONE__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__ advert-config--__ADS_CONFIG__ __IS_LIVE__" data-content-type="liveblog" data-ads-enabled="__ADS_ENABLED__" data-ads-slot="/__AD_NETWORK_ID__/__AD_UNIT_IDENTIFIER__" data-ads-config="__ADS_CONFIG__" data-ads-keyword="__AD_KEYWORD_TARGETING__" style="margin-top: __ACTIONBARHEIGHT__px;">
-	<div class="advert-slot advert-slot--banner advert-slot--__ADS_ENABLED__">
-		<div class="advert-slot__label">Advertisement </div>
-		<div class="advert-slot__wrapper"></div>
-	</div>
+<body class="tone--__SECTION_TONE__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__ advert-config--__ADS_CONFIG__ __IS_LIVE__" data-content-type="liveblog" data-ads-enabled="__ADS_ENABLED__" data-ads-slot="/__AD_NETWORK_ID__/__AD_UNIT_IDENTIFIER__" data-ads-config="__ADS_CONFIG__" data-ads-keyword="__AD_KEYWORD_TARGETING__" style="margin-top: __ACTIONBARHEIGHT__px;">
+    <div class="advert-slot advert-slot--banner advert-slot--__ADS_ENABLED__">
+        <div class="advert-slot__label">Advertisement</div>
+        <div class="advert-slot__wrapper"></div>
+    </div>
 
-	<div class="article">
-		<div class="article__header">
-			<h3 class="article__section">
-				__SECTION__
-				__LIVE_TAG__
-			</h3>
+    <div class="article article--liveblog">
+        <div class="article__header">
+            <h3 class="section">__SECTION____LIVE_TAG__</h3>
+            <h1 class="headline selectable">__TITLE__</h1>
+            <div class="standfirst selectable">
+                __STANDFIRST__ <!-- TODO: This no longer needs to call liveblogTemplateStandfirst.html -->
+            </div>
 
-			<div class="inner-header selectable">
-				<h1 class="article__headline">__TITLE__</h1>
-				__STANDFIRST__
-				__ALERTS__
-			</div>
+            __ALERTS__
 
-			<div class="article__meta">
-				__ALERTS__
-				__BYLINE__
-				<p class="article__pubdate">__PUBDATE__</p>
-				__COMMENT_CTA__
-			</div>
+            <div class="meta">
+                <div class="meta__misc">
+                    <div class="meta__byline">
+                        __BYLINE__
+                        __ALERTS__
+                    </div>
+                    <p class="meta__pubdate">
+                        __PUBDATE__
+                    </p>
+                </div>
+                __COMMENT_CTA__
+            </div>
 
-		</div>
+            <div class="main-media main-media--hidden-caption">
+                __MAIN_MEDIA__
+            </div>
+        </div>
 
-		<div class="live-container">
-			<div class="article__body article__body--liveblog">
-				<div class="article__body--liveblog__pinned">
-					__MAIN_MEDIA__
-					__ASIDE_WITNESS__
-				</div>
-				__BLOCKS__
-			</div>
+        <div class="article__body article__body--liveblog">
+            <div class="article__body--liveblog__pinned">
+                __ASIDE_WITNESS__
+            </div>
+            __BLOCKS__
+        </div>
 
-			__SHOW_MORE__
+        __SHOW_MORE__
 
-			<div class="live-more-loading">
-				<img src="__TEMPLATES_DIRECTORY__css/img/loading.gif" />
-			</div>
-		</div>
+        <div class="loading loading--liveblog">
+            <img src="__TEMPLATES_DIRECTORY__assets/img/loading.gif" />
+        </div>
 
-		<div class="article__tags">
-			<ul class="list">
-				
-			</ul>
-		</div>
-	</div>
-	
-	__COMMENTS_MODULE__
-	__RELATED_MODULE__
+        <div class="tags">
+            <ul class="inline-list">
+                
+            </ul>
+        </div>
+    </div>
 
-	<script type="text/javascript" id="gu" src="__TEMPLATES_DIRECTORY__js/amd/components/require.min.js" data-main="__TEMPLATES_DIRECTORY__js/amd/app.js" data-js-dir="__TEMPLATES_DIRECTORY__js" async></script>
+    __COMMENTS_MODULE__
+    __RELATED_MODULE__
+
+    <script type="text/javascript" id="gu" src="__TEMPLATES_DIRECTORY__assets/js/components/require.js" data-main="__TEMPLATES_DIRECTORY__assets/js/app.js" data-js-dir="__TEMPLATES_DIRECTORY__assets/js" async></script>
 </body>
 </html>

@@ -1,0 +1,164 @@
+/*doc
+---
+title: Element
+name: element
+category: External
+---
+Display an embedded element. Element embeds are typically shown as figures, and can optionally include a supporting caption.
+
+```html_example
+<figure class="element element-image">
+    <div class="element__inner">
+        <img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/11/1402512126497/Matt-Kenyon-on-Birmingham-014.jpg?width=900&amp;height=540&amp;quality=60"/>
+    </div>
+</figure>
+```
+
+```html_example
+<figure class="element element-video">
+    <iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/hBpN5ngEIo4?wmode=opaque&amp;feature=oembed&amp;start=19" height="259" width="460"></iframe>
+</figure>
+```
+
+```html_example
+<figure class="element element-placeholder">
+    <div class="element__inner">
+        <img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/audio/video/2014/6/11/1402520604664/An-Iraqi-Kurdish-security-011.jpg?width=900&amp;height=540&amp;quality=60"/>
+        <span class="element-placeholder__button touchpoint">
+            <span class="touchpoint__button icon">&#xe04B;</span>
+            <span class="touchpoint__label">01:31</span>
+        </span>
+    </div>
+</figure>
+```
+
+```html_example
+<figure class="element element-embed">
+    <iframe class="fenced" srcdoc="&lt;img src=&quot;http://static.guim.co.uk/ni/1400070661837/Romania_bison_release2.svg&quot; style=&quot;width:100%;&quot; /&gt;"></iframe>
+    <figcaption>
+        The European bison's initial range covers 15 hectares, but by September the animals would be able to roam freely over a 160-hectare area.
+    </figcaption>
+</figure>
+```
+*/
+
+// Maintain ratio of embedded media item
+.element__inner {
+    background-color: color(shade-4);
+    padding-bottom: 60%;
+    position: relative;
+    overflow: hidden;
+    display: block;
+
+    img {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+}
+
+// Audio, generic embeds and maps
+.element-audio,
+.element-embed,
+.element-map {
+    iframe {
+        width: 100%;
+    }
+}
+
+// Video
+.element-video {
+    background-color: #000;
+    padding-bottom: 56.25%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+    iframe,
+    embed,
+    object,
+    video {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .element__inner {
+        // Videos don't have an .element__inner class, so we can't display captions alongside this type of embed.
+    }
+}
+
+// Video placeholder
+.element-placeholder {
+    width: 100%;
+
+    .element-placeholder__button {
+        padding: base-px(.66667);
+        position: absolute;
+        bottom: 0;
+        z-index: 2;
+
+        .touchpoint__button {
+            color: color(shade-1);
+            background-color: color(tone-media);
+
+            &:active {
+                color: color(tone-media);
+                background-color: color(shade-1);
+            }
+        }
+
+        .touchpoint__label {
+            color: color(tone-media);
+            text-shadow: 0 0 4px rgba(0, 0, 0, .5);
+        }
+    }
+
+    &:active {
+        .touchpoint__button {
+            color: color(tone-media);
+            background-color: color(shade-1);
+        }
+    }
+
+    .element__inner {
+        padding-bottom: 56.25%; // Maintain 16:9 video ratio
+    }
+}
+
+// Replace elements with empty boxes when no network connection
+.offline {
+    .element-audio,
+    .element-embed,
+    .element-map,
+    .element-video {
+        overflow: hidden;
+        position: relative;
+        background-color: color(shade-4);
+
+        &::before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            background-color: color(shade-4);
+            position: absolute;
+            z-index: 20;
+        }
+
+        iframe,
+        embed,
+        object,
+        video {
+            z-index: -5;
+        }
+
+        figcaption {
+            background-color: #fff;
+        }
+    }
+}

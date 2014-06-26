@@ -1,0 +1,46 @@
+/*doc
+---
+title: Aside
+name: aside
+category: Modules
+---
+Positions a piece of text or HTML component to the right-hand side of any running text.
+
+```html_example
+<aside class="aside">
+    <p>Standing nearly two metres tall and weighing as much as a car, <strong>the European bison</strong> is the continent's largest land mammal. Bison bonasus eat grasses and herbs, and are capable of consuming 32kg each day.</p>
+</aside>
+
+<p><i>Bison bonasus</i> was driven to extinction in the wild across Europe in 1927 after decades of decline from hunting and habitat loss. But it has become that rare endangered species: a conservation success story. There are now thousands in the wild, all descended from the 54 individuals in captivity when the last wild one was killed in Poland's Bialowieza forest. Despite the increase in numbers, the European bison is still rarer than other high profile species, such as the black rhino, even with the reintroductions. There are over 5,000 European bison, with about 3,200 in the wild.</p>
+```
+*/
+
+.aside {
+    border-top: 1px dotted color(shade-4);
+    float: right;
+    clear: right;
+
+    @include mq($to: col1) {
+        margin: base-px(2, 0);
+        border-bottom: 1px dotted color(shade-4);
+        padding: base-px(1, 0);
+        width: 100%;
+    }
+
+    @include mq($from: col1) {
+        margin: base-px(0, 0, 2, 2);
+        padding: base-px(1, 1, 1, 0);
+    }
+
+    @include mq(col1, col2) {
+        width: cols($base-2, 3);
+    }
+
+    @include mq(col2, col3) {
+        width: cols($base-3, 4);
+    }
+
+    @include mq($from: col3) {
+        width: cols($base-4, 4);
+    }
+}

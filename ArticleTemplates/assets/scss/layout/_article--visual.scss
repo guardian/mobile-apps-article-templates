@@ -1,0 +1,42 @@
+.article--visual {
+    .article__header {
+        .avatar--author {
+            display: none;
+        }
+
+        .meta__pubdate {
+            padding-top: base-px(.75);
+        }
+
+        .meta__misc {
+            @include mq($from: col2) {
+                display: table-cell;
+                border-left: 1px dotted color(shade-2);
+            }
+
+            @include mq(col2, col3) {
+                width: cols($base-3, 4);
+            }
+
+            @include mq($from: col3) {
+                width: cols($base-4, 4);
+            }
+        }
+    }
+
+    .article__body {
+        padding: base-px(0, 1);
+
+        @include mq(col2, col3) {
+            padding-right: cols($base-3, 3);
+        }
+
+        @include mq($from: col3) {
+            padding-right: cols($base-4, 4);
+        }
+    }
+
+    .tags {
+        border-top-color: color(shade-2);
+    }
+}

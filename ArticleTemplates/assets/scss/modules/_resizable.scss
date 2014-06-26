@@ -1,0 +1,21 @@
+/*doc
+---
+title: Resizable
+name: resizable
+category: Modules
+---
+Makes a block of text resizable, based on user text size setting.
+
+```html_example
+<div class="resizable">Italian authorities warn of crisis as data shows sharp increase in those making treacherous sea crossing to southern Europe.</div>
+```
+*/
+
+.resizable {
+    @for $i from 1 through 10 {
+        .font-size-#{$i} & {
+            font-size: 60% + ($i * 10%);
+            line-height: 1.5;
+        }
+    }
+}

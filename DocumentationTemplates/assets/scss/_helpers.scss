@@ -1,0 +1,36 @@
+// Generate class names used on colour chips
+@mixin generate-colour-classes($palette, $prefix: c--, $property: color) {
+    @each $name, $color in $palette {
+        .#{$prefix}#{$name} {
+            #{$property}: $color;
+        }
+    }
+}
+
+// Display colour name and value on each colour chip
+@mixin show-colour-meta($palette, $prefix: c--) {
+    @each $name, $color in $palette {
+        .#{$prefix}#{$name} {
+            @if lightness($color) < 70% {
+                text-shadow: 0 0 1px #000;
+                font-weight: 200;
+                color: #fff;
+            }
+            &:before,
+            &:after {
+                font-size: 75%;
+                line-height: 1;
+                width: 90%;
+                display: inline-block;
+            }
+            &:before {
+                content: '#{$name}';
+                font-weight: bold;
+                margin-top: calc(50% - 1.5em);
+            }
+            &:after {
+                content: '#{$color}';
+            }
+        }
+    }
+}

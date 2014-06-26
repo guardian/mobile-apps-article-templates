@@ -1,0 +1,26 @@
+.support {
+    font-family: $agate-sans;
+    @include meta();
+    background-color: #fff;
+    padding: base-px(1);
+
+    .prose {
+        h2 + p,
+        h2 + ul,
+        h3 + p {
+            margin-top: 0;
+        }
+
+        h2 {
+            margin-bottom: 0;
+
+            & + h3 {
+                margin: base-px(.75, 0, 0, 0);
+            }
+        }
+
+        h3 {
+            @include body();
+        }
+    }
+}

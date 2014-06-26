@@ -1,0 +1,170 @@
+.tone--feature1 {
+    a,
+    .article__body > p:first-of-type:first-letter {
+        color: color(tone-feature1);
+    }
+
+    a:active {
+        color: color(tone-feature1-accent);
+    }
+
+    .article__header,
+    .touchpoint--primary .touchpoint__button {
+        background-color: color(tone-feature1);
+    }
+
+    .standfirst,
+    .touchpoint--primary:active .touchpoint__button {
+        background-color: color(tone-feature1-accent);
+    }
+
+    .prose p,
+    .prose li {
+        @include text-underline(color(tone-feature1), #fff, color(tone-feature1-accent));
+    }
+
+    .prose table,
+    .table,
+    .article {
+        border-top-color: color(tone-feature1-accent);
+    }
+}
+
+.tone--feature2 {
+    a,
+    .article__body > p:first-of-type:first-letter {
+        color: color(tone-feature2);
+    }
+
+    a:active {
+        color: color(tone-feature2-accent);
+    }
+
+    .article__header,
+    .touchpoint--primary .touchpoint__button {
+        background-color: color(tone-feature2);
+    }
+
+    .standfirst,
+    .touchpoint--primary:active .touchpoint__button {
+        background-color: color(tone-feature2-accent);
+    }
+
+    .prose p,
+    .prose li {
+        @include text-underline(color(tone-feature2), #fff, color(tone-feature2-accent));
+    }
+
+    .prose table,
+    .table,
+    .article {
+        border-top-color: color(tone-feature2-accent);
+    }
+}
+
+.tone--feature3 {
+    a,
+    .article__body > p:first-of-type:first-letter {
+        color: color(tone-feature3);
+    }
+
+    a:active {
+        color: color(tone-feature3-accent);
+    }
+
+    .article__header,
+    .touchpoint--primary .touchpoint__button {
+        background-color: color(tone-feature3);
+    }
+
+    .standfirst,
+    .touchpoint--primary:active .touchpoint__button {
+        background-color: color(tone-feature3-accent);
+    }
+
+    .prose p,
+    .prose li {
+        @include text-underline(color(tone-feature3), #fff, color(tone-feature3-accent));
+    }
+
+    .prose table,
+    .table,
+    .article {
+        border-top-color: color(tone-feature3-accent);
+    }
+}
+
+.tone--feature1,
+.tone--feature2,
+.tone--feature3 {
+    .article--feature {
+        .article__header {
+            a {
+                color: #fff;
+
+                &:active {
+                    color: rgba(#fff, .8);
+                }
+            }
+
+            .bullet,
+            ul > li {
+                &::before {
+                    color: rgba(#fff, .8);
+                }
+            }
+
+            .section,
+            .byline {
+                color: #fff;
+            }
+
+            .headline {
+                color: #fff;
+                position: relative;
+                z-index: 20;
+
+                @include mq($from: col2) {
+                    font-size: 3.5556em; // 64px
+                    font-weight: 100;
+                    line-height: .9375; // 60px
+                }
+            }
+
+            .standfirst {
+                color: rgba(#fff, .8);
+
+                strong {
+                    color: #fff;
+                    font-weight: normal;
+                }
+            }
+
+            .review-rating {
+                color: rgba(#fff, .4);
+            }
+
+            .review-rating--1 .icon:nth-child(-n+1),
+            .review-rating--2 .icon:nth-child(-n+2),
+            .review-rating--3 .icon:nth-child(-n+3),
+            .review-rating--4 .icon:nth-child(-n+4),
+            .review-rating--5 .icon:nth-child(-n+5) {
+                color: #fff;
+            }
+        }
+
+        .meta {
+            border: 0;
+            margin: 0;
+        }
+
+        .meta,
+        .meta__pubdate {
+            color: rgba(#fff, .8);
+        }
+
+        .meta__comments {
+            border-left-color: rgba(#fff, .4);
+        }
+    }
+}

@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Guardian Apps Article Templates: Football</title>
+
+    <!-- CSS & JS for article templates -->
+    <link rel="stylesheet" href="../ArticleTemplates/assets/css/style.css"/>
+    <script type="text/javascript" src="../ArticleTemplates/assets/js/shim.js"></script>
+
+    <!-- CSS for documentation -->
+    <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+
+<body class="styleguide no-ready">
+    <input class="styleguide__navigation-checkbox" id="styleguide__navigation-checkbox" type="checkbox"/>
+
+    <nav class="styleguide__navigation" role="navigation" id="sidebar">
+        <ul class="nav">
+            <li class="nav__item"><a href="../">Home</a></li>
+        
+            <li class="nav__item"><a href="modules.html">Modules</a></li>
+        
+            <li class="nav__item"><a href="base.html">Base</a></li>
+        
+            <li class="nav__item"><a href="guardianwitness.html">GuardianWitness</a></li>
+        
+            <li class="nav__item"><a href="media.html">Media</a></li>
+        
+            <li class="nav__item"><a href="charts.html">Charts</a></li>
+        
+            <li class="nav__item"><a href="blocks.html">Blocks</a></li>
+        
+            <li class="nav__item"><a href="content.html">Content</a></li>
+        
+            <li class="nav__item"><a href="containers.html">Containers</a></li>
+        
+            <li class="nav__item"><a href="external.html">External</a></li>
+        
+            <li class="nav__item"><a href="football.html">Football</a></li>
+        
+        </ul>
+    </nav>
+
+    <main class="styleguide__main selectable" role="main">
+        <article class="styleguide__article">
+            <div class="styleguide__article__header">
+                <h1 class="headline">Football</h1>
+            </div>
+
+            <div class="tags">
+                <ul class="inline-list"><!--
+                
+                 --><li class="inline-list__item"><a href="#football-fixtures">Football fixtures</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#match-stats">Match stats</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#match-status">Match status</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#match-summary">Match summary</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#player-card">Player card</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#table-football">Tables</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#team-lineup">Team line-up</a></li><!--
+                
+                --></ul>
+            </div>
+
+            <div class="styleguide__article__body">
+                
+<h1 id="football-fixtures">Football fixtures</h1>
+
+<p>Display today&#39;s football fixtures; upcoming, in progress and ended.</p>
+<div class="codeExample"><div class="exampleOutput"><a class="football-fixture date">
+    <div class="football-fixture__data football-fixture__data--1">Today's matches</div>
+    <div class="football-fixture__data football-fixture__data--2"></div>
+    <div class="football-fixture__data football-fixture__data--3"></div>
+    <div class="football-fixture__data football-fixture__data--4">Wednesday 18 June 2014</div>
+</a>
+<a class="football-fixture competition">
+    <div class="football-fixture__data football-fixture__data--1">World Cup 2014</div>
+    <div class="football-fixture__data football-fixture__data--2"></div>
+    <div class="football-fixture__data football-fixture__data--3"></div>
+    <div class="football-fixture__data football-fixture__data--4"></div>
+</a>
+<a class="football-fixture match" href="#match">
+    <div class="football-fixture__data football-fixture__data--1">17:00</div>
+    <div class="football-fixture__data football-fixture__data--2">Australia</div>
+    <div class="football-fixture__data football-fixture__data--3">v</div>
+    <div class="football-fixture__data football-fixture__data--4">Holland</div>
+</a>
+<a class="football-fixture match is-live" href="#match">
+    <div class="football-fixture__data football-fixture__data--1">1st</div>
+    <div class="football-fixture__data football-fixture__data--2">Spain</div>
+    <div class="football-fixture__data football-fixture__data--3">2 - 1</div>
+    <div class="football-fixture__data football-fixture__data--4">Chile</div>
+</a>
+<a class="football-fixture match has-ended" href="#match">
+    <div class="football-fixture__data football-fixture__data--1">FT</div>
+    <div class="football-fixture__data football-fixture__data--2">Cameroon</div>
+    <div class="football-fixture__data football-fixture__data--3">1 - 1</div>
+    <div class="football-fixture__data football-fixture__data--4">Croatia</div>
+</a>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;football-fixture date&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;football-fixture__data football-fixture__data--1&quot;</span><span class="nt">&gt;</span>Today&#39;s matches<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;football-fixture__data football-fixture__data--2&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;football-fixture__data football-fixture__data--3&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;football-fixture__data football-fixture__data--4&quot;</span><span class="nt">&gt;</span>Wednesday 18 June 2014<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;football-fixture competition&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;football-fixture__data football-fixture__data--1&quot;</span><span class="nt">&gt;</span>World Cup 2014<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;football-fixture__data football-fixture__data--2&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;football-fixture__data football-fixture__data--3&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;football-fixture__data football-fixture__data--4&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;football-fixture match&quot;</span> <span class="na">href=</span><span class="s">&quot;#match&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;football-fixture__data football-fixture__data--1&quot;</span><span class="nt">&gt;</span>17:00<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;football-fixture__data football-fixture__data--2&quot;</span><span class="nt">&gt;</span>Australia<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;football-fixture__data football-fixture__data--3&quot;</span><span class="nt">&gt;</span>v<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;football-fixture__data football-fixture__data--4&quot;</span><span class="nt">&gt;</span>Holland<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;football-fixture match is-live&quot;</span> <span class="na">href=</span><span class="s">&quot;#match&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;football-fixture__data football-fixture__data--1&quot;</span><span class="nt">&gt;</span>1st<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;football-fixture__data football-fixture__data--2&quot;</span><span class="nt">&gt;</span>Spain<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;football-fixture__data football-fixture__data--3&quot;</span><span class="nt">&gt;</span>2 - 1<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;football-fixture__data football-fixture__data--4&quot;</span><span class="nt">&gt;</span>Chile<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;football-fixture match has-ended&quot;</span> <span class="na">href=</span><span class="s">&quot;#match&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;football-fixture__data football-fixture__data--1&quot;</span><span class="nt">&gt;</span>FT<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;football-fixture__data football-fixture__data--2&quot;</span><span class="nt">&gt;</span>Cameroon<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;football-fixture__data football-fixture__data--3&quot;</span><span class="nt">&gt;</span>1 - 1<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;football-fixture__data football-fixture__data--4&quot;</span><span class="nt">&gt;</span>Croatia<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/a&gt;</span>
+</pre></div></div></div>
+<h1 id="match-stats">Match stats</h1>
+
+<p>Display comparison of possession, goal attempts, corners and fouls that occurred during a match. Colours are provided by style declarations provided on the same page.</p>
+<div class="codeExample"><div class="exampleOutput"><div class="match-stats">
+    <p class="match-stats__caption">Possession</p>
+    <div class="match-stats__posession">
+        <svg class="pie-chart pie-chart--possession" height="250" width="250" preserveAspectRatio="xMinYMin slice" viewBox="0 0 250 250">
+            <!-- Contents of SVG injected via D3.js -->
+            <g class="pie-chart__inner" transform="translate(125,125)">
+                <text class="pie-chart__key" transform="translate(-18,15)">%</text>
+                <path class="pie-chart__pie" d="M0,124A124,124 0 1,1 0,-124A124,124 0 1,1 0,124M0,42.67A42.67,42.67 0 1,0 0,-42.67A42.67,42.67 0 1,0 0,42.67Z"/>
+                <g class="pie-chart__segment">
+                    <path class="pie-chart__segment-arc pie-chart__segment-arc--away" d="M7.6540e-15,-125A125,125 0 1,1 -31.0862,121.0729L-10.3621,40.3576A41.67,41.67 0 1,0 2.5513e-15,-41.67Z"/>
+                </g>
+                <g class="pie-chart__segment">
+                    <path class="pie-chart__segment-arc pie-chart__segment-arc--home" d="M-31.0862,121.0729A125,125 0 0,1 -2.2962e-14,-125L-7.6540e-15,-41.67A41.67,41.67 0 0,0 -10.3621,40.3576Z"/>
+                </g>
+                <foreignObject class="pie-chart__label pie-chart__label--away" width="75" height="50" text-anchor="middle" transform="translate(47.6762,-14.5556)">
+                    <div class="pie-chart__label-text" width="50" x="0" dy="1.2em">Hull</div>
+                    <div class="pie-chart__label-value" x="0" dy="1.2em">54</div>
+                </foreignObject>
+                <foreignObject class="pie-chart__label pie-chart__label--home" width="75" height="50" text-anchor="middle" transform="translate(-117.6762,-35.4444)">
+                    <div class="pie-chart__label-text" width="50" x="0" dy="1.2em">Arsenal</div>
+                    <div class="pie-chart__label-value" x="0" dy="1.2em">46</div>
+                </foreignObject>
+            </g>
+        </svg>
+    </div>
+
+    <p class="match-stats__caption">Goal Attempts</p>
+    <div class="match-stats__shots">
+        <div class="match-stats__shots--home match-colours--home">
+            <p class="match-stats__shots__off">Off target <span>19</span></p>
+            <p class="match-stats__shots__on match-colours--home">On target <span>7</span></p>
+        </div>
+        <div class="match-stats__shots--away match-colours--away">
+            <p class="match-stats__shots__off">Off target <span>9</span></p>
+            <p class="match-stats__shots__on match-colours--away">On target <span>3</span></p>
+        </div>
+    </div>
+
+    <p class="match-stats__caption">Corners</p>
+    <div class="match-stats__corners">
+        <div class="bar-chart match-colours--away">
+            <span class="bar-chart__value match-colours--home" style="width: 70%">7</span>
+            <span>3</span>
+        </div>
+    </div>
+
+    <p class="match-stats__caption">Fouls</p>
+    <div class="match-stats__fouls">
+        <div class="bar-chart match-colours--away">
+            <span class="bar-chart__value match-colours--home" style="width: 48%">17</span>
+            <span>18</span>
+        </div>
+    </div>
+</div>
+
+<style>
+    .match-colours--home {
+        color: #FFFFFF;
+        background-color: #C40007;
+    }
+    .pie-chart--possession .pie-chart__segment-arc--home {
+        fill: #C40007;
+    }
+    .pie-chart--possession .pie-chart__label--home  {
+        color: #FFFFFF;
+    }
+
+    .match-colours--away {
+        color: #333333;
+        background-color: #F2B100;
+    }
+    .pie-chart--possession .pie-chart__segment-arc--away {
+        fill: #F2B100;
+    }
+    .pie-chart--possession .pie-chart__label--away {
+        color: #333333;
+    }
+</style>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-stats&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;match-stats__caption&quot;</span><span class="nt">&gt;</span>Possession<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-stats__posession&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;svg</span> <span class="na">class=</span><span class="s">&quot;pie-chart pie-chart--possession&quot;</span> <span class="na">height=</span><span class="s">&quot;250&quot;</span> <span class="na">width=</span><span class="s">&quot;250&quot;</span> <span class="na">preserveAspectRatio=</span><span class="s">&quot;xMinYMin slice&quot;</span> <span class="na">viewBox=</span><span class="s">&quot;0 0 250 250&quot;</span><span class="nt">&gt;</span>
+            <span class="c">&lt;!-- Contents of SVG injected via D3.js --&gt;</span>
+            <span class="nt">&lt;g</span> <span class="na">class=</span><span class="s">&quot;pie-chart__inner&quot;</span> <span class="na">transform=</span><span class="s">&quot;translate(125,125)&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;text</span> <span class="na">class=</span><span class="s">&quot;pie-chart__key&quot;</span> <span class="na">transform=</span><span class="s">&quot;translate(-18,15)&quot;</span><span class="nt">&gt;</span>%<span class="nt">&lt;/text&gt;</span>
+                <span class="nt">&lt;path</span> <span class="na">class=</span><span class="s">&quot;pie-chart__pie&quot;</span> <span class="na">d=</span><span class="s">&quot;M0,124A124,124 0 1,1 0,-124A124,124 0 1,1 0,124M0,42.67A42.67,42.67 0 1,0 0,-42.67A42.67,42.67 0 1,0 0,42.67Z&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;g</span> <span class="na">class=</span><span class="s">&quot;pie-chart__segment&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;path</span> <span class="na">class=</span><span class="s">&quot;pie-chart__segment-arc pie-chart__segment-arc--away&quot;</span> <span class="na">d=</span><span class="s">&quot;M7.6540e-15,-125A125,125 0 1,1 -31.0862,121.0729L-10.3621,40.3576A41.67,41.67 0 1,0 2.5513e-15,-41.67Z&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;/g&gt;</span>
+                <span class="nt">&lt;g</span> <span class="na">class=</span><span class="s">&quot;pie-chart__segment&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;path</span> <span class="na">class=</span><span class="s">&quot;pie-chart__segment-arc pie-chart__segment-arc--home&quot;</span> <span class="na">d=</span><span class="s">&quot;M-31.0862,121.0729A125,125 0 0,1 -2.2962e-14,-125L-7.6540e-15,-41.67A41.67,41.67 0 0,0 -10.3621,40.3576Z&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;/g&gt;</span>
+                <span class="nt">&lt;foreignObject</span> <span class="na">class=</span><span class="s">&quot;pie-chart__label pie-chart__label--away&quot;</span> <span class="na">width=</span><span class="s">&quot;75&quot;</span> <span class="na">height=</span><span class="s">&quot;50&quot;</span> <span class="na">text-anchor=</span><span class="s">&quot;middle&quot;</span> <span class="na">transform=</span><span class="s">&quot;translate(47.6762,-14.5556)&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;pie-chart__label-text&quot;</span> <span class="na">width=</span><span class="s">&quot;50&quot;</span> <span class="na">x=</span><span class="s">&quot;0&quot;</span> <span class="na">dy=</span><span class="s">&quot;1.2em&quot;</span><span class="nt">&gt;</span>Hull<span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;pie-chart__label-value&quot;</span> <span class="na">x=</span><span class="s">&quot;0&quot;</span> <span class="na">dy=</span><span class="s">&quot;1.2em&quot;</span><span class="nt">&gt;</span>54<span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;/foreignObject&gt;</span>
+                <span class="nt">&lt;foreignObject</span> <span class="na">class=</span><span class="s">&quot;pie-chart__label pie-chart__label--home&quot;</span> <span class="na">width=</span><span class="s">&quot;75&quot;</span> <span class="na">height=</span><span class="s">&quot;50&quot;</span> <span class="na">text-anchor=</span><span class="s">&quot;middle&quot;</span> <span class="na">transform=</span><span class="s">&quot;translate(-117.6762,-35.4444)&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;pie-chart__label-text&quot;</span> <span class="na">width=</span><span class="s">&quot;50&quot;</span> <span class="na">x=</span><span class="s">&quot;0&quot;</span> <span class="na">dy=</span><span class="s">&quot;1.2em&quot;</span><span class="nt">&gt;</span>Arsenal<span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;pie-chart__label-value&quot;</span> <span class="na">x=</span><span class="s">&quot;0&quot;</span> <span class="na">dy=</span><span class="s">&quot;1.2em&quot;</span><span class="nt">&gt;</span>46<span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;/foreignObject&gt;</span>
+            <span class="nt">&lt;/g&gt;</span>
+        <span class="nt">&lt;/svg&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;match-stats__caption&quot;</span><span class="nt">&gt;</span>Goal Attempts<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-stats__shots&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-stats__shots--home match-colours--home&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;match-stats__shots__off&quot;</span><span class="nt">&gt;</span>Off target <span class="nt">&lt;span&gt;</span>19<span class="nt">&lt;/span&gt;&lt;/p&gt;</span>
+            <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;match-stats__shots__on match-colours--home&quot;</span><span class="nt">&gt;</span>On target <span class="nt">&lt;span&gt;</span>7<span class="nt">&lt;/span&gt;&lt;/p&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-stats__shots--away match-colours--away&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;match-stats__shots__off&quot;</span><span class="nt">&gt;</span>Off target <span class="nt">&lt;span&gt;</span>9<span class="nt">&lt;/span&gt;&lt;/p&gt;</span>
+            <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;match-stats__shots__on match-colours--away&quot;</span><span class="nt">&gt;</span>On target <span class="nt">&lt;span&gt;</span>3<span class="nt">&lt;/span&gt;&lt;/p&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;match-stats__caption&quot;</span><span class="nt">&gt;</span>Corners<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-stats__corners&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;bar-chart match-colours--away&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;bar-chart__value match-colours--home&quot;</span> <span class="na">style=</span><span class="s">&quot;width: 70%&quot;</span><span class="nt">&gt;</span>7<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;span&gt;</span>3<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;match-stats__caption&quot;</span><span class="nt">&gt;</span>Fouls<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-stats__fouls&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;bar-chart match-colours--away&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;bar-chart__value match-colours--home&quot;</span> <span class="na">style=</span><span class="s">&quot;width: 48%&quot;</span><span class="nt">&gt;</span>17<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;span&gt;</span>18<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;style&gt;</span>
+    <span class="nc">.match-colours--home</span> <span class="p">{</span>
+        <span class="k">color</span><span class="o">:</span> <span class="m">#FFFFFF</span><span class="p">;</span>
+        <span class="k">background-color</span><span class="o">:</span> <span class="m">#C40007</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nc">.pie-chart--possession</span> <span class="nc">.pie-chart__segment-arc--home</span> <span class="p">{</span>
+        <span class="n">fill</span><span class="o">:</span> <span class="m">#C40007</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nc">.pie-chart--possession</span> <span class="nc">.pie-chart__label--home</span>  <span class="p">{</span>
+        <span class="k">color</span><span class="o">:</span> <span class="m">#FFFFFF</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nc">.match-colours--away</span> <span class="p">{</span>
+        <span class="k">color</span><span class="o">:</span> <span class="m">#333333</span><span class="p">;</span>
+        <span class="k">background-color</span><span class="o">:</span> <span class="m">#F2B100</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nc">.pie-chart--possession</span> <span class="nc">.pie-chart__segment-arc--away</span> <span class="p">{</span>
+        <span class="n">fill</span><span class="o">:</span> <span class="m">#F2B100</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nc">.pie-chart--possession</span> <span class="nc">.pie-chart__label--away</span> <span class="p">{</span>
+        <span class="k">color</span><span class="o">:</span> <span class="m">#333333</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+</pre></div></div></div>
+<h1 id="match-status">Match status</h1>
+
+<p>Future</p>
+<div class="codeExample"><div class="exampleOutput"><div class="match-status match-status--f">
+    <p class="match-status__time">18:00</p>
+</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-status match-status--f&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;match-status__time&quot;</span><span class="nt">&gt;</span>18:00<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<p>Postponed</p>
+<div class="codeExample"><div class="exampleOutput"><div class="match-status match-status--p">
+    <p class="match-status__time">P</p>
+</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-status match-status--p&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;match-status__time&quot;</span><span class="nt">&gt;</span>P<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<p>Abandonded</p>
+<div class="codeExample"><div class="exampleOutput"><div class="match-status match-status--a">
+    <p class="match-status__time">A</p>
+</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-status match-status--a&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;match-status__time&quot;</span><span class="nt">&gt;</span>A<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<p>Cancelled</p>
+<div class="codeExample"><div class="exampleOutput"><div class="match-status match-status--c">
+    <p class="match-status__time">C</p>
+</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-status match-status--c&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;match-status__time&quot;</span><span class="nt">&gt;</span>C<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<p>Suspended</p>
+<div class="codeExample"><div class="exampleOutput"><div class="match-status match-status--s">
+    <p class="match-status__time">S</p>
+</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-status match-status--s&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;match-status__time&quot;</span><span class="nt">&gt;</span>S<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<p>First half</p>
+<div class="codeExample"><div class="exampleOutput"><div class="match-status match-status--first">
+    <p class="match-status__time">1st</p>
+</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-status match-status--first&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;match-status__time&quot;</span><span class="nt">&gt;</span>1st<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<p>Half time</p>
+<div class="codeExample"><div class="exampleOutput"><div class="match-status match-status--ht">
+    <p class="match-status__time">HT</p>
+</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-status match-status--ht&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;match-status__time&quot;</span><span class="nt">&gt;</span>HT<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<p>Second half</p>
+<div class="codeExample"><div class="exampleOutput"><div class="match-status match-status--second">
+    <p class="match-status__time">2nd</p>
+</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-status match-status--second&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;match-status__time&quot;</span><span class="nt">&gt;</span>2nd<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<p>Extra time</p>
+<div class="codeExample"><div class="exampleOutput"><div class="match-status match-status--et">
+    <p class="match-status__time">ET</p>
+</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-status match-status--et&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;match-status__time&quot;</span><span class="nt">&gt;</span>ET<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<p>Full time</p>
+<div class="codeExample"><div class="exampleOutput"><div class="match-status match-status--ft">
+    <p class="match-status__time">FT</p>
+</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-status match-status--ft&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;match-status__time&quot;</span><span class="nt">&gt;</span>FT<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<h1 id="match-summary">Match summary</h1>
+
+<p>Display a match summary. The score is updated during the match.</p>
+<div class="codeExample"><div class="exampleOutput"><div class="match-summary is-agg">
+    <div class="match-status match-status--ft">
+        <p class="match-status__time">FT</p>
+    </div>
+
+    <a class="alerts" href="x-gu://follow/football-match///3689902" data-follow-alert-id="football-match///3689902">
+        <span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> <span class="alerts__label">Match alerts</span></span>
+        <span class="alerts__state--follow"><span class="icon">&#xe049;</span> <span class="alerts__label">Match alerts on</span></span>
+    </a>
+
+    <div class="match-summary__meta">
+        <p class="match-summary__meta__competition">World Cup 2014 Group B</p>
+        <p class="match-summary__meta__venue">Estadio Beira-Rio</p>
+    </div>
+
+    <div class="match-summary__team match-summary__team--home">
+        <div class="match-summary__badge" style="background-image: url(http://png-resizer.mobile-apps.guardianapis.com/sport/football/crests/7317.png?width=300);"></div>
+        <div class="match-summary__info match-summary__home__info">
+            <h1 class="match-summary__info__label match-summary__home__info__label headline" onclick="javascript:window.location.href='x-gu://team/http://mobile-apps.guardianapis.com/lists/tag/football/australia'">Australia</h1>
+            <p>Tim Cahill&nbsp;21'</p>
+            <p>Mile Jedinak&nbsp;54' (Pen)</p>
+        </div>
+        <div class="match-summary__score">
+            <h1 class="match-summary__score__label match-summary__home__score__label headline">
+                2
+                <span class="match-summary__score__agg">4</span>
+            </h1>
+        </div>
+    </div>
+
+    <div class="match-summary__team match-summary__team--away">
+        <div class="match-summary__score">
+            <h1 class="match-summary__score__label match-summary__away__score__label headline">
+                3
+                <span class="match-summary__score__agg">3</span>
+            </h1>
+        </div>
+        <div class="match-summary__info match-summary__away__info">
+            <h1 class="match-summary__info__label match-summary__away__info__label headline" onclick="javascript:window.location.href='x-gu://team/http://mobile-apps.guardianapis.com/lists/tag/football/holland'">Holland</h1>
+            <p>Arjen Robben&nbsp;20'</p>
+            <p>Robin van Persie&nbsp;58'</p>
+            <p>Memphis Depay&nbsp;68'</p>
+        </div>
+        <div class="match-summary__badge" style="background-image: url(http://png-resizer.mobile-apps.guardianapis.com/sport/football/crests/631.png?width=300);"></div>
+    </div>
+
+    <div class="match-summary__comment">
+        <p class="match-summary__comment__text">Sevilla win on away goals rule</p>
+    </div>
+</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-summary is-agg&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-status match-status--ft&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;match-status__time&quot;</span><span class="nt">&gt;</span>FT<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;alerts&quot;</span> <span class="na">href=</span><span class="s">&quot;x-gu://follow/football-match///3689902&quot;</span> <span class="na">data-follow-alert-id=</span><span class="s">&quot;football-match///3689902&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;alerts__state--unfollow&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe048;</span><span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;alerts__label&quot;</span><span class="nt">&gt;</span>Match alerts<span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;alerts__state--follow&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe049;</span><span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;alerts__label&quot;</span><span class="nt">&gt;</span>Match alerts on<span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;/a&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-summary__meta&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;match-summary__meta__competition&quot;</span><span class="nt">&gt;</span>World Cup 2014 Group B<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;match-summary__meta__venue&quot;</span><span class="nt">&gt;</span>Estadio Beira-Rio<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-summary__team match-summary__team--home&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-summary__badge&quot;</span> <span class="na">style=</span><span class="s">&quot;background-image: url(http://png-resizer.mobile-apps.guardianapis.com/sport/football/crests/7317.png?width=300);&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-summary__info match-summary__home__info&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">&quot;match-summary__info__label match-summary__home__info__label headline&quot;</span> <span class="na">onclick=</span><span class="s">&quot;javascript:window.location.href=&#39;x-gu://team/http://mobile-apps.guardianapis.com/lists/tag/football/australia&#39;&quot;</span><span class="nt">&gt;</span>Australia<span class="nt">&lt;/h1&gt;</span>
+            <span class="nt">&lt;p&gt;</span>Tim Cahill<span class="ni">&amp;nbsp;</span>21&#39;<span class="nt">&lt;/p&gt;</span>
+            <span class="nt">&lt;p&gt;</span>Mile Jedinak<span class="ni">&amp;nbsp;</span>54&#39; (Pen)<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-summary__score&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">&quot;match-summary__score__label match-summary__home__score__label headline&quot;</span><span class="nt">&gt;</span>
+                2
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;match-summary__score__agg&quot;</span><span class="nt">&gt;</span>4<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-summary__team match-summary__team--away&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-summary__score&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">&quot;match-summary__score__label match-summary__away__score__label headline&quot;</span><span class="nt">&gt;</span>
+                3
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;match-summary__score__agg&quot;</span><span class="nt">&gt;</span>3<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-summary__info match-summary__away__info&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">&quot;match-summary__info__label match-summary__away__info__label headline&quot;</span> <span class="na">onclick=</span><span class="s">&quot;javascript:window.location.href=&#39;x-gu://team/http://mobile-apps.guardianapis.com/lists/tag/football/holland&#39;&quot;</span><span class="nt">&gt;</span>Holland<span class="nt">&lt;/h1&gt;</span>
+            <span class="nt">&lt;p&gt;</span>Arjen Robben<span class="ni">&amp;nbsp;</span>20&#39;<span class="nt">&lt;/p&gt;</span>
+            <span class="nt">&lt;p&gt;</span>Robin van Persie<span class="ni">&amp;nbsp;</span>58&#39;<span class="nt">&lt;/p&gt;</span>
+            <span class="nt">&lt;p&gt;</span>Memphis Depay<span class="ni">&amp;nbsp;</span>68&#39;<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-summary__badge&quot;</span> <span class="na">style=</span><span class="s">&quot;background-image: url(http://png-resizer.mobile-apps.guardianapis.com/sport/football/crests/631.png?width=300);&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;match-summary__comment&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;match-summary__comment__text&quot;</span><span class="nt">&gt;</span>Sevilla win on away goals rule<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<h1 id="player-card">Player card</h1>
+
+<p>Display a player card embed. The markup for these classes comes from the content API, which in turn gets the content from the football admin tool. <a href="https://github.com/guardian/frontend/tree/master/admin/app/views/football/player/cards">You can find the templates here</a>.</p>
+<div class="codeExample"><div class="exampleOutput"><div class="player-card player-card--football">
+    <div class="player-card__image-container">
+        <img class="player-card__image" src="http://sport.guim.co.uk/football/player-images/100/399337.jpg" alt="Photo of Ricky van Wolfswinkel">
+    </div>
+    <div class="player-card__player">
+        <div class="player-card__position" itemprop="jobTitle">Striker</div>
+        <div class="player-card__name" itemprop="name">Ricky van Wolfswinkel</div>
+    </div>
+    <dl class="player-card__stats">
+        <dt class="player-card__stat-name">Appearances</dt>
+        <dd class="player-card__stat-value">24</dd>
+        <dt class="player-card__stat-name">Goals</dt>
+        <dd class="player-card__stat-value">1</dd>
+        <dt class="player-card__stat-name">Shots</dt>
+        <dd class="player-card__stat-value">32</dd>
+        <dt class="player-card__stat-name">Shots on target</dt>
+        <dd class="player-card__stat-value">28%</dd>
+        <dt class="player-card__stat-name">Offsides</dt>
+        <dd class="player-card__stat-value">7</dd>
+    </dl>
+</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;player-card player-card--football&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;player-card__image-container&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">&quot;player-card__image&quot;</span> <span class="na">src=</span><span class="s">&quot;http://sport.guim.co.uk/football/player-images/100/399337.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;Photo of Ricky van Wolfswinkel&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;player-card__player&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;player-card__position&quot;</span> <span class="na">itemprop=</span><span class="s">&quot;jobTitle&quot;</span><span class="nt">&gt;</span>Striker<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;player-card__name&quot;</span> <span class="na">itemprop=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>Ricky van Wolfswinkel<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;dl</span> <span class="na">class=</span><span class="s">&quot;player-card__stats&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;dt</span> <span class="na">class=</span><span class="s">&quot;player-card__stat-name&quot;</span><span class="nt">&gt;</span>Appearances<span class="nt">&lt;/dt&gt;</span>
+        <span class="nt">&lt;dd</span> <span class="na">class=</span><span class="s">&quot;player-card__stat-value&quot;</span><span class="nt">&gt;</span>24<span class="nt">&lt;/dd&gt;</span>
+        <span class="nt">&lt;dt</span> <span class="na">class=</span><span class="s">&quot;player-card__stat-name&quot;</span><span class="nt">&gt;</span>Goals<span class="nt">&lt;/dt&gt;</span>
+        <span class="nt">&lt;dd</span> <span class="na">class=</span><span class="s">&quot;player-card__stat-value&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/dd&gt;</span>
+        <span class="nt">&lt;dt</span> <span class="na">class=</span><span class="s">&quot;player-card__stat-name&quot;</span><span class="nt">&gt;</span>Shots<span class="nt">&lt;/dt&gt;</span>
+        <span class="nt">&lt;dd</span> <span class="na">class=</span><span class="s">&quot;player-card__stat-value&quot;</span><span class="nt">&gt;</span>32<span class="nt">&lt;/dd&gt;</span>
+        <span class="nt">&lt;dt</span> <span class="na">class=</span><span class="s">&quot;player-card__stat-name&quot;</span><span class="nt">&gt;</span>Shots on target<span class="nt">&lt;/dt&gt;</span>
+        <span class="nt">&lt;dd</span> <span class="na">class=</span><span class="s">&quot;player-card__stat-value&quot;</span><span class="nt">&gt;</span>28%<span class="nt">&lt;/dd&gt;</span>
+        <span class="nt">&lt;dt</span> <span class="na">class=</span><span class="s">&quot;player-card__stat-name&quot;</span><span class="nt">&gt;</span>Offsides<span class="nt">&lt;/dt&gt;</span>
+        <span class="nt">&lt;dd</span> <span class="na">class=</span><span class="s">&quot;player-card__stat-value&quot;</span><span class="nt">&gt;</span>7<span class="nt">&lt;/dd&gt;</span>
+    <span class="nt">&lt;/dl&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<h1 id="table-football">Tables</h1>
+
+<p>Display a  league table (which may sometimes be an embed). The markup for these classes comes from the content API, which in turn gets the content from the football admin tool. <a href="https://github.com/guardian/frontend/blob/master/admin/app/views/football/leagueTables/">You can find the templates here</a>.</p>
+<div class="codeExample"><div class="exampleOutput"><table class="table table--football">
+    <thead>
+        <tr>
+            <th class="football-stat--postition table-column--sub"><abbr title="Position">Pos</abbr></th>
+            <th class="football-stat--team table-column--main">Team</th>
+            <th class="football-stat--played"><abbr title="Played">P</abbr></th>
+            <th class="football-stat--difference"><abbr title="Goal difference">GD</abbr></th>
+            <th class="football-stat--points"><abbr title="Points">Pts</abbr></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="football-stat--postition table-column--sub">1</td>
+            <td class="football-stat--team table-column--main">Man City</td>
+            <td class="football-stat--played">37</td>
+            <td class="football-stat--difference">63</td>
+            <td class="football-stat--points">83</td>
+        </tr>
+        <tr>
+            <td class="football-stat--postition table-column--sub">2</td>
+            <td class="football-stat--team table-column--main">Liverpool</td>
+            <td class="football-stat--played">37</td>
+            <td class="football-stat--difference">50</td>
+            <td class="football-stat--points">81</td>
+        </tr>
+        <tr>
+            <td class="football-stat--postition table-column--sub">3</td>
+            <td class="football-stat--team table-column--main">Chelsea</td>
+            <td class="football-stat--played">37</td>
+            <td class="football-stat--difference">43</td>
+            <td class="football-stat--points">79</td>
+        </tr>
+    </tbody>
+</table>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">&quot;table table--football&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;thead&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;th</span> <span class="na">class=</span><span class="s">&quot;football-stat--postition table-column--sub&quot;</span><span class="nt">&gt;&lt;abbr</span> <span class="na">title=</span><span class="s">&quot;Position&quot;</span><span class="nt">&gt;</span>Pos<span class="nt">&lt;/abbr&gt;&lt;/th&gt;</span>
+            <span class="nt">&lt;th</span> <span class="na">class=</span><span class="s">&quot;football-stat--team table-column--main&quot;</span><span class="nt">&gt;</span>Team<span class="nt">&lt;/th&gt;</span>
+            <span class="nt">&lt;th</span> <span class="na">class=</span><span class="s">&quot;football-stat--played&quot;</span><span class="nt">&gt;&lt;abbr</span> <span class="na">title=</span><span class="s">&quot;Played&quot;</span><span class="nt">&gt;</span>P<span class="nt">&lt;/abbr&gt;&lt;/th&gt;</span>
+            <span class="nt">&lt;th</span> <span class="na">class=</span><span class="s">&quot;football-stat--difference&quot;</span><span class="nt">&gt;&lt;abbr</span> <span class="na">title=</span><span class="s">&quot;Goal difference&quot;</span><span class="nt">&gt;</span>GD<span class="nt">&lt;/abbr&gt;&lt;/th&gt;</span>
+            <span class="nt">&lt;th</span> <span class="na">class=</span><span class="s">&quot;football-stat--points&quot;</span><span class="nt">&gt;&lt;abbr</span> <span class="na">title=</span><span class="s">&quot;Points&quot;</span><span class="nt">&gt;</span>Pts<span class="nt">&lt;/abbr&gt;&lt;/th&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;/thead&gt;</span>
+    <span class="nt">&lt;tbody&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-stat--postition table-column--sub&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-stat--team table-column--main&quot;</span><span class="nt">&gt;</span>Man City<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-stat--played&quot;</span><span class="nt">&gt;</span>37<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-stat--difference&quot;</span><span class="nt">&gt;</span>63<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-stat--points&quot;</span><span class="nt">&gt;</span>83<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-stat--postition table-column--sub&quot;</span><span class="nt">&gt;</span>2<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-stat--team table-column--main&quot;</span><span class="nt">&gt;</span>Liverpool<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-stat--played&quot;</span><span class="nt">&gt;</span>37<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-stat--difference&quot;</span><span class="nt">&gt;</span>50<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-stat--points&quot;</span><span class="nt">&gt;</span>81<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-stat--postition table-column--sub&quot;</span><span class="nt">&gt;</span>3<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-stat--team table-column--main&quot;</span><span class="nt">&gt;</span>Chelsea<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-stat--played&quot;</span><span class="nt">&gt;</span>37<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-stat--difference&quot;</span><span class="nt">&gt;</span>43<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-stat--points&quot;</span><span class="nt">&gt;</span>79<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;/tbody&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</pre></div></div></div>
+<p>Display a fixtures table.</p>
+<div class="codeExample"><div class="exampleOutput"><table class="table table--football">
+    <tbody>
+        <tr class="football-match has-ended">
+            <td class="football-match--status">FT</td>
+            <td class="football-match--home">Costa Rica</td>
+            <td class="football-match--score">1 - 3</td>
+            <td class="football-match--away">Japan</td>
+        </tr>
+         <tr class="football-match is-live">
+            <td class="football-match--status">HT</td>
+            <td class="football-match--home">United Arab Emirates</td>
+            <td class="football-match--score">0 - 0</td>
+            <td class="football-match--away">Georgia</td>
+        </tr>
+         <tr class="football-match">
+            <td class="football-match--status">19:30</td>
+            <td class="football-match--home">Czech Republic</td>
+            <td class="football-match--score">v</td>
+            <td class="football-match--away">Austria</td>
+        </tr>
+         <tr class="football-match">
+            <td class="football-match--status">19:30</td>
+            <td class="football-match--home">Switzerland</td>
+            <td class="football-match--score">v</td>
+            <td class="football-match--away">Peru</td>
+        </tr>
+         <tr class="football-match">
+            <td class="football-match--status">20:00</td>
+            <td class="football-match--home">Brazil</td>
+            <td class="football-match--score">v</td>
+            <td class="football-match--away">Panama</td>
+        </tr>
+    </tbody>
+</table>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">&quot;table table--football&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;tbody&gt;</span>
+        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">&quot;football-match has-ended&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-match--status&quot;</span><span class="nt">&gt;</span>FT<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-match--home&quot;</span><span class="nt">&gt;</span>Costa Rica<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-match--score&quot;</span><span class="nt">&gt;</span>1 - 3<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-match--away&quot;</span><span class="nt">&gt;</span>Japan<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+         <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">&quot;football-match is-live&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-match--status&quot;</span><span class="nt">&gt;</span>HT<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-match--home&quot;</span><span class="nt">&gt;</span>United Arab Emirates<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-match--score&quot;</span><span class="nt">&gt;</span>0 - 0<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-match--away&quot;</span><span class="nt">&gt;</span>Georgia<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+         <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">&quot;football-match&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-match--status&quot;</span><span class="nt">&gt;</span>19:30<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-match--home&quot;</span><span class="nt">&gt;</span>Czech Republic<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-match--score&quot;</span><span class="nt">&gt;</span>v<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-match--away&quot;</span><span class="nt">&gt;</span>Austria<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+         <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">&quot;football-match&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-match--status&quot;</span><span class="nt">&gt;</span>19:30<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-match--home&quot;</span><span class="nt">&gt;</span>Switzerland<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-match--score&quot;</span><span class="nt">&gt;</span>v<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-match--away&quot;</span><span class="nt">&gt;</span>Peru<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+         <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">&quot;football-match&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-match--status&quot;</span><span class="nt">&gt;</span>20:00<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-match--home&quot;</span><span class="nt">&gt;</span>Brazil<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-match--score&quot;</span><span class="nt">&gt;</span>v<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;football-match--away&quot;</span><span class="nt">&gt;</span>Panama<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;/tbody&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</pre></div></div></div>
+<h1 id="team-lineup">Team line-up</h1>
+
+<p>Display a team line-up including substitutions and bookings.</p>
+<div class="codeExample"><div class="exampleOutput"><table class="team-lineup">
+    <caption class="team-lineup__name">Arsenal</caption>
+    <tbody>
+        <tr class="team-lineup__player">
+            <td class="team-lineup__player__number">21</td>
+            <td class="team-lineup__player__name"><span>
+                <span class="team-lineup__player__forename">Lukasz</span> <span class="team-lineup__player__surname">Fabianski</span>
+                <span class="team-lineup__player__replacement"> ()</span>
+            </span></td>
+        </tr>
+         <tr class="team-lineup__player">
+            <td class="team-lineup__player__number">3</td>
+            <td class="team-lineup__player__name"><span>
+                <span class="team-lineup__player__forename">Bacary</span> <span class="team-lineup__player__surname">Sagna</span>
+            </span></td>
+        </tr>
+        <tr class="team-lineup__player">
+            <td class="team-lineup__player__number">4</td>
+            <td class="team-lineup__player__name"><span>
+                <span class="team-lineup__player__forename">Per</span> <span class="team-lineup__player__surname">Mertesacker</span>
+            </span></td>
+        </tr>
+        <tr class="team-lineup__player">
+            <td class="team-lineup__player__number">6</td>
+            <td class="team-lineup__player__name"><span>
+                <span class="team-lineup__player__forename">Laurent</span> <span class="team-lineup__player__surname">Koscielny</span>
+            </span></td>
+        </tr>
+         <tr class="team-lineup__player">
+            <td class="team-lineup__player__number">28</td>
+            <td class="team-lineup__player__name"><span>
+                <span class="team-lineup__player__forename">Kieran</span> <span class="team-lineup__player__surname">Gibbs</span>
+            </span></td>
+        </tr>
+         <tr class="team-lineup__player">
+            <td class="team-lineup__player__number">8</td>
+            <td class="team-lineup__player__name"><span>
+                <span class="team-lineup__player__forename">Mikel</span> <span class="team-lineup__player__surname yellow-red">Arteta</span>
+            </span></td>
+        </tr>
+         <tr class="team-lineup__player">
+            <td class="team-lineup__player__number">16</td>
+            <td class="team-lineup__player__name"><span>
+                <span class="team-lineup__player__forename">Aaron</span> <span class="team-lineup__player__surname red">Ramsey</span>
+            </span></td>
+        </tr>
+         <tr class="team-lineup__player">
+            <td class="team-lineup__player__number">19</td>
+            <td class="team-lineup__player__name"><span class="replacement">
+                <span class="team-lineup__player__forename">Santi</span> <span class="team-lineup__player__surname">Cazorla</span>
+                <span class="team-lineup__player__replacement">(<span class="yellow">Rosicky</span> 106)</span>
+            </span></td>
+        </tr>
+         <tr class="team-lineup__player">
+            <td class="team-lineup__player__number">11</td>
+            <td class="team-lineup__player__name"><span class="replacement">
+                <span class="team-lineup__player__forename">Mesut</span> <span class="team-lineup__player__surname">Ozil</span>
+                <span class="team-lineup__player__replacement">(<span class="red">Wilshere</span> 106)</span>
+            </span></td>
+        </tr>
+         <tr class="team-lineup__player">
+            <td class="team-lineup__player__number">9</td>
+            <td class="team-lineup__player__name"><span class="replacement">
+                <span class="team-lineup__player__forename">Lukas</span> <span class="team-lineup__player__surname">Podolski</span>
+                <span class="team-lineup__player__replacement">(Sanogo 61)</span>
+            </span></td>
+        </tr>
+         <tr class="team-lineup__player">
+            <td class="team-lineup__player__number">12</td>
+            <td class="team-lineup__player__name"><span>
+                <span class="team-lineup__player__forename">Olivier</span> <span class="team-lineup__player__surname yellow">Giroud</span>
+            </span></td>
+        </tr>
+         <tr class="team-lineup__player">
+            <td class="team-lineup__player__number">Subs</td>
+            <td class="team-lineup__player__name"><span>
+                <span class="team-lineup__player__forename">Wojciech</span> <span class="team-lineup__player__surname">Szczesny</span>, 
+            </span>
+            <span>
+                <span class="team-lineup__player__forename">Thomas</span> <span class="team-lineup__player__surname">Vermaelen</span>, 
+            </span>
+            <span class="used">
+                <span class="team-lineup__player__forename">Tomas</span> <span class="team-lineup__player__surname">Rosicky</span>, 
+            </span>
+            <span class="used">
+                <span class="team-lineup__player__forename">Jack</span> <span class="team-lineup__player__surname">Wilshere</span>, 
+            </span>
+            <span>
+                <span class="team-lineup__player__forename">Nacho</span> <span class="team-lineup__player__surname">Monreal</span>, 
+            </span>
+            <span>
+                <span class="team-lineup__player__forename">Mathieu</span> <span class="team-lineup__player__surname">Flamini</span>, 
+            </span>
+            <span class="used">
+                <span class="team-lineup__player__forename">Yaya</span> <span class="team-lineup__player__surname">Sanogo</span>
+            </span></td>
+        </tr>
+    </tbody>
+</table>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">&quot;team-lineup&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;caption</span> <span class="na">class=</span><span class="s">&quot;team-lineup__name&quot;</span><span class="nt">&gt;</span>Arsenal<span class="nt">&lt;/caption&gt;</span>
+    <span class="nt">&lt;tbody&gt;</span>
+        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__number&quot;</span><span class="nt">&gt;</span>21<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__name&quot;</span><span class="nt">&gt;&lt;span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__forename&quot;</span><span class="nt">&gt;</span>Lukasz<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__surname&quot;</span><span class="nt">&gt;</span>Fabianski<span class="nt">&lt;/span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__replacement&quot;</span><span class="nt">&gt;</span> ()<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+         <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__number&quot;</span><span class="nt">&gt;</span>3<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__name&quot;</span><span class="nt">&gt;&lt;span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__forename&quot;</span><span class="nt">&gt;</span>Bacary<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__surname&quot;</span><span class="nt">&gt;</span>Sagna<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__number&quot;</span><span class="nt">&gt;</span>4<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__name&quot;</span><span class="nt">&gt;&lt;span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__forename&quot;</span><span class="nt">&gt;</span>Per<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__surname&quot;</span><span class="nt">&gt;</span>Mertesacker<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__number&quot;</span><span class="nt">&gt;</span>6<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__name&quot;</span><span class="nt">&gt;&lt;span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__forename&quot;</span><span class="nt">&gt;</span>Laurent<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__surname&quot;</span><span class="nt">&gt;</span>Koscielny<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+         <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__number&quot;</span><span class="nt">&gt;</span>28<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__name&quot;</span><span class="nt">&gt;&lt;span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__forename&quot;</span><span class="nt">&gt;</span>Kieran<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__surname&quot;</span><span class="nt">&gt;</span>Gibbs<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+         <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__number&quot;</span><span class="nt">&gt;</span>8<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__name&quot;</span><span class="nt">&gt;&lt;span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__forename&quot;</span><span class="nt">&gt;</span>Mikel<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__surname yellow-red&quot;</span><span class="nt">&gt;</span>Arteta<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+         <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__number&quot;</span><span class="nt">&gt;</span>16<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__name&quot;</span><span class="nt">&gt;&lt;span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__forename&quot;</span><span class="nt">&gt;</span>Aaron<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__surname red&quot;</span><span class="nt">&gt;</span>Ramsey<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+         <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__number&quot;</span><span class="nt">&gt;</span>19<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__name&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;replacement&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__forename&quot;</span><span class="nt">&gt;</span>Santi<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__surname&quot;</span><span class="nt">&gt;</span>Cazorla<span class="nt">&lt;/span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__replacement&quot;</span><span class="nt">&gt;</span>(<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;yellow&quot;</span><span class="nt">&gt;</span>Rosicky<span class="nt">&lt;/span&gt;</span> 106)<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+         <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__number&quot;</span><span class="nt">&gt;</span>11<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__name&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;replacement&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__forename&quot;</span><span class="nt">&gt;</span>Mesut<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__surname&quot;</span><span class="nt">&gt;</span>Ozil<span class="nt">&lt;/span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__replacement&quot;</span><span class="nt">&gt;</span>(<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;red&quot;</span><span class="nt">&gt;</span>Wilshere<span class="nt">&lt;/span&gt;</span> 106)<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+         <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__number&quot;</span><span class="nt">&gt;</span>9<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__name&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;replacement&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__forename&quot;</span><span class="nt">&gt;</span>Lukas<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__surname&quot;</span><span class="nt">&gt;</span>Podolski<span class="nt">&lt;/span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__replacement&quot;</span><span class="nt">&gt;</span>(Sanogo 61)<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+         <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__number&quot;</span><span class="nt">&gt;</span>12<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__name&quot;</span><span class="nt">&gt;&lt;span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__forename&quot;</span><span class="nt">&gt;</span>Olivier<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__surname yellow&quot;</span><span class="nt">&gt;</span>Giroud<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+         <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__number&quot;</span><span class="nt">&gt;</span>Subs<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__name&quot;</span><span class="nt">&gt;&lt;span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__forename&quot;</span><span class="nt">&gt;</span>Wojciech<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__surname&quot;</span><span class="nt">&gt;</span>Szczesny<span class="nt">&lt;/span&gt;</span>, 
+            <span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__forename&quot;</span><span class="nt">&gt;</span>Thomas<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__surname&quot;</span><span class="nt">&gt;</span>Vermaelen<span class="nt">&lt;/span&gt;</span>, 
+            <span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;used&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__forename&quot;</span><span class="nt">&gt;</span>Tomas<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__surname&quot;</span><span class="nt">&gt;</span>Rosicky<span class="nt">&lt;/span&gt;</span>, 
+            <span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;used&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__forename&quot;</span><span class="nt">&gt;</span>Jack<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__surname&quot;</span><span class="nt">&gt;</span>Wilshere<span class="nt">&lt;/span&gt;</span>, 
+            <span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__forename&quot;</span><span class="nt">&gt;</span>Nacho<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__surname&quot;</span><span class="nt">&gt;</span>Monreal<span class="nt">&lt;/span&gt;</span>, 
+            <span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__forename&quot;</span><span class="nt">&gt;</span>Mathieu<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__surname&quot;</span><span class="nt">&gt;</span>Flamini<span class="nt">&lt;/span&gt;</span>, 
+            <span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;used&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__forename&quot;</span><span class="nt">&gt;</span>Yaya<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;team-lineup__player__surname&quot;</span><span class="nt">&gt;</span>Sanogo<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;/span&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;/tbody&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</pre></div></div></div>            </div>
+        </article>
+
+        <footer class="styleguide__contentinfo" role="contentinfo">
+            <p><small>© 2014 Guardian News and Media Limited or its affiliated companies. All rights reserved.</small></p>
+        </footer>
+    </main>
+
+    <label class="styleguide__navigation-toggle" for="styleguide__navigation-checkbox"><span class="icon">&#xe04A;</span></label>
+
+    <script type="text/javascript" id="gu" src="../ArticleTemplates/assets/js/components/require.js" data-main="/ArticleTemplates/assets/js/app.js" data-js-dir="/ArticleTemplates/assets/js" async></script>
+</body>
+</html>

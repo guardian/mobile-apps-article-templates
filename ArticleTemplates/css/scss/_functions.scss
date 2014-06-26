@@ -1,8 +1,0 @@
-// Column widths
-@function cols($base-x, $columns, $gutters:"") {
-	@if $gutters == 1 {
-		@return (($base-x * 5) * $columns) + ($base-x * ($columns));
-	} @else {
-		@return (($base-x * 5) * $columns) + ($base-x * ($columns - 1));
-	}
-}

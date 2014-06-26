@@ -1,0 +1,35 @@
+/*doc
+---
+title: Figure
+name: figure
+category: Modules
+---
+Display an embedded element. Element embeds are typically shown as figures, and can optionally include a supporting caption.
+
+```html_example
+<figure>
+    <img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/11/1402512126497/Matt-Kenyon-on-Birmingham-014.jpg?width=900&amp;height=540&amp;quality=60"/>
+    <figcaption>
+        ‘The absurdity of the inspectors’ findings is clearest in the case of Gracelands, whose staff were taken to task for failing to ensure its 2- to 4-year-olds were protected against ‘extreme and radical behaviour'.' Illustration: Matt Kenyon
+    </figcaption>
+</figure>
+```
+*/
+
+figure {
+    img {
+        display: block;
+    }
+
+    video {
+        width: 100%;
+    }
+
+    figcaption {
+        color: color(shade-2);
+        font-family: $agate-sans;
+        @include meta();
+        border-bottom: 1px dotted color(shade-4);
+        padding: base-px(.5, 1, 2, 1);
+    }
+}

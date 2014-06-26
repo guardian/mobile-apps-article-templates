@@ -1,0 +1,103 @@
+.article {
+    background-color: #fff;
+    border-top: 4px solid color(tone-news-accent);
+    border-bottom: 2px solid color(shade-4);
+    overflow: hidden;
+    margin-bottom: base-px(4);
+
+    @include mq($to: col1) {
+        border-top-width: 0;
+    }
+
+    .android & {
+        border-top-width: 0;
+    }
+}
+
+.article__header {
+    ul > li {
+        @include bullet();
+    }
+
+    .section {
+        padding: base-px(.5, 1);
+    }
+
+    .headline {
+        padding: base-px(0, 1, 2.5, 1);
+    }
+
+    .standfirst {
+        padding: base-px(.5, 1, 1.5, 1);
+    }
+}
+
+.article__body {
+    font-family: $egyptian-text;
+
+    // First figure/element in body should sit flush with .article__header
+    & > .prose {
+        .figure-wide,
+        .element {
+            &:first-child {
+                margin-top: base-px(-1);
+            }
+        }
+    } 
+
+    // Football player cards should appear floated right above mobile breakpoint
+    .player-card {
+        @include mq($from: col1) {
+            margin: base-px(1, 0, 1, 1);
+            width: 50%;
+            float: right;
+        }
+    }
+
+    // Positon of adverts within article body
+    .advert-slot--mpu {
+        @include mq($from: 560px) {
+            float: right;
+            margin-left: base-px(1.5);
+            margin-bottom: base-px(1);
+        }
+
+        @include mq(col2, col3) {
+            margin-right: -(cols($base-3, 4))+$base-3;
+        }
+
+        @include mq($from: col3) {
+            margin-right: -(cols($base-4, 5));
+        }
+    }
+
+    .advert-slot--mpu--tablet {
+        @include mq($to: 559px) {
+            margin: 12px auto 0;
+        }
+    }
+
+    // Position of asides within article body
+    .aside {
+        @include mq(col1, col2) {
+            margin-right: base-px(1);
+        }
+
+        @include mq(col2, col3) {
+            margin-right: -(cols($base-3, 4));
+        }
+
+        @include mq($from: col3) {
+            margin-right: -(cols($base-4, 5)+$base-4*2);
+        }
+    }
+
+     // Hide witness call-out until correctly positioned by JavaScript
+    .aside-witness {
+        display: none;
+
+        &.js--positioned {
+            display: block;
+        }
+    }
+}

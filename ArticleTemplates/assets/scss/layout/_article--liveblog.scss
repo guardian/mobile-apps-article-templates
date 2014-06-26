@@ -1,0 +1,125 @@
+.article--liveblog {
+    background-color: color(shade-5);
+    border-bottom: 0;
+
+    .article__header {
+        border-bottom: 2px solid color(shade-4);
+        background-color: #fff;
+
+        .section {
+            position: relative;
+        }
+
+        .section__live {
+            color: #fff;
+            padding: base-px(.5, 1, .5, 1);
+            display: none; // Default
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .alerts {
+            padding: base-px(.5, 1);
+        }
+
+        & > .alerts {
+            @include mq($from: col2) {
+                display: none;
+            }
+        }
+
+        .alerts__label {
+            display: inline-block;
+        }
+
+        .meta {
+            position: relative;
+
+            .alerts {
+                position: absolute;
+                left: 0;
+                top: 0;
+
+                @include mq($to: col2) {
+                    display: none;
+                }
+            }
+        }
+
+        .meta__comments__label {
+            display: none;
+        }
+    }
+
+    .tags {
+        border-top: 0;
+
+        @include mq(col2, col3) {
+            padding-left: cols($base-3, 4, 1);
+        }
+
+        @include mq($from: col3) {
+            padding-left: cols($base-4, 5, 1);
+        }
+    }
+
+    .article__body--liveblog__pinned {
+        .element {
+            margin: base-px(1, 0);
+        }
+    }
+
+    .aside-witness {
+        float: none;
+        background-color: #fff;
+        border-top: 1px solid color(shade-3);
+        border-bottom: 2px solid color(shade-4);
+        margin: base-px(1);
+        padding: base-px(1);
+        width: auto;
+        position: relative;
+        overflow: hidden;
+
+        @include mq($from: col1) {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .touchpoint__label {
+            margin: base-px(.25, 0);
+            padding-left: $base-1;
+            width: 220px;
+
+            @include mq($from: col2) {
+                margin: 0;
+                padding-left: $base-2;
+                position: absolute;
+            }
+
+            @include mq(col2, col3) {
+                padding-left: $base-3;
+                left: cols($base-3, 4);
+            }
+
+            @include mq($from: col3) {
+                padding-left: $base-4;
+                left: cols($base-4, 5);
+            }
+        }
+    }
+}
+
+.android {
+    .article--liveblog {
+        .aside-witness {
+            margin: base-px(1);
+        }
+
+        .article__body--liveblog__pinned {
+            figcaption {
+                padding: base-px(.5, 1, 2, 1);
+            }
+        }
+    }
+}

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Guardian Apps Article Templates: Modules</title>
+
+    <!-- CSS & JS for article templates -->
+    <link rel="stylesheet" href="../ArticleTemplates/assets/css/style.css"/>
+    <script type="text/javascript" src="../ArticleTemplates/assets/js/shim.js"></script>
+
+    <!-- CSS for documentation -->
+    <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+
+<body class="styleguide no-ready">
+    <input class="styleguide__navigation-checkbox" id="styleguide__navigation-checkbox" type="checkbox"/>
+
+    <nav class="styleguide__navigation" role="navigation" id="sidebar">
+        <ul class="nav">
+            <li class="nav__item"><a href="../">Home</a></li>
+        
+            <li class="nav__item"><a href="modules.html">Modules</a></li>
+        
+            <li class="nav__item"><a href="base.html">Base</a></li>
+        
+            <li class="nav__item"><a href="guardianwitness.html">GuardianWitness</a></li>
+        
+            <li class="nav__item"><a href="media.html">Media</a></li>
+        
+            <li class="nav__item"><a href="charts.html">Charts</a></li>
+        
+            <li class="nav__item"><a href="blocks.html">Blocks</a></li>
+        
+            <li class="nav__item"><a href="content.html">Content</a></li>
+        
+            <li class="nav__item"><a href="containers.html">Containers</a></li>
+        
+            <li class="nav__item"><a href="external.html">External</a></li>
+        
+            <li class="nav__item"><a href="football.html">Football</a></li>
+        
+        </ul>
+    </nav>
+
+    <main class="styleguide__main selectable" role="main">
+        <article class="styleguide__article">
+            <div class="styleguide__article__header">
+                <h1 class="headline">Modules</h1>
+            </div>
+
+            <div class="tags">
+                <ul class="inline-list"><!--
+                
+                 --><li class="inline-list__item"><a href="#advert-slot">Advert slot</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#alerts">Alerts</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#aside">Aside</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#avatar">Avatar</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#bullet">Bullet</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#cutout">Cutout</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#figure">Figure</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#inline-list">Unstyled inline list</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#loading">Loading</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#more">More</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#resizable">Resizable</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#screen-readable">Screen readable</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#selectable">Selectable</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#tabs">Tabs</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#tags">Tags</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#touchpoint">Touchpoint</a></li><!--
+                
+                --></ul>
+            </div>
+
+            <div class="styleguide__article__body">
+                
+<h1 id="advert-slot">Advert slot</h1>
+
+<p>Create a placeholder tp allow an advert to be placed with an article.</p>
+
+<p>Banner</p>
+<div class="codeExample"><div class="exampleOutput"><div class="advert-slot advert-slot--banner">
+    <div class="advert-slot__label">Advertisement</div>
+    <div class="advert-slot__wrapper">
+        <div class="advert-slot__wrapper__content">
+            <!-- Advert injected here using JavaScript -->
+        </div>
+    </div>
+</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;advert-slot advert-slot--banner&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;advert-slot__label&quot;</span><span class="nt">&gt;</span>Advertisement<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;advert-slot__wrapper&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;advert-slot__wrapper__content&quot;</span><span class="nt">&gt;</span>
+            <span class="c">&lt;!-- Advert injected here using JavaScript --&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<p>MPU</p>
+<div class="codeExample"><div class="exampleOutput"><div class="advert-slot advert-slot--mpu">
+    <div class="advert-slot__label">Advertisement</div>
+    <div class="advert-slot__wrapper">
+        <div class="advert-slot__wrapper__content">
+            <!-- Advert injected here using JavaScript -->
+        </div>
+    </div>
+</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;advert-slot advert-slot--mpu&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;advert-slot__label&quot;</span><span class="nt">&gt;</span>Advertisement<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;advert-slot__wrapper&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;advert-slot__wrapper__content&quot;</span><span class="nt">&gt;</span>
+            <span class="c">&lt;!-- Advert injected here using JavaScript --&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<h1 id="alerts">Alerts</h1>
+
+<p>Display an alerts toggle.</p>
+<div class="codeExample"><div class="exampleOutput"><a class="alerts">
+    <span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> <span class="alerts__label">Follow contributor</span></span>
+    <span class="alerts__state--follow"><span class="icon">&#xe049;</span> <span class="alerts__label">Following contributor</span></span>
+</a>
+
+<a class="alerts following">
+    <span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> <span class="alerts__label">Follow contributor</span></span>
+    <span class="alerts__state--follow"><span class="icon">&#xe049;</span> <span class="alerts__label">Following contributor</span></span>
+</a>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;alerts&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;alerts__state--unfollow&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe048;</span><span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;alerts__label&quot;</span><span class="nt">&gt;</span>Follow contributor<span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;alerts__state--follow&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe049;</span><span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;alerts__label&quot;</span><span class="nt">&gt;</span>Following contributor<span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
+<span class="nt">&lt;/a&gt;</span>
+
+<span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;alerts following&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;alerts__state--unfollow&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe048;</span><span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;alerts__label&quot;</span><span class="nt">&gt;</span>Follow contributor<span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;alerts__state--follow&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe049;</span><span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;alerts__label&quot;</span><span class="nt">&gt;</span>Following contributor<span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
+<span class="nt">&lt;/a&gt;</span>
+</pre></div></div></div>
+<h1 id="aside">Aside</h1>
+
+<p>Positions a piece of text or HTML component to the right-hand side of any running text.</p>
+<div class="codeExample"><div class="exampleOutput"><aside class="aside">
+    <p>Standing nearly two metres tall and weighing as much as a car, <strong>the European bison</strong> is the continent's largest land mammal. Bison bonasus eat grasses and herbs, and are capable of consuming 32kg each day.</p>
+</aside>
+
+<p><i>Bison bonasus</i> was driven to extinction in the wild across Europe in 1927 after decades of decline from hunting and habitat loss. But it has become that rare endangered species: a conservation success story. There are now thousands in the wild, all descended from the 54 individuals in captivity when the last wild one was killed in Poland's Bialowieza forest. Despite the increase in numbers, the European bison is still rarer than other high profile species, such as the black rhino, even with the reintroductions. There are over 5,000 European bison, with about 3,200 in the wild.</p>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;aside</span> <span class="na">class=</span><span class="s">&quot;aside&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Standing nearly two metres tall and weighing as much as a car, <span class="nt">&lt;strong&gt;</span>the European bison<span class="nt">&lt;/strong&gt;</span> is the continent&#39;s largest land mammal. Bison bonasus eat grasses and herbs, and are capable of consuming 32kg each day.<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/aside&gt;</span>
+
+<span class="nt">&lt;p&gt;&lt;i&gt;</span>Bison bonasus<span class="nt">&lt;/i&gt;</span> was driven to extinction in the wild across Europe in 1927 after decades of decline from hunting and habitat loss. But it has become that rare endangered species: a conservation success story. There are now thousands in the wild, all descended from the 54 individuals in captivity when the last wild one was killed in Poland&#39;s Bialowieza forest. Despite the increase in numbers, the European bison is still rarer than other high profile species, such as the black rhino, even with the reintroductions. There are over 5,000 European bison, with about 3,200 in the wild.<span class="nt">&lt;/p&gt;</span>
+</pre></div></div></div>
+<h1 id="avatar">Avatar</h1>
+
+<p>Display the image of author or user.</p>
+<div class="codeExample"><div class="exampleOutput"><a class="avatar avatar--author" href="#">
+    <img class="avatar__img" src="http://png-resizer.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2014/3/13/1394733739319/IanSample.png?width=300"/>
+</a>
+
+<span class="avatar avatar--user">
+    <img class="avatar__img" src="http://static.guim.co.uk/sys-images/Guardian/Pix/site_furniture/2010/09/01/no-user-image.gif"/>
+</span>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;avatar avatar--author&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">&quot;avatar__img&quot;</span> <span class="na">src=</span><span class="s">&quot;http://png-resizer.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2014/3/13/1394733739319/IanSample.png?width=300&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/a&gt;</span>
+
+<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;avatar avatar--user&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">&quot;avatar__img&quot;</span> <span class="na">src=</span><span class="s">&quot;http://static.guim.co.uk/sys-images/Guardian/Pix/site_furniture/2010/09/01/no-user-image.gif&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/span&gt;</span>
+</pre></div></div></div>
+<h1 id="bullet">Bullet</h1>
+
+<p>Hides an inline bullet and replaces it with a more stylistic glyph.</p>
+<div class="codeExample"><div class="exampleOutput"><span class="bullet">•</span> Squad prepare for Ecuador friendly on Wednesday
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;bullet&quot;</span><span class="nt">&gt;</span>•<span class="nt">&lt;/span&gt;</span> Squad prepare for Ecuador friendly on Wednesday
+</pre></div></div></div>
+<h1 id="cutout">Cutout</h1>
+
+<p>Display a large image of contributor in background of container.</p>
+<div class="codeExample"><div class="exampleOutput"><div class="cutout">
+    <div class="cutout__container" style="background-image: url(http://png-resizer.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2014/3/13/1394733748508/SeumasMilne.png?width=600);" id="cutout">
+        <!--Content-->
+    </div>
+</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;cutout&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;cutout__container&quot;</span> <span class="na">style=</span><span class="s">&quot;background-image: url(http://png-resizer.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2014/3/13/1394733748508/SeumasMilne.png?width=600);&quot;</span> <span class="na">id=</span><span class="s">&quot;cutout&quot;</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!--Content--&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<h1 id="figure">Figure</h1>
+
+<p>Display an embedded element. Element embeds are typically shown as figures, and can optionally include a supporting caption.</p>
+<div class="codeExample"><div class="exampleOutput"><figure>
+    <img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/11/1402512126497/Matt-Kenyon-on-Birmingham-014.jpg?width=900&amp;height=540&amp;quality=60"/>
+    <figcaption>
+        ‘The absurdity of the inspectors’ findings is clearest in the case of Gracelands, whose staff were taken to task for failing to ensure its 2- to 4-year-olds were protected against ‘extreme and radical behaviour'.' Illustration: Matt Kenyon
+    </figcaption>
+</figure>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;figure&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/11/1402512126497/Matt-Kenyon-on-Birmingham-014.jpg?width=900&amp;amp;height=540&amp;amp;quality=60&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;figcaption&gt;</span>
+        ‘The absurdity of the inspectors’ findings is clearest in the case of Gracelands, whose staff were taken to task for failing to ensure its 2- to 4-year-olds were protected against ‘extreme and radical behaviour&#39;.&#39; Illustration: Matt Kenyon
+    <span class="nt">&lt;/figcaption&gt;</span>
+<span class="nt">&lt;/figure&gt;</span>
+</pre></div></div></div>
+<h1 id="inline-list">Unstyled inline list</h1>
+
+<p>Removes bullets, padding and margins from lists.</p>
+<div class="codeExample"><div class="exampleOutput"><ul class="inline-list">
+    <li class="inline-list__item">Guardian</li>
+    <li class="inline-list__item">Mobile</li>
+    <li class="inline-list__item">Applications</li>
+</ul>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;inline-list&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;inline-list__item&quot;</span><span class="nt">&gt;</span>Guardian<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;inline-list__item&quot;</span><span class="nt">&gt;</span>Mobile<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;inline-list__item&quot;</span><span class="nt">&gt;</span>Applications<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</pre></div></div></div>
+<h1 id="loading">Loading</h1>
+
+<p>Display loading animation to provide feedback to the user.</p>
+<div class="codeExample"><div class="exampleOutput"><div class="loading">
+    <img src="../img/loading.gif">
+</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;loading&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;../img/loading.gif&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<h1 id="more">More</h1>
+
+<p>Display a link to view more.</p>
+<div class="codeExample"><div class="exampleOutput"><div class="more more--comments">
+    <span class="more__label" data-icon="&#xe050;">Show 3 more replies</span>
+</div>
+
+<div class="more more--live-blogs">
+    <span class="more__label" data-icon="&#xe050;">View more updates</span>
+</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;more more--comments&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;more__label&quot;</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe050;&quot;</span><span class="nt">&gt;</span>Show 3 more replies<span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;more more--live-blogs&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;more__label&quot;</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe050;&quot;</span><span class="nt">&gt;</span>View more updates<span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<h1 id="resizable">Resizable</h1>
+
+<p>Makes a block of text resizable, based on user text size setting.</p>
+<div class="codeExample"><div class="exampleOutput"><div class="resizable">Italian authorities warn of crisis as data shows sharp increase in those making treacherous sea crossing to southern Europe.</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;resizable&quot;</span><span class="nt">&gt;</span>Italian authorities warn of crisis as data shows sharp increase in those making treacherous sea crossing to southern Europe.<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<h1 id="screen-readable">Screen readable</h1>
+
+<p>Hide text, yet still make it available to screen readers.</p>
+<div class="codeExample"><div class="exampleOutput"><span class="screen-readable">This text is only seen by screen readers.</span>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;screen-readable&quot;</span><span class="nt">&gt;</span>This text is only seen by screen readers.<span class="nt">&lt;/span&gt;</span>
+</pre></div></div></div>
+<h1 id="selectable">Selectable</h1>
+
+<p>Makes a block of text selectable. Useful for portions of text a user may wish to copy and paste.</p>
+<div class="codeExample"><div class="exampleOutput"><div class="selectable">Lib Dem leader aiming to convince supporters that coalition remains worthwhile, as his ratings plummet.</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;selectable&quot;</span><span class="nt">&gt;</span>Lib Dem leader aiming to convince supporters that coalition remains worthwhile, as his ratings plummet.<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<h1 id="tabs">Tabs</h1>
+
+<p>Navigate between different sections of a page.</p>
+<div class="codeExample"><div class="exampleOutput"><div class="tabs">
+    <ul class="inline-list">
+        <li class="inline-list__item selected">Report</li><!--
+     --><li class="inline-list__item">Minute-by-minute</li><!--
+     --><li class="inline-list__item">Match Info</li>
+    </ul>
+</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;tabs&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;inline-list&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;inline-list__item selected&quot;</span><span class="nt">&gt;</span>Report<span class="nt">&lt;/li&gt;</span><span class="c">&lt;!--</span>
+<span class="c">     --&gt;</span><span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;inline-list__item&quot;</span><span class="nt">&gt;</span>Minute-by-minute<span class="nt">&lt;/li&gt;</span><span class="c">&lt;!--</span>
+<span class="c">     --&gt;</span><span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;inline-list__item&quot;</span><span class="nt">&gt;</span>Match Info<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<h1 id="tags">Tags</h1>
+
+<p>Display which keywords an article has been tagged with.</p>
+<div class="codeExample"><div class="exampleOutput"><div class="tags">
+    <ul class="inline-list">
+        <li class="inline-list__item"><a href="#">Guardian</a></li><!--
+     --><li class="inline-list__item"><a href="#">Mobile</a></li><!--
+     --><li class="inline-list__item"><a href="#">Applications</a></li>
+    </ul>
+</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;tags&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;inline-list&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;inline-list__item&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Guardian<span class="nt">&lt;/a&gt;&lt;/li&gt;</span><span class="c">&lt;!--</span>
+<span class="c">     --&gt;</span><span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;inline-list__item&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Mobile<span class="nt">&lt;/a&gt;&lt;/li&gt;</span><span class="c">&lt;!--</span>
+<span class="c">     --&gt;</span><span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;inline-list__item&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Applications<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<h1 id="touchpoint">Touchpoint</h1>
+
+<p>Display a call to action. Available in primary and secondary styles, large (default) and small sizes.</p>
+
+<p>Primary</p>
+<div class="codeExample"><div class="exampleOutput"><a class="touchpoint touchpoint--primary" href="#">
+    <span class="touchpoint__label">View more</span>
+    <span class="touchpoint__button icon">&#xe00b;</span>
+</a>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;touchpoint touchpoint--primary&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;touchpoint__label&quot;</span><span class="nt">&gt;</span>View more<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;touchpoint__button icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe00b;</span><span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;/a&gt;</span>
+</pre></div></div></div>
+<p>Secondary</p>
+<div class="codeExample"><div class="exampleOutput"><a class="touchpoint touchpoint--secondary" href="#">
+    <span class="touchpoint__label">View more</span>
+    <span class="touchpoint__button icon">&#xe00b;</span>
+</a>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;touchpoint touchpoint--secondary&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;touchpoint__label&quot;</span><span class="nt">&gt;</span>View more<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;touchpoint__button icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe00b;</span><span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;/a&gt;</span>
+</pre></div></div></div>
+<p>Small</p>
+<div class="codeExample"><div class="exampleOutput"><a class="touchpoint touchpoint--primary touchpoint--small" href="#">
+    <span class="touchpoint__label">View more</span>
+    <span class="touchpoint__button icon">&#xe00b;</span>
+</a>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;touchpoint touchpoint--primary touchpoint--small&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;touchpoint__label&quot;</span><span class="nt">&gt;</span>View more<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;touchpoint__button icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe00b;</span><span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;/a&gt;</span>
+</pre></div></div></div>
+<p>Secondary and small</p>
+<div class="codeExample"><div class="exampleOutput"><a class="touchpoint touchpoint--secondary touchpoint--small" href="#">
+    <span class="touchpoint__label">View more</span>
+    <span class="touchpoint__button icon">&#xe00b;</span>
+</a>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;touchpoint touchpoint--secondary touchpoint--small&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;touchpoint__label&quot;</span><span class="nt">&gt;</span>View more<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;touchpoint__button icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe00b;</span><span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;/a&gt;</span>
+</pre></div></div></div>            </div>
+        </article>
+
+        <footer class="styleguide__contentinfo" role="contentinfo">
+            <p><small>© 2014 Guardian News and Media Limited or its affiliated companies. All rights reserved.</small></p>
+        </footer>
+    </main>
+
+    <label class="styleguide__navigation-toggle" for="styleguide__navigation-checkbox"><span class="icon">&#xe04A;</span></label>
+
+    <script type="text/javascript" id="gu" src="../ArticleTemplates/assets/js/components/require.js" data-main="/ArticleTemplates/assets/js/app.js" data-js-dir="/ArticleTemplates/assets/js" async></script>
+</body>
+</html>

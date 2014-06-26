@@ -1,0 +1,64 @@
+.tone--podcast {
+    .audio-player__button {
+        &.touchpoint--primary .touchpoint__button {
+            background-color: color(tone-news);
+            color: #fff;
+
+            &:active {
+                background-color: color(tone-news-accent);
+            }
+        }
+    }
+
+    .audio-player__slider__knob {
+        background-color: color(tone-news-accent);
+    }
+
+    .article {
+        border-top-color: color(shade-1);
+    }
+
+    .article__header {
+        background-color: color(tone-news-accent);
+        background-image: -webkit-canvas(circles);
+
+        .section {
+            display: none;
+        }
+
+        .headline {
+            color: #fff;
+
+            .headline__accent {
+                color: color(shade-1);
+                display: block;
+            }
+        }
+
+        .byline {
+            color: #fff;
+        }
+
+        .standfirst {
+            color: color(shade-1);
+
+            @include mq($to: col2) {
+                font-size: 1.25em;
+                line-height: 1.25em;
+            }
+        }
+    }
+
+    .meta,
+    .meta__pubdate {
+        color: rgba(#fff, .8);
+    }
+
+    .meta {
+        border-top-color: rgba(color(tone-news), .4);
+    }
+
+    .meta__comments {
+        border-left-color: rgba(color(tone-news), .4);
+    }
+}

@@ -1,0 +1,110 @@
+/*doc
+---
+title: Animation
+name: animation
+category: Base
+---
+```html_example
+<div class="anim">
+    <span class="animated fadeinright"></span>
+</div>
+<div class="anim">
+    <span class="animated slideinright"></span>
+</div>
+<div class="anim">
+    <span class="animated scaleout"></span>
+</div>
+<div class="anim">
+    <span class="animated blink"></span>
+</div>
+```
+*/
+
+.animated {
+    -webkit-animation-duration: .6s;
+    animation-duration: .6s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+// Fade-in right
+@-webkit-keyframes fadeinright {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(30px);
+        transform: translateX(30px);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+.fadeinright {
+    -webkit-animation-name: fadeinright;
+    animation-name: fadeinright;
+}
+
+
+// SlideInRight
+@-webkit-keyframes slideinright {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(2000px);
+        transform: translateX(2000px);
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+.slideinright {
+    -webkit-animation-name: slideinright;
+    animation-name: slideinright;
+}
+
+
+// Scale out
+@-webkit-keyframes scaleout {
+    0% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        -webkit-transform: translateX(-20px) scale(.4);
+        transform: translateX(-20px) scale(.4);
+    }
+}
+
+.scaleout {
+    -webkit-animation-name: scaleout;
+    animation-name: scaleout;
+}
+
+
+// Blink
+@-webkit-keyframes blink {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+@keyframes blink {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.blink {
+    -webkit-animation-name: blink;
+    animation-name: blink;
+}

@@ -1,0 +1,48 @@
+/*doc
+---
+title: Tabs
+name: tabs
+category: Modules
+---
+Navigate between different sections of a page.
+
+```html_example
+<div class="tabs">
+    <ul class="inline-list">
+        <li class="inline-list__item selected">Report</li><!--
+     --><li class="inline-list__item">Minute-by-minute</li><!--
+     --><li class="inline-list__item">Match Info</li>
+    </ul>
+</div>
+```
+*/
+
+.tabs {
+    color: color(shade-2);
+    font-family: $agate-sans;
+    @include meta;
+    margin: base-px(1, 0);
+    clear: left;
+
+    @include mq($to: col1) {
+        margin: base-px(1);
+    }
+
+    .inline-list__item {
+        vertical-align: top;
+        border-top: 2px solid color(shade-4);
+        padding: base-px(.5, 1, 2, .25);
+        width: 33.3%;
+
+        &.selected {
+            color: color(tone-news);
+            font-weight: bold;
+            border-top: 4px solid color(tone-news);
+            padding-top: base-px(.3333);
+        }
+    }
+
+    .android & {
+        margin: base-px(1);
+    }
+}

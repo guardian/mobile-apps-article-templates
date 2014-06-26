@@ -1,49 +1,64 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-	<title>Comments</title>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="initial-scale=1, maximum-scale=1" />
-	<link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__css/style.css" />
-	<script type="text/javascript" src="__TEMPLATES_DIRECTORY__js/amd/shim.js"></script>
+    <title>Comments</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/style.css" />
+    <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/js/shim.js"></script>
 </head>
 
-<body id="discussion" class="__SECTION_TONE__ comments-__COMMENTS_COUNT__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__">
-	<div class="article" style="margin-top: __ACTIONBARHEIGHT__px;">
-		<div class="article__header">
-			<h3 class="article__section">Comments <span class="comments-count">__COMMENTS_COUNT__</span></h3>
-			<h1 class="article__headline">__TITLE__</h1>
-			<div class="article__controls">
-				<div class="article__controls__sorter">
-					<a href="x-gu://newestfirst" id="comments-ordering"><span class="icon">&#xe014;</span>__COMMENTS_ORDER__</a>
-				</div>
-				<div class="article__controls__action">
-					<a class="touchpoint" href="x-gu://leavecomment">
-						<span class="touchpoint__label" >Leave a comment</span>
-						<span class="touchpoint__button touchpoint__button--primary"><span class="icon">&#xe03d;</span></span>
-					</a>
-						<span class="touchpoint__label comments-closed-label">Comments are closed</span>
-				</div>
-			</div>
-		</div>
+<body class="tone--__SECTION_TONE__ comments-__COMMENTS_COUNT__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__">
+    <div class="discussion" style="margin-top: __ACTIONBARHEIGHT__px;" id="comments">
+        <div class="discussion__header">
+            <h3 class="section">Comments <span class="section__meta">__COMMENTS_COUNT__</span></h3>
+            <h1 class="headline">__TITLE__</h1>
+        </div>
 
-		<div id="comments" class="article__body article__body--comments">
-			<div class="discussion discussion__empty">
-				<div class="prose resizable">
-					<p>Open for comments. <a href="x-gu://leavecomment">Be the first to join the debate</a></p>
-				</div>
-			</div>
-			<div class="discussion discussion__failed">
-				<div class="prose resizable">
-					<p>Comments are currently unavailable. Please try again later.</p>
-				</div>
-			</div>
-			<div class="discussion__loading">
-				<img src="__TEMPLATES_DIRECTORY__css/img/loading.gif" />
-			</div>
-		</div>
-	</div>
+        <div class="discussion__body">
+            <div class="container">
+                <div class="container__header">
+                    <div class="container__action container__action--sort">
+                        <a href="x-gu://newestfirst" id="comments-ordering" data-icon="&#xe014;">__COMMENTS_ORDER__</a>
+                    </div>
+                    <div class="container__action container__action--comment">
+                        <a class="touchpoint touchpoint--primary" href="x-gu://leavecomment">
+                            <span class="touchpoint__label" >Leave a comment</span>
+                            <span class="touchpoint__button icon">&#xe03d;</span>
+                        </a>
+                        <span class="touchpoint comments-closed-label">
+                            <span class="touchpoint__label">Comments are closed</span>
+                        </span>
+                    </div>
+                </div>
 
-	<script type="text/javascript" id="gu" src="__TEMPLATES_DIRECTORY__js/amd/components/require.min.js" data-main="__TEMPLATES_DIRECTORY__js/amd/app.js" data-js-dir="__TEMPLATES_DIRECTORY__js" async></script>
+                <div class="container__body">
+                    <div class="block block--discussion-empty">
+                        <div class="block__body">
+                            <div class="comment">
+                                <div class="prose resizable">
+                                    <p>Open for comments. <a href="x-gu://leavecomment">Be the first to join the debate</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block block--discussion-failed">
+                        <div class="block__body">
+                            <div class="comment">
+                                <div class="prose resizable">
+                                    <p>Comments are currently unavailable. Please try again later.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="loading loading--discussion">
+                        <img src="__TEMPLATES_DIRECTORY__assets/img/loading.gif" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" id="gu" src="__TEMPLATES_DIRECTORY__assets/js/components/require.js" data-main="__TEMPLATES_DIRECTORY__assets/js/app.js" data-js-dir="__TEMPLATES_DIRECTORY__assets/js" async></script>
 </body>
 </html>

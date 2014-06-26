@@ -1,0 +1,54 @@
+html, body, object, iframe,
+div, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+span, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, mark, q, s, samp, small, strike, strong, sub, sup, time, tt, var, b, u, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, nav, section, summary,
+audio, video {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    background-color: color(shade-5);
+    color: color(shade-1);
+    width: 100%;
+    max-width: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none; // Disable selection/copy in UIWebView
+    user-select: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+
+    &::after {
+        content: '';
+        content: none;
+    }
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a {
+    color: color(tone-news);
+    text-decoration: none;
+
+    &:active {
+        color: color(tone-news-accent);
+    }
+}

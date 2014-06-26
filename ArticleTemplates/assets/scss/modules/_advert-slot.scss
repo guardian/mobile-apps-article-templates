@@ -1,0 +1,121 @@
+/*doc
+---
+title: Advert slot
+name: advert-slot
+category: Modules
+---
+Create a placeholder tp allow an advert to be placed with an article.
+
+Banner
+
+```html_example
+<div class="advert-slot advert-slot--banner">
+    <div class="advert-slot__label">Advertisement</div>
+    <div class="advert-slot__wrapper">
+        <div class="advert-slot__wrapper__content">
+            <!-- Advert injected here using JavaScript -->
+        </div>
+    </div>
+</div>
+```
+
+MPU
+
+```html_example
+<div class="advert-slot advert-slot--mpu">
+    <div class="advert-slot__label">Advertisement</div>
+    <div class="advert-slot__wrapper">
+        <div class="advert-slot__wrapper__content">
+            <!-- Advert injected here using JavaScript -->
+        </div>
+    </div>
+</div>
+```
+*/
+
+.advert-slot {
+    color: color(shade-2);
+    font-family: $agate-sans;
+    @include meta();
+    background: rgba(color(shade-3), .2);
+    display: none;
+    overflow: auto;
+
+    div,
+    img {
+        vertical-align: middle;
+    }
+
+    .advert-slot__label {
+        overflow: auto;
+    }
+
+    .advert-slot__wrapper {
+        background-color: color(shade-4);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .advert-slot__wrapper__content {
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+// Banner-size advert
+.advert-slot--banner {
+    padding: base-px(0, 0, 1, 0);
+    width: 100%;
+
+    .advert-slot__label {
+        padding: base-px(.5, 0);
+    }
+
+    .advert-slot__wrapper {
+        padding-top: base-px(4);
+        width: 300px;
+        margin: 0 auto;
+    }
+}
+
+// MPU-size advert
+.advert-slot--mpu {
+    border-top: 1px dotted color(shade-4);
+    width: 300px;
+
+    .advert-slot__label {
+        padding: base-px(.5, 0, 2, .5);
+    }
+
+    .advert-slot__wrapper {
+        padding-top: 250px;
+    }
+}
+
+// These classes are set on the body and determine the placement of adverts
+.advert-config--mobile {
+    .advert-slot--banner,
+    .advert-slot--mpu--mobile {
+        display: block;
+
+        .advert-slot__label {
+            margin: 0 auto;
+            width: 300px;
+        }
+
+        .advert-slot__wrapper {
+            margin: 0 auto;
+        }
+    }
+}
+
+.advert-config--tablet {
+    .advert-slot--mpu--tablet {
+        display: block;
+    }
+}
+
+// This class hides the pre-inserted banner for subscribers
+.advert-slot--false {
+    display: none !important;
+}

@@ -1,0 +1,292 @@
+/*doc
+---
+title: Match summary
+name: match-summary
+category: Football
+---
+Display a match summary. The score is updated during the match.
+
+```html_example
+<div class="match-summary is-agg">
+    <div class="match-status match-status--ft">
+        <p class="match-status__time">FT</p>
+    </div>
+
+    <a class="alerts" href="x-gu://follow/football-match///3689902" data-follow-alert-id="football-match///3689902">
+        <span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> <span class="alerts__label">Match alerts</span></span>
+        <span class="alerts__state--follow"><span class="icon">&#xe049;</span> <span class="alerts__label">Match alerts on</span></span>
+    </a>
+
+    <div class="match-summary__meta">
+        <p class="match-summary__meta__competition">World Cup 2014 Group B</p>
+        <p class="match-summary__meta__venue">Estadio Beira-Rio</p>
+    </div>
+
+    <div class="match-summary__team match-summary__team--home">
+        <div class="match-summary__badge" style="background-image: url(http://png-resizer.mobile-apps.guardianapis.com/sport/football/crests/7317.png?width=300);"></div>
+        <div class="match-summary__info match-summary__home__info">
+            <h1 class="match-summary__info__label match-summary__home__info__label headline" onclick="javascript:window.location.href='x-gu://team/http://mobile-apps.guardianapis.com/lists/tag/football/australia'">Australia</h1>
+            <p>Tim Cahill&nbsp;21'</p>
+            <p>Mile Jedinak&nbsp;54' (Pen)</p>
+        </div>
+        <div class="match-summary__score">
+            <h1 class="match-summary__score__label match-summary__home__score__label headline">
+                2
+                <span class="match-summary__score__agg">4</span>
+            </h1>
+        </div>
+    </div>
+
+    <div class="match-summary__team match-summary__team--away">
+        <div class="match-summary__score">
+            <h1 class="match-summary__score__label match-summary__away__score__label headline">
+                3
+                <span class="match-summary__score__agg">3</span>
+            </h1>
+        </div>
+        <div class="match-summary__info match-summary__away__info">
+            <h1 class="match-summary__info__label match-summary__away__info__label headline" onclick="javascript:window.location.href='x-gu://team/http://mobile-apps.guardianapis.com/lists/tag/football/holland'">Holland</h1>
+            <p>Arjen Robben&nbsp;20'</p>
+            <p>Robin van Persie&nbsp;58'</p>
+            <p>Memphis Depay&nbsp;68'</p>
+        </div>
+        <div class="match-summary__badge" style="background-image: url(http://png-resizer.mobile-apps.guardianapis.com/sport/football/crests/631.png?width=300);"></div>
+    </div>
+
+    <div class="match-summary__comment">
+        <p class="match-summary__comment__text">Sevilla win on away goals rule</p>
+    </div>
+</div>
+```
+*/
+
+.match-summary {
+    background-color: #fff;
+    padding: base-px(1, 1, 0, 1);
+    position: relative;
+    overflow: hidden;
+
+    @include mq($from: col1) {
+        padding: base-px(.5, 1, 0, 1);
+        min-height: 150px;
+
+        &::after {
+            content: '';
+            background-color: color(shade-4);
+            display: block;
+            width: 1px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 50%;
+            bottom: 0;
+            left: 50%;
+        }
+    }
+
+    .headline {
+        @include mq($to: col2) {
+            margin-top: -8px; // Offset to align with badges
+            font-size: 3.2rem;
+            line-height: 4rem;
+        }
+
+        @include mq($from: col2) {
+            margin: base-px(0, 0, .5, 0);
+            margin-top: -10px; // Offset to align with badges
+            font-size: 4rem;
+            line-height: 4.8rem;
+        }
+    }
+
+    .match-status {
+        z-index: 10;
+
+        @include mq($to: col1) {
+            float: left;
+            width: 44px;
+        }
+
+        @include mq($from: col1) {
+            margin-left: auto;
+            margin-right: auto;
+            position: absolute;
+            left: 0;
+            right: 0;
+        }
+    }
+
+    .match-status__time {
+        width: 100%;
+    }
+
+    // Alerts
+    .alerts {
+        text-align: center;
+        position: relative;
+        z-index: 20;
+        padding: base-px(.5, 0, 0, 0);
+        width: auto;
+        display: inline-block;
+        float: right;
+
+        @include mq($to: col1) {
+            font-size: 150%;
+        }
+    }
+
+    .alerts__label {
+        @include mq($to: col1) {
+            display: none;
+        }
+    }
+}
+
+.match-summary__meta {
+    font-family: $agate-sans;
+    @include meta();
+
+    @include mq($to: col1) {
+        padding: base-px(0, 3, 1, 4.5);
+    }
+
+    @include mq($from: col1) {
+        width: 50%;
+    }
+}
+
+.match-summary__meta__competition,
+.match-summary__meta__venue {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.match-summary__team {
+    hyphens: auto;
+    word-break: break-word;
+
+    @include mq($to: col1) {
+        @include flexbox;
+        @include flex-direction(row);
+        width: 100%;
+        padding: base-px(1, 0);
+    }
+
+    @include mq($from: col1) {
+        margin: base-px(1, 0, 2, 0);
+        width: 50%;
+        float: left;
+        display: table;
+        table-layout: fixed;
+    }
+
+    .match-summary__badge,
+    .match-summary__info,
+    .match-summary__score {
+        vertical-align: top;
+
+        @include mq($from: col1) {
+            display: table-cell;
+        }
+    }
+
+    .match-summary__score {
+        width: 44px;
+        padding: base-px(0, .5);
+
+        @include mq($to: col1) {
+            width: 15%;
+            min-width: 50px;
+            text-align: right;
+            padding-right: 0;
+        }
+    }
+
+    .match-summary__info {
+        font-family: $agate-sans;
+        @include meta();
+        padding: base-px(0, 0, 0, .5);
+
+        @include mq($to: col1) {
+            width: 100%;
+        }
+    }
+
+    .match-summary__info__label {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        position: relative;
+        z-index: 25;
+    }
+
+    .match-summary__badge {
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        @include mq($to: col1) {
+            min-width: 44px;
+        }
+
+        @include mq($from: col1) {
+            padding: base-px(.3333, 0, 0, 0);
+            width: 54px;
+        }
+    }
+}
+
+.match-summary__team--home {
+    @include mq($to: col1) {
+        border-top: 1px dotted color(shade-4);
+    }
+
+    .match-summary__score {
+        @include mq($from: col1) {
+            text-align: right;
+        }
+    }
+}
+
+.match-summary__team--away {
+    @include flex-direction(row-reverse);
+}
+
+// Aggregate Scores
+.match-summary__score__agg {
+    color: color(shade-3);
+    font-size: 50%;
+    line-height: 70%;
+    display: none;
+
+    & > span {
+        display: none;
+    }
+
+    @include mq($to: col1) {
+        font-size: 75%;
+        margin-top: 6px;
+    }
+
+    @include mq($from: col1) {
+        margin-top: 10px;
+    }
+
+    .is-agg & {
+        display: block;
+    }
+}
+
+.match-summary__comment {
+    font-family: $agate-sans;
+    @include meta();
+    padding: base-px(.5, 1);
+    background-color: #fff;
+    margin: 0 auto;
+    border: 1px solid color(shade-4);
+    border-bottom: 0;
+    width: auto;
+    display: table;
+    position: relative;
+    z-index: 20;
+}

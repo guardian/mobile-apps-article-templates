@@ -1,81 +1,78 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-	<title>Football</title>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="initial-scale=1, maximum-scale=1" />
-	<link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__css/style.css" />
-	<script type="text/javascript" src="__TEMPLATES_DIRECTORY__js/amd/shim.js"></script>
+    <title>Football</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/style.css" />
+    <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/js/shim.js"></script>
 </head>
 
-<body id="football" class="__SECTION_TONE__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__ advert-config--__ADS_CONFIG__" data-content-type="football" data-ads-enabled="__ADS_ENABLED__" data-ads-slot="/__AD_NETWORK_ID__/__AD_UNIT_IDENTIFIER__" style="margin-top: __ACTIONBARHEIGHT__px;" data-ads-config="__ADS_CONFIG__" data-ads-keyword="__AD_KEYWORD_TARGETING__" >
-	<div class="advert-slot advert-slot--banner advert-slot--__ADS_ENABLED__">
-		<div class="advert-slot__label">Advertisement </div>
-		<div class="advert-slot__wrapper"></div>
-	</div>
+<body class="tone--__SECTION_TONE__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__ advert-config--__ADS_CONFIG__" data-content-type="football" data-ads-enabled="__ADS_ENABLED__" data-ads-slot="/__AD_NETWORK_ID__/__AD_UNIT_IDENTIFIER__" style="margin-top: __ACTIONBARHEIGHT__px;" data-ads-config="__ADS_CONFIG__" data-ads-keyword="__AD_KEYWORD_TARGETING__" >
+    <div class="advert-slot advert-slot--banner advert-slot--__ADS_ENABLED__">
+        <div class="advert-slot__label">Advertisement</div>
+        <div class="advert-slot__wrapper"></div>
+    </div>
 
-	<div class="article">
-		<div class="article__header football__header __IS_ALERTS__ __IS_AGG__"><!-- populate __IS_AGG__ with is-agg if game has an aggregate score to show-->
-			<div class="inner-header">
-				<div class="football__header__status football__header__status--__FOOTBALL_STATUS_CLASS__"><!-- This should be populated with the status as a useable class name, lower case, no spaces. 1st and 2nd need to be converted to first and second respectively. Do not populate with the time, it will default to that style -->
-					<p>__FOOTBALL_STATUS__</p>
-				</div>
+    <div class="football">
 
-				<div class="football__header__divider"></div>
+        <div class="match-summary __IS_AGG__">
+            <div class="match-status match-status--__FOOTBALL_STATUS_CLASS__">
+                <p class="match-status__time">__FOOTBALL_STATUS__</p>
+            </div>
 
-				__FOOTBALL_ALERTS__
-			
-				<div class="football__header__match-info">
-					<p class="football__header__match-info__competition">__FOOTBALL_COMPETITION__ </p>
-					<p class="football__header__match-info__venue">__FOOTBALL_VENUE__</p>
-				</div>
+            __FOOTBALL_ALERTS__
 
-				<div class="football__header__home">
-					<div class="football__header__badge football__header__home__badge">
-						__FOOTBALL_HOME_CREST__
-					</div>
-					
-					<div class="football__header__info football__header__home__info">
-						<h1 class="football__header__info__label football__header__home__info__label article__headline" onclick="javascript:window.location.href='x-gu://team/__FOOTBALL_HOME_TEAM_TAG__'">__FOOTBALL_HOME_NAME__</h1>
-						__FOOTBALL_HOME_SCORER__
-					</div>
-					
-					<div class="football__header__score">
-						<h1 class="football__header__score__label football__header__home__score__label article__headline">__FOOTBALL_HOME_SCORE__<span class="football__header__score__agg">__FOOTBALL_HOME_AGG_SCORE__</span></h1>
-					</div>
-				</div>
+            <div class="match-summary__meta">
+                <p class="match-summary__meta__competition">__FOOTBALL_COMPETITION__ </p>
+                <p class="match-summary__meta__venue">__FOOTBALL_VENUE__</p>
+            </div>
 
-				<div class="football__header__away">
-					<div class="football__header__score">
-						<h1 class="football__header__score__label football__header__away__score__label article__headline">__FOOTBALL_AWAY_SCORE__<span class="football__header__score__agg">__FOOTBALL_AWAY_AGG_SCORE__</span></h1>
-					</div>
-					
-					<div class="football__header__info football__header__away__info">
-						<h1 class="article__headline" onclick="javascript:window.location.href='x-gu://team/__FOOTBALL_AWAY_TEAM_TAG__'">__FOOTBALL_AWAY_NAME__</h1>
-						__FOOTBALL_AWAY_SCORER__
-					</div>
-					
-					<div class="football__header__badge football__header__away__badge">
-						__FOOTBALL_AWAY_CREST__
-					</div>
-				</div>
+            <div class="match-summary__team match-summary__team--home">
+                __FOOTBALL_HOME_CREST__
+                <div class="match-summary__info match-summary__home__info">
+                    <h1 class="match-summary__info__label match-summary__home__info__label headline" onclick="javascript:window.location.href='x-gu://team/__FOOTBALL_HOME_TEAM_TAG__'">__FOOTBALL_HOME_NAME__</h1>
+                    __FOOTBALL_HOME_SCORER__
+                </div>
+                
+                <div class="match-summary__score">
+                    <h1 class="match-summary__score__label match-summary__home__score__label headline">
+                        __FOOTBALL_HOME_SCORE__
+                        <span class="match-summary__score__agg">__FOOTBALL_HOME_AGG_SCORE__</span>
+                    </h1>
+                </div>
+            </div>
 
-				__FOOTBALL_COMMENT__
-			</div>
-		</div><!-- End of Header -->
-		
-		<ul class="tabs football-tabs">
-			__FOOTBALL_TABS__
-		</ul>
+            <div class="match-summary__team match-summary__team--away">
+                <div class="match-summary__score">
+                    <h1 class="match-summary__score__label match-summary__away__score__label headline">
+                        __FOOTBALL_AWAY_SCORE__
+                        <span class="match-summary__score__agg">__FOOTBALL_AWAY_AGG_SCORE__</span>
+                    </h1>
+                </div>
+                <div class="match-summary__info match-summary__away__info">
+                    <h1 class="match-summary__info__label match-summary__away__info__label headline" onclick="javascript:window.location.href='x-gu://team/__FOOTBALL_AWAY_TEAM_TAG__'">__FOOTBALL_AWAY_NAME__</h1>
+                    __FOOTBALL_AWAY_SCORER__
+                </div>
+                __FOOTBALL_AWAY_CREST__
+            </div>
 
-		__FOOTBALL_REPORT__
-		__FOOTBALL_LIVEBLOG__
+            __FOOTBALL_COMMENT__
+        </div>
 
-		<div class="football-tabs football-tabs-stats">
-			
-		</div>
-	</div>
+        <div class="tabs">
+            <ul class="inline-list">
+                __FOOTBALL_TABS__
+            </ul>
+        </div>
 
-	<script type="text/javascript" id="gu" src="__TEMPLATES_DIRECTORY__js/amd/components/require.min.js" data-main="__TEMPLATES_DIRECTORY__js/amd/app.js" data-js-dir="__TEMPLATES_DIRECTORY__js" async></script>
+        __FOOTBALL_REPORT__
+        __FOOTBALL_LIVEBLOG__
+        <div class="football__tab football__tab--stats">
+            
+        </div>
+    </div>
+
+    <script type="text/javascript" id="gu" src="__TEMPLATES_DIRECTORY__assets/js/components/require.js" data-main="__TEMPLATES_DIRECTORY__assets/js/app.js" data-js-dir="__TEMPLATES_DIRECTORY__assets/js" async></script>
 </body>
 </html>

@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Guardian Apps Article Templates: Content</title>
+
+    <!-- CSS & JS for article templates -->
+    <link rel="stylesheet" href="../ArticleTemplates/assets/css/style.css"/>
+    <script type="text/javascript" src="../ArticleTemplates/assets/js/shim.js"></script>
+
+    <!-- CSS for documentation -->
+    <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+
+<body class="styleguide no-ready">
+    <input class="styleguide__navigation-checkbox" id="styleguide__navigation-checkbox" type="checkbox"/>
+
+    <nav class="styleguide__navigation" role="navigation" id="sidebar">
+        <ul class="nav">
+            <li class="nav__item"><a href="../">Home</a></li>
+        
+            <li class="nav__item"><a href="modules.html">Modules</a></li>
+        
+            <li class="nav__item"><a href="base.html">Base</a></li>
+        
+            <li class="nav__item"><a href="guardianwitness.html">GuardianWitness</a></li>
+        
+            <li class="nav__item"><a href="media.html">Media</a></li>
+        
+            <li class="nav__item"><a href="charts.html">Charts</a></li>
+        
+            <li class="nav__item"><a href="blocks.html">Blocks</a></li>
+        
+            <li class="nav__item"><a href="content.html">Content</a></li>
+        
+            <li class="nav__item"><a href="containers.html">Containers</a></li>
+        
+            <li class="nav__item"><a href="external.html">External</a></li>
+        
+            <li class="nav__item"><a href="football.html">Football</a></li>
+        
+        </ul>
+    </nav>
+
+    <main class="styleguide__main selectable" role="main">
+        <article class="styleguide__article">
+            <div class="styleguide__article__header">
+                <h1 class="headline">Content</h1>
+            </div>
+
+            <div class="tags">
+                <ul class="inline-list"><!--
+                
+                 --><li class="inline-list__item"><a href="#byline">Byline</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#headline">Headline</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#main-media">Main media</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#meta">Meta</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#prose">Prose</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#review-rating">Review rating</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#section">Section</a></li><!--
+                
+                 --><li class="inline-list__item"><a href="#standfirst">Standfirst</a></li><!--
+                
+                --></ul>
+            </div>
+
+            <div class="styleguide__article__body">
+                
+<h1 id="byline">Byline</h1>
+
+<p>Display an article&#39;s byline.</p>
+<div class="codeExample"><div class="exampleOutput"><p class="byline"><span class="byline__author"><a href="#">Helena Smith</a></span> in Athens, <span class="byline__author"><a href="#">Lizzy Davies</a></span> in Rome and <span class="byline__author">Harriet Grant</span></p>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;byline&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;byline__author&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Helena Smith<span class="nt">&lt;/a&gt;&lt;/span&gt;</span> in Athens, <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;byline__author&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Lizzy Davies<span class="nt">&lt;/a&gt;&lt;/span&gt;</span> in Rome and <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;byline__author&quot;</span><span class="nt">&gt;</span>Harriet Grant<span class="nt">&lt;/span&gt;&lt;/p&gt;</span>
+</pre></div></div></div>
+<h1 id="headline">Headline</h1>
+
+<p>Display an article&#39;s headline.</p>
+<div class="codeExample"><div class="exampleOutput"><h1 class="headline">Google’s driverless cars are a boon for safety and climate, but not for privacy</h1>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">&quot;headline&quot;</span><span class="nt">&gt;</span>Google’s driverless cars are a boon for safety and climate, but not for privacy<span class="nt">&lt;/h1&gt;</span>
+</pre></div></div></div>
+<h1 id="main-media">Main media</h1>
+
+<p>Display the main visual media for an article.</p>
+<div class="codeExample"><div class="exampleOutput"><div class="main-media">
+    <figure class="element element-image figure-wide">
+        <div class="element__inner" style="padding-bottom: 60%;">
+            <img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/13/1402658128646/Ambassadors-014.jpg?width=900&amp;height=540&amp;quality=60">
+        </div>
+        <figcaption class="main-media__caption">
+            <span class="main-media__caption__icon" href="#"><span class="icon">&#xe044;</span></span>
+            <span class="main-media__caption__text">David Mitchell and Robert Webb in The Ambassadors. Photograph: Colin Hutton/BBC/Big Talk</span>
+        </figcaption>
+    </figure>
+</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;main-media&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;figure</span> <span class="na">class=</span><span class="s">&quot;element element-image figure-wide&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;element__inner&quot;</span> <span class="na">style=</span><span class="s">&quot;padding-bottom: 60%;&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/13/1402658128646/Ambassadors-014.jpg?width=900&amp;amp;height=540&amp;amp;quality=60&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;figcaption</span> <span class="na">class=</span><span class="s">&quot;main-media__caption&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;main-media__caption__icon&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe044;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;main-media__caption__text&quot;</span><span class="nt">&gt;</span>David Mitchell and Robert Webb in The Ambassadors. Photograph: Colin Hutton/BBC/Big Talk<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/figcaption&gt;</span>
+    <span class="nt">&lt;/figure&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<p>Can also be displayed with the caption initially hidden:</p>
+<div class="codeExample"><div class="exampleOutput"><div class="main-media main-media--hidden-caption">
+    <figure class="element element-image figure-wide">
+        <div class="element__inner" style="padding-bottom: 60%;">
+            <img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/13/1402658128646/Ambassadors-014.jpg?width=900&amp;height=540&amp;quality=60">
+        </div>
+        <figcaption class="main-media__caption">
+            <span class="main-media__caption__icon" href="#"><span class="icon">&#xe044;</span></span>
+            <span class="main-media__caption__text">David Mitchell and Robert Webb in The Ambassadors. Photograph: Colin Hutton/BBC/Big Talk</span>
+        </figcaption>
+    </figure>
+</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;main-media main-media--hidden-caption&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;figure</span> <span class="na">class=</span><span class="s">&quot;element element-image figure-wide&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;element__inner&quot;</span> <span class="na">style=</span><span class="s">&quot;padding-bottom: 60%;&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/13/1402658128646/Ambassadors-014.jpg?width=900&amp;amp;height=540&amp;amp;quality=60&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;figcaption</span> <span class="na">class=</span><span class="s">&quot;main-media__caption&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;main-media__caption__icon&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe044;</span><span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;main-media__caption__text&quot;</span><span class="nt">&gt;</span>David Mitchell and Robert Webb in The Ambassadors. Photograph: Colin Hutton/BBC/Big Talk<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/figcaption&gt;</span>
+    <span class="nt">&lt;/figure&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<h1 id="meta">Meta</h1>
+
+<p>Display an article&#39;s meta information.</p>
+<div class="codeExample"><div class="exampleOutput"><div class="meta">
+    <div class="meta__misc">
+        <div class="meta__byline">
+            <span class="byline">
+                <a class="avatar avatar--author" href="x-gu://list/mobile-apps.guardianapis.com/lists/tag/profile/michaelbillington">
+                    <img class="avatar__img" src="http://png-resizer.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2014/3/13/1394733744238/MichaelBillington.png?width=300">
+                </a>
+                <span class="byline__author">
+                    <a href="x-gu://list/mobile-apps.guardianapis.com/lists/tag/profile/michaelbillington">Michael Billington</a>
+                </span>
+            </span>
+            <a class="alerts" href="x-gu://follow/tag-contributor///profile/michaelbillington" data-follow-alert-id="tag-contributor///profile/michaelbillington">
+                <span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> <span class="alerts__label">Follow contributor</span></span>
+                <span class="alerts__state--follow"><span class="icon">&#xe049;</span> <span class="alerts__label">Following contributor</span></span>
+            </a>
+        </div>
+        <p class="meta__pubdate">23:00 GMT+1 Wednesday, 18 June 2014</p>
+    </div>
+    <div class="meta__comments">
+        <a href="#comments" data-scroll=""><span data-icon="&#xe03c;">2</span> <span class="meta__comments__label">Comments</span></a>
+    </div>
+</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;meta&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;meta__misc&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;meta__byline&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;byline&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;avatar avatar--author&quot;</span> <span class="na">href=</span><span class="s">&quot;x-gu://list/mobile-apps.guardianapis.com/lists/tag/profile/michaelbillington&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">&quot;avatar__img&quot;</span> <span class="na">src=</span><span class="s">&quot;http://png-resizer.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2014/3/13/1394733744238/MichaelBillington.png?width=300&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;/a&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;byline__author&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;x-gu://list/mobile-apps.guardianapis.com/lists/tag/profile/michaelbillington&quot;</span><span class="nt">&gt;</span>Michael Billington<span class="nt">&lt;/a&gt;</span>
+                <span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;alerts&quot;</span> <span class="na">href=</span><span class="s">&quot;x-gu://follow/tag-contributor///profile/michaelbillington&quot;</span> <span class="na">data-follow-alert-id=</span><span class="s">&quot;tag-contributor///profile/michaelbillington&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;alerts__state--unfollow&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe048;</span><span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;alerts__label&quot;</span><span class="nt">&gt;</span>Follow contributor<span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;alerts__state--follow&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe049;</span><span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;alerts__label&quot;</span><span class="nt">&gt;</span>Following contributor<span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
+            <span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;meta__pubdate&quot;</span><span class="nt">&gt;</span>23:00 GMT+1 Wednesday, 18 June 2014<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;meta__comments&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#comments&quot;</span> <span class="na">data-scroll=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe03c;&quot;</span><span class="nt">&gt;</span>2<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;meta__comments__label&quot;</span><span class="nt">&gt;</span>Comments<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<h1 id="prose">Prose</h1>
+
+<p>Adds typographic styling, typically to content fetched from the Guardian Content API.</p>
+<div class="codeExample"><div class="exampleOutput"><div class="prose">
+    <h2>Sub-heading</h2>
+    <p>The <code>h2</code> element represents a sub-heading, used for article-level headings.</p>
+
+    <h2>Paragraph</h2>
+    <p>Paragraphs are (or at least should be) wrapped in <code>p</code> tags.
+
+    <h2>Horizontal rule</h2>
+    <p>The <code>hr</code> element represents a paragraph-level thematic break, e.g. a scene change in a story, or a transition to another topic within a section of a reference book as follows:</p>
+    <hr/>
+
+    <h2>Blockquote</h2>
+    <p>The <code>blockquote</code> element represents a section that is being quoted from another source.</p>
+    <blockquote class="quoted">
+        <p>Many forms of Government have been tried, and will be tried in this world of sin and woe. No one pretends that democracy is perfect or all-wise. Indeed, it has been said that democracy is the worst form of government except all those other forms that have been tried from time to time.</p>
+    </blockquote>
+
+    <p>This can include tweets, which are given a different stylistic treatment:</p>
+    <blockquote class="twitter-tweet">
+        <p><a href="https://twitter.com/search?q=%23TLC14&amp;src=hash">#TLC14</a> spread of genre sales in books incl self published from Nielsen <a href="http://t.co/Vu9NvGuPZN">pic.twitter.com/Vu9NvGuPZN</a></p>
+        — Joanna Penn (@thecreativepenn)
+        <a href="https://twitter.com/thecreativepenn/statuses/477384378067480576">June 13, 2014</a>
+    </blockquote>
+
+    <h2>Ordered list</h2>
+    <p>The <code>ol</code> element denotes an ordered list. Each item requires a surrounding <code>&lt;li&gt;</code> and <code>&lt;/li&gt;</code> tag, to denote individual items within the list.</p>
+    <ol>
+        <li>This is an ordered list.</li>
+        <li>
+            This is the second item, which contains a sub list
+            <ol>
+                <li>This is the sub list, which is also ordered.</li>
+                <li>It has two items.</li>
+            </ol>
+        </li>
+        <li>This is the final item on this list.</li>
+    </ol>
+
+    <h2>Unordered list</h2>
+    <p>The <code>ul</code> element denotes an unordered list (ie. a list of loose items that don&#8217;t require numbering, or a bulleted list). Again, each item requires a surrounding <code>&lt;li&gt;</code> and <code>&lt;/li&gt;</code> tag, to denote individual items. Here is an example list showing the constituent parts of the British Isles:</p>
+    <ul>
+        <li>
+            United Kingdom of Great Britain and Northern Ireland:
+            <ul>
+                <li>England</li>
+                <li>Scotland</li>
+                <li>Wales</li>
+                <li>Northern Ireland</li>
+            </ul>
+        </li>
+        <li>Republic of Ireland</li>
+        <li>Isle of Man</li>
+        <li>
+            Channel Islands:
+            <ul>
+                <li>Bailiwick of Guernsey</li>
+                <li>Bailiwick of Jersey</li>
+            </ul>
+        </li>
+    </ul>
+
+    <p>Sometimes we may want each list item to contain block elements, typically a paragraph or two.</p>
+    <ul>
+        <li>
+            <p>The British Isles is an archipelago consisting of the two large islands of Great Britain and Ireland, and many smaller surrounding islands.</p>
+        </li>
+        <li>
+            <p>Great Britain is the largest island of the archipelago. Ireland is the second largest island of the archipelago and lies directly to the west of Great Britain.</p>
+        </li>
+    </ul>
+
+    <h2>Definition list</h2>
+    <p>The <code>dl</code> element is for another type of list called a definition list. Instead of list items, the content of a <code>dl</code> consists of <code>dt</code> (definition term) and <code>dd</code> (definition description) pairs.</p>
+    <dl>
+        <dt>This is a term.</dt>
+        <dd>This is the definition of that term, which both live in a <code>dl</code>.</dd>
+        <dt>Here is another term.</dt>
+        <dd>And it gets a definition too, which is this line.</dd>
+        <dt>Here is term that shares a definition with the term below.</dt>
+        <dt>Here is a defined term.</dt>
+        <dd><code>dt</code> terms may stand on their own without an accompanying <code>dd</code>, but in that case they <em>share</em> descriptions with the next available <code>dt</code>. You may not have a <code>dd</code> without a parent <code>dt</code>.</dd>
+    </dl>
+
+    <h2>Links and anchors</h2>
+    <p>The <code>a</code> element is used to hyperlink text, be that to another page, a named fragment on the current page or any other location on the web. Example:</p>
+    <p><a href="/">Go to the home page</a> or <a href="#banner">return to the top of this page</a>.</p>
+
+    <h2>Stressed emphasis</h2>
+    <p>The <code>em</code> element is used to denote text with stressed emphasis, i.e., something you&#8217;d pronounce differently. Where italicizing is required for stylistic differentiation, the <code>i</code> element may be preferable. Example:</p>
+    <p>You simply <em>must</em> try the negitoro maki!</p>
+
+    <h2>Strong importance</h2>
+    <p>The <code>strong</code> element is used to denote text with strong importance. Where bolding is used for stylistic differentiation, the <code>b</code> element may be preferable. Example:</p> 
+    <p><strong>Don&#8217;t</strong> stick nails in the electrical outlet.</p>
+
+    <h2>Table</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Fruit</th>
+                <th>Colour</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Apple</td>
+                <td>Green</td>
+            </tr>
+            <tr>
+                <td>Orange</td>
+                <td>Orange</td>
+            </tr>
+            <tr>
+                <td>Banana</td>
+                <td>Yellow</td>
+            </tr>
+            <tr>
+                <td>Peach</td>
+                <td>Peach</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Figure</h2>
+    <p>Wide</p>
+    <figure>
+        <img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/11/1402512126497/Matt-Kenyon-on-Birmingham-014.jpg?width=900&amp;height=540&amp;quality=60"/>
+        <figcaption>
+            ‘The absurdity of the inspectors’ findings is clearest in the case of Gracelands, whose staff were taken to task for failing to ensure its 2- to 4-year-olds were protected against ‘extreme and radical behaviour'.' Illustration: Matt Kenyon
+        </figcaption>
+    </figure>
+    <p>Inline (floats to the left of any running text):</p>
+    <figure>
+        <img src="http://i.guim.co.uk/w-620/h--/q-95/sys-images/Guardian/Pix/pictures/2014/6/13/1402656896541/phpdKmNwRAM.jpg" alt="Mil" width="193" class="gu-image"/>
+        <figcaption>
+            The Sun's picture of Miliband that offended people in Liverpool
+        </figcaption>
+    </figure>
+    <p>Miliband was also confronted by a number of Labour MPs, including Steve Rotheram, the member for for Liverpool Walton. According to a source cited by the Liverpool Echo, Miliband apologised to the MPs. The source is quoted as saying: “Ed Miliband said he was very, very sorry.”</p>
+</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;prose&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h2&gt;</span>Sub-heading<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;p&gt;</span>The <span class="nt">&lt;code&gt;</span>h2<span class="nt">&lt;/code&gt;</span> element represents a sub-heading, used for article-level headings.<span class="nt">&lt;/p&gt;</span>
+
+    <span class="nt">&lt;h2&gt;</span>Paragraph<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Paragraphs are (or at least should be) wrapped in <span class="nt">&lt;code&gt;</span>p<span class="nt">&lt;/code&gt;</span> tags.
+
+    <span class="nt">&lt;h2&gt;</span>Horizontal rule<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;p&gt;</span>The <span class="nt">&lt;code&gt;</span>hr<span class="nt">&lt;/code&gt;</span> element represents a paragraph-level thematic break, e.g. a scene change in a story, or a transition to another topic within a section of a reference book as follows:<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;hr/&gt;</span>
+
+    <span class="nt">&lt;h2&gt;</span>Blockquote<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;p&gt;</span>The <span class="nt">&lt;code&gt;</span>blockquote<span class="nt">&lt;/code&gt;</span> element represents a section that is being quoted from another source.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;blockquote</span> <span class="na">class=</span><span class="s">&quot;quoted&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Many forms of Government have been tried, and will be tried in this world of sin and woe. No one pretends that democracy is perfect or all-wise. Indeed, it has been said that democracy is the worst form of government except all those other forms that have been tried from time to time.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/blockquote&gt;</span>
+
+    <span class="nt">&lt;p&gt;</span>This can include tweets, which are given a different stylistic treatment:<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;blockquote</span> <span class="na">class=</span><span class="s">&quot;twitter-tweet&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://twitter.com/search?q=%23TLC14&amp;amp;src=hash&quot;</span><span class="nt">&gt;</span>#TLC14<span class="nt">&lt;/a&gt;</span> spread of genre sales in books incl self published from Nielsen <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://t.co/Vu9NvGuPZN&quot;</span><span class="nt">&gt;</span>pic.twitter.com/Vu9NvGuPZN<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+        — Joanna Penn (@thecreativepenn)
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://twitter.com/thecreativepenn/statuses/477384378067480576&quot;</span><span class="nt">&gt;</span>June 13, 2014<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/blockquote&gt;</span>
+
+    <span class="nt">&lt;h2&gt;</span>Ordered list<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;p&gt;</span>The <span class="nt">&lt;code&gt;</span>ol<span class="nt">&lt;/code&gt;</span> element denotes an ordered list. Each item requires a surrounding <span class="nt">&lt;code&gt;</span><span class="ni">&amp;lt;</span>li<span class="ni">&amp;gt;</span><span class="nt">&lt;/code&gt;</span> and <span class="nt">&lt;code&gt;</span><span class="ni">&amp;lt;</span>/li<span class="ni">&amp;gt;</span><span class="nt">&lt;/code&gt;</span> tag, to denote individual items within the list.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;ol&gt;</span>
+        <span class="nt">&lt;li&gt;</span>This is an ordered list.<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;</span>
+            This is the second item, which contains a sub list
+            <span class="nt">&lt;ol&gt;</span>
+                <span class="nt">&lt;li&gt;</span>This is the sub list, which is also ordered.<span class="nt">&lt;/li&gt;</span>
+                <span class="nt">&lt;li&gt;</span>It has two items.<span class="nt">&lt;/li&gt;</span>
+            <span class="nt">&lt;/ol&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;</span>This is the final item on this list.<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ol&gt;</span>
+
+    <span class="nt">&lt;h2&gt;</span>Unordered list<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;p&gt;</span>The <span class="nt">&lt;code&gt;</span>ul<span class="nt">&lt;/code&gt;</span> element denotes an unordered list (ie. a list of loose items that don<span class="ni">&amp;#8217;</span>t require numbering, or a bulleted list). Again, each item requires a surrounding <span class="nt">&lt;code&gt;</span><span class="ni">&amp;lt;</span>li<span class="ni">&amp;gt;</span><span class="nt">&lt;/code&gt;</span> and <span class="nt">&lt;code&gt;</span><span class="ni">&amp;lt;</span>/li<span class="ni">&amp;gt;</span><span class="nt">&lt;/code&gt;</span> tag, to denote individual items. Here is an example list showing the constituent parts of the British Isles:<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+        <span class="nt">&lt;li&gt;</span>
+            United Kingdom of Great Britain and Northern Ireland:
+            <span class="nt">&lt;ul&gt;</span>
+                <span class="nt">&lt;li&gt;</span>England<span class="nt">&lt;/li&gt;</span>
+                <span class="nt">&lt;li&gt;</span>Scotland<span class="nt">&lt;/li&gt;</span>
+                <span class="nt">&lt;li&gt;</span>Wales<span class="nt">&lt;/li&gt;</span>
+                <span class="nt">&lt;li&gt;</span>Northern Ireland<span class="nt">&lt;/li&gt;</span>
+            <span class="nt">&lt;/ul&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;</span>Republic of Ireland<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;</span>Isle of Man<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;</span>
+            Channel Islands:
+            <span class="nt">&lt;ul&gt;</span>
+                <span class="nt">&lt;li&gt;</span>Bailiwick of Guernsey<span class="nt">&lt;/li&gt;</span>
+                <span class="nt">&lt;li&gt;</span>Bailiwick of Jersey<span class="nt">&lt;/li&gt;</span>
+            <span class="nt">&lt;/ul&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+
+    <span class="nt">&lt;p&gt;</span>Sometimes we may want each list item to contain block elements, typically a paragraph or two.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+        <span class="nt">&lt;li&gt;</span>
+            <span class="nt">&lt;p&gt;</span>The British Isles is an archipelago consisting of the two large islands of Great Britain and Ireland, and many smaller surrounding islands.<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li&gt;</span>
+            <span class="nt">&lt;p&gt;</span>Great Britain is the largest island of the archipelago. Ireland is the second largest island of the archipelago and lies directly to the west of Great Britain.<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+
+    <span class="nt">&lt;h2&gt;</span>Definition list<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;p&gt;</span>The <span class="nt">&lt;code&gt;</span>dl<span class="nt">&lt;/code&gt;</span> element is for another type of list called a definition list. Instead of list items, the content of a <span class="nt">&lt;code&gt;</span>dl<span class="nt">&lt;/code&gt;</span> consists of <span class="nt">&lt;code&gt;</span>dt<span class="nt">&lt;/code&gt;</span> (definition term) and <span class="nt">&lt;code&gt;</span>dd<span class="nt">&lt;/code&gt;</span> (definition description) pairs.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;dl&gt;</span>
+        <span class="nt">&lt;dt&gt;</span>This is a term.<span class="nt">&lt;/dt&gt;</span>
+        <span class="nt">&lt;dd&gt;</span>This is the definition of that term, which both live in a <span class="nt">&lt;code&gt;</span>dl<span class="nt">&lt;/code&gt;</span>.<span class="nt">&lt;/dd&gt;</span>
+        <span class="nt">&lt;dt&gt;</span>Here is another term.<span class="nt">&lt;/dt&gt;</span>
+        <span class="nt">&lt;dd&gt;</span>And it gets a definition too, which is this line.<span class="nt">&lt;/dd&gt;</span>
+        <span class="nt">&lt;dt&gt;</span>Here is term that shares a definition with the term below.<span class="nt">&lt;/dt&gt;</span>
+        <span class="nt">&lt;dt&gt;</span>Here is a defined term.<span class="nt">&lt;/dt&gt;</span>
+        <span class="nt">&lt;dd&gt;&lt;code&gt;</span>dt<span class="nt">&lt;/code&gt;</span> terms may stand on their own without an accompanying <span class="nt">&lt;code&gt;</span>dd<span class="nt">&lt;/code&gt;</span>, but in that case they <span class="nt">&lt;em&gt;</span>share<span class="nt">&lt;/em&gt;</span> descriptions with the next available <span class="nt">&lt;code&gt;</span>dt<span class="nt">&lt;/code&gt;</span>. You may not have a <span class="nt">&lt;code&gt;</span>dd<span class="nt">&lt;/code&gt;</span> without a parent <span class="nt">&lt;code&gt;</span>dt<span class="nt">&lt;/code&gt;</span>.<span class="nt">&lt;/dd&gt;</span>
+    <span class="nt">&lt;/dl&gt;</span>
+
+    <span class="nt">&lt;h2&gt;</span>Links and anchors<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;p&gt;</span>The <span class="nt">&lt;code&gt;</span>a<span class="nt">&lt;/code&gt;</span> element is used to hyperlink text, be that to another page, a named fragment on the current page or any other location on the web. Example:<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/&quot;</span><span class="nt">&gt;</span>Go to the home page<span class="nt">&lt;/a&gt;</span> or <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#banner&quot;</span><span class="nt">&gt;</span>return to the top of this page<span class="nt">&lt;/a&gt;</span>.<span class="nt">&lt;/p&gt;</span>
+
+    <span class="nt">&lt;h2&gt;</span>Stressed emphasis<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;p&gt;</span>The <span class="nt">&lt;code&gt;</span>em<span class="nt">&lt;/code&gt;</span> element is used to denote text with stressed emphasis, i.e., something you<span class="ni">&amp;#8217;</span>d pronounce differently. Where italicizing is required for stylistic differentiation, the <span class="nt">&lt;code&gt;</span>i<span class="nt">&lt;/code&gt;</span> element may be preferable. Example:<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;</span>You simply <span class="nt">&lt;em&gt;</span>must<span class="nt">&lt;/em&gt;</span> try the negitoro maki!<span class="nt">&lt;/p&gt;</span>
+
+    <span class="nt">&lt;h2&gt;</span>Strong importance<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;p&gt;</span>The <span class="nt">&lt;code&gt;</span>strong<span class="nt">&lt;/code&gt;</span> element is used to denote text with strong importance. Where bolding is used for stylistic differentiation, the <span class="nt">&lt;code&gt;</span>b<span class="nt">&lt;/code&gt;</span> element may be preferable. Example:<span class="nt">&lt;/p&gt;</span> 
+    <span class="nt">&lt;p&gt;&lt;strong&gt;</span>Don<span class="ni">&amp;#8217;</span>t<span class="nt">&lt;/strong&gt;</span> stick nails in the electrical outlet.<span class="nt">&lt;/p&gt;</span>
+
+    <span class="nt">&lt;h2&gt;</span>Table<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">&quot;table&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;thead&gt;</span>
+            <span class="nt">&lt;tr&gt;</span>
+                <span class="nt">&lt;th&gt;</span>Fruit<span class="nt">&lt;/th&gt;</span>
+                <span class="nt">&lt;th&gt;</span>Colour<span class="nt">&lt;/th&gt;</span>
+            <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;/thead&gt;</span>
+        <span class="nt">&lt;tbody&gt;</span>
+            <span class="nt">&lt;tr&gt;</span>
+                <span class="nt">&lt;td&gt;</span>Apple<span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;td&gt;</span>Green<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;/tr&gt;</span>
+            <span class="nt">&lt;tr&gt;</span>
+                <span class="nt">&lt;td&gt;</span>Orange<span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;td&gt;</span>Orange<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;/tr&gt;</span>
+            <span class="nt">&lt;tr&gt;</span>
+                <span class="nt">&lt;td&gt;</span>Banana<span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;td&gt;</span>Yellow<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;/tr&gt;</span>
+            <span class="nt">&lt;tr&gt;</span>
+                <span class="nt">&lt;td&gt;</span>Peach<span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;td&gt;</span>Peach<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;/tbody&gt;</span>
+    <span class="nt">&lt;/table&gt;</span>
+
+    <span class="nt">&lt;h2&gt;</span>Figure<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Wide<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;figure&gt;</span>
+        <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/11/1402512126497/Matt-Kenyon-on-Birmingham-014.jpg?width=900&amp;amp;height=540&amp;amp;quality=60&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;figcaption&gt;</span>
+            ‘The absurdity of the inspectors’ findings is clearest in the case of Gracelands, whose staff were taken to task for failing to ensure its 2- to 4-year-olds were protected against ‘extreme and radical behaviour&#39;.&#39; Illustration: Matt Kenyon
+        <span class="nt">&lt;/figcaption&gt;</span>
+    <span class="nt">&lt;/figure&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Inline (floats to the left of any running text):<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;figure&gt;</span>
+        <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://i.guim.co.uk/w-620/h--/q-95/sys-images/Guardian/Pix/pictures/2014/6/13/1402656896541/phpdKmNwRAM.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;Mil&quot;</span> <span class="na">width=</span><span class="s">&quot;193&quot;</span> <span class="na">class=</span><span class="s">&quot;gu-image&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;figcaption&gt;</span>
+            The Sun&#39;s picture of Miliband that offended people in Liverpool
+        <span class="nt">&lt;/figcaption&gt;</span>
+    <span class="nt">&lt;/figure&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Miliband was also confronted by a number of Labour MPs, including Steve Rotheram, the member for for Liverpool Walton. According to a source cited by the Liverpool Echo, Miliband apologised to the MPs. The source is quoted as saying: “Ed Miliband said he was very, very sorry.”<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>
+<h1 id="review-rating">Review rating</h1>
+
+<p>Display the number of stars with which a review has been rated</p>
+<div class="codeExample"><div class="exampleOutput"><p class="review-rating review-rating--0">
+    <span class="icon">&#xe036;</span>
+    <span class="icon">&#xe036;</span>
+    <span class="icon">&#xe036;</span>
+    <span class="icon">&#xe036;</span>
+    <span class="icon">&#xe036;</span>
+</p>
+
+<p class="review-rating review-rating--1">
+    <span class="icon">&#xe036;</span>
+    <span class="icon">&#xe036;</span>
+    <span class="icon">&#xe036;</span>
+    <span class="icon">&#xe036;</span>
+    <span class="icon">&#xe036;</span>
+</p>
+
+<p class="review-rating review-rating--2">
+    <span class="icon">&#xe036;</span>
+    <span class="icon">&#xe036;</span>
+    <span class="icon">&#xe036;</span>
+    <span class="icon">&#xe036;</span>
+    <span class="icon">&#xe036;</span>
+</p>
+
+<p class="review-rating review-rating--3">
+    <span class="icon">&#xe036;</span>
+    <span class="icon">&#xe036;</span>
+    <span class="icon">&#xe036;</span>
+    <span class="icon">&#xe036;</span>
+    <span class="icon">&#xe036;</span>
+</p>
+
+<p class="review-rating review-rating--4">
+    <span class="icon">&#xe036;</span>
+    <span class="icon">&#xe036;</span>
+    <span class="icon">&#xe036;</span>
+    <span class="icon">&#xe036;</span>
+    <span class="icon">&#xe036;</span>
+</p>
+
+<p class="review-rating review-rating--5">
+    <span class="icon">&#xe036;</span>
+    <span class="icon">&#xe036;</span>
+    <span class="icon">&#xe036;</span>
+    <span class="icon">&#xe036;</span>
+    <span class="icon">&#xe036;</span>
+</p>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;review-rating review-rating--0&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;review-rating review-rating--1&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;review-rating review-rating--2&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;review-rating review-rating--3&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;review-rating review-rating--4&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;review-rating review-rating--5&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe036;</span><span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+</pre></div></div></div>
+<h1 id="section">Section</h1>
+
+<p>Display the section for which an article falls under.</p>
+<div class="codeExample"><div class="exampleOutput"><h3 class="section">Football <span class="section__meta">In Brief</span></h3>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">&quot;section&quot;</span><span class="nt">&gt;</span>Football <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;section__meta&quot;</span><span class="nt">&gt;</span>In Brief<span class="nt">&lt;/span&gt;&lt;/h3&gt;</span>
+</pre></div></div></div>
+<p>With live indicator:</p>
+<div class="codeExample"><div class="exampleOutput"><h3 class="section"><span class="section__live">Live</span> Sport</h3>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">&quot;section&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;section__live&quot;</span><span class="nt">&gt;</span>Live<span class="nt">&lt;/span&gt;</span> Sport<span class="nt">&lt;/h3&gt;</span>
+</pre></div></div></div>
+<h1 id="standfirst">Standfirst</h1>
+
+<p>Display the standfirst of an article. Emboldened text is normalised.</p>
+<div class="codeExample"><div class="exampleOutput"><div class="standfirst">
+    <p>While riders will have some freedom to move, <strong>they won’t</strong> have the ability to move without others watching and storing their data</p>
+</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;standfirst&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;</span>While riders will have some freedom to move, <span class="nt">&lt;strong&gt;</span>they won’t<span class="nt">&lt;/strong&gt;</span> have the ability to move without others watching and storing their data<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div></div></div>            </div>
+        </article>
+
+        <footer class="styleguide__contentinfo" role="contentinfo">
+            <p><small>© 2014 Guardian News and Media Limited or its affiliated companies. All rights reserved.</small></p>
+        </footer>
+    </main>
+
+    <label class="styleguide__navigation-toggle" for="styleguide__navigation-checkbox"><span class="icon">&#xe04A;</span></label>
+
+    <script type="text/javascript" id="gu" src="../ArticleTemplates/assets/js/components/require.js" data-main="/ArticleTemplates/assets/js/app.js" data-js-dir="/ArticleTemplates/assets/js" async></script>
+</body>
+</html>

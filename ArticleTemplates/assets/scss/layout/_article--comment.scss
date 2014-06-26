@@ -1,0 +1,32 @@
+.article--comment {
+    .article__header {
+        .cutout__container {
+            padding-bottom: base-px(4); // To avoid clashing with follow contributor link
+            position: relative;
+            overflow: auto;
+        }
+
+        .byline__author {
+            display: block;
+        }
+
+        .standfirst {
+            color: color(tone-comment-text);
+
+            @include mq($to: col2) {
+                font-size: 1.25em;
+                line-height: 1.25em;
+            }
+        }
+
+        .alerts {
+            padding: base-px(1);
+            position: absolute;
+            bottom: 0;
+        }
+
+        .alerts__label {
+            display: inline-block;
+        }
+    }
+}

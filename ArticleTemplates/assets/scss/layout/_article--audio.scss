@@ -1,0 +1,45 @@
+.article--audio {
+    .article__header {
+        .cutout__container {
+            padding-right: 0;
+            padding-bottom: base-px(7); // To avoid clashing with meta bar
+            position: relative;
+        }
+
+        .headline {
+            padding-right: cols($base-3, 3, 1);
+        }
+
+        .meta {
+            margin-bottom: 1px; // Prevents header showing 1px scroll weirdness
+            border-bottom: 0;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .byline {
+            @include mq($to: col2) {
+                display: none;
+            }
+        }
+    }
+
+    .article__body {
+        .standfirst {
+            padding: base-px(0, 0, 1.5, 0);
+        }
+
+        .byline {
+            margin: base-px(0, 0, 1, 0);
+            border-bottom: 1px dotted color(shade-4);
+            padding: base-px(0, 0, 1, 0);
+            display: block;
+
+            @include mq($from: col2) {
+                display: none;
+            }
+        }
+    }
+}
