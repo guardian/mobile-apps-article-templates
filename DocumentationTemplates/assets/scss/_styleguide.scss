@@ -1,3 +1,23 @@
+// Hide markup on Base styles page
+.styleguide--base {
+    .codeExample,
+    .styleguide__article__body > p {
+        margin-bottom: 0;
+    }
+    
+    .exampleOutput {
+        background: none;
+        padding: base-px(1);
+        
+        &::before {
+            display: none;
+        }
+    }
+    .codeBlock {
+         display: none;
+    }
+}
+
 .styleguide__main {
     padding: base-px(4.75, 0, 1, 0);
     position: relative;
@@ -63,6 +83,7 @@
         display: block;
         cursor: pointer;
     }
+
     &:active {
         .icon {
             background-color: color(tone-news-accent);
@@ -75,14 +96,17 @@
 .styleguide__navigation-toggle {
     -webkit-backface-visibility: hidden;
 }
+
 .styleguide__main,
 .styleguide__navigation-toggle {
     -webkit-transition: -webkit-transform .3s ease-in-out;
     transition: transform .3s ease-in-out;
 }
+
 #styleguide__navigation-checkbox:checked + .styleguide__navigation {
     visibility: visible;
 }
+
 #styleguide__navigation-checkbox:checked ~ .styleguide__main,
 #styleguide__navigation-checkbox:checked ~ .styleguide__navigation,
 #styleguide__navigation-checkbox:checked ~ .styleguide__navigation-toggle {
@@ -151,7 +175,7 @@
 }
 
 // Animation examples
-.anim {
+.styleguide__anim {
     background-color: color(shade-3);
     margin: 0 0 0.5em -1px;
     width: 100%;
@@ -192,8 +216,25 @@
     }
 }
 
+// Icon examples
+.styleguide__icon {
+    color: color(shade-3);
+    font-family: $agate-sans;
+    @include meta(0.75);
+    margin: base-px(0, 2, 2, 0);
+    min-width: 12em;
+    display: inline-block;
+
+    &[data-icon]::before {
+        color: color(shade-1);
+        font-size: 250%;
+        vertical-align: middle;
+        margin: base-px(0.5, 0.5, 0.5, 0);
+    }
+}
+
 // Colour swatches
-[class^=c-] {
+[class^=styleguide__color--] {
     color: #333;
     font-family: $agate-sans;
     text-align: center;
@@ -210,6 +251,6 @@
     margin-right: 0.5em;
 }
 
-@include generate-colour-classes($palette: $gu-colours, $property: background);
+@include generate-colour-classes($palette: $gu-colours, $property: background, $prefix: styleguide__color--);
 
-@include show-colour-meta($palette: $gu-colours);
+@include show-colour-meta($palette: $gu-colours, $prefix: styleguide__color--);
