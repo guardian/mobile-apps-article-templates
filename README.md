@@ -27,11 +27,18 @@ This will start [Guard](https://github.com/guard/guard), which we use to run the
 * Build documentation files. Documentation is built using [Hologram](https://github.com/trulia/hologram), and is configured with [hologram.yml](hologram.yml)
 
 ## Updating the Documentation
-Documentation is built locally, but also available on the web at: http://guardian.github.io/mobile-apps-article-templates/. To update this publically viewable site with your latest changes, run the following commands:
+Documentation is built locally, but also available on the web at: http://guardian.github.io/mobile-apps-article-templates/, which displays the static files stored in the gh-pages branch. To update this publically viewable site with your latest changes, run the following commands:
 
 ```bash
 $ git commit -am "Commit message"
 $ git checkout gh-pages
 $ git merge master
 $ git push origin master gh-pages
+```
+
+Alternatively, you can set up your local git repository to automatically push changes to both master and gh-pages branches. Simply add the following 2 lines to the ``[remote "origin"]`` section of ``.git/config``:
+
+```
+push = +refs/heads/master:refs/heads/gh-pages
+push = +refs/heads/master:refs/heads/master
 ```
