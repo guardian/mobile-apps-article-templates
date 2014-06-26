@@ -8,39 +8,50 @@ category: Base
 A standard colour palette used across the Guardian’s digital products.
 
 ```html_example
-<div class="c--shade-1"></div>
-<div class="c--shade-2"></div>
-<div class="c--shade-3"></div>
-<div class="c--shade-4"></div>
-<div class="c--shade-5"></div>
+<div class="styleguide__color--shade-1"></div>
+<div class="styleguide__color--shade-2"></div>
+<div class="styleguide__color--shade-3"></div>
+<div class="styleguide__color--shade-4"></div>
+<div class="styleguide__color--shade-5"></div>
 
-<div class="c--tone-news clear"></div>
-<div class="c--tone-news-accent"></div>
+<div class="styleguide__color--tone-news clear"></div>
+<div class="styleguide__color--tone-news-accent"></div>
 
-<div class="c--tone-live"></div>
-<div class="c--tone-live-accent"></div>
+<div class="styleguide__color--tone-live"></div>
+<div class="styleguide__color--tone-live-accent"></div>
 
-<div class="c--tone-media"></div>
-<div class="c--tone-media-accent"></div>
+<div class="styleguide__color--tone-media"></div>
+<div class="styleguide__color--tone-media-accent"></div>
 
-<div class="c--tone-feature1"></div>
-<div class="c--tone-feature1-accent"></div>
+<div class="styleguide__color--tone-feature1"></div>
+<div class="styleguide__color--tone-feature1-accent"></div>
 
-<div class="c--tone-feature2"></div>
-<div class="c--tone-feature2-accent"></div>
+<div class="styleguide__color--tone-feature2"></div>
+<div class="styleguide__color--tone-feature2-accent"></div>
 
-<div class="c--tone-feature3"></div>
-<div class="c--tone-feature3-accent"></div>
+<div class="styleguide__color--tone-feature3"></div>
+<div class="styleguide__color--tone-feature3-accent"></div>
 
-<div class="c--tone-comment-text"></div>
-<div class="c--tone-comment-bg"></div>
-<div class="c--tone-comment"></div>
-<div class="c--tone-comment-accent"></div>
+<div class="styleguide__color--tone-comment-text"></div>
+<div class="styleguide__color--tone-comment-bg"></div>
+<div class="styleguide__color--tone-comment"></div>
+<div class="styleguide__color--tone-comment-accent"></div>
 
-<div class="c--witness clear"></div>
-<div class="c--witness-bg"></div>
+<div class="styleguide__color--witness clear"></div>
+<div class="styleguide__color--witness-bg"></div>
 ```
 */
+.styleguide--base .codeExample,
+.styleguide--base .styleguide__article__body > p {
+  margin-bottom: 0; }
+.styleguide--base .exampleOutput {
+  background: none;
+  padding: 12px; }
+  .styleguide--base .exampleOutput::before {
+    display: none; }
+.styleguide--base .codeBlock {
+  display: none; }
+
 .styleguide__main {
   padding: 57px 0px 12px 0px;
   position: relative; }
@@ -169,13 +180,13 @@ A standard colour palette used across the Guardian’s digital products.
 .clear {
   clear: left; }
 
-.anim {
+.styleguide__anim {
   background-color: #999999;
   margin: 0 0 0.5em -1px;
   width: 100%;
   height: 2em;
   position: relative; }
-  .anim::after {
+  .styleguide__anim::after {
     content: 'Hover to play';
     color: rgba(246, 246, 246, 0.75);
     font-family: "Agate Sans", sans-serif;
@@ -188,14 +199,14 @@ A standard colour palette used across the Guardian’s digital products.
     bottom: 0;
     left: 0; }
     @media all and (max-width: 40.615em) {
-      .anim::after {
+      .styleguide__anim::after {
         font-size: 1.26rem;
         line-height: 1.8rem; } }
     @media all and (min-width: 40.625em) {
-      .anim::after {
+      .styleguide__anim::after {
         font-size: 1.44rem;
         line-height: 1.98rem; } }
-  .anim > span {
+  .styleguide__anim > span {
     background-color: #333333;
     width: 2em;
     height: 2em;
@@ -204,11 +215,31 @@ A standard colour palette used across the Guardian’s digital products.
     animation-iteration-count: infinite;
     -webkit-animation-play-state: paused;
     animation-play-state: paused; }
-  .anim:hover > span {
+  .styleguide__anim:hover > span {
     -webkit-animation-play-state: running;
     animation-play-state: running; }
 
-[class^=c-] {
+.styleguide__icon {
+  color: #999999;
+  font-family: "Agate Sans", sans-serif;
+  margin: 0px 24px 24px 0px;
+  min-width: 12em;
+  display: inline-block; }
+  @media all and (max-width: 40.615em) {
+    .styleguide__icon {
+      font-size: 1.05rem;
+      line-height: 1.5rem; } }
+  @media all and (min-width: 40.625em) {
+    .styleguide__icon {
+      font-size: 1.2rem;
+      line-height: 1.65rem; } }
+  .styleguide__icon[data-icon]::before {
+    color: #333333;
+    font-size: 250%;
+    vertical-align: middle;
+    margin: 6px 6px 6px 0px; }
+
+[class^=styleguide__color--] {
   color: #333;
   font-family: "Agate Sans", sans-serif;
   text-align: center;
@@ -223,429 +254,429 @@ A standard colour palette used across the Guardian’s digital products.
 [class*=-accent] {
   margin-right: 0.5em; }
 
-.c--shade-1 {
+.styleguide__color--shade-1 {
   background: #333333; }
 
-.c--shade-2 {
+.styleguide__color--shade-2 {
   background: #666666; }
 
-.c--shade-3 {
+.styleguide__color--shade-3 {
   background: #999999; }
 
-.c--shade-4 {
+.styleguide__color--shade-4 {
   background: #dcdad5; }
 
-.c--shade-5 {
+.styleguide__color--shade-5 {
   background: #f6f6f6; }
 
-.c--tone-news {
+.styleguide__color--tone-news {
   background: #005689; }
 
-.c--tone-news-accent {
+.styleguide__color--tone-news-accent {
   background: #4bc6df; }
 
-.c--tone-live {
+.styleguide__color--tone-live {
   background: #b51800; }
 
-.c--tone-live-accent {
+.styleguide__color--tone-live-accent {
   background: #cc2b12; }
 
-.c--tone-media {
+.styleguide__color--tone-media {
   background: #ffbb00; }
 
-.c--tone-media-accent {
+.styleguide__color--tone-media-accent {
   background: #ffd35c; }
 
-.c--tone-feature1 {
+.styleguide__color--tone-feature1 {
   background: #951c55; }
 
-.c--tone-feature1-accent {
+.styleguide__color--tone-feature1-accent {
   background: #e02b7f; }
 
-.c--tone-feature2 {
+.styleguide__color--tone-feature2 {
   background: #4e0375; }
 
-.c--tone-feature2-accent {
+.styleguide__color--tone-feature2-accent {
   background: #8006c2; }
 
-.c--tone-feature3 {
+.styleguide__color--tone-feature3 {
   background: #7d0068; }
 
-.c--tone-feature3-accent {
+.styleguide__color--tone-feature3-accent {
   background: #c900a8; }
 
-.c--tone-comment {
+.styleguide__color--tone-comment {
   background: #e6711b; }
 
-.c--tone-comment-accent {
+.styleguide__color--tone-comment-accent {
   background: #f39f33; }
 
-.c--tone-comment-text {
+.styleguide__color--tone-comment-text {
   background: #2d2a26; }
 
-.c--tone-comment-bg {
+.styleguide__color--tone-comment-bg {
   background: #eeebe8; }
 
-.c--witness {
+.styleguide__color--witness {
   background: #213583; }
 
-.c--witness-bg {
+.styleguide__color--witness-bg {
   background: #3e454c; }
 
-.c--shade-1 {
+.styleguide__color--shade-1 {
   text-shadow: 0 0 1px #000;
   font-weight: 200;
   color: #fff; }
-  .c--shade-1:before, .c--shade-1:after {
+  .styleguide__color--shade-1:before, .styleguide__color--shade-1:after {
     font-size: 75%;
     line-height: 1;
     width: 90%;
     display: inline-block; }
-  .c--shade-1:before {
+  .styleguide__color--shade-1:before {
     content: "shade-1";
     font-weight: bold;
     margin-top: calc(50% - 1.5em); }
-  .c--shade-1:after {
+  .styleguide__color--shade-1:after {
     content: "#333333"; }
 
-.c--shade-2 {
+.styleguide__color--shade-2 {
   text-shadow: 0 0 1px #000;
   font-weight: 200;
   color: #fff; }
-  .c--shade-2:before, .c--shade-2:after {
+  .styleguide__color--shade-2:before, .styleguide__color--shade-2:after {
     font-size: 75%;
     line-height: 1;
     width: 90%;
     display: inline-block; }
-  .c--shade-2:before {
+  .styleguide__color--shade-2:before {
     content: "shade-2";
     font-weight: bold;
     margin-top: calc(50% - 1.5em); }
-  .c--shade-2:after {
+  .styleguide__color--shade-2:after {
     content: "#666666"; }
 
-.c--shade-3 {
+.styleguide__color--shade-3 {
   text-shadow: 0 0 1px #000;
   font-weight: 200;
   color: #fff; }
-  .c--shade-3:before, .c--shade-3:after {
+  .styleguide__color--shade-3:before, .styleguide__color--shade-3:after {
     font-size: 75%;
     line-height: 1;
     width: 90%;
     display: inline-block; }
-  .c--shade-3:before {
+  .styleguide__color--shade-3:before {
     content: "shade-3";
     font-weight: bold;
     margin-top: calc(50% - 1.5em); }
-  .c--shade-3:after {
+  .styleguide__color--shade-3:after {
     content: "#999999"; }
 
-.c--shade-4:before, .c--shade-4:after {
+.styleguide__color--shade-4:before, .styleguide__color--shade-4:after {
   font-size: 75%;
   line-height: 1;
   width: 90%;
   display: inline-block; }
-.c--shade-4:before {
+.styleguide__color--shade-4:before {
   content: "shade-4";
   font-weight: bold;
   margin-top: calc(50% - 1.5em); }
-.c--shade-4:after {
+.styleguide__color--shade-4:after {
   content: "#dcdad5"; }
 
-.c--shade-5:before, .c--shade-5:after {
+.styleguide__color--shade-5:before, .styleguide__color--shade-5:after {
   font-size: 75%;
   line-height: 1;
   width: 90%;
   display: inline-block; }
-.c--shade-5:before {
+.styleguide__color--shade-5:before {
   content: "shade-5";
   font-weight: bold;
   margin-top: calc(50% - 1.5em); }
-.c--shade-5:after {
+.styleguide__color--shade-5:after {
   content: "#f6f6f6"; }
 
-.c--tone-news {
+.styleguide__color--tone-news {
   text-shadow: 0 0 1px #000;
   font-weight: 200;
   color: #fff; }
-  .c--tone-news:before, .c--tone-news:after {
+  .styleguide__color--tone-news:before, .styleguide__color--tone-news:after {
     font-size: 75%;
     line-height: 1;
     width: 90%;
     display: inline-block; }
-  .c--tone-news:before {
+  .styleguide__color--tone-news:before {
     content: "tone-news";
     font-weight: bold;
     margin-top: calc(50% - 1.5em); }
-  .c--tone-news:after {
+  .styleguide__color--tone-news:after {
     content: "#005689"; }
 
-.c--tone-news-accent {
+.styleguide__color--tone-news-accent {
   text-shadow: 0 0 1px #000;
   font-weight: 200;
   color: #fff; }
-  .c--tone-news-accent:before, .c--tone-news-accent:after {
+  .styleguide__color--tone-news-accent:before, .styleguide__color--tone-news-accent:after {
     font-size: 75%;
     line-height: 1;
     width: 90%;
     display: inline-block; }
-  .c--tone-news-accent:before {
+  .styleguide__color--tone-news-accent:before {
     content: "tone-news-accent";
     font-weight: bold;
     margin-top: calc(50% - 1.5em); }
-  .c--tone-news-accent:after {
+  .styleguide__color--tone-news-accent:after {
     content: "#4bc6df"; }
 
-.c--tone-live {
+.styleguide__color--tone-live {
   text-shadow: 0 0 1px #000;
   font-weight: 200;
   color: #fff; }
-  .c--tone-live:before, .c--tone-live:after {
+  .styleguide__color--tone-live:before, .styleguide__color--tone-live:after {
     font-size: 75%;
     line-height: 1;
     width: 90%;
     display: inline-block; }
-  .c--tone-live:before {
+  .styleguide__color--tone-live:before {
     content: "tone-live";
     font-weight: bold;
     margin-top: calc(50% - 1.5em); }
-  .c--tone-live:after {
+  .styleguide__color--tone-live:after {
     content: "#b51800"; }
 
-.c--tone-live-accent {
+.styleguide__color--tone-live-accent {
   text-shadow: 0 0 1px #000;
   font-weight: 200;
   color: #fff; }
-  .c--tone-live-accent:before, .c--tone-live-accent:after {
+  .styleguide__color--tone-live-accent:before, .styleguide__color--tone-live-accent:after {
     font-size: 75%;
     line-height: 1;
     width: 90%;
     display: inline-block; }
-  .c--tone-live-accent:before {
+  .styleguide__color--tone-live-accent:before {
     content: "tone-live-accent";
     font-weight: bold;
     margin-top: calc(50% - 1.5em); }
-  .c--tone-live-accent:after {
+  .styleguide__color--tone-live-accent:after {
     content: "#cc2b12"; }
 
-.c--tone-media {
+.styleguide__color--tone-media {
   text-shadow: 0 0 1px #000;
   font-weight: 200;
   color: #fff; }
-  .c--tone-media:before, .c--tone-media:after {
+  .styleguide__color--tone-media:before, .styleguide__color--tone-media:after {
     font-size: 75%;
     line-height: 1;
     width: 90%;
     display: inline-block; }
-  .c--tone-media:before {
+  .styleguide__color--tone-media:before {
     content: "tone-media";
     font-weight: bold;
     margin-top: calc(50% - 1.5em); }
-  .c--tone-media:after {
+  .styleguide__color--tone-media:after {
     content: "#ffbb00"; }
 
-.c--tone-media-accent {
+.styleguide__color--tone-media-accent {
   text-shadow: 0 0 1px #000;
   font-weight: 200;
   color: #fff; }
-  .c--tone-media-accent:before, .c--tone-media-accent:after {
+  .styleguide__color--tone-media-accent:before, .styleguide__color--tone-media-accent:after {
     font-size: 75%;
     line-height: 1;
     width: 90%;
     display: inline-block; }
-  .c--tone-media-accent:before {
+  .styleguide__color--tone-media-accent:before {
     content: "tone-media-accent";
     font-weight: bold;
     margin-top: calc(50% - 1.5em); }
-  .c--tone-media-accent:after {
+  .styleguide__color--tone-media-accent:after {
     content: "#ffd35c"; }
 
-.c--tone-feature1 {
+.styleguide__color--tone-feature1 {
   text-shadow: 0 0 1px #000;
   font-weight: 200;
   color: #fff; }
-  .c--tone-feature1:before, .c--tone-feature1:after {
+  .styleguide__color--tone-feature1:before, .styleguide__color--tone-feature1:after {
     font-size: 75%;
     line-height: 1;
     width: 90%;
     display: inline-block; }
-  .c--tone-feature1:before {
+  .styleguide__color--tone-feature1:before {
     content: "tone-feature1";
     font-weight: bold;
     margin-top: calc(50% - 1.5em); }
-  .c--tone-feature1:after {
+  .styleguide__color--tone-feature1:after {
     content: "#951c55"; }
 
-.c--tone-feature1-accent {
+.styleguide__color--tone-feature1-accent {
   text-shadow: 0 0 1px #000;
   font-weight: 200;
   color: #fff; }
-  .c--tone-feature1-accent:before, .c--tone-feature1-accent:after {
+  .styleguide__color--tone-feature1-accent:before, .styleguide__color--tone-feature1-accent:after {
     font-size: 75%;
     line-height: 1;
     width: 90%;
     display: inline-block; }
-  .c--tone-feature1-accent:before {
+  .styleguide__color--tone-feature1-accent:before {
     content: "tone-feature1-accent";
     font-weight: bold;
     margin-top: calc(50% - 1.5em); }
-  .c--tone-feature1-accent:after {
+  .styleguide__color--tone-feature1-accent:after {
     content: "#e02b7f"; }
 
-.c--tone-feature2 {
+.styleguide__color--tone-feature2 {
   text-shadow: 0 0 1px #000;
   font-weight: 200;
   color: #fff; }
-  .c--tone-feature2:before, .c--tone-feature2:after {
+  .styleguide__color--tone-feature2:before, .styleguide__color--tone-feature2:after {
     font-size: 75%;
     line-height: 1;
     width: 90%;
     display: inline-block; }
-  .c--tone-feature2:before {
+  .styleguide__color--tone-feature2:before {
     content: "tone-feature2";
     font-weight: bold;
     margin-top: calc(50% - 1.5em); }
-  .c--tone-feature2:after {
+  .styleguide__color--tone-feature2:after {
     content: "#4e0375"; }
 
-.c--tone-feature2-accent {
+.styleguide__color--tone-feature2-accent {
   text-shadow: 0 0 1px #000;
   font-weight: 200;
   color: #fff; }
-  .c--tone-feature2-accent:before, .c--tone-feature2-accent:after {
+  .styleguide__color--tone-feature2-accent:before, .styleguide__color--tone-feature2-accent:after {
     font-size: 75%;
     line-height: 1;
     width: 90%;
     display: inline-block; }
-  .c--tone-feature2-accent:before {
+  .styleguide__color--tone-feature2-accent:before {
     content: "tone-feature2-accent";
     font-weight: bold;
     margin-top: calc(50% - 1.5em); }
-  .c--tone-feature2-accent:after {
+  .styleguide__color--tone-feature2-accent:after {
     content: "#8006c2"; }
 
-.c--tone-feature3 {
+.styleguide__color--tone-feature3 {
   text-shadow: 0 0 1px #000;
   font-weight: 200;
   color: #fff; }
-  .c--tone-feature3:before, .c--tone-feature3:after {
+  .styleguide__color--tone-feature3:before, .styleguide__color--tone-feature3:after {
     font-size: 75%;
     line-height: 1;
     width: 90%;
     display: inline-block; }
-  .c--tone-feature3:before {
+  .styleguide__color--tone-feature3:before {
     content: "tone-feature3";
     font-weight: bold;
     margin-top: calc(50% - 1.5em); }
-  .c--tone-feature3:after {
+  .styleguide__color--tone-feature3:after {
     content: "#7d0068"; }
 
-.c--tone-feature3-accent {
+.styleguide__color--tone-feature3-accent {
   text-shadow: 0 0 1px #000;
   font-weight: 200;
   color: #fff; }
-  .c--tone-feature3-accent:before, .c--tone-feature3-accent:after {
+  .styleguide__color--tone-feature3-accent:before, .styleguide__color--tone-feature3-accent:after {
     font-size: 75%;
     line-height: 1;
     width: 90%;
     display: inline-block; }
-  .c--tone-feature3-accent:before {
+  .styleguide__color--tone-feature3-accent:before {
     content: "tone-feature3-accent";
     font-weight: bold;
     margin-top: calc(50% - 1.5em); }
-  .c--tone-feature3-accent:after {
+  .styleguide__color--tone-feature3-accent:after {
     content: "#c900a8"; }
 
-.c--tone-comment {
+.styleguide__color--tone-comment {
   text-shadow: 0 0 1px #000;
   font-weight: 200;
   color: #fff; }
-  .c--tone-comment:before, .c--tone-comment:after {
+  .styleguide__color--tone-comment:before, .styleguide__color--tone-comment:after {
     font-size: 75%;
     line-height: 1;
     width: 90%;
     display: inline-block; }
-  .c--tone-comment:before {
+  .styleguide__color--tone-comment:before {
     content: "tone-comment";
     font-weight: bold;
     margin-top: calc(50% - 1.5em); }
-  .c--tone-comment:after {
+  .styleguide__color--tone-comment:after {
     content: "#e6711b"; }
 
-.c--tone-comment-accent {
+.styleguide__color--tone-comment-accent {
   text-shadow: 0 0 1px #000;
   font-weight: 200;
   color: #fff; }
-  .c--tone-comment-accent:before, .c--tone-comment-accent:after {
+  .styleguide__color--tone-comment-accent:before, .styleguide__color--tone-comment-accent:after {
     font-size: 75%;
     line-height: 1;
     width: 90%;
     display: inline-block; }
-  .c--tone-comment-accent:before {
+  .styleguide__color--tone-comment-accent:before {
     content: "tone-comment-accent";
     font-weight: bold;
     margin-top: calc(50% - 1.5em); }
-  .c--tone-comment-accent:after {
+  .styleguide__color--tone-comment-accent:after {
     content: "#f39f33"; }
 
-.c--tone-comment-text {
+.styleguide__color--tone-comment-text {
   text-shadow: 0 0 1px #000;
   font-weight: 200;
   color: #fff; }
-  .c--tone-comment-text:before, .c--tone-comment-text:after {
+  .styleguide__color--tone-comment-text:before, .styleguide__color--tone-comment-text:after {
     font-size: 75%;
     line-height: 1;
     width: 90%;
     display: inline-block; }
-  .c--tone-comment-text:before {
+  .styleguide__color--tone-comment-text:before {
     content: "tone-comment-text";
     font-weight: bold;
     margin-top: calc(50% - 1.5em); }
-  .c--tone-comment-text:after {
+  .styleguide__color--tone-comment-text:after {
     content: "#2d2a26"; }
 
-.c--tone-comment-bg:before, .c--tone-comment-bg:after {
+.styleguide__color--tone-comment-bg:before, .styleguide__color--tone-comment-bg:after {
   font-size: 75%;
   line-height: 1;
   width: 90%;
   display: inline-block; }
-.c--tone-comment-bg:before {
+.styleguide__color--tone-comment-bg:before {
   content: "tone-comment-bg";
   font-weight: bold;
   margin-top: calc(50% - 1.5em); }
-.c--tone-comment-bg:after {
+.styleguide__color--tone-comment-bg:after {
   content: "#eeebe8"; }
 
-.c--witness {
+.styleguide__color--witness {
   text-shadow: 0 0 1px #000;
   font-weight: 200;
   color: #fff; }
-  .c--witness:before, .c--witness:after {
+  .styleguide__color--witness:before, .styleguide__color--witness:after {
     font-size: 75%;
     line-height: 1;
     width: 90%;
     display: inline-block; }
-  .c--witness:before {
+  .styleguide__color--witness:before {
     content: "witness";
     font-weight: bold;
     margin-top: calc(50% - 1.5em); }
-  .c--witness:after {
+  .styleguide__color--witness:after {
     content: "#213583"; }
 
-.c--witness-bg {
+.styleguide__color--witness-bg {
   text-shadow: 0 0 1px #000;
   font-weight: 200;
   color: #fff; }
-  .c--witness-bg:before, .c--witness-bg:after {
+  .styleguide__color--witness-bg:before, .styleguide__color--witness-bg:after {
     font-size: 75%;
     line-height: 1;
     width: 90%;
     display: inline-block; }
-  .c--witness-bg:before {
+  .styleguide__color--witness-bg:before {
     content: "witness-bg";
     font-weight: bold;
     margin-top: calc(50% - 1.5em); }
-  .c--witness-bg:after {
+  .styleguide__color--witness-bg:after {
     content: "#3e454c"; }
 
 .codeExample {
