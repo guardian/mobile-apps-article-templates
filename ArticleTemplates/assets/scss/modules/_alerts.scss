@@ -8,13 +8,13 @@ Display an alerts toggle.
 
 ```html_example
 <a class="alerts">
-    <span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> <span class="alerts__label">Follow contributor</span></span>
-    <span class="alerts__state--follow"><span class="icon">&#xe049;</span> <span class="alerts__label">Following contributor</span></span>
+    <span class="alerts__state--unfollow" data-icon="&#xe048;"><span class="alerts__label">Follow contributor</span></span>
+    <span class="alerts__state--follow" data-icon="&#xe049;"><span class="alerts__label">Following contributor</span></span>
 </a>
 
 <a class="alerts following">
-    <span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> <span class="alerts__label">Follow contributor</span></span>
-    <span class="alerts__state--follow"><span class="icon">&#xe049;</span> <span class="alerts__label">Following contributor</span></span>
+    <span class="alerts__state--unfollow" data-icon="&#xe048;"><span class="alerts__label">Follow contributor</span></span>
+    <span class="alerts__state--follow" data-icon="&#xe049;"><span class="alerts__label">Following contributor</span></span>
 </a>
 ```
 */
@@ -24,7 +24,7 @@ Display an alerts toggle.
     font-family: $agate-sans;
     display: inline-block;
 
-    .icon {
+    [data-icon]::before {
         margin-right: 4px;
         font-size: 85%;
     }
@@ -32,7 +32,7 @@ Display an alerts toggle.
     .alerts__state--follow {
         display: none;
 
-        .icon {
+        &[data-icon]::before {
             color: color(tone-news-accent);
         }
     }
