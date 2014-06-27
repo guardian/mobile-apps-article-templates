@@ -2,10 +2,12 @@
 define([
     'bean',
     'bonzo',
+    'modules/relativeDates',
     'modules/$'
 ], function (
     bean,
     bonzo,
+    relativeDates,
     $
 ) {
     'use strict';
@@ -126,7 +128,11 @@ define([
                 window.commentsClosed = function () {
                     $("#comments, #discussion").addClass("comments--closed");
                 };
-                
+
+                window.commentTime = function () {
+                    relativeDates.init('.block__time', 'title');
+                };
+
                 // Functions for feedback on recommend buttons
                 window.commentsRecommendIncrease = function (id, number) {
                     var target = '#' + id + ' .comment__recommend';
@@ -152,6 +158,7 @@ define([
             if (!this.initialised) {
                 this.initialised = true;
                 modules.setupGlobals();
+                window.commentTime();
                 // console.info("Comments ready");
             }
         };
