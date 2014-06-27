@@ -38,16 +38,14 @@ define([
         return (date.valueOf() > today.valueOf() - (24 * 60 * 60 * 1000));
     }
 
-    function isYesterday(relative) {
-        var today = new Date(),
-            yesterday = new Date();
-        yesterday.setDate(today.getDate() - 1);
-        return (relative.toDateString() === yesterday.toDateString());
+    function isWithinPastWeek(date) {
+        var daysAgo = new Date().valueOf() - (7 * 24 * 60 * 60 * 1000);
+        return date.valueOf() >= daysAgo;
     }
 
-    function isWithinPastWeek(date) {
-        var weekAgo = new Date().valueOf() - (7 * 24 * 60 * 60 * 1000);
-        return date.valueOf() >= weekAgo;
+    function isWithinPastYear(date) {
+        var weeksAgo = new Date().valueOf() - (52 * 7 * 24 * 60 * 60 * 1000);
+        return date.valueOf() >= weeksAgo;
     }
 
     function isValidDate(date) {
@@ -83,38 +81,26 @@ define([
         } else if (delta < (55 * 60)) {
             var minutesAgo = Math.round(delta / 60, 10);
             if (minutesAgo == 1) {
-                return '1 minute ago';
+                return 'Now';
             } else {
-                return (minutesAgo) + ' minutes ago';
+                return (minutesAgo) + 'm ago';
             }
 
         } else if (isToday(then) || (isWithin24Hours(then) && opts.format === 'short')) {
             var hoursAgo = Math.round(delta / 3600);
-            if (hoursAgo == 1) {
-                return '1 hour ago';
-            } else {
-                return (hoursAgo) + ' hours ago';
-            }
+            return (hoursAgo) + 'h ago';
 
-        } else if (isWithinPastWeek(then) && opts.format === 'short') {
+        } else if (isWithinPastWeek(then)) {
             var daysAgo = Math.round(delta / 3600 / 24);
-            if (daysAgo == 1) {
-                return '1 day ago';
-            } else {
-                return (daysAgo) + ' days ago';
-            }
+            return (daysAgo) + 'd ago';
 
-        } else if (isYesterday(then)) { // yesterday
-            return 'Yesterday' + withTime(then);
-
-        } else if (delta < 5 * 24 * 60 * 60) { // less than 5 days
-            return [dayOfWeek(then.getDay()), then.getDate(), monthAbbr(then.getMonth()), then.getFullYear()].join(' ') +
-                   (opts.showTime ? withTime(then) : '');
+        } else if (isWithinPastYear(then)) {
+            var weeksAgo = Math.round(delta / 3600 / 24 / 7);
+            return (weeksAgo) + 'w ago';
 
         } else {
-            return [then.getDate(), monthAbbr(then.getMonth()), then.getFullYear()].join(' ') +
-                   (opts.showTime ? withTime(then) : '');
-
+            var yearsAgo = Math.round(delta / 3600 / 24 / 7 / 52);
+            return (yearsAgo) + 'y ago';
         }
     }
 
