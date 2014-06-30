@@ -52,37 +52,37 @@
             <div class="tags">
                 <ul class="inline-list"><!--
                 
-                 --><li class="inline-list__item"><a href="#advert-slot">Advert slot</a></li><!--
+                 --><li class="inline-list__item"><a href="#advert-slot">Advert slot</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
                 
-                 --><li class="inline-list__item"><a href="#alerts">Alerts</a></li><!--
+                 --><li class="inline-list__item"><a href="#alerts">Alerts</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
                 
-                 --><li class="inline-list__item"><a href="#aside">Aside</a></li><!--
+                 --><li class="inline-list__item"><a href="#aside">Aside</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
                 
-                 --><li class="inline-list__item"><a href="#avatar">Avatar</a></li><!--
+                 --><li class="inline-list__item"><a href="#avatar">Avatar</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
                 
-                 --><li class="inline-list__item"><a href="#bullet">Bullet</a></li><!--
+                 --><li class="inline-list__item"><a href="#bullet">Bullet</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
                 
-                 --><li class="inline-list__item"><a href="#cutout">Cutout</a></li><!--
+                 --><li class="inline-list__item"><a href="#cutout">Cutout</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
                 
-                 --><li class="inline-list__item"><a href="#figure">Figure</a></li><!--
+                 --><li class="inline-list__item"><a href="#figure">Figure</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
                 
-                 --><li class="inline-list__item"><a href="#inline-list">Unstyled inline list</a></li><!--
+                 --><li class="inline-list__item"><a href="#inline-list">Unstyled inline list</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
                 
-                 --><li class="inline-list__item"><a href="#loading">Loading</a></li><!--
+                 --><li class="inline-list__item"><a href="#loading">Loading</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
                 
-                 --><li class="inline-list__item"><a href="#more">More</a></li><!--
+                 --><li class="inline-list__item"><a href="#more">More</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
                 
-                 --><li class="inline-list__item"><a href="#resizable">Resizable</a></li><!--
+                 --><li class="inline-list__item"><a href="#resizable">Resizable</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
                 
-                 --><li class="inline-list__item"><a href="#screen-readable">Screen readable</a></li><!--
+                 --><li class="inline-list__item"><a href="#screen-readable">Screen readable</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
                 
-                 --><li class="inline-list__item"><a href="#selectable">Selectable</a></li><!--
+                 --><li class="inline-list__item"><a href="#selectable">Selectable</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
                 
-                 --><li class="inline-list__item"><a href="#tabs">Tabs</a></li><!--
+                 --><li class="inline-list__item"><a href="#tabs">Tabs</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
                 
-                 --><li class="inline-list__item"><a href="#tags">Tags</a></li><!--
+                 --><li class="inline-list__item"><a href="#tags">Tags</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
                 
-                 --><li class="inline-list__item"><a href="#touchpoint">Touchpoint</a></li><!--
+                 --><li class="inline-list__item"><a href="#touchpoint">Touchpoint</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
                 
                 --></ul>
             </div>
@@ -261,10 +261,10 @@
 
 <p>Display loading animation to provide feedback to the user.</p>
 <div class="codeExample"><div class="exampleOutput"><div class="loading">
-    <img src="../img/loading.gif">
+    <img src="/ArticleTemplates/assets/img/loading.gif" alt="Loading…"/>
 </div>
 </div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;loading&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;../img/loading.gif&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;/ArticleTemplates/assets/img/loading.gif&quot;</span> <span class="na">alt=</span><span class="s">&quot;Loading…&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </pre></div></div></div>
 <h1 id="more">More</h1>
@@ -338,16 +338,18 @@
 <p>Display which keywords an article has been tagged with.</p>
 <div class="codeExample"><div class="exampleOutput"><div class="tags">
     <ul class="inline-list">
-        <li class="inline-list__item"><a href="#">Guardian</a></li><!--
-     --><li class="inline-list__item"><a href="#">Mobile</a></li><!--
-     --><li class="inline-list__item"><a href="#">Applications</a></li>
+        <li class="inline-list__item screen-readable">Tags:</li><!--
+     --><li class="inline-list__item"><a href="#">Guardian</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
+     --><li class="inline-list__item"><a href="#">Mobile</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
+     --><li class="inline-list__item"><a href="#">Applications</a><span class="tags__separator" aria-hidden="true">&#183;</span></li>
     </ul>
 </div>
 </div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;tags&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;inline-list&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;inline-list__item&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Guardian<span class="nt">&lt;/a&gt;&lt;/li&gt;</span><span class="c">&lt;!--</span>
-<span class="c">     --&gt;</span><span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;inline-list__item&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Mobile<span class="nt">&lt;/a&gt;&lt;/li&gt;</span><span class="c">&lt;!--</span>
-<span class="c">     --&gt;</span><span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;inline-list__item&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Applications<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;inline-list__item screen-readable&quot;</span><span class="nt">&gt;</span>Tags:<span class="nt">&lt;/li&gt;</span><span class="c">&lt;!--</span>
+<span class="c">     --&gt;</span><span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;inline-list__item&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Guardian<span class="nt">&lt;/a&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;tags__separator&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#183;</span><span class="nt">&lt;/span&gt;&lt;/li&gt;</span><span class="c">&lt;!--</span>
+<span class="c">     --&gt;</span><span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;inline-list__item&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Mobile<span class="nt">&lt;/a&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;tags__separator&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#183;</span><span class="nt">&lt;/span&gt;&lt;/li&gt;</span><span class="c">&lt;!--</span>
+<span class="c">     --&gt;</span><span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;inline-list__item&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Applications<span class="nt">&lt;/a&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;tags__separator&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#183;</span><span class="nt">&lt;/span&gt;&lt;/li&gt;</span>
     <span class="nt">&lt;/ul&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </pre></div></div></div>

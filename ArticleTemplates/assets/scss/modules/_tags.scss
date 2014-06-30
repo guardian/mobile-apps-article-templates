@@ -9,9 +9,10 @@ Display which keywords an article has been tagged with.
 ```html_example
 <div class="tags">
     <ul class="inline-list">
-        <li class="inline-list__item"><a href="#">Guardian</a></li><!--
-     --><li class="inline-list__item"><a href="#">Mobile</a></li><!--
-     --><li class="inline-list__item"><a href="#">Applications</a></li>
+        <li class="inline-list__item screen-readable">Tags:</li><!--
+     --><li class="inline-list__item"><a href="#">Guardian</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
+     --><li class="inline-list__item"><a href="#">Mobile</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
+     --><li class="inline-list__item"><a href="#">Applications</a><span class="tags__separator" aria-hidden="true">&#183;</span></li>
     </ul>
 </div>
 ```
@@ -30,17 +31,20 @@ Display which keywords an article has been tagged with.
             margin-bottom: 4px;
         }
 
-        &::after {
-            content: '\00B7';
-            margin: 0 4px;
-        }
-
         &:first-of-type {
             font-weight: bold;
         }
 
-        &:last-of-type::after {
-            display: none;
+        &:last-child {
+            .tags__separator {
+                display: none;
+                visibility: hidden;
+            }
         }
     }
+}
+
+.tags__separator {
+    font-weight: bold;
+    margin: 0 4px;
 }

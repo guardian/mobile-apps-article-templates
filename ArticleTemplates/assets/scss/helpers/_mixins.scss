@@ -98,18 +98,15 @@ $meta-lead-2: 2.2rem;
 
 
 // Bullet
-@mixin bullet() {
-    text-indent: 1.111em;
-    position: relative;
-
-    &::before {
-        content: '\2022';
-        color: color(shade-3);
-        font-family: $egyptian-display;
-        font-weight: 300;
+@mixin faux-bullet($color: color(shade-3), $right-space: 2px) {
+    &:before {
+        content: '';
+        background-color: $color;
+        margin-right: $right-space;
+        width: 1.2rem; // 12px
+        height: 1.2rem; // 12px
+        border-radius: .6rem; // 6px
         display: inline-block;
-        position: absolute;
-        left: -1.111em;
     }
 }
 
