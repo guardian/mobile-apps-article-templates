@@ -155,8 +155,8 @@ define([
             };
             window.footballMatchInfoFailed = function () {
                 $('#football__tabpanel--stats').remove();
-                if ($('.tabs [href="#football__tabpanel--stats"]').hasClass("selected")) {
-                    $('.tabs a:first-of-type').addClass("selected");
+                if ($('.tabs [href="#football__tabpanel--stats"]').attr("aria-selected") == true) {
+                    $('.tabs a:first-of-type').attr("aria-selected", true);
                     $($('.tabs [aria-selected="true"]').attr("href")).show();
                 }
                 $('.tabs [href="#football__tabpanel--stats"]').remove();

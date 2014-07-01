@@ -183,10 +183,10 @@ define([
                     e.preventDefault();
 
                     $($('[aria-selected="true"]').attr('href')).hide();
-                    $('[aria-selected="true"]').removeClass('selected');
+                    $('[aria-selected="true"]').attr("aria-selected", false);
 
                     $($(this).attr('href')).show();
-                    $(this).addClass('selected');
+                    $(this).attr("aria-selected", true);
                 });
             });
         }
