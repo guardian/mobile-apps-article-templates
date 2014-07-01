@@ -130,9 +130,8 @@ define([
                 };
 
                 window.commentTime = function () {
-                    relativeDates.init('.block__time', 'title');
+                    relativeDates.init('.comment__timestamp', 'title');
                 };
-
                 // Functions for feedback on recommend buttons
                 window.commentsRecommendIncrease = function (id, number) {
                     var target = '#' + id + ' .comment__recommend';
