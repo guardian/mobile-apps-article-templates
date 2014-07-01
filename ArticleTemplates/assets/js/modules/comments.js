@@ -84,7 +84,6 @@ define([
                             $(this).hide();
                             $(this).parent().parent().addClass("expand");
                         });
-                        
                     });
                 };
                 // Global functions to handle comments, called by native code
@@ -94,7 +93,7 @@ define([
                         $('.block--discussion-empty').show();
                     } else {
                         html = bonzo.create(html);
-                        $(html).appendTo($('#comments .container__body'));
+                        $(html).appendTo('#comments .container__body');
                         commentsReplyFormatting();
                     }
                 };
@@ -107,7 +106,7 @@ define([
                         $(html).appendTo($('#comments .container__body'));
                         commentsReplyFormatting();
                     }
-                    $('.loading--discussion').appendTo('#comments .container__body');
+                    $('.loading--discussion').appendTo($('#comments .container__body'));
                 };
                 window.articleCommentsFailed = function () {
                     $('.block--discussion-failed').show();
