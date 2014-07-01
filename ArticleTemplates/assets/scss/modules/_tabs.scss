@@ -10,13 +10,13 @@ Navigate between different sections of a page.
 <div role="tablist" class="tabs">
     <ul class="inline-list">
         <li role="presentation" class="inline-list__item">
-            <a role="tab" class="tab selected" id="tab--first" aria-controls="tabpanel--first" aria-selected="true" href="#">First</a>
+            <a role="tab" class="tab" id="tab--first" href="#" aria-controls="tabpanel--first" aria-selected="true">First</a>
         </li><!--
      --><li role="presentation" class="inline-list__item">
-            <a role="tab" class="tab" id="tab--second" aria-controls="tabpanel--second" href="#">Second</a>
+            <a role="tab" class="tab" id="tab--second" href="#" aria-controls="tabpanel--second">Second</a>
         </li><!--
      --><li role="presentation" class="inline-list__item">
-            <a role="tab" class="tab" id="tab--third" aria-controls="tabpanel--third" href="#">Third</a>
+            <a role="tab" class="tab" id="tab--third" href="#" aria-controls="tabpanel--third">Third</a>
         </li>
     </ul>
 </div>
@@ -44,7 +44,7 @@ Navigate between different sections of a page.
         padding: base-px(.5, 1, 2, .25);
         display: block;
 
-        &.selected {
+        &[aria-selected="true"] {
             color: color(tone-news);
             font-weight: bold;
             border-top: 4px solid color(tone-news);

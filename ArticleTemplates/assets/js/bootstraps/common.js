@@ -182,8 +182,8 @@ define([
                 bean.on(el, 'click', function (e) {
                     e.preventDefault();
 
-                    $($('.selected').attr('href')).hide();
-                    $('.selected').removeClass('selected');
+                    $($('[aria-selected="true"]').attr('href')).hide();
+                    $('[aria-selected="true"]').removeClass('selected');
 
                     $($(this).attr('href')).show();
                     $(this).addClass('selected');

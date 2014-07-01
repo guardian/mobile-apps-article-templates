@@ -154,12 +154,12 @@ define([
                 }
             };
             window.footballMatchInfoFailed = function () {
-                $("#football__tabpanel--stats").remove();
-                if ($(".tabs [href='#football__tabpanel--stats']").hasClass("selected")) {
-                    $(".tabs a:first-of-type").addClass("selected");
-                    $($(".tabs .selected").attr("href")).show();
+                $('#football__tabpanel--stats').remove();
+                if ($('.tabs [href="#football__tabpanel--stats"]').hasClass("selected")) {
+                    $('.tabs a:first-of-type').addClass("selected");
+                    $($('.tabs [aria-selected="true"]').attr("href")).show();
                 }
-                $(".tabs [href='#football__tabpanel--stats']").remove();
+                $('.tabs [href="#football__tabpanel--stats"]').remove();
             }
             window.applyNativeFunctionCall('footballMatchInfo');
             window.applyNativeFunctionCall('footballMatchInfoFailed');
