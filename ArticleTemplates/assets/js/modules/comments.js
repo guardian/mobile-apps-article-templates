@@ -58,10 +58,10 @@ define([
                                         // Calculate height to animate initial comments
                                         var originalHeight = block[0].clientHeight;
                                         // 110px is the smallest height an initial comment can be with options expanded
-                                        if (originalHeight > 110) {
-                                            block.css("min-height", originalHeight + 46);
+                                        if (originalHeight > 85) {
+                                            block.css("min-height", originalHeight + 34); // 34 is the height of comment__options
                                         } else {
-                                            block.css("min-height", "110px");
+                                            block.css("min-height", "85px");
                                         }
                                         setTimeout(function() {
                                             $('.comment__options', el).addClass("animated fadeinright");

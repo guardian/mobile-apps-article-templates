@@ -201,7 +201,7 @@ Comment preview:
 
 .comment__container {
     min-height: 64px;
-    margin-bottom: base-px(2);
+    margin-bottom: base-px(1);
     position: relative;
 }
 
@@ -231,6 +231,7 @@ Comment preview:
 .comment__body {
     word-break: break-word;
     word-wrap: break-word;
+    padding-bottom: base-px(1);
 
     @include mq(col2, col3) {
         margin-right: cols($base-3, 1);
@@ -326,7 +327,7 @@ Comment preview:
 .comment__options {
     @include meta();
     background-color: #fff;
-    padding: base-px(.75, 0, .75, 0);
+    padding-bottom: base-px(.5);
     overflow: hidden;
     display: none;
 
@@ -381,6 +382,10 @@ Comment preview:
 
         @include mq($to: col2) {
             margin-left: base-px(4.33333);
+        }
+
+        p:last-child {
+            margin-bottom: 0;
         }
     }
 
