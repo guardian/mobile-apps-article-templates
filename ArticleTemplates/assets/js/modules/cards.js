@@ -14,7 +14,7 @@ define([
             setupGlobals: function () {
                 // Global functions to handle comments, called by native code
                 window.articleCardsInserter = function (html) {
-                    $(html).appendTo(".container--related .container__body");
+                    $("body").append(html);
                 };
                 window.applyNativeFunctionCall('articleCardsInserter');
             }

@@ -14,7 +14,7 @@ Display an individual comment.
                 <img class="avatar__img" src="http://static.guim.co.uk/sys-images/Guardian/Pix/site_furniture/2010/09/01/no-user-image.gif">
             </span>
             <span class="comment__username">grumpyhistorian</span>
-            <span class="comment__responseto"><span data-icon="&#xe061;" aria-hidden="true"></span><span class="screen-readable">in response to </span></span>
+            <span class="comment__response-to"><span data-icon="&#xe061;" aria-hidden="true"></span><span class="screen-readable">in response to </span></span>
             <span class="comment__role"></span>
             <span class="comment__timestamp">5 hours ago</span>
         </div>
@@ -53,7 +53,7 @@ Comment response:
                 <img class="avatar__img" src="http://static.guim.co.uk/sys-images/discussion/avatars/2012/12/19/4780434/1816263f-962a-4b24-8e96-1218886e083e/60x60.png">
             </span>
             <span class="comment__username">FredericMoreau</span>
-            <span class="comment__responseto"><span data-icon="&#xe061;" aria-hidden="true"></span><span class="screen-readable">in response to </span>grumpyhistorian</span>
+            <span class="comment__response-to"><span data-icon="&#xe061;" aria-hidden="true"></span><span class="screen-readable">in response to </span>grumpyhistorian</span>
             <span class="comment__role"></span>
             <span class="comment__timestamp">5 hours ago</span>
         </div>
@@ -94,7 +94,7 @@ Comment blocked:
                 <img class="avatar__img" src="http://static.guim.co.uk/sys-images/discussion/avatars/2012/12/19/4780434/1816263f-962a-4b24-8e96-1218886e083e/60x60.png">
             </span>
             <span class="comment__username">FredericMoreau</span>
-            <span class="comment__responseto"><span data-icon="&#xe061;" aria-hidden="true"></span><span class="screen-readable">in response to </span>grumpyhistorian</span>
+            <span class="comment__response-to"><span data-icon="&#xe061;" aria-hidden="true"></span><span class="screen-readable">in response to </span>grumpyhistorian</span>
             <span class="comment__role"></span>
             <span class="comment__timestamp">5 hours ago</span>
         </div>
@@ -134,7 +134,7 @@ Comment preview:
                     <img class="avatar__img" src="http://static.guim.co.uk/sys-images/discussion/avatars/2012/02/26/TechnicalEphemera/ee18a40d-1f30-4197-9d3a-76fe081b99a0/60x60.png">
                 </span>
                 <span class="comment__username">TechnicalEphemera</span>
-                <span class="comment__responseto"><span data-icon="&#xe061;" aria-hidden="true"></span><span class="screen-readable">in response to </span></span>
+                <span class="comment__response-to"><span data-icon="&#xe061;" aria-hidden="true"></span><span class="screen-readable">in response to </span></span>
                 <span class="comment__role"></span>
                 <span class="comment__timestamp">16 hours ago</span>
             </div>
@@ -201,14 +201,15 @@ Comment preview:
 
 .comment__container {
     min-height: 64px;
+    margin-bottom: base-px(1);
     position: relative;
 }
 
 .comment__header {
     word-break: break-all;
     word-wrap: break-word;
-    @include meta();
-    padding: base-px(.25, 1, .75, 0);
+    margin-top: -2px;
+    padding: base-px(0, 1, .75, 0);
     overflow: auto;
 
     @include mq(col2, col3) {
@@ -222,7 +223,7 @@ Comment preview:
     }
 
     .avatar--user {
-        margin-right: base-px(.66666);
+        margin: base-px(.33333, .66666, 0, 0);
         float: left;
     }
 }
@@ -230,7 +231,7 @@ Comment preview:
 .comment__body {
     word-break: break-word;
     word-wrap: break-word;
-    margin: base-px(0, 0, 1, 0);
+    padding-bottom: base-px(1);
 
     @include mq(col2, col3) {
         margin-right: cols($base-3, 1);
@@ -266,7 +267,7 @@ Comment preview:
     white-space: nowrap;
 }
 
-.comment__responseto {
+.comment__response-to {
     font-weight: bold;
     display: none;
 }
@@ -326,7 +327,7 @@ Comment preview:
 .comment__options {
     @include meta();
     background-color: #fff;
-    padding: base-px(.75, 0, .75, 0);
+    padding-bottom: base-px(.5);
     overflow: hidden;
     display: none;
 
@@ -355,16 +356,12 @@ Comment preview:
 
 // Response 
 .is-response { // TODO: Rename .comment--response
-    .comment__container {
-        padding: base-px(0, 0, 3, 0);
-    }
-
     .comment__header {
         border-top: color(shade-4) 1px dotted;
         width: auto;
         float: none;
         position: static;
-        padding: base-px(.75, 1, .5, 0);
+        padding: base-px(.75, 1, 1.5, 0);
 
         @include mq($to: col2) {
             margin-left: base-px(4.33333);
@@ -386,6 +383,10 @@ Comment preview:
         @include mq($to: col2) {
             margin-left: base-px(4.33333);
         }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
     }
 
     .comment__avatar {
@@ -396,13 +397,7 @@ Comment preview:
         display: inline-block;
     }
 
-    .comment__timestamp {
-        margin: base-px(0, 0, 1, 0);
-        position: absolute;
-        bottom: 0;
-    }
-
-    .comment__responseto {
+    .comment__response-to {
         display: inline-block;
         white-space: nowrap;
         color: color(shade-2);
@@ -414,25 +409,6 @@ Comment preview:
 
     .comment__recommend {
         margin: base-px(.75, 0, 0, 0);
-    }
-
-    .comment__options {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        left: 0;
-
-        @include mq($to: col2) {
-            margin-left: base-px(5.33333);
-        }
-
-        @include mq(col2, col3) {
-            margin-left: cols($base-3, 4);
-        }
-
-        @include mq($from: col3) {
-            margin-left: cols($base-4, 5);
-        }
     }
 }
 
