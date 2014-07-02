@@ -25,11 +25,16 @@ define([
                                 if (numOfComments == 1) {
                                     $(this).addClass("block--discussion-thread--orphan");
                                 } else {
-                                    $(blockID).append("<div class='more more--comments'><span class='more__label' data-icon='&#xe050;'>" + numOfComments + " more replies</span></div>");
+                                    $(blockID).after("<div class='more more--comments'><span class='more__label' data-icon='&#xe050;'>" + numOfComments + " more replies</span></div>");
                                 }
                             }
                         }
                         $(this).addClass("block--discussion-thread--checked");
+
+                        bean.on(el, 'click', '.more--comments', function () {
+                            $(this).hide();
+                            $(this).parent().addClass("expand");
+                        });
                     });
 
                     $(".comment").each(function(el) {
@@ -71,11 +76,6 @@ define([
                                     }
                                 }
                             }
-                        });
-
-                        bean.on(el, 'click', '.more--comments', function () {
-                            $(this).hide();
-                            $(this).parent().parent().addClass("expand");
                         });
                     });
                 };
