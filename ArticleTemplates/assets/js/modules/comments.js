@@ -25,11 +25,16 @@ define([
                                 if (numOfComments == 1) {
                                     $(this).addClass("block--discussion-thread--orphan");
                                 } else {
-                                    $(blockID).append("<div class='more more--comments'><span class='more__label' data-icon='&#xe050;'>" + numOfComments + " more replies</span></div>");
+                                    $(blockID).after("<div class='more more--comments'><a><span class='more__label' data-icon='&#xe050;'>" + numOfComments + " more replies</span></a></div>");
                                 }
                             }
                         }
                         $(this).addClass("block--discussion-thread--checked");
+
+                        bean.on(el, 'click', '.more--comments', function () {
+                            $(this).hide();
+                            $(this).parent().addClass("expand");
+                        });
                     });
 
                     $(".comment").each(function(el) {
@@ -49,42 +54,29 @@ define([
                                 if (block.hasClass('visible')) {
                                     // Remove any previous animation classes
                                     $(".comment__options").removeClass("animated fadeinright");
-                                    $(".comment__timestamp").removeClass("animated scaleout");
                                     if (block.hasClass("comment--open")) {
                                         // Hide the buttons
                                         block.removeClass("comment--open");
                                     } else {
                                         // Hide previously opened block
                                         $(".comment--open").removeClass("comment--open");
-                                        // Different animations for different block types
-                                        if (block.hasClass("is-response")) {
-                                            $(".comment__timestamp", el).addClass("animated scaleout");
-                                            $('.comment__options', el).addClass("animated fadeinright");
+                                        // Calculate height to animate initial comments
+                                        var originalHeight = block[0].clientHeight;
+                                        // 110px is the smallest height an initial comment can be with options expanded
+                                        if (originalHeight > 85) {
+                                            block.css("min-height", originalHeight + 34); // 34 is the height of comment__options
                                         } else {
-                                            // Calculate height to animate initial comments
-                                            var originalHeight = block[0].clientHeight;
-                                            // 110px is the smallest height an initial comment can be with options expanded
-                                            if (originalHeight > 110) {
-                                                block.css("min-height", originalHeight + 46);
-                                            } else {
-                                                block.css("min-height", "110px");
-                                            }
-                                            setTimeout(function() {
-                                                $('.comment__options', el).addClass("animated fadeinright");
-                                                block.css("min-height", originalHeight);
-                                            }, 350);
+                                            block.css("min-height", "85px");
                                         }
+                                        setTimeout(function() {
+                                            $('.comment__options', el).addClass("animated fadeinright");
+                                            block.css("min-height", originalHeight);
+                                        }, 350);
                                         block.addClass('comment--open');
                                     }
                                 }
                             }
                         });
-
-                        bean.on(el, 'click', '.more--comments', function () {
-                            $(this).hide();
-                            $(this).parent().parent().addClass("expand");
-                        });
-                        
                     });
                 };
                 // Global functions to handle comments, called by native code
@@ -94,7 +86,7 @@ define([
                         $('.block--discussion-empty').show();
                     } else {
                         html = bonzo.create(html);
-                        $(html).appendTo($('#comments .container__body'));
+                        $(html).appendTo('#comments .container__body');
                         commentsReplyFormatting();
                     }
                 };
@@ -107,7 +99,7 @@ define([
                         $(html).appendTo($('#comments .container__body'));
                         commentsReplyFormatting();
                     }
-                    $('.loading--discussion').appendTo('#comments .container__body');
+                    $('.loading--discussion').appendTo($('#comments .container__body'));
                 };
                 window.articleCommentsFailed = function () {
                     $('.block--discussion-failed').show();
