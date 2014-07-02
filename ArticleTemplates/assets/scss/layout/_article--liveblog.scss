@@ -71,41 +71,44 @@
     }
 
     .aside-witness {
+        @extend .block;
+        padding-left: base-px(.66667);
         float: none;
-        background-color: #fff;
-        border-top: 1px solid color(shade-3);
-        border-bottom: 2px solid color(shade-4);
-        margin: base-px(1);
-        padding: base-px(1);
         width: auto;
-        position: relative;
-        overflow: hidden;
+        table-layout: fixed;
 
-        @include mq($from: col1) {
-            margin-left: 0;
-            margin-right: 0;
+        @include mq($to: col1) {
+            margin: base-px(1);
         }
+    }
 
-        .touchpoint__label {
-            margin: base-px(.25, 0);
-            padding-left: $base-1;
-            width: 220px;
+    .aside-witness__action {
+        width: 70%;
+        display: table-cell;
 
-            @include mq($from: col2) {
+        .touchpoint {
+            .touchpoint__button {
+                margin-right: 6px;
+                float: left;
+            }
+
+            .touchpoint__label {
                 margin: 0;
-                padding-left: $base-2;
-                position: absolute;
+                width: 66%;
+                float: left;
             }
+        }
+    }
 
-            @include mq(col2, col3) {
-                padding-left: $base-3;
-                left: cols($base-3, 4);
-            }
+    .aside-witness__sponsor {
+        width: 30%;
+        text-align: right;
+        vertical-align: middle;
+        display: table-cell;
 
-            @include mq($from: col3) {
-                padding-left: $base-4;
-                left: cols($base-4, 5);
-            }
+        img {
+            max-width: 100%;
+            height: auto;
         }
     }
 }

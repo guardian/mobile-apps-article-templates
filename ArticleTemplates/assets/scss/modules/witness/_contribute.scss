@@ -50,20 +50,15 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
 }
 
 @include mq($to: col1) {
-    .aside-witness {
-        display: table;
-        width: 100%;
-    }
-
     .aside-witness__action {
         display: table-cell;
-        width: 60%;
 
         .touchpoint {
             .touchpoint__button {
                 margin-right: 6px;
                 float: left;
             }
+
             .touchpoint__label {
                 margin: 0;
                 width: 66%;
@@ -74,12 +69,10 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
 
     .aside-witness__sponsor {
         vertical-align: middle;
-        border-left: 1px dotted color(shade-4);
-        padding-left: base-px(1);
         display: table-cell;
-        width: 40%;
 
         img {
+            min-width: 80px;
             max-width: 100%;
             height: auto;
         }
