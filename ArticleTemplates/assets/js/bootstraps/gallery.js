@@ -13,11 +13,10 @@ define([
     var modules = {
         galleryLayout: function () {
             collagePlus.init(".gallery", ".gallery__image");
-
             window.onresize = function(){
                 $(".gallery")[0].removeAttribute("style");
                 collagePlus.init(".gallery", ".gallery__image");
-            }
+            };
         }
     },
 
