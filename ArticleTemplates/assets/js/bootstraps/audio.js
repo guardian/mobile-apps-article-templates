@@ -79,26 +79,28 @@ define([
                 window.audioPlay = function () {
                     $('.audio-player__button .touchpoint').html('&#xe04d;');
                 };
+
                 window.audioStop = function () {
                     $('.audio-player__button .touchpoint').html("&#xe04b;");
                 };
+
                 window.audioLoad = function () {
                     $(".audio-player__button").hide();
                     $(".audio-player__button--loading").css({"display": "inline-block"});
                 };
+
                 window.audioFinishLoad = function () {
                     $(".audio-player__button").show();
                     $(".audio-player__button--loading").hide();
                 };
+
                 window.audioBackground = function (duration) {
-                    // Copied directly, needs cleaning
                     if ($(".article__header").attr("data-background") == null && !$("body").hasClass("media")) {
                         var numOfCircles = Math.floor((duration / 60) / 2) + 2,
                             h = $(".article__header").offset().height,
                             w = $(".article__header").offset().width,
-                            size = (h * w) / 8000;
-
-                        var ctx = document.getCSSCanvasContext("2d", "circles", w, h);
+                            size = (h * w) / 8000,
+                            ctx = document.getCSSCanvasContext("2d", "circles", w, h);
 
                         if (numOfCircles > 12) {
                             numOfCircles = 12;
@@ -107,12 +109,12 @@ define([
                         // Draw Circles
                         for (var i = 0; i < numOfCircles; i++) {
                             var x = Math.floor(Math.random() * (w - 0) + 1);
-                                ctx.beginPath();
-                                ctx.arc(x, h / 2, size, 0, Math.PI * 2, true);
-                                ctx.closePath();
-                                ctx.fillStyle = "rgba(0, 86, 137, 0.15)";
-                                ctx.fill();
-                                size = size * 1.2;
+                            ctx.beginPath();
+                            ctx.arc(x, h / 2, size, 0, Math.PI * 2, true);
+                            ctx.closePath();
+                            ctx.fillStyle = "rgba(0, 86, 137, 0.15)";
+                            ctx.fill();
+                            size = size * 1.2;
                         }
 
                         $(".cutout__container").attr("data-background", "true");
