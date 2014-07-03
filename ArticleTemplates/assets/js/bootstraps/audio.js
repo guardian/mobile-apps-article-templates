@@ -85,57 +85,34 @@ define([
                 window.audioLoad = function () {
                     $(".audio-player__button").hide();
                     $(".audio-player__button--loading").css({"display": "inline-block"});
-                }
+                };
                 window.audioFinishLoad = function () {
                     $(".audio-player__button").show();
                     $(".audio-player__button--loading").hide();
-                }
+                };
                 window.audioBackground = function (duration) {
                     // Copied directly, needs cleaning
                     if ($(".article__header").attr("data-background") == null && !$("body").hasClass("media")) {
-                        var numOfCircles = Math.floor((duration / 60) / 10) + 2,
+                        var numOfCircles = Math.floor((duration / 60) / 2) + 2,
                             h = $(".article__header").offset().height,
                             w = $(".article__header").offset().width,
-                            size = (h * w) / 8000,
-                            x = [],
-                            y = [];
-
-                        for (var i = 0; i < numOfCircles; i++) {
-                            var attempt,
-                                value = (Math.floor((Math.random() * w) + 1) / 20);
-
-                            value = Math.floor(value) * 20;
-                            if (x.indexOf(value) !== -1 && attempt < 3) {
-                                i = i - 1;
-                                attempt++;
-                            } else {
-                                x.push(value);
-                                attempt = 0;
-                            }
-                        }
-
-                        for (var i = 0; i < numOfCircles; i++) {
-                            var attempt,
-                                value = (Math.floor((Math.random() * h) + 1) / 20);
-
-                            value = Math.floor(value) * 20;
-                            if (y.indexOf(value) !== -1 && attempt < 3) {
-                                i = i - 1;
-                                attempt++;
-                            } else {
-                                y.push(value);
-                                attempt = 0;
-                            }
-                        }
+                            size = (h * w) / 8000;
 
                         var ctx = document.getCSSCanvasContext("2d", "circles", w, h);
+
+                        if (numOfCircles > 12) {
+                            numOfCircles = 12;
+                        }
+
+                        // Draw Circles
                         for (var i = 0; i < numOfCircles; i++) {
-                            ctx.beginPath();
-                            ctx.arc(x[i], y[i], size, 0, Math.PI * 2, true);
-                            ctx.closePath();
-                            ctx.fillStyle = "rgba(0, 86, 137, 0.15)";
-                            ctx.fill();
-                            size = size * 1.3;
+                            var x = Math.floor(Math.random() * (w - 0) + 1);
+                                ctx.beginPath();
+                                ctx.arc(x, h / 2, size, 0, Math.PI * 2, true);
+                                ctx.closePath();
+                                ctx.fillStyle = "rgba(0, 86, 137, 0.15)";
+                                ctx.fill();
+                                size = size * 1.2;
                         }
 
                         $(".cutout__container").attr("data-background", "true");
