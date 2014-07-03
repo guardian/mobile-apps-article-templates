@@ -26,7 +26,19 @@ define([
     $
 ) {
     'use strict';
-    
+
+    function applyModifications($obj, isNotLast, settings) {
+        var css = {
+            marginBottom            : settings.padding,
+            marginRight             : (isNotLast) ? settings.padding : 0,
+            display                 : settings.display,
+            verticalAlign           : "bottom",
+            overflow                : "hidden"
+        };
+
+        return $obj.parent().css(css);
+    }
+
     function resizeRow(obj, row, settings, rownum) {
         var imageExtras             = (settings.padding * (obj.length - 1)),
             albumWidthAdjusted      = settings.albumWidth - imageExtras,
@@ -65,18 +77,6 @@ define([
         }
     }
 
-    function applyModifications($obj, isNotLast, settings) {
-        var css = {
-            marginBottom            : settings.padding,
-            marginRight             : (isNotLast) ? settings.padding : 0,
-            display                 : settings.display,
-            verticalAlign           : "bottom",
-            overflow                : "hidden"
-        };
-
-        return $obj.parent().css(css);
-    }
-
     function init (selector, children) {
         // Set defaults based off window size
         var imageHeight;
@@ -100,7 +100,7 @@ define([
             "effect"                : "default",
             "direction"             : "vertical",
             "allowPartialLastRow"   : false
-        }
+        };
 
         var row = 0,
             elements = [],
@@ -119,26 +119,21 @@ define([
 
             row += nw + settings.padding;
 
-            if (row > settings.albumWidth && elements.length != 0) {
+            if (row > settings.albumWidth && elements.length !== 0) {
                 resizeRow(elements, (row - settings.padding), settings, rownum);
                 row = 0;
                 elements = [];
                 rownum += 1;
             }
 
-            if (settings.images.length-1 == index && elements.length != 0) {
+            if (settings.images.length-1 == index && elements.length !== 0) {
                 resizeRow(elements, row, settings, rownum);
                 row = 0;
                 elements = [];
                 rownum += 1;
             }
         });
-
-        if (!this.initialised) {
-            this.initialised = true;
-            // console.info("Cards ready");
-        }
-    };
+    }
 
     return {
         init: init
