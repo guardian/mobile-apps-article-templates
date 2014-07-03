@@ -113,7 +113,7 @@ define([
                 dodgy = false;
                 if ((newScore === 0) && (scorerHtml === '') && !aggScore) {
                     // this could be a dodgy call from iOS
-                    oldScore = $(".match-summary__" + side + "__score__label").html().substring(0, 1);
+                    var oldScore = $(".match-summary__" + side + "__score__label").html().substring(0, 1);
                     if ((oldScore === "1") || (oldScore === "2") || (oldScore === "3") || (oldScore === "4") || (oldScore === "5") || (oldScore === "6") || (oldScore === "7") || (oldScore === "8") || (oldScore === "9")) {
                         // this is most likely a dodgy call from iOS, the score shouldn't go from (for example) 2 to 0
                         dodgy = true;
