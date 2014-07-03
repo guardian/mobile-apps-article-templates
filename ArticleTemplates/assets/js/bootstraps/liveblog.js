@@ -62,9 +62,11 @@ define([
                 window.liveblogDeleteBlock = function (blockID) {
                     $('#' + blockID).remove();
                 };
+
                 window.liveblogUpdateBlock = function (blockID, html) {
                     $("#" + blockID).replaceWith(html);
                 };
+
                 window.liveblogLoadMore = function (html) {
                     html = bonzo.create(html);
                     $('.loading--liveblog').removeClass("loading--visible");
@@ -79,6 +81,7 @@ define([
                     window.loadEmbeds();
                     window.loadInteractives();
                 };
+
                 window.liveblogTime = function () {
                     if ($(".tone--liveBlog").hasClass("is-live")) {
                         relativeDates.init('.block__time', 'title');
@@ -88,6 +91,7 @@ define([
                         });
                     }
                 };
+
                 window.showLiveMore = function (show) {
                     if (show) {
                         $('.more--live-blogs').show();
@@ -95,6 +99,7 @@ define([
                         $('.more--live-blogs').hide();
                     }
                 };
+
                 window.applyNativeFunctionCall('liveblogDeleteBlock');
                 window.applyNativeFunctionCall('liveblogUpdateBlock');
             }
