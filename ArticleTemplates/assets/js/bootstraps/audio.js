@@ -77,10 +77,10 @@ define([
             setupGlobals: function () {
                 // Global function to handle audio, called by native code
                 window.audioPlay = function () {
-                    $('.audio-player__button .touchpoint').html('&#xe04d;');
+                    $('.audio-player__button .touchpoint__button').attr('data-icon', '');
                 };
                 window.audioStop = function () {
-                    $('.audio-player__button .touchpoint').html("&#xe04b;");
+                    $('.audio-player__button .touchpoint__button').attr('data-icon', '');
                 };
                 window.audioLoad = function () {
                     $(".audio-player__button").hide();
