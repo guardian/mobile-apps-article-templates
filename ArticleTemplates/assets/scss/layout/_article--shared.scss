@@ -34,6 +34,15 @@
         }
     }
 
+     // Hide witness call-out until correctly positioned by JavaScript
+    .aside-witness {
+        display: none;
+
+        &.js--positioned {
+            display: block;
+        }
+    }
+
     // Ensure tags match width of .article__body
     .tags .inline-list {
         @include mq(col2, col3) {
