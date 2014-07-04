@@ -34,6 +34,23 @@
         }
     }
 
+    .aside {
+        float: right;
+        clear: right;
+
+        @include mq(col1, col2) {
+            margin-right: base-px(1);
+        }
+
+        @include mq(col2, col3) {
+            margin-right: -(cols($base-3, 4));
+        }
+
+        @include mq($from: col3) {
+            margin-right: -(cols($base-4, 5)+$base-4*2);
+        }
+    }
+
      // Hide witness call-out until correctly positioned by JavaScript
     .aside-witness {
         display: none;
