@@ -22,6 +22,12 @@ With live indicator:
     font-family: $egyptian-display;
     font-weight: 600;
     @include headline(.5);
+
+    &::before {
+        margin-right: base-px(.66666);
+        line-height: 92%; // Offset for different font
+        vertical-align: bottom;
+    }
 }
 
 .section__meta {
@@ -41,7 +47,6 @@ With live indicator:
     &::before {
         content: '• ';
         display: inline-block;
-        margin-right: 4px;
         -webkit-animation: blink 1.5s ease-in infinite;
     }
 }

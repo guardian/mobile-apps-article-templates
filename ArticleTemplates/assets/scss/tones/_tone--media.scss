@@ -21,10 +21,11 @@
     .article--audio,
     .article--visual {
         border-top-color: color(tone-media);
+        background-color: color(shade-1);
 
         .prose p,
         .prose li {
-            @include text-underline(darken(color(tone-media), 5%), #fff, color(tone-media-accent));
+            @include text-underline(darken(color(tone-media), 5%), color(shade-1), color(tone-media-accent));
         }
 
         .prose table,
@@ -37,6 +38,7 @@
         }
 
         .article__header,
+        .article__body,
         .tags {
             background-color: color(shade-1);
         }
@@ -51,6 +53,17 @@
             .byline {
                 color: #fff;
             }
+        }
+
+        .article__body {
+            .prose,
+            .standfirst {
+                color: #fff;
+            }
+        }
+
+        .tags {
+            border-top: 1px dotted color(shade-2);
         }
 
         .meta {
