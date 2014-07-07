@@ -134,7 +134,7 @@ define([
                         } else {
                             $(element).replaceWith("<div class='element-image-inner'></div>");
                         }
-                    }
+                    };
                     img.src = $(this).attr("src");
                 });
             }
@@ -146,7 +146,7 @@ define([
                 var followObject = $('[data-follow-alert-id="' + followid + '"]');
                 if (followObject.length) {
                     if (following == 1) {
-                        if (followObject.hasClass('following') == false) {
+                        if (followObject.hasClass('following') === false) {
                             followObject.addClass('following');
                         }
                     } else {
@@ -169,7 +169,7 @@ define([
             // Function that allows templates to better handle offline, called by native code
             window.offlineSwitch = function () {
                 $(document.body).addClass("offline");
-            }
+            };
         },
 
         showTabs: function () {
