@@ -88,7 +88,7 @@ define([
         }
 
         var padding = getComputedStyle(document.getElementsByClassName("gallery")[0]).getPropertyValue("padding-left");
-            padding = parseInt(padding.substring(0, padding.length - 2));
+            padding = Math.round(parseFloat(padding));
 
         var settings = {
             "targetHeight"          : imageHeight,
@@ -109,8 +109,6 @@ define([
         settings.images.each(function(scope, index) {
             var w = this.width,
                 h = this.height;
-
-            console.log(settings.albumWidth);
 
             var nw = Math.ceil(w/h*settings.targetHeight),
                 nh = Math.ceil(settings.targetHeight);
