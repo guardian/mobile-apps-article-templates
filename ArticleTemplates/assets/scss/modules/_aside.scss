@@ -4,7 +4,7 @@ title: Aside
 name: aside
 category: Modules
 ---
-Positions a piece of text or HTML component to the right-hand side of any running text.
+Positions a piece of text or HTML component whose content is an aside of the main article. This component typically appears floated to the right in many article templates.
 
 ```html_example
 <aside class="aside">
@@ -16,29 +16,12 @@ Positions a piece of text or HTML component to the right-hand side of any runnin
 */
 
 .aside {
+    margin: base-px(2, 0);
     border-top: 1px dotted color(shade-4);
+    padding: base-px(1, 0);
+    width: 100%;
 
     @include mq($to: col1) {
-        margin: base-px(2, 0);
         border-bottom: 1px dotted color(shade-4);
-        padding: base-px(1, 0);
-        width: 100%;
-    }
-
-    @include mq($from: col1) {
-        margin: base-px(0, 0, 2, 2);
-        padding: base-px(1, 1, 1, 0);
-    }
-
-    @include mq(col1, col2) {
-        width: cols($base-2, 3);
-    }
-
-    @include mq(col2, col3) {
-        width: cols($base-3, 4);
-    }
-
-    @include mq($from: col3) {
-        width: cols($base-4, 4);
     }
 }
