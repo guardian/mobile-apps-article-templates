@@ -71,41 +71,54 @@
     }
 
     .aside-witness {
-        float: none;
-        background-color: #fff;
-        border-top: 1px solid color(shade-3);
-        border-bottom: 2px solid color(shade-4);
-        margin: base-px(1);
-        padding: base-px(1);
+        @extend .block;
+        padding-left: base-px(.66667);
         width: auto;
-        position: relative;
-        overflow: hidden;
+        table-layout: fixed;
 
-        @include mq($from: col1) {
-            margin-left: 0;
-            margin-right: 0;
+        @include mq(col2, col3) {
+            padding-left: cols($base-3, 4, 1);
         }
 
-        .touchpoint__label {
-            margin: base-px(.25, 0);
-            padding-left: $base-1;
-            width: 220px;
+        @include mq($from: col3) {
+            padding-left: cols($base-4, 5, 1);
+        }
+    }
 
-            @include mq($from: col2) {
-                margin: 0;
-                padding-left: $base-2;
-                position: absolute;
+    .aside-witness__action {
+        display: table-cell;
+        max-width: 264px;
+
+        .touchpoint {
+            .touchpoint__button {
+                margin-right: 6px;
+                float: left;
             }
 
-            @include mq(col2, col3) {
-                padding-left: $base-3;
-                left: cols($base-3, 4);
-            }
+            .touchpoint__label {
+                width: 66%;
+                float: left;
+                margin-left: base-px(.5);
 
-            @include mq($from: col3) {
-                padding-left: $base-4;
-                left: cols($base-4, 5);
+                @include mq($from: col1) {
+                    margin-top: 0;
+                }
             }
+        }
+    }
+
+    .aside-witness__sponsor {
+        width: 30%;
+        display: table-cell;
+        vertical-align: middle;
+
+        @include mq($from: col1) {
+            text-align: right;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
         }
     }
 }

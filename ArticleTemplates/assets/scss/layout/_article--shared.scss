@@ -34,6 +34,41 @@
         }
     }
 
+     // Float asides right, adjust styling as appropriate
+    .aside {
+        float: right;
+        clear: right;
+
+        @include mq($from: col1) {
+            margin: base-px(0, 0, 2, 2);
+            padding: base-px(1, 1, 1, 0);
+        }
+
+        @include mq(col1, col2) {
+            margin-right: base-px(1);
+            width: cols($base-2, 3);
+        }
+
+        @include mq(col2, col3) {
+            margin-right: -(cols($base-3, 4));
+            width: cols($base-3, 4);
+        }
+
+        @include mq($from: col3) {
+            margin-right: -(cols($base-4, 5)+$base-4*2);
+            width: cols($base-4, 4);
+        }
+    }
+
+     // Hide witness call-out until correctly positioned by JavaScript
+    .aside-witness {
+        display: none;
+
+        &.js--positioned {
+            display: block;
+        }
+    }
+
     // Ensure tags match width of .article__body
     .tags .inline-list {
         @include mq(col2, col3) {
