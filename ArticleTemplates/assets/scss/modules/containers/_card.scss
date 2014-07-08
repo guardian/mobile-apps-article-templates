@@ -8,7 +8,7 @@ Display a standard article card.
 
 ```html_example
 <div class="container__body">
-    <div class="card">
+    <a class="card__link" href="#">
         <div class="card__container">
             <div class="card__header">
                 <h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
@@ -21,9 +21,9 @@ Display a standard article card.
                 <span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
             </div>
         </div>
-    </div>
+    </a>
 
-    <div class="card has-image">
+    <a class="card has-image" href="#">
         <div class="card__container">
             <div class="card__header">
                 <h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
@@ -36,7 +36,7 @@ Display a standard article card.
                 <span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
             </div>
         </div>
-    </div>
+    </a>
 </div>
 ```
 */
@@ -85,6 +85,14 @@ Display a standard article card.
 
         &:nth-child(4n) {
             margin-right: 0;
+        }
+    }
+
+    .card__link {
+        color: color(shade-1);
+
+        &:active {
+            color: color(shade-1);
         }
     }
 
