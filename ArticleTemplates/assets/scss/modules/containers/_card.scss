@@ -8,7 +8,7 @@ Display a standard article card.
 
 ```html_example
 <div class="container__body">
-    <a class="card__link" href="#">
+    <a class="card" href="#">
         <div class="card__container">
             <div class="card__header">
                 <h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
@@ -42,10 +42,15 @@ Display a standard article card.
 */
 
 .card {
+    color: color(shade-1);
     background-color: #fff;
     border-top: 1px solid color(tone-news-accent);
     border-bottom: 1px solid color(shade-4);
     position: relative;
+
+    &:active {
+        color: color(shade-1);
+    }
 
     @include mq($to: col1) {
         margin: $base-1 / 1.5 $base-1 / 1.5 0; // TODO: Move to base-px()
@@ -85,14 +90,6 @@ Display a standard article card.
 
         &:nth-child(4n) {
             margin-right: 0;
-        }
-    }
-
-    .card__link {
-        color: color(shade-1);
-
-        &:active {
-            color: color(shade-1);
         }
     }
 
