@@ -22,6 +22,12 @@ With live indicator:
     font-family: $egyptian-display;
     font-weight: 600;
     @include headline(.5);
+
+    &::before {
+        margin-right: base-px(.66666);
+        line-height: 92%; // Offset for different font
+        vertical-align: bottom;
+    }
 }
 
 .section__meta {

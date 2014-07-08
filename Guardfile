@@ -17,6 +17,12 @@ guard :shell do
     }
 end
 
+# JS Lint
+guard 'jslint-on-rails' do
+    watch(%r{ArticleTemplates/assets/js/.+})
+    # watch('config/jslint.yml')
+end
+
 # Build documentation
 guard 'hologram', config_path: 'hologram.yml' do
     watch(%r{ArticleTemplates/assets/scss/.+})

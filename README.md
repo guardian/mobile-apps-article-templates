@@ -24,6 +24,7 @@ This will start [Guard](https://github.com/guard/guard), which we use to run the
 * Compile SCSS files for article templates
 * Compile SCSS files for documentation
 * Lint these SCSS files to ensure consistent code style. Linter rules are configured with [.scss-lint.yml](ArticleTemplates/assets/scss/.scss-lint.yml)
+* Lint a JS file when modified using [JSLint On Rails](https://github.com/wireframe/guard-jslint-on-rails).
 * Build documentation files. Documentation is built using [Hologram](https://github.com/trulia/hologram), and is configured with [hologram.yml](hologram.yml)
 
 ## Updating the Documentation

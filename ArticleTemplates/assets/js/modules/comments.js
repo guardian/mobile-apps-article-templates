@@ -50,7 +50,7 @@ define([
                         });
 
                         bean.on(el, 'click', function () {
-                            if (stopPropagation == 0) {
+                            if (stopPropagation === 0) {
                                 var block = $(el);
                                 // If comment is replyable allow buttons
                                 if (block.hasClass('visible')) {
@@ -66,7 +66,8 @@ define([
                                         var originalHeight = block[0].clientHeight;
                                         // 110px is the smallest height an initial comment can be with options expanded
                                         if (originalHeight > 85) {
-                                            block.css("min-height", originalHeight + 34); // 34 is the height of comment__options
+                                            // 34 is the height of comment__options
+                                            block.css("min-height", originalHeight + 34);
                                         } else {
                                             block.css("min-height", "85px");
                                         }
@@ -89,7 +90,7 @@ define([
                     } else {
                         html = bonzo.create(html);
                         $(html).appendTo('#comments .container__body');
-                        commentsReplyFormatting();
+                        window.commentsReplyFormatting();
                     }
                 };
                 window.commentsInserter = function (html) {
@@ -99,7 +100,7 @@ define([
                     } else {
                         html = bonzo.create(html);
                         $(html).appendTo($('#comments .container__body'));
-                        commentsReplyFormatting();
+                        window.commentsReplyFormatting();
                     }
                     $('.loading--discussion').appendTo($('#comments .container__body'));
                 };

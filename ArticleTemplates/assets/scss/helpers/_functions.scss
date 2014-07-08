@@ -11,10 +11,10 @@
 @function base-px($value1, $value2: '', $value3: '', $value4: '') {
     $base-value: 12px;
     @if $value2 == '' {
-        @return ($value1 * $base-value);
+        @return round($value1 * $base-value);
     } @else if $value3 == '' {
-        @return ($value1 * $base-value) ($value2 * $base-value);
+        @return round($value1 * $base-value) round($value2 * $base-value);
     } @else {
-        @return ($value1 * $base-value) ($value2 * $base-value) ($value3 * $base-value) ($value4 * $base-value);
+        @return round($value1 * $base-value) round($value2 * $base-value) round($value3 * $base-value) round($value4 * $base-value);
     }
 }

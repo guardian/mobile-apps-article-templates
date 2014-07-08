@@ -110,25 +110,14 @@ define([
         footballGoal: function() {
             // Allows the header to be updated when there is a goal
             window.footballGoal = function (side, newScore, scorerHtml, aggScore) {
-                dodgy = false;
-                if ((newScore === 0) && (scorerHtml === '') && !aggScore) {
-                    // this could be a dodgy call from iOS
-                    oldScore = $(".match-summary__" + side + "__score__label").html().substring(0, 1);
-                    if ((oldScore === "1") || (oldScore === "2") || (oldScore === "3") || (oldScore === "4") || (oldScore === "5") || (oldScore === "6") || (oldScore === "7") || (oldScore === "8") || (oldScore === "9")) {
-                        // this is most likely a dodgy call from iOS, the score shouldn't go from (for example) 2 to 0
-                        dodgy = true;
-                    }
+                if (aggScore) {
+                    $(".match-summary").addClass("is-agg");
+                    $(".match-summary__" + side + "__score__label").html(newScore + " <span class=\"match-summary__score__agg\">" + aggScore + "</span>");
+                } else {
+                    $(".match-summary__" + side + "__score__label").html(newScore + " <span class=\"match-summary__score__agg\"></span>");
                 }
-                if (!dodgy) {
-                    if (aggScore) {
-                        $(".match-summary").addClass("is-agg");
-                        $(".match-summary__" + side + "__score__label").html(newScore + " <span class=\"match-summary__score__agg\">" + aggScore + "</span>");
-                    } else {
-                        $(".match-summary__" + side + "__score__label").html(newScore + " <span class=\"match-summary__score__agg\"></span>");
-                    }
-                    $(".match-summary__" + side + "__info p").remove();
-                    $(".match-summary__" + side + "__info").append(scorerHtml);
-                }
+                $(".match-summary__" + side + "__info p").remove();
+                $(".match-summary__" + side + "__info").append(scorerHtml);
             };
         },
 
@@ -139,7 +128,7 @@ define([
                     $(".match-status").attr("class", "match-status").addClass("match-status--" + className);
                     $(".match-status__time").text(label);
                 }
-            }
+            };
         },
 
         setupGlobals: function () {
@@ -153,14 +142,16 @@ define([
                     $('#football__tabpanel--stats').hide();
                 }
             };
+
             window.footballMatchInfoFailed = function () {
                 $('#football__tabpanel--stats').remove();
-                if ($('.tabs [href="#football__tabpanel--stats"]').attr("aria-selected") == true) {
+                if ($('.tabs [href="#football__tabpanel--stats"]').attr("aria-selected") === true) {
                     $('.tabs a:first-of-type').attr("aria-selected", true);
                     $($('.tabs [aria-selected="true"]').attr("href")).show();
                 }
                 $('.tabs [href="#football__tabpanel--stats"]').remove();
-            }
+            };
+
             window.applyNativeFunctionCall('footballMatchInfo');
             window.applyNativeFunctionCall('footballMatchInfoFailed');
         }
