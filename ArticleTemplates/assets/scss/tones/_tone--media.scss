@@ -68,41 +68,27 @@
             border-bottom: 0;
         }
 
-        .aside-witness {
-            width: auto;
-            table-layout: fixed;
-        }
-
         .aside-witness__action {
-            display: table-cell;
-
             .touchpoint {
                 .touchpoint__button {
                     color: color(shade-1);
+                    background-color: color(tone-media);
                     margin-right: 6px;
-                    float: left;
                 }
 
                 .touchpoint__label {
                     color: #fff;
-                    margin-left: base-px(.5);
-                    width: 66%;
-                    float: left;
                 }
             }
         }
 
         .aside-witness__sponsor {
-            display: table-cell;
-            vertical-align: middle;
+            .aside-witness__sponsor__graphic__text {
+                fill: #fff;
+            }
 
-            img {
-                box-sizing: border-box;
-                background: url('../img/witness-reversed.png') no-repeat right;
-                background-size: cover;
-                padding-left: 110px;
-                width: 110px;
-                height: 35px;
+            .aside-witness__sponsor__graphic__logo {
+                fill: #ffe600; // EE Yellow
             }
         }
 
