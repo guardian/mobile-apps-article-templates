@@ -24,27 +24,51 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
 */
 
 .aside-witness {
-    .touchpoint {
-        .touchpoint__button {
-            background-color: color(witness-bg);
-            color: color(tone-news-accent);
-        }
+    overflow: auto;
 
-        .touchpoint__label {
-            color: color(witness-bg);
-            margin: base-px(.5, 0);
-            padding: 0;
-        }
+    .aside-witness__action {
+        display: inline-block;
+        float: left;
+        width: 66%;
 
-        &:active {
+        .touchpoint {
             .touchpoint__button {
-                background-color: color(tone-news-accent);
-                color: color(witness-bg);
-            }
-
-            .touchpoint__label {
+                background-color: color(witness-bg);
                 color: color(tone-news-accent);
             }
+    
+            .touchpoint__label {
+                color: color(witness-bg);
+                margin: 0 0 0 base-px(.5);
+                padding: 0;
+                max-width: 180px;
+            }
+    
+            &:active {
+                .touchpoint__button {
+                    background-color: color(tone-news-accent);
+                    color: color(witness-bg);
+                }
+    
+                .touchpoint__label {
+                    color: color(tone-news-accent);
+                }
+            }
+        }
+    }
+
+    .aside-witness__sponsor {
+        float: right;
+        display: inline-block;
+        margin-top: base-px(.5);
+        
+        @include mq($to: col1) {
+            width: 33%;
+        }
+
+        .aside-witness__sponsor__graphic {
+            max-width: 110px;
+            max-height: 35px;
         }
     }
 }
@@ -64,17 +88,6 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
                 width: 66%;
                 float: left;
             }
-        }
-    }
-
-    .aside-witness__sponsor {
-        vertical-align: middle;
-        display: table-cell;
-
-        img {
-            min-width: 80px;
-            max-width: 100%;
-            height: auto;
         }
     }
 }
