@@ -8,7 +8,7 @@ Display a media article card.
 
 ```html_example
 <div class="container__body">
-    <div class="card card--media">
+    <a class="card card--media" href="#">
         <div class="card__container">
             <div class="card__header">
                 <h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
@@ -17,13 +17,13 @@ Display a media article card.
                 <p class="standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
             </div>
             <div class="card__footer">
-                <span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
-                <span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+                <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
+                <span class="card__meta card__comments"><span data-icon="&#xe03C;" aria-hidden="true"></span>94</span>
             </div>
         </div>
-    </div>
+    </a>
 
-    <div class="card card--media has-image">
+    <a class="card card--media has-image" href="#">
         <div class="card__container">
             <div class="card__header">
                 <h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
@@ -32,26 +32,26 @@ Display a media article card.
                 <img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
             </div>
             <div class="card__footer">
-                <span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
-                <span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+                <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
+                <span class="card__meta card__comments"><span data-icon="&#xe03C;" aria-hidden="true"></span>94</span>
             </div>
         </div>
-    </div>
+    </a>
 
-    <div class="card card--media has-image">
+    <a class="card card--media has-image" href="#">
         <div class="card__container">
             <div class="card__header">
                 <h3 class="card__title"><span class="icon">&#xe043;</span><span class="series">Series title:</span> Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
             </div>
             <div class="card__object">
                 <img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
-                <a class="touchpoint touchpoint--primary" href="#">
-                    <span class="touchpoint__button icon">&#xe04B;</span>
-                    <span class="touchpoint__label">2:19</span>
-                </a>
+                <span class="touchpoint touchpoint--primary">
+                    <span class="touchpoint__button" data-icon="&#xe04b;" aria-hidden="true"></span>
+                    <span class="touchpoint__label"><span class="screen-readable">Play Video. Duration: </span>2:19</span>
+                </span>
             </div>
         </div>
-    </div>
+    </a>
 </div>
 ```
 */
@@ -80,6 +80,10 @@ Display a media article card.
             content: '\a';
             white-space: pre;
         }
+    }
+
+    .card__meta {
+        border-color: fade-out(color(shade-4), .66);
     }
 
     .touchpoint--primary {

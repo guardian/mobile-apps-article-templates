@@ -8,10 +8,15 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
 
 ```html_example
 <aside class="aside aside-witness js--positioned">
-    <a class="touchpoint touchpoint--primary" href="x-gu://witness/52eb8ebee4b06a13a3531a7a">
-        <span class="touchpoint__button" data-icon="&#xe050;" aria-hidden="true"></span>
-        <span class="touchpoint__label">Contribute to this story with GuardianWitness</span>
-    </a>
+    <div class="aside-witness__action">
+        <a class="touchpoint touchpoint--primary" href="x-gu://witness/52eb8ebee4b06a13a3531a7a">
+            <span class="touchpoint__button" data-icon="&#xe050;" aria-hidden="true"></span>
+            <span class="touchpoint__label">Contribute to this story with GuardianWitness</span>
+        </a>
+    </div>
+    <div class="aside-witness__sponsor">
+        <img src="/ArticleTemplates/assets/img/witness.png" width="110" height="35" alt="Powered by EE"/>
+    </div>
 </aside>
 
 <p>You could be in with the chance to win a money-can't-buy opportunity to mingle with the stars simply by uploading a picture or video of you recreating a scene from one of this year's Bafta-nominated movies. One lucky person who, in the eyes of our judges, uploads the best entry will win a pair of tickets to the Bafta awards ceremony at London's Royal Opera House on Sunday 16 February.</p>
@@ -40,6 +45,36 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
             .touchpoint__label {
                 color: color(tone-news-accent);
             }
+        }
+    }
+}
+
+@include mq($to: col1) {
+    .aside-witness__action {
+        display: table-cell;
+
+        .touchpoint {
+            .touchpoint__button {
+                margin-right: 6px;
+                float: left;
+            }
+
+            .touchpoint__label {
+                margin: 0;
+                width: 66%;
+                float: left;
+            }
+        }
+    }
+
+    .aside-witness__sponsor {
+        vertical-align: middle;
+        display: table-cell;
+
+        img {
+            min-width: 80px;
+            max-width: 100%;
+            height: auto;
         }
     }
 }
