@@ -174,21 +174,19 @@ define([
 
         showTabs: function () {
             // Set up tab events, show only first child
-            $('.tabs li').each(function (el, i) {
-                var tabGroup = el.getAttribute('data-href');
+            $('.tabs a').each(function (el, i) {
+                var tabGroup = el.getAttribute('href');
                 if (i > 0) {
                     $(tabGroup).hide();
                 }
-                bean.on(el, 'click', function () {
-                    var parent = $(this).parent(),
-                        classToHide = $('.selected', parent).attr('data-href'),
-                        classToShow = $(this).attr('data-href');
+                bean.on(el, 'click', function (e) {
+                    e.preventDefault();
 
-                    $('.selected', parent).removeClass('selected');
-                    $(this).addClass('selected');
+                    $($('[aria-selected="true"]').attr('href')).hide();
+                    $('[aria-selected="true"]').attr("aria-selected", false);
 
-                    $(classToHide).hide();
-                    $(classToShow).show();
+                    $($(this).attr('href')).show();
+                    $(this).attr("aria-selected", true);
                 });
             });
         }

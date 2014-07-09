@@ -1,4 +1,4 @@
-/*global window,console,define */
+4/*global window,console,define */
 define([
     'bean',
     'bonzo',
@@ -27,7 +27,7 @@ define([
                                 if (numOfComments == 1) {
                                     $(this).addClass("block--discussion-thread--orphan");
                                 } else {
-                                    $(blockID).after("<div class='more more--comments'><a><span class='more__label' data-icon='&#xe050;'>" + numOfComments + " more replies</span></a></div>");
+                                    $(blockID).after("<div class='more more--comments'><a class='more__label'><span data-icon='&#xe050;' aria-hidden='true'></span>" + numOfComments + " more replies</a></div>");
                                 }
                             }
                         }

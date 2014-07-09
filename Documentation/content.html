@@ -52,21 +52,21 @@
             <div class="tags">
                 <ul class="inline-list"><!--
                 
-                 --><li class="inline-list__item"><a href="#byline">Byline</a></li><!--
+                 --><li class="inline-list__item"><a href="#byline">Byline</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
                 
-                 --><li class="inline-list__item"><a href="#headline">Headline</a></li><!--
+                 --><li class="inline-list__item"><a href="#headline">Headline</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
                 
-                 --><li class="inline-list__item"><a href="#main-media">Main media</a></li><!--
+                 --><li class="inline-list__item"><a href="#main-media">Main media</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
                 
-                 --><li class="inline-list__item"><a href="#meta">Meta</a></li><!--
+                 --><li class="inline-list__item"><a href="#meta">Meta</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
                 
-                 --><li class="inline-list__item"><a href="#prose">Prose</a></li><!--
+                 --><li class="inline-list__item"><a href="#prose">Prose</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
                 
-                 --><li class="inline-list__item"><a href="#review-rating">Review rating</a></li><!--
+                 --><li class="inline-list__item"><a href="#review-rating">Review rating</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
                 
-                 --><li class="inline-list__item"><a href="#section">Section</a></li><!--
+                 --><li class="inline-list__item"><a href="#section">Section</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
                 
-                 --><li class="inline-list__item"><a href="#standfirst">Standfirst</a></li><!--
+                 --><li class="inline-list__item"><a href="#standfirst">Standfirst</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
                 
                 --></ul>
             </div>
@@ -94,7 +94,9 @@
             <img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/13/1402658128646/Ambassadors-014.jpg?width=900&amp;height=540&amp;quality=60">
         </div>
         <figcaption class="main-media__caption">
-            <span class="main-media__caption__icon"data-icon="&#xe044;" href="#"></span>
+            <span class="main-media__caption__icon" href="#">
+                <span data-icon="&#xe044;" aria-hidden="true"></span>
+            </span>
             <span class="main-media__caption__text">David Mitchell and Robert Webb in The Ambassadors. Photograph: Colin Hutton/BBC/Big Talk</span>
         </figcaption>
     </figure>
@@ -105,7 +107,9 @@
             <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/13/1402658128646/Ambassadors-014.jpg?width=900&amp;amp;height=540&amp;amp;quality=60&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
         <span class="nt">&lt;figcaption</span> <span class="na">class=</span><span class="s">&quot;main-media__caption&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;main-media__caption__icon&quot;</span><span class="na">data-icon=</span><span class="s">&quot;&amp;#xe044;&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;main-media__caption__icon&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe044;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+            <span class="nt">&lt;/span&gt;</span>
             <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;main-media__caption__text&quot;</span><span class="nt">&gt;</span>David Mitchell and Robert Webb in The Ambassadors. Photograph: Colin Hutton/BBC/Big Talk<span class="nt">&lt;/span&gt;</span>
         <span class="nt">&lt;/figcaption&gt;</span>
     <span class="nt">&lt;/figure&gt;</span>
@@ -150,14 +154,23 @@
                 </span>
             </span>
             <a class="alerts" href="x-gu://follow/tag-contributor///profile/michaelbillington" data-follow-alert-id="tag-contributor///profile/michaelbillington">
-                <span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> <span class="alerts__label">Follow contributor</span></span>
-                <span class="alerts__state--follow"><span class="icon">&#xe049;</span> <span class="alerts__label">Following contributor</span></span>
+                <span class="alerts__state--unfollow">
+                    <span data-icon="&#xe048;" aria-hidden="true"></span>
+                    <span class="alerts__label">Follow contributor</span>
+                </span>
+                <span class="alerts__state--follow">
+                    <span data-icon="&#xe049;" aria-hidden="true"></span>
+                    <span class="alerts__label">Following contributor</span>
+                </span>
             </a>
         </div>
-        <p class="meta__pubdate">23:00 GMT+1 Wednesday, 18 June 2014</p>
+        <p class="meta__pubdate"><span class="screen-readable">Published: </span>23:00 GMT+1 Wednesday, 18 June 2014</p>
     </div>
     <div class="meta__comments">
-        <a href="#comments" data-scroll=""><span data-icon="&#xe03c;">2</span> <span class="meta__comments__label">Comments</span></a>
+        <a href="#comments" data-scroll>
+            <span data-icon="&#xe03c;" aria-hidden="true"></span> 2
+            <span class="meta__comments__label">Comments</span>
+        </a>
     </div>
 </div>
 </div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;meta&quot;</span><span class="nt">&gt;</span>
@@ -172,14 +185,23 @@
                 <span class="nt">&lt;/span&gt;</span>
             <span class="nt">&lt;/span&gt;</span>
             <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;alerts&quot;</span> <span class="na">href=</span><span class="s">&quot;x-gu://follow/tag-contributor///profile/michaelbillington&quot;</span> <span class="na">data-follow-alert-id=</span><span class="s">&quot;tag-contributor///profile/michaelbillington&quot;</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;alerts__state--unfollow&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe048;</span><span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;alerts__label&quot;</span><span class="nt">&gt;</span>Follow contributor<span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
-                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;alerts__state--follow&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#xe049;</span><span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;alerts__label&quot;</span><span class="nt">&gt;</span>Following contributor<span class="nt">&lt;/span&gt;&lt;/span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;alerts__state--unfollow&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe048;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;alerts__label&quot;</span><span class="nt">&gt;</span>Follow contributor<span class="nt">&lt;/span&gt;</span>
+                <span class="nt">&lt;/span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;alerts__state--follow&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe049;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;alerts__label&quot;</span><span class="nt">&gt;</span>Following contributor<span class="nt">&lt;/span&gt;</span>
+                <span class="nt">&lt;/span&gt;</span>
             <span class="nt">&lt;/a&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;meta__pubdate&quot;</span><span class="nt">&gt;</span>23:00 GMT+1 Wednesday, 18 June 2014<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;meta__pubdate&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;screen-readable&quot;</span><span class="nt">&gt;</span>Published: <span class="nt">&lt;/span&gt;</span>23:00 GMT+1 Wednesday, 18 June 2014<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;meta__comments&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#comments&quot;</span> <span class="na">data-scroll=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe03c;&quot;</span><span class="nt">&gt;</span>2<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;meta__comments__label&quot;</span><span class="nt">&gt;</span>Comments<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#comments&quot;</span> <span class="na">data-scroll</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe03c;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span> 2
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;meta__comments__label&quot;</span><span class="nt">&gt;</span>Comments<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/a&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </pre></div></div></div>
@@ -471,109 +493,109 @@
 
 <p>Display the number of stars with which a review has been rated</p>
 <div class="codeExample"><div class="exampleOutput"><p class="review-rating review-rating--0">
-    <span data-icon="&#xe036;"></span>
-    <span data-icon="&#xe036;"></span>
-    <span data-icon="&#xe036;"></span>
-    <span data-icon="&#xe036;"></span>
-    <span data-icon="&#xe036;"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
     <span class="screen-readable">Rated 0 out of 5 stars</span>
 </p>
 
 <p class="review-rating review-rating--1">
-    <span data-icon="&#xe036;"></span>
-    <span data-icon="&#xe036;"></span>
-    <span data-icon="&#xe036;"></span>
-    <span data-icon="&#xe036;"></span>
-    <span data-icon="&#xe036;"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
     <span class="screen-readable">Rated 1 out of 5 stars</span>
 </p>
 
 <p class="review-rating review-rating--2">
-    <span data-icon="&#xe036;"></span>
-    <span data-icon="&#xe036;"></span>
-    <span data-icon="&#xe036;"></span>
-    <span data-icon="&#xe036;"></span>
-    <span data-icon="&#xe036;"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
     <span class="screen-readable">Rated 2 out of 5 stars</span>
 </p>
 
 <p class="review-rating review-rating--3">
-    <span data-icon="&#xe036;"></span>
-    <span data-icon="&#xe036;"></span>
-    <span data-icon="&#xe036;"></span>
-    <span data-icon="&#xe036;"></span>
-    <span data-icon="&#xe036;"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
     <span class="screen-readable">Rated 3 out of 5 stars</span>
 </p>
 
 <p class="review-rating review-rating--4">
-    <span data-icon="&#xe036;"></span>
-    <span data-icon="&#xe036;"></span>
-    <span data-icon="&#xe036;"></span>
-    <span data-icon="&#xe036;"></span>
-    <span data-icon="&#xe036;"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
     <span class="screen-readable">Rated 4 out of 5 stars</span>
 </p>
 
 <p class="review-rating review-rating--5">
-    <span data-icon="&#xe036;"></span>
-    <span data-icon="&#xe036;"></span>
-    <span data-icon="&#xe036;"></span>
-    <span data-icon="&#xe036;"></span>
-    <span data-icon="&#xe036;"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
+    <span data-icon="&#xe036;" aria-hidden="true"></span>
     <span class="screen-readable">Rated 5 out of 5 stars</span>
 </p>
 </div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;review-rating review-rating--0&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;screen-readable&quot;</span><span class="nt">&gt;</span>Rated 0 out of 5 stars<span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;/p&gt;</span>
 
 <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;review-rating review-rating--1&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;screen-readable&quot;</span><span class="nt">&gt;</span>Rated 1 out of 5 stars<span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;/p&gt;</span>
 
 <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;review-rating review-rating--2&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;screen-readable&quot;</span><span class="nt">&gt;</span>Rated 2 out of 5 stars<span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;/p&gt;</span>
 
 <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;review-rating review-rating--3&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;screen-readable&quot;</span><span class="nt">&gt;</span>Rated 3 out of 5 stars<span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;/p&gt;</span>
 
 <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;review-rating review-rating--4&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;screen-readable&quot;</span><span class="nt">&gt;</span>Rated 4 out of 5 stars<span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;/p&gt;</span>
 
 <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;review-rating review-rating--5&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe036;&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;screen-readable&quot;</span><span class="nt">&gt;</span>Rated 5 out of 5 stars<span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;/p&gt;</span>
 </pre></div></div></div>
@@ -584,8 +606,8 @@
 </div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">&quot;section&quot;</span><span class="nt">&gt;</span>Football <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;section__meta&quot;</span><span class="nt">&gt;</span>In Brief<span class="nt">&lt;/span&gt;&lt;/h3&gt;</span>
 </pre></div></div></div>
 <p>With live indicator:</p>
-<div class="codeExample"><div class="exampleOutput"><h3 class="section"><span class="section__live">Live</span> Sport</h3>
-</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">&quot;section&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;section__live&quot;</span><span class="nt">&gt;</span>Live<span class="nt">&lt;/span&gt;</span> Sport<span class="nt">&lt;/h3&gt;</span>
+<div class="codeExample"><div class="exampleOutput"><div class="section"><span class="section__live"><span class="section__live__pulse" aria-hidden="true">&#8226;</span> Live</span> Sport</div>
+</div><div class="codeBlock"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;section&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;section__live&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;section__live__pulse&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;#8226;</span><span class="nt">&lt;/span&gt;</span> Live<span class="nt">&lt;/span&gt;</span> Sport<span class="nt">&lt;/div&gt;</span>
 </pre></div></div></div>
 <h1 id="standfirst">Standfirst</h1>
 
@@ -605,8 +627,8 @@
     </main>
 
     <label class="styleguide__navigation-toggle touchpoint" for="styleguide__navigation-checkbox">
-        <span class="touchpoint__label screen-readable">View more</span>
         <span class="touchpoint__button" data-icon="&#xe04A;" aria-hidden="true"></span>
+        <span class="touchpoint__label screen-readable">Menu</span>
     </label>
 
     <script type="text/javascript" id="gu" src="../ArticleTemplates/assets/js/components/require.js" data-main="/ArticleTemplates/assets/js/app.js" data-js-dir="/ArticleTemplates/assets/js" async></script>

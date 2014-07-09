@@ -134,22 +134,22 @@ define([
         setupGlobals: function () {
             // Global function to handle football, called by native code
             window.footballMatchInfo = function (html, replaceContent, homeTeam, awayTeam) {
-                $('.football__tab--stats').empty();
+                $('#football__tabpanel--stats').empty();
                 html = bonzo.create(html);
-                $(html).appendTo('.football__tab--stats');
+                $(html).appendTo('#football__tabpanel--stats');
                 modules.footballChart(homeTeam, awayTeam);
-                if (!$('.tabs [data-href=".football-tabs-stats"]').hasClass('selected')) {
-                    $('.football-tabs-stats').hide();
+                if (!$('.tabs [href="#football__tabpanel--stats"]').hasClass('selected')) {
+                    $('#football__tabpanel--stats').hide();
                 }
             };
 
             window.footballMatchInfoFailed = function () {
-                $(".football__tab--stats").remove();
-                if ($(".tabs [data-href='.football__tab--stats']").hasClass("selected")) {
-                    $(".tabs li:first-of-type").addClass("selected");
-                    $($(".tabs .selected").attr("data-href")).show();
+                $('#football__tabpanel--stats').remove();
+                if ($('.tabs [href="#football__tabpanel--stats"]').attr("aria-selected") === true) {
+                    $('.tabs a:first-of-type').attr("aria-selected", true);
+                    $($('.tabs [aria-selected="true"]').attr("href")).show();
                 }
-                $(".tabs [data-href='.football__tab--stats']").remove();
+                $('.tabs [href="#football__tabpanel--stats"]').remove();
             };
 
             window.applyNativeFunctionCall('footballMatchInfo');

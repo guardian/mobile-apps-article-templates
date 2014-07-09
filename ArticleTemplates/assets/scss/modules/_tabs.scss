@@ -7,11 +7,17 @@ category: Modules
 Navigate between different sections of a page.
 
 ```html_example
-<div class="tabs">
+<div role="tablist" class="tabs">
     <ul class="inline-list">
-        <li class="inline-list__item selected">Report</li><!--
-     --><li class="inline-list__item">Minute-by-minute</li><!--
-     --><li class="inline-list__item">Match Info</li>
+        <li role="presentation" class="inline-list__item">
+            <a role="tab" class="tab" id="tab--first" href="#" aria-controls="tabpanel--first" aria-selected="true">First</a>
+        </li><!--
+     --><li role="presentation" class="inline-list__item">
+            <a role="tab" class="tab" id="tab--second" href="#" aria-controls="tabpanel--second">Second</a>
+        </li><!--
+     --><li role="presentation" class="inline-list__item">
+            <a role="tab" class="tab" id="tab--third" href="#" aria-controls="tabpanel--third">Third</a>
+        </li>
     </ul>
 </div>
 ```
@@ -29,12 +35,16 @@ Navigate between different sections of a page.
     }
 
     .inline-list__item {
+        width: 33.3%;
+    }
+
+    .tab {
         vertical-align: top;
         border-top: 2px solid color(shade-4);
         padding: base-px(.5, 1, 2, .25);
-        width: 33.3%;
+        display: block;
 
-        &.selected {
+        &[aria-selected="true"] {
             color: color(tone-news);
             font-weight: bold;
             border-top: 4px solid color(tone-news);

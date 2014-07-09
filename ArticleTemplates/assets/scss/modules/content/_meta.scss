@@ -19,14 +19,23 @@ Display an article's meta information.
                 </span>
             </span>
             <a class="alerts" href="x-gu://follow/tag-contributor///profile/michaelbillington" data-follow-alert-id="tag-contributor///profile/michaelbillington">
-                <span class="alerts__state--unfollow"><span class="icon">&#xe048;</span> <span class="alerts__label">Follow contributor</span></span>
-                <span class="alerts__state--follow"><span class="icon">&#xe049;</span> <span class="alerts__label">Following contributor</span></span>
+                <span class="alerts__state--unfollow">
+                    <span data-icon="&#xe048;" aria-hidden="true"></span>
+                    <span class="alerts__label">Follow contributor</span>
+                </span>
+                <span class="alerts__state--follow">
+                    <span data-icon="&#xe049;" aria-hidden="true"></span>
+                    <span class="alerts__label">Following contributor</span>
+                </span>
             </a>
         </div>
-        <p class="meta__pubdate">23:00 GMT+1 Wednesday, 18 June 2014</p>
+        <p class="meta__pubdate"><span class="screen-readable">Published: </span>23:00 GMT+1 Wednesday, 18 June 2014</p>
     </div>
     <div class="meta__comments">
-        <a href="#comments" data-scroll=""><span data-icon="&#xe03c;">2</span> <span class="meta__comments__label">Comments</span></a>
+        <a href="#comments" data-scroll>
+            <span data-icon="&#xe03c;" aria-hidden="true"></span> 2
+            <span class="meta__comments__label">Comments</span>
+        </a>
     </div>
 </div>
 ```
@@ -53,7 +62,7 @@ Display an article's meta information.
     }
 
     .alerts__label {
-        display: none; // Hide alert label when shown within meta block
+        @extend %screen-readable;
     }
 }
 

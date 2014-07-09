@@ -13,7 +13,7 @@ Display the section for which an article falls under.
 With live indicator:
 
 ```html_example
-<h3 class="section"><span class="section__live">Live</span> Sport</h3>
+<div class="section"><span class="section__live"><span class="section__live__pulse" aria-hidden="true">&#8226;</span> Live</span> Sport</div>
 ```
 */
 
@@ -43,10 +43,8 @@ With live indicator:
     @include mq($from: col2) {
         font-size: $body-size-1;
     }
+}
 
-    &::before {
-        content: '• ';
-        display: inline-block;
-        -webkit-animation: blink 1.5s ease-in infinite;
-    }
+.section__live__pulse {
+    -webkit-animation: blink 1.5s ease-in infinite;
 }

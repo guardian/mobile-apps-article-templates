@@ -17,7 +17,7 @@
     <div class="article article--audio">
         <div class="article__header cutout">
             <div class="cutout__container" __CUTOUT__>
-                <h3 class="section" data-icon="&#xe047;">__SECTION__</h3>
+                <div class="section"><span data-icon="&#xe047;" aria-hidden="true"></span> __SECTION__</div>
                 <h1 class="headline selectable">__TITLE__</h1>
 
                 <div class="meta">
@@ -25,19 +25,17 @@
                         <div class="meta__byline">
                             __BYLINE__
                         </div>
-                        <p class="meta__pubdate">
-                            __PUBDATE__
-                        </p>
+                        <p class="meta__pubdate"><span class="screen-readable">Published: </span>__PUBDATE__</p>
                     </div>
                     __COMMENT_CTA__
                 </div>
             </div>
 
             <div class="audio-player">
-                <img class="audio-player__button--loading" src="__TEMPLATES_DIRECTORY__assets/img/loading.gif" />
+                <img class="audio-player__button--loading" src="__TEMPLATES_DIRECTORY__assets/img/loading.gif" alt="Loading…"/>
 
                 <a class="audio-player__button touchpoint touchpoint--primary" href="x-gu://playaudio/__AUDIO_URI__">
-                    <span class="touchpoint__button" data-icon="&#xe04b;"></span>
+                    <span class="touchpoint__button" data-icon="&#xe04b;" aria-hidden="true"></span>
                     <span class="touchpoint__label screen-readable">Play</span>
                 </a>
 
@@ -64,6 +62,7 @@
 
         <div class="tags">
             <ul class="inline-list">
+                <li class="inline-list__item screen-readable">Tags:</li>
                 
             </ul>
         </div>

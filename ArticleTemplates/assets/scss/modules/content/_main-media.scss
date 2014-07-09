@@ -13,7 +13,9 @@ Display the main visual media for an article.
             <img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/13/1402658128646/Ambassadors-014.jpg?width=900&amp;height=540&amp;quality=60">
         </div>
         <figcaption class="main-media__caption">
-            <span class="main-media__caption__icon"data-icon="&#xe044;" href="#"></span>
+            <span class="main-media__caption__icon" href="#">
+                <span data-icon="&#xe044;" aria-hidden="true"></span>
+            </span>
             <span class="main-media__caption__text">David Mitchell and Robert Webb in The Ambassadors. Photograph: Colin Hutton/BBC/Big Talk</span>
         </figcaption>
     </figure>
@@ -72,9 +74,9 @@ Can also be displayed with the caption initially hidden:
     }
 
     .main-media__caption__text {
+        @extend %screen-readable;
         background-color: rgba(0, 0, 0, .4);
         padding: base-px(.5, 1, .5, 1);
-        display: none;
         max-height: 0;
         overflow: hidden;
         position: absolute;
@@ -83,6 +85,8 @@ Can also be displayed with the caption initially hidden:
         right: 45px;
 
         &.is-visible {
+            @extend %screen-visable;
+            position: absolute;
             display: block;
             min-height: 44px;
             max-height: 999px;
