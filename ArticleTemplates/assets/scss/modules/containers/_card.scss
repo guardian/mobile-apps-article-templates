@@ -17,8 +17,8 @@ Display a standard article card.
                 <p class="standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
             </div>
             <div class="card__footer">
-                <span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
-                <span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+                <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
+                <span class="card__meta card__comments"><span data-icon="&#xe03C;" aria-hidden="true"></span>94</span>
             </div>
         </div>
     </a>
@@ -32,8 +32,8 @@ Display a standard article card.
                 <img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
             </div>
             <div class="card__footer">
-                <span class="card__meta card__timestamp"><span class="icon">&#xe056;</span>2h</span>
-                <span class="card__meta card__comments"><span class="icon">&#xe03C;</span>94</span>
+                <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
+                <span class="card__meta card__comments"><span data-icon="&#xe03C;" aria-hidden="true"></span>94</span>
             </div>
         </div>
     </a>
@@ -47,9 +47,13 @@ Display a standard article card.
     border-top: 1px solid color(tone-news-accent);
     border-bottom: 1px solid color(shade-4);
     position: relative;
+    -webkit-transition: all .15s ease-out;
+    transition: all .15s ease-out;
 
     &:active {
         color: color(shade-1);
+        -webkit-transform: scale(.99);
+        transform: scale(.99);
     }
 
     @include mq($to: col1) {
