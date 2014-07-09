@@ -62,6 +62,36 @@
             }
         }
 
+        .aside {
+            border-color: color(shade-2);
+            margin-bottom: 0;
+            border-bottom: 0;
+        }
+
+        .aside-witness__action {
+            .touchpoint {
+                .touchpoint__button {
+                    color: color(shade-1);
+                    background-color: color(tone-media);
+                    margin-right: 6px;
+                }
+
+                .touchpoint__label {
+                    color: #fff;
+                }
+            }
+        }
+
+        .aside-witness__sponsor {
+            .aside-witness__sponsor__graphic__text {
+                fill: #fff;
+            }
+
+            .aside-witness__sponsor__graphic__logo {
+                fill: #ffe600; // EE Yellow
+            }
+        }
+
         .tags {
             border-top: 1px dotted color(shade-2);
         }
@@ -73,6 +103,12 @@
 
         .meta__comments {
             border-left: 1px dotted color(shade-2);
+        }
+
+        @include mq($to: col2) {
+            .meta__misc {
+                border-top: 1px dotted color(shade-2);
+            }
         }
     }
 }
