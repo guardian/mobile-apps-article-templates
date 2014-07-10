@@ -1,4 +1,4 @@
-4/*global window,console,define */
+/*global window,console,define */
 define([
     'bean',
     'bonzo',
