@@ -9,6 +9,10 @@
         }
 
         .meta__misc {
+            @include mq($to: col2) {
+                border-top: 1px dotted color(shade-2);
+            }
+
             @include mq($from: col2) {
                 display: table-cell;
                 border-left: 1px dotted color(shade-2);

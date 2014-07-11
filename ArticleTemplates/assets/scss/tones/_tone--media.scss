@@ -43,29 +43,38 @@
             background-color: color(shade-1);
         }
 
-        .article__header {
-            .section {
-                color: color(tone-media);
-            }
-
-            .headline,
-            .standfirst,
-            .byline {
-                color: #fff;
-            }
+        .section {
+            color: color(tone-media);
         }
 
-        .article__body {
-            .prose,
-            .standfirst {
-                color: #fff;
-            }
+        .headline,
+        .standfirst,
+        .byline,
+        .prose {
+            color: #fff;
+        }
+
+        .byline {
+            border-color: color(shade-2);
+        }
+
+        .meta,
+        .meta__comments {
+            border-color: color(shade-2);
         }
 
         .aside {
             border-color: color(shade-2);
             margin-bottom: 0;
             border-bottom: 0;
+        }
+
+        .tags {
+            border-color: color(shade-2);
+        }
+
+        .tags__separator {
+            color: color(shade-2);
         }
 
         .aside-witness__action {
@@ -89,25 +98,6 @@
 
             .aside-witness__sponsor__graphic__logo {
                 fill: #ffe600; // EE Yellow
-            }
-        }
-
-        .tags {
-            border-top: 1px dotted color(shade-2);
-        }
-
-        .meta {
-            border-top: 1px dotted color(shade-2);
-            margin-top: -1px;
-        }
-
-        .meta__comments {
-            border-left: 1px dotted color(shade-2);
-        }
-
-        @include mq($to: col2) {
-            .meta__misc {
-                border-top: 1px dotted color(shade-2);
             }
         }
     }
