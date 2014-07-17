@@ -14,7 +14,7 @@ Display a standard article card.
                 <h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
             </div>
             <div class="card__object">
-                <p class="standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
+                <p class="card__standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
             </div>
             <div class="card__footer">
                 <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
@@ -132,6 +132,10 @@ Display a standard article card.
         }
     }
 
+    .card__title {
+        color: color(shade-1);
+    }
+
     .card__object {
         @include mq($to: col1) {
             @include flex(1);
@@ -199,8 +203,7 @@ Display a standard article card.
     }
 
     .card__title,
-    .card__byline,
-    .card__rating {
+    .card__byline {
         font-family: $egyptian-display;
         font-weight: 200;
         font-size: 2.2rem;
@@ -208,12 +211,7 @@ Display a standard article card.
         text-rendering: optimizeLegibility;
     }
 
-    .review-rating {
-        font-size: 18px;
-        line-height: 28px;
-    }
-
-    .standfirst {
+    .card__standfirst {
         color: color(shade-2);
         font-family: $egyptian-text;
         font-size: 1.4rem;
