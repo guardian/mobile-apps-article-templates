@@ -1,0 +1,90 @@
+/*doc
+---
+title: Card (podcast article)
+name: card--podcast
+category: Containers
+---
+Display a podcast article card. Can include a series title.
+
+```html_example
+<div class="container__body">
+    <a class="card card--podcast" href="#">
+        <div class="card__container">
+            <div class="card__header">
+                <h3 class="card__title card__title--audio"><span data-icon="&#xe029;" aria-hidden="true"></span>Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+            </div>
+            <div class="card__object">
+                <p class="card__standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
+            </div>
+            <div class="card__footer">
+                <span class="card__meta card__duration">22:26</span>
+                <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
+            </div>
+        </div>
+    </a>
+
+    <a class="card card--podcast" href="#">
+        <div class="card__container">
+            <div class="card__header">
+                <h3 class="card__title card__title--audio"><span data-icon="&#xe029;" aria-hidden="true"></span><span class="card__series">Series title:</span> Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+            </div>
+            <div class="card__object">
+                <p class="card__standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
+            </div>
+            <div class="card__footer">
+                <span class="card__meta card__duration">22:26</span>
+                <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
+            </div>
+        </div>
+    </a>
+</div>
+```
+*/
+
+.card--podcast {
+    background-color: #3CAFC7; // Bespoke to match colour used in native code
+    border-top-color: color(shade-1);
+
+    .card__title {
+        color: #fff;
+
+        .icon {
+            color: color(tone-media);
+            margin-right: base-px(.5);
+        }
+    }
+
+    .card__title--audio {
+        &::before {
+            content: '\e047';
+            color: color(shade-1);
+            font-family: $icon;
+            margin-right: base-px(.25);
+            position: relative;
+            bottom: -2px;
+        }
+    }
+
+    .card__standfirst {
+        color: #fff;
+    }
+
+    .card__series {
+        color: color(shade-1);
+
+        &::after {
+            content: '\a';
+            white-space: pre;
+        }
+    }
+
+    .card__meta {
+        color: #fff;
+        border-color: fade-out(color(shade-4), .66);
+    }
+
+    .card__duration {
+        color: color(shade-1);
+        font-weight: bold;
+    }
+}

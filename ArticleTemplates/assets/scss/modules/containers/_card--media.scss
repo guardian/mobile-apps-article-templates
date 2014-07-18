@@ -8,6 +8,21 @@ Display a media article card. Can include a series title.
 
 ```html_example
 <div class="container__body">
+    <a class="card card--media" href="#">
+        <div class="card__container">
+            <div class="card__header">
+                <h3 class="card__title card__title--audio"><span data-icon="&#xe029;" aria-hidden="true"></span>Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+            </div>
+            <div class="card__object">
+                <p class="card__standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
+            </div>
+            <div class="card__footer">
+                <span class="card__meta card__duration">22:26</span>
+                <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
+            </div>
+        </div>
+    </a>
+
     <a class="card card--media has-image" href="#">
         <div class="card__container">
             <div class="card__header">
@@ -51,20 +66,6 @@ Display a media article card. Can include a series title.
             </div>
         </div>
     </a>
-
-    <a class="card card--media has-image" href="#">
-        <div class="card__container">
-            <div class="card__header">
-                <h3 class="card__title card__title--gallery"><span data-icon="&#xe029;" aria-hidden="true"></span><span class="card__series">Series title:</span> Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-            </div>
-            <div class="card__object">
-                <img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
-                <span class="touchpoint touchpoint--primary">
-                    <span class="touchpoint__button" data-icon="&#xe020;" aria-hidden="true"></span>
-                </span>
-            </div>
-        </div>
-    </a>
 </div>
 ```
 */
@@ -82,10 +83,11 @@ Display a media article card. Can include a series title.
         }
     }
 
-    .card__title--video,
-    .card__title--gallery {
+    .card__title--audio,
+    .card__title--gallery,
+    .card__title--video {
         &::before {
-            content: '\e043';
+            content: '\e047';
             color: color(tone-media);
             font-family: $icon;
             margin-right: base-px(.25);
@@ -97,6 +99,12 @@ Display a media article card. Can include a series title.
     .card__title--gallery {
         &::before {
             content: '\e044';
+        }
+    }
+
+    .card__title--video {
+        &::before {
+            content: '\e043';
         }
     }
 
@@ -115,6 +123,11 @@ Display a media article card. Can include a series title.
 
     .card__meta {
         border-color: fade-out(color(shade-4), .66);
+    }
+
+    .card__duration {
+        color: color(tone-media);
+        font-weight: bold;
     }
 
     .card__object {
