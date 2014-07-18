@@ -11,7 +11,7 @@ Display a comment article card.
     <a class="card card--comment" href="#">
         <div class="card__container">
             <div class="card__header">
-                <h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+                <h3 class="card__title"><span data-icon="&#xe029;" aria-hidden="true"></span>Sexual abuse is about power - and the powerful shouldn't be protected <span class="card__byline">Roy Greenslade</span></h3>
             </div>
             <div class="card__object">
                 <p class="card__standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
@@ -26,7 +26,7 @@ Display a comment article card.
     <a class="card card--comment has-image" href="#">
         <div class="card__container">
             <div class="card__header">
-                <h3 class="card__title">Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+                <h3 class="card__title"><span data-icon="&#xe029;" aria-hidden="true"></span>Sexual abuse is about power - and the powerful shouldn't be protected <span class="card__byline">Roy Greenslade</span></h3>
             </div>
             <div class="card__object">
                 <img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
@@ -46,17 +46,18 @@ Display a comment article card.
     border-top-color: color(tone-comment);
 
     .card__title {
-        .icon {
+        [data-icon]::before {
+            display: inline-block;
             color: color(shade-3);
             font-size: 150%;
-            margin-right: base-px(.5);
-            line-height: .1%;
-            top: 6px;
+            margin-right: base-px(.25);
         }
     }
 
     .card__byline {
         color: color(tone-comment);
+        margin-top: base-px(.25);
+        display: block;
     }
 
     .standfirst {
