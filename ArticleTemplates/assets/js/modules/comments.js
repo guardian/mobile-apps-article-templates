@@ -117,14 +117,13 @@ define([
                 window.commentsEnd = function () {
                     $('.loading--discussion').remove();
                 };
-
                 window.commentsClosed = function () {
                     $("#comments, #discussion").addClass("comments--closed");
                 };
-
                 window.commentTime = function () {
                     relativeDates.init('.comment__timestamp', 'title');
                 };
+
                 // Functions for feedback on recommend buttons
                 window.commentsRecommendIncrease = function (id, number) {
                     var target = '#' + id + ' .comment__recommend';
