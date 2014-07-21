@@ -14,8 +14,12 @@ define([
             setupGlobals: function () {
                 // Global functions to handle comments, called by native code
                 window.articleCardsInserter = function (html) {
-                    $(".loading--related").hide();
-                    $(".container--related").append(html);
+                    if (!html) {
+                        $(".container--related").hide();
+                    } else {
+                        $(".loading--related").hide();
+                        $(".container--related").append(html);
+                    }
                 };
                 window.applyNativeFunctionCall('articleCardsInserter');
             }
