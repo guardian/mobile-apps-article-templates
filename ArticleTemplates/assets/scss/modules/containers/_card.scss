@@ -51,11 +51,14 @@ Display a standard article card.
     -webkit-transition: all .15s ease-out;
     transition: all .15s ease-out;
 
+    /*
+    The card transform causes the card and all cards below it to disappear if the user scrolls after pressing. 
+    This seems to be a WebKit bug.
     &:active {
         color: color(shade-1);
         -webkit-transform: scale(.99);
         transform: scale(.99);
-    }
+    }*/
 
     @include mq($to: col1) {
         margin: $base-1 / 1.5 $base-1 / 1.5 0; // TODO: Move to base-px()
