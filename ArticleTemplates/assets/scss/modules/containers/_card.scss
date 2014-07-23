@@ -46,16 +46,19 @@ Display a standard article card.
     background-color: #fff;
     border-top: 1px solid color(tone-news-accent);
     border-bottom: 1px solid color(shade-4);
-    display: block;
+    display: inline-block;
     position: relative;
     -webkit-transition: all .15s ease-out;
     transition: all .15s ease-out;
 
+    /*
+    The card transform causes the card and all cards below it to disappear if the user scrolls after pressing. 
+    This seems to be a WebKit bug.
     &:active {
         color: color(shade-1);
         -webkit-transform: scale(.99);
         transform: scale(.99);
-    }
+    }*/
 
     @include mq($to: col1) {
         margin: $base-1 / 1.5 $base-1 / 1.5 0; // TODO: Move to base-px()
@@ -138,6 +141,7 @@ Display a standard article card.
         [data-icon]::before {
             display: none;
         }
+
     }
 
     .card__object {
@@ -206,6 +210,15 @@ Display a standard article card.
         }
     }
 
+    .card__title
+    .card__titletext {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+    }
+
     .card__title,
     .card__byline {
         font-family: $egyptian-display;
@@ -213,6 +226,14 @@ Display a standard article card.
         font-size: 2.2rem;
         line-height: 2.6rem;
         text-rendering: optimizeLegibility;
+    }
+
+    .card__byline {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;        
     }
 
     .card__standfirst {

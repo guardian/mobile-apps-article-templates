@@ -17,8 +17,7 @@ define([
                     if (!html) {
                         $(".container--related").hide();
                     } else {
-                        $(".loading--related").hide();
-                        $(".container--related").append(html);
+                        $(".container--related .container__body").html(html);
                     }
                 };
                 window.applyNativeFunctionCall('articleCardsInserter');
