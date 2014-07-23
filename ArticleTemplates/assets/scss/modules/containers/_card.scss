@@ -46,7 +46,7 @@ Display a standard article card.
     background-color: #fff;
     border-top: 1px solid color(tone-news-accent);
     border-bottom: 1px solid color(shade-4);
-    display: block;
+    display: inline-block;
     position: relative;
     -webkit-transition: all .15s ease-out;
     transition: all .15s ease-out;
@@ -207,6 +207,15 @@ Display a standard article card.
                 @include order(2);
             }
         }
+    }
+
+    .card__title
+    .card__titletext {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
     }
 
     .card__title,
