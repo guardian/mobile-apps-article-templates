@@ -104,8 +104,34 @@ define([
                     });
        
                 }
+            },
+
+            // return the current MPU's position .
+            // This function is an internal function which accepts a function 
+            // formatter(left, top, width, height)
+
+            getMpuPos : function(formatter) {
+                var r, el = document.getElementsByClassName("advert-slot__wrapper__content")[0];
+                if (el) {
+                    r = el.getBoundingClientRect();
+                    return formatter(r.left + document.body.scrollLeft, r.top+document.body.scrollTop, r.width, r.height);
+                } else {
+                    return null;
+                }
+            },
+
+            getMpuPosJson : function() {
+                return modules.getMpuPos(function(x, y, w, h) { 
+                    return '{"left":' + x + ', "top":' + y + ', "width":' + w +', "height":' + h + '}';
+                });
+            },
+            getMpuPosCommaSeparated : function() {
+                return modules.getMpuPos(function(x, y, w, h) { 
+                    return x + ',' + y;
+                });
             }
         },
+
 
         ready = function (config) {
             if (!this.initialised) {
@@ -114,11 +140,9 @@ define([
                 if (config.adsEnabled == "true") {
                     modules.addGoogleTags(config);
                     modules.insertAds(config);
-       
-                    //var r = document.getElementsByClassName("advert-slot__wrapper__content")[0].getBoundingClientRect();
-                    //alert('{{'+r.left+','+r.top+'},{'+r.width+','+r.height+'}}');
-
                 }
+                window.getMpuPosJson = modules.getMpuPosJson;
+                window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated;
                 // console.info("Ads ready");
             }
         };
