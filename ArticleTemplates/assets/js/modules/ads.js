@@ -59,7 +59,7 @@ define([
                 
                 var counter = 0;
                 
-                $(".article__body > *:nth-child(-n+3)").each(function() {
+                $(".article__body > div > *:nth-child(-n+3)").each(function() {
                     
                     var tagName = $(this)[0].tagName;
                     
@@ -79,7 +79,7 @@ define([
                                             "</div>" +
                                         "</div>";
 
-                    $(".article__body > p:nth-of-type(1)").before(tabletMpuHtml);
+                    $(".article__body > div > p:nth-of-type(1)").before(tabletMpuHtml);
 
                     googletag.cmd.push(function () {
                         googletag.display(tabletMpuId);
@@ -95,7 +95,7 @@ define([
 
                         bannerHtml =  "<div class='advert-slot__wrapper__content' id=" + bannerHtmlId + "></div>";
 
-                    $(".article__body > p:nth-of-type(6)").after(mobileMpuHtml);
+                    $(".article__body > div > p:nth-of-type(6)").after(mobileMpuHtml);
                     $(".advert-slot__wrapper").prepend(bannerHtml);
 
                     googletag.cmd.push(function () {
