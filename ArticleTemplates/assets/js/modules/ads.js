@@ -16,7 +16,7 @@ define([
                 
                 var counter = 0;
                 
-                $(".article__body > div.from-content-api > *:nth-child(-n+3)").each(function() {
+                $(".article__body > div > *:nth-child(-n+3)").each(function() {
                     
                     var tagName = $(this)[0].tagName;
                     
@@ -49,7 +49,7 @@ define([
 
                         bannerHtml =  "<div class='advert-slot__wrapper__content' id=" + bannerHtmlId + "></div>";
 
-                    $(".article__body > div.from-content-api > p:nth-of-type(6)").after(mobileMpuHtml);
+                    $(".article__body > div > p:nth-of-type(6)").after(mobileMpuHtml);
                     $(".advert-slot__wrapper").prepend(bannerHtml);
 
        
