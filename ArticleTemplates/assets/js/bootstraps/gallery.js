@@ -24,7 +24,7 @@ define([
         if (!this.initialised) {
             this.initialised = true;
             modules.galleryLayout();
-            //console.log("Gallery ready");
+            //console.info("Gallery ready");
         }
     };
 
