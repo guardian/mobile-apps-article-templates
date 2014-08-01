@@ -80,6 +80,12 @@ define([
                 return modules.getMpuPos(function(x, y, w, h) { 
                     return x + ',' + y;
                 });
+            },
+            getMpuPosCallback : function(callbackNamespace, callbackFunction) {
+                console.info("Called getMpuPosCallback");
+                modules.getMpuPos(function(x, y, w, h){
+                    window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
+                });
             }
         },
 
@@ -93,6 +99,7 @@ define([
                 }
                 window.getMpuPosJson = modules.getMpuPosJson;
                 window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated;
+                window.getMpuPosCallback = modules.getMpuPosCallback;
                 // console.info("Ads ready");
             }
         };
