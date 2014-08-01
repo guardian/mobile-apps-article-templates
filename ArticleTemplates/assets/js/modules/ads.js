@@ -11,7 +11,7 @@ define([
         bannerHtmlId = 'advert-banner-content',
 
         modules = {
-            insertAds: function (config) {
+            insertAdPlaceholders: function (config) {
                 var windowWidth = window.innerWidth;
                 
                 var counter = 0;
@@ -31,7 +31,7 @@ define([
                 if (config.adsConfig == "tablet" && counter == 3) {
                     var tabletMpuHtml = "<div class='advert-slot advert-slot--mpu advert-slot--mpu--tablet'>" +
                                             "<div class='advert-slot__label'>Advertisement</div>" +
-                                            "<div class='advert-slot__wrapper'>" +
+                                            "<div class=\"advert-slot__wrapper\" id=\"advert-slot__wrapper\">" +
                                                 "<div class='advert-slot__wrapper__content' id=" + tabletMpuId + "></div>" +
                                             "</div>" +
                                         "</div>";
@@ -42,7 +42,7 @@ define([
                 } else if (config.adsConfig == "mobile") {
                     var mobileMpuHtml = "<div class='advert-slot advert-slot--mpu advert-slot--mpu--mobile'>" +
                                             "<div class='advert-slot__label'>Advertisement</div>" +
-                                            "<div class='advert-slot__wrapper'>" +
+                                            "<div class=\"advert-slot__wrapper\" id=\"advert-slot__wrapper\">" +
                                                 "<div class='advert-slot__wrapper__content' id=" + mobileMpuId + "></div>" +
                                             "</div>" +
                                         "</div>",
@@ -60,7 +60,8 @@ define([
             // formatter(left, top, width, height)
 
             getMpuPos : function(formatter) {
-                var r, el = document.getElementsByClassName("advert-slot__wrapper__content")[0];
+                var r;
+                var el = document.getElementById("advert-slot__wrapper");
                 if (el) {
                     r = el.getBoundingClientRect();
                     return formatter(r.left + document.body.scrollLeft, r.top+document.body.scrollTop, r.width, r.height);
@@ -87,7 +88,7 @@ define([
                 this.initialised = true;
                 
                 if (config.adsEnabled == "true") {
-                    modules.insertAds(config);
+                    modules.insertAdPlaceholders(config);
                 }
                 window.getMpuPosJson = modules.getMpuPosJson;
                 window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated;
