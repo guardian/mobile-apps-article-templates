@@ -51,7 +51,6 @@ define([
 
                     $(".article__body > div > p:nth-of-type(6)").after(mobileMpuHtml);
                     $(".advert-slot__wrapper").prepend(bannerHtml);
-
        
                 }
             },
