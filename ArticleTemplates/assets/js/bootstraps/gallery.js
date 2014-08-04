@@ -13,7 +13,7 @@ define([
     var modules = {
         galleryLayout: function () {
             collagePlus.init(".gallery", ".gallery__image");
-            window.onresize = function(){
+            window.onorientationchange = function(){
                 $(".gallery")[0].removeAttribute("style");
                 collagePlus.init(".gallery", ".gallery__image");
             };
@@ -24,7 +24,7 @@ define([
         if (!this.initialised) {
             this.initialised = true;
             modules.galleryLayout();
-            // console.info("Gallery ready");
+            //console.info("Gallery ready");
         }
     };
 
