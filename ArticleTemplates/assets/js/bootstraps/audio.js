@@ -95,17 +95,16 @@ define([
                 };
 
                 window.audioBackground = function (duration) {
-                    if ($(".article__header").attr("data-background") == null && !$("body").hasClass("media")) {
+                    if ($(".cutout__container").attr("data-background") == null && !$("body").hasClass("media")) {
                         var numOfCircles = Math.floor((duration / 60) / 2) + 2,
                             h = $(".article__header").offset().height,
                             w = $(".article__header").offset().width,
                             size = (h * w) / 8000,
                             ctx = document.getCSSCanvasContext("2d", "circles", w, h);
-
+                        
                         if (numOfCircles > 12) {
                             numOfCircles = 12;
                         }
-
                         // Draw Circles
                         for (var i = 0; i < numOfCircles; i++) {
                             var x = Math.floor(Math.random() * (w - 0) + 1);
@@ -116,7 +115,6 @@ define([
                             ctx.fill();
                             size = size * 1.2;
                         }
-
                         $(".cutout__container").attr("data-background", "true");
                     }
                 };
