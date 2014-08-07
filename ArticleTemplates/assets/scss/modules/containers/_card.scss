@@ -141,7 +141,6 @@ Display a standard article card.
         [data-icon]::before {
             display: none;
         }
-        max-height: 11rem;
         overflow-y: hidden;
     }
 
@@ -215,6 +214,11 @@ Display a standard article card.
     .card__titletext {
         overflow: hidden;
         text-overflow: ellipsis;
+        overflow-y: hidden;
+        word-wrap: break-word;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
     }
 
     .card__title,
