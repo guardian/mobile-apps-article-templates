@@ -26,8 +26,8 @@ define([
                             {
                                 var  bylineLines=modules.getNumberOfTextLines(comment_card_byline[i]);
                                 var  headerLines=modules.getNumberOfTextLines(comment_card_header[i]);
-                                var totalLines=bylineLines+headerLines;
-                                if (totalLines>4)
+                                var  totalLines=bylineLines+headerLines;
+                                if (totalLines>=4)
                                 {
                                     bonzo(comment_card_byline[i]).hide();
                                     bonzo(comment_card_header[i]).attr('style','-webkit-line-clamp:4;');
