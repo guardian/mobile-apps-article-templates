@@ -25,12 +25,16 @@ define([
                             for (var i=0;i<comment_card_byline.length;i++)
                             {
                                 var  bylineLines=modules.getNumberOfTextLines(comment_card_byline[i]);
+                                window.logOnScreen('debug msg bylineLines: '+bylineLines);
                                 var  headerLines=modules.getNumberOfTextLines(comment_card_header[i]);
-                                var totalLines=bylineLines+headerLines;
-                                if (totalLines>4)
+                                window.logOnScreen('debug msg headerLines: '+headerLines);
+                                var  totalLines=bylineLines+headerLines;
+                                window.logOnScreen('debug msg: '+totalLines);
+                                if (totalLines>=4)
                                 {
                                     bonzo(comment_card_byline[i]).hide();
                                     bonzo(comment_card_header[i]).attr('style','-webkit-line-clamp:4;');
+                                    window.logOnScreen('debug msg inside:'+totalLines);
                                 }
                             }
                         }
@@ -42,10 +46,15 @@ define([
                 //returns number of text lines of single html element 
                 var cssValues=window.getComputedStyle(el,null);
                 var lineHeight=cssValues.lineHeight.replace('px','');
+                window.logOnScreen('debug msg lineHeight: '+lineHeight);
                 var paddingTop=cssValues.paddingTop.replace('px','');
+                window.logOnScreen('debug msg paddingTop: '+paddingTop);
                 var paddingBottom=cssValues.paddingBottom.replace('px','');
+                window.logOnScreen('debug msg paddingBottom: '+paddingBottom);
                 var elementheight=el.offsetHeight;
+                window.logOnScreen('debug msg elementheight: '+elementheight);
                 var numberOfLines= (elementheight-paddingTop-paddingBottom)/lineHeight;
+                window.logOnScreen('debug msg numberOfLines: '+numberOfLines);
                 return parseInt(numberOfLines);
             }
         },
