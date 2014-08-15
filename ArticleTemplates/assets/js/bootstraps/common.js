@@ -102,7 +102,7 @@ define([
                     var imageWidth = el.getAttribute('width') || $(el).dim().width,
                         imageClass = imageWidth < 301 ? 'figure-inline' : 'figure-wide',
                         parent = $(el).parent();
-
+                    console.log("Images");
                     parent.addClass(imageClass);
                     if (parent.hasClass('figure-inline')) {
                         // Can this class only come from the above?
@@ -111,6 +111,16 @@ define([
                 });
             };
             window.articleImageSizer();
+        },
+
+        figureClassCheck: function () {
+            // Check for figure-wide class, add if not present
+            var el = $('figure');
+
+            if (!el.hasClass('figure-wide')) {
+                el.addClass("figure-wide");
+            }
+
         },
 
         insertTags: function () {
@@ -205,6 +215,7 @@ define([
             modules.correctCaptions();
             modules.figcaptionToggle();
             modules.imageSizer();
+            modules.figureClassCheck();
             modules.insertTags();
             modules.loadAdverts(config);
             modules.loadComments();
