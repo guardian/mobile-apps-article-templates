@@ -102,7 +102,6 @@ define([
                     var imageWidth = el.getAttribute('width') || $(el).dim().width,
                         imageClass = imageWidth < 301 ? 'figure-inline' : 'figure-wide',
                         parent = $(el).parent();
-                    console.log("Images");
                     parent.addClass(imageClass);
                     if (parent.hasClass('figure-inline')) {
                         // Can this class only come from the above?
