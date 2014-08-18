@@ -115,11 +115,9 @@ define([
         figureClassCheck: function () {
             // Check for figure-wide class, add if not present
             var el = $('figure');
-
             if (!el.hasClass('figure-wide')) {
                 el.addClass("figure-wide");
             }
-
         },
 
         insertTags: function () {
