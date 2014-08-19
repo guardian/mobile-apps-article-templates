@@ -26,7 +26,8 @@ var nativeFunctionCalls = [
     'footballMatchInfo',
     'footballMatchInfoFailed',
     'liveblogDeleteBlock',
-    'liveblogNewBlock'
+    'liveblogNewBlock',
+    'getMpuPosCallback'
 ];
 
 Array.prototype.forEach.call(nativeFunctionCalls, function (name) {
