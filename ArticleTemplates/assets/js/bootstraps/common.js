@@ -112,12 +112,14 @@ define([
             window.articleImageSizer();
         },
 
-        figureClassCheck: function () {
-            // Check for figure-wide class, add if not present
-            var el = $('figure');
-            if (!el.hasClass('figure-wide')) {
-                el.addClass("figure-wide");
-            }
+        figureClassAdd: function () {
+            // Add figure-wide class if its not there already
+            $('figure').each(function (el) { 
+                var fig = $(this).hasClass("figure-wide");
+                if (fig == false) {
+                    $(this).addClass("figure-wide");
+                }
+            });
         },
 
         insertTags: function () {
@@ -212,7 +214,7 @@ define([
             modules.correctCaptions();
             modules.figcaptionToggle();
             modules.imageSizer();
-            modules.figureClassCheck();
+            modules.figureClassAdd();
             modules.insertTags();
             modules.loadAdverts(config);
             modules.loadComments();
