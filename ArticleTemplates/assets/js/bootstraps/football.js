@@ -139,7 +139,6 @@ define([
                 $(html).appendTo('#football__tabpanel--stats');
                 modules.footballChart(homeTeam, awayTeam);
                 if (!$('[aria-selected="true"]')) {
-                // if (!$('.tabs [href="#football__tabpanel--stats"]').hasClass('selected')) {
                     $('#football__tabpanel--stats').hide();
                 }
             };
