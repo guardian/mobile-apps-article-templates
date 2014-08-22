@@ -138,7 +138,7 @@ define([
                 html = bonzo.create(html);
                 $(html).appendTo('#football__tabpanel--stats');
                 modules.footballChart(homeTeam, awayTeam);
-                if (!$('.tabs [href="#football__tabpanel--stats"]').hasClass('selected')) {
+                if (!$('[aria-selected="true"]')) {
                     $('#football__tabpanel--stats').hide();
                 }
             };
