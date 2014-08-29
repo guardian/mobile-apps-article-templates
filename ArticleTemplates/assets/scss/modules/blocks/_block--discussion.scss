@@ -85,20 +85,19 @@ Display a discussion thread.
     .comments-closed-label {
         color: color(shade-2);
         text-align: right;
-        display: none;
     }
 }
 
 .comments--closed {
     .container__action {
-        .comments-closed-label {
-            display: block !important;
+        .comments-closed-label .touchpoint__label {
+            display: block;
         }
 
-        .touchpoint__button,
-        a {
+        .touchpoint--primary {
             display: none !important;
         }
+
     }
 }
 
