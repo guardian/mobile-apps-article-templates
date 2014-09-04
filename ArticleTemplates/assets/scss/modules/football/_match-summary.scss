@@ -168,9 +168,10 @@ Display a match summary. The score is updated during the match.
 
     @include mq($to: col1) {
         @include flexbox;
-        @include flex-direction(row);
+//        @include flex-direction(row);
         width: 100%;
         padding: base-px(1, 0);
+        background-color: blue;
     }
 
     @include mq($from: col1) {
@@ -179,6 +180,7 @@ Display a match summary. The score is updated during the match.
         float: left;
         display: table;
         table-layout: fixed;
+        background-color: red;
     }
 
     .match-summary__badge,
@@ -194,6 +196,7 @@ Display a match summary. The score is updated during the match.
     .match-summary__score {
         width: 44px;
         padding: base-px(0, .5);
+        background-color: yellow;
 
         @include mq($to: col1) {
             width: 15%;
