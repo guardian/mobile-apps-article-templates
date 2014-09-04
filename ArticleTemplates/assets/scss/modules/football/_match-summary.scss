@@ -167,11 +167,10 @@ Display a match summary. The score is updated during the match.
     word-break: break-word;
 
     @include mq($to: col1) {
-        @include flexbox;
-//        @include flex-direction(row);
         width: 100%;
         padding: base-px(1, 0);
-        background-color: blue;
+        position: relative;
+        overflow: hidden;
     }
 
     @include mq($from: col1) {
@@ -180,7 +179,6 @@ Display a match summary. The score is updated during the match.
         float: left;
         display: table;
         table-layout: fixed;
-        background-color: red;
     }
 
     .match-summary__badge,
@@ -193,16 +191,22 @@ Display a match summary. The score is updated during the match.
         }
     }
 
-    .match-summary__score {
-        width: 44px;
-        padding: base-px(0, .5);
-        background-color: yellow;
+    .match-summary__badge {
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position-x: center;
+        height: 60px;
 
         @include mq($to: col1) {
-            width: 15%;
-            min-width: 50px;
-            text-align: right;
-            padding-right: 0;
+            width: 20%;
+            position: absolute;
+            left: 0;
+            top: base-px(1);
+        }
+
+        @include mq($from: col1) {
+            padding: base-px(.3333, 0, 0, 0);
+            width: 54px;
         }
     }
 
@@ -212,7 +216,9 @@ Display a match summary. The score is updated during the match.
         padding: base-px(0, 0, 0, .5);
 
         @include mq($to: col1) {
-            width: 100%;
+            width: 65%;
+            float: left;
+            margin-left: 20%;
         }
     }
 
@@ -224,19 +230,16 @@ Display a match summary. The score is updated during the match.
         z-index: 25;
     }
 
-    .match-summary__badge {
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position-x: center;
-        height: 60px;
-        @include mq($to: col1) {
-            width: 20%;
-            min-width: 44px;
-        }
+    .match-summary__score {
+        width: 44px;
+        padding: base-px(0, .5);
 
-        @include mq($from: col1) {
-            padding: base-px(.3333, 0, 0, 0);
-            width: 54px;
+        @include mq($to: col1) {
+            width: 15%;
+            min-width: 50px;
+            text-align: right;
+            padding-right: 0;
+            float: right;
         }
     }
 }
