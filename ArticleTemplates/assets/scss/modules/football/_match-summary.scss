@@ -165,12 +165,13 @@ Display a match summary. The score is updated during the match.
 .match-summary__team {
     hyphens: auto;
     word-break: break-word;
+    min-height: 60px;
+    @extend %clearfix;
 
     @include mq($to: col1) {
         width: 100%;
         padding: base-px(1, 0);
         position: relative;
-        overflow: hidden;
     }
 
     @include mq($from: col1) {
@@ -213,12 +214,16 @@ Display a match summary. The score is updated during the match.
     .match-summary__info {
         font-family: $agate-sans;
         @include meta();
-        padding: base-px(0, 0, 0, .5);
 
         @include mq($to: col1) {
-            width: 65%;
+            width: 60%;
             float: left;
-            margin-left: 20%;
+            margin-left: 22%;
+        }
+
+        @include mq($from: col1) {
+            width: 100%;
+            padding: base-px(0, 0, 0, .5);
         }
     }
 
@@ -226,7 +231,6 @@ Display a match summary. The score is updated during the match.
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
-        position: relative;
         z-index: 25;
     }
 
@@ -236,7 +240,6 @@ Display a match summary. The score is updated during the match.
 
         @include mq($to: col1) {
             width: 15%;
-            min-width: 50px;
             text-align: right;
             padding-right: 0;
             float: right;
