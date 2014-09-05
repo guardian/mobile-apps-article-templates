@@ -86,7 +86,6 @@ Display a match summary. The score is updated during the match.
 
     .headline {
         @include mq($to: col2) {
-            margin-top: -8px; // Offset to align with badges
             font-size: 3.2rem;
             line-height: 4rem;
         }
@@ -170,7 +169,7 @@ Display a match summary. The score is updated during the match.
 
     @include mq($to: col1) {
         width: 100%;
-        padding: base-px(1, 0);
+        padding: base-px(1, 0, 2.5, 0);
         position: relative;
     }
 
@@ -202,7 +201,6 @@ Display a match summary. The score is updated during the match.
             width: 20%;
             position: absolute;
             left: 0;
-            top: base-px(1);
         }
 
         @include mq($from: col1) {
