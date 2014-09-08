@@ -93,13 +93,16 @@ Display a titled container for comments, cards or other components that should b
     float: right;
 }
 
+.container--comments {
+    .touchpoint__label {
+        @include mq($to: col2) {
+            display: none;
+        }
+    }
+}
+
 .container__header {
     .container__action { 
-        .touchpoint__label {
-            @include mq($to: col2) {
-                display: inline-block;
-            }
-        }
         
         .comments-closed-label {
             .touchpoint__label {
