@@ -203,7 +203,7 @@ Display a standard article card.
         }
 
         .card__footer {
-            bottom: 50%;
+            bottom: 170px;
 
             @include mq($to: col1) {
                 @include flex(1);
@@ -261,7 +261,7 @@ Display a standard article card.
 
     .card__meta {
         width: cols($base-1, 1);
-        height: 24px;
+        height: 22px;
         padding: base-px(0, 0, 0, .5);
         border-left: 1px solid color(shade-4);
         display: block;
@@ -278,6 +278,19 @@ Display a standard article card.
 
     .card__timestamp {
         padding: base-px(0, 5, 0, .5);
+    }
+}
+
+// Android Tweaks - Improved alignment of card timestamp and metadata
+
+.android {
+    .card {
+            .card__timestamp {
+                padding-top: 2px;
+            }
+            .card__meta {
+                padding-top: 2px;
+            }
     }
 }
 
