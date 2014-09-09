@@ -70,7 +70,6 @@ define([
                 window.liveblogLoadMore = function (html) {
                     html = bonzo.create(html);
                     $('.loading--liveblog').removeClass("loading--visible");
-
                     $(html).appendTo('.article__body');
 
                     // See Common bootstrap
