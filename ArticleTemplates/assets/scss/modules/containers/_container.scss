@@ -79,7 +79,7 @@ Display a titled container for comments, cards or other components that should b
 
 .container__title__meta {
     color: color(shade-3);
-    font-weight: 300;
+    font-weight: 600;
 }
 
 .container__action {
@@ -93,10 +93,21 @@ Display a titled container for comments, cards or other components that should b
     float: right;
 }
 
-.container__header {
-    .container__action .touchpoint__label {
+.container--comments {
+    .touchpoint__label {
         @include mq($to: col2) {
             display: none;
+        }
+    }
+}
+
+.container__header {
+    .container__action { 
+        
+        .comments-closed-label {
+            .touchpoint__label {
+                display: none;
+            }
         }
     }
 }
