@@ -70,9 +70,6 @@ define([
                 window.liveblogLoadMore = function (html) {
                     html = bonzo.create(html);
                     $('.loading--liveblog').removeClass("loading--visible");
-                    $(html).each(function() {
-                        $(this).addClass("animated slideinright");
-                    });
                     $(html).appendTo('.article__body');
 
                     // See Common bootstrap
