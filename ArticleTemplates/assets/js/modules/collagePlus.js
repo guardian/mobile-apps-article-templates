@@ -102,15 +102,6 @@ define([
             "allowPartialLastRow"   : false
         };
 
-        window.logOnScreen("albumWidth "+settings.albumWidth);
-        window.logOnScreen("bodywidth "+ document.body.clientWidth);
-        window.setTimeout(delayedWidthCalc(), 10000);
-
-        function delayedWidthCalc() {
-            window.logOnScreen("Delayed albumWidth "+settings.albumWidth);
-            window.logOnScreen("Delayed bodywidth "+ document.body.clientWidth);
-        }
-
         var row = 0,
             elements = [],
             rownum = 1;
