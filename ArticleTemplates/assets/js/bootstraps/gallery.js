@@ -16,10 +16,6 @@ define([
             window.onorientationchange = function(){
                 $(".gallery")[0].removeAttribute("style");
                 collagePlus.init(".gallery", ".gallery__image");
-            },
-            window.redrawGallery = function() {
-                $(".gallery")[0].removeAttribute("style");
-                collagePlus.init(".gallery", ".gallery__image");
             };
         }
     },
