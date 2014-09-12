@@ -214,7 +214,7 @@ define([
             modules.correctCaptions();
             modules.figcaptionToggle();
             modules.imageSizer();
-            modules.figureClassAdd();
+            // modules.figureClassAdd();
             modules.insertTags();
             modules.loadAdverts(config);
             modules.loadComments();
