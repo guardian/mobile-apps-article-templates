@@ -89,15 +89,12 @@ define([
         switch (orientation) {
           case "portrait":
             albumWidth = 675;
-            window.logOnScreen("collagePlus plugin is " + orientation);
             break;
           case "landscape":
             albumWidth = 930;
-            window.logOnScreen("collagePlus plugin is " + orientation);
             break;
           default:
             albumWidth = $(selector)[0].clientWidth - (padding * 2);
-            window.logOnScreen("collagePlus plugin default is " + albumWidth);
         }
 
         if (window.innerWidth < 450) {
@@ -118,15 +115,6 @@ define([
             "allowPartialLastRow"   : false
         };
 
-        window.logOnScreen("albumWidth "+settings.albumWidth);
-        window.logOnScreen("bodywidth "+ document.body.clientWidth);
-        // window.setTimeout(delayedWidthCalc(), 2000);
-
-        // function delayedWidthCalc() {
-        //     window.logOnScreen("Delayed albumWidth "+settings.albumWidth);
-        //     window.logOnScreen("Delayed bodywidth "+ document.body.clientWidth);
-        // }
-
         var row = 0,
             elements = [],
             rownum = 1;
@@ -134,7 +122,7 @@ define([
         settings.images.each(function(scope, index) {
             var w = this.width,
                 h = this.height;
-            window.logOnScreen("Image width "+w+" Image height "+h);
+                
             var nw = Math.ceil(w/h*settings.targetHeight),
                 nh = Math.ceil(settings.targetHeight);
 
