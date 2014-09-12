@@ -98,16 +98,22 @@ define([
         imageSizer: function () {
             // Resize figures to fit images
             window.articleImageSizer = function () {
-                $('figure > img').each(function (el) {
+                window.logOnScreen("window.articleImageSizer called");
+                $('figure img').each(function (el) {
                     var imageWidth = el.getAttribute('width') || $(el).dim().width,
                         imageClass = imageWidth < 301 ? 'figure-inline' : 'figure-wide',
-                        parent = $(el).parent();
+                    parent = $(el).parent().parent();
                     parent.addClass(imageClass);
+                    //$(el).closest("figure").addClass(imageClass);
+                    window.logOnScreen("class added "+imageClass);
                     if (parent.hasClass('figure-inline')) {
                         // Can this class only come from the above?
                         parent.css('width', imageWidth);
+                    } else if (parent.hasClass('figure-wide')) {
+                        $(el).css('width', "100%");
                     }
                 });
+                window.logOnScreen("------------------");
             };
             window.articleImageSizer();
         },
