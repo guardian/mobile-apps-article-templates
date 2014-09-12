@@ -98,34 +98,19 @@ define([
         imageSizer: function () {
             // Resize figures to fit images
             window.articleImageSizer = function () {
-                window.logOnScreen("window.articleImageSizer called");
                 $('figure img').each(function (el) {
                     var imageWidth = el.getAttribute('width') || $(el).dim().width,
                         imageClass = imageWidth < 301 ? 'figure-inline' : 'figure-wide',
                     parent = $(el).parent().parent();
                     parent.addClass(imageClass);
-                    //$(el).closest("figure").addClass(imageClass);
-                    window.logOnScreen("class added "+imageClass);
                     if (parent.hasClass('figure-inline')) {
-                        // Can this class only come from the above?
                         parent.css('width', imageWidth);
                     } else if (parent.hasClass('figure-wide')) {
                         $(el).css('width', "100%");
                     }
                 });
-                window.logOnScreen("------------------");
             };
             window.articleImageSizer();
-        },
-
-        figureClassAdd: function () {
-            // Add figure-wide class if its not there already
-            $('figure').each(function (el) { 
-                var fig = $(this).hasClass("figure-wide");
-                if (fig == false) {
-                    $(this).addClass("figure-wide");
-                }
-            });
         },
 
         insertTags: function () {
@@ -220,7 +205,6 @@ define([
             modules.correctCaptions();
             modules.figcaptionToggle();
             modules.imageSizer();
-            // modules.figureClassAdd();
             modules.insertTags();
             modules.loadAdverts(config);
             modules.loadComments();
