@@ -54,8 +54,7 @@ define([
                                 var block = $(el);
                                 // If comment is replyable allow buttons
                                 if (block.hasClass('visible')) {
-                                    // Remove any previous animation classes
-                                    $(".comment__options").removeClass("animated fadeinright");
+                                    // Evaluate if this comment is open or not
                                     if (block.hasClass("comment--open")) {
                                         // Hide the buttons
                                         block.removeClass("comment--open");
@@ -71,10 +70,8 @@ define([
                                         } else {
                                             block.css("min-height", "85px");
                                         }
-                                        setTimeout(function() {
-                                            $('.comment__options', el).addClass("animated fadeinright");
-                                            block.css("min-height", originalHeight);
-                                        }, 350);
+                                        // Add comment open class to show Reply and Report
+                                        block.css("min-height", originalHeight);
                                         block.addClass('comment--open');
                                     }
                                 }
