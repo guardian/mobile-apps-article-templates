@@ -16,6 +16,27 @@ define([
             window.onorientationchange = function(){
                 $(".gallery")[0].removeAttribute("style");
                 collagePlus.init(".gallery", ".gallery__image");
+
+                window.logOnScreen("onorientationchange " + document.body.clientWidth);
+                window.logOnScreen("orientation is " +window.orientation);
+            },
+            window.redrawGallery = function() {
+                $(".gallery")[0].removeAttribute("style");
+                // var orientation = window.orientation == "90" ? "landscape" : "portrait");
+                var orientation = window.orientation;
+                var mode;
+                if (orientation == 90 || orientation == -90) {
+                    mode = "landscape";
+                } else {
+                    mode = "portrait";
+                }
+
+                // window.location.reload(true);
+                // document.location.reload(true);
+                collagePlus.init(".gallery", ".gallery__image", mode);
+                // window.logOnScreen("redrawGallery " + document.body.clientWidth);
+                window.logOnScreen("redrawGallery " + mode);
+
             };
         }
     },

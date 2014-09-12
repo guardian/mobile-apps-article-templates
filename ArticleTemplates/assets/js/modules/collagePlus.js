@@ -77,9 +77,28 @@ define([
         }
     }
 
-    function init (selector, children) {
+    function init (selector, children, orientation) {
         // Set defaults based off window size
+        var albumWidth;
         var imageHeight;
+
+        var padding = getComputedStyle(document.getElementsByClassName("gallery")[0]).getPropertyValue("padding-left");
+            padding = Math.round(parseFloat(padding));
+
+        // Pass correct width for settings
+        switch (orientation) {
+          case "portrait":
+            albumWidth = 675;
+            window.logOnScreen("collagePlus plugin is " + orientation);
+            break;
+          case "landscape":
+            albumWidth = 930;
+            window.logOnScreen("collagePlus plugin is " + orientation);
+            break;
+          default:
+            albumWidth = $(selector)[0].clientWidth - (padding * 2);
+            window.logOnScreen("collagePlus plugin default is " + albumWidth);
+        }
 
         if (window.innerWidth < 450) {
             imageHeight = 150;
@@ -87,12 +106,9 @@ define([
             imageHeight = 300;
         }
 
-        var padding = getComputedStyle(document.getElementsByClassName("gallery")[0]).getPropertyValue("padding-left");
-            padding = Math.round(parseFloat(padding));
-
         var settings = {
             "targetHeight"          : imageHeight,
-            "albumWidth"            : $(selector)[0].clientWidth - (padding * 2),
+            "albumWidth"            : albumWidth,
             "padding"               : padding,
             "images"                : $(children),
             "fadeSpeed"             : "fast",
@@ -102,6 +118,15 @@ define([
             "allowPartialLastRow"   : false
         };
 
+        window.logOnScreen("albumWidth "+settings.albumWidth);
+        window.logOnScreen("bodywidth "+ document.body.clientWidth);
+        // window.setTimeout(delayedWidthCalc(), 2000);
+
+        // function delayedWidthCalc() {
+        //     window.logOnScreen("Delayed albumWidth "+settings.albumWidth);
+        //     window.logOnScreen("Delayed bodywidth "+ document.body.clientWidth);
+        // }
+
         var row = 0,
             elements = [],
             rownum = 1;
@@ -109,7 +134,7 @@ define([
         settings.images.each(function(scope, index) {
             var w = this.width,
                 h = this.height;
-
+            window.logOnScreen("Image width "+w+" Image height "+h);
             var nw = Math.ceil(w/h*settings.targetHeight),
                 nh = Math.ceil(settings.targetHeight);
 
