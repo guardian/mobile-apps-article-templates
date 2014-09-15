@@ -99,9 +99,12 @@ define([
             // Resize figures to fit images
             window.articleImageSizer = function () {
                 $('figure img').each(function (el) {
+                    var el = el;
                     var imageWidth = el.getAttribute('width') || $(el).dim().width,
-                        imageClass = imageWidth < 301 ? 'figure-inline' : 'figure-wide',
-                    parent = $(el).parent().parent();
+                        imageClass = imageWidth < 301 ? 'figure-inline' : 'figure-wide';
+                    // NB No parents() or closest() with Bonzo, so I'm using pure JavaScript 
+                    // to detect where Figure element is (either up one or two parent nodes)
+                    var parent = el.parentNode.parentNode.nodeName === "FIGURE" ? $(el).parent().parent() : $(el).parent();
                     parent.addClass(imageClass);
                     if (parent.hasClass('figure-inline')) {
                         parent.css('width', imageWidth);
