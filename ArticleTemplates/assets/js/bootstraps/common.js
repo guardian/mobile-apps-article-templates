@@ -98,28 +98,22 @@ define([
         imageSizer: function () {
             // Resize figures to fit images
             window.articleImageSizer = function () {
-                $('figure > img').each(function (el) {
+                $('figure img').each(function (el) {
+                    var el = el;
                     var imageWidth = el.getAttribute('width') || $(el).dim().width,
-                        imageClass = imageWidth < 301 ? 'figure-inline' : 'figure-wide',
-                        parent = $(el).parent();
+                        imageClass = imageWidth < 301 ? 'figure-inline' : 'figure-wide';
+                    // NB No parents() or closest() with Bonzo, so I'm using pure JavaScript 
+                    // to detect where Figure element is (either up one or two parent nodes)
+                    var parent = el.parentNode.parentNode.nodeName === "FIGURE" ? $(el).parent().parent() : $(el).parent();
                     parent.addClass(imageClass);
                     if (parent.hasClass('figure-inline')) {
-                        // Can this class only come from the above?
                         parent.css('width', imageWidth);
+                    } else if (parent.hasClass('figure-wide')) {
+                        $(el).css('width', "100%");
                     }
                 });
             };
             window.articleImageSizer();
-        },
-
-        figureClassAdd: function () {
-            // Add figure-wide class if its not there already
-            $('figure').each(function (el) { 
-                var fig = $(this).hasClass("figure-wide");
-                if (fig == false) {
-                    $(this).addClass("figure-wide");
-                }
-            });
         },
 
         insertTags: function () {
@@ -214,7 +208,6 @@ define([
             modules.correctCaptions();
             modules.figcaptionToggle();
             modules.imageSizer();
-            // modules.figureClassAdd();
             modules.insertTags();
             modules.loadAdverts(config);
             modules.loadComments();
