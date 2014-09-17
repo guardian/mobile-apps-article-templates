@@ -16,7 +16,10 @@ define([
             window.onorientationchange = function(){
                 $(".gallery")[0].removeAttribute("style");
                 collagePlus.init(".gallery", ".gallery__image");
-            };
+
+                window.logOnScreen("onorientationchange " + document.body.clientWidth);
+                window.logOnScreen("orientation is " +window.orientation);
+            },
             window.redrawGallery = function() {
                 $(".gallery")[0].removeAttribute("style");
                 var orientation = window.orientation;
@@ -26,7 +29,10 @@ define([
                 } else {
                     mode = "portrait";
                 }
+
                 collagePlus.init(".gallery", ".gallery__image", mode);
+                window.logOnScreen("redrawGallery " + mode);
+
             };
         }
     },
@@ -35,6 +41,7 @@ define([
         if (!this.initialised) {
             this.initialised = true;
             modules.galleryLayout();
+            //console.info("Gallery ready");
         }
     };
 

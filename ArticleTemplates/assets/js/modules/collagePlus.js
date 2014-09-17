@@ -81,20 +81,31 @@ define([
         // Set defaults based off window size
         var albumWidth;
         var imageHeight;
+        var screenSpace = window.innerWidth;
 
         var padding = getComputedStyle(document.getElementsByClassName("gallery")[0]).getPropertyValue("padding-left");
             padding = Math.round(parseFloat(padding));
+        
+        // Gallery padding depenedent on available screen space
+        var gp = screenSpace < 955 ? "11px 11px 0 11px" : "12px 12px 0 12px" ;
 
         // Pass correct width for settings
         switch (orientation) {
           case "portrait":
             albumWidth = 675;
+            window.logOnScreen("collagePlus plugin is " + orientation + " available screen space is "+screenSpace);
+            window.logOnScreen("collagePlus plugin padding is " + padding);
+            $(".gallery").css('padding', gp);
             break;
           case "landscape":
             albumWidth = 930;
+            window.logOnScreen("collagePlus plugin is " + orientation + " available screen space is "+screenSpace);
+            window.logOnScreen("collagePlus plugin padding is " + padding);
             break;
           default:
             albumWidth = $(selector)[0].clientWidth - (padding * 2);
+            window.logOnScreen("collagePlus plugin default is " + albumWidth + " available screen space is "+screenSpace);
+            window.logOnScreen("collagePlus plugin padding is " + padding);
         }
 
         if (window.innerWidth < 450) {
@@ -115,6 +126,9 @@ define([
             "allowPartialLastRow"   : false
         };
 
+        window.logOnScreen("albumWidth "+settings.albumWidth);
+        window.logOnScreen("bodywidth "+ document.body.clientWidth);
+
         var row = 0,
             elements = [],
             rownum = 1;
@@ -122,7 +136,7 @@ define([
         settings.images.each(function(scope, index) {
             var w = this.width,
                 h = this.height;
-                
+            // window.logOnScreen("Image width "+w+" Image height "+h);
             var nw = Math.ceil(w/h*settings.targetHeight),
                 nh = Math.ceil(settings.targetHeight);
 
