@@ -77,9 +77,30 @@ define([
         }
     }
 
-    function init (selector, children) {
+    function init (selector, children, orientation) {
         // Set defaults based off window size
+        var albumWidth;
         var imageHeight;
+        var screenSpace = window.innerWidth;
+
+        var padding = getComputedStyle(document.getElementsByClassName("gallery")[0]).getPropertyValue("padding-left");
+            padding = Math.round(parseFloat(padding));
+        
+        // Gallery padding depenedent on available screen space
+        var gp = screenSpace < 955 ? "11px 11px 0 11px" : "12px 12px 0 12px" ;
+
+        // Pass correct width for settings
+        switch (orientation) {
+          case "portrait":
+            albumWidth = 675;
+            $(".gallery").css('padding', gp);
+            break;
+          case "landscape":
+            albumWidth = 930;
+            break;
+          default:
+            albumWidth = $(selector)[0].clientWidth - (padding * 2);
+        }
 
         if (window.innerWidth < 450) {
             imageHeight = 150;
@@ -87,12 +108,9 @@ define([
             imageHeight = 300;
         }
 
-        var padding = getComputedStyle(document.getElementsByClassName("gallery")[0]).getPropertyValue("padding-left");
-            padding = Math.round(parseFloat(padding));
-
         var settings = {
             "targetHeight"          : imageHeight,
-            "albumWidth"            : $(selector)[0].clientWidth - (padding * 2),
+            "albumWidth"            : albumWidth,
             "padding"               : padding,
             "images"                : $(children),
             "fadeSpeed"             : "fast",
