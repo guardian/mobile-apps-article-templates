@@ -162,10 +162,11 @@ Display a match summary. The score is updated during the match.
 }
 
 .match-summary__team {
+    @extend %clearfix;
+    
     hyphens: auto;
     word-break: break-word;
     min-height: 60px;
-    @extend %clearfix;
 
     @include mq($to: col1) {
         width: 100%;

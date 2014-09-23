@@ -83,9 +83,13 @@ Display a titled container for comments, cards or other components that should b
 }
 
 .container__action {
-    vertical-align: middle;
+    vertical-align: top;
     @include meta();
     display: table-cell;
+
+    &.container__action--sort {
+        padding-top: 12px;   
+    }
 }
 
 .container__action--comment,
@@ -105,11 +109,12 @@ Display a titled container for comments, cards or other components that should b
 
 .container__header {
     height: 54px;
+    
     .container__action { 
         
-            .touchpoint--primary {
-                display: none !important;
-            }
+        .touchpoint--primary {
+            display: none !important;
+        }
         
         .comments-closed-label {
             .touchpoint__label {
@@ -119,32 +124,29 @@ Display a titled container for comments, cards or other components that should b
     }
 }
 
+/*
 .discussion.comments--open .touchpoint--primary {
     display: block !important;
-    padding-top: 18px;
-}
+}*/
 
-.block.block--discussion-thread.block--discussion-thread--checked {
+/*.container__action.container__action--sort {
+    padding-top: 12px;
+}*/
+
+/*.block.block--discussion-thread.block--discussion-thread--checked {
    margin-top: 0;
-}
-
-.container__title {
-
-}
-
+}*/
 .comments--open {
     .container__header {
         height: 54px;
+        
         .container__action { 
+            .touchpoint--primary {
+                display: block !important;
+            }
             
-                .touchpoint--primary {
-                    display: block !important;
-                }
-            
-            .comments-closed-label {
-                .touchpoint__label {
-                    display: none !important;
-                }
+            .comments-closed-label .touchpoint__label {
+                display: none !important;
             }
         }
     }

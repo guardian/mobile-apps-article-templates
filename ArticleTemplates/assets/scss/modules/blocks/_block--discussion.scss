@@ -41,6 +41,10 @@ Display a discussion thread.
         display: none;
     }
 
+    &.block--discussion-thread--checked {
+        margin-top: 0;
+    }
+
     &.expand {
         .comment {
             display: block;
@@ -94,14 +98,16 @@ Display a discussion thread.
             .container__title__label {
                 line-height: 2.6rem;
             }
+            
             .touchpoint.comments-closed-label {
-               .touchpoint__label {
+                .touchpoint__label {
                     color: color(shade-2);
                     padding: 0;
                     display: block;
                }
             }
         }
+        
         .container__action {
             .comments-closed-label .touchpoint__label {
                 display: block;

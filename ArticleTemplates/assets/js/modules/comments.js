@@ -116,11 +116,9 @@ define([
                 };
                 window.commentsClosed = function () {
                     $("#comments, #discussion").addClass("comments--closed");
-                    window.logOnScreen("added comments--closed");
                 };
                 window.commentsOpen = function () {
                     $("#comments, #discussion").addClass("comments--open");
-                    window.logOnScreen("added comments--open");
                 };
                 window.commentTime = function () {
                     relativeDates.init('.comment__timestamp', 'title');
