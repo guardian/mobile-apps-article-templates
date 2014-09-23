@@ -124,18 +124,6 @@ Display a titled container for comments, cards or other components that should b
     }
 }
 
-/*
-.discussion.comments--open .touchpoint--primary {
-    display: block !important;
-}*/
-
-/*.container__action.container__action--sort {
-    padding-top: 12px;
-}*/
-
-/*.block.block--discussion-thread.block--discussion-thread--checked {
-   margin-top: 0;
-}*/
 .comments--open {
     .container__header {
         height: 54px;
@@ -156,9 +144,21 @@ Display a titled container for comments, cards or other components that should b
     overflow: hidden;
 }
 
+/* Android Tweaks - Displays Leave a comment icon by default */ 
+
 .android {
     .container {
         margin: base-px(0, 1, 0, 1);
+
+        &.comments--closed {
+            .container__action .touchpoint--primary {
+                display: none !important;
+            }  
+        }
+        
+        .container__action .touchpoint--primary {
+            display: block !important;
+        }
     }
 
     .container--related {
