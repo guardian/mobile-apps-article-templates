@@ -117,6 +117,9 @@ define([
                 window.commentsClosed = function () {
                     $("#comments, #discussion").addClass("comments--closed");
                 };
+                window.commentsOpen = function () {
+                    $("#comments, #discussion").addClass("comments--open");
+                };
                 window.commentTime = function () {
                     relativeDates.init('.comment__timestamp', 'title');
                 };
@@ -138,6 +141,7 @@ define([
                 window.applyNativeFunctionCall('articleCommentsInserter');
                 window.applyNativeFunctionCall('commentsFailed');
                 window.applyNativeFunctionCall('commentsClosed');
+                window.applyNativeFunctionCall('commentsOpen');
                 window.applyNativeFunctionCall('articleCommentsFailed');
             }
         },
