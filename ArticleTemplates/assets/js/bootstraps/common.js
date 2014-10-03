@@ -165,6 +165,9 @@ define([
             // Global function to resize font, called by native code
             window.fontResize = function (current, replacement) {
                 $(document.body).removeClass(current).addClass(replacement);
+                var replacementStr = replacement;
+                var replacementInt = replacementStr.split("-");
+                document.body.setAttribute("data-font-size", replacementInt[2]);
             };
         },
 
