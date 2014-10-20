@@ -82,6 +82,7 @@ define([
             },
             getMpuPosCallback : function(callbackNamespace, callbackFunction) {
                 console.info("Called getMpuPosCallback");
+                
                 modules.getMpuPos(function(x, y, w, h){
                     window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
                 });
@@ -98,7 +99,8 @@ define([
                 }
                 window.getMpuPosJson = modules.getMpuPosJson;
                 window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated;
-                window.getMpuPosCallback = modules.getMpuPosCallback;
+                // window.getMpuPosCallback = modules.getMpuPosCallback;
+                setTimeout(window.getMpuPosCallback = modules.getMpuPosCallback, 50);
                 // console.info("Ads ready");
             }
         };
