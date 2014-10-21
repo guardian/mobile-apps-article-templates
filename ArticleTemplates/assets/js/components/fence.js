@@ -71,7 +71,7 @@ define(function () {
 
     function render(iframe, options) {
         options = options || {};
-
+        console.info("I am fence");
         // Must only be run on <iframe>s with fenced class
         if (iframe.tagName !== 'IFRAME') {
             throw new Error('Cannot render non-iframe elements!');

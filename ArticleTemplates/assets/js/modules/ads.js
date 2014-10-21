@@ -80,12 +80,33 @@ define([
                     return x + ',' + y;
                 });
             },
-            getMpuPosCallback : function(callbackNamespace, callbackFunction) {
-                console.info("Called getMpuPosCallback");
+            getAds: function () {
+
+                window.getMpuPosCallback = function (callbackNamespace, callbackFunction) {
+
+                    var iframe = document.getElementsByTagName("iframe")[0];
+
+                    console.info("Called getMpuPosCallback");
+                    console.info("Passed in Vars getMpuPosCallback callbackNamespace "+callbackNamespace+" callbackFunction "+callbackFunction);
+                    
+                    function onloadhandler () { 
+                                console.info("onloadhandler triggered!");
+                                modules.getMpuPos(function(x, y, w, h){
+                                    window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
+                                });
+                    };   
                 
-                modules.getMpuPos(function(x, y, w, h){
-                    window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
-                });
+                    if (iframe) {
+                        console.info("iframe detected, delay ad load");
+                        // document.getElementsByTagName("iframe").onload = setTimeout(onloadhandler, 1000);
+                        setTimeout(onloadhandler, 1000);
+                    } else {
+                        console.info("normal article ad load");
+                        onloadhandler();
+                    }
+                }
+                window.applyNativeFunctionCall("getMpuPosCallback");
+
             }
         },
 
@@ -99,8 +120,7 @@ define([
                 }
                 window.getMpuPosJson = modules.getMpuPosJson;
                 window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated;
-                // window.getMpuPosCallback = modules.getMpuPosCallback;
-                setTimeout(window.getMpuPosCallback = modules.getMpuPosCallback, 50);
+                modules.getAds();
                 // console.info("Ads ready");
             }
         };
