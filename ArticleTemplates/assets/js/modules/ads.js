@@ -87,7 +87,6 @@ define([
                     var iframe = document.getElementsByTagName("iframe")[0];
 
                     console.info("Called getMpuPosCallback");
-                    console.info("Passed in Vars getMpuPosCallback callbackNamespace "+callbackNamespace+" callbackFunction "+callbackFunction);
                     
                     function onloadhandler () { 
                                 console.info("onloadhandler triggered!");
@@ -98,7 +97,6 @@ define([
                 
                     if (iframe) {
                         console.info("iframe detected, delay ad load");
-                        // document.getElementsByTagName("iframe").onload = setTimeout(onloadhandler, 1000);
                         setTimeout(onloadhandler, 1000);
                     } else {
                         console.info("normal article ad load");
