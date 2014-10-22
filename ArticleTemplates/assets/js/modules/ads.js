@@ -86,20 +86,14 @@ define([
 
                     var iframe = document.getElementsByTagName("iframe")[0];
 
-                    // console.info("Called getMpuPosCallback");
-                    
                     function onloadhandler () { 
-                                // console.info("onloadhandler triggered!");
-                                modules.getMpuPos(function(x, y, w, h){
-                                    window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
-                                });
+                        modules.getMpuPos(function(x, y, w, h){
+                            window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
+                        });
                     };   
-                
                     if (iframe) {
-                        // console.info("iframe detected, delay ad load");
                         setTimeout(onloadhandler, 3000);
                     } else {
-                        // console.info("normal article ad load");
                         onloadhandler();
                     }
                 }
@@ -119,7 +113,6 @@ define([
                 window.getMpuPosJson = modules.getMpuPosJson;
                 window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated;
                 modules.getAds();
-                // console.info("Ads ready");
             }
         };
 
