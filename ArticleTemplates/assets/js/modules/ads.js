@@ -86,20 +86,20 @@ define([
 
                     var iframe = document.getElementsByTagName("iframe")[0];
 
-                    console.info("Called getMpuPosCallback");
+                    // console.info("Called getMpuPosCallback");
                     
                     function onloadhandler () { 
-                                console.info("onloadhandler triggered!");
+                                // console.info("onloadhandler triggered!");
                                 modules.getMpuPos(function(x, y, w, h){
                                     window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
                                 });
                     };   
                 
                     if (iframe) {
-                        console.info("iframe detected, delay ad load");
-                        setTimeout(onloadhandler, 1000);
+                        // console.info("iframe detected, delay ad load");
+                        setTimeout(onloadhandler, 3000);
                     } else {
-                        console.info("normal article ad load");
+                        // console.info("normal article ad load");
                         onloadhandler();
                     }
                 }
