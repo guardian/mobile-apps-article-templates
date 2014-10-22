@@ -86,16 +86,14 @@ define([
 
                     var iframe = document.getElementsByTagName("iframe")[0];
 
-                    function onloadhandler () { 
+                    function onloadHandler () { 
                         modules.getMpuPos(function(x, y, w, h){
                             window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
                         });
                     };   
-                    if (iframe) {
-                        setTimeout(onloadhandler, 3000);
-                    } else {
-                        onloadhandler();
-                    }
+
+                    iframe ? setTimeout(onloadHandler, 3000) : onloadHandler();
+
                 }
                 window.applyNativeFunctionCall("getMpuPosCallback");
 
