@@ -55,7 +55,22 @@ define([
                 }
             },
 
-            // return the current MPU's position .
+            // return the current top Banner's position.
+            // This function is an internal function which accepts a function 
+            // formatter(left, top, width, height)
+
+            getBannerPos : function(formatter) {
+                var r;
+                var el = document.getElementById("advert-banner-content");
+                if (el) {
+                    r = el.getBoundingClientRect();
+                    return formatter(r.left + document.body.scrollLeft, r.top+document.body.scrollTop, r.width, r.height);
+                } else {
+                    return null;
+                }
+            },
+
+            // return the current MPU's position.
             // This function is an internal function which accepts a function 
             // formatter(left, top, width, height)
 
@@ -78,6 +93,12 @@ define([
             getMpuPosCommaSeparated : function() {
                 return modules.getMpuPos(function(x, y, w, h) { 
                     return x + ',' + y;
+                });
+            },
+            getBannerPosCallback : function(callbackNamespace, callbackFunction) {
+                console.info("Called getBannerPosCallback");
+                modules.getBannerPos(function(x, y, w, h){
+                    window.GuardianJSInterface.bannerAdsPosition(x, y, w, h);
                 });
             },
             getAds: function () {
@@ -110,6 +131,7 @@ define([
                 }
                 window.getMpuPosJson = modules.getMpuPosJson;
                 window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated;
+                window.getBannerPosCallback = modules.getBannerPosCallback;
                 modules.getAds();
             }
         };
