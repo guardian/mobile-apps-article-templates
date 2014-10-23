@@ -80,11 +80,23 @@ define([
                     return x + ',' + y;
                 });
             },
-            getMpuPosCallback : function(callbackNamespace, callbackFunction) {
-                console.info("Called getMpuPosCallback");
-                modules.getMpuPos(function(x, y, w, h){
-                    window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
-                });
+            getAds: function () {
+
+                window.getMpuPosCallback = function (callbackNamespace, callbackFunction) {
+
+                    var iframe = document.getElementsByTagName("iframe")[0];
+
+                    function onloadHandler () { 
+                        modules.getMpuPos(function(x, y, w, h){
+                            window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
+                        });
+                    };   
+
+                    iframe ? setTimeout(onloadHandler, 3000) : onloadHandler();
+
+                }
+                window.applyNativeFunctionCall("getMpuPosCallback");
+
             }
         },
 
@@ -98,8 +110,7 @@ define([
                 }
                 window.getMpuPosJson = modules.getMpuPosJson;
                 window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated;
-                window.getMpuPosCallback = modules.getMpuPosCallback;
-                // console.info("Ads ready");
+                modules.getAds();
             }
         };
 
