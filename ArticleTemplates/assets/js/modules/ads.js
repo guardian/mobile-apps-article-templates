@@ -61,7 +61,7 @@ define([
 
             getBannerPos : function(formatter) {
                 var r;
-                var el = document.getElementById("advert-banner-content");
+                var el = document.getElementById("banner_container");
                 if (el) {
                     r = el.getBoundingClientRect();
                     return formatter(r.left + document.body.scrollLeft, r.top+document.body.scrollTop, r.width, r.height);
@@ -96,8 +96,9 @@ define([
                 });
             },
             getBannerPosCallback : function(callbackNamespace, callbackFunction) {
-                console.info("Called getBannerPosCallback");
+                // console.info("Called getBannerPosCallback");
                 modules.getBannerPos(function(x, y, w, h){
+                    // console.info("left "+ x +" top " + y + " width "+ w +" height "+ h);
                     window.GuardianJSInterface.bannerAdsPosition(x, y, w, h);
                 });
             },
@@ -111,11 +112,11 @@ define([
                         modules.getMpuPos(function(x, y, w, h){
                             window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
                         });
-                    };   
+                    }   
 
-                    iframe ? setTimeout(onloadHandler, 3000) : onloadHandler();
+                    var loadAds = iframe ? setTimeout(onloadHandler, 3000) : onloadHandler();
 
-                }
+                };
                 window.applyNativeFunctionCall("getMpuPosCallback");
 
             }
