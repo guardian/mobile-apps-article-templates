@@ -61,6 +61,17 @@ $body-lead-2: 2.6rem;
     }
 }
 
+// Custom media querries 
+@mixin customMQ($point) {
+    /*  iPhone 6 */ 
+  @if $point == iP6 {
+    @media (min-width: 375px) { @content; }
+  }
+  /*  iPhone 6 Plus */ 
+  @else if $point == iP6P {
+    @media (min-width: 414px) { @content; }
+  }
+}
 
 // Meta font sizing
 $meta-size-1: 1.4rem;
