@@ -65,11 +65,11 @@ $body-lead-2: 2.6rem;
 @mixin customMQ($point) {
     /*  iPhone 6 */ 
   @if $point == iP6 {
-    @media (min-width: 375px) { @content; }
+    @media (min-width: 375px) and (max-width: 480px) { @content; }
   }
   /*  iPhone 6 Plus */ 
   @else if $point == iP6P {
-    @media (min-width: 414px) and (max-width: 416px) { @content; }
+    @media (min-width: 414px) and (max-width: 480px) { @content; }
   }
 }
 
