@@ -116,13 +116,16 @@ MPU
         .advert-slot__label {
             margin: 0 auto;
             width: 300px;
-            @include customMQ (iP6P) {
-                width: 100%; /* iPhone 6 plus */
-            }
         }
 
         .advert-slot__wrapper {
             margin: 0 auto;
+        }
+    }
+    /* iPhone 6 plus */
+    @include customMQ (iP6P) {
+        .advert-slot--mpu--mobile .advert-slot__label {
+            width: 100%;
         }
     }
 }
