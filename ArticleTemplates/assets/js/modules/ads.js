@@ -55,7 +55,22 @@ define([
                 }
             },
 
-            // return the current MPU's position .
+            // return the current top Banner's position.
+            // This function is an internal function which accepts a function 
+            // formatter(left, top, width, height)
+
+            getBannerPos : function(formatter) {
+                var r;
+                var el = document.getElementById("banner_container");
+                if (el) {
+                    r = el.getBoundingClientRect();
+                    return formatter(r.left + document.body.scrollLeft, r.top+document.body.scrollTop, r.width, r.height);
+                } else {
+                    return null;
+                }
+            },
+
+            // return the current MPU's position.
             // This function is an internal function which accepts a function 
             // formatter(left, top, width, height)
 
@@ -80,11 +95,30 @@ define([
                     return x + ',' + y;
                 });
             },
-            getMpuPosCallback : function(callbackNamespace, callbackFunction) {
-                console.info("Called getMpuPosCallback");
-                modules.getMpuPos(function(x, y, w, h){
-                    window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
+            getBannerPosCallback : function(callbackNamespace, callbackFunction) {
+                // console.info("Called getBannerPosCallback");
+                modules.getBannerPos(function(x, y, w, h){
+                    // console.info("left "+ x +" top " + y + " width "+ w +" height "+ h);
+                    window.GuardianJSInterface.bannerAdsPosition(x, y, w, h);
                 });
+            },
+            getAds: function () {
+
+                window.getMpuPosCallback = function (callbackNamespace, callbackFunction) {
+
+                    var iframe = document.getElementsByTagName("iframe")[0];
+
+                    function onloadHandler () { 
+                        modules.getMpuPos(function(x, y, w, h){
+                            window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
+                        });
+                    }   
+
+                    var loadAds = iframe ? setTimeout(onloadHandler, 3000) : onloadHandler();
+
+                };
+                window.applyNativeFunctionCall("getMpuPosCallback");
+
             }
         },
 
@@ -98,8 +132,8 @@ define([
                 }
                 window.getMpuPosJson = modules.getMpuPosJson;
                 window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated;
-                window.getMpuPosCallback = modules.getMpuPosCallback;
-                // console.info("Ads ready");
+                window.getBannerPosCallback = modules.getBannerPosCallback;
+                modules.getAds();
             }
         };
 

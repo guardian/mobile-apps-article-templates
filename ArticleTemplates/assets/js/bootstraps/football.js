@@ -139,6 +139,7 @@ define([
                 $(html).appendTo('#football__tabpanel--stats');
                 modules.footballChart(homeTeam, awayTeam);
                 if (!$('[aria-selected="true"]')) {
+                    console.log("Clicked");
                     $('#football__tabpanel--stats').hide();
                 }
             };
@@ -148,6 +149,7 @@ define([
                 if ($('.tabs [href="#football__tabpanel--stats"]').attr("aria-selected") === true) {
                     $('.tabs a:first-of-type').attr("aria-selected", true);
                     $($('.tabs [aria-selected="true"]').attr("href")).show();
+                    console.log("Clicked");
                 }
                 $('.tabs [href="#football__tabpanel--stats"]').remove();
             };
