@@ -97,10 +97,12 @@ Display a titled container for comments, cards or other components that should b
     float: right;
 }
 
-.container--comments {
-    .container__header {
-        .touchpoint__label {
-            display: none;
+@include mq($to: col1) {
+    .container--comments {
+        .container__header {
+            .touchpoint__label {
+                display: none;
+            }
         }
     }
 }
@@ -130,10 +132,10 @@ Display a titled container for comments, cards or other components that should b
             .touchpoint--primary {
                 display: block !important;
             }
-            
-            .comments-closed-label .touchpoint__label {
-                display: none !important;
-            }
+        }
+        
+        .comments-closed-label .touchpoint__label {
+            display: none !important;
         }
     }
 }
