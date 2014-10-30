@@ -182,6 +182,8 @@ define([
             // Set up tab events, show only first child
             $('.tabs a').each(function (el, i) {
                 var tabGroup = el.getAttribute('href');
+                var obj;
+                var AdStatus;
                 if (i > 0) {
                     $(tabGroup).hide();
                 }
@@ -193,6 +195,26 @@ define([
 
                     $($(this).attr('href')).show();
                     $(this).attr("aria-selected", true);
+
+                    var obj = $(this).attr("id");
+                    switch(obj) {
+                        case "football__tab--article":
+                            // console.info("Report Tab");
+                            window.location.href = 'x-gu://football_tab_report'
+                            break;
+                        case "football__tab--stats":
+                            // console.info("Stats Tab");
+                            window.location.href = 'x-gu://football_tab_stats'
+                            break;
+                        case "football__tab--liveblog":
+                            // console.info("Liveblog Tab");
+                            window.location.href = 'x-gu://football_tab_liveblog'
+                            break;
+                        default:
+                            // console.info("Unknown");
+                            window.location.href = 'x-gu://football_tab_unknown'
+                    }
+
                 });
             });
         }

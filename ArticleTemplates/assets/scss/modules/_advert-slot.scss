@@ -80,16 +80,30 @@ MPU
 
 // MPU-size advert
 .advert-slot--mpu {
-    border-top: 1px dotted color(shade-4);
+    border-top: 1px solid color(shade-4);
     width: 300px;
+    /*  Any res above 375w e.g. iPhone 6, 6 plus */
+    @include customMQ (iP6) {
+        padding-bottom: 15px;
+        width: 100%;  
+    }
 
     .advert-slot__label {
         padding: base-px(.5, 0, 2, .5);
+        /*  Any res above 375w e.g. iPhone 6, 6 plus */
+        @include customMQ (iP6) {
+            padding-bottom: 11px;
+            padding-left: 13px;
+        }
     }
 
     .advert-slot__wrapper {
         padding-top: 250px;
         height: 250px;
+        /*  Any res above 375w e.g. iPhone 6, 6 plus */
+        @include customMQ (iP6) {
+            width: 300px; 
+        }
     }
 }
 
@@ -106,6 +120,12 @@ MPU
 
         .advert-slot__wrapper {
             margin: 0 auto;
+        }
+    }
+    /*  Any res above 375w e.g. iPhone 6, 6 plus */
+    @include customMQ (iP6) {
+        .advert-slot--mpu--mobile .advert-slot__label {
+            width: 100%;
         }
     }
 }
