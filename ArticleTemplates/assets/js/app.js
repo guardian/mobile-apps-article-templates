@@ -3,24 +3,24 @@
 var gu = document.getElementById('gu'),
     baseUrl = gu.getAttribute('data-js-dir');
 
-require.config({
-    paths: {
-        bonzo: 'components/bonzo',
-        bean: 'components/bean',
-        d3: 'components/d3',
-        domReady: 'components/ready',
-        mobileSlider: 'components/mobile-range-slider',
-        fastClick: 'components/fastclick',
-        qwery: 'components/qwery',
-        fence: 'components/fence',
-        smoothScroll: 'components/smooth-scroll'
-    },
-    shim: {
-        d3: {
-            exports: 'd3'
-        }
-    }
-});
+// require.config({
+//     paths: {
+//         bonzo: 'components/bonzo',
+//         bean: 'components/bean',
+//         d3: 'components/d3',
+//         domReady: 'components/ready',
+//         mobileSlider: 'components/mobile-range-slider',
+//         fastClick: 'components/fastclick',
+//         qwery: 'components/qwery',
+//         fence: 'components/fence',
+//         smoothScroll: 'components/smooth-scroll'
+//     },
+//     shim: {
+//         d3: {
+//             exports: 'd3'
+//         }
+//     }
+// });
 
 require([
     'domReady',
