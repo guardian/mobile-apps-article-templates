@@ -31,7 +31,3 @@ guard 'hologram', config_path: 'hologram.yml' do
     watch(%r{DocumentationTemplates.+})
     watch('hologram.yml')
 end
-
-guard :jammit , :config_path => 'assets.yml', :public_root => 'ArticleTemplates' do
-  watch(%r{^ArticleTemplates/assets/js/(.*)\.js$})
-end
