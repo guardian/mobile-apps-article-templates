@@ -31,9 +31,9 @@ This will start [Guard](https://github.com/guard/guard), which we use to run the
 
 The templates now use a single JavaScript app.js file optimised with r.js and using RequireJS (AMD). There are three files in the new ArticlesTemplates/assets/build directory:
 
-build.js - the build script telling r.js the main config to build off
-r.js - the optimisation and concatenation tool
-app.js - the final output optimised/concatenated file used in the async call on each template page.
+* build.js - the build script telling r.js the main config to build off
+* r.js - the optimisation and concatenation tool
+* app.js - the final output optimised/concatenated file used in the async call on each template page.
 
 You will need NodeJS to run the build file, once Node is installed globally, run the following command in the directory:
 
