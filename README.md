@@ -27,6 +27,23 @@ This will start [Guard](https://github.com/guard/guard), which we use to run the
 * Lint a JS file when modified using [JSLint On Rails](https://github.com/wireframe/guard-jslint-on-rails).
 * Build documentation files. Documentation is built using [Hologram](https://github.com/trulia/hologram), and is configured with [hologram.yml](hologram.yml)
 
+## Javascript concatenation and obfuscation
+
+The templates now use a single JavaScript app.js file optimised with r.js and using RequireJS (AMD). There are three files in the new ArticlesTemplates/assets/build directory:
+
+build.js - the build script telling r.js the main config to build off
+r.js - the optimisation and concatenation tool
+app.js - the final output optimised/concatenated file used in the async call on each template page.
+
+You will need NodeJS to run the build file, once Node is installed globally, run the following command in the directory:
+
+`node r.js -o build.js`
+
+For debugging switch the data-main attribute source in the script async tag at the base of the template you wish to test from
+data-main="__TEMPLATES_DIRECTORY__assets/build/app.js" to data-main="__TEMPLATES_DIRECTORY__assets/js/app.js". This will load each module separately. Once debugged/finished then switch back and run the node r.js build.
+
+I want to add this as a Grunt task (or even a Guard task to run with Linter and SASS compiler) in the future so you don't have to keep running the build command.
+
 ## Updating the Documentation
 Documentation is built locally, but also available on the web at: http://guardian.github.io/mobile-apps-article-templates/, which displays the static files stored in the gh-pages branch. To update this publically viewable site with your latest changes, run the following commands:
 
