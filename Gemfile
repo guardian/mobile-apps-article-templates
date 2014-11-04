@@ -8,5 +8,4 @@ group :development do
   gem 'scss-lint', '0.24.0'
   gem 'guard-shell'
   gem 'guard-jslint-on-rails'
-  gem 'guard-jammit'
 end
