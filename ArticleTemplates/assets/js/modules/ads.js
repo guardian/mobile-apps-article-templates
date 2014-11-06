@@ -110,7 +110,7 @@ define([
             // Timer
             timer : function(time, yPos) {
                 setTimeout(function() {
-                    console.log(time, yPos);
+                    // console.log(time, yPos);
                     modules.runPoller(time, yPos);
                 }, 1000);
             },
@@ -120,14 +120,14 @@ define([
                 var yPolled;
                 if (thisNumber <= 20) { 
                     yPolled = modules.getMpuOffsetTop();
-                    console.info('y Polled position '+yPolled);
+                    // console.info('y Polled position '+yPolled);
                     if (yPolled != yPos) {
                           modules.getMpuPos(function(x, y, w, h){
                             window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
-                            console.log("Changed slot Y axis position "+x+" "+y+" "+w+" "+h);
+                            // console.log("Changed slot Y axis position "+x+" "+y+" "+w+" "+h);
                         });
                     yPos = yPolled;  
-                    console.log("yPos is now set to be "+yPos);
+                    // console.log("yPos is now set to be "+yPos);
                     }
                     modules.timer(thisNumber, yPos);
                 }
@@ -135,10 +135,8 @@ define([
             // Poll for offSetTop position changes
             posPoller : function(y) {
                 var yPos = y;
-    
-                console.info('y Loaded position '+yPos);
+                // console.info('y Loaded position '+yPos);
                 modules.runPoller(1, yPos);
-
             },
             getAds: function () {
 
@@ -149,13 +147,19 @@ define([
                     function onloadHandler () { 
                         modules.getMpuPos(function(x, y, w, h){
                             window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
-                            console.log("Initial slot position "+x+" "+y+" "+w+" "+h);
+                            // console.log("Initial slot position "+x+" "+y+" "+w+" "+h);
+                        });  
+                    }
+
+                    function iframeHandler () {
+                        modules.getMpuPos(function(x, y, w, h){
+                            window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
+                            // console.log("Initial slot position "+x+" "+y+" "+w+" "+h);
                             modules.posPoller(y);
                         });
-                        
                     }
-                    // var loadAds = iframe ? setTimeout(onloadHandler, 3000) : onloadHandler();
-                    var loadAds = iframe ? onloadHandler() : onloadHandler();
+
+                    var loadAds = iframe ? iframeHandler() : onloadHandler();
 
                 };
 
