@@ -95,12 +95,50 @@ define([
                     return x + ',' + y;
                 });
             },
+            getMpuOffsetTop : function() {
+                return modules.getMpuPos(function(x, y, w, h) { 
+                    return y;
+                });
+            },
             getBannerPosCallback : function(callbackNamespace, callbackFunction) {
                 // console.info("Called getBannerPosCallback");
                 modules.getBannerPos(function(x, y, w, h){
                     // console.info("left "+ x +" top " + y + " width "+ w +" height "+ h);
                     window.GuardianJSInterface.bannerAdsPosition(x, y, w, h);
                 });
+            },
+            // Timer
+            timer : function(time, yPos) {
+                setTimeout(function() {
+                    console.log(time, yPos);
+                    modules.runPoller(time, yPos);
+                }, 1000);
+            },
+            // Count
+            runPoller : function(start, yPos) {
+                var thisNumber = parseInt(start, 10) + 1;
+                var yPolled;
+                if (thisNumber <= 20) { 
+                    yPolled = modules.getMpuOffsetTop();
+                    console.info('y Polled position '+yPolled);
+                    if (yPolled != yPos) {
+                          modules.getMpuPos(function(x, y, w, h){
+                            window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
+                            console.log("Changed slot Y axis position "+x+" "+y+" "+w+" "+h);
+                        });
+                    yPos = yPolled;  
+                    console.log("yPos is now set to be "+yPos);
+                    }
+                    modules.timer(thisNumber, yPos);
+                }
+            },
+            // Poll for offSetTop position changes
+            posPoller : function(y) {
+                var yPos = y;
+    
+                console.info('y Loaded position '+yPos);
+                modules.runPoller(1, yPos);
+
             },
             getAds: function () {
 
@@ -111,12 +149,16 @@ define([
                     function onloadHandler () { 
                         modules.getMpuPos(function(x, y, w, h){
                             window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
+                            console.log("Initial slot position "+x+" "+y+" "+w+" "+h);
+                            modules.posPoller(y);
                         });
-                    }   
-
-                    var loadAds = iframe ? setTimeout(onloadHandler, 3000) : onloadHandler();
+                        
+                    }
+                    // var loadAds = iframe ? setTimeout(onloadHandler, 3000) : onloadHandler();
+                    var loadAds = iframe ? onloadHandler() : onloadHandler();
 
                 };
+
                 window.applyNativeFunctionCall("getMpuPosCallback");
 
             }
