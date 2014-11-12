@@ -142,7 +142,7 @@ define([
 
                 window.getMpuPosCallback = function (callbackNamespace, callbackFunction) {
 
-                    var iframe = document.getElementsByTagName("iframe")[0];
+                    var interactive  =  (document.getElementsByTagName("iframe")[0] || document.getElementsByClassName("interactive")[0]) ? true : false;
 
                     function onloadHandler () { 
                         modules.getMpuPos(function(x, y, w, h){
@@ -159,7 +159,7 @@ define([
                         });
                     }
 
-                    var loadAds = iframe ? iframeHandler() : onloadHandler();
+                    var loadAds = (interactive == true) ? iframeHandler() : onloadHandler();
 
                 };
 
