@@ -1,0 +1,129 @@
+.tone--liveBlog.is-live {
+    a.touchpoint,
+    .more--live-blogs,
+    .tags a {
+        color: color(tone-live);
+
+        &:active {
+            color: color(tone-live-accent);
+        }
+    }
+
+    #comments .touchpoint--primary {
+        .touchpoint__button {
+            background-color: color(tone-live);
+        }
+
+        &:active .touchpoint__button {
+            background-color: color(tone-live-accent);
+        }
+    }
+
+    // Template specific styles
+    .article--liveblog {
+        border-top-color: color(tone-live-accent);
+
+        .prose table,
+        .table {
+            border-top-color: color(tone-live);
+        }
+
+        .article__header {
+            background-color: color(tone-live);
+            color: #fff;
+
+            a {
+                color: #fff;
+
+                &:active {
+                    opacity: rgba(#fff, .8);
+                }
+            }
+
+            .bullet,
+            ul > li {
+                &::before {
+                    background-color: rgba(#fff, .8);
+                }
+            }
+
+            .headline,
+            .byline,
+            .section {
+                color: #fff;
+            }
+
+            .section {
+                @include mq($to: col1) {
+                    padding-left: base-px(5);
+                }
+
+                @include mq(col1, col2) {
+                    padding-left: base-px(6.5);
+                }
+
+                @include mq(col2, col3) {
+                    padding-left: cols($base-3, 4, 1);
+                }
+
+                @include mq($from: col3) {
+                    padding-left: cols($base-4, 5, 1);
+                }
+            }
+
+            .section__live {
+                display: block;
+            }
+
+            .headline,
+            .standfirst {
+                @include mq(col2, col3) {
+                    margin-left: cols($base-3, 4);
+                }
+
+                @include mq($from: col3) {
+                    margin-left: cols($base-4, 5);
+                }
+            }
+
+            .standfirst {
+                color: rgba(#fff, .8);
+
+                a {
+                    color: #fff;
+                }
+            }
+        }
+
+        .meta {
+            background-color: color(tone-live-accent);
+            border: 0;
+            border-left: 1px dotted rgba(#fff, .2);
+            margin: 0;
+
+            @include mq(col2, col3) {
+                padding-left: cols($base-3, 4);
+
+                .alerts {
+                    width: cols($base-3, 4);
+                }
+            }
+
+            @include mq($from: col3) {
+                padding-left: cols($base-4, 5);
+
+                .alerts {
+                    width: cols($base-4, 5);
+                }
+            }
+        }
+
+        .meta__pubdate {
+            color: rgba(#fff, .8);
+        }
+
+        .meta__comments {
+            border-left-color: rgba(#fff, .4);
+        }
+    }
+}
