@@ -22,6 +22,7 @@ var nativeFunctionCalls = [
     'commentsFailed',
     'articleCommentsFailed',
     'commentsClosed',
+    'commentsOpen',
     'commentsReplyFormatting',
     'footballMatchInfo',
     'footballMatchInfoFailed',
