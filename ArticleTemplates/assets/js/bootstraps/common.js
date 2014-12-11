@@ -8,6 +8,7 @@ define([
     'modules/ads',
     'modules/comments',
     'modules/cards',
+    'modules/check-tags',
     'modules/more-tags',
     'modules/$'
 ], function (
@@ -19,6 +20,7 @@ define([
     Ads,
     Comments,
     Cards,
+    CheckTags,
     MoreTags,
     $
 ) {
@@ -308,6 +310,7 @@ define([
             modules.setupOfflineSwitch();
             modules.setupAlertSwitch();
             modules.setupFontSizing();
+            modules.checkNoTags();
             modules.showMoreTagsLink();
             modules.showTabs();
             modules.setGlobalObject(window);
