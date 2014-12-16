@@ -8,7 +8,6 @@ define([
     'modules/ads',
     'modules/comments',
     'modules/cards',
-    'modules/check-tags',
     'modules/more-tags',
     'modules/$'
 ], function (
@@ -20,7 +19,6 @@ define([
     Ads,
     Comments,
     Cards,
-    CheckTags,
     MoreTags,
     $
 ) {
@@ -191,21 +189,10 @@ define([
             };
         },
 
-        checkNoTags: function () {
-                var totalTags = new CheckTags().init();
-                if (totalTags >= 5 ) {
-                    var innerDiv = document.createElement('div');
-                    innerDiv = "<li class='inline-list__item js-more-tags more-tags'>" +
-                                    "<button class='js-more-tags__link button button--small button--tag button--more'>More…</button>"+
-                                "</li>"
-                     iDiv.appendChild(innerDiv); // Need to finish!
-                }
-        },
-
-        showMoreTagsLink: function () {
-
+        showMoreTags: function () {
                 new MoreTags().init();
         },
+
 
         showTabs: function () {
             // Set up tab events, show only first child
@@ -310,8 +297,7 @@ define([
             modules.setupOfflineSwitch();
             modules.setupAlertSwitch();
             modules.setupFontSizing();
-            modules.checkNoTags();
-            modules.showMoreTagsLink();
+            modules.showMoreTags();
             modules.showTabs();
             modules.setGlobalObject(window);
 
