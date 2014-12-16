@@ -16,7 +16,7 @@ define([
 
         this.init = function () {
             var tags = $("#tags .inline-list__item a");
-            var string = "<li class='inline-list__item js-more-button'><a href='#' id='more'>more</a></li>";
+            var string = "<li class='inline-list__item more-button js-more-button'><a href='#' id='more'>more</a></li>";
             // var el = $("#more"); // *** Used for Bean not working ***
             var i = 0;
 
@@ -24,7 +24,7 @@ define([
                 var i = 0;
                 tags.each(function (index) {
                     console.log("Looping"+i);
-                    if (i >= 6) {
+                    if (i >= 5) {
                     $(this).parent().addClass("show-tags");
                     }
                     i++;
