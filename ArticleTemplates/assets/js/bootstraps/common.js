@@ -8,7 +8,6 @@ define([
     'modules/ads',
     'modules/comments',
     'modules/cards',
-    'modules/check-tags',
     'modules/more-tags',
     'modules/$'
 ], function (
@@ -20,7 +19,6 @@ define([
     Ads,
     Comments,
     Cards,
-    CheckTags,
     MoreTags,
     $
 ) {
