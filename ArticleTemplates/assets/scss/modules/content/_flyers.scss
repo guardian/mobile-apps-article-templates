@@ -29,8 +29,11 @@ Default styling no JavaScript enhancement:
         width: 13.75rem;
         margin: $gs-baseline / 3 $gs-gutter $gs-baseline / 2 0;
     @include mq(mobileLandscape) {
-        float: left;
         width: $gs-span;
+        margin: $gs-baseline / 3 $gs-gutter $gs-baseline / 2 0;
+    }
+    @include mq(mobileLandscapeWide) {
+        width: $gs-span-wide;
         margin: $gs-baseline / 3 $gs-gutter $gs-baseline / 2 0;
     }
 
@@ -67,89 +70,3 @@ Default styling no JavaScript enhancement:
         }
     }
 }
-
-// Base flyer styles
-//----------------------------------
-
-/*.flyer {
-    margin: 0;
-    position: relative;
-    overflow: hidden;
-
-    @include stars();
-
-    .stars {
-        padding-top: $gs-baseline / 4;
-    }
-
-    a {
-        color: colour(neutral-1);
-        color: inherit;
-    }
-}
-
-.flyer__image-container {
-    @include transition(background-color .25s ease);
-    background-color: rgba(0, 0, 0, .1);
-
-    .responsive-img {
-        @include transition(opacity .25s ease);
-    }
-}
-
-.flyer .u-faux-block-link--hover {
-    background-color: colour(neutral-6);
-
-    .flyer__image-container {
-        background-color: #000000;
-        .responsive-img {
-            opacity: .8;
-        }
-    }
-
-}
-
-.flyer__byline {
-    @include fs-header(3);
-    padding-right: $gs-gutter;
-}
-
-.flyer__title {
-    padding: 0;
-}
-
-.flyer__header {
-    padding: $gs-baseline / 3 $gs-gutter / 4 $gs-baseline;
-}
-
-.flyer__standfirst {
-    @include fs-headline(1);
-    padding: $gs-baseline / 3  $gs-gutter / 2 $gs-baseline $gs-gutter / 4;
-    ul {
-        list-style: none;
-        margin-bottom: $gs-baseline / 1.5;
-        
-    }
-}
-
-.flyer__link {
-    text-decoration: none;
-
-    &.u-faux-block-link__overlay {
-        z-index: 2;
-    }
-}
-
-.flyer__live {
-    font-weight: normal;
-}
-
-.flyer__container {
-    min-height: $gs-baseline * 5;
-    &:after {
-        content: '';
-        display: table;
-        clear: both;
-    }
-}
-*/
