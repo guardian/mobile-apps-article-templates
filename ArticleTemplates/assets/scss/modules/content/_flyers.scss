@@ -1,0 +1,72 @@
+/*doc
+---
+title: Flyers
+name: flyers
+category: Content
+---
+Display Flyers (Rich Media content links) progressively enhance with JavaScript. 
+
+Default styling no JavaScript enhancement:
+
+```html_example
+    <aside class="element element-rich-link element--supporting element-rich-link--not-upgraded" data-component="rich-link-1" data-link-name="rich-link-1 | 1">
+        <p><span>Related:</span>
+        <a class=" u-underline" data-component="in-body-link" data-link-name="in body link" href="http://www.theguardian.com/commentisfree/2014/dec/11/a-spoiled-brat-no-way-angelina-jolies-success-wasnt-handed-to-her">
+        A 'spoiled brat?' No way. Angelina Jolie's success wasn't handed to her | Jessica Valenti</a></p>
+    </aside>
+```
+
+*/
+
+// Default styling no JavaScript enhancement - styled on original DOM structure from MAPI
+//----------------------------------
+
+.element-rich-link {
+    border-top: 1px dotted color(neutral-3);
+    border-bottom: 1px dotted color(neutral-3);
+    margin-bottom: $gs-baseline / 1.5;
+        float: left;
+        width: 13.75rem;
+        margin: $gs-baseline / 3 $gs-gutter $gs-baseline / 2 0;
+    @include mq(mobileLandscape) {
+        width: $gs-span;
+        margin: $gs-baseline / 3 $gs-gutter $gs-baseline / 2 0;
+    }
+    @include mq(mobileLandscapeWide) {
+        width: $gs-span-wide;
+        margin: $gs-baseline / 3 $gs-gutter $gs-baseline / 2 0;
+    }
+
+    span {
+        display: none;
+    }
+
+    p {
+        margin: 12px 0px;
+    }
+
+    a {
+        font-size: $fs-main-link;
+        font-family: $egyptian-display;
+        font-weight: 600;
+        display: block;
+        padding: 0;
+        color: color(neutral-1);
+        border: 0;
+        background-image: none !important;
+        
+        &:hover {
+            text-decoration: underline !important;
+        }
+
+        &:before {
+            content: 'More on this topic';
+            display: block;
+            font-size: $fs-sub-link;
+            font-family: $egyptian-display;
+            color: color(neutral-2);
+            padding: $gs-baseline/4 0;
+            font-weight: 500;
+        }
+    }
+}
