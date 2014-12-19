@@ -27,7 +27,7 @@ Display which keywords an article has been tagged with.
     width: 100%;
     clear: both;
 
-    .more-button {
+    .more-button a {
         color: #333;
         background-color: transparent;
         background-color: white !important;
@@ -37,21 +37,26 @@ Display which keywords an article has been tagged with.
     .hide-tags {
         display: none;
     }
+    
     .show-tags {
         display: inline-block;
     }
 
     .inline-list__item {
-        background-color: #e0e0e0;
-        padding: 4px 16px 6px 16px;
-        border-radius: 30px;
+        margin:1rem 0;
         a {
             color: #333;
-        }
-        @include mq($to: col1) {
-            /*margin-bottom: 4px;*/
+            white-space: nowrap;
+            background-color: #e0e0e0;
+            padding: 4px 16px 6px 16px;
+            border-radius: 30px;
             margin: 4px;
+            text-overflow: ellipsis;
+            max-width: 18.75rem;
         }
+/*        @include mq($to: col1) {
+            margin: 4px;
+        }*/
 
         &:first-of-type {
             font-weight: bold;
