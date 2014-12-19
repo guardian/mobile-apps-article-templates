@@ -130,6 +130,7 @@ define([
         insertTags: function () {
             // Tag Function
             window.articleTagInserter = function (html) {
+                setTimeout(modules.showMoreTags, 0);
                 html = bonzo.create(html);
                 $(html).appendTo('.tags .inline-list');
                 MoreTags.refresh();
@@ -298,7 +299,6 @@ define([
             modules.setupOfflineSwitch();
             modules.setupAlertSwitch();
             modules.setupFontSizing();
-            modules.showMoreTags();
             modules.showTabs();
             modules.setGlobalObject(window);
 
