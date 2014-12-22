@@ -61,19 +61,62 @@ With live indicator:
     word-wrap: break-word;
 }*/
 
+/* Shared Live blog/Dead blog */
+
+.section__container {
+    position: relative;
+    float: left;
+    padding-bottom:16px;
+    border-bottom: 1px #999 dashed;
+    width:100%;
+    margin-bottom:10px;    
+    
+    .section {
+        color: color(tone-news); // Default
+        font-family: $egyptian-display;
+        font-weight: 600;
+        @include headline(.5);
+        float: left;
+        padding-bottom: 0;
+
+    &::before {
+        margin-right: base-px(.66666);
+        line-height: 92%; // Offset for different font
+        vertical-align: bottom;
+        }
+    }
+    .content__series-label {
+        font-weight: normal;
+        font-family: $egyptian-display;
+        @include headline(.5);
+        padding: 6px 12px 0 0;
+        padding-bottom: 0;
+        float: left;
+    }
+}
+
+.article__header h1 {
+    clear: both;
+}
+/* Live Blog */
+
+.tone--liveBlog {
+    .section__container {
+        border-bottom: 1px #FFF dashed; 
+    }
+    .section {
+        color: color(tone-liveBlogSection); // Default
+    }
+    .content__series-label {
+        color: color(tone-liveBlogSeriesLabel);
+    }
+}
+
 /* Dead Blog */
 
 .tone--deadBlog {
-    .section__container {
-        position: relative;
-        float: left;
-        padding-bottom:16px;
-        border-bottom: 1px #999 dashed;
-        width:100%;
-        margin-bottom:10px;    
-    }
     .section {
-        color: color(tone-deadBlogSection); // Default
+        color: color(tone-liveBlogSection); // Default
         font-family: $egyptian-display;
         font-weight: 600;
         @include headline(.5);
@@ -88,7 +131,7 @@ With live indicator:
     }
 
     .content__series-label {
-        color: color(tone-deadBlogSeriesLabel);
+        color: color(tone-liveBlogSeriesLabel);
         font-weight: normal;
         font-family: $egyptian-display;
         @include headline(.5);
@@ -97,48 +140,18 @@ With live indicator:
         float: left;
     }
 
-    .article__header h1 {
-        clear: both;
-    }
 }
 
 /* Review */
 
 .tone--review {
-    .section__container {
-        position: relative;
-        float: left;
-        padding-bottom:16px;
-        border-bottom: 1px #999 dashed;
-        width:100%;
-        margin-bottom:10px;    
-    }
+    
     .section {
         color: color(tone-reviewSection); // Default
-        font-family: $egyptian-display;
-        font-weight: 600;
-        @include headline(.5);
-        float: left;
-        padding-bottom: 0;
-
-        &::before {
-            margin-right: base-px(.66666);
-            line-height: 92%; // Offset for different font
-            vertical-align: bottom;
-        }
     }
 
     .content__series-label {
         color: color(tone-reviewSeriesLabel);
-        font-weight: normal;
-        font-family: $egyptian-display;
-        @include headline(.5);
-        padding: 6px 12px 0 0;
-        padding-bottom: 0;
-        float: left;
     }
 
-    .article__header h1 {
-        clear: both;
-    }
 }
