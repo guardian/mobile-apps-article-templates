@@ -133,9 +133,9 @@ define([
                 setTimeout(modules.showMoreTags, 0);
                 html = bonzo.create(html);
                 $(html).appendTo('.tags .inline-list');
-                window.logOnScreen("Inserting tags");
+                //window.logOnScreen("Inserting tags");
             };
-            window.applyNativeFunctionCall('articleTagInserter');
+            // window.applyNativeFunctionCall('articleTagInserter');
         },
 
         offline: function() {
