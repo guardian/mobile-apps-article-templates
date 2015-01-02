@@ -165,6 +165,41 @@ define([
 
                 window.applyNativeFunctionCall("getMpuPosCallback");
 
+            },
+            // Timer
+            iosTimer : function(time, yPos) {
+                setTimeout(function() {
+                    modules.runIosPoller(time, yPos);
+                }, 1000);
+            },
+            // Count
+            runIosPoller : function(start, yPos) {
+                var thisNumber = parseInt(start, 10) + 1;
+                var yPolled;
+                if (thisNumber <= 1000) { 
+                    yPolled = modules.getMpuOffsetTop();
+                    window.logOnScreen('y Polled position '+yPolled);
+                    if (yPolled != yPos) {
+                        window.logOnScreen("Changed slot Y axis position");
+                        window.location.href = 'x-gu://ad_moved';
+                        yPos = yPolled;  
+                        window.logOnScreen("yPos is now set to be "+yPos);
+                    }
+                    modules.iosTimer(thisNumber, yPos);
+                }
+            },
+            // Poll for offSetTop position changes
+            iosPoller : function(y) {
+                var yPos = y;
+                window.logOnScreen("Y position in PosPoller is "+y);
+                modules.runIosPoller(1, yPos);
+            },
+            updateAdsIos: function () {
+                var y;
+                window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated;
+                y = modules.getMpuOffsetTop();
+                window.logOnScreen("Y position "+y);
+                modules.iosPoller(y);
             }
         },
 
@@ -177,9 +212,10 @@ define([
                     modules.insertAdPlaceholders(config);
                 }
                 window.getMpuPosJson = modules.getMpuPosJson;
-                window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated;
-                window.getBannerPosCallback = modules.getBannerPosCallback;
-                modules.getAds();
+                // window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated; // Used by iOS
+                window.getBannerPosCallback = modules.getBannerPosCallback; // Used by Android
+                modules.getAds(); // Used by Android
+                modules.updateAdsIos(); // Used by iOS
             }
         };
 
