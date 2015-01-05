@@ -110,6 +110,7 @@ define([
                     window.GuardianJSInterface.bannerAdsPosition(x, y, w, h);
                 });
             },
+
             poller : function(interval, yPos, isAndroid, isInteractive, firstRun) {
                 var newYPos = modules.getMpuOffsetTop();
 
@@ -134,6 +135,7 @@ define([
                 modules.getMpuPos(function(x, y, w, h){
                     window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
                 });
+
             }
         },
 
@@ -155,7 +157,6 @@ define([
                         true
                     );                    
                 }
-
             }
         };
 
