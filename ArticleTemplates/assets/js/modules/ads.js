@@ -101,43 +101,39 @@ define([
                 });
             },
             getBannerPosCallback : function(callbackNamespace, callbackFunction) {
-                // console.info("Called getBannerPosCallback");
                 modules.getBannerPos(function(x, y, w, h){
-                    // console.info("left "+ x +" top " + y + " width "+ w +" height "+ h);
                     window.GuardianJSInterface.bannerAdsPosition(x, y, w, h);
                 });
             },
-            // Timer
+            // Android Timer
             timer : function(time, yPos) {
                 setTimeout(function() {
-                    // console.log(time, yPos);
                     modules.runPoller(time, yPos);
                 }, 1000);
             },
-            // Count
+            // Android Count
             runPoller : function(start, yPos) {
                 var thisNumber = parseInt(start, 10) + 1;
                 var yPolled;
                 if (thisNumber <= 20) { 
                     yPolled = modules.getMpuOffsetTop();
-                    // console.info('y Polled position '+yPolled);
+
                     if (yPolled != yPos) {
                           modules.getMpuPos(function(x, y, w, h){
                             window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
-                            // console.log("Changed slot Y axis position "+x+" "+y+" "+w+" "+h);
                         });
                     yPos = yPolled;  
-                    // console.log("yPos is now set to be "+yPos);
+
                     }
                     modules.timer(thisNumber, yPos);
                 }
             },
-            // Poll for offSetTop position changes
+            // Android Poll for offSetTop position changes
             posPoller : function(y) {
                 var yPos = y;
-                // console.info('y Loaded position '+yPos);
                 modules.runPoller(1, yPos);
             },
+            // Android Detect if iFrame present
             getAds: function () {
 
                 window.getMpuPosCallback = function (callbackNamespace, callbackFunction) {
@@ -147,14 +143,12 @@ define([
                     function onloadHandler () { 
                         modules.getMpuPos(function(x, y, w, h){
                             window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
-                            // console.log("Initial slot position "+x+" "+y+" "+w+" "+h);
                         });  
                     }
 
                     function iframeHandler () {
                         modules.getMpuPos(function(x, y, w, h){
                             window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
-                            // console.log("Initial slot position "+x+" "+y+" "+w+" "+h);
                             modules.posPoller(y);
                         });
                     }
@@ -166,39 +160,35 @@ define([
                 window.applyNativeFunctionCall("getMpuPosCallback");
 
             },
-            // Timer
+            // iOS Timer
             iosTimer : function(time, yPos) {
                 setTimeout(function() {
                     modules.runIosPoller(time, yPos);
                 }, 1000);
             },
-            // Count
+            // iOS Count
             runIosPoller : function(start, yPos) {
                 var thisNumber = parseInt(start, 10) + 1;
                 var yPolled;
                 if (thisNumber <= 1000) { 
                     yPolled = modules.getMpuOffsetTop();
-                    window.logOnScreen('y Polled position '+yPolled);
                     if (yPolled != yPos) {
-                        window.logOnScreen("Changed slot Y axis position");
                         window.location.href = 'x-gu://ad_moved';
                         yPos = yPolled;  
-                        window.logOnScreen("yPos is now set to be "+yPos);
                     }
                     modules.iosTimer(thisNumber, yPos);
                 }
             },
-            // Poll for offSetTop position changes
+            // iOS Poll for offSetTop position changes
             iosPoller : function(y) {
                 var yPos = y;
-                window.logOnScreen("Y position in PosPoller is "+y);
                 modules.runIosPoller(1, yPos);
             },
+            // iOS Ads, set Window object for ad position used by native code and start position polling
             updateAdsIos: function () {
                 var y;
                 window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated;
                 y = modules.getMpuOffsetTop();
-                window.logOnScreen("Y position "+y);
                 modules.iosPoller(y);
             }
         },
@@ -212,7 +202,6 @@ define([
                     modules.insertAdPlaceholders(config);
                 }
                 window.getMpuPosJson = modules.getMpuPosJson;
-                // window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated; // Used by iOS
                 window.getBannerPosCallback = modules.getBannerPosCallback; // Used by Android
                 modules.getAds(); // Used by Android
                 modules.updateAdsIos(); // Used by iOS
