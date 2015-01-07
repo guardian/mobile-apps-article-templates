@@ -195,6 +195,12 @@ define([
                 window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated;
                 y = modules.getMpuOffsetTop();
                 modules.iosPoller(y);
+            },
+            // general poller
+            poller : function(interval) {
+                interval = interval || 1000;
+                console.log(interval);
+                setTimeout(modules.poller.bind(modules, interval + 200), interval);
             }
         },
 
@@ -209,6 +215,7 @@ define([
                 window.getBannerPosCallback = modules.getBannerPosCallback; // Used by Android
                 modules.getAds(); // Used by Android
                 modules.updateAdsIos(); // Used by iOS
+                modules.poller();
             }
         };
 
