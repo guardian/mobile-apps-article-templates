@@ -197,10 +197,12 @@ define([
                 modules.iosPoller(y);
             },
             // general poller
-            poller : function(interval) {
-                interval = interval || 1000;
-                console.log(interval);
-                setTimeout(modules.poller.bind(modules, interval + 200), interval);
+            poller : function(interval, yPos, firstRun) {
+                var newYPos = modules.getMpuOffsetTop();
+                if(newYPos !== yPos){
+                    window.location.href = 'x-gu://ad_moved';
+                }
+                setTimeout(modules.poller.bind(modules, interval + 200, newYPos), interval);
             }
         },
 
@@ -212,10 +214,12 @@ define([
                     modules.insertAdPlaceholders(config);
                 }
                 window.getMpuPosJson = modules.getMpuPosJson;
-                window.getBannerPosCallback = modules.getBannerPosCallback; // Used by Android
+                window.getBannerPosCallback = modules.getBannerPosCallback; 
+                window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated; 
+
                 modules.getAds(); // Used by Android
-                modules.updateAdsIos(); // Used by iOS
-                modules.poller();
+                //modules.updateAdsIos(); // Used by iOS
+                modules.poller(1000, modules.getMpuOffsetTop(), true);
             }
         };
 
