@@ -129,13 +129,13 @@ define([
                 if(!isAndroid || (isAndroid && isInteractive)){
                     setTimeout(modules.poller.bind(modules, interval + 50, newYPos, isAndroid, isInteractive), interval);
                 }
+                modules.iosTimer(thisNumber, yPos, interval);
             },
 
             updateAndroidPosition : function() {
                 modules.getMpuPos(function(x, y, w, h){
                     window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
                 });
-
             }
         },
 
