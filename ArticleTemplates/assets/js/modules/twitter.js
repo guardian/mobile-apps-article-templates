@@ -1,11 +1,5 @@
 /*global twttr:false */
 
-/* TODO
- - check if there are tweets when 'more-content' is pressed == will be solved with #3
- - remove polling
- - add mediator and debounce 
-*/
-
 define([
     'bean',
     'bonzo',
