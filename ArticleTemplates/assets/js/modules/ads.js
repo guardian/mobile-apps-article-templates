@@ -167,7 +167,6 @@ define([
             // iOS Timer
             iosTimer : function(time, yPos, interval) {
 
-                // window.logOnScreen('Loop interval is '+interval);
                 setTimeout(function() {
                     modules.runIosPoller(time, yPos, interval);
                 }, interval);
@@ -176,7 +175,7 @@ define([
             runIosPoller : function(start, yPos, interval) {
                 var thisNumber = parseInt(start, 10) + 1;
                 interval = interval + 200;
-                // window.logOnScreen('thisNumber is '+thisNumber);
+
                 var yPolled;
                 yPolled = modules.getMpuOffsetTop();
                 if (yPolled != yPos) {
@@ -198,7 +197,6 @@ define([
                 modules.iosPoller(y);
             }
         },
-
 
         ready = function (config) {
             if (!this.initialised) {
