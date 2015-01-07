@@ -132,11 +132,11 @@ define([
                 modules.iosTimer(thisNumber, yPos, interval);
             },
 
+
             updateAndroidPosition : function() {
                 modules.getMpuPos(function(x, y, w, h){
                     window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
                 });
-
             }
         },
 
@@ -146,7 +146,6 @@ define([
                 
                 if (config.adsEnabled == "true") {
                     modules.insertAdPlaceholders(config);
-
                     window.getMpuPosJson = modules.getMpuPosJson;
                     window.getBannerPosCallback = modules.getBannerPosCallback; 
                     window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated; 
