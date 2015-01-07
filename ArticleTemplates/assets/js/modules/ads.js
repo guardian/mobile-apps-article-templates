@@ -1,8 +1,10 @@
 /*global window,document,console,define */
 define([
-    'modules/$'
+    'modules/$',
+    'bonzo'
 ], function (
-    $
+    $,
+    bonzo
 ) {
     'use strict';
 
@@ -197,12 +199,30 @@ define([
                 modules.iosPoller(y);
             },
             // general poller
-            poller : function(interval, yPos, firstRun) {
+            poller : function(interval, yPos, isAndroid, isInteractive, firstRun) {
                 var newYPos = modules.getMpuOffsetTop();
-                if(newYPos !== yPos){
-                    window.location.href = 'x-gu://ad_moved';
+
+                if(firstRun && isAndroid){
+                    modules.updateAndroidPosition()
                 }
-                setTimeout(modules.poller.bind(modules, interval + 200, newYPos), interval);
+
+                if(newYPos !== yPos){
+                    if(isAndroid){
+                        modules.updateAndroidPosition();
+                    } else {
+                        window.location.href = 'x-gu://ad_moved';
+                    }                    
+                }
+               
+                if(!isAndroid || (isAndroid && isInteractive)){
+                    setTimeout(modules.poller.bind(modules, interval + 50, newYPos, isAndroid), interval);
+                }
+            },
+
+            updateAndroidPosition : function() {
+                modules.getMpuPos(function(x, y, w, h){
+                    window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
+                });
             }
         },
 
@@ -212,14 +232,21 @@ define([
                 
                 if (config.adsEnabled == "true") {
                     modules.insertAdPlaceholders(config);
-                }
-                window.getMpuPosJson = modules.getMpuPosJson;
-                window.getBannerPosCallback = modules.getBannerPosCallback; 
-                window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated; 
 
-                modules.getAds(); // Used by Android
-                //modules.updateAdsIos(); // Used by iOS
-                modules.poller(1000, modules.getMpuOffsetTop(), true);
+                    window.getMpuPosJson = modules.getMpuPosJson;
+                    window.getBannerPosCallback = modules.getBannerPosCallback; 
+                    window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated; 
+
+                    //modules.getAds(); // Used by Android
+                    //modules.updateAdsIos(); // Used by iOS
+                    modules.poller(1000, 
+                        modules.getMpuOffsetTop(), 
+                        $('body').hasClass('android'), 
+                        $('iframe, body.interactive').length,
+                        true
+                    );                    
+                }
+
             }
         };
 
