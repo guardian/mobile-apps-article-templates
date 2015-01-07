@@ -136,6 +136,7 @@ define([
                 modules.getMpuPos(function(x, y, w, h){
                     window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
                 });
+
             }
         },
 
