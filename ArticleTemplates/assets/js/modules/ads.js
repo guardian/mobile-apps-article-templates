@@ -22,7 +22,8 @@ define([
                     
                     if (tagName == "P" || tagName == "H2" || tagName == "BLOCKQUOTE") {
                         counter++;
-                    } else if (tagName == "FIGURE" && $(this).hasClass("element-placeholder") || $(this).hasClass("element-video")) {
+                    } else if (tagName == "FIGURE" && $(this).hasClass("element-placeholder") || 
+                        $(this).hasClass("element-video")) {
                         counter++;
                     }
                     
@@ -32,7 +33,7 @@ define([
                     var tabletMpuHtml = "<div class='advert-slot advert-slot--mpu advert-slot--mpu--tablet'>" +
                                             "<div class='advert-slot__label'>Advertisement</div>" +
                                             "<div class=\"advert-slot__wrapper\" id=\"advert-slot__wrapper\">" +
-                                                "<div class='advert-slot__wrapper__content' id=" + tabletMpuId + "></div>" +
+                                            "<div class='advert-slot__wrapper__content' id=" + tabletMpuId + "></div>" +
                                             "</div>" +
                                         "</div>";
 
@@ -43,7 +44,7 @@ define([
                     var mobileMpuHtml = "<div class='advert-slot advert-slot--mpu advert-slot--mpu--mobile'>" +
                                             "<div class='advert-slot__label'>Advertisement</div>" +
                                             "<div class=\"advert-slot__wrapper\" id=\"advert-slot__wrapper\">" +
-                                                "<div class='advert-slot__wrapper__content' id=" + mobileMpuId + "></div>" +
+                                            "<div class='advert-slot__wrapper__content' id=" + mobileMpuId + "></div>" +
                                             "</div>" +
                                         "</div>",
 
@@ -64,7 +65,8 @@ define([
                 var el = document.getElementById("banner_container");
                 if (el) {
                     r = el.getBoundingClientRect();
-                    return formatter(r.left + document.body.scrollLeft, r.top+document.body.scrollTop, r.width, r.height);
+                    return formatter(r.left + document.body.scrollLeft, r.top+document.body.scrollTop, 
+                        r.width, r.height);
                 } else {
                     return null;
                 }
@@ -79,7 +81,8 @@ define([
                 var el = document.getElementById("advert-slot__wrapper");
                 if (el) {
                     r = el.getBoundingClientRect();
-                    return formatter(r.left + document.body.scrollLeft, r.top+document.body.scrollTop, r.width, r.height);
+                    return formatter(r.left + document.body.scrollLeft, 
+                        r.top+document.body.scrollTop, r.width, r.height);
                 } else {
                     return null;
                 }
@@ -138,7 +141,8 @@ define([
 
                 window.getMpuPosCallback = function (callbackNamespace, callbackFunction) {
 
-                    var interactive  =  (document.getElementsByTagName("iframe")[0] || document.getElementsByClassName("interactive")[0]) ? true : false;
+                    var interactive  =  (document.getElementsByTagName("iframe")[0] || 
+                        document.getElementsByClassName("interactive")[0]) ? true : false;
 
                     function onloadHandler () { 
                         modules.getMpuPos(function(x, y, w, h){
@@ -161,28 +165,30 @@ define([
 
             },
             // iOS Timer
-            iosTimer : function(time, yPos) {
+            iosTimer : function(time, yPos, interval) {
+
+                // window.logOnScreen('Loop interval is '+interval);
                 setTimeout(function() {
-                    modules.runIosPoller(time, yPos);
-                }, 1000);
+                    modules.runIosPoller(time, yPos, interval);
+                }, interval);
             },
             // iOS Count
-            runIosPoller : function(start, yPos) {
+            runIosPoller : function(start, yPos, interval) {
                 var thisNumber = parseInt(start, 10) + 1;
+                interval = interval + 200;
+                // window.logOnScreen('thisNumber is '+thisNumber);
                 var yPolled;
-                if (thisNumber <= 1000) { 
-                    yPolled = modules.getMpuOffsetTop();
-                    if (yPolled != yPos) {
-                        window.location.href = 'x-gu://ad_moved';
-                        yPos = yPolled;  
-                    }
-                    modules.iosTimer(thisNumber, yPos);
+                yPolled = modules.getMpuOffsetTop();
+                if (yPolled != yPos) {
+                    window.location.href = 'x-gu://ad_moved';
+                    yPos = yPolled;  
                 }
+                modules.iosTimer(thisNumber, yPos, interval);
             },
             // iOS Poll for offSetTop position changes
             iosPoller : function(y) {
                 var yPos = y;
-                modules.runIosPoller(1, yPos);
+                modules.runIosPoller(1, yPos, 1000);
             },
             // iOS Ads, set Window object for ad position used by native code and start position polling
             updateAdsIos: function () {
