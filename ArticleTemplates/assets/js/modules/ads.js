@@ -113,9 +113,6 @@ define([
             poller : function(interval, yPos, isAndroid, isInteractive, firstRun) {
                 var newYPos = modules.getMpuOffsetTop();
 
-
-                console.log(interval, yPos, newYPos, isAndroid, isInteractive, firstRun);
-
                 if(firstRun && isAndroid){
                     modules.updateAndroidPosition()
                 }
@@ -151,12 +148,10 @@ define([
                     window.getBannerPosCallback = modules.getBannerPosCallback; 
                     window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated; 
 
-                    //modules.getAds(); // Used by Android
-                    //modules.updateAdsIos(); // Used by iOS
                     modules.poller(1000, 
                         modules.getMpuOffsetTop(), 
                         $('body').hasClass('android'), 
-                        $('iframe, body.interactive').length,
+                        $('iframe, body.interactive, blockquote.twitter-tweet, blockquote.js-tweet').length,
                         true
                     );                    
                 }
