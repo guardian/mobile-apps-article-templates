@@ -41,6 +41,29 @@
     }
 }
 
+@mixin rating() {
+    $review-size-1: 2rem;
+    $review-lead-1: 2.2rem;
+    $review-size-2: 3rem;
+    $review-lead-2: 3.2rem;
+/*    $review-size-3: 3rem;
+    $review-lead-3: 4.8rem;*/
+    
+    @include mq($to: col1) {
+        font-size: $review-size-1;
+        line-height: $review-lead-1;
+    }
+
+    @include mq(col1, col2) {
+        font-size: $review-size-2;
+        line-height: $review-lead-2;
+    }
+
+/*    @include mq($from: col2) {
+        font-size: $review-size-3 * $multiple;
+        line-height: $review-lead-3 * $multiple;
+    }*/
+}
 
 // Body font sizing
 $body-size-1: 1.6rem;
