@@ -105,102 +105,16 @@ define([
                     return y;
                 });
             },
-            getBannerPosCallback : function(callbackNamespace, callbackFunction) {
+            getBannerPosCallback : function() {
                 modules.getBannerPos(function(x, y, w, h){
                     window.GuardianJSInterface.bannerAdsPosition(x, y, w, h);
                 });
             },
-            // Android Timer
-            timer : function(time, yPos) {
-                setTimeout(function() {
-                    modules.runPoller(time, yPos);
-                }, 1000);
-            },
-            // Android Count
-            runPoller : function(start, yPos) {
-                var thisNumber = parseInt(start, 10) + 1;
-                var yPolled;
-                if (thisNumber <= 20) { 
-                    yPolled = modules.getMpuOffsetTop();
-
-                    if (yPolled != yPos) {
-                          modules.getMpuPos(function(x, y, w, h){
-                            window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
-                        });
-                    yPos = yPolled;  
-
-                    }
-                    modules.timer(thisNumber, yPos);
-                }
-            },
-            // Android Poll for offSetTop position changes
-            posPoller : function(y) {
-                var yPos = y;
-                modules.runPoller(1, yPos);
-            },
-            // Android Detect if iFrame present
-            getAds: function () {
-
-                window.getMpuPosCallback = function (callbackNamespace, callbackFunction) {
-
-                    var interactive  =  (document.getElementsByTagName("iframe")[0] || 
-                        document.getElementsByClassName("interactive")[0]) ? true : false;
-
-                    function onloadHandler () { 
-                        modules.getMpuPos(function(x, y, w, h){
-                            window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
-                        });  
-                    }
-
-                    function iframeHandler () {
-                        modules.getMpuPos(function(x, y, w, h){
-                            window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
-                            modules.posPoller(y);
-                        });
-                    }
-
-                    var loadAds = (interactive === true) ? iframeHandler() : onloadHandler();
-
-                };
-
-                window.applyNativeFunctionCall("getMpuPosCallback");
-
-            },
-            // iOS Timer
-            iosTimer : function(time, yPos, interval) {
-
-                setTimeout(function() {
-                    modules.runIosPoller(time, yPos, interval);
-                }, interval);
-            },
-            // iOS Count
-            runIosPoller : function(start, yPos, interval) {
-                var thisNumber = parseInt(start, 10) + 1;
-                interval = interval + 200;
-
-                var yPolled;
-                yPolled = modules.getMpuOffsetTop();
-                if (yPolled != yPos) {
-                    window.location.href = 'x-gu://ad_moved';
-                    yPos = yPolled;  
-                }
-                modules.iosTimer(thisNumber, yPos, interval);
-            },
-            // iOS Poll for offSetTop position changes
-            iosPoller : function(y) {
-                var yPos = y;
-                modules.runIosPoller(1, yPos, 1000);
-            },
-            // iOS Ads, set Window object for ad position used by native code and start position polling
-            updateAdsIos: function () {
-                var y;
-                window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated;
-                y = modules.getMpuOffsetTop();
-                modules.iosPoller(y);
-            },
-            // general poller
             poller : function(interval, yPos, isAndroid, isInteractive, firstRun) {
                 var newYPos = modules.getMpuOffsetTop();
+
+
+                console.log(interval, yPos, newYPos, isAndroid, isInteractive, firstRun);
 
                 if(firstRun && isAndroid){
                     modules.updateAndroidPosition()
@@ -215,7 +129,7 @@ define([
                 }
                
                 if(!isAndroid || (isAndroid && isInteractive)){
-                    setTimeout(modules.poller.bind(modules, interval + 50, newYPos, isAndroid), interval);
+                    setTimeout(modules.poller.bind(modules, interval + 50, newYPos, isAndroid, isInteractive), interval);
                 }
             },
 
