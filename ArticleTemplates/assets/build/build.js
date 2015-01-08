@@ -2,7 +2,7 @@
     baseUrl: "../js",
 	mainConfigFile: '../js/app.js',
     name: "app",
-    out: "app.js",
+    out: "app.js"
 
     // use this to avoid compression while debugging
     // uglify: {

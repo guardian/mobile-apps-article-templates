@@ -110,9 +110,11 @@ define([
                     window.GuardianJSInterface.bannerAdsPosition(x, y, w, h);
                 });
             },
-
             poller : function(interval, yPos, isAndroid, isInteractive, firstRun) {
                 var newYPos = modules.getMpuOffsetTop();
+
+
+                console.log(interval, yPos, newYPos, isAndroid, isInteractive, firstRun);
 
                 if(firstRun && isAndroid){
                     modules.updateAndroidPosition()
