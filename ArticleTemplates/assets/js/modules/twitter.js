@@ -12,7 +12,7 @@ define([
     $
 ) {
     var timeoutId;
-    var body = qwery('.article__body--liveblog');
+    var body = qwery('#article-body');
 
     function bootstrap() {
         bean.on(window, 'scroll', function(){             
@@ -31,6 +31,7 @@ define([
             viewportHeight      = bonzo.viewport().height,
             scrollTop           = bonzo(document.body).scrollTop(),
             processedTweets     = 0;
+
 
         tweetElements.forEach(function (element) {
             var $el = bonzo(element);
