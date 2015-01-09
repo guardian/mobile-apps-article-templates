@@ -94,6 +94,14 @@ module.exports = function(grunt) {
                 success: true, 
                 duration: 3 
             }
+        },
+
+        // Build
+
+        shell: {
+            android: {
+                command: 'cd ' + config.base.android + '../../../../  && ./gradlew zipTemplates && ./gradlew assembleDebug && cp android-news-app/build/outputs/apk/android-news-app-debug.apk ' + config.base.html
+            }
         }
 
     });
@@ -101,5 +109,6 @@ module.exports = function(grunt) {
     grunt.task.run('notify_hooks');
 
     grunt.registerTask('develop', ['watch']);
+    grunt.registerTask('build', ['shell']);
     grunt.registerTask('default', 'develop');
 };
