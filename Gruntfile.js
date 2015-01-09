@@ -109,6 +109,6 @@ module.exports = function(grunt) {
     grunt.task.run('notify_hooks');
 
     grunt.registerTask('develop', ['watch']);
-    grunt.registerTask('build', ['shell']);
+    grunt.registerTask('build', ['rsync', 'shell']);
     grunt.registerTask('default', 'develop');
 };
