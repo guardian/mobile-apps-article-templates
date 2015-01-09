@@ -159,7 +159,7 @@ define([
                         });
                     }
 
-                    var loadAds = (interactive == true) ? iframeHandler() : onloadHandler();
+                    var loadAds = (interactive === true) ? iframeHandler() : onloadHandler();
 
                 };
 

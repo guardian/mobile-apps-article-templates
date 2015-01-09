@@ -1,3 +1,4 @@
+/*jshint -W007 */
 /*!
  *
  * collagePlus Plugin v0.3.2
@@ -14,8 +15,8 @@
  * http://www.opensource.org/licenses/GPL-2.0
  *
  */
-
 /*global window,console,define */
+
 define([
     'bean',
     'bonzo',
@@ -39,6 +40,7 @@ define([
         return $obj.parent().css(css);
     }
 
+    /* jshint ignore:start */
     function resizeRow(obj, row, settings, rownum) {
         var imageExtras             = (settings.padding * (obj.length - 1)),
             albumWidthAdjusted      = settings.albumWidth - imageExtras,
@@ -49,8 +51,9 @@ define([
         for (var i = 0; i < obj.length; i++) {
             var $obj                = $(obj[i][0]),
                 fw                  = Math.floor(obj[i][1] * overPercent),
-                fh                  = Math.floor(obj[i][2] * overPercent),
+                fh                  = Math.floor(obj[i][2] * overPercent),                
                 isNotLast           = !!(( i < obj.length - 1));
+                
 
             if (settings.allowPartialLastRow === true && lastRow === true) {
                 fw = obj[i][1];
@@ -76,6 +79,7 @@ define([
             applyModifications($obj, isNotLast, settings);
         }
     }
+    /* jshint ignore:end */
 
     function init (selector, children, orientation) {
         // Set defaults based off window size

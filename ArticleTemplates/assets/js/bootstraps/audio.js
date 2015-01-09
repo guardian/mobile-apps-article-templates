@@ -95,7 +95,7 @@ define([
                 };
 
                 window.audioBackground = function (duration) {
-                    if ($(".cutout__container").attr("data-background") == null && !$("body").hasClass("media")) {
+                    if ($(".cutout__container").attr("data-background") === null && !$("body").hasClass("media")) {
                         var numOfCircles = Math.floor((duration / 60) / 2) + 2,
                             h = $(".article__header").offset().height,
                             w = $(".article__header").offset().width,
