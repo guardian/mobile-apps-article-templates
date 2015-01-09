@@ -12,7 +12,7 @@ define([
     $
 ) {
     var timeoutId;
-    var body = qwery('#article-body');
+    var body = qwery('.article__body');
 
     function bootstrap() {
         bean.on(window, 'scroll', function(){             
