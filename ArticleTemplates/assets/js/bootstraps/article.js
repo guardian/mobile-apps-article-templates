@@ -34,6 +34,6 @@ define([
     };
 
     return {
-        init: ready,
+        init: ready
     };
 });
