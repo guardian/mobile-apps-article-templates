@@ -13,6 +13,7 @@ define([
 ) {
     var timeoutId;
     var body = qwery('.article__body');
+    var isAndroid = $('body').hasClass('android');
 
     function bootstrap() {
         bean.on(window, 'scroll', function(){             
@@ -30,6 +31,7 @@ define([
             widgetScript        = qwery('#twitter-widget'),
             viewportHeight      = bonzo.viewport().height,
             scrollTop           = bonzo(document.body).scrollTop(),
+            bindedCallBack      = false,
             processedTweets     = 0;
 
 
@@ -52,11 +54,27 @@ define([
                 $(document.body).append(scriptElement);
             } else {
                 if (typeof twttr !== 'undefined' && 'widgets' in twttr && 'load' in twttr.widgets) {
+                    if(!bindedCallBack){
+                        twttr.events.bind('rendered', workaroundClicks);
+                    }
                     if(processedTweets){
                         twttr.widgets.load(body);
                     }
                 }
             }
+        }
+    }
+
+    function workaroundClicks(evt) {
+        if(isAndroid){
+            bean.on(evt.target.contentWindow.document, 'click', 'a', function(evt){
+                var anchor = evt.currentTarget;
+                window.open(anchor.getAttribute('href'));
+                evt.stopImmediatePropagation();
+                evt.preventDefault();
+            });
+        } else {
+            $('a.web-intent', evt.target.contentWindow.document).removeClass('web-intent');
         }
     }
 

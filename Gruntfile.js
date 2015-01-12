@@ -63,7 +63,11 @@ module.exports = function(grunt) {
                     baseUrl: "ArticleTemplates/assets/js",
                     mainConfigFile: 'ArticleTemplates/assets/js/app.js',
                     name: "app",
-                    out: "ArticleTemplates/assets/build/app.js"
+                    out: "ArticleTemplates/assets/build/app.js",
+                    optimize: 'uglify2',
+                    generateSourceMaps: true,
+                    preserveLicenseComments: false,
+                    useSourceUrl: true                    
                 }
             }
         },
