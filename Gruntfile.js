@@ -35,6 +35,11 @@ module.exports = function(grunt) {
         },
 
         scsslint: {
+            options: {
+                bundleExec: true,
+                config: 'ArticleTemplates/assets/scss/.scss-lint.yml',
+                force: true
+            },
             dev: [
                 'ArticleTemplates/assets/scss/**/*.scss',
             ]
