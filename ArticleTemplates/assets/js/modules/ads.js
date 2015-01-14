@@ -117,7 +117,7 @@ define([
                 console.log(interval, yPos, newYPos, isAndroid, isInteractive, firstRun);
 
                 if(firstRun && isAndroid){
-                    modules.updateAndroidPosition()
+                    modules.updateAndroidPosition();
                 }
 
                 if(newYPos !== yPos){
