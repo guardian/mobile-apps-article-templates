@@ -50,24 +50,6 @@ require([
             adsConfig: document.body.getAttribute('data-ads-config')
         };
 
-    window.logOnScreen = function(log) 
-        {
-            if (!window.loggingPanel)
-            {
-                window.loggingPanel = document.createElement("div");
-                window.loggingPanel.setAttribute("id", "logging-panel");
-                window.loggingPanel.setAttribute("style", "font-size:1rem;position:fixed;bottom:0;background-color:rgba(0,0,0,0.7);height:20%;width:100%;z-index:30;color:orange;overflow-y:scroll;padding:3px;");
-                document.documentElement.appendChild(loggingPanel);
-                window.loggingPanel.innerHTML +='|||||HEADER|||||'+$(".headline.selectable")[0].innerHTML+'|||||';
-                window.loggingPanel.innerHTML +='<br>--------------------------------------------------------------<br>';
-                window.onerror = function myErrorHandler(errorMsg, url, lineNumber)
-                {
-                    window.logOnScreen(errorMsg+' '+url+' '+lineNumber);
-                };
-            }
-            window.loggingPanel.innerHTML += log+' | <br>';
-        };
-
         // Common bootstrap
         Common.init(config);
 
