@@ -106,11 +106,12 @@ define([
 
         ready = function () {
             if (!this.initialised) {
+                embeds.init();
                 this.initialised = true;
                 modules.setupGlobals();
                 window.liveblogTime();
                 modules.blockUpdates();
-                modules.liveMore();
+                modules.liveMore();                
                 setInterval(window.liveblogTime, 30000);
                 twitter.init();
                 twitter.enhanceTweets();

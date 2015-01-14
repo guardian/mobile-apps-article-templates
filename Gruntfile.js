@@ -90,7 +90,7 @@ module.exports = function(grunt) {
             },
             copy: {
                 files: ['ArticleTemplates/**'],
-                tasks: ['rsync']
+                tasks: ['shell:timeline', 'rsync']
             }
         },
 
@@ -105,11 +105,30 @@ module.exports = function(grunt) {
             }
         },
 
+        // Test
+
+        express: {
+            test: {
+                options: {
+                    server: 'test/server.js'
+                }
+            }
+        },
+
         // Build
 
         shell: {
             android: {
                 command: 'cd ' + config.base.android + '../../../../  && ./gradlew zipTemplates && ./gradlew assembleDebug && cp android-news-app/build/outputs/apk/android-news-app-debug.apk ' + config.base.html
+            },
+            timeline: {
+                command: function(){
+                    if( grunt.option('fixture') ){
+                        return '`which adb` forward tcp:9222 localabstract:chrome_devtools_remote && `which ruby` test/performance/timeline.rb ' + config.performance.server + ' ' + grunt.option('fixture');
+                    } else {
+                        return '';
+                    }
+                }
             }
         }
 
@@ -117,7 +136,7 @@ module.exports = function(grunt) {
 
     grunt.task.run('notify_hooks');
 
-    grunt.registerTask('develop', ['watch']);
-    grunt.registerTask('build', ['rsync', 'shell']);
+    grunt.registerTask('develop', ['express','watch']);
+    grunt.registerTask('build', ['rsync', 'shell:android']);
     grunt.registerTask('default', 'develop');
 };
