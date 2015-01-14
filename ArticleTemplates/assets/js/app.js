@@ -63,7 +63,7 @@ require([
                 window.onerror = function myErrorHandler(errorMsg, url, lineNumber)
                 {
                     window.logOnScreen(errorMsg+' '+url+' '+lineNumber);
-                }
+                };
             }
             window.loggingPanel.innerHTML += log+' | <br>';
         };
