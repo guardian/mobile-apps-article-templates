@@ -113,9 +113,6 @@ define([
             poller : function(interval, yPos, isAndroid, isInteractive, firstRun) {
                 var newYPos = modules.getMpuOffsetTop();
 
-
-                console.log(interval, yPos, newYPos, isAndroid, isInteractive, firstRun);
-
                 if(firstRun && isAndroid){
                     modules.updateAndroidPosition();
                 }
@@ -131,9 +128,7 @@ define([
                 if(!isAndroid || (isAndroid && isInteractive)){
                     setTimeout(modules.poller.bind(modules, interval + 50, newYPos, isAndroid, isInteractive), interval);
                 }
-                modules.iosTimer(thisNumber, yPos, interval);
             },
-
 
             updateAndroidPosition : function() {
                 modules.getMpuPos(function(x, y, w, h){
