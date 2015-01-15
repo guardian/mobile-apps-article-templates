@@ -1,10 +1,12 @@
 /*global window,document,console,define */
 define([
     'bean',
-    'modules/$'
+    'modules/$',
+    'modules/twitter'
 ], function (
     bean,
-    $
+    $,
+    twitter
 ) {
     'use strict';
 
@@ -25,6 +27,8 @@ define([
         if (!this.initialised) {
             this.initialised = true;
             modules.asideWitness();
+            twitter.init();
+            twitter.enhanceTweets();
             // console.info("Article ready");
         }
     };

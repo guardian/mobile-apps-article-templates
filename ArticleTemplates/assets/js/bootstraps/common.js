@@ -246,6 +246,7 @@ define([
             modules.setupAlertSwitch();
             modules.setupFontSizing();
             modules.showTabs();
+
             if (!$("body").hasClass("no-ready")) {
                 window.location.href = 'x-gu://ready';
             }

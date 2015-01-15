@@ -3,12 +3,14 @@ define([
     'bean',
     'bonzo',
     'modules/relativeDates',
-    'modules/$'
+    'modules/$',
+    'modules/twitter'
 ], function (
     bean,
     bonzo,
     relativeDates,
-    $
+    $, 
+    twitter
 ) {
     'use strict';
 
@@ -110,6 +112,8 @@ define([
                 modules.blockUpdates();
                 modules.liveMore();
                 setInterval(window.liveblogTime, 30000);
+                twitter.init();
+                twitter.enhanceTweets();
                 // console.info("Liveblog ready");
             }
         };

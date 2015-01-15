@@ -1307,13 +1307,16 @@ Provide a summary of events:
   [class*="block--live-"] .block__body {
     float: left; }
     [class*="block--live-"] .block__body .quoted,
-    [class*="block--live-"] .block__body .twitter-tweet {
+    [class*="block--live-"] .block__body .twitter-tweet,
+    [class*="block--live-"] .block__body .js-tweet {
       position: relative; }
       [class*="block--live-"] .block__body .quoted::before,
-      [class*="block--live-"] .block__body .twitter-tweet::before {
+      [class*="block--live-"] .block__body .twitter-tweet::before,
+      [class*="block--live-"] .block__body .js-tweet::before {
         position: absolute;
         left: -4rem; }
-    [class*="block--live-"] .block__body .twitter-tweet::before {
+    [class*="block--live-"] .block__body .twitter-tweet::before,
+    [class*="block--live-"] .block__body .js-tweet::before {
       left: -5rem; } }
 @media all and (min-width: 40.625em) and (max-width: 56.24em) {
   [class*="block--live-"] .block__body {
@@ -3046,13 +3049,13 @@ Adds typographic styling, typically to content fetched from the Guardian Content
   .prose blockquote.quoted::before {
     content: '\e029';
     margin-top: -.75rem; }
-  .prose blockquote.twitter-tweet {
+  .prose blockquote.twitter-tweet, .prose blockquote.js-tweet {
     font-family: "Agate Sans", sans-serif;
     font-size: 1.4rem;
     line-height: 2rem; }
-    .prose blockquote.twitter-tweet::before {
+    .prose blockquote.twitter-tweet::before, .prose blockquote.js-tweet::before {
       content: '\e06b'; }
-    .prose blockquote.twitter-tweet p {
+    .prose blockquote.twitter-tweet p, .prose blockquote.js-tweet p {
       color: #666;
       font-size: 1.6rem;
       line-height: 2.2rem;
