@@ -27,7 +27,7 @@ define([
                 var i = 0;
                 // window.logOnScreen("EL "+el);
                 tags.each(function (index) {
-                    // console.log("Looping"+i);
+                    console.log("Looping"+i);
                     // window.logOnScreen("Looping"+i);
                     if (i >= 5) {
                     $(this).parent().addClass("show-tags");
@@ -39,7 +39,7 @@ define([
             }
 
             tags.each(function () {
-                // console.log("Module More Tags is Looping "+i);
+                console.log("Module More Tags is Looping "+i);
                 // window.logOnScreen("Module More Tags is Looping "+i);
                 if (i > 4) {
                     // console.log("5 "+ i);

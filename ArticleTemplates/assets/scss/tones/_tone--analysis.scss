@@ -1,129 +1,61 @@
-.tone--liveBlog.is-live {
-    a.touchpoint,
-    .more--live-blogs 
-    {
-        color: color(tone-live);
+.tone--analysis {
 
-        &:active {
-            color: color(tone-live-accent);
+    .article__header {
+        background-color: color(tone-analysis-header-bg);
+        
+        .section {
+            color: color(tone-analysis-section-label); // Content Label Section
         }
+        .content__series-label {
+            color: color(tone-analysis-series-label);  // Content Label Series
+        }
+        .headline {
+            color: color(tone-analysis-headline); // Headline
+            padding: base-px(0, 1, 2.5, 1);
+            p.review-rating {
+                padding-top: 12px;
+                @include rating;
+            }
+        }
+        .standfirst {
+            color: color(tone-analysis-standfirst);
+        }
+        .selectable a {
+            color: color(tone-analysis-standfirst-links) !important;
+        }
+        .meta {
+            background-color: color(tone-analysis-meta-background);
+
+            .meta__byline .byline,
+            .meta__byline a, 
+            .meta__comments,
+            .meta__comments a {
+                color: color(tone-analysis-byline);
+            }
+            .meta__byline .byline,
+            .meta__byline a {
+                font-weight: 600;
+            }
+            .meta__pubdate{
+               color: color(tone-analysis-meta-pubdate);
+            }
+        }
+        .main-media__caption {
+            background-color: color(tone-analysis-media-caption-bg);
+        }
+
     }
 
-    #comments .touchpoint--primary {
-        .touchpoint__button {
-            background-color: color(tone-live);
-        }
+    .tags {
 
-        &:active .touchpoint__button {
-            background-color: color(tone-live-accent);
-        }
-    }
-
-    // Template specific styles
-    .article--liveblog {
-        border-top-color: color(tone-live-accent);
-
-        .prose table,
-        .table {
-            border-top-color: color(tone-live);
-        }
-
-        .article__header {
-            background-color: color(tone-live);
-            color: #fff;
+        .inline-list__item {
 
             a {
-                color: #fff;
-
-                &:active {
-                    opacity: rgba(#fff, .8);
-                }
-            }
-
-            .bullet,
-            ul > li {
-                &::before {
-                    background-color: rgba(#fff, .8);
-                }
-            }
-
-            .headline,
-            .byline,
-            .section {
-                color: #fff;
-            }
-
-            .section {
-                @include mq($to: col1) {
-                    padding-left: base-px(5);
-                }
-
-                @include mq(col1, col2) {
-                    padding-left: base-px(6.5);
-                }
-
-                @include mq(col2, col3) {
-                    padding-left: cols($base-3, 4, 1);
-                }
-
-                @include mq($from: col3) {
-                    padding-left: cols($base-4, 5, 1);
-                }
-            }
-
-            .section__live {
-                display: block;
-            }
-
-            .headline,
-            .standfirst {
-                @include mq(col2, col3) {
-                    margin-left: cols($base-3, 4);
-                }
-
-                @include mq($from: col3) {
-                    margin-left: cols($base-4, 5);
-                }
-            }
-
-            .standfirst {
-                color: rgba(#fff, .8);
-
-                a {
-                    color: #fff;
-                }
+                color: color(tone-analysis-tags-text);
+                background-color: color(tone-analysis-tags-bg);
             }
         }
 
-        .meta {
-            background-color: color(tone-live-accent);
-            border: 0;
-            border-left: 1px dotted rgba(#fff, .2);
-            margin: 0;
-
-            @include mq(col2, col3) {
-                padding-left: cols($base-3, 4);
-
-                .alerts {
-                    width: cols($base-3, 4);
-                }
-            }
-
-            @include mq($from: col3) {
-                padding-left: cols($base-4, 5);
-
-                .alerts {
-                    width: cols($base-4, 5);
-                }
-            }
-        }
-
-        .meta__pubdate {
-            color: rgba(#fff, .8);
-        }
-
-        .meta__comments {
-            border-left-color: rgba(#fff, .4);
-        }
     }
+
 }

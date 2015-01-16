@@ -1,4 +1,60 @@
 .tone--review {
+
+    .article__header {
+        background-color: color(tone-review-header-bg);
+        .section {
+            color: color(tone-review-section-label); // Content Label Section
+        }
+        .content__series-label {
+            color: color(tone-review-series-label);  // Content Label Series
+        }
+        .headline {
+            color: color(tone-review-headline); // Headline
+            padding: base-px(0, 1, 2.5, 1);
+            p.review-rating {
+                padding-top: base-px(.7);
+                @include rating;
+            }
+        }
+        .standfirst {
+            color: color(tone-review-standfirst);
+        }
+        .selectable a {
+            color: color(tone-review-standfirst-links) !important;
+        }
+        .meta {
+            background-color: color(tone-review-meta-background);
+
+            .meta__byline .byline,
+            .meta__byline a, 
+            .meta__comments,
+            .meta__comments a {
+                color: color(tone-review-byline);
+            }
+            .meta__pubdate{
+               color: color(tone-review-meta-pubdate);
+            }
+        }
+        .main-media__caption {
+            background-color: color(tone-review-media-caption-bg);
+        }
+
+    }
+
+    .tags {
+
+        .inline-list__item {
+
+            a {
+                color: color(tone-review-tags-text);
+                background-color: color(tone-review-tags-bg);
+            }
+        }
+
+    }
+
+}
+/*.tone--review {
     .article__header {
         background-color: color(tone-review);
         .headline {
@@ -33,5 +89,4 @@
         }
 
     }
-}
-
+}*/

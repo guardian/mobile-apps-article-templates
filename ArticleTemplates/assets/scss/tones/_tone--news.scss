@@ -1,0 +1,56 @@
+.tone--news {
+
+    .article__header {
+        background-color: color(tone-news-header-bg);
+        .section {
+            color: color(tone-news-section-label); // Content Label Section
+        }
+        .content__series-label {
+            color: color(tone-news-series-label);  // Content Label Series
+        }
+        .headline {
+            color: color(tone-news-headline); // Headline
+            padding: base-px(0, 1, 2.5, 1);
+            p.review-rating {
+                padding-top: 12px;
+                @include rating;
+            }
+        }
+        .standfirst {
+            color: color(tone-news-standfirst);
+        }
+        .selectable a {
+            color: color(tone-news-standfirst-links) !important;
+        }
+        .meta {
+            background-color: color(tone-news-meta-background);
+
+            .meta__byline .byline,
+            .meta__byline a, 
+            .meta__comments,
+            .meta__comments a {
+                color: color(tone-news-byline);
+            }
+            .meta__pubdate{
+               color: color(tone-news-meta-pubdate);
+            }
+        }
+        .main-media__caption {
+            background-color: color(tone-news-media-caption-bg);
+        }
+
+    }
+
+    .tags {
+
+        .inline-list__item {
+
+            a {
+                color: color(tone-news-tags-text);
+                background-color: color(tone-news-tags-bg);
+            }
+        }
+
+    }
+
+}

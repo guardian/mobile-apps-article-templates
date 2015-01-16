@@ -42,6 +42,121 @@ A standard colour palette used across the Guardian’s digital products.
 */
 
 $gu-colours: (
+
+/* New Tonal colour Definitions */
+
+    /* Example Tone called "Sample"
+
+    tone-sample:                    main tone colour (used throughout app on links etc.)
+    tone-sample-headline:           headline colour
+    tone-analysis-header-bg:        main background of article header
+    tone-sample-standfirst:         Standfirst (below headline intro copy) text colour
+    tone-sample-standfirst-links:   Standfirst link colour
+    tone-sample-accent:             thin line at article top colour
+    tone-sample-section-label:      section label colour
+    tone-sample-series-label:       series label colour
+    tone-sample-meta-background:    meta background (base part of top container)
+    tone-sample-meta-byline:        author (byline) and comment icon colour
+    tone-sample-meta-pubdate:       publish date
+    tone-sample-media-caption-bg:   fig caption background
+    tone-sample-links:              article body text links
+    tone-sample-tags-text:          tag text colour         
+    tone-sample-tags-bg:            tag lozenge background colour 
+
+    /* Most Regular Articles */
+
+    tone-news:                      #005689,
+    tone-news-headline:             #333,
+    tone-news-header-bg:            #fff,
+    tone-news-standfirst:           #666,
+    tone-news-standfirst-links:     #005689,
+    tone-news-accent:               #4bc6df,
+    tone-news-section-label:        #005689,
+    tone-news-series-label:         #767676,
+    tone-news-meta-background:      #f6f6f6,
+    tone-news-byline:               #005689,
+    tone-news-meta-pubdate:         #999,
+    tone-news-media-caption-bg:     #fff,
+    tone-news-links:                #005689,
+    tone-news-tags-text:            #333,         
+    tone-news-tags-bg:              #e0e0e0,
+
+    /* Live Blogs */
+
+    tone-live:                      #b51800,
+    tone-live-headline:             #ffffff,
+    tone-live-header-bg:            #b51800,
+    tone-live-standfirst:           #ffffff, /* NB additional opacity given by property */
+    tone-live-standfirst-links:     #ffffff, /* NB additional opacity given by property */
+    tone-live-accent:               #cc2b12,
+    tone-live-section-label:        #ffffff,
+    tone-live-series-label:         #ffffff,
+    tone-live-meta-background:      #cc2b12,
+    tone-live-byline:               #ffffff,
+    tone-live-meta-pubdate:         #999999,
+    tone-live-media-caption-bg:     #ffffff,
+    tone-live-links:                #005689, /* NB additional opacity given by property */
+    tone-live-tags-text:            #333,         
+    tone-live-tags-bg:              #e0e0e0,
+
+    /* Deadblogs */
+    
+    tone-deadblog:                  #b51800,
+    tone-deadblog-headline:         #333333,
+    tone-deadblog-header-bg:        #ffffff,
+    tone-deadblog-standfirst:       #666, /* NB additional opacity given by property */
+    tone-deadblog-standfirst-list:  #484848, /* Unique to Deadblog as different from Standfirst */
+    tone-deadblog-standfirst-links: #b51800, /* NB additional opacity given by property */
+    tone-deadblog-accent:           #b51800,         
+    tone-deadblog-section-label:    #cc2b12,
+    tone-deadblog-series-label:     #767676,  
+    tone-deadblog-meta-background:  #f6f6f6,
+    tone-deadblog-byline:           #333333,
+    tone-deadblog-meta-pubdate:     #999999,
+    tone-deadblog-media-caption-bg: #ffffff,
+    tone-deadblog-links:            #005689, /* NB additional opacity given by property */
+    tone-deadblog-tags-text:        #333,         
+    tone-deadblog-tags-bg:          #f6f6f6,
+
+    /* Reviews */
+    
+    tone-review:                    #615b52,
+    tone-review-headline:           #ffffff,
+    tone-review-header-bg:          #615b52,
+    tone-review-standfirst:         #ffffff, /* NB additional opacity given by property */
+    tone-review-standfirst-links:   #ffffff, /* NB additional opacity given by property */
+    tone-review-accent:             #ffce4b,
+    tone-review-section-label:      #ffce4b,
+    tone-review-series-label:       #ffffff,
+    tone-review-meta-background:    #7d7569,
+    tone-review-byline:             #ffce4b,
+    tone-review-meta-pubdate:       #fff,
+    tone-review-media-caption-bg:   #fff,
+    tone-review-links:              #005689, /* NB additional opacity given by property */
+    tone-review-tags-text:          #333,         
+    tone-review-tags-bg:            #f1f1f1,
+    tone-review-tags-bg-press:      #d7d7d7,
+    
+    /* Analysis */
+
+    tone-analysis:                  #005689,
+    tone-analysis-headline:         #005689,
+    tone-analysis-header-bg:        #ffffff,
+    tone-analysis-standfirst:       #666666, /* NB additional opacity given by property */
+    tone-analysis-standfirst-links: #005689, /* NB additional opacity given by property */
+    tone-analysis-accent:           #005689,
+    tone-analysis-section-label:    #005689,
+    tone-analysis-series-label:     #767676,
+    tone-analysis-meta-background:  #f6f6f6,
+    tone-analysis-byline:           #005689,
+    tone-analysis-meta-pubdate:     #999999,
+    tone-analysis-media-caption-bg: #ffffff,
+    tone-analysis-links:            #005689, /* NB additional opacity given by property */
+    tone-analysis-tags-text:        #333,         
+    tone-analysis-tags-bg:          #e0e0e0,
+
+/* Pre-existing additonal tones */
+
     // Neutral shades
     shade-1:               #333,
     shade-2:               #666,
@@ -51,28 +166,6 @@ $gu-colours: (
     shade-6:               #524d45,
 
     // Tonal colours
-    tone-news:             #005689,
-    tone-news-accent:      #4bc6df,
-    tone-newsSection:      #cc2b12,
-    tone-newsSeriesLabel:  #767676,
-
-    tone-live:             #b51800,
-    tone-live-accent:      #cc2b12,
-
-    tone-deadBlog:         #b51800,      
-    tone-deadBlog-accent:  #f6f6f6,
-    tone-deadBlogSection:  #cc2b12,
-    tone-deadBlogSeriesLabel: #767676,  
-
-    tone-review:           #615b52,
-    tone-review-accent:    #ffce4b,
-    tone-reviewSection:    #ffce4b,
-    tone-reviewSeriesLabel: #fff,
-
-    tone-analysis:         #fff,
-    tone-analysis-accent:  #fff,
-    tone-analysisSection:      #005689,
-    tone-analysisSeriesLabel:  #767676,
 
     tone-media:            #fb0,
     tone-media-accent:     #ffd35c,
@@ -99,6 +192,7 @@ $gu-colours: (
     neutral-1:             #333,
     neutral-2:             #767676,
     neutral-3:             #bdbdbd
+
 );
 
 // Colour palette
