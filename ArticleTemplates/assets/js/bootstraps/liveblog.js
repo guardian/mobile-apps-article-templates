@@ -5,6 +5,7 @@ define([
     'modules/relativeDates',
     'modules/$',
     'modules/twitter'
+
 ], function (
     bean,
     bonzo,
@@ -106,7 +107,6 @@ define([
 
         ready = function () {
             if (!this.initialised) {
-                embeds.init();
                 this.initialised = true;
                 modules.setupGlobals();
                 window.liveblogTime();
