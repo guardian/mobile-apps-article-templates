@@ -55,8 +55,7 @@
 
             .section {
                 @include mq($to: col1) {
-                    // padding-left: base-px(4);
-                    padding-left: 48px;
+                    padding-left: base-px(4);
                 }
 
                 @include mq(col1, col2) {
@@ -70,8 +69,7 @@
                 @include mq($from: col3) {
                     padding-left: cols($base-4, 5, 1);
                 }
-                padding-left: 48px !important;
-                padding: 7px 8px;
+                padding-left: base-px(4);
             }
 
             .section__live {
