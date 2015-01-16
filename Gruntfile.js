@@ -88,9 +88,13 @@ module.exports = function(grunt) {
                 files: ['ArticleTemplates/assets/scss/**/*.scss'],
                 tasks: ['scsslint','sass']
             },
+            timeline: {
+                files: ['ArticleTemplates/**', 'test/fixture/**', 'test/performance/**'],
+                tasks: ['shell:timeline']
+            },
             copy: {
                 files: ['ArticleTemplates/**'],
-                tasks: ['shell:timeline', 'rsync']
+                tasks: ['rsync']
             }
         },
 

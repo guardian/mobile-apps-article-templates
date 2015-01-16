@@ -19,6 +19,9 @@ Grunt will provide the following services:
 * javascript linting and minification
 * rsync with both the iOs and the Android local codebase.
 
+## Experimental performance measurament
+
+
 ## Updating the Documentation
 Documentation is built locally, to rebuild the documentation just type: `grunt hologram`
 
