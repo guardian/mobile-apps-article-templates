@@ -1,8 +1,10 @@
 /*global window,document,console,define */
 define([
-    'modules/$'
+    'modules/$',
+    'bonzo'
 ], function (
-    $
+    $,
+    bonzo
 ) {
     'use strict';
 
@@ -22,7 +24,8 @@ define([
                     
                     if (tagName == "P" || tagName == "H2" || tagName == "BLOCKQUOTE") {
                         counter++;
-                    } else if (tagName == "FIGURE" && $(this).hasClass("element-placeholder") || $(this).hasClass("element-video")) {
+                    } else if (tagName == "FIGURE" && $(this).hasClass("element-placeholder") || 
+                        $(this).hasClass("element-video")) {
                         counter++;
                     }
                     
@@ -32,7 +35,7 @@ define([
                     var tabletMpuHtml = "<div class='advert-slot advert-slot--mpu advert-slot--mpu--tablet'>" +
                                             "<div class='advert-slot__label'>Advertisement</div>" +
                                             "<div class=\"advert-slot__wrapper\" id=\"advert-slot__wrapper\">" +
-                                                "<div class='advert-slot__wrapper__content' id=" + tabletMpuId + "></div>" +
+                                            "<div class='advert-slot__wrapper__content' id=" + tabletMpuId + "></div>" +
                                             "</div>" +
                                         "</div>";
 
@@ -43,7 +46,7 @@ define([
                     var mobileMpuHtml = "<div class='advert-slot advert-slot--mpu advert-slot--mpu--mobile'>" +
                                             "<div class='advert-slot__label'>Advertisement</div>" +
                                             "<div class=\"advert-slot__wrapper\" id=\"advert-slot__wrapper\">" +
-                                                "<div class='advert-slot__wrapper__content' id=" + mobileMpuId + "></div>" +
+                                            "<div class='advert-slot__wrapper__content' id=" + mobileMpuId + "></div>" +
                                             "</div>" +
                                         "</div>",
 
@@ -64,7 +67,8 @@ define([
                 var el = document.getElementById("banner_container");
                 if (el) {
                     r = el.getBoundingClientRect();
-                    return formatter(r.left + document.body.scrollLeft, r.top+document.body.scrollTop, r.width, r.height);
+                    return formatter(r.left + document.body.scrollLeft, r.top+document.body.scrollTop, 
+                        r.width, r.height);
                 } else {
                     return null;
                 }
@@ -79,7 +83,8 @@ define([
                 var el = document.getElementById("advert-slot__wrapper");
                 if (el) {
                     r = el.getBoundingClientRect();
-                    return formatter(r.left + document.body.scrollLeft, r.top+document.body.scrollTop, r.width, r.height);
+                    return formatter(r.left + document.body.scrollLeft, 
+                        r.top+document.body.scrollTop, r.width, r.height);
                 } else {
                     return null;
                 }
@@ -100,74 +105,37 @@ define([
                     return y;
                 });
             },
-            getBannerPosCallback : function(callbackNamespace, callbackFunction) {
-                // console.info("Called getBannerPosCallback");
+            getBannerPosCallback : function() {
                 modules.getBannerPos(function(x, y, w, h){
-                    // console.info("left "+ x +" top " + y + " width "+ w +" height "+ h);
                     window.GuardianJSInterface.bannerAdsPosition(x, y, w, h);
                 });
             },
-            // Timer
-            timer : function(time, yPos) {
-                setTimeout(function() {
-                    // console.log(time, yPos);
-                    modules.runPoller(time, yPos);
-                }, 1000);
-            },
-            // Count
-            runPoller : function(start, yPos) {
-                var thisNumber = parseInt(start, 10) + 1;
-                var yPolled;
-                if (thisNumber <= 20) { 
-                    yPolled = modules.getMpuOffsetTop();
-                    // console.info('y Polled position '+yPolled);
-                    if (yPolled != yPos) {
-                          modules.getMpuPos(function(x, y, w, h){
-                            window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
-                            // console.log("Changed slot Y axis position "+x+" "+y+" "+w+" "+h);
-                        });
-                    yPos = yPolled;  
-                    // console.log("yPos is now set to be "+yPos);
-                    }
-                    modules.timer(thisNumber, yPos);
+            poller : function(interval, yPos, isAndroid, isInteractive, firstRun) {
+                var newYPos = modules.getMpuOffsetTop();
+
+                if(firstRun && isAndroid){
+                    modules.updateAndroidPosition();
+                }
+
+                if(newYPos !== yPos){
+                    if(isAndroid){
+                        modules.updateAndroidPosition();
+                    } else {
+                        window.location.href = 'x-gu://ad_moved';
+                    }                    
+                }
+               
+                if(!isAndroid || (isAndroid && isInteractive)){
+                    setTimeout(modules.poller.bind(modules, interval + 50, newYPos, isAndroid, isInteractive), interval);
                 }
             },
-            // Poll for offSetTop position changes
-            posPoller : function(y) {
-                var yPos = y;
-                // console.info('y Loaded position '+yPos);
-                modules.runPoller(1, yPos);
-            },
-            getAds: function () {
 
-                window.getMpuPosCallback = function (callbackNamespace, callbackFunction) {
-
-                    var interactive  =  (document.getElementsByTagName("iframe")[0] || document.getElementsByClassName("interactive")[0]) ? true : false;
-
-                    function onloadHandler () { 
-                        modules.getMpuPos(function(x, y, w, h){
-                            window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
-                            // console.log("Initial slot position "+x+" "+y+" "+w+" "+h);
-                        });  
-                    }
-
-                    function iframeHandler () {
-                        modules.getMpuPos(function(x, y, w, h){
-                            window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
-                            // console.log("Initial slot position "+x+" "+y+" "+w+" "+h);
-                            modules.posPoller(y);
-                        });
-                    }
-
-                    var loadAds = (interactive === true) ? iframeHandler() : onloadHandler();
-
-                };
-
-                window.applyNativeFunctionCall("getMpuPosCallback");
-
+            updateAndroidPosition : function() {
+                modules.getMpuPos(function(x, y, w, h){
+                    window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
+                });
             }
         },
-
 
         ready = function (config) {
             if (!this.initialised) {
@@ -175,11 +143,17 @@ define([
                 
                 if (config.adsEnabled == "true") {
                     modules.insertAdPlaceholders(config);
+                    window.getMpuPosJson = modules.getMpuPosJson;
+                    window.getBannerPosCallback = modules.getBannerPosCallback; 
+                    window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated; 
+
+                    modules.poller(1000, 
+                        modules.getMpuOffsetTop(), 
+                        $('body').hasClass('android'), 
+                        $('iframe, body.interactive, blockquote.twitter-tweet, blockquote.js-tweet').length,
+                        true
+                    );                    
                 }
-                window.getMpuPosJson = modules.getMpuPosJson;
-                window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated;
-                window.getBannerPosCallback = modules.getBannerPosCallback;
-                modules.getAds();
             }
         };
 
