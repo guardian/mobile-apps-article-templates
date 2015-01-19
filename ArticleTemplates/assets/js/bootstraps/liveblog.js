@@ -5,6 +5,7 @@ define([
     'modules/relativeDates',
     'modules/$',
     'modules/twitter'
+
 ], function (
     bean,
     bonzo,
@@ -110,7 +111,7 @@ define([
                 modules.setupGlobals();
                 window.liveblogTime();
                 modules.blockUpdates();
-                modules.liveMore();
+                modules.liveMore();                
                 setInterval(window.liveblogTime, 30000);
                 twitter.init();
                 twitter.enhanceTweets();
