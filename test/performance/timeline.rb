@@ -8,8 +8,8 @@ require 'csv'
 
 content = JSON.parse(open("http://localhost:9222/json").read)
 baseUrl = ARGV.shift
-assetFile = ARGV.shift
-assetContent = IO.readlines(File.join(File.dirname(__FILE__),'..','fixture',assetFile))
+@assetFile = ARGV.shift
+assetContent = IO.readlines(File.join(File.dirname(__FILE__),'..','fixture',@assetFile))
 
 @seconds = 5;
 @session, @model, @label = assetContent[1].split(',')
@@ -19,10 +19,13 @@ def extractSummary(data)
 	frames = [];
 	marks = {};
 	stack = [data];
+	beginTime = nil
 	while(stack.size > 0) do
 		items = stack.pop
-		items.each do |item| 
-			if (item['type'] == 'DrawFrame' || (frames.size == 0 && item['type'] == 'BeginFrame'))
+		items.each do |item|
+			if (item['type'] == 'ResourceSendRequest' && item['data']['url'].end_with?(@assetFile))
+				beginTime = item['startTime']
+			elsif (item['type'] == 'DrawFrame')
 				frames << item['startTime']
 			elsif (item['type'] && item['type'].start_with?('Mark') && (!(item.has_key?('data') && item['data'].has_key?('isMainFrame')) || item['data']['isMainFrame']))
 				marks[item['type'].sub('Mark','')] = item['startTime']
@@ -34,14 +37,25 @@ def extractSummary(data)
 		end
 	end
 
-	beginTime = frames.shift
+	exit if beginTime.nil? 
+
 	markString = marks.to_a.reverse.reduce('') do |memo, (type, time)|
-		memo += "#{type}: #{(time - beginTime).round(3)}ms "
+		if(time - beginTime) > 0
+			memo += "#{type}: #{(time - beginTime).round(3)}ms "
+		else
+			memo
+		end
 	end
 
-	times = frames.reduce([beginTime]) do |memo, event|
-		memo += [event - memo.pop, event]
+	times = frames.sort.reduce([beginTime]) do |memo, event|
+		frame = event - memo.pop
+		if(frame > 0)
+			memo += [frame, event]
+		else
+			memo += [event]
+		end
 	end
+
 	times.pop
 
 	info = {
@@ -53,7 +67,7 @@ def extractSummary(data)
 	}.merge(marks)
 
 	if(marks['DOMContent'] && (marks['DOMContent'] - beginTime) > @seconds * 1000)
-		puts "bad measurament, discarded"
+		puts "bad measurament, discarded (#{marks['DOMContent'] - beginTime})"
 	else
 		puts  "#{times.size} frames, avg: #{(times.reduce(:+)/times.size).round(3)}ms, best: #{times.min.round(3)}ms worst: #{times.max.round(3)}ms, #{markString}"
 		storeToFile(info, data)
@@ -88,25 +102,18 @@ EM.run do
 	ws = Faye::WebSocket::Client.new(content.first['webSocketDebuggerUrl'])
 	dump = ["5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36"]
 	ws.onopen = lambda do |event|
-	  ws.send JSON.dump({
-	    id: 1,
-	    method: 'Page.navigate',
-	    params: { url: 'about:blank' }
-	  })
+	  ws.send JSON.dump({id: 1, method: 'Network.setCacheDisabled', params: { cacheDisabled: true }})	
+	  ws.send JSON.dump({id: 2, method: 'Page.navigate', params: { url: 'about:blank' }})
 	end
 
 	EventMachine::Timer.new(0.5) do
-	  ws.send JSON.dump({id: 2, method: 'Timeline.enable'})
-	  ws.send JSON.dump({id: 3, method: 'Timeline.start'})
-	  ws.send JSON.dump({
-	    id: 4,
-	    method: 'Page.navigate',
-	    params: { url: baseUrl + ':3000/' + assetFile }
-	  })		
+	  ws.send JSON.dump({id: 3, method: 'Timeline.enable'})
+	  ws.send JSON.dump({id: 4, method: 'Timeline.start'})
+	  ws.send JSON.dump({id: 5, method: 'Page.navigate', params: { url: baseUrl + ':3000/' + @assetFile }})		
 	end
 
 	EventMachine::Timer.new(@seconds) do
-		ws.send JSON.dump({id: 3, method: 'Timeline.stop'})
+		ws.send JSON.dump({id: id, method: 'Timeline.stop'})
 		extractSummary(dump)
 		exit
 	end

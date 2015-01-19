@@ -20,7 +20,21 @@ Grunt will provide the following services:
 * rsync with both the iOs and the Android local codebase.
 
 ## Experimental performance measurament
-
+This feature allows to record several timeline from a page loaded into the device and then it extracts some 
+peculiar features (such as framerate, page load time and more) and it creates a chart out of it. 
+To use this feature there are a few steps involved:
+* make sure your device can reach your laptop over LAN and fill the `performance.server` field in `config.js` with your laptop LAN address (eg: `http://192.168.1.1`)
+* connect your device over USB and open chrome
+* collect the page you want to test under test/fixture folder and be sure to add the session name to each page. Session names should be used during measuraments to describe the device used and any other extra features, eg
+```bash
+<!--
+article1_s3_nocss
+-->
+```
+* run `grunt`
+* in a separate shell run `grunt shell:timeline --fixture=article1.html --times=10` where article1.html is the name of the fixture you want to load and 10 is the number of timelines you want to record
+* head to http://localhost:3000/performances/#yoursession to see the results
+* individual timelines are also recorded under `/Performance/timelines` and CSVs of each session under `/Performance/session`
 
 ## Updating the Documentation
 Documentation is built locally, to rebuild the documentation just type: `grunt hologram`

@@ -128,7 +128,13 @@ module.exports = function(grunt) {
             timeline: {
                 command: function(){
                     if( grunt.option('fixture') ){
-                        return '`which adb` forward tcp:9222 localabstract:chrome_devtools_remote && `which ruby` test/performance/timeline.rb ' + config.performance.server + ' ' + grunt.option('fixture');
+                        var baseCommand = '`which ruby` test/performance/timeline.rb ' + config.performance.server + ' ' + grunt.option('fixture');
+                        var times = parseInt(grunt.option('times'),10) || 1;
+                        var outputsString = ''
+                        for(var x = 0; x < times; x ++){
+                            outputsString += '&& ' + baseCommand;
+                        }
+                        return '`which adb` forward tcp:9222 localabstract:chrome_devtools_remote ' + outputsString;
                     } else {
                         return '';
                     }
