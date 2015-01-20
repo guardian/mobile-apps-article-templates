@@ -130,7 +130,7 @@ module.exports = function(grunt) {
                     if( grunt.option('fixture') ){
                         var baseCommand = '`which ruby` test/performance/timeline.rb ' + config.performance.server + ' ' + grunt.option('fixture');
                         var times = parseInt(grunt.option('times'),10) || 1;
-                        var outputsString = ''
+                        var outputsString = '';
                         for(var x = 0; x < times; x ++){
                             outputsString += '&& ' + baseCommand;
                         }
