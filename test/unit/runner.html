@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Frontend Test Runner</title>
+    <link rel="stylesheet" type="text/css" href="/root/bower_components/mocha/mocha.css">
+  </head>
+  <body>
+    <div id="mocha"></div>
+    <div id="messages"></div>
+    <div id="fixtures"></div>
+    <script src="/root/bower_components/mocha/mocha.js"></script>
+    <script src="/root/bower_components/chai/chai.js"></script>
+    <script>
+      /*globals mocha chai*/
+      mocha.setup('bdd');
+      var expect = chai.expect;
+    </script>
+    <script src="/root/ArticleTemplates/assets/js/components/require.js" data-main="runner"></script>
+  </body>
+</head>
