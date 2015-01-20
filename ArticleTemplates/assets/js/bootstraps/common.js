@@ -79,8 +79,13 @@ define([
         },
 
         loadEmbeds: function() {
-            // Boot Fenced Embeds
+
             window.loadEmbeds = function () {
+
+                // Fix Wine Width
+                modules.fixVineWidth();
+
+                // Boot Fenced Embeds                
                 require(['fence'], function(fence) {
                     $("iframe.fenced").each(function(node) {
                         fence.render(node);
@@ -218,6 +223,19 @@ define([
 
                 });
             });
+        },
+
+        fixVineWidth: function (container) {
+            var iframes = $('iframe[srcdoc*="https://vine.co"]:not([data-vine-fixed])',container);
+            iframes.each(function(iframe){
+                var size = iframe.parentNode.clientWidth;
+                var $iframe = $(iframe);
+                var srcdoc = $iframe.attr('srcdoc');
+                srcdoc = srcdoc.replace(/width="[\d]+"/,'width="' + size + '"');
+                srcdoc = srcdoc.replace(/height="[\d]+"/,'height="' + size + '"');
+                $iframe.attr('srcdoc', srcdoc);
+                $iframe.attr('data-vine-fixed', true);
+            });
         }
     },
 
@@ -255,6 +273,8 @@ define([
     };
 
     return {
-        init: ready
+        init: ready,
+        // export internal functions for testing purpouse
+        fixVineWidth: modules.fixVineWidth
     };
 });
