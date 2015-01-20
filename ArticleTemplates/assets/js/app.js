@@ -23,58 +23,56 @@ require.config({
 });
 
 require([
-    'domReady'
-    // 'article',
-    // 'liveblog',
-    // 'audio',
-    // 'gallery',
-    // 'football'
-    // 'modules/$'
+    'domReady',
+    'bootstraps/common',
+    'modules/$'
 ], function (
-    domReady
-    // Article,
-    // Liveblog,
-    // Audio,
-    // Gallery,
-    // Football
-    //$
+    domReady,
+    Common,
+    $
 ) {
     'use strict';
 
     domReady(function () {
-        
+
         var contentType = document.body.getAttribute('data-content-type');
 
         // Common bootstrap
         // Common.init(config);
 
-        if (contentType === 'article') {
-            require(['article'], function(Article){
+        if (config.contentType === 'article') {
+            require(['bootstrap/article'], function(Article){
                 Article.init();
-            });            
+            });
         }
 
-        if (contentType === 'liveblog') {
-            require(['liveblog'], function(Liveblog){
+        if (config.contentType === 'liveblog') {
+            require(['bootstrap/liveblog'], function(Liveblog){
                 Liveblog.init();
             });
         }
 
-        if (contentType === 'audio') {
-            require(['audio'], function(Audio){
+        if (config.contentType === 'audio') {
+            require(['bootstrap/audio'], function(Audio){
                 Audio.init();
             });
         }
 
-        if (contentType === 'gallery') {
-            require(['gallery'], function(Gallery){
+        if (config.contentType === 'gallery') {
+            require(['bootstrap/gallery'], function(Gallery){
                 Gallery.init();
             });
         }
 
-        if (contentType === 'football') {
-            require(['football'], function(Football){
+        if (config.contentType === 'football') {
+            require(['bootstrap/football', 'bootstrap/liveblog'], function(Football,Liveblog){
                 Football.init();
+
+                // Football liveblogs don't use the liveblog template,
+                // init liveblog template JS if required
+                if ($('.article__body--liveblog').length > 0) {
+                    Liveblog.init();
+                }
             });
         }
     });
