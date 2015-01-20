@@ -77,12 +77,27 @@ module.exports = function(grunt) {
             }
         },
 
+        // Tests
+
+        mocha: {
+            dev: {
+                options: {
+                    run: false,
+                    urls: [ 'http://localhost:3000/root/test/unit/runner.html' ],
+                },
+            },
+        },
+
         // Watch
 
         watch: {
             js: {
                 files: ['ArticleTemplates/assets/js/**/*.js'],
-                tasks: ['jshint','requirejs']
+                tasks: ['jshint', 'requirejs']
+            },
+            tests: {
+                files: ['ArticleTemplates/assets/js/**/*.js', 'test/unit/**/*.js'],
+                tasks: ['mocha']
             },
             scss: {
                 files: ['ArticleTemplates/assets/scss/**/*.scss'],
@@ -130,7 +145,7 @@ module.exports = function(grunt) {
                     if( grunt.option('fixture') ){
                         var baseCommand = '`which ruby` test/performance/timeline.rb ' + config.performance.server + ' ' + grunt.option('fixture');
                         var times = parseInt(grunt.option('times'),10) || 1;
-                        var outputsString = ''
+                        var outputsString = '';
                         for(var x = 0; x < times; x ++){
                             outputsString += '&& ' + baseCommand;
                         }
