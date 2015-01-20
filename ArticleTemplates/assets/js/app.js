@@ -25,20 +25,10 @@ require.config({
 require([
     'domReady',
     'bootstraps/common',
-    'bootstraps/article',
-    'bootstraps/audio',
-    'bootstraps/football',
-    'bootstraps/gallery',
-    'bootstraps/liveblog',
     'modules/$'
 ], function (
     domReady,
     Common,
-    Article,
-    Audio,
-    Football,
-    Gallery,
-    Liveblog,
     $
 ) {
     'use strict';
@@ -54,30 +44,39 @@ require([
         Common.init(config);
 
         if (config.contentType === 'article') {
-            Article.init();
+            require(['bootstrap/article'], function(Article){
+                Article.init();
+            });            
         }
 
         if (config.contentType === 'liveblog') {
-            Liveblog.init();
+            require(['bootstrap/liveblog'], function(Liveblog){
+                Liveblog.init();
+            });
         }
 
         if (config.contentType === 'audio') {
-            Audio.init();
+            require(['bootstrap/audio'], function(Audio){
+                Audio.init();
+            });
         }
 
         if (config.contentType === 'gallery') {
-            Gallery.init();
+            require(['bootstrap/gallery'], function(Gallery){
+                Gallery.init();
+            });
         }
 
         if (config.contentType === 'football') {
-            Football.init();
+            require(['bootstrap/football', 'bootstrap/liveblog'], function(Football,Liveblog){
+                Football.init();
 
-            // Football liveblogs don't use the liveblog template,
-            // init liveblog template JS if required
-            if ($('.article__body--liveblog').length > 0) {
-                Liveblog.init();
-            }
+                // Football liveblogs don't use the liveblog template,
+                // init liveblog template JS if required
+                if ($('.article__body--liveblog').length > 0) {
+                    Liveblog.init();
+                }
+            });
         }
     });
-
 });

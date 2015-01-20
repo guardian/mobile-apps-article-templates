@@ -67,11 +67,22 @@ module.exports = function(grunt) {
                 options: {
                     baseUrl: "ArticleTemplates/assets/js",
                     mainConfigFile: 'ArticleTemplates/assets/js/app.js',
-                    name: "app",
-                    out: "ArticleTemplates/assets/build/app.js",
+                    //name: "app",
+                    //out: "ArticleTemplates/assets/build/app.js",
+                    dir: "ArticleTemplates/assets/build",
                     optimize: 'uglify2',
                     generateSourceMaps: true,
-                    preserveLicenseComments: false
+                    preserveLicenseComments: false,
+                    useSourceUrl: true,
+                    removeCombined: true,
+                    modules: [
+                        { name: 'bootstraps/audio' },
+                        { name: 'bootstraps/football' },
+                        { name: 'bootstraps/gallery' },
+                        { name: 'bootstraps/liveblog' },
+                        { name: 'bootstraps/article' },
+                        { name: 'app' }
+                    ]
                 }
             }
         },
