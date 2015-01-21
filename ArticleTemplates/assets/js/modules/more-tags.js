@@ -17,7 +17,7 @@ define([
         this.init = function () {
 
             var tags = $(".tags .inline-list__item a");
-            var string = "<li class='inline-list__item more-button js-more-button'><a id='more'>more</a></li>";
+            var string = "<li class='inline-list__item more-button js-more-button'><a id='more'>More...</a></li>";
             // var el = $(".js-more-button"); // *** Used for Bean not working ***
             var i = 0;
             var more;

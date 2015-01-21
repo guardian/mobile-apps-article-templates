@@ -7,6 +7,31 @@
         }
     }
 
+    .tags {
+
+        .inline-list__item {
+
+            a {
+                color: color(media-tags-text);
+                background-color: color(media-tags-bg);
+
+                &:active {
+                    color: rgba(color(media-tags-text), .4);
+                    background-color: color(media-tags-active-bg);
+                }
+            }
+            &.more-button a {
+                color: #fff;
+                border: 1px solid #484848;
+                &:active {
+                    color: rgba(#fff, .4);
+                    border: 1px solid #767676;
+                }
+            }
+        }
+    
+    }
+
     .touchpoint--primary {
         .touchpoint__button {
             background-color: color(tone-media);
