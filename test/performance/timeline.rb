@@ -58,6 +58,8 @@ def extractSummary(data)
 
 	times.pop
 
+	exit if times.size == 0
+
 	info = {
 	 	frames: times.size,
 	 	avg: times.reduce(:+)/times.size,
