@@ -80,7 +80,7 @@ module.exports = function(grunt) {
                         { name: 'bootstraps/football' },
                         { name: 'bootstraps/gallery' },
                         { name: 'bootstraps/liveblog' },
-                        { name: 'bootstraps/article' },
+                        { name: 'article' },
                         { name: 'app' }
                     ]
                 }
