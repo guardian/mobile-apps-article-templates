@@ -25,10 +25,20 @@ require.config({
 require([
     'domReady',
     'bootstraps/common',
+    // 'bootstraps/article',
+    // 'bootstraps/liveblog',
+    // 'bootstraps/audio',
+    // 'bootstraps/gallery',
+    // 'bootstraps/football',
     'modules/$'
 ], function (
     domReady,
     Common,
+    // Article,
+    // Liveblog,
+    // Audio,
+    // Gallery,
+    // Football,
     $
 ) {
     'use strict';
@@ -44,31 +54,31 @@ require([
         Common.init(config);
 
         if (config.contentType === 'article') {
-            require(['bootstrap/article'], function(Article){
+            require(['bootstraps/article'], function(Article){
                 Article.init();
             });            
         }
 
         if (config.contentType === 'liveblog') {
-            require(['bootstrap/liveblog'], function(Liveblog){
+            require(['bootstraps/liveblog'], function(Liveblog){
                 Liveblog.init();
             });
         }
 
         if (config.contentType === 'audio') {
-            require(['bootstrap/audio'], function(Audio){
+            require(['bootstraps/audio'], function(Audio){
                 Audio.init();
             });
         }
 
         if (config.contentType === 'gallery') {
-            require(['bootstrap/gallery'], function(Gallery){
+            require(['bootstraps/gallery'], function(Gallery){
                 Gallery.init();
             });
         }
 
         if (config.contentType === 'football') {
-            require(['bootstrap/football', 'bootstrap/liveblog'], function(Football,Liveblog){
+            require(['bootstraps/football', 'bootstrap/liveblog'], function(Football,Liveblog){
                 Football.init();
 
                 // Football liveblogs don't use the liveblog template,

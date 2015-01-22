@@ -80,7 +80,7 @@ module.exports = function(grunt) {
                         { name: 'bootstraps/football' },
                         { name: 'bootstraps/gallery' },
                         { name: 'bootstraps/liveblog' },
-                        { name: 'bootstraps/article' },
+                        { name: 'article' },
                         { name: 'app' }
                     ]
                 }
@@ -120,11 +120,11 @@ module.exports = function(grunt) {
                 tasks: ['scsslint','sass']
             },
             timeline: {
-                files: ['ArticleTemplates/**', 'test/fixture/**', 'test/performance/**'],
+                files: ['ArticleTemplates/**', 'test/fixture/**', 'test/performance/**', '!ArticleTemplates/assets/build/**/*.js'],
                 tasks: ['shell:timeline']
             },
             copy: {
-                files: ['ArticleTemplates/**'],
+                files: ['ArticleTemplates/**','!ArticleTemplates/assets/build/**/*.js'],
                 tasks: ['rsync']
             }
         },
