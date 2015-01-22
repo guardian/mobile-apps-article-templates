@@ -130,7 +130,10 @@ define([
         insertTags: function () {
             // Tag Function
             window.articleTagInserter = function (html) {
+                console.log("Inserting tags");
                 setTimeout(modules.showMoreTags, 0);
+                window.applyNativeFunctionCall('showMoreTags');
+                console.log("Inserting tags after");
                 html = bonzo.create(html);
                 $(html).appendTo('.tags .inline-list');
                 //window.logOnScreen("Inserting tags");
