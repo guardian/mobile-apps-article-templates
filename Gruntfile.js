@@ -83,7 +83,13 @@ module.exports = function(grunt) {
             dev: {
                 options: {
                     run: false,
+                    log: true,
                     urls: [ 'http://localhost:3000/root/test/unit/runner.html' ],
+                    page: { 
+                        settings: { 
+                            webSecurityEnabled: false,
+                        },  
+                    },
                 },
             },
         },
