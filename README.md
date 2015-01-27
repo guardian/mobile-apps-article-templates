@@ -19,13 +19,13 @@ Grunt will provide the following services:
 * javascript linting and minification
 * rsync with both the iOs and the Android local codebase.
 
-## Experimental performance measurament
-This feature allows to record several timeline from a page loaded into the device and then it extracts some 
-peculiar features (such as framerate, page load time and more) and it creates a chart out of it. 
+## Experimental performance measurement
+This feature allows us to record several timelines from a page loaded into the device and then it extracts some 
+particular features (such as frame rate, page load time and more) and it creates a chart for it. 
 To use this feature there are a few steps involved:
 * make sure your device can reach your laptop over LAN and fill the `performance.server` field in `config.js` with your laptop LAN address (eg: `http://192.168.1.1`)
 * connect your device over USB and open chrome
-* collect the page you want to test under test/fixture folder and be sure to add the session name to each page. Session names should be used during measuraments to describe the device used and any other extra features, eg
+* collect the page you want to test under test/fixture folder and be sure to add the session name to each page. Session names should be used during measurements to describe the device used and any other extra features, e.g.
 ```bash
 <!--
 article1_s3_nocss
@@ -39,7 +39,7 @@ article1_s3_nocss
 ## Updating the Documentation
 Documentation is built locally, to rebuild the documentation just type: `grunt hologram`
 
-Documentation is also available on the web at: http://guardian.github.io/mobile-apps-article-templates/, which displays the static files stored in the gh-pages branch. To update this publically viewable site with your latest changes, run the following commands:
+Documentation is also available on the web at: http://guardian.github.io/mobile-apps-article-templates/, which displays the static files stored in the gh-pages branch. To update this publicly viewable site with your latest changes, run the following commands:
 
 ```bash
 $ git commit -am "Commit message"
