@@ -175,11 +175,24 @@
         .inline-list__item {
 
             a {
-                color: color(tone-deadblog-tags-text);
-                background-color: color(tone-deadblog-tags-bg);
+                color: color(blogs-tags-text);
+                background-color: color(blogs-tags-bg);
+
+                &:active {
+                    color: rgba(color(blogs-tags-text), .4);
+                    background-color: color(blogs-tags-active-bg);
+                }
+            }
+            &.more-button a {
+                color: color(blogs-tags-text);
+                border: 1px solid color(blogs-more-btn-border);
+                &:active {
+                    color: rgba(color(blogs-tags-text), .4);
+                    border: 1px solid color(blogs-more-btn-border-active);
+                }
             }
         }
-
+    
     }
 
     .block--live-summary {

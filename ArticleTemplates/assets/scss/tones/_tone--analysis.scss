@@ -35,6 +35,7 @@
             .meta__byline .byline,
             .meta__byline a {
                 font-weight: 600;
+                font-weight: 600;
             }
             .meta__pubdate{
                color: color(tone-analysis-meta-pubdate);
@@ -51,11 +52,24 @@
         .inline-list__item {
 
             a {
-                color: color(tone-analysis-tags-text);
-                background-color: color(tone-analysis-tags-bg);
+                color: color(global-tags-text);
+                background-color: color(global-tags-bg);
+
+                &:active {
+                    color: rgba(color(global-tags-text), .4);
+                    background-color: color(global-tags-active-bg);
+                }
+            }
+            &.more-button a {
+                color: color(global-tags-text);
+                border: 1px solid color(global-more-btn-border);
+                &:active {
+                    color: rgba(color(global-tags-text), .4);
+                    border: 1px solid color(global-more-btn-border-active);
+                }
             }
         }
-
+    
     }
 
 }

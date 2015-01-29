@@ -1,4 +1,16 @@
 .tone--media {
+
+    .section__container {
+        border-bottom: 1px rgba(234,234,234,0.3) dotted;
+        
+        .section {
+            color: color(tone-podcast-section-label); // Content Label Section
+        }
+        
+        .content__series-label {
+            color: color(tone-media-series-label);  // Content Label Series
+        }   
+    }
     a {
         color: darken(color(tone-media), 5%);
 
@@ -21,11 +33,11 @@
                 }
             }
             &.more-button a {
-                color: #fff;
-                border: 1px solid #484848;
+                color: color(media-tags-text);
+                border: 1px solid color(media-more-btn-border);
                 &:active {
-                    color: rgba(#fff, .4);
-                    border: 1px solid #767676;
+                    color: rgba(color(media-tags-text), .4);
+                    border: 1px solid color(media-more-btn-border-active);
                 }
             }
         }
