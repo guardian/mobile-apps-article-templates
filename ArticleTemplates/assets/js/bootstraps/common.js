@@ -191,11 +191,6 @@ define([
             };
         },
 
-        showMoreTags: function () {
-                new MoreTags().init();
-        },
-
-
         showTabs: function () {
             // Set up tab events, show only first child
             $('.tabs a').each(function (el, i) {
