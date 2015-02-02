@@ -1,22 +1,18 @@
-require([
-    // 'domReady',
-    // 'bootstraps/common',
-    // 'bootstraps/article'
+define([
+    'bootstraps/common',
+    'bootstraps/article'
 ], function (
-    // domReady,
-    // Common,
-    // Article
+    Common,
+    Article
 ) {
     'use strict';
 
-    // domReady(function () {
-    //     var config = {
-    //         contentType: document.body.getAttribute('data-content-type'),
-    //         adsEnabled: document.body.getAttribute('data-ads-enabled'),
-    //         adsConfig: document.body.getAttribute('data-ads-config')
-    //     };
+    function init(){
+        Common.init();
+        Article.init();
+    }
 
-    //     Common.init(config);
-    //     Article.init();
-    // });
+    return {
+        init: init
+    };
 });

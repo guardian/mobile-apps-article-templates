@@ -23,23 +23,21 @@ require.config({
 });
 
 require([
-    'domReady',
-    'bootstraps/common',
-    // 'bootstraps/article',
-    // 'bootstraps/liveblog',
-    // 'bootstraps/audio',
-    // 'bootstraps/gallery',
-    // 'bootstraps/football',
-    'modules/$'
+    'domReady'
+    // 'article',
+    // 'liveblog',
+    // 'audio',
+    // 'gallery',
+    // 'football'
+    // 'modules/$'
 ], function (
-    domReady,
-    Common,
+    domReady
     // Article,
     // Liveblog,
     // Audio,
     // Gallery,
-    // Football,
-    $
+    // Football
+    //$
 ) {
     'use strict';
 
@@ -50,39 +48,33 @@ require([
         // Common bootstrap
         // Common.init(config);
 
-        if (config.contentType === 'article') {
-            require(['bootstraps/article'], function(Article){
+        if (contentType === 'article') {
+            require(['article'], function(Article){
                 Article.init();
             });
         }
 
-        if (config.contentType === 'liveblog') {
-            require(['bootstraps/liveblog'], function(Liveblog){
+        if (contentType === 'liveblog') {
+            require(['liveblog'], function(Liveblog){
                 Liveblog.init();
             });
         }
 
-        if (config.contentType === 'audio') {
-            require(['bootstraps/audio'], function(Audio){
+        if (contentType === 'audio') {
+            require(['audio'], function(Audio){
                 Audio.init();
             });
         }
 
-        if (config.contentType === 'gallery') {
-            require(['bootstraps/gallery'], function(Gallery){
+        if (contentType === 'gallery') {
+            require(['gallery'], function(Gallery){
                 Gallery.init();
             });
         }
 
-        if (config.contentType === 'football') {
-            require(['bootstraps/football', 'bootstrap/liveblog'], function(Football,Liveblog){
+        if (contentType === 'football') {
+            require(['football'], function(Football){
                 Football.init();
-
-                // Football liveblogs don't use the liveblog template,
-                // init liveblog template JS if required
-                if ($('.article__body--liveblog').length > 0) {
-                    Liveblog.init();
-                }
             });
         }
     });
