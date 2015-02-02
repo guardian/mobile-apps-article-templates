@@ -130,15 +130,11 @@ define([
         insertTags: function () {
             // Tag Function
             window.articleTagInserter = function (html) {
-                console.log("Inserting tags");
-                setTimeout(modules.showMoreTags, 0);
-                window.applyNativeFunctionCall('showMoreTags');
-                console.log("Inserting tags after");
                 html = bonzo.create(html);
                 $(html).appendTo('.tags .inline-list');
-                //window.logOnScreen("Inserting tags");
+                MoreTags.refresh();
             };
-            // window.applyNativeFunctionCall('articleTagInserter');
+            window.applyNativeFunctionCall('articleTagInserter');
         },
 
         offline: function() {
@@ -193,11 +189,6 @@ define([
                 $(document.body).addClass("offline");
             };
         },
-
-        showMoreTags: function () {
-                new MoreTags().init();
-        },
-
 
         showTabs: function () {
             // Set up tab events, show only first child

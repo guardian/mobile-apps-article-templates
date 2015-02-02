@@ -125,7 +125,7 @@ module.exports = function(grunt) {
                 tasks: ['jshint', 'requirejs']
             },
             tests: {
-                files: ['ArticleTemplates/assets/js/**/*.js', 'test/unit/**/*.js'],
+                files: ['ArticleTemplates/assets/js/**/*.js', 'test/unit/**/*.{js,html}'],
                 tasks: ['mocha:dev']
             },
             scss: {
