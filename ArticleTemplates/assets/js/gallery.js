@@ -1,15 +1,15 @@
 define([
     'bootstraps/common',
-    'bootstraps/article'
+    'bootstraps/gallery'
 ], function (
     Common,
-    Article
+    Gallery
 ) {
     'use strict';
     
     function init(){
         Common.init();
-        Article.init();
+        Gallery.init();
     }
 
     return {

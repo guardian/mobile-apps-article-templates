@@ -1,2 +1,0 @@
-define(["bean","modules/$","modules/twitter"],function(i,e,t){var s={asideWitness:function(){var i=e(".article__body p").length;i>4?e(".aside-witness").addClass("js--positioned").prependTo(".article__body p:nth-of-type(4)"):(i-=1,e(".aside-witness").addClass("js--positioned").prependTo(".article__body p:nth-of-type("+i+")"))}},n=function(){this.initialised||(this.initialised=!0,s.asideWitness(),t.init(),t.enhanceTweets())};return{init:n}});
-//# sourceMappingURL=article.js.map

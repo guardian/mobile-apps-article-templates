@@ -29,7 +29,7 @@ function drawSession(session){
 						if(!averages[label][k]){
 							averages[label][k] = item;
 						} else {
-							averages[label][k] = averages[label][k] + ( parseFloat(item) - averages[label][k] ) / averages[label][0];
+							averages[label][k] = averages[label][k] + ( parseFloat(item) - averages[label][k] ) / averages[label][0] ;
 						}
 					}
 				}
