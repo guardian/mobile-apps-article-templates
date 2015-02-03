@@ -24,20 +24,8 @@ require.config({
 
 require([
     'domReady'
-    // 'article',
-    // 'liveblog',
-    // 'audio',
-    // 'gallery',
-    // 'football'
-    // 'modules/$'
 ], function (
     domReady
-    // Article,
-    // Liveblog,
-    // Audio,
-    // Gallery,
-    // Football
-    //$
 ) {
     'use strict';
 
@@ -45,36 +33,29 @@ require([
 
         var contentType = document.body.getAttribute('data-content-type');
 
-        // Common bootstrap
-        // Common.init(config);
-
         if (contentType === 'article') {
             require(['article'], function(Article){
                 Article.init();
             });
-        }
-
-        if (contentType === 'liveblog') {
+        } else if (contentType === 'liveblog') {
             require(['liveblog'], function(Liveblog){
                 Liveblog.init();
             });
-        }
-
-        if (contentType === 'audio') {
+        } else if (contentType === 'audio') {
             require(['audio'], function(Audio){
                 Audio.init();
             });
-        }
-
-        if (contentType === 'gallery') {
+        } else if (contentType === 'gallery') {
             require(['gallery'], function(Gallery){
                 Gallery.init();
             });
-        }
-
-        if (contentType === 'football') {
+        } else if (contentType === 'football') {
             require(['football'], function(Football){
                 Football.init();
+            });
+        } else {
+            require(['bootstraps/common'], function(Common){
+                Common.init();
             });
         }
     });

@@ -67,8 +67,6 @@ module.exports = function(grunt) {
                 options: {
                     baseUrl: "ArticleTemplates/assets/js",
                     mainConfigFile: 'ArticleTemplates/assets/js/app.js',
-                    //name: "app",
-                    //out: "ArticleTemplates/assets/build/app.js",
                     dir: "ArticleTemplates/assets/build",
                     optimize: 'uglify2',                 
                     generateSourceMaps: true,
@@ -81,6 +79,7 @@ module.exports = function(grunt) {
                         { name: 'gallery' },
                         { name: 'liveblog' },
                         { name: 'article' },
+                        { name: 'bootstraps/common'},
                         { name: 'app' }
                     ]
                 }
@@ -119,12 +118,8 @@ module.exports = function(grunt) {
                 files: ['ArticleTemplates/assets/scss/**/*.scss'],
                 tasks: ['scsslint','sass']
             },
-            timeline: {
-                files: ['ArticleTemplates/**', 'test/fixture/**', 'test/performance/**', '!ArticleTemplates/assets/build/**/*.js'],
-                tasks: ['shell:timeline']
-            },
             copy: {
-                files: ['ArticleTemplates/**','!ArticleTemplates/assets/build/**/*.js'],
+                files: ['ArticleTemplates/*.html', 'ArticleTemplates/assets/{js,scss,img}/**'],
                 tasks: ['rsync']
             }
         },

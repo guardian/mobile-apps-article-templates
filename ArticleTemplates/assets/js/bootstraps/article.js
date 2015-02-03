@@ -29,7 +29,6 @@ define([
             modules.asideWitness();
             twitter.init();
             twitter.enhanceTweets();
-            // console.info("Article ready");
         }
     };
 

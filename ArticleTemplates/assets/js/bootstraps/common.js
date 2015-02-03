@@ -281,7 +281,6 @@ define([
             if (!$("body").hasClass("no-ready")) {
                 window.location.href = 'x-gu://ready';
             }
-            // console.info("Common ready");
         }
     };
 
