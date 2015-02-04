@@ -48,6 +48,10 @@ define([
 			sandbox.empty();
 		});
 
+		after(function(){
+			sandbox.remove();
+		});
+
 	});
 
 });
