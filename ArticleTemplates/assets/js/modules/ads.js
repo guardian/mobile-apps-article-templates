@@ -110,7 +110,7 @@ define([
                     window.GuardianJSInterface.bannerAdsPosition(x, y, w, h);
                 });
             },
-            poller : function(interval, yPos, isInteractive, firstRun) {
+            poller : function(interval, yPos, firstRun) {
                 var newYPos = modules.getMpuOffsetTop();
 
                 if(firstRun && this.isAndroid){
@@ -125,9 +125,7 @@ define([
                     }                    
                 }
                
-                if(!this.isAndroid || (this.isAndroid && isInteractive)){
-                    setTimeout(modules.poller.bind(modules, interval + 50, newYPos, this.isAndroid, isInteractive), interval);
-                }
+                setTimeout(modules.poller.bind(modules, interval + 50, newYPos, this.isAndroid), interval);
             },
 
             updateAndroidPosition : function() {
@@ -139,7 +137,6 @@ define([
             initMpuPoller: function(){
                 modules.poller(1000, 
                     modules.getMpuOffsetTop(), 
-                    $('iframe, body.interactive, blockquote.twitter-tweet, blockquote.js-tweet').length,
                     true
                 );            
             }

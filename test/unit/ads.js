@@ -45,6 +45,18 @@ define([
 				expect(poller).to.have.been.called
 			});
 
+			it('Contiune polling regarding the fact that the content is interactive or not', function(done){
+				$('body').addClass('android');				
+				Ads.init({adsEnabled: "true", adsConfig: 'mobile'});
+				window.initMpuPoller();
+				setTimeout(function(){
+					expect(poller).to.have.been.called;
+					expect(poller).not.to.have.been.calledOnce;
+					$('body').removeClass('android');
+					done();
+				}, 1900);				
+			});
+
 			afterEach(function(){
 				Ads.modules.poller.restore();
 			});
