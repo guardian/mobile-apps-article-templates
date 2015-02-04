@@ -125,7 +125,7 @@ define([
                     }                    
                 }
                
-                setTimeout(modules.poller.bind(modules, interval + 50, newYPos, this.isAndroid), interval);
+                setTimeout(modules.poller.bind(modules, interval + 50, newYPos), interval);
             },
 
             updateAndroidPosition : function() {

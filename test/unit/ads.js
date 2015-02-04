@@ -57,6 +57,17 @@ define([
 				}, 1900);				
 			});
 
+			it('Doesnt invoke updateAndroidPosition when y doesnt change', function(done){
+				$('body').addClass('android');				
+				Ads.init({adsEnabled: "true", adsConfig: 'mobile'});
+				window.initMpuPoller()
+				updateposition = sinon.spy(Ads.modules, "updateAndroidPosition");
+				setTimeout(function(){
+					expect(updateposition).not.to.have.been.called;
+					done();
+				}, 1900);	
+			});
+
 			afterEach(function(){
 				Ads.modules.poller.restore();
 			});
