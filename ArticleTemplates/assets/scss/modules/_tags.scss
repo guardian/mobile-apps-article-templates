@@ -45,10 +45,13 @@ Display which keywords an article has been tagged with.
             margin: 4px;
             text-overflow: ellipsis;
             max-width: 18.75rem;
+            @include tag-button(color(global-tags-text), color(global-tags-bg));
         }
         &.more-button a {
             background-color: transparent !important;
+            @include tag-more-button(color(global-tags-text), color(global-more-btn-border));            
         }
+
 /*        @include mq($to: col1) {
             margin: 4px;
         }*/

@@ -12,10 +12,13 @@ define([
     bonzo
 ) {
 
+    var SHOW_TAGS = 5;
     var modules = {
         refresh: function(){
-            $(moreButton).insertAfter('.tags .inline-list .inline-list__item:nth-child(6)');
-            $('#more-tags-contaier ~ .inline-list__item').addClass('hide-tags');
+            if($('.tags .inline-list .inline-list__item').length > SHOW_TAGS + 1){
+                $(moreButton).insertAfter('.tags .inline-list .inline-list__item:nth-child('+ (SHOW_TAGS + 1) + ')');
+                $('#more-tags-contaier ~ .inline-list__item').addClass('hide-tags');
+            }
         },
         show: function(){
             $('#more-tags-contaier ~ .hide-tags').removeClass('hide-tags');

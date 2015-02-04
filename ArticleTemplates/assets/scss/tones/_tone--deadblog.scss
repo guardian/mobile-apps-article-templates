@@ -173,23 +173,11 @@
     .tags {
 
         .inline-list__item {
-
             a {
-                color: color(blogs-tags-text);
-                background-color: color(blogs-tags-bg);
-
-                &:active {
-                    color: rgba(color(blogs-tags-text), .4);
-                    background-color: color(blogs-tags-active-bg);
-                }
+                @include tag-button(color(blogs-tags-text), color(blogs-tags-bg));
             }
             &.more-button a {
-                color: color(blogs-tags-text);
-                border: 1px solid color(blogs-more-btn-border);
-                &:active {
-                    color: rgba(color(blogs-tags-text), .4);
-                    border: 1px solid color(blogs-more-btn-border-active);
-                }
+                @include tag-more-button(color(blogs-tags-text), color(blogs-more-btn-border));
             }
         }
     

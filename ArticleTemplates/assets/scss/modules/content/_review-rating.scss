@@ -65,6 +65,9 @@ Display the number of stars with which a review has been rated
 
 .review-rating {
     color: color(shade-6);
+    @include mq($from: col1) {
+        font-size: 3.0rem;
+    }
 }
 
 .review-rating--1 [data-icon]:nth-child(-n+1),

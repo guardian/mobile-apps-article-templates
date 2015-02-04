@@ -20,28 +20,14 @@
     }
 
     .tags {
-
         .inline-list__item {
-
             a {
-                color: color(media-tags-text);
-                background-color: color(media-tags-bg);
-
-                &:active {
-                    color: rgba(color(media-tags-text), .4);
-                    background-color: color(media-tags-active-bg);
-                }
+                @include tag-button(color(media-tags-text), color(media-tags-bg), "lighter");
             }
             &.more-button a {
-                color: color(media-tags-text);
-                border: 1px solid color(media-more-btn-border);
-                &:active {
-                    color: rgba(color(media-tags-text), .4);
-                    border: 1px solid color(media-more-btn-border-active);
-                }
+                @include tag-more-button(color(media-tags-text), color(media-more-btn-border), "lighter");
             }
-        }
-    
+        }        
     }
 
     .touchpoint--primary {

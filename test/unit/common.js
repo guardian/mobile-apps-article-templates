@@ -45,6 +45,7 @@ define([
 			expect(innerFrame.getAttribute('width')).to.be.equal('600');
 		});
 
+
 		it('should force .pie-chart width to its parent width', function(){
 			var testContent = bonzo.create('<div style="width:323px;height:500px;"><div class="pie-chart"></div></div>').pop();
 			var pie = $('.pie-chart', testContent);
@@ -76,8 +77,33 @@ define([
 			expect($(activeTagsSelector).length).to.be.equal(8);
 		});
 
+		describe('Tags', function(){
+			var tagsContainer;
+
+			beforeEach(function(){
+				Common.insertTags();
+				tagsContainer = bonzo.create('<div class="tags" id="tags"><ul class="inline-list" id="tag-list"><li class="inline-list__item screen-readable">Tags:</li></ul></div>');
+				$(tagsContainer).appendTo(sandbox);
+			});
+
+			it('should display only 5 tags', function(){
+				var tags = '<li class="inline-list__item"><a href="x-gu://list/http://mobile-apps.guardianapis.com/lists/tag/society/prisons-and-probation">Prisons and probation</a></li><li class="inline-list__item"><a href="x-gu://list/http://mobile-apps.guardianapis.com/lists/tag/law/law">Law</a></li><li class="inline-list__item"><a href="x-gu://list/http://mobile-apps.guardianapis.com/lists/tag/law/criminal-justice">UK criminal justice</a></li><li class="inline-list__item"><a href="x-gu://list/http://mobile-apps.guardianapis.com/lists/tag/society/society">Society</a></li><li class="inline-list__item"><a href="x-gu://list/http://mobile-apps.guardianapis.com/lists/tag/politics/chrisgrayling">Chris Grayling</a></li><li class="inline-list__item"><a href="x-gu://list/http://mobile-apps.guardianapis.com/lists/tag/politics/politics">Politics</a></li><li class="inline-list__item"><a href="x-gu://list/http://mobile-apps.guardianapis.com/lists/tag/profile/alantravis">Alan Travis</a></li><li class="inline-list__item"><a href="x-gu://list/http://mobile-apps.guardianapis.com/lists/tag/theguardian/mainsection">Main section</a></li>';
+				var activeTagsSelector = 'li.inline-list__item:not(.hide-tags):not(.js-more-button):not(.screen-readable)';
+				window.articleTagInserter(tags);
+				expect($(activeTagsSelector).length).to.be.equal(5);
+				moreTags.show();
+				expect($(activeTagsSelector).length).to.be.equal(8);
+			});
+
+			it('should not display "More.." with only 5 tags present', function(){
+				var tags = '<li class="inline-list__item"><a href="x-gu://list/http://mobile-apps.guardianapis.com/lists/tag/society/prisons-and-probation">Prisons and probation</a></li><li class="inline-list__item"><a href="x-gu://list/http://mobile-apps.guardianapis.com/lists/tag/law/law">Law</a></li><li class="inline-list__item"><a href="x-gu://list/http://mobile-apps.guardianapis.com/lists/tag/law/criminal-justice">UK criminal justice</a></li><li class="inline-list__item"><a href="x-gu://list/http://mobile-apps.guardianapis.com/lists/tag/society/society">Society</a></li><li class="inline-list__item"><a href="x-gu://list/http://mobile-apps.guardianapis.com/lists/tag/politics/chrisgrayling">Chris Grayling</a></li>';
+				window.articleTagInserter(tags);
+				expect($('li.js-more-button').length).to.be.equal(0);
+			});
+		});
+
 		afterEach(function(){
-			//sandbox.empty();
+			sandbox.empty();
 		});
 
 		after(function(){
