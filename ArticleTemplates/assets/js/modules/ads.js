@@ -110,55 +110,63 @@ define([
                     window.GuardianJSInterface.bannerAdsPosition(x, y, w, h);
                 });
             },
-            poller : function(interval, yPos, isAndroid, isInteractive, firstRun) {
+            poller : function(interval, yPos, firstRun) {
                 var newYPos = modules.getMpuOffsetTop();
 
-                if(firstRun && isAndroid){
+                if(firstRun && this.isAndroid){
                     modules.updateAndroidPosition();
                 }
 
                 if(newYPos !== yPos){
-                    if(isAndroid){
+                    if(this.isAndroid){
                         modules.updateAndroidPosition();
                     } else {
                         window.location.href = 'x-gu://ad_moved';
                     }                    
                 }
                
-                if(!isAndroid || (isAndroid && isInteractive)){
-                    setTimeout(modules.poller.bind(modules, interval + 50, newYPos, isAndroid, isInteractive), interval);
-                }
+                setTimeout(modules.poller.bind(modules, interval + 50, newYPos), interval);
             },
 
             updateAndroidPosition : function() {
                 modules.getMpuPos(function(x, y, w, h){
                     window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
                 });
+            },
+
+            initMpuPoller: function(){
+                modules.poller(1000, 
+                    modules.getMpuOffsetTop(), 
+                    true
+                );            
             }
         },
 
         ready = function (config) {
+            modules.isAndroid = $('body').hasClass('android');
+            
             if (!this.initialised) {
-                this.initialised = true;
+                this.initialised = true;    
                 
                 if (config.adsEnabled == "true") {
                     modules.insertAdPlaceholders(config);
                     window.getMpuPosJson = modules.getMpuPosJson;
                     window.getBannerPosCallback = modules.getBannerPosCallback; 
                     window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated; 
+                    window.initMpuPoller = modules.initMpuPoller;
+                    window.applyNativeFunctionCall('initMpuPoller');
 
-                    modules.poller(1000, 
-                        modules.getMpuOffsetTop(), 
-                        $('body').hasClass('android'), 
-                        $('iframe, body.interactive, blockquote.twitter-tweet, blockquote.js-tweet').length,
-                        true
-                    );                    
+                    if(!modules.isAndroid){
+                        modules.initMpuPoller();
+                    }
                 }
             }
         };
 
     return {
-        init: ready
+        init: ready,
+        // for testing purposes
+        modules: modules
     };
 
 });
