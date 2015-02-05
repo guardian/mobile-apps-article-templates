@@ -8,32 +8,45 @@ Display a link to view more.
 
 ```html_example
 <div class="more more--comments">
-    <span class="more__label">
-        <span data-icon="&#xe050;" aria-hidden="true"></span>
-        Show 3 more replies
+    <span class="more__label" data-icon="&#xe050;">
+        <span class="more__text">Show 3 more replies</span>
     </span>
 </div>
 
 <div class="more more--live-blogs">
-    <span class="more__label">
-        <span data-icon="&#xe050;" aria-hidden="true"></span>
-        View more updates
+    <span class="more__label" data-icon="&#xe050;">
+        <span class="more__text">View more updates</span>
     </span>
 </div>
 ```
 */
 
 .more {
-    color: color(tone-news);
-    font-family: $agate-sans;
-    font-weight: bold;
-    @include body();
     padding: base-px(1, 0, 2, 0);
-    min-height: 44px;
 
-    & .more__label::before {
-        font-size: 85%;
-        margin-right: 4px;
+    .more__label{
+        display: inline-block;
+        vertical-align: middle;
+        color: color(blogs-more-btn-text);
+        font-family: $agate-sans;
+        font-weight: bold;
+        @include body(1.222);
+        padding: base-px(0.5, 2.5, 0.5, 1.166);
+        border-radius: 40px;
+        
+        &:before{
+            position: relative;
+            font-size: 110%;
+            right: 5px;
+        }
+        &:active{
+            color: darken(color(blogs-more-btn-text),10);
+        }
+    }
+
+    .more__text{
+        position: relative;
+        bottom: 3px;
     }
 }
 
@@ -52,9 +65,16 @@ Display a link to view more.
     @include mq($from: col3) {
         margin-left: cols($base-4, 5, 1);
     }
+
+    .more__label{
+        background-color: color(tone-comments-more-bg);
+        &:active{
+            background-color: darken(color(tone-comments-more-bg), 10%);
+        }
+    }    
 }
 
-// View more live blog updates
+// View more live/dead blog updates
 .more--live-blogs {
     border-bottom: 1px dotted color(shade-4);
 
@@ -63,10 +83,17 @@ Display a link to view more.
     }
 
     @include mq(col2, col3) {
-        padding-left: cols($base-3, 4, 1);
+        margin-left: cols($base-3, 4, 1);
     }
 
     @include mq($from: col3) {
-        padding-left: cols($base-4, 5, 1);
+        margin-left: cols($base-4, 5, 1);
+    }
+
+    .more__label{
+        background-color: color(tone-live-more-bg);
+        &:active{
+            background-color: darken(color(tone-live-more-bg), 10%);
+        }
     }
 }
