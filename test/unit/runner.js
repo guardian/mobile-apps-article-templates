@@ -12,10 +12,12 @@ require.config({
         qwery: 'components/qwery',
         fence: 'components/fence',
         smoothScroll: 'components/smooth-scroll',
+        twitter: 'https://platform.twitter.com/widgets',
 
         // -- tests
         test_common: '/root/test/unit/common',
-        test_ads: '/root/test/unit/ads'
+        test_ads: '/root/test/unit/ads',
+        test_twitter: '/root/test/unit/twitter'
     },
     shim: {
         d3: {
@@ -24,8 +26,10 @@ require.config({
     }
 });
 
-require(['test_common','test_ads'], function(){
+require(['twitter','test_common','test_ads','test_twitter'], function(){
+  twttr.ready(function(){
     mocha.run();
+  });
 });
 
 // bind polyfill for phantomjs
