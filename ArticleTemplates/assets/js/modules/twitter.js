@@ -56,6 +56,7 @@ define([
                 if (typeof twttr !== 'undefined' && 'widgets' in twttr && 'load' in twttr.widgets) {
                     if(!bindedCallBack){
                         twttr.events.bind('rendered', workaroundClicks);
+                        twttr.events.bind('rendered', fixVineAutoplay);
                     }
                     if(processedTweets){
                         twttr.widgets.load(body);
@@ -78,8 +79,19 @@ define([
         }
     }
 
+    function fixVineAutoplay(evt){
+        if(!isAndroid && $('iframe[src^="https://vine.co"]', evt.target.contentWindow.document)[0]){
+            $('.cards-base', evt.target.contentWindow.document).remove();
+            $(evt.target).removeAttr('height');
+        }
+    }
+
     return {
         init: bootstrap,
-        enhanceTweets: enhanceTweets
+        enhanceTweets: enhanceTweets,
+        // testing purpouses 
+        modules: {
+            fixVineAutoplay: fixVineAutoplay
+        }
     };
 });
