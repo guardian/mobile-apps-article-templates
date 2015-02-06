@@ -26,7 +26,7 @@ define([
                                 var numOfComments = $(this)[0].children.length - 4;
                                 if (numOfComments == 1) {
                                     $(this).addClass("block--discussion-thread--orphan");
-                                } else {
+                                } else {                            
                                     $(blockID).after("<div class='more more--comments'><a class='more__label' data-icon='&#xe050;'><span class='more__text'> " + numOfComments + " more replies</span></a></div>");
                                 }
                             }

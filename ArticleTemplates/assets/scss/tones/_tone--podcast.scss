@@ -61,19 +61,24 @@
         }
 
         .card__titletext {
-            text-indent: base-px(3.3);
-            overflow: hidden;
-            line-height: 3.5rem;
+            text-indent: base-px(5);
+            // overflow: hidden;
+            // line-height: 3.5rem;
             text-overflow: ellipsis;
-            overflow-y: hidden;
+            // overflow-y: hidden;
             word-wrap: break-word;
             display: -webkit-box;
             -webkit-line-clamp: 4;
             -webkit-box-orient: vertical;
         }
 
-        .byline {
-            color: #fff;
+        .meta__byline{
+            .byline{
+                color: color(tone-podcast-byline);
+            }
+            .byline__author a{
+                color: color(tone-podcast-byline-author);
+            }
         }
     }
 
