@@ -160,7 +160,13 @@ module.exports = function(grunt) {
                         return '';
                     }
                 }
-            }
+            },
+            wraithhistory: {
+                command: 'cd ' + config.base.html + 'test/visual && wraith history ' + config.base.html + 'test/visual/visual.yaml'
+            },
+            wraith: {
+                command: 'cd ' + config.base.html + 'test/visual && wraith latest ' + config.base.html + 'test/visual/visual.yaml'
+            }            
         }
 
     });

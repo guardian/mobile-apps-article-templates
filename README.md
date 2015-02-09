@@ -11,8 +11,9 @@ Article templates used within the Guardian’s next-generation iOS and Android a
 ## Usage
 * checkout the project in a separate directory, outside the iOs and the Android app.
 * run `npm install` 
+* run `bundle install`
 * copy config.sample.js to config.js and fill in the details
-* run `grunt develop` 
+* run `grunt` 
 
 Grunt will provide the following services:
 * sass linting and compilation
@@ -35,6 +36,14 @@ article1_s3_nocss
 * in a separate shell run `grunt shell:timeline --fixture=article1.html --times=10` where article1.html is the name of the fixture you want to load and 10 is the number of timelines you want to record
 * head to http://localhost:3000/performances/#yoursession to see the results
 * individual timelines are also recorded under `/Performance/timelines` and CSVs of each session under `/Performance/session`
+
+## Visual Regressions
+Use this feature to check for CSS regressions:
+* install imagemagick and phantomjs (eg: `brew install phantomjs imagemagick`)
+* run `grunt`
+* in a separate shell run `grunt shell:wraithhistory` from the project root to collect baseline screenshots
+* when you're ready run `grunt shell:wraith` from the project root to take a new set of screenshots and compare the with the baseline
+* browse http://localhost:3000/root/test/visual/shots/gallery.html to see the differences between the to sets of shots
 
 ## Updating the Documentation
 Documentation is built locally, to rebuild the documentation just type: `grunt hologram`
