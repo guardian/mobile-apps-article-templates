@@ -99,40 +99,11 @@
                     line-height: 92%; // Offset for different font
                     vertical-align: bottom;
                 }
-
-/*                
-                @include mq($to: col1) {
-                    padding-left: base-px(4);
-                }
-
-                @include mq(col1, col2) {
-                    padding-left: base-px(6.5);
-                }
-
-                @include mq(col2, col3) {
-                    padding-left: cols($base-3, 4, 1);
-                }
-
-                @include mq($from: col3) {
-                    padding-left: cols($base-4, 5, 1);
-                }
-*/
             }
 
             .section__live {
                 display: block;
             }
-
-            // .headline,
-            // .standfirst {
-            //     @include mq(col2, col3) {
-            //         margin-left: cols($base-3, 4);
-            //     }
-
-            //     @include mq($from: col3) {
-            //         margin-left: cols($base-4, 5);
-            //     }
-            // }
 
             .standfirst {
                 color: rgba(color(tone-deadblog-standfirst), .8);
@@ -150,16 +121,12 @@
             margin: 0;
 
             @include mq(col2, col3) {
-                // padding-left: cols($base-3, 4);
-
                 .alerts {
                     width: cols($base-3, 4);
                 }
             }
 
             @include mq($from: col3) {
-                // padding-left: cols($base-4, 5);
-
                 .alerts {
                     width: cols($base-4, 5);
                 }
