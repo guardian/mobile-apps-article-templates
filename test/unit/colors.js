@@ -47,7 +47,6 @@ define([
 
 		// this test at the moment break phantomJS but works on chrome (http://localhost:3000/root/test/unit/runner.html)
 		if (navigator.userAgent.indexOf('PhantomJS') < 0) {
-
 			it('has the right colors for the review', function(done){
 				checkColors(done, {
 					url: '/tone-review.html',
