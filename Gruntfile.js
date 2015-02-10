@@ -21,7 +21,7 @@ module.exports = function(grunt) {
                     src: 'ArticleTemplates/',
                     dest: config.base.ios
                 }
-            }            
+            }
         },
 
         // Stylesheets
@@ -71,8 +71,7 @@ module.exports = function(grunt) {
                     out: "ArticleTemplates/assets/build/app.js",
                     optimize: 'uglify2',
                     generateSourceMaps: true,
-                    preserveLicenseComments: false,
-                    useSourceUrl: true                    
+                    preserveLicenseComments: false
                 }
             }
         },
@@ -85,10 +84,10 @@ module.exports = function(grunt) {
                     run: false,
                     log: true,
                     urls: [ 'http://localhost:3000/root/test/unit/runner.html' ],
-                    page: { 
-                        settings: { 
+                    page: {
+                        settings: {
                             webSecurityEnabled: false,
-                        },  
+                        },
                     },
                 },
             },
@@ -125,8 +124,8 @@ module.exports = function(grunt) {
             options: {
                 enabled: true,
                 max_jshint_notifications: 5,
-                success: true, 
-                duration: 3 
+                success: true,
+                duration: 3
             }
         },
 
@@ -166,7 +165,7 @@ module.exports = function(grunt) {
             },
             wraith: {
                 command: 'cd ' + config.base.html + 'test/visual && wraith latest ' + config.base.html + 'test/visual/visual.yaml'
-            }            
+            }
         }
 
     });

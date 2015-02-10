@@ -5,15 +5,15 @@ var gu = document.getElementById('gu'),
 
 require.config({
     paths: {
-        bonzo: 'components/bonzo',
-        bean: 'components/bean',
-        d3: 'components/d3',
-        domReady: 'components/ready',
-        mobileSlider: 'components/mobile-range-slider',
-        fastClick: 'components/fastclick',
-        qwery: 'components/qwery',
-        fence: 'components/fence',
-        smoothScroll: 'components/smooth-scroll'
+        bonzo: '../../../node_modules/bonzo/bonzo',
+        bean: '../../../node_modules/bean/bean',
+        d3: '../../../node_modules/d3/d3',
+        domReady: '../../../node_modules/domready/ready',
+        mobileSlider: '../../../bower_components/mobile-range-slider/mobile-range-slider',
+        fastClick: '../../../node_modules/fastclick/lib/fastclick',
+        qwery: '../../../node_modules/qwery/qwery',
+        fence: '../../../node_modules/fence/lib/fence',
+        smoothScroll: '../../../node_modules/smooth-scroll/dist/js/smooth-scroll'
     },
     shim: {
         d3: {
