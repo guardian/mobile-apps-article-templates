@@ -85,19 +85,19 @@ define([
                 // Fix Wine Width
                 modules.fixVineWidth();
 
-                // Boot Fenced Embeds                
+                // Boot Fenced Embeds
                 require(['fence'], function(fence) {
                     $("iframe.fenced").each(function(node) {
                         fence.render(node);
                     });
                 });
-                
+
             };
             window.loadEmbeds();
         },
 
         scrollToAnchor: function () {
-            window.smoothScroll.init();
+            smoothScroll.init();
         },
 
         imageSizer: function () {
@@ -108,7 +108,7 @@ define([
                     var parent;
                     var imageWidth = el.getAttribute('width') || $(el).dim().width,
                         imageClass = imageWidth < 301 ? 'figure-inline' : 'figure-wide';
-                    // NB No parents() or closest() with Bonzo, so I'm using pure JavaScript 
+                    // NB No parents() or closest() with Bonzo, so I'm using pure JavaScript
                     // to detect where Figure element is (either up one or two parent nodes)
                     parent = el.parentNode.parentNode.nodeName === "FIGURE" ? $(el).parent().parent() : $(el).parent();
                     parent.addClass(imageClass);
