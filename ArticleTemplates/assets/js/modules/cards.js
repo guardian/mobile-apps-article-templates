@@ -39,7 +39,7 @@ define([
                 window.applyNativeFunctionCall('articleCardsInserter');
             },
             getNumberOfTextLines:function (el) {
-                //returns number of text lines of single html element 
+                //returns number of text lines of single html element
                 var cssValues=window.getComputedStyle(el,null);
                 var lineHeight=cssValues.lineHeight.replace('px','');
                 var paddingTop=cssValues.paddingTop.replace('px','');
@@ -49,7 +49,7 @@ define([
                 return parseInt(numberOfLines);
             }
         },
-        
+
         ready = function () {
             if (!this.initialised) {
                 this.initialised = true;

@@ -16,7 +16,7 @@ define([
     var isAndroid = $('body').hasClass('android');
 
     function bootstrap() {
-        bean.on(window, 'scroll', function(){             
+        bean.on(window, 'scroll', function(){
             if(timeoutId){
                 clearTimeout(timeoutId);
             }
@@ -89,7 +89,7 @@ define([
     return {
         init: bootstrap,
         enhanceTweets: enhanceTweets,
-        // testing purpouses 
+        // testing purpouses
         modules: {
             fixVineAutoplay: fixVineAutoplay
         }
