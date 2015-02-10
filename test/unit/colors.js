@@ -47,7 +47,7 @@ define([
 
 		// this test at the moment break phantomJS but works on chrome (http://localhost:3000/root/test/unit/runner.html)
 		if (navigator.userAgent.indexOf('PhantomJS') < 0) {
-	
+
 			it('has the right colors for the review', function(done){
 				checkColors(done, {
 					url: '/tone-review.html',
@@ -75,7 +75,7 @@ define([
 					type: /rgb\(0, 86, 137\)|#005689/i,
 					status: /rgb\(246, 246, 246\)|#f6f6f6/i,
 					divider: /rgb\(0, 86, 137\)|#005689/i
-				});				
+				});
 			});
 
 			it('has the right colors for the podcasts', function(done){
@@ -84,7 +84,7 @@ define([
 					bg: /rgb\(72, 72, 72\)|#484848/i,
 					type: /rgb\(255, 255, 255\)|#fff|#ffffff/i,
 					divider: /rgb\(167, 216, 242\)|#a7d8f2/i
-				});					
+				});
 			});
 
 		}
