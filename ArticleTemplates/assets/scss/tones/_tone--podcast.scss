@@ -28,7 +28,7 @@
     }
 
     .article {
-        border-top-color: color(shade-1);
+        border-top-color: color(tone-podcast-status-band);
     }
 
     .article__header {
@@ -62,10 +62,14 @@
 
         .card__titletext {
             text-indent: base-px(5);
+            @include mq($to: col1) {
+                text-indent: base-px(3.33);
+            }            
             // overflow: hidden;
             // line-height: 3.5rem;
+            padding-bottom: 3px;
             text-overflow: ellipsis;
-            // overflow-y: hidden;
+            overflow-y: hidden;
             word-wrap: break-word;
             display: -webkit-box;
             -webkit-line-clamp: 4;

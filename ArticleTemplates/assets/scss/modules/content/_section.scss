@@ -67,7 +67,7 @@ With live indicator:
     position: relative;
     float: left;
     padding: base-px(.4, 1, 0, 1);
-    border-bottom: 1px color(shade-4) dotted;
+    border-bottom: 1px rgba(color(shade-4), .4) dotted;
     width:100%;
     margin-bottom:10px;
     .section {
@@ -88,7 +88,8 @@ With live indicator:
         float: left;
         line-height: 1.6rem;
         @include headline(.5);
-        padding: base-px(.5, .5, .5, 0);
+        //padding: base-px(.5, .5, .5, 0);
+        padding: base-px(.25, .5, .16, 0);
     }
     .content__series-label {
         font-weight: normal;

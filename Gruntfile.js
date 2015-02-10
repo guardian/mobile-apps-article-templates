@@ -191,7 +191,7 @@ module.exports = function(grunt) {
                 }
             },
             wraithhistory: {
-                command: 'cd ' + config.base.html + 'test/visual && wraith history ' + config.base.html + 'test/visual/visual.yaml'
+                command: 'cd ' + config.base.html + 'test/visual && rm -rf shots shots_history && wraith history ' + config.base.html + 'test/visual/visual.yaml'
             },
             wraith: {
                 command: 'cd ' + config.base.html + 'test/visual && wraith latest ' + config.base.html + 'test/visual/visual.yaml'

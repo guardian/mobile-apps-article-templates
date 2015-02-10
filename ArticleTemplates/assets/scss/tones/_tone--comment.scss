@@ -8,8 +8,6 @@
     }
 
     .section__container {
-        border-bottom: 1px darken(color(shade-4), 10%) dotted;
-
         .section {
             color: color(tone-comment-section-label); // Content Label Section
         }
@@ -17,6 +15,19 @@
             color: color(tone-comment-series-label);  // Content Label Series
         }
     }
+
+    .section__container, 
+    figure figcaption{
+        border-bottom: 1px darken(color(shade-4), 10%) dotted;
+    }
+
+    .tags {
+        .inline-list__item {
+            &.more-button a {
+                @include tag-more-button(color(global-tags-text), color(comments-more-btn-border));
+            }
+        }        
+    }    
 
     .touchpoint--primary {
         .touchpoint__button {
