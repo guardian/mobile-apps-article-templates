@@ -203,7 +203,6 @@ define([
                     $(this).attr("aria-selected", true);
 
                     var obj = $(this).attr("id");
-                    console.log(obj);
                     switch(obj) {
                         case "football__tab--article":
                             // console.info("Report Tab");
