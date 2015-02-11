@@ -8,6 +8,11 @@ module.exports = {
 
 	performance: {
 		server: // the URL that points to test/server.js (usually the LAN ip of the machine)
+	},
+
+	ios: {
+		sign: // developer sign
+		provisioning: // provisioning profile
 	}
 
 }
