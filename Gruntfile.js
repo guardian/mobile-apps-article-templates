@@ -145,6 +145,14 @@ module.exports = function(grunt) {
             android: {
                 command: 'cd ' + config.base.android + '../../../../  && ./gradlew zipTemplates && ./gradlew assembleDebug && cp android-news-app/build/outputs/apk/android-news-app-debug.apk ' + config.base.html
             },
+            ios: {
+                options: {
+                    execOptions: {
+                        maxBuffer: 10000000
+                    }
+                },
+                command: 'cd ' + config.base.ios + '../../GLA/ && xcodebuild clean build -sdk iphoneos8.1 -configuration Debug -workspace GLA.xcworkspace -scheme GLADebug -derivedDataPath ' + config.base.html + ' && xcrun -sdk iphoneos8.1 PackageApplication -v ' + config.base.html + 'Build/Products/Debug-iphoneos/GLA.app -o ' + config.base.html + 'guardian-debug.ipa --sign "' + config.ios.sign + '" --embed "' + config.ios.provisioning + '"'
+            },
             timeline: {
                 command: function(){
                     if( grunt.option('fixture') ){
@@ -175,5 +183,7 @@ module.exports = function(grunt) {
     grunt.registerTask('develop', ['express','watch']);
     grunt.registerTask('build', ['jshint', 'requirejs', 'scsslint','sass']);
     grunt.registerTask('apk', ['build', 'rsync', 'shell:android']);
+    grunt.registerTask('ipa', ['build', 'rsync', 'shell:ios']);
+    grunt.registerTask('installer', ['build', 'rsync', 'shell:ios', 'shell:android']);
     grunt.registerTask('default', 'develop');
 };
