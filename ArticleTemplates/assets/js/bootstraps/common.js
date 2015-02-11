@@ -203,6 +203,7 @@ define([
                     $(this).attr("aria-selected", true);
 
                     var obj = $(this).attr("id");
+                    console.log(obj);
                     switch(obj) {
                         case "football__tab--article":
                             // console.info("Report Tab");
@@ -210,6 +211,10 @@ define([
                             break;
                         case "football__tab--stats":
                             // console.info("Stats Tab");
+                            var parent = $('.pie-chart').parent().offset();
+                            $('.pie-chart').attr('width', parent.width);
+                            $('.pie-chart').attr('height', parent.width);
+
                             window.location.href = 'x-gu://football_tab_stats';
                             break;
                         case "football__tab--liveblog":

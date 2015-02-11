@@ -182,7 +182,7 @@ module.exports = function(grunt) {
 
     grunt.task.run('notify_hooks');
 
-    grunt.registerTask('develop', ['express','watch']);
+    grunt.registerTask('develop', ['build', 'express', 'watch']);
     grunt.registerTask('build', ['jshint', 'requirejs', 'scsslint','sass']);
     grunt.registerTask('apk', ['build', 'rsync', 'shell:android']);
     grunt.registerTask('ipa', ['build', 'rsync', 'shell:ios']);

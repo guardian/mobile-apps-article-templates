@@ -33,8 +33,6 @@ define([
 
             // Init d3 chart
             vis = d3.select(".pie-chart")
-                .attr("height", height)
-                .attr("width", width)
                 .attr("preserveAspectRatio", "xMinYMin slice")
                 .attr("viewBox", "0 0 250 250")
                 .append("g")
@@ -64,7 +62,7 @@ define([
                 .data(pie(data))
                 .enter().append("g")
                 .attr("class", "pie-chart__segment");
-            
+
             g.append("path")
                 .attr("class", function(d) {
                     return "pie-chart__segment-arc pie-chart__segment-arc--" + d.data[2];
