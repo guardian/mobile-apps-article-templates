@@ -211,10 +211,7 @@ define([
                             break;
                         case "football__tab--stats":
                             // console.info("Stats Tab");
-                            var parent = $('.pie-chart').parent().offset();
-                            $('.pie-chart').attr('width', parent.width);
-                            $('.pie-chart').attr('height', parent.width);
-
+                            modules.setPieChartSize();
                             window.location.href = 'x-gu://football_tab_stats';
                             break;
                         case "football__tab--liveblog":
@@ -228,6 +225,13 @@ define([
 
                 });
             });
+        },
+
+        setPieChartSize: function (){
+            var piechart = $('.pie-chart');
+            var parent = piechart.parent().offset();
+            piechart.attr('width', parent.width);
+            piechart.attr('height', parent.width);
         },
 
         fixVineWidth: function (container) {
@@ -280,6 +284,6 @@ define([
     return {
         init: ready,
         // export internal functions for testing purpouse
-        fixVineWidth: modules.fixVineWidth
+        modules: modules
     };
 });
