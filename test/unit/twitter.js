@@ -42,7 +42,7 @@ define([
 				expect(media.length).to.be.equal(1);
 				done();
 			});
-			twttr.widgets.load(sandbox[0]);			
+			twttr.widgets.load(sandbox[0]);
 		});
 
 		afterEach(function(){
