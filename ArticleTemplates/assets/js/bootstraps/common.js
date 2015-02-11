@@ -229,8 +229,10 @@ define([
         setPieChartSize: function (){
             var piechart = $('.pie-chart');
             var parent = piechart.parent().offset();
-            piechart.attr('width', parent.width);
-            piechart.attr('height', parent.width);
+            piechart.css({
+                'width': parent.width,
+                'height': parent.width
+            });
         },
 
         fixVineWidth: function (container) {
