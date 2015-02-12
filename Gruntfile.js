@@ -148,7 +148,7 @@ module.exports = function(grunt) {
             ios: {
                 options: {
                     execOptions: {
-                        maxBuffer: 10000000
+                        maxBuffer: 30000000
                     }
                 },
                 command: 'cd ' + config.base.ios + '../../GLA/ && xcodebuild clean build -sdk iphoneos8.1 -configuration Debug -workspace GLA.xcworkspace -scheme GLADebug -derivedDataPath ' + config.base.html + ' && xcrun -sdk iphoneos8.1 PackageApplication -v ' + config.base.html + 'Build/Products/Debug-iphoneos/GLA.app -o ' + config.base.html + 'guardian-debug.ipa --sign "' + config.ios.sign + '" --embed "' + config.ios.provisioning + '"'
