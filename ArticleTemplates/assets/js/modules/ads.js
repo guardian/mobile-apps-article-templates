@@ -83,8 +83,10 @@ define([
                 var el = document.getElementById("advert-slot__wrapper");
                 if (el) {
                     r = el.getBoundingClientRect();
-                    return formatter(r.left + document.body.scrollLeft,
-                        r.top+document.body.scrollTop, r.width, r.height);
+                    if(r.width !== 0 && r.height !== 0){
+                        return formatter(r.left + document.body.scrollLeft,
+                            r.top+document.body.scrollTop, r.width, r.height);
+                    }
                 } else {
                     return null;
                 }
@@ -130,6 +132,7 @@ define([
 
             updateAndroidPosition : function() {
                 modules.getMpuPos(function(x, y, w, h){
+                    console.log(x, y, w, h);
                     window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
                 });
             },
