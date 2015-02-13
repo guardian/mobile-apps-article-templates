@@ -144,7 +144,7 @@ module.exports = function(grunt) {
         shell: {
             android: {
                 command: function(){
-                    return 'cd ' + config.base.android + '../../../../  && BUILD_NUMBER=' + grunt.option('card') + '" && ./gradlew zipTemplates && ./gradlew assembleDebug && cp android-news-app/build/outputs/apk/android-news-app-debug.apk ' + config.base.html
+                    return 'cd ' + config.base.android + '../../../../  && export BUILD_NUMBER=' + grunt.option('card') + ' && ./gradlew zipTemplates && ./gradlew assembleDebug && cp android-news-app/build/outputs/apk/android-news-app-debug.apk ' + config.base.html
                 }
             },
             ios: {
