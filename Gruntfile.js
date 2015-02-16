@@ -143,7 +143,9 @@ module.exports = function(grunt) {
 
         shell: {
             android: {
-                command: 'cd ' + config.base.android + '../../../../  && ./gradlew zipTemplates && ./gradlew assembleDebug && cp android-news-app/build/outputs/apk/android-news-app-debug.apk ' + config.base.html
+                command: function(){
+                    return 'cd ' + config.base.android + '../../../../  && export BUILD_NUMBER=' + grunt.option('card') + ' && ./gradlew zipTemplates && ./gradlew assembleDebug && cp android-news-app/build/outputs/apk/android-news-app-debug.apk ' + config.base.html
+                }
             },
             ios: {
                 options: {
@@ -180,7 +182,7 @@ module.exports = function(grunt) {
 
     grunt.task.run('notify_hooks');
 
-    grunt.registerTask('develop', ['express','watch']);
+    grunt.registerTask('develop', ['build', 'express', 'watch']);
     grunt.registerTask('build', ['jshint', 'requirejs', 'scsslint','sass']);
     grunt.registerTask('apk', ['build', 'rsync', 'shell:android']);
     grunt.registerTask('ipa', ['build', 'rsync', 'shell:ios']);

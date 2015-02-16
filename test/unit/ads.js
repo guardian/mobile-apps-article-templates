@@ -68,6 +68,14 @@ define([
 				}, 1900);
 			});
 
+			it('Doesnt invoke mpuAdsPosition if x,y,w,h are 0', function(){
+				var hiddenAdvPlaceholder = bonzo.create('<div style="display:none;"><div id="advert-slot__wrapper"></div></div>');
+				$(hiddenAdvPlaceholder).appendTo(sandbox);
+				var nativeInterface = sinon.spy();
+				Ads.modules.getMpuPos(nativeInterface);
+				expect(nativeInterface).not.to.have.been.called;
+			});
+
 			afterEach(function(){
 				Ads.modules.poller.restore();
 			});

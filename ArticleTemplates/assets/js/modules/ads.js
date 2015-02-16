@@ -15,20 +15,20 @@ define([
         modules = {
             insertAdPlaceholders: function (config) {
                 var windowWidth = window.innerWidth;
-                
+
                 var counter = 0;
-                
+
                 $(".article__body > div > *:nth-child(-n+3)").each(function() {
-                    
+
                     var tagName = $(this)[0].tagName;
-                    
+
                     if (tagName == "P" || tagName == "H2" || tagName == "BLOCKQUOTE") {
                         counter++;
-                    } else if (tagName == "FIGURE" && $(this).hasClass("element-placeholder") || 
+                    } else if (tagName == "FIGURE" && $(this).hasClass("element-placeholder") ||
                         $(this).hasClass("element-video")) {
                         counter++;
                     }
-                    
+
                 });
 
                 if (config.adsConfig == "tablet" && counter == 3) {
@@ -54,12 +54,12 @@ define([
 
                     $(".article__body > div > p:nth-of-type(6)").after(mobileMpuHtml);
                     $(".advert-slot__wrapper").prepend(bannerHtml);
-       
+
                 }
             },
 
             // return the current top Banner's position.
-            // This function is an internal function which accepts a function 
+            // This function is an internal function which accepts a function
             // formatter(left, top, width, height)
 
             getBannerPos : function(formatter) {
@@ -67,7 +67,7 @@ define([
                 var el = document.getElementById("banner_container");
                 if (el) {
                     r = el.getBoundingClientRect();
-                    return formatter(r.left + document.body.scrollLeft, r.top+document.body.scrollTop, 
+                    return formatter(r.left + document.body.scrollLeft, r.top+document.body.scrollTop,
                         r.width, r.height);
                 } else {
                     return null;
@@ -75,7 +75,7 @@ define([
             },
 
             // return the current MPU's position.
-            // This function is an internal function which accepts a function 
+            // This function is an internal function which accepts a function
             // formatter(left, top, width, height)
 
             getMpuPos : function(formatter) {
@@ -83,25 +83,27 @@ define([
                 var el = document.getElementById("advert-slot__wrapper");
                 if (el) {
                     r = el.getBoundingClientRect();
-                    return formatter(r.left + document.body.scrollLeft, 
-                        r.top+document.body.scrollTop, r.width, r.height);
+                    if(r.width !== 0 && r.height !== 0){
+                        return formatter(r.left + document.body.scrollLeft,
+                            r.top+document.body.scrollTop, r.width, r.height);
+                    }
                 } else {
                     return null;
                 }
             },
 
             getMpuPosJson : function() {
-                return modules.getMpuPos(function(x, y, w, h) { 
+                return modules.getMpuPos(function(x, y, w, h) {
                     return '{"left":' + x + ', "top":' + y + ', "width":' + w +', "height":' + h + '}';
                 });
             },
             getMpuPosCommaSeparated : function() {
-                return modules.getMpuPos(function(x, y, w, h) { 
+                return modules.getMpuPos(function(x, y, w, h) {
                     return x + ',' + y;
                 });
             },
             getMpuOffsetTop : function() {
-                return modules.getMpuPos(function(x, y, w, h) { 
+                return modules.getMpuPos(function(x, y, w, h) {
                     return y;
                 });
             },
@@ -122,9 +124,9 @@ define([
                         modules.updateAndroidPosition();
                     } else {
                         window.location.href = 'x-gu://ad_moved';
-                    }                    
+                    }
                 }
-               
+
                 setTimeout(modules.poller.bind(modules, interval + 50, newYPos), interval);
             },
 
@@ -135,24 +137,24 @@ define([
             },
 
             initMpuPoller: function(){
-                modules.poller(1000, 
-                    modules.getMpuOffsetTop(), 
+                modules.poller(1000,
+                    modules.getMpuOffsetTop(),
                     true
-                );            
+                );
             }
         },
 
         ready = function (config) {
             modules.isAndroid = $('body').hasClass('android');
-            
+
             if (!this.initialised) {
-                this.initialised = true;    
-                
+                this.initialised = true;
+
                 if (config.adsEnabled == "true") {
                     modules.insertAdPlaceholders(config);
                     window.getMpuPosJson = modules.getMpuPosJson;
-                    window.getBannerPosCallback = modules.getBannerPosCallback; 
-                    window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated; 
+                    window.getBannerPosCallback = modules.getBannerPosCallback;
+                    window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated;
                     window.initMpuPoller = modules.initMpuPoller;
                     window.applyNativeFunctionCall('initMpuPoller');
 
