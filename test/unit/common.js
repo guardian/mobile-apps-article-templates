@@ -65,7 +65,7 @@ define([
 		});
 
 		it('should display only 5 tags', function(){
-			Common.insertTags();
+			Common.modules.insertTags();
 			var tagsContainer = bonzo.create('<div class="tags" id="tags"><ul class="inline-list" id="tag-list"><li class="inline-list__item screen-readable">Tags:</li></ul></div>');
 			$(tagsContainer).appendTo(sandbox);
 			var tags = '<li class="inline-list__item"><a href="x-gu://list/http://mobile-apps.guardianapis.com/lists/tag/society/prisons-and-probation">Prisons and probation</a></li><li class="inline-list__item"><a href="x-gu://list/http://mobile-apps.guardianapis.com/lists/tag/law/law">Law</a></li><li class="inline-list__item"><a href="x-gu://list/http://mobile-apps.guardianapis.com/lists/tag/law/criminal-justice">UK criminal justice</a></li><li class="inline-list__item"><a href="x-gu://list/http://mobile-apps.guardianapis.com/lists/tag/society/society">Society</a></li><li class="inline-list__item"><a href="x-gu://list/http://mobile-apps.guardianapis.com/lists/tag/politics/chrisgrayling">Chris Grayling</a></li><li class="inline-list__item"><a href="x-gu://list/http://mobile-apps.guardianapis.com/lists/tag/politics/politics">Politics</a></li><li class="inline-list__item"><a href="x-gu://list/http://mobile-apps.guardianapis.com/lists/tag/profile/alantravis">Alan Travis</a></li><li class="inline-list__item"><a href="x-gu://list/http://mobile-apps.guardianapis.com/lists/tag/theguardian/mainsection">Main section</a></li>';			
@@ -81,7 +81,7 @@ define([
 			var tagsContainer;
 
 			beforeEach(function(){
-				Common.insertTags();
+				Common.modules.insertTags();
 				tagsContainer = bonzo.create('<div class="tags" id="tags"><ul class="inline-list" id="tag-list"><li class="inline-list__item screen-readable">Tags:</li></ul></div>');
 				$(tagsContainer).appendTo(sandbox);
 			});
