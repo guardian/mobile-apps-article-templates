@@ -53,11 +53,13 @@ define([
             },
 
             liveMore: function () {
-                bean.on($('.more--live-blogs')[0], 'click', function () {
-                    $(this).hide();
-                    $('.loading--liveblog').addClass("loading--visible");
-                    window.location.href = 'x-gu://showmore';
-                });
+                if($('.more--live-blogs')[0]){
+                    bean.on($('.more--live-blogs')[0], 'click', function () {
+                        $(this).hide();
+                        $('.loading--liveblog').addClass("loading--visible");
+                        window.location.href = 'x-gu://showmore';
+                    });
+                }
             },
 
             setupGlobals: function () {
