@@ -22,7 +22,7 @@ define([
                     $(".block--discussion-thread").each(function(el) {
                         if (!$(this).hasClass("block--discussion-thread--checked")) {
                             if (typeof $(this)[0].children[4] !== "undefined") {
-                                var blockID = "#" + $(this)[0].children[3].id;
+                                var blockID = "div[id='" + $(this)[0].children[3].id + "']";
                                 var numOfComments = $(this)[0].children.length - 4;
                                 if (numOfComments == 1) {
                                     $(this).addClass("block--discussion-thread--orphan");
