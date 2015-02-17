@@ -48,9 +48,12 @@ define([
             }
         },
 
-        loadAdverts: function (config) {
+        loadAdverts: function () {
             // Setup ad tags, insert containers
-            Ads.init(config);
+            Ads.init({
+                adsEnabled: document.body.getAttribute('data-ads-enabled'),
+                adsConfig: document.body.getAttribute('data-ads-config')
+            });
         },
 
         loadComments: function () {
@@ -249,7 +252,7 @@ define([
         }
     },
 
-    ready = function (config) {
+    ready = function () {
         if (!this.initialised) {
             this.initialised = true;
 
@@ -263,7 +266,7 @@ define([
             modules.figcaptionToggle();
             modules.imageSizer();
             modules.insertTags();
-            modules.loadAdverts(config);
+            modules.loadAdverts();
             modules.loadComments();
             modules.loadCards();
             modules.loadEmbeds();
@@ -278,7 +281,6 @@ define([
             if (!$("body").hasClass("no-ready")) {
                 window.location.href = 'x-gu://ready';
             }
-            // console.info("Common ready");
         }
     };
 

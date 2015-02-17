@@ -157,6 +157,7 @@ define([
                     window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated;
                     window.initMpuPoller = modules.initMpuPoller;
                     window.applyNativeFunctionCall('initMpuPoller');
+                    window.applyNativeFunctionCall('getBannerPosCallback');
 
                     if(!modules.isAndroid){
                         modules.initMpuPoller();
