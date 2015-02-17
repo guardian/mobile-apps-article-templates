@@ -73,8 +73,20 @@ MPU
 
     .advert-slot__wrapper {
         padding-top: base-px(4);
-        width: 300px;
         margin: 0 auto;
+    }
+
+    .advert-slot__wrapper,
+    .advert-slot__label{
+        width: 300px;
+        .android & {
+            width: 320px;
+        }
+    }
+    @include mq($to: 321px){
+        .android & .advert-slot__label{
+            width: 320px - 24px;
+        }
     }
 }
 
@@ -85,11 +97,12 @@ MPU
     /*  Any res above 375w e.g. iPhone 6, 6 plus */
     @include customMQ (iP6) {
         padding-bottom: 15px;
-        width: 100%;  
+        width: 100%;
     }
 
     .advert-slot__label {
         padding: base-px(.5, 0, 2, .5);
+        width: 300px;
         /*  Any res above 375w e.g. iPhone 6, 6 plus */
         @include customMQ (iP6) {
             padding-bottom: 11px;
@@ -102,7 +115,7 @@ MPU
         height: 250px;
         /*  Any res above 375w e.g. iPhone 6, 6 plus */
         @include customMQ (iP6) {
-            width: 300px; 
+            width: 300px;
         }
     }
 }
@@ -116,7 +129,6 @@ MPU
 
         .advert-slot__label {
             margin: 0 auto;
-            width: 300px;
         }
 
         .advert-slot__wrapper {
