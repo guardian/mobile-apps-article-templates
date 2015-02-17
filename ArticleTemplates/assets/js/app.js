@@ -23,61 +23,40 @@ require.config({
 });
 
 require([
-    'domReady',
-    'bootstraps/common',
-    'bootstraps/article',
-    'bootstraps/audio',
-    'bootstraps/football',
-    'bootstraps/gallery',
-    'bootstraps/liveblog',
-    'modules/$'
+    'domReady'
 ], function (
-    domReady,
-    Common,
-    Article,
-    Audio,
-    Football,
-    Gallery,
-    Liveblog,
-    $
+    domReady
 ) {
     'use strict';
 
     domReady(function () {
-        var config = {
-            contentType: document.body.getAttribute('data-content-type'),
-            adsEnabled: document.body.getAttribute('data-ads-enabled'),
-            adsConfig: document.body.getAttribute('data-ads-config')
-        };
 
-        // Common bootstrap
-        Common.init(config);
+        var contentType = document.body.getAttribute('data-content-type');
 
-        if (config.contentType === 'article') {
-            Article.init();
-        }
-
-        if (config.contentType === 'liveblog') {
-            Liveblog.init();
-        }
-
-        if (config.contentType === 'audio') {
-            Audio.init();
-        }
-
-        if (config.contentType === 'gallery') {
-            Gallery.init();
-        }
-
-        if (config.contentType === 'football') {
-            Football.init();
-
-            // Football liveblogs don't use the liveblog template,
-            // init liveblog template JS if required
-            if ($('.article__body--liveblog').length > 0) {
+        if (contentType === 'article') {
+            require(['article'], function(Article){
+                Article.init();
+            });
+        } else if (contentType === 'liveblog') {
+            require(['liveblog'], function(Liveblog){
                 Liveblog.init();
-            }
+            });
+        } else if (contentType === 'audio') {
+            require(['audio'], function(Audio){
+                Audio.init();
+            });
+        } else if (contentType === 'gallery') {
+            require(['gallery'], function(Gallery){
+                Gallery.init();
+            });
+        } else if (contentType === 'football') {
+            require(['football'], function(Football){
+                Football.init();
+            });
+        } else {
+            require(['bootstraps/common'], function(Common){
+                Common.init();
+            });
         }
     });
-
 });

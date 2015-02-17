@@ -67,11 +67,21 @@ module.exports = function(grunt) {
                 options: {
                     baseUrl: "ArticleTemplates/assets/js",
                     mainConfigFile: 'ArticleTemplates/assets/js/app.js',
-                    name: "app",
-                    out: "ArticleTemplates/assets/build/app.js",
-                    optimize: 'uglify2',
+                    dir: "ArticleTemplates/assets/build",
+                    optimize: 'uglify2',                 
                     generateSourceMaps: true,
-                    preserveLicenseComments: false
+                    preserveLicenseComments: false,
+                    useSourceUrl: false,
+                    removeCombined: true,
+                    modules: [
+                        { name: 'audio' },
+                        { name: 'football' },
+                        { name: 'gallery' },
+                        { name: 'liveblog' },
+                        { name: 'article' },
+                        { name: 'bootstraps/common'},
+                        { name: 'app' }
+                    ]
                 }
             }
         },
@@ -108,12 +118,8 @@ module.exports = function(grunt) {
                 files: ['ArticleTemplates/assets/scss/**/*.scss'],
                 tasks: ['scsslint','sass']
             },
-            timeline: {
-                files: ['ArticleTemplates/**', 'test/fixture/**', 'test/performance/**'],
-                tasks: ['shell:timeline']
-            },
             copy: {
-                files: ['ArticleTemplates/**'],
+                files: ['ArticleTemplates/*.html', 'ArticleTemplates/assets/{js,scss,img}/**'],
                 tasks: ['rsync']
             }
         },
@@ -144,7 +150,7 @@ module.exports = function(grunt) {
         shell: {
             android: {
                 command: function(){
-                    return 'cd ' + config.base.android + '../../../../  && export BUILD_NUMBER=' + grunt.option('card') + ' && ./gradlew zipTemplates && ./gradlew assembleDebug && cp android-news-app/build/outputs/apk/android-news-app-debug.apk ' + config.base.html
+                    return 'cd ' + config.base.android + '../../../../  && export BUILD_NUMBER=' + grunt.option('card') + ' && ./gradlew zipTemplates && ./gradlew assembleDebug && cp android-news-app/build/outputs/apk/android-news-app-debug.apk ' + config.base.html;
                 }
             },
             ios: {

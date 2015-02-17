@@ -29,7 +29,8 @@ var nativeFunctionCalls = [
     'liveblogDeleteBlock',
     'liveblogNewBlock',
     'getMpuPosCallback',
-    'initMpuPoller'
+    'initMpuPoller',
+    'getBannerPosCallback'
 ];
 
 Array.prototype.forEach.call(nativeFunctionCalls, function (name) {

@@ -24,14 +24,14 @@ function drawSession(session){
 						averages[label][k] =  averages[label][k] + 1;
 					}
 				} else {
-					row.push(item === "" ? -1 : item);	
-					if(label && i!== 0){	
+					row.push(item === "" ? -1 : item);
+					if(label && i!== 0){
 						if(!averages[label][k]){
 							averages[label][k] = item;
 						} else {
 							averages[label][k] = averages[label][k] + ( parseFloat(item) - averages[label][k] ) / averages[label][0] ;
 						}
-					}					
+					}
 				}
 			});
 			table.push(row);
