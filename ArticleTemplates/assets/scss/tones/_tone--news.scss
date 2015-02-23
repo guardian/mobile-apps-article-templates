@@ -41,4 +41,60 @@
 
     }
 
+
+    &.is_advertising {
+        .article, 
+        .article__header, 
+        .article__header .meta,
+        .article__header .main-media__caption {
+            background-color: color(tone-news-adv-global-bg);
+        }
+
+        .article,
+        .section__container,
+        .article__header .meta,
+        .article__header .meta__comments,
+        .article__header figure figcaption,
+        .sponsorship,
+        .tags {
+            border-color: color(tone-news-adv-border);
+        }
+
+        .article__header .meta {
+            border-top-style: dotted;
+            border-top-width: 1px;
+        }
+
+        .headline, 
+        .standfirst {
+            font-family: $egyptian-display;
+        }
+
+        .headline {
+            color: color(tone-news-adv-headline);
+        }
+
+        .standfirst{
+            color: color(tone-news-adv-standfirst);
+        }
+
+        .article__header .meta__pubdate{
+            color: color(tone-news-adv-meta-pubdate);
+        }
+
+        .article__body{
+            color: color(tone-news-adv-body);
+        }
+
+        .prose p, 
+        .prose li {
+            @include text-underline(color(tone-news), color(tone-news-adv-global-bg), color(tone-news-accent));
+        }
+
+        .tags .inline-list__item.more-button a {
+            border-color: color(tone-news-adv-tags-more-border);
+        }
+
+    }
+
 }
