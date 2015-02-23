@@ -101,6 +101,7 @@ define([
 
                 window.audioBackground = function (duration) {
                     if ($(".cutout__container").attr("data-background") === null && !$("body").hasClass("media")) {
+                        var isAdv = $("body").hasClass("is_advertising");
                         var numOfCircles = Math.min(10, Math.floor((duration / 60) / 2)) + 2,
                             h = $(".article__header").offset().height,
                             w = $(".article__header").offset().width,
@@ -113,7 +114,7 @@ define([
                             ctx.beginPath();
                             ctx.arc(x, h / 2, size, 0, Math.PI * 2, true);
                             ctx.closePath();
-                            ctx.fillStyle = "rgba(167, 216, 242, 0.10)";
+                            ctx.fillStyle = isAdv ? "rgba(255, 255, 255, 0.10)" : "rgba(167, 216, 242, 0.10)";
                             ctx.fill();
                             size = size * 1.2;
                         }

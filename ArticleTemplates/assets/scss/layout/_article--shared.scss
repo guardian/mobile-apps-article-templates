@@ -78,17 +78,6 @@
             float: left;
         }
     }
-
-    // Ensure tags match width of .article__body
-/*    .tags .inline-list {
-        @include mq(col2, col3) {
-            width: cols($base-3, 9);
-        }
-
-        @include mq($from: col3) {
-            width: cols($base-4, 12);
-        }
-    }*/
 }
 
 .article--standard,
@@ -123,5 +112,25 @@ body:not(.is-live) .article--liveblog {
 .article--feature {
     .article__body > .prose > p {
         @include dropcap();
+    }
+}
+
+
+.is_advertising {
+    .section,
+    .section__container .content__series-label,
+    .headline,
+    .standfirst,
+    .byline,
+    .article__body,
+    .article__body > .prose > p:first-of-type::first-letter,
+    .element-rich-link a::before,
+    .element-rich-link a,
+    .prose h2 {
+        font-family: $guardian-sans;
+    }
+
+    .sponsorship__about-uri{
+        color: color(global-sponsored-about);
     }
 }
