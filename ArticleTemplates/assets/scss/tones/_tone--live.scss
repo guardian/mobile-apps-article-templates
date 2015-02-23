@@ -159,4 +159,34 @@
 
     }
 
+
+    &.is_advertising {
+
+        .article,
+        .section__container {
+            border-color: color(tone-live-adv-border);
+        }
+        
+        .article--liveblog .article__header {
+            background-color: color(tone-live-adv-header-bg);
+        }
+
+        .article__header .section__live,
+        .article__header .headline,
+        .article__header .standfirst,
+        .article__header .standfirst a,
+        .article__header .section {
+            color: color(tone-live-adv-headline);
+        }
+
+        .article__header ul > li::before {
+            background-color: color(tone-live-adv-headline);    
+        }
+
+        .meta {
+            background-color: color(tone-live-adv-meta-background);
+        }
+
+    }
+
 }
