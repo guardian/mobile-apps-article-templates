@@ -174,16 +174,25 @@
         .article__header .headline,
         .article__header .standfirst,
         .article__header .standfirst a,
-        .article__header .section {
+        .article__header .section,
+        .alerts__state--unfollow {
             color: color(tone-live-adv-headline);
         }
 
-        .article__header ul > li::before {
+        .article__header ul > li::before,
+        .article__header .bullet::before {
             background-color: color(tone-live-adv-headline);    
         }
 
         .meta {
             background-color: color(tone-live-adv-meta-background);
+        }
+
+        .article__header .section,
+        .content__series-label{
+            @include mq($to: col2) {
+                padding-top: base-px(0.42);
+            }
         }
 
     }
