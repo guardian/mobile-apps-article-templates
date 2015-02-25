@@ -146,17 +146,23 @@ define([
             },
 
             setupChecked: function() {
-                $('.container--comments, .discussion').on('click', '.comment__recommend ', function(){
-                    console.log(this);
+                $('.container--comments, .discussion').each(function(container){
+                    bean.on(container, 'click', '.comment__recommend ', function(){
+                        $(this).addClass('comment__recommend--checked');
+                    });
                 });
             }
         },
 
         ready = function () {
+            modules.isAndroid = $('body').hasClass('android');
+
             if (!this.initialised) {
                 this.initialised = true;
                 modules.setupGlobals();
-                //modules.setupChecked();
+                if(!modules.isAndroid){
+                    modules.setupChecked();
+                }
                 window.commentTime();
                 // console.info("Comments ready");
             }

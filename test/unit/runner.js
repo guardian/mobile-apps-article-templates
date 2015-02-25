@@ -27,7 +27,7 @@ require.config({
     }
 });
 
-require(['twitter',/*'test_common','test_ads','test_twitter',*/ 'test_comments'], function(){
+require(['twitter', 'test_common', 'test_ads', 'test_twitter', 'test_comments'], function(){
   twttr.ready(function(){
     mocha.run();
   });
