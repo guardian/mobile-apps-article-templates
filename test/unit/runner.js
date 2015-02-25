@@ -17,7 +17,8 @@ require.config({
         // -- tests
         test_common: '/root/test/unit/common',
         test_ads: '/root/test/unit/ads',
-        test_twitter: '/root/test/unit/twitter'
+        test_twitter: '/root/test/unit/twitter',
+        test_comments: '/root/test/unit/comments'
     },
     shim: {
         d3: {
@@ -26,7 +27,7 @@ require.config({
     }
 });
 
-require(['twitter','test_common','test_ads','test_twitter'], function(){
+require(['twitter',/*'test_common','test_ads','test_twitter',*/ 'test_comments'], function(){
   twttr.ready(function(){
     mocha.run();
   });

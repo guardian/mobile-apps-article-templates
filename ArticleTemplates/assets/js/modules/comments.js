@@ -156,7 +156,8 @@ define([
         };
 
     return {
-        init: ready
+        init: ready,
+        modules: modules
     };
 
 });
