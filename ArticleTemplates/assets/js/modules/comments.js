@@ -143,6 +143,12 @@ define([
                 window.applyNativeFunctionCall('commentsClosed');
                 window.applyNativeFunctionCall('commentsOpen');
                 window.applyNativeFunctionCall('articleCommentsFailed');
+            },
+
+            setupChecked: function() {
+                $('.container--comments, .discussion').on('click', '.comment__recommend ', function(){
+                    console.log(this);
+                });
             }
         },
 
@@ -150,6 +156,7 @@ define([
             if (!this.initialised) {
                 this.initialised = true;
                 modules.setupGlobals();
+                //modules.setupChecked();
                 window.commentTime();
                 // console.info("Comments ready");
             }
