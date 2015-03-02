@@ -249,6 +249,20 @@ define([
                 $iframe.attr('srcdoc', srcdoc);
                 $iframe.attr('data-vine-fixed', true);
             });
+        },
+
+        setGlobalObject: function (root) {
+            var pageId = $('body').attr('data-page-id');
+
+            root.guardian = {
+                config: {
+                    page: {
+                        pageId: pageId === '__PAGE_ID__' ? null : pageId
+                    }
+                }
+            };
+
+            return root.guardian;
         }
     },
 
@@ -277,6 +291,7 @@ define([
             modules.setupAlertSwitch();
             modules.setupFontSizing();
             modules.showTabs();
+            modules.setGlobalObject(window);
 
             if (!$("body").hasClass("no-ready")) {
                 window.location.href = 'x-gu://ready';
