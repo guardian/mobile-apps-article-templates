@@ -71,12 +71,20 @@
             border-top-width: 1px;
         }
 
+        .article__header .section {
+            color: color(tone-news-adv-section-label); 
+        }
+
         .headline {
             color: color(tone-news-adv-headline);
         }
 
         .standfirst{
             color: color(tone-news-adv-standfirst);
+
+            .bullet::before{
+                background-color: color(tone-news-adv-standfirst);
+            }
         }
 
         .article__header .meta__pubdate{
@@ -89,7 +97,7 @@
 
         .prose p, 
         .prose li {
-            @include text-underline(color(tone-news), color(tone-news-adv-global-bg), color(tone-news-accent));
+            @include text-underline(color(global-adv-links), color(tone-news-adv-global-bg), lighten(color(global-adv-links),10%));
         }
 
         .tags .inline-list__item.more-button a {
