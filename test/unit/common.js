@@ -52,6 +52,16 @@ define([
 			expect(pie.offset().width).to.be.equal(323);
 		});
 
+		it('should prepare window.guardian', function(){
+			$('body').attr('data-page-id', 'someurladdress');
+			Common.modules.setGlobalObject(window);
+			expect(window.guardian).to.be.not.null;
+			expect(window.guardian.config.page.pageId).to.be.equal('someurladdress');
+			$('body').attr('data-page-id', '__PAGE_ID__');
+			Common.modules.setGlobalObject(window);
+			expect(window.guardian.config.page.pageId).to.be.null;
+		});
+
 		afterEach(function(){
 			sandbox.empty();
 		});
