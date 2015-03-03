@@ -143,12 +143,10 @@ define([
                 window.applyNativeFunctionCall('commentsClosed');
                 window.applyNativeFunctionCall('commentsOpen');
                 window.applyNativeFunctionCall('articleCommentsFailed');
-            },
+            }
         },
 
         ready = function () {
-            modules.isAndroid = $('body').hasClass('android');
-
             if (!this.initialised) {
                 this.initialised = true;
                 modules.setupGlobals();
