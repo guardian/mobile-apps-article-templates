@@ -19,23 +19,21 @@ define([
 
 		if (navigator.userAgent.indexOf('PhantomJS') < 0) {
 			it('keeps the recommend button "blue" after clicked', function(){
-				recommend = bonzo(bonzo.create('<div class="container--comments"><a class="comment__recommend touchpoint touchpoint--secondary touchpoint--small" href="x-gu://recommendcomment/48001935"><span class="touchpoint__button" data-icon="" aria-hidden="true"></span><span class="touchpoint__label comment__recommend__count">1 <span class="screen-readable">recommendations. Tap to recommend.</span></span></a></div>'));
+				recommend = bonzo(bonzo.create('<div id="1213"><p class="comment__recommend"><span class="comment__recommend__count"></span></p></div>'));
 				recommend.appendTo(sandbox);
-				Comments.modules.setupChecked();
-				var target = $('a',recommend[0]);
-				var ev = document.createEvent("MouseEvent");
-				ev.initMouseEvent("click", true, true, window, null, 0, 0, 0, 0, false, false, false, false, 0, null);
-				target[0].dispatchEvent(ev);
-				expect(target.hasClass('comment__recommend--checked')).to.be.true;
+				Comments.modules.setupGlobals();
+				window.commentsRecommendIncrease(1213,12)
+				expect($('.comment__recommend', recommend[0]).hasClass('increase')).to.be.true;
+				expect($('.comment__recommend__count', recommend[0]).text()).to.be.equal('12');
 			});
 		}
 
 		afterEach(function(){
-			sandbox.empty();
+			//sandbox.empty();
 		});
 
 		after(function(){
-			sandbox.remove();
+			// sandbox.remove();
 		});
 
 	});
