@@ -194,4 +194,5 @@ module.exports = function(grunt) {
     grunt.registerTask('ipa', ['build', 'rsync', 'shell:ios']);
     grunt.registerTask('installer', ['build', 'rsync', 'shell:ios', 'shell:android']);
     grunt.registerTask('default', 'develop');
+    grunt.registerTask('test', ['build', 'express', 'mocha']);
 };
