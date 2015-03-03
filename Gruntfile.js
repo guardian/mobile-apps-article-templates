@@ -101,6 +101,20 @@ module.exports = function(grunt) {
                     },
                 },
             },
+            jenkins: {
+                options: {
+                    run: false,
+                    log: true,
+                    reporter: 'XUnit',
+                    urls: [ 'http://localhost:3000/root/test/unit/runner.html' ],
+                    page: {
+                        settings: {
+                            webSecurityEnabled: false,
+                        },
+                    },                    
+                },
+                dest: 'report.xml'                
+            }
         },
 
         // Watch
@@ -112,7 +126,7 @@ module.exports = function(grunt) {
             },
             tests: {
                 files: ['ArticleTemplates/assets/js/**/*.js', 'test/unit/**/*.js'],
-                tasks: ['mocha']
+                tasks: ['mocha:dev']
             },
             scss: {
                 files: ['ArticleTemplates/assets/scss/**/*.scss'],
@@ -194,5 +208,5 @@ module.exports = function(grunt) {
     grunt.registerTask('ipa', ['build', 'rsync', 'shell:ios']);
     grunt.registerTask('installer', ['build', 'rsync', 'shell:ios', 'shell:android']);
     grunt.registerTask('default', 'develop');
-    grunt.registerTask('test', ['build', 'express', 'mocha']);
+    grunt.registerTask('test', ['build', 'express', 'mocha:jenkins']);
 };
