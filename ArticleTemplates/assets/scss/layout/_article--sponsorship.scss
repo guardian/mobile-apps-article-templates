@@ -1,0 +1,31 @@
+.is_advertising {
+    .section,
+    .section__container .content__series-label,
+    .headline,
+    .standfirst,
+    .byline,
+    .article__body,
+    .article__body > .prose > p:first-of-type::first-letter,
+    .element-rich-link a::before,
+    .element-rich-link a,
+    .prose h2,
+    .article--liveblog .article__header .section {
+        font-family: $guardian-sans;
+    }
+
+    .sponsorship, .article__body{
+        a {
+            color: color(global-adv-text);
+        }
+    }
+
+    .content__series-label{
+        color: color(global-adv-text) !important;
+    }
+
+    .article .prose p, 
+    .article .prose li,
+    .sponsorship__formatted-sponsor-name {
+        @include text-underline(color(global-adv-text), color(global-article-bg), lighten(color(global-adv-text),10%));
+    }
+}
