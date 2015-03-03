@@ -21,6 +21,7 @@ The 'sponsored by/supported by' section
 	font-family: $agate-sans;
 	line-height: 1.2;
 	border-bottom: 1px dotted color(global-sponsored-border);
+	color: color(global-sponsored-about);
 
 	@include mq($to: col2) {
         font-size: 1.2rem;
@@ -33,18 +34,15 @@ The 'sponsored by/supported by' section
     &__formatted-sponsor-name{
 		color: color(global-sponsored-label);
 
-		span, a{
-			font-weight: bold;
-			color: inherit !important;
-
+		span:first-child {
 			@include mq($to: col2) {				
-		        display: block;
+		    	display: block;
 		    }			
 		}
 	}
 
 	&__about-uri{
-		color: color(global-sponsored-about);
+		color: inherit;
 		padding-top: 1rem;
 		display: block;
 		font-weight: bold;

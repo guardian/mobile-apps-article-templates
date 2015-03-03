@@ -114,30 +114,3 @@ body:not(.is-live) .article--liveblog {
         @include dropcap();
     }
 }
-
-
-.is_advertising {
-    .section,
-    .section__container .content__series-label,
-    .headline,
-    .standfirst,
-    .byline,
-    .article__body,
-    .article__body > .prose > p:first-of-type::first-letter,
-    .element-rich-link a::before,
-    .element-rich-link a,
-    .prose h2 {
-        font-family: $guardian-sans;
-    }
-
-    .sponsorship, .article__body{
-        a {
-            color: color(global-adv-links);
-        }
-    }
-
-    .prose p, 
-    .prose li {
-        @include text-underline(color(global-adv-links), color(global-article-bg), lighten(color(global-adv-links),10%));
-    }
-}

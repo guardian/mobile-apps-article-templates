@@ -65,7 +65,7 @@
             @include mq($to: col1) {
                 text-indent: base-px(3.33);
             }            
-            padding-bottom: 5px;
+            padding-bottom: 4px;
             text-overflow: ellipsis;
             overflow-y: hidden;
             word-wrap: break-word;
@@ -110,46 +110,29 @@
 
         .meta,
         .meta__comments,
-        .section__container{
-            border-color: color(tone-podcast-adv-border-color);
+        .section__container,
+        .article {
+            border-color: color(global-adv-bands);
         }
 
-        .section{
-            color: color(tone-podcast-adv-section-label);
-        }
-
-        .article{
-            border-color: color(tone-podcast-adv-border);
+        .section,
+        .headline,
+        .byline__author a,
+        .article__header .meta__byline .byline,
+        .meta__pubdate,
+        .meta__comments a, 
+        .meta__comments,
+        .meta__comments a span[data-icon] {
+            color: color(global-adv-text);
         }
 
         .article__header{
-            background-color: color(tone-podcast-adv-header-bg);
-        }
-
-        .headline{
-            color: color(tone-podcast-adv-headline);
-        }
-
-        .article__header .meta__byline .byline{
-            color: color(tone-podcast-adv-byline);
+            background-color: color(global-adv-bg);
         }
 
         .article__header .meta__byline .byline__author a{
-            color: color(tone-podcast-adv-byline-author);
+            color: color(global-adv-text);
             font-weight: bold;
-        }
-
-        .meta__pubdate{
-            color: color(tone-podcast-adv-meta-pubdate);
-        }
-
-        .meta__comments a, 
-        .meta__comments {
-            color: color(tone-podcast-adv-meta-cmt);
-        }
-
-        .meta__comments a span[data-icon] {
-            color: color(tone-podcast-adv-meta-cmt-icon);
         }
 
         .audio-player {
@@ -158,10 +141,10 @@
 
         .audio-player__button.touchpoint--primary .touchpoint__button,
         .audio-player__slider__knob{
-            background-color: color(tone-podcast-adv-ply-contrl);
+            background-color: color(global-adv-bands);
 
             &:active {
-                background-color: darken(color(tone-podcast-adv-ply-contrl), 10%); 
+                background-color: darken(color(global-adv-bands), 10%); 
             }
         }
 
@@ -171,10 +154,10 @@
 
         .tags .inline-list__item{ 
             a{
-                @include tag-button(color(global-tags-text), color(tone-podcast-adv-tags-bg));
+                @include tag-button(color(global-tags-text), color(global-adv-bg));
             }
             &.more-button a {
-                @include tag-more-button(color(global-tags-text), color(tone-podcast-adv-tags-bg));
+                @include tag-more-button(color(global-tags-text), color(global-adv-bg));
             }
         }        
     }
