@@ -26,7 +26,7 @@
             color: color(shade-2);
         }
         .selectable a {
-            color: color(tone-news) !important;
+            color: color(tone-news-standfirst-links);
         }
         .meta {
             border-top: 1px rgba(color(shade-3), .4) dotted;
@@ -53,7 +53,7 @@
         .article__header, 
         .article__header .meta,
         .article__header .main-media__caption {
-            background-color: color(tone-news-adv-global-bg);
+            background-color: color(global-adv-bg);
         }
 
         .article,
@@ -63,7 +63,7 @@
         .article__header figure figcaption,
         .sponsorship,
         .tags {
-            border-color: color(tone-news-adv-border);
+            border-color: color(global-adv-bands);
         }
 
         .article__header .meta {
@@ -71,33 +71,33 @@
             border-top-width: 1px;
         }
 
-        .article__header .section {
-            color: color(tone-news-adv-section-label); 
+        .article__header .section,
+        .article__header .meta__byline .byline,
+        .article__header .meta__byline a, 
+        .article__header .meta__comments,
+        .article__header .meta__comments a,
+        .article__body {
+            color: color(global-adv-text); 
         }
 
-        .headline {
-            color: color(tone-news-adv-headline);
-        }
-
-        .standfirst{
-            color: color(tone-news-adv-standfirst);
+        .article__header .standfirst, 
+        .article__header .standfirst a{
+            color: color(global-adv-text);
 
             .bullet::before{
-                background-color: color(tone-news-adv-standfirst);
+                background-color: color(global-adv-text);
             }
         }
 
         .article__header .meta__pubdate{
-            color: color(tone-news-adv-meta-pubdate);
+            color: color(global-adv-bands);
         }
 
-        .article__body{
-            color: color(tone-news-adv-body);
-        }
-
-        .prose p, 
-        .prose li {
-            @include text-underline(color(global-adv-links), color(tone-news-adv-global-bg), lighten(color(global-adv-links),10%));
+        .article .article__body .prose p, 
+        .article .article__body .prose li,
+        .article__header .standfirst,
+        .sponsorship__formatted-sponsor-name {
+            @include text-underline(color(global-adv-text), color(global-adv-bg), lighten(color(global-adv-text),10%));
         }
 
         .tags .inline-list__item.more-button a {

@@ -139,45 +139,46 @@
         .sponsorship .sponsorship__formatted-sponsor-name,
         .tags .inline-list__item a,
         a{
-            color: color(tone-media-adv);
+            color: color(global-adv-text);
         }
-
-        .article {
-            border-color: color(tone-media-adv-border);
-        }
-
+        
         .section__container,
         .sponsorship,
         .article__header .meta__misc, 
-        .tags {
-            border-color: color(tone-media-adv-dotted-border);
+        .tags,
+        .article {
+            border-color: color(global-adv-bands);
         }
 
         .article,        
         .article__header,
         .article__body,
         .tags{
-            background-color: color(tone-media-adv-global-bg);
+            background-color: color(global-adv-bg);
+        }
+
+        .sponsorship__formatted-sponsor-name {
+            @include text-underline(color(global-adv-text), color(global-adv-bg), lighten(color(global-adv-text),10%));
         }
 
         .tags{
             .inline-list__item {
                 a {
-                    @include tag-button(color(media-tags-text), color(tone-media-adv-tags-bg), "lighter");
+                    @include tag-button(color(media-tags-text), color(global-adv-bands), "lighter");
                 }
                 &.more-button a {
-                    @include tag-more-button(color(tone-media-adv-tags-more), color(tone-media-adv-tags-bg), "lighter");
+                    @include tag-more-button(color(global-adv-text), color(global-adv-bands), "lighter");
                 }
             }              
         }
 
         .element-placeholder .element-placeholder__button{
             .touchpoint__button{
-                background-color: color(tone-media-adv-tags-bg);
+                background-color: color(global-adv-bands);
 
                 &:active{
-                    color: color(tone-media-adv-tags-bg);
-                    background-color: color(tone-media-adv);
+                    color: color(global-adv-bands);
+                    background-color: color(global-adv-text);
                 }
             }
 
@@ -187,7 +188,7 @@
         }
 
         .meta__pubdate{
-            color: color(tone-media-adv-meta-pubdate);
+            color: color(global-adv-bands);
         }
     }
 }
