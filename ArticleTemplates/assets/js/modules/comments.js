@@ -126,12 +126,12 @@ define([
 
                 // Functions for feedback on recommend buttons
                 window.commentsRecommendIncrease = function (id, number) {
-                    var target = "div[id='" + id + "'] .comment__recommend";
+                    var target = 'div[id="' + id + '"] .comment__recommend';
                     $(target).addClass('increase');
                     $(target + ' .comment__recommend__count').text(number);
                 };
                 window.commentsRecommendDecrease = function (id, number) {
-                    var target = "div[id='" + id + "'] .comment__recommend";
+                    var target = 'div[id="' + id + '"] .comment__recommend';
                     $(target).removeClass('increase');
                     $(target + ' .comment__recommend__count').text(number);
                 };
