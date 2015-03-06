@@ -4,11 +4,11 @@
         border-bottom: 1px rgba(234,234,234,0.3) dotted;
         
         .section {
-            color: color(tone-podcast-section-label); // Content Label Section
+            color: color(tone-podcast); // Content Label Section
         }
         
         .content__series-label {
-            color: color(tone-media-series-label);  // Content Label Series
+            color: color(shade-5);  // Content Label Series
         }   
     }
     a {
@@ -22,10 +22,10 @@
     .tags {
         .inline-list__item {
             a {
-                @include tag-button(color(media-tags-text), color(media-tags-bg), "lighter");
+                @include tag-button(color(shade-7), color(shade-6), "lighter");
             }
             &.more-button a {
-                @include tag-more-button(color(media-tags-text), color(media-more-btn-border), "lighter");
+                @include tag-more-button(color(shade-7), color(shade-6), "lighter");
             }
         }        
     }

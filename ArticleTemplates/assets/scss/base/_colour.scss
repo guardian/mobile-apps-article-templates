@@ -7,37 +7,64 @@ category: Base
 A standard colour palette used across the Guardian’s digital products.
 
 ```html_example
+<p><b>Basic Shades</b></p>
 <div class="styleguide__color--shade-1"></div>
 <div class="styleguide__color--shade-2"></div>
 <div class="styleguide__color--shade-3"></div>
 <div class="styleguide__color--shade-4"></div>
 <div class="styleguide__color--shade-5"></div>
+<div class="styleguide__color--shade-6"></div>
+<div class="styleguide__color--shade-7"></div>
+<div class="styleguide__color--shade-8"></div>
 
-<div class="styleguide__color--tone-news clear"></div>
+<p class="clear"><b>Tone News</b></p>
+<div class="styleguide__color--tone-news"></div>    
 <div class="styleguide__color--tone-news-accent"></div>
 
+<p class="clear"><b>Tone Live</b></p>
 <div class="styleguide__color--tone-live"></div>
-<div class="styleguide__color--tone-live-accent"></div>
+<div class="styleguide__color--tone-live-accent"></div>                  
 
+<p class="clear"><b>Tone Media</b></p>
 <div class="styleguide__color--tone-media"></div>
 <div class="styleguide__color--tone-media-accent"></div>
 
+<p class="clear"><b>Tone Feature</b></p>
 <div class="styleguide__color--tone-feature1"></div>
 <div class="styleguide__color--tone-feature1-accent"></div>
 
-<div class="styleguide__color--tone-feature2"></div>
-<div class="styleguide__color--tone-feature2-accent"></div>
-
-<div class="styleguide__color--tone-feature3"></div>
-<div class="styleguide__color--tone-feature3-accent"></div>
-
-<div class="styleguide__color--tone-comment-text"></div>
-<div class="styleguide__color--tone-comment-bg"></div>
+<p class="clear"><b>Tone Comment</b></p>
 <div class="styleguide__color--tone-comment"></div>
 <div class="styleguide__color--tone-comment-accent"></div>
+<div class="styleguide__color--tone-comment-text"></div>
+<div class="styleguide__color--tone-comment-bg"></div>
 
+<p class="clear"><b>Tone DeadBlog</b></p>
+<div class="styleguide__color--tone-deadblog"></div>
+
+<p class="clear"><b>Tone Review</b></p>
+<div class="styleguide__color--tone-review-accent"></div>
+<div class="styleguide__color--tone-review"></div>
+<div class="styleguide__color--tone-review-meta-background"></div>
+
+<p class="clear"><b>Tone Analysis</b></p>
+<div class="styleguide__color--tone-analysis"></div>              
+
+<p class="clear"><b>Tone Podcast</b></p>
+<div class="styleguide__color--tone-podcast"></div>
+<div class="styleguide__color--tone-podcast-ply-background"></div>
+
+<p class="clear"><b>Tags</b></p>
+<div class="styleguide__color--global-tags"></div>
+<div class="styleguide__color--blogs-tags"></div>
+
+<p class="clear"><b>Witness</b></p>
 <div class="styleguide__color--witness clear"></div>
 <div class="styleguide__color--witness-bg"></div>
+
+<p class="clear"><b>Comments</b></p>
+<div class="styleguide__color--tone-comments-more-bg"></div>
+
 ```
 */
 
@@ -49,7 +76,7 @@ $gu-colours: (
 
     tone-sample:                    main tone colour (used throughout app on links etc.)
     tone-sample-headline:           headline colour
-    tone-analysis-header-bg:        main background of article header
+    shade-7:        main background of article header
     tone-sample-standfirst:         Standfirst (below headline intro copy) text colour
     tone-sample-standfirst-links:   Standfirst link colour
     tone-sample-accent:             thin line at article top colour
@@ -66,154 +93,59 @@ $gu-colours: (
     /* Most Regular Articles */
 
     tone-news:                      #005689,
-    tone-news-headline:             #333,
-    tone-news-header-bg:            #fff,
-    tone-news-standfirst:           #666,
-    tone-news-standfirst-links:     #005689,
     tone-news-accent:               #4bc6df,
-    tone-news-section-label:        #005689,
-    tone-news-series-label:         #767676,
-    tone-news-meta-background:      #f6f6f6,
-    tone-news-byline:               #005689,
-    tone-news-meta-pubdate:         #999,
-    tone-news-media-caption-bg:     #fff,
-    tone-news-links:                #005689,
-    tone-news-tags-text:            #333,         
-    tone-news-tags-bg:              #e0e0e0,
 
     /* Live Blogs */
 
     tone-live:                      #b51800,
-    tone-live-headline:             #fff,
-    tone-live-header-bg:            #b51800,
-    tone-live-standfirst:           #fff, /* NB additional opacity given by property */
-    tone-live-standfirst-links:     #fff, /* NB additional opacity given by property */
     tone-live-accent:               #cc2b12,
-    tone-live-section-label:        #fff,
-    tone-live-series-label:         #fff,
-    tone-live-meta-background:      #cc2b12,
-    tone-live-byline:               #fff,
-    tone-live-meta-pubdate:         #999999,
-    tone-live-media-caption-bg:     #fff,
-    tone-live-links:                #005689, 
-    tone-live-more-bg:              #b51800,
 
     /* Deadblogs */
     
     tone-deadblog:                  #b51800,
-    tone-deadblog-headline:         #333,
-    tone-deadblog-header-bg:        #fff,
-    tone-deadblog-standfirst:       #666, /* NB additional opacity given by property */
-    tone-deadblog-standfirst-list:  #484848, /* Unique to Deadblog as different from Standfirst */
-    tone-deadblog-standfirst-links: #b51800, /* NB additional opacity given by property */
-    tone-deadblog-accent:           #b51800,         
-    tone-deadblog-section-label:    #b51800,
-    tone-deadblog-series-label:     #767676,  
-    tone-deadblog-meta-background:  #f6f6f6,
-    tone-deadblog-byline:           #333,
-    tone-deadblog-meta-pubdate:     #999,
-    tone-deadblog-media-caption-bg: #fff,
-    tone-deadblog-links:            #005689, 
-    tone-deadblog-more-bg:          #b51800, 
 
     /* Reviews */
     
     tone-review:                    #615b52,
-    tone-review-headline:           #fff,
-    tone-review-header-bg:          #615b52,
-    tone-review-standfirst:         #fff, /* NB additional opacity given by property */
-    tone-review-standfirst-links:   #fff, /* NB additional opacity given by property */
     tone-review-accent:             #ffce4b,
-    tone-review-section-label:      #ffce4b,
-    tone-review-series-label:       #fff,
     tone-review-meta-background:    #7d7569,
-    tone-review-byline:             #ffce4b,
-    tone-review-meta-pubdate:       #fff,
-    tone-review-media-caption-bg:   #fff,
-    tone-review-links:              #005689, /* NB additional opacity given by property */
-    tone-review-tags-text:          #333,    
-    tone-review-status-band:        #ffce4b,     
     
     /* Analysis */
 
-    tone-analysis:                  #005689,
-    tone-analysis-headline:         #005689,
-    tone-analysis-header-bg:        #fff,
-    tone-analysis-standfirst:       #666666, /* NB additional opacity given by property */
-    tone-analysis-standfirst-links: #005689, /* NB additional opacity given by property */
-    tone-analysis-accent:           #005689,
-    tone-analysis-section-label:    #005689,
-    tone-analysis-series-label:     #767676,
-    tone-analysis-meta-background:  #f6f6f6,
-    tone-analysis-byline:           #005689,
-    tone-analysis-meta-pubdate:     #999,
-    tone-analysis-media-caption-bg: #fff,
-    tone-analysis-links:            #005689,
-    tone-analysis-status-band:      #005689, /* NB additional opacity given by property */
+    tone-analysis:                  #005689, /* --> same as tone-news */
 
     /* Podcast */
 
-    tone-podcast-headline:         #fff,
-    tone-podcast-header-bg:        #484848,
-    tone-podcast-section-label:    #a7d8f2,
-    tone-podcast-series-label:     #eaeaea,
-    tone-podcast-ply-contrl:       #a7d8f2,
-    tone-podcast-ply-background:   #171717,
-    tone-podcast-byline:           #fff,
-    tone-podcast-byline-author:    #a7d8f2,
-    tone-podcast-meta-pubdate:     #fff,
-    tone-podcast-meta-cmt-icon:    #a7d8f2,
-    tone-podcast-meta-divider:     #fff,
-    tone-podcast-links:            #005689,
-    tone-podcast-status-band:     #a7d8f2,
+    tone-podcast:                   #a7d8f2,
+    tone-podcast-ply-background:    #171717,
 
     tone-media:                     #fb0,
-    tone-media-series-label:        #eaeaea,
     tone-media-accent:              #ffd35c,
 
-    /* Tags - 3 differing colour states: Global, Media and Blogs (Liveblog/Deadblog) */
+    /* Tags */
 
-    global-tags-text:               #333,         
-    global-tags-bg:                 #f1f1f1,        
-    global-tags-active-bg:          #d7d7d7,
-    global-more-btn-border:         #dcdcdc,
-    global-more-btn-border-active:  #a4a4a4,  
-
-    blogs-tags-text:                #333,         
-    blogs-tags-bg:                  #e0e0e0,        
-    blogs-tags-active-bg:           #d1d1d1,
-    blogs-more-btn-border:          #bdbdbd,
-    blogs-more-btn-border-active:   #a4a4a4,   
-    blogs-more-btn-text:            #fff,
-
-    media-tags-text:                #fff,         
-    media-tags-bg:                  #484848,        
-    media-tags-active-bg:           #767676,
-    media-more-btn-border:          #484848,
-    media-more-btn-border-active:   #767676, 
-
-    /* Pre-existing additonal tones */
+    global-tags:                    #f1f1f1,          
+    blogs-tags:                     #e0e0e0,        
 
     // Neutral shades
     shade-1:                        #333,
-    shade-2:                        #666,
+    shade-2:                        #767676,
     shade-3:                        #999,
     shade-4:                        #dcdad5,
     shade-5:                        #eaeaea,
-    shade-6:                        #524d45,
+    shade-6:                        #484848,
+    shade-7:                        #fff,
+    shade-8:                        #f6f6f6,
 
     // Tonal colours
     tone-feature1:                  #951c55,
     tone-feature1-accent:           #b82266,
 
     tone-comment:                   #e6711b,
-    tone-comment-section-label:     #e6711b,
-    tone-comment-series-label:      #767676,
     tone-comment-accent:            #f39f33,
     tone-comment-text:              #2d2a26,
     tone-comment-bg:                #e3e1dc,
-    comments-more-btn-border:       #f1f1f1, 
-    tone-comments-more-bg:          #005689,
+    tone-comments-more-bg:          #005689,  /* --> same as tone-news */
 
     // Witness
     witness:               #213583,

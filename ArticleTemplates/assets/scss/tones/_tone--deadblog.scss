@@ -30,7 +30,7 @@
     a.touchpoint,
     {
         &:active {
-            color: color(tone-deadblog-accent);
+            color: color(tone-deadblog);
         }
     }  
 
@@ -44,13 +44,13 @@
         }
 
         &:active .touchpoint__button {
-            background-color: color(tone-deadblog-accent);
+            background-color: color(tone-deadblog);
         }
     }
 
     // Template specific styles
     .article--liveblog {
-        border-top-color: color(tone-deadblog-accent);
+        border-top-color: color(tone-deadblog);
 
         .prose table,
         .table {
@@ -58,9 +58,9 @@
         }
 
         .article__header {
-            background-color: color(tone-deadblog-header-bg);
+            background-color: color(shade-7);
             .byline__author, .byline__author a {
-                color: color(tone-deadblog-byline);
+                color: color(shade-1);
             }
             a {
                 color: color(tone-deadblog);
@@ -73,21 +73,21 @@
             .bullet,
             ul > li {
                 &::before {
-                    background-color: rgba(color(tone-deadblog-standfirst-list), .4);
+                    background-color: color(shade-2);
                 }
             }
 
             .headline
             {
-                color: color(tone-deadblog-headline);
+                color: color(shade-1);
             }
 
             .content__series-label {
-                color: color(tone-deadblog-series-label);
+                color: color(shade-2);
             }
 
             .section {
-                color: color(tone-deadblog-section-label); // Default
+                color: color(tone-deadblog); // Default
                 font-family: $egyptian-display;
                 font-weight: 600;
                 @include headline(.5);
@@ -106,16 +106,16 @@
             }
 
             .standfirst {
-                color: rgba(color(tone-deadblog-standfirst), .8);
+                color: color(shade-2);
 
                 a {
-                    color: color(tone-deadblog-standfirst-links);
+                    color: color(tone-deadblog);
                 }
             }
         }
 
         .meta {
-            background-color: color(tone-deadblog-meta-background);
+            background-color: color(shade-8);
             border: 0;
             border-left: 1px dotted rgba(#fff, .2);
             margin: 0;
@@ -132,7 +132,7 @@
                 }
             }
             .meta__pubdate {
-                color: rgba(color(tone-deadblog-meta-pubdate), .8);
+                color: rgba(color(shade-3), .8);
             }
         }
     }
@@ -142,17 +142,17 @@
 
         .inline-list__item {
             a {
-                @include tag-button(color(blogs-tags-text), color(blogs-tags-bg));
+                @include tag-button(color(shade-1), color(blogs-tags));
             }
             &.more-button a {
-                @include tag-more-button(color(blogs-tags-text), color(blogs-more-btn-border));
+                @include tag-more-button(color(shade-1), darken(color(blogs-tags),10%));
             }
         }
     
     }
 
     .block--live-summary {
-        background-color: color(tone-deadblog-media-caption-bg);
+        background-color: color(shade-7);
         border-top: 1px solid #999;
 
         .block__time {

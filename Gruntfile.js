@@ -31,6 +31,11 @@ module.exports = function(grunt) {
                 files: {
                     'ArticleTemplates/assets/css/style.css':  'ArticleTemplates/assets/scss/style.scss'
                 }
+            },
+            doc: {
+                files: {
+                    'DocumentationTemplates/assets/css/style.css':  'DocumentationTemplates/assets/scss/style.scss'
+                }                
             }
         },
 
@@ -130,7 +135,7 @@ module.exports = function(grunt) {
             },
             scss: {
                 files: ['ArticleTemplates/assets/scss/**/*.scss'],
-                tasks: ['scsslint','sass']
+                tasks: ['scsslint','sass','hologram']
             },
             copy: {
                 files: ['ArticleTemplates/*.html', 'ArticleTemplates/assets/{js,scss,img}/**'],
@@ -203,7 +208,7 @@ module.exports = function(grunt) {
     grunt.task.run('notify_hooks');
 
     grunt.registerTask('develop', ['build', 'express', 'watch']);
-    grunt.registerTask('build', ['jshint', 'requirejs', 'scsslint','sass']);
+    grunt.registerTask('build', ['jshint', 'requirejs', 'scsslint','sass:dev']);
     grunt.registerTask('apk', ['build', 'rsync', 'shell:android']);
     grunt.registerTask('ipa', ['build', 'rsync', 'shell:ios']);
     grunt.registerTask('installer', ['build', 'rsync', 'shell:ios', 'shell:android']);

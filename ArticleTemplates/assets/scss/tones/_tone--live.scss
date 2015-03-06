@@ -3,10 +3,10 @@
         border-bottom: 1px rgba(#fff, .4) dotted; 
     }
     .section {
-        color: color(tone-live-section-label); // Default
+        color: color(shade-7); // Default
     }
     .content__series-label {
-        color: color(tone-live-series-label);
+        color: color(shade-7);
     }
 }
 
@@ -37,7 +37,7 @@
         }
 
         .article__header {
-            background-color: color(tone-live-header-bg);
+            background-color: color(tone-live);
             color: #fff;
 
             a {
@@ -139,10 +139,10 @@
 
             .inline-list__item {
                 a {
-                    @include tag-button(color(blogs-tags-text), color(blogs-tags-bg));
+                    @include tag-button(color(shade-1), color(blogs-tags));
                 }
                 &.more-button a {
-                    @include tag-more-button(color(blogs-tags-text), color(blogs-more-btn-border));
+                    @include tag-more-button(color(shade-1), darken(color(blogs-tags),10%));
                 }
             }
         
