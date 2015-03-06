@@ -104,11 +104,12 @@
             }
 
             .sponsorship {
-                background-color: color(tone-live-sponsorship-bg);
+                background-color: color(shade-7);
                 border-bottom: none;
 
-                &__about-uri{
-                    color: color(global-sponsored-about);
+                &__about-uri,
+                &__formatted-sponsor-name a {
+                    color: color(tone-live);
                 }
             }
         }
@@ -182,7 +183,7 @@
 
         .alerts__state--unfollow {
             @include mq($from: col2) { 
-                color: color(tone-live-adv-key-events-tablet);
+                color: color(shade-7);
             }
         }
 
@@ -200,15 +201,6 @@
             @include mq($to: col2) {
                 padding-top: base-px(0.42);
             }
-        }
-
-        .sponsorship__formatted-sponsor-name a,
-        .article__header .sponsorship__about-uri{
-            color: color(tone-live-adv-sponsorship-link);
-        }
-        
-        .sponsorship__formatted-sponsor-name{
-            @include text-underline(color(tone-live-adv-sponsorship-link), color(tone-live-sponsorship-bg), lighten(color(tone-live-adv-sponsorship-link),10%));
         }
 
     }
