@@ -112,45 +112,4 @@
             color: rgba(#fff, .8);
         }
     }
-
-    &.is_advertising {
-
-        a:active {
-            color: lighten(color(global-adv-text),10%);
-        }
-
-        .article,
-        .section__container {
-            border-color: color(global-adv-bands);
-        }
-
-        .article__header {
-            background-color: color(global-adv-bg);
-        }
-
-        .article__header .content__labels,
-        .article__header .headline,
-        .article--feature .meta,
-        .article--feature .article__header a,
-        .article--feature .meta__pubdate,
-        .article--feature .article__header a,
-        .article--feature .article__header .byline {
-            color: color(global-adv-text);
-        }
-
-        .standfirst {
-            background-color: color(global-adv-bands);
-            @include text-underline(color(shade-7), color(global-adv-bands), darken(color(shade-7),10%));
-        }
-
-        .article--feature .article__header .standfirst a{
-            color: color(shade-7);
-        }
-
-        .meta__comments {
-            border-color: color(shade-7);
-        }
-
-    }
-
 }

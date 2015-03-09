@@ -48,7 +48,7 @@
     }
 
 
-    &.is_advertising {
+    &.is_advertising:not([fake]):not([fake]):not([fake]):not([fake]) { /* hack to keep the right precedence */
         .article, 
         .article__header, 
         .article__header .meta,
