@@ -187,45 +187,45 @@ define([
             };
         },
 
-        showTabs: function () {
+        showTabs: function (root) {
             // Set up tab events, show only first child
-            $('.tabs a').each(function (el, i) {
-                var tabGroup = el.getAttribute('href');
-                var obj;
-                var AdStatus;
-                if (i > 0) {
-                    $(tabGroup).hide();
-                }
-                bean.on(el, 'click', function (e) {
-                    e.preventDefault();
+            var tabContainer = $('.tabs');
+            var tabs = $('a',tabContainer);
 
+            tabs.each(function(tab,i) {
+                if (i > 0) {
+                    $(tab.getAttribute('href')).hide();    
+                }
+            });
+
+            bean.on(tabContainer[0], 'click', 'a', function (e) {
+
+                e.preventDefault();                
+                var tab = $(this);
+
+                if( tab.attr("aria-selected") !== 'true' ) {
+                 
                     $($('[aria-selected="true"]').attr('href')).hide();
                     $('[aria-selected="true"]').attr("aria-selected", false);
 
-                    $($(this).attr('href')).show();
-                    $(this).attr("aria-selected", true);
+                    $(tab.attr('href')).show();
+                    tab.attr("aria-selected", true);
 
-                    var obj = $(this).attr("id");
-                    switch(obj) {
+                    switch(tab.attr("id")) {
                         case "football__tab--article":
-                            // console.info("Report Tab");
-                            window.location.href = 'x-gu://football_tab_report';
+                            root.location.href = 'x-gu://football_tab_report';
                             break;
                         case "football__tab--stats":
-                            // console.info("Stats Tab");
-                            modules.setPieChartSize();
-                            window.location.href = 'x-gu://football_tab_stats';
+                            modules.setPieChartSize();                        
+                            root.location.href = 'x-gu://football_tab_stats';
                             break;
                         case "football__tab--liveblog":
-                            // console.info("Liveblog Tab");
-                            window.location.href = 'x-gu://football_tab_liveblog';
+                            root.location.href = 'x-gu://football_tab_liveblog';
                             break;
                         default:
-                            // console.info("Unknown");
-                            window.location.href = 'x-gu://football_tab_unknown';
+                            root.location.href = 'x-gu://football_tab_unknown';
                     }
-
-                });
+                }
             });
         },
 
@@ -290,7 +290,7 @@ define([
             modules.setupOfflineSwitch();
             modules.setupAlertSwitch();
             modules.setupFontSizing();
-            modules.showTabs();
+            modules.showTabs(window);
             modules.setGlobalObject(window);
 
             if (!$("body").hasClass("no-ready")) {
