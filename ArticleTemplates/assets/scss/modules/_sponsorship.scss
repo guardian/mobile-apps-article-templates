@@ -21,6 +21,11 @@ The 'sponsored by/supported by' section
 	font-family: $agate-sans;
 	line-height: 1.2;
 	border-bottom: 1px dotted color(global-sponsored-border);
+
+	.gallery ~ & {
+		border-bottom: none;
+	}
+
 	color: color(global-sponsored-about);
 
 	@include mq($to: col2) {
