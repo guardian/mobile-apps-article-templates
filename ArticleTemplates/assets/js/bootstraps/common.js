@@ -205,8 +205,9 @@ define([
 
                 if( tab.attr("aria-selected") !== 'true' ) {
                  
-                    $($('[aria-selected="true"]').attr('href')).hide();
-                    $('[aria-selected="true"]').attr("aria-selected", false);
+                    var activeTab = $('[aria-selected="true"]', tabContainer);
+                    $(activeTab.attr('href')).hide();
+                    activeTab.attr("aria-selected", false);
 
                     $(tab.attr('href')).show();
                     tab.attr("aria-selected", true);
