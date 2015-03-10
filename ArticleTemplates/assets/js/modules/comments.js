@@ -27,7 +27,7 @@ define([
                                 if (numOfComments == 1) {
                                     $(this).addClass("block--discussion-thread--orphan");
                                 } else {
-                                    $(blockID).after("<div class='more more--comments'><a class='more__label'><span data-icon='&#xe050;' aria-hidden='true'></span>" + numOfComments + " more replies</a></div>");
+                                    $(blockID).after("<div class='more more--comments'><a class='more__label' data-icon='&#xe050;'><span class='more__text'> " + numOfComments + " more replies</span></a></div>");
                                 }
                             }
                         }

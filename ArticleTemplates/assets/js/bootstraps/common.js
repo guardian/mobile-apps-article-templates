@@ -8,6 +8,7 @@ define([
     'modules/ads',
     'modules/comments',
     'modules/cards',
+    'modules/more-tags',
     'modules/$'
 ], function (
     bean,
@@ -18,6 +19,7 @@ define([
     Ads,
     Comments,
     Cards,
+    MoreTags,
     $
 ) {
     'use strict';
@@ -128,8 +130,10 @@ define([
         insertTags: function () {
             // Tag Function
             window.articleTagInserter = function (html) {
+                setTimeout(modules.showMoreTags, 0);
                 html = bonzo.create(html);
                 $(html).appendTo('.tags .inline-list');
+                MoreTags.refresh();
             };
             window.applyNativeFunctionCall('articleTagInserter');
         },

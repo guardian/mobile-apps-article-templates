@@ -72,7 +72,7 @@ function debounced_render() {
           console.log('Snapping ' + url + ' at width ' + view_port_width);
           page.render(image_name);
           phantom.exit();
-      }, 1000);
+      }, 5000);
   }
 
   // Sometimes, straggling requests never make it back, in which
@@ -81,5 +81,5 @@ function debounced_render() {
     console.log('Snapping ' + url + ' at width ' + view_port_width);
     page.render(image_name);
     phantom.exit();
-  }, 5000);
+  }, 40000);
 }

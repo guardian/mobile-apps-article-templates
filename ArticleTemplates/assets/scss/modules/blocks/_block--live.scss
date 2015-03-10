@@ -155,8 +155,13 @@ Provide a summary of events:
 }
 
 .block--live-summary {
-    background-color: transparent;
+    background-color: darken(color(shade-5), 4%);
     border: 1px dotted color(shade-4);
+
+    .prose p,
+    .prose li {
+        @include text-underline(color(tone-news), darken(color(shade-5), 4%), color(tone-news-accent));
+    }    
 
     .block__time {
         font-weight: bold;

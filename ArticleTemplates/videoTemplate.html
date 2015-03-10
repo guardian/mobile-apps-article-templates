@@ -8,7 +8,7 @@
     <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/js/shim.js"></script>
 </head>
 
-<body class="tone--__SECTION_TONE__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__ advert-config--__ADS_CONFIG__ " data-content-type="video" data-ads-enabled="__ADS_ENABLED__" data-ads-config="__ADS_CONFIG__" style="margin-top: __ACTIONBARHEIGHT__px;" data-font-size="__FONT_SIZE_INT__">
+<body class="tone--__SECTION_TONE__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__ advert-config--__ADS_CONFIG__ __IS_ADVERTISING__" data-content-type="video" data-ads-enabled="__ADS_ENABLED__" data-ads-config="__ADS_CONFIG__" style="margin-top: __ACTIONBARHEIGHT__px;" data-font-size="__FONT_SIZE_INT__">
     <div class="advert-slot advert-slot--banner advert-slot--__ADS_ENABLED__" id="banner_container">
         <div class="advert-slot__label">Advertisement</div>
         <div class="advert-slot__wrapper"></div>
@@ -16,12 +16,14 @@
 
     <div class="article article--visual" id="video-article-container">
         <div class="article__header" id="video-header">
-            <div class="section" id="section"><span id="video-data-icon" data-icon="&#xe043;" aria-hidden="true"></span> __SECTION__</div>
+        <div class="section section__container" id="section"><div class="content__labels">__SECTION__</div><div class="content__series-label content__labels">__CONTENT__SERIES_LABEL__</div></div>
             <h1 class="headline selectable" id="headline">__TITLE__</h1>
 
             <div class="main-media" id="main-media">
                 __VIDEO_PREVIEW__
             </div>
+
+            __SPONSORSHIP__
 
             <div class="meta" id="meta">
                 <div class="standfirst selectable" id="standfirst">

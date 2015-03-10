@@ -1,0 +1,3 @@
+window.GuardianJSInterface = {
+	mpuAdsPosition: function(){}
+};

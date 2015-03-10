@@ -1,4 +1,6 @@
-.tone--feature1 {
+.tone--feature1,
+.tone--feature2,
+.tone--feature3  {
     a,
     .article__body > p:first-of-type:first-letter {
         color: color(tone-feature1);
@@ -31,81 +33,7 @@
             border-top-color: color(tone-feature1-accent);
         }
     }
-}
 
-.tone--feature2 {
-    a,
-    .article__body > p:first-of-type:first-letter {
-        color: color(tone-feature2);
-    }
-
-    a:active {
-        color: color(tone-feature2-accent);
-    }
-
-    .article__header,
-    .touchpoint--primary .touchpoint__button {
-        background-color: color(tone-feature2);
-    }
-
-    .standfirst,
-    .touchpoint--primary:active .touchpoint__button {
-        background-color: color(tone-feature2-accent);
-    }
-
-    .article--feature {
-        border-top-color: color(tone-feature2-accent);
-
-        .prose p,
-        .prose li {
-            @include text-underline(color(tone-feature2), #fff, color(tone-feature2-accent));
-        }
-
-        .prose table,
-        .table {
-            border-top-color: color(tone-feature2-accent);
-        }
-    }
-}
-
-.tone--feature3 {
-    a,
-    .article__body > p:first-of-type:first-letter {
-        color: color(tone-feature3);
-    }
-
-    a:active {
-        color: color(tone-feature3-accent);
-    }
-
-    .article__header,
-    .touchpoint--primary .touchpoint__button {
-        background-color: color(tone-feature3);
-    }
-
-    .standfirst,
-    .touchpoint--primary:active .touchpoint__button {
-        background-color: color(tone-feature3-accent);
-    }
-
-    .article--feature {
-        border-top-color: color(tone-feature3-accent);
-
-        .prose p,
-        .prose li {
-            @include text-underline(color(tone-feature3), #fff, color(tone-feature3-accent));
-        }
-
-        .prose table,
-        .table {
-            border-top-color: color(tone-feature3-accent);
-        }
-    }
-}
-
-.tone--feature1,
-.tone--feature2,
-.tone--feature3 {
     .article--feature {
         .article__header {
             a {
@@ -119,13 +47,22 @@
             .bullet,
             ul > li {
                 &::before {
-                    background-color: rgba(#fff, .8);
+                    background-color: rgba(#fff, .4);
                 }
             }
 
             .section,
             .byline {
                 color: #fff;
+            }
+
+            .content__labels {
+                color: #fdadba;
+
+            }
+
+            .content__series-label.content__labels {
+                color: #FFF;
             }
 
             .headline {
@@ -141,7 +78,10 @@
             }
 
             .standfirst {
-                color: rgba(#fff, .8);
+                color: #fff;
+                span {
+                    color: rgba(#fff, .4);
+                }
 
                 strong {
                     color: #fff;
@@ -170,10 +110,6 @@
         .meta,
         .meta__pubdate {
             color: rgba(#fff, .8);
-        }
-
-        .meta__comments {
-            border-left-color: rgba(#fff, .4);
         }
     }
 }

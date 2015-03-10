@@ -65,7 +65,7 @@ define([
 				setTimeout(function(){
 					expect(updateposition).not.to.have.been.called;
 					done();
-				}, 1900);
+				}, 1000);
 			});
 
 			it('Doesnt invoke mpuAdsPosition if x,y,w,h are 0', function(){

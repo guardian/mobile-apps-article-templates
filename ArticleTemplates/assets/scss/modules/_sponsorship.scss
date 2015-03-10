@@ -1,0 +1,56 @@
+/*doc
+---
+title: Sponsorship
+name: sponsorship
+category: Modules
+---
+The 'sponsored by/supported by' section
+
+```html_example
+<div class="sponsorship">
+	<p class="sponsorship__formatted-sponsor-name">
+		Guardian Cities is supported by:
+		<a href="http://www.100resilientcities.org">The Rockefeller Foundation</a>
+	</p>
+	<a class="sponsorship__about-uri" href="x-gu://item/mobile-apps.guardianapis.com/items/cities/2014/jan/27/cities-about-this-site">About this content</a>
+</div>		
+```
+*/
+.sponsorship{
+	padding: base-px(0.8, 1, 1.67, 1);
+	font-family: $agate-sans;
+	line-height: 1.2;
+	border-bottom: 1px dotted color(global-sponsored-border);
+
+	.gallery ~ & {
+		border-bottom: none;
+	}
+
+	color: color(global-sponsored-about);
+
+	@include mq($to: col2) {
+        font-size: 1.2rem;
+    }
+
+    @include mq($from: col2) {
+    	font-size: 1.4rem;
+    }
+
+    &__formatted-sponsor-name{
+		color: color(global-sponsored-label);
+
+		span:first-child {
+			@include mq($to: col2) {				
+		    	display: block;
+		    }			
+		}
+	}
+
+	&__about-uri{
+		color: inherit;
+		padding-top: 1rem;
+		display: block;
+		font-weight: bold;
+	}
+
+}

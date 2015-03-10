@@ -1,0 +1,53 @@
+.tone--analysis {
+    .article{
+        border-top-color: color(tone-analysis);
+    }
+
+    .article__header {
+        background-color: color(shade-7);
+        
+        .section {
+            color: color(tone-analysis); // Content Label Section
+        }
+        .content__series-label {
+            color: color(shade-2);  // Content Label Series
+        }
+        .headline {
+            color: color(tone-analysis); // Headline
+            padding: base-px(0, 1, 2.5, 1);
+            p.review-rating {
+                padding-top: 12px;
+                @include rating;
+            }
+        }
+        .standfirst {
+            color: color(shade-2);
+        }
+        .selectable a {
+            color: color(tone-analysis) !important;
+        }
+        .meta {
+            background-color: color(shade-8);
+
+            .meta__byline .byline,
+            .meta__byline a, 
+            .meta__comments,
+            .meta__comments a {
+                color: color(tone-analysis);
+            }
+            .meta__byline .byline,
+            .meta__byline a {
+                font-weight: 600;
+                font-weight: 600;
+            }
+            .meta__pubdate{
+               color: color(shade-3);
+            }
+        }
+        .main-media__caption {
+            background-color: color(shade-7);
+        }
+
+    }
+
+}
