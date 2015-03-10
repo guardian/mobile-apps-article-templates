@@ -86,6 +86,52 @@ define([
 				});
 			});
 
+			it('has the right colors for the news-adv', function(done){
+				checkColors(done, {
+					url: '/tone-news-adv.html',
+					bg: /rgb\(217, 217, 217\)|#D9D9D9/i,
+					type: /rgb\(39, 39, 39\)|#272727/i,
+					status: /rgb\(217, 217, 217\)|#D9D9D9/i,
+					divider: /rgb\(135, 135, 135\)|#878787/i
+				});
+			});
+
+			it('has the right color for the featured-adv', function(done){
+				checkColors(done, {
+					url: '/tone-featured-adv.html',
+					bg: /rgb\(217, 217, 217\)|#D9D9D9/i,
+					type: /rgb\(39, 39, 39\)|#272727/i,
+				});
+			});
+
+			it('has the right colors for the liveblog-adv', function(done){
+				checkColors(done, {
+					url: '/tone-liveblog-adv.html',
+					bg: /rgb\(217, 217, 217\)|#D9D9D9/i,
+					type: /rgb\(39, 39, 39\)|#272727/i,
+					status: /rgb\(135, 135, 135\)|#878787/i,
+					divider: /rgb\(135, 135, 135\)|#878787/i
+				});
+			});
+
+			it('has the right colors for the podcast-adv', function(done){
+				checkColors(done, {
+					url: '/tone-podcast-adv.html',
+					bg: /rgb\(217, 217, 217\)|#D9D9D9/i,
+					type: /rgb\(39, 39, 39\)|#272727/i,
+					divider: /rgb\(135, 135, 135\)|#878787/i
+				});
+			});
+
+			it('has the right colors for the video-adv', function(done){
+				checkColors(done, {
+					url: '/tone-video-adv.html',
+					bg: /rgb\(217, 217, 217\)|#D9D9D9/i,
+					type: /rgb\(39, 39, 39\)|#272727/i,
+					divider: /rgb\(135, 135, 135\)|#878787/i
+				});
+			});
+
 		}
 
 		afterEach(function(){
