@@ -58,22 +58,24 @@ With live indicator:
     border-bottom: 1px rgba(color(shade-4), .4) dotted;
     width:100%;
     margin-bottom:10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
     .section {
         color: color(tone-news); // Default
         font-family: $egyptian-display;
         font-weight: 600;
         @include headline(.5);
-        float: left;
         padding-bottom: 0;
-
-    &::before {
-        margin-right: base-px(.66666);
-        line-height: 92%; // Offset for different font
-        vertical-align: bottom;
+        &::before {
+            margin-right: base-px(.66666);
+            line-height: 92%; // Offset for different font
+            vertical-align: bottom;
         }
     }
     .content__labels {
-        float: left;
+        display: inline-block;
         line-height: 1.6rem;
         @include headline(.5);
         //padding: base-px(.5, .5, .5, 0);
@@ -85,6 +87,7 @@ With live indicator:
         @include headline(.5);
         font-weight: 300;
         padding-right: 12px;
+        display: inline;
     }
 }
 
