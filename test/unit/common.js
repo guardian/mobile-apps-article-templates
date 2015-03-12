@@ -62,6 +62,30 @@ define([
 			expect(window.guardian.config.page.pageId).to.be.null;
 		});
 
+		it('should not trigger links on tab if only a single tab is present', function(){
+			var click = document.createEvent("MouseEvent");
+			click.initMouseEvent("click", true, true, window, null, 0, 0, 0, 0, false, false, false, false, 0, null);
+			var root = { location: { }};
+			var testContent = bonzo.create('<div role="tablist" class="tabs"><ul class="inline-list"><li role="presentation" class="inline-list__item"><a role="tab" class="tab" id="football__tab--article" href="#football__tabpanel--article" aria-controls="football__tabpanel--article" aria-selected="true">Report</a></li></ul></div>');
+			var tab = $('a', testContent);
+			$(testContent).appendTo(sandbox);
+			Common.modules.showTabs(root);
+  			tab[0].dispatchEvent(click);
+  			expect(window.location.href).to.be.not.defined;
+		});
+
+		it('should do trigger links on tab if more than a tab is present', function(){
+			var click = document.createEvent("MouseEvent");
+			click.initMouseEvent("click", true, true, window, null, 0, 0, 0, 0, false, false, false, false, 0, null);
+			var root = { location: { }};
+			var testContent = bonzo.create('<div role="tablist" class="tabs"><ul class="inline-list"><li role="presentation" class="inline-list__item"><a role="tab" class="tab" id="football__tab--article" href="#football__tabpanel--article" aria-controls="football__tabpanel--article" aria-selected="true">Report</a></li><li role="presentation" class="inline-list__item"><a role="tab" class="tab" id="football__tab--stats" href="#football__tabpanel--stats" aria-controls="football__tabpanel--stats">Match Info</a></li></ul></div>');
+			var tab = $('li:last-child a', testContent);
+			$(testContent).appendTo(sandbox);
+			Common.modules.showTabs(root);
+  			tab[0].dispatchEvent(click);
+  			expect(root.location.href).to.be.equal('x-gu://football_tab_stats');
+		});
+
 		afterEach(function(){
 			sandbox.empty();
 		});
