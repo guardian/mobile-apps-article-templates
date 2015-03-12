@@ -31,6 +31,26 @@ MPU
     </div>
 </div>
 ```
+
+Banner with Hide -- only works with `body[data-ads-enable-hiding="true"]`
+
+```html_example
+<div class="advert-slot advert-slot--banner">
+    <div class="advert-slot__label">
+        Advertisement
+        <a class="advert-slot__action" href="x-gu://subscribe" style="display: inline;">
+            Hide
+            <span data-icon="&#xe04F;"></span>
+        </a>
+    </div>
+    <div class="advert-slot__wrapper">
+        <div class="advert-slot__wrapper__content">
+            <!-- Advert injected here using JavaScript -->
+        </div>
+    </div>
+</div>
+```
+
 */
 
 .advert-slot {
@@ -48,6 +68,25 @@ MPU
 
     .advert-slot__label {
         overflow: auto;
+        position: relative;
+    }
+
+    .advert-slot__action {
+        display: none;
+        body[data-ads-enable-hiding="true"] & {
+            display: inline;
+        }
+        position: absolute;
+        right: 0;
+        color: inherit;
+        padding-right: 2.5rem;
+
+        span[data-icon] {
+            font-size: 1.3em;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
     }
 
     .advert-slot__wrapper {
@@ -69,6 +108,7 @@ MPU
 
     .advert-slot__label {
         padding: base-px(.5, 0);
+        margin: 0 auto;
     }
 
     .advert-slot__wrapper {
@@ -102,11 +142,20 @@ MPU
 
     .advert-slot__label {
         padding: base-px(.5, 0, 2, .5);
+        
+        .advert-slot__action {
+            right: base-px(.5);
+        }
+
         width: 300px;
         /*  Any res above 375w e.g. iPhone 6, 6 plus */
         @include customMQ (iP6) {
             padding-bottom: 11px;
             padding-left: 13px;
+
+            .advert-slot__action {
+                right: base-px(1);
+            }
         }
     }
 
