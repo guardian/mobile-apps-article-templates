@@ -389,6 +389,26 @@ MPU
     </div>
 </div>
 ```
+
+Banner with Hide -- only works with `body[data-ads-enable-hiding="true"]`
+
+```html_example
+<div class="advert-slot advert-slot--banner">
+    <div class="advert-slot__label">
+        Advertisement
+        <a class="advert-slot__action" href="x-gu://subscribe" style="display: inline;">
+            Hide
+            <span data-icon="&#xe04F;"></span>
+        </a>
+    </div>
+    <div class="advert-slot__wrapper">
+        <div class="advert-slot__wrapper__content">
+            <!-- Advert injected here using JavaScript -->
+        </div>
+    </div>
+</div>
+```
+
 */
 .advert-slot {
   color: #666;
@@ -408,7 +428,21 @@ MPU
   .advert-slot img {
     vertical-align: middle; }
   .advert-slot .advert-slot__label {
-    overflow: auto; }
+    overflow: auto;
+    position: relative; }
+  .advert-slot .advert-slot__action {
+    display: none;
+    position: absolute;
+    right: 0;
+    color: inherit;
+    padding-right: 2.5rem; }
+    body[data-ads-enable-hiding="true"] .advert-slot .advert-slot__action {
+      display: inline; }
+    .advert-slot .advert-slot__action span[data-icon] {
+      font-size: 1.3em;
+      position: absolute;
+      right: 0;
+      top: 0; }
   .advert-slot .advert-slot__wrapper {
     background-color: #dcdad5;
     position: relative;
@@ -421,7 +455,8 @@ MPU
   padding: 0px 0px 12px 0px;
   width: 100%; }
   .advert-slot--banner .advert-slot__label {
-    padding: 6px 0px; }
+    padding: 6px 0px;
+    margin: 0 auto; }
   .advert-slot--banner .advert-slot__wrapper {
     padding-top: 48px;
     margin: 0 auto; }
@@ -446,10 +481,14 @@ MPU
     width: 300px;
     /*  Any res above 375w e.g. iPhone 6, 6 plus */
     /*  iPhone 6 */ }
+    .advert-slot--mpu .advert-slot__label .advert-slot__action {
+      right: 6px; }
     @media (min-width: 375px) and (max-width: 480px) {
       .advert-slot--mpu .advert-slot__label {
         padding-bottom: 11px;
-        padding-left: 13px; } }
+        padding-left: 13px; }
+        .advert-slot--mpu .advert-slot__label .advert-slot__action {
+          right: 12px; } }
   .advert-slot--mpu .advert-slot__wrapper {
     padding-top: 250px;
     height: 250px;
