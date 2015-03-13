@@ -33,7 +33,13 @@ define([
 
                 if (config.adsConfig == "tablet" && counter == 3) {
                     var tabletMpuHtml = "<div class='advert-slot advert-slot--mpu advert-slot--mpu--tablet'>" +
-                                            "<div class='advert-slot__label'>Advertisement</div>" +
+                                            "<div class='advert-slot__label'>" +
+                                                "Advertisement" +
+                                                "<a class='advert-slot__action' href='x-gu://subscribe'>" +
+                                                    "Hide" +
+                                                    "<span data-icon='&#xe04F;'></span>" +
+                                                "</a>" +
+                                            "</div>"  +
                                             "<div class=\"advert-slot__wrapper\" id=\"advert-slot__wrapper\">" +
                                             "<div class='advert-slot__wrapper__content' id=" + tabletMpuId + "></div>" +
                                             "</div>" +
@@ -44,7 +50,13 @@ define([
 
                 } else if (config.adsConfig == "mobile") {
                     var mobileMpuHtml = "<div class='advert-slot advert-slot--mpu advert-slot--mpu--mobile'>" +
-                                            "<div class='advert-slot__label'>Advertisement</div>" +
+                                            "<div class='advert-slot__label'>" +
+                                                "Advertisement" +
+                                                "<a class='advert-slot__action' href='x-gu://subscribe'>" +
+                                                    "Hide" +
+                                                    "<span data-icon='&#xe04F;'></span>" +
+                                                "</a>" +
+                                            "</div>"  +
                                             "<div class=\"advert-slot__wrapper\" id=\"advert-slot__wrapper\">" +
                                             "<div class='advert-slot__wrapper__content' id=" + mobileMpuId + "></div>" +
                                             "</div>" +
