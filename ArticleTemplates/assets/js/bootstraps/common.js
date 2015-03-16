@@ -271,6 +271,7 @@ define([
             return root.guardian;
         },
 
+
         fixSeries: function () {
             var series = $('.content__series-label.content__labels a');
             series.html('<span>' + series.text().split(/\s+/).join(' </span><span>') + ' </span>');
@@ -289,6 +290,10 @@ define([
                     break;
                 }
             }
+        },
+
+        sendFirstPaintTime: function(){
+            
         }
     },
 
@@ -319,6 +324,7 @@ define([
             modules.showTabs(window);
             modules.setGlobalObject(window);
             modules.fixSeries();
+            modules.sendFirstPaintTime();
 
             if (!$("body").hasClass("no-ready")) {
                 window.location.href = 'x-gu://ready';

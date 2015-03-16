@@ -96,6 +96,11 @@ define([
 			expect(series.html()).to.be.equal('<span>Nigel </span><span>Slater </span><span>recipes </span><span>Nigel </span><span>Slater </span><span>recipes </span><br><span>Nigel </span><span>Slater </span><span>recipes </span>');
 		});
 
+		it('should invoke (if available) window.GuardianJSInterface.firstPaintTime on firstPaint', function(done){
+			window.GuardianJSInterface = { firstPaintTime: function(){ done(); }};
+			Common.modules.sendFirstPaintTime();
+		});
+
 		describe('Tags', function(){
 			var tagsContainer;
 
