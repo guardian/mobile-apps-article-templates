@@ -17,7 +17,7 @@ define([
             var audioCurrent,
                 down,
                 slider1,
-                
+
 
                 secondsTimeSpanToHMS = function (s) {
                     var m = Math.floor(s / 60);
@@ -30,7 +30,12 @@ define([
                         if (down === 1) {
                             return;
                         }
+                    } else {
+                        if(document.getCSSCanvasContext){
+                            window.audioBackground(duration);
+                        }
                     }
+
                     $(".audio-player__slider__knob").removeAttr("style");
                     slider1 = new MobileRangeSlider('audio-player__slider', {
                         value: current,
@@ -42,7 +47,7 @@ define([
                             $(".audio-player__slider__remaining").val("-" + secondsTimeSpanToHMS(duration - percentage));
                         }
                     });
-                    
+
                 };
 
                 window.updateSlider = function (current, platform) {
@@ -96,22 +101,19 @@ define([
 
                 window.audioBackground = function (duration) {
                     if ($(".cutout__container").attr("data-background") === null && !$("body").hasClass("media")) {
-                        var numOfCircles = Math.floor((duration / 60) / 2) + 2,
+                        var numOfCircles = Math.min(10, Math.floor((duration / 60) / 2)) + 2,
                             h = $(".article__header").offset().height,
                             w = $(".article__header").offset().width,
                             size = (h * w) / 8000,
                             ctx = document.getCSSCanvasContext("2d", "circles", w, h);
-                        
-                        if (numOfCircles > 12) {
-                            numOfCircles = 12;
-                        }
+
                         // Draw Circles
                         for (var i = 0; i < numOfCircles; i++) {
                             var x = Math.floor(Math.random() * (w - 0) + 1);
                             ctx.beginPath();
                             ctx.arc(x, h / 2, size, 0, Math.PI * 2, true);
                             ctx.closePath();
-                            ctx.fillStyle = "rgba(0, 86, 137, 0.15)";
+                            ctx.fillStyle = "rgba(167, 216, 242, 0.10)";
                             ctx.fill();
                             size = size * 1.2;
                         }

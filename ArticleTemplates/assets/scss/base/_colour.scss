@@ -7,71 +7,145 @@ category: Base
 A standard colour palette used across the Guardian’s digital products.
 
 ```html_example
+<p><b>Basic Shades</b></p>
 <div class="styleguide__color--shade-1"></div>
 <div class="styleguide__color--shade-2"></div>
 <div class="styleguide__color--shade-3"></div>
 <div class="styleguide__color--shade-4"></div>
 <div class="styleguide__color--shade-5"></div>
+<div class="styleguide__color--shade-6"></div>
+<div class="styleguide__color--shade-7"></div>
+<div class="styleguide__color--shade-8"></div>
 
-<div class="styleguide__color--tone-news clear"></div>
+<p class="clear"><b>Tone News</b></p>
+<div class="styleguide__color--tone-news"></div>    
 <div class="styleguide__color--tone-news-accent"></div>
 
+<p class="clear"><b>Tone Live</b></p>
 <div class="styleguide__color--tone-live"></div>
-<div class="styleguide__color--tone-live-accent"></div>
+<div class="styleguide__color--tone-live-accent"></div>                  
 
+<p class="clear"><b>Tone Media</b></p>
 <div class="styleguide__color--tone-media"></div>
 <div class="styleguide__color--tone-media-accent"></div>
 
+<p class="clear"><b>Tone Feature</b></p>
 <div class="styleguide__color--tone-feature1"></div>
 <div class="styleguide__color--tone-feature1-accent"></div>
 
-<div class="styleguide__color--tone-feature2"></div>
-<div class="styleguide__color--tone-feature2-accent"></div>
-
-<div class="styleguide__color--tone-feature3"></div>
-<div class="styleguide__color--tone-feature3-accent"></div>
-
-<div class="styleguide__color--tone-comment-text"></div>
-<div class="styleguide__color--tone-comment-bg"></div>
+<p class="clear"><b>Tone Comment</b></p>
 <div class="styleguide__color--tone-comment"></div>
 <div class="styleguide__color--tone-comment-accent"></div>
+<div class="styleguide__color--tone-comment-text"></div>
+<div class="styleguide__color--tone-comment-bg"></div>
 
+<p class="clear"><b>Tone DeadBlog</b></p>
+<div class="styleguide__color--tone-deadblog"></div>
+
+<p class="clear"><b>Tone Review</b></p>
+<div class="styleguide__color--tone-review-accent"></div>
+<div class="styleguide__color--tone-review"></div>
+<div class="styleguide__color--tone-review-meta-background"></div>
+
+<p class="clear"><b>Tone Analysis</b></p>
+<div class="styleguide__color--tone-analysis"></div>              
+
+<p class="clear"><b>Tone Podcast</b></p>
+<div class="styleguide__color--tone-podcast"></div>
+<div class="styleguide__color--tone-podcast-ply-background"></div>
+
+<p class="clear"><b>Tags</b></p>
+<div class="styleguide__color--global-tags"></div>
+<div class="styleguide__color--blogs-tags"></div>
+
+<p class="clear"><b>Witness</b></p>
 <div class="styleguide__color--witness clear"></div>
 <div class="styleguide__color--witness-bg"></div>
+
+<p class="clear"><b>Comments</b></p>
+<div class="styleguide__color--tone-comments-more-bg"></div>
+
 ```
 */
 
 $gu-colours: (
+
+/* New Tonal colour Definitions */
+
+    /* Example Tone called "Sample"
+
+    tone-sample:                    main tone colour (used throughout app on links etc.)
+    tone-sample-headline:           headline colour
+    shade-7:        main background of article header
+    tone-sample-standfirst:         Standfirst (below headline intro copy) text colour
+    tone-sample-standfirst-links:   Standfirst link colour
+    tone-sample-accent:             thin line at article top colour
+    tone-sample-section-label:      section label colour
+    tone-sample-series-label:       series label colour
+    tone-sample-meta-background:    meta background (base part of top container)
+    tone-sample-meta-byline:        author (byline) and comment icon colour
+    tone-sample-meta-pubdate:       publish date
+    tone-sample-media-caption-bg:   fig caption background
+    tone-sample-links:              article body text links
+    tone-sample-tags-text:          tag text colour         
+    tone-sample-tags-bg:            tag lozenge background colour 
+
+    /* Most Regular Articles */
+
+    tone-news:                      #005689,
+    tone-news-accent:               #4bc6df,
+
+    /* Live Blogs */
+
+    tone-live:                      #b51800,
+    tone-live-accent:               #cc2b12,
+
+    /* Deadblogs */
+    
+    tone-deadblog:                  #b51800,
+
+    /* Reviews */
+    
+    tone-review:                    #615b52,
+    tone-review-accent:             #ffce4b,
+    tone-review-meta-background:    #7d7569,
+    
+    /* Analysis */
+
+    tone-analysis:                  #005689, /* --> same as tone-news */
+
+    /* Podcast */
+
+    tone-podcast:                   #a7d8f2,
+    tone-podcast-ply-background:    #171717,
+
+    tone-media:                     #fb0,
+    tone-media-accent:              #ffd35c,
+
+    /* Tags */
+
+    global-tags:                    #f1f1f1,          
+    blogs-tags:                     #e0e0e0,        
+
     // Neutral shades
-    shade-1:               #333,
-    shade-2:               #666,
-    shade-3:               #999,
-    shade-4:               #dcdad5,
-    shade-5:               #f6f6f6,
+    shade-1:                        #333,
+    shade-2:                        #767676,
+    shade-3:                        #999,
+    shade-4:                        #dcdad5,
+    shade-5:                        #eaeaea,
+    shade-6:                        #484848,
+    shade-7:                        #fff,
+    shade-8:                        #f6f6f6,
 
     // Tonal colours
-    tone-news:             #005689,
-    tone-news-accent:      #4bc6df,
+    tone-feature1:                  #951c55,
+    tone-feature1-accent:           #b82266,
 
-    tone-live:             #b51800,
-    tone-live-accent:      #cc2b12,
-
-    tone-media:            #fb0,
-    tone-media-accent:     #ffd35c,
-
-    tone-feature1:         #951c55,
-    tone-feature1-accent:  #e02b7f,
-
-    tone-feature2:         #4e0375,
-    tone-feature2-accent:  #8006c2,
-
-    tone-feature3:         #7d0068,
-    tone-feature3-accent:  #c900a8,
-
-    tone-comment:          #e6711b,
-    tone-comment-accent:   #f39f33,
-    tone-comment-text:     #2d2a26,
-    tone-comment-bg:       #e3e1dc,
+    tone-comment:                   #e6711b,
+    tone-comment-accent:            #f39f33,
+    tone-comment-text:              #2d2a26,
+    tone-comment-bg:                #e3e1dc,
+    tone-comments-more-bg:          #005689,  /* --> same as tone-news */
 
     // Witness
     witness:               #213583,
@@ -88,3 +162,5 @@ $gu-colours: (
 @function color($name, $palette: $gu-colours) {
     @return map-get($gu-colours, $name);
 }
+
+// Tone Styling 

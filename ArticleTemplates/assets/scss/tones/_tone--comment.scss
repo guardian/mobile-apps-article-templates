@@ -7,6 +7,31 @@
         }
     }
 
+    .section__container {
+        & > div {
+            color: color(tone-comment); // Content Label Section
+        }
+
+        color: color(shade-2);
+        .content__series-label,
+        .content__series-label a {
+            color: color(shade-2);  // Content Label Series
+        }
+    }
+
+    .section__container, 
+    figure figcaption{
+        border-bottom: 1px darken(color(shade-4), 10%) dotted;
+    }
+
+    .tags {
+        .inline-list__item {
+            &.more-button a {
+                @include tag-more-button(color(shade-1), color(global-tags));
+            }
+        }        
+    }    
+
     .touchpoint--primary {
         .touchpoint__button {
             background-color: color(tone-comment);
@@ -33,7 +58,6 @@
         }
 
         .article__header {
-            .section,
             .byline__author {
                 color: color(tone-comment);
             }
@@ -63,5 +87,6 @@
                 border-left-color: rgba(#fff, .4);
             }
         }
+
     }
 }

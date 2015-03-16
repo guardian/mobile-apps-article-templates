@@ -8,37 +8,64 @@ category: Base
 A standard colour palette used across the Guardian’s digital products.
 
 ```html_example
+<p><b>Basic Shades</b></p>
 <div class="styleguide__color--shade-1"></div>
 <div class="styleguide__color--shade-2"></div>
 <div class="styleguide__color--shade-3"></div>
 <div class="styleguide__color--shade-4"></div>
 <div class="styleguide__color--shade-5"></div>
+<div class="styleguide__color--shade-6"></div>
+<div class="styleguide__color--shade-7"></div>
+<div class="styleguide__color--shade-8"></div>
 
-<div class="styleguide__color--tone-news clear"></div>
+<p class="clear"><b>Tone News</b></p>
+<div class="styleguide__color--tone-news"></div>    
 <div class="styleguide__color--tone-news-accent"></div>
 
+<p class="clear"><b>Tone Live</b></p>
 <div class="styleguide__color--tone-live"></div>
-<div class="styleguide__color--tone-live-accent"></div>
+<div class="styleguide__color--tone-live-accent"></div>                  
 
+<p class="clear"><b>Tone Media</b></p>
 <div class="styleguide__color--tone-media"></div>
 <div class="styleguide__color--tone-media-accent"></div>
 
+<p class="clear"><b>Tone Feature</b></p>
 <div class="styleguide__color--tone-feature1"></div>
 <div class="styleguide__color--tone-feature1-accent"></div>
 
-<div class="styleguide__color--tone-feature2"></div>
-<div class="styleguide__color--tone-feature2-accent"></div>
-
-<div class="styleguide__color--tone-feature3"></div>
-<div class="styleguide__color--tone-feature3-accent"></div>
-
-<div class="styleguide__color--tone-comment-text"></div>
-<div class="styleguide__color--tone-comment-bg"></div>
+<p class="clear"><b>Tone Comment</b></p>
 <div class="styleguide__color--tone-comment"></div>
 <div class="styleguide__color--tone-comment-accent"></div>
+<div class="styleguide__color--tone-comment-text"></div>
+<div class="styleguide__color--tone-comment-bg"></div>
 
+<p class="clear"><b>Tone DeadBlog</b></p>
+<div class="styleguide__color--tone-deadblog"></div>
+
+<p class="clear"><b>Tone Review</b></p>
+<div class="styleguide__color--tone-review-accent"></div>
+<div class="styleguide__color--tone-review"></div>
+<div class="styleguide__color--tone-review-meta-background"></div>
+
+<p class="clear"><b>Tone Analysis</b></p>
+<div class="styleguide__color--tone-analysis"></div>              
+
+<p class="clear"><b>Tone Podcast</b></p>
+<div class="styleguide__color--tone-podcast"></div>
+<div class="styleguide__color--tone-podcast-ply-background"></div>
+
+<p class="clear"><b>Tags</b></p>
+<div class="styleguide__color--global-tags"></div>
+<div class="styleguide__color--blogs-tags"></div>
+
+<p class="clear"><b>Witness</b></p>
 <div class="styleguide__color--witness clear"></div>
 <div class="styleguide__color--witness-bg"></div>
+
+<p class="clear"><b>Comments</b></p>
+<div class="styleguide__color--tone-comments-more-bg"></div>
+
 ```
 */
 .styleguide--base .codeExample,
@@ -76,7 +103,7 @@ A standard colour palette used across the Guardian’s digital products.
   -webkit-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out; }
   .styleguide__navigation .nav__item {
-    font-family: "Egyptian Display", Georgia, serif;
+    font-family: "Guardian Egyptian Web", Georgia, serif;
     font-weight: 600;
     border-top: 1px solid #4bc6df; }
     .styleguide__navigation .nav__item a {
@@ -87,7 +114,7 @@ A standard colour palette used across the Guardian’s digital products.
   display: none; }
 
 .styleguide__navigation-toggle {
-  background-color: #f6f6f6;
+  background-color: #eaeaea;
   border-bottom: 1px solid #4bc6df;
   position: fixed;
   top: 0;
@@ -142,14 +169,14 @@ A standard colour palette used across the Guardian’s digital products.
   max-width: 1024px;
   margin: 0 auto; }
   .styleguide__article__body > h1 {
-    color: #333333;
-    font-family: "Egyptian Display", Georgia, serif;
+    color: #333;
+    font-family: "Guardian Egyptian Web", Georgia, serif;
     font-size: 1.125em;
     font-weight: 600;
     margin: 0px 0px 6px 0px;
     padding-top: 3px; }
   .styleguide__article__body > p {
-    color: #333333;
+    color: #333;
     margin: 0px 0px 12px 0px; }
     @media all and (max-width: 40.615em) {
       .styleguide__article__body > p {
@@ -166,8 +193,8 @@ A standard colour palette used across the Guardian’s digital products.
     display: block !important; }
 
 .styleguide__contentinfo {
-  color: #666666;
-  font-family: "Agate Sans", sans-serif;
+  color: #767676;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
   padding: 12px 12px 24px 12px; }
   @media all and (max-width: 40.615em) {
     .styleguide__contentinfo {
@@ -182,15 +209,15 @@ A standard colour palette used across the Guardian’s digital products.
   clear: left; }
 
 .styleguide__anim {
-  background-color: #999999;
+  background-color: #999;
   margin: 0 0 0.5em -1px;
   width: 100%;
   height: 2em;
   position: relative; }
   .styleguide__anim::after {
     content: 'Hover to play';
-    color: rgba(246, 246, 246, 0.75);
-    font-family: "Agate Sans", sans-serif;
+    color: rgba(234, 234, 234, 0.75);
+    font-family: "Guardian Agate Sans 1 Web", sans-serif;
     text-align: center;
     padding: 0.5em 0;
     display: block;
@@ -208,7 +235,7 @@ A standard colour palette used across the Guardian’s digital products.
         font-size: 1.44rem;
         line-height: 1.98rem; } }
   .styleguide__anim > span {
-    background-color: #333333;
+    background-color: #333;
     width: 2em;
     height: 2em;
     display: block;
@@ -221,8 +248,8 @@ A standard colour palette used across the Guardian’s digital products.
     animation-play-state: running; }
 
 .styleguide__icon {
-  color: #999999;
-  font-family: "Agate Sans", sans-serif;
+  color: #999;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
   margin: 0px 24px 24px 0px;
   min-width: 12em;
   display: inline-block; }
@@ -235,14 +262,14 @@ A standard colour palette used across the Guardian’s digital products.
       font-size: 1.2rem;
       line-height: 1.65rem; } }
   .styleguide__icon [data-icon]::before {
-    color: #333333;
+    color: #333;
     font-size: 250%;
     vertical-align: middle;
     margin: 6px 6px 6px 0px; }
 
 [class^=styleguide__color--] {
   color: #333;
-  font-family: "Agate Sans", sans-serif;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
   text-align: center;
   text-shadow: #ffffff 0 0 2px;
   vertical-align: middle;
@@ -251,24 +278,6 @@ A standard colour palette used across the Guardian’s digital products.
   width: 8em;
   height: 8em;
   float: left; }
-
-[class*=-accent] {
-  margin-right: 0.5em; }
-
-.styleguide__color--shade-1 {
-  background: #333333; }
-
-.styleguide__color--shade-2 {
-  background: #666666; }
-
-.styleguide__color--shade-3 {
-  background: #999999; }
-
-.styleguide__color--shade-4 {
-  background: #dcdad5; }
-
-.styleguide__color--shade-5 {
-  background: #f6f6f6; }
 
 .styleguide__color--tone-news {
   background: #005689; }
@@ -282,29 +291,68 @@ A standard colour palette used across the Guardian’s digital products.
 .styleguide__color--tone-live-accent {
   background: #cc2b12; }
 
+.styleguide__color--tone-deadblog {
+  background: #b51800; }
+
+.styleguide__color--tone-review {
+  background: #615b52; }
+
+.styleguide__color--tone-review-accent {
+  background: #ffce4b; }
+
+.styleguide__color--tone-review-meta-background {
+  background: #7d7569; }
+
+.styleguide__color--tone-analysis {
+  background: #005689; }
+
+.styleguide__color--tone-podcast {
+  background: #a7d8f2; }
+
+.styleguide__color--tone-podcast-ply-background {
+  background: #171717; }
+
 .styleguide__color--tone-media {
-  background: #ffbb00; }
+  background: #fb0; }
 
 .styleguide__color--tone-media-accent {
   background: #ffd35c; }
+
+.styleguide__color--global-tags {
+  background: #f1f1f1; }
+
+.styleguide__color--blogs-tags {
+  background: #e0e0e0; }
+
+.styleguide__color--shade-1 {
+  background: #333; }
+
+.styleguide__color--shade-2 {
+  background: #767676; }
+
+.styleguide__color--shade-3 {
+  background: #999; }
+
+.styleguide__color--shade-4 {
+  background: #dcdad5; }
+
+.styleguide__color--shade-5 {
+  background: #eaeaea; }
+
+.styleguide__color--shade-6 {
+  background: #484848; }
+
+.styleguide__color--shade-7 {
+  background: #fff; }
+
+.styleguide__color--shade-8 {
+  background: #f6f6f6; }
 
 .styleguide__color--tone-feature1 {
   background: #951c55; }
 
 .styleguide__color--tone-feature1-accent {
-  background: #e02b7f; }
-
-.styleguide__color--tone-feature2 {
-  background: #4e0375; }
-
-.styleguide__color--tone-feature2-accent {
-  background: #8006c2; }
-
-.styleguide__color--tone-feature3 {
-  background: #7d0068; }
-
-.styleguide__color--tone-feature3-accent {
-  background: #c900a8; }
+  background: #b82266; }
 
 .styleguide__color--tone-comment {
   background: #e6711b; }
@@ -316,7 +364,10 @@ A standard colour palette used across the Guardian’s digital products.
   background: #2d2a26; }
 
 .styleguide__color--tone-comment-bg {
-  background: #eeebe8; }
+  background: #e3e1dc; }
+
+.styleguide__color--tone-comments-more-bg {
+  background: #005689; }
 
 .styleguide__color--witness {
   background: #213583; }
@@ -324,77 +375,14 @@ A standard colour palette used across the Guardian’s digital products.
 .styleguide__color--witness-bg {
   background: #3e454c; }
 
-.styleguide__color--shade-1 {
-  text-shadow: 0 0 1px #000;
-  font-weight: 200;
-  color: #fff; }
-  .styleguide__color--shade-1:before, .styleguide__color--shade-1:after {
-    font-size: 75%;
-    line-height: 1;
-    width: 90%;
-    display: inline-block; }
-  .styleguide__color--shade-1:before {
-    content: "shade-1";
-    font-weight: bold;
-    margin-top: calc(50% - 1.5em); }
-  .styleguide__color--shade-1:after {
-    content: "#333333"; }
+.styleguide__color--neutral-1 {
+  background: #333; }
 
-.styleguide__color--shade-2 {
-  text-shadow: 0 0 1px #000;
-  font-weight: 200;
-  color: #fff; }
-  .styleguide__color--shade-2:before, .styleguide__color--shade-2:after {
-    font-size: 75%;
-    line-height: 1;
-    width: 90%;
-    display: inline-block; }
-  .styleguide__color--shade-2:before {
-    content: "shade-2";
-    font-weight: bold;
-    margin-top: calc(50% - 1.5em); }
-  .styleguide__color--shade-2:after {
-    content: "#666666"; }
+.styleguide__color--neutral-2 {
+  background: #767676; }
 
-.styleguide__color--shade-3 {
-  text-shadow: 0 0 1px #000;
-  font-weight: 200;
-  color: #fff; }
-  .styleguide__color--shade-3:before, .styleguide__color--shade-3:after {
-    font-size: 75%;
-    line-height: 1;
-    width: 90%;
-    display: inline-block; }
-  .styleguide__color--shade-3:before {
-    content: "shade-3";
-    font-weight: bold;
-    margin-top: calc(50% - 1.5em); }
-  .styleguide__color--shade-3:after {
-    content: "#999999"; }
-
-.styleguide__color--shade-4:before, .styleguide__color--shade-4:after {
-  font-size: 75%;
-  line-height: 1;
-  width: 90%;
-  display: inline-block; }
-.styleguide__color--shade-4:before {
-  content: "shade-4";
-  font-weight: bold;
-  margin-top: calc(50% - 1.5em); }
-.styleguide__color--shade-4:after {
-  content: "#dcdad5"; }
-
-.styleguide__color--shade-5:before, .styleguide__color--shade-5:after {
-  font-size: 75%;
-  line-height: 1;
-  width: 90%;
-  display: inline-block; }
-.styleguide__color--shade-5:before {
-  content: "shade-5";
-  font-weight: bold;
-  margin-top: calc(50% - 1.5em); }
-.styleguide__color--shade-5:after {
-  content: "#f6f6f6"; }
+.styleguide__color--neutral-3 {
+  background: #bdbdbd; }
 
 .styleguide__color--tone-news {
   text-shadow: 0 0 1px #000;
@@ -460,6 +448,114 @@ A standard colour palette used across the Guardian’s digital products.
   .styleguide__color--tone-live-accent:after {
     content: "#cc2b12"; }
 
+.styleguide__color--tone-deadblog {
+  text-shadow: 0 0 1px #000;
+  font-weight: 200;
+  color: #fff; }
+  .styleguide__color--tone-deadblog:before, .styleguide__color--tone-deadblog:after {
+    font-size: 75%;
+    line-height: 1;
+    width: 90%;
+    display: inline-block; }
+  .styleguide__color--tone-deadblog:before {
+    content: "tone-deadblog";
+    font-weight: bold;
+    margin-top: calc(50% - 1.5em); }
+  .styleguide__color--tone-deadblog:after {
+    content: "#b51800"; }
+
+.styleguide__color--tone-review {
+  text-shadow: 0 0 1px #000;
+  font-weight: 200;
+  color: #fff; }
+  .styleguide__color--tone-review:before, .styleguide__color--tone-review:after {
+    font-size: 75%;
+    line-height: 1;
+    width: 90%;
+    display: inline-block; }
+  .styleguide__color--tone-review:before {
+    content: "tone-review";
+    font-weight: bold;
+    margin-top: calc(50% - 1.5em); }
+  .styleguide__color--tone-review:after {
+    content: "#615b52"; }
+
+.styleguide__color--tone-review-accent {
+  text-shadow: 0 0 1px #000;
+  font-weight: 200;
+  color: #fff; }
+  .styleguide__color--tone-review-accent:before, .styleguide__color--tone-review-accent:after {
+    font-size: 75%;
+    line-height: 1;
+    width: 90%;
+    display: inline-block; }
+  .styleguide__color--tone-review-accent:before {
+    content: "tone-review-accent";
+    font-weight: bold;
+    margin-top: calc(50% - 1.5em); }
+  .styleguide__color--tone-review-accent:after {
+    content: "#ffce4b"; }
+
+.styleguide__color--tone-review-meta-background {
+  text-shadow: 0 0 1px #000;
+  font-weight: 200;
+  color: #fff; }
+  .styleguide__color--tone-review-meta-background:before, .styleguide__color--tone-review-meta-background:after {
+    font-size: 75%;
+    line-height: 1;
+    width: 90%;
+    display: inline-block; }
+  .styleguide__color--tone-review-meta-background:before {
+    content: "tone-review-meta-background";
+    font-weight: bold;
+    margin-top: calc(50% - 1.5em); }
+  .styleguide__color--tone-review-meta-background:after {
+    content: "#7d7569"; }
+
+.styleguide__color--tone-analysis {
+  text-shadow: 0 0 1px #000;
+  font-weight: 200;
+  color: #fff; }
+  .styleguide__color--tone-analysis:before, .styleguide__color--tone-analysis:after {
+    font-size: 75%;
+    line-height: 1;
+    width: 90%;
+    display: inline-block; }
+  .styleguide__color--tone-analysis:before {
+    content: "tone-analysis";
+    font-weight: bold;
+    margin-top: calc(50% - 1.5em); }
+  .styleguide__color--tone-analysis:after {
+    content: "#005689"; }
+
+.styleguide__color--tone-podcast:before, .styleguide__color--tone-podcast:after {
+  font-size: 75%;
+  line-height: 1;
+  width: 90%;
+  display: inline-block; }
+.styleguide__color--tone-podcast:before {
+  content: "tone-podcast";
+  font-weight: bold;
+  margin-top: calc(50% - 1.5em); }
+.styleguide__color--tone-podcast:after {
+  content: "#a7d8f2"; }
+
+.styleguide__color--tone-podcast-ply-background {
+  text-shadow: 0 0 1px #000;
+  font-weight: 200;
+  color: #fff; }
+  .styleguide__color--tone-podcast-ply-background:before, .styleguide__color--tone-podcast-ply-background:after {
+    font-size: 75%;
+    line-height: 1;
+    width: 90%;
+    display: inline-block; }
+  .styleguide__color--tone-podcast-ply-background:before {
+    content: "tone-podcast-ply-background";
+    font-weight: bold;
+    margin-top: calc(50% - 1.5em); }
+  .styleguide__color--tone-podcast-ply-background:after {
+    content: "#171717"; }
+
 .styleguide__color--tone-media {
   text-shadow: 0 0 1px #000;
   font-weight: 200;
@@ -474,7 +570,7 @@ A standard colour palette used across the Guardian’s digital products.
     font-weight: bold;
     margin-top: calc(50% - 1.5em); }
   .styleguide__color--tone-media:after {
-    content: "#ffbb00"; }
+    content: "#fb0"; }
 
 .styleguide__color--tone-media-accent {
   text-shadow: 0 0 1px #000;
@@ -491,6 +587,142 @@ A standard colour palette used across the Guardian’s digital products.
     margin-top: calc(50% - 1.5em); }
   .styleguide__color--tone-media-accent:after {
     content: "#ffd35c"; }
+
+.styleguide__color--global-tags:before, .styleguide__color--global-tags:after {
+  font-size: 75%;
+  line-height: 1;
+  width: 90%;
+  display: inline-block; }
+.styleguide__color--global-tags:before {
+  content: "global-tags";
+  font-weight: bold;
+  margin-top: calc(50% - 1.5em); }
+.styleguide__color--global-tags:after {
+  content: "#f1f1f1"; }
+
+.styleguide__color--blogs-tags:before, .styleguide__color--blogs-tags:after {
+  font-size: 75%;
+  line-height: 1;
+  width: 90%;
+  display: inline-block; }
+.styleguide__color--blogs-tags:before {
+  content: "blogs-tags";
+  font-weight: bold;
+  margin-top: calc(50% - 1.5em); }
+.styleguide__color--blogs-tags:after {
+  content: "#e0e0e0"; }
+
+.styleguide__color--shade-1 {
+  text-shadow: 0 0 1px #000;
+  font-weight: 200;
+  color: #fff; }
+  .styleguide__color--shade-1:before, .styleguide__color--shade-1:after {
+    font-size: 75%;
+    line-height: 1;
+    width: 90%;
+    display: inline-block; }
+  .styleguide__color--shade-1:before {
+    content: "shade-1";
+    font-weight: bold;
+    margin-top: calc(50% - 1.5em); }
+  .styleguide__color--shade-1:after {
+    content: "#333"; }
+
+.styleguide__color--shade-2 {
+  text-shadow: 0 0 1px #000;
+  font-weight: 200;
+  color: #fff; }
+  .styleguide__color--shade-2:before, .styleguide__color--shade-2:after {
+    font-size: 75%;
+    line-height: 1;
+    width: 90%;
+    display: inline-block; }
+  .styleguide__color--shade-2:before {
+    content: "shade-2";
+    font-weight: bold;
+    margin-top: calc(50% - 1.5em); }
+  .styleguide__color--shade-2:after {
+    content: "#767676"; }
+
+.styleguide__color--shade-3 {
+  text-shadow: 0 0 1px #000;
+  font-weight: 200;
+  color: #fff; }
+  .styleguide__color--shade-3:before, .styleguide__color--shade-3:after {
+    font-size: 75%;
+    line-height: 1;
+    width: 90%;
+    display: inline-block; }
+  .styleguide__color--shade-3:before {
+    content: "shade-3";
+    font-weight: bold;
+    margin-top: calc(50% - 1.5em); }
+  .styleguide__color--shade-3:after {
+    content: "#999"; }
+
+.styleguide__color--shade-4:before, .styleguide__color--shade-4:after {
+  font-size: 75%;
+  line-height: 1;
+  width: 90%;
+  display: inline-block; }
+.styleguide__color--shade-4:before {
+  content: "shade-4";
+  font-weight: bold;
+  margin-top: calc(50% - 1.5em); }
+.styleguide__color--shade-4:after {
+  content: "#dcdad5"; }
+
+.styleguide__color--shade-5:before, .styleguide__color--shade-5:after {
+  font-size: 75%;
+  line-height: 1;
+  width: 90%;
+  display: inline-block; }
+.styleguide__color--shade-5:before {
+  content: "shade-5";
+  font-weight: bold;
+  margin-top: calc(50% - 1.5em); }
+.styleguide__color--shade-5:after {
+  content: "#eaeaea"; }
+
+.styleguide__color--shade-6 {
+  text-shadow: 0 0 1px #000;
+  font-weight: 200;
+  color: #fff; }
+  .styleguide__color--shade-6:before, .styleguide__color--shade-6:after {
+    font-size: 75%;
+    line-height: 1;
+    width: 90%;
+    display: inline-block; }
+  .styleguide__color--shade-6:before {
+    content: "shade-6";
+    font-weight: bold;
+    margin-top: calc(50% - 1.5em); }
+  .styleguide__color--shade-6:after {
+    content: "#484848"; }
+
+.styleguide__color--shade-7:before, .styleguide__color--shade-7:after {
+  font-size: 75%;
+  line-height: 1;
+  width: 90%;
+  display: inline-block; }
+.styleguide__color--shade-7:before {
+  content: "shade-7";
+  font-weight: bold;
+  margin-top: calc(50% - 1.5em); }
+.styleguide__color--shade-7:after {
+  content: "#fff"; }
+
+.styleguide__color--shade-8:before, .styleguide__color--shade-8:after {
+  font-size: 75%;
+  line-height: 1;
+  width: 90%;
+  display: inline-block; }
+.styleguide__color--shade-8:before {
+  content: "shade-8";
+  font-weight: bold;
+  margin-top: calc(50% - 1.5em); }
+.styleguide__color--shade-8:after {
+  content: "#f6f6f6"; }
 
 .styleguide__color--tone-feature1 {
   text-shadow: 0 0 1px #000;
@@ -522,71 +754,7 @@ A standard colour palette used across the Guardian’s digital products.
     font-weight: bold;
     margin-top: calc(50% - 1.5em); }
   .styleguide__color--tone-feature1-accent:after {
-    content: "#e02b7f"; }
-
-.styleguide__color--tone-feature2 {
-  text-shadow: 0 0 1px #000;
-  font-weight: 200;
-  color: #fff; }
-  .styleguide__color--tone-feature2:before, .styleguide__color--tone-feature2:after {
-    font-size: 75%;
-    line-height: 1;
-    width: 90%;
-    display: inline-block; }
-  .styleguide__color--tone-feature2:before {
-    content: "tone-feature2";
-    font-weight: bold;
-    margin-top: calc(50% - 1.5em); }
-  .styleguide__color--tone-feature2:after {
-    content: "#4e0375"; }
-
-.styleguide__color--tone-feature2-accent {
-  text-shadow: 0 0 1px #000;
-  font-weight: 200;
-  color: #fff; }
-  .styleguide__color--tone-feature2-accent:before, .styleguide__color--tone-feature2-accent:after {
-    font-size: 75%;
-    line-height: 1;
-    width: 90%;
-    display: inline-block; }
-  .styleguide__color--tone-feature2-accent:before {
-    content: "tone-feature2-accent";
-    font-weight: bold;
-    margin-top: calc(50% - 1.5em); }
-  .styleguide__color--tone-feature2-accent:after {
-    content: "#8006c2"; }
-
-.styleguide__color--tone-feature3 {
-  text-shadow: 0 0 1px #000;
-  font-weight: 200;
-  color: #fff; }
-  .styleguide__color--tone-feature3:before, .styleguide__color--tone-feature3:after {
-    font-size: 75%;
-    line-height: 1;
-    width: 90%;
-    display: inline-block; }
-  .styleguide__color--tone-feature3:before {
-    content: "tone-feature3";
-    font-weight: bold;
-    margin-top: calc(50% - 1.5em); }
-  .styleguide__color--tone-feature3:after {
-    content: "#7d0068"; }
-
-.styleguide__color--tone-feature3-accent {
-  text-shadow: 0 0 1px #000;
-  font-weight: 200;
-  color: #fff; }
-  .styleguide__color--tone-feature3-accent:before, .styleguide__color--tone-feature3-accent:after {
-    font-size: 75%;
-    line-height: 1;
-    width: 90%;
-    display: inline-block; }
-  .styleguide__color--tone-feature3-accent:before {
-    content: "tone-feature3-accent";
-    font-weight: bold;
-    margin-top: calc(50% - 1.5em); }
-  .styleguide__color--tone-feature3-accent:after {
-    content: "#c900a8"; }
+    content: "#b82266"; }
 
 .styleguide__color--tone-comment {
   text-shadow: 0 0 1px #000;
@@ -646,7 +814,23 @@ A standard colour palette used across the Guardian’s digital products.
   font-weight: bold;
   margin-top: calc(50% - 1.5em); }
 .styleguide__color--tone-comment-bg:after {
-  content: "#eeebe8"; }
+  content: "#e3e1dc"; }
+
+.styleguide__color--tone-comments-more-bg {
+  text-shadow: 0 0 1px #000;
+  font-weight: 200;
+  color: #fff; }
+  .styleguide__color--tone-comments-more-bg:before, .styleguide__color--tone-comments-more-bg:after {
+    font-size: 75%;
+    line-height: 1;
+    width: 90%;
+    display: inline-block; }
+  .styleguide__color--tone-comments-more-bg:before {
+    content: "tone-comments-more-bg";
+    font-weight: bold;
+    margin-top: calc(50% - 1.5em); }
+  .styleguide__color--tone-comments-more-bg:after {
+    content: "#005689"; }
 
 .styleguide__color--witness {
   text-shadow: 0 0 1px #000;
@@ -680,13 +864,57 @@ A standard colour palette used across the Guardian’s digital products.
   .styleguide__color--witness-bg:after {
     content: "#3e454c"; }
 
+.styleguide__color--neutral-1 {
+  text-shadow: 0 0 1px #000;
+  font-weight: 200;
+  color: #fff; }
+  .styleguide__color--neutral-1:before, .styleguide__color--neutral-1:after {
+    font-size: 75%;
+    line-height: 1;
+    width: 90%;
+    display: inline-block; }
+  .styleguide__color--neutral-1:before {
+    content: "neutral-1";
+    font-weight: bold;
+    margin-top: calc(50% - 1.5em); }
+  .styleguide__color--neutral-1:after {
+    content: "#333"; }
+
+.styleguide__color--neutral-2 {
+  text-shadow: 0 0 1px #000;
+  font-weight: 200;
+  color: #fff; }
+  .styleguide__color--neutral-2:before, .styleguide__color--neutral-2:after {
+    font-size: 75%;
+    line-height: 1;
+    width: 90%;
+    display: inline-block; }
+  .styleguide__color--neutral-2:before {
+    content: "neutral-2";
+    font-weight: bold;
+    margin-top: calc(50% - 1.5em); }
+  .styleguide__color--neutral-2:after {
+    content: "#767676"; }
+
+.styleguide__color--neutral-3:before, .styleguide__color--neutral-3:after {
+  font-size: 75%;
+  line-height: 1;
+  width: 90%;
+  display: inline-block; }
+.styleguide__color--neutral-3:before {
+  content: "neutral-3";
+  font-weight: bold;
+  margin-top: calc(50% - 1.5em); }
+.styleguide__color--neutral-3:after {
+  content: "#bdbdbd"; }
+
 .codeExample {
   margin: 0px -12px 48px -12px; }
 
 .exampleOutput::before,
 .codeBlock::before {
-  color: #999999;
-  font-family: "Agate Sans", sans-serif;
+  color: #999;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
   text-transform: uppercase;
   padding: 0px 0px 12px 0px;
   display: block;
@@ -703,7 +931,7 @@ A standard colour palette used across the Guardian’s digital products.
       line-height: 1.98rem; } }
 
 .exampleOutput {
-  background-image: linear-gradient(45deg, rgba(246, 246, 246, 0.75) 25%, transparent 25%, transparent 75%, rgba(246, 246, 246, 0.75) 75%, rgba(246, 246, 246, 0.75)), linear-gradient(45deg, rgba(246, 246, 246, 0.75) 25%, transparent 25%, transparent 75%, rgba(246, 246, 246, 0.75) 75%, rgba(246, 246, 246, 0.75));
+  background-image: linear-gradient(45deg, rgba(234, 234, 234, 0.75) 25%, transparent 25%, transparent 75%, rgba(234, 234, 234, 0.75) 75%, rgba(234, 234, 234, 0.75)), linear-gradient(45deg, rgba(234, 234, 234, 0.75) 25%, transparent 25%, transparent 75%, rgba(234, 234, 234, 0.75) 75%, rgba(234, 234, 234, 0.75));
   background-size: 44px 44px;
   background-position: 0 0, 22px 22px;
   padding: 12px 0px 0px 0px; }
@@ -717,14 +945,14 @@ A standard colour palette used across the Guardian’s digital products.
     clear: both; }
 
 .exampleOutput__heading {
-  color: #666666;
-  font-family: "Agate Sans", sans-serif;
+  color: #767676;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
   font-size: 1em;
   margin-bottom: 0.5em;
   clear: both; }
 
 .codeBlock {
-  background-color: rgba(246, 246, 246, 0.75);
+  background-color: rgba(234, 234, 234, 0.75);
   padding: 12px; }
   .codeBlock::before {
     content: 'Markup:'; }
@@ -853,11 +1081,11 @@ A standard colour palette used across the Guardian’s digital products.
 
 /* Literal.String */
 .na {
-  color: teal; }
+  color: #008080; }
 
 /* Name.Attribute */
 .nb {
-  color: #0086b3; }
+  color: #0086B3; }
 
 /* Name.Builtin */
 .nc {
@@ -866,7 +1094,7 @@ A standard colour palette used across the Guardian’s digital products.
 
 /* Name.Class */
 .no {
-  color: teal; }
+  color: #008080; }
 
 /* Name.Constant */
 .nd {
@@ -875,7 +1103,7 @@ A standard colour palette used across the Guardian’s digital products.
 
 /* Name.Decorator */
 .ni {
-  color: purple; }
+  color: #800080; }
 
 /* Name.Entity */
 .ne {
@@ -898,11 +1126,11 @@ A standard colour palette used across the Guardian’s digital products.
 
 /* Name.Namespace */
 .nt {
-  color: navy; }
+  color: #000080; }
 
 /* Name.Tag */
 .nv {
-  color: teal; }
+  color: #008080; }
 
 /* Name.Variable */
 .ow {
@@ -979,18 +1207,20 @@ A standard colour palette used across the Guardian’s digital products.
 
 /* Name.Builtin.Pseudo */
 .vc {
-  color: teal; }
+  color: #008080; }
 
 /* Name.Variable.Class */
 .vg {
-  color: teal; }
+  color: #008080; }
 
 /* Name.Variable.Global */
 .vi {
-  color: teal; }
+  color: #008080; }
 
 /* Name.Variable.Instance */
 .il {
   color: #009999; }
 
 /* Literal.Number.Integer.Long */
+
+/*# sourceMappingURL=style.css.map */
