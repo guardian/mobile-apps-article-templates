@@ -57,8 +57,7 @@
                 color: color(one-podcast-headline);
                 font-family: $icon;
                 margin-right: base-px(.25);
-                position: absolute;
-                margin-top: 3px;
+                position: absolute;              
             }
         }
 
@@ -106,5 +105,12 @@
             color: color(tone-podcast);
         }
     }
+
+    &.ios .article__header .card__title--audio::before{
+        margin-top: 3px;
+    }  
+    &.android .article__header .card__title--audio::before{
+        margin-top: -3px;
+    }  
 
 }

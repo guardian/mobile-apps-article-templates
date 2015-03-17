@@ -269,6 +269,26 @@ define([
             };
 
             return root.guardian;
+        },
+
+        fixSeries: function () {
+            var series = $('.content__series-label.content__labels a');
+            series.html('<span>' + series.text().split(/\s+/).join(' </span><span>') + ' </span>');
+            
+            var spans = $('span', series);
+            var size = spans.length;
+            var lineWidth = 0;
+            var minLastLineWidth = 80; //px
+
+            for(var x = size - 1; x >=0; x--){
+                lineWidth = lineWidth + spans[x].offsetWidth;
+                if( lineWidth > minLastLineWidth) {
+                    if( Math.abs(spans[x].getBoundingClientRect().top - spans[size - 1].getBoundingClientRect().top) >= spans[x].offsetHeight ){
+                        bonzo(spans[x]).before('</br>');
+                    }
+                    break;
+                }
+            }
         }
     },
 
@@ -298,6 +318,7 @@ define([
             modules.setupFontSizing();
             modules.showTabs(window);
             modules.setGlobalObject(window);
+            modules.fixSeries();
 
             if (!$("body").hasClass("no-ready")) {
                 window.location.href = 'x-gu://ready';

@@ -9,7 +9,7 @@ define([
 		var sandbox;
 
 		before(function(){
-			sandbox = bonzo(bonzo.create('<div id="sandbox" style="visibility:hidden;"></div>'));
+			sandbox = bonzo(bonzo.create('<div id="sandbox" style="visibility:visible;"></div>'));
 			sandbox.appendTo(document.body);
 		});
 
@@ -87,6 +87,14 @@ define([
   			tab[0].dispatchEvent(click);
   			expect(root.location.href).to.be.equal('x-gu://football_tab_stats');
   		});
+
+		it('should add extra words to a series that occupy more than one line if the new line contains only one word', function(){
+			var testContent = bonzo.create('<div style="width:340px; font-family: Courier; font-size: 10px;" class="content__series-label content__labels"><a>Nigel Slater recipes Nigel Slater recipes Nigel Slater recipes</a><div>');
+			$(testContent).appendTo(sandbox);
+			var series = $('a', testContent);			
+			Common.modules.fixSeries(series);
+			expect(series.html()).to.be.equal('<span>Nigel </span><span>Slater </span><span>recipes </span><span>Nigel </span><span>Slater </span><span>recipes </span><br><span>Nigel </span><span>Slater </span><span>recipes </span>');
+		});
 
 		describe('Tags', function(){
 			var tagsContainer;
