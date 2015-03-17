@@ -298,7 +298,7 @@ define([
             };
             animFrame(function(){
                 if(window.chrome && window.chrome.loadTimes && window.GuardianJSInterface && window.GuardianJSInterface.firstPaintTime){
-                    window.GuardianJSInterface.firstPaintTime(window.chrome.loadTimes().firstPaintTime);
+                    window.GuardianJSInterface.firstPaintTime(window.chrome.loadTimes().firstPaintTime - window.chrome.loadTimes().startLoadTime);
                 }
             });
         }

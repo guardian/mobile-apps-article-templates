@@ -97,11 +97,12 @@ define([
 		});
 
 		it('should invoke (if available) window.GuardianJSInterface.firstPaintTime on firstPaint', function(done){
-			window.chrome = { loadTimes: function(){ return { firstPaintTime: 10 }; }};
+			window.chrome = { loadTimes: function(){ return { firstPaintTime: 10, startLoadTime: 5 }; }};
 			window.GuardianJSInterface = { firstPaintTime: function(){ }};
 			var firstPaintFn = sinon.spy(window.GuardianJSInterface, "firstPaintTime");
 			Common.modules.sendFirstPaintTime();
 			setTimeout(function(){
+				expect(firstPaintFn).to.have.been.calledWithExactly(5);
 				expect(firstPaintFn).to.have.been.called;
 				done();
 			}, 200);			
