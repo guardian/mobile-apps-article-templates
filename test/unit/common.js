@@ -97,8 +97,14 @@ define([
 		});
 
 		it('should invoke (if available) window.GuardianJSInterface.firstPaintTime on firstPaint', function(done){
-			window.GuardianJSInterface = { firstPaintTime: function(){ done(); }};
+			window.chrome = { loadTimes: function(){ return { firstPaintTime: 10 }; }};
+			window.GuardianJSInterface = { firstPaintTime: function(){ }};
+			var firstPaintFn = sinon.spy(window.GuardianJSInterface, "firstPaintTime");
 			Common.modules.sendFirstPaintTime();
+			setTimeout(function(){
+				expect(firstPaintFn).to.have.been.called;
+				done();
+			}, 200);			
 		});
 
 		describe('Tags', function(){

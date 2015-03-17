@@ -293,7 +293,14 @@ define([
         },
 
         sendFirstPaintTime: function(){
-            
+            var animFrame = window.requestAnimationFrame || function( callback ){
+                window.setTimeout(callback, 1000 / 60);
+            };
+            animFrame(function(){
+                if(window.chrome && window.chrome.loadTimes && window.GuardianJSInterface && window.GuardianJSInterface.firstPaintTime){
+                    window.GuardianJSInterface.firstPaintTime(window.chrome.loadTimes().firstPaintTime);
+                }
+            });
         }
     },
 
