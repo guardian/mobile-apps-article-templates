@@ -51,9 +51,9 @@ define([
         for (var i = 0; i < obj.length; i++) {
             var $obj                = $(obj[i][0]),
                 fw                  = Math.floor(obj[i][1] * overPercent),
-                fh                  = Math.floor(obj[i][2] * overPercent),                
+                fh                  = Math.floor(obj[i][2] * overPercent),
                 isNotLast           = !!(( i < obj.length - 1));
-                
+
 
             if (settings.allowPartialLastRow === true && lastRow === true) {
                 fw = obj[i][1];
@@ -89,7 +89,7 @@ define([
 
         var padding = getComputedStyle(document.getElementsByClassName("gallery")[0]).getPropertyValue("padding-left");
             padding = Math.round(parseFloat(padding));
-        
+
         // Gallery padding depenedent on available screen space
         var gp = screenSpace < 955 ? "11px 11px 0 11px" : "12px 12px 0 12px" ;
 

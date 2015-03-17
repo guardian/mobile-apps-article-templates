@@ -41,6 +41,23 @@
     }
 }
 
+@mixin rating() {
+    $review-size-1: 2.2rem;
+    $review-lead-1: 2.4rem;
+    $review-size-2: 3rem;
+    $review-lead-2: 3.2rem;
+    
+    @include mq($to: col1) {
+        font-size: $review-size-1;
+        line-height: $review-lead-1;
+    }
+
+    @include mq(col1, col2) {
+        font-size: $review-size-2;
+        line-height: $review-lead-2;
+    }
+
+}
 
 // Body font sizing
 $body-size-1: 1.6rem;
@@ -141,6 +158,26 @@ $meta-lead-2: 2.2rem;
     }
 }
 
+// template for tags
+@mixin tag-button($text-color, $background-color, $process: "darken", $tone-change: 10%){
+    color: $text-color;
+    background-color: $background-color;
+
+    &:active {
+        color: if($process == "darken", darken($text-color, $tone-change), lighten($text-color, $tone-change));
+        background-color: if($process == "darken", darken($background-color, $tone-change), lighten($background-color, $tone-change));
+    }
+}
+
+@mixin tag-more-button($text-color, $border-color, $process: "darken", $tone-change: 10%){
+    color: $text-color;
+    border: 1px solid $border-color;
+
+    &:active {
+        color: if($process == "darken", darken($text-color, $tone-change), lighten($text-color, $tone-change));
+        border: 1px solid if($process == "darken", darken($border-color, $tone-change), lighten($border-color, $tone-change));;
+    }    
+}
 
 // Clearfix
 %clearfix {

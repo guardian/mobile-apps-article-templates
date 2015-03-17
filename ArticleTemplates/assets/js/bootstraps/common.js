@@ -8,6 +8,7 @@ define([
     'modules/ads',
     'modules/comments',
     'modules/cards',
+    'modules/more-tags',
     'modules/$'
 ], function (
     bean,
@@ -18,6 +19,7 @@ define([
     Ads,
     Comments,
     Cards,
+    MoreTags,
     $
 ) {
     'use strict';
@@ -130,6 +132,7 @@ define([
             window.articleTagInserter = function (html) {
                 html = bonzo.create(html);
                 $(html).appendTo('.tags .inline-list');
+                MoreTags.refresh();
             };
             window.applyNativeFunctionCall('articleTagInserter');
         },
@@ -198,36 +201,38 @@ define([
                 }
             });
 
-            bean.on(tabContainer[0], 'click', 'a', function (e) {
+            if(tabContainer[0]){
+                bean.on(tabContainer[0], 'click', 'a', function (e) {
 
-                e.preventDefault();                
-                var tab = $(this);
+                    e.preventDefault();                
+                    var tab = $(this);
 
-                if( tab.attr("aria-selected") !== 'true' ) {
-                 
-                    var activeTab = $('[aria-selected="true"]', tabContainer);
-                    $(activeTab.attr('href')).hide();
-                    activeTab.attr("aria-selected", false);
+                    if( tab.attr("aria-selected") !== 'true' ) {
+                     
+                        var activeTab = $('[aria-selected="true"]', tabContainer);
+                        $(activeTab.attr('href')).hide();
+                        activeTab.attr("aria-selected", false);
 
-                    $(tab.attr('href')).show();
-                    tab.attr("aria-selected", true);
+                        $(tab.attr('href')).show();
+                        tab.attr("aria-selected", true);
 
-                    switch(tab.attr("id")) {
-                        case "football__tab--article":
-                            root.location.href = 'x-gu://football_tab_report';
-                            break;
-                        case "football__tab--stats":
-                            modules.setPieChartSize();                        
-                            root.location.href = 'x-gu://football_tab_stats';
-                            break;
-                        case "football__tab--liveblog":
-                            root.location.href = 'x-gu://football_tab_liveblog';
-                            break;
-                        default:
-                            root.location.href = 'x-gu://football_tab_unknown';
+                        switch(tab.attr("id")) {
+                            case "football__tab--article":
+                                root.location.href = 'x-gu://football_tab_report';
+                                break;
+                            case "football__tab--stats":
+                                modules.setPieChartSize();                        
+                                root.location.href = 'x-gu://football_tab_stats';
+                                break;
+                            case "football__tab--liveblog":
+                                root.location.href = 'x-gu://football_tab_liveblog';
+                                break;
+                            default:
+                                root.location.href = 'x-gu://football_tab_unknown';
+                        }
                     }
-                }
-            });
+                });
+            }
         },
 
         setPieChartSize: function (){
@@ -264,6 +269,26 @@ define([
             };
 
             return root.guardian;
+        },
+
+        fixSeries: function () {
+            var series = $('.content__series-label.content__labels a');
+            series.html('<span>' + series.text().split(/\s+/).join(' </span><span>') + ' </span>');
+            
+            var spans = $('span', series);
+            var size = spans.length;
+            var lineWidth = 0;
+            var minLastLineWidth = 80; //px
+
+            for(var x = size - 1; x >=0; x--){
+                lineWidth = lineWidth + spans[x].offsetWidth;
+                if( lineWidth > minLastLineWidth) {
+                    if( Math.abs(spans[x].getBoundingClientRect().top - spans[size - 1].getBoundingClientRect().top) >= spans[x].offsetHeight ){
+                        bonzo(spans[x]).before('</br>');
+                    }
+                    break;
+                }
+            }
         }
     },
 
@@ -293,6 +318,7 @@ define([
             modules.setupFontSizing();
             modules.showTabs(window);
             modules.setGlobalObject(window);
+            modules.fixSeries();
 
             if (!$("body").hasClass("no-ready")) {
                 window.location.href = 'x-gu://ready';

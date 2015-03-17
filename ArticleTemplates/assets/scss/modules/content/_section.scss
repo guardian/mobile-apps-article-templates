@@ -18,9 +18,7 @@ With live indicator:
 */
 
 .section {
-    color: color(tone-news); // Default
     font-family: $egyptian-display;
-    font-weight: 600;
     @include headline(.5);
 
     &::before {
@@ -47,4 +45,46 @@ With live indicator:
 
 .section__live__pulse {
     -webkit-animation: blink 1.5s ease-in infinite;
+}
+
+/* Shared Live blog/Dead blog */
+
+.section__container {
+    position: relative;
+    float: left;
+    padding: base-px(.4, 1, 0, 1);
+    border-bottom: 1px rgba(color(shade-4), .4) dotted;
+    width:100%;
+    margin-bottom:10px;
+    
+    .section {
+        color: color(tone-news); // Default
+        font-family: $egyptian-display;
+        font-weight: 600;
+        @include headline(.5);
+        padding-bottom: 0;
+        &::before {
+            margin-right: base-px(.66666);
+            line-height: 92%; // Offset for different font
+            vertical-align: bottom;
+        }
+    }
+    .content__labels {
+        display: inline-block;
+        line-height: 1.6rem;
+        font-weight: 600;
+        @include headline(.5);
+        padding: base-px(.25, .5, .16, 0);
+    }
+    .content__series-label {
+        font-weight: normal;
+        font-family: $egyptian-display;
+        @include headline(.5);
+        font-weight: 300;
+        display: inline;
+    }
+}
+
+.article__header h1 {
+    clear: both;
 }

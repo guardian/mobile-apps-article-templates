@@ -31,6 +31,11 @@ module.exports = function(grunt) {
                 files: {
                     'ArticleTemplates/assets/css/style.css':  'ArticleTemplates/assets/scss/style.scss'
                 }
+            },
+            doc: {
+                files: {
+                    'DocumentationTemplates/assets/css/style.css':  'DocumentationTemplates/assets/scss/style.scss'
+                }                
             }
         },
 
@@ -125,12 +130,12 @@ module.exports = function(grunt) {
                 tasks: ['jshint', 'requirejs']
             },
             tests: {
-                files: ['ArticleTemplates/assets/js/**/*.js', 'test/unit/**/*.js'],
+                files: ['ArticleTemplates/assets/js/**/*.js', 'test/unit/**/*.{js,html}'],
                 tasks: ['mocha:dev']
             },
             scss: {
                 files: ['ArticleTemplates/assets/scss/**/*.scss'],
-                tasks: ['scsslint','sass']
+                tasks: ['scsslint','sass','hologram']
             },
             copy: {
                 files: ['ArticleTemplates/*.html', 'ArticleTemplates/assets/{js,scss,img}/**'],
@@ -173,7 +178,7 @@ module.exports = function(grunt) {
                         maxBuffer: 30000000
                     }
                 },
-                command: 'cd ' + config.base.ios + '../../GLA/ && xcodebuild clean build -sdk iphoneos8.1 -configuration Debug -workspace GLA.xcworkspace -scheme GLADebug -derivedDataPath ' + config.base.html + ' && xcrun -sdk iphoneos8.1 PackageApplication -v ' + config.base.html + 'Build/Products/Debug-iphoneos/GLA.app -o ' + config.base.html + 'guardian-debug.ipa --sign "' + config.ios.sign + '" --embed "' + config.ios.provisioning + '"'
+                command: 'cd ' + config.base.ios + '../../GLA/ && xcodebuild clean build -sdk iphoneos8.2 -configuration Debug -workspace GLA.xcworkspace -scheme GLADebug -derivedDataPath ' + config.base.html + ' && xcrun -sdk iphoneos8.2 PackageApplication -v ' + config.base.html + 'Build/Products/Debug-iphoneos/GLA.app -o ' + config.base.html + 'guardian-debug.ipa --sign "' + config.ios.sign + '" --embed "' + config.ios.provisioning + '"'
             },
             timeline: {
                 command: function(){
@@ -191,7 +196,7 @@ module.exports = function(grunt) {
                 }
             },
             wraithhistory: {
-                command: 'cd ' + config.base.html + 'test/visual && wraith history ' + config.base.html + 'test/visual/visual.yaml'
+                command: 'cd ' + config.base.html + 'test/visual && rm -rf shots shots_history && wraith history ' + config.base.html + 'test/visual/visual.yaml'
             },
             wraith: {
                 command: 'cd ' + config.base.html + 'test/visual && wraith latest ' + config.base.html + 'test/visual/visual.yaml'
@@ -203,7 +208,7 @@ module.exports = function(grunt) {
     grunt.task.run('notify_hooks');
 
     grunt.registerTask('develop', ['build', 'express', 'watch']);
-    grunt.registerTask('build', ['jshint', 'requirejs', 'scsslint','sass']);
+    grunt.registerTask('build', ['jshint', 'requirejs', 'scsslint','sass:dev']);
     grunt.registerTask('apk', ['build', 'rsync', 'shell:android']);
     grunt.registerTask('ipa', ['build', 'rsync', 'shell:ios']);
     grunt.registerTask('installer', ['build', 'rsync', 'shell:ios', 'shell:android']);

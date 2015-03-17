@@ -1,29 +1,44 @@
 .tone--podcast {
+
+    .section__container {
+        border-bottom: 1px rgba(234,234,234,0.3) dotted;
+        
+        & > div {
+            color: color(tone-podcast); // Content Label Section
+        }
+        
+        color: color(shade-5);
+        .content__series-label,
+        .content__series-label a {
+            color: color(shade-5);  // Content Label Series
+        }   
+    }
+
     .audio-player__button {
         &.touchpoint--primary .touchpoint__button {
-            background-color: color(tone-news);
-            color: #fff;
+            background-color: color(tone-podcast);
+            color: color(tone-podcast-ply-background);
 
             &:active {
-                background-color: color(tone-news-accent);
+                background-color: color(tone-news-accent); /* NB Need new colour???!!! */
             }
         }
     }
 
     .audio-player__slider__knob {
-        background-color: color(tone-news-accent);
+        background-color: color(tone-podcast);
     }
 
     .article {
-        border-top-color: color(shade-1);
+        border-top-color: color(tone-podcast);
     }
 
     .article__header {
-        background-color: color(tone-news-accent);
+        background-color: color(shade-6);
         background-image: -webkit-canvas(circles);
 
         .section {
-            display: none;
+            display: block;
         }
 
         .headline {
@@ -36,8 +51,37 @@
             }
         }
 
-        .byline {
-            color: #fff;
+        .card__title--audio {
+            &::before {
+                content: '\e047';
+                color: color(one-podcast-headline);
+                font-family: $icon;
+                margin-right: base-px(.25);
+                position: absolute;              
+            }
+        }
+
+        .card__titletext {
+            text-indent: base-px(5);
+            @include mq($to: col1) {
+                text-indent: base-px(3.33);
+            }            
+            padding-bottom: 3px;
+            text-overflow: ellipsis;
+            overflow-y: hidden;
+            word-wrap: break-word;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+        }
+
+        .meta__byline{
+            .byline{
+                color: color(shade-7);
+            }
+            .byline__author a{
+                color: color(tone-podcast);
+            }
         }
     }
 
@@ -47,14 +91,26 @@
 
     .meta,
     .meta__pubdate {
-        color: rgba(#fff, .8);
+        color: rgba(color(shade-7), .8);
     }
 
     .meta {
-        border-top-color: rgba(color(tone-news), .4);
+        border-top: 1px rgba(color(shade-7), .4) dotted;
     }
 
     .meta__comments {
-        border-left-color: rgba(color(tone-news), .4);
+        color: color(tone-podcast);
+        border-left-color: rgba(color(shade-7), .4);
+        a {
+            color: color(tone-podcast);
+        }
     }
+
+    &.ios .article__header .card__title--audio::before{
+        margin-top: 3px;
+    }  
+    &.android .article__header .card__title--audio::before{
+        margin-top: -3px;
+    }  
+
 }
