@@ -1,14 +1,17 @@
+<!--
+s4fonts
+-->
 <!doctype html>
 <html lang="en-US">
 <head>
     <title>Article</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" type="text/css" media="all" href="/root/ArticleTemplates/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" media="all" href="/root/ArticleTemplates/assets/css/style-sync.css">
     <script type="text/javascript" src="/root/ArticleTemplates/assets/js/shim.js"></script>
 </head>
 
-<body class="no-ready tone--news font-size-4 ios  advert-config--mobile" data-content-type="article" data-ads-enabled="true" data-ads-config="mobile" data-ads-enable-hiding="true" style="margin-top: 0px;" data-font-size="4">
+<body class="no-ready tone--news font-size-4 android advert-config--mobile" data-content-type="article" data-ads-enabled="true" data-ads-config="mobile" data-ads-enable-hiding="true" style="margin-top: 0px;" data-font-size="4" data-template-directory="/root/ArticleTemplates/">
     <div class="advert-slot advert-slot--banner advert-slot--true" id="banner_container">
         <div class="advert-slot__label">
             Advertisement
@@ -582,7 +585,19 @@
         </div>
     </div>
 
-    <script type="text/javascript" id="gu" src="/root/ArticleTemplates/assets/js/components/require.js" data-main="/root/ArticleTemplates/assets/build/app.js" data-js-dir="/root/ArticleTemplates/assets/js" async=""></script>
+    <script type="text/javascript">
+        window.addEventListener('load', function(){
+            requestAnimationFrame(function(){
+                var script = document.createElement('script');
+                script.setAttribute('src', '/root/ArticleTemplates/assets/js/components/require.js');
+                script.setAttribute('id', 'gu');
+                script.setAttribute('data-js-dir', '/root/ArticleTemplates/assets/js');
+                script.setAttribute('data-main', '/root/ArticleTemplates/assets/build/app.js');
+                script.async = false;
+                document.head.appendChild(script);
+            });
+        });
+    </script>
 
 </body>
 </html>
