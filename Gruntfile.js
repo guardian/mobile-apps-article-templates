@@ -1,8 +1,28 @@
 module.exports = function(grunt) {
 
     require('load-grunt-tasks')(grunt);
+    config = {};
 
-    var config = require('./config');
+    try {
+        config = require('./config');
+    }
+    catch (e) {
+        console.log('Config module not found, trying an empty config');
+        config = { 
+            base: {
+                android: '',
+                ios: '',
+                html: ''
+            },
+            performance: {
+                server: '',
+            },
+            ios: {
+                sign: '',
+                provisioning: ''
+            }
+        };
+    }
 
     grunt.initConfig({
 
