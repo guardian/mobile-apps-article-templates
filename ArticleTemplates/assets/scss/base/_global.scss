@@ -1,0 +1,17 @@
+// Base font size
+html {
+    font-size: 62.5%;
+    font-family: $egyptian-text;
+}
+
+body {
+    @include mq($to: col2) {
+        font-size: 1.6em;
+        line-height: 1.5em;
+    }
+
+    @include mq($from: col2) {
+        font-size: 1.8em;
+        line-height: 1.444em;
+    }
+}

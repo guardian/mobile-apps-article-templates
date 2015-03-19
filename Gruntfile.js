@@ -29,7 +29,9 @@ module.exports = function(grunt) {
         sass: {
             dev: {
                 files: {
-                    'ArticleTemplates/assets/css/style.css':  'ArticleTemplates/assets/scss/style.scss'
+                    'ArticleTemplates/assets/css/style.css':  'ArticleTemplates/assets/scss/style.scss',
+                    'ArticleTemplates/assets/css/style-async.css':  'ArticleTemplates/assets/scss/style-async.scss',
+                    'ArticleTemplates/assets/css/style-sync.css':  'ArticleTemplates/assets/scss/style-sync.scss',
                 }
             },
             doc: {
@@ -127,7 +129,7 @@ module.exports = function(grunt) {
         watch: {
             js: {
                 files: ['ArticleTemplates/assets/js/**/*.js'],
-                tasks: ['jshint', 'requirejs']
+                tasks: ['jshint', 'requirejs','rsync']
             },
             tests: {
                 files: ['ArticleTemplates/assets/js/**/*.js', 'test/unit/**/*.{js,html}'],
@@ -135,10 +137,10 @@ module.exports = function(grunt) {
             },
             scss: {
                 files: ['ArticleTemplates/assets/scss/**/*.scss'],
-                tasks: ['scsslint','sass','hologram']
+                tasks: ['scsslint','sass','hologram','rsync']
             },
             copy: {
-                files: ['ArticleTemplates/*.html', 'ArticleTemplates/assets/{js,scss,img}/**'],
+                files: ['ArticleTemplates/*.html', 'ArticleTemplates/assets/img/**'],
                 tasks: ['rsync']
             }
         },
@@ -183,7 +185,8 @@ module.exports = function(grunt) {
             timeline: {
                 command: function(){
                     if( grunt.option('fixture') ){
-                        var baseCommand = '`which ruby` test/performance/timeline.rb ' + config.performance.server + ' ' + grunt.option('fixture');
+                        var label = grunt.option('label') || 'no-label';
+                        var baseCommand = '`which ruby` test/performance/timeline.rb ' + config.performance.server + ' ' + grunt.option('fixture') + ' ' + label;
                         var times = parseInt(grunt.option('times'),10) || 1;
                         var outputsString = '';
                         for(var x = 0; x < times; x ++){

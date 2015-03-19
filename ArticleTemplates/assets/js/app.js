@@ -59,4 +59,16 @@ require([
             });
         }
     });
+
+    function loadCss(url) {
+        var basePath = document.body.getAttribute('data-template-directory');
+        var link = document.createElement("link");
+        link.type = "text/css";
+        link.rel = "stylesheet";
+        link.href = basePath + url;
+        document.getElementsByTagName("head")[0].appendChild(link);
+    }    
+
+    loadCss('assets/css/style-async.css');
+
 });
