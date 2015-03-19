@@ -4,7 +4,7 @@
     <title>Article</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
-    <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/style-sync.css" />
     <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/js/shim.js"></script>
 </head>
 
@@ -22,6 +22,20 @@
 
     __ARTICLE_CONTAINER__
 
-    <script type="text/javascript" id="gu" src="__TEMPLATES_DIRECTORY__assets/js/components/require.js" data-main="__TEMPLATES_DIRECTORY__assets/build/app.js" data-js-dir="__TEMPLATES_DIRECTORY__assets/js" async></script>
+
+    <script type="text/javascript">
+        window.addEventListener('load', function(){
+            requestAnimationFrame(function(){
+                var script = document.createElement('script');
+                script.setAttribute('src', '__TEMPLATES_DIRECTORY__assets/js/components/require.js');
+                script.setAttribute('id', 'gu');
+                script.setAttribute('data-js-dir', '__TEMPLATES_DIRECTORY__assets/js');
+                script.setAttribute('data-main', '__TEMPLATES_DIRECTORY__assets/build/app.js');
+                script.async = false;
+                document.head.appendChild(script);
+            });
+        });
+    </script>
+
 </body>
 </html>
