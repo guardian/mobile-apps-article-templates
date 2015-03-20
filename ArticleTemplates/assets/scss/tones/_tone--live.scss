@@ -62,6 +62,7 @@
             }
 
             .section{
+                position: relative;
                 @include mq(col1, col2) {
                     padding-left: base-px(6.5);
                 }
@@ -77,10 +78,9 @@
 
             .content__series-title {
                 @include mq($to: col1) {
-                    padding-left: base-px(4);
-                }
-
-                position: relative;
+                    padding-left: base-px(4);                    
+                    position: relative;
+                }                               
             }
 
             .section__live {
