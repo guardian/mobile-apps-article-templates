@@ -87,7 +87,8 @@ module.exports = function(grunt) {
                         { name: 'liveblog' },
                         { name: 'article' },
                         { name: 'bootstraps/common'},
-                        { name: 'app' }
+                        { name: 'app' },
+                        { name: 'smoothScroll' }
                     ]
                 }
             }

@@ -69,6 +69,11 @@ require([
         document.getElementsByTagName("head")[0].appendChild(link);
     }    
 
-    loadCss('assets/css/style-async.css');
+    var scriptTag = document.getElementById('gu');
+    var skipStyle = scriptTag.getAttribute('data-skip-style');
+
+    if(!skipStyle){
+        loadCss('assets/css/style-async.css');
+    }
 
 });
