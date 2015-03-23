@@ -24,17 +24,7 @@
 
 
     <script type="text/javascript">
-        window.addEventListener('load', function(){
-            animFrame(function(){
-                var script = document.createElement('script');
-                script.setAttribute('src', '__TEMPLATES_DIRECTORY__assets/js/components/require.js');
-                script.setAttribute('id', 'gu');
-                script.setAttribute('data-js-dir', '__TEMPLATES_DIRECTORY__assets/js');
-                script.setAttribute('data-main', '__TEMPLATES_DIRECTORY__assets/build/app.js');
-                script.async = false;
-                document.head.appendChild(script);
-            });
-        });
+        window.initTemplate();
     </script>
 
 </body>
