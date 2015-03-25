@@ -58,10 +58,12 @@ var applyNativeFunctionCall = function (name) {
 window.initTemplate = function (opts) {
     var options = opts || {};
     var template_path = document.body.getAttribute('data-template-directory');
+
     var animFrame = window.requestAnimationFrame || function( callback ){
         window.setTimeout(callback, 1000 / 60);
     };
-    window.addEventListener('load', function(){
+
+    var boot = function(){
         animFrame(function(){
             var script = document.createElement('script');
             script.setAttribute('src', template_path + 'assets/js/components/require.js');
@@ -73,8 +75,14 @@ window.initTemplate = function (opts) {
             }
             script.async = true;
             document.head.appendChild(script);
-        });
-    });    
+        });        
+    };
+
+    if (document.readyState === "complete") {
+        boot();  
+    } else {
+        window.addEventListener('load', boot);
+    }
 };
 
 
