@@ -59,4 +59,21 @@ require([
             });
         }
     });
+
+    function loadCss(url) {
+        var basePath = document.body.getAttribute('data-template-directory');
+        var link = document.createElement("link");
+        link.type = "text/css";
+        link.rel = "stylesheet";
+        link.href = basePath + url;
+        document.getElementsByTagName("head")[0].appendChild(link);
+    }    
+
+    var scriptTag = document.getElementById('gu');
+    var skipStyle = scriptTag.getAttribute('data-skip-style');
+
+    if(!skipStyle){
+        loadCss('assets/css/style-async.css');
+    }
+
 });

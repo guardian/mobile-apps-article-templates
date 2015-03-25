@@ -54,3 +54,36 @@ var applyNativeFunctionCall = function (name) {
         });
     }
 };
+
+window.initTemplate = function (opts) {
+    var options = opts || {};
+    var template_path = document.body.getAttribute('data-template-directory');
+
+    var animFrame = window.requestAnimationFrame || function( callback ){
+        window.setTimeout(callback, 1000 / 60);
+    };
+
+    var boot = function(){
+        animFrame(function(){
+            var script = document.createElement('script');
+            script.setAttribute('src', template_path + 'assets/js/components/require.js');
+            script.setAttribute('id', 'gu');
+            script.setAttribute('data-js-dir', template_path + 'assets/js');
+            script.setAttribute('data-main', template_path + 'assets/build/app.js');
+            if(options.skipStyle){
+                script.setAttribute('data-skip-style', 'true');
+            }
+            script.async = true;
+            document.head.appendChild(script);
+        });        
+    };
+
+    if (document.readyState === "complete") {
+        boot();  
+    } else {
+        window.addEventListener('load', boot);
+    }
+};
+
+
+
