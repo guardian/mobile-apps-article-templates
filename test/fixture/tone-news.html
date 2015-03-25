@@ -1,3 +1,6 @@
+<!--
+s4fonts
+-->
 <!doctype html>
 <html lang="en-US">
 <head>
@@ -8,7 +11,7 @@
     <script type="text/javascript" src="/root/ArticleTemplates/assets/js/shim.js"></script>
 </head>
 
-<body class="no-ready tone--news font-size-4 ios  advert-config--mobile" data-content-type="article" data-ads-enabled="true" data-ads-config="mobile" data-ads-enable-hiding="true" style="margin-top: 0px;" data-font-size="4">
+<body class="no-ready tone--news font-size-4 android advert-config--mobile" data-content-type="article" data-ads-enabled="true" data-ads-config="mobile" data-ads-enable-hiding="true" style="margin-top: 0px;" data-font-size="4" data-template-directory="/root/ArticleTemplates/">
     <div class="advert-slot advert-slot--banner advert-slot--true" id="banner_container">
         <div class="advert-slot__label">
             Advertisement
@@ -582,7 +585,9 @@
         </div>
     </div>
 
-    <script type="text/javascript" id="gu" src="/root/ArticleTemplates/assets/js/components/require.js" data-main="/root/ArticleTemplates/assets/build/app.js" data-js-dir="/root/ArticleTemplates/assets/js" async=""></script>
+    <script type="text/javascript">
+        window.initTemplate();
+    </script>
 
 </body>
 </html>

@@ -7,10 +7,12 @@
     <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/js/shim.js"></script>
 </head>
 
-<body class="__FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__" data-content-type="article" data-ads-enabled="__ADS_ENABLED__" data-ads-enable-hiding="__ADS_ENABLE_HIDING__" data-ads-config="__ADS_CONFIG__" style="margin-top: __ACTIONBARHEIGHT__px;" data-font-size="__FONT_SIZE_INT__" data-page-id="__PAGE_ID__">
+<body class="__FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__" data-content-type="article" data-ads-enabled="__ADS_ENABLED__" data-ads-enable-hiding="__ADS_ENABLE_HIDING__" data-ads-config="__ADS_CONFIG__" style="margin-top: __ACTIONBARHEIGHT__px;" data-font-size="__FONT_SIZE_INT__" data-page-id="__PAGE_ID__" data-template-directory="__TEMPLATES_DIRECTORY__">
 
     __BODY__
 
-    <script type="text/javascript" id="gu" src="__TEMPLATES_DIRECTORY__assets/js/components/require.js" data-main="__TEMPLATES_DIRECTORY__assets/build/app.js" data-js-dir="__TEMPLATES_DIRECTORY__assets/js" async></script>
+    <script type="text/javascript">
+        window.initTemplate({ skipStyle: true });
+    </script>
 </body>
 </html>

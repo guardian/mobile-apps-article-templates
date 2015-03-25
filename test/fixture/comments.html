@@ -4,11 +4,11 @@
     <title>Comments</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" type="text/css" media="all" href="/root/ArticleTemplates/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" media="all" href="/root/ArticleTemplates/assets/css/style-sync.css">
     <script type="text/javascript" src="/root/ArticleTemplates/assets/js/shim.js"></script>
 </head>
 
-<body class="no-ready tone--news comments-254 font-size-4 ios " data-font-size="4">
+<body class="no-ready tone--news comments-254 font-size-4 ios " data-font-size="4" data-template-directory="/root/ArticleTemplates/">
     <div class="discussion comments--open" style="margin-top: 0px;" id="comments">
         <div class="discussion__header">
             <h3 class="section">
@@ -2491,7 +2491,9 @@
         </div>
     </div>
 
-    <script type="text/javascript" id="gu" src="/root/ArticleTemplates/assets/js/components/require.js" data-main="/root/ArticleTemplates/assets/build/app.js" data-js-dir="/root/ArticleTemplates/assets/js" async=""></script>
+    <script type="text/javascript">
+        window.initTemplate({ skipStyle: true });
+    </script>
 
 </body>
 </html>
