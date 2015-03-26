@@ -81,7 +81,7 @@ window.initTemplate = function (opts) {
     if (document.readyState === "complete") {
         boot();  
     } else {
-        window.addEventListener('load', boot);
+        window.addEventListener('DOMContentLoaded', boot);
     }
 };
 
