@@ -18,28 +18,28 @@
             bottom: 0;
             left: 0;
         }
+    }
 
-        .byline {
+    .byline{
+        &--tablet{
             @include mq($to: col2) {
                 display: none;
             }
+        }
+        &--mobile{
+            border-bottom: 1px dotted color(shade-4);
+            padding: base-px(1, 1, 1, 1);
+            display: block;
+
+            @include mq($from: col2) {
+                display: none;
+            }        
         }
     }
 
     .article__body {
         .standfirst {
             padding: base-px(0, 0, 1.5, 0);
-        }
-
-        .byline {
-            margin: base-px(0, 0, 1, 0);
-            border-bottom: 1px dotted color(shade-4);
-            padding: base-px(0, 0, 1, 0);
-            display: block;
-
-            @include mq($from: col2) {
-                display: none;
-            }
         }
     }
 }
