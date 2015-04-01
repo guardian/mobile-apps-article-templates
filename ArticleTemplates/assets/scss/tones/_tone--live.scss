@@ -159,49 +159,4 @@
 
     }
 
-
-    &.is_advertising {
-
-        .article,
-        .section__container {
-            border-color: color(global-adv-bands);
-        }
-        
-        .article--liveblog .article__header {
-            background-color: color(global-adv-bg);
-        }
-
-        .article__header .section__live,
-        .article__header .headline,
-        .article__header .standfirst,
-        .article__header .standfirst a,
-        .article__header .section,
-        .alerts__state--unfollow {
-            color: color(global-adv-text);
-        }
-
-        .alerts__state--unfollow {
-            @include mq($from: col2) { 
-                color: color(shade-7);
-            }
-        }
-
-        .article__header ul > li::before,
-        .article__header .bullet::before {
-            background-color: color(global-adv-text);    
-        }
-
-        .meta {
-            background-color: color(global-adv-bands);
-        }
-
-        .article__header .section,
-        .content__series-label{
-            @include mq($to: col2) {
-                padding-top: base-px(0.42);
-            }
-        }
-
-    }
-
 }
