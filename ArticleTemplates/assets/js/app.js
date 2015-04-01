@@ -13,7 +13,8 @@ require.config({
         fastClick: '../../../node_modules/fastclick/lib/fastclick',
         qwery: '../../../node_modules/qwery/qwery',
         fence: '../../../node_modules/fence/fence',
-        smoothScroll: '../../../node_modules/smooth-scroll/dist/js/smooth-scroll'
+        smoothScroll: '../../../node_modules/smooth-scroll/dist/js/smooth-scroll',
+        raven: '../../../node_modules/raven-js/dist/raven'
     },
     shim: {
         d3: {
@@ -23,19 +24,24 @@ require.config({
 });
 
 require([
-    'domReady'
+    'domReady',
+    'modules/monitor'
 ], function (
-    domReady
+    domReady,
+    monitor
 ) {
     'use strict';
 
     domReady(function () {
 
         var contentType = document.body.getAttribute('data-content-type');
+        monitor.init();
 
         if (contentType === 'article') {
             require(['article'], function(Article){
                 Article.init();
+                Raven.captureMessage('Capture message!');
+                console.log(trllaalla);
             });
         } else if (contentType === 'liveblog') {
             require(['liveblog'], function(Liveblog){
