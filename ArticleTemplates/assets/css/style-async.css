@@ -25,6 +25,18 @@
   font-style: italic;
   src: url("../fonts/agate-bolditalic.otf"); }
 @font-face {
+  font-family: 'Guardian Sans';
+  font-weight: 200;
+  src: url("../fonts/GuardianSansWeb-Light.ttf"); }
+@font-face {
+  font-family: 'Guardian Sans';
+  font-weight: 300;
+  src: url("../fonts/GuardianSansWeb-Regular.ttf"); }
+@font-face {
+  font-family: 'Guardian Sans';
+  font-weight: 600;
+  src: url("../fonts/GuardianSansWeb-Semibold.ttf"); }
+@font-face {
   font-family: 'Titlepiece';
   font-weight: 600;
   src: url("../fonts/titlepiece.otf"); }
@@ -105,6 +117,10 @@ A standard colour palette used across the Guardian’s digital products.
 <p class="clear"><b>Comments</b></p>
 <div class="styleguide__color--tone-comments-more-bg"></div>
 
+<p class="clear"><b>ADV tones</b></p>
+<div class="styleguide__color--global-adv-bg"></div>
+<div class="styleguide__color--global-adv-bands"></div>
+<div class="styleguide__color--global-adv-text"></div>
 ```
 */
 /*doc
@@ -562,7 +578,10 @@ Display which keywords an article has been tagged with.
   .tags .show-tags {
     display: inline-block; }
   .tags .inline-list__item {
-    margin: 1rem 0; }
+    margin: 1rem 0;
+    /*        @include mq($to: col1) {
+                margin: 4px;
+            }*/ }
     .tags .inline-list__item a {
       white-space: nowrap;
       padding: 4px 16px 8px 16px;
@@ -689,6 +708,48 @@ Makes a block of text resizable, based on user text size setting.
 .font-size-10 .resizable {
   font-size: 160%;
   line-height: 1.5; }
+
+/*doc
+---
+title: Sponsorship
+name: sponsorship
+category: Modules
+---
+The 'sponsored by/supported by' section
+
+```html_example
+<div class="sponsorship">
+	<p class="sponsorship__formatted-sponsor-name">
+		Guardian Cities is supported by:
+		<a href="http://www.100resilientcities.org">The Rockefeller Foundation</a>
+	</p>
+	<a class="sponsorship__about-uri" href="x-gu://item/mobile-apps.guardianapis.com/items/cities/2014/jan/27/cities-about-this-site">About this content</a>
+</div>		
+```
+*/
+.sponsorship {
+  padding: 10px 12px 20px 12px;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  line-height: 1.2;
+  border-bottom: 1px dotted #B5B3AE; }
+  .gallery ~ .sponsorship {
+    border-bottom: none; }
+  @media all and (max-width: 40.615em) {
+    .sponsorship {
+      font-size: 1.2rem; } }
+  @media all and (min-width: 40.625em) {
+    .sponsorship {
+      font-size: 1.4rem; } }
+  .sponsorship__formatted-sponsor-name {
+    color: #878787; }
+    @media all and (max-width: 40.615em) {
+      .sponsorship__formatted-sponsor-name span:first-child {
+        display: block; } }
+  .sponsorship__about-uri {
+    color: inherit;
+    padding-top: 1rem;
+    display: block;
+    font-weight: bold; }
 
 /*doc
 ---
