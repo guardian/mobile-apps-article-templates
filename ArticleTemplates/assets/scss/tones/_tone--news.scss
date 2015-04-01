@@ -1,4 +1,10 @@
 .tone--news {
+    a {
+        color: color(tone-news);
+        &:active {
+            color: color(tone-news-accent);
+        }
+    }    
 
     .article__header {
         background-color: color(shade-7);
@@ -26,7 +32,7 @@
             color: color(shade-2);
         }
         .selectable a {
-            color: color(tone-news) !important;
+            color: color(tone-news-standfirst-links);
         }
         .meta {
             border-top: 1px rgba(color(shade-3), .4) dotted;
@@ -46,5 +52,4 @@
         }
 
     }
-
 }
