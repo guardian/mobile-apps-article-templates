@@ -17,6 +17,11 @@ define([
 				deviceKind: document.body.getAttribute('data-ads-config'),
 				ads: document.body.getAttribute('data-ads-enabled') === 'true',
 			};
+		},
+		ignoreErrors: function() {
+			var ignoreArray = ['fake'];
+			ignoreArray.push = function(){};
+			return ignoreArray;
 		}
 	};
 
@@ -25,6 +30,7 @@ define([
 		if(!Raven.isSetup()){
 			Raven.config(SENTRY_DSN, { 
 				tags: tags,
+				ignoreErrors: modules.ignoreErrors(),
 				collectWindowErrors: true
 			}).install();
 		}

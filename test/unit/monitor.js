@@ -35,6 +35,14 @@ define([
 			expect(monitor.raven.isSetup()).to.be.true;
 		});
 
+		it('uses a special array with push turned off for ignoreErrors', function(){
+			var fakeArray = monitor.modules.ignoreErrors();
+			expect(fakeArray.length).to.be.equal(1);
+			fakeArray.push('another item');
+			expect(fakeArray.length).to.be.equal(1);
+			expect(fakeArray[0]).to.be.equal('fake');
+		});
+
 		afterEach(function(){
 			sandbox.empty();
 		});
