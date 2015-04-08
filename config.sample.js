@@ -13,6 +13,10 @@ module.exports = {
 	ios: {
 		sign: // developer sign
 		provisioning: // provisioning profile
+	},
+
+	sentry: {
+		dsn: // sentry DSN for this app
 	}
 
 }

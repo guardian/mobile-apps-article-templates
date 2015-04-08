@@ -39,29 +39,39 @@ require([
 
         if (contentType === 'article') {
             require(['article'], function(Article){
-                Article.init();
-                Raven.captureMessage('Capture message!');
-                console.log(trllaalla);
+                monitor.setContext('article', function(){
+                    Article.init();
+                });
             });
         } else if (contentType === 'liveblog') {
             require(['liveblog'], function(Liveblog){
-                Liveblog.init();
+                monitor.setContext('liveblog', function(){
+                    Liveblog.init();
+                });
             });
         } else if (contentType === 'audio') {
             require(['audio'], function(Audio){
-                Audio.init();
+                monitor.setContext('audio', function(){
+                    Audio.init();
+                });
             });
         } else if (contentType === 'gallery') {
             require(['gallery'], function(Gallery){
-                Gallery.init();
+                monitor.setContext('gallery', function(){
+                    Gallery.init();
+                });
             });
         } else if (contentType === 'football') {
             require(['football'], function(Football){
-                Football.init();
+                monitor.setContext('football', function(){
+                    Football.init();
+                });
             });
         } else {
             require(['bootstraps/common'], function(Common){
-                Common.init();
+                monitor.setContext('common', function(){
+                    Common.init();
+                });
             });
         }
     });

@@ -31,6 +31,7 @@ define([
 		});
 
 		it('starts raven on init', function(){
+			monitor.config.dsn = 'https://000000@test.dsn/00000';
 			monitor.init();
 			expect(monitor.raven.isSetup()).to.be.true;
 		});
@@ -41,6 +42,12 @@ define([
 			fakeArray.push('another item');
 			expect(fakeArray.length).to.be.equal(1);
 			expect(fakeArray[0]).to.be.equal('fake');
+		});
+
+		it('exposes a method for wrapping methods in a Raven context', function(){
+			monitor.config.dsn = 'https://000000@test.dsn/00000';
+			five = monitor.modules.setContext('test', function(){ return 5; });
+			expect(five).to.be.equal(5);
 		});
 
 		afterEach(function(){

@@ -4,7 +4,17 @@ define([
     Raven
 ) {
 
-	var SENTRY_DSN = 'https://8abc43d4e79b425eb6d4b5659ccd4020@app.getsentry.com/40557';
+	var config = {
+		dsn: null,
+		git_commit: 'not available'
+	};		
+	
+	try {
+		config = {
+			dsn: GRUNT_SENTRY_DSN,
+			git_commit: GRUNT_LAST_GIT_COMMIT
+		};   
+	} catch(e) {}
 
 	var modules = {
 		extractTags: function() {
@@ -22,23 +32,38 @@ define([
 			var ignoreArray = ['fake'];
 			ignoreArray.push = function(){};
 			return ignoreArray;
+		},
+		setContext: function(context, fn){
+			if(config.dsn){
+				return Raven.context({ tags: { context: context }}, fn);
+			}
+			return fn();
 		}
 	};
 
 	var init = function(){
 		var tags = modules.extractTags();
-		if(!Raven.isSetup()){
-			Raven.config(SENTRY_DSN, { 
+		if(!Raven.isSetup() && config.dsn){
+			Raven.config(config.dsn, { 
 				tags: tags,
+				release: config.git_commit,
 				ignoreErrors: modules.ignoreErrors(),
-				collectWindowErrors: true
+				shouldSendCallback: function(data) {
+					if(data.stacktrace && data.stacktrace.frames){
+						data.stacktrace.frames = data.stacktrace.frames.reverse().slice(0,3).reverse();
+					}
+					var sampleRate = 35;
+					return (Math.random() * 100 <= sampleRate);
+				}				
 			}).install();
 		}
 	};
 
     return {
     	init: init,
+    	setContext: modules.setContext,
     	modules: modules,
+    	config: config,
         raven: Raven
     };
 });
