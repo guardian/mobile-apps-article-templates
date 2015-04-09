@@ -13,6 +13,12 @@ define([
     'use strict';
 
     var modules = {
+        getColor: function(){
+            var isAdv = $("body").hasClass("is_advertising");
+            var isAudio = $(".article").hasClass("article--audio");
+            return isAdv ? "rgba(255, 255, 255, 0.10)" : (isAudio ? "rgba(255, 187, 0, 0.05)" : "rgba(167, 216, 242, 0.10)");
+        },
+
         audioSlider: function () {
             var audioCurrent,
                 down,
@@ -101,7 +107,6 @@ define([
 
                 window.audioBackground = function (duration) {
                     if ($(".cutout__container").attr("data-background") === null && !$("body").hasClass("media")) {
-                        var isAdv = $("body").hasClass("is_advertising");
                         var numOfCircles = Math.min(10, Math.floor((duration / 60) / 2)) + 2,
                             h = $(".article__header").offset().height,
                             w = $(".article__header").offset().width,
@@ -114,7 +119,7 @@ define([
                             ctx.beginPath();
                             ctx.arc(x, h / 2, size, 0, Math.PI * 2, true);
                             ctx.closePath();
-                            ctx.fillStyle = isAdv ? "rgba(255, 255, 255, 0.10)" : "rgba(167, 216, 242, 0.10)";
+                            ctx.fillStyle = modules.getColor();
                             ctx.fill();
                             size = size * 1.2;
                         }
@@ -138,7 +143,8 @@ define([
         };
 
     return {
-        init: ready
+        init: ready,
+        modules: modules
     };
 
 });
