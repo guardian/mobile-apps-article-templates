@@ -13,7 +13,8 @@ require.config({
         fastClick: '../../../node_modules/fastclick/lib/fastclick',
         qwery: '../../../node_modules/qwery/qwery',
         fence: '../../../node_modules/fence/fence',
-        smoothScroll: '../../../node_modules/smooth-scroll/dist/js/smooth-scroll'
+        smoothScroll: '../../../node_modules/smooth-scroll/dist/js/smooth-scroll',
+        raven: '../../../node_modules/raven-js/dist/raven'
     },
     shim: {
         d3: {
@@ -23,39 +24,54 @@ require.config({
 });
 
 require([
-    'domReady'
+    'domReady',
+    'modules/monitor'
 ], function (
-    domReady
+    domReady,
+    monitor
 ) {
     'use strict';
 
     domReady(function () {
 
         var contentType = document.body.getAttribute('data-content-type');
+        monitor.init();
 
         if (contentType === 'article') {
             require(['article'], function(Article){
-                Article.init();
+                monitor.setContext('article', function(){
+                    Article.init();
+                });
             });
         } else if (contentType === 'liveblog') {
             require(['liveblog'], function(Liveblog){
-                Liveblog.init();
+                monitor.setContext('liveblog', function(){
+                    Liveblog.init();
+                });
             });
         } else if (contentType === 'audio') {
             require(['audio'], function(Audio){
-                Audio.init();
+                monitor.setContext('audio', function(){
+                    Audio.init();
+                });
             });
         } else if (contentType === 'gallery') {
             require(['gallery'], function(Gallery){
-                Gallery.init();
+                monitor.setContext('gallery', function(){
+                    Gallery.init();
+                });
             });
         } else if (contentType === 'football') {
             require(['football'], function(Football){
-                Football.init();
+                monitor.setContext('football', function(){
+                    Football.init();
+                });
             });
         } else {
             require(['bootstraps/common'], function(Common){
-                Common.init();
+                monitor.setContext('common', function(){
+                    Common.init();
+                });
             });
         }
     });

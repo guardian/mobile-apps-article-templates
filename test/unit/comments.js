@@ -29,11 +29,11 @@ define([
 		}
 
 		afterEach(function(){
-			//sandbox.empty();
+			sandbox.empty();
 		});
 
 		after(function(){
-			// sandbox.remove();
+			sandbox.remove();
 		});
 
 	});
