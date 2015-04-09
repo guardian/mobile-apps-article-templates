@@ -64,5 +64,8 @@ push = +refs/heads/master:refs/heads/gh-pages
 push = +refs/heads/master:refs/heads/master
 ```
 
-## APKs 
-When everything is properly configured type `grunt build` to create in the root folder of the project the debuggable APK.
+## Error monitoring system
+This project uses Sentry to monitor errors and failures. Sentry can be configured by adding the appropriate dsn in the config.js file (have a look at config.sample.js for reference). Sentry is disabled by default, in order not to be used during debugging sessions. To enable it use the --sentry flag while building. (eg: `grunt build --sentry`).
+
+## APKs and IPAs
+When everything is properly configured type `grunt installer` to create in the root folder of the project the debuggable APK and IPA.

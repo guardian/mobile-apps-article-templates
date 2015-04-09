@@ -20,9 +20,53 @@ module.exports = function(grunt) {
             ios: {
                 sign: '',
                 provisioning: ''
+            },
+            sentry: {
+                dsn: null
             }
         };
     }
+
+    grunt.registerTask('initRequireJS', function() {
+        var done = this.async();
+        var sys = require('sys');
+        var exec = require('child_process').exec;
+        exec("git rev-parse HEAD", function(err, out){
+            grunt.config(['requirejs'], {
+                dev: {
+                    options: {
+                        baseUrl: "ArticleTemplates/assets/js",
+                        mainConfigFile: 'ArticleTemplates/assets/js/app.js',
+                        dir: "ArticleTemplates/assets/build",
+                        optimize: 'uglify2',
+                        uglify2: {
+                            compress: {
+                                global_defs: {
+                                    GRUNT_LAST_GIT_COMMIT: out.replace(/\n/,''),
+                                    GRUNT_SENTRY_DSN: grunt.option('sentry') ? config.sentry.dsn : null
+                                }
+                            }
+                        },                
+                        generateSourceMaps: true,
+                        preserveLicenseComments: false,
+                        useSourceUrl: false,
+                        removeCombined: true,
+                        modules: [
+                            { name: 'audio' },
+                            { name: 'football' },
+                            { name: 'gallery' },
+                            { name: 'liveblog' },
+                            { name: 'article' },
+                            { name: 'bootstraps/common'},
+                            { name: 'app' },
+                            { name: 'smoothScroll' }
+                        ]
+                    }
+                }
+            });
+            done();    
+        });
+    });
 
     grunt.initConfig({
 
@@ -89,31 +133,6 @@ module.exports = function(grunt) {
             dev: ['Gruntfile.js', 'ArticleTemplates/assets/js/{bootstraps,modules}/*.js', 'ArticleTemplates/assets/js/*.js']
         },
 
-        requirejs: {
-            dev: {
-                options: {
-                    baseUrl: "ArticleTemplates/assets/js",
-                    mainConfigFile: 'ArticleTemplates/assets/js/app.js',
-                    dir: "ArticleTemplates/assets/build",
-                    optimize: 'uglify2',                 
-                    generateSourceMaps: true,
-                    preserveLicenseComments: false,
-                    useSourceUrl: false,
-                    removeCombined: true,
-                    modules: [
-                        { name: 'audio' },
-                        { name: 'football' },
-                        { name: 'gallery' },
-                        { name: 'liveblog' },
-                        { name: 'article' },
-                        { name: 'bootstraps/common'},
-                        { name: 'app' },
-                        { name: 'smoothScroll' }
-                    ]
-                }
-            }
-        },
-
         // Tests
 
         mocha: {
@@ -150,7 +169,7 @@ module.exports = function(grunt) {
         watch: {
             js: {
                 files: ['ArticleTemplates/assets/js/**/*.js'],
-                tasks: ['jshint', 'requirejs','rsync']
+                tasks: ['jshint', 'initRequireJS', 'requirejs','rsync']
             },
             tests: {
                 files: ['ArticleTemplates/assets/js/**/*.js', 'test/unit/**/*.{js,html}'],
@@ -192,7 +211,7 @@ module.exports = function(grunt) {
         shell: {
             android: {
                 command: function(){
-                    return 'cd ' + config.base.android + '../../../../  && export BUILD_NUMBER=' + grunt.option('card') + ' && ./gradlew zipTemplates && ./gradlew assembleDebug && cp android-news-app/build/outputs/apk/android-news-app-debug.apk ' + config.base.html;
+                    return 'cd ' + config.base.android + '../../../../../../  && export BUILD_NUMBER=' + grunt.option('card') + ' && ./gradlew zipTemplates && ./gradlew assembleDebug && cp android-news-app/build/outputs/apk/android-news-app-debug.apk ' + config.base.html;
                 }
             },
             ios: {
@@ -232,7 +251,7 @@ module.exports = function(grunt) {
     grunt.task.run('notify_hooks');
 
     grunt.registerTask('develop', ['build', 'express', 'watch']);
-    grunt.registerTask('build', ['jshint', 'requirejs', 'scsslint','sass:dev']);
+    grunt.registerTask('build', ['initRequireJS', 'jshint', 'requirejs', 'scsslint','sass:dev']);
     grunt.registerTask('apk', ['build', 'rsync', 'shell:android']);
     grunt.registerTask('ipa', ['build', 'rsync', 'shell:ios']);
     grunt.registerTask('installer', ['build', 'rsync', 'shell:ios', 'shell:android']);
