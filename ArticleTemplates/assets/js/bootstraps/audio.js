@@ -15,7 +15,7 @@ define([
     var modules = {
         getColor: function(){
             var isAdv = $("body").hasClass("is_advertising");
-            var isAudio = $(".article").hasClass("article--audio");
+            var isAudio = !$("body").hasClass("tone--podcast") && $(".article").hasClass("article--audio");
             return isAdv ? "rgba(255, 255, 255, 0.10)" : (isAudio ? "rgba(255, 187, 0, 0.05)" : "rgba(167, 216, 242, 0.10)");
         },
 
