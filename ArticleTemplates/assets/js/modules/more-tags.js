@@ -20,9 +20,9 @@ define([
                 $('#more-tags-contaier ~ .inline-list__item').addClass('hide-tags');
             }
         },
-        show: function(){
-            $('#more-tags-contaier ~ .hide-tags').removeClass('hide-tags');
+        show: function(){            
             $(moreButton).hide();
+            setTimeout(function(){ $('#more-tags-contaier ~ .hide-tags').removeClass('hide-tags'); }, 200);
         }
     };
 
