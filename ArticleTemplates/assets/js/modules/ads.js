@@ -49,7 +49,7 @@ define([
 
 
                 } else if (config.adsConfig == "mobile") {
-                    console.log('qui');
+                    
                     var mobileMpuHtml = "<div class='advert-slot advert-slot--mpu advert-slot--mpu--mobile'>" +
                                             "<div class='advert-slot__label'>" +
                                                 "Advertisement" +
@@ -65,7 +65,7 @@ define([
 
                         bannerHtml =  "<div class='advert-slot__wrapper__content' id=" + bannerHtmlId + "></div>";
 
-                    $(".article__body > div > p:nth-of-type(6)").after(mobileMpuHtml);
+                    $(".article__body > div > p:nth-of-type(3) ~ p + p").first().before(mobileMpuHtml);
                     $(".advert-slot__wrapper").prepend(bannerHtml);
 
                 }
@@ -163,7 +163,7 @@ define([
             if (!this.initialised) {
                 this.initialised = true;
 
-                if (config.adsEnabled == "true") {
+                if (config.adsEnabled == "true" || (config.adsEnabled.match && config.adsEnabled.match(/mpu/))) {
                     modules.insertAdPlaceholders(config);
                     window.getMpuPosJson = modules.getMpuPosJson;
                     window.getBannerPosCallback = modules.getBannerPosCallback;

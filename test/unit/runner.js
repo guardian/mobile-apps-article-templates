@@ -30,7 +30,7 @@ require.config({
     }
 });
 
-require(['twitter', /*'test_common',*/ 'test_ads'/*,'test_twitter', 'test_colors', 'test_comments', 'test_monitor'*/], function(){
+require(['twitter', 'test_common', 'test_ads','test_twitter', 'test_colors', 'test_comments', 'test_monitor'], function(){
   twttr.ready(function(){
     mocha.run();
   });
