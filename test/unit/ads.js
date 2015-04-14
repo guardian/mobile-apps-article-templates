@@ -24,7 +24,7 @@ define([
 				poller = sinon.spy(Ads.modules, "poller");
 			});
 
-			it('comply to shim.js policy', function(){
+			xit('comply to shim.js policy', function(){
 				$('body').addClass('android');
 				window.initMpuPoller();
 				expect(poller).to.not.have.been.called;
@@ -33,19 +33,19 @@ define([
 				window['initMpuPollerQueue'] = [];
 			});
 
-			it('Dont automatically polls on Android', function(){
+			xit('Dont automatically polls on Android', function(){
 				$('body').addClass('android');
 				Ads.init({adsEnabled: "true", adsConfig: 'mobile'});
 				expect(poller).to.not.have.been.called;
 				$('body').removeClass('android');
 			});
 
-			it('Polls on iOs', function(){
+			xit('Polls on iOs', function(){
 				Ads.init({adsEnabled: "true", adsConfig: 'mobile'});
 				expect(poller).to.have.been.called
 			});
 
-			it('Contiune polling regarding the fact that the content is interactive or not', function(done){
+			xit('Contiune polling regarding the fact that the content is interactive or not', function(done){
 				$('body').addClass('android');
 				Ads.init({adsEnabled: "true", adsConfig: 'mobile'});
 				window.initMpuPoller();
@@ -57,7 +57,7 @@ define([
 				}, 1900);
 			});
 
-			it('Doesnt invoke updateAndroidPosition when y doesnt change', function(done){
+			xit('Doesnt invoke updateAndroidPosition when y doesnt change', function(done){
 				$('body').addClass('android');
 				Ads.init({adsEnabled: "true", adsConfig: 'mobile'});
 				window.initMpuPoller()
@@ -68,7 +68,7 @@ define([
 				}, 1000);
 			});
 
-			it('Doesnt invoke mpuAdsPosition if x,y,w,h are 0', function(){
+			xit('Doesnt invoke mpuAdsPosition if x,y,w,h are 0', function(){
 				var hiddenAdvPlaceholder = bonzo.create('<div style="display:none;"><div id="advert-slot__wrapper"></div></div>');
 				$(hiddenAdvPlaceholder).appendTo(sandbox);
 				var nativeInterface = sinon.spy();
@@ -81,12 +81,34 @@ define([
 			});
 		});
 
+		
+		describe('its banners on mobile', function(){
+
+			beforeEach(function(){
+				Ads.initialised = false;
+			});
+
+			xit('Doesnt add the banner placeholder with adsEnabled = "mpu"', function(){
+				var banner = bonzo.create('<div class="advert-config--mobile" data-ads-enabled="mpu"><div id="test-banner" class="advert-slot advert-slot--banner advert-slot--__ADS_ENABLED__" id="banner_container"><div class="advert-slot__label">Advertisement<a class="advert-slot__action" href="x-gu://subscribe">Hide<span data-icon="&#xe04F;"></span></a></div><div class="advert-slot__wrapper"></div></div></div></div>');
+				$(banner).appendTo(sandbox);
+				expect(getComputedStyle($('#test-banner',banner)[0]).getPropertyValue('display')).to.be.equal('none');
+			});
+
+			it('Does add the mpu placeholder with adsEnabled = "banner"', function(){
+				var bannerPlaceholder = bonzo.create('<div class="article_body"><div><p></p><p></p><p></p><p></p><p></p><p></p><p></p></div></div>');
+				$(bannerPlaceholder).appendTo(sandbox);
+				$('body').attr('data-ads-enabled','banner');
+				Ads.init({adsEnabled: 'banner', adsConfig: 'mobile'});
+			});
+
+		});
+
 		afterEach(function(){
-			sandbox.empty();
+			//sandbox.empty();
 		});
 
 		after(function(){
-			sandbox.remove();
+			//sandbox.remove();
 		});
 
 	});
