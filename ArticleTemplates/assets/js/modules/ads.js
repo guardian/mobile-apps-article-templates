@@ -49,6 +49,7 @@ define([
 
 
                 } else if (config.adsConfig == "mobile") {
+                    console.log('qui');
                     var mobileMpuHtml = "<div class='advert-slot advert-slot--mpu advert-slot--mpu--mobile'>" +
                                             "<div class='advert-slot__label'>" +
                                                 "Advertisement" +
