@@ -456,6 +456,23 @@ Display loading animation to provide feedback to the user.
 
 /*doc
 ---
+title: Selectable
+name: selectable
+category: Modules
+---
+Makes a block of text selectable. Useful for portions of text a user may wish to copy and paste.
+
+```html_example
+<div class="selectable">Lib Dem leader aiming to convince supporters that coalition remains worthwhile, as his ratings plummet.</div>
+```
+*/
+.ios .selectable,
+.ios .selectable * {
+  -webkit-user-select: text;
+  -webkit-touch-callout: default; }
+
+/*doc
+---
 title: Touchpoint
 name: touchpoint
 category: Modules
@@ -812,7 +829,6 @@ Display an article's meta information.
 */
 .meta {
   margin: -1px 0;
-  /*border-top: 1px dotted color(shade-4);*/
   border-bottom: 1px dotted #dcdad5;
   width: 100%;
   display: table; }
@@ -2316,7 +2332,7 @@ Display a selection of images that form a gallery.
       border: 1px solid #adadad; }
 
 .tone--media .section__container {
-  border-bottom: 1px rgba(234, 234, 234, 0.3) dotted;
+  border-bottom: 1px #767676 dotted;
   color: #eaeaea; }
   .tone--media .section__container .content__series-label,
   .tone--media .section__container .content__series-label a {
@@ -2341,6 +2357,11 @@ Display a selection of images that form a gallery.
   background-color: #fb0; }
 .tone--media .touchpoint--primary:active .touchpoint__button {
   background-color: #ffd35c; }
+.tone--media .article--audio .meta {
+  border-top-width: 1px;
+  border-top-style: dotted; }
+.tone--media .article--audio .article__header {
+  background-image: -webkit-canvas(circles); }
 .tone--media .article--audio,
 .tone--media .article--visual {
   border-top-color: #fb0;
