@@ -343,14 +343,14 @@ Banner with Hide -- only works with `body[data-ads-enable-hiding="true"]`
 .advert-config--mobile {
   /*  Any res above 375w e.g. iPhone 6, 6 plus */
   /*  iPhone 6 */ }
-  .advert-config--mobile .advert-slot--banner,
+  .advert-config--mobile[data-ads-enabled='true'] .advert-slot--banner, .advert-config--mobile[data-ads-enabled*='banner'] .advert-slot--banner,
   .advert-config--mobile .advert-slot--mpu--mobile {
     margin: 0 auto;
     display: block; }
-    .advert-config--mobile .advert-slot--banner .advert-slot__label,
+    .advert-config--mobile[data-ads-enabled='true'] .advert-slot--banner .advert-slot__label, .advert-config--mobile[data-ads-enabled*='banner'] .advert-slot--banner .advert-slot__label,
     .advert-config--mobile .advert-slot--mpu--mobile .advert-slot__label {
       margin: 0 auto; }
-    .advert-config--mobile .advert-slot--banner .advert-slot__wrapper,
+    .advert-config--mobile[data-ads-enabled='true'] .advert-slot--banner .advert-slot__wrapper, .advert-config--mobile[data-ads-enabled*='banner'] .advert-slot--banner .advert-slot__wrapper,
     .advert-config--mobile .advert-slot--mpu--mobile .advert-slot__wrapper {
       margin: 0 auto; }
   @media (min-width: 375px) and (max-width: 480px) {
