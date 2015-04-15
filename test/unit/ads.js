@@ -130,19 +130,33 @@ define([
 				expect(getComputedStyle($('.advert-slot',banner)[0]).getPropertyValue('display')).to.be.equal('block');
 			});		
 
-			it('obeys rule #1 mpu after the 4th paragraph', function(){
+			it('obeys rule #1 by default mpu after the 6th paragraph', function(){
 				var bannerPlaceholder = bonzo.create('<div class="advert-config--mobile" data-ads-enabled="mpu"><div class="article__body"><div><p></p><p></p><p></p><p></p><p></p><p></p><p></p></div></div></div></div>');
 				$(bannerPlaceholder).appendTo(sandbox);
 				Ads.init({adsEnabled: 'mpu', adsConfig: 'mobile'});
-				expect($(".article__body > div > *:nth-child(5)").hasClass('advert-slot')).to.be.true; 
+				expect($(".article__body > div > *:nth-child(7)").hasClass('advert-slot')).to.be.true; 
 			});
 
 			it('obeys rule #2 mpu should sit between two text paragraphs', function(){
-				var bannerPlaceholder = bonzo.create('<div class="advert-config--mobile" data-ads-enabled="banner"><div class="article__body"><div><p></p><p></p><p></p><p></p><div></div><p></p><p></p><p></p></div></div></div></div>');
+				var bannerPlaceholder = bonzo.create('<div class="advert-config--mobile" data-ads-enabled="banner"><div class="article__body"><div><p></p><p></p><p></p><p></p><p></p><p></p><div></div><p></p><p></p><p></p></div></div></div></div>');
 				$(bannerPlaceholder).appendTo(sandbox);
 				Ads.init({adsEnabled: 'mpu', adsConfig: 'mobile'});
-				expect($(".article__body > div > *:nth-child(7)").hasClass('advert-slot')).to.be.true;			
+				expect($(".article__body > div > *:nth-child(9)").hasClass('advert-slot')).to.be.true;			
 			});
+
+			it('it allows to configure the number of paragraphs before the mpu', function(){
+				var bannerPlaceholder = bonzo.create('<div class="advert-config--mobile" data-ads-enabled="mpu"><div class="article__body"><div><p></p><p></p><p></p><p></p><p></p><p></p><p></p></div></div></div></div>');
+				$(bannerPlaceholder).appendTo(sandbox);
+				Ads.init({adsEnabled: 'mpu', adsConfig: 'mobile', mpuAfterParagraphs: '4'});
+				expect($(".article__body > div > *:nth-child(5)").hasClass('advert-slot')).to.be.true; 				
+			});
+
+			it('it enforce the default if no value has been provided (__MPU_AFTER_PARAGRAPHS__)', function(){
+				var bannerPlaceholder = bonzo.create('<div class="advert-config--mobile" data-ads-enabled="mpu"><div class="article__body"><div><p></p><p></p><p></p><p></p><p></p><p></p><p></p></div></div></div></div>');
+				$(bannerPlaceholder).appendTo(sandbox);
+				Ads.init({adsEnabled: 'mpu', adsConfig: 'mobile', mpuAfterParagraphs: '__MPU_AFTER_PARAGRAPHS__'});
+				expect($(".article__body > div > *:nth-child(7)").hasClass('advert-slot')).to.be.true; 				
+			});			
 
 		});
 

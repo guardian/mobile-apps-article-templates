@@ -54,7 +54,8 @@ define([
             // Setup ad tags, insert containers
             Ads.init({
                 adsEnabled: document.body.getAttribute('data-ads-enabled'),
-                adsConfig: document.body.getAttribute('data-ads-config')
+                adsConfig: document.body.getAttribute('data-ads-config'),
+                mpuAfterParagraphs: document.body.getAttribute('data-mpu-after-paragraphs')
             });
         },
 

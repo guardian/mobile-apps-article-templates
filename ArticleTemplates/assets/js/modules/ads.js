@@ -65,7 +65,9 @@ define([
 
                         bannerHtml =  "<div class='advert-slot__wrapper__content' id=" + bannerHtmlId + "></div>";
 
-                    $(".article__body > div > p:nth-of-type(3) ~ p + p").first().before(mobileMpuHtml);
+
+                    var nrParagraph = ( parseInt(config.mpuAfterParagraphs, 10) || 6 ) - 1;
+                    $(".article__body > div > p:nth-of-type(" + nrParagraph + ") ~ p + p").first().before(mobileMpuHtml);
                     $(".advert-slot__wrapper").prepend(bannerHtml);
 
                 }
