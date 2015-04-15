@@ -22,7 +22,7 @@ Display a link to view more.
 */
 
 .more {
-    padding: base-px(1, 0, 2, 0);
+    padding: base-px(0, 0, 2, 0);
 
     .more__label{
         display: inline-block;
@@ -30,8 +30,8 @@ Display a link to view more.
         color: color(shade-7);
         font-family: $agate-sans;
         font-weight: bold;
-        @include body(1.222);
-        padding: base-px(0.5, 2.5, 0.5, 1.166);
+        @include body(0.875);
+        padding: base-px(0.5, 1.5, 0.5, 1.166);
         border-radius: 40px;
         
         &:before{
@@ -52,6 +52,7 @@ Display a link to view more.
 
 // View more comments
 .more--comments {
+    padding-top: base-px(1);
     border-top: 1px dotted color(shade-4);
 
     @include mq($to: col2) {
