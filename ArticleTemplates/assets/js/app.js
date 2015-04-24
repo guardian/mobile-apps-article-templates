@@ -25,18 +25,34 @@ require.config({
 
 require([
     'domReady',
-    'modules/monitor'
+    'modules/monitor',
+    'modules/ads'
 ], function (
     domReady,
-    monitor
+    monitor,
+    Ads
 ) {
     'use strict';
 
     domReady(function () {
 
         var contentType = document.body.getAttribute('data-content-type');
+
+        // monitoring
         monitor.init();
 
+        // ads positioning
+        Ads.init({
+            adsEnabled: document.body.getAttribute('data-ads-enabled'),
+            adsConfig: document.body.getAttribute('data-ads-config'),
+            mpuAfterParagraphs: document.body.getAttribute('data-mpu-after-paragraphs')
+        });
+
+        if (!document.body.classList.contains('no-ready')) {
+            window.location.href = 'x-gu://ready';
+        }          
+
+        // other article-specific functions
         if (contentType === 'article') {
             require(['article'], function(Article){
                 monitor.setContext('article', function(){
@@ -85,6 +101,7 @@ require([
         document.getElementsByTagName("head")[0].appendChild(link);
     }    
 
+    // async styles 
     var scriptTag = document.getElementById('gu');
     var skipStyle = scriptTag.getAttribute('data-skip-style');
 
