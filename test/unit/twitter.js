@@ -38,7 +38,7 @@ define([
 			demoTweet.appendTo(sandbox);
 			twttr.events.bind('rendered', function(evt){
 				Twitter.modules.fixVineAutoplay(evt);
-				var media = $('.cards-base', evt.target.contentWindow.document);
+				var media = $('.MediaCard', evt.target.contentWindow.document);
 				expect(media.length).to.be.equal(1);
 				done();
 			});
