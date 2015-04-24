@@ -81,7 +81,7 @@ define([
 
     function fixVineAutoplay(evt){
         if(!isAndroid && $('iframe[src^="https://vine.co"]', evt.target.contentWindow.document)[0]){
-            $('.cards-base', evt.target.contentWindow.document).remove();
+            $('.MediaCard', evt.target.contentWindow.document).remove();
             $(evt.target).removeAttr('height');
         }
     }
