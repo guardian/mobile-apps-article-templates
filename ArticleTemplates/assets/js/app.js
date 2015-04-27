@@ -49,7 +49,7 @@ require([
         });
 
         if (!document.body.classList.contains('no-ready')) {
-            window.location.href = 'x-gu://ready';
+            window.location.href = 'x-gu://ads-ready';
         }          
 
         // other article-specific functions

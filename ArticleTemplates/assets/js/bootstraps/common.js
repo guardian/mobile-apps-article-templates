@@ -322,6 +322,10 @@ define([
             modules.setGlobalObject(window);
             modules.fixSeries();
 
+            if (!document.body.classList.contains('no-ready')) {
+                window.location.href = 'x-gu://ready';
+            } 
+
         }
     };
 
