@@ -33,3 +33,9 @@ figure {
         padding: base-px(.5, 1, 2, 1);
     }
 }
+
+@include mq($to: col2) {
+    figure.figure-inline + p {
+        clear: both;
+    }
+}
