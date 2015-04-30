@@ -139,6 +139,7 @@ define([
                     window.location.href = '#comments';
                 };
                 window.applyNativeFunctionCall('articleCommentsInserter');
+                window.applyNativeFunctionCall('commentsInserter');
                 window.applyNativeFunctionCall('commentsFailed');
                 window.applyNativeFunctionCall('commentsClosed');
                 window.applyNativeFunctionCall('commentsOpen');

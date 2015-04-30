@@ -5,7 +5,7 @@ define([
     'fence',
     'fastClick',
     'smoothScroll',
-    'modules/ads',
+    //'modules/ads',
     'modules/comments',
     'modules/cards',
     'modules/more-tags',
@@ -16,7 +16,7 @@ define([
     fence,
     FastClick,
     smoothScroll,
-    Ads,
+    //Ads,
     Comments,
     Cards,
     MoreTags,
@@ -50,14 +50,14 @@ define([
             }
         },
 
-        loadAdverts: function () {
+        /*loadAdverts: function () {
             // Setup ad tags, insert containers
             Ads.init({
                 adsEnabled: document.body.getAttribute('data-ads-enabled'),
                 adsConfig: document.body.getAttribute('data-ads-config'),
                 mpuAfterParagraphs: document.body.getAttribute('data-mpu-after-paragraphs')
             });
-        },
+        },*/
 
         loadComments: function () {
             Comments.init();
@@ -308,7 +308,7 @@ define([
             modules.figcaptionToggle();
             modules.imageSizer();
             modules.insertTags();
-            modules.loadAdverts();
+            //modules.loadAdverts();
             modules.loadComments();
             modules.loadCards();
             modules.loadEmbeds();
@@ -322,9 +322,10 @@ define([
             modules.setGlobalObject(window);
             modules.fixSeries();
 
-            if (!$("body").hasClass("no-ready")) {
+            if (!document.body.classList.contains('no-ready')) {
                 window.location.href = 'x-gu://ready';
-            }
+            } 
+
         }
     };
 
