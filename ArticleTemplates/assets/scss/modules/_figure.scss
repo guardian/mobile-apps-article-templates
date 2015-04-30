@@ -34,7 +34,8 @@ figure {
     }
 }
 
-figure.figure-inline + p {
-    clear: both;
+@include mq($to: col2) {
+    figure.figure-inline + p {
+        clear: both;
+    }
 }
-
