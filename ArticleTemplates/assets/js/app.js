@@ -46,11 +46,7 @@ require([
             adsEnabled: document.body.getAttribute('data-ads-enabled'),
             adsConfig: document.body.getAttribute('data-ads-config'),
             mpuAfterParagraphs: document.body.getAttribute('data-mpu-after-paragraphs')
-        });
-
-        if (!document.body.classList.contains('no-ready')) {
-            window.location.href = 'x-gu://ads-ready';
-        }          
+        });        
 
         // other article-specific functions
         if (contentType === 'article') {

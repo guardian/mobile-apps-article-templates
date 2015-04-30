@@ -182,6 +182,28 @@ define([
 
 		});
 
+		describe('its fast ads-ready callback', function(){
+
+			beforeEach(function(){
+				Ads.initialised = false;
+			});
+
+			it('implements ads-ready when required', function(){
+				$('body').attr('data-use-ads-ready', 'true');
+				var _window = {location: {}};
+				Ads.modules.fireAdsReady(_window);
+				expect(_window.location.href).to.be.equal('x-gu://ads-ready');
+			});
+
+			it('implements ads-ready when required', function(){
+				$('body').attr('data-use-ads-ready', '__ADS_FAST_CALLBACK__');
+				var _window = {location: {}};
+				Ads.modules.fireAdsReady(_window);
+				expect(_window.location.href).to.be.not.defined;
+			});
+
+		});
+
 		afterEach(function(){
 			sandbox.empty();
 		});
