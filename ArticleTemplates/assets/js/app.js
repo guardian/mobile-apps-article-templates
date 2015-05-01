@@ -49,7 +49,7 @@ require([
         });        
 
         // other article-specific functions
-        if (contentType === 'article') {
+        if (contentType == 'article') {
             require(['article'], function(Article){
                 monitor.setContext('article', function(){
                     Article.init();
