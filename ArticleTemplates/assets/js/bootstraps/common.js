@@ -282,6 +282,10 @@ define([
                     break;
                 }
             }
+        },
+
+        fixWitness: function (){
+            Witness.init();
         }
     },
 
