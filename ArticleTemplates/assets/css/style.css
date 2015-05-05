@@ -5154,7 +5154,15 @@ Default styling no JavaScript enhancement:
 ```
 
 */
-.element-rich-link {
+.element-membership span, .element-rich-link a:before {
+  display: block;
+  font-size: 1.5rem;
+  font-family: "Guardian Egyptian Web", Georgia, serif;
+  color: #767676;
+  padding: 3px 0;
+  font-weight: 500; }
+
+.element-rich-link, .element-membership {
   border-top: 1px dotted #bdbdbd;
   border-bottom: 1px dotted #bdbdbd;
   margin-bottom: 8px;
@@ -5163,18 +5171,16 @@ Default styling no JavaScript enhancement:
   width: 13.75rem;
   margin: 4px 20px 6px 0; }
   @media all and (min-width: 30em) {
-    .element-rich-link {
+    .element-rich-link, .element-membership {
       width: 24.75rem;
       margin: 4px 20px 6px 0; } }
   @media all and (min-width: 54.375em) {
-    .element-rich-link {
+    .element-rich-link, .element-membership {
       width: 30.75rem;
       margin: 4px 20px 6px 0; } }
-  .element-rich-link span {
-    display: none; }
-  .element-rich-link p {
+  .element-rich-link p, .element-membership p {
     margin: 12px 0px; }
-  .element-rich-link a {
+  .element-rich-link a, .element-membership a {
     font-size: 100%;
     font-family: "Guardian Egyptian Web", Georgia, serif;
     font-weight: 600;
@@ -5183,16 +5189,13 @@ Default styling no JavaScript enhancement:
     color: #333 !important;
     border: 0;
     background-image: none !important; }
-    .element-rich-link a:hover {
+    .element-rich-link a:hover, .element-membership a:hover {
       text-decoration: underline !important; }
-    .element-rich-link a:before {
-      content: 'More on this topic';
-      display: block;
-      font-size: 1.5rem;
-      font-family: "Guardian Egyptian Web", Georgia, serif;
-      color: #767676;
-      padding: 3px 0;
-      font-weight: 500; }
+
+.element-rich-link span {
+  display: none; }
+.element-rich-link a:before {
+  content: 'More on this topic'; }
 
 /*doc
 ---
