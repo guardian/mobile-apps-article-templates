@@ -26,8 +26,11 @@ app.use('/', proxy('http://mobile-apps.guardianapis.com', {
 							sponsorUri: 'http://www.100resilientcities.org',
 							aboutUri: 'x-gu://item/mobile-apps.guardianapis.com/items/cities/2014/jan/27/cities-about-this-site',
 							format: 'Guardian Cities is supported by: #{sponsor}',
-							isAdvertising: true
+							isAdvertising: false
 						};
+						if(card.item && card.item.metadata){
+							card.item.metadata.witnessAssignmentId = "5536849ce4b0574bd49be6d1";
+						}
 					});
 				}
 

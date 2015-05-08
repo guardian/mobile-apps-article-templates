@@ -36,7 +36,6 @@ define([
                 var figcaption = $('figcaption', el);
                 if (figcaption.length === 0 || figcaption.text() === '') {
                     figcaption.hide();
-                    // $(el).css('border-bottom', 'none');
                 }
             });
         },
@@ -101,7 +100,6 @@ define([
             // Resize figures to fit images
             window.articleImageSizer = function () {
                 $('figure img').each(function (el) {
-                    // var el = el;
                     var parent;
                     var imageWidth = el.getAttribute('width') || $(el).dim().width,
                         imageClass = imageWidth < 301 ? 'figure-inline' : 'figure-wide';
@@ -282,10 +280,6 @@ define([
                     break;
                 }
             }
-        },
-
-        fixWitness: function (){
-            Witness.init();
         }
     },
 
@@ -303,7 +297,6 @@ define([
             modules.figcaptionToggle();
             modules.imageSizer();
             modules.insertTags();
-            //modules.loadAdverts();
             modules.loadComments();
             modules.loadCards();
             modules.loadEmbeds();
