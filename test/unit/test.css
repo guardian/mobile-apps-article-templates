@@ -3600,6 +3600,10 @@
     right: 0;
     bottom: 0;
     left: 0; }
+  #sandbox .article--audio .content__labels:first-child::before {
+    content: '\e047';
+    font-family: "Guardian Icons", Georgia, serif;
+    padding-right: 6px; }
   @media all and (max-width: 40.615em) {
     #sandbox .article--audio .byline--tablet {
       display: none; } }
@@ -3639,6 +3643,15 @@
         padding-right: 24.21053%; } }
   #sandbox .article--visual .tags {
     border-top-color: #767676; }
+  body[data-content-type="video"] #sandbox .article--visual .content__labels:first-child::before, body[data-content-type="gallery"] #sandbox .article--visual .content__labels:first-child::before {
+    font-family: "Guardian Icons", Georgia, serif;
+    padding-right: 6px;
+    position: relative;
+    top: 1px; }
+  body[data-content-type="gallery"] #sandbox .article--visual .content__labels:first-child::before {
+    content: '\e044'; }
+  body[data-content-type="video"] #sandbox .article--visual .content__labels:first-child::before {
+    content: '\e043'; }
   #sandbox .front {
     border-top: 4px solid #4bc6df; }
     .android #sandbox .front {
@@ -4081,7 +4094,16 @@
     border-top-color: #a7d8f2; }
   #sandbox .tone--podcast .article__header {
     background-color: #484848;
-    background-image: -webkit-canvas(circles); }
+    background-image: -webkit-canvas(circles);
+    /*        .card__title--audio {
+                &::before {
+                    content: '\e047';
+                    color: color(one-podcast-headline);
+                    font-family: $icon;
+                    margin-right: base-px(.25);
+                    position: absolute;              
+                }
+            }*/ }
     #sandbox .tone--podcast .article__header .section {
       display: block; }
     #sandbox .tone--podcast .article__header .headline {
@@ -4090,13 +4112,7 @@
       #sandbox .tone--podcast .article__header .headline .headline__accent {
         color: #333;
         display: block; }
-    #sandbox .tone--podcast .article__header .card__title--audio::before {
-      content: '\e047';
-      font-family: "Guardian Icons", Georgia, serif;
-      margin-right: 3px;
-      position: absolute; }
     #sandbox .tone--podcast .article__header .card__titletext {
-      text-indent: 60px;
       padding-bottom: 4px;
       text-overflow: ellipsis;
       overflow-y: hidden;
@@ -4104,9 +4120,6 @@
       display: -webkit-box;
       -webkit-line-clamp: 4;
       -webkit-box-orient: vertical; }
-      @media all and (max-width: 28.115em) {
-        #sandbox .tone--podcast .article__header .card__titletext {
-          text-indent: 40px; } }
     #sandbox .tone--podcast .article__header .meta__byline .byline {
       color: #fff; }
     #sandbox .tone--podcast .article__header .meta__byline .byline__author a {
