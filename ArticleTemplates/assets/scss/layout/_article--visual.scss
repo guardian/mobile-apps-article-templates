@@ -43,4 +43,21 @@
     .tags {
         border-top-color: color(shade-2);
     }
+
+    body[data-content-type="video"] & .content__labels:first-child::before,
+    body[data-content-type="gallery"] & .content__labels:first-child::before {
+        font-family: $icon;
+        padding-right: base-px(0.5);
+        position: relative;
+        top: 1px;
+    }
+
+    body[data-content-type="gallery"] & .content__labels:first-child::before {
+        content: '\e044';
+    }    
+    
+    body[data-content-type="video"] & .content__labels:first-child::before {
+        content: '\e043';
+    }
+
 }
