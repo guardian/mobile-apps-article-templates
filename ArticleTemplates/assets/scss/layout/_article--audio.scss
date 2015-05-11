@@ -20,6 +20,12 @@
         }
     }
 
+    .content__labels:first-child::before {
+        content: '\e047';
+        font-family: $icon;
+        padding-right: base-px(0.5);
+    }
+
     .byline{
         &--tablet{
             @include mq($to: col2) {
