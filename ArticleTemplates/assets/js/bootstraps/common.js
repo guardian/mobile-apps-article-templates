@@ -8,7 +8,10 @@ define([
     'modules/comments',
     'modules/cards',
     'modules/more-tags',
+<<<<<<< HEAD
     'modules/sharing',
+=======
+>>>>>>> AND-3689: fixing some sonarQube feedbacks
     'modules/$'
 ], function (
     bean,

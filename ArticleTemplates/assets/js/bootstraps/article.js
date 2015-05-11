@@ -12,7 +12,7 @@ define([
 ) {
     'use strict';
 
-    ready = function () {
+    var ready = function () {
         if (!this.initialised) {
             this.initialised = true;
             twitter.init();

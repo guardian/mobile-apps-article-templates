@@ -1,14 +1,4 @@
-define([
-    'bean',
-    'bonzo',
-    'qwery',
-    'modules/$'
-], function (
-    bean,
-    bonzo,
-    qwery,
-    $
-) {
+define([], function () {
 
     var modules = {
         duplicate: function(){
