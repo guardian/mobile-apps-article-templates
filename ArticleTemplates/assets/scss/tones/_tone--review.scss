@@ -38,6 +38,15 @@
             .meta__comments a {
                 color: color(tone-review-accent);
             }
+
+            .meta__byline a,
+            .meta__comments a{
+                &:active,
+                &.alerts .alerts__state--follow [data-icon]::before {
+                    color: rgba(color(tone-review-accent), .8);
+                }
+            }
+
             .meta__pubdate{
                color: color(shade-7);
             }

@@ -43,8 +43,9 @@
             a {
                 color: #fff;
 
-                &:active {
-                    opacity: rgba(#fff, .8);
+                &:active,
+                &.alerts .alerts__state--follow [data-icon]::before {
+                    color: rgba(#fff, .8);
                 }
             }
 
