@@ -171,7 +171,7 @@ define([
             if (!this.initialised) {
                 this.initialised = true;
 
-                if (config.adsEnabled == "true" || (config.adsEnabled.match && config.adsEnabled.match(/mpu/))) {
+                if (config.adsEnabled == "true" || (config.adsEnabled !== null && config.adsEnabled.match && config.adsEnabled.match(/mpu/))) {
                     modules.insertAdPlaceholders(config);
                     window.getMpuPosJson = modules.getMpuPosJson;
                     window.getBannerPosCallback = modules.getBannerPosCallback;
