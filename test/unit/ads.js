@@ -156,7 +156,15 @@ define([
 				$(bannerPlaceholder).appendTo(sandbox);
 				Ads.init({adsEnabled: 'mpu', adsConfig: 'mobile', mpuAfterParagraphs: '__MPU_AFTER_PARAGRAPHS__'});
 				expect($(".article__body > div > *:nth-child(7)").hasClass('advert-slot')).to.be.true; 				
-			});			
+			});	
+
+			it('doesnt raise an exception if adsEnabled is null', function(){
+				var bannerPlaceholder = bonzo.create('<div class="advert-config--mobile" data-ads-enabled="mpu"><div class="article__body"><div><p></p><p></p><p></p><p></p><p></p><p></p><p></p></div></div></div></div>');
+				$(bannerPlaceholder).appendTo(sandbox);
+				expect(function(){
+					Ads.init({adsEnabled: null, adsConfig: 'mobile', mpuAfterParagraphs: '__MPU_AFTER_PARAGRAPHS__'});
+				}).to.not.throw(Error);
+			});
 
 		});
 
