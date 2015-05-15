@@ -28,32 +28,27 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
     display: flex;
     -webkit-align-items: center; 
     align-items: center;
-    height: 3em;
+    height: 2.7em;
 
     @include mq($to: col2) { 
-        font-size: 1rem;       
+        font-size: 1.2rem;       
     }
 
     @include mq($from: col2) { 
-        font-size: 1.2rem;
+        font-size: 1.6rem;
     }   
 
     .witness__button{
-        @include mq($to: col2) { 
-            -webkit-box-flex: 1;
-            box-flex: 1;
-            -webkit-flex: 1;
-            flex: 1; 
-        }
         background-color: color(witness-bg);
         color: color(witness);
         border-radius: 50px;
         margin-right: base-px(1);
-        font-weight: bold;
         overflow: hidden;
         display: block;
-        height: 3em;
+        height: 2.7em;
         padding-right: 1em;
+        font-family: $agate-sans;
+        white-space: nowrap;
         
         &:before{
             content: '\e050';
@@ -80,10 +75,13 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
     .witness__logo{
         vertical-align: middle;
         display: inline-block;
-        width: 10em;
+        width: 8em;
         height: 100%;
         position: relative;
         bottom: 1px;
+        .android & {
+            bottom: 2px;
+        }
         background: transparent url('../img/guardianwitness.png') no-repeat 0 50%;
         background-size: contain;
     }
@@ -94,6 +92,15 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
 
     .witness__sponsor{
         width: 16%;  
+        height: 2.7em;
+        @include mq($from: col2) { 
+            width: 10%;  
+            height: 2em;
+            margin-bottom: 0.7em;
+        }
+        @include mq($from: col3) { 
+            width: 5%;  
+        }
         svg{
             position: relative;
             max-height: 100%;
