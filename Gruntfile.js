@@ -8,7 +8,7 @@ module.exports = function(grunt) {
     }
     catch (e) {
         console.log('Config module not found, trying an empty config');
-        config = { 
+        config = {
             base: {
                 android: '',
                 ios: '',
@@ -46,7 +46,7 @@ module.exports = function(grunt) {
                                     GRUNT_SENTRY_DSN: grunt.option('sentry') ? config.sentry.dsn : null
                                 }
                             }
-                        },                
+                        },
                         generateSourceMaps: true,
                         preserveLicenseComments: false,
                         useSourceUrl: false,
@@ -64,7 +64,7 @@ module.exports = function(grunt) {
                     }
                 }
             });
-            done();    
+            done();
         });
     });
 
@@ -93,6 +93,7 @@ module.exports = function(grunt) {
         sass: {
             dev: {
                 files: {
+                    'ArticleTemplates/assets/css/fonts.css':  'ArticleTemplates/assets/scss/fonts.scss',
                     'ArticleTemplates/assets/css/style.css':  'ArticleTemplates/assets/scss/style.scss',
                     'ArticleTemplates/assets/css/style-async.css':  'ArticleTemplates/assets/scss/style-async.scss',
                     'ArticleTemplates/assets/css/style-sync.css':  'ArticleTemplates/assets/scss/style-sync.scss',
@@ -102,7 +103,7 @@ module.exports = function(grunt) {
             doc: {
                 files: {
                     'DocumentationTemplates/assets/css/style.css':  'DocumentationTemplates/assets/scss/style.scss'
-                }                
+                }
             }
         },
 
@@ -159,9 +160,9 @@ module.exports = function(grunt) {
                         settings: {
                             webSecurityEnabled: false,
                         },
-                    },                    
+                    },
                 },
-                dest: 'report.xml'                
+                dest: 'report.xml'
             }
         },
 
