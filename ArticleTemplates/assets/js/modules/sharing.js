@@ -13,8 +13,12 @@ define([
     var modules = {
         nativeSharing: function(_window, service, url, title){
             var action;
-            if(service === 'facebook'){ action = 'x-gu://facebookshare/'; }
-            if(service === 'twitter'){ action = 'x-gu://twittershare/'; }
+            if(service === 'facebook'){
+                action = 'x-gu://facebookshare/';
+            }
+            if(service === 'twitter'){
+                action = 'x-gu://twittershare/';
+            }
 
             if(action && url){
                 action = action + "?url=" + encodeURIComponent(url);
