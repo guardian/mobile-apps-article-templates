@@ -33,6 +33,23 @@ define([
 			}
 		});
 
+		it('removes the twitter video embeds', function(done){
+			// this test at the moment break phantomJS but works on chrome (http://localhost:3000/root/test/unit/runner.html)
+			if (navigator.userAgent.indexOf('PhantomJS') < 0) {
+				var demoTweet = bonzo(bonzo.create('<blockquote class="twitter-tweet">   <p lang="en" dir="ltr">Hundreds of people running of out of Kathmandu airport. Scary shaking from aftershock <a href="https://twitter.com/hashtag/NepalQuake?src=hash">#NepalQuake</a> <a href="http://t.co/XiIdB0BCCS">pic.twitter.com/XiIdB0BCCS</a></p>— Jack Board (@JackBoard)   <a href="https://twitter.com/JackBoard/status/598023381334634498">May 12, 2015</a>  </blockquote>'));
+				demoTweet.appendTo(sandbox);
+				twttr.events.bind('rendered', function(evt){
+					Twitter.modules.fixVineAutoplay(evt);
+					var media = $('iframe[src^="https://amp.twimg.com"]', evt.target.contentWindow.document);
+					expect(media.length).to.be.equal(0);
+					done();
+				});
+				twttr.widgets.load(sandbox[0]);
+			}else{
+				done();
+			}
+		});
+
 		it('keeps all the other embeds', function(done){
 			var demoTweet = bonzo(bonzo.create('<blockquote class="twitter-tweet"><p><a href="https://twitter.com/hashtag/ESM?src=hash">#ESM</a> MD <a href="https://twitter.com/hashtag/Regling?src=hash">#Regling</a> in interview w/ Japan. newspaper Nikkei <a href="https://twitter.com/nikkei">@nikkei</a> and Nikkei Asian Review <a href="https://twitter.com/NAR">@NAR</a> <a href="http://t.co/ZYeMSBSve5">http://t.co/ZYeMSBSve5</a> <a href="http://t.co/ti0DFCVzoh">pic.twitter.com/ti0DFCVzoh</a></p>— ESM (@ESM_Press) <a href="https://twitter.com/ESM_Press/status/563717403264417792">February 6, 2015</a></blockquote>'));
 			demoTweet.appendTo(sandbox);

@@ -80,7 +80,7 @@ define([
     }
 
     function fixVineAutoplay(evt){
-        if(!isAndroid && $('iframe[src^="https://vine.co"]', evt.target.contentWindow.document)[0]){
+        if(!isAndroid && $('iframe[src^="https://vine.co"],iframe[src^="https://amp.twimg.com/amplify-web-player/prod/source.html?video_url"]', evt.target.contentWindow.document)[0]){
             $('.MediaCard', evt.target.contentWindow.document).remove();
             $(evt.target).removeAttr('height');
         }
