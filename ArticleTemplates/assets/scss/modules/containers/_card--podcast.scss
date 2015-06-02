@@ -42,14 +42,14 @@ Display a podcast article card. Can include a series title.
 */
 
 .card--podcast {
-    background-color: #3cafc7; // Bespoke to match colour used in native code
-    border-top-color: color(shade-1);
+    background-color: color(shade-6); // Bespoke to match colour used in native code
+    border-top-color: color(tone-podcast);
 
     .card__title {
-        color: #fff;
+        color: color(shade-7);
 
         .icon {
-            color: color(tone-media);
+            color: color(tone-podcast);
             margin-right: base-px(.5);
         }
     }
@@ -57,7 +57,7 @@ Display a podcast article card. Can include a series title.
     .card__title--audio {
         &::before {
             content: '\e047';
-            color: color(shade-1);
+            color: color(tone-podcast);
             font-family: $icon;
             margin-right: base-px(.25);
             position: absolute;
@@ -70,11 +70,11 @@ Display a podcast article card. Can include a series title.
     }
 
     .card__standfirst {
-        color: #fff;
+        color: color(shade-7);
     }
 
     .card__series {
-        color: color(shade-1);
+        color: color(tone-podcast);
 
         &::after {
             content: '\a';
@@ -84,11 +84,11 @@ Display a podcast article card. Can include a series title.
 
     .card__meta {
         color: #fff;
-        border-color: fade-out(color(shade-4), .66);
+        border-color: color(shade-7);
     }
 
     .card__duration {
-        color: color(shade-1);
+        color: color(shade-7);
         font-weight: bold;
     }
 }
