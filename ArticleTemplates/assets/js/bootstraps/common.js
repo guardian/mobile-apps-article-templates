@@ -273,6 +273,7 @@ define([
             return root.guardian;
         },
 
+
         fixSeries: function () {
             var series = $('.content__series-label.content__labels a');
             series.html('<span>' + series.text().split(/\s+/).join(' </span><span>') + ' </span>');
@@ -291,6 +292,17 @@ define([
                     break;
                 }
             }
+        },
+
+        sendFirstPaintTime: function(){
+            var animFrame = window.requestAnimationFrame || function( callback ){
+                window.setTimeout(callback, 1000 / 60);
+            };
+            animFrame(function(){
+                if(window.chrome && window.chrome.loadTimes && window.GuardianJSInterface && window.GuardianJSInterface.firstPaintTime){
+                    window.GuardianJSInterface.firstPaintTime(window.chrome.loadTimes().firstPaintTime - window.chrome.loadTimes().startLoadTime);
+                }
+            });
         }
     },
 
@@ -321,6 +333,7 @@ define([
             modules.showTabs(window);
             modules.setGlobalObject(window);
             modules.fixSeries();
+            modules.sendFirstPaintTime();
 
             if (!document.body.classList.contains('no-ready')) {
                 window.location.href = 'x-gu://ready';

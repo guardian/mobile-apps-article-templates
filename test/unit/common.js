@@ -96,6 +96,18 @@ define([
 			expect(series.html()).to.be.equal('<span>Nigel </span><span>Slater </span><span>recipes </span><span>Nigel </span><span>Slater </span><span>recipes </span><br><span>Nigel </span><span>Slater </span><span>recipes </span>');
 		});
 
+		it('should invoke (if available) window.GuardianJSInterface.firstPaintTime on firstPaint', function(done){
+			window.chrome = { loadTimes: function(){ return { firstPaintTime: 10, startLoadTime: 5 }; }};
+			window.GuardianJSInterface = { firstPaintTime: function(){ }};
+			var firstPaintFn = sinon.spy(window.GuardianJSInterface, "firstPaintTime");
+			Common.modules.sendFirstPaintTime();
+			setTimeout(function(){
+				expect(firstPaintFn).to.have.been.calledWithExactly(5);
+				expect(firstPaintFn).to.have.been.called;
+				done();
+			}, 200);			
+		});
+
 		describe('Tags', function(){
 			var tagsContainer;
 
