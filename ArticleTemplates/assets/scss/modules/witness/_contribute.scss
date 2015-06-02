@@ -74,6 +74,9 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
         position: relative;
         .ios &{
             bottom: 2px;
+            @include mq($from: col2) {
+                bottom: 1px;
+            }
         }
         background: transparent url('../img/guardianwitness.png') no-repeat 0 50%;
         background-size: contain;
