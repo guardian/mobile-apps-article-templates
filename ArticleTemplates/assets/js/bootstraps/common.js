@@ -5,10 +5,10 @@ define([
     'fence',
     'fastClick',
     'smoothScroll',
-    //'modules/ads',
     'modules/comments',
     'modules/cards',
     'modules/more-tags',
+    'modules/sharing',
     'modules/$'
 ], function (
     bean,
@@ -16,10 +16,10 @@ define([
     fence,
     FastClick,
     smoothScroll,
-    //Ads,
     Comments,
     Cards,
     MoreTags,
+    Sharing,
     $
 ) {
     'use strict';
@@ -49,15 +49,6 @@ define([
                 });
             }
         },
-
-        /*loadAdverts: function () {
-            // Setup ad tags, insert containers
-            Ads.init({
-                adsEnabled: document.body.getAttribute('data-ads-enabled'),
-                adsConfig: document.body.getAttribute('data-ads-config'),
-                mpuAfterParagraphs: document.body.getAttribute('data-mpu-after-paragraphs')
-            });
-        },*/
 
         loadComments: function () {
             Comments.init();
@@ -321,6 +312,7 @@ define([
             modules.showTabs(window);
             modules.setGlobalObject(window);
             modules.fixSeries();
+            Sharing.init(window);
 
             if (!document.body.classList.contains('no-ready')) {
                 window.location.href = 'x-gu://ready';
