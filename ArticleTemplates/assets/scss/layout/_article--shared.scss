@@ -22,8 +22,10 @@
             margin-right: base-px(-1);
             width: auto;
 
-            @include mq($from: col2) {
-                width: 135%;
+            &:not(.interactive--offline){
+                @include mq($from: col2) {
+                    width: 135%;
+                }
             }
         }
 

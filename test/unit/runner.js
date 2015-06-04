@@ -24,8 +24,10 @@ require.config({
         test_monitor: '/root/test/unit/monitor',
         test_audio: '/root/test/unit/audio',
         test_sharing: '/root/test/unit/sharing',
-        test_witness: '/root/test/unit/witness'
+        test_witness: '/root/test/unit/witness',
 
+        // -- fake interactive
+        fake_interactive: '/root/test/unit/fake-interactive'
     },
     shim: {
         d3: {

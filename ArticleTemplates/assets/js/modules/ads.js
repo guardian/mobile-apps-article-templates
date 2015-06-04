@@ -49,7 +49,7 @@ define([
 
 
                 } else if (config.adsConfig == "mobile") {
-                    
+
                     var mobileMpuHtml = "<div class='advert-slot advert-slot--mpu advert-slot--mpu--mobile'>" +
                                             "<div class='advert-slot__label'>" +
                                                 "Advertisement" +
@@ -147,6 +147,7 @@ define([
 
             updateAndroidPosition : function() {
                 modules.getMpuPos(function(x, y, w, h){
+                    console.log(x,y,w,h);
                     window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);
                 });
             },
@@ -161,7 +162,7 @@ define([
             fireAdsReady: function(_window){
                 if (!$('body').hasClass('no-ready') && $('body').attr('data-use-ads-ready') === 'true') {
                     _window.location.href = 'x-gu://ads-ready';
-                }                  
+                }
             }
         },
 
@@ -184,8 +185,8 @@ define([
                         modules.initMpuPoller();
                     }
                 }
-                
-                modules.fireAdsReady(window);                
+
+                modules.fireAdsReady(window);
             }
         };
 
