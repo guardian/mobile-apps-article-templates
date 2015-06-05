@@ -11,13 +11,14 @@ Displays a 'content unavailable' instead of an interactive if there is no connec
 ```
 */
 
+body[data-fullscreen-interactive] {
+	margin: 0;
+}
+
 .interactive--offline{
 	background-color: color(shade-5);
 	text-align: center;
 	padding: 1px 0 base-px(2) 0;
-	body[data-fullscreen-interactive] & {
-		margin: base-px(1, 0.3);
-	}
 	font-family: $agate-sans;
 	@include meta();
 	color: color(shade-2);
@@ -25,7 +26,7 @@ Displays a 'content unavailable' instead of an interactive if there is no connec
 	margin: 0;
 
 	&:before{
-		content: "This content is\Anot available while\Athe device is offline";
+		content: "Sorry, this content is\Anot available while\Athe device is offline";
 		white-space: pre;
 		display: inline-block;
 		vertical-align: middle;
@@ -35,9 +36,8 @@ Displays a 'content unavailable' instead of an interactive if there is no connec
 		background-size: 2em;
 	}
 
-	a{
-		display: block;
-		margin-top: -2em !important;
+	a, figcaption{
+		display: none;
 	}
 
 }
