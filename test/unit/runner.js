@@ -35,8 +35,8 @@ require.config({
 });
 
 require([
-    'twitter', 'test_common', 'test_ads','test_twitter', 
-    'test_colors', 'test_comments', 'test_monitor', 
+    'twitter', 'test_common', 'test_ads','test_twitter',
+    'test_colors', 'test_comments', 'test_monitor',
     'test_audio', 'test_witness', 'test_sharing'
   ], function(){
   twttr.ready(function(){
