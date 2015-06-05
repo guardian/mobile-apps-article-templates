@@ -16,24 +16,27 @@ app.use('/', proxy('http://mobile-apps.guardianapis.com', {
 		if(data.length > 0 && !/ico/.test(parse(req.url).path)){
 			zlib.gunzip(data, function (gunzipError, unzipbody) {
 				var object = JSON.parse(unzipbody.toString().replace(new RegExp('http://mobile-apps.guardianapis.com','g'), 'http://localhost:3000'));
-				
+
 
 				// mocking adv
 				if(object.cards){
 					object.cards.forEach(function(card){
-						card.item.sponsorship = {
-							sponsorName: 'The Rockefeller Foundation',
-							sponsorUri: 'http://www.100resilientcities.org',
-							aboutUri: 'x-gu://item/mobile-apps.guardianapis.com/items/cities/2014/jan/27/cities-about-this-site',
-							format: 'Guardian Cities is supported by: #{sponsor}',
-							isAdvertising: true
-						};
+						// card.item.sponsorship = {
+						// 	sponsorName: 'The Rockefeller Foundation',
+						// 	sponsorUri: 'http://www.100resilientcities.org',
+						// 	aboutUri: 'x-gu://item/mobile-apps.guardianapis.com/items/cities/2014/jan/27/cities-about-this-site',
+						// 	format: 'Guardian Cities is supported by: #{sponsor}',
+						// 	isAdvertising: false
+						// };
+						if(card.item && card.item.metadata){
+							card.item.metadata.witnessAssignmentId = "5536849ce4b0574bd49be6d1";
+						}
 					});
 				}
 
 				zlib.gzip(new Buffer(JSON.stringify(object)), function(gunzipError, zipbody){
 					callback(null, zipbody);
-				});				
+				});
 			});
 		} else {
 			callback(null, data);
