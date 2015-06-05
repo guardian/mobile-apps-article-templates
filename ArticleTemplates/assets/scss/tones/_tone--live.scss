@@ -17,6 +17,17 @@
         }
     }
 
+    .witness{
+        margin-top: base-px(1);
+
+        @include mq(col2, col3) {
+            margin-left: cols($base-3, 4, 1);
+        }
+        @include mq($from: col3) {
+            margin-left: cols($base-4, 5, 1);
+        }        
+    }    
+
     #comments .touchpoint--primary {
         .touchpoint__button {
             background-color: color(tone-live);

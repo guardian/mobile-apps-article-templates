@@ -23,7 +23,9 @@ require.config({
         test_colors: '/root/test/unit/colors',
         test_monitor: '/root/test/unit/monitor',
         test_audio: '/root/test/unit/audio',
-        test_sharing: '/root/test/unit/sharing'
+        test_sharing: '/root/test/unit/sharing',
+        test_witness: '/root/test/unit/witness'
+
     },
     shim: {
         d3: {
@@ -32,7 +34,11 @@ require.config({
     }
 });
 
-require(['twitter', 'test_common', 'test_ads','test_twitter', 'test_colors', 'test_comments', 'test_monitor', 'test_audio', 'test_sharing'], function(){
+require([
+    'twitter', 'test_common', 'test_ads','test_twitter',
+    'test_colors', 'test_comments', 'test_monitor',
+    'test_audio', 'test_witness', 'test_sharing'
+  ], function(){
   twttr.ready(function(){
     mocha.run();
   });
