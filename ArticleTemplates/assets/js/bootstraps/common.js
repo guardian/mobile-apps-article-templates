@@ -59,22 +59,27 @@ define([
 
         loadInteractives: function () {
             // Boot interactives
-            window.loadInteractives = function () {
+            window.loadInteractives = function (force) {
                 var isOffline = $('body').hasClass('offline');
 
-                if(!isOffline){
-                    $('figure.interactive').each(function (el) {
-                        var bootUrl = el.getAttribute('data-interactive');
-                        // The contract here is that the interactive module MUST return an object
-                        // with a method called 'boot'.
-                        require([bootUrl], function (interactive) {
-                            // We pass the standard context and config here, but also inject the
-                            // mediator so the external interactive can respond to our events.
-                            interactive.boot(el, document.body);
+                if(!isOffline || force){
+                    $('figure.interactive')
+                        .removeClass('interactive--offline')
+                        .each(function (el) {
+                            var bootUrl = el.getAttribute('data-interactive');
+                            // The contract here is that the interactive module MUST return an object
+                            // with a method called 'boot'.
+                            require([bootUrl], function (interactive) {
+                                // We pass the standard context and config here, but also inject the
+                                // mediator so the external interactive can respond to our events.
+                                interactive.boot(el, document.body);
+                            });
                         });
-                    });
                 }else{
-                    $('figure.interactive').addClass('interactive--offline');
+                    $('figure.interactive')
+                        .empty()
+                        .addClass('interactive--offline')
+                        .append(bonzo.create('<a href="#" onclick="window.loadInteractives(true);">reload</a>'));
                 }
             };
             window.loadInteractives();

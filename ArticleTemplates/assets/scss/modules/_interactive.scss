@@ -18,12 +18,16 @@ body[data-fullscreen-interactive] {
 .interactive--offline{
 	background-color: color(shade-5);
 	text-align: center;
-	padding: 1px 0 base-px(2) 0;
+	padding-top: 1px;
 	font-family: $agate-sans;
 	@include meta();
 	color: color(shade-2);
 	clear: both;
 	margin: 0;
+
+	body:not([data-fullscreen-interactive]) &{
+		margin: 0 base-px(-1) 0 base-px(-1) !important; // to override _element.scss:74
+	}
 
 	&:before{
 		content: "Sorry, this content is\Anot available while\Athe device is offline";
@@ -35,9 +39,4 @@ body[data-fullscreen-interactive] {
 		background: transparent url("../img/unsmiley.png") no-repeat center top;
 		background-size: 2em;
 	}
-
-	a, figcaption{
-		display: none;
-	}
-
 }
