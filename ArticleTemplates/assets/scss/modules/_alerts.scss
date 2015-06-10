@@ -31,30 +31,45 @@ Display an alerts toggle.
 ```
 */
 
-.alerts {
-    color: color(tone-news);
-    font-family: $agate-sans;
-    display: inline-block;
 
-    [data-icon]::before {
-        margin-right: 4px;
-        font-size: 85%;
+.alerts {
+    font-family: $agate-sans;
+    //width: intrinsic;
+    white-space: nowrap;
+    padding: base-px(.3, 1, .7, 1);
+    margin: base-px(.5, 0, 0,-.1);
+    display: inline-block;
+    border-radius: 30px;
+    text-overflow: ellipsis;
+    vertical-align: bottom;
+    overflow: hidden;
+    max-width: 100%;
+
+    color: color(tone-news);
+    border: 1px solid color(tone-news);
+
+    span[data-icon]{
+        display: inline-block;
+        vertical-align: bottom;
+        font-size: $body-size-2;
+        position: relative;
+        right: 3px;
+        top: 1px;
     }
 
     .alerts__state--follow {
         display: none;
-
-        [data-icon]::before {
-            color: color(tone-news-accent);
-        }
     }
 
     &.following {
+        :active{
+            background-color: transparent;
+            color: color(tone-news);
+            border: 1px solid color(tone-news);
+        }
+
         .alerts__state--follow {
             display: block;
-            background-color: color(tone-news) !important;
-            color: color(shade-7) !important;
-            border: 1px solid color(tone-news);
         }
 
         .alerts__state--unfollow {
@@ -63,6 +78,8 @@ Display an alerts toggle.
     }
 }
 
-.alerts__label {
-    font-weight: bold;
+a.alerts:active, .alerts.following{
+    background-color: color(tone-news);
+    color: color(shade-7);
+    border: 1px solid color(tone-news);
 }
