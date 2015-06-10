@@ -66,7 +66,7 @@ Display an article's meta information.
 }
 
 .meta__misc {
-    padding: base-px(.6667, 1, 2, 1);
+    padding: base-px(.6667, 1, 1, 1);
 }
 
 .meta__pubdate {
@@ -104,3 +104,66 @@ Display an article's meta information.
         display: none;
     }
 }
+
+.meta__follow {
+    font-family: $agate-sans;
+    width: intrinsic;
+    clear: both;
+    white-space: nowrap;
+    padding: base-px(.3, 1, .7, 1);
+    margin: base-px(.5, 0, 0,-.1);
+    display: block;
+    border-radius: 30px;
+    text-overflow: ellipsis;
+    background-color: transparent !important;
+
+    color: color(tone-news);
+    border: 1px solid color(tone-news);
+
+    &:active {
+        background-color: color(tone-news) !important;
+        color: color(shade-7) !important;
+        border: 1px solid color(tone-news);
+    }
+    &:visited {
+        background-color: color(tone-news) !important;
+        color: color(shade-7) !important;
+        border: 1px solid color(tone-news);
+    }
+    span{
+        padding-top: base-px(.8);
+        font-size: $body-size-2;
+    }
+}
+
+.meta__followcomment {
+    font-family: $agate-sans;
+    width: intrinsic;
+    clear: both;
+    white-space: nowrap;
+    padding: base-px(.3, 1, .7, 1);
+    margin: base-px(0, 0, 1,0.9);
+    display: block;
+    border-radius: 30px;
+    text-overflow: ellipsis;
+    background-color: transparent !important;
+
+    color: color(shade-7);
+    border: 1px solid color(shade-7);
+
+    &:active {
+        background-color: color(shade-7) !important;
+        color: color(tone-comment-accent) !important;
+        border: 1px solid color(shade-7);
+    }
+    &:visited {
+        background-color: color(shade-7) !important;
+        color: color(tone-comment-accent) !important;
+        border: 1px solid color(shade-7);
+    }      
+    span{
+        padding-top: base-px(.8);
+        font-size: $body-size-2;
+    }
+}
+
