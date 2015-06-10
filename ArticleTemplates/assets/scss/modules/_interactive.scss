@@ -29,14 +29,48 @@ body[data-fullscreen-interactive] {
 		margin: 0 base-px(-1) 0 base-px(-1) !important; // to override _element.scss:74
 	}
 
+	body[data-fullscreen-interactive] &{
+		@include meta(1.4);
+	}
+
 	&:before{
-		content: "Sorry, this content is\Anot available while\Athe device is offline";
+		content: "Sorry, we are unable to display\Athis content. No internet\A connection. Try again?";
 		white-space: pre;
-		display: inline-block;
+		display: block;
 		vertical-align: middle;
-		margin: 3.5em 0;
-		padding-top: 2em;
+		margin-top: 3.5em;
+		padding-top: 2.5em;
 		background: transparent url("../img/unsmiley.png") no-repeat center top;
 		background-size: 2em;
+	}
+
+	* {
+		display: none;
+	}
+
+	.interactive--reload{
+		display: inline-block;
+		margin-top: 1em;
+		margin-bottom: 3.5em;
+		color: color(shade-2);
+		font-family: $icon;
+		-webkit-tap-highlight-color: transparent;
+
+		&:after{
+			content: '\00e045';
+			display: inline-block;
+			font-size: 1.5em;
+			border: 1px solid color(shade-2);
+			padding: 7px 10px 13px 10px;
+			border-radius: 50%;
+		}
+
+		&:active{
+			color: color(shade-7);
+			&:after{
+				border: 1px solid color(shade-7);
+			}
+		}
+
 	}
 }

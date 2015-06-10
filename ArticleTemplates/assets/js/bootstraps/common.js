@@ -1,4 +1,4 @@
-/*global window,document,console,require,define */
+/*global window,document,console,require,define,navigator */
 define([
     'bean',
     'bonzo',
@@ -64,22 +64,24 @@ define([
 
                 if(!isOffline || force){
                     $('figure.interactive')
-                        .removeClass('interactive--offline')
                         .each(function (el) {
                             var bootUrl = el.getAttribute('data-interactive');
                             // The contract here is that the interactive module MUST return an object
                             // with a method called 'boot'.
+                            require.undef(bootUrl);
                             require([bootUrl], function (interactive) {
                                 // We pass the standard context and config here, but also inject the
                                 // mediator so the external interactive can respond to our events.
-                                interactive.boot(el, document.body);
+                                if(interactive && interactive.boot){
+                                    $(el).removeClass('interactive--offline');
+                                    interactive.boot(el, document.body);
+                                }
                             });
                         });
                 }else{
-                    $('figure.interactive')
-                        .empty()
+                    $('figure.interactive:not(.interactive--offline)')
                         .addClass('interactive--offline')
-                        .append(bonzo.create('<a href="#" onclick="window.loadInteractives(true);">reload</a>'));
+                        .append(bonzo.create('<a class="interactive--reload" href="#" onclick="window.loadInteractives(true);return false;"></a>'));
                 }
             };
             window.loadInteractives();
