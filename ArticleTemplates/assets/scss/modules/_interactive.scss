@@ -18,7 +18,7 @@ body[data-fullscreen-interactive] {
 .interactive--offline{
 	background-color: color(shade-5);
 	text-align: center;
-	padding-top: 1px;
+	padding: 1px 0;
 	font-family: $agate-sans;
 	@include meta();
 	color: color(shade-2);
@@ -48,7 +48,7 @@ body[data-fullscreen-interactive] {
 		display: none;
 	}
 
-	.interactive--reload{
+	.interactive--offline--icon{
 		display: inline-block;
 		margin-top: 1em;
 		margin-bottom: 3.5em;
@@ -57,20 +57,49 @@ body[data-fullscreen-interactive] {
 		-webkit-tap-highlight-color: transparent;
 
 		&:after{
-			content: '\00e045';
 			display: inline-block;
-			font-size: 1.5em;
-			border: 1px solid color(shade-2);
 			padding: 7px 10px 13px 10px;
-			border-radius: 50%;
+			font-size: 1.5em;
 		}
 
-		&:active{
-			color: color(shade-7);
+		&.interactive--offline--icon--reload{
 			&:after{
-				border: 1px solid color(shade-7);
+				content: '\00e045';
+				border: 1px solid color(shade-2);
+				border-radius: 50%;
+			}
+			&:active{
+				color: color(shade-7);
+				&:after{
+					border: 1px solid color(shade-7);
+				}
 			}
 		}
 
+		&.interactive--offline--icon--loading{
+			display: none;
+			-webkit-animation: fadeIn;
+			-webkit-animation-direction: alternate;
+			-webkit-animation-iteration-count: infinite;
+			-webkit-animation-duration: 1s;
+			&:after{
+				content: '\00e00c';
+				padding: 7px 10px 15px 10px;
+			}
+		}
 	}
+
+	&.interactive--loading{
+		.interactive--offline--icon--reload{
+			display: none;
+		}
+		.interactive--offline--icon--loading{
+			display: block;
+		}
+	}
+}
+
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }

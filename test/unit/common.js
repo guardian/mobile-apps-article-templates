@@ -9,7 +9,7 @@ define([
 		var sandbox;
 
 		before(function(){
-			sandbox = bonzo(bonzo.create('<div id="sandbox" style="visibility:visible;"></div>'));
+			sandbox = bonzo(bonzo.create('<div style="visibility:hidden;" id="sandbox"></div>'));
 			sandbox.appendTo(document.body);
 		});
 
@@ -104,14 +104,17 @@ define([
 			Common.modules.loadInteractives();
 		});
 
-		it('should load a "content not available" placeholder on body.offline', function(){
-			$('body').addClass('offline');
-			var testContent = bonzo.create('<figure class="interactive" data-interactive="fake_interactive"></figure>')[0];
-			$(testContent).appendTo(sandbox);
-			Common.modules.loadInteractives();
-			expect($(testContent).hasClass('interactive--offline')).to.be.true;
-			$('body').removeClass('offline');
-		});
+		if (navigator.userAgent.indexOf('PhantomJS') < 0) {
+			it('should load a "content not available" placeholder on failure', function(done){
+				var testContent = bonzo.create('<figure class="interactive" data-interactive="nonexistant_interactive"></figure>')[0];
+				$(testContent).appendTo(sandbox);
+				Common.modules.loadInteractives();
+				setTimeout(function(){
+					expect($(testContent).hasClass('interactive--offline')).to.be.true;
+					done();
+				}, 1500);
+			});
+		}
 
 		describe('Tags', function(){
 			var tagsContainer;

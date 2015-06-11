@@ -1,5 +1,6 @@
 require.config({
     baseUrl: '/root/ArticleTemplates/assets/js',
+    waitSeconds: 1,
     paths: {
 
         // -- components
