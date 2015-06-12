@@ -32,12 +32,12 @@ define([
             viewportHeight      = bonzo.viewport().height,
             scrollTop           = bonzo(document.body).scrollTop(),
             bindedCallBack      = false,
-            processedTweets     = 0;
-
+            processedTweets     = 0,
+            scriptLoaded        = typeof twttr !== 'undefined' && 'widgets' in twttr && 'load' in twttr.widgets;
 
         tweetElements.forEach(function (element) {
             var $el = bonzo(element);
-            if (((scrollTop + (viewportHeight * 2.5)) > $el.offset().top) && (scrollTop < ($el.offset().top + $el.offset().height))) {
+            if (scriptLoaded && ((scrollTop + (viewportHeight * 2.5)) > $el.offset().top) && (scrollTop < ($el.offset().top + $el.offset().height))) {
                 $(element).removeClass('js-tweet').addClass('twitter-tweet');
                 processedTweets ++;
             } else if($(element).hasClass('twitter-tweet')) {
@@ -53,13 +53,14 @@ define([
                 scriptElement.src = 'https://platform.twitter.com/widgets.js';
                 $(document.body).append(scriptElement);
             } else {
-                if (typeof twttr !== 'undefined' && 'widgets' in twttr && 'load' in twttr.widgets) {
+                if (scriptLoaded) {
                     if(!bindedCallBack){
                         twttr.events.bind('rendered', workaroundClicks);
                         twttr.events.bind('rendered', fixVineAutoplay);
+                        bindedCallBack = true;
                     }
                     if(processedTweets){
-                        twttr.widgets.load(body);
+                       twttr.widgets.load(body);
                     }
                 }
             }
