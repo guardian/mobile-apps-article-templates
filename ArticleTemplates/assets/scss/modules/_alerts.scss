@@ -64,7 +64,6 @@ Display an alerts toggle.
 
     &.following {
         &:active{
-            background-color: transparent;
             color: color(tone-news);
             border: 1px solid color(tone-news);
         }
@@ -79,8 +78,7 @@ Display an alerts toggle.
     }
 }
 
-a.alerts:active, .alerts.following{
+a.alerts:not(.following):active, .alerts.following:not(:active){
     background-color: color(tone-news);
     color: color(shade-7);
-    border: 1px solid color(tone-news);
 }
