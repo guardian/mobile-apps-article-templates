@@ -59,9 +59,17 @@ define([
 
         loadInteractives: function () {
             // Boot interactives
+            var offline = function(){
+                $('figure.interactive:not(.interactive--offline)')
+                    .addClass('interactive--offline')
+                    .append(bonzo.create('<a class="interactive--offline--icon interactive--offline--icon--reload" href="#" onclick="window.loadInteractives(true);return false;"></a>'))
+                    .append(bonzo.create('<a class="interactive--offline--icon interactive--offline--icon--loading"></a>'));
+                $('figure.interactive.interactive--loading').removeClass('interactive--loading');
+            };
+
             window.loadInteractives = function (force) {
-                $('figure.interactive')
-                    .each(function (el) {
+                if((!$('body').hasClass('offline') || force) && navigator.onLine ){
+                    $('figure.interactive').each(function (el) {
                         var bootUrl = el.getAttribute('data-interactive');
                         // The contract here is that the interactive module MUST return an object
                         // with a method called 'boot'.
@@ -74,14 +82,11 @@ define([
                                 $(el).removeClass('interactive--offline');
                                 interactive.boot(el, document.body);
                             }
-                        }, function(){
-                            $('figure.interactive:not(.interactive--offline)')
-                                .addClass('interactive--offline')
-                                .append(bonzo.create('<a class="interactive--offline--icon interactive--offline--icon--reload" href="#" onclick="window.loadInteractives();return false;"></a>'))
-                                .append(bonzo.create('<a class="interactive--offline--icon interactive--offline--icon--loading"></a>'));
-                            $('figure.interactive.interactive--loading').removeClass('interactive--loading');
-                        });
+                        }, offline);
                     });
+                } else {
+                    offline();
+                }
             };
 
             window.loadInteractives();
