@@ -93,7 +93,7 @@ module.exports = function(grunt) {
         sass: {
             dev: {
                 files: {
-                    'ArticleTemplates/assets/css/fonts.css':  'ArticleTemplates/assets/scss/fonts.scss',
+                    'ArticleTemplates/assets/css/interactive.css':  'ArticleTemplates/assets/scss/interactive.scss',
                     'ArticleTemplates/assets/css/style.css':  'ArticleTemplates/assets/scss/style.scss',
                     'ArticleTemplates/assets/css/style-async.css':  'ArticleTemplates/assets/scss/style-async.scss',
                     'ArticleTemplates/assets/css/style-sync.css':  'ArticleTemplates/assets/scss/style-sync.scss',
