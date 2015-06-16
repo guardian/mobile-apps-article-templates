@@ -177,7 +177,7 @@ body[data-fullscreen-interactive] {
 .interactive--offline {
   background-color: #eaeaea;
   text-align: center;
-  padding-top: 1px;
+  padding: 1px 0;
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
   color: #767676;
   clear: both;
@@ -201,7 +201,7 @@ body[data-fullscreen-interactive] {
       font-size: 2.24rem;
       line-height: 3.08rem; } }
   .interactive--offline:before {
-    content: "Sorry, we are unable to display\Athis content. No internet\A connection. Try again?";
+    content: "Sorry, we are unable to display\Athis content as you have\Ano internet connection.\APlease try again.";
     white-space: pre;
     display: block;
     vertical-align: middle;
@@ -211,23 +211,43 @@ body[data-fullscreen-interactive] {
     background-size: 2em; }
   .interactive--offline * {
     display: none; }
-  .interactive--offline .interactive--reload {
+  .interactive--offline .interactive--offline--icon {
     display: inline-block;
     margin-top: 1em;
     margin-bottom: 3.5em;
     color: #767676;
     font-family: "Guardian Icons", Georgia, serif;
     -webkit-tap-highlight-color: transparent; }
-    .interactive--offline .interactive--reload:after {
-      content: '\00e045';
+    .interactive--offline .interactive--offline--icon:after {
       display: inline-block;
-      font-size: 1.5em;
-      border: 1px solid #767676;
       padding: 7px 10px 13px 10px;
+      font-size: 1.5em; }
+    .interactive--offline .interactive--offline--icon.interactive--offline--icon--reload:after {
+      content: '\00e045';
+      border: 1px solid #767676;
       border-radius: 50%; }
-    .interactive--offline .interactive--reload:active {
+    .interactive--offline .interactive--offline--icon.interactive--offline--icon--reload:active {
       color: #fff; }
-      .interactive--offline .interactive--reload:active:after {
+      .interactive--offline .interactive--offline--icon.interactive--offline--icon--reload:active:after {
         border: 1px solid #fff; }
+    .interactive--offline .interactive--offline--icon.interactive--offline--icon--loading {
+      display: none;
+      -webkit-animation: fadeIn;
+      -webkit-animation-direction: alternate;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-duration: 1s; }
+      .interactive--offline .interactive--offline--icon.interactive--offline--icon--loading:after {
+        content: '\00e00c';
+        padding: 7px 10px 15px 10px; }
+  .interactive--offline.interactive--loading .interactive--offline--icon--reload {
+    display: none; }
+  .interactive--offline.interactive--loading .interactive--offline--icon--loading {
+    display: block; }
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
 
 /*# sourceMappingURL=interactive.css.map */
