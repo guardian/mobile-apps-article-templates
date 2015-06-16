@@ -1,0 +1,115 @@
+%base-match-table{
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+
+	border-bottom: 1px dotted color(shade-4);
+	background: color(shade-7);
+}
+
+%base-50{
+	display: table-cell;
+	width: 50%;
+}
+
+%meta-agata{
+	font-family: $agate-sans;
+	@include meta();
+}
+
+%meta-title-mq{
+	font-family: $egyptian-display;
+	font-weight: 200;
+	color: color(shade-1);
+    font-size: 2.5rem;
+    padding-bottom: 0.3rem;
+}
+
+.cricket-match-summary-head{
+	@extend %base-match-table;
+	border-top: 4px solid color(tone-live);
+	padding: base-px(1, 1, 1, 1);
+    @include mq($from: col1) {
+        padding: base-px(.5, 1, .5, 1);
+    }
+}
+
+.cricket-match-basic-info{
+	@extend %base-50;
+	@extend %meta-agata;
+	color: color(shade-1);
+}
+
+.cricket-match-basic-follow{
+	@extend %base-50;
+}
+
+.cricket-match-summary-result{
+	@extend %base-match-table;
+}
+
+.cricket-match-summary-last-inning{
+	display: table-cell;
+	padding: base-px(1, 1, 1, 1);
+	@include mq(col2, col3) {
+        width: cols($base-3, 4, 1);
+    }
+    @include mq($from: col3) {
+        width: cols($base-4, 5, 1);
+    }
+}
+
+.cricket-inning{
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+}
+
+.cricket-inning-crest{
+	display: table-cell;
+	vertical-align: top;
+	width: 16.6%;
+}
+
+.cricket-inning-team{
+	display: table-cell;
+	vertical-align: top;
+	width: 50%;
+}
+
+.cricket-inning-team-name{
+	@extend %meta-title-mq;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.cricket-inning-details{
+	@extend %meta-agata;
+	color: color(tone-news-accent);
+}
+
+.cricket-inning-runs{
+	@extend %meta-title-mq;
+	display: table-cell;
+	vertical-align: top;
+	white-space: nowrap;
+	width: 33.4%;
+	text-align: right;
+}
+
+.cricket-match-summary-scorecard{
+	display: table-cell;
+	vertical-align: top;
+	border-left: 1px dotted color(shade-4);
+
+	@include mq($to: col2) {
+        display: none;
+    }
+}
+
+.cricket-scorecard-title{
+	@extend %meta-agata;
+	background: color(shade-8);
+    padding: base-px(.2, 1, 1, 1);
+}
