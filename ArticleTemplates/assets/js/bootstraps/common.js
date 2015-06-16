@@ -1,4 +1,4 @@
-/*global window,document,console,require,define */
+/*global window,document,console,require,define,navigator */
 define([
     'bean',
     'bonzo',
@@ -59,18 +59,36 @@ define([
 
         loadInteractives: function () {
             // Boot interactives
-            window.loadInteractives = function () {
-                $('figure.interactive').each(function (el) {
-                    var bootUrl = el.getAttribute('data-interactive');
-                    // The contract here is that the interactive module MUST return an object
-                    // with a method called 'boot'.
-                    require([bootUrl], function (interactive) {
-                        // We pass the standard context and config here, but also inject the
-                        // mediator so the external interactive can respond to our events.
-                        interactive.boot(el, document.body);
-                    });
-                });
+            var offline = function(){
+                $('figure.interactive:not(.interactive--offline)')
+                    .addClass('interactive--offline')
+                    .append(bonzo.create('<a class="interactive--offline--icon interactive--offline--icon--reload" href="#" onclick="window.loadInteractives(true);return false;"></a>'))
+                    .append(bonzo.create('<a class="interactive--offline--icon interactive--offline--icon--loading"></a>'));
+                $('figure.interactive.interactive--loading').removeClass('interactive--loading');
             };
+
+            window.loadInteractives = function (force) {
+                if((!$('body').hasClass('offline') || force) && navigator.onLine ){
+                    $('figure.interactive').each(function (el) {
+                        var bootUrl = el.getAttribute('data-interactive');
+                        // The contract here is that the interactive module MUST return an object
+                        // with a method called 'boot'.
+                        require.undef(bootUrl);
+                        $(el).addClass('interactive--loading');
+                        require([bootUrl], function (interactive) {
+                            // We pass the standard context and config here, but also inject the
+                            // mediator so the external interactive can respond to our events.
+                            if(interactive && interactive.boot){
+                                $(el).removeClass('interactive--offline');
+                                interactive.boot(el, document.body);
+                            }
+                        }, offline);
+                    });
+                } else {
+                    offline();
+                }
+            };
+
             window.loadInteractives();
         },
 
@@ -188,18 +206,18 @@ define([
 
             tabs.each(function(tab,i) {
                 if (i > 0) {
-                    $(tab.getAttribute('href')).hide();    
+                    $(tab.getAttribute('href')).hide();
                 }
             });
 
             if(tabContainer[0]){
                 bean.on(tabContainer[0], 'click', 'a', function (e) {
 
-                    e.preventDefault();                
+                    e.preventDefault();
                     var tab = $(this);
 
                     if( tab.attr("aria-selected") !== 'true' ) {
-                     
+
                         var activeTab = $('[aria-selected="true"]', tabContainer);
                         $(activeTab.attr('href')).hide();
                         activeTab.attr("aria-selected", false);
@@ -212,7 +230,7 @@ define([
                                 root.location.href = 'x-gu://football_tab_report';
                                 break;
                             case "football__tab--stats":
-                                modules.setPieChartSize();                        
+                                modules.setPieChartSize();
                                 root.location.href = 'x-gu://football_tab_stats';
                                 break;
                             case "football__tab--liveblog":
@@ -265,7 +283,7 @@ define([
         fixSeries: function () {
             var series = $('.content__series-label.content__labels a');
             series.html('<span>' + series.text().split(/\s+/).join(' </span><span>') + ' </span>');
-            
+
             var spans = $('span', series);
             var size = spans.length;
             var lineWidth = 0;
@@ -313,7 +331,7 @@ define([
 
             if (!document.body.classList.contains('no-ready')) {
                 window.location.href = 'x-gu://ready';
-            } 
+            }
 
         }
     };
