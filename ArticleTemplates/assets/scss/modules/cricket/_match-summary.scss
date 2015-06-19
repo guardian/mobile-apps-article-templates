@@ -21,17 +21,21 @@
 	font-family: $egyptian-display;
 	font-weight: 200;
 	color: color(shade-1);
-    font-size: 2.5rem;
+    font-size: 2.4rem;
     padding-bottom: 0.3rem;
 }
 
-.cricket-match-summary-head{
-	@extend %base-match-table;
-	border-top: 4px solid color(tone-live);
+%meta-padding{
 	padding: base-px(1, 1, 1, 1);
     @include mq($from: col1) {
         padding: base-px(.5, 1, .5, 1);
     }
+}
+
+.cricket-match-summary-head{
+	@extend %base-match-table;
+	@extend %meta-padding;
+	border-top: 4px solid color(tone-live);
 }
 
 .cricket-match-basic-info{
@@ -46,6 +50,7 @@
 
 .cricket-match-summary-result{
 	@extend %base-match-table;
+	min-height: 88px;
 }
 
 .cricket-match-summary-last-inning{
@@ -59,22 +64,27 @@
     }
 }
 
-.cricket-inning{
+.cricket-inning,
+.cricket-inning-details{
 	display: table;
 	width: 100%;
 	table-layout: fixed;
 }
 
-.cricket-inning-crest{
-	display: table-cell;
-	vertical-align: top;
-	width: 16.6%;
+.cricket-inning-team-wrap{
+	white-space: nowrap;
+}
+
+.cricket-inning-team-name-crest{
+	width: 37px;
+	padding-right: base-px(.5);
+	box-sizing: content-box
 }
 
 .cricket-inning-team{
 	display: table-cell;
-	vertical-align: top;
-	width: 50%;
+	vertical-align: bottom;
+	width: 66.6%;
 }
 
 .cricket-inning-team-name{
@@ -84,15 +94,10 @@
     overflow: hidden;
 }
 
-.cricket-inning-details{
-	@extend %meta-agata;
-	color: color(tone-news-accent);
-}
-
 .cricket-inning-runs{
 	@extend %meta-title-mq;
 	display: table-cell;
-	vertical-align: top;
+	vertical-align: bottom;
 	white-space: nowrap;
 	width: 33.4%;
 	text-align: right;
@@ -101,7 +106,7 @@
 .cricket-match-summary-scorecard{
 	display: table-cell;
 	vertical-align: top;
-	border-left: 1px dotted color(shade-4);
+	border-left: 1px solid color(shade-4);
 
 	@include mq($to: col2) {
         display: none;
@@ -110,6 +115,132 @@
 
 .cricket-scorecard-title{
 	@extend %meta-agata;
-	background: color(shade-8);
-    padding: base-px(.2, 1, 1, 1);
+	color: color(shade-3);
+	line-height: 1;
+	border-bottom: 1px solid color(shade-4);
+    padding: base-px(.6, 1, 1, 1);
+    position: relative;
+}
+
+.cricket-scorecard-bullets{
+	position: absolute;
+	top: 3px;
+	right: base-px(1) - 4px;
+
+	span{
+		background-color: color(shade-4);
+		transition: background-color .2s;
+		display: inline-block;
+		width: 7px;
+		height: 7px;
+		border-radius: 4px;
+		margin-right: 4px;
+		&.cricket-scorecard-bullets--active{
+			background-color: color(tone-news-accent);
+		}
+	}
+}
+
+.cricket-scorecard-batsmen-wrap{
+	height: 62px;
+	overflow: hidden;
+}
+
+.cricket-inning-details-innings,
+.cricket-inning-details-overs{
+	@extend %meta-agata;
+	display: table-cell;
+	color: color(shade-3);
+	b{
+		font-weight: bold;
+	}
+}
+
+.cricket-inning-details-innings{
+	width: 66.6%;
+	padding-left: 37px + base-px(.5);
+}
+
+.cricket-inning-details-overs{
+	text-align: right;
+	width: 33.4%;
+}
+
+.cricket-scorecard-batsmen{
+	@extend %meta-agata;
+	padding: base-px(.5, 1, 1, 1);
+	display: inline-block;
+
+	&-in-play, &-duck{
+		.cricket-scorecard-batsmen-name:before{
+			content: '';
+			display: inline-block;
+			position: relative;
+			bottom: -3px;
+			height: 20px;
+			width: 20px;
+			margin-right: 4px;
+			background: url(../img/cricket-dismissal.png);
+			background-repeat: no-repeat;
+			background-size: auto 20px;
+		}
+	}
+
+	.cricket-scorecard-batsmen-status{
+		margin-top: -2px;
+		em{
+			font-style: normal;
+			color: color(shade-2);
+		}
+	}
+
+	&-in-play{
+		.cricket-scorecard-batsmen-name{
+			font-weight: bold;
+		}
+		.cricket-scorecard-batsmen-status{
+			color: color(shade-2);
+		}
+	}
+
+	&-duck{
+		.cricket-scorecard-batsmen-name:before{
+			background-position: -24px 0;
+		}
+	}
+}
+
+.cricket-match-summary-footer{
+	@extend %base-match-table;
+	@extend %meta-padding;
+	white-space: nowrap;
+	border-bottom: 1px solid color(shade-4);
+}
+
+.cricket-footer-inning{
+	@extend %meta-agata;
+	line-height: 1.2;
+	margin-right: base-px(1);
+	display: inline-block;
+}
+
+$animationTime: 5s;
+$fadeOutInTime: .7s;
+$inTime: (100% * ($fadeOutInTime/2)) / $animationTime;
+$outTime: (100% * ($animationTime - ($fadeOutInTime/2))) / $animationTime;
+
+.cricket-match-summary-scorecard[data-pages] .cricket-scorecard-batsmen-wrap{
+	animation: fadeOutIn #{$animationTime} infinite forwards;
+	-webkit-animation: fadeOutIn #{$animationTime} infinite forwards;
+}
+
+@-webkit-keyframes fadeOutIn {
+	#{$inTime} { opacity: 1; }
+	#{$outTime} { opacity: 1; }
+	to { opacity: 0; }
+}
+@keyframes fadeOutIn {
+	#{$inTime} { opacity: 1; }
+	#{$outTime} { opacity: 1; }
+	to { opacity: 0; }
 }

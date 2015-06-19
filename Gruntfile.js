@@ -57,6 +57,7 @@ module.exports = function(grunt) {
                             { name: 'gallery' },
                             { name: 'liveblog' },
                             { name: 'article' },
+                            { name: 'cricket' },
                             { name: 'bootstraps/common'},
                             { name: 'app' },
                             { name: 'smoothScroll' }

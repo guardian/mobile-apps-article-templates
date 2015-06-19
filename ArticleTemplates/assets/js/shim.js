@@ -55,16 +55,16 @@ var applyNativeFunctionCall = function (name) {
     }
 };
 
+window.animFrame = window.requestAnimationFrame || function( callback ){
+    window.setTimeout(callback, 1000 / 60);
+};
+
 window.initTemplate = function (opts) {
     var options = opts || {};
     var template_path = document.body.getAttribute('data-template-directory');
 
-    var animFrame = window.requestAnimationFrame || function( callback ){
-        window.setTimeout(callback, 1000 / 60);
-    };
-
     var boot = function(){
-        animFrame(function(){
+        window.animFrame(function(){
             var script = document.createElement('script');
             script.setAttribute('src', template_path + 'assets/js/components/require.js');
             script.setAttribute('id', 'gu');
@@ -75,11 +75,11 @@ window.initTemplate = function (opts) {
             }
             script.async = true;
             document.head.appendChild(script);
-        });        
+        });
     };
 
     if (document.readyState === "complete") {
-        boot();  
+        boot();
     } else {
         window.addEventListener('DOMContentLoaded', boot);
     }
