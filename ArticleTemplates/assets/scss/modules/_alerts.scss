@@ -77,6 +77,7 @@ Display an alerts toggle.
     vertical-align: bottom;
     overflow: hidden;
     max-width: 100%;
+    @include meta();
 
     color: color(tone-news);
     border: 1px solid color(tone-news);
@@ -93,6 +94,10 @@ Display an alerts toggle.
 
     .alerts__state--follow {
         display: none;
+    }
+
+    .alerts__label{
+        font-weight: normal;
     }
 
     &.following {
