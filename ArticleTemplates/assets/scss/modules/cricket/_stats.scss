@@ -1,0 +1,125 @@
+.cricket-stats__innings{
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+	padding-bottom: 20px;
+}
+
+.cricket-stats__wrap{
+	background: color(shade-7);
+	border-top: 1px solid color(tone-news-accent);
+	color: color(shade-1);
+}
+
+.cricket-stats__header{
+	display: table-cell;
+	vertical-align: top;
+	width: 20%;
+	box-sizing: border-box;
+	padding: base-px(.5) 0 0 base-px(1);
+	@include mq($to: col2) {
+        display: none;
+    }
+}
+
+.cricket-stats__title{
+	font-weight: bold;
+	@include meta();
+	line-height: 1;
+}
+
+.cricket-stats__total{
+	font-family: $egyptian-display;
+	font-weight: 200;
+	font-size: 2.7rem;
+	line-height: 1.1;
+	margin-top: 20px;
+
+	em{
+		color: color(tone-news-accent);
+		font-style: normal;
+	}
+}
+
+.cricket-stats__table-wrap{
+	display: table-cell;
+	vertical-align: top;
+}
+
+.cricket-stats__takenby{
+	display: block;
+	color: color(shade-3);
+	padding: base-px(.25) 0 base-px(.5) 0;
+}
+
+.cricket-stats__table{
+	width: 100%;
+	text-align: left;
+	font-family: $agate-sans;
+	@include meta();
+
+	@include mq($to: col2){
+		&--tablet{
+			display: none;
+		}
+	}
+
+	@include mq($from: col2){
+		&--phone{
+			display: none;
+		}
+	}
+
+	&--values{
+		@include mq($to: col2) {
+			width: 20%;
+		}
+
+	    @include mq($from: col2) {
+			width: 15%;
+	    }
+	}
+
+	th{
+		color: color(shade-3);
+	}
+
+	th.cricket-stats__table--title,
+	td.cricket-stats__table--strong{
+		font-weight: bold;
+		color: color(shade-9);
+	}
+
+	&--title{
+		font-family: $egyptian-text;
+	}
+
+	th, td{
+		vertical-align: top;
+		padding: base-px(.5) base-px(.5) 0 base-px(.5);
+		line-height: 1;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+
+		@include mq($to: col2) {
+			height: 3.7rem;
+		}
+
+	    @include mq($from: col2) {
+			height: 3.9rem;
+	    }
+	}
+
+	tr{
+		border-bottom: 1px solid color(shade-4);
+	}
+	tfoot tr{
+		border-bottom: 0;
+		border-top: 1px solid color(shade-4);
+	}
+
+	tbody tr:last-child{
+		border-bottom: none;
+	}
+}
