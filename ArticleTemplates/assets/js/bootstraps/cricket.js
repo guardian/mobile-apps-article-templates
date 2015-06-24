@@ -19,8 +19,8 @@ define([
                 if(batsmen){
                     var batsmenHeight = batsmen.getBoundingClientRect().height;
                     var pages = Math.ceil(sheet.getBoundingClientRect().height / batsmenHeight);
-                    card.setAttribute('data-pages', pages);
                     if(pages > 1){
+                        card.setAttribute('data-pages', pages);
                         var bullets = '<div class="cricket-scorecard-bullets">';
                         for(var page = 0; page < pages; page++){
                             bullets += '<span class="' + (page === 0 ? 'cricket-scorecard-bullets--active' : '') + '"></span>';
