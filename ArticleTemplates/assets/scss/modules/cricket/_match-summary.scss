@@ -235,9 +235,14 @@
 
 .cricket-match-summary-footer{
 	@extend %base-match-table;
-	@extend %meta-padding;
 	white-space: nowrap;
 	border-bottom: 1px solid color(shade-4);
+}
+
+.cricket-match-summary-footer-wrap{
+	@extend %meta-padding;
+	overflow: scroll;
+	-webkit-overflow-scrolling: touch;
 }
 
 .cricket-footer-inning{
