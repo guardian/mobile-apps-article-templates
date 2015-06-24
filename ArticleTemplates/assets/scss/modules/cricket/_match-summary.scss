@@ -77,7 +77,13 @@
 .cricket-inning-team-name-crest{
 	width: 37px;
 	padding-right: base-px(.5);
-	box-sizing: content-box
+	box-sizing: content-box;
+
+    .cricket-inning-draw &,
+    .cricket-inning-delay &,
+    .cricket-inning-abandoned &{
+		display: none;
+	}
 }
 
 .cricket-inning-team{
@@ -110,6 +116,13 @@
 	@include mq($to: col2) {
         display: none;
     }
+
+    .cricket-inning-result &,
+    .cricket-inning-draw &,
+    .cricket-inning-delay &,
+    .cricket-inning-abandoned &{
+		display: none;
+	}
 }
 
 .cricket-scorecard-title{
@@ -153,11 +166,22 @@
 	b{
 		font-weight: bold;
 	}
+	em{
+		font-weight: bold;
+		font-style: normal;
+		color: color(tone-news-accent);
+	}
 }
 
 .cricket-inning-details-innings{
 	width: 66.6%;
 	padding-left: 37px + base-px(.5);
+
+	.cricket-inning-draw &,
+    .cricket-inning-delay &,
+    .cricket-inning-abandoned &{
+		padding-left: 0;
+	}
 }
 
 .cricket-inning-details-overs{

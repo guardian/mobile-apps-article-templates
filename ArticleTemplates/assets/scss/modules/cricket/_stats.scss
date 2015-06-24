@@ -123,3 +123,26 @@
 		border-bottom: none;
 	}
 }
+
+.cricket-stats__table--in-play{
+	font-weight: bold;
+	display: inline-block;
+	vertical-align: top;
+
+	&::before{
+		content: '';
+		display: inline-block;
+		position: relative;
+		bottom: 2px;
+		height: 20px;
+		width: 20px;
+		margin-right: 4px;
+		background: url(../img/cricket-dismissal.png);
+		background-repeat: no-repeat;
+		background-size: auto 20px;
+	}
+
+	& + .cricket-stats__takenby{
+		margin-top: -7px;
+	}
+}
