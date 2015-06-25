@@ -95,16 +95,15 @@ define([
 			expect(series.html()).to.be.equal('<span>Nigel </span><span>Slater </span><span>recipes </span><span>Nigel </span><span>Slater </span><span>recipes </span><br><span>Nigel </span><span>Slater </span><span>recipes </span>');
 		});
 
-		it('should normally load the interactive when the connection is present', function(done){
-			var testContent = bonzo.create('<figure class="interactive" data-interactive="fake_interactive"></figure>')[0];
-			$(testContent).appendTo(sandbox);
-			testContent.addEventListener('interactive-loaded', function(){
-				done();
-			}, false);
-			Common.modules.loadInteractives();
-		});
-
 		if (navigator.userAgent.indexOf('PhantomJS') < 0) {
+			it('should normally load the interactive when the connection is present', function(done){
+				var testContent = bonzo.create('<figure class="interactive" data-interactive="fake_interactive"></figure>')[0];
+				$(testContent).appendTo(sandbox);
+				testContent.addEventListener('interactive-loaded', function(){
+					done();
+				}, false);
+				Common.modules.loadInteractives();
+			});
 			it('should load a "content not available" placeholder on failure', function(done){
 				var testContent = bonzo.create('<figure class="interactive" data-interactive="nonexistant_interactive"></figure>')[0];
 				$(testContent).appendTo(sandbox);
