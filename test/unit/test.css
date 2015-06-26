@@ -3377,6 +3377,10 @@
     display: table-cell;
     width: 40%;
     color: #333; }
+    #sandbox .cricket-match-basic-info p {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
   #sandbox .cricket-match-basic-follow {
     display: table-cell;
     width: 60%;
@@ -4010,14 +4014,6 @@
     font-family: "Titlepiece", "Guardian Egyptian Web", sans-serif;
     font-size: 1.6667em;
     line-height: 1.6; }
-  #sandbox .tone--cricket .new_alerts {
-    margin: 0; }
-  #sandbox .tone--cricket .new_alerts, #sandbox .tone--cricket .new_alerts.following:active {
-    border-color: #dcdad5;
-    color: #999; }
-  #sandbox .tone--cricket a.new_alerts:not(.following):active, #sandbox .tone--cricket .new_alerts.following:not(:active) {
-    background-color: #999;
-    color: #fff; }
   #sandbox .tone--comment a {
     color: #e6711b; }
     #sandbox .tone--comment a:active {
@@ -4221,6 +4217,14 @@
   #sandbox .tone--liveBlog .section {
     color: #fff; }
   #sandbox .tone--liveBlog .content__series-label {
+    color: #fff; }
+  #sandbox .tone--liveBlog .cricket .new_alerts {
+    margin: 0; }
+  #sandbox .tone--liveBlog .cricket .new_alerts, #sandbox .tone--liveBlog .cricket .new_alerts.following:active {
+    border-color: #dcdad5;
+    color: #999; }
+  #sandbox .tone--liveBlog .cricket a.new_alerts:not(.following):active, #sandbox .tone--liveBlog .cricket .new_alerts.following:not(:active) {
+    background-color: #999;
     color: #fff; }
   #sandbox .tone--liveBlog.is-live a.touchpoint:active {
     color: #cc2b12; }
@@ -4618,6 +4622,14 @@
         color: #999; }
     #sandbox .tone--analysis .article__header .main-media__caption {
       background-color: #fff; }
+  #sandbox .tone--deadBlog .cricket .new_alerts {
+    margin: 0; }
+  #sandbox .tone--deadBlog .cricket .new_alerts, #sandbox .tone--deadBlog .cricket .new_alerts.following:active {
+    border-color: #dcdad5;
+    color: #999; }
+  #sandbox .tone--deadBlog .cricket a.new_alerts:not(.following):active, #sandbox .tone--deadBlog .cricket .new_alerts.following:not(:active) {
+    background-color: #999;
+    color: #fff; }
   #sandbox .tone--deadBlog .witness {
     margin-top: 12px; }
   #sandbox .tone--deadBlog a.touchpoint:active {
@@ -6838,6 +6850,9 @@
     background: #fff;
     border-top: 1px solid #4bc6df;
     color: #333; }
+    @media all and (max-width: 40.615em) {
+      #sandbox .cricket-stats__wrap {
+        margin: 0 12px; } }
   #sandbox .cricket-stats__header {
     display: table-cell;
     vertical-align: top;

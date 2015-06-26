@@ -10,8 +10,14 @@ define([
 
     var modules = {
         paginate: function(){
+
             var sheet = document.getElementById('cricket-scorecard-batsmen-sheet');
             var wrap = document.getElementById('cricket-scorecard-batsmen-wrap');
+
+            var updatePosition = function(){};
+            wrap.removeEventListener('animationiteration', updatePosition);
+            wrap.removeEventListener('webkitAnimationIteration', updatePosition);
+
             var card = document.getElementById('cricket-match-summary-scorecard');
             if(sheet && card){
                 var title = card.querySelector('.cricket-scorecard-title');
@@ -21,7 +27,7 @@ define([
                     var pages = Math.ceil(sheet.getBoundingClientRect().height / batsmenHeight);
                     if(pages > 1){
                         card.setAttribute('data-pages', pages);
-                        var bullets = '<div class="cricket-scorecard-bullets">';
+                        var bullets = '<div class="cricket-scorecard-bullets" id="cricket-scorecard-bullets">';
                         for(var page = 0; page < pages; page++){
                             bullets += '<span class="' + (page === 0 ? 'cricket-scorecard-bullets--active' : '') + '"></span>';
                         }
@@ -29,7 +35,8 @@ define([
 
                         var currentPage = 0;
                         var htmlBullets = title.querySelectorAll('.cricket-scorecard-bullets span');
-                        var updatePosition = function(){
+
+                        updatePosition = function(){
                             currentPage = ++currentPage % pages;
                             sheet.style.webkitTransform = sheet.style.transform = "TranslateY(" + ( -1 * currentPage * batsmenHeight) + "px)";
                             wrap.style.opacity = 0;
@@ -47,17 +54,26 @@ define([
                     }
                 }
             }
+        },
+        newCricketData: function(newHeader, newScorecard){
+            var header = document.getElementById('cricket-header');
+            var scorecard = document.getElementById('cricket-scorecard');
+
+            header.innerHTML = newHeader;
+            scorecard.innerHTML = newScorecard;
         }
     };
 
     var ready = function () {
         if (!this.initialised) {
             this.initialised = true;
-            modules.paginate();
+            //modules.paginate();
+            window.newCricketData = modules.newCricketData;
         }
     };
 
     return {
-        init: ready
+        init: ready,
+        modules: modules
     };
 });

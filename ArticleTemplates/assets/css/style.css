@@ -1567,6 +1567,10 @@ Display a match summary. The score is updated during the match.
   display: table-cell;
   width: 40%;
   color: #333; }
+  .cricket-match-basic-info p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
 
 .cricket-match-basic-follow {
   display: table-cell;
@@ -2318,15 +2322,6 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   font-size: 1.6667em;
   line-height: 1.6; }
 
-.tone--cricket .new_alerts {
-  margin: 0; }
-.tone--cricket .new_alerts, .tone--cricket .new_alerts.following:active {
-  border-color: #dcdad5;
-  color: #999; }
-.tone--cricket a.new_alerts:not(.following):active, .tone--cricket .new_alerts.following:not(:active) {
-  background-color: #999;
-  color: #fff; }
-
 .tone--comment a {
   color: #e6711b; }
   .tone--comment a:active {
@@ -2532,6 +2527,14 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .tone--liveBlog .section {
   color: #fff; }
 .tone--liveBlog .content__series-label {
+  color: #fff; }
+.tone--liveBlog .cricket .new_alerts {
+  margin: 0; }
+.tone--liveBlog .cricket .new_alerts, .tone--liveBlog .cricket .new_alerts.following:active {
+  border-color: #dcdad5;
+  color: #999; }
+.tone--liveBlog .cricket a.new_alerts:not(.following):active, .tone--liveBlog .cricket .new_alerts.following:not(:active) {
+  background-color: #999;
   color: #fff; }
 
 .tone--liveBlog.is-live a.touchpoint:active {
@@ -2963,6 +2966,14 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     }
 
 } */
+.tone--deadBlog .cricket .new_alerts {
+  margin: 0; }
+.tone--deadBlog .cricket .new_alerts, .tone--deadBlog .cricket .new_alerts.following:active {
+  border-color: #dcdad5;
+  color: #999; }
+.tone--deadBlog .cricket a.new_alerts:not(.following):active, .tone--deadBlog .cricket .new_alerts.following:not(:active) {
+  background-color: #999;
+  color: #fff; }
 .tone--deadBlog .witness {
   margin-top: 12px; }
 .tone--deadBlog a.touchpoint:active {
@@ -7039,6 +7050,9 @@ Display a team line-up including substitutions and bookings.
   background: #fff;
   border-top: 1px solid #4bc6df;
   color: #333; }
+  @media all and (max-width: 40.615em) {
+    .cricket-stats__wrap {
+      margin: 0 12px; } }
 
 .cricket-stats__header {
   display: table-cell;
