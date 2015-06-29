@@ -14,6 +14,30 @@ Article templates used within the Guardian’s next-generation iOS and Android a
 * run `npm install` 
 * run `bundle install`
 * copy config.sample.js to config.js and fill in the details
+```javascript
+module.exports = {
+
+	base: {
+		android: , // android 'ArticleTemplate' path, eg: /Users/sandropaganotti/Projects/guardian-app/android-news-app/android-news-app/build-types/debug/assets/templatesSubmodule/ArticleTemplates/
+		ios: ,// ios 'ArticleTemplate' path eg: /Users/sandropaganotti/Projects/guardian-app/ios-live/mobile-apps-article-templates/ArticleTemplates/
+		html: // html base path (where sits Gruntfile.js) eg: /Users/sandropaganotti/Projects/guardian-app/html-webview/
+	},
+
+	performance: {
+		server: // the URL that points to test/server.js (usually the LAN ip of the machine) eg: http://192.168.44.119
+	},
+
+	ios: {
+		sign: // developer sign eg: 
+		provisioning: // provisioning profile
+	},
+
+	sentry: {
+		dsn: // sentry DSN for this app 
+	}
+
+}
+```
 * run `grunt` 
 
 Grunt will provide the following services:
