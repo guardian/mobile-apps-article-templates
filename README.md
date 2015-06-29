@@ -3,10 +3,11 @@ Article templates used within the Guardian’s next-generation iOS and Android a
 
 ## Requirements
 * A Mac or Linux PC
-* Ruby >= v1.9.x. You may already have this, but run `ruby -v` to check which version you have installed.
+* Ruby >= v1.9.x. You may already have this, but run `ruby -v` to check which version you have installed. It is strongly suggested to use a Ruby Virtualizer (like [rbenv](https://github.com/sstephenson/rbenv), to avoid using sudo every time).
 * [Bundler](http://bundler.io). Install using `gem install bundler`.
 * [NodeJS](http://nodejs.org/). Install following the instructions from the website or with [NVM](https://github.com/creationix/nvm).
 * [Grunt](http://gruntjs.com/). Install using `npm install -g grunt grunt-cli`.
+* ImageMagick and PhantomJS, the best way to install these is through [brew](http://brew.sh/): `brew install phantomjs imagemagick`
 
 ## Usage
 * checkout the project in a separate directory, outside the iOs and the Android app.
