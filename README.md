@@ -3,16 +3,41 @@ Article templates used within the Guardian’s next-generation iOS and Android a
 
 ## Requirements
 * A Mac or Linux PC
-* Ruby >= v1.9.x. You may already have this, but run `ruby -v` to check which version you have installed.
+* Ruby >= v1.9.x. You may already have this, but run `ruby -v` to check which version you have installed. It is strongly suggested to use a Ruby Virtualizer (like [rbenv](https://github.com/sstephenson/rbenv), to avoid using sudo every time).
 * [Bundler](http://bundler.io). Install using `gem install bundler`.
 * [NodeJS](http://nodejs.org/). Install following the instructions from the website or with [NVM](https://github.com/creationix/nvm).
 * [Grunt](http://gruntjs.com/). Install using `npm install -g grunt grunt-cli`.
+* ImageMagick and PhantomJS, the best way to install these is through [brew](http://brew.sh/): `brew install phantomjs imagemagick`
 
 ## Usage
 * checkout the project in a separate directory, outside the iOs and the Android app.
 * run `npm install` 
 * run `bundle install`
 * copy config.sample.js to config.js and fill in the details
+```javascript
+module.exports = {
+
+	base: {
+		android: , // android 'ArticleTemplate' path, eg: /Users/sandropaganotti/Projects/guardian-app/android-news-app/android-news-app/build-types/debug/assets/templatesSubmodule/ArticleTemplates/
+		ios: ,// ios 'ArticleTemplate' path eg: /Users/sandropaganotti/Projects/guardian-app/ios-live/mobile-apps-article-templates/ArticleTemplates/
+		html: // html base path (where sits Gruntfile.js) eg: /Users/sandropaganotti/Projects/guardian-app/html-webview/
+	},
+
+	performance: {
+		server: // the URL that points to test/server.js (usually the LAN ip of the machine) eg: http://192.168.44.119
+	},
+
+	ios: {
+		sign: // developer sign eg: 
+		provisioning: // provisioning profile
+	},
+
+	sentry: {
+		dsn: // sentry DSN for this app 
+	}
+
+}
+```
 * run `grunt` 
 
 Grunt will provide the following services:
