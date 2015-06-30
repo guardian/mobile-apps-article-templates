@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         config = require('./config');
     }
     catch (e) {
-        console.log('Config module not found, trying an empty config');
+        console.log('Empty config will be used as config file failed to load with error:\n' + e);
         config = {
             base: {
                 android: '',
