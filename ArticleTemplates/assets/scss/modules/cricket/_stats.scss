@@ -2,11 +2,13 @@
 	display: table;
 	table-layout: fixed;
 	width: 100%;
-	padding-bottom: 20px;
+	background: color(shade-7);
+	padding-bottom: base-px(1);
+	margin-bottom: base-px(1);
+	border-bottom: 2px solid color(shade-4);
 }
 
 .cricket-stats__wrap{
-	background: color(shade-7);
 	border-top: 1px solid color(tone-news-accent);
 	color: color(shade-1);
 	@include mq($to: col2) {
@@ -150,7 +152,7 @@
 		margin-right: 4px;
 		background-image: url(../img/cricket-dismissal.png);
 		background-repeat: no-repeat;
-		background-size: auto 20px;
+		background-size: auto 48px;
 	}
 
 	& + .cricket-stats__takenby{

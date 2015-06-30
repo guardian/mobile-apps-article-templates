@@ -201,22 +201,27 @@ define([
                     if( tab.attr("aria-selected") !== 'true' ) {
                      
                         var activeTab = $('[aria-selected="true"]', tabContainer);
+                        var tabId = tab.attr("id");
+
                         $(activeTab.attr('href')).hide();
                         activeTab.attr("aria-selected", false);
 
                         $(tab.attr('href')).show();
                         tab.attr("aria-selected", true);
 
-                        switch(tab.attr("id")) {
+                        switch(tabId) {
                             case "football__tab--article":
                                 root.location.href = 'x-gu://football_tab_report';
                                 break;
                             case "football__tab--stats":
-                                modules.setPieChartSize();                        
+                                modules.setPieChartSize();
                                 root.location.href = 'x-gu://football_tab_stats';
                                 break;
                             case "football__tab--liveblog":
                                 root.location.href = 'x-gu://football_tab_liveblog';
+                                break;
+                            case "cricket__tab--liveblog":
+                            case "cricket__tab--stats":
                                 break;
                             default:
                                 root.location.href = 'x-gu://football_tab_unknown';

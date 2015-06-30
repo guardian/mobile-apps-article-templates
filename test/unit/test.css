@@ -75,6 +75,38 @@
   */
   /*doc
   ---
+  title: Alerts
+  name: alerts
+  category: Modules
+  ---
+  Display an alerts toggle.
+  
+  ```html_example
+  <a class="alerts">
+      <span class="alerts__state--unfollow">
+          <span data-icon="&#xe048;" aria-hidden="true"></span>
+          <span class="alerts__label">Follow contributor</span>
+      </span>
+      <span class="alerts__state--follow">
+          <span data-icon="&#xe049;" aria-hidden="true"></span>
+          <span class="alerts__label">Following contributor</span>
+      </span>
+  </a>
+  
+  <a class="alerts following">
+      <span class="alerts__state--unfollow">
+          <span data-icon="&#xe048;" aria-hidden="true"></span>
+          <span class="alerts__label">Follow contributor</span>
+      </span>
+      <span class="alerts__state--follow">
+          <span data-icon="&#xe049;" aria-hidden="true"></span>
+          <span class="alerts__label">Following contributor</span>
+      </span>
+  </a>
+  ```
+  */
+  /*doc
+  ---
   title: Avatar
   name: avatar
   category: Modules
@@ -170,6 +202,30 @@
       <div class="cutout__container" style="background-image: url(http://png-resizer.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2014/3/13/1394733748508/SeumasMilne.png?width=600);" id="cutout">
           <!--Content-->
       </div>
+  </div>
+  ```
+  */
+  /*doc
+  ---
+  title: Tabs
+  name: tabs
+  category: Modules
+  ---
+  Navigate between different sections of a page.
+  
+  ```html_example
+  <div role="tablist" class="tabs">
+      <ul class="inline-list">
+          <li role="presentation" class="inline-list__item">
+              <a role="tab" class="tab" id="tab--first" href="#" aria-controls="tabpanel--first" aria-selected="true">First</a>
+          </li><!--
+       --><li role="presentation" class="inline-list__item">
+              <a role="tab" class="tab" id="tab--second" href="#" aria-controls="tabpanel--second">Second</a>
+          </li><!--
+       --><li role="presentation" class="inline-list__item">
+              <a role="tab" class="tab" id="tab--third" href="#" aria-controls="tabpanel--third">Third</a>
+          </li>
+      </ul>
   </div>
   ```
   */
@@ -888,38 +944,6 @@
   */
   /*doc
   ---
-  title: Alerts
-  name: alerts
-  category: Modules
-  ---
-  Display an alerts toggle.
-  
-  ```html_example
-  <a class="alerts">
-      <span class="alerts__state--unfollow">
-          <span data-icon="&#xe048;" aria-hidden="true"></span>
-          <span class="alerts__label">Follow contributor</span>
-      </span>
-      <span class="alerts__state--follow">
-          <span data-icon="&#xe049;" aria-hidden="true"></span>
-          <span class="alerts__label">Following contributor</span>
-      </span>
-  </a>
-  
-  <a class="alerts following">
-      <span class="alerts__state--unfollow">
-          <span data-icon="&#xe048;" aria-hidden="true"></span>
-          <span class="alerts__label">Follow contributor</span>
-      </span>
-      <span class="alerts__state--follow">
-          <span data-icon="&#xe049;" aria-hidden="true"></span>
-          <span class="alerts__label">Following contributor</span>
-      </span>
-  </a>
-  ```
-  */
-  /*doc
-  ---
   title: Aside
   name: aside
   category: Modules
@@ -1004,30 +1028,6 @@
        --><li class="inline-list__item"><a href="#">Guardian</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
        --><li class="inline-list__item"><a href="#">Mobile</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
        --><li class="inline-list__item"><a href="#">Applications</a><span class="tags__separator" aria-hidden="true">&#183;</span></li>
-      </ul>
-  </div>
-  ```
-  */
-  /*doc
-  ---
-  title: Tabs
-  name: tabs
-  category: Modules
-  ---
-  Navigate between different sections of a page.
-  
-  ```html_example
-  <div role="tablist" class="tabs">
-      <ul class="inline-list">
-          <li role="presentation" class="inline-list__item">
-              <a role="tab" class="tab" id="tab--first" href="#" aria-controls="tabpanel--first" aria-selected="true">First</a>
-          </li><!--
-       --><li role="presentation" class="inline-list__item">
-              <a role="tab" class="tab" id="tab--second" href="#" aria-controls="tabpanel--second">Second</a>
-          </li><!--
-       --><li role="presentation" class="inline-list__item">
-              <a role="tab" class="tab" id="tab--third" href="#" aria-controls="tabpanel--third">Third</a>
-          </li>
       </ul>
   </div>
   ```
@@ -2554,6 +2554,66 @@
     #sandbox body {
       font-size: 1.8em;
       line-height: 1.444em; } }
+  #sandbox .alerts {
+    color: #005689;
+    font-family: "Guardian Agate Sans 1 Web", sans-serif;
+    display: inline-block; }
+    #sandbox .alerts [data-icon]::before {
+      margin-right: 4px;
+      font-size: 85%; }
+    #sandbox .alerts .alerts__state--follow {
+      display: none; }
+      #sandbox .alerts .alerts__state--follow [data-icon]::before {
+        color: #4bc6df; }
+    #sandbox .alerts.following .alerts__state--follow {
+      display: block; }
+    #sandbox .alerts.following .alerts__state--unfollow {
+      display: none; }
+  #sandbox .alerts__label {
+    font-weight: bold; }
+  #sandbox .new_alerts {
+    font-family: "Guardian Agate Sans 1 Web", sans-serif;
+    white-space: nowrap;
+    padding: 4px 12px 8px 12px;
+    margin: 6px 0px 0px -1px;
+    display: inline-block;
+    border-radius: 30px;
+    text-overflow: ellipsis;
+    vertical-align: bottom;
+    overflow: hidden;
+    max-width: 100%;
+    color: #005689;
+    border: 1px solid #005689;
+    transition: background-color 0.3s; }
+    @media all and (max-width: 40.615em) {
+      #sandbox .new_alerts {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.625em) {
+      #sandbox .new_alerts {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
+    #sandbox .new_alerts span[data-icon] {
+      display: inline-block;
+      vertical-align: bottom;
+      font-size: 1.8rem;
+      position: relative;
+      right: 3px;
+      top: 1px; }
+    #sandbox .new_alerts .alerts__state--follow {
+      display: none; }
+    #sandbox .new_alerts .alerts__label {
+      font-weight: normal; }
+    #sandbox .new_alerts.following:active {
+      color: #005689;
+      border: 1px solid #005689; }
+    #sandbox .new_alerts.following .alerts__state--follow {
+      display: block; }
+    #sandbox .new_alerts.following .alerts__state--unfollow {
+      display: none; }
+  #sandbox a.new_alerts:not(.following):active, #sandbox .new_alerts.following:not(:active) {
+    background-color: #005689;
+    color: #fff; }
   #sandbox .avatar {
     background-color: rgba(51, 51, 51, 0.075);
     border-radius: 100%;
@@ -2711,6 +2771,36 @@
       #sandbox .cutout .cutout__container {
         min-height: 320px;
         background-size: contain; } }
+  #sandbox .tabs {
+    color: #767676;
+    font-family: "Guardian Agate Sans 1 Web", sans-serif;
+    margin: 12px 0px;
+    clear: left; }
+    @media all and (max-width: 40.615em) {
+      #sandbox .tabs {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.625em) {
+      #sandbox .tabs {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
+    @media all and (max-width: 28.115em) {
+      #sandbox .tabs {
+        margin: 12px; } }
+    #sandbox .tabs .inline-list__item {
+      width: 33.3%; }
+    #sandbox .tabs .tab {
+      vertical-align: top;
+      border-top: 2px solid #dcdad5;
+      padding: 6px 12px 24px 3px;
+      display: block; }
+      #sandbox .tabs .tab[aria-selected="true"] {
+        color: #005689;
+        font-weight: bold;
+        border-top: 4px solid #005689;
+        padding-top: 4px; }
+    .android #sandbox .tabs {
+      margin: 12px; }
   #sandbox .loading {
     text-align: center;
     padding: 12px; }
@@ -3408,7 +3498,7 @@
     width: 37px;
     padding-right: 6px;
     box-sizing: content-box; }
-    .cricket-inning-draw #sandbox .cricket-inning-team-name-crest, .cricket-inning-delay #sandbox .cricket-inning-team-name-crest, .cricket-inning-abandoned #sandbox .cricket-inning-team-name-crest {
+    .cricket-inning-draw #sandbox .cricket-inning-team-name-crest, .cricket-inning-delay #sandbox .cricket-inning-team-name-crest, .cricket-inning-abandoned #sandbox .cricket-inning-team-name-crest, .cricket-inning-tea #sandbox .cricket-inning-team-name-crest, .cricket-inning-rain-delay #sandbox .cricket-inning-team-name-crest {
       display: none; }
   #sandbox .cricket-inning-team {
     display: table-cell;
@@ -3418,6 +3508,20 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden; }
+    .cricket-inning-tea #sandbox .cricket-inning-team-name:before, .cricket-inning-rain-delay #sandbox .cricket-inning-team-name:before {
+      content: '';
+      display: inline-block;
+      width: 37px;
+      padding-right: 6px;
+      height: 21px;
+      background: url(../img/cricket-dismissal.png);
+      background-repeat: no-repeat; }
+    .cricket-inning-tea #sandbox .cricket-inning-team-name:before {
+      background-size: auto 39px;
+      background-position: 2px -18px; }
+    .cricket-inning-rain-delay #sandbox .cricket-inning-team-name:before {
+      background-size: auto 44px;
+      background-position: -45px -20px; }
   #sandbox .cricket-inning-runs {
     display: table-cell;
     vertical-align: bottom;
@@ -3489,7 +3593,7 @@
       margin-right: 4px;
       background: url(../img/cricket-dismissal.png);
       background-repeat: no-repeat;
-      background-size: auto 20px; }
+      background-size: auto 48px; }
     #sandbox .cricket-scorecard-batsmen .cricket-scorecard-batsmen-status {
       margin-top: -2px; }
       #sandbox .cricket-scorecard-batsmen .cricket-scorecard-batsmen-status em {
@@ -5125,66 +5229,6 @@
     animation-name: blink; }
   #sandbox .section__live__pulse {
     -webkit-animation: blink 1.5s ease-in infinite; }
-  #sandbox .alerts {
-    color: #005689;
-    font-family: "Guardian Agate Sans 1 Web", sans-serif;
-    display: inline-block; }
-    #sandbox .alerts [data-icon]::before {
-      margin-right: 4px;
-      font-size: 85%; }
-    #sandbox .alerts .alerts__state--follow {
-      display: none; }
-      #sandbox .alerts .alerts__state--follow [data-icon]::before {
-        color: #4bc6df; }
-    #sandbox .alerts.following .alerts__state--follow {
-      display: block; }
-    #sandbox .alerts.following .alerts__state--unfollow {
-      display: none; }
-  #sandbox .alerts__label {
-    font-weight: bold; }
-  #sandbox .new_alerts {
-    font-family: "Guardian Agate Sans 1 Web", sans-serif;
-    white-space: nowrap;
-    padding: 4px 12px 8px 12px;
-    margin: 6px 0px 0px -1px;
-    display: inline-block;
-    border-radius: 30px;
-    text-overflow: ellipsis;
-    vertical-align: bottom;
-    overflow: hidden;
-    max-width: 100%;
-    color: #005689;
-    border: 1px solid #005689;
-    transition: background-color 0.3s; }
-    @media all and (max-width: 40.615em) {
-      #sandbox .new_alerts {
-        font-size: 1.4rem;
-        line-height: 2rem; } }
-    @media all and (min-width: 40.625em) {
-      #sandbox .new_alerts {
-        font-size: 1.6rem;
-        line-height: 2.2rem; } }
-    #sandbox .new_alerts span[data-icon] {
-      display: inline-block;
-      vertical-align: bottom;
-      font-size: 1.8rem;
-      position: relative;
-      right: 3px;
-      top: 1px; }
-    #sandbox .new_alerts .alerts__state--follow {
-      display: none; }
-    #sandbox .new_alerts .alerts__label {
-      font-weight: normal; }
-    #sandbox .new_alerts.following:active {
-      color: #005689;
-      border: 1px solid #005689; }
-    #sandbox .new_alerts.following .alerts__state--follow {
-      display: block; }
-    #sandbox .new_alerts.following .alerts__state--unfollow {
-      display: none; }
-  #sandbox a.new_alerts:not(.following):active, #sandbox .new_alerts.following:not(:active) {
-    background-color: #005689;
-    color: #fff; }
   #sandbox .aside {
     margin: 24px 0px;
     border-top: 1px dotted #dcdad5;
@@ -5329,36 +5373,6 @@
   #sandbox .tags__separator {
     font-weight: bold;
     margin: 0 4px; }
-  #sandbox .tabs {
-    color: #767676;
-    font-family: "Guardian Agate Sans 1 Web", sans-serif;
-    margin: 12px 0px;
-    clear: left; }
-    @media all and (max-width: 40.615em) {
-      #sandbox .tabs {
-        font-size: 1.4rem;
-        line-height: 2rem; } }
-    @media all and (min-width: 40.625em) {
-      #sandbox .tabs {
-        font-size: 1.6rem;
-        line-height: 2.2rem; } }
-    @media all and (max-width: 28.115em) {
-      #sandbox .tabs {
-        margin: 12px; } }
-    #sandbox .tabs .inline-list__item {
-      width: 33.3%; }
-    #sandbox .tabs .tab {
-      vertical-align: top;
-      border-top: 2px solid #dcdad5;
-      padding: 6px 12px 24px 3px;
-      display: block; }
-      #sandbox .tabs .tab[aria-selected="true"] {
-        color: #005689;
-        font-weight: bold;
-        border-top: 4px solid #005689;
-        padding-top: 4px; }
-    .android #sandbox .tabs {
-      margin: 12px; }
   .font-size-1 #sandbox .resizable {
     font-size: 70%;
     line-height: 1.5; }
@@ -6845,9 +6859,11 @@
     display: table;
     table-layout: fixed;
     width: 100%;
-    padding-bottom: 20px; }
-  #sandbox .cricket-stats__wrap {
     background: #fff;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #dcdad5; }
+  #sandbox .cricket-stats__wrap {
     border-top: 1px solid #4bc6df;
     color: #333; }
     @media all and (max-width: 40.615em) {
@@ -6960,7 +6976,7 @@
       margin-right: 4px;
       background-image: url(../img/cricket-dismissal.png);
       background-repeat: no-repeat;
-      background-size: auto 20px; }
+      background-size: auto 48px; }
     #sandbox .cricket-stats__table--in-play + .cricket-stats__takenby,
     #sandbox .cricket-stats__table--duck + .cricket-stats__takenby {
       margin-top: -7px; }

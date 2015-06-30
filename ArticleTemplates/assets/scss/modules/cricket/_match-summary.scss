@@ -87,7 +87,9 @@
 
     .cricket-inning-draw &,
     .cricket-inning-delay &,
-    .cricket-inning-abandoned &{
+    .cricket-inning-abandoned &,
+    .cricket-inning-tea &,
+    .cricket-inning-rain-delay &{
 		display: none;
 	}
 }
@@ -103,6 +105,27 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+
+    .cricket-inning-tea &:before,
+    .cricket-inning-rain-delay &:before{
+    	content: '';
+    	display: inline-block;
+    	width: 37px;
+    	padding-right: 6px;
+    	height: 21px;
+		background: url(../img/cricket-dismissal.png);
+		background-repeat: no-repeat;
+    }
+
+    .cricket-inning-tea &:before{
+    	background-size: auto 39px;
+		background-position: 2px -18px;
+    }
+
+    .cricket-inning-rain-delay &:before{
+		background-size: auto 44px;
+		background-position: -45px -20px;
+    }
 }
 
 .cricket-inning-runs{
@@ -211,7 +234,7 @@
 			margin-right: 4px;
 			background: url(../img/cricket-dismissal.png);
 			background-repeat: no-repeat;
-			background-size: auto 20px;
+			background-size: auto 48px;
 		}
 	}
 

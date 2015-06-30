@@ -162,6 +162,102 @@ html {
 
 /*doc
 ---
+title: Alerts
+name: alerts
+category: Modules
+---
+Display an alerts toggle.
+
+```html_example
+<a class="alerts">
+    <span class="alerts__state--unfollow">
+        <span data-icon="&#xe048;" aria-hidden="true"></span>
+        <span class="alerts__label">Follow contributor</span>
+    </span>
+    <span class="alerts__state--follow">
+        <span data-icon="&#xe049;" aria-hidden="true"></span>
+        <span class="alerts__label">Following contributor</span>
+    </span>
+</a>
+
+<a class="alerts following">
+    <span class="alerts__state--unfollow">
+        <span data-icon="&#xe048;" aria-hidden="true"></span>
+        <span class="alerts__label">Follow contributor</span>
+    </span>
+    <span class="alerts__state--follow">
+        <span data-icon="&#xe049;" aria-hidden="true"></span>
+        <span class="alerts__label">Following contributor</span>
+    </span>
+</a>
+```
+*/
+.alerts {
+  color: #005689;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  display: inline-block; }
+  .alerts [data-icon]::before {
+    margin-right: 4px;
+    font-size: 85%; }
+  .alerts .alerts__state--follow {
+    display: none; }
+    .alerts .alerts__state--follow [data-icon]::before {
+      color: #4bc6df; }
+  .alerts.following .alerts__state--follow {
+    display: block; }
+  .alerts.following .alerts__state--unfollow {
+    display: none; }
+
+.alerts__label {
+  font-weight: bold; }
+
+.new_alerts {
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  white-space: nowrap;
+  padding: 4px 12px 8px 12px;
+  margin: 6px 0px 0px -1px;
+  display: inline-block;
+  border-radius: 30px;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+  overflow: hidden;
+  max-width: 100%;
+  color: #005689;
+  border: 1px solid #005689;
+  transition: background-color 0.3s; }
+  @media all and (max-width: 40.615em) {
+    .new_alerts {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) {
+    .new_alerts {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  .new_alerts span[data-icon] {
+    display: inline-block;
+    vertical-align: bottom;
+    font-size: 1.8rem;
+    position: relative;
+    right: 3px;
+    top: 1px; }
+  .new_alerts .alerts__state--follow {
+    display: none; }
+  .new_alerts .alerts__label {
+    font-weight: normal; }
+  .new_alerts.following:active {
+    color: #005689;
+    border: 1px solid #005689; }
+  .new_alerts.following .alerts__state--follow {
+    display: block; }
+  .new_alerts.following .alerts__state--unfollow {
+    display: none; }
+
+a.new_alerts:not(.following):active, .new_alerts.following:not(:active) {
+  background-color: #005689;
+  color: #fff; }
+
+/*doc
+---
 title: Avatar
 name: avatar
 category: Modules
@@ -427,6 +523,61 @@ Display a large image of contributor in background of container.
     .cutout .cutout__container {
       min-height: 320px;
       background-size: contain; } }
+
+/*doc
+---
+title: Tabs
+name: tabs
+category: Modules
+---
+Navigate between different sections of a page.
+
+```html_example
+<div role="tablist" class="tabs">
+    <ul class="inline-list">
+        <li role="presentation" class="inline-list__item">
+            <a role="tab" class="tab" id="tab--first" href="#" aria-controls="tabpanel--first" aria-selected="true">First</a>
+        </li><!--
+     --><li role="presentation" class="inline-list__item">
+            <a role="tab" class="tab" id="tab--second" href="#" aria-controls="tabpanel--second">Second</a>
+        </li><!--
+     --><li role="presentation" class="inline-list__item">
+            <a role="tab" class="tab" id="tab--third" href="#" aria-controls="tabpanel--third">Third</a>
+        </li>
+    </ul>
+</div>
+```
+*/
+.tabs {
+  color: #767676;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  margin: 12px 0px;
+  clear: left; }
+  @media all and (max-width: 40.615em) {
+    .tabs {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) {
+    .tabs {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  @media all and (max-width: 28.115em) {
+    .tabs {
+      margin: 12px; } }
+  .tabs .inline-list__item {
+    width: 33.3%; }
+  .tabs .tab {
+    vertical-align: top;
+    border-top: 2px solid #dcdad5;
+    padding: 6px 12px 24px 3px;
+    display: block; }
+    .tabs .tab[aria-selected="true"] {
+      color: #005689;
+      font-weight: bold;
+      border-top: 4px solid #005689;
+      padding-top: 4px; }
+  .android .tabs {
+    margin: 12px; }
 
 /*doc
 ---
@@ -1604,7 +1755,7 @@ Display a match summary. The score is updated during the match.
   width: 37px;
   padding-right: 6px;
   box-sizing: content-box; }
-  .cricket-inning-draw .cricket-inning-team-name-crest, .cricket-inning-delay .cricket-inning-team-name-crest, .cricket-inning-abandoned .cricket-inning-team-name-crest {
+  .cricket-inning-draw .cricket-inning-team-name-crest, .cricket-inning-delay .cricket-inning-team-name-crest, .cricket-inning-abandoned .cricket-inning-team-name-crest, .cricket-inning-tea .cricket-inning-team-name-crest, .cricket-inning-rain-delay .cricket-inning-team-name-crest {
     display: none; }
 
 .cricket-inning-team {
@@ -1616,6 +1767,20 @@ Display a match summary. The score is updated during the match.
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden; }
+  .cricket-inning-tea .cricket-inning-team-name:before, .cricket-inning-rain-delay .cricket-inning-team-name:before {
+    content: '';
+    display: inline-block;
+    width: 37px;
+    padding-right: 6px;
+    height: 21px;
+    background: url(../img/cricket-dismissal.png);
+    background-repeat: no-repeat; }
+  .cricket-inning-tea .cricket-inning-team-name:before {
+    background-size: auto 39px;
+    background-position: 2px -18px; }
+  .cricket-inning-rain-delay .cricket-inning-team-name:before {
+    background-size: auto 44px;
+    background-position: -45px -20px; }
 
 .cricket-inning-runs {
   display: table-cell;
@@ -1696,7 +1861,7 @@ Display a match summary. The score is updated during the match.
     margin-right: 4px;
     background: url(../img/cricket-dismissal.png);
     background-repeat: no-repeat;
-    background-size: auto 20px; }
+    background-size: auto 48px; }
   .cricket-scorecard-batsmen .cricket-scorecard-batsmen-status {
     margin-top: -2px; }
     .cricket-scorecard-batsmen .cricket-scorecard-batsmen-status em {
@@ -3662,102 +3827,6 @@ Blink:
 
 /*doc
 ---
-title: Alerts
-name: alerts
-category: Modules
----
-Display an alerts toggle.
-
-```html_example
-<a class="alerts">
-    <span class="alerts__state--unfollow">
-        <span data-icon="&#xe048;" aria-hidden="true"></span>
-        <span class="alerts__label">Follow contributor</span>
-    </span>
-    <span class="alerts__state--follow">
-        <span data-icon="&#xe049;" aria-hidden="true"></span>
-        <span class="alerts__label">Following contributor</span>
-    </span>
-</a>
-
-<a class="alerts following">
-    <span class="alerts__state--unfollow">
-        <span data-icon="&#xe048;" aria-hidden="true"></span>
-        <span class="alerts__label">Follow contributor</span>
-    </span>
-    <span class="alerts__state--follow">
-        <span data-icon="&#xe049;" aria-hidden="true"></span>
-        <span class="alerts__label">Following contributor</span>
-    </span>
-</a>
-```
-*/
-.alerts {
-  color: #005689;
-  font-family: "Guardian Agate Sans 1 Web", sans-serif;
-  display: inline-block; }
-  .alerts [data-icon]::before {
-    margin-right: 4px;
-    font-size: 85%; }
-  .alerts .alerts__state--follow {
-    display: none; }
-    .alerts .alerts__state--follow [data-icon]::before {
-      color: #4bc6df; }
-  .alerts.following .alerts__state--follow {
-    display: block; }
-  .alerts.following .alerts__state--unfollow {
-    display: none; }
-
-.alerts__label {
-  font-weight: bold; }
-
-.new_alerts {
-  font-family: "Guardian Agate Sans 1 Web", sans-serif;
-  white-space: nowrap;
-  padding: 4px 12px 8px 12px;
-  margin: 6px 0px 0px -1px;
-  display: inline-block;
-  border-radius: 30px;
-  text-overflow: ellipsis;
-  vertical-align: bottom;
-  overflow: hidden;
-  max-width: 100%;
-  color: #005689;
-  border: 1px solid #005689;
-  transition: background-color 0.3s; }
-  @media all and (max-width: 40.615em) {
-    .new_alerts {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
-    .new_alerts {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-  .new_alerts span[data-icon] {
-    display: inline-block;
-    vertical-align: bottom;
-    font-size: 1.8rem;
-    position: relative;
-    right: 3px;
-    top: 1px; }
-  .new_alerts .alerts__state--follow {
-    display: none; }
-  .new_alerts .alerts__label {
-    font-weight: normal; }
-  .new_alerts.following:active {
-    color: #005689;
-    border: 1px solid #005689; }
-  .new_alerts.following .alerts__state--follow {
-    display: block; }
-  .new_alerts.following .alerts__state--unfollow {
-    display: none; }
-
-a.new_alerts:not(.following):active, .new_alerts.following:not(:active) {
-  background-color: #005689;
-  color: #fff; }
-
-/*doc
----
 title: Aside
 name: aside
 category: Modules
@@ -3998,61 +4067,6 @@ Display which keywords an article has been tagged with.
 .tags__separator {
   font-weight: bold;
   margin: 0 4px; }
-
-/*doc
----
-title: Tabs
-name: tabs
-category: Modules
----
-Navigate between different sections of a page.
-
-```html_example
-<div role="tablist" class="tabs">
-    <ul class="inline-list">
-        <li role="presentation" class="inline-list__item">
-            <a role="tab" class="tab" id="tab--first" href="#" aria-controls="tabpanel--first" aria-selected="true">First</a>
-        </li><!--
-     --><li role="presentation" class="inline-list__item">
-            <a role="tab" class="tab" id="tab--second" href="#" aria-controls="tabpanel--second">Second</a>
-        </li><!--
-     --><li role="presentation" class="inline-list__item">
-            <a role="tab" class="tab" id="tab--third" href="#" aria-controls="tabpanel--third">Third</a>
-        </li>
-    </ul>
-</div>
-```
-*/
-.tabs {
-  color: #767676;
-  font-family: "Guardian Agate Sans 1 Web", sans-serif;
-  margin: 12px 0px;
-  clear: left; }
-  @media all and (max-width: 40.615em) {
-    .tabs {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
-    .tabs {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-  @media all and (max-width: 28.115em) {
-    .tabs {
-      margin: 12px; } }
-  .tabs .inline-list__item {
-    width: 33.3%; }
-  .tabs .tab {
-    vertical-align: top;
-    border-top: 2px solid #dcdad5;
-    padding: 6px 12px 24px 3px;
-    display: block; }
-    .tabs .tab[aria-selected="true"] {
-      color: #005689;
-      font-weight: bold;
-      border-top: 4px solid #005689;
-      padding-top: 4px; }
-  .android .tabs {
-    margin: 12px; }
 
 /*doc
 ---
@@ -7044,10 +7058,12 @@ Display a team line-up including substitutions and bookings.
   display: table;
   table-layout: fixed;
   width: 100%;
-  padding-bottom: 20px; }
+  background: #fff;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #dcdad5; }
 
 .cricket-stats__wrap {
-  background: #fff;
   border-top: 1px solid #4bc6df;
   color: #333; }
   @media all and (max-width: 40.615em) {
@@ -7169,7 +7185,7 @@ Display a team line-up including substitutions and bookings.
     margin-right: 4px;
     background-image: url(../img/cricket-dismissal.png);
     background-repeat: no-repeat;
-    background-size: auto 20px; }
+    background-size: auto 48px; }
   .cricket-stats__table--in-play + .cricket-stats__takenby,
   .cricket-stats__table--duck + .cricket-stats__takenby {
     margin-top: -7px; }
