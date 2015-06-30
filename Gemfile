@@ -10,5 +10,5 @@ group :development do
 	gem 'guard-jslint-on-rails'
 	gem 'faye-websocket'
   	gem 'json'
-  	gem 'wraith'
+  	gem 'wraith', '2.3.2'
 end
