@@ -45,7 +45,7 @@ Grunt will provide the following services:
 * `grunt shell:wraith` it launches a wraith session for visual regression testing. Results can be found pointing the browser to [localhost:3000](localhost:3000/root/test/visual/shots/gallery.html).
 
 These services are also available packed into recipes
-* `grunt build --sentry` concatenate and minify javascript files, check javascript syntax, check scss syntax, generate css files. Use the `--sentry` flag if you want the resulting files to include the websentry integration. It uses the value of `sentry.dsn`.
+* `grunt build --sentry` concatenate and minify javascript files, check javascript syntax, check scss syntax, generate css files. Use the `--sentry` flag if you want the resulting files to include the [websentry](https://getsentry.com/welcome/) integration. It uses the value of `sentry.dsn`.
 * `grunt apk --card=1234` it launches `build` then `rsync` and then `shell:android` to make sure that the resulting build contains the current files from the project and not some stale files.  
 * `grunt ipa` it launches `build` then `rsync` and then `shell:ios`.
 * `grunt installer --card=1234` it launches `apk` and `ipa` in sequence.
