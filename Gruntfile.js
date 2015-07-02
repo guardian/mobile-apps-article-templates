@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         config = require('./config');
     }
     catch (e) {
-        console.log('Config module not found, trying an empty config');
+        console.log('Empty config will be used as config file failed to load with error:\n' + e);
         config = {
             base: {
                 android: '',
@@ -213,7 +213,7 @@ module.exports = function(grunt) {
         shell: {
             android: {
                 command: function(){
-                    return 'cd ' + config.base.android + '../../../../../../  && export BUILD_NUMBER=' + grunt.option('card') + ' && ./gradlew zipTemplates && ./gradlew assembleDebug && cp android-news-app/build/outputs/apk/android-news-app-debug.apk ' + config.base.html;
+                    return 'echo "Building Android app with gradle" && cd ' + config.base.android + '../../../../../../ && export BUILD_NUMBER=' + grunt.option('card') || "000"  + '  && ./gradlew zipTemplates > android-build.log && ./gradlew assembleDebug >> android-build.log && cp android-news-app/build/outputs/apk/android-news-app-debug.apk ' + config.base.html;
                 }
             },
             ios: {
@@ -222,7 +222,7 @@ module.exports = function(grunt) {
                         maxBuffer: 30000000
                     }
                 },
-                command: 'cd ' + config.base.ios + '../../GLA/ && xcodebuild clean build -sdk iphoneos8.3 -configuration Debug -workspace GLA.xcworkspace -scheme GLADebug -derivedDataPath ' + config.base.html + ' && xcrun -sdk iphoneos8.3 PackageApplication -v ' + config.base.html + 'Build/Products/Debug-iphoneos/GLA.app -o ' + config.base.html + 'guardian-debug.ipa --sign "' + config.ios.sign + '" --embed "' + config.ios.provisioning + '"'
+                command: ' echo "Building iOS app with xcodebuild" && cd ' + config.base.ios + '../../GLA/ && xcodebuild clean build -sdk iphoneos8.3 -configuration Debug -workspace GLA.xcworkspace -scheme GLADebug -derivedDataPath ' + config.base.html + ' > ios-build.log && xcrun -sdk iphoneos8.3 PackageApplication -v ' + config.base.html + 'Build/Products/Debug-iphoneos/GLA.app -o ' + config.base.html + 'guardian-debug.ipa --sign "' + config.ios.sign + '" --embed "' + config.ios.provisioning + '" >> ios-build.log'
             },
             timeline: {
                 command: function(){

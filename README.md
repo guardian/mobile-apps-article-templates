@@ -14,30 +14,17 @@ Article templates used within the Guardian’s next-generation iOS and Android a
 * run `npm install` 
 * run `bundle install`
 * copy config.sample.js to config.js and fill in the details
-```javascript
-module.exports = {
-
-	base: {
-		android: , // android 'ArticleTemplate' path, eg: /Users/sandropaganotti/Projects/guardian-app/android-news-app/android-news-app/build-types/debug/assets/templatesSubmodule/ArticleTemplates/
-		ios: ,// ios 'ArticleTemplate' path eg: /Users/sandropaganotti/Projects/guardian-app/ios-live/mobile-apps-article-templates/ArticleTemplates/
-		html: // html base path (where sits Gruntfile.js) eg: /Users/sandropaganotti/Projects/guardian-app/html-webview/
-	},
-
-	performance: {
-		server: // the URL that points to test/server.js (usually the LAN ip of the machine) eg: http://192.168.44.119
-	},
-
-	ios: {
-		sign: // developer sign eg: 
-		provisioning: // provisioning profile
-	},
-
-	sentry: {
-		dsn: // sentry DSN for this app 
-	}
-
-}
-```
+    * `base.android` is the 'ArticleTemplate' path within the Android app, eg: `'/Users/sandropaganotti/Projects/guardian-app/android-news-app/android-news-app/src/debug/assets/templatesSubmodule/ArticleTemplates/'`
+    * `base.ios` is the 'ArticleTemplate' path within the iOs app, eg: `/Users/sandropaganotti/Projects/guardian-app/ios-live/mobile-apps-article-templates/ArticleTemplates/`
+    * `base.html` is the path where this repository has been checked out, eg: `/Users/sandropaganotti/Projects/guardian-app/html-webview/`
+    * `performance.server` is the URL that points to your local machine, you can use `http://127.0.0.1` temporarily but you'll need to switch it to the LAN IP if you want to use the performance testing on an external device.
+    * `ios.sign` and `ios.provisioning`. This is more tricky, these two values can be extracted following this procedure:
+        * from a terminal go to the folder `GLA` within the `ios-live` repository
+        * run `xcodebuild build -sdk iphoneos8.3 -configuration Debug -workspace GLA.xcworkspace -scheme GLADebug`
+        * read the (very long) output log, at the end there are two rows `Signing Identity:` and `Provisioning Profile:`
+        * use the value of `Signing Identity:` for `ios.sign`
+        * look on your hard drive for a file named after the `Provisioning Profile:` - the part between the brakets, eg: if your `Provisioning Profile:` value is (`123456-3136-4783-95e8-ac71ca306f46`) you need to look for a file named `123456-3136-4783-95e8-ac71ca306f46.mobileprovision` eg: `/Users/sandropaganotti/Library/MobileDevice/Provisioning Profiles/123456-3136-4783-95e8-ac71ca306f46.mobileprovision` and use that path for the `ios.provisioning`
+    * `sentry.dsn` go to the Sentry [configuration page](https://app.getsentry.com/docs/platforms/javascript/?pid=40557) - be sure to be logged in on Sentry - and copy the value from the example code that starts with `Raven.config(...`. Eg: with `Raveg.config('1234')` `sentry.dsn = '1234'`
 * run `grunt` 
 
 Grunt will provide the following services:
@@ -93,4 +80,4 @@ push = +refs/heads/master:refs/heads/master
 This project uses Sentry to monitor errors and failures. Sentry can be configured by adding the appropriate dsn in the config.js file (have a look at config.sample.js for reference). Sentry is disabled by default, in order not to be used during debugging sessions. To enable it use the --sentry flag while building. (eg: `grunt build --sentry`).
 
 ## APKs and IPAs
-When everything is properly configured type `grunt installer` to create in the root folder of the project the debuggable APK and IPA.
+When everything is properly configured type `grunt installer --card 123` to create a debuggable APK and IPA in the root folder of the project. Replace `123` with the number of a relevant Jira card for this build, as it will be appended to the version number in the app for reference.
