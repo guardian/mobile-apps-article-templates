@@ -14,7 +14,7 @@ Article templates used within the Guardian’s next-generation iOS and Android a
 * run `npm install` 
 * run `bundle install`
 * copy config.sample.js to config.js and fill in the details
-    * `base.android` is the 'ArticleTemplate' path within the Android app, eg: `'/Users/sandropaganotti/Projects/guardian-app/android-news-app/android-news-app/build-types/debug/assets/templatesSubmodule/ArticleTemplates/'`
+    * `base.android` is the 'ArticleTemplate' path within the Android app, eg: `'/Users/sandropaganotti/Projects/guardian-app/android-news-app/android-news-app/src/debug/assets/templatesSubmodule/ArticleTemplates/'`
     * `base.ios` is the 'ArticleTemplate' path within the iOs app, eg: `/Users/sandropaganotti/Projects/guardian-app/ios-live/mobile-apps-article-templates/ArticleTemplates/`
     * `base.html` is the path where this repository has been checked out, eg: `/Users/sandropaganotti/Projects/guardian-app/html-webview/`
     * `performance.server` is the URL that points to your local machine, you can use `http://127.0.0.1` temporarily but you'll need to switch it to the LAN IP if you want to use the performance testing on an external device.
