@@ -80,4 +80,4 @@ push = +refs/heads/master:refs/heads/master
 This project uses Sentry to monitor errors and failures. Sentry can be configured by adding the appropriate dsn in the config.js file (have a look at config.sample.js for reference). Sentry is disabled by default, in order not to be used during debugging sessions. To enable it use the --sentry flag while building. (eg: `grunt build --sentry`).
 
 ## APKs and IPAs
-When everything is properly configured type `grunt installer` to create in the root folder of the project the debuggable APK and IPA.
+When everything is properly configured type `grunt installer --card 123` to create a debuggable APK and IPA in the root folder of the project. Replace `123` with the number of a relevant Jira card for this build, as it will be appended to the version number in the app for reference.
