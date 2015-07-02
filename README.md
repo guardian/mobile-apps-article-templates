@@ -74,6 +74,7 @@ article1_s3_nocss
 * head to `http://localhost:3000/performances/#yoursession` to see the results
 
 ## Visual Regressions
+![](https://raw.githubusercontent.com/guardian/mobile-apps-article-templates/master/test/visual/_cover.png)
 Use this feature to check for CSS regressions:
 * install imagemagick and phantomjs (eg: `brew install phantomjs imagemagick`)
 * run `grunt`
