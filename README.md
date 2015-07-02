@@ -54,10 +54,14 @@ These services are also available packed into recipes
 _By simply running `grunt` (without any argument) the system runs the server, then it keeps watching for changes reacting with the appropriate tasks._
 
 ## Experimental performance measurement
+![](https://raw.githubusercontent.com/guardian/mobile-apps-article-templates/master/Performance/_cover.png)
 This feature allows us to record several timelines from a page loaded into the device and then it extracts some 
 particular features (such as frame rate, page load time and more) and it creates a chart for it. 
 To use this feature there are a few steps involved:
+* make sure to use an Android device.
+* make sure to have the Android SDK installer and `adb` in `PATH`.
 * make sure your device can reach your laptop over LAN and fill the `performance.server` field in `config.js` with your laptop LAN address (eg: `http://192.168.1.1`)
+    * a nice way to achieve this is by using bluetooth tethering between the laptop and the device.
 * connect your device over USB and open chrome
 * collect the page you want to test under test/fixture folder and be sure to add the session name to each page. Session names should be used during measurements to describe the device used and any other extra features, e.g.
 ```bash
@@ -66,9 +70,8 @@ article1_s3_nocss
 -->
 ```
 * run `grunt`
-* in a separate shell run `grunt shell:timeline --fixture=article1.html --times=10` where article1.html is the name of the fixture you want to load and 10 is the number of timelines you want to record
-* head to http://localhost:3000/performances/#yoursession to see the results
-* individual timelines are also recorded under `/Performance/timelines` and CSVs of each session under `/Performance/session`
+* in a separate shell run `grunt shell:timeline --fixture=article1.html --times=10` where `article1.html` is the name of the fixture you want to load and 10 is the number of timelines you want to record
+* head to `http://localhost:3000/performances/#yoursession` to see the results
 
 ## Visual Regressions
 Use this feature to check for CSS regressions:
