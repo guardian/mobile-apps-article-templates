@@ -2,17 +2,19 @@
 Article templates used within the Guardian’s next-generation iOS and Android applications. This repo also contains documentation that describes the components and layouts used across these templates.
 
 ## Requirements
-* A Mac or Linux PC
-* Ruby >= v1.9.x. You may already have this, but run `ruby -v` to check which version you have installed. It is strongly suggested to use a Ruby Virtualizer (like [rbenv](https://github.com/sstephenson/rbenv), to avoid using sudo every time).
-* [Bundler](http://bundler.io). Install using `gem install bundler`.
-* [NodeJS](http://nodejs.org/). Install following the instructions from the website or with [NVM](https://github.com/creationix/nvm).
+* A Mac or Linux PC.
+* [brew](http://brew.sh/) as a package manager.
+* [rbenv](https://github.com/sstephenson/rbenv). Install it using brew `brew install rbenv ruby-build`. Remember to add `eval "$(rbenv init -)"` to `~/.profile`.
+* [NVM](https://github.com/creationix/nvm). 
+* [NodeJS](http://nodejs.org/). Install using nvm: `nvm install v0.12.5`. Remember to add `nvm use v0.12.5` to `~/.profile`.
 * [Grunt](http://gruntjs.com/). Install using `npm install -g grunt grunt-cli`.
-* ImageMagick and PhantomJS, the best way to install these is through [brew](http://brew.sh/): `brew install phantomjs imagemagick`
+* ImageMagick and PhantomJS. Install using brew: `brew install phantomjs imagemagick`.
 
 ## Usage
 * checkout the project in a separate directory, outside the iOs and the Android app.
-* run `npm install` 
-* run `bundle install`
+* run `rbenv install && gem install bundler && source ~/.profile`.
+* run `npm install`. 
+* run `bundle install`.
 * copy config.sample.js to config.js and fill in the details
     * `base.android` is the 'ArticleTemplate' path within the Android app, eg: `'/Users/sandropaganotti/Projects/guardian-app/android-news-app/android-news-app/src/debug/assets/templatesSubmodule/ArticleTemplates/'`
     * `base.ios` is the 'ArticleTemplate' path within the iOs app, eg: `/Users/sandropaganotti/Projects/guardian-app/ios-live/mobile-apps-article-templates/ArticleTemplates/`
