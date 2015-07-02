@@ -35,16 +35,22 @@ Grunt will provide the following services:
 * `grunt sass` it generated the CSS files from SASS.
 * `grunt scsslint` it launches the SASS syntax checker against our codebase.
 * `grunt hologram` it generates/updates the visual styleguide. To see the guide `grunt express watch` and then point your browser to [localhost:3000](http://localhost:3000).
+* `grunt jshint` it performs a syntax checking on the current js codebase.
+* `grunt mocha:dev` it runs the tests on PhantomJS. The tests can be also run by loading directly the [runner.html](localhost:3000/root/test/unit/runner.html) page in a web browser.
+* `grunt mocha:jenkins` it runs the tests on PhantomJS using the XML export.
 * `grunt shell:android --card=1234` it generates a `android-news-app-debug.apk` file using the current project files. The `card` parameter is used to specificy the jira card number, so if the ticket is `AND-1234` card is equal to `1234`. This command only works if the Android SDK is installed and `adb` is in `PATH`.
 * `grunt shell:ios` it generates a `guardian-debug.ipa` file using the current project files. This command only works if XCode is installed and `ios.sign` and `ios.provisioning` have been filled.
 * `grunt shell:timeline --fixture=filename --times=20` it launches a telemetry session on file `filename` repeated `times` times. See the `Experimental performance measurement` section for more information.
 * `grunt shell:wraithhistory` it setup a [wraith](https://github.com/BBC-News/wraith) session for visual regression testing. See the `Visual Regression` section for more information.
 * `grunt shell:wraith` it launches a wraith session for visual regression testing. Results can be found pointing the browser to [localhost:3000](localhost:3000/root/test/visual/shots/gallery.html).
+* 
 
 These services are also available packed into recipes
 * `grunt build --sentry` concatenate and minify javascript files, check javascript syntax, check scss syntax, generate css files. Use the `--sentry` flag if you want the resulting files to include the websentry integration. It uses the value of `sentry.dsn`.
 * `grunt apk --card=1234` it launches `build` then `rsync` and then `shell:android` to make sure that the resulting build contains the current files from the project and not some stale files.  
 * `grunt ipa` it launches `build` then `rsync` and then `shell:ios`.
+* `grunt installer --card=1234` it launches `apk` and `ipa` in sequence.
+* `grunt test` it launches `build` and then all the test using `mocha`.
 
 
 ## Experimental performance measurement
