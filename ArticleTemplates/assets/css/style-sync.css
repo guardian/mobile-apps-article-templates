@@ -1677,6 +1677,114 @@ Display a match summary. The score is updated during the match.
       font-size: 1.6rem;
       line-height: 2.2rem; } }
 
+/*doc
+---
+title: Cricket
+name: cricket
+category: Modules
+---
+Displays a cricket header.
+
+```html_example
+        <div id="cricket-header">
+            <div class="cricket-game-in-play">
+                <div class="cricket-game-in-play-text">
+                    This game is in play
+                </div>
+                <a href="#" class="cricket-game-in-play-follow">
+                    <span class="cricket-game-in-play-link">Find it here</span>
+                    <span class="cricket-game-in-play-icon" data-icon="&#xe00b;" aria-hidden="true"></span>
+                </a>
+            </div>
+            <div class="cricket-match-summary-head">
+                <div class="cricket-match-basic-info">
+                    <p>Test 1 Test 1 Test 1 Test 1 Test 1 Test 1 Test 1 Test 1 Test 1, Day 1</p>
+                    <p>Cardiff</p>
+                </div>
+                <div class="cricket-match-basic-follow">
+                    <a class="new_alerts __LIVEBLOG_FOLLOWING__" href="x-gu://follow/__LIVEBLOG_FOLLOWING__" data-follow-alert-id="__LIVEBLOG_FOLLOWING__">
+                        <span class="alerts__state--unfollow">
+                            <span data-icon="&#xe090;" aria-hidden="true"></span>
+                            <span class="alerts__label">Follow the match</span>
+                        </span>
+                        <span class="alerts__state--follow">
+                            <span data-icon="&#xe062;" aria-hidden="true"></span>
+                            <span class="alerts__label">Following the match</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="cricket-match-summary-result cricket-inning-rain-delay">
+                <div class="cricket-match-summary-last-inning">
+                    <div class="cricket-inning">
+                        <div class="cricket-inning-team">
+                            <div class="cricket-inning-team-wrap">
+                                <h2 class="cricket-inning-team-name">
+                                    <img class="cricket-inning-team-name-crest" src="eng.jpg">England England England England England
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="cricket-inning-runs">
+                            256 - 10
+                        </div>
+                    </div>
+                    <div class="cricket-inning-details">
+                        <div class="cricket-inning-details-innings">
+                            <b>1st</b> innings
+                        </div>
+                        <div class="cricket-inning-details-overs">
+                            <b>8.6</b> overs
+                        </div>
+                    </div>
+                </div>
+                <div class="cricket-match-summary-scorecard" id="cricket-match-summary-scorecard">
+                    <div class="cricket-scorecard-title">
+                        <b>Scorecard</b> - England 1st Innings
+                    </div>
+                    <div class="cricket-scorecard-batsmen-wrap" id="cricket-scorecard-batsmen-wrap">
+                        <div class="cricket-scorecard-batsmen-sheet" id="cricket-scorecard-batsmen-sheet">
+                            <div class="cricket-scorecard-batsmen cricket-scorecard-batsmen-in-play">
+                                <p class="cricket-scorecard-batsmen-name">Cook &#8212; 13</p>
+                                <p class="cricket-scorecard-batsmen-status">in play</p>
+                            </div><div class="cricket-scorecard-batsmen cricket-scorecard-batsmen-in-play">
+                                <p class="cricket-scorecard-batsmen-name">Trott &#8212; 13</p>
+                                <p class="cricket-scorecard-batsmen-status">in play</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cricket-match-summary-footer">
+                <div class="cricket-match-summary-footer-wrap">
+                    <div class="cricket-footer-inning">
+                        <p class="cricket-footer-inning-line">
+                            <b>ENG - 1st</b>
+                        </p>
+                        <p class="cricket-footer-inning-line">
+                            350 all out
+                        </p>
+                    </div>
+                    <div class="cricket-footer-inning">
+                        <p class="cricket-footer-inning-line">
+                            <b>AUS - 1st</b>
+                        </p>
+                        <p class="cricket-footer-inning-line">
+                            389 all out
+                        </p>
+                    </div>
+                    <div class="cricket-footer-inning">
+                        <p class="cricket-footer-inning-line">
+                            <b>ENG - 2nd</b>
+                        </p>
+                        <p class="cricket-footer-inning-line">
+                            453 dec
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+```
+*/
 .cricket-match-summary-head, .cricket-match-summary-result, .cricket-match-summary-footer {
   display: table;
   width: 100%;
