@@ -1685,16 +1685,19 @@ Display a match summary. The score is updated during the match.
   background: #fff; }
 
 .cricket-match-basic-info, .cricket-scorecard-title, .cricket-inning-details-innings,
-.cricket-inning-details-overs, .cricket-scorecard-batsmen, .cricket-footer-inning {
+.cricket-inning-details-overs, .cricket-scorecard-batsmen, .cricket-footer-inning, .cricket-game-in-play-text,
+.cricket-game-in-play-follow {
   font-family: "Guardian Agate Sans 1 Web", sans-serif; }
   @media all and (max-width: 40.615em) {
     .cricket-match-basic-info, .cricket-scorecard-title, .cricket-inning-details-innings,
-    .cricket-inning-details-overs, .cricket-scorecard-batsmen, .cricket-footer-inning {
+    .cricket-inning-details-overs, .cricket-scorecard-batsmen, .cricket-footer-inning, .cricket-game-in-play-text,
+    .cricket-game-in-play-follow {
       font-size: 1.4rem;
       line-height: 2rem; } }
   @media all and (min-width: 40.625em) {
     .cricket-match-basic-info, .cricket-scorecard-title, .cricket-inning-details-innings,
-    .cricket-inning-details-overs, .cricket-scorecard-batsmen, .cricket-footer-inning {
+    .cricket-inning-details-overs, .cricket-scorecard-batsmen, .cricket-footer-inning, .cricket-game-in-play-text,
+    .cricket-game-in-play-follow {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
 
@@ -1885,6 +1888,46 @@ Display a match summary. The score is updated during the match.
   line-height: 1.2;
   margin-right: 12px;
   display: inline-block; }
+
+.cricket-game-in-play {
+  background-color: #b51800;
+  display: table;
+  width: 100%;
+  padding: 6px 12px;
+  table-layout: fixed; }
+  .cricket-game-in-play + .cricket-match-summary-head {
+    border-top: 0; }
+
+.cricket-game-in-play-text,
+.cricket-game-in-play-follow {
+  line-height: 1;
+  display: table-cell;
+  color: #fff;
+  vertical-align: middle; }
+
+.cricket-game-in-play-text {
+  font-weight: bold; }
+
+.cricket-game-in-play-text,
+.cricket-game-in-play-link {
+  position: relative;
+  top: -2px; }
+
+.cricket-game-in-play-follow {
+  text-align: right; }
+  .cricket-game-in-play-follow:active {
+    color: rgba(255, 255, 255, 0.6); }
+    .cricket-game-in-play-follow:active .cricket-game-in-play-icon {
+      border-color: rgba(255, 255, 255, 0.6); }
+
+.cricket-game-in-play-icon {
+  display: inline-block;
+  border: 1px solid #fff;
+  line-height: 28px;
+  width: 30px;
+  border-radius: 15px;
+  box-sizing: content-box;
+  text-align: center; }
 
 .cricket-match-summary-scorecard[data-pages] .cricket-scorecard-batsmen-wrap {
   animation: fadeOutIn 5s infinite forwards;

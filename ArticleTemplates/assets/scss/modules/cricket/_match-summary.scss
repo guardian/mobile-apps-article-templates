@@ -280,6 +280,57 @@
 	display: inline-block;
 }
 
+.cricket-game-in-play{
+	background-color: color(tone-live);
+	display: table;
+	width: 100%;
+	padding: base-px(.5) base-px(1);
+	table-layout: fixed;
+
+	& + .cricket-match-summary-head{
+		border-top: 0;
+	}
+}
+
+.cricket-game-in-play-text,
+.cricket-game-in-play-follow{
+	@extend %meta-agata;
+	line-height: 1;
+	display: table-cell;
+	color: color(shade-7);
+	vertical-align: middle;
+}
+
+.cricket-game-in-play-text{
+	font-weight: bold;
+}
+
+.cricket-game-in-play-text,
+.cricket-game-in-play-link{
+	position: relative;
+	top: -2px;
+}
+
+.cricket-game-in-play-follow{
+	text-align: right;
+	&:active{
+		color: transparentize(color(shade-7), 0.4);
+		.cricket-game-in-play-icon{
+			border-color: transparentize(color(shade-7), 0.4);
+		}
+	}
+}
+
+.cricket-game-in-play-icon{
+	display: inline-block;
+	border: 1px solid color(shade-7);
+	line-height: 28px;
+	width: 30px;
+	border-radius: 15px;
+	box-sizing: content-box;
+	text-align: center;
+}
+
 $animationTime: 5s;
 $fadeOutInTime: .7s;
 $inTime: (100% * ($fadeOutInTime/2)) / $animationTime;

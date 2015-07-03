@@ -61,6 +61,20 @@ define([
 
             header.innerHTML = newHeader;
             scorecard.innerHTML = newScorecard;
+        },
+        cricketMatchInfoFailed: function(){
+            var header = $('#cricket-header');
+            var scorecard = $('#cricket-scorecard');
+
+            $('#cricket__tab--stats').remove();
+            $('#cricket__tabpanel--stats').remove();
+            if ($('.tabs [href="#cricket__tabpanel--stats"]').attr("aria-selected") === true) {
+                $('.tabs a:first-of-type').attr("aria-selected", true);
+                $($('.tabs [aria-selected="true"]').attr("href")).show();
+            }
+
+            header.remove();
+            scorecard.remove();
         }
     };
 
@@ -69,6 +83,7 @@ define([
             this.initialised = true;
             //modules.paginate();
             window.newCricketData = modules.newCricketData;
+            window.cricketMatchInfoFailed = modules.cricketMatchInfoFailed;
         }
     };
 

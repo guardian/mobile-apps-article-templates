@@ -38,6 +38,15 @@ define([
 			expect(document.getElementById("cricket-scorecard").textContent).to.be.equal("header4");
 		});
 
+		it('removes card, scorecard and tab on cricketMatchInfoFailed', function(){
+			Cricket.init();
+			var updateEndPoints = bonzo(bonzo.create('<div><div class="cricket" id="cricket-header">header1</div><div class="cricket-stats__wrap" id="cricket-scorecard">header2</div></div>'));
+			updateEndPoints.appendTo(sandbox);
+			window.cricketMatchInfoFailed();
+			expect(document.getElementById("cricket-header")).to.be.null;
+			expect(document.getElementById("cricket-scorecard")).to.be.null;
+		});
+
 		afterEach(function(){
 			sandbox.empty();
 		});

@@ -3438,16 +3438,19 @@
     border-bottom: 1px dotted #dcdad5;
     background: #fff; }
   #sandbox .cricket-match-basic-info, #sandbox .cricket-scorecard-title, #sandbox .cricket-inning-details-innings,
-  #sandbox .cricket-inning-details-overs, #sandbox .cricket-scorecard-batsmen, #sandbox .cricket-footer-inning {
+  #sandbox .cricket-inning-details-overs, #sandbox .cricket-scorecard-batsmen, #sandbox .cricket-footer-inning, #sandbox .cricket-game-in-play-text,
+  #sandbox .cricket-game-in-play-follow {
     font-family: "Guardian Agate Sans 1 Web", sans-serif; }
     @media all and (max-width: 40.615em) {
       #sandbox .cricket-match-basic-info, #sandbox .cricket-scorecard-title, #sandbox .cricket-inning-details-innings,
-      #sandbox .cricket-inning-details-overs, #sandbox .cricket-scorecard-batsmen, #sandbox .cricket-footer-inning {
+      #sandbox .cricket-inning-details-overs, #sandbox .cricket-scorecard-batsmen, #sandbox .cricket-footer-inning, #sandbox .cricket-game-in-play-text,
+      #sandbox .cricket-game-in-play-follow {
         font-size: 1.4rem;
         line-height: 2rem; } }
     @media all and (min-width: 40.625em) {
       #sandbox .cricket-match-basic-info, #sandbox .cricket-scorecard-title, #sandbox .cricket-inning-details-innings,
-      #sandbox .cricket-inning-details-overs, #sandbox .cricket-scorecard-batsmen, #sandbox .cricket-footer-inning {
+      #sandbox .cricket-inning-details-overs, #sandbox .cricket-scorecard-batsmen, #sandbox .cricket-footer-inning, #sandbox .cricket-game-in-play-text,
+      #sandbox .cricket-game-in-play-follow {
         font-size: 1.6rem;
         line-height: 2.2rem; } }
   #sandbox .cricket-inning-team-name, #sandbox .cricket-inning-runs {
@@ -3614,6 +3617,40 @@
     line-height: 1.2;
     margin-right: 12px;
     display: inline-block; }
+  #sandbox .cricket-game-in-play {
+    background-color: #b51800;
+    display: table;
+    width: 100%;
+    padding: 6px 12px;
+    table-layout: fixed; }
+    #sandbox .cricket-game-in-play + .cricket-match-summary-head {
+      border-top: 0; }
+  #sandbox .cricket-game-in-play-text,
+  #sandbox .cricket-game-in-play-follow {
+    line-height: 1;
+    display: table-cell;
+    color: #fff;
+    vertical-align: middle; }
+  #sandbox .cricket-game-in-play-text {
+    font-weight: bold; }
+  #sandbox .cricket-game-in-play-text,
+  #sandbox .cricket-game-in-play-link {
+    position: relative;
+    top: -2px; }
+  #sandbox .cricket-game-in-play-follow {
+    text-align: right; }
+    #sandbox .cricket-game-in-play-follow:active {
+      color: rgba(255, 255, 255, 0.6); }
+      #sandbox .cricket-game-in-play-follow:active .cricket-game-in-play-icon {
+        border-color: rgba(255, 255, 255, 0.6); }
+  #sandbox .cricket-game-in-play-icon {
+    display: inline-block;
+    border: 1px solid #fff;
+    line-height: 28px;
+    width: 30px;
+    border-radius: 15px;
+    box-sizing: content-box;
+    text-align: center; }
   #sandbox .cricket-match-summary-scorecard[data-pages] .cricket-scorecard-batsmen-wrap {
     animation: fadeOutIn 5s infinite forwards;
     -webkit-animation: fadeOutIn 5s infinite forwards; }
