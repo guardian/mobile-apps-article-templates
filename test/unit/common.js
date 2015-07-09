@@ -80,7 +80,7 @@ define([
 			var click = document.createEvent("MouseEvent");
 			click.initMouseEvent("click", true, true, window, null, 0, 0, 0, 0, false, false, false, false, 0, null);
 			var root = { location: { }};
-			var testContent = bonzo.create('<div role="tablist" class="tabs"><ul class="inline-list"><li role="presentation" class="inline-list__item"><a role="tab" class="tab" id="cricket__tab--liveblog" href="#cricket__tabpanel--liveblog" aria-controls="cricket__tabpanel--liveblog" aria-selected="true">Live updates</a></li><li role="presentation" class="inline-list__item" style="__CRICKET_HAS_SCORECARD__"><a role="tab" class="tab" id="cricket__tab--stats" href="#cricket__tabpanel--stats" aria-controls="cricket__tabpanel--stats" aria-selected="false">Scorecard</a></li></ul></div>');
+			var testContent = bonzo.create('<div role="tablist" class="tabs"><ul class="inline-list"><li role="presentation" class="inline-list__item"><a role="tab" class="tab" id="cricket__tab--liveblog" href="#cricket__tabpanel--liveblog" aria-controls="cricket__tabpanel--liveblog" aria-selected="true">Over by over</a></li><li role="presentation" class="inline-list__item" style="__CRICKET_HAS_SCORECARD__"><a role="tab" class="tab" id="cricket__tab--stats" href="#cricket__tabpanel--stats" aria-controls="cricket__tabpanel--stats" aria-selected="false">Scorecard</a></li></ul></div>');
 			var tab = $('li:last-child a', testContent);
 			$(testContent).appendTo(sandbox);
 			Common.modules.showTabs(root);
