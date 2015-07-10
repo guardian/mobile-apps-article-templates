@@ -319,57 +319,6 @@ Blink:
 
 /*doc
 ---
-title: Alerts
-name: alerts
-category: Modules
----
-Display an alerts toggle.
-
-```html_example
-<a class="alerts">
-    <span class="alerts__state--unfollow">
-        <span data-icon="&#xe048;" aria-hidden="true"></span>
-        <span class="alerts__label">Follow contributor</span>
-    </span>
-    <span class="alerts__state--follow">
-        <span data-icon="&#xe049;" aria-hidden="true"></span>
-        <span class="alerts__label">Following contributor</span>
-    </span>
-</a>
-
-<a class="alerts following">
-    <span class="alerts__state--unfollow">
-        <span data-icon="&#xe048;" aria-hidden="true"></span>
-        <span class="alerts__label">Follow contributor</span>
-    </span>
-    <span class="alerts__state--follow">
-        <span data-icon="&#xe049;" aria-hidden="true"></span>
-        <span class="alerts__label">Following contributor</span>
-    </span>
-</a>
-```
-*/
-.alerts {
-  color: #005689;
-  font-family: "Guardian Agate Sans 1 Web", sans-serif;
-  display: inline-block; }
-  .alerts [data-icon]::before {
-    margin-right: 4px;
-    font-size: 85%; }
-  .alerts .alerts__state--follow {
-    display: none; }
-    .alerts .alerts__state--follow [data-icon]::before {
-      color: #4bc6df; }
-  .alerts.following .alerts__state--follow {
-    display: block; }
-  .alerts.following .alerts__state--unfollow {
-    display: none; }
-
-.alerts__label {
-  font-weight: bold; }
-
-/*doc
----
 title: Aside
 name: aside
 category: Modules
@@ -591,11 +540,11 @@ Display which keywords an article has been tagged with.
       background-color: #f1f1f1; }
       .tags .inline-list__item a:active {
         color: #1a1a1a;
-        background-color: #d7d7d7; }
+        background-color: #d8d8d8; }
     .tags .inline-list__item.more-button a {
       background-color: transparent !important;
       color: #333;
-      border: 1px solid #d7d7d7; }
+      border: 1px solid #d8d8d8; }
       .tags .inline-list__item.more-button a:active {
         color: #1a1a1a;
         border: 1px solid #bebebe; }
@@ -610,61 +559,6 @@ Display which keywords an article has been tagged with.
 .tags__separator {
   font-weight: bold;
   margin: 0 4px; }
-
-/*doc
----
-title: Tabs
-name: tabs
-category: Modules
----
-Navigate between different sections of a page.
-
-```html_example
-<div role="tablist" class="tabs">
-    <ul class="inline-list">
-        <li role="presentation" class="inline-list__item">
-            <a role="tab" class="tab" id="tab--first" href="#" aria-controls="tabpanel--first" aria-selected="true">First</a>
-        </li><!--
-     --><li role="presentation" class="inline-list__item">
-            <a role="tab" class="tab" id="tab--second" href="#" aria-controls="tabpanel--second">Second</a>
-        </li><!--
-     --><li role="presentation" class="inline-list__item">
-            <a role="tab" class="tab" id="tab--third" href="#" aria-controls="tabpanel--third">Third</a>
-        </li>
-    </ul>
-</div>
-```
-*/
-.tabs {
-  color: #767676;
-  font-family: "Guardian Agate Sans 1 Web", sans-serif;
-  margin: 12px 0px;
-  clear: left; }
-  @media all and (max-width: 40.615em) {
-    .tabs {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
-    .tabs {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-  @media all and (max-width: 28.115em) {
-    .tabs {
-      margin: 12px; } }
-  .tabs .inline-list__item {
-    width: 33.3%; }
-  .tabs .tab {
-    vertical-align: top;
-    border-top: 2px solid #dcdad5;
-    padding: 6px 12px 24px 3px;
-    display: block; }
-    .tabs .tab[aria-selected="true"] {
-      color: #005689;
-      font-weight: bold;
-      border-top: 4px solid #005689;
-      padding-top: 4px; }
-  .android .tabs {
-    margin: 12px; }
 
 /*doc
 ---
@@ -3651,6 +3545,276 @@ Display a team line-up including substitutions and bookings.
     @media all and (max-width: 28.115em) {
       .replacement .team-lineup__player__replacement {
         display: block; } }
+
+/*doc
+---
+title: Cricket Scorecard
+name: cricket scorecard
+category: Modules
+---
+<div class="cricket-stats__innings">
+    <div class="cricket-stats__header">
+        <div class="cricket-stats__title">
+            England 1st innings
+        </div>
+        <div class="cricket-stats__total">
+        Total<br><em>354 all out</em>
+        </div>
+    </div>
+    <div class="cricket-stats__table-wrap">
+        <table class="cricket-stats__table">
+            <thead class="cricket-stats__table--phone">
+                <tr>
+                    <th class="cricket-stats__table--title">England 1st innings</th>
+                    <th class="cricket-stats__table--values">Runs</th>
+                </tr>
+            </thead>
+            <thead class="cricket-stats__table--tablet">
+                <tr>
+                    <th>Batsman</th>
+                    <th>Taken by</th>
+                    <th class="cricket-stats__table--values">Balls</th>
+                    <th class="cricket-stats__table--values">4s</th>
+                    <th class="cricket-stats__table--values">6s</th>
+                    <th class="cricket-stats__table--values">Runs</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        K C Brathwaite
+                        <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+                    </td>
+                    <td class="cricket-stats__table--tablet">c Root b Broad</td>
+                    <td class="cricket-stats__table--tablet">12</td>
+                    <td class="cricket-stats__table--tablet">12</td>
+                    <td class="cricket-stats__table--tablet">12</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>
+                        D S Smith
+                        <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+                    </td>
+                    <td class="cricket-stats__table--tablet">c Jordan b Tredwell</td>
+                    <td class="cricket-stats__table--tablet">15</td>
+                    <td class="cricket-stats__table--tablet">15</td>
+                    <td class="cricket-stats__table--tablet">15</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td>
+                        D M Bravo
+                        <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+                    </td>
+                    <td class="cricket-stats__table--tablet">c Root b Jordan</td>
+                    <td class="cricket-stats__table--tablet">12</td>
+                    <td class="cricket-stats__table--tablet">6</td>
+                    <td class="cricket-stats__table--tablet">5</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>
+                        M N Samuels
+                        <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+                    </td>
+                    <td class="cricket-stats__table--tablet">c Tradwell b Anderson</td>
+                    <td class="cricket-stats__table--tablet">25</td>
+                    <td class="cricket-stats__table--tablet">25</td>
+                    <td class="cricket-stats__table--tablet">25</td>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <td>
+                        K C Brathwaite
+                        <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+                    </td>
+                    <td class="cricket-stats__table--tablet">c Root b Broad</td>
+                    <td class="cricket-stats__table--tablet">12</td>
+                    <td class="cricket-stats__table--tablet">12</td>
+                    <td class="cricket-stats__table--tablet">12</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="cricket-stats__table--in-play">D S Smith</span>
+                        <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+                    </td>
+                    <td class="cricket-stats__table--tablet">c Jordan b Tredwell</td>
+                    <td class="cricket-stats__table--tablet">15</td>
+                    <td class="cricket-stats__table--tablet">15</td>
+                    <td class="cricket-stats__table--tablet">15</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="cricket-stats__table--duck">D M Bravo</span>
+                        <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+                    </td>
+                    <td class="cricket-stats__table--tablet">c Root b Jordan</td>
+                    <td class="cricket-stats__table--tablet">12</td>
+                    <td class="cricket-stats__table--tablet">6</td>
+                    <td class="cricket-stats__table--tablet">5</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>
+                        M N Samuels
+                        <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+                    </td>
+                    <td class="cricket-stats__table--tablet">c Tradwell b Anderson</td>
+                    <td class="cricket-stats__table--tablet">25</td>
+                    <td class="cricket-stats__table--tablet">25</td>
+                    <td class="cricket-stats__table--tablet">25</td>
+                    <td>25</td>
+                </tr>
+            </tbody>
+            <tfoot class="cricket-stats__table--phone">
+                <tr>
+                    <td class="cricket-stats__table--strong">Total</td>
+                    <td class="cricket-stats__table--strong">367-8</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+*/
+.cricket-stats__innings {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  background: #fff;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #dcdad5;
+  border-top: 1px solid #4bc6df; }
+
+.cricket-stats__wrap {
+  color: #333; }
+  @media all and (max-width: 40.615em) {
+    .cricket-stats__wrap {
+      margin: 0 12px; } }
+
+.cricket-stats__header {
+  display: table-cell;
+  vertical-align: top;
+  width: 25%;
+  box-sizing: border-box;
+  padding: 6px 0 0 12px; }
+  @media all and (max-width: 40.615em) {
+    .cricket-stats__header {
+      display: none; } }
+
+.cricket-stats__title {
+  font-weight: bold;
+  line-height: 1; }
+  @media all and (max-width: 40.615em) {
+    .cricket-stats__title {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) {
+    .cricket-stats__title {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+
+.cricket-stats__total {
+  font-family: "Guardian Egyptian Web", Georgia, serif;
+  font-weight: 200;
+  font-size: 2.7rem;
+  line-height: 1.1;
+  margin-top: 20px; }
+  .cricket-stats__total em {
+    color: #4bc6df;
+    font-style: normal;
+    font-size: 2.5rem; }
+
+.cricket-stats__table-wrap {
+  display: table-cell;
+  vertical-align: top; }
+
+.cricket-stats__takenby {
+  display: block;
+  color: #999;
+  padding: 3px 0 6px 0; }
+
+.cricket-stats__table {
+  width: 100%;
+  text-align: left;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif; }
+  @media all and (max-width: 40.615em) {
+    .cricket-stats__table {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) {
+    .cricket-stats__table {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  @media all and (max-width: 40.615em) {
+    .cricket-stats__table--tablet {
+      display: none; } }
+  @media all and (min-width: 40.625em) {
+    .cricket-stats__table--phone {
+      display: none; } }
+  @media all and (max-width: 40.615em) {
+    .cricket-stats__table--values {
+      width: 20%; } }
+  @media all and (min-width: 40.625em) {
+    .cricket-stats__table--values {
+      width: 15%; } }
+  .cricket-stats__table th {
+    color: #999; }
+  .cricket-stats__table th.cricket-stats__table--title,
+  .cricket-stats__table td.cricket-stats__table--strong {
+    font-weight: bold;
+    color: #000; }
+  .cricket-stats__table--title {
+    font-family: "Guardian Text Egyptian Web", Georgia, serif; }
+  .cricket-stats__table th, .cricket-stats__table td {
+    vertical-align: top;
+    padding: 6px 6px 0 6px;
+    line-height: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden; }
+    @media all and (max-width: 40.615em) {
+      .cricket-stats__table th, .cricket-stats__table td {
+        height: 3.7rem; } }
+    @media all and (min-width: 40.625em) {
+      .cricket-stats__table th, .cricket-stats__table td {
+        height: 3.9rem; } }
+  .cricket-stats__table tr {
+    border-bottom: 1px solid #dcdad5; }
+  .cricket-stats__table tfoot tr {
+    border-bottom: 0;
+    border-top: 1px solid #dcdad5; }
+  .cricket-stats__table tbody tr:last-child {
+    border-bottom: none; }
+
+.cricket-stats__table--in-play {
+  font-weight: bold; }
+
+.cricket-stats__table--duck::before {
+  background-position: -24px 0; }
+
+.cricket-stats__table--in-play,
+.cricket-stats__table--duck {
+  display: inline-block;
+  vertical-align: top; }
+  .cricket-stats__table--in-play::before,
+  .cricket-stats__table--duck::before {
+    content: '';
+    display: inline-block;
+    position: relative;
+    bottom: 2px;
+    height: 20px;
+    width: 20px;
+    margin-right: 4px;
+    background-image: url(../img/cricket-dismissal.png);
+    background-repeat: no-repeat;
+    background-size: auto 48px; }
+  .cricket-stats__table--in-play + .cricket-stats__takenby,
+  .cricket-stats__table--duck + .cricket-stats__takenby {
+    margin-top: -7px; }
 
 /*doc
 ---

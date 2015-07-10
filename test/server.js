@@ -20,15 +20,55 @@ app.use('/', proxy('http://mobile-apps.guardianapis.com', {
 				// mocking adv
 				if(object.cards){
 					object.cards.forEach(function(card){
-						// card.item.sponsorship = {
-						// 	sponsorName: 'The Rockefeller Foundation',
-						// 	sponsorUri: 'http://www.100resilientcities.org',
-						// 	aboutUri: 'x-gu://item/mobile-apps.guardianapis.com/items/cities/2014/jan/27/cities-about-this-site',
-						// 	format: 'Guardian Cities is supported by: #{sponsor}',
-						// 	isAdvertising: false
-						// };
-						if(card.item && card.item.metadata){
-							card.item.metadata.witnessAssignmentId = "5536849ce4b0574bd49be6d1";
+						console.log(card.item.id);
+						if(card.item.id === "football/live/2015/jun/07/republic-of-ireland-england-international-friendly-live"){
+							card.item.liveContent.liveBloggingNow = true;
+							card.item.type = "footballLiveBlog";
+							card.item.footballContent = {
+								id: "3812437",
+								status: "FT",
+								phase: "after",
+								kickOff: "2015-06-07T12:00:00Z",
+								competitionDisplayName: "Friendlies",
+								homeTeam: {
+									id: "494",
+									name: "Rep of Ireland",
+									shortCode: "IRL",
+									crestUri: "http://png-resizer.mobile-apps.guardianapis.com/sport/football/crests/494.png?width=#{width}",
+									score: 0,
+									followUp: {
+										type: "list",
+										uri: "http://mobile-apps.guardianapis.com/lists/tag/football/republicofireland"
+									},
+									topic: {
+										displayName: "Rep of Ireland",
+										topic: {
+											type: "football-team",
+											name: "494"
+										}
+									}
+								},
+								awayTeam: {
+									id: "497",
+									name: "England",
+									shortCode: "ENG",
+									crestUri: "http://png-resizer.mobile-apps.guardianapis.com/sport/football/crests/497.png?width=#{width}",
+									score: 0,
+									followUp: {
+										type: "list",
+										uri: "http://mobile-apps.guardianapis.com/lists/tag/football/england"
+									},
+									topic: {
+										displayName: "England",
+										topic: {
+											type: "football-team",
+											name: "497"
+										}
+									}
+								},
+								matchInfoUri: "http://football.mobile-apps.guardianapis.com/match-info/3812437",
+								venue: "Aviva Stadium"
+							}
 						}
 					});
 				}

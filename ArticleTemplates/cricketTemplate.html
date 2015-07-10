@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>Cricket</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/style-sync.css" />
+    <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/js/shim.js"></script>
+</head>
+
+<body class="tone--__SECTION_TONE__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__ advert-config--__ADS_CONFIG__" data-content-type="cricket" data-ads-enabled="__ADS_ENABLED__" data-ads-enable-hiding="__ADS_ENABLE_HIDING__" style="margin-top: __ACTIONBARHEIGHT__px;" data-ads-config="__ADS_CONFIG__" data-font-size="__FONT_SIZE_INT__" data-template-directory="__TEMPLATES_DIRECTORY__" data-page-id="__PAGE_ID__" data-mpu-after-paragraphs="__MPU_AFTER_PARAGRAPHS__" data-use-ads-ready="__ADS_FAST_CALLBACK__">
+    <div class="advert-slot advert-slot--banner advert-slot--__ADS_ENABLED__"  id="banner_container">
+        <div class="advert-slot__label">
+            Advertisement
+            <a class="advert-slot__action" href="x-gu://subscribe">
+                Hide
+                <span data-icon="&#xe04F;"></span>
+            </a>
+        </div>
+        <div class="advert-slot__wrapper"></div>
+    </div>
+
+    <div class="cricket">
+        <div id="cricket-header">
+            __CRICKET_HEADER__
+        </div>
+    </div>
+
+    <div role="tablist" class="tabs">
+        <ul class="inline-list">
+            <li role="presentation" class="inline-list__item">
+                <a role="tab" class="tab" id="cricket__tab--liveblog" href="#cricket__tabpanel--liveblog" aria-controls="cricket__tabpanel--liveblog" aria-selected="true">Over by over</a>
+            </li>
+            <li role="presentation" class="inline-list__item" style="__CRICKET_HAS_SCORECARD__">
+                <a role="tab" class="tab" id="cricket__tab--stats" href="#cricket__tabpanel--stats" aria-controls="cricket__tabpanel--stats" aria-selected="false">Scorecard</a>
+            </li>
+        </ul>
+    </div>
+
+    <div role="tabpanel" class="cricket__tabpanel tone--__SECTION_TONE__ __IS_LIVE__" id="cricket__tabpanel--liveblog" aria-labelledby="cricket__tab--liveblog" style="">
+        <div class="article article--liveblog">
+            <div class="article__header">
+                <div class="meta">
+                    <div class="meta__misc">
+                        <div class="meta__byline">
+                            __BYLINE__
+                        </div>
+                        <p class="meta__pubdate"><span class="screen-readable">Published: </span>__PUBDATE__</p>
+                    </div>
+                    __COMMENT_CTA__
+                </div>
+            </div>
+
+            <div class="article__body article__body--liveblog">
+                <div class="article__body--liveblog__pinned">
+                    __ASIDE_WITNESS__
+                </div>
+                __BLOCKS__
+            </div>
+
+            __SHOW_MORE__
+
+            <div class="loading loading--liveblog">
+                <img src="__TEMPLATES_DIRECTORY__assets/img/loading.gif" alt="Loading…"/>
+            </div>
+
+            <div class="tags">
+                <ul class="inline-list">
+                    <li class="inline-list__item screen-readable">Tags:</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div role="tabpanel" class="cricket__tabpanel" id="cricket__tabpanel--stats" aria-labelledby="cricket__tab--stats" style="display: none;">
+        <div class="cricket-stats__wrap" id="cricket-scorecard">
+            __CRICKET_SCORECARD__
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        window.initTemplate();
+    </script>
+</body>
+</html>

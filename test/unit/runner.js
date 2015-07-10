@@ -2,10 +2,10 @@ require.config({
     baseUrl: '/root/ArticleTemplates/assets/js',
     waitSeconds: 1,
     paths: {
-
         // -- components
         bonzo: '../../../node_modules/bonzo/bonzo',
         bean: '../../../node_modules/bean/bean',
+        buoy: '../../../node_modules/smooth-scroll/dist/js/buoy',
         d3: '../../../node_modules/d3/d3',
         domReady: '../../../node_modules/domready/ready',
         mobileSlider: 'components/mobile-range-slider',
@@ -26,7 +26,7 @@ require.config({
         test_audio: '/root/test/unit/audio',
         test_sharing: '/root/test/unit/sharing',
         test_witness: '/root/test/unit/witness',
-
+        test_cricket: '/root/test/unit/cricket',
         // -- fake interactive
         fake_interactive: '/root/test/unit/fake-interactive'
     },
@@ -40,7 +40,8 @@ require.config({
 require([
     'twitter', 'test_common', 'test_ads','test_twitter',
     'test_colors', 'test_comments', 'test_monitor',
-    'test_audio', 'test_witness', 'test_sharing'
+    'test_audio', 'test_witness', 'test_sharing',
+    'test_cricket'
   ], function(){
   twttr.ready(function(){
     mocha.run();

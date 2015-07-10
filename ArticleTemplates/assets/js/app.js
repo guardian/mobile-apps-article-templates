@@ -7,6 +7,7 @@ require.config({
     paths: {
         bonzo: '../../../node_modules/bonzo/bonzo',
         bean: '../../../node_modules/bean/bean',
+        buoy: '../../../node_modules/smooth-scroll/dist/js/buoy',
         d3: '../../../node_modules/d3/d3',
         domReady: '../../../node_modules/domready/ready',
         mobileSlider: 'components/mobile-range-slider',
@@ -46,7 +47,7 @@ require([
             adsEnabled: document.body.getAttribute('data-ads-enabled'),
             adsConfig: document.body.getAttribute('data-ads-config'),
             mpuAfterParagraphs: document.body.getAttribute('data-mpu-after-paragraphs')
-        });        
+        });
 
         // other article-specific functions
         if (contentType === 'article') {
@@ -77,6 +78,12 @@ require([
             require(['football'], function(Football){
                 monitor.setContext('football', function(){
                     Football.init();
+                });
+            });
+        } else if(contentType === 'cricket') {
+            require(['cricket'], function(Cricket){
+                monitor.setContext('cricket', function(){
+                    Cricket.init();
                 });
             });
         } else {

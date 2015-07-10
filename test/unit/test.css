@@ -75,6 +75,38 @@
   */
   /*doc
   ---
+  title: Alerts
+  name: alerts
+  category: Modules
+  ---
+  Display an alerts toggle.
+  
+  ```html_example
+  <a class="alerts">
+      <span class="alerts__state--unfollow">
+          <span data-icon="&#xe048;" aria-hidden="true"></span>
+          <span class="alerts__label">Follow contributor</span>
+      </span>
+      <span class="alerts__state--follow">
+          <span data-icon="&#xe049;" aria-hidden="true"></span>
+          <span class="alerts__label">Following contributor</span>
+      </span>
+  </a>
+  
+  <a class="alerts following">
+      <span class="alerts__state--unfollow">
+          <span data-icon="&#xe048;" aria-hidden="true"></span>
+          <span class="alerts__label">Follow contributor</span>
+      </span>
+      <span class="alerts__state--follow">
+          <span data-icon="&#xe049;" aria-hidden="true"></span>
+          <span class="alerts__label">Following contributor</span>
+      </span>
+  </a>
+  ```
+  */
+  /*doc
+  ---
   title: Avatar
   name: avatar
   category: Modules
@@ -170,6 +202,30 @@
       <div class="cutout__container" style="background-image: url(http://png-resizer.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2014/3/13/1394733748508/SeumasMilne.png?width=600);" id="cutout">
           <!--Content-->
       </div>
+  </div>
+  ```
+  */
+  /*doc
+  ---
+  title: Tabs
+  name: tabs
+  category: Modules
+  ---
+  Navigate between different sections of a page.
+  
+  ```html_example
+  <div role="tablist" class="tabs">
+      <ul class="inline-list">
+          <li role="presentation" class="inline-list__item">
+              <a role="tab" class="tab" id="tab--first" href="#" aria-controls="tabpanel--first" aria-selected="true">First</a>
+          </li><!--
+       --><li role="presentation" class="inline-list__item">
+              <a role="tab" class="tab" id="tab--second" href="#" aria-controls="tabpanel--second">Second</a>
+          </li><!--
+       --><li role="presentation" class="inline-list__item">
+              <a role="tab" class="tab" id="tab--third" href="#" aria-controls="tabpanel--third">Third</a>
+          </li>
+      </ul>
   </div>
   ```
   */
@@ -598,6 +654,114 @@
   */
   /*doc
   ---
+  title: Cricket
+  name: cricket
+  category: Modules
+  ---
+  Displays a cricket header.
+  
+  ```html_example
+          <div id="cricket-header">
+              <div class="cricket-game-in-play">
+                  <div class="cricket-game-in-play-text">
+                      This game is in play
+                  </div>
+                  <a href="#" class="cricket-game-in-play-follow">
+                      <span class="cricket-game-in-play-link">Find it here</span>
+                      <span class="cricket-game-in-play-icon" data-icon="&#xe00b;" aria-hidden="true"></span>
+                  </a>
+              </div>
+              <div class="cricket-match-summary-head">
+                  <div class="cricket-match-basic-info">
+                      <p>Test 1 Test 1 Test 1 Test 1 Test 1 Test 1 Test 1 Test 1 Test 1, Day 1</p>
+                      <p>Cardiff</p>
+                  </div>
+                  <div class="cricket-match-basic-follow">
+                      <a class="new_alerts __LIVEBLOG_FOLLOWING__" href="x-gu://follow/__LIVEBLOG_FOLLOWING__" data-follow-alert-id="__LIVEBLOG_FOLLOWING__">
+                          <span class="alerts__state--unfollow">
+                              <span data-icon="&#xe090;" aria-hidden="true"></span>
+                              <span class="alerts__label">Follow the match</span>
+                          </span>
+                          <span class="alerts__state--follow">
+                              <span data-icon="&#xe062;" aria-hidden="true"></span>
+                              <span class="alerts__label">Following the match</span>
+                          </span>
+                      </a>
+                  </div>
+              </div>
+              <div class="cricket-match-summary-result cricket-inning-rain-delay">
+                  <div class="cricket-match-summary-last-inning">
+                      <div class="cricket-inning">
+                          <div class="cricket-inning-team">
+                              <div class="cricket-inning-team-wrap">
+                                  <h2 class="cricket-inning-team-name">
+                                      <img class="cricket-inning-team-name-crest" src="eng.jpg">England England England England England
+                                  </h2>
+                              </div>
+                          </div>
+                          <div class="cricket-inning-runs">
+                              256 - 10
+                          </div>
+                      </div>
+                      <div class="cricket-inning-details">
+                          <div class="cricket-inning-details-innings">
+                              <b>1st</b> innings
+                          </div>
+                          <div class="cricket-inning-details-overs">
+                              <b>8.6</b> overs
+                          </div>
+                      </div>
+                  </div>
+                  <div class="cricket-match-summary-scorecard" id="cricket-match-summary-scorecard">
+                      <div class="cricket-scorecard-title">
+                          <b>Scorecard</b> - England 1st Innings
+                      </div>
+                      <div class="cricket-scorecard-batsmen-wrap" id="cricket-scorecard-batsmen-wrap">
+                          <div class="cricket-scorecard-batsmen-sheet" id="cricket-scorecard-batsmen-sheet">
+                              <div class="cricket-scorecard-batsmen cricket-scorecard-batsmen-in-play">
+                                  <p class="cricket-scorecard-batsmen-name">Cook &#8212; 13</p>
+                                  <p class="cricket-scorecard-batsmen-status">in play</p>
+                              </div><div class="cricket-scorecard-batsmen cricket-scorecard-batsmen-in-play">
+                                  <p class="cricket-scorecard-batsmen-name">Trott &#8212; 13</p>
+                                  <p class="cricket-scorecard-batsmen-status">in play</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="cricket-match-summary-footer">
+                  <div class="cricket-match-summary-footer-wrap">
+                      <div class="cricket-footer-inning">
+                          <p class="cricket-footer-inning-line">
+                              <b>ENG - 1st</b>
+                          </p>
+                          <p class="cricket-footer-inning-line">
+                              350 all out
+                          </p>
+                      </div>
+                      <div class="cricket-footer-inning">
+                          <p class="cricket-footer-inning-line">
+                              <b>AUS - 1st</b>
+                          </p>
+                          <p class="cricket-footer-inning-line">
+                              389 all out
+                          </p>
+                      </div>
+                      <div class="cricket-footer-inning">
+                          <p class="cricket-footer-inning-line">
+                              <b>ENG - 2nd</b>
+                          </p>
+                          <p class="cricket-footer-inning-line">
+                              453 dec
+                          </p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+  ```
+  */
+  /*doc
+  ---
   title: Call-to-action
   name: aside-witness
   category: GuardianWitness
@@ -888,38 +1052,6 @@
   */
   /*doc
   ---
-  title: Alerts
-  name: alerts
-  category: Modules
-  ---
-  Display an alerts toggle.
-  
-  ```html_example
-  <a class="alerts">
-      <span class="alerts__state--unfollow">
-          <span data-icon="&#xe048;" aria-hidden="true"></span>
-          <span class="alerts__label">Follow contributor</span>
-      </span>
-      <span class="alerts__state--follow">
-          <span data-icon="&#xe049;" aria-hidden="true"></span>
-          <span class="alerts__label">Following contributor</span>
-      </span>
-  </a>
-  
-  <a class="alerts following">
-      <span class="alerts__state--unfollow">
-          <span data-icon="&#xe048;" aria-hidden="true"></span>
-          <span class="alerts__label">Follow contributor</span>
-      </span>
-      <span class="alerts__state--follow">
-          <span data-icon="&#xe049;" aria-hidden="true"></span>
-          <span class="alerts__label">Following contributor</span>
-      </span>
-  </a>
-  ```
-  */
-  /*doc
-  ---
   title: Aside
   name: aside
   category: Modules
@@ -1004,30 +1136,6 @@
        --><li class="inline-list__item"><a href="#">Guardian</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
        --><li class="inline-list__item"><a href="#">Mobile</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
        --><li class="inline-list__item"><a href="#">Applications</a><span class="tags__separator" aria-hidden="true">&#183;</span></li>
-      </ul>
-  </div>
-  ```
-  */
-  /*doc
-  ---
-  title: Tabs
-  name: tabs
-  category: Modules
-  ---
-  Navigate between different sections of a page.
-  
-  ```html_example
-  <div role="tablist" class="tabs">
-      <ul class="inline-list">
-          <li role="presentation" class="inline-list__item">
-              <a role="tab" class="tab" id="tab--first" href="#" aria-controls="tabpanel--first" aria-selected="true">First</a>
-          </li><!--
-       --><li role="presentation" class="inline-list__item">
-              <a role="tab" class="tab" id="tab--second" href="#" aria-controls="tabpanel--second">Second</a>
-          </li><!--
-       --><li role="presentation" class="inline-list__item">
-              <a role="tab" class="tab" id="tab--third" href="#" aria-controls="tabpanel--third">Third</a>
-          </li>
       </ul>
   </div>
   ```
@@ -2438,6 +2546,139 @@
   */
   /*doc
   ---
+  title: Cricket Scorecard
+  name: cricket scorecard
+  category: Modules
+  ---
+  <div class="cricket-stats__innings">
+      <div class="cricket-stats__header">
+          <div class="cricket-stats__title">
+              England 1st innings
+          </div>
+          <div class="cricket-stats__total">
+          Total<br><em>354 all out</em>
+          </div>
+      </div>
+      <div class="cricket-stats__table-wrap">
+          <table class="cricket-stats__table">
+              <thead class="cricket-stats__table--phone">
+                  <tr>
+                      <th class="cricket-stats__table--title">England 1st innings</th>
+                      <th class="cricket-stats__table--values">Runs</th>
+                  </tr>
+              </thead>
+              <thead class="cricket-stats__table--tablet">
+                  <tr>
+                      <th>Batsman</th>
+                      <th>Taken by</th>
+                      <th class="cricket-stats__table--values">Balls</th>
+                      <th class="cricket-stats__table--values">4s</th>
+                      <th class="cricket-stats__table--values">6s</th>
+                      <th class="cricket-stats__table--values">Runs</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>
+                          K C Brathwaite
+                          <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+                      </td>
+                      <td class="cricket-stats__table--tablet">c Root b Broad</td>
+                      <td class="cricket-stats__table--tablet">12</td>
+                      <td class="cricket-stats__table--tablet">12</td>
+                      <td class="cricket-stats__table--tablet">12</td>
+                      <td>12</td>
+                  </tr>
+                  <tr>
+                      <td>
+                          D S Smith
+                          <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+                      </td>
+                      <td class="cricket-stats__table--tablet">c Jordan b Tredwell</td>
+                      <td class="cricket-stats__table--tablet">15</td>
+                      <td class="cricket-stats__table--tablet">15</td>
+                      <td class="cricket-stats__table--tablet">15</td>
+                      <td>15</td>
+                  </tr>
+                  <tr>
+                      <td>
+                          D M Bravo
+                          <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+                      </td>
+                      <td class="cricket-stats__table--tablet">c Root b Jordan</td>
+                      <td class="cricket-stats__table--tablet">12</td>
+                      <td class="cricket-stats__table--tablet">6</td>
+                      <td class="cricket-stats__table--tablet">5</td>
+                      <td>10</td>
+                  </tr>
+                  <tr>
+                      <td>
+                          M N Samuels
+                          <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+                      </td>
+                      <td class="cricket-stats__table--tablet">c Tradwell b Anderson</td>
+                      <td class="cricket-stats__table--tablet">25</td>
+                      <td class="cricket-stats__table--tablet">25</td>
+                      <td class="cricket-stats__table--tablet">25</td>
+                      <td>25</td>
+                  </tr>
+                  <tr>
+                      <td>
+                          K C Brathwaite
+                          <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+                      </td>
+                      <td class="cricket-stats__table--tablet">c Root b Broad</td>
+                      <td class="cricket-stats__table--tablet">12</td>
+                      <td class="cricket-stats__table--tablet">12</td>
+                      <td class="cricket-stats__table--tablet">12</td>
+                      <td>12</td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <span class="cricket-stats__table--in-play">D S Smith</span>
+                          <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+                      </td>
+                      <td class="cricket-stats__table--tablet">c Jordan b Tredwell</td>
+                      <td class="cricket-stats__table--tablet">15</td>
+                      <td class="cricket-stats__table--tablet">15</td>
+                      <td class="cricket-stats__table--tablet">15</td>
+                      <td>15</td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <span class="cricket-stats__table--duck">D M Bravo</span>
+                          <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+                      </td>
+                      <td class="cricket-stats__table--tablet">c Root b Jordan</td>
+                      <td class="cricket-stats__table--tablet">12</td>
+                      <td class="cricket-stats__table--tablet">6</td>
+                      <td class="cricket-stats__table--tablet">5</td>
+                      <td>10</td>
+                  </tr>
+                  <tr>
+                      <td>
+                          M N Samuels
+                          <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+                      </td>
+                      <td class="cricket-stats__table--tablet">c Tradwell b Anderson</td>
+                      <td class="cricket-stats__table--tablet">25</td>
+                      <td class="cricket-stats__table--tablet">25</td>
+                      <td class="cricket-stats__table--tablet">25</td>
+                      <td>25</td>
+                  </tr>
+              </tbody>
+              <tfoot class="cricket-stats__table--phone">
+                  <tr>
+                      <td class="cricket-stats__table--strong">Total</td>
+                      <td class="cricket-stats__table--strong">367-8</td>
+                  </tr>
+              </tfoot>
+          </table>
+      </div>
+  </div>
+  */
+  /*doc
+  ---
   title: Embed
   name: element-witness
   category: GuardianWitness
@@ -2566,6 +2807,66 @@
     #sandbox body {
       font-size: 1.8em;
       line-height: 1.444em; } }
+  #sandbox .alerts {
+    color: #005689;
+    font-family: "Guardian Agate Sans 1 Web", sans-serif;
+    display: inline-block; }
+    #sandbox .alerts [data-icon]::before {
+      margin-right: 4px;
+      font-size: 85%; }
+    #sandbox .alerts .alerts__state--follow {
+      display: none; }
+      #sandbox .alerts .alerts__state--follow [data-icon]::before {
+        color: #4bc6df; }
+    #sandbox .alerts.following .alerts__state--follow {
+      display: block; }
+    #sandbox .alerts.following .alerts__state--unfollow {
+      display: none; }
+  #sandbox .alerts__label {
+    font-weight: bold; }
+  #sandbox .new_alerts {
+    font-family: "Guardian Agate Sans 1 Web", sans-serif;
+    white-space: nowrap;
+    padding: 4px 12px 8px 12px;
+    margin: 6px 0px 0px -1px;
+    display: inline-block;
+    border-radius: 30px;
+    text-overflow: ellipsis;
+    vertical-align: bottom;
+    overflow: hidden;
+    max-width: 100%;
+    color: #005689;
+    border: 1px solid #005689;
+    transition: background-color 0.3s; }
+    @media all and (max-width: 40.615em) {
+      #sandbox .new_alerts {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.625em) {
+      #sandbox .new_alerts {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
+    #sandbox .new_alerts span[data-icon] {
+      display: inline-block;
+      vertical-align: bottom;
+      font-size: 1.8rem;
+      position: relative;
+      right: 3px;
+      top: 1px; }
+    #sandbox .new_alerts .alerts__state--follow {
+      display: none; }
+    #sandbox .new_alerts .alerts__label {
+      font-weight: normal; }
+    #sandbox .new_alerts.following:active {
+      color: #005689;
+      border: 1px solid #005689; }
+    #sandbox .new_alerts.following .alerts__state--follow {
+      display: block; }
+    #sandbox .new_alerts.following .alerts__state--unfollow {
+      display: none; }
+  #sandbox a.new_alerts:not(.following):active, #sandbox .new_alerts.following:not(:active) {
+    background-color: #005689;
+    color: #fff; }
   #sandbox .avatar {
     background-color: rgba(51, 51, 51, 0.075);
     border-radius: 100%;
@@ -2723,6 +3024,36 @@
       #sandbox .cutout .cutout__container {
         min-height: 320px;
         background-size: contain; } }
+  #sandbox .tabs {
+    color: #767676;
+    font-family: "Guardian Agate Sans 1 Web", sans-serif;
+    margin: 12px 0px;
+    clear: left; }
+    @media all and (max-width: 40.615em) {
+      #sandbox .tabs {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.625em) {
+      #sandbox .tabs {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
+    @media all and (max-width: 28.115em) {
+      #sandbox .tabs {
+        margin: 12px; } }
+    #sandbox .tabs .inline-list__item {
+      width: 33.3%; }
+    #sandbox .tabs .tab {
+      vertical-align: top;
+      border-top: 2px solid #dcdad5;
+      padding: 6px 12px 24px 3px;
+      display: block; }
+      #sandbox .tabs .tab[aria-selected="true"] {
+        color: #005689;
+        font-weight: bold;
+        border-top: 4px solid #005689;
+        padding-top: 4px; }
+    .android #sandbox .tabs {
+      margin: 12px; }
   #sandbox .loading {
     text-align: center;
     padding: 12px; }
@@ -3353,6 +3684,243 @@
       #sandbox .match-summary__comment {
         font-size: 1.6rem;
         line-height: 2.2rem; } }
+  #sandbox .cricket-match-summary-head, #sandbox .cricket-match-summary-result, #sandbox .cricket-match-summary-footer {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-bottom: 1px dotted #dcdad5;
+    background: #fff; }
+  #sandbox .cricket-match-basic-info, #sandbox .cricket-scorecard-title, #sandbox .cricket-inning-details-innings,
+  #sandbox .cricket-inning-details-overs, #sandbox .cricket-scorecard-batsmen, #sandbox .cricket-footer-inning, #sandbox .cricket-game-in-play-text,
+  #sandbox .cricket-game-in-play-follow {
+    font-family: "Guardian Agate Sans 1 Web", sans-serif; }
+    @media all and (max-width: 40.615em) {
+      #sandbox .cricket-match-basic-info, #sandbox .cricket-scorecard-title, #sandbox .cricket-inning-details-innings,
+      #sandbox .cricket-inning-details-overs, #sandbox .cricket-scorecard-batsmen, #sandbox .cricket-footer-inning, #sandbox .cricket-game-in-play-text,
+      #sandbox .cricket-game-in-play-follow {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.625em) {
+      #sandbox .cricket-match-basic-info, #sandbox .cricket-scorecard-title, #sandbox .cricket-inning-details-innings,
+      #sandbox .cricket-inning-details-overs, #sandbox .cricket-scorecard-batsmen, #sandbox .cricket-footer-inning, #sandbox .cricket-game-in-play-text,
+      #sandbox .cricket-game-in-play-follow {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
+  #sandbox .cricket-inning-team-name, #sandbox .cricket-inning-runs {
+    font-family: "Guardian Egyptian Web", Georgia, serif;
+    font-weight: 200;
+    color: #333;
+    font-size: 2.3rem;
+    padding-bottom: 0.3rem; }
+  #sandbox .cricket-match-summary-head, #sandbox .cricket-match-summary-footer-wrap {
+    padding: 12px 12px 12px 12px; }
+    @media all and (min-width: 28.125em) {
+      #sandbox .cricket-match-summary-head, #sandbox .cricket-match-summary-footer-wrap {
+        padding: 6px 12px 6px 12px; } }
+  #sandbox .cricket-match-summary-head {
+    border-top: 4px solid #b51800; }
+  #sandbox .cricket-match-basic-info {
+    display: table-cell;
+    width: 40%;
+    color: #333; }
+    #sandbox .cricket-match-basic-info p {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+  #sandbox .cricket-match-basic-follow {
+    display: table-cell;
+    width: 60%;
+    text-align: right;
+    vertical-align: middle; }
+  #sandbox .cricket-match-summary-result {
+    min-height: 88px; }
+  #sandbox .cricket-match-summary-last-inning {
+    display: table-cell;
+    padding: 12px 12px 12px 12px; }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      #sandbox .cricket-match-summary-last-inning {
+        width: 33.80282%; } }
+    @media all and (min-width: 56.25em) {
+      #sandbox .cricket-match-summary-last-inning {
+        width: 31.57895%; } }
+  #sandbox .cricket-inning,
+  #sandbox .cricket-inning-details {
+    display: table;
+    width: 100%;
+    table-layout: fixed; }
+  #sandbox .cricket-inning-team-wrap {
+    white-space: nowrap; }
+  #sandbox .cricket-inning-team-name-crest {
+    width: 37px;
+    padding-right: 6px;
+    box-sizing: content-box; }
+    .cricket-inning-draw #sandbox .cricket-inning-team-name-crest, .cricket-inning-delay #sandbox .cricket-inning-team-name-crest, .cricket-inning-abandoned #sandbox .cricket-inning-team-name-crest, .cricket-inning-tea #sandbox .cricket-inning-team-name-crest, .cricket-inning-rain-delay #sandbox .cricket-inning-team-name-crest {
+      display: none; }
+  #sandbox .cricket-inning-team {
+    display: table-cell;
+    vertical-align: bottom;
+    width: 66.6%; }
+  #sandbox .cricket-inning-team-name {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden; }
+    .cricket-inning-tea #sandbox .cricket-inning-team-name:before, .cricket-inning-rain-delay #sandbox .cricket-inning-team-name:before {
+      content: '';
+      display: inline-block;
+      width: 37px;
+      height: 21px;
+      background: url(../img/cricket-dismissal.png);
+      background-repeat: no-repeat; }
+    .cricket-inning-tea #sandbox .cricket-inning-team-name:before {
+      background-size: auto 39px;
+      background-position: -2px -18px; }
+    .cricket-inning-rain-delay #sandbox .cricket-inning-team-name:before {
+      background-size: auto 44px;
+      background-position: -50px -20px; }
+  #sandbox .cricket-inning-runs {
+    display: table-cell;
+    vertical-align: bottom;
+    white-space: nowrap;
+    width: 33.4%;
+    text-align: right; }
+  #sandbox .cricket-match-summary-scorecard {
+    display: table-cell;
+    vertical-align: top;
+    border-left: 1px solid #dcdad5; }
+    @media all and (max-width: 40.615em) {
+      #sandbox .cricket-match-summary-scorecard {
+        display: none; } }
+    .cricket-inning-result #sandbox .cricket-match-summary-scorecard, .cricket-inning-draw #sandbox .cricket-match-summary-scorecard, .cricket-inning-delay #sandbox .cricket-match-summary-scorecard, .cricket-inning-abandoned #sandbox .cricket-match-summary-scorecard {
+      display: none; }
+  #sandbox .cricket-scorecard-title {
+    color: #999;
+    line-height: 1;
+    border-bottom: 1px solid #dcdad5;
+    padding: 7px 12px 12px 12px;
+    position: relative; }
+  #sandbox .cricket-scorecard-bullets {
+    position: absolute;
+    top: 3px;
+    right: 8px; }
+    #sandbox .cricket-scorecard-bullets span {
+      background-color: #dcdad5;
+      transition: background-color .2s;
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 4px;
+      margin-right: 4px; }
+      #sandbox .cricket-scorecard-bullets span.cricket-scorecard-bullets--active {
+        background-color: #4bc6df; }
+  #sandbox .cricket-scorecard-batsmen-wrap {
+    height: 62px;
+    overflow: hidden; }
+  #sandbox .cricket-inning-details-innings,
+  #sandbox .cricket-inning-details-overs {
+    display: table-cell;
+    color: #999; }
+    #sandbox .cricket-inning-details-innings b,
+    #sandbox .cricket-inning-details-overs b {
+      font-weight: bold; }
+    #sandbox .cricket-inning-details-innings em,
+    #sandbox .cricket-inning-details-overs em {
+      font-weight: bold;
+      font-style: normal;
+      color: #4bc6df; }
+  #sandbox .cricket-inning-details-innings {
+    width: 66.6%;
+    padding-left: 43px; }
+    .cricket-inning-draw #sandbox .cricket-inning-details-innings, .cricket-inning-delay #sandbox .cricket-inning-details-innings, .cricket-inning-abandoned #sandbox .cricket-inning-details-innings {
+      padding-left: 0; }
+  #sandbox .cricket-inning-details-overs {
+    text-align: right;
+    width: 33.4%; }
+  #sandbox .cricket-scorecard-batsmen {
+    padding: 6px 12px 12px 12px;
+    display: inline-block; }
+    #sandbox .cricket-scorecard-batsmen-in-play .cricket-scorecard-batsmen-name:before, #sandbox .cricket-scorecard-batsmen-duck .cricket-scorecard-batsmen-name:before {
+      content: '';
+      display: inline-block;
+      position: relative;
+      bottom: -3px;
+      height: 20px;
+      width: 20px;
+      margin-right: 4px;
+      background: url(../img/cricket-dismissal.png);
+      background-repeat: no-repeat;
+      background-size: auto 48px; }
+    #sandbox .cricket-scorecard-batsmen .cricket-scorecard-batsmen-status {
+      margin-top: -2px; }
+      #sandbox .cricket-scorecard-batsmen .cricket-scorecard-batsmen-status em {
+        font-style: normal;
+        color: #767676; }
+    #sandbox .cricket-scorecard-batsmen-in-play .cricket-scorecard-batsmen-name {
+      font-weight: bold; }
+    #sandbox .cricket-scorecard-batsmen-in-play .cricket-scorecard-batsmen-status {
+      color: #767676; }
+    #sandbox .cricket-scorecard-batsmen-duck .cricket-scorecard-batsmen-name:before {
+      background-position: -24px 0; }
+  #sandbox .cricket-match-summary-footer {
+    white-space: nowrap;
+    border-bottom: 1px solid #dcdad5; }
+  #sandbox .cricket-match-summary-footer-wrap {
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch; }
+  #sandbox .cricket-footer-inning {
+    line-height: 1.2;
+    margin-right: 12px;
+    display: inline-block; }
+  #sandbox .cricket-game-in-play {
+    background-color: #b51800;
+    display: table;
+    width: 100%;
+    padding: 6px 12px;
+    table-layout: fixed; }
+    #sandbox .cricket-game-in-play + .cricket-match-summary-head {
+      border-top: 0; }
+  #sandbox .cricket-game-in-play-text,
+  #sandbox .cricket-game-in-play-follow {
+    line-height: 1;
+    display: table-cell;
+    color: #fff;
+    vertical-align: middle; }
+  #sandbox .cricket-game-in-play-text {
+    font-weight: bold; }
+  #sandbox .cricket-game-in-play-text,
+  #sandbox .cricket-game-in-play-link {
+    position: relative;
+    top: -2px; }
+  #sandbox .cricket-game-in-play-follow {
+    text-align: right; }
+    #sandbox .cricket-game-in-play-follow:active {
+      color: rgba(255, 255, 255, 0.6); }
+      #sandbox .cricket-game-in-play-follow:active .cricket-game-in-play-icon {
+        border-color: rgba(255, 255, 255, 0.6); }
+  #sandbox .cricket-game-in-play-icon {
+    display: inline-block;
+    border: 1px solid #fff;
+    line-height: 28px;
+    width: 30px;
+    border-radius: 15px;
+    box-sizing: content-box;
+    text-align: center; }
+  #sandbox .cricket-match-summary-scorecard[data-pages] .cricket-scorecard-batsmen-wrap {
+    animation: fadeOutIn 5s infinite forwards;
+    -webkit-animation: fadeOutIn 5s infinite forwards; }
+@-webkit-keyframes fadeOutIn {
+  7% {
+    opacity: 1; }
+  93.0% {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+@keyframes fadeOutIn {
+  7% {
+    opacity: 1; }
+  93.0% {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
   #sandbox .witness {
     margin: 24px 12px 12px 12px; }
     @media all and (max-width: 40.615em) {
@@ -3858,7 +4426,7 @@
     border: 1px solid #f1f1f1; }
     #sandbox .tone--comment .tags .inline-list__item.more-button a:active {
       color: #1a1a1a;
-      border: 1px solid #d7d7d7; }
+      border: 1px solid #d8d8d8; }
   #sandbox .tone--comment .touchpoint--primary .touchpoint__button {
     background-color: #e6711b; }
   #sandbox .tone--comment .touchpoint--primary:active .touchpoint__button {
@@ -4042,6 +4610,14 @@
   #sandbox .tone--liveBlog .section {
     color: #fff; }
   #sandbox .tone--liveBlog .content__series-label {
+    color: #fff; }
+  #sandbox .tone--liveBlog .cricket .new_alerts {
+    margin: 0; }
+  #sandbox .tone--liveBlog .cricket .new_alerts, #sandbox .tone--liveBlog .cricket .new_alerts.following:active {
+    border-color: #dcdad5;
+    color: #999; }
+  #sandbox .tone--liveBlog .cricket a.new_alerts:not(.following):active, #sandbox .tone--liveBlog .cricket .new_alerts.following:not(:active) {
+    background-color: #999;
     color: #fff; }
   #sandbox .tone--liveBlog.is-live a.touchpoint:active {
     color: #cc2b12; }
@@ -4439,6 +5015,14 @@
         color: #999; }
     #sandbox .tone--analysis .article__header .main-media__caption {
       background-color: #fff; }
+  #sandbox .tone--deadBlog .cricket .new_alerts {
+    margin: 0; }
+  #sandbox .tone--deadBlog .cricket .new_alerts, #sandbox .tone--deadBlog .cricket .new_alerts.following:active {
+    border-color: #dcdad5;
+    color: #999; }
+  #sandbox .tone--deadBlog .cricket a.new_alerts:not(.following):active, #sandbox .tone--deadBlog .cricket .new_alerts.following:not(:active) {
+    background-color: #999;
+    color: #fff; }
   #sandbox .tone--deadBlog .witness {
     margin-top: 12px; }
   #sandbox .tone--deadBlog a.touchpoint:active {
@@ -4934,23 +5518,6 @@
     animation-name: blink; }
   #sandbox .section__live__pulse {
     -webkit-animation: blink 1.5s ease-in infinite; }
-  #sandbox .alerts {
-    color: #005689;
-    font-family: "Guardian Agate Sans 1 Web", sans-serif;
-    display: inline-block; }
-    #sandbox .alerts [data-icon]::before {
-      margin-right: 4px;
-      font-size: 85%; }
-    #sandbox .alerts .alerts__state--follow {
-      display: none; }
-      #sandbox .alerts .alerts__state--follow [data-icon]::before {
-        color: #4bc6df; }
-    #sandbox .alerts.following .alerts__state--follow {
-      display: block; }
-    #sandbox .alerts.following .alerts__state--unfollow {
-      display: none; }
-  #sandbox .alerts__label {
-    font-weight: bold; }
   #sandbox .aside {
     margin: 24px 0px;
     border-top: 1px dotted #dcdad5;
@@ -5077,11 +5644,11 @@
         background-color: #f1f1f1; }
         #sandbox .tags .inline-list__item a:active {
           color: #1a1a1a;
-          background-color: #d7d7d7; }
+          background-color: #d8d8d8; }
       #sandbox .tags .inline-list__item.more-button a {
         background-color: transparent !important;
         color: #333;
-        border: 1px solid #d7d7d7; }
+        border: 1px solid #d8d8d8; }
         #sandbox .tags .inline-list__item.more-button a:active {
           color: #1a1a1a;
           border: 1px solid #bebebe; }
@@ -5095,36 +5662,6 @@
   #sandbox .tags__separator {
     font-weight: bold;
     margin: 0 4px; }
-  #sandbox .tabs {
-    color: #767676;
-    font-family: "Guardian Agate Sans 1 Web", sans-serif;
-    margin: 12px 0px;
-    clear: left; }
-    @media all and (max-width: 40.615em) {
-      #sandbox .tabs {
-        font-size: 1.4rem;
-        line-height: 2rem; } }
-    @media all and (min-width: 40.625em) {
-      #sandbox .tabs {
-        font-size: 1.6rem;
-        line-height: 2.2rem; } }
-    @media all and (max-width: 28.115em) {
-      #sandbox .tabs {
-        margin: 12px; } }
-    #sandbox .tabs .inline-list__item {
-      width: 33.3%; }
-    #sandbox .tabs .tab {
-      vertical-align: top;
-      border-top: 2px solid #dcdad5;
-      padding: 6px 12px 24px 3px;
-      display: block; }
-      #sandbox .tabs .tab[aria-selected="true"] {
-        color: #005689;
-        font-weight: bold;
-        border-top: 4px solid #005689;
-        padding-top: 4px; }
-    .android #sandbox .tabs {
-      margin: 12px; }
   .font-size-1 #sandbox .resizable {
     font-size: 70%;
     line-height: 1.5; }
@@ -6607,6 +7144,132 @@
       @media all and (max-width: 28.115em) {
         .replacement #sandbox .team-lineup__player__replacement {
           display: block; } }
+  #sandbox .cricket-stats__innings {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    background: #fff;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #dcdad5;
+    border-top: 1px solid #4bc6df; }
+  #sandbox .cricket-stats__wrap {
+    color: #333; }
+    @media all and (max-width: 40.615em) {
+      #sandbox .cricket-stats__wrap {
+        margin: 0 12px; } }
+  #sandbox .cricket-stats__header {
+    display: table-cell;
+    vertical-align: top;
+    width: 25%;
+    box-sizing: border-box;
+    padding: 6px 0 0 12px; }
+    @media all and (max-width: 40.615em) {
+      #sandbox .cricket-stats__header {
+        display: none; } }
+  #sandbox .cricket-stats__title {
+    font-weight: bold;
+    line-height: 1; }
+    @media all and (max-width: 40.615em) {
+      #sandbox .cricket-stats__title {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.625em) {
+      #sandbox .cricket-stats__title {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
+  #sandbox .cricket-stats__total {
+    font-family: "Guardian Egyptian Web", Georgia, serif;
+    font-weight: 200;
+    font-size: 2.7rem;
+    line-height: 1.1;
+    margin-top: 20px; }
+    #sandbox .cricket-stats__total em {
+      color: #4bc6df;
+      font-style: normal;
+      font-size: 2.5rem; }
+  #sandbox .cricket-stats__table-wrap {
+    display: table-cell;
+    vertical-align: top; }
+  #sandbox .cricket-stats__takenby {
+    display: block;
+    color: #999;
+    padding: 3px 0 6px 0; }
+  #sandbox .cricket-stats__table {
+    width: 100%;
+    text-align: left;
+    font-family: "Guardian Agate Sans 1 Web", sans-serif; }
+    @media all and (max-width: 40.615em) {
+      #sandbox .cricket-stats__table {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.625em) {
+      #sandbox .cricket-stats__table {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
+    @media all and (max-width: 40.615em) {
+      #sandbox .cricket-stats__table--tablet {
+        display: none; } }
+    @media all and (min-width: 40.625em) {
+      #sandbox .cricket-stats__table--phone {
+        display: none; } }
+    @media all and (max-width: 40.615em) {
+      #sandbox .cricket-stats__table--values {
+        width: 20%; } }
+    @media all and (min-width: 40.625em) {
+      #sandbox .cricket-stats__table--values {
+        width: 15%; } }
+    #sandbox .cricket-stats__table th {
+      color: #999; }
+    #sandbox .cricket-stats__table th.cricket-stats__table--title,
+    #sandbox .cricket-stats__table td.cricket-stats__table--strong {
+      font-weight: bold;
+      color: #000; }
+    #sandbox .cricket-stats__table--title {
+      font-family: "Guardian Text Egyptian Web", Georgia, serif; }
+    #sandbox .cricket-stats__table th, #sandbox .cricket-stats__table td {
+      vertical-align: top;
+      padding: 6px 6px 0 6px;
+      line-height: 1;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden; }
+      @media all and (max-width: 40.615em) {
+        #sandbox .cricket-stats__table th, #sandbox .cricket-stats__table td {
+          height: 3.7rem; } }
+      @media all and (min-width: 40.625em) {
+        #sandbox .cricket-stats__table th, #sandbox .cricket-stats__table td {
+          height: 3.9rem; } }
+    #sandbox .cricket-stats__table tr {
+      border-bottom: 1px solid #dcdad5; }
+    #sandbox .cricket-stats__table tfoot tr {
+      border-bottom: 0;
+      border-top: 1px solid #dcdad5; }
+    #sandbox .cricket-stats__table tbody tr:last-child {
+      border-bottom: none; }
+  #sandbox .cricket-stats__table--in-play {
+    font-weight: bold; }
+  #sandbox .cricket-stats__table--duck::before {
+    background-position: -24px 0; }
+  #sandbox .cricket-stats__table--in-play,
+  #sandbox .cricket-stats__table--duck {
+    display: inline-block;
+    vertical-align: top; }
+    #sandbox .cricket-stats__table--in-play::before,
+    #sandbox .cricket-stats__table--duck::before {
+      content: '';
+      display: inline-block;
+      position: relative;
+      bottom: 2px;
+      height: 20px;
+      width: 20px;
+      margin-right: 4px;
+      background-image: url(../img/cricket-dismissal.png);
+      background-repeat: no-repeat;
+      background-size: auto 48px; }
+    #sandbox .cricket-stats__table--in-play + .cricket-stats__takenby,
+    #sandbox .cricket-stats__table--duck + .cricket-stats__takenby {
+      margin-top: -7px; }
   #sandbox .element-witness {
     font-family: "Guardian Agate Sans 1 Web", sans-serif; }
     @media all and (max-width: 40.615em) {
