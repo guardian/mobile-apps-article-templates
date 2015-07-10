@@ -136,26 +136,32 @@
                 }
             }
         }
-        //TODO: Needed here or extra specicifity required
+        
+        .cricket & {
+            border-top: none;
+        }
+     
         .article__header--cricket {
             background-color: transparent;
             border-bottom: none;
 
             .meta__pubdate,
-            a {
+            a, 
+            .byline {
                 color: color(shade-1);
             }
 
             .meta {
                 width: 50%;
+                line-height: 1.2em;
                 background-color: transparent;
                 display: inline-block;
             }
 
             .meta__misc {
-                //TODO - check for mixin
                 padding-bottom: 0;
             }
+            
             .cricket-match-basic-follow {
                 width: 49%;
                 padding: 0 12px;
