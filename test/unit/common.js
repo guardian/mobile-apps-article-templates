@@ -9,7 +9,7 @@ define([
 		var sandbox;
 
 		before(function(){
-			sandbox = bonzo(bonzo.create('<div id="sandbox" style="visibility:visible;"></div>'));
+			sandbox = bonzo(bonzo.create('<div style="visibility:hidden;" id="sandbox"></div>'));
 			sandbox.appendTo(document.body);
 		});
 
@@ -44,7 +44,6 @@ define([
 
 			expect(innerFrame.getAttribute('width')).to.be.equal('600');
 		});
-
 
 		it('should force .pie-chart width to its parent width', function(){
 			var testContent = bonzo.create('<div style="width:323px;height:500px;"><div class="pie-chart"></div></div>').pop();
@@ -103,10 +102,30 @@ define([
 		it('should add extra words to a series that occupy more than one line if the new line contains only one word', function(){
 			var testContent = bonzo.create('<div style="width:340px; font-family: Courier; font-size: 10px;" class="content__series-label content__labels"><a>Nigel Slater recipes Nigel Slater recipes Nigel Slater recipes</a><div>');
 			$(testContent).appendTo(sandbox);
-			var series = $('a', testContent);			
+			var series = $('a', testContent);
 			Common.modules.fixSeries(series);
 			expect(series.html()).to.be.equal('<span>Nigel </span><span>Slater </span><span>recipes </span><span>Nigel </span><span>Slater </span><span>recipes </span><br><span>Nigel </span><span>Slater </span><span>recipes </span>');
 		});
+
+		if (navigator.userAgent.indexOf('PhantomJS') < 0) {
+			it('should normally load the interactive when the connection is present', function(done){
+				var testContent = bonzo.create('<figure class="interactive" data-interactive="fake_interactive"></figure>')[0];
+				$(testContent).appendTo(sandbox);
+				testContent.addEventListener('interactive-loaded', function(){
+					done();
+				}, false);
+				Common.modules.loadInteractives();
+			});
+			it('should load a "content not available" placeholder on failure', function(done){
+				var testContent = bonzo.create('<figure class="interactive" data-interactive="nonexistant_interactive"></figure>')[0];
+				$(testContent).appendTo(sandbox);
+				Common.modules.loadInteractives();
+				setTimeout(function(){
+					expect($(testContent).hasClass('interactive--offline')).to.be.true;
+					done();
+				}, 1500);
+			});
+		}
 
 		describe('Tags', function(){
 			var tagsContainer;

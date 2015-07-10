@@ -13,10 +13,9 @@ app.use('/root', express.static(__dirname + '/..'));
 app.use('/', proxy('http://mobile-apps.guardianapis.com', {
 	intercept: function(data, req, res, callback){
 		console.log(parse(req.url).path);
-		if(data.length > 0 && !/ico/.test(parse(req.url).path)){
+		if(data.length > 0 && !/ico|png/.test(parse(req.url).path)){
 			zlib.gunzip(data, function (gunzipError, unzipbody) {
 				var object = JSON.parse(unzipbody.toString().replace(new RegExp('http://mobile-apps.guardianapis.com','g'), 'http://localhost:3000'));
-
 
 				// mocking adv
 				if(object.cards){
