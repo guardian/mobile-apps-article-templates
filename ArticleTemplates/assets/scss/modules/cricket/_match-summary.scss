@@ -140,7 +140,8 @@ Displays a cricket header.
 .cricket-match-summary-head{
 	@extend %base-match-table;
 	@extend %meta-padding;
-	border-top: 4px solid color(tone-live);
+	//TODO: check when find about banner whether these both need to be present or if its an either or
+	//border-top: 4px solid color(tone-live);
 }
 
 .cricket-match-basic-info{
@@ -149,11 +150,29 @@ Displays a cricket header.
 	width: 40%;
 	color: color(shade-1);
 
+	
 	p{
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
+}
+.cricket-match-comp-info {
+	background: color(tone-live-accent);
+	color: color(shade-7);
+	//replace with mixin?  
+	padding: 5px 12px;
+
+	h1 {
+		@include meta();
+		font-family: $egyptian-display;
+		font-weight: 300;
+	}
+}
+
+.cricket-match-comp-info__comp-name {
+	display: inline-block;
+	padding-right: 4px;
 }
 
 .cricket-match-basic-follow{
