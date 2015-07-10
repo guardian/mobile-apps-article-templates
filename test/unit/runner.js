@@ -2,10 +2,8 @@ require.config({
     baseUrl: '/root/ArticleTemplates/assets/js',
     waitSeconds: 1,
     paths: {
-
         // -- components
         bonzo: '../../../node_modules/bonzo/bonzo',
-        buoy: '../../../node_modules/smooth-scroll/dist/js/buoy',
         bean: '../../../node_modules/bean/bean',
         d3: '../../../node_modules/d3/d3',
         domReady: '../../../node_modules/domready/ready',
