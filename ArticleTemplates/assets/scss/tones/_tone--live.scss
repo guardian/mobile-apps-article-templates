@@ -145,6 +145,14 @@
             background-color: transparent;
             border-bottom: none;
 
+             @include mq(col2, col3) {
+                padding-left: cols($base-3, 4);
+             }
+
+             @include mq($from: col3) {
+                padding-left: cols($base-4, 5, 1);
+             }
+
             .meta__pubdate,
             a, 
             .byline {
@@ -156,12 +164,19 @@
                 line-height: 1.2em;
                 background-color: transparent;
                 display: inline-block;
+                padding-left: 0;
+
             }
 
             .meta__misc {
                 padding-bottom: 0;
+
+                @include mq($from: col3) {
+                    padding-left: 0;
+                }
+
             }
-            
+
             .cricket-match-basic-follow {
                 width: 49%;
                 padding: 0 12px;
@@ -170,6 +185,11 @@
 
                 a {
                     color: color(shade-3);
+                    border-color: color(shade-4);
+                }
+
+                a:active {
+                    color: color(shade-7)
                 }
             }
         }
