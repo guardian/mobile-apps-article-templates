@@ -24,63 +24,61 @@
         <div id="cricket-header">
             __CRICKET_HEADER__
         </div>
-    </div>
+        <div role="tablist" class="tabs">
+            <ul class="inline-list">
+                <li role="presentation" class="inline-list__item">
+                    <a role="tab" class="tab" id="cricket__tab--liveblog" href="#cricket__tabpanel--liveblog" aria-controls="cricket__tabpanel--liveblog" aria-selected="true">Over by over</a>
+                </li>
+                <li role="presentation" class="inline-list__item" style="__CRICKET_HAS_SCORECARD__">
+                    <a role="tab" class="tab" id="cricket__tab--stats" href="#cricket__tabpanel--stats" aria-controls="cricket__tabpanel--stats" aria-selected="false">Scorecard</a>
+                </li>
+            </ul>
+        </div>
 
-    <div role="tablist" class="tabs">
-        <ul class="inline-list">
-            <li role="presentation" class="inline-list__item">
-                <a role="tab" class="tab" id="cricket__tab--liveblog" href="#cricket__tabpanel--liveblog" aria-controls="cricket__tabpanel--liveblog" aria-selected="true">Over by over</a>
-            </li>
-            <li role="presentation" class="inline-list__item" style="__CRICKET_HAS_SCORECARD__">
-                <a role="tab" class="tab" id="cricket__tab--stats" href="#cricket__tabpanel--stats" aria-controls="cricket__tabpanel--stats" aria-selected="false">Scorecard</a>
-            </li>
-        </ul>
-    </div>
-
-    <div role="tabpanel" class="cricket__tabpanel tone--__SECTION_TONE__ __IS_LIVE__" id="cricket__tabpanel--liveblog" aria-labelledby="cricket__tab--liveblog" style="">
-        <div class="article article--liveblog">
-            <div class="article__header article__header--cricket">
-                <div class="meta">
-                    <div class="meta__misc">
-                        <div class="meta__byline">
-                            __BYLINE__
+        <div role="tabpanel" class="cricket__tabpanel tone--__SECTION_TONE__ __IS_LIVE__" id="cricket__tabpanel--liveblog" aria-labelledby="cricket__tab--liveblog" style="">
+            <div class="article article--liveblog">
+                <div class="article__header article__header--cricket">
+                    <div class="meta">
+                        <div class="meta__misc">
+                            <div class="meta__byline">
+                                __BYLINE__
+                            </div>
+                            <p class="meta__pubdate"><span class="screen-readable">Published: </span>__PUBDATE__</p>
                         </div>
-                        <p class="meta__pubdate"><span class="screen-readable">Published: </span>__PUBDATE__</p>
+                        __COMMENT_CTA__
                     </div>
-                    __COMMENT_CTA__
+                    <div class="cricket-match-basic-follow">
+                        __CRICKET_ALERT__
+                    </div>
                 </div>
-                <div class="cricket-match-basic-follow">
-                    __CRICKET_ALERT__
+
+                <div class="article__body article__body--liveblog">
+                    <div class="article__body--liveblog__pinned">
+                        __ASIDE_WITNESS__
+                    </div>
+                    __BLOCKS__
+                </div>
+
+                __SHOW_MORE__
+
+                <div class="loading loading--liveblog">
+                    <img src="__TEMPLATES_DIRECTORY__assets/img/loading.gif" alt="Loading…"/>
+                </div>
+
+                <div class="tags">
+                    <ul class="inline-list">
+                        <li class="inline-list__item screen-readable">Tags:</li>
+                    </ul>
                 </div>
             </div>
+        </div>
 
-            <div class="article__body article__body--liveblog">
-                <div class="article__body--liveblog__pinned">
-                    __ASIDE_WITNESS__
-                </div>
-                __BLOCKS__
-            </div>
-
-            __SHOW_MORE__
-
-            <div class="loading loading--liveblog">
-                <img src="__TEMPLATES_DIRECTORY__assets/img/loading.gif" alt="Loading…"/>
-            </div>
-
-            <div class="tags">
-                <ul class="inline-list">
-                    <li class="inline-list__item screen-readable">Tags:</li>
-                </ul>
+        <div role="tabpanel" class="cricket__tabpanel" id="cricket__tabpanel--stats" aria-labelledby="cricket__tab--stats" style="display: none;">
+            <div class="cricket-stats__wrap" id="cricket-scorecard">
+                __CRICKET_SCORECARD__
             </div>
         </div>
     </div>
-
-    <div role="tabpanel" class="cricket__tabpanel" id="cricket__tabpanel--stats" aria-labelledby="cricket__tab--stats" style="display: none;">
-        <div class="cricket-stats__wrap" id="cricket-scorecard">
-            __CRICKET_SCORECARD__
-        </div>
-    </div>
-
     <script type="text/javascript">
         window.initTemplate();
     </script>

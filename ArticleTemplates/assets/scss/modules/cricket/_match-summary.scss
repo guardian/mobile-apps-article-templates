@@ -145,6 +145,54 @@ Displays a cricket header.
 		text-overflow: ellipsis;
 	}
 }
+
+//TODO: specificity needed here currently due to previous styling - will need to change this
+.cricket .tone--liveBlog.is-live  .article--liveblog,
+.cricket .tone--deadBlog  .article--liveblog {
+
+	.article__header--cricket {
+	    background-color: transparent;
+	    border-bottom: none;
+
+	    .meta__pubdate,
+	    a, 
+	    .byline {
+	        color: color(shade-1);
+	    }
+
+	    .meta {
+	        width: 50%;
+	        line-height: 1.2em;
+	        background-color: transparent;
+	        display: inline-block;
+	        padding-left: 0;
+
+	    }
+
+	    .meta__misc {
+	        padding-bottom: 0;
+	        padding-top: 0; 
+
+	    }
+
+	    .cricket-match-basic-follow {
+	        width: 49%;
+	        padding: 0 12px;
+	        vertical-align: text-bottom;
+	        display: inline-block;
+
+	        a {
+	            color: color(shade-3);
+	            border-color: color(shade-4);
+	        }
+
+	        a:active {
+	            color: color(shade-7)
+	        }
+	    }
+	}
+}
+
 .cricket-match-comp-info {
 	background: color(tone-live-accent);
 	color: color(shade-7);
