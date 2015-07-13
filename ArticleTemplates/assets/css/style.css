@@ -975,7 +975,7 @@ Display an article's meta information.
             <span class="meta__comments__label">Comments</span>
         </a>
     </div>
-</div>
+</div> 
 ```
 */
 .meta {
@@ -1686,103 +1686,93 @@ category: Modules
 Displays a cricket header.
 
 ```html_example
-        <div id="cricket-header">
-            <div class="cricket-game-in-play">
-                <div class="cricket-game-in-play-text">
-                    This game is in play
-                </div>
-                <a href="#" class="cricket-game-in-play-follow">
-                    <span class="cricket-game-in-play-link">Find it here</span>
-                    <span class="cricket-game-in-play-icon" data-icon="&#xe00b;" aria-hidden="true"></span>
-                </a>
+    <div id="cricket-header">
+        <div class="cricket-game-in-play">
+            <div class="cricket-game-in-play-text">
+                This game is in play
             </div>
-            <div class="cricket-match-summary-head">
-                <div class="cricket-match-basic-info">
-                    <p>Test 1 Test 1 Test 1 Test 1 Test 1 Test 1 Test 1 Test 1 Test 1, Day 1</p>
-                    <p>Cardiff</p>
-                </div>
-                <div class="cricket-match-basic-follow">
-                    <a class="new_alerts __LIVEBLOG_FOLLOWING__" href="x-gu://follow/__LIVEBLOG_FOLLOWING__" data-follow-alert-id="__LIVEBLOG_FOLLOWING__">
-                        <span class="alerts__state--unfollow">
-                            <span data-icon="&#xe090;" aria-hidden="true"></span>
-                            <span class="alerts__label">Follow the match</span>
-                        </span>
-                        <span class="alerts__state--follow">
-                            <span data-icon="&#xe062;" aria-hidden="true"></span>
-                            <span class="alerts__label">Following the match</span>
-                        </span>
-                    </a>
-                </div>
-            </div>
-            <div class="cricket-match-summary-result cricket-inning-rain-delay">
-                <div class="cricket-match-summary-last-inning">
-                    <div class="cricket-inning">
-                        <div class="cricket-inning-team">
-                            <div class="cricket-inning-team-wrap">
-                                <h2 class="cricket-inning-team-name">
-                                    <img class="cricket-inning-team-name-crest" src="eng.jpg">England England England England England
-                                </h2>
-                            </div>
-                        </div>
-                        <div class="cricket-inning-runs">
-                            256 - 10
+            <a href="#" class="cricket-game-in-play-follow">
+                <span class="cricket-game-in-play-link">Find it here</span>
+                <span class="cricket-game-in-play-icon" data-icon="&#xe00b;" aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="cricket-match-comp-info">
+             <h1><b class="cricket-match-comp-info__comp-name">Cricket</b> Second Test Match</h1>
+        </div>
+        <div class="cricket-match-summary-head">
+            <div class="cricket-match-basic-info">
+                <p><b>Day 1</b> The SWALEC Stadium</p>
+            </div>                
+        </div>
+        <div class="cricket-match-summary-result cricket-inning-rain-delay">
+            <div class="cricket-match-summary-last-inning">
+                <div class="cricket-inning">
+                    <div class="cricket-inning-team">
+                        <div class="cricket-inning-team-wrap">
+                            <h2 class="cricket-inning-team-name">
+                                <img class="cricket-inning-team-name-crest" src="eng.jpg">England England England England England
+                            </h2>
                         </div>
                     </div>
-                    <div class="cricket-inning-details">
-                        <div class="cricket-inning-details-innings">
-                            <b>1st</b> innings
-                        </div>
-                        <div class="cricket-inning-details-overs">
-                            <b>8.6</b> overs
-                        </div>
+                    <div class="cricket-inning-runs">
+                        256 - 10
                     </div>
                 </div>
-                <div class="cricket-match-summary-scorecard" id="cricket-match-summary-scorecard">
-                    <div class="cricket-scorecard-title">
-                        <b>Scorecard</b> - England 1st Innings
+                <div class="cricket-inning-details">
+                    <div class="cricket-inning-details-innings">
+                        <b>1st</b> innings
                     </div>
-                    <div class="cricket-scorecard-batsmen-wrap" id="cricket-scorecard-batsmen-wrap">
-                        <div class="cricket-scorecard-batsmen-sheet" id="cricket-scorecard-batsmen-sheet">
-                            <div class="cricket-scorecard-batsmen cricket-scorecard-batsmen-in-play">
-                                <p class="cricket-scorecard-batsmen-name">Cook &#8212; 13</p>
-                                <p class="cricket-scorecard-batsmen-status">in play</p>
-                            </div><div class="cricket-scorecard-batsmen cricket-scorecard-batsmen-in-play">
-                                <p class="cricket-scorecard-batsmen-name">Trott &#8212; 13</p>
-                                <p class="cricket-scorecard-batsmen-status">in play</p>
-                            </div>
-                        </div>
+                    <div class="cricket-inning-details-overs">
+                        <b>8.6</b> overs
                     </div>
                 </div>
             </div>
-            <div class="cricket-match-summary-footer">
-                <div class="cricket-match-summary-footer-wrap">
-                    <div class="cricket-footer-inning">
-                        <p class="cricket-footer-inning-line">
-                            <b>ENG - 1st</b>
-                        </p>
-                        <p class="cricket-footer-inning-line">
-                            350 all out
-                        </p>
-                    </div>
-                    <div class="cricket-footer-inning">
-                        <p class="cricket-footer-inning-line">
-                            <b>AUS - 1st</b>
-                        </p>
-                        <p class="cricket-footer-inning-line">
-                            389 all out
-                        </p>
-                    </div>
-                    <div class="cricket-footer-inning">
-                        <p class="cricket-footer-inning-line">
-                            <b>ENG - 2nd</b>
-                        </p>
-                        <p class="cricket-footer-inning-line">
-                            453 dec
-                        </p>
+            <div class="cricket-match-summary-scorecard" id="cricket-match-summary-scorecard">
+                <div class="cricket-scorecard-title">
+                    <b>Scorecard</b> - England 1st Innings
+                </div>
+                <div class="cricket-scorecard-batsmen-wrap" id="cricket-scorecard-batsmen-wrap">
+                    <div class="cricket-scorecard-batsmen-sheet" id="cricket-scorecard-batsmen-sheet">
+                        <div class="cricket-scorecard-batsmen cricket-scorecard-batsmen-in-play">
+                            <p class="cricket-scorecard-batsmen-name">Cook &#8212; 13</p>
+                            <p class="cricket-scorecard-batsmen-status">in play</p>
+                        </div><div class="cricket-scorecard-batsmen cricket-scorecard-batsmen-in-play">
+                            <p class="cricket-scorecard-batsmen-name">Trott &#8212; 13</p>
+                            <p class="cricket-scorecard-batsmen-status">in play</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="cricket-match-summary-footer">
+            <div class="cricket-match-summary-footer-wrap">
+                <div class="cricket-footer-inning">
+                    <p class="cricket-footer-inning-line">
+                        <b>ENG - 1st</b>
+                    </p>
+                    <p class="cricket-footer-inning-line">
+                        350 all out
+                    </p>
+                </div>
+                <div class="cricket-footer-inning">
+                    <p class="cricket-footer-inning-line">
+                        <b>AUS - 1st</b>
+                    </p>
+                    <p class="cricket-footer-inning-line">
+                        389 all out
+                    </p>
+                </div>
+                <div class="cricket-footer-inning">
+                    <p class="cricket-footer-inning-line">
+                        <b>ENG - 2nd</b>
+                    </p>
+                    <p class="cricket-footer-inning-line">
+                        453 dec
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 ```
 */
 .cricket-match-summary-head, .cricket-match-summary-result, .cricket-match-summary-footer {
@@ -1822,9 +1812,6 @@ Displays a cricket header.
     .cricket-match-summary-head, .cricket-match-summary-footer-wrap {
       padding: 6px 12px 6px 12px; } }
 
-.cricket-match-summary-head {
-  border-top: 4px solid #b51800; }
-
 .cricket-match-basic-info {
   display: table-cell;
   width: 40%;
@@ -1833,6 +1820,65 @@ Displays a cricket header.
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; }
+
+.cricket .tone--liveBlog.is-live .article__header--cricket,
+.cricket .tone--deadBlog .article__header--cricket {
+  background-color: transparent;
+  border-bottom: none; }
+  .cricket .tone--liveBlog.is-live .article__header--cricket .meta__pubdate,
+  .cricket .tone--liveBlog.is-live .article__header--cricket a,
+  .cricket .tone--liveBlog.is-live .article__header--cricket .byline,
+  .cricket .tone--deadBlog .article__header--cricket .meta__pubdate,
+  .cricket .tone--deadBlog .article__header--cricket a,
+  .cricket .tone--deadBlog .article__header--cricket .byline {
+    color: #333; }
+  .cricket .tone--liveBlog.is-live .article__header--cricket .meta,
+  .cricket .tone--deadBlog .article__header--cricket .meta {
+    width: 50%;
+    line-height: 1.2em;
+    background-color: transparent;
+    display: inline-block;
+    padding-left: 0; }
+  .cricket .tone--liveBlog.is-live .article__header--cricket .meta__misc,
+  .cricket .tone--deadBlog .article__header--cricket .meta__misc {
+    padding-bottom: 0;
+    padding-top: 0; }
+  .cricket .tone--liveBlog.is-live .article__header--cricket .cricket-match-basic-follow,
+  .cricket .tone--deadBlog .article__header--cricket .cricket-match-basic-follow {
+    width: 48.5%;
+    padding: 0 12px;
+    vertical-align: text-bottom;
+    display: inline-block; }
+    .cricket .tone--liveBlog.is-live .article__header--cricket .cricket-match-basic-follow a,
+    .cricket .tone--deadBlog .article__header--cricket .cricket-match-basic-follow a {
+      color: #999;
+      border-color: #dcdad5; }
+      .cricket .tone--liveBlog.is-live .article__header--cricket .cricket-match-basic-follow a.following,
+      .cricket .tone--deadBlog .article__header--cricket .cricket-match-basic-follow a.following {
+        color: #fff; }
+    .cricket .tone--liveBlog.is-live .article__header--cricket .cricket-match-basic-follow a:active,
+    .cricket .tone--deadBlog .article__header--cricket .cricket-match-basic-follow a:active {
+      color: #fff; }
+
+.cricket-match-comp-info {
+  background: #cc2b12;
+  color: #fff;
+  padding: 5px 12px; }
+  .cricket-match-comp-info h1 {
+    font-family: "Guardian Egyptian Web", Georgia, serif;
+    font-weight: 300; }
+    @media all and (max-width: 40.615em) {
+      .cricket-match-comp-info h1 {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.625em) {
+      .cricket-match-comp-info h1 {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
+
+.cricket-match-comp-info__comp-name {
+  display: inline-block;
+  padding-right: 4px; }
 
 .cricket-match-basic-follow {
   display: table-cell;
@@ -2133,7 +2179,7 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
   .witness .witness__sponsor-logo {
     fill: #676868; }
   .witness .witness__sponsor {
-    display: inline-block;
+    display: none;
     vertical-align: middle;
     width: 18%;
     position: relative;
@@ -2656,7 +2702,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   border: 1px solid #f1f1f1; }
   .tone--comment .tags .inline-list__item.more-button a:active {
     color: #1a1a1a;
-    border: 1px solid #d7d7d7; }
+    border: 1px solid #d8d8d8; }
 .tone--comment .touchpoint--primary .touchpoint__button {
   background-color: #e6711b; }
 .tone--comment .touchpoint--primary:active .touchpoint__button {
@@ -2866,58 +2912,60 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   background-color: #b51800; }
 .tone--liveBlog.is-live #comments .touchpoint--primary:active .touchpoint__button {
   background-color: #cc2b12; }
+.tone--liveBlog.is-live .article__header {
+  background-color: #b51800;
+  color: #fff; }
+  .tone--liveBlog.is-live .article__header a {
+    color: #fff; }
+    .tone--liveBlog.is-live .article__header a:active {
+      opacity: rgba(255, 255, 255, 0.8); }
+  .tone--liveBlog.is-live .article__header .bullet::before,
+  .tone--liveBlog.is-live .article__header ul > li::before {
+    background-color: rgba(255, 255, 255, 0.8); }
+  .tone--liveBlog.is-live .article__header .headline,
+  .tone--liveBlog.is-live .article__header .byline,
+  .tone--liveBlog.is-live .article__header .section {
+    color: #fff; }
+  .tone--liveBlog.is-live .article__header .section {
+    position: relative; }
+    @media all and (max-width: 28.115em) {
+      .tone--liveBlog.is-live .article__header .section {
+        padding-left: 66px; } }
+    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      .tone--liveBlog.is-live .article__header .section {
+        padding-left: 78px; } }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      .tone--liveBlog.is-live .article__header .section {
+        padding-left: 33.80282%; } }
+    @media all and (min-width: 56.25em) {
+      .tone--liveBlog.is-live .article__header .section {
+        padding-left: 31.57895%; } }
+  .tone--liveBlog.is-live .article__header .section__live {
+    display: block; }
+  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    .tone--liveBlog.is-live .article__header .headline,
+    .tone--liveBlog.is-live .article__header .standfirst {
+      margin-left: 32.39437%; } }
+  @media all and (min-width: 56.25em) {
+    .tone--liveBlog.is-live .article__header .headline,
+    .tone--liveBlog.is-live .article__header .standfirst {
+      margin-left: 30.52632%; } }
+  .tone--liveBlog.is-live .article__header .standfirst {
+    color: rgba(255, 255, 255, 0.8); }
+    .tone--liveBlog.is-live .article__header .standfirst a {
+      color: #fff; }
+  .tone--liveBlog.is-live .article__header .sponsorship {
+    background-color: #fff;
+    border-bottom: none; }
+    .tone--liveBlog.is-live .article__header .sponsorship__about-uri, .tone--liveBlog.is-live .article__header .sponsorship__formatted-sponsor-name a {
+      color: #b51800; }
 .tone--liveBlog.is-live .article--liveblog {
   border-top-color: #cc2b12; }
   .tone--liveBlog.is-live .article--liveblog .prose table,
   .tone--liveBlog.is-live .article--liveblog .table {
     border-top-color: #b51800; }
-  .tone--liveBlog.is-live .article--liveblog .article__header {
-    background-color: #b51800;
-    color: #fff; }
-    .tone--liveBlog.is-live .article--liveblog .article__header a {
-      color: #fff; }
-      .tone--liveBlog.is-live .article--liveblog .article__header a:active {
-        opacity: rgba(255, 255, 255, 0.8); }
-    .tone--liveBlog.is-live .article--liveblog .article__header .bullet::before,
-    .tone--liveBlog.is-live .article--liveblog .article__header ul > li::before {
-      background-color: rgba(255, 255, 255, 0.8); }
-    .tone--liveBlog.is-live .article--liveblog .article__header .headline,
-    .tone--liveBlog.is-live .article--liveblog .article__header .byline,
-    .tone--liveBlog.is-live .article--liveblog .article__header .section {
-      color: #fff; }
-    .tone--liveBlog.is-live .article--liveblog .article__header .section {
-      position: relative; }
-      @media all and (max-width: 28.115em) {
-        .tone--liveBlog.is-live .article--liveblog .article__header .section {
-          padding-left: 66px; } }
-      @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-        .tone--liveBlog.is-live .article--liveblog .article__header .section {
-          padding-left: 78px; } }
-      @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-        .tone--liveBlog.is-live .article--liveblog .article__header .section {
-          padding-left: 33.80282%; } }
-      @media all and (min-width: 56.25em) {
-        .tone--liveBlog.is-live .article--liveblog .article__header .section {
-          padding-left: 31.57895%; } }
-    .tone--liveBlog.is-live .article--liveblog .article__header .section__live {
-      display: block; }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      .tone--liveBlog.is-live .article--liveblog .article__header .headline,
-      .tone--liveBlog.is-live .article--liveblog .article__header .standfirst {
-        margin-left: 32.39437%; } }
-    @media all and (min-width: 56.25em) {
-      .tone--liveBlog.is-live .article--liveblog .article__header .headline,
-      .tone--liveBlog.is-live .article--liveblog .article__header .standfirst {
-        margin-left: 30.52632%; } }
-    .tone--liveBlog.is-live .article--liveblog .article__header .standfirst {
-      color: rgba(255, 255, 255, 0.8); }
-      .tone--liveBlog.is-live .article--liveblog .article__header .standfirst a {
-        color: #fff; }
-    .tone--liveBlog.is-live .article--liveblog .article__header .sponsorship {
-      background-color: #fff;
-      border-bottom: none; }
-      .tone--liveBlog.is-live .article--liveblog .article__header .sponsorship__about-uri, .tone--liveBlog.is-live .article--liveblog .article__header .sponsorship__formatted-sponsor-name a {
-        color: #b51800; }
+  .cricket .tone--liveBlog.is-live .article--liveblog {
+    border-top: none; }
   .tone--liveBlog.is-live .article--liveblog .meta {
     background-color: #cc2b12;
     border: 0;
@@ -3281,6 +3329,8 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     }
 
 } */
+.tone--deadBlog .cricket .article--liveblog {
+  border-top: none; }
 .tone--deadBlog .cricket .new_alerts {
   margin: 0; }
 .tone--deadBlog .cricket .new_alerts, .tone--deadBlog .cricket .new_alerts.following:active {
@@ -3304,52 +3354,6 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--deadBlog .article--liveblog .prose table,
   .tone--deadBlog .article--liveblog .table {
     border-top-color: #b51800; }
-  .tone--deadBlog .article--liveblog .article__header {
-    background-color: #fff; }
-    .tone--deadBlog .article--liveblog .article__header .byline__author, .tone--deadBlog .article--liveblog .article__header .byline__author a {
-      color: #333; }
-    .tone--deadBlog .article--liveblog .article__header a {
-      color: #b51800; }
-      .tone--deadBlog .article--liveblog .article__header a:active {
-        opacity: rgba(181, 24, 0, 0.8); }
-    .tone--deadBlog .article--liveblog .article__header .bullet::before,
-    .tone--deadBlog .article--liveblog .article__header ul > li::before {
-      background-color: #767676; }
-    .tone--deadBlog .article--liveblog .article__header .headline {
-      color: #333; }
-    .tone--deadBlog .article--liveblog .article__header .content__series-label,
-    .tone--deadBlog .article--liveblog .article__header .content__series-label a {
-      color: #767676; }
-    .tone--deadBlog .article--liveblog .article__header .section {
-      color: #b51800;
-      font-family: "Guardian Egyptian Web", Georgia, serif;
-      font-weight: 600;
-      float: left; }
-      @media all and (max-width: 28.115em) {
-        .tone--deadBlog .article--liveblog .article__header .section {
-          font-size: 1.5rem;
-          line-height: 1.6rem; } }
-      @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-        .tone--deadBlog .article--liveblog .article__header .section {
-          font-size: 2rem;
-          line-height: 2rem; } }
-      @media all and (min-width: 40.625em) {
-        .tone--deadBlog .article--liveblog .article__header .section {
-          font-size: 2.4rem;
-          line-height: 2.4rem; } }
-      .tone--deadBlog .article--liveblog .article__header .section::before {
-        margin-right: 8px;
-        line-height: 92%;
-        vertical-align: bottom; }
-    .tone--deadBlog .article--liveblog .article__header .section__live {
-      display: block; }
-    .tone--deadBlog .article--liveblog .article__header .standfirst {
-      color: #767676; }
-      .tone--deadBlog .article--liveblog .article__header .standfirst a {
-        color: #b51800; }
-    .tone--deadBlog .article--liveblog .article__header .sponsorship {
-      background-color: #fff;
-      border-bottom: none; }
   .tone--deadBlog .article--liveblog .meta {
     background-color: #f6f6f6;
     border: 0;
@@ -3363,6 +3367,52 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
         width: 30.52632%; } }
     .tone--deadBlog .article--liveblog .meta .meta__pubdate {
       color: rgba(153, 153, 153, 0.8); }
+.tone--deadBlog .article__header {
+  background-color: #fff; }
+  .tone--deadBlog .article__header .byline__author, .tone--deadBlog .article__header .byline__author a {
+    color: #333; }
+  .tone--deadBlog .article__header a {
+    color: #b51800; }
+    .tone--deadBlog .article__header a:active {
+      opacity: rgba(181, 24, 0, 0.8); }
+  .tone--deadBlog .article__header .bullet::before,
+  .tone--deadBlog .article__header ul > li::before {
+    background-color: #767676; }
+  .tone--deadBlog .article__header .headline {
+    color: #333; }
+  .tone--deadBlog .article__header .content__series-label,
+  .tone--deadBlog .article__header .content__series-label a {
+    color: #767676; }
+  .tone--deadBlog .article__header .section {
+    color: #b51800;
+    font-family: "Guardian Egyptian Web", Georgia, serif;
+    font-weight: 600;
+    float: left; }
+    @media all and (max-width: 28.115em) {
+      .tone--deadBlog .article__header .section {
+        font-size: 1.5rem;
+        line-height: 1.6rem; } }
+    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      .tone--deadBlog .article__header .section {
+        font-size: 2rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.625em) {
+      .tone--deadBlog .article__header .section {
+        font-size: 2.4rem;
+        line-height: 2.4rem; } }
+    .tone--deadBlog .article__header .section::before {
+      margin-right: 8px;
+      line-height: 92%;
+      vertical-align: bottom; }
+  .tone--deadBlog .article__header .section__live {
+    display: block; }
+  .tone--deadBlog .article__header .standfirst {
+    color: #767676; }
+    .tone--deadBlog .article__header .standfirst a {
+      color: #b51800; }
+  .tone--deadBlog .article__header .sponsorship {
+    background-color: #fff;
+    border-bottom: none; }
 .tone--deadBlog .tags {
   padding-left: 0; }
   .tone--deadBlog .tags .inline-list__item a {
@@ -4198,11 +4248,11 @@ Display which keywords an article has been tagged with.
       background-color: #f1f1f1; }
       .tags .inline-list__item a:active {
         color: #1a1a1a;
-        background-color: #d7d7d7; }
+        background-color: #d8d8d8; }
     .tags .inline-list__item.more-button a {
       background-color: transparent !important;
       color: #333;
-      border: 1px solid #d7d7d7; }
+      border: 1px solid #d8d8d8; }
       .tags .inline-list__item.more-button a:active {
         color: #1a1a1a;
         border: 1px solid #bebebe; }
@@ -7699,5 +7749,96 @@ Display a Guardian Witness submission.
     .support .prose h3 {
       font-size: 1.8rem;
       line-height: 2.6rem; } }
+
+/*doc
+---
+title: Interactive
+name: interactive
+category: Modules
+---
+Displays a 'content unavailable' instead of an interactive if there is no connection
+
+```html_example
+	<div class="element element-interactive interactive interactive--offline"></div>
+```
+*/
+body[data-fullscreen-interactive] {
+  margin: 0; }
+
+.interactive--offline {
+  background-color: #eaeaea;
+  text-align: center;
+  padding: 1px 0;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  color: #767676;
+  clear: both;
+  margin: 0; }
+  @media all and (max-width: 40.615em) {
+    .interactive--offline {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.625em) {
+    .interactive--offline {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  body:not([data-fullscreen-interactive]) .interactive--offline {
+    margin: 0 -12px 0 -12px !important; }
+  @media all and (max-width: 40.615em) {
+    body[data-fullscreen-interactive] .interactive--offline {
+      font-size: 1.96rem;
+      line-height: 2.8rem; } }
+  @media all and (min-width: 40.625em) {
+    body[data-fullscreen-interactive] .interactive--offline {
+      font-size: 2.24rem;
+      line-height: 3.08rem; } }
+  .interactive--offline:before {
+    content: "Sorry, we are unable to display\Athis content as you have\Ano internet connection.\APlease try again.";
+    white-space: pre;
+    display: block;
+    vertical-align: middle;
+    margin-top: 3.5em;
+    padding-top: 2.5em;
+    background: transparent url("../img/unsmiley.png") no-repeat center top;
+    background-size: 2em; }
+  .interactive--offline * {
+    display: none; }
+  .interactive--offline .interactive--offline--icon {
+    display: inline-block;
+    margin-top: 1em;
+    margin-bottom: 3.5em;
+    color: #767676;
+    font-family: "Guardian Icons", Georgia, serif;
+    -webkit-tap-highlight-color: transparent; }
+    .interactive--offline .interactive--offline--icon:after {
+      display: inline-block;
+      padding: 7px 10px 13px 10px;
+      font-size: 1.5em; }
+    .interactive--offline .interactive--offline--icon.interactive--offline--icon--reload:after {
+      content: '\00e045';
+      border: 1px solid #767676;
+      border-radius: 50%; }
+    .interactive--offline .interactive--offline--icon.interactive--offline--icon--reload:active {
+      color: #fff; }
+      .interactive--offline .interactive--offline--icon.interactive--offline--icon--reload:active:after {
+        border: 1px solid #fff; }
+    .interactive--offline .interactive--offline--icon.interactive--offline--icon--loading {
+      display: none;
+      -webkit-animation: fadeIn;
+      -webkit-animation-direction: alternate;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-duration: 1s; }
+      .interactive--offline .interactive--offline--icon.interactive--offline--icon--loading:after {
+        content: '\00e00c';
+        padding: 7px 10px 15px 10px; }
+  .interactive--offline.interactive--loading .interactive--offline--icon--reload {
+    display: none; }
+  .interactive--offline.interactive--loading .interactive--offline--icon--loading {
+    display: block; }
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
 
 /*# sourceMappingURL=style.css.map */
