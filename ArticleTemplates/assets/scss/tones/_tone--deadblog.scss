@@ -29,6 +29,12 @@
 .tone--deadBlog {
 
     .cricket{
+       
+
+        .article--liveblog {
+            border-top: none;
+        }
+
         .new_alerts{
             margin: 0;
         }
@@ -76,72 +82,6 @@
             border-top-color: color(tone-deadblog);
         }
 
-        .article__header {
-            background-color: color(shade-7);
-            .byline__author, .byline__author a {
-                color: color(shade-1);
-            }
-            a {
-                color: color(tone-deadblog);
-
-                &:active {
-                    opacity: rgba(color(tone-deadblog), .8);
-                }
-            }
-
-            .bullet,
-            ul > li {
-                &::before {
-                    background-color: color(shade-2);
-                }
-            }
-
-            .headline
-            {
-                color: color(shade-1);
-            }
-
-            .content__series-label,
-            .content__series-label a {
-                color: color(shade-2);
-            }
-
-            .section {
-                color: color(tone-deadblog); // Default
-                font-family: $egyptian-display;
-                font-weight: 600;
-                @include headline(.5);
-                float: left;
-
-                &::before {
-                    margin-right: base-px(.66666);
-                    line-height: 92%; // Offset for different font
-                    vertical-align: bottom;
-                }
-            }
-
-            .section__live {
-                display: block;
-            }
-
-            .standfirst {
-                color: color(shade-2);
-
-                a {
-                    color: color(tone-deadblog);
-                }
-            }
-
-            .sponsorship {
-                background-color: color(shade-7);
-                border-bottom: none;
-
-                &__about-uri{
-                    color: color(global-sponsored-about);
-                }
-            }            
-        }
-
         .meta {
             background-color: color(shade-8);
             border: 0;
@@ -165,6 +105,72 @@
         }
     }
 
+    .article__header {
+        background-color: color(shade-7);
+        .byline__author, .byline__author a {
+            color: color(shade-1);
+        }
+        a {
+            color: color(tone-deadblog);
+
+            &:active {
+                opacity: rgba(color(tone-deadblog), .8);
+            }
+        }
+
+        .bullet,
+        ul > li {
+            &::before {
+                background-color: color(shade-2);
+            }
+        }
+
+        .headline
+        {
+            color: color(shade-1);
+        }
+
+        .content__series-label,
+        .content__series-label a {
+            color: color(shade-2);
+        }
+
+        .section {
+            color: color(tone-deadblog); // Default
+            font-family: $egyptian-display;
+            font-weight: 600;
+            @include headline(.5);
+            float: left;
+
+            &::before {
+                margin-right: base-px(.66666);
+                line-height: 92%; // Offset for different font
+                vertical-align: bottom;
+            }
+        }
+
+        .section__live {
+            display: block;
+        }
+
+        .standfirst {
+            color: color(shade-2);
+
+            a {
+                color: color(tone-deadblog);
+            }
+        }
+
+        .sponsorship {
+            background-color: color(shade-7);
+            border-bottom: none;
+
+            &__about-uri{
+                color: color(global-sponsored-about);
+            }
+        }            
+    }
+    
     .tags {
         padding-left: 0;
 
