@@ -78,7 +78,60 @@ Display an alerts toggle.
     }
 }
 
-a.alerts:not(.following):active, .alerts.following:not(:active){
+
+// new alerts
+
+.new_alerts {
+    font-family: $agate-sans;
+    white-space: nowrap;
+    padding: base-px(.3, 1, .7, 1);
+    margin: base-px(.5, 0, 0,-.1);
+    display: inline-block;
+    border-radius: 30px;
+    text-overflow: ellipsis;
+    vertical-align: bottom;
+    overflow: hidden;
+    max-width: 100%;
+    @include meta();
+
+    color: color(tone-news);
+    border: 1px solid color(tone-news);
+    transition: background-color 0.3s;
+
+    span[data-icon]{
+        display: inline-block;
+        vertical-align: bottom;
+        font-size: $body-size-2;
+        position: relative;
+        right: 3px;
+        top: 1px;
+    }
+
+    .alerts__state--follow {
+        display: none;
+    }
+
+    .alerts__label{
+        font-weight: normal;
+    }
+
+    &.following {
+        &:active{
+            color: color(tone-news);
+            border: 1px solid color(tone-news);
+        }
+
+        .alerts__state--follow {
+            display: block;
+        }
+
+        .alerts__state--unfollow {
+            display: none;
+        }
+    }
+}
+
+a.new_alerts:not(.following):active, .new_alerts.following:not(:active){
     background-color: color(tone-news);
     color: color(shade-7);
 }

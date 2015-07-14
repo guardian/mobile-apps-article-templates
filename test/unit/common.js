@@ -9,7 +9,7 @@ define([
 		var sandbox;
 
 		before(function(){
-			sandbox = bonzo(bonzo.create('<div id="sandbox" style="visibility:visible;"></div>'));
+			sandbox = bonzo(bonzo.create('<div style="visibility:hidden;" id="sandbox"></div>'));
 			sandbox.appendTo(document.body);
 		});
 
@@ -45,7 +45,6 @@ define([
 			expect(innerFrame.getAttribute('width')).to.be.equal('600');
 		});
 
-
 		it('should force .pie-chart width to its parent width', function(){
 			var testContent = bonzo.create('<div style="width:323px;height:500px;"><div class="pie-chart"></div></div>').pop();
 			var pie = $('.pie-chart', testContent);
@@ -76,6 +75,18 @@ define([
   			expect(window.location.href).to.be.not.defined;
 		});
 
+		it('should not trigger links on cricket tabs', function(){
+			var click = document.createEvent("MouseEvent");
+			click.initMouseEvent("click", true, true, window, null, 0, 0, 0, 0, false, false, false, false, 0, null);
+			var root = { location: { }};
+			var testContent = bonzo.create('<div role="tablist" class="tabs"><ul class="inline-list"><li role="presentation" class="inline-list__item"><a role="tab" class="tab" id="cricket__tab--liveblog" href="#cricket__tabpanel--liveblog" aria-controls="cricket__tabpanel--liveblog" aria-selected="true">Over by over</a></li><li role="presentation" class="inline-list__item" style="__CRICKET_HAS_SCORECARD__"><a role="tab" class="tab" id="cricket__tab--stats" href="#cricket__tabpanel--stats" aria-controls="cricket__tabpanel--stats" aria-selected="false">Scorecard</a></li></ul></div>');
+			var tab = $('li:last-child a', testContent);
+			$(testContent).appendTo(sandbox);
+			Common.modules.showTabs(root);
+  			tab[0].dispatchEvent(click);
+  			expect(root.location.href).to.be.not.defined;
+		});
+
 		it('should do trigger links on tab if more than a tab is present', function(){
 			var click = document.createEvent("MouseEvent");
 			click.initMouseEvent("click", true, true, window, null, 0, 0, 0, 0, false, false, false, false, 0, null);
@@ -91,10 +102,30 @@ define([
 		it('should add extra words to a series that occupy more than one line if the new line contains only one word', function(){
 			var testContent = bonzo.create('<div style="width:340px; font-family: Courier; font-size: 10px;" class="content__series-label content__labels"><a>Nigel Slater recipes Nigel Slater recipes Nigel Slater recipes</a><div>');
 			$(testContent).appendTo(sandbox);
-			var series = $('a', testContent);			
+			var series = $('a', testContent);
 			Common.modules.fixSeries(series);
 			expect(series.html()).to.be.equal('<span>Nigel </span><span>Slater </span><span>recipes </span><span>Nigel </span><span>Slater </span><span>recipes </span><br><span>Nigel </span><span>Slater </span><span>recipes </span>');
 		});
+
+		if (navigator.userAgent.indexOf('PhantomJS') < 0) {
+			it('should normally load the interactive when the connection is present', function(done){
+				var testContent = bonzo.create('<figure class="interactive" data-interactive="fake_interactive"></figure>')[0];
+				$(testContent).appendTo(sandbox);
+				testContent.addEventListener('interactive-loaded', function(){
+					done();
+				}, false);
+				Common.modules.loadInteractives();
+			});
+			it('should load a "content not available" placeholder on failure', function(done){
+				var testContent = bonzo.create('<figure class="interactive" data-interactive="nonexistant_interactive"></figure>')[0];
+				$(testContent).appendTo(sandbox);
+				Common.modules.loadInteractives();
+				setTimeout(function(){
+					expect($(testContent).hasClass('interactive--offline')).to.be.true;
+					done();
+				}, 1500);
+			});
+		}
 
 		describe('Tags', function(){
 			var tagsContainer;
