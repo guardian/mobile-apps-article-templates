@@ -98,13 +98,19 @@ Display an alerts toggle.
     border: 1px solid color(tone-news);
     transition: background-color 0.3s;
 
-    span[data-icon]{
+    span[data-icon] {
         display: inline-block;
         vertical-align: bottom;
         font-size: $body-size-2;
         position: relative;
         right: 3px;
         top: 1px;
+    }
+
+    &:active,
+    &.following {
+        background-color: color(tone-news);
+        color: color(shade-7);
     }
 
     .alerts__state--follow {
@@ -130,8 +136,9 @@ Display an alerts toggle.
         }
     }
 }
-
-a.new_alerts:not(.following):active, .new_alerts.following:not(:active){
+//TODO Remove once done - CHECK I think we might need previous alerts in also
+/*a.new_alerts:not(.following):active,
+.new_alerts.following:not(:active){
     background-color: color(tone-news);
     color: color(shade-7);
-}
+}*/
