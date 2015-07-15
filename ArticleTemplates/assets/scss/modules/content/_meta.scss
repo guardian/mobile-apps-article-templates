@@ -58,11 +58,15 @@ Display an article's meta information.
         padding: .5em;
         position: relative;
         z-index: 2;
-    }
 
-    .alerts__label {
-        @extend %screen-readable;
+
+        /*TODO  new versions of alerts shouldn't require this- so specificity bumped up temporarily
+            remove when one or the other has been chosen */
+        .alerts__label {
+            @extend %screen-readable;
+        }
     }
+    
 }
 
 .meta__misc {
