@@ -64,9 +64,21 @@ Display an alerts toggle.
     font-weight: bold;
 }
 
+//TODO Only for when being displayed with a dividing line (live blog) - move out if template specific
+.alerts__container {
+    border-top: 1px dotted color(tone-news);
+    
+    padding: base-px(1);
+
+    /*.new_alerts {
+        display: block;
+    }*/
+}
+
 // new alerts
 
 .new_alerts {
+    @include meta();
     font-family: $agate-sans;
     white-space: nowrap;
     padding: base-px(.3, 1, .7, 1);
@@ -77,11 +89,15 @@ Display an alerts toggle.
     vertical-align: bottom;
     overflow: hidden;
     max-width: 100%;
-    @include meta();
-
     color: color(tone-news);
     border: 1px solid color(tone-news);
     transition: background-color 0.3s;
+
+    &:active,
+    &.following {
+        background-color: color(tone-news);
+        color: color(shade-7);
+    }
 
     span[data-icon]{
         display: inline-block;
@@ -92,12 +108,12 @@ Display an alerts toggle.
         top: 1px;
     }
 
+    .alerts__label {
+        font-weight: normal;
+    }
+    
     .alerts__state--follow {
         display: none;
-    }
-
-    .alerts__label{
-        font-weight: normal;
     }
 
     &.following {
@@ -116,7 +132,8 @@ Display an alerts toggle.
     }
 }
 
-a.new_alerts:not(.following):active, .new_alerts.following:not(:active){
+/*a.new_alerts:not(.following):active, 
+.new_alerts.following:not(:active){
     background-color: color(tone-news);
     color: color(shade-7);
-}
+}*/

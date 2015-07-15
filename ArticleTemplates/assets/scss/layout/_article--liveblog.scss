@@ -19,12 +19,14 @@
             top: base-px(0.41);
         }
 
-        .alerts {
+        .alerts,
+        .new_alerts {
             margin: 0;
             padding: base-px(.5, 1);
         }
 
-        & > .alerts {
+        & > .alerts,
+        .alerts__container {
             @include mq($from: col2) {
                 display: none;
             }
@@ -37,7 +39,12 @@
         .meta {
             position: relative;
 
-            .alerts {
+            .new_alerts {
+                margin: base-px(1);
+            }
+
+            .alerts,
+            .new_alerts {
                 position: absolute;
                 left: 0;
                 top: 0;
@@ -46,6 +53,7 @@
                     display: none;
                 }
             }
+
         }
 
         .meta__comments__label {
