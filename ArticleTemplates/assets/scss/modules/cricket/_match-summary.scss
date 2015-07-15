@@ -236,6 +236,10 @@ Displays a cricket header.
     @include mq($from: col3) {
         width: cols($base-4, 5, 1);
     }
+
+   	.cricket-inning-pre-match &{
+   		display: none;
+   	}
 }
 
 .cricket-inning,
@@ -275,6 +279,7 @@ Displays a cricket header.
     white-space: nowrap;
     overflow: hidden;
 
+    //TODO .cricket-inning-tea looks like a typo - find out what this means
     .cricket-inning-tea &:before,
     .cricket-inning-rain-delay &:before{
     	content: '';
@@ -317,7 +322,8 @@ Displays a cricket header.
     .cricket-inning-result &,
     .cricket-inning-draw &,
     .cricket-inning-delay &,
-    .cricket-inning-abandoned &{
+    .cricket-inning-abandoned &,
+    .cricket-inning-pre-match & {
 		display: none;
 	}
 }
@@ -384,6 +390,32 @@ Displays a cricket header.
 .cricket-inning-details-overs{
 	text-align: right;
 	width: 33.4%;
+}
+
+.cricket-inning-teams {
+	padding: base-px(1.5, 1, 0, 1);
+
+	.cricket-inning-team-name {
+		display: block;
+		//todo - mixin
+		padding-bottom: base-px(1.5);
+	}
+	.cricket-inning-team-name-crest {
+		padding-right: 14px;
+	}
+
+}
+
+.cricket-footer-times {
+
+}
+.cricket-footer-times__time {
+	@extend %meta-agata;
+	time {
+		padding-right: base-px(0.5);
+		font-weight: 700;
+
+	}
 }
 
 .cricket-scorecard-batsmen{

@@ -1783,18 +1783,18 @@ Displays a cricket header.
   background: #fff; }
 
 .cricket-match-basic-info, .cricket-scorecard-title, .cricket-inning-details-innings,
-.cricket-inning-details-overs, .cricket-scorecard-batsmen, .cricket-footer-inning, .cricket-game-in-play-text,
+.cricket-inning-details-overs, .cricket-footer-times__time, .cricket-scorecard-batsmen, .cricket-footer-inning, .cricket-game-in-play-text,
 .cricket-game-in-play-follow {
   font-family: "Guardian Agate Sans 1 Web", sans-serif; }
   @media all and (max-width: 40.615em) {
     .cricket-match-basic-info, .cricket-scorecard-title, .cricket-inning-details-innings,
-    .cricket-inning-details-overs, .cricket-scorecard-batsmen, .cricket-footer-inning, .cricket-game-in-play-text,
+    .cricket-inning-details-overs, .cricket-footer-times__time, .cricket-scorecard-batsmen, .cricket-footer-inning, .cricket-game-in-play-text,
     .cricket-game-in-play-follow {
       font-size: 1.4rem;
       line-height: 2rem; } }
   @media all and (min-width: 40.625em) {
     .cricket-match-basic-info, .cricket-scorecard-title, .cricket-inning-details-innings,
-    .cricket-inning-details-overs, .cricket-scorecard-batsmen, .cricket-footer-inning, .cricket-game-in-play-text,
+    .cricket-inning-details-overs, .cricket-footer-times__time, .cricket-scorecard-batsmen, .cricket-footer-inning, .cricket-game-in-play-text,
     .cricket-game-in-play-follow {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -1898,6 +1898,8 @@ Displays a cricket header.
   @media all and (min-width: 56.25em) {
     .cricket-match-summary-last-inning {
       width: 31.57895%; } }
+  .cricket-inning-pre-match .cricket-match-summary-last-inning {
+    display: none; }
 
 .cricket-inning,
 .cricket-inning-details {
@@ -1952,7 +1954,7 @@ Displays a cricket header.
   @media all and (max-width: 40.615em) {
     .cricket-match-summary-scorecard {
       display: none; } }
-  .cricket-inning-result .cricket-match-summary-scorecard, .cricket-inning-draw .cricket-match-summary-scorecard, .cricket-inning-delay .cricket-match-summary-scorecard, .cricket-inning-abandoned .cricket-match-summary-scorecard {
+  .cricket-inning-result .cricket-match-summary-scorecard, .cricket-inning-draw .cricket-match-summary-scorecard, .cricket-inning-delay .cricket-match-summary-scorecard, .cricket-inning-abandoned .cricket-match-summary-scorecard, .cricket-inning-pre-match .cricket-match-summary-scorecard {
     display: none; }
 
 .cricket-scorecard-title {
@@ -2003,6 +2005,18 @@ Displays a cricket header.
 .cricket-inning-details-overs {
   text-align: right;
   width: 33.4%; }
+
+.cricket-inning-teams {
+  padding: 18px 12px 0px 12px; }
+  .cricket-inning-teams .cricket-inning-team-name {
+    display: block;
+    padding-bottom: 18px; }
+  .cricket-inning-teams .cricket-inning-team-name-crest {
+    padding-right: 14px; }
+
+.cricket-footer-times__time time {
+  padding-right: 6px;
+  font-weight: 700; }
 
 .cricket-scorecard-batsmen {
   padding: 6px 12px 12px 12px;
