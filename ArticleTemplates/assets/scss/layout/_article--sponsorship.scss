@@ -53,7 +53,8 @@
     }
 
     .section__container,
-    .article {
+    .article,
+    .content__comments {
         border-color: color(global-adv-bands);
     }
 
@@ -105,7 +106,7 @@
         .article__header .meta__byline .byline,
         .article__header .meta__byline a, 
         .article__header .meta__comments,
-        .article__header .meta__comments a,
+        .article__header .content__comments a,
         .article__body {
             color: color(global-adv-text); 
         }
@@ -190,6 +191,7 @@
         .article__header .headline,
         .article__header .standfirst,
         .article__header .standfirst a,
+        .article__header .content__comments a,
         .article__header .section,
         .article__header .section > div,
         .alerts__state--unfollow {
@@ -211,10 +213,16 @@
             background-color: color(global-adv-bands);
         }
 
-        .article__header .section,
+        /*.article__header .section,
         .content__series-label{
             @include mq($to: col2) {
                 padding-top: base-px(0.58);
+            }
+        }*/
+
+        .content__labels__container {
+            @include mq($to: col2) {
+                padding-top: 10px;
             }
         }
     }    

@@ -7,7 +7,7 @@
         }
     }
 
-   
+    
 
     .section__container {
         & > div {
@@ -18,6 +18,10 @@
         .content__series-label,
         .content__series-label a {
             color: color(shade-2);  // Content Label Series
+        }
+        
+        .content__comments {
+            border-left-color: darken(color(shade-4), 10%);
         }
     }
 
@@ -86,9 +90,7 @@
                 color: #fff;
             }
 
-            .meta__comments {
-                border-left-color: rgba(#fff, .4);
-            }
+           
             //TODO: specificity needed due to previous styles - improve
             a.new_alerts:active, a.new_alerts.following {
                 background-color: color(shade-7);
@@ -103,3 +105,4 @@
 
     }
 }
+
