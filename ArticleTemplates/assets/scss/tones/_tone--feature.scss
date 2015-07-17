@@ -101,10 +101,22 @@
                 color: #fff;
             }
         }
+        
 
         .meta {
             border: 0;
             margin: 0;
+
+            a.new_alerts:active, a.new_alerts.following {
+                background-color: color(shade-7);
+                color: color(tone-feature1-accent);
+            }
+
+            a.new_alerts,  a.new_alerts.following:active {
+                border-color: color(shade-7);
+                color: color(shade-7);
+                background-color: color(tone-feature1);
+            }
         }
 
         .meta,
@@ -112,4 +124,5 @@
             color: rgba(#fff, .8);
         }
     }
+   
 }

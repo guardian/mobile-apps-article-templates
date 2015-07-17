@@ -73,6 +73,14 @@
             }
         }
 
+        .meta__misc {
+            border: 1px solid red;
+
+            .test--new-alerts & {
+                padding-bottom: base-px(0.5);
+            }
+        }
+
         .meta {
             border: 0;
             margin: 0;
@@ -87,7 +95,7 @@
             }
 
             .meta__pubdate {
-                color: #fff;
+                color: rgba(color(shade-7), 0.8);
             }
 
             .meta__comments {
@@ -101,7 +109,7 @@
             }
             a.new_alerts,  a.new_alerts.following:active {
                 border-color: color(shade-7);
-                //background-color: color(shade-7);
+                background-color: color(tone-comment-accent);
                 color: color(shade-7);
             }
         }

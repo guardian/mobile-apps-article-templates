@@ -217,7 +217,7 @@ Display an alerts toggle.
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
   white-space: nowrap;
   padding: 4px 12px 8px 12px;
-  margin: 6px 0px 0px -1px;
+  margin: 6px 0px 0px -4px;
   display: none;
   border-radius: 30px;
   text-overflow: ellipsis;
@@ -251,6 +251,7 @@ Display an alerts toggle.
     display: none; }
   .new_alerts.following:active {
     color: #005689;
+    background-color: #fff;
     border: 1px solid #005689; }
   .new_alerts.following .alerts__state--follow {
     display: block; }
@@ -2662,7 +2663,7 @@ Display a selection of images that form a gallery.
   .article--liveblog .article__body--liveblog__pinned .element {
     margin: 12px 0px; }
   .article--liveblog .new_alerts {
-    margin: 12px; }
+    margin: 12px 12px 0px 8px; }
 
 .android .article--liveblog .article__body--liveblog__pinned figcaption {
   padding: 6px 12px 24px 12px; }
@@ -2803,6 +2804,10 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     color: #e6711b; }
   .tone--comment .article--comment .article__header .byline__author {
     display: inline; }
+  .tone--comment .article--comment .meta__misc {
+    border: 1px solid red; }
+    .test--new-alerts .tone--comment .article--comment .meta__misc {
+      padding-bottom: 6px; }
   .tone--comment .article--comment .meta {
     border: 0;
     margin: 0;
@@ -2812,7 +2817,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
       .tone--comment .article--comment .meta a:active {
         color: rgba(255, 255, 255, 0.8); }
     .tone--comment .article--comment .meta .meta__pubdate {
-      color: #fff; }
+      color: rgba(255, 255, 255, 0.8); }
     .tone--comment .article--comment .meta .meta__comments {
       border-left-color: rgba(255, 255, 255, 0.4); }
     .tone--comment .article--comment .meta a.new_alerts:active, .tone--comment .article--comment .meta a.new_alerts.following {
@@ -2820,6 +2825,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
       color: #f39f33; }
     .tone--comment .article--comment .meta a.new_alerts, .tone--comment .article--comment .meta a.new_alerts.following:active {
       border-color: #fff;
+      background-color: #f39f33;
       color: #fff; }
 
 .tone--feature1 a,
@@ -2957,6 +2963,21 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .tone--feature3 .article--feature .meta {
   border: 0;
   margin: 0; }
+  .tone--feature1 .article--feature .meta a.new_alerts:active, .tone--feature1 .article--feature .meta a.new_alerts.following,
+  .tone--feature2 .article--feature .meta a.new_alerts:active,
+  .tone--feature2 .article--feature .meta a.new_alerts.following,
+  .tone--feature3 .article--feature .meta a.new_alerts:active,
+  .tone--feature3 .article--feature .meta a.new_alerts.following {
+    background-color: #fff;
+    color: #b82266; }
+  .tone--feature1 .article--feature .meta a.new_alerts, .tone--feature1 .article--feature .meta a.new_alerts.following:active,
+  .tone--feature2 .article--feature .meta a.new_alerts,
+  .tone--feature2 .article--feature .meta a.new_alerts.following:active,
+  .tone--feature3 .article--feature .meta a.new_alerts,
+  .tone--feature3 .article--feature .meta a.new_alerts.following:active {
+    border-color: #fff;
+    color: #fff;
+    background-color: #951c55; }
 .tone--feature1 .article--feature .meta,
 .tone--feature1 .article--feature .meta__pubdate,
 .tone--feature2 .article--feature .meta,
@@ -2999,6 +3020,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   color: #fff; }
 .tone--liveBlog.is-live .new_alerts, .tone--liveBlog.is-live .new_alerts.following:active {
   border-color: #b51800;
+  background-color: #fff;
   color: #b51800; }
 .tone--liveBlog.is-live .article__header {
   background-color: #b51800;
