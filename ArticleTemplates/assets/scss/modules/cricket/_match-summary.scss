@@ -192,7 +192,7 @@ Displays a cricket header.
 	        padding: 0 12px;
 	        vertical-align: text-bottom;
 	        display: inline-block;
-
+	  
 	        a {
 	            color: color(shade-3);
 	            border-color: color(shade-4);
@@ -233,6 +233,11 @@ Displays a cricket header.
 	width: 60%;
 	text-align: right;
 	vertical-align: middle;
+
+	//specificity needed due to previous styling
+	.cricket--pre-match .cricket__tabpanel .article .article__header & {
+    	display: none;
+    }
 }
 
 .cricket-match-summary-result{

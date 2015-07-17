@@ -38,6 +38,7 @@ define([
 			expect(document.getElementById("cricket-scorecard").textContent).to.be.equal("header4");
 		});
 
+
 		it('removes card, scorecard and tab on cricketMatchInfoFailed', function(){
 			Cricket.init();
 			var updateEndPoints = bonzo(bonzo.create('<div><div class="cricket" id="cricket-header">header1</div><div class="cricket-stats__wrap" id="cricket-scorecard">header2</div></div>'));
