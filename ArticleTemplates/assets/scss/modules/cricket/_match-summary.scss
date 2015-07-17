@@ -234,8 +234,9 @@ Displays a cricket header.
 	text-align: right;
 	vertical-align: middle;
 
-	//specificity needed due to previous styling
-	.cricket--pre-match .cricket__tabpanel .article .article__header & {
+	//specificity needed due to previous styling - alerts shouldn't display if pre-match state or deadblog
+	.cricket--pre-match .cricket__tabpanel .article .article__header &,
+	.tone--deadBlog .cricket__tabpanel .article .article__header &{
     	display: none;
     }
 }
