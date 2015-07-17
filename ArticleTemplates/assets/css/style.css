@@ -213,13 +213,6 @@ Display an alerts toggle.
 .alerts__label {
   font-weight: bold; }
 
-.alerts__container {
-  border-top: 1px dotted #005689;
-  padding: 12px;
-  /*.new_alerts {
-      display: block;
-  }*/ }
-
 .new_alerts {
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
   white-space: nowrap;
@@ -266,11 +259,6 @@ Display an alerts toggle.
   .test--new-alerts .new_alerts {
     display: inline-block; }
 
-/*a.new_alerts:not(.following):active, 
-.new_alerts.following:not(:active){
-    background-color: color(tone-news);
-    color: color(shade-7);
-}*/
 /*doc
 ---
 title: Avatar
@@ -2646,26 +2634,20 @@ Display a selection of images that form a gallery.
       position: absolute;
       left: 12px;
       top: 5px; }
-    .article--liveblog .article__header .alerts,
-    .article--liveblog .article__header .new_alerts {
+    .article--liveblog .article__header .alerts {
       margin: 0;
       padding: 6px 12px; }
     @media all and (min-width: 40.625em) {
-      .article--liveblog .article__header > .alerts,
-      .article--liveblog .article__header .alerts__container {
+      .article--liveblog .article__header > .alerts {
         display: none; } }
     .article--liveblog .article__header .meta {
       position: relative; }
-      .article--liveblog .article__header .meta .new_alerts {
-        margin: 12px; }
-      .article--liveblog .article__header .meta .alerts,
-      .article--liveblog .article__header .meta .new_alerts {
+      .article--liveblog .article__header .meta .alerts {
         position: absolute;
         left: 0;
         top: 0; }
         @media all and (max-width: 40.615em) {
-          .article--liveblog .article__header .meta .alerts,
-          .article--liveblog .article__header .meta .new_alerts {
+          .article--liveblog .article__header .meta .alerts {
             display: none; } }
     .article--liveblog .article__header .meta__comments__label {
       display: none; }
@@ -2679,6 +2661,8 @@ Display a selection of images that form a gallery.
         padding-left: 31.57895%; } }
   .article--liveblog .article__body--liveblog__pinned .element {
     margin: 12px 0px; }
+  .article--liveblog .new_alerts {
+    margin: 12px; }
 
 .android .article--liveblog .article__body--liveblog__pinned figcaption {
   padding: 6px 12px 24px 12px; }
@@ -3011,13 +2995,11 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .tone--liveBlog.is-live #comments .touchpoint--primary:active .touchpoint__button {
   background-color: #cc2b12; }
 .tone--liveBlog.is-live .new_alerts:active, .tone--liveBlog.is-live .new_alerts.following {
-  background-color: #fff;
-  color: #b51800; }
-.tone--liveBlog.is-live .new_alerts, .tone--liveBlog.is-live .new_alerts.following:active {
-  border-color: #fff;
+  background-color: #b51800;
   color: #fff; }
-.tone--liveBlog.is-live .alerts__container {
-  border-color: rgba(255, 255, 255, 0.2); }
+.tone--liveBlog.is-live .new_alerts, .tone--liveBlog.is-live .new_alerts.following:active {
+  border-color: #b51800;
+  color: #b51800; }
 .tone--liveBlog.is-live .article__header {
   background-color: #b51800;
   color: #fff; }

@@ -19,14 +19,14 @@
             top: base-px(0.41);
         }
 
-        .alerts,
-        .new_alerts {
+        .alerts {
             margin: 0;
             padding: base-px(.5, 1);
         }
 
-        & > .alerts,
-        .alerts__container {
+       
+
+        & > .alerts {
             @include mq($from: col2) {
                 display: none;
             }
@@ -39,12 +39,9 @@
         .meta {
             position: relative;
 
-            .new_alerts {
-                margin: base-px(1);
-            }
+            
 
-            .alerts,
-            .new_alerts {
+            .alerts {
                 position: absolute;
                 left: 0;
                 top: 0;
@@ -77,6 +74,10 @@
         .element {
             margin: base-px(1, 0);
         }
+    }
+
+     .new_alerts {
+        margin: base-px(1);
     }
 
     // .aside-witness {
