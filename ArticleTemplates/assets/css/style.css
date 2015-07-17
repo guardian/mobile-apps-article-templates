@@ -207,6 +207,8 @@ Display an alerts toggle.
     display: block; }
   .alerts.following .alerts__state--unfollow {
     display: none; }
+  .test--new-alerts .alerts {
+    display: none; }
 
 .alerts__label {
   font-weight: bold; }
@@ -223,7 +225,7 @@ Display an alerts toggle.
   white-space: nowrap;
   padding: 4px 12px 8px 12px;
   margin: 6px 0px 0px -1px;
-  display: inline-block;
+  display: none;
   border-radius: 30px;
   text-overflow: ellipsis;
   vertical-align: bottom;
@@ -261,6 +263,8 @@ Display an alerts toggle.
     display: block; }
   .new_alerts.following .alerts__state--unfollow {
     display: none; }
+  .test--new-alerts .new_alerts {
+    display: inline-block; }
 
 /*a.new_alerts:not(.following):active, 
 .new_alerts.following:not(:active){
@@ -1039,6 +1043,8 @@ Display an article's meta information.
   @media all and (min-width: 56.25em) {
     .meta__comments {
       width: 24.21053%; } }
+  .test--new-alerts .meta__comments {
+    display: none; }
 
 @media all and (max-width: 40.615em) {
   .meta__comments__label {
@@ -1249,24 +1255,25 @@ With live indicator:
 .content__container {
   display: table;
   width: 100%;
-  padding: 0px 12px;
   height: 100%; }
   .content__container .content__labels__container {
     display: table-cell;
     vertical-align: top;
-    padding: 7px 12px 12px 0px;
+    padding: 7px 12px 12px 12px;
     height: 100%;
     width: 100%; }
 
 .content__comments {
-  display: table-cell;
+  display: none;
   border-left: 1px rgba(220, 218, 213, 0.4) dotted;
-  padding: 6px 0px 12px 12px;
+  padding: 6px 12px 12px 12px;
   font-size: 1em;
   vertical-align: top;
   height: 100%; }
   .content__comments span[data-icon] {
     padding-right: 4px; }
+  .test--new-alerts .content__comments {
+    display: table-cell; }
 
 .article__header h1 {
   clear: both; }

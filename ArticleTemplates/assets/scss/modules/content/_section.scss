@@ -92,13 +92,12 @@ With live indicator:
     @extend %clearfix;
     display: table;
     width: 100%;
-    padding: base-px(0, 1);
     height: 100%;
 
     .content__labels__container {
         display: table-cell;
         vertical-align: top;
-        padding: base-px(.6, 1, 1, 0);
+        padding: base-px(.6, 1, 1, 1);
         height: 100%;
         width: 100%;
     }
@@ -107,15 +106,19 @@ With live indicator:
 
 
 .content__comments {
-    display: table-cell;
+    display: none;
     border-left: 1px rgba(color(shade-4), .4) dotted;
-    padding: base-px(.5, 0, 1, 1);
+    padding: base-px(.5, 1, 1, 1);
     font-size: 1em;
     vertical-align: top;
     height: 100%;
 
     span[data-icon] {
         padding-right: 4px;
+    }
+
+    .test--new-alerts & {
+        display: table-cell;
     }
 }
 
