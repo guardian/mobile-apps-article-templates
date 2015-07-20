@@ -1,6 +1,14 @@
     <div class="article article--standard" id="standard-article-container">
         <div class="article__header" id="article-header">
-            <div class="section section__container" id="section"><div class="content__labels">__SECTION__</div><div class="content__series-label content__labels">__SERIES__</div></div>
+            <div class="section section__container" id="section">
+                <div class="content__container">
+                    <div class="content__labels__container">
+                        <div class="content__labels">__SECTION__</div>
+                        <div class="content__series-label content__labels">__SERIES__</div>
+                    </div>
+                    __COMMENT_CTA__
+                </div>
+            </div>
             <h1 class="headline selectable" id="headline">__TITLE__ __REVIEW_RATING__</h1>
             <div class="standfirst selectable" id="standfirst">__STANDFIRST__</div>
 
@@ -11,6 +19,16 @@
                         __BYLINE__
                     </div>
                     <p class="meta__pubdate"><span class="screen-readable" id="pubdate">Published: </span><span id="published-date">__PUBDATE__</span></p>
+                    <a class="alerts--new __CONTRIBUTOR_FOLLOWING__" href="x-gu://follow/__CONTRIBUTOR_FOLLOWID__" data-follow-alert-id="__CONTRIBUTOR_FOLLOWID__">
+                        <span class="alerts__state--unfollow">
+                            <span data-icon="&#xe090;" aria-hidden="true"></span>
+                            <span class="alerts__label">Follow __AUTHOR_NAME__</span>
+                        </span>
+                        <span class="alerts__state--follow">
+                            <span data-icon="&#xe062;" aria-hidden="true"></span>
+                            <span class="alerts__label">Following __AUTHOR_NAME__</span>
+                        </span>
+                    </a>
                 </div>
                 __COMMENT_CTA__
             </div>

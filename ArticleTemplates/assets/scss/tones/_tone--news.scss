@@ -1,6 +1,6 @@
 .tone--news {
     //TODO: would be nice to get rid of not (as hard to overide as tones get loaded in last)
-    a:not(.new_alerts) {
+    a:not(.alerts--new) {
         color: color(tone-news);
         &:active {
             color: color(tone-news-accent);
@@ -18,8 +18,8 @@
             color: color(shade-2);  // Content Label Series
         }
         .section__container,
-        .content__comments,
-        .meta__comments {
+        .comment-count,
+        .comment-count {
             border-color: rgba(color(shade-3), .4);
         }
         
@@ -43,8 +43,8 @@
 
             .meta__byline .byline,
             .meta__byline a, 
-            .meta__comments,
-            .meta__comments a {
+            .comment-count,
+            .comment-count a {
                 color: color(tone-news);
             }
             .meta__pubdate{
