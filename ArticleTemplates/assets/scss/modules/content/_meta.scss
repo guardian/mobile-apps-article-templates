@@ -31,10 +31,10 @@ Display an article's meta information.
         </div>
         <p class="meta__pubdate"><span class="screen-readable">Published: </span>23:00 GMT+1 Wednesday, 18 June 2014</p>
     </div>
-    <div class="meta__comments">
+    <div class="comment-count">
         <a href="#comments" data-scroll>
             <span data-icon="&#xe03c;" aria-hidden="true"></span> 2
-            <span class="meta__comments__label">Comments</span>
+            <span class="comment-count__label">Comments</span>
         </a>
     </div>
 </div> 
@@ -78,7 +78,7 @@ Display an article's meta information.
     font-family: $agate-sans;
 }
 
-.meta__comments {
+.comment-count {
     font-family: $agate-sans;
     font-weight: bold;
     vertical-align: top;
@@ -107,7 +107,7 @@ Display an article's meta information.
     }
 }
 
-.meta__comments__label {
+.comment-count__label {
     @include mq($to: col2) {
         display: none;
     }
