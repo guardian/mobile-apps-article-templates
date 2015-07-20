@@ -29,7 +29,7 @@ define([
 
 		it('updates the card and the scorecard', function(){
 			Cricket.init();
-			var updateEndPoints = bonzo(bonzo.create('<div><div class="cricket" id="cricket-header">header1</div><div class="cricket-stats__wrap" id="cricket-scorecard">header2</div></div>'));
+			var updateEndPoints = bonzo(bonzo.create('<div class="cricket" id="cricket"><div id="cricket-header">header1</div><div class="cricket-stats__wrap" id="cricket-scorecard">header2</div></div>'));
 			updateEndPoints.appendTo(sandbox);
 			expect(document.getElementById("cricket-header").textContent).to.be.equal("header1");
 			expect(document.getElementById("cricket-scorecard").textContent).to.be.equal("header2");
@@ -37,11 +37,18 @@ define([
 			expect(document.getElementById("cricket-header").textContent).to.be.equal("header3");
 			expect(document.getElementById("cricket-scorecard").textContent).to.be.equal("header4");
 		});
-
+		//reword
+		it('on change of status updates a status class', function() {
+			Cricket.init();
+			var updateEndPoints = bonzo(bonzo.create('<div class="cricket" id="cricket"><div id="cricket-header">header1</div><div class="cricket-stats__wrap" id="cricket-scorecard">header2</div></div>'));
+			updateEndPoints.appendTo(sandbox);
+			window.newCricketStatus("pre-match");
+			expect(document.getElementById("cricket").classList.contains('cricket--pre-match')).to.be.true;
+		})
 
 		it('removes card, scorecard and tab on cricketMatchInfoFailed', function(){
 			Cricket.init();
-			var updateEndPoints = bonzo(bonzo.create('<div><div class="cricket" id="cricket-header">header1</div><div class="cricket-stats__wrap" id="cricket-scorecard">header2</div></div>'));
+			var updateEndPoints = bonzo(bonzo.create('<div class="cricket" id="cricket"><div id="cricket-header">header1</div><div class="cricket-stats__wrap" id="cricket-scorecard">header2</div></div>'));
 			updateEndPoints.appendTo(sandbox);
 			window.cricketMatchInfoFailed();
 			expect(document.getElementById("cricket-header")).to.be.null;
