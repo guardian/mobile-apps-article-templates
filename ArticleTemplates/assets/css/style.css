@@ -235,6 +235,9 @@ Display an alerts toggle.
     .alerts--new {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
+  .cricket .alerts--new {
+    border: 1px solid red;
+    display: inline-block; }
   .alerts--new:active, .alerts--new.following {
     background-color: #005689;
     color: #fff; }
@@ -1032,7 +1035,8 @@ Display an article's meta information.
   @media all and (min-width: 56.25em) {
     .comment-count {
       width: 24.21053%; } }
-  .test--new-alerts .comment-count {
+  .test--new-alerts .meta .comment-count {
+    border: 5px solid blue;
     display: none; }
 
 @media all and (max-width: 40.615em) {
@@ -2597,7 +2601,7 @@ Display a selection of images that form a gallery.
       display: none;
       position: absolute;
       left: 12px;
-      top: 5px; }
+      top: 3px; }
     .article--liveblog .article__header .alerts {
       margin: 0;
       padding: 6px 12px; }
@@ -2949,14 +2953,6 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   color: #fff; }
 .tone--liveBlog .content__series-label {
   color: #fff; }
-.tone--liveBlog .cricket .alerts--new {
-  margin: 0; }
-.tone--liveBlog .cricket .alerts--new, .tone--liveBlog .cricket .alerts--new.following:active {
-  border-color: #dcdad5;
-  color: #999; }
-.tone--liveBlog .cricket a.alerts--new:not(.following):active, .tone--liveBlog .cricket .alerts--new.following:not(:active) {
-  background-color: #999;
-  color: #fff; }
 
 .tone--liveBlog.is-live a.touchpoint:active {
   color: #cc2b12; }
@@ -2997,7 +2993,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     position: relative; }
     @media all and (max-width: 28.115em) {
       .tone--liveBlog.is-live .article__header .section {
-        padding-left: 66px; } }
+        padding-left: 56px; } }
     @media all and (min-width: 28.125em) and (max-width: 40.615em) {
       .tone--liveBlog.is-live .article__header .section {
         padding-left: 78px; } }
@@ -3064,6 +3060,15 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     .tone--liveBlog.is-live .article--liveblog .tags .inline-list__item.more-button a:active {
       color: #1a1a1a;
       border: 1px solid #adadad; }
+.cricket .tone--liveBlog.is-live .alerts--new {
+  margin: 0; }
+.cricket .tone--liveBlog.is-live a.alerts--new:active, .cricket .tone--liveBlog.is-live a.alerts--new.following {
+  background-color: #999;
+  color: #fff; }
+.cricket .tone--liveBlog.is-live a.alerts--new, .cricket .tone--liveBlog.is-live a.alerts--new.following:active {
+  border-color: #dcdad5;
+  background-color: transparent;
+  color: #999; }
 
 .tone--media .witness .witness__sponsor-logo {
   fill: #fff; }
@@ -3401,16 +3406,6 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     }
 
 } */
-.tone--deadBlog .cricket .article--liveblog {
-  border-top: none; }
-.tone--deadBlog .cricket .alerts--new {
-  margin: 0; }
-.tone--deadBlog .cricket .alerts--new, .tone--deadBlog .cricket .alerts--new.following:active {
-  border-color: #dcdad5;
-  color: #999; }
-.tone--deadBlog .cricket a.alerts--new:not(.following):active, .tone--deadBlog .cricket .alerts--new.following:not(:active) {
-  background-color: #999;
-  color: #fff; }
 .tone--deadBlog .witness {
   margin-top: 12px; }
 .tone--deadBlog a.touchpoint:active {
@@ -3504,6 +3499,17 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   border-top: 1px solid #999; }
   .tone--deadBlog .block--live-summary .block__time {
     font-weight: bold; }
+.tone--deadBlog .cricket .article--liveblog {
+  border-top: none; }
+.tone--deadBlog .cricket .alerts--new {
+  margin: 0; }
+.tone--deadBlog .cricket a.alerts--new:active, .tone--deadBlog .cricket a.alerts--new.following {
+  background-color: #999;
+  color: #fff; }
+.tone--deadBlog .cricket a.alerts--new, .tone--deadBlog .cricket a.alerts--new.following:active {
+  border-color: #dcdad5;
+  background-color: transparent;
+  color: #999; }
 
 .is_advertising:not(.tone--review):not(.tone--analysis) .section,
 .is_advertising:not(.tone--review):not(.tone--analysis) .section__container .content__series-label,

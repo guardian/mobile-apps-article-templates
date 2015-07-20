@@ -11,21 +11,6 @@
         color: color(shade-7);
     }
 
-    .cricket{
-        .alerts--new{
-            margin: 0;
-        }
-
-        .alerts--new,  .alerts--new.following:active {
-            border-color: color(shade-4);
-            color: color(shade-3);
-        }
-
-        a.alerts--new:not(.following):active, .alerts--new.following:not(:active) {
-            background-color: color(shade-3);
-            color: color(shade-7);
-        }
-    }
 }
 
 .tone--liveBlog.is-live {
@@ -96,7 +81,7 @@
         .section{
             position: relative;
             @include mq($to: col1) {
-                padding-left: base-px(5.5); 
+                padding-left: base-px(4.7); 
             }
             @include mq(col1, col2) {
                 padding-left: base-px(6.5);
@@ -204,6 +189,23 @@
         
         }
 
+    }
+
+    .cricket & {
+        .alerts--new{
+            margin: 0;
+        }
+         
+        a.alerts--new:active, a.alerts--new.following {
+            background-color: color(shade-3);
+            color: color(shade-7);
+        }
+
+        a.alerts--new,  a.alerts--new.following:active {
+            border-color: color(shade-4);
+            background-color: transparent;
+            color: color(shade-3);
+        }
     }
 
 }
