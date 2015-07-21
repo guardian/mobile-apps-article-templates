@@ -31,25 +31,43 @@ Display an alerts toggle.
 ```
 */
 
-.alerts {
-    color: color(tone-news);
-    font-family: $agate-sans;
-    display: inline-block;
 
-    [data-icon]::before {
-        margin-right: 4px;
-        font-size: 85%;
+.alerts {
+    font-family: $agate-sans;
+    //width: intrinsic;
+    white-space: nowrap;
+    padding: base-px(.3, 1, .7, 1);
+    margin: base-px(.5, 0, 0,-.1);
+    display: inline-block;
+    border-radius: 30px;
+    text-overflow: ellipsis;
+    vertical-align: bottom;
+    overflow: hidden;
+    max-width: 100%;
+
+    color: color(tone-news);
+    border: 1px solid color(tone-news);
+    transition: background-color 0.3s;
+
+    span[data-icon]{
+        display: inline-block;
+        vertical-align: bottom;
+        font-size: $body-size-2;
+        position: relative;
+        right: 3px;
+        top: 1px;
     }
 
     .alerts__state--follow {
         display: none;
-
-        [data-icon]::before {
-            color: color(tone-news-accent);
-        }
     }
 
     &.following {
+        &:active{
+            color: color(tone-news);
+            border: 1px solid color(tone-news);
+        }
+
         .alerts__state--follow {
             display: block;
         }
@@ -60,9 +78,6 @@ Display an alerts toggle.
     }
 }
 
-.alerts__label {
-    font-weight: bold;
-}
 
 // new alerts
 
@@ -83,13 +98,19 @@ Display an alerts toggle.
     border: 1px solid color(tone-news);
     transition: background-color 0.3s;
 
-    span[data-icon]{
+    span[data-icon] {
         display: inline-block;
         vertical-align: bottom;
         font-size: $body-size-2;
         position: relative;
         right: 3px;
         top: 1px;
+    }
+
+    &:active,
+    &.following {
+        background-color: color(tone-news);
+        color: color(shade-7);
     }
 
     .alerts__state--follow {
@@ -115,8 +136,9 @@ Display an alerts toggle.
         }
     }
 }
-
-a.new_alerts:not(.following):active, .new_alerts.following:not(:active){
+//TODO Remove once done - CHECK I think we might need previous alerts in also
+/*a.new_alerts:not(.following):active,
+.new_alerts.following:not(:active){
     background-color: color(tone-news);
     color: color(shade-7);
-}
+}*/

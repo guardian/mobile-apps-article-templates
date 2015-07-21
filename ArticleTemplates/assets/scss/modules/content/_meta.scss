@@ -47,26 +47,28 @@ Display an article's meta information.
     border-bottom: 1px dotted color(shade-4);
     width: 100%;
     display: table;
+    table-layout: fixed;
 
     .avatar--author {
-        margin: base-px(0, .75, 1, 0);
+        margin: base-px(0, .75, .25, 0);
         float: left;
     }
 
-    .alerts {
-        margin: -.5em;
-        padding: .5em;
-        position: relative;
-        z-index: 2;
-    }
+    // .alerts {
+    //     margin: -.5em;
+    //     padding: .5em;
+    //     position: relative;
+    //     z-index: 2;
+    // }
 
-    .alerts__label {
-        @extend %screen-readable;
-    }
+    // .alerts__label {
+    //     @extend %screen-readable;
+    // }
 }
 
 .meta__misc {
-    padding: base-px(.6667, 1, 2, 1);
+    display: table-cell;
+    padding: base-px(.6667, 1, 1, 1);
 }
 
 .meta__pubdate {
@@ -104,3 +106,37 @@ Display an article's meta information.
         display: none;
     }
 }
+
+
+
+.meta__followcomment {
+    font-family: $agate-sans;
+    width: intrinsic;
+    clear: both;
+    white-space: nowrap;
+    padding: base-px(.3, 1, .7, 1);
+    margin: base-px(0, 0, 1,0.9);
+    display: block;
+    border-radius: 30px;
+    text-overflow: ellipsis;
+    background-color: transparent !important;
+
+    color: color(shade-7);
+    border: 1px solid color(shade-7);
+
+    &:active {
+        background-color: color(shade-7) !important;
+        color: color(tone-comment-accent) !important;
+        border: 1px solid color(shade-7);
+    }
+    &:visited {
+        background-color: color(shade-7) !important;
+        color: color(tone-comment-accent) !important;
+        border: 1px solid color(shade-7);
+    }      
+    span{
+        padding-top: base-px(.8);
+        font-size: $body-size-2;
+    }
+}
+
