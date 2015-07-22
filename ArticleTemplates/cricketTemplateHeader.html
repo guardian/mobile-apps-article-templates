@@ -2,9 +2,9 @@ __CRICKET_MATCH_IN_PLAY__
 <div class="cricket-match-comp-info">
      <h1><b class="cricket-match-comp-info__comp-name">Cricket</b> __CRICKET_COMPETITION_NAME__</h1>
 </div>
-<div class="cricket-match-summary-head">
+<div class="cricket-match-summary-head cricket-match-summary-head--__CRICKET_STATUS__">
     <div class="cricket-match-basic-info">
-        <p><b>Day __CRICKET_CURRENT_DAY__</b> __CRICKET_VENUE_NAME__</p>
+        <p><b class="cricket-match-basic-info-day">Day __CRICKET_CURRENT_DAY__</b> __CRICKET_VENUE_NAME__</p>
     </div>
 </div>
 <div class="cricket-match-summary-result cricket-inning-__CRICKET_STATUS__">
@@ -13,7 +13,7 @@ __CRICKET_MATCH_IN_PLAY__
             <div class="cricket-inning-team">
                 <div class="cricket-inning-team-wrap">
                     <h2 class="cricket-inning-team-name">
-                        <img class="cricket-inning-team-name-crest" src="__CRICKET_CREST_URL__">__CRICKET_NAME__
+                        <img class="cricket-inning-team-name-crest" src="__CRICKET_CREST_URL__" alt="" />__CRICKET_NAME__
                     </h2>
                 </div>
             </div>
@@ -30,6 +30,7 @@ __CRICKET_MATCH_IN_PLAY__
             </div>
         </div>
     </div>
+    __CRICKET_TEMPLATE_TEAMS__
     <div class="cricket-match-summary-scorecard" id="cricket-match-summary-scorecard">
         <div class="cricket-scorecard-title">
             <b>Scorecard</b> - __CRICKET_DESCRIPTION__
@@ -44,5 +45,6 @@ __CRICKET_MATCH_IN_PLAY__
 <div class="cricket-match-summary-footer">
     <div class="cricket-match-summary-footer-wrap">
         __CRICKET_INNINGS_SUMMARY__
+        __CRICKET_TEMPLATE_TIMES__
     </div>
 </div>
