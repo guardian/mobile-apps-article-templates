@@ -62,6 +62,16 @@ define([
             header.innerHTML = newHeader;
             scorecard.innerHTML = newScorecard;
         },
+        newCricketStatus: function (matchStatus) {
+            var cricketWrapper = $('.cricket');
+            //only doing this for cricket pre-match status atm - can change to something more robust if using for more things
+            if (cricketWrapper.length && matchStatus === 'pre-match') {
+                cricketWrapper.addClass('cricket--' + matchStatus);
+            }
+            else {
+                 cricketWrapper.removeClass('cricket--pre-match');
+            }
+        },
         cricketMatchInfoFailed: function(){
             var header = $('#cricket-header');
             var scorecard = $('#cricket-scorecard');
@@ -83,6 +93,7 @@ define([
             this.initialised = true;
             //modules.paginate();
             window.newCricketData = modules.newCricketData;
+            window.newCricketStatus = modules.newCricketStatus;
             window.cricketMatchInfoFailed = modules.cricketMatchInfoFailed;
         }
     };

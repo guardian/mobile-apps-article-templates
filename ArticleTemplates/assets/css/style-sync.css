@@ -1686,93 +1686,100 @@ category: Modules
 Displays a cricket header.
 
 ```html_example
-    <div id="cricket-header">
-        <div class="cricket-game-in-play">
-            <div class="cricket-game-in-play-text">
-                This game is in play
-            </div>
-            <a href="#" class="cricket-game-in-play-follow">
-                <span class="cricket-game-in-play-link">Find it here</span>
-                <span class="cricket-game-in-play-icon" data-icon="&#xe00b;" aria-hidden="true"></span>
-            </a>
+ <div id="cricket-header">
+    <div class="cricket-game-in-play">
+        <div class="cricket-game-in-play-text">
+            This game is in play
         </div>
-        <div class="cricket-match-comp-info">
-             <h1><b class="cricket-match-comp-info__comp-name">Cricket</b> Second Test Match</h1>
-        </div>
-        <div class="cricket-match-summary-head">
-            <div class="cricket-match-basic-info">
-                <p><b>Day 1</b> The SWALEC Stadium</p>
-            </div>                
-        </div>
-        <div class="cricket-match-summary-result cricket-inning-rain-delay">
-            <div class="cricket-match-summary-last-inning">
-                <div class="cricket-inning">
-                    <div class="cricket-inning-team">
-                        <div class="cricket-inning-team-wrap">
-                            <h2 class="cricket-inning-team-name">
-                                <img class="cricket-inning-team-name-crest" src="eng.jpg">England England England England England
-                            </h2>
-                        </div>
-                    </div>
-                    <div class="cricket-inning-runs">
-                        256 - 10
+        <a href="#" class="cricket-game-in-play-follow">
+            <span class="cricket-game-in-play-link">Find it here</span>
+            <span class="cricket-game-in-play-icon" data-icon="&#xe00b;" aria-hidden="true"></span>
+        </a>
+    </div>
+    <div class="cricket-match-comp-info">
+         <h1><b class="cricket-match-comp-info__comp-name">Cricket</b> Second Test Match</h1>
+    </div>
+    <div class="cricket-match-summary-head">
+        <div class="cricket-match-basic-info">
+            <p><b>Day 1</b> The SWALEC Stadium</p>
+        </div>                
+    </div>
+    <div class="cricket-match-summary-result cricket-inning-rain-delay">
+        <div class="cricket-match-summary-last-inning">
+            <div class="cricket-inning">
+                <div class="cricket-inning-team">
+                    <div class="cricket-inning-team-wrap">
+                        <h2 class="cricket-inning-team-name">
+                            <img class="cricket-inning-team-name-crest" src="eng.png" alt="" />England England England England England
+                        </h2>
                     </div>
                 </div>
-                <div class="cricket-inning-details">
-                    <div class="cricket-inning-details-innings">
-                        <b>1st</b> innings
-                    </div>
-                    <div class="cricket-inning-details-overs">
-                        <b>8.6</b> overs
-                    </div>
+                <div class="cricket-inning-runs">
+                    256 - 10
                 </div>
             </div>
-            <div class="cricket-match-summary-scorecard" id="cricket-match-summary-scorecard">
-                <div class="cricket-scorecard-title">
-                    <b>Scorecard</b> - England 1st Innings
+            <div class="cricket-inning-details">
+                <div class="cricket-inning-details-innings">
+                    <b>1st</b> innings
                 </div>
-                <div class="cricket-scorecard-batsmen-wrap" id="cricket-scorecard-batsmen-wrap">
-                    <div class="cricket-scorecard-batsmen-sheet" id="cricket-scorecard-batsmen-sheet">
-                        <div class="cricket-scorecard-batsmen cricket-scorecard-batsmen-in-play">
-                            <p class="cricket-scorecard-batsmen-name">Cook &#8212; 13</p>
-                            <p class="cricket-scorecard-batsmen-status">in play</p>
-                        </div><div class="cricket-scorecard-batsmen cricket-scorecard-batsmen-in-play">
-                            <p class="cricket-scorecard-batsmen-name">Trott &#8212; 13</p>
-                            <p class="cricket-scorecard-batsmen-status">in play</p>
-                        </div>
-                    </div>
+                <div class="cricket-inning-details-overs">
+                    <b>8.6</b> overs
                 </div>
             </div>
         </div>
-        <div class="cricket-match-summary-footer">
-            <div class="cricket-match-summary-footer-wrap">
-                <div class="cricket-footer-inning">
-                    <p class="cricket-footer-inning-line">
-                        <b>ENG - 1st</b>
-                    </p>
-                    <p class="cricket-footer-inning-line">
-                        350 all out
-                    </p>
-                </div>
-                <div class="cricket-footer-inning">
-                    <p class="cricket-footer-inning-line">
-                        <b>AUS - 1st</b>
-                    </p>
-                    <p class="cricket-footer-inning-line">
-                        389 all out
-                    </p>
-                </div>
-                <div class="cricket-footer-inning">
-                    <p class="cricket-footer-inning-line">
-                        <b>ENG - 2nd</b>
-                    </p>
-                    <p class="cricket-footer-inning-line">
-                        453 dec
-                    </p>
+        <div class="cricket-inning-teams">
+            <h2>
+                <span class="cricket-inning-team-name"><img class="cricket-inning-team-name-crest" src="eng.png" alt="" />England</span> 
+                <span class="screen-readable">Vs</span> 
+                <span class="cricket-inning-team-name"><img class="cricket-inning-team-name-crest" src="aus.png" alt="" />Australia</span>
+            </h2>
+        </div>
+        <div class="cricket-match-summary-scorecard" id="cricket-match-summary-scorecard">
+            <div class="cricket-scorecard-title">
+                <b>Scorecard</b> - England 1st Innings
+            </div>
+            <div class="cricket-scorecard-batsmen-wrap" id="cricket-scorecard-batsmen-wrap">
+                <div class="cricket-scorecard-batsmen-sheet" id="cricket-scorecard-batsmen-sheet">
+                    <div class="cricket-scorecard-batsmen cricket-scorecard-batsmen-in-play">
+                        <p class="cricket-scorecard-batsmen-name">Cook &#8212; 13</p>
+                        <p class="cricket-scorecard-batsmen-status">in play</p>
+                    </div><div class="cricket-scorecard-batsmen cricket-scorecard-batsmen-in-play">
+                        <p class="cricket-scorecard-batsmen-name">Trott &#8212; 13</p>
+                        <p class="cricket-scorecard-batsmen-status">in play</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="cricket-match-summary-footer">
+        <div class="cricket-match-summary-footer-wrap">
+            <div class="cricket-footer-inning">
+                <p class="cricket-footer-inning-line">
+                    <b>ENG - 1st</b>
+                </p>
+                <p class="cricket-footer-inning-line">
+                    350 all out
+                </p>
+            </div>
+            <div class="cricket-footer-inning">
+                <p class="cricket-footer-inning-line">
+                    <b>AUS - 1st</b>
+                </p>
+                <p class="cricket-footer-inning-line">
+                    389 all out
+                </p>
+            </div>
+            <div class="cricket-footer-inning">
+                <p class="cricket-footer-inning-line">
+                    <b>ENG - 2nd</b>
+                </p>
+                <p class="cricket-footer-inning-line">
+                    453 dec
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 ```
 */
 .cricket-match-summary-head, .cricket-match-summary-result, .cricket-match-summary-footer {
@@ -1783,18 +1790,18 @@ Displays a cricket header.
   background: #fff; }
 
 .cricket-match-basic-info, .cricket-scorecard-title, .cricket-inning-details-innings,
-.cricket-inning-details-overs, .cricket-scorecard-batsmen, .cricket-footer-inning, .cricket-game-in-play-text,
+.cricket-inning-details-overs, .cricket-footer-times__time, .cricket-scorecard-batsmen, .cricket-footer-inning, .cricket-game-in-play-text,
 .cricket-game-in-play-follow {
   font-family: "Guardian Agate Sans 1 Web", sans-serif; }
   @media all and (max-width: 40.615em) {
     .cricket-match-basic-info, .cricket-scorecard-title, .cricket-inning-details-innings,
-    .cricket-inning-details-overs, .cricket-scorecard-batsmen, .cricket-footer-inning, .cricket-game-in-play-text,
+    .cricket-inning-details-overs, .cricket-footer-times__time, .cricket-scorecard-batsmen, .cricket-footer-inning, .cricket-game-in-play-text,
     .cricket-game-in-play-follow {
       font-size: 1.4rem;
       line-height: 2rem; } }
   @media all and (min-width: 40.625em) {
     .cricket-match-basic-info, .cricket-scorecard-title, .cricket-inning-details-innings,
-    .cricket-inning-details-overs, .cricket-scorecard-batsmen, .cricket-footer-inning, .cricket-game-in-play-text,
+    .cricket-inning-details-overs, .cricket-footer-times__time, .cricket-scorecard-batsmen, .cricket-footer-inning, .cricket-game-in-play-text,
     .cricket-game-in-play-follow {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -1811,6 +1818,9 @@ Displays a cricket header.
   @media all and (min-width: 28.125em) {
     .cricket-match-summary-head, .cricket-match-summary-footer-wrap {
       padding: 6px 12px 6px 12px; } }
+
+.cricket-match-summary-head--pre-match .cricket-match-basic-info-day {
+  display: none; }
 
 .cricket-match-basic-info {
   display: table-cell;
@@ -1885,6 +1895,8 @@ Displays a cricket header.
   width: 60%;
   text-align: right;
   vertical-align: middle; }
+  .cricket--pre-match .cricket__tabpanel .article .article__header .cricket-match-basic-follow, .tone--deadBlog .cricket__tabpanel .article .article__header .cricket-match-basic-follow {
+    display: none; }
 
 .cricket-match-summary-result {
   min-height: 88px; }
@@ -1898,6 +1910,8 @@ Displays a cricket header.
   @media all and (min-width: 56.25em) {
     .cricket-match-summary-last-inning {
       width: 31.57895%; } }
+  .cricket-inning-pre-match .cricket-match-summary-last-inning {
+    display: none; }
 
 .cricket-inning,
 .cricket-inning-details {
@@ -1952,7 +1966,7 @@ Displays a cricket header.
   @media all and (max-width: 40.615em) {
     .cricket-match-summary-scorecard {
       display: none; } }
-  .cricket-inning-result .cricket-match-summary-scorecard, .cricket-inning-draw .cricket-match-summary-scorecard, .cricket-inning-delay .cricket-match-summary-scorecard, .cricket-inning-abandoned .cricket-match-summary-scorecard {
+  .cricket-inning-result .cricket-match-summary-scorecard, .cricket-inning-draw .cricket-match-summary-scorecard, .cricket-inning-delay .cricket-match-summary-scorecard, .cricket-inning-abandoned .cricket-match-summary-scorecard, .cricket-inning-pre-match .cricket-match-summary-scorecard {
     display: none; }
 
 .cricket-scorecard-title {
@@ -2004,6 +2018,29 @@ Displays a cricket header.
   text-align: right;
   width: 33.4%; }
 
+.cricket-inning-result .cricket-footer-times, .cricket-inning-draw .cricket-footer-times, .cricket-inning-delay .cricket-footer-times, .cricket-inning-rain-delay .cricket-footer-times, .cricket-inning-abandoned .cricket-footer-times, .cricket-inning-result
+.cricket-inning-teams, .cricket-inning-draw
+.cricket-inning-teams, .cricket-inning-delay
+.cricket-inning-teams, .cricket-inning-rain-delay
+.cricket-inning-teams, .cricket-inning-abandoned
+.cricket-inning-teams {
+  display: none; }
+
+.cricket-inning-teams {
+  padding: 18px 12px 0px 12px; }
+  .cricket-inning-teams .cricket-inning-team-name {
+    display: block;
+    padding-bottom: 18px; }
+  .cricket-inning-teams .cricket-inning-team-name-crest {
+    padding-right: 14px; }
+
+.cricket-footer-times__time {
+  line-height: 1.4em;
+  margin-bottom: 12px; }
+  .cricket-footer-times__time time {
+    padding-right: 6px;
+    font-weight: 700; }
+
 .cricket-scorecard-batsmen {
   padding: 6px 12px 12px 12px;
   display: inline-block; }
@@ -2035,7 +2072,7 @@ Displays a cricket header.
   border-bottom: 1px solid #dcdad5; }
 
 .cricket-match-summary-footer-wrap {
-  overflow-x: scroll;
+  overflow-x: auto;
   -webkit-overflow-scrolling: touch; }
 
 .cricket-footer-inning {
@@ -2682,6 +2719,10 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   font-family: "Titlepiece", "Guardian Egyptian Web", sans-serif;
   font-size: 1.6667em;
   line-height: 1.6; }
+
+.cricket--pre-match .tabs__list-item--scorecard, .cricket--pre-match
+.cricket__tabpanel--stats {
+  display: none; }
 
 .tone--comment a {
   color: #e6711b; }
