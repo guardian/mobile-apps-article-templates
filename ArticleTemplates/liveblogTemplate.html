@@ -23,8 +23,8 @@
     <div class="article article--liveblog">
         <div class="article__header">
             <div class="section section__container"><div class="content__series-title content__labels">__SECTION____LIVE_TAG__</div><div class="content__series-label content__labels">__SERIES__</div></div>
-            <h1 class="headline selectable">__TITLE__</h1>
-            <div class="standfirst selectable">
+            <h1 class="headline selectable" id="headline">__TITLE__</h1>
+            <div class="standfirst selectable" id="standfirst">
                 __STANDFIRST__ <!-- TODO: This no longer needs to call liveblogTemplateStandfirst.html -->
             </div>
 
@@ -36,7 +36,7 @@
                         __ALERTS__
                         __BYLINE__
                     </div>
-                    <p class="meta__pubdate"><span class="screen-readable">Published: </span><span id="published-date">__PUBDATE__</span></p>
+                    <p class="meta__pubdate"><span class="screen-readable" "id=pubdate">Published: </span><span id="published-date">__PUBDATE__</span></p>
                 </div>
                 __COMMENT_CTA__
             </div>
@@ -49,7 +49,7 @@
             
         </div>
 
-        <div class="article__body article__body--liveblog">
+        <div class="article__body article__body--liveblog" id="liveblog-body">
             <div class="article__body--liveblog__pinned">
                 __ASIDE_WITNESS__
             </div>
