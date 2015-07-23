@@ -1,4 +1,9 @@
 @charset "UTF-8";
+.sponsorship:after {
+  content: '';
+  display: table;
+  clear: both; }
+
 @font-face {
   font-family: 'Guardian Text Egyptian Web';
   src: url("../fonts/egyptiantext-regular.otf"); }
@@ -625,6 +630,7 @@ The 'sponsored by/supported by' section
   padding: 10px 12px 20px 12px;
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
   line-height: 1.2;
+  position: relative;
   border-bottom: 1px dotted #B5B3AE; }
   .gallery ~ .sponsorship {
     border-bottom: none; }
@@ -648,6 +654,11 @@ The 'sponsored by/supported by' section
     padding-top: 1rem;
     display: block;
     font-weight: bold; }
+
+@media all and (max-width: 40.615em) {
+  .sponsorship__logo {
+    position: absolute;
+    border: 5px solid red; } }
 
 /*doc
 ---

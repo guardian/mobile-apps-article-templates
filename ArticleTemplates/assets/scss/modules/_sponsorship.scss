@@ -17,9 +17,11 @@ The 'sponsored by/supported by' section
 ```
 */
 .sponsorship{
+	@extend %clearfix;
 	padding: base-px(0.8, 1, 1.67, 1);
 	font-family: $agate-sans;
 	line-height: 1.2;
+	position: relative;
 	border-bottom: 1px dotted color(global-sponsored-border);
 
 	.gallery ~ & {
@@ -60,3 +62,11 @@ The 'sponsored by/supported by' section
 	}
 
 }
+.sponsorship__logo {
+	border: 1px solid blue;
+	@include mq($to: col2) {
+    	position: absolute;
+    	border: 5px solid red;
+    }
+}
+	
