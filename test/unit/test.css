@@ -1158,13 +1158,13 @@
   The 'sponsored by/supported by' section
   
   ```html_example
-  <div class="sponsorship">
-  	<p class="sponsorship__formatted-sponsor-name">
-  		Guardian Cities is supported by:
-  		<a href="http://www.100resilientcities.org">The Rockefeller Foundation</a>
-  	</p>
-  	<a class="sponsorship__about-uri" href="x-gu://item/mobile-apps.guardianapis.com/items/cities/2014/jan/27/cities-about-this-site">About this content</a>
-  </div>		
+  <<div class="sponsorship">
+      <p class="sponsorship__details">
+          <span class="sponsorship__formatted-sponsor-name">Guardian Cities is supported by:</span>
+          <a href="http://www.100resilientcities.org"><img src="http://pagead2.googlesyndication.com/pagead/imgad?id=CICAgKCToMPhMBABGAEyCMGaSOPVBwyp" class="sponsorship__logo" alt="The Rockefeller Foundation" /><span class="screen-readable"> (opens in a new window)</span></a>
+      </p>
+      <a class="sponsorship__about-uri" href="x-gu://item/mobile-apps.guardianapis.com/items/cities/2014/jan/27/cities-about-this-site">About this content</a>
+  </div>	
   ```
   */
   /*doc
@@ -5781,33 +5781,44 @@
     font-family: "Guardian Agate Sans 1 Web", sans-serif;
     line-height: 1.2;
     position: relative;
-    border-bottom: 1px dotted #B5B3AE; }
+    border-bottom: 1px dotted #B5B3AE;
+    font-size: 1.4rem; }
+    @media all and (min-width: 40.625em) {
+      #sandbox .sponsorship {
+        padding-bottom: 16px; } }
     .gallery ~ #sandbox .sponsorship {
       border-bottom: none; }
     .witness + #sandbox .sponsorship {
       border-top: 1px dotted #B5B3AE;
       padding-top: 20px;
       margin-top: 24px; }
-    @media all and (max-width: 40.615em) {
-      #sandbox .sponsorship {
-        font-size: 1.2rem; } }
-    @media all and (min-width: 40.625em) {
-      #sandbox .sponsorship {
-        font-size: 1.4rem; } }
     #sandbox .sponsorship__formatted-sponsor-name {
-      color: #878787; }
+      color: #878787;
+      display: block;
+      margin-bottom: 7px; }
       @media all and (max-width: 40.615em) {
-        #sandbox .sponsorship__formatted-sponsor-name span:first-child {
-          display: block; } }
+        #sandbox .sponsorship__formatted-sponsor-name {
+          max-width: 40%;
+          margin-bottom: 0; } }
     #sandbox .sponsorship__about-uri {
-      color: inherit;
-      padding-top: 1rem;
       display: block;
       font-weight: bold; }
+      @media all and (min-width: 40.625em) {
+        #sandbox .sponsorship__about-uri {
+          float: right; } }
+  #sandbox .sponsorship__details {
+    margin-bottom: 5px; }
+    @media all and (min-width: 40.625em) {
+      #sandbox .sponsorship__details {
+        max-width: 50%;
+        float: left;
+        margin-bottom: 0; } }
   @media all and (max-width: 40.615em) {
     #sandbox .sponsorship__logo {
       position: absolute;
-      border: 5px solid red; } }
+      right: 12px;
+      top: 12px;
+      max-width: 50%; } }
   #sandbox .block--discussion-thread .comment:nth-of-type(n+5) {
     display: none; }
   #sandbox .block--discussion-thread.block--discussion-thread--checked {
