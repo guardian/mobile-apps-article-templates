@@ -45,6 +45,9 @@ define([
 			expect(innerFrame.getAttribute('width')).to.be.equal('600');
 		});
 
+
+		//it('should given an image that is less than 301px set a width of 100%')
+
 		it('should force .pie-chart width to its parent width', function(){
 			var testContent = bonzo.create('<div style="width:323px;height:500px;"><div class="pie-chart"></div></div>').pop();
 			var pie = $('.pie-chart', testContent);

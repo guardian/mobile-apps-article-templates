@@ -1080,6 +1080,11 @@
   </figure>
   ```
   */
+  /*@include mq($to: col2) {
+      figure.figure-inline + p {
+          clear: both;
+      }
+  }*/
   /*doc
   ---
   title: Unstyled inline list
@@ -5627,9 +5632,6 @@
       #sandbox figure figcaption {
         font-size: 1.6rem;
         line-height: 2.2rem; } }
-  @media all and (max-width: 40.615em) {
-    #sandbox figure.figure-inline + p {
-      clear: both; } }
   #sandbox .inline-list {
     list-style: none;
     margin: 0;

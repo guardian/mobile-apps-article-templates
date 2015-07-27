@@ -125,9 +125,22 @@ define([
                     // to detect where Figure element is (either up one or two parent nodes)
                     parent = el.parentNode.parentNode.nodeName === "FIGURE" ? $(el).parent().parent() : $(el).parent();
                     parent.addClass(imageClass);
-                    if (parent.hasClass('figure-inline')) {
+                    if (parent.hasClass('element--thumbnail')) {
+                        /*alert("new code");
+                        console.log($(el));
+                        console.log(parent);*/
+                        
+                        //think this might be more expected maximum half content size 
+                        parent.css('width', '50%');
+
+                        //parent.css('width', imageWidth/2); - else could half image size but this probably wouldn't make sense on all breakpoints
+
+                        $(el).css({'width' : "100%", 'height' : 'auto'});
+                    }
+                    else if (parent.hasClass('figure-inline')) {
                         parent.css('width', imageWidth);
-                    } else if (parent.hasClass('figure-wide')) {
+                    }
+                    else if (parent.hasClass('figure-wide')) {
                         $(el).css('width', "100%");
                     }
                 });
