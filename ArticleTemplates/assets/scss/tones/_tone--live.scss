@@ -1,10 +1,9 @@
 .tone--liveBlog {
     .section__container {
-        border-bottom: 1px rgba(#fff, .4) dotted; 
+        border-color: color(tone-live-highlight);
+        color: color(tone-live-accent);
     }
-    .section {
-        color: color(shade-7); // Default
-    }
+
     .content__series-label {
         color: color(shade-7);
     }
@@ -51,16 +50,21 @@
         }
     }
 
+
+    //EXTRA SPECIFICITY NEEDED - due to previous styling
+    .section__container {
+        .content__series-label,
+        .content__series-label a {
+            color: color(tone-live-accent);
+        }
+    }
+
     .article__header {
         background-color: color(tone-live);
         color: #fff;
 
         a {
             color: #fff;
-
-            &:active {
-                opacity: rgba(#fff, .8);
-            }
         }
 
         .bullet,
@@ -71,8 +75,7 @@
         }
 
         .headline,
-        .byline,
-        .section {
+        .byline {
             color: #fff;
         }
 

@@ -5,13 +5,19 @@
     }
 
     .section__container {
-        border-bottom: 1px color(shade-2) dotted;
-        color: color(shade-5);
+        border-color: color(tone-media);
+        color: color(shade-1);
+
         
         .content__series-label,
         .content__series-label a {
-            color: color(shade-5);  // Content Label Series
+            // Content Label Series
+             color: color(shade-1);
         }   
+
+        .content__labels:first-child::before {
+            color: color(tone-media);
+        }
     }
     a {
         color: darken(color(tone-media), 5%);
@@ -77,10 +83,6 @@
         .article__body,
         .tags {
             background-color: color(shade-1);
-        }
-
-        .section > div {
-            color: color(tone-media);
         }
 
         .headline,

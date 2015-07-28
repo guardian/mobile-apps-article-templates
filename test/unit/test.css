@@ -3312,7 +3312,8 @@
     position: relative;
     float: left;
     padding: 5px 12px 0px 12px;
-    border-bottom: 1px rgba(220, 218, 213, 0.4) dotted;
+    background: #ececec;
+    border-bottom: 1px solid rgba(220, 218, 213, 0.4);
     width: 100%;
     margin-bottom: 10px; }
     #sandbox .section__container .section {
@@ -3763,9 +3764,10 @@
       #sandbox .cricket .tone--deadBlog .article__header--cricket .cricket-match-basic-follow a:active {
         color: #fff; }
   #sandbox .cricket-match-comp-info {
-    background: #cc2b12;
-    color: #fff;
-    padding: 5px 12px; }
+    background: #ececec;
+    color: #b51800;
+    padding: 5px 12px;
+    border-bottom: 1px solid #cc2b12; }
     #sandbox .cricket-match-comp-info h1 {
       font-family: "Guardian Egyptian Web", Georgia, serif;
       font-weight: 300; }
@@ -4368,7 +4370,6 @@
       #sandbox .article--liveblog .article__header .section {
         position: relative; }
       #sandbox .article--liveblog .article__header .section__live {
-        color: #fff;
         padding: 2px 0px 2px 0px;
         display: none;
         position: absolute;
@@ -4492,13 +4493,13 @@
     #sandbox .tone--comment a:active {
       color: #f39f33; }
   #sandbox .tone--comment .section__container {
+    border-color: #f39f33;
     color: #767676; }
     #sandbox .tone--comment .section__container > div {
       color: #e6711b; }
     #sandbox .tone--comment .section__container .content__series-label,
     #sandbox .tone--comment .section__container .content__series-label a {
-      color: #767676; }
-  #sandbox .tone--comment .section__container,
+      color: #e6711b; }
   #sandbox .tone--comment figure figcaption {
     border-bottom: 1px #c5c1b9 dotted; }
   #sandbox .tone--comment .tags .inline-list__item.more-button a {
@@ -4597,82 +4598,88 @@
     #sandbox .tone--feature3 .article--feature .prose table,
     #sandbox .tone--feature3 .article--feature .table {
       border-top-color: #b82266; }
-  #sandbox .tone--feature1 .article--feature .article__header a,
-  #sandbox .tone--feature2 .article--feature .article__header a,
-  #sandbox .tone--feature3 .article--feature .article__header a {
-    color: #fff; }
-    #sandbox .tone--feature1 .article--feature .article__header a:active,
-    #sandbox .tone--feature2 .article--feature .article__header a:active,
-    #sandbox .tone--feature3 .article--feature .article__header a:active {
-      color: rgba(255, 255, 255, 0.8); }
-  #sandbox .tone--feature1 .article--feature .article__header .bullet::before,
-  #sandbox .tone--feature1 .article--feature .article__header ul > li::before,
-  #sandbox .tone--feature2 .article--feature .article__header .bullet::before,
-  #sandbox .tone--feature2 .article--feature .article__header ul > li::before,
-  #sandbox .tone--feature3 .article--feature .article__header .bullet::before,
-  #sandbox .tone--feature3 .article--feature .article__header ul > li::before {
-    background-color: rgba(255, 255, 255, 0.4); }
-  #sandbox .tone--feature1 .article--feature .article__header .section,
-  #sandbox .tone--feature1 .article--feature .article__header .byline,
-  #sandbox .tone--feature2 .article--feature .article__header .section,
-  #sandbox .tone--feature2 .article--feature .article__header .byline,
-  #sandbox .tone--feature3 .article--feature .article__header .section,
-  #sandbox .tone--feature3 .article--feature .article__header .byline {
-    color: #fff; }
-  #sandbox .tone--feature1 .article--feature .article__header .content__labels,
-  #sandbox .tone--feature2 .article--feature .article__header .content__labels,
-  #sandbox .tone--feature3 .article--feature .article__header .content__labels {
-    color: #fdadba; }
-  #sandbox .tone--feature1 .article--feature .article__header .content__series-label.content__labels,
-  #sandbox .tone--feature2 .article--feature .article__header .content__series-label.content__labels,
-  #sandbox .tone--feature3 .article--feature .article__header .content__series-label.content__labels {
-    color: #FFF; }
-  #sandbox .tone--feature1 .article--feature .article__header .headline,
-  #sandbox .tone--feature2 .article--feature .article__header .headline,
-  #sandbox .tone--feature3 .article--feature .article__header .headline {
-    color: #fff;
-    position: relative;
-    z-index: 20; }
-    @media all and (min-width: 40.625em) {
-      #sandbox .tone--feature1 .article--feature .article__header .headline,
-      #sandbox .tone--feature2 .article--feature .article__header .headline,
-      #sandbox .tone--feature3 .article--feature .article__header .headline {
-        font-size: 3.5556em;
-        font-weight: 100;
-        line-height: .9375; } }
-  #sandbox .tone--feature1 .article--feature .article__header .standfirst,
-  #sandbox .tone--feature2 .article--feature .article__header .standfirst,
-  #sandbox .tone--feature3 .article--feature .article__header .standfirst {
-    color: #fff; }
-    #sandbox .tone--feature1 .article--feature .article__header .standfirst span,
-    #sandbox .tone--feature2 .article--feature .article__header .standfirst span,
-    #sandbox .tone--feature3 .article--feature .article__header .standfirst span {
-      color: rgba(255, 255, 255, 0.4); }
-    #sandbox .tone--feature1 .article--feature .article__header .standfirst strong,
-    #sandbox .tone--feature2 .article--feature .article__header .standfirst strong,
-    #sandbox .tone--feature3 .article--feature .article__header .standfirst strong {
+  #sandbox .tone--feature1 .article--feature .article__header,
+  #sandbox .tone--feature2 .article--feature .article__header,
+  #sandbox .tone--feature3 .article--feature .article__header {
+    /*.content__series-label.content__labels {
+        color: #FFF;
+    }*/ }
+    #sandbox .tone--feature1 .article--feature .article__header a,
+    #sandbox .tone--feature2 .article--feature .article__header a,
+    #sandbox .tone--feature3 .article--feature .article__header a {
+      color: #fff; }
+      #sandbox .tone--feature1 .article--feature .article__header a:active,
+      #sandbox .tone--feature2 .article--feature .article__header a:active,
+      #sandbox .tone--feature3 .article--feature .article__header a:active {
+        color: rgba(255, 255, 255, 0.8); }
+    #sandbox .tone--feature1 .article--feature .article__header .bullet::before,
+    #sandbox .tone--feature1 .article--feature .article__header ul > li::before,
+    #sandbox .tone--feature2 .article--feature .article__header .bullet::before,
+    #sandbox .tone--feature2 .article--feature .article__header ul > li::before,
+    #sandbox .tone--feature3 .article--feature .article__header .bullet::before,
+    #sandbox .tone--feature3 .article--feature .article__header ul > li::before {
+      background-color: rgba(255, 255, 255, 0.4); }
+    #sandbox .tone--feature1 .article--feature .article__header .byline,
+    #sandbox .tone--feature2 .article--feature .article__header .byline,
+    #sandbox .tone--feature3 .article--feature .article__header .byline {
+      color: #fff; }
+    #sandbox .tone--feature1 .article--feature .article__header .headline,
+    #sandbox .tone--feature2 .article--feature .article__header .headline,
+    #sandbox .tone--feature3 .article--feature .article__header .headline {
       color: #fff;
-      font-weight: normal; }
-  #sandbox .tone--feature1 .article--feature .article__header .review-rating,
-  #sandbox .tone--feature2 .article--feature .article__header .review-rating,
-  #sandbox .tone--feature3 .article--feature .article__header .review-rating {
-    color: rgba(255, 255, 255, 0.4); }
-  #sandbox .tone--feature1 .article--feature .article__header .review-rating--1 .icon:nth-child(-n+1),
-  #sandbox .tone--feature1 .article--feature .article__header .review-rating--2 .icon:nth-child(-n+2),
-  #sandbox .tone--feature1 .article--feature .article__header .review-rating--3 .icon:nth-child(-n+3),
-  #sandbox .tone--feature1 .article--feature .article__header .review-rating--4 .icon:nth-child(-n+4),
-  #sandbox .tone--feature1 .article--feature .article__header .review-rating--5 .icon:nth-child(-n+5),
-  #sandbox .tone--feature2 .article--feature .article__header .review-rating--1 .icon:nth-child(-n+1),
-  #sandbox .tone--feature2 .article--feature .article__header .review-rating--2 .icon:nth-child(-n+2),
-  #sandbox .tone--feature2 .article--feature .article__header .review-rating--3 .icon:nth-child(-n+3),
-  #sandbox .tone--feature2 .article--feature .article__header .review-rating--4 .icon:nth-child(-n+4),
-  #sandbox .tone--feature2 .article--feature .article__header .review-rating--5 .icon:nth-child(-n+5),
-  #sandbox .tone--feature3 .article--feature .article__header .review-rating--1 .icon:nth-child(-n+1),
-  #sandbox .tone--feature3 .article--feature .article__header .review-rating--2 .icon:nth-child(-n+2),
-  #sandbox .tone--feature3 .article--feature .article__header .review-rating--3 .icon:nth-child(-n+3),
-  #sandbox .tone--feature3 .article--feature .article__header .review-rating--4 .icon:nth-child(-n+4),
-  #sandbox .tone--feature3 .article--feature .article__header .review-rating--5 .icon:nth-child(-n+5) {
-    color: #fff; }
+      position: relative;
+      z-index: 20; }
+      @media all and (min-width: 40.625em) {
+        #sandbox .tone--feature1 .article--feature .article__header .headline,
+        #sandbox .tone--feature2 .article--feature .article__header .headline,
+        #sandbox .tone--feature3 .article--feature .article__header .headline {
+          font-size: 3.5556em;
+          font-weight: 100;
+          line-height: .9375; } }
+    #sandbox .tone--feature1 .article--feature .article__header .standfirst,
+    #sandbox .tone--feature2 .article--feature .article__header .standfirst,
+    #sandbox .tone--feature3 .article--feature .article__header .standfirst {
+      color: #fff; }
+      #sandbox .tone--feature1 .article--feature .article__header .standfirst span,
+      #sandbox .tone--feature2 .article--feature .article__header .standfirst span,
+      #sandbox .tone--feature3 .article--feature .article__header .standfirst span {
+        color: rgba(255, 255, 255, 0.4); }
+      #sandbox .tone--feature1 .article--feature .article__header .standfirst strong,
+      #sandbox .tone--feature2 .article--feature .article__header .standfirst strong,
+      #sandbox .tone--feature3 .article--feature .article__header .standfirst strong {
+        color: #fff;
+        font-weight: normal; }
+    #sandbox .tone--feature1 .article--feature .article__header .review-rating,
+    #sandbox .tone--feature2 .article--feature .article__header .review-rating,
+    #sandbox .tone--feature3 .article--feature .article__header .review-rating {
+      color: rgba(255, 255, 255, 0.4); }
+    #sandbox .tone--feature1 .article--feature .article__header .review-rating--1 .icon:nth-child(-n+1),
+    #sandbox .tone--feature1 .article--feature .article__header .review-rating--2 .icon:nth-child(-n+2),
+    #sandbox .tone--feature1 .article--feature .article__header .review-rating--3 .icon:nth-child(-n+3),
+    #sandbox .tone--feature1 .article--feature .article__header .review-rating--4 .icon:nth-child(-n+4),
+    #sandbox .tone--feature1 .article--feature .article__header .review-rating--5 .icon:nth-child(-n+5),
+    #sandbox .tone--feature2 .article--feature .article__header .review-rating--1 .icon:nth-child(-n+1),
+    #sandbox .tone--feature2 .article--feature .article__header .review-rating--2 .icon:nth-child(-n+2),
+    #sandbox .tone--feature2 .article--feature .article__header .review-rating--3 .icon:nth-child(-n+3),
+    #sandbox .tone--feature2 .article--feature .article__header .review-rating--4 .icon:nth-child(-n+4),
+    #sandbox .tone--feature2 .article--feature .article__header .review-rating--5 .icon:nth-child(-n+5),
+    #sandbox .tone--feature3 .article--feature .article__header .review-rating--1 .icon:nth-child(-n+1),
+    #sandbox .tone--feature3 .article--feature .article__header .review-rating--2 .icon:nth-child(-n+2),
+    #sandbox .tone--feature3 .article--feature .article__header .review-rating--3 .icon:nth-child(-n+3),
+    #sandbox .tone--feature3 .article--feature .article__header .review-rating--4 .icon:nth-child(-n+4),
+    #sandbox .tone--feature3 .article--feature .article__header .review-rating--5 .icon:nth-child(-n+5) {
+      color: #fff; }
+  #sandbox .tone--feature1 .article--feature .section__container,
+  #sandbox .tone--feature2 .article--feature .section__container,
+  #sandbox .tone--feature3 .article--feature .section__container {
+    border-color: #b82266; }
+  #sandbox .tone--feature1 .article--feature .section__container,
+  #sandbox .tone--feature1 .article--feature .section__container a,
+  #sandbox .tone--feature2 .article--feature .section__container,
+  #sandbox .tone--feature2 .article--feature .section__container a,
+  #sandbox .tone--feature3 .article--feature .section__container,
+  #sandbox .tone--feature3 .article--feature .section__container a {
+    color: #951c55; }
   #sandbox .tone--feature1 .article--feature .meta,
   #sandbox .tone--feature2 .article--feature .meta,
   #sandbox .tone--feature3 .article--feature .meta {
@@ -4686,9 +4693,8 @@
   #sandbox .tone--feature3 .article--feature .meta__pubdate {
     color: rgba(255, 255, 255, 0.8); }
   #sandbox .tone--liveBlog .section__container {
-    border-bottom: 1px rgba(255, 255, 255, 0.4) dotted; }
-  #sandbox .tone--liveBlog .section {
-    color: #fff; }
+    border-color: #e31f26;
+    color: #cc2b12; }
   #sandbox .tone--liveBlog .content__series-label {
     color: #fff; }
   #sandbox .tone--liveBlog .cricket .new_alerts {
@@ -4713,19 +4719,19 @@
     background-color: #b51800; }
   #sandbox .tone--liveBlog.is-live #comments .touchpoint--primary:active .touchpoint__button {
     background-color: #cc2b12; }
+  #sandbox .tone--liveBlog.is-live .section__container .content__series-label,
+  #sandbox .tone--liveBlog.is-live .section__container .content__series-label a {
+    color: #cc2b12; }
   #sandbox .tone--liveBlog.is-live .article__header {
     background-color: #b51800;
     color: #fff; }
     #sandbox .tone--liveBlog.is-live .article__header a {
       color: #fff; }
-      #sandbox .tone--liveBlog.is-live .article__header a:active {
-        opacity: rgba(255, 255, 255, 0.8); }
     #sandbox .tone--liveBlog.is-live .article__header .bullet::before,
     #sandbox .tone--liveBlog.is-live .article__header ul > li::before {
       background-color: rgba(255, 255, 255, 0.8); }
     #sandbox .tone--liveBlog.is-live .article__header .headline,
-    #sandbox .tone--liveBlog.is-live .article__header .byline,
-    #sandbox .tone--liveBlog.is-live .article__header .section {
+    #sandbox .tone--liveBlog.is-live .article__header .byline {
       color: #fff; }
     #sandbox .tone--liveBlog.is-live .article__header .section {
       position: relative; }
@@ -4801,11 +4807,13 @@
   #sandbox .tone--media .witness .witness__sponsor-logo {
     fill: #fff; }
   #sandbox .tone--media .section__container {
-    border-bottom: 1px #767676 dotted;
-    color: #eaeaea; }
+    border-color: #fb0;
+    color: #333; }
     #sandbox .tone--media .section__container .content__series-label,
     #sandbox .tone--media .section__container .content__series-label a {
-      color: #eaeaea; }
+      color: #333; }
+    #sandbox .tone--media .section__container .content__labels:first-child::before {
+      color: #fb0; }
   #sandbox .tone--media a {
     color: #e6a800; }
     #sandbox .tone--media a:active {
@@ -4864,9 +4872,6 @@
     #sandbox .tone--media .article--visual .article__body,
     #sandbox .tone--media .article--visual .tags {
       background-color: #333; }
-    #sandbox .tone--media .article--audio .section > div,
-    #sandbox .tone--media .article--visual .section > div {
-      color: #fb0; }
     #sandbox .tone--media .article--audio .headline,
     #sandbox .tone--media .article--audio .standfirst,
     #sandbox .tone--media .article--audio .byline,
@@ -4906,13 +4911,13 @@
       #sandbox .tone--media .article--visual .aside-witness__sponsor .aside-witness__sponsor__graphic__logo {
         fill: #ffe600; }
   #sandbox .tone--podcast .section__container {
-    border-bottom: 1px rgba(234, 234, 234, 0.3) dotted;
-    color: #eaeaea; }
-    #sandbox .tone--podcast .section__container > div {
-      color: #a7d8f2; }
+    border-color: #a7d8f2;
+    color: #333; }
     #sandbox .tone--podcast .section__container .content__series-label,
     #sandbox .tone--podcast .section__container .content__series-label a {
-      color: #eaeaea; }
+      color: #333; }
+    #sandbox .tone--podcast .section__container .content__labels:first-child::before {
+      color: #a7d8f2; }
   #sandbox .tone--podcast .audio-player__button.touchpoint--primary .touchpoint__button {
     background-color: #a7d8f2;
     color: #171717; }
@@ -4976,16 +4981,17 @@
     #sandbox .tone--news a:active {
       color: #4bc6df; }
   #sandbox .tone--news .article__header {
-    background-color: #fff; }
+    background-color: #fff;
+    /* .content__series-label,
+     .content__series-label a {
+         color: color(shade-2);  // Content Label Series
+     } */ }
     #sandbox .tone--news .article__header .section > div {
       color: #005689; }
-    #sandbox .tone--news .article__header .section__container,
-    #sandbox .tone--news .article__header .content__series-label,
-    #sandbox .tone--news .article__header .content__series-label a {
-      color: #767676; }
-    #sandbox .tone--news .article__header .section__container,
     #sandbox .tone--news .article__header .meta .meta__comments {
       border-color: rgba(153, 153, 153, 0.4); }
+    #sandbox .tone--news .article__header .section__container {
+      border-color: #4bc6df; }
     #sandbox .tone--news .article__header .headline {
       color: #333;
       padding: 0px 12px 30px 12px; }
@@ -5019,12 +5025,12 @@
     background-color: #fff; }
   #sandbox .tone--review .article__header {
     background-color: #615b52; }
-    #sandbox .tone--review .article__header .section > div {
-      color: #ffce4b; }
+    #sandbox .tone--review .article__header .section__container {
+      border-color: #ffce4b; }
     #sandbox .tone--review .article__header .section__container,
     #sandbox .tone--review .article__header .content__series-label,
     #sandbox .tone--review .article__header .content__series-label a {
-      color: #fff; }
+      color: #ffce4b; }
     #sandbox .tone--review .article__header .headline {
       color: #fff;
       padding: 0px 12px 30px 12px; }
@@ -5061,10 +5067,8 @@
     background-color: #fff; }
     #sandbox .tone--analysis .article__header .section > div {
       color: #005689; }
-    #sandbox .tone--analysis .article__header .section__container,
-    #sandbox .tone--analysis .article__header .content__series-label,
-    #sandbox .tone--analysis .article__header .content__series-label a {
-      color: #767676; }
+    #sandbox .tone--analysis .article__header .section__container {
+      border-color: #4bc6df; }
     #sandbox .tone--analysis .article__header .headline {
       color: #005689;
       padding: 0px 12px 30px 12px; }
@@ -5390,6 +5394,7 @@
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .standfirst,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .byline,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .prose,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .content__labels:first-child::before,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .element-placeholder .element-placeholder__button .touchpoint__button,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship .sponsorship__formatted-sponsor-name,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags .inline-list__item a,
@@ -5437,7 +5442,8 @@
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta__pubdate,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta__comments a,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta__comments,
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta__comments a span[data-icon] {
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta__comments a span[data-icon],
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .content__labels:first-child::before {
     color: #272727; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article__header {
     background-color: #D9D9D9; }
