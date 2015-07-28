@@ -129,7 +129,8 @@ define([
 
                 window.applyNativeFunctionCall('audioBackground');
                 window.applyNativeFunctionCall('superAudioSlider');
-
+                window.applyNativeFunctionCall('audioPlay');
+                window.applyNativeFunctionCall('audioStop');
             }
         },
 
