@@ -1,4 +1,10 @@
 @charset "UTF-8";
+.main-media:not(.main-media--hidden-caption) .main-media__caption__icon {
+  display: inline-block;
+  margin-right: 7px;
+  position: relative;
+  top: 2px; }
+
 .match-summary__team:after {
   content: '';
   display: table;
@@ -891,9 +897,6 @@ Can also be displayed with the caption initially hidden:
 </div>
 ```
 */
-.main-media__caption__icon {
-  display: none; }
-
 .main-media--hidden-caption {
   position: relative; }
   .main-media--hidden-caption .main-media__caption {
@@ -2409,7 +2412,7 @@ Display a selection of images that form a gallery.
 .article__body {
   font-family: "Guardian Text Egyptian Web", Georgia, serif; }
   .article__body > .prose .figure-wide:first-child,
-  .article__body > .prose .element:first-child {
+  .article__body > .prose .element:not(.figure--thumbnail):first-child {
     margin-top: -12px; }
   @media all and (min-width: 28.125em) {
     .article__body .player-card {

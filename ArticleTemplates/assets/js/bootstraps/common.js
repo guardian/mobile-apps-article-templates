@@ -117,33 +117,39 @@ define([
         imageSizer: function () {
             // Resize figures to fit images
             window.articleImageSizer = function () {
-                $('figure img').each(function (el) {
-                    var parent;
-                    var imageWidth = el.getAttribute('width') || $(el).dim().width,
-                        imageClass = imageWidth < 301 ? 'figure-inline' : 'figure-wide';
-                    // NB No parents() or closest() with Bonzo, so I'm using pure JavaScript
-                    // to detect where Figure element is (either up one or two parent nodes)
-                    parent = el.parentNode.parentNode.nodeName === "FIGURE" ? $(el).parent().parent() : $(el).parent();
-                    parent.addClass(imageClass);
-                    if (parent.hasClass('element--thumbnail')) {
-                        /*alert("new code");
-                        console.log($(el));
-                        console.log(parent);*/
-                        
-                        //think this might be more expected maximum half content size 
-                        parent.css('width', '50%');
+                var figure,
+                    isThumbnail,
+                    hasCaption,
+                    imageOrLinkedImage,
+                    imageWrapper,
+                    caption,
+                    hasCaptionIcon,
+                    imageClass;
 
-                        //parent.css('width', imageWidth/2); - else could half image size but this probably wouldn't make sense on all breakpoints
+                $('figure.element-image').each(function (el) {
+                    figure = $(el);
+                    isThumbnail = figure.hasClass("element--thumbnail");
+                    //needed for live blogs when this populates every time loading in more articles
+                    hasCaptionIcon = el.getElementsByClassName('figure__caption__icon').length;
+                    caption = el.getElementsByClassName('element-image__caption');
+                    hasCaption = caption.length;
+                    imageOrLinkedImage = bonzo.firstChild(el);
+                    imageClass = isThumbnail && hasCaption ? 'figure--thumbnail-with-caption' : (isThumbnail ? 'figure--thumbnail' : 'figure-wide');
 
-                        $(el).css({'width' : "100%", 'height' : 'auto'});
+                    figure.addClass(imageClass);
+
+                    if (imageOrLinkedImage && !$(imageOrLinkedImage).hasClass('element__inner')) {
+                       imageWrapper = document.createElement('div');
+                       bonzo(imageWrapper).addClass('figure__inner').append(imageOrLinkedImage);
+                       bonzo(el).prepend(imageWrapper);
                     }
-                    else if (parent.hasClass('figure-inline')) {
-                        parent.css('width', imageWidth);
+
+                    if (hasCaption && !hasCaptionIcon) { 
+                       bonzo(caption).prepend('<span data-icon="&#xe044;" class="figure__caption__icon" aria-hidden="true"></span>');
                     }
-                    else if (parent.hasClass('figure-wide')) {
-                        $(el).css('width', "100%");
-                    }
+
                 });
+                
             };
             window.articleImageSizer();
         },

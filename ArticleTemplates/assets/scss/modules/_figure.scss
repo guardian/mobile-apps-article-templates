@@ -34,8 +34,80 @@ figure {
     }
 }
 
-/*@include mq($to: col2) {
-    figure.figure-inline + p {
-        clear: both;
+
+.figure-wide {
+     margin: base-px(1, 0);
+     //for when these are displayed in the main media area (at the top we don't need these margins)
+     .main-media & {
+        margin: 0;
+     }
+}
+
+.figure__caption__icon {
+    @extend %caption-icon;
+}
+
+.figure--thumbnail,
+.figure--thumbnail-with-caption,
+.figure-wide {
+    img {
+        width: 100%;
+        height: auto;
     }
-}*/
+
+    figcaption {
+        font-size: 1.4rem;
+    }
+
+}
+
+.figure--thumbnail {
+     float: left;
+     max-width: 65px; //fixed width throughout
+     margin: 6px 13px 0 0;
+
+     .prose & {
+        //extra specificity for overiding style to override styles in prose
+        margin-top: 6px;
+     }
+}
+
+   
+.figure--thumbnail-with-caption {
+    display: table;
+    width: 100%;
+
+     .figure__inner {
+        max-width: 50%;
+        display: table-cell;
+        vertical-align: top;
+        padding-right: 10px;
+
+    }
+
+    figcaption {
+        display: table-cell;
+        vertical-align: top;
+        padding: 0;
+        border-bottom: 1px dotted rgba(color(shade-3), .4);
+        border-top: 1px dotted rgba(color(shade-3), .4);
+    }
+
+    @include mq($from: col2) {
+        float: left;
+        width: 33%;
+        display: block;
+        margin-right: 15px;
+
+        .figure__inner {
+            max-width: 100%;
+            display: block;
+            margin-bottom: 10px;
+            padding-right: 0;
+        }
+
+        figcaption {
+            padding-bottom: base-px(2);
+        }
+    }
+}

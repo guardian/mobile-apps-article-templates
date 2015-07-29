@@ -1,4 +1,10 @@
 @charset "UTF-8";
+.main-media:not(.main-media--hidden-caption) .main-media__caption__icon, .figure__caption__icon {
+  display: inline-block;
+  margin-right: 7px;
+  position: relative;
+  top: 2px; }
+
 .match-summary__team:after {
   content: '';
   display: table;
@@ -891,9 +897,6 @@ Can also be displayed with the caption initially hidden:
 </div>
 ```
 */
-.main-media__caption__icon {
-  display: none; }
-
 .main-media--hidden-caption {
   position: relative; }
   .main-media--hidden-caption .main-media__caption {
@@ -2409,7 +2412,7 @@ Display a selection of images that form a gallery.
 .article__body {
   font-family: "Guardian Text Egyptian Web", Georgia, serif; }
   .article__body > .prose .figure-wide:first-child,
-  .article__body > .prose .element:first-child {
+  .article__body > .prose .element:not(.figure--thumbnail):first-child {
     margin-top: -12px; }
   @media all and (min-width: 28.125em) {
     .article__body .player-card {
@@ -3743,6 +3746,12 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .card__title--audio::before {
   margin-top: 0; }
 
+.main-media:not(.main-media--hidden-caption) .main-media__caption__icon, .figure__caption__icon {
+  display: inline-block;
+  margin-right: 7px;
+  position: relative;
+  top: 2px; }
+
 .match-summary__team:after {
   content: '';
   display: table;
@@ -4126,11 +4135,56 @@ figure figcaption {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
 
-/*@include mq($to: col2) {
-    figure.figure-inline + p {
-        clear: both;
-    }
-}*/
+.figure-wide {
+  margin: 12px 0px; }
+  .main-media .figure-wide {
+    margin: 0; }
+
+.figure--thumbnail img,
+.figure--thumbnail-with-caption img,
+.figure-wide img {
+  width: 100%;
+  height: auto; }
+.figure--thumbnail figcaption,
+.figure--thumbnail-with-caption figcaption,
+.figure-wide figcaption {
+  font-size: 1.4rem; }
+
+.figure--thumbnail {
+  float: left;
+  max-width: 65px;
+  margin: 6px 13px 0 0; }
+  .prose .figure--thumbnail {
+    margin-top: 6px; }
+
+.figure--thumbnail-with-caption {
+  display: table;
+  width: 100%; }
+  .figure--thumbnail-with-caption .figure__inner {
+    max-width: 50%;
+    display: table-cell;
+    vertical-align: top;
+    padding-right: 10px; }
+  .figure--thumbnail-with-caption figcaption {
+    display: table-cell;
+    vertical-align: top;
+    padding: 0;
+    border-bottom: 1px dotted rgba(153, 153, 153, 0.4);
+    border-top: 1px dotted rgba(153, 153, 153, 0.4); }
+  @media all and (min-width: 40.625em) {
+    .figure--thumbnail-with-caption {
+      float: left;
+      width: 33%;
+      display: block;
+      margin-right: 15px; }
+      .figure--thumbnail-with-caption .figure__inner {
+        max-width: 100%;
+        display: block;
+        margin-bottom: 10px;
+        padding-right: 0; }
+      .figure--thumbnail-with-caption figcaption {
+        padding-bottom: 24px; } }
+
 /*doc
 ---
 title: Unstyled inline list
@@ -6201,29 +6255,6 @@ Adds typographic styling, typically to content fetched from the Guardian Content
       font-size: 1.6rem;
       line-height: 2.2rem;
       margin: 6px 0px; }
-.prose figure {
-  margin: 12px 0px; }
-  .prose figure.figure-wide img {
-    height: auto; }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    .prose figure.figure-wide figcaption {
-      padding-right: 23.94366%; } }
-  @media all and (min-width: 56.25em) {
-    .prose figure.figure-wide figcaption {
-      padding-right: 24.21053%; } }
-  .prose figure.figure-inline {
-    margin-right: 12px;
-    float: left; }
-    @media all and (min-width: 28.125em) {
-      .prose figure.figure-inline {
-        margin: 6px 12px 0px 0px;
-        float: left; }
-        .prose figure.figure-inline img {
-          width: 100%;
-          height: auto; } }
-    .prose figure.figure-inline figcaption {
-      padding-left: 0;
-      padding-right: 0; }
 .prose *:first-child {
   margin-top: 0; }
   .prose *:first-child .aside {
