@@ -135,7 +135,6 @@ define([
 				}, 1500);
 			});
 		}
-
 		describe('Tags', function(){
 			var tagsContainer;
 

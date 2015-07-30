@@ -4339,8 +4339,8 @@
     #sandbox .article--comment .article__header .article__comments,
     #sandbox body:not(.is-live) .article--liveblog .article__header .article__comments {
       width: 24.21053%; } }
-  #sandbox .article--comment .article__body > .prose > p:first-of-type:first-letter,
-  #sandbox .article--feature .article__body > .prose > p:first-of-type:first-letter {
+  #sandbox .article--comment .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
+  #sandbox .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
     color: "";
     font-family: "Guardian Egyptian Web", Georgia, serif;
     font-weight: 100;
@@ -4352,8 +4352,8 @@
     padding-right: 6px;
     float: left; }
     @media all and (min-width: 40.625em) {
-      #sandbox .article--comment .article__body > .prose > p:first-of-type:first-letter,
-      #sandbox .article--feature .article__body > .prose > p:first-of-type:first-letter {
+      #sandbox .article--comment .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
+      #sandbox .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
         font-size: 5.2222em; } }
   #sandbox .article--comment .article__header .cutout__container {
     padding-bottom: 48px;
@@ -5973,7 +5973,7 @@
   #sandbox [class*="block--live-"] .prose figure.figure-inline {
     float: none;
     clear: both; }
-  #sandbox [class*="block--live-"] .prose figure:last-child figcaption {
+  #sandbox [class*="block--live-"] .prose figure:last-child figcaption:not(.figure--thumbnail, .figure-wide, .figure--thumbnail-with-caption) {
     border-bottom: 0; }
   #sandbox [class*="block--live-"] .prose figcaption {
     padding: 6px 0px 12px 0px; }

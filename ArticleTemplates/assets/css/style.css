@@ -2554,8 +2554,8 @@ Display a selection of images that form a gallery.
   body:not(.is-live) .article--liveblog .article__header .article__comments {
     width: 24.21053%; } }
 
-.article--comment .article__body > .prose > p:first-of-type:first-letter,
-.article--feature .article__body > .prose > p:first-of-type:first-letter {
+.article--comment .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
+.article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
   color: "";
   font-family: "Guardian Egyptian Web", Georgia, serif;
   font-weight: 100;
@@ -2567,8 +2567,8 @@ Display a selection of images that form a gallery.
   padding-right: 6px;
   float: left; }
   @media all and (min-width: 40.625em) {
-    .article--comment .article__body > .prose > p:first-of-type:first-letter,
-    .article--feature .article__body > .prose > p:first-of-type:first-letter {
+    .article--comment .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
+    .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
       font-size: 5.2222em; } }
 
 /*.article--comment,
@@ -4666,7 +4666,7 @@ Provide a summary of events:
 [class*="block--live-"] .prose figure.figure-inline {
   float: none;
   clear: both; }
-[class*="block--live-"] .prose figure:last-child figcaption {
+[class*="block--live-"] .prose figure:last-child figcaption:not(.figure--thumbnail, .figure-wide, .figure--thumbnail-with-caption) {
   border-bottom: 0; }
 [class*="block--live-"] .prose figcaption {
   padding: 6px 0px 12px 0px; }
