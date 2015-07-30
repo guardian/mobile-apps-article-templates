@@ -14,9 +14,10 @@ Display a link to view more.
 </div>
 
 <div class="more more--live-blogs">
-    <span class="more__label" data-icon="&#xe050;">
+    <button class="more__button">
+        <span class="more__icon" data-icon="&#xe050;" aria-hidden="true"></span>
         <span class="more__text">View more updates</span>
-    </span>
+    </button>
 </div>
 ```
 */
@@ -24,7 +25,8 @@ Display a link to view more.
 .more {
     padding: base-px(0, 0, 2, 0);
 
-    .more__label{
+    .more__label,
+    .more__button{
         display: inline-block;
         vertical-align: middle;
         color: color(shade-7);
@@ -33,12 +35,18 @@ Display a link to view more.
         @include body(0.875);
         padding: base-px(0.5, 1.5, 0.5, 1.166);
         border-radius: 40px;
-        
+        border: none;
+        outline: none;
+    }
+
+    .more__icon,
+    .more__label {
         &:before{
             position: relative;
             font-size: 110%;
             right: 5px;
         }
+
         &:active{
             color: darken(color(shade-7),10);
         }
@@ -91,10 +99,12 @@ Display a link to view more.
         margin-left: cols($base-4, 5, 1);
     }
 
-    .more__label{
+    .more__button {
         background-color: color(tone-live);
         &:active{
             background-color: darken(color(tone-live), 10%);
         }
     }
 }
+
+

@@ -5639,31 +5639,59 @@
     vertical-align: top; }
   #sandbox .more {
     padding: 0px 0px 24px 0px; }
-    #sandbox .more .more__label {
+    #sandbox .more .more__label,
+    #sandbox .more .more__button {
       display: inline-block;
       vertical-align: middle;
       color: #fff;
       font-family: "Guardian Agate Sans 1 Web", sans-serif;
       font-weight: bold;
       padding: 6px 18px 6px 14px;
-      border-radius: 40px; }
+      border-radius: 40px;
+      border: none;
+      outline: none; }
       @media all and (max-width: 40.615em) {
-        #sandbox .more .more__label {
+        #sandbox .more .more__label,
+        #sandbox .more .more__button {
           font-size: 1.4rem;
           line-height: 2.1rem; } }
       @media all and (min-width: 40.625em) {
-        #sandbox .more .more__label {
+        #sandbox .more .more__label,
+        #sandbox .more .more__button {
           font-size: 1.575rem;
           line-height: 2.275rem; } }
-      #sandbox .more .more__label:before {
-        position: relative;
-        font-size: 110%;
-        right: 5px; }
-      #sandbox .more .more__label:active {
-        color: #e6e6e6; }
+    #sandbox .more .more__icon:before,
+    #sandbox .more .more__label:before {
+      position: relative;
+      font-size: 110%;
+      right: 5px; }
+    #sandbox .more .more__icon:active,
+    #sandbox .more .more__label:active {
+      color: #e6e6e6; }
     #sandbox .more .more__text {
       position: relative;
       bottom: 3px; }
+  #sandbox .more__button {
+    /*border: none;
+    outline: none;
+    color: color(shade-7);
+    font-family: $agate-sans;
+    font-weight: bold;
+    @include body(0.875);
+    padding: base-px(0.5, 1.5, 0.5, 1.166);
+    border-radius: 40px;
+    display: inline-block;
+    vertical-align: middle;*/
+    /* .more__icon{
+         &:before{
+             position: relative;
+             font-size: 110%;
+             right: 5px;
+         }
+         &:active{
+             color: darken(color(shade-7),10);
+         }
+     }*/ }
   #sandbox .more--comments {
     padding-top: 12px;
     border-top: 1px dotted #dcdad5; }
@@ -5691,9 +5719,9 @@
     @media all and (min-width: 56.25em) {
       #sandbox .more--live-blogs {
         margin-left: 31.57895%; } }
-    #sandbox .more--live-blogs .more__label {
+    #sandbox .more--live-blogs .more__button {
       background-color: #b51800; }
-      #sandbox .more--live-blogs .more__label:active {
+      #sandbox .more--live-blogs .more__button:active {
         background-color: #821100; }
   #sandbox .tags {
     color: #999;
