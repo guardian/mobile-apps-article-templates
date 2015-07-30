@@ -153,6 +153,26 @@ define([
             };
             window.articleImageSizer();
         },
+        isThumbNailImageWithoutCaptionPresent: function(el){
+            return el.getElementsByClassName('figure--thumbnail').length;
+        },
+
+        applyArticleContentTypeClasses: function(){
+            var hasThumbnailsWithCaps,
+                classArray;
+        
+            $(".prose").each(function(el){
+                var element = $(el);
+                classArray = [];
+                hasThumbnailsWithCaps = modules.isThumbNailImageWithoutCaptionPresent(el);
+                if (hasThumbnailsWithCaps) {
+                    classArray.push('prose--has-thumbnails-without-caps');
+                } 
+                if (classArray.length) {
+                    element.addClass(classArray.join(" ")); 
+                }
+            });          
+        },
 
         insertTags: function () {
             // Tag Function
@@ -338,6 +358,7 @@ define([
             modules.correctCaptions();
             modules.figcaptionToggle();
             modules.imageSizer();
+            modules.applyArticleContentTypeClasses();
             modules.insertTags();
             modules.loadComments();
             modules.loadCards();
