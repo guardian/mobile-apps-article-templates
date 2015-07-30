@@ -421,9 +421,10 @@ Display a link to view more.
 </div>
 
 <div class="more more--live-blogs">
-    <span class="more__label" data-icon="&#xe050;">
+    <button class="more__button">
+        <span class="more__icon" data-icon="&#xe050;" aria-hidden="true"></span>
         <span class="more__text">View more updates</span>
-    </span>
+    </button>
 </div>
 ```
 */
@@ -461,28 +462,6 @@ Display a link to view more.
   .more .more__text {
     position: relative;
     bottom: 3px; }
-
-.more__button {
-  /*border: none;
-  outline: none;
-  color: color(shade-7);
-  font-family: $agate-sans;
-  font-weight: bold;
-  @include body(0.875);
-  padding: base-px(0.5, 1.5, 0.5, 1.166);
-  border-radius: 40px;
-  display: inline-block;
-  vertical-align: middle;*/
-  /* .more__icon{
-       &:before{
-           position: relative;
-           font-size: 110%;
-           right: 5px;
-       }
-       &:active{
-           color: darken(color(shade-7),10);
-       }
-   }*/ }
 
 .more--comments {
   padding-top: 12px;
