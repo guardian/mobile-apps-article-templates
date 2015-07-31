@@ -3107,6 +3107,14 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--media .article--visual .prose table,
   .tone--media .article--visual .table {
     border-top-color: #fb0; }
+  .tone--media .article--audio .prose .element-pullquote blockquote,
+  .tone--media .article--visual .prose .element-pullquote blockquote {
+    color: #fff; }
+    .tone--media .article--audio .prose .element-pullquote blockquote footer, .tone--media .article--audio .prose .element-pullquote blockquote::after, .tone--media .article--audio .prose .element-pullquote blockquote::before,
+    .tone--media .article--visual .prose .element-pullquote blockquote footer,
+    .tone--media .article--visual .prose .element-pullquote blockquote::after,
+    .tone--media .article--visual .prose .element-pullquote blockquote::before {
+      color: #fb0; }
   .tone--media .article--audio .audio-player,
   .tone--media .article--visual .audio-player {
     background-color: #1a1a1a; }
@@ -3728,6 +3736,8 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta__comments a,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta__comments,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta__comments a span[data-icon] {
+  color: #272727; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .prose .element-pullquote blockquote footer, .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .prose .element-pullquote blockquote::after, .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .prose .element-pullquote blockquote::before {
   color: #272727; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article__header {
   background-color: #D9D9D9; }
@@ -6218,7 +6228,8 @@ Adds typographic styling, typically to content fetched from the Guardian Content
       line-height: 2.2rem;
       margin: 6px 0px; }
 .prose .element-pullquote {
-  position: relative; }
+  position: relative;
+  margin: 24px 0px 24px 0px; }
   .prose .element-pullquote blockquote {
     margin: 0;
     font-style: normal;
@@ -6235,13 +6246,13 @@ Adds typographic styling, typically to content fetched from the Guardian Content
       color: #005689;
       content: '\E092';
       position: absolute;
-      top: 0;
+      top: 2px;
       left: 0;
       line-height: 0; }
     .prose .element-pullquote blockquote::after {
       content: '\E096';
       top: auto;
-      bottom: 0; }
+      bottom: 19px; }
     .prose .element-pullquote blockquote footer {
       color: #005689; }
   @media all and (min-width: 40.625em) {
