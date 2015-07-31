@@ -150,6 +150,14 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 ```
 */
 
+%quoteIconSharedStyles {
+    font-family: $icon;
+    font-size: 4rem; // 40px
+    font-style: normal;
+    line-height: 1;
+    display: block;
+}
+
 .prose {
     @include body();
 
@@ -225,11 +233,7 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 
         &::before {
             color: color(shade-3);
-            font-family: $icon;
-            font-size: 4rem; // 40px
-            font-style: normal;
-            line-height: 1;
-            display: block;
+            @extend %quoteIconSharedStyles
         }
 
         &.quoted {
@@ -256,6 +260,56 @@ Adds typographic styling, typically to content fetched from the Guardian Content
                 margin: base-px(.5, 0);
             }
         }
+    }
+
+    .element-pullquote {
+        position: relative;
+
+        blockquote {
+            margin: 0;
+            font-style: normal;
+            font-size: 2rem;
+            line-height: 1.3;
+            padding: 25px 0;
+
+            p {
+                margin: 0;
+            }
+
+            cite {
+                font-style: normal;
+                font-size: 1.8rem;
+            }
+
+            &::before,
+            &::after {
+                @extend %quoteIconSharedStyles;
+                font-size: 3rem;
+                color: color(tone-news);
+                content: '\E092';
+                position: absolute;
+                top: 0;
+                left: 0;
+                line-height: 0;
+            }
+
+            &::after {
+                content: '\E096';
+                top: auto;
+                bottom: 0;
+            }
+
+            footer {
+                color: color(tone-news);
+            }
+        }
+
+         @include mq($from: col2) {
+            //check with Ben
+            max-width: 280px;
+            margin-right: base-px(1);
+            float: left;
+         }
     }
 
     figure {
