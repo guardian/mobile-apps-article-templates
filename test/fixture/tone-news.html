@@ -231,13 +231,17 @@ s4fonts
         </div>
     </div>
 
-    <div class="container container--related" id="related">
+    <div class="container container--related container--has-failed" id="related">
         <div class="container__header" id="related-content-header">
             <div class="container__title" id="related-content-title">
                 <h2 class="container__title__label" id="related-content-title-label">More on this story</h2>
             </div>
         </div>
-
+        <div class="block block--failed" id="related-module-failed-block">
+            <div class="block__body">
+                <p>More on this story is currently unavailable. Please try again later.</p>
+            </div>
+        </div>
         <div class="container__body" id="related-content-body">
             <a class="card has-image card--news" href="x-gu://related_item/mobile-apps.guardianapis.com/items/us-news/2014/nov/16/barack-obama-basks-success-asia-pacific-sweep">
                 <div class="card__container">
@@ -255,13 +259,11 @@ s4fonts
                     <div class="card__footer">
 
                         <span class="card__meta card__timestamp">
-                            <span data-icon="" aria-hidden="true"></span>
-                            12w
+                            <span data-icon="" aria-hidden="true"></span>12w
                         </span>
 
                         <span class="card__meta card__comments">
-                            <span data-icon="" aria-hidden="true"></span>
-                            196
+                            <span data-icon="" aria-hidden="true"></span>196
                         </span>
 
                     </div>
@@ -283,13 +285,11 @@ s4fonts
                     <div class="card__footer">
 
                         <span class="card__meta card__timestamp">
-                            <span data-icon="" aria-hidden="true"></span>
-                            51w
+                            <span data-icon="" aria-hidden="true"></span>51w
                         </span>
 
                         <span class="card__meta card__comments">
-                            <span data-icon="" aria-hidden="true"></span>
-                            16
+                            <span data-icon="" aria-hidden="true"></span>16
                         </span>
 
                     </div>
@@ -311,13 +311,11 @@ s4fonts
                     <div class="card__footer">
 
                         <span class="card__meta card__timestamp">
-                            <span data-icon="" aria-hidden="true"></span>
-                            1y
+                            <span data-icon="" aria-hidden="true"></span>1y
                         </span>
 
                         <span class="card__meta card__comments">
-                            <span data-icon="" aria-hidden="true"></span>
-                            60
+                            <span data-icon="" aria-hidden="true"></span>60
                         </span>
 
                     </div>
@@ -339,13 +337,11 @@ s4fonts
                     <div class="card__footer">
 
                         <span class="card__meta card__timestamp">
-                            <span data-icon="" aria-hidden="true"></span>
-                            1y
+                            <span data-icon="" aria-hidden="true"></span>1y
                         </span>
 
                         <span class="card__meta card__comments">
-                            <span data-icon="" aria-hidden="true"></span>
-                            160
+                            <span data-icon="" aria-hidden="true"></span>160
                         </span>
 
                     </div>
@@ -353,7 +349,7 @@ s4fonts
             </a>
         </div>
     </div>
-    <div class="container container--comments comments-15 comments--open" id="comments">
+    <div class="container container--comments comments-15 container--has-failed" id="comments">
         <div class="container__header" id="comments-module-header">
             <div class="container__title" id="comments-module-title">
                 <h2 class="container__title__label" id="comments-module-title-label">
@@ -373,7 +369,11 @@ s4fonts
                 </a>
             </div>
         </div>
-
+        <div class="block block--failed" id="comments-module-failed-block">
+            <div class="block__body">
+                <p id="comments-module-failed-text">Comments are currently unavailable. Please try again later.</p>
+            </div>
+        </div>
         <div class="container__body" id="comments-module-blocks">
             <div class="block block--discussion-empty" id="comments-module-empty-block">
                 <div class="block__body">
@@ -387,15 +387,15 @@ s4fonts
                     </div>
                 </div>
             </div>
-            <div class="block block--discussion-failed" id="comments-module-failed-block">
+            <!-- <div class="block block--failed" id="comments-module-failed-block">
                 <div class="block__body">
-                    <div class="comment">
-                        <div class="prose resizable">
-                            <p id="comments-module-failed-text">Comments are currently unavailable. Please try again later.</p>
-                        </div>
-                    </div>
+                  
+                <div class="prose resizable">
+                    <p id="comments-module-failed-text">Comments are currently unavailable. Please try again later.</p>
                 </div>
-            </div>
+             
+                </div>
+            </div>  -->
             <div class="loading loading--discussion" id="comments-module-loading-block" style="display: none;">
                 <img src="../../ArticleTemplates/assets/img/loading.gif" id="comments-module-loading-animation" alt="Loading…"></div>
             <div class="block block--discussion-thread block--discussion-thread--checked">

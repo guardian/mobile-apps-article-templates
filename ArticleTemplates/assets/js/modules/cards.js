@@ -15,8 +15,9 @@ define([
                 // Global functions to handle comments, called by native code
                 window.articleCardsInserter = function (html) {
                     if (!html) {
-                        $(".container--related").hide();
+                        modules.articleCardsFailed();
                     } else {
+                        $(".container--related").removeClass('container--has-failed');
                         $(".container--related .container__body").html(html);
                         var comment_card_byline = $(".card--comment.has-image .card__byline");
                         var comment_card_header = $(".card--comment.has-image .card__titletext");
@@ -36,7 +37,18 @@ define([
                         }
                     }
                 };
+                window.articleCardsFailed = function(){
+                   modules.articleCardsFailed();
+                };
+               
                 window.applyNativeFunctionCall('articleCardsInserter');
+                window.applyNativeFunctionCall('articleCardsFailed');
+            },
+
+
+
+            articleCardsFailed: function(){
+                $(".container--related").addClass('container--has-failed');
             },
             getNumberOfTextLines:function (el) {
                 //returns number of text lines of single html element

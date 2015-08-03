@@ -1205,6 +1205,27 @@
   */
   /*doc
   ---
+  title: Failed
+  name: block--failed
+  category: Blocks
+  ---
+  Shows a failure block for when content is not available
+  
+  ```html_example
+  
+  <div class="comments-has-failed">
+      <div class="block block--discussion-failed">
+          <div class="comment">
+              <div class="prose resizable">
+                  <p>Comments are currently unavailable. Please try again later.</p>
+              </div>
+          </div>
+      </div>
+  </div>
+  ```
+  */
+  /*doc
+  ---
   title: Liveblog
   name: block--live
   category: Blocks
@@ -3057,6 +3078,8 @@
     #sandbox .loading img {
       width: 44px;
       height: 44px; }
+    .container--has-failed #sandbox .loading {
+      display: none; }
   #sandbox .loading--liveblog {
     display: none; }
     #sandbox .loading--liveblog.loading--visible {
@@ -5854,6 +5877,22 @@
   #sandbox .comments-has-failed .more--comments,
   #sandbox .comments-has-failed .block--discussion-empty {
     display: none; }
+  #sandbox .block--failed {
+    display: none;
+    color: #767676;
+    font-family: "Guardian Agate Sans 1 Web", sans-serif; }
+    @media all and (max-width: 40.615em) {
+      #sandbox .block--failed {
+        font-size: 1.6rem;
+        line-height: 2.4rem; } }
+    @media all and (min-width: 40.625em) {
+      #sandbox .block--failed {
+        font-size: 1.8rem;
+        line-height: 2.6rem; } }
+    #sandbox .block--failed .block__body {
+      padding-bottom: 12px; }
+    .container--has-failed #sandbox .block--failed {
+      display: block; }
   #sandbox [class*="block--live-"] .block__time {
     color: #767676;
     font-family: "Guardian Agate Sans 1 Web", sans-serif;
@@ -6567,6 +6606,8 @@
       display: none !important; }
   #sandbox .container__body {
     overflow: hidden; }
+    .container--has-failed #sandbox .container__body {
+      display: none; }
   #sandbox .android .container {
     margin: 0px 12px 0px 12px; }
     #sandbox .android .container.comments--closed .container__action .touchpoint--primary {

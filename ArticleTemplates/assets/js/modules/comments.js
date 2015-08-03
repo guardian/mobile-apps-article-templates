@@ -81,10 +81,14 @@ define([
                 };
                 // Global functions to handle comments, called by native code
                 window.articleCommentsInserter = function (html) {
+                    $('#comments').removeClass('container--has-failed');
                     $('.loading--discussion').hide();
+
                     if (!html) {
                         $('.block--discussion-empty').show();
                     } else {
+                        /*should we set comment failure block to display none at this point also
+                         (currently would display if connection reinstated) */
                         html = bonzo.create(html);
                         $(html).appendTo('#comments .container__body');
                         window.commentsReplyFormatting();
@@ -102,14 +106,11 @@ define([
                     $('.loading--discussion').appendTo($('#comments .container__body'));
                 };
                 window.articleCommentsFailed = function () {
-                    $('.block--discussion-failed').show();
-                    $('.loading--discussion').hide();
-                    $('#comments').addClass('comments-has-failed');
+                    modules.commentsFailed();
                 };
                 window.commentsFailed = function () {
-                    $('.loading--discussion').hide();
-                    $('.block--discussion-failed').show();
-                    $('#comments .container__body').addClass('comments-has-failed');
+                    //iOS calls both commentsFailed and articleCommentsFailed at different points - Android only calls articleCommentsFailed - would be nice to remove one
+                    modules.commentsFailed();
                 };
                 window.commentsEnd = function () {
                     $('.loading--discussion').remove();
@@ -144,6 +145,9 @@ define([
                 window.applyNativeFunctionCall('commentsClosed');
                 window.applyNativeFunctionCall('commentsOpen');
                 window.applyNativeFunctionCall('articleCommentsFailed');
+            },
+            commentsFailed: function(){
+                $('#comments').addClass('container--has-failed');
             }
         },
 
