@@ -87,8 +87,6 @@ define([
                     if (!html) {
                         $('.block--discussion-empty').show();
                     } else {
-                        /*should we set comment failure block to display none at this point also
-                         (currently would display if connection reinstated) */
                         html = bonzo.create(html);
                         $(html).appendTo('#comments .container__body');
                         window.commentsReplyFormatting();

@@ -143,7 +143,8 @@ Display a titled container for comments, cards or other components that should b
 .container__body {
     overflow: hidden;
 
-    .container--has-failed & {
+    //putting comments back to how they originally were - keeping any cached comments after failure
+    .container--has-failed:not(.container--comments) & {
         display: none;
     }
 }
