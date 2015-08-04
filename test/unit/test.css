@@ -5898,11 +5898,9 @@
   @media all and (min-width: 40.625em) {
     #sandbox [class*="block--live-"] .block__body {
       float: left; }
-      #sandbox [class*="block--live-"] .block__body .quoted,
       #sandbox [class*="block--live-"] .block__body .twitter-tweet,
       #sandbox [class*="block--live-"] .block__body .js-tweet {
         position: relative; }
-        #sandbox [class*="block--live-"] .block__body .quoted::before,
         #sandbox [class*="block--live-"] .block__body .twitter-tweet::before,
         #sandbox [class*="block--live-"] .block__body .js-tweet::before {
           position: absolute;
@@ -6715,9 +6713,17 @@
     margin: 24px; }
     #sandbox .prose blockquote::before {
       color: #999; }
-    #sandbox .prose blockquote.quoted::before {
-      content: '\e029';
-      margin-top: -.75rem; }
+    #sandbox .prose blockquote.quoted {
+      position: relative;
+      padding-top: 25px; }
+      #sandbox .prose blockquote.quoted::before {
+        content: '\E092';
+        font-size: 3rem;
+        content: '\E092';
+        position: absolute;
+        top: 2px;
+        left: 0;
+        line-height: 0; }
     #sandbox .prose blockquote.twitter-tweet, #sandbox .prose blockquote.js-tweet {
       font-family: "Guardian Agate Sans 1 Web", sans-serif;
       font-size: 1.4rem;
