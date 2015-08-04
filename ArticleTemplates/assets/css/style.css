@@ -146,7 +146,7 @@ a {
   src: url("../fonts/egyptiandisplay-light.otf"); }
 @font-face {
   font-family: 'Guardian Icons';
-  src: url("../fonts/icons.ttf"); }
+  src: url("../fonts/icons.otf"); }
 html {
   font-size: 62.5%;
   font-family: "Guardian Text Egyptian Web", Georgia, serif; }
@@ -2764,6 +2764,8 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--comment .article--comment .prose table,
   .tone--comment .article--comment .table {
     border-top-color: #e6711b; }
+  .tone--comment .article--comment .prose .element-pullquote blockquote footer, .tone--comment .article--comment .prose .element-pullquote blockquote::after, .tone--comment .article--comment .prose .element-pullquote blockquote::before {
+    color: #e6711b; }
   .tone--comment .article--comment .article__header .headline__byline {
     color: #e6711b; }
   .tone--comment .article--comment .article__header .byline__author {
@@ -2835,6 +2837,14 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--feature3 .article--feature .prose table,
   .tone--feature3 .article--feature .table {
     border-top-color: #b82266; }
+  .tone--feature1 .article--feature .prose .element-pullquote blockquote footer, .tone--feature1 .article--feature .prose .element-pullquote blockquote::after, .tone--feature1 .article--feature .prose .element-pullquote blockquote::before,
+  .tone--feature2 .article--feature .prose .element-pullquote blockquote footer,
+  .tone--feature2 .article--feature .prose .element-pullquote blockquote::after,
+  .tone--feature2 .article--feature .prose .element-pullquote blockquote::before,
+  .tone--feature3 .article--feature .prose .element-pullquote blockquote footer,
+  .tone--feature3 .article--feature .prose .element-pullquote blockquote::after,
+  .tone--feature3 .article--feature .prose .element-pullquote blockquote::before {
+    color: #951c55; }
 .tone--feature1 .article--feature .article__header a,
 .tone--feature2 .article--feature .article__header a,
 .tone--feature3 .article--feature .article__header a {
@@ -3007,6 +3017,8 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     border-top-color: #b51800; }
   .cricket .tone--liveBlog.is-live .article--liveblog {
     border-top: none; }
+  .tone--liveBlog.is-live .article--liveblog .prose .element-pullquote blockquote footer, .tone--liveBlog.is-live .article--liveblog .prose .element-pullquote blockquote::after, .tone--liveBlog.is-live .article--liveblog .prose .element-pullquote blockquote::before {
+    color: #b51800; }
   .tone--liveBlog.is-live .article--liveblog .meta {
     background-color: #cc2b12;
     border: 0;
@@ -3095,6 +3107,14 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--media .article--visual .prose table,
   .tone--media .article--visual .table {
     border-top-color: #fb0; }
+  .tone--media .article--audio .prose .element-pullquote blockquote,
+  .tone--media .article--visual .prose .element-pullquote blockquote {
+    color: #fff; }
+    .tone--media .article--audio .prose .element-pullquote blockquote footer, .tone--media .article--audio .prose .element-pullquote blockquote::after, .tone--media .article--audio .prose .element-pullquote blockquote::before,
+    .tone--media .article--visual .prose .element-pullquote blockquote footer,
+    .tone--media .article--visual .prose .element-pullquote blockquote::after,
+    .tone--media .article--visual .prose .element-pullquote blockquote::before {
+      color: #fb0; }
   .tone--media .article--audio .audio-player,
   .tone--media .article--visual .audio-player {
     background-color: #1a1a1a; }
@@ -3595,6 +3615,10 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   background-image: linear-gradient(to bottom, #D9D9D9 50%, rgba(65, 65, 65, 0.66) 50%); }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .tags .inline-list__item.more-button a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .tags .inline-list__item.more-button a {
   border-color: #f1f1f1; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .prose .element-pullquote blockquote, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .prose .element-pullquote blockquote {
+  color: #676767; }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .prose .element-pullquote blockquote footer, .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .prose .element-pullquote blockquote::after, .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .prose .element-pullquote blockquote::before, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .prose .element-pullquote blockquote footer, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .prose .element-pullquote blockquote::after, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .prose .element-pullquote blockquote::before {
+    color: #272727; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 a:active {
   color: #414141; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article__header, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article__header, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article__header {
@@ -3635,6 +3659,10 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   color: #fff; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .meta__comments, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .meta__comments, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .meta__comments {
   border-color: #878787; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .prose .element-pullquote blockquote, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .prose .element-pullquote blockquote, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .prose .element-pullquote blockquote {
+  color: #676767; }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .prose .element-pullquote blockquote footer, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .prose .element-pullquote blockquote::after, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .prose .element-pullquote blockquote::before, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .prose .element-pullquote blockquote footer, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .prose .element-pullquote blockquote::after, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .prose .element-pullquote blockquote::before, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .prose .element-pullquote blockquote footer, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .prose .element-pullquote blockquote::after, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .prose .element-pullquote blockquote::before {
+    color: #272727; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article--liveblog .article__header {
   background-color: #D9D9D9; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .section__live,
@@ -3712,6 +3740,8 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta__comments a,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta__comments,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta__comments a span[data-icon] {
+  color: #272727; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .prose .element-pullquote blockquote footer, .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .prose .element-pullquote blockquote::after, .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .prose .element-pullquote blockquote::before {
   color: #272727; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article__header {
   background-color: #D9D9D9; }
@@ -4560,11 +4590,9 @@ Provide a summary of events:
 @media all and (min-width: 40.625em) {
   [class*="block--live-"] .block__body {
     float: left; }
-    [class*="block--live-"] .block__body .quoted,
     [class*="block--live-"] .block__body .twitter-tweet,
     [class*="block--live-"] .block__body .js-tweet {
       position: relative; }
-      [class*="block--live-"] .block__body .quoted::before,
       [class*="block--live-"] .block__body .twitter-tweet::before,
       [class*="block--live-"] .block__body .js-tweet::before {
         position: absolute;
@@ -6112,6 +6140,13 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 </div>
 ```
 */
+.prose blockquote::before, .prose .element-pullquote blockquote::before, .prose .element-pullquote blockquote::after {
+  font-family: "Guardian Icons", Georgia, serif;
+  font-size: 4rem;
+  font-style: normal;
+  line-height: 1;
+  display: block; }
+
 @media all and (max-width: 40.615em) {
   .prose {
     font-size: 1.6rem;
@@ -6179,15 +6214,18 @@ Adds typographic styling, typically to content fetched from the Guardian Content
   font-style: italic;
   margin: 24px; }
   .prose blockquote::before {
-    color: #999;
-    font-family: "Guardian Icons", Georgia, serif;
-    font-size: 4rem;
-    font-style: normal;
-    line-height: 1;
-    display: block; }
-  .prose blockquote.quoted::before {
-    content: '\e029';
-    margin-top: -.75rem; }
+    color: #999; }
+  .prose blockquote.quoted {
+    position: relative;
+    padding-top: 25px; }
+    .prose blockquote.quoted::before {
+      content: '\E092';
+      font-size: 3rem;
+      content: '\E092';
+      position: absolute;
+      top: 2px;
+      left: 0;
+      line-height: 0; }
   .prose blockquote.twitter-tweet, .prose blockquote.js-tweet {
     font-family: "Guardian Agate Sans 1 Web", sans-serif;
     font-size: 1.4rem;
@@ -6199,6 +6237,39 @@ Adds typographic styling, typically to content fetched from the Guardian Content
       font-size: 1.6rem;
       line-height: 2.2rem;
       margin: 6px 0px; }
+.prose .element-pullquote {
+  position: relative;
+  margin: 24px 0px 24px 0px; }
+  .prose .element-pullquote blockquote {
+    margin: 0;
+    font-style: normal;
+    font-size: 2rem;
+    line-height: 1.3;
+    padding: 25px 0; }
+    .prose .element-pullquote blockquote p {
+      margin: 0; }
+    .prose .element-pullquote blockquote cite {
+      font-style: normal;
+      font-size: 1.8rem; }
+    .prose .element-pullquote blockquote::before, .prose .element-pullquote blockquote::after {
+      font-size: 3rem;
+      color: #005689;
+      content: '\E092';
+      position: absolute;
+      top: 2px;
+      left: 0;
+      line-height: 0; }
+    .prose .element-pullquote blockquote::after {
+      content: '\E096';
+      top: auto;
+      bottom: 19px; }
+    .prose .element-pullquote blockquote footer {
+      color: #005689; }
+  @media all and (min-width: 40.625em) {
+    .prose .element-pullquote {
+      max-width: 280px;
+      margin-right: 12px;
+      float: left; } }
 .prose figure {
   margin: 12px 0px; }
   .prose figure.figure-wide img {
