@@ -48,7 +48,7 @@ With live indicator:
 .section__container {
     position: relative;
     float: left;
-    padding: base-px(.4, 1, 0, 1);
+    padding: base-px(0, 1, 0, 1);
     background: color(global-section-band);
     border-bottom: 1px solid rgba(color(shade-4), .4);
     width:100%;
@@ -72,7 +72,11 @@ With live indicator:
         line-height: 1.6rem;
         font-weight: 600;
         @include headline(.5);
-        padding: base-px(.25, .5, .16, 0);
+        padding-right: base-px(.5);
+
+        &:last-child {
+            padding-right: 0;
+        }
     }
     .content__series-label {
         font-weight: normal;
@@ -81,6 +85,46 @@ With live indicator:
         font-weight: 300;
         display: inline;
     }
+
+   
+}
+
+.content__container {
+    @extend %clearfix;
+    display: table;
+    width: 100%;
+    height: 100%;
+
+    .content__labels__container {
+        display: table-cell;
+        vertical-align: top;
+        padding: base-px(.6, 1, 1, 1);
+        height: 100%;
+        width: 100%;
+    }
+}
+
+
+
+.section__container .comment-count {
+    display: none;
+    border-left: 1px color(shade-2) dotted;
+    padding: base-px(.5, 1, 1, 1);
+    font-size: 1em;
+    vertical-align: top;
+    height: 100%;
+
+    span[data-icon] {
+        padding-right: 4px;
+    }
+
+    .test--new-alerts & {
+        display: table-cell;
+    }
+}
+
+.comment-count__label {
+    @extend %screen-readable;
 }
 
 .article__header h1 {

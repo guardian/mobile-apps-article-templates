@@ -16,13 +16,15 @@
             display: none; // Default
             position: absolute;
             left: base-px(1);
-            top: base-px(0.41);
+            top: 3px;
         }
 
         .alerts {
             margin: 0;
             padding: base-px(.5, 1);
         }
+
+       
 
         & > .alerts {
             @include mq($from: col2) {
@@ -37,6 +39,8 @@
         .meta {
             position: relative;
 
+            
+
             .alerts {
                 position: absolute;
                 left: 0;
@@ -46,9 +50,10 @@
                     display: none;
                 }
             }
+
         }
 
-        .meta__comments__label {
+        .comment-count__label {
             display: none;
         }
     }
@@ -69,6 +74,11 @@
         .element {
             margin: base-px(1, 0);
         }
+    }
+
+     .alerts--new {
+        
+        margin: base-px(1, 1, 0, 0.7);
     }
 
     // .aside-witness {

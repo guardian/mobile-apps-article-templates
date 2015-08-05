@@ -1,5 +1,6 @@
 .tone--news {
-    a {
+    //TODO: would be nice to get rid of not (as hard to overide as tones get loaded in last)
+    a:not(.alerts--new) {
         color: color(tone-news);
         &:active {
             color: color(tone-news-accent);
@@ -11,13 +12,21 @@
         .section > div {
             color: color(tone-news); // Content Label Section
         }
-   
-        .meta .meta__comments{
-            border-color: rgba(color(shade-3), .4);
-        }
       
         .section__container {
             border-color: color(tone-news-accent);
+        }
+
+
+        .section__container,
+        .content__series-label,
+        .content__series-label a {
+            color: color(shade-2);  // Content Label Series
+        }
+
+
+        .comment-count {
+            border-color: rgba(color(shade-3), .4);
         }
 
         .headline {
@@ -40,8 +49,8 @@
 
             .meta__byline .byline,
             .meta__byline a, 
-            .meta__comments,
-            .meta__comments a {
+            .comment-count,
+            .comment-count a {
                 color: color(tone-news);
             }
             .meta__pubdate{

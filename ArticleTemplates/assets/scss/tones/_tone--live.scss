@@ -1,25 +1,27 @@
 .tone--liveBlog {
     .section__container {
+
         border-color: color(tone-live-highlight);
         color: color(tone-live-accent);
+
+        /*.comment-count {
+            border-left-color: color( shade-2);
+        }*/
+
+        //border-bottom: 1px rgba(#fff, .4) dotted; 
+    }
+
+
+
+   /* .section {
+        color: color(shade-7); // Default
+
     }
 
     .content__series-label {
         color: color(shade-7);
-    }
-    .cricket{
-        .new_alerts{
-            margin: 0;
-        }
-        .new_alerts,  .new_alerts.following:active {
-            border-color: color(shade-4);
-            color: color(shade-3);
-        }
-        a.new_alerts:not(.following):active, .new_alerts.following:not(:active) {
-            background-color: color(shade-3);
-            color: color(shade-7);
-        }
-    }
+    }*/
+
 }
 
 .tone--liveBlog.is-live {
@@ -51,12 +53,26 @@
     }
 
 
+
     //EXTRA SPECIFICITY NEEDED - due to previous styling
     .section__container {
         .content__series-label,
-        .content__series-label a {
+        .content__series-label a, 
+        .comment-count a {
             color: color(tone-live-accent);
         }
+    }
+
+
+    .alerts--new:active, .alerts--new.following {
+        background-color: color(tone-live);
+        color: color(shade-7);
+    }
+    
+    .alerts--new,  .alerts--new.following:active {
+        border-color: color(tone-live);
+        background-color: color(shade-7);
+        color: color(tone-live);
     }
 
     .article__header {
@@ -82,7 +98,7 @@
         .section{
             position: relative;
             @include mq($to: col1) {
-                padding-left: base-px(5.5); 
+                padding-left: base-px(4.7); 
             }
             @include mq(col1, col2) {
                 padding-left: base-px(6.5);
@@ -157,6 +173,7 @@
                 .alerts {
                     width: cols($base-3, 4);
                 }
+
             }
 
             @include mq($from: col3) {
@@ -172,10 +189,6 @@
             color: rgba(#fff, .8);
         }
 
-        .meta__comments {
-            border-left-color: rgba(#fff, .4);
-        }
-    
         .tags {
 
             .inline-list__item {
@@ -189,6 +202,23 @@
         
         }
 
+    }
+
+    .cricket & {
+        .alerts--new{
+            margin: 0;
+        }
+         
+        a.alerts--new:active, a.alerts--new.following {
+            background-color: color(shade-3);
+            color: color(shade-7);
+        }
+
+        a.alerts--new,  a.alerts--new.following:active {
+            border-color: color(shade-4);
+            background-color: transparent;
+            color: color(shade-3);
+        }
     }
 
 }
