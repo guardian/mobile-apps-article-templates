@@ -7,6 +7,8 @@
         }
     }
 
+    
+
     .section__container {
         & > div {
             color: color(tone-comment); // Content Label Section
@@ -16,6 +18,10 @@
         .content__series-label,
         .content__series-label a {
             color: color(shade-2);  // Content Label Series
+        }
+        
+        .comment-count {
+            border-left-color: darken(color(shade-4), 10%);
         }
     }
 
@@ -67,6 +73,13 @@
             }
         }
 
+        .meta__misc {
+
+            .test--new-alerts & {
+                padding-bottom: base-px(0.5);
+            }
+        }
+
         .meta {
             border: 0;
             margin: 0;
@@ -81,13 +94,25 @@
             }
 
             .meta__pubdate {
-                color: #fff;
+                color: rgba(color(shade-7), 0.8);
             }
 
-            .meta__comments {
+            .comment-count {
                 border-left-color: rgba(#fff, .4);
+            }
+           
+            //TODO: specificity needed due to previous styles - improve
+            a.alerts--new:active, a.alerts--new.following {
+                background-color: color(shade-7);
+                color: color(tone-comment-accent);
+            }
+            a.alerts--new,  a.alerts--new.following:active {
+                border-color: color(shade-7);
+                background-color: color(tone-comment-accent);
+                color: color(shade-7);
             }
         }
 
     }
 }
+
