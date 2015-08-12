@@ -627,50 +627,34 @@ The 'sponsored by/supported by' section
 ```
 */
 .sponsorship {
-  padding: 10px 12px 20px 12px;
+  padding: 8px 12px 16px 12px;
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
   line-height: 1.2;
-  position: relative;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  align-items: flex-start;
+  -webkit-align-items: flex-start;
   border-bottom: 1px dotted #B5B3AE;
   font-size: 1.4rem; }
-  @media all and (min-width: 40.625em) {
-    .sponsorship {
-      padding-bottom: 16px; } }
   .gallery ~ .sponsorship {
     border-bottom: none; }
   .witness + .sponsorship {
     border-top: 1px dotted #B5B3AE;
     padding-top: 20px;
     margin-top: 24px; }
-  .sponsorship__formatted-sponsor-name {
-    color: #878787;
-    display: block;
-    margin-bottom: 7px; }
-    @media all and (max-width: 40.615em) {
-      .sponsorship__formatted-sponsor-name {
-        max-width: 40%;
-        margin-bottom: 0; } }
-  .sponsorship__about-uri {
-    display: block;
-    font-weight: bold; }
-    @media all and (min-width: 40.625em) {
-      .sponsorship__about-uri {
-        float: right; } }
 
-.sponsorship__details {
-  margin-bottom: 5px; }
-  @media all and (min-width: 40.625em) {
-    .sponsorship__details {
-      max-width: 50%;
-      float: left;
-      margin-bottom: 0; } }
+.sponsorship__formatted-sponsor-name {
+  color: #878787;
+  margin-bottom: 8px; }
 
-@media all and (max-width: 40.615em) {
-  .sponsorship__logo {
-    position: absolute;
-    right: 12px;
-    top: 12px;
-    max-width: 50%; } }
+.sponsorship__about-uri {
+  margin-top: 12px;
+  font-weight: bold; }
+
+.sponsorship__logo {
+  max-height: 60px; }
 
 /*doc
 ---
