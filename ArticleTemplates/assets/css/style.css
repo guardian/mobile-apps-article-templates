@@ -1,5 +1,5 @@
 @charset "UTF-8";
-.content__container:after, .match-summary__team:after {
+.content__container:after, .match-summary__team:after, .sponsorship:after {
   content: '';
   display: table;
   clear: both; }
@@ -3831,7 +3831,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .card__title--audio::before {
   margin-top: 0; }
 
-.content__container:after, .match-summary__team:after {
+.content__container:after, .match-summary__team:after, .sponsorship:after {
   content: '';
   display: table;
   clear: both; }
@@ -4449,42 +4449,60 @@ category: Modules
 The 'sponsored by/supported by' section
 
 ```html_example
-<div class="sponsorship">
-	<p class="sponsorship__formatted-sponsor-name">
-		Guardian Cities is supported by:
-		<a href="http://www.100resilientcities.org">The Rockefeller Foundation</a>
-	</p>
-	<a class="sponsorship__about-uri" href="x-gu://item/mobile-apps.guardianapis.com/items/cities/2014/jan/27/cities-about-this-site">About this content</a>
-</div>		
+<<div class="sponsorship">
+    <p class="sponsorship__details">
+        <span class="sponsorship__formatted-sponsor-name">Guardian Cities is supported by:</span>
+        <a href="http://www.100resilientcities.org"><img src="http://pagead2.googlesyndication.com/pagead/imgad?id=CICAgKCToMPhMBABGAEyCMGaSOPVBwyp" class="sponsorship__logo" alt="The Rockefeller Foundation" /><span class="screen-readable"> (opens in a new window)</span></a>
+    </p>
+    <a class="sponsorship__about-uri" href="x-gu://item/mobile-apps.guardianapis.com/items/cities/2014/jan/27/cities-about-this-site">About this content</a>
+</div>	
 ```
 */
 .sponsorship {
   padding: 10px 12px 20px 12px;
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
   line-height: 1.2;
-  border-bottom: 1px dotted #B5B3AE; }
+  position: relative;
+  border-bottom: 1px dotted #B5B3AE;
+  font-size: 1.4rem; }
+  @media all and (min-width: 40.625em) {
+    .sponsorship {
+      padding-bottom: 16px; } }
   .gallery ~ .sponsorship {
     border-bottom: none; }
   .witness + .sponsorship {
     border-top: 1px dotted #B5B3AE;
     padding-top: 20px;
     margin-top: 24px; }
-  @media all and (max-width: 40.615em) {
-    .sponsorship {
-      font-size: 1.2rem; } }
-  @media all and (min-width: 40.625em) {
-    .sponsorship {
-      font-size: 1.4rem; } }
   .sponsorship__formatted-sponsor-name {
-    color: #878787; }
+    color: #878787;
+    display: block;
+    margin-bottom: 7px; }
     @media all and (max-width: 40.615em) {
-      .sponsorship__formatted-sponsor-name span:first-child {
-        display: block; } }
+      .sponsorship__formatted-sponsor-name {
+        max-width: 40%;
+        margin-bottom: 0; } }
   .sponsorship__about-uri {
-    color: inherit;
-    padding-top: 1rem;
     display: block;
     font-weight: bold; }
+    @media all and (min-width: 40.625em) {
+      .sponsorship__about-uri {
+        float: right; } }
+
+.sponsorship__details {
+  margin-bottom: 5px; }
+  @media all and (min-width: 40.625em) {
+    .sponsorship__details {
+      max-width: 50%;
+      float: left;
+      margin-bottom: 0; } }
+
+@media all and (max-width: 40.615em) {
+  .sponsorship__logo {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    max-width: 50%; } }
 
 /*doc
 ---
