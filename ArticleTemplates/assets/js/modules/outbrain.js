@@ -55,7 +55,7 @@ define([
                     }
  				};
  				widgetCodeText = widgetConfig.text[getSection()];
- 				$('.outbrainText').attr('widget-id', widgetCodeText);
+ 				$('.outbrainText').attr('data-widget-id', widgetCodeText);
  			} else if (device() == 'mobile') {
 				widgetConfig = {
  					image: {
@@ -67,8 +67,6 @@ define([
 
  			widgetCodeImage = widgetConfig.image[getSection()];
  			$('.outbrainImage').attr('data-widget-id', widgetCodeImage);
- 			console.log(widgetCodeImage);
- 			console.log($('.outbrainImage').attr('data-widget-id'));
  		}
 
  		return require([outbrainUrl]);
