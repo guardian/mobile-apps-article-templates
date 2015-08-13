@@ -33,10 +33,16 @@ define([
 		return document.body.getAttribute('data-ads-enabled') == 'mpu'; 
 	}
 
+	function getDataContentUrl() {
+		return document.body.getAttribute('data-content-url');
+	}
+
 	function load() {
  		var status = contentStatus();
  		var outbrain = $('.container__oubrain');
- 		if (status != 'preview' && isAdsEnabled && outbrain.length > 0) {
+ 		var contentUrl = getDataContentUrl();
+
+ 		if (status != 'preview' && isAdsEnabled() && outbrain.length > 0 && contentUrl.length > 0) {
  			$('.container__oubrain').css('display', 'block');
 				
         	var widgetConfig = {}, 
@@ -56,6 +62,7 @@ define([
  				};
  				widgetCodeText = widgetConfig.text[getSection()];
  				$('.outbrainText').attr('data-widget-id', widgetCodeText);
+ 				$('.outbrainText').attr('data-src', contentUrl);
  			} else if (device() == 'mobile') {
 				widgetConfig = {
  					image: {
@@ -67,6 +74,7 @@ define([
 
  			widgetCodeImage = widgetConfig.image[getSection()];
  			$('.outbrainImage').attr('data-widget-id', widgetCodeImage);
+			$('.outbrainImage').attr('data-src', contentUrl);	
 
  			return require([outbrainUrl]);
  		}
