@@ -3,12 +3,14 @@ define([
     'bean',
     'modules/$',
     'modules/twitter',
-    'modules/witness'
+    'modules/witness',
+    'modules/outbrain'
 ], function (
     bean,
     $,
     twitter,
-    witness
+    witness,
+    outbrain
 ) {
     'use strict';
 
@@ -18,6 +20,7 @@ define([
             twitter.init();
             twitter.enhanceTweets();
             witness.duplicate();
+            outbrain.load();
         }
     };
 

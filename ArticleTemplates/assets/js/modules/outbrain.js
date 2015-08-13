@@ -9,63 +9,69 @@ define([
     $,
     bonzo
 ) {
-	 'use strict';
+	'use strict';
 
-	 var outbrainUrl = '//widgets.outbrain.com/outbrain.js';
+	var outbrainUrl = '//widgets.outbrain.com/outbrain.js';
 
-	 var contentStatus = function() {
-	 	var status = document.body.getAttribute('data-content-status');
+	var contentStatus = function() {
+ 		var status = document.body.getAttribute('data-content-status');
 	 	return status;
-	 };
-
-	function getSection () {
-		var section = document.body.getAttribute('data-content-section');
-		return section;
 	}
 
-	function load(config) {
+	var device = function() {
+		var deviceType = document.body.getAttribute('data-ads-config');
+		return deviceType;
+	}
+
+	function getSection () {
+		var sections = ['politics', 'world', 'business', 'commentisfree'];
+		var section = document.body.getAttribute('data-content-section');
+		return section.toLowerCase().match('news') || sections.indexOf(section.toLowerCase()) > 0 ? 'sections' : 'all';
+	}
+
+	function isAdsEnabled() {
+		return document.body.getAttribute('data-ads-enabled') == 'mpu'; 
+	}
+
+	function load() {
  		var status = contentStatus();
  		var outbrain = $('.container__oubrain');
- 		if (status != 'preview' && config.adsEnabled == 'mpu' && outbrain.length > 0) {
+ 		if (status != 'preview' && isAdsEnabled && outbrain.length > 0) {
  			$('.container__oubrain').attr('display', 'block');
 				
-        	var widgetIds = {},
-        		widgetConfig = {},
-        		widgetCode, widgetCodeImage, widgetCodeText;
-
-        	widgetIds = {
-					mobile: 'MB_2',
-            	tablet: 'MB_1',
-        	};
- 			
- 			if (config.adsConfig == 'tablet') {
+        	var widgetConfig = {}, 
+        		widgetCodeImage, widgetCodeText;
+ 
+ 			if (device() == 'tablet') {
  				$('.outbrainText').attr('display', 'block');
  				widgetConfig = {
  					image: {
                         sections: 'MB_6',
-                        all     : 'MB_7'
+                        all: 'MB_7'
                     },
                     text: {
                         sections: 'MB_8',
-                        all     : 'MB_9'
+                        all: 'MB_9'
                     }
  				};
-
  				widgetCodeText = widgetConfig.text[getSection()];
- 			} else if (config.adsConfig == 'mobile') {
+ 				$('.outbrainText').attr('widget-id', widgetCodeText);
+ 			} else if (device() == 'mobile') {
 				widgetConfig = {
  					image: {
                         sections: 'MB_4',
-                        all     : 'MB_5'
+                        all: 'MB_5'
                     }
  				};
  			}
 
  			widgetCodeImage = widgetConfig.image[getSection()];
- 			widgetCode = widgetCodeImage;
+ 			$('.outbrainImage').attr('data-widget-id', widgetCodeImage);
+ 			console.log(widgetCodeImage);
+ 			console.log($('.outbrainImage').attr('data-widget-id'));
  		}
 
- 		return require(['js!' + outbrainUrl]);
+ 		return require([outbrainUrl]);
 	}
 
 	return {
