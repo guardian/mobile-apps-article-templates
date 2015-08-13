@@ -2,25 +2,15 @@
     .section__container {
         border-bottom: 1px rgba(#fff, .4) dotted; 
     }
+
     .section {
         color: color(shade-7); // Default
     }
+
     .content__series-label {
         color: color(shade-7);
     }
-    .cricket{
-        .new_alerts{
-            margin: 0;
-        }
-        .new_alerts,  .new_alerts.following:active {
-            border-color: color(shade-4);
-            color: color(shade-3);
-        }
-        a.new_alerts:not(.following):active, .new_alerts.following:not(:active) {
-            background-color: color(shade-3);
-            color: color(shade-7);
-        }
-    }
+
 }
 
 .tone--liveBlog.is-live {
@@ -51,6 +41,18 @@
         }
     }
 
+    .alerts--new:active, .alerts--new.following {
+        background-color: color(tone-live);
+        color: color(shade-7);
+    }
+    
+    .alerts--new,  .alerts--new.following:active {
+        border-color: color(tone-live);
+        background-color: color(shade-7);
+        color: color(tone-live);
+    }
+
+
     .article__header {
         background-color: color(tone-live);
         color: #fff;
@@ -79,7 +81,7 @@
         .section{
             position: relative;
             @include mq($to: col1) {
-                padding-left: base-px(5.5); 
+                padding-left: base-px(4.7); 
             }
             @include mq(col1, col2) {
                 padding-left: base-px(6.5);
@@ -154,6 +156,7 @@
                 .alerts {
                     width: cols($base-3, 4);
                 }
+
             }
 
             @include mq($from: col3) {
@@ -169,8 +172,8 @@
             color: rgba(#fff, .8);
         }
 
-        .meta__comments {
-            border-left-color: rgba(#fff, .4);
+        .comment-count {
+            border-left-color: rgba(color(shade-7), .4);
         }
     
         .tags {
@@ -186,6 +189,23 @@
         
         }
 
+    }
+
+    .cricket & {
+        .alerts--new{
+            margin: 0;
+        }
+         
+        a.alerts--new:active, a.alerts--new.following {
+            background-color: color(shade-3);
+            color: color(shade-7);
+        }
+
+        a.alerts--new,  a.alerts--new.following:active {
+            border-color: color(shade-4);
+            background-color: transparent;
+            color: color(shade-3);
+        }
     }
 
 }
