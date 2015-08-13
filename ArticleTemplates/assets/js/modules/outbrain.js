@@ -37,13 +37,13 @@ define([
  		var status = contentStatus();
  		var outbrain = $('.container__oubrain');
  		if (status != 'preview' && isAdsEnabled && outbrain.length > 0) {
- 			$('.container__oubrain').attr('display', 'block');
+ 			$('.container__oubrain').css('display', 'block');
 				
         	var widgetConfig = {}, 
         		widgetCodeImage, widgetCodeText;
  
  			if (device() == 'tablet') {
- 				$('.outbrainText').attr('display', 'block');
+ 				$('.outbrainText').css('display', 'block');
  				widgetConfig = {
  					image: {
                         sections: 'MB_6',
@@ -67,9 +67,9 @@ define([
 
  			widgetCodeImage = widgetConfig.image[getSection()];
  			$('.outbrainImage').attr('data-widget-id', widgetCodeImage);
- 		}
 
- 		return require([outbrainUrl]);
+ 			return require([outbrainUrl]);
+ 		}
 	}
 
 	return {
