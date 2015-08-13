@@ -426,36 +426,44 @@ Display a link to view more.
 </div>
 
 <div class="more more--live-blogs">
-    <span class="more__label" data-icon="&#xe050;">
+    <button class="more__button">
+        <span class="more__icon" data-icon="&#xe050;" aria-hidden="true"></span>
         <span class="more__text">View more updates</span>
-    </span>
+    </button>
 </div>
 ```
 */
 .more {
   padding: 0px 0px 24px 0px; }
-  .more .more__label {
+  .more .more__label,
+  .more .more__button {
     display: inline-block;
     vertical-align: middle;
     color: #fff;
     font-family: "Guardian Agate Sans 1 Web", sans-serif;
     font-weight: bold;
     padding: 6px 18px 6px 14px;
-    border-radius: 40px; }
+    border-radius: 40px;
+    border: none;
+    outline: none; }
     @media all and (max-width: 40.615em) {
-      .more .more__label {
+      .more .more__label,
+      .more .more__button {
         font-size: 1.4rem;
         line-height: 2.1rem; } }
     @media all and (min-width: 40.625em) {
-      .more .more__label {
+      .more .more__label,
+      .more .more__button {
         font-size: 1.575rem;
         line-height: 2.275rem; } }
-    .more .more__label:before {
-      position: relative;
-      font-size: 110%;
-      right: 5px; }
-    .more .more__label:active {
-      color: #e6e6e6; }
+  .more .more__icon:before,
+  .more .more__label:before {
+    position: relative;
+    font-size: 110%;
+    right: 5px; }
+  .more .more__icon:active,
+  .more .more__label:active {
+    color: #e6e6e6; }
   .more .more__text {
     position: relative;
     bottom: 3px; }
@@ -488,9 +496,9 @@ Display a link to view more.
   @media all and (min-width: 56.25em) {
     .more--live-blogs {
       margin-left: 31.57895%; } }
-  .more--live-blogs .more__label {
+  .more--live-blogs .more__button {
     background-color: #b51800; }
-    .more--live-blogs .more__label:active {
+    .more--live-blogs .more__button:active {
       background-color: #821100; }
 
 /*doc
