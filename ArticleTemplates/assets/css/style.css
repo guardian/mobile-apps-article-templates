@@ -2204,7 +2204,6 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
       font-size: 1.6rem; } }
   .witness .witness__button {
     background-color: #004f91;
-    color: #B7D8EB;
     border-radius: 50px;
     margin-right: 12px;
     overflow: hidden;
@@ -2213,6 +2212,7 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
     height: 2.7em;
     padding-right: 1em;
     font-family: "Guardian Agate Sans 1 Web", sans-serif;
+    color: #fff;
     white-space: nowrap; }
     .witness .witness__button:before {
       content: '\e050';
@@ -2228,7 +2228,7 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
       vertical-align: middle;
       height: 100%; }
     .witness .witness__button:active {
-      color: #fff; }
+      color: #c3ddeb; }
   .witness .witness__logo {
     vertical-align: middle;
     display: inline-block;
@@ -3287,9 +3287,9 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .tone--podcast.android .article__header .card__title--audio::before {
   margin-top: -3px; }
 
-.tone--news a:not(.alerts--new) {
+.tone--news a:not(.alerts--new):not(.witness__button) {
   color: #005689; }
-  .tone--news a:not(.alerts--new):active {
+  .tone--news a:not(.alerts--new):not(.witness__button):active {
     color: #4bc6df; }
 .tone--news .article__header {
   background-color: #fff; }
