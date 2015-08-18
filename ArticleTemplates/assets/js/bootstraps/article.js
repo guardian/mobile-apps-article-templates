@@ -25,7 +25,6 @@ define([
 
     ready = function () {
         if (!this.initialised) {
-            console.log('initialised');
             this.initialised = true;
             twitter.init();
             twitter.enhanceTweets();

@@ -11,7 +11,8 @@ define([
 ) {
 	'use strict';
 
-	var outbrainUrl = '//widgets.outbrain.com/outbrain.js';
+	var isAndroid = $('body').hasClass('android');
+	var outbrain = $('.container__oubrain');
 
 	var contentStatus = function() {
  		var status = document.body.getAttribute('data-content-status');
@@ -41,25 +42,23 @@ define([
 	function load() {
  		var status = contentStatus();
  		var contentUrl = getContentUrl();
- 		var outbrain = $('.container__oubrain');
- 		var isAndroid = $('body').hasClass('android');
 		 		
  		if (status != 'preview' && isAdsEnabled() && outbrain.length > 0 && contentUrl.length > 0) {
- 			$('.container__oubrain').css('display', 'block');
+ 			outbrain.css('display', 'block');
 				
         	var widgetConfig = {}, 
-        		widgetCodeImage, widgetCodeText;
+        		widgetCodeImage, widgetCodeText, scriptElement;
  
  			if (device() == 'tablet') {
  				$('.outbrainText').css('display', 'block');
  				widgetConfig = {
  					image: {
-                        sections: 'MB_6',
-                        all: 'MB_7'
+                        sections: isAndroid ? 'AR_25' : 'AR_24',
+                        all: isAndroid ? 'AR_19' : 'AR_18'
                     },
                     text: {
-                        sections: 'MB_8',
-                        all: 'MB_9'
+                        sections: isAndroid ? 'AR_26' : 'AR_27',
+                        all: isAndroid ?'AR_21' : 'AR_20'
                     }
  				};
  				widgetCodeText = widgetConfig.text[getSection()];
@@ -68,8 +67,8 @@ define([
  			} else if (device() == 'mobile') {
 				widgetConfig = {
  					image: {
-                        sections: 'MB_4',
-                        all: 'MB_5'
+                        sections: isAndroid ? 'AR_23' : 'AR_22',
+                        all: isAndroid ? 'AR_17' : 'AR_16'
                     }
  				};
  			}
@@ -78,8 +77,11 @@ define([
  			$('.outbrainImage').attr('data-widget-id', widgetCodeImage);
  			$('.outbrainImage').attr('data-src', contentUrl);
 
- 			var outbrainContent = require(['js!', outbrainUrl]); 
- 			return outbrainContent;
+ 			scriptElement = document.createElement('script');
+ 			scriptElement.id = 'outbrain-widget';
+ 			scriptElement.async = true;
+ 			scriptElement.src = 'https://widgets.outbrain.com/outbrain.js';
+ 			$(document.body).append(scriptElement);
  		}
 	}
 
