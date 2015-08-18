@@ -14,13 +14,23 @@ define([
 ) {
     'use strict';
 
-    var ready = function () {
+    var modules = {
+        insertOutbrain: function () {
+            window.articleOutbrainInserter = function () {
+                outbrain.load();
+            };
+            window.applyNativeFunctionCall('articleOutbrainInserter');       
+        }
+    },
+
+    ready = function () {
         if (!this.initialised) {
+            console.log('initialised');
             this.initialised = true;
             twitter.init();
             twitter.enhanceTweets();
             witness.duplicate();
-            outbrain.load();
+            modules.insertOutbrain();
         }
     };
 

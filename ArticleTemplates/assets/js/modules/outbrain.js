@@ -29,19 +29,21 @@ define([
 		return section.toLowerCase().match('news') || sections.indexOf(section.toLowerCase()) > 0 ? 'sections' : 'all';
 	}
 
+	function getContentUrl () {
+		var content = document.body.getAttribute('data-content-url');
+	 	return content;
+	}
+
 	function isAdsEnabled() {
 		return document.body.getAttribute('data-ads-enabled') == 'mpu'; 
 	}
 
-	function getDataContentUrl() {
-		return document.body.getAttribute('data-content-url');
-	}
-
 	function load() {
  		var status = contentStatus();
+ 		var contentUrl = getContentUrl();
  		var outbrain = $('.container__oubrain');
- 		var contentUrl = getDataContentUrl();
-
+ 		var isAndroid = $('body').hasClass('android');
+		 		
  		if (status != 'preview' && isAdsEnabled() && outbrain.length > 0 && contentUrl.length > 0) {
  			$('.container__oubrain').css('display', 'block');
 				
@@ -74,9 +76,10 @@ define([
 
  			widgetCodeImage = widgetConfig.image[getSection()];
  			$('.outbrainImage').attr('data-widget-id', widgetCodeImage);
-			$('.outbrainImage').attr('data-src', contentUrl);	
+ 			$('.outbrainImage').attr('data-src', contentUrl);
 
- 			return require([outbrainUrl]);
+ 			var outbrainContent = require(['js!', outbrainUrl]); 
+ 			return outbrainContent;
  		}
 	}
 
