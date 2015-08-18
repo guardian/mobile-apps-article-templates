@@ -77,39 +77,3 @@ Display an article's meta information.
     color: color(shade-3);
     font-family: $agate-sans;
 }
-
-.comment-count {
-    font-family: $agate-sans;
-    font-weight: bold;
-    vertical-align: top;
-    border-left: 1px rgba(color(shade-4), .4) dotted;
-    padding: base-px(.5, .5, 1, 1);
-    display: table-cell;
-
-    @include mq($to: col1) {
-        width: cols($base-1, 1);
-    }
-
-    @include mq(col1, col2) {
-        width: cols($base-2, 2);
-    }
-
-    @include mq(col2, col3) {
-        width: cols($base-3, 3);
-    }
-
-    @include mq($from: col3) {
-        width: cols($base-4, 4);
-    }
-
-    .test--new-alerts .meta & {
-        border:5px solid blue;
-        display: none;
-    }
-}
-
-.comment-count__label {
-    @include mq($to: col2) {
-        display: none;
-    }
-}
