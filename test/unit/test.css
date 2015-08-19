@@ -1112,9 +1112,10 @@
   </div>
   
   <div class="more more--live-blogs">
-      <span class="more__label" data-icon="&#xe050;">
+      <button class="more__button">
+          <span class="more__icon" data-icon="&#xe050;" aria-hidden="true"></span>
           <span class="more__text">View more updates</span>
-      </span>
+      </button>
   </div>
   ```
   */
@@ -3166,7 +3167,7 @@
       #sandbox .headline {
         font-size: 4.8rem;
         line-height: 4.8rem; } }
-  #sandbox .screen-readable, #sandbox .main-media--hidden-caption .main-media__caption__text, #sandbox .meta .alerts .alerts__label, #sandbox .comment-count__label {
+  #sandbox .screen-readable, #sandbox .main-media--hidden-caption .main-media__caption__text, #sandbox .meta .alerts .alerts__label {
     position: absolute;
     overflow: hidden;
     clip: rect(1px, 1px, 1px, 1px); }
@@ -3245,31 +3246,6 @@
   #sandbox .meta__pubdate {
     color: #999;
     font-family: "Guardian Agate Sans 1 Web", sans-serif; }
-  #sandbox .comment-count {
-    font-family: "Guardian Agate Sans 1 Web", sans-serif;
-    font-weight: bold;
-    vertical-align: top;
-    border-left: 1px rgba(220, 218, 213, 0.4) dotted;
-    padding: 6px 6px 12px 12px;
-    display: table-cell; }
-    @media all and (max-width: 28.115em) {
-      #sandbox .comment-count {
-        width: 21.73913%; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      #sandbox .comment-count {
-        width: 23.40426%; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      #sandbox .comment-count {
-        width: 23.94366%; } }
-    @media all and (min-width: 56.25em) {
-      #sandbox .comment-count {
-        width: 24.21053%; } }
-    .test--new-alerts .meta #sandbox .comment-count {
-      border: 5px solid blue;
-      display: none; }
-  @media all and (max-width: 40.615em) {
-    #sandbox .comment-count__label {
-      display: none; } }
   #sandbox .review-rating {
     color: #484848; }
     @media all and (min-width: 28.125em) {
@@ -3394,16 +3370,30 @@
       height: 100%;
       width: 100%; }
   #sandbox .comment-count {
-    display: none;
-    border-left: 1px rgba(220, 218, 213, 0.4) dotted;
-    padding: 6px 12px 12px 12px;
-    font-size: 1em;
+    font-family: "Guardian Agate Sans 1 Web", sans-serif;
+    font-weight: bold;
     vertical-align: top;
-    height: 100%; }
-    #sandbox .comment-count span[data-icon] {
-      padding-right: 4px; }
-    .test--new-alerts #sandbox .comment-count {
-      display: table-cell; }
+    border-left: 1px rgba(220, 218, 213, 0.4) dotted;
+    padding: 6px 6px 12px 12px;
+    display: table-cell; }
+    @media all and (max-width: 28.115em) {
+      #sandbox .comment-count {
+        width: 21.73913%; } }
+    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      #sandbox .comment-count {
+        width: 23.40426%; } }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      #sandbox .comment-count {
+        width: 23.94366%; } }
+    @media all and (min-width: 56.25em) {
+      #sandbox .comment-count {
+        width: 24.21053%; } }
+    .test--new-alerts .meta #sandbox .comment-count {
+      border: 5px solid blue;
+      display: none; }
+  @media all and (max-width: 40.615em) {
+    #sandbox .comment-count__label {
+      display: none; } }
   #sandbox .article__header h1 {
     clear: both; }
   #sandbox .standfirst {
@@ -4042,7 +4032,6 @@
         font-size: 1.6rem; } }
     #sandbox .witness .witness__button {
       background-color: #004f91;
-      color: #B7D8EB;
       border-radius: 50px;
       margin-right: 12px;
       overflow: hidden;
@@ -4051,6 +4040,7 @@
       height: 2.7em;
       padding-right: 1em;
       font-family: "Guardian Agate Sans 1 Web", sans-serif;
+      color: #fff;
       white-space: nowrap; }
       #sandbox .witness .witness__button:before {
         content: '\e050';
@@ -4066,7 +4056,7 @@
         vertical-align: middle;
         height: 100%; }
       #sandbox .witness .witness__button:active {
-        color: #fff; }
+        color: #c3ddeb; }
     #sandbox .witness .witness__logo {
       vertical-align: middle;
       display: inline-block;
@@ -5043,9 +5033,9 @@
     margin-top: 3px; }
   #sandbox .tone--podcast.android .article__header .card__title--audio::before {
     margin-top: -3px; }
-  #sandbox .tone--news a:not(.alerts--new) {
+  #sandbox .tone--news a:not(.alerts--new):not(.witness__button) {
     color: #005689; }
-    #sandbox .tone--news a:not(.alerts--new):active {
+    #sandbox .tone--news a:not(.alerts--new):not(.witness__button):active {
       color: #4bc6df; }
   #sandbox .tone--news .article__header {
     background-color: #fff; }
@@ -5726,28 +5716,35 @@
     vertical-align: top; }
   #sandbox .more {
     padding: 0px 0px 24px 0px; }
-    #sandbox .more .more__label {
+    #sandbox .more .more__label,
+    #sandbox .more .more__button {
       display: inline-block;
       vertical-align: middle;
       color: #fff;
       font-family: "Guardian Agate Sans 1 Web", sans-serif;
       font-weight: bold;
       padding: 6px 18px 6px 14px;
-      border-radius: 40px; }
+      border-radius: 40px;
+      border: none;
+      outline: none; }
       @media all and (max-width: 40.615em) {
-        #sandbox .more .more__label {
+        #sandbox .more .more__label,
+        #sandbox .more .more__button {
           font-size: 1.4rem;
           line-height: 2.1rem; } }
       @media all and (min-width: 40.625em) {
-        #sandbox .more .more__label {
+        #sandbox .more .more__label,
+        #sandbox .more .more__button {
           font-size: 1.575rem;
           line-height: 2.275rem; } }
-      #sandbox .more .more__label:before {
-        position: relative;
-        font-size: 110%;
-        right: 5px; }
-      #sandbox .more .more__label:active {
-        color: #e6e6e6; }
+    #sandbox .more .more__icon:before,
+    #sandbox .more .more__label:before {
+      position: relative;
+      font-size: 110%;
+      right: 5px; }
+    #sandbox .more .more__icon:active,
+    #sandbox .more .more__label:active {
+      color: #e6e6e6; }
     #sandbox .more .more__text {
       position: relative;
       bottom: 3px; }
@@ -5778,9 +5775,9 @@
     @media all and (min-width: 56.25em) {
       #sandbox .more--live-blogs {
         margin-left: 31.57895%; } }
-    #sandbox .more--live-blogs .more__label {
+    #sandbox .more--live-blogs .more__button {
       background-color: #b51800; }
-      #sandbox .more--live-blogs .more__label:active {
+      #sandbox .more--live-blogs .more__button:active {
         background-color: #821100; }
   #sandbox .tags {
     color: #999;
@@ -5864,48 +5861,31 @@
     font-size: 160%;
     line-height: 1.5; }
   #sandbox .sponsorship {
-    padding: 10px 12px 20px 12px;
+    padding: 8px 12px 16px 12px;
     font-family: "Guardian Agate Sans 1 Web", sans-serif;
     line-height: 1.2;
-    position: relative;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    align-items: flex-start;
+    -webkit-align-items: flex-start;
     border-bottom: 1px dotted #B5B3AE;
     font-size: 1.4rem; }
-    @media all and (min-width: 40.625em) {
-      #sandbox .sponsorship {
-        padding-bottom: 16px; } }
     .gallery ~ #sandbox .sponsorship {
       border-bottom: none; }
     .witness + #sandbox .sponsorship {
       border-top: 1px dotted #B5B3AE;
       padding-top: 20px;
       margin-top: 24px; }
-    #sandbox .sponsorship__formatted-sponsor-name {
-      color: #878787;
-      display: block;
-      margin-bottom: 7px; }
-      @media all and (max-width: 40.615em) {
-        #sandbox .sponsorship__formatted-sponsor-name {
-          max-width: 40%;
-          margin-bottom: 0; } }
-    #sandbox .sponsorship__about-uri {
-      display: block;
-      font-weight: bold; }
-      @media all and (min-width: 40.625em) {
-        #sandbox .sponsorship__about-uri {
-          float: right; } }
-  #sandbox .sponsorship__details {
-    margin-bottom: 5px; }
-    @media all and (min-width: 40.625em) {
-      #sandbox .sponsorship__details {
-        max-width: 50%;
-        float: left;
-        margin-bottom: 0; } }
-  @media all and (max-width: 40.615em) {
-    #sandbox .sponsorship__logo {
-      position: absolute;
-      right: 12px;
-      top: 12px;
-      max-width: 50%; } }
+  #sandbox .sponsorship__formatted-sponsor-name {
+    color: #878787;
+    margin-bottom: 8px; }
+  #sandbox .sponsorship__about-uri {
+    margin-top: 12px;
+    font-weight: bold; }
+  #sandbox .sponsorship__logo {
+    max-height: 60px; }
   #sandbox .outbrainText {
     display: none; }
   #sandbox .outbrainImage {
