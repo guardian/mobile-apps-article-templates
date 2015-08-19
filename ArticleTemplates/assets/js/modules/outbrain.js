@@ -12,17 +12,12 @@ define([
 	'use strict';
 
 	var isAndroid = $('body').hasClass('android');
-	var outbrain = $('.container__oubrain');
-
-	var contentStatus = function() {
- 		var status = document.body.getAttribute('data-content-status');
-	 	return status;
-	}
+	var outbrain = $('.container__outbrain');
 
 	var device = function() {
 		var deviceType = document.body.getAttribute('data-ads-config');
 		return deviceType;
-	}
+	};
 
 	function getSection () {
 		var sections = ['politics', 'world', 'business', 'commentisfree'];
@@ -30,20 +25,10 @@ define([
 		return section.toLowerCase().match('news') || sections.indexOf(section.toLowerCase()) > 0 ? 'sections' : 'all';
 	}
 
-	function getContentUrl () {
-		var content = document.body.getAttribute('data-content-url');
-	 	return content;
-	}
-
-	function isAdsEnabled() {
-		return document.body.getAttribute('data-ads-enabled') == 'mpu'; 
-	}
-
 	function load() {
- 		var status = contentStatus();
- 		var contentUrl = getContentUrl();
-		 		
- 		if (status != 'preview' && isAdsEnabled() && outbrain.length > 0 && contentUrl.length > 0) {
+ 		var contentUrl = $('.outbrainImage').attr('data-src');
+
+ 		if (outbrain.length > 0 && contentUrl.length > 0) {
  			outbrain.css('display', 'block');
 				
         	var widgetConfig = {}, 
@@ -63,7 +48,6 @@ define([
  				};
  				widgetCodeText = widgetConfig.text[getSection()];
  				$('.outbrainText').attr('data-widget-id', widgetCodeText);
- 				$('.outbrainText').attr('data-src', contentUrl);
  			} else if (device() == 'mobile') {
 				widgetConfig = {
  					image: {
@@ -71,11 +55,16 @@ define([
                         all: isAndroid ? 'AR_17' : 'AR_16'
                     }
  				};
+
+ 				var parentNode = document.getElementById('outbrain');
+ 				var textNode = document.getElementsByClassName('outbrainText');
+ 				if (parentNode.childElementCount > 0 && textNode.length > 0) {
+ 					parentNode.removeChild(textNode[0]);
+ 				}
  			}
 
  			widgetCodeImage = widgetConfig.image[getSection()];
  			$('.outbrainImage').attr('data-widget-id', widgetCodeImage);
- 			$('.outbrainImage').attr('data-src', contentUrl);
 
  			scriptElement = document.createElement('script');
  			scriptElement.id = 'outbrain-widget';
