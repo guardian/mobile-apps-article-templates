@@ -32,7 +32,7 @@ var nativeFunctionCalls = [
     'getMpuPosCallback',
     'initMpuPoller',
     'getBannerPosCallback',
-
+    'getArticleHeight' 
 ];
 
 Array.prototype.forEach.call(nativeFunctionCalls, function (name) {
