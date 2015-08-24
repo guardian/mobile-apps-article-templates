@@ -314,7 +314,7 @@ define([
                 if (contentType === "article") {
                     var articleContainer = $("div[id$=-article-container]");
                     height = articleContainer.offsetHeight;
-                };
+                }
                 return height;
             };
             window.applyNativeFunctionCall('getArticleHeight');
