@@ -351,6 +351,7 @@ define([
             modules.setGlobalObject(window);
             modules.fixSeries();
             window.getArticleHeight = modules.getArticleHeightCallback;
+            window.applyNativeFunctionCall('getArticleHeight');
             Sharing.init(window);
 
             if (!document.body.classList.contains('no-ready')) {
