@@ -10,201 +10,201 @@
     .content__series-label {
         color: color(shade-7);
     }
-
-}
-
-.tone--liveBlog.is-live {
-    a.touchpoint{
-        &:active {
-            color: color(tone-live-accent);
-        }
-    }
-
-    .witness{
-        margin-top: base-px(1);
-
-        @include mq(col2, col3) {
-            margin-left: cols($base-3, 4, 1);
-        }
-        @include mq($from: col3) {
-            margin-left: cols($base-4, 5, 1);
-        }        
-    }    
-
-    #comments .touchpoint--primary {
-        .touchpoint__button {
-            background-color: color(tone-live);
-        }
-
-        &:active .touchpoint__button {
-            background-color: color(tone-live-accent);
-        }
-    }
-
-    .alerts--new:active, .alerts--new.following {
-        background-color: color(tone-live);
-        color: color(shade-7);
-    }
     
-    .alerts--new,  .alerts--new.following:active {
-        border-color: color(tone-live);
-        color: color(tone-live);
-    }
-
-
-    .article__header {
-        background-color: color(tone-live);
-        color: #fff;
-
-        a {
-            color: #fff;
-
+    &.is-live {
+        a.touchpoint {
             &:active {
-                opacity: rgba(#fff, .8);
+                color: color(tone-live-accent);
             }
         }
 
-        .bullet,
-        ul > li {
-            &::before {
-                background-color: rgba(#fff, .8);
-            }
-        }
-
-        .headline,
-        .byline,
-        .section {
-            color: #fff;
-        }
-
-        .section{
-            position: relative;
-            @include mq($to: col1) {
-                padding-left: base-px(4.7); 
-            }
-            @include mq(col1, col2) {
-                padding-left: base-px(6.5);
-            }
-
+        .witness {
+            margin-top: base-px(1);
+            
             @include mq(col2, col3) {
-                padding-left: cols($base-3, 4, 1);
+                margin-left: cols($base-3, 4, 1);
             }
 
             @include mq($from: col3) {
-                padding-left: cols($base-4, 5, 1);
+                margin-left: cols($base-4, 5, 1);
             }
         }
 
-        .section__live {
-            display: block;
-        }
-
-        .headline,
-        .standfirst {
-            @include mq(col2, col3) {
-                margin-left: cols($base-3, 4);
+        #comments .touchpoint--primary {
+            .touchpoint__button {
+                background-color: color(tone-live);
             }
 
-            @include mq($from: col3) {
-                margin-left: cols($base-4, 5);
+            &:active .touchpoint__button {
+                background-color: color(tone-live-accent);
             }
         }
 
-        .standfirst {
-            color: rgba(#fff, .8);
-
-            a {
-                color: #fff;
-            }
-        }
-
-        .sponsorship {
-            background-color: color(shade-7);
-            border-bottom: none;
-
-            &__about-uri,
-            &__formatted-sponsor-name a {
-                color: color(tone-live);
-            }
-        }
-    }
-
-    // Template specific styles
-    .article--liveblog {
-        border-top-color: color(tone-live-accent);
-
-        .prose table,
-        .table {
-            border-top-color: color(tone-live);
-        }
-        
-        .cricket & {
-            border-top: none;
-        }
-     
-       
-        .meta {
-            background-color: color(tone-live-accent);
-            border: 0;
-            border-left: 1px dotted rgba(#fff, .2);
-            margin: 0;
-
-            @include mq(col2, col3) {
-                padding-left: cols($base-3, 4);
-
-                .alerts {
-                    width: cols($base-3, 4);
-                }
-
-            }
-
-            @include mq($from: col3) {
-                padding-left: cols($base-4, 5);
-
-                .alerts {
-                    width: cols($base-4, 5);
-                }
-            }
-        }
-
-        .meta__pubdate {
-            color: rgba(#fff, .8);
-        }
-
-        .comment-count {
-            border-left-color: rgba(color(shade-7), .4);
-        }
-    
-        .tags {
-
-            .inline-list__item {
-                a {
-                    @include tag-button(color(shade-1), color(blogs-tags));
-                }
-                &.more-button a {
-                    @include tag-more-button(color(shade-1), darken(color(blogs-tags),10%));
-                }
-            }
-        
-        }
-
-    }
-
-    .cricket & {
-        .alerts--new{
-            margin: 0;
-        }
-         
-        a.alerts--new:active, a.alerts--new.following {
-            background-color: color(shade-3);
+        .alerts--new:active,
+        .alerts--new.following {
+            background-color: color(tone-live);
             color: color(shade-7);
         }
 
-        a.alerts--new,  a.alerts--new.following:active {
-            border-color: color(shade-4);
-            background-color: transparent;
-            color: color(shade-3);
+        .alerts--new,
+        .alerts--new.following:active {
+            border-color: color(tone-live);
+            color: color(tone-live);
+        }
+
+        .article__header {
+            background-color: color(tone-live);
+            color: #fff;
+
+            a {
+                color: #fff;
+
+                &:active {
+                    opacity: rgba(#fff, .8);
+                }
+            }
+
+            .bullet,
+            ul > li {
+                &::before {
+                    background-color: rgba(#fff, .8);
+                }
+            }
+
+            .headline,
+            .byline,
+            .section {
+                color: #fff;
+            }
+
+            .section {
+                position: relative;
+                
+                @include mq($to: col1) {
+                    padding-left: base-px(4.7); 
+                }
+
+                @include mq(col1, col2) {
+                    padding-left: base-px(6.5);
+                }
+
+                @include mq(col2, col3) {
+                    padding-left: cols($base-3, 4, 1);
+                }
+
+                @include mq($from: col3) {
+                    padding-left: cols($base-4, 5, 1);
+                }
+            }
+
+            .section__live {
+                display: block;
+            }
+
+            .headline,
+            .standfirst {
+                @include mq(col2, col3) {
+                    margin-left: cols($base-3, 4);
+                }
+
+                @include mq($from: col3) {
+                    margin-left: cols($base-4, 5);
+                }
+            }
+
+            .standfirst {
+                color: rgba(#fff, .8);
+
+                a {
+                    color: #fff;
+                }
+            }
+
+            .sponsorship {
+                background-color: color(shade-7);
+                border-bottom: 0;
+
+                &__about-uri,
+                &__formatted-sponsor-name a {
+                    color: color(tone-live);
+                }
+            }
+        }
+
+        // Template specific styles
+        .article--liveblog {
+            border-top-color: color(tone-live-accent);
+
+            .prose table,
+            .table {
+                border-top-color: color(tone-live);
+            }
+            
+            .cricket & {
+                border-top: 0;
+            }
+
+            .meta {
+                background-color: color(tone-live-accent);
+                border: 0;
+                border-left: 1px dotted rgba(#fff, .2);
+                margin: 0;
+
+                @include mq(col2, col3) {
+                    padding-left: cols($base-3, 4);
+
+                    .alerts {
+                        width: cols($base-3, 4);
+                    }
+                }
+
+                @include mq($from: col3) {
+                    padding-left: cols($base-4, 5);
+
+                    .alerts {
+                        width: cols($base-4, 5);
+                    }
+                }
+            }
+
+            .meta__pubdate {
+                color: rgba(#fff, .8);
+            }
+
+            .comment-count {
+                border-left-color: rgba(color(shade-7), .4);
+            }
+
+            .tags {
+                .inline-list__item {
+                    a {
+                        @include tag-button(color(shade-1), color(blogs-tags));
+                    }
+
+                    &.more-button a {
+                        @include tag-more-button(color(shade-1), darken(color(blogs-tags), 10%));
+                    }
+                }
+            }
+        }
+
+        .cricket & {
+            .alerts--new {
+                margin: 0;
+            }
+             
+            .alerts--new:active,
+            .alerts--new.following {
+                background-color: color(shade-3);
+                color: color(shade-7);
+            }
+
+            .alerts--new,
+            .alerts--new.following:active {
+                border-color: color(shade-4);
+                background-color: transparent;
+                color: color(shade-3);
+            }
         }
     }
-
 }

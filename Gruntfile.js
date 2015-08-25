@@ -112,7 +112,8 @@ module.exports = function(grunt) {
             options: {
                 bundleExec: true,
                 config: 'ArticleTemplates/assets/scss/.scss-lint.yml',
-                force: true
+                force: true,
+                maxBuffer: 300 * 1024
             },
             dev: [
                 'ArticleTemplates/assets/scss/**/*.scss',

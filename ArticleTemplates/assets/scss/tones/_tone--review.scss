@@ -1,16 +1,17 @@
 .tone--review {
 
-    .article{
+    .article {
         border-top-color: color(tone-review-accent);
     }
 
-    .extras{
+    .extras {
         padding-top: 1px;
         background-color: color(shade-7);
     }
 
     .article__header {
         background-color: color(tone-review);
+
         .section > div {
             color: color(tone-review-accent); // Content Label Section
         }
@@ -28,17 +29,21 @@
         .headline {
             color: color(shade-7); // Headline
             padding: base-px(0, 1, 2.5, 1);
-            p.review-rating {
-                padding-top: base-px(.7);
+
+            .review-rating {
                 @include rating;
+                padding-top: base-px(.7);
             }
         }
+
         .standfirst {
             color: color(shade-7);
         }
+
         .selectable a {
             color: color(shade-7) !important;
         }
+
         .meta {
             background-color: color(tone-review-meta-background);
 
@@ -48,28 +53,30 @@
             .comment-count a {
                 color: color(tone-review-accent);
             }
-            .meta__pubdate{
-               color: color(shade-7);
+            
+            .meta__pubdate {
+                color: color(shade-7);
             }
         }
+
         .main-media__caption {
             background-color: color(shade-7);
         }
+
         .sponsorship {
             background-color: color(shade-7);   
         }
-
     }
 
-	.alerts--new:active, .alerts--new.following {
+    .alerts--new:active,
+    .alerts--new.following {
         background-color: color(tone-review-accent);
         color: color(tone-review);
     }
     
-    .alerts--new,  .alerts--new.following:active {
+    .alerts--new,
+    .alerts--new.following:active {
         border-color: color(tone-review-accent);
         color: color(tone-review-accent);
     }
-
-
 }
