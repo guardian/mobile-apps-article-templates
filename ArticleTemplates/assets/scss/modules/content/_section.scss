@@ -48,7 +48,7 @@ With live indicator:
 .section__container {
     position: relative;
     float: left;
-    padding: base-px(.4, 1, 0, 1);
+    // padding: base-px(.4, 1, 0, 1);
     border-bottom: 1px rgba(color(shade-4), .4) dotted;
     width:100%;
     margin-bottom:10px;
@@ -71,7 +71,11 @@ With live indicator:
         line-height: 1.6rem;
         font-weight: 600;
         @include headline(.5);
-        padding: base-px(.25, .5, .16, 0);
+        padding-right: base-px(.5);
+
+        &:last-child {
+            padding-right: 0;
+        }
     }
     .content__series-label {
         font-weight: normal;
@@ -79,6 +83,59 @@ With live indicator:
         @include headline(.5);
         font-weight: 300;
         display: inline;
+    }
+
+   
+}
+
+.content__container {
+    @extend %clearfix;
+    display: table;
+    width: 100%;
+    height: 100%;
+
+    .content__labels__container {
+        display: table-cell;
+        vertical-align: top;
+        padding: base-px(.6, 1, 1, 1);
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.comment-count {
+    font-family: $agate-sans;
+    font-weight: bold;
+    vertical-align: top;
+    border-left: 1px rgba(color(shade-4), .4) dotted;
+    padding: base-px(.5, .5, 1, 1);
+    display: table-cell;
+
+    @include mq($to: col1) {
+        width: cols($base-1, 1);
+    }
+
+    @include mq(col1, col2) {
+        width: cols($base-2, 2);
+    }
+
+    @include mq(col2, col3) {
+        width: cols($base-3, 3);
+    }
+
+    @include mq($from: col3) {
+        width: cols($base-4, 4);
+    }
+
+    .test--new-alerts .meta & {
+        border:5px solid blue;
+        display: none;
+    }
+}
+
+.comment-count__label {
+    @include mq($to: col2) {
+        display: none;
     }
 }
 

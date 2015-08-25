@@ -53,7 +53,8 @@
     }
 
     .section__container,
-    .article {
+    .article,
+    .comment-count {
         border-color: color(global-adv-bands);
     }
 
@@ -87,7 +88,7 @@
         .article,
         .section__container,
         .article__header .meta,
-        .article__header .meta__comments,
+        .article__header .comment-count,
         .article__header figure figcaption,
         .sponsorship,
         .tags {
@@ -104,8 +105,9 @@
         .article__header .headline,
         .article__header .meta__byline .byline,
         .article__header .meta__byline a, 
-        .article__header .meta__comments,
-        .article__header .meta__comments a,
+        .article__header .comment-count,
+        .article__header .comment-count a,
+        .article__header .comment-count a,
         .article__body {
             color: color(global-adv-text); 
         }
@@ -173,7 +175,7 @@
             color: color(shade-7);
         }
 
-        .meta__comments {
+        .comment-count {
             border-color: color(global-adv-bands);
         }
 
@@ -190,6 +192,7 @@
         .article__header .headline,
         .article__header .standfirst,
         .article__header .standfirst a,
+        .article__header .comment-count a,
         .article__header .section,
         .article__header .section > div,
         .alerts__state--unfollow {
@@ -211,10 +214,16 @@
             background-color: color(global-adv-bands);
         }
 
-        .article__header .section,
+        /*.article__header .section,
         .content__series-label{
             @include mq($to: col2) {
                 padding-top: base-px(0.58);
+            }
+        }*/
+
+        .content__labels__container {
+            @include mq($to: col2) {
+                padding-top: 10px;
             }
         }
     }    
@@ -272,7 +281,7 @@
     &.tone--podcast {
 
         .meta,
-        .meta__comments {
+        .comment-count {
             border-color: color(global-adv-bands);
         }
 
@@ -282,9 +291,10 @@
         .byline__author a,
         .article__header .meta__byline .byline,
         .meta__pubdate,
-        .meta__comments a, 
-        .meta__comments,
-        .meta__comments a span[data-icon] {
+        .comment-count a, 
+        .comment-count a, 
+        .comment-count,
+        .comment-count a span[data-icon] {
             color: color(global-adv-text);
         }
 

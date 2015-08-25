@@ -28,25 +28,6 @@
 
 .tone--deadBlog {
 
-    .cricket{
-       
-
-        .article--liveblog {
-            border-top: none;
-        }
-
-        .new_alerts{
-            margin: 0;
-        }
-        .new_alerts,  .new_alerts.following:active {
-            border-color: color(shade-4);
-            color: color(shade-3);
-        }
-        a.new_alerts:not(.following):active, .new_alerts.following:not(:active) {
-            background-color: color(shade-3);
-            color: color(shade-7);
-        }
-    }
 
     .witness{
         margin-top: base-px(1);
@@ -192,5 +173,38 @@
         .block__time {
             font-weight: bold;
         }
+    }
+    
+    .alerts--new:active, .alerts--new.following {
+        background-color: color(tone-live);
+        color: color(shade-7);
+    }
+    
+    .alerts--new,  .alerts--new.following:active {
+        border-color: color(tone-live);
+        color: color(tone-live);
+    }
+
+    .cricket{
+
+        .article--liveblog {
+            border-top: none;
+        }
+
+        .alerts--new{
+            margin: 0;
+        }
+
+        a.alerts--new:active, a.alerts--new.following {
+            background-color: color(shade-3);
+            color: color(shade-7);
+        }
+
+        a.alerts--new,  a.alerts--new.following:active {
+            border-color: color(shade-4);
+            background-color: transparent;
+            color: color(shade-3);
+        }
+        
     }
 }
