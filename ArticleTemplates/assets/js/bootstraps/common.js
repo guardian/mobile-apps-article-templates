@@ -306,19 +306,22 @@ define([
         },
 
         getArticleHeight: function () {
+            modules.articleHeight(function(height){
+                window.GuardianJSInterface.getArticleHeightCallback(height);
+            });
+        },
+
+        articleHeight: function(callback) {
             // We want standard, feature or comment -article-containers
             // They are only presents in articles
-            window.getArticleHeight = function() {
-                var contentType = document.body.getAttribute('data-content-type');
-                var height = 0;
-                if (contentType === 'article') {
-                    var articleContainer = $('div[id$=-article-container]')[0];
-                    height = articleContainer.offsetHeight;
-                }
-                return height;
-            };
-            window.applyNativeFunctionCall('getArticleHeight');
-        }
+            var contentType = document.body.getAttribute('data-content-type');
+            var height = 0;
+            if (contentType === 'article') {
+                var articleContainer = $('div[id$=-article-container]')[0];
+                height = articleContainer.offsetHeight;
+            }
+            return callback(height);
+        },
     },
 
     ready = function () {
@@ -347,7 +350,8 @@ define([
             modules.showTabs(window);
             modules.setGlobalObject(window);
             modules.fixSeries();
-            modules.getArticleHeight();
+            window.getArticleHeight = modules.getArticleHeight;
+            window.applyNativeFunctionCall('getArticleHeight');
             Sharing.init(window);
 
             if (!document.body.classList.contains('no-ready')) {
