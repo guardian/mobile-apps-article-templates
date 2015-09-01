@@ -2829,7 +2829,7 @@
     white-space: nowrap;
     padding: 4px 12px 8px 12px;
     margin: 6px 0px 0px -4px;
-    display: none;
+    display: inline-block;
     border-radius: 30px;
     text-overflow: ellipsis;
     vertical-align: bottom;
@@ -5752,12 +5752,10 @@
         #sandbox .more .more__button {
           font-size: 1.575rem;
           line-height: 2.275rem; } }
-    #sandbox .more .more__icon:before,
     #sandbox .more .more__label:before {
       position: relative;
       font-size: 110%;
       right: 5px; }
-    #sandbox .more .more__icon:active,
     #sandbox .more .more__label:active {
       color: #e6e6e6; }
     #sandbox .more .more__text {
@@ -5776,9 +5774,19 @@
       #sandbox .more--comments {
         margin-left: 31.57895%; } }
     #sandbox .more--comments .more__label {
-      background-color: #005689; }
+      background-color: #005689;
+      padding: 6px 12px 6px 6px;
+      position: static; }
       #sandbox .more--comments .more__label:active {
         background-color: #003656; }
+    #sandbox .more--comments .more__text,
+    #sandbox .more--comments .more__icon {
+      color: #fff;
+      display: inline-block;
+      position: static;
+      padding: 0px 6px;
+      vertical-align: top;
+      margin-top: -1px; }
   #sandbox .more--live-blogs {
     border-bottom: 1px dotted #dcdad5; }
     @media all and (max-width: 40.615em) {

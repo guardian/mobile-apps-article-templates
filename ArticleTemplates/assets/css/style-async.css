@@ -456,12 +456,10 @@ Display a link to view more.
       .more .more__button {
         font-size: 1.575rem;
         line-height: 2.275rem; } }
-  .more .more__icon:before,
   .more .more__label:before {
     position: relative;
     font-size: 110%;
     right: 5px; }
-  .more .more__icon:active,
   .more .more__label:active {
     color: #e6e6e6; }
   .more .more__text {
@@ -481,9 +479,19 @@ Display a link to view more.
     .more--comments {
       margin-left: 31.57895%; } }
   .more--comments .more__label {
-    background-color: #005689; }
+    background-color: #005689;
+    padding: 6px 12px 6px 6px;
+    position: static; }
     .more--comments .more__label:active {
       background-color: #003656; }
+  .more--comments .more__text,
+  .more--comments .more__icon {
+    color: #fff;
+    display: inline-block;
+    position: static;
+    padding: 0px 6px;
+    vertical-align: top;
+    margin-top: -1px; }
 
 .more--live-blogs {
   border-bottom: 1px dotted #dcdad5; }
