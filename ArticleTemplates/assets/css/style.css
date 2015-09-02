@@ -218,7 +218,7 @@ Display an alerts toggle.
   white-space: nowrap;
   padding: 4px 12px 8px 12px;
   margin: 6px 0px 0px -4px;
-  display: none;
+  display: inline-block;
   border-radius: 30px;
   text-overflow: ellipsis;
   vertical-align: bottom;
@@ -3565,7 +3565,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .is_advertising:not(.tone--review):not(.tone--analysis) .element-rich-link a,
 .is_advertising:not(.tone--review):not(.tone--analysis) .prose h2,
 .is_advertising:not(.tone--review):not(.tone--analysis) .article--liveblog .article__header .section {
-  font-family: "Guardian Sans", sans-serif; }
+  font-family: "Guardian Text Sans Web", sans-serif; }
 .is_advertising:not(.tone--review):not(.tone--analysis) .sponsorship a,
 .is_advertising:not(.tone--review):not(.tone--analysis) .article__body a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article--liveblog .article__header .sponsorship a {
   color: #272727; }
@@ -3865,15 +3865,15 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   font-style: italic;
   src: url("../fonts/agate-bolditalic.otf"); }
 @font-face {
-  font-family: 'Guardian Sans';
+  font-family: 'Guardian Text Sans Web';
   font-weight: 200;
   src: url("../fonts/GuardianSansWeb-Light.ttf"); }
 @font-face {
-  font-family: 'Guardian Sans';
+  font-family: 'Guardian Text Sans Web';
   font-weight: 300;
   src: url("../fonts/GuardianSansWeb-Regular.ttf"); }
 @font-face {
-  font-family: 'Guardian Sans';
+  font-family: 'Guardian Text Sans Web';
   font-weight: 600;
   src: url("../fonts/GuardianSansWeb-Semibold.ttf"); }
 @font-face {
@@ -4291,12 +4291,10 @@ Display a link to view more.
       .more .more__button {
         font-size: 1.575rem;
         line-height: 2.275rem; } }
-  .more .more__icon:before,
   .more .more__label:before {
     position: relative;
     font-size: 110%;
     right: 5px; }
-  .more .more__icon:active,
   .more .more__label:active {
     color: #e6e6e6; }
   .more .more__text {
@@ -4316,9 +4314,19 @@ Display a link to view more.
     .more--comments {
       margin-left: 31.57895%; } }
   .more--comments .more__label {
-    background-color: #005689; }
+    background-color: #005689;
+    padding: 6px 12px 6px 6px;
+    position: static; }
     .more--comments .more__label:active {
       background-color: #003656; }
+  .more--comments .more__text,
+  .more--comments .more__icon {
+    color: #fff;
+    display: inline-block;
+    position: static;
+    padding: 0px 6px;
+    vertical-align: top;
+    margin-top: -1px; }
 
 .more--live-blogs {
   border-bottom: 1px dotted #dcdad5; }
@@ -4498,6 +4506,12 @@ The 'sponsored by/supported by' section
 
 .sponsorship__logo {
   max-height: 60px; }
+
+.outbrainText {
+  display: none; }
+
+.outbrainImage {
+  display: block; }
 
 /*doc
 ---
@@ -5989,6 +6003,9 @@ Display a titled container for comments, cards or other components that should b
 
 .container__body {
   overflow: hidden; }
+
+.container__outbrain {
+  display: none; }
 
 /* Android Tweaks - Displays Leave a comment icon by default */
 .android .container {

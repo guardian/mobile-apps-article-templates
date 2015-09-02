@@ -5,6 +5,7 @@ var zlib = require('zlib');
 var parse = require('url').parse;
 
 app.use(express.static(__dirname + '/fixture'));
+app.use(express.static(__dirname + '/..'));
 app.use('/data/data/com.guardian/files/dev-templates/assets', express.static(__dirname + '/../ArticleTemplates/assets'));
 app.use('/performances', express.static(__dirname + '/../Performance'));
 app.use('/root', express.static(__dirname + '/..'));

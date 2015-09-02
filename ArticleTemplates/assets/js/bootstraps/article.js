@@ -3,21 +3,33 @@ define([
     'bean',
     'modules/$',
     'modules/twitter',
-    'modules/witness'
+    'modules/witness',
+    'modules/outbrain'
 ], function (
     bean,
     $,
     twitter,
-    witness
+    witness,
+    outbrain
 ) {
     'use strict';
 
-    var ready = function () {
+    var modules = {
+        insertOutbrain: function () {
+            window.articleOutbrainInserter = function () {
+                outbrain.load();
+            };
+            window.applyNativeFunctionCall('articleOutbrainInserter');       
+        }
+    },
+
+    ready = function () {
         if (!this.initialised) {
             this.initialised = true;
             twitter.init();
             twitter.enhanceTweets();
             witness.duplicate();
+            modules.insertOutbrain();
         }
     };
 
