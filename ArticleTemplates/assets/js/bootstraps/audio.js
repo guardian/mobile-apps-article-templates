@@ -88,16 +88,16 @@ define([
             setupGlobals: function () {
                 // Global function to handle audio, called by native code
                 window.audioPlay = function () {
-                    $('.audio-player__button .touchpoint__button').attr('data-icon', '');
+                    $('.audio-player__button .touchpoint__button').attr('data-icon', '').addClass('pause').removeClass('play');
                 };
 
                 window.audioStop = function () {
-                    $('.audio-player__button .touchpoint__button').attr('data-icon', '');
+                    $('.audio-player__button .touchpoint__button').attr('data-icon', '').addClass('play').removeClass('pause');
                 };
 
                 window.audioLoad = function () {
                     $(".audio-player__button").hide();
-                    $(".audio-player__button--loading").css({"display": "inline-block"});
+                    $(".audio-player__button--loading").css('display','block');
                 };
 
                 window.audioFinishLoad = function () {
