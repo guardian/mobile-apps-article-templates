@@ -124,29 +124,6 @@ a {
   a:active {
     color: #4bc6df; }
 
-@font-face {
-  font-family: 'Guardian Egyptian Web';
-  font-weight: 600;
-  src: url("../fonts/egyptiandisplay-bold.otf"); }
-@font-face {
-  font-family: 'Guardian Egyptian Web';
-  font-weight: 300;
-  src: url("../fonts/egyptiandisplay-regular.otf"); }
-@font-face {
-  font-family: 'Guardian Egyptian Web';
-  font-weight: 100;
-  src: url("../fonts/egyptiandisplay-thin.otf"); }
-@font-face {
-  font-family: 'Guardian Egyptian Web';
-  font-weight: 400;
-  src: url("../fonts/egyptiandisplay-medium.otf"); }
-@font-face {
-  font-family: 'Guardian Egyptian Web';
-  font-weight: 200;
-  src: url("../fonts/egyptiandisplay-light.otf"); }
-@font-face {
-  font-family: 'Guardian Icons';
-  src: url("../fonts/icons.otf"); }
 html {
   font-size: 62.5%;
   font-family: "Guardian Text Egyptian Web", Georgia, serif; }
@@ -218,7 +195,7 @@ Display an alerts toggle.
   white-space: nowrap;
   padding: 4px 12px 8px 12px;
   margin: 6px 0px 0px -4px;
-  display: inline-block;
+  display: none;
   border-radius: 30px;
   text-overflow: ellipsis;
   vertical-align: bottom;
@@ -723,6 +700,14 @@ Small (without label)
   display: inline-block;
   height: 44px;
   width: 44px; }
+  .touchpoint__button.play:before {
+    display: block;
+    margin-left: 4px;
+    margin-top: -1px; }
+  .touchpoint__button.pause:before {
+    display: block;
+    margin-left: 0;
+    margin-top: -2px; }
 
 .touchpoint--primary .touchpoint__button {
   color: #fff;
@@ -1247,8 +1232,7 @@ With live indicator:
   @media all and (min-width: 56.25em) {
     .comment-count {
       width: 24.21053%; } }
-  .test--new-alerts .meta .comment-count {
-    border: 5px solid blue;
+  .meta .comment-count {
     display: none; }
 
 @media all and (max-width: 40.615em) {
@@ -1349,9 +1333,6 @@ Display an embedded element. Element embeds are typically shown as figures, and 
 .element-embed iframe,
 .element-map iframe {
   width: 100%; }
-
-.element-interactive {
-  margin: 0 0 12px 0 !important; }
 
 .element-video {
   background-color: #000;
@@ -2284,11 +2265,15 @@ Play a piece of audio, i.e. a podcast.
 .audio-player {
   background-color: #333;
   padding: 12px;
-  display: table;
+  padding-left: 68px;
+  position: relative;
+  height: 68px;
   width: 100%; }
 
 .audio-player__button {
-  margin: 0px 12px 0px 0px; }
+  position: absolute;
+  top: 12px;
+  left: 12px; }
   .audio-player__button.touchpoint--primary .touchpoint__button {
     color: #333;
     background-color: #fb0; }
@@ -2296,8 +2281,9 @@ Play a piece of audio, i.e. a podcast.
       background-color: #ffd35c; }
 
 .audio-player__button--loading {
-  vertical-align: middle;
-  margin: 0px 12px 0px 0px;
+  position: absolute;
+  top: 12px;
+  left: 12px;
   width: 44px;
   height: 44px;
   background-color: white;
@@ -2310,8 +2296,7 @@ Play a piece of audio, i.e. a podcast.
 
 .audio-player__slider {
   outline: 0;
-  display: table-cell;
-  height: 40px;
+  height: 100%;
   width: 100%;
   position: relative;
   -webkit-user-select: none;
@@ -2347,18 +2332,17 @@ Play a piece of audio, i.e. a podcast.
   right: 0; }
 
 .audio-player__slider__track {
-  text-align: center;
   background-color: #999;
   height: 2px;
   width: 100%;
   position: absolute;
-  top: 29px;
+  top: calc(50% + 9px);
   right: 0;
   left: 0; }
 
 .audio-player__slider__knob {
   background-color: #ffd35c;
-  margin-top: 22px;
+  margin-top: 24px;
   border-radius: 50%;
   padding: 0;
   height: 16px;
@@ -2474,19 +2458,15 @@ Display a selection of images that form a gallery.
   .article--standard .article__body .figure-wide,
   .article--standard .article__body .element-video,
   .article--standard .article__body .element-placeholder,
-  .article--standard .article__body .element-interactive,
   .article--comment .article__body .figure-wide,
   .article--comment .article__body .element-video,
   .article--comment .article__body .element-placeholder,
-  .article--comment .article__body .element-interactive,
   .article--feature .article__body .figure-wide,
   .article--feature .article__body .element-video,
   .article--feature .article__body .element-placeholder,
-  .article--feature .article__body .element-interactive,
   .article--audio .article__body .figure-wide,
   .article--audio .article__body .element-video,
-  .article--audio .article__body .element-placeholder,
-  .article--audio .article__body .element-interactive {
+  .article--audio .article__body .element-placeholder {
     margin-left: -12px;
     margin-right: -12px;
     width: auto; }
@@ -2494,20 +2474,33 @@ Display a selection of images that form a gallery.
       .article--standard .article__body .figure-wide,
       .article--standard .article__body .element-video,
       .article--standard .article__body .element-placeholder,
-      .article--standard .article__body .element-interactive,
       .article--comment .article__body .figure-wide,
       .article--comment .article__body .element-video,
       .article--comment .article__body .element-placeholder,
-      .article--comment .article__body .element-interactive,
       .article--feature .article__body .figure-wide,
       .article--feature .article__body .element-video,
       .article--feature .article__body .element-placeholder,
-      .article--feature .article__body .element-interactive,
       .article--audio .article__body .figure-wide,
       .article--audio .article__body .element-video,
-      .article--audio .article__body .element-placeholder,
-      .article--audio .article__body .element-interactive {
+      .article--audio .article__body .element-placeholder {
         width: 135%; } }
+  .article--standard .article__body .element-interactive,
+  .article--comment .article__body .element-interactive,
+  .article--feature .article__body .element-interactive,
+  .article--audio .article__body .element-interactive {
+    width: auto; }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      .article--standard .article__body .element-interactive,
+      .article--comment .article__body .element-interactive,
+      .article--feature .article__body .element-interactive,
+      .article--audio .article__body .element-interactive {
+        width: calc(131.48148% - 12px); } }
+    @media all and (min-width: 56.25em) {
+      .article--standard .article__body .element-interactive,
+      .article--comment .article__body .element-interactive,
+      .article--feature .article__body .element-interactive,
+      .article--audio .article__body .element-interactive {
+        width: calc(131.94444% - 12px); } }
   @media all and (min-width: 40.625em) {
     .article--standard .article__body .element-video,
     .article--comment .article__body .element-video,
@@ -2748,6 +2741,286 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .cricket--pre-match .tabs__list-item--scorecard, .cricket--pre-match
 .cricket__tabpanel--stats {
   display: none; }
+
+.is_advertising:not(.tone--review):not(.tone--analysis) .section,
+.is_advertising:not(.tone--review):not(.tone--analysis) .section__container .content__series-label,
+.is_advertising:not(.tone--review):not(.tone--analysis) .headline,
+.is_advertising:not(.tone--review):not(.tone--analysis) .standfirst,
+.is_advertising:not(.tone--review):not(.tone--analysis) .byline,
+.is_advertising:not(.tone--review):not(.tone--analysis) .article__body,
+.is_advertising:not(.tone--review):not(.tone--analysis) .article__body > .prose > p:first-of-type::first-letter,
+.is_advertising:not(.tone--review):not(.tone--analysis) .element-rich-link a::before,
+.is_advertising:not(.tone--review):not(.tone--analysis) .element-rich-link a,
+.is_advertising:not(.tone--review):not(.tone--analysis) .prose h2,
+.is_advertising:not(.tone--review):not(.tone--analysis) .article--liveblog .article__header .section {
+  font-family: "Guardian Text Sans Web", sans-serif; }
+.is_advertising:not(.tone--review):not(.tone--analysis) .sponsorship a,
+.is_advertising:not(.tone--review):not(.tone--analysis) .article__body a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article--liveblog .article__header .sponsorship a {
+  color: #272727; }
+.is_advertising:not(.tone--review):not(.tone--analysis) .content__series-label {
+  color: #272727 !important; }
+.is_advertising:not(.tone--review):not(.tone--analysis) .article .prose p a,
+.is_advertising:not(.tone--review):not(.tone--analysis) .article .prose li a,
+.is_advertising:not(.tone--review):not(.tone--analysis) .sponsorship__formatted-sponsor-name a {
+  background-image: linear-gradient(to bottom, #fff 50%, rgba(39, 39, 39, 0.66) 50%);
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  background-position: 0 bottom;
+  text-shadow: 4px 0 #fff, 3px 0 #fff, 2px 0 #fff, 1px 0 #fff, 0 0 #fff, -1px 0 #fff, -2px 0 #fff, -3px 0 #fff, -4px 0 #fff; }
+.is_advertising:not(.tone--review):not(.tone--analysis) .article .prose p a:active,
+.is_advertising:not(.tone--review):not(.tone--analysis) .article .prose li a:active,
+.is_advertising:not(.tone--review):not(.tone--analysis) .sponsorship__formatted-sponsor-name a:active {
+  background-image: linear-gradient(to bottom, #fff 50%, rgba(65, 65, 65, 0.66) 50%); }
+.is_advertising:not(.tone--review):not(.tone--analysis).advert-config--mobile .advert-slot + .article {
+  border-top: 1px solid #878787; }
+.is_advertising:not(.tone--review):not(.tone--analysis) .element-placeholder .element-placeholder__button .touchpoint__button {
+  background-color: #878787; }
+  .is_advertising:not(.tone--review):not(.tone--analysis) .element-placeholder .element-placeholder__button .touchpoint__button:active {
+    color: #878787;
+    background-color: #272727; }
+.is_advertising:not(.tone--review):not(.tone--analysis) .element-placeholder .element-placeholder__button .touchpoint__label {
+  color: #fff;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.5); }
+.is_advertising:not(.tone--review):not(.tone--analysis) .section__container,
+.is_advertising:not(.tone--review):not(.tone--analysis) .article,
+.is_advertising:not(.tone--review):not(.tone--analysis) .comment-count {
+  border-color: #878787; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--deadBlog .article--liveblog .article__header .section,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--deadBlog .article--liveblog .article__header .section > div,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--deadBlog .article--liveblog .article__header a {
+  color: #272727; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment a {
+  color: #272727; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .meta,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .main-media__caption, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .main-media__caption {
+  background-color: #D9D9D9; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .section__container,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .meta,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .comment-count,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header figure figcaption,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .sponsorship,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .tags, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .section__container,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .comment-count,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header figure figcaption,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .sponsorship,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .tags {
+  border-color: #878787; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .meta, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta {
+  border-top-style: dotted;
+  border-top-width: 1px; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .section,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .section > div,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .headline,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .meta__byline .byline,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .meta__byline a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .comment-count,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .comment-count a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .comment-count a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__body, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .section,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .section > div,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .headline,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta__byline .byline,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta__byline a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .comment-count,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .comment-count a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .comment-count a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__body {
+  color: #272727; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .standfirst,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .standfirst a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst a {
+  color: #272727; }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .standfirst .bullet::before,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .standfirst a .bullet::before, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst .bullet::before,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst a .bullet::before {
+    background-color: #272727; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .meta__pubdate, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta__pubdate {
+  color: #878787; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose p a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose li a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .standfirst a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .sponsorship__formatted-sponsor-name a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose p a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose li a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .sponsorship__formatted-sponsor-name a {
+  background-image: linear-gradient(to bottom, #D9D9D9 50%, rgba(39, 39, 39, 0.66) 50%);
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  background-position: 0 bottom;
+  text-shadow: 4px 0 #D9D9D9, 3px 0 #D9D9D9, 2px 0 #D9D9D9, 1px 0 #D9D9D9, 0 0 #D9D9D9, -1px 0 #D9D9D9, -2px 0 #D9D9D9, -3px 0 #D9D9D9, -4px 0 #D9D9D9; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose p a:active,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose li a:active,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .standfirst a:active,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .sponsorship__formatted-sponsor-name a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose p a:active,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose li a:active,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst a:active,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .sponsorship__formatted-sponsor-name a:active {
+  background-image: linear-gradient(to bottom, #D9D9D9 50%, rgba(65, 65, 65, 0.66) 50%); }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .tags .inline-list__item.more-button a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .tags .inline-list__item.more-button a {
+  border-color: #f1f1f1; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 a:active {
+  color: #414141; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article__header, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article__header, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article__header {
+  background-color: #D9D9D9; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .advert-slot + .article, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .advert-slot + .article, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .advert-slot + .article {
+  border-top: none !important; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article__header .content__labels,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article__header .headline,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article--feature .meta,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article--feature .article__header a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article--feature .meta__pubdate,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article--feature .article__header a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article--feature .article__header .byline, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article__header .content__labels,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article__header .headline,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article--feature .meta,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article--feature .article__header a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article--feature .meta__pubdate,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article--feature .article__header a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article--feature .article__header .byline, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article__header .content__labels,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article__header .headline,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article--feature .meta,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article--feature .article__header a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article--feature .meta__pubdate,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article--feature .article__header a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article--feature .article__header .byline {
+  color: #272727; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .standfirst, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .standfirst, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .standfirst {
+  background-color: #878787; }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .standfirst a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .standfirst a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .standfirst a {
+    background-image: linear-gradient(to bottom, #878787 50%, rgba(255, 255, 255, 0.66) 50%);
+    background-repeat: repeat-x;
+    background-size: 2px 2px;
+    background-position: 0 bottom;
+    text-shadow: 4px 0 #878787, 3px 0 #878787, 2px 0 #878787, 1px 0 #878787, 0 0 #878787, -1px 0 #878787, -2px 0 #878787, -3px 0 #878787, -4px 0 #878787; }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .standfirst a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .standfirst a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .standfirst a:active {
+    background-image: linear-gradient(to bottom, #878787 50%, rgba(230, 230, 230, 0.66) 50%); }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article--feature .article__header .standfirst a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article--feature .article__header .standfirst a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article--feature .article__header .standfirst a {
+  color: #fff; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .comment-count, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .comment-count, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .comment-count {
+  border-color: #878787; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live {
+  /*.article__header .section,
+  .content__series-label{
+      @include mq($to: col2) {
+          padding-top: base-px(0.58);
+      }
+  }*/ }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article--liveblog .article__header {
+    background-color: #D9D9D9; }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .section__live,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .headline,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .standfirst,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .standfirst a,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .comment-count a,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .section,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .section > div,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .alerts__state--unfollow {
+    color: #272727; }
+  @media all and (min-width: 40.625em) {
+    .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .alerts__state--unfollow {
+      color: #fff; } }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header ul > li::before,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .bullet::before {
+    background-color: #272727; }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .meta {
+    background-color: #878787; }
+  @media all and (max-width: 40.615em) {
+    .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .content__labels__container {
+      padding-top: 10px; } }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .section,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .section > div,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .headline,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .headline,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .standfirst,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .byline,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .prose,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .element-placeholder .element-placeholder__button .touchpoint__button,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship .sponsorship__formatted-sponsor-name,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags .inline-list__item a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--media a {
+  color: #272727; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article__header .meta__misc,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags {
+  border-color: #878787; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article__header,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article__body,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags {
+  background-color: #D9D9D9; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a {
+  background-image: linear-gradient(to bottom, #D9D9D9 50%, rgba(39, 39, 39, 0.66) 50%);
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  background-position: 0 bottom;
+  text-shadow: 4px 0 #D9D9D9, 3px 0 #D9D9D9, 2px 0 #D9D9D9, 1px 0 #D9D9D9, 0 0 #D9D9D9, -1px 0 #D9D9D9, -2px 0 #D9D9D9, -3px 0 #D9D9D9, -4px 0 #D9D9D9; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a:active {
+  background-image: linear-gradient(to bottom, #D9D9D9 50%, rgba(65, 65, 65, 0.66) 50%); }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags .inline-list__item a {
+  color: #fff;
+  background-color: #878787; }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags .inline-list__item a:active {
+    color: white;
+    background-color: #a1a1a1; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags .inline-list__item.more-button a {
+  color: #272727;
+  border: 1px solid #878787; }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags .inline-list__item.more-button a:active {
+    color: #414141;
+    border: 1px solid #a1a1a1; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .meta__pubdate {
+  color: #878787; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count {
+  border-color: #878787; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .section,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .section > div,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .headline,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .byline__author a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article__header .meta__byline .byline,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta__pubdate,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count a span[data-icon] {
+  color: #272727; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article__header {
+  background-color: #D9D9D9; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article__header .meta__byline .byline__author a {
+  color: #272727;
+  font-weight: bold; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .audio-player {
+  background-color: #636363; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .audio-player__button.touchpoint--primary .touchpoint__button,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .audio-player__slider__knob {
+  background-color: #878787; }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .audio-player__button.touchpoint--primary .touchpoint__button:active,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .audio-player__slider__knob:active {
+    background-color: #6e6e6e; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .audio-player__slider__track {
+  background-color: #CBC9C5; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags .inline-list__item a {
+  color: #333;
+  background-color: #D9D9D9; }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags .inline-list__item a:active {
+    color: #1a1a1a;
+    background-color: silver; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags .inline-list__item.more-button a {
+  color: #333;
+  border: 1px solid #D9D9D9; }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags .inline-list__item.more-button a:active {
+    color: #1a1a1a;
+    border: 1px solid silver; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .card__title--audio::before {
+  margin-top: 0; }
 
 .tone--comment a {
   color: #e6711b; }
@@ -3242,7 +3515,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
       color: #333;
       display: block; }
   .tone--podcast .article__header .card__titletext {
-    padding-bottom: 4px;
+    margin-bottom: 4px;
     text-overflow: ellipsis;
     overflow-y: hidden;
     word-wrap: break-word;
@@ -3553,285 +3826,5 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   border-color: #dcdad5;
   background-color: transparent;
   color: #999; }
-
-.is_advertising:not(.tone--review):not(.tone--analysis) .section,
-.is_advertising:not(.tone--review):not(.tone--analysis) .section__container .content__series-label,
-.is_advertising:not(.tone--review):not(.tone--analysis) .headline,
-.is_advertising:not(.tone--review):not(.tone--analysis) .standfirst,
-.is_advertising:not(.tone--review):not(.tone--analysis) .byline,
-.is_advertising:not(.tone--review):not(.tone--analysis) .article__body,
-.is_advertising:not(.tone--review):not(.tone--analysis) .article__body > .prose > p:first-of-type::first-letter,
-.is_advertising:not(.tone--review):not(.tone--analysis) .element-rich-link a::before,
-.is_advertising:not(.tone--review):not(.tone--analysis) .element-rich-link a,
-.is_advertising:not(.tone--review):not(.tone--analysis) .prose h2,
-.is_advertising:not(.tone--review):not(.tone--analysis) .article--liveblog .article__header .section {
-  font-family: "Guardian Text Sans Web", sans-serif; }
-.is_advertising:not(.tone--review):not(.tone--analysis) .sponsorship a,
-.is_advertising:not(.tone--review):not(.tone--analysis) .article__body a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article--liveblog .article__header .sponsorship a {
-  color: #272727; }
-.is_advertising:not(.tone--review):not(.tone--analysis) .content__series-label {
-  color: #272727 !important; }
-.is_advertising:not(.tone--review):not(.tone--analysis) .article .prose p a,
-.is_advertising:not(.tone--review):not(.tone--analysis) .article .prose li a,
-.is_advertising:not(.tone--review):not(.tone--analysis) .sponsorship__formatted-sponsor-name a {
-  background-image: linear-gradient(to bottom, #fff 50%, rgba(39, 39, 39, 0.66) 50%);
-  background-repeat: repeat-x;
-  background-size: 2px 2px;
-  background-position: 0 bottom;
-  text-shadow: 4px 0 #fff, 3px 0 #fff, 2px 0 #fff, 1px 0 #fff, 0 0 #fff, -1px 0 #fff, -2px 0 #fff, -3px 0 #fff, -4px 0 #fff; }
-.is_advertising:not(.tone--review):not(.tone--analysis) .article .prose p a:active,
-.is_advertising:not(.tone--review):not(.tone--analysis) .article .prose li a:active,
-.is_advertising:not(.tone--review):not(.tone--analysis) .sponsorship__formatted-sponsor-name a:active {
-  background-image: linear-gradient(to bottom, #fff 50%, rgba(65, 65, 65, 0.66) 50%); }
-.is_advertising:not(.tone--review):not(.tone--analysis).advert-config--mobile .advert-slot + .article {
-  border-top: 1px solid #878787; }
-.is_advertising:not(.tone--review):not(.tone--analysis) .element-placeholder .element-placeholder__button .touchpoint__button {
-  background-color: #878787; }
-  .is_advertising:not(.tone--review):not(.tone--analysis) .element-placeholder .element-placeholder__button .touchpoint__button:active {
-    color: #878787;
-    background-color: #272727; }
-.is_advertising:not(.tone--review):not(.tone--analysis) .element-placeholder .element-placeholder__button .touchpoint__label {
-  color: #fff;
-  text-shadow: 0 0 4px rgba(0, 0, 0, 0.5); }
-.is_advertising:not(.tone--review):not(.tone--analysis) .section__container,
-.is_advertising:not(.tone--review):not(.tone--analysis) .article,
-.is_advertising:not(.tone--review):not(.tone--analysis) .comment-count {
-  border-color: #878787; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--deadBlog .article--liveblog .article__header .section,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--deadBlog .article--liveblog .article__header .section > div,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--deadBlog .article--liveblog .article__header a {
-  color: #272727; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment a {
-  color: #272727; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .meta,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .main-media__caption, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .main-media__caption {
-  background-color: #D9D9D9; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .section__container,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .meta,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .comment-count,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header figure figcaption,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .sponsorship,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .tags, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .section__container,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .comment-count,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header figure figcaption,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .sponsorship,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .tags {
-  border-color: #878787; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .meta, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta {
-  border-top-style: dotted;
-  border-top-width: 1px; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .section,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .section > div,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .headline,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .meta__byline .byline,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .meta__byline a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .comment-count,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .comment-count a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .comment-count a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__body, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .section,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .section > div,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .headline,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta__byline .byline,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta__byline a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .comment-count,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .comment-count a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .comment-count a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__body {
-  color: #272727; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .standfirst,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .standfirst a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst a {
-  color: #272727; }
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .standfirst .bullet::before,
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .standfirst a .bullet::before, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst .bullet::before,
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst a .bullet::before {
-    background-color: #272727; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .meta__pubdate, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta__pubdate {
-  color: #878787; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose p a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose li a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .standfirst a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .sponsorship__formatted-sponsor-name a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose p a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose li a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .sponsorship__formatted-sponsor-name a {
-  background-image: linear-gradient(to bottom, #D9D9D9 50%, rgba(39, 39, 39, 0.66) 50%);
-  background-repeat: repeat-x;
-  background-size: 2px 2px;
-  background-position: 0 bottom;
-  text-shadow: 4px 0 #D9D9D9, 3px 0 #D9D9D9, 2px 0 #D9D9D9, 1px 0 #D9D9D9, 0 0 #D9D9D9, -1px 0 #D9D9D9, -2px 0 #D9D9D9, -3px 0 #D9D9D9, -4px 0 #D9D9D9; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose p a:active,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose li a:active,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .standfirst a:active,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .sponsorship__formatted-sponsor-name a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose p a:active,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose li a:active,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst a:active,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .sponsorship__formatted-sponsor-name a:active {
-  background-image: linear-gradient(to bottom, #D9D9D9 50%, rgba(65, 65, 65, 0.66) 50%); }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .tags .inline-list__item.more-button a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .tags .inline-list__item.more-button a {
-  border-color: #f1f1f1; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 a:active {
-  color: #414141; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article__header, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article__header, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article__header {
-  background-color: #D9D9D9; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .advert-slot + .article, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .advert-slot + .article, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .advert-slot + .article {
-  border-top: none !important; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article__header .content__labels,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article__header .headline,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article--feature .meta,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article--feature .article__header a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article--feature .meta__pubdate,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article--feature .article__header a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article--feature .article__header .byline, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article__header .content__labels,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article__header .headline,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article--feature .meta,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article--feature .article__header a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article--feature .meta__pubdate,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article--feature .article__header a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article--feature .article__header .byline, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article__header .content__labels,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article__header .headline,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article--feature .meta,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article--feature .article__header a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article--feature .meta__pubdate,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article--feature .article__header a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article--feature .article__header .byline {
-  color: #272727; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .standfirst, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .standfirst, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .standfirst {
-  background-color: #878787; }
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .standfirst a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .standfirst a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .standfirst a {
-    background-image: linear-gradient(to bottom, #878787 50%, rgba(255, 255, 255, 0.66) 50%);
-    background-repeat: repeat-x;
-    background-size: 2px 2px;
-    background-position: 0 bottom;
-    text-shadow: 4px 0 #878787, 3px 0 #878787, 2px 0 #878787, 1px 0 #878787, 0 0 #878787, -1px 0 #878787, -2px 0 #878787, -3px 0 #878787, -4px 0 #878787; }
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .standfirst a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .standfirst a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .standfirst a:active {
-    background-image: linear-gradient(to bottom, #878787 50%, rgba(230, 230, 230, 0.66) 50%); }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article--feature .article__header .standfirst a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article--feature .article__header .standfirst a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article--feature .article__header .standfirst a {
-  color: #fff; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .comment-count, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .comment-count, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .comment-count {
-  border-color: #878787; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live {
-  /*.article__header .section,
-  .content__series-label{
-      @include mq($to: col2) {
-          padding-top: base-px(0.58);
-      }
-  }*/ }
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article--liveblog .article__header {
-    background-color: #D9D9D9; }
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .section__live,
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .headline,
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .standfirst,
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .standfirst a,
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .comment-count a,
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .section,
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .section > div,
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .alerts__state--unfollow {
-    color: #272727; }
-  @media all and (min-width: 40.625em) {
-    .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .alerts__state--unfollow {
-      color: #fff; } }
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header ul > li::before,
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .bullet::before {
-    background-color: #272727; }
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .meta {
-    background-color: #878787; }
-  @media all and (max-width: 40.615em) {
-    .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .content__labels__container {
-      padding-top: 10px; } }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .section,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .section > div,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .headline,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .headline,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .standfirst,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .byline,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .prose,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .element-placeholder .element-placeholder__button .touchpoint__button,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship .sponsorship__formatted-sponsor-name,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags .inline-list__item a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--media a {
-  color: #272727; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article__header .meta__misc,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags {
-  border-color: #878787; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article__header,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article__body,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags {
-  background-color: #D9D9D9; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a {
-  background-image: linear-gradient(to bottom, #D9D9D9 50%, rgba(39, 39, 39, 0.66) 50%);
-  background-repeat: repeat-x;
-  background-size: 2px 2px;
-  background-position: 0 bottom;
-  text-shadow: 4px 0 #D9D9D9, 3px 0 #D9D9D9, 2px 0 #D9D9D9, 1px 0 #D9D9D9, 0 0 #D9D9D9, -1px 0 #D9D9D9, -2px 0 #D9D9D9, -3px 0 #D9D9D9, -4px 0 #D9D9D9; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a:active {
-  background-image: linear-gradient(to bottom, #D9D9D9 50%, rgba(65, 65, 65, 0.66) 50%); }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags .inline-list__item a {
-  color: #fff;
-  background-color: #878787; }
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags .inline-list__item a:active {
-    color: white;
-    background-color: #a1a1a1; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags .inline-list__item.more-button a {
-  color: #272727;
-  border: 1px solid #878787; }
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags .inline-list__item.more-button a:active {
-    color: #414141;
-    border: 1px solid #a1a1a1; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .meta__pubdate {
-  color: #878787; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count {
-  border-color: #878787; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .section,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .section > div,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .headline,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .byline__author a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article__header .meta__byline .byline,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta__pubdate,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count a span[data-icon] {
-  color: #272727; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article__header {
-  background-color: #D9D9D9; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article__header .meta__byline .byline__author a {
-  color: #272727;
-  font-weight: bold; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .audio-player {
-  background-color: #636363; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .audio-player__button.touchpoint--primary .touchpoint__button,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .audio-player__slider__knob {
-  background-color: #878787; }
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .audio-player__button.touchpoint--primary .touchpoint__button:active,
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .audio-player__slider__knob:active {
-    background-color: #6e6e6e; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .audio-player__slider__track {
-  background-color: #CBC9C5; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags .inline-list__item a {
-  color: #333;
-  background-color: #D9D9D9; }
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags .inline-list__item a:active {
-    color: #1a1a1a;
-    background-color: silver; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags .inline-list__item.more-button a {
-  color: #333;
-  border: 1px solid #D9D9D9; }
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags .inline-list__item.more-button a:active {
-    color: #1a1a1a;
-    border: 1px solid silver; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .card__title--audio::before {
-  margin-top: 0; }
 
 /*# sourceMappingURL=style-sync.css.map */
