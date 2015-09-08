@@ -1,5 +1,6 @@
 .tone--news {
-    a {
+    //TODO: would be nice to get rid of not (as hard to overide as tones get loaded in last)
+    a:not(.alerts--new):not(.witness__button) {
         color: color(tone-news);
         &:active {
             color: color(tone-news-accent);
@@ -17,9 +18,11 @@
             color: color(shade-2);  // Content Label Series
         }
         .section__container,
-        .meta .meta__comments{
+        .comment-count,
+        .comment-count {
             border-color: rgba(color(shade-3), .4);
         }
+        
         .headline {
             color: color(shade-1); // Headline
             padding: base-px(0, 1, 2.5, 1);
@@ -34,13 +37,14 @@
         .selectable a {
             color: color(tone-news-standfirst-links);
         }
+
         .meta {
             border-top: 1px rgba(color(shade-3), .4) dotted;
 
             .meta__byline .byline,
             .meta__byline a, 
-            .meta__comments,
-            .meta__comments a {
+            .comment-count,
+            .comment-count a {
                 color: color(tone-news);
             }
             .meta__pubdate{
@@ -50,6 +54,15 @@
         .main-media__caption {
             background-color: color(shade-7);
         }
+
+    }
+    
+    &.is_advertising{
+	     
+	     a.alerts--new,  a.alerts--new.following:active {
+                border-color: color(shade-1);
+                color: color(shade-1);
+            }
 
     }
 }
