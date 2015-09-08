@@ -3388,8 +3388,7 @@
     @media all and (min-width: 56.25em) {
       #sandbox .comment-count {
         width: 24.21053%; } }
-    .test--new-alerts .meta #sandbox .comment-count {
-      border: 5px solid blue;
+    .meta #sandbox .comment-count {
       display: none; }
   @media all and (max-width: 40.615em) {
     #sandbox .comment-count__label {
@@ -5752,12 +5751,10 @@
         #sandbox .more .more__button {
           font-size: 1.575rem;
           line-height: 2.275rem; } }
-    #sandbox .more .more__icon:before,
     #sandbox .more .more__label:before {
       position: relative;
       font-size: 110%;
       right: 5px; }
-    #sandbox .more .more__icon:active,
     #sandbox .more .more__label:active {
       color: #e6e6e6; }
     #sandbox .more .more__text {
@@ -5776,9 +5773,19 @@
       #sandbox .more--comments {
         margin-left: 31.57895%; } }
     #sandbox .more--comments .more__label {
-      background-color: #005689; }
+      background-color: #005689;
+      padding: 6px 12px 6px 6px;
+      position: static; }
       #sandbox .more--comments .more__label:active {
         background-color: #003656; }
+    #sandbox .more--comments .more__text,
+    #sandbox .more--comments .more__icon {
+      color: #fff;
+      display: inline-block;
+      position: static;
+      padding: 0px 6px;
+      vertical-align: top;
+      margin-top: -1px; }
   #sandbox .more--live-blogs {
     border-bottom: 1px dotted #dcdad5; }
     @media all and (max-width: 40.615em) {
@@ -6670,6 +6677,7 @@
   #sandbox .container__body {
     overflow: hidden; }
   #sandbox .container__outbrain {
+    overflow: hidden;
     display: none; }
   #sandbox .android .container {
     margin: 0px 12px 0px 12px; }
