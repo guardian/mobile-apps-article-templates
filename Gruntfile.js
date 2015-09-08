@@ -73,7 +73,8 @@ module.exports = function(grunt) {
 
         rsync: {
             options: {
-                recursive: true
+                recursive: true,
+                delete: true
             },
             android: {
                 options: {
