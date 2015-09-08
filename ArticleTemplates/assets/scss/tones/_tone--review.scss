@@ -1,7 +1,16 @@
 .tone--review {
-
     .article{
         border-top-color: color(tone-review-accent);
+
+        .prose .element-pullquote {
+            blockquote {
+                footer,
+                &::before,
+                &::after {
+                    color: color(tone-review-accent);
+                }
+            }
+        }
     }
 
     .extras{
@@ -11,6 +20,7 @@
 
     .article__header {
         background-color: color(tone-review);
+
         .section > div {
             color: color(tone-review-accent); // Content Label Section
         }
@@ -28,17 +38,21 @@
         .headline {
             color: color(shade-7); // Headline
             padding: base-px(0, 1, 2.5, 1);
+
             p.review-rating {
                 padding-top: base-px(.7);
                 @include rating;
             }
         }
+
         .standfirst {
             color: color(shade-7);
         }
+
         .selectable a {
             color: color(shade-7) !important;
         }
+
         .meta {
             background-color: color(tone-review-meta-background);
 
@@ -48,20 +62,23 @@
             .comment-count a {
                 color: color(tone-review-accent);
             }
+
             .meta__pubdate{
                color: color(shade-7);
             }
         }
+
         .main-media__caption {
             background-color: color(shade-7);
         }
+
         .sponsorship {
             background-color: color(shade-7);   
         }
 
     }
 
-	.alerts--new:active, .alerts--new.following {
+    .alerts--new:active, .alerts--new.following {
         background-color: color(tone-review-accent);
         color: color(tone-review);
     }
@@ -70,6 +87,4 @@
         border-color: color(tone-review-accent);
         color: color(tone-review-accent);
     }
-
-
 }
