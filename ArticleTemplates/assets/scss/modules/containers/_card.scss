@@ -66,12 +66,6 @@ Display a standard article card.
 
     @include mq($from: col1) {
         margin-bottom: $base-1;
-
-        &::before {
-            content: '';
-            padding-top: 133%;
-            display: block;
-        }
     }
 
     @include mq(col1, col2) {
@@ -108,22 +102,14 @@ Display a standard article card.
         }
 
         @include mq($from: col1) {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
+            position: relative;
+            padding-bottom: 60%;
         }
     }
 
     .card__header,
     .card__object {
         padding: base-px(.25, .5, 0, .5);
-
-        @include mq($from: col1) {
-            height: 50%;
-            overflow: hidden;
-        }
     }
 
     .card__header {
@@ -132,6 +118,10 @@ Display a standard article card.
         @include mq($to: col1) {
             @include flex(1);
             @include order(1);
+        }
+
+        @include mq($from: col1) {
+            height: 120px;
         }
     }
 
@@ -172,12 +162,6 @@ Display a standard article card.
         }
 
         @include mq($from: col1) {
-            position: absolute;
-            z-index: 1;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            width: 100%;
         }
     }
 
@@ -185,26 +169,22 @@ Display a standard article card.
     &.has-image {
         .card__object {
             padding: 0;
-            height: 170px;
             overflow: hidden;
 
             @include mq($to: col1) {
+                height: 170px;
                 @include flex(1);
                 @include order(3);
             }
 
             .card__image {
                 @include mq($from: col1) {
-                    height: 100%;
-                    width: auto;
                     margin-bottom: -1px;
                 }
             }
         }
 
         .card__footer {
-            bottom: 170px;
-
             @include mq($to: col1) {
                 @include flex(1);
                 @include order(2);
@@ -277,24 +257,24 @@ Display a standard article card.
     }
 
     .card__timestamp {
-        padding: base-px(0, 5, 0, .5);
-        width: auto;
+        padding: base-px(0, 0, 0, .5);
+        width: 100px;
     }
 }
 
 // Android Tweaks - Improved alignment of card timestamp and metadata
 
-.android {
-    .card {
-        .card__timestamp {
-            padding-top: 2px;
-        }
+// .android {
+//     .card {
+//         .card__timestamp {
+//             padding-top: 2px;
+//         }
         
-        .card__meta {
-            padding-top: 2px;
-        }
-    }
-}
+//         .card__meta {
+//             padding-top: 2px;
+//         }
+//     }
+// }
 
 // Container context
 .container__body {
