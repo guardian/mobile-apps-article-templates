@@ -1341,12 +1341,13 @@ Display a standard article card.
   @media all and (min-width: 28.125em) {
     .card .card__container {
       position: relative;
-      padding-bottom: 60%; } }
+      padding-bottom: 60%;
+      overflow: hidden; } }
   .card .card__header,
   .card .card__object {
     padding: 3px 6px 0px 6px; }
   .card .card__header {
-    margin-bottom: 1em; }
+    margin-bottom: 16px; }
     @media all and (max-width: 28.115em) {
       .card .card__header {
         -webkit-box-flex: 1;
@@ -1373,16 +1374,15 @@ Display a standard article card.
       order: 2; } }
   @media all and (min-width: 28.125em) {
     .card .card__object {
-      overflow: hidden;
       width: 100%;
       position: absolute;
-      bottom: 0; } }
+      top: 159px; } }
   .card .card__footer {
     color: #999;
     font-family: "Guardian Agate Sans 1 Web", sans-serif;
     font-size: 1.4rem;
     line-height: 1;
-    margin-top: 1em;
+    margin-top: 16px;
     overflow: hidden; }
     @media all and (max-width: 28.115em) {
       .card .card__footer {
@@ -1404,9 +1404,6 @@ Display a standard article card.
         -webkit-box-ordinal-group: 4;
         -webkit-order: 3;
         order: 3; } }
-    @media all and (min-width: 28.125em) {
-      .card.has-image .card__object .card__image {
-        margin-bottom: -1px; } }
   @media all and (max-width: 28.115em) {
     .card.has-image .card__footer {
       -webkit-box-flex: 1;
@@ -1451,7 +1448,7 @@ Display a standard article card.
     bottom: 0;
     z-index: 0; }
   .card .card__meta {
-    width: 21.73913%;
+    width: 100px;
     height: 22px;
     padding: 0px 0px 0px 6px;
     border-left: 1px solid #dcdad5;
@@ -1461,9 +1458,6 @@ Display a standard article card.
       border-left: 0 none; }
     .card .card__meta .icon {
       margin-right: 3px; }
-  .card .card__timestamp {
-    padding: 0px 0px 0px 6px;
-    width: 100px; }
 
 @media all and (min-width: 28.125em) {
   .container__body .card {
