@@ -47,7 +47,7 @@ module.exports = function(grunt) {
                                 }
                             }
                         },
-                        generateSourceMaps: true,
+                        generateSourceMaps: false,
                         preserveLicenseComments: false,
                         useSourceUrl: false,
                         removeCombined: true,
