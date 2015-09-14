@@ -600,12 +600,12 @@ The 'sponsored by/supported by' section
   -webkit-flex-direction: column;
   align-items: flex-start;
   -webkit-align-items: flex-start;
-  border-bottom: 1px dotted #B5B3AE;
+  border-bottom: 1px dotted #b5b3ae;
   font-size: 1.4rem; }
   .gallery ~ .sponsorship {
     border-bottom: none; }
   .witness + .sponsorship {
-    border-top: 1px dotted #B5B3AE;
+    border-top: 1px dotted #b5b3ae;
     padding-top: 20px;
     margin-top: 24px; }
 
@@ -788,11 +788,9 @@ Provide a summary of events:
 @media all and (min-width: 40.625em) {
   [class*="block--live-"] .block__body {
     float: left; }
-    [class*="block--live-"] .block__body .quoted,
     [class*="block--live-"] .block__body .twitter-tweet,
     [class*="block--live-"] .block__body .js-tweet {
       position: relative; }
-      [class*="block--live-"] .block__body .quoted::before,
       [class*="block--live-"] .block__body .twitter-tweet::before,
       [class*="block--live-"] .block__body .js-tweet::before {
         position: absolute;
@@ -2089,6 +2087,7 @@ Display a titled container for comments, cards or other components that should b
   overflow: hidden; }
 
 .container__outbrain {
+  overflow: hidden;
   display: none; }
 
 /* Android Tweaks - Displays Leave a comment icon by default */
@@ -2314,6 +2313,13 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 </div>
 ```
 */
+.prose blockquote::before, .prose .element-pullquote blockquote::before, .prose .element-pullquote blockquote::after {
+  font-family: "Guardian Icons", Georgia, serif;
+  font-size: 4rem;
+  font-style: normal;
+  line-height: 1;
+  display: block; }
+
 @media all and (max-width: 40.615em) {
   .prose {
     font-size: 1.6rem;
@@ -2381,15 +2387,18 @@ Adds typographic styling, typically to content fetched from the Guardian Content
   font-style: italic;
   margin: 24px; }
   .prose blockquote::before {
-    color: #999;
-    font-family: "Guardian Icons", Georgia, serif;
-    font-size: 4rem;
-    font-style: normal;
-    line-height: 1;
-    display: block; }
-  .prose blockquote.quoted::before {
-    content: '\e029';
-    margin-top: -.75rem; }
+    color: #999; }
+  .prose blockquote.quoted {
+    position: relative;
+    padding-top: 25px; }
+    .prose blockquote.quoted::before {
+      content: '\E092';
+      font-size: 3rem;
+      content: '\E092';
+      position: absolute;
+      top: 2px;
+      left: 0;
+      line-height: 0; }
   .prose blockquote.twitter-tweet, .prose blockquote.js-tweet {
     font-family: "Guardian Agate Sans 1 Web", sans-serif;
     font-size: 1.4rem;
@@ -2401,6 +2410,39 @@ Adds typographic styling, typically to content fetched from the Guardian Content
       font-size: 1.6rem;
       line-height: 2.2rem;
       margin: 6px 0px; }
+.prose .element-pullquote {
+  position: relative;
+  margin: 24px 0px 24px 0px; }
+  .prose .element-pullquote blockquote {
+    margin: 0;
+    font-style: normal;
+    font-size: 2rem;
+    line-height: 1.3;
+    padding: 25px 0; }
+    .prose .element-pullquote blockquote p {
+      margin: 0; }
+    .prose .element-pullquote blockquote cite {
+      font-style: normal;
+      font-size: 1.8rem; }
+    .prose .element-pullquote blockquote::before, .prose .element-pullquote blockquote::after {
+      font-size: 3rem;
+      color: #005689;
+      content: '\E092';
+      position: absolute;
+      top: 2px;
+      left: 0;
+      line-height: 0; }
+    .prose .element-pullquote blockquote::after {
+      content: '\E096';
+      top: auto;
+      bottom: 19px; }
+    .prose .element-pullquote blockquote footer {
+      color: #005689; }
+  @media all and (min-width: 40.625em) {
+    .prose .element-pullquote {
+      max-width: 280px;
+      margin-right: 12px;
+      float: left; } }
 .prose figure {
   margin: 12px 0px; }
   .prose figure.figure-wide img {
