@@ -53,7 +53,7 @@ define([
                 fw                  = Math.floor(obj[i][1] * overPercent),
                 fh                  = Math.floor(obj[i][2] * overPercent),
                 isNotLast           = !!(( i < obj.length - 1));
-
+console.log($obj);
 
             if (settings.allowPartialLastRow === true && lastRow === true) {
                 fw = obj[i][1];
