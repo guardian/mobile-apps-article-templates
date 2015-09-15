@@ -6219,16 +6219,9 @@
     border-bottom: 1px solid #dcdad5;
     display: block;
     position: relative;
-    -webkit-transition: all .15s ease-out;
-    transition: all .15s ease-out;
-    /*
-    The card transform causes the card and all cards below it to disappear if the user scrolls after pressing. 
-    This seems to be a WebKit bug.
-    &:active {
-        color: color(shade-1);
-        -webkit-transform: scale(.99);
-        transform: scale(.99);
-    }*/ }
+    transition: none; }
+    #sandbox .card:hover {
+      color: initial; }
     @media all and (max-width: 28.115em) {
       #sandbox .card {
         margin: 2.89855% 2.89855% 0; } }
@@ -6391,11 +6384,6 @@
   #sandbox .card--comment {
     background-color: #e3e1dc;
     border-top-color: #e6711b; }
-    #sandbox .card--comment:hover {
-      color: #333;
-      transition: none; }
-    #sandbox .card--comment:active, #sandbox .card--comment:focus {
-      color: #e6711b !important; }
     #sandbox .card--comment .card__title [data-icon]::before {
       display: inline-block;
       color: #999;
@@ -6434,25 +6422,9 @@
     #sandbox .card--feature2 .card__meta,
     #sandbox .card--feature3 .card__meta {
       border-color: rgba(220, 218, 213, 0.34); }
-    #sandbox .card--feature1:hover,
-    #sandbox .card--feature2:hover,
-    #sandbox .card--feature3:hover {
-      color: #fff;
-      transition: none; }
-    #sandbox .card--feature1:active, #sandbox .card--feature1:focus,
-    #sandbox .card--feature2:active,
-    #sandbox .card--feature2:focus,
-    #sandbox .card--feature3:active,
-    #sandbox .card--feature3:focus {
-      color: #b82266 !important; }
   #sandbox .card--liveBlog {
     background-color: #b51800;
     border-top-color: #cc2b12; }
-    #sandbox .card--liveBlog:hover {
-      color: #fff;
-      transition: none; }
-    #sandbox .card--liveBlog:active, #sandbox .card--liveBlog:focus {
-      color: #cc2b12 !important; }
     #sandbox .card--liveBlog * {
       color: #fff; }
     #sandbox .card--liveBlog .card__title,
@@ -6463,11 +6435,6 @@
   #sandbox .card--media {
     background-color: #333;
     border-top-color: #fb0; }
-    #sandbox .card--media:hover {
-      color: #fff;
-      transition: none; }
-    #sandbox .card--media:active, #sandbox .card--media:focus {
-      color: #fb0 !important; }
     #sandbox .card--media .card__title {
       color: #fff; }
       #sandbox .card--media .card__title .icon {
@@ -6512,11 +6479,6 @@
   #sandbox .card--podcast {
     background-color: #484848;
     border-top-color: #a7d8f2; }
-    #sandbox .card--podcast:hover {
-      color: #fff;
-      transition: none; }
-    #sandbox .card--podcast:active, #sandbox .card--podcast:focus {
-      color: #a7d8f2 !important; }
     #sandbox .card--podcast .card__title {
       color: #fff; }
       #sandbox .card--podcast .card__title .icon {
@@ -6546,19 +6508,9 @@
       font-weight: bold; }
   #sandbox .card--deadBlog {
     border-top-color: #b51800; }
-    #sandbox .card--deadBlog:hover {
-      color: inherit;
-      transition: none; }
-    #sandbox .card--deadBlog:active, #sandbox .card--deadBlog:focus {
-      color: #b51800 !important; }
   #sandbox .card--review {
     background-color: #615b52;
     border-top-color: #ffce4b; }
-    #sandbox .card--review:hover {
-      color: #fff;
-      transition: none; }
-    #sandbox .card--review:active, #sandbox .card--review:focus {
-      color: #ffce4b !important; }
     #sandbox .card--review .card__title,
     #sandbox .card--review .card__standfirst,
     #sandbox .card--review .card__footer {
@@ -6567,11 +6519,6 @@
       border-left-color: #fff; }
   #sandbox .card--analysis {
     border-top-color: #005689; }
-    #sandbox .card--analysis:hover {
-      color: #005689;
-      transition: none; }
-    #sandbox .card--analysis:active, #sandbox .card--analysis:focus {
-      color: #005689 !important; }
     #sandbox .card--analysis .card__title {
       color: #005689; }
     #sandbox .card--analysis .card__standfirst,
