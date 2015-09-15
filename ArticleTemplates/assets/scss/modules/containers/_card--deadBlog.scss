@@ -44,7 +44,11 @@ Display a comment article card.
 .card--deadBlog {
     border-top-color: color(tone-deadblog);
 
-    &:active {
+    &:hover {
+        color: inherit;
+    }
+    
+    &:active, &:focus {
         color: color(tone-deadblog);
     }
 }

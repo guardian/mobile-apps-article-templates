@@ -1509,7 +1509,9 @@ Display a comment article card.
 .card--comment {
   background-color: #e3e1dc;
   border-top-color: #e6711b; }
-  .card--comment:active {
+  .card--comment:hover {
+    color: inherit; }
+  .card--comment:active, .card--comment:focus {
     color: #e6711b; }
   .card--comment .card__title [data-icon]::before {
     display: inline-block;
@@ -1577,9 +1579,15 @@ Display a feature article card.
   .card--feature2 .card__meta,
   .card--feature3 .card__meta {
     border-color: rgba(220, 218, 213, 0.34); }
-  .card--feature1:active,
+  .card--feature1:hover,
+  .card--feature2:hover,
+  .card--feature3:hover {
+    color: inherit; }
+  .card--feature1:active, .card--feature1:focus,
   .card--feature2:active,
-  .card--feature3:active {
+  .card--feature2:focus,
+  .card--feature3:active,
+  .card--feature3:focus {
     color: #b82266; }
 
 /*doc
@@ -1627,7 +1635,9 @@ Display a liveblog card.
 .card--liveBlog {
   background-color: #b51800;
   border-top-color: #cc2b12; }
-  .card--liveBlog:active {
+  .card--liveBlog:hover {
+    color: inherit; }
+  .card--liveBlog:active, .card--liveBlog:focus {
     color: #cc2b12; }
   .card--liveBlog * {
     color: #fff; }
@@ -1711,7 +1721,9 @@ Display a media article card. Can include a series title.
 .card--media {
   background-color: #333;
   border-top-color: #fb0; }
-  .card--media:active {
+  .card--media:hover {
+    color: inherit; }
+  .card--media:active, .card--media:focus {
     color: #fb0; }
   .card--media .card__title {
     color: #fff; }
@@ -1800,7 +1812,9 @@ Display a podcast article card. Can include a series title.
 .card--podcast {
   background-color: #484848;
   border-top-color: #a7d8f2; }
-  .card--podcast:active {
+  .card--podcast:hover {
+    color: inherit; }
+  .card--podcast:active, .card--podcast:focus {
     color: #a7d8f2; }
   .card--podcast .card__title {
     color: #fff; }
@@ -1874,7 +1888,9 @@ Display a comment article card.
 */
 .card--deadBlog {
   border-top-color: #b51800; }
-  .card--deadBlog:active {
+  .card--deadBlog:hover {
+    color: inherit; }
+  .card--deadBlog:active, .card--deadBlog:focus {
     color: #b51800; }
 
 /*doc
@@ -1922,7 +1938,9 @@ Display a comment article card.
 .card--review {
   background-color: #615b52;
   border-top-color: #ffce4b; }
-  .card--review:active {
+  .card--review:hover {
+    color: inherit; }
+  .card--review:active, .card--review:focus {
     color: #ffce4b; }
   .card--review .card__title,
   .card--review .card__standfirst,
@@ -1975,7 +1993,9 @@ Display a comment article card.
 */
 .card--analysis {
   border-top-color: #005689; }
-  .card--analysis:active {
+  .card--analysis:hover {
+    color: inherit; }
+  .card--analysis:active, .card--analysis:focus {
     color: #005689; }
   .card--analysis .card__title {
     color: #005689; }
