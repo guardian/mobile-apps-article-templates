@@ -48,7 +48,6 @@
     
     .alerts--new,  .alerts--new.following:active {
         border-color: color(tone-live);
-        background-color: color(shade-7);
         color: color(tone-live);
     }
 
@@ -143,7 +142,16 @@
             border-top: none;
         }
      
-       
+        .prose .element-pullquote {
+            blockquote {
+                footer,
+                &::after,
+                &::before {
+                    color: color(tone-live);
+                }
+            }
+        }
+        
         .meta {
             background-color: color(tone-live-accent);
             border: 0;

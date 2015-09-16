@@ -69,14 +69,13 @@ Display an alerts toggle.
 }
 
 // new alerts
-
 .alerts--new {
     @include meta();
     font-family: $agate-sans;
     white-space: nowrap;
     padding: base-px(.3, 1, .7, 1);
-    margin: base-px(.5, 0, 0,-.3);
-    display: none;
+    margin: base-px(.5, 0, 0, -.3);
+    display: none; // only show for test group
     border-radius: 30px;
     text-overflow: ellipsis;
     vertical-align: bottom;
@@ -132,5 +131,4 @@ Display an alerts toggle.
     .test--new-alerts & {
         display: inline-block;
     }
-
 }

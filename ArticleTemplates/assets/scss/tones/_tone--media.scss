@@ -54,6 +54,11 @@
         }
     }
 
+    // Sponsorship alt text when sponsor logo unavailable
+    .sponsorship__logo {
+        color: color(global-sponsored-label);
+    }
+
     .article--audio,
     .article--visual {
         border-top-color: color(tone-media);
@@ -67,6 +72,18 @@
         .prose table,
         .table {
             border-top-color: color(tone-media);
+        }
+
+        .prose .element-pullquote {
+            blockquote {
+                color: color(shade-7);
+                
+                footer,
+                &::after,
+                &::before {
+                    color: color(tone-media);
+                }
+            }
         }
 
         .audio-player {
