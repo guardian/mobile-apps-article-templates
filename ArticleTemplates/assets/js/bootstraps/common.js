@@ -9,6 +9,7 @@ define([
     'modules/cards',
     'modules/more-tags',
     'modules/sharing',
+    'throttleDebounce',
     'modules/$'
 ], function (
     bean,
@@ -20,6 +21,7 @@ define([
     Cards,
     MoreTags,
     Sharing,
+    throttleDebounce,
     $
 ) {
     'use strict';
@@ -43,9 +45,10 @@ define([
         figcaptionToggle: function () {
             // Show/hides figure caption
             if ($('.main-media__caption__icon')[0]) {
-                bean.on($('.main-media__caption__icon')[0], 'click', function () {
+                bean.on($('.main-media__caption__icon')[0], 'click touchstart', window.ThrottleDebounce.debounce( 250, true, function () {
+                    console.log('in click / touch start');
                     $('.main-media__caption__text').toggleClass('is-visible');
-                });
+                }));
             }
         },
 
