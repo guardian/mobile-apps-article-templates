@@ -1829,11 +1829,9 @@ Displays a cricket header.
       line-height: 2.2rem; } }
 
 .cricket-inning-team-name, .cricket-inning-runs {
-  font-family: "Guardian Egyptian Web", Georgia, serif;
-  font-weight: 200;
+  font: 200 2.3rem "Guardian Egyptian Web", Georgia, serif;
   color: #333;
-  font-size: 2.3rem;
-  padding-bottom: 0.3rem; }
+  padding-bottom: .3rem; }
 
 .cricket-match-summary-head, .cricket-match-summary-footer-wrap {
   padding: 12px 12px 12px 12px; }
@@ -1853,10 +1851,17 @@ Displays a cricket header.
     overflow: hidden;
     text-overflow: ellipsis; }
 
+.tone--liveBlog .cricket .tab {
+  color: #b51800; }
+  .tone--liveBlog .cricket .tab[aria-selected="true"] {
+    border-color: #b51800; }
+
 .cricket .tone--liveBlog.is-live .article__header--cricket,
 .cricket .tone--deadBlog .article__header--cricket {
   background-color: transparent;
-  border-bottom: none; }
+  border-bottom: 0;
+  border-top: 1px dotted grey;
+  padding-top: 12px; }
   .cricket .tone--liveBlog.is-live .article__header--cricket .meta__pubdate,
   .cricket .tone--liveBlog.is-live .article__header--cricket a,
   .cricket .tone--liveBlog.is-live .article__header--cricket .byline,
@@ -1864,6 +1869,12 @@ Displays a cricket header.
   .cricket .tone--deadBlog .article__header--cricket a,
   .cricket .tone--deadBlog .article__header--cricket .byline {
     color: #333; }
+  .cricket .tone--liveBlog.is-live .article__header--cricket .byline__author a,
+  .cricket .tone--deadBlog .article__header--cricket .byline__author a {
+    color: #005689; }
+    .tone--liveBlog .cricket .tone--liveBlog.is-live .article__header--cricket .byline__author a, .tone--liveBlog
+    .cricket .tone--deadBlog .article__header--cricket .byline__author a {
+      color: #b51800; }
   .cricket .tone--liveBlog.is-live .article__header--cricket .meta,
   .cricket .tone--deadBlog .article__header--cricket .meta {
     width: 100%;
@@ -1881,7 +1892,7 @@ Displays a cricket header.
   .cricket .tone--liveBlog.is-live .article__header--cricket .cricket-match-basic-follow,
   .cricket .tone--deadBlog .article__header--cricket .cricket-match-basic-follow {
     width: 48.5%;
-    padding: 12px 12px;
+    padding: 12px;
     vertical-align: text-bottom;
     display: inline-block; }
     .cricket .tone--liveBlog.is-live .article__header--cricket .cricket-match-basic-follow a,
@@ -1968,7 +1979,7 @@ Displays a cricket header.
     display: inline-block;
     width: 37px;
     height: 21px;
-    background: url(../img/cricket-dismissal.png);
+    background: url("../img/cricket-dismissal.png");
     background-repeat: no-repeat; }
   .cricket-inning-tea .cricket-inning-team-name:before {
     background-size: auto 39px;
@@ -2077,7 +2088,7 @@ Displays a cricket header.
     height: 20px;
     width: 20px;
     margin-right: 4px;
-    background: url(../img/cricket-dismissal.png);
+    background: url("../img/cricket-dismissal.png");
     background-repeat: no-repeat;
     background-size: auto 48px; }
   .cricket-scorecard-batsmen .cricket-scorecard-batsmen-status {
