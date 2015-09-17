@@ -103,27 +103,39 @@ With live indicator:
     }
 }
 
-
-
 .comment-count {
-    display: none;
-    border-left: 1px rgba(color(shade-4), .4) dotted;
-    padding: base-px(.5, 1, 1, 1);
-    font-size: 1em;
+    font-family: $agate-sans;
+    font-weight: bold;
     vertical-align: top;
-    height: 100%;
+    border-left: 1px rgba(color(shade-4), .4) dotted;
+    padding: base-px(.5, .5, 1, 1);
+    display: table-cell;
 
-    span[data-icon] {
-        padding-right: 4px;
+    @include mq($to: col1) {
+        width: cols($base-1, 1);
     }
 
-    .test--new-alerts & {
-        display: table-cell;
+    @include mq(col1, col2) {
+        width: cols($base-2, 2);
+    }
+
+    @include mq(col2, col3) {
+        width: cols($base-3, 3);
+    }
+
+    @include mq($from: col3) {
+        width: cols($base-4, 4);
+    }
+
+    .meta & {
+        display: none;
     }
 }
 
 .comment-count__label {
-    @extend %screen-readable;
+    @include mq($to: col2) {
+        display: none;
+    }
 }
 
 .article__header h1 {

@@ -63,6 +63,16 @@
             border-top-color: color(tone-comment);
         }
 
+        .prose .element-pullquote {
+            blockquote {
+                footer,
+                &::after,
+                &::before {
+                    color: color(tone-comment);
+                }
+            }
+        }
+
         .article__header {
             .headline__byline {
                 color: color(tone-comment);
@@ -108,7 +118,6 @@
             }
             a.alerts--new,  a.alerts--new.following:active {
                 border-color: color(shade-7);
-                background-color: color(tone-comment-accent);
                 color: color(shade-7);
             }
         }

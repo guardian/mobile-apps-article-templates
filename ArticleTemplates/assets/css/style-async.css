@@ -5,6 +5,11 @@
   position: relative;
   top: 2px; }
 
+.sponsorship:after {
+  content: '';
+  display: table;
+  clear: both; }
+
 @font-face {
   font-family: 'Guardian Text Egyptian Web';
   src: url("../fonts/egyptiantext-regular.otf"); }
@@ -31,15 +36,15 @@
   font-style: italic;
   src: url("../fonts/agate-bolditalic.otf"); }
 @font-face {
-  font-family: 'Guardian Sans';
+  font-family: 'Guardian Text Sans Web';
   font-weight: 200;
   src: url("../fonts/GuardianSansWeb-Light.ttf"); }
 @font-face {
-  font-family: 'Guardian Sans';
+  font-family: 'Guardian Text Sans Web';
   font-weight: 300;
   src: url("../fonts/GuardianSansWeb-Regular.ttf"); }
 @font-face {
-  font-family: 'Guardian Sans';
+  font-family: 'Guardian Text Sans Web';
   font-weight: 600;
   src: url("../fonts/GuardianSansWeb-Semibold.ttf"); }
 @font-face {
@@ -406,32 +411,47 @@ figure figcaption {
     margin-top: 6px; }
 
 .figure--thumbnail-with-caption {
-  display: table;
+  display: block;
+  position: relative;
   width: 100%; }
   .figure--thumbnail-with-caption .figure__inner {
     width: 50%;
-    display: table-cell;
-    vertical-align: top;
+    display: block;
     padding-right: 10px; }
   .figure--thumbnail-with-caption figcaption {
-    display: table-cell;
-    vertical-align: top;
+    display: block;
+    height: 100%;
     padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
     border-bottom: 1px dotted rgba(153, 153, 153, 0.4);
     border-top: 1px dotted rgba(153, 153, 153, 0.4); }
+    .figure--thumbnail-with-caption figcaption .element-image__caption {
+      height: calc(100% - 60px);
+      overflow: hidden;
+      display: block;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical; }
+    .figure--thumbnail-with-caption figcaption .element-image__credit {
+      position: absolute;
+      bottom: 0; }
   @media all and (min-width: 40.625em) {
     .figure--thumbnail-with-caption {
       float: left;
       width: 33%;
-      display: block;
       margin-right: 15px; }
       .figure--thumbnail-with-caption .figure__inner {
         width: 100%;
-        display: block;
         margin-bottom: 10px;
         padding-right: 0; }
       .figure--thumbnail-with-caption figcaption {
-        padding-bottom: 24px; } }
+        padding-bottom: 24px;
+        position: static;
+        height: auto;
+        width: 100%; } }
 
 /*doc
 ---
@@ -474,36 +494,42 @@ Display a link to view more.
 </div>
 
 <div class="more more--live-blogs">
-    <span class="more__label" data-icon="&#xe050;">
+    <button class="more__button">
+        <span class="more__icon" data-icon="&#xe050;" aria-hidden="true"></span>
         <span class="more__text">View more updates</span>
-    </span>
+    </button>
 </div>
 ```
 */
 .more {
   padding: 0px 0px 24px 0px; }
-  .more .more__label {
+  .more .more__label,
+  .more .more__button {
     display: inline-block;
     vertical-align: middle;
     color: #fff;
     font-family: "Guardian Agate Sans 1 Web", sans-serif;
     font-weight: bold;
     padding: 6px 18px 6px 14px;
-    border-radius: 40px; }
+    border-radius: 40px;
+    border: none;
+    outline: none; }
     @media all and (max-width: 40.615em) {
-      .more .more__label {
+      .more .more__label,
+      .more .more__button {
         font-size: 1.4rem;
         line-height: 2.1rem; } }
     @media all and (min-width: 40.625em) {
-      .more .more__label {
+      .more .more__label,
+      .more .more__button {
         font-size: 1.575rem;
         line-height: 2.275rem; } }
-    .more .more__label:before {
-      position: relative;
-      font-size: 110%;
-      right: 5px; }
-    .more .more__label:active {
-      color: #e6e6e6; }
+  .more .more__label:before {
+    position: relative;
+    font-size: 110%;
+    right: 5px; }
+  .more .more__label:active {
+    color: #e6e6e6; }
   .more .more__text {
     position: relative;
     bottom: 3px; }
@@ -521,9 +547,19 @@ Display a link to view more.
     .more--comments {
       margin-left: 31.57895%; } }
   .more--comments .more__label {
-    background-color: #005689; }
+    background-color: #005689;
+    padding: 6px 12px 6px 6px;
+    position: static; }
     .more--comments .more__label:active {
       background-color: #003656; }
+  .more--comments .more__text,
+  .more--comments .more__icon {
+    color: #fff;
+    display: inline-block;
+    position: static;
+    padding: 0px 6px;
+    vertical-align: top;
+    margin-top: -1px; }
 
 .more--live-blogs {
   border-bottom: 1px dotted #dcdad5; }
@@ -536,9 +572,9 @@ Display a link to view more.
   @media all and (min-width: 56.25em) {
     .more--live-blogs {
       margin-left: 31.57895%; } }
-  .more--live-blogs .more__label {
+  .more--live-blogs .more__button {
     background-color: #b51800; }
-    .more--live-blogs .more__label:active {
+    .more--live-blogs .more__button:active {
       background-color: #821100; }
 
 /*doc
@@ -665,42 +701,50 @@ category: Modules
 The 'sponsored by/supported by' section
 
 ```html_example
-<div class="sponsorship">
-	<p class="sponsorship__formatted-sponsor-name">
-		Guardian Cities is supported by:
-		<a href="http://www.100resilientcities.org">The Rockefeller Foundation</a>
-	</p>
-	<a class="sponsorship__about-uri" href="x-gu://item/mobile-apps.guardianapis.com/items/cities/2014/jan/27/cities-about-this-site">About this content</a>
-</div>		
+<<div class="sponsorship">
+    <p class="sponsorship__details">
+        <span class="sponsorship__formatted-sponsor-name">Guardian Cities is supported by:</span>
+        <a href="http://www.100resilientcities.org"><img src="http://pagead2.googlesyndication.com/pagead/imgad?id=CICAgKCToMPhMBABGAEyCMGaSOPVBwyp" class="sponsorship__logo" alt="The Rockefeller Foundation" /><span class="screen-readable"> (opens in a new window)</span></a>
+    </p>
+    <a class="sponsorship__about-uri" href="x-gu://item/mobile-apps.guardianapis.com/items/cities/2014/jan/27/cities-about-this-site">About this content</a>
+</div>	
 ```
 */
 .sponsorship {
-  padding: 10px 12px 20px 12px;
+  padding: 8px 12px 16px 12px;
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
   line-height: 1.2;
-  border-bottom: 1px dotted #B5B3AE; }
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  align-items: flex-start;
+  -webkit-align-items: flex-start;
+  border-bottom: 1px dotted #b5b3ae;
+  font-size: 1.4rem; }
   .gallery ~ .sponsorship {
     border-bottom: none; }
   .witness + .sponsorship {
-    border-top: 1px dotted #B5B3AE;
+    border-top: 1px dotted #b5b3ae;
     padding-top: 20px;
     margin-top: 24px; }
-  @media all and (max-width: 40.615em) {
-    .sponsorship {
-      font-size: 1.2rem; } }
-  @media all and (min-width: 40.625em) {
-    .sponsorship {
-      font-size: 1.4rem; } }
-  .sponsorship__formatted-sponsor-name {
-    color: #878787; }
-    @media all and (max-width: 40.615em) {
-      .sponsorship__formatted-sponsor-name span:first-child {
-        display: block; } }
-  .sponsorship__about-uri {
-    color: inherit;
-    padding-top: 1rem;
-    display: block;
-    font-weight: bold; }
+
+.sponsorship__formatted-sponsor-name {
+  color: #878787;
+  margin-bottom: 8px; }
+
+.sponsorship__about-uri {
+  margin-top: 12px;
+  font-weight: bold; }
+
+.sponsorship__logo {
+  max-height: 60px; }
+
+.outbrainText {
+  display: none; }
+
+.outbrainImage {
+  display: block; }
 
 /*doc
 ---
@@ -864,11 +908,9 @@ Provide a summary of events:
 @media all and (min-width: 40.625em) {
   [class*="block--live-"] .block__body {
     float: left; }
-    [class*="block--live-"] .block__body .quoted,
     [class*="block--live-"] .block__body .twitter-tweet,
     [class*="block--live-"] .block__body .js-tweet {
       position: relative; }
-      [class*="block--live-"] .block__body .quoted::before,
       [class*="block--live-"] .block__body .twitter-tweet::before,
       [class*="block--live-"] .block__body .js-tweet::before {
         position: absolute;
@@ -2193,6 +2235,10 @@ Display a titled container for comments, cards or other components that should b
 .container__body {
   overflow: hidden; }
 
+.container__outbrain {
+  overflow: hidden;
+  display: none; }
+
 /* Android Tweaks - Displays Leave a comment icon by default */
 .android .container {
   margin: 0px 12px 0px 12px; }
@@ -2416,6 +2462,13 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 </div>
 ```
 */
+.prose blockquote::before, .prose .element-pullquote blockquote::before, .prose .element-pullquote blockquote::after {
+  font-family: "Guardian Icons", Georgia, serif;
+  font-size: 4rem;
+  font-style: normal;
+  line-height: 1;
+  display: block; }
+
 @media all and (max-width: 40.615em) {
   .prose {
     font-size: 1.6rem;
@@ -2483,15 +2536,18 @@ Adds typographic styling, typically to content fetched from the Guardian Content
   font-style: italic;
   margin: 24px; }
   .prose blockquote::before {
-    color: #999;
-    font-family: "Guardian Icons", Georgia, serif;
-    font-size: 4rem;
-    font-style: normal;
-    line-height: 1;
-    display: block; }
-  .prose blockquote.quoted::before {
-    content: '\e029';
-    margin-top: -.75rem; }
+    color: #999; }
+  .prose blockquote.quoted {
+    position: relative;
+    padding-top: 25px; }
+    .prose blockquote.quoted::before {
+      content: '\E092';
+      font-size: 3rem;
+      content: '\E092';
+      position: absolute;
+      top: 2px;
+      left: 0;
+      line-height: 0; }
   .prose blockquote.twitter-tweet, .prose blockquote.js-tweet {
     font-family: "Guardian Agate Sans 1 Web", sans-serif;
     font-size: 1.4rem;
@@ -2503,6 +2559,62 @@ Adds typographic styling, typically to content fetched from the Guardian Content
       font-size: 1.6rem;
       line-height: 2.2rem;
       margin: 6px 0px; }
+.prose .element-pullquote {
+  position: relative;
+  margin: 24px 0px 24px 0px; }
+  .prose .element-pullquote blockquote {
+    margin: 0;
+    font-style: normal;
+    font-size: 2rem;
+    line-height: 1.3;
+    padding: 25px 0; }
+    .prose .element-pullquote blockquote p {
+      margin: 0; }
+    .prose .element-pullquote blockquote cite {
+      font-style: normal;
+      font-size: 1.8rem; }
+    .prose .element-pullquote blockquote::before, .prose .element-pullquote blockquote::after {
+      font-size: 3rem;
+      color: #005689;
+      content: '\E092';
+      position: absolute;
+      top: 2px;
+      left: 0;
+      line-height: 0; }
+    .prose .element-pullquote blockquote::after {
+      content: '\E096';
+      top: auto;
+      bottom: 19px; }
+    .prose .element-pullquote blockquote footer {
+      color: #005689; }
+  @media all and (min-width: 40.625em) {
+    .prose .element-pullquote {
+      max-width: 280px;
+      margin-right: 12px;
+      float: left; } }
+.prose figure {
+  margin: 12px 12px 0px 0px; }
+  .prose figure.figure-wide img {
+    height: auto; }
+  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    .prose figure.figure-wide figcaption {
+      padding-right: 23.94366%; } }
+  @media all and (min-width: 56.25em) {
+    .prose figure.figure-wide figcaption {
+      padding-right: 24.21053%; } }
+  .prose figure.figure-inline {
+    margin-right: 12px;
+    float: left; }
+    @media all and (min-width: 28.125em) {
+      .prose figure.figure-inline {
+        margin: 6px 12px 0px 0px;
+        float: left; }
+        .prose figure.figure-inline img {
+          width: 100%;
+          height: auto; } }
+    .prose figure.figure-inline figcaption {
+      padding-left: 0;
+      padding-right: 0; }
 .prose *:first-child {
   margin-top: 0; }
   .prose *:first-child .aside {

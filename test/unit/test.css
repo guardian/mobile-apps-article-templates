@@ -1124,9 +1124,10 @@
   </div>
   
   <div class="more more--live-blogs">
-      <span class="more__label" data-icon="&#xe050;">
+      <button class="more__button">
+          <span class="more__icon" data-icon="&#xe050;" aria-hidden="true"></span>
           <span class="more__text">View more updates</span>
-      </span>
+      </button>
   </div>
   ```
   */
@@ -1170,13 +1171,13 @@
   The 'sponsored by/supported by' section
   
   ```html_example
-  <div class="sponsorship">
-  	<p class="sponsorship__formatted-sponsor-name">
-  		Guardian Cities is supported by:
-  		<a href="http://www.100resilientcities.org">The Rockefeller Foundation</a>
-  	</p>
-  	<a class="sponsorship__about-uri" href="x-gu://item/mobile-apps.guardianapis.com/items/cities/2014/jan/27/cities-about-this-site">About this content</a>
-  </div>		
+  <<div class="sponsorship">
+      <p class="sponsorship__details">
+          <span class="sponsorship__formatted-sponsor-name">Guardian Cities is supported by:</span>
+          <a href="http://www.100resilientcities.org"><img src="http://pagead2.googlesyndication.com/pagead/imgad?id=CICAgKCToMPhMBABGAEyCMGaSOPVBwyp" class="sponsorship__logo" alt="The Rockefeller Foundation" /><span class="screen-readable"> (opens in a new window)</span></a>
+      </p>
+      <a class="sponsorship__about-uri" href="x-gu://item/mobile-apps.guardianapis.com/items/cities/2014/jan/27/cities-about-this-site">About this content</a>
+  </div>	
   ```
   */
   /*doc
@@ -2735,7 +2736,7 @@
     margin-right: 7px;
     position: relative;
     top: 2px; }
-  #sandbox .content__container:after, #sandbox .match-summary__team:after {
+  #sandbox .content__container:after, #sandbox .match-summary__team:after, #sandbox .sponsorship:after {
     content: '';
     display: table;
     clear: both; }
@@ -3183,7 +3184,7 @@
       #sandbox .headline {
         font-size: 4.8rem;
         line-height: 4.8rem; } }
-  #sandbox .screen-readable, #sandbox .main-media--hidden-caption .main-media__caption__text, #sandbox .meta .alerts .alerts__label, #sandbox .comment-count__label {
+  #sandbox .screen-readable, #sandbox .main-media--hidden-caption .main-media__caption__text, #sandbox .meta .alerts .alerts__label {
     position: absolute;
     overflow: hidden;
     clip: rect(1px, 1px, 1px, 1px); }
@@ -3260,31 +3261,6 @@
   #sandbox .meta__pubdate {
     color: #999;
     font-family: "Guardian Agate Sans 1 Web", sans-serif; }
-  #sandbox .comment-count {
-    font-family: "Guardian Agate Sans 1 Web", sans-serif;
-    font-weight: bold;
-    vertical-align: top;
-    border-left: 1px rgba(220, 218, 213, 0.4) dotted;
-    padding: 6px 6px 12px 12px;
-    display: table-cell; }
-    @media all and (max-width: 28.115em) {
-      #sandbox .comment-count {
-        width: 21.73913%; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      #sandbox .comment-count {
-        width: 23.40426%; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-      #sandbox .comment-count {
-        width: 23.94366%; } }
-    @media all and (min-width: 56.25em) {
-      #sandbox .comment-count {
-        width: 24.21053%; } }
-    .test--new-alerts .meta #sandbox .comment-count {
-      border: 5px solid blue;
-      display: none; }
-  @media all and (max-width: 40.615em) {
-    #sandbox .comment-count__label {
-      display: none; } }
   #sandbox .review-rating {
     color: #484848; }
     @media all and (min-width: 28.125em) {
@@ -3409,16 +3385,29 @@
       height: 100%;
       width: 100%; }
   #sandbox .comment-count {
-    display: none;
-    border-left: 1px rgba(220, 218, 213, 0.4) dotted;
-    padding: 6px 12px 12px 12px;
-    font-size: 1em;
+    font-family: "Guardian Agate Sans 1 Web", sans-serif;
+    font-weight: bold;
     vertical-align: top;
-    height: 100%; }
-    #sandbox .comment-count span[data-icon] {
-      padding-right: 4px; }
-    .test--new-alerts #sandbox .comment-count {
-      display: table-cell; }
+    border-left: 1px rgba(220, 218, 213, 0.4) dotted;
+    padding: 6px 6px 12px 12px;
+    display: table-cell; }
+    @media all and (max-width: 28.115em) {
+      #sandbox .comment-count {
+        width: 21.73913%; } }
+    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      #sandbox .comment-count {
+        width: 23.40426%; } }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      #sandbox .comment-count {
+        width: 23.94366%; } }
+    @media all and (min-width: 56.25em) {
+      #sandbox .comment-count {
+        width: 24.21053%; } }
+    .meta #sandbox .comment-count {
+      display: none; }
+  @media all and (max-width: 40.615em) {
+    #sandbox .comment-count__label {
+      display: none; } }
   #sandbox .article__header h1 {
     clear: both; }
   #sandbox .standfirst {
@@ -3786,7 +3775,7 @@
       color: #333; }
     #sandbox .cricket .tone--liveBlog.is-live .article__header--cricket .meta,
     #sandbox .cricket .tone--deadBlog .article__header--cricket .meta {
-      width: 50%;
+      width: 100%;
       line-height: 1.2em;
       background-color: transparent;
       display: inline-block;
@@ -3795,10 +3784,13 @@
     #sandbox .cricket .tone--deadBlog .article__header--cricket .meta__misc {
       padding-bottom: 0;
       padding-top: 0; }
+    #sandbox .cricket .tone--liveBlog.is-live .article__header--cricket .meta__pubdate,
+    #sandbox .cricket .tone--deadBlog .article__header--cricket .meta__pubdate {
+      padding-bottom: 1.2rem; }
     #sandbox .cricket .tone--liveBlog.is-live .article__header--cricket .cricket-match-basic-follow,
     #sandbox .cricket .tone--deadBlog .article__header--cricket .cricket-match-basic-follow {
       width: 48.5%;
-      padding: 0 12px;
+      padding: 12px 12px;
       vertical-align: text-bottom;
       display: inline-block; }
       #sandbox .cricket .tone--liveBlog.is-live .article__header--cricket .cricket-match-basic-follow a,
@@ -4057,7 +4049,6 @@
         font-size: 1.6rem; } }
     #sandbox .witness .witness__button {
       background-color: #004f91;
-      color: #B7D8EB;
       border-radius: 50px;
       margin-right: 12px;
       overflow: hidden;
@@ -4066,6 +4057,7 @@
       height: 2.7em;
       padding-right: 1em;
       font-family: "Guardian Agate Sans 1 Web", sans-serif;
+      color: #fff;
       white-space: nowrap; }
       #sandbox .witness .witness__button:before {
         content: '\e050';
@@ -4081,7 +4073,7 @@
         vertical-align: middle;
         height: 100%; }
       #sandbox .witness .witness__button:active {
-        color: #fff; }
+        color: #c3ddeb; }
     #sandbox .witness .witness__logo {
       vertical-align: middle;
       display: inline-block;
@@ -4580,6 +4572,8 @@
     #sandbox .tone--comment .article--comment .prose table,
     #sandbox .tone--comment .article--comment .table {
       border-top-color: #e6711b; }
+    #sandbox .tone--comment .article--comment .prose .element-pullquote blockquote footer, #sandbox .tone--comment .article--comment .prose .element-pullquote blockquote::after, #sandbox .tone--comment .article--comment .prose .element-pullquote blockquote::before {
+      color: #e6711b; }
     #sandbox .tone--comment .article--comment .article__header .headline__byline {
       color: #e6711b; }
     #sandbox .tone--comment .article--comment .article__header .byline__author {
@@ -4603,7 +4597,6 @@
         color: #f39f33; }
       #sandbox .tone--comment .article--comment .meta a.alerts--new, #sandbox .tone--comment .article--comment .meta a.alerts--new.following:active {
         border-color: #fff;
-        background-color: #f39f33;
         color: #fff; }
   #sandbox .tone--feature1 a,
   #sandbox .tone--feature1 .article__body > p:first-of-type:first-letter,
@@ -4659,6 +4652,14 @@
     #sandbox .tone--feature3 .article--feature .prose table,
     #sandbox .tone--feature3 .article--feature .table {
       border-top-color: #b82266; }
+    #sandbox .tone--feature1 .article--feature .prose .element-pullquote blockquote footer, #sandbox .tone--feature1 .article--feature .prose .element-pullquote blockquote::after, #sandbox .tone--feature1 .article--feature .prose .element-pullquote blockquote::before,
+    #sandbox .tone--feature2 .article--feature .prose .element-pullquote blockquote footer,
+    #sandbox .tone--feature2 .article--feature .prose .element-pullquote blockquote::after,
+    #sandbox .tone--feature2 .article--feature .prose .element-pullquote blockquote::before,
+    #sandbox .tone--feature3 .article--feature .prose .element-pullquote blockquote footer,
+    #sandbox .tone--feature3 .article--feature .prose .element-pullquote blockquote::after,
+    #sandbox .tone--feature3 .article--feature .prose .element-pullquote blockquote::before {
+      color: #951c55; }
   #sandbox .tone--feature1 .article--feature .article__header a,
   #sandbox .tone--feature2 .article--feature .article__header a,
   #sandbox .tone--feature3 .article--feature .article__header a {
@@ -4753,8 +4754,7 @@
     #sandbox .tone--feature3 .article--feature .meta a.alerts--new,
     #sandbox .tone--feature3 .article--feature .meta a.alerts--new.following:active {
       border-color: #fff;
-      color: #fff;
-      background-color: #951c55; }
+      color: #fff; }
   #sandbox .tone--feature1 .article--feature .meta,
   #sandbox .tone--feature1 .article--feature .meta__pubdate,
   #sandbox .tone--feature2 .article--feature .meta,
@@ -4787,7 +4787,6 @@
     color: #fff; }
   #sandbox .tone--liveBlog.is-live .alerts--new, #sandbox .tone--liveBlog.is-live .alerts--new.following:active {
     border-color: #b51800;
-    background-color: #fff;
     color: #b51800; }
   #sandbox .tone--liveBlog.is-live .article__header {
     background-color: #b51800;
@@ -4843,6 +4842,8 @@
       border-top-color: #b51800; }
     .cricket #sandbox .tone--liveBlog.is-live .article--liveblog {
       border-top: none; }
+    #sandbox .tone--liveBlog.is-live .article--liveblog .prose .element-pullquote blockquote footer, #sandbox .tone--liveBlog.is-live .article--liveblog .prose .element-pullquote blockquote::after, #sandbox .tone--liveBlog.is-live .article--liveblog .prose .element-pullquote blockquote::before {
+      color: #b51800; }
     #sandbox .tone--liveBlog.is-live .article--liveblog .meta {
       background-color: #cc2b12;
       border: 0;
@@ -4877,12 +4878,12 @@
   .cricket #sandbox .tone--liveBlog.is-live .alerts--new {
     margin: 0; }
   .cricket #sandbox .tone--liveBlog.is-live a.alerts--new:active, .cricket #sandbox .tone--liveBlog.is-live a.alerts--new.following {
-    background-color: #999;
+    background-color: #b51800;
     color: #fff; }
   .cricket #sandbox .tone--liveBlog.is-live a.alerts--new, .cricket #sandbox .tone--liveBlog.is-live a.alerts--new.following:active {
-    border-color: #dcdad5;
+    border-color: #b51800;
     background-color: transparent;
-    color: #999; }
+    color: #b51800; }
   #sandbox .tone--media .witness .witness__sponsor-logo {
     fill: #fff; }
   #sandbox .tone--media .section__container {
@@ -4916,6 +4917,8 @@
     border-top-style: dotted; }
   #sandbox .tone--media .article--audio .article__header {
     background-image: -webkit-canvas(circles); }
+  #sandbox .tone--media .sponsorship__logo {
+    color: #878787; }
   #sandbox .tone--media .article--audio,
   #sandbox .tone--media .article--visual {
     border-top-color: #fb0;
@@ -4939,6 +4942,14 @@
     #sandbox .tone--media .article--visual .prose table,
     #sandbox .tone--media .article--visual .table {
       border-top-color: #fb0; }
+    #sandbox .tone--media .article--audio .prose .element-pullquote blockquote,
+    #sandbox .tone--media .article--visual .prose .element-pullquote blockquote {
+      color: #fff; }
+      #sandbox .tone--media .article--audio .prose .element-pullquote blockquote footer, #sandbox .tone--media .article--audio .prose .element-pullquote blockquote::after, #sandbox .tone--media .article--audio .prose .element-pullquote blockquote::before,
+      #sandbox .tone--media .article--visual .prose .element-pullquote blockquote footer,
+      #sandbox .tone--media .article--visual .prose .element-pullquote blockquote::after,
+      #sandbox .tone--media .article--visual .prose .element-pullquote blockquote::before {
+        color: #fb0; }
     #sandbox .tone--media .article--audio .audio-player,
     #sandbox .tone--media .article--visual .audio-player {
       background-color: #1a1a1a; }
@@ -5058,9 +5069,12 @@
     margin-top: 3px; }
   #sandbox .tone--podcast.android .article__header .card__title--audio::before {
     margin-top: -3px; }
-  #sandbox .tone--news a:not(.alerts--new) {
+  #sandbox .tone--podcast.is_advertising a.alerts--new, #sandbox .tone--podcast.is_advertising a.alerts--new.following:active {
+    border-color: #333;
+    color: #333; }
+  #sandbox .tone--news a:not(.alerts--new):not(.witness__button) {
     color: #005689; }
-    #sandbox .tone--news a:not(.alerts--new):active {
+    #sandbox .tone--news a:not(.alerts--new):not(.witness__button):active {
       color: #4bc6df; }
   #sandbox .tone--news .article__header {
     background-color: #fff; }
@@ -5100,8 +5114,13 @@
         color: #999; }
     #sandbox .tone--news .article__header .main-media__caption {
       background-color: #fff; }
+  #sandbox .tone--news.is_advertising a.alerts--new, #sandbox .tone--news.is_advertising a.alerts--new.following:active {
+    border-color: #333;
+    color: #333; }
   #sandbox .tone--review .article {
     border-top-color: #ffce4b; }
+    #sandbox .tone--review .article .prose .element-pullquote blockquote footer, #sandbox .tone--review .article .prose .element-pullquote blockquote::before, #sandbox .tone--review .article .prose .element-pullquote blockquote::after {
+      color: #ffce4b; }
   #sandbox .tone--review .extras {
     padding-top: 1px;
     background-color: #fff; }
@@ -5145,6 +5164,12 @@
       background-color: #fff; }
     #sandbox .tone--review .article__header .sponsorship {
       background-color: #fff; }
+  #sandbox .tone--review .alerts--new:active, #sandbox .tone--review .alerts--new.following {
+    background-color: #ffce4b;
+    color: #615b52; }
+  #sandbox .tone--review .alerts--new, #sandbox .tone--review .alerts--new.following:active {
+    border-color: #ffce4b;
+    color: #ffce4b; }
   #sandbox .tone--analysis .article {
     border-top-color: #005689; }
   #sandbox .tone--analysis .article__header {
@@ -5280,6 +5305,12 @@
     border-top: 1px solid #999; }
     #sandbox .tone--deadBlog .block--live-summary .block__time {
       font-weight: bold; }
+  #sandbox .tone--deadBlog .alerts--new:active, #sandbox .tone--deadBlog .alerts--new.following {
+    background-color: #b51800;
+    color: #fff; }
+  #sandbox .tone--deadBlog .alerts--new, #sandbox .tone--deadBlog .alerts--new.following:active {
+    border-color: #b51800;
+    color: #b51800; }
   #sandbox .tone--deadBlog .cricket .article--liveblog {
     border-top: none; }
   #sandbox .tone--deadBlog .cricket .alerts--new {
@@ -5302,7 +5333,7 @@
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis) .element-rich-link a,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis) .prose h2,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis) .article--liveblog .article__header .section {
-    font-family: "Guardian Sans", sans-serif; }
+    font-family: "Guardian Text Sans Web", sans-serif; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis) .sponsorship a,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis) .article__body a, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article--liveblog .article__header .sponsorship a {
     color: #272727; }
@@ -5347,7 +5378,7 @@
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .main-media__caption {
-    background-color: #D9D9D9; }
+    background-color: #d9d9d9; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .section__container,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .meta,
@@ -5400,11 +5431,11 @@
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose li a,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst a,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .sponsorship__formatted-sponsor-name a {
-    background-image: linear-gradient(to bottom, #D9D9D9 50%, rgba(39, 39, 39, 0.66) 50%);
+    background-image: linear-gradient(to bottom, #d9d9d9 50%, rgba(39, 39, 39, 0.66) 50%);
     background-repeat: repeat-x;
     background-size: 2px 2px;
     background-position: 0 bottom;
-    text-shadow: 4px 0 #D9D9D9, 3px 0 #D9D9D9, 2px 0 #D9D9D9, 1px 0 #D9D9D9, 0 0 #D9D9D9, -1px 0 #D9D9D9, -2px 0 #D9D9D9, -3px 0 #D9D9D9, -4px 0 #D9D9D9; }
+    text-shadow: 4px 0 #d9d9d9, 3px 0 #d9d9d9, 2px 0 #d9d9d9, 1px 0 #d9d9d9, 0 0 #d9d9d9, -1px 0 #d9d9d9, -2px 0 #d9d9d9, -3px 0 #d9d9d9, -4px 0 #d9d9d9; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose p a:active,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose li a:active,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .standfirst a:active,
@@ -5412,13 +5443,17 @@
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose li a:active,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst a:active,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .sponsorship__formatted-sponsor-name a:active {
-    background-image: linear-gradient(to bottom, #D9D9D9 50%, rgba(65, 65, 65, 0.66) 50%); }
+    background-image: linear-gradient(to bottom, #d9d9d9 50%, rgba(65, 65, 65, 0.66) 50%); }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .tags .inline-list__item.more-button a, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .tags .inline-list__item.more-button a {
     border-color: #f1f1f1; }
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .prose .element-pullquote blockquote, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .prose .element-pullquote blockquote {
+    color: #676767; }
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .prose .element-pullquote blockquote footer, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .prose .element-pullquote blockquote::after, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .prose .element-pullquote blockquote::before, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .prose .element-pullquote blockquote footer, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .prose .element-pullquote blockquote::after, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .prose .element-pullquote blockquote::before {
+      color: #272727; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 a:active, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 a:active, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 a:active {
     color: #414141; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article__header, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article__header, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article__header {
-    background-color: #D9D9D9; }
+    background-color: #d9d9d9; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .advert-slot + .article, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .advert-slot + .article, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .advert-slot + .article {
     border-top: none !important; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article__header .content__labels,
@@ -5455,6 +5490,10 @@
     color: #fff; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .comment-count, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .comment-count, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .comment-count {
     border-color: #878787; }
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .prose .element-pullquote blockquote, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .prose .element-pullquote blockquote, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .prose .element-pullquote blockquote {
+    color: #676767; }
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .prose .element-pullquote blockquote footer, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .prose .element-pullquote blockquote::after, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .prose .element-pullquote blockquote::before, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .prose .element-pullquote blockquote footer, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .prose .element-pullquote blockquote::after, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .prose .element-pullquote blockquote::before, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .prose .element-pullquote blockquote footer, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .prose .element-pullquote blockquote::after, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .prose .element-pullquote blockquote::before {
+      color: #272727; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live {
     /*.article__header .section,
     .content__series-label{
@@ -5463,7 +5502,7 @@
         }
     }*/ }
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article--liveblog .article__header {
-      background-color: #D9D9D9; }
+      background-color: #d9d9d9; }
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .section__live,
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .headline,
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .standfirst,
@@ -5504,15 +5543,15 @@
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article__header,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article__body,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags {
-    background-color: #D9D9D9; }
+    background-color: #d9d9d9; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a {
-    background-image: linear-gradient(to bottom, #D9D9D9 50%, rgba(39, 39, 39, 0.66) 50%);
+    background-image: linear-gradient(to bottom, #d9d9d9 50%, rgba(39, 39, 39, 0.66) 50%);
     background-repeat: repeat-x;
     background-size: 2px 2px;
     background-position: 0 bottom;
-    text-shadow: 4px 0 #D9D9D9, 3px 0 #D9D9D9, 2px 0 #D9D9D9, 1px 0 #D9D9D9, 0 0 #D9D9D9, -1px 0 #D9D9D9, -2px 0 #D9D9D9, -3px 0 #D9D9D9, -4px 0 #D9D9D9; }
+    text-shadow: 4px 0 #d9d9d9, 3px 0 #d9d9d9, 2px 0 #d9d9d9, 1px 0 #d9d9d9, 0 0 #d9d9d9, -1px 0 #d9d9d9, -2px 0 #d9d9d9, -3px 0 #d9d9d9, -4px 0 #d9d9d9; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a:active {
-    background-image: linear-gradient(to bottom, #D9D9D9 50%, rgba(65, 65, 65, 0.66) 50%); }
+    background-image: linear-gradient(to bottom, #d9d9d9 50%, rgba(65, 65, 65, 0.66) 50%); }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags .inline-list__item a {
     color: #fff;
     background-color: #878787; }
@@ -5541,8 +5580,10 @@
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count a span[data-icon] {
     color: #272727; }
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .prose .element-pullquote blockquote footer, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .prose .element-pullquote blockquote::after, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .prose .element-pullquote blockquote::before {
+    color: #272727; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article__header {
-    background-color: #D9D9D9; }
+    background-color: #d9d9d9; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article__header .meta__byline .byline__author a {
     color: #272727;
     font-weight: bold; }
@@ -5555,16 +5596,16 @@
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .audio-player__slider__knob:active {
       background-color: #6e6e6e; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .audio-player__slider__track {
-    background-color: #CBC9C5; }
+    background-color: #cbc9c5; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags .inline-list__item a {
     color: #333;
-    background-color: #D9D9D9; }
+    background-color: #d9d9d9; }
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags .inline-list__item a:active {
       color: #1a1a1a;
       background-color: silver; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags .inline-list__item.more-button a {
     color: #333;
-    border: 1px solid #D9D9D9; }
+    border: 1px solid #d9d9d9; }
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags .inline-list__item.more-button a:active {
       color: #1a1a1a;
       border: 1px solid silver; }
@@ -5575,7 +5616,7 @@
     margin-right: 7px;
     position: relative;
     top: 2px; }
-  #sandbox .content__container:after, #sandbox .match-summary__team:after {
+  #sandbox .content__container:after, #sandbox .match-summary__team:after, #sandbox .sponsorship:after {
     content: '';
     display: table;
     clear: both; }
@@ -5612,17 +5653,17 @@
     src: url("../fonts/agate-bolditalic.otf"); } }
 @font-face {
   #sandbox {
-    font-family: 'Guardian Sans';
+    font-family: 'Guardian Text Sans Web';
     font-weight: 200;
     src: url("../fonts/GuardianSansWeb-Light.ttf"); } }
 @font-face {
   #sandbox {
-    font-family: 'Guardian Sans';
+    font-family: 'Guardian Text Sans Web';
     font-weight: 300;
     src: url("../fonts/GuardianSansWeb-Regular.ttf"); } }
 @font-face {
   #sandbox {
-    font-family: 'Guardian Sans';
+    font-family: 'Guardian Text Sans Web';
     font-weight: 600;
     src: url("../fonts/GuardianSansWeb-Semibold.ttf"); } }
 @font-face {
@@ -5754,32 +5795,47 @@
     .prose #sandbox .figure--thumbnail {
       margin-top: 6px; }
   #sandbox .figure--thumbnail-with-caption {
-    display: table;
+    display: block;
+    position: relative;
     width: 100%; }
     #sandbox .figure--thumbnail-with-caption .figure__inner {
       width: 50%;
-      display: table-cell;
-      vertical-align: top;
+      display: block;
       padding-right: 10px; }
     #sandbox .figure--thumbnail-with-caption figcaption {
-      display: table-cell;
-      vertical-align: top;
+      display: block;
+      height: 100%;
       padding: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 50%;
       border-bottom: 1px dotted rgba(153, 153, 153, 0.4);
       border-top: 1px dotted rgba(153, 153, 153, 0.4); }
+      #sandbox .figure--thumbnail-with-caption figcaption .element-image__caption {
+        height: calc(100% - 60px);
+        overflow: hidden;
+        display: block;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical; }
+      #sandbox .figure--thumbnail-with-caption figcaption .element-image__credit {
+        position: absolute;
+        bottom: 0; }
     @media all and (min-width: 40.625em) {
       #sandbox .figure--thumbnail-with-caption {
         float: left;
         width: 33%;
-        display: block;
         margin-right: 15px; }
         #sandbox .figure--thumbnail-with-caption .figure__inner {
           width: 100%;
-          display: block;
           margin-bottom: 10px;
           padding-right: 0; }
         #sandbox .figure--thumbnail-with-caption figcaption {
-          padding-bottom: 24px; } }
+          padding-bottom: 24px;
+          position: static;
+          height: auto;
+          width: 100%; } }
   #sandbox .inline-list {
     list-style: none;
     margin: 0;
@@ -5789,28 +5845,33 @@
     vertical-align: top; }
   #sandbox .more {
     padding: 0px 0px 24px 0px; }
-    #sandbox .more .more__label {
+    #sandbox .more .more__label,
+    #sandbox .more .more__button {
       display: inline-block;
       vertical-align: middle;
       color: #fff;
       font-family: "Guardian Agate Sans 1 Web", sans-serif;
       font-weight: bold;
       padding: 6px 18px 6px 14px;
-      border-radius: 40px; }
+      border-radius: 40px;
+      border: none;
+      outline: none; }
       @media all and (max-width: 40.615em) {
-        #sandbox .more .more__label {
+        #sandbox .more .more__label,
+        #sandbox .more .more__button {
           font-size: 1.4rem;
           line-height: 2.1rem; } }
       @media all and (min-width: 40.625em) {
-        #sandbox .more .more__label {
+        #sandbox .more .more__label,
+        #sandbox .more .more__button {
           font-size: 1.575rem;
           line-height: 2.275rem; } }
-      #sandbox .more .more__label:before {
-        position: relative;
-        font-size: 110%;
-        right: 5px; }
-      #sandbox .more .more__label:active {
-        color: #e6e6e6; }
+    #sandbox .more .more__label:before {
+      position: relative;
+      font-size: 110%;
+      right: 5px; }
+    #sandbox .more .more__label:active {
+      color: #e6e6e6; }
     #sandbox .more .more__text {
       position: relative;
       bottom: 3px; }
@@ -5827,9 +5888,19 @@
       #sandbox .more--comments {
         margin-left: 31.57895%; } }
     #sandbox .more--comments .more__label {
-      background-color: #005689; }
+      background-color: #005689;
+      padding: 6px 12px 6px 6px;
+      position: static; }
       #sandbox .more--comments .more__label:active {
         background-color: #003656; }
+    #sandbox .more--comments .more__text,
+    #sandbox .more--comments .more__icon {
+      color: #fff;
+      display: inline-block;
+      position: static;
+      padding: 0px 6px;
+      vertical-align: top;
+      margin-top: -1px; }
   #sandbox .more--live-blogs {
     border-bottom: 1px dotted #dcdad5; }
     @media all and (max-width: 40.615em) {
@@ -5841,9 +5912,9 @@
     @media all and (min-width: 56.25em) {
       #sandbox .more--live-blogs {
         margin-left: 31.57895%; } }
-    #sandbox .more--live-blogs .more__label {
+    #sandbox .more--live-blogs .more__button {
       background-color: #b51800; }
-      #sandbox .more--live-blogs .more__label:active {
+      #sandbox .more--live-blogs .more__button:active {
         background-color: #821100; }
   #sandbox .tags {
     color: #999;
@@ -5927,32 +5998,35 @@
     font-size: 160%;
     line-height: 1.5; }
   #sandbox .sponsorship {
-    padding: 10px 12px 20px 12px;
+    padding: 8px 12px 16px 12px;
     font-family: "Guardian Agate Sans 1 Web", sans-serif;
     line-height: 1.2;
-    border-bottom: 1px dotted #B5B3AE; }
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    align-items: flex-start;
+    -webkit-align-items: flex-start;
+    border-bottom: 1px dotted #b5b3ae;
+    font-size: 1.4rem; }
     .gallery ~ #sandbox .sponsorship {
       border-bottom: none; }
     .witness + #sandbox .sponsorship {
-      border-top: 1px dotted #B5B3AE;
+      border-top: 1px dotted #b5b3ae;
       padding-top: 20px;
       margin-top: 24px; }
-    @media all and (max-width: 40.615em) {
-      #sandbox .sponsorship {
-        font-size: 1.2rem; } }
-    @media all and (min-width: 40.625em) {
-      #sandbox .sponsorship {
-        font-size: 1.4rem; } }
-    #sandbox .sponsorship__formatted-sponsor-name {
-      color: #878787; }
-      @media all and (max-width: 40.615em) {
-        #sandbox .sponsorship__formatted-sponsor-name span:first-child {
-          display: block; } }
-    #sandbox .sponsorship__about-uri {
-      color: inherit;
-      padding-top: 1rem;
-      display: block;
-      font-weight: bold; }
+  #sandbox .sponsorship__formatted-sponsor-name {
+    color: #878787;
+    margin-bottom: 8px; }
+  #sandbox .sponsorship__about-uri {
+    margin-top: 12px;
+    font-weight: bold; }
+  #sandbox .sponsorship__logo {
+    max-height: 60px; }
+  #sandbox .outbrainText {
+    display: none; }
+  #sandbox .outbrainImage {
+    display: block; }
   #sandbox .block--discussion-thread .comment:nth-of-type(n+5) {
     display: none; }
   #sandbox .block--discussion-thread.block--discussion-thread--checked {
@@ -6022,11 +6096,9 @@
   @media all and (min-width: 40.625em) {
     #sandbox [class*="block--live-"] .block__body {
       float: left; }
-      #sandbox [class*="block--live-"] .block__body .quoted,
       #sandbox [class*="block--live-"] .block__body .twitter-tweet,
       #sandbox [class*="block--live-"] .block__body .js-tweet {
         position: relative; }
-        #sandbox [class*="block--live-"] .block__body .quoted::before,
         #sandbox [class*="block--live-"] .block__body .twitter-tweet::before,
         #sandbox [class*="block--live-"] .block__body .js-tweet::before {
           position: absolute;
@@ -6717,6 +6789,9 @@
       display: none !important; }
   #sandbox .container__body {
     overflow: hidden; }
+  #sandbox .container__outbrain {
+    overflow: hidden;
+    display: none; }
   #sandbox .android .container {
     margin: 0px 12px 0px 12px; }
     #sandbox .android .container.comments--closed .container__action .touchpoint--primary {
@@ -6765,6 +6840,12 @@
     display: none; }
   #sandbox .element-rich-link a:before {
     content: 'More on this topic'; }
+  #sandbox .prose blockquote::before, #sandbox .prose .element-pullquote blockquote::before, #sandbox .prose .element-pullquote blockquote::after {
+    font-family: "Guardian Icons", Georgia, serif;
+    font-size: 4rem;
+    font-style: normal;
+    line-height: 1;
+    display: block; }
   @media all and (max-width: 40.615em) {
     #sandbox .prose {
       font-size: 1.6rem;
@@ -6832,15 +6913,18 @@
     font-style: italic;
     margin: 24px; }
     #sandbox .prose blockquote::before {
-      color: #999;
-      font-family: "Guardian Icons", Georgia, serif;
-      font-size: 4rem;
-      font-style: normal;
-      line-height: 1;
-      display: block; }
-    #sandbox .prose blockquote.quoted::before {
-      content: '\e029';
-      margin-top: -.75rem; }
+      color: #999; }
+    #sandbox .prose blockquote.quoted {
+      position: relative;
+      padding-top: 25px; }
+      #sandbox .prose blockquote.quoted::before {
+        content: '\E092';
+        font-size: 3rem;
+        content: '\E092';
+        position: absolute;
+        top: 2px;
+        left: 0;
+        line-height: 0; }
     #sandbox .prose blockquote.twitter-tweet, #sandbox .prose blockquote.js-tweet {
       font-family: "Guardian Agate Sans 1 Web", sans-serif;
       font-size: 1.4rem;
@@ -6852,6 +6936,62 @@
         font-size: 1.6rem;
         line-height: 2.2rem;
         margin: 6px 0px; }
+  #sandbox .prose .element-pullquote {
+    position: relative;
+    margin: 24px 0px 24px 0px; }
+    #sandbox .prose .element-pullquote blockquote {
+      margin: 0;
+      font-style: normal;
+      font-size: 2rem;
+      line-height: 1.3;
+      padding: 25px 0; }
+      #sandbox .prose .element-pullquote blockquote p {
+        margin: 0; }
+      #sandbox .prose .element-pullquote blockquote cite {
+        font-style: normal;
+        font-size: 1.8rem; }
+      #sandbox .prose .element-pullquote blockquote::before, #sandbox .prose .element-pullquote blockquote::after {
+        font-size: 3rem;
+        color: #005689;
+        content: '\E092';
+        position: absolute;
+        top: 2px;
+        left: 0;
+        line-height: 0; }
+      #sandbox .prose .element-pullquote blockquote::after {
+        content: '\E096';
+        top: auto;
+        bottom: 19px; }
+      #sandbox .prose .element-pullquote blockquote footer {
+        color: #005689; }
+    @media all and (min-width: 40.625em) {
+      #sandbox .prose .element-pullquote {
+        max-width: 280px;
+        margin-right: 12px;
+        float: left; } }
+  #sandbox .prose figure {
+    margin: 12px 12px 0px 0px; }
+    #sandbox .prose figure.figure-wide img {
+      height: auto; }
+    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+      #sandbox .prose figure.figure-wide figcaption {
+        padding-right: 23.94366%; } }
+    @media all and (min-width: 56.25em) {
+      #sandbox .prose figure.figure-wide figcaption {
+        padding-right: 24.21053%; } }
+    #sandbox .prose figure.figure-inline {
+      margin-right: 12px;
+      float: left; }
+      @media all and (min-width: 28.125em) {
+        #sandbox .prose figure.figure-inline {
+          margin: 6px 12px 0px 0px;
+          float: left; }
+          #sandbox .prose figure.figure-inline img {
+            width: 100%;
+            height: auto; } }
+      #sandbox .prose figure.figure-inline figcaption {
+        padding-left: 0;
+        padding-right: 0; }
   #sandbox .prose *:first-child {
     margin-top: 0; }
     #sandbox .prose *:first-child .aside {
