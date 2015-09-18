@@ -142,7 +142,16 @@
             border-top: none;
         }
      
-       
+        .prose .element-pullquote {
+            blockquote {
+                footer,
+                &::after,
+                &::before {
+                    color: color(tone-live);
+                }
+            }
+        }
+        
         .meta {
             background-color: color(tone-live-accent);
             border: 0;
@@ -196,14 +205,14 @@
         }
          
         a.alerts--new:active, a.alerts--new.following {
-            background-color: color(shade-3);
+            background-color: color(tone-live);
             color: color(shade-7);
         }
 
         a.alerts--new,  a.alerts--new.following:active {
-            border-color: color(shade-4);
+            border-color: color(tone-live);
             background-color: transparent;
-            color: color(shade-3);
+            color: color(tone-live);
         }
     }
 

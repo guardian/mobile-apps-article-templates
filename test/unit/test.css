@@ -1170,6 +1170,20 @@
   */
   /*doc
   ---
+  title: Error
+  name:  error
+  category: Modules
+  ---
+  Display an error message when content is unavailable.
+  
+  ```html_example
+  <div class="error-message error-message--expired-content">
+      <h1 class="headline error-message__title">Sorry – the page you are looking for has been removed.</h1>
+  </div>
+  ```
+  */
+  /*doc
+  ---
   title: Discussion
   name: block--discussion
   category: Blocks
@@ -3388,8 +3402,7 @@
     @media all and (min-width: 56.25em) {
       #sandbox .comment-count {
         width: 24.21053%; } }
-    .test--new-alerts .meta #sandbox .comment-count {
-      border: 5px solid blue;
+    .meta #sandbox .comment-count {
       display: none; }
   @media all and (max-width: 40.615em) {
     #sandbox .comment-count__label {
@@ -3761,7 +3774,7 @@
       color: #333; }
     #sandbox .cricket .tone--liveBlog.is-live .article__header--cricket .meta,
     #sandbox .cricket .tone--deadBlog .article__header--cricket .meta {
-      width: 50%;
+      width: 100%;
       line-height: 1.2em;
       background-color: transparent;
       display: inline-block;
@@ -3770,10 +3783,13 @@
     #sandbox .cricket .tone--deadBlog .article__header--cricket .meta__misc {
       padding-bottom: 0;
       padding-top: 0; }
+    #sandbox .cricket .tone--liveBlog.is-live .article__header--cricket .meta__pubdate,
+    #sandbox .cricket .tone--deadBlog .article__header--cricket .meta__pubdate {
+      padding-bottom: 1.2rem; }
     #sandbox .cricket .tone--liveBlog.is-live .article__header--cricket .cricket-match-basic-follow,
     #sandbox .cricket .tone--deadBlog .article__header--cricket .cricket-match-basic-follow {
       width: 48.5%;
-      padding: 0 12px;
+      padding: 12px 12px;
       vertical-align: text-bottom;
       display: inline-block; }
       #sandbox .cricket .tone--liveBlog.is-live .article__header--cricket .cricket-match-basic-follow a,
@@ -4555,6 +4571,8 @@
     #sandbox .tone--comment .article--comment .prose table,
     #sandbox .tone--comment .article--comment .table {
       border-top-color: #e6711b; }
+    #sandbox .tone--comment .article--comment .prose .element-pullquote blockquote footer, #sandbox .tone--comment .article--comment .prose .element-pullquote blockquote::after, #sandbox .tone--comment .article--comment .prose .element-pullquote blockquote::before {
+      color: #e6711b; }
     #sandbox .tone--comment .article--comment .article__header .headline__byline {
       color: #e6711b; }
     #sandbox .tone--comment .article--comment .article__header .byline__author {
@@ -4633,6 +4651,14 @@
     #sandbox .tone--feature3 .article--feature .prose table,
     #sandbox .tone--feature3 .article--feature .table {
       border-top-color: #b82266; }
+    #sandbox .tone--feature1 .article--feature .prose .element-pullquote blockquote footer, #sandbox .tone--feature1 .article--feature .prose .element-pullquote blockquote::after, #sandbox .tone--feature1 .article--feature .prose .element-pullquote blockquote::before,
+    #sandbox .tone--feature2 .article--feature .prose .element-pullquote blockquote footer,
+    #sandbox .tone--feature2 .article--feature .prose .element-pullquote blockquote::after,
+    #sandbox .tone--feature2 .article--feature .prose .element-pullquote blockquote::before,
+    #sandbox .tone--feature3 .article--feature .prose .element-pullquote blockquote footer,
+    #sandbox .tone--feature3 .article--feature .prose .element-pullquote blockquote::after,
+    #sandbox .tone--feature3 .article--feature .prose .element-pullquote blockquote::before {
+      color: #951c55; }
   #sandbox .tone--feature1 .article--feature .article__header a,
   #sandbox .tone--feature2 .article--feature .article__header a,
   #sandbox .tone--feature3 .article--feature .article__header a {
@@ -4815,6 +4841,8 @@
       border-top-color: #b51800; }
     .cricket #sandbox .tone--liveBlog.is-live .article--liveblog {
       border-top: none; }
+    #sandbox .tone--liveBlog.is-live .article--liveblog .prose .element-pullquote blockquote footer, #sandbox .tone--liveBlog.is-live .article--liveblog .prose .element-pullquote blockquote::after, #sandbox .tone--liveBlog.is-live .article--liveblog .prose .element-pullquote blockquote::before {
+      color: #b51800; }
     #sandbox .tone--liveBlog.is-live .article--liveblog .meta {
       background-color: #cc2b12;
       border: 0;
@@ -4849,12 +4877,12 @@
   .cricket #sandbox .tone--liveBlog.is-live .alerts--new {
     margin: 0; }
   .cricket #sandbox .tone--liveBlog.is-live a.alerts--new:active, .cricket #sandbox .tone--liveBlog.is-live a.alerts--new.following {
-    background-color: #999;
+    background-color: #b51800;
     color: #fff; }
   .cricket #sandbox .tone--liveBlog.is-live a.alerts--new, .cricket #sandbox .tone--liveBlog.is-live a.alerts--new.following:active {
-    border-color: #dcdad5;
+    border-color: #b51800;
     background-color: transparent;
-    color: #999; }
+    color: #b51800; }
   #sandbox .tone--media .witness .witness__sponsor-logo {
     fill: #fff; }
   #sandbox .tone--media .section__container {
@@ -4888,6 +4916,8 @@
     border-top-style: dotted; }
   #sandbox .tone--media .article--audio .article__header {
     background-image: -webkit-canvas(circles); }
+  #sandbox .tone--media .sponsorship__logo {
+    color: #878787; }
   #sandbox .tone--media .article--audio,
   #sandbox .tone--media .article--visual {
     border-top-color: #fb0;
@@ -4911,6 +4941,14 @@
     #sandbox .tone--media .article--visual .prose table,
     #sandbox .tone--media .article--visual .table {
       border-top-color: #fb0; }
+    #sandbox .tone--media .article--audio .prose .element-pullquote blockquote,
+    #sandbox .tone--media .article--visual .prose .element-pullquote blockquote {
+      color: #fff; }
+      #sandbox .tone--media .article--audio .prose .element-pullquote blockquote footer, #sandbox .tone--media .article--audio .prose .element-pullquote blockquote::after, #sandbox .tone--media .article--audio .prose .element-pullquote blockquote::before,
+      #sandbox .tone--media .article--visual .prose .element-pullquote blockquote footer,
+      #sandbox .tone--media .article--visual .prose .element-pullquote blockquote::after,
+      #sandbox .tone--media .article--visual .prose .element-pullquote blockquote::before {
+        color: #fb0; }
     #sandbox .tone--media .article--audio .audio-player,
     #sandbox .tone--media .article--visual .audio-player {
       background-color: #1a1a1a; }
@@ -5080,6 +5118,8 @@
     color: #333; }
   #sandbox .tone--review .article {
     border-top-color: #ffce4b; }
+    #sandbox .tone--review .article .prose .element-pullquote blockquote footer, #sandbox .tone--review .article .prose .element-pullquote blockquote::before, #sandbox .tone--review .article .prose .element-pullquote blockquote::after {
+      color: #ffce4b; }
   #sandbox .tone--review .extras {
     padding-top: 1px;
     background-color: #fff; }
@@ -5292,7 +5332,7 @@
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis) .element-rich-link a,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis) .prose h2,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis) .article--liveblog .article__header .section {
-    font-family: "Guardian Sans", sans-serif; }
+    font-family: "Guardian Text Sans Web", sans-serif; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis) .sponsorship a,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis) .article__body a, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article--liveblog .article__header .sponsorship a {
     color: #272727; }
@@ -5337,7 +5377,7 @@
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .main-media__caption {
-    background-color: #D9D9D9; }
+    background-color: #d9d9d9; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .section__container,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .meta,
@@ -5390,11 +5430,11 @@
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose li a,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst a,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .sponsorship__formatted-sponsor-name a {
-    background-image: linear-gradient(to bottom, #D9D9D9 50%, rgba(39, 39, 39, 0.66) 50%);
+    background-image: linear-gradient(to bottom, #d9d9d9 50%, rgba(39, 39, 39, 0.66) 50%);
     background-repeat: repeat-x;
     background-size: 2px 2px;
     background-position: 0 bottom;
-    text-shadow: 4px 0 #D9D9D9, 3px 0 #D9D9D9, 2px 0 #D9D9D9, 1px 0 #D9D9D9, 0 0 #D9D9D9, -1px 0 #D9D9D9, -2px 0 #D9D9D9, -3px 0 #D9D9D9, -4px 0 #D9D9D9; }
+    text-shadow: 4px 0 #d9d9d9, 3px 0 #d9d9d9, 2px 0 #d9d9d9, 1px 0 #d9d9d9, 0 0 #d9d9d9, -1px 0 #d9d9d9, -2px 0 #d9d9d9, -3px 0 #d9d9d9, -4px 0 #d9d9d9; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose p a:active,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose li a:active,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .standfirst a:active,
@@ -5402,13 +5442,17 @@
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose li a:active,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst a:active,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .sponsorship__formatted-sponsor-name a:active {
-    background-image: linear-gradient(to bottom, #D9D9D9 50%, rgba(65, 65, 65, 0.66) 50%); }
+    background-image: linear-gradient(to bottom, #d9d9d9 50%, rgba(65, 65, 65, 0.66) 50%); }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .tags .inline-list__item.more-button a, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .tags .inline-list__item.more-button a {
     border-color: #f1f1f1; }
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .prose .element-pullquote blockquote, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .prose .element-pullquote blockquote {
+    color: #676767; }
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .prose .element-pullquote blockquote footer, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .prose .element-pullquote blockquote::after, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .prose .element-pullquote blockquote::before, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .prose .element-pullquote blockquote footer, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .prose .element-pullquote blockquote::after, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .prose .element-pullquote blockquote::before {
+      color: #272727; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 a:active, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 a:active, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 a:active {
     color: #414141; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article__header, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article__header, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article__header {
-    background-color: #D9D9D9; }
+    background-color: #d9d9d9; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .advert-slot + .article, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .advert-slot + .article, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .advert-slot + .article {
     border-top: none !important; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article__header .content__labels,
@@ -5445,6 +5489,10 @@
     color: #fff; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .comment-count, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .comment-count, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .comment-count {
     border-color: #878787; }
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .prose .element-pullquote blockquote, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .prose .element-pullquote blockquote, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .prose .element-pullquote blockquote {
+    color: #676767; }
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .prose .element-pullquote blockquote footer, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .prose .element-pullquote blockquote::after, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .prose .element-pullquote blockquote::before, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .prose .element-pullquote blockquote footer, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .prose .element-pullquote blockquote::after, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .prose .element-pullquote blockquote::before, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .prose .element-pullquote blockquote footer, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .prose .element-pullquote blockquote::after, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .prose .element-pullquote blockquote::before {
+      color: #272727; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live {
     /*.article__header .section,
     .content__series-label{
@@ -5453,7 +5501,7 @@
         }
     }*/ }
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article--liveblog .article__header {
-      background-color: #D9D9D9; }
+      background-color: #d9d9d9; }
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .section__live,
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .headline,
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .standfirst,
@@ -5494,15 +5542,15 @@
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article__header,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article__body,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags {
-    background-color: #D9D9D9; }
+    background-color: #d9d9d9; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a {
-    background-image: linear-gradient(to bottom, #D9D9D9 50%, rgba(39, 39, 39, 0.66) 50%);
+    background-image: linear-gradient(to bottom, #d9d9d9 50%, rgba(39, 39, 39, 0.66) 50%);
     background-repeat: repeat-x;
     background-size: 2px 2px;
     background-position: 0 bottom;
-    text-shadow: 4px 0 #D9D9D9, 3px 0 #D9D9D9, 2px 0 #D9D9D9, 1px 0 #D9D9D9, 0 0 #D9D9D9, -1px 0 #D9D9D9, -2px 0 #D9D9D9, -3px 0 #D9D9D9, -4px 0 #D9D9D9; }
+    text-shadow: 4px 0 #d9d9d9, 3px 0 #d9d9d9, 2px 0 #d9d9d9, 1px 0 #d9d9d9, 0 0 #d9d9d9, -1px 0 #d9d9d9, -2px 0 #d9d9d9, -3px 0 #d9d9d9, -4px 0 #d9d9d9; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a:active {
-    background-image: linear-gradient(to bottom, #D9D9D9 50%, rgba(65, 65, 65, 0.66) 50%); }
+    background-image: linear-gradient(to bottom, #d9d9d9 50%, rgba(65, 65, 65, 0.66) 50%); }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags .inline-list__item a {
     color: #fff;
     background-color: #878787; }
@@ -5531,8 +5579,10 @@
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count a span[data-icon] {
     color: #272727; }
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .prose .element-pullquote blockquote footer, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .prose .element-pullquote blockquote::after, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .prose .element-pullquote blockquote::before {
+    color: #272727; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article__header {
-    background-color: #D9D9D9; }
+    background-color: #d9d9d9; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article__header .meta__byline .byline__author a {
     color: #272727;
     font-weight: bold; }
@@ -5545,16 +5595,16 @@
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .audio-player__slider__knob:active {
       background-color: #6e6e6e; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .audio-player__slider__track {
-    background-color: #CBC9C5; }
+    background-color: #cbc9c5; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags .inline-list__item a {
     color: #333;
-    background-color: #D9D9D9; }
+    background-color: #d9d9d9; }
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags .inline-list__item a:active {
       color: #1a1a1a;
       background-color: silver; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags .inline-list__item.more-button a {
     color: #333;
-    border: 1px solid #D9D9D9; }
+    border: 1px solid #d9d9d9; }
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags .inline-list__item.more-button a:active {
       color: #1a1a1a;
       border: 1px solid silver; }
@@ -5597,17 +5647,17 @@
     src: url("../fonts/agate-bolditalic.otf"); } }
 @font-face {
   #sandbox {
-    font-family: 'Guardian Sans';
+    font-family: 'Guardian Text Sans Web';
     font-weight: 200;
     src: url("../fonts/GuardianSansWeb-Light.ttf"); } }
 @font-face {
   #sandbox {
-    font-family: 'Guardian Sans';
+    font-family: 'Guardian Text Sans Web';
     font-weight: 300;
     src: url("../fonts/GuardianSansWeb-Regular.ttf"); } }
 @font-face {
   #sandbox {
-    font-family: 'Guardian Sans';
+    font-family: 'Guardian Text Sans Web';
     font-weight: 600;
     src: url("../fonts/GuardianSansWeb-Semibold.ttf"); } }
 @font-face {
@@ -5752,12 +5802,10 @@
         #sandbox .more .more__button {
           font-size: 1.575rem;
           line-height: 2.275rem; } }
-    #sandbox .more .more__icon:before,
     #sandbox .more .more__label:before {
       position: relative;
       font-size: 110%;
       right: 5px; }
-    #sandbox .more .more__icon:active,
     #sandbox .more .more__label:active {
       color: #e6e6e6; }
     #sandbox .more .more__text {
@@ -5776,9 +5824,19 @@
       #sandbox .more--comments {
         margin-left: 31.57895%; } }
     #sandbox .more--comments .more__label {
-      background-color: #005689; }
+      background-color: #005689;
+      padding: 6px 12px 6px 6px;
+      position: static; }
       #sandbox .more--comments .more__label:active {
         background-color: #003656; }
+    #sandbox .more--comments .more__text,
+    #sandbox .more--comments .more__icon {
+      color: #fff;
+      display: inline-block;
+      position: static;
+      padding: 0px 6px;
+      vertical-align: top;
+      margin-top: -1px; }
   #sandbox .more--live-blogs {
     border-bottom: 1px dotted #dcdad5; }
     @media all and (max-width: 40.615em) {
@@ -5885,12 +5943,12 @@
     -webkit-flex-direction: column;
     align-items: flex-start;
     -webkit-align-items: flex-start;
-    border-bottom: 1px dotted #B5B3AE;
+    border-bottom: 1px dotted #b5b3ae;
     font-size: 1.4rem; }
     .gallery ~ #sandbox .sponsorship {
       border-bottom: none; }
     .witness + #sandbox .sponsorship {
-      border-top: 1px dotted #B5B3AE;
+      border-top: 1px dotted #b5b3ae;
       padding-top: 20px;
       margin-top: 24px; }
   #sandbox .sponsorship__formatted-sponsor-name {
@@ -5901,6 +5959,18 @@
     font-weight: bold; }
   #sandbox .sponsorship__logo {
     max-height: 60px; }
+  #sandbox .outbrainText {
+    display: none; }
+  #sandbox .outbrainImage {
+    display: block; }
+  #sandbox .error-message {
+    background: #fff;
+    padding: 12px;
+    min-height: 100vh; }
+    #sandbox .error-message .error-message__title {
+      margin-bottom: 24px; }
+    #sandbox .error-message .error-message__text {
+      margin: 12px 0px; }
   #sandbox .block--discussion-thread .comment:nth-of-type(n+5) {
     display: none; }
   #sandbox .block--discussion-thread.block--discussion-thread--checked {
@@ -5970,11 +6040,9 @@
   @media all and (min-width: 40.625em) {
     #sandbox [class*="block--live-"] .block__body {
       float: left; }
-      #sandbox [class*="block--live-"] .block__body .quoted,
       #sandbox [class*="block--live-"] .block__body .twitter-tweet,
       #sandbox [class*="block--live-"] .block__body .js-tweet {
         position: relative; }
-        #sandbox [class*="block--live-"] .block__body .quoted::before,
         #sandbox [class*="block--live-"] .block__body .twitter-tweet::before,
         #sandbox [class*="block--live-"] .block__body .js-tweet::before {
           position: absolute;
@@ -6665,6 +6733,9 @@
       display: none !important; }
   #sandbox .container__body {
     overflow: hidden; }
+  #sandbox .container__outbrain {
+    overflow: hidden;
+    display: none; }
   #sandbox .android .container {
     margin: 0px 12px 0px 12px; }
     #sandbox .android .container.comments--closed .container__action .touchpoint--primary {
@@ -6713,6 +6784,12 @@
     display: none; }
   #sandbox .element-rich-link a:before {
     content: 'More on this topic'; }
+  #sandbox .prose blockquote::before, #sandbox .prose .element-pullquote blockquote::before, #sandbox .prose .element-pullquote blockquote::after {
+    font-family: "Guardian Icons", Georgia, serif;
+    font-size: 4rem;
+    font-style: normal;
+    line-height: 1;
+    display: block; }
   @media all and (max-width: 40.615em) {
     #sandbox .prose {
       font-size: 1.6rem;
@@ -6780,15 +6857,18 @@
     font-style: italic;
     margin: 24px; }
     #sandbox .prose blockquote::before {
-      color: #999;
-      font-family: "Guardian Icons", Georgia, serif;
-      font-size: 4rem;
-      font-style: normal;
-      line-height: 1;
-      display: block; }
-    #sandbox .prose blockquote.quoted::before {
-      content: '\e029';
-      margin-top: -.75rem; }
+      color: #999; }
+    #sandbox .prose blockquote.quoted {
+      position: relative;
+      padding-top: 25px; }
+      #sandbox .prose blockquote.quoted::before {
+        content: '\E092';
+        font-size: 3rem;
+        content: '\E092';
+        position: absolute;
+        top: 2px;
+        left: 0;
+        line-height: 0; }
     #sandbox .prose blockquote.twitter-tweet, #sandbox .prose blockquote.js-tweet {
       font-family: "Guardian Agate Sans 1 Web", sans-serif;
       font-size: 1.4rem;
@@ -6800,6 +6880,39 @@
         font-size: 1.6rem;
         line-height: 2.2rem;
         margin: 6px 0px; }
+  #sandbox .prose .element-pullquote {
+    position: relative;
+    margin: 24px 0px 24px 0px; }
+    #sandbox .prose .element-pullquote blockquote {
+      margin: 0;
+      font-style: normal;
+      font-size: 2rem;
+      line-height: 1.3;
+      padding: 25px 0; }
+      #sandbox .prose .element-pullquote blockquote p {
+        margin: 0; }
+      #sandbox .prose .element-pullquote blockquote cite {
+        font-style: normal;
+        font-size: 1.8rem; }
+      #sandbox .prose .element-pullquote blockquote::before, #sandbox .prose .element-pullquote blockquote::after {
+        font-size: 3rem;
+        color: #005689;
+        content: '\E092';
+        position: absolute;
+        top: 2px;
+        left: 0;
+        line-height: 0; }
+      #sandbox .prose .element-pullquote blockquote::after {
+        content: '\E096';
+        top: auto;
+        bottom: 19px; }
+      #sandbox .prose .element-pullquote blockquote footer {
+        color: #005689; }
+    @media all and (min-width: 40.625em) {
+      #sandbox .prose .element-pullquote {
+        max-width: 280px;
+        margin-right: 12px;
+        float: left; } }
   #sandbox .prose figure {
     margin: 12px 0px; }
     #sandbox .prose figure.figure-wide img {
