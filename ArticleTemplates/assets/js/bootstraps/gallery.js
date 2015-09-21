@@ -13,10 +13,9 @@ define([
     var modules = {
         galleryLayout: function () {
             collagePlus.init(".gallery", ".gallery__image");
-            bean.on(window, 'resize.gallery orientationchange.gallery', window.ThrottleDebounce.debounce(250, false, function () {
+            bean.on(window, 'resize.gallery orientationchange.gallery', window.ThrottleDebounce.debounce(100, false, function () {
                 $(".gallery")[0].removeAttribute("style");
                 collagePlus.init(".gallery", ".gallery__image");
-                console.log('in gallery resize orientationchange event');
             }));
             
             // remove this once ios stops using..
