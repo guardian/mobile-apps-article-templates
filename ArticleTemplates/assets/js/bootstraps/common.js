@@ -45,8 +45,7 @@ define([
         figcaptionToggle: function () {
             // Show/hides figure caption
             if ($('.main-media__caption__icon')[0]) {
-                bean.on($('.main-media__caption__icon')[0], 'click touchstart', window.ThrottleDebounce.debounce( 250, true, function () {
-                    console.log('in click / touch start');
+                bean.on($('.main-media__caption__icon')[0], 'click touchend', window.ThrottleDebounce.debounce( 250, true, function () {
                     $('.main-media__caption__text').toggleClass('is-visible');
                 }));
             }
