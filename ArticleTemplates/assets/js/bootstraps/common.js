@@ -144,6 +144,14 @@ define([
                 MoreTags.refresh();
             };
             window.applyNativeFunctionCall('articleTagInserter');
+
+            window.videoPositioning = function (html) {
+                var mainMedia = $(".main-media #video-URL");
+                if(mainMedia) {
+                    window.GuardianJSInterface.videoPosition(mainMedia.offset().left, mainMedia.offset().top, mainMedia.attr("href"));
+                }
+            };
+            window.applyNativeFunctionCall('videoPositioning');
         },
 
         offline: function() {
