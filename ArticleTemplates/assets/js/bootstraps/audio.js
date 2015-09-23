@@ -111,7 +111,12 @@ define([
                             h = $(".article__header").offset().height,
                             w = $(".article__header").offset().width,
                             size = (h * w) / 8000,
-                            ctx = document.getCSSCanvasContext("2d", "circles", w, h);
+                            canvas = document.createElement("canvas"),
+                            ctx = canvas.getContext('2d');
+
+                        canvas.width = w;
+                        canvas.height = h;
+                        canvas.className = "cutout__background";
 
                         // Draw Circles
                         for (var i = 0; i < numOfCircles; i++) {
@@ -123,6 +128,8 @@ define([
                             ctx.fill();
                             size = size * 1.2;
                         }
+
+                        $(".article__header").append(canvas);
                         $(".cutout__container").attr("data-background", "true");
                     }
                 };

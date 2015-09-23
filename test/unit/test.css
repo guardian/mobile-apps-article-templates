@@ -4079,7 +4079,8 @@
     padding-left: 68px;
     position: relative;
     height: 68px;
-    width: 100%; }
+    width: 100%;
+    z-index: 1; }
   #sandbox .audio-player__button {
     position: absolute;
     top: 12px;
@@ -4420,19 +4421,26 @@
       margin: 12px 12px 0px 8px; }
   #sandbox .android .article--liveblog .article__body--liveblog__pinned figcaption {
     padding: 6px 12px 24px 12px; }
-  #sandbox .article--audio .article__header .cutout__container {
-    padding-right: 0;
-    padding-bottom: 84px;
+  #sandbox .article--audio .article__header {
     position: relative; }
-  #sandbox .article--audio .article__header .headline {
-    padding-right: 25.35211%; }
-  #sandbox .article--audio .article__header .meta {
-    margin-bottom: 1px;
-    border-bottom: 0;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0; }
+    #sandbox .article--audio .article__header .cutout__background {
+      position: absolute;
+      top: 0;
+      left: 0; }
+    #sandbox .article--audio .article__header .cutout__container {
+      padding-right: 0;
+      padding-bottom: 84px;
+      position: relative;
+      z-index: 1; }
+    #sandbox .article--audio .article__header .headline {
+      padding-right: 25.35211%; }
+    #sandbox .article--audio .article__header .meta {
+      margin-bottom: 1px;
+      border-bottom: 0;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0; }
   #sandbox .article--audio .content__labels:first-child::before {
     content: '\e047';
     font-family: "Guardian Icons", Georgia, serif;
@@ -5284,7 +5292,6 @@
     border-top-color: #a7d8f2; }
   #sandbox .tone--podcast .article__header {
     background-color: #484848;
-    background-image: -webkit-canvas(circles);
     /*        .card__title--audio {
                 &::before {
                     content: '\e047';

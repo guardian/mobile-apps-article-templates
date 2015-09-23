@@ -2271,7 +2271,8 @@ Play a piece of audio, i.e. a podcast.
   padding-left: 68px;
   position: relative;
   height: 68px;
-  width: 100%; }
+  width: 100%;
+  z-index: 1; }
 
 .audio-player__button {
   position: absolute;
@@ -2655,19 +2656,26 @@ Display a selection of images that form a gallery.
 .android .article--liveblog .article__body--liveblog__pinned figcaption {
   padding: 6px 12px 24px 12px; }
 
-.article--audio .article__header .cutout__container {
-  padding-right: 0;
-  padding-bottom: 84px;
+.article--audio .article__header {
   position: relative; }
-.article--audio .article__header .headline {
-  padding-right: 25.35211%; }
-.article--audio .article__header .meta {
-  margin-bottom: 1px;
-  border-bottom: 0;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0; }
+  .article--audio .article__header .cutout__background {
+    position: absolute;
+    top: 0;
+    left: 0; }
+  .article--audio .article__header .cutout__container {
+    padding-right: 0;
+    padding-bottom: 84px;
+    position: relative;
+    z-index: 1; }
+  .article--audio .article__header .headline {
+    padding-right: 25.35211%; }
+  .article--audio .article__header .meta {
+    margin-bottom: 1px;
+    border-bottom: 0;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0; }
 .article--audio .content__labels:first-child::before {
   content: '\e047';
   font-family: "Guardian Icons", Georgia, serif;
@@ -3531,7 +3539,6 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   border-top-color: #a7d8f2; }
 .tone--podcast .article__header {
   background-color: #484848;
-  background-image: -webkit-canvas(circles);
   /*        .card__title--audio {
               &::before {
                   content: '\e047';

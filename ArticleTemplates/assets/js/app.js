@@ -109,7 +109,7 @@ require([
     var skipStyle = scriptTag.getAttribute('data-skip-style');
 
     if(!skipStyle){
-        loadCss('assets/css/fonts-async.css');
+        //loadCss('assets/css/fonts-async.css');
         loadCss('assets/css/style-async.css');
     }
 });
