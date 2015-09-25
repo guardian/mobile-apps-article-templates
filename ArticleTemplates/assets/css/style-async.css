@@ -1328,7 +1328,7 @@ category: Containers
 Display a standard article card.
 
 ```html_example
-<ul class="related-cards" id="related-content-body">
+<ul class="cards" id="related-content-body">
     <li class="card has-image card--news">
         <a class="card__link" href="x-gu://related_item/mobile-apps.guardianapis.com/items/us-news/2014/nov/16/barack-obama-basks-success-asia-pacific-sweep">
             <h3 class="card__title">
@@ -1373,10 +1373,16 @@ Display a standard article card.
 ```
 */
 .cards {
-  overflow: hidden;
+  overflow-y: scroll;
   padding: 12px; }
   .cards__list {
-    width: 588px; }
+    width: 572px; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      .cards__list {
+        width: 743.6px; } }
+    @media all and (min-width: 56.25em) {
+      .cards__list {
+        width: 858px; } }
 
 .card {
   float: left;
@@ -1387,19 +1393,39 @@ Display a standard article card.
   background-color: #fff;
   border-top: 1px solid #4bc6df;
   border-bottom: 1px solid #dcdad5; }
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+    .card {
+      width: 182px;
+      margin-right: 5.2px; } }
+  @media all and (min-width: 56.25em) {
+    .card {
+      width: 210px;
+      margin-right: 6px; } }
+  .card:last-child {
+    margin-right: 0; }
   .card__title {
     height: 110px;
-    overflow: hidden;
-    color: #333;
     padding: 6px;
+    color: #333;
     font: 200 1.6rem/2rem "Guardian Egyptian Web", Georgia, serif;
     text-rendering: optimizeLegibility;
     overflow: hidden;
     text-overflow: ellipsis;
     word-wrap: break-word;
+    display: block;
     display: -webkit-box;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      .card__title {
+        height: 143px;
+        font-size: 2.08rem;
+        line-height: 2.6rem; } }
+    @media all and (min-width: 56.25em) {
+      .card__title {
+        height: 165px;
+        font-size: 2.4rem;
+        line-height: 3rem; } }
   .card__meta {
     color: #999;
     font: 1.4rem "Guardian Agate Sans 1 Web", sans-serif;
@@ -1414,27 +1440,60 @@ Display a standard article card.
     margin-right: 6px; }
   .card__object {
     padding: 0;
-    height: 60%;
+    height: 84px;
     overflow: hidden; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      .card__object {
+        height: 109.2px; } }
+    @media all and (min-width: 56.25em) {
+      .card__object {
+        height: 126px; } }
   .card__image {
     width: 100%;
     display: block; }
-  .card .card__standfirst {
+  .card__standfirst {
+    padding: 0px 6px;
     color: #767676;
-    font-family: "Guardian Text Egyptian Web", Georgia, serif;
-    font-size: 1.4rem;
-    line-height: 1.8rem;
-    text-rendering: optimizeLegibility; }
+    font: 1.2rem/1.6em "Guardian Text Egyptian Web", Georgia, serif;
+    text-rendering: optimizeLegibility;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      .card__standfirst {
+        font-size: 1.56rem;
+        line-height: 2.08rem; } }
+    @media all and (min-width: 56.25em) {
+      .card__standfirst {
+        font-size: 1.8rem;
+        line-height: 2.4rem; } }
+  .card__cutout {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 0; }
   .card .touchpoint {
     position: absolute;
     bottom: 0;
     z-index: 2;
     padding: 6px; }
-  .card .card__cutout {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    z-index: 0; }
+  .card--comment .card__title:before {
+    display: inline-block;
+    margin: -12px 4px 0px 0px;
+    content: "\e029";
+    color: #999;
+    font: 2.3rem "Guardian Icons", Georgia, serif;
+    speak: none; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      .card--comment .card__title:before {
+        font-size: 2.99rem; } }
+    @media all and (min-width: 56.25em) {
+      .card--comment .card__title:before {
+        font-size: 3.45rem; } }
 
 /*doc
 ---

@@ -179,6 +179,17 @@ $meta-lead-2: 2.2rem;
     }    
 }
 
+// ellipses text
+@mixin text-ellipses($lines) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+}
+
 // Clearfix
 %clearfix {
     &:after {

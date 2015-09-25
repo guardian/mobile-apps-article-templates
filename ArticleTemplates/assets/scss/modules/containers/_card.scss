@@ -7,7 +7,7 @@ category: Containers
 Display a standard article card.
 
 ```html_example
-<ul class="related-cards" id="related-content-body">
+<ul class="cards" id="related-content-body">
     <li class="card has-image card--news">
         <a class="card__link" href="x-gu://related_item/mobile-apps.guardianapis.com/items/us-news/2014/nov/16/barack-obama-basks-success-asia-pacific-sweep">
             <h3 class="card__title">
@@ -53,39 +53,65 @@ Display a standard article card.
 */
 
 .cards {
-    overflow: hidden;
+    overflow-y: scroll;
     padding: base-px(1);
 
     &__list {
-        width: 588px;
+        width: ($card-width * $number-related-cards) + (($number-related-cards - 1) * base-px($card-gutter));
+         
+        @include mq(col2, col3) {
+            width: (($card-width * $card-upsize-col2) * $number-related-cards) + (($number-related-cards - 1) * (base-px($card-gutter) * $card-upsize-col2));
+        }
+
+        @include mq($from: col3) {
+            width: (($card-width * $card-upsize-col3) * $number-related-cards) + (($number-related-cards - 1) * (base-px($card-gutter) * $card-upsize-col3));
+        }
     }
 }
 
 .card {
     float: left; 
-    width: 140px;
-    margin-right: base-px(1/3);
+    width: $card-width;
+    margin-right: base-px($card-gutter);
     position: relative;
     color: color(shade-1);
     background-color: #fff;
     border-top: 1px solid color(tone-news-accent);
     border-bottom: 1px solid color(shade-4);
 
+    @include mq(col2, col3) {
+        width: $card-width * $card-upsize-col2;
+        margin-right: base-px($card-gutter) * $card-upsize-col2;
+    }
+
+    @include mq($from: col3) {
+        width: $card-width * $card-upsize-col3;
+        margin-right: base-px($card-gutter) * $card-upsize-col3;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+
     &__title {
         height: 110px;
-        overflow: hidden;
-        
-        color: color(shade-1);
         padding: base-px(0.5);
+        color: color(shade-1);
         font: 200 1.6rem/2.0rem $egyptian-display;
         text-rendering: optimizeLegibility;
+        @include text-ellipses(5);
 
-        overflow: hidden;
-        text-overflow: ellipsis;
-        word-wrap: break-word;
-        display: -webkit-box;
-        -webkit-line-clamp: 5;
-        -webkit-box-orient: vertical;
+        @include mq(col2, col3) {
+            height: 110px * $card-upsize-col2;
+            font-size: 1.6rem * $card-upsize-col2;
+            line-height: 2.0rem * $card-upsize-col2;
+        }
+
+        @include mq($from: col3) {
+            height: 110px * $card-upsize-col3;
+            font-size: 1.6rem * $card-upsize-col3;
+            line-height: 2.0rem * $card-upsize-col3;
+        }
     }
 
     &__meta {
@@ -109,8 +135,16 @@ Display a standard article card.
 
     &__object {
         padding: 0;
-        height: 60%;
+        height: $card-width * .6; // height should cater for standard landscape image ratio
         overflow: hidden;
+
+        @include mq(col2, col3) {
+            height: ($card-width * $card-upsize-col2) * .6; // height should cater for standard landscape image ratio
+        }
+
+        @include mq($from: col3) {
+            height: ($card-width * $card-upsize-col3) * .6; // height should cater for standard landscape image ratio
+        }
     }
 
     &__image {
@@ -118,12 +152,29 @@ Display a standard article card.
         display: block;
     }
 
-    .card__standfirst {
+    &__standfirst {
+        padding: base-px(0, .5);
         color: color(shade-2);
-        font-family: $egyptian-text;
-        font-size: 1.4rem;
-        line-height: 1.8rem;
+        font: 1.2rem/1.6em $egyptian-text;
         text-rendering: optimizeLegibility;
+        @include text-ellipses(4);
+
+        @include mq(col2, col3) {
+            font-size: 1.2rem * $card-upsize-col2;
+            line-height: 1.6rem * $card-upsize-col2;
+        }
+
+        @include mq($from: col3) {
+            font-size: 1.2rem * $card-upsize-col3;
+            line-height: 1.6rem * $card-upsize-col3;
+        }
+    }
+
+    &__cutout {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
     }
 
     .touchpoint {
@@ -133,27 +184,25 @@ Display a standard article card.
         padding: base-px(.5);
     }
 
-    .card__cutout {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        z-index: 0;
+    // add quote icon to "comment" card titles
+    &--comment {
+        .card__title {
+            &:before {
+                display: inline-block;
+                margin: base-px(-1, 1/3, 0, 0);
+                content: "\e029";
+                color: #999;
+                font: 2.3rem $icon;
+                speak: none;
+
+                @include mq(col2, col3) {
+                    font-size: 2.3rem * $card-upsize-col2;
+                }
+
+                @include mq($from: col3) {
+                    font-size: 2.3rem * $card-upsize-col3;
+                }
+            }
+        }
     }
 }
-
-
-
-// Container context
-// .container__body {
-//     @include mq($from: col1) {
-//         .card {
-//             float: left;
-//         }
-//     }
-
-//     @include mq(col2, col3) {
-//         .card:nth-of-type(4) {
-//             display: none;
-//         }
-//     }
-// }
