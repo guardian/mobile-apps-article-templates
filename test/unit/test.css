@@ -1445,37 +1445,48 @@
   Display a standard article card.
   
   ```html_example
-  <div class="container__body">
-      <a class="card" href="#">
-          <div class="card__container">
-              <div class="card__header">
-                  <h3 class="card__title"><span data-icon="&#xe029;" aria-hidden="true"></span>Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+  <ul class="related-cards" id="related-content-body">
+      <li class="card has-image card--news">
+          <a class="card__link" href="x-gu://related_item/mobile-apps.guardianapis.com/items/us-news/2014/nov/16/barack-obama-basks-success-asia-pacific-sweep">
+              <h3 class="card__title">
+                  President Barack Obama basks in success of Asia-Pacific sweep
+              </h3>
+              <div class="card__meta">
+                  <span class="card__timestamp">
+                      <span data-icon="" aria-hidden="true"></span>
+                      12w
+                  </span>
+                  <span class="card__comments">
+                      <span data-icon="" aria-hidden="true"></span>
+                      196
+                  </span>
               </div>
               <div class="card__object">
-                  <p class="card__standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
+                  <img class="card__image" src="http://images.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2014/11/16/1416150105650/cb470b62-604d-42b9-bdd8-d154a2af547c-2060x1236.jpeg?width=256&amp;height=-&amp;quality=60">
               </div>
-              <div class="card__footer">
-                  <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
-                  <span class="card__meta card__comments"><span data-icon="&#xe03C;" aria-hidden="true"></span>94</span>
-              </div>
-          </div>
-      </a>
-  
-      <a class="card has-image" href="#">
-          <div class="card__container">
-              <div class="card__header">
-                  <h3 class="card__title"><span data-icon="&#xe029;" aria-hidden="true"></span>Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
+          </a>
+      </li>
+      <li class="card has-image card--comment">
+          <a class="card__link" href="x-gu://related_item/mobile-apps.guardianapis.com/items/commentisfree/2013/may/30/obama-wikileaks-journalism-attack">
+              <h3 class="card__title">
+                  President Obama uses a sledgehammer against dissent
+              </h3>
+              <div class="card__meta">
+                  <span class="card__timestamp">
+                      <span data-icon="" aria-hidden="true"></span>
+                      1y
+                  </span>
+                  <span class="card__comments">
+                      <span data-icon="" aria-hidden="true"></span>
+                      60
+                  </span>
               </div>
               <div class="card__object">
-                  <img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
+                  <img class="card__image" src="http://images.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2011/3/7/1299511660945/Activists-in-support-of-B-003.jpg?width=256&amp;height=-&amp;quality=60">
               </div>
-              <div class="card__footer">
-                  <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
-                  <span class="card__meta card__comments"><span data-icon="&#xe03C;" aria-hidden="true"></span>94</span>
-              </div>
-          </div>
-      </a>
-  </div>
+          </a>
+      </li>
+  </ul>
   ```
   */
   /*doc
@@ -6313,170 +6324,52 @@
       display: none; }
     #sandbox .discussion--preview .comment__username {
       color: #4bc6df; }
+  #sandbox .cards {
+    overflow: hidden;
+    padding: 12px; }
+    #sandbox .cards__list {
+      width: 588px; }
   #sandbox .card {
+    float: left;
+    width: 140px;
+    margin-right: 4px;
+    position: relative;
     color: #333;
     background-color: #fff;
     border-top: 1px solid #4bc6df;
-    border-bottom: 1px solid #dcdad5;
-    display: block;
-    position: relative;
-    -webkit-transition: all .15s ease-out;
-    transition: all .15s ease-out;
-    /*
-    The card transform causes the card and all cards below it to disappear if the user scrolls after pressing. 
-    This seems to be a WebKit bug.
-    &:active {
-        color: color(shade-1);
-        -webkit-transform: scale(.99);
-        transform: scale(.99);
-    }*/ }
-    @media all and (max-width: 28.12em) {
-      #sandbox .card {
-        margin: 2.89855% 2.89855% 0; } }
-    @media all and (min-width: 28.13em) {
-      #sandbox .card {
-        margin-bottom: 4.34783%; }
-        #sandbox .card::before {
-          content: '';
-          padding-top: 133%;
-          display: block; } }
-    @media all and (min-width: 28.13em) and (max-width: 40.62em) {
-      #sandbox .card {
-        margin: 2.12766% 2.12766% 0 0;
-        width: 48.93617%; }
-        #sandbox .card:nth-child(2n) {
-          margin-right: 0; } }
-    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
-      #sandbox .card {
-        margin: 1.40845% 1.40845% 0 0;
-        width: 32.39437%; }
-        #sandbox .card:nth-child(3n) {
-          margin-right: 0; } }
-    @media all and (min-width: 56.25em) {
-      #sandbox .card {
-        margin: 1.05263% 1.05263% 0 0;
-        width: 24.21053%; }
-        #sandbox .card:nth-child(4n) {
-          margin-right: 0; } }
-    @media all and (max-width: 28.12em) {
-      #sandbox .card .card__container {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-box-direction: normal;
-        -webkit-box-orient: vertical;
-        -webkit-flex-direction: column;
-        flex-direction: column; } }
-    @media all and (min-width: 28.13em) {
-      #sandbox .card .card__container {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0; } }
-    #sandbox .card .card__header,
-    #sandbox .card .card__object {
-      padding: 3px 6px 0px 6px; }
-      @media all and (min-width: 28.13em) {
-        #sandbox .card .card__header,
-        #sandbox .card .card__object {
-          height: 50%;
-          overflow: hidden; } }
-    #sandbox .card .card__header {
-      margin-bottom: 1em; }
-      @media all and (max-width: 28.12em) {
-        #sandbox .card .card__header {
-          -webkit-box-flex: 1;
-          -webkit-flex: 1;
-          flex: 1;
-          -webkit-box-ordinal-group: 2;
-          -webkit-order: 1;
-          order: 1; } }
-    #sandbox .card .card__title {
+    border-bottom: 1px solid #dcdad5; }
+    #sandbox .card__title {
+      height: 110px;
+      overflow: hidden;
       color: #333;
-      overflow-y: hidden; }
-      #sandbox .card .card__title [data-icon]::before {
-        display: none; }
-    @media all and (max-width: 28.12em) {
-      #sandbox .card .card__object {
-        -webkit-box-flex: 1;
-        -webkit-flex: 1;
-        flex: 1;
-        -webkit-box-ordinal-group: 3;
-        -webkit-order: 2;
-        order: 2; } }
-    @media all and (min-width: 28.13em) {
-      #sandbox .card .card__object {
-        overflow: hidden;
-        width: 100%;
-        position: absolute;
-        bottom: 0; } }
-    #sandbox .card .card__footer {
-      color: #999;
-      font-family: "Guardian Agate Sans 1 Web", sans-serif;
-      font-size: 1.4rem;
-      line-height: 1;
-      margin-top: 1em;
-      overflow: hidden; }
-      @media all and (max-width: 28.12em) {
-        #sandbox .card .card__footer {
-          -webkit-box-flex: 1;
-          -webkit-flex: 1;
-          flex: 1;
-          -webkit-box-ordinal-group: 4;
-          -webkit-order: 3;
-          order: 3; } }
-      @media all and (min-width: 28.13em) {
-        #sandbox .card .card__footer {
-          position: absolute;
-          z-index: 1;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          width: 100%; } }
-    #sandbox .card.has-image .card__object {
-      padding: 0;
-      height: 170px;
-      overflow: hidden; }
-      @media all and (max-width: 28.12em) {
-        #sandbox .card.has-image .card__object {
-          -webkit-box-flex: 1;
-          -webkit-flex: 1;
-          flex: 1;
-          -webkit-box-ordinal-group: 4;
-          -webkit-order: 3;
-          order: 3; } }
-      @media all and (min-width: 28.13em) {
-        #sandbox .card.has-image .card__object .card__image {
-          height: 100%;
-          width: auto;
-          margin-bottom: -1px; } }
-    #sandbox .card.has-image .card__footer {
-      bottom: 170px; }
-      @media all and (max-width: 28.12em) {
-        #sandbox .card.has-image .card__footer {
-          -webkit-box-flex: 1;
-          -webkit-flex: 1;
-          flex: 1;
-          -webkit-box-ordinal-group: 3;
-          -webkit-order: 2;
-          order: 2; } }
-    #sandbox .card .card__title
-    .card__titletext {
+      padding: 6px;
+      font: 200 1.6rem/2rem "Guardian Egyptian Web", Georgia, serif;
+      text-rendering: optimizeLegibility;
       overflow: hidden;
       text-overflow: ellipsis;
-      overflow-y: hidden;
       word-wrap: break-word;
       display: -webkit-box;
-      -webkit-line-clamp: 4;
+      -webkit-line-clamp: 5;
       -webkit-box-orient: vertical; }
-    #sandbox .card .card__title,
-    #sandbox .card .card__byline {
-      font-family: "Guardian Egyptian Web", Georgia, serif;
-      font-weight: 200;
-      font-size: 2.2rem;
-      line-height: 2.6rem;
-      text-rendering: optimizeLegibility; }
+    #sandbox .card__meta {
+      color: #999;
+      font: 1.4rem "Guardian Agate Sans 1 Web", sans-serif;
+      overflow: hidden; }
+    #sandbox .card__timestamp, #sandbox .card__comments {
+      float: left;
+      height: 30px;
+      padding-left: 6px; }
+    #sandbox .card__timestamp {
+      width: 65px;
+      border-right: 1px solid #dcdad5;
+      margin-right: 6px; }
+    #sandbox .card__object {
+      padding: 0;
+      height: 60%;
+      overflow: hidden; }
+    #sandbox .card__image {
+      width: 100%;
+      display: block; }
     #sandbox .card .card__standfirst {
       color: #767676;
       font-family: "Guardian Text Egyptian Web", Georgia, serif;
@@ -6488,37 +6381,11 @@
       bottom: 0;
       z-index: 2;
       padding: 6px; }
-    #sandbox .card .card__image {
-      width: 100%;
-      display: block; }
     #sandbox .card .card__cutout {
       position: absolute;
       right: 0;
       bottom: 0;
       z-index: 0; }
-    #sandbox .card .card__meta {
-      width: 21.73913%;
-      height: 22px;
-      padding: 0px 0px 0px 6px;
-      border-left: 1px solid #dcdad5;
-      display: block;
-      float: left; }
-      #sandbox .card .card__meta:first-child {
-        border-left: 0 none; }
-      #sandbox .card .card__meta .icon {
-        margin-right: 3px; }
-    #sandbox .card .card__timestamp {
-      padding: 0px 60px 0px 6px; }
-  #sandbox .android .card .card__timestamp {
-    padding-top: 2px; }
-  #sandbox .android .card .card__meta {
-    padding-top: 2px; }
-  @media all and (min-width: 28.13em) {
-    #sandbox .container__body .card {
-      float: left; } }
-  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
-    #sandbox .container__body .card:nth-of-type(4) {
-      display: none; } }
   #sandbox .card--comment {
     background-color: #e3e1dc;
     border-top-color: #e6711b; }
@@ -6665,6 +6532,9 @@
   #sandbox .container {
     margin: 0px 0px 24px 0px;
     border-top: 2px solid #333; }
+    #sandbox .container__title {
+      padding: 12px;
+      color: #333; }
   #sandbox .container__header,
   #sandbox .container__footer {
     overflow: auto;
@@ -6677,25 +6547,26 @@
       #sandbox .container__header,
       #sandbox .container__footer {
         padding: 2.89855%; } }
-  #sandbox .container__title {
-    color: #333;
-    vertical-align: top;
-    display: table-cell; }
-  #sandbox .container__title__label {
+  #sandbox .container
+  .container__title__label {
     font-family: "Guardian Egyptian Web", Georgia, serif;
     font-weight: 600;
     margin-top: -1px; }
     @media all and (max-width: 40.62em) {
-      #sandbox .container__title__label {
+      #sandbox .container
+      .container__title__label {
         font-size: 2.4rem;
         line-height: 3.6rem; } }
     @media all and (min-width: 40.63em) {
-      #sandbox .container__title__label {
+      #sandbox .container
+      .container__title__label {
         font-size: 2.7rem;
         line-height: 3.9rem; } }
-    #sandbox .container__title__label .container__title__link {
+    #sandbox .container
+    .container__title__label .container__title__link {
       color: #333; }
-      #sandbox .container__title__label .container__title__link:active {
+      #sandbox .container
+      .container__title__label .container__title__link:active {
         color: #333; }
   #sandbox .container__title__meta {
     color: #999;

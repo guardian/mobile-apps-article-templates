@@ -40,6 +40,11 @@ Display a titled container for comments, cards or other components that should b
 .container {
     margin: base-px(0, 0, 2, 0);
     border-top: 2px solid color(shade-1);
+
+    &__title {
+        padding: base-px(1);
+        color: color(shade-1);
+    }
 }
 
 .container__header,
@@ -56,11 +61,7 @@ Display a titled container for comments, cards or other components that should b
     }
 }
 
-.container__title {
-    color: color(shade-1);
-    vertical-align: top;
-    display: table-cell;
-}
+.container
 
 .container__title__label {
     font-family: $egyptian-display;
