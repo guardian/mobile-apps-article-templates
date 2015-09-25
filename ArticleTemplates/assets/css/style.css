@@ -1,4 +1,10 @@
 @charset "UTF-8";
+.main-media:not(.main-media--hidden-caption) .main-media__caption__icon, .figure__caption__icon {
+  display: inline-block;
+  margin-right: 7px;
+  position: relative;
+  top: 2px; }
+
 .content__container:after, .match-summary__team:after, .sponsorship:after {
   content: '';
   display: table;
@@ -897,9 +903,6 @@ Can also be displayed with the caption initially hidden:
 </div>
 ```
 */
-.main-media__caption__icon {
-  display: none; }
-
 .main-media--hidden-caption {
   position: relative; }
   .main-media--hidden-caption .main-media__caption {
@@ -2434,7 +2437,7 @@ Display a selection of images that form a gallery.
 .article__body {
   font-family: "Guardian Text Egyptian Web", Georgia, serif; }
   .article__body > .prose .figure-wide:first-child,
-  .article__body > .prose .element:first-child {
+  .article__body > .prose .element:not(.figure--thumbnail):first-child {
     margin-top: -12px; }
   @media all and (min-width: 28.13em) {
     .article__body .player-card {
@@ -2576,8 +2579,8 @@ Display a selection of images that form a gallery.
   body:not(.is-live) .article--liveblog .article__header .article__comments {
     width: 24.21053%; } }
 
-.article--comment .article__body > .prose > p:first-of-type:first-letter,
-.article--feature .article__body > .prose > p:first-of-type:first-letter {
+.article--comment .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
+.article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
   color: "";
   font-family: "Guardian Egyptian Web", Georgia, serif;
   font-weight: 100;
@@ -2589,10 +2592,22 @@ Display a selection of images that form a gallery.
   padding-right: 6px;
   float: left; }
   @media all and (min-width: 40.63em) {
-    .article--comment .article__body > .prose > p:first-of-type:first-letter,
-    .article--feature .article__body > .prose > p:first-of-type:first-letter {
+    .article--comment .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
+    .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
       font-size: 5.2222em; } }
 
+/*.article--comment,
+.article--feature {
+        .article__body > .prose {
+            border: 1px solid red!important;
+    }
+}*/
+/*
+.article--comment,
+.article--feature {
+.article__body > .prose > p:first-of-type:first-letter {
+    border: 1px solid red!important;
+}*/
 .article--comment .article__header .cutout__container {
   padding-bottom: 48px;
   position: relative;
@@ -3869,6 +3884,12 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .card__title--audio::before {
   margin-top: 0; }
 
+.main-media:not(.main-media--hidden-caption) .main-media__caption__icon, .figure__caption__icon {
+  display: inline-block;
+  margin-right: 7px;
+  position: relative;
+  top: 2px; }
+
 .content__container:after, .match-summary__team:after, .sponsorship:after {
   content: '';
   display: table;
@@ -4252,9 +4273,77 @@ figure figcaption {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
 
-@media all and (max-width: 40.62em) {
-  figure.figure-inline + p {
-    clear: both; } }
+.figure-wide {
+  margin: 12px 0px; }
+  .main-media .figure-wide {
+    margin: 0; }
+
+.figure--thumbnail img,
+.figure--thumbnail-with-caption img,
+.figure-wide img {
+  width: 100%;
+  height: auto; }
+.figure--thumbnail figcaption,
+.figure--thumbnail-with-caption figcaption,
+.figure-wide figcaption {
+  font-size: 1.4rem; }
+
+.figure--thumbnail {
+  float: left;
+  max-width: 65px;
+  margin: 6px 13px 0 0; }
+  .prose .figure--thumbnail {
+    margin-top: 6px; }
+
+.figure--thumbnail-with-caption {
+  display: block;
+  position: relative;
+  width: 100%; }
+  .figure--thumbnail-with-caption .figure__inner {
+    width: 50%;
+    display: block;
+    padding-right: 10px; }
+  .figure--thumbnail-with-caption figcaption {
+    display: block;
+    height: 100%;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    border-bottom: 1px dotted rgba(153, 153, 153, 0.4);
+    border-top: 1px dotted rgba(153, 153, 153, 0.4); }
+    .figure--thumbnail-with-caption figcaption .element-image__caption {
+      height: calc(100% - 60px);
+      overflow: hidden;
+      display: block;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical; }
+    .figure--thumbnail-with-caption figcaption .element-image__credit {
+      position: absolute;
+      bottom: 0; }
+  @media all and (min-width: 40.63em) {
+    .figure--thumbnail-with-caption {
+      float: left;
+      width: 33%;
+      margin-right: 15px; }
+      .figure--thumbnail-with-caption .figure__inner {
+        width: 100%;
+        margin-bottom: 10px;
+        padding-right: 0; }
+      .figure--thumbnail-with-caption figcaption {
+        padding-bottom: 12px;
+        position: static;
+        height: auto;
+        width: 100%; }
+        .figure--thumbnail-with-caption figcaption .element-image__caption {
+          height: auto;
+          display: block;
+          padding-bottom: 12px; }
+        .figure--thumbnail-with-caption figcaption .element-image__credit {
+          position: static; } }
+
 /*doc
 ---
 title: Unstyled inline list
@@ -4769,7 +4858,7 @@ Provide a summary of events:
 [class*="block--live-"] .prose figure.figure-inline {
   float: none;
   clear: both; }
-[class*="block--live-"] .prose figure:last-child figcaption {
+[class*="block--live-"] .prose figure:last-child figcaption:not(.figure--thumbnail, .figure-wide, .figure--thumbnail-with-caption) {
   border-bottom: 0; }
 [class*="block--live-"] .prose figcaption {
   padding: 6px 0px 12px 0px; }
@@ -6418,7 +6507,7 @@ Adds typographic styling, typically to content fetched from the Guardian Content
       margin-right: 12px;
       float: left; } }
 .prose figure {
-  margin: 12px 0px; }
+  margin: 12px 12px 0px 0px; }
   .prose figure.figure-wide img {
     height: auto; }
   @media all and (min-width: 40.63em) and (max-width: 56.24em) {
