@@ -57,14 +57,15 @@ Display a standard article card.
     padding: base-px(1);
 
     &__list {
-        width: ($card-width * $number-related-cards) + (($number-related-cards - 1) * base-px($card-gutter));
+        overflow: hidden;
+        width: ($card-width * $number-related-cards) + (($number-related-cards - 1) * base-px($card-gutter)) + base-px(1);
          
         @include mq(col2, col3) {
-            width: (($card-width * $card-upsize-col2) * $number-related-cards) + (($number-related-cards - 1) * (base-px($card-gutter) * $card-upsize-col2));
+            width: (($card-width * $card-upsize-col2) * $number-related-cards) + (($number-related-cards - 1) * (base-px($card-gutter) * $card-upsize-col2)) + base-px(1);
         }
 
         @include mq($from: col3) {
-            width: (($card-width * $card-upsize-col3) * $number-related-cards) + (($number-related-cards - 1) * (base-px($card-gutter) * $card-upsize-col3));
+            width: (($card-width * $card-upsize-col3) * $number-related-cards) + (($number-related-cards - 1) * (base-px($card-gutter) * $card-upsize-col3)) + base-px(1);
         }
     }
 }

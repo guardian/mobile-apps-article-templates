@@ -64,7 +64,6 @@ $body-size-1: 1.6rem;
 $body-lead-1: 2.4rem;
 $body-size-2: 1.8rem;
 $body-lead-2: 2.6rem;
-
 @mixin body($multiple: 1) {
     @include mq($to: col2) {
         font-size: $body-size-1 * $multiple;
@@ -77,7 +76,21 @@ $body-lead-2: 2.6rem;
     }
 }
 
-// Custom media querries 
+@mixin body-font($multiple: 1, $font: $egyptian-text, $weight: '') {
+    @include mq($to: col2) {
+        $font-size: $body-size-1 * $multiple;
+        $line-height: $body-lead-1 * $multiple;
+        font: $weight #{$font-size}/#{$line-height} $font;
+    }
+
+    @include mq($from: col2) {
+        $font-size: $body-size-2 * $multiple;
+        $line-height: $body-lead-2 * $multiple;
+        font: $weight #{$font-size}/#{$line-height} $font;
+    }
+}
+
+// Custom media queries 
 @mixin customMQ($point) {
     /*  iPhone 6 */ 
   @if $point == iP6 {
