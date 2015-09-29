@@ -16,7 +16,9 @@
         }
 
         .headline {
-            padding-right: cols($base-3, 3, 1);
+            @include mq($from: col2) {
+                padding-right: cols($base-3, 3, 1);
+            }
         }
 
         .meta {
@@ -43,7 +45,7 @@
         }
         &--mobile{
             border-bottom: 1px dotted color(shade-4);
-            padding: base-px(1, 1, 1, 1);
+            padding: base-px(1);
             display: block;
 
             @include mq($from: col2) {
