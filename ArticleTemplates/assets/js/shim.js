@@ -32,7 +32,8 @@ var nativeFunctionCalls = [
     'liveblogNewBlock',
     'getMpuPosCallback',
     'initMpuPoller',
-    'getBannerPosCallback'
+    'getBannerPosCallback',
+    'getArticleHeight'
 ];
 
 Array.prototype.forEach.call(nativeFunctionCalls, function (name) {
@@ -85,6 +86,3 @@ window.initTemplate = function (opts) {
         window.addEventListener('DOMContentLoaded', boot);
     }
 };
-
-
-

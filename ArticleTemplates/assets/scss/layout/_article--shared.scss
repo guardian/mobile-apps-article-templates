@@ -122,7 +122,21 @@ body:not(.is-live) .article--liveblog {
 
 .article--comment,
 .article--feature {
-    .article__body > .prose > p {
+    .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p {
         @include dropcap();
     }
 }
+
+/*.article--comment,
+.article--feature {
+        .article__body > .prose {
+            border: 1px solid red!important;
+    }
+}*/
+
+/*
+.article--comment,
+.article--feature {
+.article__body > .prose > p:first-of-type:first-letter {
+    border: 1px solid red!important;
+}*/
