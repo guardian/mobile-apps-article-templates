@@ -7806,7 +7806,7 @@ category: Modules
 .cricket-stats__takenby {
   display: block;
   color: #999;
-  padding: 3px 0 6px 0; }
+  padding: 3px 0 6px; }
 
 .cricket-stats__table {
   width: 100%;
@@ -7840,7 +7840,8 @@ category: Modules
     color: #000; }
   .cricket-stats__table--title {
     font-family: "Guardian Text Egyptian Web", Georgia, serif; }
-  .cricket-stats__table th, .cricket-stats__table td {
+  .cricket-stats__table th,
+  .cricket-stats__table td {
     vertical-align: top;
     padding: 6px 6px 0 6px;
     line-height: 1;
@@ -7848,10 +7849,12 @@ category: Modules
     white-space: nowrap;
     overflow: hidden; }
     @media all and (max-width: 40.62em) {
-      .cricket-stats__table th, .cricket-stats__table td {
+      .cricket-stats__table th,
+      .cricket-stats__table td {
         height: 3.7rem; } }
     @media all and (min-width: 40.63em) {
-      .cricket-stats__table th, .cricket-stats__table td {
+      .cricket-stats__table th,
+      .cricket-stats__table td {
         height: 3.9rem; } }
   .cricket-stats__table tr {
     border-bottom: 1px solid #dcdad5; }
@@ -7864,28 +7867,30 @@ category: Modules
 .cricket-stats__table--in-play {
   font-weight: bold; }
 
-.cricket-stats__table--duck::before {
-  background-position: -24px 0; }
-
 .cricket-stats__table--in-play,
 .cricket-stats__table--duck {
-  display: inline-block;
-  vertical-align: top; }
+  display: block;
+  position: relative;
+  padding-left: 22px;
+  height: 22px; }
   .cricket-stats__table--in-play::before,
   .cricket-stats__table--duck::before {
     content: '';
-    display: inline-block;
-    position: relative;
-    bottom: 2px;
-    height: 20px;
-    width: 20px;
-    margin-right: 4px;
+    display: block;
+    position: absolute;
+    top: -2px;
+    left: 0;
+    height: 18px;
+    width: 18px;
     background-image: url(../img/cricket-dismissal.png);
     background-repeat: no-repeat;
-    background-size: auto 48px; }
+    background-size: auto 40px; }
   .cricket-stats__table--in-play + .cricket-stats__takenby,
   .cricket-stats__table--duck + .cricket-stats__takenby {
     margin-top: -7px; }
+
+.cricket-stats__table--duck::before {
+  background-position: -20px 0; }
 
 /*doc
 ---
