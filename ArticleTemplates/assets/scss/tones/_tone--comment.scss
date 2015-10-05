@@ -7,8 +7,6 @@
         }
     }
 
-    
-
     .section__container {
         & > div {
             color: color(tone-comment); // Content Label Section
@@ -26,7 +24,7 @@
     }
 
     .section__container, 
-    figure figcaption{
+    figure figcaption {
         border-bottom: 1px darken(color(shade-4), 10%) dotted;
     }
 
@@ -35,8 +33,8 @@
             &.more-button a {
                 @include tag-more-button(color(shade-1), color(global-tags));
             }
-        }        
-    }    
+        }
+    }
 
     .touchpoint--primary {
         .touchpoint__button {
@@ -84,7 +82,6 @@
         }
 
         .meta__misc {
-
             .test--new-alerts & {
                 padding-bottom: base-px(0.5);
             }
@@ -112,16 +109,18 @@
             }
            
             //TODO: specificity needed due to previous styles - improve
-            a.alerts--new:active, a.alerts--new.following {
+            a.alerts:active,
+            a.alerts.following {
                 background-color: color(shade-7);
                 color: color(tone-comment-accent);
             }
-            a.alerts--new,  a.alerts--new.following:active {
+
+            a.alerts,
+            a.alerts.following:active {
                 border-color: color(shade-7);
                 color: color(shade-7);
             }
         }
-
     }
 }
 

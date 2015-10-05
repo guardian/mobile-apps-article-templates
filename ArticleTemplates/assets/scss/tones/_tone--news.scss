@@ -1,6 +1,6 @@
 .tone--news {
     //TODO: would be nice to get rid of not (as hard to overide as tones get loaded in last)
-    a:not(.alerts--new):not(.witness__button) {
+    a:not(.witness__button) {
         color: color(tone-news);
         &:active {
             color: color(tone-news-accent);
@@ -58,11 +58,10 @@
     }
     
     &.is_advertising{
-	     
-	     a.alerts--new,  a.alerts--new.following:active {
-                border-color: color(shade-1);
-                color: color(shade-1);
-            }
-
+        a.alerts,
+        a.alerts.following:active {
+            border-color: color(shade-1);
+            color: color(shade-1);
+        }
     }
 }

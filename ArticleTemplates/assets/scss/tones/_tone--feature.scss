@@ -1,6 +1,6 @@
 .tone--feature1,
 .tone--feature2,
-.tone--feature3  {
+.tone--feature3 {
     a,
     .article__body > p:first-of-type:first-letter {
         color: color(tone-feature1);
@@ -112,18 +112,19 @@
                 color: #fff;
             }
         }
-        
 
         .meta {
             border: 0;
             margin: 0;
 
-            a.alerts--new:active, a.alerts--new.following {
+            a.alerts:active,
+            a.alerts.following {
                 background-color: color(shade-7);
                 color: color(tone-feature1-accent);
             }
 
-            a.alerts--new,  a.alerts--new.following:active {
+            a.alerts,
+            a.alerts.following:active {
                 border-color: color(shade-7);
                 color: color(shade-7);
             }
@@ -134,5 +135,4 @@
             color: rgba(#fff, .8);
         }
     }
-   
 }

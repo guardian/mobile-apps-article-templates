@@ -80,6 +80,7 @@
                     width: cols($base-4, 5);
                 }
             }
+
             .meta__pubdate {
                 color: rgba(color(shade-3), .8);
             }
@@ -149,9 +150,9 @@
             &__about-uri{
                 color: color(global-sponsored-about);
             }
-        }            
+        }
     }
-    
+
     .tags {
         padding-left: 0;
 
@@ -159,6 +160,7 @@
             a {
                 @include tag-button(color(shade-1), color(blogs-tags));
             }
+
             &.more-button a {
                 @include tag-more-button(color(shade-1), darken(color(blogs-tags),10%));
             }
@@ -175,36 +177,38 @@
         }
     }
     
-    .alerts--new:active, .alerts--new.following {
+    .alerts:active,
+    .alerts.following {
         background-color: color(tone-live);
         color: color(shade-7);
     }
     
-    .alerts--new,  .alerts--new.following:active {
+    .alerts,
+    .alerts.following:active {
         border-color: color(tone-live);
         color: color(tone-live);
     }
 
-    .cricket{
-
+    .cricket {
         .article--liveblog {
             border-top: none;
         }
 
-        .alerts--new{
+        .alerts {
             margin: 0;
         }
 
-        a.alerts--new:active, a.alerts--new.following {
+        a.alerts:active,
+        a.alerts.following {
             background-color: color(shade-3);
             color: color(shade-7);
         }
 
-        a.alerts--new,  a.alerts--new.following:active {
+        a.alerts,
+        a.alerts.following:active {
             border-color: color(shade-4);
             background-color: transparent;
             color: color(shade-3);
         }
-        
     }
 }

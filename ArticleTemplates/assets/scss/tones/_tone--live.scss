@@ -14,7 +14,7 @@
 }
 
 .tone--liveBlog.is-live {
-    a.touchpoint{
+    a.touchpoint {
         &:active {
             color: color(tone-live-accent);
         }
@@ -26,10 +26,11 @@
         @include mq(col2, col3) {
             margin-left: cols($base-3, 4, 1);
         }
+
         @include mq($from: col3) {
             margin-left: cols($base-4, 5, 1);
-        }        
-    }    
+        }
+    }
 
     #comments .touchpoint--primary {
         .touchpoint__button {
@@ -41,16 +42,17 @@
         }
     }
 
-    .alerts--new:active, .alerts--new.following {
+    .alerts:active,
+    .alerts.following {
         background-color: color(tone-live);
         color: color(shade-7);
     }
-    
-    .alerts--new,  .alerts--new.following:active {
+
+    .alerts,
+    .alerts.following:active {
         border-color: color(tone-live);
         color: color(tone-live);
     }
-
 
     .article__header {
         background-color: color(tone-live);
@@ -160,19 +162,10 @@
 
             @include mq(col2, col3) {
                 padding-left: cols($base-3, 4);
-
-                .alerts {
-                    width: cols($base-3, 4);
-                }
-
             }
 
             @include mq($from: col3) {
                 padding-left: cols($base-4, 5);
-
-                .alerts {
-                    width: cols($base-4, 5);
-                }
             }
         }
 
@@ -183,9 +176,8 @@
         .comment-count {
             border-left-color: rgba(color(shade-7), .4);
         }
-    
-        .tags {
 
+        .tags {
             .inline-list__item {
                 a {
                     @include tag-button(color(shade-1), color(blogs-tags));
@@ -194,26 +186,25 @@
                     @include tag-more-button(color(shade-1), darken(color(blogs-tags),10%));
                 }
             }
-        
         }
-
     }
 
     .cricket & {
-        .alerts--new{
+        .alerts {
             margin: 0;
         }
-         
-        a.alerts--new:active, a.alerts--new.following {
+
+        a.alerts:active,
+        a.alerts.following {
             background-color: color(tone-live);
             color: color(shade-7);
         }
 
-        a.alerts--new,  a.alerts--new.following:active {
+        a.alerts,
+        a.alerts.following:active {
             border-color: color(tone-live);
             background-color: transparent;
             color: color(tone-live);
         }
     }
-
 }

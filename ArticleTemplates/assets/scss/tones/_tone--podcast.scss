@@ -1,5 +1,4 @@
 .tone--podcast {
-
     .section__container {
         border-bottom: 1px rgba(234,234,234,0.3) dotted;
         
@@ -11,7 +10,7 @@
         .content__series-label,
         .content__series-label a {
             color: color(shade-5);  // Content Label Series
-        }   
+        }
     }
 
     .audio-player__button {
@@ -50,16 +49,6 @@
                 display: block;
             }
         }
-
-/*        .card__title--audio {
-            &::before {
-                content: '\e047';
-                color: color(one-podcast-headline);
-                font-family: $icon;
-                margin-right: base-px(.25);
-                position: absolute;              
-            }
-        }*/
 
         .card__titletext {         
             padding-bottom: 4px;
@@ -100,6 +89,7 @@
     .comment-count {
         color: color(tone-podcast);
         border-left-color: rgba(color(shade-7), .4);
+        
         a {
             color: color(tone-podcast);
         }
@@ -113,12 +103,10 @@
     }  
     
     &.is_advertising{
-	     
-	     a.alerts--new,  a.alerts--new.following:active {
-                border-color: color(shade-1);
-                color: color(shade-1);
-            }
-
+        a.alerts,
+        a.alerts.following:active {
+            border-color: color(shade-1);
+            color: color(shade-1);
+        }
     }
-
 }

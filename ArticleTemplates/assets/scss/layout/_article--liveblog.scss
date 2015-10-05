@@ -19,38 +19,8 @@
             top: 3px;
         }
 
-        .alerts {
-            margin: 0;
-            padding: base-px(.5, 1);
-        }
-
-       
-
-        & > .alerts {
-            @include mq($from: col2) {
-                display: none;
-            }
-        }
-
-        .alerts__label {
-            @extend %screen-visable;
-        }
-
         .meta {
             position: relative;
-
-            
-
-            .alerts {
-                position: absolute;
-                left: 0;
-                top: 0;
-
-                @include mq($to: col2) {
-                    display: none;
-                }
-            }
-
         }
 
         .comment-count__label {
@@ -76,37 +46,13 @@
         }
     }
 
-     .alerts--new {
-        
+     .alerts {
         margin: base-px(1, 1, 0, 0.7);
     }
-
-    // .aside-witness {
-    //     @extend .block;
-    //     padding-left: base-px(.66667);
-    //     width: auto;
-
-    //     @include mq(col2, col3) {
-    //         padding-left: cols($base-3, 4, 1);
-    //     }
-
-    //     @include mq($from: col3) {
-    //         padding-left: cols($base-4, 5, 1);
-    //     }
-
-    //     .aside-witness__sponsor {
-    //         max-width: 130px;
-    //     }
-    // }
-
 }
 
 .android {
     .article--liveblog {
-        // .aside-witness {
-        //     margin: base-px(1);
-        // }
-
         .article__body--liveblog__pinned {
             figcaption {
                 padding: base-px(.5, 1, 2, 1);

@@ -175,56 +175,35 @@ category: Modules
 Display an alerts toggle.
 
 ```html_example
-<a class="alerts">
+<a class="alerts " href="x-gu://follow/tag-contributor///profile/nicholaswatt" data-follow-alert-id="tag-contributor///profile/nicholaswatt">
     <span class="alerts__state--unfollow">
-        <span data-icon="&#xe048;" aria-hidden="true"></span>
-        <span class="alerts__label">Follow contributor</span>
+        <span data-icon="" aria-hidden="true"></span>
+        <span class="alerts__label">Follow Nicholas Watt</span>
     </span>
     <span class="alerts__state--follow">
-        <span data-icon="&#xe049;" aria-hidden="true"></span>
-        <span class="alerts__label">Following contributor</span>
+        <span data-icon="" aria-hidden="true"></span>
+        <span class="alerts__label">Following Nicholas Watt</span>
     </span>
 </a>
 
-<a class="alerts following">
+<a class="alerts following" href="x-gu://follow/tag-contributor///profile/nicholaswatt" data-follow-alert-id="tag-contributor///profile/nicholaswatt">
     <span class="alerts__state--unfollow">
-        <span data-icon="&#xe048;" aria-hidden="true"></span>
-        <span class="alerts__label">Follow contributor</span>
+        <span data-icon="" aria-hidden="true"></span>
+        <span class="alerts__label">Follow Nicholas Watt</span>
     </span>
     <span class="alerts__state--follow">
-        <span data-icon="&#xe049;" aria-hidden="true"></span>
-        <span class="alerts__label">Following contributor</span>
+        <span data-icon="" aria-hidden="true"></span>
+        <span class="alerts__label">Following Nicholas Watt</span>
     </span>
 </a>
 ```
 */
 .alerts {
-  color: #005689;
-  font-family: "Guardian Agate Sans 1 Web", sans-serif;
-  display: inline-block; }
-  .alerts [data-icon]::before {
-    margin-right: 4px;
-    font-size: 85%; }
-  .alerts .alerts__state--follow {
-    display: none; }
-    .alerts .alerts__state--follow [data-icon]::before {
-      color: #4bc6df; }
-  .alerts.following .alerts__state--follow {
-    display: block; }
-  .alerts.following .alerts__state--unfollow {
-    display: none; }
-  .test--new-alerts .alerts {
-    display: none; }
-
-.alerts__label {
-  font-weight: bold; }
-
-.alerts--new {
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
   white-space: nowrap;
   padding: 4px 12px 8px 12px;
   margin: 6px 0px 0px -4px;
-  display: none;
+  display: inline-block;
   border-radius: 30px;
   text-overflow: ellipsis;
   vertical-align: bottom;
@@ -234,39 +213,35 @@ Display an alerts toggle.
   border: 1px solid #005689;
   transition: background-color 0.3s; }
   @media all and (max-width: 40.62em) {
-    .alerts--new {
+    .alerts {
       font-size: 1.4rem;
       line-height: 2rem; } }
   @media all and (min-width: 40.63em) {
-    .alerts--new {
+    .alerts {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
-  .cricket .alerts--new {
-    display: inline-block; }
-  .alerts--new:active, .alerts--new.following {
+  .alerts:active, .alerts.following {
     background-color: #005689;
     color: #fff; }
-  .alerts--new span[data-icon] {
+  .alerts span[data-icon] {
     display: inline-block;
     vertical-align: bottom;
     font-size: 1.8rem;
     position: relative;
     right: 3px;
     top: 1px; }
-  .alerts--new .alerts__label {
+  .alerts__label {
     font-weight: normal; }
-  .alerts--new .alerts__state--follow {
+  .alerts__state--follow {
     display: none; }
-  .alerts--new.following:active {
+  .alerts.following:active {
     color: #005689;
     background-color: #fff;
     border: 1px solid #005689; }
-  .alerts--new.following .alerts__state--follow {
+  .alerts.following .alerts__state--follow {
     display: block; }
-  .alerts--new.following .alerts__state--unfollow {
+  .alerts.following .alerts__state--unfollow {
     display: none; }
-  .test--new-alerts .alerts--new {
-    display: inline-block; }
 
 /*doc
 ---
@@ -853,12 +828,12 @@ Hide text, yet still make it available to screen readers.
 <span class="screen-readable">This text is only seen by screen readers.</span>
 ```
 */
-.screen-readable, .main-media--hidden-caption .main-media__caption__text, .meta .alerts .alerts__label {
+.screen-readable, .main-media--hidden-caption .main-media__caption__text {
   position: absolute;
   overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px); }
 
-.main-media--hidden-caption .main-media__caption__text.is-visible, .article--liveblog .article__header .alerts__label {
+.main-media--hidden-caption .main-media__caption__text.is-visible {
   position: static;
   overflow: auto;
   clip: auto; }
@@ -965,14 +940,14 @@ Display an article's meta information.
                     <a href="x-gu://list/mobile-apps.guardianapis.com/lists/tag/profile/michaelbillington">Michael Billington</a>
                 </span>
             </span>
-            <a class="alerts" href="x-gu://follow/tag-contributor///profile/michaelbillington" data-follow-alert-id="tag-contributor///profile/michaelbillington">
+            <a class="alerts " href="x-gu://follow/tag-contributor///profile/nicholaswatt" data-follow-alert-id="tag-contributor///profile/nicholaswatt">
                 <span class="alerts__state--unfollow">
-                    <span data-icon="&#xe048;" aria-hidden="true"></span>
-                    <span class="alerts__label">Follow contributor</span>
+                    <span data-icon="" aria-hidden="true"></span>
+                    <span class="alerts__label">Follow Nicholas Watt</span>
                 </span>
                 <span class="alerts__state--follow">
-                    <span data-icon="&#xe049;" aria-hidden="true"></span>
-                    <span class="alerts__label">Following contributor</span>
+                    <span data-icon="" aria-hidden="true"></span>
+                    <span class="alerts__label">Following Nicholas Watt</span>
                 </span>
             </a>
         </div>
@@ -1003,13 +978,6 @@ Display an article's meta information.
   .meta .avatar--author {
     margin: 0px 9px 12px 0px;
     float: left; }
-  .meta .alerts {
-    margin: -.5em;
-    padding: .5em;
-    position: relative;
-    z-index: 2;
-    /*TODO  new versions of alerts shouldn't require this- so specificity bumped up temporarily
-        remove when one or the other has been chosen */ }
 
 .meta__misc {
   padding: 8px 12px 24px 12px; }
@@ -2632,12 +2600,6 @@ Display a selection of images that form a gallery.
     .article--comment .article__header .standfirst {
       font-size: 1.25em;
       line-height: 1.25em; } }
-.article--comment .article__header .alerts {
-  padding: 12px;
-  position: absolute;
-  bottom: 0; }
-.article--comment .article__header .alerts__label {
-  display: inline-block; }
 
 .article--liveblog {
   background-color: #eaeaea;
@@ -2654,21 +2616,8 @@ Display a selection of images that form a gallery.
       position: absolute;
       left: 12px;
       top: 3px; }
-    .article--liveblog .article__header .alerts {
-      margin: 0;
-      padding: 6px 12px; }
-    @media all and (min-width: 40.63em) {
-      .article--liveblog .article__header > .alerts {
-        display: none; } }
     .article--liveblog .article__header .meta {
       position: relative; }
-      .article--liveblog .article__header .meta .alerts {
-        position: absolute;
-        left: 0;
-        top: 0; }
-        @media all and (max-width: 40.62em) {
-          .article--liveblog .article__header .meta .alerts {
-            display: none; } }
     .article--liveblog .article__header .comment-count__label {
       display: none; }
   .article--liveblog .tags {
@@ -2681,7 +2630,7 @@ Display a selection of images that form a gallery.
         padding-left: 31.57895%; } }
   .article--liveblog .article__body--liveblog__pinned .element {
     margin: 12px 0px; }
-  .article--liveblog .alerts--new {
+  .article--liveblog .alerts {
     margin: 12px 12px 0px 8px; }
 
 .android .article--liveblog .article__body--liveblog__pinned figcaption {
@@ -2839,10 +2788,12 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
       color: rgba(255, 255, 255, 0.8); }
     .tone--comment .article--comment .meta .comment-count {
       border-left-color: rgba(255, 255, 255, 0.4); }
-    .tone--comment .article--comment .meta a.alerts--new:active, .tone--comment .article--comment .meta a.alerts--new.following {
+    .tone--comment .article--comment .meta a.alerts:active,
+    .tone--comment .article--comment .meta a.alerts.following {
       background-color: #fff;
       color: #f39f33; }
-    .tone--comment .article--comment .meta a.alerts--new, .tone--comment .article--comment .meta a.alerts--new.following:active {
+    .tone--comment .article--comment .meta a.alerts,
+    .tone--comment .article--comment .meta a.alerts.following:active {
       border-color: #fff;
       color: #fff; }
 
@@ -2989,18 +2940,20 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .tone--feature3 .article--feature .meta {
   border: 0;
   margin: 0; }
-  .tone--feature1 .article--feature .meta a.alerts--new:active, .tone--feature1 .article--feature .meta a.alerts--new.following,
-  .tone--feature2 .article--feature .meta a.alerts--new:active,
-  .tone--feature2 .article--feature .meta a.alerts--new.following,
-  .tone--feature3 .article--feature .meta a.alerts--new:active,
-  .tone--feature3 .article--feature .meta a.alerts--new.following {
+  .tone--feature1 .article--feature .meta a.alerts:active,
+  .tone--feature1 .article--feature .meta a.alerts.following,
+  .tone--feature2 .article--feature .meta a.alerts:active,
+  .tone--feature2 .article--feature .meta a.alerts.following,
+  .tone--feature3 .article--feature .meta a.alerts:active,
+  .tone--feature3 .article--feature .meta a.alerts.following {
     background-color: #fff;
     color: #b82266; }
-  .tone--feature1 .article--feature .meta a.alerts--new, .tone--feature1 .article--feature .meta a.alerts--new.following:active,
-  .tone--feature2 .article--feature .meta a.alerts--new,
-  .tone--feature2 .article--feature .meta a.alerts--new.following:active,
-  .tone--feature3 .article--feature .meta a.alerts--new,
-  .tone--feature3 .article--feature .meta a.alerts--new.following:active {
+  .tone--feature1 .article--feature .meta a.alerts,
+  .tone--feature1 .article--feature .meta a.alerts.following:active,
+  .tone--feature2 .article--feature .meta a.alerts,
+  .tone--feature2 .article--feature .meta a.alerts.following:active,
+  .tone--feature3 .article--feature .meta a.alerts,
+  .tone--feature3 .article--feature .meta a.alerts.following:active {
     border-color: #fff;
     color: #fff; }
 .tone--feature1 .article--feature .meta,
@@ -3032,10 +2985,12 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   background-color: #b51800; }
 .tone--liveBlog.is-live #comments .touchpoint--primary:active .touchpoint__button {
   background-color: #cc2b12; }
-.tone--liveBlog.is-live .alerts--new:active, .tone--liveBlog.is-live .alerts--new.following {
+.tone--liveBlog.is-live .alerts:active,
+.tone--liveBlog.is-live .alerts.following {
   background-color: #b51800;
   color: #fff; }
-.tone--liveBlog.is-live .alerts--new, .tone--liveBlog.is-live .alerts--new.following:active {
+.tone--liveBlog.is-live .alerts,
+.tone--liveBlog.is-live .alerts.following:active {
   border-color: #b51800;
   color: #b51800; }
 .tone--liveBlog.is-live .article__header {
@@ -3101,14 +3056,10 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     margin: 0; }
     @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .tone--liveBlog.is-live .article--liveblog .meta {
-        padding-left: 32.39437%; }
-        .tone--liveBlog.is-live .article--liveblog .meta .alerts {
-          width: 32.39437%; } }
+        padding-left: 32.39437%; } }
     @media all and (min-width: 56.25em) {
       .tone--liveBlog.is-live .article--liveblog .meta {
-        padding-left: 30.52632%; }
-        .tone--liveBlog.is-live .article--liveblog .meta .alerts {
-          width: 30.52632%; } }
+        padding-left: 30.52632%; } }
   .tone--liveBlog.is-live .article--liveblog .meta__pubdate {
     color: rgba(255, 255, 255, 0.8); }
   .tone--liveBlog.is-live .article--liveblog .comment-count {
@@ -3125,12 +3076,14 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     .tone--liveBlog.is-live .article--liveblog .tags .inline-list__item.more-button a:active {
       color: #1a1a1a;
       border: 1px solid #adadad; }
-.cricket .tone--liveBlog.is-live .alerts--new {
+.cricket .tone--liveBlog.is-live .alerts {
   margin: 0; }
-.cricket .tone--liveBlog.is-live a.alerts--new:active, .cricket .tone--liveBlog.is-live a.alerts--new.following {
+.cricket .tone--liveBlog.is-live a.alerts:active,
+.cricket .tone--liveBlog.is-live a.alerts.following {
   background-color: #b51800;
   color: #fff; }
-.cricket .tone--liveBlog.is-live a.alerts--new, .cricket .tone--liveBlog.is-live a.alerts--new.following:active {
+.cricket .tone--liveBlog.is-live a.alerts,
+.cricket .tone--liveBlog.is-live a.alerts.following:active {
   border-color: #b51800;
   background-color: transparent;
   color: #b51800; }
@@ -3272,16 +3225,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   border-top-color: #a7d8f2; }
 .tone--podcast .article__header {
   background-color: #484848;
-  background-image: -webkit-canvas(circles);
-  /*        .card__title--audio {
-              &::before {
-                  content: '\e047';
-                  color: color(one-podcast-headline);
-                  font-family: $icon;
-                  margin-right: base-px(.25);
-                  position: absolute;              
-              }
-          }*/ }
+  background-image: -webkit-canvas(circles); }
   .tone--podcast .article__header .section {
     display: block; }
   .tone--podcast .article__header .headline {
@@ -3320,13 +3264,14 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   margin-top: 3px; }
 .tone--podcast.android .article__header .card__title--audio::before {
   margin-top: -3px; }
-.tone--podcast.is_advertising a.alerts--new, .tone--podcast.is_advertising a.alerts--new.following:active {
+.tone--podcast.is_advertising a.alerts,
+.tone--podcast.is_advertising a.alerts.following:active {
   border-color: #333;
   color: #333; }
 
-.tone--news a:not(.alerts--new):not(.witness__button) {
+.tone--news a:not(.witness__button) {
   color: #005689; }
-  .tone--news a:not(.alerts--new):not(.witness__button):active {
+  .tone--news a:not(.witness__button):active {
     color: #4bc6df; }
 .tone--news .article__header {
   background-color: #fff; }
@@ -3366,7 +3311,8 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
       color: #999; }
   .tone--news .article__header .main-media__caption {
     background-color: #fff; }
-.tone--news.is_advertising a.alerts--new, .tone--news.is_advertising a.alerts--new.following:active {
+.tone--news.is_advertising a.alerts,
+.tone--news.is_advertising a.alerts.following:active {
   border-color: #333;
   color: #333; }
 
@@ -3417,10 +3363,12 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     background-color: #fff; }
   .tone--review .article__header .sponsorship {
     background-color: #fff; }
-.tone--review .alerts--new:active, .tone--review .alerts--new.following {
+.tone--review .alerts:active,
+.tone--review .alerts.following {
   background-color: #ffce4b;
   color: #615b52; }
-.tone--review .alerts--new, .tone--review .alerts--new.following:active {
+.tone--review .alerts,
+.tone--review .alerts.following:active {
   border-color: #ffce4b;
   color: #ffce4b; }
 
@@ -3587,20 +3535,24 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   border-top: 1px solid #999; }
   .tone--deadBlog .block--live-summary .block__time {
     font-weight: bold; }
-.tone--deadBlog .alerts--new:active, .tone--deadBlog .alerts--new.following {
+.tone--deadBlog .alerts:active,
+.tone--deadBlog .alerts.following {
   background-color: #b51800;
   color: #fff; }
-.tone--deadBlog .alerts--new, .tone--deadBlog .alerts--new.following:active {
+.tone--deadBlog .alerts,
+.tone--deadBlog .alerts.following:active {
   border-color: #b51800;
   color: #b51800; }
 .tone--deadBlog .cricket .article--liveblog {
   border-top: none; }
-.tone--deadBlog .cricket .alerts--new {
+.tone--deadBlog .cricket .alerts {
   margin: 0; }
-.tone--deadBlog .cricket a.alerts--new:active, .tone--deadBlog .cricket a.alerts--new.following {
+.tone--deadBlog .cricket a.alerts:active,
+.tone--deadBlog .cricket a.alerts.following {
   background-color: #999;
   color: #fff; }
-.tone--deadBlog .cricket a.alerts--new, .tone--deadBlog .cricket a.alerts--new.following:active {
+.tone--deadBlog .cricket a.alerts,
+.tone--deadBlog .cricket a.alerts.following:active {
   border-color: #dcdad5;
   background-color: transparent;
   color: #999; }
