@@ -680,48 +680,35 @@ category: Modules
 Related Content / More on this story section
 
 ```html_example
-<ul class="cards" id="related-content-body">
-    <li class="card has-image card--news">
-        <a class="card__link" href="x-gu://related_item/mobile-apps.guardianapis.com/items/us-news/2014/nov/16/barack-obama-basks-success-asia-pacific-sweep">
-            <h3 class="card__title">
-                President Barack Obama basks in success of Asia-Pacific sweep
-            </h3>
-            <div class="card__meta">
-                <span class="card__timestamp">
-                    <span data-icon="" aria-hidden="true"></span>
-                    12w
-                </span>
-                <span class="card__comments">
-                    <span data-icon="" aria-hidden="true"></span>
-                    196
-                </span>
-            </div>
-            <div class="card__object">
-                <img class="card__image" src="http://images.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2014/11/16/1416150105650/cb470b62-604d-42b9-bdd8-d154a2af547c-2060x1236.jpeg?width=256&amp;height=-&amp;quality=60">
-            </div>
-        </a>
-    </li>
-    <li class="card has-image card--comment">
-        <a class="card__link" href="x-gu://related_item/mobile-apps.guardianapis.com/items/commentisfree/2013/may/30/obama-wikileaks-journalism-attack">
-            <h3 class="card__title">
-                President Obama uses a sledgehammer against dissent
-            </h3>
-            <div class="card__meta">
-                <span class="card__timestamp">
-                    <span data-icon="" aria-hidden="true"></span>
-                    1y
-                </span>
-                <span class="card__comments">
-                    <span data-icon="" aria-hidden="true"></span>
-                    60
-                </span>
-            </div>
-            <div class="card__object">
-                <img class="card__image" src="http://images.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2011/3/7/1299511660945/Activists-in-support-of-B-003.jpg?width=256&amp;height=-&amp;quality=60">
-            </div>
-        </a>
-    </li>
-</ul>
+<section class="related-content">
+    <h2 class="related-content__header">
+        More on this story
+    </h2> 
+    <div class="related-content__container">
+        <ul class="related-content__list">
+            <li class="related-content__card related-content__card--news has-image">
+                <a class="related-content__link" href="x-gu://related_item/mobile-apps.guardianapis.com/items/us-news/2014/nov/16/barack-obama-basks-success-asia-pacific-sweep">
+                    <h3 class="related-content__title">
+                        President Barack Obama basks in success of Asia-Pacific sweep
+                    </h3>
+                    <div class="related-content__meta">
+                        <span class="related-content__timestamp">
+                            <span data-icon="" aria-hidden="true"></span>
+                            12w
+                        </span>
+                        <span class="related-content__comments">
+                            <span data-icon="" aria-hidden="true"></span>
+                            196
+                        </span>
+                    </div>
+                    <div class="related-content__main">
+                        <img class="related-content__image" src="http://images.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2014/11/16/1416150105650/cb470b62-604d-42b9-bdd8-d154a2af547c-2060x1236.jpeg?width=256&amp;height=-&amp;quality=60">
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>
 ```
 */
 .related-content {
@@ -735,7 +722,7 @@ Related Content / More on this story section
     @media all and (min-width: 40.63em) {
       .related-content__header {
         font: 600 2.7rem/3.9rem "Guardian Egyptian Web", Georgia, serif; } }
-  .related-content__wrapper {
+  .related-content__container {
     overflow-y: scroll;
     margin: 12px 0px 12px 12px; }
   .related-content__list {
@@ -766,30 +753,9 @@ Related Content / More on this story section
         margin-right: 6px; } }
     .related-content__card:last-child {
       margin-right: 0; }
-    .related-content__card--analysis {
-      border-top-color: #005689; }
-    .related-content__card--comment {
-      background-color: #e3e1dc;
-      border-top-color: #e6711b; }
-    .related-content__card--deadBlog {
-      border-top-color: #b51800; }
-    .related-content__card--feature1, .related-content__card--feature2, .related-content__card--feature3 {
-      background-color: #951c55;
-      border-top-color: #b82266; }
-    .related-content__card--liveBlog {
-      background-color: #b51800;
-      border-top-color: #cc2b12; }
-    .related-content__card--media {
-      background-color: #333;
-      border-top-color: #fb0; }
-    .related-content__card--podcast {
-      background-color: #484848;
-      border-top-color: #a7d8f2; }
-    .related-content__card--review {
-      background-color: #615b52;
-      border-top-color: #ffce4b; }
   .related-content__title {
-    height: 110px;
+    height: 90px;
+    margin-bottom: 20px;
     padding: 6px;
     color: #333;
     font: 200 1.6rem/2rem "Guardian Egyptian Web", Georgia, serif;
@@ -799,67 +765,66 @@ Related Content / More on this story section
     word-wrap: break-word;
     display: block;
     display: -webkit-box;
-    -webkit-line-clamp: 5;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical; }
     @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .related-content__title {
-        height: 143px;
+        height: 117px;
+        margin-bottom: 26px;
         font-size: 2.08rem;
         line-height: 2.6rem; } }
     @media all and (min-width: 56.25em) {
       .related-content__title {
-        height: 165px;
+        height: 135px;
+        margin-bottom: 30px;
         font-size: 2.4rem;
         line-height: 3rem; } }
     .related-content__title:before {
       display: inline-block;
       margin: -12px 4px 0px 0px;
-      font: 2.3rem "Guardian Icons", Georgia, serif;
+      font: 2.1rem "Guardian Icons", Georgia, serif;
       position: relative;
       speak: none; }
       @media all and (min-width: 40.63em) and (max-width: 56.24em) {
         .related-content__title:before {
-          font-size: 2.99rem; } }
+          font-size: 2.73rem; } }
       @media all and (min-width: 56.25em) {
         .related-content__title:before {
-          font-size: 3.45rem; } }
-    .related-content__card--comment .related-content__title:before {
-      content: "\e029";
-      color: #999; }
-    .related-content__card--media .related-content__title {
-      color: #fff; }
-      .related-content__card--media .related-content__title:before {
-        color: #fb0;
-        top: 3px; }
-    .related-content__card--podcast .related-content__title {
-      color: #fff; }
-    .related-content__title--audio:before {
-      content: "\e047"; }
-    .related-content__title--gallery:before {
-      content: "\e044"; }
+          font-size: 3.15rem; } }
+    .related-content__title--audio:before, .related-content__title--video:before {
+      content: "\e047";
+      top: 2px; }
+      @media all and (min-width: 40.63em) {
+        .related-content__title--audio:before, .related-content__title--video:before {
+          top: 4px; } }
     .related-content__title--video:before {
       content: "\e043"; }
+    .related-content__title--gallery:before {
+      content: "\e044"; }
   .related-content__meta {
     color: #999;
-    font: 1.4rem/1 "Guardian Agate Sans 1 Web", sans-serif;
+    font: 1.3rem/1 "Guardian Agate Sans 1 Web", sans-serif;
     overflow: hidden; }
-  .related-content__timestamp, .related-content__comments {
+    @media all and (min-width: 40.63em) {
+      .related-content__meta {
+        font-size: 1.4rem; } }
+  .related-content__timestamp, .related-content__comments, .related-content__duration {
     float: left;
     height: 20px;
     padding-left: 6px; }
   .related-content__timestamp {
-    width: 65px;
-    border-right: 1px solid #dcdad5;
-    margin-right: 6px; }
-  .related-content__object {
+    width: 65px; }
+  .related-content__comments, .related-content__duration {
+    border-left: 1px solid #dcdad5; }
+  .related-content__main {
     padding: 0;
     height: 84px;
     overflow: hidden; }
     @media all and (min-width: 40.63em) and (max-width: 56.24em) {
-      .related-content__object {
+      .related-content__main {
         height: 109.2px; } }
     @media all and (min-width: 56.25em) {
-      .related-content__object {
+      .related-content__main {
         height: 126px; } }
   .related-content__image {
     width: 100%;
@@ -884,8 +849,6 @@ Related Content / More on this story section
       .related-content__standfirst {
         font-size: 1.8rem;
         line-height: 2.4rem; } }
-    .related-content__card--media .related-content__standfirst {
-      color: #fff; }
   .related-content__cutout {
     position: absolute;
     right: 0;
@@ -896,6 +859,114 @@ Related Content / More on this story section
     bottom: 0;
     z-index: 2;
     padding: 6px; }
+    .related-content .touchpoint__button {
+      height: 29px;
+      width: 29px;
+      line-height: 29px;
+      font-size: 15px; }
+      @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+        .related-content .touchpoint__button {
+          height: 37.7px;
+          width: 37.7px;
+          line-height: 37.7px;
+          font-size: 19.5px; } }
+      @media all and (min-width: 56.25em) {
+        .related-content .touchpoint__button {
+          height: 43.5px;
+          width: 43.5px;
+          line-height: 43.5px;
+          font-size: 22.5px; } }
+    .related-content .touchpoint__label {
+      font-size: 1rem;
+      line-height: 1.3rem; }
+      @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+        .related-content .touchpoint__label {
+          font-size: 1.3rem;
+          line-height: 1.69rem; } }
+      @media all and (min-width: 56.25em) {
+        .related-content .touchpoint__label {
+          font-size: 1.5rem;
+          line-height: 1.95rem; } }
+  .related-content__card--analysis {
+    border-top-color: #005689; }
+    .related-content__card--analysis .related-content__title {
+      color: #005689; }
+    .related-content__card--analysis .related-content__standfirst, .related-content__card--analysis .related-content__meta {
+      color: #767676; }
+  .related-content__card--comment {
+    background-color: #e3e1dc;
+    border-top-color: #e6711b; }
+    .related-content__card--comment .related-content__title:before {
+      content: "\e029";
+      color: #999; }
+    .related-content__card--comment .related-content__standfirst {
+      padding-right: 2.10526%;
+      position: relative;
+      z-index: 1; }
+    .related-content__card--comment .related-content____byline {
+      color: #e6711b;
+      margin-top: 3px;
+      line-height: 2.7rem;
+      display: block; }
+    .related-content__card--comment .related-content__comments, .related-content__card--comment .related-content__duration {
+      border-color: rgba(153, 153, 153, 0.5); }
+  .related-content__card--deadBlog {
+    border-top-color: #b51800; }
+  .related-content__card--feature1, .related-content__card--feature2, .related-content__card--feature3 {
+    background-color: #951c55;
+    border-top-color: #b82266; }
+    .related-content__card--feature1 *, .related-content__card--feature2 *, .related-content__card--feature3 * {
+      color: #fff; }
+    .related-content__card--feature1 .related-content__title, .related-content__card--feature1 .related-content__standfirst, .related-content__card--feature2 .related-content__title, .related-content__card--feature2 .related-content__standfirst, .related-content__card--feature3 .related-content__title, .related-content__card--feature3 .related-content__standfirst {
+      color: #fff; }
+    .related-content__card--feature1 .related-content__comments, .related-content__card--feature1 .related-content__duration, .related-content__card--feature2 .related-content__comments, .related-content__card--feature2 .related-content__duration, .related-content__card--feature3 .related-content__comments, .related-content__card--feature3 .related-content__duration {
+      border-color: rgba(220, 218, 213, 0.34); }
+  .related-content__card--liveBlog {
+    background-color: #b51800;
+    border-top-color: #cc2b12; }
+    .related-content__card--liveBlog * {
+      color: #fff; }
+    .related-content__card--liveBlog .related-content__title, .related-content__card--liveBlog .related-content__standfirst {
+      color: #fff; }
+    .related-content__card--liveBlog .related-content__comments, .related-content__card--liveBlog .related-content__duration {
+      border-color: rgba(220, 218, 213, 0.34); }
+  .related-content__card--media {
+    background-color: #333;
+    border-top-color: #fb0; }
+    .related-content__card--media .related-content__title, .related-content__card--media .related-content__standfirst {
+      color: #fff; }
+    .related-content__card--media .related-content__title:before {
+      color: #fb0; }
+    .related-content__card--media .related-content__comments, .related-content__card--media .related-content__duration {
+      border-color: rgba(220, 218, 213, 0.34); }
+    .related-content__card--media .touchpoint__button {
+      background-color: #fb0;
+      color: #333; }
+    .related-content__card--media .touchpoint__label {
+      color: #fb0;
+      font-weight: bold; }
+  .related-content__card--podcast {
+    background-color: #484848;
+    border-top-color: #a7d8f2; }
+    .related-content__card--podcast .related-content__title, .related-content__card--podcast .related-content__standfirst {
+      color: #fff; }
+    .related-content__card--podcast .related-content__title:before {
+      content: '\e047';
+      color: #a7d8f2; }
+    .related-content__card--podcast .related-content__meta {
+      color: #fff; }
+    .related-content__card--podcast .related-content__comments, .related-content__card--podcast .related-content__duration {
+      border-color: #fff; }
+    .related-content__card--podcast .related-content__duration {
+      color: #fff;
+      font-weight: bold; }
+  .related-content__card--review {
+    background-color: #615b52;
+    border-color: #ffce4b; }
+    .related-content__card--review .related-content__title, .related-content__card--review .related-content__meta, .related-content__card--review .related-content__standfirst {
+      color: #fff; }
+    .related-content__card--review .related-content__comments, .related-content__card--review .related-content__duration {
+      border-color: #fff; }
 
 /*doc
 ---

@@ -15,9 +15,9 @@ define([
                 // Global functions to handle comments, called by native code
                 window.articleCardsInserter = function (html) {
                     if (!html) {
-                        $(".container--related").hide();
+                        $(".related-content").hide();
                     } else {
-                        $(".container--related .cards").html('<ul class="cards__list" id="related-content-body">' + html + '</ul>');
+                        $(".related-content__container").html('<ul class="related-content__list">' + html + '</ul>');
                         
                         var comment_card_byline = $(".card--comment.has-image .card__byline"),
                             comment_card_header = $(".card--comment.has-image .card__titletext");

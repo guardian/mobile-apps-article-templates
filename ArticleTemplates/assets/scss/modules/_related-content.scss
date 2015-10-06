@@ -7,51 +7,39 @@ category: Modules
 Related Content / More on this story section
 
 ```html_example
-<ul class="cards" id="related-content-body">
-    <li class="card has-image card--news">
-        <a class="card__link" href="x-gu://related_item/mobile-apps.guardianapis.com/items/us-news/2014/nov/16/barack-obama-basks-success-asia-pacific-sweep">
-            <h3 class="card__title">
-                President Barack Obama basks in success of Asia-Pacific sweep
-            </h3>
-            <div class="card__meta">
-                <span class="card__timestamp">
-                    <span data-icon="" aria-hidden="true"></span>
-                    12w
-                </span>
-                <span class="card__comments">
-                    <span data-icon="" aria-hidden="true"></span>
-                    196
-                </span>
-            </div>
-            <div class="card__object">
-                <img class="card__image" src="http://images.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2014/11/16/1416150105650/cb470b62-604d-42b9-bdd8-d154a2af547c-2060x1236.jpeg?width=256&amp;height=-&amp;quality=60">
-            </div>
-        </a>
-    </li>
-    <li class="card has-image card--comment">
-        <a class="card__link" href="x-gu://related_item/mobile-apps.guardianapis.com/items/commentisfree/2013/may/30/obama-wikileaks-journalism-attack">
-            <h3 class="card__title">
-                President Obama uses a sledgehammer against dissent
-            </h3>
-            <div class="card__meta">
-                <span class="card__timestamp">
-                    <span data-icon="" aria-hidden="true"></span>
-                    1y
-                </span>
-                <span class="card__comments">
-                    <span data-icon="" aria-hidden="true"></span>
-                    60
-                </span>
-            </div>
-            <div class="card__object">
-                <img class="card__image" src="http://images.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2011/3/7/1299511660945/Activists-in-support-of-B-003.jpg?width=256&amp;height=-&amp;quality=60">
-            </div>
-        </a>
-    </li>
-</ul>
+<section class="related-content">
+    <h2 class="related-content__header">
+        More on this story
+    </h2> 
+    <div class="related-content__container">
+        <ul class="related-content__list">
+            <li class="related-content__card related-content__card--news has-image">
+                <a class="related-content__link" href="x-gu://related_item/mobile-apps.guardianapis.com/items/us-news/2014/nov/16/barack-obama-basks-success-asia-pacific-sweep">
+                    <h3 class="related-content__title">
+                        President Barack Obama basks in success of Asia-Pacific sweep
+                    </h3>
+                    <div class="related-content__meta">
+                        <span class="related-content__timestamp">
+                            <span data-icon="" aria-hidden="true"></span>
+                            12w
+                        </span>
+                        <span class="related-content__comments">
+                            <span data-icon="" aria-hidden="true"></span>
+                            196
+                        </span>
+                    </div>
+                    <div class="related-content__main">
+                        <img class="related-content__image" src="http://images.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2014/11/16/1416150105650/cb470b62-604d-42b9-bdd8-d154a2af547c-2060x1236.jpeg?width=256&amp;height=-&amp;quality=60">
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>
 ```
 */
 
+// using the card upsize variables to enable us to upsize the different card measurements in a single place.
 .related-content {
     margin: base-px(0, 0, 2, 0);
     border-top: 2px solid color(shade-1);
@@ -61,7 +49,7 @@ Related Content / More on this story section
         @include body-font(1.5, $egyptian-display, 600)
     }
 
-    &__wrapper {
+    &__container {
         overflow-y: scroll;
         margin: base-px(1, 0, 1, 1);
     }
@@ -102,65 +90,27 @@ Related Content / More on this story section
         &:last-child {
             margin-right: 0;
         }
-
-        // Specific styles for different article types
-        &--analysis {
-            border-top-color: color(tone-analysis);
-        }
-
-        &--comment {
-            background-color: color(tone-comment-bg);
-            border-top-color: color(tone-comment);
-        }
-
-        &--deadBlog {
-            border-top-color: color(tone-deadblog);
-        }
-
-        &--feature1,
-        &--feature2,
-        &--feature3 {
-            background-color: color(tone-feature1);
-            border-top-color: color(tone-feature1-accent);
-        }
-
-        &--liveBlog {
-            background-color: color(tone-live);
-            border-top-color: color(tone-live-accent);
-        }
-
-        &--media {
-            background-color: color(shade-1);
-            border-top-color: color(tone-media);
-        }
-
-        &--podcast {
-            background-color: color(shade-6);
-            border-top-color: color(tone-podcast);
-        }
-
-        &--review {
-            background-color: color(tone-review);
-            border-top-color: color(tone-review-accent);
-        }
     }
 
     &__title {
-        height: 110px;
+        height: 90px;
+        margin-bottom: 20px;
         padding: base-px(0.5);
         color: color(shade-1);
         font: 200 1.6rem/2.0rem $egyptian-display;
         text-rendering: optimizeLegibility;
-        @include text-ellipses(5);
+        @include text-ellipses(4);
 
         @include mq(col2, col3) {
-            height: 110px * $card-upsize-col2;
+            height: 90px * $card-upsize-col2;
+            margin-bottom: 20px * $card-upsize-col2;
             font-size: 1.6rem * $card-upsize-col2;
             line-height: 2.0rem * $card-upsize-col2;
         }
 
         @include mq($from: col3) {
-            height: 110px * $card-upsize-col3;
+            height: 90px * $card-upsize-col3;
+            margin-bottom: 20px * $card-upsize-col3;
             font-size: 1.6rem * $card-upsize-col3;
             line-height: 2.0rem * $card-upsize-col3;
         }
@@ -169,68 +119,54 @@ Related Content / More on this story section
         &:before {
             display: inline-block;
             margin: base-px(-1, 1/3, 0, 0);
-            font: 2.3rem $icon;
+            font: 2.1rem $icon;
             position: relative;
             speak: none;
 
             @include mq(col2, col3) {
-                font-size: 2.3rem * $card-upsize-col2;
+                font-size: 2.1rem * $card-upsize-col2;
             }
 
             @include mq($from: col3) {
-                font-size: 2.3rem * $card-upsize-col3;
+                font-size: 2.1rem * $card-upsize-col3;
             }
         }
 
-        // Specific styles for different article types
-        .related-content__card--comment & {
-            &:before {
-                content: "\e029";
-                color: color(shade-3);
+        // icon for "audio" articles
+        &--audio:before,
+        &--video:before {
+            content: "\e047";
+            top: 2px;
+
+            @include mq($from: col2) {
+                top: 4px;
             }
         }
 
-        .related-content__card--media & {
-            color: color(shade-7);
-
-            &:before {
-                color: color(tone-media);
-                top: 3px;
-            }
+        // icon for "video" articles
+        &--video:before {
+            content: "\e043";
         }
 
-        .related-content__card--podcast & {
-            color: color(shade-7);
-        }
-
-        // Specific styles for different media types
-        &--audio {
-            &:before {
-                content: "\e047";
-            }
-        }
-
-        &--gallery {
-            &:before {
-                content: "\e044";
-            }
-        }
-
-        &--video {
-            &:before {
-                content: "\e043";
-            }
+        // icon for "gallery" articles
+        &--gallery:before {
+            content: "\e044";
         }
     }
 
     &__meta {
         color: color(shade-3);
-        font: #{$meta-size-1}/1 $agate-sans;
+        font: 1.3rem/1 $agate-sans;
         overflow: hidden;
+
+        @include mq($from: col2) {
+            font-size: $meta-size-1;
+        }
     }
 
     &__timestamp,
-    &__comments {
+    &__comments,
+    &__duration {
         float: left;
         height: 20px;
         padding-left: base-px(.5); 
@@ -238,11 +174,14 @@ Related Content / More on this story section
 
     &__timestamp {
         width: 65px;
-        border-right: 1px solid #dcdad5;
-        margin-right: base-px(.5); 
     }
 
-    &__object {
+    &__comments,
+    &__duration {
+        border-left: 1px solid color(shade-4);
+    }
+
+    &__main {
         padding: 0;
         height: $card-width * .6; // height should cater for standard landscape image ratio
         overflow: hidden;
@@ -277,10 +216,6 @@ Related Content / More on this story section
             font-size: 1.2rem * $card-upsize-col3;
             line-height: 1.6rem * $card-upsize-col3;
         }
-
-        .related-content__card--media & {
-            color: color(shade-7);
-        }
     }
 
     &__cutout {
@@ -295,5 +230,225 @@ Related Content / More on this story section
         bottom: 0;
         z-index: 2;
         padding: base-px(.5);
+
+        &__button {
+            height: 29px;
+            width: 29px;
+            line-height: 29px;
+            font-size: 15px;
+
+             @include mq(col2, col3) {
+                height: 29px * $card-upsize-col2;
+                width: 29px * $card-upsize-col2;
+                line-height: 29px * $card-upsize-col2;
+                font-size: 15px * $card-upsize-col2;
+            }
+
+            @include mq($from: col3) {
+                height: 29px * $card-upsize-col3;
+                width: 29px * $card-upsize-col3;
+                line-height: 29px * $card-upsize-col3;
+                font-size: 15px * $card-upsize-col3;
+            }
+        }
+
+        &__label {
+            font-size: 1rem;
+            line-height: 1.3rem;
+
+            @include mq(col2, col3) {
+                font-size: 1rem * $card-upsize-col2;
+                line-height: 1.3rem * $card-upsize-col2;
+            }
+
+            @include mq($from: col3) {
+                font-size: 1rem * $card-upsize-col3;
+                line-height: 1.3rem * $card-upsize-col3;
+            }
+        }
+    }
+
+    // "analysis" cards styling
+    &__card--analysis {
+        border-top-color: color(tone-analysis);
+
+        .related-content {
+            &__title {
+                color: color(tone-analysis);
+            }
+
+            &__standfirst,
+            &__meta {
+                color: color(shade-2);
+            }
+        }
+    }
+
+    // "comment" cards styling
+    &__card--comment {
+        background-color: color(tone-comment-bg);
+        border-top-color: color(tone-comment);
+
+        .related-content {
+            // icon for "comment" articles
+            &__title:before {
+                content: "\e029";
+                color: color(shade-3);
+            }
+
+            &__standfirst {
+                padding-right: $base-4*2;
+                position: relative;
+                z-index: 1;
+            }
+
+            &____byline {
+                color: color(tone-comment);
+                margin-top: base-px(.25);
+                line-height: 2.7rem;
+                display: block;
+            }
+
+            &__comments,
+            &__duration {
+                border-color: fade-out(color(shade-3), .5);
+            }
+        }
+    }
+
+    // "dead blog" cards styling
+    &__card--deadBlog {
+        border-top-color: color(tone-deadblog);
+    }
+
+    // "feature" cards styling
+    &__card--feature1,
+    &__card--feature2,
+    &__card--feature3 {
+        background-color: color(tone-feature1);
+        border-top-color: color(tone-feature1-accent);
+        
+        * {
+            color: #fff;
+        }
+
+        .related-content {
+            &__title,
+            &__standfirst {
+                color: #fff;
+            }
+
+            &__comments,
+            &__duration {
+                border-color: fade-out(color(shade-4), .66);
+            }
+        }
+    }
+
+    // "live blog" cards styling
+    &__card--liveBlog {
+        background-color: color(tone-live);
+        border-top-color: color(tone-live-accent);
+        
+        * {
+            color: #fff;
+        }
+
+        .related-content {
+            &__title,
+            &__standfirst {
+                color: #fff;
+            }
+
+            &__comments,
+            &__duration {
+                border-color: fade-out(color(shade-4), .66);
+            }
+        }
+    }
+
+    // "media" cards styling
+    &__card--media {
+        background-color: color(shade-1);
+        border-top-color: color(tone-media);
+
+        .related-content {
+            &__title,
+            &__standfirst {
+                color: color(shade-7);
+            }
+
+            &__title:before {
+                color: color(tone-media);
+            }
+
+            &__comments,
+            &__duration {
+                border-color: fade-out(color(shade-4), .66);
+            }
+        }
+
+        .touchpoint {
+            &__button {
+                background-color: color(tone-media);
+                color: color(shade-1);
+            }
+
+            &__label {
+                color: color(tone-media);
+                font-weight: bold;
+            }
+        }
+    }
+
+    // "podcast" cards styling
+    &__card--podcast {
+        background-color: color(shade-6);
+        border-top-color: color(tone-podcast);
+
+        .related-content {
+            &__title,
+            &__standfirst {
+                color: color(shade-7);
+            }
+
+            &__title:before {
+                content: '\e047';
+                color: color(tone-podcast);
+            }
+
+            &__meta {
+                color: #fff;
+            }
+
+            &__comments,
+            &__duration {
+                border-color: color(shade-7);
+            }
+
+            &__duration {
+                color: color(shade-7);
+                font-weight: bold;
+            }
+        }
+    }
+
+    // "review" cards styling
+    &__card--review {
+        background-color: color(tone-review);
+        border-color: color(tone-review-accent);
+
+        .related-content {
+            &__title,
+            &__meta,
+            &__standfirst {
+                color: color(shade-7);
+            }
+
+            &__comments,
+            &__duration {
+                border-color: color(shade-7);
+            }
+        }
     }
 }
