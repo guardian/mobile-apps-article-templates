@@ -32,7 +32,8 @@ var nativeFunctionCalls = [
     'liveblogNewBlock',
     'getMpuPosCallback',
     'initMpuPoller',
-    'getBannerPosCallback'
+    'getBannerPosCallback',
+    'videoPositioning'
 ];
 
 Array.prototype.forEach.call(nativeFunctionCalls, function (name) {
