@@ -1065,6 +1065,45 @@
   */
   /*doc
   ---
+  title: Container
+  name: container
+  category: Containers
+  ---
+  Display a titled container for comments, cards or other components that should be visually grouped.
+  
+  ```html_example
+  <div class="container">
+      <div class="container__header">
+          <div class="container__title">
+              <h2 class="container__title__label"><a class="container__title__link" href="#">Comments <span class="container__title__meta">350</span></a></h2>
+          </div>
+          
+          <div class="container__action container__action--comment">
+              <a class="touchpoint touchpoint--primary" href="#">
+                  <span class="touchpoint__label">Leave a comment</span>
+                  <span class="touchpoint__button icon">&#xe03d;</span>
+              </a>
+          </div>
+      </div>
+  
+      <div class="container__body">
+          <p>Container content</p>
+      </div>
+  
+      <div class="container__footer">
+          <div class="container__action container__action--view-more">
+              <a class="touchpoint touchpoint--secondary" href="#">
+                  <span class="touchpoint__label">View more</span>
+                  <span class="touchpoint__button icon">&#xe00b;</span>
+              </a>
+          </div>
+      </div>
+  </div>
+  ```
+  */
+  /* Android Tweaks - Displays Leave a comment icon by default */
+  /*doc
+  ---
   title: Figure
   name: figure
   category: Modules
@@ -5361,6 +5400,92 @@
     @media all and (max-width: 28.12em) {
       #sandbox .aside {
         border-bottom: 1px dotted #dcdad5; } }
+  #sandbox .container {
+    margin: 0px 0px 24px 0px;
+    border-top: 2px solid #333; }
+  #sandbox .container__header,
+  #sandbox .container__footer {
+    overflow: auto;
+    font-family: "Guardian Agate Sans 1 Web", sans-serif;
+    font-weight: bold;
+    padding: 8px 2px 24px 2px;
+    display: table;
+    width: 100%; }
+    @media all and (max-width: 28.12em) {
+      #sandbox .container__header,
+      #sandbox .container__footer {
+        padding: 2.89855%; } }
+  #sandbox .container__title {
+    color: #333;
+    vertical-align: top;
+    display: table-cell; }
+  #sandbox .container__title__label {
+    font-family: "Guardian Egyptian Web", Georgia, serif;
+    font-weight: 600;
+    margin-top: -1px; }
+    @media all and (max-width: 40.62em) {
+      #sandbox .container__title__label {
+        font-size: 2.4rem;
+        line-height: 3.6rem; } }
+    @media all and (min-width: 40.63em) {
+      #sandbox .container__title__label {
+        font-size: 2.7rem;
+        line-height: 3.9rem; } }
+    #sandbox .container__title__label .container__title__link {
+      color: #333; }
+      #sandbox .container__title__label .container__title__link:active {
+        color: #333; }
+  #sandbox .container__title__meta {
+    color: #999;
+    font-weight: 600; }
+  #sandbox .container__action {
+    vertical-align: top;
+    display: table-cell; }
+    @media all and (max-width: 40.62em) {
+      #sandbox .container__action {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.63em) {
+      #sandbox .container__action {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
+    #sandbox .container__action.container__action--sort {
+      padding-top: 12px; }
+  #sandbox .container__action--comment,
+  #sandbox .container__action--view-more {
+    float: right; }
+  #sandbox .container__action--comment .touchpoint__button:before {
+    position: relative;
+    top: -2px;
+    left: 2px; }
+  @media all and (max-width: 28.12em) {
+    #sandbox .container--comments .container__header .touchpoint__label {
+      display: none; } }
+  #sandbox .container__header {
+    height: 54px; }
+    #sandbox .container__header .container__action .touchpoint--primary {
+      display: none !important; }
+    #sandbox .container__header .container__action .comments-closed-label .touchpoint__label {
+      display: none; }
+  #sandbox .comments--open .container__header {
+    height: 54px; }
+    #sandbox .comments--open .container__header .container__action .touchpoint--primary {
+      display: block !important; }
+    #sandbox .comments--open .container__header .comments-closed-label .touchpoint__label {
+      display: none !important; }
+  #sandbox .container__body {
+    overflow: hidden; }
+  #sandbox .container__outbrain {
+    overflow: hidden;
+    display: none; }
+  #sandbox .android .container {
+    margin: 0px 12px 0px 12px; }
+    #sandbox .android .container.comments--closed .container__action .touchpoint--primary {
+      display: none !important; }
+    #sandbox .android .container .container__action .touchpoint--primary {
+      display: block !important; }
+  #sandbox .android .container--related {
+    margin-bottom: 48px; }
   #sandbox figure img {
     display: block; }
   #sandbox figure video {
@@ -5599,20 +5724,22 @@
       @media all and (min-width: 40.63em) {
         #sandbox .related-content__header {
           font: 600 2.7rem/3.9rem "Guardian Egyptian Web", Georgia, serif; } }
+      @media all and (min-width: 40.63em) {
+        #sandbox .related-content__header {
+          margin: 12px 0px; } }
     #sandbox .related-content__container {
       overflow-y: scroll;
       margin: 12px 0px 12px 12px; }
+      @media all and (min-width: 40.63em) {
+        #sandbox .related-content__container {
+          margin: 12px 0px; } }
     #sandbox .related-content__list {
-      overflow: hidden;
-      width: 584px; }
-      @media all and (min-width: 40.63em) and (max-width: 56.24em) {
-        #sandbox .related-content__list {
-          width: 755.6px; } }
-      @media all and (min-width: 56.25em) {
-        #sandbox .related-content__list {
-          width: 870px; } }
+      white-space: nowrap;
+      font-size: 0; }
     #sandbox .related-content__card {
-      float: left;
+      display: inline-block;
+      vertical-align: top;
+      white-space: normal;
       width: 140px;
       margin-right: 4px;
       position: relative;
@@ -5629,7 +5756,10 @@
           width: 210px;
           margin-right: 6px; } }
       #sandbox .related-content__card:last-child {
-        margin-right: 0; }
+        margin-right: 12px; }
+        @media all and (min-width: 40.63em) {
+          #sandbox .related-content__card:last-child {
+            margin-right: 0; } }
     #sandbox .related-content__title {
       height: 90px;
       margin-bottom: 20px;
@@ -5646,13 +5776,13 @@
       -webkit-box-orient: vertical; }
       @media all and (min-width: 40.63em) and (max-width: 56.24em) {
         #sandbox .related-content__title {
-          height: 117px;
+          height: 115px;
           margin-bottom: 26px;
           font-size: 2.08rem;
           line-height: 2.6rem; } }
       @media all and (min-width: 56.25em) {
         #sandbox .related-content__title {
-          height: 135px;
+          height: 130px;
           margin-bottom: 30px;
           font-size: 2.4rem;
           line-height: 3rem; } }
@@ -5668,11 +5798,11 @@
         @media all and (min-width: 56.25em) {
           #sandbox .related-content__title:before {
             font-size: 3.15rem; } }
-      #sandbox .related-content__title--audio:before, #sandbox .related-content__title--video:before {
+      #sandbox .related-content__title--audio:before, #sandbox .related-content__title--video:before, #sandbox .related-content__title--gallery:before {
         content: "\e047";
         top: 2px; }
         @media all and (min-width: 40.63em) {
-          #sandbox .related-content__title--audio:before, #sandbox .related-content__title--video:before {
+          #sandbox .related-content__title--audio:before, #sandbox .related-content__title--video:before, #sandbox .related-content__title--gallery:before {
             top: 4px; } }
       #sandbox .related-content__title--video:before {
         content: "\e043"; }

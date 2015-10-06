@@ -46,29 +46,32 @@ Related Content / More on this story section
     
     &__header {
         margin: base-px(1);
-        @include body-font(1.5, $egyptian-display, 600)
+        @include body-font(1.5, $egyptian-display, 600);
+
+        @include mq($from: col2) {
+            margin: base-px(1, 0);
+        }
     }
 
     &__container {
         overflow-y: scroll;
         margin: base-px(1, 0, 1, 1);
+
+        @include mq($from: col2) {
+            margin: base-px(1, 0);
+        }
+
     }
 
     &__list {
-        overflow: hidden;
-        width: ($card-width * $number-related-cards) + (($number-related-cards - 1) * base-px($card-gutter)) + base-px(1);
-
-        @include mq(col2, col3) {
-            width: (($card-width * $card-upsize-col2) * $number-related-cards) + (($number-related-cards - 1) * (base-px($card-gutter) * $card-upsize-col2)) + base-px(1);
-        }
-
-        @include mq($from: col3) {
-            width: (($card-width * $card-upsize-col3) * $number-related-cards) + (($number-related-cards - 1) * (base-px($card-gutter) * $card-upsize-col3)) + base-px(1);
-        }
+        white-space: nowrap;
+        font-size: 0;
     }
 
     &__card {
-        float: left; 
+        display: inline-block;
+        vertical-align: top;
+        white-space: normal;
         width: $card-width;
         margin-right: base-px($card-gutter);
         position: relative;
@@ -88,7 +91,11 @@ Related Content / More on this story section
         }
 
         &:last-child {
-            margin-right: 0;
+            margin-right: base-px(1);
+            
+            @include mq($from: col2) {
+                margin-right: 0;
+            }
         }
     }
 
@@ -102,14 +109,14 @@ Related Content / More on this story section
         @include text-ellipses(4);
 
         @include mq(col2, col3) {
-            height: 90px * $card-upsize-col2;
+            height: 115px;
             margin-bottom: 20px * $card-upsize-col2;
             font-size: 1.6rem * $card-upsize-col2;
             line-height: 2.0rem * $card-upsize-col2;
         }
 
         @include mq($from: col3) {
-            height: 90px * $card-upsize-col3;
+            height: 130px;
             margin-bottom: 20px * $card-upsize-col3;
             font-size: 1.6rem * $card-upsize-col3;
             line-height: 2.0rem * $card-upsize-col3;
@@ -134,7 +141,8 @@ Related Content / More on this story section
 
         // icon for "audio" articles
         &--audio:before,
-        &--video:before {
+        &--video:before,
+        &--gallery:before {
             content: "\e047";
             top: 2px;
 
