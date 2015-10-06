@@ -146,9 +146,12 @@ define([
             window.applyNativeFunctionCall('articleTagInserter');
 
             window.videoPositioning = function (html) {
-                var mainMedia = $(".main-media #video-URL");
+                var mainMedia = $("#video-URL");
                 if(mainMedia) {
-                    window.GuardianJSInterface.videoPosition(mainMedia.offset().left, mainMedia.offset().top, mainMedia.attr("href"));
+                    for (var i = mainMedia.length - 1; i >= 0; i--) {
+                        var media = $(mainMedia[i]);
+                        window.GuardianJSInterface.videoPosition(media.offset().left, media.offset().top, media.offset().width, media.attr("href"));
+                    }
                 }
             };
             window.applyNativeFunctionCall('videoPositioning');
