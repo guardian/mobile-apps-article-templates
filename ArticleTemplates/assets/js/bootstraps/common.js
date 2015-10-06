@@ -144,7 +144,9 @@ define([
                 MoreTags.refresh();
             };
             window.applyNativeFunctionCall('articleTagInserter');
+        },
 
+        videoPositioning: function () {
             window.videoPositioning = function (html) {
                 var mainMedia = $("#video-URL");
                 if(mainMedia) {
@@ -331,6 +333,7 @@ define([
             modules.figcaptionToggle();
             modules.imageSizer();
             modules.insertTags();
+            modules.videoPositioning();
             modules.loadComments();
             modules.loadCards();
             modules.loadEmbeds();
