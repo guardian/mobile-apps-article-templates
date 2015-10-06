@@ -117,22 +117,61 @@ define([
         imageSizer: function () {
             // Resize figures to fit images
             window.articleImageSizer = function () {
-                $('figure img').each(function (el) {
-                    var parent;
-                    var imageWidth = el.getAttribute('width') || $(el).dim().width,
-                        imageClass = imageWidth < 301 ? 'figure-inline' : 'figure-wide';
-                    // NB No parents() or closest() with Bonzo, so I'm using pure JavaScript
-                    // to detect where Figure element is (either up one or two parent nodes)
-                    parent = el.parentNode.parentNode.nodeName === "FIGURE" ? $(el).parent().parent() : $(el).parent();
-                    parent.addClass(imageClass);
-                    if (parent.hasClass('figure-inline')) {
-                        parent.css('width', imageWidth);
-                    } else if (parent.hasClass('figure-wide')) {
-                        $(el).css('width', "100%");
+                var figure,
+                    isThumbnail,
+                    hasCaption,
+                    imageOrLinkedImage,
+                    imageWrapper,
+                    caption,
+                    hasCaptionIcon,
+                    imageClass;
+
+                $('figure.element-image').each(function (el) {
+                    figure = $(el);
+                    isThumbnail = figure.hasClass("element--thumbnail");
+                    //needed for live blogs when this populates every time loading in more articles
+                    hasCaptionIcon = el.getElementsByClassName('figure__caption__icon').length;
+                    caption = el.getElementsByClassName('element-image__caption');
+                    hasCaption = caption.length;
+                    imageOrLinkedImage = bonzo.firstChild(el);
+                    imageClass = isThumbnail && hasCaption ? 'figure--thumbnail-with-caption' : (isThumbnail ? 'figure--thumbnail' : 'figure-wide');
+
+                    figure.addClass(imageClass);
+
+                    if (imageOrLinkedImage && !$(imageOrLinkedImage).hasClass('element__inner')) {
+                       imageWrapper = document.createElement('div');
+                       bonzo(imageWrapper).addClass('figure__inner').append(imageOrLinkedImage);
+                       bonzo(el).prepend(imageWrapper);
                     }
+
+                    if (hasCaption && !hasCaptionIcon) { 
+                       bonzo(caption).prepend('<span data-icon="&#xe044;" class="figure__caption__icon" aria-hidden="true"></span>');
+                    }
+
                 });
+                
             };
             window.articleImageSizer();
+        },
+        isThumbNailImageWithoutCaptionPresent: function(el){
+            return el.getElementsByClassName('figure--thumbnail').length;
+        },
+
+        applyArticleContentTypeClasses: function(){
+            var hasThumbnailsWithCaps,
+                classArray;
+        
+            $(".prose").each(function(el){
+                var element = $(el);
+                classArray = [];
+                hasThumbnailsWithCaps = modules.isThumbNailImageWithoutCaptionPresent(el);
+                if (hasThumbnailsWithCaps) {
+                    classArray.push('prose--has-thumbnails-without-caps');
+                } 
+                if (classArray.length) {
+                    element.addClass(classArray.join(" ")); 
+                }
+            });          
         },
 
         insertTags: function () {
@@ -316,7 +355,25 @@ define([
                     break;
                 }
             }
-        }
+        },
+
+        getArticleHeight: function () {
+            modules.articleHeight(function(height){
+                window.GuardianJSInterface.getArticleHeightCallback(height);
+            });
+        },
+
+        articleHeight: function(callback) {
+            // We want standard, feature or comment -article-containers
+            // They are only presents in articles
+            var contentType = document.body.getAttribute('data-content-type');
+            var height = 0;
+            if (contentType === 'article') {
+                var articleContainer = $('div[id$=-article-container]')[0];
+                height = articleContainer.offsetHeight;
+            }
+            return callback(height);
+        },
     },
 
     ready = function () {
@@ -332,6 +389,7 @@ define([
             modules.correctCaptions();
             modules.figcaptionToggle();
             modules.imageSizer();
+            modules.applyArticleContentTypeClasses();
             modules.insertTags();
             modules.videoPositioning();
             modules.loadComments();
@@ -346,6 +404,8 @@ define([
             modules.showTabs(window);
             modules.setGlobalObject(window);
             modules.fixSeries();
+            window.getArticleHeight = modules.getArticleHeight;
+            window.applyNativeFunctionCall('getArticleHeight');
             Sharing.init(window);
 
             if (!document.body.classList.contains('no-ready')) {

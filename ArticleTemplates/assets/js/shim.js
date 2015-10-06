@@ -33,7 +33,8 @@ var nativeFunctionCalls = [
     'getMpuPosCallback',
     'initMpuPoller',
     'getBannerPosCallback',
-    'videoPositioning'
+    'videoPositioning',
+    'getArticleHeight'
 ];
 
 Array.prototype.forEach.call(nativeFunctionCalls, function (name) {
@@ -86,6 +87,3 @@ window.initTemplate = function (opts) {
         window.addEventListener('DOMContentLoaded', boot);
     }
 };
-
-
-
