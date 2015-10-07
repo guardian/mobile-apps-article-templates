@@ -123,7 +123,8 @@ Related Content / More on this story section
         }
     }
 
-    &__title {
+    &__title,
+    &__series {
         // General styles for title icons 
         &:before {
             display: inline-block;
@@ -140,11 +141,13 @@ Related Content / More on this story section
                 font-size: 2.1rem * $card-upsize-col3;
             }
         }
+    }
 
+    &__title:before {
         // icon for "audio" articles
-        &--audio:before,
-        &--video:before,
-        &--gallery:before {
+        .related-content__header--audio:not(.is-series) &,
+        .related-content__header--video:not(.is-series) &,
+        .related-content__header--gallery:not(.is-series) & {
             content: "\e047";
             top: 2px;
 
@@ -154,20 +157,47 @@ Related Content / More on this story section
         }
 
         // icon for "video" articles
-        &--video:before {
+        .related-content__header--video:not(.is-series) & {
             content: "\e043";
         }
 
         // icon for "gallery" articles
-        &--gallery:before {
+        .related-content__header--gallery:not(.is-series) & {
             content: "\e044";
         }
     }
 
-    &__series,
-    &__highlight {
+    &__series {
         color: color(tone-news);
         font-weight: 300;
+    }
+
+    &__series:before {
+        // icon for "audio" articles
+        .related-content__header--audio.is-series &,
+        .related-content__header--video.is-series &,
+        .related-content__header--gallery.is-series & {
+            content: "\e047";
+            top: 2px;
+
+            @include mq($from: col2) {
+                top: 4px;
+            }
+        }
+
+        // icon for "video" articles
+        .related-content__header--video.is-series & {
+            content: "\e043";
+        }
+
+        // icon for "gallery" articles
+        .related-content__header--gallery.is-series & {
+            content: "\e044";
+        }
+    }
+
+    &__series:after {
+        content: " / ";
     }
 
     &__meta {
@@ -293,8 +323,7 @@ Related Content / More on this story section
                 color: color(tone-analysis);
             }
 
-            &__series,
-            &__highlight {
+            &__series {
                 color: color(tone-analysis-accent);
             }
 
@@ -317,8 +346,7 @@ Related Content / More on this story section
                 color: color(shade-3);
             }
 
-            &__series,
-            &__highlight {
+            &__series {
                 color: color(tone-comment);
             }
 
@@ -357,8 +385,7 @@ Related Content / More on this story section
                 color: color(shade-7);
             }
 
-            &__series,
-            &__highlight {
+            &__series {
                 color: fade-out(color(shade-7), .3);
             }
 
@@ -403,8 +430,7 @@ Related Content / More on this story section
             }
 
             &__title:before,
-            &__series,
-            &__highlight {
+            &__series {
                 color: color(tone-media);
             }
 
@@ -443,8 +469,7 @@ Related Content / More on this story section
                 color: color(tone-podcast);
             }
 
-            &__series,
-            &__highlight {
+            &__series {
                 color: color(tone-podcast);
             }
 
@@ -476,8 +501,7 @@ Related Content / More on this story section
                 color: color(shade-7);
             }
 
-            &__series,
-            &__highlight {
+            &__series {
                 color: color(tone-review);
             }
 
