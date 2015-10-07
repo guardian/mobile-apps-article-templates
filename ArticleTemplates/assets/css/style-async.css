@@ -896,7 +896,7 @@ Related Content / More on this story section
       @media all and (min-width: 40.63em) {
         .related-content__card:last-child {
           margin-right: 0; } }
-  .related-content__title {
+  .related-content__heading {
     height: 90px;
     margin-bottom: 20px;
     padding: 6px;
@@ -911,39 +911,42 @@ Related Content / More on this story section
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical; }
     @media all and (min-width: 40.63em) and (max-width: 56.24em) {
-      .related-content__title {
+      .related-content__heading {
         height: 115px;
         margin-bottom: 26px;
         font-size: 2.08rem;
         line-height: 2.6rem; } }
     @media all and (min-width: 56.25em) {
-      .related-content__title {
+      .related-content__heading {
         height: 130px;
         margin-bottom: 30px;
         font-size: 2.4rem;
         line-height: 3rem; } }
-    .related-content__title:before {
-      display: inline-block;
-      margin: -12px 4px 0px 0px;
-      font: 2.1rem "Guardian Icons", Georgia, serif;
-      position: relative;
-      speak: none; }
-      @media all and (min-width: 40.63em) and (max-width: 56.24em) {
-        .related-content__title:before {
-          font-size: 2.73rem; } }
-      @media all and (min-width: 56.25em) {
-        .related-content__title:before {
-          font-size: 3.15rem; } }
-    .related-content__title--audio:before, .related-content__title--video:before, .related-content__title--gallery:before {
-      content: "\e047";
-      top: 2px; }
-      @media all and (min-width: 40.63em) {
-        .related-content__title--audio:before, .related-content__title--video:before, .related-content__title--gallery:before {
-          top: 4px; } }
-    .related-content__title--video:before {
-      content: "\e043"; }
-    .related-content__title--gallery:before {
-      content: "\e044"; }
+  .related-content__title:before {
+    display: inline-block;
+    margin: -12px 4px 0px 0px;
+    font: 2.1rem "Guardian Icons", Georgia, serif;
+    position: relative;
+    speak: none; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      .related-content__title:before {
+        font-size: 2.73rem; } }
+    @media all and (min-width: 56.25em) {
+      .related-content__title:before {
+        font-size: 3.15rem; } }
+  .related-content__title--audio:before, .related-content__title--video:before, .related-content__title--gallery:before {
+    content: "\e047";
+    top: 2px; }
+    @media all and (min-width: 40.63em) {
+      .related-content__title--audio:before, .related-content__title--video:before, .related-content__title--gallery:before {
+        top: 4px; } }
+  .related-content__title--video:before {
+    content: "\e043"; }
+  .related-content__title--gallery:before {
+    content: "\e044"; }
+  .related-content__series, .related-content__highlight {
+    color: #005689;
+    font-weight: 300; }
   .related-content__meta {
     color: #999;
     font: 1.3rem/1 "Guardian Agate Sans 1 Web", sans-serif;
@@ -1042,15 +1045,12 @@ Related Content / More on this story section
     .related-content__card--comment .related-content__title:before {
       content: "\e029";
       color: #999; }
+    .related-content__card--comment .related-content__series, .related-content__card--comment .related-content__highlight {
+      color: #e6711b; }
     .related-content__card--comment .related-content__standfirst {
       padding-right: 2.10526%;
       position: relative;
       z-index: 1; }
-    .related-content__card--comment .related-content____byline {
-      color: #e6711b;
-      margin-top: 3px;
-      line-height: 2.7rem;
-      display: block; }
     .related-content__card--comment .related-content__comments, .related-content__card--comment .related-content__duration {
       border-color: rgba(153, 153, 153, 0.5); }
   .related-content__card--deadBlog {
@@ -1062,6 +1062,8 @@ Related Content / More on this story section
       color: #fff; }
     .related-content__card--feature1 .related-content__title, .related-content__card--feature1 .related-content__standfirst, .related-content__card--feature2 .related-content__title, .related-content__card--feature2 .related-content__standfirst, .related-content__card--feature3 .related-content__title, .related-content__card--feature3 .related-content__standfirst {
       color: #fff; }
+    .related-content__card--feature1 .related-content__series, .related-content__card--feature1 .related-content__highlight, .related-content__card--feature2 .related-content__series, .related-content__card--feature2 .related-content__highlight, .related-content__card--feature3 .related-content__series, .related-content__card--feature3 .related-content__highlight {
+      color: rgba(255, 255, 255, 0.7); }
     .related-content__card--feature1 .related-content__comments, .related-content__card--feature1 .related-content__duration, .related-content__card--feature2 .related-content__comments, .related-content__card--feature2 .related-content__duration, .related-content__card--feature3 .related-content__comments, .related-content__card--feature3 .related-content__duration {
       border-color: rgba(220, 218, 213, 0.34); }
   .related-content__card--liveBlog {
@@ -1078,7 +1080,7 @@ Related Content / More on this story section
     border-top-color: #fb0; }
     .related-content__card--media .related-content__title, .related-content__card--media .related-content__standfirst {
       color: #fff; }
-    .related-content__card--media .related-content__title:before {
+    .related-content__card--media .related-content__title:before, .related-content__card--media .related-content__series, .related-content__card--media .related-content__highlight {
       color: #fb0; }
     .related-content__card--media .related-content__comments, .related-content__card--media .related-content__duration {
       border-color: rgba(220, 218, 213, 0.34); }
@@ -1096,6 +1098,8 @@ Related Content / More on this story section
     .related-content__card--podcast .related-content__title:before {
       content: '\e047';
       color: #a7d8f2; }
+    .related-content__card--podcast .related-content__series, .related-content__card--podcast .related-content__highlight {
+      color: #a7d8f2; }
     .related-content__card--podcast .related-content__meta {
       color: #fff; }
     .related-content__card--podcast .related-content__comments, .related-content__card--podcast .related-content__duration {
@@ -1108,6 +1112,8 @@ Related Content / More on this story section
     border-color: #ffce4b; }
     .related-content__card--review .related-content__title, .related-content__card--review .related-content__meta, .related-content__card--review .related-content__standfirst {
       color: #fff; }
+    .related-content__card--review .related-content__series, .related-content__card--review .related-content__highlight {
+      color: #615b52; }
     .related-content__card--review .related-content__comments, .related-content__card--review .related-content__duration {
       border-color: #fff; }
 

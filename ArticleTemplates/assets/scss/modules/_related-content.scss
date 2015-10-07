@@ -76,7 +76,7 @@ Related Content / More on this story section
         margin-right: base-px($card-gutter);
         position: relative;
         color: color(shade-1);
-        background-color: #fff;
+        background-color: color(shade-7);
         border-top: 1px solid color(tone-news-accent);
         border-bottom: 1px solid color(shade-4);
 
@@ -99,7 +99,7 @@ Related Content / More on this story section
         }
     }
 
-    &__title {
+    &__heading {
         height: 90px;
         margin-bottom: 20px;
         padding: base-px(0.5);
@@ -121,7 +121,9 @@ Related Content / More on this story section
             font-size: 1.6rem * $card-upsize-col3;
             line-height: 2.0rem * $card-upsize-col3;
         }
+    }
 
+    &__title {
         // General styles for title icons 
         &:before {
             display: inline-block;
@@ -160,6 +162,12 @@ Related Content / More on this story section
         &--gallery:before {
             content: "\e044";
         }
+    }
+
+    &__series,
+    &__highlight {
+        color: color(tone-news);
+        font-weight: 300;
     }
 
     &__meta {
@@ -285,6 +293,11 @@ Related Content / More on this story section
                 color: color(tone-analysis);
             }
 
+            &__series,
+            &__highlight {
+                color: color(tone-analysis-accent);
+            }
+
             &__standfirst,
             &__meta {
                 color: color(shade-2);
@@ -304,17 +317,15 @@ Related Content / More on this story section
                 color: color(shade-3);
             }
 
+            &__series,
+            &__highlight {
+                color: color(tone-comment);
+            }
+
             &__standfirst {
                 padding-right: $base-4*2;
                 position: relative;
                 z-index: 1;
-            }
-
-            &____byline {
-                color: color(tone-comment);
-                margin-top: base-px(.25);
-                line-height: 2.7rem;
-                display: block;
             }
 
             &__comments,
@@ -337,13 +348,18 @@ Related Content / More on this story section
         border-top-color: color(tone-feature1-accent);
         
         * {
-            color: #fff;
+            color: color(shade-7);
         }
 
         .related-content {
             &__title,
             &__standfirst {
-                color: #fff;
+                color: color(shade-7);
+            }
+
+            &__series,
+            &__highlight {
+                color: fade-out(color(shade-7), .3);
             }
 
             &__comments,
@@ -359,13 +375,13 @@ Related Content / More on this story section
         border-top-color: color(tone-live-accent);
         
         * {
-            color: #fff;
+            color: color(shade-7);
         }
 
         .related-content {
             &__title,
             &__standfirst {
-                color: #fff;
+                color: color(shade-7);
             }
 
             &__comments,
@@ -386,7 +402,9 @@ Related Content / More on this story section
                 color: color(shade-7);
             }
 
-            &__title:before {
+            &__title:before,
+            &__series,
+            &__highlight {
                 color: color(tone-media);
             }
 
@@ -425,8 +443,13 @@ Related Content / More on this story section
                 color: color(tone-podcast);
             }
 
+            &__series,
+            &__highlight {
+                color: color(tone-podcast);
+            }
+
             &__meta {
-                color: #fff;
+                color: color(shade-7);
             }
 
             &__comments,
@@ -451,6 +474,11 @@ Related Content / More on this story section
             &__meta,
             &__standfirst {
                 color: color(shade-7);
+            }
+
+            &__series,
+            &__highlight {
+                color: color(tone-review);
             }
 
             &__comments,
