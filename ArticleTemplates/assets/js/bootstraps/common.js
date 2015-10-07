@@ -171,7 +171,7 @@ define([
                 if (classArray.length) {
                     element.addClass(classArray.join(" ")); 
                 }
-            });          
+            });
         },
 
         insertTags: function () {
@@ -187,11 +187,11 @@ define([
 
         videoPositioning: function () {
             window.videoPositioning = function (html) {
-                var mainMedia = $("#video-URL");
-                if(mainMedia) {
+                var mainMedia = $('.video-URL');
+                if (mainMedia) {
                     for (var i = mainMedia.length - 1; i >= 0; i--) {
                         var media = $(mainMedia[i]);
-                        window.GuardianJSInterface.videoPosition(media.offset().left, media.offset().top, media.offset().width, media.attr("href"));
+                        window.GuardianJSInterface.videoPosition(media.offset().left, media.offset().top, media.offset().width, media.attr('href'));
                     }
                 }
             };
@@ -208,10 +208,10 @@ define([
                         if ($(element).parent().attr("class") == "element-image-inner") {
                             $(element).hide();
                         } else {
-                            $(element).replaceWith("<div class='element-image-inner'></div>");
+                            $(element).replaceWith('<div class="element-image-inner"></div>');
                         }
                     };
-                    img.src = $(this).attr("src");
+                    img.src = $(this).attr('src');
                 });
             }
         },
@@ -384,7 +384,7 @@ define([
              These methods apply to all templates, if any should
              only run for articles, move to the Article bootstrap.
             */
-
+            
             modules.attachFastClick();
             modules.correctCaptions();
             modules.figcaptionToggle();
