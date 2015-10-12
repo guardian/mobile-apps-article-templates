@@ -70,6 +70,9 @@ var events = {
   end: {
     touch: 'touchend',
     mouse: 'mouseup'
+  },
+  cancel: {
+    touch: 'touchcancel'
   }
 };
 
@@ -166,6 +169,9 @@ Flipsnap.prototype.handleEvent = function(event) {
     // end
     case events.end.touch: self._touchEnd(event, 'touch'); break;
     case events.end.mouse: self._touchEnd(event, 'mouse'); break;
+
+    // handle touchcancel
+    case events.cancel.touch: self._touchCancel(event, 'touch'); break;
 
     // click
     case 'click': self._click(event); break;
@@ -395,6 +401,11 @@ Flipsnap.prototype._touchEnd = function(event, type) {
   });
 
   self.moveToPoint(newPoint);
+};
+
+Flipsnap.prototype._touchCancel = function(event, type) {
+  event.stopPropagation();
+  event.preventDefault();
 };
 
 Flipsnap.prototype._click = function(event) {
