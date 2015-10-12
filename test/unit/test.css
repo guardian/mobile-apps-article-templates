@@ -5728,18 +5728,50 @@
         #sandbox .related-content__header {
           margin: 12px 0px; } }
     #sandbox .related-content__container {
-      overflow-y: scroll;
-      margin: 12px 0px 12px 12px; }
+      overflow: hidden;
+      padding: 12px; }
       @media all and (min-width: 40.63em) {
         #sandbox .related-content__container {
-          margin: 12px 0px; } }
-    #sandbox .related-content__list {
-      white-space: nowrap;
-      font-size: 0; }
+          padding: 12px 0px; } }
+    #sandbox .related-content__list--items-1 {
+      width: 140px; }
+      @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+        #sandbox .related-content__list--items-1 {
+          width: 182px; } }
+      @media all and (min-width: 56.25em) {
+        #sandbox .related-content__list--items-1 {
+          width: 210px; } }
+    #sandbox .related-content__list--items-2 {
+      width: 284px; }
+      @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+        #sandbox .related-content__list--items-2 {
+          width: 370px; } }
+      @media all and (min-width: 56.25em) {
+        #sandbox .related-content__list--items-2 {
+          width: 426px; } }
+    #sandbox .related-content__list--items-3 {
+      width: 428px; }
+      @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+        #sandbox .related-content__list--items-3 {
+          width: 557px; } }
+      @media all and (min-width: 56.25em) {
+        #sandbox .related-content__list--items-3 {
+          width: 642px; } }
+    #sandbox .related-content__list--items-4 {
+      width: 572px; }
+      @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+        #sandbox .related-content__list--items-4 {
+          width: 744px; } }
+      @media all and (min-width: 56.25em) {
+        #sandbox .related-content__list--items-4 {
+          width: 858px; } }
+    #sandbox .related-content__list:after {
+      content: '';
+      display: block;
+      clear: both;
+      height: 0; }
     #sandbox .related-content__card {
-      display: inline-block;
-      vertical-align: top;
-      white-space: normal;
+      float: left;
       width: 140px;
       margin-right: 4px;
       position: relative;
@@ -5756,12 +5788,9 @@
           width: 210px;
           margin-right: 6px; } }
       #sandbox .related-content__card:last-child {
-        margin-right: 12px; }
-        @media all and (min-width: 40.63em) {
-          #sandbox .related-content__card:last-child {
-            margin-right: 0; } }
+        margin-right: 0; }
     #sandbox .related-content__heading {
-      height: 90px;
+      height: 85px;
       margin-bottom: 20px;
       padding: 6px;
       color: #333;
@@ -5798,28 +5827,28 @@
       @media all and (min-width: 56.25em) {
         #sandbox .related-content__title:before, #sandbox .related-content__series:before {
           font-size: 3.15rem; } }
-    .related-content__header--audio:not(.is-series) #sandbox .related-content__title:before, .related-content__header--video:not(.is-series) #sandbox .related-content__title:before, .related-content__header--gallery:not(.is-series) #sandbox .related-content__title:before {
+    .related-content__heading--audio:not(.is-series) #sandbox .related-content__title:before, .related-content__heading--video:not(.is-series) #sandbox .related-content__title:before, .related-content__heading--gallery:not(.is-series) #sandbox .related-content__title:before {
       content: "\e047";
       top: 2px; }
       @media all and (min-width: 40.63em) {
-        .related-content__header--audio:not(.is-series) #sandbox .related-content__title:before, .related-content__header--video:not(.is-series) #sandbox .related-content__title:before, .related-content__header--gallery:not(.is-series) #sandbox .related-content__title:before {
+        .related-content__heading--audio:not(.is-series) #sandbox .related-content__title:before, .related-content__heading--video:not(.is-series) #sandbox .related-content__title:before, .related-content__heading--gallery:not(.is-series) #sandbox .related-content__title:before {
           top: 4px; } }
-    .related-content__header--video:not(.is-series) #sandbox .related-content__title:before {
+    .related-content__heading--video:not(.is-series) #sandbox .related-content__title:before {
       content: "\e043"; }
-    .related-content__header--gallery:not(.is-series) #sandbox .related-content__title:before {
+    .related-content__heading--gallery:not(.is-series) #sandbox .related-content__title:before {
       content: "\e044"; }
     #sandbox .related-content__series {
       color: #005689;
       font-weight: 300; }
-    .related-content__header--audio.is-series #sandbox .related-content__series:before, .related-content__header--video.is-series #sandbox .related-content__series:before, .related-content__header--gallery.is-series #sandbox .related-content__series:before {
+    .related-content__heading--audio.is-series #sandbox .related-content__series:before, .related-content__heading--video.is-series #sandbox .related-content__series:before, .related-content__heading--gallery.is-series #sandbox .related-content__series:before {
       content: "\e047";
       top: 2px; }
       @media all and (min-width: 40.63em) {
-        .related-content__header--audio.is-series #sandbox .related-content__series:before, .related-content__header--video.is-series #sandbox .related-content__series:before, .related-content__header--gallery.is-series #sandbox .related-content__series:before {
+        .related-content__heading--audio.is-series #sandbox .related-content__series:before, .related-content__heading--video.is-series #sandbox .related-content__series:before, .related-content__heading--gallery.is-series #sandbox .related-content__series:before {
           top: 4px; } }
-    .related-content__header--video.is-series #sandbox .related-content__series:before {
+    .related-content__heading--video.is-series #sandbox .related-content__series:before {
       content: "\e043"; }
-    .related-content__header--gallery.is-series #sandbox .related-content__series:before {
+    .related-content__heading--gallery.is-series #sandbox .related-content__series:before {
       content: "\e044"; }
     #sandbox .related-content__series:after {
       content: " / "; }

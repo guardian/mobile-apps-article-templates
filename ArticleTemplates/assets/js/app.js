@@ -10,7 +10,7 @@ require.config({
         d3: '../../../node_modules/d3/d3',
         domReady: '../../../node_modules/domready/ready',
         mobileSlider: 'components/mobile-range-slider',
-        throttleDebounce: 'components/throttle-debounce',
+        flipSnap: 'components/flipsnap',
         fastClick: '../../../node_modules/fastclick/lib/fastclick',
         qwery: '../../../node_modules/qwery/qwery',
         fence: '../../../node_modules/fence/fence',

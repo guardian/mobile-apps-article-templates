@@ -40,6 +40,10 @@ Related Content / More on this story section
 */
 
 // using the card upsize variables to enable us to upsize the different card measurements in a single place.
+$card-width-col2: $card-width * $card-upsize-col2;
+$card-width-col3: $card-width * $card-upsize-col3;
+$card-gutter-col2: $card-gutter * $card-upsize-col2;
+$card-gutter-col3: $card-gutter * $card-upsize-col3;
 .related-content {
     margin: base-px(0, 0, 2, 0);
     border-top: 2px solid color(shade-1);
@@ -54,26 +58,44 @@ Related Content / More on this story section
     }
 
     &__container {
-        overflow-y: scroll;
-        margin: base-px(1, 0, 1, 1);
+        overflow: hidden;
+        padding: base-px(1);
 
         @include mq($from: col2) {
-            margin: base-px(1, 0);
+            padding: base-px(1, 0);
         }
 
     }
 
     &__list {
-        white-space: nowrap;
-        font-size: 0;
+        // list will have a modifier class --items-n for how many child elements are container (1 - 4)
+        @for $i from 1 through 4 {
+            &--items-#{$i} {
+                width: ceil(($card-width * $i) + ($card-gutter * ($i - 1)));
+
+                @include mq(col2, col3) {
+                    width: ceil(($card-width-col2 * $i) + ($card-gutter-col2 * ($i - 1)));
+                }
+
+                @include mq($from: col3) {
+                    width: ceil(($card-width-col3 * $i) + ($card-gutter-col3 * ($i - 1)));
+                }
+            }
+        }
+
+        // clear fix
+        &:after {
+            content: '';
+            display: block;
+            clear: both;
+            height: 0;
+        }
     }
 
     &__card {
-        display: inline-block;
-        vertical-align: top;
-        white-space: normal;
+        float: left;
         width: $card-width;
-        margin-right: base-px($card-gutter);
+        margin-right: $card-gutter;
         position: relative;
         color: color(shade-1);
         background-color: color(shade-7);
@@ -81,26 +103,22 @@ Related Content / More on this story section
         border-bottom: 1px solid color(shade-4);
 
         @include mq(col2, col3) {
-            width: $card-width * $card-upsize-col2;
-            margin-right: base-px($card-gutter) * $card-upsize-col2;
+            width: $card-width-col2;
+            margin-right: $card-gutter-col2;
         }
 
         @include mq($from: col3) {
-            width: $card-width * $card-upsize-col3;
-            margin-right: base-px($card-gutter) * $card-upsize-col3;
+            width: $card-width-col3;
+            margin-right: $card-gutter-col3;
         }
 
         &:last-child {
-            margin-right: base-px(1);
-            
-            @include mq($from: col2) {
-                margin-right: 0;
-            }
+            margin-right: 0;
         }
     }
 
     &__heading {
-        height: 90px;
+        height: 85px;
         margin-bottom: 20px;
         padding: base-px(0.5);
         color: color(shade-1);
@@ -145,9 +163,9 @@ Related Content / More on this story section
 
     &__title:before {
         // icon for "audio" articles
-        .related-content__header--audio:not(.is-series) &,
-        .related-content__header--video:not(.is-series) &,
-        .related-content__header--gallery:not(.is-series) & {
+        .related-content__heading--audio:not(.is-series) &,
+        .related-content__heading--video:not(.is-series) &,
+        .related-content__heading--gallery:not(.is-series) & {
             content: "\e047";
             top: 2px;
 
@@ -157,12 +175,12 @@ Related Content / More on this story section
         }
 
         // icon for "video" articles
-        .related-content__header--video:not(.is-series) & {
+        .related-content__heading--video:not(.is-series) & {
             content: "\e043";
         }
 
         // icon for "gallery" articles
-        .related-content__header--gallery:not(.is-series) & {
+        .related-content__heading--gallery:not(.is-series) & {
             content: "\e044";
         }
     }
@@ -174,9 +192,9 @@ Related Content / More on this story section
 
     &__series:before {
         // icon for "audio" articles
-        .related-content__header--audio.is-series &,
-        .related-content__header--video.is-series &,
-        .related-content__header--gallery.is-series & {
+        .related-content__heading--audio.is-series &,
+        .related-content__heading--video.is-series &,
+        .related-content__heading--gallery.is-series & {
             content: "\e047";
             top: 2px;
 
@@ -186,12 +204,12 @@ Related Content / More on this story section
         }
 
         // icon for "video" articles
-        .related-content__header--video.is-series & {
+        .related-content__heading--video.is-series & {
             content: "\e043";
         }
 
         // icon for "gallery" articles
-        .related-content__header--gallery.is-series & {
+        .related-content__heading--gallery.is-series & {
             content: "\e044";
         }
     }
@@ -233,11 +251,11 @@ Related Content / More on this story section
         overflow: hidden;
 
         @include mq(col2, col3) {
-            height: ($card-width * $card-upsize-col2) * .6; // height should cater for standard landscape image ratio
+            height: ($card-width-col2) * .6; // height should cater for standard landscape image ratio
         }
 
         @include mq($from: col3) {
-            height: ($card-width * $card-upsize-col3) * .6; // height should cater for standard landscape image ratio
+            height: ($card-width-col3) * .6; // height should cater for standard landscape image ratio
         }
     }
 
