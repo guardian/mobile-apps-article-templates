@@ -39,9 +39,10 @@ Can also be displayed with the caption initially hidden:
 ```
 */
 
-.main-media__caption__icon {
-    display: none;
+.main-media:not(.main-media--hidden-caption) .main-media__caption__icon {
+    @extend %caption-icon;
 }
+
 
 .main-media--hidden-caption {
     position: relative;

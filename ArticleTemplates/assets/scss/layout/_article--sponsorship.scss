@@ -16,7 +16,7 @@
 
     .sponsorship, 
     .article__body,
-    &.tone--liveBlog.is-live .article--liveblog .article__header .sponsorship{
+    &.tone--liveBlog.is-live .article--liveblog .article__header .sponsorship {
         a {
             color: color(global-adv-text);
         }
@@ -136,6 +136,18 @@
             border-color: color(global-tags);
         }
 
+        .prose .element-pullquote {
+            blockquote {
+                color: color(shade-10);
+
+                footer,
+                &::after,
+                &::before {
+                    color: color(global-adv-text);
+                }
+            }
+        }
+
     }
 
 
@@ -177,6 +189,18 @@
 
         .comment-count {
             border-color: color(global-adv-bands);
+        }
+
+        .prose .element-pullquote {
+            blockquote {
+                color: color(shade-10);
+                
+                footer,
+                &::after,
+                &::before {
+                    color: color(global-adv-text);
+                }
+            }
         }
 
     }
@@ -296,6 +320,16 @@
         .comment-count,
         .comment-count a span[data-icon] {
             color: color(global-adv-text);
+        }
+
+        .prose .element-pullquote {
+            blockquote {
+                footer,
+                &::after,
+                &::before {
+                    color: color(global-adv-text);
+                }
+            }
         }
 
         .article__header{

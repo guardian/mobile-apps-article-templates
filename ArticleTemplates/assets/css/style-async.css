@@ -1,60 +1,15 @@
 @charset "UTF-8";
+.figure__caption__icon {
+  display: inline-block;
+  margin-right: 7px;
+  position: relative;
+  top: 2px; }
+
 .sponsorship:after {
   content: '';
   display: table;
   clear: both; }
 
-@font-face {
-  font-family: 'Guardian Text Egyptian Web';
-  src: url("../fonts/egyptiantext-regular.otf"); }
-@font-face {
-  font-family: 'Guardian Text Egyptian Web';
-  font-style: italic;
-  src: url("../fonts/egyptiantext-regularitalic.otf"); }
-@font-face {
-  font-family: 'Guardian Text Egyptian Web';
-  font-style: italic;
-  font-weight: bold;
-  src: url("../fonts/egyptiantext-mediumitalic.otf"); }
-@font-face {
-  font-family: 'Guardian Agate Sans 1 Web';
-  font-style: italic;
-  src: url("../fonts/agate-regularitalic.otf"); }
-@font-face {
-  font-family: 'Guardian Agate Sans 1 Web';
-  font-weight: bold;
-  src: url("../fonts/agate-bold.otf"); }
-@font-face {
-  font-family: 'Guardian Agate Sans 1 Web';
-  font-weight: bold;
-  font-style: italic;
-  src: url("../fonts/agate-bolditalic.otf"); }
-@font-face {
-  font-family: 'Guardian Sans';
-  font-weight: 200;
-  src: url("../fonts/GuardianSansWeb-Light.ttf"); }
-@font-face {
-  font-family: 'Guardian Sans';
-  font-weight: 300;
-  src: url("../fonts/GuardianSansWeb-Regular.ttf"); }
-@font-face {
-  font-family: 'Guardian Sans';
-  font-weight: 600;
-  src: url("../fonts/GuardianSansWeb-Semibold.ttf"); }
-@font-face {
-  font-family: 'Titlepiece';
-  font-weight: 600;
-  src: url("../fonts/titlepiece.otf"); }
-@font-face {
-  font-family: 'Guardian Text Egyptian Web';
-  font-weight: bold;
-  src: url("../fonts/egyptiantext-medium.otf"); }
-@font-face {
-  font-family: 'Guardian Agate Sans 1 Web';
-  src: url("../fonts/agate-regular.otf"); }
-@font-face {
-  font-family: 'Guardian Text Egyptian Web';
-  src: url("../fonts/egyptiantext-regular.otf"); }
 /*doc
 ---
 title: Colours
@@ -343,7 +298,7 @@ Displays a piece of text or HTML component whose content is an aside of the main
   border-top: 1px dotted #dcdad5;
   padding: 12px 0px;
   width: 100%; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .aside {
       border-bottom: 1px dotted #dcdad5; } }
 
@@ -373,18 +328,86 @@ figure figcaption {
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
   border-bottom: 1px dotted rgba(153, 153, 153, 0.4);
   padding: 6px 12px 24px 12px; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     figure figcaption {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     figure figcaption {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
 
-@media all and (max-width: 40.615em) {
-  figure.figure-inline + p {
-    clear: both; } }
+.figure-wide {
+  margin: 12px 0px; }
+  .main-media .figure-wide {
+    margin: 0; }
+
+.figure--thumbnail img,
+.figure--thumbnail-with-caption img,
+.figure-wide img {
+  width: 100%;
+  height: auto; }
+.figure--thumbnail figcaption,
+.figure--thumbnail-with-caption figcaption,
+.figure-wide figcaption {
+  font-size: 1.4rem; }
+
+.figure--thumbnail {
+  float: left;
+  max-width: 65px;
+  margin: 6px 13px 0 0; }
+  .prose .figure--thumbnail {
+    margin-top: 6px; }
+
+.figure--thumbnail-with-caption {
+  display: block;
+  position: relative;
+  width: 100%; }
+  .figure--thumbnail-with-caption .figure__inner {
+    width: 50%;
+    display: block;
+    padding-right: 10px; }
+  .figure--thumbnail-with-caption figcaption {
+    display: block;
+    height: 100%;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    border-bottom: 1px dotted rgba(153, 153, 153, 0.4);
+    border-top: 1px dotted rgba(153, 153, 153, 0.4); }
+    .figure--thumbnail-with-caption figcaption .element-image__caption {
+      height: calc(100% - 60px);
+      overflow: hidden;
+      display: block;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical; }
+    .figure--thumbnail-with-caption figcaption .element-image__credit {
+      position: absolute;
+      bottom: 0; }
+  @media all and (min-width: 40.63em) {
+    .figure--thumbnail-with-caption {
+      float: left;
+      width: 33%;
+      margin-right: 15px; }
+      .figure--thumbnail-with-caption .figure__inner {
+        width: 100%;
+        margin-bottom: 10px;
+        padding-right: 0; }
+      .figure--thumbnail-with-caption figcaption {
+        padding-bottom: 12px;
+        position: static;
+        height: auto;
+        width: 100%; }
+        .figure--thumbnail-with-caption figcaption .element-image__caption {
+          height: auto;
+          display: block;
+          padding-bottom: 12px; }
+        .figure--thumbnail-with-caption figcaption .element-image__credit {
+          position: static; } }
+
 /*doc
 ---
 title: Unstyled inline list
@@ -446,35 +469,39 @@ Display a link to view more.
     border-radius: 40px;
     border: none;
     outline: none; }
-    @media all and (max-width: 40.615em) {
+    @media all and (max-width: 40.62em) {
       .more .more__label,
       .more .more__button {
         font-size: 1.4rem;
         line-height: 2.1rem; } }
-    @media all and (min-width: 40.625em) {
+    @media all and (min-width: 40.63em) {
       .more .more__label,
       .more .more__button {
         font-size: 1.575rem;
         line-height: 2.275rem; } }
-  .more .more__icon:before,
-  .more .more__label:before {
-    position: relative;
-    font-size: 110%;
-    right: 5px; }
-  .more .more__icon:active,
-  .more .more__label:active {
-    color: #e6e6e6; }
-  .more .more__text {
-    position: relative;
-    bottom: 3px; }
+  .more .more__label {
+    padding: 6px 12px 6px 6px;
+    position: static; }
+    .more .more__label:before {
+      position: relative;
+      font-size: 110%;
+      right: 5px; }
+    .more .more__label:active {
+      color: #e6e6e6; }
+  .more .more__text,
+  .more .more__icon {
+    display: inline-block;
+    padding: 0px 6px;
+    vertical-align: top;
+    margin-top: -1px; }
 
 .more--comments {
   padding-top: 12px;
   border-top: 1px dotted #dcdad5; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .more--comments {
       margin-left: 52px; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .more--comments {
       margin-left: 33.80282%; } }
   @media all and (min-width: 56.25em) {
@@ -484,13 +511,16 @@ Display a link to view more.
     background-color: #005689; }
     .more--comments .more__label:active {
       background-color: #003656; }
+  .more--comments .more__text,
+  .more--comments .more__icon {
+    color: #fff; }
 
 .more--live-blogs {
   border-bottom: 1px dotted #dcdad5; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .more--live-blogs {
       margin: 0px 12px; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .more--live-blogs {
       margin-left: 33.80282%; } }
   @media all and (min-width: 56.25em) {
@@ -528,11 +558,11 @@ Display which keywords an article has been tagged with.
   /*5px 12px 19px 8px*/
   width: 100%;
   clear: both; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .tags {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .tags {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -644,12 +674,12 @@ The 'sponsored by/supported by' section
   -webkit-flex-direction: column;
   align-items: flex-start;
   -webkit-align-items: flex-start;
-  border-bottom: 1px dotted #B5B3AE;
+  border-bottom: 1px dotted #b5b3ae;
   font-size: 1.4rem; }
   .gallery ~ .sponsorship {
     border-bottom: none; }
   .witness + .sponsorship {
-    border-top: 1px dotted #B5B3AE;
+    border-top: 1px dotted #b5b3ae;
     padding-top: 20px;
     margin-top: 24px; }
 
@@ -663,6 +693,12 @@ The 'sponsored by/supported by' section
 
 .sponsorship__logo {
   max-height: 60px; }
+
+.outbrainText {
+  display: none; }
+
+.outbrainImage {
+  display: block; }
 
 /*doc
 ---
@@ -713,12 +749,12 @@ Display a discussion thread.
 .block--discussion-failed {
   color: #767676;
   display: none; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .block--discussion-empty,
     .block--discussion-failed {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .block--discussion-empty,
     .block--discussion-failed {
       font-size: 1.6rem;
@@ -813,24 +849,22 @@ Provide a summary of events:
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
   padding: 0px 0px 12px 0px;
   margin-top: -5px; }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     [class*="block--live-"] .block__time {
       padding: 0px 12px 0px 0px;
       float: left; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     [class*="block--live-"] .block__time {
       width: 33.80282%; } }
   @media all and (min-width: 56.25em) {
     [class*="block--live-"] .block__time {
       width: 31.57895%; } }
-@media all and (min-width: 40.625em) {
+@media all and (min-width: 40.63em) {
   [class*="block--live-"] .block__body {
     float: left; }
-    [class*="block--live-"] .block__body .quoted,
     [class*="block--live-"] .block__body .twitter-tweet,
     [class*="block--live-"] .block__body .js-tweet {
       position: relative; }
-      [class*="block--live-"] .block__body .quoted::before,
       [class*="block--live-"] .block__body .twitter-tweet::before,
       [class*="block--live-"] .block__body .js-tweet::before {
         position: absolute;
@@ -838,7 +872,7 @@ Provide a summary of events:
     [class*="block--live-"] .block__body .twitter-tweet::before,
     [class*="block--live-"] .block__body .js-tweet::before {
       left: -5rem; } }
-@media all and (min-width: 40.625em) and (max-width: 56.24em) {
+@media all and (min-width: 40.63em) and (max-width: 56.24em) {
   [class*="block--live-"] .block__body {
     width: 66.19718%; } }
 @media all and (min-width: 56.25em) {
@@ -847,24 +881,24 @@ Provide a summary of events:
 [class*="block--live-"] .block__updated {
   color: #999;
   font-family: "Guardian Agate Sans 1 Web", sans-serif; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     [class*="block--live-"] .block__updated {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     [class*="block--live-"] .block__updated {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
 [class*="block--live-"] .prose blockquote {
   margin-right: 0;
   margin-left: 0; }
-@media all and (min-width: 40.625em) {
+@media all and (min-width: 40.63em) {
   [class*="block--live-"] .prose figure {
     width: 100%; } }
 [class*="block--live-"] .prose figure.figure-inline {
   float: none;
   clear: both; }
-[class*="block--live-"] .prose figure:last-child figcaption {
+[class*="block--live-"] .prose figure:last-child figcaption:not(.figure--thumbnail, .figure-wide, .figure--thumbnail-with-caption) {
   border-bottom: 0; }
 [class*="block--live-"] .prose figcaption {
   padding: 6px 0px 12px 0px; }
@@ -1066,11 +1100,11 @@ Comment preview:
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
   -webkit-transition: min-height 300ms ease-in-out;
   transition: min-height 300ms ease-in-out; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .comment {
       font-size: 1.6rem;
       line-height: 2.4rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .comment {
       font-size: 1.8rem;
       line-height: 2.6rem; } }
@@ -1096,7 +1130,7 @@ Comment preview:
   margin-top: -2px;
   padding: 0px 12px 9px 0px;
   overflow: auto; }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .comment__header {
       width: 33.80282%;
       float: left; } }
@@ -1112,7 +1146,7 @@ Comment preview:
   word-break: break-word;
   word-wrap: break-word;
   padding-bottom: 12px; }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .comment__body {
       margin-right: 7.04225%;
       margin-left: 33.80282%; } }
@@ -1126,7 +1160,7 @@ Comment preview:
 .comment__role,
 .comment__username {
   display: block; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .comment__role,
     .comment__username {
       display: inline; } }
@@ -1145,11 +1179,11 @@ Comment preview:
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
   display: block;
   white-space: nowrap; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .comment__timestamp {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .comment__timestamp {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -1161,18 +1195,18 @@ Comment preview:
   position: absolute;
   top: 0;
   right: 0; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .comment__recommend {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .comment__recommend {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
   .comment__recommend .touchpoint__button {
     background-color: transparent;
     font-size: 14px; }
-    @media all and (min-width: 40.625em) {
+    @media all and (min-width: 40.63em) {
       .comment__recommend .touchpoint__button {
         margin: 0 auto;
         display: block; } }
@@ -1186,7 +1220,7 @@ Comment preview:
   .comment__recommend .touchpoint__label {
     color: #999;
     font-weight: normal; }
-    @media all and (min-width: 40.625em) {
+    @media all and (min-width: 40.63em) {
       .comment__recommend .touchpoint__label {
         margin-top: 1px;
         padding: 0;
@@ -1197,15 +1231,15 @@ Comment preview:
   padding-bottom: 6px;
   overflow: hidden;
   display: none; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .comment__options {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .comment__options {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .comment__options {
       margin-left: 33.80282%; } }
   @media all and (min-width: 56.25em) {
@@ -1226,11 +1260,11 @@ Comment preview:
   float: none;
   position: static;
   padding: 9px 12px 18px 0px; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .is-response .comment__header {
       margin-left: 52px;
       padding-right: 64px; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .is-response .comment__header {
       margin-left: 33.80282%; } }
   @media all and (min-width: 56.25em) {
@@ -1238,7 +1272,7 @@ Comment preview:
       margin-left: 31.57895%; } }
 .is-response .comment__body {
   color: #767676; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .is-response .comment__body {
       margin-left: 52px; } }
   .is-response .comment__body p:last-child {
@@ -1333,33 +1367,22 @@ Display a standard article card.
   border-bottom: 1px solid #dcdad5;
   display: block;
   position: relative;
-  -webkit-transition: all .15s ease-out;
-  transition: all .15s ease-out;
-  /*
-  The card transform causes the card and all cards below it to disappear if the user scrolls after pressing. 
-  This seems to be a WebKit bug.
-  &:active {
-      color: color(shade-1);
-      -webkit-transform: scale(.99);
-      transform: scale(.99);
-  }*/ }
-  @media all and (max-width: 28.115em) {
+  transition: none; }
+  .card:hover {
+    color: initial; }
+  @media all and (max-width: 28.12em) {
     .card {
       margin: 2.89855% 2.89855% 0; } }
-  @media all and (min-width: 28.125em) {
+  @media all and (min-width: 28.13em) {
     .card {
-      margin-bottom: 4.34783%; }
-      .card::before {
-        content: '';
-        padding-top: 133%;
-        display: block; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      margin-bottom: 4.34783%; } }
+  @media all and (min-width: 28.13em) and (max-width: 40.62em) {
     .card {
       margin: 2.12766% 2.12766% 0 0;
       width: 48.93617%; }
       .card:nth-child(2n) {
         margin-right: 0; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .card {
       margin: 1.40845% 1.40845% 0 0;
       width: 32.39437%; }
@@ -1371,7 +1394,7 @@ Display a standard article card.
       width: 24.21053%; }
       .card:nth-child(4n) {
         margin-right: 0; } }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .card .card__container {
       display: -webkit-box;
       display: -webkit-flex;
@@ -1380,24 +1403,17 @@ Display a standard article card.
       -webkit-box-orient: vertical;
       -webkit-flex-direction: column;
       flex-direction: column; } }
-  @media all and (min-width: 28.125em) {
+  @media all and (min-width: 28.13em) {
     .card .card__container {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0; } }
+      position: relative;
+      padding-bottom: 60%;
+      overflow: hidden; } }
   .card .card__header,
   .card .card__object {
     padding: 3px 6px 0px 6px; }
-    @media all and (min-width: 28.125em) {
-      .card .card__header,
-      .card .card__object {
-        height: 50%;
-        overflow: hidden; } }
   .card .card__header {
-    margin-bottom: 1em; }
-    @media all and (max-width: 28.115em) {
+    margin-bottom: 16px; }
+    @media all and (max-width: 28.12em) {
       .card .card__header {
         -webkit-box-flex: 1;
         -webkit-flex: 1;
@@ -1405,12 +1421,15 @@ Display a standard article card.
         -webkit-box-ordinal-group: 2;
         -webkit-order: 1;
         order: 1; } }
+    @media all and (min-width: 28.13em) {
+      .card .card__header {
+        height: 120px; } }
   .card .card__title {
     color: #333;
     overflow-y: hidden; }
     .card .card__title [data-icon]::before {
       display: none; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .card .card__object {
       -webkit-box-flex: 1;
       -webkit-flex: 1;
@@ -1418,20 +1437,19 @@ Display a standard article card.
       -webkit-box-ordinal-group: 3;
       -webkit-order: 2;
       order: 2; } }
-  @media all and (min-width: 28.125em) {
+  @media all and (min-width: 28.13em) {
     .card .card__object {
-      overflow: hidden;
       width: 100%;
       position: absolute;
-      bottom: 0; } }
+      top: 159px; } }
   .card .card__footer {
     color: #999;
     font-family: "Guardian Agate Sans 1 Web", sans-serif;
     font-size: 1.4rem;
     line-height: 1;
-    margin-top: 1em;
+    margin-top: 16px;
     overflow: hidden; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 28.12em) {
       .card .card__footer {
         -webkit-box-flex: 1;
         -webkit-flex: 1;
@@ -1439,41 +1457,26 @@ Display a standard article card.
         -webkit-box-ordinal-group: 4;
         -webkit-order: 3;
         order: 3; } }
-    @media all and (min-width: 28.125em) {
-      .card .card__footer {
-        position: absolute;
-        z-index: 1;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        width: 100%; } }
   .card.has-image .card__object {
     padding: 0;
-    height: 170px;
     overflow: hidden; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 28.12em) {
       .card.has-image .card__object {
+        height: 170px;
         -webkit-box-flex: 1;
         -webkit-flex: 1;
         flex: 1;
         -webkit-box-ordinal-group: 4;
         -webkit-order: 3;
         order: 3; } }
-    @media all and (min-width: 28.125em) {
-      .card.has-image .card__object .card__image {
-        height: 100%;
-        width: auto;
-        margin-bottom: -1px; } }
-  .card.has-image .card__footer {
-    bottom: 170px; }
-    @media all and (max-width: 28.115em) {
-      .card.has-image .card__footer {
-        -webkit-box-flex: 1;
-        -webkit-flex: 1;
-        flex: 1;
-        -webkit-box-ordinal-group: 3;
-        -webkit-order: 2;
-        order: 2; } }
+  @media all and (max-width: 28.12em) {
+    .card.has-image .card__footer {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      flex: 1;
+      -webkit-box-ordinal-group: 3;
+      -webkit-order: 2;
+      order: 2; } }
   .card .card__title
   .card__titletext {
     overflow: hidden;
@@ -1510,7 +1513,7 @@ Display a standard article card.
     bottom: 0;
     z-index: 0; }
   .card .card__meta {
-    width: 21.73913%;
+    width: 100px;
     height: 22px;
     padding: 0px 0px 0px 6px;
     border-left: 1px solid #dcdad5;
@@ -1520,18 +1523,11 @@ Display a standard article card.
       border-left: 0 none; }
     .card .card__meta .icon {
       margin-right: 3px; }
-  .card .card__timestamp {
-    padding: 0px 60px 0px 6px; }
 
-.android .card .card__timestamp {
-  padding-top: 2px; }
-.android .card .card__meta {
-  padding-top: 2px; }
-
-@media all and (min-width: 28.125em) {
+@media all and (min-width: 28.13em) {
   .container__body .card {
     float: left; } }
-@media all and (min-width: 40.625em) and (max-width: 56.24em) {
+@media all and (min-width: 40.63em) and (max-width: 56.24em) {
   .container__body .card:nth-of-type(4) {
     display: none; } }
 
@@ -2086,7 +2082,7 @@ Display a titled container for comments, cards or other components that should b
   padding: 8px 2px 24px 2px;
   display: table;
   width: 100%; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .container__header,
     .container__footer {
       padding: 2.89855%; } }
@@ -2100,11 +2096,11 @@ Display a titled container for comments, cards or other components that should b
   font-family: "Guardian Egyptian Web", Georgia, serif;
   font-weight: 600;
   margin-top: -1px; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .container__title__label {
       font-size: 2.4rem;
       line-height: 3.6rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .container__title__label {
       font-size: 2.7rem;
       line-height: 3.9rem; } }
@@ -2120,11 +2116,11 @@ Display a titled container for comments, cards or other components that should b
 .container__action {
   vertical-align: top;
   display: table-cell; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .container__action {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .container__action {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -2135,7 +2131,7 @@ Display a titled container for comments, cards or other components that should b
 .container__action--view-more {
   float: right; }
 
-@media all and (max-width: 28.115em) {
+@media all and (max-width: 28.12em) {
   .container--comments .container__header .touchpoint__label {
     display: none; } }
 .container__header {
@@ -2154,6 +2150,10 @@ Display a titled container for comments, cards or other components that should b
 
 .container__body {
   overflow: hidden; }
+
+.container__outbrain {
+  overflow: hidden;
+  display: none; }
 
 /* Android Tweaks - Displays Leave a comment icon by default */
 .android .container {
@@ -2204,7 +2204,7 @@ Default styling no JavaScript enhancement:
     .element-rich-link, .element-membership {
       width: 24.75rem;
       margin: 4px 20px 6px 0; } }
-  @media all and (min-width: 54.375em) {
+  @media all and (min-width: 54.38em) {
     .element-rich-link, .element-membership {
       width: 30.75rem;
       margin: 4px 20px 6px 0; } }
@@ -2218,10 +2218,17 @@ Default styling no JavaScript enhancement:
     padding: 0;
     color: #333 !important;
     border: 0;
-    background-image: none !important; }
+    background-image: none !important;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    hyphens: auto; }
     .element-rich-link a:hover, .element-membership a:hover {
       text-decoration: underline !important; }
 
+@media all and (max-width: 28.12em) {
+  .font-size-6 .element-rich-link, .font-size-7 .element-rich-link, .font-size-8 .element-rich-link, .font-size-9 .element-rich-link, .font-size-10 .element-rich-link {
+    width: 100%;
+    margin-bottom: 15px; } }
 .element-rich-link span {
   display: none; }
 .element-rich-link a:before {
@@ -2378,11 +2385,18 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 </div>
 ```
 */
-@media all and (max-width: 40.615em) {
+.prose blockquote::before, .prose .element-pullquote blockquote::before, .prose .element-pullquote blockquote::after {
+  font-family: "Guardian Icons", Georgia, serif;
+  font-size: 4rem;
+  font-style: normal;
+  line-height: 1;
+  display: block; }
+
+@media all and (max-width: 40.62em) {
   .prose {
     font-size: 1.6rem;
     line-height: 2.4rem; } }
-@media all and (min-width: 40.625em) {
+@media all and (min-width: 40.63em) {
   .prose {
     font-size: 1.8rem;
     line-height: 2.6rem; } }
@@ -2445,15 +2459,18 @@ Adds typographic styling, typically to content fetched from the Guardian Content
   font-style: italic;
   margin: 24px; }
   .prose blockquote::before {
-    color: #999;
-    font-family: "Guardian Icons", Georgia, serif;
-    font-size: 4rem;
-    font-style: normal;
-    line-height: 1;
-    display: block; }
-  .prose blockquote.quoted::before {
-    content: '\e029';
-    margin-top: -.75rem; }
+    color: #999; }
+  .prose blockquote.quoted {
+    position: relative;
+    padding-top: 25px; }
+    .prose blockquote.quoted::before {
+      content: '\E092';
+      font-size: 3rem;
+      content: '\E092';
+      position: absolute;
+      top: 2px;
+      left: 0;
+      line-height: 0; }
   .prose blockquote.twitter-tweet, .prose blockquote.js-tweet {
     font-family: "Guardian Agate Sans 1 Web", sans-serif;
     font-size: 1.4rem;
@@ -2465,11 +2482,44 @@ Adds typographic styling, typically to content fetched from the Guardian Content
       font-size: 1.6rem;
       line-height: 2.2rem;
       margin: 6px 0px; }
+.prose .element-pullquote {
+  position: relative;
+  margin: 24px 0px 24px 0px; }
+  .prose .element-pullquote blockquote {
+    margin: 0;
+    font-style: normal;
+    font-size: 2rem;
+    line-height: 1.3;
+    padding: 25px 0; }
+    .prose .element-pullquote blockquote p {
+      margin: 0; }
+    .prose .element-pullquote blockquote cite {
+      font-style: normal;
+      font-size: 1.8rem; }
+    .prose .element-pullquote blockquote::before, .prose .element-pullquote blockquote::after {
+      font-size: 3rem;
+      color: #005689;
+      content: '\E092';
+      position: absolute;
+      top: 2px;
+      left: 0;
+      line-height: 0; }
+    .prose .element-pullquote blockquote::after {
+      content: '\E096';
+      top: auto;
+      bottom: 19px; }
+    .prose .element-pullquote blockquote footer {
+      color: #005689; }
+  @media all and (min-width: 40.63em) {
+    .prose .element-pullquote {
+      max-width: 280px;
+      margin-right: 12px;
+      float: left; } }
 .prose figure {
-  margin: 12px 0px; }
+  margin: 12px 12px 0px 0px; }
   .prose figure.figure-wide img {
     height: auto; }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .prose figure.figure-wide figcaption {
       padding-right: 23.94366%; } }
   @media all and (min-width: 56.25em) {
@@ -2478,7 +2528,7 @@ Adds typographic styling, typically to content fetched from the Guardian Content
   .prose figure.figure-inline {
     margin-right: 12px;
     float: left; }
-    @media all and (min-width: 28.125em) {
+    @media all and (min-width: 28.13em) {
       .prose figure.figure-inline {
         margin: 6px 12px 0px 0px;
         float: left; }
@@ -2499,12 +2549,12 @@ Adds typographic styling, typically to content fetched from the Guardian Content
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
   margin: 12px 0px;
   border-top: 2px solid #4bc6df; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .prose table,
     .table {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .prose table,
     .table {
       font-size: 1.6rem;
@@ -2603,11 +2653,11 @@ Display comparison of goal attempts, corners and fouls that occurred during a ma
     white-space: nowrap;
     overflow: hidden;
     width: 75px; }
-    @media all and (max-width: 40.615em) {
+    @media all and (max-width: 40.62em) {
       .pie-chart .pie-chart__label-text {
         font-size: 1.4rem;
         line-height: 2rem; } }
-    @media all and (min-width: 40.625em) {
+    @media all and (min-width: 40.63em) {
       .pie-chart .pie-chart__label-text {
         font-size: 1.6rem;
         line-height: 2.2rem; } }
@@ -2615,11 +2665,11 @@ Display comparison of goal attempts, corners and fouls that occurred during a ma
     font-family: "Guardian Egyptian Web", Georgia, serif;
     font-weight: 600;
     text-align: center; }
-    @media all and (max-width: 40.615em) {
+    @media all and (max-width: 40.62em) {
       .pie-chart .pie-chart__label-value {
         font-size: 1.7rem;
         line-height: 2.2rem; } }
-    @media all and (min-width: 40.625em) {
+    @media all and (min-width: 40.63em) {
       .pie-chart .pie-chart__label-value {
         font-size: 2.2rem;
         line-height: 3rem; } }
@@ -2726,11 +2776,11 @@ Display today's football fixtures; upcoming, in progress and ended.
   display: table;
   table-layout: fixed;
   width: 100%; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .football-fixture {
       font-size: 1.6rem;
       line-height: 2.4rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .football-fixture {
       font-size: 1.8rem;
       line-height: 2.6rem; } }
@@ -2741,7 +2791,7 @@ Display today's football fixtures; upcoming, in progress and ended.
     .football-fixture.match .football-fixture__data--1 {
       color: #767676;
       padding: 0px 6px 0px 6px; }
-      @media all and (max-width: 28.115em) {
+      @media all and (max-width: 28.12em) {
         .football-fixture.match .football-fixture__data--1 {
           padding: 0px 6px 0px 12px; } }
     .football-fixture.match .football-fixture__data--2 {
@@ -2758,25 +2808,25 @@ Display today's football fixtures; upcoming, in progress and ended.
       color: #4bc6df; }
   .football-fixture.date .football-fixture__data--1, .football-fixture.competition .football-fixture__data--1 {
     font-weight: bold; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 28.12em) {
       .football-fixture.date .football-fixture__data--1, .football-fixture.competition .football-fixture__data--1 {
         width: 34.78261%; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    @media all and (min-width: 28.13em) and (max-width: 40.62em) {
       .football-fixture.date .football-fixture__data--1, .football-fixture.competition .football-fixture__data--1 {
         width: 29.78723%; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .football-fixture.date .football-fixture__data--1, .football-fixture.competition .football-fixture__data--1 {
         width: 29.57746%; } }
     @media all and (min-width: 56.25em) {
       .football-fixture.date .football-fixture__data--1, .football-fixture.competition .football-fixture__data--1 {
         width: 41.05263%; } }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .football-fixture.date .football-fixture__data--2, .football-fixture.competition .football-fixture__data--2 {
       width: 8.69565%; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+  @media all and (min-width: 28.13em) and (max-width: 40.62em) {
     .football-fixture.date .football-fixture__data--2, .football-fixture.competition .football-fixture__data--2 {
       width: 10.6383%; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .football-fixture.date .football-fixture__data--2, .football-fixture.competition .football-fixture__data--2 {
       width: 11.26761%; } }
   @media all and (min-width: 56.25em) {
@@ -2784,7 +2834,7 @@ Display today's football fixtures; upcoming, in progress and ended.
       width: 8.42105%; } }
   .football-fixture.date .football-fixture__data--4, .football-fixture.competition .football-fixture__data--4 {
     color: #767676; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 28.12em) {
       .football-fixture.date .football-fixture__data--4, .football-fixture.competition .football-fixture__data--4 {
         display: none; } }
   .football-fixture.competition .football-fixture__data--1 {
@@ -2795,16 +2845,16 @@ Display today's football fixtures; upcoming, in progress and ended.
   border-top: 1px solid #dcdad5;
   padding: 3px 6px 12px 6px;
   display: table-cell; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .football-fixture__data.football-fixture__data--1 {
       padding: 3px 0px 12px 12px; } }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .football-fixture__data.football-fixture__data--1, .football-fixture__data.football-fixture__data--3 {
       width: 15.21739%; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+  @media all and (min-width: 28.13em) and (max-width: 40.62em) {
     .football-fixture__data.football-fixture__data--1, .football-fixture__data.football-fixture__data--3 {
       width: 10.6383%; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .football-fixture__data.football-fixture__data--1, .football-fixture__data.football-fixture__data--3 {
       width: 11.26761%; } }
   @media all and (min-width: 56.25em) {
@@ -2814,13 +2864,13 @@ Display today's football fixtures; upcoming, in progress and ended.
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .football-fixture__data.football-fixture__data--2 {
       width: 21.73913%; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+  @media all and (min-width: 28.13em) and (max-width: 40.62em) {
     .football-fixture__data.football-fixture__data--2 {
       width: 29.78723%; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .football-fixture__data.football-fixture__data--2 {
       width: 29.57746%; } }
   @media all and (min-width: 56.25em) {
@@ -2828,13 +2878,13 @@ Display today's football fixtures; upcoming, in progress and ended.
       width: 41.05263%; } }
   .football-fixture__data.football-fixture__data--3 {
     white-space: nowrap; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .football-fixture__data.football-fixture__data--4 {
       width: 34.78261%; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+  @media all and (min-width: 28.13em) and (max-width: 40.62em) {
     .football-fixture__data.football-fixture__data--4 {
       width: 44.68085%; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .football-fixture__data.football-fixture__data--4 {
       width: 46.47887%; } }
   @media all and (min-width: 56.25em) {
@@ -2938,12 +2988,12 @@ Display comparison of possession, goal attempts, corners and fouls that occurred
     font-weight: 600;
     margin: 0px 0px 12px 0px;
     display: block; }
-    @media all and (max-width: 40.615em) {
+    @media all and (max-width: 40.62em) {
       .match-stats .bar-chart,
       .match-stats .match-stats__shots span {
         font-size: 1.7rem;
         line-height: 2.2rem; } }
-    @media all and (min-width: 40.625em) {
+    @media all and (min-width: 40.63em) {
       .match-stats .bar-chart,
       .match-stats .match-stats__shots span {
         font-size: 2.2rem;
@@ -2952,11 +3002,11 @@ Display comparison of possession, goal attempts, corners and fouls that occurred
 .match-stats__caption {
   color: #333;
   margin: 0px 0px 3px 0px; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .match-stats__caption {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .match-stats__caption {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -2968,12 +3018,12 @@ Display comparison of possession, goal attempts, corners and fouls that occurred
 .match-stats__shots__off,
 .match-stats__shots__on {
   padding: 3px 6px; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .match-stats__shots__off,
     .match-stats__shots__on {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .match-stats__shots__off,
     .match-stats__shots__on {
       font-size: 1.6rem;
@@ -3094,15 +3144,15 @@ Full time
   width: 44px;
   height: 44px;
   display: table; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .match-status {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .match-status {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .match-status {
       background-size: 44px 44px;
       background-position: center; } }
@@ -3203,7 +3253,7 @@ Display a player card embed. The markup for these classes comes from the content
   width: 44px;
   height: 44px;
   float: right; }
-  @media all and (min-width: 28.125em) {
+  @media all and (min-width: 28.13em) {
     .player-card__image {
       width: 100px;
       height: 100px; } }
@@ -3212,18 +3262,18 @@ Display a player card embed. The markup for these classes comes from the content
   margin: 0px 0px 12px 0px;
   padding-right: 44px;
   min-height: 44px; }
-  @media all and (min-width: 28.125em) {
+  @media all and (min-width: 28.13em) {
     .player-card__player {
       padding-right: 100px;
       min-height: 100px; } }
 
 .player-card__name {
   font-family: "Guardian Egyptian Web", Georgia, serif; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .player-card__name {
       font-size: 1.7rem;
       line-height: 2.2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .player-card__name {
       font-size: 2.2rem;
       line-height: 3rem; } }
@@ -3231,11 +3281,11 @@ Display a player card embed. The markup for these classes comes from the content
 .player-card__position {
   color: #005689;
   font-family: "Guardian Agate Sans 1 Web", sans-serif; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .player-card__position {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .player-card__position {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -3505,11 +3555,11 @@ Display a team line-up including substitutions and bookings.
 */
 .team-lineup {
   font-family: "Guardian Agate Sans 1 Web", sans-serif; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .team-lineup {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .team-lineup {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -3549,7 +3599,7 @@ Display a team line-up including substitutions and bookings.
 .team-lineup__player__number {
   color: #999; }
 
-@media all and (max-width: 28.115em) {
+@media all and (max-width: 28.12em) {
   .team-lineup__player__forename {
     display: none; } }
 
@@ -3557,7 +3607,7 @@ Display a team line-up including substitutions and bookings.
   display: none; }
   .replacement .team-lineup__player__replacement {
     display: inline; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 28.12em) {
       .replacement .team-lineup__player__replacement {
         display: block; } }
 
@@ -3568,133 +3618,134 @@ name: cricket scorecard
 category: Modules
 ---
 <div class="cricket-stats__innings">
-    <div class="cricket-stats__header">
-        <div class="cricket-stats__title">
-            England 1st innings
-        </div>
-        <div class="cricket-stats__total">
-        Total<br><em>354 all out</em>
-        </div>
-    </div>
-    <div class="cricket-stats__table-wrap">
-        <table class="cricket-stats__table">
-            <thead class="cricket-stats__table--phone">
-                <tr>
-                    <th class="cricket-stats__table--title">England 1st innings</th>
-                    <th class="cricket-stats__table--values">Runs</th>
-                </tr>
-            </thead>
-            <thead class="cricket-stats__table--tablet">
-                <tr>
-                    <th>Batsman</th>
-                    <th>Taken by</th>
-                    <th class="cricket-stats__table--values">Balls</th>
-                    <th class="cricket-stats__table--values">4s</th>
-                    <th class="cricket-stats__table--values">6s</th>
-                    <th class="cricket-stats__table--values">Runs</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        K C Brathwaite
-                        <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
-                    </td>
-                    <td class="cricket-stats__table--tablet">c Root b Broad</td>
-                    <td class="cricket-stats__table--tablet">12</td>
-                    <td class="cricket-stats__table--tablet">12</td>
-                    <td class="cricket-stats__table--tablet">12</td>
-                    <td>12</td>
-                </tr>
-                <tr>
-                    <td>
-                        D S Smith
-                        <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
-                    </td>
-                    <td class="cricket-stats__table--tablet">c Jordan b Tredwell</td>
-                    <td class="cricket-stats__table--tablet">15</td>
-                    <td class="cricket-stats__table--tablet">15</td>
-                    <td class="cricket-stats__table--tablet">15</td>
-                    <td>15</td>
-                </tr>
-                <tr>
-                    <td>
-                        D M Bravo
-                        <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
-                    </td>
-                    <td class="cricket-stats__table--tablet">c Root b Jordan</td>
-                    <td class="cricket-stats__table--tablet">12</td>
-                    <td class="cricket-stats__table--tablet">6</td>
-                    <td class="cricket-stats__table--tablet">5</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <td>
-                        M N Samuels
-                        <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
-                    </td>
-                    <td class="cricket-stats__table--tablet">c Tradwell b Anderson</td>
-                    <td class="cricket-stats__table--tablet">25</td>
-                    <td class="cricket-stats__table--tablet">25</td>
-                    <td class="cricket-stats__table--tablet">25</td>
-                    <td>25</td>
-                </tr>
-                <tr>
-                    <td>
-                        K C Brathwaite
-                        <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
-                    </td>
-                    <td class="cricket-stats__table--tablet">c Root b Broad</td>
-                    <td class="cricket-stats__table--tablet">12</td>
-                    <td class="cricket-stats__table--tablet">12</td>
-                    <td class="cricket-stats__table--tablet">12</td>
-                    <td>12</td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="cricket-stats__table--in-play">D S Smith</span>
-                        <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
-                    </td>
-                    <td class="cricket-stats__table--tablet">c Jordan b Tredwell</td>
-                    <td class="cricket-stats__table--tablet">15</td>
-                    <td class="cricket-stats__table--tablet">15</td>
-                    <td class="cricket-stats__table--tablet">15</td>
-                    <td>15</td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="cricket-stats__table--duck">D M Bravo</span>
-                        <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
-                    </td>
-                    <td class="cricket-stats__table--tablet">c Root b Jordan</td>
-                    <td class="cricket-stats__table--tablet">12</td>
-                    <td class="cricket-stats__table--tablet">6</td>
-                    <td class="cricket-stats__table--tablet">5</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <td>
-                        M N Samuels
-                        <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
-                    </td>
-                    <td class="cricket-stats__table--tablet">c Tradwell b Anderson</td>
-                    <td class="cricket-stats__table--tablet">25</td>
-                    <td class="cricket-stats__table--tablet">25</td>
-                    <td class="cricket-stats__table--tablet">25</td>
-                    <td>25</td>
-                </tr>
-            </tbody>
-            <tfoot class="cricket-stats__table--phone">
-                <tr>
-                    <td class="cricket-stats__table--strong">Total</td>
-                    <td class="cricket-stats__table--strong">367-8</td>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
+	<div class="cricket-stats__header">
+		<div class="cricket-stats__title">
+			England 1st innings
+		</div>
+		<div class="cricket-stats__total">
+		Total<br><em>354 all out</em>
+		</div>
+	</div>
+	<div class="cricket-stats__table-wrap">
+		<table class="cricket-stats__table">
+			<thead class="cricket-stats__table--phone">
+				<tr>
+					<th class="cricket-stats__table--title">England 1st innings</th>
+					<th class="cricket-stats__table--values">Runs</th>
+				</tr>
+			</thead>
+			<thead class="cricket-stats__table--tablet">
+				<tr>
+					<th>Batsman</th>
+					<th>Taken by</th>
+					<th class="cricket-stats__table--values">Balls</th>
+					<th class="cricket-stats__table--values">4s</th>
+					<th class="cricket-stats__table--values">6s</th>
+					<th class="cricket-stats__table--values">Runs</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						K C Brathwaite
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Root b Broad</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td>12</td>
+				</tr>
+				<tr>
+					<td>
+						D S Smith
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Jordan b Tredwell</td>
+					<td class="cricket-stats__table--tablet">15</td>
+					<td class="cricket-stats__table--tablet">15</td>
+					<td class="cricket-stats__table--tablet">15</td>
+					<td>15</td>
+				</tr>
+				<tr>
+					<td>
+						D M Bravo
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Root b Jordan</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td class="cricket-stats__table--tablet">6</td>
+					<td class="cricket-stats__table--tablet">5</td>
+					<td>10</td>
+				</tr>
+				<tr>
+					<td>
+						M N Samuels
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Tradwell b Anderson</td>
+					<td class="cricket-stats__table--tablet">25</td>
+					<td class="cricket-stats__table--tablet">25</td>
+					<td class="cricket-stats__table--tablet">25</td>
+					<td>25</td>
+				</tr>
+				<tr>
+					<td>
+						K C Brathwaite
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Root b Broad</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td>12</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="cricket-stats__table--in-play">D S Smith</span>
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Jordan b Tredwell</td>
+					<td class="cricket-stats__table--tablet">15</td>
+					<td class="cricket-stats__table--tablet">15</td>
+					<td class="cricket-stats__table--tablet">15</td>
+					<td>15</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="cricket-stats__table--duck">D M Bravo</span>
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Root b Jordan</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td class="cricket-stats__table--tablet">6</td>
+					<td class="cricket-stats__table--tablet">5</td>
+					<td>10</td>
+				</tr>
+				<tr>
+					<td>
+						M N Samuels
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Tradwell b Anderson</td>
+					<td class="cricket-stats__table--tablet">25</td>
+					<td class="cricket-stats__table--tablet">25</td>
+					<td class="cricket-stats__table--tablet">25</td>
+					<td>25</td>
+				</tr>
+			</tbody>
+			<tfoot class="cricket-stats__table--phone">
+				<tr>
+					<td class="cricket-stats__table--strong">Total</td>
+					<td class="cricket-stats__table--strong">367-8</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
 </div>
 */
 .cricket-stats__innings {
+  position: relative;
   display: table;
   table-layout: fixed;
   width: 100%;
@@ -3706,9 +3757,15 @@ category: Modules
 
 .cricket-stats__wrap {
   color: #333; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .cricket-stats__wrap {
       margin: 0 12px; } }
+
+.cricket-stats__side {
+  border-bottom: 1px solid #dcdad5;
+  margin-bottom: 24px; }
+  .cricket-stats__side:last-child {
+    border-bottom: none; }
 
 .cricket-stats__header {
   display: table-cell;
@@ -3716,27 +3773,24 @@ category: Modules
   width: 25%;
   box-sizing: border-box;
   padding: 6px 0 0 12px; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .cricket-stats__header {
       display: none; } }
 
 .cricket-stats__title {
   font-weight: bold;
   line-height: 1; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .cricket-stats__title {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .cricket-stats__title {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
 
 .cricket-stats__total {
-  font-family: "Guardian Egyptian Web", Georgia, serif;
-  font-weight: 200;
-  font-size: 2.7rem;
-  line-height: 1.1;
+  font: 200 2.7rem/1.1 "Guardian Egyptian Web", Georgia, serif;
   margin-top: 20px; }
   .cricket-stats__total em {
     color: #4bc6df;
@@ -3750,30 +3804,30 @@ category: Modules
 .cricket-stats__takenby {
   display: block;
   color: #999;
-  padding: 3px 0 6px 0; }
+  padding: 3px 0 6px; }
 
 .cricket-stats__table {
   width: 100%;
   text-align: left;
   font-family: "Guardian Agate Sans 1 Web", sans-serif; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .cricket-stats__table {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .cricket-stats__table {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .cricket-stats__table--tablet {
       display: none; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .cricket-stats__table--phone {
       display: none; } }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .cricket-stats__table--values {
       width: 20%; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .cricket-stats__table--values {
       width: 15%; } }
   .cricket-stats__table th {
@@ -3784,18 +3838,21 @@ category: Modules
     color: #000; }
   .cricket-stats__table--title {
     font-family: "Guardian Text Egyptian Web", Georgia, serif; }
-  .cricket-stats__table th, .cricket-stats__table td {
+  .cricket-stats__table th,
+  .cricket-stats__table td {
     vertical-align: top;
     padding: 6px 6px 0 6px;
     line-height: 1;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden; }
-    @media all and (max-width: 40.615em) {
-      .cricket-stats__table th, .cricket-stats__table td {
+    @media all and (max-width: 40.62em) {
+      .cricket-stats__table th,
+      .cricket-stats__table td {
         height: 3.7rem; } }
-    @media all and (min-width: 40.625em) {
-      .cricket-stats__table th, .cricket-stats__table td {
+    @media all and (min-width: 40.63em) {
+      .cricket-stats__table th,
+      .cricket-stats__table td {
         height: 3.9rem; } }
   .cricket-stats__table tr {
     border-bottom: 1px solid #dcdad5; }
@@ -3808,28 +3865,30 @@ category: Modules
 .cricket-stats__table--in-play {
   font-weight: bold; }
 
-.cricket-stats__table--duck::before {
-  background-position: -24px 0; }
-
 .cricket-stats__table--in-play,
 .cricket-stats__table--duck {
-  display: inline-block;
-  vertical-align: top; }
+  display: block;
+  position: relative;
+  padding-left: 22px;
+  height: 22px; }
   .cricket-stats__table--in-play::before,
   .cricket-stats__table--duck::before {
     content: '';
-    display: inline-block;
-    position: relative;
-    bottom: 2px;
-    height: 20px;
-    width: 20px;
-    margin-right: 4px;
+    display: block;
+    position: absolute;
+    top: -2px;
+    left: 0;
+    height: 18px;
+    width: 18px;
     background-image: url(../img/cricket-dismissal.png);
     background-repeat: no-repeat;
-    background-size: auto 48px; }
+    background-size: auto 40px; }
   .cricket-stats__table--in-play + .cricket-stats__takenby,
   .cricket-stats__table--duck + .cricket-stats__takenby {
     margin-top: -7px; }
+
+.cricket-stats__table--duck::before {
+  background-position: -20px 0; }
 
 /*doc
 ---
@@ -3865,11 +3924,11 @@ Display a Guardian Witness submission.
 */
 .element-witness {
   font-family: "Guardian Agate Sans 1 Web", sans-serif; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .element-witness {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .element-witness {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -3894,169 +3953,6 @@ Display a Guardian Witness submission.
   .element-witness--date::before {
     content: '\00B7   '; }
 
-.android .discussion {
-  border-top-width: 0;
-  padding: 0px 12px 0px 12px; }
-.discussion .container {
-  margin: 0;
-  border-top-width: 0; }
-.discussion .container__header {
-  padding-bottom: 0; }
-
-.discussion__header {
-  background-color: transparent; }
-  @media all and (max-width: 28.115em) {
-    .discussion__header {
-      padding: 0 2.89855%; } }
-  .discussion__header .section {
-    padding: 6px 12px 6px 0px;
-    color: #333; }
-  .discussion__header .headline {
-    margin: 0px 0px 48px 0px; }
-    @media all and (max-width: 28.115em) {
-      .discussion__header .headline {
-        font-size: 2.25rem;
-        line-height: 2.4rem; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-      .discussion__header .headline {
-        font-size: 3rem;
-        line-height: 3rem; } }
-    @media all and (min-width: 40.625em) {
-      .discussion__header .headline {
-        font-size: 3.6rem;
-        line-height: 3.6rem; } }
-
-@media all and (min-width: 28.125em) {
-  .football {
-    border-top: 4px solid #4bc6df; } }
-.football .tabs [href="#football__tabpanel--liveblog"][aria-selected="true"] {
-  color: #b51800;
-  border-top-color: #cc2b12; }
-
-.football__tabpanel .article {
-  border-top-width: 2px; }
-
-#football__tabpanel--article .section {
-  display: none; }
-#football__tabpanel--article .headline {
-  padding-top: 6px; }
-
-#football__tabpanel--stats {
-  font-family: "Guardian Agate Sans 1 Web", sans-serif; }
-
-.football__label {
-  font-family: "Guardian Egyptian Web", Georgia, serif; }
-  @media all and (max-width: 40.615em) {
-    .football__label {
-      font-size: 1.6rem;
-      line-height: 2.4rem; } }
-  @media all and (min-width: 40.625em) {
-    .football__label {
-      font-size: 1.8rem;
-      line-height: 2.6rem; } }
-  @media all and (min-width: 28.125em) {
-    .football__label {
-      padding: 0px 0px 0px 60px; } }
-
-.football__sublabel {
-  margin-bottom: 4px; }
-  @media all and (max-width: 40.615em) {
-    .football__sublabel {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
-    .football__sublabel {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-
-.football__column {
-  padding: 0px 0px 12px 0px;
-  width: 50%;
-  float: left; }
-  @media all and (min-width: 28.125em) {
-    .football__column {
-      padding: 0px 0px 12px 60px; } }
-  @media all and (min-width: 56.25em) {
-    .football__column {
-      padding: 0px 60px 12px 60px; } }
-
-.football__lineups {
-  padding: 12px;
-  overflow-y: hidden; }
-  @media all and (min-width: 28.125em) {
-    .football__lineups .football__column {
-      padding: 0px 0px 12px 0px; } }
-
-@media all and (max-width: 28.115em) {
-  .football__stats .football__column,
-  .football__today .football__column {
-    width: 100%;
-    float: none; } }
-
-.football__stats {
-  border-top: 1px dotted #dcdad5;
-  padding: 12px;
-  overflow-y: auto;
-  position: relative; }
-
-.football__today {
-  border-top: 1px dotted #dcdad5;
-  padding: 12px; }
-  @media all and (min-width: 28.125em) {
-    .football__today {
-      display: table;
-      width: 100%; } }
-
-@media all and (min-width: 28.125em) {
-  .football__today__fixtures {
-    padding-right: 12px; } }
-
-@media all and (min-width: 28.125em) {
-  .football__today__fixtures,
-  .football__today__table {
-    vertical-align: top;
-    width: 50%;
-    display: inline-block; } }
-
-.football__lineups .team-lineup__player__number,
-.football__today__fixtures .football-match--status,
-.football__today__table .football-stat--postition {
-  width: 42px; }
-  @media all and (min-width: 28.125em) {
-    .football__lineups .team-lineup__player__number,
-    .football__today__fixtures .football-match--status,
-    .football__today__table .football-stat--postition {
-      width: 60px; } }
-
-.support {
-  font-family: "Guardian Agate Sans 1 Web", sans-serif;
-  background-color: #fff;
-  padding: 12px; }
-  @media all and (max-width: 40.615em) {
-    .support {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
-    .support {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-  .support .prose h2 + p,
-  .support .prose h2 + ul,
-  .support .prose h3 + p {
-    margin-top: 0; }
-  .support .prose h2 {
-    margin-bottom: 0; }
-    .support .prose h2 + h3 {
-      margin: 9px 0px 0px 0px; }
-  @media all and (max-width: 40.615em) {
-    .support .prose h3 {
-      font-size: 1.6rem;
-      line-height: 2.4rem; } }
-  @media all and (min-width: 40.625em) {
-    .support .prose h3 {
-      font-size: 1.8rem;
-      line-height: 2.6rem; } }
-
 /*doc
 ---
 title: Interactive
@@ -4080,21 +3976,21 @@ body[data-fullscreen-interactive] {
   color: #767676;
   clear: both;
   margin: 0; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .interactive--offline {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .interactive--offline {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
   body:not([data-fullscreen-interactive]) .interactive--offline {
     margin: 0 -12px 0 -12px !important; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     body[data-fullscreen-interactive] .interactive--offline {
       font-size: 1.96rem;
       line-height: 2.8rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     body[data-fullscreen-interactive] .interactive--offline {
       font-size: 2.24rem;
       line-height: 3.08rem; } }
@@ -4147,5 +4043,167 @@ body[data-fullscreen-interactive] {
     opacity: 0; }
   to {
     opacity: 1; } }
+.android .discussion {
+  border-top-width: 0;
+  padding: 0px 12px 0px 12px; }
+.discussion .container {
+  margin: 0;
+  border-top-width: 0; }
+.discussion .container__header {
+  padding-bottom: 0; }
+
+.discussion__header {
+  background-color: transparent; }
+  @media all and (max-width: 28.12em) {
+    .discussion__header {
+      padding: 0 2.89855%; } }
+  .discussion__header .section {
+    padding: 6px 12px 6px 0px;
+    color: #333; }
+  .discussion__header .headline {
+    margin: 0px 0px 48px 0px; }
+    @media all and (max-width: 28.12em) {
+      .discussion__header .headline {
+        font-size: 2.25rem;
+        line-height: 2.4rem; } }
+    @media all and (min-width: 28.13em) and (max-width: 40.62em) {
+      .discussion__header .headline {
+        font-size: 3rem;
+        line-height: 3rem; } }
+    @media all and (min-width: 40.63em) {
+      .discussion__header .headline {
+        font-size: 3.6rem;
+        line-height: 3.6rem; } }
+
+@media all and (min-width: 28.13em) {
+  .football {
+    border-top: 4px solid #4bc6df; } }
+.football .tabs [href="#football__tabpanel--liveblog"][aria-selected="true"] {
+  color: #b51800;
+  border-top-color: #cc2b12; }
+
+.football__tabpanel .article {
+  border-top-width: 2px; }
+
+#football__tabpanel--article .section {
+  display: none; }
+#football__tabpanel--article .headline {
+  padding-top: 6px; }
+
+#football__tabpanel--stats {
+  font-family: "Guardian Agate Sans 1 Web", sans-serif; }
+
+.football__label {
+  font-family: "Guardian Egyptian Web", Georgia, serif; }
+  @media all and (max-width: 40.62em) {
+    .football__label {
+      font-size: 1.6rem;
+      line-height: 2.4rem; } }
+  @media all and (min-width: 40.63em) {
+    .football__label {
+      font-size: 1.8rem;
+      line-height: 2.6rem; } }
+  @media all and (min-width: 28.13em) {
+    .football__label {
+      padding: 0px 0px 0px 60px; } }
+
+.football__sublabel {
+  margin-bottom: 4px; }
+  @media all and (max-width: 40.62em) {
+    .football__sublabel {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    .football__sublabel {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+
+.football__column {
+  padding: 0px 0px 12px 0px;
+  width: 50%;
+  float: left; }
+  @media all and (min-width: 28.13em) {
+    .football__column {
+      padding: 0px 0px 12px 60px; } }
+  @media all and (min-width: 56.25em) {
+    .football__column {
+      padding: 0px 60px 12px 60px; } }
+
+.football__lineups {
+  padding: 12px;
+  overflow-y: hidden; }
+  @media all and (min-width: 28.13em) {
+    .football__lineups .football__column {
+      padding: 0px 0px 12px 0px; } }
+
+@media all and (max-width: 28.12em) {
+  .football__stats .football__column,
+  .football__today .football__column {
+    width: 100%;
+    float: none; } }
+
+.football__stats {
+  border-top: 1px dotted #dcdad5;
+  padding: 12px;
+  overflow-y: auto;
+  position: relative; }
+
+.football__today {
+  border-top: 1px dotted #dcdad5;
+  padding: 12px; }
+  @media all and (min-width: 28.13em) {
+    .football__today {
+      display: table;
+      width: 100%; } }
+
+@media all and (min-width: 28.13em) {
+  .football__today__fixtures {
+    padding-right: 12px; } }
+
+@media all and (min-width: 28.13em) {
+  .football__today__fixtures,
+  .football__today__table {
+    vertical-align: top;
+    width: 50%;
+    display: inline-block; } }
+
+.football__lineups .team-lineup__player__number,
+.football__today__fixtures .football-match--status,
+.football__today__table .football-stat--postition {
+  width: 42px; }
+  @media all and (min-width: 28.13em) {
+    .football__lineups .team-lineup__player__number,
+    .football__today__fixtures .football-match--status,
+    .football__today__table .football-stat--postition {
+      width: 60px; } }
+
+.support {
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  background-color: #fff;
+  padding: 12px; }
+  @media all and (max-width: 40.62em) {
+    .support {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    .support {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  .support .prose h2 + p,
+  .support .prose h2 + ul,
+  .support .prose h3 + p {
+    margin-top: 0; }
+  .support .prose h2 {
+    margin-bottom: 0; }
+    .support .prose h2 + h3 {
+      margin: 9px 0px 0px 0px; }
+  @media all and (max-width: 40.62em) {
+    .support .prose h3 {
+      font-size: 1.6rem;
+      line-height: 2.4rem; } }
+  @media all and (min-width: 40.63em) {
+    .support .prose h3 {
+      font-size: 1.8rem;
+      line-height: 2.6rem; } }
 
 /*# sourceMappingURL=style-async.css.map */

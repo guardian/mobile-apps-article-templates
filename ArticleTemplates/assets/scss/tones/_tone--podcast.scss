@@ -1,13 +1,12 @@
 .tone--podcast {
-
     .section__container {
-        border-bottom: 1px rgba(234,234,234,0.3) dotted;
+        border-bottom: 1px rgba(234, 234, 234, .3) dotted;
+        color: color(shade-5);
         
-        & > div {
+        > div {
             color: color(tone-podcast); // Content Label Section
         }
         
-        color: color(shade-5);
         .content__series-label,
         .content__series-label a {
             color: color(shade-5);  // Content Label Series
@@ -35,7 +34,7 @@
 
     .article__header {
         background-color: color(shade-6);
-        background-image: -webkit-canvas(circles);
+        //background-image: -webkit-canvas(circles); (-webkit-canvas is deprecated not supported in Windows App)
 
         .section {
             display: block;
@@ -51,18 +50,8 @@
             }
         }
 
-/*        .card__title--audio {
-            &::before {
-                content: '\e047';
-                color: color(one-podcast-headline);
-                font-family: $icon;
-                margin-right: base-px(.25);
-                position: absolute;              
-            }
-        }*/
-
-        .card__titletext {         
-            padding-bottom: 4px;
+        .card__titletext {
+            margin-bottom: 4px;
             text-overflow: ellipsis;
             overflow-y: hidden;
             word-wrap: break-word;
@@ -71,14 +60,16 @@
             -webkit-box-orient: vertical;
         }
 
-        .meta__byline{
-            .byline{
+        .meta__byline {
+            .byline {
                 color: color(shade-7);
             }
-            .byline__author a{
+
+            .byline__author a {
                 color: color(tone-podcast);
             }
         }
+
         .comment-count a {
             color: color(tone-podcast);
         }
@@ -100,16 +91,25 @@
     .comment-count {
         color: color(tone-podcast);
         border-left-color: rgba(color(shade-7), .4);
+        
         a {
             color: color(tone-podcast);
         }
     }
 
-    &.ios .article__header .card__title--audio::before{
+    &.ios .article__header .card__title--audio::before {
         margin-top: 3px;
-    }  
-    &.android .article__header .card__title--audio::before{
-        margin-top: -3px;
-    }  
+    }
 
+    &.android .article__header .card__title--audio::before {
+        margin-top: -3px;
+    }
+
+    &.is_advertising {
+        .alerts--new,
+        .alerts--new.following:active {
+            border-color: color(shade-1);
+            color: color(shade-1);
+        }
+    }
 }

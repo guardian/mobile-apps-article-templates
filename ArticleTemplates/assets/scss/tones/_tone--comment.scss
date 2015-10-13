@@ -7,19 +7,18 @@
         }
     }
 
-    
-
     .section__container {
         & > div {
             color: color(tone-comment); // Content Label Section
         }
 
         color: color(shade-2);
+
         .content__series-label,
         .content__series-label a {
             color: color(shade-2);  // Content Label Series
         }
-        
+
         .comment-count {
             border-left-color: darken(color(shade-4), 10%);
         }
@@ -35,8 +34,8 @@
             &.more-button a {
                 @include tag-more-button(color(shade-1), color(global-tags));
             }
-        }        
-    }    
+        }
+    }
 
     .touchpoint--primary {
         .touchpoint__button {
@@ -63,6 +62,16 @@
             border-top-color: color(tone-comment);
         }
 
+        .prose .element-pullquote {
+            blockquote {
+                footer,
+                &::after,
+                &::before {
+                    color: color(tone-comment);
+                }
+            }
+        }
+
         .article__header {
             .headline__byline {
                 color: color(tone-comment);
@@ -74,7 +83,6 @@
         }
 
         .meta__misc {
-
             .test--new-alerts & {
                 padding-bottom: base-px(0.5);
             }
@@ -108,7 +116,6 @@
             }
             a.alerts--new,  a.alerts--new.following:active {
                 border-color: color(shade-7);
-                background-color: color(tone-comment-accent);
                 color: color(shade-7);
             }
         }

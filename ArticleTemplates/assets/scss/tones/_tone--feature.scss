@@ -1,6 +1,6 @@
 .tone--feature1,
 .tone--feature2,
-.tone--feature3  {
+.tone--feature3 {
     a,
     .article__body > p:first-of-type:first-letter {
         color: color(tone-feature1);
@@ -32,9 +32,17 @@
         .table {
             border-top-color: color(tone-feature1-accent);
         }
-    }
 
-    .article--feature {
+        .prose .element-pullquote {
+            blockquote {
+                footer,
+                &::after,
+                &::before {
+                    color: color(tone-feature1);
+                }
+            }
+        }
+        
         .article__header {
             a {
                 color: #fff;
@@ -58,11 +66,10 @@
 
             .content__labels {
                 color: #fdadba;
-
             }
 
             .content__series-label.content__labels {
-                color: #FFF;
+                color: #fff;
             }
 
             .headline {
@@ -79,6 +86,7 @@
 
             .standfirst {
                 color: #fff;
+                
                 span {
                     color: rgba(#fff, .4);
                 }
@@ -101,21 +109,21 @@
                 color: #fff;
             }
         }
-        
 
         .meta {
             border: 0;
             margin: 0;
 
-            a.alerts--new:active, a.alerts--new.following {
+            .alerts--new:active,
+            .alerts--new.following {
                 background-color: color(shade-7);
                 color: color(tone-feature1-accent);
             }
 
-            a.alerts--new,  a.alerts--new.following:active {
+            .alerts--new,
+            .alerts--new.following:active {
                 border-color: color(shade-7);
                 color: color(shade-7);
-                background-color: color(tone-feature1);
             }
         }
 
@@ -124,5 +132,4 @@
             color: rgba(#fff, .8);
         }
     }
-   
 }
