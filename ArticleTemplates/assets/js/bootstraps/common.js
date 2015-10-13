@@ -194,17 +194,17 @@ define([
                         window.GuardianJSInterface.videoPosition(media.offset().left, media.offset().top, media.offset().width, media.attr('href'));
                     }
                 }
-                setTimeout(modules.videoPositioningPoller.bind(window.innerHeight), 500);
+                setTimeout(modules.videoPositioningPoller, 500, window.innerHeight);
             };
             window.applyNativeFunctionCall('videoPositioning');
         },
 
         videoPositioningPoller: function(pageHeight) {
             var newHeight = window.innerHeight;
-            if(pageHeight != newHeight) {
+            if(pageHeight !== newHeight) {
                 window.videoPositioning();
             } else {
-                setTimeout(modules.videoPositioningPoller.bind(newHeight), 500);
+                setTimeout(modules.videoPositioningPoller, 500, newHeight);
             }  
         },
 
