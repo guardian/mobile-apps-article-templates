@@ -188,7 +188,7 @@ define([
         },
 
         videoPositioning: function () {
-            window.videoPositioning = function (html) {
+            window.videoPositioning = function () {
                 var mainMedia = $('.video-URL');
                 if (mainMedia) {
                     for (var i = mainMedia.length - 1; i >= 0; i--) {
@@ -196,8 +196,18 @@ define([
                         window.GuardianJSInterface.videoPosition(media.offset().left, media.offset().top, media.offset().width, media.attr('href'));
                     }
                 }
+                setTimeout(modules.videoPositioningPoller, 500, window.innerHeight);
             };
             window.applyNativeFunctionCall('videoPositioning');
+        },
+
+        videoPositioningPoller: function(pageHeight) {
+            var newHeight = window.innerHeight;
+            if(pageHeight !== newHeight) {
+                window.videoPositioning();
+            } else {
+                setTimeout(modules.videoPositioningPoller, 500, newHeight);
+            }  
         },
 
         offline: function() {
