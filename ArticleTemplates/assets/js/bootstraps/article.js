@@ -33,12 +33,21 @@ define([
 		        
 		        var quotePosition = $('.element-pullquote').offset();
 		        var scroll = $(window).scrollTop();
-		        var value = scroll - quotePosition;
-		        console.log(value);
-		        console.log(scroll);
-		        console.log(quotePosition);
+		        var offset = quotePosition.top - 400;
+		        //var value = scroll - quotePosition.top;
+		        //console.log(value);
+		        console.log(window.scrollY);
+		        console.log(offset);
 		        
-		        
+		        bean.on(window, 'scroll', function(){
+			       $('.element-pullquote').scrollTop();
+			       if(window.scrollY >= offset){
+				   		$('.element-pullquote').addClass('animated').addClass('fadeInUp');
+				   		console.log('added class');   		
+		           } else{
+			           $('.element-pullquote').removeClass('animated').removeClass('fadeInUp');
+		           }
+		       	});
 		        
 		        
 	        }
