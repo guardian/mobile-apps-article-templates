@@ -33,7 +33,9 @@ $mq-show-breakpoints: () !default;
     } @else if (unit($px) == em) {
         @return $px;
     }
-    @return ($px / $base-font-size) * 1em;
+    // round ems to 2 decimal places
+    $ems: round($px / $base-font-size * 100) / 100;
+    @return $ems * 1em;
 }
 
 @function mq-retrieve-breakpoint-width($name) {

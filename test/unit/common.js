@@ -44,6 +44,15 @@ define([
 
 			expect(innerFrame.getAttribute('width')).to.be.equal('600');
 		});
+		it('should add  a class to article prose if thumbnails without captions are present in content', function(){
+			var testContent = bonzo.create('<div class="prose"><figure class="element element-image element--thumbnail figure--thumbnail" data-media-id="2a9f6654f2782d518efb059bceb7518770a0643e"><a href="x-gu://gallery/http://images.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2015/5/8/1431072412626/e42d9030-aa9a-4327-8a82-aefaa0b17903-bestSizeAvailable.jpeg?width=#{width}&amp;height=#{height}&amp;quality=#{quality}"><img src="http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/5/8/1431072412626/e42d9030-aa9a-4327-8a82-aefaa0b17903-bestSizeAvailable.jpeg" alt="Owen Jones" width="280" height="280" class="gu-image"></a></figure></div>')[0];
+			var prose = $('.prose', testContent);
+			$(testContent).appendTo(sandbox);
+			Common.modules.applyArticleContentTypeClasses();
+			expect($('.prose').hasClass('prose--has-thumbnails-without-caps')).to.be.true;
+		});
+
+		//it('should given an image that is less than 301px set a width of 100%')
 
 		it('should force .pie-chart width to its parent width', function(){
 			var testContent = bonzo.create('<div style="width:323px;height:500px;"><div class="pie-chart"></div></div>').pop();
@@ -126,7 +135,6 @@ define([
 				}, 1500);
 			});
 		}
-
 		describe('Tags', function(){
 			var tagsContainer;
 

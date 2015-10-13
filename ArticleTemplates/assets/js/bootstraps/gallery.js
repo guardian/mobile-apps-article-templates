@@ -13,10 +13,12 @@ define([
     var modules = {
         galleryLayout: function () {
             collagePlus.init(".gallery", ".gallery__image");
-            window.onorientationchange = function(){
+            bean.on(window, 'resize.gallery orientationchange.gallery', window.ThrottleDebounce.debounce(100, false, function () {
                 $(".gallery")[0].removeAttribute("style");
                 collagePlus.init(".gallery", ".gallery__image");
-            };
+            }));
+
+            // remove this once ios stops using..
             window.redrawGallery = function() {
                 $(".gallery")[0].removeAttribute("style");
                 var orientation = window.orientation;
@@ -35,6 +37,7 @@ define([
         if (!this.initialised) {
             this.initialised = true;
             modules.galleryLayout();
+
         }
     };
 
