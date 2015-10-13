@@ -2218,10 +2218,17 @@ Default styling no JavaScript enhancement:
     padding: 0;
     color: #333 !important;
     border: 0;
-    background-image: none !important; }
+    background-image: none !important;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    hyphens: auto; }
     .element-rich-link a:hover, .element-membership a:hover {
       text-decoration: underline !important; }
 
+@media all and (max-width: 28.12em) {
+  .font-size-6 .element-rich-link, .font-size-7 .element-rich-link, .font-size-8 .element-rich-link, .font-size-9 .element-rich-link, .font-size-10 .element-rich-link {
+    width: 100%;
+    margin-bottom: 15px; } }
 .element-rich-link span {
   display: none; }
 .element-rich-link a:before {
