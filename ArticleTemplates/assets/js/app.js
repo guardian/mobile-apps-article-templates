@@ -108,7 +108,7 @@ require([
     var scriptTag = document.getElementById('gu');
     var skipStyle = scriptTag.getAttribute('data-skip-style');
 
-    if(!skipStyle){
+    if (!skipStyle) {
         loadCss('assets/css/style-async.css');
     }
 });
