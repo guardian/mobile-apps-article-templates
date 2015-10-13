@@ -29,12 +29,10 @@
 .tone--deadBlog {
     .witness {
         margin-top: base-px(1);
-    } 
+    }
 
-    a.touchpoint {
-        &:active {
-            color: color(tone-deadblog);
-        }
+    a.touchpoint:active {
+        color: color(tone-deadblog);
     }
 
     .more--live-blogs {
@@ -85,7 +83,8 @@
     .article__header {
         background-color: color(shade-7);
 
-        .byline__author, .byline__author a {
+        .byline__author,
+        .byline__author a {
             color: color(shade-1);
         }
 
@@ -114,10 +113,10 @@
         }
 
         .section {
+            @include headline(.5);
             color: color(tone-deadblog); // Default
             font-family: $egyptian-display;
             font-weight: 600;
-            @include headline(.5);
             float: left;
 
             &::before {
@@ -141,7 +140,7 @@
 
         .sponsorship {
             background-color: color(shade-7);
-            border-bottom: none;
+            border-bottom: 0;
 
             &__about-uri {
                 color: color(global-sponsored-about);
@@ -158,7 +157,7 @@
             }
 
             &.more-button a {
-                @include tag-more-button(color(shade-1), darken(color(blogs-tags),10%));
+                @include tag-more-button(color(shade-1), darken(color(blogs-tags), 10%));
             }
         }
     }
@@ -176,7 +175,7 @@
             font-weight: bold;
         }
     }
-    
+
     .alerts--new:active,
     .alerts--new.following {
         background-color: color(tone-live);
@@ -191,7 +190,7 @@
 
     .cricket {
         .article--liveblog {
-            border-top: none;
+            border-top: 0;
         }
 
         .alerts--new {
