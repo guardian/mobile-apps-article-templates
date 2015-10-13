@@ -48,17 +48,11 @@ Display a standard article card.
     border-bottom: 1px solid color(shade-4);
     display: block;
     position: relative;
-    -webkit-transition: all .15s ease-out;
-    transition: all .15s ease-out;
+    transition: none;
 
-    /*
-    The card transform causes the card and all cards below it to disappear if the user scrolls after pressing. 
-    This seems to be a WebKit bug.
-    &:active {
-        color: color(shade-1);
-        -webkit-transform: scale(.99);
-        transform: scale(.99);
-    }*/
+    &:hover {
+        color: initial;
+    }
 
     @include mq($to: col1) {
         margin: $base-1 / 1.5 $base-1 / 1.5 0; // TODO: Move to base-px()
@@ -66,12 +60,6 @@ Display a standard article card.
 
     @include mq($from: col1) {
         margin-bottom: $base-1;
-
-        &::before {
-            content: '';
-            padding-top: 133%;
-            display: block;
-        }
     }
 
     @include mq(col1, col2) {
@@ -108,30 +96,27 @@ Display a standard article card.
         }
 
         @include mq($from: col1) {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
+            position: relative;
+            padding-bottom: 60%;
+            overflow: hidden;
         }
     }
 
     .card__header,
     .card__object {
         padding: base-px(.25, .5, 0, .5);
-
-        @include mq($from: col1) {
-            height: 50%;
-            overflow: hidden;
-        }
     }
 
     .card__header {
-        margin-bottom: 1em;
+        margin-bottom: 16px;
 
         @include mq($to: col1) {
             @include flex(1);
             @include order(1);
+        }
+
+        @include mq($from: col1) {
+            height: 120px;
         }
     }
 
@@ -151,10 +136,9 @@ Display a standard article card.
         }
 
         @include mq($from: col1) {
-            overflow: hidden;
             width: 100%;
             position: absolute;
-            bottom: 0;
+            top: 159px; // header 120px + 16px margin + 22px meta + 1px to avoid subpixel errors
         }
     }
 
@@ -163,7 +147,7 @@ Display a standard article card.
         font-family: $agate-sans;
         font-size: $meta-size-1;
         line-height: 1;
-        margin-top: 1em;
+        margin-top: 16px;
         overflow: hidden;
 
         @include mq($to: col1) {
@@ -172,12 +156,6 @@ Display a standard article card.
         }
 
         @include mq($from: col1) {
-            position: absolute;
-            z-index: 1;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            width: 100%;
         }
     }
 
@@ -185,26 +163,16 @@ Display a standard article card.
     &.has-image {
         .card__object {
             padding: 0;
-            height: 170px;
             overflow: hidden;
 
             @include mq($to: col1) {
+                height: 170px;
                 @include flex(1);
                 @include order(3);
-            }
-
-            .card__image {
-                @include mq($from: col1) {
-                    height: 100%;
-                    width: auto;
-                    margin-bottom: -1px;
-                }
             }
         }
 
         .card__footer {
-            bottom: 170px;
-
             @include mq($to: col1) {
                 @include flex(1);
                 @include order(2);
@@ -260,7 +228,7 @@ Display a standard article card.
     }
 
     .card__meta {
-        width: cols($base-1, 1);
+        width: 100px;
         height: 22px;
         padding: base-px(0, 0, 0, .5);
         border-left: 1px solid color(shade-4);
@@ -273,24 +241,6 @@ Display a standard article card.
 
         .icon {
             margin-right: 3px;
-        }
-    }
-
-    .card__timestamp {
-        padding: base-px(0, 5, 0, .5);
-    }
-}
-
-// Android Tweaks - Improved alignment of card timestamp and metadata
-
-.android {
-    .card {
-        .card__timestamp {
-            padding-top: 2px;
-        }
-        
-        .card__meta {
-            padding-top: 2px;
         }
     }
 }

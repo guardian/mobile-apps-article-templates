@@ -29,7 +29,7 @@
 .tone--deadBlog {
     .witness {
         margin-top: base-px(1);
-    } 
+    }
 
     a.touchpoint:active {
         color: color(tone-deadblog);
@@ -64,14 +64,12 @@
             border-left: 1px dotted rgba(#fff, .2);
             margin: 0;
 
-            @include mq(col2, col3) {
-                .alerts {
+            .alerts {
+                @include mq(col2, col3) {
                     width: cols($base-3, 4);
                 }
-            }
 
-            @include mq($from: col3) {
-                .alerts {
+                @include mq($from: col3) {
                     width: cols($base-4, 5);
                 }
             }
@@ -89,7 +87,7 @@
         .byline__author a {
             color: color(shade-1);
         }
-        
+
         a {
             color: color(tone-deadblog);
 
@@ -147,9 +145,9 @@
             &__about-uri {
                 color: color(global-sponsored-about);
             }
-        }            
+        }
     }
-    
+
     .tags {
         padding-left: 0;
 
@@ -162,12 +160,16 @@
                 @include tag-more-button(color(shade-1), darken(color(blogs-tags), 10%));
             }
         }
-    
     }
 
     .block--live-summary {
         background-color: color(shade-7);
         border-top: 1px solid #999;
+
+        .prose p,
+        .prose li {
+            @include text-underline(color(tone-news), color(shade-7), color(tone-news-accent));
+        }
 
         .block__time {
             font-weight: bold;
@@ -179,7 +181,7 @@
         background-color: color(tone-live);
         color: color(shade-7);
     }
-
+    
     .alerts--new,
     .alerts--new.following:active {
         border-color: color(tone-live);

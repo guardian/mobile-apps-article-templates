@@ -36,10 +36,11 @@ define([
                         if (down === 1) {
                             return;
                         }
-                    } else {
-                        if(document.getCSSCanvasContext){
+                    } else if ($(".cutout__container").attr("data-background") === null && !$("body").hasClass("media")) {
+                        window.audioBackground(duration);
+                        bean.on(window, 'resize.audioPlayer orientationchange.audioPlayer', window.ThrottleDebounce.debounce(100, false, function () {
                             window.audioBackground(duration);
-                        }
+                        }));
                     }
 
                     $(".audio-player__slider__knob").removeAttr("style");
@@ -88,16 +89,16 @@ define([
             setupGlobals: function () {
                 // Global function to handle audio, called by native code
                 window.audioPlay = function () {
-                    $('.audio-player__button .touchpoint__button').attr('data-icon', '');
+                    $('.audio-player__button .touchpoint__button').attr('data-icon', '').addClass('pause').removeClass('play');
                 };
 
                 window.audioStop = function () {
-                    $('.audio-player__button .touchpoint__button').attr('data-icon', '');
+                    $('.audio-player__button .touchpoint__button').attr('data-icon', '').addClass('play').removeClass('pause');
                 };
 
                 window.audioLoad = function () {
                     $(".audio-player__button").hide();
-                    $(".audio-player__button--loading").css({"display": "inline-block"});
+                    $(".audio-player__button--loading").css('display','block');
                 };
 
                 window.audioFinishLoad = function () {
@@ -106,25 +107,33 @@ define([
                 };
 
                 window.audioBackground = function (duration) {
-                    if ($(".cutout__container").attr("data-background") === null && !$("body").hasClass("media")) {
-                        var numOfCircles = Math.min(10, Math.floor((duration / 60) / 2)) + 2,
-                            h = $(".article__header").offset().height,
-                            w = $(".article__header").offset().width,
-                            size = (h * w) / 8000,
-                            ctx = document.getCSSCanvasContext("2d", "circles", w, h);
-
-                        // Draw Circles
-                        for (var i = 0; i < numOfCircles; i++) {
-                            var x = Math.floor(Math.random() * (w - 0) + 1);
-                            ctx.beginPath();
-                            ctx.arc(x, h / 2, size, 0, Math.PI * 2, true);
-                            ctx.closePath();
-                            ctx.fillStyle = modules.getColor();
-                            ctx.fill();
-                            size = size * 1.2;
-                        }
-                        $(".cutout__container").attr("data-background", "true");
+                    if ($(".cutout__background")) {
+                        $(".cutout__background").remove();
                     }
+                    var numOfCircles = Math.min(10, Math.floor((duration / 60) / 2)) + 2,
+                        h = $(".article__header").offset().height,
+                        w = $(".article__header").offset().width,
+                        size = (h * w) / 8000,
+                        canvas = document.createElement("canvas"),
+                        ctx = canvas.getContext('2d');
+
+                    canvas.width = w;
+                    canvas.height = h;
+                    canvas.className = "cutout__background";
+
+                    // Draw Circles
+                    for (var i = 0; i < numOfCircles; i++) {
+                        var x = Math.floor(Math.random() * (w - 0) + 1);
+                        ctx.beginPath();
+                        ctx.arc(x, h / 2, size, 0, Math.PI * 2, true);
+                        ctx.closePath();
+                        ctx.fillStyle = modules.getColor();
+                        ctx.fill();
+                        size = size * 1.2;
+                    }
+
+                    $(".article__header").append(canvas);
+                    $(".cutout__container").attr("data-background", "true");
                 };
 
                 window.applyNativeFunctionCall('audioBackground');

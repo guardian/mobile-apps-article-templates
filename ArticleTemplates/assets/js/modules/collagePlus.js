@@ -54,7 +54,6 @@ define([
                 fh                  = Math.floor(obj[i][2] * overPercent),
                 isNotLast           = !!(( i < obj.length - 1));
 
-
             if (settings.allowPartialLastRow === true && lastRow === true) {
                 fw = obj[i][1];
                 fh = obj[i][2];
@@ -63,14 +62,13 @@ define([
             trackWidth += fw;
 
             if (!isNotLast && trackWidth < settings.albumWidth) {
-                if (settings.allowPartialLasRow === true && lastRow === true) {
+                if (settings.allowPartialLastRow === true && lastRow === true) {
                     fw = fw;
                 } else {
                     fw = fw + (settings.albumWidth - trackWidth);
                 }
             }
 
-            // var $img = ( $obj.is("img") ) ? $obj : $obj.find("img");
             $obj.css({
                 width: fw,
                 height: fh
@@ -121,7 +119,7 @@ define([
             "display"               : "inline-block",
             "effect"                : "default",
             "direction"             : "vertical",
-            "allowPartialLastRow"   : false
+            "allowPartialLastRow"   : true
         };
 
         var row = 0,
@@ -129,6 +127,7 @@ define([
             rownum = 1;
 
         settings.images.each(function(scope, index) {
+
             var w = this.width,
                 h = this.height;
 

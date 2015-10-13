@@ -40,6 +40,9 @@ Display a link to view more.
     }
 
     .more__label {
+        padding: base-px(0.5, 1, 0.5, 0.5);
+        position: static;
+
         &:before{
             position: relative;
             font-size: 110%;
@@ -51,9 +54,12 @@ Display a link to view more.
         }
     }
 
-    .more__text {
-        position: relative;
-        bottom: 3px;
+    .more__text,
+    .more__icon {
+        display: inline-block;
+        padding: base-px(0, 0.5);
+        vertical-align: top;
+        margin-top: -1px;
     }
 }
 
@@ -76,8 +82,7 @@ Display a link to view more.
 
     .more__label {
         background-color: color(tone-comments-more-bg);
-        padding: base-px(0.5, 1, 0.5, 0.5);
-        position: static;
+        
         &:active{
             background-color: darken(color(tone-comments-more-bg), 10%);
         }
@@ -86,11 +91,6 @@ Display a link to view more.
     .more__text,
     .more__icon {
         color: color(shade-7);
-        display: inline-block;
-        position: static;
-        padding: base-px(0, 0.5);
-        vertical-align: top;
-        margin-top: -1px;
     }
 }
 
@@ -118,5 +118,3 @@ Display a link to view more.
         }
     }
 }
-
-
