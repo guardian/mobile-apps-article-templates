@@ -17,7 +17,7 @@ define([
                 $(".gallery")[0].removeAttribute("style");
                 collagePlus.init(".gallery", ".gallery__image");
             }));
-            
+
             // remove this once ios stops using..
             window.redrawGallery = function() {
                 $(".gallery")[0].removeAttribute("style");
