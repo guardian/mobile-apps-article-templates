@@ -10,57 +10,6 @@
   display: table;
   clear: both; }
 
-@font-face {
-  font-family: 'Guardian Text Egyptian Web';
-  src: url("../fonts/egyptiantext-regular.otf"); }
-@font-face {
-  font-family: 'Guardian Text Egyptian Web';
-  font-style: italic;
-  src: url("../fonts/egyptiantext-regularitalic.otf"); }
-@font-face {
-  font-family: 'Guardian Text Egyptian Web';
-  font-style: italic;
-  font-weight: bold;
-  src: url("../fonts/egyptiantext-mediumitalic.otf"); }
-@font-face {
-  font-family: 'Guardian Agate Sans 1 Web';
-  font-style: italic;
-  src: url("../fonts/agate-regularitalic.otf"); }
-@font-face {
-  font-family: 'Guardian Agate Sans 1 Web';
-  font-weight: bold;
-  src: url("../fonts/agate-bold.otf"); }
-@font-face {
-  font-family: 'Guardian Agate Sans 1 Web';
-  font-weight: bold;
-  font-style: italic;
-  src: url("../fonts/agate-bolditalic.otf"); }
-@font-face {
-  font-family: 'Guardian Text Sans Web';
-  font-weight: 200;
-  src: url("../fonts/GuardianSansWeb-Light.ttf"); }
-@font-face {
-  font-family: 'Guardian Text Sans Web';
-  font-weight: 300;
-  src: url("../fonts/GuardianSansWeb-Regular.ttf"); }
-@font-face {
-  font-family: 'Guardian Text Sans Web';
-  font-weight: 600;
-  src: url("../fonts/GuardianSansWeb-Semibold.ttf"); }
-@font-face {
-  font-family: 'Titlepiece';
-  font-weight: 600;
-  src: url("../fonts/titlepiece.otf"); }
-@font-face {
-  font-family: 'Guardian Text Egyptian Web';
-  font-weight: bold;
-  src: url("../fonts/egyptiantext-medium.otf"); }
-@font-face {
-  font-family: 'Guardian Agate Sans 1 Web';
-  src: url("../fonts/agate-regular.otf"); }
-@font-face {
-  font-family: 'Guardian Text Egyptian Web';
-  src: url("../fonts/egyptiantext-regular.otf"); }
 /*doc
 ---
 title: Colours
@@ -530,15 +479,21 @@ Display a link to view more.
       .more .more__button {
         font-size: 1.575rem;
         line-height: 2.275rem; } }
-  .more .more__label:before {
-    position: relative;
-    font-size: 110%;
-    right: 5px; }
-  .more .more__label:active {
-    color: #e6e6e6; }
-  .more .more__text {
-    position: relative;
-    bottom: 3px; }
+  .more .more__label {
+    padding: 6px 12px 6px 6px;
+    position: static; }
+    .more .more__label:before {
+      position: relative;
+      font-size: 110%;
+      right: 5px; }
+    .more .more__label:active {
+      color: #e6e6e6; }
+  .more .more__text,
+  .more .more__icon {
+    display: inline-block;
+    padding: 0px 6px;
+    vertical-align: top;
+    margin-top: -1px; }
 
 .more--comments {
   padding-top: 12px;
@@ -553,19 +508,12 @@ Display a link to view more.
     .more--comments {
       margin-left: 31.57895%; } }
   .more--comments .more__label {
-    background-color: #005689;
-    padding: 6px 12px 6px 6px;
-    position: static; }
+    background-color: #005689; }
     .more--comments .more__label:active {
       background-color: #003656; }
   .more--comments .more__text,
   .more--comments .more__icon {
-    color: #fff;
-    display: inline-block;
-    position: static;
-    padding: 0px 6px;
-    vertical-align: top;
-    margin-top: -1px; }
+    color: #fff; }
 
 .more--live-blogs {
   border-bottom: 1px dotted #dcdad5; }
@@ -751,31 +699,6 @@ The 'sponsored by/supported by' section
 
 .outbrainImage {
   display: block; }
-
-/*doc
----
-title: Error
-name:  error
-category: Modules
----
-Display an error message when content is unavailable.
-
-```html_example
-<div class="error-message error-message--expired-content">
-    <h1 class="headline error-message__title">Sorry – the page you are looking for has been removed.</h1>
-</div>
-```
-*/
-.expired-content,
-.expired-content body {
-  background: #fff; }
-
-.error-message {
-  padding: 12px; }
-  .error-message .error-message__title {
-    margin-bottom: 24px; }
-  .error-message .error-message__text {
-    margin: 12px 0px; }
 
 /*doc
 ---
@@ -1444,26 +1367,15 @@ Display a standard article card.
   border-bottom: 1px solid #dcdad5;
   display: block;
   position: relative;
-  -webkit-transition: all .15s ease-out;
-  transition: all .15s ease-out;
-  /*
-  The card transform causes the card and all cards below it to disappear if the user scrolls after pressing. 
-  This seems to be a WebKit bug.
-  &:active {
-      color: color(shade-1);
-      -webkit-transform: scale(.99);
-      transform: scale(.99);
-  }*/ }
+  transition: none; }
+  .card:hover {
+    color: initial; }
   @media all and (max-width: 28.12em) {
     .card {
       margin: 2.89855% 2.89855% 0; } }
   @media all and (min-width: 28.13em) {
     .card {
-      margin-bottom: 4.34783%; }
-      .card::before {
-        content: '';
-        padding-top: 133%;
-        display: block; } }
+      margin-bottom: 4.34783%; } }
   @media all and (min-width: 28.13em) and (max-width: 40.62em) {
     .card {
       margin: 2.12766% 2.12766% 0 0;
@@ -1493,21 +1405,14 @@ Display a standard article card.
       flex-direction: column; } }
   @media all and (min-width: 28.13em) {
     .card .card__container {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0; } }
+      position: relative;
+      padding-bottom: 60%;
+      overflow: hidden; } }
   .card .card__header,
   .card .card__object {
     padding: 3px 6px 0px 6px; }
-    @media all and (min-width: 28.13em) {
-      .card .card__header,
-      .card .card__object {
-        height: 50%;
-        overflow: hidden; } }
   .card .card__header {
-    margin-bottom: 1em; }
+    margin-bottom: 16px; }
     @media all and (max-width: 28.12em) {
       .card .card__header {
         -webkit-box-flex: 1;
@@ -1516,6 +1421,9 @@ Display a standard article card.
         -webkit-box-ordinal-group: 2;
         -webkit-order: 1;
         order: 1; } }
+    @media all and (min-width: 28.13em) {
+      .card .card__header {
+        height: 120px; } }
   .card .card__title {
     color: #333;
     overflow-y: hidden; }
@@ -1531,16 +1439,15 @@ Display a standard article card.
       order: 2; } }
   @media all and (min-width: 28.13em) {
     .card .card__object {
-      overflow: hidden;
       width: 100%;
       position: absolute;
-      bottom: 0; } }
+      top: 159px; } }
   .card .card__footer {
     color: #999;
     font-family: "Guardian Agate Sans 1 Web", sans-serif;
     font-size: 1.4rem;
     line-height: 1;
-    margin-top: 1em;
+    margin-top: 16px;
     overflow: hidden; }
     @media all and (max-width: 28.12em) {
       .card .card__footer {
@@ -1550,41 +1457,26 @@ Display a standard article card.
         -webkit-box-ordinal-group: 4;
         -webkit-order: 3;
         order: 3; } }
-    @media all and (min-width: 28.13em) {
-      .card .card__footer {
-        position: absolute;
-        z-index: 1;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        width: 100%; } }
   .card.has-image .card__object {
     padding: 0;
-    height: 170px;
     overflow: hidden; }
     @media all and (max-width: 28.12em) {
       .card.has-image .card__object {
+        height: 170px;
         -webkit-box-flex: 1;
         -webkit-flex: 1;
         flex: 1;
         -webkit-box-ordinal-group: 4;
         -webkit-order: 3;
         order: 3; } }
-    @media all and (min-width: 28.13em) {
-      .card.has-image .card__object .card__image {
-        height: 100%;
-        width: auto;
-        margin-bottom: -1px; } }
-  .card.has-image .card__footer {
-    bottom: 170px; }
-    @media all and (max-width: 28.12em) {
-      .card.has-image .card__footer {
-        -webkit-box-flex: 1;
-        -webkit-flex: 1;
-        flex: 1;
-        -webkit-box-ordinal-group: 3;
-        -webkit-order: 2;
-        order: 2; } }
+  @media all and (max-width: 28.12em) {
+    .card.has-image .card__footer {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      flex: 1;
+      -webkit-box-ordinal-group: 3;
+      -webkit-order: 2;
+      order: 2; } }
   .card .card__title
   .card__titletext {
     overflow: hidden;
@@ -1621,7 +1513,7 @@ Display a standard article card.
     bottom: 0;
     z-index: 0; }
   .card .card__meta {
-    width: 21.73913%;
+    width: 100px;
     height: 22px;
     padding: 0px 0px 0px 6px;
     border-left: 1px solid #dcdad5;
@@ -1631,13 +1523,6 @@ Display a standard article card.
       border-left: 0 none; }
     .card .card__meta .icon {
       margin-right: 3px; }
-  .card .card__timestamp {
-    padding: 0px 60px 0px 6px; }
-
-.android .card .card__timestamp {
-  padding-top: 2px; }
-.android .card .card__meta {
-  padding-top: 2px; }
 
 @media all and (min-width: 28.13em) {
   .container__body .card {
@@ -2333,10 +2218,17 @@ Default styling no JavaScript enhancement:
     padding: 0;
     color: #333 !important;
     border: 0;
-    background-image: none !important; }
+    background-image: none !important;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    hyphens: auto; }
     .element-rich-link a:hover, .element-membership a:hover {
       text-decoration: underline !important; }
 
+@media all and (max-width: 28.12em) {
+  .font-size-6 .element-rich-link, .font-size-7 .element-rich-link, .font-size-8 .element-rich-link, .font-size-9 .element-rich-link, .font-size-10 .element-rich-link {
+    width: 100%;
+    margin-bottom: 15px; } }
 .element-rich-link span {
   display: none; }
 .element-rich-link a:before {
@@ -4061,6 +3953,96 @@ Display a Guardian Witness submission.
   .element-witness--date::before {
     content: '\00B7   '; }
 
+/*doc
+---
+title: Interactive
+name: interactive
+category: Modules
+---
+Displays a 'content unavailable' instead of an interactive if there is no connection
+
+```html_example
+	<div class="element element-interactive interactive interactive--offline"></div>
+```
+*/
+body[data-fullscreen-interactive] {
+  margin: 0; }
+
+.interactive--offline {
+  background-color: #eaeaea;
+  text-align: center;
+  padding: 1px 0;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  color: #767676;
+  clear: both;
+  margin: 0; }
+  @media all and (max-width: 40.62em) {
+    .interactive--offline {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    .interactive--offline {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  body:not([data-fullscreen-interactive]) .interactive--offline {
+    margin: 0 -12px 0 -12px !important; }
+  @media all and (max-width: 40.62em) {
+    body[data-fullscreen-interactive] .interactive--offline {
+      font-size: 1.96rem;
+      line-height: 2.8rem; } }
+  @media all and (min-width: 40.63em) {
+    body[data-fullscreen-interactive] .interactive--offline {
+      font-size: 2.24rem;
+      line-height: 3.08rem; } }
+  .interactive--offline:before {
+    content: "Sorry, we are unable to display\Athis content as you have\Ano internet connection.\APlease try again.";
+    white-space: pre;
+    display: block;
+    vertical-align: middle;
+    margin-top: 3.5em;
+    padding-top: 2.5em;
+    background: transparent url("../img/unsmiley.png") no-repeat center top;
+    background-size: 2em; }
+  .interactive--offline * {
+    display: none; }
+  .interactive--offline .interactive--offline--icon {
+    display: inline-block;
+    margin-top: 1em;
+    margin-bottom: 3.5em;
+    color: #767676;
+    font-family: "Guardian Icons", Georgia, serif;
+    -webkit-tap-highlight-color: transparent; }
+    .interactive--offline .interactive--offline--icon:after {
+      display: inline-block;
+      padding: 7px 10px 13px 10px;
+      font-size: 1.5em; }
+    .interactive--offline .interactive--offline--icon.interactive--offline--icon--reload:after {
+      content: '\00e045';
+      border: 1px solid #767676;
+      border-radius: 50%; }
+    .interactive--offline .interactive--offline--icon.interactive--offline--icon--reload:active {
+      color: #fff; }
+      .interactive--offline .interactive--offline--icon.interactive--offline--icon--reload:active:after {
+        border: 1px solid #fff; }
+    .interactive--offline .interactive--offline--icon.interactive--offline--icon--loading {
+      display: none;
+      -webkit-animation: fadeIn;
+      -webkit-animation-direction: alternate;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-duration: 1s; }
+      .interactive--offline .interactive--offline--icon.interactive--offline--icon--loading:after {
+        content: '\00e00c';
+        padding: 7px 10px 15px 10px; }
+  .interactive--offline.interactive--loading .interactive--offline--icon--reload {
+    display: none; }
+  .interactive--offline.interactive--loading .interactive--offline--icon--loading {
+    display: block; }
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
 .android .discussion {
   border-top-width: 0;
   padding: 0px 12px 0px 12px; }
@@ -4223,96 +4205,5 @@ Display a Guardian Witness submission.
     .support .prose h3 {
       font-size: 1.8rem;
       line-height: 2.6rem; } }
-
-/*doc
----
-title: Interactive
-name: interactive
-category: Modules
----
-Displays a 'content unavailable' instead of an interactive if there is no connection
-
-```html_example
-	<div class="element element-interactive interactive interactive--offline"></div>
-```
-*/
-body[data-fullscreen-interactive] {
-  margin: 0; }
-
-.interactive--offline {
-  background-color: #eaeaea;
-  text-align: center;
-  padding: 1px 0;
-  font-family: "Guardian Agate Sans 1 Web", sans-serif;
-  color: #767676;
-  clear: both;
-  margin: 0; }
-  @media all and (max-width: 40.62em) {
-    .interactive--offline {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.63em) {
-    .interactive--offline {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-  body:not([data-fullscreen-interactive]) .interactive--offline {
-    margin: 0 -12px 0 -12px !important; }
-  @media all and (max-width: 40.62em) {
-    body[data-fullscreen-interactive] .interactive--offline {
-      font-size: 1.96rem;
-      line-height: 2.8rem; } }
-  @media all and (min-width: 40.63em) {
-    body[data-fullscreen-interactive] .interactive--offline {
-      font-size: 2.24rem;
-      line-height: 3.08rem; } }
-  .interactive--offline:before {
-    content: "Sorry, we are unable to display\Athis content as you have\Ano internet connection.\APlease try again.";
-    white-space: pre;
-    display: block;
-    vertical-align: middle;
-    margin-top: 3.5em;
-    padding-top: 2.5em;
-    background: transparent url("../img/unsmiley.png") no-repeat center top;
-    background-size: 2em; }
-  .interactive--offline * {
-    display: none; }
-  .interactive--offline .interactive--offline--icon {
-    display: inline-block;
-    margin-top: 1em;
-    margin-bottom: 3.5em;
-    color: #767676;
-    font-family: "Guardian Icons", Georgia, serif;
-    -webkit-tap-highlight-color: transparent; }
-    .interactive--offline .interactive--offline--icon:after {
-      display: inline-block;
-      padding: 7px 10px 13px 10px;
-      font-size: 1.5em; }
-    .interactive--offline .interactive--offline--icon.interactive--offline--icon--reload:after {
-      content: '\00e045';
-      border: 1px solid #767676;
-      border-radius: 50%; }
-    .interactive--offline .interactive--offline--icon.interactive--offline--icon--reload:active {
-      color: #fff; }
-      .interactive--offline .interactive--offline--icon.interactive--offline--icon--reload:active:after {
-        border: 1px solid #fff; }
-    .interactive--offline .interactive--offline--icon.interactive--offline--icon--loading {
-      display: none;
-      -webkit-animation: fadeIn;
-      -webkit-animation-direction: alternate;
-      -webkit-animation-iteration-count: infinite;
-      -webkit-animation-duration: 1s; }
-      .interactive--offline .interactive--offline--icon.interactive--offline--icon--loading:after {
-        content: '\00e00c';
-        padding: 7px 10px 15px 10px; }
-  .interactive--offline.interactive--loading .interactive--offline--icon--reload {
-    display: none; }
-  .interactive--offline.interactive--loading .interactive--offline--icon--loading {
-    display: block; }
-
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
 
 /*# sourceMappingURL=style-async.css.map */
