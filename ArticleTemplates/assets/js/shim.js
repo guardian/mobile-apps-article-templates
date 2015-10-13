@@ -33,6 +33,7 @@ var nativeFunctionCalls = [
     'getMpuPosCallback',
     'initMpuPoller',
     'getBannerPosCallback',
+    'videoPositioning',
     'getArticleHeight'
 ];
 

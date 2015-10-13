@@ -3378,6 +3378,8 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     border-bottom: none; }
     .tone--liveBlog.is-live .article__header .sponsorship__about-uri, .tone--liveBlog.is-live .article__header .sponsorship__formatted-sponsor-name a {
       color: #b51800; }
+  .tone--liveBlog.is-live .article__header .sponsorship__logo {
+    color: #333; }
 .tone--liveBlog.is-live .article--liveblog {
   border-top-color: #cc2b12; }
   .tone--liveBlog.is-live .article--liveblog .prose table,
@@ -3877,22 +3879,36 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .tone--deadBlog .block--live-summary {
   background-color: #fff;
   border-top: 1px solid #999; }
+  .tone--deadBlog .block--live-summary .prose p a,
+  .tone--deadBlog .block--live-summary .prose li a {
+    background-image: linear-gradient(to bottom, #fff 50%, rgba(0, 86, 137, 0.66) 50%);
+    background-repeat: repeat-x;
+    background-size: 2px 2px;
+    background-position: 0 bottom;
+    text-shadow: 4px 0 #fff, 3px 0 #fff, 2px 0 #fff, 1px 0 #fff, 0 0 #fff, -1px 0 #fff, -2px 0 #fff, -3px 0 #fff, -4px 0 #fff; }
+  .tone--deadBlog .block--live-summary .prose p a:active,
+  .tone--deadBlog .block--live-summary .prose li a:active {
+    background-image: linear-gradient(to bottom, #fff 50%, rgba(75, 198, 223, 0.66) 50%); }
   .tone--deadBlog .block--live-summary .block__time {
     font-weight: bold; }
-.tone--deadBlog .alerts--new:active, .tone--deadBlog .alerts--new.following {
+.tone--deadBlog .alerts--new:active,
+.tone--deadBlog .alerts--new.following {
   background-color: #b51800;
   color: #fff; }
-.tone--deadBlog .alerts--new, .tone--deadBlog .alerts--new.following:active {
+.tone--deadBlog .alerts--new,
+.tone--deadBlog .alerts--new.following:active {
   border-color: #b51800;
   color: #b51800; }
 .tone--deadBlog .cricket .article--liveblog {
   border-top: none; }
 .tone--deadBlog .cricket .alerts--new {
   margin: 0; }
-.tone--deadBlog .cricket a.alerts--new:active, .tone--deadBlog .cricket a.alerts--new.following {
+.tone--deadBlog .cricket a.alerts--new:active,
+.tone--deadBlog .cricket a.alerts--new.following {
   background-color: #999;
   color: #fff; }
-.tone--deadBlog .cricket a.alerts--new, .tone--deadBlog .cricket a.alerts--new.following:active {
+.tone--deadBlog .cricket a.alerts--new,
+.tone--deadBlog .cricket a.alerts--new.following:active {
   border-color: #dcdad5;
   background-color: transparent;
   color: #999; }
