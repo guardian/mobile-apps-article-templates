@@ -41,13 +41,26 @@ define([
                 // add a class with the number of child items, so we can set the widths based on that 
                 $(el).addClass(el.replace('.','') + '--items-' + $(el + ' > li').length);
                 flipSnap(el);
+
+                // Android needs to be notified of touch start / touch end so article navigation can be 
+                // disabled / enabled when the using is scrolling through cards
+                if (bonzo(document.body).hasClass('android')) {
+                    // Send true on touchstart
+                    bean.on(document.body, 'touchstart.android', el, function() {
+                        window.GuardianJSInterface.registerRelatedCardsTouch(true);
+                    });
+                    // Send false on touchend
+                    bean.on(document.body, 'touchend.android', el, function() {
+                        window.GuardianJSInterface.registerRelatedCardsTouch(false);
+                    });
+                }
             }
         },
 
         ready = function () {
             if (!this.initialised) {
                 this.initialised = true;
-                if ($('.related-content__list').length) {
+                if (bonzo($('.related-content__list')).length) {
                     // Test pages will already have a list so just set the snap to grid
                     modules.snapToGrid('.related-content__list');
                 } else {
