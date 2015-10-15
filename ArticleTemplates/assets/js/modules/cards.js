@@ -19,7 +19,7 @@ define([
                     if (!html) {
                         $('.related-content').hide();
                     } else {
-                        $('.related-content__container').html('<ul class="related-content__list">' + html + '</ul>');
+                        $('.related-content').html(html);
                         // setup the snap to grid functionality 
                         modules.snapToGrid('.related-content__list');
                     }
