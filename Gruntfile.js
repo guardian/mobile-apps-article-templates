@@ -94,6 +94,9 @@ module.exports = function(grunt) {
 
         sass: {
             dev: {
+                options: {
+                    sourcemap: 'none'
+                },
                 files: {
                     'ArticleTemplates/assets/css/fonts.css':  'ArticleTemplates/assets/scss/fonts.scss',
                     'ArticleTemplates/assets/css/interactive.css':  'ArticleTemplates/assets/scss/interactive.scss',
