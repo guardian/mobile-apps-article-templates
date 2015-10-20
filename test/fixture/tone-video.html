@@ -4,6 +4,7 @@
 	<title>Video</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" media="all" href="../../ArticleTemplates/assets/css/fonts.css">
 	<link rel="stylesheet" type="text/css" media="all" href="../../ArticleTemplates/assets/css/style-sync.css">
 	<script type="text/javascript" src="../../ArticleTemplates/assets/js/shim.js"></script>
 </head>
@@ -17,12 +18,21 @@
 	<div class="article article--visual" id="video-article-container">
 		<div class="article__header" id="video-header">
 			<div class="section section__container" id="section">
-				<div class="content__labels">Football</div>
-				<div class="content__series-label content__labels">
-					Test Media
-					<!-- SERIES_LABEL__ -->
-				</div>
-			</div>
+                <div class="content__container">
+                    <div class="content__labels__container">
+                        <div class="content__labels">Football</div>
+						<div class="content__series-label content__labels">
+							Test Media
+							<!-- SERIES_LABEL__ -->
+						</div>
+                    </div>
+                    <div class="comment-count">
+                        <a href="#comments" data-scroll="">
+                            <span data-icon="" aria-hidden="true"></span>0<span class="comment-count__label">Comment</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
 			<h1 class="headline selectable" id="headline">Chelsea fans prevent black man boarding Paris metro train</h1>
 
 			<div class="main-media" id="main-media">
@@ -30,7 +40,7 @@
 					<a class="element__inner" href="x-gu://playvideo/cdn.theguardian.tv/HLS/2015/02/17/150217Chelsea.m3u8">
 						<img src="http://images.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/audio/video/2015/2/17/1424211707921/crop_KP_98152_1200x720.jpeg?width=900&amp;height=540&amp;quality=60" style="width: 100%;">
 						<span class="element-placeholder__button touchpoint">
-							<span class="touchpoint__button" data-icon="" aria-hidden="true"></span>
+							<span class="touchpoint__button play" data-icon="" aria-hidden="true"></span>
 							<span class="touchpoint__label">
 								<span class="screen-readable">Play Video. Duration:</span>
 								00:58
@@ -38,16 +48,14 @@
 						</span>
 					</a>
 				</figure>
-
 			</div>
-
-			<div class="sponsorship">
-				<p class="sponsorship__formatted-sponsor-name">
-					Guardian Cities is supported by:
-					<a href="http://www.100resilientcities.org">The Rockefeller Foundation</a>
-				</p>
-				<a class="sponsorship__about-uri" href="x-gu://item/mobile-apps.guardianapis.com/items/cities/2014/jan/27/cities-about-this-site">About this content</a>
-			</div>
+			 <div class="sponsorship">
+                <p class="sponsorship__details">
+                    <span class="sponsorship__formatted-sponsor-name">Guardian Cities is supported by:</span>
+                    <a href="http://www.100resilientcities.org"><img src="sponsorLogo.png" class="sponsorship__logo" alt="The Rockefeller Foundation" /><span class="screen-readable"> (opens in a new window)</span></a>
+                </p>
+                <a class="sponsorship__about-uri" href="x-gu://item/mobile-apps.guardianapis.com/items/cities/2014/jan/27/cities-about-this-site">About this content</a>
+            </div>
 
 			<div class="meta" id="meta">
 				<div class="standfirst selectable" id="standfirst">
@@ -60,7 +68,9 @@
 				</div>
 				<div class="meta__misc">
 					<div class="meta__byline">
-						<span class="byline" id="byline">Paul Nolan</span>
+					    <span class="byline" id="byline">
+						    <span class="byline__author" id="byline-author"><a href="x-gu://list/http://mobile-apps.guardianapis.com/lists/tag/profile/alexbellos">Alex Bellos</a></span>, <span class="byline__author" id="byline-author"><a href="x-gu://list/http://mobile-apps.guardianapis.com/lists/tag/profile/tash-reith-banks">Tash Reith-Banks</a></span>, <span class="byline__author" id="byline-author"><a href="x-gu://list/http://mobile-apps.guardianapis.com/lists/tag/profile/ian-anderson">Ian Anderson</a></span> and <span class="byline__author" id="byline-author"><a href="x-gu://list/http://mobile-apps.guardianapis.com/lists/tag/profile/paul-boyd">Paul Boyd</a></span>, Source: ITN
+					    </span>                   
 					</div>
 					<p class="meta__pubdate">
 						<span class="screen-readable" id="pubdate">Published:</span>

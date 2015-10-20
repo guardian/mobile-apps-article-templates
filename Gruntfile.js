@@ -47,7 +47,7 @@ module.exports = function(grunt) {
                                 }
                             }
                         },
-                        generateSourceMaps: true,
+                        generateSourceMaps: false,
                         preserveLicenseComments: false,
                         useSourceUrl: false,
                         removeCombined: true,
@@ -73,7 +73,8 @@ module.exports = function(grunt) {
 
         rsync: {
             options: {
-                recursive: true
+                recursive: true,
+                delete: true
             },
             android: {
                 options: {
@@ -93,9 +94,12 @@ module.exports = function(grunt) {
 
         sass: {
             dev: {
+                options: {
+                    sourcemap: 'none'
+                },
                 files: {
+                    'ArticleTemplates/assets/css/fonts.css':  'ArticleTemplates/assets/scss/fonts.scss',
                     'ArticleTemplates/assets/css/interactive.css':  'ArticleTemplates/assets/scss/interactive.scss',
-                    'ArticleTemplates/assets/css/style.css':  'ArticleTemplates/assets/scss/style.scss',
                     'ArticleTemplates/assets/css/style-async.css':  'ArticleTemplates/assets/scss/style-async.scss',
                     'ArticleTemplates/assets/css/style-sync.css':  'ArticleTemplates/assets/scss/style-sync.scss',
                     'test/unit/test.css':  'ArticleTemplates/assets/scss/test.scss'
@@ -112,7 +116,8 @@ module.exports = function(grunt) {
             options: {
                 bundleExec: true,
                 config: 'ArticleTemplates/assets/scss/.scss-lint.yml',
-                force: true
+                force: true,
+                maxBuffer: 300 * 1024
             },
             dev: [
                 'ArticleTemplates/assets/scss/**/*.scss',
@@ -214,7 +219,7 @@ module.exports = function(grunt) {
         shell: {
             android: {
                 command: function(){
-                    return 'echo "Building Android app with gradle" && cd ' + config.base.android + '../../../../../../ && export BUILD_NUMBER=' + grunt.option('card') || "000"  + '  && ./gradlew zipTemplates > android-build.log && ./gradlew assembleDebug >> android-build.log && cp android-news-app/build/outputs/apk/android-news-app-debug.apk ' + config.base.html;
+                    return 'echo "Building Android app with gradle" && cd ' + config.base.android + '../../../../../../ && export BUILD_NUMBER=' + (grunt.option('card') || "000") + '  && ./gradlew zipTemplates > android-build.log && ./gradlew assembleDebug >> android-build.log && cp android-news-app/build/outputs/apk/android-news-app-debug.apk ' + config.base.html;
                 }
             },
             ios: {
@@ -223,7 +228,7 @@ module.exports = function(grunt) {
                         maxBuffer: 30000000
                     }
                 },
-                command: ' echo "Building iOS app with xcodebuild" && cd ' + config.base.ios + '../../GLA/ && xcodebuild clean build -sdk iphoneos8.3 -configuration Debug -workspace GLA.xcworkspace -scheme GLADebug -derivedDataPath ' + config.base.html + ' > ios-build.log && xcrun -sdk iphoneos8.3 PackageApplication -v ' + config.base.html + 'Build/Products/Debug-iphoneos/GLA.app -o ' + config.base.html + 'guardian-debug.ipa --sign "' + config.ios.sign + '" --embed "' + config.ios.provisioning + '" >> ios-build.log'
+                command: ' echo "Building iOS app with xcodebuild" && cd ' + config.base.ios + '../../GLA/ && xcodebuild clean build -configuration Debug -workspace GLA.xcworkspace -scheme GLADebug -derivedDataPath ' + config.base.html + ' > ios-build.log && xcrun -sdk iphoneos9.0 PackageApplication -v ' + config.base.html + 'Build/Products/Debug-iphoneos/GLA.app -o ' + config.base.html + 'guardian-debug.ipa' + ' --embed "' + config.ios.provisioning + '" >> ios-build.log'
             },
             timeline: {
                 command: function(){

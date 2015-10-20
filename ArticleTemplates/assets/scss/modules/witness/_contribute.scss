@@ -33,7 +33,6 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
 
     .witness__button{
         background-color: color(witness-bg);
-        color: color(witness);
         border-radius: 50px;
         margin-right: base-px(1);
         overflow: hidden;
@@ -42,6 +41,7 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
         height: 2.7em;
         padding-right: 1em;
         font-family: $agate-sans;
+        color: color(shade-7);
         white-space: nowrap;
 
         &:before{
@@ -62,9 +62,9 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
         }
 
         &:active{
-            color: color(shade-7);
+            color: color(witness-active);
         }
-    }
+    } 
 
     .witness__logo{
         vertical-align: middle;

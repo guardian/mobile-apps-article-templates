@@ -14,14 +14,26 @@ linters:
   Comment:
     enabled: false
 
+  NestingDepth:
+    enabled: true
+    max_depth: 3
+    ignore_parent_selectors: false
+    exclude:
+      - tones/** # Tones require extra specificity
+
   PropertySortOrder:
     enabled: false
 
   SelectorDepth:
     enabled: true
-    max_depth: 5
+    max_depth: 3
     exclude:
       - tones/** # Tones require extra specificity
+
+  SelectorFormat:
+    enabled: true
+    convention: hyphenated_BEM # or 'hyphenated_lowercase', or 'strict_BEM', or 'snake_case', or 'camel_case', or a regex pattern
+    ignored_names: is_advertising # state classes have been set up like this, try not to use this format in future
 
   SingleLinePerSelector:
     exclude:

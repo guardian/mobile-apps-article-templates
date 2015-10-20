@@ -1,5 +1,11 @@
 @charset "UTF-8";
-.match-summary__team:after {
+.main-media:not(.main-media--hidden-caption) .main-media__caption__icon, .figure__caption__icon {
+  display: inline-block;
+  margin-right: 7px;
+  position: relative;
+  top: 2px; }
+
+.content__container:after, .match-summary__team:after, .sponsorship:after {
   content: '';
   display: table;
   clear: both; }
@@ -146,16 +152,16 @@ a {
   src: url("../fonts/egyptiandisplay-light.otf"); }
 @font-face {
   font-family: 'Guardian Icons';
-  src: url("../fonts/icons.ttf"); }
+  src: url("../fonts/icons.otf"); }
 html {
   font-size: 62.5%;
   font-family: "Guardian Text Egyptian Web", Georgia, serif; }
 
-@media all and (max-width: 40.615em) {
+@media all and (max-width: 40.62em) {
   body {
     font-size: 1.6em;
     line-height: 1.5em; } }
-@media all and (min-width: 40.625em) {
+@media all and (min-width: 40.63em) {
   body {
     font-size: 1.8em;
     line-height: 1.444em; } }
@@ -207,16 +213,18 @@ Display an alerts toggle.
     display: block; }
   .alerts.following .alerts__state--unfollow {
     display: none; }
+  .test--new-alerts .alerts {
+    display: none; }
 
 .alerts__label {
   font-weight: bold; }
 
-.new_alerts {
+.alerts--new {
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
   white-space: nowrap;
   padding: 4px 12px 8px 12px;
-  margin: 6px 0px 0px -1px;
-  display: inline-block;
+  margin: 6px 0px 0px -4px;
+  display: none;
   border-radius: 30px;
   text-overflow: ellipsis;
   vertical-align: bottom;
@@ -225,36 +233,40 @@ Display an alerts toggle.
   color: #005689;
   border: 1px solid #005689;
   transition: background-color 0.3s; }
-  @media all and (max-width: 40.615em) {
-    .new_alerts {
+  @media all and (max-width: 40.62em) {
+    .alerts--new {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
-    .new_alerts {
+  @media all and (min-width: 40.63em) {
+    .alerts--new {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
-  .new_alerts span[data-icon] {
+  .cricket .alerts--new {
+    display: inline-block; }
+  .alerts--new:active, .alerts--new.following {
+    background-color: #005689;
+    color: #fff; }
+  .alerts--new span[data-icon] {
     display: inline-block;
     vertical-align: bottom;
     font-size: 1.8rem;
     position: relative;
     right: 3px;
     top: 1px; }
-  .new_alerts .alerts__state--follow {
-    display: none; }
-  .new_alerts .alerts__label {
+  .alerts--new .alerts__label {
     font-weight: normal; }
-  .new_alerts.following:active {
-    color: #005689;
-    border: 1px solid #005689; }
-  .new_alerts.following .alerts__state--follow {
-    display: block; }
-  .new_alerts.following .alerts__state--unfollow {
+  .alerts--new .alerts__state--follow {
     display: none; }
-
-a.new_alerts:not(.following):active, .new_alerts.following:not(:active) {
-  background-color: #005689;
-  color: #fff; }
+  .alerts--new.following:active {
+    color: #005689;
+    background-color: #fff;
+    border: 1px solid #005689; }
+  .alerts--new.following .alerts__state--follow {
+    display: block; }
+  .alerts--new.following .alerts__state--unfollow {
+    display: none; }
+  .test--new-alerts .alerts--new {
+    display: inline-block; }
 
 /*doc
 ---
@@ -284,8 +296,8 @@ Display the image of author or user.
     height: 100%; }
 
 .avatar--author {
-  width: 64px;
-  height: 64px; }
+  width: 74px;
+  height: 74px; }
   .avatar--author .avatar__img {
     width: auto;
     margin-left: -10%; }
@@ -354,11 +366,11 @@ Banner with Hide -- only works with `body[data-ads-enable-hiding="true"]`
   background: rgba(153, 153, 153, 0.2);
   display: none;
   overflow: auto; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .advert-slot {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .advert-slot {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -401,7 +413,7 @@ Banner with Hide -- only works with `body[data-ads-enable-hiding="true"]`
   .advert-slot--banner .advert-slot__wrapper,
   .advert-slot--banner .advert-slot__label {
     width: 320px; }
-  @media all and (max-width: 20.0625em) {
+  @media all and (max-width: 20.06em) {
     .advert-slot--banner .advert-slot__label {
       width: 296px; } }
 
@@ -505,17 +517,17 @@ Display a large image of contributor in background of container.
   background-position: right bottom;
   background-position: right -15% bottom 0;
   overflow: auto; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .cutout .cutout__container {
       min-height: 245px;
       background-size: 52.17391% auto;
       padding-right: 21.73913%; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+  @media all and (min-width: 28.13em) and (max-width: 40.62em) {
     .cutout .cutout__container {
       min-height: 280px;
       background-size: 42.55319% auto;
       padding-right: 23.40426%; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .cutout .cutout__container {
       min-height: 400px;
       background-size: 47.88732% auto; } }
@@ -553,15 +565,15 @@ Navigate between different sections of a page.
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
   margin: 12px 0px;
   clear: left; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .tabs {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .tabs {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .tabs {
       margin: 12px; } }
   .tabs .inline-list__item {
@@ -699,11 +711,11 @@ Small (without label)
   vertical-align: middle;
   display: inline-block;
   padding: 0 6px; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .touchpoint__label {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .touchpoint__label {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -760,7 +772,7 @@ Display a post that forms part of a liveblog.
   overflow: hidden;
   margin: 12px 0px;
   padding: 12px; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .block {
       margin: 12px; } }
   .block .prose a {
@@ -786,11 +798,11 @@ Display an article's byline.
 .byline {
   color: #333;
   font-family: "Guardian Text Egyptian Web", Georgia, serif; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .byline {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .byline {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -816,15 +828,15 @@ Display an article's headline.
   color: #333;
   font-family: "Guardian Egyptian Web", Georgia, serif;
   font-weight: 200; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .headline {
       font-size: 3rem;
       line-height: 3.2rem; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+  @media all and (min-width: 28.13em) and (max-width: 40.62em) {
     .headline {
       font-size: 4rem;
       line-height: 4rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .headline {
       font-size: 4.8rem;
       line-height: 4.8rem; } }
@@ -841,7 +853,7 @@ Hide text, yet still make it available to screen readers.
 <span class="screen-readable">This text is only seen by screen readers.</span>
 ```
 */
-.screen-readable, .main-media--hidden-caption .main-media__caption__text, .meta .alerts__label {
+.screen-readable, .main-media--hidden-caption .main-media__caption__text, .meta .alerts .alerts__label {
   position: absolute;
   overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px); }
@@ -891,9 +903,6 @@ Can also be displayed with the caption initially hidden:
 </div>
 ```
 */
-.main-media__caption__icon {
-  display: none; }
-
 .main-media--hidden-caption {
   position: relative; }
   .main-media--hidden-caption .main-media__caption {
@@ -969,10 +978,10 @@ Display an article's meta information.
         </div>
         <p class="meta__pubdate"><span class="screen-readable">Published: </span>23:00 GMT+1 Wednesday, 18 June 2014</p>
     </div>
-    <div class="meta__comments">
+    <div class="comment-count">
         <a href="#comments" data-scroll>
             <span data-icon="&#xe03c;" aria-hidden="true"></span> 2
-            <span class="meta__comments__label">Comments</span>
+            <span class="comment-count__label">Comments</span>
         </a>
     </div>
 </div> 
@@ -983,11 +992,11 @@ Display an article's meta information.
   border-bottom: 1px dotted #dcdad5;
   width: 100%;
   display: table; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .meta {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .meta {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -998,7 +1007,9 @@ Display an article's meta information.
     margin: -.5em;
     padding: .5em;
     position: relative;
-    z-index: 2; }
+    z-index: 2;
+    /*TODO  new versions of alerts shouldn't require this- so specificity bumped up temporarily
+        remove when one or the other has been chosen */ }
 
 .meta__misc {
   padding: 8px 12px 24px 12px; }
@@ -1006,30 +1017,6 @@ Display an article's meta information.
 .meta__pubdate {
   color: #999;
   font-family: "Guardian Agate Sans 1 Web", sans-serif; }
-
-.meta__comments {
-  font-family: "Guardian Agate Sans 1 Web", sans-serif;
-  font-weight: bold;
-  vertical-align: top;
-  border-left: 1px rgba(220, 218, 213, 0.4) dotted;
-  padding: 6px 6px 12px 12px;
-  display: table-cell; }
-  @media all and (max-width: 28.115em) {
-    .meta__comments {
-      width: 21.73913%; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
-    .meta__comments {
-      width: 23.40426%; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
-    .meta__comments {
-      width: 23.94366%; } }
-  @media all and (min-width: 56.25em) {
-    .meta__comments {
-      width: 24.21053%; } }
-
-@media all and (max-width: 40.615em) {
-  .meta__comments__label {
-    display: none; } }
 
 /*doc
 ---
@@ -1097,7 +1084,7 @@ Display the number of stars with which a review has been rated
 */
 .review-rating {
   color: #484848; }
-  @media all and (min-width: 28.125em) {
+  @media all and (min-width: 28.13em) {
     .review-rating {
       font-size: 3.0rem; } }
 
@@ -1128,15 +1115,15 @@ With live indicator:
 */
 .section {
   font-family: "Guardian Egyptian Web", Georgia, serif; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .section {
       font-size: 1.5rem;
       line-height: 1.6rem; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+  @media all and (min-width: 28.13em) and (max-width: 40.62em) {
     .section {
       font-size: 2rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .section {
       font-size: 2.4rem;
       line-height: 2.4rem; } }
@@ -1152,19 +1139,19 @@ With live indicator:
 .section__live {
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
   font-weight: bold; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .section__live {
       font-size: 1.5rem;
       line-height: 1.6rem; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+  @media all and (min-width: 28.13em) and (max-width: 40.62em) {
     .section__live {
       font-size: 2rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .section__live {
       font-size: 2.4rem;
       line-height: 2.4rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .section__live {
       font-size: 1.6rem; } }
 
@@ -1172,7 +1159,6 @@ With live indicator:
 .section__container {
   position: relative;
   float: left;
-  padding: 5px 12px 0px 12px;
   border-bottom: 1px rgba(220, 218, 213, 0.4) dotted;
   width: 100%;
   margin-bottom: 10px; }
@@ -1181,15 +1167,15 @@ With live indicator:
     font-family: "Guardian Egyptian Web", Georgia, serif;
     font-weight: 600;
     padding-bottom: 0; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 28.12em) {
       .section__container .section {
         font-size: 1.5rem;
         line-height: 1.6rem; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    @media all and (min-width: 28.13em) and (max-width: 40.62em) {
       .section__container .section {
         font-size: 2rem;
         line-height: 2rem; } }
-    @media all and (min-width: 40.625em) {
+    @media all and (min-width: 40.63em) {
       .section__container .section {
         font-size: 2.4rem;
         line-height: 2.4rem; } }
@@ -1201,36 +1187,75 @@ With live indicator:
     display: inline-block;
     line-height: 1.6rem;
     font-weight: 600;
-    padding: 3px 6px 2px 0px; }
-    @media all and (max-width: 28.115em) {
+    padding-right: 6px; }
+    @media all and (max-width: 28.12em) {
       .section__container .content__labels {
         font-size: 1.5rem;
         line-height: 1.6rem; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    @media all and (min-width: 28.13em) and (max-width: 40.62em) {
       .section__container .content__labels {
         font-size: 2rem;
         line-height: 2rem; } }
-    @media all and (min-width: 40.625em) {
+    @media all and (min-width: 40.63em) {
       .section__container .content__labels {
         font-size: 2.4rem;
         line-height: 2.4rem; } }
+    .section__container .content__labels:last-child {
+      padding-right: 0; }
   .section__container .content__series-label {
     font-weight: normal;
     font-family: "Guardian Egyptian Web", Georgia, serif;
     font-weight: 300;
     display: inline; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 28.12em) {
       .section__container .content__series-label {
         font-size: 1.5rem;
         line-height: 1.6rem; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    @media all and (min-width: 28.13em) and (max-width: 40.62em) {
       .section__container .content__series-label {
         font-size: 2rem;
         line-height: 2rem; } }
-    @media all and (min-width: 40.625em) {
+    @media all and (min-width: 40.63em) {
       .section__container .content__series-label {
         font-size: 2.4rem;
         line-height: 2.4rem; } }
+
+.content__container {
+  display: table;
+  width: 100%;
+  height: 100%; }
+  .content__container .content__labels__container {
+    display: table-cell;
+    vertical-align: top;
+    padding: 7px 12px 12px 12px;
+    height: 100%;
+    width: 100%; }
+
+.comment-count {
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  font-weight: bold;
+  vertical-align: top;
+  border-left: 1px rgba(220, 218, 213, 0.4) dotted;
+  padding: 6px 6px 12px 12px;
+  display: table-cell; }
+  @media all and (max-width: 28.12em) {
+    .comment-count {
+      width: 21.73913%; } }
+  @media all and (min-width: 28.13em) and (max-width: 40.62em) {
+    .comment-count {
+      width: 23.40426%; } }
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+    .comment-count {
+      width: 23.94366%; } }
+  @media all and (min-width: 56.25em) {
+    .comment-count {
+      width: 24.21053%; } }
+  .meta .comment-count {
+    display: none; }
+
+@media all and (max-width: 40.62em) {
+  .comment-count__label {
+    display: none; } }
 
 .article__header h1 {
   clear: both; }
@@ -1253,11 +1278,11 @@ Display the standfirst of an article. Emboldened text is normalised.
   color: #767676;
   font-family: "Guardian Egyptian Web", Georgia, serif;
   font-weight: 300; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .standfirst {
       font-size: 1.7rem;
       line-height: 2.2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .standfirst {
       font-size: 2.2rem;
       line-height: 3rem; } }
@@ -1474,7 +1499,7 @@ Display a match summary. The score is updated during the match.
   padding: 12px 12px 0px 12px;
   position: relative;
   overflow: hidden; }
-  @media all and (min-width: 28.125em) {
+  @media all and (min-width: 28.13em) {
     .match-summary {
       padding: 6px 12px 0px 12px;
       min-height: 150px; }
@@ -1489,11 +1514,11 @@ Display a match summary. The score is updated during the match.
         right: 50%;
         bottom: 0;
         left: 50%; } }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .match-summary .headline {
       font-size: 3.2rem;
       line-height: 4rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .match-summary .headline {
       margin: 0px 0px 6px 0px;
       margin-top: -10px;
@@ -1501,11 +1526,11 @@ Display a match summary. The score is updated during the match.
       line-height: 4.8rem; } }
   .match-summary .match-status {
     z-index: 10; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 28.12em) {
       .match-summary .match-status {
         float: left;
         width: 44px; } }
-    @media all and (min-width: 28.125em) {
+    @media all and (min-width: 28.13em) {
       .match-summary .match-status {
         margin-left: auto;
         margin-right: auto;
@@ -1522,28 +1547,28 @@ Display a match summary. The score is updated during the match.
     width: auto;
     display: inline-block;
     float: right; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 28.12em) {
       .match-summary .alerts {
         font-size: 150%; } }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .match-summary .alerts__label {
       display: none; } }
 
 .match-summary__meta {
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
   min-height: 50px; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .match-summary__meta {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .match-summary__meta {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .match-summary__meta {
       padding: 0px 36px 12px 54px; } }
-  @media all and (min-width: 28.125em) {
+  @media all and (min-width: 28.13em) {
     .match-summary__meta {
       width: 50%;
       min-height: 44px; } }
@@ -1558,12 +1583,12 @@ Display a match summary. The score is updated during the match.
   hyphens: auto;
   word-break: break-word;
   min-height: 60px; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .match-summary__team {
       width: 100%;
       padding: 12px 0px 30px 0px;
       position: relative; } }
-  @media all and (min-width: 28.125em) {
+  @media all and (min-width: 28.13em) {
     .match-summary__team {
       margin: 12px 0px 24px 0px;
       width: 50%;
@@ -1574,7 +1599,7 @@ Display a match summary. The score is updated during the match.
   .match-summary__team .match-summary__info,
   .match-summary__team .match-summary__score {
     vertical-align: top; }
-    @media all and (min-width: 28.125em) {
+    @media all and (min-width: 28.13em) {
       .match-summary__team .match-summary__badge,
       .match-summary__team .match-summary__info,
       .match-summary__team .match-summary__score {
@@ -1584,31 +1609,31 @@ Display a match summary. The score is updated during the match.
     background-size: contain;
     background-position-x: center;
     height: 60px; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 28.12em) {
       .match-summary__team .match-summary__badge {
         width: 20%;
         position: absolute;
         left: 0; } }
-    @media all and (min-width: 28.125em) {
+    @media all and (min-width: 28.13em) {
       .match-summary__team .match-summary__badge {
         padding: 4px 0px 0px 0px;
         width: 54px; } }
   .match-summary__team .match-summary__info {
     font-family: "Guardian Agate Sans 1 Web", sans-serif; }
-    @media all and (max-width: 40.615em) {
+    @media all and (max-width: 40.62em) {
       .match-summary__team .match-summary__info {
         font-size: 1.4rem;
         line-height: 2rem; } }
-    @media all and (min-width: 40.625em) {
+    @media all and (min-width: 40.63em) {
       .match-summary__team .match-summary__info {
         font-size: 1.6rem;
         line-height: 2.2rem; } }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 28.12em) {
       .match-summary__team .match-summary__info {
         width: 60%;
         float: left;
         margin-left: 22%; } }
-    @media all and (min-width: 28.125em) {
+    @media all and (min-width: 28.13em) {
       .match-summary__team .match-summary__info {
         width: 100%;
         padding: 0px 0px 0px 6px; } }
@@ -1620,17 +1645,17 @@ Display a match summary. The score is updated during the match.
   .match-summary__team .match-summary__score {
     width: 44px;
     padding: 0px 6px; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 28.12em) {
       .match-summary__team .match-summary__score {
         width: 15%;
         text-align: right;
         padding-right: 0;
         float: right; } }
 
-@media all and (max-width: 28.115em) {
+@media all and (max-width: 28.12em) {
   .match-summary__team--home {
     border-top: 1px dotted #dcdad5; } }
-@media all and (min-width: 28.125em) {
+@media all and (min-width: 28.13em) {
   .match-summary__team--home .match-summary__score {
     text-align: right; } }
 
@@ -1647,11 +1672,11 @@ Display a match summary. The score is updated during the match.
   display: none; }
   .match-summary__score__agg > span {
     display: none; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .match-summary__score__agg {
       font-size: 75%;
       margin-top: 6px; } }
-  @media all and (min-width: 28.125em) {
+  @media all and (min-width: 28.13em) {
     .match-summary__score__agg {
       margin-top: 10px; } }
   .is-agg .match-summary__score__agg {
@@ -1668,11 +1693,11 @@ Display a match summary. The score is updated during the match.
   display: table;
   position: relative;
   z-index: 20; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .match-summary__comment {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .match-summary__comment {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -1793,13 +1818,13 @@ Displays a cricket header.
 .cricket-inning-details-overs, .cricket-footer-times__time, .cricket-scorecard-batsmen, .cricket-footer-inning, .cricket-game-in-play-text,
 .cricket-game-in-play-follow {
   font-family: "Guardian Agate Sans 1 Web", sans-serif; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .cricket-match-basic-info, .cricket-scorecard-title, .cricket-inning-details-innings,
     .cricket-inning-details-overs, .cricket-footer-times__time, .cricket-scorecard-batsmen, .cricket-footer-inning, .cricket-game-in-play-text,
     .cricket-game-in-play-follow {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .cricket-match-basic-info, .cricket-scorecard-title, .cricket-inning-details-innings,
     .cricket-inning-details-overs, .cricket-footer-times__time, .cricket-scorecard-batsmen, .cricket-footer-inning, .cricket-game-in-play-text,
     .cricket-game-in-play-follow {
@@ -1807,15 +1832,13 @@ Displays a cricket header.
       line-height: 2.2rem; } }
 
 .cricket-inning-team-name, .cricket-inning-runs {
-  font-family: "Guardian Egyptian Web", Georgia, serif;
-  font-weight: 200;
+  font: 200 2.3rem "Guardian Egyptian Web", Georgia, serif;
   color: #333;
-  font-size: 2.3rem;
-  padding-bottom: 0.3rem; }
+  padding-bottom: .3rem; }
 
 .cricket-match-summary-head, .cricket-match-summary-footer-wrap {
   padding: 12px 12px 12px 12px; }
-  @media all and (min-width: 28.125em) {
+  @media all and (min-width: 28.13em) {
     .cricket-match-summary-head, .cricket-match-summary-footer-wrap {
       padding: 6px 12px 6px 12px; } }
 
@@ -1831,10 +1854,17 @@ Displays a cricket header.
     overflow: hidden;
     text-overflow: ellipsis; }
 
+.tone--liveBlog .cricket .tab {
+  color: #b51800; }
+  .tone--liveBlog .cricket .tab[aria-selected="true"] {
+    border-color: #b51800; }
+
 .cricket .tone--liveBlog.is-live .article__header--cricket,
 .cricket .tone--deadBlog .article__header--cricket {
   background-color: transparent;
-  border-bottom: none; }
+  border-bottom: 0;
+  border-top: 1px dotted grey;
+  padding-top: 12px; }
   .cricket .tone--liveBlog.is-live .article__header--cricket .meta__pubdate,
   .cricket .tone--liveBlog.is-live .article__header--cricket a,
   .cricket .tone--liveBlog.is-live .article__header--cricket .byline,
@@ -1842,9 +1872,15 @@ Displays a cricket header.
   .cricket .tone--deadBlog .article__header--cricket a,
   .cricket .tone--deadBlog .article__header--cricket .byline {
     color: #333; }
+  .cricket .tone--liveBlog.is-live .article__header--cricket .byline__author a,
+  .cricket .tone--deadBlog .article__header--cricket .byline__author a {
+    color: #005689; }
+    .tone--liveBlog .cricket .tone--liveBlog.is-live .article__header--cricket .byline__author a, .tone--liveBlog
+    .cricket .tone--deadBlog .article__header--cricket .byline__author a {
+      color: #b51800; }
   .cricket .tone--liveBlog.is-live .article__header--cricket .meta,
   .cricket .tone--deadBlog .article__header--cricket .meta {
-    width: 50%;
+    width: 100%;
     line-height: 1.2em;
     background-color: transparent;
     display: inline-block;
@@ -1853,10 +1889,13 @@ Displays a cricket header.
   .cricket .tone--deadBlog .article__header--cricket .meta__misc {
     padding-bottom: 0;
     padding-top: 0; }
+  .cricket .tone--liveBlog.is-live .article__header--cricket .meta__pubdate,
+  .cricket .tone--deadBlog .article__header--cricket .meta__pubdate {
+    padding-bottom: 1.2rem; }
   .cricket .tone--liveBlog.is-live .article__header--cricket .cricket-match-basic-follow,
   .cricket .tone--deadBlog .article__header--cricket .cricket-match-basic-follow {
     width: 48.5%;
-    padding: 0 12px;
+    padding: 12px;
     vertical-align: text-bottom;
     display: inline-block; }
     .cricket .tone--liveBlog.is-live .article__header--cricket .cricket-match-basic-follow a,
@@ -1877,11 +1916,11 @@ Displays a cricket header.
   .cricket-match-comp-info h1 {
     font-family: "Guardian Egyptian Web", Georgia, serif;
     font-weight: 300; }
-    @media all and (max-width: 40.615em) {
+    @media all and (max-width: 40.62em) {
       .cricket-match-comp-info h1 {
         font-size: 1.4rem;
         line-height: 2rem; } }
-    @media all and (min-width: 40.625em) {
+    @media all and (min-width: 40.63em) {
       .cricket-match-comp-info h1 {
         font-size: 1.6rem;
         line-height: 2.2rem; } }
@@ -1895,7 +1934,7 @@ Displays a cricket header.
   width: 60%;
   text-align: right;
   vertical-align: middle; }
-  .cricket--pre-match .cricket__tabpanel .article .article__header .cricket-match-basic-follow, .tone--deadBlog .cricket__tabpanel .article .article__header .cricket-match-basic-follow {
+  .tone--deadBlog .cricket__tabpanel .article .article__header .cricket-match-basic-follow {
     display: none; }
 
 .cricket-match-summary-result {
@@ -1904,7 +1943,7 @@ Displays a cricket header.
 .cricket-match-summary-last-inning {
   display: table-cell;
   padding: 12px 12px 12px 12px; }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .cricket-match-summary-last-inning {
       width: 33.80282%; } }
   @media all and (min-width: 56.25em) {
@@ -1943,7 +1982,7 @@ Displays a cricket header.
     display: inline-block;
     width: 37px;
     height: 21px;
-    background: url(../img/cricket-dismissal.png);
+    background: url("../img/cricket-dismissal.png");
     background-repeat: no-repeat; }
   .cricket-inning-tea .cricket-inning-team-name:before {
     background-size: auto 39px;
@@ -1963,7 +2002,7 @@ Displays a cricket header.
   display: table-cell;
   vertical-align: top;
   border-left: 1px solid #dcdad5; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .cricket-match-summary-scorecard {
       display: none; } }
   .cricket-inning-result .cricket-match-summary-scorecard, .cricket-inning-draw .cricket-match-summary-scorecard, .cricket-inning-delay .cricket-match-summary-scorecard, .cricket-inning-abandoned .cricket-match-summary-scorecard, .cricket-inning-pre-match .cricket-match-summary-scorecard {
@@ -2052,7 +2091,7 @@ Displays a cricket header.
     height: 20px;
     width: 20px;
     margin-right: 4px;
-    background: url(../img/cricket-dismissal.png);
+    background: url("../img/cricket-dismissal.png");
     background-repeat: no-repeat;
     background-size: auto 48px; }
   .cricket-scorecard-batsmen .cricket-scorecard-batsmen-status {
@@ -2127,14 +2166,14 @@ Displays a cricket header.
 @-webkit-keyframes fadeOutIn {
   7% {
     opacity: 1; }
-  93.0% {
+  93% {
     opacity: 1; }
   to {
     opacity: 0; } }
 @keyframes fadeOutIn {
   7% {
     opacity: 1; }
-  93.0% {
+  93% {
     opacity: 1; }
   to {
     opacity: 0; } }
@@ -2161,15 +2200,14 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
 */
 .witness {
   margin: 24px 12px 12px 12px; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .witness {
       font-size: 1.4rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .witness {
       font-size: 1.6rem; } }
   .witness .witness__button {
     background-color: #004f91;
-    color: #B7D8EB;
     border-radius: 50px;
     margin-right: 12px;
     overflow: hidden;
@@ -2178,6 +2216,7 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
     height: 2.7em;
     padding-right: 1em;
     font-family: "Guardian Agate Sans 1 Web", sans-serif;
+    color: #fff;
     white-space: nowrap; }
     .witness .witness__button:before {
       content: '\e050';
@@ -2193,7 +2232,7 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
       vertical-align: middle;
       height: 100%; }
     .witness .witness__button:active {
-      color: #fff; }
+      color: #c3ddeb; }
   .witness .witness__logo {
     vertical-align: middle;
     display: inline-block;
@@ -2204,7 +2243,7 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
     background-size: contain; }
     .ios .witness .witness__logo {
       bottom: 2px; }
-      @media all and (min-width: 40.625em) {
+      @media all and (min-width: 40.63em) {
         .ios .witness .witness__logo {
           bottom: 1px; } }
       @media screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
@@ -2221,7 +2260,7 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
     width: 18%;
     position: relative;
     left: 5px; }
-    @media all and (min-width: 40.625em) {
+    @media all and (min-width: 40.63em) {
       .witness .witness__sponsor {
         width: 12%; } }
     @media all and (min-width: 56.25em) {
@@ -2308,12 +2347,12 @@ Play a piece of audio, i.e. a podcast.
   padding: 0;
   margin: 0;
   margin-top: -3px; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .audio-player__slider__played,
     .audio-player__slider__remaining {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .audio-player__slider__played,
     .audio-player__slider__remaining {
       font-size: 1.6rem;
@@ -2367,7 +2406,7 @@ Display a selection of images that form a gallery.
 */
 .gallery {
   padding: 12px 12px 0px 12px; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .gallery {
       padding: 4px; } }
 
@@ -2383,7 +2422,7 @@ Display a selection of images that form a gallery.
   border-bottom: 2px solid #dcdad5;
   overflow: hidden;
   margin-bottom: 48px; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .article {
       border-top-width: 0; } }
   .android .article {
@@ -2399,7 +2438,7 @@ Display a selection of images that form a gallery.
   display: inline-block; }
 .article__header .section {
   /*padding: base-px(.5, 1);*/
-  padding-bottom: 10px;
+  /*padding-bottom: 10px;*/
   margin-bottom: 5px; }
 .article__header .headline {
   padding: 0px 12px 30px 12px; }
@@ -2409,9 +2448,9 @@ Display a selection of images that form a gallery.
 .article__body {
   font-family: "Guardian Text Egyptian Web", Georgia, serif; }
   .article__body > .prose .figure-wide:first-child,
-  .article__body > .prose .element:first-child {
+  .article__body > .prose .element:not(.figure--thumbnail):first-child {
     margin-top: -12px; }
-  @media all and (min-width: 28.125em) {
+  @media all and (min-width: 28.13em) {
     .article__body .player-card {
       margin: 12px 0px 12px 12px;
       width: 50%;
@@ -2421,13 +2460,13 @@ Display a selection of images that form a gallery.
       float: right;
       margin-left: 18px;
       margin-bottom: 12px; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .article__body .advert-slot--mpu {
       margin-right: -30.98592%; } }
   @media all and (min-width: 56.25em) {
     .article__body .advert-slot--mpu {
       margin-right: -30.52632%; } }
-  @media all and (max-width: 34.9375em) {
+  @media all and (max-width: 34.94em) {
     .article__body .advert-slot--mpu--tablet {
       margin: 12px auto 0; } }
 
@@ -2436,7 +2475,7 @@ Display a selection of images that form a gallery.
 .article--feature .article__body,
 .article--audio .article__body {
   padding: 12px 12px 0px 12px; }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .article--standard .article__body,
     .article--comment .article__body,
     .article--feature .article__body,
@@ -2467,7 +2506,7 @@ Display a selection of images that form a gallery.
     margin-left: -12px;
     margin-right: -12px;
     width: auto; }
-    @media all and (min-width: 40.625em) {
+    @media all and (min-width: 40.63em) {
       .article--standard .article__body .figure-wide,
       .article--standard .article__body .element-video,
       .article--standard .article__body .element-placeholder,
@@ -2485,7 +2524,7 @@ Display a selection of images that form a gallery.
       .article--audio .article__body .element-placeholder,
       .article--audio .article__body .element-interactive {
         width: 135%; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .article--standard .article__body .element-video,
     .article--comment .article__body .element-video,
     .article--feature .article__body .element-video,
@@ -2497,21 +2536,21 @@ Display a selection of images that form a gallery.
 .article--audio .aside {
   float: right;
   clear: right; }
-  @media all and (min-width: 28.125em) {
+  @media all and (min-width: 28.13em) {
     .article--standard .aside,
     .article--comment .aside,
     .article--feature .aside,
     .article--audio .aside {
       margin: 0px 0px 24px 24px;
       padding: 12px 12px 12px 0px; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+  @media all and (min-width: 28.13em) and (max-width: 40.62em) {
     .article--standard .aside,
     .article--comment .aside,
     .article--feature .aside,
     .article--audio .aside {
       margin-right: 12px;
       width: 36.17021%; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .article--standard .aside,
     .article--comment .aside,
     .article--feature .aside,
@@ -2526,7 +2565,7 @@ Display a selection of images that form a gallery.
       margin-right: -32.63158%;
       width: 24.21053%; } }
 
-@media all and (min-width: 40.625em) and (max-width: 56.24em) {
+@media all and (min-width: 40.63em) and (max-width: 56.24em) {
   .article--standard .article__header .headline,
   .article--standard .article__header .standfirst,
   .article--comment .article__header .headline,
@@ -2551,8 +2590,8 @@ Display a selection of images that form a gallery.
   body:not(.is-live) .article--liveblog .article__header .article__comments {
     width: 24.21053%; } }
 
-.article--comment .article__body > .prose > p:first-of-type:first-letter,
-.article--feature .article__body > .prose > p:first-of-type:first-letter {
+.article--comment .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
+.article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
   color: "";
   font-family: "Guardian Egyptian Web", Georgia, serif;
   font-weight: 100;
@@ -2563,11 +2602,23 @@ Display a selection of images that form a gallery.
   margin-bottom: -16px;
   padding-right: 6px;
   float: left; }
-  @media all and (min-width: 40.625em) {
-    .article--comment .article__body > .prose > p:first-of-type:first-letter,
-    .article--feature .article__body > .prose > p:first-of-type:first-letter {
+  @media all and (min-width: 40.63em) {
+    .article--comment .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
+    .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
       font-size: 5.2222em; } }
 
+/*.article--comment,
+.article--feature {
+        .article__body > .prose {
+            border: 1px solid red!important;
+    }
+}*/
+/*
+.article--comment,
+.article--feature {
+.article__body > .prose > p:first-of-type:first-letter {
+    border: 1px solid red!important;
+}*/
 .article--comment .article__header .cutout__container {
   padding-bottom: 48px;
   position: relative;
@@ -2577,7 +2628,7 @@ Display a selection of images that form a gallery.
   display: block; }
 .article--comment .article__header .standfirst {
   color: #2d2a26; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .article--comment .article__header .standfirst {
       font-size: 1.25em;
       line-height: 1.25em; } }
@@ -2602,11 +2653,11 @@ Display a selection of images that form a gallery.
       display: none;
       position: absolute;
       left: 12px;
-      top: 5px; }
+      top: 3px; }
     .article--liveblog .article__header .alerts {
       margin: 0;
       padding: 6px 12px; }
-    @media all and (min-width: 40.625em) {
+    @media all and (min-width: 40.63em) {
       .article--liveblog .article__header > .alerts {
         display: none; } }
     .article--liveblog .article__header .meta {
@@ -2615,14 +2666,14 @@ Display a selection of images that form a gallery.
         position: absolute;
         left: 0;
         top: 0; }
-        @media all and (max-width: 40.615em) {
+        @media all and (max-width: 40.62em) {
           .article--liveblog .article__header .meta .alerts {
             display: none; } }
-    .article--liveblog .article__header .meta__comments__label {
+    .article--liveblog .article__header .comment-count__label {
       display: none; }
   .article--liveblog .tags {
     border-top: 0; }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .article--liveblog .tags {
         padding-left: 33.80282%; } }
     @media all and (min-width: 56.25em) {
@@ -2630,6 +2681,8 @@ Display a selection of images that form a gallery.
         padding-left: 31.57895%; } }
   .article--liveblog .article__body--liveblog__pinned .element {
     margin: 12px 0px; }
+  .article--liveblog .alerts--new {
+    margin: 12px 12px 0px 8px; }
 
 .android .article--liveblog .article__body--liveblog__pinned figcaption {
   padding: 6px 12px 24px 12px; }
@@ -2651,14 +2704,14 @@ Display a selection of images that form a gallery.
   content: '\e047';
   font-family: "Guardian Icons", Georgia, serif;
   padding-right: 6px; }
-@media all and (max-width: 40.615em) {
+@media all and (max-width: 40.62em) {
   .article--audio .byline--tablet {
     display: none; } }
 .article--audio .byline--mobile {
   border-bottom: 1px dotted #dcdad5;
   padding: 12px 12px 12px 12px;
   display: block; }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .article--audio .byline--mobile {
       display: none; } }
 .article--audio .article__body .standfirst {
@@ -2668,14 +2721,14 @@ Display a selection of images that form a gallery.
   display: none; }
 .article--visual .article__header .meta__pubdate {
   padding-top: 9px; }
-@media all and (max-width: 40.615em) {
+@media all and (max-width: 40.62em) {
   .article--visual .article__header .meta__misc {
     border-top: 1px dotted #767676; } }
-@media all and (min-width: 40.625em) {
+@media all and (min-width: 40.63em) {
   .article--visual .article__header .meta__misc {
     display: table-cell;
     border-left: 1px dotted #767676; } }
-@media all and (min-width: 40.625em) and (max-width: 56.24em) {
+@media all and (min-width: 40.63em) and (max-width: 56.24em) {
   .article--visual .article__header .meta__misc {
     width: 32.39437%; } }
 @media all and (min-width: 56.25em) {
@@ -2683,7 +2736,7 @@ Display a selection of images that form a gallery.
     width: 24.21053%; } }
 .article--visual .article__body {
   padding: 0px 12px; }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .article--visual .article__body {
       padding-right: 23.94366%; } }
   @media all and (min-width: 56.25em) {
@@ -2709,7 +2762,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 
 .front__header {
   height: 114px; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .front__header {
       display: none; } }
   .android .front__header {
@@ -2735,6 +2788,8 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--comment .section__container .content__series-label,
   .tone--comment .section__container .content__series-label a {
     color: #767676; }
+  .tone--comment .section__container .comment-count {
+    border-left-color: #c5c1b9; }
 .tone--comment .section__container,
 .tone--comment figure figcaption {
   border-bottom: 1px #c5c1b9 dotted; }
@@ -2764,10 +2819,14 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--comment .article--comment .prose table,
   .tone--comment .article--comment .table {
     border-top-color: #e6711b; }
+  .tone--comment .article--comment .prose .element-pullquote blockquote footer, .tone--comment .article--comment .prose .element-pullquote blockquote::after, .tone--comment .article--comment .prose .element-pullquote blockquote::before {
+    color: #e6711b; }
   .tone--comment .article--comment .article__header .headline__byline {
     color: #e6711b; }
   .tone--comment .article--comment .article__header .byline__author {
     display: inline; }
+  .test--new-alerts .tone--comment .article--comment .meta__misc {
+    padding-bottom: 6px; }
   .tone--comment .article--comment .meta {
     border: 0;
     margin: 0;
@@ -2777,9 +2836,15 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
       .tone--comment .article--comment .meta a:active {
         color: rgba(255, 255, 255, 0.8); }
     .tone--comment .article--comment .meta .meta__pubdate {
-      color: #fff; }
-    .tone--comment .article--comment .meta .meta__comments {
+      color: rgba(255, 255, 255, 0.8); }
+    .tone--comment .article--comment .meta .comment-count {
       border-left-color: rgba(255, 255, 255, 0.4); }
+    .tone--comment .article--comment .meta a.alerts--new:active, .tone--comment .article--comment .meta a.alerts--new.following {
+      background-color: #fff;
+      color: #f39f33; }
+    .tone--comment .article--comment .meta a.alerts--new, .tone--comment .article--comment .meta a.alerts--new.following:active {
+      border-color: #fff;
+      color: #fff; }
 
 .tone--feature1 a,
 .tone--feature1 .article__body > p:first-of-type:first-letter,
@@ -2835,6 +2900,14 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--feature3 .article--feature .prose table,
   .tone--feature3 .article--feature .table {
     border-top-color: #b82266; }
+  .tone--feature1 .article--feature .prose .element-pullquote blockquote footer, .tone--feature1 .article--feature .prose .element-pullquote blockquote::after, .tone--feature1 .article--feature .prose .element-pullquote blockquote::before,
+  .tone--feature2 .article--feature .prose .element-pullquote blockquote footer,
+  .tone--feature2 .article--feature .prose .element-pullquote blockquote::after,
+  .tone--feature2 .article--feature .prose .element-pullquote blockquote::before,
+  .tone--feature3 .article--feature .prose .element-pullquote blockquote footer,
+  .tone--feature3 .article--feature .prose .element-pullquote blockquote::after,
+  .tone--feature3 .article--feature .prose .element-pullquote blockquote::before {
+    color: #951c55; }
 .tone--feature1 .article--feature .article__header a,
 .tone--feature2 .article--feature .article__header a,
 .tone--feature3 .article--feature .article__header a {
@@ -2871,7 +2944,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   color: #fff;
   position: relative;
   z-index: 20; }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .tone--feature1 .article--feature .article__header .headline,
     .tone--feature2 .article--feature .article__header .headline,
     .tone--feature3 .article--feature .article__header .headline {
@@ -2916,6 +2989,20 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .tone--feature3 .article--feature .meta {
   border: 0;
   margin: 0; }
+  .tone--feature1 .article--feature .meta a.alerts--new:active, .tone--feature1 .article--feature .meta a.alerts--new.following,
+  .tone--feature2 .article--feature .meta a.alerts--new:active,
+  .tone--feature2 .article--feature .meta a.alerts--new.following,
+  .tone--feature3 .article--feature .meta a.alerts--new:active,
+  .tone--feature3 .article--feature .meta a.alerts--new.following {
+    background-color: #fff;
+    color: #b82266; }
+  .tone--feature1 .article--feature .meta a.alerts--new, .tone--feature1 .article--feature .meta a.alerts--new.following:active,
+  .tone--feature2 .article--feature .meta a.alerts--new,
+  .tone--feature2 .article--feature .meta a.alerts--new.following:active,
+  .tone--feature3 .article--feature .meta a.alerts--new,
+  .tone--feature3 .article--feature .meta a.alerts--new.following:active {
+    border-color: #fff;
+    color: #fff; }
 .tone--feature1 .article--feature .meta,
 .tone--feature1 .article--feature .meta__pubdate,
 .tone--feature2 .article--feature .meta,
@@ -2930,20 +3017,12 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   color: #fff; }
 .tone--liveBlog .content__series-label {
   color: #fff; }
-.tone--liveBlog .cricket .new_alerts {
-  margin: 0; }
-.tone--liveBlog .cricket .new_alerts, .tone--liveBlog .cricket .new_alerts.following:active {
-  border-color: #dcdad5;
-  color: #999; }
-.tone--liveBlog .cricket a.new_alerts:not(.following):active, .tone--liveBlog .cricket .new_alerts.following:not(:active) {
-  background-color: #999;
-  color: #fff; }
 
 .tone--liveBlog.is-live a.touchpoint:active {
   color: #cc2b12; }
 .tone--liveBlog.is-live .witness {
   margin-top: 12px; }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .tone--liveBlog.is-live .witness {
       margin-left: 33.80282%; } }
   @media all and (min-width: 56.25em) {
@@ -2953,6 +3032,12 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   background-color: #b51800; }
 .tone--liveBlog.is-live #comments .touchpoint--primary:active .touchpoint__button {
   background-color: #cc2b12; }
+.tone--liveBlog.is-live .alerts--new:active, .tone--liveBlog.is-live .alerts--new.following {
+  background-color: #b51800;
+  color: #fff; }
+.tone--liveBlog.is-live .alerts--new, .tone--liveBlog.is-live .alerts--new.following:active {
+  border-color: #b51800;
+  color: #b51800; }
 .tone--liveBlog.is-live .article__header {
   background-color: #b51800;
   color: #fff; }
@@ -2969,13 +3054,13 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     color: #fff; }
   .tone--liveBlog.is-live .article__header .section {
     position: relative; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 28.12em) {
       .tone--liveBlog.is-live .article__header .section {
-        padding-left: 66px; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+        padding-left: 56px; } }
+    @media all and (min-width: 28.13em) and (max-width: 40.62em) {
       .tone--liveBlog.is-live .article__header .section {
         padding-left: 78px; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .tone--liveBlog.is-live .article__header .section {
         padding-left: 33.80282%; } }
     @media all and (min-width: 56.25em) {
@@ -2983,7 +3068,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
         padding-left: 31.57895%; } }
   .tone--liveBlog.is-live .article__header .section__live {
     display: block; }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .tone--liveBlog.is-live .article__header .headline,
     .tone--liveBlog.is-live .article__header .standfirst {
       margin-left: 32.39437%; } }
@@ -3000,6 +3085,8 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     border-bottom: none; }
     .tone--liveBlog.is-live .article__header .sponsorship__about-uri, .tone--liveBlog.is-live .article__header .sponsorship__formatted-sponsor-name a {
       color: #b51800; }
+  .tone--liveBlog.is-live .article__header .sponsorship__logo {
+    color: #333; }
 .tone--liveBlog.is-live .article--liveblog {
   border-top-color: #cc2b12; }
   .tone--liveBlog.is-live .article--liveblog .prose table,
@@ -3007,12 +3094,14 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     border-top-color: #b51800; }
   .cricket .tone--liveBlog.is-live .article--liveblog {
     border-top: none; }
+  .tone--liveBlog.is-live .article--liveblog .prose .element-pullquote blockquote footer, .tone--liveBlog.is-live .article--liveblog .prose .element-pullquote blockquote::after, .tone--liveBlog.is-live .article--liveblog .prose .element-pullquote blockquote::before {
+    color: #b51800; }
   .tone--liveBlog.is-live .article--liveblog .meta {
     background-color: #cc2b12;
     border: 0;
     border-left: 1px dotted rgba(255, 255, 255, 0.2);
     margin: 0; }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .tone--liveBlog.is-live .article--liveblog .meta {
         padding-left: 32.39437%; }
         .tone--liveBlog.is-live .article--liveblog .meta .alerts {
@@ -3024,7 +3113,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
           width: 30.52632%; } }
   .tone--liveBlog.is-live .article--liveblog .meta__pubdate {
     color: rgba(255, 255, 255, 0.8); }
-  .tone--liveBlog.is-live .article--liveblog .meta__comments {
+  .tone--liveBlog.is-live .article--liveblog .comment-count {
     border-left-color: rgba(255, 255, 255, 0.4); }
   .tone--liveBlog.is-live .article--liveblog .tags .inline-list__item a {
     color: #333;
@@ -3038,6 +3127,15 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     .tone--liveBlog.is-live .article--liveblog .tags .inline-list__item.more-button a:active {
       color: #1a1a1a;
       border: 1px solid #adadad; }
+.cricket .tone--liveBlog.is-live .alerts--new {
+  margin: 0; }
+.cricket .tone--liveBlog.is-live a.alerts--new:active, .cricket .tone--liveBlog.is-live a.alerts--new.following {
+  background-color: #b51800;
+  color: #fff; }
+.cricket .tone--liveBlog.is-live a.alerts--new, .cricket .tone--liveBlog.is-live a.alerts--new.following:active {
+  border-color: #b51800;
+  background-color: transparent;
+  color: #b51800; }
 
 .tone--media .witness .witness__sponsor-logo {
   fill: #fff; }
@@ -3072,6 +3170,8 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   border-top-style: dotted; }
 .tone--media .article--audio .article__header {
   background-image: -webkit-canvas(circles); }
+.tone--media .sponsorship__logo {
+  color: #878787; }
 .tone--media .article--audio,
 .tone--media .article--visual {
   border-top-color: #fb0;
@@ -3095,6 +3195,14 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--media .article--visual .prose table,
   .tone--media .article--visual .table {
     border-top-color: #fb0; }
+  .tone--media .article--audio .prose .element-pullquote blockquote,
+  .tone--media .article--visual .prose .element-pullquote blockquote {
+    color: #fff; }
+    .tone--media .article--audio .prose .element-pullquote blockquote footer, .tone--media .article--audio .prose .element-pullquote blockquote::after, .tone--media .article--audio .prose .element-pullquote blockquote::before,
+    .tone--media .article--visual .prose .element-pullquote blockquote footer,
+    .tone--media .article--visual .prose .element-pullquote blockquote::after,
+    .tone--media .article--visual .prose .element-pullquote blockquote::before {
+      color: #fb0; }
   .tone--media .article--audio .audio-player,
   .tone--media .article--visual .audio-player {
     background-color: #1a1a1a; }
@@ -3110,20 +3218,19 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     color: #fb0; }
   .tone--media .article--audio .headline,
   .tone--media .article--audio .standfirst,
-  .tone--media .article--audio .byline,
   .tone--media .article--audio .prose,
   .tone--media .article--visual .headline,
   .tone--media .article--visual .standfirst,
-  .tone--media .article--visual .byline,
   .tone--media .article--visual .prose {
     color: #fff; }
   .tone--media .article--audio .byline,
   .tone--media .article--visual .byline {
-    border-color: #767676; }
+    border-color: #767676;
+    color: #999; }
   .tone--media .article--audio .meta,
-  .tone--media .article--audio .meta__comments,
+  .tone--media .article--audio .comment-count,
   .tone--media .article--visual .meta,
-  .tone--media .article--visual .meta__comments {
+  .tone--media .article--visual .comment-count {
     border-color: #767676; }
   .tone--media .article--audio .aside,
   .tone--media .article--visual .aside {
@@ -3197,6 +3304,8 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     color: #fff; }
   .tone--podcast .article__header .meta__byline .byline__author a {
     color: #a7d8f2; }
+  .tone--podcast .article__header .comment-count a {
+    color: #a7d8f2; }
 .tone--podcast .standfirst {
   color: #333; }
 .tone--podcast .meta,
@@ -3204,19 +3313,22 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   color: rgba(255, 255, 255, 0.8); }
 .tone--podcast .meta {
   border-top: 1px rgba(255, 255, 255, 0.4) dotted; }
-.tone--podcast .meta__comments {
+.tone--podcast .comment-count {
   color: #a7d8f2;
   border-left-color: rgba(255, 255, 255, 0.4); }
-  .tone--podcast .meta__comments a {
+  .tone--podcast .comment-count a {
     color: #a7d8f2; }
 .tone--podcast.ios .article__header .card__title--audio::before {
   margin-top: 3px; }
 .tone--podcast.android .article__header .card__title--audio::before {
   margin-top: -3px; }
+.tone--podcast.is_advertising a.alerts--new, .tone--podcast.is_advertising a.alerts--new.following:active {
+  border-color: #333;
+  color: #333; }
 
-.tone--news a {
+.tone--news a:not(.alerts--new):not(.witness__button) {
   color: #005689; }
-  .tone--news a:active {
+  .tone--news a:not(.alerts--new):not(.witness__button):active {
     color: #4bc6df; }
 .tone--news .article__header {
   background-color: #fff; }
@@ -3227,18 +3339,19 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--news .article__header .content__series-label a {
     color: #767676; }
   .tone--news .article__header .section__container,
-  .tone--news .article__header .meta .meta__comments {
+  .tone--news .article__header .comment-count,
+  .tone--news .article__header .comment-count {
     border-color: rgba(153, 153, 153, 0.4); }
   .tone--news .article__header .headline {
     color: #333;
     padding: 0px 12px 30px 12px; }
     .tone--news .article__header .headline p.review-rating {
       padding-top: 12px; }
-      @media all and (max-width: 28.115em) {
+      @media all and (max-width: 28.12em) {
         .tone--news .article__header .headline p.review-rating {
           font-size: 2.2rem;
           line-height: 2.4rem; } }
-      @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      @media all and (min-width: 28.13em) and (max-width: 40.62em) {
         .tone--news .article__header .headline p.review-rating {
           font-size: 3rem;
           line-height: 3.2rem; } }
@@ -3248,16 +3361,21 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     border-top: 1px rgba(153, 153, 153, 0.4) dotted; }
     .tone--news .article__header .meta .meta__byline .byline,
     .tone--news .article__header .meta .meta__byline a,
-    .tone--news .article__header .meta .meta__comments,
-    .tone--news .article__header .meta .meta__comments a {
+    .tone--news .article__header .meta .comment-count,
+    .tone--news .article__header .meta .comment-count a {
       color: #005689; }
     .tone--news .article__header .meta .meta__pubdate {
       color: #999; }
   .tone--news .article__header .main-media__caption {
     background-color: #fff; }
+.tone--news.is_advertising a.alerts--new, .tone--news.is_advertising a.alerts--new.following:active {
+  border-color: #333;
+  color: #333; }
 
 .tone--review .article {
   border-top-color: #ffce4b; }
+  .tone--review .article .prose .element-pullquote blockquote footer, .tone--review .article .prose .element-pullquote blockquote::before, .tone--review .article .prose .element-pullquote blockquote::after {
+    color: #ffce4b; }
 .tone--review .extras {
   padding-top: 1px;
   background-color: #fff; }
@@ -3269,16 +3387,18 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--review .article__header .content__series-label,
   .tone--review .article__header .content__series-label a {
     color: #fff; }
+  .tone--review .article__header .comment-count a {
+    color: #ffce4b; }
   .tone--review .article__header .headline {
     color: #fff;
     padding: 0px 12px 30px 12px; }
     .tone--review .article__header .headline p.review-rating {
       padding-top: 8px; }
-      @media all and (max-width: 28.115em) {
+      @media all and (max-width: 28.12em) {
         .tone--review .article__header .headline p.review-rating {
           font-size: 2.2rem;
           line-height: 2.4rem; } }
-      @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      @media all and (min-width: 28.13em) and (max-width: 40.62em) {
         .tone--review .article__header .headline p.review-rating {
           font-size: 3rem;
           line-height: 3.2rem; } }
@@ -3290,8 +3410,8 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     background-color: #7d7569; }
     .tone--review .article__header .meta .meta__byline .byline,
     .tone--review .article__header .meta .meta__byline a,
-    .tone--review .article__header .meta .meta__comments,
-    .tone--review .article__header .meta .meta__comments a {
+    .tone--review .article__header .meta .comment-count,
+    .tone--review .article__header .meta .comment-count a {
       color: #ffce4b; }
     .tone--review .article__header .meta .meta__pubdate {
       color: #fff; }
@@ -3299,6 +3419,12 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     background-color: #fff; }
   .tone--review .article__header .sponsorship {
     background-color: #fff; }
+.tone--review .alerts--new:active, .tone--review .alerts--new.following {
+  background-color: #ffce4b;
+  color: #615b52; }
+.tone--review .alerts--new, .tone--review .alerts--new.following:active {
+  border-color: #ffce4b;
+  color: #ffce4b; }
 
 .tone--analysis .article {
   border-top-color: #005689; }
@@ -3315,11 +3441,11 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     padding: 0px 12px 30px 12px; }
     .tone--analysis .article__header .headline p.review-rating {
       padding-top: 12px; }
-      @media all and (max-width: 28.115em) {
+      @media all and (max-width: 28.12em) {
         .tone--analysis .article__header .headline p.review-rating {
           font-size: 2.2rem;
           line-height: 2.4rem; } }
-      @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+      @media all and (min-width: 28.13em) and (max-width: 40.62em) {
         .tone--analysis .article__header .headline p.review-rating {
           font-size: 3rem;
           line-height: 3.2rem; } }
@@ -3331,8 +3457,8 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     background-color: #f6f6f6; }
     .tone--analysis .article__header .meta .meta__byline .byline,
     .tone--analysis .article__header .meta .meta__byline a,
-    .tone--analysis .article__header .meta .meta__comments,
-    .tone--analysis .article__header .meta .meta__comments a {
+    .tone--analysis .article__header .meta .comment-count,
+    .tone--analysis .article__header .meta .comment-count a {
       color: #005689; }
     .tone--analysis .article__header .meta .meta__byline .byline,
     .tone--analysis .article__header .meta .meta__byline a {
@@ -3370,16 +3496,6 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     }
 
 } */
-.tone--deadBlog .cricket .article--liveblog {
-  border-top: none; }
-.tone--deadBlog .cricket .new_alerts {
-  margin: 0; }
-.tone--deadBlog .cricket .new_alerts, .tone--deadBlog .cricket .new_alerts.following:active {
-  border-color: #dcdad5;
-  color: #999; }
-.tone--deadBlog .cricket a.new_alerts:not(.following):active, .tone--deadBlog .cricket .new_alerts.following:not(:active) {
-  background-color: #999;
-  color: #fff; }
 .tone--deadBlog .witness {
   margin-top: 12px; }
 .tone--deadBlog a.touchpoint:active {
@@ -3400,7 +3516,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     border: 0;
     border-left: 1px dotted rgba(255, 255, 255, 0.2);
     margin: 0; }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .tone--deadBlog .article--liveblog .meta .alerts {
         width: 32.39437%; } }
     @media all and (min-width: 56.25em) {
@@ -3429,15 +3545,15 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     font-family: "Guardian Egyptian Web", Georgia, serif;
     font-weight: 600;
     float: left; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 28.12em) {
       .tone--deadBlog .article__header .section {
         font-size: 1.5rem;
         line-height: 1.6rem; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    @media all and (min-width: 28.13em) and (max-width: 40.62em) {
       .tone--deadBlog .article__header .section {
         font-size: 2rem;
         line-height: 2rem; } }
-    @media all and (min-width: 40.625em) {
+    @media all and (min-width: 40.63em) {
       .tone--deadBlog .article__header .section {
         font-size: 2.4rem;
         line-height: 2.4rem; } }
@@ -3483,6 +3599,27 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     background-image: linear-gradient(to bottom, #fff 50%, rgba(75, 198, 223, 0.66) 50%); }
   .tone--deadBlog .block--live-summary .block__time {
     font-weight: bold; }
+.tone--deadBlog .alerts--new:active,
+.tone--deadBlog .alerts--new.following {
+  background-color: #b51800;
+  color: #fff; }
+.tone--deadBlog .alerts--new,
+.tone--deadBlog .alerts--new.following:active {
+  border-color: #b51800;
+  color: #b51800; }
+.tone--deadBlog .cricket .article--liveblog {
+  border-top: none; }
+.tone--deadBlog .cricket .alerts--new {
+  margin: 0; }
+.tone--deadBlog .cricket a.alerts--new:active,
+.tone--deadBlog .cricket a.alerts--new.following {
+  background-color: #999;
+  color: #fff; }
+.tone--deadBlog .cricket a.alerts--new,
+.tone--deadBlog .cricket a.alerts--new.following:active {
+  border-color: #dcdad5;
+  background-color: transparent;
+  color: #999; }
 
 .is_advertising:not(.tone--review):not(.tone--analysis) .section,
 .is_advertising:not(.tone--review):not(.tone--analysis) .section__container .content__series-label,
@@ -3495,7 +3632,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .is_advertising:not(.tone--review):not(.tone--analysis) .element-rich-link a,
 .is_advertising:not(.tone--review):not(.tone--analysis) .prose h2,
 .is_advertising:not(.tone--review):not(.tone--analysis) .article--liveblog .article__header .section {
-  font-family: "Guardian Sans", sans-serif; }
+  font-family: "Guardian Text Sans Web", sans-serif; }
 .is_advertising:not(.tone--review):not(.tone--analysis) .sponsorship a,
 .is_advertising:not(.tone--review):not(.tone--analysis) .article__body a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article--liveblog .article__header .sponsorship a {
   color: #272727; }
@@ -3524,7 +3661,8 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   color: #fff;
   text-shadow: 0 0 4px rgba(0, 0, 0, 0.5); }
 .is_advertising:not(.tone--review):not(.tone--analysis) .section__container,
-.is_advertising:not(.tone--review):not(.tone--analysis) .article {
+.is_advertising:not(.tone--review):not(.tone--analysis) .article,
+.is_advertising:not(.tone--review):not(.tone--analysis) .comment-count {
   border-color: #878787; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--deadBlog .article--liveblog .article__header .section,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--deadBlog .article--liveblog .article__header .section > div,
@@ -3539,17 +3677,17 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .main-media__caption {
-  background-color: #D9D9D9; }
+  background-color: #d9d9d9; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .section__container,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .meta,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .meta__comments,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .comment-count,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header figure figcaption,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .sponsorship,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .tags, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .section__container,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta__comments,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .comment-count,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header figure figcaption,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .sponsorship,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .tags {
@@ -3562,15 +3700,17 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .headline,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .meta__byline .byline,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .meta__byline a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .meta__comments,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .meta__comments a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .comment-count,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .comment-count a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .comment-count a,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__body, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .section,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .section > div,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .headline,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta__byline .byline,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta__byline a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta__comments,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta__comments a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .comment-count,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .comment-count a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .comment-count a,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__body {
   color: #272727; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .standfirst,
@@ -3590,11 +3730,11 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose li a,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst a,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .sponsorship__formatted-sponsor-name a {
-  background-image: linear-gradient(to bottom, #D9D9D9 50%, rgba(39, 39, 39, 0.66) 50%);
+  background-image: linear-gradient(to bottom, #d9d9d9 50%, rgba(39, 39, 39, 0.66) 50%);
   background-repeat: repeat-x;
   background-size: 2px 2px;
   background-position: 0 bottom;
-  text-shadow: 4px 0 #D9D9D9, 3px 0 #D9D9D9, 2px 0 #D9D9D9, 1px 0 #D9D9D9, 0 0 #D9D9D9, -1px 0 #D9D9D9, -2px 0 #D9D9D9, -3px 0 #D9D9D9, -4px 0 #D9D9D9; }
+  text-shadow: 4px 0 #d9d9d9, 3px 0 #d9d9d9, 2px 0 #d9d9d9, 1px 0 #d9d9d9, 0 0 #d9d9d9, -1px 0 #d9d9d9, -2px 0 #d9d9d9, -3px 0 #d9d9d9, -4px 0 #d9d9d9; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose p a:active,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose li a:active,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .standfirst a:active,
@@ -3602,13 +3742,17 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose li a:active,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst a:active,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .sponsorship__formatted-sponsor-name a:active {
-  background-image: linear-gradient(to bottom, #D9D9D9 50%, rgba(65, 65, 65, 0.66) 50%); }
+  background-image: linear-gradient(to bottom, #d9d9d9 50%, rgba(65, 65, 65, 0.66) 50%); }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .tags .inline-list__item.more-button a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .tags .inline-list__item.more-button a {
   border-color: #f1f1f1; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .prose .element-pullquote blockquote, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .prose .element-pullquote blockquote {
+  color: #676767; }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .prose .element-pullquote blockquote footer, .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .prose .element-pullquote blockquote::after, .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .prose .element-pullquote blockquote::before, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .prose .element-pullquote blockquote footer, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .prose .element-pullquote blockquote::after, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .prose .element-pullquote blockquote::before {
+    color: #272727; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 a:active {
   color: #414141; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article__header, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article__header, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article__header {
-  background-color: #D9D9D9; }
+  background-color: #d9d9d9; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .advert-slot + .article, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .advert-slot + .article, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .advert-slot + .article {
   border-top: none !important; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article__header .content__labels,
@@ -3643,30 +3787,41 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     background-image: linear-gradient(to bottom, #878787 50%, rgba(230, 230, 230, 0.66) 50%); }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article--feature .article__header .standfirst a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article--feature .article__header .standfirst a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article--feature .article__header .standfirst a {
   color: #fff; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .meta__comments, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .meta__comments, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .meta__comments {
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .comment-count, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .comment-count, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .comment-count {
   border-color: #878787; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article--liveblog .article__header {
-  background-color: #D9D9D9; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .section__live,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .headline,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .standfirst,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .standfirst a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .section,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .section > div,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .alerts__state--unfollow {
-  color: #272727; }
-@media all and (min-width: 40.625em) {
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .alerts__state--unfollow {
-    color: #fff; } }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header ul > li::before,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .bullet::before {
-  background-color: #272727; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .meta {
-  background-color: #878787; }
-@media all and (max-width: 40.615em) {
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .prose .element-pullquote blockquote, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .prose .element-pullquote blockquote, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .prose .element-pullquote blockquote {
+  color: #676767; }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .prose .element-pullquote blockquote footer, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .prose .element-pullquote blockquote::after, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .prose .element-pullquote blockquote::before, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .prose .element-pullquote blockquote footer, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .prose .element-pullquote blockquote::after, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .prose .element-pullquote blockquote::before, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .prose .element-pullquote blockquote footer, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .prose .element-pullquote blockquote::after, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .prose .element-pullquote blockquote::before {
+    color: #272727; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live {
+  /*.article__header .section,
+  .content__series-label{
+      @include mq($to: col2) {
+          padding-top: base-px(0.58);
+      }
+  }*/ }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article--liveblog .article__header {
+    background-color: #d9d9d9; }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .section__live,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .headline,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .standfirst,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .standfirst a,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .comment-count a,
   .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .section,
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .content__series-label {
-    padding-top: 7px; } }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .section > div,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .alerts__state--unfollow {
+    color: #272727; }
+  @media all and (min-width: 40.63em) {
+    .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .alerts__state--unfollow {
+      color: #fff; } }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header ul > li::before,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .bullet::before {
+    background-color: #272727; }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .meta {
+    background-color: #878787; }
+  @media all and (max-width: 40.62em) {
+    .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .content__labels__container {
+      padding-top: 10px; } }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .section,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .section > div,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .headline,
@@ -3687,15 +3842,15 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article__header,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article__body,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags {
-  background-color: #D9D9D9; }
+  background-color: #d9d9d9; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a {
-  background-image: linear-gradient(to bottom, #D9D9D9 50%, rgba(39, 39, 39, 0.66) 50%);
+  background-image: linear-gradient(to bottom, #d9d9d9 50%, rgba(39, 39, 39, 0.66) 50%);
   background-repeat: repeat-x;
   background-size: 2px 2px;
   background-position: 0 bottom;
-  text-shadow: 4px 0 #D9D9D9, 3px 0 #D9D9D9, 2px 0 #D9D9D9, 1px 0 #D9D9D9, 0 0 #D9D9D9, -1px 0 #D9D9D9, -2px 0 #D9D9D9, -3px 0 #D9D9D9, -4px 0 #D9D9D9; }
+  text-shadow: 4px 0 #d9d9d9, 3px 0 #d9d9d9, 2px 0 #d9d9d9, 1px 0 #d9d9d9, 0 0 #d9d9d9, -1px 0 #d9d9d9, -2px 0 #d9d9d9, -3px 0 #d9d9d9, -4px 0 #d9d9d9; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a:active {
-  background-image: linear-gradient(to bottom, #D9D9D9 50%, rgba(65, 65, 65, 0.66) 50%); }
+  background-image: linear-gradient(to bottom, #d9d9d9 50%, rgba(65, 65, 65, 0.66) 50%); }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags .inline-list__item a {
   color: #fff;
   background-color: #878787; }
@@ -3711,7 +3866,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .meta__pubdate {
   color: #878787; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta__comments {
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count {
   border-color: #878787; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .section,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .section > div,
@@ -3719,12 +3874,15 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .byline__author a,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article__header .meta__byline .byline,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta__pubdate,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta__comments a,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta__comments,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta__comments a span[data-icon] {
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count a,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count,
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count a span[data-icon] {
+  color: #272727; }
+.is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .prose .element-pullquote blockquote footer, .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .prose .element-pullquote blockquote::after, .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .prose .element-pullquote blockquote::before {
   color: #272727; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article__header {
-  background-color: #D9D9D9; }
+  background-color: #d9d9d9; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article__header .meta__byline .byline__author a {
   color: #272727;
   font-weight: bold; }
@@ -3737,23 +3895,29 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .audio-player__slider__knob:active {
     background-color: #6e6e6e; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .audio-player__slider__track {
-  background-color: #CBC9C5; }
+  background-color: #cbc9c5; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags .inline-list__item a {
   color: #333;
-  background-color: #D9D9D9; }
+  background-color: #d9d9d9; }
   .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags .inline-list__item a:active {
     color: #1a1a1a;
     background-color: silver; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags .inline-list__item.more-button a {
   color: #333;
-  border: 1px solid #D9D9D9; }
+  border: 1px solid #d9d9d9; }
   .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags .inline-list__item.more-button a:active {
     color: #1a1a1a;
     border: 1px solid silver; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .card__title--audio::before {
   margin-top: 0; }
 
-.match-summary__team:after {
+.main-media:not(.main-media--hidden-caption) .main-media__caption__icon, .figure__caption__icon {
+  display: inline-block;
+  margin-right: 7px;
+  position: relative;
+  top: 2px; }
+
+.content__container:after, .match-summary__team:after, .sponsorship:after {
   content: '';
   display: table;
   clear: both; }
@@ -3784,15 +3948,15 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   font-style: italic;
   src: url("../fonts/agate-bolditalic.otf"); }
 @font-face {
-  font-family: 'Guardian Sans';
+  font-family: 'Guardian Text Sans Web';
   font-weight: 200;
   src: url("../fonts/GuardianSansWeb-Light.ttf"); }
 @font-face {
-  font-family: 'Guardian Sans';
+  font-family: 'Guardian Text Sans Web';
   font-weight: 300;
   src: url("../fonts/GuardianSansWeb-Regular.ttf"); }
 @font-face {
-  font-family: 'Guardian Sans';
+  font-family: 'Guardian Text Sans Web';
   font-weight: 600;
   src: url("../fonts/GuardianSansWeb-Semibold.ttf"); }
 @font-face {
@@ -4097,7 +4261,7 @@ Displays a piece of text or HTML component whose content is an aside of the main
   border-top: 1px dotted #dcdad5;
   padding: 12px 0px;
   width: 100%; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .aside {
       border-bottom: 1px dotted #dcdad5; } }
 
@@ -4127,18 +4291,86 @@ figure figcaption {
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
   border-bottom: 1px dotted rgba(153, 153, 153, 0.4);
   padding: 6px 12px 24px 12px; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     figure figcaption {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     figure figcaption {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
 
-@media all and (max-width: 40.615em) {
-  figure.figure-inline + p {
-    clear: both; } }
+.figure-wide {
+  margin: 12px 0px; }
+  .main-media .figure-wide {
+    margin: 0; }
+
+.figure--thumbnail img,
+.figure--thumbnail-with-caption img,
+.figure-wide img {
+  width: 100%;
+  height: auto; }
+.figure--thumbnail figcaption,
+.figure--thumbnail-with-caption figcaption,
+.figure-wide figcaption {
+  font-size: 1.4rem; }
+
+.figure--thumbnail {
+  float: left;
+  max-width: 65px;
+  margin: 6px 13px 0 0; }
+  .prose .figure--thumbnail {
+    margin-top: 6px; }
+
+.figure--thumbnail-with-caption {
+  display: block;
+  position: relative;
+  width: 100%; }
+  .figure--thumbnail-with-caption .figure__inner {
+    width: 50%;
+    display: block;
+    padding-right: 10px; }
+  .figure--thumbnail-with-caption figcaption {
+    display: block;
+    height: 100%;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    border-bottom: 1px dotted rgba(153, 153, 153, 0.4);
+    border-top: 1px dotted rgba(153, 153, 153, 0.4); }
+    .figure--thumbnail-with-caption figcaption .element-image__caption {
+      height: calc(100% - 60px);
+      overflow: hidden;
+      display: block;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical; }
+    .figure--thumbnail-with-caption figcaption .element-image__credit {
+      position: absolute;
+      bottom: 0; }
+  @media all and (min-width: 40.63em) {
+    .figure--thumbnail-with-caption {
+      float: left;
+      width: 33%;
+      margin-right: 15px; }
+      .figure--thumbnail-with-caption .figure__inner {
+        width: 100%;
+        margin-bottom: 10px;
+        padding-right: 0; }
+      .figure--thumbnail-with-caption figcaption {
+        padding-bottom: 12px;
+        position: static;
+        height: auto;
+        width: 100%; }
+        .figure--thumbnail-with-caption figcaption .element-image__caption {
+          height: auto;
+          display: block;
+          padding-bottom: 12px; }
+        .figure--thumbnail-with-caption figcaption .element-image__credit {
+          position: static; } }
+
 /*doc
 ---
 title: Unstyled inline list
@@ -4180,36 +4412,42 @@ Display a link to view more.
 </div>
 
 <div class="more more--live-blogs">
-    <span class="more__label" data-icon="&#xe050;">
+    <button class="more__button">
+        <span class="more__icon" data-icon="&#xe050;" aria-hidden="true"></span>
         <span class="more__text">View more updates</span>
-    </span>
+    </button>
 </div>
 ```
 */
 .more {
   padding: 0px 0px 24px 0px; }
-  .more .more__label {
+  .more .more__label,
+  .more .more__button {
     display: inline-block;
     vertical-align: middle;
     color: #fff;
     font-family: "Guardian Agate Sans 1 Web", sans-serif;
     font-weight: bold;
     padding: 6px 18px 6px 14px;
-    border-radius: 40px; }
-    @media all and (max-width: 40.615em) {
-      .more .more__label {
+    border-radius: 40px;
+    border: none;
+    outline: none; }
+    @media all and (max-width: 40.62em) {
+      .more .more__label,
+      .more .more__button {
         font-size: 1.4rem;
         line-height: 2.1rem; } }
-    @media all and (min-width: 40.625em) {
-      .more .more__label {
+    @media all and (min-width: 40.63em) {
+      .more .more__label,
+      .more .more__button {
         font-size: 1.575rem;
         line-height: 2.275rem; } }
-    .more .more__label:before {
-      position: relative;
-      font-size: 110%;
-      right: 5px; }
-    .more .more__label:active {
-      color: #e6e6e6; }
+  .more .more__label:before {
+    position: relative;
+    font-size: 110%;
+    right: 5px; }
+  .more .more__label:active {
+    color: #e6e6e6; }
   .more .more__text {
     position: relative;
     bottom: 3px; }
@@ -4217,34 +4455,44 @@ Display a link to view more.
 .more--comments {
   padding-top: 12px;
   border-top: 1px dotted #dcdad5; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .more--comments {
       margin-left: 52px; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .more--comments {
       margin-left: 33.80282%; } }
   @media all and (min-width: 56.25em) {
     .more--comments {
       margin-left: 31.57895%; } }
   .more--comments .more__label {
-    background-color: #005689; }
+    background-color: #005689;
+    padding: 6px 12px 6px 6px;
+    position: static; }
     .more--comments .more__label:active {
       background-color: #003656; }
+  .more--comments .more__text,
+  .more--comments .more__icon {
+    color: #fff;
+    display: inline-block;
+    position: static;
+    padding: 0px 6px;
+    vertical-align: top;
+    margin-top: -1px; }
 
 .more--live-blogs {
   border-bottom: 1px dotted #dcdad5; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .more--live-blogs {
       margin: 0px 12px; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .more--live-blogs {
       margin-left: 33.80282%; } }
   @media all and (min-width: 56.25em) {
     .more--live-blogs {
       margin-left: 31.57895%; } }
-  .more--live-blogs .more__label {
+  .more--live-blogs .more__button {
     background-color: #b51800; }
-    .more--live-blogs .more__label:active {
+    .more--live-blogs .more__button:active {
       background-color: #821100; }
 
 /*doc
@@ -4274,11 +4522,11 @@ Display which keywords an article has been tagged with.
   /*5px 12px 19px 8px*/
   width: 100%;
   clear: both; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .tags {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .tags {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -4371,42 +4619,75 @@ category: Modules
 The 'sponsored by/supported by' section
 
 ```html_example
-<div class="sponsorship">
-	<p class="sponsorship__formatted-sponsor-name">
-		Guardian Cities is supported by:
-		<a href="http://www.100resilientcities.org">The Rockefeller Foundation</a>
-	</p>
-	<a class="sponsorship__about-uri" href="x-gu://item/mobile-apps.guardianapis.com/items/cities/2014/jan/27/cities-about-this-site">About this content</a>
-</div>		
+<<div class="sponsorship">
+    <p class="sponsorship__details">
+        <span class="sponsorship__formatted-sponsor-name">Guardian Cities is supported by:</span>
+        <a href="http://www.100resilientcities.org"><img src="http://pagead2.googlesyndication.com/pagead/imgad?id=CICAgKCToMPhMBABGAEyCMGaSOPVBwyp" class="sponsorship__logo" alt="The Rockefeller Foundation" /><span class="screen-readable"> (opens in a new window)</span></a>
+    </p>
+    <a class="sponsorship__about-uri" href="x-gu://item/mobile-apps.guardianapis.com/items/cities/2014/jan/27/cities-about-this-site">About this content</a>
+</div>	
 ```
 */
 .sponsorship {
-  padding: 10px 12px 20px 12px;
+  padding: 8px 12px 16px 12px;
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
   line-height: 1.2;
-  border-bottom: 1px dotted #B5B3AE; }
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  align-items: flex-start;
+  -webkit-align-items: flex-start;
+  border-bottom: 1px dotted #b5b3ae;
+  font-size: 1.4rem; }
   .gallery ~ .sponsorship {
     border-bottom: none; }
   .witness + .sponsorship {
-    border-top: 1px dotted #B5B3AE;
+    border-top: 1px dotted #b5b3ae;
     padding-top: 20px;
     margin-top: 24px; }
-  @media all and (max-width: 40.615em) {
-    .sponsorship {
-      font-size: 1.2rem; } }
-  @media all and (min-width: 40.625em) {
-    .sponsorship {
-      font-size: 1.4rem; } }
-  .sponsorship__formatted-sponsor-name {
-    color: #878787; }
-    @media all and (max-width: 40.615em) {
-      .sponsorship__formatted-sponsor-name span:first-child {
-        display: block; } }
-  .sponsorship__about-uri {
-    color: inherit;
-    padding-top: 1rem;
-    display: block;
-    font-weight: bold; }
+
+.sponsorship__formatted-sponsor-name {
+  color: #878787;
+  margin-bottom: 8px; }
+
+.sponsorship__about-uri {
+  margin-top: 12px;
+  font-weight: bold; }
+
+.sponsorship__logo {
+  max-height: 60px; }
+
+.outbrainText {
+  display: none; }
+
+.outbrainImage {
+  display: block; }
+
+/*doc
+---
+title: Error
+name:  error
+category: Modules
+---
+Display an error message when content is unavailable.
+
+```html_example
+<div class="error-message error-message--expired-content">
+    <h1 class="headline error-message__title">Sorry – the page you are looking for has been removed.</h1>
+</div>
+```
+*/
+.expired-content,
+.expired-content body {
+  background: #fff; }
+
+.error-message {
+  padding: 12px; }
+  .error-message .error-message__title {
+    margin-bottom: 24px; }
+  .error-message .error-message__text {
+    margin: 12px 0px; }
 
 /*doc
 ---
@@ -4457,12 +4738,12 @@ Display a discussion thread.
 .block--discussion-failed {
   color: #767676;
   display: none; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .block--discussion-empty,
     .block--discussion-failed {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .block--discussion-empty,
     .block--discussion-failed {
       font-size: 1.6rem;
@@ -4557,24 +4838,22 @@ Provide a summary of events:
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
   padding: 0px 0px 12px 0px;
   margin-top: -5px; }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     [class*="block--live-"] .block__time {
       padding: 0px 12px 0px 0px;
       float: left; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     [class*="block--live-"] .block__time {
       width: 33.80282%; } }
   @media all and (min-width: 56.25em) {
     [class*="block--live-"] .block__time {
       width: 31.57895%; } }
-@media all and (min-width: 40.625em) {
+@media all and (min-width: 40.63em) {
   [class*="block--live-"] .block__body {
     float: left; }
-    [class*="block--live-"] .block__body .quoted,
     [class*="block--live-"] .block__body .twitter-tweet,
     [class*="block--live-"] .block__body .js-tweet {
       position: relative; }
-      [class*="block--live-"] .block__body .quoted::before,
       [class*="block--live-"] .block__body .twitter-tweet::before,
       [class*="block--live-"] .block__body .js-tweet::before {
         position: absolute;
@@ -4582,7 +4861,7 @@ Provide a summary of events:
     [class*="block--live-"] .block__body .twitter-tweet::before,
     [class*="block--live-"] .block__body .js-tweet::before {
       left: -5rem; } }
-@media all and (min-width: 40.625em) and (max-width: 56.24em) {
+@media all and (min-width: 40.63em) and (max-width: 56.24em) {
   [class*="block--live-"] .block__body {
     width: 66.19718%; } }
 @media all and (min-width: 56.25em) {
@@ -4591,24 +4870,24 @@ Provide a summary of events:
 [class*="block--live-"] .block__updated {
   color: #999;
   font-family: "Guardian Agate Sans 1 Web", sans-serif; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     [class*="block--live-"] .block__updated {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     [class*="block--live-"] .block__updated {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
 [class*="block--live-"] .prose blockquote {
   margin-right: 0;
   margin-left: 0; }
-@media all and (min-width: 40.625em) {
+@media all and (min-width: 40.63em) {
   [class*="block--live-"] .prose figure {
     width: 100%; } }
 [class*="block--live-"] .prose figure.figure-inline {
   float: none;
   clear: both; }
-[class*="block--live-"] .prose figure:last-child figcaption {
+[class*="block--live-"] .prose figure:last-child figcaption:not(.figure--thumbnail, .figure-wide, .figure--thumbnail-with-caption) {
   border-bottom: 0; }
 [class*="block--live-"] .prose figcaption {
   padding: 6px 0px 12px 0px; }
@@ -4810,11 +5089,11 @@ Comment preview:
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
   -webkit-transition: min-height 300ms ease-in-out;
   transition: min-height 300ms ease-in-out; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .comment {
       font-size: 1.6rem;
       line-height: 2.4rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .comment {
       font-size: 1.8rem;
       line-height: 2.6rem; } }
@@ -4840,7 +5119,7 @@ Comment preview:
   margin-top: -2px;
   padding: 0px 12px 9px 0px;
   overflow: auto; }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .comment__header {
       width: 33.80282%;
       float: left; } }
@@ -4856,7 +5135,7 @@ Comment preview:
   word-break: break-word;
   word-wrap: break-word;
   padding-bottom: 12px; }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .comment__body {
       margin-right: 7.04225%;
       margin-left: 33.80282%; } }
@@ -4870,7 +5149,7 @@ Comment preview:
 .comment__role,
 .comment__username {
   display: block; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .comment__role,
     .comment__username {
       display: inline; } }
@@ -4889,11 +5168,11 @@ Comment preview:
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
   display: block;
   white-space: nowrap; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .comment__timestamp {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .comment__timestamp {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -4905,18 +5184,18 @@ Comment preview:
   position: absolute;
   top: 0;
   right: 0; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .comment__recommend {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .comment__recommend {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
   .comment__recommend .touchpoint__button {
     background-color: transparent;
     font-size: 14px; }
-    @media all and (min-width: 40.625em) {
+    @media all and (min-width: 40.63em) {
       .comment__recommend .touchpoint__button {
         margin: 0 auto;
         display: block; } }
@@ -4930,7 +5209,7 @@ Comment preview:
   .comment__recommend .touchpoint__label {
     color: #999;
     font-weight: normal; }
-    @media all and (min-width: 40.625em) {
+    @media all and (min-width: 40.63em) {
       .comment__recommend .touchpoint__label {
         margin-top: 1px;
         padding: 0;
@@ -4941,15 +5220,15 @@ Comment preview:
   padding-bottom: 6px;
   overflow: hidden;
   display: none; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .comment__options {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .comment__options {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .comment__options {
       margin-left: 33.80282%; } }
   @media all and (min-width: 56.25em) {
@@ -4970,11 +5249,11 @@ Comment preview:
   float: none;
   position: static;
   padding: 9px 12px 18px 0px; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .is-response .comment__header {
       margin-left: 52px;
       padding-right: 64px; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .is-response .comment__header {
       margin-left: 33.80282%; } }
   @media all and (min-width: 56.25em) {
@@ -4982,7 +5261,7 @@ Comment preview:
       margin-left: 31.57895%; } }
 .is-response .comment__body {
   color: #767676; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .is-response .comment__body {
       margin-left: 52px; } }
   .is-response .comment__body p:last-child {
@@ -5087,23 +5366,23 @@ Display a standard article card.
       -webkit-transform: scale(.99);
       transform: scale(.99);
   }*/ }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .card {
       margin: 2.89855% 2.89855% 0; } }
-  @media all and (min-width: 28.125em) {
+  @media all and (min-width: 28.13em) {
     .card {
       margin-bottom: 4.34783%; }
       .card::before {
         content: '';
         padding-top: 133%;
         display: block; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+  @media all and (min-width: 28.13em) and (max-width: 40.62em) {
     .card {
       margin: 2.12766% 2.12766% 0 0;
       width: 48.93617%; }
       .card:nth-child(2n) {
         margin-right: 0; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .card {
       margin: 1.40845% 1.40845% 0 0;
       width: 32.39437%; }
@@ -5115,7 +5394,7 @@ Display a standard article card.
       width: 24.21053%; }
       .card:nth-child(4n) {
         margin-right: 0; } }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .card .card__container {
       display: -webkit-box;
       display: -webkit-flex;
@@ -5124,7 +5403,7 @@ Display a standard article card.
       -webkit-box-orient: vertical;
       -webkit-flex-direction: column;
       flex-direction: column; } }
-  @media all and (min-width: 28.125em) {
+  @media all and (min-width: 28.13em) {
     .card .card__container {
       position: absolute;
       top: 0;
@@ -5134,14 +5413,14 @@ Display a standard article card.
   .card .card__header,
   .card .card__object {
     padding: 3px 6px 0px 6px; }
-    @media all and (min-width: 28.125em) {
+    @media all and (min-width: 28.13em) {
       .card .card__header,
       .card .card__object {
         height: 50%;
         overflow: hidden; } }
   .card .card__header {
     margin-bottom: 1em; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 28.12em) {
       .card .card__header {
         -webkit-box-flex: 1;
         -webkit-flex: 1;
@@ -5154,7 +5433,7 @@ Display a standard article card.
     overflow-y: hidden; }
     .card .card__title [data-icon]::before {
       display: none; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .card .card__object {
       -webkit-box-flex: 1;
       -webkit-flex: 1;
@@ -5162,7 +5441,7 @@ Display a standard article card.
       -webkit-box-ordinal-group: 3;
       -webkit-order: 2;
       order: 2; } }
-  @media all and (min-width: 28.125em) {
+  @media all and (min-width: 28.13em) {
     .card .card__object {
       overflow: hidden;
       width: 100%;
@@ -5175,7 +5454,7 @@ Display a standard article card.
     line-height: 1;
     margin-top: 1em;
     overflow: hidden; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 28.12em) {
       .card .card__footer {
         -webkit-box-flex: 1;
         -webkit-flex: 1;
@@ -5183,7 +5462,7 @@ Display a standard article card.
         -webkit-box-ordinal-group: 4;
         -webkit-order: 3;
         order: 3; } }
-    @media all and (min-width: 28.125em) {
+    @media all and (min-width: 28.13em) {
       .card .card__footer {
         position: absolute;
         z-index: 1;
@@ -5195,7 +5474,7 @@ Display a standard article card.
     padding: 0;
     height: 170px;
     overflow: hidden; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 28.12em) {
       .card.has-image .card__object {
         -webkit-box-flex: 1;
         -webkit-flex: 1;
@@ -5203,14 +5482,14 @@ Display a standard article card.
         -webkit-box-ordinal-group: 4;
         -webkit-order: 3;
         order: 3; } }
-    @media all and (min-width: 28.125em) {
+    @media all and (min-width: 28.13em) {
       .card.has-image .card__object .card__image {
         height: 100%;
         width: auto;
         margin-bottom: -1px; } }
   .card.has-image .card__footer {
     bottom: 170px; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 28.12em) {
       .card.has-image .card__footer {
         -webkit-box-flex: 1;
         -webkit-flex: 1;
@@ -5272,10 +5551,10 @@ Display a standard article card.
 .android .card .card__meta {
   padding-top: 2px; }
 
-@media all and (min-width: 28.125em) {
+@media all and (min-width: 28.13em) {
   .container__body .card {
     float: left; } }
-@media all and (min-width: 40.625em) and (max-width: 56.24em) {
+@media all and (min-width: 40.63em) and (max-width: 56.24em) {
   .container__body .card:nth-of-type(4) {
     display: none; } }
 
@@ -5830,7 +6109,7 @@ Display a titled container for comments, cards or other components that should b
   padding: 8px 2px 24px 2px;
   display: table;
   width: 100%; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .container__header,
     .container__footer {
       padding: 2.89855%; } }
@@ -5844,11 +6123,11 @@ Display a titled container for comments, cards or other components that should b
   font-family: "Guardian Egyptian Web", Georgia, serif;
   font-weight: 600;
   margin-top: -1px; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .container__title__label {
       font-size: 2.4rem;
       line-height: 3.6rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .container__title__label {
       font-size: 2.7rem;
       line-height: 3.9rem; } }
@@ -5864,11 +6143,11 @@ Display a titled container for comments, cards or other components that should b
 .container__action {
   vertical-align: top;
   display: table-cell; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .container__action {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .container__action {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -5879,7 +6158,7 @@ Display a titled container for comments, cards or other components that should b
 .container__action--view-more {
   float: right; }
 
-@media all and (max-width: 28.115em) {
+@media all and (max-width: 28.12em) {
   .container--comments .container__header .touchpoint__label {
     display: none; } }
 .container__header {
@@ -5898,6 +6177,10 @@ Display a titled container for comments, cards or other components that should b
 
 .container__body {
   overflow: hidden; }
+
+.container__outbrain {
+  overflow: hidden;
+  display: none; }
 
 /* Android Tweaks - Displays Leave a comment icon by default */
 .android .container {
@@ -5948,7 +6231,7 @@ Default styling no JavaScript enhancement:
     .element-rich-link, .element-membership {
       width: 24.75rem;
       margin: 4px 20px 6px 0; } }
-  @media all and (min-width: 54.375em) {
+  @media all and (min-width: 54.38em) {
     .element-rich-link, .element-membership {
       width: 30.75rem;
       margin: 4px 20px 6px 0; } }
@@ -5962,10 +6245,17 @@ Default styling no JavaScript enhancement:
     padding: 0;
     color: #333 !important;
     border: 0;
-    background-image: none !important; }
+    background-image: none !important;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    hyphens: auto; }
     .element-rich-link a:hover, .element-membership a:hover {
       text-decoration: underline !important; }
 
+@media all and (max-width: 28.115em) {
+  .font-size-6 .element-rich-link, .font-size-7 .element-rich-link, .font-size-8 .element-rich-link, .font-size-9 .element-rich-link, .font-size-10 .element-rich-link {
+    width: 100%;
+    margin-bottom: 15px; } }
 .element-rich-link span {
   display: none; }
 .element-rich-link a:before {
@@ -6122,11 +6412,18 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 </div>
 ```
 */
-@media all and (max-width: 40.615em) {
+.prose blockquote::before, .prose .element-pullquote blockquote::before, .prose .element-pullquote blockquote::after {
+  font-family: "Guardian Icons", Georgia, serif;
+  font-size: 4rem;
+  font-style: normal;
+  line-height: 1;
+  display: block; }
+
+@media all and (max-width: 40.62em) {
   .prose {
     font-size: 1.6rem;
     line-height: 2.4rem; } }
-@media all and (min-width: 40.625em) {
+@media all and (min-width: 40.63em) {
   .prose {
     font-size: 1.8rem;
     line-height: 2.6rem; } }
@@ -6189,15 +6486,18 @@ Adds typographic styling, typically to content fetched from the Guardian Content
   font-style: italic;
   margin: 24px; }
   .prose blockquote::before {
-    color: #999;
-    font-family: "Guardian Icons", Georgia, serif;
-    font-size: 4rem;
-    font-style: normal;
-    line-height: 1;
-    display: block; }
-  .prose blockquote.quoted::before {
-    content: '\e029';
-    margin-top: -.75rem; }
+    color: #999; }
+  .prose blockquote.quoted {
+    position: relative;
+    padding-top: 25px; }
+    .prose blockquote.quoted::before {
+      content: '\E092';
+      font-size: 3rem;
+      content: '\E092';
+      position: absolute;
+      top: 2px;
+      left: 0;
+      line-height: 0; }
   .prose blockquote.twitter-tweet, .prose blockquote.js-tweet {
     font-family: "Guardian Agate Sans 1 Web", sans-serif;
     font-size: 1.4rem;
@@ -6209,11 +6509,44 @@ Adds typographic styling, typically to content fetched from the Guardian Content
       font-size: 1.6rem;
       line-height: 2.2rem;
       margin: 6px 0px; }
+.prose .element-pullquote {
+  position: relative;
+  margin: 24px 0px 24px 0px; }
+  .prose .element-pullquote blockquote {
+    margin: 0;
+    font-style: normal;
+    font-size: 2rem;
+    line-height: 1.3;
+    padding: 25px 0; }
+    .prose .element-pullquote blockquote p {
+      margin: 0; }
+    .prose .element-pullquote blockquote cite {
+      font-style: normal;
+      font-size: 1.8rem; }
+    .prose .element-pullquote blockquote::before, .prose .element-pullquote blockquote::after {
+      font-size: 3rem;
+      color: #005689;
+      content: '\E092';
+      position: absolute;
+      top: 2px;
+      left: 0;
+      line-height: 0; }
+    .prose .element-pullquote blockquote::after {
+      content: '\E096';
+      top: auto;
+      bottom: 19px; }
+    .prose .element-pullquote blockquote footer {
+      color: #005689; }
+  @media all and (min-width: 40.63em) {
+    .prose .element-pullquote {
+      max-width: 280px;
+      margin-right: 12px;
+      float: left; } }
 .prose figure {
-  margin: 12px 0px; }
+  margin: 12px 12px 0px 0px; }
   .prose figure.figure-wide img {
     height: auto; }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .prose figure.figure-wide figcaption {
       padding-right: 23.94366%; } }
   @media all and (min-width: 56.25em) {
@@ -6222,7 +6555,7 @@ Adds typographic styling, typically to content fetched from the Guardian Content
   .prose figure.figure-inline {
     margin-right: 12px;
     float: left; }
-    @media all and (min-width: 28.125em) {
+    @media all and (min-width: 28.13em) {
       .prose figure.figure-inline {
         margin: 6px 12px 0px 0px;
         float: left; }
@@ -6243,12 +6576,12 @@ Adds typographic styling, typically to content fetched from the Guardian Content
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
   margin: 12px 0px;
   border-top: 2px solid #4bc6df; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .prose table,
     .table {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .prose table,
     .table {
       font-size: 1.6rem;
@@ -6347,11 +6680,11 @@ Display comparison of goal attempts, corners and fouls that occurred during a ma
     white-space: nowrap;
     overflow: hidden;
     width: 75px; }
-    @media all and (max-width: 40.615em) {
+    @media all and (max-width: 40.62em) {
       .pie-chart .pie-chart__label-text {
         font-size: 1.4rem;
         line-height: 2rem; } }
-    @media all and (min-width: 40.625em) {
+    @media all and (min-width: 40.63em) {
       .pie-chart .pie-chart__label-text {
         font-size: 1.6rem;
         line-height: 2.2rem; } }
@@ -6359,11 +6692,11 @@ Display comparison of goal attempts, corners and fouls that occurred during a ma
     font-family: "Guardian Egyptian Web", Georgia, serif;
     font-weight: 600;
     text-align: center; }
-    @media all and (max-width: 40.615em) {
+    @media all and (max-width: 40.62em) {
       .pie-chart .pie-chart__label-value {
         font-size: 1.7rem;
         line-height: 2.2rem; } }
-    @media all and (min-width: 40.625em) {
+    @media all and (min-width: 40.63em) {
       .pie-chart .pie-chart__label-value {
         font-size: 2.2rem;
         line-height: 3rem; } }
@@ -6470,11 +6803,11 @@ Display today's football fixtures; upcoming, in progress and ended.
   display: table;
   table-layout: fixed;
   width: 100%; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .football-fixture {
       font-size: 1.6rem;
       line-height: 2.4rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .football-fixture {
       font-size: 1.8rem;
       line-height: 2.6rem; } }
@@ -6485,7 +6818,7 @@ Display today's football fixtures; upcoming, in progress and ended.
     .football-fixture.match .football-fixture__data--1 {
       color: #767676;
       padding: 0px 6px 0px 6px; }
-      @media all and (max-width: 28.115em) {
+      @media all and (max-width: 28.12em) {
         .football-fixture.match .football-fixture__data--1 {
           padding: 0px 6px 0px 12px; } }
     .football-fixture.match .football-fixture__data--2 {
@@ -6502,25 +6835,25 @@ Display today's football fixtures; upcoming, in progress and ended.
       color: #4bc6df; }
   .football-fixture.date .football-fixture__data--1, .football-fixture.competition .football-fixture__data--1 {
     font-weight: bold; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 28.12em) {
       .football-fixture.date .football-fixture__data--1, .football-fixture.competition .football-fixture__data--1 {
         width: 34.78261%; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    @media all and (min-width: 28.13em) and (max-width: 40.62em) {
       .football-fixture.date .football-fixture__data--1, .football-fixture.competition .football-fixture__data--1 {
         width: 29.78723%; } }
-    @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .football-fixture.date .football-fixture__data--1, .football-fixture.competition .football-fixture__data--1 {
         width: 29.57746%; } }
     @media all and (min-width: 56.25em) {
       .football-fixture.date .football-fixture__data--1, .football-fixture.competition .football-fixture__data--1 {
         width: 41.05263%; } }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .football-fixture.date .football-fixture__data--2, .football-fixture.competition .football-fixture__data--2 {
       width: 8.69565%; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+  @media all and (min-width: 28.13em) and (max-width: 40.62em) {
     .football-fixture.date .football-fixture__data--2, .football-fixture.competition .football-fixture__data--2 {
       width: 10.6383%; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .football-fixture.date .football-fixture__data--2, .football-fixture.competition .football-fixture__data--2 {
       width: 11.26761%; } }
   @media all and (min-width: 56.25em) {
@@ -6528,7 +6861,7 @@ Display today's football fixtures; upcoming, in progress and ended.
       width: 8.42105%; } }
   .football-fixture.date .football-fixture__data--4, .football-fixture.competition .football-fixture__data--4 {
     color: #767676; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 28.12em) {
       .football-fixture.date .football-fixture__data--4, .football-fixture.competition .football-fixture__data--4 {
         display: none; } }
   .football-fixture.competition .football-fixture__data--1 {
@@ -6539,16 +6872,16 @@ Display today's football fixtures; upcoming, in progress and ended.
   border-top: 1px solid #dcdad5;
   padding: 3px 6px 12px 6px;
   display: table-cell; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .football-fixture__data.football-fixture__data--1 {
       padding: 3px 0px 12px 12px; } }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .football-fixture__data.football-fixture__data--1, .football-fixture__data.football-fixture__data--3 {
       width: 15.21739%; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+  @media all and (min-width: 28.13em) and (max-width: 40.62em) {
     .football-fixture__data.football-fixture__data--1, .football-fixture__data.football-fixture__data--3 {
       width: 10.6383%; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .football-fixture__data.football-fixture__data--1, .football-fixture__data.football-fixture__data--3 {
       width: 11.26761%; } }
   @media all and (min-width: 56.25em) {
@@ -6558,13 +6891,13 @@ Display today's football fixtures; upcoming, in progress and ended.
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .football-fixture__data.football-fixture__data--2 {
       width: 21.73913%; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+  @media all and (min-width: 28.13em) and (max-width: 40.62em) {
     .football-fixture__data.football-fixture__data--2 {
       width: 29.78723%; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .football-fixture__data.football-fixture__data--2 {
       width: 29.57746%; } }
   @media all and (min-width: 56.25em) {
@@ -6572,13 +6905,13 @@ Display today's football fixtures; upcoming, in progress and ended.
       width: 41.05263%; } }
   .football-fixture__data.football-fixture__data--3 {
     white-space: nowrap; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .football-fixture__data.football-fixture__data--4 {
       width: 34.78261%; } }
-  @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+  @media all and (min-width: 28.13em) and (max-width: 40.62em) {
     .football-fixture__data.football-fixture__data--4 {
       width: 44.68085%; } }
-  @media all and (min-width: 40.625em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .football-fixture__data.football-fixture__data--4 {
       width: 46.47887%; } }
   @media all and (min-width: 56.25em) {
@@ -6682,12 +7015,12 @@ Display comparison of possession, goal attempts, corners and fouls that occurred
     font-weight: 600;
     margin: 0px 0px 12px 0px;
     display: block; }
-    @media all and (max-width: 40.615em) {
+    @media all and (max-width: 40.62em) {
       .match-stats .bar-chart,
       .match-stats .match-stats__shots span {
         font-size: 1.7rem;
         line-height: 2.2rem; } }
-    @media all and (min-width: 40.625em) {
+    @media all and (min-width: 40.63em) {
       .match-stats .bar-chart,
       .match-stats .match-stats__shots span {
         font-size: 2.2rem;
@@ -6696,11 +7029,11 @@ Display comparison of possession, goal attempts, corners and fouls that occurred
 .match-stats__caption {
   color: #333;
   margin: 0px 0px 3px 0px; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .match-stats__caption {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .match-stats__caption {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -6712,12 +7045,12 @@ Display comparison of possession, goal attempts, corners and fouls that occurred
 .match-stats__shots__off,
 .match-stats__shots__on {
   padding: 3px 6px; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .match-stats__shots__off,
     .match-stats__shots__on {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .match-stats__shots__off,
     .match-stats__shots__on {
       font-size: 1.6rem;
@@ -6838,15 +7171,15 @@ Full time
   width: 44px;
   height: 44px;
   display: table; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .match-status {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .match-status {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .match-status {
       background-size: 44px 44px;
       background-position: center; } }
@@ -6947,7 +7280,7 @@ Display a player card embed. The markup for these classes comes from the content
   width: 44px;
   height: 44px;
   float: right; }
-  @media all and (min-width: 28.125em) {
+  @media all and (min-width: 28.13em) {
     .player-card__image {
       width: 100px;
       height: 100px; } }
@@ -6956,18 +7289,18 @@ Display a player card embed. The markup for these classes comes from the content
   margin: 0px 0px 12px 0px;
   padding-right: 44px;
   min-height: 44px; }
-  @media all and (min-width: 28.125em) {
+  @media all and (min-width: 28.13em) {
     .player-card__player {
       padding-right: 100px;
       min-height: 100px; } }
 
 .player-card__name {
   font-family: "Guardian Egyptian Web", Georgia, serif; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .player-card__name {
       font-size: 1.7rem;
       line-height: 2.2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .player-card__name {
       font-size: 2.2rem;
       line-height: 3rem; } }
@@ -6975,11 +7308,11 @@ Display a player card embed. The markup for these classes comes from the content
 .player-card__position {
   color: #005689;
   font-family: "Guardian Agate Sans 1 Web", sans-serif; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .player-card__position {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .player-card__position {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -7249,11 +7582,11 @@ Display a team line-up including substitutions and bookings.
 */
 .team-lineup {
   font-family: "Guardian Agate Sans 1 Web", sans-serif; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .team-lineup {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .team-lineup {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -7293,7 +7626,7 @@ Display a team line-up including substitutions and bookings.
 .team-lineup__player__number {
   color: #999; }
 
-@media all and (max-width: 28.115em) {
+@media all and (max-width: 28.12em) {
   .team-lineup__player__forename {
     display: none; } }
 
@@ -7301,7 +7634,7 @@ Display a team line-up including substitutions and bookings.
   display: none; }
   .replacement .team-lineup__player__replacement {
     display: inline; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 28.12em) {
       .replacement .team-lineup__player__replacement {
         display: block; } }
 
@@ -7312,133 +7645,134 @@ name: cricket scorecard
 category: Modules
 ---
 <div class="cricket-stats__innings">
-    <div class="cricket-stats__header">
-        <div class="cricket-stats__title">
-            England 1st innings
-        </div>
-        <div class="cricket-stats__total">
-        Total<br><em>354 all out</em>
-        </div>
-    </div>
-    <div class="cricket-stats__table-wrap">
-        <table class="cricket-stats__table">
-            <thead class="cricket-stats__table--phone">
-                <tr>
-                    <th class="cricket-stats__table--title">England 1st innings</th>
-                    <th class="cricket-stats__table--values">Runs</th>
-                </tr>
-            </thead>
-            <thead class="cricket-stats__table--tablet">
-                <tr>
-                    <th>Batsman</th>
-                    <th>Taken by</th>
-                    <th class="cricket-stats__table--values">Balls</th>
-                    <th class="cricket-stats__table--values">4s</th>
-                    <th class="cricket-stats__table--values">6s</th>
-                    <th class="cricket-stats__table--values">Runs</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        K C Brathwaite
-                        <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
-                    </td>
-                    <td class="cricket-stats__table--tablet">c Root b Broad</td>
-                    <td class="cricket-stats__table--tablet">12</td>
-                    <td class="cricket-stats__table--tablet">12</td>
-                    <td class="cricket-stats__table--tablet">12</td>
-                    <td>12</td>
-                </tr>
-                <tr>
-                    <td>
-                        D S Smith
-                        <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
-                    </td>
-                    <td class="cricket-stats__table--tablet">c Jordan b Tredwell</td>
-                    <td class="cricket-stats__table--tablet">15</td>
-                    <td class="cricket-stats__table--tablet">15</td>
-                    <td class="cricket-stats__table--tablet">15</td>
-                    <td>15</td>
-                </tr>
-                <tr>
-                    <td>
-                        D M Bravo
-                        <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
-                    </td>
-                    <td class="cricket-stats__table--tablet">c Root b Jordan</td>
-                    <td class="cricket-stats__table--tablet">12</td>
-                    <td class="cricket-stats__table--tablet">6</td>
-                    <td class="cricket-stats__table--tablet">5</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <td>
-                        M N Samuels
-                        <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
-                    </td>
-                    <td class="cricket-stats__table--tablet">c Tradwell b Anderson</td>
-                    <td class="cricket-stats__table--tablet">25</td>
-                    <td class="cricket-stats__table--tablet">25</td>
-                    <td class="cricket-stats__table--tablet">25</td>
-                    <td>25</td>
-                </tr>
-                <tr>
-                    <td>
-                        K C Brathwaite
-                        <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
-                    </td>
-                    <td class="cricket-stats__table--tablet">c Root b Broad</td>
-                    <td class="cricket-stats__table--tablet">12</td>
-                    <td class="cricket-stats__table--tablet">12</td>
-                    <td class="cricket-stats__table--tablet">12</td>
-                    <td>12</td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="cricket-stats__table--in-play">D S Smith</span>
-                        <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
-                    </td>
-                    <td class="cricket-stats__table--tablet">c Jordan b Tredwell</td>
-                    <td class="cricket-stats__table--tablet">15</td>
-                    <td class="cricket-stats__table--tablet">15</td>
-                    <td class="cricket-stats__table--tablet">15</td>
-                    <td>15</td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="cricket-stats__table--duck">D M Bravo</span>
-                        <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
-                    </td>
-                    <td class="cricket-stats__table--tablet">c Root b Jordan</td>
-                    <td class="cricket-stats__table--tablet">12</td>
-                    <td class="cricket-stats__table--tablet">6</td>
-                    <td class="cricket-stats__table--tablet">5</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <td>
-                        M N Samuels
-                        <span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
-                    </td>
-                    <td class="cricket-stats__table--tablet">c Tradwell b Anderson</td>
-                    <td class="cricket-stats__table--tablet">25</td>
-                    <td class="cricket-stats__table--tablet">25</td>
-                    <td class="cricket-stats__table--tablet">25</td>
-                    <td>25</td>
-                </tr>
-            </tbody>
-            <tfoot class="cricket-stats__table--phone">
-                <tr>
-                    <td class="cricket-stats__table--strong">Total</td>
-                    <td class="cricket-stats__table--strong">367-8</td>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
+	<div class="cricket-stats__header">
+		<div class="cricket-stats__title">
+			England 1st innings
+		</div>
+		<div class="cricket-stats__total">
+		Total<br><em>354 all out</em>
+		</div>
+	</div>
+	<div class="cricket-stats__table-wrap">
+		<table class="cricket-stats__table">
+			<thead class="cricket-stats__table--phone">
+				<tr>
+					<th class="cricket-stats__table--title">England 1st innings</th>
+					<th class="cricket-stats__table--values">Runs</th>
+				</tr>
+			</thead>
+			<thead class="cricket-stats__table--tablet">
+				<tr>
+					<th>Batsman</th>
+					<th>Taken by</th>
+					<th class="cricket-stats__table--values">Balls</th>
+					<th class="cricket-stats__table--values">4s</th>
+					<th class="cricket-stats__table--values">6s</th>
+					<th class="cricket-stats__table--values">Runs</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						K C Brathwaite
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Root b Broad</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td>12</td>
+				</tr>
+				<tr>
+					<td>
+						D S Smith
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Jordan b Tredwell</td>
+					<td class="cricket-stats__table--tablet">15</td>
+					<td class="cricket-stats__table--tablet">15</td>
+					<td class="cricket-stats__table--tablet">15</td>
+					<td>15</td>
+				</tr>
+				<tr>
+					<td>
+						D M Bravo
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Root b Jordan</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td class="cricket-stats__table--tablet">6</td>
+					<td class="cricket-stats__table--tablet">5</td>
+					<td>10</td>
+				</tr>
+				<tr>
+					<td>
+						M N Samuels
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Tradwell b Anderson</td>
+					<td class="cricket-stats__table--tablet">25</td>
+					<td class="cricket-stats__table--tablet">25</td>
+					<td class="cricket-stats__table--tablet">25</td>
+					<td>25</td>
+				</tr>
+				<tr>
+					<td>
+						K C Brathwaite
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Root b Broad</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td>12</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="cricket-stats__table--in-play">D S Smith</span>
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Jordan b Tredwell</td>
+					<td class="cricket-stats__table--tablet">15</td>
+					<td class="cricket-stats__table--tablet">15</td>
+					<td class="cricket-stats__table--tablet">15</td>
+					<td>15</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="cricket-stats__table--duck">D M Bravo</span>
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Root b Jordan</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td class="cricket-stats__table--tablet">6</td>
+					<td class="cricket-stats__table--tablet">5</td>
+					<td>10</td>
+				</tr>
+				<tr>
+					<td>
+						M N Samuels
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Tradwell b Anderson</td>
+					<td class="cricket-stats__table--tablet">25</td>
+					<td class="cricket-stats__table--tablet">25</td>
+					<td class="cricket-stats__table--tablet">25</td>
+					<td>25</td>
+				</tr>
+			</tbody>
+			<tfoot class="cricket-stats__table--phone">
+				<tr>
+					<td class="cricket-stats__table--strong">Total</td>
+					<td class="cricket-stats__table--strong">367-8</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
 </div>
 */
 .cricket-stats__innings {
+  position: relative;
   display: table;
   table-layout: fixed;
   width: 100%;
@@ -7450,9 +7784,15 @@ category: Modules
 
 .cricket-stats__wrap {
   color: #333; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .cricket-stats__wrap {
       margin: 0 12px; } }
+
+.cricket-stats__side {
+  border-bottom: 1px solid #dcdad5;
+  margin-bottom: 24px; }
+  .cricket-stats__side:last-child {
+    border-bottom: none; }
 
 .cricket-stats__header {
   display: table-cell;
@@ -7460,27 +7800,24 @@ category: Modules
   width: 25%;
   box-sizing: border-box;
   padding: 6px 0 0 12px; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .cricket-stats__header {
       display: none; } }
 
 .cricket-stats__title {
   font-weight: bold;
   line-height: 1; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .cricket-stats__title {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .cricket-stats__title {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
 
 .cricket-stats__total {
-  font-family: "Guardian Egyptian Web", Georgia, serif;
-  font-weight: 200;
-  font-size: 2.7rem;
-  line-height: 1.1;
+  font: 200 2.7rem/1.1 "Guardian Egyptian Web", Georgia, serif;
   margin-top: 20px; }
   .cricket-stats__total em {
     color: #4bc6df;
@@ -7494,30 +7831,30 @@ category: Modules
 .cricket-stats__takenby {
   display: block;
   color: #999;
-  padding: 3px 0 6px 0; }
+  padding: 3px 0 6px; }
 
 .cricket-stats__table {
   width: 100%;
   text-align: left;
   font-family: "Guardian Agate Sans 1 Web", sans-serif; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .cricket-stats__table {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .cricket-stats__table {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .cricket-stats__table--tablet {
       display: none; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .cricket-stats__table--phone {
       display: none; } }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .cricket-stats__table--values {
       width: 20%; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .cricket-stats__table--values {
       width: 15%; } }
   .cricket-stats__table th {
@@ -7528,18 +7865,21 @@ category: Modules
     color: #000; }
   .cricket-stats__table--title {
     font-family: "Guardian Text Egyptian Web", Georgia, serif; }
-  .cricket-stats__table th, .cricket-stats__table td {
+  .cricket-stats__table th,
+  .cricket-stats__table td {
     vertical-align: top;
     padding: 6px 6px 0 6px;
     line-height: 1;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden; }
-    @media all and (max-width: 40.615em) {
-      .cricket-stats__table th, .cricket-stats__table td {
+    @media all and (max-width: 40.62em) {
+      .cricket-stats__table th,
+      .cricket-stats__table td {
         height: 3.7rem; } }
-    @media all and (min-width: 40.625em) {
-      .cricket-stats__table th, .cricket-stats__table td {
+    @media all and (min-width: 40.63em) {
+      .cricket-stats__table th,
+      .cricket-stats__table td {
         height: 3.9rem; } }
   .cricket-stats__table tr {
     border-bottom: 1px solid #dcdad5; }
@@ -7552,28 +7892,30 @@ category: Modules
 .cricket-stats__table--in-play {
   font-weight: bold; }
 
-.cricket-stats__table--duck::before {
-  background-position: -24px 0; }
-
 .cricket-stats__table--in-play,
 .cricket-stats__table--duck {
-  display: inline-block;
-  vertical-align: top; }
+  display: block;
+  position: relative;
+  padding-left: 22px;
+  height: 22px; }
   .cricket-stats__table--in-play::before,
   .cricket-stats__table--duck::before {
     content: '';
-    display: inline-block;
-    position: relative;
-    bottom: 2px;
-    height: 20px;
-    width: 20px;
-    margin-right: 4px;
+    display: block;
+    position: absolute;
+    top: -2px;
+    left: 0;
+    height: 18px;
+    width: 18px;
     background-image: url(../img/cricket-dismissal.png);
     background-repeat: no-repeat;
-    background-size: auto 48px; }
+    background-size: auto 40px; }
   .cricket-stats__table--in-play + .cricket-stats__takenby,
   .cricket-stats__table--duck + .cricket-stats__takenby {
     margin-top: -7px; }
+
+.cricket-stats__table--duck::before {
+  background-position: -20px 0; }
 
 /*doc
 ---
@@ -7609,11 +7951,11 @@ Display a Guardian Witness submission.
 */
 .element-witness {
   font-family: "Guardian Agate Sans 1 Web", sans-serif; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .element-witness {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .element-witness {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -7649,7 +7991,7 @@ Display a Guardian Witness submission.
 
 .discussion__header {
   background-color: transparent; }
-  @media all and (max-width: 28.115em) {
+  @media all and (max-width: 28.12em) {
     .discussion__header {
       padding: 0 2.89855%; } }
   .discussion__header .section {
@@ -7657,20 +7999,20 @@ Display a Guardian Witness submission.
     color: #333; }
   .discussion__header .headline {
     margin: 0px 0px 48px 0px; }
-    @media all and (max-width: 28.115em) {
+    @media all and (max-width: 28.12em) {
       .discussion__header .headline {
         font-size: 2.25rem;
         line-height: 2.4rem; } }
-    @media all and (min-width: 28.125em) and (max-width: 40.615em) {
+    @media all and (min-width: 28.13em) and (max-width: 40.62em) {
       .discussion__header .headline {
         font-size: 3rem;
         line-height: 3rem; } }
-    @media all and (min-width: 40.625em) {
+    @media all and (min-width: 40.63em) {
       .discussion__header .headline {
         font-size: 3.6rem;
         line-height: 3.6rem; } }
 
-@media all and (min-width: 28.125em) {
+@media all and (min-width: 28.13em) {
   .football {
     border-top: 4px solid #4bc6df; } }
 .football .tabs [href="#football__tabpanel--liveblog"][aria-selected="true"] {
@@ -7690,25 +8032,25 @@ Display a Guardian Witness submission.
 
 .football__label {
   font-family: "Guardian Egyptian Web", Georgia, serif; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .football__label {
       font-size: 1.6rem;
       line-height: 2.4rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .football__label {
       font-size: 1.8rem;
       line-height: 2.6rem; } }
-  @media all and (min-width: 28.125em) {
+  @media all and (min-width: 28.13em) {
     .football__label {
       padding: 0px 0px 0px 60px; } }
 
 .football__sublabel {
   margin-bottom: 4px; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .football__sublabel {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .football__sublabel {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -7717,7 +8059,7 @@ Display a Guardian Witness submission.
   padding: 0px 0px 12px 0px;
   width: 50%;
   float: left; }
-  @media all and (min-width: 28.125em) {
+  @media all and (min-width: 28.13em) {
     .football__column {
       padding: 0px 0px 12px 60px; } }
   @media all and (min-width: 56.25em) {
@@ -7727,11 +8069,11 @@ Display a Guardian Witness submission.
 .football__lineups {
   padding: 12px;
   overflow-y: hidden; }
-  @media all and (min-width: 28.125em) {
+  @media all and (min-width: 28.13em) {
     .football__lineups .football__column {
       padding: 0px 0px 12px 0px; } }
 
-@media all and (max-width: 28.115em) {
+@media all and (max-width: 28.12em) {
   .football__stats .football__column,
   .football__today .football__column {
     width: 100%;
@@ -7746,16 +8088,16 @@ Display a Guardian Witness submission.
 .football__today {
   border-top: 1px dotted #dcdad5;
   padding: 12px; }
-  @media all and (min-width: 28.125em) {
+  @media all and (min-width: 28.13em) {
     .football__today {
       display: table;
       width: 100%; } }
 
-@media all and (min-width: 28.125em) {
+@media all and (min-width: 28.13em) {
   .football__today__fixtures {
     padding-right: 12px; } }
 
-@media all and (min-width: 28.125em) {
+@media all and (min-width: 28.13em) {
   .football__today__fixtures,
   .football__today__table {
     vertical-align: top;
@@ -7766,7 +8108,7 @@ Display a Guardian Witness submission.
 .football__today__fixtures .football-match--status,
 .football__today__table .football-stat--postition {
   width: 42px; }
-  @media all and (min-width: 28.125em) {
+  @media all and (min-width: 28.13em) {
     .football__lineups .team-lineup__player__number,
     .football__today__fixtures .football-match--status,
     .football__today__table .football-stat--postition {
@@ -7776,11 +8118,11 @@ Display a Guardian Witness submission.
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
   background-color: #fff;
   padding: 12px; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .support {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .support {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
@@ -7792,11 +8134,11 @@ Display a Guardian Witness submission.
     margin-bottom: 0; }
     .support .prose h2 + h3 {
       margin: 9px 0px 0px 0px; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .support .prose h3 {
       font-size: 1.6rem;
       line-height: 2.4rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .support .prose h3 {
       font-size: 1.8rem;
       line-height: 2.6rem; } }
@@ -7824,21 +8166,21 @@ body[data-fullscreen-interactive] {
   color: #767676;
   clear: both;
   margin: 0; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     .interactive--offline {
       font-size: 1.4rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     .interactive--offline {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
   body:not([data-fullscreen-interactive]) .interactive--offline {
     margin: 0 -12px 0 -12px !important; }
-  @media all and (max-width: 40.615em) {
+  @media all and (max-width: 40.62em) {
     body[data-fullscreen-interactive] .interactive--offline {
       font-size: 1.96rem;
       line-height: 2.8rem; } }
-  @media all and (min-width: 40.625em) {
+  @media all and (min-width: 40.63em) {
     body[data-fullscreen-interactive] .interactive--offline {
       font-size: 2.24rem;
       line-height: 3.08rem; } }
