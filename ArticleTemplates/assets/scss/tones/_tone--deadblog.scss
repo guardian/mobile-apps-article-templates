@@ -27,37 +27,13 @@
 } */
 
 .tone--deadBlog {
-
-    .cricket{
-       
-
-        .article--liveblog {
-            border-top: none;
-        }
-
-        .new_alerts{
-            margin: 0;
-        }
-        .new_alerts,  .new_alerts.following:active {
-            border-color: color(shade-4);
-            color: color(shade-3);
-        }
-        a.new_alerts:not(.following):active, .new_alerts.following:not(:active) {
-            background-color: color(shade-3);
-            color: color(shade-7);
-        }
+    .witness {
+        margin-top: base-px(1);
     }
 
-    .witness{
-        margin-top: base-px(1);
-    } 
-
-    a.touchpoint,
-    {
-        &:active {
-            color: color(tone-deadblog);
-        }
-    }  
+    a.touchpoint:active {
+        color: color(tone-deadblog);
+    }
 
     .more--live-blogs {
         margin-left: 4px;
@@ -88,17 +64,16 @@
             border-left: 1px dotted rgba(#fff, .2);
             margin: 0;
 
-            @include mq(col2, col3) {
-                .alerts {
+            .alerts {
+                @include mq(col2, col3) {
                     width: cols($base-3, 4);
                 }
-            }
 
-            @include mq($from: col3) {
-                .alerts {
+                @include mq($from: col3) {
                     width: cols($base-4, 5);
                 }
             }
+
             .meta__pubdate {
                 color: rgba(color(shade-3), .8);
             }
@@ -107,9 +82,12 @@
 
     .article__header {
         background-color: color(shade-7);
-        .byline__author, .byline__author a {
+
+        .byline__author,
+        .byline__author a {
             color: color(shade-1);
         }
+
         a {
             color: color(tone-deadblog);
 
@@ -125,8 +103,7 @@
             }
         }
 
-        .headline
-        {
+        .headline {
             color: color(shade-1);
         }
 
@@ -136,10 +113,10 @@
         }
 
         .section {
+            @include headline(.5);
             color: color(tone-deadblog); // Default
             font-family: $egyptian-display;
             font-weight: 600;
-            @include headline(.5);
             float: left;
 
             &::before {
@@ -163,14 +140,14 @@
 
         .sponsorship {
             background-color: color(shade-7);
-            border-bottom: none;
+            border-bottom: 0;
 
-            &__about-uri{
+            &__about-uri {
                 color: color(global-sponsored-about);
             }
-        }            
+        }
     }
-    
+
     .tags {
         padding-left: 0;
 
@@ -178,19 +155,59 @@
             a {
                 @include tag-button(color(shade-1), color(blogs-tags));
             }
+
             &.more-button a {
-                @include tag-more-button(color(shade-1), darken(color(blogs-tags),10%));
+                @include tag-more-button(color(shade-1), darken(color(blogs-tags), 10%));
             }
         }
-    
     }
 
     .block--live-summary {
         background-color: color(shade-7);
         border-top: 1px solid #999;
 
+        .prose p,
+        .prose li {
+            @include text-underline(color(tone-news), color(shade-7), color(tone-news-accent));
+        }
+        
         .block__time {
             font-weight: bold;
+        }
+    }
+
+    .alerts--new:active,
+    .alerts--new.following {
+        background-color: color(tone-live);
+        color: color(shade-7);
+    }
+    
+    .alerts--new,
+    .alerts--new.following:active {
+        border-color: color(tone-live);
+        color: color(tone-live);
+    }
+
+    .cricket {
+        .article--liveblog {
+            border-top: 0;
+        }
+
+        .alerts--new {
+            margin: 0;
+        }
+
+        a.alerts--new:active,
+        a.alerts--new.following {
+            background-color: color(shade-3);
+            color: color(shade-7);
+        }
+
+        a.alerts--new,
+        a.alerts--new.following:active {
+            border-color: color(shade-4);
+            background-color: transparent;
+            color: color(shade-3);
         }
     }
 }

@@ -13,17 +13,29 @@
             padding-right: cols($base-4, 4);
         }
 
-        // Images, video and interactives within article body
+        // Images and video within article body
         .figure-wide,
         .element-video,
-        .element-placeholder,
-        .element-interactive {
+        .element-placeholder {
             margin-left: base-px(-1);
             margin-right: base-px(-1);
             width: auto;
 
             @include mq($from: col2) {
                 width: 135%;
+            }
+        }
+
+        // Interactives within article body
+        .element-interactive {
+            width: auto;
+
+            @include mq(col2, col3) {
+                width: calc(#{(100% / (100% - cols($base-3, 3))) * 100%} - #{base-px(1)});
+            }
+
+            @include mq($from: col3) {
+                width: calc(#{(100% / (100% - cols($base-4, 4))) * 100%} - #{base-px(1)});
             }
         }
 
@@ -110,7 +122,21 @@ body:not(.is-live) .article--liveblog {
 
 .article--comment,
 .article--feature {
-    .article__body > .prose > p {
+    .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p {
         @include dropcap();
     }
 }
+
+/*.article--comment,
+.article--feature {
+        .article__body > .prose {
+            border: 1px solid red!important;
+    }
+}*/
+
+/*
+.article--comment,
+.article--feature {
+.article__body > .prose > p:first-of-type:first-letter {
+    border: 1px solid red!important;
+}*/
