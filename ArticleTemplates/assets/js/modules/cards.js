@@ -22,9 +22,21 @@ define([
                         $('.related-content').html(html);
                         // setup the snap to grid functionality 
                         modules.snapToGrid('.related-content__list');
+                        modules.articleCardsFailed();
                     }
                 };
+                window.articleCardsFailed = function(){
+                   modules.articleCardsFailed();
+                };
+               
                 window.applyNativeFunctionCall('articleCardsInserter');
+                window.applyNativeFunctionCall('articleCardsFailed');
+            },
+
+
+
+            articleCardsFailed: function(){
+                $(".container--related").addClass('container--has-failed');
             },
             getNumberOfTextLines:function (el) {
                 //returns number of text lines of single html element

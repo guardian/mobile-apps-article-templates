@@ -47,7 +47,7 @@ module.exports = function(grunt) {
                                 }
                             }
                         },
-                        generateSourceMaps: true,
+                        generateSourceMaps: false,
                         preserveLicenseComments: false,
                         useSourceUrl: false,
                         removeCombined: true,
@@ -94,9 +94,12 @@ module.exports = function(grunt) {
 
         sass: {
             dev: {
+                options: {
+                    sourcemap: 'none'
+                },
                 files: {
+                    'ArticleTemplates/assets/css/fonts.css':  'ArticleTemplates/assets/scss/fonts.scss',
                     'ArticleTemplates/assets/css/interactive.css':  'ArticleTemplates/assets/scss/interactive.scss',
-                    'ArticleTemplates/assets/css/style.css':  'ArticleTemplates/assets/scss/style.scss',
                     'ArticleTemplates/assets/css/style-async.css':  'ArticleTemplates/assets/scss/style-async.scss',
                     'ArticleTemplates/assets/css/style-sync.css':  'ArticleTemplates/assets/scss/style-sync.scss',
                     'test/unit/test.css':  'ArticleTemplates/assets/scss/test.scss'
@@ -113,7 +116,8 @@ module.exports = function(grunt) {
             options: {
                 bundleExec: true,
                 config: 'ArticleTemplates/assets/scss/.scss-lint.yml',
-                force: true
+                force: true,
+                maxBuffer: 300 * 1024
             },
             dev: [
                 'ArticleTemplates/assets/scss/**/*.scss',

@@ -1,18 +1,18 @@
 .tone--media {
-    
-    .witness .witness__sponsor-logo{
+    .witness .witness__sponsor-logo {
         fill: color(shade-7);
     }
 
     .section__container {
         border-bottom: 1px color(shade-2) dotted;
         color: color(shade-5);
-        
+
         .content__series-label,
         .content__series-label a {
             color: color(shade-5);  // Content Label Series
-        }   
+        }
     }
+
     a {
         color: darken(color(tone-media), 5%);
 
@@ -24,12 +24,13 @@
     .tags {
         .inline-list__item {
             a {
-                @include tag-button(color(shade-7), color(shade-6), "lighter");
+                @include tag-button(color(shade-7), color(shade-6), 'lighter');
             }
+
             &.more-button a {
-                @include tag-more-button(color(shade-7), color(shade-6), "lighter");
+                @include tag-more-button(color(shade-7), color(shade-6), 'lighter');
             }
-        }        
+        }
     }
 
     .touchpoint--primary {
@@ -44,13 +45,13 @@
 
     // Template specific styles
     .article--audio {
-        .meta{
+        .meta {
             border-top-width: 1px;
             border-top-style: dotted;
         }
 
         .article__header {
-            background-image: -webkit-canvas(circles);            
+            background-image: -webkit-canvas(circles);
         }
     }
 
@@ -102,13 +103,13 @@
 
         .headline,
         .standfirst,
-        .byline,
         .prose {
             color: color(shade-7);
         }
 
         .byline {
             border-color: color(shade-2);
+            color: color(shade-3);
         }
 
         .meta,

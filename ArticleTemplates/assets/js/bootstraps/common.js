@@ -10,6 +10,7 @@ define([
     'modules/cards',
     'modules/more-tags',
     'modules/sharing',
+    'throttleDebounce',
     'modules/$'
 ], function (
     bean,
@@ -22,6 +23,7 @@ define([
     Cards,
     MoreTags,
     Sharing,
+    throttleDebounce,
     $
 ) {
     'use strict';
@@ -45,9 +47,9 @@ define([
         figcaptionToggle: function () {
             // Show/hides figure caption
             if ($('.main-media__caption__icon')[0]) {
-                bean.on($('.main-media__caption__icon')[0], 'click', function () {
+                bean.on($('.main-media__caption__icon')[0], 'click touchend', window.ThrottleDebounce.debounce( 250, true, function () {
                     $('.main-media__caption__text').toggleClass('is-visible');
-                });
+                }));
             }
         },
 
@@ -119,22 +121,61 @@ define([
         imageSizer: function () {
             // Resize figures to fit images
             window.articleImageSizer = function () {
-                $('figure img').each(function (el) {
-                    var parent;
-                    var imageWidth = el.getAttribute('width') || $(el).dim().width,
-                        imageClass = imageWidth < 301 ? 'figure-inline' : 'figure-wide';
-                    // NB No parents() or closest() with Bonzo, so I'm using pure JavaScript
-                    // to detect where Figure element is (either up one or two parent nodes)
-                    parent = el.parentNode.parentNode.nodeName === "FIGURE" ? $(el).parent().parent() : $(el).parent();
-                    parent.addClass(imageClass);
-                    if (parent.hasClass('figure-inline')) {
-                        parent.css('width', imageWidth);
-                    } else if (parent.hasClass('figure-wide')) {
-                        $(el).css('width', "100%");
+                var figure,
+                    isThumbnail,
+                    hasCaption,
+                    imageOrLinkedImage,
+                    imageWrapper,
+                    caption,
+                    hasCaptionIcon,
+                    imageClass;
+
+                $('figure.element-image').each(function (el) {
+                    figure = $(el);
+                    isThumbnail = figure.hasClass("element--thumbnail");
+                    //needed for live blogs when this populates every time loading in more articles
+                    hasCaptionIcon = el.getElementsByClassName('figure__caption__icon').length;
+                    caption = el.getElementsByClassName('element-image__caption');
+                    hasCaption = caption.length;
+                    imageOrLinkedImage = bonzo.firstChild(el);
+                    imageClass = isThumbnail && hasCaption ? 'figure--thumbnail-with-caption' : (isThumbnail ? 'figure--thumbnail' : 'figure-wide');
+
+                    figure.addClass(imageClass);
+
+                    if (imageOrLinkedImage && !$(imageOrLinkedImage).hasClass('element__inner')) {
+                       imageWrapper = document.createElement('div');
+                       bonzo(imageWrapper).addClass('figure__inner').append(imageOrLinkedImage);
+                       bonzo(el).prepend(imageWrapper);
                     }
+
+                    if (hasCaption && !hasCaptionIcon) { 
+                       bonzo(caption).prepend('<span data-icon="&#xe044;" class="figure__caption__icon" aria-hidden="true"></span>');
+                    }
+
                 });
+                
             };
             window.articleImageSizer();
+        },
+        isThumbNailImageWithoutCaptionPresent: function(el){
+            return el.getElementsByClassName('figure--thumbnail').length;
+        },
+
+        applyArticleContentTypeClasses: function(){
+            var hasThumbnailsWithCaps,
+                classArray;
+        
+            $(".prose").each(function(el){
+                var element = $(el);
+                classArray = [];
+                hasThumbnailsWithCaps = modules.isThumbNailImageWithoutCaptionPresent(el);
+                if (hasThumbnailsWithCaps) {
+                    classArray.push('prose--has-thumbnails-without-caps');
+                } 
+                if (classArray.length) {
+                    element.addClass(classArray.join(" ")); 
+                }
+            });
         },
 
         insertTags: function () {
@@ -148,6 +189,29 @@ define([
             window.applyNativeFunctionCall('articleTagInserter');
         },
 
+        videoPositioning: function () {
+            window.videoPositioning = function () {
+                var mainMedia = $('.video-URL');
+                if (mainMedia) {
+                    for (var i = mainMedia.length - 1; i >= 0; i--) {
+                        var media = $(mainMedia[i]);
+                        window.GuardianJSInterface.videoPosition(media.offset().left, media.offset().top, media.offset().width, media.attr('href'));
+                    }
+                }
+                setTimeout(modules.videoPositioningPoller, 500, window.innerHeight);
+            };
+            window.applyNativeFunctionCall('videoPositioning');
+        },
+
+        videoPositioningPoller: function(pageHeight) {
+            var newHeight = window.innerHeight;
+            if(pageHeight !== newHeight) {
+                window.videoPositioning();
+            } else {
+                setTimeout(modules.videoPositioningPoller, 500, newHeight);
+            }  
+        },
+
         offline: function() {
             // Function that gracefully fails when the device is offline
             if ($(document.body).hasClass('offline')) {
@@ -158,10 +222,10 @@ define([
                         if ($(element).parent().attr("class") == "element-image-inner") {
                             $(element).hide();
                         } else {
-                            $(element).replaceWith("<div class='element-image-inner'></div>");
+                            $(element).replaceWith('<div class="element-image-inner"></div>');
                         }
                     };
-                    img.src = $(this).attr("src");
+                    img.src = $(this).attr('src');
                 });
             }
         },
@@ -334,12 +398,14 @@ define([
              These methods apply to all templates, if any should
              only run for articles, move to the Article bootstrap.
             */
-
+            
             modules.attachFastClick();
             modules.correctCaptions();
             modules.figcaptionToggle();
             modules.imageSizer();
+            modules.applyArticleContentTypeClasses();
             modules.insertTags();
+            modules.videoPositioning();
             modules.loadComments();
             modules.loadCards();
             modules.loadEmbeds();
