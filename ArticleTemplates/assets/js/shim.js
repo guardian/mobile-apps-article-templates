@@ -20,6 +20,8 @@ var nativeFunctionCalls = [
     'articleOutbrainInserter',
     'audioBackground',
     'superAudioSlider',
+    'audioPlay',
+    'audioStop',
     'commentsFailed',
     'articleCommentsFailed',
     'commentsClosed',
