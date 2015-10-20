@@ -246,6 +246,20 @@ define([
             };
         },
 
+        setupTellMeWhenSwitch: function () {
+            // Global function to switch tell me when, called by native code
+            window.tellMeWhenSwitch = function (added, followid) {
+                var tellMeWhenLink = $('a.tell-me-when');
+                if (tellMeWhenLink.length) {
+                    if (added == 1) {
+                        tellMeWhenLink.addClass('added');
+                    } else {
+                        tellMeWhenLink.removeClass('added');
+                    }
+                }
+            };
+        },
+
         setupFontSizing: function () {
             // Global function to resize font, called by native code
             window.fontResize = function (current, replacement) {
@@ -412,6 +426,7 @@ define([
             modules.offline();
             modules.setupOfflineSwitch();
             modules.setupAlertSwitch();
+            modules.setupTellMeWhenSwitch();
             modules.setupFontSizing();
             modules.showTabs(window);
             modules.setGlobalObject(window);
