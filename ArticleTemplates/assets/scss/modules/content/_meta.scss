@@ -31,10 +31,10 @@ Display an article's meta information.
         </div>
         <p class="meta__pubdate"><span class="screen-readable">Published: </span>23:00 GMT+1 Wednesday, 18 June 2014</p>
     </div>
-    <div class="meta__comments">
+    <div class="comment-count">
         <a href="#comments" data-scroll>
             <span data-icon="&#xe03c;" aria-hidden="true"></span> 2
-            <span class="meta__comments__label">Comments</span>
+            <span class="comment-count__label">Comments</span>
         </a>
     </div>
 </div> 
@@ -58,11 +58,15 @@ Display an article's meta information.
         padding: .5em;
         position: relative;
         z-index: 2;
-    }
 
-    .alerts__label {
-        @extend %screen-readable;
+
+        /*TODO  new versions of alerts shouldn't require this- so specificity bumped up temporarily
+            remove when one or the other has been chosen */
+        .alerts__label {
+            @extend %screen-readable;
+        }
     }
+    
 }
 
 .meta__misc {
@@ -72,35 +76,4 @@ Display an article's meta information.
 .meta__pubdate {
     color: color(shade-3);
     font-family: $agate-sans;
-}
-
-.meta__comments {
-    font-family: $agate-sans;
-    font-weight: bold;
-    vertical-align: top;
-    border-left: 1px rgba(color(shade-4), .4) dotted;
-    padding: base-px(.5, .5, 1, 1);
-    display: table-cell;
-
-    @include mq($to: col1) {
-        width: cols($base-1, 1);
-    }
-
-    @include mq(col1, col2) {
-        width: cols($base-2, 2);
-    }
-
-    @include mq(col2, col3) {
-        width: cols($base-3, 3);
-    }
-
-    @include mq($from: col3) {
-        width: cols($base-4, 4);
-    }
-}
-
-.meta__comments__label {
-    @include mq($to: col2) {
-        display: none;
-    }
 }
