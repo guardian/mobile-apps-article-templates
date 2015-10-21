@@ -14,9 +14,9 @@
         }
 
         @include mq($from: col4) {
-            margin: 0 auto 0 10%;
+            margin: 0 auto 0 140px;
             width: 940px;
-            padding: base-px(1,0);
+            padding: base-px(1, 0);
             padding-right: 320px;
         }
 
@@ -30,6 +30,12 @@
 
             @include mq($from: col2) {
                 width: 135%;
+            }
+
+            @include mq($from: col4) {
+                margin-left: 0;
+                margin-right: 0;
+                width: 100%;
             }
         }
 
