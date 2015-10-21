@@ -155,6 +155,7 @@ define([
             };
             window.articleImageSizer();
         },
+
         isThumbNailImageWithoutCaptionPresent: function(el){
             return el.getElementsByClassName('figure--thumbnail').length;
         },
@@ -303,7 +304,14 @@ define([
                                 root.location.href = 'x-gu://football_tab_liveblog';
                                 break;
                             case "cricket__tab--liveblog":
+                                if (modules.isAndroid) {
+                                    window.GuardianJSInterface.cricketTabChanged('overbyover');
+                                }
+                                break;
                             case "cricket__tab--stats":
+                                if (modules.isAndroid) {
+                                    window.GuardianJSInterface.cricketTabChanged('scorecard');
+                                }
                                 break;
                             default:
                                 root.location.href = 'x-gu://football_tab_unknown';
@@ -389,6 +397,8 @@ define([
     },
 
     ready = function () {
+        modules.isAndroid = $('body').hasClass('android');
+
         if (!this.initialised) {
             this.initialised = true;
 
