@@ -69,6 +69,10 @@ figure {
      .prose & {
         //extra specificity for overiding style to override styles in prose
         margin-top: 6px;
+
+        @include mq($from: col4) {
+            margin-left: -80px;
+        }
      }
 }
 

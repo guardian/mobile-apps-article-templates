@@ -4207,8 +4207,6 @@
     border-radius: .6rem;
     display: inline-block; }
   #sandbox .article__header .section {
-    /*padding: base-px(.5, 1);*/
-    /*padding-bottom: 10px;*/
     margin-bottom: 5px; }
   #sandbox .article__header .headline {
     padding: 0px 12px 30px 12px; }
@@ -4255,6 +4253,15 @@
       #sandbox .article--feature .article__body,
       #sandbox .article--audio .article__body {
         padding-right: 24.21053%; } }
+    @media all and (min-width: 64.06em) {
+      #sandbox .article--standard .article__body,
+      #sandbox .article--comment .article__body,
+      #sandbox .article--feature .article__body,
+      #sandbox .article--audio .article__body {
+        margin: 0 auto 0 10%;
+        width: 940px;
+        padding: 12px 0px;
+        padding-right: 320px; } }
     #sandbox .article--standard .article__body .figure-wide,
     #sandbox .article--standard .article__body .element-video,
     #sandbox .article--standard .article__body .element-placeholder,
@@ -5754,6 +5761,9 @@
     margin: 6px 13px 0 0; }
     .prose #sandbox .figure--thumbnail {
       margin-top: 6px; }
+      @media all and (min-width: 64.06em) {
+        .prose #sandbox .figure--thumbnail {
+          margin-left: -80px; } }
   #sandbox .figure--thumbnail-with-caption {
     display: block;
     position: relative;
