@@ -14,29 +14,26 @@ define([
 
     var modules = {
             setupGlobals: function () {
-                // Global functions to handle comments, called by native code
+                // Global functions to handle related content, called by native code
                 window.articleCardsInserter = function (html) {
                     if (!html) {
-                        $('.related-content').hide();
+                        modules.articleCardsFailed();
                     } else {
                         $('.related-content').html(html);
                         // setup the snap to grid functionality 
                         modules.snapToGrid('.related-content__list');
-                        modules.articleCardsFailed();
                     }
                 };
+
                 window.articleCardsFailed = function(){
                    modules.articleCardsFailed();
                 };
-               
+
                 window.applyNativeFunctionCall('articleCardsInserter');
                 window.applyNativeFunctionCall('articleCardsFailed');
             },
-
-
-
             articleCardsFailed: function(){
-                $(".container--related").addClass('container--has-failed');
+                $('.related-content').addClass('related-content--has-failed');
             },
             getNumberOfTextLines:function (el) {
                 //returns number of text lines of single html element

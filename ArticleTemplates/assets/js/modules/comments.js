@@ -81,9 +81,7 @@ define([
                 };
                 // Global functions to handle comments, called by native code
                 window.articleCommentsInserter = function (html) {
-                    $('#comments').removeClass('container--has-failed');
                     $('.loading--discussion').hide();
-
                     if (!html) {
                         $('.block--discussion-empty').show();
                     } else {
@@ -104,11 +102,14 @@ define([
                     $('.loading--discussion').appendTo($('#comments .container__body'));
                 };
                 window.articleCommentsFailed = function () {
-                    modules.commentsFailed();
+                    $('.block--discussion-failed').show();
+                    $('.loading--discussion').hide();
+                    $('#comments').addClass('comments-has-failed');
                 };
                 window.commentsFailed = function () {
-                    //iOS calls both commentsFailed and articleCommentsFailed at different points - Android only calls articleCommentsFailed - would be nice to remove one
-                    modules.commentsFailed();
+                    $('.loading--discussion').hide();
+                    $('.block--discussion-failed').show();
+                    $('#comments .container__body').addClass('comments-has-failed');
                 };
                 window.commentsEnd = function () {
                     $('.loading--discussion').remove();
@@ -143,9 +144,6 @@ define([
                 window.applyNativeFunctionCall('commentsClosed');
                 window.applyNativeFunctionCall('commentsOpen');
                 window.applyNativeFunctionCall('articleCommentsFailed');
-            },
-            commentsFailed: function(){
-                $('#comments').addClass('container--has-failed');
             }
         },
 
