@@ -20,6 +20,7 @@ define([
                         modules.articleCardsFailed();
                     } else {
                         $('.related-content').html(html);
+
                         // setup the snap to grid functionality 
                         modules.snapToGrid('.related-content__list');
                     }
@@ -35,33 +36,44 @@ define([
             articleCardsFailed: function(){
                 $('.related-content').addClass('related-content--has-failed');
             },
-            getNumberOfTextLines:function (el) {
-                //returns number of text lines of single html element
-                var cssValues = window.getComputedStyle(el, null),
-                    lineHeight = cssValues.lineHeight.replace('px', ''),
-                    paddingTop = cssValues.paddingTop.replace('px', ''),
-                    paddingBottom = cssValues.paddingBottom.replace('px', ''),
-                    elementHeight = el.offsetHeight,
-                    numberOfLines = (elementHeight - paddingTop - paddingBottom) / lineHeight;
-
-                return parseInt(numberOfLines);
-            },
             snapToGrid: function(el) {
-                // add a class with the number of child items, so we can set the widths based on that 
-                $(el).addClass(el.replace('.','') + '--items-' + $(el + ' > li').length);
-                flipSnap(el);
+                
+                // Setup now and re-init on resize or orientation change
+                modules.setUpFlipSnap(el);
+                bean.on(window, 'resize.cards orientationchange.cards', window.ThrottleDebounce.debounce(100, false, function () {
+                    if (modules.flipSnap) {
+                        modules.flipSnap.destroy();
+                        $(el).removeAttr('style');
+                    }
+                    modules.setUpFlipSnap(el);
+                }));
+            },
+            setUpFlipSnap: function(el) {
+                modules.flipSnap = null;
+                var list = $(el),
+                    container = list.parent()[0],
+                    containerStyle = container.currentStyle || window.getComputedStyle(container),
+                    containerWidth = container.offsetWidth - parseInt(containerStyle.paddingRight.replace('px','')) - parseInt(containerStyle.paddingLeft.replace('px',''));
 
-                // Android needs to be notified of touch start / touch end so article navigation can be 
-                // disabled / enabled when the using is scrolling through cards
-                if (bonzo(document.body).hasClass('android')) {
-                    // Send true on touchstart
-                    bean.on(document.body, 'touchstart.android', el, function() {
-                        window.GuardianJSInterface.registerRelatedCardsTouch(true);
-                    });
-                    // Send false on touchend
-                    bean.on(document.body, 'touchend.android', el, function() {
-                        window.GuardianJSInterface.registerRelatedCardsTouch(false);
-                    });
+                // add a class with the number of child items, so we can set the widths based on that 
+                list.addClass('related-content__list--items-' + list[0].childElementCount);
+
+                // if the inner content is wider than the container set up the scrolling
+                if (list[0].scrollWidth > containerWidth) {
+                    modules.flipSnap = flipSnap(el);
+
+                    // Android needs to be notified of touch start / touch end so article navigation can be 
+                    // disabled / enabled when the using is scrolling through cards
+                    if (bonzo(document.body).hasClass('android')) {
+                        // Send true on touchstart
+                        bean.on(document.body, 'touchstart.android', el, function() {
+                            window.GuardianJSInterface.registerRelatedCardsTouch(true);
+                        });
+                        // Send false on touchend
+                        bean.on(document.body, 'touchend.android', el, function() {
+                            window.GuardianJSInterface.registerRelatedCardsTouch(false);
+                        });
+                    }
                 }
             }
         },
