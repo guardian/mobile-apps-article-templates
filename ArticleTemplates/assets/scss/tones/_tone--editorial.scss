@@ -1,0 +1,67 @@
+.tone--editorial {
+    .article__header {
+        background-color: color(tone-editorial-bg);
+        
+        .section > div {
+            color: color(tone-editorial); // Content Label Section
+        }
+        
+        .section__container,
+        .content__series-label,
+        .content__series-label a {
+            color: color(shade-2);  // Content Label Series
+        }
+
+        .comment-count a {
+            color: color(tone-editorial);
+        }
+
+        // .headline {
+        //     color: color(shade-7);
+        // }
+
+        // .standfirst {
+        //     color: color(shade-7);
+        // }
+
+        // .selectable a {
+        //     color: color(shade-7) !important;
+        // }
+
+        .meta {
+            background-color: color(tone-editorial);
+
+            .meta__byline .byline,
+            .meta__byline a, 
+            .comment-count,
+            .comment-count a {
+                color: color(shade-7);
+            }
+
+            .meta__pubdate {
+                color: color(shade-7);
+            }
+        }
+
+        .main-media__caption,
+        .sponsorship {
+            background-color: color(shade-7);
+        }
+    }
+
+    .article__body > .prose > p {
+        @include dropcap(color(tone-editorial));
+    }
+
+    .alerts--new:active,
+    .alerts--new.following {
+        background-color: color(shade-7);
+        color: color(tone-editorial);
+    }
+    
+    .alerts--new,
+    .alerts--new.following:active {
+        border-color: color(shade-7);
+        color: color(shade-7);
+    }
+}
