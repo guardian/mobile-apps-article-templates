@@ -12,6 +12,110 @@
 
 /*doc
 ---
+title: Animation
+name: animation
+category: Base
+---
+Fade in from right:
+
+```html_example
+<div class="styleguide__anim">
+    <span class="animated fadeinright"></span>
+</div>
+```
+
+Slide in from right:
+
+```html_example
+<div class="styleguide__anim">
+    <span class="animated slideinright"></span>
+</div>
+```
+
+Scale out:
+
+```html_example
+<div class="styleguide__anim">
+    <span class="animated scaleout"></span>
+</div>
+```
+
+Blink:
+
+```html_example
+<div class="styleguide__anim">
+    <span class="animated blink"></span>
+</div>
+```
+*/
+.animated {
+  -webkit-animation-duration: .6s;
+  animation-duration: .6s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both; }
+
+@-webkit-keyframes fadeinright {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(30px);
+    transform: translateX(30px); }
+  20% {
+    opacity: 1; }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    transform: translateX(0); } }
+.fadeinright {
+  -webkit-animation-name: fadeinright;
+  animation-name: fadeinright; }
+
+@-webkit-keyframes slideinright {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(2000px);
+    transform: translateX(2000px); }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0); } }
+.slideinright {
+  -webkit-animation-name: slideinright;
+  animation-name: slideinright; }
+
+@-webkit-keyframes scaleout {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0); }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(-20px) scale(0.4);
+    transform: translateX(-20px) scale(0.4); } }
+.scaleout {
+  -webkit-animation-name: scaleout;
+  animation-name: scaleout; }
+
+@-webkit-keyframes blink {
+  0% {
+    opacity: 0; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+@keyframes blink {
+  0% {
+    opacity: 0; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+.blink {
+  -webkit-animation-name: blink;
+  animation-name: blink; }
+
+.section__live__pulse {
+  -webkit-animation: blink 1.5s ease-in infinite; }
+
+/*doc
+---
 title: Colours
 name: colour
 category: Base
@@ -175,110 +279,6 @@ A comprehensive collection of bespoke icons based on the design of Guardian Eygp
 
 /*doc
 ---
-title: Animation
-name: animation
-category: Base
----
-Fade in from right:
-
-```html_example
-<div class="styleguide__anim">
-    <span class="animated fadeinright"></span>
-</div>
-```
-
-Slide in from right:
-
-```html_example
-<div class="styleguide__anim">
-    <span class="animated slideinright"></span>
-</div>
-```
-
-Scale out:
-
-```html_example
-<div class="styleguide__anim">
-    <span class="animated scaleout"></span>
-</div>
-```
-
-Blink:
-
-```html_example
-<div class="styleguide__anim">
-    <span class="animated blink"></span>
-</div>
-```
-*/
-.animated {
-  -webkit-animation-duration: .6s;
-  animation-duration: .6s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both; }
-
-@-webkit-keyframes fadeinright {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(30px);
-    transform: translateX(30px); }
-  20% {
-    opacity: 1; }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-    transform: translateX(0); } }
-.fadeinright {
-  -webkit-animation-name: fadeinright;
-  animation-name: fadeinright; }
-
-@-webkit-keyframes slideinright {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(2000px);
-    transform: translateX(2000px); }
-  100% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0); } }
-.slideinright {
-  -webkit-animation-name: slideinright;
-  animation-name: slideinright; }
-
-@-webkit-keyframes scaleout {
-  0% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0); }
-  100% {
-    opacity: 0;
-    -webkit-transform: translateX(-20px) scale(0.4);
-    transform: translateX(-20px) scale(0.4); } }
-.scaleout {
-  -webkit-animation-name: scaleout;
-  animation-name: scaleout; }
-
-@-webkit-keyframes blink {
-  0% {
-    opacity: 0; }
-  50% {
-    opacity: 1; }
-  100% {
-    opacity: 0; } }
-@keyframes blink {
-  0% {
-    opacity: 0; }
-  50% {
-    opacity: 1; }
-  100% {
-    opacity: 0; } }
-.blink {
-  -webkit-animation-name: blink;
-  animation-name: blink; }
-
-.section__live__pulse {
-  -webkit-animation: blink 1.5s ease-in infinite; }
-
-/*doc
----
 title: Aside
 name: aside
 category: Modules
@@ -301,6 +301,146 @@ Displays a piece of text or HTML component whose content is an aside of the main
   @media all and (max-width: 28.12em) {
     .aside {
       border-bottom: 1px dotted #dcdad5; } }
+
+/*doc
+---
+title: Container
+name: container
+category: Containers
+---
+Display a titled container for comments, cards or other components that should be visually grouped.
+
+```html_example
+<div class="container">
+    <div class="container__header">
+        <div class="container__title">
+            <h2 class="container__title__label"><a class="container__title__link" href="#">Comments <span class="container__title__meta">350</span></a></h2>
+        </div>
+        
+        <div class="container__action container__action--comment">
+            <a class="touchpoint touchpoint--primary" href="#">
+                <span class="touchpoint__label">Leave a comment</span>
+                <span class="touchpoint__button icon">&#xe03d;</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="container__body">
+        <p>Container content</p>
+    </div>
+
+    <div class="container__footer">
+        <div class="container__action container__action--view-more">
+            <a class="touchpoint touchpoint--secondary" href="#">
+                <span class="touchpoint__label">View more</span>
+                <span class="touchpoint__button icon">&#xe00b;</span>
+            </a>
+        </div>
+    </div>
+</div>
+```
+*/
+.container {
+  margin: 0px 0px 24px 0px;
+  border-top: 2px solid #333; }
+
+.container__header,
+.container__footer {
+  overflow: auto;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  font-weight: bold;
+  padding: 8px 2px 24px 2px;
+  display: table;
+  width: 100%; }
+  @media all and (max-width: 28.12em) {
+    .container__header,
+    .container__footer {
+      padding: 2.89855%; } }
+
+.container__title {
+  color: #333;
+  vertical-align: top;
+  display: table-cell; }
+
+.container__title__label {
+  font-family: "Guardian Egyptian Web", Georgia, serif;
+  font-weight: 600;
+  margin-top: -1px; }
+  @media all and (max-width: 40.62em) {
+    .container__title__label {
+      font-size: 2.4rem;
+      line-height: 3.6rem; } }
+  @media all and (min-width: 40.63em) {
+    .container__title__label {
+      font-size: 2.7rem;
+      line-height: 3.9rem; } }
+  .container__title__label .container__title__link {
+    color: #333; }
+    .container__title__label .container__title__link:active {
+      color: #333; }
+
+.container__title__meta {
+  color: #999;
+  font-weight: 600; }
+
+.container__action {
+  vertical-align: top;
+  display: table-cell; }
+  @media all and (max-width: 40.62em) {
+    .container__action {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    .container__action {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  .container__action.container__action--sort {
+    padding-top: 12px; }
+
+.container__action--comment,
+.container__action--view-more {
+  float: right; }
+
+.container__action--comment .touchpoint__button:before {
+  position: relative;
+  top: -2px;
+  left: 2px; }
+
+@media all and (max-width: 28.12em) {
+  .container--comments .container__header .touchpoint__label {
+    display: none; } }
+.container__header {
+  height: 54px; }
+  .container__header .container__action .touchpoint--primary {
+    display: none !important; }
+  .container__header .container__action .comments-closed-label .touchpoint__label {
+    display: none; }
+
+.comments--open .container__header {
+  height: 54px; }
+  .comments--open .container__header .container__action .touchpoint--primary {
+    display: block !important; }
+  .comments--open .container__header .comments-closed-label .touchpoint__label {
+    display: none !important; }
+
+.container__body {
+  overflow: hidden; }
+  .container--has-failed:not(.container--comments) .container__body {
+    display: none; }
+
+.container__outbrain {
+  overflow: hidden;
+  display: none; }
+
+/* Android Tweaks - Displays Leave a comment icon by default */
+.android .container {
+  margin: 0px 12px 0px 12px; }
+  .android .container.comments--closed .container__action .touchpoint--primary {
+    display: none !important; }
+  .android .container .container__action .touchpoint--primary {
+    display: block !important; }
+.android .container--related {
+  margin-bottom: 48px; }
 
 /*doc
 ---
@@ -433,6 +573,96 @@ Removes bullets, padding and margins from lists.
   display: inline-block;
   vertical-align: top; }
 
+/*doc
+---
+title: Interactive
+name: interactive
+category: Modules
+---
+Displays a 'content unavailable' instead of an interactive if there is no connection
+
+```html_example
+	<div class="element element-interactive interactive interactive--offline"></div>
+```
+*/
+body[data-fullscreen-interactive] {
+  margin: 0; }
+
+.interactive--offline {
+  background-color: #eaeaea;
+  text-align: center;
+  padding: 1px 0;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  color: #767676;
+  clear: both;
+  margin: 0; }
+  @media all and (max-width: 40.62em) {
+    .interactive--offline {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    .interactive--offline {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  body:not([data-fullscreen-interactive]) .interactive--offline {
+    margin: 0 -12px 0 -12px !important; }
+  @media all and (max-width: 40.62em) {
+    body[data-fullscreen-interactive] .interactive--offline {
+      font-size: 1.96rem;
+      line-height: 2.8rem; } }
+  @media all and (min-width: 40.63em) {
+    body[data-fullscreen-interactive] .interactive--offline {
+      font-size: 2.24rem;
+      line-height: 3.08rem; } }
+  .interactive--offline:before {
+    content: "Sorry, we are unable to display\Athis content as you have\Ano internet connection.\APlease try again.";
+    white-space: pre;
+    display: block;
+    vertical-align: middle;
+    margin-top: 3.5em;
+    padding-top: 2.5em;
+    background: transparent url("../img/unsmiley.png") no-repeat center top;
+    background-size: 2em; }
+  .interactive--offline * {
+    display: none; }
+  .interactive--offline .interactive--offline--icon {
+    display: inline-block;
+    margin-top: 1em;
+    margin-bottom: 3.5em;
+    color: #767676;
+    font-family: "Guardian Icons", Georgia, serif;
+    -webkit-tap-highlight-color: transparent; }
+    .interactive--offline .interactive--offline--icon:after {
+      display: inline-block;
+      padding: 7px 10px 13px 10px;
+      font-size: 1.5em; }
+    .interactive--offline .interactive--offline--icon.interactive--offline--icon--reload:after {
+      content: '\00e045';
+      border: 1px solid #767676;
+      border-radius: 50%; }
+    .interactive--offline .interactive--offline--icon.interactive--offline--icon--reload:active {
+      color: #fff; }
+      .interactive--offline .interactive--offline--icon.interactive--offline--icon--reload:active:after {
+        border: 1px solid #fff; }
+    .interactive--offline .interactive--offline--icon.interactive--offline--icon--loading {
+      display: none;
+      -webkit-animation: fadeIn;
+      -webkit-animation-direction: alternate;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-duration: 1s; }
+      .interactive--offline .interactive--offline--icon.interactive--offline--icon--loading:after {
+        content: '\00e00c';
+        padding: 7px 10px 15px 10px; }
+  .interactive--offline.interactive--loading .interactive--offline--icon--reload {
+    display: none; }
+  .interactive--offline.interactive--loading .interactive--offline--icon--loading {
+    display: block; }
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
 /*doc
 ---
 title: More
@@ -669,6 +899,361 @@ a.tell-me-when {
 
 /*doc
 ---
+title: Related Content
+name: related-content
+category: Modules
+---
+Related Content / More on this story section
+
+```html_example
+<section class="related-content">
+    <h2 class="related-content__header">
+        More on this story
+    </h2> 
+    <div class="related-content__container">
+        <ul class="related-content__list">
+            <li class="related-content__card related-content__card--news has-image">
+                <a class="related-content__link" href="x-gu://related_item/mobile-apps.guardianapis.com/items/us-news/2014/nov/16/barack-obama-basks-success-asia-pacific-sweep">
+                    <h3 class="related-content__title">
+                        President Barack Obama basks in success of Asia-Pacific sweep
+                    </h3>
+                    <div class="related-content__meta">
+                        <span class="related-content__timestamp">
+                            <span data-icon="" aria-hidden="true"></span>
+                            12w
+                        </span>
+                        <span class="related-content__comments">
+                            <span data-icon="" aria-hidden="true"></span>
+                            196
+                        </span>
+                    </div>
+                    <div class="related-content__main">
+                        <img class="related-content__image" src="http://images.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2014/11/16/1416150105650/cb470b62-604d-42b9-bdd8-d154a2af547c-2060x1236.jpeg?width=256&amp;height=-&amp;quality=60">
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>
+```
+*/
+.related-content {
+  margin: 0px 0px 24px 0px;
+  border-top: 2px solid #333; }
+  .related-content .block--failed {
+    display: none; }
+  .related-content--has-failed .block--failed {
+    display: block; }
+  .related-content--has-failed .loading--related {
+    display: none; }
+  .related-content__header {
+    margin: 6px 12px 12px 12px; }
+    @media all and (max-width: 40.62em) {
+      .related-content__header {
+        font: 600 2.4rem/3.6rem "Guardian Egyptian Web", Georgia, serif; } }
+    @media all and (min-width: 40.63em) {
+      .related-content__header {
+        font: 600 2.7rem/3.9rem "Guardian Egyptian Web", Georgia, serif; } }
+    @media all and (min-width: 40.63em) {
+      .related-content__header {
+        margin: 12px 0px; } }
+  .related-content__container {
+    overflow: hidden;
+    padding: 0px 12px; }
+    @media all and (min-width: 40.63em) {
+      .related-content__container {
+        padding: 0; } }
+  .related-content__list--items-1 {
+    width: 140px; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      .related-content__list--items-1 {
+        width: 182px; } }
+    @media all and (min-width: 56.25em) {
+      .related-content__list--items-1 {
+        width: 210px; } }
+  .related-content__list--items-2 {
+    width: 284px; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      .related-content__list--items-2 {
+        width: 370px; } }
+    @media all and (min-width: 56.25em) {
+      .related-content__list--items-2 {
+        width: 426px; } }
+  .related-content__list--items-3 {
+    width: 428px; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      .related-content__list--items-3 {
+        width: 557px; } }
+    @media all and (min-width: 56.25em) {
+      .related-content__list--items-3 {
+        width: 642px; } }
+  .related-content__list--items-4 {
+    width: 572px; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      .related-content__list--items-4 {
+        width: 744px; } }
+    @media all and (min-width: 56.25em) {
+      .related-content__list--items-4 {
+        width: 858px; } }
+  .related-content__list:after {
+    content: '';
+    display: block;
+    clear: both;
+    height: 0; }
+  .related-content__card {
+    float: left;
+    width: 140px;
+    margin-right: 4px;
+    position: relative;
+    color: #333;
+    background-color: #fff;
+    border-top: 1px solid #4bc6df;
+    border-bottom: 1px solid #dcdad5; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      .related-content__card {
+        width: 182px;
+        margin-right: 5.2px; } }
+    @media all and (min-width: 56.25em) {
+      .related-content__card {
+        width: 210px;
+        margin-right: 6px; } }
+    .related-content__card:last-child {
+      margin-right: 0; }
+  .related-content__heading {
+    height: 85px;
+    margin-bottom: 20px;
+    padding: 6px;
+    color: #333;
+    font: 200 1.6rem/2rem "Guardian Egyptian Web", Georgia, serif;
+    text-rendering: optimizeLegibility;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      .related-content__heading {
+        height: 115px;
+        margin-bottom: 26px;
+        font-size: 2.08rem;
+        line-height: 2.6rem; } }
+    @media all and (min-width: 56.25em) {
+      .related-content__heading {
+        height: 130px;
+        margin-bottom: 30px;
+        font-size: 2.4rem;
+        line-height: 3rem; } }
+  .related-content__title:before, .related-content__series:before {
+    display: inline-block;
+    margin: -12px 4px 0px 0px;
+    font: 2.1rem "Guardian Icons", Georgia, serif;
+    position: relative;
+    speak: none; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      .related-content__title:before, .related-content__series:before {
+        font-size: 2.73rem; } }
+    @media all and (min-width: 56.25em) {
+      .related-content__title:before, .related-content__series:before {
+        font-size: 3.15rem; } }
+  .related-content__heading--audio:not(.is-series) .related-content__title:before, .related-content__heading--video:not(.is-series) .related-content__title:before, .related-content__heading--gallery:not(.is-series) .related-content__title:before {
+    content: "\e047";
+    top: 2px; }
+    @media all and (min-width: 40.63em) {
+      .related-content__heading--audio:not(.is-series) .related-content__title:before, .related-content__heading--video:not(.is-series) .related-content__title:before, .related-content__heading--gallery:not(.is-series) .related-content__title:before {
+        top: 4px; } }
+  .related-content__heading--video:not(.is-series) .related-content__title:before {
+    content: "\e043"; }
+  .related-content__heading--gallery:not(.is-series) .related-content__title:before {
+    content: "\e044"; }
+  .related-content__series {
+    color: #005689;
+    font-weight: 300; }
+  .related-content__heading--audio.is-series .related-content__series:before, .related-content__heading--video.is-series .related-content__series:before, .related-content__heading--gallery.is-series .related-content__series:before {
+    content: "\e047";
+    top: 2px; }
+    @media all and (min-width: 40.63em) {
+      .related-content__heading--audio.is-series .related-content__series:before, .related-content__heading--video.is-series .related-content__series:before, .related-content__heading--gallery.is-series .related-content__series:before {
+        top: 4px; } }
+  .related-content__heading--video.is-series .related-content__series:before {
+    content: "\e043"; }
+  .related-content__heading--gallery.is-series .related-content__series:before {
+    content: "\e044"; }
+  .related-content__series:after {
+    content: " / "; }
+  .related-content__meta {
+    color: #999;
+    font: 1.3rem/1 "Guardian Agate Sans 1 Web", sans-serif;
+    overflow: hidden; }
+    @media all and (min-width: 40.63em) {
+      .related-content__meta {
+        font-size: 1.4rem; } }
+  .related-content__timestamp, .related-content__comments, .related-content__duration {
+    float: left;
+    height: 20px;
+    padding-left: 6px; }
+  .related-content__timestamp {
+    width: 65px; }
+  .related-content__comments, .related-content__duration {
+    border-left: 1px solid #dcdad5; }
+  .related-content__main {
+    padding: 0;
+    height: 84px;
+    overflow: hidden; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      .related-content__main {
+        height: 109.2px; } }
+    @media all and (min-width: 56.25em) {
+      .related-content__main {
+        height: 126px; } }
+  .related-content__image {
+    width: 100%;
+    display: block; }
+  .related-content__standfirst {
+    padding: 0px 6px;
+    color: #767676;
+    font: 1.2rem/1.6em "Guardian Text Egyptian Web", Georgia, serif;
+    text-rendering: optimizeLegibility;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      .related-content__standfirst {
+        font-size: 1.56rem;
+        line-height: 2.08rem; } }
+    @media all and (min-width: 56.25em) {
+      .related-content__standfirst {
+        font-size: 1.8rem;
+        line-height: 2.4rem; } }
+  .related-content__cutout {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 0; }
+  .related-content .touchpoint {
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+    padding: 6px; }
+    .related-content .touchpoint__button {
+      height: 29px;
+      width: 29px;
+      line-height: 29px;
+      font-size: 15px; }
+      @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+        .related-content .touchpoint__button {
+          height: 37.7px;
+          width: 37.7px;
+          line-height: 37.7px;
+          font-size: 19.5px; } }
+      @media all and (min-width: 56.25em) {
+        .related-content .touchpoint__button {
+          height: 43.5px;
+          width: 43.5px;
+          line-height: 43.5px;
+          font-size: 22.5px; } }
+    .related-content .touchpoint__label {
+      font-size: 1rem;
+      line-height: 1.3rem; }
+      @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+        .related-content .touchpoint__label {
+          font-size: 1.3rem;
+          line-height: 1.69rem; } }
+      @media all and (min-width: 56.25em) {
+        .related-content .touchpoint__label {
+          font-size: 1.5rem;
+          line-height: 1.95rem; } }
+  .related-content__card--analysis {
+    border-top-color: #005689; }
+    .related-content__card--analysis .related-content__title {
+      color: #005689; }
+    .related-content__card--analysis .related-content__standfirst, .related-content__card--analysis .related-content__meta {
+      color: #767676; }
+  .related-content__card--comment {
+    background-color: #e3e1dc;
+    border-top-color: #e6711b; }
+    .related-content__card--comment .related-content__title:before {
+      content: "\e029";
+      color: #999; }
+    .related-content__card--comment .related-content__series {
+      color: #e6711b; }
+    .related-content__card--comment .related-content__standfirst {
+      padding-right: 2.10526%;
+      position: relative;
+      z-index: 1; }
+    .related-content__card--comment .related-content__comments, .related-content__card--comment .related-content__duration {
+      border-color: rgba(153, 153, 153, 0.5); }
+  .related-content__card--deadBlog {
+    border-top-color: #b51800; }
+  .related-content__card--feature1, .related-content__card--feature2, .related-content__card--feature3 {
+    background-color: #951c55;
+    border-top-color: #b82266; }
+    .related-content__card--feature1 *, .related-content__card--feature2 *, .related-content__card--feature3 * {
+      color: #fff; }
+    .related-content__card--feature1 .related-content__title, .related-content__card--feature1 .related-content__standfirst, .related-content__card--feature2 .related-content__title, .related-content__card--feature2 .related-content__standfirst, .related-content__card--feature3 .related-content__title, .related-content__card--feature3 .related-content__standfirst {
+      color: #fff; }
+    .related-content__card--feature1 .related-content__series, .related-content__card--feature2 .related-content__series, .related-content__card--feature3 .related-content__series {
+      color: rgba(255, 255, 255, 0.7); }
+    .related-content__card--feature1 .related-content__comments, .related-content__card--feature1 .related-content__duration, .related-content__card--feature2 .related-content__comments, .related-content__card--feature2 .related-content__duration, .related-content__card--feature3 .related-content__comments, .related-content__card--feature3 .related-content__duration {
+      border-color: rgba(220, 218, 213, 0.34); }
+  .related-content__card--liveBlog {
+    background-color: #b51800;
+    border-top-color: #cc2b12; }
+    .related-content__card--liveBlog * {
+      color: #fff; }
+    .related-content__card--liveBlog .related-content__title, .related-content__card--liveBlog .related-content__standfirst {
+      color: #fff; }
+    .related-content__card--liveBlog .related-content__comments, .related-content__card--liveBlog .related-content__duration {
+      border-color: rgba(220, 218, 213, 0.34); }
+  .related-content__card--media {
+    background-color: #333;
+    border-top-color: #fb0; }
+    .related-content__card--media .related-content__title, .related-content__card--media .related-content__standfirst {
+      color: #fff; }
+    .related-content__card--media .related-content__title:before, .related-content__card--media .related-content__series {
+      color: #fb0; }
+    .related-content__card--media .related-content__comments, .related-content__card--media .related-content__duration {
+      border-color: rgba(220, 218, 213, 0.34); }
+    .related-content__card--media .touchpoint__button {
+      background-color: #fb0;
+      color: #333; }
+    .related-content__card--media .touchpoint__label {
+      color: #fb0;
+      font-weight: bold; }
+  .related-content__card--podcast {
+    background-color: #484848;
+    border-top-color: #a7d8f2; }
+    .related-content__card--podcast .related-content__title, .related-content__card--podcast .related-content__standfirst {
+      color: #fff; }
+    .related-content__card--podcast .related-content__title:before {
+      content: '\e047';
+      color: #a7d8f2; }
+    .related-content__card--podcast .related-content__series {
+      color: #a7d8f2; }
+    .related-content__card--podcast .related-content__meta {
+      color: #fff; }
+    .related-content__card--podcast .related-content__comments, .related-content__card--podcast .related-content__duration {
+      border-color: #fff; }
+    .related-content__card--podcast .related-content__duration {
+      color: #fff;
+      font-weight: bold; }
+  .related-content__card--review {
+    background-color: #615b52;
+    border-color: #ffce4b; }
+    .related-content__card--review .related-content__title, .related-content__card--review .related-content__meta, .related-content__card--review .related-content__standfirst {
+      color: #fff; }
+    .related-content__card--review .related-content__series {
+      color: #615b52; }
+    .related-content__card--review .related-content__comments, .related-content__card--review .related-content__duration {
+      border-color: #fff; }
+
+/*doc
+---
 title: Resizable
 name: resizable
 category: Modules
@@ -766,6 +1351,31 @@ The 'sponsored by/supported by' section
 
 /*doc
 ---
+title: Error
+name:  error
+category: Modules
+---
+Display an error message when content is unavailable.
+
+```html_example
+<div class="error-message error-message--expired-content">
+    <h1 class="headline error-message__title">Sorry – the page you are looking for has been removed.</h1>
+</div>
+```
+*/
+.expired-content,
+.expired-content body {
+  background: #fff; }
+
+.error-message {
+  padding: 12px; }
+  .error-message .error-message__title {
+    margin-bottom: 24px; }
+  .error-message .error-message__text {
+    margin: 12px 0px; }
+
+/*doc
+---
 title: Discussion
 name: block--discussion
 category: Blocks
@@ -829,11 +1439,11 @@ Display a discussion thread.
 
 .comments-0 .container__action--sort a,
 .comments-1 .container__action--sort a,
-.comments-has-failed .container__action--sort a {
+.container--has-failed .container__action--sort a {
   color: #767676; }
 .comments-0 .container__action--view-more,
 .comments-1 .container__action--view-more,
-.comments-has-failed .container__action--view-more {
+.container--has-failed .container__action--view-more {
   display: none; }
 
 .container__action .comments-closed-label {
@@ -852,10 +1462,8 @@ Display a discussion thread.
 .comments--closed .container__header .container__action .touchpoint--primary {
   display: none !important; }
 
-.comments-has-failed .block--discussion-failed {
-  display: block; }
-.comments-has-failed .more--comments,
-.comments-has-failed .block--discussion-empty {
+.container--has-failed .more--comments,
+.container--has-failed .block--discussion-empty {
   display: none; }
 
 /*doc
@@ -1384,853 +1992,6 @@ Comment preview:
 
 /*doc
 ---
-title: Card (standard article)
-name: card
-category: Containers
----
-Display a standard article card.
-
-```html_example
-<div class="container__body">
-    <a class="card" href="#">
-        <div class="card__container">
-            <div class="card__header">
-                <h3 class="card__title"><span data-icon="&#xe029;" aria-hidden="true"></span>Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-            </div>
-            <div class="card__object">
-                <p class="card__standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
-            </div>
-            <div class="card__footer">
-                <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
-                <span class="card__meta card__comments"><span data-icon="&#xe03C;" aria-hidden="true"></span>94</span>
-            </div>
-        </div>
-    </a>
-
-    <a class="card has-image" href="#">
-        <div class="card__container">
-            <div class="card__header">
-                <h3 class="card__title"><span data-icon="&#xe029;" aria-hidden="true"></span>Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-            </div>
-            <div class="card__object">
-                <img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
-            </div>
-            <div class="card__footer">
-                <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
-                <span class="card__meta card__comments"><span data-icon="&#xe03C;" aria-hidden="true"></span>94</span>
-            </div>
-        </div>
-    </a>
-</div>
-```
-*/
-.card {
-  color: #333;
-  background-color: #fff;
-  border-top: 1px solid #4bc6df;
-  border-bottom: 1px solid #dcdad5;
-  display: block;
-  position: relative;
-  transition: none; }
-  .card:hover {
-    color: initial; }
-  @media all and (max-width: 28.12em) {
-    .card {
-      margin: 2.89855% 2.89855% 0; } }
-  @media all and (min-width: 28.13em) {
-    .card {
-      margin-bottom: 4.34783%; } }
-  @media all and (min-width: 28.13em) and (max-width: 40.62em) {
-    .card {
-      margin: 2.12766% 2.12766% 0 0;
-      width: 48.93617%; }
-      .card:nth-child(2n) {
-        margin-right: 0; } }
-  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
-    .card {
-      margin: 1.40845% 1.40845% 0 0;
-      width: 32.39437%; }
-      .card:nth-child(3n) {
-        margin-right: 0; } }
-  @media all and (min-width: 56.25em) {
-    .card {
-      margin: 1.05263% 1.05263% 0 0;
-      width: 24.21053%; }
-      .card:nth-child(4n) {
-        margin-right: 0; } }
-  @media all and (max-width: 28.12em) {
-    .card .card__container {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-box-direction: normal;
-      -webkit-box-orient: vertical;
-      -webkit-flex-direction: column;
-      flex-direction: column; } }
-  @media all and (min-width: 28.13em) {
-    .card .card__container {
-      position: relative;
-      padding-bottom: 60%;
-      overflow: hidden; } }
-  .card .card__header,
-  .card .card__object {
-    padding: 3px 6px 0px 6px; }
-  .card .card__header {
-    margin-bottom: 16px; }
-    @media all and (max-width: 28.12em) {
-      .card .card__header {
-        -webkit-box-flex: 1;
-        -webkit-flex: 1;
-        flex: 1;
-        -webkit-box-ordinal-group: 2;
-        -webkit-order: 1;
-        order: 1; } }
-    @media all and (min-width: 28.13em) {
-      .card .card__header {
-        height: 120px; } }
-  .card .card__title {
-    color: #333;
-    overflow-y: hidden; }
-    .card .card__title [data-icon]::before {
-      display: none; }
-  @media all and (max-width: 28.12em) {
-    .card .card__object {
-      -webkit-box-flex: 1;
-      -webkit-flex: 1;
-      flex: 1;
-      -webkit-box-ordinal-group: 3;
-      -webkit-order: 2;
-      order: 2; } }
-  @media all and (min-width: 28.13em) {
-    .card .card__object {
-      width: 100%;
-      position: absolute;
-      top: 159px; } }
-  .card .card__footer {
-    color: #999;
-    font-family: "Guardian Agate Sans 1 Web", sans-serif;
-    font-size: 1.4rem;
-    line-height: 1;
-    margin-top: 16px;
-    overflow: hidden; }
-    @media all and (max-width: 28.12em) {
-      .card .card__footer {
-        -webkit-box-flex: 1;
-        -webkit-flex: 1;
-        flex: 1;
-        -webkit-box-ordinal-group: 4;
-        -webkit-order: 3;
-        order: 3; } }
-  .card.has-image .card__object {
-    padding: 0;
-    overflow: hidden; }
-    @media all and (max-width: 28.12em) {
-      .card.has-image .card__object {
-        height: 170px;
-        -webkit-box-flex: 1;
-        -webkit-flex: 1;
-        flex: 1;
-        -webkit-box-ordinal-group: 4;
-        -webkit-order: 3;
-        order: 3; } }
-  @media all and (max-width: 28.12em) {
-    .card.has-image .card__footer {
-      -webkit-box-flex: 1;
-      -webkit-flex: 1;
-      flex: 1;
-      -webkit-box-ordinal-group: 3;
-      -webkit-order: 2;
-      order: 2; } }
-  .card .card__title
-  .card__titletext {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    overflow-y: hidden;
-    word-wrap: break-word;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical; }
-  .card .card__title,
-  .card .card__byline {
-    font-family: "Guardian Egyptian Web", Georgia, serif;
-    font-weight: 200;
-    font-size: 2.2rem;
-    line-height: 2.6rem;
-    text-rendering: optimizeLegibility; }
-  .card .card__standfirst {
-    color: #767676;
-    font-family: "Guardian Text Egyptian Web", Georgia, serif;
-    font-size: 1.4rem;
-    line-height: 1.8rem;
-    text-rendering: optimizeLegibility; }
-  .card .touchpoint {
-    position: absolute;
-    bottom: 0;
-    z-index: 2;
-    padding: 6px; }
-  .card .card__image {
-    width: 100%;
-    display: block; }
-  .card .card__cutout {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    z-index: 0; }
-  .card .card__meta {
-    width: 100px;
-    height: 22px;
-    padding: 0px 0px 0px 6px;
-    border-left: 1px solid #dcdad5;
-    display: block;
-    float: left; }
-    .card .card__meta:first-child {
-      border-left: 0 none; }
-    .card .card__meta .icon {
-      margin-right: 3px; }
-
-@media all and (min-width: 28.13em) {
-  .container__body .card {
-    float: left; } }
-@media all and (min-width: 40.63em) and (max-width: 56.24em) {
-  .container__body .card:nth-of-type(4) {
-    display: none; } }
-
-/*doc
----
-title: Card (comment article)
-name: card--comment
-category: Containers
----
-Display a comment article card.
-
-```html_example
-<div class="container__body">
-    <a class="card card--comment" href="#">
-        <div class="card__container">
-            <div class="card__header">
-                <h3 class="card__title"><span data-icon="&#xe029;" aria-hidden="true"></span>Sexual abuse is about power - and the powerful shouldn't be protected <span class="card__byline">Roy Greenslade</span></h3>
-            </div>
-            <div class="card__object">
-                <p class="card__standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
-            </div>
-            <div class="card__footer">
-                <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
-                <span class="card__meta card__comments"><span data-icon="&#xe03C;" aria-hidden="true"></span>94</span>
-            </div>
-        </div>
-    </a>
-
-    <a class="card card--comment has-image" href="#">
-        <div class="card__container">
-            <div class="card__header">
-                <h3 class="card__title"><span data-icon="&#xe029;" aria-hidden="true"></span>Sexual abuse is about power - and the powerful shouldn't be protected <span class="card__byline">Roy Greenslade</span></h3>
-            </div>
-            <div class="card__object">
-                <img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
-            </div>
-            <div class="card__footer">
-                <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
-                <span class="card__meta card__comments"><span data-icon="&#xe03C;" aria-hidden="true"></span>94</span>
-            </div>
-        </div>
-    </a>
-</div>
-```
-*/
-.card--comment {
-  background-color: #e3e1dc;
-  border-top-color: #e6711b; }
-  .card--comment .card__title [data-icon]::before {
-    display: inline-block;
-    color: #999;
-    font-size: 150%;
-    margin-right: 3px; }
-  .card--comment .card__title .card__titletext {
-    -webkit-line-clamp: 4; }
-  .card--comment .card__byline {
-    color: #e6711b;
-    margin-top: 3px;
-    line-height: 2.7rem;
-    display: block; }
-  .card--comment .standfirst {
-    padding-right: 2.10526%;
-    position: relative;
-    z-index: 1; }
-  .card--comment .card__footer {
-    bottom: 0; }
-
-/*doc
----
-title: Card (feature article)
-name: card--feature
-category: Containers
----
-Display a feature article card.
-
-```html_example
-<div class="container__body">
-    <a class="card card--feature1" href="#">
-        <div class="card__container">
-            <div class="card__header">
-                <h3 class="card__title"><span data-icon="&#xe029;" aria-hidden="true"></span>Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-            </div>
-            <div class="card__object">
-                <p class="card__standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
-            </div>
-            <div class="card__footer">
-                <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
-                <span class="card__meta card__comments"><span data-icon="&#xe03C;" aria-hidden="true"></span>94</span>
-            </div>
-        </div>
-    </a>
-</div>
-```
-*/
-.card--feature1,
-.card--feature2,
-.card--feature3 {
-  background-color: #951c55;
-  border-top-color: #b82266; }
-  .card--feature1 *,
-  .card--feature2 *,
-  .card--feature3 * {
-    color: #fff; }
-  .card--feature1 .card__title,
-  .card--feature1 .card__standfirst,
-  .card--feature2 .card__title,
-  .card--feature2 .card__standfirst,
-  .card--feature3 .card__title,
-  .card--feature3 .card__standfirst {
-    color: #fff; }
-  .card--feature1 .card__meta,
-  .card--feature2 .card__meta,
-  .card--feature3 .card__meta {
-    border-color: rgba(220, 218, 213, 0.34); }
-
-/*doc
----
-title: Card (liveblog)
-name: card--live
-category: Containers
----
-Display a liveblog card.
-
-```html_example
-<div class="container__body">
-    <a class="card card--liveBlog" href="#">
-        <div class="card__container">
-            <div class="card__header">
-                <h3 class="card__title"><span data-icon="&#xe029;" aria-hidden="true"></span>Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-            </div>
-            <div class="card__object">
-                <p class="card__standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
-            </div>
-            <div class="card__footer">
-                <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
-                <span class="card__meta card__comments"><span data-icon="&#xe03C;" aria-hidden="true"></span>94</span>
-            </div>
-        </div>
-    </a>
-
-    <a class="card card--liveBlog has-image" href="#">
-        <div class="card__container">
-            <div class="card__header">
-                <h3 class="card__title"><span data-icon="&#xe029;" aria-hidden="true"></span>Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-            </div>
-            <div class="card__object">
-                <img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
-            </div>
-            <div class="card__footer">
-                <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
-                <span class="card__meta card__comments"><span data-icon="&#xe03C;" aria-hidden="true"></span>94</span>
-            </div>
-        </div>
-    </a>
-</div>
-```
-*/
-.card--liveBlog {
-  background-color: #b51800;
-  border-top-color: #cc2b12; }
-  .card--liveBlog * {
-    color: #fff; }
-  .card--liveBlog .card__title,
-  .card--liveBlog .card__standfirst {
-    color: #fff; }
-  .card--liveBlog .card__meta {
-    border-color: rgba(220, 218, 213, 0.34); }
-
-/*doc
----
-title: Card (media article)
-name: card--media
-category: Containers
----
-Display a media article card. Can include a series title.
-
-```html_example
-<div class="container__body">
-    <a class="card card--media" href="#">
-        <div class="card__container">
-            <div class="card__header">
-                <h3 class="card__title card__title--audio"><span data-icon="&#xe029;" aria-hidden="true"></span>Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-            </div>
-            <div class="card__object">
-                <p class="card__standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
-            </div>
-            <div class="card__footer">
-                <span class="card__meta card__duration">22:26</span>
-                <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
-            </div>
-        </div>
-    </a>
-
-    <a class="card card--media has-image" href="#">
-        <div class="card__container">
-            <div class="card__header">
-                <h3 class="card__title card__title--video"><span data-icon="&#xe029;" aria-hidden="true"></span>Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-            </div>
-            <div class="card__object">
-                <img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
-                <span class="touchpoint touchpoint--primary">
-                    <span class="touchpoint__button" data-icon="&#xe04b;" aria-hidden="true"></span>
-                    <span class="touchpoint__label"><span class="screen-readable">Play Video. Duration: </span>2:19</span>
-                </span>
-            </div>
-        </div>
-    </a>
-
-    <a class="card card--media has-image" href="#">
-        <div class="card__container">
-            <div class="card__header">
-                <h3 class="card__title card__title--gallery"><span data-icon="&#xe029;" aria-hidden="true"></span>Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-            </div>
-            <div class="card__object">
-                <img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
-                <span class="touchpoint touchpoint--primary">
-                    <span class="touchpoint__button" data-icon="&#xe020;" aria-hidden="true"></span>
-                </span>
-            </div>
-        </div>
-    </a>
-
-    <a class="card card--media has-image" href="#">
-        <div class="card__container">
-            <div class="card__header">
-                <h3 class="card__title card__title--video"><span data-icon="&#xe029;" aria-hidden="true"></span><span class="card__series">Series title:</span> Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-            </div>
-            <div class="card__object">
-                <img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
-                <span class="touchpoint touchpoint--primary">
-                    <span class="touchpoint__button" data-icon="&#xe04b;" aria-hidden="true"></span>
-                    <span class="touchpoint__label"><span class="screen-readable">Play Video. Duration: </span>2:19</span>
-                </span>
-            </div>
-        </div>
-    </a>
-</div>
-```
-*/
-.card--media {
-  background-color: #333;
-  border-top-color: #fb0; }
-  .card--media .card__title {
-    color: #fff; }
-    .card--media .card__title .icon {
-      color: #fb0;
-      margin-right: 6px; }
-  .card--media .card__title--audio::before,
-  .card--media .card__title--gallery::before,
-  .card--media .card__title--video::before {
-    content: '\e047';
-    color: #fb0;
-    font-family: "Guardian Icons", Georgia, serif;
-    margin-right: 3px;
-    position: absolute;
-    margin-top: 3px; }
-  .card--media .card__title--audio .card__titletext,
-  .card--media .card__title--gallery .card__titletext,
-  .card--media .card__title--video .card__titletext {
-    text-indent: 30px; }
-  .card--media .card__title--gallery::before {
-    content: '\e044'; }
-  .card--media .card__title--video::before {
-    content: '\e043'; }
-  .card--media .card__standfirst {
-    color: #fff; }
-  .card--media .card__series {
-    color: #fb0; }
-    .card--media .card__series::after {
-      content: '\a';
-      white-space: pre; }
-  .card--media .card__meta {
-    border-color: rgba(220, 218, 213, 0.34); }
-  .card--media .card__duration {
-    color: #fb0;
-    font-weight: bold; }
-  .card--media .card__object .touchpoint--primary .touchpoint__button,
-  .card--media .card__object .touchpoint--primary:active .touchpoint__button {
-    background-color: #fb0;
-    color: #333; }
-  .card--media .card__object .touchpoint__label {
-    color: #fb0;
-    font-weight: bold; }
-
-/*doc
----
-title: Card (podcast article)
-name: card--podcast
-category: Containers
----
-Display a podcast article card. Can include a series title.
-
-```html_example
-<div class="container__body">
-    <a class="card card--podcast" href="#">
-        <div class="card__container">
-            <div class="card__header">
-                <h3 class="card__title card__title--audio"><span data-icon="&#xe029;" aria-hidden="true"></span>Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-            </div>
-            <div class="card__object">
-                <p class="card__standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
-            </div>
-            <div class="card__footer">
-                <span class="card__meta card__duration">22:26</span>
-                <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
-            </div>
-        </div>
-    </a>
-
-    <a class="card card--podcast" href="#">
-        <div class="card__container">
-            <div class="card__header">
-                <h3 class="card__title card__title--audio"><span data-icon="&#xe029;" aria-hidden="true"></span><span class="card__series">Series title:</span> Tony Blair is a tragic narcissist with a messiah complex, says Robert Harris</h3>
-            </div>
-            <div class="card__object">
-                <p class="card__standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
-            </div>
-            <div class="card__footer">
-                <span class="card__meta card__duration">22:26</span>
-                <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
-            </div>
-        </div>
-    </a>
-</div>
-```
-*/
-.card--podcast {
-  background-color: #484848;
-  border-top-color: #a7d8f2; }
-  .card--podcast .card__title {
-    color: #fff; }
-    .card--podcast .card__title .icon {
-      color: #a7d8f2;
-      margin-right: 6px; }
-  .card--podcast .card__title--audio::before {
-    content: '\e047';
-    color: #a7d8f2;
-    font-family: "Guardian Icons", Georgia, serif;
-    margin-right: 3px;
-    position: absolute;
-    margin-top: 3px; }
-  .card--podcast .card__title--audio .card__titletext {
-    text-indent: 30px; }
-  .card--podcast .card__standfirst {
-    color: #fff; }
-  .card--podcast .card__series {
-    color: #a7d8f2; }
-    .card--podcast .card__series::after {
-      content: '\a';
-      white-space: pre; }
-  .card--podcast .card__meta {
-    color: #fff;
-    border-color: #fff; }
-  .card--podcast .card__duration {
-    color: #fff;
-    font-weight: bold; }
-
-/*doc
----
-title: Card (deadBlog article)
-name: card--deadBlog
-category: Containers
----
-Display a comment article card.
-
-```html_example
-<div class="container__body">
-    <a class="card card--deadBlog" href="#">
-        <div class="card__container">
-            <div class="card__header">
-                <h3 class="card__title"><span data-icon="&#xe029;" aria-hidden="true"></span>Sexual abuse is about power - and the powerful shouldn't be protected <span class="card__byline">Roy Greenslade</span></h3>
-            </div>
-            <div class="card__object">
-                <p class="card__standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
-            </div>
-            <div class="card__footer">
-                <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
-                <span class="card__meta card__comments"><span data-icon="&#xe03C;" aria-hidden="true"></span>94</span>
-            </div>
-        </div>
-    </a>
-
-    <a class="card card--deadBlog has-image" href="#">
-        <div class="card__container">
-            <div class="card__header">
-                <h3 class="card__title"><span data-icon="&#xe029;" aria-hidden="true"></span>Sexual abuse is about power - and the powerful shouldn't be protected <span class="card__byline">Roy Greenslade</span></h3>
-            </div>
-            <div class="card__object">
-                <img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
-            </div>
-            <div class="card__footer">
-                <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
-                <span class="card__meta card__comments"><span data-icon="&#xe03C;" aria-hidden="true"></span>94</span>
-            </div>
-        </div>
-    </a>
-</div>
-```
-*/
-.card--deadBlog {
-  border-top-color: #b51800; }
-
-/*doc
----
-title: Card (review article)
-name: card--review
-category: Containers
----
-Display a comment article card.
-
-```html_example
-<div class="container__body">
-    <a class="card card--review" href="#">
-        <div class="card__container">
-            <div class="card__header">
-                <h3 class="card__title"><span data-icon="&#xe029;" aria-hidden="true"></span>Sexual abuse is about power - and the powerful shouldn't be protected <span class="card__byline">Roy Greenslade</span></h3>
-            </div>
-            <div class="card__object">
-                <p class="card__standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
-            </div>
-            <div class="card__footer">
-                <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
-                <span class="card__meta card__comments"><span data-icon="&#xe03C;" aria-hidden="true"></span>94</span>
-            </div>
-        </div>
-    </a>
-
-    <a class="card card--review has-image" href="#">
-        <div class="card__container">
-            <div class="card__header">
-                <h3 class="card__title"><span data-icon="&#xe029;" aria-hidden="true"></span>Sexual abuse is about power - and the powerful shouldn't be protected <span class="card__byline">Roy Greenslade</span></h3>
-            </div>
-            <div class="card__object">
-                <img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
-            </div>
-            <div class="card__footer">
-                <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
-                <span class="card__meta card__comments"><span data-icon="&#xe03C;" aria-hidden="true"></span>94</span>
-            </div>
-        </div>
-    </a>
-</div>
-```
-*/
-.card--review {
-  background-color: #615b52;
-  border-top-color: #ffce4b; }
-  .card--review .card__title,
-  .card--review .card__standfirst,
-  .card--review .card__footer {
-    color: #fff; }
-  .card--review .card__meta {
-    border-left-color: #fff; }
-
-/*doc
----
-title: Card (analysis article)
-name: card--analysis
-category: Containers
----
-Display a comment article card.
-
-```html_example
-<div class="container__body">
-    <a class="card card--analysis" href="#">
-        <div class="card__container">
-            <div class="card__header">
-                <h3 class="card__title"><span data-icon="&#xe029;" aria-hidden="true"></span>Sexual abuse is about power - and the powerful shouldn't be protected <span class="card__byline">Roy Greenslade</span></h3>
-            </div>
-            <div class="card__object">
-                <p class="card__standfirst">Bestselling novelist and former friend criticises ex-PM for turning his back on British politics to 'hang out with rich people'</p>
-            </div>
-            <div class="card__footer">
-                <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
-                <span class="card__meta card__comments"><span data-icon="&#xe03C;" aria-hidden="true"></span>94</span>
-            </div>
-        </div>
-    </a>
-
-    <a class="card card--analysis has-image" href="#">
-        <div class="card__container">
-            <div class="card__header">
-                <h3 class="card__title"><span data-icon="&#xe029;" aria-hidden="true"></span>Sexual abuse is about power - and the powerful shouldn't be protected <span class="card__byline">Roy Greenslade</span></h3>
-            </div>
-            <div class="card__object">
-                <img class="card__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/3/1401803979164/Tony-Blair-014.jpg?width=300&amp;height=180&amp;quality=60"/>
-            </div>
-            <div class="card__footer">
-                <span class="card__meta card__timestamp"><span data-icon="&#xe056;" aria-hidden="true"></span>2h</span>
-                <span class="card__meta card__comments"><span data-icon="&#xe03C;" aria-hidden="true"></span>94</span>
-            </div>
-        </div>
-    </a>
-</div>
-```
-*/
-.card--analysis {
-  border-top-color: #005689; }
-  .card--analysis .card__title {
-    color: #005689; }
-  .card--analysis .card__standfirst,
-  .card--analysis .card__footer {
-    color: #767676; }
-
-/*doc
----
-title: Container
-name: container
-category: Containers
----
-Display a titled container for comments, cards or other components that should be visually grouped.
-
-```html_example
-<div class="container">
-    <div class="container__header">
-        <div class="container__title">
-            <h2 class="container__title__label"><a class="container__title__link" href="#">Comments <span class="container__title__meta">350</span></a></h2>
-        </div>
-        
-        <div class="container__action container__action--comment">
-            <a class="touchpoint touchpoint--primary" href="#">
-                <span class="touchpoint__label">Leave a comment</span>
-                <span class="touchpoint__button icon">&#xe03d;</span>
-            </a>
-        </div>
-    </div>
-
-    <div class="container__body">
-        <p>Container content</p>
-    </div>
-
-    <div class="container__footer">
-        <div class="container__action container__action--view-more">
-            <a class="touchpoint touchpoint--secondary" href="#">
-                <span class="touchpoint__label">View more</span>
-                <span class="touchpoint__button icon">&#xe00b;</span>
-            </a>
-        </div>
-    </div>
-</div>
-```
-*/
-.container {
-  margin: 0px 0px 24px 0px;
-  border-top: 2px solid #333; }
-
-.container__header,
-.container__footer {
-  overflow: auto;
-  font-family: "Guardian Agate Sans 1 Web", sans-serif;
-  font-weight: bold;
-  padding: 8px 2px 24px 2px;
-  display: table;
-  width: 100%; }
-  @media all and (max-width: 28.12em) {
-    .container__header,
-    .container__footer {
-      padding: 2.89855%; } }
-
-.container__title {
-  color: #333;
-  vertical-align: top;
-  display: table-cell; }
-
-.container__title__label {
-  font-family: "Guardian Egyptian Web", Georgia, serif;
-  font-weight: 600;
-  margin-top: -1px; }
-  @media all and (max-width: 40.62em) {
-    .container__title__label {
-      font-size: 2.4rem;
-      line-height: 3.6rem; } }
-  @media all and (min-width: 40.63em) {
-    .container__title__label {
-      font-size: 2.7rem;
-      line-height: 3.9rem; } }
-  .container__title__label .container__title__link {
-    color: #333; }
-    .container__title__label .container__title__link:active {
-      color: #333; }
-
-.container__title__meta {
-  color: #999;
-  font-weight: 600; }
-
-.container__action {
-  vertical-align: top;
-  display: table-cell; }
-  @media all and (max-width: 40.62em) {
-    .container__action {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.63em) {
-    .container__action {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-  .container__action.container__action--sort {
-    padding-top: 12px; }
-
-.container__action--comment,
-.container__action--view-more {
-  float: right; }
-
-@media all and (max-width: 28.12em) {
-  .container--comments .container__header .touchpoint__label {
-    display: none; } }
-.container__header {
-  height: 54px; }
-  .container__header .container__action .touchpoint--primary {
-    display: none !important; }
-  .container__header .container__action .comments-closed-label .touchpoint__label {
-    display: none; }
-
-.comments--open .container__header {
-  height: 54px; }
-  .comments--open .container__header .container__action .touchpoint--primary {
-    display: block !important; }
-  .comments--open .container__header .comments-closed-label .touchpoint__label {
-    display: none !important; }
-
-.container__body {
-  overflow: hidden; }
-
-.container__outbrain {
-  overflow: hidden;
-  display: none; }
-
-/* Android Tweaks - Displays Leave a comment icon by default */
-.android .container {
-  margin: 0px 12px 0px 12px; }
-  .android .container.comments--closed .container__action .touchpoint--primary {
-    display: none !important; }
-  .android .container .container__action .touchpoint--primary {
-    display: block !important; }
-.android .container--related {
-  margin-bottom: 48px; }
-
-/*doc
----
 title: Flyers
 name: flyers
 category: Content
@@ -2737,6 +2498,285 @@ Display comparison of goal attempts, corners and fouls that occurred during a ma
       .pie-chart .pie-chart__label-value {
         font-size: 2.2rem;
         line-height: 3rem; } }
+
+/*doc
+---
+title: Cricket Scorecard
+name: cricket scorecard
+category: Modules
+---
+<div class="cricket-stats__innings">
+	<div class="cricket-stats__header">
+		<div class="cricket-stats__title">
+			England 1st innings
+		</div>
+		<div class="cricket-stats__total">
+		Total<br><em>354 all out</em>
+		</div>
+	</div>
+	<div class="cricket-stats__table-wrap">
+		<table class="cricket-stats__table">
+			<thead class="cricket-stats__table--phone">
+				<tr>
+					<th class="cricket-stats__table--title">England 1st innings</th>
+					<th class="cricket-stats__table--values">Runs</th>
+				</tr>
+			</thead>
+			<thead class="cricket-stats__table--tablet">
+				<tr>
+					<th>Batsman</th>
+					<th>Taken by</th>
+					<th class="cricket-stats__table--values">Balls</th>
+					<th class="cricket-stats__table--values">4s</th>
+					<th class="cricket-stats__table--values">6s</th>
+					<th class="cricket-stats__table--values">Runs</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						K C Brathwaite
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Root b Broad</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td>12</td>
+				</tr>
+				<tr>
+					<td>
+						D S Smith
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Jordan b Tredwell</td>
+					<td class="cricket-stats__table--tablet">15</td>
+					<td class="cricket-stats__table--tablet">15</td>
+					<td class="cricket-stats__table--tablet">15</td>
+					<td>15</td>
+				</tr>
+				<tr>
+					<td>
+						D M Bravo
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Root b Jordan</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td class="cricket-stats__table--tablet">6</td>
+					<td class="cricket-stats__table--tablet">5</td>
+					<td>10</td>
+				</tr>
+				<tr>
+					<td>
+						M N Samuels
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Tradwell b Anderson</td>
+					<td class="cricket-stats__table--tablet">25</td>
+					<td class="cricket-stats__table--tablet">25</td>
+					<td class="cricket-stats__table--tablet">25</td>
+					<td>25</td>
+				</tr>
+				<tr>
+					<td>
+						K C Brathwaite
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Root b Broad</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td>12</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="cricket-stats__table--in-play">D S Smith</span>
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Jordan b Tredwell</td>
+					<td class="cricket-stats__table--tablet">15</td>
+					<td class="cricket-stats__table--tablet">15</td>
+					<td class="cricket-stats__table--tablet">15</td>
+					<td>15</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="cricket-stats__table--duck">D M Bravo</span>
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Root b Jordan</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td class="cricket-stats__table--tablet">6</td>
+					<td class="cricket-stats__table--tablet">5</td>
+					<td>10</td>
+				</tr>
+				<tr>
+					<td>
+						M N Samuels
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Tradwell b Anderson</td>
+					<td class="cricket-stats__table--tablet">25</td>
+					<td class="cricket-stats__table--tablet">25</td>
+					<td class="cricket-stats__table--tablet">25</td>
+					<td>25</td>
+				</tr>
+			</tbody>
+			<tfoot class="cricket-stats__table--phone">
+				<tr>
+					<td class="cricket-stats__table--strong">Total</td>
+					<td class="cricket-stats__table--strong">367-8</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+</div>
+*/
+.cricket-stats__innings {
+  position: relative;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  background: #fff;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #dcdad5;
+  border-top: 1px solid #4bc6df; }
+
+.cricket-stats__wrap {
+  color: #333; }
+  @media all and (max-width: 40.62em) {
+    .cricket-stats__wrap {
+      margin: 0 12px; } }
+
+.cricket-stats__side {
+  border-bottom: 1px solid #dcdad5;
+  margin-bottom: 24px; }
+  .cricket-stats__side:last-child {
+    border-bottom: none; }
+
+.cricket-stats__header {
+  display: table-cell;
+  vertical-align: top;
+  width: 25%;
+  box-sizing: border-box;
+  padding: 6px 0 0 12px; }
+  @media all and (max-width: 40.62em) {
+    .cricket-stats__header {
+      display: none; } }
+
+.cricket-stats__title {
+  font-weight: bold;
+  line-height: 1; }
+  @media all and (max-width: 40.62em) {
+    .cricket-stats__title {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    .cricket-stats__title {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+
+.cricket-stats__total {
+  font: 200 2.7rem/1.1 "Guardian Egyptian Web", Georgia, serif;
+  margin-top: 20px; }
+  .cricket-stats__total em {
+    color: #4bc6df;
+    font-style: normal;
+    font-size: 2.5rem; }
+
+.cricket-stats__table-wrap {
+  display: table-cell;
+  vertical-align: top; }
+
+.cricket-stats__takenby {
+  display: block;
+  color: #999;
+  padding: 3px 0 6px; }
+
+.cricket-stats__table {
+  width: 100%;
+  text-align: left;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif; }
+  @media all and (max-width: 40.62em) {
+    .cricket-stats__table {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    .cricket-stats__table {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  @media all and (max-width: 40.62em) {
+    .cricket-stats__table--tablet {
+      display: none; } }
+  @media all and (min-width: 40.63em) {
+    .cricket-stats__table--phone {
+      display: none; } }
+  @media all and (max-width: 40.62em) {
+    .cricket-stats__table--values {
+      width: 20%; } }
+  @media all and (min-width: 40.63em) {
+    .cricket-stats__table--values {
+      width: 15%; } }
+  .cricket-stats__table th {
+    color: #999; }
+  .cricket-stats__table th.cricket-stats__table--title,
+  .cricket-stats__table td.cricket-stats__table--strong {
+    font-weight: bold;
+    color: #000; }
+  .cricket-stats__table--title {
+    font-family: "Guardian Text Egyptian Web", Georgia, serif; }
+  .cricket-stats__table th,
+  .cricket-stats__table td {
+    vertical-align: top;
+    padding: 6px 6px 0 6px;
+    line-height: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden; }
+    @media all and (max-width: 40.62em) {
+      .cricket-stats__table th,
+      .cricket-stats__table td {
+        height: 3.7rem; } }
+    @media all and (min-width: 40.63em) {
+      .cricket-stats__table th,
+      .cricket-stats__table td {
+        height: 3.9rem; } }
+  .cricket-stats__table tr {
+    border-bottom: 1px solid #dcdad5; }
+  .cricket-stats__table tfoot tr {
+    border-bottom: 0;
+    border-top: 1px solid #dcdad5; }
+  .cricket-stats__table tbody tr:last-child {
+    border-bottom: none; }
+
+.cricket-stats__table--in-play {
+  font-weight: bold; }
+
+.cricket-stats__table--in-play,
+.cricket-stats__table--duck {
+  display: block;
+  position: relative;
+  padding-left: 22px;
+  height: 22px; }
+  .cricket-stats__table--in-play::before,
+  .cricket-stats__table--duck::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -2px;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-image: url(../img/cricket-dismissal.png);
+    background-repeat: no-repeat;
+    background-size: auto 40px; }
+  .cricket-stats__table--in-play + .cricket-stats__takenby,
+  .cricket-stats__table--duck + .cricket-stats__takenby {
+    margin-top: -7px; }
+
+.cricket-stats__table--duck::before {
+  background-position: -20px 0; }
 
 /*doc
 ---
@@ -3677,285 +3717,6 @@ Display a team line-up including substitutions and bookings.
 
 /*doc
 ---
-title: Cricket Scorecard
-name: cricket scorecard
-category: Modules
----
-<div class="cricket-stats__innings">
-	<div class="cricket-stats__header">
-		<div class="cricket-stats__title">
-			England 1st innings
-		</div>
-		<div class="cricket-stats__total">
-		Total<br><em>354 all out</em>
-		</div>
-	</div>
-	<div class="cricket-stats__table-wrap">
-		<table class="cricket-stats__table">
-			<thead class="cricket-stats__table--phone">
-				<tr>
-					<th class="cricket-stats__table--title">England 1st innings</th>
-					<th class="cricket-stats__table--values">Runs</th>
-				</tr>
-			</thead>
-			<thead class="cricket-stats__table--tablet">
-				<tr>
-					<th>Batsman</th>
-					<th>Taken by</th>
-					<th class="cricket-stats__table--values">Balls</th>
-					<th class="cricket-stats__table--values">4s</th>
-					<th class="cricket-stats__table--values">6s</th>
-					<th class="cricket-stats__table--values">Runs</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						K C Brathwaite
-						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
-					</td>
-					<td class="cricket-stats__table--tablet">c Root b Broad</td>
-					<td class="cricket-stats__table--tablet">12</td>
-					<td class="cricket-stats__table--tablet">12</td>
-					<td class="cricket-stats__table--tablet">12</td>
-					<td>12</td>
-				</tr>
-				<tr>
-					<td>
-						D S Smith
-						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
-					</td>
-					<td class="cricket-stats__table--tablet">c Jordan b Tredwell</td>
-					<td class="cricket-stats__table--tablet">15</td>
-					<td class="cricket-stats__table--tablet">15</td>
-					<td class="cricket-stats__table--tablet">15</td>
-					<td>15</td>
-				</tr>
-				<tr>
-					<td>
-						D M Bravo
-						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
-					</td>
-					<td class="cricket-stats__table--tablet">c Root b Jordan</td>
-					<td class="cricket-stats__table--tablet">12</td>
-					<td class="cricket-stats__table--tablet">6</td>
-					<td class="cricket-stats__table--tablet">5</td>
-					<td>10</td>
-				</tr>
-				<tr>
-					<td>
-						M N Samuels
-						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
-					</td>
-					<td class="cricket-stats__table--tablet">c Tradwell b Anderson</td>
-					<td class="cricket-stats__table--tablet">25</td>
-					<td class="cricket-stats__table--tablet">25</td>
-					<td class="cricket-stats__table--tablet">25</td>
-					<td>25</td>
-				</tr>
-				<tr>
-					<td>
-						K C Brathwaite
-						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
-					</td>
-					<td class="cricket-stats__table--tablet">c Root b Broad</td>
-					<td class="cricket-stats__table--tablet">12</td>
-					<td class="cricket-stats__table--tablet">12</td>
-					<td class="cricket-stats__table--tablet">12</td>
-					<td>12</td>
-				</tr>
-				<tr>
-					<td>
-						<span class="cricket-stats__table--in-play">D S Smith</span>
-						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
-					</td>
-					<td class="cricket-stats__table--tablet">c Jordan b Tredwell</td>
-					<td class="cricket-stats__table--tablet">15</td>
-					<td class="cricket-stats__table--tablet">15</td>
-					<td class="cricket-stats__table--tablet">15</td>
-					<td>15</td>
-				</tr>
-				<tr>
-					<td>
-						<span class="cricket-stats__table--duck">D M Bravo</span>
-						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
-					</td>
-					<td class="cricket-stats__table--tablet">c Root b Jordan</td>
-					<td class="cricket-stats__table--tablet">12</td>
-					<td class="cricket-stats__table--tablet">6</td>
-					<td class="cricket-stats__table--tablet">5</td>
-					<td>10</td>
-				</tr>
-				<tr>
-					<td>
-						M N Samuels
-						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
-					</td>
-					<td class="cricket-stats__table--tablet">c Tradwell b Anderson</td>
-					<td class="cricket-stats__table--tablet">25</td>
-					<td class="cricket-stats__table--tablet">25</td>
-					<td class="cricket-stats__table--tablet">25</td>
-					<td>25</td>
-				</tr>
-			</tbody>
-			<tfoot class="cricket-stats__table--phone">
-				<tr>
-					<td class="cricket-stats__table--strong">Total</td>
-					<td class="cricket-stats__table--strong">367-8</td>
-				</tr>
-			</tfoot>
-		</table>
-	</div>
-</div>
-*/
-.cricket-stats__innings {
-  position: relative;
-  display: table;
-  table-layout: fixed;
-  width: 100%;
-  background: #fff;
-  padding-bottom: 12px;
-  margin-bottom: 12px;
-  border-bottom: 2px solid #dcdad5;
-  border-top: 1px solid #4bc6df; }
-
-.cricket-stats__wrap {
-  color: #333; }
-  @media all and (max-width: 40.62em) {
-    .cricket-stats__wrap {
-      margin: 0 12px; } }
-
-.cricket-stats__side {
-  border-bottom: 1px solid #dcdad5;
-  margin-bottom: 24px; }
-  .cricket-stats__side:last-child {
-    border-bottom: none; }
-
-.cricket-stats__header {
-  display: table-cell;
-  vertical-align: top;
-  width: 25%;
-  box-sizing: border-box;
-  padding: 6px 0 0 12px; }
-  @media all and (max-width: 40.62em) {
-    .cricket-stats__header {
-      display: none; } }
-
-.cricket-stats__title {
-  font-weight: bold;
-  line-height: 1; }
-  @media all and (max-width: 40.62em) {
-    .cricket-stats__title {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.63em) {
-    .cricket-stats__title {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-
-.cricket-stats__total {
-  font: 200 2.7rem/1.1 "Guardian Egyptian Web", Georgia, serif;
-  margin-top: 20px; }
-  .cricket-stats__total em {
-    color: #4bc6df;
-    font-style: normal;
-    font-size: 2.5rem; }
-
-.cricket-stats__table-wrap {
-  display: table-cell;
-  vertical-align: top; }
-
-.cricket-stats__takenby {
-  display: block;
-  color: #999;
-  padding: 3px 0 6px; }
-
-.cricket-stats__table {
-  width: 100%;
-  text-align: left;
-  font-family: "Guardian Agate Sans 1 Web", sans-serif; }
-  @media all and (max-width: 40.62em) {
-    .cricket-stats__table {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.63em) {
-    .cricket-stats__table {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-  @media all and (max-width: 40.62em) {
-    .cricket-stats__table--tablet {
-      display: none; } }
-  @media all and (min-width: 40.63em) {
-    .cricket-stats__table--phone {
-      display: none; } }
-  @media all and (max-width: 40.62em) {
-    .cricket-stats__table--values {
-      width: 20%; } }
-  @media all and (min-width: 40.63em) {
-    .cricket-stats__table--values {
-      width: 15%; } }
-  .cricket-stats__table th {
-    color: #999; }
-  .cricket-stats__table th.cricket-stats__table--title,
-  .cricket-stats__table td.cricket-stats__table--strong {
-    font-weight: bold;
-    color: #000; }
-  .cricket-stats__table--title {
-    font-family: "Guardian Text Egyptian Web", Georgia, serif; }
-  .cricket-stats__table th,
-  .cricket-stats__table td {
-    vertical-align: top;
-    padding: 6px 6px 0 6px;
-    line-height: 1;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden; }
-    @media all and (max-width: 40.62em) {
-      .cricket-stats__table th,
-      .cricket-stats__table td {
-        height: 3.7rem; } }
-    @media all and (min-width: 40.63em) {
-      .cricket-stats__table th,
-      .cricket-stats__table td {
-        height: 3.9rem; } }
-  .cricket-stats__table tr {
-    border-bottom: 1px solid #dcdad5; }
-  .cricket-stats__table tfoot tr {
-    border-bottom: 0;
-    border-top: 1px solid #dcdad5; }
-  .cricket-stats__table tbody tr:last-child {
-    border-bottom: none; }
-
-.cricket-stats__table--in-play {
-  font-weight: bold; }
-
-.cricket-stats__table--in-play,
-.cricket-stats__table--duck {
-  display: block;
-  position: relative;
-  padding-left: 22px;
-  height: 22px; }
-  .cricket-stats__table--in-play::before,
-  .cricket-stats__table--duck::before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: -2px;
-    left: 0;
-    height: 18px;
-    width: 18px;
-    background-image: url(../img/cricket-dismissal.png);
-    background-repeat: no-repeat;
-    background-size: auto 40px; }
-  .cricket-stats__table--in-play + .cricket-stats__takenby,
-  .cricket-stats__table--duck + .cricket-stats__takenby {
-    margin-top: -7px; }
-
-.cricket-stats__table--duck::before {
-  background-position: -20px 0; }
-
-/*doc
----
 title: Embed
 name: element-witness
 category: GuardianWitness
@@ -4017,96 +3778,6 @@ Display a Guardian Witness submission.
   .element-witness--date::before {
     content: '\00B7   '; }
 
-/*doc
----
-title: Interactive
-name: interactive
-category: Modules
----
-Displays a 'content unavailable' instead of an interactive if there is no connection
-
-```html_example
-	<div class="element element-interactive interactive interactive--offline"></div>
-```
-*/
-body[data-fullscreen-interactive] {
-  margin: 0; }
-
-.interactive--offline {
-  background-color: #eaeaea;
-  text-align: center;
-  padding: 1px 0;
-  font-family: "Guardian Agate Sans 1 Web", sans-serif;
-  color: #767676;
-  clear: both;
-  margin: 0; }
-  @media all and (max-width: 40.62em) {
-    .interactive--offline {
-      font-size: 1.4rem;
-      line-height: 2rem; } }
-  @media all and (min-width: 40.63em) {
-    .interactive--offline {
-      font-size: 1.6rem;
-      line-height: 2.2rem; } }
-  body:not([data-fullscreen-interactive]) .interactive--offline {
-    margin: 0 -12px 0 -12px !important; }
-  @media all and (max-width: 40.62em) {
-    body[data-fullscreen-interactive] .interactive--offline {
-      font-size: 1.96rem;
-      line-height: 2.8rem; } }
-  @media all and (min-width: 40.63em) {
-    body[data-fullscreen-interactive] .interactive--offline {
-      font-size: 2.24rem;
-      line-height: 3.08rem; } }
-  .interactive--offline:before {
-    content: "Sorry, we are unable to display\Athis content as you have\Ano internet connection.\APlease try again.";
-    white-space: pre;
-    display: block;
-    vertical-align: middle;
-    margin-top: 3.5em;
-    padding-top: 2.5em;
-    background: transparent url("../img/unsmiley.png") no-repeat center top;
-    background-size: 2em; }
-  .interactive--offline * {
-    display: none; }
-  .interactive--offline .interactive--offline--icon {
-    display: inline-block;
-    margin-top: 1em;
-    margin-bottom: 3.5em;
-    color: #767676;
-    font-family: "Guardian Icons", Georgia, serif;
-    -webkit-tap-highlight-color: transparent; }
-    .interactive--offline .interactive--offline--icon:after {
-      display: inline-block;
-      padding: 7px 10px 13px 10px;
-      font-size: 1.5em; }
-    .interactive--offline .interactive--offline--icon.interactive--offline--icon--reload:after {
-      content: '\00e045';
-      border: 1px solid #767676;
-      border-radius: 50%; }
-    .interactive--offline .interactive--offline--icon.interactive--offline--icon--reload:active {
-      color: #fff; }
-      .interactive--offline .interactive--offline--icon.interactive--offline--icon--reload:active:after {
-        border: 1px solid #fff; }
-    .interactive--offline .interactive--offline--icon.interactive--offline--icon--loading {
-      display: none;
-      -webkit-animation: fadeIn;
-      -webkit-animation-direction: alternate;
-      -webkit-animation-iteration-count: infinite;
-      -webkit-animation-duration: 1s; }
-      .interactive--offline .interactive--offline--icon.interactive--offline--icon--loading:after {
-        content: '\00e00c';
-        padding: 7px 10px 15px 10px; }
-  .interactive--offline.interactive--loading .interactive--offline--icon--reload {
-    display: none; }
-  .interactive--offline.interactive--loading .interactive--offline--icon--loading {
-    display: block; }
-
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
 .android .discussion {
   border-top-width: 0;
   padding: 0px 12px 0px 12px; }
