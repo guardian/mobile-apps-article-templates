@@ -97,6 +97,14 @@ Display a titled container for comments, cards or other components that should b
     float: right;
 }
 
+.container__action--comment {
+    .touchpoint__button:before {
+        position: relative;
+        top: -2px;
+        left: 2px;
+    }
+}
+
 @include mq($to: col1) {
     .container--comments {
         .container__header {
@@ -142,6 +150,15 @@ Display a titled container for comments, cards or other components that should b
 
 .container__body {
     overflow: hidden;
+
+    //putting comments back to how they originally were - keeping any cached comments after failure
+    .container--has-failed:not(.container--comments) & {
+        display: none;
+    }
+}
+
+.container--comments {
+    
 }
 
 .container__outbrain {
