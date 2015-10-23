@@ -835,6 +835,70 @@ Display which keywords an article has been tagged with.
 
 /*doc
 ---
+title: Tell Me When
+name: tellmewhen
+category: Modules
+---
+Display an alerts toggle.
+
+```html_example
+<a class="tell-me-when __TELLMEWHEN_ADDED__" href="__TELLMEWHEN_HREF__">
+    <span class="tell-me-when__state--add">
+        <span data-icon="&#xe087;" aria-hidden="true"></span>
+        <span class="tell-me-when__label">Add reminder for event</span>
+    </span>
+    <span class="tell-me-when__state--remove">
+        <span data-icon="&#xe097;" aria-hidden="true"></span>
+        <span class="tell-me-when__label">Remove reminder for event</span>
+    </span>
+</a>
+```
+*/
+a.tell-me-when {
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  white-space: nowrap;
+  padding: 4px 12px 8px 12px;
+  margin: 0px 0px 12px -4px;
+  display: inline-block;
+  border-radius: 30px;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+  overflow: hidden;
+  max-width: 100%;
+  color: #005689;
+  border: 1px solid #005689;
+  transition: background-color 0.3s; }
+  @media all and (max-width: 40.62em) {
+    a.tell-me-when {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    a.tell-me-when {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  a.tell-me-when:active, a.tell-me-when.added {
+    background-color: #005689;
+    color: #fff; }
+  a.tell-me-when span[data-icon] {
+    display: inline-block;
+    vertical-align: bottom;
+    font-size: 1.8rem;
+    position: relative;
+    right: 3px;
+    top: 1px; }
+  a.tell-me-when .tell-me-when__state--remove {
+    display: none; }
+  a.tell-me-when.added:active {
+    color: #005689;
+    background-color: #fff;
+    border: 1px solid #005689; }
+  a.tell-me-when.added .tell-me-when__state--remove {
+    display: block; }
+  a.tell-me-when.added .tell-me-when__state--add {
+    display: none; }
+
+/*doc
+---
 title: Related Content
 name: related-content
 category: Modules
