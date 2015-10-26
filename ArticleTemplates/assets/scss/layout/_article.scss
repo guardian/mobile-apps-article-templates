@@ -25,10 +25,28 @@
 
     .headline {
         padding: base-px(0, 1, 2.5, 1);
+
+        @include mq($from: col4) {
+            margin: 0 auto 0 240px;
+            padding: {
+                left: 0;
+                right: 0;
+            }
+            width: 620px;
+        }
     }
 
     .standfirst {
         padding: base-px(.5, 1, 1.5, 1);
+
+        @include mq($from: col4) {
+            margin: 0 auto 0 240px;
+            padding: {
+                left: 0;
+                right: 0;
+            }
+            width: 620px;
+        }
     }
 }
 

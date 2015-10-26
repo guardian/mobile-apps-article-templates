@@ -43,5 +43,16 @@ Display a large image of contributor in background of container.
             min-height: 320px;
             background-size: contain;
         }
+
+        @include mq($from: col4) {
+            background-position: right 0 bottom 0;
+            margin-left: 240px;
+            min-height: 220px;
+            width: 940px;
+
+            .headline {
+                margin: 0;
+            }
+        }
     }
 }

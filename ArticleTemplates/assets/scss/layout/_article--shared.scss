@@ -14,10 +14,10 @@
         }
 
         @include mq($from: col4) {
-            margin: 0 auto 0 140px;
-            width: 940px;
+            margin: 0 auto 0 240px;
             padding: base-px(1, 0);
             padding-right: 320px;
+            width: 940px;
         }
 
         // Images and video within article body
@@ -84,25 +84,6 @@
             width: cols($base-4, 4);
         }
     }
-
-    // Hide witness call-out until correctly positioned by JavaScript
-    // .aside-witness {
-    //     display: none;
-
-    //     &.js--positioned {
-    //         display: block;
-    //     }
-
-    //     .aside-witness__action {
-    //         .touchpoint__label {
-    //             margin: base-px(.5) 0;
-    //         }
-    //     }
-
-    //     .aside-witness__sponsor {
-    //         float: left;
-    //     }
-    // }
 }
 
 .article--standard,
@@ -130,6 +111,16 @@ body:not(.is-live) .article--liveblog {
                 width: cols($base-4, 4);
             }
         }
+
+        @include mq($from: col4) {
+            .headline,
+            .standfirst {
+                padding: {
+                    left: 0;
+                    right: 0;
+                }
+            }
+        }
     }
 }
 
@@ -139,17 +130,3 @@ body:not(.is-live) .article--liveblog {
         @include dropcap();
     }
 }
-
-/*.article--comment,
-.article--feature {
-        .article__body > .prose {
-            border: 1px solid red!important;
-    }
-}*/
-
-/*
-.article--comment,
-.article--feature {
-.article__body > .prose > p:first-of-type:first-letter {
-    border: 1px solid red!important;
-}*/

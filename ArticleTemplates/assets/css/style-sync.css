@@ -512,6 +512,14 @@ Display a large image of contributor in background of container.
     .cutout .cutout__container {
       min-height: 320px;
       background-size: contain; } }
+  @media all and (min-width: 68.75em) {
+    .cutout .cutout__container {
+      background-position: right 0 bottom 0;
+      margin-left: 240px;
+      min-height: 220px;
+      width: 940px; }
+      .cutout .cutout__container .headline {
+        margin: 0; } }
 
 /*doc
 ---
@@ -821,10 +829,14 @@ Display an article's headline.
     .headline {
       font-size: 4rem;
       line-height: 4rem; } }
-  @media all and (min-width: 40.63em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .headline {
       font-size: 4.8rem;
       line-height: 4.8rem; } }
+  @media all and (min-width: 68.75em) {
+    .headline {
+      font-size: 3.6rem;
+      line-height: 3.6rem; } }
 
 /*doc
 ---
@@ -888,6 +900,22 @@ Can also be displayed with the caption initially hidden:
 </div>
 ```
 */
+@media all and (min-width: 68.75em) {
+  .main-media {
+    padding-top: 12px; }
+    .main-media figure.element {
+      margin: 0 auto 0 240px;
+      padding: 0;
+      width: 620px; }
+    .main-media .main-media__caption {
+      border: none;
+      padding-left: 0;
+      padding-right: 0; }
+      .main-media .main-media__caption__icon {
+        vertical-align: top; }
+      .main-media .main-media__caption__text {
+        display: inline-block;
+        width: 590px; } }
 .main-media--hidden-caption {
   position: relative; }
   .main-media--hidden-caption .main-media__caption {
@@ -985,6 +1013,9 @@ Display an article's meta information.
     .meta {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
+  @media all and (min-width: 68.75em) {
+    .meta {
+      border: none; } }
   .meta .avatar--author {
     margin: 0px 9px 12px 0px;
     float: left; }
@@ -998,6 +1029,12 @@ Display an article's meta information.
 
 .meta__misc {
   padding: 8px 12px 24px 12px; }
+  @media all and (min-width: 68.75em) {
+    .meta__misc {
+      margin: 0 auto 0 240px;
+      padding-left: 0;
+      padding-right: 0;
+      width: 620px; } }
 
 .meta__pubdate {
   color: #999;
@@ -1108,10 +1145,14 @@ With live indicator:
     .section {
       font-size: 2rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.63em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .section {
       font-size: 2.4rem;
       line-height: 2.4rem; } }
+  @media all and (min-width: 68.75em) {
+    .section {
+      font-size: 1.8rem;
+      line-height: 1.8rem; } }
   .section::before {
     margin-right: 8px;
     line-height: 92%;
@@ -1132,10 +1173,14 @@ With live indicator:
     .section__live {
       font-size: 2rem;
       line-height: 2rem; } }
-  @media all and (min-width: 40.63em) {
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .section__live {
       font-size: 2.4rem;
       line-height: 2.4rem; } }
+  @media all and (min-width: 68.75em) {
+    .section__live {
+      font-size: 1.8rem;
+      line-height: 1.8rem; } }
   @media all and (min-width: 40.63em) {
     .section__live {
       font-size: 1.6rem; } }
@@ -1160,10 +1205,14 @@ With live indicator:
       .section__container .section {
         font-size: 2rem;
         line-height: 2rem; } }
-    @media all and (min-width: 40.63em) {
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .section__container .section {
         font-size: 2.4rem;
         line-height: 2.4rem; } }
+    @media all and (min-width: 68.75em) {
+      .section__container .section {
+        font-size: 1.8rem;
+        line-height: 1.8rem; } }
     .section__container .section::before {
       margin-right: 8px;
       line-height: 92%;
@@ -1181,10 +1230,14 @@ With live indicator:
       .section__container .content__labels {
         font-size: 2rem;
         line-height: 2rem; } }
-    @media all and (min-width: 40.63em) {
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .section__container .content__labels {
         font-size: 2.4rem;
         line-height: 2.4rem; } }
+    @media all and (min-width: 68.75em) {
+      .section__container .content__labels {
+        font-size: 1.8rem;
+        line-height: 1.8rem; } }
     .section__container .content__labels:last-child {
       padding-right: 0; }
   .section__container .content__series-label {
@@ -1200,21 +1253,34 @@ With live indicator:
       .section__container .content__series-label {
         font-size: 2rem;
         line-height: 2rem; } }
-    @media all and (min-width: 40.63em) {
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .section__container .content__series-label {
         font-size: 2.4rem;
         line-height: 2.4rem; } }
+    @media all and (min-width: 68.75em) {
+      .section__container .content__series-label {
+        font-size: 1.8rem;
+        line-height: 1.8rem; } }
 
 .content__container {
   display: table;
   width: 100%;
   height: 100%; }
+  @media all and (min-width: 68.75em) {
+    .content__container {
+      margin: 0 auto 0 240px;
+      padding-left: 0;
+      padding-right: 0;
+      width: 620px; } }
   .content__container .content__labels__container {
     display: table-cell;
     vertical-align: top;
     padding: 7px 12px 12px 12px;
     height: 100%;
     width: 100%; }
+    @media all and (min-width: 68.75em) {
+      .content__container .content__labels__container {
+        padding-left: 0; } }
 
 .comment-count {
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
@@ -1235,12 +1301,14 @@ With live indicator:
   @media all and (min-width: 56.25em) {
     .comment-count {
       width: 24.21053%; } }
+  @media all and (min-width: 68.75em) {
+    .comment-count {
+      padding-right: 0; } }
   .meta .comment-count {
     display: none; }
 
-@media all and (max-width: 40.62em) {
-  .comment-count__label {
-    display: none; } }
+.comment-count__label {
+  display: none; }
 
 .article__header h1 {
   clear: both; }
@@ -2426,8 +2494,20 @@ Display a selection of images that form a gallery.
   margin-bottom: 5px; }
 .article__header .headline {
   padding: 0px 12px 30px 12px; }
+  @media all and (min-width: 68.75em) {
+    .article__header .headline {
+      margin: 0 auto 0 240px;
+      padding-left: 0;
+      padding-right: 0;
+      width: 620px; } }
 .article__header .standfirst {
   padding: 6px 12px 18px 12px; }
+  @media all and (min-width: 68.75em) {
+    .article__header .standfirst {
+      margin: 0 auto 0 240px;
+      padding-left: 0;
+      padding-right: 0;
+      width: 620px; } }
 
 .article__body {
   font-family: "Guardian Text Egyptian Web", Georgia, serif; }
@@ -2479,10 +2559,10 @@ Display a selection of images that form a gallery.
     .article--comment .article__body,
     .article--feature .article__body,
     .article--audio .article__body {
-      margin: 0 auto 0 140px;
-      width: 940px;
+      margin: 0 auto 0 240px;
       padding: 12px 0px;
-      padding-right: 320px; } }
+      padding-right: 320px;
+      width: 940px; } }
   .article--standard .article__body .figure-wide,
   .article--standard .article__body .element-video,
   .article--standard .article__body .element-placeholder,
@@ -2610,6 +2690,15 @@ Display a selection of images that form a gallery.
   .article--comment .article__header .article__comments,
   body:not(.is-live) .article--liveblog .article__header .article__comments {
     width: 24.21053%; } }
+@media all and (min-width: 68.75em) {
+  .article--standard .article__header .headline,
+  .article--standard .article__header .standfirst,
+  .article--comment .article__header .headline,
+  .article--comment .article__header .standfirst,
+  body:not(.is-live) .article--liveblog .article__header .headline,
+  body:not(.is-live) .article--liveblog .article__header .standfirst {
+    padding-left: 0;
+    padding-right: 0; } }
 
 .article--comment .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
 .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
@@ -2628,18 +2717,6 @@ Display a selection of images that form a gallery.
     .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
       font-size: 5.2222em; } }
 
-/*.article--comment,
-.article--feature {
-        .article__body > .prose {
-            border: 1px solid red!important;
-    }
-}*/
-/*
-.article--comment,
-.article--feature {
-.article__body > .prose > p:first-of-type:first-letter {
-    border: 1px solid red!important;
-}*/
 .article--comment .article__header .cutout__container {
   padding-bottom: 48px;
   position: relative;
@@ -3658,8 +3735,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--news .article__header .comment-count {
     border-color: rgba(153, 153, 153, 0.4); }
   .tone--news .article__header .headline {
-    color: #333;
-    padding: 0px 12px 30px 12px; }
+    color: #333; }
     .tone--news .article__header .headline p.review-rating {
       padding-top: 12px; }
       @media all and (max-width: 28.12em) {
@@ -3681,6 +3757,9 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
       color: #005689; }
     .tone--news .article__header .meta .meta__pubdate {
       color: #999; }
+  .tone--news .article__header .main-media {
+    background: #fff;
+    border-top: 1px dotted rgba(153, 153, 153, 0.4); }
   .tone--news .article__header .main-media__caption {
     background-color: #fff; }
 .tone--news.is_advertising a.alerts--new,
@@ -3706,8 +3785,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--review .article__header .comment-count a {
     color: #ffce4b; }
   .tone--review .article__header .headline {
-    color: #fff;
-    padding: 0px 12px 30px 12px; }
+    color: #fff; }
     .tone--review .article__header .headline p.review-rating {
       padding-top: 8px; }
       @media all and (max-width: 28.12em) {
@@ -3755,8 +3833,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--analysis .article__header .content__series-label a {
     color: #767676; }
   .tone--analysis .article__header .headline {
-    color: #005689;
-    padding: 0px 12px 30px 12px; }
+    color: #005689; }
     .tone--analysis .article__header .headline p.review-rating {
       padding-top: 12px; }
       @media all and (max-width: 28.12em) {
@@ -3780,7 +3857,6 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
       color: #005689; }
     .tone--analysis .article__header .meta .meta__byline .byline,
     .tone--analysis .article__header .meta .meta__byline a {
-      font-weight: 600;
       font-weight: 600; }
     .tone--analysis .article__header .meta .meta__pubdate {
       color: #999; }
@@ -3872,10 +3948,14 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
       .tone--deadBlog .article__header .section {
         font-size: 2rem;
         line-height: 2rem; } }
-    @media all and (min-width: 40.63em) {
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .tone--deadBlog .article__header .section {
         font-size: 2.4rem;
         line-height: 2.4rem; } }
+    @media all and (min-width: 68.75em) {
+      .tone--deadBlog .article__header .section {
+        font-size: 1.8rem;
+        line-height: 1.8rem; } }
     .tone--deadBlog .article__header .section::before {
       margin-right: 8px;
       line-height: 92%;

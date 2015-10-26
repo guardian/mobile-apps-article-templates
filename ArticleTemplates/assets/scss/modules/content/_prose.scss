@@ -316,11 +316,16 @@ Adds typographic styling, typically to content fetched from the Guardian Content
         }
 
          @include mq($from: col2) {
-            //check with Ben
             max-width: 280px;
             margin-right: base-px(1);
             float: left;
          }
+
+        @include mq($from: col4) {
+            margin: 0;
+            margin-left: -220px;
+            max-width: 200px;
+        }
     }
 
     figure {

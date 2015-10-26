@@ -48,6 +48,10 @@ Display an article's meta information.
     width: 100%;
     display: table;
 
+    @include mq($from: col4) {
+        border: none;
+    }
+
     .avatar--author {
         margin: base-px(0, .75, 1, 0);
         float: left;
@@ -71,6 +75,15 @@ Display an article's meta information.
 
 .meta__misc {
     padding: base-px(.6667, 1, 2, 1);
+
+     @include mq($from: col4) {
+        margin: 0 auto 0 240px;
+        padding: {
+            left: 0;
+            right: 0;
+        }
+        width: 620px;
+    }
 }
 
 .meta__pubdate {

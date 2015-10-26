@@ -6,6 +6,8 @@
     $headline-lead-2: 4rem;
     $headline-size-3: 4.8rem;
     $headline-lead-3: 4.8rem;
+    $headline-size-4: 3.6rem;
+    $headline-lead-4: 3.6rem;
     
     @include mq($to: col1) {
         font-size: $headline-size-1 * $multiple;
@@ -17,9 +19,14 @@
         line-height: $headline-lead-2 * $multiple;
     }
 
-    @include mq($from: col2) {
+    @include mq(col2, col3) {
         font-size: $headline-size-3 * $multiple;
         line-height: $headline-lead-3 * $multiple;
+    }
+
+    @include mq($from: col4) {
+        font-size: $headline-size-4 * $multiple;
+        line-height: $headline-lead-4 * $multiple;
     }
 }
 

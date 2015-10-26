@@ -410,6 +410,11 @@ figure figcaption {
           padding-bottom: 12px; }
         .figure--thumbnail-with-caption figcaption .element-image__credit {
           position: static; } }
+  @media all and (min-width: 68.75em) {
+    .prose .figure--thumbnail-with-caption {
+      max-width: 200px;
+      margin: 0;
+      margin-left: -220px; } }
 
 /*doc
 ---
@@ -679,8 +684,12 @@ The 'sponsored by/supported by' section
   -webkit-align-items: flex-start;
   border-bottom: 1px dotted #b5b3ae;
   font-size: 1.4rem; }
+  @media all and (min-width: 68.75em) {
+    .sponsorship {
+      border-bottom: 0;
+      padding-left: 240px; } }
   .gallery ~ .sponsorship {
-    border-bottom: none; }
+    border-bottom: 0; }
   .witness + .sponsorship {
     border-top: 1px dotted #b5b3ae;
     padding-top: 20px;
@@ -688,7 +697,9 @@ The 'sponsored by/supported by' section
 
 .sponsorship__formatted-sponsor-name {
   color: #878787;
-  margin-bottom: 8px; }
+  display: inline-block;
+  margin: 0px 12px 8px 0px;
+  vertical-align: top; }
 
 .sponsorship__about-uri {
   margin-top: 12px;
@@ -2518,6 +2529,11 @@ Adds typographic styling, typically to content fetched from the Guardian Content
       max-width: 280px;
       margin-right: 12px;
       float: left; } }
+  @media all and (min-width: 68.75em) {
+    .prose .element-pullquote {
+      margin: 0;
+      margin-left: -220px;
+      max-width: 200px; } }
 .prose figure {
   margin: 12px 12px 0px 0px; }
   .prose figure.figure-wide img {
@@ -4073,10 +4089,14 @@ body[data-fullscreen-interactive] {
       .discussion__header .headline {
         font-size: 3rem;
         line-height: 3rem; } }
-    @media all and (min-width: 40.63em) {
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .discussion__header .headline {
         font-size: 3.6rem;
         line-height: 3.6rem; } }
+    @media all and (min-width: 68.75em) {
+      .discussion__header .headline {
+        font-size: 2.7rem;
+        line-height: 2.7rem; } }
 
 @media all and (min-width: 28.13em) {
   .football {

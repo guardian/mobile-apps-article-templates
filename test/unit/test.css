@@ -827,18 +827,6 @@
   </div>
   ```
   */
-  /*.article--comment,
-  .article--feature {
-          .article__body > .prose {
-              border: 1px solid red!important;
-      }
-  }*/
-  /*
-  .article--comment,
-  .article--feature {
-  .article__body > .prose > p:first-of-type:first-letter {
-      border: 1px solid red!important;
-  }*/
   /*.tone--deadBlog {
       .section {
           color: color(tone-liveBlogSection); // Default
@@ -3017,6 +3005,14 @@
       #sandbox .cutout .cutout__container {
         min-height: 320px;
         background-size: contain; } }
+    @media all and (min-width: 68.75em) {
+      #sandbox .cutout .cutout__container {
+        background-position: right 0 bottom 0;
+        margin-left: 240px;
+        min-height: 220px;
+        width: 940px; }
+        #sandbox .cutout .cutout__container .headline {
+          margin: 0; } }
   #sandbox .tabs {
     color: #767676;
     font-family: "Guardian Agate Sans 1 Web", sans-serif;
@@ -3159,10 +3155,14 @@
       #sandbox .headline {
         font-size: 4rem;
         line-height: 4rem; } }
-    @media all and (min-width: 40.63em) {
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       #sandbox .headline {
         font-size: 4.8rem;
         line-height: 4.8rem; } }
+    @media all and (min-width: 68.75em) {
+      #sandbox .headline {
+        font-size: 3.6rem;
+        line-height: 3.6rem; } }
   #sandbox .screen-readable, #sandbox .main-media--hidden-caption .main-media__caption__text, #sandbox .meta .alerts .alerts__label {
     position: absolute;
     overflow: hidden;
@@ -3171,6 +3171,22 @@
     position: static;
     overflow: auto;
     clip: auto; }
+  @media all and (min-width: 68.75em) {
+    #sandbox .main-media {
+      padding-top: 12px; }
+      #sandbox .main-media figure.element {
+        margin: 0 auto 0 240px;
+        padding: 0;
+        width: 620px; }
+      #sandbox .main-media .main-media__caption {
+        border: none;
+        padding-left: 0;
+        padding-right: 0; }
+        #sandbox .main-media .main-media__caption__icon {
+          vertical-align: top; }
+        #sandbox .main-media .main-media__caption__text {
+          display: inline-block;
+          width: 590px; } }
   #sandbox .main-media--hidden-caption {
     position: relative; }
     #sandbox .main-media--hidden-caption .main-media__caption {
@@ -3225,6 +3241,9 @@
       #sandbox .meta {
         font-size: 1.6rem;
         line-height: 2.2rem; } }
+    @media all and (min-width: 68.75em) {
+      #sandbox .meta {
+        border: none; } }
     #sandbox .meta .avatar--author {
       margin: 0px 9px 12px 0px;
       float: left; }
@@ -3237,6 +3256,12 @@
           remove when one or the other has been chosen */ }
   #sandbox .meta__misc {
     padding: 8px 12px 24px 12px; }
+    @media all and (min-width: 68.75em) {
+      #sandbox .meta__misc {
+        margin: 0 auto 0 240px;
+        padding-left: 0;
+        padding-right: 0;
+        width: 620px; } }
   #sandbox .meta__pubdate {
     color: #999;
     font-family: "Guardian Agate Sans 1 Web", sans-serif; }
@@ -3261,10 +3286,14 @@
       #sandbox .section {
         font-size: 2rem;
         line-height: 2rem; } }
-    @media all and (min-width: 40.63em) {
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       #sandbox .section {
         font-size: 2.4rem;
         line-height: 2.4rem; } }
+    @media all and (min-width: 68.75em) {
+      #sandbox .section {
+        font-size: 1.8rem;
+        line-height: 1.8rem; } }
     #sandbox .section::before {
       margin-right: 8px;
       line-height: 92%;
@@ -3283,10 +3312,14 @@
       #sandbox .section__live {
         font-size: 2rem;
         line-height: 2rem; } }
-    @media all and (min-width: 40.63em) {
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       #sandbox .section__live {
         font-size: 2.4rem;
         line-height: 2.4rem; } }
+    @media all and (min-width: 68.75em) {
+      #sandbox .section__live {
+        font-size: 1.8rem;
+        line-height: 1.8rem; } }
     @media all and (min-width: 40.63em) {
       #sandbox .section__live {
         font-size: 1.6rem; } }
@@ -3309,10 +3342,14 @@
         #sandbox .section__container .section {
           font-size: 2rem;
           line-height: 2rem; } }
-      @media all and (min-width: 40.63em) {
+      @media all and (min-width: 40.63em) and (max-width: 56.24em) {
         #sandbox .section__container .section {
           font-size: 2.4rem;
           line-height: 2.4rem; } }
+      @media all and (min-width: 68.75em) {
+        #sandbox .section__container .section {
+          font-size: 1.8rem;
+          line-height: 1.8rem; } }
       #sandbox .section__container .section::before {
         margin-right: 8px;
         line-height: 92%;
@@ -3330,10 +3367,14 @@
         #sandbox .section__container .content__labels {
           font-size: 2rem;
           line-height: 2rem; } }
-      @media all and (min-width: 40.63em) {
+      @media all and (min-width: 40.63em) and (max-width: 56.24em) {
         #sandbox .section__container .content__labels {
           font-size: 2.4rem;
           line-height: 2.4rem; } }
+      @media all and (min-width: 68.75em) {
+        #sandbox .section__container .content__labels {
+          font-size: 1.8rem;
+          line-height: 1.8rem; } }
       #sandbox .section__container .content__labels:last-child {
         padding-right: 0; }
     #sandbox .section__container .content__series-label {
@@ -3349,20 +3390,33 @@
         #sandbox .section__container .content__series-label {
           font-size: 2rem;
           line-height: 2rem; } }
-      @media all and (min-width: 40.63em) {
+      @media all and (min-width: 40.63em) and (max-width: 56.24em) {
         #sandbox .section__container .content__series-label {
           font-size: 2.4rem;
           line-height: 2.4rem; } }
+      @media all and (min-width: 68.75em) {
+        #sandbox .section__container .content__series-label {
+          font-size: 1.8rem;
+          line-height: 1.8rem; } }
   #sandbox .content__container {
     display: table;
     width: 100%;
     height: 100%; }
+    @media all and (min-width: 68.75em) {
+      #sandbox .content__container {
+        margin: 0 auto 0 240px;
+        padding-left: 0;
+        padding-right: 0;
+        width: 620px; } }
     #sandbox .content__container .content__labels__container {
       display: table-cell;
       vertical-align: top;
       padding: 7px 12px 12px 12px;
       height: 100%;
       width: 100%; }
+      @media all and (min-width: 68.75em) {
+        #sandbox .content__container .content__labels__container {
+          padding-left: 0; } }
   #sandbox .comment-count {
     font-family: "Guardian Agate Sans 1 Web", sans-serif;
     font-weight: bold;
@@ -3382,11 +3436,13 @@
     @media all and (min-width: 56.25em) {
       #sandbox .comment-count {
         width: 24.21053%; } }
+    @media all and (min-width: 68.75em) {
+      #sandbox .comment-count {
+        padding-right: 0; } }
     .meta #sandbox .comment-count {
       display: none; }
-  @media all and (max-width: 40.62em) {
-    #sandbox .comment-count__label {
-      display: none; } }
+  #sandbox .comment-count__label {
+    display: none; }
   #sandbox .article__header h1 {
     clear: both; }
   #sandbox .standfirst {
@@ -4210,8 +4266,20 @@
     margin-bottom: 5px; }
   #sandbox .article__header .headline {
     padding: 0px 12px 30px 12px; }
+    @media all and (min-width: 68.75em) {
+      #sandbox .article__header .headline {
+        margin: 0 auto 0 240px;
+        padding-left: 0;
+        padding-right: 0;
+        width: 620px; } }
   #sandbox .article__header .standfirst {
     padding: 6px 12px 18px 12px; }
+    @media all and (min-width: 68.75em) {
+      #sandbox .article__header .standfirst {
+        margin: 0 auto 0 240px;
+        padding-left: 0;
+        padding-right: 0;
+        width: 620px; } }
   #sandbox .article__body {
     font-family: "Guardian Text Egyptian Web", Georgia, serif; }
     #sandbox .article__body > .prose .figure-wide:first-child,
@@ -4261,10 +4329,10 @@
       #sandbox .article--comment .article__body,
       #sandbox .article--feature .article__body,
       #sandbox .article--audio .article__body {
-        margin: 0 auto 0 140px;
-        width: 940px;
+        margin: 0 auto 0 240px;
         padding: 12px 0px;
-        padding-right: 320px; } }
+        padding-right: 320px;
+        width: 940px; } }
     #sandbox .article--standard .article__body .figure-wide,
     #sandbox .article--standard .article__body .element-video,
     #sandbox .article--standard .article__body .element-placeholder,
@@ -4391,6 +4459,15 @@
     #sandbox .article--comment .article__header .article__comments,
     #sandbox body:not(.is-live) .article--liveblog .article__header .article__comments {
       width: 24.21053%; } }
+  @media all and (min-width: 68.75em) {
+    #sandbox .article--standard .article__header .headline,
+    #sandbox .article--standard .article__header .standfirst,
+    #sandbox .article--comment .article__header .headline,
+    #sandbox .article--comment .article__header .standfirst,
+    #sandbox body:not(.is-live) .article--liveblog .article__header .headline,
+    #sandbox body:not(.is-live) .article--liveblog .article__header .standfirst {
+      padding-left: 0;
+      padding-right: 0; } }
   #sandbox .article--comment .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
   #sandbox .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
     color: "";
@@ -5410,8 +5487,7 @@
     #sandbox .tone--news .article__header .comment-count {
       border-color: rgba(153, 153, 153, 0.4); }
     #sandbox .tone--news .article__header .headline {
-      color: #333;
-      padding: 0px 12px 30px 12px; }
+      color: #333; }
       #sandbox .tone--news .article__header .headline p.review-rating {
         padding-top: 12px; }
         @media all and (max-width: 28.12em) {
@@ -5433,6 +5509,9 @@
         color: #005689; }
       #sandbox .tone--news .article__header .meta .meta__pubdate {
         color: #999; }
+    #sandbox .tone--news .article__header .main-media {
+      background: #fff;
+      border-top: 1px dotted rgba(153, 153, 153, 0.4); }
     #sandbox .tone--news .article__header .main-media__caption {
       background-color: #fff; }
   #sandbox .tone--news.is_advertising a.alerts--new,
@@ -5457,8 +5536,7 @@
     #sandbox .tone--review .article__header .comment-count a {
       color: #ffce4b; }
     #sandbox .tone--review .article__header .headline {
-      color: #fff;
-      padding: 0px 12px 30px 12px; }
+      color: #fff; }
       #sandbox .tone--review .article__header .headline p.review-rating {
         padding-top: 8px; }
         @media all and (max-width: 28.12em) {
@@ -5505,8 +5583,7 @@
     #sandbox .tone--analysis .article__header .content__series-label a {
       color: #767676; }
     #sandbox .tone--analysis .article__header .headline {
-      color: #005689;
-      padding: 0px 12px 30px 12px; }
+      color: #005689; }
       #sandbox .tone--analysis .article__header .headline p.review-rating {
         padding-top: 12px; }
         @media all and (max-width: 28.12em) {
@@ -5530,7 +5607,6 @@
         color: #005689; }
       #sandbox .tone--analysis .article__header .meta .meta__byline .byline,
       #sandbox .tone--analysis .article__header .meta .meta__byline a {
-        font-weight: 600;
         font-weight: 600; }
       #sandbox .tone--analysis .article__header .meta .meta__pubdate {
         color: #999; }
@@ -5594,10 +5670,14 @@
         #sandbox .tone--deadBlog .article__header .section {
           font-size: 2rem;
           line-height: 2rem; } }
-      @media all and (min-width: 40.63em) {
+      @media all and (min-width: 40.63em) and (max-width: 56.24em) {
         #sandbox .tone--deadBlog .article__header .section {
           font-size: 2.4rem;
           line-height: 2.4rem; } }
+      @media all and (min-width: 68.75em) {
+        #sandbox .tone--deadBlog .article__header .section {
+          font-size: 1.8rem;
+          line-height: 1.8rem; } }
       #sandbox .tone--deadBlog .article__header .section::before {
         margin-right: 8px;
         line-height: 92%;
@@ -5831,6 +5911,11 @@
             padding-bottom: 12px; }
           #sandbox .figure--thumbnail-with-caption figcaption .element-image__credit {
             position: static; } }
+    @media all and (min-width: 68.75em) {
+      .prose #sandbox .figure--thumbnail-with-caption {
+        max-width: 200px;
+        margin: 0;
+        margin-left: -220px; } }
   #sandbox .inline-list {
     list-style: none;
     margin: 0;
@@ -6003,15 +6088,21 @@
     -webkit-align-items: flex-start;
     border-bottom: 1px dotted #b5b3ae;
     font-size: 1.4rem; }
+    @media all and (min-width: 68.75em) {
+      #sandbox .sponsorship {
+        border-bottom: 0;
+        padding-left: 240px; } }
     .gallery ~ #sandbox .sponsorship {
-      border-bottom: none; }
+      border-bottom: 0; }
     .witness + #sandbox .sponsorship {
       border-top: 1px dotted #b5b3ae;
       padding-top: 20px;
       margin-top: 24px; }
   #sandbox .sponsorship__formatted-sponsor-name {
     color: #878787;
-    margin-bottom: 8px; }
+    display: inline-block;
+    margin: 0px 12px 8px 0px;
+    vertical-align: top; }
   #sandbox .sponsorship__about-uri {
     margin-top: 12px;
     font-weight: bold; }
@@ -6933,6 +7024,11 @@
         max-width: 280px;
         margin-right: 12px;
         float: left; } }
+    @media all and (min-width: 68.75em) {
+      #sandbox .prose .element-pullquote {
+        margin: 0;
+        margin-left: -220px;
+        max-width: 200px; } }
   #sandbox .prose figure {
     margin: 12px 12px 0px 0px; }
     #sandbox .prose figure.figure-wide img {
@@ -7721,10 +7817,14 @@
         #sandbox .discussion__header .headline {
           font-size: 3rem;
           line-height: 3rem; } }
-      @media all and (min-width: 40.63em) {
+      @media all and (min-width: 40.63em) and (max-width: 56.24em) {
         #sandbox .discussion__header .headline {
           font-size: 3.6rem;
           line-height: 3.6rem; } }
+      @media all and (min-width: 68.75em) {
+        #sandbox .discussion__header .headline {
+          font-size: 2.7rem;
+          line-height: 2.7rem; } }
   @media all and (min-width: 28.13em) {
     #sandbox .football {
       border-top: 4px solid #4bc6df; } }
