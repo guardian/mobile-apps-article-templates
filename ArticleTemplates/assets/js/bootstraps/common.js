@@ -5,6 +5,7 @@ define([
     'fence',
     'fastClick',
     'smoothScroll',
+    'flipSnap',
     'modules/comments',
     'modules/cards',
     'modules/more-tags',
@@ -17,6 +18,7 @@ define([
     fence,
     FastClick,
     smoothScroll,
+    flipSnap,
     Comments,
     Cards,
     MoreTags,
@@ -155,6 +157,7 @@ define([
             };
             window.articleImageSizer();
         },
+
         isThumbNailImageWithoutCaptionPresent: function(el){
             return el.getElementsByClassName('figure--thumbnail').length;
         },
@@ -246,6 +249,20 @@ define([
             };
         },
 
+        setupTellMeWhenSwitch: function () {
+            // Global function to switch tell me when, called by native code
+            window.tellMeWhenSwitch = function (added, followid) {
+                var tellMeWhenLink = $('a.tell-me-when');
+                if (tellMeWhenLink.length) {
+                    if (added == 1) {
+                        tellMeWhenLink.addClass('added');
+                    } else {
+                        tellMeWhenLink.removeClass('added');
+                    }
+                }
+            };
+        },
+
         setupFontSizing: function () {
             // Global function to resize font, called by native code
             window.fontResize = function (current, replacement) {
@@ -303,7 +320,14 @@ define([
                                 root.location.href = 'x-gu://football_tab_liveblog';
                                 break;
                             case "cricket__tab--liveblog":
+                                if (modules.isAndroid) {
+                                    window.GuardianJSInterface.cricketTabChanged('overbyover');
+                                }
+                                break;
                             case "cricket__tab--stats":
+                                if (modules.isAndroid) {
+                                    window.GuardianJSInterface.cricketTabChanged('scorecard');
+                                }
                                 break;
                             default:
                                 root.location.href = 'x-gu://football_tab_unknown';
@@ -389,6 +413,8 @@ define([
     },
 
     ready = function () {
+        modules.isAndroid = $('body').hasClass('android');
+
         if (!this.initialised) {
             this.initialised = true;
 
@@ -412,6 +438,7 @@ define([
             modules.offline();
             modules.setupOfflineSwitch();
             modules.setupAlertSwitch();
+            modules.setupTellMeWhenSwitch();
             modules.setupFontSizing();
             modules.showTabs(window);
             modules.setGlobalObject(window);

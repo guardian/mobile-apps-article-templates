@@ -1,0 +1,548 @@
+/*doc
+---
+title: Related Content
+name: related-content
+category: Modules
+---
+Related Content / More on this story section
+
+```html_example
+<section class="related-content">
+    <h2 class="related-content__header">
+        More on this story
+    </h2> 
+    <div class="related-content__container">
+        <ul class="related-content__list">
+            <li class="related-content__card related-content__card--news has-image">
+                <a class="related-content__link" href="x-gu://related_item/mobile-apps.guardianapis.com/items/us-news/2014/nov/16/barack-obama-basks-success-asia-pacific-sweep">
+                    <h3 class="related-content__title">
+                        President Barack Obama basks in success of Asia-Pacific sweep
+                    </h3>
+                    <div class="related-content__meta">
+                        <span class="related-content__timestamp">
+                            <span data-icon="" aria-hidden="true"></span>
+                            12w
+                        </span>
+                        <span class="related-content__comments">
+                            <span data-icon="" aria-hidden="true"></span>
+                            196
+                        </span>
+                    </div>
+                    <div class="related-content__main">
+                        <img class="related-content__image" src="http://images.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2014/11/16/1416150105650/cb470b62-604d-42b9-bdd8-d154a2af547c-2060x1236.jpeg?width=256&amp;height=-&amp;quality=60">
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>
+```
+*/
+
+// using the card upsize variables to enable us to upsize the different card measurements in a single place.
+$card-width-col2: $card-width * $card-upsize-col2;
+$card-width-col3: $card-width * $card-upsize-col3;
+$card-gutter-col2: $card-gutter * $card-upsize-col2;
+$card-gutter-col3: $card-gutter * $card-upsize-col3;
+.related-content {
+    margin: base-px(0, 0, 2, 0);
+    border-top: 2px solid color(shade-1);
+
+    .block--failed {
+        display: none;
+    }
+
+    &--has-failed {
+        .block--failed {
+            display: block;
+        }
+
+        .loading--related {
+            display: none;
+        }
+    }
+    
+    &__header {
+        margin: base-px(.5, 1, 1, 1);
+        @include body-font(1.5, $egyptian-display, 600);
+
+        @include mq($from: col2) {
+            margin: base-px(1, 0);
+        }
+    }
+
+    &__container {
+        overflow: hidden;
+        padding: base-px(0, 1);
+
+        @include mq($from: col2) {
+            padding: 0;
+        }
+    }
+
+    &__list {
+        // list will have a modifier class --items-n for how many child elements are container (1 - 4)
+        @for $i from 1 through 4 {
+            &--items-#{$i} {
+                width: ceil(($card-width * $i) + ($card-gutter * ($i - 1)));
+
+                @include mq(col2, col3) {
+                    width: ceil(($card-width-col2 * $i) + ($card-gutter-col2 * ($i - 1)));
+                }
+
+                @include mq($from: col3) {
+                    width: ceil(($card-width-col3 * $i) + ($card-gutter-col3 * ($i - 1)));
+                }
+            }
+        }
+
+        // clear fix
+        &:after {
+            content: '';
+            display: block;
+            clear: both;
+            height: 0;
+        }
+    }
+
+    &__card {
+        float: left;
+        width: $card-width;
+        margin-right: $card-gutter;
+        position: relative;
+        color: color(shade-1);
+        background-color: color(shade-7);
+        border-top: 1px solid color(tone-news-accent);
+        border-bottom: 1px solid color(shade-4);
+
+        @include mq(col2, col3) {
+            width: $card-width-col2;
+            margin-right: $card-gutter-col2;
+        }
+
+        @include mq($from: col3) {
+            width: $card-width-col3;
+            margin-right: $card-gutter-col3;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    &__heading {
+        height: 85px;
+        margin-bottom: 20px;
+        padding: base-px(0.5);
+        color: color(shade-1);
+        font: 200 1.6rem/2.0rem $egyptian-display;
+        text-rendering: optimizeLegibility;
+        @include text-ellipses(4);
+
+        @include mq(col2, col3) {
+            height: 115px;
+            margin-bottom: 20px * $card-upsize-col2;
+            font-size: 1.6rem * $card-upsize-col2;
+            line-height: 2.0rem * $card-upsize-col2;
+        }
+
+        @include mq($from: col3) {
+            height: 130px;
+            margin-bottom: 20px * $card-upsize-col3;
+            font-size: 1.6rem * $card-upsize-col3;
+            line-height: 2.0rem * $card-upsize-col3;
+        }
+    }
+
+    &__title,
+    &__series {
+        // General styles for title icons 
+        &:before {
+            display: inline-block;
+            margin: base-px(-1, 1/3, 0, 0);
+            font: 2.1rem $icon;
+            position: relative;
+            speak: none;
+
+            @include mq(col2, col3) {
+                font-size: 2.1rem * $card-upsize-col2;
+            }
+
+            @include mq($from: col3) {
+                font-size: 2.1rem * $card-upsize-col3;
+            }
+        }
+    }
+
+    &__title:before {
+        // icon for "audio" articles
+        .related-content__heading--audio:not(.is-series) &,
+        .related-content__heading--video:not(.is-series) &,
+        .related-content__heading--gallery:not(.is-series) & {
+            content: "\e047";
+            top: 2px;
+
+            @include mq($from: col2) {
+                top: 4px;
+            }
+        }
+
+        // icon for "video" articles
+        .related-content__heading--video:not(.is-series) & {
+            content: "\e043";
+        }
+
+        // icon for "gallery" articles
+        .related-content__heading--gallery:not(.is-series) & {
+            content: "\e044";
+        }
+    }
+
+    &__series {
+        color: color(tone-news);
+        font-weight: 300;
+    }
+
+    &__series:before {
+        // icon for "audio" articles
+        .related-content__heading--audio.is-series &,
+        .related-content__heading--video.is-series &,
+        .related-content__heading--gallery.is-series & {
+            content: "\e047";
+            top: 2px;
+
+            @include mq($from: col2) {
+                top: 4px;
+            }
+        }
+
+        // icon for "video" articles
+        .related-content__heading--video.is-series & {
+            content: "\e043";
+        }
+
+        // icon for "gallery" articles
+        .related-content__heading--gallery.is-series & {
+            content: "\e044";
+        }
+    }
+
+    &__series:after {
+        content: " / ";
+    }
+
+    &__meta {
+        color: color(shade-3);
+        font: 1.3rem/1 $agate-sans;
+        overflow: hidden;
+
+        @include mq($from: col2) {
+            font-size: $meta-size-1;
+        }
+    }
+
+    &__timestamp,
+    &__comments,
+    &__duration {
+        float: left;
+        height: 20px;
+        padding-left: base-px(.5); 
+    }
+
+    &__timestamp {
+        width: 65px;
+    }
+
+    &__comments,
+    &__duration {
+        border-left: 1px solid color(shade-4);
+    }
+
+    &__main {
+        padding: 0;
+        height: $card-width * .6; // height should cater for standard landscape image ratio
+        overflow: hidden;
+
+        @include mq(col2, col3) {
+            height: ($card-width-col2) * .6; // height should cater for standard landscape image ratio
+        }
+
+        @include mq($from: col3) {
+            height: ($card-width-col3) * .6; // height should cater for standard landscape image ratio
+        }
+    }
+
+    &__image {
+        width: 100%;
+        display: block;
+    }
+
+    &__standfirst {
+        padding: base-px(0, .5);
+        color: color(shade-2);
+        font: 1.2rem/1.6em $egyptian-text;
+        text-rendering: optimizeLegibility;
+        @include text-ellipses(4);
+
+        @include mq(col2, col3) {
+            font-size: 1.2rem * $card-upsize-col2;
+            line-height: 1.6rem * $card-upsize-col2;
+        }
+
+        @include mq($from: col3) {
+            font-size: 1.2rem * $card-upsize-col3;
+            line-height: 1.6rem * $card-upsize-col3;
+        }
+    }
+
+    &__cutout {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+    }
+
+    .touchpoint {
+        position: absolute;
+        bottom: 0;
+        z-index: 2;
+        padding: base-px(.5);
+
+        &__button {
+            height: 29px;
+            width: 29px;
+            line-height: 29px;
+            font-size: 15px;
+
+             @include mq(col2, col3) {
+                height: 29px * $card-upsize-col2;
+                width: 29px * $card-upsize-col2;
+                line-height: 29px * $card-upsize-col2;
+                font-size: 15px * $card-upsize-col2;
+            }
+
+            @include mq($from: col3) {
+                height: 29px * $card-upsize-col3;
+                width: 29px * $card-upsize-col3;
+                line-height: 29px * $card-upsize-col3;
+                font-size: 15px * $card-upsize-col3;
+            }
+        }
+
+        &__label {
+            font-size: 1rem;
+            line-height: 1.3rem;
+
+            @include mq(col2, col3) {
+                font-size: 1rem * $card-upsize-col2;
+                line-height: 1.3rem * $card-upsize-col2;
+            }
+
+            @include mq($from: col3) {
+                font-size: 1rem * $card-upsize-col3;
+                line-height: 1.3rem * $card-upsize-col3;
+            }
+        }
+    }
+
+    // "analysis" cards styling
+    &__card--analysis {
+        border-top-color: color(tone-analysis);
+
+        .related-content {
+            &__heading {
+                color: color(tone-analysis);
+            }
+
+            &__series {
+                color: color(tone-analysis-accent);
+            }
+
+            &__standfirst,
+            &__meta {
+                color: color(shade-2);
+            }
+        }
+    }
+
+    // "comment" cards styling
+    &__card--comment {
+        background-color: color(tone-comment-bg);
+        border-top-color: color(tone-comment);
+
+        .related-content {
+            // icon for "comment" articles
+            &__heading {
+                color: color(shade-3)
+            }
+
+            &__title:before {
+                content: "\e029";;
+            }
+
+            &__series {
+                color: color(tone-comment);
+            }
+
+            &__standfirst {
+                padding-right: $base-4*2;
+                position: relative;
+                z-index: 1;
+            }
+
+            &__comments,
+            &__duration {
+                border-color: fade-out(color(shade-3), .5);
+            }
+        }
+    }
+
+    // "dead blog" cards styling
+    &__card--deadBlog {
+        border-top-color: color(tone-deadblog);
+    }
+
+    // "feature" cards styling
+    &__card--feature1,
+    &__card--feature2,
+    &__card--feature3 {
+        background-color: color(tone-feature1);
+        border-top-color: color(tone-feature1-accent);
+        
+        * {
+            color: color(shade-7);
+        }
+
+        .related-content {
+            &__heading,
+            &__standfirst {
+                color: color(shade-7);
+            }
+
+            &__series {
+                color: fade-out(color(shade-7), .3);
+            }
+
+            &__comments,
+            &__duration {
+                border-color: fade-out(color(shade-4), .66);
+            }
+        }
+    }
+
+    // "live blog" cards styling
+    &__card--liveBlog {
+        background-color: color(tone-live);
+        border-top-color: color(tone-live-accent);
+        
+        * {
+            color: color(shade-7);
+        }
+
+        .related-content {
+            &__heading,
+            &__standfirst {
+                color: color(shade-7);
+            }
+
+            &__comments,
+            &__duration {
+                border-color: fade-out(color(shade-4), .66);
+            }
+        }
+    }
+
+    // "media" cards styling
+    &__card--media {
+        background-color: color(shade-1);
+        border-top-color: color(tone-media);
+
+        .related-content {
+            &__heading,
+            &__standfirst {
+                color: color(shade-7);
+            }
+
+            &__title:before,
+            &__series {
+                color: color(tone-media);
+            }
+
+            &__comments,
+            &__duration {
+                border-color: fade-out(color(shade-4), .66);
+            }
+        }
+
+        .touchpoint {
+            &__button {
+                background-color: color(tone-media);
+                color: color(shade-1);
+            }
+
+            &__label {
+                color: color(tone-media);
+                font-weight: bold;
+            }
+        }
+    }
+
+    // "podcast" cards styling
+    &__card--podcast {
+        background-color: color(shade-6);
+        border-top-color: color(tone-podcast);
+
+        .related-content {
+            &__heading,
+            &__standfirst {
+                color: color(shade-7);
+            }
+
+            &__title:before {
+                content: '\e047';
+                color: color(tone-podcast);
+            }
+
+            &__series {
+                color: color(tone-podcast);
+            }
+
+            &__meta {
+                color: color(shade-7);
+            }
+
+            &__comments,
+            &__duration {
+                border-color: color(shade-7);
+            }
+
+            &__duration {
+                color: color(shade-7);
+                font-weight: bold;
+            }
+        }
+    }
+
+    // "review" cards styling
+    &__card--review {
+        background-color: color(tone-review);
+        border-color: color(tone-review-accent);
+
+        .related-content {
+            &__heading,
+            &__meta,
+            &__standfirst {
+                color: color(shade-7);
+            }
+
+            &__series {
+                color: color(tone-review-accent);
+            }
+
+            &__comments,
+            &__duration {
+                border-color: color(shade-7);
+            }
+        }
+    }
+}
