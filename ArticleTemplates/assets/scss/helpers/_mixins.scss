@@ -124,15 +124,41 @@ $meta-lead-2: 2.2rem;
 // Link Underline Style
 @mixin text-underline($color, $background, $color-accent) {
     a {
-        background-image: linear-gradient(to bottom, $background 50%, rgba($color, .66) 50%);
-        background-repeat: repeat-x;
-        background-size: 2px 2px;
-        background-position: 0 bottom;
-        text-shadow: 4px 0 $background, 3px 0 $background, 2px 0 $background, 1px 0 $background, 0 0 $background, -1px 0 $background, -2px 0 $background, -3px 0 $background, -4px 0 $background;
-    }
+        color: $color;
+        text-decoration: none;
 
-    a:active {
-        background-image: linear-gradient(to bottom, $background 50%, rgba($color-accent, .66) 50%);
+        // Underline via gradient background
+        background-image: linear-gradient(rgba($color, 0.25) 0%, $color 100%);
+        background-repeat: repeat-x; 
+        background-size: 1px 1px;
+        background-position: 0 bottom;
+        
+        // Tweak position + thickness for high res (1.75x and up) displays
+        @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
+          background-image: linear-gradient(rgba($color, 0.25) 0%, $color 100%);
+          background-position: 0 93%;
+        }
+
+        // Clear descendors from underline
+        text-shadow: 3px 0 $background, 2px 0 $background, 1px 0 $background, -1px 0 $background, -2px 0 $background, -3px 0 $background;
+        
+        a:active,
+        &:hover {
+            color: $color-accent;
+            background-image: linear-gradient(to bottom, darken($color-accent, 6%) 0%, darken($color-accent, 6%) 100%);
+        }
+
+        // Style selected links (or else text-shadow makes it look crazy ugly)
+        // Pseudo selectors must go separately, or they break each other
+        &,
+        > * {
+            &::selection {
+                text-shadow: none;
+            }
+            &::-moz-selection {
+                text-shadow: none;
+            }
+        }
     }
 }
 

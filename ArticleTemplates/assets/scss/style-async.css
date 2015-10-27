@@ -1589,14 +1589,33 @@ Provide a summary of events:
   border: 1px dotted #dcdad5; }
   .block--live-summary .prose p a,
   .block--live-summary .prose li a {
-    background-image: linear-gradient(to bottom, #e0e0e0 50%, rgba(0, 86, 137, 0.66) 50%);
+    color: #005689;
+    text-decoration: none;
+    background-image: linear-gradient(rgba(0, 86, 137, 0.25) 0%, #005689 100%);
     background-repeat: repeat-x;
-    background-size: 2px 2px;
+    background-size: 1px 1px;
     background-position: 0 bottom;
-    text-shadow: 4px 0 #e0e0e0, 3px 0 #e0e0e0, 2px 0 #e0e0e0, 1px 0 #e0e0e0, 0 0 #e0e0e0, -1px 0 #e0e0e0, -2px 0 #e0e0e0, -3px 0 #e0e0e0, -4px 0 #e0e0e0; }
-  .block--live-summary .prose p a:active,
-  .block--live-summary .prose li a:active {
-    background-image: linear-gradient(to bottom, #e0e0e0 50%, rgba(75, 198, 223, 0.66) 50%); }
+    text-shadow: 3px 0 #e0e0e0, 2px 0 #e0e0e0, 1px 0 #e0e0e0, -1px 0 #e0e0e0, -2px 0 #e0e0e0, -3px 0 #e0e0e0; }
+    @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
+      .block--live-summary .prose p a,
+      .block--live-summary .prose li a {
+        background-image: linear-gradient(rgba(0, 86, 137, 0.25) 0%, #005689 100%);
+        background-position: 0 93%; } }
+    .block--live-summary .prose p a a:active, .block--live-summary .prose p a:hover,
+    .block--live-summary .prose li a a:active,
+    .block--live-summary .prose li a:hover {
+      color: #4bc6df;
+      background-image: linear-gradient(to bottom, #31beda 0%, #31beda 100%); }
+    .block--live-summary .prose p a::selection,
+    .block--live-summary .prose p a > *::selection,
+    .block--live-summary .prose li a::selection,
+    .block--live-summary .prose li a > *::selection {
+      text-shadow: none; }
+    .block--live-summary .prose p a::-moz-selection,
+    .block--live-summary .prose p a > *::-moz-selection,
+    .block--live-summary .prose li a::-moz-selection,
+    .block--live-summary .prose li a > *::-moz-selection {
+      text-shadow: none; }
   .block--live-summary .block__time {
     font-weight: bold; }
 
@@ -2243,14 +2262,33 @@ Adds typographic styling, typically to content fetched from the Guardian Content
   margin: 12px 0px; }
 .prose p a,
 .prose li a {
-  background-image: linear-gradient(to bottom, #fff 50%, rgba(0, 86, 137, 0.66) 50%);
+  color: #005689;
+  text-decoration: none;
+  background-image: linear-gradient(rgba(0, 86, 137, 0.25) 0%, #005689 100%);
   background-repeat: repeat-x;
-  background-size: 2px 2px;
+  background-size: 1px 1px;
   background-position: 0 bottom;
-  text-shadow: 4px 0 #fff, 3px 0 #fff, 2px 0 #fff, 1px 0 #fff, 0 0 #fff, -1px 0 #fff, -2px 0 #fff, -3px 0 #fff, -4px 0 #fff; }
-.prose p a:active,
-.prose li a:active {
-  background-image: linear-gradient(to bottom, #fff 50%, rgba(75, 198, 223, 0.66) 50%); }
+  text-shadow: 3px 0 #fff, 2px 0 #fff, 1px 0 #fff, -1px 0 #fff, -2px 0 #fff, -3px 0 #fff; }
+  @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
+    .prose p a,
+    .prose li a {
+      background-image: linear-gradient(rgba(0, 86, 137, 0.25) 0%, #005689 100%);
+      background-position: 0 93%; } }
+  .prose p a a:active, .prose p a:hover,
+  .prose li a a:active,
+  .prose li a:hover {
+    color: #4bc6df;
+    background-image: linear-gradient(to bottom, #31beda 0%, #31beda 100%); }
+  .prose p a::selection,
+  .prose p a > *::selection,
+  .prose li a::selection,
+  .prose li a > *::selection {
+    text-shadow: none; }
+  .prose p a::-moz-selection,
+  .prose p a > *::-moz-selection,
+  .prose li a::-moz-selection,
+  .prose li a > *::-moz-selection {
+    text-shadow: none; }
 .prose ul,
 .prose ol,
 .prose dl {
