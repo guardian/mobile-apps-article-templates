@@ -16,28 +16,31 @@ define([
             setupGlobals: function () {
                 // Global functions to handle related content, called by native code
                 window.articleCardsInserter = function (html) {
-                    if (!html) {
-                        modules.articleCardsFailed();
-                    } else {
-                        $('.related-content').html(html);
+                    if ($('.related-content').length) {
+                        if (!html) {
+                            modules.articleCardsFailed();
+                        } else {
+                            $('.related-content').html(html);
 
-                        // setup the snap to grid functionality 
-                        modules.snapToGrid('.related-content__list');
+                            // setup the snap to grid functionality 
+                            modules.snapToGrid('.related-content__list');
+                        }
                     }
                 };
 
                 window.articleCardsFailed = function(){
-                   modules.articleCardsFailed();
+                    modules.articleCardsFailed();
                 };
 
                 window.applyNativeFunctionCall('articleCardsInserter');
                 window.applyNativeFunctionCall('articleCardsFailed');
             },
             articleCardsFailed: function(){
-                $('.related-content').addClass('related-content--has-failed');
+                if ($('.related-content').length) {
+                    $('.related-content').addClass('related-content--has-failed');
+                }
             },
             snapToGrid: function(el) {
-                
                 // Setup now and re-init on resize or orientation change
                 modules.setUpFlipSnap(el);
                 bean.on(window, 'resize.cards orientationchange.cards', window.ThrottleDebounce.debounce(100, false, function () {
@@ -81,7 +84,7 @@ define([
         ready = function () {
             if (!this.initialised) {
                 this.initialised = true;
-                if (bonzo($('.related-content__list')).length) {
+                if ($('.related-content__list').length) {
                     // Test pages will already have a list so just set the snap to grid
                     modules.snapToGrid('.related-content__list');
                 } else {

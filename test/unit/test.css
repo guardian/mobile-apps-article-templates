@@ -1203,6 +1203,27 @@
   */
   /*doc
   ---
+  title: Tell Me When
+  name: tellmewhen
+  category: Modules
+  ---
+  Display an alerts toggle.
+  
+  ```html_example
+  <a class="tell-me-when __TELLMEWHEN_ADDED__" href="__TELLMEWHEN_HREF__">
+      <span class="tell-me-when__state--add">
+          <span data-icon="&#xe087;" aria-hidden="true"></span>
+          <span class="tell-me-when__label">Add reminder for event</span>
+      </span>
+      <span class="tell-me-when__state--remove">
+          <span data-icon="&#xe097;" aria-hidden="true"></span>
+          <span class="tell-me-when__label">Remove reminder for event</span>
+      </span>
+  </a>
+  ```
+  */
+  /*doc
+  ---
   title: Related Content
   name: related-content
   category: Modules
@@ -4726,6 +4747,12 @@
       #sandbox .tone--comment .article--comment .meta a.alerts--new, #sandbox .tone--comment .article--comment .meta a.alerts--new.following:active {
         border-color: #fff;
         color: #fff; }
+  #sandbox .tone--comment a.tell-me-when:active, #sandbox .tone--comment a.tell-me-when.added {
+    background-color: #f39f33;
+    color: #fff; }
+  #sandbox .tone--comment a.tell-me-when, #sandbox .tone--comment a.tell-me-when.added:active {
+    border-color: #f39f33;
+    color: #f39f33; }
   #sandbox .tone--deadBlog .witness {
     margin-top: 12px; }
   #sandbox .tone--deadBlog a.touchpoint:active {
@@ -5079,6 +5106,20 @@
     #sandbox .tone--feature3 .article--feature .meta,
     #sandbox .tone--feature3 .article--feature .meta__pubdate {
       color: rgba(255, 255, 255, 0.8); }
+  #sandbox .tone--feature1 a.tell-me-when:active, #sandbox .tone--feature1 a.tell-me-when.added,
+  #sandbox .tone--feature2 a.tell-me-when:active,
+  #sandbox .tone--feature2 a.tell-me-when.added,
+  #sandbox .tone--feature3 a.tell-me-when:active,
+  #sandbox .tone--feature3 a.tell-me-when.added {
+    background-color: #b82266;
+    color: #fff; }
+  #sandbox .tone--feature1 a.tell-me-when, #sandbox .tone--feature1 a.tell-me-when.added:active,
+  #sandbox .tone--feature2 a.tell-me-when,
+  #sandbox .tone--feature2 a.tell-me-when.added:active,
+  #sandbox .tone--feature3 a.tell-me-when,
+  #sandbox .tone--feature3 a.tell-me-when.added:active {
+    border-color: #b82266;
+    color: #b82266; }
   #sandbox .tone--liveBlog .section__container {
     border-bottom: 1px rgba(255, 255, 255, 0.4) dotted; }
   #sandbox .tone--liveBlog .section {
@@ -5354,9 +5395,9 @@
       #sandbox .tone--media .article--audio .aside-witness__sponsor .aside-witness__sponsor__graphic__logo,
       #sandbox .tone--media .article--visual .aside-witness__sponsor .aside-witness__sponsor__graphic__logo {
         fill: #ffe600; }
-  #sandbox .tone--news a:not(.alerts--new):not(.witness__button) {
+  #sandbox .tone--news a:not(.alerts--new):not(.witness__button):not(.tell-me-when) {
     color: #005689; }
-    #sandbox .tone--news a:not(.alerts--new):not(.witness__button):active {
+    #sandbox .tone--news a:not(.alerts--new):not(.witness__button):not(.tell-me-when):active {
       color: #4bc6df; }
   #sandbox .tone--news .article__header {
     background-color: #fff; }
@@ -5517,6 +5558,12 @@
   #sandbox .tone--review .alerts--new.following:active {
     border-color: #ffce4b;
     color: #ffce4b; }
+  #sandbox .tone--review a.tell-me-when:active, #sandbox .tone--review a.tell-me-when.added {
+    background-color: #ffce4b;
+    color: #fff; }
+  #sandbox .tone--review a.tell-me-when, #sandbox .tone--review a.tell-me-when.added:active {
+    border-color: #ffce4b;
+    color: #fb0; }
   #sandbox .main-media:not(.main-media--hidden-caption) .main-media__caption__icon, #sandbox .figure__caption__icon {
     display: inline-block;
     margin-right: 7px;
@@ -5978,6 +6025,48 @@
   #sandbox .tags__separator {
     font-weight: bold;
     margin: 0 4px; }
+  #sandbox a.tell-me-when {
+    font-family: "Guardian Agate Sans 1 Web", sans-serif;
+    white-space: nowrap;
+    padding: 4px 12px 8px 12px;
+    margin: 0px 0px 12px -4px;
+    display: inline-block;
+    border-radius: 30px;
+    text-overflow: ellipsis;
+    vertical-align: bottom;
+    overflow: hidden;
+    max-width: 100%;
+    color: #005689;
+    border: 1px solid #005689;
+    transition: background-color 0.3s; }
+    @media all and (max-width: 40.62em) {
+      #sandbox a.tell-me-when {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.63em) {
+      #sandbox a.tell-me-when {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
+    #sandbox a.tell-me-when:active, #sandbox a.tell-me-when.added {
+      background-color: #005689;
+      color: #fff; }
+    #sandbox a.tell-me-when span[data-icon] {
+      display: inline-block;
+      vertical-align: bottom;
+      font-size: 1.8rem;
+      position: relative;
+      right: 3px;
+      top: 1px; }
+    #sandbox a.tell-me-when .tell-me-when__state--remove {
+      display: none; }
+    #sandbox a.tell-me-when.added:active {
+      color: #005689;
+      background-color: #fff;
+      border: 1px solid #005689; }
+    #sandbox a.tell-me-when.added .tell-me-when__state--remove {
+      display: block; }
+    #sandbox a.tell-me-when.added .tell-me-when__state--add {
+      display: none; }
   #sandbox .related-content {
     margin: 0px 0px 24px 0px;
     border-top: 2px solid #333; }
