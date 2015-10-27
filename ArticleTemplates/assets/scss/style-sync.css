@@ -1973,10 +1973,16 @@ Display a match summary. The score is updated during the match.
     padding: 6px 3px 0px 0px;
     width: auto;
     display: inline-block;
-    float: right; }
+    float: right;
+    border: 0;
+    border-radius: 0;
+    margin: 0; }
     @media all and (max-width: 28.12em) {
       .match-summary .alerts {
         font-size: 150%; } }
+    .match-summary .alerts span[data-icon] {
+      top: 0;
+      right: 0; }
   @media all and (max-width: 28.12em) {
     .match-summary .alerts__label {
       display: none; } }
