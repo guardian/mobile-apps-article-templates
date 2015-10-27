@@ -350,7 +350,7 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
         border-top-color: color(tone-analysis);
 
         .related-content {
-            &__title {
+            &__heading {
                 color: color(tone-analysis);
             }
 
@@ -372,9 +372,12 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
 
         .related-content {
             // icon for "comment" articles
+            &__heading {
+                color: color(shade-3)
+            }
+
             &__title:before {
-                content: "\e029";
-                color: color(shade-3);
+                content: "\e029";;
             }
 
             &__series {
@@ -411,7 +414,7 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
         }
 
         .related-content {
-            &__title,
+            &__heading,
             &__standfirst {
                 color: color(shade-7);
             }
@@ -437,7 +440,7 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
         }
 
         .related-content {
-            &__title,
+            &__heading,
             &__standfirst {
                 color: color(shade-7);
             }
@@ -455,7 +458,7 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
         border-top-color: color(tone-media);
 
         .related-content {
-            &__title,
+            &__heading,
             &__standfirst {
                 color: color(shade-7);
             }
@@ -490,7 +493,7 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
         border-top-color: color(tone-podcast);
 
         .related-content {
-            &__title,
+            &__heading,
             &__standfirst {
                 color: color(shade-7);
             }
@@ -526,14 +529,14 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
         border-color: color(tone-review-accent);
 
         .related-content {
-            &__title,
+            &__heading,
             &__meta,
             &__standfirst {
                 color: color(shade-7);
             }
 
             &__series {
-                color: color(tone-review);
+                color: color(tone-review-accent);
             }
 
             &__comments,
