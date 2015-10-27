@@ -1,0 +1,73 @@
+/*doc
+---
+title: Tell Me When
+name: tellmewhen
+category: Modules
+---
+Display an alerts toggle.
+
+```html_example
+<a class="tell-me-when __TELLMEWHEN_ADDED__" href="__TELLMEWHEN_HREF__">
+    <span class="tell-me-when__state--add">
+        <span data-icon="&#xe087;" aria-hidden="true"></span>
+        <span class="tell-me-when__label">Add reminder for event</span>
+    </span>
+    <span class="tell-me-when__state--remove">
+        <span data-icon="&#xe097;" aria-hidden="true"></span>
+        <span class="tell-me-when__label">Remove reminder for event</span>
+    </span>
+</a>
+```
+*/
+
+a.tell-me-when {
+    @include meta();
+    font-family: $agate-sans;
+    white-space: nowrap;
+    padding: base-px(.3, 1, .7, 1);
+    margin: base-px(0, 0, 1, -.3);
+    display: inline-block;
+    border-radius: 30px;
+    text-overflow: ellipsis;
+    vertical-align: bottom;
+    overflow: hidden;
+    max-width: 100%;
+    color: color(tone-news);
+    border: 1px solid color(tone-news);
+    transition: background-color 0.3s;
+
+    &:active,
+    &.added {
+        background-color: color(tone-news);
+        color: color(shade-7);
+    }
+
+    span[data-icon]{
+        display: inline-block;
+        vertical-align: bottom;
+        font-size: $body-size-2;
+        position: relative;
+        right: 3px;
+        top: 1px;
+    }
+    
+    .tell-me-when__state--remove {
+        display: none;
+    }
+
+    &.added {
+        &:active{
+            color: color(tone-news);
+            background-color: color(shade-7);
+            border: 1px solid color(tone-news);
+        }
+
+        .tell-me-when__state--remove {
+            display: block;
+        }
+
+        .tell-me-when__state--add {
+            display: none;
+        }
+    }
+}
