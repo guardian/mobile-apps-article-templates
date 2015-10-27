@@ -1,0 +1,3942 @@
+@charset "UTF-8";
+.figure__caption__icon {
+  display: inline-block;
+  margin-right: 7px;
+  position: relative;
+  top: 2px; }
+
+.sponsorship:after {
+  content: '';
+  display: table;
+  clear: both; }
+
+/*doc
+---
+title: Animation
+name: animation
+category: Base
+---
+Fade in from right:
+
+```html_example
+<div class="styleguide__anim">
+    <span class="animated fadeinright"></span>
+</div>
+```
+
+Slide in from right:
+
+```html_example
+<div class="styleguide__anim">
+    <span class="animated slideinright"></span>
+</div>
+```
+
+Scale out:
+
+```html_example
+<div class="styleguide__anim">
+    <span class="animated scaleout"></span>
+</div>
+```
+
+Blink:
+
+```html_example
+<div class="styleguide__anim">
+    <span class="animated blink"></span>
+</div>
+```
+*/
+.animated {
+  -webkit-animation-duration: .6s;
+  animation-duration: .6s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both; }
+
+@-webkit-keyframes fadeinright {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(30px);
+    transform: translateX(30px); }
+  20% {
+    opacity: 1; }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    transform: translateX(0); } }
+.fadeinright {
+  -webkit-animation-name: fadeinright;
+  animation-name: fadeinright; }
+
+@-webkit-keyframes slideinright {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(2000px);
+    transform: translateX(2000px); }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0); } }
+.slideinright {
+  -webkit-animation-name: slideinright;
+  animation-name: slideinright; }
+
+@-webkit-keyframes scaleout {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0); }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(-20px) scale(0.4);
+    transform: translateX(-20px) scale(0.4); } }
+.scaleout {
+  -webkit-animation-name: scaleout;
+  animation-name: scaleout; }
+
+@-webkit-keyframes blink {
+  0% {
+    opacity: 0; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+@keyframes blink {
+  0% {
+    opacity: 0; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+.blink {
+  -webkit-animation-name: blink;
+  animation-name: blink; }
+
+.section__live__pulse {
+  -webkit-animation: blink 1.5s ease-in infinite; }
+
+/*doc
+---
+title: Colours
+name: colour
+category: Base
+---
+A standard colour palette used across the Guardian’s digital products.
+
+```html_example
+<p><b>Basic Shades</b></p>
+<div class="styleguide__color--shade-1"></div>
+<div class="styleguide__color--shade-2"></div>
+<div class="styleguide__color--shade-3"></div>
+<div class="styleguide__color--shade-4"></div>
+<div class="styleguide__color--shade-5"></div>
+<div class="styleguide__color--shade-6"></div>
+<div class="styleguide__color--shade-7"></div>
+<div class="styleguide__color--shade-8"></div>
+
+<p class="clear"><b>Tone News</b></p>
+<div class="styleguide__color--tone-news"></div>
+<div class="styleguide__color--tone-news-accent"></div>
+
+<p class="clear"><b>Tone Live</b></p>
+<div class="styleguide__color--tone-live"></div>
+<div class="styleguide__color--tone-live-accent"></div>
+
+<p class="clear"><b>Tone Media</b></p>
+<div class="styleguide__color--tone-media"></div>
+<div class="styleguide__color--tone-media-accent"></div>
+
+<p class="clear"><b>Tone Feature</b></p>
+<div class="styleguide__color--tone-feature1"></div>
+<div class="styleguide__color--tone-feature1-accent"></div>
+
+<p class="clear"><b>Tone Comment</b></p>
+<div class="styleguide__color--tone-comment"></div>
+<div class="styleguide__color--tone-comment-accent"></div>
+<div class="styleguide__color--tone-comment-text"></div>
+<div class="styleguide__color--tone-comment-bg"></div>
+
+<p class="clear"><b>Tone DeadBlog</b></p>
+<div class="styleguide__color--tone-deadblog"></div>
+
+<p class="clear"><b>Tone Review</b></p>
+<div class="styleguide__color--tone-review-accent"></div>
+<div class="styleguide__color--tone-review"></div>
+<div class="styleguide__color--tone-review-meta-background"></div>
+
+<p class="clear"><b>Tone Analysis</b></p>
+<div class="styleguide__color--tone-analysis"></div>
+
+<p class="clear"><b>Tone Podcast</b></p>
+<div class="styleguide__color--tone-podcast"></div>
+<div class="styleguide__color--tone-podcast-ply-background"></div>
+
+<p class="clear"><b>Tags</b></p>
+<div class="styleguide__color--global-tags"></div>
+<div class="styleguide__color--blogs-tags"></div>
+
+<p class="clear"><b>Witness</b></p>
+<div class="styleguide__color--witness clear"></div>
+<div class="styleguide__color--witness-bg"></div>
+
+<p class="clear"><b>Comments</b></p>
+<div class="styleguide__color--tone-comments-more-bg"></div>
+
+<p class="clear"><b>ADV tones</b></p>
+<div class="styleguide__color--global-adv-bg"></div>
+<div class="styleguide__color--global-adv-bands"></div>
+<div class="styleguide__color--global-adv-text"></div>
+```
+*/
+/*doc
+---
+title: Icons
+name: icons
+category: Base
+---
+A comprehensive collection of bespoke icons based on the design of Guardian Eygptian.
+
+```html_example
+<span class="styleguide__icon"><span data-icon="&#xe000;" aria-hidden="true"></span> Double chevron, up</span>
+<span class="styleguide__icon"><span data-icon="&#xe001;" aria-hidden="true"></span> Double chevron, down</span>
+<span class="styleguide__icon"><span data-icon="&#xe002;" aria-hidden="true"></span> Chevron, down</span>
+<span class="styleguide__icon"><span data-icon="&#xe003;" aria-hidden="true"></span> Chevron, up</span>
+<span class="styleguide__icon"><span data-icon="&#xe004;" aria-hidden="true"></span> Arrow, left</span>
+<span class="styleguide__icon"><span data-icon="&#xe005;" aria-hidden="true"></span> Arrow, right</span>
+<span class="styleguide__icon"><span data-icon="&#xe006;" aria-hidden="true"></span> Double chevron, left</span>
+<span class="styleguide__icon"><span data-icon="&#xe007;" aria-hidden="true"></span> Double chevron, right</span>
+<span class="styleguide__icon"><span data-icon="&#xe008;" aria-hidden="true"></span> Share (Android)</span>
+<span class="styleguide__icon"><span data-icon="&#xe009;" aria-hidden="true"></span> Share (iOS)</span>
+<span class="styleguide__icon"><span data-icon="&#xe00a;" aria-hidden="true"></span> Chevron, left</span>
+<span class="styleguide__icon"><span data-icon="&#xe00b;" aria-hidden="true"></span> Chevron, right</span>
+<span class="styleguide__icon"><span data-icon="&#xe00c;" aria-hidden="true"></span> Guardian hallmark</span>
+<span class="styleguide__icon"><span data-icon="&#xe00d;" aria-hidden="true"></span> Font size</span>
+<span class="styleguide__icon"><span data-icon="&#xe00e;" aria-hidden="true"></span> Font size, increase</span>
+<span class="styleguide__icon"><span data-icon="&#xe00f;" aria-hidden="true"></span> Font size, decrease</span>
+<span class="styleguide__icon"><span data-icon="&#xe010;" aria-hidden="true"></span> Bookmark</span>
+<span class="styleguide__icon"><span data-icon="&#xe014;" aria-hidden="true"></span> Sort</span>
+<span class="styleguide__icon"><span data-icon="&#xe015;" aria-hidden="true"></span> Return, top right</span>
+<span class="styleguide__icon"><span data-icon="&#xe01B;" aria-hidden="true"></span> Location, pin</span>
+<span class="styleguide__icon"><span data-icon="&#xe01D;" aria-hidden="true"></span> Full screen, close</span>
+<span class="styleguide__icon"><span data-icon="&#xe020;" aria-hidden="true"></span> Full screen, open</span>
+<span class="styleguide__icon"><span data-icon="&#xe021;" aria-hidden="true"></span> Interactive</span>
+<span class="styleguide__icon"><span data-icon="&#xe029;" aria-hidden="true"></span> Quote</span>
+<span class="styleguide__icon"><span data-icon="&#xe02D;" aria-hidden="true"></span> Warning</span>
+<span class="styleguide__icon"><span data-icon="&#xe02E;" aria-hidden="true"></span> Clock</span>
+<span class="styleguide__icon"><span data-icon="&#xe032;" aria-hidden="true"></span> Edit</span>
+<span class="styleguide__icon"><span data-icon="&#xe036;" aria-hidden="true"></span> Star</span>
+<span class="styleguide__icon"><span data-icon="&#xe037;" aria-hidden="true"></span> User</span>
+<span class="styleguide__icon"><span data-icon="&#xe038;" aria-hidden="true"></span> Search</span>
+<span class="styleguide__icon"><span data-icon="&#xe039;" aria-hidden="true"></span> Zoom out</span>
+<span class="styleguide__icon"><span data-icon="&#xe03A;" aria-hidden="true"></span> Zoom in</span>
+<span class="styleguide__icon"><span data-icon="&#xe03C;" aria-hidden="true"></span> Comment</span>
+<span class="styleguide__icon"><span data-icon="&#xe03D;" aria-hidden="true"></span> Comment, add</span>
+<span class="styleguide__icon"><span data-icon="&#xe03E;" aria-hidden="true"></span> Open in new window</span>
+<span class="styleguide__icon"><span data-icon="&#xe040;" aria-hidden="true"></span> Settings</span>
+<span class="styleguide__icon"><span data-icon="&#xe043;" aria-hidden="true"></span> Video</span>
+<span class="styleguide__icon"><span data-icon="&#xe044;" aria-hidden="true"></span> Gallery</span>
+<span class="styleguide__icon"><span data-icon="&#xe045;" aria-hidden="true"></span> Refresh</span>
+<span class="styleguide__icon"><span data-icon="&#xe046;" aria-hidden="true"></span> Audio, mute</span>
+<span class="styleguide__icon"><span data-icon="&#xe047;" aria-hidden="true"></span> Audio</span>
+<span class="styleguide__icon"><span data-icon="&#xe048;" aria-hidden="true"></span> Alert, off</span>
+<span class="styleguide__icon"><span data-icon="&#xe049;" aria-hidden="true"></span> Alert, on</span>
+<span class="styleguide__icon"><span data-icon="&#xe04A;" aria-hidden="true"></span> Menu</span>
+<span class="styleguide__icon"><span data-icon="&#xe04B;" aria-hidden="true"></span> Play</span>
+<span class="styleguide__icon"><span data-icon="&#xe04C;" aria-hidden="true"></span> Stop</span>
+<span class="styleguide__icon"><span data-icon="&#xe04D;" aria-hidden="true"></span> Pause</span>
+<span class="styleguide__icon"><span data-icon="&#xe04E;" aria-hidden="true"></span> Fast-forward</span>
+<span class="styleguide__icon"><span data-icon="&#xe04F;" aria-hidden="true"></span> Close</span>
+<span class="styleguide__icon"><span data-icon="&#xe050;" aria-hidden="true"></span> Plus</span>
+<span class="styleguide__icon"><span data-icon="&#xe051;" aria-hidden="true"></span> Asterisk</span>
+<span class="styleguide__icon"><span data-icon="&#xe056;" aria-hidden="true"></span> Clock, inline</span>
+<span class="styleguide__icon"><span data-icon="&#xe060;" aria-hidden="true"></span> Minus</span>
+<span class="styleguide__icon"><span data-icon="&#xe061;" aria-hidden="true"></span> Return, bottom right</span>
+<span class="styleguide__icon"><span data-icon="&#xe062;" aria-hidden="true"></span> Check</span>
+<span class="styleguide__icon"><span data-icon="&#xe063;" aria-hidden="true"></span> Home</span>
+<span class="styleguide__icon"><span data-icon="&#xe064;" aria-hidden="true"></span> Home, add</span>
+<span class="styleguide__icon"><span data-icon="&#xe065;" aria-hidden="true"></span> Home, remove</span>
+<span class="styleguide__icon"><span data-icon="&#xe066;" aria-hidden="true"></span> Arrow, up</span>
+<span class="styleguide__icon"><span data-icon="&#xe067;" aria-hidden="true"></span> Exclamation mark</span>
+<span class="styleguide__icon"><span data-icon="&#xe068;" aria-hidden="true"></span> Drag handle</span>
+<span class="styleguide__icon"><span data-icon="&#xe069;" aria-hidden="true"></span> Google+</span>
+<span class="styleguide__icon"><span data-icon="&#xe06A;" aria-hidden="true"></span> Facebook</span>
+<span class="styleguide__icon"><span data-icon="&#xe06B;" aria-hidden="true"></span> Twitter</span>
+<span class="styleguide__icon"><span data-icon="&#xe070;" aria-hidden="true"></span> Location, compass</span>
+<span class="styleguide__icon"><span data-icon="&#xe071;" aria-hidden="true"></span> Document</span>
+<span class="styleguide__icon"><span data-icon="&#xe072;" aria-hidden="true"></span> Comment, remove</span>
+<span class="styleguide__icon"><span data-icon="&#xe073;" aria-hidden="true"></span> Clock</span>
+<span class="styleguide__icon"><span data-icon="&#xe074;" aria-hidden="true"></span> Warning</span>
+<span class="styleguide__icon"><span data-icon="&#xe075;" aria-hidden="true"></span> Arrow, up small</span>
+<!-- This list is not definitive...-->
+```
+*/
+.icon {
+  font-family: "Guardian Icons", Georgia, serif; }
+
+[data-icon]::before {
+  font-family: "Guardian Icons", Georgia, serif;
+  content: attr(data-icon);
+  speak: none; }
+
+/*doc
+---
+title: Aside
+name: aside
+category: Modules
+---
+Displays a piece of text or HTML component whose content is an aside of the main article. Typically appears floated to the right in many article templates.
+
+```html_example
+<aside class="aside">
+    <p>Standing nearly two metres tall and weighing as much as a car, <strong>the European bison</strong> is the continent's largest land mammal. Bison bonasus eat grasses and herbs, and are capable of consuming 32kg each day.</p>
+</aside>
+
+<p><i>Bison bonasus</i> was driven to extinction in the wild across Europe in 1927 after decades of decline from hunting and habitat loss. But it has become that rare endangered species: a conservation success story. There are now thousands in the wild, all descended from the 54 individuals in captivity when the last wild one was killed in Poland's Bialowieza forest. Despite the increase in numbers, the European bison is still rarer than other high profile species, such as the black rhino, even with the reintroductions. There are over 5,000 European bison, with about 3,200 in the wild.</p>
+```
+*/
+.aside {
+  margin: 24px 0px;
+  border-top: 1px dotted #dcdad5;
+  padding: 12px 0px;
+  width: 100%; }
+  @media all and (max-width: 28.12em) {
+    .aside {
+      border-bottom: 1px dotted #dcdad5; } }
+
+/*doc
+---
+title: Container
+name: container
+category: Containers
+---
+Display a titled container for comments, cards or other components that should be visually grouped.
+
+```html_example
+<div class="container">
+    <div class="container__header">
+        <div class="container__title">
+            <h2 class="container__title__label"><a class="container__title__link" href="#">Comments <span class="container__title__meta">350</span></a></h2>
+        </div>
+        
+        <div class="container__action container__action--comment">
+            <a class="touchpoint touchpoint--primary" href="#">
+                <span class="touchpoint__label">Leave a comment</span>
+                <span class="touchpoint__button icon">&#xe03d;</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="container__body">
+        <p>Container content</p>
+    </div>
+
+    <div class="container__footer">
+        <div class="container__action container__action--view-more">
+            <a class="touchpoint touchpoint--secondary" href="#">
+                <span class="touchpoint__label">View more</span>
+                <span class="touchpoint__button icon">&#xe00b;</span>
+            </a>
+        </div>
+    </div>
+</div>
+```
+*/
+.container {
+  margin: 0px 0px 24px 0px;
+  border-top: 2px solid #333; }
+
+.container__header,
+.container__footer {
+  overflow: auto;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  font-weight: bold;
+  padding: 8px 2px 24px 2px;
+  display: table;
+  width: 100%; }
+  @media all and (max-width: 28.12em) {
+    .container__header,
+    .container__footer {
+      padding: 2.89855%; } }
+
+.container__title {
+  color: #333;
+  vertical-align: top;
+  display: table-cell; }
+
+.container__title__label {
+  font-family: "Guardian Egyptian Web", Georgia, serif;
+  font-weight: 600;
+  margin-top: -1px; }
+  @media all and (max-width: 40.62em) {
+    .container__title__label {
+      font-size: 2.4rem;
+      line-height: 3.6rem; } }
+  @media all and (min-width: 40.63em) {
+    .container__title__label {
+      font-size: 2.7rem;
+      line-height: 3.9rem; } }
+  .container__title__label .container__title__link {
+    color: #333; }
+    .container__title__label .container__title__link:active {
+      color: #333; }
+
+.container__title__meta {
+  color: #999;
+  font-weight: 600; }
+
+.container__action {
+  vertical-align: top;
+  display: table-cell; }
+  @media all and (max-width: 40.62em) {
+    .container__action {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    .container__action {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  .container__action.container__action--sort {
+    padding-top: 12px; }
+
+.container__action--comment,
+.container__action--view-more {
+  float: right; }
+
+.container__action--comment .touchpoint__button:before {
+  position: relative;
+  top: -2px;
+  left: 2px; }
+
+@media all and (max-width: 28.12em) {
+  .container--comments .container__header .touchpoint__label {
+    display: none; } }
+.container__header {
+  height: 54px; }
+  .container__header .container__action .touchpoint--primary {
+    display: none !important; }
+  .container__header .container__action .comments-closed-label .touchpoint__label {
+    display: none; }
+
+.comments--open .container__header {
+  height: 54px; }
+  .comments--open .container__header .container__action .touchpoint--primary {
+    display: block !important; }
+  .comments--open .container__header .comments-closed-label .touchpoint__label {
+    display: none !important; }
+
+.container__body {
+  overflow: hidden; }
+  .container--has-failed:not(.container--comments) .container__body {
+    display: none; }
+
+.container__outbrain {
+  overflow: hidden;
+  display: none; }
+
+/* Android Tweaks - Displays Leave a comment icon by default */
+.android .container {
+  margin: 0px 12px 0px 12px; }
+  .android .container.comments--closed .container__action .touchpoint--primary {
+    display: none !important; }
+  .android .container .container__action .touchpoint--primary {
+    display: block !important; }
+.android .container--related {
+  margin-bottom: 48px; }
+
+/*doc
+---
+title: Figure
+name: figure
+category: Modules
+---
+Display an embedded element. Element embeds are typically shown as figures, and can optionally include a supporting caption.
+
+```html_example
+<figure>
+    <img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/11/1402512126497/Matt-Kenyon-on-Birmingham-014.jpg?width=900&amp;height=540&amp;quality=60"/>
+    <figcaption>
+        ‘The absurdity of the inspectors’ findings is clearest in the case of Gracelands, whose staff were taken to task for failing to ensure its 2- to 4-year-olds were protected against ‘extreme and radical behaviour'.' Illustration: Matt Kenyon
+    </figcaption>
+</figure>
+```
+*/
+figure img {
+  display: block; }
+figure video {
+  width: 100%; }
+figure figcaption {
+  color: #767676;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  border-bottom: 1px dotted rgba(153, 153, 153, 0.4);
+  padding: 6px 12px 24px 12px; }
+  @media all and (max-width: 40.62em) {
+    figure figcaption {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    figure figcaption {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+
+.figure-wide {
+  margin: 12px 0px; }
+  .main-media .figure-wide {
+    margin: 0; }
+
+.figure--thumbnail img,
+.figure--thumbnail-with-caption img,
+.figure-wide img {
+  width: 100%;
+  height: auto; }
+.figure--thumbnail figcaption,
+.figure--thumbnail-with-caption figcaption,
+.figure-wide figcaption {
+  font-size: 1.4rem; }
+
+.figure--thumbnail {
+  float: left;
+  max-width: 65px;
+  margin: 6px 13px 0 0; }
+  .prose .figure--thumbnail {
+    margin-top: 6px; }
+
+.figure--thumbnail-with-caption {
+  display: block;
+  position: relative;
+  width: 100%; }
+  .figure--thumbnail-with-caption .figure__inner {
+    width: 50%;
+    display: block;
+    padding-right: 10px; }
+  .figure--thumbnail-with-caption figcaption {
+    display: block;
+    height: 100%;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    border-bottom: 1px dotted rgba(153, 153, 153, 0.4);
+    border-top: 1px dotted rgba(153, 153, 153, 0.4); }
+    .figure--thumbnail-with-caption figcaption .element-image__caption {
+      height: calc(100% - 60px);
+      overflow: hidden;
+      display: block;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical; }
+    .figure--thumbnail-with-caption figcaption .element-image__credit {
+      position: absolute;
+      bottom: 0; }
+  @media all and (min-width: 40.63em) {
+    .figure--thumbnail-with-caption {
+      float: left;
+      width: 33%;
+      margin-right: 15px; }
+      .figure--thumbnail-with-caption .figure__inner {
+        width: 100%;
+        margin-bottom: 10px;
+        padding-right: 0; }
+      .figure--thumbnail-with-caption figcaption {
+        padding-bottom: 12px;
+        position: static;
+        height: auto;
+        width: 100%; }
+        .figure--thumbnail-with-caption figcaption .element-image__caption {
+          height: auto;
+          display: block;
+          padding-bottom: 12px; }
+        .figure--thumbnail-with-caption figcaption .element-image__credit {
+          position: static; } }
+
+/*doc
+---
+title: Unstyled inline list
+name: inline-list
+category: Modules
+---
+Removes bullets, padding and margins from lists.
+
+```html_example
+<ul class="inline-list">
+    <li class="inline-list__item">Guardian</li>
+    <li class="inline-list__item">Mobile</li>
+    <li class="inline-list__item">Applications</li>
+</ul>
+```
+*/
+.inline-list {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+.inline-list__item {
+  display: inline-block;
+  vertical-align: top; }
+
+/*doc
+---
+title: Interactive
+name: interactive
+category: Modules
+---
+Displays a 'content unavailable' instead of an interactive if there is no connection
+
+```html_example
+	<div class="element element-interactive interactive interactive--offline"></div>
+```
+*/
+body[data-fullscreen-interactive] {
+  margin: 0; }
+
+.interactive--offline {
+  background-color: #eaeaea;
+  text-align: center;
+  padding: 1px 0;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  color: #767676;
+  clear: both;
+  margin: 0; }
+  @media all and (max-width: 40.62em) {
+    .interactive--offline {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    .interactive--offline {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  body:not([data-fullscreen-interactive]) .interactive--offline {
+    margin: 0 -12px 0 -12px !important; }
+  @media all and (max-width: 40.62em) {
+    body[data-fullscreen-interactive] .interactive--offline {
+      font-size: 1.96rem;
+      line-height: 2.8rem; } }
+  @media all and (min-width: 40.63em) {
+    body[data-fullscreen-interactive] .interactive--offline {
+      font-size: 2.24rem;
+      line-height: 3.08rem; } }
+  .interactive--offline:before {
+    content: "Sorry, we are unable to display\Athis content as you have\Ano internet connection.\APlease try again.";
+    white-space: pre;
+    display: block;
+    vertical-align: middle;
+    margin-top: 3.5em;
+    padding-top: 2.5em;
+    background: transparent url("../img/unsmiley.png") no-repeat center top;
+    background-size: 2em; }
+  .interactive--offline * {
+    display: none; }
+  .interactive--offline .interactive--offline--icon {
+    display: inline-block;
+    margin-top: 1em;
+    margin-bottom: 3.5em;
+    color: #767676;
+    font-family: "Guardian Icons", Georgia, serif;
+    -webkit-tap-highlight-color: transparent; }
+    .interactive--offline .interactive--offline--icon:after {
+      display: inline-block;
+      padding: 7px 10px 13px 10px;
+      font-size: 1.5em; }
+    .interactive--offline .interactive--offline--icon.interactive--offline--icon--reload:after {
+      content: '\00e045';
+      border: 1px solid #767676;
+      border-radius: 50%; }
+    .interactive--offline .interactive--offline--icon.interactive--offline--icon--reload:active {
+      color: #fff; }
+      .interactive--offline .interactive--offline--icon.interactive--offline--icon--reload:active:after {
+        border: 1px solid #fff; }
+    .interactive--offline .interactive--offline--icon.interactive--offline--icon--loading {
+      display: none;
+      -webkit-animation: fadeIn;
+      -webkit-animation-direction: alternate;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-duration: 1s; }
+      .interactive--offline .interactive--offline--icon.interactive--offline--icon--loading:after {
+        content: '\00e00c';
+        padding: 7px 10px 15px 10px; }
+  .interactive--offline.interactive--loading .interactive--offline--icon--reload {
+    display: none; }
+  .interactive--offline.interactive--loading .interactive--offline--icon--loading {
+    display: block; }
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+/*doc
+---
+title: More
+name: more
+category: Modules
+---
+Display a link to view more.
+
+```html_example
+<div class="more more--comments">
+    <span class="more__label" data-icon="&#xe050;">
+        <span class="more__text">Show 3 more replies</span>
+    </span>
+</div>
+
+<div class="more more--live-blogs">
+    <button class="more__button">
+        <span class="more__icon" data-icon="&#xe050;" aria-hidden="true"></span>
+        <span class="more__text">View more updates</span>
+    </button>
+</div>
+```
+*/
+.more {
+  padding: 0px 0px 24px 0px; }
+  .more .more__label,
+  .more .more__button {
+    display: inline-block;
+    vertical-align: middle;
+    color: #fff;
+    font-family: "Guardian Agate Sans 1 Web", sans-serif;
+    font-weight: bold;
+    padding: 6px 18px 6px 14px;
+    border-radius: 40px;
+    border: none;
+    outline: none; }
+    @media all and (max-width: 40.62em) {
+      .more .more__label,
+      .more .more__button {
+        font-size: 1.4rem;
+        line-height: 2.1rem; } }
+    @media all and (min-width: 40.63em) {
+      .more .more__label,
+      .more .more__button {
+        font-size: 1.575rem;
+        line-height: 2.275rem; } }
+  .more .more__label {
+    padding: 6px 12px 6px 6px;
+    position: static; }
+    .more .more__label:before {
+      position: relative;
+      font-size: 110%;
+      right: 5px; }
+    .more .more__label:active {
+      color: #e6e6e6; }
+  .more .more__text,
+  .more .more__icon {
+    display: inline-block;
+    padding: 0px 6px;
+    vertical-align: top;
+    margin-top: -1px; }
+
+.more--comments {
+  padding-top: 12px;
+  border-top: 1px dotted #dcdad5; }
+  @media all and (max-width: 40.62em) {
+    .more--comments {
+      margin-left: 52px; } }
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+    .more--comments {
+      margin-left: 33.80282%; } }
+  @media all and (min-width: 56.25em) {
+    .more--comments {
+      margin-left: 31.57895%; } }
+  .more--comments .more__label {
+    background-color: #005689; }
+    .more--comments .more__label:active {
+      background-color: #003656; }
+  .more--comments .more__text,
+  .more--comments .more__icon {
+    color: #fff; }
+
+.more--live-blogs {
+  border-bottom: 1px dotted #dcdad5; }
+  @media all and (max-width: 40.62em) {
+    .more--live-blogs {
+      margin: 0px 12px; } }
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+    .more--live-blogs {
+      margin-left: 33.80282%; } }
+  @media all and (min-width: 56.25em) {
+    .more--live-blogs {
+      margin-left: 31.57895%; } }
+  .more--live-blogs .more__button {
+    background-color: #b51800; }
+    .more--live-blogs .more__button:active {
+      background-color: #821100; }
+
+/*doc
+---
+title: Tags
+name: tags
+category: Modules
+---
+Display which keywords an article has been tagged with.
+
+```html_example
+<div class="tags">
+    <ul class="inline-list">
+        <li class="inline-list__item screen-readable">Tags:</li><!--
+     --><li class="inline-list__item"><a href="#">Guardian</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
+     --><li class="inline-list__item"><a href="#">Mobile</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
+     --><li class="inline-list__item"><a href="#">Applications</a><span class="tags__separator" aria-hidden="true">&#183;</span></li>
+    </ul>
+</div>
+```
+*/
+.tags {
+  color: #999;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  border-top: 1px dotted #dcdad5;
+  padding: 5px 12px 20px 8px;
+  /*5px 12px 19px 8px*/
+  width: 100%;
+  clear: both; }
+  @media all and (max-width: 40.62em) {
+    .tags {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    .tags {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  .tags .hide-tags {
+    display: none; }
+  .tags .show-tags {
+    display: inline-block; }
+  .tags .inline-list__item {
+    margin: 1rem 0; }
+    .tags .inline-list__item a {
+      white-space: nowrap;
+      padding: 4px 16px 8px 16px;
+      border-radius: 30px;
+      margin: 4px;
+      text-overflow: ellipsis;
+      max-width: 18.75rem;
+      color: #333;
+      background-color: #f1f1f1; }
+      .tags .inline-list__item a:active {
+        color: #1a1a1a;
+        background-color: #d8d8d8; }
+    .tags .inline-list__item.more-button a {
+      background-color: transparent !important;
+      color: #333;
+      border: 1px solid #d8d8d8; }
+      .tags .inline-list__item.more-button a:active {
+        color: #1a1a1a;
+        border: 1px solid #bebebe; }
+    .tags .inline-list__item:first-of-type {
+      font-weight: bold; }
+    .tags .inline-list__item:last-child .tags__separator {
+      display: none;
+      visibility: hidden; }
+  .witness + .tags {
+    margin-top: 24px; }
+
+.tags__separator {
+  font-weight: bold;
+  margin: 0 4px; }
+
+/*doc
+---
+title: Tell Me When
+name: tellmewhen
+category: Modules
+---
+Display an alerts toggle.
+
+```html_example
+<a class="tell-me-when __TELLMEWHEN_ADDED__" href="__TELLMEWHEN_HREF__">
+    <span class="tell-me-when__state--add">
+        <span data-icon="&#xe087;" aria-hidden="true"></span>
+        <span class="tell-me-when__label">Add reminder for event</span>
+    </span>
+    <span class="tell-me-when__state--remove">
+        <span data-icon="&#xe097;" aria-hidden="true"></span>
+        <span class="tell-me-when__label">Remove reminder for event</span>
+    </span>
+</a>
+```
+*/
+a.tell-me-when {
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  white-space: nowrap;
+  padding: 4px 12px 8px 12px;
+  margin: 0px 0px 12px -4px;
+  display: inline-block;
+  border-radius: 30px;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+  overflow: hidden;
+  max-width: 100%;
+  color: #005689;
+  border: 1px solid #005689;
+  transition: background-color 0.3s; }
+  @media all and (max-width: 40.62em) {
+    a.tell-me-when {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    a.tell-me-when {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  a.tell-me-when:active, a.tell-me-when.added {
+    background-color: #005689;
+    color: #fff; }
+  a.tell-me-when span[data-icon] {
+    display: inline-block;
+    vertical-align: bottom;
+    font-size: 1.8rem;
+    position: relative;
+    right: 3px;
+    top: 1px; }
+  a.tell-me-when .tell-me-when__state--remove {
+    display: none; }
+  a.tell-me-when.added:active {
+    color: #005689;
+    background-color: #fff;
+    border: 1px solid #005689; }
+  a.tell-me-when.added .tell-me-when__state--remove {
+    display: block; }
+  a.tell-me-when.added .tell-me-when__state--add {
+    display: none; }
+
+/*doc
+---
+title: Related Content
+name: related-content
+category: Modules
+---
+Related Content / More on this story section
+
+```html_example
+<section class="related-content">
+    <h2 class="related-content__header">
+        More on this story
+    </h2> 
+    <div class="related-content__container">
+        <ul class="related-content__list">
+            <li class="related-content__card related-content__card--news has-image">
+                <a class="related-content__link" href="x-gu://related_item/mobile-apps.guardianapis.com/items/us-news/2014/nov/16/barack-obama-basks-success-asia-pacific-sweep">
+                    <h3 class="related-content__title">
+                        President Barack Obama basks in success of Asia-Pacific sweep
+                    </h3>
+                    <div class="related-content__meta">
+                        <span class="related-content__timestamp">
+                            <span data-icon="" aria-hidden="true"></span>
+                            12w
+                        </span>
+                        <span class="related-content__comments">
+                            <span data-icon="" aria-hidden="true"></span>
+                            196
+                        </span>
+                    </div>
+                    <div class="related-content__main">
+                        <img class="related-content__image" src="http://images.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2014/11/16/1416150105650/cb470b62-604d-42b9-bdd8-d154a2af547c-2060x1236.jpeg?width=256&amp;height=-&amp;quality=60">
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>
+```
+*/
+.related-content {
+  margin: 0px 0px 24px 0px;
+  border-top: 2px solid #333; }
+  .related-content .block--failed {
+    display: none; }
+  .related-content--has-failed .block--failed {
+    display: block; }
+  .related-content--has-failed .loading--related {
+    display: none; }
+  .related-content__header {
+    margin: 6px 12px 12px 12px; }
+    @media all and (max-width: 40.62em) {
+      .related-content__header {
+        font: 600 2.4rem/3.6rem "Guardian Egyptian Web", Georgia, serif; } }
+    @media all and (min-width: 40.63em) {
+      .related-content__header {
+        font: 600 2.7rem/3.9rem "Guardian Egyptian Web", Georgia, serif; } }
+    @media all and (min-width: 40.63em) {
+      .related-content__header {
+        margin: 12px 0px; } }
+  .related-content__container {
+    overflow: hidden;
+    padding: 0px 12px; }
+    @media all and (min-width: 40.63em) {
+      .related-content__container {
+        padding: 0; } }
+  .related-content__list--items-1 {
+    width: 140px; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      .related-content__list--items-1 {
+        width: 182px; } }
+    @media all and (min-width: 56.25em) {
+      .related-content__list--items-1 {
+        width: 210px; } }
+  .related-content__list--items-2 {
+    width: 284px; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      .related-content__list--items-2 {
+        width: 370px; } }
+    @media all and (min-width: 56.25em) {
+      .related-content__list--items-2 {
+        width: 426px; } }
+  .related-content__list--items-3 {
+    width: 428px; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      .related-content__list--items-3 {
+        width: 557px; } }
+    @media all and (min-width: 56.25em) {
+      .related-content__list--items-3 {
+        width: 642px; } }
+  .related-content__list--items-4 {
+    width: 572px; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      .related-content__list--items-4 {
+        width: 744px; } }
+    @media all and (min-width: 56.25em) {
+      .related-content__list--items-4 {
+        width: 858px; } }
+  .related-content__list:after {
+    content: '';
+    display: block;
+    clear: both;
+    height: 0; }
+  .related-content__card {
+    float: left;
+    width: 140px;
+    margin-right: 4px;
+    position: relative;
+    color: #333;
+    background-color: #fff;
+    border-top: 1px solid #4bc6df;
+    border-bottom: 1px solid #dcdad5; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      .related-content__card {
+        width: 182px;
+        margin-right: 5.2px; } }
+    @media all and (min-width: 56.25em) {
+      .related-content__card {
+        width: 210px;
+        margin-right: 6px; } }
+    .related-content__card:last-child {
+      margin-right: 0; }
+  .related-content__heading {
+    height: 85px;
+    margin-bottom: 20px;
+    padding: 6px;
+    color: #333;
+    font: 200 1.6rem/2rem "Guardian Egyptian Web", Georgia, serif;
+    text-rendering: optimizeLegibility;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      .related-content__heading {
+        height: 115px;
+        margin-bottom: 26px;
+        font-size: 2.08rem;
+        line-height: 2.6rem; } }
+    @media all and (min-width: 56.25em) {
+      .related-content__heading {
+        height: 130px;
+        margin-bottom: 30px;
+        font-size: 2.4rem;
+        line-height: 3rem; } }
+  .related-content__title:before, .related-content__series:before {
+    display: inline-block;
+    margin: -12px 4px 0px 0px;
+    font: 2.1rem "Guardian Icons", Georgia, serif;
+    position: relative;
+    speak: none; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      .related-content__title:before, .related-content__series:before {
+        font-size: 2.73rem; } }
+    @media all and (min-width: 56.25em) {
+      .related-content__title:before, .related-content__series:before {
+        font-size: 3.15rem; } }
+  .related-content__heading--audio:not(.is-series) .related-content__title:before, .related-content__heading--video:not(.is-series) .related-content__title:before, .related-content__heading--gallery:not(.is-series) .related-content__title:before {
+    content: "\e047";
+    top: 2px; }
+    @media all and (min-width: 40.63em) {
+      .related-content__heading--audio:not(.is-series) .related-content__title:before, .related-content__heading--video:not(.is-series) .related-content__title:before, .related-content__heading--gallery:not(.is-series) .related-content__title:before {
+        top: 4px; } }
+  .related-content__heading--video:not(.is-series) .related-content__title:before {
+    content: "\e043"; }
+  .related-content__heading--gallery:not(.is-series) .related-content__title:before {
+    content: "\e044"; }
+  .related-content__series {
+    color: #005689;
+    font-weight: 300; }
+  .related-content__heading--audio.is-series .related-content__series:before, .related-content__heading--video.is-series .related-content__series:before, .related-content__heading--gallery.is-series .related-content__series:before {
+    content: "\e047";
+    top: 2px; }
+    @media all and (min-width: 40.63em) {
+      .related-content__heading--audio.is-series .related-content__series:before, .related-content__heading--video.is-series .related-content__series:before, .related-content__heading--gallery.is-series .related-content__series:before {
+        top: 4px; } }
+  .related-content__heading--video.is-series .related-content__series:before {
+    content: "\e043"; }
+  .related-content__heading--gallery.is-series .related-content__series:before {
+    content: "\e044"; }
+  .related-content__series:after {
+    content: " / "; }
+  .related-content__meta {
+    color: #999;
+    font: 1.3rem/1 "Guardian Agate Sans 1 Web", sans-serif;
+    overflow: hidden; }
+    @media all and (min-width: 40.63em) {
+      .related-content__meta {
+        font-size: 1.4rem; } }
+  .related-content__timestamp, .related-content__comments, .related-content__duration {
+    float: left;
+    height: 20px;
+    padding-left: 6px; }
+  .related-content__timestamp {
+    width: 65px; }
+  .related-content__comments, .related-content__duration {
+    border-left: 1px solid #dcdad5; }
+  .related-content__main {
+    padding: 0;
+    height: 84px;
+    overflow: hidden; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      .related-content__main {
+        height: 109.2px; } }
+    @media all and (min-width: 56.25em) {
+      .related-content__main {
+        height: 126px; } }
+  .related-content__image {
+    width: 100%;
+    display: block; }
+  .related-content__standfirst {
+    padding: 0px 6px;
+    color: #767676;
+    font: 1.2rem/1.6em "Guardian Text Egyptian Web", Georgia, serif;
+    text-rendering: optimizeLegibility;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      .related-content__standfirst {
+        font-size: 1.56rem;
+        line-height: 2.08rem; } }
+    @media all and (min-width: 56.25em) {
+      .related-content__standfirst {
+        font-size: 1.8rem;
+        line-height: 2.4rem; } }
+  .related-content__cutout {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 0; }
+  .related-content .touchpoint {
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+    padding: 6px; }
+    .related-content .touchpoint__button {
+      height: 29px;
+      width: 29px;
+      line-height: 29px;
+      font-size: 15px; }
+      @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+        .related-content .touchpoint__button {
+          height: 37.7px;
+          width: 37.7px;
+          line-height: 37.7px;
+          font-size: 19.5px; } }
+      @media all and (min-width: 56.25em) {
+        .related-content .touchpoint__button {
+          height: 43.5px;
+          width: 43.5px;
+          line-height: 43.5px;
+          font-size: 22.5px; } }
+    .related-content .touchpoint__label {
+      font-size: 1rem;
+      line-height: 1.3rem; }
+      @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+        .related-content .touchpoint__label {
+          font-size: 1.3rem;
+          line-height: 1.69rem; } }
+      @media all and (min-width: 56.25em) {
+        .related-content .touchpoint__label {
+          font-size: 1.5rem;
+          line-height: 1.95rem; } }
+  .related-content__card--analysis {
+    border-top-color: #005689; }
+    .related-content__card--analysis .related-content__title {
+      color: #005689; }
+    .related-content__card--analysis .related-content__standfirst, .related-content__card--analysis .related-content__meta {
+      color: #767676; }
+  .related-content__card--comment {
+    background-color: #e3e1dc;
+    border-top-color: #e6711b; }
+    .related-content__card--comment .related-content__title:before {
+      content: "\e029";
+      color: #999; }
+    .related-content__card--comment .related-content__series {
+      color: #e6711b; }
+    .related-content__card--comment .related-content__standfirst {
+      padding-right: 2.10526%;
+      position: relative;
+      z-index: 1; }
+    .related-content__card--comment .related-content__comments, .related-content__card--comment .related-content__duration {
+      border-color: rgba(153, 153, 153, 0.5); }
+  .related-content__card--deadBlog {
+    border-top-color: #b51800; }
+  .related-content__card--feature1, .related-content__card--feature2, .related-content__card--feature3 {
+    background-color: #951c55;
+    border-top-color: #b82266; }
+    .related-content__card--feature1 *, .related-content__card--feature2 *, .related-content__card--feature3 * {
+      color: #fff; }
+    .related-content__card--feature1 .related-content__title, .related-content__card--feature1 .related-content__standfirst, .related-content__card--feature2 .related-content__title, .related-content__card--feature2 .related-content__standfirst, .related-content__card--feature3 .related-content__title, .related-content__card--feature3 .related-content__standfirst {
+      color: #fff; }
+    .related-content__card--feature1 .related-content__series, .related-content__card--feature2 .related-content__series, .related-content__card--feature3 .related-content__series {
+      color: rgba(255, 255, 255, 0.7); }
+    .related-content__card--feature1 .related-content__comments, .related-content__card--feature1 .related-content__duration, .related-content__card--feature2 .related-content__comments, .related-content__card--feature2 .related-content__duration, .related-content__card--feature3 .related-content__comments, .related-content__card--feature3 .related-content__duration {
+      border-color: rgba(220, 218, 213, 0.34); }
+  .related-content__card--liveBlog {
+    background-color: #b51800;
+    border-top-color: #cc2b12; }
+    .related-content__card--liveBlog * {
+      color: #fff; }
+    .related-content__card--liveBlog .related-content__title, .related-content__card--liveBlog .related-content__standfirst {
+      color: #fff; }
+    .related-content__card--liveBlog .related-content__comments, .related-content__card--liveBlog .related-content__duration {
+      border-color: rgba(220, 218, 213, 0.34); }
+  .related-content__card--media {
+    background-color: #333;
+    border-top-color: #fb0; }
+    .related-content__card--media .related-content__title, .related-content__card--media .related-content__standfirst {
+      color: #fff; }
+    .related-content__card--media .related-content__title:before, .related-content__card--media .related-content__series {
+      color: #fb0; }
+    .related-content__card--media .related-content__comments, .related-content__card--media .related-content__duration {
+      border-color: rgba(220, 218, 213, 0.34); }
+    .related-content__card--media .touchpoint__button {
+      background-color: #fb0;
+      color: #333; }
+    .related-content__card--media .touchpoint__label {
+      color: #fb0;
+      font-weight: bold; }
+  .related-content__card--podcast {
+    background-color: #484848;
+    border-top-color: #a7d8f2; }
+    .related-content__card--podcast .related-content__title, .related-content__card--podcast .related-content__standfirst {
+      color: #fff; }
+    .related-content__card--podcast .related-content__title:before {
+      content: '\e047';
+      color: #a7d8f2; }
+    .related-content__card--podcast .related-content__series {
+      color: #a7d8f2; }
+    .related-content__card--podcast .related-content__meta {
+      color: #fff; }
+    .related-content__card--podcast .related-content__comments, .related-content__card--podcast .related-content__duration {
+      border-color: #fff; }
+    .related-content__card--podcast .related-content__duration {
+      color: #fff;
+      font-weight: bold; }
+  .related-content__card--review {
+    background-color: #615b52;
+    border-color: #ffce4b; }
+    .related-content__card--review .related-content__title, .related-content__card--review .related-content__meta, .related-content__card--review .related-content__standfirst {
+      color: #fff; }
+    .related-content__card--review .related-content__series {
+      color: #615b52; }
+    .related-content__card--review .related-content__comments, .related-content__card--review .related-content__duration {
+      border-color: #fff; }
+
+/*doc
+---
+title: Resizable
+name: resizable
+category: Modules
+---
+Makes a block of text resizable, based on user text size setting.
+
+```html_example
+<div class="resizable">Italian authorities warn of crisis as data shows sharp increase in those making treacherous sea crossing to southern Europe.</div>
+```
+*/
+.font-size-1 .resizable {
+  font-size: 70%;
+  line-height: 1.5; }
+.font-size-2 .resizable {
+  font-size: 80%;
+  line-height: 1.5; }
+.font-size-3 .resizable {
+  font-size: 90%;
+  line-height: 1.5; }
+.font-size-4 .resizable {
+  font-size: 100%;
+  line-height: 1.5; }
+.font-size-5 .resizable {
+  font-size: 110%;
+  line-height: 1.5; }
+.font-size-6 .resizable {
+  font-size: 120%;
+  line-height: 1.5; }
+.font-size-7 .resizable {
+  font-size: 130%;
+  line-height: 1.5; }
+.font-size-8 .resizable {
+  font-size: 140%;
+  line-height: 1.5; }
+.font-size-9 .resizable {
+  font-size: 150%;
+  line-height: 1.5; }
+.font-size-10 .resizable {
+  font-size: 160%;
+  line-height: 1.5; }
+
+/*doc
+---
+title: Sponsorship
+name: sponsorship
+category: Modules
+---
+The 'sponsored by/supported by' section
+
+```html_example
+<<div class="sponsorship">
+    <p class="sponsorship__details">
+        <span class="sponsorship__formatted-sponsor-name">Guardian Cities is supported by:</span>
+        <a href="http://www.100resilientcities.org"><img src="http://pagead2.googlesyndication.com/pagead/imgad?id=CICAgKCToMPhMBABGAEyCMGaSOPVBwyp" class="sponsorship__logo" alt="The Rockefeller Foundation" /><span class="screen-readable"> (opens in a new window)</span></a>
+    </p>
+    <a class="sponsorship__about-uri" href="x-gu://item/mobile-apps.guardianapis.com/items/cities/2014/jan/27/cities-about-this-site">About this content</a>
+</div>	
+```
+*/
+.sponsorship {
+  padding: 8px 12px 16px 12px;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  line-height: 1.2;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  align-items: flex-start;
+  -webkit-align-items: flex-start;
+  border-bottom: 1px dotted #b5b3ae;
+  font-size: 1.4rem; }
+  .gallery ~ .sponsorship {
+    border-bottom: none; }
+  .witness + .sponsorship {
+    border-top: 1px dotted #b5b3ae;
+    padding-top: 20px;
+    margin-top: 24px; }
+
+.sponsorship__formatted-sponsor-name {
+  color: #878787;
+  margin-bottom: 8px; }
+
+.sponsorship__about-uri {
+  margin-top: 12px;
+  font-weight: bold; }
+
+.sponsorship__logo {
+  max-height: 60px; }
+
+.outbrainText {
+  display: none; }
+
+.outbrainImage {
+  display: block; }
+
+/*doc
+---
+title: Error
+name:  error
+category: Modules
+---
+Display an error message when content is unavailable.
+
+```html_example
+<div class="error-message error-message--expired-content">
+    <h1 class="headline error-message__title">Sorry – the page you are looking for has been removed.</h1>
+</div>
+```
+*/
+.expired-content,
+.expired-content body {
+  background: #fff; }
+
+.error-message {
+  padding: 12px; }
+  .error-message .error-message__title {
+    margin-bottom: 24px; }
+  .error-message .error-message__text {
+    margin: 12px 0px; }
+
+/*doc
+---
+title: Discussion
+name: block--discussion
+category: Blocks
+---
+Display a discussion thread.
+
+```html_example
+<div class="block block--discussion-thread">
+    <div class="prose resizable">
+        <p>A dicussion thread contains indvidual comments. See the <a href="#comment">comment markup pattern</a>.</p>
+    </div>
+</div>
+
+<div class="comments-0">
+    <div class="block block--discussion-empty">
+        <div class="comment">
+            <div class="prose resizable">
+                <p>Open for comments. <a href="x-gu://leavecomment">Be the first to join the debate</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="comments-has-failed">
+    <div class="block block--discussion-failed">
+        <div class="comment">
+            <div class="prose resizable">
+                <p>Comments are currently unavailable. Please try again later.</p>
+            </div>
+        </div>
+    </div>
+</div>
+```
+*/
+.block--discussion-thread .comment:nth-of-type(n+5) {
+  display: none; }
+.block--discussion-thread.block--discussion-thread--checked {
+  margin-top: 0; }
+.block--discussion-thread.expand .comment {
+  display: block; }
+.block--discussion-thread.block--discussion-thread--orphan .comment {
+  display: block; }
+
+.block--discussion-empty,
+.block--discussion-failed {
+  color: #767676;
+  display: none; }
+  @media all and (max-width: 40.62em) {
+    .block--discussion-empty,
+    .block--discussion-failed {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    .block--discussion-empty,
+    .block--discussion-failed {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+
+.comments-0 .block--discussion-empty {
+  display: block; }
+
+.comments-0 .container__action--sort a,
+.comments-1 .container__action--sort a,
+.container--has-failed .container__action--sort a {
+  color: #767676; }
+.comments-0 .container__action--view-more,
+.comments-1 .container__action--view-more,
+.container--has-failed .container__action--view-more {
+  display: none; }
+
+.container__action .comments-closed-label {
+  color: #767676;
+  text-align: right; }
+
+.comments--closed .container__header .container__title .container__title__label {
+  line-height: 2.6rem; }
+.comments--closed .container__header .container__title .touchpoint.comments-closed-label .touchpoint__label {
+  color: #767676;
+  padding: 0;
+  display: block; }
+.comments--closed .container__header .container__action .comments-closed-label .touchpoint__label {
+  display: block;
+  padding-top: 12px; }
+.comments--closed .container__header .container__action .touchpoint--primary {
+  display: none !important; }
+
+.container--has-failed .more--comments,
+.container--has-failed .block--discussion-empty {
+  display: none; }
+
+/*doc
+---
+title: Liveblog
+name: block--live
+category: Blocks
+---
+Display a liveblog update:
+
+```html_example
+<div class="block block--live-blog" id="block-539ac02ce4b0bc906f6b6039">
+    <p class="block__time" title="2014-06-13T09:18:19Z">50 minutes ago</p>
+    <div class="block__body">
+        <div class="from-content-api prose resizable selectable">
+            <p><b>Adrian Giles and ITV's expert analysts found themselves under attack from anti-World Cup protesters during the Brazil v Croatia game. </b>Lee Dixon, Fabio Cannavaro and Patrick Vieira were uninjured during the attack on their studio in Rio, but it was a prescient reminder that not everyone is in carnival mood. <a href="#">For full details of the assault with rocks, read here.</a></p>
+        </div>
+        <p class="block__updated">Last Updated: 10:21 GMT+1 Friday, 13 June 2014</p>
+    </div>
+</div>
+```
+
+Highlight a key event:
+
+```html_example
+<div class="block block--live-key-event" id="block-5399f964e4b076bb7c59cad9">
+    <p class="block__time" title="20:04">20:04</p>
+    <div class="block__body">
+        <div class="from-content-api prose resizable selectable">
+            <h2 class="block__title">Brazil v Croatia - line-ups</h2>
+            <p><b>Brazil:</b> Cesar; Alves, Silva, Luiz, Marcelo; Paulinho, Gustavo; Hulk, Oscar, Neymar; Fred.</p>
+            <p><b>Croatia:</b> Pletikosa; Srna, Corluka, Lovren, Vrsaijko; Kovacic, Modric; Rakitic, Perisic, Olic; Jelavic.</p>
+        </div>
+        <p class="block__updated">Last Updated: 20:14 GMT+1 Thursday, 12 June 2014</p>
+    </div>
+</div>
+```
+
+Provide a summary of events:
+
+```html_example
+<div class="block block--live-summary" id="block-539a8ba0e4b06fa6efefb577">
+    <p class="block__time" title="2014-06-13T05:28:14Z">5 hours ago</p>
+    <div class="block__body">
+        <div class="from-content-api prose resizable selectable">
+            <h2 class="block__title">Day two starts here</h2>
+            <p>Hello world, whatever time of day it may be for you. Finally the World Cup is up and running, and we'll be bringing you all the reaction to the opening game (Brazil won, you may have heard) and looking forward to the next three, which take place this evening, late at night or early tomorrow morning, depending on where you are.</p>
+        </div>
+    </div>
+</div>
+```
+*/
+[class*="block--live-"] .block__time {
+  color: #767676;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  padding: 0px 0px 12px 0px;
+  margin-top: -5px; }
+  @media all and (min-width: 40.63em) {
+    [class*="block--live-"] .block__time {
+      padding: 0px 12px 0px 0px;
+      float: left; } }
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+    [class*="block--live-"] .block__time {
+      width: 33.80282%; } }
+  @media all and (min-width: 56.25em) {
+    [class*="block--live-"] .block__time {
+      width: 31.57895%; } }
+@media all and (min-width: 40.63em) {
+  [class*="block--live-"] .block__body {
+    float: left; }
+    [class*="block--live-"] .block__body .twitter-tweet,
+    [class*="block--live-"] .block__body .js-tweet {
+      position: relative; }
+      [class*="block--live-"] .block__body .twitter-tweet::before,
+      [class*="block--live-"] .block__body .js-tweet::before {
+        position: absolute;
+        left: -4rem; }
+    [class*="block--live-"] .block__body .twitter-tweet::before,
+    [class*="block--live-"] .block__body .js-tweet::before {
+      left: -5rem; } }
+@media all and (min-width: 40.63em) and (max-width: 56.24em) {
+  [class*="block--live-"] .block__body {
+    width: 66.19718%; } }
+@media all and (min-width: 56.25em) {
+  [class*="block--live-"] .block__body {
+    width: 68.42105%; } }
+[class*="block--live-"] .block__updated {
+  color: #999;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif; }
+  @media all and (max-width: 40.62em) {
+    [class*="block--live-"] .block__updated {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    [class*="block--live-"] .block__updated {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+[class*="block--live-"] .prose blockquote {
+  margin-right: 0;
+  margin-left: 0; }
+@media all and (min-width: 40.63em) {
+  [class*="block--live-"] .prose figure {
+    width: 100%; } }
+[class*="block--live-"] .prose figure.figure-inline {
+  float: none;
+  clear: both; }
+[class*="block--live-"] .prose figure:last-child figcaption:not(.figure--thumbnail, .figure-wide, .figure--thumbnail-with-caption) {
+  border-bottom: 0; }
+[class*="block--live-"] .prose figcaption {
+  padding: 6px 0px 12px 0px; }
+[class*="block--live-"] .prose p:first-child {
+  margin-top: -2px; }
+[class*="block--live-"] .prose h2:first-child {
+  margin-top: -3px; }
+
+.block--live-key-event {
+  border-top: 2px solid #cc2b12; }
+  .block--live-key-event .block__title {
+    color: #b51800; }
+
+.block--live-summary {
+  background-color: #e0e0e0;
+  border: 1px dotted #dcdad5; }
+  .block--live-summary .prose p a,
+  .block--live-summary .prose li a {
+    background-image: linear-gradient(to bottom, #e0e0e0 50%, rgba(0, 86, 137, 0.66) 50%);
+    background-repeat: repeat-x;
+    background-size: 2px 2px;
+    background-position: 0 bottom;
+    text-shadow: 4px 0 #e0e0e0, 3px 0 #e0e0e0, 2px 0 #e0e0e0, 1px 0 #e0e0e0, 0 0 #e0e0e0, -1px 0 #e0e0e0, -2px 0 #e0e0e0, -3px 0 #e0e0e0, -4px 0 #e0e0e0; }
+  .block--live-summary .prose p a:active,
+  .block--live-summary .prose li a:active {
+    background-image: linear-gradient(to bottom, #e0e0e0 50%, rgba(75, 198, 223, 0.66) 50%); }
+  .block--live-summary .block__time {
+    font-weight: bold; }
+
+/*doc
+---
+title: Comment
+name: comment
+category: Blocks
+---
+Display an individual comment.
+
+```html_example
+<div class="comment visible" id="37064238">
+    <div class="comment__container">
+        <div class="comment__header">
+            <span class="avatar avatar--user">
+                <img class="avatar__img" src="http://static.guim.co.uk/sys-images/Guardian/Pix/site_furniture/2010/09/01/no-user-image.gif">
+            </span>
+            <span class="comment__username">grumpyhistorian</span>
+            <span class="comment__response-to"><span data-icon="&#xe061;" aria-hidden="true"></span><span class="screen-readable">in response to </span></span>
+            <span class="comment__role"></span>
+            <span class="comment__timestamp">5 hours ago</span>
+        </div>
+
+        <div class="comment__body">
+            <div class="prose resizable selectable">
+                <p>Phew thats ok then. I mean govt officials would never lie about the legality of their actions right?</p>
+            </div>
+        </div>
+
+        <div class="comment__options">
+            <a class="comment__reply touchpoint touchpoint--primary touchpoint--small" href="x-gu://leavereply/37064238">
+                <span class="touchpoint__button icon">&#xe061;</span>
+                <span class="touchpoint__label">Reply</span>
+            </a>
+            <a class="comment__report touchpoint" href="x-gu://reportabuse/37064238">
+                <span class="touchpoint__label">Report</span>
+            </a>
+        </div>
+
+        <a class="comment__recommend touchpoint touchpoint--secondary touchpoint--small" href="x-gu://recommendcomment/37064238">
+            <span class="touchpoint__button icon">&#xe066;</span>
+            <span class="touchpoint__label comment__recommend__count">295 <span class="screen-readable">recommendations. Tap to recommend.</span></span>
+        </a>
+    </div>
+</div>
+```
+
+Comment response:
+
+```html_example
+<div class="comment is-response visible" id="37065948">
+    <div class="comment__container">
+        <div class="comment__header">
+            <span class="avatar avatar--user">
+                <img class="avatar__img" src="http://static.guim.co.uk/sys-images/discussion/avatars/2012/12/19/4780434/1816263f-962a-4b24-8e96-1218886e083e/60x60.png">
+            </span>
+            <span class="comment__username">FredericMoreau</span>
+            <span class="comment__response-to"><span data-icon="&#xe061;" aria-hidden="true"></span><span class="screen-readable">in response to </span>grumpyhistorian</span>
+            <span class="comment__role"></span>
+            <span class="comment__timestamp">5 hours ago</span>
+        </div>
+
+        <div class="comment__body">
+            <div class="prose resizable selectable">
+                <p>When it's tax-avoiders and evaders, the government vows to close legal "loop-holes" - when it comes to mass surveillance, they see an opportunity to be exploited.</p>
+                <p>We're told that Parliament has spent far more time on recess this last year than it has sitting, and that the government is running out of things to do - they genuinely think they've fixed everything that needs fixing.</p>
+                <p>After Edward Snowdon, surely there had to be a new Bill put forward, with the aim of replacing RIPA and having a Parliamentary and public debate on the issue? All we've had so far is Malcolm Rifkind sneering on the news about "national security."</p>
+            </div>
+        </div>
+
+        <div class="comment__options">
+            <a class="comment__reply touchpoint touchpoint--primary touchpoint--small" href="x-gu://leavereply/37065948">
+                <span class="touchpoint__button" data-icon="&#xe061;" aria-hidden="true"></span>
+                <span class="touchpoint__label">Reply</a>
+            </a>
+            <a class="comment__report touchpoint" href="x-gu://reportabuse/37065948">
+                <span class="touchpoint__label">Report</a>
+            </a>
+        </div>
+
+        <a class="comment__recommend touchpoint touchpoint--secondary touchpoint--small" href="x-gu://recommendcomment/37065948">
+            <span class="touchpoint__button" data-icon="&#xe066;" aria-hidden="true"></span>
+            <span class="touchpoint__label comment__recommend__count">109 <span class="screen-readable">recommendations. Tap to recommend.</span></span>
+        </a>
+    </div>
+</div>
+```
+
+Comment blocked:
+
+```html_example
+<div class="comment blocked" id="9454526">
+    <div class="comment__container">
+        <div class="comment__header">
+            <span class="avatar avatar--user">
+                <img class="avatar__img" src="http://static.guim.co.uk/sys-images/discussion/avatars/2012/12/19/4780434/1816263f-962a-4b24-8e96-1218886e083e/60x60.png">
+            </span>
+            <span class="comment__username">FredericMoreau</span>
+            <span class="comment__response-to"><span data-icon="&#xe061;" aria-hidden="true"></span><span class="screen-readable">in response to </span>grumpyhistorian</span>
+            <span class="comment__role"></span>
+            <span class="comment__timestamp">5 hours ago</span>
+        </div>
+
+        <div class="comment__body">
+            <div class="prose resizable selectable">
+                This comment was removed by a moderator because it didn't abide by our <a href="http://www.theguardian.com/community-standards">community standards</a>. Replies may also be deleted. For more detail see <a href="http://www.guardian.co.uk/community-faqs">our FAQs</a>.
+            </div>
+        </div>
+
+        <div class="comment__options">
+            <a class="comment__reply touchpoint touchpoint--primary touchpoint--small" href="x-gu://leavereply/37065948">
+                <span class="touchpoint__button" data-icon="&#xe061;" aria-hidden="true"></span>
+                <span class="touchpoint__label">Reply</a>
+            </a>
+            <a class="comment__report touchpoint" href="x-gu://reportabuse/37065948">
+                <span class="touchpoint__label">Report</span>
+            </a>
+        </div>
+
+        <a class="comment__recommend touchpoint touchpoint--secondary touchpoint--small" href="x-gu://recommendcomment/37065948">
+            <span class="touchpoint__button" data-icon="&#xe066;" aria-hidden="true"></span>
+            <span class="touchpoint__label comment__recommend__count">109 <span class="screen-readable">recommendations. Tap to recommend.</span></span>
+        </a>
+    </div>
+</div>
+```
+
+Comment preview:
+
+```html_example
+<div class="discussion--preview">
+    <div class="comment visible comment--preview" id="37089601">
+        <div class="comment__container">
+            <div class="comment__header">
+                <span class="avatar avatar--user">
+                    <img class="avatar__img" src="http://static.guim.co.uk/sys-images/discussion/avatars/2012/02/26/TechnicalEphemera/ee18a40d-1f30-4197-9d3a-76fe081b99a0/60x60.png">
+                </span>
+                <span class="comment__username">TechnicalEphemera</span>
+                <span class="comment__response-to"><span data-icon="&#xe061;" aria-hidden="true"></span><span class="screen-readable">in response to </span></span>
+                <span class="comment__role"></span>
+                <span class="comment__timestamp">16 hours ago</span>
+            </div>
+
+            <div class="comment__body">
+                <div class="prose resizable selectable">
+                    <p>Well he has certainly cocked this up in a spectacularly inept way.</p>
+                    <p>Why pick a fight so publicly if you don't know you are going to win.</p>
+                    <p>If Cameron had shut up nobody in the UK would even care who Juncker was. Now he is utterly humiliated, as Merkel has abandoned him - and the incoming head of the commission hates him personally.</p>
+                </div>
+            </div>
+
+            <div class="comment__options">
+                <a class="comment__reply touchpoint touchpoint--primary touchpoint--small" href="x-gu://leavereply/37089601">
+                    <span class="touchpoint__button" data-icon="&#xe061;" aria-hidden="true"></span>
+                    <span class="touchpoint__label">Reply</a>
+                </a>
+                <a class="comment__report touchpoint" href="x-gu://reportabuse/37089601">
+                    <span class="touchpoint__label">Report</span>
+                </a>
+            </div>
+
+            <a class="comment__recommend touchpoint touchpoint--secondary touchpoint--small" href="x-gu://recommendcomment/37089601">
+                <span class="touchpoint__button" data-icon="&#xe066;" aria-hidden="true"></span>
+                <span class="touchpoint__label comment__recommend__count">273 <span class="screen-readable">recommendations. Tap to recommend.</span></span>
+            </a>
+        </div>
+    </div>
+</div>
+```
+*/
+.comment {
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  -webkit-transition: min-height 300ms ease-in-out;
+  transition: min-height 300ms ease-in-out; }
+  @media all and (max-width: 40.62em) {
+    .comment {
+      font-size: 1.6rem;
+      line-height: 2.4rem; } }
+  @media all and (min-width: 40.63em) {
+    .comment {
+      font-size: 1.8rem;
+      line-height: 2.6rem; } }
+  .comment.comment--open .comment__options {
+    display: block; }
+  .comment.is-response-hidden {
+    display: none; }
+  .comment.blocked {
+    color: #999; }
+    .comment.blocked .comment__header {
+      opacity: .5; }
+    .comment.blocked .comment__recommend {
+      display: none; }
+
+.comment__container {
+  min-height: 64px;
+  margin-bottom: 12px;
+  position: relative; }
+
+.comment__header {
+  word-break: break-all;
+  word-wrap: break-word;
+  margin-top: -2px;
+  padding: 0px 12px 9px 0px;
+  overflow: auto; }
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+    .comment__header {
+      width: 33.80282%;
+      float: left; } }
+  @media all and (min-width: 56.25em) {
+    .comment__header {
+      width: 31.57895%;
+      float: left; } }
+  .comment__header .avatar--user {
+    margin: 4px 8px 0px 0px;
+    float: left; }
+
+.comment__body {
+  word-break: break-word;
+  word-wrap: break-word;
+  padding-bottom: 12px; }
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+    .comment__body {
+      margin-right: 7.04225%;
+      margin-left: 33.80282%; } }
+  @media all and (min-width: 56.25em) {
+    .comment__body {
+      margin-right: 5.26316%;
+      margin-left: 31.57895%; } }
+  .comment__body blockquote:first-child {
+    margin: 0px 24px 12px 24px; }
+
+.comment__role,
+.comment__username {
+  display: block; }
+  @media all and (max-width: 40.62em) {
+    .comment__role,
+    .comment__username {
+      display: inline; } }
+
+.comment__username {
+  color: #333;
+  font-weight: bold;
+  white-space: nowrap; }
+
+.comment__response-to {
+  font-weight: bold;
+  display: none; }
+
+.comment__timestamp {
+  color: #999;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  display: block;
+  white-space: nowrap; }
+  @media all and (max-width: 40.62em) {
+    .comment__timestamp {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    .comment__timestamp {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+
+.comment__recommend {
+  text-align: center;
+  width: auto;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0; }
+  @media all and (max-width: 40.62em) {
+    .comment__recommend {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    .comment__recommend {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  .comment__recommend .touchpoint__button {
+    background-color: transparent;
+    font-size: 14px; }
+    @media all and (min-width: 40.63em) {
+      .comment__recommend .touchpoint__button {
+        margin: 0 auto;
+        display: block; } }
+  .comment__recommend:active .touchpoint__button {
+    color: #fff;
+    background-color: #dcdad5; }
+  .comment__recommend.increase .touchpoint__button {
+    color: #fff;
+    background-color: #4bc6df;
+    border-color: transparent; }
+  .comment__recommend .touchpoint__label {
+    color: #999;
+    font-weight: normal; }
+    @media all and (min-width: 40.63em) {
+      .comment__recommend .touchpoint__label {
+        margin-top: 1px;
+        padding: 0;
+        display: block; } }
+
+.comment__options {
+  background-color: #fff;
+  padding-bottom: 6px;
+  overflow: hidden;
+  display: none; }
+  @media all and (max-width: 40.62em) {
+    .comment__options {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    .comment__options {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+    .comment__options {
+      margin-left: 33.80282%; } }
+  @media all and (min-width: 56.25em) {
+    .comment__options {
+      margin-left: 31.57895%; } }
+  .comment__options .comment__reply {
+    font-weight: bold;
+    float: left; }
+  .comment__options .comment__report {
+    float: right;
+    margin-top: 3px; }
+    .comment__options .comment__report .touchpoint__label {
+      font-weight: normal; }
+
+.is-response .comment__header {
+  border-top: #dcdad5 1px dotted;
+  width: auto;
+  float: none;
+  position: static;
+  padding: 9px 12px 18px 0px; }
+  @media all and (max-width: 40.62em) {
+    .is-response .comment__header {
+      margin-left: 52px;
+      padding-right: 64px; } }
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+    .is-response .comment__header {
+      margin-left: 33.80282%; } }
+  @media all and (min-width: 56.25em) {
+    .is-response .comment__header {
+      margin-left: 31.57895%; } }
+.is-response .comment__body {
+  color: #767676; }
+  @media all and (max-width: 40.62em) {
+    .is-response .comment__body {
+      margin-left: 52px; } }
+  .is-response .comment__body p:last-child {
+    margin-bottom: 0; }
+.is-response .comment__avatar {
+  display: none; }
+.is-response .comment__username {
+  display: inline-block; }
+.is-response .comment__response-to {
+  display: inline-block;
+  white-space: nowrap;
+  color: #767676; }
+  .is-response .comment__response-to::before {
+    color: #999; }
+.is-response .comment__recommend {
+  margin: 9px 0px 0px 0px; }
+
+.discussion--preview {
+  background-color: #333;
+  border: 0;
+  padding: 12px; }
+  .discussion--preview .comment {
+    position: relative; }
+  .discussion--preview .comment__body {
+    color: #fff;
+    background-color: #333;
+    border-top: 0;
+    height: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+    .discussion--preview .comment__body::after {
+      content: '';
+      background-image: linear-gradient(to bottom, rgba(51, 51, 51, 0) 66%, #333 100%);
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 2; }
+  .discussion--preview .comment__recommend {
+    display: none; }
+  .discussion--preview .comment__username {
+    color: #4bc6df; }
+
+/*doc
+---
+title: Flyers
+name: flyers
+category: Content
+---
+Display Flyers (Rich Media content links) progressively enhance with JavaScript. 
+
+Default styling no JavaScript enhancement:
+
+```html_example
+    <aside class="element element-rich-link element--supporting element-rich-link--not-upgraded" data-component="rich-link-1" data-link-name="rich-link-1 | 1">
+        <p><span>Related:</span>
+        <a class=" u-underline" data-component="in-body-link" data-link-name="in body link" href="http://www.theguardian.com/commentisfree/2014/dec/11/a-spoiled-brat-no-way-angelina-jolies-success-wasnt-handed-to-her">
+        A 'spoiled brat?' No way. Angelina Jolie's success wasn't handed to her | Jessica Valenti</a></p>
+    </aside>
+```
+
+*/
+.element-membership span, .element-rich-link a:before {
+  display: block;
+  font-size: 1.5rem;
+  font-family: "Guardian Egyptian Web", Georgia, serif;
+  color: #767676;
+  padding: 3px 0;
+  font-weight: 500; }
+
+.element-rich-link, .element-membership {
+  border-top: 1px dotted #bdbdbd;
+  border-bottom: 1px dotted #bdbdbd;
+  margin-bottom: 8px;
+  float: left;
+  clear: left;
+  width: 13.75rem;
+  margin: 4px 20px 6px 0; }
+  @media all and (min-width: 30em) {
+    .element-rich-link, .element-membership {
+      width: 24.75rem;
+      margin: 4px 20px 6px 0; } }
+  @media all and (min-width: 54.38em) {
+    .element-rich-link, .element-membership {
+      width: 30.75rem;
+      margin: 4px 20px 6px 0; } }
+  .element-rich-link p, .element-membership p {
+    margin: 12px 0px; }
+  .element-rich-link a, .element-membership a {
+    font-size: 100%;
+    font-family: "Guardian Egyptian Web", Georgia, serif;
+    font-weight: 600;
+    display: block;
+    padding: 0;
+    color: #333 !important;
+    border: 0;
+    background-image: none !important;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    hyphens: auto; }
+    .element-rich-link a:hover, .element-membership a:hover {
+      text-decoration: underline !important; }
+
+@media all and (max-width: 28.12em) {
+  .font-size-6 .element-rich-link, .font-size-7 .element-rich-link, .font-size-8 .element-rich-link, .font-size-9 .element-rich-link, .font-size-10 .element-rich-link {
+    width: 100%;
+    margin-bottom: 15px; } }
+.element-rich-link span {
+  display: none; }
+.element-rich-link a:before {
+  content: 'More on this topic'; }
+
+/*doc
+---
+title: Prose
+name: prose
+category: Content
+---
+Adds typographic styling, typically to content fetched from the Guardian Content API.
+
+```html_example
+<div class="prose">
+    <h2>Sub-heading</h2>
+    <p>The <code>h2</code> element represents a sub-heading, used for article-level headings.</p>
+
+    <h2>Paragraph</h2>
+    <p>Paragraphs are (or at least should be) wrapped in <code>p</code> tags.
+
+    <h2>Horizontal rule</h2>
+    <p>The <code>hr</code> element represents a paragraph-level thematic break, e.g. a scene change in a story, or a transition to another topic within a section of a reference book as follows:</p>
+    <hr/>
+
+    <h2>Blockquote</h2>
+    <p>The <code>blockquote</code> element represents a section that is being quoted from another source.</p>
+    <blockquote class="quoted">
+        <p>Many forms of Government have been tried, and will be tried in this world of sin and woe. No one pretends that democracy is perfect or all-wise. Indeed, it has been said that democracy is the worst form of government except all those other forms that have been tried from time to time.</p>
+    </blockquote>
+
+    <p>This can include tweets, which are given a different stylistic treatment:</p>
+    <blockquote class="twitter-tweet">
+        <p><a href="https://twitter.com/search?q=%23TLC14&amp;src=hash">#TLC14</a> spread of genre sales in books incl self published from Nielsen <a href="http://t.co/Vu9NvGuPZN">pic.twitter.com/Vu9NvGuPZN</a></p>
+        — Joanna Penn (@thecreativepenn)
+        <a href="https://twitter.com/thecreativepenn/statuses/477384378067480576">June 13, 2014</a>
+    </blockquote>
+
+    <h2>Ordered list</h2>
+    <p>The <code>ol</code> element denotes an ordered list. Each item requires a surrounding <code>&lt;li&gt;</code> and <code>&lt;/li&gt;</code> tag, to denote individual items within the list.</p>
+    <ol>
+        <li>This is an ordered list.</li>
+        <li>
+            This is the second item, which contains a sub list
+            <ol>
+                <li>This is the sub list, which is also ordered.</li>
+                <li>It has two items.</li>
+            </ol>
+        </li>
+        <li>This is the final item on this list.</li>
+    </ol>
+
+    <h2>Unordered list</h2>
+    <p>The <code>ul</code> element denotes an unordered list (ie. a list of loose items that don&#8217;t require numbering, or a bulleted list). Again, each item requires a surrounding <code>&lt;li&gt;</code> and <code>&lt;/li&gt;</code> tag, to denote individual items. Here is an example list showing the constituent parts of the British Isles:</p>
+    <ul>
+        <li>
+            United Kingdom of Great Britain and Northern Ireland:
+            <ul>
+                <li>England</li>
+                <li>Scotland</li>
+                <li>Wales</li>
+                <li>Northern Ireland</li>
+            </ul>
+        </li>
+        <li>Republic of Ireland</li>
+        <li>Isle of Man</li>
+        <li>
+            Channel Islands:
+            <ul>
+                <li>Bailiwick of Guernsey</li>
+                <li>Bailiwick of Jersey</li>
+            </ul>
+        </li>
+    </ul>
+
+    <p>Sometimes we may want each list item to contain block elements, typically a paragraph or two.</p>
+    <ul>
+        <li>
+            <p>The British Isles is an archipelago consisting of the two large islands of Great Britain and Ireland, and many smaller surrounding islands.</p>
+        </li>
+        <li>
+            <p>Great Britain is the largest island of the archipelago. Ireland is the second largest island of the archipelago and lies directly to the west of Great Britain.</p>
+        </li>
+    </ul>
+
+    <h2>Definition list</h2>
+    <p>The <code>dl</code> element is for another type of list called a definition list. Instead of list items, the content of a <code>dl</code> consists of <code>dt</code> (definition term) and <code>dd</code> (definition description) pairs.</p>
+    <dl>
+        <dt>This is a term.</dt>
+        <dd>This is the definition of that term, which both live in a <code>dl</code>.</dd>
+        <dt>Here is another term.</dt>
+        <dd>And it gets a definition too, which is this line.</dd>
+        <dt>Here is term that shares a definition with the term below.</dt>
+        <dt>Here is a defined term.</dt>
+        <dd><code>dt</code> terms may stand on their own without an accompanying <code>dd</code>, but in that case they <em>share</em> descriptions with the next available <code>dt</code>. You may not have a <code>dd</code> without a parent <code>dt</code>.</dd>
+    </dl>
+
+    <h2>Links and anchors</h2>
+    <p>The <code>a</code> element is used to hyperlink text, be that to another page, a named fragment on the current page or any other location on the web. Example:</p>
+    <p><a href="/">Go to the home page</a> or <a href="#banner">return to the top of this page</a>.</p>
+
+    <h2>Stressed emphasis</h2>
+    <p>The <code>em</code> element is used to denote text with stressed emphasis, i.e., something you&#8217;d pronounce differently. Where italicizing is required for stylistic differentiation, the <code>i</code> element may be preferable. Example:</p>
+    <p>You simply <em>must</em> try the negitoro maki!</p>
+
+    <h2>Strong importance</h2>
+    <p>The <code>strong</code> element is used to denote text with strong importance. Where bolding is used for stylistic differentiation, the <code>b</code> element may be preferable. Example:</p> 
+    <p><strong>Don&#8217;t</strong> stick nails in the electrical outlet.</p>
+
+    <h2>Table</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Fruit</th>
+                <th>Colour</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Apple</td>
+                <td>Green</td>
+            </tr>
+            <tr>
+                <td>Orange</td>
+                <td>Orange</td>
+            </tr>
+            <tr>
+                <td>Banana</td>
+                <td>Yellow</td>
+            </tr>
+            <tr>
+                <td>Peach</td>
+                <td>Peach</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Figure</h2>
+    <p>Wide</p>
+    <figure>
+        <img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/11/1402512126497/Matt-Kenyon-on-Birmingham-014.jpg?width=900&amp;height=540&amp;quality=60"/>
+        <figcaption>
+            ‘The absurdity of the inspectors’ findings is clearest in the case of Gracelands, whose staff were taken to task for failing to ensure its 2- to 4-year-olds were protected against ‘extreme and radical behaviour'.' Illustration: Matt Kenyon
+        </figcaption>
+    </figure>
+    <p>Inline (floats to the left of any running text):</p>
+    <figure>
+        <img src="http://i.guim.co.uk/w-620/h--/q-95/sys-images/Guardian/Pix/pictures/2014/6/13/1402656896541/phpdKmNwRAM.jpg" alt="Mil" width="193" class="gu-image"/>
+        <figcaption>
+            The Sun's picture of Miliband that offended people in Liverpool
+        </figcaption>
+    </figure>
+    <p>Miliband was also confronted by a number of Labour MPs, including Steve Rotheram, the member for for Liverpool Walton. According to a source cited by the Liverpool Echo, Miliband apologised to the MPs. The source is quoted as saying: “Ed Miliband said he was very, very sorry.”</p>
+</div>
+```
+*/
+.prose blockquote::before, .prose .element-pullquote blockquote::before, .prose .element-pullquote blockquote::after {
+  font-family: "Guardian Icons", Georgia, serif;
+  font-size: 4rem;
+  font-style: normal;
+  line-height: 1;
+  display: block; }
+
+@media all and (max-width: 40.62em) {
+  .prose {
+    font-size: 1.6rem;
+    line-height: 2.4rem; } }
+@media all and (min-width: 40.63em) {
+  .prose {
+    font-size: 1.8rem;
+    line-height: 2.6rem; } }
+.prose h2 {
+  font-family: "Guardian Egyptian Web", Georgia, serif;
+  font-weight: 600;
+  font-size: 1em;
+  margin: .75em 0; }
+  .prose h2 + p {
+    margin-top: -12px; }
+  .prose h2 strong,
+  .prose h2 b {
+    font-weight: bold; }
+.prose hr {
+  border: 0;
+  height: 1px;
+  background: #dcdad5; }
+.prose p {
+  margin: 12px 0px; }
+.prose p a,
+.prose li a {
+  background-image: linear-gradient(to bottom, #fff 50%, rgba(0, 86, 137, 0.66) 50%);
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  background-position: 0 bottom;
+  text-shadow: 4px 0 #fff, 3px 0 #fff, 2px 0 #fff, 1px 0 #fff, 0 0 #fff, -1px 0 #fff, -2px 0 #fff, -3px 0 #fff, -4px 0 #fff; }
+.prose p a:active,
+.prose li a:active {
+  background-image: linear-gradient(to bottom, #fff 50%, rgba(75, 198, 223, 0.66) 50%); }
+.prose ul,
+.prose ol,
+.prose dl {
+  margin: 12px 0px; }
+  .prose ul ul,
+  .prose ul ol,
+  .prose ol ul,
+  .prose ol ol,
+  .prose dl ul,
+  .prose dl ol {
+    margin: 0px 0px 12px 24px; }
+.prose ul > li:before {
+  content: '';
+  background-color: #999;
+  margin-right: 2px;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: .6rem;
+  display: inline-block; }
+.prose ol {
+  counter-reset: li; }
+  .prose ol > li::before {
+    content: counter(li) ". ";
+    counter-increment: li; }
+.prose dl dt {
+  font-weight: bold; }
+.prose dl dd {
+  margin: 0px 0px 12px 24px; }
+.prose blockquote {
+  color: #767676;
+  font-style: italic;
+  margin: 24px; }
+  .prose blockquote::before {
+    color: #999; }
+  .prose blockquote.quoted {
+    position: relative;
+    padding-top: 25px; }
+    .prose blockquote.quoted::before {
+      content: '\E092';
+      font-size: 3rem;
+      content: '\E092';
+      position: absolute;
+      top: 2px;
+      left: 0;
+      line-height: 0; }
+  .prose blockquote.twitter-tweet, .prose blockquote.js-tweet {
+    font-family: "Guardian Agate Sans 1 Web", sans-serif;
+    font-size: 1.4rem;
+    line-height: 2rem; }
+    .prose blockquote.twitter-tweet::before, .prose blockquote.js-tweet::before {
+      content: '\e06b'; }
+    .prose blockquote.twitter-tweet p, .prose blockquote.js-tweet p {
+      color: #767676;
+      font-size: 1.6rem;
+      line-height: 2.2rem;
+      margin: 6px 0px; }
+.prose .element-pullquote {
+  position: relative;
+  margin: 24px 0px 24px 0px; }
+  .prose .element-pullquote blockquote {
+    margin: 0;
+    font-style: normal;
+    font-size: 2rem;
+    line-height: 1.3;
+    padding: 25px 0; }
+    .prose .element-pullquote blockquote p {
+      margin: 0; }
+    .prose .element-pullquote blockquote cite {
+      font-style: normal;
+      font-size: 1.8rem; }
+    .prose .element-pullquote blockquote::before, .prose .element-pullquote blockquote::after {
+      font-size: 3rem;
+      color: #005689;
+      content: '\E092';
+      position: absolute;
+      top: 2px;
+      left: 0;
+      line-height: 0; }
+    .prose .element-pullquote blockquote::after {
+      content: '\E096';
+      top: auto;
+      bottom: 19px; }
+    .prose .element-pullquote blockquote footer {
+      color: #005689; }
+  @media all and (min-width: 40.63em) {
+    .prose .element-pullquote {
+      max-width: 280px;
+      margin-right: 12px;
+      float: left; } }
+.prose figure {
+  margin: 12px 12px 0px 0px; }
+  .prose figure.figure-wide img {
+    height: auto; }
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+    .prose figure.figure-wide figcaption {
+      padding-right: 23.94366%; } }
+  @media all and (min-width: 56.25em) {
+    .prose figure.figure-wide figcaption {
+      padding-right: 24.21053%; } }
+  .prose figure.figure-inline {
+    margin-right: 12px;
+    float: left; }
+    @media all and (min-width: 28.13em) {
+      .prose figure.figure-inline {
+        margin: 6px 12px 0px 0px;
+        float: left; }
+        .prose figure.figure-inline img {
+          width: 100%;
+          height: auto; } }
+    .prose figure.figure-inline figcaption {
+      padding-left: 0;
+      padding-right: 0; }
+.prose *:first-child {
+  margin-top: 0; }
+  .prose *:first-child .aside {
+    border-top: 0;
+    padding-top: 0; }
+
+.prose table,
+.table {
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  margin: 12px 0px;
+  border-top: 2px solid #4bc6df; }
+  @media all and (max-width: 40.62em) {
+    .prose table,
+    .table {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    .prose table,
+    .table {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  .prose table td,
+  .prose table th,
+  .table td,
+  .table th {
+    text-align: left;
+    vertical-align: top; }
+  .prose table th,
+  .table th {
+    padding: 3px 12px 12px 0px; }
+  .prose table td,
+  .table td {
+    border-top: 1px solid #eaeaea;
+    padding: 3px 12px 12px 0px; }
+
+/*doc
+---
+title: Bar chart
+name: bar-chart
+category: Charts
+---
+Display ratio in a single bar chart.
+
+```html_example
+<div class="bar-chart">
+    <span class="bar-chart__value" style="width: 70%">7</span>
+    3
+</div>
+```
+*/
+.bar-chart {
+  text-align: right;
+  background-color: #dcdad5;
+  padding: 3px 6px;
+  margin: 0px 0px 12px 0px;
+  width: 100%;
+  position: relative; }
+
+.bar-chart__value {
+  text-align: left;
+  background-color: #999;
+  padding: 3px 6px;
+  width: 50%;
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+/*doc
+---
+title: Pie chart
+name: pie-chart
+category: Charts
+---
+Display comparison of goal attempts, corners and fouls that occurred during a match.
+
+```html_example
+<svg class="pie-chart" height="250" width="250" preserveAspectRatio="xMinYMin slice" viewBox="0 0 250 250">
+    <!-- Contents of SVG injected via D3.js -->
+    <g class="pie-chart__inner" transform="translate(125,125)">
+        <text class="pie-chart__key" transform="translate(-18,15)">%</text>
+        <path class="pie-chart__pie" d="M0,124A124,124 0 1,1 0,-124A124,124 0 1,1 0,124M0,42.67A42.67,42.67 0 1,0 0,-42.67A42.67,42.67 0 1,0 0,42.67Z"/>
+        <g class="pie-chart__segment">
+            <path class="pie-chart__segment-arc" d="M7.6540e-15,-125A125,125 0 1,1 -31.0862,121.0729L-10.3621,40.3576A41.67,41.67 0 1,0 2.5513e-15,-41.67Z"/>
+        </g>
+        <g class="pie-chart__segment">
+            <path class="pie-chart__segment-arc" d="M-31.0862,121.0729A125,125 0 0,1 -2.2962e-14,-125L-7.6540e-15,-41.67A41.67,41.67 0 0,0 -10.3621,40.3576Z"/>
+        </g>
+        <foreignObject class="pie-chart__label" width="75" height="50" text-anchor="middle" transform="translate(47.6762,-14.5556)">
+            <div class="pie-chart__label-text" width="50" x="0" dy="1.2em">Against</div>
+            <div class="pie-chart__label-value" x="0" dy="1.2em">54</div>
+        </foreignObject>
+        <foreignObject class="pie-chart__label" width="75" height="50" text-anchor="middle" transform="translate(-117.6762,-35.4444)">
+            <div class="pie-chart__label-text" width="50" x="0" dy="1.2em">For</div>
+            <div class="pie-chart__label-value" x="0" dy="1.2em">46</div>
+        </foreignObject>
+    </g>
+</svg>
+```
+*/
+.pie-chart {
+  shape-rendering: optimizeSpeed; }
+  .pie-chart .pie-chart__pie {
+    fill: #dcdad5; }
+  .pie-chart .pie-chart__key {
+    font-family: "Guardian Egyptian Web", Georgia, serif;
+    font-weight: 600;
+    font-size: 220%;
+    fill: #999; }
+  .pie-chart .pie-chart__label-text {
+    font-family: "Guardian Agate Sans 1 Web", sans-serif;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 75px; }
+    @media all and (max-width: 40.62em) {
+      .pie-chart .pie-chart__label-text {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.63em) {
+      .pie-chart .pie-chart__label-text {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
+  .pie-chart .pie-chart__label-value {
+    font-family: "Guardian Egyptian Web", Georgia, serif;
+    font-weight: 600;
+    text-align: center; }
+    @media all and (max-width: 40.62em) {
+      .pie-chart .pie-chart__label-value {
+        font-size: 1.7rem;
+        line-height: 2.2rem; } }
+    @media all and (min-width: 40.63em) {
+      .pie-chart .pie-chart__label-value {
+        font-size: 2.2rem;
+        line-height: 3rem; } }
+
+/*doc
+---
+title: Cricket Scorecard
+name: cricket scorecard
+category: Modules
+---
+<div class="cricket-stats__innings">
+	<div class="cricket-stats__header">
+		<div class="cricket-stats__title">
+			England 1st innings
+		</div>
+		<div class="cricket-stats__total">
+		Total<br><em>354 all out</em>
+		</div>
+	</div>
+	<div class="cricket-stats__table-wrap">
+		<table class="cricket-stats__table">
+			<thead class="cricket-stats__table--phone">
+				<tr>
+					<th class="cricket-stats__table--title">England 1st innings</th>
+					<th class="cricket-stats__table--values">Runs</th>
+				</tr>
+			</thead>
+			<thead class="cricket-stats__table--tablet">
+				<tr>
+					<th>Batsman</th>
+					<th>Taken by</th>
+					<th class="cricket-stats__table--values">Balls</th>
+					<th class="cricket-stats__table--values">4s</th>
+					<th class="cricket-stats__table--values">6s</th>
+					<th class="cricket-stats__table--values">Runs</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						K C Brathwaite
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Root b Broad</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td>12</td>
+				</tr>
+				<tr>
+					<td>
+						D S Smith
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Jordan b Tredwell</td>
+					<td class="cricket-stats__table--tablet">15</td>
+					<td class="cricket-stats__table--tablet">15</td>
+					<td class="cricket-stats__table--tablet">15</td>
+					<td>15</td>
+				</tr>
+				<tr>
+					<td>
+						D M Bravo
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Root b Jordan</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td class="cricket-stats__table--tablet">6</td>
+					<td class="cricket-stats__table--tablet">5</td>
+					<td>10</td>
+				</tr>
+				<tr>
+					<td>
+						M N Samuels
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Tradwell b Anderson</td>
+					<td class="cricket-stats__table--tablet">25</td>
+					<td class="cricket-stats__table--tablet">25</td>
+					<td class="cricket-stats__table--tablet">25</td>
+					<td>25</td>
+				</tr>
+				<tr>
+					<td>
+						K C Brathwaite
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Root b Broad</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td>12</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="cricket-stats__table--in-play">D S Smith</span>
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Jordan b Tredwell</td>
+					<td class="cricket-stats__table--tablet">15</td>
+					<td class="cricket-stats__table--tablet">15</td>
+					<td class="cricket-stats__table--tablet">15</td>
+					<td>15</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="cricket-stats__table--duck">D M Bravo</span>
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Root b Jordan</td>
+					<td class="cricket-stats__table--tablet">12</td>
+					<td class="cricket-stats__table--tablet">6</td>
+					<td class="cricket-stats__table--tablet">5</td>
+					<td>10</td>
+				</tr>
+				<tr>
+					<td>
+						M N Samuels
+						<span class="cricket-stats__takenby cricket-stats__table--phone">c Root</span>
+					</td>
+					<td class="cricket-stats__table--tablet">c Tradwell b Anderson</td>
+					<td class="cricket-stats__table--tablet">25</td>
+					<td class="cricket-stats__table--tablet">25</td>
+					<td class="cricket-stats__table--tablet">25</td>
+					<td>25</td>
+				</tr>
+			</tbody>
+			<tfoot class="cricket-stats__table--phone">
+				<tr>
+					<td class="cricket-stats__table--strong">Total</td>
+					<td class="cricket-stats__table--strong">367-8</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+</div>
+*/
+.cricket-stats__innings {
+  position: relative;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  background: #fff;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #dcdad5;
+  border-top: 1px solid #4bc6df; }
+
+.cricket-stats__wrap {
+  color: #333; }
+  @media all and (max-width: 40.62em) {
+    .cricket-stats__wrap {
+      margin: 0 12px; } }
+
+.cricket-stats__side {
+  border-bottom: 1px solid #dcdad5;
+  margin-bottom: 24px; }
+  .cricket-stats__side:last-child {
+    border-bottom: none; }
+
+.cricket-stats__header {
+  display: table-cell;
+  vertical-align: top;
+  width: 25%;
+  box-sizing: border-box;
+  padding: 6px 0 0 12px; }
+  @media all and (max-width: 40.62em) {
+    .cricket-stats__header {
+      display: none; } }
+
+.cricket-stats__title {
+  font-weight: bold;
+  line-height: 1; }
+  @media all and (max-width: 40.62em) {
+    .cricket-stats__title {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    .cricket-stats__title {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+
+.cricket-stats__total {
+  font: 200 2.7rem/1.1 "Guardian Egyptian Web", Georgia, serif;
+  margin-top: 20px; }
+  .cricket-stats__total em {
+    color: #4bc6df;
+    font-style: normal;
+    font-size: 2.5rem; }
+
+.cricket-stats__table-wrap {
+  display: table-cell;
+  vertical-align: top; }
+
+.cricket-stats__takenby {
+  display: block;
+  color: #999;
+  padding: 3px 0 6px; }
+
+.cricket-stats__table {
+  width: 100%;
+  text-align: left;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif; }
+  @media all and (max-width: 40.62em) {
+    .cricket-stats__table {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    .cricket-stats__table {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  @media all and (max-width: 40.62em) {
+    .cricket-stats__table--tablet {
+      display: none; } }
+  @media all and (min-width: 40.63em) {
+    .cricket-stats__table--phone {
+      display: none; } }
+  @media all and (max-width: 40.62em) {
+    .cricket-stats__table--values {
+      width: 20%; } }
+  @media all and (min-width: 40.63em) {
+    .cricket-stats__table--values {
+      width: 15%; } }
+  .cricket-stats__table th {
+    color: #999; }
+  .cricket-stats__table th.cricket-stats__table--title,
+  .cricket-stats__table td.cricket-stats__table--strong {
+    font-weight: bold;
+    color: #000; }
+  .cricket-stats__table--title {
+    font-family: "Guardian Text Egyptian Web", Georgia, serif; }
+  .cricket-stats__table th,
+  .cricket-stats__table td {
+    vertical-align: top;
+    padding: 6px 6px 0 6px;
+    line-height: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden; }
+    @media all and (max-width: 40.62em) {
+      .cricket-stats__table th,
+      .cricket-stats__table td {
+        height: 3.7rem; } }
+    @media all and (min-width: 40.63em) {
+      .cricket-stats__table th,
+      .cricket-stats__table td {
+        height: 3.9rem; } }
+  .cricket-stats__table tr {
+    border-bottom: 1px solid #dcdad5; }
+  .cricket-stats__table tfoot tr {
+    border-bottom: 0;
+    border-top: 1px solid #dcdad5; }
+  .cricket-stats__table tbody tr:last-child {
+    border-bottom: none; }
+
+.cricket-stats__table--in-play {
+  font-weight: bold; }
+
+.cricket-stats__table--in-play,
+.cricket-stats__table--duck {
+  display: block;
+  position: relative;
+  padding-left: 22px;
+  height: 22px; }
+  .cricket-stats__table--in-play::before,
+  .cricket-stats__table--duck::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -2px;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-image: url(../img/cricket-dismissal.png);
+    background-repeat: no-repeat;
+    background-size: auto 40px; }
+  .cricket-stats__table--in-play + .cricket-stats__takenby,
+  .cricket-stats__table--duck + .cricket-stats__takenby {
+    margin-top: -7px; }
+
+.cricket-stats__table--duck::before {
+  background-position: -20px 0; }
+
+/*doc
+---
+title: D2 comment embed
+name: d2-comment
+category: External
+---
+Display a comment taken from the discussion API.
+
+```html_example
+<div class="d2-comment-embedded" itemtype="http://schema.org/Comment">
+    <div class="d2-left-col">
+        <a title="View Sionnaich’s profile" href="http://www.theguardian.com/discussion/user/id/10070969">
+            <img class="d2-avatar" alt="User avatar for Sionnaich" width="40" height="40" src="http://static.guim.co.uk/sys-images/discussion/avatars/2014/06/10/10070969/3b591e34-2dd6-4d4f-b6ee-dc49fd769967/60x60.png">
+        </a>
+    </div>
+    <div class="d2-right-col">
+        <div itemtype="http://schema.org/Person" itemprop="author">
+            <a class="d2-username" itemprop="url" title="View Sionnaich’s profile" href="http://www.theguardian.com/discussion/user/id/10070969"><span itemprop="givenName">Sionnaich</span></a>
+        </div>
+        <div class="d2-permalink">
+            <a class="d2-datetime" itemprop="datePublished" title="Link to this comment" href="http://discussion.theguardian.com/comment-permalink/36818018">11 June 2014 9:23am</a>
+        </div>
+        <div class="d2-body" itemprop="text">
+            <p>Morning pop fans. Who's up for a bit of BTL The Knowledge?</p>
+            <p>I was thinking that the Italian forward Ciro Immobiles name is a little unfortunate for a striker. Can anyone think of any other footballers with a name ill fitting for their position? The only other one I can think of is the French goalkeeper in 1978, <a rel="nofollow" href="http://en.wikipedia.org/wiki/Dominique_Dropsy">Dominique Dropsy</a></p>
+        </div>
+    </div>
+</div>
+```
+*/
+.d2-comment-embedded {
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  font-size: 1.6rem;
+  line-height: 2.2rem; }
+
+.d2-avatar {
+  margin: 3px 6px 0px 0px;
+  border-radius: 100%;
+  float: left;
+  width: 44px;
+  height: 44px; }
+
+.d2-username {
+  color: #333;
+  font-weight: bold; }
+
+.d2-datetime {
+  color: #999; }
+
+.d2-badge {
+  display: none; }
+
+.d2-body {
+  clear: left; }
+
+/*doc
+---
+title: Football fixtures
+name: football-fixtures
+category: Football
+---
+Display today's football fixtures; upcoming, in progress and ended.
+
+```html_example
+<a class="football-fixture date">
+    <div class="football-fixture__data football-fixture__data--1">Today's matches</div>
+    <div class="football-fixture__data football-fixture__data--2"></div>
+    <div class="football-fixture__data football-fixture__data--3"></div>
+    <div class="football-fixture__data football-fixture__data--4">Wednesday 18 June 2014</div>
+</a>
+<a class="football-fixture competition">
+    <div class="football-fixture__data football-fixture__data--1">World Cup 2014</div>
+    <div class="football-fixture__data football-fixture__data--2"></div>
+    <div class="football-fixture__data football-fixture__data--3"></div>
+    <div class="football-fixture__data football-fixture__data--4"></div>
+</a>
+<a class="football-fixture match" href="#match">
+    <div class="football-fixture__data football-fixture__data--1">17:00</div>
+    <div class="football-fixture__data football-fixture__data--2">Australia</div>
+    <div class="football-fixture__data football-fixture__data--3">v</div>
+    <div class="football-fixture__data football-fixture__data--4">Holland</div>
+</a>
+<a class="football-fixture match is-live" href="#match">
+    <div class="football-fixture__data football-fixture__data--1">1st</div>
+    <div class="football-fixture__data football-fixture__data--2">Spain</div>
+    <div class="football-fixture__data football-fixture__data--3">2 - 1</div>
+    <div class="football-fixture__data football-fixture__data--4">Chile</div>
+</a>
+<a class="football-fixture match has-ended" href="#match">
+    <div class="football-fixture__data football-fixture__data--1">FT</div>
+    <div class="football-fixture__data football-fixture__data--2">Cameroon</div>
+    <div class="football-fixture__data football-fixture__data--3">1 - 1</div>
+    <div class="football-fixture__data football-fixture__data--4">Croatia</div>
+</a>
+```
+*/
+.football-fixture {
+  color: #333;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  display: table;
+  table-layout: fixed;
+  width: 100%; }
+  @media all and (max-width: 40.62em) {
+    .football-fixture {
+      font-size: 1.6rem;
+      line-height: 2.4rem; } }
+  @media all and (min-width: 40.63em) {
+    .football-fixture {
+      font-size: 1.8rem;
+      line-height: 2.6rem; } }
+  .football-fixture.match {
+    background-color: #fff; }
+    .football-fixture.match .football-fixture__data {
+      border-top-color: #4bc6df; }
+    .football-fixture.match .football-fixture__data--1 {
+      color: #767676;
+      padding: 0px 6px 0px 6px; }
+      @media all and (max-width: 28.12em) {
+        .football-fixture.match .football-fixture__data--1 {
+          padding: 0px 6px 0px 12px; } }
+    .football-fixture.match .football-fixture__data--2 {
+      text-align: right; }
+    .football-fixture.match .football-fixture__data--3 {
+      color: #767676;
+      text-align: center; }
+  .football-fixture.has-ended .football-fixture__data--1 {
+    font-weight: bold;
+    color: #333; }
+  .football-fixture.is-live {
+    font-weight: bold; }
+    .football-fixture.is-live .football-fixture__data--1 {
+      color: #4bc6df; }
+  .football-fixture.date .football-fixture__data--1, .football-fixture.competition .football-fixture__data--1 {
+    font-weight: bold; }
+    @media all and (max-width: 28.12em) {
+      .football-fixture.date .football-fixture__data--1, .football-fixture.competition .football-fixture__data--1 {
+        width: 34.78261%; } }
+    @media all and (min-width: 28.13em) and (max-width: 40.62em) {
+      .football-fixture.date .football-fixture__data--1, .football-fixture.competition .football-fixture__data--1 {
+        width: 29.78723%; } }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      .football-fixture.date .football-fixture__data--1, .football-fixture.competition .football-fixture__data--1 {
+        width: 29.57746%; } }
+    @media all and (min-width: 56.25em) {
+      .football-fixture.date .football-fixture__data--1, .football-fixture.competition .football-fixture__data--1 {
+        width: 41.05263%; } }
+  @media all and (max-width: 28.12em) {
+    .football-fixture.date .football-fixture__data--2, .football-fixture.competition .football-fixture__data--2 {
+      width: 8.69565%; } }
+  @media all and (min-width: 28.13em) and (max-width: 40.62em) {
+    .football-fixture.date .football-fixture__data--2, .football-fixture.competition .football-fixture__data--2 {
+      width: 10.6383%; } }
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+    .football-fixture.date .football-fixture__data--2, .football-fixture.competition .football-fixture__data--2 {
+      width: 11.26761%; } }
+  @media all and (min-width: 56.25em) {
+    .football-fixture.date .football-fixture__data--2, .football-fixture.competition .football-fixture__data--2 {
+      width: 8.42105%; } }
+  .football-fixture.date .football-fixture__data--4, .football-fixture.competition .football-fixture__data--4 {
+    color: #767676; }
+    @media all and (max-width: 28.12em) {
+      .football-fixture.date .football-fixture__data--4, .football-fixture.competition .football-fixture__data--4 {
+        display: none; } }
+  .football-fixture.competition .football-fixture__data--1 {
+    font-weight: normal;
+    color: #767676; }
+
+.football-fixture__data {
+  border-top: 1px solid #dcdad5;
+  padding: 3px 6px 12px 6px;
+  display: table-cell; }
+  @media all and (max-width: 28.12em) {
+    .football-fixture__data.football-fixture__data--1 {
+      padding: 3px 0px 12px 12px; } }
+  @media all and (max-width: 28.12em) {
+    .football-fixture__data.football-fixture__data--1, .football-fixture__data.football-fixture__data--3 {
+      width: 15.21739%; } }
+  @media all and (min-width: 28.13em) and (max-width: 40.62em) {
+    .football-fixture__data.football-fixture__data--1, .football-fixture__data.football-fixture__data--3 {
+      width: 10.6383%; } }
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+    .football-fixture__data.football-fixture__data--1, .football-fixture__data.football-fixture__data--3 {
+      width: 11.26761%; } }
+  @media all and (min-width: 56.25em) {
+    .football-fixture__data.football-fixture__data--1, .football-fixture__data.football-fixture__data--3 {
+      width: 8.42105%; } }
+  .football-fixture__data.football-fixture__data--2, .football-fixture__data.football-fixture__data--4 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+  @media all and (max-width: 28.12em) {
+    .football-fixture__data.football-fixture__data--2 {
+      width: 21.73913%; } }
+  @media all and (min-width: 28.13em) and (max-width: 40.62em) {
+    .football-fixture__data.football-fixture__data--2 {
+      width: 29.78723%; } }
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+    .football-fixture__data.football-fixture__data--2 {
+      width: 29.57746%; } }
+  @media all and (min-width: 56.25em) {
+    .football-fixture__data.football-fixture__data--2 {
+      width: 41.05263%; } }
+  .football-fixture__data.football-fixture__data--3 {
+    white-space: nowrap; }
+  @media all and (max-width: 28.12em) {
+    .football-fixture__data.football-fixture__data--4 {
+      width: 34.78261%; } }
+  @media all and (min-width: 28.13em) and (max-width: 40.62em) {
+    .football-fixture__data.football-fixture__data--4 {
+      width: 44.68085%; } }
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+    .football-fixture__data.football-fixture__data--4 {
+      width: 46.47887%; } }
+  @media all and (min-width: 56.25em) {
+    .football-fixture__data.football-fixture__data--4 {
+      width: 53.68421%; } }
+
+/*doc
+---
+title: Match stats
+name: match-stats
+category: Football
+---
+Display comparison of possession, goal attempts, corners and fouls that occurred during a match. Colours are provided by style declarations provided on the same page.
+
+```html_example
+<div class="match-stats">
+    <p class="match-stats__caption">Possession</p>
+    <div class="match-stats__posession">
+        <svg class="pie-chart pie-chart--possession" height="250" width="250" preserveAspectRatio="xMinYMin slice" viewBox="0 0 250 250">
+            <!-- Contents of SVG injected via D3.js -->
+            <g class="pie-chart__inner" transform="translate(125,125)">
+                <text class="pie-chart__key" transform="translate(-18,15)">%</text>
+                <path class="pie-chart__pie" d="M0,124A124,124 0 1,1 0,-124A124,124 0 1,1 0,124M0,42.67A42.67,42.67 0 1,0 0,-42.67A42.67,42.67 0 1,0 0,42.67Z"/>
+                <g class="pie-chart__segment">
+                    <path class="pie-chart__segment-arc pie-chart__segment-arc--away" d="M7.6540e-15,-125A125,125 0 1,1 -31.0862,121.0729L-10.3621,40.3576A41.67,41.67 0 1,0 2.5513e-15,-41.67Z"/>
+                </g>
+                <g class="pie-chart__segment">
+                    <path class="pie-chart__segment-arc pie-chart__segment-arc--home" d="M-31.0862,121.0729A125,125 0 0,1 -2.2962e-14,-125L-7.6540e-15,-41.67A41.67,41.67 0 0,0 -10.3621,40.3576Z"/>
+                </g>
+                <foreignObject class="pie-chart__label pie-chart__label--away" width="75" height="50" text-anchor="middle" transform="translate(47.6762,-14.5556)">
+                    <div class="pie-chart__label-text" width="50" x="0" dy="1.2em">Hull</div>
+                    <div class="pie-chart__label-value" x="0" dy="1.2em">54</div>
+                </foreignObject>
+                <foreignObject class="pie-chart__label pie-chart__label--home" width="75" height="50" text-anchor="middle" transform="translate(-117.6762,-35.4444)">
+                    <div class="pie-chart__label-text" width="50" x="0" dy="1.2em">Arsenal</div>
+                    <div class="pie-chart__label-value" x="0" dy="1.2em">46</div>
+                </foreignObject>
+            </g>
+        </svg>
+    </div>
+
+    <p class="match-stats__caption">Goal Attempts</p>
+    <div class="match-stats__shots">
+        <div class="match-stats__shots--home match-colours--home">
+            <p class="match-stats__shots__off">Off target <span>19</span></p>
+            <p class="match-stats__shots__on match-colours--home">On target <span>7</span></p>
+        </div>
+        <div class="match-stats__shots--away match-colours--away">
+            <p class="match-stats__shots__off">Off target <span>9</span></p>
+            <p class="match-stats__shots__on match-colours--away">On target <span>3</span></p>
+        </div>
+    </div>
+    
+    <p class="match-stats__caption">Corners</p>
+    <div class="match-stats__corners">
+        <div class="bar-chart match-colours--away">
+            <span class="bar-chart__value match-colours--home" style="width: 70%">7</span>
+            <span>3</span>
+        </div>
+    </div>
+
+    <p class="match-stats__caption">Fouls</p>
+    <div class="match-stats__fouls">
+        <div class="bar-chart match-colours--away">
+            <span class="bar-chart__value match-colours--home" style="width: 48%">17</span>
+            <span>18</span>
+        </div>
+    </div>
+</div>
+
+<style>
+    .match-colours--home {
+        color: #FFFFFF;
+        background-color: #C40007;
+    }
+    .pie-chart--possession .pie-chart__segment-arc--home {
+        fill: #C40007;
+    }
+    .pie-chart--possession .pie-chart__label--home  {
+        color: #FFFFFF;
+    }
+
+    .match-colours--away {
+        color: #333333;
+        background-color: #F2B100;
+    }
+    .pie-chart--possession .pie-chart__segment-arc--away {
+        fill: #F2B100;
+    }
+    .pie-chart--possession .pie-chart__label--away {
+        color: #333333;
+    }
+</style>
+```
+*/
+.match-stats {
+  font-family: "Guardian Agate Sans 1 Web", sans-serif; }
+  .match-stats .bar-chart,
+  .match-stats .match-stats__shots span {
+    font-family: "Guardian Egyptian Web", Georgia, serif;
+    font-weight: 600;
+    margin: 0px 0px 12px 0px;
+    display: block; }
+    @media all and (max-width: 40.62em) {
+      .match-stats .bar-chart,
+      .match-stats .match-stats__shots span {
+        font-size: 1.7rem;
+        line-height: 2.2rem; } }
+    @media all and (min-width: 40.63em) {
+      .match-stats .bar-chart,
+      .match-stats .match-stats__shots span {
+        font-size: 2.2rem;
+        line-height: 3rem; } }
+
+.match-stats__caption {
+  color: #333;
+  margin: 0px 0px 3px 0px; }
+  @media all and (max-width: 40.62em) {
+    .match-stats__caption {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    .match-stats__caption {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+
+.match-stats__shots {
+  margin: 0px 0px 12px 0px;
+  overflow: hidden; }
+
+.match-stats__shots__off,
+.match-stats__shots__on {
+  padding: 3px 6px; }
+  @media all and (max-width: 40.62em) {
+    .match-stats__shots__off,
+    .match-stats__shots__on {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    .match-stats__shots__off,
+    .match-stats__shots__on {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+
+.match-stats__shots__on {
+  width: 75%;
+  border: 2px solid #fff;
+  border-bottom: 0; }
+
+.match-stats__shots--home,
+.match-stats__shots--away {
+  background-image: url("../img/hor-bg.png");
+  background-size: 8px;
+  width: 50%;
+  float: left; }
+
+.match-stats__shots--home .match-stats__shots__on {
+  float: right;
+  border-right: 0; }
+
+.match-stats__shots--away .match-stats__shots__on {
+  border-left: 0; }
+
+/*doc
+---
+title: Match status
+name: match-status
+category: Football
+---
+Future
+
+```html_example
+<div class="match-status match-status--f">
+    <p class="match-status__time">18:00</p>
+</div>
+```
+
+Postponed
+
+```html_example
+<div class="match-status match-status--p">
+    <p class="match-status__time">P</p>
+</div>
+```
+
+Abandonded
+
+```html_example
+<div class="match-status match-status--a">
+    <p class="match-status__time">A</p>
+</div>
+```
+
+Cancelled
+
+```html_example
+<div class="match-status match-status--c">
+    <p class="match-status__time">C</p>
+</div>
+```
+
+Suspended
+
+```html_example
+<div class="match-status match-status--s">
+    <p class="match-status__time">S</p>
+</div>
+```
+
+First half
+
+```html_example
+<div class="match-status match-status--first">
+    <p class="match-status__time">1st</p>
+</div>
+```
+
+Half time
+
+```html_example
+<div class="match-status match-status--ht">
+    <p class="match-status__time">HT</p>
+</div>
+```
+
+Second half
+
+```html_example
+<div class="match-status match-status--second">
+    <p class="match-status__time">2nd</p>
+</div>
+```
+
+Extra time
+
+```html_example
+<div class="match-status match-status--et">
+    <p class="match-status__time">ET</p>
+</div>
+```
+
+Full time
+
+```html_example
+<div class="match-status match-status--ft">
+    <p class="match-status__time">FT</p>
+</div>
+```
+*/
+.match-status {
+  color: #767676;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  font-weight: bold;
+  background-image: url("../img/match-status.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 44px;
+  height: 44px;
+  display: table; }
+  @media all and (max-width: 40.62em) {
+    .match-status {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    .match-status {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  @media all and (max-width: 28.12em) {
+    .match-status {
+      background-size: 44px 44px;
+      background-position: center; } }
+
+.match-status__time {
+  vertical-align: middle;
+  text-align: center;
+  display: table-cell; }
+
+.match-status--f .match-status__time {
+  font-size: 1.2rem;
+  font-weight: normal; }
+
+.match-status--a {
+  color: #b51800;
+  background-image: url("../img/match-status--a.svg"); }
+
+.match-status--c {
+  color: #b51800;
+  background-image: url("../img/match-status--c.svg"); }
+
+.match-status--p {
+  color: #4bc6df;
+  background-image: url("../img/match-status--p.svg"); }
+
+.match-status--s {
+  color: #b51800;
+  background-image: url("../img/match-status--s.svg"); }
+
+.match-status--first {
+  color: #4bc6df;
+  background-image: url("../img/match-status--first.svg"); }
+
+.match-status--second {
+  color: #4bc6df;
+  background-image: url("../img/match-status--second.svg"); }
+
+.match-status--ht {
+  color: #4bc6df;
+  background-image: url("../img/match-status--ht.svg"); }
+
+.match-status--ft {
+  color: #4bc6df;
+  background-image: url("../img/match-status--ft.svg"); }
+
+.match-status--et {
+  color: #4bc6df;
+  background-image: url("../img/match-status--et.svg"); }
+
+/*doc
+---
+title: Player card
+name: player-card
+category: Football
+---
+Display a player card embed. The markup for these classes comes from the content API, which in turn gets the content from the football admin tool. [You can find the templates here](https://github.com/guardian/frontend/tree/master/admin/app/views/football/player/cards).
+
+```html_example
+<div class="player-card player-card--football">
+    <div class="player-card__image-container">
+        <img class="player-card__image" src="http://sport.guim.co.uk/football/player-images/100/399337.jpg" alt="Photo of Ricky van Wolfswinkel">
+    </div>
+    <div class="player-card__player">
+        <div class="player-card__position" itemprop="jobTitle">Striker</div>
+        <div class="player-card__name" itemprop="name">Ricky van Wolfswinkel</div>
+    </div>
+    <dl class="player-card__stats">
+        <dt class="player-card__stat-name">Appearances</dt>
+        <dd class="player-card__stat-value">24</dd>
+        <dt class="player-card__stat-name">Goals</dt>
+        <dd class="player-card__stat-value">1</dd>
+        <dt class="player-card__stat-name">Shots</dt>
+        <dd class="player-card__stat-value">32</dd>
+        <dt class="player-card__stat-name">Shots on target</dt>
+        <dd class="player-card__stat-value">28%</dd>
+        <dt class="player-card__stat-name">Offsides</dt>
+        <dd class="player-card__stat-value">7</dd>
+    </dl>
+</div>
+```
+*/
+.player-card {
+  background: #eaeaea;
+  margin: 12px 0px;
+  border-top: 2px solid #005689;
+  padding: 12px; }
+  @media all and (min-width: 56.25em) {
+    .article__body .player-card {
+      margin: 12px 0px 12px 12px;
+      width: 50%;
+      float: right; } }
+
+.player-card__image-container {
+  float: right; }
+
+.player-card__image {
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  float: right; }
+  @media all and (min-width: 28.13em) {
+    .player-card__image {
+      width: 100px;
+      height: 100px; } }
+
+.player-card__player {
+  margin: 0px 0px 12px 0px;
+  padding-right: 44px;
+  min-height: 44px; }
+  @media all and (min-width: 28.13em) {
+    .player-card__player {
+      padding-right: 100px;
+      min-height: 100px; } }
+
+.player-card__name {
+  font-family: "Guardian Egyptian Web", Georgia, serif; }
+  @media all and (max-width: 40.62em) {
+    .player-card__name {
+      font-size: 1.7rem;
+      line-height: 2.2rem; } }
+  @media all and (min-width: 40.63em) {
+    .player-card__name {
+      font-size: 2.2rem;
+      line-height: 3rem; } }
+
+.player-card__position {
+  color: #005689;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif; }
+  @media all and (max-width: 40.62em) {
+    .player-card__position {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    .player-card__position {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+
+.player-card__stats {
+  margin: 0;
+  padding: 0; }
+
+.player-card__stat-name,
+.player-card__stat-value {
+  padding: 3px 0px 6px 0px; }
+
+.player-card__stat-name {
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  display: block;
+  float: left;
+  font-weight: normal; }
+
+.player-card__stat-value {
+  font-weight: bold;
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  text-align: right;
+  border-top: 1px solid #dcdad5;
+  padding-left: 85%; }
+
+/*doc
+---
+title: Tables
+name: table-football
+category: Football
+---
+Display a  league table (which may sometimes be an embed). The markup for these classes comes from the content API, which in turn gets the content from the football admin tool. [You can find the templates here](https://github.com/guardian/frontend/blob/master/admin/app/views/football/leagueTables/).
+
+```html_example
+<table class="table table--football">
+    <thead>
+        <tr>
+            <th class="football-stat--postition table-column--sub"><abbr title="Position">Pos</abbr></th>
+            <th class="football-stat--team table-column--main">Team</th>
+            <th class="football-stat--played"><abbr title="Played">P</abbr></th>
+            <th class="football-stat--difference"><abbr title="Goal difference">GD</abbr></th>
+            <th class="football-stat--points"><abbr title="Points">Pts</abbr></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="football-stat--postition table-column--sub">1</td>
+            <td class="football-stat--team table-column--main">Man City</td>
+            <td class="football-stat--played">37</td>
+            <td class="football-stat--difference">63</td>
+            <td class="football-stat--points">83</td>
+        </tr>
+        <tr>
+            <td class="football-stat--postition table-column--sub">2</td>
+            <td class="football-stat--team table-column--main">Liverpool</td>
+            <td class="football-stat--played">37</td>
+            <td class="football-stat--difference">50</td>
+            <td class="football-stat--points">81</td>
+        </tr>
+        <tr>
+            <td class="football-stat--postition table-column--sub">3</td>
+            <td class="football-stat--team table-column--main">Chelsea</td>
+            <td class="football-stat--played">37</td>
+            <td class="football-stat--difference">43</td>
+            <td class="football-stat--points">79</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+Display a fixtures table.
+
+```html_example
+<table class="table table--football">
+    <tbody>
+        <tr class="football-match has-ended">
+            <td class="football-match--status">FT</td>
+            <td class="football-match--home">Costa Rica</td>
+            <td class="football-match--score">1 - 3</td>
+            <td class="football-match--away">Japan</td>
+        </tr>
+         <tr class="football-match is-live">
+            <td class="football-match--status">HT</td>
+            <td class="football-match--home">United Arab Emirates</td>
+            <td class="football-match--score">0 - 0</td>
+            <td class="football-match--away">Georgia</td>
+        </tr>
+         <tr class="football-match">
+            <td class="football-match--status">19:30</td>
+            <td class="football-match--home">Czech Republic</td>
+            <td class="football-match--score">v</td>
+            <td class="football-match--away">Austria</td>
+        </tr>
+         <tr class="football-match">
+            <td class="football-match--status">19:30</td>
+            <td class="football-match--home">Switzerland</td>
+            <td class="football-match--score">v</td>
+            <td class="football-match--away">Peru</td>
+        </tr>
+         <tr class="football-match">
+            <td class="football-match--status">20:00</td>
+            <td class="football-match--home">Brazil</td>
+            <td class="football-match--score">v</td>
+            <td class="football-match--away">Panama</td>
+        </tr>
+    </tbody>
+</table>
+```
+*/
+.table--football {
+  width: 100%;
+  table-layout: fixed; }
+  .table--football .football-stat--postition {
+    width: 15%; }
+  .table--football td.football-stat--postition {
+    color: #999; }
+    .table--football td.football-stat--postition .icon.up {
+      color: #68a948; }
+    .table--football td.football-stat--postition .icon.down {
+      color: #df1f1f; }
+  .table--football .football-stat--team {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 0; }
+  .table--football .football-stat--played,
+  .table--football .football-stat--difference,
+  .table--football .football-stat--points {
+    text-align: right;
+    width: 15%; }
+  .table--football .football-stat--points {
+    font-weight: bold; }
+  .table--football .football-match.has-ended .football-match--status {
+    font-weight: bold; }
+  .table--football .football-match.is-live {
+    font-weight: bold; }
+    .table--football .football-match.is-live .football-match--status {
+      color: #4bc6df; }
+  .table--football .football-match--status {
+    color: #999; }
+  .table--football .football-match--score {
+    color: #767676;
+    text-align: center;
+    width: 20%; }
+  .table--football .football-match--home,
+  .table--football .football-match--away {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 40%; }
+  .table--football .football-match--home {
+    text-align: right; }
+
+/*doc
+---
+title: Team line-up
+name: team-lineup
+category: Football
+---
+Display a team line-up including substitutions and bookings.
+
+```html_example
+<table class="team-lineup">
+    <caption class="team-lineup__name">Arsenal</caption>
+    <tbody>
+        <tr class="team-lineup__player">
+            <td class="team-lineup__player__number">21</td>
+            <td class="team-lineup__player__name"><span>
+                <span class="team-lineup__player__forename">Lukasz</span> <span class="team-lineup__player__surname">Fabianski</span>
+                <span class="team-lineup__player__replacement"> ()</span>
+            </span></td>
+        </tr>
+         <tr class="team-lineup__player">
+            <td class="team-lineup__player__number">3</td>
+            <td class="team-lineup__player__name"><span>
+                <span class="team-lineup__player__forename">Bacary</span> <span class="team-lineup__player__surname">Sagna</span>
+            </span></td>
+        </tr>
+        <tr class="team-lineup__player">
+            <td class="team-lineup__player__number">4</td>
+            <td class="team-lineup__player__name"><span>
+                <span class="team-lineup__player__forename">Per</span> <span class="team-lineup__player__surname">Mertesacker</span>
+            </span></td>
+        </tr>
+        <tr class="team-lineup__player">
+            <td class="team-lineup__player__number">6</td>
+            <td class="team-lineup__player__name"><span>
+                <span class="team-lineup__player__forename">Laurent</span> <span class="team-lineup__player__surname">Koscielny</span>
+            </span></td>
+        </tr>
+         <tr class="team-lineup__player">
+            <td class="team-lineup__player__number">28</td>
+            <td class="team-lineup__player__name"><span>
+                <span class="team-lineup__player__forename">Kieran</span> <span class="team-lineup__player__surname">Gibbs</span>
+            </span></td>
+        </tr>
+         <tr class="team-lineup__player">
+            <td class="team-lineup__player__number">8</td>
+            <td class="team-lineup__player__name"><span>
+                <span class="team-lineup__player__forename">Mikel</span> <span class="team-lineup__player__surname yellow-red">Arteta</span>
+            </span></td>
+        </tr>
+         <tr class="team-lineup__player">
+            <td class="team-lineup__player__number">16</td>
+            <td class="team-lineup__player__name"><span>
+                <span class="team-lineup__player__forename">Aaron</span> <span class="team-lineup__player__surname red">Ramsey</span>
+            </span></td>
+        </tr>
+         <tr class="team-lineup__player">
+            <td class="team-lineup__player__number">19</td>
+            <td class="team-lineup__player__name"><span class="replacement">
+                <span class="team-lineup__player__forename">Santi</span> <span class="team-lineup__player__surname">Cazorla</span>
+                <span class="team-lineup__player__replacement">(<span class="yellow">Rosicky</span> 106)</span>
+            </span></td>
+        </tr>
+         <tr class="team-lineup__player">
+            <td class="team-lineup__player__number">11</td>
+            <td class="team-lineup__player__name"><span class="replacement">
+                <span class="team-lineup__player__forename">Mesut</span> <span class="team-lineup__player__surname">Ozil</span>
+                <span class="team-lineup__player__replacement">(<span class="red">Wilshere</span> 106)</span>
+            </span></td>
+        </tr>
+         <tr class="team-lineup__player">
+            <td class="team-lineup__player__number">9</td>
+            <td class="team-lineup__player__name"><span class="replacement">
+                <span class="team-lineup__player__forename">Lukas</span> <span class="team-lineup__player__surname">Podolski</span>
+                <span class="team-lineup__player__replacement">(Sanogo 61)</span>
+            </span></td>
+        </tr>
+         <tr class="team-lineup__player">
+            <td class="team-lineup__player__number">12</td>
+            <td class="team-lineup__player__name"><span>
+                <span class="team-lineup__player__forename">Olivier</span> <span class="team-lineup__player__surname yellow">Giroud</span>
+            </span></td>
+        </tr>
+         <tr class="team-lineup__player">
+            <td class="team-lineup__player__number">Subs</td>
+            <td class="team-lineup__player__name"><span>
+                <span class="team-lineup__player__forename">Wojciech</span> <span class="team-lineup__player__surname">Szczesny</span>, 
+            </span>
+            <span>
+                <span class="team-lineup__player__forename">Thomas</span> <span class="team-lineup__player__surname">Vermaelen</span>, 
+            </span>
+            <span class="used">
+                <span class="team-lineup__player__forename">Tomas</span> <span class="team-lineup__player__surname">Rosicky</span>, 
+            </span>
+            <span class="used">
+                <span class="team-lineup__player__forename">Jack</span> <span class="team-lineup__player__surname">Wilshere</span>, 
+            </span>
+            <span>
+                <span class="team-lineup__player__forename">Nacho</span> <span class="team-lineup__player__surname">Monreal</span>, 
+            </span>
+            <span>
+                <span class="team-lineup__player__forename">Mathieu</span> <span class="team-lineup__player__surname">Flamini</span>, 
+            </span>
+            <span class="used">
+                <span class="team-lineup__player__forename">Yaya</span> <span class="team-lineup__player__surname">Sanogo</span>
+            </span></td>
+        </tr>
+    </tbody>
+</table>
+```
+*/
+.team-lineup {
+  font-family: "Guardian Agate Sans 1 Web", sans-serif; }
+  @media all and (max-width: 40.62em) {
+    .team-lineup {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    .team-lineup {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+
+.team-lineup__name {
+  font-weight: bold; }
+
+.team-lineup__player .red::after,
+.team-lineup__player .yellow::after,
+.team-lineup__player .yellow-red::after {
+  content: '';
+  background-repeat: no-repeat;
+  margin-left: 4px;
+  height: 14px;
+  width: 12px;
+  display: inline-block; }
+.team-lineup__player .red::after {
+  background-image: url("../img/team-lineup__card--red.svg"); }
+.team-lineup__player .yellow::after {
+  background-image: url("../img/team-lineup__card--yellow.svg"); }
+.team-lineup__player .yellow-red::after {
+  background-image: url("../img/team-lineup__card--yellow-red.svg");
+  width: 26px; }
+.team-lineup__player .used {
+  color: #999;
+  text-decoration: line-through; }
+.team-lineup__player:last-of-type td {
+  padding: 24px 6px 0px 0px; }
+
+.team-lineup__name,
+.team-lineup__player__number,
+.team-lineup__player__name {
+  text-align: left;
+  vertical-align: top;
+  padding: 0px 6px 3px 0px; }
+
+.team-lineup__player__number {
+  color: #999; }
+
+@media all and (max-width: 28.12em) {
+  .team-lineup__player__forename {
+    display: none; } }
+
+.team-lineup__player__replacement {
+  display: none; }
+  .replacement .team-lineup__player__replacement {
+    display: inline; }
+    @media all and (max-width: 28.12em) {
+      .replacement .team-lineup__player__replacement {
+        display: block; } }
+
+/*doc
+---
+title: Embed
+name: element-witness
+category: GuardianWitness
+---
+Display a Guardian Witness submission.
+
+```html_example
+<figure class="element element-witness element-witness-image" itemtype="http://schema.org/ImageObject" data-media-id="https://witness.theguardian.com/assignment/516fe68ee4b0b434f8243dbf/294536">
+    <div class="element-witness--main">
+        <a href="https://witness.theguardian.com/assignment/516fe68ee4b0b434f8243dbf/294536" itemprop="url">
+            <img src="https://n0tice-static.s3.amazonaws.com/images/reports/microblogs/mediumoriginalaspectdouble/d8c87361658f6be886c652597695db0f.jpg" alt="Craggy Island" itemprop="contentURL">
+        </a>
+        <figcaption>
+            <h3 class="element-witness--title" itemprop="name"><a href="https://witness.theguardian.com/assignment/516fe68ee4b0b434f8243dbf/294536" itemprop="url">Craggy Island</a></h3>
+            <div itemprop="description">
+                <p>Father Teds house. Not on an Island, but in the Burren in Co. Clare.</p>
+                <p>The Burren is 100 sq miles of rocky limestone 'karst' landscape famous for its unusual flora and fauna.</p>
+            </div>
+        </figcaption>
+    </div>
+    <footer class="element-witness--footer">
+        <p class="element-witness--source">Sent via <a class="element-witness--brand" href="https://witness.theguardian.com/" itemprop="provider">GuardianWitness</a></p>
+        <div class="element-witness--metadata">
+            <p class="element-witness--author" itemprop="author" itemtype="http://schema.org/Person">By <a class="element-witness--author-name" href="https://witness.theguardian.com/user/peddyr" itemprop="name">peddyr</a></p>
+            <p class="element-witness--date"><time itemprop="dateCreated" datetime="2013-04-25T21:29:23Z">25 April 2013, 22:29</time></p>
+        </div>
+    </footer>
+</figure>
+```
+*/
+.element-witness {
+  font-family: "Guardian Agate Sans 1 Web", sans-serif; }
+  @media all and (max-width: 40.62em) {
+    .element-witness {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    .element-witness {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  .element-witness img {
+    max-width: 100%; }
+  .element-witness p {
+    color: #767676;
+    margin: 0; }
+
+.element-witness--title {
+  font-weight: bold; }
+
+.element-witness--footer {
+  color: #999;
+  padding: 6px 0px 12px 0px; }
+
+.element-witness--author {
+  display: inline; }
+
+.element-witness--date {
+  display: inline; }
+  .element-witness--date::before {
+    content: '\00B7   '; }
+
+.android .discussion {
+  border-top-width: 0;
+  padding: 0px 12px 0px 12px; }
+.discussion .container {
+  margin: 0;
+  border-top-width: 0; }
+.discussion .container__header {
+  padding-bottom: 0; }
+
+.discussion__header {
+  background-color: transparent; }
+  @media all and (max-width: 28.12em) {
+    .discussion__header {
+      padding: 0 2.89855%; } }
+  .discussion__header .section {
+    padding: 6px 12px 6px 0px;
+    color: #333; }
+  .discussion__header .headline {
+    margin: 0px 0px 48px 0px; }
+    @media all and (max-width: 28.12em) {
+      .discussion__header .headline {
+        font-size: 2.25rem;
+        line-height: 2.4rem; } }
+    @media all and (min-width: 28.13em) and (max-width: 40.62em) {
+      .discussion__header .headline {
+        font-size: 3rem;
+        line-height: 3rem; } }
+    @media all and (min-width: 40.63em) {
+      .discussion__header .headline {
+        font-size: 3.6rem;
+        line-height: 3.6rem; } }
+
+@media all and (min-width: 28.13em) {
+  .football {
+    border-top: 4px solid #4bc6df; } }
+.football .tabs [href="#football__tabpanel--liveblog"][aria-selected="true"] {
+  color: #b51800;
+  border-top-color: #cc2b12; }
+
+.football__tabpanel .article {
+  border-top-width: 2px; }
+
+#football__tabpanel--article .section {
+  display: none; }
+#football__tabpanel--article .headline {
+  padding-top: 6px; }
+
+#football__tabpanel--stats {
+  font-family: "Guardian Agate Sans 1 Web", sans-serif; }
+
+.football__label {
+  font-family: "Guardian Egyptian Web", Georgia, serif; }
+  @media all and (max-width: 40.62em) {
+    .football__label {
+      font-size: 1.6rem;
+      line-height: 2.4rem; } }
+  @media all and (min-width: 40.63em) {
+    .football__label {
+      font-size: 1.8rem;
+      line-height: 2.6rem; } }
+  @media all and (min-width: 28.13em) {
+    .football__label {
+      padding: 0px 0px 0px 60px; } }
+
+.football__sublabel {
+  margin-bottom: 4px; }
+  @media all and (max-width: 40.62em) {
+    .football__sublabel {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    .football__sublabel {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+
+.football__column {
+  padding: 0px 0px 12px 0px;
+  width: 50%;
+  float: left; }
+  @media all and (min-width: 28.13em) {
+    .football__column {
+      padding: 0px 0px 12px 60px; } }
+  @media all and (min-width: 56.25em) {
+    .football__column {
+      padding: 0px 60px 12px 60px; } }
+
+.football__lineups {
+  padding: 12px;
+  overflow-y: hidden; }
+  @media all and (min-width: 28.13em) {
+    .football__lineups .football__column {
+      padding: 0px 0px 12px 0px; } }
+
+@media all and (max-width: 28.12em) {
+  .football__stats .football__column,
+  .football__today .football__column {
+    width: 100%;
+    float: none; } }
+
+.football__stats {
+  border-top: 1px dotted #dcdad5;
+  padding: 12px;
+  overflow-y: auto;
+  position: relative; }
+
+.football__today {
+  border-top: 1px dotted #dcdad5;
+  padding: 12px; }
+  @media all and (min-width: 28.13em) {
+    .football__today {
+      display: table;
+      width: 100%; } }
+
+@media all and (min-width: 28.13em) {
+  .football__today__fixtures {
+    padding-right: 12px; } }
+
+@media all and (min-width: 28.13em) {
+  .football__today__fixtures,
+  .football__today__table {
+    vertical-align: top;
+    width: 50%;
+    display: inline-block; } }
+
+.football__lineups .team-lineup__player__number,
+.football__today__fixtures .football-match--status,
+.football__today__table .football-stat--postition {
+  width: 42px; }
+  @media all and (min-width: 28.13em) {
+    .football__lineups .team-lineup__player__number,
+    .football__today__fixtures .football-match--status,
+    .football__today__table .football-stat--postition {
+      width: 60px; } }
+
+.support {
+  font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  background-color: #fff;
+  padding: 12px; }
+  @media all and (max-width: 40.62em) {
+    .support {
+      font-size: 1.4rem;
+      line-height: 2rem; } }
+  @media all and (min-width: 40.63em) {
+    .support {
+      font-size: 1.6rem;
+      line-height: 2.2rem; } }
+  .support .prose h2 + p,
+  .support .prose h2 + ul,
+  .support .prose h3 + p {
+    margin-top: 0; }
+  .support .prose h2 {
+    margin-bottom: 0; }
+    .support .prose h2 + h3 {
+      margin: 9px 0px 0px 0px; }
+  @media all and (max-width: 40.62em) {
+    .support .prose h3 {
+      font-size: 1.6rem;
+      line-height: 2.4rem; } }
+  @media all and (min-width: 40.63em) {
+    .support .prose h3 {
+      font-size: 1.8rem;
+      line-height: 2.6rem; } }

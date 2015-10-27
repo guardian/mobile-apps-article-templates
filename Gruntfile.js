@@ -98,17 +98,29 @@ module.exports = function(grunt) {
                     sourcemap: 'none'
                 },
                 files: {
-                    'ArticleTemplates/assets/css/fonts.css':  'ArticleTemplates/assets/scss/fonts.scss',
-                    'ArticleTemplates/assets/css/interactive.css':  'ArticleTemplates/assets/scss/interactive.scss',
-                    'ArticleTemplates/assets/css/style-async.css':  'ArticleTemplates/assets/scss/style-async.scss',
-                    'ArticleTemplates/assets/css/style-sync.css':  'ArticleTemplates/assets/scss/style-sync.scss',
+                    'ArticleTemplates/assets/scss/fonts.css':  'ArticleTemplates/assets/scss/fonts.scss',
+                    'ArticleTemplates/assets/scss/interactive.css':  'ArticleTemplates/assets/scss/interactive.scss',
+                    'ArticleTemplates/assets/scss/style-async.css':  'ArticleTemplates/assets/scss/style-async.scss',
+                    'ArticleTemplates/assets/scss/style-sync.css':  'ArticleTemplates/assets/scss/style-sync.scss',
                     'test/unit/test.css':  'ArticleTemplates/assets/scss/test.scss'
-                }
+                } 
             },
             doc: {
                 files: {
                     'DocumentationTemplates/assets/css/style.css':  'DocumentationTemplates/assets/scss/style.scss'
                 }
+            }
+        },
+
+        cssmin: {
+            target: {
+                files: [{
+                    expand: true,
+                    cwd: 'ArticleTemplates/assets/scss',
+                    src: ['*.css', '!*.min.css'],
+                    dest: 'ArticleTemplates/assets/css',
+                    ext: '.css'
+                }]
             }
         },
 
@@ -257,10 +269,8 @@ module.exports = function(grunt) {
     });
 
     grunt.task.run('notify_hooks');
-
     grunt.registerTask('develop', ['build', 'express', 'watch']);
-    //grunt.registerTask('build', ['initRequireJS', 'jshint', 'requirejs', 'scsslint','sass:dev']);
-    grunt.registerTask('build', ['initRequireJS', 'jshint', 'requirejs','sass:dev']);
+    grunt.registerTask('build', ['initRequireJS', 'jshint', 'requirejs', 'scsslint','sass:dev','cssmin']);
     grunt.registerTask('apk', ['build', 'rsync', 'shell:android']);
     grunt.registerTask('ipa', ['build', 'rsync', 'shell:ios']);
     grunt.registerTask('installer', ['build', 'rsync', 'shell:ios', 'shell:android']);
