@@ -13,11 +13,12 @@
         }
 
         color: color(shade-2);
+
         .content__series-label,
         .content__series-label a {
             color: color(shade-2);  // Content Label Series
         }
-        
+
         .comment-count {
             border-left-color: darken(color(shade-4), 10%);
         }
@@ -121,6 +122,17 @@
                 color: color(shade-7);
             }
         }
+    }
+
+    //TODO: specificity needed due to previous styles - improve
+    a.tell-me-when:active, a.tell-me-when.added {
+        background-color: color(tone-comment-accent);
+        color: color(shade-7);
+    }
+    
+    a.tell-me-when,  a.tell-me-when.added:active {
+        border-color: color(tone-comment-accent);
+        color: color(tone-comment-accent);
     }
 }
 

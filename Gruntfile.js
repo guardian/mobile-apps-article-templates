@@ -47,7 +47,7 @@ module.exports = function(grunt) {
                                 }
                             }
                         },
-                        generateSourceMaps: true,
+                        generateSourceMaps: false,
                         preserveLicenseComments: false,
                         useSourceUrl: false,
                         removeCombined: true,
@@ -94,13 +94,16 @@ module.exports = function(grunt) {
 
         sass: {
             dev: {
+                options: {
+                    sourcemap: 'none'
+                },
                 files: {
-                    'ArticleTemplates/assets/css/interactive.css':  'ArticleTemplates/assets/scss/interactive.scss',
-                    'ArticleTemplates/assets/css/style.css':  'ArticleTemplates/assets/scss/style.scss',
-                    'ArticleTemplates/assets/css/style-async.css':  'ArticleTemplates/assets/scss/style-async.scss',
-                    'ArticleTemplates/assets/css/style-sync.css':  'ArticleTemplates/assets/scss/style-sync.scss',
+                    'ArticleTemplates/assets/scss/fonts.css':  'ArticleTemplates/assets/scss/fonts.scss',
+                    'ArticleTemplates/assets/scss/interactive.css':  'ArticleTemplates/assets/scss/interactive.scss',
+                    'ArticleTemplates/assets/scss/style-async.css':  'ArticleTemplates/assets/scss/style-async.scss',
+                    'ArticleTemplates/assets/scss/style-sync.css':  'ArticleTemplates/assets/scss/style-sync.scss',
                     'test/unit/test.css':  'ArticleTemplates/assets/scss/test.scss'
-                }
+                } 
             },
             doc: {
                 files: {
@@ -109,11 +112,24 @@ module.exports = function(grunt) {
             }
         },
 
+        cssmin: {
+            target: {
+                files: [{
+                    expand: true,
+                    cwd: 'ArticleTemplates/assets/scss',
+                    src: ['*.css', '!*.min.css'],
+                    dest: 'ArticleTemplates/assets/css',
+                    ext: '.css'
+                }]
+            }
+        },
+
         scsslint: {
             options: {
                 bundleExec: true,
                 config: 'ArticleTemplates/assets/scss/.scss-lint.yml',
-                force: true
+                force: true,
+                maxBuffer: 300 * 1024
             },
             dev: [
                 'ArticleTemplates/assets/scss/**/*.scss',
@@ -253,9 +269,8 @@ module.exports = function(grunt) {
     });
 
     grunt.task.run('notify_hooks');
-
     grunt.registerTask('develop', ['build', 'express', 'watch']);
-    grunt.registerTask('build', ['initRequireJS', 'jshint', 'requirejs', 'scsslint','sass:dev']);
+    grunt.registerTask('build', ['initRequireJS', 'jshint', 'requirejs', 'scsslint','sass:dev','cssmin']);
     grunt.registerTask('apk', ['build', 'rsync', 'shell:android']);
     grunt.registerTask('ipa', ['build', 'rsync', 'shell:ios']);
     grunt.registerTask('installer', ['build', 'rsync', 'shell:ios', 'shell:android']);

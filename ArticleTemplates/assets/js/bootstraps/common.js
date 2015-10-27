@@ -5,10 +5,12 @@ define([
     'fence',
     'fastClick',
     'smoothScroll',
+    'flipSnap',
     'modules/comments',
     'modules/cards',
     'modules/more-tags',
     'modules/sharing',
+    'throttleDebounce',
     'modules/$'
 ], function (
     bean,
@@ -16,10 +18,12 @@ define([
     fence,
     FastClick,
     smoothScroll,
+    flipSnap,
     Comments,
     Cards,
     MoreTags,
     Sharing,
+    throttleDebounce,
     $
 ) {
     'use strict';
@@ -43,9 +47,9 @@ define([
         figcaptionToggle: function () {
             // Show/hides figure caption
             if ($('.main-media__caption__icon')[0]) {
-                bean.on($('.main-media__caption__icon')[0], 'click', function () {
+                bean.on($('.main-media__caption__icon')[0], 'click touchend', window.ThrottleDebounce.debounce( 250, true, function () {
                     $('.main-media__caption__text').toggleClass('is-visible');
-                });
+                }));
             }
         },
 
@@ -153,6 +157,7 @@ define([
             };
             window.articleImageSizer();
         },
+
         isThumbNailImageWithoutCaptionPresent: function(el){
             return el.getElementsByClassName('figure--thumbnail').length;
         },
@@ -171,7 +176,7 @@ define([
                 if (classArray.length) {
                     element.addClass(classArray.join(" ")); 
                 }
-            });          
+            });
         },
 
         insertTags: function () {
@@ -185,6 +190,29 @@ define([
             window.applyNativeFunctionCall('articleTagInserter');
         },
 
+        videoPositioning: function () {
+            window.videoPositioning = function () {
+                var mainMedia = $('.video-URL');
+                if (mainMedia) {
+                    for (var i = mainMedia.length - 1; i >= 0; i--) {
+                        var media = $(mainMedia[i]);
+                        window.GuardianJSInterface.videoPosition(media.offset().left, media.offset().top, media.offset().width, media.attr('href'));
+                    }
+                }
+                setTimeout(modules.videoPositioningPoller, 500, window.innerHeight);
+            };
+            window.applyNativeFunctionCall('videoPositioning');
+        },
+
+        videoPositioningPoller: function(pageHeight) {
+            var newHeight = window.innerHeight;
+            if(pageHeight !== newHeight) {
+                window.videoPositioning();
+            } else {
+                setTimeout(modules.videoPositioningPoller, 500, newHeight);
+            }  
+        },
+
         offline: function() {
             // Function that gracefully fails when the device is offline
             if ($(document.body).hasClass('offline')) {
@@ -195,10 +223,10 @@ define([
                         if ($(element).parent().attr("class") == "element-image-inner") {
                             $(element).hide();
                         } else {
-                            $(element).replaceWith("<div class='element-image-inner'></div>");
+                            $(element).replaceWith('<div class="element-image-inner"></div>');
                         }
                     };
-                    img.src = $(this).attr("src");
+                    img.src = $(this).attr('src');
                 });
             }
         },
@@ -216,6 +244,20 @@ define([
                         if (followObject.hasClass('following')) {
                             followObject.removeClass('following');
                         }
+                    }
+                }
+            };
+        },
+
+        setupTellMeWhenSwitch: function () {
+            // Global function to switch tell me when, called by native code
+            window.tellMeWhenSwitch = function (added, followid) {
+                var tellMeWhenLink = $('a.tell-me-when');
+                if (tellMeWhenLink.length) {
+                    if (added == 1) {
+                        tellMeWhenLink.addClass('added');
+                    } else {
+                        tellMeWhenLink.removeClass('added');
                     }
                 }
             };
@@ -278,7 +320,14 @@ define([
                                 root.location.href = 'x-gu://football_tab_liveblog';
                                 break;
                             case "cricket__tab--liveblog":
+                                if (modules.isAndroid) {
+                                    window.GuardianJSInterface.cricketTabChanged('overbyover');
+                                }
+                                break;
                             case "cricket__tab--stats":
+                                if (modules.isAndroid) {
+                                    window.GuardianJSInterface.cricketTabChanged('scorecard');
+                                }
                                 break;
                             default:
                                 root.location.href = 'x-gu://football_tab_unknown';
@@ -364,6 +413,8 @@ define([
     },
 
     ready = function () {
+        modules.isAndroid = $('body').hasClass('android');
+
         if (!this.initialised) {
             this.initialised = true;
 
@@ -371,13 +422,14 @@ define([
              These methods apply to all templates, if any should
              only run for articles, move to the Article bootstrap.
             */
-
+            
             modules.attachFastClick();
             modules.correctCaptions();
             modules.figcaptionToggle();
             modules.imageSizer();
             modules.applyArticleContentTypeClasses();
             modules.insertTags();
+            modules.videoPositioning();
             modules.loadComments();
             modules.loadCards();
             modules.loadEmbeds();
@@ -386,6 +438,7 @@ define([
             modules.offline();
             modules.setupOfflineSwitch();
             modules.setupAlertSwitch();
+            modules.setupTellMeWhenSwitch();
             modules.setupFontSizing();
             modules.showTabs(window);
             modules.setGlobalObject(window);

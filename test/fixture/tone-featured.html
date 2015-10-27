@@ -4,6 +4,7 @@
     <title>Article</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" media="all" href="../../ArticleTemplates/assets/css/fonts.css">
     <link rel="stylesheet" type="text/css" media="all" href="../../ArticleTemplates/assets/css/style-sync.css">
     <script type="text/javascript" src="../../ArticleTemplates/assets/js/shim.js"></script>
 </head>
@@ -198,6 +199,16 @@
                 </p>
 
             </div>
+            <a class="tell-me-when __TELLMEWHEN_ADDED__" href="__TELLMEWHEN_HREF__">
+                <span class="tell-me-when__state--add">
+                    <span data-icon="&#xe050;" aria-hidden="true"></span>
+                    <span class="tell-me-when__label">Add reminder for event</span>
+                </span>
+                <span class="tell-me-when__state--remove">
+                    <span data-icon="&#xe04f;" aria-hidden="true"></span>
+                    <span class="tell-me-when__label">Remove reminder for event</span>
+                </span>
+            </a>
         </div>
 
         <div class="tags" id="tags">
@@ -253,7 +264,11 @@
                 <h2 class="container__title__label" id="related-content-title-label">More on this story</h2>
             </div>
         </div>
-
+        <div class="block block--failed" id="related-module-failed-block">
+            <div class="block__body">
+                <p>More on this story is currently unavailable. Please try again later.</p>
+            </div>
+        </div>
         <div class="container__body" id="related-content-body">
             <a class="card  card--news" href="x-gu://related_item/mobile-apps.guardianapis.com/items/world/2014/sep/21/path-subway-fire-new-york-police-fdny">
                 <div class="card__container">
@@ -383,7 +398,11 @@
                 </a>
             </div>
         </div>
-
+        <div class="block block--failed" id="comments-module-failed-block">
+            <div class="block__body">
+                <p id="comments-module-failed-text">Comments are currently unavailable. Please try again later.</p>
+            </div>
+        </div>
         <div class="container__body" id="comments-module-blocks">
             <div class="block block--discussion-empty" id="comments-module-empty-block">
                 <div class="block__body">
@@ -393,15 +412,6 @@
                                 Open for comments.
                                 <a href="x-gu://leavecomment">Be the first to join the debate</a>
                             </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="block block--discussion-failed" id="comments-module-failed-block">
-                <div class="block__body">
-                    <div class="comment">
-                        <div class="prose resizable">
-                            <p id="comments-module-failed-text">Comments are currently unavailable. Please try again later.</p>
                         </div>
                     </div>
                 </div>

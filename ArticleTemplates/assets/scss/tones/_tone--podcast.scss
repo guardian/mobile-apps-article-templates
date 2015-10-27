@@ -1,12 +1,12 @@
 .tone--podcast {
     .section__container {
-        border-bottom: 1px rgba(234,234,234,0.3) dotted;
+        border-bottom: 1px rgba(234, 234, 234, .3) dotted;
+        color: color(shade-5);
         
-        & > div {
+        > div {
             color: color(tone-podcast); // Content Label Section
         }
         
-        color: color(shade-5);
         .content__series-label,
         .content__series-label a {
             color: color(shade-5);  // Content Label Series
@@ -34,7 +34,7 @@
 
     .article__header {
         background-color: color(shade-6);
-        background-image: -webkit-canvas(circles);
+        //background-image: -webkit-canvas(circles); (-webkit-canvas is deprecated not supported in Windows App)
 
         .section {
             display: block;
@@ -50,7 +50,7 @@
             }
         }
 
-        .card__titletext {         
+        .card__titletext {
             padding-bottom: 4px;
             text-overflow: ellipsis;
             overflow-y: hidden;
@@ -60,14 +60,16 @@
             -webkit-box-orient: vertical;
         }
 
-        .meta__byline{
-            .byline{
+        .meta__byline {
+            .byline {
                 color: color(shade-7);
             }
-            .byline__author a{
+
+            .byline__author a {
                 color: color(tone-podcast);
             }
         }
+
         .comment-count a {
             color: color(tone-podcast);
         }
@@ -95,12 +97,13 @@
         }
     }
 
-    &.ios .article__header .card__title--audio::before{
+    &.ios .article__header .card__title--audio::before {
         margin-top: 3px;
-    }  
+    }
+
     &.android .article__header .card__title--audio::before{
         margin-top: -3px;
-    }  
+    }
     
     &.is_advertising{
         a.alerts,

@@ -1,5 +1,5 @@
 .tone--review {
-    .article{
+    .article {
         border-top-color: color(tone-review-accent);
 
         .prose .element-pullquote {
@@ -13,7 +13,7 @@
         }
     }
 
-    .extras{
+    .extras {
         padding-top: 1px;
         background-color: color(shade-7);
     }
@@ -40,8 +40,8 @@
             padding: base-px(0, 1, 2.5, 1);
 
             p.review-rating {
-                padding-top: base-px(.7);
                 @include rating;
+                padding-top: base-px(.7);
             }
         }
 
@@ -62,9 +62,8 @@
             .comment-count a {
                 color: color(tone-review-accent);
             }
-
-            .meta__pubdate{
-               color: color(shade-7);
+            .meta__pubdate {
+                color: color(shade-7);
             }
         }
 
@@ -75,7 +74,6 @@
         .sponsorship {
             background-color: color(shade-7);
         }
-
     }
 
     .alerts:active,
@@ -88,5 +86,16 @@
     .alerts.following:active {
         border-color: color(tone-review-accent);
         color: color(tone-review-accent);
+    }
+
+    //TODO: specificity needed due to previous styles - improve
+    a.tell-me-when:active, a.tell-me-when.added {
+        background-color: color(tone-review-accent);
+        color: color(shade-7);
+    }
+
+    a.tell-me-when,  a.tell-me-when.added:active {
+        border-color: color(tone-review-accent);
+        color: color(tone-media);
     }
 }

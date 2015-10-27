@@ -33,7 +33,6 @@
             border-top-color: color(tone-feature1-accent);
         }
 
-
         .prose .element-pullquote {
             blockquote {
                 footer,
@@ -43,9 +42,7 @@
                 }
             }
         }
-    }
-
-    .article--feature {
+        
         .article__header {
             a {
                 color: #fff;
@@ -69,11 +66,10 @@
 
             .content__labels {
                 color: #fdadba;
-
             }
 
             .content__series-label.content__labels {
-                color: #FFF;
+                color: #fff;
             }
 
             .headline {
@@ -90,6 +86,7 @@
 
             .standfirst {
                 color: #fff;
+                
                 span {
                     color: rgba(#fff, .4);
                 }
@@ -134,5 +131,15 @@
         .meta__pubdate {
             color: rgba(#fff, .8);
         }
+    }
+
+    //TODO: specificity needed due to previous styles - improve
+    a.tell-me-when:active, a.tell-me-when.added {
+        background-color: color(tone-feature1-accent);
+        color: color(shade-7);
+    }
+    a.tell-me-when,  a.tell-me-when.added:active {
+        border-color: color(tone-feature1-accent);
+        color: color(tone-feature1-accent);
     }
 }
