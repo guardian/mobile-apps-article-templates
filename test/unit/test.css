@@ -3259,8 +3259,6 @@
     @media all and (min-width: 68.75em) {
       #sandbox .meta__misc {
         margin: 0 auto 0 240px;
-        padding-left: 0;
-        padding-right: 0;
         width: 620px; } }
   #sandbox .meta__pubdate {
     color: #999;
@@ -5164,6 +5162,17 @@
     #sandbox .tone--feature3 .article--feature .meta,
     #sandbox .tone--feature3 .article--feature .meta__pubdate {
       color: rgba(255, 255, 255, 0.8); }
+    @media all and (min-width: 68.75em) {
+      #sandbox .tone--feature1 .article--feature .meta__misc,
+      #sandbox .tone--feature2 .article--feature .meta__misc,
+      #sandbox .tone--feature3 .article--feature .meta__misc {
+        padding-left: 0;
+        padding-right: 0; } }
+    @media all and (min-width: 68.75em) {
+      #sandbox .tone--feature1 .article--feature .sponsorship,
+      #sandbox .tone--feature2 .article--feature .sponsorship,
+      #sandbox .tone--feature3 .article--feature .sponsorship {
+        border-bottom: 0; } }
   #sandbox .tone--liveBlog .section__container {
     border-bottom: 1px rgba(255, 255, 255, 0.4) dotted; }
   #sandbox .tone--liveBlog .section {
@@ -5457,6 +5466,10 @@
     color: rgba(255, 255, 255, 0.8); }
   #sandbox .tone--podcast .meta {
     border-top: 1px rgba(255, 255, 255, 0.4) dotted; }
+  @media all and (min-width: 68.75em) {
+    #sandbox .tone--podcast .meta__misc {
+      padding-left: 0;
+      padding-right: 0; } }
   #sandbox .tone--podcast .comment-count {
     color: #a7d8f2;
     border-left-color: rgba(255, 255, 255, 0.4); }
@@ -5509,11 +5522,18 @@
         color: #005689; }
       #sandbox .tone--news .article__header .meta .meta__pubdate {
         color: #999; }
+    @media all and (min-width: 68.75em) {
+      #sandbox .tone--news .article__header .meta__misc {
+        padding-left: 0;
+        padding-right: 0; } }
     #sandbox .tone--news .article__header .main-media {
       background: #fff;
       border-top: 1px dotted rgba(153, 153, 153, 0.4); }
     #sandbox .tone--news .article__header .main-media__caption {
       background-color: #fff; }
+    @media all and (min-width: 68.75em) {
+      #sandbox .tone--news .article__header .sponsorship {
+        border-bottom: 0; } }
   #sandbox .tone--news.is_advertising a.alerts--new,
   #sandbox .tone--news.is_advertising a.alerts--new.following:active {
     border-color: #333;
@@ -5560,10 +5580,20 @@
         color: #ffce4b; }
       #sandbox .tone--review .article__header .meta .meta__pubdate {
         color: #fff; }
+    @media all and (min-width: 68.75em) {
+      #sandbox .tone--review .article__header .meta__misc {
+        padding-left: 0;
+        padding-right: 0; } }
     #sandbox .tone--review .article__header .main-media__caption {
       background-color: #fff; }
+    @media all and (min-width: 68.75em) {
+      #sandbox .tone--review .article__header .main-media {
+        background-color: #fff; } }
     #sandbox .tone--review .article__header .sponsorship {
       background-color: #fff; }
+      @media all and (min-width: 68.75em) {
+        #sandbox .tone--review .article__header .sponsorship {
+          border-bottom: 0; } }
   #sandbox .tone--review .alerts--new:active,
   #sandbox .tone--review .alerts--new.following {
     background-color: #ffce4b;
@@ -5610,8 +5640,15 @@
         font-weight: 600; }
       #sandbox .tone--analysis .article__header .meta .meta__pubdate {
         color: #999; }
+    @media all and (min-width: 68.75em) {
+      #sandbox .tone--analysis .article__header .meta__misc {
+        padding-left: 0;
+        padding-right: 0; } }
     #sandbox .tone--analysis .article__header .main-media__caption {
       background-color: #fff; }
+    @media all and (min-width: 68.75em) {
+      #sandbox .tone--analysis .article__header .sponsorship {
+        border-bottom: 0; } }
   #sandbox .tone--deadBlog .witness {
     margin-top: 12px; }
   #sandbox .tone--deadBlog a.touchpoint:active {
@@ -6090,7 +6127,6 @@
     font-size: 1.4rem; }
     @media all and (min-width: 68.75em) {
       #sandbox .sponsorship {
-        border-bottom: 0;
         padding-left: 240px; } }
     .gallery ~ #sandbox .sponsorship {
       border-bottom: 0; }

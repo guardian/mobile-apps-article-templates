@@ -50,8 +50,23 @@
             }
         }
 
+        .meta__misc {
+             @include mq($from: col4) {
+                padding: {
+                    left: 0;
+                    right: 0;
+                }
+            }
+        }
+
         .main-media__caption {
             background-color: color(shade-7);
+        }
+
+        .sponsorship {
+            @include mq($from: col4) {
+                border-bottom: 0;
+            }
         }
     }
 }

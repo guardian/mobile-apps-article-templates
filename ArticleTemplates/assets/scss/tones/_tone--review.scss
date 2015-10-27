@@ -66,12 +66,31 @@
             }
         }
 
+        .meta__misc {
+             @include mq($from: col4) {
+                padding: {
+                    left: 0;
+                    right: 0;
+                }
+            }
+        }
+
         .main-media__caption {
             background-color: color(shade-7);
         }
 
+        .main-media {
+            @include mq($from: col4) {
+                background-color: color(shade-7);
+            }
+        }
+
         .sponsorship {
             background-color: color(shade-7);
+
+            @include mq($from: col4) {
+                border-bottom: 0;
+            }
         }
     }
 
