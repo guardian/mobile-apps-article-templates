@@ -136,25 +136,25 @@
   Display an alerts toggle.
   
   ```html_example
-  <a class="alerts">
+  <a class="alerts " href="x-gu://follow/tag-contributor///profile/nicholaswatt" data-follow-alert-id="tag-contributor///profile/nicholaswatt">
       <span class="alerts__state--unfollow">
-          <span data-icon="&#xe048;" aria-hidden="true"></span>
-          <span class="alerts__label">Follow contributor</span>
+          <span data-icon="" aria-hidden="true"></span>
+          <span class="alerts__label">Follow Nicholas Watt</span>
       </span>
       <span class="alerts__state--follow">
-          <span data-icon="&#xe049;" aria-hidden="true"></span>
-          <span class="alerts__label">Following contributor</span>
+          <span data-icon="" aria-hidden="true"></span>
+          <span class="alerts__label">Following Nicholas Watt</span>
       </span>
   </a>
   
-  <a class="alerts following">
+  <a class="alerts following" href="x-gu://follow/tag-contributor///profile/nicholaswatt" data-follow-alert-id="tag-contributor///profile/nicholaswatt">
       <span class="alerts__state--unfollow">
-          <span data-icon="&#xe048;" aria-hidden="true"></span>
-          <span class="alerts__label">Follow contributor</span>
+          <span data-icon="" aria-hidden="true"></span>
+          <span class="alerts__label">Follow Nicholas Watt</span>
       </span>
       <span class="alerts__state--follow">
-          <span data-icon="&#xe049;" aria-hidden="true"></span>
-          <span class="alerts__label">Following contributor</span>
+          <span data-icon="" aria-hidden="true"></span>
+          <span class="alerts__label">Following Nicholas Watt</span>
       </span>
   </a>
   ```
@@ -429,14 +429,14 @@
                       <a href="x-gu://list/mobile-apps.guardianapis.com/lists/tag/profile/michaelbillington">Michael Billington</a>
                   </span>
               </span>
-              <a class="alerts" href="x-gu://follow/tag-contributor///profile/michaelbillington" data-follow-alert-id="tag-contributor///profile/michaelbillington">
+              <a class="alerts " href="x-gu://follow/tag-contributor///profile/nicholaswatt" data-follow-alert-id="tag-contributor///profile/nicholaswatt">
                   <span class="alerts__state--unfollow">
-                      <span data-icon="&#xe048;" aria-hidden="true"></span>
-                      <span class="alerts__label">Follow contributor</span>
+                      <span data-icon="" aria-hidden="true"></span>
+                      <span class="alerts__label">Follow Nicholas Watt</span>
                   </span>
                   <span class="alerts__state--follow">
-                      <span data-icon="&#xe049;" aria-hidden="true"></span>
-                      <span class="alerts__label">Following contributor</span>
+                      <span data-icon="" aria-hidden="true"></span>
+                      <span class="alerts__label">Following Nicholas Watt</span>
                   </span>
               </a>
           </div>
@@ -2582,30 +2582,11 @@
   #sandbox .advert-slot--false {
     display: none !important; }
   #sandbox .alerts {
-    color: #005689;
-    font-family: "Guardian Agate Sans 1 Web", sans-serif;
-    display: inline-block; }
-    #sandbox .alerts [data-icon]::before {
-      margin-right: 4px;
-      font-size: 85%; }
-    #sandbox .alerts .alerts__state--follow {
-      display: none; }
-      #sandbox .alerts .alerts__state--follow [data-icon]::before {
-        color: #4bc6df; }
-    #sandbox .alerts.following .alerts__state--follow {
-      display: block; }
-    #sandbox .alerts.following .alerts__state--unfollow {
-      display: none; }
-    .test--new-alerts #sandbox .alerts {
-      display: none; }
-  #sandbox .alerts__label {
-    font-weight: bold; }
-  #sandbox .alerts--new {
     font-family: "Guardian Agate Sans 1 Web", sans-serif;
     white-space: nowrap;
     padding: 4px 12px 8px 12px;
     margin: 6px 0px 0px -4px;
-    display: none;
+    display: inline-block;
     border-radius: 30px;
     text-overflow: ellipsis;
     vertical-align: bottom;
@@ -2615,39 +2596,35 @@
     border: 1px solid #005689;
     transition: background-color 0.3s; }
     @media all and (max-width: 40.62em) {
-      #sandbox .alerts--new {
+      #sandbox .alerts {
         font-size: 1.4rem;
         line-height: 2rem; } }
     @media all and (min-width: 40.63em) {
-      #sandbox .alerts--new {
+      #sandbox .alerts {
         font-size: 1.6rem;
         line-height: 2.2rem; } }
-    .cricket #sandbox .alerts--new {
-      display: inline-block; }
-    #sandbox .alerts--new:active, #sandbox .alerts--new.following {
+    #sandbox .alerts:active, #sandbox .alerts.following {
       background-color: #005689;
       color: #fff; }
-    #sandbox .alerts--new span[data-icon] {
+    #sandbox .alerts span[data-icon] {
       display: inline-block;
       vertical-align: bottom;
       font-size: 1.8rem;
       position: relative;
       right: 3px;
       top: 1px; }
-    #sandbox .alerts--new .alerts__label {
+    #sandbox .alerts__label {
       font-weight: normal; }
-    #sandbox .alerts--new .alerts__state--follow {
+    #sandbox .alerts__state--follow {
       display: none; }
-    #sandbox .alerts--new.following:active {
+    #sandbox .alerts.following:active {
       color: #005689;
       background-color: #fff;
       border: 1px solid #005689; }
-    #sandbox .alerts--new.following .alerts__state--follow {
+    #sandbox .alerts.following .alerts__state--follow {
       display: block; }
-    #sandbox .alerts--new.following .alerts__state--unfollow {
+    #sandbox .alerts.following .alerts__state--unfollow {
       display: none; }
-    .test--new-alerts #sandbox .alerts--new {
-      display: inline-block; }
   #sandbox .avatar {
     background-color: rgba(51, 51, 51, 0.075);
     border-radius: 100%;
@@ -2712,11 +2689,11 @@
     display: none; }
     #sandbox .loading--liveblog.loading--visible {
       display: block; }
-  #sandbox .screen-readable, #sandbox .main-media--hidden-caption .main-media__caption__text, #sandbox .meta .alerts .alerts__label {
+  #sandbox .screen-readable, #sandbox .main-media--hidden-caption .main-media__caption__text {
     position: absolute;
     overflow: hidden;
     clip: rect(1px, 1px, 1px, 1px); }
-  #sandbox .main-media--hidden-caption .main-media__caption__text.is-visible, #sandbox .article--liveblog .article__header .alerts__label {
+  #sandbox .main-media--hidden-caption .main-media__caption__text.is-visible {
     position: static;
     overflow: auto;
     clip: auto; }
@@ -2913,13 +2890,6 @@
     #sandbox .meta .avatar--author {
       margin: 0px 9px 12px 0px;
       float: left; }
-    #sandbox .meta .alerts {
-      margin: -.5em;
-      padding: .5em;
-      position: relative;
-      z-index: 2;
-      /*TODO  new versions of alerts shouldn't require this- so specificity bumped up temporarily
-          remove when one or the other has been chosen */ }
   #sandbox .meta__misc {
     padding: 8px 12px 24px 12px; }
   #sandbox .meta__pubdate {
@@ -3563,10 +3533,20 @@
       padding: 6px 3px 0px 0px;
       width: auto;
       display: inline-block;
-      float: right; }
+      float: right;
+      border: 0;
+      border-radius: 0;
+      margin: 0; }
       @media all and (max-width: 28.12em) {
         #sandbox .match-summary .alerts {
           font-size: 150%; } }
+      #sandbox .match-summary .alerts span[data-icon] {
+        top: 0;
+        right: 0; }
+      #sandbox .match-summary .alerts:active, #sandbox .match-summary .alerts.following {
+        background-color: transparent;
+        border: 0;
+        color: #4bc6df; }
     @media all and (max-width: 28.12em) {
       #sandbox .match-summary .alerts__label {
         display: none; } }
@@ -3973,12 +3953,6 @@
       #sandbox .article--comment .article__header .standfirst {
         font-size: 1.25em;
         line-height: 1.25em; } }
-  #sandbox .article--comment .article__header .alerts {
-    padding: 12px;
-    position: absolute;
-    bottom: 0; }
-  #sandbox .article--comment .article__header .alerts__label {
-    display: inline-block; }
   #sandbox .article--liveblog {
     background-color: #eaeaea;
     border-bottom: 0; }
@@ -3994,21 +3968,8 @@
         position: absolute;
         left: 12px;
         top: 3px; }
-      #sandbox .article--liveblog .article__header .alerts {
-        margin: 0;
-        padding: 6px 12px; }
-      @media all and (min-width: 40.63em) {
-        #sandbox .article--liveblog .article__header > .alerts {
-          display: none; } }
       #sandbox .article--liveblog .article__header .meta {
         position: relative; }
-        #sandbox .article--liveblog .article__header .meta .alerts {
-          position: absolute;
-          left: 0;
-          top: 0; }
-          @media all and (max-width: 40.62em) {
-            #sandbox .article--liveblog .article__header .meta .alerts {
-              display: none; } }
       #sandbox .article--liveblog .article__header .comment-count__label {
         display: none; }
     #sandbox .article--liveblog .tags {
@@ -4021,7 +3982,7 @@
           padding-left: 31.57895%; } }
     #sandbox .article--liveblog .article__body--liveblog__pinned .element {
       margin: 12px 0px; }
-    #sandbox .article--liveblog .alerts--new {
+    #sandbox .article--liveblog .alerts {
       margin: 12px 12px 0px 8px; }
   #sandbox .android .article--liveblog .article__body--liveblog__pinned figcaption {
     padding: 6px 12px 24px 12px; }
@@ -4741,10 +4702,12 @@
         color: rgba(255, 255, 255, 0.8); }
       #sandbox .tone--comment .article--comment .meta .comment-count {
         border-left-color: rgba(255, 255, 255, 0.4); }
-      #sandbox .tone--comment .article--comment .meta a.alerts--new:active, #sandbox .tone--comment .article--comment .meta a.alerts--new.following {
+      #sandbox .tone--comment .article--comment .meta a.alerts:active,
+      #sandbox .tone--comment .article--comment .meta a.alerts.following {
         background-color: #fff;
         color: #f39f33; }
-      #sandbox .tone--comment .article--comment .meta a.alerts--new, #sandbox .tone--comment .article--comment .meta a.alerts--new.following:active {
+      #sandbox .tone--comment .article--comment .meta a.alerts,
+      #sandbox .tone--comment .article--comment .meta a.alerts.following:active {
         border-color: #fff;
         color: #fff; }
   #sandbox .tone--comment a.tell-me-when:active, #sandbox .tone--comment a.tell-me-when.added {
@@ -4876,24 +4839,24 @@
         text-shadow: none; }
     #sandbox .tone--deadBlog .block--live-summary .block__time {
       font-weight: bold; }
-  #sandbox .tone--deadBlog .alerts--new:active,
-  #sandbox .tone--deadBlog .alerts--new.following {
+  #sandbox .tone--deadBlog .alerts:active,
+  #sandbox .tone--deadBlog .alerts.following {
     background-color: #b51800;
     color: #fff; }
-  #sandbox .tone--deadBlog .alerts--new,
-  #sandbox .tone--deadBlog .alerts--new.following:active {
+  #sandbox .tone--deadBlog .alerts,
+  #sandbox .tone--deadBlog .alerts.following:active {
     border-color: #b51800;
     color: #b51800; }
   #sandbox .tone--deadBlog .cricket .article--liveblog {
     border-top: 0; }
-  #sandbox .tone--deadBlog .cricket .alerts--new {
+  #sandbox .tone--deadBlog .cricket .alerts {
     margin: 0; }
-  #sandbox .tone--deadBlog .cricket a.alerts--new:active,
-  #sandbox .tone--deadBlog .cricket a.alerts--new.following {
+  #sandbox .tone--deadBlog .cricket a.alerts:active,
+  #sandbox .tone--deadBlog .cricket a.alerts.following {
     background-color: #999;
     color: #fff; }
-  #sandbox .tone--deadBlog .cricket a.alerts--new,
-  #sandbox .tone--deadBlog .cricket a.alerts--new.following:active {
+  #sandbox .tone--deadBlog .cricket a.alerts,
+  #sandbox .tone--deadBlog .cricket a.alerts.following:active {
     border-color: #dcdad5;
     background-color: transparent;
     color: #999; }
@@ -5083,20 +5046,20 @@
     #sandbox .tone--feature3 .article--feature .meta {
       border: 0;
       margin: 0; }
-      #sandbox .tone--feature1 .article--feature .meta .alerts--new:active,
-      #sandbox .tone--feature1 .article--feature .meta .alerts--new.following,
-      #sandbox .tone--feature2 .article--feature .meta .alerts--new:active,
-      #sandbox .tone--feature2 .article--feature .meta .alerts--new.following,
-      #sandbox .tone--feature3 .article--feature .meta .alerts--new:active,
-      #sandbox .tone--feature3 .article--feature .meta .alerts--new.following {
+      #sandbox .tone--feature1 .article--feature .meta a.alerts:active,
+      #sandbox .tone--feature1 .article--feature .meta a.alerts.following,
+      #sandbox .tone--feature2 .article--feature .meta a.alerts:active,
+      #sandbox .tone--feature2 .article--feature .meta a.alerts.following,
+      #sandbox .tone--feature3 .article--feature .meta a.alerts:active,
+      #sandbox .tone--feature3 .article--feature .meta a.alerts.following {
         background-color: #fff;
         color: #b82266; }
-      #sandbox .tone--feature1 .article--feature .meta .alerts--new,
-      #sandbox .tone--feature1 .article--feature .meta .alerts--new.following:active,
-      #sandbox .tone--feature2 .article--feature .meta .alerts--new,
-      #sandbox .tone--feature2 .article--feature .meta .alerts--new.following:active,
-      #sandbox .tone--feature3 .article--feature .meta .alerts--new,
-      #sandbox .tone--feature3 .article--feature .meta .alerts--new.following:active {
+      #sandbox .tone--feature1 .article--feature .meta a.alerts,
+      #sandbox .tone--feature1 .article--feature .meta a.alerts.following:active,
+      #sandbox .tone--feature2 .article--feature .meta a.alerts,
+      #sandbox .tone--feature2 .article--feature .meta a.alerts.following:active,
+      #sandbox .tone--feature3 .article--feature .meta a.alerts,
+      #sandbox .tone--feature3 .article--feature .meta a.alerts.following:active {
         border-color: #fff;
         color: #fff; }
     #sandbox .tone--feature1 .article--feature .meta,
@@ -5140,12 +5103,12 @@
     background-color: #b51800; }
   #sandbox .tone--liveBlog.is-live #comments .touchpoint--primary:active .touchpoint__button {
     background-color: #cc2b12; }
-  #sandbox .tone--liveBlog.is-live a.alerts--new:active,
-  #sandbox .tone--liveBlog.is-live a.alerts--new.following {
+  #sandbox .tone--liveBlog.is-live .alerts:active,
+  #sandbox .tone--liveBlog.is-live .alerts.following {
     background-color: #b51800;
     color: #fff; }
-  #sandbox .tone--liveBlog.is-live a.alerts--new,
-  #sandbox .tone--liveBlog.is-live a.alerts--new.following:active {
+  #sandbox .tone--liveBlog.is-live .alerts,
+  #sandbox .tone--liveBlog.is-live .alerts.following:active {
     border-color: #b51800;
     color: #b51800; }
   #sandbox .tone--liveBlog.is-live .article__header {
@@ -5237,14 +5200,14 @@
       #sandbox .tone--liveBlog.is-live .article--liveblog .tags .inline-list__item.more-button a:active {
         color: #1a1a1a;
         border: 1px solid #adadad; }
-  .cricket #sandbox .tone--liveBlog.is-live a.alerts--new {
+  .cricket #sandbox .tone--liveBlog.is-live .alerts {
     margin: 0; }
-  .cricket #sandbox .tone--liveBlog.is-live a.alerts--new:active,
-  .cricket #sandbox .tone--liveBlog.is-live a.alerts--new.following {
+  .cricket #sandbox .tone--liveBlog.is-live a.alerts:active,
+  .cricket #sandbox .tone--liveBlog.is-live a.alerts.following {
     background-color: #b51800;
     color: #fff; }
-  .cricket #sandbox .tone--liveBlog.is-live a.alerts--new,
-  .cricket #sandbox .tone--liveBlog.is-live a.alerts--new.following:active {
+  .cricket #sandbox .tone--liveBlog.is-live a.alerts,
+  .cricket #sandbox .tone--liveBlog.is-live a.alerts.following:active {
     border-color: #b51800;
     background-color: transparent;
     color: #b51800; }
@@ -5395,9 +5358,9 @@
       #sandbox .tone--media .article--audio .aside-witness__sponsor .aside-witness__sponsor__graphic__logo,
       #sandbox .tone--media .article--visual .aside-witness__sponsor .aside-witness__sponsor__graphic__logo {
         fill: #ffe600; }
-  #sandbox .tone--news a:not(.alerts--new):not(.witness__button):not(.tell-me-when) {
+  #sandbox .tone--news a:not(.witness__button):not(.tell-me-when) {
     color: #005689; }
-    #sandbox .tone--news a:not(.alerts--new):not(.witness__button):not(.tell-me-when):active {
+    #sandbox .tone--news a:not(.witness__button):not(.tell-me-when):active {
       color: #4bc6df; }
   #sandbox .tone--news .article__header {
     background-color: #fff; }
@@ -5437,10 +5400,18 @@
         color: #999; }
     #sandbox .tone--news .article__header .main-media__caption {
       background-color: #fff; }
-  #sandbox .tone--news.is_advertising a.alerts--new,
-  #sandbox .tone--news.is_advertising a.alerts--new.following:active {
+  #sandbox .tone--news.is_advertising a.alerts,
+  #sandbox .tone--news.is_advertising a.alerts.following:active {
     border-color: #333;
     color: #333; }
+  #sandbox .tone--news a.alerts:active,
+  #sandbox .tone--news a.alerts.following {
+    background-color: #005689;
+    color: #fff; }
+  #sandbox .tone--news a.alerts,
+  #sandbox .tone--news a.alerts.following:active {
+    border-color: #005689;
+    color: #005689; }
   #sandbox .tone--podcast .section__container {
     border-bottom: 1px rgba(234, 234, 234, 0.3) dotted;
     color: #eaeaea; }
@@ -5470,7 +5441,7 @@
         color: #333;
         display: block; }
     #sandbox .tone--podcast .article__header .card__titletext {
-      margin-bottom: 4px;
+      padding-bottom: 4px;
       text-overflow: ellipsis;
       overflow-y: hidden;
       word-wrap: break-word;
@@ -5499,8 +5470,8 @@
     margin-top: 3px; }
   #sandbox .tone--podcast.android .article__header .card__title--audio::before {
     margin-top: -3px; }
-  #sandbox .tone--podcast.is_advertising .alerts--new,
-  #sandbox .tone--podcast.is_advertising .alerts--new.following:active {
+  #sandbox .tone--podcast.is_advertising a.alerts,
+  #sandbox .tone--podcast.is_advertising a.alerts.following:active {
     border-color: #333;
     color: #333; }
   #sandbox .tone--review .article {
@@ -5550,12 +5521,12 @@
       background-color: #fff; }
     #sandbox .tone--review .article__header .sponsorship {
       background-color: #fff; }
-  #sandbox .tone--review .alerts--new:active,
-  #sandbox .tone--review .alerts--new.following {
+  #sandbox .tone--review .alerts:active,
+  #sandbox .tone--review .alerts.following {
     background-color: #ffce4b;
     color: #615b52; }
-  #sandbox .tone--review .alerts--new,
-  #sandbox .tone--review .alerts--new.following:active {
+  #sandbox .tone--review .alerts,
+  #sandbox .tone--review .alerts.following:active {
     border-color: #ffce4b;
     color: #ffce4b; }
   #sandbox .tone--review a.tell-me-when:active, #sandbox .tone--review a.tell-me-when.added {

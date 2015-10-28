@@ -25,7 +25,7 @@
     }
 
     .section__container, 
-    figure figcaption{
+    figure figcaption {
         border-bottom: 1px darken(color(shade-4), 10%) dotted;
     }
 
@@ -110,11 +110,14 @@
             }
            
             //TODO: specificity needed due to previous styles - improve
-            a.alerts--new:active, a.alerts--new.following {
+            a.alerts:active,
+            a.alerts.following {
                 background-color: color(shade-7);
                 color: color(tone-comment-accent);
             }
-            a.alerts--new,  a.alerts--new.following:active {
+
+            a.alerts,
+            a.alerts.following:active {
                 border-color: color(shade-7);
                 color: color(shade-7);
             }
