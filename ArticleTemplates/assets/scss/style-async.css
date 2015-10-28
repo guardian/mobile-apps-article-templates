@@ -409,6 +409,31 @@ Display a titled container for comments, cards or other components that should b
 @media all and (max-width: 28.12em) {
   .container--comments .container__header .touchpoint__label {
     display: none; } }
+@media all and (min-width: 68.75em) {
+  .container--comments {
+    margin: 0; }
+    .container--comments .container__header {
+      float: left;
+      margin: 20px;
+      padding: 0;
+      width: 200px; }
+      .container--comments .container__header > h2,
+      .container--comments .container__header > span,
+      .container--comments .container__header > div {
+        display: block;
+        width: 200px; }
+      .container--comments .container__header .touchpoint__label {
+        padding-left: 0; }
+    .container--comments .container__title {
+      margin-bottom: 15px; }
+    .container--comments .container__body {
+      margin-left: 240px;
+      margin-top: 20px;
+      width: 858px; }
+    .container--comments .container__footer {
+      margin-left: 240px;
+      width: 858px; } }
+
 .container__header {
   height: 54px; }
   .container__header .container__action .touchpoint--primary {
@@ -804,10 +829,18 @@ Display which keywords an article has been tagged with.
     .tags {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
+  @media all and (min-width: 68.75em) {
+    .tags {
+      padding-left: 0;
+      padding-right: 0; } }
   .tags .hide-tags {
     display: none; }
   .tags .show-tags {
     display: inline-block; }
+  @media all and (min-width: 68.75em) {
+    .tags .inline-list {
+      margin-left: 232px;
+      width: 940px; } }
   .tags .inline-list__item {
     margin: 1rem 0; }
     .tags .inline-list__item a {
@@ -948,6 +981,11 @@ Related Content / More on this story section
 .related-content {
   margin: 0px 0px 24px 0px;
   border-top: 2px solid #333; }
+  @media all and (min-width: 68.75em) {
+    .related-content > div {
+      margin-left: 240px;
+      margin-top: 24px;
+      width: 940px; } }
   .related-content .block--failed {
     display: none; }
   .related-content--has-failed .block--failed {
@@ -965,6 +1003,13 @@ Related Content / More on this story section
     @media all and (min-width: 40.63em) {
       .related-content__header {
         margin: 12px 0px; } }
+    @media all and (min-width: 68.75em) {
+      .related-content__header {
+        float: left;
+        font-size: 2.3rem;
+        line-height: 3rem;
+        margin: 20px;
+        width: 200px; } }
   .related-content__container {
     overflow: hidden;
     padding: 0px 12px; }
@@ -3858,11 +3903,11 @@ Display a Guardian Witness submission.
       .discussion__header .headline {
         font-size: 2.25rem;
         line-height: 2.4rem; } }
-    @media all and (min-width: 28.13em) and (max-width: 40.62em) {
+    @media all and (min-width: 40.63em) {
       .discussion__header .headline {
         font-size: 3rem;
         line-height: 3rem; } }
-    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+    @media all and (min-width: 56.25em) {
       .discussion__header .headline {
         font-size: 3.6rem;
         line-height: 3.6rem; } }

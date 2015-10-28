@@ -28,6 +28,13 @@ Display which keywords an article has been tagged with.
     width: 100%;
     clear: both;
 
+    @include mq($from: col4) {
+        padding: {
+            left: 0;
+            right: 0;
+        }
+    }
+
     .hide-tags {
         display: none;
     }
@@ -36,30 +43,37 @@ Display which keywords an article has been tagged with.
         display: inline-block;
     }
 
-    .inline-list__item {
-        margin:1rem 0;
-        a {
-            white-space: nowrap;
-            padding: base-px(.3, 1.3, .7, 1.3);
-            border-radius: 30px;
-            margin: 4px;
-            text-overflow: ellipsis;
-            max-width: 18.75rem;
-            @include tag-button(color(shade-1), color(global-tags));
-        }
-        &.more-button a {
-            background-color: transparent !important;
-            @include tag-more-button(color(shade-1), darken(color(global-tags),10%));
+    .inline-list {
+        @include mq($from: col4) {
+            margin-left: 232px; // 240 - 4 (item padding offset) - 4 (visually offset rounded items);
+            width: 940px;
         }
 
-        &:first-of-type {
-            font-weight: bold;
-        }
+        &__item {
+            margin:1rem 0;
+            a {
+                white-space: nowrap;
+                padding: base-px(.3, 1.3, .7, 1.3);
+                border-radius: 30px;
+                margin: 4px;
+                text-overflow: ellipsis;
+                max-width: 18.75rem;
+                @include tag-button(color(shade-1), color(global-tags));
+            }
+            &.more-button a {
+                background-color: transparent !important;
+                @include tag-more-button(color(shade-1), darken(color(global-tags),10%));
+            }
 
-        &:last-child {
-            .tags__separator {
-                display: none;
-                visibility: hidden;
+            &:first-of-type {
+                font-weight: bold;
+            }
+
+            &:last-child {
+                .tags__separator {
+                    display: none;
+                    visibility: hidden;
+                }
             }
         }
     }

@@ -48,6 +48,16 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
     margin: base-px(0, 0, 2, 0);
     border-top: 2px solid color(shade-1);
 
+    @include mq($from: col4) {
+        > div {
+            margin: {
+                left: 240px;
+                top: base-px(2);
+            }
+            width: 940px;
+        }
+    }
+
     .block--failed {
         display: none;
     }
@@ -68,6 +78,14 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
 
         @include mq($from: col2) {
             margin: base-px(1, 0);
+        }
+
+        @include mq($from: col4) {
+            float: left;
+            font-size: 2.3rem;
+            line-height: 3rem;
+            margin: 20px;
+            width: 200px;
         }
     }
 
