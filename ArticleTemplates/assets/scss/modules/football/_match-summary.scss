@@ -140,7 +140,16 @@ Display a match summary. The score is updated during the match.
             top: 0;
             right: 0;
         }
+
+        &:active,
+        &.following {
+            background-color: transparent;
+            border: 0;
+            color: color(tone-news-accent);
+        }
     }
+
+
 
     .alerts__label {
         @include mq($to: col1) {
