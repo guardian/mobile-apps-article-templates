@@ -2701,15 +2701,40 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
 .is_advertising:not(.tone--review):not(.tone--analysis) .article .prose p a,
 .is_advertising:not(.tone--review):not(.tone--analysis) .article .prose li a,
 .is_advertising:not(.tone--review):not(.tone--analysis) .sponsorship__formatted-sponsor-name a {
-  background-image: linear-gradient(to bottom, #fff 50%, rgba(39, 39, 39, 0.66) 50%);
+  color: #272727;
+  text-decoration: none;
+  background-image: linear-gradient(rgba(39, 39, 39, 0.25) 0%, #272727 100%);
   background-repeat: repeat-x;
-  background-size: 2px 2px;
+  background-size: 1px 1px;
   background-position: 0 bottom;
-  text-shadow: 4px 0 #fff, 3px 0 #fff, 2px 0 #fff, 1px 0 #fff, 0 0 #fff, -1px 0 #fff, -2px 0 #fff, -3px 0 #fff, -4px 0 #fff; }
-.is_advertising:not(.tone--review):not(.tone--analysis) .article .prose p a:active,
-.is_advertising:not(.tone--review):not(.tone--analysis) .article .prose li a:active,
-.is_advertising:not(.tone--review):not(.tone--analysis) .sponsorship__formatted-sponsor-name a:active {
-  background-image: linear-gradient(to bottom, #fff 50%, rgba(65, 65, 65, 0.66) 50%); }
+  text-shadow: 3px 0 #fff, 2px 0 #fff, 1px 0 #fff, -1px 0 #fff, -2px 0 #fff, -3px 0 #fff; }
+  @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
+    .is_advertising:not(.tone--review):not(.tone--analysis) .article .prose p a,
+    .is_advertising:not(.tone--review):not(.tone--analysis) .article .prose li a,
+    .is_advertising:not(.tone--review):not(.tone--analysis) .sponsorship__formatted-sponsor-name a {
+      background-image: linear-gradient(rgba(39, 39, 39, 0.25) 0%, #272727 100%);
+      background-position: 0 93%; } }
+  .is_advertising:not(.tone--review):not(.tone--analysis) .article .prose p a a:active, .is_advertising:not(.tone--review):not(.tone--analysis) .article .prose p a:hover,
+  .is_advertising:not(.tone--review):not(.tone--analysis) .article .prose li a a:active,
+  .is_advertising:not(.tone--review):not(.tone--analysis) .article .prose li a:hover,
+  .is_advertising:not(.tone--review):not(.tone--analysis) .sponsorship__formatted-sponsor-name a a:active,
+  .is_advertising:not(.tone--review):not(.tone--analysis) .sponsorship__formatted-sponsor-name a:hover {
+    color: #414141;
+    background-image: linear-gradient(to bottom, #313131 0%, #313131 100%); }
+  .is_advertising:not(.tone--review):not(.tone--analysis) .article .prose p a::selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis) .article .prose p a > *::selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis) .article .prose li a::selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis) .article .prose li a > *::selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis) .sponsorship__formatted-sponsor-name a::selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis) .sponsorship__formatted-sponsor-name a > *::selection {
+    text-shadow: none; }
+  .is_advertising:not(.tone--review):not(.tone--analysis) .article .prose p a::-moz-selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis) .article .prose p a > *::-moz-selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis) .article .prose li a::-moz-selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis) .article .prose li a > *::-moz-selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis) .sponsorship__formatted-sponsor-name a::-moz-selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis) .sponsorship__formatted-sponsor-name a > *::-moz-selection {
+    text-shadow: none; }
 .is_advertising:not(.tone--review):not(.tone--analysis).advert-config--mobile .advert-slot + .article {
   border-top: 1px solid #878787; }
 .is_advertising:not(.tone--review):not(.tone--analysis) .element-placeholder .element-placeholder__button .touchpoint__button {
@@ -2790,19 +2815,70 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose li a,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst a,
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .sponsorship__formatted-sponsor-name a {
-  background-image: linear-gradient(to bottom, #d9d9d9 50%, rgba(39, 39, 39, 0.66) 50%);
+  color: #272727;
+  text-decoration: none;
+  background-image: linear-gradient(rgba(39, 39, 39, 0.25) 0%, #272727 100%);
   background-repeat: repeat-x;
-  background-size: 2px 2px;
+  background-size: 1px 1px;
   background-position: 0 bottom;
-  text-shadow: 4px 0 #d9d9d9, 3px 0 #d9d9d9, 2px 0 #d9d9d9, 1px 0 #d9d9d9, 0 0 #d9d9d9, -1px 0 #d9d9d9, -2px 0 #d9d9d9, -3px 0 #d9d9d9, -4px 0 #d9d9d9; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose p a:active,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose li a:active,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .standfirst a:active,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--news .sponsorship__formatted-sponsor-name a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose p a:active,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose li a:active,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst a:active,
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .sponsorship__formatted-sponsor-name a:active {
-  background-image: linear-gradient(to bottom, #d9d9d9 50%, rgba(65, 65, 65, 0.66) 50%); }
+  text-shadow: 3px 0 #d9d9d9, 2px 0 #d9d9d9, 1px 0 #d9d9d9, -1px 0 #d9d9d9, -2px 0 #d9d9d9, -3px 0 #d9d9d9; }
+  @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
+    .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose p a,
+    .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose li a,
+    .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .standfirst a,
+    .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .sponsorship__formatted-sponsor-name a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose p a,
+    .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose li a,
+    .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst a,
+    .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .sponsorship__formatted-sponsor-name a {
+      background-image: linear-gradient(rgba(39, 39, 39, 0.25) 0%, #272727 100%);
+      background-position: 0 93%; } }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose p a a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose p a:hover,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose li a a:active,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose li a:hover,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .standfirst a a:active,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .standfirst a:hover,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .sponsorship__formatted-sponsor-name a a:active,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .sponsorship__formatted-sponsor-name a:hover, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose p a a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose p a:hover,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose li a a:active,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose li a:hover,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst a a:active,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst a:hover,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .sponsorship__formatted-sponsor-name a a:active,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .sponsorship__formatted-sponsor-name a:hover {
+    color: #414141;
+    background-image: linear-gradient(to bottom, #313131 0%, #313131 100%); }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose p a::selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose p a > *::selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose li a::selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose li a > *::selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .standfirst a::selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .standfirst a > *::selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .sponsorship__formatted-sponsor-name a::selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .sponsorship__formatted-sponsor-name a > *::selection, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose p a::selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose p a > *::selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose li a::selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose li a > *::selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst a::selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst a > *::selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .sponsorship__formatted-sponsor-name a::selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .sponsorship__formatted-sponsor-name a > *::selection {
+    text-shadow: none; }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose p a::-moz-selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose p a > *::-moz-selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose li a::-moz-selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article .article__body .prose li a > *::-moz-selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .standfirst a::-moz-selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .standfirst a > *::-moz-selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .sponsorship__formatted-sponsor-name a::-moz-selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .sponsorship__formatted-sponsor-name a > *::-moz-selection, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose p a::-moz-selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose p a > *::-moz-selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose li a::-moz-selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article .article__body .prose li a > *::-moz-selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst a::-moz-selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .standfirst a > *::-moz-selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .sponsorship__formatted-sponsor-name a::-moz-selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .sponsorship__formatted-sponsor-name a > *::-moz-selection {
+    text-shadow: none; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .tags .inline-list__item.more-button a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .tags .inline-list__item.more-button a {
   border-color: #f1f1f1; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .prose .element-pullquote blockquote, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .prose .element-pullquote blockquote {
@@ -2838,13 +2914,30 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .standfirst, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .standfirst, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .standfirst {
   background-color: #878787; }
   .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .standfirst a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .standfirst a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .standfirst a {
-    background-image: linear-gradient(to bottom, #878787 50%, rgba(255, 255, 255, 0.66) 50%);
+    color: #fff;
+    text-decoration: none;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.25) 0%, #fff 100%);
     background-repeat: repeat-x;
-    background-size: 2px 2px;
+    background-size: 1px 1px;
     background-position: 0 bottom;
-    text-shadow: 4px 0 #878787, 3px 0 #878787, 2px 0 #878787, 1px 0 #878787, 0 0 #878787, -1px 0 #878787, -2px 0 #878787, -3px 0 #878787, -4px 0 #878787; }
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .standfirst a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .standfirst a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .standfirst a:active {
-    background-image: linear-gradient(to bottom, #878787 50%, rgba(230, 230, 230, 0.66) 50%); }
+    text-shadow: 3px 0 #878787, 2px 0 #878787, 1px 0 #878787, -1px 0 #878787, -2px 0 #878787, -3px 0 #878787; }
+    @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
+      .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .standfirst a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .standfirst a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .standfirst a {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.25) 0%, #fff 100%);
+        background-position: 0 93%; } }
+    .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .standfirst a a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .standfirst a:hover, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .standfirst a a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .standfirst a:hover, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .standfirst a a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .standfirst a:hover {
+      color: #e6e6e6;
+      background-image: linear-gradient(to bottom, #d6d6d6 0%, #d6d6d6 100%); }
+    .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .standfirst a::selection,
+    .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .standfirst a > *::selection, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .standfirst a::selection,
+    .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .standfirst a > *::selection, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .standfirst a::selection,
+    .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .standfirst a > *::selection {
+      text-shadow: none; }
+    .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .standfirst a::-moz-selection,
+    .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .standfirst a > *::-moz-selection, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .standfirst a::-moz-selection,
+    .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .standfirst a > *::-moz-selection, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .standfirst a::-moz-selection,
+    .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .standfirst a > *::-moz-selection {
+      text-shadow: none; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article--feature .article__header .standfirst a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article--feature .article__header .standfirst a, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article--feature .article__header .standfirst a {
   color: #fff; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .comment-count, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .comment-count, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .comment-count {
@@ -2904,13 +2997,26 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags {
   background-color: #d9d9d9; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a {
-  background-image: linear-gradient(to bottom, #d9d9d9 50%, rgba(39, 39, 39, 0.66) 50%);
+  color: #272727;
+  text-decoration: none;
+  background-image: linear-gradient(rgba(39, 39, 39, 0.25) 0%, #272727 100%);
   background-repeat: repeat-x;
-  background-size: 2px 2px;
+  background-size: 1px 1px;
   background-position: 0 bottom;
-  text-shadow: 4px 0 #d9d9d9, 3px 0 #d9d9d9, 2px 0 #d9d9d9, 1px 0 #d9d9d9, 0 0 #d9d9d9, -1px 0 #d9d9d9, -2px 0 #d9d9d9, -3px 0 #d9d9d9, -4px 0 #d9d9d9; }
-.is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a:active {
-  background-image: linear-gradient(to bottom, #d9d9d9 50%, rgba(65, 65, 65, 0.66) 50%); }
+  text-shadow: 3px 0 #d9d9d9, 2px 0 #d9d9d9, 1px 0 #d9d9d9, -1px 0 #d9d9d9, -2px 0 #d9d9d9, -3px 0 #d9d9d9; }
+  @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
+    .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a {
+      background-image: linear-gradient(rgba(39, 39, 39, 0.25) 0%, #272727 100%);
+      background-position: 0 93%; } }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a:hover {
+    color: #414141;
+    background-image: linear-gradient(to bottom, #313131 0%, #313131 100%); }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a::selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a > *::selection {
+    text-shadow: none; }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a::-moz-selection,
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a > *::-moz-selection {
+    text-shadow: none; }
 .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags .inline-list__item a {
   color: #fff;
   background-color: #878787; }
@@ -3105,14 +3211,33 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   border-top-color: #f39f33; }
   .tone--comment .article--comment .prose p a,
   .tone--comment .article--comment .prose li a {
-    background-image: linear-gradient(to bottom, #e3e1dc 50%, rgba(230, 113, 27, 0.66) 50%);
+    color: #e6711b;
+    text-decoration: none;
+    background-image: linear-gradient(rgba(230, 113, 27, 0.25) 0%, #e6711b 100%);
     background-repeat: repeat-x;
-    background-size: 2px 2px;
+    background-size: 1px 1px;
     background-position: 0 bottom;
-    text-shadow: 4px 0 #e3e1dc, 3px 0 #e3e1dc, 2px 0 #e3e1dc, 1px 0 #e3e1dc, 0 0 #e3e1dc, -1px 0 #e3e1dc, -2px 0 #e3e1dc, -3px 0 #e3e1dc, -4px 0 #e3e1dc; }
-  .tone--comment .article--comment .prose p a:active,
-  .tone--comment .article--comment .prose li a:active {
-    background-image: linear-gradient(to bottom, #e3e1dc 50%, rgba(243, 159, 51, 0.66) 50%); }
+    text-shadow: 3px 0 #e3e1dc, 2px 0 #e3e1dc, 1px 0 #e3e1dc, -1px 0 #e3e1dc, -2px 0 #e3e1dc, -3px 0 #e3e1dc; }
+    @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
+      .tone--comment .article--comment .prose p a,
+      .tone--comment .article--comment .prose li a {
+        background-image: linear-gradient(rgba(230, 113, 27, 0.25) 0%, #e6711b 100%);
+        background-position: 0 93%; } }
+    .tone--comment .article--comment .prose p a a:active, .tone--comment .article--comment .prose p a:hover,
+    .tone--comment .article--comment .prose li a a:active,
+    .tone--comment .article--comment .prose li a:hover {
+      color: #f39f33;
+      background-image: linear-gradient(to bottom, #f19116 0%, #f19116 100%); }
+    .tone--comment .article--comment .prose p a::selection,
+    .tone--comment .article--comment .prose p a > *::selection,
+    .tone--comment .article--comment .prose li a::selection,
+    .tone--comment .article--comment .prose li a > *::selection {
+      text-shadow: none; }
+    .tone--comment .article--comment .prose p a::-moz-selection,
+    .tone--comment .article--comment .prose p a > *::-moz-selection,
+    .tone--comment .article--comment .prose li a::-moz-selection,
+    .tone--comment .article--comment .prose li a > *::-moz-selection {
+      text-shadow: none; }
   .tone--comment .article--comment .prose table,
   .tone--comment .article--comment .table {
     border-top-color: #e6711b; }
@@ -3272,14 +3397,33 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   border-top: 1px solid #999; }
   .tone--deadBlog .block--live-summary .prose p a,
   .tone--deadBlog .block--live-summary .prose li a {
-    background-image: linear-gradient(to bottom, #fff 50%, rgba(0, 86, 137, 0.66) 50%);
+    color: #005689;
+    text-decoration: none;
+    background-image: linear-gradient(rgba(0, 86, 137, 0.25) 0%, #005689 100%);
     background-repeat: repeat-x;
-    background-size: 2px 2px;
+    background-size: 1px 1px;
     background-position: 0 bottom;
-    text-shadow: 4px 0 #fff, 3px 0 #fff, 2px 0 #fff, 1px 0 #fff, 0 0 #fff, -1px 0 #fff, -2px 0 #fff, -3px 0 #fff, -4px 0 #fff; }
-  .tone--deadBlog .block--live-summary .prose p a:active,
-  .tone--deadBlog .block--live-summary .prose li a:active {
-    background-image: linear-gradient(to bottom, #fff 50%, rgba(75, 198, 223, 0.66) 50%); }
+    text-shadow: 3px 0 #fff, 2px 0 #fff, 1px 0 #fff, -1px 0 #fff, -2px 0 #fff, -3px 0 #fff; }
+    @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
+      .tone--deadBlog .block--live-summary .prose p a,
+      .tone--deadBlog .block--live-summary .prose li a {
+        background-image: linear-gradient(rgba(0, 86, 137, 0.25) 0%, #005689 100%);
+        background-position: 0 93%; } }
+    .tone--deadBlog .block--live-summary .prose p a a:active, .tone--deadBlog .block--live-summary .prose p a:hover,
+    .tone--deadBlog .block--live-summary .prose li a a:active,
+    .tone--deadBlog .block--live-summary .prose li a:hover {
+      color: #4bc6df;
+      background-image: linear-gradient(to bottom, #31beda 0%, #31beda 100%); }
+    .tone--deadBlog .block--live-summary .prose p a::selection,
+    .tone--deadBlog .block--live-summary .prose p a > *::selection,
+    .tone--deadBlog .block--live-summary .prose li a::selection,
+    .tone--deadBlog .block--live-summary .prose li a > *::selection {
+      text-shadow: none; }
+    .tone--deadBlog .block--live-summary .prose p a::-moz-selection,
+    .tone--deadBlog .block--live-summary .prose p a > *::-moz-selection,
+    .tone--deadBlog .block--live-summary .prose li a::-moz-selection,
+    .tone--deadBlog .block--live-summary .prose li a > *::-moz-selection {
+      text-shadow: none; }
   .tone--deadBlog .block--live-summary .block__time {
     font-weight: bold; }
 .tone--deadBlog .alerts:active,
@@ -3339,18 +3483,61 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--feature2 .article--feature .prose li a,
   .tone--feature3 .article--feature .prose p a,
   .tone--feature3 .article--feature .prose li a {
-    background-image: linear-gradient(to bottom, #fff 50%, rgba(149, 28, 85, 0.66) 50%);
+    color: #951c55;
+    text-decoration: none;
+    background-image: linear-gradient(rgba(149, 28, 85, 0.25) 0%, #951c55 100%);
     background-repeat: repeat-x;
-    background-size: 2px 2px;
+    background-size: 1px 1px;
     background-position: 0 bottom;
-    text-shadow: 4px 0 #fff, 3px 0 #fff, 2px 0 #fff, 1px 0 #fff, 0 0 #fff, -1px 0 #fff, -2px 0 #fff, -3px 0 #fff, -4px 0 #fff; }
-  .tone--feature1 .article--feature .prose p a:active,
-  .tone--feature1 .article--feature .prose li a:active,
-  .tone--feature2 .article--feature .prose p a:active,
-  .tone--feature2 .article--feature .prose li a:active,
-  .tone--feature3 .article--feature .prose p a:active,
-  .tone--feature3 .article--feature .prose li a:active {
-    background-image: linear-gradient(to bottom, #fff 50%, rgba(184, 34, 102, 0.66) 50%); }
+    text-shadow: 3px 0 #fff, 2px 0 #fff, 1px 0 #fff, -1px 0 #fff, -2px 0 #fff, -3px 0 #fff; }
+    @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
+      .tone--feature1 .article--feature .prose p a,
+      .tone--feature1 .article--feature .prose li a,
+      .tone--feature2 .article--feature .prose p a,
+      .tone--feature2 .article--feature .prose li a,
+      .tone--feature3 .article--feature .prose p a,
+      .tone--feature3 .article--feature .prose li a {
+        background-image: linear-gradient(rgba(149, 28, 85, 0.25) 0%, #951c55 100%);
+        background-position: 0 93%; } }
+    .tone--feature1 .article--feature .prose p a a:active, .tone--feature1 .article--feature .prose p a:hover,
+    .tone--feature1 .article--feature .prose li a a:active,
+    .tone--feature1 .article--feature .prose li a:hover,
+    .tone--feature2 .article--feature .prose p a a:active,
+    .tone--feature2 .article--feature .prose p a:hover,
+    .tone--feature2 .article--feature .prose li a a:active,
+    .tone--feature2 .article--feature .prose li a:hover,
+    .tone--feature3 .article--feature .prose p a a:active,
+    .tone--feature3 .article--feature .prose p a:hover,
+    .tone--feature3 .article--feature .prose li a a:active,
+    .tone--feature3 .article--feature .prose li a:hover {
+      color: #b82266;
+      background-image: linear-gradient(to bottom, #9e1d58 0%, #9e1d58 100%); }
+    .tone--feature1 .article--feature .prose p a::selection,
+    .tone--feature1 .article--feature .prose p a > *::selection,
+    .tone--feature1 .article--feature .prose li a::selection,
+    .tone--feature1 .article--feature .prose li a > *::selection,
+    .tone--feature2 .article--feature .prose p a::selection,
+    .tone--feature2 .article--feature .prose p a > *::selection,
+    .tone--feature2 .article--feature .prose li a::selection,
+    .tone--feature2 .article--feature .prose li a > *::selection,
+    .tone--feature3 .article--feature .prose p a::selection,
+    .tone--feature3 .article--feature .prose p a > *::selection,
+    .tone--feature3 .article--feature .prose li a::selection,
+    .tone--feature3 .article--feature .prose li a > *::selection {
+      text-shadow: none; }
+    .tone--feature1 .article--feature .prose p a::-moz-selection,
+    .tone--feature1 .article--feature .prose p a > *::-moz-selection,
+    .tone--feature1 .article--feature .prose li a::-moz-selection,
+    .tone--feature1 .article--feature .prose li a > *::-moz-selection,
+    .tone--feature2 .article--feature .prose p a::-moz-selection,
+    .tone--feature2 .article--feature .prose p a > *::-moz-selection,
+    .tone--feature2 .article--feature .prose li a::-moz-selection,
+    .tone--feature2 .article--feature .prose li a > *::-moz-selection,
+    .tone--feature3 .article--feature .prose p a::-moz-selection,
+    .tone--feature3 .article--feature .prose p a > *::-moz-selection,
+    .tone--feature3 .article--feature .prose li a::-moz-selection,
+    .tone--feature3 .article--feature .prose li a > *::-moz-selection {
+      text-shadow: none; }
   .tone--feature1 .article--feature .prose table,
   .tone--feature1 .article--feature .table,
   .tone--feature2 .article--feature .prose table,
@@ -3657,16 +3844,47 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--media .article--audio .prose li a,
   .tone--media .article--visual .prose p a,
   .tone--media .article--visual .prose li a {
-    background-image: linear-gradient(to bottom, #333 50%, rgba(230, 168, 0, 0.66) 50%);
+    color: #e6a800;
+    text-decoration: none;
+    background-image: linear-gradient(rgba(230, 168, 0, 0.25) 0%, #e6a800 100%);
     background-repeat: repeat-x;
-    background-size: 2px 2px;
+    background-size: 1px 1px;
     background-position: 0 bottom;
-    text-shadow: 4px 0 #333, 3px 0 #333, 2px 0 #333, 1px 0 #333, 0 0 #333, -1px 0 #333, -2px 0 #333, -3px 0 #333, -4px 0 #333; }
-  .tone--media .article--audio .prose p a:active,
-  .tone--media .article--audio .prose li a:active,
-  .tone--media .article--visual .prose p a:active,
-  .tone--media .article--visual .prose li a:active {
-    background-image: linear-gradient(to bottom, #333 50%, rgba(255, 211, 92, 0.66) 50%); }
+    text-shadow: 3px 0 #333, 2px 0 #333, 1px 0 #333, -1px 0 #333, -2px 0 #333, -3px 0 #333; }
+    @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
+      .tone--media .article--audio .prose p a,
+      .tone--media .article--audio .prose li a,
+      .tone--media .article--visual .prose p a,
+      .tone--media .article--visual .prose li a {
+        background-image: linear-gradient(rgba(230, 168, 0, 0.25) 0%, #e6a800 100%);
+        background-position: 0 93%; } }
+    .tone--media .article--audio .prose p a a:active, .tone--media .article--audio .prose p a:hover,
+    .tone--media .article--audio .prose li a a:active,
+    .tone--media .article--audio .prose li a:hover,
+    .tone--media .article--visual .prose p a a:active,
+    .tone--media .article--visual .prose p a:hover,
+    .tone--media .article--visual .prose li a a:active,
+    .tone--media .article--visual .prose li a:hover {
+      color: #ffd35c;
+      background-image: linear-gradient(to bottom, #ffcb3d 0%, #ffcb3d 100%); }
+    .tone--media .article--audio .prose p a::selection,
+    .tone--media .article--audio .prose p a > *::selection,
+    .tone--media .article--audio .prose li a::selection,
+    .tone--media .article--audio .prose li a > *::selection,
+    .tone--media .article--visual .prose p a::selection,
+    .tone--media .article--visual .prose p a > *::selection,
+    .tone--media .article--visual .prose li a::selection,
+    .tone--media .article--visual .prose li a > *::selection {
+      text-shadow: none; }
+    .tone--media .article--audio .prose p a::-moz-selection,
+    .tone--media .article--audio .prose p a > *::-moz-selection,
+    .tone--media .article--audio .prose li a::-moz-selection,
+    .tone--media .article--audio .prose li a > *::-moz-selection,
+    .tone--media .article--visual .prose p a::-moz-selection,
+    .tone--media .article--visual .prose p a > *::-moz-selection,
+    .tone--media .article--visual .prose li a::-moz-selection,
+    .tone--media .article--visual .prose li a > *::-moz-selection {
+      text-shadow: none; }
   .tone--media .article--audio .prose table,
   .tone--media .article--audio .table,
   .tone--media .article--visual .prose table,
