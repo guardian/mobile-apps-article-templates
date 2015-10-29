@@ -20,6 +20,19 @@
         background-color: color(tone-feature1-accent);
     }
 
+    .section {
+        float: none;
+        margin-bottom: 0;
+    }
+
+    .main-media {
+        padding-top: 0;
+
+        figure {
+            position: relative;
+        }
+    }
+
     .article--feature {
         border-top-color: color(tone-feature1-accent);
 
@@ -76,17 +89,17 @@
                 color: #fff;
                 position: relative;
                 z-index: 20;
+                margin-top: base-px(1);
 
                 @include mq($from: col2) {
-                    font-size: 3.5556em; // 64px
-                    font-weight: 100;
-                    line-height: .9375; // 60px
+                    font-size: 3.6rem;
+                    line-height: 3.6rem;
                 }
             }
 
             .standfirst {
                 color: #fff;
-                
+
                 span {
                     color: rgba(#fff, .4);
                 }
@@ -94,6 +107,16 @@
                 strong {
                     color: #fff;
                     font-weight: normal;
+                }
+
+                @include mq($from: col4) {
+                    margin: 0;
+                    width: 100%;
+                    
+                    > ul {
+                        margin-left: 240px;
+                        width: 620px;
+                    }
                 }
             }
 

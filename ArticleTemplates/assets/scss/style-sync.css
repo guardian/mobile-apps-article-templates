@@ -844,11 +844,9 @@ Display an article's headline.
 .headline {
   color: #333;
   font-family: "Guardian Egyptian Web", Georgia, serif;
-  font-weight: 200; }
-  @media all and (max-width: 28.12em) {
-    .headline {
-      font-size: 3rem;
-      line-height: 3.2rem; } }
+  font-weight: 200;
+  font-size: 3rem;
+  line-height: 3.2rem; }
   @media all and (min-width: 40.63em) {
     .headline {
       font-size: 4rem;
@@ -1136,11 +1134,9 @@ With live indicator:
 ```
 */
 .section {
-  font-family: "Guardian Egyptian Web", Georgia, serif; }
-  @media all and (max-width: 28.12em) {
-    .section {
-      font-size: 1.5rem;
-      line-height: 1.6rem; } }
+  font-family: "Guardian Egyptian Web", Georgia, serif;
+  font-size: 1.5rem;
+  line-height: 1.6rem; }
   @media all and (min-width: 40.63em) {
     .section {
       font-size: 2rem;
@@ -1164,11 +1160,9 @@ With live indicator:
 
 .section__live {
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
-  font-weight: bold; }
-  @media all and (max-width: 28.12em) {
-    .section__live {
-      font-size: 1.5rem;
-      line-height: 1.6rem; } }
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 1.6rem; }
   @media all and (min-width: 40.63em) {
     .section__live {
       font-size: 2rem;
@@ -1196,11 +1190,9 @@ With live indicator:
     color: #005689;
     font-family: "Guardian Egyptian Web", Georgia, serif;
     font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1.6rem;
     padding-bottom: 0; }
-    @media all and (max-width: 28.12em) {
-      .section__container .section {
-        font-size: 1.5rem;
-        line-height: 1.6rem; } }
     @media all and (min-width: 40.63em) {
       .section__container .section {
         font-size: 2rem;
@@ -1221,11 +1213,9 @@ With live indicator:
     display: inline-block;
     line-height: 1.6rem;
     font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1.6rem;
     padding-right: 6px; }
-    @media all and (max-width: 28.12em) {
-      .section__container .content__labels {
-        font-size: 1.5rem;
-        line-height: 1.6rem; } }
     @media all and (min-width: 40.63em) {
       .section__container .content__labels {
         font-size: 2rem;
@@ -1243,12 +1233,10 @@ With live indicator:
   .section__container .content__series-label {
     font-weight: normal;
     font-family: "Guardian Egyptian Web", Georgia, serif;
+    font-size: 1.5rem;
+    line-height: 1.6rem;
     font-weight: 300;
     display: inline; }
-    @media all and (max-width: 28.12em) {
-      .section__container .content__series-label {
-        font-size: 1.5rem;
-        line-height: 1.6rem; } }
     @media all and (min-width: 40.63em) {
       .section__container .content__series-label {
         font-size: 2rem;
@@ -3494,14 +3482,12 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--deadBlog .article__header .content__series-label a {
     color: #767676; }
   .tone--deadBlog .article__header .section {
+    font-size: 1.5rem;
+    line-height: 1.6rem;
     color: #b51800;
     font-family: "Guardian Egyptian Web", Georgia, serif;
     font-weight: 600;
     float: left; }
-    @media all and (max-width: 28.12em) {
-      .tone--deadBlog .article__header .section {
-        font-size: 1.5rem;
-        line-height: 1.6rem; } }
     @media all and (min-width: 40.63em) {
       .tone--deadBlog .article__header .section {
         font-size: 2rem;
@@ -3622,6 +3608,19 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .tone--feature3 .standfirst,
 .tone--feature3 .touchpoint--primary:active .touchpoint__button {
   background-color: #b82266; }
+.tone--feature1 .section,
+.tone--feature2 .section,
+.tone--feature3 .section {
+  float: none;
+  margin-bottom: 0; }
+.tone--feature1 .main-media,
+.tone--feature2 .main-media,
+.tone--feature3 .main-media {
+  padding-top: 0; }
+  .tone--feature1 .main-media figure,
+  .tone--feature2 .main-media figure,
+  .tone--feature3 .main-media figure {
+    position: relative; }
 .tone--feature1 .article--feature,
 .tone--feature2 .article--feature,
 .tone--feature3 .article--feature {
@@ -3737,14 +3736,14 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--feature3 .article--feature .article__header .headline {
     color: #fff;
     position: relative;
-    z-index: 20; }
+    z-index: 20;
+    margin-top: 12px; }
     @media all and (min-width: 40.63em) {
       .tone--feature1 .article--feature .article__header .headline,
       .tone--feature2 .article--feature .article__header .headline,
       .tone--feature3 .article--feature .article__header .headline {
-        font-size: 3.5556em;
-        font-weight: 100;
-        line-height: .9375; } }
+        font-size: 3.6rem;
+        line-height: 3.6rem; } }
   .tone--feature1 .article--feature .article__header .standfirst,
   .tone--feature2 .article--feature .article__header .standfirst,
   .tone--feature3 .article--feature .article__header .standfirst {
@@ -3758,6 +3757,17 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     .tone--feature3 .article--feature .article__header .standfirst strong {
       color: #fff;
       font-weight: normal; }
+    @media all and (min-width: 68.75em) {
+      .tone--feature1 .article--feature .article__header .standfirst,
+      .tone--feature2 .article--feature .article__header .standfirst,
+      .tone--feature3 .article--feature .article__header .standfirst {
+        margin: 0;
+        width: 100%; }
+        .tone--feature1 .article--feature .article__header .standfirst > ul,
+        .tone--feature2 .article--feature .article__header .standfirst > ul,
+        .tone--feature3 .article--feature .article__header .standfirst > ul {
+          margin-left: 240px;
+          width: 620px; } }
   .tone--feature1 .article--feature .article__header .review-rating,
   .tone--feature2 .article--feature .article__header .review-rating,
   .tone--feature3 .article--feature .article__header .review-rating {
