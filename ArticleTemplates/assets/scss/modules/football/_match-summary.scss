@@ -128,11 +128,28 @@ Display a match summary. The score is updated during the match.
         width: auto;
         display: inline-block;
         float: right;
+        border: 0;
+        border-radius: 0;
+        margin: 0;
 
         @include mq($to: col1) {
             font-size: 150%;
         }
+
+        span[data-icon] {
+            top: 0;
+            right: 0;
+        }
+
+        &:active,
+        &.following {
+            background-color: transparent;
+            border: 0;
+            color: color(tone-news-accent);
+        }
     }
+
+
 
     .alerts__label {
         @include mq($to: col1) {
