@@ -2,59 +2,95 @@
 define([
     'bean',
     'bonzo',
+    'flipSnap',
     'modules/$'
 ], function (
     bean,
     bonzo,
+    flipSnap,
     $
 ) {
     'use strict';
 
     var modules = {
             setupGlobals: function () {
-                // Global functions to handle comments, called by native code
+                // Global functions to handle related content, called by native code
                 window.articleCardsInserter = function (html) {
-                    if (!html) {
-                        $(".container--related").hide();
-                    } else {
-                        $(".container--related .container__body").html(html);
-                        var comment_card_byline = $(".card--comment.has-image .card__byline");
-                        var comment_card_header = $(".card--comment.has-image .card__titletext");
-                        if (comment_card_byline.length>0)
-                        {
-                            for (var i=0;i<comment_card_byline.length;i++)
-                            {
-                                var  bylineLines=modules.getNumberOfTextLines(comment_card_byline[i]);
-                                var  headerLines=modules.getNumberOfTextLines(comment_card_header[i]);
-                                var  totalLines=bylineLines+headerLines;
-                                if (totalLines>=4)
-                                {
-                                    bonzo(comment_card_byline[i]).hide();
-                                    bonzo(comment_card_header[i]).attr('style','-webkit-line-clamp:4;');
-                                }
-                            }
+                    if ($('.related-content').length) {
+                        if (!html) {
+                            modules.articleCardsFailed();
+                        } else {
+                            $('.related-content').html(html);
+
+                            // setup the snap to grid functionality 
+                            modules.snapToGrid('.related-content__list');
                         }
                     }
                 };
+
+                window.articleCardsFailed = function(){
+                    modules.articleCardsFailed();
+                };
+
                 window.applyNativeFunctionCall('articleCardsInserter');
+                window.applyNativeFunctionCall('articleCardsFailed');
             },
-            getNumberOfTextLines:function (el) {
-                //returns number of text lines of single html element
-                var cssValues=window.getComputedStyle(el,null);
-                var lineHeight=cssValues.lineHeight.replace('px','');
-                var paddingTop=cssValues.paddingTop.replace('px','');
-                var paddingBottom=cssValues.paddingBottom.replace('px','');
-                var elementheight=el.offsetHeight;
-                var numberOfLines= (elementheight-paddingTop-paddingBottom)/lineHeight;
-                return parseInt(numberOfLines);
+            articleCardsFailed: function(){
+                if ($('.related-content').length) {
+                    $('.related-content').addClass('related-content--has-failed');
+                }
+            },
+            snapToGrid: function(el) {
+                // Setup now and re-init on resize or orientation change
+                modules.setUpFlipSnap(el);
+                bean.on(window, 'resize.cards orientationchange.cards', window.ThrottleDebounce.debounce(100, false, function () {
+                    if (modules.flipSnap) {
+                        modules.flipSnap.destroy();
+                        $(el).removeAttr('style');
+                    }
+                    modules.setUpFlipSnap(el);
+                }));
+            },
+            setUpFlipSnap: function(el) {
+                modules.flipSnap = null;
+                var list = $(el),
+                    container = list.parent()[0],
+                    containerStyle = container.currentStyle || window.getComputedStyle(container),
+                    containerWidth = container.offsetWidth - parseInt(containerStyle.paddingRight.replace('px','')) - parseInt(containerStyle.paddingLeft.replace('px',''));
+
+                // add a class with the number of child items, so we can set the widths based on that 
+                list.addClass('related-content__list--items-' + list[0].childElementCount);
+
+                // if the inner content is wider than the container set up the scrolling
+                if (list[0].scrollWidth > containerWidth) {
+                    modules.flipSnap = flipSnap(el);
+
+                    // Android needs to be notified of touch start / touch end so article navigation can be 
+                    // disabled / enabled when the using is scrolling through cards
+                    if (bonzo(document.body).hasClass('android')) {
+                        // Send true on touchstart
+                        bean.on(document.body, 'touchstart.android', el, function() {
+                            window.GuardianJSInterface.registerRelatedCardsTouch(true);
+                        });
+                        // Send false on touchend
+                        bean.on(document.body, 'touchend.android', el, function() {
+                            window.GuardianJSInterface.registerRelatedCardsTouch(false);
+                        });
+                    }
+                }
             }
         },
 
         ready = function () {
             if (!this.initialised) {
                 this.initialised = true;
-                modules.setupGlobals();
-                // console.info("Cards ready");
+                if ($('.related-content__list').length) {
+                    // Test pages will already have a list so just set the snap to grid
+                    modules.snapToGrid('.related-content__list');
+                } else {
+                    // Article pages need to be set up 
+                    modules.setupGlobals();
+                }
             }
         };
 
