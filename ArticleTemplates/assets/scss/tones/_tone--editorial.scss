@@ -12,21 +12,14 @@
             color: color(shade-2);  // Content Label Series
         }
 
+        .section__container,
+        .comment-count {
+            border-color: rgba(color(shade-3), .5);
+        }
+
         .comment-count a {
             color: color(tone-editorial);
         }
-
-        // .headline {
-        //     color: color(shade-7);
-        // }
-
-        // .standfirst {
-        //     color: color(shade-7);
-        // }
-
-        // .selectable a {
-        //     color: color(shade-7) !important;
-        // }
 
         .meta {
             background-color: color(tone-editorial);
@@ -53,15 +46,15 @@
         @include dropcap(color(tone-editorial));
     }
 
-    .alerts--new:active,
-    .alerts--new.following {
+    .alerts:active,
+    .alerts.following {
         background-color: color(shade-7);
         color: color(tone-editorial);
     }
     
-    .alerts--new,
-    .alerts--new.following:active {
-        border-color: color(shade-7);
+    .alerts,
+    .alerts.following:active {
+        border-color: rgba(color(shade-7), .5);
         color: color(shade-7);
     }
 }

@@ -1,6 +1,6 @@
 .tone--news {
     //TODO: would be nice to get rid of not (as hard to overide as tones get loaded in last)
-    a:not(.witness__button):not(.tell-me-when) {
+    a:not(.witness__button):not(.tell-me-when):not(.alerts) {
         color: color(tone-news);
 
         &:active {
@@ -22,7 +22,6 @@
         }
 
         .section__container,
-        .comment-count,
         .comment-count {
             border-color: rgba(color(shade-3), .4);
         }
@@ -82,7 +81,7 @@
 
     a.alerts,
     a.alerts.following:active {
-        border-color: color(tone-news);
+        border-color: rgba(color(tone-news), .5);
         color: color(tone-news);
     }
 }
