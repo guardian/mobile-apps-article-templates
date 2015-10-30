@@ -6267,6 +6267,8 @@
       width: 65px; }
     #sandbox .related-content__comments, #sandbox .related-content__duration {
       border-left: 1px solid #dcdad5; }
+    #sandbox .related-content__comments + #sandbox .related-content__duration {
+      display: none; }
     #sandbox .related-content__main {
       padding: 0;
       height: 84px;
@@ -6388,8 +6390,19 @@
         color: #fff; }
       #sandbox .related-content__card--media .related-content__title:before, #sandbox .related-content__card--media .related-content__series {
         color: #fb0; }
-      #sandbox .related-content__card--media .related-content__comments, #sandbox .related-content__card--media .related-content__duration {
+      #sandbox .related-content__card--media .related-content__comments {
         border-color: rgba(220, 218, 213, 0.34); }
+      #sandbox .related-content__card--media .related-content__duration {
+        display: block;
+        color: #fff;
+        font-weight: bold;
+        border: none;
+        background: rgba(0, 0, 0, 0.4);
+        position: absolute;
+        bottom: 3px;
+        right: 3px;
+        padding: 0 6px;
+        line-height: 20px; }
       #sandbox .related-content__card--media .touchpoint__button {
         background-color: #fb0;
         color: #333; }
@@ -6401,18 +6414,23 @@
       border-top-color: #a7d8f2; }
       #sandbox .related-content__card--podcast .related-content__heading, #sandbox .related-content__card--podcast .related-content__standfirst {
         color: #fff; }
-      #sandbox .related-content__card--podcast .related-content__title:before {
-        content: '\e047';
-        color: #a7d8f2; }
       #sandbox .related-content__card--podcast .related-content__series {
         color: #a7d8f2; }
       #sandbox .related-content__card--podcast .related-content__meta {
         color: #fff; }
-      #sandbox .related-content__card--podcast .related-content__comments, #sandbox .related-content__card--podcast .related-content__duration {
+      #sandbox .related-content__card--podcast .related-content__comments {
         border-color: #fff; }
       #sandbox .related-content__card--podcast .related-content__duration {
+        display: block;
         color: #fff;
-        font-weight: bold; }
+        font-weight: bold;
+        border: none;
+        background: rgba(0, 0, 0, 0.4);
+        position: absolute;
+        bottom: 3px;
+        right: 3px;
+        padding: 0 6px;
+        line-height: 20px; }
     #sandbox .related-content__card--review {
       background-color: #615b52;
       border-color: #ffce4b; }
