@@ -158,6 +158,26 @@ $meta-lead-2: 2.2rem;
     }
 }
 
+// Immersive Drop cap
+@mixin ImmersiverDropcap($dropcap-color: '') {
+    &:first-of-type:first-letter {
+        color: $dropcap-color;
+        font-family: $egyptian-display;
+        font-weight: 100;
+        font-style: normal;
+        font-size: 5.1em;
+        line-height: 1;
+        margin-top: 0px;
+        margin-bottom: base-px(-1.33333);
+        padding-right: base-px(.5);
+        float: left;
+
+        @include mq($from: col2) {
+            font-size: 5.2222em;
+        }
+    }
+}
+
 // template for tags
 @mixin tag-button($text-color, $background-color, $process: "darken", $tone-change: 10%){
     color: $text-color;

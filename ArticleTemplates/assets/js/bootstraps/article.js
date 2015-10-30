@@ -1,12 +1,14 @@
 /*global window,document,console,define */
 define([
     'bean',
+    'bonzo',
     'modules/$',
     'modules/twitter',
     'modules/witness',
     'modules/outbrain'
 ], function (
     bean,
+    bonzo,
     $,
     twitter,
     witness,
@@ -23,30 +25,36 @@ define([
         },
         
         formatImmersive : function(){
-	        if($('.tone--immersive').length){
+	        if($('.immersive').length){
 	        	$('h2').each(function() {
 		        	if ($(this).html() === '* * *') {
 			        	$(this).html('').addClass('section__rule').next().addClass('has__dropcap');
 			        	
-			        }       
+			        } else if($(this).html().toLowerCase().match(/[a-z]/)){
+				        $(this).addClass('section__header');
+			        }      
 		        });
 		        
-		        var quotePosition = $('.element-pullquote').offset();
-		        var scroll = $(window).scrollTop();
-		        var offset = quotePosition.top - 400;
-		        //var value = scroll - quotePosition.top;
-		        //console.log(value);
-		        console.log(window.scrollY);
-		        console.log(offset);
-		        
+				var viewPortHeight = bonzo.viewport().height;
+				var pageOffset = viewPortHeight * 0.75;		        
+		        $('.element-pullquote').each(function(){
+			       var $this = $(this);
+			       var offset = $this.offset().top;
+			       
+			       $this.attr('data-offset',offset);
+		        });
 		        bean.on(window, 'scroll', function(){
-			       $('.element-pullquote').scrollTop();
-			       if(window.scrollY >= offset){
-				   		$('.element-pullquote').addClass('animated').addClass('fadeInUp');
-				   		console.log('added class');   		
-		           } else{
-			           $('.element-pullquote').removeClass('animated').removeClass('fadeInUp');
-		           }
+			        console.log('window', window.scrollY);
+			       $('.element-pullquote').each(function(){
+				       	var $this = $(this);
+				       	var dataOffset = $this.attr('data-offset');
+				       	console.log('data-offset', dataOffset);
+			        	if(window.scrollY >= (dataOffset - pageOffset)){
+				   			$this.addClass('animated').addClass('fadeInUp');
+				   			console.log('added class');   		
+		           		} 
+		        	});
+			      			       
 		       	});
 		        
 		        
