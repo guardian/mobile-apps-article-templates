@@ -231,13 +231,19 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
         content: " / ";
     }
 
-    &__meta {
+    &__meta { 
+        position: absolute;
+        bottom: 0;
         color: color(shade-3);
         font: 1.3rem/1 $agate-sans;
         overflow: hidden;
 
         @include mq($from: col2) {
             font-size: $meta-size-1;
+        }
+
+        .has-image & {
+            position: static;
         }
     }
 
@@ -263,9 +269,14 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
     }
 
     &__main {
+        margin-bottom: 20px; // offset the absolutely positioned meta
         padding: 0;
         height: $card-width * .6; // height should cater for standard landscape image ratio
         overflow: hidden;
+        
+        .has-image & {
+            margin-bottom: 0;
+        }
 
         @include mq(col2, col3) {
             height: ($card-width-col2) * .6; // height should cater for standard landscape image ratio
@@ -478,22 +489,22 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
 
             &__duration {
                 display: block;
-                color: color(shade-7);
+                color: color(tone-media);
                 font-weight: bold;
                 border: none;
-                background: rgba(0,0,0,.4);
                 position: absolute;
-                bottom: 3px;
-                right: 3px;
-                padding: 0 6px;
+                bottom: 8px;
+                left: 40px;
+                padding: 0;
                 line-height: 20px;
+                text-shadow: 1px 1px 2px rgba(0,0,0,.5);
             }
         }
 
         .touchpoint {
             &__button {
-                background-color: color(tone-media);
-                color: color(shade-1);
+                background-color: color(tone-media) !important;
+                color: color(shade-1) !important;
             }
 
             &__label {
@@ -531,12 +542,12 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
                 color: color(shade-7);
                 font-weight: bold;
                 border: none;
-                background: rgba(0,0,0,.4);
                 position: absolute;
-                bottom: 3px;
-                right: 3px;
-                padding: 0 6px;
+                bottom: 8px;
+                left: 6px;
+                padding: 0;
                 line-height: 20px;
+                text-shadow: 1px 1px 2px rgba(0,0,0,.5);
             }
         }
     }
