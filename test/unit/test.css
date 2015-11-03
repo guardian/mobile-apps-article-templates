@@ -3366,14 +3366,14 @@
 @-webkit-keyframes fadeOutIn {
   7% {
     opacity: 1; }
-  93% {
+  93.0% {
     opacity: 1; }
   to {
     opacity: 0; } }
 @keyframes fadeOutIn {
   7% {
     opacity: 1; }
-  93% {
+  93.0% {
     opacity: 1; }
   to {
     opacity: 0; } }
@@ -4102,7 +4102,7 @@
     #sandbox body:not(.is-live) .article--liveblog .article__header .article__comments {
       width: 24.21053%; } }
   #sandbox .article--comment .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-  #sandbox .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
+  #sandbox .article--feature:not(.immersive) .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
     color: "";
     font-family: "Guardian Egyptian Web", Georgia, serif;
     font-weight: 100;
@@ -4115,7 +4115,7 @@
     float: left; }
     @media all and (min-width: 40.63em) {
       #sandbox .article--comment .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-      #sandbox .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
+      #sandbox .article--feature:not(.immersive) .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
         font-size: 5.2222em; } }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis) .section,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis) .section__container .content__series-label,
@@ -4609,9 +4609,9 @@
         color: #999; }
     #sandbox .tone--analysis .article__header .main-media__caption {
       background-color: #fff; }
-  #sandbox .tone--comment a {
+  #sandbox .tone--comment a, #sandbox .tone--comment .article__body .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
     color: #e6711b; }
-    #sandbox .tone--comment a:active {
+    #sandbox .tone--comment a:active, #sandbox .tone--comment .article__body .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter:active {
       color: #f39f33; }
   #sandbox .tone--comment .section__container {
     color: #767676; }
@@ -4896,11 +4896,11 @@
     border-color: rgba(255, 255, 255, 0.5);
     color: #fff; }
   #sandbox .tone--feature1 a,
-  #sandbox .tone--feature1 .article__body > p:first-of-type:first-letter,
+  #sandbox .tone--feature1 .article__body .prose > p:first-of-type:first-letter,
   #sandbox .tone--feature2 a,
-  #sandbox .tone--feature2 .article__body > p:first-of-type:first-letter,
+  #sandbox .tone--feature2 .article__body .prose > p:first-of-type:first-letter,
   #sandbox .tone--feature3 a,
-  #sandbox .tone--feature3 .article__body > p:first-of-type:first-letter {
+  #sandbox .tone--feature3 .article__body .prose > p:first-of-type:first-letter {
     color: #951c55; }
   #sandbox .tone--feature1 a:active,
   #sandbox .tone--feature2 a:active,
@@ -5118,6 +5118,321 @@
   #sandbox .tone--feature3 a.tell-me-when.added:active {
     border-color: #b82266;
     color: #b82266; }
+  #sandbox .immersive a,
+  #sandbox .immersive .article__body .prose > p:first-of-type:first-letter {
+    color: #951c55;
+    font-family: "Guardian Egyptian Web", Georgia, serif; }
+  #sandbox .immersive .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
+    color: "";
+    font-family: "Guardian Egyptian Web", Georgia, serif;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 5.1em;
+    line-height: 1;
+    margin-top: 0px;
+    margin-bottom: -16px;
+    padding-right: 6px;
+    float: left; }
+    @media all and (min-width: 40.63em) {
+      #sandbox .immersive .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
+        font-size: 5.2222em; } }
+  #sandbox .immersive a:active {
+    color: #b82266; }
+  #sandbox .immersive .article__header,
+  #sandbox .immersive .touchpoint--primary .touchpoint__button {
+    background-color: none; }
+  #sandbox .immersive .standfirst,
+  #sandbox .immersive .touchpoint--primary:active .touchpoint__button {
+    background-color: #767676; }
+  #sandbox .immersive .article--feature {
+    border-top-color: #b82266; }
+    #sandbox .immersive .article--feature .prose p a,
+    #sandbox .immersive .article--feature .prose li a {
+      color: #951c55;
+      text-decoration: none;
+      background-image: linear-gradient(rgba(149, 28, 85, 0.25) 0%, #951c55 100%);
+      background-repeat: repeat-x;
+      background-size: 1px 1px;
+      background-position: 0 bottom;
+      text-shadow: 3px 0 #fff, 2px 0 #fff, 1px 0 #fff, -1px 0 #fff, -2px 0 #fff, -3px 0 #fff; }
+      @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
+        #sandbox .immersive .article--feature .prose p a,
+        #sandbox .immersive .article--feature .prose li a {
+          background-image: linear-gradient(rgba(149, 28, 85, 0.25) 0%, #951c55 100%);
+          background-position: 0 93%; } }
+      #sandbox .immersive .article--feature .prose p a a:active, #sandbox .immersive .article--feature .prose p a:hover,
+      #sandbox .immersive .article--feature .prose li a a:active,
+      #sandbox .immersive .article--feature .prose li a:hover {
+        color: #b82266;
+        background-image: linear-gradient(to bottom, #9e1d58 0%, #9e1d58 100%); }
+      #sandbox .immersive .article--feature .prose p a::selection,
+      #sandbox .immersive .article--feature .prose p a > *::selection,
+      #sandbox .immersive .article--feature .prose li a::selection,
+      #sandbox .immersive .article--feature .prose li a > *::selection {
+        text-shadow: none; }
+      #sandbox .immersive .article--feature .prose p a::-moz-selection,
+      #sandbox .immersive .article--feature .prose p a > *::-moz-selection,
+      #sandbox .immersive .article--feature .prose li a::-moz-selection,
+      #sandbox .immersive .article--feature .prose li a > *::-moz-selection {
+        text-shadow: none; }
+    #sandbox .immersive .article--feature .prose table,
+    #sandbox .immersive .article--feature .table {
+      border-top-color: #b82266; }
+    #sandbox .immersive .article--feature .prose .element-pullquote blockquote footer, #sandbox .immersive .article--feature .prose .element-pullquote blockquote::after, #sandbox .immersive .article--feature .prose .element-pullquote blockquote::before {
+      color: #951c55; }
+  #sandbox .immersive .article--feature .article__header .bullet::before,
+  #sandbox .immersive .article--feature .article__header ul > li::before {
+    background-color: rgba(255, 255, 255, 0.4); }
+  #sandbox .immersive .article--feature .article__header .immersive__main__image {
+    background-color: black;
+    height: 100vh;
+    position: relative;
+    background-position: center center;
+    background-size: cover;
+    /*
+    				@include mq($from: col2){
+    					height: 1023px;
+    				}
+    				
+    				@include mq($from: col3){
+    					height: 655px;
+    				}
+    				
+    				@include mq($to: iphone4){
+    					height: 480px;
+    				}
+    				
+    				@include mq(){
+    					
+    				}
+    */ }
+  #sandbox .immersive .article--feature .article__header .section,
+  #sandbox .immersive .article--feature .article__header .byline {
+    color: #fff; }
+  #sandbox .immersive .article--feature .article__header .content__labels {
+    color: #fdadba; }
+  #sandbox .immersive .article--feature .article__header .content__series-label.content__labels {
+    color: #FFF; }
+  #sandbox .immersive .article--feature .article__header .headline {
+    color: #fff;
+    position: absolute;
+    bottom: 0px;
+    z-index: 20;
+    background-color: rgba(0, 0, 0, 0.3);
+    font-size: 3.5rem !important;
+    line-height: 3.3rem; }
+    @media all and (min-width: 40.63em) {
+      #sandbox .immersive .article--feature .article__header .headline {
+        font-size: 3.5556em !important;
+        font-weight: 100;
+        line-height: .9375;
+        bottom: 101px;
+        padding-top: 12px; } }
+  #sandbox .immersive .article--feature .article__header .standfirst {
+    color: #fff; }
+    #sandbox .immersive .article--feature .article__header .standfirst span {
+      color: rgba(255, 255, 255, 0.4); }
+    #sandbox .immersive .article--feature .article__header .standfirst strong {
+      color: #fff;
+      font-weight: normal; }
+    #sandbox .immersive .article--feature .article__header .standfirst a {
+      color: #f7acbb;
+      text-decoration: underline; }
+    @media all and (min-width: 40.63em) {
+      #sandbox .immersive .article--feature .article__header .standfirst {
+        display: none; } }
+    @media all and (min-width: 56.25em) {
+      #sandbox .immersive .article--feature .article__header .standfirst {
+        display: none; } }
+  #sandbox .immersive .article--feature .article__header .standfirst__tablet {
+    position: absolute;
+    bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 0px 0px 24px 12px; }
+    @media all and (max-width: 28.12em) {
+      #sandbox .immersive .article--feature .article__header .standfirst__tablet {
+        display: none; } }
+    @media all and (min-width: 40.63em) {
+      #sandbox .immersive .article--feature .article__header .standfirst__tablet {
+        display: block; } }
+    #sandbox .immersive .article--feature .article__header .standfirst__tablet p {
+      color: white; }
+      #sandbox .immersive .article--feature .article__header .standfirst__tablet p a {
+        color: #b82266; }
+  #sandbox .immersive .article--feature .article__header .section__label {
+    font-family: "Guardian Egyptian Web", Georgia, serif;
+    border-bottom: 1px solid #dcdad5;
+    background-color: none;
+    padding: 6px 0px 24px 12px;
+    font-size: 1.4rem; }
+    #sandbox .immersive .article--feature .article__header .section__label a {
+      color: #b82266;
+      font-weight: 600;
+      font-size: 1.6rem; }
+      @media all and (min-width: 40.63em) {
+        #sandbox .immersive .article--feature .article__header .section__label a {
+          font-size: 1.8rem; } }
+    #sandbox .immersive .article--feature .article__header .section__label .time__stamp {
+      font-family: 'Guardian Agate Sans 1 Web';
+      color: #767676;
+      font-size: 1.6rem;
+      line-height: 1.4rem; }
+  #sandbox .immersive .article--feature .article__header .immersive__byline {
+    background-color: none;
+    padding: 6px 0px 24px 12px; }
+    #sandbox .immersive .article--feature .article__header .immersive__byline .words {
+      color: #767676; }
+    #sandbox .immersive .article--feature .article__header .immersive__byline a {
+      color: #b82266; }
+    #sandbox .immersive .article--feature .article__header .immersive__byline a:hover {
+      text-decoration: underline; }
+    #sandbox .immersive .article--feature .article__header .immersive__byline p:nth-child(2) {
+      line-height: 1.6rem; }
+  #sandbox .immersive .article--feature .article__header .section__rule {
+    height: 10px;
+    border-bottom: 2px solid #dcdad5;
+    width: 100px;
+    margin: 0px 0px -6px 12px; }
+  #sandbox .immersive .article--feature .article__header .review-rating {
+    color: rgba(255, 255, 255, 0.4); }
+  #sandbox .immersive .article--feature .article__header .review-rating--1 .icon:nth-child(-n+1),
+  #sandbox .immersive .article--feature .article__header .review-rating--2 .icon:nth-child(-n+2),
+  #sandbox .immersive .article--feature .article__header .review-rating--3 .icon:nth-child(-n+3),
+  #sandbox .immersive .article--feature .article__header .review-rating--4 .icon:nth-child(-n+4),
+  #sandbox .immersive .article--feature .article__header .review-rating--5 .icon:nth-child(-n+5) {
+    color: #fff; }
+  #sandbox .immersive .article--feature .prose .section__rule {
+    height: 10px;
+    border-bottom: 2px solid #dcdad5;
+    width: 100px;
+    margin: 0px 0px 12px 1px; }
+  #sandbox .immersive .article--feature .prose .section__header {
+    width: 108%;
+    padding-left: 4%;
+    background-color: #b82266 !important;
+    margin-left: -12px;
+    height: 180px;
+    margin-bottom: 24px;
+    color: white;
+    font-size: 34px;
+    line-height: 30px;
+    font-weight: 200; }
+  #sandbox .immersive .article--feature .prose p.has__dropcap:first-letter {
+    color: #951c55;
+    font-family: "Guardian Egyptian Web", Georgia, serif;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 5.1em;
+    line-height: 1;
+    margin-top: 0;
+    margin-bottom: -16px;
+    padding-right: 6px;
+    float: left; }
+    @media all and (min-width: 40.63em) {
+      #sandbox .immersive .article--feature .prose p.has__dropcap:first-letter {
+        font-size: 5.2222em; } }
+  #sandbox .immersive .article--feature .prose .element-pullquote {
+    visibility: hidden; }
+    #sandbox .immersive .article--feature .prose .element-pullquote blockquote {
+      font-weight: 200;
+      font-size: 2.6rem;
+      line-height: 2.7rem;
+      font-family: 'Guardian Egyptian Web';
+      padding-top: 0px;
+      border-top: 1px solid #e0e0e0;
+      color: #951c55; }
+      @media all and (min-width: 40.63em) {
+        #sandbox .immersive .article--feature .prose .element-pullquote blockquote {
+          font-size: 3.2rem;
+          line-height: 3.2rem; } }
+      #sandbox .immersive .article--feature .prose .element-pullquote blockquote cite {
+        font-size: 2.6rem;
+        line-height: 2.7rem;
+        color: #999; }
+        @media all and (min-width: 40.63em) {
+          #sandbox .immersive .article--feature .prose .element-pullquote blockquote cite {
+            font-size: 3.2rem;
+            line-height: 3.2rem; } }
+      #sandbox .immersive .article--feature .prose .element-pullquote blockquote::before {
+        float: left;
+        position: relative;
+        line-height: 1.5rem;
+        margin-right: 8px;
+        font-size: 3rem;
+        color: #999; }
+        @media all and (min-width: 40.63em) {
+          #sandbox .immersive .article--feature .prose .element-pullquote blockquote::before {
+            font-size: 4rem;
+            line-height: 1.3rem; } }
+      #sandbox .immersive .article--feature .prose .element-pullquote blockquote::after {
+        content: ""; }
+    @media all and (min-width: 40.63em) {
+      #sandbox .immersive .article--feature .prose .element-pullquote {
+        max-width: 540px;
+        margin-right: 12px;
+        float: left; } }
+  #sandbox .immersive .article--feature .prose .animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    visibility: visible; }
+@-webkit-keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 10%, 0);
+    transform: translate3d(0, 10%, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 10%, 0);
+    transform: translate3d(0, 10%, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+  #sandbox .immersive .article--feature .prose .fadeInUp {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp; }
+  #sandbox .immersive .article--feature .meta {
+    border: 0;
+    margin: 0; }
+    #sandbox .immersive .article--feature .meta a.alerts--new:active, #sandbox .immersive .article--feature .meta a.alerts--new.following {
+      background-color: #fff;
+      color: #b82266; }
+    #sandbox .immersive .article--feature .meta a.alerts--new, #sandbox .immersive .article--feature .meta a.alerts--new.following:active {
+      border-color: #fff;
+      color: #fff; }
+  #sandbox .immersive .article--feature .meta,
+  #sandbox .immersive .article--feature .meta__pubdate {
+    color: rgba(255, 255, 255, 0.8); }
+  #sandbox .parallax {
+    perspective: 1px;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto; }
+  #sandbox .parallax__layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%; }
+  #sandbox .parallax__layer--base {
+    transform: translateZ(0); }
+  #sandbox .parallax__layer--back {
+    transform: translateZ(-0.1px); }
+  #sandbox .immersive__headline {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4); }
+    #sandbox .immersive__headline .headline {
+      color: white; }
   #sandbox .tone--liveBlog .section__container {
     border-bottom: 1px rgba(255, 255, 255, 0.4) dotted; }
   #sandbox .tone--liveBlog .section {

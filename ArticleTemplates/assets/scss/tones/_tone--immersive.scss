@@ -1,0 +1,453 @@
+.immersive  {
+    a,
+    .article__body .prose > p:first-of-type:first-letter {
+        color: color(tone-feature1);
+        font-family: $egyptian-display;
+
+    }
+	
+	.article--feature {
+    .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p {
+        @include ImmersiverDropcap();
+    	}	
+	}
+
+	
+    a:active {
+        color: color(tone-feature1-accent);
+    }
+
+    .article__header,
+    .touchpoint--primary .touchpoint__button {
+        background-color: none;
+    }
+
+    .standfirst,
+    .touchpoint--primary:active .touchpoint__button {
+        background-color: color(shade-2);
+    }
+
+    .article--feature {
+        border-top-color: color(tone-feature1-accent);
+
+        .prose p,
+        .prose li {
+            @include text-underline(color(tone-feature1), #fff, color(tone-feature1-accent));
+        }
+
+        .prose table,
+        .table {
+            border-top-color: color(tone-feature1-accent);
+        }
+
+
+        .prose .element-pullquote {
+            blockquote {
+                footer,
+                &::after,
+                &::before {
+                    color: color(tone-feature1);
+                }
+            }
+        }
+    }
+
+    .article--feature {
+        .article__header {
+
+            .bullet,
+            ul > li {
+                &::before {
+                    background-color: rgba(#fff, .4);
+                }
+            }
+            
+            .immersive__main__image{
+				background-color: black;
+				height: 100vh;
+				position: relative;
+				background-position: center center;
+				background-size: cover;	
+				
+/*
+				@include mq($from: col2){
+					height: 1023px;
+				}
+				
+				@include mq($from: col3){
+					height: 655px;
+				}
+				
+				@include mq($to: iphone4){
+					height: 480px;
+				}
+				
+				@include mq(){
+					
+				}
+*/
+				
+		
+			}	
+
+            .section,
+            .byline {
+                color: #fff;
+            }
+
+            .content__labels {
+                color: #fdadba;
+
+            }
+
+            .content__series-label.content__labels {
+                color: #FFF;
+            }
+
+            .headline {
+                color: #fff;
+                position: absolute;
+                bottom: 0px;
+                z-index: 20;
+                background-color: rgba(0, 0, 0, 0.3);
+                font-size: 3.5rem !important;
+                line-height: 3.3rem;
+
+                @include mq($from: col2) {
+                    font-size: 3.5556em !important; // 64px
+                    font-weight: 100;
+                    line-height: .9375; // 60px
+                    bottom: 101px;
+                    padding-top: base-px(1);	
+                }
+            }
+
+            .standfirst {
+                color: #fff;
+                span {
+                    color: rgba(#fff, .4);
+                }
+
+                strong {
+                    color: #fff;
+                    font-weight: normal;
+                }
+                
+                a{
+	                color: color(tone-feature1-accent2);
+	                text-decoration: underline;
+	         
+                }
+                
+                //need to fix display between >450px <746px
+                
+            	@include mq($from: col2){
+					display: none;
+				}
+				
+				@include mq($from: col3){
+					display: none;
+				}
+                
+            }
+            
+            .standfirst__tablet{
+	            
+	            position: absolute;
+	            bottom: 0px;
+	            background-color: rgba(0, 0, 0, 0.3);
+	            padding: base-px(0, 0, 2, 1);
+	            
+	            @include mq($to: col1){
+		            display: none;
+	            }
+	            
+	            @include mq($from: col2){
+					display: block;
+				}
+				p{
+					
+					color: white;
+					
+					a{
+						color: color(tone-feature1-accent);
+					}
+				}	
+	            
+            }
+            
+            .section__label{
+	                font-family: $egyptian-display;
+					border-bottom: 1px solid color(shade-4);
+					background-color: none;
+					padding: base-px(0.5, 0, 2, 1);
+					font-size: 1.4rem;
+					
+					
+				
+				a{
+					color: color(tone-feature1-accent);
+					font-weight: 600;
+					font-size: 1.6rem;
+					
+					@include mq($from: col2){
+						font-size: 1.8rem;
+					}
+
+				}
+				
+				.time__stamp{
+					font-family: 'Guardian Agate Sans 1 Web';
+					color: color(shade-2);
+					font-size: 1.6rem;
+					line-height: 1.4rem;
+	            }
+				
+            }
+            
+            .immersive__byline{
+	            background-color: none;
+	            padding: base-px(0.5, 0, 2, 1);
+	            
+	            .words{
+		            color: color(shade-2); 
+	            }
+	            
+	            a{
+		          color: color(tone-feature1-accent);
+	            }
+	            
+	            a:hover{
+		          text-decoration: underline;  
+	            }  
+	            
+	            p:nth-child(2){
+		          line-height: 1.6rem;
+	            } 
+            }
+            
+            .section__rule{
+	            height: 10px;
+	            border-bottom: 2px solid color(shade-4);
+	            width: 100px;
+	            margin: base-px(0,0,-0.5,1);
+            }
+            
+            
+            .review-rating {
+                color: rgba(#fff, .4);
+            }
+
+            .review-rating--1 .icon:nth-child(-n+1),
+            .review-rating--2 .icon:nth-child(-n+2),
+            .review-rating--3 .icon:nth-child(-n+3),
+            .review-rating--4 .icon:nth-child(-n+4),
+            .review-rating--5 .icon:nth-child(-n+5) {
+                color: #fff;
+            }
+        }
+        
+        
+        .prose{
+	      
+	     	.section__rule{
+	            height: 10px;
+	            border-bottom: 2px solid color(shade-4);
+	            width: 100px;
+	            margin: base-px(0,0,1,0.1);
+            }  
+            
+            .section__header{
+	                width: 108%;
+				    padding-left: 4%;
+				    background-color: color(tone-feature1-accent) !important;
+				    margin-left: -12px;
+				    height: 180px;
+				    margin-bottom: 24px;
+				    color: white;
+				    font-size: 34px;
+				    line-height: 30px;
+				    font-weight: 200;
+            }
+
+            
+            p{
+	        	&.has__dropcap{
+
+	            	&:first-letter{
+		            	color: color(tone-feature1);
+				        font-family: $egyptian-display;
+				        font-weight: 100;
+				        font-style: normal;
+				        font-size: 5.1em;
+				        line-height: 1;
+				        margin-top: 0;
+				        margin-bottom: base-px(-1.33333);
+				        padding-right: base-px(.5);
+				        float: left;
+				        
+				        @include mq($from: col2) {
+						font-size: 5.2222em;
+        				}
+		
+	            	}
+
+            	}   
+            }
+            
+            .element-pullquote{
+	            visibility: hidden;
+	                            
+                blockquote{
+		            font-weight: 200;
+		            font-size: 2.6rem;
+		            line-height: 2.7rem;
+	                font-family: 'Guardian Egyptian Web';
+	                padding-top: 0px;
+	                border-top: 1px solid #e0e0e0;
+	                color: color(tone-feature1);
+	                
+	                @include mq($from: col2){
+		            font-size: 3.2rem;
+					line-height: 3.2rem;    
+	                }
+	                
+	                cite{
+		              font-size: 2.6rem;
+					  line-height: 2.7rem;  
+					  color: color(shade-3);
+					   @include mq($from: col2){
+					   		font-size: 3.2rem;
+					   		line-height: 3.2rem;    
+					   }
+	                }
+	                
+	              	
+	              	&::before{
+		              	float: left;
+		              	position: relative;
+		              	line-height: 1.5rem;
+					    margin-right: 8px;
+					    font-size: 3rem;
+					    color: color(shade-3);
+					    
+					     @include mq($from: col2){
+				            font-size: 4rem;
+							line-height: 1.3rem;   
+						}
+
+	              	}
+	              	                
+	                &::after{
+		                content:"";
+	                }
+	                
+                }
+                
+                @include mq($from: col2) {
+		            max-width: 540px;
+		            margin-right: base-px(1);
+		            float: left;
+			}
+                
+            }
+            
+            .animated {
+			  -webkit-animation-duration: 1s;
+			  animation-duration: 1s;
+			  -webkit-animation-fill-mode: both;
+			  animation-fill-mode: both;
+			  visibility: visible;
+			}
+			
+			@-webkit-keyframes fadeInUp {
+			  from {
+			    opacity: 0;
+			    -webkit-transform: translate3d(0, 10%, 0);
+			    transform: translate3d(0, 10%, 0);
+			  }
+			
+			  to {
+			    opacity: 1;
+			    -webkit-transform: none;
+			    transform: none;
+			  }
+			}
+
+			@keyframes fadeInUp {
+			  from {
+			    opacity: 0;
+			    -webkit-transform: translate3d(0, 10%, 0);
+			    transform: translate3d(0, 10%, 0);
+			  }
+			
+			  to {
+			    opacity: 1;
+			    -webkit-transform: none;
+			    transform: none;
+			  }
+			}
+			
+			.fadeInUp {
+			  -webkit-animation-name: fadeInUp;
+			  animation-name: fadeInUp;
+			}
+
+        }
+
+        .meta {
+            border: 0;
+            margin: 0;
+
+            a.alerts--new:active, a.alerts--new.following {
+                background-color: color(shade-7);
+                color: color(tone-feature1-accent);
+            }
+
+            a.alerts--new,  a.alerts--new.following:active {
+                border-color: color(shade-7);
+                color: color(shade-7);
+            }
+        }
+
+        .meta,
+        .meta__pubdate {
+            color: rgba(#fff, .8);
+        }
+    }
+   
+}
+
+.parallax {
+  perspective: 1px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.parallax__layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.parallax__layer--base {
+  transform: translateZ(0);
+}
+.parallax__layer--back {
+  transform: translateZ(-0.1px);
+}
+		
+
+.immersive__headline{
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.4);
+	
+	.headline{
+		color: white;
+	}
+	
+}

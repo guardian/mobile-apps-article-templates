@@ -1,12 +1,14 @@
 /*global window,document,console,define */
 define([
     'bean',
+    'bonzo',
     'modules/$',
     'modules/twitter',
     'modules/witness',
     'modules/outbrain'
 ], function (
     bean,
+    bonzo,
     $,
     twitter,
     witness,
@@ -20,6 +22,43 @@ define([
                 outbrain.load();
             };
             window.applyNativeFunctionCall('articleOutbrainInserter');       
+        },
+        
+        formatImmersive : function(){
+	        if($('.immersive').length){
+	        	$('h2').each(function() {
+		        	if ($(this).html() === '* * *') {
+			        	$(this).html('').addClass('section__rule').next().addClass('has__dropcap');
+			        	
+			        } else if($(this).html().toLowerCase().match(/[a-z]/)){
+				        $(this).addClass('section__header');
+			        }      
+		        });
+		        
+				var viewPortHeight = bonzo.viewport().height;
+				var pageOffset = viewPortHeight * 0.75;		        
+		        $('.element-pullquote').each(function(){
+			       var $this = $(this);
+			       var offset = $this.offset().top;
+			       
+			       $this.attr('data-offset',offset);
+		        });
+		        bean.on(window, 'scroll', function(){
+			        console.log('window', window.scrollY);
+			       $('.element-pullquote').each(function(){
+				       	var $this = $(this);
+				       	var dataOffset = $this.attr('data-offset');
+				       	console.log('data-offset', dataOffset);
+			        	if(window.scrollY >= (dataOffset - pageOffset)){
+				   			$this.addClass('animated').addClass('fadeInUp');
+				   			console.log('added class');   		
+		           		} 
+		        	});
+			      			       
+		       	});
+		        
+		        
+	        }
         }
     },
 
@@ -30,6 +69,7 @@ define([
             twitter.enhanceTweets();
             witness.duplicate();
             modules.insertOutbrain();
+            modules.formatImmersive();
         }
     };
 
