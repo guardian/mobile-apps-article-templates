@@ -75,16 +75,7 @@
             }
         }
 
-        .main-media__caption {
-            background-color: color(shade-7);
-        }
-
-        .main-media {
-            @include mq($from: col4) {
-                background-color: color(shade-7);
-            }
-        }
-
+        .main-media__caption,
         .sponsorship {
             background-color: color(shade-7);
 
@@ -92,16 +83,22 @@
                 border-bottom: 0;
             }
         }
+
+        .main-media {
+            @include mq($from: col4) {
+                background-color: color(shade-7);
+            }
+        }
     }
 
-    .alerts--new:active,
-    .alerts--new.following {
+    .alerts:active,
+    .alerts.following {
         background-color: color(tone-review-accent);
         color: color(tone-review);
     }
-    
-    .alerts--new,
-    .alerts--new.following:active {
+
+    .alerts,
+    .alerts.following:active {
         border-color: color(tone-review-accent);
         color: color(tone-review-accent);
     }

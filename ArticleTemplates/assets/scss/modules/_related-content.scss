@@ -249,13 +249,19 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
         content: " / ";
     }
 
-    &__meta {
+    &__meta { 
+        position: absolute;
+        bottom: 0;
         color: color(shade-3);
         font: 1.3rem/1 $agate-sans;
         overflow: hidden;
 
         @include mq($from: col2) {
             font-size: $meta-size-1;
+        }
+
+        .has-image & {
+            position: static;
         }
     }
 
@@ -276,10 +282,19 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
         border-left: 1px solid color(shade-4);
     }
 
+    &__comments + &__duration {
+        display: none;
+    }
+
     &__main {
+        margin-bottom: 20px; // offset the absolutely positioned meta
         padding: 0;
         height: $card-width * .6; // height should cater for standard landscape image ratio
         overflow: hidden;
+        
+        .has-image & {
+            margin-bottom: 0;
+        }
 
         @include mq(col2, col3) {
             height: ($card-width-col2) * .6; // height should cater for standard landscape image ratio
@@ -486,16 +501,28 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
                 color: color(tone-media);
             }
 
-            &__comments,
-            &__duration {
+            &__comments {
                 border-color: fade-out(color(shade-4), .66);
+            }
+
+            &__duration {
+                display: block;
+                color: color(tone-media);
+                font-weight: bold;
+                border: none;
+                position: absolute;
+                bottom: 8px;
+                left: 40px;
+                padding: 0;
+                line-height: 20px;
+                text-shadow: 1px 1px 2px rgba(0,0,0,.5);
             }
         }
 
         .touchpoint {
             &__button {
-                background-color: color(tone-media);
-                color: color(shade-1);
+                background-color: color(tone-media) !important;
+                color: color(shade-1) !important;
             }
 
             &__label {
@@ -516,11 +543,6 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
                 color: color(shade-7);
             }
 
-            &__title:before {
-                content: '\e047';
-                color: color(tone-podcast);
-            }
-
             &__series {
                 color: color(tone-podcast);
             }
@@ -529,14 +551,21 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
                 color: color(shade-7);
             }
 
-            &__comments,
-            &__duration {
+            &__comments {
                 border-color: color(shade-7);
             }
 
             &__duration {
+                display: block;
                 color: color(shade-7);
                 font-weight: bold;
+                border: none;
+                position: absolute;
+                bottom: 8px;
+                left: 6px;
+                padding: 0;
+                line-height: 20px;
+                text-shadow: 1px 1px 2px rgba(0,0,0,.5);
             }
         }
     }

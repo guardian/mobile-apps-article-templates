@@ -1136,12 +1136,16 @@ Related Content / More on this story section
   .related-content__series:after {
     content: " / "; }
   .related-content__meta {
+    position: absolute;
+    bottom: 0;
     color: #999;
     font: 1.3rem/1 "Guardian Agate Sans 1 Web", sans-serif;
     overflow: hidden; }
     @media all and (min-width: 40.63em) {
       .related-content__meta {
         font-size: 1.4rem; } }
+    .has-image .related-content__meta {
+      position: static; }
   .related-content__timestamp, .related-content__comments, .related-content__duration {
     float: left;
     height: 20px;
@@ -1150,10 +1154,15 @@ Related Content / More on this story section
     width: 65px; }
   .related-content__comments, .related-content__duration {
     border-left: 1px solid #dcdad5; }
+  .related-content__comments + .related-content__duration {
+    display: none; }
   .related-content__main {
+    margin-bottom: 20px;
     padding: 0;
     height: 84px;
     overflow: hidden; }
+    .has-image .related-content__main {
+      margin-bottom: 0; }
     @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .related-content__main {
         height: 109.2px; } }
@@ -1271,11 +1280,22 @@ Related Content / More on this story section
       color: #fff; }
     .related-content__card--media .related-content__title:before, .related-content__card--media .related-content__series {
       color: #fb0; }
-    .related-content__card--media .related-content__comments, .related-content__card--media .related-content__duration {
+    .related-content__card--media .related-content__comments {
       border-color: rgba(220, 218, 213, 0.34); }
+    .related-content__card--media .related-content__duration {
+      display: block;
+      color: #fb0;
+      font-weight: bold;
+      border: none;
+      position: absolute;
+      bottom: 8px;
+      left: 40px;
+      padding: 0;
+      line-height: 20px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); }
     .related-content__card--media .touchpoint__button {
-      background-color: #fb0;
-      color: #333; }
+      background-color: #fb0 !important;
+      color: #333 !important; }
     .related-content__card--media .touchpoint__label {
       color: #fb0;
       font-weight: bold; }
@@ -1284,18 +1304,23 @@ Related Content / More on this story section
     border-top-color: #a7d8f2; }
     .related-content__card--podcast .related-content__heading, .related-content__card--podcast .related-content__standfirst {
       color: #fff; }
-    .related-content__card--podcast .related-content__title:before {
-      content: '\e047';
-      color: #a7d8f2; }
     .related-content__card--podcast .related-content__series {
       color: #a7d8f2; }
     .related-content__card--podcast .related-content__meta {
       color: #fff; }
-    .related-content__card--podcast .related-content__comments, .related-content__card--podcast .related-content__duration {
+    .related-content__card--podcast .related-content__comments {
       border-color: #fff; }
     .related-content__card--podcast .related-content__duration {
+      display: block;
       color: #fff;
-      font-weight: bold; }
+      font-weight: bold;
+      border: none;
+      position: absolute;
+      bottom: 8px;
+      left: 6px;
+      padding: 0;
+      line-height: 20px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); }
   .related-content__card--review {
     background-color: #615b52;
     border-color: #ffce4b; }
