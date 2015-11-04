@@ -5393,6 +5393,23 @@
   #sandbox .immersive .article--feature .article__header .bullet::before,
   #sandbox .immersive .article--feature .article__header ul > li::before {
     background-color: rgba(255, 255, 255, 0.4); }
+  #sandbox .immersive .article--feature .article__header .progress {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 6px;
+    z-index: 100000;
+    background-color: rgba(255, 255, 255, 0.8); }
+    #sandbox .immersive .article--feature .article__header .progress .progress__bar {
+      height: 6px;
+      width: 0;
+      background-color: #b82266;
+      margin-top: 0px; }
+    #sandbox .immersive .article--feature .article__header .progress .chapter {
+      height: 6px;
+      width: 2px;
+      background-color: #f7acbb;
+      top: 0; }
   #sandbox .immersive .article--feature .article__header .immersive__main__image {
     background-color: black;
     height: 100vh;
@@ -5541,6 +5558,20 @@
     @media all and (min-width: 40.63em) {
       #sandbox .immersive .article--feature .prose p.has__dropcap:first-letter {
         font-size: 5.2222em; } }
+  #sandbox .immersive .article--feature .prose .quote--image {
+    margin-top: -54px; }
+    #sandbox .immersive .article--feature .prose .quote--image blockquote {
+      border-top: 1px solid #f7acbb !important;
+      border-bottom: none !important;
+      background-color: rgba(149, 28, 85, 0.9);
+      color: white !important;
+      padding: 6px 6px 24px 6px; }
+      #sandbox .immersive .article--feature .prose .quote--image blockquote::before {
+        color: #f7acbb !important; }
+      #sandbox .immersive .article--feature .prose .quote--image blockquote footer cite {
+        color: #f7acbb; }
+  #sandbox .immersive .article--feature .prose .quote--overlay figcaption {
+    display: none !important; }
   #sandbox .immersive .article--feature .prose .element-pullquote {
     visibility: hidden; }
     #sandbox .immersive .article--feature .prose .element-pullquote blockquote {
@@ -5550,11 +5581,14 @@
       font-family: 'Guardian Egyptian Web';
       padding-top: 0px;
       border-top: 1px solid #e0e0e0;
+      border-bottom: 1px solid #e0e0e0;
       color: #951c55; }
       @media all and (min-width: 40.63em) {
         #sandbox .immersive .article--feature .prose .element-pullquote blockquote {
           font-size: 3.2rem;
           line-height: 3.2rem; } }
+      #sandbox .immersive .article--feature .prose .element-pullquote blockquote p {
+        margin-top: 28px; }
       #sandbox .immersive .article--feature .prose .element-pullquote blockquote cite {
         font-size: 2.6rem;
         line-height: 2.7rem;
