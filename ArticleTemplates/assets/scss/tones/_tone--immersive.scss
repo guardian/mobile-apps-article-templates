@@ -207,7 +207,6 @@
             
             .section__label{
 	                font-family: $egyptian-display;
-					border-bottom: 1px solid color(shade-4);
 					background-color: none;
 					padding: base-px(0.5, 0, 2, 1);
 					font-size: 1.4rem;
@@ -237,6 +236,9 @@
             .immersive__byline{
 	            background-color: none;
 	            padding: base-px(0.5, 0, 2, 1);
+				border-top: 1px solid color(shade-4);
+
+	            
 	            
 	            .words{
 		            color: color(shade-2); 
@@ -278,6 +280,23 @@
         
         
         .prose{
+	        
+	        h2.title--image{
+	        background-color: rgba(0,0,0,0.6);
+		    padding: 3px 0px 12px 12px;
+		    margin-left: -12px;
+		    width: 108%;
+		    margin-top: -67px;
+		    margin-bottom: base-px(3);
+		    z-index: 400000;
+		    position: relative;
+		    font-size: 2.4rem;
+		    line-height: 2.6rem;
+		    font-weight: 200;
+		    color: white;
+		    
+			    
+	        }
 	      
 	     	.section__rule{
 	            height: 10px;
@@ -308,10 +327,10 @@
 				        font-family: $egyptian-display;
 				        font-weight: 100;
 				        font-style: normal;
-				        font-size: 5.1em;
+				        font-size: 7em;
 				        line-height: 1;
 				        margin-top: 0;
-				        margin-bottom: base-px(-1.33333);
+				        margin-bottom: base-px(-1.6);
 				        padding-right: base-px(.5);
 				        float: left;
 				        
@@ -324,6 +343,8 @@
             	}   
             }
             
+           
+         
             .quote--image{
 	            
 	            margin-top: -54px;
@@ -364,7 +385,7 @@
                 blockquote{
 		            font-weight: 200;
 		            font-size: 2.6rem;
-		            line-height: 2.7rem;
+		            line-height: 2.8rem;
 	                font-family: 'Guardian Egyptian Web';
 	                padding-top: 0px;
 	                border-top: 1px solid #e0e0e0;
@@ -373,7 +394,7 @@
 	                
 	                @include mq($from: col2){
 		            font-size: 3.2rem;
-					line-height: 3.2rem;    
+					line-height: 3.4rem;  
 	                }
 	                
 	                p{
@@ -413,10 +434,14 @@
                 }
                 
                 @include mq($from: col2) {
-		            max-width: 540px;
+		            max-width: 100%;
 		            margin-right: base-px(1);
 		            float: left;
-			}
+			}	
+			
+				@include mq($from: col3){
+					max-width: 100%;
+				}
                 
             }
             
