@@ -476,12 +476,12 @@ category: Modules
 Comments Module
 
 ```html_example
-<section class="comments comments-56">
+<section class="comments comments--module comments-56">
     <div class="comments__wrapper">
         <div class="comments__header">
             <h2 class="comments__title">
                 <a class="comments__link" href="x-gu://showcomments">
-                    Comments <span class="comments__link--meta">56</span>
+                    Comments <span class="comments__count">56</span>
                 </a>
             </h2>
             <span class="touchpoint comments-closed-label" id="comments-module-closed-label">
@@ -527,55 +527,85 @@ Comments Module
 ```
 */
 .comments {
-  margin: 0px 0px 24px 0px;
-  border-top: 2px solid #333; }
+  margin: 0;
+  padding: 0px 0px 24px 0px;
+  overflow: hidden; }
+  .comments--module {
+    border-top: 2px solid #333; }
   @media all and (min-width: 75em) {
     .comments__wrapper {
       margin-left: auto;
       margin-right: auto;
       margin-top: 24px;
-      max-width: 1200px; } }
+      max-width: 1200px; }
+      .comments--page .comments__wrapper {
+        margin-top: 0; } }
   .comments__header {
     position: relative;
     margin: 6px 12px 12px 12px; }
-    @media all and (max-width: 40.62em) {
-      .comments__header {
-        font: 600 2.4rem/3.6rem "Guardian Egyptian Web", Georgia, serif; } }
-    @media all and (min-width: 40.63em) {
-      .comments__header {
-        font: 600 2.7rem/3.9rem "Guardian Egyptian Web", Georgia, serif; } }
     @media all and (min-width: 56.25em) {
       .comments__header {
         margin: 12px; } }
     @media all and (min-width: 75em) {
-      .comments__header {
+      .comments--module .comments__header {
         float: left;
         margin: 0 20px;
-        width: 200px; } }
+        width: 200px; }
+      .comments--page .comments__header {
+        margin-left: 240px;
+        width: 858px; } }
+  .comments__headline {
+    font-size: 2.25rem;
+    line-height: 2.4rem;
+    margin-bottom: 36px; }
+    @media all and (min-width: 40.63em) {
+      .comments__headline {
+        font-size: 3rem;
+        line-height: 3rem; } }
+    @media all and (min-width: 56.25em) {
+      .comments__headline {
+        font-size: 3.6rem;
+        line-height: 3.6rem; } }
+    @media all and (min-width: 75em) {
+      .comments__headline {
+        font-size: 2.7rem;
+        line-height: 2.7rem; } }
   @media all and (min-width: 75em) {
-    .comments__title, .comments__label, .comments__post {
+    .comments--module .comments__title, .comments--module .comments__label, .comments--module .comments__post {
       display: block;
       width: 200px; } }
-  .comments__title {
-    font-family: "Guardian Egyptian Web", Georgia, serif;
-    font-weight: 600; }
-    @media all and (max-width: 40.62em) {
-      .comments__title {
-        font-size: 2.4rem;
-        line-height: 3.6rem; } }
-    @media all and (min-width: 40.63em) {
-      .comments__title {
-        font-size: 2.7rem;
-        line-height: 3.9rem; } }
-    @media all and (min-width: 75em) {
-      .comments__title {
-        font-size: 2.3rem;
-        line-height: 2.3rem;
-        margin-bottom: 15px; } }
+  @media all and (max-width: 40.62em) {
+    .comments__title {
+      font: 600 2.4rem/3.6rem "Guardian Egyptian Web", Georgia, serif; } }
+  @media all and (min-width: 40.63em) {
+    .comments__title {
+      font: 600 2.7rem/3.9rem "Guardian Egyptian Web", Georgia, serif; } }
+  @media all and (min-width: 75em) {
+    .comments__title {
+      font-size: 2.3rem;
+      line-height: 2.3rem;
+      margin-bottom: 15px; } }
   .comments__link, .comments__link:active {
     color: #333; }
   .comments__count {
+    font-family: "Guardian Egyptian Web", Georgia, serif;
     color: #999; }
+    .comments--page .comments__count {
+      font-size: 1.5rem;
+      line-height: 1.6rem;
+      margin-bottom: 12px; }
+      @media all and (min-width: 40.63em) {
+        .comments--page .comments__count {
+          font-size: 2rem;
+          line-height: 2rem; } }
+      @media all and (min-width: 56.25em) {
+        .comments--page .comments__count {
+          font-size: 2.4rem;
+          line-height: 2.4rem; } }
+      @media all and (min-width: 75em) {
+        .comments--page .comments__count {
+          font-size: 1.8rem;
+          line-height: 1.8rem; } }
   .comments__closed {
     font-family: "Guardian Agate Sans 1 Web", sans-serif;
     font-weight: bold;
@@ -591,19 +621,26 @@ Comments Module
         line-height: 2.2rem; } }
     .comments--closed .comments__closed {
       display: block; }
-  @media all and (max-width: 28.12em) {
+    .comments--page .comments__closed {
+      text-align: right; }
+  .comments__post {
+    position: absolute;
+    right: 0; }
+    .comments--module .comments__post {
+      top: 0; }
+      @media all and (min-width: 75em) {
+        .comments--module .comments__post {
+          position: static;
+          margin-top: 15px; } }
+    .comments--page .comments__post {
+      bottom: 0; }
+    .comments--closed .comments__post {
+      display: none; }
     .comments__post .touchpoint__label {
-      display: none; } }
-  @media all and (max-width: 74.99em) {
-    .comments__post {
-      position: absolute;
-      top: 0;
-      right: 0; } }
-  @media all and (min-width: 75em) {
-    .comments__post {
-      margin-top: 15px; } }
-  .comments__post .touchpoint__label {
-    padding-left: 0; }
+      padding-left: 0; }
+    @media all and (max-width: 28.12em) {
+      .comments__post .touchpoint__label {
+        display: none; } }
   .comments__container {
     overflow: hidden;
     padding: 0;
@@ -615,12 +652,15 @@ Comments Module
         width: 858px; } }
   .comments__block {
     font-family: "Guardian Agate Sans 1 Web", sans-serif; }
+    @media all and (max-width: 56.24em) {
+      .comments__block {
+        margin: 12px; } }
     @media all and (min-width: 75em) {
       .comments__block {
         margin-top: 0; } }
     .comments__block--empty, .comments__block--failed {
       display: none; }
-    .comments-0 .comments__block--empty {
+    .comments-0:not(.comments--closed) .comments__block--empty {
       display: block; }
     .comments-has-failed .comments__block--failed {
       display: block; }
@@ -633,6 +673,23 @@ Comments Module
         width: 858px; } }
   .comments__viewmore {
     float: right; }
+    .comments-0 .comments__viewmore, .comments-1 .comments__viewmore, .container--has-failed .comments__viewmore {
+      display: none; }
+  .comments__ordering {
+    font-family: "Guardian Agate Sans 1 Web", sans-serif;
+    font-weight: 700; }
+    @media all and (max-width: 40.62em) {
+      .comments__ordering {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.63em) {
+      .comments__ordering {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
+    .comments--open .comments__ordering {
+      line-height: 44px; }
+    .comments--closed .comments__ordering {
+      float: left; }
 
 /*doc
 ---
@@ -1146,7 +1203,8 @@ Related Content / More on this story section
 ```
 */
 .related-content {
-  margin: 0px 0px 24px 0px;
+  margin: 0;
+  padding: 0px 0px 24px 0px;
   border-top: 2px solid #333; }
   .related-content .block--failed {
     display: none; }
@@ -4141,6 +4199,10 @@ Display a Guardian Witness submission.
 @media all and (min-width: 28.13em) {
   .football {
     border-top: 4px solid #4bc6df; } }
+@media all and (min-width: 75em) {
+  .football {
+    max-width: 1200px;
+    margin: 0 auto; } }
 .football .tabs [href="#football__tabpanel--liveblog"][aria-selected="true"] {
   color: #b51800;
   border-top-color: #cc2b12; }

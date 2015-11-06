@@ -1,4 +1,13 @@
 .tone--media {
+    @include mq($from: col4) {
+        background: #303030;
+
+        .comments,
+        .related-content {
+            background: color(shade-5);
+        }
+    }
+
     .witness .witness__sponsor-logo {
         fill: color(shade-7);
     }
@@ -13,7 +22,9 @@
         }
     }
 
-    a {
+    .article a,
+    .comments__block a,
+    .comments__ordering {
         color: darken(color(tone-media), 5%);
 
         &:active {
@@ -41,7 +52,26 @@
         &:active .touchpoint__button {
             background-color: color(tone-media-accent);
         }
+
+        .touchpoint__label {
+            color: color(tone-media);
+        }
+        
+        &:active .touchpoint__label {
+            color: color(tone-media-accent);
+        }
     }
+
+    .comments__viewmore {
+        .comments__viewmore--label {
+            color: color(tone-media);
+        }
+        
+        &:active .comments__viewmore--label {
+            color: color(tone-media-accent);
+        }
+    }
+
 
     // Template specific styles
     .article--audio {
@@ -89,6 +119,17 @@
 
         .audio-player {
             background-color: darken(color(shade-1), 10%);
+
+            @include mq($from: col4) {
+                width: 620px;
+                margin-left: 240px;
+            }
+        }
+
+        .audio-player__wrapper {
+            @include mq($from: col4) {
+                background-color: darken(color(shade-1), 10%);
+            }
         }
 
         .article__header,
@@ -131,7 +172,7 @@
             color: color(shade-2);
         }
 
-        .aside-witness__sponsor {
+        .aside-witness__sponsor { 
             width: 33%;
             text-align: right;
 

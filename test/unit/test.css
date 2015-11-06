@@ -1079,12 +1079,12 @@
   Comments Module
   
   ```html_example
-  <section class="comments comments-56">
+  <section class="comments comments--module comments-56">
       <div class="comments__wrapper">
           <div class="comments__header">
               <h2 class="comments__title">
                   <a class="comments__link" href="x-gu://showcomments">
-                      Comments <span class="comments__link--meta">56</span>
+                      Comments <span class="comments__count">56</span>
                   </a>
               </h2>
               <span class="touchpoint comments-closed-label" id="comments-module-closed-label">
@@ -3987,9 +3987,18 @@
       padding-bottom: 84px;
       position: relative;
       z-index: 1; }
+      @media all and (min-width: 75em) {
+        #sandbox .article--audio .article__header .cutout__container {
+          margin-left: 0;
+          width: auto; }
+          #sandbox .article--audio .article__header .cutout__container .headline {
+            margin-left: 240px; } }
     @media all and (min-width: 40.63em) {
       #sandbox .article--audio .article__header .headline {
         padding-right: 25.35211%; } }
+    @media all and (min-width: 75em) {
+      #sandbox .article--audio .article__header .headline {
+        padding-right: 0; } }
     #sandbox .article--audio .article__header .meta {
       margin-bottom: 1px;
       border-bottom: 0;
@@ -4754,9 +4763,13 @@
     @media all and (min-width: 75em) {
       #sandbox .tone--analysis .article__header .sponsorship {
         border-bottom: 0; } }
-  #sandbox .tone--comment .article a {
+  #sandbox .tone--comment .article a,
+  #sandbox .tone--comment .container__action--sort a,
+  #sandbox .tone--comment .comments__ordering {
     color: #e6711b; }
-    #sandbox .tone--comment .article a:active {
+    #sandbox .tone--comment .article a:active,
+    #sandbox .tone--comment .container__action--sort a:active,
+    #sandbox .tone--comment .comments__ordering:active {
       color: #f39f33; }
   #sandbox .tone--comment .section__container {
     color: #767676; }
@@ -5335,10 +5348,10 @@
       #sandbox .tone--liveBlog.is-live .witness,
       #sandbox .tone--liveBlog.is-live .alerts {
         margin-left: 240px; } }
-  #sandbox .tone--liveBlog.is-live #comments .touchpoint--primary .touchpoint__button {
-    background-color: #b51800; }
-  #sandbox .tone--liveBlog.is-live #comments .touchpoint--primary:active .touchpoint__button {
-    background-color: #cc2b12; }
+  #sandbox .tone--liveBlog.is-live .comments__ordering {
+    color: #b51800; }
+    #sandbox .tone--liveBlog.is-live .comments__ordering:active {
+      color: #cc2b12; }
   #sandbox .tone--liveBlog.is-live .comments .touchpoint--primary .touchpoint__button {
     background-color: #b51800; }
   #sandbox .tone--liveBlog.is-live .comments .touchpoint--primary:active .touchpoint__button {
@@ -5465,6 +5478,12 @@
     border-color: #b51800;
     background-color: transparent;
     color: #b51800; }
+  @media all and (min-width: 75em) {
+    #sandbox .tone--media {
+      background: #303030; }
+      #sandbox .tone--media .comments,
+      #sandbox .tone--media .related-content {
+        background: #eaeaea; } }
   #sandbox .tone--media .witness .witness__sponsor-logo {
     fill: #fff; }
   #sandbox .tone--media .section__container {
@@ -5473,9 +5492,13 @@
     #sandbox .tone--media .section__container .content__series-label,
     #sandbox .tone--media .section__container .content__series-label a {
       color: #eaeaea; }
-  #sandbox .tone--media a {
+  #sandbox .tone--media .article a,
+  #sandbox .tone--media .comments__block a,
+  #sandbox .tone--media .comments__ordering {
     color: #e6a800; }
-    #sandbox .tone--media a:active {
+    #sandbox .tone--media .article a:active,
+    #sandbox .tone--media .comments__block a:active,
+    #sandbox .tone--media .comments__ordering:active {
       color: #ffd35c; }
   #sandbox .tone--media .tags .inline-list__item a {
     color: #fff;
@@ -5493,6 +5516,14 @@
     background-color: #fb0; }
   #sandbox .tone--media .touchpoint--primary:active .touchpoint__button {
     background-color: #ffd35c; }
+  #sandbox .tone--media .touchpoint--primary .touchpoint__label {
+    color: #fb0; }
+  #sandbox .tone--media .touchpoint--primary:active .touchpoint__label {
+    color: #ffd35c; }
+  #sandbox .tone--media .comments__viewmore .comments__viewmore--label {
+    color: #fb0; }
+  #sandbox .tone--media .comments__viewmore:active .comments__viewmore--label {
+    color: #ffd35c; }
   #sandbox .tone--media .article--audio .meta {
     border-top-width: 1px;
     border-top-style: dotted; }
@@ -5565,6 +5596,15 @@
     #sandbox .tone--media .article--audio .audio-player,
     #sandbox .tone--media .article--visual .audio-player {
       background-color: #1a1a1a; }
+      @media all and (min-width: 75em) {
+        #sandbox .tone--media .article--audio .audio-player,
+        #sandbox .tone--media .article--visual .audio-player {
+          width: 620px;
+          margin-left: 240px; } }
+    @media all and (min-width: 75em) {
+      #sandbox .tone--media .article--audio .audio-player__wrapper,
+      #sandbox .tone--media .article--visual .audio-player__wrapper {
+        background-color: #1a1a1a; } }
     #sandbox .tone--media .article--audio .article__header,
     #sandbox .tone--media .article--audio .article__body,
     #sandbox .tone--media .article--audio .tags,
@@ -6042,55 +6082,85 @@
   #sandbox .android .container--related {
     margin-bottom: 48px; }
   #sandbox .comments {
-    margin: 0px 0px 24px 0px;
-    border-top: 2px solid #333; }
+    margin: 0;
+    padding: 0px 0px 24px 0px;
+    overflow: hidden; }
+    #sandbox .comments--module {
+      border-top: 2px solid #333; }
     @media all and (min-width: 75em) {
       #sandbox .comments__wrapper {
         margin-left: auto;
         margin-right: auto;
         margin-top: 24px;
-        max-width: 1200px; } }
+        max-width: 1200px; }
+        .comments--page #sandbox .comments__wrapper {
+          margin-top: 0; } }
     #sandbox .comments__header {
       position: relative;
       margin: 6px 12px 12px 12px; }
-      @media all and (max-width: 40.62em) {
-        #sandbox .comments__header {
-          font: 600 2.4rem/3.6rem "Guardian Egyptian Web", Georgia, serif; } }
-      @media all and (min-width: 40.63em) {
-        #sandbox .comments__header {
-          font: 600 2.7rem/3.9rem "Guardian Egyptian Web", Georgia, serif; } }
       @media all and (min-width: 56.25em) {
         #sandbox .comments__header {
           margin: 12px; } }
       @media all and (min-width: 75em) {
-        #sandbox .comments__header {
+        .comments--module #sandbox .comments__header {
           float: left;
           margin: 0 20px;
-          width: 200px; } }
+          width: 200px; }
+        .comments--page #sandbox .comments__header {
+          margin-left: 240px;
+          width: 858px; } }
+    #sandbox .comments__headline {
+      font-size: 2.25rem;
+      line-height: 2.4rem;
+      margin-bottom: 36px; }
+      @media all and (min-width: 40.63em) {
+        #sandbox .comments__headline {
+          font-size: 3rem;
+          line-height: 3rem; } }
+      @media all and (min-width: 56.25em) {
+        #sandbox .comments__headline {
+          font-size: 3.6rem;
+          line-height: 3.6rem; } }
+      @media all and (min-width: 75em) {
+        #sandbox .comments__headline {
+          font-size: 2.7rem;
+          line-height: 2.7rem; } }
     @media all and (min-width: 75em) {
-      #sandbox .comments__title, #sandbox .comments__label, #sandbox .comments__post {
+      .comments--module #sandbox .comments__title, .comments--module #sandbox .comments__label, .comments--module #sandbox .comments__post {
         display: block;
         width: 200px; } }
-    #sandbox .comments__title {
-      font-family: "Guardian Egyptian Web", Georgia, serif;
-      font-weight: 600; }
-      @media all and (max-width: 40.62em) {
-        #sandbox .comments__title {
-          font-size: 2.4rem;
-          line-height: 3.6rem; } }
-      @media all and (min-width: 40.63em) {
-        #sandbox .comments__title {
-          font-size: 2.7rem;
-          line-height: 3.9rem; } }
-      @media all and (min-width: 75em) {
-        #sandbox .comments__title {
-          font-size: 2.3rem;
-          line-height: 2.3rem;
-          margin-bottom: 15px; } }
+    @media all and (max-width: 40.62em) {
+      #sandbox .comments__title {
+        font: 600 2.4rem/3.6rem "Guardian Egyptian Web", Georgia, serif; } }
+    @media all and (min-width: 40.63em) {
+      #sandbox .comments__title {
+        font: 600 2.7rem/3.9rem "Guardian Egyptian Web", Georgia, serif; } }
+    @media all and (min-width: 75em) {
+      #sandbox .comments__title {
+        font-size: 2.3rem;
+        line-height: 2.3rem;
+        margin-bottom: 15px; } }
     #sandbox .comments__link, #sandbox .comments__link:active {
       color: #333; }
     #sandbox .comments__count {
+      font-family: "Guardian Egyptian Web", Georgia, serif;
       color: #999; }
+      .comments--page #sandbox .comments__count {
+        font-size: 1.5rem;
+        line-height: 1.6rem;
+        margin-bottom: 12px; }
+        @media all and (min-width: 40.63em) {
+          .comments--page #sandbox .comments__count {
+            font-size: 2rem;
+            line-height: 2rem; } }
+        @media all and (min-width: 56.25em) {
+          .comments--page #sandbox .comments__count {
+            font-size: 2.4rem;
+            line-height: 2.4rem; } }
+        @media all and (min-width: 75em) {
+          .comments--page #sandbox .comments__count {
+            font-size: 1.8rem;
+            line-height: 1.8rem; } }
     #sandbox .comments__closed {
       font-family: "Guardian Agate Sans 1 Web", sans-serif;
       font-weight: bold;
@@ -6106,19 +6176,26 @@
           line-height: 2.2rem; } }
       .comments--closed #sandbox .comments__closed {
         display: block; }
-    @media all and (max-width: 28.12em) {
+      .comments--page #sandbox .comments__closed {
+        text-align: right; }
+    #sandbox .comments__post {
+      position: absolute;
+      right: 0; }
+      .comments--module #sandbox .comments__post {
+        top: 0; }
+        @media all and (min-width: 75em) {
+          .comments--module #sandbox .comments__post {
+            position: static;
+            margin-top: 15px; } }
+      .comments--page #sandbox .comments__post {
+        bottom: 0; }
+      .comments--closed #sandbox .comments__post {
+        display: none; }
       #sandbox .comments__post .touchpoint__label {
-        display: none; } }
-    @media all and (max-width: 74.99em) {
-      #sandbox .comments__post {
-        position: absolute;
-        top: 0;
-        right: 0; } }
-    @media all and (min-width: 75em) {
-      #sandbox .comments__post {
-        margin-top: 15px; } }
-    #sandbox .comments__post .touchpoint__label {
-      padding-left: 0; }
+        padding-left: 0; }
+      @media all and (max-width: 28.12em) {
+        #sandbox .comments__post .touchpoint__label {
+          display: none; } }
     #sandbox .comments__container {
       overflow: hidden;
       padding: 0;
@@ -6130,12 +6207,15 @@
           width: 858px; } }
     #sandbox .comments__block {
       font-family: "Guardian Agate Sans 1 Web", sans-serif; }
+      @media all and (max-width: 56.24em) {
+        #sandbox .comments__block {
+          margin: 12px; } }
       @media all and (min-width: 75em) {
         #sandbox .comments__block {
           margin-top: 0; } }
       #sandbox .comments__block--empty, #sandbox .comments__block--failed {
         display: none; }
-      .comments-0 #sandbox .comments__block--empty {
+      .comments-0:not(.comments--closed) #sandbox .comments__block--empty {
         display: block; }
       .comments-has-failed #sandbox .comments__block--failed {
         display: block; }
@@ -6148,6 +6228,23 @@
           width: 858px; } }
     #sandbox .comments__viewmore {
       float: right; }
+      .comments-0 #sandbox .comments__viewmore, .comments-1 #sandbox .comments__viewmore, .container--has-failed #sandbox .comments__viewmore {
+        display: none; }
+    #sandbox .comments__ordering {
+      font-family: "Guardian Agate Sans 1 Web", sans-serif;
+      font-weight: 700; }
+      @media all and (max-width: 40.62em) {
+        #sandbox .comments__ordering {
+          font-size: 1.4rem;
+          line-height: 2rem; } }
+      @media all and (min-width: 40.63em) {
+        #sandbox .comments__ordering {
+          font-size: 1.6rem;
+          line-height: 2.2rem; } }
+      .comments--open #sandbox .comments__ordering {
+        line-height: 44px; }
+      .comments--closed #sandbox .comments__ordering {
+        float: left; }
   #sandbox figure img {
     display: block; }
   #sandbox figure video {
@@ -6497,7 +6594,8 @@
     #sandbox a.tell-me-when.added .tell-me-when__state--add {
       display: none; }
   #sandbox .related-content {
-    margin: 0px 0px 24px 0px;
+    margin: 0;
+    padding: 0px 0px 24px 0px;
     border-top: 2px solid #333; }
     #sandbox .related-content .block--failed {
       display: none; }
@@ -8234,6 +8332,10 @@
   @media all and (min-width: 28.13em) {
     #sandbox .football {
       border-top: 4px solid #4bc6df; } }
+  @media all and (min-width: 75em) {
+    #sandbox .football {
+      max-width: 1200px;
+      margin: 0 auto; } }
   #sandbox .football .tabs [href="#football__tabpanel--liveblog"][aria-selected="true"] {
     color: #b51800;
     border-top-color: #cc2b12; }

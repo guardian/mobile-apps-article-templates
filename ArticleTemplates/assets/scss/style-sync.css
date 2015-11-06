@@ -2472,9 +2472,18 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
     padding-bottom: 84px;
     position: relative;
     z-index: 1; }
+    @media all and (min-width: 75em) {
+      .article--audio .article__header .cutout__container {
+        margin-left: 0;
+        width: auto; }
+        .article--audio .article__header .cutout__container .headline {
+          margin-left: 240px; } }
   @media all and (min-width: 40.63em) {
     .article--audio .article__header .headline {
       padding-right: 25.35211%; } }
+  @media all and (min-width: 75em) {
+    .article--audio .article__header .headline {
+      padding-right: 0; } }
   .article--audio .article__header .meta {
     margin-bottom: 1px;
     border-bottom: 0;
@@ -3254,9 +3263,13 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     .tone--analysis .article__header .sponsorship {
       border-bottom: 0; } }
 
-.tone--comment .article a {
+.tone--comment .article a,
+.tone--comment .container__action--sort a,
+.tone--comment .comments__ordering {
   color: #e6711b; }
-  .tone--comment .article a:active {
+  .tone--comment .article a:active,
+  .tone--comment .container__action--sort a:active,
+  .tone--comment .comments__ordering:active {
     color: #f39f33; }
 .tone--comment .section__container {
   color: #767676; }
@@ -3866,10 +3879,10 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     .tone--liveBlog.is-live .witness,
     .tone--liveBlog.is-live .alerts {
       margin-left: 240px; } }
-.tone--liveBlog.is-live #comments .touchpoint--primary .touchpoint__button {
-  background-color: #b51800; }
-.tone--liveBlog.is-live #comments .touchpoint--primary:active .touchpoint__button {
-  background-color: #cc2b12; }
+.tone--liveBlog.is-live .comments__ordering {
+  color: #b51800; }
+  .tone--liveBlog.is-live .comments__ordering:active {
+    color: #cc2b12; }
 .tone--liveBlog.is-live .comments .touchpoint--primary .touchpoint__button {
   background-color: #b51800; }
 .tone--liveBlog.is-live .comments .touchpoint--primary:active .touchpoint__button {
@@ -3997,6 +4010,12 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   background-color: transparent;
   color: #b51800; }
 
+@media all and (min-width: 75em) {
+  .tone--media {
+    background: #303030; }
+    .tone--media .comments,
+    .tone--media .related-content {
+      background: #eaeaea; } }
 .tone--media .witness .witness__sponsor-logo {
   fill: #fff; }
 .tone--media .section__container {
@@ -4005,9 +4024,13 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--media .section__container .content__series-label,
   .tone--media .section__container .content__series-label a {
     color: #eaeaea; }
-.tone--media a {
+.tone--media .article a,
+.tone--media .comments__block a,
+.tone--media .comments__ordering {
   color: #e6a800; }
-  .tone--media a:active {
+  .tone--media .article a:active,
+  .tone--media .comments__block a:active,
+  .tone--media .comments__ordering:active {
     color: #ffd35c; }
 .tone--media .tags .inline-list__item a {
   color: #fff;
@@ -4025,6 +4048,14 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   background-color: #fb0; }
 .tone--media .touchpoint--primary:active .touchpoint__button {
   background-color: #ffd35c; }
+.tone--media .touchpoint--primary .touchpoint__label {
+  color: #fb0; }
+.tone--media .touchpoint--primary:active .touchpoint__label {
+  color: #ffd35c; }
+.tone--media .comments__viewmore .comments__viewmore--label {
+  color: #fb0; }
+.tone--media .comments__viewmore:active .comments__viewmore--label {
+  color: #ffd35c; }
 .tone--media .article--audio .meta {
   border-top-width: 1px;
   border-top-style: dotted; }
@@ -4097,6 +4128,15 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--media .article--audio .audio-player,
   .tone--media .article--visual .audio-player {
     background-color: #1a1a1a; }
+    @media all and (min-width: 75em) {
+      .tone--media .article--audio .audio-player,
+      .tone--media .article--visual .audio-player {
+        width: 620px;
+        margin-left: 240px; } }
+  @media all and (min-width: 75em) {
+    .tone--media .article--audio .audio-player__wrapper,
+    .tone--media .article--visual .audio-player__wrapper {
+      background-color: #1a1a1a; } }
   .tone--media .article--audio .article__header,
   .tone--media .article--audio .article__body,
   .tone--media .article--audio .tags,

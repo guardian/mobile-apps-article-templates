@@ -7,12 +7,12 @@ category: Modules
 Comments Module
 
 ```html_example
-<section class="comments comments-56">
+<section class="comments comments--module comments-56">
     <div class="comments__wrapper">
         <div class="comments__header">
             <h2 class="comments__title">
                 <a class="comments__link" href="x-gu://showcomments">
-                    Comments <span class="comments__link--meta">56</span>
+                    Comments <span class="comments__count">56</span>
                 </a>
             </h2>
             <span class="touchpoint comments-closed-label" id="comments-module-closed-label">
@@ -59,8 +59,13 @@ Comments Module
 */
 
 .comments {
-    margin: base-px(0, 0, 2, 0);
-    border-top: 2px solid color(shade-1);
+    margin: 0;
+    padding: base-px(0, 0, 2, 0);
+    overflow: hidden;
+    
+    &--module {
+        border-top: 2px solid color(shade-1);
+    }
 
     &__wrapper {
         @include mq($from: col4) {
@@ -70,38 +75,53 @@ Comments Module
                 top: base-px(2);
             }
             max-width: 1200px;
+
+            .comments--page & {
+                margin-top: 0;
+            }
         }
     }
     
     &__header {
         position: relative;
         margin: base-px(.5, 1, 1, 1);
-        @include body-font(1.5, $egyptian-display, 600);
 
         @include mq($from: col3) {
             margin: base-px(1);
         }
 
         @include mq($from: col4) {
-            float: left;
-            margin: 0 20px;
-            width: 200px;
+            .comments--module & {
+                float: left;
+                margin: 0 20px;
+                width: 200px;
+            }
+
+            .comments--page & {
+                margin-left: 240px;
+                width: 858px; // This is the width of 4 related cards at this breakpoint
+            }
         }
+    }
+
+    &__headline {
+        @include headline(.75);
+        margin-bottom: base-px(3);
     }
 
     &__title,
     &__label,
     &__post {
         @include mq($from: col4) {
-            display: block;
-            width: 200px;
+            .comments--module & {
+                display: block;
+                width: 200px;
+            }
         }
     }
 
     &__title {
-        font-family: $egyptian-display;
-        font-weight: 600;
-        @include body(1.5);
+        @include body-font(1.5, $egyptian-display, 600);
 
         @include mq($from: col4) {
             font-size: 2.3rem;
@@ -116,7 +136,13 @@ Comments Module
     }
 
     &__count {
+        font-family: $egyptian-display;
         color: color(shade-3);
+
+        .comments--page & {
+            @include headline(.5);
+            margin-bottom: base-px(1);
+        }
     }
 
     &__closed {
@@ -129,27 +155,41 @@ Comments Module
         .comments--closed & {
             display: block;
         }
+
+        .comments--page & {
+            text-align: right;
+        }
     }
 
     &__post {
-        @include mq($to: col1) {
-            .touchpoint__label {
-                display: none;
+        position: absolute;
+        right: 0;
+
+        .comments--module & {
+            top: 0;
+
+            @include mq($from: col4) {
+                position: static;
+                margin-top: 15px;
             }
         }
 
-        @include mq($to: col4) {
-            position: absolute;
-            top: 0;
-            right: 0;
+        .comments--page & {
+            bottom: 0;
         }
 
-        @include mq($from: col4) {
-            margin-top: 15px;
+        .comments--closed & {
+            display: none;
         }
 
         .touchpoint__label {
             padding-left: 0;
+        }
+
+        @include mq($to: col1) {
+            .touchpoint__label {
+                display: none;
+            }
         }
     }
 
@@ -170,6 +210,10 @@ Comments Module
     &__block {
         font-family: $agate-sans;
 
+        @include mq($to: col3) {
+            margin: base-px(1);
+        }
+
         @include mq($from: col4) {
             margin-top: 0;
         }
@@ -182,7 +226,7 @@ Comments Module
 
         // If comment count is 0 then show the --empty block
         &--empty {
-            .comments-0 & {
+            .comments-0:not(.comments--closed) & {
                 display: block;
             }
         }
@@ -207,5 +251,25 @@ Comments Module
 
     &__viewmore {
         float: right;
+
+        .comments-0 &,
+        .comments-1 &,
+        .container--has-failed & {
+            display: none;
+        }
+    }
+
+    &__ordering {
+        @include meta;
+        font-family: $agate-sans;
+        font-weight: 700;
+
+        .comments--open & {
+            line-height: 44px;
+        }
+
+        .comments--closed & {
+            float: left;
+        }
     }
 }
