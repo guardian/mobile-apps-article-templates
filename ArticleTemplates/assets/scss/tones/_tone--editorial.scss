@@ -38,7 +38,11 @@
 
         .main-media__caption,
         .sponsorship {
-            background-color: color(shade-7);
+            background-color: color(tone-editorial-bg);
+
+            @include mq($from: col4) {
+                background-color: (shade-7);
+            }
         }
     }
 

@@ -28,6 +28,16 @@
         }
     }
 
+    @include mq($from: col4) {
+        .main-media {
+            padding: base-px(1, 0);
+        
+            .element {
+                position: relative;
+            }
+        }
+    }
+
     .tags {
         border-top: 0;
 
@@ -37,6 +47,10 @@
 
         @include mq($from: col3) {
             padding-left: cols($base-4, 5, 1);
+        }
+
+        @include mq($from: col4) {
+            padding-left: 0;
         }
     }
 

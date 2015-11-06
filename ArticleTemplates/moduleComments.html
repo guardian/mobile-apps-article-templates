@@ -1,49 +1,39 @@
-<div class="container container--comments comments-__COMMENTS_COUNT__" id="comments">
-    <div class="container__header" id="comments-module-header">
-        <div class="container__title" id="comments-module-title">
-            <h2 class="container__title__label" id="comments-module-title-label"><a class="container__title__link" id="comments-module-title-link" href="x-gu://showcomments">Comments <span class="container__title__meta" id="comments-module-count">__COMMENTS_COUNT__</span></a></h2>
-            <span class="touchpoint comments-closed-label" id="comments-module-closed-label">
-                <span class="touchpoint__label">Comments are closed</span>
-            </span>
+<section class="comments comments-__COMMENTS_COUNT__">
+    <div class="comments__wrapper">
+        <div class="comments__header">
+            <h2 class="comments__title">
+                <a class="comments__link" href="x-gu://showcomments">
+                    Comments <span class="comments__link--meta">__COMMENTS_COUNT__</span>
+                </a>
+            </h2>
+            <p class="comments__closed">Comments are closed</p>
+            <a class="comments__post touchpoint touchpoint--primary" href="x-gu://leavecomment">
+                <span class="touchpoint__label">Post a comment</span>
+                <span class="touchpoint__button" data-icon="&#xe03d;" aria-hidden="true"></span>
+            </a>
         </div>
-        <div class="container__action container__action--comment">
-            <a class="touchpoint touchpoint--primary" href="x-gu://leavecomment">
-                <span class="touchpoint__label" id="comments-module-action-label">Post a comment</span>
-                <span class="touchpoint__button" id="comments-module-action-button" data-icon="&#xe03d;" aria-hidden="true"></span>
+
+        <div class="comments__container">
+            <div class="comments__block comments__block--empty">
+                <p>
+                    Open for comments. <a href="x-gu://leavecomment">Be the first to join the debate</a>
+                </p>
+            </div>
+            <div class="comments__block comments__block--failed">
+                <p>
+                    Comments are currently unavailable. Please try again later.
+                </p>
+            </div>
+            <div class="comments__block comments__block--loading loading">
+                <img src="__TEMPLATES_DIRECTORY__assets/img/loading.gif" alt="Loading…" />
+            </div>
+        </div>
+        
+        <div class="comments__footer">
+            <a class="comments__viewmore touchpoint touchpoint--secondary" href="x-gu://showcomments">
+                <span class="comments__viewmore--label touchpoint__label">View more</span>
+                <span class="comments__viewmore--button touchpoint__button" data-icon="&#xe00b;" aria-hidden="true"></span>
             </a>
         </div>
     </div>
-
-    <div class="container__body" id="comments-module-blocks">
-        <div class="block block--discussion-empty" id="comments-module-empty-block">
-            <div class="block__body">
-                <div class="comment">
-                    <div class="prose resizable">
-                        <p id="comments-module-empty-text">Open for comments. <a href="x-gu://leavecomment">Be the first to join the debate</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="block block--discussion-failed" id="comments-module-failed-block">
-            <div class="block__body">
-                <div class="comment">
-                    <div class="prose resizable">
-                        <p id="comments-module-failed-text">Comments are currently unavailable. Please try again later.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="loading loading--discussion" id="comments-module-loading-block">
-            <img src="__TEMPLATES_DIRECTORY__assets/img/loading.gif" id="comments-module-loading-animation" alt="Loading…"/>
-        </div>
-    </div>
-
-    <div class="container__footer" id="comments-module-footer">
-        <div class="container__action container__action--view-more" id="comments-module-view-more">
-            <a class="touchpoint touchpoint--secondary" id="comments-module-view-more-link" href="x-gu://showcomments">
-                <span class="touchpoint__label" id="comments-module-view-more-label">View more</span>
-                <span class="touchpoint__button" id="comments-module-view-more-button" data-icon="&#xe00b;" aria-hidden="true"></span>
-            </a>
-        </div>
-    </div>
-</div>
+</section>

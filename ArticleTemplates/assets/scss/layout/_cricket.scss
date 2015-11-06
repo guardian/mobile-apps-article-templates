@@ -1,8 +1,30 @@
+.cricket {
+    @include mq($from: col4) {
+        margin: {
+            left: auto;
+            right: auto;
+        }
+        max-width: 1200px;
+    
+        .tabs {
+            padding-left: base-px(1);
+            width: cols($base-4, 5, 1);
+            
+            .inline-list__item {
+                float: left;
+                width: 50%;
+            }
+        }
+
+        .meta__misc {
+            margin-left: 0;
+        }
+    }
+}
+
 .tabs__list-item--scorecard,
 .cricket__tabpanel--stats {
 	.cricket--pre-match & {
 		display: none;
 	}
 }
-
-

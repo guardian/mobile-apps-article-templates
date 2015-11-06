@@ -151,43 +151,11 @@ category: Modules
 ---
 Create a placeholder tp allow an advert to be placed with an article.
 
-Banner
-
-```html_example
-<div class="advert-slot advert-slot--banner">
-    <div class="advert-slot__label">Advertisement</div>
-    <div class="advert-slot__wrapper">
-        <div class="advert-slot__wrapper__content">
-            <!-- Advert injected here using JavaScript -->
-        </div>
-    </div>
-</div>
-```
-
 MPU
 
 ```html_example
 <div class="advert-slot advert-slot--mpu">
     <div class="advert-slot__label">Advertisement</div>
-    <div class="advert-slot__wrapper">
-        <div class="advert-slot__wrapper__content">
-            <!-- Advert injected here using JavaScript -->
-        </div>
-    </div>
-</div>
-```
-
-Banner with Hide -- only works with `body[data-ads-enable-hiding="true"]`
-
-```html_example
-<div class="advert-slot advert-slot--banner">
-    <div class="advert-slot__label">
-        Advertisement
-        <a class="advert-slot__action" href="x-gu://subscribe" style="display: inline;">
-            Hide
-            <span data-icon="&#xe04F;"></span>
-        </a>
-    </div>
     <div class="advert-slot__wrapper">
         <div class="advert-slot__wrapper__content">
             <!-- Advert injected here using JavaScript -->
@@ -238,22 +206,6 @@ Banner with Hide -- only works with `body[data-ads-enable-hiding="true"]`
     position: absolute;
     bottom: 0; }
 
-.advert-slot--banner {
-  padding: 0px 0px 12px 0px;
-  width: 100%; }
-  .advert-slot--banner .advert-slot__label {
-    padding: 6px 0px;
-    margin: 0 auto; }
-  .advert-slot--banner .advert-slot__wrapper {
-    padding-top: 48px;
-    margin: 0 auto; }
-  .advert-slot--banner .advert-slot__wrapper,
-  .advert-slot--banner .advert-slot__label {
-    width: 320px; }
-  @media all and (max-width: 20.06em) {
-    .advert-slot--banner .advert-slot__label {
-      width: 296px; } }
-
 .advert-slot--mpu {
   border-top: 1px solid #dcdad5;
   width: 300px;
@@ -288,14 +240,11 @@ Banner with Hide -- only works with `body[data-ads-enable-hiding="true"]`
 .advert-config--mobile {
   /*  Any res above 375w e.g. iPhone 6, 6 plus */
   /*  iPhone 6 */ }
-  .advert-config--mobile[data-ads-enabled='true'] .advert-slot--banner, .advert-config--mobile[data-ads-enabled*='banner'] .advert-slot--banner,
   .advert-config--mobile .advert-slot--mpu--mobile {
     margin: 0 auto;
     display: block; }
-    .advert-config--mobile[data-ads-enabled='true'] .advert-slot--banner .advert-slot__label, .advert-config--mobile[data-ads-enabled*='banner'] .advert-slot--banner .advert-slot__label,
     .advert-config--mobile .advert-slot--mpu--mobile .advert-slot__label {
       margin: 0 auto; }
-    .advert-config--mobile[data-ads-enabled='true'] .advert-slot--banner .advert-slot__wrapper, .advert-config--mobile[data-ads-enabled*='banner'] .advert-slot--banner .advert-slot__wrapper,
     .advert-config--mobile .advert-slot--mpu--mobile .advert-slot__wrapper {
       margin: 0 auto; }
   @media (min-width: 375px) and (max-width: 480px) {
@@ -487,7 +436,7 @@ Display a large image of contributor in background of container.
     .cutout .cutout__container {
       min-height: 320px;
       background-size: contain; } }
-  @media all and (min-width: 68.75em) {
+  @media all and (min-width: 75em) {
     .cutout .cutout__container {
       background-position: right 0 bottom 0;
       margin-left: 240px;
@@ -830,7 +779,7 @@ Display an article's headline.
     .headline {
       font-size: 4.8rem;
       line-height: 4.8rem; } }
-  @media all and (min-width: 68.75em) {
+  @media all and (min-width: 75em) {
     .headline {
       font-size: 3.6rem;
       line-height: 3.6rem; } }
@@ -875,7 +824,7 @@ Can also be displayed with the caption initially hidden:
 </div>
 ```
 */
-@media all and (min-width: 68.75em) {
+@media all and (min-width: 75em) {
   .main-media {
     padding-top: 12px; }
     .main-media figure.element {
@@ -988,7 +937,7 @@ Display an article's meta information.
     .meta {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
-  @media all and (min-width: 68.75em) {
+  @media all and (min-width: 75em) {
     .meta {
       border: none; } }
   .meta .avatar--author {
@@ -997,7 +946,7 @@ Display an article's meta information.
 
 .meta__misc {
   padding: 8px 12px 24px 12px; }
-  @media all and (min-width: 68.75em) {
+  @media all and (min-width: 75em) {
     .meta__misc {
       margin: 0 auto 0 240px;
       width: 620px; } }
@@ -1113,7 +1062,7 @@ With live indicator:
     .section {
       font-size: 2.4rem;
       line-height: 2.4rem; } }
-  @media all and (min-width: 68.75em) {
+  @media all and (min-width: 75em) {
     .section {
       font-size: 1.8rem;
       line-height: 1.8rem; } }
@@ -1139,7 +1088,7 @@ With live indicator:
     .section__live {
       font-size: 2.4rem;
       line-height: 2.4rem; } }
-  @media all and (min-width: 68.75em) {
+  @media all and (min-width: 75em) {
     .section__live {
       font-size: 1.8rem;
       line-height: 1.8rem; } }
@@ -1169,7 +1118,7 @@ With live indicator:
       .section__container .section {
         font-size: 2.4rem;
         line-height: 2.4rem; } }
-    @media all and (min-width: 68.75em) {
+    @media all and (min-width: 75em) {
       .section__container .section {
         font-size: 1.8rem;
         line-height: 1.8rem; } }
@@ -1192,7 +1141,7 @@ With live indicator:
       .section__container .content__labels {
         font-size: 2.4rem;
         line-height: 2.4rem; } }
-    @media all and (min-width: 68.75em) {
+    @media all and (min-width: 75em) {
       .section__container .content__labels {
         font-size: 1.8rem;
         line-height: 1.8rem; } }
@@ -1213,7 +1162,7 @@ With live indicator:
       .section__container .content__series-label {
         font-size: 2.4rem;
         line-height: 2.4rem; } }
-    @media all and (min-width: 68.75em) {
+    @media all and (min-width: 75em) {
       .section__container .content__series-label {
         font-size: 1.8rem;
         line-height: 1.8rem; } }
@@ -1222,7 +1171,7 @@ With live indicator:
   display: table;
   width: 100%;
   height: 100%; }
-  @media all and (min-width: 68.75em) {
+  @media all and (min-width: 75em) {
     .content__container {
       margin: 0 auto 0 240px;
       padding-left: 0;
@@ -1234,7 +1183,7 @@ With live indicator:
     padding: 7px 12px 12px 12px;
     height: 100%;
     width: 100%; }
-    @media all and (min-width: 68.75em) {
+    @media all and (min-width: 75em) {
       .content__container .content__labels__container {
         padding-left: 0; } }
 
@@ -1257,7 +1206,7 @@ With live indicator:
   @media all and (min-width: 56.25em) {
     .comment-count {
       width: 24.21053%; } }
-  @media all and (min-width: 68.75em) {
+  @media all and (min-width: 75em) {
     .comment-count {
       padding-right: 0; } }
   .meta .comment-count {
@@ -1462,6 +1411,10 @@ Displays a cricket header.
   border-bottom: 0;
   border-top: 1px dotted grey;
   padding-top: 12px; }
+  @media all and (min-width: 75em) {
+    .cricket .tone--liveBlog.is-live .article__header--cricket,
+    .cricket .tone--deadBlog .article__header--cricket {
+      border: 0; } }
   .cricket .tone--liveBlog.is-live .article__header--cricket .meta__pubdate,
   .cricket .tone--liveBlog.is-live .article__header--cricket a,
   .cricket .tone--liveBlog.is-live .article__header--cricket .byline,
@@ -2445,6 +2398,11 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
   @media all and (max-width: 28.12em) {
     .article {
       border-top-width: 0; } }
+  @media all and (min-width: 75em) {
+    .article {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1200px; } }
   .android .article {
     border-top-width: 0; }
 
@@ -2460,7 +2418,7 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
   margin-bottom: 5px; }
 .article__header .headline {
   padding: 0px 12px 30px 12px; }
-  @media all and (min-width: 68.75em) {
+  @media all and (min-width: 75em) {
     .article__header .headline {
       margin: 0 auto 0 240px;
       padding-left: 0;
@@ -2468,7 +2426,7 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
       width: 620px; } }
 .article__header .standfirst {
   padding: 6px 12px 18px 12px; }
-  @media all and (min-width: 68.75em) {
+  @media all and (min-width: 75em) {
     .article__header .standfirst {
       margin: 0 auto 0 240px;
       padding-left: 0;
@@ -2496,7 +2454,7 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
   @media all and (min-width: 56.25em) {
     .article__body .advert-slot--mpu {
       margin-right: -30.52632%; } }
-  @media all and (min-width: 68.75em) {
+  @media all and (min-width: 75em) {
     .article__body .advert-slot--mpu {
       margin-right: -320px; } }
   @media all and (max-width: 34.94em) {
@@ -2574,6 +2532,11 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
       position: relative; }
     .article--liveblog .article__header .comment-count__label {
       display: none; }
+  @media all and (min-width: 75em) {
+    .article--liveblog .main-media {
+      padding: 12px 0px; }
+      .article--liveblog .main-media .element {
+        position: relative; } }
   .article--liveblog .tags {
     border-top: 0; }
     @media all and (min-width: 40.63em) and (max-width: 56.24em) {
@@ -2582,6 +2545,9 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
     @media all and (min-width: 56.25em) {
       .article--liveblog .tags {
         padding-left: 31.57895%; } }
+    @media all and (min-width: 75em) {
+      .article--liveblog .tags {
+        padding-left: 0; } }
   .article--liveblog .article__body--liveblog__pinned .element {
     margin: 12px 0px; }
   .article--liveblog .alerts {
@@ -2607,7 +2573,7 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
     .article--feature .article__body,
     .article--audio .article__body {
       padding-right: 24.21053%; } }
-  @media all and (min-width: 68.75em) {
+  @media all and (min-width: 75em) {
     .article--standard .article__body,
     .article--comment .article__body,
     .article--feature .article__body,
@@ -2645,7 +2611,7 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
       .article--audio .article__body .element-video,
       .article--audio .article__body .element-placeholder {
         width: 135%; } }
-    @media all and (min-width: 68.75em) {
+    @media all and (min-width: 75em) {
       .article--standard .article__body .figure-wide,
       .article--standard .article__body .element-video,
       .article--standard .article__body .element-placeholder,
@@ -2743,7 +2709,7 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
   .article--comment .article__header .article__comments,
   body:not(.is-live) .article--liveblog .article__header .article__comments {
     width: 24.21053%; } }
-@media all and (min-width: 68.75em) {
+@media all and (min-width: 75em) {
   .article--standard .article__header .headline,
   .article--standard .article__header .standfirst,
   .article--comment .article__header .headline,
@@ -3203,6 +3169,20 @@ body[data-content-type="gallery"] .article--visual .content__labels:first-child:
 body[data-content-type="video"] .article--visual .content__labels:first-child::before {
   content: '\e043'; }
 
+@media all and (min-width: 75em) {
+  .cricket {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px; }
+    .cricket .tabs {
+      padding-left: 12px;
+      width: 31.57895%; }
+      .cricket .tabs .inline-list__item {
+        float: left;
+        width: 50%; }
+    .cricket .meta__misc {
+      margin-left: 0; } }
+
 .cricket--pre-match .tabs__list-item--scorecard, .cricket--pre-match
 .cricket__tabpanel--stats {
   display: none; }
@@ -3264,19 +3244,19 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
       font-weight: 600; }
     .tone--analysis .article__header .meta .meta__pubdate {
       color: #999; }
-  @media all and (min-width: 68.75em) {
+  @media all and (min-width: 75em) {
     .tone--analysis .article__header .meta__misc {
       padding-left: 0;
       padding-right: 0; } }
   .tone--analysis .article__header .main-media__caption {
     background-color: #fff; }
-  @media all and (min-width: 68.75em) {
+  @media all and (min-width: 75em) {
     .tone--analysis .article__header .sponsorship {
       border-bottom: 0; } }
 
-.tone--comment a {
+.tone--comment .article a {
   color: #e6711b; }
-  .tone--comment a:active {
+  .tone--comment .article a:active {
     color: #f39f33; }
 .tone--comment .section__container {
   color: #767676; }
@@ -3300,6 +3280,14 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   background-color: #e6711b; }
 .tone--comment .touchpoint--primary:active .touchpoint__button {
   background-color: #f39f33; }
+.tone--comment .touchpoint--primary .touchpoint__label {
+  color: #e6711b; }
+.tone--comment .touchpoint--primary:active .touchpoint__label {
+  color: #f39f33; }
+.tone--comment .comments__viewmore .comments__viewmore--label {
+  color: #e6711b; }
+.tone--comment .comments__viewmore:active .comments__viewmore--label {
+  color: #f39f33; }
 .tone--comment .article--comment {
   background-color: #e3e1dc;
   border-top-color: #f39f33; }
@@ -3457,7 +3445,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
       .tone--deadBlog .article__header .section {
         font-size: 2.4rem;
         line-height: 2.4rem; } }
-    @media all and (min-width: 68.75em) {
+    @media all and (min-width: 75em) {
       .tone--deadBlog .article__header .section {
         font-size: 1.8rem;
         line-height: 1.8rem; } }
@@ -3568,7 +3556,11 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
       color: #fff; }
   .tone--editorial .article__header .main-media__caption,
   .tone--editorial .article__header .sponsorship {
-    background-color: #fff; }
+    background-color: #efefec; }
+    @media all and (min-width: 75em) {
+      .tone--editorial .article__header .main-media__caption,
+      .tone--editorial .article__header .sponsorship {
+        background-color: shade-7; } }
 .tone--editorial .article__body > .prose > p:first-of-type:first-letter {
   color: #005689;
   font-family: "Guardian Egyptian Web", Georgia, serif;
@@ -3766,7 +3758,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     .tone--feature3 .article--feature .article__header .standfirst strong {
       color: #fff;
       font-weight: normal; }
-    @media all and (min-width: 68.75em) {
+    @media all and (min-width: 75em) {
       .tone--feature1 .article--feature .article__header .standfirst,
       .tone--feature2 .article--feature .article__header .standfirst,
       .tone--feature3 .article--feature .article__header .standfirst {
@@ -3825,13 +3817,13 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--feature3 .article--feature .meta,
   .tone--feature3 .article--feature .meta__pubdate {
     color: rgba(255, 255, 255, 0.8); }
-  @media all and (min-width: 68.75em) {
+  @media all and (min-width: 75em) {
     .tone--feature1 .article--feature .meta__misc,
     .tone--feature2 .article--feature .meta__misc,
     .tone--feature3 .article--feature .meta__misc {
       padding-left: 0;
       padding-right: 0; } }
-  @media all and (min-width: 68.75em) {
+  @media all and (min-width: 75em) {
     .tone--feature1 .article--feature .sponsorship,
     .tone--feature2 .article--feature .sponsorship,
     .tone--feature3 .article--feature .sponsorship {
@@ -3859,18 +3851,37 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   color: #fff; }
 .tone--liveBlog.is-live a.touchpoint:active {
   color: #cc2b12; }
-.tone--liveBlog.is-live .witness {
+.tone--liveBlog.is-live .witness,
+.tone--liveBlog.is-live .alerts {
   margin-top: 12px; }
   @media all and (min-width: 40.63em) and (max-width: 56.24em) {
-    .tone--liveBlog.is-live .witness {
+    .tone--liveBlog.is-live .witness,
+    .tone--liveBlog.is-live .alerts {
       margin-left: 33.80282%; } }
   @media all and (min-width: 56.25em) {
-    .tone--liveBlog.is-live .witness {
+    .tone--liveBlog.is-live .witness,
+    .tone--liveBlog.is-live .alerts {
       margin-left: 31.57895%; } }
+  @media all and (min-width: 75em) {
+    .tone--liveBlog.is-live .witness,
+    .tone--liveBlog.is-live .alerts {
+      margin-left: 240px; } }
 .tone--liveBlog.is-live #comments .touchpoint--primary .touchpoint__button {
   background-color: #b51800; }
 .tone--liveBlog.is-live #comments .touchpoint--primary:active .touchpoint__button {
   background-color: #cc2b12; }
+.tone--liveBlog.is-live .comments .touchpoint--primary .touchpoint__button {
+  background-color: #b51800; }
+.tone--liveBlog.is-live .comments .touchpoint--primary:active .touchpoint__button {
+  background-color: #cc2b12; }
+.tone--liveBlog.is-live .comments .touchpoint--primary .touchpoint__label {
+  color: #b51800; }
+.tone--liveBlog.is-live .comments .touchpoint--primary:active .touchpoint__label {
+  color: #cc2b12; }
+.tone--liveBlog.is-live .comments__viewmore .comments__viewmore--label {
+  color: #b51800; }
+.tone--liveBlog.is-live .comments__viewmore:active .comments__viewmore--label {
+  color: #cc2b12; }
 .tone--liveBlog.is-live .alerts:active,
 .tone--liveBlog.is-live .alerts.following {
   background-color: #b51800;
@@ -3907,6 +3918,9 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     @media all and (min-width: 56.25em) {
       .tone--liveBlog.is-live .article__header .section {
         padding-left: 31.57895%; } }
+    @media all and (min-width: 75em) {
+      .tone--liveBlog.is-live .article__header .section {
+        padding-left: 0; } }
   .tone--liveBlog.is-live .article__header .section__live {
     display: block; }
   @media all and (min-width: 40.63em) and (max-width: 56.24em) {
@@ -3917,6 +3931,10 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     .tone--liveBlog.is-live .article__header .headline,
     .tone--liveBlog.is-live .article__header .standfirst {
       margin-left: 30.52632%; } }
+  @media all and (min-width: 75em) {
+    .tone--liveBlog.is-live .article__header .headline,
+    .tone--liveBlog.is-live .article__header .standfirst {
+      margin-left: 240px; } }
   .tone--liveBlog.is-live .article__header .standfirst {
     color: rgba(255, 255, 255, 0.8); }
     .tone--liveBlog.is-live .article__header .standfirst a {
@@ -3944,14 +3962,13 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     margin: 0; }
     @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .tone--liveBlog.is-live .article--liveblog .meta {
-        padding-left: 32.39437%; }
-        .tone--liveBlog.is-live .article--liveblog .meta .alerts {
-          width: 32.39437%; } }
+        padding-left: 32.39437%; } }
     @media all and (min-width: 56.25em) {
       .tone--liveBlog.is-live .article--liveblog .meta {
-        padding-left: 30.52632%; }
-        .tone--liveBlog.is-live .article--liveblog .meta .alerts {
-          width: 30.52632%; } }
+        padding-left: 30.52632%; } }
+    @media all and (min-width: 75em) {
+      .tone--liveBlog.is-live .article--liveblog .meta {
+        padding-left: 0; } }
   .tone--liveBlog.is-live .article--liveblog .meta__pubdate {
     color: rgba(255, 255, 255, 0.8); }
   .tone--liveBlog.is-live .article--liveblog .comment-count {
@@ -4128,9 +4145,9 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     .tone--media .article--visual .aside-witness__sponsor .aside-witness__sponsor__graphic__logo {
       fill: #ffe600; }
 
-.tone--news a:not(.witness__button):not(.tell-me-when):not(.alerts) {
+.tone--news .article a:not(.witness__button):not(.tell-me-when):not(.alerts) {
   color: #005689; }
-  .tone--news a:not(.witness__button):not(.tell-me-when):not(.alerts):active {
+  .tone--news .article a:not(.witness__button):not(.tell-me-when):not(.alerts):active {
     color: #4bc6df; }
 .tone--news .article__header {
   background-color: #fff; }
@@ -4166,18 +4183,18 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
       color: #005689; }
     .tone--news .article__header .meta .meta__pubdate {
       color: #999; }
-  @media all and (min-width: 68.75em) {
+  @media all and (min-width: 75em) {
     .tone--news .article__header .meta__misc {
       padding-left: 0;
       padding-right: 0; } }
-  .tone--news .article__header .main-media {
-    background: #fff;
-    border-top: 1px dotted rgba(153, 153, 153, 0.4); }
   .tone--news .article__header .main-media__caption {
     background-color: #fff; }
-  @media all and (min-width: 68.75em) {
+  @media all and (min-width: 75em) {
     .tone--news .article__header .sponsorship {
       border-bottom: 0; } }
+.tone--news:not(.is_advertising) .main-media {
+  background: #fff;
+  border-top: 1px dotted rgba(153, 153, 153, 0.4); }
 .tone--news.is_advertising a.alerts,
 .tone--news.is_advertising a.alerts.following:active {
   border-color: #333;
@@ -4240,7 +4257,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   color: rgba(255, 255, 255, 0.8); }
 .tone--podcast .meta {
   border-top: 1px rgba(255, 255, 255, 0.4) dotted; }
-@media all and (min-width: 68.75em) {
+@media all and (min-width: 75em) {
   .tone--podcast .meta__misc {
     padding-left: 0;
     padding-right: 0; } }
@@ -4300,18 +4317,18 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
       color: #ffce4b; }
     .tone--review .article__header .meta .meta__pubdate {
       color: #fff; }
-  @media all and (min-width: 68.75em) {
+  @media all and (min-width: 75em) {
     .tone--review .article__header .meta__misc {
       padding-left: 0;
       padding-right: 0; } }
   .tone--review .article__header .main-media__caption,
   .tone--review .article__header .sponsorship {
     background-color: #fff; }
-    @media all and (min-width: 68.75em) {
+    @media all and (min-width: 75em) {
       .tone--review .article__header .main-media__caption,
       .tone--review .article__header .sponsorship {
         border-bottom: 0; } }
-  @media all and (min-width: 68.75em) {
+  @media all and (min-width: 75em) {
     .tone--review .article__header .main-media {
       background-color: #fff; } }
 .tone--review .alerts:active,

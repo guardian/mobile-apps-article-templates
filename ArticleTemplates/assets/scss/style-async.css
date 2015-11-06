@@ -409,7 +409,7 @@ Display a titled container for comments, cards or other components that should b
 @media all and (max-width: 28.12em) {
   .container--comments .container__header .touchpoint__label {
     display: none; } }
-@media all and (min-width: 68.75em) {
+@media all and (min-width: 75em) {
   .container--comments {
     margin: 0; }
     .container--comments .container__header {
@@ -469,6 +469,173 @@ Display a titled container for comments, cards or other components that should b
 
 /*doc
 ---
+title: Comments
+name: comments
+category: Modules
+---
+Comments Module
+
+```html_example
+<section class="comments comments-56">
+    <div class="comments__wrapper">
+        <div class="comments__header">
+            <h2 class="comments__title">
+                <a class="comments__link" href="x-gu://showcomments">
+                    Comments <span class="comments__link--meta">56</span>
+                </a>
+            </h2>
+            <span class="touchpoint comments-closed-label" id="comments-module-closed-label">
+                <span class="touchpoint__label">Comments are closed</span>
+            </span>
+             <a class="comments__link touchpoint touchpoint--primary" href="x-gu://leavecomment">
+                <span class="touchpoint__label">Post a comment</span>
+                <span class="touchpoint__button" data-icon="&#xe03d;" aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="comments__container">
+            <div class="comments__block comments__block--empty block">
+                <div class="prose resizable">
+                    <p>
+                        Open for comments. <a href="x-gu://leavecomment">Be the first to join the debate</a>
+                    </p>
+                </div>
+            </div>
+            <div class="comments__block comments__block--failed block">
+                <div class="prose resizable">
+                    <p>
+                        Comments are currently unavailable. Please try again later.
+                    </p>
+                </div>
+            </div>
+            <div class="comments__block comments__block--loading block loading" style="display:none;">
+                <img src="../../ArticleTemplates/assets/img/loading.gif" alt="Loading…">
+            </div>
+            <div class="block block--discussion-thread block--discussion-thread--checked">
+                SEE blocks/_comment
+            </div>
+        </div>
+        <div class="comments__footer">
+            <div class="container__action container__action--view-more" id="comments-module-view-more">
+                <a class="touchpoint touchpoint--secondary" id="comments-module-view-more-link" href="x-gu://showcomments">
+                <span class="touchpoint__label" id="comments-module-view-more-label">View more</span>
+                <span class="touchpoint__button" id="comments-module-view-more-button" data-icon="" aria-hidden="true"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+```
+*/
+.comments {
+  margin: 0px 0px 24px 0px;
+  border-top: 2px solid #333; }
+  @media all and (min-width: 75em) {
+    .comments__wrapper {
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 24px;
+      max-width: 1200px; } }
+  .comments__header {
+    position: relative;
+    margin: 6px 12px 12px 12px; }
+    @media all and (max-width: 40.62em) {
+      .comments__header {
+        font: 600 2.4rem/3.6rem "Guardian Egyptian Web", Georgia, serif; } }
+    @media all and (min-width: 40.63em) {
+      .comments__header {
+        font: 600 2.7rem/3.9rem "Guardian Egyptian Web", Georgia, serif; } }
+    @media all and (min-width: 56.25em) {
+      .comments__header {
+        margin: 12px; } }
+    @media all and (min-width: 75em) {
+      .comments__header {
+        float: left;
+        margin: 0 20px;
+        width: 200px; } }
+  @media all and (min-width: 75em) {
+    .comments__title, .comments__label, .comments__post {
+      display: block;
+      width: 200px; } }
+  .comments__title {
+    font-family: "Guardian Egyptian Web", Georgia, serif;
+    font-weight: 600; }
+    @media all and (max-width: 40.62em) {
+      .comments__title {
+        font-size: 2.4rem;
+        line-height: 3.6rem; } }
+    @media all and (min-width: 40.63em) {
+      .comments__title {
+        font-size: 2.7rem;
+        line-height: 3.9rem; } }
+    @media all and (min-width: 75em) {
+      .comments__title {
+        font-size: 2.3rem;
+        line-height: 2.3rem;
+        margin-bottom: 15px; } }
+  .comments__link, .comments__link:active {
+    color: #333; }
+  .comments__count {
+    color: #999; }
+  .comments__closed {
+    font-family: "Guardian Agate Sans 1 Web", sans-serif;
+    font-weight: bold;
+    color: #767676;
+    display: none; }
+    @media all and (max-width: 40.62em) {
+      .comments__closed {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.63em) {
+      .comments__closed {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
+    .comments--closed .comments__closed {
+      display: block; }
+  @media all and (max-width: 28.12em) {
+    .comments__post .touchpoint__label {
+      display: none; } }
+  @media all and (max-width: 74.99em) {
+    .comments__post {
+      position: absolute;
+      top: 0;
+      right: 0; } }
+  @media all and (min-width: 75em) {
+    .comments__post {
+      margin-top: 15px; } }
+  .comments__post .touchpoint__label {
+    padding-left: 0; }
+  .comments__container {
+    overflow: hidden;
+    padding: 0;
+    margin-top: 24px; }
+    @media all and (min-width: 75em) {
+      .comments__container {
+        margin-left: 240px;
+        margin-top: 20px;
+        width: 858px; } }
+  .comments__block {
+    font-family: "Guardian Agate Sans 1 Web", sans-serif; }
+    @media all and (min-width: 75em) {
+      .comments__block {
+        margin-top: 0; } }
+    .comments__block--empty, .comments__block--failed {
+      display: none; }
+    .comments-0 .comments__block--empty {
+      display: block; }
+    .comments-has-failed .comments__block--failed {
+      display: block; }
+  .comments__footer {
+    overflow: hidden;
+    margin: 12px; }
+    @media all and (min-width: 75em) {
+      .comments__footer {
+        margin-left: 240px;
+        width: 858px; } }
+  .comments__viewmore {
+    float: right; }
+
+/*doc
+---
 title: Figure
 name: figure
 category: Modules
@@ -523,7 +690,7 @@ figure figcaption {
   margin: 6px 13px 0 0; }
   .prose .figure--thumbnail {
     margin-top: 6px; }
-    @media all and (min-width: 68.75em) {
+    @media all and (min-width: 75em) {
       .prose .figure--thumbnail {
         margin-left: -80px; } }
 
@@ -575,7 +742,7 @@ figure figcaption {
           padding-bottom: 12px; }
         .figure--thumbnail-with-caption figcaption .element-image__credit {
           position: static; } }
-  @media all and (min-width: 68.75em) {
+  @media all and (min-width: 75em) {
     .prose .figure--thumbnail-with-caption {
       max-width: 200px;
       margin: 0;
@@ -829,7 +996,7 @@ Display which keywords an article has been tagged with.
     .tags {
       font-size: 1.6rem;
       line-height: 2.2rem; } }
-  @media all and (min-width: 68.75em) {
+  @media all and (min-width: 75em) {
     .tags {
       padding-left: 0;
       padding-right: 0; } }
@@ -837,7 +1004,7 @@ Display which keywords an article has been tagged with.
     display: none; }
   .tags .show-tags {
     display: inline-block; }
-  @media all and (min-width: 68.75em) {
+  @media all and (min-width: 75em) {
     .tags .inline-list {
       margin-left: 232px;
       width: 940px; } }
@@ -981,17 +1148,18 @@ Related Content / More on this story section
 .related-content {
   margin: 0px 0px 24px 0px;
   border-top: 2px solid #333; }
-  @media all and (min-width: 68.75em) {
-    .related-content > div {
-      margin-left: 240px;
-      margin-top: 24px;
-      width: 940px; } }
   .related-content .block--failed {
     display: none; }
   .related-content--has-failed .block--failed {
     display: block; }
   .related-content--has-failed .loading--related {
     display: none; }
+  @media all and (min-width: 75em) {
+    .related-content__wrapper {
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 24px;
+      max-width: 1200px; } }
   .related-content__header {
     margin: 6px 12px 12px 12px; }
     @media all and (max-width: 40.62em) {
@@ -1002,20 +1170,21 @@ Related Content / More on this story section
         font: 600 2.7rem/3.9rem "Guardian Egyptian Web", Georgia, serif; } }
     @media all and (min-width: 40.63em) {
       .related-content__header {
-        margin: 12px 0px; } }
-    @media all and (min-width: 68.75em) {
+        margin: 12px; } }
+    @media all and (min-width: 75em) {
       .related-content__header {
         float: left;
         font-size: 2.3rem;
-        line-height: 3rem;
-        margin: 20px;
+        line-height: 2.3rem;
+        margin: 0 20px;
         width: 200px; } }
   .related-content__container {
     overflow: hidden;
     padding: 0px 12px; }
-    @media all and (min-width: 40.63em) {
+    @media all and (min-width: 75em) {
       .related-content__container {
-        padding: 0; } }
+        padding: 0;
+        width: 940px; } }
   .related-content__list--items-1 {
     width: 140px; }
     @media all and (min-width: 40.63em) and (max-width: 56.24em) {
@@ -1283,8 +1452,8 @@ Related Content / More on this story section
     .related-content__card--media .related-content__comments {
       border-color: rgba(220, 218, 213, 0.34); }
     .related-content__card--media .related-content__duration {
-      display: block;
       color: #fb0;
+      display: block;
       font-weight: bold;
       border: none;
       position: absolute;
@@ -1293,6 +1462,14 @@ Related Content / More on this story section
       padding: 0;
       line-height: 20px;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); }
+      @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+        .related-content__card--media .related-content__duration {
+          bottom: 10.4px;
+          left: 52px; } }
+      @media all and (min-width: 56.25em) {
+        .related-content__card--media .related-content__duration {
+          bottom: 12px;
+          left: 60px; } }
     .related-content__card--media .touchpoint__button {
       background-color: #fb0 !important;
       color: #333 !important; }
@@ -1311,16 +1488,24 @@ Related Content / More on this story section
     .related-content__card--podcast .related-content__comments {
       border-color: #fff; }
     .related-content__card--podcast .related-content__duration {
-      display: block;
       color: #fff;
+      display: block;
       font-weight: bold;
       border: none;
       position: absolute;
       bottom: 8px;
-      left: 6px;
+      left: 40px;
       padding: 0;
       line-height: 20px;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); }
+      @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+        .related-content__card--podcast .related-content__duration {
+          bottom: 10.4px;
+          left: 52px; } }
+      @media all and (min-width: 56.25em) {
+        .related-content__card--podcast .related-content__duration {
+          bottom: 12px;
+          left: 60px; } }
   .related-content__card--review {
     background-color: #615b52;
     border-color: #ffce4b; }
@@ -1404,7 +1589,7 @@ The 'sponsored by/supported by' section
   -webkit-align-items: flex-start;
   border-bottom: 1px dotted #b5b3ae;
   font-size: 1.4rem; }
-  @media all and (min-width: 68.75em) {
+  @media all and (min-width: 75em) {
     .sponsorship {
       padding-left: 240px; } }
   .gallery ~ .sponsorship {
@@ -1600,6 +1785,10 @@ Provide a summary of events:
 </div>
 ```
 */
+@media all and (min-width: 75em) {
+  [class*="block--live-"] {
+    padding-left: 20px;
+    padding-right: 20px; } }
 [class*="block--live-"] .block__time {
   color: #767676;
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
@@ -1615,6 +1804,9 @@ Provide a summary of events:
   @media all and (min-width: 56.25em) {
     [class*="block--live-"] .block__time {
       width: 31.57895%; } }
+  @media all and (min-width: 75em) {
+    [class*="block--live-"] .block__time {
+      width: 220px; } }
 @media all and (min-width: 40.63em) {
   [class*="block--live-"] .block__body {
     float: left; }
@@ -1634,6 +1826,9 @@ Provide a summary of events:
 @media all and (min-width: 56.25em) {
   [class*="block--live-"] .block__body {
     width: 68.42105%; } }
+@media all and (min-width: 75em) {
+  [class*="block--live-"] .block__body {
+    width: 620px; } }
 [class*="block--live-"] .block__updated {
   color: #999;
   font-family: "Guardian Agate Sans 1 Web", sans-serif; }
@@ -2157,6 +2352,10 @@ Default styling no JavaScript enhancement:
   .font-size-6 .element-rich-link, .font-size-7 .element-rich-link, .font-size-8 .element-rich-link, .font-size-9 .element-rich-link, .font-size-10 .element-rich-link {
     width: 100%;
     margin-bottom: 15px; } }
+@media all and (min-width: 75em) {
+  .element-rich-link {
+    margin: 0 0 0 -220px;
+    max-width: 200px; } }
 .element-rich-link span {
   display: none; }
 .element-rich-link a:before {
@@ -2462,7 +2661,7 @@ Adds typographic styling, typically to content fetched from the Guardian Content
       max-width: 280px;
       margin-right: 12px;
       float: left; } }
-  @media all and (min-width: 68.75em) {
+  @media all and (min-width: 75em) {
     .prose .element-pullquote {
       margin: 0;
       margin-left: -220px;
@@ -3934,7 +4133,7 @@ Display a Guardian Witness submission.
       .discussion__header .headline {
         font-size: 3.6rem;
         line-height: 3.6rem; } }
-    @media all and (min-width: 68.75em) {
+    @media all and (min-width: 75em) {
       .discussion__header .headline {
         font-size: 2.7rem;
         line-height: 2.7rem; } }

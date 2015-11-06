@@ -20,7 +20,7 @@ define([
                         if (!html) {
                             modules.articleCardsFailed();
                         } else {
-                            $('.related-content').html(html);
+                            $('.related-content__wrapper').html(html);
 
                             // setup the snap to grid functionality 
                             modules.snapToGrid('.related-content__list');

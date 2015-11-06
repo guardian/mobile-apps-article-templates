@@ -1,10 +1,12 @@
 .tone--news {
     //TODO: would be nice to get rid of not (as hard to overide as tones get loaded in last)
-    a:not(.witness__button):not(.tell-me-when):not(.alerts) {
-        color: color(tone-news);
+    .article {
+        a:not(.witness__button):not(.tell-me-when):not(.alerts) {
+            color: color(tone-news);
 
-        &:active {
-            color: color(tone-news-accent);
+            &:active {
+                color: color(tone-news-accent);
+            }
         }
     }
 
@@ -67,11 +69,6 @@
             }
         }
 
-        .main-media {
-            background: color(shade-7);
-            border-top: 1px dotted rgba(color(shade-3), .4);
-        }
-
         .main-media__caption {
             background-color: color(shade-7);
         }
@@ -83,7 +80,12 @@
         }
     }
 
-    &.is_advertising{
+    &:not(.is_advertising) .main-media {
+        background: color(shade-7);
+        border-top: 1px dotted rgba(color(shade-3), .4);
+    }
+
+    &.is_advertising {
         a.alerts,
         a.alerts.following:active {
             border-color: color(shade-1);
