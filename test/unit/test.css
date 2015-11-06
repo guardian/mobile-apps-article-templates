@@ -5415,24 +5415,7 @@
     height: 100vh;
     position: relative;
     background-position: center center;
-    background-size: cover;
-    /*
-    				@include mq($from: col2){
-    					height: 1023px;
-    				}
-    				
-    				@include mq($from: col3){
-    					height: 655px;
-    				}
-    				
-    				@include mq($to: iphone4){
-    					height: 480px;
-    				}
-    				
-    				@include mq(){
-    					
-    				}
-    */ }
+    background-size: cover; }
   #sandbox .immersive .article--feature .article__header .section,
   #sandbox .immersive .article--feature .article__header .byline {
     color: #fff; }
@@ -5453,8 +5436,12 @@
         font-size: 3.5556em !important;
         font-weight: 100;
         line-height: .9375;
-        bottom: 101px;
+        bottom: 150px;
         padding-top: 12px; } }
+    #sandbox .immersive .article--feature .article__header .headline .series__title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      display: block; }
   #sandbox .immersive .article--feature .article__header .standfirst {
     color: #fff; }
     #sandbox .immersive .article--feature .article__header .standfirst span {
@@ -5465,6 +5452,12 @@
     #sandbox .immersive .article--feature .article__header .standfirst a {
       color: #f7acbb;
       text-decoration: underline; }
+    #sandbox .immersive .article--feature .article__header .standfirst .words {
+      color: white; }
+    #sandbox .immersive .article--feature .article__header .standfirst .section__rule {
+      margin: 0px 0px 0px 0px; }
+    #sandbox .immersive .article--feature .article__header .standfirst p:first-of-type {
+      margin-bottom: 12px; }
     @media all and (min-width: 40.63em) {
       #sandbox .immersive .article--feature .article__header .standfirst {
         display: none; } }
@@ -5475,42 +5468,36 @@
     position: absolute;
     bottom: 0px;
     background-color: rgba(0, 0, 0, 0.3);
-    padding: 0px 0px 24px 12px; }
+    padding: 0px 0px 12px 12px; }
     @media all and (max-width: 28.12em) {
       #sandbox .immersive .article--feature .article__header .standfirst__tablet {
         display: none; } }
     @media all and (min-width: 40.63em) {
       #sandbox .immersive .article--feature .article__header .standfirst__tablet {
         display: block; } }
+    #sandbox .immersive .article--feature .article__header .standfirst__tablet .section__rule {
+      margin: 0px 0px -6px 0px; }
+    #sandbox .immersive .article--feature .article__header .standfirst__tablet .words {
+      color: white; }
     #sandbox .immersive .article--feature .article__header .standfirst__tablet p {
       color: white; }
+      #sandbox .immersive .article--feature .article__header .standfirst__tablet p:first-of-type {
+        margin-bottom: 12px; }
       #sandbox .immersive .article--feature .article__header .standfirst__tablet p a {
         color: #b82266; }
-  #sandbox .immersive .article--feature .article__header .section__label {
-    font-family: "Guardian Egyptian Web", Georgia, serif;
-    background-color: none;
-    padding: 6px 0px 24px 12px;
-    font-size: 1.4rem; }
-    #sandbox .immersive .article--feature .article__header .section__label a {
-      color: #b82266;
-      font-weight: 600;
-      font-size: 1.6rem; }
-      @media all and (min-width: 40.63em) {
-        #sandbox .immersive .article--feature .article__header .section__label a {
-          font-size: 1.8rem; } }
-    #sandbox .immersive .article--feature .article__header .section__label .time__stamp {
-      font-family: 'Guardian Agate Sans 1 Web';
-      color: #767676;
-      font-size: 1.6rem;
-      line-height: 1.4rem; }
+  #sandbox .immersive .article--feature .article__header .immersive__meta {
+    font-family: 'Guardian Agate Sans 1 Web';
+    color: #767676;
+    font-size: 1.6rem;
+    line-height: 1.4rem;
+    margin: 0px 12px 24px 12px; }
+    #sandbox .immersive .article--feature .article__header .immersive__meta .comment-count {
+      padding: 12px 12px 6px 0px !important; }
   #sandbox .immersive .article--feature .article__header .immersive__byline {
     background-color: none;
-    padding: 6px 0px 24px 12px;
-    border-top: 1px solid #dcdad5; }
-    #sandbox .immersive .article--feature .article__header .immersive__byline .words {
-      color: #767676; }
+    padding: 6px 0px 0px 0px; }
     #sandbox .immersive .article--feature .article__header .immersive__byline a {
-      color: #b82266; }
+      color: #f7acbb; }
     #sandbox .immersive .article--feature .article__header .immersive__byline a:hover {
       text-decoration: underline; }
     #sandbox .immersive .article--feature .article__header .immersive__byline p:nth-child(2) {
@@ -5519,7 +5506,7 @@
     height: 10px;
     border-bottom: 2px solid #dcdad5;
     width: 100px;
-    margin: 0px 0px -6px 12px; }
+    margin: 0px 0px 0px 12px; }
   #sandbox .immersive .article--feature .article__header .review-rating {
     color: rgba(255, 255, 255, 0.4); }
   #sandbox .immersive .article--feature .article__header .review-rating--1 .icon:nth-child(-n+1),
@@ -5528,19 +5515,24 @@
   #sandbox .immersive .article--feature .article__header .review-rating--4 .icon:nth-child(-n+4),
   #sandbox .immersive .article--feature .article__header .review-rating--5 .icon:nth-child(-n+5) {
     color: #fff; }
-  #sandbox .immersive .article--feature .prose h2.title--image {
+  #sandbox .immersive .article--feature .prose .title--image {
     background-color: rgba(0, 0, 0, 0.6);
-    padding: 3px 0px 12px 12px;
+    padding: 3px 0px 24px 12px;
     margin-left: -12px;
     width: 108%;
-    margin-top: -67px;
-    margin-bottom: 36px;
+    margin-top: -53px;
+    margin-bottom: 24px;
     z-index: 400000;
     position: relative;
-    font-size: 2.4rem;
+    font-size: 2rem;
     line-height: 2.6rem;
     font-weight: 200;
     color: white; }
+    @media all and (min-width: 40.63em) {
+      #sandbox .immersive .article--feature .prose .title--image {
+        padding: 3px 0px 34px 12px;
+        font-size: 3.2rem;
+        width: 136%; } }
   #sandbox .immersive .article--feature .prose .section__rule {
     height: 10px;
     border-bottom: 2px solid #dcdad5;
@@ -5576,21 +5568,36 @@
     #sandbox .immersive .article--feature .prose .quote--image blockquote {
       border-top: 1px solid #f7acbb !important;
       border-bottom: none !important;
-      background-color: rgba(149, 28, 85, 0.9);
+      background-color: rgba(0, 0, 0, 0.65);
       color: white !important;
       padding: 6px 6px 24px 6px; }
       #sandbox .immersive .article--feature .prose .quote--image blockquote::before {
         color: #f7acbb !important; }
       #sandbox .immersive .article--feature .prose .quote--image blockquote footer cite {
         color: #f7acbb; }
-  #sandbox .immersive .article--feature .prose .quote--overlay figcaption {
+  #sandbox .immersive .article--feature .prose .quote--overlay {
+    position: relative; }
+    #sandbox .immersive .article--feature .prose .quote--overlay::before {
+      background-color: aqua;
+      height: 30px;
+      text-align: center;
+      width: 30px;
+      content: "";
+      font-family: 'Guardian Icons';
+      position: absolute;
+      right: 0; }
+    #sandbox .immersive .article--feature .prose .quote--overlay figcaption {
+      position: absolute;
+      top: 0;
+      background-color: rgba(0, 0, 0, 0.6); }
+  #sandbox .immersive .article--feature .prose .title--overlay figcaption {
     display: none !important; }
   #sandbox .immersive .article--feature .prose .element-pullquote {
     visibility: hidden; }
     #sandbox .immersive .article--feature .prose .element-pullquote blockquote {
       font-weight: 200;
-      font-size: 2.6rem;
-      line-height: 2.8rem;
+      font-size: 2rem;
+      line-height: 2.4rem;
       font-family: 'Guardian Egyptian Web';
       padding-top: 0px;
       border-top: 1px solid #e0e0e0;
@@ -5603,8 +5610,8 @@
       #sandbox .immersive .article--feature .prose .element-pullquote blockquote p {
         margin-top: 28px; }
       #sandbox .immersive .article--feature .prose .element-pullquote blockquote cite {
-        font-size: 2.6rem;
-        line-height: 2.7rem;
+        font-size: 2rem;
+        line-height: 2.4rem;
         color: #999; }
         @media all and (min-width: 40.63em) {
           #sandbox .immersive .article--feature .prose .element-pullquote blockquote cite {
@@ -5613,9 +5620,9 @@
       #sandbox .immersive .article--feature .prose .element-pullquote blockquote::before {
         float: left;
         position: relative;
-        line-height: 1.5rem;
+        line-height: 1.6rem;
         margin-right: 8px;
-        font-size: 3rem;
+        font-size: 2.8rem;
         color: #999; }
         @media all and (min-width: 40.63em) {
           #sandbox .immersive .article--feature .prose .element-pullquote blockquote::before {

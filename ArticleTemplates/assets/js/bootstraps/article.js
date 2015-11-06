@@ -31,10 +31,7 @@ define([
 				var pageOffset = viewPortHeight * 0.75;
 				var articleheight = $('.article').offset().height; // progress bar
 		        var progressBar = $('.progress__bar');
-		        var pageMargin = "77px";
-		        
-		        console.log(pageMargin, "this is the page margin");
-		        
+		        		        
 	        	$('h2').each(function() {
 		        	if ($(this).html() === '* * *') {
 			        	$(this).html('').addClass('section__rule').next().addClass('has__dropcap');
@@ -42,16 +39,15 @@ define([
 		        });
 		        
 		        $('figure.element--immersive').each(function(){
-			        console.log($(this).next());
 			       if($(this).next().hasClass('element-pullquote')){
-				       console.log('somethig here');
 			       	 $(this).next().addClass('quote--image');
 			       	 $(this).addClass('quote--overlay'); 
 			        }
 			        
 			       if($(this).next()[0].tagName === "H2"){
 				       $(this).next().addClass('title--image');
-				       $(this).addClass('quote--overlay');
+				       $(this).addClass('title--overlay');
+				       $(this).next().next().addClass('has__dropcap');
 			       }
 		        });
 		          
