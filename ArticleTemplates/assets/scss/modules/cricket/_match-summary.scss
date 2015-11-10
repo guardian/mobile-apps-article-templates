@@ -175,6 +175,10 @@ Displays a cricket header.
         border-top: 1px dotted grey;
         padding-top: base-px(1);
 
+        @include mq($from: col4) {
+            border: 0;
+        }
+
         .meta__pubdate,
         a, 
         .byline {

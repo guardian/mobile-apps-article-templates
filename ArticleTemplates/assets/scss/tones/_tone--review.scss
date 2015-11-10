@@ -37,7 +37,6 @@
 
         .headline {
             color: color(shade-7); // Headline
-            padding: base-px(0, 1, 2.5, 1);
 
             p.review-rating {
                 @include rating;
@@ -67,9 +66,56 @@
             }
         }
 
+        .meta__misc {
+             @include mq($from: col4) {
+                padding: {
+                    left: 0;
+                    right: 0;
+                }
+            }
+        }
+
         .main-media__caption,
         .sponsorship {
             background-color: color(shade-7);
+
+            @include mq($from: col4) {
+                border-bottom: 0;
+            }
+        }
+
+        .main-media {
+            @include mq($from: col4) {
+                background-color: color(shade-7);
+            }
+        }
+    }
+
+    .touchpoint--primary {
+        .touchpoint__button {
+            background-color: color(tone-media);
+        }
+
+        &:active .touchpoint__button {
+            background-color: color(tone-review-accent);
+        }
+
+        .touchpoint__label {
+            color: color(tone-media);
+        }
+        
+        &:active .touchpoint__label {
+            color: color(tone-review-accent);
+        }
+    }
+
+    .comments__viewmore {
+        .comments__viewmore--label {
+            color: color(tone-media);
+        }
+        
+        &:active .comments__viewmore--label {
+            color: color(tone-review-accent);
         }
     }
 

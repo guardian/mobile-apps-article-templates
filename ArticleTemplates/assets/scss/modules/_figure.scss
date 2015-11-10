@@ -69,7 +69,11 @@ figure {
      .prose & {
         //extra specificity for overiding style to override styles in prose
         margin-top: 6px;
-     }
+
+        @include mq($from: col4) {
+            margin-left: -80px;
+        }
+    }
 }
 
 .figure--thumbnail-with-caption {
@@ -135,6 +139,14 @@ figure {
             .element-image__credit {
                 position: static;
             }
+        }
+    }
+    .prose & {
+        //extra specificity for overiding style to override styles in prose
+        @include mq($from: col4) {
+            max-width: 200px;
+            margin: 0;
+            margin-left: -220px;
         }
     }
 }

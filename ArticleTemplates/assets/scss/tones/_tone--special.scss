@@ -43,7 +43,19 @@
             }
         }
 
-        .main-media__caption,
+        .main-media__caption {
+            background-color: color(shade-7);
+
+            @include mq($from: col4) {
+                background-color: color(tone-special);
+
+                &__icon,
+                &__text {
+                    color: color(shade-7);
+                }
+            }
+        }
+        
         .sponsorship {
             background-color: color(shade-7);
         }

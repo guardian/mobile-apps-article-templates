@@ -13,6 +13,13 @@
             padding-right: cols($base-4, 4);
         }
 
+        @include mq($from: col4) {
+            margin: 0 auto 0 240px;
+            padding: base-px(1, 0);
+            padding-right: 320px;
+            width: 940px;
+        }
+
         // Images and video within article body
         .figure-wide,
         .element-video,
@@ -23,6 +30,12 @@
 
             @include mq($from: col2) {
                 width: 135%;
+            }
+
+            @include mq($from: col4) {
+                margin-left: 0;
+                margin-right: 0;
+                width: 100%;
             }
         }
 
@@ -71,25 +84,6 @@
             width: cols($base-4, 4);
         }
     }
-
-    // Hide witness call-out until correctly positioned by JavaScript
-    // .aside-witness {
-    //     display: none;
-
-    //     &.js--positioned {
-    //         display: block;
-    //     }
-
-    //     .aside-witness__action {
-    //         .touchpoint__label {
-    //             margin: base-px(.5) 0;
-    //         }
-    //     }
-
-    //     .aside-witness__sponsor {
-    //         float: left;
-    //     }
-    // }
 }
 
 .article--standard,
@@ -117,11 +111,20 @@ body:not(.is-live) .article--liveblog {
                 width: cols($base-4, 4);
             }
         }
+
+        @include mq($from: col4) {
+            .headline,
+            .standfirst {
+                padding: {
+                    left: 0;
+                    right: 0;
+                }
+            }
+        }
     }
 }
 
-.article--comment,
-.article--feature {
+.article--comment {
     .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p {
         @include dropcap();
     }

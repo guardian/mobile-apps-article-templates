@@ -5,18 +5,20 @@
 
     .article__header {
         background-color: color(shade-7);
-        
+
         .section > div {
             color: color(tone-analysis); // Content Label Section
         }
+
         .section__container,
         .content__series-label,
         .content__series-label a  {
             color: color(shade-2);  // Content Label Series
         }
+
         .headline {
             color: color(tone-analysis); // Headline
-            padding: base-px(0, 1, 2.5, 1);
+
             p.review-rating {
                 padding-top: 12px;
                 @include rating;
@@ -37,19 +39,34 @@
             .comment-count a {
                 color: color(tone-analysis);
             }
+
             .meta__byline .byline,
             .meta__byline a {
                 font-weight: 600;
-                font-weight: 600;
             }
+
             .meta__pubdate{
                color: color(shade-3);
             }
         }
+
+        .meta__misc {
+             @include mq($from: col4) {
+                padding: {
+                    left: 0;
+                    right: 0;
+                }
+            }
+        }
+
         .main-media__caption {
             background-color: color(shade-7);
         }
 
+        .sponsorship {
+            @include mq($from: col4) {
+                border-bottom: 0;
+            }
+        }
     }
-
 }

@@ -1,68 +1,53 @@
 <!DOCTYPE html>
 <html lang="en-US">
-<head>
-    <title>Comments</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
-    <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/fonts.css" />
-    <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/style-sync.css" />
-    <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/style-async.css" />
-    <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/shim.js"></script>
-</head>
+    <head>
+        <title>Comments</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/fonts.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/style-sync.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/style-async.css" />
+        <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/shim.js"></script>
+    </head>
+    <body class="tone--__SECTION_TONE__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__" data-font-size="__FONT_SIZE_INT__" data-template-directory="__TEMPLATES_DIRECTORY__" data-page-id="__PAGE_ID__">
+        <section class="comments comments--page comments-__COMMENTS_COUNT__">
+            <div class="comments__wrapper">
+                <div class="comments__header">
+                    <h3 class="comments__count">__COMMENTS_COUNT__</h3>
+                    
+                    <h1 class="comments__headline headline">__TITLE__</h1>
 
-<body class="tone--__SECTION_TONE__ comments-__COMMENTS_COUNT__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__" data-font-size="__FONT_SIZE_INT__" data-template-directory="__TEMPLATES_DIRECTORY__" data-page-id="__PAGE_ID__">
-    <div class="discussion" style="margin-top: __ACTIONBARHEIGHT__px;" id="comments">
-        <div class="discussion__header">
-            <h3 class="section"><span class="section__meta">__COMMENTS_COUNT__</span></h3>
-            <h1 class="headline">__TITLE__</h1>
-        </div>
+                    <a href="x-gu://newestfirst" class="comments__ordering">
+                        <span data-icon="&#xe014;" aria-hidden="true"></span>
+                        __COMMENTS_ORDER__
+                    </a>
 
-        <div class="discussion__body">
-            <div class="container">
-                <div class="container__header">
-                    <div class="container__action container__action--sort">
-                        <a href="x-gu://newestfirst" id="comments-ordering"><span data-icon="&#xe014;" aria-hidden="true"></span> __COMMENTS_ORDER__</a>
-                    </div>
-                    <div class="container__action container__action--comment">
-                        <a class="touchpoint touchpoint--primary" href="x-gu://leavecomment">
-                            <span class="touchpoint__label" >Post a comment</span>
-                            <span class="touchpoint__button" data-icon="&#xe03d;" aria-hidden="true"></span>
-                        </a>
-                        <span class="touchpoint comments-closed-label">
-                            <span class="touchpoint__label">Comments are closed</span>
-                        </span>
-                    </div>
+                    <p class="comments__closed">Comments are closed</p>
+
+                    <a class="comments__post touchpoint touchpoint--primary" href="x-gu://leavecomment">
+                        <span class="touchpoint__label">Post a comment</span>
+                        <span class="touchpoint__button" data-icon="&#xe03d;" aria-hidden="true"></span>
+                    </a>
                 </div>
-
-                <div class="container__body">
-                    <div class="block block--discussion-empty">
-                        <div class="block__body">
-                            <div class="comment">
-                                <div class="prose resizable">
-                                    <p>Open for comments. <a href="x-gu://leavecomment">Be the first to join the debate</a></p>
-                                </div>
-                            </div>
-                        </div>
+                <div class="comments__container">
+                    <div class="comments__block comments__block--empty">
+                        <p>
+                            Open for comments. <a href="x-gu://leavecomment">Be the first to join the debate</a>
+                        </p>
                     </div>
-                    <div class="block block--discussion-failed">
-                        <div class="block__body">
-                            <div class="comment">
-                                <div class="prose resizable">
-                                    <p>Comments are currently unavailable. Please try again later.</p>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="comments__block comments__block--failed">
+                        <p>
+                            Comments are currently unavailable. Please try again later.
+                        </p>
                     </div>
-                    <div class="loading loading--discussion">
-                        <img src="__TEMPLATES_DIRECTORY__assets/img/loading.gif" alt="Loading…"/>
+                    <div class="comments__block comments__block--loading loading">
+                        <img src="__TEMPLATES_DIRECTORY__assets/img/loading.gif" alt="Loading…" />
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <script type="text/javascript">
-        window.initTemplate({ skipStyle: true });
-    </script>
-</body>
+        </section>
+        <script type="text/javascript">
+            window.initTemplate({ skipStyle: true });
+        </script>
+    </body>
 </html>

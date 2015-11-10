@@ -94,12 +94,25 @@ With live indicator:
     width: 100%;
     height: 100%;
 
+    @include mq($from: col4) {
+        margin: 0 auto 0 240px;
+        padding: {
+            left: 0;
+            right: 0;
+        }
+        width: 620px;
+    }
+
     .content__labels__container {
         display: table-cell;
         vertical-align: top;
         padding: base-px(.6, 1, 1, 1);
         height: 100%;
         width: 100%;
+
+        @include mq($from: col4) {
+            padding-left: 0;
+        }
     }
 }
 
@@ -127,15 +140,17 @@ With live indicator:
         width: cols($base-4, 4);
     }
 
+    @include mq($from: col4) {
+        padding-right: 0;
+    }
+
     .meta & {
         display: none;
     }
 }
 
 .comment-count__label {
-    @include mq($to: col2) {
-        display: none;
-    }
+    display: none;
 }
 
 .article__header h1 {
