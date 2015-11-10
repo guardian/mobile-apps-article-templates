@@ -375,22 +375,28 @@
 	            position: relative;
 	            
 	            &::before{
-	                background-color: aqua;
+		            background-color: rgba(0,0,0,0.6);
 				    height: 30px;
 				    text-align: center;
 				    width: 30px;
-				    content: "";
+				    content: attr(data-content) '';
 				    font-family: 'Guardian Icons';
 				    position: absolute;
 				    right: 0;
+				    color: white;
 		            }
 	            
 	            figcaption{
 		            position: absolute;
 		            top:0;
 		            background-color: rgba(0,0,0,0.6);
+		            color: white;
+		            width: 90%;
+		            display: none;
 		            
-		            
+					&.display{
+						display: block;
+					}
 	            }
             }
             

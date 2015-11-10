@@ -5578,18 +5578,24 @@
   #sandbox .immersive .article--feature .prose .quote--overlay {
     position: relative; }
     #sandbox .immersive .article--feature .prose .quote--overlay::before {
-      background-color: aqua;
+      background-color: rgba(0, 0, 0, 0.6);
       height: 30px;
       text-align: center;
       width: 30px;
-      content: "";
+      content: attr(data-content) "";
       font-family: 'Guardian Icons';
       position: absolute;
-      right: 0; }
+      right: 0;
+      color: white; }
     #sandbox .immersive .article--feature .prose .quote--overlay figcaption {
       position: absolute;
       top: 0;
-      background-color: rgba(0, 0, 0, 0.6); }
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      width: 90%;
+      display: none; }
+      #sandbox .immersive .article--feature .prose .quote--overlay figcaption.display {
+        display: block; }
   #sandbox .immersive .article--feature .prose .title--overlay figcaption {
     display: none !important; }
   #sandbox .immersive .article--feature .prose .element-pullquote {

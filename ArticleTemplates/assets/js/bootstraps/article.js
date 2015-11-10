@@ -50,6 +50,17 @@ define([
 				       $(this).next().next().addClass('has__dropcap');
 			       }
 		        });
+		        
+		        var selector = $('.quote--overlay').data('data-thing', '');
+			    var caption = $('.quote--overlay figcaption');
+		        		        
+		        console.log(selector, "this is a selector");
+			       
+			       bean.on(window, 'click', selector, function(){
+				       console.log('clicked');
+				       $(caption).toggleClass('display');
+				       
+			       });   
 		          
 		        $('.element-pullquote').each(function(){
 			       var $this = $(this);
