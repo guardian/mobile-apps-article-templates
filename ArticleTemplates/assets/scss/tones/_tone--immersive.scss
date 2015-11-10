@@ -62,32 +62,41 @@
                 }
             }
             
+            .progress{
+	            position: fixed;
+	            top: 0px;
+	            width: 100%;
+	            height: 6px;
+	            z-index: 100000;
+	            background-color: rgba(255, 255, 255, 0.8);
+	            
+	            
+	            .progress__bar{
+	            height: 6px;
+	            width: 0;
+	            background-color: color(tone-feature1-accent);
+	            margin-top: 0px;
+            	}
+	            
+	            .chapter{
+		            height: 6px;
+		            width: 2px;
+		            background-color: color(tone-feature1-accent2);
+		            top: 0;
+	            }
+	            
+            }
+            
+            
+            
+            
+            
             .immersive__main__image{
 				background-color: black;
 				height: 100vh;
 				position: relative;
 				background-position: center center;
 				background-size: cover;	
-				
-/*
-				@include mq($from: col2){
-					height: 1023px;
-				}
-				
-				@include mq($from: col3){
-					height: 655px;
-				}
-				
-				@include mq($to: iphone4){
-					height: 480px;
-				}
-				
-				@include mq(){
-					
-				}
-*/
-				
-		
 			}	
 
             .section,
@@ -117,8 +126,15 @@
                     font-size: 3.5556em !important; // 64px
                     font-weight: 100;
                     line-height: .9375; // 60px
-                    bottom: 101px;
+                    bottom: 150px;
                     padding-top: base-px(1);	
+                }
+                
+                .series__title{
+	                font-size: 1.8rem;
+				    font-weight: 600;
+				    display: block;
+				    
                 }
             }
 
@@ -139,6 +155,17 @@
 	         
                 }
                 
+                .words{
+		            color: white; 
+	            }
+	            
+	            .section__rule{
+		            margin: base-px(0,0,0,0);
+	            }
+	            p:first-of-type{
+		            margin-bottom: base-px(1);
+	            }
+                
                 //need to fix display between >450px <746px
                 
             	@include mq($from: col2){
@@ -148,6 +175,8 @@
 				@include mq($from: col3){
 					display: none;
 				}
+				
+				
                 
             }
             
@@ -156,7 +185,7 @@
 	            position: absolute;
 	            bottom: 0px;
 	            background-color: rgba(0, 0, 0, 0.3);
-	            padding: base-px(0, 0, 2, 1);
+	            padding: base-px(0, 0, 1, 1);
 	            
 	            @include mq($to: col1){
 		            display: none;
@@ -165,7 +194,20 @@
 	            @include mq($from: col2){
 					display: block;
 				}
+				
+				.section__rule{
+		            margin: base-px(0,0,-0.5,0);
+	            }
+				
+				.words{
+		            color: white; 
+	            }
+	            
 				p{
+					
+					&:first-of-type{
+						margin-bottom: base-px(1);
+					}
 					
 					color: white;
 					
@@ -175,46 +217,26 @@
 				}	
 	            
             }
-            
-            .section__label{
-	                font-family: $egyptian-display;
-					border-bottom: 1px solid color(shade-4);
-					background-color: none;
-					padding: base-px(0.5, 0, 2, 1);
-					font-size: 1.4rem;
-					
-					
-				
-				a{
-					color: color(tone-feature1-accent);
-					font-weight: 600;
-					font-size: 1.6rem;
-					
-					@include mq($from: col2){
-						font-size: 1.8rem;
-					}
 
-				}
-				
-				.time__stamp{
+				.immersive__meta{
 					font-family: 'Guardian Agate Sans 1 Web';
 					color: color(shade-2);
 					font-size: 1.6rem;
 					line-height: 1.4rem;
+					margin: base-px(0,1,2,1);
+					
+					 .comment-count{
+					 	padding: base-px(1,1,0.5,0)!important;
+					 }
 	            }
 				
-            }
             
             .immersive__byline{
 	            background-color: none;
-	            padding: base-px(0.5, 0, 2, 1);
-	            
-	            .words{
-		            color: color(shade-2); 
-	            }
+	            padding: base-px(0.5, 0, 0, 0);
 	            
 	            a{
-		          color: color(tone-feature1-accent);
+		          color: color(tone-feature1-accent2);
 	            }
 	            
 	            a:hover{
@@ -230,7 +252,7 @@
 	            height: 10px;
 	            border-bottom: 2px solid color(shade-4);
 	            width: 100px;
-	            margin: base-px(0,0,-0.5,1);
+	            margin: base-px(0,0,0,1);
             }
             
             
@@ -249,6 +271,29 @@
         
         
         .prose{
+	        
+	        .title--image{
+	        background-color: rgba(0,0,0,0.6);
+		    padding: base-px(0.25, 0, 2, 1);
+		    margin-left: -12px;
+		    width: 108%;
+		    margin-top: -53px;
+		    margin-bottom: base-px(2);
+		    z-index: 400000;
+		    position: relative;
+		    font-size: 2rem;
+		    line-height: 2.6rem;
+		    font-weight: 200;
+		    color: white;
+		    
+			    @include mq($from: col2){
+					padding: base-px(0.25, 0, 2.8, 1);
+					font-size: 3.2rem;
+					width: 136%;
+					
+				}
+		        
+	        }
 	      
 	     	.section__rule{
 	            height: 10px;
@@ -279,10 +324,10 @@
 				        font-family: $egyptian-display;
 				        font-weight: 100;
 				        font-style: normal;
-				        font-size: 5.1em;
+				        font-size: 7em;
 				        line-height: 1;
 				        margin-top: 0;
-				        margin-bottom: base-px(-1.33333);
+				        margin-bottom: base-px(-1.6);
 				        padding-right: base-px(.5);
 				        float: left;
 				        
@@ -295,26 +340,97 @@
             	}   
             }
             
+           
+         
+            .quote--image{
+	            
+	            margin-top: -54px;
+	            
+	            blockquote{
+		            border-top: 1px solid color(tone-feature1-accent2) !important;
+		            border-bottom: none !important;
+		            background-color: rgba(0, 0, 0, 0.65);
+		            color: white !important;
+		            padding: base-px(0.5) base-px(0.5) base-px(2) base-px(0.5); 
+		            
+		            &::before{
+			            color: color(tone-feature1-accent2) !important;
+			            
+		            }
+		            
+		            footer{
+			            
+			            cite{
+				        	color: color(tone-feature1-accent2);
+			            }
+			            
+		            }
+		            
+	            }
+	            
+            }
+            
+            .quote--overlay{
+	            
+	            position: relative;
+	            
+	            &::before{
+		            background-color: rgba(0,0,0,0.6);
+				    height: 30px;
+				    text-align: center;
+				    width: 30px;
+				    content: attr(data-content) '';
+				    font-family: 'Guardian Icons';
+				    position: absolute;
+				    right: 0;
+				    color: white;
+		            }
+	            
+	            figcaption{
+		            position: absolute;
+		            top:0;
+		            background-color: rgba(0,0,0,0.6);
+		            color: white;
+		            width: 90%;
+		            display: none;
+		            
+					&.display{
+						display: block;
+					}
+	            }
+            }
+            
+            .title--overlay{
+	            figcaption{
+		            display: none !important;
+	            }
+            }
+            
             .element-pullquote{
 	            visibility: hidden;
 	                            
                 blockquote{
 		            font-weight: 200;
-		            font-size: 2.6rem;
-		            line-height: 2.7rem;
+		            font-size: 2rem;
+		            line-height: 2.4rem;
 	                font-family: 'Guardian Egyptian Web';
 	                padding-top: 0px;
 	                border-top: 1px solid #e0e0e0;
+	                border-bottom: 1px solid #e0e0e0;
 	                color: color(tone-feature1);
 	                
 	                @include mq($from: col2){
 		            font-size: 3.2rem;
-					line-height: 3.2rem;    
+					line-height: 3.4rem;  
+	                }
+	                
+	                p{
+		                margin-top: 28px;
 	                }
 	                
 	                cite{
-		              font-size: 2.6rem;
-					  line-height: 2.7rem;  
+		              font-size: 2rem;
+					  line-height: 2.4rem;  
 					  color: color(shade-3);
 					   @include mq($from: col2){
 					   		font-size: 3.2rem;
@@ -326,9 +442,9 @@
 	              	&::before{
 		              	float: left;
 		              	position: relative;
-		              	line-height: 1.5rem;
+		              	line-height: 1.6rem;
 					    margin-right: 8px;
-					    font-size: 3rem;
+					    font-size: 2.8rem;
 					    color: color(shade-3);
 					    
 					     @include mq($from: col2){
@@ -345,10 +461,14 @@
                 }
                 
                 @include mq($from: col2) {
-		            max-width: 540px;
+		            max-width: 100%;
 		            margin-right: base-px(1);
 		            float: left;
-			}
+			}	
+			
+				@include mq($from: col3){
+					max-width: 100%;
+				}
                 
             }
             

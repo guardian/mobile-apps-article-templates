@@ -3616,10 +3616,10 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   font-family: "Guardian Egyptian Web", Georgia, serif;
   font-weight: 100;
   font-style: normal;
-  font-size: 5.1em;
+  font-size: 7em;
   line-height: 1;
   margin-top: 0px;
-  margin-bottom: -16px;
+  margin-bottom: -19px;
   padding-right: 6px;
   float: left; }
   @media all and (min-width: 40.63em) {
@@ -3653,29 +3653,29 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .immersive .article--feature .article__header .bullet::before,
 .immersive .article--feature .article__header ul > li::before {
   background-color: rgba(255, 255, 255, 0.4); }
+.immersive .article--feature .article__header .progress {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 6px;
+  z-index: 100000;
+  background-color: rgba(255, 255, 255, 0.8); }
+  .immersive .article--feature .article__header .progress .progress__bar {
+    height: 6px;
+    width: 0;
+    background-color: #b82266;
+    margin-top: 0px; }
+  .immersive .article--feature .article__header .progress .chapter {
+    height: 6px;
+    width: 2px;
+    background-color: #f7acbb;
+    top: 0; }
 .immersive .article--feature .article__header .immersive__main__image {
   background-color: black;
   height: 100vh;
   position: relative;
   background-position: center center;
-  background-size: cover;
-  /*
-  				@include mq($from: col2){
-  					height: 1023px;
-  				}
-  				
-  				@include mq($from: col3){
-  					height: 655px;
-  				}
-  				
-  				@include mq($to: iphone4){
-  					height: 480px;
-  				}
-  				
-  				@include mq(){
-  					
-  				}
-  */ }
+  background-size: cover; }
 .immersive .article--feature .article__header .section,
 .immersive .article--feature .article__header .byline {
   color: #fff; }
@@ -3696,8 +3696,12 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
       font-size: 3.5556em !important;
       font-weight: 100;
       line-height: .9375;
-      bottom: 101px;
+      bottom: 150px;
       padding-top: 12px; } }
+  .immersive .article--feature .article__header .headline .series__title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    display: block; }
 .immersive .article--feature .article__header .standfirst {
   color: #fff; }
   .immersive .article--feature .article__header .standfirst span {
@@ -3708,6 +3712,12 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .immersive .article--feature .article__header .standfirst a {
     color: #f7acbb;
     text-decoration: underline; }
+  .immersive .article--feature .article__header .standfirst .words {
+    color: white; }
+  .immersive .article--feature .article__header .standfirst .section__rule {
+    margin: 0px 0px 0px 0px; }
+  .immersive .article--feature .article__header .standfirst p:first-of-type {
+    margin-bottom: 12px; }
   @media all and (min-width: 40.63em) {
     .immersive .article--feature .article__header .standfirst {
       display: none; } }
@@ -3718,42 +3728,36 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   position: absolute;
   bottom: 0px;
   background-color: rgba(0, 0, 0, 0.3);
-  padding: 0px 0px 24px 12px; }
+  padding: 0px 0px 12px 12px; }
   @media all and (max-width: 28.12em) {
     .immersive .article--feature .article__header .standfirst__tablet {
       display: none; } }
   @media all and (min-width: 40.63em) {
     .immersive .article--feature .article__header .standfirst__tablet {
       display: block; } }
+  .immersive .article--feature .article__header .standfirst__tablet .section__rule {
+    margin: 0px 0px -6px 0px; }
+  .immersive .article--feature .article__header .standfirst__tablet .words {
+    color: white; }
   .immersive .article--feature .article__header .standfirst__tablet p {
     color: white; }
+    .immersive .article--feature .article__header .standfirst__tablet p:first-of-type {
+      margin-bottom: 12px; }
     .immersive .article--feature .article__header .standfirst__tablet p a {
       color: #b82266; }
-.immersive .article--feature .article__header .section__label {
-  font-family: "Guardian Egyptian Web", Georgia, serif;
-  border-bottom: 1px solid #dcdad5;
-  background-color: none;
-  padding: 6px 0px 24px 12px;
-  font-size: 1.4rem; }
-  .immersive .article--feature .article__header .section__label a {
-    color: #b82266;
-    font-weight: 600;
-    font-size: 1.6rem; }
-    @media all and (min-width: 40.63em) {
-      .immersive .article--feature .article__header .section__label a {
-        font-size: 1.8rem; } }
-  .immersive .article--feature .article__header .section__label .time__stamp {
-    font-family: 'Guardian Agate Sans 1 Web';
-    color: #767676;
-    font-size: 1.6rem;
-    line-height: 1.4rem; }
+.immersive .article--feature .article__header .immersive__meta {
+  font-family: 'Guardian Agate Sans 1 Web';
+  color: #767676;
+  font-size: 1.6rem;
+  line-height: 1.4rem;
+  margin: 0px 12px 24px 12px; }
+  .immersive .article--feature .article__header .immersive__meta .comment-count {
+    padding: 12px 12px 6px 0px !important; }
 .immersive .article--feature .article__header .immersive__byline {
   background-color: none;
-  padding: 6px 0px 24px 12px; }
-  .immersive .article--feature .article__header .immersive__byline .words {
-    color: #767676; }
+  padding: 6px 0px 0px 0px; }
   .immersive .article--feature .article__header .immersive__byline a {
-    color: #b82266; }
+    color: #f7acbb; }
   .immersive .article--feature .article__header .immersive__byline a:hover {
     text-decoration: underline; }
   .immersive .article--feature .article__header .immersive__byline p:nth-child(2) {
@@ -3762,7 +3766,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   height: 10px;
   border-bottom: 2px solid #dcdad5;
   width: 100px;
-  margin: 0px 0px -6px 12px; }
+  margin: 0px 0px 0px 12px; }
 .immersive .article--feature .article__header .review-rating {
   color: rgba(255, 255, 255, 0.4); }
 .immersive .article--feature .article__header .review-rating--1 .icon:nth-child(-n+1),
@@ -3771,6 +3775,24 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .immersive .article--feature .article__header .review-rating--4 .icon:nth-child(-n+4),
 .immersive .article--feature .article__header .review-rating--5 .icon:nth-child(-n+5) {
   color: #fff; }
+.immersive .article--feature .prose .title--image {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 3px 0px 24px 12px;
+  margin-left: -12px;
+  width: 108%;
+  margin-top: -53px;
+  margin-bottom: 24px;
+  z-index: 400000;
+  position: relative;
+  font-size: 2rem;
+  line-height: 2.6rem;
+  font-weight: 200;
+  color: white; }
+  @media all and (min-width: 40.63em) {
+    .immersive .article--feature .prose .title--image {
+      padding: 3px 0px 34px 12px;
+      font-size: 3.2rem;
+      width: 136%; } }
 .immersive .article--feature .prose .section__rule {
   height: 10px;
   border-bottom: 2px solid #dcdad5;
@@ -3792,32 +3814,70 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   font-family: "Guardian Egyptian Web", Georgia, serif;
   font-weight: 100;
   font-style: normal;
-  font-size: 5.1em;
+  font-size: 7em;
   line-height: 1;
   margin-top: 0;
-  margin-bottom: -16px;
+  margin-bottom: -19px;
   padding-right: 6px;
   float: left; }
   @media all and (min-width: 40.63em) {
     .immersive .article--feature .prose p.has__dropcap:first-letter {
       font-size: 5.2222em; } }
+.immersive .article--feature .prose .quote--image {
+  margin-top: -54px; }
+  .immersive .article--feature .prose .quote--image blockquote {
+    border-top: 1px solid #f7acbb !important;
+    border-bottom: none !important;
+    background-color: rgba(0, 0, 0, 0.65);
+    color: white !important;
+    padding: 6px 6px 24px 6px; }
+    .immersive .article--feature .prose .quote--image blockquote::before {
+      color: #f7acbb !important; }
+    .immersive .article--feature .prose .quote--image blockquote footer cite {
+      color: #f7acbb; }
+.immersive .article--feature .prose .quote--overlay {
+  position: relative; }
+  .immersive .article--feature .prose .quote--overlay::before {
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 30px;
+    text-align: center;
+    width: 30px;
+    content: attr(data-content) "";
+    font-family: 'Guardian Icons';
+    position: absolute;
+    right: 0;
+    color: white; }
+  .immersive .article--feature .prose .quote--overlay figcaption {
+    position: absolute;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    width: 90%;
+    display: none; }
+    .immersive .article--feature .prose .quote--overlay figcaption.display {
+      display: block; }
+.immersive .article--feature .prose .title--overlay figcaption {
+  display: none !important; }
 .immersive .article--feature .prose .element-pullquote {
   visibility: hidden; }
   .immersive .article--feature .prose .element-pullquote blockquote {
     font-weight: 200;
-    font-size: 2.6rem;
-    line-height: 2.7rem;
+    font-size: 2rem;
+    line-height: 2.4rem;
     font-family: 'Guardian Egyptian Web';
     padding-top: 0px;
     border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
     color: #951c55; }
     @media all and (min-width: 40.63em) {
       .immersive .article--feature .prose .element-pullquote blockquote {
         font-size: 3.2rem;
-        line-height: 3.2rem; } }
+        line-height: 3.4rem; } }
+    .immersive .article--feature .prose .element-pullquote blockquote p {
+      margin-top: 28px; }
     .immersive .article--feature .prose .element-pullquote blockquote cite {
-      font-size: 2.6rem;
-      line-height: 2.7rem;
+      font-size: 2rem;
+      line-height: 2.4rem;
       color: #999; }
       @media all and (min-width: 40.63em) {
         .immersive .article--feature .prose .element-pullquote blockquote cite {
@@ -3826,9 +3886,9 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     .immersive .article--feature .prose .element-pullquote blockquote::before {
       float: left;
       position: relative;
-      line-height: 1.5rem;
+      line-height: 1.6rem;
       margin-right: 8px;
-      font-size: 3rem;
+      font-size: 2.8rem;
       color: #999; }
       @media all and (min-width: 40.63em) {
         .immersive .article--feature .prose .element-pullquote blockquote::before {
@@ -3838,9 +3898,12 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
       content: ""; }
   @media all and (min-width: 40.63em) {
     .immersive .article--feature .prose .element-pullquote {
-      max-width: 540px;
+      max-width: 100%;
       margin-right: 12px;
       float: left; } }
+  @media all and (min-width: 56.25em) {
+    .immersive .article--feature .prose .element-pullquote {
+      max-width: 100%; } }
 .immersive .article--feature .prose .animated {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
