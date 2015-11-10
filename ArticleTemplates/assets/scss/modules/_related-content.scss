@@ -40,12 +40,14 @@ Related Content / More on this story section
 */
 
 // using the card upsize variables to enable us to upsize the different card measurements in a single place.
-$card-width-col2: $card-width * $card-upsize-col2;
-$card-width-col3: $card-width * $card-upsize-col3;
-$card-gutter-col2: $card-gutter * $card-upsize-col2;
-$card-gutter-col3: $card-gutter * $card-upsize-col3;
+$related-card-width-col2: $related-card-width * $related-card-upsize-col2;
+$related-card-width-col3: $related-card-width * $related-card-upsize-col3;
+$related-card-gutter-col2: $related-card-gutter * $related-card-upsize-col2;
+$related-card-gutter-col3: $related-card-gutter * $related-card-upsize-col3;
+
 .related-content {
-    margin: base-px(0, 0, 2, 0);
+    margin: 0;
+    padding: base-px(0, 0, 2, 0);
     border-top: 2px solid color(shade-1);
 
     .block--failed {
@@ -61,13 +63,32 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
             display: none;
         }
     }
+
+    &__wrapper {
+        @include mq($from: col4) {
+            margin: {
+                left: auto;
+                right: auto;
+                top: base-px(2);
+            }
+            max-width: 1200px;
+        }
+    }
     
     &__header {
         margin: base-px(.5, 1, 1, 1);
         @include body-font(1.5, $egyptian-display, 600);
 
         @include mq($from: col2) {
-            margin: base-px(1, 0);
+            margin: base-px(1);
+        }
+
+        @include mq($from: col4) {
+            float: left;
+            font-size: 2.3rem;
+            line-height: 2.3rem;
+            margin: 0 20px;
+            width: 200px;
         }
     }
 
@@ -75,8 +96,9 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
         overflow: hidden;
         padding: base-px(0, 1);
 
-        @include mq($from: col2) {
+        @include mq($from: col4) {
             padding: 0;
+            width: 940px;
         }
     }
 
@@ -84,14 +106,14 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
         // list will have a modifier class --items-n for how many child elements are container (1 - 4)
         @for $i from 1 through 4 {
             &--items-#{$i} {
-                width: ceil(($card-width * $i) + ($card-gutter * ($i - 1)));
+                width: ceil(($related-card-width * $i) + ($related-card-gutter * ($i - 1)));
 
                 @include mq(col2, col3) {
-                    width: ceil(($card-width-col2 * $i) + ($card-gutter-col2 * ($i - 1)));
+                    width: ceil(($related-card-width-col2 * $i) + ($related-card-gutter-col2 * ($i - 1)));
                 }
 
                 @include mq($from: col3) {
-                    width: ceil(($card-width-col3 * $i) + ($card-gutter-col3 * ($i - 1)));
+                    width: ceil(($related-card-width-col3 * $i) + ($related-card-gutter-col3 * ($i - 1)));
                 }
             }
         }
@@ -107,8 +129,8 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
 
     &__card {
         float: left;
-        width: $card-width;
-        margin-right: $card-gutter;
+        width: $related-card-width;
+        margin-right: $related-card-gutter;
         position: relative;
         color: color(shade-1);
         background-color: color(shade-7);
@@ -116,13 +138,13 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
         border-bottom: 1px solid color(shade-4);
 
         @include mq(col2, col3) {
-            width: $card-width-col2;
-            margin-right: $card-gutter-col2;
+            width: $related-card-width-col2;
+            margin-right: $related-card-gutter-col2;
         }
 
         @include mq($from: col3) {
-            width: $card-width-col3;
-            margin-right: $card-gutter-col3;
+            width: $related-card-width-col3;
+            margin-right: $related-card-gutter-col3;
         }
 
         &:last-child {
@@ -141,16 +163,16 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
 
         @include mq(col2, col3) {
             height: 115px;
-            margin-bottom: 20px * $card-upsize-col2;
-            font-size: 1.6rem * $card-upsize-col2;
-            line-height: 2.0rem * $card-upsize-col2;
+            margin-bottom: 20px * $related-card-upsize-col2;
+            font-size: 1.6rem * $related-card-upsize-col2;
+            line-height: 2.0rem * $related-card-upsize-col2;
         }
 
         @include mq($from: col3) {
             height: 130px;
-            margin-bottom: 20px * $card-upsize-col3;
-            font-size: 1.6rem * $card-upsize-col3;
-            line-height: 2.0rem * $card-upsize-col3;
+            margin-bottom: 20px * $related-card-upsize-col3;
+            font-size: 1.6rem * $related-card-upsize-col3;
+            line-height: 2.0rem * $related-card-upsize-col3;
         }
     }
 
@@ -165,11 +187,11 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
             speak: none;
 
             @include mq(col2, col3) {
-                font-size: 2.1rem * $card-upsize-col2;
+                font-size: 2.1rem * $related-card-upsize-col2;
             }
 
             @include mq($from: col3) {
-                font-size: 2.1rem * $card-upsize-col3;
+                font-size: 2.1rem * $related-card-upsize-col3;
             }
         }
     }
@@ -271,7 +293,7 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
     &__main {
         margin-bottom: 20px; // offset the absolutely positioned meta
         padding: 0;
-        height: $card-width * .6; // height should cater for standard landscape image ratio
+        height: $related-card-width * .6; // height should cater for standard landscape image ratio
         overflow: hidden;
         
         .has-image & {
@@ -279,11 +301,11 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
         }
 
         @include mq(col2, col3) {
-            height: ($card-width-col2) * .6; // height should cater for standard landscape image ratio
+            height: ($related-card-width-col2) * .6; // height should cater for standard landscape image ratio
         }
 
         @include mq($from: col3) {
-            height: ($card-width-col3) * .6; // height should cater for standard landscape image ratio
+            height: ($related-card-width-col3) * .6; // height should cater for standard landscape image ratio
         }
     }
 
@@ -300,13 +322,13 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
         @include text-ellipses(4);
 
         @include mq(col2, col3) {
-            font-size: 1.2rem * $card-upsize-col2;
-            line-height: 1.6rem * $card-upsize-col2;
+            font-size: 1.2rem * $related-card-upsize-col2;
+            line-height: 1.6rem * $related-card-upsize-col2;
         }
 
         @include mq($from: col3) {
-            font-size: 1.2rem * $card-upsize-col3;
-            line-height: 1.6rem * $card-upsize-col3;
+            font-size: 1.2rem * $related-card-upsize-col3;
+            line-height: 1.6rem * $related-card-upsize-col3;
         }
     }
 
@@ -329,18 +351,18 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
             line-height: 29px;
             font-size: 15px;
 
-             @include mq(col2, col3) {
-                height: 29px * $card-upsize-col2;
-                width: 29px * $card-upsize-col2;
-                line-height: 29px * $card-upsize-col2;
-                font-size: 15px * $card-upsize-col2;
+            @include mq(col2, col3) {
+                height: 29px * $related-card-upsize-col2;
+                width: 29px * $related-card-upsize-col2;
+                line-height: 29px * $related-card-upsize-col2;
+                font-size: 15px * $related-card-upsize-col2;
             }
 
             @include mq($from: col3) {
-                height: 29px * $card-upsize-col3;
-                width: 29px * $card-upsize-col3;
-                line-height: 29px * $card-upsize-col3;
-                font-size: 15px * $card-upsize-col3;
+                height: 29px * $related-card-upsize-col3;
+                width: 29px * $related-card-upsize-col3;
+                line-height: 29px * $related-card-upsize-col3;
+                font-size: 15px * $related-card-upsize-col3;
             }
         }
 
@@ -349,13 +371,13 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
             line-height: 1.3rem;
 
             @include mq(col2, col3) {
-                font-size: 1rem * $card-upsize-col2;
-                line-height: 1.3rem * $card-upsize-col2;
+                font-size: 1rem * $related-card-upsize-col2;
+                line-height: 1.3rem * $related-card-upsize-col2;
             }
 
             @include mq($from: col3) {
-                font-size: 1rem * $card-upsize-col3;
-                line-height: 1.3rem * $card-upsize-col3;
+                font-size: 1rem * $related-card-upsize-col3;
+                line-height: 1.3rem * $related-card-upsize-col3;
             }
         }
     }
@@ -488,16 +510,7 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
             }
 
             &__duration {
-                display: block;
-                color: color(tone-media);
-                font-weight: bold;
-                border: none;
-                position: absolute;
-                bottom: 8px;
-                left: 40px;
-                padding: 0;
-                line-height: 20px;
-                text-shadow: 1px 1px 2px rgba(0,0,0,.5);
+                @include related-card-duration(color(tone-media));
             }
         }
 
@@ -538,16 +551,7 @@ $card-gutter-col3: $card-gutter * $card-upsize-col3;
             }
 
             &__duration {
-                display: block;
-                color: color(shade-7);
-                font-weight: bold;
-                border: none;
-                position: absolute;
-                bottom: 8px;
-                left: 6px;
-                padding: 0;
-                line-height: 20px;
-                text-shadow: 1px 1px 2px rgba(0,0,0,.5);
+                @include related-card-duration(color(shade-7));
             }
         }
     }

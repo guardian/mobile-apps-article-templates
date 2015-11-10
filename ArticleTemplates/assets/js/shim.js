@@ -34,7 +34,6 @@ var nativeFunctionCalls = [
     'liveblogNewBlock',
     'getMpuPosCallback',
     'initMpuPoller',
-    'getBannerPosCallback',
     'videoPositioning',
     'getArticleHeight'
 ];

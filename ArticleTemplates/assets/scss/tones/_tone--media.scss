@@ -1,4 +1,15 @@
 .tone--media {
+    @include mq($from: col4) {
+        &:not(.is_advertising) {
+            background: #303030;
+        }
+
+        .comments,
+        .related-content {
+            background: color(shade-5);
+        }
+    }
+
     .witness .witness__sponsor-logo {
         fill: color(shade-7);
     }
@@ -13,7 +24,9 @@
         }
     }
 
-    a {
+    .article a,
+    .comments__block a,
+    .comments__ordering {
         color: darken(color(tone-media), 5%);
 
         &:active {
@@ -33,6 +46,7 @@
         }
     }
 
+    .comment__report,
     .touchpoint--primary {
         .touchpoint__button {
             background-color: color(tone-media);
@@ -41,7 +55,26 @@
         &:active .touchpoint__button {
             background-color: color(tone-media-accent);
         }
+
+        .touchpoint__label {
+            color: color(tone-media);
+        }
+        
+        &:active .touchpoint__label {
+            color: color(tone-media-accent);
+        }
     }
+
+    .comments__viewmore {
+        .comments__viewmore--label {
+            color: color(tone-media);
+        }
+        
+        &:active .comments__viewmore--label {
+            color: color(tone-media-accent);
+        }
+    }
+
 
     // Template specific styles
     .article--audio {
@@ -87,6 +120,7 @@
             }
         }
 
+        .audio-player__wrapper,
         .audio-player {
             background-color: darken(color(shade-1), 10%);
         }
@@ -117,6 +151,13 @@
             border-color: color(shade-2);
         }
 
+        @include mq($from: col4) {
+            .meta {
+                border-top: 1px dotted color(shade-2);
+                margin-top: 1px;
+            }
+        }
+
         .aside {
             border-color: color(shade-2);
             margin-bottom: 0;
@@ -131,7 +172,7 @@
             color: color(shade-2);
         }
 
-        .aside-witness__sponsor {
+        .aside-witness__sponsor { 
             width: 33%;
             text-align: right;
 

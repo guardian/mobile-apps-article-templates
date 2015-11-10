@@ -105,12 +105,51 @@ Display a titled container for comments, cards or other components that should b
     }
 }
 
-@include mq($to: col1) {
-    .container--comments {
+.container--comments {
+    @include mq($to: col1) {
         .container__header {
             .touchpoint__label {
                 display: none;
             }
+        }
+    }
+
+    @include mq($from: col4) {
+        margin: 0;
+
+        .container__header {
+            float: left;
+            margin: 20px;
+            padding: 0;
+            width: 200px;
+
+            > h2,
+            > span,
+            > div {
+                display: block;
+                width: 200px;
+            }
+
+            .touchpoint__label {
+                padding-left: 0;
+            }
+        }
+
+        .container__title {
+            margin-bottom: 15px;
+        }
+
+        .container__body {
+            margin: {
+                left: 240px;
+                top: 20px;
+            };
+            width: 858px; // This is the width of 4 related cards at this breakpoint
+        }
+
+        .container__footer {
+            margin-left: 240px;
+            width: 858px;
         }
     }
 }
@@ -157,10 +196,6 @@ Display a titled container for comments, cards or other components that should b
     }
 }
 
-.container--comments {
-    
-}
-
 .container__outbrain {
     overflow: hidden;
     display: none; 
@@ -182,6 +217,12 @@ Display a titled container for comments, cards or other components that should b
             display: block !important;
         }
     }
+
+    // .container--comments {
+    //     @include mq($from: col4) {
+    //         margin: 0;
+    //     }
+    // }
 
     .container--related {
         margin-bottom: 48px;

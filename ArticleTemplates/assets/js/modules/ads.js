@@ -10,7 +10,6 @@ define([
 
     var tabletMpuId = 'advert-mpu-content',
         mobileMpuId = 'advert-mobile-mpu-content',
-        bannerHtmlId = 'advert-banner-content',
 
         modules = {
             insertAdPlaceholders: function (config) {
@@ -61,31 +60,12 @@ define([
                                             "<div class=\"advert-slot__wrapper\" id=\"advert-slot__wrapper\">" +
                                             "<div class='advert-slot__wrapper__content' id=" + mobileMpuId + "></div>" +
                                             "</div>" +
-                                        "</div>",
-
-                        bannerHtml =  "<div class='advert-slot__wrapper__content' id=" + bannerHtmlId + "></div>";
+                                        "</div>";
 
 
                     var nrParagraph = ( parseInt(config.mpuAfterParagraphs, 10) || 6 ) - 1;
                     $(".article__body > div > p:nth-of-type(" + nrParagraph + ") ~ p + p").first().before(mobileMpuHtml);
-                    $(".advert-slot__wrapper").prepend(bannerHtml);
 
-                }
-            },
-
-            // return the current top Banner's position.
-            // This function is an internal function which accepts a function
-            // formatter(left, top, width, height)
-
-            getBannerPos : function(formatter) {
-                var r;
-                var el = document.getElementById("banner_container");
-                if (el) {
-                    r = el.getBoundingClientRect();
-                    return formatter(r.left + document.body.scrollLeft, r.top+document.body.scrollTop,
-                        r.width, r.height);
-                } else {
-                    return null;
                 }
             },
 
@@ -120,11 +100,6 @@ define([
             getMpuOffsetTop : function() {
                 return modules.getMpuPos(function(x, y, w, h) {
                     return y;
-                });
-            },
-            getBannerPosCallback : function() {
-                modules.getBannerPos(function(x, y, w, h){
-                    window.GuardianJSInterface.bannerAdsPosition(x, y, w, h);
                 });
             },
             poller : function(interval, yPos, firstRun) {
@@ -174,11 +149,9 @@ define([
                 if (config.adsEnabled == "true" || (config.adsEnabled !== null && config.adsEnabled.match && config.adsEnabled.match(/mpu/))) {
                     modules.insertAdPlaceholders(config);
                     window.getMpuPosJson = modules.getMpuPosJson;
-                    window.getBannerPosCallback = modules.getBannerPosCallback;
                     window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated;
                     window.initMpuPoller = modules.initMpuPoller;
                     window.applyNativeFunctionCall('initMpuPoller');
-                    window.applyNativeFunctionCall('getBannerPosCallback');
 
                     if(!modules.isAndroid){
                         modules.initMpuPoller();
