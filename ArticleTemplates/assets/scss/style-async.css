@@ -542,10 +542,7 @@ Comments Module
         margin-top: 0; } }
   .comments__header {
     position: relative;
-    margin: 6px 12px 12px 12px; }
-    @media all and (min-width: 56.25em) {
-      .comments__header {
-        margin: 12px; } }
+    margin: 12px; }
     @media all and (min-width: 75em) {
       .comments--module .comments__header {
         float: left;
@@ -632,19 +629,21 @@ Comments Module
         .comments--module .comments__post {
           position: static;
           margin-top: 15px; } }
+      @media all and (max-width: 28.12em) {
+        .comments--module .comments__post .touchpoint__label {
+          display: none; } }
     .comments--page .comments__post {
       bottom: 0; }
     .comments--closed .comments__post {
       display: none; }
     .comments__post .touchpoint__label {
       padding-left: 0; }
-    @media all and (max-width: 28.12em) {
-      .comments__post .touchpoint__label {
-        display: none; } }
   .comments__container {
     overflow: hidden;
     padding: 0;
     margin-top: 24px; }
+    .comments--page .comments__container {
+      margin-top: 12px; }
     @media all and (min-width: 75em) {
       .comments__container {
         margin-left: 240px;

@@ -1,6 +1,8 @@
 .tone--media {
     @include mq($from: col4) {
-        background: #303030;
+        &:not(.is_advertising) {
+            background: #303030;
+        }
 
         .comments,
         .related-content {
@@ -117,19 +119,9 @@
             }
         }
 
+        .audio-player__wrapper,
         .audio-player {
             background-color: darken(color(shade-1), 10%);
-
-            @include mq($from: col4) {
-                width: 620px;
-                margin-left: 240px;
-            }
-        }
-
-        .audio-player__wrapper {
-            @include mq($from: col4) {
-                background-color: darken(color(shade-1), 10%);
-            }
         }
 
         .article__header,
@@ -156,6 +148,13 @@
         .meta,
         .comment-count {
             border-color: color(shade-2);
+        }
+
+        @include mq($from: col4) {
+            .meta {
+                border-top: 1px dotted color(shade-2);
+                margin-top: 1px;
+            }
         }
 
         .aside {

@@ -84,11 +84,7 @@ Comments Module
     
     &__header {
         position: relative;
-        margin: base-px(.5, 1, 1, 1);
-
-        @include mq($from: col3) {
-            margin: base-px(1);
-        }
+        margin: base-px(1);
 
         @include mq($from: col4) {
             .comments--module & {
@@ -172,6 +168,12 @@ Comments Module
                 position: static;
                 margin-top: 15px;
             }
+
+            @include mq($to: col1) {
+                .touchpoint__label {
+                    display: none;
+                }
+            }
         }
 
         .comments--page & {
@@ -185,18 +187,16 @@ Comments Module
         .touchpoint__label {
             padding-left: 0;
         }
-
-        @include mq($to: col1) {
-            .touchpoint__label {
-                display: none;
-            }
-        }
     }
 
     &__container {
         overflow: hidden;
         padding: 0;
         margin-top: base-px(2);
+
+        .comments--page & {
+            margin-top: base-px(1);
+        }
 
         @include mq($from: col4) {
             margin: {

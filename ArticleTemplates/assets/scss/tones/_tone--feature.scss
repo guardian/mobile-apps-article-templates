@@ -1,13 +1,14 @@
 .tone--feature1,
 .tone--feature2,
 .tone--feature3 {
-    a,
-    .article__body > p:first-of-type:first-letter {
+    .article a,
+    .container__action--sort a,
+    .comments__ordering {
         color: color(tone-feature1);
-    }
-
-    a:active {
-        color: color(tone-feature1-accent);
+        
+        &:active {
+            color: color(tone-feature1-accent);
+        }
     }
 
     .article__header,
@@ -18,6 +19,26 @@
     .standfirst,
     .touchpoint--primary:active .touchpoint__button {
         background-color: color(tone-feature1-accent);
+    }
+
+    .touchpoint--primary {
+        .touchpoint__label {
+            color: color(tone-feature1);
+        }
+        
+        &:active .touchpoint__label {
+            color: color(tone-feature1-accent);
+        }
+    }
+
+    .comments__viewmore {
+        .comments__viewmore--label {
+            color: color(tone-feature1);
+        }
+        
+        &:active .comments__viewmore--label {
+            color: color(tone-feature1-accent);
+        }
     }
 
     .section {
@@ -35,6 +56,10 @@
 
     .article--feature {
         border-top-color: color(tone-feature1-accent);
+
+        .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p {
+            @include dropcap(color(tone-feature1));
+        }
 
         .prose p,
         .prose li {
