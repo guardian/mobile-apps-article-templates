@@ -197,7 +197,7 @@ module.exports = function(grunt) {
             },
             scss: {
                 files: ['ArticleTemplates/assets/scss/**/*.scss'],
-                tasks: ['scsslint','sass','hologram','rsync']
+                tasks: ['scsslint','sass','hologram','cssmin','rsync']
             },
             copy: {
                 files: ['ArticleTemplates/*.html', 'ArticleTemplates/assets/img/**'],
