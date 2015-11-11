@@ -279,6 +279,7 @@ module.exports = function(grunt) {
     grunt.registerTask('build', ['initRequireJS', 'jshint', 'requirejs', 'scsslint','sass:dev','cssmin']);
     grunt.registerTask('buildJS', ['initRequireJS', 'jshint', 'requirejs']);
     grunt.registerTask('buildCSS', ['scsslint','sass:dev','cssmin']);
+    grunt.registerTask('deploy', ['build','shell:ziptemplates', 'shell:deployandroid']);
     grunt.registerTask('apk', ['build', 'rsync', 'shell:android']);
     grunt.registerTask('ipa', ['build', 'rsync', 'shell:ios']);
     grunt.registerTask('installer', ['build', 'rsync', 'shell:ios', 'shell:android']);
