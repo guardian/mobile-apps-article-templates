@@ -1,30 +1,20 @@
-.tone--liveBlog {
+.tone--liveBlog,
+.tone--liveBlog.is-live {
     .section__container {
         border-color: color(tone-live-highlight);
         color: color(tone-live-accent);
-    }
 
+        > div {
+            color: color(tone-live-accent); // Content Label Section
+        }
 
-        /*.comment-count {
-            border-left-color: color( shade-2);
-        }*/
-
-        //border-bottom: 1px rgba(#fff, .4) dotted; 
-
-   /* .section {
-        color: color(shade-7); // Default
-
-    }
-
-    .content__series-label {
-        color: color(shade-7);
-    }*/
-
-    //EXTRA SPECIFICITY NEEDED - due to previous styling
-    .section__container {
         .content__series-label,
         .content__series-label a, 
         .comment-count a {
+            color: color(tone-live);
+        }
+
+        .content__labels:first-child::before {
             color: color(tone-live-accent);
         }
     }
@@ -240,10 +230,6 @@
 
             .meta__pubdate {
                 color: rgba(#fff, .8);
-            }
-
-            .comment-count {
-                border-left-color: rgba(color(shade-7), .4);
             }
 
             .tags {

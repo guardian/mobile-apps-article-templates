@@ -53,8 +53,7 @@
     }
 
     .section__container,
-    .article,
-    .comment-count {
+    .article {
         border-color: color(global-adv-bands);
     }
 
@@ -88,7 +87,6 @@
         .article,
         .section__container,
         .article__header .meta,
-        .article__header .comment-count,
         .article__header figure figcaption,
         .sponsorship,
         .tags {
@@ -106,7 +104,6 @@
         .article__header .meta__byline .byline,
         .article__header .meta__byline a, 
         .article__header .comment-count,
-        .article__header .comment-count a,
         .article__header .comment-count a,
         .article__body {
             color: color(global-adv-text); 
@@ -212,10 +209,6 @@
             color: color(shade-7);
         }
 
-        .comment-count {
-            border-color: color(global-adv-bands);
-        }
-
         .prose .element-pullquote {
             blockquote {
                 color: color(shade-10);
@@ -263,13 +256,9 @@
             background-color: color(global-adv-bands);
 
 
-            .comment-count {
-                border-color: color(shade-7);
-                a {
-                    color: color(shade-7);
-                }
+            .comment-count a {
+                color: color(shade-7);
             }
-
         }
 
         /*.article__header .section,
@@ -367,8 +356,7 @@
 
     &.tone--podcast {
 
-        .meta,
-        .meta .comment-count {
+        .meta {
             border-color: color(global-adv-bands);
         }
 
