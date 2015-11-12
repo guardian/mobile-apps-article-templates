@@ -4042,30 +4042,166 @@
       #sandbox .article--comment .article__header .standfirst {
         font-size: 1.25em;
         line-height: 1.25em; } }
-  #sandbox body.immersive a,
-  #sandbox body.immersive .article__body .prose > p:first-of-type:first-letter {
-    color: #951c55;
-    font-family: "Guardian Egyptian Web", Georgia, serif; }
-  #sandbox body.immersive .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
-    color: "";
-    font-family: "Guardian Egyptian Web", Georgia, serif;
-    font-weight: 100;
-    font-style: normal;
-    font-size: 7em;
-    line-height: 1;
-    margin-top: 0px;
-    margin-bottom: -19px;
-    padding-right: 6px;
-    float: left; }
-    @media all and (min-width: 40.63em) {
-      #sandbox body.immersive .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
-        font-size: 5.2222em; } }
-  #sandbox body.immersive a:active {
-    color: #b82266; }
-  #sandbox body.immersive .article--feature {
-    border-top-color: #b82266; }
-    #sandbox body.immersive .article--feature .prose p a,
-    #sandbox body.immersive .article--feature .prose li a {
+  #sandbox body.immersive .article--immersive {
+    border-top: 0; }
+    #sandbox body.immersive .article--immersive a {
+      color: #951c55; }
+      #sandbox body.immersive .article--immersive a:active {
+        color: #b82266; }
+    #sandbox body.immersive .article--immersive .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
+      color: #951c55;
+      font-family: "Guardian Egyptian Web", Georgia, serif;
+      font-weight: 100;
+      font-style: normal;
+      font-size: 7em;
+      line-height: 1;
+      margin-top: 0px;
+      margin-bottom: -19px;
+      padding-right: 6px;
+      float: left; }
+      @media all and (min-width: 40.63em) {
+        #sandbox body.immersive .article--immersive .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
+          font-size: 5.2222em; } }
+    #sandbox body.immersive .article--immersive .progress {
+      background-color: rgba(255, 255, 255, 0.8);
+      height: 6px;
+      position: fixed;
+      top: 0px;
+      width: 100%;
+      z-index: 2; }
+      @media all and (min-width: 75em) {
+        #sandbox body.immersive .article--immersive .progress {
+          overflow: hidden;
+          width: 1200px; } }
+      #sandbox body.immersive .article--immersive .progress__bar {
+        background-color: #b82266;
+        height: 6px;
+        margin-top: 0px;
+        width: 0; }
+      #sandbox body.immersive .article--immersive .progress__chapter {
+        background-color: #f7acbb;
+        height: 6px;
+        position: absolute;
+        top: 0;
+        width: 2px; }
+    #sandbox body.immersive .article--immersive .article__header {
+      background: none; }
+      #sandbox body.immersive .article--immersive .article__header .bullet::before,
+      #sandbox body.immersive .article--immersive .article__header ul > li::before {
+        background-color: rgba(255, 255, 255, 0.4); }
+    #sandbox body.immersive .article--immersive .article__header-image {
+      background-color: black;
+      background-position: center center;
+      background-size: cover;
+      height: 600px;
+      height: 100vh;
+      position: relative; }
+    #sandbox body.immersive .article--immersive .article__header-bg {
+      background-color: rgba(0, 0, 0, 0.3);
+      bottom: 0px;
+      padding: 6px 12px 24px 12px;
+      position: absolute;
+      width: 100%; }
+      @media all and (min-width: 56.25em) {
+        #sandbox body.immersive .article--immersive .article__header-bg {
+          padding-top: 12px; } }
+      @media all and (min-width: 75em) {
+        #sandbox body.immersive .article--immersive .article__header-bg {
+          padding-left: 0;
+          padding-right: 0; } }
+    #sandbox body.immersive .article--immersive .article__series {
+      color: #fff;
+      display: block;
+      font: 600 1.8rem "Guardian Egyptian Web", Georgia, serif; }
+      @media all and (min-width: 40.63em) {
+        #sandbox body.immersive .article--immersive .article__series {
+          margin-bottom: 12px; } }
+      @media all and (min-width: 75em) {
+        #sandbox body.immersive .article--immersive .article__series {
+          margin-left: 240px;
+          padding-left: 0;
+          padding-right: 0;
+          width: 620px; } }
+    #sandbox body.immersive .article--immersive .article__headline {
+      color: #fff;
+      font-size: 3.5rem !important;
+      line-height: 3.3rem;
+      padding: 0;
+      z-index: 1; }
+      @media all and (min-width: 40.63em) {
+        #sandbox body.immersive .article--immersive .article__headline {
+          font-size: 2.5em !important;
+          font-weight: 100;
+          line-height: .9375; } }
+    #sandbox body.immersive .article--immersive .article__byline {
+      background-color: none;
+      color: #fff;
+      padding: 6px 0px 0px 0px; }
+    #sandbox body.immersive .article--immersive .standfirst {
+      color: #fff; }
+      #sandbox body.immersive .article--immersive .standfirst a {
+        border-bottom: 1px solid #951c55;
+        display: inline-block; }
+        #sandbox body.immersive .article--immersive .standfirst a:active {
+          border-color: #b82266;
+          color: #b82266; }
+      #sandbox body.immersive .article--immersive .standfirst__text {
+        margin: 12px 0px; }
+      #sandbox body.immersive .article--immersive .standfirst--mobile {
+        background-color: #767676;
+        padding: 6px 12px 18px 12px; }
+        @media all and (min-width: 40.63em) {
+          #sandbox body.immersive .article--immersive .standfirst--mobile {
+            display: none; } }
+        #sandbox body.immersive .article--immersive .standfirst--mobile a {
+          border-color: #f7acbb;
+          color: #f7acbb; }
+          #sandbox body.immersive .article--immersive .standfirst--mobile a:active {
+            border-color: #b82266;
+            color: #b82266; }
+      #sandbox body.immersive .article--immersive .standfirst--tablet {
+        padding: 0;
+        display: none; }
+        @media all and (min-width: 40.63em) {
+          #sandbox body.immersive .article--immersive .standfirst--tablet {
+            display: block; } }
+        @media all and (min-width: 75em) {
+          #sandbox body.immersive .article--immersive .standfirst--tablet {
+            font-size: 2rem;
+            line-height: 2.8rem;
+            margin: 0 auto 0 240px;
+            padding-left: 0;
+            padding-right: 0;
+            width: 620px; } }
+    #sandbox body.immersive .article--immersive .immersive__meta {
+      color: #767676;
+      font: 1.6rem/1.4rem "Guardian Agate Sans 1 Web", sans-serif;
+      margin: 0px 12px 24px 12px; }
+      @media all and (min-width: 75em) {
+        #sandbox body.immersive .article--immersive .immersive__meta {
+          margin-left: 240px;
+          padding-left: 0;
+          padding-right: 0;
+          width: 620px; } }
+      #sandbox body.immersive .article--immersive .immersive__meta .comment-count {
+        border: 0;
+        color: #f7acbb;
+        padding: 12px 12px 6px 0px !important; }
+    #sandbox body.immersive .article--immersive .section__rule {
+      border-bottom: 2px solid #dcdad5;
+      height: 10px;
+      margin: 0px 0px 12px 1px;
+      width: 100px; }
+    #sandbox body.immersive .article--immersive .review-rating {
+      color: rgba(255, 255, 255, 0.4); }
+    #sandbox body.immersive .article--immersive .review-rating--1 .icon:nth-child(-n+1),
+    #sandbox body.immersive .article--immersive .review-rating--2 .icon:nth-child(-n+2),
+    #sandbox body.immersive .article--immersive .review-rating--3 .icon:nth-child(-n+3),
+    #sandbox body.immersive .article--immersive .review-rating--4 .icon:nth-child(-n+4),
+    #sandbox body.immersive .article--immersive .review-rating--5 .icon:nth-child(-n+5) {
+      color: #fff; }
+    #sandbox body.immersive .article--immersive .prose p a,
+    #sandbox body.immersive .article--immersive .prose li a {
       color: #951c55;
       text-decoration: none;
       background-image: linear-gradient(rgba(149, 28, 85, 0.25) 0%, #951c55 100%);
@@ -4074,213 +4210,177 @@
       background-position: 0 bottom;
       text-shadow: 3px 0 #fff, 2px 0 #fff, 1px 0 #fff, -1px 0 #fff, -2px 0 #fff, -3px 0 #fff; }
       @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
-        #sandbox body.immersive .article--feature .prose p a,
-        #sandbox body.immersive .article--feature .prose li a {
+        #sandbox body.immersive .article--immersive .prose p a,
+        #sandbox body.immersive .article--immersive .prose li a {
           background-image: linear-gradient(rgba(149, 28, 85, 0.25) 0%, #951c55 100%);
           background-position: 0 93%; } }
-      #sandbox body.immersive .article--feature .prose p a a:active, #sandbox body.immersive .article--feature .prose p a:hover,
-      #sandbox body.immersive .article--feature .prose li a a:active,
-      #sandbox body.immersive .article--feature .prose li a:hover {
+      #sandbox body.immersive .article--immersive .prose p a a:active, #sandbox body.immersive .article--immersive .prose p a:hover,
+      #sandbox body.immersive .article--immersive .prose li a a:active,
+      #sandbox body.immersive .article--immersive .prose li a:hover {
         color: #b82266;
         background-image: linear-gradient(to bottom, #9e1d58 0%, #9e1d58 100%); }
-      #sandbox body.immersive .article--feature .prose p a::selection,
-      #sandbox body.immersive .article--feature .prose p a > *::selection,
-      #sandbox body.immersive .article--feature .prose li a::selection,
-      #sandbox body.immersive .article--feature .prose li a > *::selection {
+      #sandbox body.immersive .article--immersive .prose p a::selection,
+      #sandbox body.immersive .article--immersive .prose p a > *::selection,
+      #sandbox body.immersive .article--immersive .prose li a::selection,
+      #sandbox body.immersive .article--immersive .prose li a > *::selection {
         text-shadow: none; }
-      #sandbox body.immersive .article--feature .prose p a::-moz-selection,
-      #sandbox body.immersive .article--feature .prose p a > *::-moz-selection,
-      #sandbox body.immersive .article--feature .prose li a::-moz-selection,
-      #sandbox body.immersive .article--feature .prose li a > *::-moz-selection {
+      #sandbox body.immersive .article--immersive .prose p a::-moz-selection,
+      #sandbox body.immersive .article--immersive .prose p a > *::-moz-selection,
+      #sandbox body.immersive .article--immersive .prose li a::-moz-selection,
+      #sandbox body.immersive .article--immersive .prose li a > *::-moz-selection {
         text-shadow: none; }
-    #sandbox body.immersive .article--feature .prose table,
-    #sandbox body.immersive .article--feature .table {
+    #sandbox body.immersive .article--immersive .prose table,
+    #sandbox body.immersive .article--immersive .prose .table {
       border-top-color: #b82266; }
-    #sandbox body.immersive .article--feature .prose .element-pullquote blockquote footer, #sandbox body.immersive .article--feature .prose .element-pullquote blockquote::after, #sandbox body.immersive .article--feature .prose .element-pullquote blockquote::before {
+    #sandbox body.immersive .article--immersive .prose .element-pullquote blockquote footer, #sandbox body.immersive .article--immersive .prose .element-pullquote blockquote::after, #sandbox body.immersive .article--immersive .prose .element-pullquote blockquote::before {
       color: #951c55; }
-  #sandbox body.immersive .article .article__header {
-    background: none; }
-    #sandbox body.immersive .article .article__header .bullet::before,
-    #sandbox body.immersive .article .article__header ul > li::before {
-      background-color: rgba(255, 255, 255, 0.4); }
-    #sandbox body.immersive .article .article__header .immersive__main__image {
-      background-color: black;
-      height: 600px;
-      position: relative;
-      background-position: center center;
-      background-size: cover; }
-    #sandbox body.immersive .article .article__header .section,
-    #sandbox body.immersive .article .article__header .byline {
-      color: #fff; }
-    #sandbox body.immersive .article .article__header .content__labels {
-      color: #fdadba; }
-    #sandbox body.immersive .article .article__header .content__series-label.content__labels {
-      color: #fff; }
-    #sandbox body.immersive .article .article__header .headline {
+    #sandbox body.immersive .article--immersive .prose .title--image {
+      background-color: rgba(0, 0, 0, 0.6);
       color: #fff;
-      position: absolute;
-      bottom: 0px;
-      z-index: 20;
-      background-color: rgba(0, 0, 0, 0.3);
-      font-size: 3.5rem !important;
-      line-height: 3.3rem; }
-      @media all and (min-width: 40.63em) {
-        #sandbox body.immersive .article .article__header .headline {
-          font-size: 3.5556em !important;
-          font-weight: 100;
-          line-height: .9375;
-          bottom: 101px;
-          padding-top: 12px; } }
-    #sandbox body.immersive .article .article__header .standfirst {
-      background-color: #767676;
-      color: #fff; }
-      #sandbox body.immersive .article .article__header .standfirst span {
-        color: rgba(255, 255, 255, 0.4); }
-      #sandbox body.immersive .article .article__header .standfirst strong {
-        color: #fff;
-        font-weight: normal; }
-      #sandbox body.immersive .article .article__header .standfirst a {
-        color: #f7acbb;
-        text-decoration: underline; }
-      @media all and (min-width: 40.63em) {
-        #sandbox body.immersive .article .article__header .standfirst {
-          display: none; } }
-      @media all and (min-width: 56.25em) {
-        #sandbox body.immersive .article .article__header .standfirst {
-          display: none; } }
-    #sandbox body.immersive .article .article__header .standfirst__tablet {
-      position: absolute;
-      bottom: 0px;
-      background-color: rgba(0, 0, 0, 0.3);
-      padding: 0px 0px 24px 12px; }
-      @media all and (max-width: 28.12em) {
-        #sandbox body.immersive .article .article__header .standfirst__tablet {
-          display: none; } }
-      @media all and (min-width: 40.63em) {
-        #sandbox body.immersive .article .article__header .standfirst__tablet {
-          display: block; } }
-      #sandbox body.immersive .article .article__header .standfirst__tablet p {
-        color: white; }
-        #sandbox body.immersive .article .article__header .standfirst__tablet p a {
-          color: #b82266; }
-    #sandbox body.immersive .article .article__header .section__label {
-      font-family: "Guardian Egyptian Web", Georgia, serif;
-      border-bottom: 1px solid #dcdad5;
-      background-color: none;
-      padding: 6px 0px 24px 12px;
-      font-size: 1.4rem; }
-      #sandbox body.immersive .article .article__header .section__label a {
-        color: #b82266;
-        font-weight: 600;
-        font-size: 1.6rem; }
-        @media all and (min-width: 40.63em) {
-          #sandbox body.immersive .article .article__header .section__label a {
-            font-size: 1.8rem; } }
-      #sandbox body.immersive .article .article__header .section__label .time__stamp {
-        font-family: 'Guardian Agate Sans 1 Web';
-        color: #767676;
-        font-size: 1.6rem;
-        line-height: 1.4rem; }
-    #sandbox body.immersive .article .article__header .immersive__byline {
-      background-color: none;
-      padding: 6px 0px 24px 12px; }
-      #sandbox body.immersive .article .article__header .immersive__byline .words {
-        color: #767676; }
-      #sandbox body.immersive .article .article__header .immersive__byline a {
-        color: #b82266; }
-      #sandbox body.immersive .article .article__header .immersive__byline a:hover {
-        text-decoration: underline; }
-      #sandbox body.immersive .article .article__header .immersive__byline p:nth-child(2) {
-        line-height: 1.6rem; }
-    #sandbox body.immersive .article .article__header .section__rule {
-      height: 10px;
-      border-bottom: 2px solid #dcdad5;
-      width: 100px;
-      margin: 0px 0px -6px 12px; }
-    #sandbox body.immersive .article .article__header .review-rating {
-      color: rgba(255, 255, 255, 0.4); }
-    #sandbox body.immersive .article .article__header .review-rating--1 .icon:nth-child(-n+1),
-    #sandbox body.immersive .article .article__header .review-rating--2 .icon:nth-child(-n+2),
-    #sandbox body.immersive .article .article__header .review-rating--3 .icon:nth-child(-n+3),
-    #sandbox body.immersive .article .article__header .review-rating--4 .icon:nth-child(-n+4),
-    #sandbox body.immersive .article .article__header .review-rating--5 .icon:nth-child(-n+5) {
-      color: #fff; }
-  #sandbox body.immersive .article .prose .section__rule {
-    height: 10px;
-    border-bottom: 2px solid #dcdad5;
-    width: 100px;
-    margin: 0px 0px 12px 1px; }
-  #sandbox body.immersive .article .prose .section__header {
-    width: 108%;
-    padding-left: 4%;
-    background-color: #b82266 !important;
-    margin-left: -12px;
-    height: 180px;
-    margin-bottom: 24px;
-    color: white;
-    font-size: 34px;
-    line-height: 30px;
-    font-weight: 200; }
-  #sandbox body.immersive .article .prose p.has__dropcap:first-letter {
-    color: #951c55;
-    font-family: "Guardian Egyptian Web", Georgia, serif;
-    font-weight: 100;
-    font-style: normal;
-    font-size: 5.1em;
-    line-height: 1;
-    margin-top: 0;
-    margin-bottom: -16px;
-    padding-right: 6px;
-    float: left; }
-    @media all and (min-width: 40.63em) {
-      #sandbox body.immersive .article .prose p.has__dropcap:first-letter {
-        font-size: 5.2222em; } }
-  #sandbox body.immersive .article .prose .element-pullquote {
-    visibility: hidden; }
-    #sandbox body.immersive .article .prose .element-pullquote blockquote {
+      font-size: 2rem;
       font-weight: 200;
-      font-size: 2.6rem;
-      line-height: 2.7rem;
-      font-family: 'Guardian Egyptian Web';
-      padding-top: 0px;
-      border-top: 1px solid #e0e0e0;
-      color: #951c55; }
+      line-height: 2.6rem;
+      margin-bottom: 24px;
+      margin-left: -12px;
+      margin-top: -53px;
+      padding: 3px 0px 24px 12px;
+      position: relative;
+      width: 108%;
+      z-index: 1; }
       @media all and (min-width: 40.63em) {
-        #sandbox body.immersive .article .prose .element-pullquote blockquote {
+        #sandbox body.immersive .article--immersive .prose .title--image {
+          padding: 3px 0px 34px 12px;
           font-size: 3.2rem;
-          line-height: 3.2rem; } }
-      #sandbox body.immersive .article .prose .element-pullquote blockquote cite {
-        font-size: 2.6rem;
-        line-height: 2.7rem;
-        color: #999; }
+          margin-top: -63px;
+          width: 136%; } }
+      @media all and (min-width: 75em) {
+        #sandbox body.immersive .article--immersive .prose .title--image {
+          width: 1200px;
+          margin-left: -240px;
+          padding-left: 240px; } }
+    #sandbox body.immersive .article--immersive .prose .section__header {
+      width: 108%;
+      padding-left: 4%;
+      background-color: #b82266 !important;
+      margin-left: -12px;
+      height: 180px;
+      margin-bottom: 24px;
+      color: #fff;
+      font-size: 34px;
+      line-height: 30px;
+      font-weight: 200; }
+    #sandbox body.immersive .article--immersive .prose p.has__dropcap:first-letter {
+      color: #951c55;
+      font-family: "Guardian Egyptian Web", Georgia, serif;
+      font-weight: 100;
+      font-style: normal;
+      font-size: 7em;
+      line-height: 1;
+      margin-top: 0;
+      margin-bottom: -19px;
+      padding-right: 6px;
+      float: left; }
+      @media all and (min-width: 40.63em) {
+        #sandbox body.immersive .article--immersive .prose p.has__dropcap:first-letter {
+          font-size: 5.2222em; } }
+    #sandbox body.immersive .article--immersive .prose .quote--image {
+      margin-top: -54px; }
+      #sandbox body.immersive .article--immersive .prose .quote--image blockquote {
+        border-top: 1px solid #f7acbb !important;
+        border-bottom: none !important;
+        background-color: rgba(0, 0, 0, 0.65);
+        color: #fff !important;
+        padding: 6px 6px 24px 6px; }
+        #sandbox body.immersive .article--immersive .prose .quote--image blockquote::before {
+          color: #f7acbb !important; }
+        #sandbox body.immersive .article--immersive .prose .quote--image blockquote footer cite {
+          color: #f7acbb; }
+    #sandbox body.immersive .article--immersive .prose .quote--overlay {
+      position: relative; }
+      #sandbox body.immersive .article--immersive .prose .quote--overlay::before {
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        content: attr(data-content) "";
+        font-family: "Guardian Icons", Georgia, serif;
+        height: 30px;
+        text-align: center;
+        position: absolute;
+        right: 0;
+        width: 30px; }
+      #sandbox body.immersive .article--immersive .prose .quote--overlay figcaption {
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        display: none;
+        position: absolute;
+        top: 0;
+        width: 90%; }
+        #sandbox body.immersive .article--immersive .prose .quote--overlay figcaption.display {
+          display: block; }
+    #sandbox body.immersive .article--immersive .prose .title--overlay figcaption {
+      display: none !important; }
+    #sandbox body.immersive .article--immersive .prose .element-pullquote {
+      margin-bottom: 24px;
+      visibility: hidden; }
+      #sandbox body.immersive .article--immersive .prose .element-pullquote blockquote {
+        border-bottom: 1px solid #e0e0e0;
+        border-top: 1px solid #e0e0e0;
+        color: #951c55;
+        font: 200 2rem/2.4rem "Guardian Egyptian Web", Georgia, serif;
+        padding-top: 0px; }
         @media all and (min-width: 40.63em) {
-          #sandbox body.immersive .article .prose .element-pullquote blockquote cite {
+          #sandbox body.immersive .article--immersive .prose .element-pullquote blockquote {
             font-size: 3.2rem;
-            line-height: 3.2rem; } }
-      #sandbox body.immersive .article .prose .element-pullquote blockquote::before {
-        float: left;
-        position: relative;
-        line-height: 1.5rem;
-        margin-right: 8px;
-        font-size: 3rem;
-        color: #999; }
-        @media all and (min-width: 40.63em) {
-          #sandbox body.immersive .article .prose .element-pullquote blockquote::before {
-            font-size: 4rem;
-            line-height: 1.3rem; } }
-      #sandbox body.immersive .article .prose .element-pullquote blockquote::after {
-        content: ""; }
-    @media all and (min-width: 40.63em) {
-      #sandbox body.immersive .article .prose .element-pullquote {
-        max-width: 540px;
-        margin-right: 12px;
-        float: left; } }
-  #sandbox body.immersive .article .prose .animated {
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-    visibility: visible; }
+            line-height: 3.4rem; } }
+        #sandbox body.immersive .article--immersive .prose .element-pullquote blockquote p {
+          margin-top: 28px; }
+        #sandbox body.immersive .article--immersive .prose .element-pullquote blockquote cite {
+          color: #999;
+          font-size: 2rem;
+          line-height: 2.4rem; }
+          @media all and (min-width: 40.63em) {
+            #sandbox body.immersive .article--immersive .prose .element-pullquote blockquote cite {
+              font-size: 3.2rem;
+              line-height: 3.2rem; } }
+        #sandbox body.immersive .article--immersive .prose .element-pullquote blockquote::before {
+          color: #999;
+          float: left;
+          font-size: 2.8rem;
+          line-height: 1.6rem;
+          margin-right: 8px;
+          position: relative; }
+          @media all and (min-width: 40.63em) {
+            #sandbox body.immersive .article--immersive .prose .element-pullquote blockquote::before {
+              font-size: 4rem;
+              line-height: 1.3rem; } }
+        #sandbox body.immersive .article--immersive .prose .element-pullquote blockquote::after {
+          content: ""; }
+      @media all and (min-width: 40.63em) {
+        #sandbox body.immersive .article--immersive .prose .element-pullquote {
+          float: left;
+          margin-right: 12px;
+          max-width: 100%; } }
+      @media all and (min-width: 56.25em) {
+        #sandbox body.immersive .article--immersive .prose .element-pullquote {
+          max-width: 100%; } }
+      @media all and (min-width: 75em) {
+        #sandbox body.immersive .article--immersive .prose .element-pullquote {
+          margin-left: 0;
+          margin-right: 0; } }
+    @media all and (min-width: 75em) {
+      #sandbox body.immersive .article--immersive .prose .element-image.element--immersive {
+        margin-left: -240px;
+        width: 1200px; }
+        #sandbox body.immersive .article--immersive .prose .element-image.element--immersive:not(.quote--overlay) > figcaption {
+          border: 0;
+          float: left;
+          padding-right: 0;
+          width: 240px; } }
+    #sandbox body.immersive .article--immersive .prose .animated {
+      -webkit-animation-duration: 1s;
+      animation-duration: 1s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+      visibility: visible; }
 @-webkit-keyframes fadeInUp {
   from {
     opacity: 0;
@@ -4299,44 +4399,9 @@
     opacity: 1;
     -webkit-transform: none;
     transform: none; } }
-  #sandbox body.immersive .article .prose .fadeInUp {
-    -webkit-animation-name: fadeInUp;
-    animation-name: fadeInUp; }
-  #sandbox body.immersive .article .meta {
-    border: 0;
-    margin: 0; }
-    #sandbox body.immersive .article .meta a.alerts--new:active, #sandbox body.immersive .article .meta a.alerts--new.following {
-      background-color: #fff;
-      color: #b82266; }
-    #sandbox body.immersive .article .meta a.alerts--new, #sandbox body.immersive .article .meta a.alerts--new.following:active {
-      border-color: #fff;
-      color: #fff; }
-  #sandbox body.immersive .article .meta,
-  #sandbox body.immersive .article .meta__pubdate {
-    color: rgba(255, 255, 255, 0.8); }
-  #sandbox .parallax {
-    perspective: 1px;
-    height: 100vh;
-    overflow-x: hidden;
-    overflow-y: auto; }
-  #sandbox .parallax__layer {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%; }
-  #sandbox .parallax__layer--base {
-    transform: translateZ(0); }
-  #sandbox .parallax__layer--back {
-    transform: translateZ(-0.1px); }
-  #sandbox .immersive__headline {
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.4); }
-    #sandbox .immersive__headline .headline {
-      color: white; }
+    #sandbox body.immersive .article--immersive .prose .fadeInUp {
+      -webkit-animation-name: fadeInUp;
+      animation-name: fadeInUp; }
   #sandbox .article--liveblog {
     background-color: #eaeaea;
     border-bottom: 0; }
@@ -4381,25 +4446,29 @@
   #sandbox .article--standard .article__body,
   #sandbox .article--comment .article__body,
   #sandbox .article--feature .article__body,
-  #sandbox .article--audio .article__body {
+  #sandbox .article--audio .article__body,
+  #sandbox .article--immersive .article__body {
     padding: 12px 12px 0px 12px; }
     @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       #sandbox .article--standard .article__body,
       #sandbox .article--comment .article__body,
       #sandbox .article--feature .article__body,
-      #sandbox .article--audio .article__body {
+      #sandbox .article--audio .article__body,
+      #sandbox .article--immersive .article__body {
         padding-right: 23.94366%; } }
     @media all and (min-width: 56.25em) {
       #sandbox .article--standard .article__body,
       #sandbox .article--comment .article__body,
       #sandbox .article--feature .article__body,
-      #sandbox .article--audio .article__body {
+      #sandbox .article--audio .article__body,
+      #sandbox .article--immersive .article__body {
         padding-right: 24.21053%; } }
     @media all and (min-width: 75em) {
       #sandbox .article--standard .article__body,
       #sandbox .article--comment .article__body,
       #sandbox .article--feature .article__body,
-      #sandbox .article--audio .article__body {
+      #sandbox .article--audio .article__body,
+      #sandbox .article--immersive .article__body {
         margin: 0 auto 0 240px;
         padding: 12px 0px;
         padding-right: 320px;
@@ -4415,7 +4484,10 @@
     #sandbox .article--feature .article__body .element-placeholder,
     #sandbox .article--audio .article__body .figure-wide,
     #sandbox .article--audio .article__body .element-video,
-    #sandbox .article--audio .article__body .element-placeholder {
+    #sandbox .article--audio .article__body .element-placeholder,
+    #sandbox .article--immersive .article__body .figure-wide,
+    #sandbox .article--immersive .article__body .element-video,
+    #sandbox .article--immersive .article__body .element-placeholder {
       margin-left: -12px;
       margin-right: -12px;
       width: auto; }
@@ -4431,7 +4503,10 @@
         #sandbox .article--feature .article__body .element-placeholder,
         #sandbox .article--audio .article__body .figure-wide,
         #sandbox .article--audio .article__body .element-video,
-        #sandbox .article--audio .article__body .element-placeholder {
+        #sandbox .article--audio .article__body .element-placeholder,
+        #sandbox .article--immersive .article__body .figure-wide,
+        #sandbox .article--immersive .article__body .element-video,
+        #sandbox .article--immersive .article__body .element-placeholder {
           width: 135%; } }
       @media all and (min-width: 75em) {
         #sandbox .article--standard .article__body .figure-wide,
@@ -4445,65 +4520,77 @@
         #sandbox .article--feature .article__body .element-placeholder,
         #sandbox .article--audio .article__body .figure-wide,
         #sandbox .article--audio .article__body .element-video,
-        #sandbox .article--audio .article__body .element-placeholder {
+        #sandbox .article--audio .article__body .element-placeholder,
+        #sandbox .article--immersive .article__body .figure-wide,
+        #sandbox .article--immersive .article__body .element-video,
+        #sandbox .article--immersive .article__body .element-placeholder {
           margin-left: 0;
           margin-right: 0;
           width: 100%; } }
     #sandbox .article--standard .article__body .element-interactive,
     #sandbox .article--comment .article__body .element-interactive,
     #sandbox .article--feature .article__body .element-interactive,
-    #sandbox .article--audio .article__body .element-interactive {
+    #sandbox .article--audio .article__body .element-interactive,
+    #sandbox .article--immersive .article__body .element-interactive {
       width: auto; }
       @media all and (min-width: 40.63em) and (max-width: 56.24em) {
         #sandbox .article--standard .article__body .element-interactive,
         #sandbox .article--comment .article__body .element-interactive,
         #sandbox .article--feature .article__body .element-interactive,
-        #sandbox .article--audio .article__body .element-interactive {
+        #sandbox .article--audio .article__body .element-interactive,
+        #sandbox .article--immersive .article__body .element-interactive {
           width: calc(131.48148% - 12px); } }
       @media all and (min-width: 56.25em) {
         #sandbox .article--standard .article__body .element-interactive,
         #sandbox .article--comment .article__body .element-interactive,
         #sandbox .article--feature .article__body .element-interactive,
-        #sandbox .article--audio .article__body .element-interactive {
+        #sandbox .article--audio .article__body .element-interactive,
+        #sandbox .article--immersive .article__body .element-interactive {
           width: calc(131.94444% - 12px); } }
     @media all and (min-width: 40.63em) {
       #sandbox .article--standard .article__body .element-video,
       #sandbox .article--comment .article__body .element-video,
       #sandbox .article--feature .article__body .element-video,
-      #sandbox .article--audio .article__body .element-video {
+      #sandbox .article--audio .article__body .element-video,
+      #sandbox .article--immersive .article__body .element-video {
         padding-bottom: 75.375%; } }
   #sandbox .article--standard .aside,
   #sandbox .article--comment .aside,
   #sandbox .article--feature .aside,
-  #sandbox .article--audio .aside {
+  #sandbox .article--audio .aside,
+  #sandbox .article--immersive .aside {
     float: right;
     clear: right; }
     @media all and (min-width: 28.13em) {
       #sandbox .article--standard .aside,
       #sandbox .article--comment .aside,
       #sandbox .article--feature .aside,
-      #sandbox .article--audio .aside {
+      #sandbox .article--audio .aside,
+      #sandbox .article--immersive .aside {
         margin: 0px 0px 24px 24px;
         padding: 12px 12px 12px 0px; } }
     @media all and (min-width: 28.13em) and (max-width: 40.62em) {
       #sandbox .article--standard .aside,
       #sandbox .article--comment .aside,
       #sandbox .article--feature .aside,
-      #sandbox .article--audio .aside {
+      #sandbox .article--audio .aside,
+      #sandbox .article--immersive .aside {
         margin-right: 12px;
         width: 36.17021%; } }
     @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       #sandbox .article--standard .aside,
       #sandbox .article--comment .aside,
       #sandbox .article--feature .aside,
-      #sandbox .article--audio .aside {
+      #sandbox .article--audio .aside,
+      #sandbox .article--immersive .aside {
         margin-right: -32.39437%;
         width: 32.39437%; } }
     @media all and (min-width: 56.25em) {
       #sandbox .article--standard .aside,
       #sandbox .article--comment .aside,
       #sandbox .article--feature .aside,
-      #sandbox .article--audio .aside {
+      #sandbox .article--audio .aside,
+      #sandbox .article--immersive .aside {
         margin-right: -32.63158%;
         width: 24.21053%; } }
   @media all and (min-width: 40.63em) and (max-width: 56.24em) {

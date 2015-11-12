@@ -21,79 +21,106 @@ define([
             window.articleOutbrainInserter = function () {
                 outbrain.load();
             };
-            window.applyNativeFunctionCall('articleOutbrainInserter');       
+            window.applyNativeFunctionCall('articleOutbrainInserter');
         },
         
         formatImmersive : function(){
-            if($('.immersive').length){
-                var viewPortHeight = bonzo.viewport().height;
-                var bgHeight = (viewPortHeight - $('body').css('margin-top').replace('px','')) + 'px';
-                var pageOffset = viewPortHeight * 0.75;
-                var articleheight = $('.article').offset().height; // progress bar
-                var progressBar = $('.progress__bar');
-
-
-                $('.immersive__main__image').css('height', bgHeight);
-
-                $('figure.element--immersive').each(function(){
-                   if($(this).next().hasClass('element-pullquote')){
-                     $(this).next().addClass('quote--image');
-                     $(this).addClass('quote--overlay'); 
-                    }
-                    
-                   if($(this).next()[0].tagName === "H2"){
-                       $(this).next().addClass('title--image');
-                       $(this).addClass('title--overlay');
-                       $(this).next().next().addClass('has__dropcap');
-                   }
-                });
-
-                var selector = $('.quote--overlay').data('data-thing', '');
-                var caption = $('.quote--overlay figcaption');
-
-                bean.on(window, 'click', selector, function(){
-                   console.log('clicked');
-                   $(caption).toggleClass('display');
-                   
-               });
-
-                $('h2').each(function() {
-                    if ($(this).html() === '* * *') {
-                        $(this).html('').addClass('section__rule').next().addClass('has__dropcap');
-                        
-                    }
-
-                    
-                   var chapterPosition = $(this).offset().top;
-                   var chapterPositionPer = chapterPosition / articleheight * 100;
-                   var charPos = Math.floor(chapterPositionPer) + "%";
-                   var addChapeter = '<div style="position: absolute; left:'+ charPos + ';" class="chapter"></div>';
-                   $('.progress').append(addChapeter);
-                });
-
-                $('.element-pullquote').each(function(){
-                   var $this = $(this);
-                   var offset = $this.offset().top;
-                   
-                   $this.attr('data-offset',offset);
-                });
-
-                bean.on(window, 'scroll', function(){
-                   var scrollheight = window.scrollY / articleheight * 100; // progress bar
-                   var scrollerwidth = scrollheight + "%"; // progress bar
-                   $('.element-pullquote').each(function(){
-                        var $this = $(this);
-                        var dataOffset = $this.attr('data-offset');
-
-                        if(window.scrollY >= (dataOffset - pageOffset)){
-                            $this.addClass('animated').addClass('fadeInUp');
-                        } 
-                    });
-                  progressBar.css('width', scrollerwidth); 
-                });
-                
-                
+            if (!$('.immersive').length) {
+                return false;
             }
+
+            var viewPortHeight = bonzo.viewport().height,
+                bgHeight = (viewPortHeight - $('body').css('margin-top').replace('px','')) + 'px',
+                pageOffset = viewPortHeight * 0.75,
+                progressBar = $('.progress__bar');
+
+            // set header image height to viewport height
+            $('.article__header-image').css('height', bgHeight);
+
+            // for each element--immersive add extra classes depending on siblings
+            $('figure.element--immersive').each(function(){
+                if($(this).next().hasClass('element-pullquote')){
+                    $(this).next().addClass('quote--image');
+                    $(this).addClass('quote--overlay').data('data-thing', '');
+                }
+                
+                if($(this).next()[0].tagName === "H2"){
+                    $(this).next().addClass('title--image');
+                    $(this).addClass('title--overlay');
+                    $(this).next().next().addClass('has__dropcap');
+                }
+            });
+
+            // find all the section seperators & add classes
+            $('.article h2').each(function() {
+                if ($(this).html() === '* * *') {
+                    $(this).html('').addClass('section__rule').next().addClass('has__dropcap');
+                }
+            });
+
+            // create chapter markers
+            var articleHeight = $('.article').offset().height; // measure article height after other adjustments so it is accurate
+            modules.addProgressBarChapters(progressBar, articleHeight);
+
+            // store all pullquotes top offset for later
+            $('.element-pullquote').each(function(){
+               var $this = $(this),
+                    offset = $this.offset().top;
+               $this.attr('data-offset', offset);
+            });
+
+            // set up click event for displaying figcaption
+            bean.on(window, 'click.quote-overlay', $('.quote--overlay'), function(e) {
+                e.preventDefault();
+                $(this.querySelector('figcaption')).toggleClass('display');
+            });
+
+            // set up on scroll event for sliding pullquote into view and updating progress bar
+            bean.on(window, 'scroll.immersive', window.ThrottleDebounce.debounce(10, false, function () {
+                // slide pull-quotes into view
+                $('.element-pullquote').each(function(){
+                    var $this = $(this),
+                        dataOffset = $this.attr('data-offset');
+
+                    if(window.scrollY >= (dataOffset - pageOffset)) {
+                        $this.addClass('animated').addClass('fadeInUp');
+                    }
+                });
+
+                // update progress bar
+                modules.updateProgressBar(progressBar, articleHeight);
+            }));
+
+            // add a resize / orientation event to redraw the chapter positions for new article height
+            bean.on(window, 'resize.cards orientationchange.cards', window.ThrottleDebounce.debounce(100, false, function () {
+                // remeasure article height 
+                articleHeight = $('.article').offset().height; // measure article height after other adjustments so it is accurate
+
+                // empty the progress bar div 
+                progressBar.html('');
+
+                // redraw chapter markets
+                modules.addProgressBarChapters(progressBar, articleHeight);
+                
+                // update progress position
+                modules.updateProgressBar(progressBar, articleHeight);
+            }));
+
+            // call updateProgressBar on first load
+            modules.updateProgressBar(progressBar, articleHeight);
+        },
+
+        addProgressBarChapters: function(progressBar, articleHeight) {
+            $('.article h2').each(function() {
+                var chapterPosition = Math.floor(($(this).offset().top / articleHeight) * 100) + "%",
+                    thisChapter = '<div style="left:'+ chapterPosition + ';" class="progress__chapter"></div>';
+                progressBar.append(thisChapter);
+            });
+        },
+
+        updateProgressBar: function(progressBar, articleHeight) {
+            var scrollPosition = (window.scrollY / articleHeight * 100) + "%";
+            progressBar.css('width', scrollPosition);
         }
     },
 
