@@ -2842,10 +2842,12 @@
         line-height: 3.6rem; } }
   @media all and (min-width: 75em) {
     #sandbox .main-media {
-      padding-top: 12px; }
+      padding-top: 12px;
+      width: 100%; }
       #sandbox .main-media figure.element {
         margin: 0 auto 0 240px;
         padding: 0;
+        position: relative;
         width: 620px; }
       #sandbox .main-media .main-media__caption {
         border: none;
@@ -2921,6 +2923,7 @@
     @media all and (min-width: 75em) {
       #sandbox .meta__misc {
         margin: 0 auto 0 240px;
+        padding-left: 0;
         width: 620px; } }
   #sandbox .meta__pubdate {
     color: #999;
@@ -2980,11 +2983,10 @@
       #sandbox .section__live {
         font-size: 1.6rem; } }
   #sandbox .section__container {
-    position: relative;
-    float: left;
     border-bottom: 1px rgba(220, 218, 213, 0.4) dotted;
-    width: 100%;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    position: relative;
+    width: 100%; }
     #sandbox .section__container .section {
       color: #005689;
       font-family: "Guardian Egyptian Web", Georgia, serif;
@@ -4258,6 +4260,12 @@
     @media all and (min-width: 40.63em) {
       #sandbox .article--comment .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
         font-size: 5.2222em; } }
+  #sandbox .article--feature .article__header .section {
+    margin-bottom: 0; }
+  #sandbox .article--feature .article__header .main-media {
+    padding-top: 0; }
+  #sandbox .article--feature .article__header .headline {
+    margin-top: 12px; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis) .section,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis) .section__container .content__series-label,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis) .headline,
