@@ -7,76 +7,37 @@ category: Modules
 Display an alerts toggle.
 
 ```html_example
-<a class="alerts">
+<a class="alerts " href="x-gu://follow/tag-contributor///profile/nicholaswatt" data-follow-alert-id="tag-contributor///profile/nicholaswatt">
     <span class="alerts__state--unfollow">
-        <span data-icon="&#xe048;" aria-hidden="true"></span>
-        <span class="alerts__label">Follow contributor</span>
+        <span data-icon="" aria-hidden="true"></span>
+        <span class="alerts__label">Follow Nicholas Watt</span>
     </span>
     <span class="alerts__state--follow">
-        <span data-icon="&#xe049;" aria-hidden="true"></span>
-        <span class="alerts__label">Following contributor</span>
+        <span data-icon="" aria-hidden="true"></span>
+        <span class="alerts__label">Following Nicholas Watt</span>
     </span>
 </a>
 
-<a class="alerts following">
+<a class="alerts following" href="x-gu://follow/tag-contributor///profile/nicholaswatt" data-follow-alert-id="tag-contributor///profile/nicholaswatt">
     <span class="alerts__state--unfollow">
-        <span data-icon="&#xe048;" aria-hidden="true"></span>
-        <span class="alerts__label">Follow contributor</span>
+        <span data-icon="" aria-hidden="true"></span>
+        <span class="alerts__label">Follow Nicholas Watt</span>
     </span>
     <span class="alerts__state--follow">
-        <span data-icon="&#xe049;" aria-hidden="true"></span>
-        <span class="alerts__label">Following contributor</span>
+        <span data-icon="" aria-hidden="true"></span>
+        <span class="alerts__label">Following Nicholas Watt</span>
     </span>
 </a>
 ```
 */
 
 .alerts {
-    color: color(tone-news);
-    font-family: $agate-sans;
-    display: inline-block;
-
-    [data-icon]::before {
-        margin-right: 4px;
-        font-size: 85%;
-    }
-
-    .alerts__state--follow {
-        display: none;
-
-        [data-icon]::before {
-            color: color(tone-news-accent);
-        }
-    }
-
-    &.following {
-        .alerts__state--follow {
-            display: block;
-        }
-
-        .alerts__state--unfollow {
-            display: none;
-        }
-    }
-
-     .test--new-alerts & {
-        display: none;
-     }
-}
-
-.alerts__label {
-    font-weight: bold;
-}
-
-// new alerts
-
-.alerts--new {
     @include meta();
     font-family: $agate-sans;
     white-space: nowrap;
     padding: base-px(.3, 1, .7, 1);
-    margin: base-px(.5, 0, 0,-.3);
-    display: none;
+    margin: base-px(.5, 0, 0, -.3);
+    display: inline-block;
     border-radius: 30px;
     text-overflow: ellipsis;
     vertical-align: bottom;
@@ -86,17 +47,13 @@ Display an alerts toggle.
     border: 1px solid color(tone-news);
     transition: background-color 0.3s;
 
-    .cricket & {
-        display: inline-block;
-    }
-
     &:active,
     &.following {
         background-color: color(tone-news);
         color: color(shade-7);
     }
 
-    span[data-icon]{
+    span[data-icon] {
         display: inline-block;
         vertical-align: bottom;
         font-size: $body-size-2;
@@ -105,16 +62,16 @@ Display an alerts toggle.
         top: 1px;
     }
 
-    .alerts__label {
+    &__label {
         font-weight: normal;
     }
     
-    .alerts__state--follow {
+    &__state--follow {
         display: none;
     }
 
     &.following {
-        &:active{
+        &:active {
             color: color(tone-news);
             background-color: color(shade-7);
             border: 1px solid color(tone-news);
@@ -128,9 +85,4 @@ Display an alerts toggle.
             display: none;
         }
     }
-
-    .test--new-alerts & {
-        display: inline-block;
-    }
-
 }

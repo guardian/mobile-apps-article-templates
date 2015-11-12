@@ -1,13 +1,14 @@
 .tone--feature1,
 .tone--feature2,
-.tone--feature3  {
-    a,
-    .article__body > p:first-of-type:first-letter {
+.tone--feature3 {
+    .article a,
+    .container__action--sort a,
+    .comments__ordering {
         color: color(tone-feature1);
-    }
-
-    a:active {
-        color: color(tone-feature1-accent);
+        
+        &:active {
+            color: color(tone-feature1-accent);
+        }
     }
 
     .article__header,
@@ -20,8 +21,46 @@
         background-color: color(tone-feature1-accent);
     }
 
+    .comment__report,
+    .touchpoint--primary {
+        .touchpoint__label {
+            color: color(tone-feature1);
+        }
+        
+        &:active .touchpoint__label {
+            color: color(tone-feature1-accent);
+        }
+    }
+
+    .comments__viewmore {
+        .comments__viewmore--label {
+            color: color(tone-feature1);
+        }
+        
+        &:active .comments__viewmore--label {
+            color: color(tone-feature1-accent);
+        }
+    }
+
+    .section {
+        float: none;
+        margin-bottom: 0;
+    }
+
+    .main-media {
+        padding-top: 0;
+
+        figure {
+            position: relative;
+        }
+    }
+
     .article--feature {
         border-top-color: color(tone-feature1-accent);
+
+        .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p {
+            @include dropcap(color(tone-feature1));
+        }
 
         .prose p,
         .prose li {
@@ -32,9 +71,17 @@
         .table {
             border-top-color: color(tone-feature1-accent);
         }
-    }
 
-    .article--feature {
+        .prose .element-pullquote {
+            blockquote {
+                footer,
+                &::after,
+                &::before {
+                    color: color(tone-feature1);
+                }
+            }
+        }
+        
         .article__header {
             a {
                 color: #fff;
@@ -56,26 +103,29 @@
                 color: #fff;
             }
 
-            
+            .content__labels {
+                color: #fdadba;
+            }
 
-            /*.content__series-label.content__labels {
-                color: #FFF;
-            }*/
+            .content__series-label.content__labels {
+                color: #fff;
+            }
 
             .headline {
                 color: #fff;
                 position: relative;
                 z-index: 20;
+                margin-top: base-px(1);
 
                 @include mq($from: col2) {
-                    font-size: 3.5556em; // 64px
-                    font-weight: 100;
-                    line-height: .9375; // 60px
+                    font-size: 3.6rem;
+                    line-height: 3.6rem;
                 }
             }
 
             .standfirst {
                 color: #fff;
+
                 span {
                     color: rgba(#fff, .4);
                 }
@@ -83,6 +133,16 @@
                 strong {
                     color: #fff;
                     font-weight: normal;
+                }
+
+                @include mq($from: col4) {
+                    margin: 0;
+                    width: 100%;
+                    
+                    &__inner {
+                        margin-left: 240px;
+                        width: 620px;
+                    }
                 }
             }
 
@@ -98,7 +158,6 @@
                 color: #fff;
             }
         }
-        
 
         .section__container {
             border-color: color(tone-feature1-accent);
@@ -115,15 +174,16 @@
             border: 0;
             margin: 0;
 
-            a.alerts--new:active, a.alerts--new.following {
+            a.alerts:active,
+            a.alerts.following {
                 background-color: color(shade-7);
                 color: color(tone-feature1-accent);
             }
 
-            a.alerts--new,  a.alerts--new.following:active {
+            a.alerts,
+            a.alerts.following:active {
                 border-color: color(shade-7);
                 color: color(shade-7);
-                background-color: color(tone-feature1);
             }
         }
 
@@ -131,6 +191,30 @@
         .meta__pubdate {
             color: rgba(#fff, .8);
         }
+
+        .meta__misc {
+             @include mq($from: col4) {
+                padding: {
+                    left: 0;
+                    right: 0;
+                }
+            }
+        }
+
+        .sponsorship {
+            @include mq($from: col4) {
+                border-bottom: 0;
+            }
+        }
     }
-   
+
+    //TODO: specificity needed due to previous styles - improve
+    a.tell-me-when:active, a.tell-me-when.added {
+        background-color: color(tone-feature1-accent);
+        color: color(shade-7);
+    }
+    a.tell-me-when,  a.tell-me-when.added:active {
+        border-color: color(tone-feature1-accent);
+        color: color(tone-feature1-accent);
+    }
 }

@@ -6,43 +6,11 @@ category: Modules
 ---
 Create a placeholder tp allow an advert to be placed with an article.
 
-Banner
-
-```html_example
-<div class="advert-slot advert-slot--banner">
-    <div class="advert-slot__label">Advertisement</div>
-    <div class="advert-slot__wrapper">
-        <div class="advert-slot__wrapper__content">
-            <!-- Advert injected here using JavaScript -->
-        </div>
-    </div>
-</div>
-```
-
 MPU
 
 ```html_example
 <div class="advert-slot advert-slot--mpu">
     <div class="advert-slot__label">Advertisement</div>
-    <div class="advert-slot__wrapper">
-        <div class="advert-slot__wrapper__content">
-            <!-- Advert injected here using JavaScript -->
-        </div>
-    </div>
-</div>
-```
-
-Banner with Hide -- only works with `body[data-ads-enable-hiding="true"]`
-
-```html_example
-<div class="advert-slot advert-slot--banner">
-    <div class="advert-slot__label">
-        Advertisement
-        <a class="advert-slot__action" href="x-gu://subscribe" style="display: inline;">
-            Hide
-            <span data-icon="&#xe04F;"></span>
-        </a>
-    </div>
     <div class="advert-slot__wrapper">
         <div class="advert-slot__wrapper__content">
             <!-- Advert injected here using JavaScript -->
@@ -101,32 +69,6 @@ Banner with Hide -- only works with `body[data-ads-enable-hiding="true"]`
     }
 }
 
-// Banner-size advert
-.advert-slot--banner {
-    padding: base-px(0, 0, 1, 0);
-    width: 100%;
-
-    .advert-slot__label {
-        padding: base-px(.5, 0);
-        margin: 0 auto;
-    }
-
-    .advert-slot__wrapper {
-        padding-top: base-px(4);
-        margin: 0 auto;
-    }
-
-    .advert-slot__wrapper,
-    .advert-slot__label{
-        width: 320px;
-    }
-    @include mq($to: 321px){
-        .advert-slot__label{
-            width: 320px - 24px;
-        }
-    }
-}
-
 // MPU-size advert
 .advert-slot--mpu {
     border-top: 1px solid color(shade-4);
@@ -168,8 +110,6 @@ Banner with Hide -- only works with `body[data-ads-enable-hiding="true"]`
 
 // These classes are set on the body and determine the placement of adverts
 .advert-config--mobile {
-    &[data-ads-enabled='true'] .advert-slot--banner,
-    &[data-ads-enabled*='banner'] .advert-slot--banner,
     .advert-slot--mpu--mobile {
 
         margin: 0 auto;
@@ -197,7 +137,7 @@ Banner with Hide -- only works with `body[data-ads-enable-hiding="true"]`
     }
 }
 
-// This class hides the pre-inserted banner for subscribers
+// This class hides the pre-inserted advert for subscribers
 .advert-slot--false {
     display: none !important;
 }

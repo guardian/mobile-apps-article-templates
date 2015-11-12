@@ -9,6 +9,14 @@
         border-top-width: 0;
     }
 
+    @include mq($from: col4) {
+        margin: {
+            left: auto;
+            right: auto;
+        }
+        max-width: 1200px;
+    }
+
     .android & {
         border-top-width: 0;
     }
@@ -20,17 +28,33 @@
     }
 
     .section {
-        /*padding: base-px(.5, 1);*/
-        /*padding-bottom: 10px;*/
         margin-bottom: 5px;
     }
 
     .headline {
         padding: base-px(0, 1, 2.5, 1);
+
+        @include mq($from: col4) {
+            margin: 0 auto 0 240px;
+            padding: {
+                left: 0;
+                right: 0;
+            }
+            width: 620px;
+        }
     }
 
     .standfirst {
         padding: base-px(.5, 1, 1.5, 1);
+
+        @include mq($from: col4) {
+            margin: 0 auto 0 240px;
+            padding: {
+                left: 0;
+                right: 0;
+            }
+            width: 620px;
+        }
     }
 }
 
@@ -40,7 +64,7 @@
     // First figure/element in body should sit flush with .article__header
     & > .prose {
         .figure-wide,
-        .element {
+        .element:not(.figure--thumbnail) {
             &:first-child {
                 margin-top: base-px(-1);
             }
@@ -70,6 +94,10 @@
 
         @include mq($from: col3) {
             margin-right: -(cols($base-4, 5));
+        }
+
+        @include mq($from: col4) {
+            margin-right: -320px;
         }
     }
 

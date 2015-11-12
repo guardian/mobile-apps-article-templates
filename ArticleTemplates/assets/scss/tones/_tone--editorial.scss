@@ -1,0 +1,64 @@
+.tone--editorial {
+    .article__header {
+        background-color: color(tone-editorial-bg);
+        
+        .section > div {
+            color: color(tone-editorial); // Content Label Section
+        }
+        
+        .section__container,
+        .content__series-label,
+        .content__series-label a {
+            color: color(shade-2);  // Content Label Series
+        }
+
+        .section__container,
+        .comment-count {
+            border-color: rgba(color(shade-3), .5);
+        }
+
+        .comment-count a {
+            color: color(tone-editorial);
+        }
+
+        .meta {
+            background-color: color(tone-editorial);
+
+            .meta__byline .byline,
+            .meta__byline a, 
+            .comment-count,
+            .comment-count a {
+                color: color(shade-7);
+            }
+
+            .meta__pubdate {
+                color: color(shade-7);
+            }
+        }
+
+        .main-media__caption,
+        .sponsorship {
+            background-color: color(tone-editorial-bg);
+
+            @include mq($from: col4) {
+                background-color: (shade-7);
+            }
+        }
+    }
+
+    .article__body > .prose > p {
+        @include dropcap(color(tone-editorial));
+    }
+
+    .alerts:active,
+    .alerts.following {
+        background-color: color(shade-7);
+        color: color(tone-editorial);
+    }
+    
+    .alerts,
+    .alerts.following:active {
+        border-color: rgba(color(shade-7), .5);
+        color: color(shade-7);
+    }
+}

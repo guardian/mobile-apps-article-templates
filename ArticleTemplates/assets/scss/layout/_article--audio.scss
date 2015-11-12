@@ -1,13 +1,37 @@
 .article--audio {
     .article__header {
+        position: relative;
+        
+        .cutout__background {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
         .cutout__container {
             padding-right: 0;
             padding-bottom: base-px(7); // To avoid clashing with meta bar
             position: relative;
+            z-index: 1; // this is so it sits over the canvas background element;
+
+            @include mq($from: col4) {
+                margin-left: 0;
+                width: auto;
+
+                .headline {
+                    margin-left: 240px;
+                }
+            }
         }
 
         .headline {
-            padding-right: cols($base-3, 3, 1);
+            @include mq($from: col2) {
+                padding-right: cols($base-3, 3, 1);
+            }
+
+            @include mq($from: col4) {
+                padding-right: 0;
+            }
         }
 
         .meta {
@@ -34,7 +58,7 @@
         }
         &--mobile{
             border-bottom: 1px dotted color(shade-4);
-            padding: base-px(1, 1, 1, 1);
+            padding: base-px(1);
             display: block;
 
             @include mq($from: col2) {

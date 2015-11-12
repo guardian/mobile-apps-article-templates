@@ -50,6 +50,13 @@ Provide a summary of events:
 */
 
 [class*="block--live-"] {
+    @include mq($from: col4) {
+        padding: {
+            left: 20px;
+            right: 20px;
+        };
+    }
+
     .block__time {
         color: color(shade-2);
         font-family: $agate-sans;
@@ -68,13 +75,16 @@ Provide a summary of events:
         @include mq($from: col3) {
             width: cols($base-4, 5, 1);
         }
+
+        @include mq($from: col4) {
+            width: 220px;
+        }
     }
 
     .block__body {
         @include mq($from: col2) {
             float: left;
 
-            .quoted,
             .twitter-tweet, 
             .js-tweet {
                 position: relative;
@@ -99,6 +109,10 @@ Provide a summary of events:
 
         @include mq($from: col3) {
             width: cols($base-4, 11);
+        }
+
+        @include mq($from: col4) {
+            width: 620px;
         }
     }
 
@@ -125,7 +139,7 @@ Provide a summary of events:
             }
 
             &:last-child {
-                figcaption {
+                figcaption:not(.figure--thumbnail, .figure-wide, .figure--thumbnail-with-caption) {
                     border-bottom: 0;
                 }
             }

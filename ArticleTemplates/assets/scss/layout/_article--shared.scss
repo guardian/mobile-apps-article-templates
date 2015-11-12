@@ -13,17 +13,42 @@
             padding-right: cols($base-4, 4);
         }
 
-        // Images, video and interactives within article body
+        @include mq($from: col4) {
+            margin: 0 auto 0 240px;
+            padding: base-px(1, 0);
+            padding-right: 320px;
+            width: 940px;
+        }
+
+        // Images and video within article body
         .figure-wide,
         .element-video,
-        .element-placeholder,
-        .element-interactive {
+        .element-placeholder {
             margin-left: base-px(-1);
             margin-right: base-px(-1);
             width: auto;
 
             @include mq($from: col2) {
                 width: 135%;
+            }
+
+            @include mq($from: col4) {
+                margin-left: 0;
+                margin-right: 0;
+                width: 100%;
+            }
+        }
+
+        // Interactives within article body
+        .element-interactive {
+            width: auto;
+
+            @include mq(col2, col3) {
+                width: calc(#{(100% / (100% - cols($base-3, 3))) * 100%} - #{base-px(1)});
+            }
+
+            @include mq($from: col3) {
+                width: calc(#{(100% / (100% - cols($base-4, 4))) * 100%} - #{base-px(1)});
             }
         }
 
@@ -59,25 +84,6 @@
             width: cols($base-4, 4);
         }
     }
-
-    // Hide witness call-out until correctly positioned by JavaScript
-    // .aside-witness {
-    //     display: none;
-
-    //     &.js--positioned {
-    //         display: block;
-    //     }
-
-    //     .aside-witness__action {
-    //         .touchpoint__label {
-    //             margin: base-px(.5) 0;
-    //         }
-    //     }
-
-    //     .aside-witness__sponsor {
-    //         float: left;
-    //     }
-    // }
 }
 
 .article--standard,
@@ -105,12 +111,37 @@ body:not(.is-live) .article--liveblog {
                 width: cols($base-4, 4);
             }
         }
+
+        @include mq($from: col4) {
+            .headline,
+            .standfirst {
+                padding: {
+                    left: 0;
+                    right: 0;
+                }
+            }
+        }
     }
 }
 
-.article--comment,
-.article--feature {
-    .article__body > .prose > p {
+.article--comment {
+    .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p {
         @include dropcap();
+    }
+}
+
+.article--feature {
+    .article__header {
+        .section {
+            margin-bottom: 0;
+        }
+
+        .main-media {
+            padding-top: 0;
+        }
+
+        .headline {
+            margin-top: base-px(1);
+        }
     }
 }

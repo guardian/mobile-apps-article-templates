@@ -4,22 +4,12 @@
     <title>Audio</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/fonts.css" />
     <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/style-sync.css" />
-    <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/js/shim.js"></script>
+    <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/shim.js"></script>
 </head>
 
 <body class="tone--__SECTION_TONE__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__ advert-config--__ADS_CONFIG__ __IS_ADVERTISING__" data-content-type="audio" data-ads-enabled="__ADS_ENABLED__" data-ads-enable-hiding="__ADS_ENABLE_HIDING__" data-ads-config="__ADS_CONFIG__" style="margin-top: __ACTIONBARHEIGHT__px;" data-font-size="__FONT_SIZE_INT__"  data-template-directory="__TEMPLATES_DIRECTORY__"  data-page-id="__PAGE_ID__" data-mpu-after-paragraphs="__MPU_AFTER_PARAGRAPHS__" data-use-ads-ready="__ADS_FAST_CALLBACK__">
-    <div class="advert-slot advert-slot--banner advert-slot--__ADS_ENABLED__"  id="banner_container">
-        <div class="advert-slot__label">
-            Advertisement
-            <a class="advert-slot__action" href="x-gu://subscribe">
-                Hide
-                <span data-icon="&#xe04F;"></span>
-            </a>
-        </div>
-        <div class="advert-slot__wrapper"></div>
-    </div>
-
     <div class="article article--audio">
         <div class="article__header cutout">
             <div class="cutout__container" __CUTOUT__>
@@ -31,7 +21,7 @@
                         </div>
                         __COMMENT_CTA__
                     </div>
-                </div>                
+                </div>
                 <h1 class="headline selectable card__title--audio"><span class="card__titletext" id="headline">__TITLE__</span></h1>
                 <div class="meta">
                     <div class="meta__misc">
@@ -40,23 +30,24 @@
                         </div>
                         <p class="meta__pubdate"><span class="screen-readable">Published: </span><span id="published-date">__PUBDATE__</span></p>
                     </div>
-                    __COMMENT_CTA__
                 </div>
             </div>
 
-            <div class="audio-player">
-                <img class="audio-player__button--loading" src="__TEMPLATES_DIRECTORY__assets/img/loading.gif" alt="Loading…"/>
+            <div class="audio-player__wrapper">
+                <div class="audio-player">
+                    <img class="audio-player__button--loading" src="__TEMPLATES_DIRECTORY__assets/img/loading.gif" alt="Loading…"/>
 
-                <a class="audio-player__button touchpoint touchpoint--primary" id="audio-play-button" href="x-gu://playaudio/__AUDIO_URI__">
-                    <span class="touchpoint__button" data-icon="&#xe04b;" aria-hidden="true" id="audio-player-icon"></span>
-                    <span class="touchpoint__label screen-readable">Play</span>
-                </a>
+                    <a class="audio-player__button touchpoint touchpoint--primary" id="audio-play-button" href="x-gu://playaudio/__AUDIO_URI__">
+                        <span class="touchpoint__button play" data-icon="&#xe04b;" aria-hidden="true" id="audio-player-icon"></span>
+                        <span class="touchpoint__label screen-readable">Play</span>
+                    </a>
 
-                <div class="audio-player__slider">
-                    <input type="text" class="audio-player__slider__played" id="audio-scrubber" disabled/>
-                    <input type="text" class="audio-player__slider__remaining" id="audio-scrubber-left" disabled/>
-                    <div class="audio-player__slider__track"></div>
-                    <div class="audio-player__slider__knob" role="slider" id="audio-slider-knob"></div>
+                    <div class="audio-player__slider">
+                        <input type="text" class="audio-player__slider__played" id="audio-scrubber" disabled/>
+                        <input type="text" class="audio-player__slider__remaining" id="audio-scrubber-left" disabled/>
+                        <div class="audio-player__slider__track"></div>
+                        <div class="audio-player__slider__knob" role="slider" id="audio-slider-knob"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -67,7 +58,7 @@
 
         __SPONSORSHIP__
 
-        <div class="article__body">    
+        <div class="article__body">
 
             <div class="standfirst selectable" id="standfirst">
                 __STANDFIRST__

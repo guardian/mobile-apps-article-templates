@@ -17,8 +17,11 @@ var nativeFunctionCalls = [
     'articleCommentsInserter',
     'articleCardsInserter',
     'articleTagInserter',
+    'articleOutbrainInserter',
     'audioBackground',
     'superAudioSlider',
+    'audioPlay',
+    'audioStop',
     'commentsFailed',
     'articleCommentsFailed',
     'commentsClosed',
@@ -31,7 +34,8 @@ var nativeFunctionCalls = [
     'liveblogNewBlock',
     'getMpuPosCallback',
     'initMpuPoller',
-    'getBannerPosCallback'
+    'videoPositioning',
+    'getArticleHeight'
 ];
 
 Array.prototype.forEach.call(nativeFunctionCalls, function (name) {
@@ -66,9 +70,9 @@ window.initTemplate = function (opts) {
     var boot = function(){
         window.animFrame(function(){
             var script = document.createElement('script');
-            script.setAttribute('src', template_path + 'assets/js/components/require.js');
+            script.setAttribute('src', template_path + 'assets/build/components/require.js');
             script.setAttribute('id', 'gu');
-            script.setAttribute('data-js-dir', template_path + 'assets/js');
+            script.setAttribute('data-js-dir', template_path + 'assets/build');
             script.setAttribute('data-main', template_path + 'assets/build/app.js');
             if(options.skipStyle){
                 script.setAttribute('data-skip-style', 'true');
@@ -84,6 +88,3 @@ window.initTemplate = function (opts) {
         window.addEventListener('DOMContentLoaded', boot);
     }
 };
-
-
-

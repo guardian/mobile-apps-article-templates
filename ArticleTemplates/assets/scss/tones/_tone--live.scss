@@ -1,17 +1,15 @@
 .tone--liveBlog {
     .section__container {
-
         border-color: color(tone-live-highlight);
         color: color(tone-live-accent);
+    }
+
 
         /*.comment-count {
             border-left-color: color( shade-2);
         }*/
 
         //border-bottom: 1px rgba(#fff, .4) dotted; 
-    }
-
-
 
    /* .section {
         color: color(shade-7); // Default
@@ -22,38 +20,6 @@
         color: color(shade-7);
     }*/
 
-}
-
-.tone--liveBlog.is-live {
-    a.touchpoint{
-        &:active {
-            color: color(tone-live-accent);
-        }
-    }
-
-    .witness{
-        margin-top: base-px(1);
-
-        @include mq(col2, col3) {
-            margin-left: cols($base-3, 4, 1);
-        }
-        @include mq($from: col3) {
-            margin-left: cols($base-4, 5, 1);
-        }        
-    }    
-
-    #comments .touchpoint--primary {
-        .touchpoint__button {
-            background-color: color(tone-live);
-        }
-
-        &:active .touchpoint__button {
-            background-color: color(tone-live-accent);
-        }
-    }
-
-
-
     //EXTRA SPECIFICITY NEEDED - due to previous styling
     .section__container {
         .content__series-label,
@@ -62,163 +28,253 @@
             color: color(tone-live-accent);
         }
     }
+}
 
-
-    .alerts--new:active, .alerts--new.following {
-        background-color: color(tone-live);
-        color: color(shade-7);
-    }
-    
-    .alerts--new,  .alerts--new.following:active {
-        border-color: color(tone-live);
-        background-color: color(shade-7);
-        color: color(tone-live);
-    }
-
-    .article__header {
-        background-color: color(tone-live);
-        color: #fff;
-
-        a {
-            color: #fff;
-        }
-
-        .bullet,
-        ul > li {
-            &::before {
-                background-color: rgba(#fff, .8);
+.tone--liveBlog {
+    &.is-live {
+        a.touchpoint {
+            &:active {
+                color: color(tone-live-accent);
             }
         }
 
-        .headline,
-        .byline {
-            color: #fff;
-        }
-
-        .section{
-            position: relative;
-            @include mq($to: col1) {
-                padding-left: base-px(4.7); 
-            }
-            @include mq(col1, col2) {
-                padding-left: base-px(6.5);
-            }
-
+        .witness,
+        .alerts {
+            margin-top: base-px(1);
+            
             @include mq(col2, col3) {
-                padding-left: cols($base-3, 4, 1);
+                margin-left: cols($base-3, 4, 1);
             }
 
             @include mq($from: col3) {
-                padding-left: cols($base-4, 5, 1);
+                margin-left: cols($base-4, 5, 1);
+            }
+
+            @include mq($from: col4) {
+                margin-left: 240px;
             }
         }
 
-        .section__live {
-            display: block;
-        }
+        .comments__ordering {
+             color: color(tone-live);
 
-        .headline,
-        .standfirst {
-            @include mq(col2, col3) {
-                margin-left: cols($base-3, 4);
-            }
-
-            @include mq($from: col3) {
-                margin-left: cols($base-4, 5);
+            &:active {
+               color: color(tone-live-accent);
             }
         }
 
-        .standfirst {
-            color: rgba(#fff, .8);
+        .comment__report,
+        .comments .touchpoint--primary {
+            .touchpoint__button {
+                background-color: color(tone-live);
+            }
+
+            &:active .touchpoint__button {
+               background-color: color(tone-live-accent);
+            }
+
+            .touchpoint__label {
+                color: color(tone-live);
+            }
+            
+            &:active .touchpoint__label {
+                color: color(tone-live-accent);
+            }
+        }
+
+        .comments__viewmore {
+            .comments__viewmore--label {
+                color: color(tone-live);
+            }
+            
+            &:active .comments__viewmore--label {
+                color: color(tone-live-accent);
+            }
+        }
+
+        .alerts:active,
+        .alerts.following {
+            background-color: color(tone-live);
+            color: color(shade-7);
+        }
+
+        .alerts,
+        .alerts.following:active {
+            border-color: color(tone-live);
+            color: color(tone-live);
+        }
+
+        .article__header {
+            background-color: color(tone-live);
+            color: #fff;
 
             a {
                 color: #fff;
+
+                &:active {
+                    opacity: rgba(#fff, .8);
+                }
+            }
+
+            .bullet,
+            ul > li {
+                &::before {
+                    background-color: rgba(#fff, .8);
+                }
+            }
+
+            .headline,
+            .byline,
+            .section {
+                color: #fff;
+            }
+
+            .section {
+                position: relative;
+                
+                @include mq($to: col1) {
+                    padding-left: base-px(4.7); 
+                }
+
+                @include mq(col1, col2) {
+                    padding-left: base-px(6.5);
+                }
+
+                @include mq(col2, col3) {
+                    padding-left: cols($base-3, 4, 1);
+                }
+
+                @include mq($from: col3) {
+                    padding-left: cols($base-4, 5, 1);
+                }
+
+                @include mq($from: col4) {
+                    padding-left: 0;
+                }
+            }
+
+            .section__live {
+                display: block;
+            }
+
+            .headline,
+            .standfirst {
+                @include mq(col2, col3) {
+                    margin-left: cols($base-3, 4);
+                }
+
+                @include mq($from: col3) {
+                    margin-left: cols($base-4, 5);
+                }
+
+                @include mq($from: col4) {
+                    margin-left: 240px;
+                }
+            }
+
+            .standfirst {
+                color: rgba(#fff, .8);
+
+                a {
+                    color: #fff;
+                }
+            }
+
+            .sponsorship {
+                background-color: color(shade-7);
+                border-bottom: 0;
+
+                &__about-uri,
+                &__formatted-sponsor-name a {
+                    color: color(tone-live);
+                }
+            }
+
+            // Sponsorship alt text when sponsor logo unavailable
+            .sponsorship__logo {
+                color: color(shade-1);
             }
         }
 
-        .sponsorship {
-            background-color: color(shade-7);
-            border-bottom: none;
+        // Template specific styles
+        .article--liveblog {
+            border-top-color: color(tone-live-accent);
 
-            &__about-uri,
-            &__formatted-sponsor-name a {
+            .prose table,
+            .table {
+                border-top-color: color(tone-live);
+            }
+            
+            .cricket & {
+                border-top: none;
+            }
+
+            .prose .element-pullquote {
+                blockquote {
+                    footer,
+                    &::after,
+                    &::before {
+                        color: color(tone-live);
+                    }
+                }
+            }
+            
+            .meta {
+                background-color: color(tone-live-accent);
+                border: 0;
+                border-left: 1px dotted rgba(#fff, .2);
+                margin: 0;
+
+                @include mq(col2, col3) {
+                    padding-left: cols($base-3, 4);
+                }
+
+                @include mq($from: col3) {
+                    padding-left: cols($base-4, 5);
+                }
+
+                @include mq($from: col4) {
+                    padding-left: 0;
+                }
+            }
+
+            .meta__pubdate {
+                color: rgba(#fff, .8);
+            }
+
+            .comment-count {
+                border-left-color: rgba(color(shade-7), .4);
+            }
+
+            .tags {
+                .inline-list__item {
+                    a {
+                        @include tag-button(color(shade-1), color(blogs-tags));
+                    }
+                    &.more-button a {
+                        @include tag-more-button(color(shade-1), darken(color(blogs-tags),10%));
+                    }
+                }
+            }
+        }
+
+        .cricket & {
+            .alerts {
+                margin: 0;
+            }
+
+            a.alerts:active,
+            a.alerts.following {
+                background-color: color(tone-live);
+                color: color(shade-7);
+            }
+
+            a.alerts,
+            a.alerts.following:active {
+                border-color: color(tone-live);
+                background-color: transparent;
                 color: color(tone-live);
             }
         }
     }
-
-    // Template specific styles
-    .article--liveblog {
-        border-top-color: color(tone-live-accent);
-
-        .prose table,
-        .table {
-            border-top-color: color(tone-live);
-        }
-        
-        .cricket & {
-            border-top: none;
-        }
-     
-       
-        .meta {
-            background-color: color(tone-live-accent);
-            border: 0;
-            border-left: 1px dotted rgba(#fff, .2);
-            margin: 0;
-
-            @include mq(col2, col3) {
-                padding-left: cols($base-3, 4);
-
-                .alerts {
-                    width: cols($base-3, 4);
-                }
-
-            }
-
-            @include mq($from: col3) {
-                padding-left: cols($base-4, 5);
-
-                .alerts {
-                    width: cols($base-4, 5);
-                }
-            }
-        }
-
-        .meta__pubdate {
-            color: rgba(#fff, .8);
-        }
-
-        .tags {
-
-            .inline-list__item {
-                a {
-                    @include tag-button(color(shade-1), color(blogs-tags));
-                }
-                &.more-button a {
-                    @include tag-more-button(color(shade-1), darken(color(blogs-tags),10%));
-                }
-            }
-        
-        }
-
-    }
-
-    .cricket & {
-        .alerts--new{
-            margin: 0;
-        }
-         
-        a.alerts--new:active, a.alerts--new.following {
-            background-color: color(shade-3);
-            color: color(shade-7);
-        }
-
-        a.alerts--new,  a.alerts--new.following:active {
-            border-color: color(shade-4);
-            background-color: transparent;
-            color: color(shade-3);
-        }
-    }
-
 }

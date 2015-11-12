@@ -27,7 +27,7 @@ define([
                                 if (numOfComments == 1) {
                                     $(this).addClass("block--discussion-thread--orphan");
                                 } else {
-                                    $(blockID).after("<div class='more more--comments'><a class='more__label' data-icon='&#xe050;'><span class='more__text'> " + numOfComments + " more replies</span></a></div>");
+                                    $(blockID).after('<div class="more more--comments"><a class="more__label"><span class="more__icon" data-icon="&#xe050;" aria-hidden="true"></span><span class="more__text">' + numOfComments + ' more replies</span></a></div>');
                                 }
                             }
                         }
@@ -81,44 +81,44 @@ define([
                 };
                 // Global functions to handle comments, called by native code
                 window.articleCommentsInserter = function (html) {
-                    $('.loading--discussion').hide();
+                    $('.comments__block--loading').hide();
                     if (!html) {
-                        $('.block--discussion-empty').show();
+                        $('.comments__block--empty').show();
                     } else {
                         html = bonzo.create(html);
-                        $(html).appendTo('#comments .container__body');
+                        $(html).appendTo('.comments__container');
                         window.commentsReplyFormatting();
                     }
                 };
                 window.commentsInserter = function (html) {
                     if (!html) {
-                        $('.block--discussion-empty').show();
-                        $('.loading--discussion').hide();
+                        $('.comments__block--empty').show();
+                        $('.comments__block--loading').hide();
                     } else {
                         html = bonzo.create(html);
-                        $(html).appendTo($('#comments .container__body'));
+                        $(html).appendTo($('.comments__container'));
                         window.commentsReplyFormatting();
                     }
-                    $('.loading--discussion').appendTo($('#comments .container__body'));
+                    $('.comments__block--loading').appendTo($('.comments__container'));
                 };
                 window.articleCommentsFailed = function () {
-                    $('.block--discussion-failed').show();
-                    $('.loading--discussion').hide();
-                    $('#comments').addClass('comments-has-failed');
+                    $('.comments__block--failed').show();
+                    $('.comments__block--loading').hide();
+                    $('.comments').addClass('comments-has-failed');
                 };
                 window.commentsFailed = function () {
-                    $('.loading--discussion').hide();
-                    $('.block--discussion-failed').show();
-                    $('#comments .container__body').addClass('comments-has-failed');
+                    $('.comments__block--loading').hide();
+                    $('.comments__block--failed').show();
+                    $('.comments').addClass('comments-has-failed');
                 };
                 window.commentsEnd = function () {
-                    $('.loading--discussion').remove();
+                    $('.comments__block--loading').remove();
                 };
                 window.commentsClosed = function () {
-                    $("#comments, #discussion").addClass("comments--closed");
+                    $(".comments, #discussion").addClass("comments--closed");
                 };
                 window.commentsOpen = function () {
-                    $("#comments, #discussion").addClass("comments--open");
+                    $(".comments, #discussion").addClass("comments--open");
                 };
                 window.commentTime = function () {
                     relativeDates.init('.comment__timestamp', 'title');
@@ -134,9 +134,6 @@ define([
                     var target = 'div[id="' + id + '"] .comment__recommend';
                     $(target).removeClass('increase');
                     $(target + ' .comment__recommend__count').text(number);
-                };
-                window.scrollToComments = function () {
-                    window.location.href = '#comments';
                 };
                 window.applyNativeFunctionCall('articleCommentsInserter');
                 window.applyNativeFunctionCall('commentsInserter');

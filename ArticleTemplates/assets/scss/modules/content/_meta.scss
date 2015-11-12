@@ -18,14 +18,14 @@ Display an article's meta information.
                     <a href="x-gu://list/mobile-apps.guardianapis.com/lists/tag/profile/michaelbillington">Michael Billington</a>
                 </span>
             </span>
-            <a class="alerts" href="x-gu://follow/tag-contributor///profile/michaelbillington" data-follow-alert-id="tag-contributor///profile/michaelbillington">
+            <a class="alerts " href="x-gu://follow/tag-contributor///profile/nicholaswatt" data-follow-alert-id="tag-contributor///profile/nicholaswatt">
                 <span class="alerts__state--unfollow">
-                    <span data-icon="&#xe048;" aria-hidden="true"></span>
-                    <span class="alerts__label">Follow contributor</span>
+                    <span data-icon="" aria-hidden="true"></span>
+                    <span class="alerts__label">Follow Nicholas Watt</span>
                 </span>
                 <span class="alerts__state--follow">
-                    <span data-icon="&#xe049;" aria-hidden="true"></span>
-                    <span class="alerts__label">Following contributor</span>
+                    <span data-icon="" aria-hidden="true"></span>
+                    <span class="alerts__label">Following Nicholas Watt</span>
                 </span>
             </a>
         </div>
@@ -48,29 +48,24 @@ Display an article's meta information.
     width: 100%;
     display: table;
 
+    @include mq($from: col4) {
+        border: none;
+    }
+
     .avatar--author {
         margin: base-px(0, .75, 1, 0);
         float: left;
     }
-
-    .alerts {
-        margin: -.5em;
-        padding: .5em;
-        position: relative;
-        z-index: 2;
-
-
-        /*TODO  new versions of alerts shouldn't require this- so specificity bumped up temporarily
-            remove when one or the other has been chosen */
-        .alerts__label {
-            @extend %screen-readable;
-        }
-    }
-    
 }
 
 .meta__misc {
     padding: base-px(.6667, 1, 2, 1);
+
+     @include mq($from: col4) {
+        margin: 0 auto 0 240px;
+        padding-left: 0;
+        width: 620px;
+    }
 }
 
 .meta__pubdate {
@@ -100,10 +95,6 @@ Display an article's meta information.
 
     @include mq($from: col3) {
         width: cols($base-4, 4);
-    }
-
-    .test--new-alerts .meta & {
-        display: none;
     }
 }
 

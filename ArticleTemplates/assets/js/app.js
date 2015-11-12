@@ -10,6 +10,8 @@ require.config({
         d3: '../../../node_modules/d3/d3',
         domReady: '../../../node_modules/domready/ready',
         mobileSlider: 'components/mobile-range-slider',
+        throttleDebounce: 'components/throttle-debounce',
+        flipSnap: 'components/flipsnap',
         fastClick: '../../../node_modules/fastclick/lib/fastclick',
         qwery: '../../../node_modules/qwery/qwery',
         fence: '../../../node_modules/fence/fence',
@@ -101,14 +103,13 @@ require([
         link.rel = "stylesheet";
         link.href = basePath + url;
         document.getElementsByTagName("head")[0].appendChild(link);
-    }    
+    }
 
     // async styles 
     var scriptTag = document.getElementById('gu');
     var skipStyle = scriptTag.getAttribute('data-skip-style');
 
-    if(!skipStyle){
+    if (!skipStyle) {
         loadCss('assets/css/style-async.css');
     }
-
 });

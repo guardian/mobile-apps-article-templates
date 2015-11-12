@@ -1,10 +1,19 @@
 .tone--review {
-
-    .article{
+    .article {
         border-top-color: color(tone-review-accent);
+
+        .prose .element-pullquote {
+            blockquote {
+                footer,
+                &::before,
+                &::after {
+                    color: color(tone-review-accent);
+                }
+            }
+        }
     }
 
-    .extras{
+    .extras {
         padding-top: 1px;
         background-color: color(shade-7);
     }
@@ -12,9 +21,13 @@
     .article__header {
         background-color: color(tone-review);
        
-         .section__container {
+        .section__container {
             border-color: color(tone-review-accent);
-         }
+        }
+
+        .section > div {
+            color: color(tone-review-accent); // Content Label Section
+        }
         
         .section__container,
         .content__series-label,
@@ -27,21 +40,23 @@
             color: color(tone-review-accent);
         }
 
-
         .headline {
             color: color(shade-7); // Headline
-            padding: base-px(0, 1, 2.5, 1);
+
             p.review-rating {
-                padding-top: base-px(.7);
                 @include rating;
+                padding-top: base-px(.7);
             }
         }
+
         .standfirst {
             color: color(shade-7);
         }
+
         .selectable a {
             color: color(shade-7) !important;
         }
+
         .meta {
             background-color: color(tone-review-meta-background);
 
@@ -51,17 +66,85 @@
             .comment-count a {
                 color: color(tone-review-accent);
             }
-            .meta__pubdate{
-               color: color(shade-7);
+            .meta__pubdate {
+                color: color(shade-7);
             }
         }
-        .main-media__caption {
-            background-color: color(shade-7);
-        }
-        .sponsorship {
-            background-color: color(shade-7);   
+
+        .meta__misc {
+             @include mq($from: col4) {
+                padding: {
+                    left: 0;
+                    right: 0;
+                }
+            }
         }
 
+        .main-media__caption,
+        .sponsorship {
+            background-color: color(shade-7);
+
+            @include mq($from: col4) {
+                border-bottom: 0;
+            }
+        }
+
+        .main-media {
+            @include mq($from: col4) {
+                background-color: color(shade-7);
+            }
+        }
     }
 
+    .comment__report,
+    .touchpoint--primary {
+        .touchpoint__button {
+            background-color: color(tone-media);
+        }
+
+        &:active .touchpoint__button {
+            background-color: color(tone-review-accent);
+        }
+
+        .touchpoint__label {
+            color: color(tone-media);
+        }
+        
+        &:active .touchpoint__label {
+            color: color(tone-review-accent);
+        }
+    }
+
+    .comments__viewmore {
+        .comments__viewmore--label {
+            color: color(tone-media);
+        }
+        
+        &:active .comments__viewmore--label {
+            color: color(tone-review-accent);
+        }
+    }
+
+    .alerts:active,
+    .alerts.following {
+        background-color: color(tone-review-accent);
+        color: color(tone-review);
+    }
+
+    .alerts,
+    .alerts.following:active {
+        border-color: color(tone-review-accent);
+        color: color(tone-review-accent);
+    }
+
+    //TODO: specificity needed due to previous styles - improve
+    a.tell-me-when:active, a.tell-me-when.added {
+        background-color: color(tone-review-accent);
+        color: color(shade-7);
+    }
+
+    a.tell-me-when,  a.tell-me-when.added:active {
+        border-color: color(tone-review-accent);
+        color: color(tone-media);
+    }
 }

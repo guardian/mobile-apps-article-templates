@@ -47,7 +47,7 @@ module.exports = function(grunt) {
                                 }
                             }
                         },
-                        generateSourceMaps: true,
+                        generateSourceMaps: false,
                         preserveLicenseComments: false,
                         useSourceUrl: false,
                         removeCombined: true,
@@ -73,7 +73,8 @@ module.exports = function(grunt) {
 
         rsync: {
             options: {
-                recursive: true
+                recursive: true,
+                delete: true
             },
             android: {
                 options: {
@@ -93,13 +94,16 @@ module.exports = function(grunt) {
 
         sass: {
             dev: {
+                options: {
+                    sourcemap: 'none'
+                },
                 files: {
-                    'ArticleTemplates/assets/css/interactive.css':  'ArticleTemplates/assets/scss/interactive.scss',
-                    'ArticleTemplates/assets/css/style.css':  'ArticleTemplates/assets/scss/style.scss',
-                    'ArticleTemplates/assets/css/style-async.css':  'ArticleTemplates/assets/scss/style-async.scss',
-                    'ArticleTemplates/assets/css/style-sync.css':  'ArticleTemplates/assets/scss/style-sync.scss',
+                    'ArticleTemplates/assets/scss/fonts.css':  'ArticleTemplates/assets/scss/fonts.scss',
+                    'ArticleTemplates/assets/scss/interactive.css':  'ArticleTemplates/assets/scss/interactive.scss',
+                    'ArticleTemplates/assets/scss/style-async.css':  'ArticleTemplates/assets/scss/style-async.scss',
+                    'ArticleTemplates/assets/scss/style-sync.css':  'ArticleTemplates/assets/scss/style-sync.scss',
                     'test/unit/test.css':  'ArticleTemplates/assets/scss/test.scss'
-                }
+                } 
             },
             doc: {
                 files: {
@@ -108,11 +112,24 @@ module.exports = function(grunt) {
             }
         },
 
+        cssmin: {
+            target: {
+                files: [{
+                    expand: true,
+                    cwd: 'ArticleTemplates/assets/scss',
+                    src: ['*.css', '!*.min.css'],
+                    dest: 'ArticleTemplates/assets/css',
+                    ext: '.css'
+                }]
+            }
+        },
+
         scsslint: {
             options: {
                 bundleExec: true,
                 config: 'ArticleTemplates/assets/scss/.scss-lint.yml',
-                force: true
+                force: true,
+                maxBuffer: 300 * 1024
             },
             dev: [
                 'ArticleTemplates/assets/scss/**/*.scss',
@@ -214,7 +231,7 @@ module.exports = function(grunt) {
         shell: {
             android: {
                 command: function(){
-                    return 'echo "Building Android app with gradle" && cd ' + config.base.android + '../../../../../../ && export BUILD_NUMBER=' + grunt.option('card') || "000"  + '  && ./gradlew zipTemplates > android-build.log && ./gradlew assembleDebug >> android-build.log && cp android-news-app/build/outputs/apk/android-news-app-debug.apk ' + config.base.html;
+                    return 'echo "Building Android app with gradle" && cd ' + config.base.android + '../../../../../../ && export BUILD_NUMBER=' + (grunt.option('card') || "000") + '  && ./gradlew zipTemplates > android-build.log && ./gradlew assembleDebug >> android-build.log && cp android-news-app/build/outputs/apk/android-news-app-debug.apk ' + config.base.html;
                 }
             },
             ios: {
@@ -223,7 +240,7 @@ module.exports = function(grunt) {
                         maxBuffer: 30000000
                     }
                 },
-                command: ' echo "Building iOS app with xcodebuild" && cd ' + config.base.ios + '../../GLA/ && xcodebuild clean build -sdk iphoneos8.4 -configuration Debug -workspace GLA.xcworkspace -scheme GLADebug -derivedDataPath ' + config.base.html + ' > ios-build.log && xcrun -sdk iphoneos8.4 PackageApplication -v ' + config.base.html + 'Build/Products/Debug-iphoneos/GLA.app -o ' + config.base.html + 'guardian-debug.ipa --sign "' + config.ios.sign + '" --embed "' + config.ios.provisioning + '" >> ios-build.log'
+                command: ' echo "Building iOS app with xcodebuild" && cd ' + config.base.ios + '../../GLA/ && xcodebuild clean build -configuration Debug -workspace GLA.xcworkspace -scheme GLADebug -derivedDataPath ' + config.base.html + ' > ios-build.log && xcrun -sdk iphoneos9.0 PackageApplication -v ' + config.base.html + 'Build/Products/Debug-iphoneos/GLA.app -o ' + config.base.html + 'guardian-debug.ipa' + ' --embed "' + config.ios.provisioning + '" >> ios-build.log'
             },
             timeline: {
                 command: function(){
@@ -252,9 +269,10 @@ module.exports = function(grunt) {
     });
 
     grunt.task.run('notify_hooks');
-
     grunt.registerTask('develop', ['build', 'express', 'watch']);
-    grunt.registerTask('build', ['initRequireJS', 'jshint', 'requirejs', 'scsslint','sass:dev']);
+    grunt.registerTask('build', ['initRequireJS', 'jshint', 'requirejs', 'scsslint','sass:dev','cssmin']);
+    grunt.registerTask('buildJS', ['initRequireJS', 'jshint', 'requirejs']);
+    grunt.registerTask('buildCSS', ['scsslint','sass:dev','cssmin']);
     grunt.registerTask('apk', ['build', 'rsync', 'shell:android']);
     grunt.registerTask('ipa', ['build', 'rsync', 'shell:ios']);
     grunt.registerTask('installer', ['build', 'rsync', 'shell:ios', 'shell:android']);

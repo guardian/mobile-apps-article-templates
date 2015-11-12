@@ -24,16 +24,31 @@ Play a piece of audio, i.e. a podcast.
 </div>
 ```
 */
+.audio-player__wrapper {
+    @include mq($from: col4) {
+        background-color: color(shade-1);
+    }
+}
 
 .audio-player {
     background-color: color(shade-1);
     padding: base-px(1);
-    display: table;
+    padding-left: 68px;
+    position: relative;
+    height: 68px;
     width: 100%;
+    z-index: 1;
+
+    @include mq($from: col4) {
+        width: 620px;
+        margin-left: 240px;
+    }
 }
 
 .audio-player__button {
-    margin: base-px(0, 1, 0, 0);
+    position: absolute;
+    top: base-px(1);
+    left: base-px(1);
 
     &.touchpoint--primary .touchpoint__button {
         color: color(shade-1);
@@ -46,8 +61,9 @@ Play a piece of audio, i.e. a podcast.
 }
 
 .audio-player__button--loading {
-    vertical-align: middle;
-    margin: base-px(0, 1, 0, 0);
+    position: absolute;
+    top: base-px(1);
+    left: base-px(1);
     width: 44px;
     height: 44px;
     background-color: rgba(255, 255, 255, 1);
@@ -61,8 +77,7 @@ Play a piece of audio, i.e. a podcast.
 
 .audio-player__slider {
     outline: 0;
-    display: table-cell;
-    height: 40px;
+    height: 100%;
     width: 100%;
     position: relative;
     -webkit-user-select: none;
@@ -73,9 +88,9 @@ Play a piece of audio, i.e. a podcast.
 
 .audio-player__slider__played,
 .audio-player__slider__remaining {
+    @include meta;
     color: #fff;
     opacity: 1;
-    @include meta();
     font-family: $agate-sans;
     font-weight: normal;
     background: transparent;
@@ -92,19 +107,18 @@ Play a piece of audio, i.e. a podcast.
 }
 
 .audio-player__slider__track {
-    text-align: center;
     background-color: color(shade-3);
     height: 2px;
     width: 100%;
     position: absolute;
-    top: 29px;
+    top: calc(50% + 9px);
     right: 0;
     left: 0;
 }
 
 .audio-player__slider__knob {
     background-color: color(tone-media-accent);
-    margin-top: 22px;
+    margin-top: 24px;
     border-radius: 50%;
     padding: 0;
     height: 16px;
