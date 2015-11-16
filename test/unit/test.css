@@ -413,7 +413,6 @@
       <div class="comment-count">
           <a href="#comments" data-scroll>
               <span data-icon="&#xe03c;" aria-hidden="true"></span> 2
-              <span class="comment-count__label">Comments</span>
           </a>
       </div>
   </div> 
@@ -2946,9 +2945,6 @@
     @media all and (min-width: 56.25em) {
       #sandbox .comment-count {
         width: 24.21053%; } }
-  @media all and (max-width: 40.62em) {
-    #sandbox .comment-count__label {
-      display: none; } }
   #sandbox .review-rating {
     color: #484848; }
     @media all and (min-width: 28.13em) {
@@ -3006,6 +3002,7 @@
   #sandbox .section__container {
     background: #ececec;
     border-bottom: 1px solid rgba(220, 218, 213, 0.4);
+    min-height: 43px;
     margin-bottom: 10px;
     position: relative;
     width: 100%; }
@@ -3092,12 +3089,11 @@
         #sandbox .content__container .content__labels__container {
           padding-left: 0; } }
   #sandbox .section__container .comment-count {
-    font-size: 1em;
-    font-family: "Guardian Agate Sans 1 Web", sans-serif;
-    font-weight: bold;
-    vertical-align: top;
+    border-left: 1px dotted #bdbdbd;
+    display: table-cell;
+    font: bold 1em "Guardian Agate Sans 1 Web", sans-serif;
     padding: 6px 6px 12px 12px;
-    display: table-cell; }
+    vertical-align: top; }
     @media all and (max-width: 28.12em) {
       #sandbox .section__container .comment-count {
         width: 21.73913%; } }
@@ -3115,8 +3111,6 @@
         padding-right: 0; } }
     .meta #sandbox .section__container .comment-count {
       display: none; }
-  #sandbox .comment-count__label {
-    display: none; }
   #sandbox .article__header h1 {
     clear: both; }
   #sandbox .standfirst {
@@ -3236,6 +3230,7 @@
     background: #ececec;
     border-bottom: 1px solid #cc2b12;
     color: #b51800;
+    min-height: 43px;
     padding: 5px 12px; }
     #sandbox .cricket-match-comp-info h1 {
       font-family: "Guardian Egyptian Web", Georgia, serif;
@@ -4082,8 +4077,6 @@
         top: 3px; }
       #sandbox .article--liveblog .article__header .meta {
         position: relative; }
-      #sandbox .article--liveblog .article__header .comment-count__label {
-        display: none; }
     @media all and (min-width: 75em) {
       #sandbox .article--liveblog .main-media {
         padding: 12px 0px; }
@@ -5445,10 +5438,7 @@
   #sandbox .tone--liveBlog .section__container,
   #sandbox .tone--liveBlog.is-live .section__container {
     border-color: #cc2b12;
-    color: #cc2b12; }
-    #sandbox .tone--liveBlog .section__container > div,
-    #sandbox .tone--liveBlog.is-live .section__container > div {
-      color: #cc2b12; }
+    color: #b51800; }
     #sandbox .tone--liveBlog .section__container .content__series-label,
     #sandbox .tone--liveBlog .section__container .content__series-label a,
     #sandbox .tone--liveBlog .section__container .comment-count a,
@@ -5458,7 +5448,7 @@
       color: #b51800; }
     #sandbox .tone--liveBlog .section__container .content__labels:first-child::before,
     #sandbox .tone--liveBlog.is-live .section__container .content__labels:first-child::before {
-      color: #cc2b12; }
+      color: #b51800; }
   #sandbox .tone--liveBlog.is-live a.touchpoint:active {
     color: #cc2b12; }
   #sandbox .tone--liveBlog.is-live .witness,
@@ -5617,10 +5607,11 @@
   #sandbox .tone--media .witness .witness__sponsor-logo {
     fill: #fff; }
   #sandbox .tone--media .section__container {
-    border-color: #ffbb00;
+    border-color: #fb0;
     color: #333; }
     #sandbox .tone--media .section__container .content__series-label,
-    #sandbox .tone--media .section__container .content__series-label a {
+    #sandbox .tone--media .section__container .content__series-label a,
+    #sandbox .tone--media .section__container .comment-count a {
       color: #333; }
     #sandbox .tone--media .section__container .content__labels:first-child::before {
       color: #fb0; }
@@ -5848,13 +5839,11 @@
     color: #fff; }
   #sandbox .tone--podcast .section__container {
     border-color: #aad8f1;
-    color: #333; }
-    #sandbox .tone--podcast .section__container > div {
-      color: #a7d8f2; }
+    color: #484848; }
     #sandbox .tone--podcast .section__container .content__series-label,
     #sandbox .tone--podcast .section__container .content__series-label a,
     #sandbox .tone--podcast .section__container .comment-count a {
-      color: #333; }
+      color: #484848; }
     #sandbox .tone--podcast .section__container .content__labels:first-child::before {
       color: #a7d8f2; }
   #sandbox .tone--podcast .audio-player__button.touchpoint--primary .touchpoint__button {
@@ -5923,15 +5912,11 @@
     background-color: #615b52; }
     #sandbox .tone--review .article__header .section__container {
       border-color: #ffce4b; }
-    #sandbox .tone--review .article__header .section > div {
-      color: #ffce4b; }
     #sandbox .tone--review .article__header .section__container,
     #sandbox .tone--review .article__header .content__series-label,
     #sandbox .tone--review .article__header .content__series-label a,
     #sandbox .tone--review .article__header .section__container .comment-count a {
       color: #615b52; }
-    #sandbox .tone--review .article__header .comment-count a {
-      color: #ffce4b; }
     #sandbox .tone--review .article__header .headline {
       color: #fff; }
       #sandbox .tone--review .article__header .headline p.review-rating {
@@ -6004,13 +5989,13 @@
   #sandbox .tone--special .article__header {
     background-color: #63717a; }
     #sandbox .tone--special .article__header .section > div {
-      color: #aad8f1; }
+      color: #63717a; }
     #sandbox .tone--special .article__header .section__container {
       border-color: #aad8f1; }
     #sandbox .tone--special .article__header .section__container,
     #sandbox .tone--special .article__header .content__series-label,
     #sandbox .tone--special .article__header .content__series-label a {
-      color: #fff; }
+      color: #63717a; }
     #sandbox .tone--special .article__header .comment-count a {
       color: #aad8f1; }
     #sandbox .tone--special .article__header .headline {

@@ -34,7 +34,6 @@ Display an article's meta information.
     <div class="comment-count">
         <a href="#comments" data-scroll>
             <span data-icon="&#xe03c;" aria-hidden="true"></span> 2
-            <span class="comment-count__label">Comments</span>
         </a>
     </div>
 </div> 
@@ -94,11 +93,5 @@ Display an article's meta information.
 
     @include mq($from: col3) {
         width: cols($base-4, 4);
-    }
-}
-
-.comment-count__label {
-    @include mq($to: col2) {
-        display: none;
     }
 }

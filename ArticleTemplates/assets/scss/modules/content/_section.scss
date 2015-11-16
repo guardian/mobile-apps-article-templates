@@ -48,6 +48,7 @@ With live indicator:
 .section__container {
     background: color(global-section-band);
     border-bottom: 1px solid rgba(color(shade-4), .4);
+    min-height: 43px;
     margin-bottom: 10px;
     position: relative;
     width: 100%;
@@ -115,13 +116,12 @@ With live indicator:
 }
 
 .section__container .comment-count {
-    font-size: 1em;
-    font-family: $agate-sans;
-    font-weight: bold;
-    vertical-align: top;
-    padding: base-px(.5, .5, 1, 1);
+    border-left: 1px dotted color(neutral-3);
     display: table-cell;
-
+    font: bold 1em $agate-sans;
+    padding: base-px(.5, .5, 1, 1);
+    vertical-align: top;
+    
     @include mq($to: col1) {
         width: cols($base-1, 1);
     }
@@ -145,10 +145,6 @@ With live indicator:
     .meta & {
         display: none;
     }
-}
-
-.comment-count__label {
-    display: none;
 }
 
 .article__header h1 {
