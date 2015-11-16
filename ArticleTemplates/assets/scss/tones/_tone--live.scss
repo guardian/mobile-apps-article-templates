@@ -18,8 +18,12 @@
             }
         }
 
-        .witness,
         .alerts {
+            margin-top: base-px(1);
+            margin-left: 0;
+        }
+
+        .witness {
             margin-top: base-px(1);
             
             @include mq(col2, col3) {
@@ -74,14 +78,14 @@
 
         .alerts:active,
         .alerts.following {
-            background-color: color(tone-live);
-            color: color(shade-7);
+            background-color: color(shade-7);
+            color: color(tone-live);
         }
 
         .alerts,
         .alerts.following:active {
-            border-color: color(tone-live);
-            color: color(tone-live);
+            border-color: color(shade-7);
+            color: color(shade-7);
         }
 
         .article__header {
