@@ -1,16 +1,22 @@
-.tone--liveBlog {
+.tone--liveBlog,
+.tone--liveBlog.is-live {
     .section__container {
-        border-bottom: 1px rgba(#fff, .4) dotted; 
-    }
+        border-color: color(tone-live-rule);
+        color: color(tone-live);
 
-    .section {
-        color: color(shade-7); // Default
-    }
+        .content__series-label,
+        .content__series-label a, 
+        .comment-count a {
+            color: color(tone-live);
+        }
 
-    .content__series-label {
-        color: color(shade-7);
+        .content__labels:first-child::before {
+            color: color(tone-live);
+        }
     }
-    
+}
+
+.tone--liveBlog {
     &.is-live {
         a.touchpoint {
             &:active {
@@ -108,8 +114,7 @@
             }
 
             .headline,
-            .byline,
-            .section {
+            .byline {
                 color: #fff;
             }
 
@@ -224,10 +229,6 @@
 
             .meta__pubdate {
                 color: rgba(#fff, .8);
-            }
-
-            .comment-count {
-                border-left-color: rgba(color(shade-7), .4);
             }
 
             .tags {

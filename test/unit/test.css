@@ -413,7 +413,6 @@
       <div class="comment-count">
           <a href="#comments" data-scroll>
               <span data-icon="&#xe03c;" aria-hidden="true"></span> 2
-              <span class="comment-count__label">Comments</span>
           </a>
       </div>
   </div> 
@@ -2928,6 +2927,24 @@
   #sandbox .meta__pubdate {
     color: #999;
     font-family: "Guardian Agate Sans 1 Web", sans-serif; }
+  #sandbox .comment-count {
+    font-family: "Guardian Agate Sans 1 Web", sans-serif;
+    font-weight: bold;
+    vertical-align: top;
+    padding: 6px 6px 12px 12px;
+    display: table-cell; }
+    @media all and (max-width: 28.12em) {
+      #sandbox .comment-count {
+        width: 21.73913%; } }
+    @media all and (min-width: 28.13em) and (max-width: 40.62em) {
+      #sandbox .comment-count {
+        width: 23.40426%; } }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      #sandbox .comment-count {
+        width: 23.94366%; } }
+    @media all and (min-width: 56.25em) {
+      #sandbox .comment-count {
+        width: 24.21053%; } }
   #sandbox .review-rating {
     color: #484848; }
     @media all and (min-width: 28.13em) {
@@ -2983,7 +3000,9 @@
       #sandbox .section__live {
         font-size: 1.6rem; } }
   #sandbox .section__container {
-    border-bottom: 1px rgba(220, 218, 213, 0.4) dotted;
+    background: #ececec;
+    border-bottom: 1px solid rgba(220, 218, 213, 0.4);
+    min-height: 43px;
     margin-bottom: 10px;
     position: relative;
     width: 100%; }
@@ -3069,32 +3088,29 @@
       @media all and (min-width: 75em) {
         #sandbox .content__container .content__labels__container {
           padding-left: 0; } }
-  #sandbox .comment-count {
-    font-family: "Guardian Agate Sans 1 Web", sans-serif;
-    font-weight: bold;
-    vertical-align: top;
-    border-left: 1px rgba(220, 218, 213, 0.4) dotted;
+  #sandbox .section__container .comment-count {
+    border-left: 1px dotted #bdbdbd;
+    display: table-cell;
+    font: bold 1em "Guardian Agate Sans 1 Web", sans-serif;
     padding: 6px 6px 12px 12px;
-    display: table-cell; }
+    vertical-align: top; }
     @media all and (max-width: 28.12em) {
-      #sandbox .comment-count {
+      #sandbox .section__container .comment-count {
         width: 21.73913%; } }
     @media all and (min-width: 28.13em) and (max-width: 40.62em) {
-      #sandbox .comment-count {
+      #sandbox .section__container .comment-count {
         width: 23.40426%; } }
     @media all and (min-width: 40.63em) and (max-width: 56.24em) {
-      #sandbox .comment-count {
+      #sandbox .section__container .comment-count {
         width: 23.94366%; } }
     @media all and (min-width: 56.25em) {
-      #sandbox .comment-count {
+      #sandbox .section__container .comment-count {
         width: 24.21053%; } }
     @media all and (min-width: 75em) {
-      #sandbox .comment-count {
+      #sandbox .section__container .comment-count {
         padding-right: 0; } }
-    .meta #sandbox .comment-count {
+    .meta #sandbox .section__container .comment-count {
       display: none; }
-  #sandbox .comment-count__label {
-    display: none; }
   #sandbox .article__header h1 {
     clear: both; }
   #sandbox .standfirst {
@@ -3211,8 +3227,10 @@
       #sandbox .cricket .tone--deadBlog .article__header--cricket .cricket-match-basic-follow a:active {
         color: #fff; }
   #sandbox .cricket-match-comp-info {
-    background: #cc2b12;
-    color: #fff;
+    background: #ececec;
+    border-bottom: 1px solid #cc2b12;
+    color: #b51800;
+    min-height: 43px;
     padding: 5px 12px; }
     #sandbox .cricket-match-comp-info h1 {
       font-family: "Guardian Egyptian Web", Georgia, serif;
@@ -3435,14 +3453,14 @@
 @-webkit-keyframes fadeOutIn {
   7% {
     opacity: 1; }
-  93% {
+  93.0% {
     opacity: 1; }
   to {
     opacity: 0; } }
 @keyframes fadeOutIn {
   7% {
     opacity: 1; }
-  93% {
+  93.0% {
     opacity: 1; }
   to {
     opacity: 0; } }
@@ -3918,7 +3936,6 @@
         top: 0.3em; }
   #sandbox .article {
     background-color: #fff;
-    border-top: 4px solid #4bc6df;
     border-bottom: 2px solid #dcdad5;
     overflow: hidden;
     margin-bottom: 48px; }
@@ -4053,7 +4070,6 @@
       #sandbox .article--liveblog .article__header .section {
         position: relative; }
       #sandbox .article--liveblog .article__header .section__live {
-        color: #fff;
         padding: 2px 0px 2px 0px;
         display: none;
         position: absolute;
@@ -4061,8 +4077,6 @@
         top: 3px; }
       #sandbox .article--liveblog .article__header .meta {
         position: relative; }
-      #sandbox .article--liveblog .article__header .comment-count__label {
-        display: none; }
     @media all and (min-width: 75em) {
       #sandbox .article--liveblog .main-media {
         padding: 12px 0px; }
@@ -4331,8 +4345,7 @@
     color: #fff;
     text-shadow: 0 0 4px rgba(0, 0, 0, 0.5); }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis) .section__container,
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis) .article,
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis) .comment-count {
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis) .article {
     border-color: #878787; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--deadBlog .article--liveblog .article__header .section,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--deadBlog .article--liveblog .article__header .section > div,
@@ -4351,13 +4364,11 @@
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .section__container,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .meta,
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .comment-count,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header figure figcaption,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .sponsorship,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .tags, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .section__container,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta,
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .comment-count,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header figure figcaption,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .sponsorship,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .tags {
@@ -4372,14 +4383,12 @@
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .meta__byline a,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .comment-count,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .comment-count a,
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .comment-count a,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__body, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .section,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .section > div,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .headline,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta__byline .byline,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta__byline a,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .comment-count,
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .comment-count a,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .comment-count a,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__body {
     color: #272727; }
@@ -4537,8 +4546,6 @@
         text-shadow: none; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article--feature .article__header .standfirst a, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article--feature .article__header .standfirst a, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article--feature .article__header .standfirst a {
     color: #fff; }
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .comment-count, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .comment-count, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .comment-count {
-    border-color: #878787; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .prose .element-pullquote blockquote, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .prose .element-pullquote blockquote, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .prose .element-pullquote blockquote {
     color: #676767; }
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .prose .element-pullquote blockquote footer, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .prose .element-pullquote blockquote::after, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .prose .element-pullquote blockquote::before, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .prose .element-pullquote blockquote footer, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .prose .element-pullquote blockquote::after, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .prose .element-pullquote blockquote::before, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .prose .element-pullquote blockquote footer, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .prose .element-pullquote blockquote::after, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .prose .element-pullquote blockquote::before {
@@ -4569,6 +4576,8 @@
       background-color: #272727; }
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .meta {
       background-color: #878787; }
+      #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .meta .comment-count a {
+        color: #fff; }
     @media all and (max-width: 40.62em) {
       #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .content__labels__container {
         padding-top: 10px; } }
@@ -4591,6 +4600,7 @@
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .standfirst,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .byline,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .prose,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .content__labels:first-child::before,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .element-placeholder .element-placeholder__button .touchpoint__button,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship .sponsorship__formatted-sponsor-name,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags .inline-list__item a,
@@ -4640,8 +4650,7 @@
       border: 1px solid #a1a1a1; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .meta__pubdate {
     color: #878787; }
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta,
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count {
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta {
     border-color: #878787; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .section,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .section > div,
@@ -4650,8 +4659,6 @@
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article__header .meta__byline .byline,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta__pubdate,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count a,
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count a,
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count a span[data-icon] {
     color: #272727; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .prose .element-pullquote blockquote footer, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .prose .element-pullquote blockquote::after, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .prose .element-pullquote blockquote::before {
@@ -4760,6 +4767,8 @@
     background-color: #fff; }
     #sandbox .tone--analysis .article__header .section > div {
       color: #005689; }
+    #sandbox .tone--analysis .article__header .section__container {
+      border-color: #4bc6df; }
     #sandbox .tone--analysis .article__header .section__container,
     #sandbox .tone--analysis .article__header .content__series-label,
     #sandbox .tone--analysis .article__header .content__series-label a {
@@ -4810,15 +4819,13 @@
     #sandbox .tone--comment .comments__ordering:active {
       color: #f39f33; }
   #sandbox .tone--comment .section__container {
+    border-color: #e6711b;
     color: #767676; }
     #sandbox .tone--comment .section__container > div {
       color: #e6711b; }
     #sandbox .tone--comment .section__container .content__series-label,
     #sandbox .tone--comment .section__container .content__series-label a {
-      color: #767676; }
-    #sandbox .tone--comment .section__container .comment-count {
-      border-left-color: #c5c1b9; }
-  #sandbox .tone--comment .section__container,
+      color: #e6711b; }
   #sandbox .tone--comment figure figcaption {
     border-bottom: 1px #c5c1b9 dotted; }
   #sandbox .tone--comment .tags .inline-list__item.more-button a {
@@ -4896,8 +4903,6 @@
           color: rgba(255, 255, 255, 0.8); }
       #sandbox .tone--comment .article--comment .meta .meta__pubdate {
         color: rgba(255, 255, 255, 0.8); }
-      #sandbox .tone--comment .article--comment .meta .comment-count {
-        border-left-color: rgba(255, 255, 255, 0.4); }
   #sandbox .tone--comment a.alerts:active,
   #sandbox .tone--comment a.alerts.following {
     background-color: #fff;
@@ -5074,9 +5079,8 @@
     #sandbox .tone--editorial .article__header .content__series-label,
     #sandbox .tone--editorial .article__header .content__series-label a {
       color: #767676; }
-    #sandbox .tone--editorial .article__header .section__container,
-    #sandbox .tone--editorial .article__header .comment-count {
-      border-color: rgba(153, 153, 153, 0.5); }
+    #sandbox .tone--editorial .article__header .section__container {
+      border-color: #005689; }
     #sandbox .tone--editorial .article__header .comment-count a {
       color: #005689; }
     #sandbox .tone--editorial .article__header .meta {
@@ -5299,20 +5303,9 @@
     #sandbox .tone--feature3 .article--feature .article__header .bullet::before,
     #sandbox .tone--feature3 .article--feature .article__header ul > li::before {
       background-color: rgba(255, 255, 255, 0.4); }
-    #sandbox .tone--feature1 .article--feature .article__header .section,
     #sandbox .tone--feature1 .article--feature .article__header .byline,
-    #sandbox .tone--feature2 .article--feature .article__header .section,
     #sandbox .tone--feature2 .article--feature .article__header .byline,
-    #sandbox .tone--feature3 .article--feature .article__header .section,
     #sandbox .tone--feature3 .article--feature .article__header .byline {
-      color: #fff; }
-    #sandbox .tone--feature1 .article--feature .article__header .content__labels,
-    #sandbox .tone--feature2 .article--feature .article__header .content__labels,
-    #sandbox .tone--feature3 .article--feature .article__header .content__labels {
-      color: #fdadba; }
-    #sandbox .tone--feature1 .article--feature .article__header .content__series-label.content__labels,
-    #sandbox .tone--feature2 .article--feature .article__header .content__series-label.content__labels,
-    #sandbox .tone--feature3 .article--feature .article__header .content__series-label.content__labels {
       color: #fff; }
     #sandbox .tone--feature1 .article--feature .article__header .headline,
     #sandbox .tone--feature2 .article--feature .article__header .headline,
@@ -5371,6 +5364,24 @@
     #sandbox .tone--feature3 .article--feature .article__header .review-rating--4 .icon:nth-child(-n+4),
     #sandbox .tone--feature3 .article--feature .article__header .review-rating--5 .icon:nth-child(-n+5) {
       color: #fff; }
+    #sandbox .tone--feature1 .article--feature .article__header .section__container,
+    #sandbox .tone--feature2 .article--feature .article__header .section__container,
+    #sandbox .tone--feature3 .article--feature .article__header .section__container {
+      border-color: #e02b7f; }
+    #sandbox .tone--feature1 .article--feature .article__header .content__series-label.content__labels,
+    #sandbox .tone--feature2 .article--feature .article__header .content__series-label.content__labels,
+    #sandbox .tone--feature3 .article--feature .article__header .content__series-label.content__labels {
+      color: #b82266; }
+    #sandbox .tone--feature1 .article--feature .article__header .section__container,
+    #sandbox .tone--feature1 .article--feature .article__header .section__container a,
+    #sandbox .tone--feature1 .article--feature .article__header .content__labels,
+    #sandbox .tone--feature2 .article--feature .article__header .section__container,
+    #sandbox .tone--feature2 .article--feature .article__header .section__container a,
+    #sandbox .tone--feature2 .article--feature .article__header .content__labels,
+    #sandbox .tone--feature3 .article--feature .article__header .section__container,
+    #sandbox .tone--feature3 .article--feature .article__header .section__container a,
+    #sandbox .tone--feature3 .article--feature .article__header .content__labels {
+      color: #951c55; }
     #sandbox .tone--feature1 .article--feature .meta,
     #sandbox .tone--feature2 .article--feature .meta,
     #sandbox .tone--feature3 .article--feature .meta {
@@ -5424,12 +5435,20 @@
   #sandbox .tone--feature3 a.tell-me-when.added:active {
     border-color: #b82266;
     color: #b82266; }
-  #sandbox .tone--liveBlog .section__container {
-    border-bottom: 1px rgba(255, 255, 255, 0.4) dotted; }
-  #sandbox .tone--liveBlog .section {
-    color: #fff; }
-  #sandbox .tone--liveBlog .content__series-label {
-    color: #fff; }
+  #sandbox .tone--liveBlog .section__container,
+  #sandbox .tone--liveBlog.is-live .section__container {
+    border-color: #cc2b12;
+    color: #b51800; }
+    #sandbox .tone--liveBlog .section__container .content__series-label,
+    #sandbox .tone--liveBlog .section__container .content__series-label a,
+    #sandbox .tone--liveBlog .section__container .comment-count a,
+    #sandbox .tone--liveBlog.is-live .section__container .content__series-label,
+    #sandbox .tone--liveBlog.is-live .section__container .content__series-label a,
+    #sandbox .tone--liveBlog.is-live .section__container .comment-count a {
+      color: #b51800; }
+    #sandbox .tone--liveBlog .section__container .content__labels:first-child::before,
+    #sandbox .tone--liveBlog.is-live .section__container .content__labels:first-child::before {
+      color: #b51800; }
   #sandbox .tone--liveBlog.is-live a.touchpoint:active {
     color: #cc2b12; }
   #sandbox .tone--liveBlog.is-live .alerts {
@@ -5485,8 +5504,7 @@
     #sandbox .tone--liveBlog.is-live .article__header ul > li::before {
       background-color: rgba(255, 255, 255, 0.8); }
     #sandbox .tone--liveBlog.is-live .article__header .headline,
-    #sandbox .tone--liveBlog.is-live .article__header .byline,
-    #sandbox .tone--liveBlog.is-live .article__header .section {
+    #sandbox .tone--liveBlog.is-live .article__header .byline {
       color: #fff; }
     #sandbox .tone--liveBlog.is-live .article__header .section {
       position: relative; }
@@ -5555,8 +5573,6 @@
           padding-left: 0; } }
     #sandbox .tone--liveBlog.is-live .article--liveblog .meta__pubdate {
       color: rgba(255, 255, 255, 0.8); }
-    #sandbox .tone--liveBlog.is-live .article--liveblog .comment-count {
-      border-left-color: rgba(255, 255, 255, 0.4); }
     #sandbox .tone--liveBlog.is-live .article--liveblog .tags .inline-list__item a {
       color: #333;
       background-color: #e0e0e0; }
@@ -5589,11 +5605,14 @@
   #sandbox .tone--media .witness .witness__sponsor-logo {
     fill: #fff; }
   #sandbox .tone--media .section__container {
-    border-bottom: 1px #767676 dotted;
-    color: #eaeaea; }
+    border-color: #fb0;
+    color: #333; }
     #sandbox .tone--media .section__container .content__series-label,
-    #sandbox .tone--media .section__container .content__series-label a {
-      color: #eaeaea; }
+    #sandbox .tone--media .section__container .content__series-label a,
+    #sandbox .tone--media .section__container .comment-count a {
+      color: #333; }
+    #sandbox .tone--media .section__container .content__labels:first-child::before {
+      color: #fb0; }
   #sandbox .tone--media .article a,
   #sandbox .tone--media .comments__block a,
   #sandbox .tone--media .comments__ordering {
@@ -5711,9 +5730,6 @@
     #sandbox .tone--media .article--visual .article__body,
     #sandbox .tone--media .article--visual .tags {
       background-color: #333; }
-    #sandbox .tone--media .article--audio .section > div,
-    #sandbox .tone--media .article--visual .section > div {
-      color: #fb0; }
     #sandbox .tone--media .article--audio .headline,
     #sandbox .tone--media .article--audio .standfirst,
     #sandbox .tone--media .article--audio .prose,
@@ -5726,15 +5742,13 @@
       border-color: #767676;
       color: #999; }
     #sandbox .tone--media .article--audio .meta,
-    #sandbox .tone--media .article--audio .comment-count,
-    #sandbox .tone--media .article--visual .meta,
-    #sandbox .tone--media .article--visual .comment-count {
+    #sandbox .tone--media .article--visual .meta {
       border-color: #767676; }
-    @media all and (min-width: 75em) {
-      #sandbox .tone--media .article--audio .meta,
-      #sandbox .tone--media .article--visual .meta {
-        border-top: 1px dotted #767676;
-        margin-top: 1px; } }
+      @media all and (min-width: 75em) {
+        #sandbox .tone--media .article--audio .meta,
+        #sandbox .tone--media .article--visual .meta {
+          border-top: 1px dotted #767676;
+          margin-top: 1px; } }
     #sandbox .tone--media .article--audio .aside,
     #sandbox .tone--media .article--visual .aside {
       border-color: #767676;
@@ -5764,13 +5778,12 @@
     background-color: #fff; }
     #sandbox .tone--news .article__header .section > div {
       color: #005689; }
+    #sandbox .tone--news .article__header .section__container {
+      border-color: #4bc6df; }
     #sandbox .tone--news .article__header .section__container,
     #sandbox .tone--news .article__header .content__series-label,
     #sandbox .tone--news .article__header .content__series-label a {
       color: #767676; }
-    #sandbox .tone--news .article__header .section__container,
-    #sandbox .tone--news .article__header .comment-count {
-      border-color: rgba(153, 153, 153, 0.4); }
     #sandbox .tone--news .article__header .headline {
       color: #333; }
       #sandbox .tone--news .article__header .headline p.review-rating {
@@ -5823,13 +5836,14 @@
     background-color: #333;
     color: #fff; }
   #sandbox .tone--podcast .section__container {
-    border-bottom: 1px rgba(234, 234, 234, 0.3) dotted;
-    color: #eaeaea; }
-    #sandbox .tone--podcast .section__container > div {
-      color: #a7d8f2; }
+    border-color: #aad8f1;
+    color: #484848; }
     #sandbox .tone--podcast .section__container .content__series-label,
-    #sandbox .tone--podcast .section__container .content__series-label a {
-      color: #eaeaea; }
+    #sandbox .tone--podcast .section__container .content__series-label a,
+    #sandbox .tone--podcast .section__container .comment-count a {
+      color: #484848; }
+    #sandbox .tone--podcast .section__container .content__labels:first-child::before {
+      color: #a7d8f2; }
   #sandbox .tone--podcast .audio-player__button.touchpoint--primary .touchpoint__button {
     background-color: #a7d8f2;
     color: #171717; }
@@ -5862,8 +5876,6 @@
       color: #fff; }
     #sandbox .tone--podcast .article__header .meta__byline .byline__author a {
       color: #a7d8f2; }
-    #sandbox .tone--podcast .article__header .comment-count a {
-      color: #a7d8f2; }
   #sandbox .tone--podcast .standfirst {
     color: #333; }
   #sandbox .tone--podcast .meta,
@@ -5875,10 +5887,9 @@
     #sandbox .tone--podcast .meta__misc {
       padding-left: 0;
       padding-right: 0; } }
-  #sandbox .tone--podcast .comment-count {
-    color: #a7d8f2;
-    border-left-color: rgba(255, 255, 255, 0.4); }
-    #sandbox .tone--podcast .comment-count a {
+  #sandbox .tone--podcast .meta .comment-count {
+    color: #a7d8f2; }
+    #sandbox .tone--podcast .meta .comment-count a {
       color: #a7d8f2; }
   #sandbox .tone--podcast.ios .article__header .card__title--audio::before {
     margin-top: 3px; }
@@ -5897,14 +5908,13 @@
     background-color: #fff; }
   #sandbox .tone--review .article__header {
     background-color: #615b52; }
-    #sandbox .tone--review .article__header .section > div {
-      color: #ffce4b; }
+    #sandbox .tone--review .article__header .section__container {
+      border-color: #ffce4b; }
     #sandbox .tone--review .article__header .section__container,
     #sandbox .tone--review .article__header .content__series-label,
-    #sandbox .tone--review .article__header .content__series-label a {
-      color: #fff; }
-    #sandbox .tone--review .article__header .comment-count a {
-      color: #ffce4b; }
+    #sandbox .tone--review .article__header .content__series-label a,
+    #sandbox .tone--review .article__header .section__container .comment-count a {
+      color: #615b52; }
     #sandbox .tone--review .article__header .headline {
       color: #fff; }
       #sandbox .tone--review .article__header .headline p.review-rating {
@@ -5977,11 +5987,13 @@
   #sandbox .tone--special .article__header {
     background-color: #63717a; }
     #sandbox .tone--special .article__header .section > div {
-      color: #aad8f1; }
+      color: #63717a; }
+    #sandbox .tone--special .article__header .section__container {
+      border-color: #aad8f1; }
     #sandbox .tone--special .article__header .section__container,
     #sandbox .tone--special .article__header .content__series-label,
     #sandbox .tone--special .article__header .content__series-label a {
-      color: #fff; }
+      color: #63717a; }
     #sandbox .tone--special .article__header .comment-count a {
       color: #aad8f1; }
     #sandbox .tone--special .article__header .headline {
@@ -6981,6 +6993,8 @@
       border-top-color: #005689; }
       #sandbox .related-content__card--analysis .related-content__heading {
         color: #005689; }
+      #sandbox .related-content__card--analysis .related-content__series {
+        color: #4bc6df; }
       #sandbox .related-content__card--analysis .related-content__standfirst, #sandbox .related-content__card--analysis .related-content__meta {
         color: #767676; }
     #sandbox .related-content__card--comment {

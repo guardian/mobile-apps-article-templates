@@ -53,8 +53,7 @@
     }
 
     .section__container,
-    .article,
-    .comment-count {
+    .article {
         border-color: color(global-adv-bands);
     }
 
@@ -88,7 +87,6 @@
         .article,
         .section__container,
         .article__header .meta,
-        .article__header .comment-count,
         .article__header figure figcaption,
         .sponsorship,
         .tags {
@@ -106,7 +104,6 @@
         .article__header .meta__byline .byline,
         .article__header .meta__byline a, 
         .article__header .comment-count,
-        .article__header .comment-count a,
         .article__header .comment-count a,
         .article__body {
             color: color(global-adv-text); 
@@ -212,10 +209,6 @@
             color: color(shade-7);
         }
 
-        .comment-count {
-            border-color: color(global-adv-bands);
-        }
-
         .prose .element-pullquote {
             blockquote {
                 color: color(shade-10);
@@ -261,6 +254,11 @@
 
         .meta {
             background-color: color(global-adv-bands);
+
+
+            .comment-count a {
+                color: color(shade-7);
+            }
         }
 
         /*.article__header .section,
@@ -313,7 +311,8 @@
         .article--visual .headline,
         .article--visual .standfirst,
         .article--visual .byline,
-        .article--visual .prose ,        
+        .article--visual .prose , 
+        .content__labels:first-child::before,
         .element-placeholder .element-placeholder__button .touchpoint__button,
         .sponsorship .sponsorship__formatted-sponsor-name,
         .tags .inline-list__item a,
@@ -357,8 +356,7 @@
 
     &.tone--podcast {
 
-        .meta,
-        .comment-count {
+        .meta {
             border-color: color(global-adv-bands);
         }
 
@@ -369,8 +367,6 @@
         .article__header .meta__byline .byline,
         .meta__pubdate,
         .comment-count a, 
-        .comment-count a, 
-        .comment-count,
         .comment-count a span[data-icon] {
             color: color(global-adv-text);
         }

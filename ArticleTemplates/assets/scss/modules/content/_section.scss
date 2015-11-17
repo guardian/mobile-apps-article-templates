@@ -46,7 +46,9 @@ With live indicator:
 /* Shared Live blog/Dead blog */
 
 .section__container {
-    border-bottom: 1px rgba(color(shade-4), .4) dotted;
+    background: color(global-section-band);
+    border-bottom: 1px solid rgba(color(shade-4), .4);
+    min-height: 43px;
     margin-bottom: 10px;
     position: relative;
     width: 100%;
@@ -83,8 +85,6 @@ With live indicator:
         font-weight: 300;
         display: inline;
     }
-
-   
 }
 
 .content__container {
@@ -115,14 +115,13 @@ With live indicator:
     }
 }
 
-.comment-count {
-    font-family: $agate-sans;
-    font-weight: bold;
-    vertical-align: top;
-    border-left: 1px rgba(color(shade-4), .4) dotted;
-    padding: base-px(.5, .5, 1, 1);
+.section__container .comment-count {
+    border-left: 1px dotted color(neutral-3);
     display: table-cell;
-
+    font: bold 1em $agate-sans;
+    padding: base-px(.5, .5, 1, 1);
+    vertical-align: top;
+    
     @include mq($to: col1) {
         width: cols($base-1, 1);
     }
@@ -148,11 +147,6 @@ With live indicator:
     }
 }
 
-.comment-count__label {
-    display: none;
-}
-
 .article__header h1 {
     clear: both;
 }
-

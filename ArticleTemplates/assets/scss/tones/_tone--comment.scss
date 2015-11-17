@@ -10,6 +10,8 @@
     }
 
     .section__container {
+        border-color: color(tone-comment-rule);
+        
         & > div {
             color: color(tone-comment); // Content Label Section
         }
@@ -18,15 +20,10 @@
 
         .content__series-label,
         .content__series-label a {
-            color: color(shade-2);  // Content Label Series
-        }
-
-        .comment-count {
-            border-left-color: darken(color(shade-4), 10%);
+            color: color(tone-comment);  // Content Label Series
         }
     }
 
-    .section__container, 
     figure figcaption {
         border-bottom: 1px darken(color(shade-4), 10%) dotted;
     }
@@ -124,10 +121,6 @@
 
             .meta__pubdate {
                 color: rgba(color(shade-7), 0.8);
-            }
-
-            .comment-count {
-                border-left-color: rgba(#fff, .4);
             }
         }
     }

@@ -1,15 +1,16 @@
 .tone--podcast {
     .section__container {
-        border-bottom: 1px rgba(234, 234, 234, .3) dotted;
-        color: color(shade-5);
-        
-        > div {
-            color: color(tone-podcast); // Content Label Section
-        }
-        
+        border-color: color(tone-podcast-rule);
+        color: color(shade-6);
+
         .content__series-label,
-        .content__series-label a {
-            color: color(shade-5);  // Content Label Series
+        .content__series-label a,
+        .comment-count a {
+            color: color(shade-6); // Content Label Series
+        }
+
+        .content__labels:first-child::before {
+            color: color(tone-podcast);
         }
     }
 
@@ -69,10 +70,6 @@
                 color: color(tone-podcast);
             }
         }
-
-        .comment-count a {
-            color: color(tone-podcast);
-        }
     }
 
     .standfirst {
@@ -97,9 +94,8 @@
         }
     }
 
-    .comment-count {
+    .meta .comment-count {
         color: color(tone-podcast);
-        border-left-color: rgba(color(shade-7), .4);
         
         a {
             color: color(tone-podcast);
