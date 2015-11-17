@@ -35,7 +35,7 @@ define([
                 progressBar = $('.progress__bar');
 
             // set header image height to viewport height
-            $('.article__header-image').css('height', bgHeight);
+            $('.article__header-image, .article__header-bg > .element > iframe').css('height', bgHeight);
 
             // for each element--immersive add extra classes depending on siblings
             $('figure.element--immersive').each(function(){
@@ -101,9 +101,14 @@ define([
 
                 // redraw chapter markets
                 modules.addProgressBarChapters(progressBar, articleHeight);
-                
+
                 // update progress position
                 modules.updateProgressBar(progressBar, articleHeight);
+
+                // set header image height to new viewport height
+                viewPortHeight = bonzo.viewport().height;
+                bgHeight = (viewPortHeight - $('body').css('margin-top').replace('px','')) + 'px';
+                $('.article__header-bg, .article__header-bg > .element > iframe').css('height', bgHeight);
             }));
 
             // call updateProgressBar on first load

@@ -2,6 +2,11 @@
 body.immersive .article--immersive {
     border-top: 0;
 
+    // Fix embedded video transform
+    .article__header-bg > element > iframe video {
+        -webkit-transform: (-50%, -50%);
+    }
+
     a {
         color: color(tone-feature1);
 
@@ -56,7 +61,7 @@ body.immersive .article--immersive {
             }
         }
 
-        &__header-image {
+        &__header-bg {
             background-color: black;
             background-position: center center;
             background-size: cover;
@@ -65,7 +70,7 @@ body.immersive .article--immersive {
             position: relative;
         }
 
-        &__header-bg {
+        &__header-info {
             background-color: rgba(0, 0, 0, 0.3);
             bottom: 0px;
             padding: base-px(.5, 1, 2, 1);
@@ -85,9 +90,12 @@ body.immersive .article--immersive {
         }
 
         &__series {
-            color: #fff;
             display: block;
-            font: 600 1.8rem $egyptian-display;
+            
+            > a {
+                color: #fff;
+                font: 600 1.8rem $egyptian-display;
+            }
 
             @include mq($from: col2) {
                 margin-bottom: base-px(1);
@@ -126,9 +134,11 @@ body.immersive .article--immersive {
 
     .standfirst {
         color: #fff;
+        background: none;
 
         a {
-            border-bottom: 1px solid color(tone-feature1);
+            border-bottom: 1px solid color(tone-feature1-accent2);
+            color: color(tone-feature1-accent2);
             display: inline-block;
 
             &:active {
@@ -147,16 +157,6 @@ body.immersive .article--immersive {
 
             @include mq($from: col2) {
                 display: none;
-            }
-
-            a {
-                border-color: color(tone-feature1-accent2);
-                color: color(tone-feature1-accent2);
-
-                &:active {
-                    border-color: color(tone-feature1-accent);
-                    color: color(tone-feature1-accent);
-                }
             }
         }
 

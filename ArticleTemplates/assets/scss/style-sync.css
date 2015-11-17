@@ -2532,6 +2532,8 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
 
 body.immersive .article--immersive {
   border-top: 0; }
+  body.immersive .article--immersive .article__header-bg > element > iframe video {
+    -webkit-transform: -50%, -50%; }
   body.immersive .article--immersive a {
     color: #951c55; }
     body.immersive .article--immersive a:active {
@@ -2577,30 +2579,31 @@ body.immersive .article--immersive {
     body.immersive .article--immersive .article__header .bullet::before,
     body.immersive .article--immersive .article__header ul > li::before {
       background-color: rgba(255, 255, 255, 0.4); }
-  body.immersive .article--immersive .article__header-image {
+  body.immersive .article--immersive .article__header-bg {
     background-color: black;
     background-position: center center;
     background-size: cover;
     height: 600px;
     height: 100vh;
     position: relative; }
-  body.immersive .article--immersive .article__header-bg {
+  body.immersive .article--immersive .article__header-info {
     background-color: rgba(0, 0, 0, 0.3);
     bottom: 0px;
     padding: 6px 12px 24px 12px;
     position: absolute;
     width: 100%; }
     @media all and (min-width: 56.25em) {
-      body.immersive .article--immersive .article__header-bg {
+      body.immersive .article--immersive .article__header-info {
         padding-top: 12px; } }
     @media all and (min-width: 75em) {
-      body.immersive .article--immersive .article__header-bg {
+      body.immersive .article--immersive .article__header-info {
         padding-left: 0;
         padding-right: 0; } }
   body.immersive .article--immersive .article__series {
-    color: #fff;
-    display: block;
-    font: 600 1.8rem "Guardian Egyptian Web", Georgia, serif; }
+    display: block; }
+    body.immersive .article--immersive .article__series > a {
+      color: #fff;
+      font: 600 1.8rem "Guardian Egyptian Web", Georgia, serif; }
     @media all and (min-width: 40.63em) {
       body.immersive .article--immersive .article__series {
         margin-bottom: 12px; } }
@@ -2626,9 +2629,11 @@ body.immersive .article--immersive {
     color: #fff;
     padding: 6px 0px 0px 0px; }
   body.immersive .article--immersive .standfirst {
-    color: #fff; }
+    color: #fff;
+    background: none; }
     body.immersive .article--immersive .standfirst a {
-      border-bottom: 1px solid #951c55;
+      border-bottom: 1px solid #f7acbb;
+      color: #f7acbb;
       display: inline-block; }
       body.immersive .article--immersive .standfirst a:active {
         border-color: #b82266;
@@ -2641,12 +2646,6 @@ body.immersive .article--immersive {
       @media all and (min-width: 40.63em) {
         body.immersive .article--immersive .standfirst--mobile {
           display: none; } }
-      body.immersive .article--immersive .standfirst--mobile a {
-        border-color: #f7acbb;
-        color: #f7acbb; }
-        body.immersive .article--immersive .standfirst--mobile a:active {
-          border-color: #b82266;
-          color: #b82266; }
     body.immersive .article--immersive .standfirst--tablet {
       padding: 0;
       display: none; }
