@@ -34,9 +34,23 @@ define([
                 pageOffset = viewPortHeight * 0.75,
                 progressBar = $('.progress__bar');
 
-            // set header image height to viewport height
-            $('.article__header-image, .article__header-bg > .element > iframe').css('height', bgHeight);
+            // Override tone to feature for all immersive pages
+            document.body.className = document.body.className.replace( /(tone--).+?\s/g , 'tone--feature1 ' );
 
+            // set header image height to viewport height
+            $('.article__header-bg, .article__header-bg .element > iframe').css('height', bgHeight);
+            
+            // TODO: This is just for testing, what we actually need to do is get them to add -webkit- prefixed styles 
+            // failing that we would need to need to copy all the animation styles and add -webkit- version along size the standard one
+            var iframe = $('.article__header-bg .element > iframe');
+            if (iframe) {
+                var newSrc = iframe[0].srcdoc
+                    .replace("transform: translate(-50%, -50%);", "-webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);")
+                    .replace(/animation/g, "-webkit-animation")
+                    .replace(/@keyframes/g, "@-webkit-keyframes");
+                iframe[0].srcdoc = newSrc;
+            }
+            
             // for each element--immersive add extra classes depending on siblings
             $('figure.element--immersive').each(function(){
                 if($(this).next().hasClass('element-pullquote')){
@@ -108,7 +122,8 @@ define([
                 // set header image height to new viewport height
                 viewPortHeight = bonzo.viewport().height;
                 bgHeight = (viewPortHeight - $('body').css('margin-top').replace('px','')) + 'px';
-                $('.article__header-bg, .article__header-bg > .element > iframe').css('height', bgHeight);
+                $('.article__header-bg, .article__header-bg .element > iframe').css('height', bgHeight);
+                
             }));
 
             // call updateProgressBar on first load

@@ -1,11 +1,6 @@
-// Specificity required to override tones
+// Specificity required to override tones (!important also needed to override tone - if the immersive is meant to appear in feature colours they should set it to tone--feature!! - need to look at better way to do this..)
 body.immersive .article--immersive {
     border-top: 0;
-
-    // Fix embedded video transform
-    .article__header-bg > element > iframe video {
-        -webkit-transform: (-50%, -50%);
-    }
 
     a {
         color: color(tone-feature1);
@@ -68,6 +63,23 @@ body.immersive .article--immersive {
             height: 600px; 
             height: 100vh;
             position: relative;
+            
+            .element-embed {
+                // Fix embedded video transform
+                bottom: 0;
+                left: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+
+                iframe {
+                    height: 100% !important;
+
+                    video {
+                        -webkit-transform: (-50%, -50%);
+                    }
+                }
+            }
         }
 
         &__header-info {
@@ -92,7 +104,7 @@ body.immersive .article--immersive {
         &__series {
             display: block;
             
-            > a {
+            > a, & {
                 color: #fff;
                 font: 600 1.8rem $egyptian-display;
             }
