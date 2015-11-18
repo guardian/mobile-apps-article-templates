@@ -63,13 +63,17 @@
 
     // First figure/element in body should sit flush with .article__header
     & > .prose {
-        .figure-wide,
-        .element:not(.figure--thumbnail) {
+        > .figure-wide,
+        > .element:not(.figure--thumbnail) {
             &:first-child {
                 margin-top: base-px(-1);
             }
         }
-    } 
+    }
+
+    .video-URL {
+        clear: both; // floating asides can cause video to display incorrectly
+    }
 
     // Football player cards should appear floated right above mobile breakpoint
     .player-card {

@@ -3435,14 +3435,14 @@
 @-webkit-keyframes fadeOutIn {
   7% {
     opacity: 1; }
-  93% {
+  93.0% {
     opacity: 1; }
   to {
     opacity: 0; } }
 @keyframes fadeOutIn {
   7% {
     opacity: 1; }
-  93% {
+  93.0% {
     opacity: 1; }
   to {
     opacity: 0; } }
@@ -3960,9 +3960,11 @@
         width: 620px; } }
   #sandbox .article__body {
     font-family: "Guardian Text Egyptian Web", Georgia, serif; }
-    #sandbox .article__body > .prose .figure-wide:first-child,
-    #sandbox .article__body > .prose .element:not(.figure--thumbnail):first-child {
+    #sandbox .article__body > .prose > .figure-wide:first-child,
+    #sandbox .article__body > .prose > .element:not(.figure--thumbnail):first-child {
       margin-top: -12px; }
+    #sandbox .article__body .video-URL {
+      clear: both; }
     @media all and (min-width: 28.13em) {
       #sandbox .article__body .player-card {
         margin: 12px 0px 12px 12px;
@@ -4123,8 +4125,7 @@
     #sandbox .article--audio .article__body .figure-wide,
     #sandbox .article--audio .article__body .element-video,
     #sandbox .article--audio .article__body .element-placeholder {
-      margin-left: -12px;
-      margin-right: -12px;
+      margin: 12px -12px;
       width: auto; }
       @media all and (min-width: 40.63em) {
         #sandbox .article--standard .article__body .figure-wide,

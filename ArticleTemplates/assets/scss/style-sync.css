@@ -1718,14 +1718,14 @@ Displays a cricket header.
 @-webkit-keyframes fadeOutIn {
   7% {
     opacity: 1; }
-  93% {
+  93.0% {
     opacity: 1; }
   to {
     opacity: 0; } }
 @keyframes fadeOutIn {
   7% {
     opacity: 1; }
-  93% {
+  93.0% {
     opacity: 1; }
   to {
     opacity: 0; } }
@@ -2445,9 +2445,11 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
 
 .article__body {
   font-family: "Guardian Text Egyptian Web", Georgia, serif; }
-  .article__body > .prose .figure-wide:first-child,
-  .article__body > .prose .element:not(.figure--thumbnail):first-child {
+  .article__body > .prose > .figure-wide:first-child,
+  .article__body > .prose > .element:not(.figure--thumbnail):first-child {
     margin-top: -12px; }
+  .article__body .video-URL {
+    clear: both; }
   @media all and (min-width: 28.13em) {
     .article__body .player-card {
       margin: 12px 0px 12px 12px;
@@ -2613,8 +2615,7 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
   .article--audio .article__body .figure-wide,
   .article--audio .article__body .element-video,
   .article--audio .article__body .element-placeholder {
-    margin-left: -12px;
-    margin-right: -12px;
+    margin: 12px -12px;
     width: auto; }
     @media all and (min-width: 40.63em) {
       .article--standard .article__body .figure-wide,
