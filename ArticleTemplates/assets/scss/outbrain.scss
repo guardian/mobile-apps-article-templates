@@ -1,0 +1,73 @@
+// Helpers
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+@import 'helpers/vendor/sass-mq';
+@import 'helpers/vendor/sass-flex';
+
+// This whole stylesheet is horrible, but needs to be imported last and have importants to overide the outbrain css
+
+.outbrainText {
+    display: none;
+}
+
+.outbrainImage{
+    display: block;
+}
+
+@include mq($from: col4) {
+    .OUTBRAIN {
+        margin: 0 auto !important;
+        max-width: 1200px !important;
+
+        .ob-widget .ob-widget-section {
+            overflow: hidden !important;
+        }
+
+        .ob-widget .ob-widget-header {
+            margin: 20px !important;
+            width: 200px !important;
+        }
+
+        .ob-widget .ob-widget-items-container {
+            display: block !important;
+            float: left !important;
+            margin: 0 !important;
+            padding-top: 20px;
+            width: 858px !important;
+        }
+
+        .ob-widget .ob-dynamic-rec-container {
+            width: 210px !important;
+            margin: 0 6px 0 0 !important;
+
+            &:last-child {
+                margin-right: 0 !important;
+            }
+
+            a::before {
+                border: 0 !important;
+            }
+        }
+
+        .ob-widget .ob-dynamic-rec-link {
+            border: 0 !important;
+            margin: 0 !important;
+
+            .ob-rec-source {
+                max-height: 50px !important;
+            }
+        }
+
+        // The text list doesn't have the header next to it to push it into place.
+        &.outbrainText {
+            .ob-widget-items-container {
+                margin-left: 240px !important;
+            }
+
+            .ob-unit.ob-rec-text {
+                border: 0 !important;
+            }
+        }
+    }
+}

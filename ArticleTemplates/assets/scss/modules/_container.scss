@@ -156,9 +156,8 @@ Display a titled container for comments, cards or other components that should b
 
 .container__header {
     height: 54px;
-    
-    .container__action { 
-        
+
+    .container__action {
         .touchpoint--primary {
             display: none !important;
         }
@@ -205,24 +204,16 @@ Display a titled container for comments, cards or other components that should b
 
 .android {
     .container {
-        margin: base-px(0, 1, 0, 1);
-
         &.comments--closed {
             .container__action .touchpoint--primary {
                 display: none !important;
-            }  
+            }
         }
         
         .container__action .touchpoint--primary {
             display: block !important;
         }
     }
-
-    // .container--comments {
-    //     @include mq($from: col4) {
-    //         margin: 0;
-    //     }
-    // }
 
     .container--related {
         margin-bottom: 48px;
