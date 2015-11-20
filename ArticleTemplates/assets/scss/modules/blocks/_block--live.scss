@@ -50,6 +50,12 @@ Provide a summary of events:
 */
 
 [class*="block--live-"] {
+    padding-top: 0;
+
+    @include mq($from: col2) {
+        padding-top: 12px;
+    }
+
     @include mq($from: col4) {
         padding: {
             left: 20px;
@@ -59,13 +65,16 @@ Provide a summary of events:
 
     .block__time {
         color: color(shade-2);
+        display: inline-block;
         font-family: $agate-sans;
-        padding: base-px(0, 0, 1, 0);
-        margin-top: -5px; // Offset for space above in our fonts to align text to top of block rule
+        padding: base-px(1, 0);
+        vertical-align: top;
 
         @include mq($from: col2) {
-            padding: base-px(0, 1, 0, 0);
             float: left;
+            height: 100px; // Forces both block__byline and block__body to float next to time
+            padding: base-px(0, 1, 0, 0);
+            margin-top: -5px; // Offset for space above in our fonts to align text to top of block rule
         }
 
         @include mq(col2, col3) {
@@ -120,6 +129,39 @@ Provide a summary of events:
         color: color(shade-3);
         font-family: $agate-sans;
         @include meta();
+    }
+
+    .block__byline {
+        border-left: 1px solid color(shade-5);
+        display: inline-block;
+        padding: base-px(.5, 1);
+        margin: base-px(0, 0, 1, 1);
+        vertical-align: top;
+        
+        @include mq($from: col2) {
+            border: 0;
+            float: left;
+            margin: base-px(0, 0, 1, 0);
+            padding: 0;
+        }
+
+        @include mq($from: col4) {
+            width: 620px;
+        }
+    }
+
+    .block__avatar {
+        border-radius: 50%;
+        display: inline;
+        height: 40px;
+        margin-right: base-px(.5);
+        vertical-align: middle;
+        width: 40px;
+    }
+
+    .block__author {
+        display: inline;
+        line-height: 40px;
     }
 
     .prose {

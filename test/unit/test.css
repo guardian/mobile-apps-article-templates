@@ -7215,78 +7215,111 @@
   #sandbox .container--has-failed .more--comments,
   #sandbox .container--has-failed .block--discussion-empty {
     display: none; }
-  @media all and (min-width: 75em) {
-    #sandbox [class*="block--live-"] {
-      padding-left: 20px;
-      padding-right: 20px; } }
-  #sandbox [class*="block--live-"] .block__time {
-    color: #767676;
-    font-family: "Guardian Agate Sans 1 Web", sans-serif;
-    padding: 0px 0px 12px 0px;
-    margin-top: -5px; }
+  #sandbox [class*="block--live-"] {
+    padding-top: 0; }
     @media all and (min-width: 40.63em) {
-      #sandbox [class*="block--live-"] .block__time {
-        padding: 0px 12px 0px 0px;
-        float: left; } }
-    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
-      #sandbox [class*="block--live-"] .block__time {
-        width: 33.80282%; } }
-    @media all and (min-width: 56.25em) {
-      #sandbox [class*="block--live-"] .block__time {
-        width: 31.57895%; } }
+      #sandbox [class*="block--live-"] {
+        padding-top: 12px; } }
     @media all and (min-width: 75em) {
-      #sandbox [class*="block--live-"] .block__time {
-        width: 220px; } }
-  @media all and (min-width: 40.63em) {
-    #sandbox [class*="block--live-"] .block__body {
-      float: left; }
-      #sandbox [class*="block--live-"] .block__body .twitter-tweet,
-      #sandbox [class*="block--live-"] .block__body .js-tweet {
-        position: relative; }
+      #sandbox [class*="block--live-"] {
+        padding-left: 20px;
+        padding-right: 20px; } }
+    #sandbox [class*="block--live-"] .block__time {
+      color: #767676;
+      display: inline-block;
+      font-family: "Guardian Agate Sans 1 Web", sans-serif;
+      padding: 12px 0px;
+      vertical-align: top; }
+      @media all and (min-width: 40.63em) {
+        #sandbox [class*="block--live-"] .block__time {
+          float: left;
+          height: 100px;
+          padding: 0px 12px 0px 0px;
+          margin-top: -5px; } }
+      @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+        #sandbox [class*="block--live-"] .block__time {
+          width: 33.80282%; } }
+      @media all and (min-width: 56.25em) {
+        #sandbox [class*="block--live-"] .block__time {
+          width: 31.57895%; } }
+      @media all and (min-width: 75em) {
+        #sandbox [class*="block--live-"] .block__time {
+          width: 220px; } }
+    @media all and (min-width: 40.63em) {
+      #sandbox [class*="block--live-"] .block__body {
+        float: left; }
+        #sandbox [class*="block--live-"] .block__body .twitter-tweet,
+        #sandbox [class*="block--live-"] .block__body .js-tweet {
+          position: relative; }
+          #sandbox [class*="block--live-"] .block__body .twitter-tweet::before,
+          #sandbox [class*="block--live-"] .block__body .js-tweet::before {
+            position: absolute;
+            left: -4rem; }
         #sandbox [class*="block--live-"] .block__body .twitter-tweet::before,
         #sandbox [class*="block--live-"] .block__body .js-tweet::before {
-          position: absolute;
-          left: -4rem; }
-      #sandbox [class*="block--live-"] .block__body .twitter-tweet::before,
-      #sandbox [class*="block--live-"] .block__body .js-tweet::before {
-        left: -5rem; } }
-  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
-    #sandbox [class*="block--live-"] .block__body {
-      width: 66.19718%; } }
-  @media all and (min-width: 56.25em) {
-    #sandbox [class*="block--live-"] .block__body {
-      width: 68.42105%; } }
-  @media all and (min-width: 75em) {
-    #sandbox [class*="block--live-"] .block__body {
-      width: 620px; } }
-  #sandbox [class*="block--live-"] .block__updated {
-    color: #999;
-    font-family: "Guardian Agate Sans 1 Web", sans-serif; }
-    @media all and (max-width: 40.62em) {
-      #sandbox [class*="block--live-"] .block__updated {
-        font-size: 1.4rem;
-        line-height: 2rem; } }
+          left: -5rem; } }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      #sandbox [class*="block--live-"] .block__body {
+        width: 66.19718%; } }
+    @media all and (min-width: 56.25em) {
+      #sandbox [class*="block--live-"] .block__body {
+        width: 68.42105%; } }
+    @media all and (min-width: 75em) {
+      #sandbox [class*="block--live-"] .block__body {
+        width: 620px; } }
+    #sandbox [class*="block--live-"] .block__updated {
+      color: #999;
+      font-family: "Guardian Agate Sans 1 Web", sans-serif; }
+      @media all and (max-width: 40.62em) {
+        #sandbox [class*="block--live-"] .block__updated {
+          font-size: 1.4rem;
+          line-height: 2rem; } }
+      @media all and (min-width: 40.63em) {
+        #sandbox [class*="block--live-"] .block__updated {
+          font-size: 1.6rem;
+          line-height: 2.2rem; } }
+    #sandbox [class*="block--live-"] .block__byline {
+      border-left: 1px solid #eaeaea;
+      display: inline-block;
+      padding: 6px 12px;
+      margin: 0px 0px 12px 12px;
+      vertical-align: top; }
+      @media all and (min-width: 40.63em) {
+        #sandbox [class*="block--live-"] .block__byline {
+          border: 0;
+          float: left;
+          margin: 0px 0px 12px 0px;
+          padding: 0; } }
+      @media all and (min-width: 75em) {
+        #sandbox [class*="block--live-"] .block__byline {
+          width: 620px; } }
+    #sandbox [class*="block--live-"] .block__avatar {
+      border-radius: 50%;
+      display: inline;
+      height: 40px;
+      margin-right: 6px;
+      vertical-align: middle;
+      width: 40px; }
+    #sandbox [class*="block--live-"] .block__author {
+      display: inline;
+      line-height: 40px; }
+    #sandbox [class*="block--live-"] .prose blockquote {
+      margin-right: 0;
+      margin-left: 0; }
     @media all and (min-width: 40.63em) {
-      #sandbox [class*="block--live-"] .block__updated {
-        font-size: 1.6rem;
-        line-height: 2.2rem; } }
-  #sandbox [class*="block--live-"] .prose blockquote {
-    margin-right: 0;
-    margin-left: 0; }
-  @media all and (min-width: 40.63em) {
-    #sandbox [class*="block--live-"] .prose figure {
-      width: 100%; } }
-  #sandbox [class*="block--live-"] .prose figure.figure-inline {
-    float: none;
-    clear: both; }
-  #sandbox [class*="block--live-"] .prose figure:last-child figcaption:not(.figure--thumbnail, .figure-wide, .figure--thumbnail-with-caption) {
-    border-bottom: 0; }
-  #sandbox [class*="block--live-"] .prose figcaption {
-    padding: 6px 0px 12px 0px; }
-  #sandbox [class*="block--live-"] .prose p:first-child {
-    margin-top: -2px; }
-  #sandbox [class*="block--live-"] .prose h2:first-child {
-    margin-top: -3px; }
+      #sandbox [class*="block--live-"] .prose figure {
+        width: 100%; } }
+    #sandbox [class*="block--live-"] .prose figure.figure-inline {
+      float: none;
+      clear: both; }
+    #sandbox [class*="block--live-"] .prose figure:last-child figcaption:not(.figure--thumbnail, .figure-wide, .figure--thumbnail-with-caption) {
+      border-bottom: 0; }
+    #sandbox [class*="block--live-"] .prose figcaption {
+      padding: 6px 0px 12px 0px; }
+    #sandbox [class*="block--live-"] .prose p:first-child {
+      margin-top: -2px; }
+    #sandbox [class*="block--live-"] .prose h2:first-child {
+      margin-top: -3px; }
   #sandbox .block--live-key-event {
     border-top: 2px solid #cc2b12; }
     #sandbox .block--live-key-event .block__title {
