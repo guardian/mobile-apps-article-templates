@@ -60,6 +60,17 @@
 
         figure {
             position: relative;
+
+            @include mq($from: col4) {
+                height: 540px;
+                margin: 0;
+                overflow: hidden;
+                width: 100%;
+
+               .element__inner {
+                    top: -70px;
+                }
+            }
         }
     }
 

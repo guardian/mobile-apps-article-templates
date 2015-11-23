@@ -3435,14 +3435,14 @@
 @-webkit-keyframes fadeOutIn {
   7% {
     opacity: 1; }
-  93% {
+  93.0% {
     opacity: 1; }
   to {
     opacity: 0; } }
 @keyframes fadeOutIn {
   7% {
     opacity: 1; }
-  93% {
+  93.0% {
     opacity: 1; }
   to {
     opacity: 0; } }
@@ -5191,6 +5191,18 @@
     #sandbox .tone--feature2 .main-media figure,
     #sandbox .tone--feature3 .main-media figure {
       position: relative; }
+      @media all and (min-width: 75em) {
+        #sandbox .tone--feature1 .main-media figure,
+        #sandbox .tone--feature2 .main-media figure,
+        #sandbox .tone--feature3 .main-media figure {
+          height: 540px;
+          margin: 0;
+          overflow: hidden;
+          width: 100%; }
+          #sandbox .tone--feature1 .main-media figure .element__inner,
+          #sandbox .tone--feature2 .main-media figure .element__inner,
+          #sandbox .tone--feature3 .main-media figure .element__inner {
+            top: -70px; } }
   #sandbox .tone--feature1 .article--feature,
   #sandbox .tone--feature2 .article--feature,
   #sandbox .tone--feature3 .article--feature {

@@ -1718,14 +1718,14 @@ Displays a cricket header.
 @-webkit-keyframes fadeOutIn {
   7% {
     opacity: 1; }
-  93% {
+  93.0% {
     opacity: 1; }
   to {
     opacity: 0; } }
 @keyframes fadeOutIn {
   7% {
     opacity: 1; }
-  93% {
+  93.0% {
     opacity: 1; }
   to {
     opacity: 0; } }
@@ -3723,6 +3723,18 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--feature2 .main-media figure,
   .tone--feature3 .main-media figure {
     position: relative; }
+    @media all and (min-width: 75em) {
+      .tone--feature1 .main-media figure,
+      .tone--feature2 .main-media figure,
+      .tone--feature3 .main-media figure {
+        height: 540px;
+        margin: 0;
+        overflow: hidden;
+        width: 100%; }
+        .tone--feature1 .main-media figure .element__inner,
+        .tone--feature2 .main-media figure .element__inner,
+        .tone--feature3 .main-media figure .element__inner {
+          top: -70px; } }
 .tone--feature1 .article--feature,
 .tone--feature2 .article--feature,
 .tone--feature3 .article--feature {
