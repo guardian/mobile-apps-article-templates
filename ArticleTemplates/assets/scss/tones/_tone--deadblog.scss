@@ -64,16 +64,6 @@
             border-left: 1px dotted rgba(#fff, .2);
             margin: 0;
 
-            .alerts {
-                @include mq(col2, col3) {
-                    width: cols($base-3, 4);
-                }
-
-                @include mq($from: col3) {
-                    width: cols($base-4, 5);
-                }
-            }
-
             .meta__pubdate {
                 color: rgba(color(shade-3), .8);
             }
@@ -184,7 +174,7 @@
 
     .alerts,
     .alerts.following:active {
-        border-color: color(tone-live);
+        border-color: rgba(color(tone-live), .5);
         color: color(tone-live);
     }
 
@@ -193,7 +183,7 @@
             border-top: 0;
         }
 
-        .alerts {
+        a.alerts {
             margin: 0;
         }
 
@@ -205,7 +195,7 @@
 
         a.alerts,
         a.alerts.following:active {
-            border-color: color(shade-4);
+            border-color: rgba(color(shade-4), .5);
             background-color: transparent;
             color: color(shade-3);
         }
