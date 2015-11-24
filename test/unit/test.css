@@ -2805,8 +2805,6 @@
       color: #005689; }
       #sandbox .block .prose a:active {
         color: #4bc6df; }
-  #sandbox .android .block {
-    margin: 12px; }
   #sandbox .byline {
     color: #333;
     font-family: "Guardian Text Egyptian Web", Georgia, serif; }
@@ -6248,10 +6246,14 @@
           margin-top: 0; } }
     #sandbox .comments__header {
       position: relative;
-      margin: 12px; }
+      margin: 12px;
+      min-height: 44px; }
       @media all and (min-width: 40.63em) {
         #sandbox .comments__header {
-          margin: 0px 0px 18px 0px; } }
+          margin: 0px 12px 18px 6px; } }
+      @media all and (min-width: 40.63em) and (max-width: 74.99em) {
+        .android #sandbox .comments__header {
+          margin-left: 12px; } }
       @media all and (min-width: 75em) {
         .comments--module #sandbox .comments__header {
           float: left;
@@ -6779,7 +6781,7 @@
       @media all and (min-width: 40.63em) {
         #sandbox .related-content__header {
           line-height: 1;
-          margin: 0px 0px 18px 0px; } }
+          margin: 0px 0px 18px 6px; } }
       @media all and (min-width: 75em) {
         #sandbox .related-content__header {
           float: left;
@@ -6787,6 +6789,9 @@
           line-height: 2.3rem;
           margin: 0 20px;
           width: 200px; } }
+      @media all and (min-width: 40.63em) and (max-width: 74.99em) {
+        .android #sandbox .related-content__header {
+          margin-left: 12px; } }
     #sandbox .related-content__container {
       overflow: hidden;
       padding: 0px 12px; }
@@ -6797,11 +6802,14 @@
         #sandbox .related-content__container {
           padding: 0;
           width: 940px; } }
+      @media all and (min-width: 40.63em) and (max-width: 74.99em) {
+        .android #sandbox .related-content__container {
+          padding: 0px 12px 24px 12px; } }
     #sandbox .related-content__list--items-1 {
       width: 140px; }
       @media all and (min-width: 40.63em) and (max-width: 56.24em) {
         #sandbox .related-content__list--items-1 {
-          width: 100%; } }
+          width: 708px; } }
       @media all and (min-width: 56.25em) {
         #sandbox .related-content__list--items-1 {
           width: 210px; } }
@@ -6809,7 +6817,7 @@
       width: 284px; }
       @media all and (min-width: 40.63em) and (max-width: 56.24em) {
         #sandbox .related-content__list--items-2 {
-          width: 100%; } }
+          width: 708px; } }
       @media all and (min-width: 56.25em) {
         #sandbox .related-content__list--items-2 {
           width: 426px; } }
@@ -6817,7 +6825,7 @@
       width: 428px; }
       @media all and (min-width: 40.63em) and (max-width: 56.24em) {
         #sandbox .related-content__list--items-3 {
-          width: 100%; } }
+          width: 708px; } }
       @media all and (min-width: 56.25em) {
         #sandbox .related-content__list--items-3 {
           width: 642px; } }
@@ -6825,7 +6833,7 @@
       width: 572px; }
       @media all and (min-width: 40.63em) and (max-width: 56.24em) {
         #sandbox .related-content__list--items-4 {
-          width: 100%; } }
+          width: 708px; } }
       @media all and (min-width: 56.25em) {
         #sandbox .related-content__list--items-4 {
           width: 858px; } }
@@ -6845,8 +6853,8 @@
       border-bottom: 1px solid #dcdad5; }
       @media all and (min-width: 40.63em) and (max-width: 56.24em) {
         #sandbox .related-content__card {
-          width: 173.1px;
-          margin-right: 5.2px; } }
+          width: 173.25px;
+          margin-right: 5px; } }
       @media all and (min-width: 56.25em) {
         #sandbox .related-content__card {
           width: 210px;
@@ -6946,7 +6954,7 @@
         margin-bottom: 0; }
       @media all and (min-width: 40.63em) and (max-width: 56.24em) {
         #sandbox .related-content__main {
-          height: 103.86px; } }
+          height: 103.95px; } }
       @media all and (min-width: 56.25em) {
         #sandbox .related-content__main {
           height: 126px; } }

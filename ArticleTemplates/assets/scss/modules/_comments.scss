@@ -85,9 +85,16 @@ Comments Module
     &__header {
         position: relative;
         margin: base-px(1);
+        min-height: 44px;
 
         @include mq($from: col2) {
-            margin: base-px(0, 0, 1.5, 0);
+            margin: base-px(0, 1, 1.5, .5);
+        }
+
+        .android & {
+            @include mq(col2, col4) {
+                margin-left: base-px(1);
+            }
         }
 
         @include mq($from: col4) {

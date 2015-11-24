@@ -15,47 +15,114 @@
     display: block;
 }
 
-@include mq($from: col4) {
-    .OUTBRAIN {
+
+.OUTBRAIN {
+    .android & {
+        @include mq($from: col2) {
+            padding: base-px(0, 1);
+        }
+
+        @include mq($from: col4) {
+            padding: 0;
+        }
+    }
+
+    @include mq($from: col2) {
+        .ob-widget {
+            padding: {
+                left: 0 !important;
+                right: 0 !important;
+            }
+
+            .ob-widget-header {
+                margin-left: base-px(.5) !important;
+
+                .android & {
+                    margin-left: 0 !important;
+                }
+            }
+
+            .ob-widget-items-container {
+                margin: 0 !important;
+            }
+
+            .ob-dynamic-rec-container {
+                margin-right: 5px !important;
+                max-width: 173.25px;
+
+                &:last-child {
+                    margin-right: 0 !important;
+                }
+
+                a::before {
+                    border: 0 !important;
+                }
+            }
+
+            .ob-dynamic-rec-link {
+                border: 0 !important;
+                margin: 0 !important;
+            }
+
+            .ob-dynamic-rec-link {
+                .ob-rec-source {
+                    max-height: 50px !important;
+                }
+            }
+
+            .ob_about_this_content {
+                left: 4px !important;
+
+                .android & {
+                    left: 0px !important;
+                }
+            }
+        }
+    }
+
+    @include mq($from: col3) {
+        .ob-widget {
+            .ob-widget-items-container {
+                display: block !important;
+                float: left !important;
+                padding-top: 20px;
+                width: 858px !important;
+            }
+
+            .ob-dynamic-rec-container {
+                margin-right: 6px !important;
+                max-width: 210px !important;
+                width: 210px !important;
+            }
+        }
+    }
+
+    @include mq($from: col4) {
         margin: 0 auto !important;
         max-width: 1200px !important;
 
-        .ob-widget .ob-widget-section {
-            overflow: hidden !important;
-        }
-
-        .ob-widget .ob-widget-header {
-            margin: 20px !important;
-            width: 200px !important;
-        }
-
-        .ob-widget .ob-widget-items-container {
-            display: block !important;
-            float: left !important;
-            margin: 0 !important;
-            padding-top: 20px;
-            width: 858px !important;
-        }
-
-        .ob-widget .ob-dynamic-rec-container {
-            width: 210px !important;
-            margin: 0 6px 0 0 !important;
-
-            &:last-child {
-                margin-right: 0 !important;
+        .ob-widget {
+            .ob-widget-section {
+                overflow: hidden !important;
             }
 
-            a::before {
-                border: 0 !important;
+            .ob-widget-header {
+                margin: 20px !important;
+                width: 200px !important;
             }
-        }
 
-        .ob-widget .ob-dynamic-rec-link {
-            border: 0 !important;
-            margin: 0 !important;
+            .ob-dynamic-rec-container {
+                a::before {
+                    border: 0 !important;
+                }
+            }
 
-            .ob-rec-source {
-                max-height: 50px !important;
+            .ob_what {
+                margin-left: 20px !important;
+            }
+
+            .ob_about_this_content {
+                left: 20px !important;
             }
         }
 
@@ -63,10 +130,6 @@
         &.outbrainText {
             .ob-widget-items-container {
                 margin-left: 240px !important;
-            }
-
-            .ob-unit.ob-rec-text {
-                border: 0 !important;
             }
         }
     }
