@@ -85,6 +85,17 @@ Comments Module
     &__header {
         position: relative;
         margin: base-px(1);
+        min-height: 44px;
+
+        @include mq($from: col2) {
+            margin: base-px(0, 1, 1.5, .5);
+        }
+
+        .android & {
+            @include mq(col2, col4) {
+                margin-left: base-px(1);
+            }
+        }
 
         @include mq($from: col4) {
             .comments--module & {
@@ -118,6 +129,10 @@ Comments Module
 
     &__title {
         @include body-font(1.5, $egyptian-display, 600);
+
+        @include mq($from: col2) {
+            line-height: 1;
+        }
 
         @include mq($from: col4) {
             font-size: 2.3rem;
@@ -163,6 +178,10 @@ Comments Module
 
         .comments--module & {
             top: 0;
+
+            @include mq($from: col2) {
+                margin-top: 6px;
+            }
 
             @include mq($from: col4) {
                 position: static;

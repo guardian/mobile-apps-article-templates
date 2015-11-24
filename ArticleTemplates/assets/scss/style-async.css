@@ -540,7 +540,14 @@ Comments Module
         margin-top: 0; } }
   .comments__header {
     position: relative;
-    margin: 12px; }
+    margin: 12px;
+    min-height: 44px; }
+    @media all and (min-width: 40.63em) {
+      .comments__header {
+        margin: 0px 12px 18px 6px; } }
+    @media all and (min-width: 40.63em) and (max-width: 74.99em) {
+      .android .comments__header {
+        margin-left: 12px; } }
     @media all and (min-width: 75em) {
       .comments--module .comments__header {
         float: left;
@@ -575,6 +582,9 @@ Comments Module
   @media all and (min-width: 40.63em) {
     .comments__title {
       font: 600 2.7rem/3.9rem "Guardian Egyptian Web", Georgia, serif; } }
+  @media all and (min-width: 40.63em) {
+    .comments__title {
+      line-height: 1; } }
   @media all and (min-width: 75em) {
     .comments__title {
       font-size: 2.3rem;
@@ -623,6 +633,9 @@ Comments Module
     right: 0; }
     .comments--module .comments__post {
       top: 0; }
+      @media all and (min-width: 40.63em) {
+        .comments--module .comments__post {
+          margin-top: 6px; } }
       @media all and (min-width: 75em) {
         .comments--module .comments__post {
           position: static;
@@ -1225,7 +1238,8 @@ Related Content / More on this story section
         font: 600 2.7rem/3.9rem "Guardian Egyptian Web", Georgia, serif; } }
     @media all and (min-width: 40.63em) {
       .related-content__header {
-        margin: 12px; } }
+        line-height: 1;
+        margin: 0px 0px 18px 6px; } }
     @media all and (min-width: 75em) {
       .related-content__header {
         float: left;
@@ -1233,18 +1247,27 @@ Related Content / More on this story section
         line-height: 2.3rem;
         margin: 0 20px;
         width: 200px; } }
+    @media all and (min-width: 40.63em) and (max-width: 74.99em) {
+      .android .related-content__header {
+        margin-left: 12px; } }
   .related-content__container {
     overflow: hidden;
     padding: 0px 12px; }
+    @media all and (min-width: 40.63em) {
+      .related-content__container {
+        padding: 0; } }
     @media all and (min-width: 75em) {
       .related-content__container {
         padding: 0;
         width: 940px; } }
+    @media all and (min-width: 40.63em) and (max-width: 74.99em) {
+      .android .related-content__container {
+        padding: 0px 12px 24px 12px; } }
   .related-content__list--items-1 {
     width: 140px; }
     @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .related-content__list--items-1 {
-        width: 182px; } }
+        width: 708px; } }
     @media all and (min-width: 56.25em) {
       .related-content__list--items-1 {
         width: 210px; } }
@@ -1252,7 +1275,7 @@ Related Content / More on this story section
     width: 284px; }
     @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .related-content__list--items-2 {
-        width: 370px; } }
+        width: 708px; } }
     @media all and (min-width: 56.25em) {
       .related-content__list--items-2 {
         width: 426px; } }
@@ -1260,7 +1283,7 @@ Related Content / More on this story section
     width: 428px; }
     @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .related-content__list--items-3 {
-        width: 557px; } }
+        width: 708px; } }
     @media all and (min-width: 56.25em) {
       .related-content__list--items-3 {
         width: 642px; } }
@@ -1268,7 +1291,7 @@ Related Content / More on this story section
     width: 572px; }
     @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .related-content__list--items-4 {
-        width: 744px; } }
+        width: 708px; } }
     @media all and (min-width: 56.25em) {
       .related-content__list--items-4 {
         width: 858px; } }
@@ -1288,8 +1311,8 @@ Related Content / More on this story section
     border-bottom: 1px solid #dcdad5; }
     @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .related-content__card {
-        width: 182px;
-        margin-right: 5.2px; } }
+        width: 173.25px;
+        margin-right: 5px; } }
     @media all and (min-width: 56.25em) {
       .related-content__card {
         width: 210px;
@@ -1389,7 +1412,7 @@ Related Content / More on this story section
       margin-bottom: 0; }
     @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .related-content__main {
-        height: 109.2px; } }
+        height: 103.95px; } }
     @media all and (min-width: 56.25em) {
       .related-content__main {
         height: 126px; } }
