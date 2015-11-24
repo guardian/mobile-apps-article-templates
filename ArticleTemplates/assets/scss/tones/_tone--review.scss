@@ -21,8 +21,12 @@
     .article__header {
         background-color: color(tone-review);
 
-        .section > div {
-            color: color(tone-review-accent); // Content Label Section
+        .section { 
+            margin-bottom: 0;
+
+            > div {
+                color: color(tone-review-accent); // Content Label Section
+            }
         }
         
         .section__container,
@@ -75,7 +79,6 @@
             }
         }
 
-        .main-media__caption,
         .sponsorship {
             background-color: color(shade-7);
 
@@ -86,7 +89,11 @@
 
         .main-media {
             @include mq($from: col4) {
-                background-color: color(shade-7);
+                padding-top: 0; 
+
+                &__caption__text {
+                    width: 575px; // 620px width of main media - 45 for show/hide icon
+                }
             }
         }
     }
