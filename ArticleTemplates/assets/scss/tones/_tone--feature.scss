@@ -1,13 +1,17 @@
 .tone--feature1,
 .tone--feature2,
 .tone--feature3 {
-    .article a,
-    .container__action--sort a,
-    .comments__ordering {
-        color: color(tone-feature1);
-        
-        &:active {
-            color: color(tone-feature1-accent);
+    .content__series-label,
+    .comment-count,
+    .byline__author,
+    .article__body,
+    .container__action--sort {
+        a {
+            color: color(tone-feature1);
+            
+            &:active {
+                color: color(tone-feature1-accent);
+            }
         }
     }
 
@@ -42,6 +46,10 @@
         }
     }
 
+    .comments__ordering {
+        color: color(tone-feature1);
+    }
+
     .section {
         float: none;
         margin-bottom: 0;
@@ -52,6 +60,17 @@
 
         figure {
             position: relative;
+
+            @include mq($from: col4) {
+                height: 540px;
+                margin: 0;
+                overflow: hidden;
+                width: 100%;
+
+               .element__inner {
+                    top: -70px;
+                }
+            }
         }
     }
 
@@ -163,15 +182,15 @@
             border: 0;
             margin: 0;
 
-            a.alerts:active,
-            a.alerts.following {
+            .alerts:active,
+            .alerts.following {
                 background-color: color(shade-7);
                 color: color(tone-feature1-accent);
             }
 
-            a.alerts,
-            a.alerts.following:active {
-                border-color: color(shade-7);
+            .alerts,
+            .alerts.following:active {
+                border-color: rgba(color(shade-7), .5);
                 color: color(shade-7);
             }
         }

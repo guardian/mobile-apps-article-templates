@@ -142,7 +142,7 @@ define([
 
                     figure.addClass(imageClass);
 
-                    if (imageOrLinkedImage && !$(imageOrLinkedImage).hasClass('element__inner')) {
+                    if (imageOrLinkedImage && !$(imageOrLinkedImage).hasClass('figure__inner')) {
                        imageWrapper = document.createElement('div');
                        bonzo(imageWrapper).addClass('figure__inner').append(imageOrLinkedImage);
                        bonzo(el).prepend(imageWrapper);
