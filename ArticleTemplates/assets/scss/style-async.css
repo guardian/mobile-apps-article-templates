@@ -1023,6 +1023,11 @@ Display a link to view more.
   @media all and (min-width: 56.25em) {
     .more--live-blogs {
       margin-left: 31.57895%; } }
+  @media all and (min-width: 75em) {
+    .more--live-blogs {
+      margin: 0 auto;
+      max-width: 1200px;
+      padding-left: 240px; } }
   .more--live-blogs .more__button {
     background-color: #b51800; }
     .more--live-blogs .more__button:active {
@@ -1048,11 +1053,12 @@ Display which keywords an article has been tagged with.
 ```
 */
 .tags {
+  background-color: #fff;
   color: #999;
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  border-bottom: 2px solid #dcdad5;
   border-top: 1px dotted #dcdad5;
   padding: 5px 12px 20px 8px;
-  /*5px 12px 19px 8px*/
   width: 100%;
   clear: both; }
   @media all and (max-width: 40.62em) {
@@ -1065,6 +1071,8 @@ Display which keywords an article has been tagged with.
       line-height: 2.2rem; } }
   @media all and (min-width: 75em) {
     .tags {
+      margin: 0 auto;
+      width: 1200px;
       padding-left: 0;
       padding-right: 0; } }
   .tags .hide-tags {
@@ -1669,7 +1677,10 @@ The 'sponsored by/supported by' section
   font-size: 1.4rem; }
   @media all and (min-width: 75em) {
     .sponsorship {
-      padding-left: 240px; } }
+      background-color: #fff;
+      padding-left: 240px;
+      margin: 0 auto;
+      max-width: 1200px; } }
   .gallery ~ .sponsorship {
     border-bottom: 0; }
   .witness + .sponsorship {
@@ -4222,7 +4233,8 @@ Display a Guardian Witness submission.
   border-top-color: #cc2b12; }
 
 .football__tabpanel .article {
-  border-top-width: 2px; }
+  border-top-width: 2px;
+  background: #fff; }
 
 #football__tabpanel--article .section {
   display: none; }

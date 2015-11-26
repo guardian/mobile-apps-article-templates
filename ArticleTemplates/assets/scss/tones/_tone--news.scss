@@ -13,6 +13,17 @@
     .article__header {
         background-color: color(shade-7);
 
+        @include mq($from: col4) {
+            background-color: color(shade-5);
+
+            .section,
+            .headline,
+            .standfirst__inner,
+            .meta {
+                background-color: color(shade-7);
+            }
+        }
+
         .section > div {
             color: color(tone-news); // Content Label Section
         }

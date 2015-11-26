@@ -3,7 +3,7 @@
 .article--feature,
 .article--audio {
     .article__body {
-        padding: base-px(1, 1, 0, 1);
+        padding: base-px(1);
 
         @include mq(col2, col3) {
             padding-right: cols($base-3, 3);
@@ -12,12 +12,14 @@
         @include mq($from: col3) {
             padding-right: cols($base-4, 4);
         }
-
+    
         @include mq($from: col4) {
-            margin: 0 auto 0 240px;
-            padding: base-px(1, 0);
-            padding-right: 320px;
-            width: 940px;
+            margin: 0 auto;
+            padding: {
+                left: 240px;
+                right: 340px;
+            }
+            width: 1200px;
         }
 
         // Images and video within article body
@@ -111,13 +113,13 @@ body:not(.is-live) .article--liveblog {
             }
         }
 
-        @include mq($from: col4) {
-            .headline,
+         @include mq($from: col4) {
+            .headline {
+                padding-right: 340px;
+            }
+            
             .standfirst {
-                padding: {
-                    left: 0;
-                    right: 0;
-                }
+                padding-right: 0;
             }
         }
     }
@@ -141,6 +143,10 @@ body:not(.is-live) .article--liveblog {
 
         .headline {
             margin-top: base-px(1);
+
+            @include mq($from: col4) {
+                margin-top: 0;
+            }
         }
     }
 }

@@ -16,13 +16,26 @@
     }
 
     .article__header,
+    .section,
+    .meta,
     .touchpoint--primary .touchpoint__button {
         background-color: color(tone-feature1);
     }
 
     .standfirst,
+    .standfirst__inner,
     .touchpoint--primary:active .touchpoint__button {
         background-color: color(tone-feature1-accent);
+    }
+
+    @include mq($from: col4) {
+        .article__header {
+            background-color: darken(color(tone-feature1), 5%);
+        }
+
+        .standfirst {
+            background-color: darken(color(tone-feature1-accent), 5%);
+        }
     }
 
     .comment__report,
@@ -131,10 +144,11 @@
             }
 
             .headline {
+                background-color: color(tone-feature1);
                 color: #fff;
                 position: relative;
                 z-index: 20;
-                margin-top: base-px(1);
+                padding-top: base-px(1);
 
                 @include mq($from: col2) {
                     font-size: 3.6rem;
@@ -153,16 +167,6 @@
                     color: #fff;
                     font-weight: normal;
                 }
-
-                @include mq($from: col4) {
-                    margin: 0;
-                    width: 100%;
-                    
-                    &__inner {
-                        margin-left: 240px;
-                        width: 620px;
-                    }
-                }
             }
 
             .review-rating {
@@ -180,7 +184,6 @@
 
         .meta {
             border: 0;
-            margin: 0;
 
             .alerts:active,
             .alerts.following {

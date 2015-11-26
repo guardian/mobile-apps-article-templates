@@ -18,9 +18,23 @@
         background-color: color(shade-7);
     }
 
-    .article__header {
+    .article__header,
+    .section,
+    .headline,
+    .touchpoint--primary .touchpoint__button,
+    .standfirst,
+    .standfirst__inner {
         background-color: color(tone-review);
+    }
 
+    @include mq($from: col4) {
+        .article__header,
+        .standfirst {
+            background-color: darken(color(tone-review), 5%);
+        }
+    }
+
+    .article__header {
         .section { 
             margin-bottom: 0;
 
@@ -58,6 +72,11 @@
 
         .meta {
             background-color: color(tone-review-meta-background);
+            
+            @include mq($from: col4) {
+                background-color: darken(color(tone-review-meta-background), 5%);
+                max-width: 100%;
+            }
 
             .meta__byline .byline,
             .meta__byline a, 
@@ -72,10 +91,13 @@
 
         .meta__misc {
              @include mq($from: col4) {
+                background-color: color(tone-review-meta-background);
+                margin: 0 auto;
                 padding: {
-                    left: 0;
-                    right: 0;
+                    left: 240px;
+                    right: 340px;
                 }
+                width: 1200px;
             }
         }
 
@@ -89,6 +111,7 @@
 
         .main-media {
             @include mq($from: col4) {
+                background-color: color(tone-review);
                 padding-top: 0; 
 
                 &__caption__text {

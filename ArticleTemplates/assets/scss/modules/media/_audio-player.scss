@@ -24,11 +24,6 @@ Play a piece of audio, i.e. a podcast.
 </div>
 ```
 */
-.audio-player__wrapper {
-    @include mq($from: col4) {
-        background-color: color(shade-1);
-    }
-}
 
 .audio-player {
     background-color: color(shade-1);
@@ -38,10 +33,22 @@ Play a piece of audio, i.e. a podcast.
     height: 68px;
     width: 100%;
     z-index: 1;
+}
 
-    @include mq($from: col4) {
-        width: 620px;
+@include mq($from: col4) {
+    .audio-player__container {
+        background-color: darken(color(shade-1), 5%);
+    }
+
+    .audio-player__wrapper {
+        background-color: color(shade-1);
+        margin: 0 auto;
+        width: 1200px;
+    }
+
+    .audio-player {
         margin-left: 240px;
+        width: 620px;
     }
 }
 
