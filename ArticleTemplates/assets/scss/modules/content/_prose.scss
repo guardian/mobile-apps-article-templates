@@ -328,47 +328,6 @@ Adds typographic styling, typically to content fetched from the Guardian Content
         }
     }
 
-    figure {
-        margin: base-px(1, 1, 0, 0);
-        // Full width
-        &.figure-wide {
-            img {
-                height: auto;
-            }
-
-            figcaption {
-                @include mq(col2, col3) {
-                    padding-right: cols($base-3, 3);
-                }
-
-                @include mq($from: col3) {
-                    padding-right: cols($base-4, 4);
-                }
-            }
-        }
-
-        // Inline
-        &.figure-inline {
-            margin-right: 12px;
-            float: left; 
-
-            @include mq($from: col1) {
-                margin: base-px(.5, 1, 0, 0);
-                float: left;
-
-                img {
-                    width: 100%;
-                    height: auto;
-                }
-            }
-
-            figcaption {
-                padding-left: 0;
-                padding-right: 0;
-            }
-        }
-    }
-
     *:first-child {
         margin-top: 0;
 
