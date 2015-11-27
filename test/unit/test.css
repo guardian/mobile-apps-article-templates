@@ -2689,7 +2689,11 @@
     #sandbox .cutout .cutout__container {
       margin: 0 auto;
       min-height: 220px;
-      max-width: 1200px; }
+      max-width: 1200px; } }
+  #sandbox .cutout .cutout__container .headline {
+    position: relative;
+    z-index: 1; }
+    @media all and (min-width: 75em) {
       #sandbox .cutout .cutout__container .headline {
         margin: 0; } }
   #sandbox .cutout .cutout__image {
@@ -3475,14 +3479,14 @@
 @-webkit-keyframes fadeOutIn {
   7% {
     opacity: 1; }
-  93% {
+  93.0% {
     opacity: 1; }
   to {
     opacity: 0; } }
 @keyframes fadeOutIn {
   7% {
     opacity: 1; }
-  93% {
+  93.0% {
     opacity: 1; }
   to {
     opacity: 0; } }
@@ -4076,7 +4080,8 @@
     padding-bottom: 48px;
     position: relative;
     clear: left;
-    overflow: auto; }
+    overflow: hidden;
+    width: 100%; }
   #sandbox .article--comment .article__header .byline__author {
     display: block; }
   #sandbox .article--comment .article__header .standfirst {

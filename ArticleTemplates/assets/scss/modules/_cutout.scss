@@ -39,8 +39,13 @@ Display a large image of contributor in background of container.
             margin: 0 auto;
             min-height: 220px;
             max-width: 1200px;
+        }
+        
+        .headline {
+            position: relative;
+            z-index: 1;
 
-            .headline {
+            @include mq($from: col4) {
                 margin: 0;
             }
         }

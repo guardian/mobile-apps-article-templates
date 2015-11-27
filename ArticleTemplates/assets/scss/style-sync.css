@@ -452,7 +452,11 @@ Display a large image of contributor in background of container.
   .cutout .cutout__container {
     margin: 0 auto;
     min-height: 220px;
-    max-width: 1200px; }
+    max-width: 1200px; } }
+.cutout .cutout__container .headline {
+  position: relative;
+  z-index: 1; }
+  @media all and (min-width: 75em) {
     .cutout .cutout__container .headline {
       margin: 0; } }
 .cutout .cutout__image {
@@ -1758,14 +1762,14 @@ Displays a cricket header.
 @-webkit-keyframes fadeOutIn {
   7% {
     opacity: 1; }
-  93% {
+  93.0% {
     opacity: 1; }
   to {
     opacity: 0; } }
 @keyframes fadeOutIn {
   7% {
     opacity: 1; }
-  93% {
+  93.0% {
     opacity: 1; }
   to {
     opacity: 0; } }
@@ -2564,7 +2568,8 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
   padding-bottom: 48px;
   position: relative;
   clear: left;
-  overflow: auto; }
+  overflow: hidden;
+  width: 100%; }
 .article--comment .article__header .byline__author {
   display: block; }
 .article--comment .article__header .standfirst {
