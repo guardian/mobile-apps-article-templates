@@ -1873,8 +1873,7 @@ Provide a summary of events:
     color: #767676;
     display: inline-block;
     font-family: "Guardian Agate Sans 1 Web", sans-serif;
-    margin: 0px 0px 12px 0px;
-    margin-top: -5px;
+    padding: 12px 0px;
     vertical-align: top; }
     @media all and (min-width: 40.63em) {
       [class*="block--live-"] .block__time {
@@ -1941,12 +1940,23 @@ Provide a summary of events:
       [class*="block--live-"] .block__byline {
         width: 620px; } }
   [class*="block--live-"] .block__avatar {
+    background: #eaeaea;
     border-radius: 50%;
-    display: inline;
+    display: inline-block;
     height: 40px;
     margin-right: 6px;
+    overflow: hidden;
+    position: relative;
     vertical-align: middle;
     width: 40px; }
+    [class*="block--live-"] .block__avatar img {
+      left: 50%;
+      max-height: 100%;
+      position: absolute;
+      top: 0;
+      -webkit-transform: translateY(-50%);
+      transform: translateX(-50%);
+      width: auto; }
   [class*="block--live-"] .block__author {
     display: inline;
     line-height: 40px; }
