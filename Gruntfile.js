@@ -198,7 +198,7 @@ module.exports = function(grunt) {
             },
             scss: {
                 files: ['ArticleTemplates/assets/scss/**/*.scss'],
-                tasks: ['scsslint','sass','hologram','rsync']
+                tasks: ['scsslint','sass','hologram','cssmin','rsync']
             },
             copy: {
                 files: ['ArticleTemplates/*.html', 'ArticleTemplates/assets/img/**'],
@@ -264,6 +264,15 @@ module.exports = function(grunt) {
             },
             wraith: {
                 command: 'cd ' + config.base.html + 'test/visual && wraith latest ' + config.base.html + 'test/visual/visual.yaml'
+            },
+            clean: {
+                command: 'git checkout ArticleTemplates/assets/build ArticleTemplates/assets/css ArticleTemplates/assets/scss/*.css DocumentationTemplates test'
+            },
+            ziptemplates: {
+                command: 'cd ArticleTemplates && zip -q -r ArticleTemplates.zip ./* -x "./assets/scss/*" "./assets/js/*" "*.DS_Store" "*.map" && mv ArticleTemplates.zip ../'
+            },
+            deployandroid: {
+                command: 'adb push ArticleTemplates.zip /sdcard/ArticleTemplates.zip && adb shell am startservice -n "com.guardian/.templates.UpdateTemplatesService"'
             }
         }
 
@@ -274,6 +283,7 @@ module.exports = function(grunt) {
     grunt.registerTask('build', ['initRequireJS', 'jshint', 'requirejs', 'scsslint','sass:dev','cssmin']);
     grunt.registerTask('buildJS', ['initRequireJS', 'jshint', 'requirejs']);
     grunt.registerTask('buildCSS', ['scsslint','sass:dev','cssmin']);
+    grunt.registerTask('deploy', ['build','shell:ziptemplates', 'shell:deployandroid']);
     grunt.registerTask('apk', ['build', 'rsync', 'shell:android']);
     grunt.registerTask('ipa', ['build', 'rsync', 'shell:ios']);
     grunt.registerTask('installer', ['build', 'rsync', 'shell:ios', 'shell:android']);
