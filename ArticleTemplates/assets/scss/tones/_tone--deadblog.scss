@@ -29,14 +29,14 @@
 .tone--deadBlog {
     .witness {
         margin-top: base-px(1);
+
+        @include mq($from: col4) {
+            margin-left: 240px;
+        }
     }
 
     a.touchpoint:active {
         color: color(tone-deadblog);
-    }
-
-    .more--live-blogs {
-        margin-left: 4px;
     }
 
     #comments .touchpoint--primary {
@@ -64,24 +64,44 @@
             border-left: 1px dotted rgba(#fff, .2);
             margin: 0;
 
-            .alerts {
-                @include mq(col2, col3) {
-                    width: cols($base-3, 4);
-                }
-
-                @include mq($from: col3) {
-                    width: cols($base-4, 5);
-                }
+            @include mq($from: col4) {
+                background-color: darken(color(shade-8), 10%);
+                border: 0;
+                max-width: 100%;
+                width: 100%;
             }
 
             .meta__pubdate {
                 color: rgba(color(shade-3), .8);
             }
         }
+
+        .meta__misc {
+             @include mq($from: col4) {
+                background-color: color(shade-8);
+                margin: 0 auto;
+                padding: {
+                    left: 240px;
+                    right: 340px;
+                }
+                width: 1200px;
+            }
+        }
     }
 
     .article__header {
         background-color: color(shade-7);
+
+        @include mq($from: col4) {
+            background-color: color(shade-5);
+
+            .section,
+            .headline,
+            .standfirst__inner,
+            .main-media {
+                background-color: color(shade-7);
+            }
+        }
 
         .byline__author,
         .byline__author a {
@@ -117,7 +137,6 @@
             color: color(tone-deadblog); // Default
             font-family: $egyptian-display;
             font-weight: 600;
-            float: left;
 
             &::before {
                 margin-right: base-px(.66666);
@@ -149,6 +168,8 @@
     }
 
     .tags {
+        background-color: color(shade-5);
+        border-bottom: 0;
         padding-left: 0;
 
         .inline-list__item {
@@ -184,7 +205,7 @@
 
     .alerts,
     .alerts.following:active {
-        border-color: color(tone-live);
+        border-color: rgba(color(tone-live), .5);
         color: color(tone-live);
     }
 
@@ -193,7 +214,7 @@
             border-top: 0;
         }
 
-        .alerts {
+        a.alerts {
             margin: 0;
         }
 
@@ -205,7 +226,7 @@
 
         a.alerts,
         a.alerts.following:active {
-            border-color: color(shade-4);
+            border-color: rgba(color(shade-4), .5);
             background-color: transparent;
             color: color(shade-3);
         }

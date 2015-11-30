@@ -34,13 +34,48 @@ figure {
     }
 }
 
-
+// Full width
 .figure-wide {
-     margin: base-px(1, 0);
-     //for when these are displayed in the main media area (at the top we don't need these margins)
-     .main-media & {
+    margin: base-px(1, 0);
+    //for when these are displayed in the main media area (at the top we don't need these margins)
+    .main-media & {
         margin: 0;
-     }
+    }
+
+    img {
+        height: auto;
+    }
+
+    figcaption {
+        @include mq(col2, col3) {
+            padding-right: cols($base-3, 3);
+        }
+
+        @include mq($from: col3) {
+            padding-right: cols($base-4, 4);
+        }
+    }
+}
+
+// Inline
+.figure-inline {
+    margin-right: 12px;
+    float: left; 
+
+    @include mq($from: col1) {
+        margin: base-px(.5, 1, 0, 0);
+        float: left;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    figcaption {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 .figure__caption__icon {
@@ -62,11 +97,11 @@ figure {
 }
 
 .figure--thumbnail {
-     float: left;
-     max-width: 65px; //fixed width throughout
-     margin: 6px 13px 0 0;
+    float: left;
+    max-width: 65px; //fixed width throughout
+    margin: 6px 13px 0 0;
 
-     .prose & {
+    .prose & {
         //extra specificity for overiding style to override styles in prose
         margin-top: 6px;
 
@@ -78,75 +113,34 @@ figure {
 
 .figure--thumbnail-with-caption {
     display: block;
-    position: relative;
-    width: 100%;
+    float: left;
+    margin: 4px 12px 0 0;
+    max-width: 200px;
+    width: 50%;
 
      .figure__inner {
-        width: 50%;
+        width: 100%;
         display: block;
-        padding-right: 10px;
+    }
+
+    .element-image__credit {
+        display: block;
     }
 
     figcaption {
-        display: block;
-        height: 100%;
-        padding: 0;
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 50%;
+        padding: 0 0 4px;
         border-bottom: 1px dotted rgba(color(shade-3), .4);
-        border-top: 1px dotted rgba(color(shade-3), .4);
+    }
 
-        .element-image__caption {
-            height: calc(100% - 60px);
-            overflow: hidden;
-            display: block;
-            display: -webkit-box;
-            -webkit-line-clamp: 5;
-            -webkit-box-orient: vertical;
-        }
-
-        .element-image__credit {
-            position: absolute;
-            bottom: 0;
-        }
+    @include mq($from: col1) {
+        width: 33%;
     }
 
     @include mq($from: col2) {
-        float: left;
-        width: 33%;
         margin-right: 15px;
-
-        .figure__inner {
-            width: 100%;
-            margin-bottom: 10px;
-            padding-right: 0;
-        }
-
-        figcaption {
-            padding-bottom: base-px(1);
-            position: static;
-            height: auto;
-            width: 100%;
-
-            .element-image__caption {
-                height: auto;
-                display: block;
-                padding-bottom: base-px(1);
-            }
-
-            .element-image__credit {
-                position: static;
-            }
-        }
     }
-    .prose & {
-        //extra specificity for overiding style to override styles in prose
-        @include mq($from: col4) {
-            max-width: 200px;
-            margin: 0;
-            margin-left: -220px;
-        }
+
+    @include mq($from: col4) {
+        margin: 0 0 12px -220px;
     }
 }

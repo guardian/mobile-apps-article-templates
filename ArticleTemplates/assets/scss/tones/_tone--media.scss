@@ -1,9 +1,5 @@
 .tone--media {
     @include mq($from: col4) {
-        &:not(.is_advertising) {
-            background: #303030;
-        }
-
         .comments,
         .related-content {
             background: color(shade-5);
@@ -35,6 +31,7 @@
     }
 
     .tags {
+
         .inline-list__item {
             a {
                 @include tag-button(color(shade-7), color(shade-6), 'lighter');
@@ -98,6 +95,10 @@
         border-top-color: color(tone-media);
         background-color: color(shade-1);
 
+        @include mq($from: col4) {
+            background-color: #303030;
+        }
+
         .prose p,
         .prose li {
             @include text-underline(darken(color(tone-media), 5%), color(shade-1), color(tone-media-accent));
@@ -126,7 +127,14 @@
         }
 
         .article__header,
-        .article__body,
+        .article__body {
+            background-color: color(shade-1);
+
+            @include mq($from: col4) {
+                background-color: #303030;
+            }
+        }
+
         .tags {
             background-color: color(shade-1);
         }
@@ -152,6 +160,19 @@
         }
 
         @include mq($from: col4) {
+            .section,
+            .headline,
+            .main-media, 
+            .meta {
+                background-color: color(shade-1);
+            }
+        
+            .standfirst {
+                margin-left: 240px;
+                padding-bottom: base-px(2);
+                width: 620px;
+            }
+
             .meta {
                 border-top: 1px dotted color(shade-2);
                 margin-top: 1px;

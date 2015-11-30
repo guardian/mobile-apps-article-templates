@@ -540,7 +540,14 @@ Comments Module
         margin-top: 0; } }
   .comments__header {
     position: relative;
-    margin: 12px; }
+    margin: 12px;
+    min-height: 44px; }
+    @media all and (min-width: 40.63em) {
+      .comments__header {
+        margin: 0px 12px 18px 6px; } }
+    @media all and (min-width: 40.63em) and (max-width: 74.99em) {
+      .android .comments__header {
+        margin-left: 12px; } }
     @media all and (min-width: 75em) {
       .comments--module .comments__header {
         float: left;
@@ -575,6 +582,9 @@ Comments Module
   @media all and (min-width: 40.63em) {
     .comments__title {
       font: 600 2.7rem/3.9rem "Guardian Egyptian Web", Georgia, serif; } }
+  @media all and (min-width: 40.63em) {
+    .comments__title {
+      line-height: 1; } }
   @media all and (min-width: 75em) {
     .comments__title {
       font-size: 2.3rem;
@@ -623,6 +633,9 @@ Comments Module
     right: 0; }
     .comments--module .comments__post {
       top: 0; }
+      @media all and (min-width: 40.63em) {
+        .comments--module .comments__post {
+          margin-top: 6px; } }
       @media all and (min-width: 75em) {
         .comments--module .comments__post {
           position: static;
@@ -727,6 +740,28 @@ figure figcaption {
   margin: 12px 0px; }
   .main-media .figure-wide {
     margin: 0; }
+  .figure-wide img {
+    height: auto; }
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+    .figure-wide figcaption {
+      padding-right: 23.94366%; } }
+  @media all and (min-width: 56.25em) {
+    .figure-wide figcaption {
+      padding-right: 24.21053%; } }
+
+.figure-inline {
+  margin-right: 12px;
+  float: left; }
+  @media all and (min-width: 28.13em) {
+    .figure-inline {
+      margin: 6px 12px 0px 0px;
+      float: left; }
+      .figure-inline img {
+        width: 100%;
+        height: auto; } }
+  .figure-inline figcaption {
+    padding-left: 0;
+    padding-right: 0; }
 
 .figure--thumbnail img,
 .figure--thumbnail-with-caption img,
@@ -750,57 +785,27 @@ figure figcaption {
 
 .figure--thumbnail-with-caption {
   display: block;
-  position: relative;
-  width: 100%; }
+  float: left;
+  margin: 4px 12px 0 0;
+  max-width: 200px;
+  width: 50%; }
   .figure--thumbnail-with-caption .figure__inner {
-    width: 50%;
-    display: block;
-    padding-right: 10px; }
+    width: 100%;
+    display: block; }
+  .figure--thumbnail-with-caption .element-image__credit {
+    display: block; }
   .figure--thumbnail-with-caption figcaption {
-    display: block;
-    height: 100%;
-    padding: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 50%;
-    border-bottom: 1px dotted rgba(153, 153, 153, 0.4);
-    border-top: 1px dotted rgba(153, 153, 153, 0.4); }
-    .figure--thumbnail-with-caption figcaption .element-image__caption {
-      height: calc(100% - 60px);
-      overflow: hidden;
-      display: block;
-      display: -webkit-box;
-      -webkit-line-clamp: 5;
-      -webkit-box-orient: vertical; }
-    .figure--thumbnail-with-caption figcaption .element-image__credit {
-      position: absolute;
-      bottom: 0; }
+    padding: 0 0 4px;
+    border-bottom: 1px dotted rgba(153, 153, 153, 0.4); }
+  @media all and (min-width: 28.13em) {
+    .figure--thumbnail-with-caption {
+      width: 33%; } }
   @media all and (min-width: 40.63em) {
     .figure--thumbnail-with-caption {
-      float: left;
-      width: 33%;
-      margin-right: 15px; }
-      .figure--thumbnail-with-caption .figure__inner {
-        width: 100%;
-        margin-bottom: 10px;
-        padding-right: 0; }
-      .figure--thumbnail-with-caption figcaption {
-        padding-bottom: 12px;
-        position: static;
-        height: auto;
-        width: 100%; }
-        .figure--thumbnail-with-caption figcaption .element-image__caption {
-          height: auto;
-          display: block;
-          padding-bottom: 12px; }
-        .figure--thumbnail-with-caption figcaption .element-image__credit {
-          position: static; } }
+      margin-right: 15px; } }
   @media all and (min-width: 75em) {
-    .prose .figure--thumbnail-with-caption {
-      max-width: 200px;
-      margin: 0;
-      margin-left: -220px; } }
+    .figure--thumbnail-with-caption {
+      margin: 0 0 12px -220px; } }
 
 /*doc
 ---
@@ -1010,6 +1015,11 @@ Display a link to view more.
   @media all and (min-width: 56.25em) {
     .more--live-blogs {
       margin-left: 31.57895%; } }
+  @media all and (min-width: 75em) {
+    .more--live-blogs {
+      margin: 0 auto;
+      max-width: 1200px;
+      padding-left: 240px; } }
   .more--live-blogs .more__button {
     background-color: #b51800; }
     .more--live-blogs .more__button:active {
@@ -1035,11 +1045,12 @@ Display which keywords an article has been tagged with.
 ```
 */
 .tags {
+  background-color: #fff;
   color: #999;
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
+  border-bottom: 2px solid #dcdad5;
   border-top: 1px dotted #dcdad5;
   padding: 5px 12px 20px 8px;
-  /*5px 12px 19px 8px*/
   width: 100%;
   clear: both; }
   @media all and (max-width: 40.62em) {
@@ -1052,6 +1063,8 @@ Display which keywords an article has been tagged with.
       line-height: 2.2rem; } }
   @media all and (min-width: 75em) {
     .tags {
+      margin: 0 auto;
+      width: 1200px;
       padding-left: 0;
       padding-right: 0; } }
   .tags .hide-tags {
@@ -1225,7 +1238,8 @@ Related Content / More on this story section
         font: 600 2.7rem/3.9rem "Guardian Egyptian Web", Georgia, serif; } }
     @media all and (min-width: 40.63em) {
       .related-content__header {
-        margin: 12px; } }
+        line-height: 1;
+        margin: 0px 0px 18px 6px; } }
     @media all and (min-width: 75em) {
       .related-content__header {
         float: left;
@@ -1233,18 +1247,27 @@ Related Content / More on this story section
         line-height: 2.3rem;
         margin: 0 20px;
         width: 200px; } }
+    @media all and (min-width: 40.63em) and (max-width: 74.99em) {
+      .android .related-content__header {
+        margin-left: 12px; } }
   .related-content__container {
     overflow: hidden;
     padding: 0px 12px; }
+    @media all and (min-width: 40.63em) {
+      .related-content__container {
+        padding: 0; } }
     @media all and (min-width: 75em) {
       .related-content__container {
         padding: 0;
         width: 940px; } }
+    @media all and (min-width: 40.63em) and (max-width: 74.99em) {
+      .android .related-content__container {
+        padding: 0px 12px 24px 12px; } }
   .related-content__list--items-1 {
     width: 140px; }
     @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .related-content__list--items-1 {
-        width: 182px; } }
+        width: 708px; } }
     @media all and (min-width: 56.25em) {
       .related-content__list--items-1 {
         width: 210px; } }
@@ -1252,7 +1275,7 @@ Related Content / More on this story section
     width: 284px; }
     @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .related-content__list--items-2 {
-        width: 370px; } }
+        width: 708px; } }
     @media all and (min-width: 56.25em) {
       .related-content__list--items-2 {
         width: 426px; } }
@@ -1260,7 +1283,7 @@ Related Content / More on this story section
     width: 428px; }
     @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .related-content__list--items-3 {
-        width: 557px; } }
+        width: 708px; } }
     @media all and (min-width: 56.25em) {
       .related-content__list--items-3 {
         width: 642px; } }
@@ -1268,7 +1291,7 @@ Related Content / More on this story section
     width: 572px; }
     @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .related-content__list--items-4 {
-        width: 744px; } }
+        width: 708px; } }
     @media all and (min-width: 56.25em) {
       .related-content__list--items-4 {
         width: 858px; } }
@@ -1288,8 +1311,8 @@ Related Content / More on this story section
     border-bottom: 1px solid #dcdad5; }
     @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .related-content__card {
-        width: 182px;
-        margin-right: 5.2px; } }
+        width: 173.25px;
+        margin-right: 5px; } }
     @media all and (min-width: 56.25em) {
       .related-content__card {
         width: 210px;
@@ -1389,7 +1412,7 @@ Related Content / More on this story section
       margin-bottom: 0; }
     @media all and (min-width: 40.63em) and (max-width: 56.24em) {
       .related-content__main {
-        height: 109.2px; } }
+        height: 103.95px; } }
     @media all and (min-width: 56.25em) {
       .related-content__main {
         height: 126px; } }
@@ -1646,7 +1669,10 @@ The 'sponsored by/supported by' section
   font-size: 1.4rem; }
   @media all and (min-width: 75em) {
     .sponsorship {
-      padding-left: 240px; } }
+      background-color: #fff;
+      padding-left: 240px;
+      margin: 0 auto;
+      max-width: 1200px; } }
   .gallery ~ .sponsorship {
     border-bottom: 0; }
   .witness + .sponsorship {
@@ -1847,7 +1873,8 @@ Provide a summary of events:
     color: #767676;
     display: inline-block;
     font-family: "Guardian Agate Sans 1 Web", sans-serif;
-    padding: 12px 0px;
+    margin: 0px 0px 12px 0px;
+    margin-top: -5px;
     vertical-align: top; }
     @media all and (min-width: 40.63em) {
       [class*="block--live-"] .block__time {
@@ -1887,6 +1914,7 @@ Provide a summary of events:
     [class*="block--live-"] .block__body {
       width: 620px; } }
   [class*="block--live-"] .block__updated {
+    clear: both;
     color: #999;
     font-family: "Guardian Agate Sans 1 Web", sans-serif; }
     @media all and (max-width: 40.62em) {
@@ -1925,12 +1953,14 @@ Provide a summary of events:
   [class*="block--live-"] .prose blockquote {
     margin-right: 0;
     margin-left: 0; }
-  @media all and (min-width: 40.63em) {
-    [class*="block--live-"] .prose figure {
-      width: 100%; } }
   [class*="block--live-"] .prose figure.figure-inline {
     float: none;
     clear: both; }
+  [class*="block--live-"] .prose figure.element--thumbnail:first-child {
+    margin-top: 2px; }
+    @media all and (min-width: 75em) {
+      [class*="block--live-"] .prose figure.element--thumbnail:first-child {
+        margin-top: 20px; } }
   [class*="block--live-"] .prose figure:last-child figcaption:not(.figure--thumbnail, .figure-wide, .figure--thumbnail-with-caption) {
     border-bottom: 0; }
   [class*="block--live-"] .prose figcaption {
@@ -2748,29 +2778,6 @@ Adds typographic styling, typically to content fetched from the Guardian Content
       margin: 0;
       margin-left: -220px;
       max-width: 200px; } }
-.prose figure {
-  margin: 12px 12px 0px 0px; }
-  .prose figure.figure-wide img {
-    height: auto; }
-  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
-    .prose figure.figure-wide figcaption {
-      padding-right: 23.94366%; } }
-  @media all and (min-width: 56.25em) {
-    .prose figure.figure-wide figcaption {
-      padding-right: 24.21053%; } }
-  .prose figure.figure-inline {
-    margin-right: 12px;
-    float: left; }
-    @media all and (min-width: 28.13em) {
-      .prose figure.figure-inline {
-        margin: 6px 12px 0px 0px;
-        float: left; }
-        .prose figure.figure-inline img {
-          width: 100%;
-          height: auto; } }
-    .prose figure.figure-inline figcaption {
-      padding-left: 0;
-      padding-right: 0; }
 .prose *:first-child {
   margin-top: 0; }
   .prose *:first-child .aside {
@@ -4232,7 +4239,8 @@ Display a Guardian Witness submission.
   border-top-color: #cc2b12; }
 
 .football__tabpanel .article {
-  border-top-width: 2px; }
+  border-top-width: 2px;
+  background: #fff; }
 
 #football__tabpanel--article .section {
   display: none; }

@@ -10,7 +10,7 @@
     .content__series-label {
         color: color(shade-7);
     }
-    
+
     &.is-live {
         a.touchpoint {
             &:active {
@@ -84,12 +84,28 @@
 
         .alerts,
         .alerts.following:active {
-            border-color: color(shade-7);
+            border-color: rgba(color(shade-7), .5);
             color: color(shade-7);
         }
 
-        .article__header {
+        .article__header,
+        .section,
+        .headline,
+        .standfirst,
+        .standfirst__inner,
+        .main-media,
+        .touchpoint--primary .touchpoint__button {
             background-color: color(tone-live);
+        }
+
+        @include mq($from: col4) {
+            .article__header,
+            .standfirst {
+                background-color: darken(color(tone-live), 5%);
+            }
+        }
+
+        .article__header {
             color: #fff;
 
             a {
@@ -152,7 +168,7 @@
                 }
 
                 @include mq($from: col4) {
-                    margin-left: 240px;
+                    margin: 0 auto;
                 }
             }
 
@@ -183,6 +199,12 @@
         // Template specific styles
         .article--liveblog {
             border-top-color: color(tone-live-accent);
+
+            @include mq($from: col4) {
+                .content__labels__container {
+                    padding-left: 60px;
+                }
+            }
 
             .prose table,
             .table {
@@ -218,7 +240,28 @@
                 }
 
                 @include mq($from: col4) {
+                    background-color: darken(color(tone-live-accent), 5%);
+                    border: 0;
+                    max-width: 100%;
                     padding-left: 0;
+                }
+            }
+
+            .meta__misc {
+                 @include mq($from: col4) {
+                    background-color: color(tone-live-accent);
+                    margin: 0 auto;
+                    padding: {
+                        left: 240px;
+                        right: 340px;
+                    }
+                    width: 1200px;
+                }
+            }
+
+            .main-media {
+                @include mq($from: col4) {
+                    border-bottom: 0;
                 }
             }
 
@@ -231,10 +274,14 @@
             }
 
             .tags {
+                background-color: color(shade-5);
+                border-bottom: 0;
+
                 .inline-list__item {
                     a {
                         @include tag-button(color(shade-1), color(blogs-tags));
                     }
+
                     &.more-button a {
                         @include tag-more-button(color(shade-1), darken(color(blogs-tags),10%));
                     }

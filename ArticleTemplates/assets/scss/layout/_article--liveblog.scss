@@ -3,7 +3,6 @@
     border-bottom: 0;
 
     .article__header {
-        border-bottom: 2px solid color(shade-4);
         background-color: #fff;
 
         .section {
@@ -17,6 +16,10 @@
             position: absolute;
             left: base-px(1);
             top: 3px;
+
+            @include mq($from: col4) {
+                top: 5px;
+            }
         }
 
         .meta {
@@ -28,10 +31,20 @@
         }
     }
 
-    @include mq($from: col4) {
-        .main-media {
+    .article__body {
+        background-color: color(shade-5);
+
+        @include mq($from: col4) {
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+    }
+
+    .main-media {
+        @include mq($from: col4) {
+            border-bottom: 2px solid color(shade-4);
             padding: base-px(1, 0);
-        
+
             .element {
                 position: relative;
             }

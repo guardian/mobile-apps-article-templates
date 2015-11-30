@@ -26,6 +26,14 @@ With live indicator:
         line-height: 92%; // Offset for different font
         vertical-align: bottom;
     }
+
+     @include mq($from: col4) {
+        margin: {
+            left: auto;
+            right: auto;
+        }
+        max-width: 1200px;
+     }
 }
 
 .section__meta {
@@ -94,12 +102,12 @@ With live indicator:
     height: 100%;
 
     @include mq($from: col4) {
-        margin: 0 auto 0 240px;
+        margin: 0 20px;
         padding: {
             left: 0;
             right: 0;
         }
-        width: 620px;
+        width: 1160px;
     }
 
     .content__labels__container {

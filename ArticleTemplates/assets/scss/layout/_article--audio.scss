@@ -14,23 +14,11 @@
             position: relative;
             z-index: 1; // this is so it sits over the canvas background element;
 
-            @include mq($from: col4) {
-                margin-left: 0;
-                width: auto;
-
-                .headline {
-                    margin-left: 240px;
-                }
-            }
         }
 
         .headline {
             @include mq($from: col2) {
                 padding-right: cols($base-3, 3, 1);
-            }
-
-            @include mq($from: col4) {
-                padding-right: 0;
             }
         }
 

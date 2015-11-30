@@ -46,7 +46,8 @@ Can also be displayed with the caption initially hidden:
 @include mq($from: col4) {
     .main-media {
         padding-top: base-px(1);
-        width: 100%;
+        margin: 0 auto;
+        width: 1200px;
 
         // Speficity needed to ensure margin is set correctly
         figure.element {
@@ -54,6 +55,11 @@ Can also be displayed with the caption initially hidden:
             padding: 0;
             position: relative;
             width: 620px;
+
+            // element-video gets position absolutely so needs padding on the wrapper
+            &.element-video {
+                padding-bottom: 350px; // since container width is not 100% the padding bottom here is set at 56.25% of 620px 
+            }
         }
 
         .main-media__caption {

@@ -34,8 +34,7 @@
 
     .article__header {
         background-color: color(shade-6);
-        //background-image: -webkit-canvas(circles); (-webkit-canvas is deprecated not supported in Windows App)
-
+        
         .section {
             display: block;
         }
@@ -72,6 +71,16 @@
 
         .comment-count a {
             color: color(tone-podcast);
+        }
+    }
+
+    @include mq($from: col4) {
+        .cutout {
+            background-color: darken(color(shade-6), 5%);
+
+            .cutout__container {
+                background-color: color(shade-6);
+            }
         }
     }
 
@@ -115,9 +124,9 @@
     }
     
     &.is_advertising{
-        a.alerts,
-        a.alerts.following:active {
-            border-color: color(shade-1);
+        .alerts,
+        .alerts.following:active {
+            border-color: rgba(color(shade-1), .5);
             color: color(shade-1);
         }
     }
