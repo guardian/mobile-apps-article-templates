@@ -2704,7 +2704,8 @@
     left: 0;
     position: absolute;
     right: -10%;
-    top: 0; }
+    top: 0;
+    z-index: 1; }
     @media all and (min-width: 28.13em) {
       #sandbox .cutout .cutout__image {
         background-size: 45%;
@@ -3479,14 +3480,14 @@
 @-webkit-keyframes fadeOutIn {
   7% {
     opacity: 1; }
-  93% {
+  93.0% {
     opacity: 1; }
   to {
     opacity: 0; } }
 @keyframes fadeOutIn {
   7% {
     opacity: 1; }
-  93% {
+  93.0% {
     opacity: 1; }
   to {
     opacity: 0; } }
@@ -3964,7 +3965,6 @@
         max-height: 100%;
         top: 0.3em; }
   #sandbox .article {
-    background-color: #fff;
     overflow: hidden;
     margin-bottom: 48px; }
     @media all and (max-width: 28.12em) {
@@ -4010,7 +4010,6 @@
       margin: 0 auto;
       max-width: 1200px; } }
   #sandbox .article__body {
-    background-color: #fff;
     font-family: "Guardian Text Egyptian Web", Georgia, serif; }
     #sandbox .article__body > .prose > .figure-wide:first-child,
     #sandbox .article__body > .prose > .element:not(.figure--thumbnail):first-child {
@@ -4395,16 +4394,41 @@
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--deadBlog .article--liveblog .article__header .section > div,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--deadBlog .article--liveblog .article__header a {
     color: #272727; }
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment a {
-    color: #272727; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .meta,
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .main-media__caption, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .main-media__caption,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__body,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .tags,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .section,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .cutout__container,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .sponsorship, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta,
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .main-media__caption {
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .main-media__caption,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__body,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .tags,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .section,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .cutout__container,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .sponsorship {
     background-color: #d9d9d9; }
+  @media all and (min-width: 75em) {
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .audio-player__container, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .audio-player__container {
+      background: #eaeaea; }
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .section,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .headline,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .main-media,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .meta,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .standfirst__inner, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .section,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .headline,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .main-media,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .meta,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .standfirst__inner {
+      background-color: #d9d9d9; } }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .section__container,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .meta,
@@ -4419,9 +4443,6 @@
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .sponsorship,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .tags {
     border-color: #878787; }
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .meta, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta {
-    border-top-style: dotted;
-    border-top-width: 1px; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .section,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .section > div,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .article__header .headline,
@@ -4539,6 +4560,30 @@
     color: #878787; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .comments__viewmore:active .comments__viewmore--label, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .comments__viewmore:active .comments__viewmore--label {
     color: #272727; }
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment a {
+    color: #272727; }
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .meta__misc {
+    background-color: #878787; }
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .meta {
+    border: none; }
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .article__header .meta__pubdate {
+    color: rgba(255, 255, 255, 0.8); }
+  @media all and (min-width: 75em) {
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .meta__misc {
+      background-color: #878787; }
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .standfirst__inner {
+      background-color: #d9d9d9; }
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .standfirst {
+      background-color: #eaeaea; } }
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .alerts,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .alerts.following:active {
+    border-color: rgba(255, 255, 255, 0.5);
+    color: #fff; }
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .alerts.following,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .alerts:active {
+    background-color: #333;
+    border-color: rgba(51, 51, 51, 0.5);
+    color: #fff; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 a:active, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 a:active, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 a:active {
     color: #414141; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article__header, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article__header, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article__header {
@@ -4607,25 +4652,51 @@
             padding-top: base-px(0.58);
         }
     }*/ }
-    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article--liveblog .article__header {
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .cutout__container,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .sponsorship,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .headline,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .standfirst__inner,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .section {
       background-color: #d9d9d9; }
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .meta,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .meta__misc {
+      background-color: #878787; }
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .witness__button {
+      color: #fff; }
+    @media all and (min-width: 75em) {
+      #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article,
+      #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header,
+      #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .audio-player__container,
+      #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .standfirst {
+        background: #eaeaea; }
+      #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article--liveblog .section,
+      #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article--liveblog .headline,
+      #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article--liveblog .main-media,
+      #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article--liveblog .meta {
+        background-color: #d9d9d9; }
+      #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article--liveblog .meta__misc {
+        background-color: #878787; } }
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .section__live,
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .headline,
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .standfirst,
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .standfirst a,
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .comment-count a,
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .section,
-    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .section > div,
-    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .alerts__state--unfollow {
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .section > div {
       color: #272727; }
-    @media all and (min-width: 40.63em) {
-      #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .alerts__state--unfollow {
-        color: #fff; } }
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .alerts,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .alerts.following:active {
+      border-color: rgba(255, 255, 255, 0.5);
+      color: #fff; }
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .alerts.following,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .alerts:active {
+      background-color: #333;
+      border-color: rgba(51, 51, 51, 0.5);
+      color: #fff; }
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header ul > li::before,
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .article__header .bullet::before {
       background-color: #272727; }
-    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .meta {
-      background-color: #878787; }
     @media all and (max-width: 40.62em) {
       #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .content__labels__container {
         padding-top: 10px; } }
@@ -4641,13 +4712,14 @@
       color: #878787; }
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--liveBlog.is-live .comments__viewmore:active .comments__viewmore--label {
       color: #272727; }
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .section,
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .section > div,
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .headline,
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .headline,
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .standfirst,
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .byline,
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article--visual .prose,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article .section,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article .section > div,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .content__series-label,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article .headline,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article .headline,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article .standfirst,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article .byline,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article .prose,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .element-placeholder .element-placeholder__button .touchpoint__button,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship .sponsorship__formatted-sponsor-name,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags .inline-list__item a,
@@ -4660,8 +4732,22 @@
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article__header,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article__body,
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags {
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .tags,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .cutout__container,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship {
     background-color: #d9d9d9; }
+  @media all and (min-width: 75em) {
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article__header,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .audio-player__container {
+      background: #eaeaea; }
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .section,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .headline,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .main-media,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .meta {
+      background-color: #d9d9d9; } }
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article .prose p a,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article .prose li a,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a {
     color: #272727;
     text-decoration: none;
@@ -4671,15 +4757,29 @@
     background-position: 0 bottom;
     text-shadow: 3px 0 #d9d9d9, 2px 0 #d9d9d9, 1px 0 #d9d9d9, -1px 0 #d9d9d9, -2px 0 #d9d9d9, -3px 0 #d9d9d9; }
     @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
+      #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article .prose p a,
+      #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article .prose li a,
       #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a {
         background-image: linear-gradient(rgba(39, 39, 39, 0.25) 0%, #272727 100%);
         background-position: 0 93%; } }
-    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a a:active, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a:hover {
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article .prose p a a:active, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article .prose p a:hover,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article .prose li a a:active,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article .prose li a:hover,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a a:active,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a:hover {
       color: #414141;
       background-image: linear-gradient(to bottom, #313131 0%, #313131 100%); }
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article .prose p a::selection,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article .prose p a > *::selection,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article .prose li a::selection,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article .prose li a > *::selection,
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a::selection,
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a > *::selection {
       text-shadow: none; }
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article .prose p a::-moz-selection,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article .prose p a > *::-moz-selection,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article .prose li a::-moz-selection,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .article .prose li a > *::-moz-selection,
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a::-moz-selection,
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .sponsorship__formatted-sponsor-name a > *::-moz-selection {
       text-shadow: none; }
@@ -4697,11 +4797,25 @@
       border: 1px solid #a1a1a1; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .meta__pubdate {
     color: #878787; }
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .audio-player__wrapper,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .audio-player {
+    background-color: #636363; }
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .audio-player__button.touchpoint--primary .touchpoint__button,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .audio-player__slider__knob {
+    background-color: #878787; }
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .audio-player__button.touchpoint--primary .touchpoint__button:active,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .audio-player__slider__knob:active {
+      background-color: #6e6e6e; }
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--media .audio-player__slider__track {
+    background-color: #cbc9c5; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count {
     border-color: #878787; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .section,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .section > div,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .content__series-label,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .section__container .content__series-label,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .section__container .content__series-label a,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .headline,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .byline__author a,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article__header .meta__byline .byline,
@@ -4709,12 +4823,69 @@
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count a,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count a,
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count,
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count a span[data-icon] {
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comment-count a span[data-icon],
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .comments__viewmore {
     color: #272727; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .prose .element-pullquote blockquote footer, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .prose .element-pullquote blockquote::after, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .prose .element-pullquote blockquote::before {
     color: #272727; }
-  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article__header {
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .sponsorship,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article__header .meta__misc,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags {
+    border-color: #878787; }
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article__header,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article__body,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .cutout__container,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .sponsorship {
     background-color: #d9d9d9; }
+  @media all and (min-width: 75em) {
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article__header,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .audio-player__container {
+      background: #eaeaea; }
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .section,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .headline,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .main-media,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .meta {
+      background-color: #d9d9d9; } }
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article .prose p a,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article .prose li a,
+  #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .sponsorship__formatted-sponsor-name a {
+    color: #272727;
+    text-decoration: none;
+    background-image: linear-gradient(rgba(39, 39, 39, 0.25) 0%, #272727 100%);
+    background-repeat: repeat-x;
+    background-size: 1px 1px;
+    background-position: 0 bottom;
+    text-shadow: 3px 0 #d9d9d9, 2px 0 #d9d9d9, 1px 0 #d9d9d9, -1px 0 #d9d9d9, -2px 0 #d9d9d9, -3px 0 #d9d9d9; }
+    @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
+      #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article .prose p a,
+      #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article .prose li a,
+      #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .sponsorship__formatted-sponsor-name a {
+        background-image: linear-gradient(rgba(39, 39, 39, 0.25) 0%, #272727 100%);
+        background-position: 0 93%; } }
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article .prose p a a:active, #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article .prose p a:hover,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article .prose li a a:active,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article .prose li a:hover,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .sponsorship__formatted-sponsor-name a a:active,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .sponsorship__formatted-sponsor-name a:hover {
+      color: #414141;
+      background-image: linear-gradient(to bottom, #313131 0%, #313131 100%); }
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article .prose p a::selection,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article .prose p a > *::selection,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article .prose li a::selection,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article .prose li a > *::selection,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .sponsorship__formatted-sponsor-name a::selection,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .sponsorship__formatted-sponsor-name a > *::selection {
+      text-shadow: none; }
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article .prose p a::-moz-selection,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article .prose p a > *::-moz-selection,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article .prose li a::-moz-selection,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article .prose li a > *::-moz-selection,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .sponsorship__formatted-sponsor-name a::-moz-selection,
+    #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .sponsorship__formatted-sponsor-name a > *::-moz-selection {
+      text-shadow: none; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .article__header .meta__byline .byline__author a {
     color: #272727;
     font-weight: bold; }
@@ -4730,17 +4901,17 @@
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .audio-player__slider__track {
     background-color: #cbc9c5; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags .inline-list__item a {
-    color: #333;
-    background-color: #d9d9d9; }
+    color: #fff;
+    background-color: #878787; }
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags .inline-list__item a:active {
-      color: #1a1a1a;
-      background-color: silver; }
+      color: white;
+      background-color: #a1a1a1; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags .inline-list__item.more-button a {
-    color: #333;
-    border: 1px solid #d9d9d9; }
+    color: #272727;
+    border: 1px solid #878787; }
     #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .tags .inline-list__item.more-button a:active {
-      color: #1a1a1a;
-      border: 1px solid silver; }
+      color: #414141;
+      border: 1px solid #a1a1a1; }
   #sandbox .is_advertising:not(.tone--review):not(.tone--analysis).tone--podcast .card__title--audio::before {
     margin-top: 0; }
   #sandbox .article--visual .article__header .avatar--author {
@@ -5965,20 +6136,26 @@
       #sandbox .tone--media .article--audio .headline,
       #sandbox .tone--media .article--audio .main-media,
       #sandbox .tone--media .article--audio .meta,
+      #sandbox .tone--media .article--audio .sponsorship,
       #sandbox .tone--media .article--visual .section,
       #sandbox .tone--media .article--visual .headline,
       #sandbox .tone--media .article--visual .main-media,
-      #sandbox .tone--media .article--visual .meta {
+      #sandbox .tone--media .article--visual .meta,
+      #sandbox .tone--media .article--visual .sponsorship {
         background-color: #333; }
       #sandbox .tone--media .article--audio .standfirst,
       #sandbox .tone--media .article--visual .standfirst {
-        margin-left: 240px;
         padding-bottom: 24px;
         width: 620px; }
+      #sandbox .tone--media .article--audio .article__header .standfirst,
+      #sandbox .tone--media .article--visual .article__header .standfirst {
+        margin-left: 240px; }
+      #sandbox .tone--media .article--audio .main-media,
+      #sandbox .tone--media .article--visual .main-media {
+        padding-bottom: 24px; }
       #sandbox .tone--media .article--audio .meta,
       #sandbox .tone--media .article--visual .meta {
-        border-top: 1px dotted #767676;
-        margin-top: 1px; }
+        border-top: 1px dotted #767676; }
       #sandbox .tone--media .article--audio .meta__misc,
       #sandbox .tone--media .article--visual .meta__misc {
         padding-left: 10px;
