@@ -4961,8 +4961,13 @@
         #sandbox .cricket .tabs .inline-list__item {
           float: left;
           width: 50%; }
-      #sandbox .cricket .meta__misc {
-        margin-left: 0; } }
+      #sandbox .cricket .tone--deadBlog .article--liveblog,
+      #sandbox .cricket .tone--liveBlog.is-live .article--liveblog {
+        clear: both; }
+        #sandbox .cricket .tone--deadBlog .article--liveblog .meta__misc,
+        #sandbox .cricket .tone--liveBlog.is-live .article--liveblog .meta__misc {
+          margin-left: 0;
+          background-color: #eaeaea; } }
   .cricket--pre-match #sandbox .tabs__list-item--scorecard, .cricket--pre-match
   #sandbox .cricket__tabpanel--stats {
     display: none; }
@@ -4984,6 +4989,8 @@
     line-height: 1.6; }
   #sandbox .tone--analysis .article {
     border-top-color: #005689; }
+  #sandbox .tone--analysis .article__body {
+    background-color: #fff; }
   #sandbox .tone--analysis .article__header {
     background-color: #fff; }
     @media all and (min-width: 75em) {
@@ -5363,6 +5370,8 @@
   #sandbox .tone--editorial .standfirst,
   #sandbox .tone--editorial .standfirst__inner {
     background-color: #efefec; }
+  #sandbox .tone--editorial .article__body {
+    background-color: #fff; }
   @media all and (min-width: 75em) {
     #sandbox .tone--editorial .article__header {
       background-color: #eaeaea; }
@@ -5563,6 +5572,10 @@
   #sandbox .tone--feature2 .article--feature,
   #sandbox .tone--feature3 .article--feature {
     border-top-color: #b82266; }
+    #sandbox .tone--feature1 .article--feature .article__body,
+    #sandbox .tone--feature2 .article--feature .article__body,
+    #sandbox .tone--feature3 .article--feature .article__body {
+      background-color: #fff; }
     #sandbox .tone--feature1 .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
     #sandbox .tone--feature2 .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
     #sandbox .tone--feature3 .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
@@ -5694,13 +5707,20 @@
       color: #fff;
       position: relative;
       z-index: 20;
-      padding-top: 12px; }
+      padding: 6px 12px 24px 12px;
+      margin-top: 0; }
       @media all and (min-width: 40.63em) {
         #sandbox .tone--feature1 .article--feature .article__header .headline,
         #sandbox .tone--feature2 .article--feature .article__header .headline,
         #sandbox .tone--feature3 .article--feature .article__header .headline {
           font-size: 3.6rem;
           line-height: 3.6rem; } }
+      @media all and (min-width: 75em) {
+        #sandbox .tone--feature1 .article--feature .article__header .headline,
+        #sandbox .tone--feature2 .article--feature .article__header .headline,
+        #sandbox .tone--feature3 .article--feature .article__header .headline {
+          padding-left: 240px;
+          padding-right: 320px; } }
     #sandbox .tone--feature1 .article--feature .article__header .standfirst,
     #sandbox .tone--feature2 .article--feature .article__header .standfirst,
     #sandbox .tone--feature3 .article--feature .article__header .standfirst {
@@ -6185,6 +6205,8 @@
     color: #005689; }
     #sandbox .tone--news .article a:not(.witness__button):not(.tell-me-when):not(.alerts):active {
       color: #4bc6df; }
+  #sandbox .tone--news .article__body {
+    background-color: #fff; }
   #sandbox .tone--news .article__header {
     background-color: #fff; }
     @media all and (min-width: 75em) {
@@ -6273,6 +6295,8 @@
     background-color: #a7d8f2; }
   #sandbox .tone--podcast .article {
     border-top-color: #a7d8f2; }
+  #sandbox .tone--podcast .article__body {
+    background-color: #fff; }
   #sandbox .tone--podcast .article__header {
     background-color: #484848; }
     #sandbox .tone--podcast .article__header .section {
@@ -6330,6 +6354,8 @@
     border-top-color: #ffce4b; }
     #sandbox .tone--review .article .prose .element-pullquote blockquote footer, #sandbox .tone--review .article .prose .element-pullquote blockquote::before, #sandbox .tone--review .article .prose .element-pullquote blockquote::after {
       color: #ffce4b; }
+  #sandbox .tone--review .article__body {
+    background-color: #fff; }
   #sandbox .tone--review .extras {
     padding-top: 1px;
     background-color: #fff; }
@@ -6431,40 +6457,51 @@
   #sandbox .tone--review a.tell-me-when, #sandbox .tone--review a.tell-me-when.added:active {
     border-color: #ffce4b;
     color: #fb0; }
-  #sandbox .tone--special .article__header {
+  #sandbox .tone--special .article__body {
+    background-color: #fff; }
+  #sandbox .tone--special .article__header .article__header,
+  #sandbox .tone--special .article__header .section,
+  #sandbox .tone--special .article__header .standfirst,
+  #sandbox .tone--special .article__header .standfirst__inner,
+  #sandbox .tone--special .article__header .headline {
     background-color: #63717a; }
-    #sandbox .tone--special .article__header .section > div {
-      color: #aad8f1; }
-    #sandbox .tone--special .article__header .section__container,
-    #sandbox .tone--special .article__header .content__series-label,
-    #sandbox .tone--special .article__header .content__series-label a {
-      color: #fff; }
-    #sandbox .tone--special .article__header .comment-count a {
-      color: #aad8f1; }
-    #sandbox .tone--special .article__header .headline {
-      color: #fff; }
+  @media all and (min-width: 75em) {
+    #sandbox .tone--special .article__header .main-media {
+      background-color: #63717a; }
     #sandbox .tone--special .article__header .standfirst {
+      background-color: #eaeaea; } }
+  #sandbox .tone--special .article__header .section > div {
+    color: #aad8f1; }
+  #sandbox .tone--special .article__header .section__container,
+  #sandbox .tone--special .article__header .content__series-label,
+  #sandbox .tone--special .article__header .content__series-label a {
+    color: #fff; }
+  #sandbox .tone--special .article__header .comment-count a {
+    color: #aad8f1; }
+  #sandbox .tone--special .article__header .headline {
+    color: #fff; }
+  #sandbox .tone--special .article__header .standfirst {
+    color: #fff; }
+  #sandbox .tone--special .article__header .selectable a {
+    color: #fff !important; }
+  #sandbox .tone--special .article__header .meta {
+    background-color: #6e7e88; }
+    #sandbox .tone--special .article__header .meta .meta__byline .byline,
+    #sandbox .tone--special .article__header .meta .meta__byline a,
+    #sandbox .tone--special .article__header .meta .comment-count,
+    #sandbox .tone--special .article__header .meta .comment-count a {
+      color: #aad8f1; }
+    #sandbox .tone--special .article__header .meta .meta__pubdate {
       color: #fff; }
-    #sandbox .tone--special .article__header .selectable a {
-      color: #fff !important; }
-    #sandbox .tone--special .article__header .meta {
-      background-color: #6e7e88; }
-      #sandbox .tone--special .article__header .meta .meta__byline .byline,
-      #sandbox .tone--special .article__header .meta .meta__byline a,
-      #sandbox .tone--special .article__header .meta .comment-count,
-      #sandbox .tone--special .article__header .meta .comment-count a {
-        color: #aad8f1; }
-      #sandbox .tone--special .article__header .meta .meta__pubdate {
-        color: #fff; }
-    #sandbox .tone--special .article__header .main-media__caption {
-      background-color: #fff; }
-      @media all and (min-width: 75em) {
-        #sandbox .tone--special .article__header .main-media__caption {
-          background-color: #63717a; }
-          #sandbox .tone--special .article__header .main-media__caption__icon, #sandbox .tone--special .article__header .main-media__caption__text {
-            color: #fff; } }
-    #sandbox .tone--special .article__header .sponsorship {
-      background-color: #fff; }
+  #sandbox .tone--special .article__header .main-media__caption {
+    background-color: #fff; }
+    @media all and (min-width: 75em) {
+      #sandbox .tone--special .article__header .main-media__caption {
+        background-color: #63717a; }
+        #sandbox .tone--special .article__header .main-media__caption__icon, #sandbox .tone--special .article__header .main-media__caption__text {
+          color: #fff; } }
+  #sandbox .tone--special .article__header .sponsorship {
+    background-color: #fff; }
   #sandbox .tone--special .alerts:active,
   #sandbox .tone--special .alerts.following {
     background-color: #aad8f1;

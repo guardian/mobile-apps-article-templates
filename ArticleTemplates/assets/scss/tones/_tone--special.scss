@@ -1,6 +1,26 @@
 .tone--special {
+    .article__body {
+        background-color: color(shade-7);
+    }
+
     .article__header {
-        background-color: color(tone-special);
+        .article__header,
+        .section,
+        .standfirst,
+        .standfirst__inner, 
+        .headline {
+            background-color: color(tone-special);
+        }
+
+        @include mq($from: col4) {
+            .main-media {
+                background-color: color(tone-special);
+            }
+
+            .standfirst {
+                background-color: color(shade-5);
+            }
+        }
         
         .section > div {
             color: color(tone-special-accent); // Content Label Section
