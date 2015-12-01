@@ -70,19 +70,34 @@
         }
     }
 
-    &.tone--comment {
-        a {
-            color: color(global-adv-text); 
-        }
-    }
-
     &.tone--news,
     &.tone--comment { 
         .article, 
         .article__header, 
         .article__header .meta,
-        .article__header .main-media__caption {
+        .article__header .main-media__caption,
+        .article__body,
+        .tags,
+        .section,
+        .cutout__container,
+        .sponsorship {
             background-color: color(global-adv-bg);
+        }
+
+        @include mq($from: col4) {
+            .article,
+            .article__header,
+            .audio-player__container {
+                background: color(shade-5);
+            }
+
+            .section,
+            .headline,
+            .main-media, 
+            .meta,
+            .standfirst__inner {
+                background-color: color(global-adv-bg);
+            }
         }
 
         .article,
@@ -93,11 +108,6 @@
         .sponsorship,
         .tags {
             border-color: color(global-adv-bands);
-        }
-
-        .article__header .meta {
-            border-top-style: dotted;
-            border-top-width: 1px;
         }
 
         .article__header .section,
@@ -177,6 +187,51 @@
         }
     }
 
+    &.tone--comment {
+        a {
+            color: color(global-adv-text); 
+        }
+
+        .meta__misc {
+            background-color: color(global-adv-bands);
+        }
+
+        .meta {
+            border: none;
+        }
+
+        .article__header .meta__pubdate {
+            color: rgba(color(shade-7), .8);
+        }
+
+         @include mq($from: col4) {
+            .meta__misc {
+                background-color: color(global-adv-bands);
+            }
+
+            .standfirst__inner {
+                background-color: color(global-adv-bg);
+            }
+
+            .standfirst {
+                background-color: color(shade-5);
+            }
+         }
+
+        .alerts,
+        .alerts.following:active {
+            border-color: rgba(255,255,255,.5);
+            color: color(shade-7);
+        }
+
+        .alerts.following,
+        .alerts:active {
+            background-color: #333;
+            border-color: rgba(51,51,51,.5);
+            color: #fff;
+        }
+    }
+
     &.tone--feature1,
     &.tone--feature2,
     &.tone--feature3 {
@@ -232,9 +287,44 @@
 
 
     &.tone--liveBlog.is-live {
-        
-        .article--liveblog .article__header {
+        .article__header,
+        .cutout__container,
+        .sponsorship,
+        .headline,
+        .standfirst__inner, 
+        .section {
             background-color: color(global-adv-bg);
+        }
+
+        .meta,
+        .meta__misc {
+            background-color: color(global-adv-bands);
+        }
+
+        .witness__button {
+            color: color(shade-7);
+        }
+
+        @include mq($from: col4) {
+            .article,
+            .article__header,
+            .audio-player__container,
+            .standfirst {
+                background: color(shade-5);
+            }
+
+            .article--liveblog {
+                .section,
+                .headline,
+                .main-media,
+                .meta {
+                    background-color: color(global-adv-bg);
+                }
+
+                .meta__misc {
+                    background-color: color(global-adv-bands);
+                }
+            }
         }
 
         .article__header .section__live,
@@ -243,24 +333,26 @@
         .article__header .standfirst a,
         .article__header .comment-count a,
         .article__header .section,
-        .article__header .section > div,
-        .alerts__state--unfollow {
+        .article__header .section > div {
             color: color(global-adv-text);
         }
+        
+        .alerts,
+        .alerts.following:active {
+            border-color: rgba(255,255,255,.5);
+            color: color(shade-7);
+        }
 
-        .alerts__state--unfollow {
-            @include mq($from: col2) { 
-                color: color(shade-7);
-            }
+        .alerts.following,
+        .alerts:active {
+            background-color: #333;
+            border-color: rgba(51,51,51,.5);
+            color: #fff;
         }
 
         .article__header ul > li::before,
         .article__header .bullet::before {
             background-color: color(global-adv-text);    
-        }
-
-        .meta {
-            background-color: color(global-adv-bands);
         }
 
         /*.article__header .section,
@@ -306,14 +398,14 @@
     }    
 
     &.tone--media {
-
-        .article--visual .section,
-        .article--visual .section > div,
-        .article--visual .headline,
-        .article--visual .headline,
-        .article--visual .standfirst,
-        .article--visual .byline,
-        .article--visual .prose ,        
+        .article .section,
+        .article .section > div,
+        .content__series-label,
+        .article .headline,
+        .article .headline,
+        .article .standfirst,
+        .article .byline,
+        .article .prose,
         .element-placeholder .element-placeholder__button .touchpoint__button,
         .sponsorship .sponsorship__formatted-sponsor-name,
         .tags .inline-list__item a,
@@ -327,13 +419,32 @@
             border-color: color(global-adv-bands);
         }
 
-        .article,        
+        .article,
         .article__header,
         .article__body,
-        .tags{
+        .tags, 
+        .cutout__container,
+        .sponsorship {
             background-color: color(global-adv-bg);
         }
 
+        @include mq($from: col4) {
+            .article,
+            .article__header,
+            .audio-player__container {
+                background: color(shade-5);
+            }
+
+            .section,
+            .headline,
+            .main-media, 
+            .meta {
+                background-color: color(global-adv-bg);
+            }
+        }
+
+        .article .prose p, 
+        .article .prose li,
         .sponsorship__formatted-sponsor-name {
             @include text-underline(color(global-adv-text), color(global-adv-bg), lighten(color(global-adv-text),10%));
         }
@@ -343,6 +454,7 @@
                 a {
                     @include tag-button(color(shade-7), color(global-adv-bands), "lighter");
                 }
+
                 &.more-button a {
                     @include tag-more-button(color(global-adv-text), color(global-adv-bands), "lighter");
                 }
@@ -352,11 +464,28 @@
         .meta__pubdate{
             color: color(global-adv-bands);
         }
+
+        .audio-player__wrapper,
+        .audio-player {
+            background-color: color(tone-podcast-adv-ply-background);
+        }
+
+        .audio-player__button.touchpoint--primary .touchpoint__button,
+        .audio-player__slider__knob{
+            background-color: color(global-adv-bands);
+
+            &:active {
+                background-color: darken(color(global-adv-bands), 10%); 
+            }
+        }
+
+        .audio-player__slider__track{
+            background-color: color(tone-podcast-adv-ply-range);
+        }
     }
 
 
     &.tone--podcast {
-
         .meta,
         .comment-count {
             border-color: color(global-adv-bands);
@@ -364,6 +493,9 @@
 
         .section,
         .section > div,
+        .content__series-label,
+        .section__container .content__series-label,
+        .section__container .content__series-label a,
         .headline,
         .byline__author a,
         .article__header .meta__byline .byline,
@@ -371,7 +503,8 @@
         .comment-count a, 
         .comment-count a, 
         .comment-count,
-        .comment-count a span[data-icon] {
+        .comment-count a span[data-icon],
+        .comments__viewmore {
             color: color(global-adv-text);
         }
 
@@ -384,9 +517,41 @@
                 }
             }
         }
+        
+        .sponsorship,
+        .article__header .meta__misc, 
+        .tags {
+            border-color: color(global-adv-bands);
+        }
 
-        .article__header{
+        .article,
+        .article__header,
+        .article__body,
+        .tags, 
+        .cutout__container,
+        .sponsorship {
             background-color: color(global-adv-bg);
+        }
+
+        @include mq($from: col4) {
+            .article,
+            .article__header,
+            .audio-player__container {
+                background: color(shade-5);
+            }
+
+            .section,
+            .headline,
+            .main-media, 
+            .meta {
+                background-color: color(global-adv-bg);
+            }
+        }
+
+        .article .prose p, 
+        .article .prose li,
+        .sponsorship__formatted-sponsor-name {
+            @include text-underline(color(global-adv-text), color(global-adv-bg), lighten(color(global-adv-text),10%));
         }
 
         .article__header .meta__byline .byline__author a{
@@ -412,14 +577,17 @@
             background-color: color(tone-podcast-adv-ply-range);
         }
 
-        .tags .inline-list__item{ 
-            a{
-                @include tag-button(color(shade-1), color(global-adv-bg));
+        .tags{
+            .inline-list__item {
+                a {
+                    @include tag-button(color(shade-7), color(global-adv-bands), "lighter");
+                }
+
+                &.more-button a {
+                    @include tag-more-button(color(global-adv-text), color(global-adv-bands), "lighter");
+                }
             }
-            &.more-button a {
-                @include tag-more-button(color(shade-1), color(global-adv-bg));
-            }
-        } 
+        }
 
         .card__title--audio::before {
             margin-top: 0;

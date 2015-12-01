@@ -72,19 +72,6 @@
         }
     }
 
-
-    // Template specific styles
-    .article--audio {
-        .meta {
-            border-top-width: 1px;
-            border-top-style: dotted;
-        }
-
-        .article__header {
-            background-image: -webkit-canvas(circles);
-        }
-    }
-
     // Sponsorship alt text when sponsor logo unavailable
     .sponsorship__logo {
         color: color(global-sponsored-label);
@@ -163,19 +150,32 @@
             .section,
             .headline,
             .main-media, 
-            .meta {
+            .meta,
+            .sponsorship {
                 background-color: color(shade-1);
             }
-        
+
             .standfirst {
-                margin-left: 240px;
                 padding-bottom: base-px(2);
                 width: 620px;
             }
 
+            .article__header .standfirst {
+                margin-left: 240px;
+            }
+
+            .article__header .standfirst__inner {
+                padding-left: 0;
+                padding-right: 0;
+                width: 620px;
+            }
+
+            .main-media {
+                padding-bottom: base-px(2);
+            }
+
             .meta {
                 border-top: 1px dotted color(shade-2);
-                margin-top: 1px;
             }
 
             .meta__misc {
@@ -211,6 +211,23 @@
             .aside-witness__sponsor__graphic__logo {
                 fill: #ffe600; // EE Yellow
             }
+        }
+    }
+
+    // Template specific styles
+    .article--audio {
+        .meta {
+            border-top-width: 1px;
+            border-top-style: dotted;
+        }
+
+        .article__header {
+            background-image: -webkit-canvas(circles);
+        }
+
+        .headline,
+        .meta {
+            background-color: transparent;
         }
     }
 }
