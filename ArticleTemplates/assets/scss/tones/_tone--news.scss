@@ -95,6 +95,37 @@
         }
     }
 
+    .extras {
+        @include mq($from: col4) {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: color(shade-7);
+        }
+    }
+
+    .witness {
+        padding: base-px(.5, 0, 1, 0);
+        margin: base-px(0, 1);
+        background-color: color(shade-7);
+
+        @include mq(col2, col3) {
+            margin-left: cols($base-3, 4, 1);
+        }
+
+        @include mq($from: col3) {
+            margin-left: cols($base-4, 5, 1);
+        }
+
+        @include mq($from: col4) {
+            margin: {
+                left: 240px;
+                top: 0;
+                bottom: 0;
+            }
+            padding: base-px(1,0);
+        }
+    }
+
     &:not(.is_advertising) .main-media {
         background: color(shade-7);
         border-top: 1px dotted rgba(color(shade-3), .4);

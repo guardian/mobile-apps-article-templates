@@ -2530,7 +2530,9 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
   .article--audio .article__header .cutout__background {
     position: absolute;
     top: 0;
-    left: 0; }
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%); }
   .article--audio .article__header .cutout__container {
     padding-right: 0;
     padding-bottom: 84px;
@@ -4798,6 +4800,27 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   @media all and (min-width: 75em) {
     .tone--news .article__header .sponsorship {
       border-bottom: 0; } }
+@media all and (min-width: 75em) {
+  .tone--news .extras {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #fff; } }
+.tone--news .witness {
+  padding: 6px 0px 12px 0px;
+  margin: 0px 12px;
+  background-color: #fff; }
+  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+    .tone--news .witness {
+      margin-left: 33.80282%; } }
+  @media all and (min-width: 56.25em) {
+    .tone--news .witness {
+      margin-left: 31.57895%; } }
+  @media all and (min-width: 75em) {
+    .tone--news .witness {
+      margin-left: 240px;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding: 12px 0px; } }
 .tone--news:not(.is_advertising) .main-media {
   background: #fff;
   border-top: 1px dotted rgba(153, 153, 153, 0.4); }
@@ -4826,6 +4849,11 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--podcast .section__container .content__series-label,
   .tone--podcast .section__container .content__series-label a {
     color: #eaeaea; }
+.tone--podcast .audio-player__container,
+.tone--podcast .audio-player__wrapper,
+.tone--podcast .section__container {
+  position: relative;
+  z-index: 1; }
 .tone--podcast .audio-player__button.touchpoint--primary .touchpoint__button {
   background-color: #a7d8f2;
   color: #171717; }
@@ -4834,6 +4862,8 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     /* NB Need new colour???!!! */ }
 .tone--podcast .audio-player__slider__knob {
   background-color: #a7d8f2; }
+.tone--podcast .section__container {
+  background-color: #484848; }
 .tone--podcast .article {
   border-top-color: #a7d8f2; }
 .tone--podcast .article__body {
@@ -4866,7 +4896,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--podcast .cutout {
     background-color: #3b3b3b; }
     .tone--podcast .cutout .cutout__container {
-      background-color: #484848; } }
+      background-color: transparent; } }
 .tone--podcast .standfirst {
   color: #333; }
 .tone--podcast .meta,

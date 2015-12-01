@@ -111,8 +111,8 @@ define([
                         $(".cutout__background").remove();
                     }
                     var numOfCircles = Math.min(10, Math.floor((duration / 60) / 2)) + 2,
-                        h = $(".article__header").offset().height,
-                        w = $(".article__header").offset().width,
+                        h = $(".cutout__container").offset().height,
+                        w = $(".cutout__container").offset().width,
                         size = (h * w) / 8000,
                         canvas = document.createElement("canvas"),
                         ctx = canvas.getContext('2d');

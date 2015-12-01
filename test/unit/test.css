@@ -4043,7 +4043,9 @@
     #sandbox .article--audio .article__header .cutout__background {
       position: absolute;
       top: 0;
-      left: 0; }
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%); }
     #sandbox .article--audio .article__header .cutout__container {
       padding-right: 0;
       padding-bottom: 84px;
@@ -6262,6 +6264,27 @@
     @media all and (min-width: 75em) {
       #sandbox .tone--news .article__header .sponsorship {
         border-bottom: 0; } }
+  @media all and (min-width: 75em) {
+    #sandbox .tone--news .extras {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #fff; } }
+  #sandbox .tone--news .witness {
+    padding: 6px 0px 12px 0px;
+    margin: 0px 12px;
+    background-color: #fff; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      #sandbox .tone--news .witness {
+        margin-left: 33.80282%; } }
+    @media all and (min-width: 56.25em) {
+      #sandbox .tone--news .witness {
+        margin-left: 31.57895%; } }
+    @media all and (min-width: 75em) {
+      #sandbox .tone--news .witness {
+        margin-left: 240px;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 12px 0px; } }
   #sandbox .tone--news:not(.is_advertising) .main-media {
     background: #fff;
     border-top: 1px dotted rgba(153, 153, 153, 0.4); }
@@ -6289,6 +6312,11 @@
     #sandbox .tone--podcast .section__container .content__series-label,
     #sandbox .tone--podcast .section__container .content__series-label a {
       color: #eaeaea; }
+  #sandbox .tone--podcast .audio-player__container,
+  #sandbox .tone--podcast .audio-player__wrapper,
+  #sandbox .tone--podcast .section__container {
+    position: relative;
+    z-index: 1; }
   #sandbox .tone--podcast .audio-player__button.touchpoint--primary .touchpoint__button {
     background-color: #a7d8f2;
     color: #171717; }
@@ -6297,6 +6325,8 @@
       /* NB Need new colour???!!! */ }
   #sandbox .tone--podcast .audio-player__slider__knob {
     background-color: #a7d8f2; }
+  #sandbox .tone--podcast .section__container {
+    background-color: #484848; }
   #sandbox .tone--podcast .article {
     border-top-color: #a7d8f2; }
   #sandbox .tone--podcast .article__body {
@@ -6329,7 +6359,7 @@
     #sandbox .tone--podcast .cutout {
       background-color: #3b3b3b; }
       #sandbox .tone--podcast .cutout .cutout__container {
-        background-color: #484848; } }
+        background-color: transparent; } }
   #sandbox .tone--podcast .standfirst {
     color: #333; }
   #sandbox .tone--podcast .meta,
