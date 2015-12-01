@@ -72,19 +72,6 @@
         }
     }
 
-
-    // Template specific styles
-    .article--audio {
-        .meta {
-            border-top-width: 1px;
-            border-top-style: dotted;
-        }
-
-        .article__header {
-            background-image: -webkit-canvas(circles);
-        }
-    }
-
     // Sponsorship alt text when sponsor logo unavailable
     .sponsorship__logo {
         color: color(global-sponsored-label);
@@ -224,6 +211,23 @@
             .aside-witness__sponsor__graphic__logo {
                 fill: #ffe600; // EE Yellow
             }
+        }
+    }
+
+    // Template specific styles
+    .article--audio {
+        .meta {
+            border-top-width: 1px;
+            border-top-style: dotted;
+        }
+
+        .article__header {
+            background-image: -webkit-canvas(circles);
+        }
+
+        .headline,
+        .meta {
+            background-color: transparent;
         }
     }
 }
