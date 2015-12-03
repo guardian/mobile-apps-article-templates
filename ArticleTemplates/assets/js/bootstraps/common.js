@@ -142,7 +142,7 @@ define([
 
                     figure.addClass(imageClass);
 
-                    if (imageOrLinkedImage && !$(imageOrLinkedImage).hasClass('element__inner')) {
+                    if (imageOrLinkedImage && !$(imageOrLinkedImage).hasClass('figure__inner')) {
                        imageWrapper = document.createElement('div');
                        bonzo(imageWrapper).addClass('figure__inner').append(imageOrLinkedImage);
                        bonzo(el).prepend(imageWrapper);
@@ -199,18 +199,17 @@ define([
                         window.GuardianJSInterface.videoPosition(media.offset().left, media.offset().top, media.offset().width, media.attr('href'));
                     }
                 }
-                setTimeout(modules.videoPositioningPoller, 500, window.innerHeight);
+                setTimeout(window.videoPositioningPoller, 500, document.body.offsetHeight);
+            };
+            window.videoPositioningPoller = function(pageHeight) {
+                var newHeight = document.body.offsetHeight;
+                if(pageHeight !== newHeight) {
+                    window.videoPositioning();
+                } else {
+                    setTimeout(window.videoPositioningPoller, 500, newHeight);
+                }  
             };
             window.applyNativeFunctionCall('videoPositioning');
-        },
-
-        videoPositioningPoller: function(pageHeight) {
-            var newHeight = window.innerHeight;
-            if(pageHeight !== newHeight) {
-                window.videoPositioning();
-            } else {
-                setTimeout(modules.videoPositioningPoller, 500, newHeight);
-            }  
         },
 
         offline: function() {

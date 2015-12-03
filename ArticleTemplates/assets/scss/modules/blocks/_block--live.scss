@@ -50,22 +50,31 @@ Provide a summary of events:
 */
 
 [class*="block--live-"] {
+    padding-top: 0;
+
+    @include mq($from: col2) {
+        padding-top: 12px;
+    }
+
     @include mq($from: col4) {
         padding: {
             left: 20px;
             right: 20px;
-        };
+        }
     }
 
     .block__time {
         color: color(shade-2);
+        display: inline-block;
         font-family: $agate-sans;
-        padding: base-px(0, 0, 1, 0);
-        margin-top: -5px; // Offset for space above in our fonts to align text to top of block rule
+        padding: base-px(1, 0);
+        vertical-align: top;
 
         @include mq($from: col2) {
-            padding: base-px(0, 1, 0, 0);
             float: left;
+            height: 100px; // Forces both block__byline and block__body to float next to time
+            padding: base-px(0, 1, 0, 0);
+            margin-top: -5px; // Offset for space above in our fonts to align text to top of block rule
         }
 
         @include mq(col2, col3) {
@@ -117,9 +126,56 @@ Provide a summary of events:
     }
 
     .block__updated {
+        clear: both;
         color: color(shade-3);
         font-family: $agate-sans;
         @include meta();
+    }
+
+    .block__byline {
+        border-left: 1px solid color(shade-5);
+        display: inline-block;
+        padding: base-px(.5, 1);
+        margin: base-px(0, 0, 1, 1);
+        vertical-align: top;
+        
+        @include mq($from: col2) {
+            border: 0;
+            float: left;
+            margin: base-px(0, 0, 1, 0);
+            padding: 0;
+        }
+
+        @include mq($from: col4) {
+            width: 620px;
+        }
+    }
+
+    .block__avatar {
+        background: color(shade-5);
+        border-radius: 50%;
+        display: inline-block;
+        height: 40px;
+        margin-right: base-px(.5);
+        overflow: hidden;
+        position: relative;
+        vertical-align: middle;
+        width: 40px;
+
+        img {
+            left: 50%;
+            max-height: 100%;
+            position: absolute;
+            top: 0;
+            -webkit-transform: translateY(-50%);
+            transform: translateX(-50%);
+            width: auto;
+        }
+    }
+
+    .block__author {
+        display: inline;
+        line-height: 40px;
     }
 
     .prose {
@@ -129,13 +185,18 @@ Provide a summary of events:
         }
 
         figure {
-            @include mq($from: col2) {
-                width: 100%;
-            }
-
             &.figure-inline {
                 float: none;
                 clear: both;
+            }
+
+            // When thumbnail images are the first element of a block
+            &.element--thumbnail:first-child {
+                margin-top: 2px; // line up to floated text
+
+                @include mq($from: col4) {
+                    margin-top: 20px; // add space beneath time stamp
+                }
             }
 
             &:last-child {

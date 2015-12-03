@@ -13,6 +13,13 @@
         }
     }
 
+    .audio-player__container,
+    .audio-player__wrapper,
+    .section__container {
+        position: relative;
+        z-index: 1;
+    }
+
     .audio-player__button {
         &.touchpoint--primary .touchpoint__button {
             background-color: color(tone-podcast);
@@ -28,14 +35,21 @@
         background-color: color(tone-podcast);
     }
 
+    .section__container {
+        background-color: color(shade-6);
+    }
+
     .article {
         border-top-color: color(tone-podcast);
     }
 
+    .article__body {
+        background-color: color(shade-7);
+    }
+
     .article__header {
         background-color: color(shade-6);
-        //background-image: -webkit-canvas(circles); (-webkit-canvas is deprecated not supported in Windows App)
-
+        
         .section {
             display: block;
         }
@@ -72,6 +86,16 @@
 
         .comment-count a {
             color: color(tone-podcast);
+        }
+    }
+
+    @include mq($from: col4) {
+        .cutout {
+            background-color: darken(color(shade-6), 5%);
+
+            .cutout__container {
+                background-color: transparent;
+            }
         }
     }
 
@@ -115,9 +139,9 @@
     }
     
     &.is_advertising{
-        a.alerts,
-        a.alerts.following:active {
-            border-color: color(shade-1);
+        .alerts,
+        .alerts.following:active {
+            border-color: rgba(color(shade-1), .5);
             color: color(shade-1);
         }
     }

@@ -28,6 +28,8 @@ var nativeFunctionCalls = [
     'commentsOpen',
     'showMoreTags',
     'commentsReplyFormatting',
+    'footballGoal',
+    'footballStatus',
     'footballMatchInfo',
     'footballMatchInfoFailed',
     'liveblogDeleteBlock',

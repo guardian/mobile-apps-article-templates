@@ -1,7 +1,4 @@
 .article {
-    background-color: color(shade-7);
-    border-top: 4px solid color(tone-news-accent);
-    border-bottom: 2px solid color(shade-4);
     overflow: hidden;
     margin-bottom: base-px(4);
 
@@ -9,16 +6,12 @@
         border-top-width: 0;
     }
 
-    @include mq($from: col4) {
-        margin: {
-            left: auto;
-            right: auto;
-        }
-        max-width: 1200px;
-    }
-
     .android & {
         border-top-width: 0;
+    }
+
+    @include mq($from: col4) {
+        background-color: color(shade-5);
     }
 }
 
@@ -28,48 +21,68 @@
     }
 
     .section {
-        margin-bottom: 5px;
+        margin-bottom: 0;
     }
 
     .headline {
-        padding: base-px(0, 1, 2.5, 1);
+        padding: base-px(.5, 1, 2.5, 1);
 
         @include mq($from: col4) {
-            margin: 0 auto 0 240px;
+            margin: 0 auto;
             padding: {
-                left: 0;
-                right: 0;
+                left: 240px;
+                right: 320px;
             }
-            width: 620px;
+            width: 1200px;
         }
     }
 
     .standfirst {
-        padding: base-px(.5, 1, 1.5, 1);
+        &__inner {
+            padding: base-px(.5, 1, 1.5, 1);
+        }
 
         @include mq($from: col4) {
-            margin: 0 auto 0 240px;
-            padding: {
-                left: 0;
-                right: 0;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+
+            &__inner {
+                margin: 0 auto;
+                padding: {
+                    left: 240px;
+                    right: 340px;
+                }
+                width: 1200px;
             }
-            width: 620px;
+        }
+    }
+
+    .meta {
+        @include mq($from: col4) {
+            margin: 0 auto;
+            max-width: 1200px;
         }
     }
 }
 
 .article__body {
     font-family: $egyptian-text;
+    @extend %clearfix;
 
     // First figure/element in body should sit flush with .article__header
     & > .prose {
-        .figure-wide,
-        .element:not(.figure--thumbnail) {
+        > .figure-wide,
+        > .element:not(.figure--thumbnail) {
             &:first-child {
                 margin-top: base-px(-1);
             }
         }
-    } 
+    }
+
+    .video-URL {
+        clear: both; // floating asides can cause video to display incorrectly
+    }
 
     // Football player cards should appear floated right above mobile breakpoint
     .player-card {

@@ -39,11 +39,11 @@ Related Content / More on this story section
 ```
 */
 
-// using the card upsize variables to enable us to upsize the different card measurements in a single place.
-$related-card-width-col2: $related-card-width * $related-card-upsize-col2;
+// using the card upsize variables to enable us to upsize the different card measurements in a single place. -- using fixed widths for card 2 size due to ipad card cutting off at unfortunate point
+$related-card-gutter-col2: 5px;
+$related-card-gutter-col3: base-px(.5);
+$related-card-width-col2: 173.25px; // (708px - (5px * 3)) / 4) where 708px represents a regular ipad webview width in portrait
 $related-card-width-col3: $related-card-width * $related-card-upsize-col3;
-$related-card-gutter-col2: $related-card-gutter * $related-card-upsize-col2;
-$related-card-gutter-col3: $related-card-gutter * $related-card-upsize-col3;
 
 .related-content {
     margin: 0;
@@ -80,7 +80,8 @@ $related-card-gutter-col3: $related-card-gutter * $related-card-upsize-col3;
         @include body-font(1.5, $egyptian-display, 600);
 
         @include mq($from: col2) {
-            margin: base-px(1);
+            line-height: 1;
+            margin: base-px(0, 0, 1.5, .5);
         }
 
         @include mq($from: col4) {
@@ -90,16 +91,32 @@ $related-card-gutter-col3: $related-card-gutter * $related-card-upsize-col3;
             margin: 0 20px;
             width: 200px;
         }
+
+        .android & {
+            @include mq(col2, col4) {
+                margin-left: base-px(1);
+            }
+        }
     }
 
     &__container {
         overflow: hidden;
         padding: base-px(0, 1);
+         @include mq($from: col2) {
+            padding: 0;
+        }
 
         @include mq($from: col4) {
             padding: 0;
             width: 940px;
         }
+
+        .android & {
+            @include mq(col2, col4) {
+                padding: base-px(0, 1, 2, 1);
+            }
+        }
+
     }
 
     &__list {
@@ -109,7 +126,7 @@ $related-card-gutter-col3: $related-card-gutter * $related-card-upsize-col3;
                 width: ceil(($related-card-width * $i) + ($related-card-gutter * ($i - 1)));
 
                 @include mq(col2, col3) {
-                    width: ceil(($related-card-width-col2 * $i) + ($related-card-gutter-col2 * ($i - 1)));
+                    width: 708px; // where 708px represents a regular ipad webview width in portrait
                 }
 
                 @include mq($from: col3) {

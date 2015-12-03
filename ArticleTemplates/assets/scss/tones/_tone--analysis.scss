@@ -3,8 +3,22 @@
         border-top-color: color(tone-analysis);
     }
 
+    .article__body {
+        background-color: color(shade-7);
+    }
+
     .article__header {
         background-color: color(shade-7);
+
+        @include mq($from: col4) {
+            background-color: color(shade-5);
+
+            .section,
+            .headline,
+            .standfirst__inner {
+                background-color: color(shade-7);
+            }
+        }
 
         .section > div {
             color: color(tone-analysis); // Content Label Section
@@ -24,12 +38,15 @@
                 @include rating;
             }
         }
+
         .standfirst {
             color: color(shade-2);
         }
+
         .selectable a {
             color: color(tone-analysis) !important;
         }
+
         .meta {
             background-color: color(shade-8);
 
@@ -50,15 +67,25 @@
             }
         }
 
-        .meta__misc {
-             @include mq($from: col4) {
+        @include mq($from: col4) {
+            .meta {
+                background-color: darken(color(shade-8), 10%);
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .meta__misc {
+                background-color: color(shade-8);
+                margin: 0 auto;
                 padding: {
-                    left: 0;
-                    right: 0;
+                    left: 240px;
+                    right: 340px;
                 }
+                width: 1200px;
             }
         }
 
+        .main-media,
         .main-media__caption {
             background-color: color(shade-7);
         }

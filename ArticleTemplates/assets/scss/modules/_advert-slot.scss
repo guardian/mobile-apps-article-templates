@@ -40,14 +40,15 @@ MPU
     }
 
     .advert-slot__action {
+        color: color(shade-2) !important;
         display: none;
+        padding-right: 2.5rem;
+        position: absolute;
+        right: 0;
+
         body[data-ads-enable-hiding="true"] & {
             display: inline;
         }
-        position: absolute;
-        right: 0;
-        color: inherit;
-        padding-right: 2.5rem;
 
         span[data-icon] {
             font-size: 1.3em;
@@ -66,6 +67,25 @@ MPU
     .advert-slot__wrapper__content {
         position: absolute;
         bottom: 0;
+    }
+}
+
+.container__outbrain {
+    .advert-slot__action {
+        @include meta;
+        color: color(shade-2);
+        float: right;
+        font-family: $agate-sans;
+        margin: base-px(.5, 1);
+        padding-right: 20px;
+        position: relative;
+
+        span[data-icon] {
+            font-size: 1.3em;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
     }
 }
 

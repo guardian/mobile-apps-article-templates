@@ -1,9 +1,52 @@
 .tone--editorial {
-    .article__header {
+    .article__header,
+    .section,
+    .content__container,
+    .headline,
+    .standfirst,
+    .standfirst__inner {
         background-color: color(tone-editorial-bg);
+    }
+
+    .article__body {
+        background-color: color(shade-7);
+    }
+
+    @include mq($from: col4) {
+        .article__header {
+            background-color: color(shade-5);
+        }
         
+        .section__container,
+        .cutout__container,
+        .standfirst {
+            background-color: darken(color(tone-editorial-bg), 5%);
+        }
+
+        .section__container {
+            border: 0;
+            max-width: 100%;
+        }
+
+        .content__container {
+            border-bottom: 1px rgba(color(shade-3), .5) dotted;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 1200px;
+        }
+    }
+
+    .article__header {
         .section > div {
             color: color(tone-editorial); // Content Label Section
+        }
+
+        .cutout__container {
+            padding-bottom: 0;
+
+            .headline {
+                padding-bottom: 78px;
+            }
         }
         
         .section__container,
@@ -25,23 +68,41 @@
             background-color: color(tone-editorial);
 
             .meta__byline .byline,
-            .meta__byline a, 
-            .comment-count,
-            .comment-count a {
+            .meta__byline a {
                 color: color(shade-7);
             }
 
             .meta__pubdate {
                 color: color(shade-7);
             }
+
+            @include mq($from: col4) {
+                background-color: darken(color(tone-editorial), 5%);
+                border: 0;
+                max-width: 100%;
+                padding-left: 0;
+            }
         }
 
+        .meta__misc {
+             @include mq($from: col4) {
+                background-color: color(tone-editorial);
+                margin: 0 auto;
+                padding: {
+                    left: 240px;
+                    right: 340px;
+                }
+                width: 1200px;
+            }
+        }
+
+        .main-media,
         .main-media__caption,
         .sponsorship {
             background-color: color(tone-editorial-bg);
 
             @include mq($from: col4) {
-                background-color: (shade-7);
+                background-color: color(shade-7);
             }
         }
     }

@@ -4,7 +4,7 @@ define([], function () {
         duplicate: function(){
             var witness = document.querySelector('.witness');
             if(witness){
-                document.querySelector('.article__body').insertAdjacentHTML('afterend', witness.outerHTML);
+                document.querySelector('.article__body').insertAdjacentHTML('afterend', '<div class="extras">' + witness.outerHTML + '</div>');
             }
         }
     };

@@ -17,42 +17,68 @@ Display a large image of contributor in background of container.
 
 .cutout {
     .cutout__container {
-        background-repeat: no-repeat;
-        background-position: right bottom; // Android <4.3 doesn't understand four value syntax
-        background-position: right -15% bottom 0;
-        overflow: auto;
-
         @include mq($to: col1) {
             min-height: 245px;
-            background-size: $base-1 * 12 auto;
             padding-right: cols($base-1, 1);
         }
 
         @include mq(col1, col2) {
             min-height: 280px;
-            background-size: $base-2 * 20 auto;
             padding-right: cols($base-2, 2);
         }
 
         @include mq(col2, col3) {
-            min-height: 400px;
-            background-size: $base-3 * 34 auto;
+            min-height: 320px;
         }
 
         @include mq($from: col3) {
             min-height: 320px;
-            background-size: contain;
         }
 
         @include mq($from: col4) {
-            background-position: right 0 bottom 0;
-            margin-left: 240px;
+            margin: 0 auto;
             min-height: 220px;
-            width: 940px;
+            max-width: 1200px;
+        }
+        
+        .headline {
+            position: relative;
+            z-index: 1;
 
-            .headline {
+            @include mq($from: col4) {
                 margin: 0;
             }
+        }
+    }
+
+    .cutout__image {
+        background-repeat: no-repeat;
+        background-position: bottom right;
+        background-size: 50%;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: -10%;
+        top: 0;
+        z-index: 1;
+
+        @include mq($from: col1) {
+            background-size: 45%;
+            right: -7%
+        }
+
+        @include mq($from: col2) {
+            background-size: 40%;
+        }
+
+        @include mq($from: col3) {
+            background-size: 30%;
+            right: -5%;
+        }
+
+        @include mq($from: col4) {
+            background-size: contain;
+            right: 14%;
         }
     }
 }

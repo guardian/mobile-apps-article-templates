@@ -10,8 +10,23 @@
         }
     }
 
+    .article__body {
+        background-color: color(shade-7);
+    }
+
     .article__header {
         background-color: color(shade-7);
+
+        @include mq($from: col4) {
+            background-color: color(shade-5);
+
+            .section,
+            .headline,
+            .standfirst__inner,
+            .meta {
+                background-color: color(shade-7);
+            }
+        }
 
         .section > div {
             color: color(tone-news); // Content Label Section
@@ -80,33 +95,63 @@
         }
     }
 
+    .extras {
+        @include mq($from: col4) {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: color(shade-7);
+        }
+    }
+
+    .witness {
+        padding: base-px(.5, 0, 1, 0);
+        margin: base-px(0, 1);
+        background-color: color(shade-7);
+
+        @include mq(col2, col3) {
+            margin-left: cols($base-3, 4, 1);
+        }
+
+        @include mq($from: col3) {
+            margin-left: cols($base-4, 5, 1);
+        }
+
+        @include mq($from: col4) {
+            margin: {
+                left: 240px;
+                top: 0;
+                bottom: 0;
+            }
+            padding: base-px(1,0);
+        }
+    }
+
     &:not(.is_advertising) .main-media {
         background: color(shade-7);
         border-top: 1px dotted rgba(color(shade-3), .4);
     }
 
-    //TODO: specificity needed due to previous styles - improve
-    a.alerts:active,
-    a.alerts.following {
+    .alerts:active,
+    .alerts.following {
         background-color: color(tone-news);
         color: color(shade-7);
     }
 
-    a.alerts,
-    a.alerts.following:active {
+    .alerts,
+    .alerts.following:active {
         border-color: rgba(color(tone-news), .5);
         color: color(tone-news);
     }
 
     &.is_advertising {
-        a.alerts,
-        a.alerts.following:active {
-            border-color: color(shade-1);
+        .alerts,
+        .alerts.following:active {
+            border-color: rgba(color(shade-1), .5);
             color: color(shade-1);
         }
 
-        a.alerts:active,
-        a.alerts.following {
+        .alerts:active,
+        .alerts.following {
             background-color: color(shade-1);
             color: color(shade-7);
         }

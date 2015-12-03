@@ -19,16 +19,19 @@ Display which keywords an article has been tagged with.
 */
 
 .tags {
+    @include meta;
+    background-color: color(shade-7);
     color: color(shade-3);
     font-family: $agate-sans;
-    @include meta();
+    border-bottom: 2px solid color(shade-4);
     border-top: 1px dotted color(shade-4);
     padding: base-px(.4, 1, 1.7, .7);
-    /*5px 12px 19px 8px*/
     width: 100%;
     clear: both;
 
     @include mq($from: col4) {
+        margin: 0 auto;
+        width: 1200px;
         padding: {
             left: 0;
             right: 0;

@@ -1,9 +1,5 @@
 .tone--media {
     @include mq($from: col4) {
-        &:not(.is_advertising) {
-            background: #303030;
-        }
-
         .comments,
         .related-content {
             background: color(shade-5);
@@ -35,6 +31,7 @@
     }
 
     .tags {
+
         .inline-list__item {
             a {
                 @include tag-button(color(shade-7), color(shade-6), 'lighter');
@@ -75,19 +72,6 @@
         }
     }
 
-
-    // Template specific styles
-    .article--audio {
-        .meta {
-            border-top-width: 1px;
-            border-top-style: dotted;
-        }
-
-        .article__header {
-            background-image: -webkit-canvas(circles);
-        }
-    }
-
     // Sponsorship alt text when sponsor logo unavailable
     .sponsorship__logo {
         color: color(global-sponsored-label);
@@ -97,6 +81,10 @@
     .article--visual {
         border-top-color: color(tone-media);
         background-color: color(shade-1);
+
+        @include mq($from: col4) {
+            background-color: #303030;
+        }
 
         .prose p,
         .prose li {
@@ -126,7 +114,14 @@
         }
 
         .article__header,
-        .article__body,
+        .article__body {
+            background-color: color(shade-1);
+
+            @include mq($from: col4) {
+                background-color: #303030;
+            }
+        }
+
         .tags {
             background-color: color(shade-1);
         }
@@ -152,9 +147,42 @@
         }
 
         @include mq($from: col4) {
+            .section,
+            .headline,
+            .main-media, 
+            .meta,
+            .sponsorship {
+                background-color: color(shade-1);
+            }
+
+            .standfirst {
+                padding-bottom: base-px(2);
+                width: 620px;
+            }
+
+            .article__header .standfirst {
+                margin-left: 240px;
+            }
+
+            .article__header .standfirst__inner {
+                padding-left: 0;
+                padding-right: 0;
+                width: 620px;
+            }
+
+            .main-media {
+                padding-bottom: base-px(2);
+            }
+
             .meta {
                 border-top: 1px dotted color(shade-2);
-                margin-top: 1px;
+            }
+
+            .meta__misc {
+                padding: {
+                    left: 10px;
+                    right: 10px;
+                }
             }
         }
 
@@ -183,6 +211,23 @@
             .aside-witness__sponsor__graphic__logo {
                 fill: #ffe600; // EE Yellow
             }
+        }
+    }
+
+    // Template specific styles
+    .article--audio {
+        .meta {
+            border-top-width: 1px;
+            border-top-style: dotted;
+        }
+
+        .article__header {
+            background-image: -webkit-canvas(circles);
+        }
+
+        .headline,
+        .meta {
+            background-color: transparent;
         }
     }
 }

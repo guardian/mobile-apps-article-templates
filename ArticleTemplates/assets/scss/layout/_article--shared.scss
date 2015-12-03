@@ -4,7 +4,7 @@
 .article--audio,
 .article--immersive {
     .article__body {
-        padding: base-px(1, 1, 0, 1);
+        padding: base-px(1);
 
         @include mq(col2, col3) {
             padding-right: cols($base-3, 3);
@@ -13,20 +13,21 @@
         @include mq($from: col3) {
             padding-right: cols($base-4, 4);
         }
-
+    
         @include mq($from: col4) {
-            margin: 0 auto 0 240px;
-            padding: base-px(1, 0);
-            padding-right: 320px;
-            width: 940px;
+            margin: 0 auto;
+            padding: {
+                left: 240px;
+                right: 340px;
+            }
+            width: 1200px;
         }
 
         // Images and video within article body
         .figure-wide,
         .element-video,
         .element-placeholder {
-            margin-left: base-px(-1);
-            margin-right: base-px(-1);
+            margin: base-px(1, -1);
             width: auto;
 
             @include mq($from: col2) {
@@ -113,13 +114,13 @@ body:not(.is-live) .article--liveblog {
             }
         }
 
-        @include mq($from: col4) {
-            .headline,
+         @include mq($from: col4) {
+            .headline {
+                padding-right: 340px;
+            }
+            
             .standfirst {
-                padding: {
-                    left: 0;
-                    right: 0;
-                }
+                padding-right: 0;
             }
         }
     }
@@ -129,5 +130,25 @@ body:not(.is-live) .article--liveblog {
 .article--feature:not(.immersive) {
     .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p {
         @include dropcap();
+    }
+}
+
+.article--feature {
+    .article__header {
+        .section {
+            margin-bottom: 0;
+        }
+
+        .main-media {
+            padding-top: 0;
+        }
+
+        .headline {
+            margin-top: base-px(1);
+
+            @include mq($from: col4) {
+                margin-top: 0;
+            }
+        }
     }
 }
