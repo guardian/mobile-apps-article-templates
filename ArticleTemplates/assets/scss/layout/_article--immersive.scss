@@ -114,12 +114,12 @@ body.immersive .article--immersive {
             }
 
             @include mq($from: col4) {
-                margin-left: 240px;
+                margin: 0 auto;
+                max-width: 1200px;
                 padding: {
-                    left: 0;
-                    right: 0;
+                    left: 240px;
+                    right: 320px;
                 }
-                width: 620px;
             }
         }
 
@@ -131,16 +131,40 @@ body.immersive .article--immersive {
             z-index: 1;
 
             @include mq($from: col2) {
-                font-size: 2.5em !important;
+                font-size: 2.8em !important;
                 font-weight: 100;
                 line-height: .9375;
+                margin-bottom: 24px;
+            }
+
+            @include mq($from: col3) {
+                padding-right: cols($base-4, 4);
+            }
+
+            @include mq($from: col4) {
+                margin: 0 auto;
+                max-width: 1200px;
+                padding: {
+                    left: 240px;
+                    right: 320px;
+                }
             }
         }
 
         &__byline {
             background-color: none;
             color: #fff;
-            padding: base-px(.5, 0, 0, 0);
+            padding: 0;
+        }
+
+        &__body {
+            background: #fff;
+        }
+
+        &__meta {
+            background: #fff;
+            margin: 0 auto;
+            max-width: 1200px;
         }
     }
 
@@ -161,6 +185,10 @@ body.immersive .article--immersive {
 
         &__text {
             margin: base-px(1, 0);
+
+            @include mq($from: col2) {
+                margin-top: 8px;
+            }
         }
 
         &--mobile {
@@ -180,15 +208,32 @@ body.immersive .article--immersive {
                 display: block;
             }
 
+            @include mq($from: col3) {
+                padding-right: cols($base-4, 4);
+            }
+
             @include mq($from: col4) {
                 font-size: 2rem;
                 line-height: 2.8rem;
-                margin: 0 auto 0 240px;
+                margin: 0 auto;
+                max-width: 1200px;
                 padding: {
-                    left: 0;
-                    right: 0;
-                };
-                width: 620px;
+                    left: 240px;
+                    right: 320px;
+                }
+            }
+
+            &:before {
+                border-bottom: 2px solid #dcdad5;
+                content: " ";
+                height: 10px;
+                margin: 0 0 8px 1px;
+                width: 100px;
+                display: block;
+            }
+
+            .section__rule {
+                margin-bottom: 8px;
             }
         }
     }
@@ -196,14 +241,10 @@ body.immersive .article--immersive {
     .immersive__meta {
         color: color(shade-2);
         font: 1.6rem/1.4rem $agate-sans;
-        margin: base-px(0,1,2,1);
+        padding: base-px(0,1,2,1);
         
         @include mq($from: col4) {
-            margin-left: 240px;
-            padding: {
-                left: 0;
-                right: 0;
-            }
+            padding-left: 240px;
             width: 620px;
         }
         
@@ -285,37 +326,18 @@ body.immersive .article--immersive {
         }
         
         .section__header {
-            width: 108%;
-            padding-left: 4%;
             background-color: color(tone-feature1-accent) !important;
-            margin-left: -12px;
-            height: 180px;
-            margin-bottom: 24px;
             color: #fff;
-            font-size: 34px;
-            line-height: 30px;
-            font-weight: 200;
-        }
-
-        p {
-            &.has__dropcap {
-                &:first-letter {
-                    color: color(tone-feature1);
-                    font-family: $egyptian-display;
-                    font-weight: 100;
-                    font-style: normal;
-                    font-size: 7em;
-                    line-height: 1;
-                    margin-top: 0;
-                    margin-bottom: base-px(-1.6);
-                    padding-right: base-px(.5);
-                    float: left;
-                    
-                    @include mq($from: col2) {
-                        font-size: 5.2222em;
-                    }
-                }
+            height: 180px;
+            margin: {
+                bottom: 24px;
+                left: -12px;
             }
+            font-size: 34px;
+            font-weight: 200;
+            line-height: 30px;
+            padding-left: 4%;
+            width: 108%;
         }
 
         .quote--image {
@@ -445,21 +467,63 @@ body.immersive .article--immersive {
             }
         }
 
-        .element-image.element--immersive {
-           @include mq($from: col4) {
-                margin-left: -240px;
-                width: 1200px;
+        .element-image {
+            &.element--immersive {
+               @include mq($from: col4) {
+                    margin-left: -240px;
+                    width: 1200px;
 
-                &:not(.quote--overlay) > figcaption {
-                    border: 0;
+                    &:not(.quote--overlay) > figcaption {
+                        border: 0;
+                        float: left;
+                        padding-right: 0;
+                        width: 240px;
+                    }
+                }
+            }
+
+            &.element--supporting {
+                @include mq($from: col3) {
                     float: left;
-                    padding-right: 0;
-                    width: 240px;
+                    margin: {
+                        left: 12px;
+                        right: 20px;
+                        top: 6px;
+                    }
+                    max-width: 380px;
+                }
+
+                @include mq($from: col4) {
+                    margin-left: -240px;
+
+                    figcaption {
+                        border: 0;
+                        padding: 6px 12px;
+                        width: 220px;
+                    }
+                }
+            }
+
+            &.element--showcase {
+                width: auto;
+
+                @include mq($from: col2) {
+                    width: 100%;
+                }
+                
+                @include mq($from: col4) {
+                    margin-left: -240px;
+                    max-width: 860px;
+
+                    figcaption {
+                        border: 0;
+                        padding: 6px 12px;
+                        width: 220px;
+                    }
                 }
             }
         }
 
-        
         .animated {
             -webkit-animation-duration: 1s;
             animation-duration: 1s;

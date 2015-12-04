@@ -31,8 +31,8 @@ define([
 
             var viewPortHeight = bonzo.viewport().height,
                 bgHeight = (viewPortHeight - $('body').css('margin-top').replace('px','')) + 'px',
-                pageOffset = viewPortHeight * 0.75,
-                progressBar = $('.progress__bar');
+                // progressBar = $('.progress__bar'),
+                pageOffset = viewPortHeight * 0.75;
 
             // Override tone to feature for all immersive pages
             document.body.className = document.body.className.replace( /(tone--).+?\s/g , 'tone--feature1 ' );
@@ -72,9 +72,9 @@ define([
                 }
             });
 
-            // create chapter markers
             var articleHeight = $('.article').offset().height; // measure article height after other adjustments so it is accurate
-            modules.addProgressBarChapters(progressBar, articleHeight);
+            // create chapter markers
+            // modules.addProgressBarChapters(progressBar, articleHeight);
 
             // store all pullquotes top offset for later
             $('.element-pullquote').each(function(){
@@ -102,7 +102,7 @@ define([
                 });
 
                 // update progress bar
-                modules.updateProgressBar(progressBar, articleHeight);
+                // modules.updateProgressBar(progressBar, articleHeight);
             }));
 
             // add a resize / orientation event to redraw the chapter positions for new article height
@@ -111,13 +111,13 @@ define([
                 articleHeight = $('.article').offset().height; // measure article height after other adjustments so it is accurate
 
                 // empty the progress bar div 
-                progressBar.html('');
+                // progressBar.html('');
 
                 // redraw chapter markets
-                modules.addProgressBarChapters(progressBar, articleHeight);
+                // modules.addProgressBarChapters(progressBar, articleHeight);
 
                 // update progress position
-                modules.updateProgressBar(progressBar, articleHeight);
+                // modules.updateProgressBar(progressBar, articleHeight);
 
                 // set header image height to new viewport height
                 viewPortHeight = bonzo.viewport().height;
@@ -127,7 +127,7 @@ define([
             }));
 
             // call updateProgressBar on first load
-            modules.updateProgressBar(progressBar, articleHeight);
+            // modules.updateProgressBar(progressBar, articleHeight);
         },
 
         addProgressBarChapters: function(progressBar, articleHeight) {

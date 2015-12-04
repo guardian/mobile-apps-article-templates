@@ -6594,6 +6594,10 @@
       @media all and (min-width: 40.63em) {
         #sandbox body.immersive .article--immersive .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
           font-size: 5.2222em; } }
+      @media all and (min-width: 75em) {
+        #sandbox body.immersive .article--immersive .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
+          font-size: 7.3em;
+          margin-top: -4px; } }
     #sandbox body.immersive .article--immersive .progress {
       background-color: rgba(255, 255, 255, 0.8);
       height: 6px;
@@ -6661,10 +6665,10 @@
           margin-bottom: 12px; } }
       @media all and (min-width: 75em) {
         #sandbox body.immersive .article--immersive .article__series {
-          margin-left: 240px;
-          padding-left: 0;
-          padding-right: 0;
-          width: 620px; } }
+          margin: 0 auto;
+          max-width: 1200px;
+          padding-left: 240px;
+          padding-right: 320px; } }
     #sandbox body.immersive .article--immersive .article__headline {
       color: #fff;
       font-size: 3.5rem !important;
@@ -6673,13 +6677,29 @@
       z-index: 1; }
       @media all and (min-width: 40.63em) {
         #sandbox body.immersive .article--immersive .article__headline {
-          font-size: 2.5em !important;
+          font-size: 2.8em !important;
           font-weight: 100;
-          line-height: .9375; } }
+          line-height: .9375;
+          margin-bottom: 24px; } }
+      @media all and (min-width: 56.25em) {
+        #sandbox body.immersive .article--immersive .article__headline {
+          padding-right: 24.21053%; } }
+      @media all and (min-width: 75em) {
+        #sandbox body.immersive .article--immersive .article__headline {
+          margin: 0 auto;
+          max-width: 1200px;
+          padding-left: 240px;
+          padding-right: 320px; } }
     #sandbox body.immersive .article--immersive .article__byline {
       background-color: none;
       color: #fff;
-      padding: 6px 0px 0px 0px; }
+      padding: 0; }
+    #sandbox body.immersive .article--immersive .article__body {
+      background: #fff; }
+    #sandbox body.immersive .article--immersive .article__meta {
+      background: #fff;
+      margin: 0 auto;
+      max-width: 1200px; }
     #sandbox body.immersive .article--immersive .standfirst {
       color: #fff;
       background: none; }
@@ -6692,6 +6712,9 @@
           color: #b82266; }
       #sandbox body.immersive .article--immersive .standfirst__text {
         margin: 12px 0px; }
+        @media all and (min-width: 40.63em) {
+          #sandbox body.immersive .article--immersive .standfirst__text {
+            margin-top: 8px; } }
       #sandbox body.immersive .article--immersive .standfirst--mobile {
         background-color: #767676;
         padding: 6px 12px 18px 12px; }
@@ -6704,23 +6727,33 @@
         @media all and (min-width: 40.63em) {
           #sandbox body.immersive .article--immersive .standfirst--tablet {
             display: block; } }
+        @media all and (min-width: 56.25em) {
+          #sandbox body.immersive .article--immersive .standfirst--tablet {
+            padding-right: 24.21053%; } }
         @media all and (min-width: 75em) {
           #sandbox body.immersive .article--immersive .standfirst--tablet {
             font-size: 2rem;
             line-height: 2.8rem;
-            margin: 0 auto 0 240px;
-            padding-left: 0;
-            padding-right: 0;
-            width: 620px; } }
+            margin: 0 auto;
+            max-width: 1200px;
+            padding-left: 240px;
+            padding-right: 320px; } }
+        #sandbox body.immersive .article--immersive .standfirst--tablet:before {
+          border-bottom: 2px solid #dcdad5;
+          content: " ";
+          height: 10px;
+          margin: 0 0 8px 1px;
+          width: 100px;
+          display: block; }
+        #sandbox body.immersive .article--immersive .standfirst--tablet .section__rule {
+          margin-bottom: 8px; }
     #sandbox body.immersive .article--immersive .immersive__meta {
       color: #767676;
       font: 1.6rem/1.4rem "Guardian Agate Sans 1 Web", sans-serif;
-      margin: 0px 12px 24px 12px; }
+      padding: 0px 12px 24px 12px; }
       @media all and (min-width: 75em) {
         #sandbox body.immersive .article--immersive .immersive__meta {
-          margin-left: 240px;
-          padding-left: 0;
-          padding-right: 0;
+          padding-left: 240px;
           width: 620px; } }
       #sandbox body.immersive .article--immersive .immersive__meta .comment-count {
         border: 0;
@@ -6798,30 +6831,16 @@
           margin-left: -240px;
           padding-left: 240px; } }
     #sandbox body.immersive .article--immersive .prose .section__header {
-      width: 108%;
-      padding-left: 4%;
       background-color: #b82266 !important;
-      margin-left: -12px;
+      color: #fff;
       height: 180px;
       margin-bottom: 24px;
-      color: #fff;
+      margin-left: -12px;
       font-size: 34px;
+      font-weight: 200;
       line-height: 30px;
-      font-weight: 200; }
-    #sandbox body.immersive .article--immersive .prose p.has__dropcap:first-letter {
-      color: #951c55;
-      font-family: "Guardian Egyptian Web", Georgia, serif;
-      font-weight: 100;
-      font-style: normal;
-      font-size: 7em;
-      line-height: 1;
-      margin-top: 0;
-      margin-bottom: -19px;
-      padding-right: 6px;
-      float: left; }
-      @media all and (min-width: 40.63em) {
-        #sandbox body.immersive .article--immersive .prose p.has__dropcap:first-letter {
-          font-size: 5.2222em; } }
+      padding-left: 4%;
+      width: 108%; }
     #sandbox body.immersive .article--immersive .prose .quote--image {
       margin-top: -54px; }
       #sandbox body.immersive .article--immersive .prose .quote--image blockquote {
@@ -6914,6 +6933,33 @@
           float: left;
           padding-right: 0;
           width: 240px; } }
+    @media all and (min-width: 56.25em) {
+      #sandbox body.immersive .article--immersive .prose .element-image.element--supporting {
+        float: left;
+        margin-left: 12px;
+        margin-right: 20px;
+        margin-top: 6px;
+        max-width: 380px; } }
+    @media all and (min-width: 75em) {
+      #sandbox body.immersive .article--immersive .prose .element-image.element--supporting {
+        margin-left: -240px; }
+        #sandbox body.immersive .article--immersive .prose .element-image.element--supporting figcaption {
+          border: 0;
+          padding: 6px 12px;
+          width: 220px; } }
+    #sandbox body.immersive .article--immersive .prose .element-image.element--showcase {
+      width: auto; }
+      @media all and (min-width: 40.63em) {
+        #sandbox body.immersive .article--immersive .prose .element-image.element--showcase {
+          width: 100%; } }
+      @media all and (min-width: 75em) {
+        #sandbox body.immersive .article--immersive .prose .element-image.element--showcase {
+          margin-left: -240px;
+          max-width: 860px; }
+          #sandbox body.immersive .article--immersive .prose .element-image.element--showcase figcaption {
+            border: 0;
+            padding: 6px 12px;
+            width: 220px; } }
     #sandbox body.immersive .article--immersive .prose .animated {
       -webkit-animation-duration: 1s;
       animation-duration: 1s;
