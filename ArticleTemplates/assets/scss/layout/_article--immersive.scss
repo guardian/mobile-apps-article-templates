@@ -103,6 +103,7 @@ body.immersive .article--immersive {
 
         &__series {
             display: block;
+            padding-bottom: 12px;
             
             > a, & {
                 color: #fff;
@@ -127,7 +128,7 @@ body.immersive .article--immersive {
             color: #fff;
             font-size: 3.5rem !important;
             line-height: 3.3rem;
-            padding: 0;
+            padding: 0 0 24px;
             z-index: 1;
 
             @include mq($from: col2) {
@@ -483,22 +484,48 @@ body.immersive .article--immersive {
             }
 
             &.element--supporting {
-                @include mq($from: col3) {
-                    float: left;
-                    margin: {
-                        left: 12px;
-                        right: 20px;
-                        top: 6px;
-                    }
-                    max-width: 380px;
+                width: auto;
+
+                @include mq($from: col2) {
+                    width: 100%;
                 }
 
-                @include mq($from: col4) {
-                    margin-left: -240px;
+                .figure__inner {
+                    @include mq($from: col3) {
+                        float: left;
+                        margin: {
+                            left: 0;
+                            right: 20px;
+                            top: 6px;
+                        }
+                        width: 380px;
+                    }
+                    
+                    @include mq($from: col4) {
+                        margin: {
+                            bottom: 0;
+                            left: -240px;
+                        }
+                    }
+                }
 
-                    figcaption {
+                figcaption {
+                    @include mq($from: col3) {
+                        clear: both;
                         border: 0;
+                        float: left;
+                        margin-right: 20px;
                         padding: 6px 12px;
+                        width: 380px;
+                    }
+
+                    @include mq($from: col4) {
+                        clear: both;
+                        float: left;
+                        margin: {
+                            left: -240px;
+                            top: 3px;
+                        }
                         width: 220px;
                     }
                 }
@@ -508,16 +535,28 @@ body.immersive .article--immersive {
                 width: auto;
 
                 @include mq($from: col2) {
-                    width: 100%;
+                    width: 135%;
                 }
                 
                 @include mq($from: col4) {
-                    margin-left: -240px;
-                    max-width: 860px;
+                    .figure__inner {
+                        float: left;
+                        margin: {
+                            bottom: 10px;
+                            left: -240px;
+                        }
+                        width: 860px;
+                    }
 
                     figcaption {
                         border: 0;
-                        padding: 6px 12px;
+                        clear: both;
+                        float: left;
+                        margin: {
+                            left: -240px;
+                            top: -3px;
+                        }
+                        padding: 0 12px;
                         width: 220px;
                     }
                 }

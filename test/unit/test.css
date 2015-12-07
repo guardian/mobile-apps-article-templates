@@ -6656,7 +6656,8 @@
           padding-left: 0;
           padding-right: 0; } }
     #sandbox body.immersive .article--immersive .article__series {
-      display: block; }
+      display: block;
+      padding-bottom: 12px; }
       #sandbox body.immersive .article--immersive .article__series > a, #sandbox body.immersive .article--immersive .article__series {
         color: #fff;
         font: 600 1.8rem "Guardian Egyptian Web", Georgia, serif; }
@@ -6673,7 +6674,7 @@
       color: #fff;
       font-size: 3.5rem !important;
       line-height: 3.3rem;
-      padding: 0;
+      padding: 0 0 24px;
       z-index: 1; }
       @media all and (min-width: 40.63em) {
         #sandbox body.immersive .article--immersive .article__headline {
@@ -6933,33 +6934,56 @@
           float: left;
           padding-right: 0;
           width: 240px; } }
-    @media all and (min-width: 56.25em) {
-      #sandbox body.immersive .article--immersive .prose .element-image.element--supporting {
-        float: left;
-        margin-left: 12px;
-        margin-right: 20px;
-        margin-top: 6px;
-        max-width: 380px; } }
-    @media all and (min-width: 75em) {
-      #sandbox body.immersive .article--immersive .prose .element-image.element--supporting {
-        margin-left: -240px; }
+    #sandbox body.immersive .article--immersive .prose .element-image.element--supporting {
+      width: auto; }
+      @media all and (min-width: 40.63em) {
+        #sandbox body.immersive .article--immersive .prose .element-image.element--supporting {
+          width: 100%; } }
+      @media all and (min-width: 56.25em) {
+        #sandbox body.immersive .article--immersive .prose .element-image.element--supporting .figure__inner {
+          float: left;
+          margin-left: 0;
+          margin-right: 20px;
+          margin-top: 6px;
+          width: 380px; } }
+      @media all and (min-width: 75em) {
+        #sandbox body.immersive .article--immersive .prose .element-image.element--supporting .figure__inner {
+          margin-bottom: 0;
+          margin-left: -240px; } }
+      @media all and (min-width: 56.25em) {
         #sandbox body.immersive .article--immersive .prose .element-image.element--supporting figcaption {
+          clear: both;
           border: 0;
+          float: left;
+          margin-right: 20px;
           padding: 6px 12px;
+          width: 380px; } }
+      @media all and (min-width: 75em) {
+        #sandbox body.immersive .article--immersive .prose .element-image.element--supporting figcaption {
+          clear: both;
+          float: left;
+          margin-left: -240px;
+          margin-top: 3px;
           width: 220px; } }
     #sandbox body.immersive .article--immersive .prose .element-image.element--showcase {
       width: auto; }
       @media all and (min-width: 40.63em) {
         #sandbox body.immersive .article--immersive .prose .element-image.element--showcase {
-          width: 100%; } }
+          width: 135%; } }
       @media all and (min-width: 75em) {
-        #sandbox body.immersive .article--immersive .prose .element-image.element--showcase {
+        #sandbox body.immersive .article--immersive .prose .element-image.element--showcase .figure__inner {
+          float: left;
+          margin-bottom: 10px;
           margin-left: -240px;
-          max-width: 860px; }
-          #sandbox body.immersive .article--immersive .prose .element-image.element--showcase figcaption {
-            border: 0;
-            padding: 6px 12px;
-            width: 220px; } }
+          width: 860px; }
+        #sandbox body.immersive .article--immersive .prose .element-image.element--showcase figcaption {
+          border: 0;
+          clear: both;
+          float: left;
+          margin-left: -240px;
+          margin-top: -3px;
+          padding: 0 12px;
+          width: 220px; } }
     #sandbox body.immersive .article--immersive .prose .animated {
       -webkit-animation-duration: 1s;
       animation-duration: 1s;
