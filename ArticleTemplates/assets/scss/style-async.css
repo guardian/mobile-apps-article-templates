@@ -1131,18 +1131,17 @@ Display an alerts toggle.
 */
 a.tell-me-when {
   font-family: "Guardian Agate Sans 1 Web", sans-serif;
-  white-space: nowrap;
-  padding: 4px 12px 8px 12px;
+  padding: 6px 12px 6px 12px;
   margin: 0px 0px 12px -4px;
   display: inline-block;
   border-radius: 30px;
-  text-overflow: ellipsis;
   vertical-align: bottom;
-  overflow: hidden;
-  max-width: 100%;
+  max-width: 350px;
   color: #005689;
   border: 1px solid #005689;
-  transition: background-color 0.3s; }
+  transition: background-color 0.3s;
+  width: 100%;
+  position: relative; }
   @media all and (max-width: 40.62em) {
     a.tell-me-when {
       font-size: 1.4rem;
@@ -1155,12 +1154,18 @@ a.tell-me-when {
     background-color: #005689;
     color: #fff; }
   a.tell-me-when span[data-icon] {
-    display: inline-block;
-    vertical-align: bottom;
     font-size: 1.8rem;
-    position: relative;
-    right: 3px;
-    top: 1px; }
+    position: absolute;
+    left: 9px;
+    top: 4px; }
+  a.tell-me-when .tell-me-when__label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-left: 26px;
+    width: 100%;
+    display: inline-block;
+    line-height: 1.2; }
   a.tell-me-when .tell-me-when__state--remove {
     display: none; }
   a.tell-me-when.added:active {
