@@ -1,0 +1,130 @@
+.quiz {
+    .quiz__question{
+        border-top: 2px solid color(tone-news-accent);
+        margin-bottom: 30px;
+        padding-top: 3px;
+
+        &::before {
+            color: color(tone-news);
+            content: counter(li);
+            float: left;
+            font: 100 50px/1 $egyptian-display;
+            width: 60px;
+        }
+    }
+
+    .question__text {
+        font: 600 16px/1.5 $egyptian-display;
+    }
+
+    .question__answers {
+        clear: both;
+        margin: 0;
+        padding: 0;
+    }
+
+    .question__answer {
+        &::before {
+            display: none;
+        }
+    }
+
+    .answer__text {
+        background: color(shade-5);
+        color: color(shade-2);
+        font: 600 14px/1.5 $egyptian-display;
+        margin: 0 0 7px;
+        min-height: 55px;
+        padding: 5px 6px 18px 60px;
+        position: relative;
+    
+        &::before {
+            border: 1px dashed color(shade-2);
+            border-radius: 50%;
+            content: " ";
+            height: 30px;
+            left: 7px;
+            position: absolute;
+            top: 7px;
+            width: 30px;
+        }
+    }
+
+    .answer__explanation {
+        font-size: 12px;
+        line-height: 1.2;
+        margin-top: 10px;
+    }
+
+    .quiz__question.answered {
+        .question__answer { 
+            background: rgba(color(shade-5), .5);
+            color: rgba(color(shade-2), .5);
+
+            &::before {
+                border-color: rgba(color(shade-2), .5);
+            }
+            
+            // Common styles for correct and wrong answers
+            &.correct,
+            &.wrong {
+                color: color(shade-7);
+
+                &::before {
+                    background: color(shade-7);
+                    border: 0;
+                    font-family: $icon;
+                    text-align: center;
+                }
+
+                .answer__text {
+                    &::before {
+                        display: block;
+                        margin-bottom: -4px;
+                    }
+                }
+            }
+            
+            // Styles for correct answers
+            &.correct {
+                background: color(tone-news-accent);
+
+                &::before {
+                    color: color(tone-news);
+                    content: "\00e062";
+                    line-height: 26px;
+                }
+
+                .answer__text {
+                    &::before {
+                        color: color(tone-news);
+                        content: "Correct!"
+                    }
+                }
+            }
+            
+            // Styles for wrong answers
+            &.wrong {
+                background: color(tone-news);
+
+                &::before {
+                    color: color(tone-news-accent);
+                    content: "\00e04F";
+                    line-height: 28px;
+                }
+
+                .answer__text {
+                    &::before {
+                        color: color(tone-news-accent);
+                        content: "Wrong!"
+                    }
+                }
+            }
+        }
+    }
+
+    .quiz__correct-answers-title,
+    .quiz__correct-answers {
+        display: none;
+    }
+}

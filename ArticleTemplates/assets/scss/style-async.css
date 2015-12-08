@@ -4140,6 +4140,82 @@ Display a team line-up including substitutions and bookings.
       .replacement .team-lineup__player__replacement {
         display: block; } }
 
+.quiz .quiz__question {
+  border-top: 2px solid #4bc6df;
+  margin-bottom: 30px;
+  padding-top: 3px; }
+  .quiz .quiz__question::before {
+    color: #005689;
+    content: counter(li);
+    float: left;
+    font: 100 50px/1 "Guardian Egyptian Web", Georgia, serif;
+    width: 60px; }
+.quiz .question__text {
+  font: 600 16px/1.5 "Guardian Egyptian Web", Georgia, serif; }
+.quiz .question__answers {
+  clear: both;
+  margin: 0;
+  padding: 0; }
+.quiz .question__answer::before {
+  display: none; }
+.quiz .answer__text {
+  background: #eaeaea;
+  color: #767676;
+  font: 600 14px/1.5 "Guardian Egyptian Web", Georgia, serif;
+  margin: 0 0 7px;
+  min-height: 55px;
+  padding: 5px 6px 18px 60px;
+  position: relative; }
+  .quiz .answer__text::before {
+    border: 1px dashed #767676;
+    border-radius: 50%;
+    content: " ";
+    height: 30px;
+    left: 7px;
+    position: absolute;
+    top: 7px;
+    width: 30px; }
+.quiz .answer__explanation {
+  font-size: 12px;
+  line-height: 1.2;
+  margin-top: 10px; }
+.quiz .quiz__question.answered .question__answer {
+  background: rgba(234, 234, 234, 0.5);
+  color: rgba(118, 118, 118, 0.5); }
+  .quiz .quiz__question.answered .question__answer::before {
+    border-color: rgba(118, 118, 118, 0.5); }
+  .quiz .quiz__question.answered .question__answer.correct, .quiz .quiz__question.answered .question__answer.wrong {
+    color: #fff; }
+    .quiz .quiz__question.answered .question__answer.correct::before, .quiz .quiz__question.answered .question__answer.wrong::before {
+      background: #fff;
+      border: 0;
+      font-family: "Guardian Icons", Georgia, serif;
+      text-align: center; }
+    .quiz .quiz__question.answered .question__answer.correct .answer__text::before, .quiz .quiz__question.answered .question__answer.wrong .answer__text::before {
+      display: block;
+      margin-bottom: -4px; }
+  .quiz .quiz__question.answered .question__answer.correct {
+    background: #4bc6df; }
+    .quiz .quiz__question.answered .question__answer.correct::before {
+      color: #005689;
+      content: "\00e062";
+      line-height: 26px; }
+    .quiz .quiz__question.answered .question__answer.correct .answer__text::before {
+      color: #005689;
+      content: "Correct!"; }
+  .quiz .quiz__question.answered .question__answer.wrong {
+    background: #005689; }
+    .quiz .quiz__question.answered .question__answer.wrong::before {
+      color: #4bc6df;
+      content: "\00e04F";
+      line-height: 28px; }
+    .quiz .quiz__question.answered .question__answer.wrong .answer__text::before {
+      color: #4bc6df;
+      content: "Wrong!"; }
+.quiz .quiz__correct-answers-title,
+.quiz .quiz__correct-answers {
+  display: none; }
+
 /*doc
 ---
 title: Embed
