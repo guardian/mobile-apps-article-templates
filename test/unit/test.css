@@ -6580,7 +6580,7 @@
       color: #951c55; }
       #sandbox body.immersive .article--immersive a:active {
         color: #b82266; }
-    #sandbox body.immersive .article--immersive .section__rule + p:first-letter {
+    #sandbox body.immersive .article--immersive .article__body .section__rule + p:first-letter {
       color: #951c55;
       font-family: "Guardian Egyptian Web", Georgia, serif;
       font-weight: 100;
@@ -6592,10 +6592,10 @@
       padding-right: 6px;
       float: left; }
       @media all and (min-width: 40.63em) {
-        #sandbox body.immersive .article--immersive .section__rule + p:first-letter {
+        #sandbox body.immersive .article--immersive .article__body .section__rule + p:first-letter {
           font-size: 5.2222em; } }
       @media all and (min-width: 75em) {
-        #sandbox body.immersive .article--immersive .section__rule + p:first-letter {
+        #sandbox body.immersive .article--immersive .article__body .section__rule + p:first-letter {
           font-size: 7.3em;
           margin-top: -4px; } }
     #sandbox body.immersive .article--immersive .progress {
@@ -6629,7 +6629,6 @@
       background-color: black;
       background-position: center center;
       background-size: cover;
-      height: 600px;
       height: 100vh;
       position: relative; }
       #sandbox body.immersive .article--immersive .article__header-bg .element-embed {
@@ -6697,6 +6696,10 @@
       padding: 0; }
     #sandbox body.immersive .article--immersive .article__body {
       background: #fff; }
+      #sandbox body.immersive .article--immersive .article__body p a {
+        color: #951c55 !important; }
+        #sandbox body.immersive .article--immersive .article__body p a:active {
+          color: #b82266 !important; }
     #sandbox body.immersive .article--immersive .article__meta {
       background: #fff;
       margin: 0 auto;
@@ -6706,7 +6709,7 @@
       background: none; }
       #sandbox body.immersive .article--immersive .standfirst a {
         border-bottom: 1px solid #f7acbb;
-        color: #f7acbb;
+        color: #f7acbb !important;
         display: inline-block; }
         #sandbox body.immersive .article--immersive .standfirst a:active {
           border-color: #b82266;
@@ -6760,6 +6763,10 @@
         border: 0;
         color: #f7acbb;
         padding: 12px 12px 6px 0px !important; }
+        #sandbox body.immersive .article--immersive .immersive__meta .comment-count a {
+          color: #951c55 !important; }
+          #sandbox body.immersive .article--immersive .immersive__meta .comment-count a:active {
+            color: #b82266; }
     #sandbox body.immersive .article--immersive .section__rule {
       border-bottom: 2px solid #dcdad5;
       height: 10px;
@@ -7011,6 +7018,8 @@
     #sandbox body.immersive .article--immersive .prose .fadeInUp {
       -webkit-animation-name: fadeInUp;
       animation-name: fadeInUp; }
+  #sandbox body.immersive.android .article--immersive .article__header-bg {
+    height: 600px; }
   #sandbox .main-media:not(.main-media--hidden-caption) .main-media__caption__icon, #sandbox .figure__caption__icon {
     display: inline-block;
     margin-right: 7px;

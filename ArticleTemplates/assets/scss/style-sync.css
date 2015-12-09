@@ -5120,7 +5120,7 @@ body.immersive .article--immersive {
     color: #951c55; }
     body.immersive .article--immersive a:active {
       color: #b82266; }
-  body.immersive .article--immersive .section__rule + p:first-letter {
+  body.immersive .article--immersive .article__body .section__rule + p:first-letter {
     color: #951c55;
     font-family: "Guardian Egyptian Web", Georgia, serif;
     font-weight: 100;
@@ -5132,10 +5132,10 @@ body.immersive .article--immersive {
     padding-right: 6px;
     float: left; }
     @media all and (min-width: 40.63em) {
-      body.immersive .article--immersive .section__rule + p:first-letter {
+      body.immersive .article--immersive .article__body .section__rule + p:first-letter {
         font-size: 5.2222em; } }
     @media all and (min-width: 75em) {
-      body.immersive .article--immersive .section__rule + p:first-letter {
+      body.immersive .article--immersive .article__body .section__rule + p:first-letter {
         font-size: 7.3em;
         margin-top: -4px; } }
   body.immersive .article--immersive .progress {
@@ -5169,7 +5169,6 @@ body.immersive .article--immersive {
     background-color: black;
     background-position: center center;
     background-size: cover;
-    height: 600px;
     height: 100vh;
     position: relative; }
     body.immersive .article--immersive .article__header-bg .element-embed {
@@ -5237,6 +5236,10 @@ body.immersive .article--immersive {
     padding: 0; }
   body.immersive .article--immersive .article__body {
     background: #fff; }
+    body.immersive .article--immersive .article__body p a {
+      color: #951c55 !important; }
+      body.immersive .article--immersive .article__body p a:active {
+        color: #b82266 !important; }
   body.immersive .article--immersive .article__meta {
     background: #fff;
     margin: 0 auto;
@@ -5246,7 +5249,7 @@ body.immersive .article--immersive {
     background: none; }
     body.immersive .article--immersive .standfirst a {
       border-bottom: 1px solid #f7acbb;
-      color: #f7acbb;
+      color: #f7acbb !important;
       display: inline-block; }
       body.immersive .article--immersive .standfirst a:active {
         border-color: #b82266;
@@ -5300,6 +5303,10 @@ body.immersive .article--immersive {
       border: 0;
       color: #f7acbb;
       padding: 12px 12px 6px 0px !important; }
+      body.immersive .article--immersive .immersive__meta .comment-count a {
+        color: #951c55 !important; }
+        body.immersive .article--immersive .immersive__meta .comment-count a:active {
+          color: #b82266; }
   body.immersive .article--immersive .section__rule {
     border-bottom: 2px solid #dcdad5;
     height: 10px;
@@ -5551,3 +5558,6 @@ body.immersive .article--immersive {
   body.immersive .article--immersive .prose .fadeInUp {
     -webkit-animation-name: fadeInUp;
     animation-name: fadeInUp; }
+
+body.immersive.android .article--immersive .article__header-bg {
+  height: 600px; }
