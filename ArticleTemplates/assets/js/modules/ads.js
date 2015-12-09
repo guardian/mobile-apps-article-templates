@@ -133,7 +133,7 @@ define([
                 );
             },
 
-            fireAdsReady: function(_window){
+            fireAdsReady: function(_window) {
                 if (!$('body').hasClass('no-ready') && $('body').attr('data-use-ads-ready') === 'true') {
                     _window.location.href = 'x-gu://ads-ready';
                 }
