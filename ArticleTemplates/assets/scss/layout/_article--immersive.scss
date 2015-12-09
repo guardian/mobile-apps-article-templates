@@ -10,7 +10,7 @@ body.immersive .article--immersive {
         }
     }
 
-    .section__rule + p {
+    .article__body .section__rule + p {
         @include immersive-dropcap(color(tone-feature1));
     }
 
@@ -60,7 +60,6 @@ body.immersive .article--immersive {
             background-color: black;
             background-position: center center;
             background-size: cover;
-            height: 600px; 
             height: 100vh;
             position: relative;
             
@@ -160,6 +159,16 @@ body.immersive .article--immersive {
 
         &__body {
             background: #fff;
+
+            p {
+                a {
+                    color: color(tone-feature1) !important;
+
+                    &:active {
+                        color: color(tone-feature1-accent) !important;
+                    }
+                }
+            }
         }
 
         &__meta {
@@ -175,7 +184,7 @@ body.immersive .article--immersive {
 
         a {
             border-bottom: 1px solid color(tone-feature1-accent2);
-            color: color(tone-feature1-accent2);
+            color: color(tone-feature1-accent2) !important;
             display: inline-block;
 
             &:active {
@@ -253,6 +262,14 @@ body.immersive .article--immersive {
             border: 0;
             color: color(tone-feature1-accent2);
             padding: base-px(1,1,0.5,0)!important;
+
+            a {
+                color: color(tone-feature1) !important;
+
+                &:active {
+                    color: color(tone-feature1-accent);
+                }
+            }
         }
     }
 
@@ -603,5 +620,12 @@ body.immersive .article--immersive {
             -webkit-animation-name: fadeInUp;
             animation-name: fadeInUp;
         }
+    }
+}
+
+// Hack required for Android as they don't support vh units
+body.immersive.android .article--immersive {
+    .article__header-bg {
+        height: 600px; 
     }
 }
