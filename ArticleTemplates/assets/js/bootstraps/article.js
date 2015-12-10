@@ -28,6 +28,16 @@ define([
                 return false;
             }
 
+            // Amend the pub date style
+            $('.quiz-meta .meta__pubdate').html($('.quiz-meta .meta__pubdate').html().replace(',','<br />'));
+
+            // Move the quiz title to the article header
+            $('h1.headline').html($('.quiz__title').html());
+            $('.quiz__title').remove();
+
+            // Append the quiz navigation bubble
+            $('.quiz').append('<div class="quiz__navigation"><p class="quiz__start">Take the quiz</p></div>');
+
             // Store the answers and remove the answer elements
             var answers = $('.quiz__correct-answers').html().split(',');
             $('.quiz__correct-answers-title, .quiz__correct-answers').remove();
@@ -48,10 +58,15 @@ define([
                 $(questionWrapper).addClass('question__wrapper');
                 question.insertBefore(questionWrapper, questionAnswerList[0]);
                 // Does this question have an image
-                var questionImg = question.querySelectorAll('.question__img');
+                var questionImg = question.querySelectorAll(':scope > img');
                 if (questionImg.length) {
-                    $(question).addClass('hasImage');
-                    $(questionWrapper).append(questionImg);
+                    if ($(questionImg).attr('src') !== '') {
+                        $(question).addClass('hasImage');
+                        $(questionImg).addClass('question__img');
+                        $(questionWrapper).append(questionImg);
+                    } else {
+                        $(questionImg).remove();
+                    }
                 }
                 // Does this question have text
                 var questionText = question.querySelectorAll('.question__text');
@@ -59,9 +74,11 @@ define([
                     $(questionWrapper).append(questionText);
                 }
 
-                // This question's correct answer
-                var correctAnswer = answers[index].split(':')[1].toUpperCase();
-                
+                // This question's correct answer & response text
+                var correctAnswerResponse = answers[index].split(':')[1].split('-'),
+                    correctAnswer = correctAnswerResponse[0].trim().toUpperCase(),
+                    responseText =  correctAnswerResponse[1];
+
                 // All the answers for this question
                 var questionAnswers = this.querySelectorAll('.question__answer');
 
@@ -75,10 +92,16 @@ define([
                     $(answerMarker).addClass('answer__marker');
                     $(answerWrapper).append(answerMarker);
                     // Does this answer have an image
-                    var answerImg = answer.querySelectorAll('.answer__img');
+                    var answerImg = answer.querySelectorAll(':scope > img');
                     if (answerImg.length) {
-                        $(answer).addClass('hasImage');
-                        $(answerWrapper).append(answerImg);
+                        if ($(answerImg).attr('src') !== '') {
+                            $(answer).addClass('hasImage');
+                            $(answerImg).addClass('answer__img');
+                            $(answerWrapper).append(answerImg);
+                        } else {
+                            $(answerImg).remove();
+                            answerImg = '';
+                        }
                     }
                     // Does this answer have text
                     var answerText = answer.querySelectorAll('.answer__text');
@@ -92,12 +115,15 @@ define([
                     // Set up an onclick to handle when a user selects this answer
                     bean.on(answer, 'click', function() {
                         if ($(question).hasClass('answered')) {
+                            // Question has already been answered 
                             return false;
                         } else {
+                            // Mark question as answered and keep track of total q's answered
                             $(question).addClass('answered');
                             numAnswered ++;
                         }
 
+                        // Flag this answer as correct or wrong
                         if (thisAnswer == correctAnswer) {
                             $(this).addClass('correct');
                             score ++;
@@ -105,7 +131,12 @@ define([
                             $(this).addClass('wrong');
                         }
 
-                        $(answerWrapper).append('<p class="answer__explanation">This is the answer explanation, which will show up after either the correct or wrong answer</p>');
+                        // Add the response text if we have any, if not create an empty element for image answers
+                        if (responseText) {
+                            $(answerWrapper).append('<p class="answer__explanation">' + responseText.trim() + '</p>');
+                        } else if (answerImg.length) {
+                            $(answerWrapper).append('<p class="answer__explanation">&nbsp;</p>');
+                        }
 
                         // When we have an image answer we need to move the positioning of the explanation and marker 
                         if (answerImg.length) {
@@ -117,6 +148,7 @@ define([
                             answerMarker.style.top = 'calc(100% - ' + (answerExplanationHeight - 7) + 'px)';
                         }
 
+                        // If all questions have been answered display the score
                         if (numQuestions == numAnswered) {
                             $('.quiz__scores').html('<span class="quiz__score">' + score +'</span> out of <span class="quiz__number-questions">' + numQuestions + '</span>');
                             $('.quiz__scores-title, .quiz__scores').show();
@@ -124,6 +156,10 @@ define([
                     });
                 });
             });
+
+            bean.on(window, 'scroll', window.ThrottleDebounce.debounce( 250, true, function () {
+                
+            }));
         }
     },
 

@@ -9,10 +9,8 @@
 
     // Question Block
     .quiz__question {
-        border-top: 2px solid color(tone-news-accent);
         counter-increment: question-counter;
         margin-bottom: 30px;
-        padding-top: 3px;
 
         &::before {
             content: "";
@@ -21,31 +19,25 @@
 
     // Question Styles
     .question__wrapper {
+        border-top: 2px solid color(tone-news-accent);
+        padding-top: 3px;
         position: relative;
-        &::before {
-            color: color(tone-news-accent);
-            content: counter(question-counter);
-            float: left;
-            font: 100 50px/1 $egyptian-display;
-            width: 60px;
-        }
     }
 
     .question__text {
-        font: 600 16px/1.5 $egyptian-display;
-    }
-
-    // Vary the styles when the question has an image
-    .question.hasImage {
-        .question__text {
-            background: rgba(color(shade-1),.5);
-            bottom: 0;
-            color: color(shade-7);
-            display: block;
+        color: color(shade-1);
+        font: 600 18px/1.2 $egyptian-display;
+        min-height: 50px;
+        padding: 0 0 6px 60px;
+        
+        &::before {
+            color: color(tone-news-accent);
+            content: counter(question-counter);
+            font: 100 50px/1 $egyptian-display;
             left: 0;
-            margin: 0;
             position: absolute;
-            width: 100%;
+            top: 3px;
+            width: 60px;
         }
     }
 
@@ -58,6 +50,32 @@
         clear: both;
         margin: 0;
         padding: 0;
+    }
+
+    // Vary the styles when the question has an image
+    .question.hasImage {
+        .question__wrapper {
+            margin: 0 -12px 7px;
+            padding-top: 0;
+        }
+
+        .question__text {
+            background: rgba(color(shade-1),.5);
+            bottom: 0;
+            color: color(shade-7);
+            display: block;
+            left: 0;
+            margin: 0;
+            padding-left: 72px;
+            position: absolute;
+            width: 100%;
+        
+            &::before {
+                color: color(shade-7);
+                left: 12px;
+                top: 0;
+            }
+        }
     }
 
     // Answer Block
@@ -79,7 +97,6 @@
         margin: 0;
         min-height: 55px;
         padding: 5px 6px 18px 60px;
-        transition: height 0.5s ease;
     }
 
     .answer__wrapper {
@@ -92,18 +109,17 @@
     .answer__marker {
         border: 1px dashed color(shade-2);
         border-radius: 50%;
-        content: " ";
         height: 30px;
         left: 7px;
         position: absolute;
         top: 7px;
-        transition: all 0.5s ease;
+        transition: background 0.5s ease, top 0.5s ease;
         width: 30px;
         z-index: 1;
 
         &::before {
+            content: "\00e062";
             opacity: 0;
-            transition: opacity 0.5s ease;
         }
     }
 
@@ -120,6 +136,7 @@
         line-height: 1.2;
         margin: -6px 0 0;
         padding: 0 6px 12px 60px;
+        width: 100%;
     }
 
     // Vary the answer styles once a question has been answered
@@ -147,6 +164,12 @@
                 display: block;
                 font: 600 14px/1.5 $egyptian-display;
                 margin-bottom: 5px;
+            }
+        }
+
+        .answer__marker {
+            &::before {
+                transition: opacity 0.3s ease 0.2s;
             }
         }
 
@@ -236,6 +259,48 @@
 
         .answer__explanation {
             background: color(tone-news);
+        }
+    }
+
+    // Quiz Navigation
+    .quiz__navigation {
+        background: color(tone-news);
+        border-radius: 50%;
+        bottom: 12px;
+        color: color(shade-7);
+        font: 600 16px/1.2 $egyptian-display;
+        height: 100px;
+        margin: 0;
+        padding: 16px;
+        position: fixed;
+        right: 12px;
+        transition: all .5s ease;
+        width: 100px;
+        z-index: 99;
+
+        &::after {
+            bottom: 18px;
+            content: "\00e066";
+            font: 100 22px $icon;
+            position: absolute;
+            right: 18px;
+            -webkit-transform: scaleY(-1);
+            transform: scaleY(-1);
+        }
+
+        &.down {
+            height: 60px;
+            width: 60px;
+
+            .quiz__start {
+                display: none;
+            }
+
+            &::after {
+                bottom: 12px;
+                font-size: 26px;
+                right: 17px;
+            }
         }
     }
 }

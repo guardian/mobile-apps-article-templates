@@ -1,0 +1,47 @@
+.article--quiz {
+    .main-media {
+        figcaption {
+            display: none;
+        }
+    }
+
+    .article__header {
+        height: 100vh;
+        position: relative;
+
+        .android & {
+            height: 600px;
+        }
+
+        .standfirst__inner {
+            color: color(shade-6);
+            font-size: 16px;
+        }
+
+        .quiz-meta .meta__pubdate,
+        .standfirst__inner {
+            color: color(shade-6);
+            font-size: 14px;
+            line-height: 1.2;
+
+            &::before {
+                border-top: 1px solid color(shade-3);
+                content: "";
+                display: block;
+                margin-bottom: 3px;
+                width: 50px;
+            }
+        }
+
+        .quiz-meta {
+            bottom: 0;
+            border: 0;
+            left: 0;
+            position: absolute;
+
+            .meta__pubdate {
+                padding: 12px;
+            }
+        }
+    }
+}
