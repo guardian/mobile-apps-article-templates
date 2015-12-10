@@ -23,18 +23,17 @@ Display an alerts toggle.
 a.tell-me-when {
     @include meta();
     font-family: $agate-sans;
-    white-space: nowrap;
-    padding: base-px(.3, 1, .7, 1);
+    padding: base-px(.5, 1, .5, 1);
     margin: base-px(0, 0, 1, -.3);
     display: inline-block;
     border-radius: 30px;
-    text-overflow: ellipsis;
     vertical-align: bottom;
-    overflow: hidden;
-    max-width: 100%;
+    max-width: 350px;
     color: color(tone-news);
     border: 1px solid color(tone-news);
     transition: background-color 0.3s;
+    width: 100%;
+    position: relative;
 
     &:active,
     &.added {
@@ -42,13 +41,21 @@ a.tell-me-when {
         color: color(shade-7);
     }
 
-    span[data-icon]{
-        display: inline-block;
-        vertical-align: bottom;
+    span[data-icon] {
         font-size: $body-size-2;
-        position: relative;
-        right: 3px;
-        top: 1px;
+        position: absolute;
+        left: 9px;
+        top: 4px;
+    }
+
+    .tell-me-when__label {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding-left: 26px;
+        width: 100%;
+        display: inline-block;
+        line-height: 1.2;
     }
     
     .tell-me-when__state--remove {

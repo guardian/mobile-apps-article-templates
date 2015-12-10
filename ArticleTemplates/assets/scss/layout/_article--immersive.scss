@@ -1,0 +1,631 @@
+// Specificity required to override tones (!important also needed to override tone - if the immersive is meant to appear in feature colours they should set it to tone--feature!! - need to look at better way to do this..)
+body.immersive .article--immersive {
+    border-top: 0;
+
+    a {
+        color: color(tone-feature1);
+
+        &:active {
+            color: color(tone-feature1-accent);
+        }
+    }
+
+    .article__body .section__rule + p {
+        @include immersive-dropcap(color(tone-feature1));
+    }
+
+    // progress bar at top of article
+    .progress {
+        background-color: rgba(255, 255, 255, .8);
+        height: 6px;
+        position: fixed;
+        top: 0px;
+        width: 100%;
+        z-index: 2;
+
+        @include mq($from: col4) {
+            overflow: hidden;
+            width: 1200px;
+        }
+        
+        &__bar {
+            background-color: color(tone-feature1-accent);
+            height: 6px;
+            margin-top: 0px;
+            width: 0;
+        }
+        
+        &__chapter {
+            background-color: color(tone-feature1-accent2);
+            height: 6px;
+            position: absolute;
+            top: 0;
+            width: 2px;
+        }
+    }
+
+    .article {
+        &__header {
+            background: none;
+
+            .bullet,
+            ul > li {
+                &::before {
+                    background-color: rgba(#fff, .4);
+                }
+            }
+        }
+
+        &__header-bg {
+            background-color: black;
+            background-position: center center;
+            background-size: cover;
+            height: 100vh;
+            position: relative;
+            
+            .element-embed {
+                // Fix embedded video transform
+                bottom: 0;
+                left: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+
+                iframe {
+                    height: 100% !important;
+
+                    video {
+                        -webkit-transform: (-50%, -50%);
+                    }
+                }
+            }
+        }
+
+        &__header-info {
+            background-color: rgba(0, 0, 0, 0.3);
+            bottom: 0px;
+            padding: base-px(.5, 1, 2, 1);
+            position: absolute;
+            width: 100%;
+            
+            @include mq($from: col3) {
+                padding-top: base-px(1);
+            }
+
+            @include mq($from: col4) {
+                padding: {
+                    left: 0;
+                    right: 0;
+                }
+            }
+        }
+
+        &__series {
+            display: block;
+            padding-bottom: 12px;
+            
+            > a, & {
+                color: #fff;
+                font: 600 1.8rem $egyptian-display;
+            }
+
+            @include mq($from: col2) {
+                margin-bottom: base-px(1);
+            }
+
+            @include mq($from: col4) {
+                margin: 0 auto;
+                max-width: 1200px;
+                padding: {
+                    left: 240px;
+                    right: 320px;
+                }
+            }
+        }
+
+        &__headline {
+            color: #fff;
+            font-size: 3.5rem !important;
+            line-height: 3.3rem;
+            padding: 0 0 24px;
+            z-index: 1;
+
+            @include mq($from: col2) {
+                font-size: 2.8em !important;
+                font-weight: 100;
+                line-height: .9375;
+                margin-bottom: 24px;
+            }
+
+            @include mq($from: col3) {
+                padding-right: cols($base-4, 4);
+            }
+
+            @include mq($from: col4) {
+                margin: 0 auto;
+                max-width: 1200px;
+                padding: {
+                    left: 240px;
+                    right: 320px;
+                }
+            }
+        }
+
+        &__byline {
+            background-color: none;
+            color: #fff;
+            padding: 0;
+        }
+
+        &__body {
+            background: #fff;
+
+            p {
+                a {
+                    color: color(tone-feature1) !important;
+
+                    &:active {
+                        color: color(tone-feature1-accent) !important;
+                    }
+                }
+            }
+        }
+
+        &__meta {
+            background: #fff;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+    }
+
+    .standfirst {
+        color: #fff;
+        background: none;
+
+        a {
+            border-bottom: 1px solid color(tone-feature1-accent2);
+            color: color(tone-feature1-accent2) !important;
+            display: inline-block;
+
+            &:active {
+                border-color: color(tone-feature1-accent);
+                color: color(tone-feature1-accent);
+            }
+        }
+
+        &__text {
+            margin: base-px(1, 0);
+
+            @include mq($from: col2) {
+                margin-top: 8px;
+            }
+        }
+
+        &--mobile {
+            background-color: color(shade-2);
+            padding: base-px(.5, 1, 1.5, 1);
+
+            @include mq($from: col2) {
+                display: none;
+            }
+        }
+
+        &--tablet {
+            padding: 0;
+            display: none;
+            
+            @include mq($from: col2) {
+                display: block;
+            }
+
+            @include mq($from: col3) {
+                padding-right: cols($base-4, 4);
+            }
+
+            @include mq($from: col4) {
+                font-size: 2rem;
+                line-height: 2.8rem;
+                margin: 0 auto;
+                max-width: 1200px;
+                padding: {
+                    left: 240px;
+                    right: 320px;
+                }
+            }
+
+            &:before {
+                border-bottom: 2px solid #dcdad5;
+                content: " ";
+                height: 10px;
+                margin: 0 0 8px 1px;
+                width: 100px;
+                display: block;
+            }
+
+            .section__rule {
+                margin-bottom: 8px;
+            }
+        }
+    }
+
+    .immersive__meta {
+        color: color(shade-2);
+        font: 1.6rem/1.4rem $agate-sans;
+        padding: base-px(0,1,2,1);
+        
+        @include mq($from: col4) {
+            padding-left: 240px;
+            width: 620px;
+        }
+        
+        .comment-count {
+            border: 0;
+            color: color(tone-feature1-accent2);
+            padding: base-px(1,1,0.5,0)!important;
+
+            a {
+                color: color(tone-feature1) !important;
+
+                &:active {
+                    color: color(tone-feature1-accent);
+                }
+            }
+        }
+    }
+
+    .section__rule {
+        border-bottom: 2px solid color(shade-4);
+        height: 10px;
+        margin: base-px(0,0,1,.1);
+        width: 100px;
+    }
+
+    .review-rating {
+        color: rgba(#fff, .4);
+    }
+
+    .review-rating--1 .icon:nth-child(-n+1),
+    .review-rating--2 .icon:nth-child(-n+2),
+    .review-rating--3 .icon:nth-child(-n+3),
+    .review-rating--4 .icon:nth-child(-n+4),
+    .review-rating--5 .icon:nth-child(-n+5) {
+        color: #fff;
+    }
+
+    .prose {
+        p,
+        li {
+            @include text-underline(color(tone-feature1), #fff, color(tone-feature1-accent));
+        }
+
+        table,
+        .table {
+            border-top-color: color(tone-feature1-accent);
+        }
+
+        .element-pullquote {
+            blockquote {
+            footer,
+                &::after,
+                &::before {
+                    color: color(tone-feature1);
+                }
+            }
+        }
+
+        .title--image {
+            background-color: rgba(0,0,0,0.6);
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 200;
+            line-height: 2.6rem;
+            margin: {
+                bottom: base-px(2);
+                left: -12px;
+                top: -53px;
+            } 
+            padding: base-px(0.25, 0, 2, 1);
+            position: relative;
+            width: 108%;
+            z-index: 1;
+
+            @include mq($from: col2) {
+                padding: base-px(0.25, 0, 2.8, 1);
+                font-size: 3.2rem;
+                margin-top: -63px;
+                width: 136%;
+            }
+            
+            @include mq($from: col4) {
+                width:1200px;
+                margin-left: -240px;
+                padding-left: 240px;
+            }
+        }
+        
+        .section__header {
+            background-color: color(tone-feature1-accent) !important;
+            color: #fff;
+            height: 180px;
+            margin: {
+                bottom: 24px;
+                left: -12px;
+            }
+            font-size: 34px;
+            font-weight: 200;
+            line-height: 30px;
+            padding-left: 4%;
+            width: 108%;
+        }
+
+        .quote--image {
+            margin-top: -54px;
+
+            blockquote {
+                border-top: 1px solid color(tone-feature1-accent2) !important;
+                border-bottom: none !important;
+                background-color: rgba(0, 0, 0, 0.65);
+                color: #fff !important;
+                padding: base-px(0.5) base-px(0.5) base-px(2) base-px(0.5); 
+                
+                &::before {
+                    color: color(tone-feature1-accent2) !important;
+                }
+
+                footer {
+                    cite {
+                        color: color(tone-feature1-accent2);
+                    }
+                }
+            }
+        }
+
+        .quote--overlay {
+            position: relative;
+
+            &::before {
+                background-color: rgba(0,0,0,0.6);
+                color: #fff;
+                content: attr(data-content) '';
+                font-family: $icon;
+                height: 30px;
+                text-align: center;
+                position: absolute;
+                right: 0;
+                width: 30px;
+            }
+
+            figcaption {
+                background-color: rgba(0,0,0,0.6);
+                color: #fff;
+                display: none;
+                position: absolute;
+                top:0;
+                width: 90%;
+                
+                &.display {
+                    display: block;
+                }
+            }
+        }
+        
+        .title--overlay {
+            figcaption {
+                display: none !important;
+            }
+        }
+        
+        .element-pullquote {
+            margin-bottom: base-px(2);
+            visibility: hidden;
+
+            blockquote {
+                border: {
+                    bottom: 1px solid #e0e0e0;
+                    top: 1px solid #e0e0e0;
+                };
+                color: color(tone-feature1);
+                font: 200 2rem/2.4rem $egyptian-display;
+                padding-top: 0px;
+
+                @include mq($from: col2) {
+                    font-size: 3.2rem;
+                    line-height: 3.4rem;
+                }
+                
+                p {
+                    margin-top: 28px;
+                }
+
+                cite {
+                  color: color(shade-3);
+                  font-size: 2rem;
+                  line-height: 2.4rem;
+
+                   @include mq($from: col2) {
+                        font-size: 3.2rem;
+                        line-height: 3.2rem;
+                   }
+                }
+
+                &::before {
+                    color: color(shade-3);
+                    float: left;
+                    font-size: 2.8rem;
+                    line-height: 1.6rem;
+                    margin-right: 8px;
+                    position: relative;
+
+                     @include mq($from: col2) {
+                        font-size: 4rem;
+                        line-height: 1.3rem;
+                    }
+                }
+
+                &::after {
+                    content:"";
+                }
+            }
+            
+            @include mq($from: col2) {
+                float: left;
+                margin-right: base-px(1);
+                max-width: 100%;
+            }
+
+            @include mq($from: col3) {
+                max-width: 100%;
+            }
+
+            @include mq($from: col4) {
+                margin: {
+                    left: 0;
+                    right: 0;
+                };
+            }
+        }
+
+        .element-image {
+            &.element--immersive {
+               @include mq($from: col4) {
+                    margin-left: -240px;
+                    width: 1200px;
+
+                    &:not(.quote--overlay) > figcaption {
+                        border: 0;
+                        float: left;
+                        padding-right: 0;
+                        width: 240px;
+                    }
+                }
+            }
+
+            &.element--supporting {
+                width: auto;
+
+                @include mq($from: col2) {
+                    width: 100%;
+                }
+
+                .figure__inner {
+                    @include mq($from: col3) {
+                        float: left;
+                        margin: {
+                            left: 0;
+                            right: 20px;
+                            top: 6px;
+                        }
+                        width: 380px;
+                    }
+                    
+                    @include mq($from: col4) {
+                        margin: {
+                            bottom: 0;
+                            left: -240px;
+                        }
+                    }
+                }
+
+                figcaption {
+                    @include mq($from: col3) {
+                        clear: both;
+                        border: 0;
+                        float: left;
+                        margin-right: 20px;
+                        padding: 6px 12px;
+                        width: 380px;
+                    }
+
+                    @include mq($from: col4) {
+                        clear: both;
+                        float: left;
+                        margin: {
+                            left: -240px;
+                            top: 3px;
+                        }
+                        width: 220px;
+                    }
+                }
+            }
+
+            &.element--showcase {
+                width: auto;
+
+                @include mq($from: col2) {
+                    width: 135%;
+                }
+                
+                @include mq($from: col4) {
+                    .figure__inner {
+                        float: left;
+                        margin: {
+                            bottom: 10px;
+                            left: -240px;
+                        }
+                        width: 860px;
+                    }
+
+                    figcaption {
+                        border: 0;
+                        clear: both;
+                        float: left;
+                        margin: {
+                            left: -240px;
+                            top: -3px;
+                        }
+                        padding: 0 12px;
+                        width: 220px;
+                    }
+                }
+            }
+        }
+
+        .animated {
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+            visibility: visible;
+        }
+        
+        @-webkit-keyframes fadeInUp {
+            from {
+                opacity: 0;
+                -webkit-transform: translate3d(0, 10%, 0);
+                transform: translate3d(0, 10%, 0);
+            }
+
+            to {
+                opacity: 1;
+                -webkit-transform: none;
+                transform: none;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                -webkit-transform: translate3d(0, 10%, 0);
+                transform: translate3d(0, 10%, 0);
+            }
+
+            to {
+                opacity: 1;
+                -webkit-transform: none;
+                transform: none;
+            }
+        }
+        
+        .fadeInUp {
+            -webkit-animation-name: fadeInUp;
+            animation-name: fadeInUp;
+        }
+    }
+}
+
+// Hack required for Android as they don't support vh units
+body.immersive.android .article--immersive {
+    .article__header-bg {
+        height: 600px; 
+    }
+}

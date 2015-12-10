@@ -1,7 +1,8 @@
 .article--standard,
 .article--comment,
 .article--feature,
-.article--audio {
+.article--audio,
+.article--immersive {
     .article__body {
         padding: base-px(1);
 
@@ -125,7 +126,8 @@ body:not(.is-live) .article--liveblog {
     }
 }
 
-.article--comment {
+.article--comment,
+.article--feature:not(.immersive) {
     .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p {
         @include dropcap();
     }

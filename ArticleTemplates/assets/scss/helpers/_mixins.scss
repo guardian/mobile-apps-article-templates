@@ -202,6 +202,31 @@ $meta-lead-2: 2.2rem;
     }
 }
 
+// Immersive Drop cap
+@mixin immersive-dropcap($dropcap-color: '') {
+    &:first-letter {
+        color: $dropcap-color;
+        font-family: $egyptian-display;
+        font-weight: 100;
+        font-style: normal;
+        font-size: 7em;
+        line-height: 1;
+        margin-top: 0px;
+        margin-bottom: base-px(-1.6);
+        padding-right: base-px(.5);
+        float: left;
+
+        @include mq($from: col2) {
+            font-size: 5.2222em;
+        }
+
+        @include mq($from: col4) {
+            font-size: 7.3em;
+            margin-top: -4px;
+        }
+    }
+}
+
 // template for tags
 @mixin tag-button($text-color, $background-color, $process: "darken", $tone-change: 10%){
     color: $text-color;

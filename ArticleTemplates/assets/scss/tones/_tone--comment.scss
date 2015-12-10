@@ -1,16 +1,12 @@
 .tone--comment {
+    .article a,
+    .article__body .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter
+    .container__action--sort a,
+    .comments__ordering {
+        color: color(tone-comment);
 
-    .comment-count,
-    .byline__author,
-    .container__action--sort,
-    .standfirst li,
-    .sponsorship {
-        a {
-            color: color(tone-comment);
-
-            &:active {
-                color: color(tone-comment-accent);
-            }
+        &:active {
+            color: color(tone-comment-accent);
         }
     }
 
@@ -175,27 +171,27 @@
         }
     }
 
-    .alerts:active,
-    .alerts.following {
+    a.alerts:active,
+    a.alerts.following {
         background-color: color(shade-7);
         color: color(tone-comment-accent);
     }
 
-    .alerts,
-    .alerts.following:active {
+    a.alerts,
+    a.alerts.following:active {
         border-color: rgba(color(shade-7), .5);
         color: color(shade-7);
     }
 
     &.is_advertising {
-        .alerts,
-        .alerts.following:active {
+        a.alerts,
+        a.alerts.following:active {
             border-color: rgba(color(shade-1), .5);
             color: color(shade-1);
         }
 
-        .alerts:active,
-        .alerts.following {
+        a.alerts:active,
+        a.alerts.following {
             background-color: color(shade-1);
             color: color(shade-7);
         }
@@ -212,4 +208,3 @@
         color: color(tone-comment-accent);
     }
 }
-
