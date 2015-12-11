@@ -5,14 +5,16 @@ define([
     'modules/$',
     'modules/twitter',
     'modules/witness',
-    'modules/outbrain'
+    'modules/outbrain',
+    'smoothScroll'
 ], function (
     bean,
     bonzo,
     $,
     twitter,
     witness,
-    outbrain
+    outbrain,
+    smoothScroll
 ) {
     'use strict';
 
@@ -30,15 +32,18 @@ define([
                 return false;
             }
 
+            // measure the viewport & set bg height
+            var viewPortHeight = bonzo.viewport().height,
+                bgHeight = (viewPortHeight - $('body').css('margin-top').replace('px','')) + 'px';
+
+            // set article header height to viewport height
+            $('.article__header').css('height', bgHeight); // For android that doesn't support 100vh
+
             // Amend the pub date style
             $('.quiz-meta .meta__pubdate').html($('.quiz-meta .meta__pubdate').html().replace(',','<br />'));
 
-            // Move the quiz title to the article header
-            $('h1.headline').html($('.quiz__title').html());
-            $('.quiz__title').remove();
-
             // Append the quiz navigation bubble
-            $('.quiz').append('<div class="quiz__navigation"><p class="quiz__start">Take the quiz</p></div>');
+            $('.article__header').append('<div class="quiz__navigation"><p class="quiz__start">Take the quiz</p></div>');
 
             // Store the answers and remove the answer elements
             var answers = $('.quiz__correct-answers').html().split(',');
@@ -49,8 +54,14 @@ define([
                 numAnswered = 0,
                 score = 0;
 
-            // Hide the scores elements for now
-            $('.quiz__scores-title, .quiz__scores').hide();
+            // Append the quiz scores popup
+            $('.quiz').append('<div class="quiz-scores"><div class="quiz-scores__inner"></div></div>');
+            var quizImage = $('#main-media-image')[0].cloneNode(true);
+            $(quizImage).attr('id','').addClass('quiz-scores__img');
+            $('.quiz-scores__inner').append('<div class="quiz-scores__close"></div>').append(quizImage).append('<p class="quiz-scores__score"></p>');
+            bean.on(window, 'click.quizclose', $('.quiz-scores__close'), function() {
+                $('.quiz-scores').removeClass('open');
+            });
 
             // Loop through every question and set up the answers and click events for it's answers
             $('.quiz__question').each(function(question, index) {
@@ -84,6 +95,7 @@ define([
                 // All the answers for this question
                 var questionAnswers = this.querySelectorAll('.question__answer');
 
+                // Loop through each answer and set up it's styling
                 $(questionAnswers).each(function(answer, index) {
                     // Wrap answer in a div for styling
                     var answerWrapper = document.createElement('div');
@@ -152,15 +164,49 @@ define([
 
                         // If all questions have been answered display the score
                         if (numQuestions == numAnswered) {
-                            $('.quiz__scores').html('<span class="quiz__score">' + score +'</span> out of <span class="quiz__number-questions">' + numQuestions + '</span>');
-                            $('.quiz__scores-title, .quiz__scores').show();
+                            $('.quiz-scores__score').html('<span class="quiz-scores__correct">' + score +'</span> / <span class="quiz-scores__questions">' + numQuestions + '</span>');
+                            $('.quiz-scores').addClass('open');
+                            $('.quiz__navigation').hide();
                         }
                     });
                 });
             });
 
-            bean.on(window, 'scroll', window.ThrottleDebounce.debounce( 250, true, function () {
-                
+            // store all questions top offset for later
+            $('.quiz__question').each(function(question, index){
+               var offset = $(question).offset().top;
+               $(question).attr({
+                    'data-offset': offset,
+                    'id': 'questionNum' + index
+                });
+            });
+
+            // set up on scroll event for resizing quiz navigation button
+            bean.on(window, 'scroll.quiz', window.ThrottleDebounce.throttle(250, false, function () {
+                var currentScroll = window.scrollY;
+                // is the first question at least half way into the viewport?
+                if (currentScroll >= ($('.quiz__question').first().attr('data-offset') - (viewPortHeight * 0.5))) {
+                    $('.quiz__navigation').addClass('down');
+                } else {
+                    $('.quiz__navigation').removeClass('down');
+                }
+            }));
+
+            // set up the onclick for the quiz navigation button
+            bean.on(window, 'click.quiz', $('.quiz__navigation'), window.ThrottleDebounce.debounce(10, false, function () {
+                var currentScroll = window.scrollY,
+                    scrolled = false;
+
+                // Jump to the next question
+                $('.quiz__question:not(.answered)').each(function(question, index) {
+                    var thisOffset = $(question).attr('data-offset'),
+                        thisID = '#' + $(question).attr('id');
+
+                    if ((thisOffset > currentScroll) && !scrolled) {
+                        smoothScroll.animateScroll(null, thisID);
+                        scrolled = true;
+                    }
+                });
             }));
         },
         
@@ -244,6 +290,7 @@ define([
                 // update progress bar
                 // modules.updateProgressBar(progressBar, articleHeight);
             }));
+
 
             // add a resize / orientation event to redraw the chapter positions for new article height
             bean.on(window, 'resize.cards orientationchange.cards', window.ThrottleDebounce.debounce(100, false, function () {

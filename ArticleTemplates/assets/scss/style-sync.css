@@ -2450,12 +2450,8 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
 
 .article {
   overflow: hidden;
-  margin-bottom: 48px; }
-  @media all and (max-width: 28.12em) {
-    .article {
-      border-top-width: 0; } }
-  .android .article {
-    border-top-width: 0; }
+  margin-bottom: 48px;
+  border-top-width: 0; }
   @media all and (min-width: 75em) {
     .article {
       background-color: #eaeaea; } }
@@ -2632,16 +2628,32 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
 .android .article--liveblog .article__body--liveblog__pinned figcaption {
   padding: 6px 12px 24px 12px; }
 
-.article--quiz .main-media figcaption {
-  display: none; }
+@media all and (min-width: 75em) {
+  .article--quiz {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px; } }
+.article--quiz .main-media {
+  padding: 0; }
+  .article--quiz .main-media figcaption {
+    display: none; }
 .article--quiz .article__header {
   height: 100vh;
   position: relative; }
+  @media all and (min-width: 75em) {
+    .article--quiz .article__header {
+      margin: 0 auto;
+      max-width: 1200px; }
+      .tone--news .article--quiz .article__header {
+        background: #fff; } }
   .android .article--quiz .article__header {
     height: 600px; }
   .article--quiz .article__header .standfirst__inner {
     color: #484848;
     font-size: 16px; }
+    @media all and (min-width: 75em) {
+      .article--quiz .article__header .standfirst__inner {
+        font-size: 18px; } }
   .article--quiz .article__header .quiz-meta .meta__pubdate,
   .article--quiz .article__header .standfirst__inner {
     color: #484848;
@@ -2661,6 +2673,50 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
     position: absolute; }
     .article--quiz .article__header .quiz-meta .meta__pubdate {
       padding: 12px; }
+      @media all and (min-width: 75em) {
+        .article--quiz .article__header .quiz-meta .meta__pubdate {
+          padding-left: 240px; } }
+.article--quiz .quiz__navigation {
+  background: #005689;
+  border-radius: 50%;
+  bottom: 12px;
+  color: #fff;
+  font: 600 16px/1.2 "Guardian Egyptian Web", Georgia, serif;
+  height: 100px;
+  margin: 0;
+  padding: 16px;
+  position: fixed;
+  right: 12px;
+  transition: all .5s ease-in-out;
+  width: 100px;
+  z-index: 99; }
+  @media all and (min-width: 75em) {
+    .article--quiz .quiz__navigation {
+      left: 50%;
+      margin-left: 580px;
+      transform: translateX(-100%); } }
+  .article--quiz .quiz__navigation .quiz__start {
+    opacity: 1;
+    transition: opacity .5s ease-in-out;
+    width: 68px; }
+  .article--quiz .quiz__navigation::after {
+    bottom: 18px;
+    content: "\00e066";
+    font: 100 22px "Guardian Icons", Georgia, serif;
+    position: absolute;
+    right: 18px;
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+    transition: all .5s ease-in-out; }
+  .article--quiz .quiz__navigation.down {
+    height: 60px;
+    width: 60px; }
+    .article--quiz .quiz__navigation.down .quiz__start {
+      opacity: 0; }
+    .article--quiz .quiz__navigation.down::after {
+      bottom: 12px;
+      font-size: 26px;
+      right: 17px; }
 
 .article--standard .article__body,
 .article--comment .article__body,
@@ -4160,16 +4216,25 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
         .tone--feature3 .main-media figure .element__inner {
           top: -70px; } }
 .tone--feature1 .article--feature,
+.tone--feature1 .article--quiz,
 .tone--feature2 .article--feature,
-.tone--feature3 .article--feature {
+.tone--feature2 .article--quiz,
+.tone--feature3 .article--feature,
+.tone--feature3 .article--quiz {
   border-top-color: #b82266; }
   .tone--feature1 .article--feature .article__body,
+  .tone--feature1 .article--quiz .article__body,
   .tone--feature2 .article--feature .article__body,
-  .tone--feature3 .article--feature .article__body {
+  .tone--feature2 .article--quiz .article__body,
+  .tone--feature3 .article--feature .article__body,
+  .tone--feature3 .article--quiz .article__body {
     background-color: #fff; }
   .tone--feature1 .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
+  .tone--feature1 .article--quiz .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
   .tone--feature2 .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-  .tone--feature3 .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
+  .tone--feature2 .article--quiz .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
+  .tone--feature3 .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
+  .tone--feature3 .article--quiz .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
     color: #951c55;
     font-family: "Guardian Egyptian Web", Georgia, serif;
     font-weight: 100;
@@ -4182,15 +4247,24 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     float: left; }
     @media all and (min-width: 40.63em) {
       .tone--feature1 .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
+      .tone--feature1 .article--quiz .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
       .tone--feature2 .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-      .tone--feature3 .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
+      .tone--feature2 .article--quiz .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
+      .tone--feature3 .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
+      .tone--feature3 .article--quiz .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
         font-size: 5.2222em; } }
   .tone--feature1 .article--feature .prose p a,
   .tone--feature1 .article--feature .prose li a,
+  .tone--feature1 .article--quiz .prose p a,
+  .tone--feature1 .article--quiz .prose li a,
   .tone--feature2 .article--feature .prose p a,
   .tone--feature2 .article--feature .prose li a,
+  .tone--feature2 .article--quiz .prose p a,
+  .tone--feature2 .article--quiz .prose li a,
   .tone--feature3 .article--feature .prose p a,
-  .tone--feature3 .article--feature .prose li a {
+  .tone--feature3 .article--feature .prose li a,
+  .tone--feature3 .article--quiz .prose p a,
+  .tone--feature3 .article--quiz .prose li a {
     color: #951c55;
     text-decoration: none;
     background-image: linear-gradient(rgba(149, 28, 85, 0.25) 0%, #951c55 100%);
@@ -4201,99 +4275,183 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
       .tone--feature1 .article--feature .prose p a,
       .tone--feature1 .article--feature .prose li a,
+      .tone--feature1 .article--quiz .prose p a,
+      .tone--feature1 .article--quiz .prose li a,
       .tone--feature2 .article--feature .prose p a,
       .tone--feature2 .article--feature .prose li a,
+      .tone--feature2 .article--quiz .prose p a,
+      .tone--feature2 .article--quiz .prose li a,
       .tone--feature3 .article--feature .prose p a,
-      .tone--feature3 .article--feature .prose li a {
+      .tone--feature3 .article--feature .prose li a,
+      .tone--feature3 .article--quiz .prose p a,
+      .tone--feature3 .article--quiz .prose li a {
         background-image: linear-gradient(rgba(149, 28, 85, 0.25) 0%, #951c55 100%);
         background-position: 0 93%; } }
     .tone--feature1 .article--feature .prose p a a:active, .tone--feature1 .article--feature .prose p a:hover,
     .tone--feature1 .article--feature .prose li a a:active,
     .tone--feature1 .article--feature .prose li a:hover,
+    .tone--feature1 .article--quiz .prose p a a:active,
+    .tone--feature1 .article--quiz .prose p a:hover,
+    .tone--feature1 .article--quiz .prose li a a:active,
+    .tone--feature1 .article--quiz .prose li a:hover,
     .tone--feature2 .article--feature .prose p a a:active,
     .tone--feature2 .article--feature .prose p a:hover,
     .tone--feature2 .article--feature .prose li a a:active,
     .tone--feature2 .article--feature .prose li a:hover,
+    .tone--feature2 .article--quiz .prose p a a:active,
+    .tone--feature2 .article--quiz .prose p a:hover,
+    .tone--feature2 .article--quiz .prose li a a:active,
+    .tone--feature2 .article--quiz .prose li a:hover,
     .tone--feature3 .article--feature .prose p a a:active,
     .tone--feature3 .article--feature .prose p a:hover,
     .tone--feature3 .article--feature .prose li a a:active,
-    .tone--feature3 .article--feature .prose li a:hover {
+    .tone--feature3 .article--feature .prose li a:hover,
+    .tone--feature3 .article--quiz .prose p a a:active,
+    .tone--feature3 .article--quiz .prose p a:hover,
+    .tone--feature3 .article--quiz .prose li a a:active,
+    .tone--feature3 .article--quiz .prose li a:hover {
       color: #b82266;
       background-image: linear-gradient(to bottom, #9e1d58 0%, #9e1d58 100%); }
     .tone--feature1 .article--feature .prose p a::selection,
     .tone--feature1 .article--feature .prose p a > *::selection,
     .tone--feature1 .article--feature .prose li a::selection,
     .tone--feature1 .article--feature .prose li a > *::selection,
+    .tone--feature1 .article--quiz .prose p a::selection,
+    .tone--feature1 .article--quiz .prose p a > *::selection,
+    .tone--feature1 .article--quiz .prose li a::selection,
+    .tone--feature1 .article--quiz .prose li a > *::selection,
     .tone--feature2 .article--feature .prose p a::selection,
     .tone--feature2 .article--feature .prose p a > *::selection,
     .tone--feature2 .article--feature .prose li a::selection,
     .tone--feature2 .article--feature .prose li a > *::selection,
+    .tone--feature2 .article--quiz .prose p a::selection,
+    .tone--feature2 .article--quiz .prose p a > *::selection,
+    .tone--feature2 .article--quiz .prose li a::selection,
+    .tone--feature2 .article--quiz .prose li a > *::selection,
     .tone--feature3 .article--feature .prose p a::selection,
     .tone--feature3 .article--feature .prose p a > *::selection,
     .tone--feature3 .article--feature .prose li a::selection,
-    .tone--feature3 .article--feature .prose li a > *::selection {
+    .tone--feature3 .article--feature .prose li a > *::selection,
+    .tone--feature3 .article--quiz .prose p a::selection,
+    .tone--feature3 .article--quiz .prose p a > *::selection,
+    .tone--feature3 .article--quiz .prose li a::selection,
+    .tone--feature3 .article--quiz .prose li a > *::selection {
       text-shadow: none; }
     .tone--feature1 .article--feature .prose p a::-moz-selection,
     .tone--feature1 .article--feature .prose p a > *::-moz-selection,
     .tone--feature1 .article--feature .prose li a::-moz-selection,
     .tone--feature1 .article--feature .prose li a > *::-moz-selection,
+    .tone--feature1 .article--quiz .prose p a::-moz-selection,
+    .tone--feature1 .article--quiz .prose p a > *::-moz-selection,
+    .tone--feature1 .article--quiz .prose li a::-moz-selection,
+    .tone--feature1 .article--quiz .prose li a > *::-moz-selection,
     .tone--feature2 .article--feature .prose p a::-moz-selection,
     .tone--feature2 .article--feature .prose p a > *::-moz-selection,
     .tone--feature2 .article--feature .prose li a::-moz-selection,
     .tone--feature2 .article--feature .prose li a > *::-moz-selection,
+    .tone--feature2 .article--quiz .prose p a::-moz-selection,
+    .tone--feature2 .article--quiz .prose p a > *::-moz-selection,
+    .tone--feature2 .article--quiz .prose li a::-moz-selection,
+    .tone--feature2 .article--quiz .prose li a > *::-moz-selection,
     .tone--feature3 .article--feature .prose p a::-moz-selection,
     .tone--feature3 .article--feature .prose p a > *::-moz-selection,
     .tone--feature3 .article--feature .prose li a::-moz-selection,
-    .tone--feature3 .article--feature .prose li a > *::-moz-selection {
+    .tone--feature3 .article--feature .prose li a > *::-moz-selection,
+    .tone--feature3 .article--quiz .prose p a::-moz-selection,
+    .tone--feature3 .article--quiz .prose p a > *::-moz-selection,
+    .tone--feature3 .article--quiz .prose li a::-moz-selection,
+    .tone--feature3 .article--quiz .prose li a > *::-moz-selection {
       text-shadow: none; }
   .tone--feature1 .article--feature .prose table,
   .tone--feature1 .article--feature .table,
+  .tone--feature1 .article--quiz .prose table,
+  .tone--feature1 .article--quiz .table,
   .tone--feature2 .article--feature .prose table,
   .tone--feature2 .article--feature .table,
+  .tone--feature2 .article--quiz .prose table,
+  .tone--feature2 .article--quiz .table,
   .tone--feature3 .article--feature .prose table,
-  .tone--feature3 .article--feature .table {
+  .tone--feature3 .article--feature .table,
+  .tone--feature3 .article--quiz .prose table,
+  .tone--feature3 .article--quiz .table {
     border-top-color: #b82266; }
   .tone--feature1 .article--feature .prose .element-pullquote blockquote footer, .tone--feature1 .article--feature .prose .element-pullquote blockquote::after, .tone--feature1 .article--feature .prose .element-pullquote blockquote::before,
+  .tone--feature1 .article--quiz .prose .element-pullquote blockquote footer,
+  .tone--feature1 .article--quiz .prose .element-pullquote blockquote::after,
+  .tone--feature1 .article--quiz .prose .element-pullquote blockquote::before,
   .tone--feature2 .article--feature .prose .element-pullquote blockquote footer,
   .tone--feature2 .article--feature .prose .element-pullquote blockquote::after,
   .tone--feature2 .article--feature .prose .element-pullquote blockquote::before,
+  .tone--feature2 .article--quiz .prose .element-pullquote blockquote footer,
+  .tone--feature2 .article--quiz .prose .element-pullquote blockquote::after,
+  .tone--feature2 .article--quiz .prose .element-pullquote blockquote::before,
   .tone--feature3 .article--feature .prose .element-pullquote blockquote footer,
   .tone--feature3 .article--feature .prose .element-pullquote blockquote::after,
-  .tone--feature3 .article--feature .prose .element-pullquote blockquote::before {
+  .tone--feature3 .article--feature .prose .element-pullquote blockquote::before,
+  .tone--feature3 .article--quiz .prose .element-pullquote blockquote footer,
+  .tone--feature3 .article--quiz .prose .element-pullquote blockquote::after,
+  .tone--feature3 .article--quiz .prose .element-pullquote blockquote::before {
     color: #951c55; }
   .tone--feature1 .article--feature .article__header a,
+  .tone--feature1 .article--quiz .article__header a,
   .tone--feature2 .article--feature .article__header a,
-  .tone--feature3 .article--feature .article__header a {
+  .tone--feature2 .article--quiz .article__header a,
+  .tone--feature3 .article--feature .article__header a,
+  .tone--feature3 .article--quiz .article__header a {
     color: #fff; }
     .tone--feature1 .article--feature .article__header a:active,
+    .tone--feature1 .article--quiz .article__header a:active,
     .tone--feature2 .article--feature .article__header a:active,
-    .tone--feature3 .article--feature .article__header a:active {
+    .tone--feature2 .article--quiz .article__header a:active,
+    .tone--feature3 .article--feature .article__header a:active,
+    .tone--feature3 .article--quiz .article__header a:active {
       color: rgba(255, 255, 255, 0.8); }
   .tone--feature1 .article--feature .article__header .bullet::before,
   .tone--feature1 .article--feature .article__header ul > li::before,
+  .tone--feature1 .article--quiz .article__header .bullet::before,
+  .tone--feature1 .article--quiz .article__header ul > li::before,
   .tone--feature2 .article--feature .article__header .bullet::before,
   .tone--feature2 .article--feature .article__header ul > li::before,
+  .tone--feature2 .article--quiz .article__header .bullet::before,
+  .tone--feature2 .article--quiz .article__header ul > li::before,
   .tone--feature3 .article--feature .article__header .bullet::before,
-  .tone--feature3 .article--feature .article__header ul > li::before {
+  .tone--feature3 .article--feature .article__header ul > li::before,
+  .tone--feature3 .article--quiz .article__header .bullet::before,
+  .tone--feature3 .article--quiz .article__header ul > li::before {
     background-color: rgba(255, 255, 255, 0.4); }
   .tone--feature1 .article--feature .article__header .section,
   .tone--feature1 .article--feature .article__header .byline,
+  .tone--feature1 .article--quiz .article__header .section,
+  .tone--feature1 .article--quiz .article__header .byline,
   .tone--feature2 .article--feature .article__header .section,
   .tone--feature2 .article--feature .article__header .byline,
+  .tone--feature2 .article--quiz .article__header .section,
+  .tone--feature2 .article--quiz .article__header .byline,
   .tone--feature3 .article--feature .article__header .section,
-  .tone--feature3 .article--feature .article__header .byline {
+  .tone--feature3 .article--feature .article__header .byline,
+  .tone--feature3 .article--quiz .article__header .section,
+  .tone--feature3 .article--quiz .article__header .byline {
     color: #fff; }
   .tone--feature1 .article--feature .article__header .content__labels,
+  .tone--feature1 .article--quiz .article__header .content__labels,
   .tone--feature2 .article--feature .article__header .content__labels,
-  .tone--feature3 .article--feature .article__header .content__labels {
+  .tone--feature2 .article--quiz .article__header .content__labels,
+  .tone--feature3 .article--feature .article__header .content__labels,
+  .tone--feature3 .article--quiz .article__header .content__labels {
     color: #fdadba; }
   .tone--feature1 .article--feature .article__header .content__series-label.content__labels,
+  .tone--feature1 .article--quiz .article__header .content__series-label.content__labels,
   .tone--feature2 .article--feature .article__header .content__series-label.content__labels,
-  .tone--feature3 .article--feature .article__header .content__series-label.content__labels {
+  .tone--feature2 .article--quiz .article__header .content__series-label.content__labels,
+  .tone--feature3 .article--feature .article__header .content__series-label.content__labels,
+  .tone--feature3 .article--quiz .article__header .content__series-label.content__labels {
     color: #fff; }
   .tone--feature1 .article--feature .article__header .headline,
+  .tone--feature1 .article--quiz .article__header .headline,
   .tone--feature2 .article--feature .article__header .headline,
-  .tone--feature3 .article--feature .article__header .headline {
+  .tone--feature2 .article--quiz .article__header .headline,
+  .tone--feature3 .article--feature .article__header .headline,
+  .tone--feature3 .article--quiz .article__header .headline {
     background-color: #951c55;
     color: #fff;
     position: relative;
@@ -4302,86 +4460,146 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     margin-top: 0; }
     @media all and (min-width: 40.63em) {
       .tone--feature1 .article--feature .article__header .headline,
+      .tone--feature1 .article--quiz .article__header .headline,
       .tone--feature2 .article--feature .article__header .headline,
-      .tone--feature3 .article--feature .article__header .headline {
+      .tone--feature2 .article--quiz .article__header .headline,
+      .tone--feature3 .article--feature .article__header .headline,
+      .tone--feature3 .article--quiz .article__header .headline {
         font-size: 3.6rem;
         line-height: 3.6rem; } }
     @media all and (min-width: 75em) {
       .tone--feature1 .article--feature .article__header .headline,
+      .tone--feature1 .article--quiz .article__header .headline,
       .tone--feature2 .article--feature .article__header .headline,
-      .tone--feature3 .article--feature .article__header .headline {
+      .tone--feature2 .article--quiz .article__header .headline,
+      .tone--feature3 .article--feature .article__header .headline,
+      .tone--feature3 .article--quiz .article__header .headline {
         padding-left: 240px;
         padding-right: 320px; } }
   .tone--feature1 .article--feature .article__header .standfirst,
+  .tone--feature1 .article--quiz .article__header .standfirst,
   .tone--feature2 .article--feature .article__header .standfirst,
-  .tone--feature3 .article--feature .article__header .standfirst {
+  .tone--feature2 .article--quiz .article__header .standfirst,
+  .tone--feature3 .article--feature .article__header .standfirst,
+  .tone--feature3 .article--quiz .article__header .standfirst {
     color: #fff; }
     .tone--feature1 .article--feature .article__header .standfirst span,
+    .tone--feature1 .article--quiz .article__header .standfirst span,
     .tone--feature2 .article--feature .article__header .standfirst span,
-    .tone--feature3 .article--feature .article__header .standfirst span {
+    .tone--feature2 .article--quiz .article__header .standfirst span,
+    .tone--feature3 .article--feature .article__header .standfirst span,
+    .tone--feature3 .article--quiz .article__header .standfirst span {
       color: rgba(255, 255, 255, 0.4); }
     .tone--feature1 .article--feature .article__header .standfirst strong,
+    .tone--feature1 .article--quiz .article__header .standfirst strong,
     .tone--feature2 .article--feature .article__header .standfirst strong,
-    .tone--feature3 .article--feature .article__header .standfirst strong {
+    .tone--feature2 .article--quiz .article__header .standfirst strong,
+    .tone--feature3 .article--feature .article__header .standfirst strong,
+    .tone--feature3 .article--quiz .article__header .standfirst strong {
       color: #fff;
       font-weight: normal; }
   .tone--feature1 .article--feature .article__header .review-rating,
+  .tone--feature1 .article--quiz .article__header .review-rating,
   .tone--feature2 .article--feature .article__header .review-rating,
-  .tone--feature3 .article--feature .article__header .review-rating {
+  .tone--feature2 .article--quiz .article__header .review-rating,
+  .tone--feature3 .article--feature .article__header .review-rating,
+  .tone--feature3 .article--quiz .article__header .review-rating {
     color: rgba(255, 255, 255, 0.4); }
   .tone--feature1 .article--feature .article__header .review-rating--1 .icon:nth-child(-n+1),
   .tone--feature1 .article--feature .article__header .review-rating--2 .icon:nth-child(-n+2),
   .tone--feature1 .article--feature .article__header .review-rating--3 .icon:nth-child(-n+3),
   .tone--feature1 .article--feature .article__header .review-rating--4 .icon:nth-child(-n+4),
   .tone--feature1 .article--feature .article__header .review-rating--5 .icon:nth-child(-n+5),
+  .tone--feature1 .article--quiz .article__header .review-rating--1 .icon:nth-child(-n+1),
+  .tone--feature1 .article--quiz .article__header .review-rating--2 .icon:nth-child(-n+2),
+  .tone--feature1 .article--quiz .article__header .review-rating--3 .icon:nth-child(-n+3),
+  .tone--feature1 .article--quiz .article__header .review-rating--4 .icon:nth-child(-n+4),
+  .tone--feature1 .article--quiz .article__header .review-rating--5 .icon:nth-child(-n+5),
   .tone--feature2 .article--feature .article__header .review-rating--1 .icon:nth-child(-n+1),
   .tone--feature2 .article--feature .article__header .review-rating--2 .icon:nth-child(-n+2),
   .tone--feature2 .article--feature .article__header .review-rating--3 .icon:nth-child(-n+3),
   .tone--feature2 .article--feature .article__header .review-rating--4 .icon:nth-child(-n+4),
   .tone--feature2 .article--feature .article__header .review-rating--5 .icon:nth-child(-n+5),
+  .tone--feature2 .article--quiz .article__header .review-rating--1 .icon:nth-child(-n+1),
+  .tone--feature2 .article--quiz .article__header .review-rating--2 .icon:nth-child(-n+2),
+  .tone--feature2 .article--quiz .article__header .review-rating--3 .icon:nth-child(-n+3),
+  .tone--feature2 .article--quiz .article__header .review-rating--4 .icon:nth-child(-n+4),
+  .tone--feature2 .article--quiz .article__header .review-rating--5 .icon:nth-child(-n+5),
   .tone--feature3 .article--feature .article__header .review-rating--1 .icon:nth-child(-n+1),
   .tone--feature3 .article--feature .article__header .review-rating--2 .icon:nth-child(-n+2),
   .tone--feature3 .article--feature .article__header .review-rating--3 .icon:nth-child(-n+3),
   .tone--feature3 .article--feature .article__header .review-rating--4 .icon:nth-child(-n+4),
-  .tone--feature3 .article--feature .article__header .review-rating--5 .icon:nth-child(-n+5) {
+  .tone--feature3 .article--feature .article__header .review-rating--5 .icon:nth-child(-n+5),
+  .tone--feature3 .article--quiz .article__header .review-rating--1 .icon:nth-child(-n+1),
+  .tone--feature3 .article--quiz .article__header .review-rating--2 .icon:nth-child(-n+2),
+  .tone--feature3 .article--quiz .article__header .review-rating--3 .icon:nth-child(-n+3),
+  .tone--feature3 .article--quiz .article__header .review-rating--4 .icon:nth-child(-n+4),
+  .tone--feature3 .article--quiz .article__header .review-rating--5 .icon:nth-child(-n+5) {
     color: #fff; }
   .tone--feature1 .article--feature .meta,
+  .tone--feature1 .article--quiz .meta,
   .tone--feature2 .article--feature .meta,
-  .tone--feature3 .article--feature .meta {
+  .tone--feature2 .article--quiz .meta,
+  .tone--feature3 .article--feature .meta,
+  .tone--feature3 .article--quiz .meta {
     border: 0; }
     .tone--feature1 .article--feature .meta .alerts:active,
     .tone--feature1 .article--feature .meta .alerts.following,
+    .tone--feature1 .article--quiz .meta .alerts:active,
+    .tone--feature1 .article--quiz .meta .alerts.following,
     .tone--feature2 .article--feature .meta .alerts:active,
     .tone--feature2 .article--feature .meta .alerts.following,
+    .tone--feature2 .article--quiz .meta .alerts:active,
+    .tone--feature2 .article--quiz .meta .alerts.following,
     .tone--feature3 .article--feature .meta .alerts:active,
-    .tone--feature3 .article--feature .meta .alerts.following {
+    .tone--feature3 .article--feature .meta .alerts.following,
+    .tone--feature3 .article--quiz .meta .alerts:active,
+    .tone--feature3 .article--quiz .meta .alerts.following {
       background-color: #fff;
       color: #b82266; }
     .tone--feature1 .article--feature .meta .alerts,
     .tone--feature1 .article--feature .meta .alerts.following:active,
+    .tone--feature1 .article--quiz .meta .alerts,
+    .tone--feature1 .article--quiz .meta .alerts.following:active,
     .tone--feature2 .article--feature .meta .alerts,
     .tone--feature2 .article--feature .meta .alerts.following:active,
+    .tone--feature2 .article--quiz .meta .alerts,
+    .tone--feature2 .article--quiz .meta .alerts.following:active,
     .tone--feature3 .article--feature .meta .alerts,
-    .tone--feature3 .article--feature .meta .alerts.following:active {
+    .tone--feature3 .article--feature .meta .alerts.following:active,
+    .tone--feature3 .article--quiz .meta .alerts,
+    .tone--feature3 .article--quiz .meta .alerts.following:active {
       border-color: rgba(255, 255, 255, 0.5);
       color: #fff; }
   .tone--feature1 .article--feature .meta,
   .tone--feature1 .article--feature .meta__pubdate,
+  .tone--feature1 .article--quiz .meta,
+  .tone--feature1 .article--quiz .meta__pubdate,
   .tone--feature2 .article--feature .meta,
   .tone--feature2 .article--feature .meta__pubdate,
+  .tone--feature2 .article--quiz .meta,
+  .tone--feature2 .article--quiz .meta__pubdate,
   .tone--feature3 .article--feature .meta,
-  .tone--feature3 .article--feature .meta__pubdate {
+  .tone--feature3 .article--feature .meta__pubdate,
+  .tone--feature3 .article--quiz .meta,
+  .tone--feature3 .article--quiz .meta__pubdate {
     color: rgba(255, 255, 255, 0.8); }
   @media all and (min-width: 75em) {
     .tone--feature1 .article--feature .meta__misc,
+    .tone--feature1 .article--quiz .meta__misc,
     .tone--feature2 .article--feature .meta__misc,
-    .tone--feature3 .article--feature .meta__misc {
+    .tone--feature2 .article--quiz .meta__misc,
+    .tone--feature3 .article--feature .meta__misc,
+    .tone--feature3 .article--quiz .meta__misc {
       padding-left: 0;
       padding-right: 0; } }
   @media all and (min-width: 75em) {
     .tone--feature1 .article--feature .sponsorship,
+    .tone--feature1 .article--quiz .sponsorship,
     .tone--feature2 .article--feature .sponsorship,
-    .tone--feature3 .article--feature .sponsorship {
+    .tone--feature2 .article--quiz .sponsorship,
+    .tone--feature3 .article--feature .sponsorship,
+    .tone--feature3 .article--quiz .sponsorship {
       border-bottom: 0; } }
 .tone--feature1 a.tell-me-when:active, .tone--feature1 a.tell-me-when.added,
 .tone--feature2 a.tell-me-when:active,
@@ -4397,6 +4615,154 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .tone--feature3 a.tell-me-when.added:active {
   border-color: #b82266;
   color: #b82266; }
+.tone--feature1 .article--quiz .article__body,
+.tone--feature2 .article--quiz .article__body,
+.tone--feature3 .article--quiz .article__body {
+  background: #951c55; }
+@media all and (min-width: 75em) {
+  .tone--feature1 .article--quiz .article__header,
+  .tone--feature2 .article--quiz .article__header,
+  .tone--feature3 .article--quiz .article__header {
+    background: #951c55; } }
+.tone--feature1 .article--quiz .article__header .standfirst__inner,
+.tone--feature2 .article--quiz .article__header .standfirst__inner,
+.tone--feature3 .article--quiz .article__header .standfirst__inner {
+  background: #951c55;
+  color: #f7acbb; }
+.tone--feature1 .article--quiz .article__header .quiz-meta .meta__pubdate,
+.tone--feature2 .article--quiz .article__header .quiz-meta .meta__pubdate,
+.tone--feature3 .article--quiz .article__header .quiz-meta .meta__pubdate {
+  color: #fff; }
+.tone--feature1 .article--quiz .article__header .quiz-meta .meta__pubdate::before,
+.tone--feature1 .article--quiz .article__header .standfirst__inner::before,
+.tone--feature2 .article--quiz .article__header .quiz-meta .meta__pubdate::before,
+.tone--feature2 .article--quiz .article__header .standfirst__inner::before,
+.tone--feature3 .article--quiz .article__header .quiz-meta .meta__pubdate::before,
+.tone--feature3 .article--quiz .article__header .standfirst__inner::before {
+  border-top: 1px solid #f7acbb; }
+.tone--feature1 .article--quiz .quiz__navigation,
+.tone--feature2 .article--quiz .quiz__navigation,
+.tone--feature3 .article--quiz .quiz__navigation {
+  background: #f7acbb;
+  color: #951c55; }
+.tone--feature1 .quiz .quiz__title,
+.tone--feature2 .quiz .quiz__title,
+.tone--feature3 .quiz .quiz__title {
+  color: #fff; }
+.tone--feature1 .quiz .question__wrapper,
+.tone--feature2 .quiz .question__wrapper,
+.tone--feature3 .quiz .question__wrapper {
+  border-top: 2px solid #f7acbb; }
+.tone--feature1 .quiz .question__text,
+.tone--feature2 .quiz .question__text,
+.tone--feature3 .quiz .question__text {
+  color: #fff; }
+  .tone--feature1 .quiz .question__text::before,
+  .tone--feature2 .quiz .question__text::before,
+  .tone--feature3 .quiz .question__text::before {
+    color: #f7acbb; }
+.tone--feature1 .quiz .question.hasImage .question__text,
+.tone--feature2 .quiz .question.hasImage .question__text,
+.tone--feature3 .quiz .question.hasImage .question__text {
+  background: rgba(51, 51, 51, 0.5);
+  color: #fff; }
+  .tone--feature1 .quiz .question.hasImage .question__text::before,
+  .tone--feature2 .quiz .question.hasImage .question__text::before,
+  .tone--feature3 .quiz .question.hasImage .question__text::before {
+    color: #fff; }
+.tone--feature1 .quiz .answer__text,
+.tone--feature2 .quiz .answer__text,
+.tone--feature3 .quiz .answer__text {
+  background: rgba(51, 51, 51, 0.2);
+  color: #fff; }
+.tone--feature1 .quiz .answer__marker,
+.tone--feature2 .quiz .answer__marker,
+.tone--feature3 .quiz .answer__marker {
+  border: 1px dashed rgba(255, 255, 255, 0.5); }
+.tone--feature1 .quiz .answer__explanation,
+.tone--feature2 .quiz .answer__explanation,
+.tone--feature3 .quiz .answer__explanation {
+  color: #fff; }
+.tone--feature1 .quiz .question.answered .answer__text,
+.tone--feature2 .quiz .question.answered .answer__text,
+.tone--feature3 .quiz .question.answered .answer__text {
+  background: #801849;
+  color: rgba(255, 255, 255, 0.5); }
+.tone--feature1 .quiz .question.answered .answer__marker,
+.tone--feature2 .quiz .question.answered .answer__marker,
+.tone--feature3 .quiz .question.answered .answer__marker {
+  border-color: rgba(118, 118, 118, 0.5); }
+.tone--feature1 .quiz .answer.hasImage.correct .answer__explanation::before,
+.tone--feature2 .quiz .answer.hasImage.correct .answer__explanation::before,
+.tone--feature3 .quiz .answer.hasImage.correct .answer__explanation::before {
+  color: #951c55; }
+.tone--feature1 .quiz .answer.hasImage.wrong .answer__explanation::before,
+.tone--feature2 .quiz .answer.hasImage.wrong .answer__explanation::before,
+.tone--feature3 .quiz .answer.hasImage.wrong .answer__explanation::before {
+  color: #fff; }
+.tone--feature1 .quiz .answer.correct .answer__marker::before,
+.tone--feature1 .quiz .answer.wrong .answer__marker::before,
+.tone--feature2 .quiz .answer.correct .answer__marker::before,
+.tone--feature2 .quiz .answer.wrong .answer__marker::before,
+.tone--feature3 .quiz .answer.correct .answer__marker::before,
+.tone--feature3 .quiz .answer.wrong .answer__marker::before {
+  color: #fff; }
+.tone--feature1 .quiz .answer.correct .answer__marker,
+.tone--feature2 .quiz .answer.correct .answer__marker,
+.tone--feature3 .quiz .answer.correct .answer__marker {
+  background: #951c55; }
+.tone--feature1 .quiz .answer.correct .answer__text,
+.tone--feature2 .quiz .answer.correct .answer__text,
+.tone--feature3 .quiz .answer.correct .answer__text {
+  background: #f7acbb;
+  color: #951c55; }
+  .tone--feature1 .quiz .answer.correct .answer__text::before,
+  .tone--feature2 .quiz .answer.correct .answer__text::before,
+  .tone--feature3 .quiz .answer.correct .answer__text::before {
+    color: #fff; }
+.tone--feature1 .quiz .answer.correct .answer__explanation,
+.tone--feature2 .quiz .answer.correct .answer__explanation,
+.tone--feature3 .quiz .answer.correct .answer__explanation {
+  background: #f7acbb;
+  color: #951c55; }
+.tone--feature1 .quiz .answer.wrong .answer__marker,
+.tone--feature2 .quiz .answer.wrong .answer__marker,
+.tone--feature3 .quiz .answer.wrong .answer__marker {
+  background: #fff; }
+  .tone--feature1 .quiz .answer.wrong .answer__marker::before,
+  .tone--feature2 .quiz .answer.wrong .answer__marker::before,
+  .tone--feature3 .quiz .answer.wrong .answer__marker::before {
+    color: #951c55; }
+.tone--feature1 .quiz .answer.wrong .answer__text,
+.tone--feature2 .quiz .answer.wrong .answer__text,
+.tone--feature3 .quiz .answer.wrong .answer__text {
+  background: #6a143d;
+  color: #fff; }
+  .tone--feature1 .quiz .answer.wrong .answer__text::before,
+  .tone--feature2 .quiz .answer.wrong .answer__text::before,
+  .tone--feature3 .quiz .answer.wrong .answer__text::before {
+    color: #f7acbb; }
+.tone--feature1 .quiz .answer.wrong .answer__explanation,
+.tone--feature2 .quiz .answer.wrong .answer__explanation,
+.tone--feature3 .quiz .answer.wrong .answer__explanation {
+  background: #6a143d;
+  color: #fff; }
+.tone--feature1 .quiz .quiz-scores__inner,
+.tone--feature2 .quiz .quiz-scores__inner,
+.tone--feature3 .quiz .quiz-scores__inner {
+  background: #951c55; }
+.tone--feature1 .quiz .quiz-scores__close,
+.tone--feature2 .quiz .quiz-scores__close,
+.tone--feature3 .quiz .quiz-scores__close {
+  background: #f7acbb; }
+  .tone--feature1 .quiz .quiz-scores__close::before,
+  .tone--feature2 .quiz .quiz-scores__close::before,
+  .tone--feature3 .quiz .quiz-scores__close::before {
+    color: #951c55; }
+.tone--feature1 .quiz .quiz-scores__score,
+.tone--feature2 .quiz .quiz-scores__score,
+.tone--feature3 .quiz .quiz-scores__score {
+  color: #f7acbb; }
 
 .tone--liveBlog .section__container {
   border-bottom: 1px rgba(255, 255, 255, 0.4) dotted; }

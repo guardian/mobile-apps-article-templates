@@ -1,14 +1,7 @@
 .article {
     overflow: hidden;
     margin-bottom: base-px(4);
-
-    @include mq($to: col1) {
-        border-top-width: 0;
-    }
-
-    .android & {
-        border-top-width: 0;
-    }
+    border-top-width: 0;
 
     @include mq($from: col4) {
         background-color: color(shade-5);
