@@ -17,6 +17,18 @@ define([
     'use strict';
 
     var modules = {
+        richLinkTracking: function() {
+            $('.element-rich-link').each(function(richLink, index) {
+                var link = richLink.querySelectorAll('a');
+                if (link.length) {
+                    var href = $(link).attr('href');
+                    if (href !== '') {
+                        $(link).attr('href', href + '?ArticleReferrer=RichLink');
+                    }
+                }
+            });
+        },
+
         insertOutbrain: function () {
             window.articleOutbrainInserter = function () {
                 outbrain.load();
@@ -152,6 +164,7 @@ define([
             witness.duplicate();
             modules.insertOutbrain();
             modules.formatImmersive();
+            modules.richLinkTracking();
         }
     };
 
