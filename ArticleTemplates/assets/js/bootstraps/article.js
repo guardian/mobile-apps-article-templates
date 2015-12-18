@@ -54,7 +54,7 @@ define([
             
             // TODO: This is just not a fix, we actually need for the embed to be sent through with prefixed & unprefixed styles
             var iframe = $('.article__header-bg .element > iframe');
-            if (iframe) {
+            if (iframe.length) {
                 var newSrc = iframe[0].srcdoc
                     .replace("transform: translate(-50%, -50%);", "-webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);")
                     .replace(/-webkit-animation/g, "animation")
