@@ -59,28 +59,30 @@ define([
                     .replace("transform: translate(-50%, -50%);", "-webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);")
                     .replace(/-webkit-animation/g, "animation")
                     .replace(/animation/g, "-webkit-animation")
+                    .replace(/-webkit-keyframes/g, "keyframes")
                     .replace(/@keyframes/g, "@-webkit-keyframes");
                 iframe[0].srcdoc = newSrc;
             }
-            
+
+            // find all the section seperators & add classes
+            $('.article h2').each(function() {
+                if ($(this).html().trim() === '* * *') {
+                    $(this).html('').addClass('section__rule').next().addClass('has__dropcap');
+                }
+            });
+
             // for each element--immersive add extra classes depending on siblings
             $('figure.element--immersive').each(function(){
                 if($(this).next().hasClass('element-pullquote')){
                     $(this).next().addClass('quote--image');
                     $(this).addClass('quote--overlay').data('data-thing', '');
                 }
-                
-                if($(this).next()[0].tagName === "H2"){
+
+                // if h2 comes after element--immersive and it is not a section seperator, then add extra styling                
+                if($(this).next()[0].tagName === "H2" && !$(this).next().hasClass('section__rule')){
                     $(this).next().addClass('title--image');
                     $(this).addClass('title--overlay');
                     $(this).next().next().addClass('has__dropcap');
-                }
-            });
-
-            // find all the section seperators & add classes
-            $('.article h2').each(function() {
-                if ($(this).html() === '* * *') {
-                    $(this).html('').addClass('section__rule').next().addClass('has__dropcap');
                 }
             });
 
