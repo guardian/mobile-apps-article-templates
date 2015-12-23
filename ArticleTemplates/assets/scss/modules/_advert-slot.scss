@@ -92,21 +92,42 @@ MPU
 // MPU-size advert
 .advert-slot--mpu {
     border-top: 1px solid color(shade-4);
+    display: block;
+    margin: 0 auto;
     width: 300px;
+
     /*  Any res above 375w e.g. iPhone 6, 6 plus */
     @include customMQ (iP6) {
         padding-bottom: 15px;
         width: 100%;
     }
 
+    @include mq($from: col2) {
+        margin: 0;
+        position: absolute;
+        right: 8px;
+        top: 24px;
+    }
+
+    @include mq($from: col3) {
+        right: 15px;
+    }
+
+    @include mq($from: col4) {
+        right: 20px;
+        top: 12px;
+    }
+
     .advert-slot__label {
+        margin: 0 auto;
         padding: base-px(.5, 0, 2, .5);
         
         .advert-slot__action {
             right: base-px(.5);
         }
 
-        width: 300px;
+        width: 100%;
+
         /*  Any res above 375w e.g. iPhone 6, 6 plus */
         @include customMQ (iP6) {
             padding-bottom: 11px;
@@ -119,8 +140,10 @@ MPU
     }
 
     .advert-slot__wrapper {
-        padding-top: 250px;
         height: 250px;
+        margin: 0 auto;
+        padding-top: 250px;
+
         /*  Any res above 375w e.g. iPhone 6, 6 plus */
         @include customMQ (iP6) {
             width: 300px;
@@ -128,32 +151,20 @@ MPU
     }
 }
 
-// These classes are set on the body and determine the placement of adverts
-.advert-config--mobile {
-    .advert-slot--mpu--mobile {
-
-        margin: 0 auto;
+.advert-slot--placeholder {
+    display: none;
+    
+    @include mq($from: col2, $to: col4) {
+        background: transparent;
         display: block;
-
-        .advert-slot__label {
-            margin: 0 auto;
+        float: right;
+        height: 300px;
+        margin: {
+            bottom: 12px;
+            left: 18px;
+            right: -(cols($base-4, 5));
         }
-
-        .advert-slot__wrapper {
-            margin: 0 auto;
-        }
-    }
-    /*  Any res above 375w e.g. iPhone 6, 6 plus */
-    @include customMQ (iP6) {
-        .advert-slot--mpu--mobile .advert-slot__label {
-            width: 100%;
-        }
-    }
-}
-
-.advert-config--tablet {
-    .advert-slot--mpu--tablet {
-        display: block;
+        width: 300px;
     }
 }
 

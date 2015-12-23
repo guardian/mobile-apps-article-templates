@@ -13,60 +13,51 @@ define([
 
         modules = {
             insertAdPlaceholders: function (config) {
-                var windowWidth = window.innerWidth;
+                var windowWidth = window.innerWidth,
+                    counter = 0,
+                    mpuId = '',
+                    mpuHtml = '';
 
-                var counter = 0;
-
-                $(".article__body > div > *:nth-child(-n+3)").each(function() {
-
+                $('.article__body > div > *:nth-child(-n+3)').each(function() {
                     var tagName = $(this)[0].tagName;
 
-                    if (tagName == "P" || tagName == "H2" || tagName == "BLOCKQUOTE") {
-                        counter++;
-                    } else if (tagName == "FIGURE" && $(this).hasClass("element-placeholder") ||
-                        $(this).hasClass("element-video")) {
+                    if (tagName == 'P' || 
+                        tagName == 'H2' || 
+                        tagName == 'BLOCKQUOTE' ||
+                        (tagName == 'FIGURE' && $(this).hasClass('element-placeholder')) ||
+                        $(this).hasClass('element-video')) {
                         counter++;
                     }
-
                 });
 
-                if (config.adsConfig == "tablet" && counter == 3) {
-                    var tabletMpuHtml = "<div class='advert-slot advert-slot--mpu advert-slot--mpu--tablet'>" +
-                                            "<div class='advert-slot__label'>" +
-                                                "Advertisement" +
-                                                "<a class='advert-slot__action' href='x-gu://subscribe'>" +
-                                                    "Hide" +
-                                                    "<span data-icon='&#xe04F;'></span>" +
-                                                "</a>" +
-                                            "</div>"  +
-                                            "<div class=\"advert-slot__wrapper\" id=\"advert-slot__wrapper\">" +
-                                            "<div class='advert-slot__wrapper__content' id=" + tabletMpuId + "></div>" +
-                                            "</div>" +
-                                        "</div>";
-
-                    $(".article__body > div > p:nth-of-type(1)").before(tabletMpuHtml);
-
-
-                } else if (config.adsConfig == "mobile") {
-
-                    var mobileMpuHtml = "<div class='advert-slot advert-slot--mpu advert-slot--mpu--mobile'>" +
-                                            "<div class='advert-slot__label'>" +
-                                                "Advertisement" +
-                                                "<a class='advert-slot__action' href='x-gu://subscribe'>" +
-                                                    "Hide" +
-                                                    "<span data-icon='&#xe04F;'></span>" +
-                                                "</a>" +
-                                            "</div>"  +
-                                            "<div class=\"advert-slot__wrapper\" id=\"advert-slot__wrapper\">" +
-                                            "<div class='advert-slot__wrapper__content' id=" + mobileMpuId + "></div>" +
-                                            "</div>" +
-                                        "</div>";
-
-
-                    var nrParagraph = ( parseInt(config.mpuAfterParagraphs, 10) || 6 ) - 1;
-                    $(".article__body > div > p:nth-of-type(" + nrParagraph + ") ~ p + p").first().before(mobileMpuHtml);
-
+                // With split screen now available on ios, tablets can now end up being displayed in the mobile format.
+                // To overcome this decide mpu placement with css positioning instead of appending in different places
+                if (config.adsConfig == 'tablet' && counter == 3) {
+                    mpuId = tabletMpuId;
+                } else if (config.adsConfig == 'mobile') {
+                    mpuId = mobileMpuId;
                 }
+
+                if (mpuId !== '') {
+                    mpuHtml = '<div class="advert-slot advert-slot--mpu">' +
+                                    '<div class="advert-slot__label">' +
+                                        'Advertisement' +
+                                        '<a class="advert-slot__action" href="x-gu://subscribe">' +
+                                            'Hide' +
+                                            '<span data-icon="&#xe04F;"></span>' +
+                                        '</a>' +
+                                    '</div>' +
+                                    '<div class="advert-slot__wrapper" id="advert-slot__wrapper">' +
+                                    '<div class="advert-slot__wrapper__content" id="' + mpuId + '"></div>' +
+                                    '</div>' +
+                                '</div>';
+                    // To mimic the correct positioning on full width tablet view, we will need an 
+                    // empty div to pad out the text so we can position absolutely over it.
+                    $(".article__body > div > p:nth-of-type(1)").before('<div class="advert-slot advert-slot--placeholder"></div>');
+                }
+
+                var nrParagraph = ( parseInt(config.mpuAfterParagraphs, 10) || 6 ) - 1;
+                $('.article__body > div > p:nth-of-type(' + nrParagraph + ') ~ p + p').first().before(mpuHtml);
             },
 
             // return the current MPU's position.
@@ -75,7 +66,7 @@ define([
 
             getMpuPos : function(formatter) {
                 var r;
-                var el = document.getElementById("advert-slot__wrapper");
+                var el = document.getElementById('advert-slot__wrapper');
                 if (el) {
                     r = el.getBoundingClientRect();
                     if(r.width !== 0 && r.height !== 0){
@@ -146,7 +137,7 @@ define([
             if (!this.initialised) {
                 this.initialised = true;
 
-                if (config.adsEnabled == "true" || (config.adsEnabled !== null && config.adsEnabled.match && config.adsEnabled.match(/mpu/))) {
+                if (config.adsEnabled == 'true' || (config.adsEnabled !== null && config.adsEnabled.match && config.adsEnabled.match(/mpu/))) {
                     modules.insertAdPlaceholders(config);
                     window.getMpuPosJson = modules.getMpuPosJson;
                     window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated;

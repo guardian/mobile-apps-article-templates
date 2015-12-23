@@ -229,6 +229,8 @@ MPU
 
 .advert-slot--mpu {
   border-top: 1px solid #dcdad5;
+  display: block;
+  margin: 0 auto;
   width: 300px;
   /*  Any res above 375w e.g. iPhone 6, 6 plus */
   /*  iPhone 6 */ }
@@ -236,9 +238,23 @@ MPU
     .advert-slot--mpu {
       padding-bottom: 15px;
       width: 100%; } }
+  @media all and (min-width: 40.63em) {
+    .advert-slot--mpu {
+      margin: 0;
+      position: absolute;
+      right: 8px;
+      top: 24px; } }
+  @media all and (min-width: 56.25em) {
+    .advert-slot--mpu {
+      right: 15px; } }
+  @media all and (min-width: 75em) {
+    .advert-slot--mpu {
+      right: 20px;
+      top: 12px; } }
   .advert-slot--mpu .advert-slot__label {
+    margin: 0 auto;
     padding: 6px 0px 24px 6px;
-    width: 300px;
+    width: 100%;
     /*  Any res above 375w e.g. iPhone 6, 6 plus */
     /*  iPhone 6 */ }
     .advert-slot--mpu .advert-slot__label .advert-slot__action {
@@ -250,30 +266,27 @@ MPU
         .advert-slot--mpu .advert-slot__label .advert-slot__action {
           right: 12px; } }
   .advert-slot--mpu .advert-slot__wrapper {
-    padding-top: 250px;
     height: 250px;
+    margin: 0 auto;
+    padding-top: 250px;
     /*  Any res above 375w e.g. iPhone 6, 6 plus */
     /*  iPhone 6 */ }
     @media (min-width: 375px) and (max-width: 480px) {
       .advert-slot--mpu .advert-slot__wrapper {
         width: 300px; } }
 
-.advert-config--mobile {
-  /*  Any res above 375w e.g. iPhone 6, 6 plus */
-  /*  iPhone 6 */ }
-  .advert-config--mobile .advert-slot--mpu--mobile {
-    margin: 0 auto;
-    display: block; }
-    .advert-config--mobile .advert-slot--mpu--mobile .advert-slot__label {
-      margin: 0 auto; }
-    .advert-config--mobile .advert-slot--mpu--mobile .advert-slot__wrapper {
-      margin: 0 auto; }
-  @media (min-width: 375px) and (max-width: 480px) {
-    .advert-config--mobile .advert-slot--mpu--mobile .advert-slot__label {
-      width: 100%; } }
-
-.advert-config--tablet .advert-slot--mpu--tablet {
-  display: block; }
+.advert-slot--placeholder {
+  display: none; }
+  @media all and (min-width: 40.63em) and (max-width: 74.99em) {
+    .advert-slot--placeholder {
+      background: transparent;
+      display: block;
+      float: right;
+      height: 300px;
+      margin-bottom: 12px;
+      margin-left: 18px;
+      margin-right: -30.52632%;
+      width: 300px; } }
 
 .advert-slot--false {
   display: none !important; }
@@ -2496,7 +2509,8 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
     max-width: 1200px; } }
 
 .article__body {
-  font-family: "Guardian Text Egyptian Web", Georgia, serif; }
+  font-family: "Guardian Text Egyptian Web", Georgia, serif;
+  position: relative; }
   .article__body > .prose > .figure-wide:first-child,
   .article__body > .prose > .element:not(.figure--thumbnail):first-child {
     margin-top: -12px; }
@@ -2512,18 +2526,9 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
       float: right;
       margin-left: 18px;
       margin-bottom: 12px; } }
-  @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+  @media all and (min-width: 40.63em) {
     .article__body .advert-slot--mpu {
-      margin-right: -30.98592%; } }
-  @media all and (min-width: 56.25em) {
-    .article__body .advert-slot--mpu {
-      margin-right: -30.52632%; } }
-  @media all and (min-width: 75em) {
-    .article__body .advert-slot--mpu {
-      margin-right: -320px; } }
-  @media all and (max-width: 34.94em) {
-    .article__body .advert-slot--mpu--tablet {
-      margin: 12px auto 0; } }
+      margin-right: 0; } }
 
 .article--audio .article__header {
   position: relative; }

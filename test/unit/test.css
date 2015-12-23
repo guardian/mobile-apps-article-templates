@@ -2553,6 +2553,8 @@
       top: 0; }
   #sandbox .advert-slot--mpu {
     border-top: 1px solid #dcdad5;
+    display: block;
+    margin: 0 auto;
     width: 300px;
     /*  Any res above 375w e.g. iPhone 6, 6 plus */
     /*  iPhone 6 */ }
@@ -2560,9 +2562,23 @@
       #sandbox .advert-slot--mpu {
         padding-bottom: 15px;
         width: 100%; } }
+    @media all and (min-width: 40.63em) {
+      #sandbox .advert-slot--mpu {
+        margin: 0;
+        position: absolute;
+        right: 8px;
+        top: 24px; } }
+    @media all and (min-width: 56.25em) {
+      #sandbox .advert-slot--mpu {
+        right: 15px; } }
+    @media all and (min-width: 75em) {
+      #sandbox .advert-slot--mpu {
+        right: 20px;
+        top: 12px; } }
     #sandbox .advert-slot--mpu .advert-slot__label {
+      margin: 0 auto;
       padding: 6px 0px 24px 6px;
-      width: 300px;
+      width: 100%;
       /*  Any res above 375w e.g. iPhone 6, 6 plus */
       /*  iPhone 6 */ }
       #sandbox .advert-slot--mpu .advert-slot__label .advert-slot__action {
@@ -2574,28 +2590,26 @@
           #sandbox .advert-slot--mpu .advert-slot__label .advert-slot__action {
             right: 12px; } }
     #sandbox .advert-slot--mpu .advert-slot__wrapper {
-      padding-top: 250px;
       height: 250px;
+      margin: 0 auto;
+      padding-top: 250px;
       /*  Any res above 375w e.g. iPhone 6, 6 plus */
       /*  iPhone 6 */ }
       @media (min-width: 375px) and (max-width: 480px) {
         #sandbox .advert-slot--mpu .advert-slot__wrapper {
           width: 300px; } }
-  #sandbox .advert-config--mobile {
-    /*  Any res above 375w e.g. iPhone 6, 6 plus */
-    /*  iPhone 6 */ }
-    #sandbox .advert-config--mobile .advert-slot--mpu--mobile {
-      margin: 0 auto;
-      display: block; }
-      #sandbox .advert-config--mobile .advert-slot--mpu--mobile .advert-slot__label {
-        margin: 0 auto; }
-      #sandbox .advert-config--mobile .advert-slot--mpu--mobile .advert-slot__wrapper {
-        margin: 0 auto; }
-    @media (min-width: 375px) and (max-width: 480px) {
-      #sandbox .advert-config--mobile .advert-slot--mpu--mobile .advert-slot__label {
-        width: 100%; } }
-  #sandbox .advert-config--tablet .advert-slot--mpu--tablet {
-    display: block; }
+  #sandbox .advert-slot--placeholder {
+    display: none; }
+    @media all and (min-width: 40.63em) and (max-width: 74.99em) {
+      #sandbox .advert-slot--placeholder {
+        background: transparent;
+        display: block;
+        float: right;
+        height: 300px;
+        margin-bottom: 12px;
+        margin-left: 18px;
+        margin-right: -30.52632%;
+        width: 300px; } }
   #sandbox .advert-slot--false {
     display: none !important; }
   #sandbox .alerts {
@@ -4010,7 +4024,8 @@
       margin: 0 auto;
       max-width: 1200px; } }
   #sandbox .article__body {
-    font-family: "Guardian Text Egyptian Web", Georgia, serif; }
+    font-family: "Guardian Text Egyptian Web", Georgia, serif;
+    position: relative; }
     #sandbox .article__body > .prose > .figure-wide:first-child,
     #sandbox .article__body > .prose > .element:not(.figure--thumbnail):first-child {
       margin-top: -12px; }
@@ -4026,18 +4041,9 @@
         float: right;
         margin-left: 18px;
         margin-bottom: 12px; } }
-    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+    @media all and (min-width: 40.63em) {
       #sandbox .article__body .advert-slot--mpu {
-        margin-right: -30.98592%; } }
-    @media all and (min-width: 56.25em) {
-      #sandbox .article__body .advert-slot--mpu {
-        margin-right: -30.52632%; } }
-    @media all and (min-width: 75em) {
-      #sandbox .article__body .advert-slot--mpu {
-        margin-right: -320px; } }
-    @media all and (max-width: 34.94em) {
-      #sandbox .article__body .advert-slot--mpu--tablet {
-        margin: 12px auto 0; } }
+        margin-right: 0; } }
   #sandbox .article--audio .article__header {
     position: relative; }
     #sandbox .article--audio .article__header .cutout__background {
