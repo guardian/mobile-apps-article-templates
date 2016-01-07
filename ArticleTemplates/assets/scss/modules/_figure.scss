@@ -159,10 +159,16 @@ figure {
                 border-top: 1px dotted rgba(color(shade-3), .4);
             }
 
+            .element-image__caption {
+                @include text-ellipses(10);
+            }
+
             .element-image__credit {
                 position: absolute;
                 bottom: 0;
                 padding-bottom: 6px;
+
+                @include text-ellipses(3);
             }
         }
 
