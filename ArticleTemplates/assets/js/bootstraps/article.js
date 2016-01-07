@@ -155,22 +155,6 @@ define([
         updateProgressBar: function(progressBar, articleHeight) {
             var scrollPosition = (window.scrollY / articleHeight * 100) + "%";
             progressBar.css('width', scrollPosition);
-        },
-
-        formatThumbnailImages: function() {
-            var i,
-                thumbnailImage,
-                thumbnailFigures = document.getElementsByClassName("element-image element--thumbnail");
-
-            for (i = 0; i < thumbnailFigures.length; i++) {
-                thumbnailImage = thumbnailFigures[i].getElementsByTagName("img")[0];
-                
-                if (thumbnailImage.getAttribute("height") > thumbnailImage.getAttribute("width")) {
-                    thumbnailFigures[i].classList.add("portrait-thumbnail");
-                } else {
-                    thumbnailFigures[i].classList.add("landscape-thumbnail");
-                }
-            }
         }
     },
 
@@ -183,7 +167,6 @@ define([
             modules.insertOutbrain();
             modules.formatImmersive();
             modules.richLinkTracking();
-            modules.formatThumbnailImages();
         }
     };
 

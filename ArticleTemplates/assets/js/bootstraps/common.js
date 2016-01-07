@@ -409,6 +409,24 @@ define([
             }
             return callback(height);
         },
+
+        formatThumbnailImages: function() {
+            var i,
+                isPortrait,
+                thumbnailImage,
+                thumbnailFigures = document.getElementsByClassName("element-image element--thumbnail");
+
+            for (i = 0; i < thumbnailFigures.length; i++) {
+                thumbnailImage = thumbnailFigures[i].getElementsByTagName("img")[0];
+                isPortrait = parseInt(thumbnailImage.getAttribute("height"), 10) > parseInt(thumbnailImage.getAttribute("width"), 10);
+                
+                if (isPortrait) {
+                    thumbnailFigures[i].classList.add("portrait-thumbnail");
+                } else {
+                    thumbnailFigures[i].classList.add("landscape-thumbnail");
+                }
+            }
+        }
     },
 
     ready = function () {
@@ -442,6 +460,7 @@ define([
             modules.showTabs(window);
             modules.setGlobalObject(window);
             modules.fixSeries();
+            modules.formatThumbnailImages();
             window.getArticleHeight = modules.getArticleHeight;
             window.applyNativeFunctionCall('getArticleHeight');
             Sharing.init(window);

@@ -210,6 +210,20 @@ Provide a summary of events:
             padding: base-px(.5, 0, 1, 0);
         }
 
+        @include mq($to: col1) {
+           figure {
+                &.portrait-thumbnail {
+                    figcaption {
+                        padding: 0 0 0 4px;
+                    }
+
+                    .element-image__caption {
+                        @include text-ellipses(9);
+                    }
+                }
+           }
+        }
+
         // Offsets for space above in our fonts to align text to top of block rule
         p:first-child {
             margin-top: -2px;
