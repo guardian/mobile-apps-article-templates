@@ -7454,8 +7454,8 @@
     display: block;
     float: left;
     margin: 4px 12px 0 0;
-    max-width: 200px;
-    width: 50%; }
+    width: 50%;
+    background: #f6f6f6; }
     #sandbox .figure--thumbnail-with-caption .figure__inner {
       width: 100%;
       display: block; }
@@ -7464,9 +7464,49 @@
     #sandbox .figure--thumbnail-with-caption figcaption {
       padding: 0 0 4px;
       border-bottom: 1px dotted rgba(153, 153, 153, 0.4); }
+    @media all and (max-width: 28.12em) {
+      #sandbox .figure--thumbnail-with-caption {
+        float: none;
+        width: 100%; }
+        #sandbox .figure--thumbnail-with-caption .figure__inner {
+          display: block; }
+        #sandbox .figure--thumbnail-with-caption figcaption {
+          padding-left: 4px; }
+        #sandbox .figure--thumbnail-with-caption.portrait-thumbnail {
+          position: relative; }
+          #sandbox .figure--thumbnail-with-caption.portrait-thumbnail .figure__inner {
+            width: 50%; }
+          #sandbox .figure--thumbnail-with-caption.portrait-thumbnail figcaption {
+            position: absolute;
+            bottom: 0;
+            top: 0;
+            left: 50%;
+            border-top: 1px dotted rgba(153, 153, 153, 0.4); }
+          #sandbox .figure--thumbnail-with-caption.portrait-thumbnail .element-image__caption {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            display: block;
+            display: -webkit-box;
+            -webkit-line-clamp: 10;
+            -webkit-box-orient: vertical; }
+          #sandbox .figure--thumbnail-with-caption.portrait-thumbnail .element-image__credit {
+            position: absolute;
+            bottom: 0;
+            padding-bottom: 6px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            display: block;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical; }
+        #sandbox .figure--thumbnail-with-caption.landscape-thumbnail .figure__inner {
+          width: 100%; } }
     @media all and (min-width: 28.13em) {
       #sandbox .figure--thumbnail-with-caption {
-        width: 33%; } }
+        width: 33%;
+        max-width: 200px; } }
     @media all and (min-width: 40.63em) {
       #sandbox .figure--thumbnail-with-caption {
         margin-right: 15px; } }
