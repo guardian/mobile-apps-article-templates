@@ -7462,7 +7462,7 @@
     #sandbox .figure--thumbnail-with-caption .element-image__credit {
       display: block; }
     #sandbox .figure--thumbnail-with-caption figcaption {
-      padding: 0 0 4px;
+      padding: 0 0 4px 4px;
       border-bottom: 1px dotted rgba(153, 153, 153, 0.4); }
     @media all and (max-width: 28.12em) {
       #sandbox .figure--thumbnail-with-caption {
@@ -8399,7 +8399,7 @@
     #sandbox [class*="block--live-"] .prose figure:last-child figcaption:not(.figure--thumbnail, .figure-wide, .figure--thumbnail-with-caption) {
       border-bottom: 0; }
     #sandbox [class*="block--live-"] .prose figcaption {
-      padding: 6px 0px 12px 0px; }
+      padding: 6px 0px 12px 4px; }
     @media all and (max-width: 28.12em) {
       #sandbox [class*="block--live-"] .prose figure.portrait-thumbnail figcaption {
         padding: 0 0 0 6px; }
@@ -8411,6 +8411,9 @@
         display: -webkit-box;
         -webkit-line-clamp: 9;
         -webkit-box-orient: vertical; } }
+    @media all and (min-width: 28.13em) and (max-width: 74.99em) {
+      #sandbox [class*="block--live-"] .prose figure.portrait-thumbnail, #sandbox [class*="block--live-"] .prose figure.landscape-thumbnail {
+        margin-bottom: 2px; } }
     #sandbox [class*="block--live-"] .prose p:first-child {
       margin-top: -2px; }
     #sandbox [class*="block--live-"] .prose h2:first-child {
