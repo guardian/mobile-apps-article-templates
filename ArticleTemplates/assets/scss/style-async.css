@@ -4192,7 +4192,7 @@ Display a team line-up including substitutions and bookings.
   .quiz .question.has-image .question__wrapper {
     margin: 0 -12px 7px;
     padding-top: 0; }
-    @media all and (min-width: 75em) {
+    @media all and (min-width: 40.63em) {
       .quiz .question.has-image .question__wrapper {
         margin-left: 0;
         margin-right: 0; } }
@@ -4250,17 +4250,16 @@ Display a team line-up including substitutions and bookings.
   .quiz .answer__explanation {
     color: #767676;
     display: block;
-    font-size: 12px;
-    line-height: 1.2;
+    font: 500 13px/1.5 "Guardian Egyptian Web", Georgia, serif;
     margin: 0;
     padding: 0;
     width: 100%; }
   .quiz .question.answered .answer__wrapper {
-    background: #ebebeb; }
+    background: #f5f5f5; }
   .quiz .question.answered .answer__text {
-    color: #777777; }
+    color: #999; }
   .quiz .question.answered .answer__marker {
-    border-color: #777777; }
+    border-color: #999; }
   .quiz .answer.has-image .answer__wrapper {
     background: transparent;
     padding: 0; }
@@ -4285,9 +4284,6 @@ Display a team line-up including substitutions and bookings.
   .quiz .wrong-answer .answer__message::before {
     display: block;
     font-size: 16px; }
-  .quiz .correct-answer .answer__explanation,
-  .quiz .wrong-answer .answer__explanation {
-    font: 600 14px/1.5 "Guardian Egyptian Web", Georgia, serif; }
   .quiz .correct-answer.has-image .answer__message,
   .quiz .wrong-answer.has-image .answer__message {
     opacity: 1; }
@@ -4343,7 +4339,7 @@ Display a team line-up including substitutions and bookings.
     .quiz .question.is-wrong .correct-answer.has-image .answer__marker::before {
       transition: opacity 0.3s ease-in-out; }
   .quiz .question.is-wrong .correct-answer.has-image .answer__message {
-    background: #ebebeb;
+    background: #f5f5f5;
     transition: opacity 0.3s ease-in-out; }
   .quiz .quiz__scores,
   .quiz .quiz__scores-title {
@@ -4363,13 +4359,14 @@ Display a team line-up including substitutions and bookings.
       left: 50%;
       opacity: 0;
       max-width: 620px;
+      padding: 20px;
       position: absolute;
       top: 75%;
       transform: translateX(-50%) translateY(-50%);
       transition: top .5s ease-in-out .3s, opacity .5s ease-in-out .3s;
       width: calc(100% - 24px); }
     .quiz .quiz-scores__close {
-      background: #4bc6df;
+      background: #fff;
       border-radius: 50%;
       height: 50px;
       margin-top: -25px;
@@ -4388,10 +4385,15 @@ Display a team line-up including substitutions and bookings.
       display: block;
       width: 100%; }
     .quiz .quiz-scores__score {
-      color: #fff;
+      background: #4bc6df;
+      border-radius: 50%;
+      color: #005689;
       display: block;
-      font: 100 50px/1 "Guardian Egyptian Web", Georgia, serif;
-      margin: 12px; }
+      font: 100 55px/160px "Guardian Egyptian Web", Georgia, serif;
+      height: 160px;
+      margin: 12px auto;
+      text-align: center;
+      width: 160px; }
     .quiz .quiz-scores__correct {
       margin-right: -10px; }
     .quiz .quiz-scores__questions {
@@ -4402,6 +4404,34 @@ Display a team line-up including substitutions and bookings.
       .quiz .quiz-scores.open .quiz-scores__inner {
         top: 50%;
         opacity: 1; }
+    .quiz .quiz-scores.minimised {
+      border-top: 2px solid #4bc6df;
+      padding-bottom: 20px;
+      position: relative;
+      visibility: visible; }
+      .quiz .quiz-scores.minimised .quiz-scores__close {
+        display: none; }
+      .quiz .quiz-scores.minimised .quiz-scores__inner {
+        background: transparent;
+        padding: 10px;
+        position: static;
+        transform: translateX(0) translateY(0);
+        opacity: 1; }
+      .quiz .quiz-scores.minimised .quiz-scores__score {
+        background: #005689;
+        color: #4bc6df;
+        margin: 0;
+        padding-top: 15px;
+        position: relative; }
+        .quiz .quiz-scores.minimised .quiz-scores__score::before {
+          color: #fff;
+          content: "You scored:";
+          font-size: 18px;
+          font-weight: 600;
+          left: 25px;
+          line-height: 1;
+          position: absolute;
+          top: 40px; }
 
 .quiz__navigation {
   background: #005689;

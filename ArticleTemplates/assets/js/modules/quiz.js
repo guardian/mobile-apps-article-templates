@@ -31,7 +31,7 @@ define([
             $quiz.append('<div class="quiz-scores"><div class="quiz-scores__inner"></div></div>');
             $('.quiz-scores__inner').append('<div class="quiz-scores__close"></div>').append('<p class="quiz-scores__score"></p>');
             bean.on(window, 'click.quizclose', $('.quiz-scores__close'), function() {
-                $('.quiz-scores').removeClass('open');
+                $('.quiz-scores').removeClass('open').addClass('minimised');
             });
 
             // Loop through every question and set up the answers and click events for it's answers
