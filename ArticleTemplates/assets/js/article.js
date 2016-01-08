@@ -8,7 +8,7 @@ define([
     'use strict';
 
     function init(){
-       Common.init();
+        Common.init();
         Article.init();
     }
 
