@@ -787,19 +787,59 @@ figure figcaption {
   display: block;
   float: left;
   margin: 4px 12px 0 0;
-  max-width: 200px;
-  width: 50%; }
+  width: 50%;
+  background: #f6f6f6; }
   .figure--thumbnail-with-caption .figure__inner {
     width: 100%;
     display: block; }
   .figure--thumbnail-with-caption .element-image__credit {
     display: block; }
   .figure--thumbnail-with-caption figcaption {
-    padding: 0 0 4px;
+    padding: 0 0 4px 4px;
     border-bottom: 1px dotted rgba(153, 153, 153, 0.4); }
+  @media all and (max-width: 28.12em) {
+    .figure--thumbnail-with-caption {
+      float: none;
+      width: 100%; }
+      .figure--thumbnail-with-caption .figure__inner {
+        display: block; }
+      .figure--thumbnail-with-caption.portrait-thumbnail {
+        position: relative; }
+        .figure--thumbnail-with-caption.portrait-thumbnail .figure__inner {
+          width: 50%; }
+        .figure--thumbnail-with-caption.portrait-thumbnail figcaption {
+          position: absolute;
+          bottom: 0;
+          top: 0;
+          left: 50%;
+          padding: 0 6px;
+          width: 50%;
+          border-top: 1px dotted rgba(153, 153, 153, 0.4); }
+        .figure--thumbnail-with-caption.portrait-thumbnail .element-image__caption {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          word-wrap: break-word;
+          display: block;
+          display: -webkit-box;
+          -webkit-line-clamp: 10;
+          -webkit-box-orient: vertical; }
+        .figure--thumbnail-with-caption.portrait-thumbnail .element-image__credit {
+          position: absolute;
+          bottom: 0;
+          padding-bottom: 6px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          word-wrap: break-word;
+          display: block;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical; }
+      .figure--thumbnail-with-caption.landscape-thumbnail .figure__inner {
+        width: 100%; } }
   @media all and (min-width: 28.13em) {
     .figure--thumbnail-with-caption {
-      width: 33%; } }
+      width: 33%;
+      max-width: 200px; } }
   @media all and (min-width: 40.63em) {
     .figure--thumbnail-with-caption {
       margin-right: 15px; } }
@@ -1979,7 +2019,21 @@ Provide a summary of events:
   [class*="block--live-"] .prose figure:last-child figcaption:not(.figure--thumbnail, .figure-wide, .figure--thumbnail-with-caption) {
     border-bottom: 0; }
   [class*="block--live-"] .prose figcaption {
-    padding: 6px 0px 12px 0px; }
+    padding: 6px 0px 12px 4px; }
+  @media all and (max-width: 28.12em) {
+    [class*="block--live-"] .prose figure.portrait-thumbnail figcaption {
+      padding: 0 0 0 6px; }
+    [class*="block--live-"] .prose figure.portrait-thumbnail .element-image__caption {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-wrap: break-word;
+      display: block;
+      display: -webkit-box;
+      -webkit-line-clamp: 9;
+      -webkit-box-orient: vertical; } }
+  @media all and (min-width: 28.13em) and (max-width: 74.99em) {
+    [class*="block--live-"] .prose figure.portrait-thumbnail, [class*="block--live-"] .prose figure.landscape-thumbnail {
+      margin-bottom: 2px; } }
   [class*="block--live-"] .prose p:first-child {
     margin-top: -2px; }
   [class*="block--live-"] .prose h2:first-child {
@@ -2793,8 +2847,10 @@ Adds typographic styling, typically to content fetched from the Guardian Content
       margin: 0;
       margin-left: -220px;
       max-width: 200px; } }
+.prose .advert-slot--placeholder + *,
 .prose *:first-child {
   margin-top: 0; }
+  .prose .advert-slot--placeholder + * .aside,
   .prose *:first-child .aside {
     border-top: 0;
     padding-top: 0; }

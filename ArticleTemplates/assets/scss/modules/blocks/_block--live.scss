@@ -207,8 +207,30 @@ Provide a summary of events:
         }
 
         figcaption {
-            padding: base-px(.5, 0, 1, 0);
+            padding: base-px(.5, 0, 1, .33);
         }
+
+        @include mq($to: col1) {
+           figure {
+                &.portrait-thumbnail {
+                    figcaption {
+                        padding: 0 0 0 6px;
+                    }
+
+                    .element-image__caption {
+                        @include text-ellipses(9);
+                    }
+                }
+           }
+        }
+
+        @include mq($from: col1, $to: col4) {
+            figure {
+                &.portrait-thumbnail, &.landscape-thumbnail {
+                    margin-bottom: 2px;
+                }
+            }
+        }        
 
         // Offsets for space above in our fonts to align text to top of block rule
         p:first-child {

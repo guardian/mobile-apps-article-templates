@@ -115,10 +115,10 @@ figure {
     display: block;
     float: left;
     margin: 4px 12px 0 0;
-    max-width: 200px;
     width: 50%;
+    background: #f6f6f6;
 
-     .figure__inner {
+    .figure__inner {
         width: 100%;
         display: block;
     }
@@ -128,12 +128,58 @@ figure {
     }
 
     figcaption {
-        padding: 0 0 4px;
+        padding: 0 0 4px 4px;
         border-bottom: 1px dotted rgba(color(shade-3), .4);
+    }
+
+    @include mq($to: col1) {
+        float: none;
+        width: 100%;
+
+        .figure__inner {
+            display: block;
+        }
+
+        &.portrait-thumbnail {
+            position: relative;
+
+            .figure__inner {
+                width: 50%;
+            }
+
+            figcaption {
+                position: absolute;
+                bottom: 0;
+                top: 0;
+                left: 50%;
+                padding: 0 6px;
+                width: 50%;
+                border-top: 1px dotted rgba(color(shade-3), .4);
+            }
+
+            .element-image__caption {
+                @include text-ellipses(10);
+            }
+
+            .element-image__credit {
+                position: absolute;
+                bottom: 0;
+                padding-bottom: 6px;
+
+                @include text-ellipses(3);
+            }
+        }
+
+        &.landscape-thumbnail {
+            .figure__inner {
+                width: 100%;
+            }
+        }
     }
 
     @include mq($from: col1) {
         width: 33%;
+        max-width: 200px;
     }
 
     @include mq($from: col2) {

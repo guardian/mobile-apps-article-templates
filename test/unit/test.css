@@ -2553,6 +2553,8 @@
       top: 0; }
   #sandbox .advert-slot--mpu {
     border-top: 1px solid #dcdad5;
+    display: block;
+    margin: 0 auto;
     width: 300px;
     /*  Any res above 375w e.g. iPhone 6, 6 plus */
     /*  iPhone 6 */ }
@@ -2560,9 +2562,23 @@
       #sandbox .advert-slot--mpu {
         padding-bottom: 15px;
         width: 100%; } }
+    @media all and (min-width: 40.63em) {
+      #sandbox .advert-slot--mpu {
+        margin: 0;
+        position: absolute;
+        right: 8px;
+        top: 24px; } }
+    @media all and (min-width: 56.25em) {
+      #sandbox .advert-slot--mpu {
+        right: 15px; } }
+    @media all and (min-width: 75em) {
+      #sandbox .advert-slot--mpu {
+        right: 20px;
+        top: 18px; } }
     #sandbox .advert-slot--mpu .advert-slot__label {
+      margin: 0 auto;
       padding: 6px 0px 24px 6px;
-      width: 300px;
+      width: 100%;
       /*  Any res above 375w e.g. iPhone 6, 6 plus */
       /*  iPhone 6 */ }
       #sandbox .advert-slot--mpu .advert-slot__label .advert-slot__action {
@@ -2574,28 +2590,26 @@
           #sandbox .advert-slot--mpu .advert-slot__label .advert-slot__action {
             right: 12px; } }
     #sandbox .advert-slot--mpu .advert-slot__wrapper {
-      padding-top: 250px;
       height: 250px;
+      margin: 0 auto;
+      padding-top: 250px;
       /*  Any res above 375w e.g. iPhone 6, 6 plus */
       /*  iPhone 6 */ }
       @media (min-width: 375px) and (max-width: 480px) {
         #sandbox .advert-slot--mpu .advert-slot__wrapper {
           width: 300px; } }
-  #sandbox .advert-config--mobile {
-    /*  Any res above 375w e.g. iPhone 6, 6 plus */
-    /*  iPhone 6 */ }
-    #sandbox .advert-config--mobile .advert-slot--mpu--mobile {
-      margin: 0 auto;
-      display: block; }
-      #sandbox .advert-config--mobile .advert-slot--mpu--mobile .advert-slot__label {
-        margin: 0 auto; }
-      #sandbox .advert-config--mobile .advert-slot--mpu--mobile .advert-slot__wrapper {
-        margin: 0 auto; }
-    @media (min-width: 375px) and (max-width: 480px) {
-      #sandbox .advert-config--mobile .advert-slot--mpu--mobile .advert-slot__label {
-        width: 100%; } }
-  #sandbox .advert-config--tablet .advert-slot--mpu--tablet {
-    display: block; }
+  #sandbox .advert-slot--placeholder {
+    display: none; }
+    @media all and (min-width: 40.63em) and (max-width: 74.99em) {
+      #sandbox .advert-slot--placeholder {
+        background: transparent;
+        display: block;
+        float: right;
+        height: 300px;
+        margin-bottom: 12px;
+        margin-left: 18px;
+        margin-right: -30.52632%;
+        width: 300px; } }
   #sandbox .advert-slot--false {
     display: none !important; }
   #sandbox .alerts {
@@ -4006,7 +4020,8 @@
       margin: 0 auto;
       max-width: 1200px; } }
   #sandbox .article__body {
-    font-family: "Guardian Text Egyptian Web", Georgia, serif; }
+    font-family: "Guardian Text Egyptian Web", Georgia, serif;
+    position: relative; }
     #sandbox .article__body > .prose > .figure-wide:first-child,
     #sandbox .article__body > .prose > .element:not(.figure--thumbnail):first-child {
       margin-top: -12px; }
@@ -4022,18 +4037,9 @@
         float: right;
         margin-left: 18px;
         margin-bottom: 12px; } }
-    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+    @media all and (min-width: 40.63em) {
       #sandbox .article__body .advert-slot--mpu {
-        margin-right: -30.98592%; } }
-    @media all and (min-width: 56.25em) {
-      #sandbox .article__body .advert-slot--mpu {
-        margin-right: -30.52632%; } }
-    @media all and (min-width: 75em) {
-      #sandbox .article__body .advert-slot--mpu {
-        margin-right: -320px; } }
-    @media all and (max-width: 34.94em) {
-      #sandbox .article__body .advert-slot--mpu--tablet {
-        margin: 12px auto 0; } }
+        margin-right: 0; } }
   #sandbox .article--audio .article__header {
     position: relative; }
     #sandbox .article--audio .article__header .cutout__background {
@@ -4087,6 +4093,9 @@
       #sandbox .article--comment .article__header .standfirst {
         font-size: 1.25em;
         line-height: 1.25em; } }
+  @media all and (max-width: 28.12em) {
+    #sandbox .article--comment .figure--thumbnail-with-caption {
+      background: #dedcd7; } }
   #sandbox .article--liveblog {
     background-color: #eaeaea;
     border-bottom: 0; }
@@ -6839,7 +6848,7 @@
           #sandbox body.immersive .article--immersive .article__header-bg .element-embed iframe video {
             -webkit-transform: -50%, -50%; }
     #sandbox body.immersive .article--immersive .article__header-info {
-      background-color: rgba(0, 0, 0, 0.3);
+      background-color: rgba(0, 0, 0, 0.4);
       bottom: 0px;
       padding: 6px 12px 24px 12px;
       position: absolute;
@@ -6900,7 +6909,8 @@
     #sandbox body.immersive .article--immersive .article__meta {
       background: #fff;
       margin: 0 auto;
-      max-width: 1200px; }
+      max-width: 1200px;
+      padding-top: 6px; }
     #sandbox body.immersive .article--immersive .standfirst {
       color: #fff;
       background: none; }
@@ -6912,16 +6922,18 @@
           border-color: #b82266;
           color: #b82266; }
       #sandbox body.immersive .article--immersive .standfirst__text {
-        margin: 12px 0px; }
-        @media all and (min-width: 40.63em) {
-          #sandbox body.immersive .article--immersive .standfirst__text {
-            margin-top: 8px; } }
+        margin: 0px 0px 12px 0px; }
+        #sandbox body.immersive .article--immersive .standfirst__text + .section__rule {
+          margin-left: -1px;
+          margin-top: 24px; }
       #sandbox body.immersive .article--immersive .standfirst--mobile {
         background-color: #767676;
         padding: 6px 12px 18px 12px; }
         @media all and (min-width: 40.63em) {
           #sandbox body.immersive .article--immersive .standfirst--mobile {
             display: none; } }
+        #sandbox body.immersive .article--immersive .standfirst--mobile .section__rule {
+          margin-bottom: 2px; }
       #sandbox body.immersive .article--immersive .standfirst--tablet {
         padding: 0;
         display: none; }
@@ -6943,11 +6955,11 @@
           border-bottom: 2px solid #dcdad5;
           content: " ";
           height: 10px;
-          margin: 0 0 8px 1px;
+          margin: 0 0 0 1px;
           width: 100px;
           display: block; }
         #sandbox body.immersive .article--immersive .standfirst--tablet .section__rule {
-          margin-bottom: 8px; }
+          margin-bottom: 0; }
     #sandbox body.immersive .article--immersive .immersive__meta {
       color: #767676;
       font: 1.6rem/1.4rem "Guardian Agate Sans 1 Web", sans-serif;
@@ -6959,7 +6971,7 @@
       #sandbox body.immersive .article--immersive .immersive__meta .comment-count {
         border: 0;
         color: #f7acbb;
-        padding: 12px 12px 6px 0px !important; }
+        padding: 6px 12px 6px 0px !important; }
         #sandbox body.immersive .article--immersive .immersive__meta .comment-count a {
           color: #951c55 !important; }
           #sandbox body.immersive .article--immersive .immersive__meta .comment-count a:active {
@@ -7650,19 +7662,59 @@
     display: block;
     float: left;
     margin: 4px 12px 0 0;
-    max-width: 200px;
-    width: 50%; }
+    width: 50%;
+    background: #f6f6f6; }
     #sandbox .figure--thumbnail-with-caption .figure__inner {
       width: 100%;
       display: block; }
     #sandbox .figure--thumbnail-with-caption .element-image__credit {
       display: block; }
     #sandbox .figure--thumbnail-with-caption figcaption {
-      padding: 0 0 4px;
+      padding: 0 0 4px 4px;
       border-bottom: 1px dotted rgba(153, 153, 153, 0.4); }
+    @media all and (max-width: 28.12em) {
+      #sandbox .figure--thumbnail-with-caption {
+        float: none;
+        width: 100%; }
+        #sandbox .figure--thumbnail-with-caption .figure__inner {
+          display: block; }
+        #sandbox .figure--thumbnail-with-caption.portrait-thumbnail {
+          position: relative; }
+          #sandbox .figure--thumbnail-with-caption.portrait-thumbnail .figure__inner {
+            width: 50%; }
+          #sandbox .figure--thumbnail-with-caption.portrait-thumbnail figcaption {
+            position: absolute;
+            bottom: 0;
+            top: 0;
+            left: 50%;
+            padding: 0 6px;
+            width: 50%;
+            border-top: 1px dotted rgba(153, 153, 153, 0.4); }
+          #sandbox .figure--thumbnail-with-caption.portrait-thumbnail .element-image__caption {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            display: block;
+            display: -webkit-box;
+            -webkit-line-clamp: 10;
+            -webkit-box-orient: vertical; }
+          #sandbox .figure--thumbnail-with-caption.portrait-thumbnail .element-image__credit {
+            position: absolute;
+            bottom: 0;
+            padding-bottom: 6px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            display: block;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical; }
+        #sandbox .figure--thumbnail-with-caption.landscape-thumbnail .figure__inner {
+          width: 100%; } }
     @media all and (min-width: 28.13em) {
       #sandbox .figure--thumbnail-with-caption {
-        width: 33%; } }
+        width: 33%;
+        max-width: 200px; } }
     @media all and (min-width: 40.63em) {
       #sandbox .figure--thumbnail-with-caption {
         margin-right: 15px; } }
@@ -8555,7 +8607,21 @@
     #sandbox [class*="block--live-"] .prose figure:last-child figcaption:not(.figure--thumbnail, .figure-wide, .figure--thumbnail-with-caption) {
       border-bottom: 0; }
     #sandbox [class*="block--live-"] .prose figcaption {
-      padding: 6px 0px 12px 0px; }
+      padding: 6px 0px 12px 4px; }
+    @media all and (max-width: 28.12em) {
+      #sandbox [class*="block--live-"] .prose figure.portrait-thumbnail figcaption {
+        padding: 0 0 0 6px; }
+      #sandbox [class*="block--live-"] .prose figure.portrait-thumbnail .element-image__caption {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        display: block;
+        display: -webkit-box;
+        -webkit-line-clamp: 9;
+        -webkit-box-orient: vertical; } }
+    @media all and (min-width: 28.13em) and (max-width: 74.99em) {
+      #sandbox [class*="block--live-"] .prose figure.portrait-thumbnail, #sandbox [class*="block--live-"] .prose figure.landscape-thumbnail {
+        margin-bottom: 2px; } }
     #sandbox [class*="block--live-"] .prose p:first-child {
       margin-top: -2px; }
     #sandbox [class*="block--live-"] .prose h2:first-child {
@@ -9012,8 +9078,10 @@
         margin: 0;
         margin-left: -220px;
         max-width: 200px; } }
+  #sandbox .prose .advert-slot--placeholder + *,
   #sandbox .prose *:first-child {
     margin-top: 0; }
+    #sandbox .prose .advert-slot--placeholder + * .aside,
     #sandbox .prose *:first-child .aside {
       border-top: 0;
       padding-top: 0; }
