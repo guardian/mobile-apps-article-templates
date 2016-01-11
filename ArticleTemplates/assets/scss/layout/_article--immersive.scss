@@ -195,10 +195,14 @@ body.immersive .article--immersive {
         }
 
         &__text {
-            margin: base-px(1, 0, 3, 0);
+            margin: base-px(1, 0);
 
             @include mq($from: col2) {
                 margin-top: 8px;
+            }
+
+            + .section__rule {
+                margin-top: base-px(3);
             }
         }
 
