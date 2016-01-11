@@ -175,6 +175,7 @@ body.immersive .article--immersive {
             background: #fff;
             margin: 0 auto;
             max-width: 1200px;
+            padding-top: 6px;
         }
     }
 
@@ -199,6 +200,10 @@ body.immersive .article--immersive {
             @include mq($from: col2) {
                 margin-top: 8px;
             }
+
+            + .section__rule {
+                margin-top: base-px(3);
+            }
         }
 
         &--mobile {
@@ -207,6 +212,10 @@ body.immersive .article--immersive {
 
             @include mq($from: col2) {
                 display: none;
+            }
+
+            .section__rule {
+                margin-bottom: 6px;
             }
         }
 
@@ -261,7 +270,7 @@ body.immersive .article--immersive {
         .comment-count {
             border: 0;
             color: color(tone-feature1-accent2);
-            padding: base-px(1,1,0.5,0)!important;
+            padding: base-px(.5, 1, .5, 0)!important;
 
             a {
                 color: color(tone-feature1) !important;
