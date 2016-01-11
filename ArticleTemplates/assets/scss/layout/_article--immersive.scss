@@ -82,7 +82,7 @@ body.immersive .article--immersive {
         }
 
         &__header-info {
-            background-color: rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, .4);
             bottom: 0px;
             padding: base-px(.5, 1, 2, 1);
             position: absolute;
@@ -195,14 +195,11 @@ body.immersive .article--immersive {
         }
 
         &__text {
-            margin: base-px(1, 0);
-
-            @include mq($from: col2) {
-                margin-top: 8px;
-            }
+            margin: base-px(0, 0, 1, 0);
 
             + .section__rule {
-                margin-top: base-px(3);
+                margin-left: -1px;
+                margin-top: base-px(2);
             }
         }
 
@@ -215,7 +212,7 @@ body.immersive .article--immersive {
             }
 
             .section__rule {
-                margin-bottom: 6px;
+                margin-bottom: 2px;
             }
         }
 
@@ -246,13 +243,13 @@ body.immersive .article--immersive {
                 border-bottom: 2px solid #dcdad5;
                 content: " ";
                 height: 10px;
-                margin: 0 0 8px 1px;
+                margin: 0 0 0 1px;
                 width: 100px;
                 display: block;
             }
 
             .section__rule {
-                margin-bottom: 8px;
+                margin-bottom: 0;
             }
         }
     }
