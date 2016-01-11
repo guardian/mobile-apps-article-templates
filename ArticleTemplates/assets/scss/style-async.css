@@ -4146,8 +4146,7 @@ Display a team line-up including substitutions and bookings.
         display: block; } }
 
 .quiz {
-  counter-reset: question-counter;
-  padding-top: 50px; }
+  counter-reset: question-counter; }
   @media all and (min-width: 75em) {
     .quiz {
       margin: 0; } }
@@ -4346,92 +4345,41 @@ Display a team line-up including substitutions and bookings.
     display: none; }
   .quiz .quiz-scores {
     background: transparent;
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    transition: background .5s ease-in-out;
-    visibility: hidden;
-    z-index: 100; }
-    .quiz .quiz-scores__inner {
-      background: #005689;
-      left: 50%;
-      opacity: 0;
-      max-width: 620px;
-      padding: 20px;
-      position: absolute;
-      top: 75%;
-      transform: translateX(-50%) translateY(-50%);
-      transition: top .5s ease-in-out .3s, opacity .5s ease-in-out .3s;
-      width: calc(100% - 24px); }
-    .quiz .quiz-scores__close {
-      background: #fff;
-      border-radius: 50%;
-      height: 50px;
-      margin-top: -25px;
-      position: absolute;
-      right: 3px;
-      top: 0;
-      width: 50px; }
-      .quiz .quiz-scores__close::before {
-        color: #005689;
-        content: "\00e04F";
-        font: 100 26px "Guardian Icons", Georgia, serif;
-        left: 12px;
-        position: absolute;
-        top: 7px; }
+    border-top: 2px solid #4bc6df;
+    margin-top: 40px;
+    overflow: hidden;
+    padding: 20px 0; }
     .quiz .quiz-scores__img {
       display: block;
       width: 100%; }
     .quiz .quiz-scores__score {
-      background: #4bc6df;
+      background: #005689;
       border-radius: 50%;
-      color: #005689;
-      display: block;
+      color: #4bc6df;
+      float: left;
       font: 100 55px/160px "Guardian Egyptian Web", Georgia, serif;
       height: 160px;
-      margin: 12px auto;
+      margin: 0px 12px 12px 0px;
+      padding-top: 15px;
+      position: relative;
       text-align: center;
       width: 160px; }
+      .quiz .quiz-scores__score::before {
+        color: #fff;
+        content: "You scored:";
+        font-size: 18px;
+        font-weight: 600;
+        left: 25px;
+        line-height: 1;
+        position: absolute;
+        top: 40px; }
     .quiz .quiz-scores__correct {
       margin-right: -10px; }
     .quiz .quiz-scores__questions {
       margin-left: -10px; }
-    .quiz .quiz-scores.open {
-      background: rgba(51, 51, 51, 0.7);
-      visibility: visible; }
-      .quiz .quiz-scores.open .quiz-scores__inner {
-        top: 50%;
-        opacity: 1; }
-    .quiz .quiz-scores.minimised {
-      border-top: 2px solid #4bc6df;
-      padding-bottom: 20px;
-      position: relative;
-      visibility: visible; }
-      .quiz .quiz-scores.minimised .quiz-scores__close {
-        display: none; }
-      .quiz .quiz-scores.minimised .quiz-scores__inner {
-        background: transparent;
-        padding: 10px;
-        position: static;
-        transform: translateX(0) translateY(0);
-        opacity: 1; }
-      .quiz .quiz-scores.minimised .quiz-scores__score {
-        background: #005689;
-        color: #4bc6df;
-        margin: 0;
-        padding-top: 15px;
-        position: relative; }
-        .quiz .quiz-scores.minimised .quiz-scores__score::before {
-          color: #fff;
-          content: "You scored:";
-          font-size: 18px;
-          font-weight: 600;
-          left: 25px;
-          line-height: 1;
-          position: absolute;
-          top: 40px; }
+    .quiz .quiz-scores__message {
+      color: #005689;
+      font: 600 18px/1.2 "Guardian Egyptian Web", Georgia, serif; }
 
 .quiz__navigation {
   background: #005689;

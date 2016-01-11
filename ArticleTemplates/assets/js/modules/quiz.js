@@ -2,11 +2,13 @@
 define([
     'bean',
     'bonzo',
-    'modules/$'
+    'modules/$',
+    'smoothScroll'
 ], function (
     bean,
     bonzo,
-    $
+    $,
+    smoothScroll
 ) {
     'use strict';
 
@@ -17,7 +19,7 @@ define([
             if (!$quiz.length) {
                 return false;
             }
-            
+
             // Store the answers and remove the answer elements
             var answers = $('.quiz__correct-answers').html().split(',');
             $('.quiz__correct-answers-title, .quiz__correct-answers').remove();
@@ -25,13 +27,12 @@ define([
             // Store vars for scoring the quiz
             var numQuestions = answers.length,
                 numAnswered = 0,
-                score = 0;
+                score = 0,
+                scoreMessages = {};
 
-            // Append the quiz scores popup
-            $quiz.append('<div class="quiz-scores"><div class="quiz-scores__inner"></div></div>');
-            $('.quiz-scores__inner').append('<div class="quiz-scores__close"></div>').append('<p class="quiz-scores__score"></p>');
-            bean.on(window, 'click.quizclose', $('.quiz-scores__close'), function() {
-                $('.quiz-scores').removeClass('open').addClass('minimised');
+            $('.quiz__scores > li').each(function(){
+                var $this = $(this);
+                scoreMessages[Math.max($this.attr('data-min-score'),0)] = $this.attr('data-title');
             });
 
             // Loop through every question and set up the answers and click events for it's answers
@@ -41,7 +42,7 @@ define([
                     questionAnswerList = question.querySelectorAll('.question__answers');
                 $(questionWrapper).addClass('question__wrapper');
                 question.insertBefore(questionWrapper, questionAnswerList[0]);
-                
+
                 // Does this question have an image (if tools stripped out empty image tags some of this would be unnecessary)
                 var questionImg = question.querySelectorAll(':scope > img');
                 if (questionImg.length) {
@@ -158,9 +159,23 @@ define([
 
                         // If all questions have been answered display the score
                         if (numQuestions == numAnswered) {
-                            $('.quiz-scores__score').html('<span class="quiz-scores__correct">' + score +'</span> / <span class="quiz-scores__questions">' + numQuestions + '</span>');
-                            $('.quiz-scores').addClass('open');
-                            $('.quiz__navigation').hide();
+                            var i = score + 1,
+                                scoreDisplayMessage = scoreMessages[0];
+                            while(i--) {
+                                if (scoreMessages[i]) {
+                                    scoreDisplayMessage = scoreMessages[i]; 
+                                    break;
+                                }
+                            }
+
+                            // Build up the quiz results panel
+                            $quiz.append('<div id="quiz-scores" class="quiz-scores"><p class="quiz-scores__score"><span class="quiz-scores__correct">' +
+                                score +'</span> / <span class="quiz-scores__questions">' +
+                                numQuestions + '</span></p><p class="quiz-scores__message">' +
+                                scoreDisplayMessage + '</p></div>');
+
+                            // Scroll results panel into view
+                            smoothScroll.animateScroll(null, '#quiz-scores', { speed: 1000, offset: 40 });
                         }
                     });
                 });

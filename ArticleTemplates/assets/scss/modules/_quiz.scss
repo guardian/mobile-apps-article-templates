@@ -1,7 +1,6 @@
 // Quiz Block
 .quiz {
     counter-reset: question-counter;
-    padding-top: 50px;
 
     @include mq($from: col4) {
         margin: 0;
@@ -346,55 +345,19 @@
         }
     }
 
-    // Quiz Scores
+    // Hide default html scores
     .quiz__scores,
     .quiz__scores-title {
         display: none;
     }
 
+    // Quiz Scores
     .quiz-scores {
         background: transparent;
-        bottom: 0;
-        left: 0;
-        position: fixed;
-        right: 0;
-        top: 0;
-        transition: background .5s ease-in-out;
-        visibility: hidden;
-        z-index: 100;
-
-        &__inner {
-            background: color(tone-news);
-            left: 50%;
-            opacity: 0;
-            max-width: 620px;
-            padding: 20px;
-            position: absolute;
-            top: 75%;
-            transform: translateX(-50%) translateY(-50%);
-            transition: top .5s ease-in-out .3s, opacity .5s ease-in-out .3s;
-            width: calc(100% - 24px);
-        }
-
-        &__close {
-            background: color(shade-7);
-            border-radius: 50%;
-            height: 50px;
-            margin-top: -25px;
-            position: absolute;
-            right: 3px;
-            top: 0;
-            width: 50px;
-
-            &::before {
-                color: color(tone-news);
-                content: "\00e04F";
-                font: 100 26px $icon;
-                left: 12px;
-                position: absolute;
-                top: 7px;
-            }
-        }
+        border-top: 2px solid color(tone-news-accent);
+        margin-top: 40px;
+        overflow: hidden;
+        padding: 20px 0;
 
         &__img {
             display: block;
@@ -402,15 +365,28 @@
         }
 
         &__score {
-            background: color(tone-news-accent);
+            background: color(tone-news);
             border-radius: 50%;
-            color: color(tone-news);
-            display: block;
+            color: color(tone-news-accent);
+            float: left;
             font: 100 55px/160px $egyptian-display;
             height: 160px;
-            margin: 12px auto;
+            margin: base-px(0, 1, 1, 0);
+            padding-top: 15px;
+            position: relative;
             text-align: center;
             width: 160px;
+
+            &::before {
+                color: color(shade-7);
+                content: "You scored:";
+                font-size: 18px;
+                font-weight: 600;
+                left: 25px;
+                line-height: 1;
+                position: absolute;
+                top: 40px;
+            }
         }
 
         &__correct {
@@ -421,54 +397,9 @@
             margin-left: -10px;
         }
 
-        &.open {
-            background: rgba(color(shade-1), .7);
-            visibility: visible;
-
-            .quiz-scores__inner {
-                top: 50%;
-                opacity: 1;
-            }
-        }
-
-        &.minimised {
-            border-top: 2px solid color(tone-news-accent);
-            padding-bottom: 20px;
-            position: relative;
-            visibility: visible;
-
-            .quiz-scores {
-                &__close {
-                    display: none;
-                }
-
-                &__inner {
-                    background: transparent;
-                    padding: 10px;
-                    position: static;
-                    transform: translateX(0) translateY(0);
-                    opacity: 1;
-                }
-
-                &__score {
-                    background: color(tone-news);
-                    color: color(tone-news-accent);
-                    margin: 0;
-                    padding-top: 15px;
-                    position: relative;
-
-                    &::before {
-                        color: color(shade-7);
-                        content: "You scored:";
-                        font-size: 18px;
-                        font-weight: 600;
-                        left: 25px;
-                        line-height: 1;
-                        position: absolute;
-                        top: 40px;
-                    }
-                }
-            }
+        &__message {
+            color: color(tone-news);
+            font: 600 18px/1.2 $egyptian-display;
         }
     }
 }

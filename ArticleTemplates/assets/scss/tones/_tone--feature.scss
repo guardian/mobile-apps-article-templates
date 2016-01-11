@@ -285,59 +285,15 @@
         }
 
         .quiz-scores {
-            &__inner {
-                background: color(tone-feature1-accent);
-            }
-
-            &__close {
-                &::before {
-                    color: color(tone-feature1-accent);
-                }
-            }
+            border-color: color(tone-feature1-accent);
 
             &__score {
-                background: color(tone-feature1-accent2);
-                color: color(tone-feature1-accent);
+                background: color(tone-feature1);
+                color: color(tone-feature1-accent2);
             }
 
-            &.minimised {
-                border-top: 2px solid color(tone-feature1-accent);
-                padding-bottom: 20px;
-                position: relative;
-                visibility: visible;
-
-                .quiz-scores {
-                    &__close {
-                        display: none;
-                    }
-
-                    &__inner {
-                        background: transparent;
-                        padding: 10px;
-                        position: static;
-                        transform: translateX(0) translateY(0);
-                        opacity: 1;
-                    }
-
-                    &__score {
-                        background: color(tone-feature1);
-                        color: color(tone-feature1-accent2);
-                        margin: 0;
-                        padding-top: 15px;
-                        position: relative;
-
-                        &::before {
-                            color: color(shade-7);
-                            content: "You scored:";
-                            font-size: 18px;
-                            font-weight: 600;
-                            left: 25px;
-                            line-height: 1;
-                            position: absolute;
-                            top: 40px;
-                        }
-                    }
-                }
+            &__message {
+                color: color(tone-feature1-accent);
             }
         }
     }
