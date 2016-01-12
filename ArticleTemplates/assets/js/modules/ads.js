@@ -57,7 +57,7 @@ define([
                 }
 
                 var nrParagraph = ( parseInt(config.mpuAfterParagraphs, 10) || 6 ) - 1;
-                $('.article__body > div > p:nth-of-type(' + nrParagraph + ') ~ p + p').first().before(mpuHtml);
+                $('.article__body > div.prose > p:nth-of-type(' + nrParagraph + ') ~ p + p').first().before(mpuHtml);
             },
 
             // return the current MPU's position.
