@@ -159,9 +159,8 @@ define([
 
                         // If all questions have been answered display the score
                         if (numQuestions == numAnswered) {
-                            var i = score + 1,
-                                scoreDisplayMessage = scoreMessages[0];
-                            while(i--) {
+                            var scoreDisplayMessage = "";
+                            for(var i = score; i >= 0; i--) {
                                 if (scoreMessages[i]) {
                                     scoreDisplayMessage = scoreMessages[i]; 
                                     break;
