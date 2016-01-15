@@ -17,6 +17,8 @@ define([
 
     var modules = {
             blockUpdates: function () {
+                console.log("** liveMore");
+                
                 var newBlockHtml = '',
                     updateCounter = 0,
                     liveblogStartPos = $('.article__body--liveblog').offset(),
@@ -53,6 +55,8 @@ define([
             },
 
             liveMore: function () {
+                console.log("** liveMore");
+
                 if($('.more--live-blogs')[0]){
                     bean.on($('.more--live-blogs')[0], 'click', function () {
                         $(this).hide();
@@ -62,17 +66,39 @@ define([
                 }
             },
 
+            theMinuteUpdates: function () {
+                var i,
+                    blocks,
+                    updateBlocks = document.body.classList.contains("the-minute");
+
+                if (!updateBlocks) {
+                    return;
+                }
+
+                blocks = document.getElementsByClassName("block");
+
+                for (i = 0; i < blocks.length; i++) {
+                    blocks[i].style.height = window.innerHeight + "px";
+                }
+            },
+
             setupGlobals: function () {
                 // Global function to handle liveblogs, called by native code
                 window.liveblogDeleteBlock = function (blockID) {
+                    console.log("** liveblogDeleteBlock");
+
                     $('#' + blockID).remove();
                 };
 
                 window.liveblogUpdateBlock = function (blockID, html) {
+                    console.log("** liveblogUpdateBlock");
+
                     $("#" + blockID).replaceWith(html);
                 };
 
                 window.liveblogLoadMore = function (html) {
+                    console.log("** liveblogLoadMore");
+
                     html = bonzo.create(html);
                     $('.loading--liveblog').removeClass("loading--visible");
                     $(html).appendTo('.article__body');
@@ -85,6 +111,8 @@ define([
                 };
 
                 window.liveblogTime = function () {
+                    console.log("** liveblogTime");
+
                     if ($(".tone--liveBlog").hasClass("is-live")) {
                         relativeDates.init('.block__time', 'title');
                     } else {
@@ -95,6 +123,8 @@ define([
                 };
 
                 window.showLiveMore = function (show) {
+                    console.log("** showLiveMore");
+
                     if (show) {
                         $('.more--live-blogs').show();
                     } else {
@@ -117,6 +147,7 @@ define([
                 setInterval(window.liveblogTime, 30000);
                 twitter.init();
                 twitter.enhanceTweets();
+                modules.theMinuteUpdates();
                 // console.info("Liveblog ready");
             }
         };
