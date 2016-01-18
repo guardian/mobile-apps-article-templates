@@ -7055,13 +7055,13 @@
       #sandbox body.the-minute .article--liveblog .block::before, #sandbox body.the-minute .article--liveblog .block::after {
         z-index: 2;
         position: absolute;
-        bottom: 15px;
-        right: 15px;
-        height: 40px;
-        width: 40px; }
+        bottom: 12px;
+        right: 12px;
+        height: 42px;
+        width: 42px; }
       #sandbox body.the-minute .article--liveblog .block::before {
         content: "";
-        border: 1px solid #fff;
+        border: 1px solid rgba(255, 255, 255, 0.5);
         border-radius: 50%; }
       #sandbox body.the-minute .article--liveblog .block::after {
         content: '\e001';
@@ -7071,43 +7071,43 @@
         box-sizing: border-box;
         font-size: 1.9rem; }
       #sandbox body.the-minute .article--liveblog .block:nth-child(2) {
-        -webkit-transform: translateY(100%); }
-      #sandbox body.the-minute .article--liveblog .block:nth-child(3) {
         -webkit-transform: translateY(200%); }
-      #sandbox body.the-minute .article--liveblog .block:nth-child(4) {
+      #sandbox body.the-minute .article--liveblog .block:nth-child(3) {
         -webkit-transform: translateY(300%); }
-      #sandbox body.the-minute .article--liveblog .block:nth-child(5) {
+      #sandbox body.the-minute .article--liveblog .block:nth-child(4) {
         -webkit-transform: translateY(400%); }
-      #sandbox body.the-minute .article--liveblog .block:nth-child(6) {
+      #sandbox body.the-minute .article--liveblog .block:nth-child(5) {
         -webkit-transform: translateY(500%); }
-      #sandbox body.the-minute .article--liveblog .block:nth-child(7) {
+      #sandbox body.the-minute .article--liveblog .block:nth-child(6) {
         -webkit-transform: translateY(600%); }
-      #sandbox body.the-minute .article--liveblog .block:nth-child(8) {
+      #sandbox body.the-minute .article--liveblog .block:nth-child(7) {
         -webkit-transform: translateY(700%); }
-      #sandbox body.the-minute .article--liveblog .block:nth-child(9) {
+      #sandbox body.the-minute .article--liveblog .block:nth-child(8) {
         -webkit-transform: translateY(800%); }
-      #sandbox body.the-minute .article--liveblog .block:nth-child(10) {
+      #sandbox body.the-minute .article--liveblog .block:nth-child(9) {
         -webkit-transform: translateY(900%); }
-      #sandbox body.the-minute .article--liveblog .block:nth-child(11) {
+      #sandbox body.the-minute .article--liveblog .block:nth-child(10) {
         -webkit-transform: translateY(1000%); }
-      #sandbox body.the-minute .article--liveblog .block:nth-child(12) {
+      #sandbox body.the-minute .article--liveblog .block:nth-child(11) {
         -webkit-transform: translateY(1100%); }
-      #sandbox body.the-minute .article--liveblog .block:nth-child(13) {
+      #sandbox body.the-minute .article--liveblog .block:nth-child(12) {
         -webkit-transform: translateY(1200%); }
-      #sandbox body.the-minute .article--liveblog .block:nth-child(14) {
+      #sandbox body.the-minute .article--liveblog .block:nth-child(13) {
         -webkit-transform: translateY(1300%); }
-      #sandbox body.the-minute .article--liveblog .block:nth-child(15) {
+      #sandbox body.the-minute .article--liveblog .block:nth-child(14) {
         -webkit-transform: translateY(1400%); }
-      #sandbox body.the-minute .article--liveblog .block:nth-child(16) {
+      #sandbox body.the-minute .article--liveblog .block:nth-child(15) {
         -webkit-transform: translateY(1500%); }
-      #sandbox body.the-minute .article--liveblog .block:nth-child(17) {
+      #sandbox body.the-minute .article--liveblog .block:nth-child(16) {
         -webkit-transform: translateY(1600%); }
-      #sandbox body.the-minute .article--liveblog .block:nth-child(18) {
+      #sandbox body.the-minute .article--liveblog .block:nth-child(17) {
         -webkit-transform: translateY(1700%); }
-      #sandbox body.the-minute .article--liveblog .block:nth-child(19) {
+      #sandbox body.the-minute .article--liveblog .block:nth-child(18) {
         -webkit-transform: translateY(1800%); }
-      #sandbox body.the-minute .article--liveblog .block:nth-child(20) {
+      #sandbox body.the-minute .article--liveblog .block:nth-child(19) {
         -webkit-transform: translateY(1900%); }
+      #sandbox body.the-minute .article--liveblog .block:nth-child(20) {
+        -webkit-transform: translateY(2000%); }
       #sandbox body.the-minute .article--liveblog .block .block__time {
         display: none; }
       #sandbox body.the-minute .article--liveblog .block .block__body {
@@ -7116,14 +7116,6 @@
           display: -webkit-flex;
           -webkit-flex-direction: column;
           justify-content: flex-end; }
-          #sandbox body.the-minute .article--liveblog .block .block__body .from-content-api::after {
-            content: "";
-            height: 55px;
-            border-right: 2px dotted #fff;
-            z-index: 1;
-            position: absolute;
-            bottom: 0;
-            right: 80px; }
           #sandbox body.the-minute .article--liveblog .block .block__body .from-content-api::before {
             content: "";
             height: 100%;
@@ -7131,7 +7123,8 @@
             position: absolute;
             left: 0;
             width: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.5)); }
+            background: linear-gradient(transparent, black);
+            margin-top: -25%; }
           #sandbox body.the-minute .article--liveblog .block .block__body .from-content-api h2 {
             font: 100 3.5rem/3.6rem "Guardian Egyptian Web", Georgia, serif;
             z-index: 1;
@@ -7146,8 +7139,7 @@
             padding: 0 8px 16px 8px;
             font: 600 2rem "Guardian Egyptian Web", Georgia, serif; }
           #sandbox body.the-minute .article--liveblog .block .block__body .from-content-api figure {
-            margin: 0;
-            height: 60px; }
+            margin: 0; }
             #sandbox body.the-minute .article--liveblog .block .block__body .from-content-api figure .figure__inner {
               position: absolute;
               top: 0;
@@ -7159,11 +7151,19 @@
             #sandbox body.the-minute .article--liveblog .block .block__body .from-content-api figure figcaption {
               position: relative;
               border: 0;
-              padding: 0 8px 0 8px;
+              padding: 0 80px 8px 8px;
               font-size: 1.6rem;
               color: rgba(255, 255, 255, 0.75);
-              width: 75%;
+              width: 100%;
               z-index: 1; }
+              #sandbox body.the-minute .article--liveblog .block .block__body .from-content-api figure figcaption::after {
+                content: "";
+                border-right: 2px dotted #fff;
+                z-index: 1;
+                position: absolute;
+                bottom: 0;
+                right: 70px;
+                top: 6px; }
         #sandbox body.the-minute .article--liveblog .block .block__body .block__updated {
           display: none; }
     #sandbox body.the-minute .article--liveblog .block--live-key-event {
