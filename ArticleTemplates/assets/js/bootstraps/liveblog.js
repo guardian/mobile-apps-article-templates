@@ -130,7 +130,12 @@ define([
                 modules.liveMore();
                 setInterval(window.liveblogTime, 30000);
                 twitter.init();
-                twitter.enhanceTweets();
+                if ($('body').hasClass('the-minute')) {
+                    // do any "the minute" js here
+                    console.log('dont call enhance tweets');
+                } else {
+                    twitter.enhanceTweets();
+                }
                 // console.info("Liveblog ready");
             }
         };

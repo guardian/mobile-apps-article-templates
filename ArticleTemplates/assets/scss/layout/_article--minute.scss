@@ -1,171 +1,189 @@
 %cardDimensions {
-	height: 100%;
-	width: 100%;
+    height: 100%;
+    width: 100%;
+}
+
+@mixin minute_page {
+    background: color(tone-news);
+    border: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 body.the-minute {
-	height: 100%;
+    height: 100%;
 
-	.article--liveblog {
+    .article--liveblog {
+        .article__body--liveblog {
+            @include minute_page;
+            top: -45px; // to compensate for action bar
+        }
 
-		.article__body--liveblog {
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			right: 0;
-			left: 0;
-		}
+        .article__header {
+            @include minute_page;
+        }
 
-		.article__header,
-		.article__body--liveblog__pinned {
-			display: none;
-		}
+        .article__body--liveblog__pinned {
+            display: none;
+        }
 
-		.block {
-			margin: 0;
-			padding: 0;
-			background-size: cover;
-			background-position: 50% 50%;
-			background-repeat: no-repeat;	
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			right: 0;
-			left: 0;
+        // A block represents a page of the briefing and is set to 100% of the viewport
+        .block {
+            @include minute_page;
 
-			&::before,
-			&::after {
-				z-index: 2;
-				position: absolute;
-				bottom: 12px;
-				right: 12px;
-				height: 42px;
-				width: 42px;
-			}
+            // This controls the skip to next page icon, for all blocks but the last one
+            &:not(:last-of-type)::before,
+            &:not(:last-of-type)::after {
+                z-index: 2;
+                position: absolute;
+                bottom: 12px;
+                right: 12px;
+                height: 42px;
+                width: 42px;
+            }
 
-			&::before {
-				content: "";
-				border: 1px solid rgba(255, 255, 255, 0.5);
-				border-radius: 50%;
-			}
+            // This controls the circular part of the next page icon, for all blocks but the last one
+            &:not(:last-of-type)::before {
+                content: "";
+                border: 1px solid rgba(255, 255, 255, 0.5);
+                border-radius: 50%;
+            }
 
-			&::after {
-				content: '\e001';
-		        font-family: $icon;
-				padding: 7px 0 0 10px;
-				color: #fff;
-				box-sizing: border-box;
-				font-size: 1.9rem;
-			}
+            // This controls the double chevron part of the next page icon, for all blocks but the last one
+            &:not(:last-of-type)::after {
+                content: '\e001';
+                font-family: $icon;
+                padding: 7px 0 0 10px;
+                color: #fff;
+                box-sizing: border-box;
+                font-size: 1.9rem;
+            }
 
-			@for $i from 2 through 20 {
-				&:nth-child(#{$i}) {
-				    -webkit-transform: translateY(100% * $i);
-				}
-			}
+            // This moves each block into place down the page, the header will sit at the top (i.e. 0%) so each block would
+            // move down according to it's position within the article__body, we have to consider the empty div "article__body--liveblog__pinned"
+            // so we start the loop at the 2nd child and calculate based on n-1
+            @for $i from 2 through 20 {
+                &:nth-of-type(#{$i}) {
+                    -webkit-transform: translateY(100% * ($i - 1));
+                }
+            }
 
-			.block__time {
-				display: none;
-			}
+            .block__time {
+                display: none;
+            }
 
-			.block__body {
-				position: absolute;
-				@extend %cardDimensions;		
+            .block__body {
+                position: absolute;
+                @extend %cardDimensions;
 
-				.from-content-api {
-					@extend %cardDimensions;
-					display: -webkit-flex;
-					-webkit-flex-direction: column;
-					justify-content: flex-end;
+                .from-content-api {
+                    @extend %cardDimensions;
+                    display: -webkit-flex;
+                    -webkit-flex-direction: column;
+                    justify-content: flex-end;
 
-					&::before {
-						content: "";
-						height: 100%;
-						z-index: 1;
-						position: absolute;
-						left: 0;
-						width: 100%;
-						background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
-						margin-top: -25%;
-					}
+                    // This controls the red bar above the first child 
+                    > :first-child {
+                        padding-top: 12px;
+                        position: relative;
 
-					h2 {
-						font: 100 3.5rem/3.6rem $egyptian-display;
-						z-index: 1;
-						padding: 0px 8px 12px;
-						color: #fff;
-						margin: 12px 0;
-					}
+                        &::before {
+                            background-color: #ea291f;
+                            content: "";
+                            height: 6px;
+                            left: 10px;
+                            position: absolute;
+                            top: 0;
+                            width: 50%;
+                        }
+                    }
 
-					p {
-						position: relative;
-						z-index: 1;
-						width: 80%;
-						color: #fff;
-						padding: 0 8px 16px 8px;
-						font: 600 2rem $egyptian-display;
-					}
+                    h2 {
+                        font: 100 3.5rem/3.6rem $egyptian-display;
+                        z-index: 10;
+                        padding: 0 12px 12px;
+                        color: #fff;
+                        margin: 12px 0;
+                    }
 
-					figure {
-						margin: 0;
+                    p {
+                        position: relative;
+                        z-index: 10;
+                        width: 80%;
+                        color: #fff;
+                        padding: 0 12px 16px;
+                        font: 600 2rem $egyptian-display;
+                    }
 
-						.figure__inner {
-							position: absolute;
-							top: 0;
-							left: 0;
-							bottom: 0;
-							right: 0;
+                    figure {
+                        margin: 0;
 
-							img {
-								@extend %cardDimensions;
-								object-fit: cover;
-							}
-						}
+                        .figure__inner {
+                            @include minute_page;
 
-						figcaption {
-							position: relative;
-							border: 0;
-							padding: 0 80px 8px 8px;
-							font-size: 1.6rem;
-							color: rgba(255,255,255, 0.75);
-							width: 100%;
-							z-index: 1;
+                            &::before {
+                                content: "";
+                                height: 100%;
+                                z-index: 1;
+                                position: absolute;
+                                left: 0;
+                                width: 100%;
+                                background: linear-gradient(transparent, transparent 25%, #000);
+                            }
 
-							&::after {
-								content: "";
-								border-right: 2px dotted #fff;
-								z-index: 1;
-								position: absolute;
-								bottom: 0;
-								right: 70px;
-								top: 6px;
-							}
-						}
-					}
-				}
+                            img {
+                                @extend %cardDimensions;
+                                object-fit: cover;
+                            }
+                        }
 
-				.block__updated {
-					display: none;
-				}
-			}
-		}
+                        figcaption {
+                            position: relative;
+                            border: 0;
+                            padding: 0 80px 12px 12px;
+                            font-size: 1.6rem;
+                            color: rgba(255,255,255, 0.75);
+                            width: 100%;
+                            z-index: 1;
 
-		.block--live-key-event {
-			border: none;
-		}
+                            &::after {
+                                border-right: 1px dotted rgba(255,255,255, 0.75);
+                                bottom: 0;
+                                content: "";
+                                height: 56px;
+                                position: absolute;
+                                right: 70px;
+                                z-index: 1;
+                            }
+                        }
+                    }
+                }
 
-	}
+                .block__updated {
+                    display: none;
+                }
+            }
+        }
 
-	.loading--liveblog,
-	.more--live-blogs,
-	.tags {
-		display: none;
-	}
+        .block--live-key-event {
+            border: none;
+        }
 
-	.related-content,
-	.comments {
-		display: none;
-	}
+    }
 
+    .loading--liveblog,
+    .more--live-blogs,
+    .tags {
+        display: none;
+    }
+
+    .related-content,
+    .comments {
+        display: none;
+    }
 }
-
