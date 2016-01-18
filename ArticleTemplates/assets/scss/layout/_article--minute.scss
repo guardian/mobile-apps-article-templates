@@ -4,18 +4,61 @@
 }
 
 body.the-minute {
+	height: 100%;
 
 	.article--liveblog {
+
+		.article__body--liveblog {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			left: 0;
+		}
 
 		.article__header,
 		.article__body--liveblog__pinned {
 			display: none;
 		}
 
-		[class*="block--live-"] {
+		.block {
 			margin: 0;
 			padding: 0;
-			position: relative;
+			background-size: cover;
+			background-position: 50% 50%;
+			background-repeat: no-repeat;	
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			left: 0;
+
+			&::after,
+			&::before {
+				z-index: 1;
+				position: absolute;
+				bottom: 0;
+				right: 15px;
+				height: 50px;
+				width: 50px;
+			}
+
+			&::before {
+				content: "";
+				border: 1px solid #fff;
+				border-radius: 50%;
+			}
+
+			&::after {
+				content: '\e001';
+		        font-family: $icon;
+			}
+
+			@for $i from 2 through 20 {
+				&:nth-child(#{$i}) {
+				    -webkit-transform: translateY(100% * ($i - 1));
+				}
+			}
 
 			.block__time {
 				display: none;
@@ -23,14 +66,17 @@ body.the-minute {
 
 			.block__body {
 				position: absolute;
-				@extend %cardDimensions;
+				@extend %cardDimensions;		
 
 				.from-content-api {
 					@extend %cardDimensions;
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-end;
+
 
 					p {
-						position: absolute;
-						bottom: 70px;
+						position: relative;
 						z-index: 1;
 						width: 80%;
 						color: #fff;
@@ -39,12 +85,16 @@ body.the-minute {
 					}
 
 					figure {
-						position: relative;
 						margin: 0;
-						@extend %cardDimensions;
+						margin: 1px solid red;
+						height: 70px;
 
 						.figure__inner {
-							@extend %cardDimensions;
+							position: absolute;
+							top: 0;
+							left: 0;
+							bottom: 0;
+							right: 0;
 
 							img {
 								@extend %cardDimensions;
@@ -53,34 +103,21 @@ body.the-minute {
 						}
 
 						figcaption {
-							position: absolute;
-							bottom: 0;
-							height: 70px;
-							color: #fff;
+							position: relative;
+							border: 0;
 							padding: 0 8px 0 8px;
 							font-size: 1.6rem;
 							color: rgba(255,255,255, 0.75);
 							width: 75%;
 						}
 
-						.minute-next-icon {
-							position: absolute;
-							width: 20%;
-							border-left: 2px dotted #fff;
-							height: 64px;
-							bottom: 0;
-							right: 0;
-						}
-					}
-
-					.minute-red-bar {
-						position: absolute;
-						bottom: 235px;
-						z-index: 1;
-						background: red;
-						height: 6px;
-						width: 45%;
-						margin: 8px;
+						// .minute-next-icon {
+						// 	width: 20%;
+						// 	border-left: 2px dotted #fff;
+						// 	height: 100%;
+						// 	float: left;
+						// 	margin-top: 5px;
+						// }
 					}
 				}
 

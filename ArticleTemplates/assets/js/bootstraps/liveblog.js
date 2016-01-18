@@ -66,22 +66,6 @@ define([
                 }
             },
 
-            theMinuteUpdates: function () {
-                var i,
-                    blocks,
-                    updateBlocks = document.body.classList.contains("the-minute");
-
-                if (!updateBlocks) {
-                    return;
-                }
-
-                blocks = document.getElementsByClassName("block");
-
-                for (i = 0; i < blocks.length; i++) {
-                    blocks[i].style.height = window.innerHeight + "px";
-                }
-            },
-
             setupGlobals: function () {
                 // Global function to handle liveblogs, called by native code
                 window.liveblogDeleteBlock = function (blockID) {
@@ -147,7 +131,6 @@ define([
                 setInterval(window.liveblogTime, 30000);
                 twitter.init();
                 twitter.enhanceTweets();
-                modules.theMinuteUpdates();
                 // console.info("Liveblog ready");
             }
         };
