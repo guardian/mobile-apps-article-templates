@@ -33,14 +33,14 @@ body.the-minute {
 			right: 0;
 			left: 0;
 
-			&::after,
-			&::before {
-				z-index: 1;
+			&::before,
+			&::after {
+				z-index: 2;
 				position: absolute;
-				bottom: 0;
+				bottom: 15px;
 				right: 15px;
-				height: 50px;
-				width: 50px;
+				height: 40px;
+				width: 40px;
 			}
 
 			&::before {
@@ -52,6 +52,10 @@ body.the-minute {
 			&::after {
 				content: '\e001';
 		        font-family: $icon;
+				padding: 7px 0 0 10px;
+				color: #fff;
+				box-sizing: border-box;
+				font-size: 1.9rem;
 			}
 
 			@for $i from 2 through 20 {
@@ -70,10 +74,37 @@ body.the-minute {
 
 				.from-content-api {
 					@extend %cardDimensions;
-					display: flex;
-					flex-direction: column;
+					display: -webkit-flex;
+					-webkit-flex-direction: column;
 					justify-content: flex-end;
 
+					&::after {
+						content: "";
+						height: 55px;
+						border-right: 2px dotted #fff;
+						z-index: 1;
+						position: absolute;
+						bottom: 0;
+						right: 80px;
+					}
+
+					&::before {
+						content: "";
+						height: 100%;
+						z-index: 1;
+						position: absolute;
+						left: 0;
+						width: 100%;
+						background: linear-gradient(rgba(0,0,0,0.01), rgba(0,0,0,0.5));
+					}
+
+					h2 {
+						font: 100 3.5rem/3.6rem $egyptian-display;
+						z-index: 1;
+						padding: 0px 8px 12px;
+						color: #fff;
+						margin: 12px 0;
+					}
 
 					p {
 						position: relative;
@@ -81,13 +112,12 @@ body.the-minute {
 						width: 80%;
 						color: #fff;
 						padding: 0 8px 16px 8px;
-						font: 600 2rem "Guardian Egyptian Web", Georgia, serif;
+						font: 600 2rem $egyptian-display;
 					}
 
 					figure {
 						margin: 0;
-						margin: 1px solid red;
-						height: 70px;
+						height: 60px;
 
 						.figure__inner {
 							position: absolute;
@@ -109,15 +139,8 @@ body.the-minute {
 							font-size: 1.6rem;
 							color: rgba(255,255,255, 0.75);
 							width: 75%;
+							z-index: 1;
 						}
-
-						// .minute-next-icon {
-						// 	width: 20%;
-						// 	border-left: 2px dotted #fff;
-						// 	height: 100%;
-						// 	float: left;
-						// 	margin-top: 5px;
-						// }
 					}
 				}
 
