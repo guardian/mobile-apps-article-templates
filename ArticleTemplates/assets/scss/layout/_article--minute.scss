@@ -185,7 +185,7 @@ body.the-minute {
                 h2,
                 p {
                     color: $minute_main;
-                    margin: 12px 12px 24px;
+                    margin: 12px 12px 18px;
                     max-width: 320px;
                     padding: 0;
                     position: relative;
@@ -193,12 +193,35 @@ body.the-minute {
                     z-index: 10;
                 }
 
-                h2 {
-                    font: 100 3.5rem/3.6rem $egyptian-display;
-                }
-
                 p {
                     font: 600 2rem $egyptian-display;
+
+                    > a {
+                        background: transparent;
+                        color: $minute_main;
+                        padding-right: 40px;
+                        position: relative;
+                        text-shadow: none;
+
+                        &::after {
+                            background: $minute_main;
+                            border-radius: 50%;
+                            box-sizing: border-box;
+                            color: #055385;
+                            content: "\e005";
+                            font-family: $icon;
+                            font-size: 1.6rem;
+                            height: 30px;
+                            padding: 3px 0 0 6px;
+                            position: absolute;
+                            right: 0;
+                            width: 30px;
+                        }
+                    }
+                }
+
+                h2 {
+                    font: 100 3.5rem/3.6rem $egyptian-display;
                 }
 
                 blockquote.quoted {
@@ -287,6 +310,10 @@ body.the-minute {
             &.block--live-summary {
                 .from-content-api {
                     padding-top: 30px;
+
+                    p {
+                        font-weight: 200;
+                    }
 
                     figure {
                         figcaption {

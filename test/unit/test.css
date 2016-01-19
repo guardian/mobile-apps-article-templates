@@ -7189,16 +7189,35 @@
       #sandbox body.the-minute .article--liveblog .block .from-content-api h2,
       #sandbox body.the-minute .article--liveblog .block .from-content-api p {
         color: #fff;
-        margin: 12px 12px 24px;
+        margin: 12px 12px 18px;
         max-width: 320px;
         padding: 0;
         position: relative;
         width: calc(100% - 75px);
         z-index: 10; }
-      #sandbox body.the-minute .article--liveblog .block .from-content-api h2 {
-        font: 100 3.5rem/3.6rem "Guardian Egyptian Web", Georgia, serif; }
       #sandbox body.the-minute .article--liveblog .block .from-content-api p {
         font: 600 2rem "Guardian Egyptian Web", Georgia, serif; }
+        #sandbox body.the-minute .article--liveblog .block .from-content-api p > a {
+          background: transparent;
+          color: #fff;
+          padding-right: 40px;
+          position: relative;
+          text-shadow: none; }
+          #sandbox body.the-minute .article--liveblog .block .from-content-api p > a::after {
+            background: #fff;
+            border-radius: 50%;
+            box-sizing: border-box;
+            color: #055385;
+            content: "\e005";
+            font-family: "Guardian Icons", Georgia, serif;
+            font-size: 1.6rem;
+            height: 30px;
+            padding: 3px 0 0 6px;
+            position: absolute;
+            right: 0;
+            width: 30px; }
+      #sandbox body.the-minute .article--liveblog .block .from-content-api h2 {
+        font: 100 3.5rem/3.6rem "Guardian Egyptian Web", Georgia, serif; }
       #sandbox body.the-minute .article--liveblog .block .from-content-api blockquote.quoted {
         padding: 0;
         margin: 12px 12px 24px; }
@@ -7275,6 +7294,8 @@
         padding-top: 30px; }
       #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api {
         padding-top: 30px; }
+        #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api p {
+          font-weight: 200; }
         #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure figcaption {
           bottom: 0;
           position: absolute; }
