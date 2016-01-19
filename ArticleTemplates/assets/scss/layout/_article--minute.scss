@@ -55,109 +55,105 @@ body.the-minute {
     background: $minute_bg;
     height: 100%;
 
-    &.ios {
-        .article__body--liveblog {
-           top: -45px; // to compensate for action bar
-        }
-    }
-
+    
     .article--liveblog {
+        // Format the article body to take up just the viewport
         .article__body--liveblog {
             @include minute_page;
         }
 
-        .article__header {
-            display: none;
-        }
-
-        .the-minute__header {
-            @include minute_page;
-            @include minute_flex_content;
-        }
-
-        .the-minute__headline,
-        .the-minute__standfirst {
-            color: $minute_main;
-            font: 100 4.5rem/5rem $egyptian-display;
-            margin: 12px;
-            max-width: 320px;
-            width: 80%;
-            z-index: 10;
-        }
-
-        // .the-minute__headline {
-        //     &::before {
-        //         content: "";
-        //         float: left;
-        //         height: 5rem;
-        //         width: 5rem;
-        //     }
-        // }
-
-        .the-minute__standfirst {
-            font: 600 1.7rem/2.2rem $egyptian-display;
-            margin-bottom: 36px;
-
-            .the-minute__date {
-                color: $minute_accent;
-                display: block;
-            }
-        }
-
-        .the-minute__main-media {
-            position: static;
-
-            figure {
-                .element__inner {
-                    height: 100%;
-                    width: 100%;
-                }
-
-                @include minute_figure_cover;
-
-                figcaption {
-                    display: none;
-                }
-            }
-        }
-
-        .the-minute__nav {
-            border-left: 1px dotted rgba($minute_main, 0.75);
-            bottom: 0;
-            height: 56px;
-            position: fixed;
-            right: 0;
-            width: 70px;
-            z-index: 20;
-            
-            &-button {
-                border: 1px solid rgba($minute_main, 0.5);
-                border-radius: 50%;
-                bottom: 12px;
-                content: "";
-                height: 42px;
-                position: absolute;
-                right: 12px;
-                width: 42px;
-
-                // This controls the double chevron part of the next page icon, for all blocks but the last one
-                &::after {
-                    color: $minute_main;
-                    content: '\e001';
-                    font-family: $icon;
-                    font-size: 1.9rem;
-                    left: 50%;
-                    position: absolute;
-                    top: 50%;
-                    transform: translateX(-50%) translateY(calc(-50% - 2px));
-                }
-            }
-        }
-
+        // Hide elements within article
+        .article__header,
         .article__body--liveblog__pinned {
             display: none;
         }
+    }
 
+    // To compensate for action bar
+    &.ios {
+        .article__body--liveblog {
+           top: -45px;  // TODO: Check non retina devices 
+        }
+    }
+
+    // Special "The Minute" header
+    .the-minute__header {
+        @include minute_page;
+        @include minute_flex_content;
+    }
+
+    .the-minute__headline,
+    .the-minute__standfirst {
+        color: $minute_main;
+        font: 100 4.5rem/5rem $egyptian-display;
+        margin: 12px;
+        max-width: 320px;
+        width: 80%;
+        z-index: 10;
+    }
+
+    .the-minute__standfirst {
+        font: 600 1.7rem/2.2rem $egyptian-display;
+        margin-bottom: 96px;
+
+        .the-minute__date {
+            color: $minute_accent;
+            display: block;
+        }
+    }
+
+    .the-minute__main-media {
+        position: static;
+
+        figure {
+            .element__inner {
+                height: 100%;
+                width: 100%;
+            }
+
+            @include minute_figure_cover;
+
+            figcaption {
+                display: none;
+            }
+        }
+    }
+
+    .the-minute__nav {
+        border-left: 1px dotted rgba($minute_main, 0.75);
+        bottom: 0;
+        height: 56px;
+        position: fixed;
+        right: 0;
+        width: 70px;
+        z-index: 20;
+        
+        &-button {
+            border: 1px solid rgba($minute_main, 0.5);
+            border-radius: 50%;
+            bottom: 12px;
+            content: "";
+            height: 42px;
+            position: absolute;
+            right: 12px;
+            width: 42px;
+
+            // This controls the double chevron part of the next page icon, for all blocks but the last one
+            &::after {
+                color: $minute_main;
+                content: '\e001';
+                font-family: $icon;
+                font-size: 1.9rem;
+                left: 50%;
+                position: absolute;
+                top: 50%;
+                transform: translateX(-50%) translateY(calc(-50% - 2px));
+            }
+        }
+    }
+
+    // Format block elements
+    .article--liveblog {
         // A block represents a page of the briefing and is set to 100% of the viewport
         .block {
             @include minute_page;
@@ -186,24 +182,45 @@ body.the-minute {
 
             // These styles are common to key event and summary blocks
             .from-content-api {
-                h2 {
+                h2,
+                p {
                     color: $minute_main;
-                    font: 100 3.5rem/3.6rem $egyptian-display;
-                    padding: 0 12px 12px;
-                    position: relative;
-                    margin: 12px 0;
+                    margin: 12px 12px 24px;
                     max-width: 320px;
+                    padding: 0;
+                    position: relative;
                     width: calc(100% - 75px);
                     z-index: 10;
                 }
 
+                h2 {
+                    font: 100 3.5rem/3.6rem $egyptian-display;
+                }
+
                 p {
-                    color: $minute_main;
                     font: 600 2rem $egyptian-display;
-                    padding: 0 12px 16px;
-                    position: relative;
-                    width: 80%;
-                    z-index: 10;
+                }
+
+                blockquote.quoted {
+                    padding: 0;
+                    margin: 12px 12px 24px;
+
+                    &::before {
+                        content: "";
+                    }
+
+                    > p {
+                        margin: 0;
+                        padding: 0;
+
+                        &::before {
+                            color: $minute_accent;
+                            content: "\e092";
+                            display: inline-block;
+                            font: normal 3rem/1 $icon;
+                            margin-right: 6px;
+                        }
+                    }
                 }
 
                 figure {
@@ -248,7 +265,7 @@ body.the-minute {
                             background-color: $minute_accent;
                             content: "";
                             height: 6px;
-                            left: 10px;
+                            left: -2px;
                             position: absolute;
                             top: 0;
                             width: 50%;
@@ -261,7 +278,7 @@ body.the-minute {
                     .from-content-api {
                         height: 50%;
                         justify-content: flex-start;
-                        padding-top: 40px;
+                        padding-top: 30px;
                     }
                 }
             }
@@ -269,7 +286,7 @@ body.the-minute {
             // These styles are for summary blocks only
             &.block--live-summary {
                 .from-content-api {
-                    padding-top: 40px;
+                    padding-top: 30px;
 
                     figure {
                         figcaption {
