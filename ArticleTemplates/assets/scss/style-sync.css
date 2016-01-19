@@ -5568,7 +5568,7 @@ body.immersive .article--immersive {
 body.immersive.android .article--immersive .article__header-bg {
   height: 600px; }
 
-body.the-minute .article--liveblog .block .block__body, body.the-minute .article--liveblog .block .block__body .from-content-api, body.the-minute .article--liveblog .block .block__body .from-content-api figure .figure__inner img {
+body.the-minute .article--liveblog .block .block__body {
   height: 100%;
   width: 100%; }
 
@@ -5594,7 +5594,68 @@ body.the-minute {
     padding: 0;
     position: absolute;
     right: 0;
-    top: 0; }
+    top: 0;
+    display: -webkit-flex;
+    height: 100%;
+    justify-content: flex-end;
+    width: 100%;
+    -webkit-flex-direction: column;
+    z-index: 1; }
+    body.the-minute .article--liveblog .article__header .meta {
+      display: none; }
+    body.the-minute .article--liveblog .article__header .headline,
+    body.the-minute .article--liveblog .article__header .standfirst {
+      color: #fff;
+      font: 100 4.5rem/5rem "Guardian Egyptian Web", Georgia, serif;
+      max-width: 320px;
+      width: 80%;
+      z-index: 10; }
+    body.the-minute .article--liveblog .article__header .standfirst {
+      font: 600 1.7rem/2.2rem "Guardian Egyptian Web", Georgia, serif; }
+      body.the-minute .article--liveblog .article__header .standfirst .date {
+        color: #ea291f; }
+    body.the-minute .article--liveblog .article__header .main-media {
+      position: static; }
+      body.the-minute .article--liveblog .article__header .main-media figure {
+        margin: 0; }
+        body.the-minute .article--liveblog .article__header .main-media figure .figure__inner {
+          background: #005689;
+          border: 0;
+          bottom: 0;
+          left: 0;
+          margin: 0;
+          padding: 0;
+          position: absolute;
+          right: 0;
+          top: 0; }
+          body.the-minute .article--liveblog .article__header .main-media figure .figure__inner::before {
+            background: linear-gradient(transparent, transparent 25%, #000);
+            content: "";
+            height: 100%;
+            left: 0;
+            position: absolute;
+            width: 100%;
+            z-index: 1; }
+          body.the-minute .article--liveblog .article__header .main-media figure .figure__inner img {
+            height: 100%;
+            object-fit: cover;
+            width: 100%; }
+        body.the-minute .article--liveblog .article__header .main-media figure figcaption {
+          border: 0;
+          position: relative;
+          padding: 0 80px 12px 12px;
+          font-size: 1.6rem;
+          color: rgba(255, 255, 255, 0.75);
+          width: 100%;
+          z-index: 1; }
+          body.the-minute .article--liveblog .article__header .main-media figure figcaption::after {
+            border-right: 1px dotted rgba(255, 255, 255, 0.75);
+            bottom: 0;
+            content: "";
+            height: 56px;
+            position: absolute;
+            right: 70px;
+            z-index: 1; }
   body.the-minute .article--liveblog .article__body--liveblog__pinned {
     display: none; }
   body.the-minute .article--liveblog .block {
@@ -5669,8 +5730,10 @@ body.the-minute {
       position: absolute; }
       body.the-minute .article--liveblog .block .block__body .from-content-api {
         display: -webkit-flex;
-        -webkit-flex-direction: column;
-        justify-content: flex-end; }
+        height: 100%;
+        justify-content: flex-end;
+        width: 100%;
+        -webkit-flex-direction: column; }
         body.the-minute .article--liveblog .block .block__body .from-content-api > :first-child {
           padding-top: 12px;
           position: relative; }
@@ -5708,18 +5771,20 @@ body.the-minute {
             right: 0;
             top: 0; }
             body.the-minute .article--liveblog .block .block__body .from-content-api figure .figure__inner::before {
+              background: linear-gradient(transparent, transparent 25%, #000);
               content: "";
               height: 100%;
-              z-index: 1;
-              position: absolute;
               left: 0;
+              position: absolute;
               width: 100%;
-              background: linear-gradient(transparent, transparent 25%, #000); }
+              z-index: 1; }
             body.the-minute .article--liveblog .block .block__body .from-content-api figure .figure__inner img {
-              object-fit: cover; }
+              height: 100%;
+              object-fit: cover;
+              width: 100%; }
           body.the-minute .article--liveblog .block .block__body .from-content-api figure figcaption {
-            position: relative;
             border: 0;
+            position: relative;
             padding: 0 80px 12px 12px;
             font-size: 1.6rem;
             color: rgba(255, 255, 255, 0.75);
@@ -5739,8 +5804,7 @@ body.the-minute {
     border: none; }
   body.the-minute .loading--liveblog,
   body.the-minute .more--live-blogs,
-  body.the-minute .tags {
-    display: none; }
+  body.the-minute .tags,
   body.the-minute .related-content,
   body.the-minute .comments {
     display: none; }
