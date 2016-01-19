@@ -41,26 +41,6 @@ $minute_accent: #ea291f;
             width: 100%;
         }
     }
-
-    figcaption {
-        border: 0;
-        position: relative;
-        padding: 0 80px 12px 12px;
-        font-size: 1.6rem;
-        color: rgba($minute_main, 0.75);
-        width: 100%;
-        z-index: 1;
-
-        &::after {
-            border-right: 1px dotted rgba($minute_main, 0.75);
-            bottom: 0;
-            content: "";
-            height: 56px;
-            position: absolute;
-            right: 70px;
-            z-index: 1;
-        }
-    }
 }
 
 @mixin minute_flex_content {
@@ -72,12 +52,18 @@ $minute_accent: #ea291f;
 }
 
 body.the-minute {
+    background: $minute_bg;
     height: 100%;
+
+    &.ios {
+        .article__body--liveblog {
+           top: -45px; // to compensate for action bar
+        }
+    }
 
     .article--liveblog {
         .article__body--liveblog {
             @include minute_page;
-            top: -45px; // to compensate for action bar
         }
 
         .article__header {
@@ -99,6 +85,15 @@ body.the-minute {
             z-index: 10;
         }
 
+        // .the-minute__headline {
+        //     &::before {
+        //         content: "";
+        //         float: left;
+        //         height: 5rem;
+        //         width: 5rem;
+        //     }
+        // }
+
         .the-minute__standfirst {
             font: 600 1.7rem/2.2rem $egyptian-display;
             margin-bottom: 36px;
@@ -113,30 +108,49 @@ body.the-minute {
             position: static;
 
             figure {
+                .element__inner {
+                    height: 100%;
+                    width: 100%;
+                }
+
                 @include minute_figure_cover;
+
+                figcaption {
+                    display: none;
+                }
             }
         }
 
-        .the-minute__nav-button {
-            border: 1px solid rgba($minute_main, 0.5);
-            border-radius: 50%;
-            height: 42px;
+        .the-minute__nav {
+            border-left: 1px dotted rgba($minute_main, 0.75);
+            bottom: 0;
+            height: 56px;
             position: fixed;
-            bottom: 12px;
-            right: 12px;
-            width: 42px;
+            right: 0;
+            width: 70px;
             z-index: 20;
-
-            // This controls the double chevron part of the next page icon, for all blocks but the last one
-            &::after {
-                color: $minute_main;
-                content: '\e001';
-                font-family: $icon;
-                font-size: 1.9rem;
-                left: 50%;
+            
+            &-button {
+                border: 1px solid rgba($minute_main, 0.5);
+                border-radius: 50%;
+                bottom: 12px;
+                content: "";
+                height: 42px;
                 position: absolute;
-                top: 50%;
-                transform: translateX(-50%) translateY(calc(-50% - 2px));
+                right: 12px;
+                width: 42px;
+
+                // This controls the double chevron part of the next page icon, for all blocks but the last one
+                &::after {
+                    color: $minute_main;
+                    content: '\e001';
+                    font-family: $icon;
+                    font-size: 1.9rem;
+                    left: 50%;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateX(-50%) translateY(calc(-50% - 2px));
+                }
             }
         }
 
@@ -164,11 +178,68 @@ body.the-minute {
             .block__body {
                 position: absolute;
                 @extend %cardDimensions;
+            }
 
+            .block__updated {
+                display: none;
+            }
+
+            // These styles are common to key event and summary blocks
+            .from-content-api {
+                h2 {
+                    color: $minute_main;
+                    font: 100 3.5rem/3.6rem $egyptian-display;
+                    padding: 0 12px 12px;
+                    position: relative;
+                    margin: 12px 0;
+                    max-width: 320px;
+                    width: calc(100% - 75px);
+                    z-index: 10;
+                }
+
+                p {
+                    color: $minute_main;
+                    font: 600 2rem $egyptian-display;
+                    padding: 0 12px 16px;
+                    position: relative;
+                    width: 80%;
+                    z-index: 10;
+                }
+
+                figure {
+                    @include minute_figure_cover;
+                    
+                    figcaption {
+                        border: 0;
+                        color: rgba($minute_main, 0.75);
+                        font-size: 1.6rem;
+                        padding: 0 80px 12px 12px;
+                        position: relative;
+                        width: 100%;
+                        z-index: 1;
+                    }
+                }
+
+                figure.element--thumbnail {
+                    .figure__inner {
+                        top: 50%; 
+                    }
+
+                    figcaption {
+                        background: $minute_accent;
+                        bottom: 0;
+                        color: $minute_main;
+                        position: absolute;
+                    }
+                }
+            }
+
+            // These styles are for key event blocks only
+            &.block--live-key-event {
                 .from-content-api {
-                    @include minute_flex_content;
+                    @include minute_flex_content; // key events generally stick to the bottom
 
-                    // This controls the red bar above the first child 
+                    // This controls the red bar above the first child
                     > :first-child {
                         padding-top: 12px;
                         position: relative;
@@ -183,31 +254,29 @@ body.the-minute {
                             width: 50%;
                         }
                     }
-
-                    h2 {
-                        font: 100 3.5rem/3.6rem $egyptian-display;
-                        z-index: 10;
-                        padding: 0 12px 12px;
-                        color: $minute_main;
-                        margin: 12px 0;
-                    }
-
-                    p {
-                        position: relative;
-                        z-index: 10;
-                        width: 80%;
-                        color: $minute_main;
-                        padding: 0 12px 16px;
-                        font: 600 2rem $egyptian-display;
-                    }
-
-                    figure {
-                        @include minute_figure_cover;
-                    }
                 }
 
-                .block__updated {
-                    display: none;
+                // Special case for key event blocks containing a thumbnail
+                &.is-thumbnail {
+                    .from-content-api {
+                        height: 50%;
+                        justify-content: flex-start;
+                        padding-top: 40px;
+                    }
+                }
+            }
+
+            // These styles are for summary blocks only
+            &.block--live-summary {
+                .from-content-api {
+                    padding-top: 40px;
+
+                    figure {
+                        figcaption {
+                            bottom: 0;
+                            position: absolute;
+                        }
+                    }
                 }
             }
         }
