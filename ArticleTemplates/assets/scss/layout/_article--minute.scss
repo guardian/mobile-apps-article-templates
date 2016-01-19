@@ -81,38 +81,62 @@ body.the-minute {
         }
 
         .article__header {
+            display: none;
+        }
+
+        .the-minute__header {
             @include minute_page;
             @include minute_flex_content;
-            z-index: 1;
+        }
 
-            // Hide any sections not required
-            .meta {
-                display: none;
+        .the-minute__headline,
+        .the-minute__standfirst {
+            color: $minute_main;
+            font: 100 4.5rem/5rem $egyptian-display;
+            margin: 12px;
+            max-width: 320px;
+            width: 80%;
+            z-index: 10;
+        }
+
+        .the-minute__standfirst {
+            font: 600 1.7rem/2.2rem $egyptian-display;
+            margin-bottom: 36px;
+
+            .the-minute__date {
+                color: $minute_accent;
+                display: block;
             }
+        }
 
-            .headline,
-            .standfirst {
+        .the-minute__main-media {
+            position: static;
+
+            figure {
+                @include minute_figure_cover;
+            }
+        }
+
+        .the-minute__nav-button {
+            border: 1px solid rgba($minute_main, 0.5);
+            border-radius: 50%;
+            height: 42px;
+            position: fixed;
+            bottom: 12px;
+            right: 12px;
+            width: 42px;
+            z-index: 20;
+
+            // This controls the double chevron part of the next page icon, for all blocks but the last one
+            &::after {
                 color: $minute_main;
-                font: 100 4.5rem/5rem $egyptian-display;
-                max-width: 320px;
-                width: 80%;
-                z-index: 10;
-            }
-
-            .standfirst {
-                font: 600 1.7rem/2.2rem $egyptian-display;
-
-                .date {
-                    color: $minute_accent;
-                }
-            }
-
-            .main-media {
-                position: static;
-
-                figure {
-                    @include minute_figure_cover;
-                }
+                content: '\e001';
+                font-family: $icon;
+                font-size: 1.9rem;
+                left: 50%;
+                position: absolute;
+                top: 50%;
+                transform: translateX(-50%) translateY(calc(-50% - 2px));
             }
         }
 
@@ -124,40 +148,12 @@ body.the-minute {
         .block {
             @include minute_page;
 
-            // This controls the skip to next page icon, for all blocks but the last one
-            &:not(:last-of-type)::before,
-            &:not(:last-of-type)::after {
-                z-index: 2;
-                position: absolute;
-                bottom: 12px;
-                right: 12px;
-                height: 42px;
-                width: 42px;
-            }
-
-            // This controls the circular part of the next page icon, for all blocks but the last one
-            &:not(:last-of-type)::before {
-                content: "";
-                border: 1px solid rgba($minute_main, 0.5);
-                border-radius: 50%;
-            }
-
-            // This controls the double chevron part of the next page icon, for all blocks but the last one
-            &:not(:last-of-type)::after {
-                content: '\e001';
-                font-family: $icon;
-                padding: 7px 0 0 10px;
-                color: $minute_main;
-                box-sizing: border-box;
-                font-size: 1.9rem;
-            }
-
             // This moves each block into place down the page, the header will sit at the top (i.e. 0%) so each block would
-            // move down according to it's position within the article__body, we have to consider the empty div "article__body--liveblog__pinned"
-            // so we start the loop at the 2nd child and calculate based on n-1
-            @for $i from 2 through 20 {
+            // move down according to it's position within the article__body, we have to consider "the-minute__header" and empty div "article__body--liveblog__pinned"
+            // so we start the loop at the 3rd child and calculate based on n-2
+            @for $i from 3 through 20 {
                 &:nth-of-type(#{$i}) {
-                    -webkit-transform: translateY(100% * ($i - 1));
+                    -webkit-transform: translateY(100% * ($i - 2));
                 }
             }
 

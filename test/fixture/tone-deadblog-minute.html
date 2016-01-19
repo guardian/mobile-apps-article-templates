@@ -53,6 +53,31 @@
         </div>
 
         <div class="article__body article__body--liveblog " id="liveblog-body ">
+            <div class="the-minute__header">
+                <div class="the-minute__nav-button"></div>
+
+                <h1 class="the-minute__headline selectable">Republican trolls pile on Ted Cruz</h1>
+                
+                <div class="the-minute__standfirst selectable">
+                    <div class="the-minute__standfirst-inner">
+                        <span class="the-minute__date"></span>
+                        Got a minute? It’s time for fear and laughing on the campaign trail. Today, we follow the truth about a senator’s birth in, er, Canada!
+                    </div>
+                </div>
+
+                <div class="the-minute__main-media main-media--hidden-caption">
+                    <figure class="element element-image figure-wide " data-media-id="1471f968108861f178aa135465ebb143d7b93b34 ">
+                        <div class="figure__inner "><img src="http://media-origin.test.dev-guim.co.uk/1471f968108861f178aa135465ebb143d7b93b34/685_86_2603_1562/1000.jpg " alt="Stop calling me Canadian! " width="1000 " height="600 " class="gu-image "></div>
+
+                        <figcaption>
+                            <span class="element-image__caption "><span data-icon=" " class="figure__caption__icon " aria-hidden="true "></span>Stop calling me Canadian!</span>
+                            <span class="element-image__credit ">Photograph: Matt Rourke/AP</span>
+                        </figcaption>
+                    </figure>
+                </div>
+                
+            </div>
+
             <div class="article__body--liveblog__pinned ">
             </div>
 
@@ -363,16 +388,13 @@
                 dayOfWeek = dateArray[2].replace(',',''),
                 date = dateArray[3],
                 month = dateArray[4],
-                standfirst = document.getElementsByClassName('standfirst__inner')[0],
-                dateDiv = document.createElement('span');
+                dateDiv = document.getElementsByClassName('the-minute__date')[0];
 
             // Format date
             date = date % 10 == 1 && date % 100 !== 11 ? date + 'st' : (date % 10 == 2 && date % 100 !== 12 ? date + 'nd' : (date % 10 == 3 && date % 100 !== 13 ? date + 'rd' : date + 'th'));
 
             // Add class, innerhtml and prepend to standfirst
-            dateDiv.className = "date";
             dateDiv.innerHTML = dayOfWeek + ' ' + date + ' ' + month;
-            standfirst.insertBefore(dateDiv, standfirst.firstChild);
         }
         window.initTemplate();
     </script>

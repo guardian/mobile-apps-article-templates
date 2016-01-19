@@ -45,9 +45,29 @@
             
         </div>
          <div class="article__body article__body--liveblog" id="liveblog-body">
+            <div class="the-minute__header">
+                <div class="the-minute__nav-button"></div>
+                <h1 class="the-minute__headline selectable">__TITLE__</h1>
+                
+                <div class="the-minute__standfirst selectable">
+                    <div class="the-minute__standfirst-inner">
+                        <span class="the-minute__date"></span>
+                        __STANDFIRST__
+                    </div>
+                </div>
+
+                <div class="the-minute__main-media main-media--hidden-caption">
+                    __MAIN_MEDIA__
+                </div>
+
+                __SPONSORSHIP__
+                
+            </div>
+
             <div class="article__body--liveblog__pinned">
                 __ASIDE_WITNESS__
             </div>
+
             __BLOCKS__
         </div>
 
@@ -75,16 +95,13 @@
                 dayOfWeek = dateArray[2].replace(',',''),
                 date = dateArray[3],
                 month = dateArray[4],
-                standfirst = document.getElementsByClassName('standfirst__inner')[0],
-                dateDiv = document.createElement('span');
+                dateDiv = document.getElementsByClassName('the-minute__date')[0];
 
             // Format date
             date = date % 10 == 1 && date % 100 !== 11 ? date + 'st' : (date % 10 == 2 && date % 100 !== 12 ? date + 'nd' : (date % 10 == 3 && date % 100 !== 13 ? date + 'rd' : date + 'th'));
 
             // Add class, innerhtml and prepend to standfirst
-            dateDiv.className = "date";
             dateDiv.innerHTML = dayOfWeek + ' ' + date + ' ' + month;
-            standfirst.insertBefore(dateDiv, standfirst.firstChild);
         }
         window.initTemplate();
     </script>
