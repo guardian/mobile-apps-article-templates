@@ -31,9 +31,9 @@ $minute_accent: #ea291f;
             // if full screen add a gradient over image
             &::before {
                 @if ($type == summary) {
-                    background: linear-gradient(#000, transparent 75%, transparent); // summary gradient goes dark to light
+                    background: linear-gradient(rgba(#000,.7), transparent 65%, transparent 85%, rgba(#000,.3)); // summary gradient goes dark to light and back to dark for the figcaption
                 } @else {
-                    background: linear-gradient(transparent, transparent 25%, #000); // key event (and header) gradient goes light to dark
+                    background: linear-gradient(transparent, transparent 25%, rgba(#000,.8)); // key event (and header) gradient goes light to dark
                 }
                 content: "";
                 height: 100%;
@@ -59,15 +59,9 @@ $minute_accent: #ea291f;
         width: 100%;
         z-index: 1;
 
-        // background is different for thumbnails & summary 
+        // text colour & background colour are different for thumbnails
         @if ($type == thumbnail) {
             background: $minute_accent;
-        } @else if ($type == summary) {
-            background: rgba(#000,0.3);
-        }
-
-        // text colour is different just for thumbnails
-        @if ($type == thumbnail) {
             color: $minute_main;
         } @else {
             color: rgba($minute_main, 0.75);
