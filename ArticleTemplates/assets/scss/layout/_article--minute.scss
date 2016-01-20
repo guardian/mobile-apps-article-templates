@@ -31,7 +31,7 @@ $minute_accent: #ea291f;
             // if full screen add a gradient over image
             &::before {
                 @if ($type == summary) {
-                    background: linear-gradient(rgba(#000,.7), transparent 65%, transparent 85%, rgba(#000,.3)); // summary gradient goes dark to light and back to dark for the figcaption
+                    background: linear-gradient(rgba(#000,.7), transparent 65%, transparent 85%, rgba(#000,.8)); // summary gradient goes dark to light and back to dark for the figcaption
                 } @else {
                     background: linear-gradient(transparent, transparent 25%, rgba(#000,.8)); // key event (and header) gradient goes light to dark
                 }
@@ -54,7 +54,6 @@ $minute_accent: #ea291f;
     figcaption {
         // common to all figcaptions
         border: 0;
-        margin-top: 24px;
         padding: 2px 80px 8px 12px;
         width: 100%;
         z-index: 1;
@@ -185,7 +184,7 @@ body.the-minute {
 
     .the-minute__standfirst {
         font: 600 1.7rem/2.2rem $egyptian-display;
-        margin-bottom: 96px;
+        margin-bottom: 24px;
 
         .the-minute__date {
             color: $minute_accent;
@@ -272,16 +271,15 @@ body.the-minute {
                 h2,
                 p {
                     color: $minute_main;
-                    margin: 12px 12px 18px;
-                    max-width: 320px;
+                    margin: 12px 80px 18px 12px;
+                    max-width: 360px;
                     padding: 0;
                     position: relative;
-                    width: calc(100% - 75px);
                     z-index: 10;
                 }
 
                 p {
-                    font: 600 2rem $egyptian-display;
+                    font: 600 1.7rem/2.2rem $egyptian-display;
 
                     a {
                         background: transparent;
@@ -328,7 +326,7 @@ body.the-minute {
 
                 figure.element-tweet {
                     @include minute_page;
-                    text-align: center;
+                    font-size: 0; // avoid the inline-block spacing issue
                     
                     &::before {
                         content: "";
@@ -337,18 +335,36 @@ body.the-minute {
                         vertical-align: middle;
                     }
 
+                    // testing a red band at bottom of tweet pages (similar to ipad design)
+                    // &::after {
+                    //     background: $minute_accent;
+                    //     bottom: 0;
+                    //     content: "";
+                    //     height: 60px;
+                    //     left: 0;
+                    //     position: absolute;
+                    //     width: 100%;
+                    // }
+
                     blockquote {
                         color: $minute_main;
                         display: inline-block;
-                        text-align: left;
+                        margin: 0 80px 120px 12px;
+                        max-width: 360px;
+                        position: relative;
                         vertical-align: middle;
+                        width: auto;
 
+                        // clear standard tweet icon positioning
                         &::before {
                             content: "";
                         }
 
                         > p {
                             font-weight: 600;
+                            margin: 0;
+                            padding: 0;
+                            width: 100%;
 
                             &::before {
                                 color: $minute_accent;
@@ -369,16 +385,17 @@ body.the-minute {
                 .from-content-api {
                     @include minute_flex_content; // key events generally stick to the bottom
 
-                    // This controls the red bar above the first child
-                    > :first-child {
+                    // This controls the red bar above the first child  & tweets which are targetted differently
+                    > :first-child,
+                    figure.element-tweet blockquote {
                         padding-top: 12px;
                         position: relative;
 
                         &::before {
                             background-color: $minute_accent;
                             content: "";
-                            height: 6px;
-                            left: -2px;
+                            height: 5px;
+                            left: -1px;
                             position: absolute;
                             top: 0;
                             width: 50%;
@@ -395,7 +412,6 @@ body.the-minute {
                     .from-content-api {
                         height: 50%;
                         justify-content: flex-start;
-                        padding-top: 24px;
                     }
                 }
             }
@@ -403,15 +419,9 @@ body.the-minute {
             // These styles are for summary blocks only
             &.block--live-summary {
                 .from-content-api {
-                    padding-top: 24px;
-
-                    p {
-                        font-weight: 200;
-
-                        b,
-                        strong {
-                            font-weight: 400;
-                        }
+                    > :first-child {
+                        margin-top: 0;
+                        padding-top: 12px;
                     }
 
                     figure:not(.element--thumbnail) {

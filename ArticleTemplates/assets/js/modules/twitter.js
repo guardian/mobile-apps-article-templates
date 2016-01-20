@@ -93,7 +93,7 @@ define([
     return {
         init: bootstrap,
         enhanceTweets: enhanceTweets,
-        // testing purpouses
+        // testing purposes
         modules: {
             fixVineAutoplay: fixVineAutoplay
         }
