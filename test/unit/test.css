@@ -7048,6 +7048,16 @@
       display: none; }
     #sandbox body.the-minute.ios .article__body--liveblog {
       top: -45px; }
+    #sandbox body.the-minute .block::before,
+    #sandbox body.the-minute .the-minute__header::before {
+      background: #ea291f;
+      content: "";
+      display: block;
+      height: 1px;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 10; }
     #sandbox body.the-minute .the-minute__header {
       background: #005689;
       border: 0;
@@ -7107,7 +7117,37 @@
             object-fit: cover;
             width: 100%; }
         #sandbox body.the-minute .the-minute__main-media figure figcaption {
-          display: none; }
+          border: 0;
+          margin-top: 24px;
+          padding: 2px 80px 8px 12px;
+          width: 100%;
+          z-index: 1;
+          color: rgba(255, 255, 255, 0.75);
+          position: relative; }
+          #sandbox body.the-minute .the-minute__main-media figure figcaption .main-media__caption__text span:first-child,
+          #sandbox body.the-minute .the-minute__main-media figure figcaption .main-media__caption__credit {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            display: block;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            font-size: 1.3rem;
+            line-height: 1.6rem; }
+          #sandbox body.the-minute .the-minute__main-media figure figcaption .main-media__caption__credit {
+            font-size: 1.2rem;
+            line-height: 1.5rem;
+            margin-top: 2px; }
+          #sandbox body.the-minute .the-minute__main-media figure figcaption .main-media__caption__icon {
+            display: none; }
+          #sandbox body.the-minute .the-minute__main-media figure figcaption .main-media__caption__text span:first-child::before {
+            content: "\e044";
+            display: inline-block;
+            font: normal 1.3rem/1 "Guardian Icons", Georgia, serif;
+            margin-right: 6px;
+            position: relative;
+            top: 2px; }
     #sandbox body.the-minute .the-minute__nav {
       border-left: 1px dotted rgba(255, 255, 255, 0.75);
       bottom: 0;
@@ -7197,25 +7237,12 @@
         z-index: 10; }
       #sandbox body.the-minute .article--liveblog .block .from-content-api p {
         font: 600 2rem "Guardian Egyptian Web", Georgia, serif; }
-        #sandbox body.the-minute .article--liveblog .block .from-content-api p > a {
+        #sandbox body.the-minute .article--liveblog .block .from-content-api p a {
           background: transparent;
+          border-bottom: 1px solid #fff;
           color: #fff;
-          padding-right: 40px;
           position: relative;
           text-shadow: none; }
-          #sandbox body.the-minute .article--liveblog .block .from-content-api p > a::after {
-            background: #fff;
-            border-radius: 50%;
-            box-sizing: border-box;
-            color: #055385;
-            content: "\e005";
-            font-family: "Guardian Icons", Georgia, serif;
-            font-size: 1.6rem;
-            height: 30px;
-            padding: 3px 0 0 6px;
-            position: absolute;
-            right: 0;
-            width: 30px; }
       #sandbox body.the-minute .article--liveblog .block .from-content-api h2 {
         font: 100 3.5rem/3.6rem "Guardian Egyptian Web", Georgia, serif; }
       #sandbox body.the-minute .article--liveblog .block .from-content-api blockquote.quoted {
@@ -7231,10 +7258,12 @@
             content: "\e092";
             display: inline-block;
             font: normal 3rem/1 "Guardian Icons", Georgia, serif;
-            margin-right: 6px; }
-      #sandbox body.the-minute .article--liveblog .block .from-content-api figure {
+            margin-right: 6px;
+            position: relative;
+            top: 2px; }
+      #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail {
         margin: 0; }
-        #sandbox body.the-minute .article--liveblog .block .from-content-api figure .figure__inner {
+        #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail .figure__inner {
           background: #005689;
           border: 0;
           bottom: 0;
@@ -7243,34 +7272,70 @@
           padding: 0;
           position: absolute;
           right: 0;
-          top: 0; }
-          #sandbox body.the-minute .article--liveblog .block .from-content-api figure .figure__inner::before {
-            background: linear-gradient(transparent, transparent 25%, #000);
-            content: "";
-            height: 100%;
-            left: 0;
-            position: absolute;
-            width: 100%;
-            z-index: 1; }
-          #sandbox body.the-minute .article--liveblog .block .from-content-api figure .figure__inner img {
+          top: 0;
+          top: 50%; }
+          #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail .figure__inner img {
             height: 100%;
             object-fit: cover;
             width: 100%; }
-        #sandbox body.the-minute .article--liveblog .block .from-content-api figure figcaption {
+        #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail figcaption {
           border: 0;
-          color: rgba(255, 255, 255, 0.75);
-          font-size: 1.6rem;
-          padding: 0 80px 12px 12px;
-          position: relative;
+          margin-top: 24px;
+          padding: 2px 80px 8px 12px;
           width: 100%;
-          z-index: 1; }
-      #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail .figure__inner {
-        top: 50%; }
-      #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail figcaption {
-        background: #ea291f;
+          z-index: 1;
+          background: #ea291f;
+          color: #fff;
+          bottom: 0;
+          position: absolute; }
+          #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail figcaption .element-image__caption,
+          #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail figcaption .element-image__credit {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            display: block;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            font-size: 1.3rem;
+            line-height: 1.6rem; }
+          #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail figcaption .element-image__credit {
+            font-size: 1.2rem;
+            line-height: 1.5rem;
+            margin-top: 2px; }
+      #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element-tweet {
+        background: #005689;
+        border: 0;
         bottom: 0;
-        color: #fff;
-        position: absolute; }
+        left: 0;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        text-align: center; }
+        #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element-tweet::before {
+          content: "";
+          display: inline-block;
+          height: 100%;
+          vertical-align: middle; }
+        #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element-tweet blockquote {
+          color: #fff;
+          display: inline-block;
+          text-align: left;
+          vertical-align: middle; }
+          #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element-tweet blockquote::before {
+            content: ""; }
+          #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element-tweet blockquote > p {
+            font-weight: 600; }
+            #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element-tweet blockquote > p::before {
+              color: #ea291f;
+              content: "\e06b";
+              display: inline-block;
+              font: normal 2.8rem/1 "Guardian Icons", Georgia, serif;
+              margin-right: 6px;
+              position: relative;
+              top: 4px; }
       #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api {
         display: -webkit-flex;
         height: 100%;
@@ -7288,17 +7353,113 @@
             position: absolute;
             top: 0;
             width: 50%; }
+        #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) {
+          margin: 0; }
+          #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner {
+            background: #005689;
+            border: 0;
+            bottom: 0;
+            left: 0;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            right: 0;
+            top: 0; }
+            #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner::before {
+              background: linear-gradient(transparent, transparent 25%, #000);
+              content: "";
+              height: 100%;
+              left: 0;
+              position: absolute;
+              width: 100%;
+              z-index: 1; }
+            #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner img {
+              height: 100%;
+              object-fit: cover;
+              width: 100%; }
+          #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption {
+            border: 0;
+            margin-top: 24px;
+            padding: 2px 80px 8px 12px;
+            width: 100%;
+            z-index: 1;
+            color: rgba(255, 255, 255, 0.75);
+            position: relative; }
+            #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption .element-image__caption,
+            #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption .element-image__credit {
+              overflow: hidden;
+              text-overflow: ellipsis;
+              word-wrap: break-word;
+              display: block;
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+              font-size: 1.3rem;
+              line-height: 1.6rem; }
+            #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption .element-image__credit {
+              font-size: 1.2rem;
+              line-height: 1.5rem;
+              margin-top: 2px; }
       #sandbox body.the-minute .article--liveblog .block.block--live-key-event.is-thumbnail .from-content-api {
         height: 50%;
         justify-content: flex-start;
-        padding-top: 30px; }
+        padding-top: 24px; }
       #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api {
-        padding-top: 30px; }
+        padding-top: 24px; }
         #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api p {
           font-weight: 200; }
-        #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure figcaption {
-          bottom: 0;
-          position: absolute; }
+          #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api p b,
+          #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api p strong {
+            font-weight: 400; }
+        #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) {
+          margin: 0; }
+          #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) .figure__inner {
+            background: #005689;
+            border: 0;
+            bottom: 0;
+            left: 0;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            right: 0;
+            top: 0; }
+            #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) .figure__inner::before {
+              background: linear-gradient(#000, transparent 75%, transparent);
+              content: "";
+              height: 100%;
+              left: 0;
+              position: absolute;
+              width: 100%;
+              z-index: 1; }
+            #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) .figure__inner img {
+              height: 100%;
+              object-fit: cover;
+              width: 100%; }
+          #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption {
+            border: 0;
+            margin-top: 24px;
+            padding: 2px 80px 8px 12px;
+            width: 100%;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.3);
+            color: rgba(255, 255, 255, 0.75);
+            bottom: 0;
+            position: absolute; }
+            #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption .element-image__caption,
+            #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption .element-image__credit {
+              overflow: hidden;
+              text-overflow: ellipsis;
+              word-wrap: break-word;
+              display: block;
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+              font-size: 1.3rem;
+              line-height: 1.6rem; }
+            #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption .element-image__credit {
+              font-size: 1.2rem;
+              line-height: 1.5rem;
+              margin-top: 2px; }
     #sandbox body.the-minute .article--liveblog .block--live-key-event {
       border: none; }
     #sandbox body.the-minute .loading--liveblog,

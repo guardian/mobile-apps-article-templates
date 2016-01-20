@@ -25,6 +25,9 @@ define([
     }
 
     function enhanceTweets() {
+        if ($('body').hasClass('the-minute')) {
+            return;
+        }
 
         var scriptElement,
             tweetElements       = qwery('blockquote.js-tweet, blockquote.twitter-tweet'),

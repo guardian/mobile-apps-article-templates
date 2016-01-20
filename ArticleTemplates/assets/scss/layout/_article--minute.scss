@@ -19,26 +19,110 @@ $minute_accent: #ea291f;
     top: 0;
 }
 
-@mixin minute_figure_cover {
+@mixin minute_figure_cover($type: "") {
     margin: 0;
 
     .figure__inner {
         @include minute_page;
-        
-        &::before {
-            background: linear-gradient(transparent, transparent 25%, #000);
-            content: "";
-            height: 100%;
-            left: 0;
-            position: absolute;
-            width: 100%;
-            z-index: 1;
+
+        @if ($type == thumbnail) {
+            top: 50%; // only take up half the screen
+        } @else {
+            // if full screen add a gradient over image
+            &::before {
+                @if ($type == summary) {
+                    background: linear-gradient(#000, transparent 75%, transparent); // summary gradient goes dark to light
+                } @else {
+                    background: linear-gradient(transparent, transparent 25%, #000); // key event (and header) gradient goes light to dark
+                }
+                content: "";
+                height: 100%;
+                left: 0;
+                position: absolute;
+                width: 100%;
+                z-index: 1;
+            }
         }
 
         img {
             height: 100%;
             object-fit: cover;
             width: 100%;
+        }
+    }
+
+    figcaption {
+        // common to all figcaptions
+        border: 0;
+        margin-top: 24px;
+        padding: 2px 80px 8px 12px;
+        width: 100%;
+        z-index: 1;
+
+        // background is different for thumbnails & summary 
+        @if ($type == thumbnail) {
+            background: $minute_accent;
+        } @else if ($type == summary) {
+            background: rgba(#000,0.3);
+        }
+
+        // text colour is different just for thumbnails
+        @if ($type == thumbnail) {
+            color: $minute_main;
+        } @else {
+            color: rgba($minute_main, 0.75);
+        }
+
+        // thumbnail and summary figcaptions need to be absolutely positioned
+        @if ($type == thumbnail or $type == summary) {
+            bottom: 0;
+            position: absolute;
+        } @else {
+            position: relative;
+        }
+
+        // figcaption inner html is different for main media images
+        @if ($type == main-media) {
+            .main-media__caption__text span:first-child,
+            .main-media__caption__credit {
+                @include text-ellipses(2);
+                font-size: 1.3rem;
+                line-height: 1.6rem;
+            }
+
+            .main-media__caption__credit {
+                font-size: 1.2rem;
+                line-height: 1.5rem;
+                margin-top: 2px;
+            }
+
+            .main-media__caption__icon {
+                display: none;
+            }
+
+            .main-media__caption__text span:first-child {
+                &::before {
+                    content: "\e044";
+                    display: inline-block;
+                    font: normal 1.3rem/1 $icon;
+                    margin-right: 6px;
+                    position: relative;
+                    top: 2px;
+                }
+            }
+        } @else {
+            .element-image__caption,
+            .element-image__credit {
+                @include text-ellipses(2);
+                font-size: 1.3rem;
+                line-height: 1.6rem;
+            }
+
+            .element-image__credit {
+                font-size: 1.2rem;
+                line-height: 1.5rem;
+                margin-top: 2px;
+            }
         }
     }
 }
@@ -72,8 +156,21 @@ body.the-minute {
     // To compensate for action bar
     &.ios {
         .article__body--liveblog {
-           top: -45px;  // TODO: Check non retina devices 
+           top: -45px; // TODO: Check non retina devices 
         }
+    }
+
+    // Add a divider line to the top of header and all blocks
+    .block::before,
+    .the-minute__header::before {
+        background: $minute-accent;
+        content: "";
+        display: block;
+        height: 1px;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 10;
     }
 
     // Special "The Minute" header
@@ -111,11 +208,7 @@ body.the-minute {
                 width: 100%;
             }
 
-            @include minute_figure_cover;
-
-            figcaption {
-                display: none;
-            }
+            @include minute_figure_cover(main-media);
         }
     }
 
@@ -196,27 +289,12 @@ body.the-minute {
                 p {
                     font: 600 2rem $egyptian-display;
 
-                    > a {
+                    a {
                         background: transparent;
+                        border-bottom: 1px solid $minute_main;
                         color: $minute_main;
-                        padding-right: 40px;
                         position: relative;
                         text-shadow: none;
-
-                        &::after {
-                            background: $minute_main;
-                            border-radius: 50%;
-                            box-sizing: border-box;
-                            color: #055385;
-                            content: "\e005";
-                            font-family: $icon;
-                            font-size: 1.6rem;
-                            height: 30px;
-                            padding: 3px 0 0 6px;
-                            position: absolute;
-                            right: 0;
-                            width: 30px;
-                        }
                     }
                 }
 
@@ -224,52 +302,70 @@ body.the-minute {
                     font: 100 3.5rem/3.6rem $egyptian-display;
                 }
 
-                blockquote.quoted {
-                    padding: 0;
-                    margin: 12px 12px 24px;
-
-                    &::before {
-                        content: "";
-                    }
-
-                    > p {
-                        margin: 0;
+                blockquote {
+                    &.quoted {
                         padding: 0;
+                        margin: 12px 12px 24px;
 
                         &::before {
-                            color: $minute_accent;
-                            content: "\e092";
-                            display: inline-block;
-                            font: normal 3rem/1 $icon;
-                            margin-right: 6px;
+                            content: "";
+                        }
+
+                        > p {
+                            margin: 0;
+                            padding: 0;
+
+                            &::before {
+                                color: $minute_accent;
+                                content: "\e092";
+                                display: inline-block;
+                                font: normal 3rem/1 $icon;
+                                margin-right: 6px;
+                                position: relative;
+                                top: 2px;
+                            }
                         }
                     }
                 }
 
-                figure {
-                    @include minute_figure_cover;
-                    
-                    figcaption {
-                        border: 0;
-                        color: rgba($minute_main, 0.75);
-                        font-size: 1.6rem;
-                        padding: 0 80px 12px 12px;
-                        position: relative;
-                        width: 100%;
-                        z-index: 1;
-                    }
+                figure.element--thumbnail {
+                    @include minute_figure_cover(thumbnail);
                 }
 
-                figure.element--thumbnail {
-                    .figure__inner {
-                        top: 50%; 
+                figure.element-tweet {
+                    @include minute_page;
+                    text-align: center;
+                    
+                    &::before {
+                        content: "";
+                        display: inline-block;
+                        height: 100%;
+                        vertical-align: middle;
                     }
 
-                    figcaption {
-                        background: $minute_accent;
-                        bottom: 0;
+                    blockquote {
                         color: $minute_main;
-                        position: absolute;
+                        display: inline-block;
+                        text-align: left;
+                        vertical-align: middle;
+
+                        &::before {
+                            content: "";
+                        }
+
+                        > p {
+                            font-weight: 600;
+
+                            &::before {
+                                color: $minute_accent;
+                                content: "\e06b";
+                                display: inline-block;
+                                font: normal 2.8rem/1 $icon;
+                                margin-right: 6px;
+                                position: relative;
+                                top: 4px;
+                            }
+                        }
                     }
                 }
             }
@@ -294,6 +390,10 @@ body.the-minute {
                             width: 50%;
                         }
                     }
+
+                    figure:not(.element--thumbnail) {
+                        @include minute_figure_cover(key-event);
+                    }
                 }
 
                 // Special case for key event blocks containing a thumbnail
@@ -301,7 +401,7 @@ body.the-minute {
                     .from-content-api {
                         height: 50%;
                         justify-content: flex-start;
-                        padding-top: 30px;
+                        padding-top: 24px;
                     }
                 }
             }
@@ -309,17 +409,19 @@ body.the-minute {
             // These styles are for summary blocks only
             &.block--live-summary {
                 .from-content-api {
-                    padding-top: 30px;
+                    padding-top: 24px;
 
                     p {
                         font-weight: 200;
+
+                        b,
+                        strong {
+                            font-weight: 400;
+                        }
                     }
 
-                    figure {
-                        figcaption {
-                            bottom: 0;
-                            position: absolute;
-                        }
+                    figure:not(.element--thumbnail) {
+                        @include minute_figure_cover(summary);
                     }
                 }
             }
