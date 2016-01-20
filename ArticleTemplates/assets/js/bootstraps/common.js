@@ -11,7 +11,8 @@ define([
     'modules/more-tags',
     'modules/sharing',
     'throttleDebounce',
-    'modules/$'
+    'modules/$',
+    'iscroll'
 ], function (
     bean,
     bonzo,
@@ -24,7 +25,8 @@ define([
     MoreTags,
     Sharing,
     throttleDebounce,
-    $
+    $,
+    iscroll
 ) {
     'use strict';
 

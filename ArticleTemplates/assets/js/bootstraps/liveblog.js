@@ -5,7 +5,6 @@ define([
     'modules/relativeDates',
     'modules/$',
     'modules/twitter'
-
 ], function (
     bean,
     bonzo,
@@ -17,8 +16,6 @@ define([
 
     var modules = {
             blockUpdates: function () {
-                console.log("** liveMore");
-                
                 var newBlockHtml = '',
                     updateCounter = 0,
                     liveblogStartPos = $('.article__body--liveblog').offset(),
@@ -55,8 +52,6 @@ define([
             },
 
             liveMore: function () {
-                console.log("** liveMore");
-
                 if($('.more--live-blogs')[0]){
                     bean.on($('.more--live-blogs')[0], 'click', function () {
                         $(this).hide();
@@ -118,6 +113,66 @@ define([
 
                 window.applyNativeFunctionCall('liveblogDeleteBlock');
                 window.applyNativeFunctionCall('liveblogUpdateBlock');
+            },
+
+            initScroller: function () {
+                var i, 
+                    height, 
+                    scroller, 
+                    scrollHeight = 0,
+                    minuteNavElem = document.body.querySelector(".the-minute__nav"),
+                    wrapperElem = document.body.querySelector(".article--liveblog"),
+                    liveblogElem = wrapperElem.querySelector(".article__body--liveblog"),
+                    topOffset = Math.abs(liveblogElem.offsetTop),
+                    options = {
+                        scrollX: false,
+                        scrollY: true,
+                        momentum: false,
+                        snap: true,
+                        bounce: true
+                    };
+
+                // liveblogElem must be first child of wrapperElem    
+                wrapperElem.insertBefore(liveblogElem, wrapperElem.children[0]);
+
+                // set heights of each card within scroller
+                for (i = 0; i < liveblogElem.children.length; i++) {
+                    height = liveblogElem.children[i].offsetHeight; 
+                    if (height) {
+                        scrollHeight += height;
+                        liveblogElem.children[i].style.height = height + "px";
+                    }
+                }
+
+                // set height of scroller wrapper
+                wrapperElem.style.height = wrapperElem.offsetHeight + topOffset + "px";
+
+                // set height of scrollable area
+                liveblogElem.style.height = scrollHeight + "px";
+
+                // initialise scroller
+                scroller = new IScroll(wrapperElem, options);
+
+                // onScrollEnd show hide minuteNavElem
+                scroller.on('scrollEnd', modules.onScrollEnd.bind(null, minuteNavElem, scroller));
+
+                // add touch event handler to minuteNavElem
+                minuteNavElem.addEventListener('touchend', modules.scrollToNextCard.bind(null, minuteNavElem, scroller));
+            },
+
+            scrollToNextCard: function (minuteNavElem, scroller, evt) {
+                if ((scroller.currentPage.pageY + 1) !== scroller.pages[0].length) {
+                    scroller.next();
+                    modules.onScrollEnd(minuteNavElem, scroller);
+                }
+            },
+
+            onScrollEnd: function (minuteNavElem, scroller) {
+                if ((scroller.currentPage.pageY + 1) === scroller.pages[0].length) {
+                    minuteNavElem.classList.add("hide");
+                } else {
+                    minuteNavElem.classList.remove("hide");
+                }
             }
         },
 
@@ -132,7 +187,7 @@ define([
                 twitter.init();
                 if ($('body').hasClass('the-minute')) {
                     // do any "the minute" js here
-                    console.log('dont call enhance tweets');
+                    // modules.initScroller();
                 } else {
                     twitter.enhanceTweets();
                 }
