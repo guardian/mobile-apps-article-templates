@@ -4157,7 +4157,6 @@
     background: #005689;
     height: 100%; }
     #sandbox body.the-minute .article--liveblog .article__body--liveblog {
-      background: #005689;
       border: 0;
       bottom: 0;
       left: 0;
@@ -4171,18 +4170,7 @@
       display: none; }
     #sandbox body.the-minute.ios .article__body--liveblog {
       top: -45px; }
-    #sandbox body.the-minute .block::before,
-    #sandbox body.the-minute .the-minute__header::before {
-      background: #ea291f;
-      content: "";
-      display: block;
-      height: 1px;
-      position: absolute;
-      top: 0;
-      width: 100%;
-      z-index: 10; }
     #sandbox body.the-minute .the-minute__header {
-      background: #005689;
       border: 0;
       bottom: 0;
       left: 0;
@@ -4205,11 +4193,12 @@
       width: 80%;
       z-index: 10; }
     #sandbox body.the-minute .the-minute__standfirst {
-      font: 600 1.7rem/2.2rem "Guardian Egyptian Web", Georgia, serif;
+      font: bold 1.7rem/2.2rem "Guardian Text Egyptian Web", Georgia, serif;
       margin-bottom: 24px; }
       #sandbox body.the-minute .the-minute__standfirst .the-minute__date {
         color: #ea291f;
-        display: block; }
+        display: block;
+        font: 600 1.7rem/2.2rem "Guardian Egyptian Web", Georgia, serif; }
     #sandbox body.the-minute .the-minute__main-media {
       position: static; }
       #sandbox body.the-minute .the-minute__main-media figure {
@@ -4218,7 +4207,6 @@
           height: 100%;
           width: 100%; }
         #sandbox body.the-minute .the-minute__main-media figure .figure__inner {
-          background: #005689;
           border: 0;
           bottom: 0;
           left: 0;
@@ -4297,7 +4285,6 @@
           top: 50%;
           transform: translateX(-50%) translateY(calc(-50% - 2px)); }
     #sandbox body.the-minute .article--liveblog .block {
-      background: #005689;
       border: 0;
       bottom: 0;
       left: 0;
@@ -4305,7 +4292,16 @@
       padding: 0;
       position: absolute;
       right: 0;
-      top: 0; }
+      top: 0;
+      background: #005689; }
+      #sandbox body.the-minute .article--liveblog .block::before {
+        background: #ea291f;
+        bottom: 0;
+        content: "";
+        height: 60px;
+        left: 0;
+        position: absolute;
+        width: 100%; }
       #sandbox body.the-minute .article--liveblog .block:nth-of-type(3) {
         -webkit-transform: translateY(100%); }
       #sandbox body.the-minute .article--liveblog .block:nth-of-type(4) {
@@ -4357,7 +4353,7 @@
         position: relative;
         z-index: 10; }
       #sandbox body.the-minute .article--liveblog .block .from-content-api p {
-        font: 600 1.7rem/2.2rem "Guardian Egyptian Web", Georgia, serif; }
+        font: bold 1.7rem/2.2rem "Guardian Text Egyptian Web", Georgia, serif; }
         #sandbox body.the-minute .article--liveblog .block .from-content-api p a {
           background: transparent;
           border-bottom: 1px solid #fff;
@@ -4372,6 +4368,7 @@
         #sandbox body.the-minute .article--liveblog .block .from-content-api blockquote.quoted::before {
           content: ""; }
         #sandbox body.the-minute .article--liveblog .block .from-content-api blockquote.quoted > p {
+          font: 600 1.7rem/2.2rem "Guardian Egyptian Web", Georgia, serif;
           margin: 0;
           padding: 0; }
           #sandbox body.the-minute .article--liveblog .block .from-content-api blockquote.quoted > p::before {
@@ -4385,7 +4382,6 @@
       #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail {
         margin: 0; }
         #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail .figure__inner {
-          background: #005689;
           border: 0;
           bottom: 0;
           left: 0;
@@ -4424,7 +4420,6 @@
             line-height: 1.5rem;
             margin-top: 2px; }
       #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element-tweet {
-        background: #005689;
         border: 0;
         bottom: 0;
         left: 0;
@@ -4450,7 +4445,7 @@
           #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element-tweet blockquote::before {
             content: ""; }
           #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element-tweet blockquote > p {
-            font-weight: 600;
+            font: 600 1.7rem/2.2rem "Guardian Egyptian Web", Georgia, serif;
             margin: 0;
             padding: 0;
             width: 100%; }
@@ -4462,6 +4457,8 @@
               margin-right: 6px;
               position: relative;
               top: 4px; }
+      #sandbox body.the-minute .article--liveblog .block.is-thumbnail .from-content-api p {
+        font-weight: normal; }
       #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api {
         display: -webkit-flex;
         height: 100%;
@@ -4484,7 +4481,6 @@
         #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) {
           margin: 0; }
           #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner {
-            background: #005689;
             border: 0;
             bottom: 0;
             left: 0;
@@ -4536,7 +4532,6 @@
       #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) {
         margin: 0; }
         #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) .figure__inner {
-          background: #005689;
           border: 0;
           bottom: 0;
           left: 0;

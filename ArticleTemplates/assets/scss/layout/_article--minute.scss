@@ -8,7 +8,6 @@ $minute_main: #fff;
 $minute_accent: #ea291f;
 
 @mixin minute_page {
-    background: $minute_bg;
     border: 0;
     bottom: 0;
     left: 0;
@@ -132,7 +131,6 @@ body.the-minute {
     background: $minute_bg;
     height: 100%;
 
-    
     .article--liveblog {
         // Format the article body to take up just the viewport
         .article__body--liveblog {
@@ -153,19 +151,6 @@ body.the-minute {
         }
     }
 
-    // Add a divider line to the top of header and all blocks
-    .block::before,
-    .the-minute__header::before {
-        background: $minute-accent;
-        content: "";
-        display: block;
-        height: 1px;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        z-index: 10;
-    }
-
     // Special "The Minute" header
     .the-minute__header {
         @include minute_page;
@@ -183,12 +168,13 @@ body.the-minute {
     }
 
     .the-minute__standfirst {
-        font: 600 1.7rem/2.2rem $egyptian-display;
+        font: bold 1.7rem/2.2rem $egyptian-text;
         margin-bottom: 24px;
 
         .the-minute__date {
             color: $minute_accent;
             display: block;
+            font: 600 1.7rem/2.2rem $egyptian-display;
         }
     }
 
@@ -243,6 +229,18 @@ body.the-minute {
         // A block represents a page of the briefing and is set to 100% of the viewport
         .block {
             @include minute_page;
+            background: $minute_bg;
+            
+            // create red banding at bottom of page (create as a before pseudo element to avoid z-index conflicts)
+            &::before {
+                background: $minute_accent;
+                bottom: 0;
+                content: "";
+                height: 60px;
+                left: 0;
+                position: absolute;
+                width: 100%;
+            }
 
             // This moves each block into place down the page, the header will sit at the top (i.e. 0%) so each block would
             // move down according to it's position within the article__body, we have to consider "the-minute__header" and empty div "article__body--liveblog__pinned"
@@ -279,7 +277,7 @@ body.the-minute {
                 }
 
                 p {
-                    font: 600 1.7rem/2.2rem $egyptian-display;
+                    font: bold 1.7rem/2.2rem $egyptian-text;
 
                     a {
                         background: transparent;
@@ -304,6 +302,7 @@ body.the-minute {
                         }
 
                         > p {
+                            font: 600 1.7rem/2.2rem $egyptian-display;
                             margin: 0;
                             padding: 0;
 
@@ -335,17 +334,6 @@ body.the-minute {
                         vertical-align: middle;
                     }
 
-                    // testing a red band at bottom of tweet pages (similar to ipad design)
-                    // &::after {
-                    //     background: $minute_accent;
-                    //     bottom: 0;
-                    //     content: "";
-                    //     height: 60px;
-                    //     left: 0;
-                    //     position: absolute;
-                    //     width: 100%;
-                    // }
-
                     blockquote {
                         color: $minute_main;
                         display: inline-block;
@@ -361,7 +349,7 @@ body.the-minute {
                         }
 
                         > p {
-                            font-weight: 600;
+                            font: 600 1.7rem/2.2rem $egyptian-display;
                             margin: 0;
                             padding: 0;
                             width: 100%;
@@ -376,6 +364,15 @@ body.the-minute {
                                 top: 4px;
                             }
                         }
+                    }
+                }
+            }
+
+            // Font weight is different for thumbnail image blocks
+            &.is-thumbnail {
+                .from-content-api {
+                    p {
+                        font-weight: normal;
                     }
                 }
             }
