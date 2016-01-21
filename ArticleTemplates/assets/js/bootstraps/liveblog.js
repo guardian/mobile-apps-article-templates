@@ -4,13 +4,15 @@ define([
     'bonzo',
     'modules/relativeDates',
     'modules/$',
-    'modules/twitter'
+    'modules/twitter',
+    'modules/MyScroll'
 ], function (
     bean,
     bonzo,
     relativeDates,
     $,
-    twitter
+    twitter,
+    MyScroll
 ) {
     'use strict';
 
@@ -129,7 +131,8 @@ define([
                         scrollY: true,
                         momentum: false,
                         snap: true,
-                        bounce: true
+                        bounce: false
+                        // eventPassthrough: true
                     };
 
                 // liveblogElem must be first child of wrapperElem    
@@ -151,7 +154,7 @@ define([
                 liveblogElem.style.height = scrollHeight + "px";
 
                 // initialise scroller
-                scroller = new IScroll(wrapperElem, options);
+                scroller = new MyScroll(wrapperElem, options);
 
                 // onScrollEnd show hide minuteNavElem
                 scroller.on('scrollEnd', modules.onScrollEnd.bind(null, minuteNavElem, scroller));
@@ -174,6 +177,7 @@ define([
                     minuteNavElem.classList.remove("hide");
                 }
             }
+
         },
 
         ready = function () {
@@ -187,7 +191,7 @@ define([
                 twitter.init();
                 if ($('body').hasClass('the-minute')) {
                     // do any "the minute" js here
-                    // modules.initScroller();
+                    modules.initScroller();
                 } else {
                     twitter.enhanceTweets();
                 }
