@@ -45,7 +45,7 @@
             
         </div>
          <div class="article__body article__body--liveblog" id="liveblog-body">
-            <div class="the-minute__header">
+            <div class="the-minute__header" id="the-minute-header">
                 <div class="the-minute__nav">
                     <span class="the-minute__nav-button"></span>
                 </div>
@@ -62,10 +62,9 @@
                 <div class="the-minute__main-media">
                     __MAIN_MEDIA__
                 </div>
-
-                __SPONSORSHIP__
-                
             </div>
+
+            __SPONSORSHIP__
 
             <div class="article__body--liveblog__pinned">
                 __ASIDE_WITNESS__
@@ -99,12 +98,24 @@
                 date = dateArray[3],
                 month = dateArray[4],
                 dateDiv = document.getElementsByClassName('the-minute__date')[0];
-
-            // Format date
+            // Format date & append to div
             date = date % 10 == 1 && date % 100 !== 11 ? date + 'st' : (date % 10 == 2 && date % 100 !== 12 ? date + 'nd' : (date % 10 == 3 && date % 100 !== 13 ? date + 'rd' : date + 'th'));
-
-            // Add class, innerhtml and prepend to standfirst
             dateDiv.innerHTML = dayOfWeek + ' ' + date + ' ' + month;
+
+            // Check for blocks contents and add class accordingly
+            var theMinuteBlocks = document.querySelectorAll('.block--live-key-event, .block--live-summary');
+            for(var i = 0; i < theMinuteBlocks.length; i++) {
+                var thumbnail = theMinuteBlocks[i].getElementsByClassName('element--thumbnail'),
+                    inlineImage = theMinuteBlocks[i].getElementsByClassName('element-image ');
+
+                if (thumbnail.length) {
+                    theMinuteBlocks[i].className += ' is-thumbnail';
+                } else if (inlineImage.length) {
+                    theMinuteBlocks[i].className += ' is-coverimage';
+                } else {
+                    theMinuteBlocks[i].className += ' is-textonly';
+                }
+            }
         }
         window.initTemplate();
     </script>

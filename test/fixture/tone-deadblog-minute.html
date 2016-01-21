@@ -56,7 +56,7 @@
         </div>
 
         <div class="article__body article__body--liveblog " id="liveblog-body ">
-            <div class="the-minute__header">
+            <div class="the-minute__header" id="the-minute-header">
                 <div class="the-minute__nav">
                     <span class="the-minute__nav-button"></span>
                 </div>
@@ -73,7 +73,9 @@
                 <div class="the-minute__main-media">
                     <figure class="element element-image figure-wide">
                         <div class="element__inner">
-                            <a id="main-media-image-enlarge" href="x-gu://gallery/http://media-origin.test.dev-guim.co.uk/1471f968108861f178aa135465ebb143d7b93b34/685_86_2603_1562/1000.jpg"><img id="main-media-image" src="http://media-origin.test.dev-guim.co.uk/1471f968108861f178aa135465ebb143d7b93b34/685_86_2603_1562/1000.jpg" alt="Stop calling me Canadian!"/></a>
+                            <a href="x-gu://gallery/http://media-origin.test.dev-guim.co.uk/1471f968108861f178aa135465ebb143d7b93b34/685_86_2603_1562/1000.jpg">
+                                <img id="main-media-image" src="http://media-origin.test.dev-guim.co.uk/1471f968108861f178aa135465ebb143d7b93b34/685_86_2603_1562/1000.jpg" alt="Stop calling me Canadian!"/>
+                            </a>
                         </div>
                         <figcaption class="main-media__caption" id="main-media-caption">
                             <span class="main-media__caption__icon" data-icon="&#xe044;" aria-hidden="true"></span>
@@ -84,7 +86,6 @@
                         </figcaption>
                     </figure>
                 </div>
-                
             </div>
 
             <div class="article__body--liveblog__pinned ">
@@ -229,6 +230,20 @@
                         </figure>
                     </div>
                     <p class="block__updated">Last Updated: 13:56 GMT Monday, 18 January 2016</p>
+                </div>
+            </div>
+
+            <div class="block block--live-key-event" id="block-569e0c34e4b0ce056017c4c0">
+                <p class="block__time" title="10:36">10:36</p>
+
+                <div class="block__body">
+                    <div class="from-content-api prose resizable selectable">
+                        <h2 class="block__title">Quote of the day</h2>
+                        <blockquote class="quoted"> 
+                            <p>Some guy said something about something or someone else in order to discredit them or maybe even agree with them. Either way, they probably didn’t mean it.</p> 
+                        </blockquote>
+                    </div>
+                    <p class="block__updated">Last Updated: 10:36 GMT Tuesday, 19 January 2016</p>
                 </div>
             </div>
 
@@ -450,14 +465,20 @@
             date = date % 10 == 1 && date % 100 !== 11 ? date + 'st' : (date % 10 == 2 && date % 100 !== 12 ? date + 'nd' : (date % 10 == 3 && date % 100 !== 13 ? date + 'rd' : date + 'th'));
             dateDiv.innerHTML = dayOfWeek + ' ' + date + ' ' + month;
 
-            // Check for key event blocks containing thumbnail and add class
-            var keyEventBlocks = document.getElementsByClassName('block--live-key-event');
-            for(var i = 0; i < keyEventBlocks.length; i++) {
-                var thumbnail = keyEventBlocks[i].getElementsByClassName('element--thumbnail');
+            // Check for blocks contents and add class accordingly
+            var theMinuteBlocks = document.querySelectorAll('.block--live-key-event, .block--live-summary');
+            for(var i = 0; i < theMinuteBlocks.length; i++) {
+                var thumbnail = theMinuteBlocks[i].getElementsByClassName('element--thumbnail'),
+                    inlineImage = theMinuteBlocks[i].getElementsByClassName('element-image ');
+
                 if (thumbnail.length) {
-                    keyEventBlocks[i].className += ' is-thumbnail';
+                    theMinuteBlocks[i].className += ' is-thumbnail';
+                } else if (inlineImage.length) {
+                    theMinuteBlocks[i].className += ' is-coverimage';
+                } else {
+                    theMinuteBlocks[i].className += ' is-textonly';
                 }
-            };
+            }
         }
         window.initTemplate();
     </script>
