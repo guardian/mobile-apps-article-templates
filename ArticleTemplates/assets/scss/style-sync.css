@@ -2823,14 +2823,6 @@ body.the-minute {
       position: absolute;
       right: 0;
       top: 0; }
-      body.the-minute .article--liveblog .block::before {
-        background: #ea291f;
-        bottom: 0;
-        content: "";
-        height: 60px;
-        left: 0;
-        position: absolute;
-        width: 100%; }
       body.the-minute .article--liveblog .block:nth-of-type(3) {
         -webkit-transform: translateY(100%);
         transform: translateY(100%); }
@@ -2895,7 +2887,7 @@ body.the-minute {
       body.the-minute .article--liveblog .block .from-content-api p {
         color: #fff;
         margin: 12px 12px 18px;
-        max-width: 360px;
+        max-width: 460px;
         padding: 0;
         position: relative;
         width: 80%;
@@ -2910,8 +2902,13 @@ body.the-minute {
           text-shadow: none; }
       body.the-minute .article--liveblog .block .from-content-api h2 {
         font: 100 3.2rem/3.4rem "Guardian Egyptian Web", Georgia, serif; }
+        body.the-minute .article--liveblog .block .from-content-api h2 .counter {
+          color: #ea291f;
+          display: inline-block;
+          font-weight: 600;
+          margin-right: 4px; }
       body.the-minute .article--liveblog .block .from-content-api blockquote {
-        max-width: 360px;
+        max-width: 460px;
         width: 85%; }
         body.the-minute .article--liveblog .block .from-content-api blockquote.quoted {
           padding: 0;
@@ -2955,7 +2952,9 @@ body.the-minute {
           z-index: 1;
           background: #ea291f;
           color: #fff;
+          min-height: 60px;
           bottom: 0;
+          left: 0;
           position: absolute; }
           body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail figcaption .element-image__caption,
           body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail figcaption .element-image__credit {
@@ -3015,12 +3014,13 @@ body.the-minute {
       body.the-minute .article--liveblog .block .from-content-api aside.element-rich-link {
         border: none;
         margin: -6px 12px 18px;
-        max-width: 360px;
+        max-width: 460px;
         padding: 0;
         width: 80%; }
         body.the-minute .article--liveblog .block .from-content-api aside.element-rich-link p {
           margin: 0;
-          padding: 0; }
+          padding: 0;
+          width: 100%; }
         body.the-minute .article--liveblog .block .from-content-api aside.element-rich-link a {
           background: transparent;
           border-bottom: 1px solid #fff;
@@ -3140,6 +3140,7 @@ body.the-minute {
           z-index: 1;
           color: rgba(255, 255, 255, 0.75);
           bottom: 0;
+          left: 0;
           position: absolute; }
           body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption .element-image__caption,
           body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption .element-image__credit {

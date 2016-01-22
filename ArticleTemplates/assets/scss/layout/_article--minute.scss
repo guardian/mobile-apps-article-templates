@@ -65,6 +65,7 @@ $minute_accent: #ea291f;
         @if ($type == thumbnail) {
             background: $minute_accent;
             color: $minute_main;
+            min-height: 60px;
         } @else {
             color: rgba($minute_main, 0.75);
         }
@@ -74,6 +75,7 @@ $minute_accent: #ea291f;
             position: relative;
         } @else {
             bottom: 0;
+            left: 0;
             position: absolute;
         }
 
@@ -285,15 +287,15 @@ body.the-minute {
             @include minute_page;
             
             // create red banding at bottom of page (create as a before pseudo element to avoid z-index conflicts)
-            &::before {
-                background: $minute_accent;
-                bottom: 0;
-                content: "";
-                height: 60px;
-                left: 0;
-                position: absolute;
-                width: 100%;
-            }
+            // &::before {
+            //     background: $minute_accent;
+            //     bottom: 0;
+            //     content: "";
+            //     height: 60px;
+            //     left: 0;
+            //     position: absolute;
+            //     width: 100%;
+            // }
 
             // This moves each block into place down the page, the header will sit at the top (i.e. 0%) so each block would
             // move down according to it's position within the article__body, we have to consider "the-minute__header" and empty div "article__body--liveblog__pinned"
@@ -324,7 +326,7 @@ body.the-minute {
                 p {
                     color: $minute_main;
                     margin: 12px 12px 18px;
-                    max-width: 360px;
+                    max-width: 460px;
                     padding: 0;
                     position: relative;
                     width: 80%;
@@ -345,10 +347,17 @@ body.the-minute {
 
                 h2 {
                     font: 100 3.2rem/3.4rem $egyptian-display;
+
+                    .counter {
+                        color: $minute_accent;
+                        display: inline-block;
+                        font-weight: 600;
+                        margin-right: 4px;
+                    }
                 }
 
                 blockquote {
-                    max-width: 360px;
+                    max-width: 460px;
                     width: 85%;
 
                     &.quoted {
@@ -431,13 +440,14 @@ body.the-minute {
                 aside.element-rich-link {
                     border: none;
                     margin: -6px 12px 18px;
-                    max-width: 360px;
+                    max-width: 460px;
                     padding: 0;
                     width: 80%;
 
                     p {
                         margin: 0;
                         padding: 0;
+                        width: 100%;
                     }
 
                     a {

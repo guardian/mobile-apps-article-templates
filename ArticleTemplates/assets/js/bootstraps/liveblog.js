@@ -117,6 +117,31 @@ define([
                 window.applyNativeFunctionCall('liveblogUpdateBlock');
             },
 
+            setupTheMinute: function() {
+                // Check for blocks contents and add class accordingly
+                $('.block--live-key-event, .block--live-summary').each(function(block, index) {
+                    var thumbnail = block.getElementsByClassName('element--thumbnail'),
+                        inlineImage = block.getElementsByClassName('element-image ');
+
+                    if (thumbnail.length) {
+                        $(block).addClass('is-thumbnail');
+                    } else if (inlineImage.length) {
+                        $(block).addClass('is-coverimage');
+                    } else {
+                        $(block).addClass('is-textonly');
+                    }
+                });
+
+                // Handle numbered headlines
+                $('.block__title').each(function(title, index) {
+                    var titleString = $(title).html().replace(/^([0-9]+)[.]*[ ]*/g, '<span class="counter">$1</span>');
+                    $(title).html(titleString);
+                });
+
+                // Initialise the scroller
+                modules.initScroller();
+            },
+
             initScroller: function () {
                 var i, 
                     height, 
@@ -189,7 +214,7 @@ define([
                 modules.liveMore();
                 if ($('body').hasClass('the-minute')) {
                     // do any "the minute" js here
-                    modules.initScroller();
+                    modules.setupTheMinute();
                 } else {
                     setInterval(window.liveblogTime, 30000);
                     $('.the-minute__header, .the-minute__nav').remove();
