@@ -25,7 +25,8 @@ define([
     }
 
     function enhanceTweets() {
-        if ($('body').hasClass('the-minute')) {
+        if ($('body').hasClass('the-minute') && $('body').hasClass('advert-config--mobile')) {
+            // dont enhance tweets on mobile "the minute"
             return;
         }
 

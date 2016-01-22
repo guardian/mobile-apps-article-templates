@@ -61,6 +61,11 @@ $minute_accent: #ea291f;
         width: 100%;
         z-index: 1;
 
+        // on landscape tablets give a bit more spacing
+        @include mq($from: col3) {
+            padding-left: 40px;
+        }
+
         // text colour & background colour are different for thumbnails
         @if ($type == thumbnail) {
             background: $minute_accent;
@@ -84,6 +89,7 @@ $minute_accent: #ea291f;
             @include text-ellipses(2);
             font-size: 1.3rem;
             line-height: 1.6rem;
+            max-width: 460px;
         }
 
         .element-image__credit {
@@ -141,9 +147,14 @@ body.the-minute {
         color: $minute_main;
         font: 100 4.5rem/5rem $egyptian-display;
         margin: 12px;
-        max-width: 320px;
+        max-width: 460px;
         width: 80%;
         z-index: 10;
+        
+        // on landscape tablets give a bit more spacing
+        @include mq($from: col3) {
+            margin-left: 40px;
+        }
     }
 
     .the-minute__standfirst {
@@ -194,12 +205,17 @@ body.the-minute {
             width: 100%;
             z-index: 1;
 
-            
+            // on landscape tablets give a bit more spacing
+            @include mq($from: col3) {
+                padding-left: 40px;
+            }
+
             .main-media__caption__text span:first-child,
             .main-media__caption__credit {
                 @include text-ellipses(2);
                 font-size: 1.3rem;
                 line-height: 1.6rem;
+                max-width: 460px;
             }
 
             .main-media__caption__credit {
@@ -285,17 +301,6 @@ body.the-minute {
         // A block represents a page of the briefing and is set to 100% of the viewport
         .block {
             @include minute_page;
-            
-            // create red banding at bottom of page (create as a before pseudo element to avoid z-index conflicts)
-            // &::before {
-            //     background: $minute_accent;
-            //     bottom: 0;
-            //     content: "";
-            //     height: 60px;
-            //     left: 0;
-            //     position: absolute;
-            //     width: 100%;
-            // }
 
             // This moves each block into place down the page, the header will sit at the top (i.e. 0%) so each block would
             // move down according to it's position within the article__body, we have to consider "the-minute__header" and empty div "article__body--liveblog__pinned"
@@ -331,6 +336,11 @@ body.the-minute {
                     position: relative;
                     width: 80%;
                     z-index: 10;
+
+                    // on landscape tablets give a bit more spacing
+                    @include mq($from: col3) {
+                        margin-left: 40px;
+                    }
                 }
 
                 p {
@@ -363,6 +373,11 @@ body.the-minute {
                     &.quoted {
                         padding: 0;
                         margin: 12px 12px 24px;
+
+                        // on landscape tablets give a bit more spacing
+                        @include mq($from: col3) {
+                            margin-left: 40px;
+                        }
 
                         &::before {
                             content: "";
@@ -413,6 +428,11 @@ body.the-minute {
                         vertical-align: middle;
                         width: 75%;
 
+                        // on landscape tablets give a bit more spacing
+                        @include mq($from: col3) {
+                            margin-left: 40px;
+                        }
+
                         // clear standard tweet icon positioning
                         &::before {
                             content: "";
@@ -444,6 +464,11 @@ body.the-minute {
                     padding: 0;
                     width: 80%;
 
+                    // on landscape tablets give a bit more spacing
+                    @include mq($from: col3) {
+                        margin-left: 40px;
+                    }
+
                     p {
                         margin: 0;
                         padding: 0;
@@ -466,11 +491,70 @@ body.the-minute {
                 }
             }
 
-            // Font weight is different for thumbnail image blocks
             &.is-thumbnail {
                 .from-content-api {
+                    // Font weight is different for thumbnail image blocks
                     p {
                         font-weight: normal;
+                    }
+                    
+                    // thumbnail pages are handled differently for landscape tablets
+                    @include mq($from: col3) {
+                        padding-top: 135px;
+
+                        h2 {
+                            left: 40px;
+                            margin: 0;
+                            padding: 0;
+                            position: absolute;
+                            top: 12px;
+                        }
+
+                        h2:first-child + *,
+                        > *:first-child {
+                            margin-top: -15px;
+                            padding-top: 0;
+                        }
+
+                        > p,
+                        > blockquote,
+                        > aside {
+                            margin: {
+                                left: 40px;
+                                top: 0;
+                            }
+                            width: calc(40%);
+                        }
+
+                        figure.element--thumbnail {
+                            background: $minute_bg;
+                            max-width: 100%;
+                            position: absolute;
+                            right: 80px;
+                            top: 135px;
+                            width: calc(55% - 80px);
+
+                            &::before {
+                                content: "";
+                                background: rgba($minute_main,.3);
+                                height: 200%;
+                                left: -6px;
+                                position: absolute;
+                                width: 1px;
+                            }
+
+                            .figure__inner,
+                            figcaption {
+                                position: static;
+                            }
+
+                            figcaption {
+                                background: transparent;
+                                color: rgba($minute_main,.7);
+                                margin: 0 0 0 2px;
+                                padding: 0;
+                            }
+                        }
                     }
                 }
             }
