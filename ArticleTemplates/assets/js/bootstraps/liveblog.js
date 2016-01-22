@@ -171,7 +171,7 @@ define([
                 minuteNavElem.addEventListener('touchend', modules.scrollToNextCard.bind(null, minuteNavElem, scroller));
             
                 // update scroll dimensions on orientation change
-                bean.on(window, 'resize', modules.setScrollDimensions.bind(null, liveblogElem));
+                bean.on(window, 'resize', window.ThrottleDebounce.debounce(100, false, modules.setScrollDimensions.bind(null, liveblogElem)));
             },
 
             setScrollDimensions: function (liveblogElem) {
