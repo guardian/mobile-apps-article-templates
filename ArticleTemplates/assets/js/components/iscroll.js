@@ -568,7 +568,7 @@ IScroll.prototype = {
 			return;
 		}
 
-		if ( this._events.flick && duration < 200 && distanceX < 100 && distanceY < 100 ) {
+		if ( this._events.flick && duration < 200 && distanceX < 100 && distanceY < 150 ) {
 			this._execEvent('flick');
 			return;
 		}

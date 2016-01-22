@@ -143,40 +143,23 @@ define([
             },
 
             initScroller: function () {
-                var i, 
-                    height, 
-                    scroller, 
-                    scrollHeight = 0,
+                var scroller,
                     minuteNavElem = document.body.querySelector(".the-minute__nav"),
                     wrapperElem = document.body.querySelector(".article--liveblog"),
                     liveblogElem = wrapperElem.querySelector(".article__body--liveblog"),
-                    topOffset = Math.abs(liveblogElem.offsetTop),
                     options = {
                         scrollX: false,
                         scrollY: true,
                         momentum: false,
                         snap: true,
-                        bounce: false
-                        // eventPassthrough: true
+                        bounce: false,
+                        snapSpeed: 600
                     };
 
-                // liveblogElem must be first child of wrapperElem    
+                // liveblogElem must be first child of wrapperElem
                 wrapperElem.insertBefore(liveblogElem, wrapperElem.children[0]);
 
-                // set heights of each card within scroller
-                for (i = 0; i < liveblogElem.children.length; i++) {
-                    height = liveblogElem.children[i].offsetHeight; 
-                    if (height) {
-                        scrollHeight += height;
-                        liveblogElem.children[i].style.height = height + "px";
-                    }
-                }
-
-                // set height of scroller wrapper
-                wrapperElem.style.height = wrapperElem.offsetHeight + topOffset + "px";
-
-                // set height of scrollable area
-                liveblogElem.style.height = scrollHeight + "px";
+                modules.setScrollDimensions(liveblogElem);
 
                 // initialise scroller
                 scroller = new MyScroll(wrapperElem, options);
@@ -186,7 +169,31 @@ define([
 
                 // add touch event handler to minuteNavElem
                 minuteNavElem.addEventListener('touchend', modules.scrollToNextCard.bind(null, minuteNavElem, scroller));
+            
+                // update scroll dimensions on orientation change
+                bean.on(window, 'resize', modules.setScrollDimensions.bind(null, liveblogElem));
             },
+
+            setScrollDimensions: function (liveblogElem) {
+                var i,
+                    elemHeight,
+                    scroller,
+                    scrollHeight = 0,
+                    windowHeight = window.innerHeight;
+
+                // set heights of each card within scroller
+                for (i = 0; i < liveblogElem.children.length; i++) {
+                    elemHeight = liveblogElem.children[i].offsetHeight;
+                    
+                    if (elemHeight) {
+                        scrollHeight += windowHeight;
+                        liveblogElem.children[i].style.height = windowHeight + "px";
+                    }
+                }
+
+                // set height of scrollable area
+                liveblogElem.style.height = scrollHeight + "px";
+            },           
 
             scrollToNextCard: function (minuteNavElem, scroller, evt) {
                 if ((scroller.currentPage.pageY + 1) !== scroller.pages[0].length) {
@@ -202,7 +209,6 @@ define([
                     minuteNavElem.classList.remove("hide");
                 }
             }
-
         },
 
         ready = function () {
