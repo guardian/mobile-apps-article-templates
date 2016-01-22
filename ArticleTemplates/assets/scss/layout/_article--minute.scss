@@ -94,10 +94,20 @@ $minute_accent: #ea291f;
 
 @mixin minute_flex_content {
     display: -webkit-flex;
+    display: flex;
     height: 100%;
+    -webkit-justify-content: flex-end;
     justify-content: flex-end;
     width: 100%;
     -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+// Hide the special minute header for every other liveblog 
+body:not(.the-minute) {
+    .the-minute__header { 
+        display: none;
+    }
 }
 
 body.the-minute {
@@ -116,13 +126,6 @@ body.the-minute {
             display: none;
         }
     }
-
-    // To compensate for action bar
-    // &.ios {
-    //     .article__body--liveblog {
-    //        top: -45px;  // TODO: Check non retina devices 
-    //     }
-    // }
 
     // Special "The Minute" header
     .the-minute__header {
@@ -228,7 +231,8 @@ body.the-minute {
         right: 0;
         width: 70px;
         z-index: 20;
-        -webkit-transition: opacity 100ms linear; 
+        -webkit-transition: opacity 100ms linear;
+        transition: opacity 100ms linear;
         
         &-button {
             border: 1px solid rgba($minute_main, 0.5);
@@ -249,6 +253,7 @@ body.the-minute {
                 left: 50%;
                 position: absolute;
                 top: 50%;
+                -webkit-transform: translateX(-50%) translateY(calc(-50% - 2px));
                 transform: translateX(-50%) translateY(calc(-50% - 2px));
             }
         }
@@ -266,6 +271,7 @@ body.the-minute {
             @include minute_page;
             z-index: 1;
             -webkit-transform: translateZ(0);
+            transform: translateZ(0);
         }
 
         // Hide elements within article
@@ -295,6 +301,7 @@ body.the-minute {
             @for $i from 3 through 20 {
                 &:nth-of-type(#{$i}) {
                     -webkit-transform: translateY(100% * ($i - 2));
+                    transform: translateY(100% * ($i - 2));
                 }
             }
 
@@ -316,15 +323,16 @@ body.the-minute {
                 h2,
                 p {
                     color: $minute_main;
-                    margin: 12px 80px 18px 12px;
+                    margin: 12px 12px 18px;
                     max-width: 360px;
                     padding: 0;
                     position: relative;
+                    width: 80%;
                     z-index: 10;
                 }
 
                 p {
-                    font: bold 1.7rem/2.2rem $egyptian-text;
+                    font: bold 1.6rem/2.1rem $egyptian-text;
 
                     a {
                         background: transparent;
@@ -336,10 +344,13 @@ body.the-minute {
                 }
 
                 h2 {
-                    font: 100 3.5rem/3.6rem $egyptian-display;
+                    font: 100 3.2rem/3.4rem $egyptian-display;
                 }
 
                 blockquote {
+                    max-width: 360px;
+                    width: 85%;
+
                     &.quoted {
                         padding: 0;
                         margin: 12px 12px 24px;
@@ -352,6 +363,7 @@ body.the-minute {
                             font: 600 1.7rem/2.2rem $egyptian-display;
                             margin: 0;
                             padding: 0;
+                            width: 100%;
 
                             &::before {
                                 color: $minute_accent;
@@ -373,6 +385,7 @@ body.the-minute {
                 figure.element-tweet {
                     @include minute_page(false);
                     font-size: 0; // avoid the inline-block spacing issue
+                    text-align: center;
                     
                     &::before {
                         content: "";
@@ -384,18 +397,19 @@ body.the-minute {
                     blockquote {
                         color: $minute_main;
                         display: inline-block;
-                        margin: 0 80px 120px 12px;
+                        margin: 0 12px 120px;
                         max-width: 360px;
                         position: relative;
+                        text-align: left;
                         vertical-align: middle;
-                        width: auto;
+                        width: 75%;
 
                         // clear standard tweet icon positioning
                         &::before {
                             content: "";
                         }
 
-                        > p {
+                        p {
                             font: 600 1.7rem/2.2rem $egyptian-display;
                             margin: 0;
                             padding: 0;
@@ -410,6 +424,33 @@ body.the-minute {
                                 position: relative;
                                 top: 4px;
                             }
+                        }
+                    }
+                }
+
+                aside.element-rich-link {
+                    border: none;
+                    margin: -6px 12px 18px;
+                    max-width: 360px;
+                    padding: 0;
+                    width: 80%;
+
+                    p {
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    a {
+                        background: transparent;
+                        border-bottom: 1px solid $minute_main;
+                        color: $minute_main !important;
+                        display: inline;
+                        position: relative;
+                        text-shadow: none;
+
+                        &::before {
+                            content: "";
+                            display: none;
                         }
                     }
                 }

@@ -193,14 +193,15 @@ define([
                 window.liveblogTime();
                 modules.blockUpdates();
                 modules.liveMore();
-                setInterval(window.liveblogTime, 30000);
-                twitter.init();
                 if ($('body').hasClass('the-minute')) {
                     // do any "the minute" js here
                     modules.initScroller();
                 } else {
-                    twitter.enhanceTweets();
+                    setInterval(window.liveblogTime, 30000);
+                    $('.the-minute__header, .the-minute__nav').remove();
                 }
+                twitter.init();
+                twitter.enhanceTweets();
                 // console.info("Liveblog ready");
             }
         };
