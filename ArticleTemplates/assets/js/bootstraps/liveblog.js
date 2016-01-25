@@ -66,21 +66,16 @@ define([
             setupGlobals: function () {
                 // Global function to handle liveblogs, called by native code
                 window.liveblogDeleteBlock = function (blockID) {
-                    console.log("** liveblogDeleteBlock");
-
                     $('#' + blockID).remove();
                 };
 
                 window.liveblogUpdateBlock = function (blockID, html) {
-                    console.log("** liveblogUpdateBlock");
-
                     $("#" + blockID).replaceWith(html);
                 };
 
                 window.liveblogLoadMore = function (html) {
-                    console.log("** liveblogLoadMore");
-
                     html = bonzo.create(html);
+                    
                     $('.loading--liveblog').removeClass("loading--visible");
                     $(html).appendTo('.article__body');
 
@@ -92,8 +87,6 @@ define([
                 };
 
                 window.liveblogTime = function () {
-                    console.log("** liveblogTime");
-
                     if ($(".tone--liveBlog").hasClass("is-live")) {
                         relativeDates.init('.block__time', 'title');
                     } else {
@@ -104,8 +97,6 @@ define([
                 };
 
                 window.showLiveMore = function (show) {
-                    console.log("** showLiveMore");
-
                     if (show) {
                         $('.more--live-blogs').show();
                     } else {
@@ -172,6 +163,11 @@ define([
             
                 // update scroll dimensions on orientation change
                 bean.on(window, 'resize', window.ThrottleDebounce.debounce(100, false, modules.setScrollDimensions.bind(null, liveblogElem)));
+
+                // enhance tweets in scroller for large devices only
+                if (document.body.classList.contains('advert-config--tablet')) {
+                    twitter.checkForTweets(liveblogElem);
+                }
             },
 
             setScrollDimensions: function (liveblogElem) {
@@ -218,15 +214,15 @@ define([
                 window.liveblogTime();
                 modules.blockUpdates();
                 modules.liveMore();
+                twitter.init();
                 if ($('body').hasClass('the-minute')) {
                     // do any "the minute" js here
                     modules.setupTheMinute();
                 } else {
                     setInterval(window.liveblogTime, 30000);
                     $('.the-minute__header, .the-minute__nav').remove();
+                    twitter.enhanceTweets();
                 }
-                twitter.init();
-                twitter.enhanceTweets();
                 // console.info("Liveblog ready");
             }
         };
