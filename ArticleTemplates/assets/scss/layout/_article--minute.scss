@@ -122,19 +122,6 @@ body.the-minute {
     background: $minute_bg;
     height: 100%;
 
-    .article--liveblog {
-        // Format the article body to take up just the viewport
-        .article__body--liveblog {
-            @include minute_page;
-        }
-
-        // Hide elements within article
-        .article__header,
-        .article__body--liveblog__pinned {
-            display: none;
-        }
-    }
-
     // Special "The Minute" header
     .the-minute__header {
         @include minute_page;
@@ -252,6 +239,11 @@ body.the-minute {
         -webkit-transition: opacity 100ms linear;
         transition: opacity 100ms linear;
         
+        @include mq($from: col4) {
+            margin-right: -600px;
+            right: 50%;
+        }
+
         &-button {
             border: 1px solid rgba($minute_main, 0.5);
             border-radius: 50%;
@@ -285,11 +277,22 @@ body.the-minute {
     .article--liveblog {
         @include minute_page;
 
+        @include mq($from: col4) {
+            background: darken($minute_bg, 10%);
+        }
+
+        // Format the article body to take up just the viewport
         .article__body--liveblog {
             @include minute_page;
             z-index: 1;
             -webkit-transform: translateZ(0);
             transform: translateZ(0);
+
+            @include mq($from: col4) {
+                left: 50%;
+                margin-left: -600px;
+                width: 1200px;
+            }
         }
 
         // Hide elements within article
@@ -301,6 +304,18 @@ body.the-minute {
         // A block represents a page of the briefing and is set to 100% of the viewport
         .block {
             @include minute_page;
+
+            @include mq($from: col4) {
+                &::before {
+                    background: $minute_accent;
+                    content: "";
+                    height: 2px;
+                    left: 0;
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                }
+            }
 
             // This moves each block into place down the page, the header will sit at the top (i.e. 0%) so each block would
             // move down according to it's position within the article__body, we have to consider "the-minute__header" and empty div "article__body--liveblog__pinned"
@@ -537,7 +552,7 @@ body.the-minute {
                             &::before {
                                 content: "";
                                 background: rgba($minute_main,.3);
-                                height: 200%;
+                                height: 2000px;
                                 left: -6px;
                                 position: absolute;
                                 width: 1px;
