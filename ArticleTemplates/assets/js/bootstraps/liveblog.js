@@ -165,14 +165,20 @@ define([
                 minuteNavElem.addEventListener('touchend', modules.scrollToNextCard.bind(null, minuteNavElem, scroller));
             
                 // update scroll dimensions on orientation change
-                bean.on(window, 'resize', window.ThrottleDebounce.debounce(100, false, modules.setScrollDimensions.bind(null, liveblogElem)));
+                bean.on(window, 'resize', window.ThrottleDebounce.debounce(100, false, modules.onWindowResize.bind(null, liveblogElem, scroller)));
 
                 // enhance tweets in scroller for large devices only
                 if (document.body.classList.contains('advert-config--tablet')) {
                     twitter.checkForTweets(liveblogElem);
                 }
+            },
 
-                console.log("pages", scroller.pages);
+            onWindowResize: function (liveblogElem, scroller) {
+                modules.setScrollDimensions(liveblogElem);
+
+                setTimeout(function () {
+                    scroller.refresh();
+                }, 0);
             },
 
             setScrollDimensions: function (liveblogElem) {
@@ -198,7 +204,8 @@ define([
 
             scrollToNextCard: function (minuteNavElem, scroller, evt) {
                 if ((scroller.currentPage.pageY + 1) !== scroller.pages[0].length) {
-                    scroller.next();
+                    scroller.goToPage(0, scroller.currentPage.pageY + 1, 600);
+
                     modules.onScrollEnd(minuteNavElem, scroller);
                 }
             },

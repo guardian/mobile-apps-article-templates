@@ -23,9 +23,6 @@ define(
                 pageY: evt.pageY
             };
 
-            // save time of start for later comparison
-            this.startTime = new Date();
-
             if (startScroll) {
                 this.takeControlFromNative();
                 this.scrollInProgress = true;
@@ -43,7 +40,7 @@ define(
 
                 clearTimeout(this.moveTimeout);
 
-                this.moveTimeout = setTimeout(this.handleFailedSwipe.bind(this, origEvent), 200);
+                this.moveTimeout = setTimeout(this.handleFailedSwipe.bind(this, origEvent), 50);
 
                 evt = evt.touches ? evt.touches[0] : evt;
                 absDx = Math.abs(evt.pageX - this.startPos.pageX);
@@ -71,7 +68,6 @@ define(
                 this.ancestor.prototype._end.bind(this)(evt);
                 this.scrollDirection = null;
                 this.startPos = null;
-                this.startTime = null;
             }
         };
 
@@ -98,14 +94,7 @@ define(
                 if (evt.pageY < this.startPos.pageY &&
                     evt.pageY < topRange &&
                     this.pages[0][this.currentPage.pageY + 1]) {
-                    currentTime = new Date();
-                    coveredDistance = this.startPos.pageY - evt.pageY;
-                    elapsedTime = currentTime - this.startTime;
-                    msPerPixel = elapsedTime / coveredDistance;
-                    scrollToPosition = Math.abs(this.pages[0][this.currentPage.pageY + 1].y + Math.abs(this.y));
-                    timeToScroll = msPerPixel * Math.abs(scrollToPosition);
-
-                    this.scrollTo(0, this.pages[0][this.currentPage.pageY + 1].y, timeToScroll);
+                    this.scrollTo(0, this.pages[0][this.currentPage.pageY + 1].y, 500);
                 }
             }
         };
