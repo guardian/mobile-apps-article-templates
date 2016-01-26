@@ -82,10 +82,7 @@ define(
 
         MyScroll.prototype.handleFailedSwipe = function(evt) {
             if (this.startPos) {
-                var currentTime, coveredDistance, elapsedTime, msPerPixel,
-                    scrollToPosition, timeToScroll, topRange;
-
-                topRange = 50;
+                var topRange = 50;
 
                 // if last registered touch was an upward scroll
                 // at the top of the screen
