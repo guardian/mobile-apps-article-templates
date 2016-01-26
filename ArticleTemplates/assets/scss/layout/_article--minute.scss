@@ -577,6 +577,7 @@ body.the-minute {
 
                 aside.element-rich-link {
                     border: none;
+                    float: none;
                     margin: -6px 12px 18px;
                     max-width: 460px;
                     padding: 0;
@@ -736,6 +737,8 @@ body.the-minute {
                 // Clears content from the bottom red bar (only happens text only key events)
                 &.is-textonly {
                     .from-content-api {
+                        height: calc(100% - 60px);
+                        overflow: hidden;
                         padding-bottom: 60px;
                     }
                 }
