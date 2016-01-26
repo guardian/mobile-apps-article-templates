@@ -84,6 +84,9 @@ define([
                     window.liveblogTime();
                     window.loadEmbeds();
                     window.loadInteractives();
+
+                    // check for tweets
+                    twitter.checkForTweets(document.body);
                 };
 
                 window.liveblogTime = function () {
@@ -168,6 +171,8 @@ define([
                 if (document.body.classList.contains('advert-config--tablet')) {
                     twitter.checkForTweets(liveblogElem);
                 }
+
+                console.log("pages", scroller.pages);
             },
 
             setScrollDimensions: function (liveblogElem) {
