@@ -9,7 +9,7 @@
     <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/shim.js"></script>
 </head>
 
-<body class="tone--__SECTION_TONE__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__ advert-config--__ADS_CONFIG__ __IS_LIVE__ __IS_ADVERTISING__" data-content-type="liveblog" data-ads-enabled="__ADS_ENABLED__" data-ads-enable-hiding="__ADS_ENABLE_HIDING__" data-ads-config="__ADS_CONFIG__" style="margin-top: __ACTIONBARHEIGHT__px;" data-font-size="__FONT_SIZE_INT__"  data-template-directory="__TEMPLATES_DIRECTORY__" data-page-id="__PAGE_ID__" data-mpu-after-paragraphs="__MPU_AFTER_PARAGRAPHS__" data-use-ads-ready="__ADS_FAST_CALLBACK__">
+<body class="tone--__SECTION_TONE__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__ advert-config--__ADS_CONFIG__ __IS_LIVE__ __IS_ADVERTISING__ __THE_MINUTE__" data-content-type="liveblog" data-ads-enabled="__ADS_ENABLED__" data-ads-enable-hiding="__ADS_ENABLE_HIDING__" data-ads-config="__ADS_CONFIG__" style="margin-top: __ACTIONBARHEIGHT__px;" data-font-size="__FONT_SIZE_INT__"  data-template-directory="__TEMPLATES_DIRECTORY__" data-page-id="__PAGE_ID__" data-mpu-after-paragraphs="__MPU_AFTER_PARAGRAPHS__" data-use-ads-ready="__ADS_FAST_CALLBACK__">
     <div class="article article--liveblog">
         <div class="article__header">
             <div class="section section__container" id="section">
@@ -42,12 +42,34 @@
             </div>
 
             __SPONSORSHIP__
-            
         </div>
+
+        <div class="the-minute__nav">
+            <span class="the-minute__nav-button"></span>
+        </div>
+
          <div class="article__body article__body--liveblog" id="liveblog-body">
+            <div class="the-minute__header">    
+                <h1 class="the-minute__headline selectable">__TITLE__</h1>
+                
+                <div class="the-minute__standfirst selectable">
+                    <div class="the-minute__standfirst-inner">
+                        <span class="the-minute__date"></span>
+                        __STANDFIRST__
+                    </div>
+                </div>
+
+                <div class="the-minute__main-media">
+                    __MAIN_MEDIA__
+                </div>
+            </div>
+
+            __SPONSORSHIP__
+
             <div class="article__body--liveblog__pinned">
                 __ASIDE_WITNESS__
             </div>
+
             __BLOCKS__
         </div>
 
@@ -69,6 +91,32 @@
     __COMMENTS_MODULE__
 
     <script type="text/javascript">
+        if (document.body.classList.contains('the-minute')) {
+            // Format date and add above standfirst
+            var dateArray = document.getElementById("published-date").innerHTML.split(' '),
+                dayOfWeek = dateArray[2].replace(',',''),
+                date = dateArray[3],
+                month = dateArray[4],
+                dateDiv = document.getElementsByClassName('the-minute__date')[0];
+            // Format date & append to div
+            date = date % 10 == 1 && date % 100 !== 11 ? date + 'st' : (date % 10 == 2 && date % 100 !== 12 ? date + 'nd' : (date % 10 == 3 && date % 100 !== 13 ? date + 'rd' : date + 'th'));
+            dateDiv.innerHTML = dayOfWeek + ' ' + date + ' ' + month;
+
+            // Check for blocks contents and add class accordingly
+            var theMinuteBlocks = document.querySelectorAll('.block--live-key-event, .block--live-summary');
+            for(var i = 0; i < theMinuteBlocks.length; i++) {
+                var thumbnail = theMinuteBlocks[i].getElementsByClassName('element--thumbnail'),
+                    inlineImage = theMinuteBlocks[i].getElementsByClassName('element-image ');
+
+                if (thumbnail.length) {
+                    theMinuteBlocks[i].className += ' is-thumbnail';
+                } else if (inlineImage.length) {
+                    theMinuteBlocks[i].className += ' is-coverimage';
+                } else {
+                    theMinuteBlocks[i].className += ' is-textonly';
+                }
+            }
+        }
         window.initTemplate();
     </script>
 </body>
