@@ -2668,22 +2668,40 @@ body.the-minute {
     width: 100%;
     -webkit-flex-direction: column;
     flex-direction: column;
-    padding-bottom: 80px; }
+    padding-bottom: 60px; }
   body.the-minute .the-minute__headline,
   body.the-minute .the-minute__standfirst {
     color: #fff;
-    font: 100 4.5rem/5rem "Guardian Egyptian Web", Georgia, serif;
-    margin: 12px;
+    font: 100 4.3rem/4.3rem "Guardian Egyptian Web", Georgia, serif;
+    margin: 0 12px 12px;
     max-width: 460px;
     width: 80%;
     z-index: 10; }
+    @media all and (max-width: 320px) {
+      body.the-minute .the-minute__headline,
+      body.the-minute .the-minute__standfirst {
+        font-size: 3.5rem;
+        line-height: 3.5rem;
+        margin: 0 8px 8px;
+        width: calc(100% - 16px); } }
+    @media all and (max-width: 320px) and (min-height: 481px) {
+      body.the-minute .the-minute__headline,
+      body.the-minute .the-minute__standfirst {
+        margin-bottom: 12px; } }
     @media all and (min-width: 56.25em) {
       body.the-minute .the-minute__headline,
       body.the-minute .the-minute__standfirst {
         margin-left: 40px; } }
   body.the-minute .the-minute__standfirst {
-    font: bold 1.7rem/2.2rem "Guardian Text Egyptian Web", Georgia, serif;
-    margin-bottom: 24px; }
+    font: bold 1.7rem/2.2rem "Guardian Text Egyptian Web", Georgia, serif; }
+    @media all and (max-width: 320px) {
+      body.the-minute .the-minute__standfirst {
+        font-size: 1.5rem;
+        line-height: 1.8rem; } }
+    @media all and (max-width: 320px) and (min-height: 481px) {
+      body.the-minute .the-minute__standfirst {
+        font-size: 1.6rem;
+        line-height: 2.0rem; } }
     body.the-minute .the-minute__standfirst .the-minute__date {
       color: #ea291f;
       display: block;
@@ -2711,6 +2729,9 @@ body.the-minute {
           position: absolute;
           width: 100%;
           z-index: 1; }
+          @media all and (max-width: 320px) {
+            body.the-minute .the-minute__main-media figure .element__inner::before {
+              background: linear-gradient(transparent, rgba(0, 0, 0, 0.8)); } }
       body.the-minute .the-minute__main-media figure img {
         height: 100%;
         object-fit: cover;
@@ -2723,6 +2744,10 @@ body.the-minute {
       position: absolute;
       width: 100%;
       z-index: 1; }
+      @media all and (max-width: 320px) {
+        body.the-minute .the-minute__main-media figcaption {
+          padding-left: 8px;
+          padding-right: 72px; } }
       @media all and (min-width: 56.25em) {
         body.the-minute .the-minute__main-media figcaption {
           padding-left: 40px; } }
@@ -2902,18 +2927,31 @@ body.the-minute {
       body.the-minute .article--liveblog .block .from-content-api h2,
       body.the-minute .article--liveblog .block .from-content-api p {
         color: #fff;
-        margin: 12px 12px 18px;
+        margin: 0 12px 18px;
         max-width: 460px;
         padding: 0;
         position: relative;
         width: 80%;
         z-index: 10; }
+        @media all and (max-width: 320px) {
+          body.the-minute .article--liveblog .block .from-content-api h2,
+          body.the-minute .article--liveblog .block .from-content-api p {
+            margin: 0 8px 8px;
+            width: calc(100% - 16px); } }
+        @media all and (max-width: 320px) and (min-height: 481px) {
+          body.the-minute .article--liveblog .block .from-content-api h2,
+          body.the-minute .article--liveblog .block .from-content-api p {
+            margin-bottom: 12px; } }
         @media all and (min-width: 56.25em) {
           body.the-minute .article--liveblog .block .from-content-api h2,
           body.the-minute .article--liveblog .block .from-content-api p {
             margin-left: 40px; } }
       body.the-minute .article--liveblog .block .from-content-api p {
         font: bold 1.6rem/2.1rem "Guardian Text Egyptian Web", Georgia, serif; }
+        @media all and (max-width: 320px) {
+          body.the-minute .article--liveblog .block .from-content-api p {
+            font-size: 1.6rem;
+            line-height: 1.8rem; } }
         body.the-minute .article--liveblog .block .from-content-api p a {
           background: transparent;
           border-bottom: 1px solid #fff;
@@ -2922,6 +2960,10 @@ body.the-minute {
           text-shadow: none; }
       body.the-minute .article--liveblog .block .from-content-api h2 {
         font: 100 3.2rem/3.4rem "Guardian Egyptian Web", Georgia, serif; }
+        @media all and (max-width: 320px) {
+          body.the-minute .article--liveblog .block .from-content-api h2 {
+            font-size: 3rem;
+            line-height: 3rem; } }
         body.the-minute .article--liveblog .block .from-content-api h2 .counter {
           color: #ea291f;
           display: inline-block;
@@ -2930,9 +2972,16 @@ body.the-minute {
       body.the-minute .article--liveblog .block .from-content-api blockquote {
         max-width: 460px;
         width: 85%; }
+        @media all and (max-width: 320px) {
+          body.the-minute .article--liveblog .block .from-content-api blockquote {
+            width: 100%; } }
         body.the-minute .article--liveblog .block .from-content-api blockquote.quoted {
           padding: 0;
-          margin: 12px 12px 24px; }
+          margin: 0 12px 24px; }
+          @media all and (max-width: 320px) {
+            body.the-minute .article--liveblog .block .from-content-api blockquote.quoted {
+              margin: 0 8px 8px;
+              width: calc(100% - 16px); } }
           @media all and (min-width: 56.25em) {
             body.the-minute .article--liveblog .block .from-content-api blockquote.quoted {
               margin-left: 40px; } }
@@ -2940,9 +2989,13 @@ body.the-minute {
             content: ""; }
           body.the-minute .article--liveblog .block .from-content-api blockquote.quoted > p {
             font: 600 1.7rem/2.2rem "Guardian Egyptian Web", Georgia, serif;
-            margin: 0;
+            margin: -15px 0 0 0;
             padding: 0;
             width: 100%; }
+            @media all and (max-width: 320px) {
+              body.the-minute .article--liveblog .block .from-content-api blockquote.quoted > p {
+                font-size: 1.6rem;
+                line-height: 1.8rem; } }
             body.the-minute .article--liveblog .block .from-content-api blockquote.quoted > p::before {
               color: #ea291f;
               content: "\e092";
@@ -2979,6 +3032,11 @@ body.the-minute {
           bottom: 0;
           left: 0;
           position: absolute; }
+          @media all and (max-width: 320px) {
+            body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail figcaption {
+              background: rgba(234, 41, 31, 0.6);
+              padding-left: 8px;
+              padding-right: 72px; } }
           @media all and (min-width: 56.25em) {
             body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail figcaption {
               padding-left: 40px; } }
@@ -3050,6 +3108,15 @@ body.the-minute {
         max-width: 460px;
         padding: 0;
         width: 80%; }
+        @media all and (max-width: 320px) {
+          body.the-minute .article--liveblog .block .from-content-api aside.element-rich-link {
+            margin-left: 8px;
+            margin-right: 8px;
+            margin-top: -3px;
+            width: calc(100% - 16px); } }
+        @media all and (max-width: 320px) and (min-height: 481px) {
+          body.the-minute .article--liveblog .block .from-content-api aside.element-rich-link {
+            margin-top: 0; } }
         @media all and (min-width: 56.25em) {
           body.the-minute .article--liveblog .block .from-content-api aside.element-rich-link {
             margin-left: 40px; } }
@@ -3152,6 +3219,9 @@ body.the-minute {
               position: absolute;
               width: 100%;
               z-index: 1; }
+              @media all and (max-width: 320px) {
+                body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner::before {
+                  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8)); } }
             body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner img {
               height: 100%;
               object-fit: cover;
@@ -3163,6 +3233,10 @@ body.the-minute {
             z-index: 1;
             color: rgba(255, 255, 255, 0.75);
             position: relative; }
+            @media all and (max-width: 320px) {
+              body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption {
+                padding-left: 8px;
+                padding-right: 72px; } }
             @media all and (min-width: 56.25em) {
               body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption {
                 padding-left: 40px; } }
@@ -3190,6 +3264,9 @@ body.the-minute {
       body.the-minute .article--liveblog .block.block--live-summary .from-content-api > :first-child {
         margin-top: 0;
         padding-top: 12px; }
+        @media all and (max-width: 320px) {
+          body.the-minute .article--liveblog .block.block--live-summary .from-content-api > :first-child {
+            padding-top: 8px; } }
       body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) {
         margin: 0; }
         body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) .figure__inner {
@@ -3223,6 +3300,10 @@ body.the-minute {
           bottom: 0;
           left: 0;
           position: absolute; }
+          @media all and (max-width: 320px) {
+            body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption {
+              padding-left: 8px;
+              padding-right: 72px; } }
           @media all and (min-width: 56.25em) {
             body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption {
               padding-left: 40px; } }
