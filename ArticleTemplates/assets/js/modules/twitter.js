@@ -38,7 +38,13 @@ define([
     }
 
     function loadScript() {
-        var scriptElement = document.createElement('script');
+        var scriptElement;
+
+        if (document.getElementById('twitter-widget')) {
+            return;
+        }
+
+        scriptElement = document.createElement('script');
 
         scriptElement.id = 'twitter-widget';
         scriptElement.async = true;
