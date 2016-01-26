@@ -30,6 +30,7 @@ $minute_accent: #ea291f;
 
         @if ($type == thumbnail) {
             top: 50%; // only take up half the screen
+            z-index: 15;
         } @else {
             // if full screen add a gradient over image
             &::before {
@@ -66,7 +67,7 @@ $minute_accent: #ea291f;
         border: 0;
         padding: 2px 80px 8px 12px;
         width: 100%;
-        z-index: 1;
+        z-index: 20;
 
         // text colour & background colour are different for thumbnails
         @if ($type == thumbnail) {
@@ -404,13 +405,11 @@ body.the-minute {
                     max-width: 460px;
                     padding: 0;
                     position: relative;
-                    width: 80%;
                     z-index: 10;
 
                     // on very small screens iphone4/s & iphone5/s make things more compact
                     @media all and (max-width: 320px) {
                         margin: 0 8px 8px;
-                        width: calc(100% - 16px);
                     }
 
                     // on longer small screens iphone5/s we can space things vertically a bit more
@@ -514,6 +513,10 @@ body.the-minute {
 
                 figure.element--thumbnail {
                     @include minute_block_images(thumbnail);
+
+
+                            z-index: 15;
+                                z-index: 20;
                 }
 
                 figure.element-tweet {
@@ -577,7 +580,7 @@ body.the-minute {
                     margin: -6px 12px 18px;
                     max-width: 460px;
                     padding: 0;
-                    width: 80%;
+                    width: calc(100% - 24px);
 
                     // on very small screens iphone4/s & iphone5/s make things more compact
                     @media all and (max-width: 320px) {
@@ -623,9 +626,9 @@ body.the-minute {
 
             &.is-thumbnail {
                 .from-content-api {
-                    // Font weight is different for thumbnail image blocks
                     p {
-                        font-weight: normal;
+                        font-weight: normal; // Font weight is different for thumbnail image blocks
+
                     }
                     
                     // thumbnail pages are handled differently for landscape tablets
@@ -653,7 +656,7 @@ body.the-minute {
                                 left: 40px;
                                 top: 0;
                             }
-                            width: calc(40%);
+                            width: 40%;
                         }
 
                         figure.element--thumbnail {
@@ -697,8 +700,14 @@ body.the-minute {
                     // This controls the red bar above the first child  & tweets which are targetted differently
                     > :first-child,
                     figure.element-tweet blockquote {
+                        margin-top: 12px;
                         padding-top: 12px;
                         position: relative;
+
+                        // on very small screens iphone4/s & iphone5/s make things more compact
+                        @media all and (max-width: 320px) {
+                            margin-top: 8px;
+                        }
 
                         &::before {
                             background-color: $minute_accent;
