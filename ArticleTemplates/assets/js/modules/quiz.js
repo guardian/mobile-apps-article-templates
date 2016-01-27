@@ -3,12 +3,14 @@ define([
     'bean',
     'bonzo',
     'modules/$',
-    'smoothScroll'
+    'smoothScroll',
+    'modules/ads'
 ], function (
     bean,
     bonzo,
     $,
-    smoothScroll
+    smoothScroll,
+    Ads
 ) {
     'use strict';
 
@@ -20,6 +22,38 @@ define([
                 return false;
             }
 
+            // Do we have an MPU and is it below the quiz?
+            var mpu = $('#advert-slot__wrapper'),
+                moveMPU = false;
+
+            if (mpu.length) {
+                var mpuOffset = mpu.offset().top,
+                    quizOffset = $quiz.offset().top;
+
+                if (mpuOffset > quizOffset) {
+                    moveMPU = true;
+                }
+            }
+
+            // Update MPU position on animation
+            var startTime = null,
+                yPos = null;
+
+            function checkMPU(timestamp) {
+                if (!startTime) {
+                    startTime = timestamp;
+                }
+
+                var progress = timestamp - startTime;
+                
+                var newYPos = Ads.modules.updateMPUPosition(yPos);
+                yPos = newYPos;
+
+                if (progress < 2000) {
+                    window.requestAnimationFrame(checkMPU);
+                }
+            }
+
             // Store the answers and remove the answer elements
             var answers = $('.quiz__correct-answers').html().split(',');
             $('.quiz__correct-answers-title, .quiz__correct-answers').remove();
@@ -28,12 +62,23 @@ define([
             var numQuestions = answers.length,
                 numAnswered = 0,
                 score = 0,
-                scoreMessages = {};
+                scoreMessages = {},
+                longestMessageLength = 0,
+                longestMessage;
 
+            // Store the result messages
             $('.quiz__scores > li').each(function(){
-                var $this = $(this);
-                scoreMessages[Math.max($this.attr('data-min-score'),0)] = $this.attr('data-title');
+                var $this = $(this),
+                    message = $this.attr('data-title');
+
+                // Add this message to the array
+                scoreMessages[Math.max($this.attr('data-min-score'),0)] = message;
             });
+
+            // Build up the quiz results panel
+            $quiz.append('<div id="quiz-scores" class="quiz-scores"><p class="quiz-scores__score">' +
+                '<span class="quiz-scores__correct"></span> / <span class="quiz-scores__questions">' +
+                numQuestions + '</span></p><p class="quiz-scores__message"></p></div>');
 
             // Loop through every question and set up the answers and click events for it's answers
             $('.quiz__question').each(function(question, index) {
@@ -127,6 +172,12 @@ define([
                             numAnswered ++;
                         }
 
+                        // If necessary set up a call to check mpu position
+                        if (moveMPU) {
+                            startTime = null;
+                            window.requestAnimationFrame(checkMPU);
+                        }
+
                         // Flag the correct answer & add response if one is available
                         $correctAnswer.addClass('correct-answer');
                         if (correctAnswerExplanation) {
@@ -156,7 +207,6 @@ define([
                                     thisMarker.style.top = 'calc(100% - ' + (thisHeight - 7) + 'px)';
                             });
                         }
-
                         // If all questions have been answered display the score
                         if (numQuestions == numAnswered) {
                             var scoreDisplayMessage = "";
@@ -167,27 +217,19 @@ define([
                                 }
                             }
 
-                            // Build up the quiz results panel
-                            $quiz.append('<div id="quiz-scores" class="quiz-scores"><p class="quiz-scores__score"><span class="quiz-scores__correct">' +
-                                score +'</span> / <span class="quiz-scores__questions">' +
-                                numQuestions + '</span></p><p class="quiz-scores__message">' +
-                                scoreDisplayMessage + '</p></div>');
+                            // Add the score & message into resultPanel
+                            $('.quiz-scores__correct').html(score.toString());
+                            $('.quiz-scores__message').html(scoreDisplayMessage);
 
-                            // Scroll results panel into view
-                            smoothScroll.animateScroll(null, '#quiz-scores', { speed: 1000, offset: 40 });
+                            // Add open class to trigger transition
+                            $('.quiz-scores').addClass('open');
+
+                            // Scroll score panel into view
+                            smoothScroll.animateScroll(null, '#quiz-scores', { speed: 1500, offset: 40 });
                         }
                     });
                 });
             });
-
-            // store all questions top offset for later (this was for the jump to next question feature)
-            // $('.quiz__question').each(function(question, index){
-            //    var offset = $(question).offset().top;
-            //    $(question).attr({
-            //         'data-offset': offset,
-            //         'id': 'questionNum' + index
-            //     });
-            // });
         }
     },
 

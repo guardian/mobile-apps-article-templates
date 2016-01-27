@@ -111,6 +111,24 @@ define([
                 setTimeout(modules.poller.bind(modules, interval + 50, newYPos), interval);
             },
 
+            updateMPUPosition: function(yPos) {
+                if (!yPos) {
+                    yPos = $('#advert-slot__wrapper').offset().top;
+                }
+
+                var newYPos = $('#advert-slot__wrapper').offset().top;
+
+                if(newYPos !== yPos){
+                    if(this.isAndroid){
+                        modules.updateAndroidPosition();
+                    } else {
+                        window.location.href = 'x-gu://ad_moved';
+                    }
+                }
+
+                return newYPos;
+            },
+
             updateAndroidPosition : function() {
                 modules.getMpuPos(function(x, y, w, h){
                     window.GuardianJSInterface.mpuAdsPosition(x, y, w, h);

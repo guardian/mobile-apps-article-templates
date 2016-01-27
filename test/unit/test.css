@@ -9736,6 +9736,8 @@
       margin-bottom: 30px; }
       #sandbox .quiz .quiz__question::before {
         content: ""; }
+      #sandbox .quiz .quiz__question:last-child {
+        margin-bottom: 0px; }
     #sandbox .quiz .question__wrapper {
       border-top: 2px solid #4bc6df;
       padding-top: 3px;
@@ -9744,7 +9746,8 @@
       color: #333;
       font: 600 18px/1.2 "Guardian Egyptian Web", Georgia, serif;
       min-height: 50px;
-      padding: 0 0 6px 60px; }
+      padding: 0 0 6px 60px;
+      position: relative; }
       #sandbox .quiz .question__text::before {
         color: #4bc6df;
         content: counter(question-counter);
@@ -9808,7 +9811,7 @@
       left: 7px;
       position: absolute;
       top: 7px;
-      transition: background 0.5s ease-in-out;
+      transition: background .5s ease-in-out;
       width: 30px;
       z-index: 1; }
       #sandbox .quiz .answer__marker::before {
@@ -9879,11 +9882,11 @@
     #sandbox .quiz .question.is-correct .correct-answer .answer__explanation {
       color: #fff; }
     #sandbox .quiz .question.is-correct .correct-answer.has-image .answer__marker {
-      transition: background 0.5s ease-in-out, top 0.5s ease-in-out; }
+      transition: background .5s ease-in-out, top .5s ease-in-out; }
       #sandbox .quiz .question.is-correct .correct-answer.has-image .answer__marker::before {
-        transition: opacity 0.3s ease-in-out 0.2s; }
+        transition: opacity .3s ease-in-out .2s; }
     #sandbox .quiz .question.is-correct .correct-answer.has-image .answer__message {
-      transition: top 0.5s ease-in-out; }
+      transition: top .5s ease-in-out; }
     #sandbox .quiz .question.is-wrong .wrong-answer .answer__wrapper,
     #sandbox .quiz .question.is-wrong .wrong-answer .answer__message {
       background: #e0232e; }
@@ -9900,43 +9903,52 @@
     #sandbox .quiz .question.is-wrong .wrong-answer .answer__explanation {
       color: #fff; }
     #sandbox .quiz .question.is-wrong .wrong-answer.has-image .answer__marker {
-      transition: background 0.5s ease-in-out, top 0.5s ease-in-out; }
+      transition: background .5s ease-in-out, top .5s ease-in-out; }
       #sandbox .quiz .question.is-wrong .wrong-answer.has-image .answer__marker::before {
-        transition: opacity 0.3s ease-in-out 0.2s; }
+        transition: opacity .3s ease-in-out .2s; }
     #sandbox .quiz .question.is-wrong .wrong-answer.has-image .answer__message {
-      transition: top 0.5s ease-in-out; }
+      transition: top .5s ease-in-out; }
     #sandbox .quiz .question.is-wrong .correct-answer.has-image .answer__marker {
-      transition: background 0.3s ease-in-out; }
+      transition: background .3s ease-in-out; }
       #sandbox .quiz .question.is-wrong .correct-answer.has-image .answer__marker::before {
-        transition: opacity 0.3s ease-in-out; }
+        transition: opacity .3s ease-in-out; }
     #sandbox .quiz .question.is-wrong .correct-answer.has-image .answer__message {
       background: #f5f5f5;
-      transition: opacity 0.3s ease-in-out; }
+      transition: opacity .3s ease-in-out; }
     #sandbox .quiz .quiz__scores,
     #sandbox .quiz .quiz__scores-title {
       display: none; }
     #sandbox .quiz .quiz-scores {
       background: transparent;
       border-top: 2px solid #4bc6df;
-      margin-top: 40px;
+      margin: 0;
+      max-height: 0;
       overflow: hidden;
-      padding: 20px 0; }
-      #sandbox .quiz .quiz-scores__img {
+      opacity: 0;
+      padding: 0;
+      transition: all 1s ease-in-out; }
+      #sandbox .quiz .quiz-scores.open {
+        opacity: 1;
+        margin-top: 30px;
+        max-height: 350px; }
+      #sandbox .quiz .quiz-scores .quiz-scores__inner {
+        overflow: hidden; }
+      #sandbox .quiz .quiz-scores .quiz-scores__img {
         display: block;
         width: 100%; }
-      #sandbox .quiz .quiz-scores__score {
+      #sandbox .quiz .quiz-scores .quiz-scores__score {
         background: #005689;
         border-radius: 50%;
         color: #4bc6df;
         float: left;
         font: 100 55px/160px "Guardian Egyptian Web", Georgia, serif;
         height: 160px;
-        margin: 0px 12px 12px 0px;
+        margin: 20px 20px 20px 0;
         padding-top: 15px;
         position: relative;
         text-align: center;
         width: 160px; }
-        #sandbox .quiz .quiz-scores__score::before {
+        #sandbox .quiz .quiz-scores .quiz-scores__score::before {
           color: #fff;
           content: "You scored:";
           font-size: 18px;
@@ -9945,54 +9957,14 @@
           line-height: 1;
           position: absolute;
           top: 40px; }
-      #sandbox .quiz .quiz-scores__correct {
+      #sandbox .quiz .quiz-scores .quiz-scores__correct {
         margin-right: -10px; }
-      #sandbox .quiz .quiz-scores__questions {
+      #sandbox .quiz .quiz-scores .quiz-scores__questions {
         margin-left: -10px; }
-      #sandbox .quiz .quiz-scores__message {
+      #sandbox .quiz .quiz-scores .quiz-scores__message {
         color: #005689;
-        font: 600 18px/1.2 "Guardian Egyptian Web", Georgia, serif; }
-  #sandbox .quiz__navigation {
-    background: #005689;
-    border-radius: 50%;
-    bottom: 12px;
-    color: #fff;
-    font: 600 16px/1.2 "Guardian Egyptian Web", Georgia, serif;
-    height: 100px;
-    margin: 0;
-    padding: 16px;
-    position: fixed;
-    right: 12px;
-    transition: all .5s ease-in-out;
-    width: 100px;
-    z-index: 99; }
-    @media all and (min-width: 75em) {
-      #sandbox .quiz__navigation {
-        left: 50%;
-        margin-left: 580px;
-        transform: translateX(-100%); } }
-    #sandbox .quiz__navigation .quiz__start {
-      opacity: 1;
-      transition: opacity .5s ease-in-out;
-      width: 68px; }
-    #sandbox .quiz__navigation::after {
-      bottom: 18px;
-      content: "\00e066";
-      font: 100 22px "Guardian Icons", Georgia, serif;
-      position: absolute;
-      right: 18px;
-      -webkit-transform: scaleY(-1);
-      transform: scaleY(-1);
-      transition: all .5s ease-in-out; }
-    #sandbox .quiz__navigation.down {
-      height: 60px;
-      width: 60px; }
-      #sandbox .quiz__navigation.down .quiz__start {
-        opacity: 0; }
-      #sandbox .quiz__navigation.down::after {
-        bottom: 12px;
-        font-size: 26px;
-        right: 17px; }
+        font: 600 18px/1.2 "Guardian Egyptian Web", Georgia, serif;
+        margin-top: 60px; }
   #sandbox .element-witness {
     font-family: "Guardian Agate Sans 1 Web", sans-serif; }
     @media all and (max-width: 40.62em) {
