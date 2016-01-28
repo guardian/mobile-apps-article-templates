@@ -5427,7 +5427,7 @@ define('modules/quiz',[
                 yPos = newYPos;
 
                 if (progress < 2000) {
-                    window.requestAnimationFrame(checkMPU);
+                    window.animFrame(checkMPU);
                 }
             }
 
@@ -5552,7 +5552,7 @@ define('modules/quiz',[
                         // If necessary set up a call to check mpu position
                         if (moveMPU) {
                             startTime = null;
-                            window.requestAnimationFrame(checkMPU);
+                            window.animFrame(checkMPU);
                         }
 
                         // Flag the correct answer & add response if one is available
