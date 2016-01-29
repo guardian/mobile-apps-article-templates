@@ -87,7 +87,8 @@
         }
     }
 
-    .article--feature {
+    .article--feature,
+    .article--quiz {
         border-top-color: color(tone-feature1-accent);
 
         .article__body {
@@ -239,5 +240,61 @@
     a.tell-me-when,  a.tell-me-when.added:active {
         border-color: color(tone-feature1-accent);
         color: color(tone-feature1-accent);
+    }
+
+    // Feature Quizzes
+    .quiz {
+        // Question Styles
+        .question__wrapper {
+            border-top: 2px solid color(tone-feature1-accent);
+        }
+
+        .question__text {
+            color: color(tone-feature1);
+
+            &::before {
+                color: color(tone-feature1-accent);
+            }
+        }
+
+        // Styles for answering correctly
+        .question.is-correct {
+            .correct-answer {
+                .answer__wrapper,
+                .answer__message {
+                    background: color(tone-feature1-accent2);
+                }
+
+                .answer__marker {
+                    background: color(tone-feature1);
+                }
+
+                .answer__message::before {
+                    color: color(tone-feature1);
+                }
+            }
+        }
+
+        // Styles for answering wrong
+        .question.is-wrong {
+            .correct-answer {
+                .answer__marker {
+                    background: color(tone-feature1-accent2);
+                }
+            }
+        }
+
+        .quiz-scores {
+            border-color: color(tone-feature1-accent);
+
+            &__score {
+                background: color(tone-feature1);
+                color: color(tone-feature1-accent2);
+            }
+
+            &__message {
+                color: color(tone-feature1-accent);
+            }
+        }
     }
 }
