@@ -5,14 +5,18 @@ define([
     'modules/$',
     'modules/twitter',
     'modules/witness',
-    'modules/outbrain'
+    'modules/outbrain',
+    'modules/quiz',
+    'smoothScroll'
 ], function (
     bean,
     bonzo,
     $,
     twitter,
     witness,
-    outbrain
+    outbrain,
+    Quiz,
+    smoothScroll
 ) {
     'use strict';
 
@@ -35,7 +39,11 @@ define([
             };
             window.applyNativeFunctionCall('articleOutbrainInserter');
         },
-        
+
+        loadQuizzes: function () {
+            Quiz.init();
+        },
+
         formatImmersive : function(){
             if (!$('.immersive').length) {
                 return false;
@@ -119,6 +127,7 @@ define([
                 // modules.updateProgressBar(progressBar, articleHeight);
             }));
 
+
             // add a resize / orientation event to redraw the chapter positions for new article height
             bean.on(window, 'resize.cards orientationchange.cards', window.ThrottleDebounce.debounce(100, false, function () {
                 // remeasure article height 
@@ -165,6 +174,7 @@ define([
             twitter.enhanceTweets();
             witness.duplicate();
             modules.insertOutbrain();
+            modules.loadQuizzes();
             modules.formatImmersive();
             modules.richLinkTracking();
         }
