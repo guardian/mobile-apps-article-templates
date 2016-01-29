@@ -42,33 +42,43 @@ Display an article's meta information.
 */
 
 .meta {
-    @include meta();
-    margin: -1px 0;
+    @include meta;
     border-bottom: 1px dotted color(shade-4);
-    width: 100%;
     display: table;
+    margin: -1px 0;
+    width: 100%;
 
     @include mq($from: col4) {
         border: none;
     }
 
     .avatar--author {
-        margin: base-px(0, .75, 1, 0);
+        margin: base-px(0, .75, 0, 0);
         float: left;
     }
-}
 
-.meta__misc {
-    padding: base-px(.6667, 1, 2, 1);
+    &__misc {
+        padding: base-px(.6667, 1, 2, 1);
 
-     @include mq($from: col4) {
-        margin: 0 auto 0 240px;
-        padding-left: 0;
-        width: 620px;
+         @include mq($from: col4) {
+            margin: 0 auto 0 240px;
+            padding-left: 0;
+            width: 620px;
+        }
+
+        &:before,
+        &:after {
+            content: " ";
+            display: table;
+        }
+
+        &:after {
+            clear: both;
+        }
     }
-}
 
-.meta__pubdate {
-    color: color(shade-3);
-    font-family: $agate-sans;
+    &__pubdate {
+        color: color(shade-3);
+        font-family: $agate-sans;
+    }
 }
