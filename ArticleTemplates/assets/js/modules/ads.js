@@ -53,11 +53,11 @@ define([
                                 '</div>';
                     // To mimic the correct positioning on full width tablet view, we will need an 
                     // empty div to pad out the text so we can position absolutely over it.
-                    $('.article__body > div > :first-child').before('<div class="advert-slot advert-slot--placeholder"></div>');
+                    $('.article__body > div.prose > :first-child').before('<div class="advert-slot advert-slot--placeholder"></div>');
                 }
 
                 var nrParagraph = ( parseInt(config.mpuAfterParagraphs, 10) || 6 ) - 1;
-                $('.article__body > div > p:nth-of-type(' + nrParagraph + ') ~ p + p').first().before(mpuHtml);
+                $('.article__body > div.prose > p:nth-of-type(' + nrParagraph + ') ~ p + p').first().before(mpuHtml);
             },
 
             // return the current MPU's position.
