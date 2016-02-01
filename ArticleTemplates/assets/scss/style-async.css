@@ -4202,10 +4202,29 @@ Display a team line-up including substitutions and bookings.
         display: block; } }
 
 .quiz {
-  counter-reset: question-counter; }
+  counter-reset: question-counter;
+  position: relative; }
   @media all and (min-width: 75em) {
     .quiz {
       margin: 0; } }
+  .quiz > * {
+    opacity: 0;
+    -webkit-transition: opacity .3s;
+    transition: opacity .3s; }
+  .quiz::before {
+    background: url(../img/loading.gif) no-repeat center center;
+    content: "";
+    height: 88px;
+    left: calc(50% - 44px);
+    position: absolute;
+    top: 100px;
+    -webkit-transition: opacity .2s;
+    transition: opacity .2s;
+    width: 88px; }
+  .quiz.loaded > * {
+    opacity: 1; }
+  .quiz.loaded::before {
+    opacity: 0; }
   .quiz__correct-answers-title, .quiz__correct-answers {
     display: none; }
   .quiz .quiz__title {
@@ -4295,6 +4314,7 @@ Display a team line-up including substitutions and bookings.
     left: 7px;
     position: absolute;
     top: 7px;
+    -webkit-transition: background .5s ease-in-out;
     transition: background .5s ease-in-out;
     width: 30px;
     z-index: 1; }
@@ -4366,10 +4386,13 @@ Display a team line-up including substitutions and bookings.
   .quiz .question.is-correct .correct-answer .answer__explanation {
     color: #fff; }
   .quiz .question.is-correct .correct-answer.has-image .answer__marker {
+    -webkit-transition: background .5s ease-in-out, top .5s ease-in-out;
     transition: background .5s ease-in-out, top .5s ease-in-out; }
     .quiz .question.is-correct .correct-answer.has-image .answer__marker::before {
+      -webkit-transition: opacity .3s ease-in-out .2s;
       transition: opacity .3s ease-in-out .2s; }
   .quiz .question.is-correct .correct-answer.has-image .answer__message {
+    -webkit-transition: top .5s ease-in-out;
     transition: top .5s ease-in-out; }
   .quiz .question.is-wrong .wrong-answer .answer__wrapper,
   .quiz .question.is-wrong .wrong-answer .answer__message {
@@ -4387,17 +4410,23 @@ Display a team line-up including substitutions and bookings.
   .quiz .question.is-wrong .wrong-answer .answer__explanation {
     color: #fff; }
   .quiz .question.is-wrong .wrong-answer.has-image .answer__marker {
+    -webkit-transition: background .5s ease-in-out, top .5s ease-in-out;
     transition: background .5s ease-in-out, top .5s ease-in-out; }
     .quiz .question.is-wrong .wrong-answer.has-image .answer__marker::before {
+      -webkit-transition: opacity .3s ease-in-out .2s;
       transition: opacity .3s ease-in-out .2s; }
   .quiz .question.is-wrong .wrong-answer.has-image .answer__message {
+    -webkit-transition: top .5s ease-in-out;
     transition: top .5s ease-in-out; }
   .quiz .question.is-wrong .correct-answer.has-image .answer__marker {
+    -webkit-transition: background .3s ease-in-out;
     transition: background .3s ease-in-out; }
     .quiz .question.is-wrong .correct-answer.has-image .answer__marker::before {
+      -webkit-transition: opacity .3s ease-in-out;
       transition: opacity .3s ease-in-out; }
   .quiz .question.is-wrong .correct-answer.has-image .answer__message {
     background: #f5f5f5;
+    -webkit-transition: opacity .3s ease-in-out;
     transition: opacity .3s ease-in-out; }
   .quiz .quiz__scores,
   .quiz .quiz__scores-title {
@@ -4410,6 +4439,7 @@ Display a team line-up including substitutions and bookings.
     overflow: hidden;
     opacity: 0;
     padding: 0;
+    -webkit-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out; }
     .quiz .quiz-scores.open {
       opacity: 1;
