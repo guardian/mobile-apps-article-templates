@@ -874,6 +874,9 @@ Can also be displayed with the caption initially hidden:
 </div>
 ```
 */
+.main-media__caption__text {
+  display: inline; }
+
 @media all and (min-width: 75em) {
   .main-media {
     padding-top: 12px;
@@ -980,10 +983,10 @@ Display an article's meta information.
 ```
 */
 .meta {
-  margin: -1px 0;
   border-bottom: 1px dotted #dcdad5;
-  width: 100%;
-  display: table; }
+  display: table;
+  margin: -1px 0;
+  width: 100%; }
   @media all and (max-width: 40.62em) {
     .meta {
       font-size: 1.4rem;
@@ -996,20 +999,23 @@ Display an article's meta information.
     .meta {
       border: none; } }
   .meta .avatar--author {
-    margin: 0px 9px 12px 0px;
+    margin: 0px 9px 0px 0px;
     float: left; }
-
-.meta__misc {
-  padding: 8px 12px 24px 12px; }
-  @media all and (min-width: 75em) {
-    .meta__misc {
-      margin: 0 auto 0 240px;
-      padding-left: 0;
-      width: 620px; } }
-
-.meta__pubdate {
-  color: #999;
-  font-family: "Guardian Agate Sans 1 Web", sans-serif; }
+  .meta__misc {
+    padding: 8px 12px 24px 12px; }
+    @media all and (min-width: 75em) {
+      .meta__misc {
+        margin: 0 auto 0 240px;
+        padding-left: 0;
+        width: 620px; } }
+    .meta__misc:before, .meta__misc:after {
+      content: " ";
+      display: table; }
+    .meta__misc:after {
+      clear: both; }
+  .meta__pubdate {
+    color: #999;
+    font-family: "Guardian Agate Sans 1 Web", sans-serif; }
 
 /*doc
 ---
