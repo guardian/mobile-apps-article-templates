@@ -980,8 +980,9 @@ Display an article's meta information.
 ```
 */
 .meta {
-  margin: -1px 0;
-  border-bottom: 1px dotted #dcdad5;
+  margin: 0 auto;
+  border-top: 1px rgba(153, 153, 153, 0.4) dotted;
+  border-bottom: 1px rgba(153, 153, 153, 0.4) dotted;
   width: 100%;
   display: table; }
   @media all and (max-width: 40.62em) {
@@ -3557,7 +3558,8 @@ body.the-minute {
 
 .is_advertising:not(.tone--review):not(.tone--analysis) {
   /* Common */
-  /* Feature tones */ }
+  /* Feature tone overrides */
+  /* News and Comment tone overrides */ }
   .is_advertising:not(.tone--review):not(.tone--analysis) .section,
   .is_advertising:not(.tone--review):not(.tone--analysis) .section__container .content__series-label,
   .is_advertising:not(.tone--review):not(.tone--analysis) .headline,
@@ -3571,43 +3573,44 @@ body.the-minute {
   .is_advertising:not(.tone--review):not(.tone--analysis) .article--liveblog .article__header .section {
     font-family: "Guardian Text Sans Web", sans-serif; }
   .is_advertising:not(.tone--review):not(.tone--analysis) .article {
+    background-color: #cfcfcf;
     /* Check on: tone-liveblog-adv, tone-video-adv */ }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article .meta__pubdate,
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article .alerts,
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article .section__container {
+    .is_advertising:not(.tone--review):not(.tone--analysis) .article .alerts, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .meta__pubdate, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .section__container {
       display: none; }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article .sponsorship,
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article .standfirst__inner,
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article .meta,
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article .meta__pubdate,
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article .content__labels,
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article .headline,
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article a, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body {
+    .is_advertising:not(.tone--review):not(.tone--analysis) .article a, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .headline, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .standfirst__inner, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .sponsorship, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .meta, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .content__labels {
       color: #272727; }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article .sponsorship,
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article .standfirst__inner,
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article .meta, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body {
+    .is_advertising:not(.tone--review):not(.tone--analysis) .article__header, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .standfirst {
+      background-color: #cfcfcf; }
+    .is_advertising:not(.tone--review):not(.tone--analysis) .article__body, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .main-media, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .headline, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .standfirst__inner, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .sponsorship, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .meta, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .content__labels, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .main-media figcaption {
       background-color: #d9d9d9; }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article .standfirst__inner {
-      padding: 6px 12px 8px; }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article .meta__misc {
-      padding: 4px 12px 12px; }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article .byline,
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article .byline a {
-      color: #009999; }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article .sponsorship {
+    .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .meta {
+      border-bottom: 1px rgba(153, 153, 153, 0.4) dotted; }
+    .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .headline {
+      padding-bottom: 18px; }
+    .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .meta__misc, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .standfirst__inner {
+      padding-bottom: 12px; }
+    .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .byline, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .byline a {
+      color: #009999 !important; }
+    .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .sponsorship {
       display: block;
       position: relative;
       padding: 8px 12px 8px;
-      border-top: 1px dotted #b5b3ae; }
-      .is_advertising:not(.tone--review):not(.tone--analysis) .article .sponsorship .sponsorship__formatted-sponsor-name {
+      border-bottom: 1px rgba(153, 153, 153, 0.4) dotted;
+      font-size: 1.6rem; }
+      @media all and (min-width: 75em) {
+        .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .sponsorship .sponsorship__inner {
+          padding-left: 240px;
+          padding-right: 320px; } }
+      .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .sponsorship .sponsorship__formatted-sponsor-name {
         position: absolute;
         top: 50%;
         margin-top: -0.8rem; }
-      .is_advertising:not(.tone--review):not(.tone--analysis) .article .sponsorship .sponsorship__logo {
+      .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .sponsorship .sponsorship__logo {
         float: right; }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose p a, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose li a, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .standfirst a,
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article .sponsorship__formatted-sponsor-name a {
+      @media all and (min-width: 75em) {
+        .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .sponsorship {
+          padding-left: 0; } }
+    .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose p a, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose li a, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .standfirst a, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .sponsorship__formatted-sponsor-name a {
       color: #272727;
       text-decoration: none;
       background-image: linear-gradient(rgba(39, 39, 39, 0.25) 0%, #272727 100%);
@@ -3616,28 +3619,23 @@ body.the-minute {
       background-position: 0 bottom;
       text-shadow: 3px 0 #d9d9d9, 2px 0 #d9d9d9, 1px 0 #d9d9d9, -1px 0 #d9d9d9, -2px 0 #d9d9d9, -3px 0 #d9d9d9; }
       @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
-        .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose p a, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose li a, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .standfirst a,
-        .is_advertising:not(.tone--review):not(.tone--analysis) .article .sponsorship__formatted-sponsor-name a {
+        .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose p a, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose li a, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .standfirst a, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .sponsorship__formatted-sponsor-name a {
           background-image: linear-gradient(rgba(39, 39, 39, 0.25) 0%, #272727 100%);
           background-position: 0 93%; } }
-      .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose p a a:active, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose p a:hover, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose li a a:active, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose li a:hover, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .standfirst a a:active, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .standfirst a:hover,
-      .is_advertising:not(.tone--review):not(.tone--analysis) .article .sponsorship__formatted-sponsor-name a a:active,
-      .is_advertising:not(.tone--review):not(.tone--analysis) .article .sponsorship__formatted-sponsor-name a:hover {
+      .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose p a a:active, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose p a:hover, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose li a a:active, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose li a:hover, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .standfirst a a:active, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .standfirst a:hover, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .sponsorship__formatted-sponsor-name a a:active, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .sponsorship__formatted-sponsor-name a:hover {
         color: #414141;
         background-image: linear-gradient(to bottom, #313131 0%, #313131 100%); }
       .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose p a::selection,
       .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose p a > *::selection, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose li a::selection,
       .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose li a > *::selection, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .standfirst a::selection,
-      .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .standfirst a > *::selection,
-      .is_advertising:not(.tone--review):not(.tone--analysis) .article .sponsorship__formatted-sponsor-name a::selection,
-      .is_advertising:not(.tone--review):not(.tone--analysis) .article .sponsorship__formatted-sponsor-name a > *::selection {
+      .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .standfirst a > *::selection, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .sponsorship__formatted-sponsor-name a::selection,
+      .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .sponsorship__formatted-sponsor-name a > *::selection {
         text-shadow: none; }
       .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose p a::-moz-selection,
       .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose p a > *::-moz-selection, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose li a::-moz-selection,
       .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose li a > *::-moz-selection, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .standfirst a::-moz-selection,
-      .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .standfirst a > *::-moz-selection,
-      .is_advertising:not(.tone--review):not(.tone--analysis) .article .sponsorship__formatted-sponsor-name a::-moz-selection,
-      .is_advertising:not(.tone--review):not(.tone--analysis) .article .sponsorship__formatted-sponsor-name a > *::-moz-selection {
+      .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .standfirst a > *::-moz-selection, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .sponsorship__formatted-sponsor-name a::-moz-selection,
+      .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .sponsorship__formatted-sponsor-name a > *::-moz-selection {
         text-shadow: none; }
     .is_advertising:not(.tone--review):not(.tone--analysis) .article__header ul > li::before, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .bullet::before {
       background-color: #999; }
@@ -3645,6 +3643,8 @@ body.the-minute {
       color: #333; }
     .is_advertising:not(.tone--review):not(.tone--analysis) .article__header ul > li strong {
       font-weight: bold; }
+    .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose .element-pullquote blockquote cite, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose .element-pullquote blockquote::before, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose .element-pullquote blockquote::after {
+      color: #009999; }
     .is_advertising:not(.tone--review):not(.tone--analysis) .article .element-placeholder .element-placeholder__button .touchpoint__button {
       background-color: #878787; }
       .is_advertising:not(.tone--review):not(.tone--analysis) .article .element-placeholder .element-placeholder__button .touchpoint__button:active {
@@ -3653,16 +3653,10 @@ body.the-minute {
     .is_advertising:not(.tone--review):not(.tone--analysis) .article .element-placeholder .element-placeholder__button .touchpoint__label {
       color: #fff;
       text-shadow: 0 0 4px rgba(0, 0, 0, 0.5); }
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .avatar--author, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .avatar--author, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .avatar--author {
-    display: none; }
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .headline, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .headline, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .headline {
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article__header .headline, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article__header .headline, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article__header .headline {
     background-color: #bfbfbf; }
   .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 a:active {
     color: #414141; }
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .prose .element-pullquote blockquote, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .prose .element-pullquote blockquote, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .prose .element-pullquote blockquote {
-    color: #676767; }
-    .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .prose .element-pullquote blockquote footer, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .prose .element-pullquote blockquote::after, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .prose .element-pullquote blockquote::before, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .prose .element-pullquote blockquote footer, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .prose .element-pullquote blockquote::after, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .prose .element-pullquote blockquote::before, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .prose .element-pullquote blockquote footer, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .prose .element-pullquote blockquote::after, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .prose .element-pullquote blockquote::before {
-      color: #272727; }
   .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
     color: #009999;
     font-family: "Guardian Egyptian Web", Georgia, serif;
@@ -3677,6 +3671,11 @@ body.the-minute {
     @media all and (min-width: 40.63em) {
       .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
         font-size: 5.2222em; } }
+  @media all and (min-width: 75em) {
+    .is_advertising:not(.tone--review):not(.tone--analysis).tone--news, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment {
+      /* Where does audio player appear? */ }
+      .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .audio-player__container, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .audio-player__container {
+        background: #eaeaea; } }
 
 .article--visual .article__header .avatar--author {
   display: none; }
@@ -5054,20 +5053,19 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
           line-height: 3.2rem; } }
   .tone--news .article__header .standfirst {
     color: #767676; }
-  .tone--news .article__header .meta {
-    border-top: 1px rgba(153, 153, 153, 0.4) dotted; }
-    .tone--news .article__header .meta .meta__byline .byline,
-    .tone--news .article__header .meta .meta__byline a,
-    .tone--news .article__header .meta .comment-count,
-    .tone--news .article__header .meta .comment-count a {
-      color: #005689; }
-    .tone--news .article__header .meta .meta__pubdate {
-      color: #999; }
+  .tone--news .article__header .meta .meta__byline .byline,
+  .tone--news .article__header .meta .meta__byline a,
+  .tone--news .article__header .meta .comment-count,
+  .tone--news .article__header .meta .comment-count a {
+    color: #005689; }
+  .tone--news .article__header .meta .meta__pubdate {
+    color: #999; }
   @media all and (min-width: 75em) {
     .tone--news .article__header .meta__misc {
       padding-left: 0;
       padding-right: 0; } }
   .tone--news .article__header .main-media__caption {
+    border-bottom: 0;
     background-color: #fff; }
   @media all and (min-width: 75em) {
     .tone--news .article__header .sponsorship {
@@ -5078,7 +5076,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   @media all and (min-width: 75em) {
     .tone--news .witness {
       padding-left: 240px;
-      padding-top: 0; } }
+      padding-top: 8px; } }
 .tone--news .article__body + .extras > .witness {
   margin-left: -4px;
   padding-top: 0; }
@@ -5089,8 +5087,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
       max-width: 1200px;
       margin: 0 auto; } }
 .tone--news:not(.is_advertising) .main-media {
-  background: #fff;
-  border-top: 1px dotted rgba(153, 153, 153, 0.4); }
+  background: #fff; }
 .tone--news .alerts:active,
 .tone--news .alerts.following {
   background-color: #005689;

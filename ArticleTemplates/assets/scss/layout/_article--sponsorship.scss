@@ -16,48 +16,73 @@
 
     /* Common */
     .article {
-        .meta__pubdate,
-        .alerts, 
-        .section__container {
+        background-color: #cfcfcf;
+
+        .alerts,
+        &__header .meta__pubdate,
+        &__header .section__container {
             display: none;
         }
 
-        .sponsorship,
-        .standfirst__inner,
-        .meta,
-        .meta__pubdate,
-        .content__labels,
-        .headline,
         a,
-        &__body {
+        &__body,
+        &__header .headline,
+        &__header .standfirst__inner,
+        &__header .sponsorship,
+        &__header .meta,
+        &__header .content__labels {
             color: color(global-adv-text);
         }
 
-        .sponsorship,
-        .standfirst__inner,
-        .meta,
-        &__body {
+        &__header,
+        &__header .standfirst {
+            background-color: #cfcfcf;
+        }
+
+        &__body,
+        &__header .main-media,
+        &__header .headline,
+        &__header .standfirst__inner,
+        &__header .sponsorship,
+        &__header .meta,
+        &__header .content__labels,
+        &__header .main-media figcaption {
             background-color: color(global-adv-bg);
         }
 
-        .standfirst__inner {
-            padding: 6px 12px 8px;
+        &__header .meta {
+            border-bottom: 1px rgba(153,153,153,.4) dotted;
         }
 
-        .meta__misc {
-            padding: 4px 12px 12px;
+        &__header .headline {
+             padding-bottom: 18px;
         }
 
-        .byline,
-        .byline a {
-            color: color(global-adv-sticky);
+        &__header .meta__misc,
+        &__header .standfirst__inner {
+            padding-bottom: 12px;
         }
 
-        .sponsorship {
+        &__header .byline,
+        &__header .byline a {
+            color: color(global-adv-sticky) !important;
+        }
+
+        &__header .sponsorship {
             display: block;
             position: relative;
             padding: 8px 12px 8px;
-            border-top: 1px dotted #b5b3ae;
+            border-bottom: 1px rgba(color(shade-3), .4) dotted;
+            font-size: 1.6rem;
+
+            .sponsorship__inner {
+                @include mq($from: col4) {
+                    padding: {
+                        left: 240px;
+                        right: 320px;
+                    }
+                }            
+            }
 
             .sponsorship__formatted-sponsor-name {
                 position: absolute;
@@ -68,12 +93,18 @@
             .sponsorship__logo {
                 float: right;
             }
+
+            @include mq($from: col4) {
+                padding: {
+                    left: 0;
+                }
+            }
         }
 
         &__body .prose p, 
         &__body .prose li,
         &__header .standfirst,
-        .sponsorship__formatted-sponsor-name {
+        &__header .sponsorship__formatted-sponsor-name {
             @include text-underline(color(global-adv-text), color(global-adv-bg), lighten(color(global-adv-text),10%));
         }
 
@@ -91,6 +122,12 @@
             font-weight: bold;
         }
 
+        &__body .prose .element-pullquote blockquote cite,
+        &__body .prose .element-pullquote blockquote::before,
+        &__body .prose .element-pullquote blockquote::after {
+          color: color(global-adv-sticky);
+        }
+
         /* Check on: tone-liveblog-adv, tone-video-adv */
         .element-placeholder .element-placeholder__button {
             .touchpoint__button{
@@ -106,18 +143,14 @@
                 color: color(shade-7);
                 text-shadow: 0 0 4px  rgba(0, 0, 0, .5);
             }
-        }       
+        }  
     }
 
-    /* Feature tones */
+    /* Feature tone overrides */
     &.tone--feature1,
     &.tone--feature2,
     &.tone--feature3 {
-        .avatar--author {
-            display: none;
-        }
-
-        .headline {
+        .article__header .headline {
             background-color: #bfbfbf;
         }
 
@@ -125,20 +158,19 @@
             color: lighten(color(global-adv-text),10%);
         }
 
-        .prose .element-pullquote {
-            blockquote {
-                color: color(shade-10);
-
-                footer,
-                &::after,
-                &::before {
-                    color: color(global-adv-text);
-                }
-            }
-        }
-
         .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p {
             @include dropcap(color(global-adv-sticky));
+        }
+    }
+
+    /* News and Comment tone overrides */
+    &.tone--news,
+    &.tone--comment { 
+        @include mq($from: col4) {
+            /* Where does audio player appear? */
+            .audio-player__container {
+                background: color(shade-5);
+            }
         }
     }
 }
