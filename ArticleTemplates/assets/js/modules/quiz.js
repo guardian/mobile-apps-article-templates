@@ -230,6 +230,9 @@ define([
                     });
                 });
             });
+
+            // show the quiz
+            $quiz.addClass("loaded");
         }
     },
 
