@@ -16,7 +16,7 @@
 
     /* Common */
     .article {
-        background-color: #cfcfcf;
+        background-color: color(shade-11);
 
         .alerts,
         &__header .meta__pubdate,
@@ -36,7 +36,7 @@
 
         &__header,
         &__header .standfirst {
-            background-color: #cfcfcf;
+            background-color: color(shade-11);
         }
 
         &__body,
@@ -48,11 +48,6 @@
         &__header .content__labels,
         &__header .main-media figcaption {
             background-color: color(global-adv-bg);
-        }
-
-        &__header .meta {
-            border-top: 1px rgba(153,153,153,.4) dotted;
-            border-bottom: 1px rgba(153,153,153,.4) dotted;
         }
 
         &__header .headline {
@@ -151,8 +146,15 @@
     &.tone--feature1,
     &.tone--feature2,
     &.tone--feature3 {
-        .article__header .headline {
-            background-color: #bfbfbf;
+        .article {
+            .headline {
+                background-color: color(shade-12);
+            }
+
+            &__header .meta {
+                border-top: 1px rgba(color(shade-3), .4) dotted;
+                border-bottom: 1px rgba(color(shade-3), .4) dotted;
+            }
         }
 
         a:active {

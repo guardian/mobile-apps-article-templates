@@ -981,7 +981,6 @@ Display an article's meta information.
 */
 .meta {
   margin: 0 auto;
-  border-top: 1px rgba(153, 153, 153, 0.4) dotted;
   border-bottom: 1px rgba(153, 153, 153, 0.4) dotted;
   width: 100%;
   display: table; }
@@ -3583,9 +3582,6 @@ body.the-minute {
       background-color: #cfcfcf; }
     .is_advertising:not(.tone--review):not(.tone--analysis) .article__body, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .main-media, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .headline, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .standfirst__inner, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .sponsorship, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .meta, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .content__labels, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .main-media figcaption {
       background-color: #d9d9d9; }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .meta {
-      border-top: 1px rgba(153, 153, 153, 0.4) dotted;
-      border-bottom: 1px rgba(153, 153, 153, 0.4) dotted; }
     .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .headline {
       padding-bottom: 18px; }
     .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .meta__misc, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .standfirst__inner {
@@ -3654,8 +3650,11 @@ body.the-minute {
     .is_advertising:not(.tone--review):not(.tone--analysis) .article .element-placeholder .element-placeholder__button .touchpoint__label {
       color: #fff;
       text-shadow: 0 0 4px rgba(0, 0, 0, 0.5); }
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article__header .headline, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article__header .headline, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article__header .headline {
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article .headline, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article .headline, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article .headline {
     background-color: #bfbfbf; }
+  .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article__header .meta, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article__header .meta, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article__header .meta {
+    border-top: 1px rgba(153, 153, 153, 0.4) dotted;
+    border-bottom: 1px rgba(153, 153, 153, 0.4) dotted; }
   .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 a:active {
     color: #414141; }
   .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
@@ -3793,7 +3792,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--analysis .article__header .selectable a {
     color: #005689 !important; }
   .tone--analysis .article__header .meta {
-    background-color: #f6f6f6; }
+    background-color: #fff; }
     .tone--analysis .article__header .meta .meta__byline .byline,
     .tone--analysis .article__header .meta .meta__byline a,
     .tone--analysis .article__header .meta .comment-count,
@@ -5066,7 +5065,6 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
       padding-left: 0;
       padding-right: 0; } }
   .tone--news .article__header .main-media__caption {
-    border-bottom: 0;
     background-color: #fff; }
   @media all and (min-width: 75em) {
     .tone--news .article__header .sponsorship {
@@ -5323,7 +5321,8 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 .tone--special .article__header .selectable a {
   color: #fff !important; }
 .tone--special .article__header .meta {
-  background-color: #6e7e88; }
+  background-color: #6e7e88;
+  border-bottom: 0; }
   .tone--special .article__header .meta .meta__byline .byline,
   .tone--special .article__header .meta .meta__byline a,
   .tone--special .article__header .meta .comment-count,
@@ -5332,7 +5331,9 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   .tone--special .article__header .meta .meta__pubdate {
     color: #fff; }
 .tone--special .article__header .main-media__caption {
-  background-color: #fff; }
+  color: #fff;
+  background-color: #6e7e88;
+  border-bottom: 1px rgba(220, 218, 213, 0.4) dotted; }
   @media all and (min-width: 75em) {
     .tone--special .article__header .main-media__caption {
       background-color: #63717a; }
