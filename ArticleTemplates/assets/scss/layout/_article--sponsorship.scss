@@ -24,7 +24,6 @@
             display: none;
         }
 
-        a,
         &__body,
         &__header .headline,
         &__header .standfirst__inner,
@@ -59,9 +58,13 @@
             padding-bottom: 12px;
         }
 
-        &__header .byline,
-        &__header .byline a {
+        &__header a,
+        &__header .byline {
             color: color(global-adv-sticky) !important;
+        }
+
+        &__header .standfirst a {
+            text-decoration: none;
         }
 
         &__header .sponsorship {
@@ -98,10 +101,8 @@
         }
 
         &__body .prose p, 
-        &__body .prose li,
-        &__header .standfirst,
-        &__header .sponsorship__formatted-sponsor-name {
-            @include text-underline(color(global-adv-text), color(global-adv-bg), lighten(color(global-adv-text),10%));
+        &__body .prose li {
+            @include text-underline(color(global-adv-sticky), color(global-adv-bg), lighten(color(global-adv-sticky),10%));
         }
 
         &__header ul > li::before,
@@ -124,7 +125,6 @@
           color: color(global-adv-sticky);
         }
 
-        /* Check on: tone-liveblog-adv, tone-video-adv */
         .element-placeholder .element-placeholder__button {
             .touchpoint__button{
                 background-color: color(global-adv-bands);
@@ -139,8 +139,55 @@
                 color: color(shade-7);
                 text-shadow: 0 0 4px  rgba(0, 0, 0, .5);
             }
-        }  
+        }
+
+        .tags {
+            border-color: color(global-adv-bands);
+        }
     }
+
+    .touchpoint--primary {
+        .touchpoint__button {
+            background-color: color(global-adv-bands);
+        }
+
+        &:active .touchpoint__button {
+           background-color: color(global-adv-text);
+        }
+
+        .touchpoint__label {
+            color: color(global-adv-bands);
+        }
+        
+        &:active .touchpoint__label {
+            color: color(global-adv-text);
+        }
+    }
+
+    .comments__viewmore {
+        .comments__viewmore--label {
+            color: color(global-adv-bands);
+        }
+        
+        &:active .comments__viewmore--label {
+            color: color(global-adv-text);
+        }
+    }
+
+    /* News and Comment tone overrides */
+    &.tone--news,
+    &.tone--comment {
+        @include mq($from: col4) {
+            .audio-player__container {
+                background: color(shade-5);
+            }
+        }
+    }
+
+    /* Comment tone overrides */
+    &.tone--comment {
+
+    }    
 
     /* Feature tone overrides */
     &.tone--feature1,
@@ -165,17 +212,7 @@
             @include dropcap(color(global-adv-sticky));
         }
     }
-
-    /* News and Comment tone overrides */
-    &.tone--news,
-    &.tone--comment { 
-        @include mq($from: col4) {
-            /* Where does audio player appear? */
-            .audio-player__container {
-                background: color(shade-5);
-            }
-        }
-    }
+       
 }
 
 // .is_advertising:not(.tone--review):not(.tone--analysis) {
