@@ -236,7 +236,7 @@ define([
     ready = function () {
         if (!this.initialised) {
             this.initialised = true;
-            var quiz = $('.quiz');
+            var quiz = $('.element-atom .quiz');
             if (quiz.length) {
                 // We have a quiz atom on the page so setup the quizzes
                 modules.quizInit(quiz[0]);
