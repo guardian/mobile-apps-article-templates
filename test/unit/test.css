@@ -5036,22 +5036,6 @@
     #sandbox .article--comment .article__header .standfirst,
     #sandbox body:not(.is-live) .article--liveblog .article__header .standfirst {
       padding-right: 0; } }
-  #sandbox .article--comment .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-  #sandbox .article--feature:not(.immersive) .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
-    color: "";
-    font-family: "Guardian Egyptian Web", Georgia, serif;
-    font-weight: 100;
-    font-style: normal;
-    font-size: 3.3334em;
-    line-height: 1;
-    margin-top: -2px;
-    margin-bottom: -16px;
-    padding-right: 6px;
-    float: left; }
-    @media all and (min-width: 40.63em) {
-      #sandbox .article--comment .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-      #sandbox .article--feature:not(.immersive) .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
-        font-size: 5.2222em; } }
   #sandbox .article--feature .article__header .section {
     margin-bottom: 0; }
   #sandbox .article--feature .article__header .main-media {
@@ -5791,13 +5775,11 @@
       #sandbox .tone--analysis .article__header .sponsorship {
         border-bottom: 0; } }
   #sandbox .tone--comment .article a,
-  #sandbox .tone--comment .article__body .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter
-  .container__action--sort a,
+  #sandbox .tone--comment .container__action--sort a,
   #sandbox .tone--comment .comments__ordering {
     color: #e6711b; }
     #sandbox .tone--comment .article a:active,
-    #sandbox .tone--comment .article__body .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter
-    .container__action--sort a:active,
+    #sandbox .tone--comment .container__action--sort a:active,
     #sandbox .tone--comment .comments__ordering:active {
       color: #f39f33; }
   #sandbox .tone--comment .article__header,
@@ -5891,6 +5873,20 @@
       #sandbox .tone--comment .article--comment .prose li a::-moz-selection,
       #sandbox .tone--comment .article--comment .prose li a > *::-moz-selection {
         text-shadow: none; }
+    #sandbox .tone--comment .article--comment .article__body > .prose:not(.prose--is-panel) > p:first-of-type:first-letter {
+      color: #e6711b;
+      font-family: "Guardian Egyptian Web", Georgia, serif;
+      font-weight: 100;
+      font-style: normal;
+      font-size: 3.3334em;
+      line-height: 1;
+      margin-top: -2px;
+      margin-bottom: -16px;
+      padding-right: 6px;
+      float: left; }
+      @media all and (min-width: 40.63em) {
+        #sandbox .tone--comment .article--comment .article__body > .prose:not(.prose--is-panel) > p:first-of-type:first-letter {
+          font-size: 5.2222em; } }
     #sandbox .tone--comment .article--comment .prose table,
     #sandbox .tone--comment .article--comment .table {
       border-top-color: #e6711b; }
@@ -6309,6 +6305,24 @@
           #sandbox .tone--feature2 .main-media figure .element__inner,
           #sandbox .tone--feature3 .main-media figure .element__inner {
             top: -70px; } }
+  #sandbox .tone--feature1 .article--feature .article__body > .prose:not(.prose--is-panel) > p:first-of-type:first-letter,
+  #sandbox .tone--feature2 .article--feature .article__body > .prose:not(.prose--is-panel) > p:first-of-type:first-letter,
+  #sandbox .tone--feature3 .article--feature .article__body > .prose:not(.prose--is-panel) > p:first-of-type:first-letter {
+    color: #951c55;
+    font-family: "Guardian Egyptian Web", Georgia, serif;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 3.3334em;
+    line-height: 1;
+    margin-top: -2px;
+    margin-bottom: -16px;
+    padding-right: 6px;
+    float: left; }
+    @media all and (min-width: 40.63em) {
+      #sandbox .tone--feature1 .article--feature .article__body > .prose:not(.prose--is-panel) > p:first-of-type:first-letter,
+      #sandbox .tone--feature2 .article--feature .article__body > .prose:not(.prose--is-panel) > p:first-of-type:first-letter,
+      #sandbox .tone--feature3 .article--feature .article__body > .prose:not(.prose--is-panel) > p:first-of-type:first-letter {
+        font-size: 5.2222em; } }
   #sandbox .tone--feature1 .article--feature,
   #sandbox .tone--feature1 .article--quiz,
   #sandbox .tone--feature2 .article--feature,
@@ -6323,30 +6337,6 @@
     #sandbox .tone--feature3 .article--feature .article__body,
     #sandbox .tone--feature3 .article--quiz .article__body {
       background-color: #fff; }
-    #sandbox .tone--feature1 .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-    #sandbox .tone--feature1 .article--quiz .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-    #sandbox .tone--feature2 .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-    #sandbox .tone--feature2 .article--quiz .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-    #sandbox .tone--feature3 .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-    #sandbox .tone--feature3 .article--quiz .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
-      color: #951c55;
-      font-family: "Guardian Egyptian Web", Georgia, serif;
-      font-weight: 100;
-      font-style: normal;
-      font-size: 3.3334em;
-      line-height: 1;
-      margin-top: -2px;
-      margin-bottom: -16px;
-      padding-right: 6px;
-      float: left; }
-      @media all and (min-width: 40.63em) {
-        #sandbox .tone--feature1 .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-        #sandbox .tone--feature1 .article--quiz .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-        #sandbox .tone--feature2 .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-        #sandbox .tone--feature2 .article--quiz .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-        #sandbox .tone--feature3 .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-        #sandbox .tone--feature3 .article--quiz .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
-          font-size: 5.2222em; } }
     #sandbox .tone--feature1 .article--feature .prose p a,
     #sandbox .tone--feature1 .article--feature .prose li a,
     #sandbox .tone--feature1 .article--quiz .prose p a,
