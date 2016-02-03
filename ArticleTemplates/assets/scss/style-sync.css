@@ -3555,124 +3555,207 @@ body.the-minute {
     .article--feature .article__header .headline {
       margin-top: 0; } }
 
-.is_advertising:not(.tone--review):not(.tone--analysis) {
+/* Supported: tone--news, tone--feature1, tone--feature2, tone--feature3, tone--media */
+.is_advertising {
+  background-color: #CCC;
   /* Common */
-  /* News and Comment tone overrides */
-  /* Comment tone overrides */
-  /* Feature tone overrides */ }
-  .is_advertising:not(.tone--review):not(.tone--analysis) .section,
-  .is_advertising:not(.tone--review):not(.tone--analysis) .section__container .content__series-label,
-  .is_advertising:not(.tone--review):not(.tone--analysis) .headline,
-  .is_advertising:not(.tone--review):not(.tone--analysis) .standfirst,
-  .is_advertising:not(.tone--review):not(.tone--analysis) .byline,
-  .is_advertising:not(.tone--review):not(.tone--analysis) .article__body,
-  .is_advertising:not(.tone--review):not(.tone--analysis) .article__body > .prose > p:first-of-type::first-letter,
-  .is_advertising:not(.tone--review):not(.tone--analysis) .element-rich-link a::before,
-  .is_advertising:not(.tone--review):not(.tone--analysis) .element-rich-link a,
-  .is_advertising:not(.tone--review):not(.tone--analysis) .prose h2,
-  .is_advertising:not(.tone--review):not(.tone--analysis) .article--liveblog .article__header .section {
+  /* News overrides */
+  /* Feature overrides */
+  /* Media overrides */ }
+  @media all and (min-width: 75em) {
+    .is_advertising {
+      background-color: #d9d9d9; } }
+  .is_advertising.tone--news .section,
+  .is_advertising.tone--news .section__container .content__series-label,
+  .is_advertising.tone--news .headline,
+  .is_advertising.tone--news .standfirst,
+  .is_advertising.tone--news .byline,
+  .is_advertising.tone--news .article__body,
+  .is_advertising.tone--news .article__body > .prose > p:first-of-type::first-letter,
+  .is_advertising.tone--news .element-rich-link a::before,
+  .is_advertising.tone--news .element-rich-link a,
+  .is_advertising.tone--news .prose h2,
+  .is_advertising.tone--news .article--liveblog .article__header .section, .is_advertising.tone--feature1 .section,
+  .is_advertising.tone--feature1 .section__container .content__series-label,
+  .is_advertising.tone--feature1 .headline,
+  .is_advertising.tone--feature1 .standfirst,
+  .is_advertising.tone--feature1 .byline,
+  .is_advertising.tone--feature1 .article__body,
+  .is_advertising.tone--feature1 .article__body > .prose > p:first-of-type::first-letter,
+  .is_advertising.tone--feature1 .element-rich-link a::before,
+  .is_advertising.tone--feature1 .element-rich-link a,
+  .is_advertising.tone--feature1 .prose h2,
+  .is_advertising.tone--feature1 .article--liveblog .article__header .section, .is_advertising.tone--feature2 .section,
+  .is_advertising.tone--feature2 .section__container .content__series-label,
+  .is_advertising.tone--feature2 .headline,
+  .is_advertising.tone--feature2 .standfirst,
+  .is_advertising.tone--feature2 .byline,
+  .is_advertising.tone--feature2 .article__body,
+  .is_advertising.tone--feature2 .article__body > .prose > p:first-of-type::first-letter,
+  .is_advertising.tone--feature2 .element-rich-link a::before,
+  .is_advertising.tone--feature2 .element-rich-link a,
+  .is_advertising.tone--feature2 .prose h2,
+  .is_advertising.tone--feature2 .article--liveblog .article__header .section, .is_advertising.tone--feature3 .section,
+  .is_advertising.tone--feature3 .section__container .content__series-label,
+  .is_advertising.tone--feature3 .headline,
+  .is_advertising.tone--feature3 .standfirst,
+  .is_advertising.tone--feature3 .byline,
+  .is_advertising.tone--feature3 .article__body,
+  .is_advertising.tone--feature3 .article__body > .prose > p:first-of-type::first-letter,
+  .is_advertising.tone--feature3 .element-rich-link a::before,
+  .is_advertising.tone--feature3 .element-rich-link a,
+  .is_advertising.tone--feature3 .prose h2,
+  .is_advertising.tone--feature3 .article--liveblog .article__header .section, .is_advertising.tone--media .section,
+  .is_advertising.tone--media .section__container .content__series-label,
+  .is_advertising.tone--media .headline,
+  .is_advertising.tone--media .standfirst,
+  .is_advertising.tone--media .byline,
+  .is_advertising.tone--media .article__body,
+  .is_advertising.tone--media .article__body > .prose > p:first-of-type::first-letter,
+  .is_advertising.tone--media .element-rich-link a::before,
+  .is_advertising.tone--media .element-rich-link a,
+  .is_advertising.tone--media .prose h2,
+  .is_advertising.tone--media .article--liveblog .article__header .section {
     font-family: "Guardian Text Sans Web", sans-serif; }
-  .is_advertising:not(.tone--review):not(.tone--analysis) .article {
-    background-color: #cfcfcf; }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article .alerts, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .meta__pubdate, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .section__container {
-      display: none; }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article__body, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .headline, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .standfirst__inner, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .sponsorship, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .meta, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .content__labels {
-      color: #272727; }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article__header, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .standfirst {
-      background-color: #cfcfcf; }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article__body, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .main-media, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .headline, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .standfirst__inner, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .sponsorship, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .meta, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .content__labels, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .main-media figcaption {
-      background-color: #d9d9d9; }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .headline {
-      padding-bottom: 18px; }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .meta__misc, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .standfirst__inner {
-      padding-bottom: 12px; }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article__header a, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .byline {
-      color: #009999 !important; }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .standfirst a {
-      text-decoration: none; }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .sponsorship {
-      display: block;
-      position: relative;
-      padding: 8px 12px 8px;
-      border-bottom: 1px rgba(153, 153, 153, 0.4) dotted;
-      font-size: 1.6rem; }
-      @media all and (min-width: 75em) {
-        .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .sponsorship .sponsorship__inner {
-          padding-left: 240px;
-          padding-right: 320px; } }
-      .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .sponsorship .sponsorship__formatted-sponsor-name {
-        position: absolute;
-        top: 50%;
-        margin-top: -0.8rem; }
-      .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .sponsorship .sponsorship__logo {
-        float: right; }
-      @media all and (min-width: 75em) {
-        .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .sponsorship {
-          padding-left: 0; } }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose p a, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose li a {
-      color: #009999;
-      text-decoration: none;
-      background-image: linear-gradient(rgba(0, 153, 153, 0.25) 0%, #009999 100%);
-      background-repeat: repeat-x;
-      background-size: 1px 1px;
-      background-position: 0 bottom;
-      text-shadow: 3px 0 #d9d9d9, 2px 0 #d9d9d9, 1px 0 #d9d9d9, -1px 0 #d9d9d9, -2px 0 #d9d9d9, -3px 0 #d9d9d9; }
-      @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
-        .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose p a, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose li a {
-          background-image: linear-gradient(rgba(0, 153, 153, 0.25) 0%, #009999 100%);
-          background-position: 0 93%; } }
-      .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose p a a:active, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose p a:hover, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose li a a:active, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose li a:hover {
-        color: #00cccc;
-        background-image: linear-gradient(to bottom, #00adad 0%, #00adad 100%); }
-      .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose p a::selection,
-      .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose p a > *::selection, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose li a::selection,
-      .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose li a > *::selection {
-        text-shadow: none; }
-      .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose p a::-moz-selection,
-      .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose p a > *::-moz-selection, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose li a::-moz-selection,
-      .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose li a > *::-moz-selection {
-        text-shadow: none; }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article__header ul > li::before, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header .bullet::before {
-      background-color: #999; }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article__header ul > li, .is_advertising:not(.tone--review):not(.tone--analysis) .article__header ul > li strong {
-      color: #333; }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article__header ul > li strong {
-      font-weight: bold; }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose .element-pullquote blockquote cite, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose .element-pullquote blockquote::before, .is_advertising:not(.tone--review):not(.tone--analysis) .article__body .prose .element-pullquote blockquote::after {
-      color: #009999; }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article .element-placeholder .element-placeholder__button .touchpoint__button {
-      background-color: #878787; }
-      .is_advertising:not(.tone--review):not(.tone--analysis) .article .element-placeholder .element-placeholder__button .touchpoint__button:active {
-        color: #878787;
-        background-color: #272727; }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article .element-placeholder .element-placeholder__button .touchpoint__label {
-      color: #fff;
-      text-shadow: 0 0 4px rgba(0, 0, 0, 0.5); }
-    .is_advertising:not(.tone--review):not(.tone--analysis) .article .tags {
-      border-color: #878787; }
-  .is_advertising:not(.tone--review):not(.tone--analysis) .touchpoint--primary .touchpoint__button {
-    background-color: #878787; }
-  .is_advertising:not(.tone--review):not(.tone--analysis) .touchpoint--primary:active .touchpoint__button {
-    background-color: #272727; }
-  .is_advertising:not(.tone--review):not(.tone--analysis) .touchpoint--primary .touchpoint__label {
-    color: #878787; }
-  .is_advertising:not(.tone--review):not(.tone--analysis) .touchpoint--primary:active .touchpoint__label {
+  .is_advertising.tone--news .article .article__header .alerts, .is_advertising.tone--news .article .article__header .meta__pubdate, .is_advertising.tone--news .article .article__header .section__container, .is_advertising.tone--feature1 .article .article__header .alerts, .is_advertising.tone--feature1 .article .article__header .meta__pubdate, .is_advertising.tone--feature1 .article .article__header .section__container, .is_advertising.tone--feature2 .article .article__header .alerts, .is_advertising.tone--feature2 .article .article__header .meta__pubdate, .is_advertising.tone--feature2 .article .article__header .section__container, .is_advertising.tone--feature3 .article .article__header .alerts, .is_advertising.tone--feature3 .article .article__header .meta__pubdate, .is_advertising.tone--feature3 .article .article__header .section__container, .is_advertising.tone--media .article .article__header .alerts, .is_advertising.tone--media .article .article__header .meta__pubdate, .is_advertising.tone--media .article .article__header .section__container {
+    display: none; }
+  .is_advertising.tone--news .article .article__body, .is_advertising.tone--news .article .article__header .headline, .is_advertising.tone--news .article .article__header .standfirst, .is_advertising.tone--news .article .article__header .standfirst__inner, .is_advertising.tone--news .article .article__header .sponsorship, .is_advertising.tone--news .article .article__header .meta, .is_advertising.tone--news .article .article__header .content__labels, .is_advertising.tone--feature1 .article .article__body, .is_advertising.tone--feature1 .article .article__header .headline, .is_advertising.tone--feature1 .article .article__header .standfirst, .is_advertising.tone--feature1 .article .article__header .standfirst__inner, .is_advertising.tone--feature1 .article .article__header .sponsorship, .is_advertising.tone--feature1 .article .article__header .meta, .is_advertising.tone--feature1 .article .article__header .content__labels, .is_advertising.tone--feature2 .article .article__body, .is_advertising.tone--feature2 .article .article__header .headline, .is_advertising.tone--feature2 .article .article__header .standfirst, .is_advertising.tone--feature2 .article .article__header .standfirst__inner, .is_advertising.tone--feature2 .article .article__header .sponsorship, .is_advertising.tone--feature2 .article .article__header .meta, .is_advertising.tone--feature2 .article .article__header .content__labels, .is_advertising.tone--feature3 .article .article__body, .is_advertising.tone--feature3 .article .article__header .headline, .is_advertising.tone--feature3 .article .article__header .standfirst, .is_advertising.tone--feature3 .article .article__header .standfirst__inner, .is_advertising.tone--feature3 .article .article__header .sponsorship, .is_advertising.tone--feature3 .article .article__header .meta, .is_advertising.tone--feature3 .article .article__header .content__labels, .is_advertising.tone--media .article .article__body, .is_advertising.tone--media .article .article__header .headline, .is_advertising.tone--media .article .article__header .standfirst, .is_advertising.tone--media .article .article__header .standfirst__inner, .is_advertising.tone--media .article .article__header .sponsorship, .is_advertising.tone--media .article .article__header .meta, .is_advertising.tone--media .article .article__header .content__labels {
     color: #272727; }
-  .is_advertising:not(.tone--review):not(.tone--analysis) .comments__viewmore .comments__viewmore--label {
+  .is_advertising.tone--news .article .article__body, .is_advertising.tone--news .article .article__header .main-media, .is_advertising.tone--news .article .article__header .headline, .is_advertising.tone--news .article .article__header .standfirst__inner, .is_advertising.tone--news .article .article__header .sponsorship, .is_advertising.tone--news .article .article__header .meta, .is_advertising.tone--news .article .article__header .content__labels, .is_advertising.tone--news .article .article__header .main-media figcaption, .is_advertising.tone--feature1 .article .article__body, .is_advertising.tone--feature1 .article .article__header .main-media, .is_advertising.tone--feature1 .article .article__header .headline, .is_advertising.tone--feature1 .article .article__header .standfirst__inner, .is_advertising.tone--feature1 .article .article__header .sponsorship, .is_advertising.tone--feature1 .article .article__header .meta, .is_advertising.tone--feature1 .article .article__header .content__labels, .is_advertising.tone--feature1 .article .article__header .main-media figcaption, .is_advertising.tone--feature2 .article .article__body, .is_advertising.tone--feature2 .article .article__header .main-media, .is_advertising.tone--feature2 .article .article__header .headline, .is_advertising.tone--feature2 .article .article__header .standfirst__inner, .is_advertising.tone--feature2 .article .article__header .sponsorship, .is_advertising.tone--feature2 .article .article__header .meta, .is_advertising.tone--feature2 .article .article__header .content__labels, .is_advertising.tone--feature2 .article .article__header .main-media figcaption, .is_advertising.tone--feature3 .article .article__body, .is_advertising.tone--feature3 .article .article__header .main-media, .is_advertising.tone--feature3 .article .article__header .headline, .is_advertising.tone--feature3 .article .article__header .standfirst__inner, .is_advertising.tone--feature3 .article .article__header .sponsorship, .is_advertising.tone--feature3 .article .article__header .meta, .is_advertising.tone--feature3 .article .article__header .content__labels, .is_advertising.tone--feature3 .article .article__header .main-media figcaption, .is_advertising.tone--media .article .article__body, .is_advertising.tone--media .article .article__header .main-media, .is_advertising.tone--media .article .article__header .headline, .is_advertising.tone--media .article .article__header .standfirst__inner, .is_advertising.tone--media .article .article__header .sponsorship, .is_advertising.tone--media .article .article__header .meta, .is_advertising.tone--media .article .article__header .content__labels, .is_advertising.tone--media .article .article__header .main-media figcaption {
+    background-color: #CCC; }
+  .is_advertising.tone--news .article .article__header .headline, .is_advertising.tone--feature1 .article .article__header .headline, .is_advertising.tone--feature2 .article .article__header .headline, .is_advertising.tone--feature3 .article .article__header .headline, .is_advertising.tone--media .article .article__header .headline {
+    padding-bottom: 18px; }
+  .is_advertising.tone--news .article .article__header .meta__misc, .is_advertising.tone--news .article .article__header .standfirst__inner, .is_advertising.tone--feature1 .article .article__header .meta__misc, .is_advertising.tone--feature1 .article .article__header .standfirst__inner, .is_advertising.tone--feature2 .article .article__header .meta__misc, .is_advertising.tone--feature2 .article .article__header .standfirst__inner, .is_advertising.tone--feature3 .article .article__header .meta__misc, .is_advertising.tone--feature3 .article .article__header .standfirst__inner, .is_advertising.tone--media .article .article__header .meta__misc, .is_advertising.tone--media .article .article__header .standfirst__inner {
+    padding-bottom: 12px; }
+  .is_advertising.tone--news .article .article__header a, .is_advertising.tone--news .article .article__header .byline, .is_advertising.tone--feature1 .article .article__header a, .is_advertising.tone--feature1 .article .article__header .byline, .is_advertising.tone--feature2 .article .article__header a, .is_advertising.tone--feature2 .article .article__header .byline, .is_advertising.tone--feature3 .article .article__header a, .is_advertising.tone--feature3 .article .article__header .byline, .is_advertising.tone--media .article .article__header a, .is_advertising.tone--media .article .article__header .byline {
+    color: #009999 !important; }
+  .is_advertising.tone--news .article .article__header .standfirst a, .is_advertising.tone--feature1 .article .article__header .standfirst a, .is_advertising.tone--feature2 .article .article__header .standfirst a, .is_advertising.tone--feature3 .article .article__header .standfirst a, .is_advertising.tone--media .article .article__header .standfirst a {
+    text-decoration: none; }
+  .is_advertising.tone--news .article .article__header .sponsorship, .is_advertising.tone--feature1 .article .article__header .sponsorship, .is_advertising.tone--feature2 .article .article__header .sponsorship, .is_advertising.tone--feature3 .article .article__header .sponsorship, .is_advertising.tone--media .article .article__header .sponsorship {
+    display: block;
+    position: relative;
+    padding: 8px 12px 8px;
+    border-bottom: 1px rgba(135, 135, 135, 0.4) dotted;
+    font-size: 1.6rem; }
+    @media all and (min-width: 75em) {
+      .is_advertising.tone--news .article .article__header .sponsorship .sponsorship__inner, .is_advertising.tone--feature1 .article .article__header .sponsorship .sponsorship__inner, .is_advertising.tone--feature2 .article .article__header .sponsorship .sponsorship__inner, .is_advertising.tone--feature3 .article .article__header .sponsorship .sponsorship__inner, .is_advertising.tone--media .article .article__header .sponsorship .sponsorship__inner {
+        padding-left: 240px;
+        padding-right: 320px; } }
+    .is_advertising.tone--news .article .article__header .sponsorship .sponsorship__formatted-sponsor-name, .is_advertising.tone--feature1 .article .article__header .sponsorship .sponsorship__formatted-sponsor-name, .is_advertising.tone--feature2 .article .article__header .sponsorship .sponsorship__formatted-sponsor-name, .is_advertising.tone--feature3 .article .article__header .sponsorship .sponsorship__formatted-sponsor-name, .is_advertising.tone--media .article .article__header .sponsorship .sponsorship__formatted-sponsor-name {
+      position: absolute;
+      top: 50%;
+      margin-top: -0.8rem; }
+    .is_advertising.tone--news .article .article__header .sponsorship .sponsorship__logo, .is_advertising.tone--feature1 .article .article__header .sponsorship .sponsorship__logo, .is_advertising.tone--feature2 .article .article__header .sponsorship .sponsorship__logo, .is_advertising.tone--feature3 .article .article__header .sponsorship .sponsorship__logo, .is_advertising.tone--media .article .article__header .sponsorship .sponsorship__logo {
+      float: right; }
+    @media all and (min-width: 75em) {
+      .is_advertising.tone--news .article .article__header .sponsorship, .is_advertising.tone--feature1 .article .article__header .sponsorship, .is_advertising.tone--feature2 .article .article__header .sponsorship, .is_advertising.tone--feature3 .article .article__header .sponsorship, .is_advertising.tone--media .article .article__header .sponsorship {
+        padding-left: 0; } }
+  .is_advertising.tone--news .article .article__body .prose p a, .is_advertising.tone--news .article .article__body .prose li a, .is_advertising.tone--feature1 .article .article__body .prose p a, .is_advertising.tone--feature1 .article .article__body .prose li a, .is_advertising.tone--feature2 .article .article__body .prose p a, .is_advertising.tone--feature2 .article .article__body .prose li a, .is_advertising.tone--feature3 .article .article__body .prose p a, .is_advertising.tone--feature3 .article .article__body .prose li a, .is_advertising.tone--media .article .article__body .prose p a, .is_advertising.tone--media .article .article__body .prose li a {
+    color: #009999;
+    text-decoration: none;
+    background-image: linear-gradient(rgba(0, 153, 153, 0.25) 0%, #009999 100%);
+    background-repeat: repeat-x;
+    background-size: 1px 1px;
+    background-position: 0 bottom;
+    text-shadow: 3px 0 #CCC, 2px 0 #CCC, 1px 0 #CCC, -1px 0 #CCC, -2px 0 #CCC, -3px 0 #CCC; }
+    @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
+      .is_advertising.tone--news .article .article__body .prose p a, .is_advertising.tone--news .article .article__body .prose li a, .is_advertising.tone--feature1 .article .article__body .prose p a, .is_advertising.tone--feature1 .article .article__body .prose li a, .is_advertising.tone--feature2 .article .article__body .prose p a, .is_advertising.tone--feature2 .article .article__body .prose li a, .is_advertising.tone--feature3 .article .article__body .prose p a, .is_advertising.tone--feature3 .article .article__body .prose li a, .is_advertising.tone--media .article .article__body .prose p a, .is_advertising.tone--media .article .article__body .prose li a {
+        background-image: linear-gradient(rgba(0, 153, 153, 0.25) 0%, #009999 100%);
+        background-position: 0 93%; } }
+    .is_advertising.tone--news .article .article__body .prose p a a:active, .is_advertising.tone--news .article .article__body .prose p a:hover, .is_advertising.tone--news .article .article__body .prose li a a:active, .is_advertising.tone--news .article .article__body .prose li a:hover, .is_advertising.tone--feature1 .article .article__body .prose p a a:active, .is_advertising.tone--feature1 .article .article__body .prose p a:hover, .is_advertising.tone--feature1 .article .article__body .prose li a a:active, .is_advertising.tone--feature1 .article .article__body .prose li a:hover, .is_advertising.tone--feature2 .article .article__body .prose p a a:active, .is_advertising.tone--feature2 .article .article__body .prose p a:hover, .is_advertising.tone--feature2 .article .article__body .prose li a a:active, .is_advertising.tone--feature2 .article .article__body .prose li a:hover, .is_advertising.tone--feature3 .article .article__body .prose p a a:active, .is_advertising.tone--feature3 .article .article__body .prose p a:hover, .is_advertising.tone--feature3 .article .article__body .prose li a a:active, .is_advertising.tone--feature3 .article .article__body .prose li a:hover, .is_advertising.tone--media .article .article__body .prose p a a:active, .is_advertising.tone--media .article .article__body .prose p a:hover, .is_advertising.tone--media .article .article__body .prose li a a:active, .is_advertising.tone--media .article .article__body .prose li a:hover {
+      color: #00cccc;
+      background-image: linear-gradient(to bottom, #00adad 0%, #00adad 100%); }
+    .is_advertising.tone--news .article .article__body .prose p a::selection,
+    .is_advertising.tone--news .article .article__body .prose p a > *::selection, .is_advertising.tone--news .article .article__body .prose li a::selection,
+    .is_advertising.tone--news .article .article__body .prose li a > *::selection, .is_advertising.tone--feature1 .article .article__body .prose p a::selection,
+    .is_advertising.tone--feature1 .article .article__body .prose p a > *::selection, .is_advertising.tone--feature1 .article .article__body .prose li a::selection,
+    .is_advertising.tone--feature1 .article .article__body .prose li a > *::selection, .is_advertising.tone--feature2 .article .article__body .prose p a::selection,
+    .is_advertising.tone--feature2 .article .article__body .prose p a > *::selection, .is_advertising.tone--feature2 .article .article__body .prose li a::selection,
+    .is_advertising.tone--feature2 .article .article__body .prose li a > *::selection, .is_advertising.tone--feature3 .article .article__body .prose p a::selection,
+    .is_advertising.tone--feature3 .article .article__body .prose p a > *::selection, .is_advertising.tone--feature3 .article .article__body .prose li a::selection,
+    .is_advertising.tone--feature3 .article .article__body .prose li a > *::selection, .is_advertising.tone--media .article .article__body .prose p a::selection,
+    .is_advertising.tone--media .article .article__body .prose p a > *::selection, .is_advertising.tone--media .article .article__body .prose li a::selection,
+    .is_advertising.tone--media .article .article__body .prose li a > *::selection {
+      text-shadow: none; }
+    .is_advertising.tone--news .article .article__body .prose p a::-moz-selection,
+    .is_advertising.tone--news .article .article__body .prose p a > *::-moz-selection, .is_advertising.tone--news .article .article__body .prose li a::-moz-selection,
+    .is_advertising.tone--news .article .article__body .prose li a > *::-moz-selection, .is_advertising.tone--feature1 .article .article__body .prose p a::-moz-selection,
+    .is_advertising.tone--feature1 .article .article__body .prose p a > *::-moz-selection, .is_advertising.tone--feature1 .article .article__body .prose li a::-moz-selection,
+    .is_advertising.tone--feature1 .article .article__body .prose li a > *::-moz-selection, .is_advertising.tone--feature2 .article .article__body .prose p a::-moz-selection,
+    .is_advertising.tone--feature2 .article .article__body .prose p a > *::-moz-selection, .is_advertising.tone--feature2 .article .article__body .prose li a::-moz-selection,
+    .is_advertising.tone--feature2 .article .article__body .prose li a > *::-moz-selection, .is_advertising.tone--feature3 .article .article__body .prose p a::-moz-selection,
+    .is_advertising.tone--feature3 .article .article__body .prose p a > *::-moz-selection, .is_advertising.tone--feature3 .article .article__body .prose li a::-moz-selection,
+    .is_advertising.tone--feature3 .article .article__body .prose li a > *::-moz-selection, .is_advertising.tone--media .article .article__body .prose p a::-moz-selection,
+    .is_advertising.tone--media .article .article__body .prose p a > *::-moz-selection, .is_advertising.tone--media .article .article__body .prose li a::-moz-selection,
+    .is_advertising.tone--media .article .article__body .prose li a > *::-moz-selection {
+      text-shadow: none; }
+  .is_advertising.tone--news .article .article__header ul > li::before, .is_advertising.tone--news .article .article__header .bullet::before, .is_advertising.tone--feature1 .article .article__header ul > li::before, .is_advertising.tone--feature1 .article .article__header .bullet::before, .is_advertising.tone--feature2 .article .article__header ul > li::before, .is_advertising.tone--feature2 .article .article__header .bullet::before, .is_advertising.tone--feature3 .article .article__header ul > li::before, .is_advertising.tone--feature3 .article .article__header .bullet::before, .is_advertising.tone--media .article .article__header ul > li::before, .is_advertising.tone--media .article .article__header .bullet::before {
+    background-color: #878787; }
+  .is_advertising.tone--news .article .article__header ul > li, .is_advertising.tone--news .article .article__header ul > li strong, .is_advertising.tone--feature1 .article .article__header ul > li, .is_advertising.tone--feature1 .article .article__header ul > li strong, .is_advertising.tone--feature2 .article .article__header ul > li, .is_advertising.tone--feature2 .article .article__header ul > li strong, .is_advertising.tone--feature3 .article .article__header ul > li, .is_advertising.tone--feature3 .article .article__header ul > li strong, .is_advertising.tone--media .article .article__header ul > li, .is_advertising.tone--media .article .article__header ul > li strong {
+    color: #333; }
+  .is_advertising.tone--news .article .article__header ul > li strong, .is_advertising.tone--feature1 .article .article__header ul > li strong, .is_advertising.tone--feature2 .article .article__header ul > li strong, .is_advertising.tone--feature3 .article .article__header ul > li strong, .is_advertising.tone--media .article .article__header ul > li strong {
+    font-weight: bold; }
+  .is_advertising.tone--news .article .article__body .prose .element-pullquote blockquote cite, .is_advertising.tone--news .article .article__body .prose .element-pullquote blockquote::before, .is_advertising.tone--news .article .article__body .prose .element-pullquote blockquote::after, .is_advertising.tone--feature1 .article .article__body .prose .element-pullquote blockquote cite, .is_advertising.tone--feature1 .article .article__body .prose .element-pullquote blockquote::before, .is_advertising.tone--feature1 .article .article__body .prose .element-pullquote blockquote::after, .is_advertising.tone--feature2 .article .article__body .prose .element-pullquote blockquote cite, .is_advertising.tone--feature2 .article .article__body .prose .element-pullquote blockquote::before, .is_advertising.tone--feature2 .article .article__body .prose .element-pullquote blockquote::after, .is_advertising.tone--feature3 .article .article__body .prose .element-pullquote blockquote cite, .is_advertising.tone--feature3 .article .article__body .prose .element-pullquote blockquote::before, .is_advertising.tone--feature3 .article .article__body .prose .element-pullquote blockquote::after, .is_advertising.tone--media .article .article__body .prose .element-pullquote blockquote cite, .is_advertising.tone--media .article .article__body .prose .element-pullquote blockquote::before, .is_advertising.tone--media .article .article__body .prose .element-pullquote blockquote::after {
+    color: #009999; }
+  .is_advertising.tone--news .article .article__body .prose figure figcaption, .is_advertising.tone--news .article .article__body .prose .element-rich-link, .is_advertising.tone--feature1 .article .article__body .prose figure figcaption, .is_advertising.tone--feature1 .article .article__body .prose .element-rich-link, .is_advertising.tone--feature2 .article .article__body .prose figure figcaption, .is_advertising.tone--feature2 .article .article__body .prose .element-rich-link, .is_advertising.tone--feature3 .article .article__body .prose figure figcaption, .is_advertising.tone--feature3 .article .article__body .prose .element-rich-link, .is_advertising.tone--media .article .article__body .prose figure figcaption, .is_advertising.tone--media .article .article__body .prose .element-rich-link {
+    border-color: rgba(135, 135, 135, 0.4); }
+  .is_advertising.tone--news .article .element-placeholder .element-placeholder__button .touchpoint__button, .is_advertising.tone--feature1 .article .element-placeholder .element-placeholder__button .touchpoint__button, .is_advertising.tone--feature2 .article .element-placeholder .element-placeholder__button .touchpoint__button, .is_advertising.tone--feature3 .article .element-placeholder .element-placeholder__button .touchpoint__button, .is_advertising.tone--media .article .element-placeholder .element-placeholder__button .touchpoint__button {
+    background-color: #878787; }
+    .is_advertising.tone--news .article .element-placeholder .element-placeholder__button .touchpoint__button:active, .is_advertising.tone--feature1 .article .element-placeholder .element-placeholder__button .touchpoint__button:active, .is_advertising.tone--feature2 .article .element-placeholder .element-placeholder__button .touchpoint__button:active, .is_advertising.tone--feature3 .article .element-placeholder .element-placeholder__button .touchpoint__button:active, .is_advertising.tone--media .article .element-placeholder .element-placeholder__button .touchpoint__button:active {
+      color: #878787;
+      background-color: #272727; }
+  .is_advertising.tone--news .article .element-placeholder .element-placeholder__button .touchpoint__label, .is_advertising.tone--feature1 .article .element-placeholder .element-placeholder__button .touchpoint__label, .is_advertising.tone--feature2 .article .element-placeholder .element-placeholder__button .touchpoint__label, .is_advertising.tone--feature3 .article .element-placeholder .element-placeholder__button .touchpoint__label, .is_advertising.tone--media .article .element-placeholder .element-placeholder__button .touchpoint__label {
+    color: #fff;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.5); }
+  .is_advertising.tone--news .article .tags, .is_advertising.tone--feature1 .article .tags, .is_advertising.tone--feature2 .article .tags, .is_advertising.tone--feature3 .article .tags, .is_advertising.tone--media .article .tags {
+    background-color: #CCC;
+    border-color: rgba(135, 135, 135, 0.4); }
+    .is_advertising.tone--news .article .tags .inline-list .inline-list__item a, .is_advertising.tone--feature1 .article .tags .inline-list .inline-list__item a, .is_advertising.tone--feature2 .article .tags .inline-list .inline-list__item a, .is_advertising.tone--feature3 .article .tags .inline-list .inline-list__item a, .is_advertising.tone--media .article .tags .inline-list .inline-list__item a {
+      color: #fff;
+      background-color: #878787; }
+    .is_advertising.tone--news .article .tags .inline-list .inline-list__item.more-button a, .is_advertising.tone--feature1 .article .tags .inline-list .inline-list__item.more-button a, .is_advertising.tone--feature2 .article .tags .inline-list .inline-list__item.more-button a, .is_advertising.tone--feature3 .article .tags .inline-list .inline-list__item.more-button a, .is_advertising.tone--media .article .tags .inline-list .inline-list__item.more-button a {
+      border: 1px solid #878787;
+      color: #272727;
+      background-color: #CCC; }
+  .is_advertising.tone--news .touchpoint--primary .touchpoint__button, .is_advertising.tone--feature1 .touchpoint--primary .touchpoint__button, .is_advertising.tone--feature2 .touchpoint--primary .touchpoint__button, .is_advertising.tone--feature3 .touchpoint--primary .touchpoint__button, .is_advertising.tone--media .touchpoint--primary .touchpoint__button {
+    background-color: #878787; }
+  .is_advertising.tone--news .touchpoint--primary:active .touchpoint__button, .is_advertising.tone--feature1 .touchpoint--primary:active .touchpoint__button, .is_advertising.tone--feature2 .touchpoint--primary:active .touchpoint__button, .is_advertising.tone--feature3 .touchpoint--primary:active .touchpoint__button, .is_advertising.tone--media .touchpoint--primary:active .touchpoint__button {
+    background-color: #272727; }
+  .is_advertising.tone--news .touchpoint--primary .touchpoint__label, .is_advertising.tone--feature1 .touchpoint--primary .touchpoint__label, .is_advertising.tone--feature2 .touchpoint--primary .touchpoint__label, .is_advertising.tone--feature3 .touchpoint--primary .touchpoint__label, .is_advertising.tone--media .touchpoint--primary .touchpoint__label {
     color: #878787; }
-  .is_advertising:not(.tone--review):not(.tone--analysis) .comments__viewmore:active .comments__viewmore--label {
+  .is_advertising.tone--news .touchpoint--primary:active .touchpoint__label, .is_advertising.tone--feature1 .touchpoint--primary:active .touchpoint__label, .is_advertising.tone--feature2 .touchpoint--primary:active .touchpoint__label, .is_advertising.tone--feature3 .touchpoint--primary:active .touchpoint__label, .is_advertising.tone--media .touchpoint--primary:active .touchpoint__label {
+    color: #272727; }
+  .is_advertising.tone--news .comments__viewmore .comments__viewmore--label, .is_advertising.tone--feature1 .comments__viewmore .comments__viewmore--label, .is_advertising.tone--feature2 .comments__viewmore .comments__viewmore--label, .is_advertising.tone--feature3 .comments__viewmore .comments__viewmore--label, .is_advertising.tone--media .comments__viewmore .comments__viewmore--label {
+    color: #878787; }
+  .is_advertising.tone--news .comments__viewmore:active .comments__viewmore--label, .is_advertising.tone--feature1 .comments__viewmore:active .comments__viewmore--label, .is_advertising.tone--feature2 .comments__viewmore:active .comments__viewmore--label, .is_advertising.tone--feature3 .comments__viewmore:active .comments__viewmore--label, .is_advertising.tone--media .comments__viewmore:active .comments__viewmore--label {
     color: #272727; }
   @media all and (min-width: 75em) {
-    .is_advertising:not(.tone--review):not(.tone--analysis).tone--news .audio-player__container, .is_advertising:not(.tone--review):not(.tone--analysis).tone--comment .audio-player__container {
-      background: #eaeaea; } }
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article .headline, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article .headline, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article .headline {
-    background-color: #bfbfbf; }
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article__header .meta, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article__header .meta, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article__header .meta {
-    border-top: 1px rgba(153, 153, 153, 0.4) dotted;
-    border-bottom: 1px rgba(153, 153, 153, 0.4) dotted; }
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 a:active, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 a:active {
+    .is_advertising.tone--news .related-content,
+    .is_advertising.tone--news .container__outbrain,
+    .is_advertising.tone--news .comments, .is_advertising.tone--feature1 .related-content,
+    .is_advertising.tone--feature1 .container__outbrain,
+    .is_advertising.tone--feature1 .comments, .is_advertising.tone--feature2 .related-content,
+    .is_advertising.tone--feature2 .container__outbrain,
+    .is_advertising.tone--feature2 .comments, .is_advertising.tone--feature3 .related-content,
+    .is_advertising.tone--feature3 .container__outbrain,
+    .is_advertising.tone--feature3 .comments, .is_advertising.tone--media .related-content,
+    .is_advertising.tone--media .container__outbrain,
+    .is_advertising.tone--media .comments {
+      background-color: #CCC; }
+    .is_advertising.tone--news .article, .is_advertising.tone--feature1 .article, .is_advertising.tone--feature2 .article, .is_advertising.tone--feature3 .article, .is_advertising.tone--media .article {
+      background-color: #d9d9d9; }
+      .is_advertising.tone--news .article .article__header, .is_advertising.tone--news .article .article__header .standfirst, .is_advertising.tone--feature1 .article .article__header, .is_advertising.tone--feature1 .article .article__header .standfirst, .is_advertising.tone--feature2 .article .article__header, .is_advertising.tone--feature2 .article .article__header .standfirst, .is_advertising.tone--feature3 .article .article__header, .is_advertising.tone--feature3 .article .article__header .standfirst, .is_advertising.tone--media .article .article__header, .is_advertising.tone--media .article .article__header .standfirst {
+        background-color: #d9d9d9; }
+    .is_advertising.tone--news .container__outbrain, .is_advertising.tone--feature1 .container__outbrain, .is_advertising.tone--feature2 .container__outbrain, .is_advertising.tone--feature3 .container__outbrain, .is_advertising.tone--media .container__outbrain {
+      margin-bottom: 0; } }
+  @media all and (min-width: 75em) {
+    .is_advertising.tone--news .audio-player__container {
+      background: #eaeaea; }
+    .is_advertising.tone--news .article .article__header .meta, .is_advertising.tone--news .article .article__header .main-media {
+      border-bottom: 1px rgba(135, 135, 135, 0.4) dotted; } }
+  .is_advertising.tone--feature1 .article a:active, .is_advertising.tone--feature2 .article a:active, .is_advertising.tone--feature3 .article a:active {
     color: #414141; }
-  .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
+  .is_advertising.tone--feature1 .article .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter, .is_advertising.tone--feature2 .article .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter, .is_advertising.tone--feature3 .article .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
     color: #009999;
     font-family: "Guardian Egyptian Web", Georgia, serif;
     font-weight: 100;
@@ -3684,8 +3767,24 @@ body.the-minute {
     padding-right: 6px;
     float: left; }
     @media all and (min-width: 40.63em) {
-      .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature1 .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature2 .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter, .is_advertising:not(.tone--review):not(.tone--analysis).tone--feature3 .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
+      .is_advertising.tone--feature1 .article .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter, .is_advertising.tone--feature2 .article .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter, .is_advertising.tone--feature3 .article .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
         font-size: 5.2222em; } }
+  .is_advertising.tone--feature1 .article .article__header .headline, .is_advertising.tone--feature2 .article .article__header .headline, .is_advertising.tone--feature3 .article .article__header .headline {
+    background-color: #B5B5B5; }
+  .is_advertising.tone--feature1 .article .article__header .meta, .is_advertising.tone--feature2 .article .article__header .meta, .is_advertising.tone--feature3 .article .article__header .meta {
+    border-top: 1px rgba(135, 135, 135, 0.4) dotted;
+    border-bottom: 1px rgba(135, 135, 135, 0.4) dotted; }
+  .is_advertising.tone--media .article .article__header .headline {
+    border-bottom: 1px rgba(135, 135, 135, 0.4) dotted; }
+  .is_advertising.tone--media .article .article__header .sponsorship {
+    border-bottom: none; }
+  .is_advertising.tone--media .article .article__header .meta {
+    border-bottom: none; }
+    .is_advertising.tone--media .article .article__header .meta .meta__misc {
+      border-top: 1px rgba(135, 135, 135, 0.4) dotted; }
+    .is_advertising.tone--media .article .article__header .meta .standfirst {
+      background-color: #CCC;
+      padding: 8px 12px 12px 12px; }
 
 .article--visual .article__header .avatar--author {
   display: none; }

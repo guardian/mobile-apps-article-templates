@@ -1,218 +1,394 @@
-.is_advertising:not(.tone--review):not(.tone--analysis) {
+/* Supported: tone--news, tone--feature1, tone--feature2, tone--feature3, tone--media */
 
-    .section,
-    .section__container .content__series-label,
-    .headline,
-    .standfirst,
-    .byline,
-    .article__body,
-    .article__body > .prose > p:first-of-type::first-letter,
-    .element-rich-link a::before,
-    .element-rich-link a,
-    .prose h2,
-    .article--liveblog .article__header .section {
-        font-family: $guardian-sans;
+.is_advertising {
+    background-color: color(global-adv-bg);
+
+    @include mq($from: col4) {
+        background-color: color(shade-11);
     }
 
     /* Common */
-    .article {
-        background-color: color(shade-11);
-
-        .alerts,
-        &__header .meta__pubdate,
-        &__header .section__container {
-            display: none;
-        }
-
-        &__body,
-        &__header .headline,
-        &__header .standfirst__inner,
-        &__header .sponsorship,
-        &__header .meta,
-        &__header .content__labels {
-            color: color(global-adv-text);
-        }
-
-        &__header,
-        &__header .standfirst {
-            background-color: color(shade-11);
-        }
-
-        &__body,
-        &__header .main-media,
-        &__header .headline,
-        &__header .standfirst__inner,
-        &__header .sponsorship,
-        &__header .meta,
-        &__header .content__labels,
-        &__header .main-media figcaption {
-            background-color: color(global-adv-bg);
-        }
-
-        &__header .headline {
-             padding-bottom: 18px;
-        }
-
-        &__header .meta__misc,
-        &__header .standfirst__inner {
-            padding-bottom: 12px;
-        }
-
-        &__header a,
-        &__header .byline {
-            color: color(global-adv-sticky) !important;
-        }
-
-        &__header .standfirst a {
-            text-decoration: none;
-        }
-
-        &__header .sponsorship {
-            display: block;
-            position: relative;
-            padding: 8px 12px 8px;
-            border-bottom: 1px rgba(color(shade-3), .4) dotted;
-            font-size: 1.6rem;
-
-            .sponsorship__inner {
-                @include mq($from: col4) {
-                    padding: {
-                        left: 240px;
-                        right: 320px;
-                    }
-                }            
-            }
-
-            .sponsorship__formatted-sponsor-name {
-                position: absolute;
-                top: 50%;
-                margin-top: -0.8rem;
-            }
-
-            .sponsorship__logo {
-                float: right;
-            }
-
-            @include mq($from: col4) {
-                padding: {
-                    left: 0;
-                }
-            }
-        }
-
-        &__body .prose p, 
-        &__body .prose li {
-            @include text-underline(color(global-adv-sticky), color(global-adv-bg), lighten(color(global-adv-sticky),10%));
-        }
-
-        &__header ul > li::before,
-        &__header .bullet::before {
-            background-color: color(shade-3);    
-        }
-
-        &__header ul > li,
-        &__header ul > li strong {
-            color: color(shade-1);    
-        }
-
-        &__header ul > li strong {
-            font-weight: bold;
-        }
-
-        &__body .prose .element-pullquote blockquote cite,
-        &__body .prose .element-pullquote blockquote::before,
-        &__body .prose .element-pullquote blockquote::after {
-          color: color(global-adv-sticky);
-        }
-
-        .element-placeholder .element-placeholder__button {
-            .touchpoint__button{
-                background-color: color(global-adv-bands);
-
-                &:active{
-                    color: color(global-adv-bands);
-                    background-color: color(global-adv-text);
-                }
-            }
-
-            .touchpoint__label{
-                color: color(shade-7);
-                text-shadow: 0 0 4px  rgba(0, 0, 0, .5);
-            }
-        }
-
-        .tags {
-            border-color: color(global-adv-bands);
-        }
-    }
-
-    .touchpoint--primary {
-        .touchpoint__button {
-            background-color: color(global-adv-bands);
-        }
-
-        &:active .touchpoint__button {
-           background-color: color(global-adv-text);
-        }
-
-        .touchpoint__label {
-            color: color(global-adv-bands);
-        }
-        
-        &:active .touchpoint__label {
-            color: color(global-adv-text);
-        }
-    }
-
-    .comments__viewmore {
-        .comments__viewmore--label {
-            color: color(global-adv-bands);
-        }
-        
-        &:active .comments__viewmore--label {
-            color: color(global-adv-text);
-        }
-    }
-
-    /* News and Comment tone overrides */
     &.tone--news,
-    &.tone--comment {
+    &.tone--feature1, 
+    &.tone--feature2,
+    &.tone--feature3,
+    &.tone--media {
+        .section,
+        .section__container .content__series-label,
+        .headline,
+        .standfirst,
+        .byline,
+        .article__body,
+        .article__body > .prose > p:first-of-type::first-letter,
+        .element-rich-link a::before,
+        .element-rich-link a,
+        .prose h2,
+        .article--liveblog .article__header .section {
+            font-family: $guardian-sans;
+        }
+
+        .article {
+            .article {
+                &__header .alerts,
+                &__header .meta__pubdate,
+                &__header .section__container {
+                    display: none;
+                }
+
+                &__body,
+                &__header .headline,
+                &__header .standfirst,
+                &__header .standfirst__inner,
+                &__header .sponsorship,
+                &__header .meta,
+                &__header .content__labels {
+                    color: color(global-adv-text);
+                }
+
+                // &__header,
+                // &__header .standfirst {
+                //     background-color: color(global-adv-bg);
+                // }
+
+                &__body,
+                &__header .main-media,
+                &__header .headline,
+                &__header .standfirst__inner,
+                &__header .sponsorship,
+                &__header .meta,
+                &__header .content__labels,
+                &__header .main-media figcaption {
+                    background-color: color(global-adv-bg);
+                }
+
+                &__header .headline {
+                     padding-bottom: 18px;
+                }
+
+                &__header .meta__misc,
+                &__header .standfirst__inner {
+                    padding-bottom: 12px;
+                }
+
+                &__header a,
+                &__header .byline {
+                    color: color(global-adv-sticky) !important;
+                }
+
+                &__header .standfirst a {
+                    text-decoration: none;
+                }
+
+                &__header .sponsorship {
+                    display: block;
+                    position: relative;
+                    padding: 8px 12px 8px;
+                    border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
+                    font-size: 1.6rem;
+
+                    .sponsorship__inner {
+                        @include mq($from: col4) {
+                            padding: {
+                                left: 240px;
+                                right: 320px;
+                            }
+                        }            
+                    }
+
+                    .sponsorship__formatted-sponsor-name {
+                        position: absolute;
+                        top: 50%;
+                        margin-top: -0.8rem;
+                    }
+
+                    .sponsorship__logo {
+                        float: right;
+                    }
+
+                    @include mq($from: col4) {
+                        padding: {
+                            left: 0;
+                        }
+                    }
+                }
+
+                &__body .prose p, 
+                &__body .prose li {
+                    @include text-underline(color(global-adv-sticky), color(global-adv-bg), lighten(color(global-adv-sticky),10%));
+                }
+
+                &__header ul > li::before,
+                &__header .bullet::before {
+                    background-color: color(global-adv-bands);    
+                }
+
+                &__header ul > li,
+                &__header ul > li strong {
+                    color: color(shade-1);    
+                }
+
+                &__header ul > li strong {
+                    font-weight: bold;
+                }
+
+                &__body .prose .element-pullquote blockquote cite,
+                &__body .prose .element-pullquote blockquote::before,
+                &__body .prose .element-pullquote blockquote::after {
+                  color: color(global-adv-sticky);
+                }
+
+                &__body .prose figure figcaption,
+                &__body .prose .element-rich-link {
+                    border-color: rgba(color(global-adv-bands), .4);
+                } 
+            }
+
+            .element-placeholder .element-placeholder__button {
+                .touchpoint__button{
+                    background-color: color(global-adv-bands);
+
+                    &:active{
+                        color: color(global-adv-bands);
+                        background-color: color(global-adv-text);
+                    }
+                }
+
+                .touchpoint__label{
+                    color: color(shade-7);
+                    text-shadow: 0 0 4px  rgba(0, 0, 0, .5);
+                }
+            }
+
+            .tags {
+                background-color: color(global-adv-bg);
+                border-color: rgba(color(global-adv-bands), .4);
+
+                .inline-list .inline-list__item a {
+                    color: color(shade-7);
+                    background-color: color(global-adv-bands);
+                }
+
+                .inline-list .inline-list__item.more-button a {
+                    border: 1px solid rgba(color(global-adv-bands), 1);
+                    color: color(global-adv-text);
+                    background-color: color(global-adv-bg);
+                }
+            }
+        }
+
+        .touchpoint--primary {
+            .touchpoint__button {
+                background-color: color(global-adv-bands);
+            }
+
+            &:active .touchpoint__button {
+               background-color: color(global-adv-text);
+            }
+
+            .touchpoint__label {
+                color: color(global-adv-bands);
+            }
+            
+            &:active .touchpoint__label {
+                color: color(global-adv-text);
+            }
+        }
+
+        .comments__viewmore {
+            .comments__viewmore--label {
+                color: color(global-adv-bands);
+            }
+            
+            &:active .comments__viewmore--label {
+                color: color(global-adv-text);
+            }
+        }
+
+        @include mq($from: col4) {
+            .related-content,
+            .container__outbrain,
+            .comments {
+                background-color: color(global-adv-bg); 
+            }
+
+            .article {
+                background-color: color(shade-11);
+
+                .article {
+                    &__header,
+                    &__header .standfirst {
+                        background-color: color(shade-11);
+                    }
+                }
+            }
+
+            .container__outbrain {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    /* News overrides */
+    &.tone--news {
         @include mq($from: col4) {
             .audio-player__container {
                 background: color(shade-5);
             }
+
+            .article {
+                .article {
+                    &__header .meta,
+                    &__header .main-media {
+                        border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
+                    }
+                }
+            }
         }
     }
-
-    /* Comment tone overrides */
-    &.tone--comment {
-
-    }    
-
-    /* Feature tone overrides */
+  
+    /* Feature overrides */
     &.tone--feature1,
     &.tone--feature2,
     &.tone--feature3 {
         .article {
-            .headline {
-                background-color: color(shade-12);
+            a:active {
+                color: lighten(color(global-adv-text),10%);
             }
 
-            &__header .meta {
-                border-top: 1px rgba(color(shade-3), .4) dotted;
-                border-bottom: 1px rgba(color(shade-3), .4) dotted;
+            .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p {
+                @include dropcap(color(global-adv-sticky));
             }
-        }
 
-        a:active {
-            color: lighten(color(global-adv-text),10%);
-        }
+            .article {
+                &__header {
+                    .headline {
+                        background-color: color(shade-12);
+                    }
 
-        .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p {
-            @include dropcap(color(global-adv-sticky));
+                    .meta {
+                        border-top: 1px rgba(color(global-adv-bands), .4) dotted;
+                        border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
+                    }
+                }
+            }         
         }
     }
-       
+
+    /* Media overrides */
+    &.tone--media {
+        .article {
+            .article {
+                &__header {
+                    .headline {
+                        border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
+                    }
+
+                    .sponsorship {
+                        border-bottom: none;
+                    }
+
+                    .meta {
+                        border-bottom: none;
+
+                        .meta__misc {
+                            border-top: 1px rgba(color(global-adv-bands), .4) dotted;
+                        }
+
+                        .standfirst {
+                            background-color: color(global-adv-bg);
+                            padding: 8px 12px 12px 12px;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        // .article .section,
+        // .article .section > div,
+        // .content__series-label,
+        // .article .headline,
+        // .article .headline,
+        // .article .standfirst,
+        // .article .byline,
+        // .article .prose,
+        // .element-placeholder .element-placeholder__button .touchpoint__button,
+        // .sponsorship .sponsorship__formatted-sponsor-name,
+        // .tags .inline-list__item a,
+        // a{
+        //     color: color(global-adv-text);
+        // }
+        
+        // .sponsorship,
+        // .article__header .meta__misc, 
+        // .tags {
+        //     border-color: color(global-adv-bands);
+        // }
+
+        // .article,
+        // .article__header,
+        // .article__body,
+        // .tags, 
+        // .cutout__container,
+        // .sponsorship {
+        //     background-color: color(global-adv-bg);
+        // }
+
+        // @include mq($from: col4) {
+        //     .article,
+        //     .article__header,
+        //     .audio-player__container {
+        //         background: color(shade-5);
+        //     }
+
+        //     .section,
+        //     .headline,
+        //     .main-media, 
+        //     .meta {
+        //         background-color: color(global-adv-bg);
+        //     }
+        // }
+
+        // .article .prose p, 
+        // .article .prose li,
+        // .sponsorship__formatted-sponsor-name {
+        //     @include text-underline(color(global-adv-text), color(global-adv-bg), lighten(color(global-adv-text),10%));
+        // }
+
+        // .tags{
+        //     .inline-list__item {
+        //         a {
+        //             @include tag-button(color(shade-7), color(global-adv-bands), "lighter");
+        //         }
+
+        //         &.more-button a {
+        //             @include tag-more-button(color(global-adv-text), color(global-adv-bands), "lighter");
+        //         }
+        //     }              
+        // }
+
+        // .meta__pubdate{
+        //     color: color(global-adv-bands);
+        // }
+
+        // .audio-player__wrapper,
+        // .audio-player {
+        //     background-color: color(tone-podcast-adv-ply-background);
+        // }
+
+        // .audio-player__button.touchpoint--primary .touchpoint__button,
+        // .audio-player__slider__knob{
+        //     background-color: color(global-adv-bands);
+
+        //     &:active {
+        //         background-color: darken(color(global-adv-bands), 10%); 
+        //     }
+        // }
+
+        // .audio-player__slider__track{
+        //     background-color: color(tone-podcast-adv-ply-range);
+        // }
+    }
 }
 
 // .is_advertising:not(.tone--review):not(.tone--analysis) {
