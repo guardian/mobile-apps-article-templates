@@ -87,16 +87,19 @@
         }
     }
 
+    .article--feature {
+        // Add drop caps to all but "panel" articles
+        .article__body > .prose:not(.prose--is-panel) > p {
+            @include dropcap(color(tone-feature1));
+        }
+    }
+
     .article--feature,
     .article--quiz {
         border-top-color: color(tone-feature1-accent);
 
         .article__body {
             background-color: color(shade-7);
-        }
-
-        .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p {
-            @include dropcap(color(tone-feature1));
         }
 
         .prose p,

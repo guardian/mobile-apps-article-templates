@@ -5036,22 +5036,6 @@
     #sandbox .article--comment .article__header .standfirst,
     #sandbox body:not(.is-live) .article--liveblog .article__header .standfirst {
       padding-right: 0; } }
-  #sandbox .article--comment .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-  #sandbox .article--feature:not(.immersive) .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
-    color: "";
-    font-family: "Guardian Egyptian Web", Georgia, serif;
-    font-weight: 100;
-    font-style: normal;
-    font-size: 3.3334em;
-    line-height: 1;
-    margin-top: -2px;
-    margin-bottom: -16px;
-    padding-right: 6px;
-    float: left; }
-    @media all and (min-width: 40.63em) {
-      #sandbox .article--comment .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-      #sandbox .article--feature:not(.immersive) .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
-        font-size: 5.2222em; } }
   #sandbox .article--feature .article__header .section {
     margin-bottom: 0; }
   #sandbox .article--feature .article__header .main-media {
@@ -5791,13 +5775,11 @@
       #sandbox .tone--analysis .article__header .sponsorship {
         border-bottom: 0; } }
   #sandbox .tone--comment .article a,
-  #sandbox .tone--comment .article__body .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter
-  .container__action--sort a,
+  #sandbox .tone--comment .container__action--sort a,
   #sandbox .tone--comment .comments__ordering {
     color: #e6711b; }
     #sandbox .tone--comment .article a:active,
-    #sandbox .tone--comment .article__body .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter
-    .container__action--sort a:active,
+    #sandbox .tone--comment .container__action--sort a:active,
     #sandbox .tone--comment .comments__ordering:active {
       color: #f39f33; }
   #sandbox .tone--comment .article__header,
@@ -5891,6 +5873,20 @@
       #sandbox .tone--comment .article--comment .prose li a::-moz-selection,
       #sandbox .tone--comment .article--comment .prose li a > *::-moz-selection {
         text-shadow: none; }
+    #sandbox .tone--comment .article--comment .article__body > .prose:not(.prose--is-panel) > p:first-of-type:first-letter {
+      color: #e6711b;
+      font-family: "Guardian Egyptian Web", Georgia, serif;
+      font-weight: 100;
+      font-style: normal;
+      font-size: 3.3334em;
+      line-height: 1;
+      margin-top: -2px;
+      margin-bottom: -16px;
+      padding-right: 6px;
+      float: left; }
+      @media all and (min-width: 40.63em) {
+        #sandbox .tone--comment .article--comment .article__body > .prose:not(.prose--is-panel) > p:first-of-type:first-letter {
+          font-size: 5.2222em; } }
     #sandbox .tone--comment .article--comment .prose table,
     #sandbox .tone--comment .article--comment .table {
       border-top-color: #e6711b; }
@@ -6309,6 +6305,24 @@
           #sandbox .tone--feature2 .main-media figure .element__inner,
           #sandbox .tone--feature3 .main-media figure .element__inner {
             top: -70px; } }
+  #sandbox .tone--feature1 .article--feature .article__body > .prose:not(.prose--is-panel) > p:first-of-type:first-letter,
+  #sandbox .tone--feature2 .article--feature .article__body > .prose:not(.prose--is-panel) > p:first-of-type:first-letter,
+  #sandbox .tone--feature3 .article--feature .article__body > .prose:not(.prose--is-panel) > p:first-of-type:first-letter {
+    color: #951c55;
+    font-family: "Guardian Egyptian Web", Georgia, serif;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 3.3334em;
+    line-height: 1;
+    margin-top: -2px;
+    margin-bottom: -16px;
+    padding-right: 6px;
+    float: left; }
+    @media all and (min-width: 40.63em) {
+      #sandbox .tone--feature1 .article--feature .article__body > .prose:not(.prose--is-panel) > p:first-of-type:first-letter,
+      #sandbox .tone--feature2 .article--feature .article__body > .prose:not(.prose--is-panel) > p:first-of-type:first-letter,
+      #sandbox .tone--feature3 .article--feature .article__body > .prose:not(.prose--is-panel) > p:first-of-type:first-letter {
+        font-size: 5.2222em; } }
   #sandbox .tone--feature1 .article--feature,
   #sandbox .tone--feature1 .article--quiz,
   #sandbox .tone--feature2 .article--feature,
@@ -6323,30 +6337,6 @@
     #sandbox .tone--feature3 .article--feature .article__body,
     #sandbox .tone--feature3 .article--quiz .article__body {
       background-color: #fff; }
-    #sandbox .tone--feature1 .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-    #sandbox .tone--feature1 .article--quiz .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-    #sandbox .tone--feature2 .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-    #sandbox .tone--feature2 .article--quiz .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-    #sandbox .tone--feature3 .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-    #sandbox .tone--feature3 .article--quiz .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
-      color: #951c55;
-      font-family: "Guardian Egyptian Web", Georgia, serif;
-      font-weight: 100;
-      font-style: normal;
-      font-size: 3.3334em;
-      line-height: 1;
-      margin-top: -2px;
-      margin-bottom: -16px;
-      padding-right: 6px;
-      float: left; }
-      @media all and (min-width: 40.63em) {
-        #sandbox .tone--feature1 .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-        #sandbox .tone--feature1 .article--quiz .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-        #sandbox .tone--feature2 .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-        #sandbox .tone--feature2 .article--quiz .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-        #sandbox .tone--feature3 .article--feature .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter,
-        #sandbox .tone--feature3 .article--quiz .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter {
-          font-size: 5.2222em; } }
     #sandbox .tone--feature1 .article--feature .prose p a,
     #sandbox .tone--feature1 .article--feature .prose li a,
     #sandbox .tone--feature1 .article--quiz .prose p a,
@@ -10421,38 +10411,38 @@
       @media all and (max-width: 28.12em) {
         .replacement #sandbox .team-lineup__player__replacement {
           display: block; } }
-  #sandbox .quiz {
+  #sandbox .element-atom .quiz {
     counter-reset: question-counter; }
     @media all and (min-width: 75em) {
-      #sandbox .quiz {
+      #sandbox .element-atom .quiz {
         margin: 0; } }
-    #sandbox .quiz__correct-answers-title, #sandbox .quiz__correct-answers {
+    #sandbox .element-atom .quiz__correct-answers-title, #sandbox .element-atom .quiz__correct-answers {
       display: none; }
-    #sandbox .quiz .quiz__title {
+    #sandbox .element-atom .quiz .quiz__title {
       color: #333;
       font: 200 26px/1.2 "Guardian Egyptian Web", Georgia, serif;
       margin-bottom: 36px; }
       @media all and (min-width: 75em) {
-        #sandbox .quiz .quiz__title {
+        #sandbox .element-atom .quiz .quiz__title {
           font-size: 28px; } }
-    #sandbox .quiz .quiz__question {
+    #sandbox .element-atom .quiz .quiz__question {
       counter-increment: question-counter;
       margin-bottom: 30px; }
-      #sandbox .quiz .quiz__question::before {
+      #sandbox .element-atom .quiz .quiz__question::before {
         content: ""; }
-      #sandbox .quiz .quiz__question:last-child {
+      #sandbox .element-atom .quiz .quiz__question:last-child {
         margin-bottom: 0px; }
-    #sandbox .quiz .question__wrapper {
+    #sandbox .element-atom .quiz .question__wrapper {
       border-top: 2px solid #4bc6df;
       padding-top: 3px;
       position: relative; }
-    #sandbox .quiz .question__text {
+    #sandbox .element-atom .quiz .question__text {
       color: #333;
       font: 600 18px/1.2 "Guardian Egyptian Web", Georgia, serif;
       min-height: 50px;
       padding: 0 0 6px 60px;
       position: relative; }
-      #sandbox .quiz .question__text::before {
+      #sandbox .element-atom .quiz .question__text::before {
         color: #4bc6df;
         content: counter(question-counter);
         font: 100 50px/1 "Guardian Egyptian Web", Georgia, serif;
@@ -10460,21 +10450,21 @@
         position: absolute;
         top: 3px;
         width: 60px; }
-    #sandbox .quiz .question__img {
+    #sandbox .element-atom .quiz .question__img {
       display: block;
       width: 100%; }
-    #sandbox .quiz .question__answers {
+    #sandbox .element-atom .quiz .question__answers {
       clear: both;
       margin: 0;
       padding: 0; }
-    #sandbox .quiz .question.has-image .question__wrapper {
+    #sandbox .element-atom .quiz .question.has-image .question__wrapper {
       margin: 0 -12px 7px;
       padding-top: 0; }
       @media all and (min-width: 40.63em) {
-        #sandbox .quiz .question.has-image .question__wrapper {
+        #sandbox .element-atom .quiz .question.has-image .question__wrapper {
           margin-left: 0;
           margin-right: 0; } }
-    #sandbox .quiz .question.has-image .question__text {
+    #sandbox .element-atom .quiz .question.has-image .question__text {
       background: rgba(51, 51, 51, 0.5);
       bottom: 0;
       color: #fff;
@@ -10485,30 +10475,30 @@
       padding-right: 12px;
       position: absolute;
       width: 100%; }
-      #sandbox .quiz .question.has-image .question__text::before {
+      #sandbox .element-atom .quiz .question.has-image .question__text::before {
         color: #fff;
         left: 12px;
         top: 0; }
-    #sandbox .quiz .question__answer {
+    #sandbox .element-atom .quiz .question__answer {
       margin-bottom: 7px;
       position: relative; }
-      #sandbox .quiz .question__answer::before {
+      #sandbox .element-atom .quiz .question__answer::before {
         content: ""; }
-    #sandbox .quiz .answer__wrapper {
+    #sandbox .element-atom .quiz .answer__wrapper {
       background: #eaeaea;
       min-height: 55px;
       overflow: hidden;
       padding: 5px 6px 18px 60px;
       position: relative;
       width: 100%; }
-    #sandbox .quiz .answer__text,
-    #sandbox .quiz .answer__message::before {
+    #sandbox .element-atom .quiz .answer__text,
+    #sandbox .element-atom .quiz .answer__message::before {
       color: #767676;
       display: block;
       font: 600 14px/1.5 "Guardian Egyptian Web", Georgia, serif;
       margin: 0;
       padding: 0; }
-    #sandbox .quiz .answer__marker {
+    #sandbox .element-atom .quiz .answer__marker {
       border: 1px dashed #767676;
       border-radius: 50%;
       height: 30px;
@@ -10518,30 +10508,30 @@
       transition: background .5s ease-in-out;
       width: 30px;
       z-index: 1; }
-      #sandbox .quiz .answer__marker::before {
+      #sandbox .element-atom .quiz .answer__marker::before {
         content: "\00e062";
         opacity: 0; }
-    #sandbox .quiz .answer__img {
+    #sandbox .element-atom .quiz .answer__img {
       display: block;
       height: auto;
       width: 100%; }
-    #sandbox .quiz .answer__explanation {
+    #sandbox .element-atom .quiz .answer__explanation {
       color: #767676;
       display: block;
       font: 500 13px/1.5 "Guardian Egyptian Web", Georgia, serif;
       margin: 0;
       padding: 0;
       width: 100%; }
-    #sandbox .quiz .question.answered .answer__wrapper {
+    #sandbox .element-atom .quiz .question.answered .answer__wrapper {
       background: #f5f5f5; }
-    #sandbox .quiz .question.answered .answer__text {
+    #sandbox .element-atom .quiz .question.answered .answer__text {
       color: #999; }
-    #sandbox .quiz .question.answered .answer__marker {
+    #sandbox .element-atom .quiz .question.answered .answer__marker {
       border-color: #999; }
-    #sandbox .quiz .answer.has-image .answer__wrapper {
+    #sandbox .element-atom .quiz .answer.has-image .answer__wrapper {
       background: transparent;
       padding: 0; }
-    #sandbox .quiz .answer.has-image .answer__message {
+    #sandbox .element-atom .quiz .answer.has-image .answer__message {
       margin: 0;
       min-height: 55px;
       opacity: 0;
@@ -10549,80 +10539,80 @@
       padding: 5px 6px 18px 60px;
       top: 100%;
       width: 100%; }
-    #sandbox .quiz .correct-answer .answer__marker,
-    #sandbox .quiz .wrong-answer .answer__marker {
+    #sandbox .element-atom .quiz .correct-answer .answer__marker,
+    #sandbox .element-atom .quiz .wrong-answer .answer__marker {
       border: 0;
       text-align: center; }
-      #sandbox .quiz .correct-answer .answer__marker::before,
-      #sandbox .quiz .wrong-answer .answer__marker::before {
+      #sandbox .element-atom .quiz .correct-answer .answer__marker::before,
+      #sandbox .element-atom .quiz .wrong-answer .answer__marker::before {
         color: #fff;
         font-family: "Guardian Icons", Georgia, serif;
         opacity: 1; }
-    #sandbox .quiz .correct-answer .answer__message::before,
-    #sandbox .quiz .wrong-answer .answer__message::before {
+    #sandbox .element-atom .quiz .correct-answer .answer__message::before,
+    #sandbox .element-atom .quiz .wrong-answer .answer__message::before {
       display: block;
       font-size: 16px; }
-    #sandbox .quiz .correct-answer.has-image .answer__message,
-    #sandbox .quiz .wrong-answer.has-image .answer__message {
+    #sandbox .element-atom .quiz .correct-answer.has-image .answer__message,
+    #sandbox .element-atom .quiz .wrong-answer.has-image .answer__message {
       opacity: 1; }
-    #sandbox .quiz .correct-answer .answer__marker {
+    #sandbox .element-atom .quiz .correct-answer .answer__marker {
       background: #4bc6df; }
-      #sandbox .quiz .correct-answer .answer__marker::before {
+      #sandbox .element-atom .quiz .correct-answer .answer__marker::before {
         content: "\00e062";
         line-height: 26px; }
-    #sandbox .quiz .question.is-correct .correct-answer .answer__wrapper,
-    #sandbox .quiz .question.is-correct .correct-answer .answer__message {
+    #sandbox .element-atom .quiz .question.is-correct .correct-answer .answer__wrapper,
+    #sandbox .element-atom .quiz .question.is-correct .correct-answer .answer__message {
       background: #4bc6df; }
-    #sandbox .quiz .question.is-correct .correct-answer .answer__marker {
+    #sandbox .element-atom .quiz .question.is-correct .correct-answer .answer__marker {
       background: #005689; }
-      #sandbox .quiz .question.is-correct .correct-answer .answer__marker::before {
+      #sandbox .element-atom .quiz .question.is-correct .correct-answer .answer__marker::before {
         content: "\00e062";
         line-height: 26px; }
-    #sandbox .quiz .question.is-correct .correct-answer .answer__text {
+    #sandbox .element-atom .quiz .question.is-correct .correct-answer .answer__text {
       color: #fff; }
-    #sandbox .quiz .question.is-correct .correct-answer .answer__message::before {
+    #sandbox .element-atom .quiz .question.is-correct .correct-answer .answer__message::before {
       color: #005689;
       content: "Correct!"; }
-    #sandbox .quiz .question.is-correct .correct-answer .answer__explanation {
+    #sandbox .element-atom .quiz .question.is-correct .correct-answer .answer__explanation {
       color: #fff; }
-    #sandbox .quiz .question.is-correct .correct-answer.has-image .answer__marker {
+    #sandbox .element-atom .quiz .question.is-correct .correct-answer.has-image .answer__marker {
       transition: background .5s ease-in-out, top .5s ease-in-out; }
-      #sandbox .quiz .question.is-correct .correct-answer.has-image .answer__marker::before {
+      #sandbox .element-atom .quiz .question.is-correct .correct-answer.has-image .answer__marker::before {
         transition: opacity .3s ease-in-out .2s; }
-    #sandbox .quiz .question.is-correct .correct-answer.has-image .answer__message {
+    #sandbox .element-atom .quiz .question.is-correct .correct-answer.has-image .answer__message {
       transition: top .5s ease-in-out; }
-    #sandbox .quiz .question.is-wrong .wrong-answer .answer__wrapper,
-    #sandbox .quiz .question.is-wrong .wrong-answer .answer__message {
+    #sandbox .element-atom .quiz .question.is-wrong .wrong-answer .answer__wrapper,
+    #sandbox .element-atom .quiz .question.is-wrong .wrong-answer .answer__message {
       background: #e0232e; }
-    #sandbox .quiz .question.is-wrong .wrong-answer .answer__marker {
+    #sandbox .element-atom .quiz .question.is-wrong .wrong-answer .answer__marker {
       background: #7e0e12; }
-      #sandbox .quiz .question.is-wrong .wrong-answer .answer__marker::before {
+      #sandbox .element-atom .quiz .question.is-wrong .wrong-answer .answer__marker::before {
         content: "\00e04F";
         line-height: 28px; }
-    #sandbox .quiz .question.is-wrong .wrong-answer .answer__text {
+    #sandbox .element-atom .quiz .question.is-wrong .wrong-answer .answer__text {
       color: #fff; }
-    #sandbox .quiz .question.is-wrong .wrong-answer .answer__message::before {
+    #sandbox .element-atom .quiz .question.is-wrong .wrong-answer .answer__message::before {
       color: #333;
       content: "Wrong!"; }
-    #sandbox .quiz .question.is-wrong .wrong-answer .answer__explanation {
+    #sandbox .element-atom .quiz .question.is-wrong .wrong-answer .answer__explanation {
       color: #fff; }
-    #sandbox .quiz .question.is-wrong .wrong-answer.has-image .answer__marker {
+    #sandbox .element-atom .quiz .question.is-wrong .wrong-answer.has-image .answer__marker {
       transition: background .5s ease-in-out, top .5s ease-in-out; }
-      #sandbox .quiz .question.is-wrong .wrong-answer.has-image .answer__marker::before {
+      #sandbox .element-atom .quiz .question.is-wrong .wrong-answer.has-image .answer__marker::before {
         transition: opacity .3s ease-in-out .2s; }
-    #sandbox .quiz .question.is-wrong .wrong-answer.has-image .answer__message {
+    #sandbox .element-atom .quiz .question.is-wrong .wrong-answer.has-image .answer__message {
       transition: top .5s ease-in-out; }
-    #sandbox .quiz .question.is-wrong .correct-answer.has-image .answer__marker {
+    #sandbox .element-atom .quiz .question.is-wrong .correct-answer.has-image .answer__marker {
       transition: background .3s ease-in-out; }
-      #sandbox .quiz .question.is-wrong .correct-answer.has-image .answer__marker::before {
+      #sandbox .element-atom .quiz .question.is-wrong .correct-answer.has-image .answer__marker::before {
         transition: opacity .3s ease-in-out; }
-    #sandbox .quiz .question.is-wrong .correct-answer.has-image .answer__message {
+    #sandbox .element-atom .quiz .question.is-wrong .correct-answer.has-image .answer__message {
       background: #f5f5f5;
       transition: opacity .3s ease-in-out; }
-    #sandbox .quiz .quiz__scores,
-    #sandbox .quiz .quiz__scores-title {
+    #sandbox .element-atom .quiz .quiz__scores,
+    #sandbox .element-atom .quiz .quiz__scores-title {
       display: none; }
-    #sandbox .quiz .quiz-scores {
+    #sandbox .element-atom .quiz .quiz-scores {
       background: transparent;
       border-top: 2px solid #4bc6df;
       margin: 0;
@@ -10631,16 +10621,16 @@
       opacity: 0;
       padding: 0;
       transition: all 1s ease-in-out; }
-      #sandbox .quiz .quiz-scores.open {
+      #sandbox .element-atom .quiz .quiz-scores.open {
         opacity: 1;
         margin-top: 30px;
         max-height: 350px; }
-      #sandbox .quiz .quiz-scores .quiz-scores__inner {
+      #sandbox .element-atom .quiz .quiz-scores .quiz-scores__inner {
         overflow: hidden; }
-      #sandbox .quiz .quiz-scores .quiz-scores__img {
+      #sandbox .element-atom .quiz .quiz-scores .quiz-scores__img {
         display: block;
         width: 100%; }
-      #sandbox .quiz .quiz-scores .quiz-scores__score {
+      #sandbox .element-atom .quiz .quiz-scores .quiz-scores__score {
         background: #005689;
         border-radius: 50%;
         color: #4bc6df;
@@ -10652,7 +10642,7 @@
         position: relative;
         text-align: center;
         width: 160px; }
-        #sandbox .quiz .quiz-scores .quiz-scores__score::before {
+        #sandbox .element-atom .quiz .quiz-scores .quiz-scores__score::before {
           color: #fff;
           content: "You scored:";
           font-size: 18px;
@@ -10661,11 +10651,11 @@
           line-height: 1;
           position: absolute;
           top: 40px; }
-      #sandbox .quiz .quiz-scores .quiz-scores__correct {
+      #sandbox .element-atom .quiz .quiz-scores .quiz-scores__correct {
         margin-right: -10px; }
-      #sandbox .quiz .quiz-scores .quiz-scores__questions {
+      #sandbox .element-atom .quiz .quiz-scores .quiz-scores__questions {
         margin-left: -10px; }
-      #sandbox .quiz .quiz-scores .quiz-scores__message {
+      #sandbox .element-atom .quiz .quiz-scores .quiz-scores__message {
         color: #005689;
         font: 600 18px/1.2 "Guardian Egyptian Web", Georgia, serif;
         margin-top: 60px; }

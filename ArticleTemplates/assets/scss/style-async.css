@@ -4197,38 +4197,38 @@ Display a team line-up including substitutions and bookings.
       .replacement .team-lineup__player__replacement {
         display: block; } }
 
-.quiz {
+.element-atom .quiz {
   counter-reset: question-counter; }
   @media all and (min-width: 75em) {
-    .quiz {
+    .element-atom .quiz {
       margin: 0; } }
-  .quiz__correct-answers-title, .quiz__correct-answers {
+  .element-atom .quiz__correct-answers-title, .element-atom .quiz__correct-answers {
     display: none; }
-  .quiz .quiz__title {
+  .element-atom .quiz .quiz__title {
     color: #333;
     font: 200 26px/1.2 "Guardian Egyptian Web", Georgia, serif;
     margin-bottom: 36px; }
     @media all and (min-width: 75em) {
-      .quiz .quiz__title {
+      .element-atom .quiz .quiz__title {
         font-size: 28px; } }
-  .quiz .quiz__question {
+  .element-atom .quiz .quiz__question {
     counter-increment: question-counter;
     margin-bottom: 30px; }
-    .quiz .quiz__question::before {
+    .element-atom .quiz .quiz__question::before {
       content: ""; }
-    .quiz .quiz__question:last-child {
+    .element-atom .quiz .quiz__question:last-child {
       margin-bottom: 0px; }
-  .quiz .question__wrapper {
+  .element-atom .quiz .question__wrapper {
     border-top: 2px solid #4bc6df;
     padding-top: 3px;
     position: relative; }
-  .quiz .question__text {
+  .element-atom .quiz .question__text {
     color: #333;
     font: 600 18px/1.2 "Guardian Egyptian Web", Georgia, serif;
     min-height: 50px;
     padding: 0 0 6px 60px;
     position: relative; }
-    .quiz .question__text::before {
+    .element-atom .quiz .question__text::before {
       color: #4bc6df;
       content: counter(question-counter);
       font: 100 50px/1 "Guardian Egyptian Web", Georgia, serif;
@@ -4236,21 +4236,21 @@ Display a team line-up including substitutions and bookings.
       position: absolute;
       top: 3px;
       width: 60px; }
-  .quiz .question__img {
+  .element-atom .quiz .question__img {
     display: block;
     width: 100%; }
-  .quiz .question__answers {
+  .element-atom .quiz .question__answers {
     clear: both;
     margin: 0;
     padding: 0; }
-  .quiz .question.has-image .question__wrapper {
+  .element-atom .quiz .question.has-image .question__wrapper {
     margin: 0 -12px 7px;
     padding-top: 0; }
     @media all and (min-width: 40.63em) {
-      .quiz .question.has-image .question__wrapper {
+      .element-atom .quiz .question.has-image .question__wrapper {
         margin-left: 0;
         margin-right: 0; } }
-  .quiz .question.has-image .question__text {
+  .element-atom .quiz .question.has-image .question__text {
     background: rgba(51, 51, 51, 0.5);
     bottom: 0;
     color: #fff;
@@ -4261,30 +4261,30 @@ Display a team line-up including substitutions and bookings.
     padding-right: 12px;
     position: absolute;
     width: 100%; }
-    .quiz .question.has-image .question__text::before {
+    .element-atom .quiz .question.has-image .question__text::before {
       color: #fff;
       left: 12px;
       top: 0; }
-  .quiz .question__answer {
+  .element-atom .quiz .question__answer {
     margin-bottom: 7px;
     position: relative; }
-    .quiz .question__answer::before {
+    .element-atom .quiz .question__answer::before {
       content: ""; }
-  .quiz .answer__wrapper {
+  .element-atom .quiz .answer__wrapper {
     background: #eaeaea;
     min-height: 55px;
     overflow: hidden;
     padding: 5px 6px 18px 60px;
     position: relative;
     width: 100%; }
-  .quiz .answer__text,
-  .quiz .answer__message::before {
+  .element-atom .quiz .answer__text,
+  .element-atom .quiz .answer__message::before {
     color: #767676;
     display: block;
     font: 600 14px/1.5 "Guardian Egyptian Web", Georgia, serif;
     margin: 0;
     padding: 0; }
-  .quiz .answer__marker {
+  .element-atom .quiz .answer__marker {
     border: 1px dashed #767676;
     border-radius: 50%;
     height: 30px;
@@ -4294,30 +4294,30 @@ Display a team line-up including substitutions and bookings.
     transition: background .5s ease-in-out;
     width: 30px;
     z-index: 1; }
-    .quiz .answer__marker::before {
+    .element-atom .quiz .answer__marker::before {
       content: "\00e062";
       opacity: 0; }
-  .quiz .answer__img {
+  .element-atom .quiz .answer__img {
     display: block;
     height: auto;
     width: 100%; }
-  .quiz .answer__explanation {
+  .element-atom .quiz .answer__explanation {
     color: #767676;
     display: block;
     font: 500 13px/1.5 "Guardian Egyptian Web", Georgia, serif;
     margin: 0;
     padding: 0;
     width: 100%; }
-  .quiz .question.answered .answer__wrapper {
+  .element-atom .quiz .question.answered .answer__wrapper {
     background: #f5f5f5; }
-  .quiz .question.answered .answer__text {
+  .element-atom .quiz .question.answered .answer__text {
     color: #999; }
-  .quiz .question.answered .answer__marker {
+  .element-atom .quiz .question.answered .answer__marker {
     border-color: #999; }
-  .quiz .answer.has-image .answer__wrapper {
+  .element-atom .quiz .answer.has-image .answer__wrapper {
     background: transparent;
     padding: 0; }
-  .quiz .answer.has-image .answer__message {
+  .element-atom .quiz .answer.has-image .answer__message {
     margin: 0;
     min-height: 55px;
     opacity: 0;
@@ -4325,80 +4325,80 @@ Display a team line-up including substitutions and bookings.
     padding: 5px 6px 18px 60px;
     top: 100%;
     width: 100%; }
-  .quiz .correct-answer .answer__marker,
-  .quiz .wrong-answer .answer__marker {
+  .element-atom .quiz .correct-answer .answer__marker,
+  .element-atom .quiz .wrong-answer .answer__marker {
     border: 0;
     text-align: center; }
-    .quiz .correct-answer .answer__marker::before,
-    .quiz .wrong-answer .answer__marker::before {
+    .element-atom .quiz .correct-answer .answer__marker::before,
+    .element-atom .quiz .wrong-answer .answer__marker::before {
       color: #fff;
       font-family: "Guardian Icons", Georgia, serif;
       opacity: 1; }
-  .quiz .correct-answer .answer__message::before,
-  .quiz .wrong-answer .answer__message::before {
+  .element-atom .quiz .correct-answer .answer__message::before,
+  .element-atom .quiz .wrong-answer .answer__message::before {
     display: block;
     font-size: 16px; }
-  .quiz .correct-answer.has-image .answer__message,
-  .quiz .wrong-answer.has-image .answer__message {
+  .element-atom .quiz .correct-answer.has-image .answer__message,
+  .element-atom .quiz .wrong-answer.has-image .answer__message {
     opacity: 1; }
-  .quiz .correct-answer .answer__marker {
+  .element-atom .quiz .correct-answer .answer__marker {
     background: #4bc6df; }
-    .quiz .correct-answer .answer__marker::before {
+    .element-atom .quiz .correct-answer .answer__marker::before {
       content: "\00e062";
       line-height: 26px; }
-  .quiz .question.is-correct .correct-answer .answer__wrapper,
-  .quiz .question.is-correct .correct-answer .answer__message {
+  .element-atom .quiz .question.is-correct .correct-answer .answer__wrapper,
+  .element-atom .quiz .question.is-correct .correct-answer .answer__message {
     background: #4bc6df; }
-  .quiz .question.is-correct .correct-answer .answer__marker {
+  .element-atom .quiz .question.is-correct .correct-answer .answer__marker {
     background: #005689; }
-    .quiz .question.is-correct .correct-answer .answer__marker::before {
+    .element-atom .quiz .question.is-correct .correct-answer .answer__marker::before {
       content: "\00e062";
       line-height: 26px; }
-  .quiz .question.is-correct .correct-answer .answer__text {
+  .element-atom .quiz .question.is-correct .correct-answer .answer__text {
     color: #fff; }
-  .quiz .question.is-correct .correct-answer .answer__message::before {
+  .element-atom .quiz .question.is-correct .correct-answer .answer__message::before {
     color: #005689;
     content: "Correct!"; }
-  .quiz .question.is-correct .correct-answer .answer__explanation {
+  .element-atom .quiz .question.is-correct .correct-answer .answer__explanation {
     color: #fff; }
-  .quiz .question.is-correct .correct-answer.has-image .answer__marker {
+  .element-atom .quiz .question.is-correct .correct-answer.has-image .answer__marker {
     transition: background .5s ease-in-out, top .5s ease-in-out; }
-    .quiz .question.is-correct .correct-answer.has-image .answer__marker::before {
+    .element-atom .quiz .question.is-correct .correct-answer.has-image .answer__marker::before {
       transition: opacity .3s ease-in-out .2s; }
-  .quiz .question.is-correct .correct-answer.has-image .answer__message {
+  .element-atom .quiz .question.is-correct .correct-answer.has-image .answer__message {
     transition: top .5s ease-in-out; }
-  .quiz .question.is-wrong .wrong-answer .answer__wrapper,
-  .quiz .question.is-wrong .wrong-answer .answer__message {
+  .element-atom .quiz .question.is-wrong .wrong-answer .answer__wrapper,
+  .element-atom .quiz .question.is-wrong .wrong-answer .answer__message {
     background: #e0232e; }
-  .quiz .question.is-wrong .wrong-answer .answer__marker {
+  .element-atom .quiz .question.is-wrong .wrong-answer .answer__marker {
     background: #7e0e12; }
-    .quiz .question.is-wrong .wrong-answer .answer__marker::before {
+    .element-atom .quiz .question.is-wrong .wrong-answer .answer__marker::before {
       content: "\00e04F";
       line-height: 28px; }
-  .quiz .question.is-wrong .wrong-answer .answer__text {
+  .element-atom .quiz .question.is-wrong .wrong-answer .answer__text {
     color: #fff; }
-  .quiz .question.is-wrong .wrong-answer .answer__message::before {
+  .element-atom .quiz .question.is-wrong .wrong-answer .answer__message::before {
     color: #333;
     content: "Wrong!"; }
-  .quiz .question.is-wrong .wrong-answer .answer__explanation {
+  .element-atom .quiz .question.is-wrong .wrong-answer .answer__explanation {
     color: #fff; }
-  .quiz .question.is-wrong .wrong-answer.has-image .answer__marker {
+  .element-atom .quiz .question.is-wrong .wrong-answer.has-image .answer__marker {
     transition: background .5s ease-in-out, top .5s ease-in-out; }
-    .quiz .question.is-wrong .wrong-answer.has-image .answer__marker::before {
+    .element-atom .quiz .question.is-wrong .wrong-answer.has-image .answer__marker::before {
       transition: opacity .3s ease-in-out .2s; }
-  .quiz .question.is-wrong .wrong-answer.has-image .answer__message {
+  .element-atom .quiz .question.is-wrong .wrong-answer.has-image .answer__message {
     transition: top .5s ease-in-out; }
-  .quiz .question.is-wrong .correct-answer.has-image .answer__marker {
+  .element-atom .quiz .question.is-wrong .correct-answer.has-image .answer__marker {
     transition: background .3s ease-in-out; }
-    .quiz .question.is-wrong .correct-answer.has-image .answer__marker::before {
+    .element-atom .quiz .question.is-wrong .correct-answer.has-image .answer__marker::before {
       transition: opacity .3s ease-in-out; }
-  .quiz .question.is-wrong .correct-answer.has-image .answer__message {
+  .element-atom .quiz .question.is-wrong .correct-answer.has-image .answer__message {
     background: #f5f5f5;
     transition: opacity .3s ease-in-out; }
-  .quiz .quiz__scores,
-  .quiz .quiz__scores-title {
+  .element-atom .quiz .quiz__scores,
+  .element-atom .quiz .quiz__scores-title {
     display: none; }
-  .quiz .quiz-scores {
+  .element-atom .quiz .quiz-scores {
     background: transparent;
     border-top: 2px solid #4bc6df;
     margin: 0;
@@ -4407,16 +4407,16 @@ Display a team line-up including substitutions and bookings.
     opacity: 0;
     padding: 0;
     transition: all 1s ease-in-out; }
-    .quiz .quiz-scores.open {
+    .element-atom .quiz .quiz-scores.open {
       opacity: 1;
       margin-top: 30px;
       max-height: 350px; }
-    .quiz .quiz-scores .quiz-scores__inner {
+    .element-atom .quiz .quiz-scores .quiz-scores__inner {
       overflow: hidden; }
-    .quiz .quiz-scores .quiz-scores__img {
+    .element-atom .quiz .quiz-scores .quiz-scores__img {
       display: block;
       width: 100%; }
-    .quiz .quiz-scores .quiz-scores__score {
+    .element-atom .quiz .quiz-scores .quiz-scores__score {
       background: #005689;
       border-radius: 50%;
       color: #4bc6df;
@@ -4428,7 +4428,7 @@ Display a team line-up including substitutions and bookings.
       position: relative;
       text-align: center;
       width: 160px; }
-      .quiz .quiz-scores .quiz-scores__score::before {
+      .element-atom .quiz .quiz-scores .quiz-scores__score::before {
         color: #fff;
         content: "You scored:";
         font-size: 18px;
@@ -4437,11 +4437,11 @@ Display a team line-up including substitutions and bookings.
         line-height: 1;
         position: absolute;
         top: 40px; }
-    .quiz .quiz-scores .quiz-scores__correct {
+    .element-atom .quiz .quiz-scores .quiz-scores__correct {
       margin-right: -10px; }
-    .quiz .quiz-scores .quiz-scores__questions {
+    .element-atom .quiz .quiz-scores .quiz-scores__questions {
       margin-left: -10px; }
-    .quiz .quiz-scores .quiz-scores__message {
+    .element-atom .quiz .quiz-scores .quiz-scores__message {
       color: #005689;
       font: 600 18px/1.2 "Guardian Egyptian Web", Georgia, serif;
       margin-top: 60px; }
