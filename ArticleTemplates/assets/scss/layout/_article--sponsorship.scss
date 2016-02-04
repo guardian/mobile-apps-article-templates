@@ -393,4 +393,43 @@
             }
         }
     }
+
+    /* Gallery overrides */
+    &.tone--media[data-content-type="gallery"] {
+        .article {
+            .article {
+                &__header {
+                    .gallery {
+                        background-color: color(global-adv-bg);
+                    }
+
+                    .meta__misc {
+                        border-top: 1px rgba(color(global-adv-bands), .4) dotted;
+                        border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
+                    }
+
+                    @include mq($from: col2) {
+                        .sponsorship,
+                        .meta {
+                            border-top: 1px rgba(color(global-adv-bands), .4) dotted;
+
+                            .meta__misc {
+                                border-top: 0;
+                                border-bottom: 0;
+                                border-left: 1px rgba(color(global-adv-bands), .4) dotted;
+                            }
+                        }
+
+                        .standfirst {
+                            background-color: color(global-adv-bg);
+                        }
+                    }
+                }
+            }
+
+            .tags {
+                border-top: 0;
+            }
+        }        
+    }
 }
