@@ -160,8 +160,7 @@ define([
             window.articleImageSizer();
         },
 
-        articleContentType: function(){
-            console.log('in articleContentType');
+        articleContentType: function() {
             $('.article__body > .prose').each(function() {
                 // check if this is a "panel" type article by checking for thumbnail images with no captions (as these only exist as panel author thumbnails)
                 if (this.querySelectorAll('.figure--thumbnail:not(.figure--thumbnail-with-caption)').length) {

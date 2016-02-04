@@ -138,7 +138,7 @@ define([
 
             initScroller: function () {
                 var scroller,
-                    minuteNavElem = document.body.querySelector(".the-minute__nav"),
+                    minuteNavElem = $(".the-minute__nav"),
                     wrapperElem = document.body.querySelector(".article--liveblog"),
                     liveblogElem = wrapperElem.querySelector(".article__body--liveblog"),
                     options = {
@@ -161,8 +161,8 @@ define([
                 // onScrollEnd show hide minuteNavElem
                 scroller.on('scrollEnd', modules.onScrollEnd.bind(null, minuteNavElem, scroller));
 
-                // add touch event handler to minuteNavElem
-                minuteNavElem.addEventListener('touchend', modules.scrollToNextCard.bind(null, minuteNavElem, scroller));
+                // add click event handler to minuteNavElem
+                bean.on(window, 'click', minuteNavElem, modules.scrollToNextCard.bind(null, minuteNavElem, scroller));
             
                 // update scroll dimensions on orientation change
                 bean.on(window, 'resize', window.ThrottleDebounce.debounce(100, false, modules.onWindowResize.bind(null, liveblogElem, wrapperElem, scroller)));
@@ -215,9 +215,9 @@ define([
 
             onScrollEnd: function (minuteNavElem, scroller) {
                 if ((scroller.currentPage.pageY + 1) === scroller.pages[0].length) {
-                    minuteNavElem.classList.add("hide");
+                    minuteNavElem.addClass("hide");
                 } else {
-                    minuteNavElem.classList.remove("hide");
+                    minuteNavElem.removeClass("hide");
                 }
             }
         },
