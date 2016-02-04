@@ -81,7 +81,7 @@ $related-card-width-col3: $related-card-width * $related-card-upsize-col3;
 
         @include mq($from: col2) {
             line-height: 1;
-            margin: base-px(0, 0, 1.5, .5);
+            margin: base-px(0, 0, 1.5, 1);
         }
 
         @include mq($from: col4) {
@@ -91,32 +91,16 @@ $related-card-width-col3: $related-card-width * $related-card-upsize-col3;
             margin: 0 20px;
             width: 200px;
         }
-
-        .android & {
-            @include mq(col2, col4) {
-                margin-left: base-px(1);
-            }
-        }
     }
 
     &__container {
         overflow: hidden;
         padding: base-px(0, 1);
-         @include mq($from: col2) {
-            padding: 0;
-        }
 
         @include mq($from: col4) {
             padding: 0;
             width: 940px;
         }
-
-        .android & {
-            @include mq(col2, col4) {
-                padding: base-px(0, 1, 2, 1);
-            }
-        }
-
     }
 
     &__list {

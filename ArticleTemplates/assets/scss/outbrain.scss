@@ -17,14 +17,12 @@
 
 
 .OUTBRAIN {
-    .android & {
-        @include mq($from: col2) {
-            padding: base-px(0, 1);
-        }
+    @include mq($from: col2) {
+        padding: base-px(0, 1);
+    }
 
-        @include mq($from: col4) {
-            padding: 0;
-        }
+    @include mq($from: col4) {
+        padding: 0;
     }
 
     @include mq($from: col2) {
@@ -35,11 +33,7 @@
             }
 
             .ob-widget-header {
-                margin-left: base-px(.5) !important;
-
-                .android & {
-                    margin-left: 0 !important;
-                }
+                margin-left: 0 !important;
             }
 
             .ob-widget-items-container {
