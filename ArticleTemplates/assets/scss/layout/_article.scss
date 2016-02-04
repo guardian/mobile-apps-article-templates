@@ -58,6 +58,13 @@
         }
     }
 
+    @include mq($from: col4) {
+        .meta,
+        .main-media {
+            border-bottom: 1px dotted rgba(color(shade-3), .4);
+        }
+    }
+
     .meta {
         @include mq($from: col4) {
             margin: 0 auto;

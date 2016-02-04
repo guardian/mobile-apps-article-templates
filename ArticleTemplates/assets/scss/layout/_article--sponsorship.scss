@@ -45,14 +45,10 @@
                     color: color(global-adv-text);
                 }
 
-                // &__header,
-                // &__header .standfirst {
-                //     background-color: color(global-adv-bg);
-                // }
-
                 &__body,
                 &__header .main-media,
                 &__header .headline,
+                &__header .standfirst,
                 &__header .standfirst__inner,
                 &__header .sponsorship,
                 &__header .meta,
@@ -72,7 +68,7 @@
 
                 &__header a,
                 &__header .byline {
-                    color: color(global-adv-sticky) !important;
+                    color: color(global-adv-shade-1) !important;
                 }
 
                 &__header .standfirst a {
@@ -114,7 +110,11 @@
 
                 &__body .prose p, 
                 &__body .prose li {
-                    @include text-underline(color(global-adv-sticky), color(global-adv-bg), lighten(color(global-adv-sticky),10%));
+                    @include text-underline(color(global-adv-shade-1), color(global-adv-bg), lighten(color(global-adv-shade-1),10%));
+                }
+
+                &__body .prose .advert-slot--mpu {
+                    border-top: none;
                 }
 
                 &__header ul > li::before,
@@ -134,7 +134,7 @@
                 &__body .prose .element-pullquote blockquote cite,
                 &__body .prose .element-pullquote blockquote::before,
                 &__body .prose .element-pullquote blockquote::after {
-                  color: color(global-adv-sticky);
+                  color: color(global-adv-shade-1);
                 }
 
                 &__body .prose figure figcaption,
@@ -145,7 +145,7 @@
 
             .element-placeholder .element-placeholder__button {
                 .touchpoint__button{
-                    background-color: color(global-adv-bands);
+                    background-color: color(global-adv-shade-2);
 
                     &:active{
                         color: color(global-adv-bands);
@@ -154,7 +154,7 @@
                 }
 
                 .touchpoint__label{
-                    color: color(shade-7);
+                    color: color(global-adv-shade-2);
                     text-shadow: 0 0 4px  rgba(0, 0, 0, .5);
                 }
             }
@@ -174,44 +174,8 @@
                     background-color: color(global-adv-bg);
                 }
             }
-        }
 
-        .touchpoint--primary {
-            .touchpoint__button {
-                background-color: color(global-adv-bands);
-            }
-
-            &:active .touchpoint__button {
-               background-color: color(global-adv-text);
-            }
-
-            .touchpoint__label {
-                color: color(global-adv-bands);
-            }
-            
-            &:active .touchpoint__label {
-                color: color(global-adv-text);
-            }
-        }
-
-        .comments__viewmore {
-            .comments__viewmore--label {
-                color: color(global-adv-bands);
-            }
-            
-            &:active .comments__viewmore--label {
-                color: color(global-adv-text);
-            }
-        }
-
-        @include mq($from: col4) {
-            .related-content,
-            .container__outbrain,
-            .comments {
-                background-color: color(global-adv-bg); 
-            }
-
-            .article {
+            @include mq($from: col4) {
                 background-color: color(shade-11);
 
                 .article {
@@ -220,11 +184,20 @@
                         background-color: color(shade-11);
                     }
                 }
-            }
 
-            .container__outbrain {
-                margin-bottom: 0;
+                .container__outbrain {
+                    background-color: color(global-adv-bg);
+                }
             }
+        }
+
+        .comments,
+        .related-content {
+            display: none;
+        }
+
+        .container__outbrain {
+            margin-bottom: 0;
         }
     }
 
@@ -256,7 +229,7 @@
             }
 
             .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p {
-                @include dropcap(color(global-adv-sticky));
+                @include dropcap(color(global-adv-shade-1));
             }
 
             .article {
@@ -285,13 +258,58 @@
 
                     .sponsorship {
                         border-bottom: none;
+
+                        @include mq($from: col2) {   
+                            display: none;
+                        }
                     }
 
                     .meta {
                         border-bottom: none;
 
+                        @include mq($from: col4) {
+                            border-top: none;
+                        }
+
                         .meta__misc {
                             border-top: 1px rgba(color(global-adv-bands), .4) dotted;
+
+                            .sponsorship { 
+                                display: none;
+                            }
+
+                            @include mq($from: col2) {
+                                position: relative;
+                                border-top: none;
+                                border-left: 1px rgba(color(global-adv-bands), .4) dotted;
+
+                                .sponsorship {
+                                    position: absolute;
+                                    display: block;
+                                    left: 0;
+                                    right: 0;
+                                    bottom: 0;
+
+                                    .sponsorship__formatted-sponsor-name {
+                                        position: static;
+                                        top: 0;
+                                        margin-top: 0;
+                                        width: 100%;
+                                    }
+
+                                    img {
+                                        float: none;
+                                    }
+                                }
+                            }
+
+                             @include mq($from: col4) {
+                                .sponsorship {
+                                    .sponsorship__inner {
+                                        padding: 0 10px;
+                                    }
+                                }
+                            }
                         }
 
                         .standfirst {
