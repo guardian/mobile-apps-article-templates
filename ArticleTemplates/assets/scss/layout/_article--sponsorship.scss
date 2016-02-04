@@ -267,6 +267,7 @@
                     }
 
                     .sponsorship {
+                        display: block;
                         border-bottom: none;
 
                         @include mq($from: col2) {   
@@ -289,16 +290,18 @@
                             }
 
                             @include mq($from: col2) {
-                                position: relative;
                                 border-top: none;
                                 border-left: 1px rgba(color(global-adv-bands), .4) dotted;
 
                                 .sponsorship {
-                                    position: absolute;
                                     display: block;
-                                    left: 0;
-                                    right: 0;
-                                    bottom: 0;
+                                    border-bottom: 0;
+                                    padding: 0;
+                                    margin-top: 12px;
+
+                                    .sponsorship__inner {
+                                        padding: 0;
+                                    }
 
                                     .sponsorship__formatted-sponsor-name {
                                         position: static;
@@ -309,14 +312,6 @@
 
                                     img {
                                         float: none;
-                                    }
-                                }
-                            }
-
-                             @include mq($from: col4) {
-                                .sponsorship {
-                                    .sponsorship__inner {
-                                        padding: 0 10px;
                                     }
                                 }
                             }
