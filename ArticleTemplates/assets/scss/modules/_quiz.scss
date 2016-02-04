@@ -1,0 +1,428 @@
+// Quiz Block
+.element-atom {
+    .quiz {
+        counter-reset: question-counter;
+
+        @include mq($from: col4) {
+            margin: 0;
+        }
+
+        &__correct-answers-title,
+        &__correct-answers {
+            display: none;
+        }
+
+        // Quiz title
+        .quiz__title {
+            color: color(shade-1);
+            font: 200 26px/1.2 $egyptian-display;
+            margin-bottom: 36px;
+
+            @include mq($from: col4) {
+                font-size: 28px;
+            }
+        }
+
+        // Question Block
+        .quiz__question {
+            counter-increment: question-counter;
+            margin-bottom: 30px;
+
+            &::before {
+                content: "";
+            }
+
+            &:last-child {
+                margin-bottom: 0px;
+            }
+        }
+
+        // Question Styles
+        .question__wrapper {
+            border-top: 2px solid color(tone-news-accent);
+            padding-top: 3px;
+            position: relative;
+        }
+
+        .question__text {
+            color: color(shade-1);
+            font: 600 18px/1.2 $egyptian-display;
+            min-height: 50px;
+            padding: 0 0 6px 60px;
+            position: relative;
+
+            &::before {
+                color: color(tone-news-accent);
+                content: counter(question-counter);
+                font: 100 50px/1 $egyptian-display;
+                left: 0;
+                position: absolute;
+                top: 3px;
+                width: 60px;
+            }
+        }
+
+        .question__img {
+            display: block;
+            width: 100%;
+        }
+
+        .question__answers {
+            clear: both;
+            margin: 0;
+            padding: 0;
+        }
+
+        // Vary the styles when the question has an image
+        .question.has-image {
+            .question__wrapper {
+                margin: 0 -12px 7px;
+                padding-top: 0;
+
+                @include mq($from: col2) {
+                    margin: {
+                        left: 0;
+                        right: 0;
+                    }
+                }
+            }
+
+            .question__text {
+                background: rgba(color(shade-1),.5);
+                bottom: 0;
+                color: color(shade-7);
+                display: block;
+                left: 0;
+                margin: 0;
+                padding: {
+                    left: 72px;
+                    right: 12px;
+                }
+                position: absolute;
+                width: 100%;
+            
+                &::before {
+                    color: color(shade-7);
+                    left: 12px;
+                    top: 0;
+                }
+            }
+        }
+
+        // Answer Block
+        .question__answer {
+            margin-bottom: 7px;
+            position: relative;
+
+            &::before {
+                content: "";
+            }
+        }
+
+        // Answer Styles
+        .answer__wrapper {
+            background: color(shade-5);
+            min-height: 55px;
+            overflow: hidden;
+            padding: 5px 6px 18px 60px;
+            position: relative;
+            width: 100%;
+        }
+
+        .answer__text,
+        .answer__message::before {
+            color: color(shade-2);
+            display: block;
+            font: 600 14px/1.5 $egyptian-display;
+            margin: 0;
+            padding: 0;
+        }
+
+        // This before controls the answer input / correct & wrong markers
+        .answer__marker {
+            border: 1px dashed color(shade-2);
+            border-radius: 50%;
+            height: 30px;
+            left: 7px;
+            position: absolute;
+            top: 7px;
+            transition: background .5s ease-in-out;
+            width: 30px;
+            z-index: 1;
+
+            &::before {
+                content: "\00e062";
+                opacity: 0;
+            }
+        }
+
+        .answer__img {
+            display: block;
+            height: auto;
+            width: 100%;
+        }
+
+        .answer__explanation {
+            color: color(shade-2);
+            display: block;
+            font: 500 13px/1.5 $egyptian-display;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        // Vary the answer styles once a question has been answered
+        .question.answered {
+            .answer__wrapper {
+                background: #f5f5f5;
+            }
+
+            .answer__text {
+                color: color(shade-3);
+            }
+
+            .answer__marker {
+                border-color: color(shade-3);
+            }
+        }
+
+        // Vary the styles when the answer has an image
+        .answer.has-image {
+            .answer__wrapper {
+                background: transparent;
+                padding: 0;
+            }
+
+            .answer__message {
+                margin: 0;
+                min-height: 55px;
+                opacity: 0;
+                position: absolute;
+                padding: 5px 6px 18px 60px;
+                top: 100%;
+                width: 100%;
+            }
+        }
+
+        // Common styles for correct and wrong answers
+        .correct-answer,
+        .wrong-answer {
+            .answer__marker {
+                border: 0;
+                text-align: center;
+                
+                &::before {
+                    color: color(shade-7);
+                    font-family: $icon;
+                    opacity: 1;
+                }
+            }
+
+            .answer__message::before {
+                display: block;
+                font-size: 16px;
+            }
+
+             &.has-image {
+                .answer__message {
+                    opacity: 1;
+                }
+             }
+        }
+        
+        // Common style for correct answer whether question is-correct or is-wrong
+        .correct-answer {
+            .answer__marker {
+                background: color(tone-news-accent);
+
+                &::before {
+                    content: "\00e062";
+                    line-height: 26px;
+                }
+            }
+        }
+
+        // Styles for answering correctly
+        .question.is-correct {
+            .correct-answer {
+                .answer__wrapper,
+                .answer__message {
+                    background: color(tone-news-accent);
+                }
+
+                .answer__marker {
+                    background: color(tone-news);
+
+                    &::before {
+                        content: "\00e062";
+                        line-height: 26px;
+                    }
+                }
+
+                .answer__text {
+                    color: color(shade-7);
+                }
+
+                .answer__message::before {
+                    color: color(tone-news);
+                    content: "Correct!"
+                }
+
+                .answer__explanation {
+                    color: color(shade-7);
+                }
+
+                &.has-image {
+                    .answer__marker {
+                        transition: background .5s ease-in-out, top .5s ease-in-out;
+
+                        &::before {
+                            transition: opacity .3s ease-in-out .2s;
+                        }
+                    }
+
+                    .answer__message {
+                        transition: top .5s ease-in-out;
+                    }
+                }
+            }
+        }
+
+        // Styles for wrong answers
+        .question.is-wrong {
+            .wrong-answer {
+                .answer__wrapper,
+                .answer__message {
+                    background: color(quiz-wrong-answer);
+                }
+
+                .answer__marker {
+                    background: color(quiz-wrong-answer-accent);
+
+                    &::before {
+                        content: "\00e04F";
+                        line-height: 28px;
+                    }
+                }
+
+                .answer__text {
+                    color: color(shade-7);
+                }
+
+                .answer__message::before {
+                    color: color(shade-1);
+                    content: "Wrong!"
+                }
+
+                .answer__explanation {
+                    color: color(shade-7);
+                }
+
+                &.has-image {
+                    .answer__marker {
+                        transition: background .5s ease-in-out, top .5s ease-in-out;
+
+                        &::before {
+                            transition: opacity .3s ease-in-out .2s;
+                        }
+                    }
+
+                    .answer__message {
+                        transition: top .5s ease-in-out;
+                    }
+                }
+            }
+
+            .correct-answer {
+                &.has-image {
+                    .answer__marker {
+                        transition: background .3s ease-in-out;
+
+                        &::before {
+                            transition: opacity .3s ease-in-out;
+                        }
+                    }
+
+                    .answer__message {
+                        background: #f5f5f5;
+                        transition: opacity .3s ease-in-out;
+                    }
+                }
+            }
+        }
+
+        // Hide default html scores
+        .quiz__scores,
+        .quiz__scores-title {
+            display: none;
+        }
+
+        // Quiz Scores
+        .quiz-scores {
+            background: transparent;
+            border-top: 2px solid color(tone-news-accent);
+            margin: 0;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            padding: 0;
+            transition: all 1s ease-in-out;
+
+            &.open {
+                opacity: 1;
+                margin-top: 30px;
+                max-height: 350px;
+            }
+
+            .quiz-scores {
+                &__inner {
+                    overflow: hidden;
+                }
+
+                &__img {
+                    display: block;
+                    width: 100%;
+                }
+
+                &__score {
+                    background: color(tone-news);
+                    border-radius: 50%;
+                    color: color(tone-news-accent);
+                    float: left;
+                    font: 100 55px/160px $egyptian-display;
+                    height: 160px;
+                    margin: 20px 20px 20px 0;
+                    padding-top: 15px;
+                    position: relative;
+                    text-align: center;
+                    width: 160px;
+
+                    &::before {
+                        color: color(shade-7);
+                        content: "You scored:";
+                        font-size: 18px;
+                        font-weight: 600;
+                        left: 25px;
+                        line-height: 1;
+                        position: absolute;
+                        top: 40px;
+                    }
+                }
+
+                &__correct {
+                    margin-right: -10px;
+                }
+
+                &__questions {
+                    margin-left: -10px;
+                }
+
+                &__message {
+                    color: color(tone-news);
+                    font: 600 18px/1.2 $egyptian-display;
+                    margin-top: 60px;
+                }
+            }
+        }
+    }
+}

@@ -337,6 +337,9 @@
     &.tone--media[data-content-type="audio"] {
         .article {
             &__header {
+                .headline {
+                    margin-top: 0;
+                }
                 .meta {
                     display: none;
                 }
@@ -344,6 +347,12 @@
                 .cutout__container {
                     min-height: 155px;
                     background-color: color(global-adv-bg);  
+                }
+
+                @include mq($from: col4) {
+                    .audio-player__container {
+                        background-color: color(shade-11);
+                    }
                 }
 
                 .audio-player__wrapper,

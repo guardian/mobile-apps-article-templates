@@ -88,7 +88,7 @@ Comments Module
         min-height: 44px;
 
         @include mq($from: col2) {
-            margin: base-px(0, 1, 1.5, .5);
+            margin: base-px(0, 1, 1.5, 1);
         }
 
         .android & {
@@ -255,6 +255,14 @@ Comments Module
             .comments-has-failed & {
                 display: block;
             }
+        }
+    }
+
+    .block {
+        margin: base-px(1);
+
+        @include mq($from: col4) {
+            margin: base-px(1, 0);
         }
     }
 

@@ -1,6 +1,5 @@
 .tone--comment {
     .article a,
-    .article__body .prose:not(.prose--has-thumbnails-without-caps) > p:first-of-type:first-letter
     .container__action--sort a,
     .comments__ordering {
         color: color(tone-comment);
@@ -116,6 +115,11 @@
             @include text-underline(color(tone-comment), color(tone-comment-bg), color(tone-comment-accent));
         }
 
+        // Add a dropcap, for all but "panel" articles
+        .article__body > .prose:not(.prose--is-panel) > p {
+            @include dropcap(color(tone-comment));
+        }
+
         .prose table,
         .table {
             border-top-color: color(tone-comment);
@@ -208,4 +212,3 @@
         color: color(tone-comment-accent);
     }
 }
-

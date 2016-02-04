@@ -160,23 +160,12 @@ define([
             window.articleImageSizer();
         },
 
-        isThumbNailImageWithoutCaptionPresent: function(el){
-            return el.getElementsByClassName('figure--thumbnail').length;
-        },
-
-        applyArticleContentTypeClasses: function(){
-            var hasThumbnailsWithCaps,
-                classArray;
-        
-            $(".prose").each(function(el){
-                var element = $(el);
-                classArray = [];
-                hasThumbnailsWithCaps = modules.isThumbNailImageWithoutCaptionPresent(el);
-                if (hasThumbnailsWithCaps) {
-                    classArray.push('prose--has-thumbnails-without-caps');
-                } 
-                if (classArray.length) {
-                    element.addClass(classArray.join(" ")); 
+        articleContentType: function(){
+            console.log('in articleContentType');
+            $('.article__body > .prose').each(function() {
+                // check if this is a "panel" type article by checking for thumbnail images with no captions (as these only exist as panel author thumbnails)
+                if (this.querySelectorAll('.figure--thumbnail:not(.figure--thumbnail-with-caption)').length) {
+                    $(this).addClass('prose--is-panel');
                 }
             });
         },
@@ -446,7 +435,7 @@ define([
             modules.correctCaptions();
             modules.figcaptionToggle();
             modules.imageSizer();
-            modules.applyArticleContentTypeClasses();
+            modules.articleContentType();
             modules.insertTags();
             modules.videoPositioning();
             modules.loadComments();
