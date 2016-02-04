@@ -1,4 +1,4 @@
-/* Supported: tone--news, tone--feature1, tone--feature2, tone--feature3, tone--media */
+/* Supported: tone--news, tone--feature1, tone--feature2, tone--feature3, tone--media, tone--podcast */
 
 @mixin sponsorship {
     display: block;
@@ -45,7 +45,8 @@
     &.tone--feature1, 
     &.tone--feature2,
     &.tone--feature3,
-    &.tone--media {
+    &.tone--media,
+    &.tone--podcast {
         .section,
         .section__container .content__series-label,
         .headline,
@@ -62,89 +63,94 @@
 
         .article {
             .article {
-                &__header .alerts,
-                &__header .meta__pubdate,
-                &__header .section__container {
-                    display: none;
+                &__header {
+                    .alerts,
+                    .meta__pubdate,
+                    .section__container {
+                        display: none;
+                    }
+
+                    .headline,
+                    .standfirst,
+                    .standfirst__inner,
+                    .sponsorship,
+                    .meta,
+                    .content__labels {
+                        color: color(global-adv-text);
+                    }
+
+                    .main-media,
+                    .headline,
+                    .standfirst,
+                    .standfirst__inner,
+                    .sponsorship,
+                    .meta,
+                    .content__labels,
+                    .main-media figcaption {
+                        background-color: color(global-adv-bg);
+                    }
+
+                    .headline {
+                         padding-bottom: 18px;
+                    }
+
+                    .meta__misc,
+                    .standfirst__inner {
+                        padding-bottom: 12px;
+                    }
+
+                    a,
+                    .byline {
+                        color: color(global-adv-shade-1) !important;
+                    }
+
+                    .standfirst a {
+                        text-decoration: none;
+                    }
+
+                    .sponsorship {
+                        @include sponsorship;
+                    }
+
+                    ul > li::before,
+                    .bullet::before {
+                        background-color: color(global-adv-bands);    
+                    }
+
+                    ul > li,
+                    ul > li strong {
+                        color: color(shade-1);    
+                    }
+
+                    ul > li strong {
+                        font-weight: bold;
+                    }
                 }
 
-                &__body,
-                &__header .headline,
-                &__header .standfirst,
-                &__header .standfirst__inner,
-                &__header .sponsorship,
-                &__header .meta,
-                &__header .content__labels {
+                &__body {
                     color: color(global-adv-text);
-                }
-
-                &__body,
-                &__header .main-media,
-                &__header .headline,
-                &__header .standfirst,
-                &__header .standfirst__inner,
-                &__header .sponsorship,
-                &__header .meta,
-                &__header .content__labels,
-                &__header .main-media figcaption {
                     background-color: color(global-adv-bg);
-                }
 
-                &__header .headline {
-                     padding-bottom: 18px;
-                }
+                    .prose p, 
+                    .prose li {
+                        @include text-underline(color(global-adv-shade-1), color(global-adv-bg), lighten(color(global-adv-shade-1),10%));
+                    }
 
-                &__header .meta__misc,
-                &__header .standfirst__inner {
-                    padding-bottom: 12px;
-                }
+                    .prose .advert-slot--mpu {
+                        border-top: none;
+                    }
 
-                &__header a,
-                &__header .byline {
-                    color: color(global-adv-shade-1) !important;
-                }
+                    .prose .element-pullquote blockquote cite,
+                    .prose .element-pullquote blockquote::before,
+                    .prose .element-pullquote blockquote::after {
+                      color: color(global-adv-shade-1);
+                    }
 
-                &__header .standfirst a {
-                    text-decoration: none;
+                    .prose figure figcaption,
+                    .prose .element-rich-link {
+                        border-color: rgba(color(global-adv-bands), .4);
+                    } 
                 }
-
-                &__header .sponsorship {
-                    @include sponsorship;
-                }
-
-                &__body .prose p, 
-                &__body .prose li {
-                    @include text-underline(color(global-adv-shade-1), color(global-adv-bg), lighten(color(global-adv-shade-1),10%));
-                }
-
-                &__body .prose .advert-slot--mpu {
-                    border-top: none;
-                }
-
-                &__header ul > li::before,
-                &__header .bullet::before {
-                    background-color: color(global-adv-bands);    
-                }
-
-                &__header ul > li,
-                &__header ul > li strong {
-                    color: color(shade-1);    
-                }
-
-                &__header ul > li strong {
-                    font-weight: bold;
-                }
-
-                &__body .prose .element-pullquote blockquote cite,
-                &__body .prose .element-pullquote blockquote::before,
-                &__body .prose .element-pullquote blockquote::after {
-                  color: color(global-adv-shade-1);
-                }
-
-                &__body .prose figure figcaption,
-                &__body .prose .element-rich-link {
-                    border-color: rgba(color(global-adv-bands), .4);
-                } 
             }
 
             .element-placeholder .element-placeholder__button {
@@ -327,6 +333,7 @@
     }
 
     /* Audio overrides */
+    &.tone--podcast,
     &.tone--media[data-content-type="audio"] {
         .article {
             &__header {
@@ -372,610 +379,14 @@
             .byline a {
                 color: color(global-adv-shade-1) !important;
             }
-            
-            &__body .standfirst,
-            &__body .prose p {
-                color: color(global-adv-text);
-                @include text-underline(color(global-adv-shade-1), color(global-adv-bg), lighten(color(global-adv-shade-1),10%));
+
+            &__body {
+                .standfirst,
+                .prose p {
+                    color: color(global-adv-text);
+                    @include text-underline(color(global-adv-shade-1), color(global-adv-bg), lighten(color(global-adv-shade-1),10%));
+                }
             }
         }
     }
 }
-
-// .is_advertising:not(.tone--review):not(.tone--analysis) {
-
-//     .section,
-//     .section__container .content__series-label,
-//     .headline,
-//     .standfirst,
-//     .byline,
-//     .article__body,
-//     .article__body > .prose > p:first-of-type::first-letter,
-//     .element-rich-link a::before,
-//     .element-rich-link a,
-//     .prose h2,
-//     .article--liveblog .article__header .section {
-//         font-family: $guardian-sans;
-//     }
-
-//     .sponsorship, 
-//     .article__body,
-//     &.tone--liveBlog.is-live .article--liveblog .article__header .sponsorship {
-//         a {
-//             color: color(global-adv-text);
-//         }
-//     }
-
-//     .content__series-label{
-//         color: color(global-adv-text) !important;
-//     }
-
-//     .article .prose p, 
-//     .article .prose li,
-//     .sponsorship__formatted-sponsor-name {
-//         @include text-underline(color(global-adv-text), color(shade-7), lighten(color(global-adv-text),10%));
-//     }
-
-//     &.advert-config--mobile .advert-slot + .article {
-//         border-top: 1px solid color(global-adv-bands);
-//     }
-
-//     .element-placeholder .element-placeholder__button{
-//         .touchpoint__button{
-//             background-color: color(global-adv-bands);
-
-//             &:active{
-//                 color: color(global-adv-bands);
-//                 background-color: color(global-adv-text);
-//             }
-//         }
-
-//         .touchpoint__label{
-//             color: color(shade-7);
-//             text-shadow: 0 0 4px  rgba(0, 0, 0, .5);
-//         }
-//     }
-
-//     .section__container,
-//     .article,
-//     .comment-count {
-//         border-color: color(global-adv-bands);
-//     }
-
-
-//     // changes to the various tones
-
-//     &.tone--deadBlog  {
-
-//         .article--liveblog .article__header .section,
-//         .article--liveblog .article__header .section > div,
-//         .article--liveblog .article__header a{
-//             color: color(global-adv-text);
-//         }
-//     }
-
-//     &.tone--news,
-//     &.tone--comment { 
-//         .article, 
-//         .article__header, 
-//         .article__header .meta,
-//         .article__header .main-media__caption,
-//         .article__body,
-//         .tags,
-//         .section,
-//         .cutout__container,
-//         .sponsorship {
-//             background-color: color(global-adv-bg);
-//         }
-
-//         @include mq($from: col4) {
-//             .article,
-//             .article__header,
-//             .audio-player__container {
-//                 background: color(shade-5);
-//             }
-
-//             .section,
-//             .headline,
-//             .main-media, 
-//             .meta,
-//             .standfirst__inner {
-//                 background-color: color(global-adv-bg);
-//             }
-//         }
-
-//         .article,
-//         .section__container,
-//         .article__header .meta,
-//         .article__header .comment-count,
-//         .article__header figure figcaption,
-//         .sponsorship,
-//         .tags {
-//             border-color: color(global-adv-bands);
-//         }
-
-//         .article__header .section,
-//         .article__header .section > div,
-//         .article__header .headline,
-//         .article__header .meta__byline .byline,
-//         .article__header .meta__byline a, 
-//         .article__header .comment-count,
-//         .article__header .comment-count a,
-//         .article__header .comment-count a,
-//         .article__body {
-//             color: color(global-adv-text); 
-//         }
-
-//         .article__header .standfirst, 
-//         .article__header .standfirst a{
-//             color: color(global-adv-text);
-
-//             .bullet::before{
-//                 background-color: color(global-adv-text);
-//             }
-//         }
-
-//         .article__header .meta__pubdate{
-//             color: color(global-adv-bands);
-//         }
-
-//         .article .article__body .prose p, 
-//         .article .article__body .prose li,
-//         .article__header .standfirst,
-//         .sponsorship__formatted-sponsor-name {
-//             @include text-underline(color(global-adv-text), color(global-adv-bg), lighten(color(global-adv-text),10%));
-//         }
-
-//         .tags .inline-list__item.more-button a {
-//             border-color: color(global-tags);
-//         }
-
-//         .prose .element-pullquote {
-//             blockquote {
-//                 color: color(shade-10);
-
-//                 footer,
-//                 &::after,
-//                 &::before {
-//                     color: color(global-adv-text);
-//                 }
-//             }
-//         }
-
-//         .touchpoint--primary {
-//             .touchpoint__button {
-//                 background-color: color(global-adv-bands);
-//             }
-
-//             &:active .touchpoint__button {
-//                background-color: color(global-adv-text);
-//             }
-
-//             .touchpoint__label {
-//                 color: color(global-adv-bands);
-//             }
-            
-//             &:active .touchpoint__label {
-//                 color: color(global-adv-text);
-//             }
-//         }
-
-//         .comments__viewmore {
-//             .comments__viewmore--label {
-//                 color: color(global-adv-bands);
-//             }
-            
-//             &:active .comments__viewmore--label {
-//                 color: color(global-adv-text);
-//             }
-//         }
-//     }
-
-//     &.tone--comment {
-//         a {
-//             color: color(global-adv-text); 
-//         }
-
-//         .meta__misc {
-//             background-color: color(global-adv-bands);
-//         }
-
-//         .meta {
-//             border: none;
-//         }
-
-//         .article__header .meta__pubdate {
-//             color: rgba(color(shade-7), .8);
-//         }
-
-//          @include mq($from: col4) {
-//             .meta__misc {
-//                 background-color: color(global-adv-bands);
-//             }
-
-//             .standfirst__inner {
-//                 background-color: color(global-adv-bg);
-//             }
-
-//             .standfirst {
-//                 background-color: color(shade-5);
-//             }
-//          }
-
-//         .alerts,
-//         .alerts.following:active {
-//             border-color: rgba(255,255,255,.5);
-//             color: color(shade-7);
-//         }
-
-//         .alerts.following,
-//         .alerts:active {
-//             background-color: #333;
-//             border-color: rgba(51,51,51,.5);
-//             color: #fff;
-//         }
-//     }
-
-//     &.tone--feature1,
-//     &.tone--feature2,
-//     &.tone--feature3 {
-
-//         a:active {
-//             color: lighten(color(global-adv-text),10%);
-//         }
-
-//         .article__header {
-//             background-color: color(global-adv-bg);
-//         }
-
-//         .advert-slot + .article {
-//             border-top: none !important;
-//         }
-
-//         .article__header .content__labels,
-//         .article__header .headline,
-//         .article--feature .meta,
-//         .article--feature .article__header a,
-//         .article--feature .meta__pubdate,
-//         .article--feature .article__header a,
-//         .article--feature .article__header .byline {
-//             color: color(global-adv-text);
-//         }
-
-//         .standfirst {
-//             background-color: color(global-adv-bands);
-//             @include text-underline(color(shade-7), color(global-adv-bands), darken(color(shade-7),10%));
-//         }
-
-//         .article--feature .article__header .standfirst a{
-//             color: color(shade-7);
-//         }
-
-//         .comment-count {
-//             border-color: color(global-adv-bands);
-//         }
-
-//         .prose .element-pullquote {
-//             blockquote {
-//                 color: color(shade-10);
-                
-//                 footer,
-//                 &::after,
-//                 &::before {
-//                     color: color(global-adv-text);
-//                 }
-//             }
-//         }
-
-//     }
-
-
-//     &.tone--liveBlog.is-live {
-//         .article__header,
-//         .cutout__container,
-//         .sponsorship,
-//         .headline,
-//         .standfirst__inner, 
-//         .section {
-//             background-color: color(global-adv-bg);
-//         }
-
-//         .meta,
-//         .meta__misc {
-//             background-color: color(global-adv-bands);
-//         }
-
-//         .witness__button {
-//             color: color(shade-7);
-//         }
-
-//         @include mq($from: col4) {
-//             .article,
-//             .article__header,
-//             .audio-player__container,
-//             .standfirst {
-//                 background: color(shade-5);
-//             }
-
-//             .article--liveblog {
-//                 .section,
-//                 .headline,
-//                 .main-media,
-//                 .meta {
-//                     background-color: color(global-adv-bg);
-//                 }
-
-//                 .meta__misc {
-//                     background-color: color(global-adv-bands);
-//                 }
-//             }
-//         }
-
-//         .article__header .section__live,
-//         .article__header .headline,
-//         .article__header .standfirst,
-//         .article__header .standfirst a,
-//         .article__header .comment-count a,
-//         .article__header .section,
-//         .article__header .section > div {
-//             color: color(global-adv-text);
-//         }
-        
-//         .alerts,
-//         .alerts.following:active {
-//             border-color: rgba(255,255,255,.5);
-//             color: color(shade-7);
-//         }
-
-//         .alerts.following,
-//         .alerts:active {
-//             background-color: #333;
-//             border-color: rgba(51,51,51,.5);
-//             color: #fff;
-//         }
-
-//         .article__header ul > li::before,
-//         .article__header .bullet::before {
-//             background-color: color(global-adv-text);    
-//         }
-
-//         /*.article__header .section,
-//         .content__series-label{
-//             @include mq($to: col2) {
-//                 padding-top: base-px(0.58);
-//             }
-//         }*/
-
-//         .content__labels__container {
-//             @include mq($to: col2) {
-//                 padding-top: 10px;
-//             }
-//         }
-
-//         .touchpoint--primary {
-//             .touchpoint__button {
-//                 background-color: color(global-adv-bands);
-//             }
-
-//             &:active .touchpoint__button {
-//                background-color: color(global-adv-text);
-//             }
-
-//             .touchpoint__label {
-//                 color: color(global-adv-bands);
-//             }
-            
-//             &:active .touchpoint__label {
-//                 color: color(global-adv-text);
-//             }
-//         }
-
-//         .comments__viewmore {
-//             .comments__viewmore--label {
-//                 color: color(global-adv-bands);
-//             }
-            
-//             &:active .comments__viewmore--label {
-//                 color: color(global-adv-text);
-//             }
-//         }
-//     }    
-
-//     &.tone--media {
-//         .article .section,
-//         .article .section > div,
-//         .content__series-label,
-//         .article .headline,
-//         .article .headline,
-//         .article .standfirst,
-//         .article .byline,
-//         .article .prose,
-//         .element-placeholder .element-placeholder__button .touchpoint__button,
-//         .sponsorship .sponsorship__formatted-sponsor-name,
-//         .tags .inline-list__item a,
-//         a{
-//             color: color(global-adv-text);
-//         }
-        
-//         .sponsorship,
-//         .article__header .meta__misc, 
-//         .tags {
-//             border-color: color(global-adv-bands);
-//         }
-
-//         .article,
-//         .article__header,
-//         .article__body,
-//         .tags, 
-//         .cutout__container,
-//         .sponsorship {
-//             background-color: color(global-adv-bg);
-//         }
-
-//         @include mq($from: col4) {
-//             .article,
-//             .article__header,
-//             .audio-player__container {
-//                 background: color(shade-5);
-//             }
-
-//             .section,
-//             .headline,
-//             .main-media, 
-//             .meta {
-//                 background-color: color(global-adv-bg);
-//             }
-//         }
-
-//         .article .prose p, 
-//         .article .prose li,
-//         .sponsorship__formatted-sponsor-name {
-//             @include text-underline(color(global-adv-text), color(global-adv-bg), lighten(color(global-adv-text),10%));
-//         }
-
-//         .tags{
-//             .inline-list__item {
-//                 a {
-//                     @include tag-button(color(shade-7), color(global-adv-bands), "lighter");
-//                 }
-
-//                 &.more-button a {
-//                     @include tag-more-button(color(global-adv-text), color(global-adv-bands), "lighter");
-//                 }
-//             }              
-//         }
-
-//         .meta__pubdate{
-//             color: color(global-adv-bands);
-//         }
-
-//         .audio-player__wrapper,
-//         .audio-player {
-//             background-color: color(tone-podcast-adv-ply-background);
-//         }
-
-//         .audio-player__button.touchpoint--primary .touchpoint__button,
-//         .audio-player__slider__knob{
-//             background-color: color(global-adv-bands);
-
-//             &:active {
-//                 background-color: darken(color(global-adv-bands), 10%); 
-//             }
-//         }
-
-//         .audio-player__slider__track{
-//             background-color: color(tone-podcast-adv-ply-range);
-//         }
-//     }
-
-
-//     &.tone--podcast {
-//         .meta,
-//         .comment-count {
-//             border-color: color(global-adv-bands);
-//         }
-
-//         .section,
-//         .section > div,
-//         .content__series-label,
-//         .section__container .content__series-label,
-//         .section__container .content__series-label a,
-//         .headline,
-//         .byline__author a,
-//         .article__header .meta__byline .byline,
-//         .meta__pubdate,
-//         .comment-count a, 
-//         .comment-count a, 
-//         .comment-count,
-//         .comment-count a span[data-icon],
-//         .comments__viewmore {
-//             color: color(global-adv-text);
-//         }
-
-//         .prose .element-pullquote {
-//             blockquote {
-//                 footer,
-//                 &::after,
-//                 &::before {
-//                     color: color(global-adv-text);
-//                 }
-//             }
-//         }
-        
-//         .sponsorship,
-//         .article__header .meta__misc, 
-//         .tags {
-//             border-color: color(global-adv-bands);
-//         }
-
-//         .article,
-//         .article__header,
-//         .article__body,
-//         .tags, 
-//         .cutout__container,
-//         .sponsorship {
-//             background-color: color(global-adv-bg);
-//         }
-
-//         @include mq($from: col4) {
-//             .article,
-//             .article__header,
-//             .audio-player__container {
-//                 background: color(shade-5);
-//             }
-
-//             .section,
-//             .headline,
-//             .main-media, 
-//             .meta {
-//                 background-color: color(global-adv-bg);
-//             }
-//         }
-
-//         .article .prose p, 
-//         .article .prose li,
-//         .sponsorship__formatted-sponsor-name {
-//             @include text-underline(color(global-adv-text), color(global-adv-bg), lighten(color(global-adv-text),10%));
-//         }
-
-//         .article__header .meta__byline .byline__author a{
-//             color: color(global-adv-text);
-//             font-weight: bold;
-//         }
-
-//         .audio-player__wrapper,
-//         .audio-player {
-//             background-color: color(tone-podcast-adv-ply-background);
-//         }
-
-//         .audio-player__button.touchpoint--primary .touchpoint__button,
-//         .audio-player__slider__knob{
-//             background-color: color(global-adv-bands);
-
-//             &:active {
-//                 background-color: darken(color(global-adv-bands), 10%); 
-//             }
-//         }
-
-//         .audio-player__slider__track{
-//             background-color: color(tone-podcast-adv-ply-range);
-//         }
-
-//         .tags{
-//             .inline-list__item {
-//                 a {
-//                     @include tag-button(color(shade-7), color(global-adv-bands), "lighter");
-//                 }
-
-//                 &.more-button a {
-//                     @include tag-more-button(color(global-adv-text), color(global-adv-bands), "lighter");
-//                 }
-//             }
-//         }
-
-//         .card__title--audio::before {
-//             margin-top: 0;
-//         }
-//     }
-
-// }

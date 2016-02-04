@@ -3559,7 +3559,7 @@ body.the-minute {
     .article--feature .article__header .headline {
       margin-top: 0; } }
 
-/* Supported: tone--news, tone--feature1, tone--feature2, tone--feature3, tone--media */
+/* Supported: tone--news, tone--feature1, tone--feature2, tone--feature3, tone--media, tone--podcast */
 .is_advertising {
   background-color: #CCC;
   /* Common */
@@ -3620,125 +3620,305 @@ body.the-minute {
   .is_advertising.tone--media .element-rich-link a::before,
   .is_advertising.tone--media .element-rich-link a,
   .is_advertising.tone--media .prose h2,
-  .is_advertising.tone--media .article--liveblog .article__header .section {
+  .is_advertising.tone--media .article--liveblog .article__header .section, .is_advertising.tone--podcast .section,
+  .is_advertising.tone--podcast .section__container .content__series-label,
+  .is_advertising.tone--podcast .headline,
+  .is_advertising.tone--podcast .standfirst,
+  .is_advertising.tone--podcast .byline,
+  .is_advertising.tone--podcast .article__body,
+  .is_advertising.tone--podcast .article__body > .prose > p:first-of-type::first-letter,
+  .is_advertising.tone--podcast .element-rich-link a::before,
+  .is_advertising.tone--podcast .element-rich-link a,
+  .is_advertising.tone--podcast .prose h2,
+  .is_advertising.tone--podcast .article--liveblog .article__header .section {
     font-family: "Guardian Text Sans Web", sans-serif; }
-  .is_advertising.tone--news .article .article__header .alerts, .is_advertising.tone--news .article .article__header .meta__pubdate, .is_advertising.tone--news .article .article__header .section__container, .is_advertising.tone--feature1 .article .article__header .alerts, .is_advertising.tone--feature1 .article .article__header .meta__pubdate, .is_advertising.tone--feature1 .article .article__header .section__container, .is_advertising.tone--feature2 .article .article__header .alerts, .is_advertising.tone--feature2 .article .article__header .meta__pubdate, .is_advertising.tone--feature2 .article .article__header .section__container, .is_advertising.tone--feature3 .article .article__header .alerts, .is_advertising.tone--feature3 .article .article__header .meta__pubdate, .is_advertising.tone--feature3 .article .article__header .section__container, .is_advertising.tone--media .article .article__header .alerts, .is_advertising.tone--media .article .article__header .meta__pubdate, .is_advertising.tone--media .article .article__header .section__container {
+  .is_advertising.tone--news .article .article__header .alerts,
+  .is_advertising.tone--news .article .article__header .meta__pubdate,
+  .is_advertising.tone--news .article .article__header .section__container, .is_advertising.tone--feature1 .article .article__header .alerts,
+  .is_advertising.tone--feature1 .article .article__header .meta__pubdate,
+  .is_advertising.tone--feature1 .article .article__header .section__container, .is_advertising.tone--feature2 .article .article__header .alerts,
+  .is_advertising.tone--feature2 .article .article__header .meta__pubdate,
+  .is_advertising.tone--feature2 .article .article__header .section__container, .is_advertising.tone--feature3 .article .article__header .alerts,
+  .is_advertising.tone--feature3 .article .article__header .meta__pubdate,
+  .is_advertising.tone--feature3 .article .article__header .section__container, .is_advertising.tone--media .article .article__header .alerts,
+  .is_advertising.tone--media .article .article__header .meta__pubdate,
+  .is_advertising.tone--media .article .article__header .section__container, .is_advertising.tone--podcast .article .article__header .alerts,
+  .is_advertising.tone--podcast .article .article__header .meta__pubdate,
+  .is_advertising.tone--podcast .article .article__header .section__container {
     display: none; }
-  .is_advertising.tone--news .article .article__body, .is_advertising.tone--news .article .article__header .headline, .is_advertising.tone--news .article .article__header .standfirst, .is_advertising.tone--news .article .article__header .standfirst__inner, .is_advertising.tone--news .article .article__header .sponsorship, .is_advertising.tone--news .article .article__header .meta, .is_advertising.tone--news .article .article__header .content__labels, .is_advertising.tone--feature1 .article .article__body, .is_advertising.tone--feature1 .article .article__header .headline, .is_advertising.tone--feature1 .article .article__header .standfirst, .is_advertising.tone--feature1 .article .article__header .standfirst__inner, .is_advertising.tone--feature1 .article .article__header .sponsorship, .is_advertising.tone--feature1 .article .article__header .meta, .is_advertising.tone--feature1 .article .article__header .content__labels, .is_advertising.tone--feature2 .article .article__body, .is_advertising.tone--feature2 .article .article__header .headline, .is_advertising.tone--feature2 .article .article__header .standfirst, .is_advertising.tone--feature2 .article .article__header .standfirst__inner, .is_advertising.tone--feature2 .article .article__header .sponsorship, .is_advertising.tone--feature2 .article .article__header .meta, .is_advertising.tone--feature2 .article .article__header .content__labels, .is_advertising.tone--feature3 .article .article__body, .is_advertising.tone--feature3 .article .article__header .headline, .is_advertising.tone--feature3 .article .article__header .standfirst, .is_advertising.tone--feature3 .article .article__header .standfirst__inner, .is_advertising.tone--feature3 .article .article__header .sponsorship, .is_advertising.tone--feature3 .article .article__header .meta, .is_advertising.tone--feature3 .article .article__header .content__labels, .is_advertising.tone--media .article .article__body, .is_advertising.tone--media .article .article__header .headline, .is_advertising.tone--media .article .article__header .standfirst, .is_advertising.tone--media .article .article__header .standfirst__inner, .is_advertising.tone--media .article .article__header .sponsorship, .is_advertising.tone--media .article .article__header .meta, .is_advertising.tone--media .article .article__header .content__labels {
+  .is_advertising.tone--news .article .article__header .headline,
+  .is_advertising.tone--news .article .article__header .standfirst,
+  .is_advertising.tone--news .article .article__header .standfirst__inner,
+  .is_advertising.tone--news .article .article__header .sponsorship,
+  .is_advertising.tone--news .article .article__header .meta,
+  .is_advertising.tone--news .article .article__header .content__labels, .is_advertising.tone--feature1 .article .article__header .headline,
+  .is_advertising.tone--feature1 .article .article__header .standfirst,
+  .is_advertising.tone--feature1 .article .article__header .standfirst__inner,
+  .is_advertising.tone--feature1 .article .article__header .sponsorship,
+  .is_advertising.tone--feature1 .article .article__header .meta,
+  .is_advertising.tone--feature1 .article .article__header .content__labels, .is_advertising.tone--feature2 .article .article__header .headline,
+  .is_advertising.tone--feature2 .article .article__header .standfirst,
+  .is_advertising.tone--feature2 .article .article__header .standfirst__inner,
+  .is_advertising.tone--feature2 .article .article__header .sponsorship,
+  .is_advertising.tone--feature2 .article .article__header .meta,
+  .is_advertising.tone--feature2 .article .article__header .content__labels, .is_advertising.tone--feature3 .article .article__header .headline,
+  .is_advertising.tone--feature3 .article .article__header .standfirst,
+  .is_advertising.tone--feature3 .article .article__header .standfirst__inner,
+  .is_advertising.tone--feature3 .article .article__header .sponsorship,
+  .is_advertising.tone--feature3 .article .article__header .meta,
+  .is_advertising.tone--feature3 .article .article__header .content__labels, .is_advertising.tone--media .article .article__header .headline,
+  .is_advertising.tone--media .article .article__header .standfirst,
+  .is_advertising.tone--media .article .article__header .standfirst__inner,
+  .is_advertising.tone--media .article .article__header .sponsorship,
+  .is_advertising.tone--media .article .article__header .meta,
+  .is_advertising.tone--media .article .article__header .content__labels, .is_advertising.tone--podcast .article .article__header .headline,
+  .is_advertising.tone--podcast .article .article__header .standfirst,
+  .is_advertising.tone--podcast .article .article__header .standfirst__inner,
+  .is_advertising.tone--podcast .article .article__header .sponsorship,
+  .is_advertising.tone--podcast .article .article__header .meta,
+  .is_advertising.tone--podcast .article .article__header .content__labels {
     color: #272727; }
-  .is_advertising.tone--news .article .article__body, .is_advertising.tone--news .article .article__header .main-media, .is_advertising.tone--news .article .article__header .headline, .is_advertising.tone--news .article .article__header .standfirst, .is_advertising.tone--news .article .article__header .standfirst__inner, .is_advertising.tone--news .article .article__header .sponsorship, .is_advertising.tone--news .article .article__header .meta, .is_advertising.tone--news .article .article__header .content__labels, .is_advertising.tone--news .article .article__header .main-media figcaption, .is_advertising.tone--feature1 .article .article__body, .is_advertising.tone--feature1 .article .article__header .main-media, .is_advertising.tone--feature1 .article .article__header .headline, .is_advertising.tone--feature1 .article .article__header .standfirst, .is_advertising.tone--feature1 .article .article__header .standfirst__inner, .is_advertising.tone--feature1 .article .article__header .sponsorship, .is_advertising.tone--feature1 .article .article__header .meta, .is_advertising.tone--feature1 .article .article__header .content__labels, .is_advertising.tone--feature1 .article .article__header .main-media figcaption, .is_advertising.tone--feature2 .article .article__body, .is_advertising.tone--feature2 .article .article__header .main-media, .is_advertising.tone--feature2 .article .article__header .headline, .is_advertising.tone--feature2 .article .article__header .standfirst, .is_advertising.tone--feature2 .article .article__header .standfirst__inner, .is_advertising.tone--feature2 .article .article__header .sponsorship, .is_advertising.tone--feature2 .article .article__header .meta, .is_advertising.tone--feature2 .article .article__header .content__labels, .is_advertising.tone--feature2 .article .article__header .main-media figcaption, .is_advertising.tone--feature3 .article .article__body, .is_advertising.tone--feature3 .article .article__header .main-media, .is_advertising.tone--feature3 .article .article__header .headline, .is_advertising.tone--feature3 .article .article__header .standfirst, .is_advertising.tone--feature3 .article .article__header .standfirst__inner, .is_advertising.tone--feature3 .article .article__header .sponsorship, .is_advertising.tone--feature3 .article .article__header .meta, .is_advertising.tone--feature3 .article .article__header .content__labels, .is_advertising.tone--feature3 .article .article__header .main-media figcaption, .is_advertising.tone--media .article .article__body, .is_advertising.tone--media .article .article__header .main-media, .is_advertising.tone--media .article .article__header .headline, .is_advertising.tone--media .article .article__header .standfirst, .is_advertising.tone--media .article .article__header .standfirst__inner, .is_advertising.tone--media .article .article__header .sponsorship, .is_advertising.tone--media .article .article__header .meta, .is_advertising.tone--media .article .article__header .content__labels, .is_advertising.tone--media .article .article__header .main-media figcaption {
+  .is_advertising.tone--news .article .article__header .main-media,
+  .is_advertising.tone--news .article .article__header .headline,
+  .is_advertising.tone--news .article .article__header .standfirst,
+  .is_advertising.tone--news .article .article__header .standfirst__inner,
+  .is_advertising.tone--news .article .article__header .sponsorship,
+  .is_advertising.tone--news .article .article__header .meta,
+  .is_advertising.tone--news .article .article__header .content__labels,
+  .is_advertising.tone--news .article .article__header .main-media figcaption, .is_advertising.tone--feature1 .article .article__header .main-media,
+  .is_advertising.tone--feature1 .article .article__header .headline,
+  .is_advertising.tone--feature1 .article .article__header .standfirst,
+  .is_advertising.tone--feature1 .article .article__header .standfirst__inner,
+  .is_advertising.tone--feature1 .article .article__header .sponsorship,
+  .is_advertising.tone--feature1 .article .article__header .meta,
+  .is_advertising.tone--feature1 .article .article__header .content__labels,
+  .is_advertising.tone--feature1 .article .article__header .main-media figcaption, .is_advertising.tone--feature2 .article .article__header .main-media,
+  .is_advertising.tone--feature2 .article .article__header .headline,
+  .is_advertising.tone--feature2 .article .article__header .standfirst,
+  .is_advertising.tone--feature2 .article .article__header .standfirst__inner,
+  .is_advertising.tone--feature2 .article .article__header .sponsorship,
+  .is_advertising.tone--feature2 .article .article__header .meta,
+  .is_advertising.tone--feature2 .article .article__header .content__labels,
+  .is_advertising.tone--feature2 .article .article__header .main-media figcaption, .is_advertising.tone--feature3 .article .article__header .main-media,
+  .is_advertising.tone--feature3 .article .article__header .headline,
+  .is_advertising.tone--feature3 .article .article__header .standfirst,
+  .is_advertising.tone--feature3 .article .article__header .standfirst__inner,
+  .is_advertising.tone--feature3 .article .article__header .sponsorship,
+  .is_advertising.tone--feature3 .article .article__header .meta,
+  .is_advertising.tone--feature3 .article .article__header .content__labels,
+  .is_advertising.tone--feature3 .article .article__header .main-media figcaption, .is_advertising.tone--media .article .article__header .main-media,
+  .is_advertising.tone--media .article .article__header .headline,
+  .is_advertising.tone--media .article .article__header .standfirst,
+  .is_advertising.tone--media .article .article__header .standfirst__inner,
+  .is_advertising.tone--media .article .article__header .sponsorship,
+  .is_advertising.tone--media .article .article__header .meta,
+  .is_advertising.tone--media .article .article__header .content__labels,
+  .is_advertising.tone--media .article .article__header .main-media figcaption, .is_advertising.tone--podcast .article .article__header .main-media,
+  .is_advertising.tone--podcast .article .article__header .headline,
+  .is_advertising.tone--podcast .article .article__header .standfirst,
+  .is_advertising.tone--podcast .article .article__header .standfirst__inner,
+  .is_advertising.tone--podcast .article .article__header .sponsorship,
+  .is_advertising.tone--podcast .article .article__header .meta,
+  .is_advertising.tone--podcast .article .article__header .content__labels,
+  .is_advertising.tone--podcast .article .article__header .main-media figcaption {
     background-color: #CCC; }
-  .is_advertising.tone--news .article .article__header .headline, .is_advertising.tone--feature1 .article .article__header .headline, .is_advertising.tone--feature2 .article .article__header .headline, .is_advertising.tone--feature3 .article .article__header .headline, .is_advertising.tone--media .article .article__header .headline {
+  .is_advertising.tone--news .article .article__header .headline, .is_advertising.tone--feature1 .article .article__header .headline, .is_advertising.tone--feature2 .article .article__header .headline, .is_advertising.tone--feature3 .article .article__header .headline, .is_advertising.tone--media .article .article__header .headline, .is_advertising.tone--podcast .article .article__header .headline {
     padding-bottom: 18px; }
-  .is_advertising.tone--news .article .article__header .meta__misc, .is_advertising.tone--news .article .article__header .standfirst__inner, .is_advertising.tone--feature1 .article .article__header .meta__misc, .is_advertising.tone--feature1 .article .article__header .standfirst__inner, .is_advertising.tone--feature2 .article .article__header .meta__misc, .is_advertising.tone--feature2 .article .article__header .standfirst__inner, .is_advertising.tone--feature3 .article .article__header .meta__misc, .is_advertising.tone--feature3 .article .article__header .standfirst__inner, .is_advertising.tone--media .article .article__header .meta__misc, .is_advertising.tone--media .article .article__header .standfirst__inner {
+  .is_advertising.tone--news .article .article__header .meta__misc,
+  .is_advertising.tone--news .article .article__header .standfirst__inner, .is_advertising.tone--feature1 .article .article__header .meta__misc,
+  .is_advertising.tone--feature1 .article .article__header .standfirst__inner, .is_advertising.tone--feature2 .article .article__header .meta__misc,
+  .is_advertising.tone--feature2 .article .article__header .standfirst__inner, .is_advertising.tone--feature3 .article .article__header .meta__misc,
+  .is_advertising.tone--feature3 .article .article__header .standfirst__inner, .is_advertising.tone--media .article .article__header .meta__misc,
+  .is_advertising.tone--media .article .article__header .standfirst__inner, .is_advertising.tone--podcast .article .article__header .meta__misc,
+  .is_advertising.tone--podcast .article .article__header .standfirst__inner {
     padding-bottom: 12px; }
-  .is_advertising.tone--news .article .article__header a, .is_advertising.tone--news .article .article__header .byline, .is_advertising.tone--feature1 .article .article__header a, .is_advertising.tone--feature1 .article .article__header .byline, .is_advertising.tone--feature2 .article .article__header a, .is_advertising.tone--feature2 .article .article__header .byline, .is_advertising.tone--feature3 .article .article__header a, .is_advertising.tone--feature3 .article .article__header .byline, .is_advertising.tone--media .article .article__header a, .is_advertising.tone--media .article .article__header .byline {
+  .is_advertising.tone--news .article .article__header a,
+  .is_advertising.tone--news .article .article__header .byline, .is_advertising.tone--feature1 .article .article__header a,
+  .is_advertising.tone--feature1 .article .article__header .byline, .is_advertising.tone--feature2 .article .article__header a,
+  .is_advertising.tone--feature2 .article .article__header .byline, .is_advertising.tone--feature3 .article .article__header a,
+  .is_advertising.tone--feature3 .article .article__header .byline, .is_advertising.tone--media .article .article__header a,
+  .is_advertising.tone--media .article .article__header .byline, .is_advertising.tone--podcast .article .article__header a,
+  .is_advertising.tone--podcast .article .article__header .byline {
     color: #009999 !important; }
-  .is_advertising.tone--news .article .article__header .standfirst a, .is_advertising.tone--feature1 .article .article__header .standfirst a, .is_advertising.tone--feature2 .article .article__header .standfirst a, .is_advertising.tone--feature3 .article .article__header .standfirst a, .is_advertising.tone--media .article .article__header .standfirst a {
+  .is_advertising.tone--news .article .article__header .standfirst a, .is_advertising.tone--feature1 .article .article__header .standfirst a, .is_advertising.tone--feature2 .article .article__header .standfirst a, .is_advertising.tone--feature3 .article .article__header .standfirst a, .is_advertising.tone--media .article .article__header .standfirst a, .is_advertising.tone--podcast .article .article__header .standfirst a {
     text-decoration: none; }
-  .is_advertising.tone--news .article .article__header .sponsorship, .is_advertising.tone--feature1 .article .article__header .sponsorship, .is_advertising.tone--feature2 .article .article__header .sponsorship, .is_advertising.tone--feature3 .article .article__header .sponsorship, .is_advertising.tone--media .article .article__header .sponsorship {
+  .is_advertising.tone--news .article .article__header .sponsorship, .is_advertising.tone--feature1 .article .article__header .sponsorship, .is_advertising.tone--feature2 .article .article__header .sponsorship, .is_advertising.tone--feature3 .article .article__header .sponsorship, .is_advertising.tone--media .article .article__header .sponsorship, .is_advertising.tone--podcast .article .article__header .sponsorship {
     display: block;
     position: relative;
     padding: 8px 12px 8px;
     border-bottom: 1px rgba(135, 135, 135, 0.4) dotted;
     font-size: 1.6rem; }
     @media all and (min-width: 75em) {
-      .is_advertising.tone--news .article .article__header .sponsorship .sponsorship__inner, .is_advertising.tone--feature1 .article .article__header .sponsorship .sponsorship__inner, .is_advertising.tone--feature2 .article .article__header .sponsorship .sponsorship__inner, .is_advertising.tone--feature3 .article .article__header .sponsorship .sponsorship__inner, .is_advertising.tone--media .article .article__header .sponsorship .sponsorship__inner {
+      .is_advertising.tone--news .article .article__header .sponsorship .sponsorship__inner, .is_advertising.tone--feature1 .article .article__header .sponsorship .sponsorship__inner, .is_advertising.tone--feature2 .article .article__header .sponsorship .sponsorship__inner, .is_advertising.tone--feature3 .article .article__header .sponsorship .sponsorship__inner, .is_advertising.tone--media .article .article__header .sponsorship .sponsorship__inner, .is_advertising.tone--podcast .article .article__header .sponsorship .sponsorship__inner {
         padding-left: 240px;
         padding-right: 320px; } }
-    .is_advertising.tone--news .article .article__header .sponsorship .sponsorship__formatted-sponsor-name, .is_advertising.tone--feature1 .article .article__header .sponsorship .sponsorship__formatted-sponsor-name, .is_advertising.tone--feature2 .article .article__header .sponsorship .sponsorship__formatted-sponsor-name, .is_advertising.tone--feature3 .article .article__header .sponsorship .sponsorship__formatted-sponsor-name, .is_advertising.tone--media .article .article__header .sponsorship .sponsorship__formatted-sponsor-name {
+    .is_advertising.tone--news .article .article__header .sponsorship .sponsorship__formatted-sponsor-name, .is_advertising.tone--feature1 .article .article__header .sponsorship .sponsorship__formatted-sponsor-name, .is_advertising.tone--feature2 .article .article__header .sponsorship .sponsorship__formatted-sponsor-name, .is_advertising.tone--feature3 .article .article__header .sponsorship .sponsorship__formatted-sponsor-name, .is_advertising.tone--media .article .article__header .sponsorship .sponsorship__formatted-sponsor-name, .is_advertising.tone--podcast .article .article__header .sponsorship .sponsorship__formatted-sponsor-name {
       position: absolute;
       top: 50%;
       margin-top: -0.8rem; }
-    .is_advertising.tone--news .article .article__header .sponsorship .sponsorship__logo, .is_advertising.tone--feature1 .article .article__header .sponsorship .sponsorship__logo, .is_advertising.tone--feature2 .article .article__header .sponsorship .sponsorship__logo, .is_advertising.tone--feature3 .article .article__header .sponsorship .sponsorship__logo, .is_advertising.tone--media .article .article__header .sponsorship .sponsorship__logo {
+    .is_advertising.tone--news .article .article__header .sponsorship .sponsorship__logo, .is_advertising.tone--feature1 .article .article__header .sponsorship .sponsorship__logo, .is_advertising.tone--feature2 .article .article__header .sponsorship .sponsorship__logo, .is_advertising.tone--feature3 .article .article__header .sponsorship .sponsorship__logo, .is_advertising.tone--media .article .article__header .sponsorship .sponsorship__logo, .is_advertising.tone--podcast .article .article__header .sponsorship .sponsorship__logo {
       float: right; }
     @media all and (min-width: 75em) {
-      .is_advertising.tone--news .article .article__header .sponsorship, .is_advertising.tone--feature1 .article .article__header .sponsorship, .is_advertising.tone--feature2 .article .article__header .sponsorship, .is_advertising.tone--feature3 .article .article__header .sponsorship, .is_advertising.tone--media .article .article__header .sponsorship {
+      .is_advertising.tone--news .article .article__header .sponsorship, .is_advertising.tone--feature1 .article .article__header .sponsorship, .is_advertising.tone--feature2 .article .article__header .sponsorship, .is_advertising.tone--feature3 .article .article__header .sponsorship, .is_advertising.tone--media .article .article__header .sponsorship, .is_advertising.tone--podcast .article .article__header .sponsorship {
         padding-left: 0; } }
-  .is_advertising.tone--news .article .article__body .prose p a, .is_advertising.tone--news .article .article__body .prose li a, .is_advertising.tone--feature1 .article .article__body .prose p a, .is_advertising.tone--feature1 .article .article__body .prose li a, .is_advertising.tone--feature2 .article .article__body .prose p a, .is_advertising.tone--feature2 .article .article__body .prose li a, .is_advertising.tone--feature3 .article .article__body .prose p a, .is_advertising.tone--feature3 .article .article__body .prose li a, .is_advertising.tone--media .article .article__body .prose p a, .is_advertising.tone--media .article .article__body .prose li a {
-    color: #009999;
-    text-decoration: none;
-    background-image: linear-gradient(rgba(0, 153, 153, 0.25) 0%, #009999 100%);
-    background-repeat: repeat-x;
-    background-size: 1px 1px;
-    background-position: 0 bottom;
-    text-shadow: 3px 0 #CCC, 2px 0 #CCC, 1px 0 #CCC, -1px 0 #CCC, -2px 0 #CCC, -3px 0 #CCC; }
-    @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
-      .is_advertising.tone--news .article .article__body .prose p a, .is_advertising.tone--news .article .article__body .prose li a, .is_advertising.tone--feature1 .article .article__body .prose p a, .is_advertising.tone--feature1 .article .article__body .prose li a, .is_advertising.tone--feature2 .article .article__body .prose p a, .is_advertising.tone--feature2 .article .article__body .prose li a, .is_advertising.tone--feature3 .article .article__body .prose p a, .is_advertising.tone--feature3 .article .article__body .prose li a, .is_advertising.tone--media .article .article__body .prose p a, .is_advertising.tone--media .article .article__body .prose li a {
-        background-image: linear-gradient(rgba(0, 153, 153, 0.25) 0%, #009999 100%);
-        background-position: 0 93%; } }
-    .is_advertising.tone--news .article .article__body .prose p a a:active, .is_advertising.tone--news .article .article__body .prose p a:hover, .is_advertising.tone--news .article .article__body .prose li a a:active, .is_advertising.tone--news .article .article__body .prose li a:hover, .is_advertising.tone--feature1 .article .article__body .prose p a a:active, .is_advertising.tone--feature1 .article .article__body .prose p a:hover, .is_advertising.tone--feature1 .article .article__body .prose li a a:active, .is_advertising.tone--feature1 .article .article__body .prose li a:hover, .is_advertising.tone--feature2 .article .article__body .prose p a a:active, .is_advertising.tone--feature2 .article .article__body .prose p a:hover, .is_advertising.tone--feature2 .article .article__body .prose li a a:active, .is_advertising.tone--feature2 .article .article__body .prose li a:hover, .is_advertising.tone--feature3 .article .article__body .prose p a a:active, .is_advertising.tone--feature3 .article .article__body .prose p a:hover, .is_advertising.tone--feature3 .article .article__body .prose li a a:active, .is_advertising.tone--feature3 .article .article__body .prose li a:hover, .is_advertising.tone--media .article .article__body .prose p a a:active, .is_advertising.tone--media .article .article__body .prose p a:hover, .is_advertising.tone--media .article .article__body .prose li a a:active, .is_advertising.tone--media .article .article__body .prose li a:hover {
-      color: #00cccc;
-      background-image: linear-gradient(to bottom, #00adad 0%, #00adad 100%); }
-    .is_advertising.tone--news .article .article__body .prose p a::selection,
-    .is_advertising.tone--news .article .article__body .prose p a > *::selection, .is_advertising.tone--news .article .article__body .prose li a::selection,
-    .is_advertising.tone--news .article .article__body .prose li a > *::selection, .is_advertising.tone--feature1 .article .article__body .prose p a::selection,
-    .is_advertising.tone--feature1 .article .article__body .prose p a > *::selection, .is_advertising.tone--feature1 .article .article__body .prose li a::selection,
-    .is_advertising.tone--feature1 .article .article__body .prose li a > *::selection, .is_advertising.tone--feature2 .article .article__body .prose p a::selection,
-    .is_advertising.tone--feature2 .article .article__body .prose p a > *::selection, .is_advertising.tone--feature2 .article .article__body .prose li a::selection,
-    .is_advertising.tone--feature2 .article .article__body .prose li a > *::selection, .is_advertising.tone--feature3 .article .article__body .prose p a::selection,
-    .is_advertising.tone--feature3 .article .article__body .prose p a > *::selection, .is_advertising.tone--feature3 .article .article__body .prose li a::selection,
-    .is_advertising.tone--feature3 .article .article__body .prose li a > *::selection, .is_advertising.tone--media .article .article__body .prose p a::selection,
-    .is_advertising.tone--media .article .article__body .prose p a > *::selection, .is_advertising.tone--media .article .article__body .prose li a::selection,
-    .is_advertising.tone--media .article .article__body .prose li a > *::selection {
-      text-shadow: none; }
-    .is_advertising.tone--news .article .article__body .prose p a::-moz-selection,
-    .is_advertising.tone--news .article .article__body .prose p a > *::-moz-selection, .is_advertising.tone--news .article .article__body .prose li a::-moz-selection,
-    .is_advertising.tone--news .article .article__body .prose li a > *::-moz-selection, .is_advertising.tone--feature1 .article .article__body .prose p a::-moz-selection,
-    .is_advertising.tone--feature1 .article .article__body .prose p a > *::-moz-selection, .is_advertising.tone--feature1 .article .article__body .prose li a::-moz-selection,
-    .is_advertising.tone--feature1 .article .article__body .prose li a > *::-moz-selection, .is_advertising.tone--feature2 .article .article__body .prose p a::-moz-selection,
-    .is_advertising.tone--feature2 .article .article__body .prose p a > *::-moz-selection, .is_advertising.tone--feature2 .article .article__body .prose li a::-moz-selection,
-    .is_advertising.tone--feature2 .article .article__body .prose li a > *::-moz-selection, .is_advertising.tone--feature3 .article .article__body .prose p a::-moz-selection,
-    .is_advertising.tone--feature3 .article .article__body .prose p a > *::-moz-selection, .is_advertising.tone--feature3 .article .article__body .prose li a::-moz-selection,
-    .is_advertising.tone--feature3 .article .article__body .prose li a > *::-moz-selection, .is_advertising.tone--media .article .article__body .prose p a::-moz-selection,
-    .is_advertising.tone--media .article .article__body .prose p a > *::-moz-selection, .is_advertising.tone--media .article .article__body .prose li a::-moz-selection,
-    .is_advertising.tone--media .article .article__body .prose li a > *::-moz-selection {
-      text-shadow: none; }
-  .is_advertising.tone--news .article .article__body .prose .advert-slot--mpu, .is_advertising.tone--feature1 .article .article__body .prose .advert-slot--mpu, .is_advertising.tone--feature2 .article .article__body .prose .advert-slot--mpu, .is_advertising.tone--feature3 .article .article__body .prose .advert-slot--mpu, .is_advertising.tone--media .article .article__body .prose .advert-slot--mpu {
-    border-top: none; }
-  .is_advertising.tone--news .article .article__header ul > li::before, .is_advertising.tone--news .article .article__header .bullet::before, .is_advertising.tone--feature1 .article .article__header ul > li::before, .is_advertising.tone--feature1 .article .article__header .bullet::before, .is_advertising.tone--feature2 .article .article__header ul > li::before, .is_advertising.tone--feature2 .article .article__header .bullet::before, .is_advertising.tone--feature3 .article .article__header ul > li::before, .is_advertising.tone--feature3 .article .article__header .bullet::before, .is_advertising.tone--media .article .article__header ul > li::before, .is_advertising.tone--media .article .article__header .bullet::before {
+  .is_advertising.tone--news .article .article__header ul > li::before,
+  .is_advertising.tone--news .article .article__header .bullet::before, .is_advertising.tone--feature1 .article .article__header ul > li::before,
+  .is_advertising.tone--feature1 .article .article__header .bullet::before, .is_advertising.tone--feature2 .article .article__header ul > li::before,
+  .is_advertising.tone--feature2 .article .article__header .bullet::before, .is_advertising.tone--feature3 .article .article__header ul > li::before,
+  .is_advertising.tone--feature3 .article .article__header .bullet::before, .is_advertising.tone--media .article .article__header ul > li::before,
+  .is_advertising.tone--media .article .article__header .bullet::before, .is_advertising.tone--podcast .article .article__header ul > li::before,
+  .is_advertising.tone--podcast .article .article__header .bullet::before {
     background-color: #878787; }
-  .is_advertising.tone--news .article .article__header ul > li, .is_advertising.tone--news .article .article__header ul > li strong, .is_advertising.tone--feature1 .article .article__header ul > li, .is_advertising.tone--feature1 .article .article__header ul > li strong, .is_advertising.tone--feature2 .article .article__header ul > li, .is_advertising.tone--feature2 .article .article__header ul > li strong, .is_advertising.tone--feature3 .article .article__header ul > li, .is_advertising.tone--feature3 .article .article__header ul > li strong, .is_advertising.tone--media .article .article__header ul > li, .is_advertising.tone--media .article .article__header ul > li strong {
+  .is_advertising.tone--news .article .article__header ul > li,
+  .is_advertising.tone--news .article .article__header ul > li strong, .is_advertising.tone--feature1 .article .article__header ul > li,
+  .is_advertising.tone--feature1 .article .article__header ul > li strong, .is_advertising.tone--feature2 .article .article__header ul > li,
+  .is_advertising.tone--feature2 .article .article__header ul > li strong, .is_advertising.tone--feature3 .article .article__header ul > li,
+  .is_advertising.tone--feature3 .article .article__header ul > li strong, .is_advertising.tone--media .article .article__header ul > li,
+  .is_advertising.tone--media .article .article__header ul > li strong, .is_advertising.tone--podcast .article .article__header ul > li,
+  .is_advertising.tone--podcast .article .article__header ul > li strong {
     color: #333; }
-  .is_advertising.tone--news .article .article__header ul > li strong, .is_advertising.tone--feature1 .article .article__header ul > li strong, .is_advertising.tone--feature2 .article .article__header ul > li strong, .is_advertising.tone--feature3 .article .article__header ul > li strong, .is_advertising.tone--media .article .article__header ul > li strong {
+  .is_advertising.tone--news .article .article__header ul > li strong, .is_advertising.tone--feature1 .article .article__header ul > li strong, .is_advertising.tone--feature2 .article .article__header ul > li strong, .is_advertising.tone--feature3 .article .article__header ul > li strong, .is_advertising.tone--media .article .article__header ul > li strong, .is_advertising.tone--podcast .article .article__header ul > li strong {
     font-weight: bold; }
-  .is_advertising.tone--news .article .article__body .prose .element-pullquote blockquote cite, .is_advertising.tone--news .article .article__body .prose .element-pullquote blockquote::before, .is_advertising.tone--news .article .article__body .prose .element-pullquote blockquote::after, .is_advertising.tone--feature1 .article .article__body .prose .element-pullquote blockquote cite, .is_advertising.tone--feature1 .article .article__body .prose .element-pullquote blockquote::before, .is_advertising.tone--feature1 .article .article__body .prose .element-pullquote blockquote::after, .is_advertising.tone--feature2 .article .article__body .prose .element-pullquote blockquote cite, .is_advertising.tone--feature2 .article .article__body .prose .element-pullquote blockquote::before, .is_advertising.tone--feature2 .article .article__body .prose .element-pullquote blockquote::after, .is_advertising.tone--feature3 .article .article__body .prose .element-pullquote blockquote cite, .is_advertising.tone--feature3 .article .article__body .prose .element-pullquote blockquote::before, .is_advertising.tone--feature3 .article .article__body .prose .element-pullquote blockquote::after, .is_advertising.tone--media .article .article__body .prose .element-pullquote blockquote cite, .is_advertising.tone--media .article .article__body .prose .element-pullquote blockquote::before, .is_advertising.tone--media .article .article__body .prose .element-pullquote blockquote::after {
-    color: #009999; }
-  .is_advertising.tone--news .article .article__body .prose figure figcaption, .is_advertising.tone--news .article .article__body .prose .element-rich-link, .is_advertising.tone--feature1 .article .article__body .prose figure figcaption, .is_advertising.tone--feature1 .article .article__body .prose .element-rich-link, .is_advertising.tone--feature2 .article .article__body .prose figure figcaption, .is_advertising.tone--feature2 .article .article__body .prose .element-rich-link, .is_advertising.tone--feature3 .article .article__body .prose figure figcaption, .is_advertising.tone--feature3 .article .article__body .prose .element-rich-link, .is_advertising.tone--media .article .article__body .prose figure figcaption, .is_advertising.tone--media .article .article__body .prose .element-rich-link {
-    border-color: rgba(135, 135, 135, 0.4); }
-  .is_advertising.tone--news .article .element-placeholder .element-placeholder__button .touchpoint__button, .is_advertising.tone--feature1 .article .element-placeholder .element-placeholder__button .touchpoint__button, .is_advertising.tone--feature2 .article .element-placeholder .element-placeholder__button .touchpoint__button, .is_advertising.tone--feature3 .article .element-placeholder .element-placeholder__button .touchpoint__button, .is_advertising.tone--media .article .element-placeholder .element-placeholder__button .touchpoint__button {
+  .is_advertising.tone--news .article .article__body, .is_advertising.tone--feature1 .article .article__body, .is_advertising.tone--feature2 .article .article__body, .is_advertising.tone--feature3 .article .article__body, .is_advertising.tone--media .article .article__body, .is_advertising.tone--podcast .article .article__body {
+    color: #272727;
+    background-color: #CCC; }
+    .is_advertising.tone--news .article .article__body .prose p a,
+    .is_advertising.tone--news .article .article__body .prose li a, .is_advertising.tone--feature1 .article .article__body .prose p a,
+    .is_advertising.tone--feature1 .article .article__body .prose li a, .is_advertising.tone--feature2 .article .article__body .prose p a,
+    .is_advertising.tone--feature2 .article .article__body .prose li a, .is_advertising.tone--feature3 .article .article__body .prose p a,
+    .is_advertising.tone--feature3 .article .article__body .prose li a, .is_advertising.tone--media .article .article__body .prose p a,
+    .is_advertising.tone--media .article .article__body .prose li a, .is_advertising.tone--podcast .article .article__body .prose p a,
+    .is_advertising.tone--podcast .article .article__body .prose li a {
+      color: #009999;
+      text-decoration: none;
+      background-image: linear-gradient(rgba(0, 153, 153, 0.25) 0%, #009999 100%);
+      background-repeat: repeat-x;
+      background-size: 1px 1px;
+      background-position: 0 bottom;
+      text-shadow: 3px 0 #CCC, 2px 0 #CCC, 1px 0 #CCC, -1px 0 #CCC, -2px 0 #CCC, -3px 0 #CCC; }
+      @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
+        .is_advertising.tone--news .article .article__body .prose p a,
+        .is_advertising.tone--news .article .article__body .prose li a, .is_advertising.tone--feature1 .article .article__body .prose p a,
+        .is_advertising.tone--feature1 .article .article__body .prose li a, .is_advertising.tone--feature2 .article .article__body .prose p a,
+        .is_advertising.tone--feature2 .article .article__body .prose li a, .is_advertising.tone--feature3 .article .article__body .prose p a,
+        .is_advertising.tone--feature3 .article .article__body .prose li a, .is_advertising.tone--media .article .article__body .prose p a,
+        .is_advertising.tone--media .article .article__body .prose li a, .is_advertising.tone--podcast .article .article__body .prose p a,
+        .is_advertising.tone--podcast .article .article__body .prose li a {
+          background-image: linear-gradient(rgba(0, 153, 153, 0.25) 0%, #009999 100%);
+          background-position: 0 93%; } }
+      .is_advertising.tone--news .article .article__body .prose p a a:active, .is_advertising.tone--news .article .article__body .prose p a:hover,
+      .is_advertising.tone--news .article .article__body .prose li a a:active,
+      .is_advertising.tone--news .article .article__body .prose li a:hover, .is_advertising.tone--feature1 .article .article__body .prose p a a:active, .is_advertising.tone--feature1 .article .article__body .prose p a:hover,
+      .is_advertising.tone--feature1 .article .article__body .prose li a a:active,
+      .is_advertising.tone--feature1 .article .article__body .prose li a:hover, .is_advertising.tone--feature2 .article .article__body .prose p a a:active, .is_advertising.tone--feature2 .article .article__body .prose p a:hover,
+      .is_advertising.tone--feature2 .article .article__body .prose li a a:active,
+      .is_advertising.tone--feature2 .article .article__body .prose li a:hover, .is_advertising.tone--feature3 .article .article__body .prose p a a:active, .is_advertising.tone--feature3 .article .article__body .prose p a:hover,
+      .is_advertising.tone--feature3 .article .article__body .prose li a a:active,
+      .is_advertising.tone--feature3 .article .article__body .prose li a:hover, .is_advertising.tone--media .article .article__body .prose p a a:active, .is_advertising.tone--media .article .article__body .prose p a:hover,
+      .is_advertising.tone--media .article .article__body .prose li a a:active,
+      .is_advertising.tone--media .article .article__body .prose li a:hover, .is_advertising.tone--podcast .article .article__body .prose p a a:active, .is_advertising.tone--podcast .article .article__body .prose p a:hover,
+      .is_advertising.tone--podcast .article .article__body .prose li a a:active,
+      .is_advertising.tone--podcast .article .article__body .prose li a:hover {
+        color: #00cccc;
+        background-image: linear-gradient(to bottom, #00adad 0%, #00adad 100%); }
+      .is_advertising.tone--news .article .article__body .prose p a::selection,
+      .is_advertising.tone--news .article .article__body .prose p a > *::selection,
+      .is_advertising.tone--news .article .article__body .prose li a::selection,
+      .is_advertising.tone--news .article .article__body .prose li a > *::selection, .is_advertising.tone--feature1 .article .article__body .prose p a::selection,
+      .is_advertising.tone--feature1 .article .article__body .prose p a > *::selection,
+      .is_advertising.tone--feature1 .article .article__body .prose li a::selection,
+      .is_advertising.tone--feature1 .article .article__body .prose li a > *::selection, .is_advertising.tone--feature2 .article .article__body .prose p a::selection,
+      .is_advertising.tone--feature2 .article .article__body .prose p a > *::selection,
+      .is_advertising.tone--feature2 .article .article__body .prose li a::selection,
+      .is_advertising.tone--feature2 .article .article__body .prose li a > *::selection, .is_advertising.tone--feature3 .article .article__body .prose p a::selection,
+      .is_advertising.tone--feature3 .article .article__body .prose p a > *::selection,
+      .is_advertising.tone--feature3 .article .article__body .prose li a::selection,
+      .is_advertising.tone--feature3 .article .article__body .prose li a > *::selection, .is_advertising.tone--media .article .article__body .prose p a::selection,
+      .is_advertising.tone--media .article .article__body .prose p a > *::selection,
+      .is_advertising.tone--media .article .article__body .prose li a::selection,
+      .is_advertising.tone--media .article .article__body .prose li a > *::selection, .is_advertising.tone--podcast .article .article__body .prose p a::selection,
+      .is_advertising.tone--podcast .article .article__body .prose p a > *::selection,
+      .is_advertising.tone--podcast .article .article__body .prose li a::selection,
+      .is_advertising.tone--podcast .article .article__body .prose li a > *::selection {
+        text-shadow: none; }
+      .is_advertising.tone--news .article .article__body .prose p a::-moz-selection,
+      .is_advertising.tone--news .article .article__body .prose p a > *::-moz-selection,
+      .is_advertising.tone--news .article .article__body .prose li a::-moz-selection,
+      .is_advertising.tone--news .article .article__body .prose li a > *::-moz-selection, .is_advertising.tone--feature1 .article .article__body .prose p a::-moz-selection,
+      .is_advertising.tone--feature1 .article .article__body .prose p a > *::-moz-selection,
+      .is_advertising.tone--feature1 .article .article__body .prose li a::-moz-selection,
+      .is_advertising.tone--feature1 .article .article__body .prose li a > *::-moz-selection, .is_advertising.tone--feature2 .article .article__body .prose p a::-moz-selection,
+      .is_advertising.tone--feature2 .article .article__body .prose p a > *::-moz-selection,
+      .is_advertising.tone--feature2 .article .article__body .prose li a::-moz-selection,
+      .is_advertising.tone--feature2 .article .article__body .prose li a > *::-moz-selection, .is_advertising.tone--feature3 .article .article__body .prose p a::-moz-selection,
+      .is_advertising.tone--feature3 .article .article__body .prose p a > *::-moz-selection,
+      .is_advertising.tone--feature3 .article .article__body .prose li a::-moz-selection,
+      .is_advertising.tone--feature3 .article .article__body .prose li a > *::-moz-selection, .is_advertising.tone--media .article .article__body .prose p a::-moz-selection,
+      .is_advertising.tone--media .article .article__body .prose p a > *::-moz-selection,
+      .is_advertising.tone--media .article .article__body .prose li a::-moz-selection,
+      .is_advertising.tone--media .article .article__body .prose li a > *::-moz-selection, .is_advertising.tone--podcast .article .article__body .prose p a::-moz-selection,
+      .is_advertising.tone--podcast .article .article__body .prose p a > *::-moz-selection,
+      .is_advertising.tone--podcast .article .article__body .prose li a::-moz-selection,
+      .is_advertising.tone--podcast .article .article__body .prose li a > *::-moz-selection {
+        text-shadow: none; }
+    .is_advertising.tone--news .article .article__body .prose .advert-slot--mpu, .is_advertising.tone--feature1 .article .article__body .prose .advert-slot--mpu, .is_advertising.tone--feature2 .article .article__body .prose .advert-slot--mpu, .is_advertising.tone--feature3 .article .article__body .prose .advert-slot--mpu, .is_advertising.tone--media .article .article__body .prose .advert-slot--mpu, .is_advertising.tone--podcast .article .article__body .prose .advert-slot--mpu {
+      border-top: none; }
+    .is_advertising.tone--news .article .article__body .prose .element-pullquote blockquote cite,
+    .is_advertising.tone--news .article .article__body .prose .element-pullquote blockquote::before,
+    .is_advertising.tone--news .article .article__body .prose .element-pullquote blockquote::after, .is_advertising.tone--feature1 .article .article__body .prose .element-pullquote blockquote cite,
+    .is_advertising.tone--feature1 .article .article__body .prose .element-pullquote blockquote::before,
+    .is_advertising.tone--feature1 .article .article__body .prose .element-pullquote blockquote::after, .is_advertising.tone--feature2 .article .article__body .prose .element-pullquote blockquote cite,
+    .is_advertising.tone--feature2 .article .article__body .prose .element-pullquote blockquote::before,
+    .is_advertising.tone--feature2 .article .article__body .prose .element-pullquote blockquote::after, .is_advertising.tone--feature3 .article .article__body .prose .element-pullquote blockquote cite,
+    .is_advertising.tone--feature3 .article .article__body .prose .element-pullquote blockquote::before,
+    .is_advertising.tone--feature3 .article .article__body .prose .element-pullquote blockquote::after, .is_advertising.tone--media .article .article__body .prose .element-pullquote blockquote cite,
+    .is_advertising.tone--media .article .article__body .prose .element-pullquote blockquote::before,
+    .is_advertising.tone--media .article .article__body .prose .element-pullquote blockquote::after, .is_advertising.tone--podcast .article .article__body .prose .element-pullquote blockquote cite,
+    .is_advertising.tone--podcast .article .article__body .prose .element-pullquote blockquote::before,
+    .is_advertising.tone--podcast .article .article__body .prose .element-pullquote blockquote::after {
+      color: #009999; }
+    .is_advertising.tone--news .article .article__body .prose figure figcaption,
+    .is_advertising.tone--news .article .article__body .prose .element-rich-link, .is_advertising.tone--feature1 .article .article__body .prose figure figcaption,
+    .is_advertising.tone--feature1 .article .article__body .prose .element-rich-link, .is_advertising.tone--feature2 .article .article__body .prose figure figcaption,
+    .is_advertising.tone--feature2 .article .article__body .prose .element-rich-link, .is_advertising.tone--feature3 .article .article__body .prose figure figcaption,
+    .is_advertising.tone--feature3 .article .article__body .prose .element-rich-link, .is_advertising.tone--media .article .article__body .prose figure figcaption,
+    .is_advertising.tone--media .article .article__body .prose .element-rich-link, .is_advertising.tone--podcast .article .article__body .prose figure figcaption,
+    .is_advertising.tone--podcast .article .article__body .prose .element-rich-link {
+      border-color: rgba(135, 135, 135, 0.4); }
+  .is_advertising.tone--news .article .element-placeholder .element-placeholder__button .touchpoint__button, .is_advertising.tone--feature1 .article .element-placeholder .element-placeholder__button .touchpoint__button, .is_advertising.tone--feature2 .article .element-placeholder .element-placeholder__button .touchpoint__button, .is_advertising.tone--feature3 .article .element-placeholder .element-placeholder__button .touchpoint__button, .is_advertising.tone--media .article .element-placeholder .element-placeholder__button .touchpoint__button, .is_advertising.tone--podcast .article .element-placeholder .element-placeholder__button .touchpoint__button {
     background-color: #69D1CA; }
-    .is_advertising.tone--news .article .element-placeholder .element-placeholder__button .touchpoint__button:active, .is_advertising.tone--feature1 .article .element-placeholder .element-placeholder__button .touchpoint__button:active, .is_advertising.tone--feature2 .article .element-placeholder .element-placeholder__button .touchpoint__button:active, .is_advertising.tone--feature3 .article .element-placeholder .element-placeholder__button .touchpoint__button:active, .is_advertising.tone--media .article .element-placeholder .element-placeholder__button .touchpoint__button:active {
+    .is_advertising.tone--news .article .element-placeholder .element-placeholder__button .touchpoint__button:active, .is_advertising.tone--feature1 .article .element-placeholder .element-placeholder__button .touchpoint__button:active, .is_advertising.tone--feature2 .article .element-placeholder .element-placeholder__button .touchpoint__button:active, .is_advertising.tone--feature3 .article .element-placeholder .element-placeholder__button .touchpoint__button:active, .is_advertising.tone--media .article .element-placeholder .element-placeholder__button .touchpoint__button:active, .is_advertising.tone--podcast .article .element-placeholder .element-placeholder__button .touchpoint__button:active {
       color: #878787;
       background-color: #272727; }
-  .is_advertising.tone--news .article .element-placeholder .element-placeholder__button .touchpoint__label, .is_advertising.tone--feature1 .article .element-placeholder .element-placeholder__button .touchpoint__label, .is_advertising.tone--feature2 .article .element-placeholder .element-placeholder__button .touchpoint__label, .is_advertising.tone--feature3 .article .element-placeholder .element-placeholder__button .touchpoint__label, .is_advertising.tone--media .article .element-placeholder .element-placeholder__button .touchpoint__label {
+  .is_advertising.tone--news .article .element-placeholder .element-placeholder__button .touchpoint__label, .is_advertising.tone--feature1 .article .element-placeholder .element-placeholder__button .touchpoint__label, .is_advertising.tone--feature2 .article .element-placeholder .element-placeholder__button .touchpoint__label, .is_advertising.tone--feature3 .article .element-placeholder .element-placeholder__button .touchpoint__label, .is_advertising.tone--media .article .element-placeholder .element-placeholder__button .touchpoint__label, .is_advertising.tone--podcast .article .element-placeholder .element-placeholder__button .touchpoint__label {
     color: #69D1CA;
     text-shadow: 0 0 4px rgba(0, 0, 0, 0.5); }
-  .is_advertising.tone--news .article .tags, .is_advertising.tone--feature1 .article .tags, .is_advertising.tone--feature2 .article .tags, .is_advertising.tone--feature3 .article .tags, .is_advertising.tone--media .article .tags {
+  .is_advertising.tone--news .article .tags, .is_advertising.tone--feature1 .article .tags, .is_advertising.tone--feature2 .article .tags, .is_advertising.tone--feature3 .article .tags, .is_advertising.tone--media .article .tags, .is_advertising.tone--podcast .article .tags {
     background-color: #CCC;
     border-color: rgba(135, 135, 135, 0.4); }
-    .is_advertising.tone--news .article .tags .inline-list .inline-list__item a, .is_advertising.tone--feature1 .article .tags .inline-list .inline-list__item a, .is_advertising.tone--feature2 .article .tags .inline-list .inline-list__item a, .is_advertising.tone--feature3 .article .tags .inline-list .inline-list__item a, .is_advertising.tone--media .article .tags .inline-list .inline-list__item a {
+    .is_advertising.tone--news .article .tags .inline-list .inline-list__item a, .is_advertising.tone--feature1 .article .tags .inline-list .inline-list__item a, .is_advertising.tone--feature2 .article .tags .inline-list .inline-list__item a, .is_advertising.tone--feature3 .article .tags .inline-list .inline-list__item a, .is_advertising.tone--media .article .tags .inline-list .inline-list__item a, .is_advertising.tone--podcast .article .tags .inline-list .inline-list__item a {
       color: #fff;
       background-color: #878787; }
-    .is_advertising.tone--news .article .tags .inline-list .inline-list__item.more-button a, .is_advertising.tone--feature1 .article .tags .inline-list .inline-list__item.more-button a, .is_advertising.tone--feature2 .article .tags .inline-list .inline-list__item.more-button a, .is_advertising.tone--feature3 .article .tags .inline-list .inline-list__item.more-button a, .is_advertising.tone--media .article .tags .inline-list .inline-list__item.more-button a {
+    .is_advertising.tone--news .article .tags .inline-list .inline-list__item.more-button a, .is_advertising.tone--feature1 .article .tags .inline-list .inline-list__item.more-button a, .is_advertising.tone--feature2 .article .tags .inline-list .inline-list__item.more-button a, .is_advertising.tone--feature3 .article .tags .inline-list .inline-list__item.more-button a, .is_advertising.tone--media .article .tags .inline-list .inline-list__item.more-button a, .is_advertising.tone--podcast .article .tags .inline-list .inline-list__item.more-button a {
       border: 1px solid #878787;
       color: #272727;
       background-color: #CCC; }
   @media all and (min-width: 75em) {
-    .is_advertising.tone--news .article, .is_advertising.tone--feature1 .article, .is_advertising.tone--feature2 .article, .is_advertising.tone--feature3 .article, .is_advertising.tone--media .article {
+    .is_advertising.tone--news .article, .is_advertising.tone--feature1 .article, .is_advertising.tone--feature2 .article, .is_advertising.tone--feature3 .article, .is_advertising.tone--media .article, .is_advertising.tone--podcast .article {
       background-color: #d9d9d9; }
-      .is_advertising.tone--news .article .article__header, .is_advertising.tone--news .article .article__header .standfirst, .is_advertising.tone--feature1 .article .article__header, .is_advertising.tone--feature1 .article .article__header .standfirst, .is_advertising.tone--feature2 .article .article__header, .is_advertising.tone--feature2 .article .article__header .standfirst, .is_advertising.tone--feature3 .article .article__header, .is_advertising.tone--feature3 .article .article__header .standfirst, .is_advertising.tone--media .article .article__header, .is_advertising.tone--media .article .article__header .standfirst {
+      .is_advertising.tone--news .article .article__header, .is_advertising.tone--news .article .article__header .standfirst, .is_advertising.tone--feature1 .article .article__header, .is_advertising.tone--feature1 .article .article__header .standfirst, .is_advertising.tone--feature2 .article .article__header, .is_advertising.tone--feature2 .article .article__header .standfirst, .is_advertising.tone--feature3 .article .article__header, .is_advertising.tone--feature3 .article .article__header .standfirst, .is_advertising.tone--media .article .article__header, .is_advertising.tone--media .article .article__header .standfirst, .is_advertising.tone--podcast .article .article__header, .is_advertising.tone--podcast .article .article__header .standfirst {
         background-color: #d9d9d9; }
-      .is_advertising.tone--news .article .container__outbrain, .is_advertising.tone--feature1 .article .container__outbrain, .is_advertising.tone--feature2 .article .container__outbrain, .is_advertising.tone--feature3 .article .container__outbrain, .is_advertising.tone--media .article .container__outbrain {
+      .is_advertising.tone--news .article .container__outbrain, .is_advertising.tone--feature1 .article .container__outbrain, .is_advertising.tone--feature2 .article .container__outbrain, .is_advertising.tone--feature3 .article .container__outbrain, .is_advertising.tone--media .article .container__outbrain, .is_advertising.tone--podcast .article .container__outbrain {
         background-color: #CCC; } }
   .is_advertising.tone--news .comments,
   .is_advertising.tone--news .related-content, .is_advertising.tone--feature1 .comments,
   .is_advertising.tone--feature1 .related-content, .is_advertising.tone--feature2 .comments,
   .is_advertising.tone--feature2 .related-content, .is_advertising.tone--feature3 .comments,
   .is_advertising.tone--feature3 .related-content, .is_advertising.tone--media .comments,
-  .is_advertising.tone--media .related-content {
+  .is_advertising.tone--media .related-content, .is_advertising.tone--podcast .comments,
+  .is_advertising.tone--podcast .related-content {
     display: none; }
-  .is_advertising.tone--news .container__outbrain, .is_advertising.tone--feature1 .container__outbrain, .is_advertising.tone--feature2 .container__outbrain, .is_advertising.tone--feature3 .container__outbrain, .is_advertising.tone--media .container__outbrain {
+  .is_advertising.tone--news .container__outbrain, .is_advertising.tone--feature1 .container__outbrain, .is_advertising.tone--feature2 .container__outbrain, .is_advertising.tone--feature3 .container__outbrain, .is_advertising.tone--media .container__outbrain, .is_advertising.tone--podcast .container__outbrain {
     margin-bottom: 0; }
   @media all and (min-width: 75em) {
     .is_advertising.tone--news .audio-player__container {
@@ -3806,51 +3986,60 @@ body.the-minute {
     .is_advertising.tone--media[data-content-type="video"] .article .article__header .meta .standfirst {
       background-color: #CCC;
       padding: 8px 12px 12px 12px; }
-  .is_advertising.tone--media[data-content-type="audio"] .article__header .meta {
+  .is_advertising.tone--podcast .article__header .meta, .is_advertising.tone--media[data-content-type="audio"] .article__header .meta {
     display: none; }
-  .is_advertising.tone--media[data-content-type="audio"] .article__header .cutout__container {
+  .is_advertising.tone--podcast .article__header .cutout__container, .is_advertising.tone--media[data-content-type="audio"] .article__header .cutout__container {
     min-height: 155px;
     background-color: #CCC; }
-  .is_advertising.tone--media[data-content-type="audio"] .article__header .audio-player__wrapper,
+  .is_advertising.tone--podcast .article__header .audio-player__wrapper,
+  .is_advertising.tone--podcast .article__header .audio-player, .is_advertising.tone--media[data-content-type="audio"] .article__header .audio-player__wrapper,
   .is_advertising.tone--media[data-content-type="audio"] .article__header .audio-player {
     background-color: #636363; }
-  .is_advertising.tone--media[data-content-type="audio"] .article__header .audio-player__button.touchpoint--primary .touchpoint__button,
+  .is_advertising.tone--podcast .article__header .audio-player__button.touchpoint--primary .touchpoint__button,
+  .is_advertising.tone--podcast .article__header .audio-player__slider__knob, .is_advertising.tone--media[data-content-type="audio"] .article__header .audio-player__button.touchpoint--primary .touchpoint__button,
   .is_advertising.tone--media[data-content-type="audio"] .article__header .audio-player__slider__knob {
     background-color: #69D1CA; }
-    .is_advertising.tone--media[data-content-type="audio"] .article__header .audio-player__button.touchpoint--primary .touchpoint__button:active,
+    .is_advertising.tone--podcast .article__header .audio-player__button.touchpoint--primary .touchpoint__button:active,
+    .is_advertising.tone--podcast .article__header .audio-player__slider__knob:active, .is_advertising.tone--media[data-content-type="audio"] .article__header .audio-player__button.touchpoint--primary .touchpoint__button:active,
     .is_advertising.tone--media[data-content-type="audio"] .article__header .audio-player__slider__knob:active {
       background-color: #42c5bc; }
-  .is_advertising.tone--media[data-content-type="audio"] .article__header .audio-player__slider__track {
+  .is_advertising.tone--podcast .article__header .audio-player__slider__track, .is_advertising.tone--media[data-content-type="audio"] .article__header .audio-player__slider__track {
     background-color: #cbc9c5; }
-  .is_advertising.tone--media[data-content-type="audio"] .article .sponsorship {
+  .is_advertising.tone--podcast .article .sponsorship, .is_advertising.tone--media[data-content-type="audio"] .article .sponsorship {
     display: block;
     position: relative;
     padding: 8px 12px 8px;
     border-bottom: 1px rgba(135, 135, 135, 0.4) dotted;
     font-size: 1.6rem; }
     @media all and (min-width: 75em) {
-      .is_advertising.tone--media[data-content-type="audio"] .article .sponsorship .sponsorship__inner {
+      .is_advertising.tone--podcast .article .sponsorship .sponsorship__inner, .is_advertising.tone--media[data-content-type="audio"] .article .sponsorship .sponsorship__inner {
         padding-left: 240px;
         padding-right: 320px; } }
-    .is_advertising.tone--media[data-content-type="audio"] .article .sponsorship .sponsorship__formatted-sponsor-name {
+    .is_advertising.tone--podcast .article .sponsorship .sponsorship__formatted-sponsor-name, .is_advertising.tone--media[data-content-type="audio"] .article .sponsorship .sponsorship__formatted-sponsor-name {
       position: absolute;
       top: 50%;
       margin-top: -0.8rem; }
-    .is_advertising.tone--media[data-content-type="audio"] .article .sponsorship .sponsorship__logo {
+    .is_advertising.tone--podcast .article .sponsorship .sponsorship__logo, .is_advertising.tone--media[data-content-type="audio"] .article .sponsorship .sponsorship__logo {
       float: right; }
     @media all and (min-width: 75em) {
-      .is_advertising.tone--media[data-content-type="audio"] .article .sponsorship {
+      .is_advertising.tone--podcast .article .sponsorship, .is_advertising.tone--media[data-content-type="audio"] .article .sponsorship {
         padding-left: 0; } }
-  .is_advertising.tone--media[data-content-type="audio"] .article .sponsorship,
+  .is_advertising.tone--podcast .article .sponsorship,
+  .is_advertising.tone--podcast .article .byline--mobile, .is_advertising.tone--media[data-content-type="audio"] .article .sponsorship,
   .is_advertising.tone--media[data-content-type="audio"] .article .byline--mobile {
     background-color: #CCC;
     border-bottom: 1px rgba(135, 135, 135, 0.4) dotted; }
-  .is_advertising.tone--media[data-content-type="audio"] .article .byline,
+  .is_advertising.tone--podcast .article .byline,
+  .is_advertising.tone--podcast .article .byline a, .is_advertising.tone--media[data-content-type="audio"] .article .byline,
   .is_advertising.tone--media[data-content-type="audio"] .article .byline a {
     color: #009999 !important; }
-  .is_advertising.tone--media[data-content-type="audio"] .article__body .standfirst, .is_advertising.tone--media[data-content-type="audio"] .article__body .prose p {
+  .is_advertising.tone--podcast .article__body .standfirst,
+  .is_advertising.tone--podcast .article__body .prose p, .is_advertising.tone--media[data-content-type="audio"] .article__body .standfirst,
+  .is_advertising.tone--media[data-content-type="audio"] .article__body .prose p {
     color: #272727; }
-    .is_advertising.tone--media[data-content-type="audio"] .article__body .standfirst a, .is_advertising.tone--media[data-content-type="audio"] .article__body .prose p a {
+    .is_advertising.tone--podcast .article__body .standfirst a,
+    .is_advertising.tone--podcast .article__body .prose p a, .is_advertising.tone--media[data-content-type="audio"] .article__body .standfirst a,
+    .is_advertising.tone--media[data-content-type="audio"] .article__body .prose p a {
       color: #009999;
       text-decoration: none;
       background-image: linear-gradient(rgba(0, 153, 153, 0.25) 0%, #009999 100%);
@@ -3859,18 +4048,32 @@ body.the-minute {
       background-position: 0 bottom;
       text-shadow: 3px 0 #CCC, 2px 0 #CCC, 1px 0 #CCC, -1px 0 #CCC, -2px 0 #CCC, -3px 0 #CCC; }
       @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
-        .is_advertising.tone--media[data-content-type="audio"] .article__body .standfirst a, .is_advertising.tone--media[data-content-type="audio"] .article__body .prose p a {
+        .is_advertising.tone--podcast .article__body .standfirst a,
+        .is_advertising.tone--podcast .article__body .prose p a, .is_advertising.tone--media[data-content-type="audio"] .article__body .standfirst a,
+        .is_advertising.tone--media[data-content-type="audio"] .article__body .prose p a {
           background-image: linear-gradient(rgba(0, 153, 153, 0.25) 0%, #009999 100%);
           background-position: 0 93%; } }
-      .is_advertising.tone--media[data-content-type="audio"] .article__body .standfirst a a:active, .is_advertising.tone--media[data-content-type="audio"] .article__body .standfirst a:hover, .is_advertising.tone--media[data-content-type="audio"] .article__body .prose p a a:active, .is_advertising.tone--media[data-content-type="audio"] .article__body .prose p a:hover {
+      .is_advertising.tone--podcast .article__body .standfirst a a:active, .is_advertising.tone--podcast .article__body .standfirst a:hover,
+      .is_advertising.tone--podcast .article__body .prose p a a:active,
+      .is_advertising.tone--podcast .article__body .prose p a:hover, .is_advertising.tone--media[data-content-type="audio"] .article__body .standfirst a a:active, .is_advertising.tone--media[data-content-type="audio"] .article__body .standfirst a:hover,
+      .is_advertising.tone--media[data-content-type="audio"] .article__body .prose p a a:active,
+      .is_advertising.tone--media[data-content-type="audio"] .article__body .prose p a:hover {
         color: #00cccc;
         background-image: linear-gradient(to bottom, #00adad 0%, #00adad 100%); }
-      .is_advertising.tone--media[data-content-type="audio"] .article__body .standfirst a::selection,
-      .is_advertising.tone--media[data-content-type="audio"] .article__body .standfirst a > *::selection, .is_advertising.tone--media[data-content-type="audio"] .article__body .prose p a::selection,
+      .is_advertising.tone--podcast .article__body .standfirst a::selection,
+      .is_advertising.tone--podcast .article__body .standfirst a > *::selection,
+      .is_advertising.tone--podcast .article__body .prose p a::selection,
+      .is_advertising.tone--podcast .article__body .prose p a > *::selection, .is_advertising.tone--media[data-content-type="audio"] .article__body .standfirst a::selection,
+      .is_advertising.tone--media[data-content-type="audio"] .article__body .standfirst a > *::selection,
+      .is_advertising.tone--media[data-content-type="audio"] .article__body .prose p a::selection,
       .is_advertising.tone--media[data-content-type="audio"] .article__body .prose p a > *::selection {
         text-shadow: none; }
-      .is_advertising.tone--media[data-content-type="audio"] .article__body .standfirst a::-moz-selection,
-      .is_advertising.tone--media[data-content-type="audio"] .article__body .standfirst a > *::-moz-selection, .is_advertising.tone--media[data-content-type="audio"] .article__body .prose p a::-moz-selection,
+      .is_advertising.tone--podcast .article__body .standfirst a::-moz-selection,
+      .is_advertising.tone--podcast .article__body .standfirst a > *::-moz-selection,
+      .is_advertising.tone--podcast .article__body .prose p a::-moz-selection,
+      .is_advertising.tone--podcast .article__body .prose p a > *::-moz-selection, .is_advertising.tone--media[data-content-type="audio"] .article__body .standfirst a::-moz-selection,
+      .is_advertising.tone--media[data-content-type="audio"] .article__body .standfirst a > *::-moz-selection,
+      .is_advertising.tone--media[data-content-type="audio"] .article__body .prose p a::-moz-selection,
       .is_advertising.tone--media[data-content-type="audio"] .article__body .prose p a > *::-moz-selection {
         text-shadow: none; }
 
