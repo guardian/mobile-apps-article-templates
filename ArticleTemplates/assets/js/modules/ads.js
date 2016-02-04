@@ -13,8 +13,7 @@ define([
 
         modules = {
             insertAdPlaceholders: function (config) {
-                var windowWidth = window.innerWidth,
-                    counter = 0,
+                var counter = 0,
                     mpuId = '',
                     mpuHtml = '';
 
@@ -39,18 +38,7 @@ define([
                 }
 
                 if (mpuId !== '') {
-                    mpuHtml = '<div class="advert-slot advert-slot--mpu">' +
-                                    '<div class="advert-slot__label">' +
-                                        'Advertisement' +
-                                        '<a class="advert-slot__action" href="x-gu://subscribe">' +
-                                            'Hide' +
-                                            '<span data-icon="&#xe04F;"></span>' +
-                                        '</a>' +
-                                    '</div>' +
-                                    '<div class="advert-slot__wrapper" id="advert-slot__wrapper">' +
-                                    '<div class="advert-slot__wrapper__content" id="' + mpuId + '"></div>' +
-                                    '</div>' +
-                                '</div>';
+                    mpuHtml = createMpuHtml(mpuId);
                     // To mimic the correct positioning on full width tablet view, we will need an 
                     // empty div to pad out the text so we can position absolutely over it.
                     $('.article__body > div.prose > :first-child').before('<div class="advert-slot advert-slot--placeholder"></div>');
@@ -60,10 +48,28 @@ define([
                 $('.article__body > div.prose > p:nth-of-type(' + nrParagraph + ') ~ p + p').first().before(mpuHtml);
             },
 
+            insertLiveblogAdPlaceholders: function (config) {
+
+            },
+
+            createMpuHtml: function(id) {
+                return '<div class="advert-slot advert-slot--mpu">' +
+                            '<div class="advert-slot__label">' +
+                                'Advertisement' +
+                                '<a class="advert-slot__action" href="x-gu://subscribe">' +
+                                    'Hide' +
+                                    '<span data-icon="&#xe04F;"></span>' +
+                                '</a>' +
+                            '</div>' +
+                            '<div class="advert-slot__wrapper" id="advert-slot__wrapper">' +
+                            '<div class="advert-slot__wrapper__content" id="' + id + '"></div>' +
+                            '</div>' +
+                        '</div>';
+            },
+
             // return the current MPU's position.
             // This function is an internal function which accepts a function
             // formatter(left, top, width, height)
-
             getMpuPos : function(formatter) {
                 var r;
                 var el = document.getElementById('advert-slot__wrapper');
@@ -83,16 +89,19 @@ define([
                     return '{"left":' + x + ', "top":' + y + ', "width":' + w +', "height":' + h + '}';
                 });
             },
+
             getMpuPosCommaSeparated : function() {
                 return modules.getMpuPos(function(x, y, w, h) {
                     return x + ',' + y;
                 });
             },
+
             getMpuOffsetTop : function() {
                 return modules.getMpuPos(function(x, y, w, h) {
                     return y;
                 });
             },
+
             poller : function(interval, yPos, firstRun) {
                 var newYPos = modules.getMpuOffsetTop();
 
@@ -156,7 +165,11 @@ define([
                 this.initialised = true;
 
                 if (config.adsEnabled == 'true' || (config.adsEnabled !== null && config.adsEnabled.match && config.adsEnabled.match(/mpu/))) {
-                    modules.insertAdPlaceholders(config);
+                    if (config.contentType === 'liveblog') {
+                        modules.insertLiveblogAdPlaceholders(config);
+                    } else {
+                        modules.insertAdPlaceholders(config);
+                    }
                     window.getMpuPosJson = modules.getMpuPosJson;
                     window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated;
                     window.initMpuPoller = modules.initMpuPoller;
@@ -165,9 +178,9 @@ define([
                     if(!modules.isAndroid){
                         modules.initMpuPoller();
                     }
-                }
 
-                modules.fireAdsReady(window);
+                    modules.fireAdsReady(window);
+                }
             }
         };
 

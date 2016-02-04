@@ -48,7 +48,8 @@ require([
         Ads.init({
             adsEnabled: document.body.getAttribute('data-ads-enabled'),
             adsConfig: document.body.getAttribute('data-ads-config'),
-            mpuAfterParagraphs: document.body.getAttribute('data-mpu-after-paragraphs')
+            mpuAfterParagraphs: document.body.getAttribute('data-mpu-after-paragraphs'),
+            contentType: contentType
         });
 
         // other article-specific functions
