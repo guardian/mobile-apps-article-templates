@@ -98,7 +98,9 @@ module.exports = function(grunt) {
                     sourcemap: 'none'
                 },
                 files: {
-                    'ArticleTemplates/assets/scss/fonts.css':  'ArticleTemplates/assets/scss/fonts.scss',
+                    'ArticleTemplates/assets/scss/fonts-android.css':  'ArticleTemplates/assets/scss/fonts-android.scss',
+                    'ArticleTemplates/assets/scss/fonts-ios.css':  'ArticleTemplates/assets/scss/fonts-ios.scss',
+                    'ArticleTemplates/assets/scss/fonts-windows.css':  'ArticleTemplates/assets/scss/fonts-windows.scss',
                     'ArticleTemplates/assets/scss/interactive.css':  'ArticleTemplates/assets/scss/interactive.scss',
                     'ArticleTemplates/assets/scss/outbrain.css':  'ArticleTemplates/assets/scss/outbrain.scss',
                     'ArticleTemplates/assets/scss/style-async.css':  'ArticleTemplates/assets/scss/style-async.scss',
