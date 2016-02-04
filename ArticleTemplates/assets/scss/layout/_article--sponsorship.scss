@@ -1,5 +1,38 @@
 /* Supported: tone--news, tone--feature1, tone--feature2, tone--feature3, tone--media */
 
+@mixin sponsorship {
+    display: block;
+    position: relative;
+    padding: 8px 12px 8px;
+    border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
+    font-size: 1.6rem;
+
+    .sponsorship__inner {
+        @include mq($from: col4) {
+            padding: {
+                left: 240px;
+                right: 320px;
+            }
+        }            
+    }
+
+    .sponsorship__formatted-sponsor-name {
+        position: absolute;
+        top: 50%;
+        margin-top: -0.8rem;
+    }
+
+    .sponsorship__logo {
+        float: right;
+    }
+
+    @include mq($from: col4) {
+        padding: {
+            left: 0;
+        }
+    }
+}
+
 .is_advertising {
     background-color: color(global-adv-bg);
 
@@ -76,36 +109,7 @@
                 }
 
                 &__header .sponsorship {
-                    display: block;
-                    position: relative;
-                    padding: 8px 12px 8px;
-                    border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
-                    font-size: 1.6rem;
-
-                    .sponsorship__inner {
-                        @include mq($from: col4) {
-                            padding: {
-                                left: 240px;
-                                right: 320px;
-                            }
-                        }            
-                    }
-
-                    .sponsorship__formatted-sponsor-name {
-                        position: absolute;
-                        top: 50%;
-                        margin-top: -0.8rem;
-                    }
-
-                    .sponsorship__logo {
-                        float: right;
-                    }
-
-                    @include mq($from: col4) {
-                        padding: {
-                            left: 0;
-                        }
-                    }
+                    @include sponsorship;
                 }
 
                 &__body .prose p, 
@@ -247,8 +251,8 @@
         }
     }
 
-    /* Media overrides */
-    &.tone--media {
+    /* Video overrides */
+    &.tone--media[data-content-type="video"] {
         .article {
             .article {
                 &__header {
@@ -320,92 +324,61 @@
                 }
             }
         }
+    }
 
+    /* Audio overrides */
+    &.tone--media[data-content-type="audio"] {
+        .article {
+            &__header {
+                .meta {
+                    display: none;
+                }
 
-        // .article .section,
-        // .article .section > div,
-        // .content__series-label,
-        // .article .headline,
-        // .article .headline,
-        // .article .standfirst,
-        // .article .byline,
-        // .article .prose,
-        // .element-placeholder .element-placeholder__button .touchpoint__button,
-        // .sponsorship .sponsorship__formatted-sponsor-name,
-        // .tags .inline-list__item a,
-        // a{
-        //     color: color(global-adv-text);
-        // }
-        
-        // .sponsorship,
-        // .article__header .meta__misc, 
-        // .tags {
-        //     border-color: color(global-adv-bands);
-        // }
+                .cutout__container {
+                    min-height: 155px;
+                    background-color: color(global-adv-bg);  
+                }
 
-        // .article,
-        // .article__header,
-        // .article__body,
-        // .tags, 
-        // .cutout__container,
-        // .sponsorship {
-        //     background-color: color(global-adv-bg);
-        // }
+                .audio-player__wrapper,
+                .audio-player {
+                    background-color: color(tone-podcast-adv-ply-background);
+                }
 
-        // @include mq($from: col4) {
-        //     .article,
-        //     .article__header,
-        //     .audio-player__container {
-        //         background: color(shade-5);
-        //     }
+                .audio-player__button.touchpoint--primary .touchpoint__button,
+                .audio-player__slider__knob{
+                    background-color: color(global-adv-shade-2);
 
-        //     .section,
-        //     .headline,
-        //     .main-media, 
-        //     .meta {
-        //         background-color: color(global-adv-bg);
-        //     }
-        // }
+                    &:active {
+                        background-color: darken(color(global-adv-shade-2), 10%); 
+                    }
+                }
 
-        // .article .prose p, 
-        // .article .prose li,
-        // .sponsorship__formatted-sponsor-name {
-        //     @include text-underline(color(global-adv-text), color(global-adv-bg), lighten(color(global-adv-text),10%));
-        // }
+                .audio-player__slider__track{
+                    background-color: color(tone-podcast-adv-ply-range);
+                }
+            }
 
-        // .tags{
-        //     .inline-list__item {
-        //         a {
-        //             @include tag-button(color(shade-7), color(global-adv-bands), "lighter");
-        //         }
+            .sponsorship {
+                @include sponsorship;
+            }
 
-        //         &.more-button a {
-        //             @include tag-more-button(color(global-adv-text), color(global-adv-bands), "lighter");
-        //         }
-        //     }              
-        // }
+            .sponsorship,
+            .byline--mobile {
+                background-color: color(global-adv-bg);
+                border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
+            }
 
-        // .meta__pubdate{
-        //     color: color(global-adv-bands);
-        // }
-
-        // .audio-player__wrapper,
-        // .audio-player {
-        //     background-color: color(tone-podcast-adv-ply-background);
-        // }
-
-        // .audio-player__button.touchpoint--primary .touchpoint__button,
-        // .audio-player__slider__knob{
-        //     background-color: color(global-adv-bands);
-
-        //     &:active {
-        //         background-color: darken(color(global-adv-bands), 10%); 
-        //     }
-        // }
-
-        // .audio-player__slider__track{
-        //     background-color: color(tone-podcast-adv-ply-range);
-        // }
+            .byline,
+            .byline a {
+                color: color(global-adv-shade-1) !important;
+            }
+            
+            &__body .standfirst,
+            &__body .prose p {
+                color: color(global-adv-text);
+                @include text-underline(color(global-adv-shade-1), color(global-adv-bg), lighten(color(global-adv-shade-1),10%));
+            }
+        }
     }
 }
 
