@@ -3632,8 +3632,8 @@ body.the-minute {
       position: relative; }
       @media all and (min-width: 75em) {
         .is_advertising.tone--news .article .sponsorship.paid .sponsorship__inner, .is_advertising.tone--feature1 .article .sponsorship.paid .sponsorship__inner, .is_advertising.tone--feature2 .article .sponsorship.paid .sponsorship__inner, .is_advertising.tone--feature3 .article .sponsorship.paid .sponsorship__inner, .is_advertising.tone--media .article .sponsorship.paid .sponsorship__inner, .is_advertising.tone--podcast .article .sponsorship.paid .sponsorship__inner {
-          padding-left: 240px;
-          padding-right: 320px; } }
+          margin-left: 240px;
+          margin-right: 320px; } }
     .is_advertising.tone--news .article .sponsorship.paid .sponsorship__formatted-sponsor-name, .is_advertising.tone--feature1 .article .sponsorship.paid .sponsorship__formatted-sponsor-name, .is_advertising.tone--feature2 .article .sponsorship.paid .sponsorship__formatted-sponsor-name, .is_advertising.tone--feature3 .article .sponsorship.paid .sponsorship__formatted-sponsor-name, .is_advertising.tone--media .article .sponsorship.paid .sponsorship__formatted-sponsor-name, .is_advertising.tone--podcast .article .sponsorship.paid .sponsorship__formatted-sponsor-name {
       display: inline-block;
       vertical-align: middle; }
@@ -3937,8 +3937,10 @@ body.the-minute {
         font-size: 5.2222em; } }
   .is_advertising.tone--feature1 .article .article__header .headline, .is_advertising.tone--feature2 .article .article__header .headline, .is_advertising.tone--feature3 .article .article__header .headline {
     background-color: #B5B5B5; }
-  .is_advertising.tone--feature1 .article .article__header .meta, .is_advertising.tone--feature2 .article .article__header .meta, .is_advertising.tone--feature3 .article .article__header .meta {
-    border-top: 1px rgba(135, 135, 135, 0.4) dotted;
+  .is_advertising.tone--feature1 .article .article__header .standfirst__inner,
+  .is_advertising.tone--feature1 .article .article__header .meta, .is_advertising.tone--feature2 .article .article__header .standfirst__inner,
+  .is_advertising.tone--feature2 .article .article__header .meta, .is_advertising.tone--feature3 .article .article__header .standfirst__inner,
+  .is_advertising.tone--feature3 .article .article__header .meta {
     border-bottom: 1px rgba(135, 135, 135, 0.4) dotted; }
   .is_advertising.tone--media[data-content-type="video"] .article .article__header .headline {
     border-bottom: 1px rgba(135, 135, 135, 0.4) dotted; }
@@ -4031,8 +4033,8 @@ body.the-minute {
       position: relative; }
       @media all and (min-width: 75em) {
         .is_advertising.tone--podcast .article .sponsorship.paid .sponsorship__inner, .is_advertising.tone--media[data-content-type="audio"] .article .sponsorship.paid .sponsorship__inner {
-          padding-left: 240px;
-          padding-right: 320px; } }
+          margin-left: 240px;
+          margin-right: 320px; } }
     .is_advertising.tone--podcast .article .sponsorship.paid .sponsorship__formatted-sponsor-name, .is_advertising.tone--media[data-content-type="audio"] .article .sponsorship.paid .sponsorship__formatted-sponsor-name {
       display: inline-block;
       vertical-align: middle; }
@@ -4101,8 +4103,10 @@ body.the-minute {
     .is_advertising.tone--media[data-content-type="gallery"] .article .article__header .meta {
       border-bottom: 0; }
       .is_advertising.tone--media[data-content-type="gallery"] .article .article__header .meta .meta__misc {
-        border-top: 1px rgba(135, 135, 135, 0.4) dotted;
+        border-top: 0;
         border-bottom: 1px rgba(135, 135, 135, 0.4) dotted; }
+    .is_advertising.tone--media[data-content-type="gallery"] .article .article__header .standfirst {
+      border-bottom: 1px rgba(135, 135, 135, 0.4) dotted; }
     .is_advertising.tone--media[data-content-type="gallery"] .article .article__header .sponsorship {
       border-top: 0; }
     @media all and (min-width: 40.63em) {
@@ -4116,6 +4120,7 @@ body.the-minute {
           border-bottom: 0;
           border-left: 1px rgba(135, 135, 135, 0.4) dotted; }
       .is_advertising.tone--media[data-content-type="gallery"] .article .article__header .standfirst {
+        border-bottom: 0;
         background-color: #CCC; } }
   .is_advertising.tone--media[data-content-type="gallery"] .article .tags {
     border-top: 0; }
