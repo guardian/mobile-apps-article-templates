@@ -21,19 +21,13 @@
     }
 
     .sponsorship__formatted-sponsor-name {
-        left: 0;
-        position: absolute;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%);
+        display: inline-block;
+        vertical-align: middle;
     }
 
     .sponsorship__logo {
-        position: absolute;
-        right: 0;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%);
+        display: inline-block;
+        vertical-align: middle;
     }
 
     @include mq($from: col4) {
@@ -181,6 +175,10 @@
                     color: color(global-adv-shade-2);
                     text-shadow: 0 0 4px  rgba(0, 0, 0, .5);
                 }
+            }
+
+            .element-placeholder:active .touchpoint__button {
+                color: color(global-adv-bands);
             }
 
             .tags {
@@ -347,6 +345,11 @@
                         .standfirst {
                             background-color: color(global-adv-bg);
                             padding: 8px 12px 12px 12px;
+
+                            @include mq($from: col4) {
+                                padding-left: 0;
+                                padding-right: 0;
+                            }
                         }
                     }
                 }

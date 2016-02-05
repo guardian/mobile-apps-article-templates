@@ -3635,17 +3635,11 @@ body.the-minute {
           padding-left: 240px;
           padding-right: 320px; } }
     .is_advertising.tone--news .article .sponsorship.paid .sponsorship__formatted-sponsor-name, .is_advertising.tone--feature1 .article .sponsorship.paid .sponsorship__formatted-sponsor-name, .is_advertising.tone--feature2 .article .sponsorship.paid .sponsorship__formatted-sponsor-name, .is_advertising.tone--feature3 .article .sponsorship.paid .sponsorship__formatted-sponsor-name, .is_advertising.tone--media .article .sponsorship.paid .sponsorship__formatted-sponsor-name, .is_advertising.tone--podcast .article .sponsorship.paid .sponsorship__formatted-sponsor-name {
-      left: 0;
-      position: absolute;
-      top: 50%;
-      -webkit-transform: translateY(-50%);
-      transform: translateY(-50%); }
+      display: inline-block;
+      vertical-align: middle; }
     .is_advertising.tone--news .article .sponsorship.paid .sponsorship__logo, .is_advertising.tone--feature1 .article .sponsorship.paid .sponsorship__logo, .is_advertising.tone--feature2 .article .sponsorship.paid .sponsorship__logo, .is_advertising.tone--feature3 .article .sponsorship.paid .sponsorship__logo, .is_advertising.tone--media .article .sponsorship.paid .sponsorship__logo, .is_advertising.tone--podcast .article .sponsorship.paid .sponsorship__logo {
-      position: absolute;
-      right: 0;
-      top: 50%;
-      -webkit-transform: translateY(-50%);
-      transform: translateY(-50%); }
+      display: inline-block;
+      vertical-align: middle; }
     @media all and (min-width: 75em) {
       .is_advertising.tone--news .article .sponsorship.paid, .is_advertising.tone--feature1 .article .sponsorship.paid, .is_advertising.tone--feature2 .article .sponsorship.paid, .is_advertising.tone--feature3 .article .sponsorship.paid, .is_advertising.tone--media .article .sponsorship.paid, .is_advertising.tone--podcast .article .sponsorship.paid {
         padding-left: 0; } }
@@ -3891,6 +3885,8 @@ body.the-minute {
   .is_advertising.tone--news .article .element-placeholder .element-placeholder__button .touchpoint__label, .is_advertising.tone--feature1 .article .element-placeholder .element-placeholder__button .touchpoint__label, .is_advertising.tone--feature2 .article .element-placeholder .element-placeholder__button .touchpoint__label, .is_advertising.tone--feature3 .article .element-placeholder .element-placeholder__button .touchpoint__label, .is_advertising.tone--media .article .element-placeholder .element-placeholder__button .touchpoint__label, .is_advertising.tone--podcast .article .element-placeholder .element-placeholder__button .touchpoint__label {
     color: #69D1CA;
     text-shadow: 0 0 4px rgba(0, 0, 0, 0.5); }
+  .is_advertising.tone--news .article .element-placeholder:active .touchpoint__button, .is_advertising.tone--feature1 .article .element-placeholder:active .touchpoint__button, .is_advertising.tone--feature2 .article .element-placeholder:active .touchpoint__button, .is_advertising.tone--feature3 .article .element-placeholder:active .touchpoint__button, .is_advertising.tone--media .article .element-placeholder:active .touchpoint__button, .is_advertising.tone--podcast .article .element-placeholder:active .touchpoint__button {
+    color: #878787; }
   .is_advertising.tone--news .article .tags, .is_advertising.tone--feature1 .article .tags, .is_advertising.tone--feature2 .article .tags, .is_advertising.tone--feature3 .article .tags, .is_advertising.tone--media .article .tags, .is_advertising.tone--podcast .article .tags {
     background-color: #CCC;
     border-color: rgba(135, 135, 135, 0.4); }
@@ -3993,6 +3989,10 @@ body.the-minute {
     .is_advertising.tone--media[data-content-type="video"] .article .article__header .meta .standfirst {
       background-color: #CCC;
       padding: 8px 12px 12px 12px; }
+      @media all and (min-width: 75em) {
+        .is_advertising.tone--media[data-content-type="video"] .article .article__header .meta .standfirst {
+          padding-left: 0;
+          padding-right: 0; } }
   .is_advertising.tone--podcast .article__header .headline, .is_advertising.tone--media[data-content-type="audio"] .article__header .headline {
     margin-top: 0; }
   .is_advertising.tone--podcast .article__header .meta, .is_advertising.tone--media[data-content-type="audio"] .article__header .meta {
@@ -4034,17 +4034,11 @@ body.the-minute {
           padding-left: 240px;
           padding-right: 320px; } }
     .is_advertising.tone--podcast .article .sponsorship.paid .sponsorship__formatted-sponsor-name, .is_advertising.tone--media[data-content-type="audio"] .article .sponsorship.paid .sponsorship__formatted-sponsor-name {
-      left: 0;
-      position: absolute;
-      top: 50%;
-      -webkit-transform: translateY(-50%);
-      transform: translateY(-50%); }
+      display: inline-block;
+      vertical-align: middle; }
     .is_advertising.tone--podcast .article .sponsorship.paid .sponsorship__logo, .is_advertising.tone--media[data-content-type="audio"] .article .sponsorship.paid .sponsorship__logo {
-      position: absolute;
-      right: 0;
-      top: 50%;
-      -webkit-transform: translateY(-50%);
-      transform: translateY(-50%); }
+      display: inline-block;
+      vertical-align: middle; }
     @media all and (min-width: 75em) {
       .is_advertising.tone--podcast .article .sponsorship.paid, .is_advertising.tone--media[data-content-type="audio"] .article .sponsorship.paid {
         padding-left: 0; } }
@@ -5686,6 +5680,10 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   display: none; }
 .tone--media[data-content-type="video"] .article .article__header .standfirst {
   padding: 6px 12px 18px; }
+@media all and (min-width: 75em) {
+  .tone--media[data-content-type="video"] .article .article__header .standfirst {
+    padding-left: 0;
+    padding-right: 0; } }
 .tone--media[data-content-type="video"] .article .article__header .meta {
   border-bottom: 0; }
   .tone--media[data-content-type="video"] .article .article__header .meta .meta__misc {
@@ -5713,6 +5711,12 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 
 .tone--media[data-content-type="gallery"] .article .article__header .meta {
   border-bottom: 0; }
+.tone--media[data-content-type="gallery"] .article .article__header .standfirst {
+  padding: 6px 12px 18px; }
+  @media all and (min-width: 75em) {
+    .tone--media[data-content-type="gallery"] .article .article__header .standfirst {
+      padding-left: 0;
+      padding-right: 0; } }
 .tone--media[data-content-type="gallery"] .article .article__header .sponsorship {
   border-top: 1px #767676 dotted; }
 
