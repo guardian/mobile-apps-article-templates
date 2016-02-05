@@ -50,6 +50,7 @@
 
         .meta {
             background-color: color(tone-special-meta-background);
+            border-bottom: 0;
 
             .meta__byline .byline,
             .meta__byline a, 
@@ -64,7 +65,9 @@
         }
 
         .main-media__caption {
-            background-color: color(shade-7);
+            color: color(shade-7);
+            background-color: color(tone-special-meta-background);
+            border-bottom: 1px rgba(color(shade-4), .4) dotted;
 
             @include mq($from: col4) {
                 background-color: color(tone-special);

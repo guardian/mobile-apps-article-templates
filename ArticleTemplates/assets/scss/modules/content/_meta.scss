@@ -42,11 +42,11 @@ Display an article's meta information.
 */
 
 .meta {
-    @include meta;
-    border-bottom: 1px dotted color(shade-4);
-    display: table;
-    margin: -1px 0;
+    @include meta();
+    margin: 0 auto;
+    border-bottom: 1px rgba(color(shade-3), .4) dotted;
     width: 100%;
+    display: table;
 
     @include mq($from: col4) {
         border: none;
