@@ -9,22 +9,31 @@
     font-size: 1.6rem;
 
     .sponsorship__inner {
+        min-height: 60px;
+        position: relative;
+
         @include mq($from: col4) {
             padding: {
                 left: 240px;
                 right: 320px;
             }
-        }            
+        }
     }
 
     .sponsorship__formatted-sponsor-name {
+        left: 0;
         position: absolute;
         top: 50%;
-        margin-top: -0.8rem;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
     }
 
     .sponsorship__logo {
-        float: right;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
     }
 
     @include mq($from: col4) {
@@ -63,6 +72,14 @@
         }
 
         .article {
+            .sponsorship.sponsored {
+                display: none !important;
+            }
+
+            .sponsorship.paid {
+                @include sponsorship;
+            }
+
             .article {
                 &__header {
                     .alerts,
@@ -107,14 +124,6 @@
 
                     .standfirst a {
                         text-decoration: none;
-                    }
-
-                    .sponsorship.sponsored {
-                        display: none !important;
-                    }
-
-                    .sponsorship.paid {
-                        @include sponsorship;
                     }
 
                     ul > li::before,
@@ -316,8 +325,16 @@
                                     .sponsorship__formatted-sponsor-name {
                                         position: static;
                                         top: 0;
+                                        -webkit-transform: none;
+                                        transform: none;
                                         margin-top: 0;
                                         width: 100%;
+                                    }
+
+                                    .sponsorship__logo {
+                                        position: static;
+                                        -webkit-transform: none;
+                                        transform: none;
                                     }
 
                                     img {

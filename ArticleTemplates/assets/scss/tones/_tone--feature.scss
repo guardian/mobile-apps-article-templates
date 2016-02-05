@@ -229,7 +229,10 @@
         }
 
         .sponsorship {
-            background: color(shade-7);
+            &.sponsored {
+                background: color(shade-7);
+            }
+
             @include mq($from: col4) {
                 border-bottom: 0;
             }

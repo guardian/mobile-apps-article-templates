@@ -5123,6 +5123,37 @@
     #sandbox .is_advertising.tone--podcast .prose h2,
     #sandbox .is_advertising.tone--podcast .article--liveblog .article__header .section {
       font-family: "Guardian Text Sans Web", sans-serif; }
+    #sandbox .is_advertising.tone--news .article .sponsorship.sponsored, #sandbox .is_advertising.tone--feature1 .article .sponsorship.sponsored, #sandbox .is_advertising.tone--feature2 .article .sponsorship.sponsored, #sandbox .is_advertising.tone--feature3 .article .sponsorship.sponsored, #sandbox .is_advertising.tone--media .article .sponsorship.sponsored, #sandbox .is_advertising.tone--podcast .article .sponsorship.sponsored {
+      display: none !important; }
+    #sandbox .is_advertising.tone--news .article .sponsorship.paid, #sandbox .is_advertising.tone--feature1 .article .sponsorship.paid, #sandbox .is_advertising.tone--feature2 .article .sponsorship.paid, #sandbox .is_advertising.tone--feature3 .article .sponsorship.paid, #sandbox .is_advertising.tone--media .article .sponsorship.paid, #sandbox .is_advertising.tone--podcast .article .sponsorship.paid {
+      min-height: 60px;
+      display: block;
+      position: relative;
+      padding: 8px 12px 8px;
+      border-bottom: 1px rgba(135, 135, 135, 0.4) dotted;
+      font-size: 1.6rem; }
+      #sandbox .is_advertising.tone--news .article .sponsorship.paid .sponsorship__inner, #sandbox .is_advertising.tone--feature1 .article .sponsorship.paid .sponsorship__inner, #sandbox .is_advertising.tone--feature2 .article .sponsorship.paid .sponsorship__inner, #sandbox .is_advertising.tone--feature3 .article .sponsorship.paid .sponsorship__inner, #sandbox .is_advertising.tone--media .article .sponsorship.paid .sponsorship__inner, #sandbox .is_advertising.tone--podcast .article .sponsorship.paid .sponsorship__inner {
+        min-height: 60px;
+        position: relative; }
+        @media all and (min-width: 75em) {
+          #sandbox .is_advertising.tone--news .article .sponsorship.paid .sponsorship__inner, #sandbox .is_advertising.tone--feature1 .article .sponsorship.paid .sponsorship__inner, #sandbox .is_advertising.tone--feature2 .article .sponsorship.paid .sponsorship__inner, #sandbox .is_advertising.tone--feature3 .article .sponsorship.paid .sponsorship__inner, #sandbox .is_advertising.tone--media .article .sponsorship.paid .sponsorship__inner, #sandbox .is_advertising.tone--podcast .article .sponsorship.paid .sponsorship__inner {
+            padding-left: 240px;
+            padding-right: 320px; } }
+      #sandbox .is_advertising.tone--news .article .sponsorship.paid .sponsorship__formatted-sponsor-name, #sandbox .is_advertising.tone--feature1 .article .sponsorship.paid .sponsorship__formatted-sponsor-name, #sandbox .is_advertising.tone--feature2 .article .sponsorship.paid .sponsorship__formatted-sponsor-name, #sandbox .is_advertising.tone--feature3 .article .sponsorship.paid .sponsorship__formatted-sponsor-name, #sandbox .is_advertising.tone--media .article .sponsorship.paid .sponsorship__formatted-sponsor-name, #sandbox .is_advertising.tone--podcast .article .sponsorship.paid .sponsorship__formatted-sponsor-name {
+        left: 0;
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%); }
+      #sandbox .is_advertising.tone--news .article .sponsorship.paid .sponsorship__logo, #sandbox .is_advertising.tone--feature1 .article .sponsorship.paid .sponsorship__logo, #sandbox .is_advertising.tone--feature2 .article .sponsorship.paid .sponsorship__logo, #sandbox .is_advertising.tone--feature3 .article .sponsorship.paid .sponsorship__logo, #sandbox .is_advertising.tone--media .article .sponsorship.paid .sponsorship__logo, #sandbox .is_advertising.tone--podcast .article .sponsorship.paid .sponsorship__logo {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%); }
+      @media all and (min-width: 75em) {
+        #sandbox .is_advertising.tone--news .article .sponsorship.paid, #sandbox .is_advertising.tone--feature1 .article .sponsorship.paid, #sandbox .is_advertising.tone--feature2 .article .sponsorship.paid, #sandbox .is_advertising.tone--feature3 .article .sponsorship.paid, #sandbox .is_advertising.tone--media .article .sponsorship.paid, #sandbox .is_advertising.tone--podcast .article .sponsorship.paid {
+          padding-left: 0; } }
     #sandbox .is_advertising.tone--news .article .article__header .alerts,
     #sandbox .is_advertising.tone--news .article .article__header .meta__pubdate,
     #sandbox .is_advertising.tone--news .article .article__header .section__container, #sandbox .is_advertising.tone--feature1 .article .article__header .alerts,
@@ -5233,28 +5264,6 @@
       color: #009999 !important; }
     #sandbox .is_advertising.tone--news .article .article__header .standfirst a, #sandbox .is_advertising.tone--feature1 .article .article__header .standfirst a, #sandbox .is_advertising.tone--feature2 .article .article__header .standfirst a, #sandbox .is_advertising.tone--feature3 .article .article__header .standfirst a, #sandbox .is_advertising.tone--media .article .article__header .standfirst a, #sandbox .is_advertising.tone--podcast .article .article__header .standfirst a {
       text-decoration: none; }
-    #sandbox .is_advertising.tone--news .article .article__header .sponsorship.sponsored, #sandbox .is_advertising.tone--feature1 .article .article__header .sponsorship.sponsored, #sandbox .is_advertising.tone--feature2 .article .article__header .sponsorship.sponsored, #sandbox .is_advertising.tone--feature3 .article .article__header .sponsorship.sponsored, #sandbox .is_advertising.tone--media .article .article__header .sponsorship.sponsored, #sandbox .is_advertising.tone--podcast .article .article__header .sponsorship.sponsored {
-      display: none !important; }
-    #sandbox .is_advertising.tone--news .article .article__header .sponsorship.paid, #sandbox .is_advertising.tone--feature1 .article .article__header .sponsorship.paid, #sandbox .is_advertising.tone--feature2 .article .article__header .sponsorship.paid, #sandbox .is_advertising.tone--feature3 .article .article__header .sponsorship.paid, #sandbox .is_advertising.tone--media .article .article__header .sponsorship.paid, #sandbox .is_advertising.tone--podcast .article .article__header .sponsorship.paid {
-      min-height: 60px;
-      display: block;
-      position: relative;
-      padding: 8px 12px 8px;
-      border-bottom: 1px rgba(135, 135, 135, 0.4) dotted;
-      font-size: 1.6rem; }
-      @media all and (min-width: 75em) {
-        #sandbox .is_advertising.tone--news .article .article__header .sponsorship.paid .sponsorship__inner, #sandbox .is_advertising.tone--feature1 .article .article__header .sponsorship.paid .sponsorship__inner, #sandbox .is_advertising.tone--feature2 .article .article__header .sponsorship.paid .sponsorship__inner, #sandbox .is_advertising.tone--feature3 .article .article__header .sponsorship.paid .sponsorship__inner, #sandbox .is_advertising.tone--media .article .article__header .sponsorship.paid .sponsorship__inner, #sandbox .is_advertising.tone--podcast .article .article__header .sponsorship.paid .sponsorship__inner {
-          padding-left: 240px;
-          padding-right: 320px; } }
-      #sandbox .is_advertising.tone--news .article .article__header .sponsorship.paid .sponsorship__formatted-sponsor-name, #sandbox .is_advertising.tone--feature1 .article .article__header .sponsorship.paid .sponsorship__formatted-sponsor-name, #sandbox .is_advertising.tone--feature2 .article .article__header .sponsorship.paid .sponsorship__formatted-sponsor-name, #sandbox .is_advertising.tone--feature3 .article .article__header .sponsorship.paid .sponsorship__formatted-sponsor-name, #sandbox .is_advertising.tone--media .article .article__header .sponsorship.paid .sponsorship__formatted-sponsor-name, #sandbox .is_advertising.tone--podcast .article .article__header .sponsorship.paid .sponsorship__formatted-sponsor-name {
-        position: absolute;
-        top: 50%;
-        margin-top: -0.8rem; }
-      #sandbox .is_advertising.tone--news .article .article__header .sponsorship.paid .sponsorship__logo, #sandbox .is_advertising.tone--feature1 .article .article__header .sponsorship.paid .sponsorship__logo, #sandbox .is_advertising.tone--feature2 .article .article__header .sponsorship.paid .sponsorship__logo, #sandbox .is_advertising.tone--feature3 .article .article__header .sponsorship.paid .sponsorship__logo, #sandbox .is_advertising.tone--media .article .article__header .sponsorship.paid .sponsorship__logo, #sandbox .is_advertising.tone--podcast .article .article__header .sponsorship.paid .sponsorship__logo {
-        float: right; }
-      @media all and (min-width: 75em) {
-        #sandbox .is_advertising.tone--news .article .article__header .sponsorship.paid, #sandbox .is_advertising.tone--feature1 .article .article__header .sponsorship.paid, #sandbox .is_advertising.tone--feature2 .article .article__header .sponsorship.paid, #sandbox .is_advertising.tone--feature3 .article .article__header .sponsorship.paid, #sandbox .is_advertising.tone--media .article .article__header .sponsorship.paid, #sandbox .is_advertising.tone--podcast .article .article__header .sponsorship.paid {
-          padding-left: 0; } }
     #sandbox .is_advertising.tone--news .article .article__header ul > li::before,
     #sandbox .is_advertising.tone--news .article .article__header .bullet::before, #sandbox .is_advertising.tone--feature1 .article .article__header ul > li::before,
     #sandbox .is_advertising.tone--feature1 .article .article__header .bullet::before, #sandbox .is_advertising.tone--feature2 .article .article__header ul > li::before,
@@ -5476,8 +5485,14 @@
               #sandbox .is_advertising.tone--media[data-content-type="video"] .article .article__header .meta .meta__misc .sponsorship.paid .sponsorship__formatted-sponsor-name {
                 position: static;
                 top: 0;
+                -webkit-transform: none;
+                transform: none;
                 margin-top: 0;
                 width: 100%; }
+              #sandbox .is_advertising.tone--media[data-content-type="video"] .article .article__header .meta .meta__misc .sponsorship.paid .sponsorship__logo {
+                position: static;
+                -webkit-transform: none;
+                transform: none; }
               #sandbox .is_advertising.tone--media[data-content-type="video"] .article .article__header .meta .meta__misc .sponsorship.paid img {
                 float: none; } }
       #sandbox .is_advertising.tone--media[data-content-type="video"] .article .article__header .meta .standfirst {
@@ -5516,16 +5531,25 @@
       padding: 8px 12px 8px;
       border-bottom: 1px rgba(135, 135, 135, 0.4) dotted;
       font-size: 1.6rem; }
-      @media all and (min-width: 75em) {
-        #sandbox .is_advertising.tone--podcast .article .sponsorship.paid .sponsorship__inner, #sandbox .is_advertising.tone--media[data-content-type="audio"] .article .sponsorship.paid .sponsorship__inner {
-          padding-left: 240px;
-          padding-right: 320px; } }
+      #sandbox .is_advertising.tone--podcast .article .sponsorship.paid .sponsorship__inner, #sandbox .is_advertising.tone--media[data-content-type="audio"] .article .sponsorship.paid .sponsorship__inner {
+        min-height: 60px;
+        position: relative; }
+        @media all and (min-width: 75em) {
+          #sandbox .is_advertising.tone--podcast .article .sponsorship.paid .sponsorship__inner, #sandbox .is_advertising.tone--media[data-content-type="audio"] .article .sponsorship.paid .sponsorship__inner {
+            padding-left: 240px;
+            padding-right: 320px; } }
       #sandbox .is_advertising.tone--podcast .article .sponsorship.paid .sponsorship__formatted-sponsor-name, #sandbox .is_advertising.tone--media[data-content-type="audio"] .article .sponsorship.paid .sponsorship__formatted-sponsor-name {
+        left: 0;
         position: absolute;
         top: 50%;
-        margin-top: -0.8rem; }
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%); }
       #sandbox .is_advertising.tone--podcast .article .sponsorship.paid .sponsorship__logo, #sandbox .is_advertising.tone--media[data-content-type="audio"] .article .sponsorship.paid .sponsorship__logo {
-        float: right; }
+        position: absolute;
+        right: 0;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%); }
       @media all and (min-width: 75em) {
         #sandbox .is_advertising.tone--podcast .article .sponsorship.paid, #sandbox .is_advertising.tone--media[data-content-type="audio"] .article .sponsorship.paid {
           padding-left: 0; } }
@@ -6639,21 +6663,21 @@
       #sandbox .tone--feature3 .article--quiz .meta__misc {
         padding-left: 0;
         padding-right: 0; } }
-    #sandbox .tone--feature1 .article--feature .sponsorship,
-    #sandbox .tone--feature1 .article--quiz .sponsorship,
-    #sandbox .tone--feature2 .article--feature .sponsorship,
-    #sandbox .tone--feature2 .article--quiz .sponsorship,
-    #sandbox .tone--feature3 .article--feature .sponsorship,
-    #sandbox .tone--feature3 .article--quiz .sponsorship {
+    #sandbox .tone--feature1 .article--feature .sponsorship.sponsored,
+    #sandbox .tone--feature1 .article--quiz .sponsorship.sponsored,
+    #sandbox .tone--feature2 .article--feature .sponsorship.sponsored,
+    #sandbox .tone--feature2 .article--quiz .sponsorship.sponsored,
+    #sandbox .tone--feature3 .article--feature .sponsorship.sponsored,
+    #sandbox .tone--feature3 .article--quiz .sponsorship.sponsored {
       background: #fff; }
-      @media all and (min-width: 75em) {
-        #sandbox .tone--feature1 .article--feature .sponsorship,
-        #sandbox .tone--feature1 .article--quiz .sponsorship,
-        #sandbox .tone--feature2 .article--feature .sponsorship,
-        #sandbox .tone--feature2 .article--quiz .sponsorship,
-        #sandbox .tone--feature3 .article--feature .sponsorship,
-        #sandbox .tone--feature3 .article--quiz .sponsorship {
-          border-bottom: 0; } }
+    @media all and (min-width: 75em) {
+      #sandbox .tone--feature1 .article--feature .sponsorship,
+      #sandbox .tone--feature1 .article--quiz .sponsorship,
+      #sandbox .tone--feature2 .article--feature .sponsorship,
+      #sandbox .tone--feature2 .article--quiz .sponsorship,
+      #sandbox .tone--feature3 .article--feature .sponsorship,
+      #sandbox .tone--feature3 .article--quiz .sponsorship {
+        border-bottom: 0; } }
   #sandbox .tone--feature1 a.tell-me-when:active, #sandbox .tone--feature1 a.tell-me-when.added,
   #sandbox .tone--feature2 a.tell-me-when:active,
   #sandbox .tone--feature2 a.tell-me-when.added,
