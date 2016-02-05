@@ -1,6 +1,7 @@
 /* Supported: tone--news, tone--feature1, tone--feature2, tone--feature3, tone--media, tone--podcast */
 
 @mixin sponsorship {
+    min-height: 60px;
     display: block;
     position: relative;
     padding: 8px 12px 8px;
@@ -108,7 +109,11 @@
                         text-decoration: none;
                     }
 
-                    .sponsorship {
+                    .sponsorship.sponsored {
+                        display: none;
+                    }
+
+                    .sponsorship.paid {
                         @include sponsorship;
                     }
 
@@ -266,7 +271,7 @@
                         border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
                     }
 
-                    .sponsorship {
+                    .sponsorship.paid {
                         display: block;
                         border-bottom: none;
 
@@ -285,7 +290,7 @@
                         .meta__misc {
                             border-top: 1px rgba(color(global-adv-bands), .4) dotted;
 
-                            .sponsorship { 
+                            .sponsorship.paid { 
                                 display: none;
                             }
 
@@ -295,7 +300,8 @@
                                 padding-bottom: 120px;
                                 position: relative;
 
-                                .sponsorship {
+                                .sponsorship.paid {
+                                    display: block;
                                     border-bottom: 0;
                                     bottom: 8px;
                                     display: block;
@@ -373,7 +379,11 @@
                 }
             }
 
-            .sponsorship {
+            .sponsorship.sponsored {
+                display: none;
+            }
+
+            .sponsorship.paid {
                 @include sponsorship;
             }
 
