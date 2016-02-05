@@ -430,17 +430,31 @@
         .article {
             .article {
                 &__header {
+                    background-color: color(global-adv-bg);
+
                     .gallery {
                         background-color: color(global-adv-bg);
                     }
 
-                    .meta__misc {
-                        border-top: 1px rgba(color(global-adv-bands), .4) dotted;
-                        border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
+                    .meta {
+                        border-bottom: 0;
+
+                        .meta__misc {
+                            border-top: 1px rgba(color(global-adv-bands), .4) dotted;
+                            border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
+                        }
+                    }
+
+                    .sponsorship {
+                        border-top: 0;
                     }
 
                     @include mq($from: col2) {
-                        .sponsorship,
+                        .sponsorship {
+                            border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
+                            border-top: 1px rgba(color(global-adv-bands), .4) dotted;
+                        }
+
                         .meta {
                             border-top: 1px rgba(color(global-adv-bands), .4) dotted;
 
