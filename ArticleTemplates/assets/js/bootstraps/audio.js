@@ -16,7 +16,7 @@ define([
         getColor: function(){
             var isAdv = $("body").hasClass("is_advertising");
             var isAudio = !$("body").hasClass("tone--podcast") && $(".article").hasClass("article--audio");
-            return isAdv ? "rgba(255, 255, 255, 0.10)" : (isAudio ? "rgba(255, 187, 0, 0.05)" : "rgba(167, 216, 242, 0.10)");
+            return isAdv ? "rgba(105, 209, 202, 0.10)" : (isAudio ? "rgba(255, 187, 0, 0.05)" : "rgba(167, 216, 242, 0.10)");
         },
 
         audioSlider: function () {
