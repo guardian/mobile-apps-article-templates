@@ -13,10 +13,8 @@
         position: relative;
 
         @include mq($from: col4) {
-            padding: {
-                left: 240px;
-                right: 320px;
-            }
+            margin-left: 240px;
+            margin-right: 320px
         }
     }
 
@@ -260,8 +258,8 @@
                         background-color: color(shade-12);
                     }
 
+                    .standfirst__inner,
                     .meta {
-                        border-top: 1px rgba(color(global-adv-bands), .4) dotted;
                         border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
                     }
                 }
@@ -443,9 +441,13 @@
                         border-bottom: 0;
 
                         .meta__misc {
-                            border-top: 1px rgba(color(global-adv-bands), .4) dotted;
+                            border-top: 0;
                             border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
                         }
+                    }
+
+                    .standfirst {
+                        border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
                     }
 
                     .sponsorship {
@@ -469,6 +471,7 @@
                         }
 
                         .standfirst {
+                            border-bottom: 0;
                             background-color: color(global-adv-bg);
                         }
                     }
