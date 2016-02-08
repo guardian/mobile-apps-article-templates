@@ -223,18 +223,34 @@
 
     /* News overrides */
     &.tone--news {
+
+        .article {
+            .article {
+                &__header {
+                    .sponsorship {
+                        border-top: 1px rgba(color(global-adv-bands), .4) dotted;
+                    }
+
+                    .meta {
+                        border-bottom: none;
+                        border-top: 1px rgba(color(global-adv-bands), .4) dotted;
+                    }
+
+                    .main-media {
+                        figcaption {
+                            border-bottom: none;
+                        }
+                        @include mq($from: col4) {
+                            border-bottom: none;
+                        }
+                    }
+                }
+            }
+        }
+
         @include mq($from: col4) {
             .audio-player__container {
                 background: color(shade-5);
-            }
-
-            .article {
-                .article {
-                    &__header .meta,
-                    &__header .main-media {
-                        border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
-                    }
-                }
             }
         }
     }
