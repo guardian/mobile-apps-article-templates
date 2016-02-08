@@ -462,7 +462,7 @@ define([
                     if (bylineElems.length && !bylineElems[0].children.length) {
                         elemsToDelete = document.body.getElementsByClassName(parentNodeClass);
                         for (j = 0; j < elemsToDelete.length; j++) {
-                            if (elemsToDelete[j].parentNode) {
+                            if (elemsToDelete[j].parentNode && !elemsToDelete[j].getElementsByClassName("sponsorship").length) {
                                 elemsToDelete[j].parentNode.removeChild(elemsToDelete[j]);
                             }
                         }
