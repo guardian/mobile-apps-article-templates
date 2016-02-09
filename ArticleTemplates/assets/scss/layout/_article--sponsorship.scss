@@ -1,15 +1,13 @@
 /* Supported: tone--news, tone--feature1, tone--feature2, tone--feature3, tone--media, tone--podcast */
 
 @mixin sponsorship {
-    min-height: 60px;
+    padding: 0;
     display: block;
     position: relative;
-    padding: 8px 12px 8px;
     border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
     font-size: 1.6rem;
 
     .sponsorship__inner {
-        min-height: 60px;
         position: relative;
 
         @include mq($from: col4) {
@@ -19,6 +17,7 @@
     }
 
     .sponsorship__formatted-sponsor-name {
+        padding: 12px 0 24px 12px;
         display: inline-block;
         vertical-align: middle;
     }
@@ -155,7 +154,13 @@
                     .prose figure figcaption,
                     .prose .element-rich-link {
                         border-color: rgba(color(global-adv-bands), .4);
-                    } 
+                    }
+
+                    .prose figure.portrait-thumbnail figcaption {
+                        background: rgba(color(shade-3), .6);
+                        border-top: 1px color(shade-3) dotted;
+                        border-bottom: 1px color(shade-3) dotted;
+                    }
                 }
             }
 
@@ -223,7 +228,6 @@
 
     /* News overrides */
     &.tone--news {
-
         .article {
             .article {
                 &__header {
@@ -245,6 +249,14 @@
                         }
                     }
                 }
+
+                &__body {
+                     border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
+                }
+            }
+
+            .tags {
+                border-top: none;
             }
         }
 
@@ -284,75 +296,41 @@
     }
 
     /* Video overrides */
+    &.tone--news[data-content-type="video"],
     &.tone--media[data-content-type="video"] {
         .article {
             .article {
                 &__header {
-                    .headline {
-                        border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
-                    }
-
-                    .sponsorship.paid {
-                        display: block;
-                        border-bottom: none;
-
-                        @include mq($from: col2) {   
-                            display: none;
-                        }
-                    }
-
                     .meta {
-                        border-bottom: none;
-
-                        @include mq($from: col4) {
-                            border-top: none;
-                        }
+                        border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
 
                         .meta__misc {
                             border-top: 1px rgba(color(global-adv-bands), .4) dotted;
 
-                            .sponsorship.paid { 
-                                display: none;
+                            .sponsorship {
+                                padding-top: 0;
+                            }
+
+                            .sponsorship__formatted-sponsor-name {
+                                padding-left: 0;
                             }
 
                             @include mq($from: col2) {
                                 border-top: none;
                                 border-left: 1px rgba(color(global-adv-bands), .4) dotted;
-                                padding-bottom: 120px;
-                                position: relative;
 
-                                .sponsorship.paid {
+                                .sponsorship {
+                                    margin-top: 8px;
+                                }
+
+                                .sponsorship__formatted-sponsor-name {
                                     display: block;
-                                    border-bottom: 0;
-                                    bottom: 8px;
-                                    display: block;
-                                    padding: 0;
-                                    position: absolute;
-                                    margin-top: 12px;
+                                    padding-top: 0;
+                                    padding-bottom: 0;
+                                }
 
-                                    .sponsorship__inner {
-                                        margin: 0;
-                                        padding: 0;
-                                    }
-
-                                    .sponsorship__formatted-sponsor-name {
-                                        position: static;
-                                        top: 0;
-                                        -webkit-transform: none;
-                                        transform: none;
-                                        margin-top: 0;
-                                        width: 100%;
-                                    }
-
-                                    .sponsorship__logo {
-                                        position: static;
-                                        -webkit-transform: none;
-                                        transform: none;
-                                    }
-
-                                    img {
-                                        float: none;
-                                    }
+                                .sponsorship__logo {
+                                    margin-left: 0;
                                 }
                             }
                         }
@@ -373,14 +351,20 @@
 
     /* Audio overrides */
     &.tone--podcast,
+    &.tone--news[data-content-type="audio"],
     &.tone--media[data-content-type="audio"] {
         .article {
             &__header {
                 .headline {
                     margin-top: 0;
                 }
+                
                 .meta {
                     display: none;
+                }
+
+                .cutout__background {
+                    z-index: 1;
                 }
 
                 .cutout__container {
@@ -443,6 +427,7 @@
     }
 
     /* Gallery overrides */
+    &.tone--news[data-content-type="gallery"],
     &.tone--media[data-content-type="gallery"] {
         .article {
             .article {
@@ -492,10 +477,6 @@
                         }
                     }
                 }
-            }
-
-            .tags {
-                border-top: 0;
             }
         }        
     }

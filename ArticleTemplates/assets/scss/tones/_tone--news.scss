@@ -150,3 +150,43 @@
         }
     }
 }
+
+.tone--news[data-content-type="video"] {
+    .article {
+        .tags {
+            border-top: none;
+        }
+        .article {
+            &__header {
+                .sponsorship {
+                    padding: 8px 0 0 0;
+                    border-top: none;
+                    border-bottom: none;
+                }
+
+                .meta {
+                    padding: 0;
+
+                    @include mq($from: col2) {
+                        border-top: none;
+                    }
+                    
+                    .meta__misc {
+                        padding: 0;
+
+                        .sponsorship,
+                        .meta__byline {
+                            padding-top: 8px;
+                            padding-left: 12px;
+                        }
+
+                        .sponsorship__inner {
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
