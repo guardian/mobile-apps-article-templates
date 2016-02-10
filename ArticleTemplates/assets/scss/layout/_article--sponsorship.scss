@@ -8,6 +8,7 @@
     font-size: 1.6rem;
 
     .sponsorship__inner {
+        padding: 12px 0;
         position: relative;
 
         @include mq($from: col4) {
@@ -17,7 +18,7 @@
     }
 
     .sponsorship__formatted-sponsor-name {
-        padding: 12px 0 24px 12px;
+        padding: 0 0 0 12px;
         display: inline-block;
         vertical-align: middle;
     }
@@ -160,6 +161,7 @@
                         background: rgba(color(shade-3), .6);
                         border-top: 1px color(shade-3) dotted;
                         border-bottom: 1px color(shade-3) dotted;
+                        color: color(shade-6);
                     }
                 }
             }
@@ -309,6 +311,10 @@
 
                             .sponsorship {
                                 padding-top: 0;
+
+                                &__inner {
+                                    padding: 0;
+                                }
                             }
 
                             .sponsorship__formatted-sponsor-name {
@@ -318,10 +324,6 @@
                             @include mq($from: col2) {
                                 border-top: none;
                                 border-left: 1px rgba(color(global-adv-bands), .4) dotted;
-
-                                .sponsorship {
-                                    margin-top: 8px;
-                                }
 
                                 .sponsorship__formatted-sponsor-name {
                                     display: block;
@@ -457,7 +459,7 @@
 
                     @include mq($from: col2) {
                         .sponsorship {
-                            border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
+                            border-bottom: 0;
                             border-top: 1px rgba(color(global-adv-bands), .4) dotted;
                         }
 

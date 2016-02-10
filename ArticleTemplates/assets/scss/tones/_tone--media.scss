@@ -239,6 +239,17 @@
         }
         .article {
             &__header {
+                .standfirst {
+                    padding: base-px(.5, 1);
+
+                    @include mq($from: col4) {
+                        padding: {
+                            left: 0;
+                            right: 0;
+                        }
+                    }
+                }
+
                 .sponsorship {
                     padding: 8px 0 0 0;
                     border-bottom: 0;
@@ -268,10 +279,14 @@
                     border-bottom: 0;
                 }
 
-                @include mq($from: col4) {
-                    .standfirst {
-                        padding-left: 0;
-                        padding-right: 0;
+                .standfirst {
+                    padding: base-px(0, 1, .5, 1);
+
+                    @include mq($from: col4) {
+                        padding: {
+                            left: 0;
+                            right: 0;
+                        }
                     }
                 }
 
