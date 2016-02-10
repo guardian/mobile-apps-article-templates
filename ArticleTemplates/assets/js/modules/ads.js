@@ -10,6 +10,7 @@ define([
 
     var tabletMpuId = 'advert-mpu-content',
         mobileMpuId = 'advert-mobile-mpu-content',
+        liveblogAdId = 0,
 
         modules = {
             insertAdPlaceholders: function (config) {
@@ -38,7 +39,7 @@ define([
                 }
 
                 if (mpuId !== '') {
-                    mpuHtml = createMpuHtml(mpuId);
+                    mpuHtml = modules.createMpuHtml(mpuId);
                     // To mimic the correct positioning on full width tablet view, we will need an 
                     // empty div to pad out the text so we can position absolutely over it.
                     $('.article__body > div.prose > :first-child').before('<div class="advert-slot advert-slot--placeholder"></div>');
@@ -48,8 +49,23 @@ define([
                 $('.article__body > div.prose > p:nth-of-type(' + nrParagraph + ') ~ p + p').first().before(mpuHtml);
             },
 
-            insertLiveblogAdPlaceholders: function (config) {
+            insertLiveblogAdPlaceholders: function () {
+                window.updateLiveblogAdPlaceholders = function(htmlObject) {
+                    var blocks = htmlObject.getElementsByClassName('block');
 
+                    $(blocks).each(function(block, index) {
+                        // insert an advert after every 2nd and 7th block
+                        if (index === 1 || index === 6) {
+                            var id = 'mpu' + liveblogAdId++,
+                                mpuHtml = modules.createMpuHtml(id);
+                            $(block).after(mpuHtml);
+                        }
+                    });
+
+                    return htmlObject.innerHTML;
+                };
+
+                window.updateLiveblogAdPlaceholders($('.article__body')[0]);
             },
 
             createMpuHtml: function(id) {
@@ -70,9 +86,9 @@ define([
             // return the current MPU's position.
             // This function is an internal function which accepts a function
             // formatter(left, top, width, height)
-            getMpuPos : function(formatter) {
+            getMpuPos: function(formatter) {
                 var r;
-                var el = document.getElementById('advert-slot__wrapper');
+                var el = document.getElementByClassName('advert-slot__wrapper')[0];
                 if (el) {
                     r = el.getBoundingClientRect();
                     if(r.width !== 0 && r.height !== 0){
@@ -84,25 +100,57 @@ define([
                 }
             },
 
-            getMpuPosJson : function() {
+            getLiveblogMpuPos: function(formatter) {
+                var $advertSlots = $('.advert-slot__wrapper');
+
+                if ($advertSlots.length) {
+                    var scrollLeft = document.body.scrollLeft,
+                        scrollTop = document.body.scrollTop,
+                        params;
+
+                    $advertSlots.each(function(ad, index) {
+                        var coords = ad.getBoundingClientRect();
+                    });
+                } else {
+                    return null;
+                }
+
+                if (el) {
+                    r = el.getBoundingClientRect();
+                    if(r.width !== 0 && r.height !== 0){
+                        return formatter(r.left + document.body.scrollLeft,
+                            r.top+document.body.scrollTop, r.width, r.height);
+                    }
+                } else {
+                    return null;
+                }
+            },
+
+            getMpuPosJson: function() {
                 return modules.getMpuPos(function(x, y, w, h) {
                     return '{"left":' + x + ', "top":' + y + ', "width":' + w +', "height":' + h + '}';
                 });
             },
 
-            getMpuPosCommaSeparated : function() {
+            getMpuPosCommaSeparated: function() {
                 return modules.getMpuPos(function(x, y, w, h) {
                     return x + ',' + y;
                 });
             },
 
-            getMpuOffsetTop : function() {
+            getMpuOffsetTop: function() {
                 return modules.getMpuPos(function(x, y, w, h) {
                     return y;
                 });
             },
 
-            poller : function(interval, yPos, firstRun) {
+            getLiveblogMpuOffsetTop:  function() {
+                return modules.getLiveblogMpuPos(function(x, y, w, h) {
+                    return y;
+                });
+            },
+
+            poller: function(interval, yPos, firstRun) {
                 var newYPos = modules.getMpuOffsetTop();
 
                 if(firstRun && this.isAndroid){
@@ -120,12 +168,30 @@ define([
                 setTimeout(modules.poller.bind(modules, interval + 50, newYPos), interval);
             },
 
-            updateMPUPosition: function(yPos) {
-                if (!yPos) {
-                    yPos = $('#advert-slot__wrapper').offset().top;
+            liveblogPoller: function(interval, yPosArray, firstRun) {
+                if(firstRun && this.isAndroid){
+                    modules.updateAndroidPosition();
                 }
 
-                var newYPos = $('#advert-slot__wrapper').offset().top;
+                var newYPos = modules.getMpuOffsetTop();
+
+                if(newYPos !== yPos){
+                    if(this.isAndroid){
+                        modules.updateAndroidLiveblogPosition();
+                    } else {
+                        window.location.href = 'x-gu://ad_moved';
+                    }
+                }
+
+                setTimeout(modules.liveblogPoller.bind(modules, interval + 50, newYPosArray), interval);
+            },
+
+            updateMPUPosition: function(yPos) {
+                if (!yPos) {
+                    yPos = $('.advert-slot__wrapper').first().offset().top;
+                }
+
+                var newYPos = $('.advert-slot__wrapper').first().offset().top;
 
                 if(newYPos !== yPos){
                     if(this.isAndroid){
@@ -144,6 +210,12 @@ define([
                 });
             },
 
+            updateAndroidLiveblogPosition : function() {
+                modules.getLiveblogMpuPos(function(x1, y1, w1, h1, x2, y2, w2, h2){
+                    window.GuardianJSInterface.mpuLiveblogAdsPosition(x1, y1, w1, h1, x2, y2, w2, h2);
+                });
+            },
+
             initMpuPoller: function(){
                 modules.poller(1000,
                     modules.getMpuOffsetTop(),
@@ -151,8 +223,16 @@ define([
                 );
             },
 
+            initMpuLiveblogPoller: function(){
+                modules.liveblogPoller(1000,
+                    modules.getLiveblogMpuOffsetTop(),
+                    true
+                );
+            },
+
             fireAdsReady: function(_window) {
                 if (!$('body').hasClass('no-ready') && $('body').attr('data-use-ads-ready') === 'true') {
+                    console.log('test');
                     _window.location.href = 'x-gu://ads-ready';
                 }
             }
@@ -166,14 +246,16 @@ define([
 
                 if (config.adsEnabled == 'true' || (config.adsEnabled !== null && config.adsEnabled.match && config.adsEnabled.match(/mpu/))) {
                     if (config.contentType === 'liveblog') {
-                        modules.insertLiveblogAdPlaceholders(config);
+                        modules.insertLiveblogAdPlaceholders();
+                        window.initMpuLiveblogPoller = modules.initMpuLiveblogPoller;
+                        window.applyNativeFunctionCall('initMpuLiveblogPoller');
                     } else {
                         modules.insertAdPlaceholders(config);
+                        window.initMpuPoller = modules.initMpuPoller;
+                        window.applyNativeFunctionCall('initMpuPoller');
                     }
                     window.getMpuPosJson = modules.getMpuPosJson;
                     window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated;
-                    window.initMpuPoller = modules.initMpuPoller;
-                    window.applyNativeFunctionCall('initMpuPoller');
 
                     if(!modules.isAndroid){
                         modules.initMpuPoller();
@@ -186,7 +268,6 @@ define([
 
     return {
         init: ready,
-        // for testing purposes
         modules: modules
     };
 

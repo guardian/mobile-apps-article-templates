@@ -23,7 +23,7 @@ define([
             }
 
             // Do we have an MPU and is it below the quiz?
-            var mpu = $('#advert-slot__wrapper'),
+            var mpu = $('.advert-slot__wrapper').first(),
                 moveMPU = false;
 
             if (mpu.length) {
