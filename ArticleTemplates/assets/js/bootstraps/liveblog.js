@@ -147,7 +147,8 @@ define([
                         momentum: false,
                         snap: true,
                         bounce: false,
-                        snapSpeed: 600
+                        snapSpeed: 600,
+                        disablePointer: true
                     };
 
                 // liveblogElem must be first child of wrapperElem
