@@ -178,6 +178,24 @@ MPU
     .advert-slot.advert-slot--mpu {
         float: none;
         margin: 0 auto;
+        padding-bottom: 15px;
         position: static;
+
+        @include mq($from: col2) {
+            width: 100%;
+        }
+
+        .advert-slot__label {
+            padding-bottom: 11px;
+            padding-left: 13px;
+
+            .advert-slot__action {
+                right: base-px(1);
+            }
+        }
+
+         .advert-slot__wrapper {
+            width: 300px;
+        }
     }
 }

@@ -24,17 +24,15 @@ define([
                 $('.article__body > div.prose > p:nth-of-type(' + nrParagraph + ') ~ p + p').first().before(mpuHtml);
             },
 
-            insertLiveblogAdPlaceholders: function (reset) {
-                window.updateLiveblogAdPlaceholders = function(htmlObject) {
+            insertLiveblogAdPlaceholders: function () {
+                window.updateLiveblogAdPlaceholders = function(reset) {
                     if (reset) {
                         // remove existing placeholders and reset counter
                         numberOfMpus = 0;
                         $('.advert-slot--mpu').remove();
                     }
 
-                    var blocks = htmlObject.getElementsByClassName('block');
-
-                    $(blocks).each(function(block, index) {
+                    $('.article__body > .block').each(function(block, index) {
                         // insert an advert after every 2nd and 7th block
                         if (index === 1 || index === 6) {
                             numberOfMpus++;
@@ -43,10 +41,17 @@ define([
                         }
                     });
 
-                    return htmlObject.innerHTML;
+                    if (reset) {
+                        // call to update native advert position
+                        if(this.isAndroid){
+                            modules.updateAndroidPosition();
+                        } else {
+                            window.location.href = 'x-gu://ad_moved';
+                        }
+                    }
                 };
 
-                window.updateLiveblogAdPlaceholders($('.article__body')[0]);
+                window.updateLiveblogAdPlaceholders();
             },
 
             createMpuHtml: function(id) {
@@ -136,6 +141,8 @@ define([
 
             poller: function(interval, adPositions, firstRun) {
                 var newAdPositions = modules.getMpuOffset();
+                console.log(adPositions);
+                console.log(newAdPositions);
 
                 if(firstRun && this.isAndroid){
                     modules.updateAndroidPosition();
@@ -158,7 +165,7 @@ define([
                 }
             },
 
-            // Used by quizzes to move the adverts
+            // Used by quizzes to move the advert
             updateMPUPosition: function(yPos) {
                 if (!yPos) {
                     yPos = $('.advert-slot__wrapper').first().offset().top;
@@ -185,8 +192,8 @@ define([
                 this.initialised = true;
 
                 if (config.adsEnabled == 'true' || (config.adsEnabled !== null && config.adsEnabled.match && config.adsEnabled.match(/mpu/))) {
-                    // Insert advert placeholders article & liveblog
-                    if (config.contentType === 'liveblog') {
+                    // Insert advert placeholders for liveblog & cricket liveblog
+                    if (config.contentType === 'liveblog' || config.contentType === 'cricket') {
                         modules.insertLiveblogAdPlaceholders();
                         adsConfig = 'liveblog';
                     } else {
