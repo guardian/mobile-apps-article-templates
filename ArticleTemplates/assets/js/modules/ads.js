@@ -9,7 +9,7 @@ define([
     'use strict';
 
     var numberOfMpus = 0,
-        adsConfig,
+        adsType,
 
         modules = {
             insertAdPlaceholders: function (config) {
@@ -43,7 +43,7 @@ define([
 
                     if (reset) {
                         // call to update native advert position
-                        if(this.isAndroid){
+                        if(modules.isAndroid){
                             modules.updateAndroidPosition();
                         } else {
                             window.location.href = 'x-gu://ad_moved';
@@ -121,7 +121,7 @@ define([
             },
 
             updateAndroidPosition : function() {
-                if (adsConfig === 'liveblog') {
+                if (adsType === 'liveblog') {
                     modules.getMpuPos(function(x1, y1, w1, h1, x2, y2, w2, h2){
                         window.GuardianJSInterface.mpuLiveblogAdsPosition(x1, y1, w1, h1, x2, y2, w2, h2);
                     });
@@ -141,15 +141,13 @@ define([
 
             poller: function(interval, adPositions, firstRun) {
                 var newAdPositions = modules.getMpuOffset();
-                console.log(adPositions);
-                console.log(newAdPositions);
 
-                if(firstRun && this.isAndroid){
+                if(firstRun && modules.isAndroid){
                     modules.updateAndroidPosition();
                 }
 
                 if(newAdPositions !== adPositions){
-                    if(this.isAndroid){
+                    if(modules.isAndroid){
                         modules.updateAndroidPosition();
                     } else {
                         window.location.href = 'x-gu://ad_moved';
@@ -174,7 +172,7 @@ define([
                 var newYPos = $('.advert-slot__wrapper').first().offset().top;
 
                 if(newYPos !== yPos){
-                    if(this.isAndroid){
+                    if(modules.isAndroid){
                         modules.updateAndroidPosition();
                     } else {
                         window.location.href = 'x-gu://ad_moved';
@@ -193,12 +191,12 @@ define([
 
                 if (config.adsEnabled == 'true' || (config.adsEnabled !== null && config.adsEnabled.match && config.adsEnabled.match(/mpu/))) {
                     // Insert advert placeholders for liveblog & cricket liveblog
-                    if (config.contentType === 'liveblog' || config.contentType === 'cricket') {
+                    if (config.adsType === 'liveblog') {
                         modules.insertLiveblogAdPlaceholders();
-                        adsConfig = 'liveblog';
+                        adsType = 'liveblog';
                     } else {
                         modules.insertAdPlaceholders(config);
-                        adsConfig = 'default';
+                        adsType = 'default';
                     }
 
                     window.initMpuPoller = modules.initMpuPoller;
