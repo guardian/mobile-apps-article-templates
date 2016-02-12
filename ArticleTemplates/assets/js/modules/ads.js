@@ -24,8 +24,14 @@ define([
                 $('.article__body > div.prose > p:nth-of-type(' + nrParagraph + ') ~ p + p').first().before(mpuHtml);
             },
 
-            insertLiveblogAdPlaceholders: function () {
+            insertLiveblogAdPlaceholders: function (reset) {
                 window.updateLiveblogAdPlaceholders = function(htmlObject) {
+                    if (reset) {
+                        // remove existing placeholders and reset counter
+                        numberOfMpus = 0;
+                        $('.advert-slot--mpu').remove();
+                    }
+
                     var blocks = htmlObject.getElementsByClassName('block');
 
                     $(blocks).each(function(block, index) {
