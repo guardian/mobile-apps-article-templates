@@ -132,8 +132,32 @@ define([
                     $(title).html(titleString);
                 });
 
+                // If windows add background images to minute blocks
+                if (document.body.classList.contains("windows")) {   
+                    modules.addBackgroundImagesToBlocks();
+                }
+
                 // Initialise the scroller
                 modules.initScroller();
+            },
+
+            addBackgroundImagesToBlocks: function() {
+                var i, j, blocks, figureInners;
+
+                blocks = document.getElementsByClassName("block");
+
+                for (i = 0; i < blocks.length; i++) {
+                    figureInners = blocks[i].getElementsByClassName("figure__inner");
+
+                    for (j = 0; j < figureInners.length; j++) {
+                        if (figureInners[j].children.length && 
+                            figureInners[j].children[0].tagName === "IMG") {
+                            figureInners[j].classList.add("the-minute__background-media");
+                            figureInners[j].style.backgroundImage = "url(" + figureInners[j].children[0].getAttribute("src") + ")";
+                            figureInners[j].removeChild(figureInners[j].children[0]);                                  
+                        }
+                    }
+                }
             },
 
             initScroller: function () {
