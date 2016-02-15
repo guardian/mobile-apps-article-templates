@@ -24,5 +24,5 @@ require.config({
 require([
     'app',
 ], function(App) {
-    App.initialize();
+    var app = new App();
 });
