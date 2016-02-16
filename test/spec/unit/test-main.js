@@ -1,5 +1,6 @@
 var file, 
-    tests = [];
+    tests = [],
+    pause = true;
 
 for (file in window.__karma__.files) {
     if (window.__karma__.files.hasOwnProperty(file)) {
@@ -25,7 +26,8 @@ requirejs.config({
         fence: 'node_modules/fence/fence',
         smoothScroll: 'node_modules/smooth-scroll/dist/js/smooth-scroll',
         raven: 'node_modules/raven-js/dist/raven',
-        iscroll: 'ArticleTemplates/assets/js/components/iscroll'
+        iscroll: 'ArticleTemplates/assets/js/components/iscroll',
+        squire: 'node_modules/squirejs/src/Squire'
     },
     shim: {
         d3: {
@@ -33,5 +35,12 @@ requirejs.config({
         }
     },
     deps: tests,
-    callback: window.__karma__.start
+    callback: function () {
+        if (pause) {
+            pause = false;
+        } else {
+            window.__karma__.start();
+        }
+    }
 });
+

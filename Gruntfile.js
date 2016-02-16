@@ -89,6 +89,7 @@ module.exports = function(grunt) {
                         {pattern: 'node_modules/fence/fence.js', included: false},
                         {pattern: 'node_modules/smooth-scroll/dist/js/smooth-scroll.js', included: false},
                         {pattern: 'node_modules/raven-js/dist/raven.js', included: false},
+                        {pattern: 'node_modules/squirejs/src/Squire.js', included: false},
                         'test/spec/unit/test-main.js'
                     ],
                     exclude: [
@@ -113,7 +114,7 @@ module.exports = function(grunt) {
                     autoWatch: true,
                     singleRun: true,
                     logLevel: 'ERROR',
-                    browsers: ['PhantomJS', 'Chrome']
+                    browsers: ['PhantomJS']
                 }
             }
         },
