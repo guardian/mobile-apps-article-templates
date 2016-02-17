@@ -1,6 +1,7 @@
 module.exports = function(grunt) {
 
     require('load-grunt-tasks')(grunt);
+    
     config = {};
 
     try {
@@ -36,7 +37,7 @@ module.exports = function(grunt) {
                 dev: {
                     options: {
                         baseUrl: "ArticleTemplates/assets/js",
-                        mainConfigFile: 'ArticleTemplates/assets/js/app.js',
+                        mainConfigFile: 'ArticleTemplates/assets/js/main.js',
                         dir: "ArticleTemplates/assets/build",
                         optimize: 'uglify2',
                         uglify2: {
@@ -70,7 +71,54 @@ module.exports = function(grunt) {
     });
 
     grunt.initConfig({
-
+        // karma unit test runner
+        karma: {
+            unit: {
+                options: {
+                    basePath: './',
+                    frameworks: ['mocha', 'requirejs', 'chai-sinon'],
+                    files: [
+                        {pattern: 'ArticleTemplates/assets/js/**/*.js' , included: false},
+                        {pattern: 'test/spec/unit/**/*.js', included: false},
+                        {pattern: 'node_modules/bonzo/bonzo.js', included: false},
+                        {pattern: 'node_modules/bean/bean.js', included: false},
+                        {pattern: 'node_modules/d3/d3.js', included: false},
+                        {pattern: 'node_modules/domready/ready.js', included: false},
+                        {pattern: 'node_modules/fastclick/lib/fastclick.js', included: false},
+                        {pattern: 'node_modules/qwery/qwery.js', included: false},
+                        {pattern: 'node_modules/fence/fence.js', included: false},
+                        {pattern: 'node_modules/smooth-scroll/dist/js/smooth-scroll.js', included: false},
+                        {pattern: 'node_modules/raven-js/dist/raven.js', included: false},
+                        {pattern: 'node_modules/squirejs/src/Squire.js', included: false},
+                        'test/spec/unit/test-main.js'
+                    ],
+                    exclude: [
+                        'ArticleTemplates/assets/js/main.js'
+                    ],
+                    reporters: ['mocha', 'coverage'],
+                    preprocessors: {
+                        'ArticleTemplates/assets/js/**/*.js': ['coverage']
+                    },
+                    coverageReporter: {
+                        reporters: [{
+                            type: "cobertura",
+                            dir: "test/output/coverage/",
+                            file: "summary.xml"
+                        }, {
+                            type : 'html',
+                            dir : 'test/output/coverage/'
+                        }]
+                    },
+                    port: 9876,
+                    colors: true,
+                    autoWatch: true,
+                    singleRun: true,
+                    logLevel: 'ERROR',
+                    browsers: ['PhantomJS']
+                }
+            }
+        },
+        // sync templates to local ios/android projects
         rsync: {
             options: {
                 recursive: true,
@@ -89,9 +137,7 @@ module.exports = function(grunt) {
                 }
             }
         },
-
-        // Stylesheets
-
+        // stylesheets
         sass: {
             dev: {
                 options: {
@@ -114,7 +160,6 @@ module.exports = function(grunt) {
                 }
             }
         },
-
         cssmin: {
             target: {
                 files: [{
@@ -126,7 +171,6 @@ module.exports = function(grunt) {
                 }]
             }
         },
-
         scsslint: {
             options: {
                 bundleExec: true,
@@ -138,7 +182,6 @@ module.exports = function(grunt) {
                 'ArticleTemplates/assets/scss/**/*.scss',
             ]
         },
-
         hologram: {
             doc: {
                 options: {
@@ -146,18 +189,14 @@ module.exports = function(grunt) {
                 }
             }
         },
-
-        // Javascript
-
+        // jshint
         jshint: {
             options: {
                 force: true
             },
             dev: ['Gruntfile.js', 'ArticleTemplates/assets/js/{bootstraps,modules}/*.js', 'ArticleTemplates/assets/js/*.js']
         },
-
-        // Tests
-
+        // unit tests
         mocha: {
             dev: {
                 options: {
@@ -186,9 +225,7 @@ module.exports = function(grunt) {
                 dest: 'report.xml'
             }
         },
-
-        // Watch
-
+        // watch
         watch: {
             js: {
                 files: ['ArticleTemplates/assets/js/**/*.js'],
@@ -207,9 +244,7 @@ module.exports = function(grunt) {
                 tasks: ['rsync']
             }
         },
-
-        // Notify
-
+        // notify
         notify_hooks: {
             options: {
                 enabled: true,
@@ -218,9 +253,7 @@ module.exports = function(grunt) {
                 duration: 3
             }
         },
-
-        // Test
-
+        // test
         express: {
             test: {
                 options: {
@@ -228,9 +261,7 @@ module.exports = function(grunt) {
                 }
             }
         },
-
-        // Build
-
+        // build
         shell: {
             android: {
                 command: function(){
@@ -277,8 +308,9 @@ module.exports = function(grunt) {
                 command: 'adb push ArticleTemplates.zip /sdcard/ArticleTemplates.zip && adb shell am startservice -n "com.guardian/.templates.UpdateTemplatesService"'
             }
         }
-
     });
+
+    // grunt.registerTask('default', 'karma');
 
     grunt.task.run('notify_hooks');
     grunt.registerTask('develop', ['build', 'express', 'watch']);

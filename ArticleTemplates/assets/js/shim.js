@@ -75,7 +75,7 @@ window.initTemplate = function (opts) {
             script.setAttribute('src', template_path + 'assets/build/components/require.js');
             script.setAttribute('id', 'gu');
             script.setAttribute('data-js-dir', template_path + 'assets/build');
-            script.setAttribute('data-main', template_path + 'assets/build/app.js');
+            script.setAttribute('data-main', template_path + 'assets/build/main.js');
             if(options.skipStyle){
                 script.setAttribute('data-skip-style', 'true');
             }
