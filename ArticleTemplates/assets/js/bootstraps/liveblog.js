@@ -5,14 +5,16 @@ define([
     'modules/relativeDates',
     'modules/$',
     'modules/twitter',
-    'modules/MyScroll'
+    'modules/MyScroll',
+    'modules/ads'
 ], function (
     bean,
     bonzo,
     relativeDates,
     $,
     twitter,
-    MyScroll
+    MyScroll,
+    Ads
 ) {
     'use strict';
 
@@ -28,6 +30,9 @@ define([
                             $(this).addClass("animated slideinright");
                         });
                         $(".article__body--liveblog__pinned").after(newBlockHtml);
+
+                        // Move mpu ads
+                        window.updateLiveblogAdPlaceholders(true);
 
                         // See Common bootstrap
                         window.articleImageSizer();
@@ -75,7 +80,7 @@ define([
 
                 window.liveblogLoadMore = function (html) {
                     html = bonzo.create(html);
-                    
+
                     $('.loading--liveblog').removeClass("loading--visible");
                     $(html).appendTo('.article__body');
 
