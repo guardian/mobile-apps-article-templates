@@ -93,7 +93,7 @@
     <script type="text/javascript">
         if (document.body.classList.contains('the-minute')) {
             // Format date and add above standfirst
-            var dateArray = document.getElementById("published-date").innerHTML.split(' '),
+            var dateArray = document.getElementById("published-date").innerHTML.split(' ').filter(Boolean),
                 dayOfWeek = dateArray[2].replace(',',''),
                 date = dateArray[3],
                 month = dateArray[4],
