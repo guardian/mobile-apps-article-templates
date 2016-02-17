@@ -48,6 +48,7 @@ require([
         Ads.init({
             adsEnabled: document.body.getAttribute('data-ads-enabled'),
             adsConfig: document.body.getAttribute('data-ads-config'),
+            adsType: document.getElementsByClassName('article__body--liveblog').length ? 'liveblog' : '',
             mpuAfterParagraphs: document.body.getAttribute('data-mpu-after-paragraphs')
         });
 

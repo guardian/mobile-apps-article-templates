@@ -21,6 +21,12 @@ $minute_accent: #ea291f;
     top: 0;
 }
 
+@mixin background_image {
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
 // styles images within blocks - $type accepts "summary" and "key-event" for full cover images, or "thumbnail"
 @mixin minute_block_images($type) {
     margin: 0;
@@ -53,6 +59,10 @@ $minute_accent: #ea291f;
                     }
                 }
             }
+        }
+
+        &.the-minute__background-media {
+            @include background_image;
         }
 
         img {
@@ -221,6 +231,10 @@ body.the-minute {
                     @media all and (max-width: 320px) {
                         background: linear-gradient(transparent, rgba(#000, .8)); // key event (and header) gradient goes light to dark
                     }
+                }
+
+                &.the-minute__background-media {
+                    @include background_image;
                 }
             }
 
@@ -514,9 +528,8 @@ body.the-minute {
                 figure.element--thumbnail {
                     @include minute_block_images(thumbnail);
 
-
-                            z-index: 15;
-                                z-index: 20;
+                    z-index: 15;
+                    z-index: 20;
                 }
 
                 figure.element-tweet {

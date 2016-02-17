@@ -5,14 +5,16 @@ define([
     'modules/relativeDates',
     'modules/$',
     'modules/twitter',
-    'modules/MyScroll'
+    'modules/MyScroll',
+    'modules/ads'
 ], function (
     bean,
     bonzo,
     relativeDates,
     $,
     twitter,
-    MyScroll
+    MyScroll,
+    Ads
 ) {
     'use strict';
 
@@ -28,6 +30,9 @@ define([
                             $(this).addClass("animated slideinright");
                         });
                         $(".article__body--liveblog__pinned").after(newBlockHtml);
+
+                        // Move mpu ads
+                        window.updateLiveblogAdPlaceholders(true);
 
                         // See Common bootstrap
                         window.articleImageSizer();
@@ -75,7 +80,7 @@ define([
 
                 window.liveblogLoadMore = function (html) {
                     html = bonzo.create(html);
-                    
+
                     $('.loading--liveblog').removeClass("loading--visible");
                     $(html).appendTo('.article__body');
 
@@ -132,8 +137,33 @@ define([
                     $(title).html(titleString);
                 });
 
+                // If windows add background images to minute blocks
+                if (document.body.classList.contains("windows")) {   
+                    modules.addBackgroundImagesToBlocks();
+                }
+
                 // Initialise the scroller
                 modules.initScroller();
+            },
+
+            addBackgroundImagesToBlocks: function() {
+                var i, j, blocks, figureInners, figureImage;
+
+                blocks = document.getElementsByClassName("block");
+
+                for (i = 0; i < blocks.length; i++) {
+                    figureInners = blocks[i].getElementsByClassName("figure__inner");
+
+                    for (j = 0; j < figureInners.length; j++) {
+                        figureImage = figureInners[j].querySelector("img");
+                        
+                        if (figureImage) {
+                            figureInners[j].classList.add("the-minute__background-media");
+                            figureInners[j].style.backgroundImage = "url(" + figureImage.getAttribute("src") + ")";
+                            figureImage.parentNode.removeChild(figureImage);                            
+                        }
+                    }
+                }
             },
 
             initScroller: function () {
@@ -147,7 +177,8 @@ define([
                         momentum: false,
                         snap: true,
                         bounce: false,
-                        snapSpeed: 600
+                        snapSpeed: 600,
+                        disablePointer: true
                     };
 
                 // liveblogElem must be first child of wrapperElem

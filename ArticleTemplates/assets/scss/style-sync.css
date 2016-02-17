@@ -291,6 +291,11 @@ MPU
 .advert-slot--false {
   display: none !important; }
 
+.article--liveblog .article__body .advert-slot.advert-slot--mpu {
+  float: none;
+  margin: 0 auto;
+  position: static; }
+
 /*doc
 ---
 title: Alerts
@@ -2738,6 +2743,10 @@ body.the-minute {
           @media all and (max-width: 320px) {
             body.the-minute .the-minute__main-media figure .element__inner::before {
               background: linear-gradient(transparent, rgba(0, 0, 0, 0.8)); } }
+        body.the-minute .the-minute__main-media figure .element__inner.the-minute__background-media {
+          background-size: cover;
+          background-position: 50% 50%;
+          background-repeat: no-repeat; }
       body.the-minute .the-minute__main-media figure img {
         height: 100%;
         object-fit: cover;
@@ -3024,6 +3033,10 @@ body.the-minute {
           top: 0;
           top: 50%;
           z-index: 15; }
+          body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail .figure__inner.the-minute__background-media {
+            background-size: cover;
+            background-position: 50% 50%;
+            background-repeat: no-repeat; }
           body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail .figure__inner img {
             height: 100%;
             object-fit: cover;
@@ -3235,6 +3248,10 @@ body.the-minute {
               @media all and (max-width: 320px) {
                 body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner::before {
                   background: linear-gradient(transparent, rgba(0, 0, 0, 0.8)); } }
+            body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner.the-minute__background-media {
+              background-size: cover;
+              background-position: 50% 50%;
+              background-repeat: no-repeat; }
             body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner img {
               height: 100%;
               object-fit: cover;
@@ -3302,6 +3319,10 @@ body.the-minute {
             position: absolute;
             width: 100%;
             z-index: 1; }
+          body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) .figure__inner.the-minute__background-media {
+            background-size: cover;
+            background-position: 50% 50%;
+            background-repeat: no-repeat; }
           body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) .figure__inner img {
             height: 100%;
             object-fit: cover;
@@ -5696,12 +5717,10 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 
 .tone--media[data-content-type="video"] .article .tags {
   border-top: none; }
-.tone--media[data-content-type="video"] .article .article__header .standfirst {
-  padding: 6px 12px; }
-  @media all and (min-width: 75em) {
-    .tone--media[data-content-type="video"] .article .article__header .standfirst {
-      padding-left: 0;
-      padding-right: 0; } }
+@media all and (min-width: 75em) {
+  .tone--media[data-content-type="video"] .article .article__header .standfirst {
+    padding-left: 0;
+    padding-right: 0; } }
 .tone--media[data-content-type="video"] .article .article__header .sponsorship {
   padding: 8px 0 0 0;
   border-bottom: 0; }
@@ -5713,12 +5732,10 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
 
 .tone--media[data-content-type="gallery"] .article .article__header .meta {
   border-bottom: 0; }
-.tone--media[data-content-type="gallery"] .article .article__header .standfirst {
-  padding: 0px 12px 6px 12px; }
-  @media all and (min-width: 75em) {
-    .tone--media[data-content-type="gallery"] .article .article__header .standfirst {
-      padding-left: 0;
-      padding-right: 0; } }
+@media all and (min-width: 75em) {
+  .tone--media[data-content-type="gallery"] .article .article__header .standfirst {
+    padding-left: 0;
+    padding-right: 0; } }
 .tone--media[data-content-type="gallery"] .article .article__header .sponsorship {
   border-bottom: 0;
   border-top: 1px #767676 dotted; }
