@@ -190,8 +190,8 @@ define([
                 this.initialised = true;
 
                 if (config.adsEnabled == 'true' || (config.adsEnabled !== null && config.adsEnabled.match && config.adsEnabled.match(/mpu/))) {
-                    // Insert advert placeholders for liveblog & cricket liveblog
-                    if (config.adsType === 'liveblog') {
+                    // Insert advert placeholders for liveblog & cricket liveblogs when not 'the minute'
+                    if (config.adsType === 'liveblog' && !$('body').hasClass('the-minute')) {
                         modules.insertLiveblogAdPlaceholders();
                         adsType = 'liveblog';
                     } else {
