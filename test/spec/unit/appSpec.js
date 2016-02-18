@@ -6,76 +6,103 @@ define([
     'use strict';
 
     describe('ArticleTemplates/assets/js/app', function() {
-        var app, domReady, monitor, ads, sandbox,
-            dummyElem, injector;
+        var app, domReadyMock, monitorMock, 
+            adsMock, sandbox, injector;
 
-        beforeEach(function() {
-            domReady = sinon.spy();
-            monitor = {};
-            ads = {};
+        beforeEach(function () {
+            domReadyMock = sinon.spy();
+            monitorMock = {};
+            adsMock = {};
             sandbox = sinon.sandbox.create();
-            dummyElem = document.createElement('div');
-
-            sandbox.stub(window.document, 'getElementById').returns(dummyElem);
-
             injector = new Squire();
         });
 
-        afterEach(function() {
-            sandbox.restore();
+        afterEach(function () {
+             sandbox.restore();
         });
 
-        it('app is instance of App', function(done) {
-            injector
-                .mock('domReady', domReady)
-                .mock('modules/monitor', monitor)
-                .mock('modules/ads', ads)
-                .require(['ArticleTemplates/assets/js/app'], function(App) {
-                    sandbox.stub(App.prototype, 'loadCss');
+        describe("App.prototype.init()", function() {
+            var dummyElem;
 
-                    app = new App();
+            beforeEach(function () {
+                dummyElem = document.createElement('div');
+                sandbox.stub(window.document, 'getElementById').returns(dummyElem);
+            });
 
-                    expect(app).to.be.instanceOf(App);
+            it('app is instance of App', function(done) {
+                injector
+                    .mock('domReady', domReadyMock)
+                    .mock('modules/monitor', monitorMock)
+                    .mock('modules/ads', adsMock)
+                    .require(['ArticleTemplates/assets/js/app'], function (App) {
+                        sandbox.stub(App.prototype, 'loadCss');
 
-                    done();
-                });
+                        app = new App();
+
+                        app.init();
+
+                        expect(app).to.be.instanceOf(App);
+
+                        done();
+                    });
+            });
+
+            it('loadCss called if skipStyle false', function (done) {
+                injector
+                    .mock('domReady', domReadyMock)
+                    .mock('modules/monitor', monitorMock)
+                    .mock('modules/ads', adsMock)
+                    .require(['ArticleTemplates/assets/js/app'], function (App) {
+                        sandbox.stub(App.prototype, 'loadCss');
+
+                        dummyElem.dataset.skipStyle = "";
+                        app = new App();
+
+                        app.init();
+
+                        expect(App.prototype.loadCss).to.have.been.calledOnce;
+                        expect(App.prototype.loadCss).to.have.been.calledWith('assets/css/style-async.css');
+                        expect(domReadyMock).to.have.been.calledOnce;
+
+                        done();
+                    });
+            });
+
+            it('loadCss not called if skipStyle true', function (done) {
+                injector
+                    .mock('domReady', domReadyMock)
+                    .mock('modules/monitor', monitorMock)
+                    .mock('modules/ads', adsMock)
+                    .require(['ArticleTemplates/assets/js/app'], function (App) {
+                        sandbox.stub(App.prototype, 'loadCss');
+
+                        dummyElem.dataset.skipStyle = "xxx";
+                        app = new App();
+
+                        app.init();
+
+                        expect(App.prototype.loadCss).not.to.have.been.called;
+                        expect(domReadyMock).to.have.been.calledOnce;
+
+                        done();
+                    });
+            }); 
         });
 
-        it('loadCss called if skipStyle false', function(done) {
-            injector
-                .mock('domReady', domReady)
-                .mock('modules/monitor', monitor)
-                .mock('modules/ads', ads)
-                .require(['ArticleTemplates/assets/js/app'], function(App) {
-                    sandbox.stub(App.prototype, 'loadCss');
+        describe("App.prototype.onDomReady()", function () {
+            it("creates Article if contentType is article", function (done) {
+               injector
+                    .mock('domReady', domReadyMock)
+                    .mock('modules/monitor', monitorMock)
+                    .mock('modules/ads', adsMock)
+                    .require(['ArticleTemplates/assets/js/app'], function (App) {
+                        app = new App();
 
-                    dummyElem.dataset.skipStyle = "";
-                    app = new App();
+                        app.onDomReady();
 
-                    expect(App.prototype.loadCss).to.have.been.calledOnce;
-                    expect(App.prototype.loadCss).to.have.been.calledWith('assets/css/style-async.css');
-                    expect(domReady).to.have.been.calledOnce;
-
-                    done();
-                });
-        });
-
-        it('loadCss not called if skipStyle true', function(done) {
-            injector
-                .mock('domReady', domReady)
-                .mock('modules/monitor', monitor)
-                .mock('modules/ads', ads)
-                .require(['ArticleTemplates/assets/js/app'], function(App) {
-                    sandbox.stub(App.prototype, 'loadCss');
-
-                    dummyElem.dataset.skipStyle = "xxx";
-                    app = new App();
-
-                    expect(App.prototype.loadCss).not.to.have.been.called;
-                    expect(domReady).to.have.been.calledOnce;
-
-                    done();
-                });
+                        done();
+                    }); 
+            });
         });
     });
 });

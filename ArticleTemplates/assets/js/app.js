@@ -11,7 +11,9 @@ define([
 ) {
     'use strict';
 
-    function App() {
+    function App() {}
+
+    App.prototype.init = function () {
         var scriptTag = document.getElementById('gu'),
             skipStyle = scriptTag.getAttribute('data-skip-style');
 
@@ -40,8 +42,8 @@ define([
         if (contentType === 'article') {
             require(['article'], function(Article) {
                 monitor.setContext('article', function() {
-                    new Article();
-                    // Article.init();
+                    var article = new Article();
+                    console.log("Article >>>", Article);
                 });
             });
         } else if (contentType === 'liveblog') {
