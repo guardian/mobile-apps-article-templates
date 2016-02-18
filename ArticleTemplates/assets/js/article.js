@@ -2,17 +2,15 @@ define([
     'bootstraps/common',
     'bootstraps/article'
 ], function (
-    Common,
-    Article
+    common,
+    article
 ) {
     'use strict';
 
-    function init(){
-        Common.init();
-        Article.init();
+    function Article() {
+        common.init();
+        article.init();
     }
 
-    return {
-        init: init
-    };
+    return Article;
 });

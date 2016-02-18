@@ -1,6 +1,5 @@
 var file, 
-    tests = [],
-    pause = true;
+    tests = [];
 
 for (file in window.__karma__.files) {
     if (window.__karma__.files.hasOwnProperty(file)) {
@@ -33,14 +32,7 @@ requirejs.config({
         d3: {
             exports: 'd3'
         }
-    },
-    deps: tests,
-    callback: function () {
-        if (pause) {
-            pause = false;
-        } else {
-            window.__karma__.start();
-        }
     }
 });
 
+require(tests, window.__karma__.start);

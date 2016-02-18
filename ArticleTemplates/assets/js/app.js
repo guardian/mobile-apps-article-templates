@@ -40,7 +40,8 @@ define([
         if (contentType === 'article') {
             require(['article'], function(Article) {
                 monitor.setContext('article', function() {
-                    Article.init();
+                    new Article();
+                    // Article.init();
                 });
             });
         } else if (contentType === 'liveblog') {
