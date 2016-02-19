@@ -141,13 +141,13 @@ $minute_accent: #ea291f;
 }
 
 // Hide the special minute header for every other liveblog 
-body:not(.the-minute) {
-    .the-minute__header { 
-        display: none;
-    }
-}
+// body:not(.the-minute) {
+//     .the-minute__header { 
+//         display: none;
+//     }
+// }
 
-body.the-minute {
+body.the-minute:not(.advert-config--tablet) {
     background: $minute_bg;
     height: 100%;
 
@@ -156,6 +156,7 @@ body.the-minute {
         @include minute_page;
         @include minute_flex_content;
         padding-bottom: 60px;
+        display: block;
     }
 
     .the-minute__headline,

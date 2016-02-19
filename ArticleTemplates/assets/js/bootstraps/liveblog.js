@@ -262,6 +262,9 @@ define([
                 modules.liveMore();
                 twitter.init();
                 if ($('body').hasClass('the-minute')) {
+                    if ($('body').hasClass('advert-config--tablet')) {
+                        return;
+                    }
                     // do any "the minute" js here
                     modules.setupTheMinute();
                 } else {

@@ -2602,6 +2602,8 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
 .article--liveblog {
   background-color: #eaeaea;
   border-bottom: 0; }
+  .article--liveblog:not(.the-minute) .the-minute__header {
+    display: none; }
   .article--liveblog .article__header {
     background-color: #fff; }
     .article--liveblog .article__header .section {
@@ -2651,17 +2653,14 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
 .android .article--liveblog .article__body--liveblog__pinned figcaption {
   padding: 6px 12px 24px 12px; }
 
-body.the-minute .article--liveblog .block .block__body {
+body.the-minute:not(.advert-config--tablet) .article--liveblog .block .block__body {
   height: 100%;
   width: 100%; }
 
-body:not(.the-minute) .the-minute__header {
-  display: none; }
-
-body.the-minute {
+body.the-minute:not(.advert-config--tablet) {
   background: #005689;
   height: 100%; }
-  body.the-minute .the-minute__header {
+  body.the-minute:not(.advert-config--tablet) .the-minute__header {
     background: #005689;
     border: 0;
     bottom: 0;
@@ -2679,9 +2678,10 @@ body.the-minute {
     width: 100%;
     -webkit-flex-direction: column;
     flex-direction: column;
-    padding-bottom: 60px; }
-  body.the-minute .the-minute__headline,
-  body.the-minute .the-minute__standfirst {
+    padding-bottom: 60px;
+    display: block; }
+  body.the-minute:not(.advert-config--tablet) .the-minute__headline,
+  body.the-minute:not(.advert-config--tablet) .the-minute__standfirst {
     color: #fff;
     font: 100 4.3rem/4.3rem "Guardian Egyptian Web", Georgia, serif;
     margin: 0 12px 12px;
@@ -2689,39 +2689,39 @@ body.the-minute {
     width: 80%;
     z-index: 10; }
     @media all and (max-width: 320px) {
-      body.the-minute .the-minute__headline,
-      body.the-minute .the-minute__standfirst {
+      body.the-minute:not(.advert-config--tablet) .the-minute__headline,
+      body.the-minute:not(.advert-config--tablet) .the-minute__standfirst {
         font-size: 3.5rem;
         line-height: 3.5rem;
         margin: 0 8px 8px;
         width: calc(100% - 16px); } }
     @media all and (max-width: 320px) and (min-height: 481px) {
-      body.the-minute .the-minute__headline,
-      body.the-minute .the-minute__standfirst {
+      body.the-minute:not(.advert-config--tablet) .the-minute__headline,
+      body.the-minute:not(.advert-config--tablet) .the-minute__standfirst {
         margin-bottom: 12px; } }
     @media all and (min-width: 56.25em) {
-      body.the-minute .the-minute__headline,
-      body.the-minute .the-minute__standfirst {
+      body.the-minute:not(.advert-config--tablet) .the-minute__headline,
+      body.the-minute:not(.advert-config--tablet) .the-minute__standfirst {
         margin-left: 40px; } }
-  body.the-minute .the-minute__standfirst {
+  body.the-minute:not(.advert-config--tablet) .the-minute__standfirst {
     font: bold 1.7rem/2.2rem "Guardian Text Egyptian Web", Georgia, serif; }
     @media all and (max-width: 320px) {
-      body.the-minute .the-minute__standfirst {
+      body.the-minute:not(.advert-config--tablet) .the-minute__standfirst {
         font-size: 1.5rem;
         line-height: 1.8rem; } }
     @media all and (max-width: 320px) and (min-height: 481px) {
-      body.the-minute .the-minute__standfirst {
+      body.the-minute:not(.advert-config--tablet) .the-minute__standfirst {
         font-size: 1.6rem;
         line-height: 2.0rem; } }
-    body.the-minute .the-minute__standfirst .the-minute__date {
+    body.the-minute:not(.advert-config--tablet) .the-minute__standfirst .the-minute__date {
       color: #ea291f;
       display: block;
       font: 600 1.7rem/2.2rem "Guardian Egyptian Web", Georgia, serif; }
-  body.the-minute .the-minute__main-media {
+  body.the-minute:not(.advert-config--tablet) .the-minute__main-media {
     position: static; }
-    body.the-minute .the-minute__main-media figure {
+    body.the-minute:not(.advert-config--tablet) .the-minute__main-media figure {
       margin: 0; }
-      body.the-minute .the-minute__main-media figure .element__inner {
+      body.the-minute:not(.advert-config--tablet) .the-minute__main-media figure .element__inner {
         background: #005689;
         border: 0;
         bottom: 0;
@@ -2732,7 +2732,7 @@ body.the-minute {
         right: 0;
         top: 0;
         padding-bottom: 0 !important; }
-        body.the-minute .the-minute__main-media figure .element__inner::before {
+        body.the-minute:not(.advert-config--tablet) .the-minute__main-media figure .element__inner::before {
           background: linear-gradient(transparent, transparent 25%, rgba(0, 0, 0, 0.8));
           content: "";
           height: 100%;
@@ -2741,17 +2741,17 @@ body.the-minute {
           width: 100%;
           z-index: 1; }
           @media all and (max-width: 320px) {
-            body.the-minute .the-minute__main-media figure .element__inner::before {
+            body.the-minute:not(.advert-config--tablet) .the-minute__main-media figure .element__inner::before {
               background: linear-gradient(transparent, rgba(0, 0, 0, 0.8)); } }
-        body.the-minute .the-minute__main-media figure .element__inner.the-minute__background-media {
+        body.the-minute:not(.advert-config--tablet) .the-minute__main-media figure .element__inner.the-minute__background-media {
           background-size: cover;
           background-position: 50% 50%;
           background-repeat: no-repeat; }
-      body.the-minute .the-minute__main-media figure img {
+      body.the-minute:not(.advert-config--tablet) .the-minute__main-media figure img {
         height: 100%;
         object-fit: cover;
         width: 100%; }
-    body.the-minute .the-minute__main-media figcaption {
+    body.the-minute:not(.advert-config--tablet) .the-minute__main-media figcaption {
       border: 0;
       bottom: 0;
       color: rgba(255, 255, 255, 0.75);
@@ -2760,14 +2760,14 @@ body.the-minute {
       width: 100%;
       z-index: 1; }
       @media all and (max-width: 320px) {
-        body.the-minute .the-minute__main-media figcaption {
+        body.the-minute:not(.advert-config--tablet) .the-minute__main-media figcaption {
           padding-left: 8px;
           padding-right: 72px; } }
       @media all and (min-width: 56.25em) {
-        body.the-minute .the-minute__main-media figcaption {
+        body.the-minute:not(.advert-config--tablet) .the-minute__main-media figcaption {
           padding-left: 40px; } }
-      body.the-minute .the-minute__main-media figcaption .main-media__caption__text span:first-child,
-      body.the-minute .the-minute__main-media figcaption .main-media__caption__credit {
+      body.the-minute:not(.advert-config--tablet) .the-minute__main-media figcaption .main-media__caption__text span:first-child,
+      body.the-minute:not(.advert-config--tablet) .the-minute__main-media figcaption .main-media__caption__credit {
         overflow: hidden;
         text-overflow: ellipsis;
         word-wrap: break-word;
@@ -2778,20 +2778,20 @@ body.the-minute {
         font-size: 1.3rem;
         line-height: 1.6rem;
         max-width: 460px; }
-      body.the-minute .the-minute__main-media figcaption .main-media__caption__credit {
+      body.the-minute:not(.advert-config--tablet) .the-minute__main-media figcaption .main-media__caption__credit {
         font-size: 1.2rem;
         line-height: 1.5rem;
         margin-top: 2px; }
-      body.the-minute .the-minute__main-media figcaption .main-media__caption__icon {
+      body.the-minute:not(.advert-config--tablet) .the-minute__main-media figcaption .main-media__caption__icon {
         display: none; }
-      body.the-minute .the-minute__main-media figcaption .main-media__caption__text span:first-child::before {
+      body.the-minute:not(.advert-config--tablet) .the-minute__main-media figcaption .main-media__caption__text span:first-child::before {
         content: "\e044";
         display: inline-block;
         font: normal 1.3rem/1 "Guardian Icons", Georgia, serif;
         margin-right: 6px;
         position: relative;
         top: 2px; }
-  body.the-minute .the-minute__nav {
+  body.the-minute:not(.advert-config--tablet) .the-minute__nav {
     border-left: 1px dotted rgba(255, 255, 255, 0.75);
     bottom: 0;
     height: 56px;
@@ -2802,10 +2802,10 @@ body.the-minute {
     -webkit-transition: opacity 100ms linear;
     transition: opacity 100ms linear; }
     @media all and (min-width: 75em) {
-      body.the-minute .the-minute__nav {
+      body.the-minute:not(.advert-config--tablet) .the-minute__nav {
         margin-right: -600px;
         right: 50%; } }
-    body.the-minute .the-minute__nav-button {
+    body.the-minute:not(.advert-config--tablet) .the-minute__nav-button {
       border: 1px solid rgba(255, 255, 255, 0.5);
       border-radius: 50%;
       bottom: 12px;
@@ -2814,7 +2814,7 @@ body.the-minute {
       position: absolute;
       right: 12px;
       width: 42px; }
-      body.the-minute .the-minute__nav-button::after {
+      body.the-minute:not(.advert-config--tablet) .the-minute__nav-button::after {
         color: #fff;
         content: '\e001';
         font-family: "Guardian Icons", Georgia, serif;
@@ -2824,9 +2824,9 @@ body.the-minute {
         top: 50%;
         -webkit-transform: translateX(-50%) translateY(calc(-50% - 2px));
         transform: translateX(-50%) translateY(calc(-50% - 2px)); }
-    body.the-minute .the-minute__nav.hide {
+    body.the-minute:not(.advert-config--tablet) .the-minute__nav.hide {
       opacity: 0; }
-  body.the-minute .article--liveblog {
+  body.the-minute:not(.advert-config--tablet) .article--liveblog {
     background: #005689;
     border: 0;
     bottom: 0;
@@ -2837,9 +2837,9 @@ body.the-minute {
     right: 0;
     top: 0; }
     @media all and (min-width: 75em) {
-      body.the-minute .article--liveblog {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog {
         background: #003656; } }
-    body.the-minute .article--liveblog .article__body--liveblog {
+    body.the-minute:not(.advert-config--tablet) .article--liveblog .article__body--liveblog {
       background: #005689;
       border: 0;
       bottom: 0;
@@ -2853,14 +2853,14 @@ body.the-minute {
       -webkit-transform: translateZ(0);
       transform: translateZ(0); }
       @media all and (min-width: 75em) {
-        body.the-minute .article--liveblog .article__body--liveblog {
+        body.the-minute:not(.advert-config--tablet) .article--liveblog .article__body--liveblog {
           left: 50%;
           margin-left: -600px;
           width: 1200px; } }
-    body.the-minute .article--liveblog .article__header,
-    body.the-minute .article--liveblog .article__body--liveblog__pinned {
+    body.the-minute:not(.advert-config--tablet) .article--liveblog .article__header,
+    body.the-minute:not(.advert-config--tablet) .article--liveblog .article__body--liveblog__pinned {
       display: none; }
-    body.the-minute .article--liveblog .block {
+    body.the-minute:not(.advert-config--tablet) .article--liveblog .block {
       background: #005689;
       border: 0;
       bottom: 0;
@@ -2871,7 +2871,7 @@ body.the-minute {
       right: 0;
       top: 0; }
       @media all and (min-width: 75em) {
-        body.the-minute .article--liveblog .block::before {
+        body.the-minute:not(.advert-config--tablet) .article--liveblog .block::before {
           background: #ea291f;
           content: "";
           height: 2px;
@@ -2879,68 +2879,68 @@ body.the-minute {
           position: absolute;
           top: 0;
           width: 100%; } }
-      body.the-minute .article--liveblog .block:nth-of-type(3) {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(3) {
         -webkit-transform: translateY(100%);
         transform: translateY(100%); }
-      body.the-minute .article--liveblog .block:nth-of-type(4) {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(4) {
         -webkit-transform: translateY(200%);
         transform: translateY(200%); }
-      body.the-minute .article--liveblog .block:nth-of-type(5) {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(5) {
         -webkit-transform: translateY(300%);
         transform: translateY(300%); }
-      body.the-minute .article--liveblog .block:nth-of-type(6) {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(6) {
         -webkit-transform: translateY(400%);
         transform: translateY(400%); }
-      body.the-minute .article--liveblog .block:nth-of-type(7) {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(7) {
         -webkit-transform: translateY(500%);
         transform: translateY(500%); }
-      body.the-minute .article--liveblog .block:nth-of-type(8) {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(8) {
         -webkit-transform: translateY(600%);
         transform: translateY(600%); }
-      body.the-minute .article--liveblog .block:nth-of-type(9) {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(9) {
         -webkit-transform: translateY(700%);
         transform: translateY(700%); }
-      body.the-minute .article--liveblog .block:nth-of-type(10) {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(10) {
         -webkit-transform: translateY(800%);
         transform: translateY(800%); }
-      body.the-minute .article--liveblog .block:nth-of-type(11) {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(11) {
         -webkit-transform: translateY(900%);
         transform: translateY(900%); }
-      body.the-minute .article--liveblog .block:nth-of-type(12) {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(12) {
         -webkit-transform: translateY(1000%);
         transform: translateY(1000%); }
-      body.the-minute .article--liveblog .block:nth-of-type(13) {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(13) {
         -webkit-transform: translateY(1100%);
         transform: translateY(1100%); }
-      body.the-minute .article--liveblog .block:nth-of-type(14) {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(14) {
         -webkit-transform: translateY(1200%);
         transform: translateY(1200%); }
-      body.the-minute .article--liveblog .block:nth-of-type(15) {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(15) {
         -webkit-transform: translateY(1300%);
         transform: translateY(1300%); }
-      body.the-minute .article--liveblog .block:nth-of-type(16) {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(16) {
         -webkit-transform: translateY(1400%);
         transform: translateY(1400%); }
-      body.the-minute .article--liveblog .block:nth-of-type(17) {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(17) {
         -webkit-transform: translateY(1500%);
         transform: translateY(1500%); }
-      body.the-minute .article--liveblog .block:nth-of-type(18) {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(18) {
         -webkit-transform: translateY(1600%);
         transform: translateY(1600%); }
-      body.the-minute .article--liveblog .block:nth-of-type(19) {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(19) {
         -webkit-transform: translateY(1700%);
         transform: translateY(1700%); }
-      body.the-minute .article--liveblog .block:nth-of-type(20) {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(20) {
         -webkit-transform: translateY(1800%);
         transform: translateY(1800%); }
-      body.the-minute .article--liveblog .block .block__time {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block .block__time {
         display: none; }
-      body.the-minute .article--liveblog .block .block__body {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block .block__body {
         position: absolute; }
-      body.the-minute .article--liveblog .block .block__updated {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block .block__updated {
         display: none; }
-      body.the-minute .article--liveblog .block .from-content-api h2,
-      body.the-minute .article--liveblog .block .from-content-api p {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api h2,
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api p {
         color: #fff;
         margin: 0 12px 18px;
         max-width: 460px;
@@ -2948,68 +2948,68 @@ body.the-minute {
         position: relative;
         z-index: 10; }
         @media all and (max-width: 320px) {
-          body.the-minute .article--liveblog .block .from-content-api h2,
-          body.the-minute .article--liveblog .block .from-content-api p {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api h2,
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api p {
             margin: 0 8px 8px; } }
         @media all and (max-width: 320px) and (min-height: 481px) {
-          body.the-minute .article--liveblog .block .from-content-api h2,
-          body.the-minute .article--liveblog .block .from-content-api p {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api h2,
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api p {
             margin-bottom: 12px; } }
         @media all and (min-width: 56.25em) {
-          body.the-minute .article--liveblog .block .from-content-api h2,
-          body.the-minute .article--liveblog .block .from-content-api p {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api h2,
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api p {
             margin-left: 40px; } }
-      body.the-minute .article--liveblog .block .from-content-api p {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api p {
         font: bold 1.6rem/2.1rem "Guardian Text Egyptian Web", Georgia, serif; }
         @media all and (max-width: 320px) {
-          body.the-minute .article--liveblog .block .from-content-api p {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api p {
             font-size: 1.6rem;
             line-height: 1.8rem; } }
-        body.the-minute .article--liveblog .block .from-content-api p a {
+        body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api p a {
           background: transparent;
           border-bottom: 1px solid #fff;
           color: #fff;
           position: relative;
           text-shadow: none; }
-      body.the-minute .article--liveblog .block .from-content-api h2 {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api h2 {
         font: 100 3.2rem/3.4rem "Guardian Egyptian Web", Georgia, serif; }
         @media all and (max-width: 320px) {
-          body.the-minute .article--liveblog .block .from-content-api h2 {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api h2 {
             font-size: 3rem;
             line-height: 3rem; } }
-        body.the-minute .article--liveblog .block .from-content-api h2 .counter {
+        body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api h2 .counter {
           color: #ea291f;
           display: inline-block;
           font-weight: 600;
           margin-right: 4px; }
-      body.the-minute .article--liveblog .block .from-content-api blockquote {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api blockquote {
         max-width: 460px;
         width: 85%; }
         @media all and (max-width: 320px) {
-          body.the-minute .article--liveblog .block .from-content-api blockquote {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api blockquote {
             width: 100%; } }
-        body.the-minute .article--liveblog .block .from-content-api blockquote.quoted {
+        body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api blockquote.quoted {
           padding: 0;
           margin: 0 12px 24px; }
           @media all and (max-width: 320px) {
-            body.the-minute .article--liveblog .block .from-content-api blockquote.quoted {
+            body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api blockquote.quoted {
               margin: 0 8px 8px;
               width: calc(100% - 16px); } }
           @media all and (min-width: 56.25em) {
-            body.the-minute .article--liveblog .block .from-content-api blockquote.quoted {
+            body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api blockquote.quoted {
               margin-left: 40px; } }
-          body.the-minute .article--liveblog .block .from-content-api blockquote.quoted::before {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api blockquote.quoted::before {
             content: ""; }
-          body.the-minute .article--liveblog .block .from-content-api blockquote.quoted > p {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api blockquote.quoted > p {
             font: 600 1.7rem/2.2rem "Guardian Egyptian Web", Georgia, serif;
             margin: -15px 0 0 0;
             padding: 0;
             width: 100%; }
             @media all and (max-width: 320px) {
-              body.the-minute .article--liveblog .block .from-content-api blockquote.quoted > p {
+              body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api blockquote.quoted > p {
                 font-size: 1.6rem;
                 line-height: 1.8rem; } }
-            body.the-minute .article--liveblog .block .from-content-api blockquote.quoted > p::before {
+            body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api blockquote.quoted > p::before {
               color: #ea291f;
               content: "\e092";
               display: inline-block;
@@ -3017,11 +3017,11 @@ body.the-minute {
               margin-right: 6px;
               position: relative;
               top: 2px; }
-      body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element--thumbnail {
         margin: 0;
         z-index: 15;
         z-index: 20; }
-        body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail .figure__inner {
+        body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element--thumbnail .figure__inner {
           background: #005689;
           border: 0;
           bottom: 0;
@@ -3033,15 +3033,15 @@ body.the-minute {
           top: 0;
           top: 50%;
           z-index: 15; }
-          body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail .figure__inner.the-minute__background-media {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element--thumbnail .figure__inner.the-minute__background-media {
             background-size: cover;
             background-position: 50% 50%;
             background-repeat: no-repeat; }
-          body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail .figure__inner img {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element--thumbnail .figure__inner img {
             height: 100%;
             object-fit: cover;
             width: 100%; }
-        body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail figcaption {
+        body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element--thumbnail figcaption {
           border: 0;
           padding: 2px 80px 8px 12px;
           width: 100%;
@@ -3053,15 +3053,15 @@ body.the-minute {
           left: 0;
           position: absolute; }
           @media all and (max-width: 320px) {
-            body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail figcaption {
+            body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element--thumbnail figcaption {
               background: rgba(234, 41, 31, 0.6);
               padding-left: 8px;
               padding-right: 72px; } }
           @media all and (min-width: 56.25em) {
-            body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail figcaption {
+            body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element--thumbnail figcaption {
               padding-left: 40px; } }
-          body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail figcaption .element-image__caption,
-          body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail figcaption .element-image__credit {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element--thumbnail figcaption .element-image__caption,
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element--thumbnail figcaption .element-image__credit {
             overflow: hidden;
             text-overflow: ellipsis;
             word-wrap: break-word;
@@ -3072,11 +3072,11 @@ body.the-minute {
             font-size: 1.3rem;
             line-height: 1.6rem;
             max-width: 460px; }
-          body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail figcaption .element-image__credit {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element--thumbnail figcaption .element-image__credit {
             font-size: 1.2rem;
             line-height: 1.5rem;
             margin-top: 2px; }
-      body.the-minute .article--liveblog .block .from-content-api figure.element-tweet {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element-tweet {
         border: 0;
         bottom: 0;
         left: 0;
@@ -3087,15 +3087,15 @@ body.the-minute {
         top: 0;
         font-size: 0;
         text-align: center; }
-        body.the-minute .article--liveblog .block .from-content-api figure.element-tweet::before {
+        body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element-tweet::before {
           content: "";
           display: inline-block;
           height: 100%;
           vertical-align: middle; }
-        body.the-minute .article--liveblog .block .from-content-api figure.element-tweet iframe {
+        body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element-tweet iframe {
           display: inline-block !important;
           vertical-align: middle; }
-        body.the-minute .article--liveblog .block .from-content-api figure.element-tweet blockquote {
+        body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element-tweet blockquote {
           color: #fff;
           display: inline-block;
           margin: 0 12px 120px;
@@ -3105,16 +3105,16 @@ body.the-minute {
           vertical-align: middle;
           width: 75%; }
           @media all and (min-width: 56.25em) {
-            body.the-minute .article--liveblog .block .from-content-api figure.element-tweet blockquote {
+            body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element-tweet blockquote {
               margin-left: 40px; } }
-          body.the-minute .article--liveblog .block .from-content-api figure.element-tweet blockquote::before {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element-tweet blockquote::before {
             content: ""; }
-          body.the-minute .article--liveblog .block .from-content-api figure.element-tweet blockquote p {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element-tweet blockquote p {
             font: 600 1.7rem/2.2rem "Guardian Egyptian Web", Georgia, serif;
             margin: 0;
             padding: 0;
             width: 100%; }
-            body.the-minute .article--liveblog .block .from-content-api figure.element-tweet blockquote p::before {
+            body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element-tweet blockquote p::before {
               color: #ea291f;
               content: "\e06b";
               display: inline-block;
@@ -3122,7 +3122,7 @@ body.the-minute {
               margin-right: 6px;
               position: relative;
               top: 4px; }
-      body.the-minute .article--liveblog .block .from-content-api aside.element-rich-link {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api aside.element-rich-link {
         border: none;
         float: none;
         margin: -6px 12px 18px;
@@ -3130,75 +3130,75 @@ body.the-minute {
         padding: 0;
         width: calc(100% - 24px); }
         @media all and (max-width: 320px) {
-          body.the-minute .article--liveblog .block .from-content-api aside.element-rich-link {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api aside.element-rich-link {
             margin-left: 8px;
             margin-right: 8px;
             margin-top: -3px;
             width: calc(100% - 16px); } }
         @media all and (max-width: 320px) and (min-height: 481px) {
-          body.the-minute .article--liveblog .block .from-content-api aside.element-rich-link {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api aside.element-rich-link {
             margin-top: 0; } }
         @media all and (min-width: 56.25em) {
-          body.the-minute .article--liveblog .block .from-content-api aside.element-rich-link {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api aside.element-rich-link {
             margin-left: 40px; } }
-        body.the-minute .article--liveblog .block .from-content-api aside.element-rich-link p {
+        body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api aside.element-rich-link p {
           margin: 0;
           padding: 0;
           width: 100%; }
-        body.the-minute .article--liveblog .block .from-content-api aside.element-rich-link a {
+        body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api aside.element-rich-link a {
           background: transparent;
           border-bottom: 1px solid #fff;
           color: #fff !important;
           display: inline;
           position: relative;
           text-shadow: none; }
-          body.the-minute .article--liveblog .block .from-content-api aside.element-rich-link a::before {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api aside.element-rich-link a::before {
             content: "";
             display: none; }
-      body.the-minute .article--liveblog .block.is-thumbnail .from-content-api p {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api p {
         font-weight: normal; }
       @media all and (min-width: 56.25em) {
-        body.the-minute .article--liveblog .block.is-thumbnail .from-content-api {
+        body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api {
           padding-top: 135px; }
-          body.the-minute .article--liveblog .block.is-thumbnail .from-content-api h2 {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api h2 {
             left: 40px;
             margin: 0;
             padding: 0;
             position: absolute;
             top: 12px; }
-          body.the-minute .article--liveblog .block.is-thumbnail .from-content-api h2:first-child + *,
-          body.the-minute .article--liveblog .block.is-thumbnail .from-content-api > *:first-child {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api h2:first-child + *,
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api > *:first-child {
             margin-top: -15px;
             padding-top: 0; }
-          body.the-minute .article--liveblog .block.is-thumbnail .from-content-api > p,
-          body.the-minute .article--liveblog .block.is-thumbnail .from-content-api > blockquote,
-          body.the-minute .article--liveblog .block.is-thumbnail .from-content-api > aside {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api > p,
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api > blockquote,
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api > aside {
             margin-left: 40px;
             margin-top: 0;
             width: 40%; }
-          body.the-minute .article--liveblog .block.is-thumbnail .from-content-api figure.element--thumbnail {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api figure.element--thumbnail {
             background: #005689;
             max-width: 100%;
             position: absolute;
             right: 80px;
             top: 135px;
             width: calc(55% - 80px); }
-            body.the-minute .article--liveblog .block.is-thumbnail .from-content-api figure.element--thumbnail::before {
+            body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api figure.element--thumbnail::before {
               content: "";
               background: rgba(255, 255, 255, 0.3);
               height: 2000px;
               left: -6px;
               position: absolute;
               width: 1px; }
-            body.the-minute .article--liveblog .block.is-thumbnail .from-content-api figure.element--thumbnail .figure__inner,
-            body.the-minute .article--liveblog .block.is-thumbnail .from-content-api figure.element--thumbnail figcaption {
+            body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api figure.element--thumbnail .figure__inner,
+            body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api figure.element--thumbnail figcaption {
               position: static; }
-            body.the-minute .article--liveblog .block.is-thumbnail .from-content-api figure.element--thumbnail figcaption {
+            body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api figure.element--thumbnail figcaption {
               background: transparent;
               color: rgba(255, 255, 255, 0.7);
               margin: 0 0 0 2px;
               padding: 0; } }
-      body.the-minute .article--liveblog .block.block--live-key-event .from-content-api {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api {
         display: -webkit-flex;
         display: flex;
         height: 100%;
@@ -3207,17 +3207,17 @@ body.the-minute {
         width: 100%;
         -webkit-flex-direction: column;
         flex-direction: column; }
-        body.the-minute .article--liveblog .block.block--live-key-event .from-content-api > :first-child,
-        body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure.element-tweet blockquote {
+        body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api > :first-child,
+        body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure.element-tweet blockquote {
           margin-top: 12px;
           padding-top: 12px;
           position: relative; }
           @media all and (max-width: 320px) {
-            body.the-minute .article--liveblog .block.block--live-key-event .from-content-api > :first-child,
-            body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure.element-tweet blockquote {
+            body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api > :first-child,
+            body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure.element-tweet blockquote {
               margin-top: 8px; } }
-          body.the-minute .article--liveblog .block.block--live-key-event .from-content-api > :first-child::before,
-          body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure.element-tweet blockquote::before {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api > :first-child::before,
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure.element-tweet blockquote::before {
             background-color: #ea291f;
             content: "";
             height: 5px;
@@ -3225,9 +3225,9 @@ body.the-minute {
             position: absolute;
             top: 0;
             width: 50%; }
-        body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) {
+        body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) {
           margin: 0; }
-          body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner {
             background: #005689;
             border: 0;
             bottom: 0;
@@ -3237,7 +3237,7 @@ body.the-minute {
             position: absolute;
             right: 0;
             top: 0; }
-            body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner::before {
+            body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner::before {
               background: linear-gradient(transparent, transparent 25%, rgba(0, 0, 0, 0.8));
               content: "";
               height: 100%;
@@ -3246,17 +3246,17 @@ body.the-minute {
               width: 100%;
               z-index: 1; }
               @media all and (max-width: 320px) {
-                body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner::before {
+                body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner::before {
                   background: linear-gradient(transparent, rgba(0, 0, 0, 0.8)); } }
-            body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner.the-minute__background-media {
+            body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner.the-minute__background-media {
               background-size: cover;
               background-position: 50% 50%;
               background-repeat: no-repeat; }
-            body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner img {
+            body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner img {
               height: 100%;
               object-fit: cover;
               width: 100%; }
-          body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption {
             border: 0;
             padding: 2px 80px 8px 12px;
             width: 100%;
@@ -3264,14 +3264,14 @@ body.the-minute {
             color: rgba(255, 255, 255, 0.75);
             position: relative; }
             @media all and (max-width: 320px) {
-              body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption {
+              body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption {
                 padding-left: 8px;
                 padding-right: 72px; } }
             @media all and (min-width: 56.25em) {
-              body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption {
+              body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption {
                 padding-left: 40px; } }
-            body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption .element-image__caption,
-            body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption .element-image__credit {
+            body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption .element-image__caption,
+            body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption .element-image__credit {
               overflow: hidden;
               text-overflow: ellipsis;
               word-wrap: break-word;
@@ -3282,26 +3282,26 @@ body.the-minute {
               font-size: 1.3rem;
               line-height: 1.6rem;
               max-width: 460px; }
-            body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption .element-image__credit {
+            body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption .element-image__credit {
               font-size: 1.2rem;
               line-height: 1.5rem;
               margin-top: 2px; }
-      body.the-minute .article--liveblog .block.block--live-key-event.is-thumbnail .from-content-api {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event.is-thumbnail .from-content-api {
         height: 50%;
         justify-content: flex-start; }
-      body.the-minute .article--liveblog .block.block--live-key-event.is-textonly .from-content-api {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event.is-textonly .from-content-api {
         height: calc(100% - 60px);
         overflow: hidden;
         padding-bottom: 60px; }
-      body.the-minute .article--liveblog .block.block--live-summary .from-content-api > :first-child {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api > :first-child {
         margin-top: 0;
         padding-top: 12px; }
         @media all and (max-width: 320px) {
-          body.the-minute .article--liveblog .block.block--live-summary .from-content-api > :first-child {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api > :first-child {
             padding-top: 8px; } }
-      body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) {
+      body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) {
         margin: 0; }
-        body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) .figure__inner {
+        body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) .figure__inner {
           background: #005689;
           border: 0;
           bottom: 0;
@@ -3311,7 +3311,7 @@ body.the-minute {
           position: absolute;
           right: 0;
           top: 0; }
-          body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) .figure__inner::before {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) .figure__inner::before {
             background: linear-gradient(rgba(0, 0, 0, 0.7), transparent 65%, transparent 85%, rgba(0, 0, 0, 0.8));
             content: "";
             height: 100%;
@@ -3319,15 +3319,15 @@ body.the-minute {
             position: absolute;
             width: 100%;
             z-index: 1; }
-          body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) .figure__inner.the-minute__background-media {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) .figure__inner.the-minute__background-media {
             background-size: cover;
             background-position: 50% 50%;
             background-repeat: no-repeat; }
-          body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) .figure__inner img {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) .figure__inner img {
             height: 100%;
             object-fit: cover;
             width: 100%; }
-        body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption {
+        body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption {
           border: 0;
           padding: 2px 80px 8px 12px;
           width: 100%;
@@ -3337,14 +3337,14 @@ body.the-minute {
           left: 0;
           position: absolute; }
           @media all and (max-width: 320px) {
-            body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption {
+            body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption {
               padding-left: 8px;
               padding-right: 72px; } }
           @media all and (min-width: 56.25em) {
-            body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption {
+            body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption {
               padding-left: 40px; } }
-          body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption .element-image__caption,
-          body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption .element-image__credit {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption .element-image__caption,
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption .element-image__credit {
             overflow: hidden;
             text-overflow: ellipsis;
             word-wrap: break-word;
@@ -3355,20 +3355,20 @@ body.the-minute {
             font-size: 1.3rem;
             line-height: 1.6rem;
             max-width: 460px; }
-          body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption .element-image__credit {
+          body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption .element-image__credit {
             font-size: 1.2rem;
             line-height: 1.5rem;
             margin-top: 2px; }
-    body.the-minute .article--liveblog .block--live-key-event {
+    body.the-minute:not(.advert-config--tablet) .article--liveblog .block--live-key-event {
       border: none; }
-  body.the-minute .related-content {
+  body.the-minute:not(.advert-config--tablet) .related-content {
     position: absolute;
     top: 100%;
     width: 100%; }
-  body.the-minute .loading--liveblog,
-  body.the-minute .more--live-blogs,
-  body.the-minute .tags,
-  body.the-minute .comments {
+  body.the-minute:not(.advert-config--tablet) .loading--liveblog,
+  body.the-minute:not(.advert-config--tablet) .more--live-blogs,
+  body.the-minute:not(.advert-config--tablet) .tags,
+  body.the-minute:not(.advert-config--tablet) .comments {
     display: none; }
 
 .article--standard .article__body,

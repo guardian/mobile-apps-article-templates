@@ -4115,6 +4115,8 @@
   #sandbox .article--liveblog {
     background-color: #eaeaea;
     border-bottom: 0; }
+    #sandbox .article--liveblog:not(.the-minute) .the-minute__header {
+      display: none; }
     #sandbox .article--liveblog .article__header {
       background-color: #fff; }
       #sandbox .article--liveblog .article__header .section {
@@ -4162,15 +4164,13 @@
       margin: 12px 12px 0px 8px; }
   #sandbox .android .article--liveblog .article__body--liveblog__pinned figcaption {
     padding: 6px 12px 24px 12px; }
-  #sandbox body.the-minute .article--liveblog .block .block__body {
+  #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .block__body {
     height: 100%;
     width: 100%; }
-  #sandbox body:not(.the-minute) .the-minute__header {
-    display: none; }
-  #sandbox body.the-minute {
+  #sandbox body.the-minute:not(.advert-config--tablet) {
     background: #005689;
     height: 100%; }
-    #sandbox body.the-minute .the-minute__header {
+    #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__header {
       background: #005689;
       border: 0;
       bottom: 0;
@@ -4188,9 +4188,10 @@
       width: 100%;
       -webkit-flex-direction: column;
       flex-direction: column;
-      padding-bottom: 60px; }
-    #sandbox body.the-minute .the-minute__headline,
-    #sandbox body.the-minute .the-minute__standfirst {
+      padding-bottom: 60px;
+      display: block; }
+    #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__headline,
+    #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__standfirst {
       color: #fff;
       font: 100 4.3rem/4.3rem "Guardian Egyptian Web", Georgia, serif;
       margin: 0 12px 12px;
@@ -4198,39 +4199,39 @@
       width: 80%;
       z-index: 10; }
       @media all and (max-width: 320px) {
-        #sandbox body.the-minute .the-minute__headline,
-        #sandbox body.the-minute .the-minute__standfirst {
+        #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__headline,
+        #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__standfirst {
           font-size: 3.5rem;
           line-height: 3.5rem;
           margin: 0 8px 8px;
           width: calc(100% - 16px); } }
       @media all and (max-width: 320px) and (min-height: 481px) {
-        #sandbox body.the-minute .the-minute__headline,
-        #sandbox body.the-minute .the-minute__standfirst {
+        #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__headline,
+        #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__standfirst {
           margin-bottom: 12px; } }
       @media all and (min-width: 56.25em) {
-        #sandbox body.the-minute .the-minute__headline,
-        #sandbox body.the-minute .the-minute__standfirst {
+        #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__headline,
+        #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__standfirst {
           margin-left: 40px; } }
-    #sandbox body.the-minute .the-minute__standfirst {
+    #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__standfirst {
       font: bold 1.7rem/2.2rem "Guardian Text Egyptian Web", Georgia, serif; }
       @media all and (max-width: 320px) {
-        #sandbox body.the-minute .the-minute__standfirst {
+        #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__standfirst {
           font-size: 1.5rem;
           line-height: 1.8rem; } }
       @media all and (max-width: 320px) and (min-height: 481px) {
-        #sandbox body.the-minute .the-minute__standfirst {
+        #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__standfirst {
           font-size: 1.6rem;
           line-height: 2.0rem; } }
-      #sandbox body.the-minute .the-minute__standfirst .the-minute__date {
+      #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__standfirst .the-minute__date {
         color: #ea291f;
         display: block;
         font: 600 1.7rem/2.2rem "Guardian Egyptian Web", Georgia, serif; }
-    #sandbox body.the-minute .the-minute__main-media {
+    #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__main-media {
       position: static; }
-      #sandbox body.the-minute .the-minute__main-media figure {
+      #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__main-media figure {
         margin: 0; }
-        #sandbox body.the-minute .the-minute__main-media figure .element__inner {
+        #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__main-media figure .element__inner {
           background: #005689;
           border: 0;
           bottom: 0;
@@ -4241,7 +4242,7 @@
           right: 0;
           top: 0;
           padding-bottom: 0 !important; }
-          #sandbox body.the-minute .the-minute__main-media figure .element__inner::before {
+          #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__main-media figure .element__inner::before {
             background: linear-gradient(transparent, transparent 25%, rgba(0, 0, 0, 0.8));
             content: "";
             height: 100%;
@@ -4250,17 +4251,17 @@
             width: 100%;
             z-index: 1; }
             @media all and (max-width: 320px) {
-              #sandbox body.the-minute .the-minute__main-media figure .element__inner::before {
+              #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__main-media figure .element__inner::before {
                 background: linear-gradient(transparent, rgba(0, 0, 0, 0.8)); } }
-          #sandbox body.the-minute .the-minute__main-media figure .element__inner.the-minute__background-media {
+          #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__main-media figure .element__inner.the-minute__background-media {
             background-size: cover;
             background-position: 50% 50%;
             background-repeat: no-repeat; }
-        #sandbox body.the-minute .the-minute__main-media figure img {
+        #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__main-media figure img {
           height: 100%;
           object-fit: cover;
           width: 100%; }
-      #sandbox body.the-minute .the-minute__main-media figcaption {
+      #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__main-media figcaption {
         border: 0;
         bottom: 0;
         color: rgba(255, 255, 255, 0.75);
@@ -4269,14 +4270,14 @@
         width: 100%;
         z-index: 1; }
         @media all and (max-width: 320px) {
-          #sandbox body.the-minute .the-minute__main-media figcaption {
+          #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__main-media figcaption {
             padding-left: 8px;
             padding-right: 72px; } }
         @media all and (min-width: 56.25em) {
-          #sandbox body.the-minute .the-minute__main-media figcaption {
+          #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__main-media figcaption {
             padding-left: 40px; } }
-        #sandbox body.the-minute .the-minute__main-media figcaption .main-media__caption__text span:first-child,
-        #sandbox body.the-minute .the-minute__main-media figcaption .main-media__caption__credit {
+        #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__main-media figcaption .main-media__caption__text span:first-child,
+        #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__main-media figcaption .main-media__caption__credit {
           overflow: hidden;
           text-overflow: ellipsis;
           word-wrap: break-word;
@@ -4287,20 +4288,20 @@
           font-size: 1.3rem;
           line-height: 1.6rem;
           max-width: 460px; }
-        #sandbox body.the-minute .the-minute__main-media figcaption .main-media__caption__credit {
+        #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__main-media figcaption .main-media__caption__credit {
           font-size: 1.2rem;
           line-height: 1.5rem;
           margin-top: 2px; }
-        #sandbox body.the-minute .the-minute__main-media figcaption .main-media__caption__icon {
+        #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__main-media figcaption .main-media__caption__icon {
           display: none; }
-        #sandbox body.the-minute .the-minute__main-media figcaption .main-media__caption__text span:first-child::before {
+        #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__main-media figcaption .main-media__caption__text span:first-child::before {
           content: "\e044";
           display: inline-block;
           font: normal 1.3rem/1 "Guardian Icons", Georgia, serif;
           margin-right: 6px;
           position: relative;
           top: 2px; }
-    #sandbox body.the-minute .the-minute__nav {
+    #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__nav {
       border-left: 1px dotted rgba(255, 255, 255, 0.75);
       bottom: 0;
       height: 56px;
@@ -4311,10 +4312,10 @@
       -webkit-transition: opacity 100ms linear;
       transition: opacity 100ms linear; }
       @media all and (min-width: 75em) {
-        #sandbox body.the-minute .the-minute__nav {
+        #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__nav {
           margin-right: -600px;
           right: 50%; } }
-      #sandbox body.the-minute .the-minute__nav-button {
+      #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__nav-button {
         border: 1px solid rgba(255, 255, 255, 0.5);
         border-radius: 50%;
         bottom: 12px;
@@ -4323,7 +4324,7 @@
         position: absolute;
         right: 12px;
         width: 42px; }
-        #sandbox body.the-minute .the-minute__nav-button::after {
+        #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__nav-button::after {
           color: #fff;
           content: '\e001';
           font-family: "Guardian Icons", Georgia, serif;
@@ -4333,9 +4334,9 @@
           top: 50%;
           -webkit-transform: translateX(-50%) translateY(calc(-50% - 2px));
           transform: translateX(-50%) translateY(calc(-50% - 2px)); }
-      #sandbox body.the-minute .the-minute__nav.hide {
+      #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__nav.hide {
         opacity: 0; }
-    #sandbox body.the-minute .article--liveblog {
+    #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog {
       background: #005689;
       border: 0;
       bottom: 0;
@@ -4346,9 +4347,9 @@
       right: 0;
       top: 0; }
       @media all and (min-width: 75em) {
-        #sandbox body.the-minute .article--liveblog {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog {
           background: #003656; } }
-      #sandbox body.the-minute .article--liveblog .article__body--liveblog {
+      #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .article__body--liveblog {
         background: #005689;
         border: 0;
         bottom: 0;
@@ -4362,14 +4363,14 @@
         -webkit-transform: translateZ(0);
         transform: translateZ(0); }
         @media all and (min-width: 75em) {
-          #sandbox body.the-minute .article--liveblog .article__body--liveblog {
+          #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .article__body--liveblog {
             left: 50%;
             margin-left: -600px;
             width: 1200px; } }
-      #sandbox body.the-minute .article--liveblog .article__header,
-      #sandbox body.the-minute .article--liveblog .article__body--liveblog__pinned {
+      #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .article__header,
+      #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .article__body--liveblog__pinned {
         display: none; }
-      #sandbox body.the-minute .article--liveblog .block {
+      #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block {
         background: #005689;
         border: 0;
         bottom: 0;
@@ -4380,7 +4381,7 @@
         right: 0;
         top: 0; }
         @media all and (min-width: 75em) {
-          #sandbox body.the-minute .article--liveblog .block::before {
+          #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block::before {
             background: #ea291f;
             content: "";
             height: 2px;
@@ -4388,68 +4389,68 @@
             position: absolute;
             top: 0;
             width: 100%; } }
-        #sandbox body.the-minute .article--liveblog .block:nth-of-type(3) {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(3) {
           -webkit-transform: translateY(100%);
           transform: translateY(100%); }
-        #sandbox body.the-minute .article--liveblog .block:nth-of-type(4) {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(4) {
           -webkit-transform: translateY(200%);
           transform: translateY(200%); }
-        #sandbox body.the-minute .article--liveblog .block:nth-of-type(5) {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(5) {
           -webkit-transform: translateY(300%);
           transform: translateY(300%); }
-        #sandbox body.the-minute .article--liveblog .block:nth-of-type(6) {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(6) {
           -webkit-transform: translateY(400%);
           transform: translateY(400%); }
-        #sandbox body.the-minute .article--liveblog .block:nth-of-type(7) {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(7) {
           -webkit-transform: translateY(500%);
           transform: translateY(500%); }
-        #sandbox body.the-minute .article--liveblog .block:nth-of-type(8) {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(8) {
           -webkit-transform: translateY(600%);
           transform: translateY(600%); }
-        #sandbox body.the-minute .article--liveblog .block:nth-of-type(9) {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(9) {
           -webkit-transform: translateY(700%);
           transform: translateY(700%); }
-        #sandbox body.the-minute .article--liveblog .block:nth-of-type(10) {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(10) {
           -webkit-transform: translateY(800%);
           transform: translateY(800%); }
-        #sandbox body.the-minute .article--liveblog .block:nth-of-type(11) {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(11) {
           -webkit-transform: translateY(900%);
           transform: translateY(900%); }
-        #sandbox body.the-minute .article--liveblog .block:nth-of-type(12) {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(12) {
           -webkit-transform: translateY(1000%);
           transform: translateY(1000%); }
-        #sandbox body.the-minute .article--liveblog .block:nth-of-type(13) {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(13) {
           -webkit-transform: translateY(1100%);
           transform: translateY(1100%); }
-        #sandbox body.the-minute .article--liveblog .block:nth-of-type(14) {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(14) {
           -webkit-transform: translateY(1200%);
           transform: translateY(1200%); }
-        #sandbox body.the-minute .article--liveblog .block:nth-of-type(15) {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(15) {
           -webkit-transform: translateY(1300%);
           transform: translateY(1300%); }
-        #sandbox body.the-minute .article--liveblog .block:nth-of-type(16) {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(16) {
           -webkit-transform: translateY(1400%);
           transform: translateY(1400%); }
-        #sandbox body.the-minute .article--liveblog .block:nth-of-type(17) {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(17) {
           -webkit-transform: translateY(1500%);
           transform: translateY(1500%); }
-        #sandbox body.the-minute .article--liveblog .block:nth-of-type(18) {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(18) {
           -webkit-transform: translateY(1600%);
           transform: translateY(1600%); }
-        #sandbox body.the-minute .article--liveblog .block:nth-of-type(19) {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(19) {
           -webkit-transform: translateY(1700%);
           transform: translateY(1700%); }
-        #sandbox body.the-minute .article--liveblog .block:nth-of-type(20) {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block:nth-of-type(20) {
           -webkit-transform: translateY(1800%);
           transform: translateY(1800%); }
-        #sandbox body.the-minute .article--liveblog .block .block__time {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .block__time {
           display: none; }
-        #sandbox body.the-minute .article--liveblog .block .block__body {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .block__body {
           position: absolute; }
-        #sandbox body.the-minute .article--liveblog .block .block__updated {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .block__updated {
           display: none; }
-        #sandbox body.the-minute .article--liveblog .block .from-content-api h2,
-        #sandbox body.the-minute .article--liveblog .block .from-content-api p {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api h2,
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api p {
           color: #fff;
           margin: 0 12px 18px;
           max-width: 460px;
@@ -4457,68 +4458,68 @@
           position: relative;
           z-index: 10; }
           @media all and (max-width: 320px) {
-            #sandbox body.the-minute .article--liveblog .block .from-content-api h2,
-            #sandbox body.the-minute .article--liveblog .block .from-content-api p {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api h2,
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api p {
               margin: 0 8px 8px; } }
           @media all and (max-width: 320px) and (min-height: 481px) {
-            #sandbox body.the-minute .article--liveblog .block .from-content-api h2,
-            #sandbox body.the-minute .article--liveblog .block .from-content-api p {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api h2,
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api p {
               margin-bottom: 12px; } }
           @media all and (min-width: 56.25em) {
-            #sandbox body.the-minute .article--liveblog .block .from-content-api h2,
-            #sandbox body.the-minute .article--liveblog .block .from-content-api p {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api h2,
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api p {
               margin-left: 40px; } }
-        #sandbox body.the-minute .article--liveblog .block .from-content-api p {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api p {
           font: bold 1.6rem/2.1rem "Guardian Text Egyptian Web", Georgia, serif; }
           @media all and (max-width: 320px) {
-            #sandbox body.the-minute .article--liveblog .block .from-content-api p {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api p {
               font-size: 1.6rem;
               line-height: 1.8rem; } }
-          #sandbox body.the-minute .article--liveblog .block .from-content-api p a {
+          #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api p a {
             background: transparent;
             border-bottom: 1px solid #fff;
             color: #fff;
             position: relative;
             text-shadow: none; }
-        #sandbox body.the-minute .article--liveblog .block .from-content-api h2 {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api h2 {
           font: 100 3.2rem/3.4rem "Guardian Egyptian Web", Georgia, serif; }
           @media all and (max-width: 320px) {
-            #sandbox body.the-minute .article--liveblog .block .from-content-api h2 {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api h2 {
               font-size: 3rem;
               line-height: 3rem; } }
-          #sandbox body.the-minute .article--liveblog .block .from-content-api h2 .counter {
+          #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api h2 .counter {
             color: #ea291f;
             display: inline-block;
             font-weight: 600;
             margin-right: 4px; }
-        #sandbox body.the-minute .article--liveblog .block .from-content-api blockquote {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api blockquote {
           max-width: 460px;
           width: 85%; }
           @media all and (max-width: 320px) {
-            #sandbox body.the-minute .article--liveblog .block .from-content-api blockquote {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api blockquote {
               width: 100%; } }
-          #sandbox body.the-minute .article--liveblog .block .from-content-api blockquote.quoted {
+          #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api blockquote.quoted {
             padding: 0;
             margin: 0 12px 24px; }
             @media all and (max-width: 320px) {
-              #sandbox body.the-minute .article--liveblog .block .from-content-api blockquote.quoted {
+              #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api blockquote.quoted {
                 margin: 0 8px 8px;
                 width: calc(100% - 16px); } }
             @media all and (min-width: 56.25em) {
-              #sandbox body.the-minute .article--liveblog .block .from-content-api blockquote.quoted {
+              #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api blockquote.quoted {
                 margin-left: 40px; } }
-            #sandbox body.the-minute .article--liveblog .block .from-content-api blockquote.quoted::before {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api blockquote.quoted::before {
               content: ""; }
-            #sandbox body.the-minute .article--liveblog .block .from-content-api blockquote.quoted > p {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api blockquote.quoted > p {
               font: 600 1.7rem/2.2rem "Guardian Egyptian Web", Georgia, serif;
               margin: -15px 0 0 0;
               padding: 0;
               width: 100%; }
               @media all and (max-width: 320px) {
-                #sandbox body.the-minute .article--liveblog .block .from-content-api blockquote.quoted > p {
+                #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api blockquote.quoted > p {
                   font-size: 1.6rem;
                   line-height: 1.8rem; } }
-              #sandbox body.the-minute .article--liveblog .block .from-content-api blockquote.quoted > p::before {
+              #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api blockquote.quoted > p::before {
                 color: #ea291f;
                 content: "\e092";
                 display: inline-block;
@@ -4526,11 +4527,11 @@
                 margin-right: 6px;
                 position: relative;
                 top: 2px; }
-        #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element--thumbnail {
           margin: 0;
           z-index: 15;
           z-index: 20; }
-          #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail .figure__inner {
+          #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element--thumbnail .figure__inner {
             background: #005689;
             border: 0;
             bottom: 0;
@@ -4542,15 +4543,15 @@
             top: 0;
             top: 50%;
             z-index: 15; }
-            #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail .figure__inner.the-minute__background-media {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element--thumbnail .figure__inner.the-minute__background-media {
               background-size: cover;
               background-position: 50% 50%;
               background-repeat: no-repeat; }
-            #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail .figure__inner img {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element--thumbnail .figure__inner img {
               height: 100%;
               object-fit: cover;
               width: 100%; }
-          #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail figcaption {
+          #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element--thumbnail figcaption {
             border: 0;
             padding: 2px 80px 8px 12px;
             width: 100%;
@@ -4562,15 +4563,15 @@
             left: 0;
             position: absolute; }
             @media all and (max-width: 320px) {
-              #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail figcaption {
+              #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element--thumbnail figcaption {
                 background: rgba(234, 41, 31, 0.6);
                 padding-left: 8px;
                 padding-right: 72px; } }
             @media all and (min-width: 56.25em) {
-              #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail figcaption {
+              #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element--thumbnail figcaption {
                 padding-left: 40px; } }
-            #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail figcaption .element-image__caption,
-            #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail figcaption .element-image__credit {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element--thumbnail figcaption .element-image__caption,
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element--thumbnail figcaption .element-image__credit {
               overflow: hidden;
               text-overflow: ellipsis;
               word-wrap: break-word;
@@ -4581,11 +4582,11 @@
               font-size: 1.3rem;
               line-height: 1.6rem;
               max-width: 460px; }
-            #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element--thumbnail figcaption .element-image__credit {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element--thumbnail figcaption .element-image__credit {
               font-size: 1.2rem;
               line-height: 1.5rem;
               margin-top: 2px; }
-        #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element-tweet {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element-tweet {
           border: 0;
           bottom: 0;
           left: 0;
@@ -4596,15 +4597,15 @@
           top: 0;
           font-size: 0;
           text-align: center; }
-          #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element-tweet::before {
+          #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element-tweet::before {
             content: "";
             display: inline-block;
             height: 100%;
             vertical-align: middle; }
-          #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element-tweet iframe {
+          #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element-tweet iframe {
             display: inline-block !important;
             vertical-align: middle; }
-          #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element-tweet blockquote {
+          #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element-tweet blockquote {
             color: #fff;
             display: inline-block;
             margin: 0 12px 120px;
@@ -4614,16 +4615,16 @@
             vertical-align: middle;
             width: 75%; }
             @media all and (min-width: 56.25em) {
-              #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element-tweet blockquote {
+              #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element-tweet blockquote {
                 margin-left: 40px; } }
-            #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element-tweet blockquote::before {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element-tweet blockquote::before {
               content: ""; }
-            #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element-tweet blockquote p {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element-tweet blockquote p {
               font: 600 1.7rem/2.2rem "Guardian Egyptian Web", Georgia, serif;
               margin: 0;
               padding: 0;
               width: 100%; }
-              #sandbox body.the-minute .article--liveblog .block .from-content-api figure.element-tweet blockquote p::before {
+              #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api figure.element-tweet blockquote p::before {
                 color: #ea291f;
                 content: "\e06b";
                 display: inline-block;
@@ -4631,7 +4632,7 @@
                 margin-right: 6px;
                 position: relative;
                 top: 4px; }
-        #sandbox body.the-minute .article--liveblog .block .from-content-api aside.element-rich-link {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api aside.element-rich-link {
           border: none;
           float: none;
           margin: -6px 12px 18px;
@@ -4639,75 +4640,75 @@
           padding: 0;
           width: calc(100% - 24px); }
           @media all and (max-width: 320px) {
-            #sandbox body.the-minute .article--liveblog .block .from-content-api aside.element-rich-link {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api aside.element-rich-link {
               margin-left: 8px;
               margin-right: 8px;
               margin-top: -3px;
               width: calc(100% - 16px); } }
           @media all and (max-width: 320px) and (min-height: 481px) {
-            #sandbox body.the-minute .article--liveblog .block .from-content-api aside.element-rich-link {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api aside.element-rich-link {
               margin-top: 0; } }
           @media all and (min-width: 56.25em) {
-            #sandbox body.the-minute .article--liveblog .block .from-content-api aside.element-rich-link {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api aside.element-rich-link {
               margin-left: 40px; } }
-          #sandbox body.the-minute .article--liveblog .block .from-content-api aside.element-rich-link p {
+          #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api aside.element-rich-link p {
             margin: 0;
             padding: 0;
             width: 100%; }
-          #sandbox body.the-minute .article--liveblog .block .from-content-api aside.element-rich-link a {
+          #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api aside.element-rich-link a {
             background: transparent;
             border-bottom: 1px solid #fff;
             color: #fff !important;
             display: inline;
             position: relative;
             text-shadow: none; }
-            #sandbox body.the-minute .article--liveblog .block .from-content-api aside.element-rich-link a::before {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .from-content-api aside.element-rich-link a::before {
               content: "";
               display: none; }
-        #sandbox body.the-minute .article--liveblog .block.is-thumbnail .from-content-api p {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api p {
           font-weight: normal; }
         @media all and (min-width: 56.25em) {
-          #sandbox body.the-minute .article--liveblog .block.is-thumbnail .from-content-api {
+          #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api {
             padding-top: 135px; }
-            #sandbox body.the-minute .article--liveblog .block.is-thumbnail .from-content-api h2 {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api h2 {
               left: 40px;
               margin: 0;
               padding: 0;
               position: absolute;
               top: 12px; }
-            #sandbox body.the-minute .article--liveblog .block.is-thumbnail .from-content-api h2:first-child + *,
-            #sandbox body.the-minute .article--liveblog .block.is-thumbnail .from-content-api > *:first-child {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api h2:first-child + *,
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api > *:first-child {
               margin-top: -15px;
               padding-top: 0; }
-            #sandbox body.the-minute .article--liveblog .block.is-thumbnail .from-content-api > p,
-            #sandbox body.the-minute .article--liveblog .block.is-thumbnail .from-content-api > blockquote,
-            #sandbox body.the-minute .article--liveblog .block.is-thumbnail .from-content-api > aside {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api > p,
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api > blockquote,
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api > aside {
               margin-left: 40px;
               margin-top: 0;
               width: 40%; }
-            #sandbox body.the-minute .article--liveblog .block.is-thumbnail .from-content-api figure.element--thumbnail {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api figure.element--thumbnail {
               background: #005689;
               max-width: 100%;
               position: absolute;
               right: 80px;
               top: 135px;
               width: calc(55% - 80px); }
-              #sandbox body.the-minute .article--liveblog .block.is-thumbnail .from-content-api figure.element--thumbnail::before {
+              #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api figure.element--thumbnail::before {
                 content: "";
                 background: rgba(255, 255, 255, 0.3);
                 height: 2000px;
                 left: -6px;
                 position: absolute;
                 width: 1px; }
-              #sandbox body.the-minute .article--liveblog .block.is-thumbnail .from-content-api figure.element--thumbnail .figure__inner,
-              #sandbox body.the-minute .article--liveblog .block.is-thumbnail .from-content-api figure.element--thumbnail figcaption {
+              #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api figure.element--thumbnail .figure__inner,
+              #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api figure.element--thumbnail figcaption {
                 position: static; }
-              #sandbox body.the-minute .article--liveblog .block.is-thumbnail .from-content-api figure.element--thumbnail figcaption {
+              #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.is-thumbnail .from-content-api figure.element--thumbnail figcaption {
                 background: transparent;
                 color: rgba(255, 255, 255, 0.7);
                 margin: 0 0 0 2px;
                 padding: 0; } }
-        #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api {
           display: -webkit-flex;
           display: flex;
           height: 100%;
@@ -4716,17 +4717,17 @@
           width: 100%;
           -webkit-flex-direction: column;
           flex-direction: column; }
-          #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api > :first-child,
-          #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure.element-tweet blockquote {
+          #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api > :first-child,
+          #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure.element-tweet blockquote {
             margin-top: 12px;
             padding-top: 12px;
             position: relative; }
             @media all and (max-width: 320px) {
-              #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api > :first-child,
-              #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure.element-tweet blockquote {
+              #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api > :first-child,
+              #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure.element-tweet blockquote {
                 margin-top: 8px; } }
-            #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api > :first-child::before,
-            #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure.element-tweet blockquote::before {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api > :first-child::before,
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure.element-tweet blockquote::before {
               background-color: #ea291f;
               content: "";
               height: 5px;
@@ -4734,9 +4735,9 @@
               position: absolute;
               top: 0;
               width: 50%; }
-          #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) {
+          #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) {
             margin: 0; }
-            #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner {
               background: #005689;
               border: 0;
               bottom: 0;
@@ -4746,7 +4747,7 @@
               position: absolute;
               right: 0;
               top: 0; }
-              #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner::before {
+              #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner::before {
                 background: linear-gradient(transparent, transparent 25%, rgba(0, 0, 0, 0.8));
                 content: "";
                 height: 100%;
@@ -4755,17 +4756,17 @@
                 width: 100%;
                 z-index: 1; }
                 @media all and (max-width: 320px) {
-                  #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner::before {
+                  #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner::before {
                     background: linear-gradient(transparent, rgba(0, 0, 0, 0.8)); } }
-              #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner.the-minute__background-media {
+              #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner.the-minute__background-media {
                 background-size: cover;
                 background-position: 50% 50%;
                 background-repeat: no-repeat; }
-              #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner img {
+              #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) .figure__inner img {
                 height: 100%;
                 object-fit: cover;
                 width: 100%; }
-            #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption {
               border: 0;
               padding: 2px 80px 8px 12px;
               width: 100%;
@@ -4773,14 +4774,14 @@
               color: rgba(255, 255, 255, 0.75);
               position: relative; }
               @media all and (max-width: 320px) {
-                #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption {
+                #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption {
                   padding-left: 8px;
                   padding-right: 72px; } }
               @media all and (min-width: 56.25em) {
-                #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption {
+                #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption {
                   padding-left: 40px; } }
-              #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption .element-image__caption,
-              #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption .element-image__credit {
+              #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption .element-image__caption,
+              #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption .element-image__credit {
                 overflow: hidden;
                 text-overflow: ellipsis;
                 word-wrap: break-word;
@@ -4791,26 +4792,26 @@
                 font-size: 1.3rem;
                 line-height: 1.6rem;
                 max-width: 460px; }
-              #sandbox body.the-minute .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption .element-image__credit {
+              #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event .from-content-api figure:not(.element--thumbnail) figcaption .element-image__credit {
                 font-size: 1.2rem;
                 line-height: 1.5rem;
                 margin-top: 2px; }
-        #sandbox body.the-minute .article--liveblog .block.block--live-key-event.is-thumbnail .from-content-api {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event.is-thumbnail .from-content-api {
           height: 50%;
           justify-content: flex-start; }
-        #sandbox body.the-minute .article--liveblog .block.block--live-key-event.is-textonly .from-content-api {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-key-event.is-textonly .from-content-api {
           height: calc(100% - 60px);
           overflow: hidden;
           padding-bottom: 60px; }
-        #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api > :first-child {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api > :first-child {
           margin-top: 0;
           padding-top: 12px; }
           @media all and (max-width: 320px) {
-            #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api > :first-child {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api > :first-child {
               padding-top: 8px; } }
-        #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) {
+        #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) {
           margin: 0; }
-          #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) .figure__inner {
+          #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) .figure__inner {
             background: #005689;
             border: 0;
             bottom: 0;
@@ -4820,7 +4821,7 @@
             position: absolute;
             right: 0;
             top: 0; }
-            #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) .figure__inner::before {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) .figure__inner::before {
               background: linear-gradient(rgba(0, 0, 0, 0.7), transparent 65%, transparent 85%, rgba(0, 0, 0, 0.8));
               content: "";
               height: 100%;
@@ -4828,15 +4829,15 @@
               position: absolute;
               width: 100%;
               z-index: 1; }
-            #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) .figure__inner.the-minute__background-media {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) .figure__inner.the-minute__background-media {
               background-size: cover;
               background-position: 50% 50%;
               background-repeat: no-repeat; }
-            #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) .figure__inner img {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) .figure__inner img {
               height: 100%;
               object-fit: cover;
               width: 100%; }
-          #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption {
+          #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption {
             border: 0;
             padding: 2px 80px 8px 12px;
             width: 100%;
@@ -4846,14 +4847,14 @@
             left: 0;
             position: absolute; }
             @media all and (max-width: 320px) {
-              #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption {
+              #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption {
                 padding-left: 8px;
                 padding-right: 72px; } }
             @media all and (min-width: 56.25em) {
-              #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption {
+              #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption {
                 padding-left: 40px; } }
-            #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption .element-image__caption,
-            #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption .element-image__credit {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption .element-image__caption,
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption .element-image__credit {
               overflow: hidden;
               text-overflow: ellipsis;
               word-wrap: break-word;
@@ -4864,20 +4865,20 @@
               font-size: 1.3rem;
               line-height: 1.6rem;
               max-width: 460px; }
-            #sandbox body.the-minute .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption .element-image__credit {
+            #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block.block--live-summary .from-content-api figure:not(.element--thumbnail) figcaption .element-image__credit {
               font-size: 1.2rem;
               line-height: 1.5rem;
               margin-top: 2px; }
-      #sandbox body.the-minute .article--liveblog .block--live-key-event {
+      #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block--live-key-event {
         border: none; }
-    #sandbox body.the-minute .related-content {
+    #sandbox body.the-minute:not(.advert-config--tablet) .related-content {
       position: absolute;
       top: 100%;
       width: 100%; }
-    #sandbox body.the-minute .loading--liveblog,
-    #sandbox body.the-minute .more--live-blogs,
-    #sandbox body.the-minute .tags,
-    #sandbox body.the-minute .comments {
+    #sandbox body.the-minute:not(.advert-config--tablet) .loading--liveblog,
+    #sandbox body.the-minute:not(.advert-config--tablet) .more--live-blogs,
+    #sandbox body.the-minute:not(.advert-config--tablet) .tags,
+    #sandbox body.the-minute:not(.advert-config--tablet) .comments {
       display: none; }
   #sandbox .article--standard .article__body,
   #sandbox .article--comment .article__body,
