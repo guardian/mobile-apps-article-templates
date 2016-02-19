@@ -839,11 +839,11 @@ body.the-minute {
                         &::before {
                             background-color: $minute_accent;
                             content: "";
-                            height: 45px;
-                            left: -20%;
+                            height: 35px;
                             position: absolute;
                             top: -40px;
-                            width: 155%;
+                            width: 175%;
+                            left: 0;
                         }
                     }
 
@@ -852,7 +852,8 @@ body.the-minute {
                         color: $minute_main;
                         font: 100 4.3rem/4.3rem $egyptian-display;
                         width: 35%;
-                        margin-left: 35%;
+                        margin-left: 25%;
+                        padding-left: 48px;
                         z-index: 10;
                     }
 
@@ -899,6 +900,77 @@ body.the-minute {
 
                         figcaption {
                             display: none;
+                        }
+                    }
+                }
+
+                .block {
+                    border: 0;
+                    padding: 0;
+                    margin: 0;
+                    background: $minute_bg;
+
+                    .block__updated,
+                    .block__time {
+                        display: none;
+                    }
+
+                    &.block--live-key-event {
+                        height: 60%;
+
+                        .block__body {
+                            width: 100%;
+                            height: 100%;
+
+                            // > :nth-child(1) {
+                            //     margin-top: 12px;
+                            //     padding-top: 12px;
+                            //     position: relative;
+
+                            //     &::before {
+                            //         background-color: $minute_accent;
+                            //         content: "";
+                            //         height: 35px;
+                            //         position: absolute;
+                            //         width: 70%;
+                            //         top: 20px;
+                            //         z-index: 1
+                            //     }
+                            // }
+
+                            .from-content-api {
+                                height: 100%;
+                                margin-top: 0;
+                                position: relative;
+
+                                figure {
+                                    position: absolute;
+                                    width: 55%;
+                                    bottom: 0;
+                                    left: 25%;
+
+                                    > :nth-child(1) {
+                                        margin-top: 12px;
+                                        padding-top: 12px;
+                                        position: relative;
+
+                                        &::before {
+                                            background-color: $minute_accent;
+                                            content: "";
+                                            position: absolute;
+                                            height: 35px;
+                                            width: 200%;
+                                            top: -5px;
+                                            z-index: 1;
+                                            left: -150%;
+                                        }
+                                    }
+
+                                    &.figure-wide {
+                                        margin: 0;
+                                    }
+                                }
+                            }                     
                         }
                     }
                 }
