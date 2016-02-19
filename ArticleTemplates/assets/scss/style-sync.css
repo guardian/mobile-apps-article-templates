@@ -2599,11 +2599,12 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
   .article--comment .figure--thumbnail-with-caption {
     background: #dedcd7; } }
 
+body[data-content-type="liveblog"]:not(.the-minute) .the-minute__header {
+  display: none; }
+
 .article--liveblog {
   background-color: #eaeaea;
   border-bottom: 0; }
-  .article--liveblog:not(.the-minute) .the-minute__header {
-    display: none; }
   .article--liveblog .article__header {
     background-color: #fff; }
     .article--liveblog .article__header .section {
@@ -2678,8 +2679,7 @@ body.the-minute:not(.advert-config--tablet) {
     width: 100%;
     -webkit-flex-direction: column;
     flex-direction: column;
-    padding-bottom: 60px;
-    display: block; }
+    padding-bottom: 60px; }
   body.the-minute:not(.advert-config--tablet) .the-minute__headline,
   body.the-minute:not(.advert-config--tablet) .the-minute__standfirst {
     color: #fff;
@@ -3369,6 +3369,114 @@ body.the-minute:not(.advert-config--tablet) {
   body.the-minute:not(.advert-config--tablet) .more--live-blogs,
   body.the-minute:not(.advert-config--tablet) .tags,
   body.the-minute:not(.advert-config--tablet) .comments {
+    display: none; }
+body.the-minute.advert-config--tablet {
+  background: #005689;
+  height: 100%; }
+  body.the-minute.advert-config--tablet .article--liveblog {
+    margin: 0;
+    padding: 0;
+    border: 0; }
+    @media all and (min-width: 75em) {
+      body.the-minute.advert-config--tablet .article--liveblog {
+        background: #003656; } }
+    body.the-minute.advert-config--tablet .article--liveblog .article__header,
+    body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog__pinned {
+      display: none; }
+    body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      z-index: 1; }
+      @media all and (min-width: 75em) {
+        body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog {
+          left: 50%;
+          margin-left: -600px;
+          width: 1200px; } }
+      body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .the-minute__header {
+        position: relative;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        display: -webkit-flex;
+        display: flex;
+        height: 100%;
+        -webkit-justify-content: flex-end;
+        justify-content: flex-end;
+        width: 100%;
+        -webkit-flex-direction: column;
+        flex-direction: column; }
+        body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .the-minute__header > :nth-child(2) {
+          margin-top: 12px;
+          padding-top: 12px;
+          position: relative; }
+          body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .the-minute__header > :nth-child(2)::before {
+            background-color: #ea291f;
+            content: "";
+            height: 45px;
+            left: -20%;
+            position: absolute;
+            top: -40px;
+            width: 155%; }
+        body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .the-minute__header .the-minute__headline,
+        body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .the-minute__header .the-minute__standfirst {
+          color: #fff;
+          font: 100 4.3rem/4.3rem "Guardian Egyptian Web", Georgia, serif;
+          width: 35%;
+          margin-left: 35%;
+          z-index: 10; }
+        body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .the-minute__header .the-minute__headline {
+          margin-bottom: 12px; }
+        body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .the-minute__header .the-minute__standfirst {
+          font: bold 1.7rem/2.2rem "Guardian Text Egyptian Web", Georgia, serif;
+          font-size: 1.6rem;
+          line-height: 2.0rem;
+          margin-bottom: 36px; }
+          body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .the-minute__header .the-minute__standfirst .the-minute__date {
+            color: #ea291f;
+            display: block;
+            font: 600 1.7rem/2.2rem "Guardian Egyptian Web", Georgia, serif; }
+        body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .the-minute__header .the-minute__main-media {
+          background: #005689;
+          border: 0;
+          bottom: 0;
+          left: 0;
+          margin: 0;
+          padding: 0;
+          position: absolute;
+          right: 0;
+          top: 0; }
+          body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .the-minute__header .the-minute__main-media figure {
+            margin: 0;
+            position: relative;
+            height: 100%; }
+            body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .the-minute__header .the-minute__main-media figure .element__inner {
+              background: #005689;
+              border: 0;
+              bottom: 0;
+              left: 0;
+              margin: 0;
+              padding: 0;
+              position: absolute;
+              right: 0;
+              top: 0;
+              padding-bottom: 0 !important; }
+              body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .the-minute__header .the-minute__main-media figure .element__inner.the-minute__background-media {
+                background-size: cover;
+                background-position: 50% 50%;
+                background-repeat: no-repeat; }
+            body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .the-minute__header .the-minute__main-media figure img {
+              object-fit: cover;
+              height: 100%;
+              width: 100%; }
+          body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .the-minute__header .the-minute__main-media figcaption {
+            display: none; }
+  body.the-minute.advert-config--tablet .meta,
+  body.the-minute.advert-config--tablet .loading--liveblog,
+  body.the-minute.advert-config--tablet .more--live-blogs,
+  body.the-minute.advert-config--tablet .tags,
+  body.the-minute.advert-config--tablet .comments {
     display: none; }
 
 .article--standard .article__body,

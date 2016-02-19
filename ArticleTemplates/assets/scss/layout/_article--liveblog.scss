@@ -1,10 +1,13 @@
-.article--liveblog {
-    
+body[data-content-type="liveblog"] {
+    // Hide the special minute header for every other liveblog    
     &:not(.the-minute) {
         .the-minute__header { 
             display: none;
         }
     }
+}
+
+.article--liveblog {
 
     background-color: color(shade-5);
     border-bottom: 0;
