@@ -116,34 +116,80 @@ define([
                 window.applyNativeFunctionCall('liveblogUpdateBlock');
             },
 
-            setupTheMinute: function() {
-                // Check for blocks contents and add class accordingly
-                $('.block--live-key-event, .block--live-summary').each(function(block, index) {
-                    var thumbnail = block.getElementsByClassName('element--thumbnail'),
+            setupTheMinute: function () {
+                var blocks = document.getElementsByClassName('block');
+
+                modules.addClassesToMinuteBlocks(blocks);
+
+                if (document.body.classList.contains('advert-config--tablet')) {
+                    modules.resizeMinuteBlocksWithCoverImages(blocks);
+                } else {
+                    modules.updateMinuteBlockTitles(blocks);
+
+                    // If windows add background images to minute blocks
+                    if (document.body.classList.contains("windows")) {   
+                        modules.addBackgroundImagesToBlocks();
+                    }
+
+                    modules.initScroller();
+                }
+            },
+
+            resizeMinuteBlocksWithCoverImages: function (blocks) {
+                var i,
+                    coverImage,
+                    marginTopPixels = 48;
+
+                for (i = 0; i < blocks.length; i++) {
+                    if (blocks[i].classList.contains('is-coverimage')) {
+                        coverImage = blocks[i].querySelector('figure.element-image');
+
+                        if (coverImage) {
+                            blocks[i].style.height = coverImage.offsetHeight + marginTopPixels + "px";
+                        }
+                    }
+                }
+            },
+
+            updateMinuteBlockTitles: function (blocks) {
+                var i, 
+                    blockTitle,
+                    blockTitles = [],
+                    titleString;
+
+                for (i = 0; i < blocks.length; i++) {
+                    blockTitle = blocks[i].getElementsByClassName('block__title');
+                    
+                    if (blockTitle) {
+                        titleString = blockTitle.innerHTML.replace(/^([0-9]+)[.]*[ ]*/g, '<span class="counter">$1</span>');
+                        blockTitle.innerHTML = titleString;
+                    }
+                }
+            },
+
+            addClassesToMinuteBlocks: function (blocks) {
+                var i,
+                    inlineImage,
+                    block,
+                    thumbnail;
+
+                for (i = 0; i < blocks.length; i++) {
+                    block = blocks[i];
+
+                    if (block.classList.contains('block--live-key-event') || 
+                        block.classList.contains('block--live-summary')) {
+                        thumbnail = block.getElementsByClassName('element--thumbnail');
                         inlineImage = block.getElementsByClassName('element-image ');
 
-                    if (thumbnail.length) {
-                        $(block).addClass('is-thumbnail');
-                    } else if (inlineImage.length) {
-                        $(block).addClass('is-coverimage');
-                    } else {
-                        $(block).addClass('is-textonly');
+                        if (thumbnail.length) {
+                            block.classList.add('is-thumbnail');
+                        } else if (inlineImage.length) {
+                            block.classList.add('is-coverimage');
+                        } else {
+                            block.classList.add('is-textonly');
+                        }
                     }
-                });
-
-                // Handle numbered headlines
-                $('.block__title').each(function(title, index) {
-                    var titleString = $(title).html().replace(/^([0-9]+)[.]*[ ]*/g, '<span class="counter">$1</span>');
-                    $(title).html(titleString);
-                });
-
-                // If windows add background images to minute blocks
-                if (document.body.classList.contains("windows")) {   
-                    modules.addBackgroundImagesToBlocks();
                 }
-
-                // Initialise the scroller
-                modules.initScroller();
             },
 
             addBackgroundImagesToBlocks: function() {
@@ -262,9 +308,6 @@ define([
                 modules.liveMore();
                 twitter.init();
                 if ($('body').hasClass('the-minute')) {
-                    if ($('body').hasClass('advert-config--tablet')) {
-                        return;
-                    }
                     // do any "the minute" js here
                     modules.setupTheMinute();
                 } else {
