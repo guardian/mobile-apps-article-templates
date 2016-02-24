@@ -123,10 +123,10 @@ define([
                 modules.updateMinuteBlockTitles(blocks);
 
                 if (document.body.classList.contains('advert-config--tablet')) {
-                    modules.resizeMinuteBlocksWithCoverImages(blocks);
+                    modules.adjustMinuteBlocksWithCoverImages(blocks);
 
                     // update dimensions on orientation change
-                    bean.on(window, 'resize', window.ThrottleDebounce.debounce(100, false, modules.resizeMinuteBlocksWithCoverImages.bind(null, blocks)));
+                    bean.on(window, 'resize', window.ThrottleDebounce.debounce(100, false, modules.adjustMinuteBlocksWithCoverImages.bind(null, blocks)));
                 } else {
                     // If windows add background images to minute blocks
                     if (document.body.classList.contains("windows")) {   
@@ -136,17 +136,31 @@ define([
                 }
             },
 
-            resizeMinuteBlocksWithCoverImages: function (blocks) {
+            moveFigcaption: function (figure) {
+                var figInner,
+                    figCaption = figure.querySelector("figcaption");
+
+                if (figCaption && figCaption.parentNode === figure) {
+                    figInner = figure.querySelector(".figure__inner");
+                    if (figInner) {
+                        console.log(">>>", figInner);
+                        figInner.insertBefore(figCaption, figInner.firstChild);
+                    }
+                }
+            },
+
+            adjustMinuteBlocksWithCoverImages: function (blocks) {
                 var i,
-                    coverImage,
+                    figure,
                     marginTopPixels = 48;
 
                 for (i = 0; i < blocks.length; i++) {
                     if (blocks[i].classList.contains('is-coverimage')) {
-                        coverImage = blocks[i].querySelector('figure.element-image');
+                        figure = blocks[i].querySelector('figure.element-image');
 
-                        if (coverImage) {
-                            blocks[i].style.height = coverImage.offsetHeight + marginTopPixels + "px";
+                        if (figure) {
+                            modules.moveFigcaption(figure);
+                            blocks[i].style.height = figure.offsetHeight + marginTopPixels + "px";
                         }
                     }
                 }
