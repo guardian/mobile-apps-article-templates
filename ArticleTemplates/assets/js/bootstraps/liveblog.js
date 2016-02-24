@@ -143,7 +143,6 @@ define([
                 if (figCaption && figCaption.parentNode === figure) {
                     figInner = figure.querySelector(".figure__inner");
                     if (figInner) {
-                        console.log(">>>", figInner);
                         figInner.insertBefore(figCaption, figInner.firstChild);
                     }
                 }
