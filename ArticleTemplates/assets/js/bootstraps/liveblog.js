@@ -120,17 +120,18 @@ define([
                 var blocks = document.getElementsByClassName('block');
 
                 modules.addClassesToMinuteBlocks(blocks);
+                modules.updateMinuteBlockTitles(blocks);
 
                 if (document.body.classList.contains('advert-config--tablet')) {
                     modules.resizeMinuteBlocksWithCoverImages(blocks);
-                } else {
-                    modules.updateMinuteBlockTitles(blocks);
 
+                    // update dimensions on orientation change
+                    bean.on(window, 'resize', window.ThrottleDebounce.debounce(100, false, modules.resizeMinuteBlocksWithCoverImages.bind(null, blocks)));
+                } else {
                     // If windows add background images to minute blocks
                     if (document.body.classList.contains("windows")) {   
-                        modules.addBackgroundImagesToBlocks();
+                        modules.addBackgroundImagesToMinuteBlocks(blocks);
                     }
-
                     modules.initScroller();
                 }
             },
@@ -158,7 +159,7 @@ define([
                     titleString;
 
                 for (i = 0; i < blocks.length; i++) {
-                    blockTitle = blocks[i].getElementsByClassName('block__title');
+                    blockTitle = blocks[i].querySelector('.block__title');
                     
                     if (blockTitle) {
                         titleString = blockTitle.innerHTML.replace(/^([0-9]+)[.]*[ ]*/g, '<span class="counter">$1</span>');
@@ -192,10 +193,8 @@ define([
                 }
             },
 
-            addBackgroundImagesToBlocks: function() {
-                var i, j, blocks, figureInners, figureImage;
-
-                blocks = document.getElementsByClassName("block");
+            addBackgroundImagesToMinuteBlocks: function(blocks) {
+                var i, j, figureInners, figureImage;
 
                 for (i = 0; i < blocks.length; i++) {
                     figureInners = blocks[i].getElementsByClassName("figure__inner");
