@@ -151,14 +151,16 @@ define([
             adjustMinuteBlocksWithCoverImages: function (blocks) {
                 var i,
                     figure,
-                    marginTopPixels = 48;
+                    marginTopPixels = 60;
 
                 for (i = 0; i < blocks.length; i++) {
-                    if (blocks[i].classList.contains('is-coverimage')) {
+                    if (blocks[i].classList.contains('is-coverimage') || blocks[i].classList.contains('is-thumbnail')) {
                         figure = blocks[i].querySelector('figure.element-image');
 
                         if (figure) {
-                            modules.moveFigcaption(figure);
+                            if (blocks[i].classList.contains('is-coverimage')) {
+                                modules.moveFigcaption(figure);
+                            }
                             blocks[i].style.height = figure.offsetHeight + marginTopPixels + "px";
                         }
                     }

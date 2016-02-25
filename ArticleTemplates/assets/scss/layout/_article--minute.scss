@@ -795,7 +795,6 @@ body.the-minute {
         height: 100%;
 
         .article--liveblog {
-            // height: 100%;
             margin: 0;
             padding: 0;
             border: 0;
@@ -821,6 +820,7 @@ body.the-minute {
                     width: 1200px;
                 }
 
+                /* Minute Header */
                 .the-minute__header {
                     position: relative;
                     height: 100%;
@@ -905,6 +905,7 @@ body.the-minute {
                     }
                 }
 
+                /* Minute Blocks */
                 .block {
                     border: 0;
                     padding: 0;
@@ -916,18 +917,41 @@ body.the-minute {
                         display: none;
                     }
 
-                    &.is-coverimage {
-                        &.block--live-key-event {
+                    /* Common block styles */
+                    &.is-coverimage,
+                    &.is-thumbnail {
+
+                        &.block--live-key-event,
+                        &.block--live-summary {
                             .block__body {
                                 width: 100%;
                                 height: 100%;
+                            }
 
+                            .from-content-api {
+                                @include minute_flex_content;
+                                height: 100%;
+                                margin-top: 0;
+                                position: relative;
+
+                                figure {
+                                    position: absolute;
+
+                                    .figure__inner {
+                                        margin: 0 !important;
+                                        padding: 0 !important;
+                                    }
+                                }
+                            } 
+                        }
+                         
+                    }
+
+                    /* Cover image block styles */
+                    &.is-coverimage {
+                        &.block--live-key-event {
+                            .block__body {
                                 .from-content-api {
-                                    @include minute_flex_content;
-                                    height: 100%;
-                                    margin-top: 0;
-                                    position: relative;
-
                                     h2,
                                     p {
                                         color: $minute_main;
@@ -963,7 +987,7 @@ body.the-minute {
                                     }
 
                                     figure {
-                                        position: absolute;
+                                        // position: absolute;
                                         width: 55%;
                                         bottom: 0;
                                         left: 40%;
@@ -999,6 +1023,77 @@ body.the-minute {
                                         }
                                     }
                                 }                     
+                            }
+                        }
+                    }
+
+                    /* Thumbnail image block styles */
+                    &.is-thumbnail {
+                        &.block--live-summary {
+                            .block__body {
+                                .from-content-api {
+                                    -webkit-justify-content: flex-start;
+                                    justify-content: flex-start;
+                                    padding-top: 8px;
+
+                                    &::before {
+                                        content: "";
+                                        height: 80px;
+                                    }
+
+                                    h2,
+                                    p {
+                                        color: $minute_main;
+                                        padding: 0 12px;
+                                        width: 25%;
+                                        margin-left: 60%;
+                                    }
+
+                                    h2 {
+                                        font: 600 1.7rem/2.2rem $egyptian-text;
+                                    }
+
+                                    p {
+                                        font: 1.6rem/2.1rem $egyptian-text;
+
+                                        a {
+                                            background: transparent;
+                                            border-bottom: 1px solid $minute_main;
+                                            color: $minute_main;
+                                            position: relative;
+                                            text-shadow: none;
+                                        }
+                                    }
+
+                                    figure {
+                                        margin: 0; 
+                                        width: 40%;
+                                        bottom: 0;
+                                        left: 20%;
+                                        max-width: none;
+
+                                        // This controls the red bar above the second child
+                                        > :nth-child(1) {
+                                            margin-top: 12px;
+                                            padding-top: 12px;
+                                            position: relative;
+
+                                            &::before {
+                                                background-color: $minute_accent;
+                                                content: "";
+                                                height: 35px;
+                                                position: absolute;
+                                                top: -15px;
+                                                width: 115%;
+                                                left: 50%;
+                                            }
+                                        }
+
+                                        &.figure-wide {
+                                            margin: 0;
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
