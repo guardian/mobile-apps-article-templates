@@ -158,9 +158,9 @@ define([
                         figure = blocks[i].querySelector('figure.element-image');
 
                         if (figure) {
-                            if (blocks[i].classList.contains('is-coverimage')) {
+                            // if (blocks[i].classList.contains('is-coverimage')) {
                                 modules.moveFigcaption(figure);
-                            }
+                            // }
                             blocks[i].style.height = figure.offsetHeight + marginTopPixels + "px";
                         }
                     }
