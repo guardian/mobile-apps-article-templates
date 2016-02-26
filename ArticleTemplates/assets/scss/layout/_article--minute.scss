@@ -850,7 +850,6 @@ body.the-minute {
                     .the-minute__headline,
                     .the-minute__standfirst {
                         color: $minute_main;
-                        font: 100 4.3rem/4.3rem $egyptian-display;
                         width: 50%;
                         margin-left: 25%;
                         padding-left: 48px;
@@ -858,6 +857,7 @@ body.the-minute {
                     }
 
                     .the-minute__headline {
+                        font: 100 4.3rem/4.3rem $egyptian-display;
                         margin-top: 0;
                         padding-top: 0;
                         margin-bottom: 12px;
@@ -1095,7 +1095,8 @@ body.the-minute {
                                             left: 100%;
                                             width: 100%;
                                             bottom: 0;
-                                            padding: 0 12px;
+                                            padding: 0;
+                                            padding-left: 12px;
                                             border: 0;
                                         }
 
@@ -1103,6 +1104,45 @@ body.the-minute {
                                             margin: 0;
                                         }
                                     }
+                                }
+                            }
+
+                            &.has-quote {
+                                .block__body {
+                                    .quoted {
+                                        margin-top: 24px;
+                                        margin-left: 5%;
+                                        width: 55%;
+                                        padding-top: 12px;
+
+                                        &::before {
+                                            color: $minute_accent;
+                                            font-size: 4rem;
+                                            top: -20px;
+                                            left: 20%;
+                                        }
+
+                                        p {
+                                            color: $minute_main;
+                                            font: 100 2rem/2.2rem $egyptian-display;
+                                            padding-left: 0;
+                                            margin: 0;
+                                            width: 100%;
+                                        }
+                                    }
+
+                                    figure {
+                                        width: 35%;
+                                        left: 60%;
+
+                                        // This controls the red bar above the second child
+                                        > :nth-child(1) {
+                                            &::before {
+                                                width: 180%;
+                                                left: -157%;
+                                            }
+                                        }
+                                    }   
                                 }
                             }
                         }

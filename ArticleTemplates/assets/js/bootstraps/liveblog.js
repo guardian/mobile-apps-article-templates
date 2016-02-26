@@ -158,9 +158,7 @@ define([
                         figure = blocks[i].querySelector('figure.element-image');
 
                         if (figure) {
-                            // if (blocks[i].classList.contains('is-coverimage')) {
-                                modules.moveFigcaption(figure);
-                            // }
+                            modules.moveFigcaption(figure);
                             blocks[i].style.height = figure.offsetHeight + marginTopPixels + "px";
                         }
                     }
@@ -185,24 +183,24 @@ define([
 
             addClassesToMinuteBlocks: function (blocks) {
                 var i,
-                    inlineImage,
-                    block,
-                    thumbnail;
+                    block;
 
                 for (i = 0; i < blocks.length; i++) {
                     block = blocks[i];
 
                     if (block.classList.contains('block--live-key-event') || 
                         block.classList.contains('block--live-summary')) {
-                        thumbnail = block.getElementsByClassName('element--thumbnail');
-                        inlineImage = block.getElementsByClassName('element-image ');
-
-                        if (thumbnail.length) {
+                        
+                        if (block.getElementsByClassName('element--thumbnail').length) {
                             block.classList.add('is-thumbnail');
-                        } else if (inlineImage.length) {
+                        } else if (block.getElementsByClassName('element-image ').length) {
                             block.classList.add('is-coverimage');
                         } else {
                             block.classList.add('is-textonly');
+                        }
+
+                        if (block.getElementsByClassName('quoted').length) {
+                            block.classList.add('has-quote');
                         }
                     }
                 }
