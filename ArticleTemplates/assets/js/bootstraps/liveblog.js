@@ -255,11 +255,6 @@ define([
             
                 // update scroll dimensions on orientation change
                 bean.on(window, 'resize', window.ThrottleDebounce.debounce(100, false, modules.onWindowResize.bind(null, liveblogElem, wrapperElem, scroller)));
-
-                // enhance tweets in scroller for large devices only
-                if (document.body.classList.contains('advert-config--tablet')) {
-                    twitter.checkForTweets(liveblogElem);
-                }
             },
 
             onWindowResize: function (liveblogElem, wrapperElem, scroller) {

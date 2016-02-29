@@ -918,9 +918,9 @@ body.the-minute {
                     }
 
                     /* Common block styles */
+                    &.is-textonly,
                     &.is-coverimage,
                     &.is-thumbnail {
-
                         &.block--live-key-event,
                         &.block--live-summary {
                             .block__body {
@@ -933,7 +933,16 @@ body.the-minute {
                                 height: 100%;
                                 margin-top: 0;
                                 position: relative;
+                            } 
+                        }              
+                    }
 
+                    /* Common image block styles */
+                    &.is-coverimage,
+                    &.is-thumbnail {
+                        &.block--live-key-event,
+                        &.block--live-summary {
+                            .from-content-api {
                                 figure {
                                     position: absolute;
 
@@ -943,8 +952,7 @@ body.the-minute {
                                     }
                                 }
                             } 
-                        }
-                         
+                        }              
                     }
 
                     /* Cover image block styles */
@@ -1037,8 +1045,12 @@ body.the-minute {
                                     padding-top: 8px;
 
                                     &::before {
+                                        background-color: #ea291f;
                                         content: "";
-                                        min-height: 80px;
+                                        height: 35px;
+                                        width: 70%;
+                                        margin: 36px 0 12px 5%;
+                                        z-index: 1;
                                     }
 
                                     h2,
@@ -1073,21 +1085,21 @@ body.the-minute {
                                         max-width: none;
 
                                         // This controls the red bar above the second child
-                                        > :nth-child(1) {
-                                            margin-top: 12px;
-                                            padding-top: 12px;
-                                            position: relative;
+                                        // > :nth-child(1) {
+                                        //     margin-top: 12px;
+                                        //     padding-top: 12px;
+                                        //     position: relative;
 
-                                            &::before {
-                                                background-color: $minute_accent;
-                                                content: "";
-                                                height: 35px;
-                                                position: absolute;
-                                                top: -15px;
-                                                width: 175%;
-                                                left: 50%;
-                                            }
-                                        }
+                                        //     &::before {
+                                        //         background-color: $minute_accent;
+                                        //         content: "";
+                                        //         height: 35px;
+                                        //         position: absolute;
+                                        //         top: -15px;
+                                        //         width: 175%;
+                                        //         left: 50%;
+                                        //     }
+                                        // }
 
                                         figcaption {
                                             color: rgba(255, 255, 255, .9);
@@ -1131,6 +1143,11 @@ body.the-minute {
                                         }
                                     }
 
+                                    h2 {
+                                        margin-left: 5%;
+                                        padding-left: 0;
+                                    }
+
                                     figure {
                                         width: 35%;
                                         left: 60%;
@@ -1142,11 +1159,100 @@ body.the-minute {
                                                 left: -157%;
                                             }
                                         }
+
+                                        figcaption {
+                                            background-color: rgba(0, 0, 0, .4);
+                                            left: auto;
+                                            right: 0;
+                                            padding-right: 12px;
+                                            width: auto;
+                                        }
                                     }   
                                 }
                             }
                         }
                     }
+
+                    /* Text only block styles */
+                    &.is-textonly {
+                        &.block--live-summary {
+                            .block__body {
+                                height: auto;
+
+                                .from-content-api {
+                                    -webkit-justify-content: flex-start;
+                                    justify-content: flex-start;
+                                    padding-top: 8px;
+                                    height: auto;
+
+                                    &::before {
+                                        background-color: #ea291f;
+                                        content: "";
+                                        height: 35px;
+                                        width: 55%;
+                                        margin: 36px 0 12px 15%;
+                                    }
+
+                                    h2,
+                                    p {
+                                        color: $minute_main;
+                                        padding: 0 12px;
+                                        width: 45%;
+                                        margin-left: 45%;
+                                    }
+
+                                    h2 {
+                                        font: 600 1.7rem/2.2rem $egyptian-text;
+                                    }
+
+                                    p {
+                                        font: 1.6rem/2.1rem $egyptian-text;
+
+                                        a {
+                                            background: transparent;
+                                            border-bottom: 1px solid $minute_main;
+                                            color: $minute_main;
+                                            position: relative;
+                                            text-shadow: none;
+                                        }
+                                    }
+                                }
+                            }
+
+                            &.has-quote {
+                                .block__body {
+                                    .quoted {
+                                        margin-top: 24px;
+                                        margin-left: 15%;
+                                        width: 55%;
+                                        padding-top: 12px;
+
+                                        &::before {
+                                            color: $minute_accent;
+                                            font-size: 4rem;
+                                            top: -20px;
+                                            left: 20%;
+                                        }
+
+                                        p {
+                                            color: $minute_main;
+                                            font: 100 2rem/2.2rem $egyptian-display;
+                                            padding-left: 0;
+                                            margin: 0;
+                                            width: 100%;
+                                        }
+                                    }
+
+                                    h2 {
+                                        margin-left: 15%;
+                                        padding-left: 0;
+                                    }  
+                                }
+                            }
+                        }
+                    }
+
+
                 }
             }
         }
