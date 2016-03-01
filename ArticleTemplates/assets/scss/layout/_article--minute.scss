@@ -960,6 +960,15 @@ body.the-minute {
                         &.block--live-key-event {
                             .block__body {
                                 .from-content-api {
+                                    -webkit-justify-content: flex-start;
+                                    justify-content: flex-start;
+
+                                    &::before {
+                                        content: "";
+                                        min-height: 88px;
+                                        flex: 2 2;
+                                    }
+
                                     h2,
                                     p {
                                         color: $minute_main;
@@ -977,7 +986,6 @@ body.the-minute {
 
                                             &::after {
                                                 content:"\A";
-
                                             }
                                         }
                                     }
@@ -995,7 +1003,6 @@ body.the-minute {
                                     }
 
                                     figure {
-                                        // position: absolute;
                                         width: 55%;
                                         bottom: 0;
                                         left: 40%;
@@ -1045,12 +1052,9 @@ body.the-minute {
                                     padding-top: 8px;
 
                                     &::before {
-                                        background-color: #ea291f;
                                         content: "";
-                                        height: 35px;
-                                        width: 70%;
-                                        margin: 36px 0 12px 5%;
-                                        z-index: 1;
+                                        min-height: 88px;
+                                        flex: 2 2;
                                     }
 
                                     h2,
@@ -1084,23 +1088,15 @@ body.the-minute {
                                         left: 5%;
                                         max-width: none;
 
-                                        // This controls the red bar above the second child
-                                        // > :nth-child(1) {
-                                        //     margin-top: 12px;
-                                        //     padding-top: 12px;
-                                        //     position: relative;
-
-                                        //     &::before {
-                                        //         background-color: $minute_accent;
-                                        //         content: "";
-                                        //         height: 35px;
-                                        //         position: absolute;
-                                        //         top: -15px;
-                                        //         width: 175%;
-                                        //         left: 50%;
-                                        //     }
-                                        // }
-
+                                        &::before {
+                                            background-color: $minute_accent;
+                                            content: "";
+                                            height: 35px;
+                                            position: absolute;
+                                            top: -15px;
+                                            width: 175%;
+                                        }
+                                        
                                         figcaption {
                                             color: rgba(255, 255, 255, .9);
                                             position: absolute;
@@ -1119,8 +1115,26 @@ body.the-minute {
                                 }
                             }
 
+                            &:not(.has-quote) {
+                                .from-content-api {
+                                    figure {
+                                        &::before {
+                                            left: 51%;
+                                        }
+                                    }
+                                }
+                            }
+
                             &.has-quote {
                                 .block__body {
+                                    .from-content-api {
+                                        figure {
+                                            &::before {
+                                                left: -158%;
+                                            }
+                                        }
+                                    }
+
                                     .quoted {
                                         margin-top: 24px;
                                         margin-left: 5%;
@@ -1151,14 +1165,6 @@ body.the-minute {
                                     figure {
                                         width: 35%;
                                         left: 60%;
-
-                                        // This controls the red bar above the second child
-                                        > :nth-child(1) {
-                                            &::before {
-                                                width: 180%;
-                                                left: -157%;
-                                            }
-                                        }
 
                                         figcaption {
                                             background-color: rgba(0, 0, 0, .4);
@@ -1222,8 +1228,7 @@ body.the-minute {
                             &.has-quote {
                                 .block__body {
                                     .quoted {
-                                        margin-top: 24px;
-                                        margin-left: 15%;
+                                        margin: 24px 0 0 15%;
                                         width: 55%;
                                         padding-top: 12px;
 
