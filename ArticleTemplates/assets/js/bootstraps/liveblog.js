@@ -136,29 +136,64 @@ define([
                 }
             },
 
-            moveFigcaption: function (figure) {
+            moveFigcaption: function (figure, isCoverImage) {
                 var figInner,
+                    captionContainer,
                     figCaption = figure.querySelector("figcaption");
 
                 if (figCaption && figCaption.parentNode === figure) {
-                    figInner = figure.querySelector(".figure__inner");
-                    if (figInner) {
-                        figInner.insertBefore(figCaption, figInner.firstChild);
+
+                    if (isCoverImage) {
+                        figInner = figure.querySelector(".figure__inner");
+
+                        if (figInner) {
+                            figInner.insertBefore(figCaption, figInner.firstChild);
+                        }
+                    } else {
+                        captionContainer = document.createElement("div");
+                        captionContainer.classList.add("caption-container");
+                        captionContainer.innerHTML = figCaption.innerHTML;
+                        figure.removeChild(figCaption);
+                        figure.parentNode.insertBefore(captionContainer, figure);
                     }
+
                 }
             },
+
+            // moveFigcaption: function (figure, isThumbnail) {
+            //     var figInner,
+            //         captionSpacer,
+            //         figCaption = figure.querySelector("figcaption");
+
+            //     if (figCaption && figCaption.parentNode === figure) {
+
+            //         figInner = figure.querySelector(".figure__inner");
+
+            //         if (figInner) {
+            //             figInner.insertBefore(figCaption, figInner.firstChild);
+            //         }
+
+            //         if (isThumbnail) {
+            //             captionSpacer = document.createElement("div");
+            //             captionSpacer.style.height = figCaption.offsetHeight + "px";    
+            //             figure.parentNode.appendChild(captionSpacer);           
+            //         }
+            //     }
+            // },
 
             adjustMinuteBlocksWithCoverImages: function (blocks) {
                 var i,
                     figure,
+                    isCoverImage,
                     marginTopPixels = 60;
 
                 for (i = 0; i < blocks.length; i++) {
                     if (blocks[i].classList.contains('is-coverimage') || blocks[i].classList.contains('is-thumbnail')) {
                         figure = blocks[i].querySelector('figure.element-image');
+                        isCoverImage = blocks[i].classList.contains('is-coverimage');
 
                         if (figure) {
-                            modules.moveFigcaption(figure);
+                            modules.moveFigcaption(figure, isCoverImage);
                             blocks[i].style.height = figure.offsetHeight + marginTopPixels + "px";
                         }
                     }

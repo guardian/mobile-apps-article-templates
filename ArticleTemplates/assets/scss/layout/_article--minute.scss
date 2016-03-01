@@ -1054,6 +1054,7 @@ body.the-minute {
                                     &::before {
                                         content: "";
                                         min-height: 88px;
+                                        max-height: 88px;
                                         flex: 2 2;
                                     }
 
@@ -1070,7 +1071,8 @@ body.the-minute {
                                     }
 
                                     p {
-                                        font: 1.6rem/2.1rem $egyptian-text;
+                                        font: 1.6rem/2.1rem $egyptian-text; 
+                                        flex: 2 2;
 
                                         a {
                                             background: transparent;
@@ -1097,20 +1099,28 @@ body.the-minute {
                                             width: 175%;
                                         }
                                         
-                                        figcaption {
-                                            color: rgba(255, 255, 255, .9);
-                                            position: absolute;
-                                            left: 100%;
-                                            width: 100%;
-                                            bottom: 0;
-                                            padding: 0;
-                                            padding-left: 12px;
-                                            border: 0;
-                                        }
+                                        // figcaption {
+                                        //     color: rgba(255, 255, 255, .9);
+                                        //     position: absolute;
+                                        //     left: 100%;
+                                        //     width: 100%;
+                                        //     bottom: 0;
+                                        //     padding: 0;
+                                        //     padding-left: 12px;
+                                        //     border: 0;
+                                        // }
 
                                         &.figure-wide {
                                             margin: 0;
                                         }
+                                    }
+
+                                    .caption-container {
+                                        font-family: $agate-sans;
+                                        color: rgba(255, 255, 255, .9);
+                                        padding: 0 12px;
+                                        width: 45%;
+                                        margin-left: 45%;
                                     }
                                 }
                             }
