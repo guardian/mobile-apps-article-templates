@@ -139,6 +139,9 @@ define([
             moveFigcaption: function (figure, isCoverImage) {
                 var figInner,
                     captionContainer,
+                    i,
+                    spans,
+                    span,
                     figCaption = figure.querySelector("figcaption");
 
                 if (figCaption && figCaption.parentNode === figure) {
@@ -150,36 +153,20 @@ define([
                             figInner.insertBefore(figCaption, figInner.firstChild);
                         }
                     } else {
+                        span = document.createElement("span");
                         captionContainer = document.createElement("div");
                         captionContainer.classList.add("caption-container");
-                        captionContainer.innerHTML = figCaption.innerHTML;
+                        spans = figCaption.querySelectorAll("span");
+                        for (i = 0; i < spans.length; i++) {
+                            span.innerHTML += spans[i].innerHTML + " ";
+                        }
+                        captionContainer.appendChild(span);
                         figure.removeChild(figCaption);
                         figure.parentNode.insertBefore(captionContainer, figure);
                     }
 
                 }
             },
-
-            // moveFigcaption: function (figure, isThumbnail) {
-            //     var figInner,
-            //         captionSpacer,
-            //         figCaption = figure.querySelector("figcaption");
-
-            //     if (figCaption && figCaption.parentNode === figure) {
-
-            //         figInner = figure.querySelector(".figure__inner");
-
-            //         if (figInner) {
-            //             figInner.insertBefore(figCaption, figInner.firstChild);
-            //         }
-
-            //         if (isThumbnail) {
-            //             captionSpacer = document.createElement("div");
-            //             captionSpacer.style.height = figCaption.offsetHeight + "px";    
-            //             figure.parentNode.appendChild(captionSpacer);           
-            //         }
-            //     }
-            // },
 
             adjustMinuteBlocksWithCoverImages: function (blocks) {
                 var i,

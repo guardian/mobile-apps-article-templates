@@ -1099,17 +1099,6 @@ body.the-minute {
                                             width: 175%;
                                         }
                                         
-                                        // figcaption {
-                                        //     color: rgba(255, 255, 255, .9);
-                                        //     position: absolute;
-                                        //     left: 100%;
-                                        //     width: 100%;
-                                        //     bottom: 0;
-                                        //     padding: 0;
-                                        //     padding-left: 12px;
-                                        //     border: 0;
-                                        // }
-
                                         &.figure-wide {
                                             margin: 0;
                                         }
@@ -1117,7 +1106,6 @@ body.the-minute {
 
                                     .caption-container {
                                         font: 1.4rem/1.7rem $agate-sans; 
-                                        // font-family: $agate-sans;
                                         color: rgba(255, 255, 255, .9);
                                         padding: 0 12px;
                                         width: 45%;
@@ -1151,6 +1139,7 @@ body.the-minute {
                                         margin-left: 5%;
                                         width: 55%;
                                         padding-top: 12px;
+                                        flex: 2 2;
 
                                         &::before {
                                             color: $minute_accent;
@@ -1176,15 +1165,30 @@ body.the-minute {
                                     figure {
                                         width: 35%;
                                         left: 60%;
+                                    } 
 
-                                        figcaption {
-                                            background-color: rgba(0, 0, 0, .4);
-                                            left: auto;
-                                            right: 0;
-                                            padding-right: 12px;
-                                            width: auto;
+                                    .caption-container {
+                                        display: -webkit-flex;
+                                        display: flex;
+                                        -webkit-justify-content: flex-start;
+                                        justify-content: flex-start;
+                                        -webkit-flex-direction: row;
+                                        flex-direction: row;
+
+                                        &::before {
+                                            content: '';
+                                            flex: 2 2;
                                         }
-                                    }   
+
+                                        .element-image__caption {
+                                            padding-right: 4px;
+                                        }
+
+                                        width: 55%;
+                                        margin-left: 5%;
+                                        padding: 0;
+                                        padding-right: 12px;
+                                    }  
                                 }
                             }
                         }

@@ -3618,7 +3618,8 @@ body.the-minute.advert-config--tablet {
           margin-top: 24px;
           margin-left: 5%;
           width: 55%;
-          padding-top: 12px; }
+          padding-top: 12px;
+          flex: 2 2; }
           body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-summary.has-quote .block__body .quoted::before {
             color: #ea291f;
             font-size: 4rem;
@@ -3636,12 +3637,22 @@ body.the-minute.advert-config--tablet {
         body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-summary.has-quote .block__body figure {
           width: 35%;
           left: 60%; }
-          body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-summary.has-quote .block__body figure figcaption {
-            background-color: rgba(0, 0, 0, 0.4);
-            left: auto;
-            right: 0;
-            padding-right: 12px;
-            width: auto; }
+        body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-summary.has-quote .block__body .caption-container {
+          display: -webkit-flex;
+          display: flex;
+          -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          width: 55%;
+          margin-left: 5%;
+          padding: 0;
+          padding-right: 12px; }
+          body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-summary.has-quote .block__body .caption-container::before {
+            content: '';
+            flex: 2 2; }
+          body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-summary.has-quote .block__body .caption-container .element-image__caption {
+            padding-right: 4px; }
         body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-textonly.block--live-summary .block__body {
           height: auto; }
           body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-textonly.block--live-summary .block__body .from-content-api {
