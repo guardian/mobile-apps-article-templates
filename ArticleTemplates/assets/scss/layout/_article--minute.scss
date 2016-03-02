@@ -822,16 +822,15 @@ body.the-minute {
 
                 /* Minute Header */
                 .the-minute__header {
+                    @include minute_flex_content;
                     position: relative;
-                    height: 100%;
+                    height: 100vh;
                     margin: 0;
                     padding: 0;
                     border: 0;
 
-                    @include minute_flex_content;
-
                     // This controls the red bar above the second child
-                    > :nth-child(2) {
+                    > :nth-child(1) {
                         margin-top: 12px;
                         padding-top: 12px;
                         position: relative;
@@ -861,6 +860,16 @@ body.the-minute {
                         margin-top: 0;
                         padding-top: 0;
                         margin-bottom: 12px;
+
+                        &::before {
+                            background-color: $minute_accent;
+                            content: "";
+                            height: 35px;
+                            position: absolute;
+                            top: -40px;
+                            width: 115%;
+                            left: 0;
+                        }
                     }
 
                     .the-minute__standfirst {
@@ -925,14 +934,19 @@ body.the-minute {
                         &.block--live-summary {
                             .block__body {
                                 width: 100%;
-                                height: 100%;
                             }
 
                             .from-content-api {
                                 @include minute_flex_content;
-                                height: 100%;
+                                height: auto;
                                 margin-top: 0;
                                 position: relative;
+                            } 
+                        }
+
+                        &.flex-block {
+                            .from-content-api {
+                                height: 100%;
                             } 
                         }              
                     }
@@ -965,8 +979,9 @@ body.the-minute {
 
                                     &::before {
                                         content: "";
-                                        min-height: 88px;
-                                        flex: 2 2;
+                                        min-height: 74px;
+                                        -webkit-flex: 1 1;
+                                        flex: 1 1;
                                     }
 
                                     h2,
@@ -1002,10 +1017,14 @@ body.the-minute {
                                         }
                                     }
 
+                                    p:last-of-type {
+                                        margin-bottom: 0;
+                                    }
+
                                     figure {
                                         width: 55%;
-                                        bottom: 0;
                                         left: 40%;
+                                        top: 48px;
 
                                         > :nth-child(1) {
                                             margin-top: 12px;
@@ -1049,13 +1068,13 @@ body.the-minute {
                                 .from-content-api {
                                     -webkit-justify-content: flex-start;
                                     justify-content: flex-start;
-                                    padding-top: 8px;
 
                                     &::before {
                                         content: "";
-                                        min-height: 88px;
-                                        max-height: 88px;
-                                        flex: 2 2;
+                                        min-height: 74px;
+                                        max-height: 74px;
+                                        -webkit-flex: 1 1;
+                                        flex: 1 1;
                                     }
 
                                     h2,
@@ -1067,12 +1086,12 @@ body.the-minute {
                                     }
 
                                     h2 {
+                                        margin-top: 0;
                                         font: 600 1.7rem/2.2rem $egyptian-text;
                                     }
 
                                     p {
                                         font: 1.6rem/2.1rem $egyptian-text; 
-                                        flex: 2 2;
 
                                         a {
                                             background: transparent;
@@ -1086,7 +1105,7 @@ body.the-minute {
                                     figure {
                                         margin: 0; 
                                         width: 40%;
-                                        bottom: 0;
+                                        top: 48px;
                                         left: 5%;
                                         max-width: none;
 
@@ -1139,7 +1158,10 @@ body.the-minute {
                                         margin-left: 5%;
                                         width: 55%;
                                         padding-top: 12px;
-                                        flex: 2 2;
+                                        // -webkit-flex: 2 2;
+                                        // flex: 2 2;
+                                        // -webkit-flex: 1 1;
+                                        // flex: 1 1;
 
                                         &::before {
                                             color: $minute_accent;
@@ -1177,7 +1199,10 @@ body.the-minute {
 
                                         &::before {
                                             content: '';
+                                            -webkit-flex: 2 2;
                                             flex: 2 2;
+                                            // -webkit-flex: 1 1;
+                                            // flex: 1 1;
                                         }
 
                                         .element-image__caption {
@@ -1195,84 +1220,88 @@ body.the-minute {
                     }
 
                     /* Text only block styles */
-                    &.is-textonly {
-                        &.block--live-summary {
-                            .block__body {
-                                height: auto;
+                    // &.is-textonly {
+                    //     &.block--live-summary {
+                    //         .block__body {
+                    //             height: auto;
 
-                                .from-content-api {
-                                    -webkit-justify-content: flex-start;
-                                    justify-content: flex-start;
-                                    padding-top: 8px;
-                                    height: auto;
+                    //             .from-content-api {
+                    //                 -webkit-justify-content: flex-start;
+                    //                 justify-content: flex-start;
+                    //                 padding-top: 8px;
+                    //                 height: auto;
 
-                                    &::before {
-                                        background-color: #ea291f;
-                                        content: "";
-                                        height: 35px;
-                                        width: 55%;
-                                        margin: 36px 0 12px 15%;
-                                    }
+                    //                 &::before {
+                    //                     background-color: #ea291f;
+                    //                     content: "";
+                    //                     height: 35px;
+                    //                     width: 45%;
+                    //                     margin: 36px 0 12px 10%;
+                    //                 }
 
-                                    h2,
-                                    p {
-                                        color: $minute_main;
-                                        padding: 0 12px;
-                                        width: 45%;
-                                        margin-left: 45%;
-                                    }
+                    //                 h2,
+                    //                 p {
+                    //                     color: $minute_main;
+                    //                     padding: 0 12px 0 0;
+                    //                     width: 45%;
+                    //                     margin-left: 10%;
+                    //                 }
 
-                                    h2 {
-                                        font: 600 1.7rem/2.2rem $egyptian-text;
-                                    }
+                    //                 h2 {
+                    //                     font: 600 1.7rem/2.2rem $egyptian-text;
+                    //                 }
 
-                                    p {
-                                        font: 1.6rem/2.1rem $egyptian-text;
+                    //                 p {
+                    //                     font: 1.6rem/2.1rem $egyptian-text;
 
-                                        a {
-                                            background: transparent;
-                                            border-bottom: 1px solid $minute_main;
-                                            color: $minute_main;
-                                            position: relative;
-                                            text-shadow: none;
-                                        }
-                                    }
-                                }
-                            }
+                    //                     a {
+                    //                         background: transparent;
+                    //                         border-bottom: 1px solid $minute_main;
+                    //                         color: $minute_main;
+                    //                         position: relative;
+                    //                         text-shadow: none;
+                    //                     }
+                    //                 }
+                    //             }
+                    //         }
 
-                            &.has-quote {
-                                .block__body {
-                                    .quoted {
-                                        margin: 24px 0 0 15%;
-                                        width: 55%;
-                                        padding-top: 12px;
+                    //         &.has-quote {
+                    //             .block__body {
+                    //                 .from-content-api {
+                    //                     &::before {
+                    //                         margin-left: 15%;
+                    //                     }
 
-                                        &::before {
-                                            color: $minute_accent;
-                                            font-size: 4rem;
-                                            top: -20px;
-                                            left: 20%;
-                                        }
+                    //                     .quoted {
+                    //                         margin: 24px 0 0 15%;
+                    //                         width: 55%;
+                    //                         padding-top: 12px;
 
-                                        p {
-                                            color: $minute_main;
-                                            font: 100 2rem/2.2rem $egyptian-display;
-                                            padding-left: 0;
-                                            margin: 0;
-                                            width: 100%;
-                                        }
-                                    }
+                    //                         &::before {
+                    //                             color: $minute_accent;
+                    //                             font-size: 4rem;
+                    //                             top: -20px;
+                    //                             left: 20%;
+                    //                         }
 
-                                    h2 {
-                                        margin-left: 15%;
-                                        padding-left: 0;
-                                    }  
-                                }
-                            }
-                        }
-                    }
+                    //                         p {
+                    //                             color: $minute_main;
+                    //                             font: 100 2rem/2.2rem $egyptian-display;
+                    //                             padding-left: 0;
+                    //                             margin: 0;
+                    //                             width: 100%;
+                    //                         }
+                    //                     }
 
-
+                    //                     h2 {
+                    //                         margin-left: 15%;
+                    //                         padding-left: 0;
+                    //                     }
+                    //                 }  
+                    //             }
+                    //         }
+                    //     }
+                    // }
                 }
             }
         }

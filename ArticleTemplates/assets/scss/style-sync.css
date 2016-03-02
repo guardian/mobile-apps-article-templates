@@ -3396,11 +3396,6 @@ body.the-minute.advert-config--tablet {
           margin-left: -600px;
           width: 1200px; } }
       body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .the-minute__header {
-        position: relative;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        border: 0;
         display: -webkit-flex;
         display: flex;
         height: 100%;
@@ -3408,12 +3403,17 @@ body.the-minute.advert-config--tablet {
         justify-content: flex-end;
         width: 100%;
         -webkit-flex-direction: column;
-        flex-direction: column; }
-        body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .the-minute__header > :nth-child(2) {
+        flex-direction: column;
+        position: relative;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        border: 0; }
+        body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .the-minute__header > :nth-child(1) {
           margin-top: 12px;
           padding-top: 12px;
           position: relative; }
-          body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .the-minute__header > :nth-child(2)::before {
+          body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .the-minute__header > :nth-child(1)::before {
             background-color: #ea291f;
             content: "";
             height: 35px;
@@ -3433,6 +3433,14 @@ body.the-minute.advert-config--tablet {
           margin-top: 0;
           padding-top: 0;
           margin-bottom: 12px; }
+          body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .the-minute__header .the-minute__headline::before {
+            background-color: #ea291f;
+            content: "";
+            height: 35px;
+            position: absolute;
+            top: -40px;
+            width: 115%;
+            left: 0; }
         body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .the-minute__header .the-minute__standfirst {
           font: 500 1.8rem/2.2rem "Guardian Text Egyptian Web", Georgia, serif;
           margin-bottom: 36px; }
@@ -3490,8 +3498,7 @@ body.the-minute.advert-config--tablet {
         body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block .block__time {
           display: none; }
         body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-textonly.block--live-key-event .block__body, body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-textonly.block--live-summary .block__body, body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-coverimage.block--live-key-event .block__body, body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-coverimage.block--live-summary .block__body, body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-key-event .block__body, body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-summary .block__body {
-          width: 100%;
-          height: 100%; }
+          width: 100%; }
         body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-textonly.block--live-key-event .from-content-api, body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-textonly.block--live-summary .from-content-api, body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-coverimage.block--live-key-event .from-content-api, body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-coverimage.block--live-summary .from-content-api, body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-key-event .from-content-api, body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-summary .from-content-api {
           display: -webkit-flex;
           display: flex;
@@ -3501,9 +3508,11 @@ body.the-minute.advert-config--tablet {
           width: 100%;
           -webkit-flex-direction: column;
           flex-direction: column;
-          height: 100%;
+          height: auto;
           margin-top: 0;
           position: relative; }
+        body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-textonly.flex-block .from-content-api, body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-coverimage.flex-block .from-content-api, body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.flex-block .from-content-api {
+          height: 100%; }
         body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-coverimage.block--live-key-event .from-content-api figure, body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-coverimage.block--live-summary .from-content-api figure, body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-key-event .from-content-api figure, body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-summary .from-content-api figure {
           position: absolute; }
           body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-coverimage.block--live-key-event .from-content-api figure .figure__inner, body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-coverimage.block--live-summary .from-content-api figure .figure__inner, body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-key-event .from-content-api figure .figure__inner, body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-summary .from-content-api figure .figure__inner {
@@ -3514,8 +3523,9 @@ body.the-minute.advert-config--tablet {
           justify-content: flex-start; }
           body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-coverimage.block--live-key-event .block__body .from-content-api::before {
             content: "";
-            min-height: 88px;
-            flex: 2 2; }
+            min-height: 74px;
+            -webkit-flex: 1 1;
+            flex: 1 1; }
           body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-coverimage.block--live-key-event .block__body .from-content-api h2,
           body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-coverimage.block--live-key-event .block__body .from-content-api p {
             color: #fff;
@@ -3537,10 +3547,12 @@ body.the-minute.advert-config--tablet {
               color: #fff;
               position: relative;
               text-shadow: none; }
+          body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-coverimage.block--live-key-event .block__body .from-content-api p:last-of-type {
+            margin-bottom: 0; }
           body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-coverimage.block--live-key-event .block__body .from-content-api figure {
             width: 55%;
-            bottom: 0;
-            left: 40%; }
+            left: 40%;
+            top: 48px; }
             body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-coverimage.block--live-key-event .block__body .from-content-api figure > :nth-child(1) {
               margin-top: 12px;
               padding-top: 12px;
@@ -3565,13 +3577,13 @@ body.the-minute.advert-config--tablet {
               margin: 0; }
         body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-summary .block__body .from-content-api {
           -webkit-justify-content: flex-start;
-          justify-content: flex-start;
-          padding-top: 8px; }
+          justify-content: flex-start; }
           body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-summary .block__body .from-content-api::before {
             content: "";
-            min-height: 88px;
-            max-height: 88px;
-            flex: 2 2; }
+            min-height: 74px;
+            max-height: 74px;
+            -webkit-flex: 1 1;
+            flex: 1 1; }
           body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-summary .block__body .from-content-api h2,
           body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-summary .block__body .from-content-api p {
             color: #fff;
@@ -3579,10 +3591,10 @@ body.the-minute.advert-config--tablet {
             width: 45%;
             margin-left: 45%; }
           body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-summary .block__body .from-content-api h2 {
+            margin-top: 0;
             font: 600 1.7rem/2.2rem "Guardian Text Egyptian Web", Georgia, serif; }
           body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-summary .block__body .from-content-api p {
-            font: 1.6rem/2.1rem "Guardian Text Egyptian Web", Georgia, serif;
-            flex: 2 2; }
+            font: 1.6rem/2.1rem "Guardian Text Egyptian Web", Georgia, serif; }
             body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-summary .block__body .from-content-api p a {
               background: transparent;
               border-bottom: 1px solid #fff;
@@ -3592,7 +3604,7 @@ body.the-minute.advert-config--tablet {
           body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-summary .block__body .from-content-api figure {
             margin: 0;
             width: 40%;
-            bottom: 0;
+            top: 48px;
             left: 5%;
             max-width: none; }
             body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-summary .block__body .from-content-api figure::before {
@@ -3618,8 +3630,7 @@ body.the-minute.advert-config--tablet {
           margin-top: 24px;
           margin-left: 5%;
           width: 55%;
-          padding-top: 12px;
-          flex: 2 2; }
+          padding-top: 12px; }
           body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-summary.has-quote .block__body .quoted::before {
             color: #ea291f;
             font-size: 4rem;
@@ -3650,56 +3661,10 @@ body.the-minute.advert-config--tablet {
           padding-right: 12px; }
           body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-summary.has-quote .block__body .caption-container::before {
             content: '';
+            -webkit-flex: 2 2;
             flex: 2 2; }
           body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-thumbnail.block--live-summary.has-quote .block__body .caption-container .element-image__caption {
             padding-right: 4px; }
-        body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-textonly.block--live-summary .block__body {
-          height: auto; }
-          body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-textonly.block--live-summary .block__body .from-content-api {
-            -webkit-justify-content: flex-start;
-            justify-content: flex-start;
-            padding-top: 8px;
-            height: auto; }
-            body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-textonly.block--live-summary .block__body .from-content-api::before {
-              background-color: #ea291f;
-              content: "";
-              height: 35px;
-              width: 55%;
-              margin: 36px 0 12px 15%; }
-            body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-textonly.block--live-summary .block__body .from-content-api h2,
-            body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-textonly.block--live-summary .block__body .from-content-api p {
-              color: #fff;
-              padding: 0 12px;
-              width: 45%;
-              margin-left: 45%; }
-            body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-textonly.block--live-summary .block__body .from-content-api h2 {
-              font: 600 1.7rem/2.2rem "Guardian Text Egyptian Web", Georgia, serif; }
-            body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-textonly.block--live-summary .block__body .from-content-api p {
-              font: 1.6rem/2.1rem "Guardian Text Egyptian Web", Georgia, serif; }
-              body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-textonly.block--live-summary .block__body .from-content-api p a {
-                background: transparent;
-                border-bottom: 1px solid #fff;
-                color: #fff;
-                position: relative;
-                text-shadow: none; }
-        body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-textonly.block--live-summary.has-quote .block__body .quoted {
-          margin: 24px 0 0 15%;
-          width: 55%;
-          padding-top: 12px; }
-          body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-textonly.block--live-summary.has-quote .block__body .quoted::before {
-            color: #ea291f;
-            font-size: 4rem;
-            top: -20px;
-            left: 20%; }
-          body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-textonly.block--live-summary.has-quote .block__body .quoted p {
-            color: #fff;
-            font: 100 2rem/2.2rem "Guardian Egyptian Web", Georgia, serif;
-            padding-left: 0;
-            margin: 0;
-            width: 100%; }
-        body.the-minute.advert-config--tablet .article--liveblog .article__body--liveblog .block.is-textonly.block--live-summary.has-quote .block__body h2 {
-          margin-left: 15%;
-          padding-left: 0; }
   body.the-minute.advert-config--tablet .meta,
   body.the-minute.advert-config--tablet .loading--liveblog,
   body.the-minute.advert-config--tablet .more--live-blogs,

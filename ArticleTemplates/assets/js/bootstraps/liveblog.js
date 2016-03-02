@@ -123,10 +123,10 @@ define([
                 modules.updateMinuteBlockTitles(blocks);
 
                 if (document.body.classList.contains('advert-config--tablet')) {
-                    modules.adjustMinuteBlocksWithCoverImages(blocks);
+                    modules.adjustMinuteBlocks(blocks);
 
                     // update dimensions on orientation change
-                    bean.on(window, 'resize', window.ThrottleDebounce.debounce(100, false, modules.adjustMinuteBlocksWithCoverImages.bind(null, blocks)));
+                    bean.on(window, 'resize', window.ThrottleDebounce.debounce(100, false, modules.adjustMinuteBlocks.bind(null, blocks)));
                 } else {
                     // If windows add background images to minute blocks
                     if (document.body.classList.contains("windows")) {   
@@ -168,11 +168,12 @@ define([
                 }
             },
 
-            adjustMinuteBlocksWithCoverImages: function (blocks) {
+            adjustMinuteBlocks: function (blocks) {
                 var i,
                     figure,
                     isCoverImage,
-                    marginTopPixels = 60;
+                    tweet,
+                    marginTop = 48;
 
                 for (i = 0; i < blocks.length; i++) {
                     if (blocks[i].classList.contains('is-coverimage') || blocks[i].classList.contains('is-thumbnail')) {
@@ -181,7 +182,49 @@ define([
 
                         if (figure) {
                             modules.moveFigcaption(figure, isCoverImage);
-                            blocks[i].style.height = figure.offsetHeight + marginTopPixels + "px";
+                            
+                            blocks[i].classList.remove("flex-block");
+                            blocks[i].style.height = "auto";
+
+                            if (blocks[i].offsetHeight < (figure.offsetHeight + marginTop)) {
+                                blocks[i].style.height = figure.offsetHeight + marginTop + "px";
+                                blocks[i].classList.add("flex-block");
+                            }
+                        }
+                    } else {
+                        tweet = blocks[i].querySelector('.element-tweet');
+
+                        if (tweet) {
+                            modules.adjustTweetForMinute(tweet);
+                        }
+                    }
+                }
+            },
+
+            adjustTweetForMinute: function (tweet) {
+                var i,
+                    childNode,
+                    twitterName,
+                    twitterHandle,
+                    blockQuote = tweet.querySelector(".twitter-tweet");
+
+                if (blockQuote) {
+                    // console.log(blockQuote.innerText);
+                    for (i = 0; i < blockQuote.childNodes.length; i++) {
+                        childNode = blockQuote.childNodes[i];
+                        if (childNode.nodeType === 3 && 
+                            childNode.nodeValue && 
+                            childNode.nodeValue.indexOf("@") !== -1) {
+                            twitterHandle = childNode.nodeValue.match(/\(([^)]*)\)/g);
+
+                            if (twitterHandle.length) {
+                                twitterName = childNode.nodeValue.replace(twitterHandle[0], "");
+                                twitterHandle = twitterHandle[0].substring(1, twitterHandle[0].length - 1);
+                            }
+
+                            console.log(">>>>", twitterHandle, twitterName.replace(/\W+/g, " "));
+
+                            blockQuote.removeChild(childNode);
                         }
                     }
                 }
