@@ -1154,14 +1154,9 @@ body.the-minute {
                                     }
 
                                     .quoted {
-                                        margin-top: 24px;
-                                        margin-left: 5%;
+                                        margin: 24px 0 0 5%;
                                         width: 55%;
                                         padding-top: 12px;
-                                        // -webkit-flex: 2 2;
-                                        // flex: 2 2;
-                                        // -webkit-flex: 1 1;
-                                        // flex: 1 1;
 
                                         &::before {
                                             color: $minute_accent;
@@ -1220,88 +1215,117 @@ body.the-minute {
                     }
 
                     /* Text only block styles */
-                    // &.is-textonly {
-                    //     &.block--live-summary {
-                    //         .block__body {
-                    //             height: auto;
+                    &.is-textonly {
+                        &.block--live-summary {
+                            .block__body {
+                                height: auto;
 
-                    //             .from-content-api {
-                    //                 -webkit-justify-content: flex-start;
-                    //                 justify-content: flex-start;
-                    //                 padding-top: 8px;
-                    //                 height: auto;
+                                .from-content-api {
+                                    &::before {
+                                        background-color: #ea291f;
+                                        content: "";
+                                        height: 35px;
+                                        width: 45%;
+                                        margin: 36px 0 12px 10%;
+                                    }
 
-                    //                 &::before {
-                    //                     background-color: #ea291f;
-                    //                     content: "";
-                    //                     height: 35px;
-                    //                     width: 45%;
-                    //                     margin: 36px 0 12px 10%;
-                    //                 }
+                                    h2,
+                                    p {
+                                        color: $minute_main;
+                                        padding: 0 12px 0 0;
+                                        width: 45%;
+                                        margin-left: 10%;
+                                    }
 
-                    //                 h2,
-                    //                 p {
-                    //                     color: $minute_main;
-                    //                     padding: 0 12px 0 0;
-                    //                     width: 45%;
-                    //                     margin-left: 10%;
-                    //                 }
+                                    h2 {
+                                        font: 600 1.7rem/2.2rem $egyptian-text;
+                                    }
 
-                    //                 h2 {
-                    //                     font: 600 1.7rem/2.2rem $egyptian-text;
-                    //                 }
+                                    p {
+                                        font: 1.6rem/2.1rem $egyptian-text;
 
-                    //                 p {
-                    //                     font: 1.6rem/2.1rem $egyptian-text;
+                                        a {
+                                            background: transparent;
+                                            border-bottom: 1px solid $minute_main;
+                                            color: $minute_main;
+                                            position: relative;
+                                            text-shadow: none;
+                                        }
+                                    }
+                                }
+                            }
 
-                    //                     a {
-                    //                         background: transparent;
-                    //                         border-bottom: 1px solid $minute_main;
-                    //                         color: $minute_main;
-                    //                         position: relative;
-                    //                         text-shadow: none;
-                    //                     }
-                    //                 }
-                    //             }
-                    //         }
+                            &.has-quote {
+                                .block__body {
+                                    .from-content-api {
+                                        &::before {
+                                            margin-left: 15%;
+                                        }
 
-                    //         &.has-quote {
-                    //             .block__body {
-                    //                 .from-content-api {
-                    //                     &::before {
-                    //                         margin-left: 15%;
-                    //                     }
+                                        .quoted {
+                                            margin: 24px 0 0 15%;
+                                            width: 55%;
+                                            padding-top: 12px;
 
-                    //                     .quoted {
-                    //                         margin: 24px 0 0 15%;
-                    //                         width: 55%;
-                    //                         padding-top: 12px;
+                                            &::before {
+                                                color: $minute_accent;
+                                                font-size: 4rem;
+                                                top: -20px;
+                                                left: 20%;
+                                            }
 
-                    //                         &::before {
-                    //                             color: $minute_accent;
-                    //                             font-size: 4rem;
-                    //                             top: -20px;
-                    //                             left: 20%;
-                    //                         }
+                                            p {
+                                                color: $minute_main;
+                                                font: 100 2rem/2.2rem $egyptian-display;
+                                                padding-left: 0;
+                                                margin: 0;
+                                                width: 100%;
+                                            }
+                                        }
 
-                    //                         p {
-                    //                             color: $minute_main;
-                    //                             font: 100 2rem/2.2rem $egyptian-display;
-                    //                             padding-left: 0;
-                    //                             margin: 0;
-                    //                             width: 100%;
-                    //                         }
-                    //                     }
+                                        h2 {
+                                            margin-left: 15%;
+                                            padding-left: 0;
+                                        }
+                                    }  
+                                }
+                            }
 
-                    //                     h2 {
-                    //                         margin-left: 15%;
-                    //                         padding-left: 0;
-                    //                     }
-                    //                 }  
-                    //             }
-                    //         }
-                    //     }
-                    // }
+                            &.has-tweet {
+                                .twitter-tweet {
+                                    margin-bottom: 0;
+
+                                    &::before {
+                                        content: '';
+                                    }
+
+                                    .twitter-wrapper {
+                                        margin-left: 10%;
+                                        margin-bottom: 12px;
+
+                                        span,
+                                        a {
+                                            font: 1.6rem/1.8rem $agate-sans;
+                                            color: $minute_main;
+                                        }
+
+                                        span {
+                                            font-weight: 600;
+                                            display: block;
+                                        }
+
+                                        a {
+                                            text-decoration: underline;
+                                        }
+                                    }
+
+                                    p {
+                                        margin-bottom: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

@@ -204,12 +204,15 @@ define([
             adjustTweetForMinute: function (tweet) {
                 var i,
                     childNode,
-                    twitterName,
+                    twitterLink = "https://twitter.com/",
+                    twitterUser,
                     twitterHandle,
+                    twitterWrapperElem,
+                    nameElem,
+                    linkElem,
                     blockQuote = tweet.querySelector(".twitter-tweet");
 
                 if (blockQuote) {
-                    // console.log(blockQuote.innerText);
                     for (i = 0; i < blockQuote.childNodes.length; i++) {
                         childNode = blockQuote.childNodes[i];
                         if (childNode.nodeType === 3 && 
@@ -218,13 +221,31 @@ define([
                             twitterHandle = childNode.nodeValue.match(/\(([^)]*)\)/g);
 
                             if (twitterHandle.length) {
-                                twitterName = childNode.nodeValue.replace(twitterHandle[0], "");
+                                twitterUser = childNode.nodeValue.replace(twitterHandle[0], "").replace(/\W+/g, " ");
                                 twitterHandle = twitterHandle[0].substring(1, twitterHandle[0].length - 1);
+                                twitterLink +=  twitterHandle.replace("@", "");
                             }
 
-                            console.log(">>>>", twitterHandle, twitterName.replace(/\W+/g, " "));
+                            twitterWrapperElem = document.createElement("div");
+                            twitterWrapperElem.classList.add("twitter-wrapper");
+
+                            nameElem = document.createElement("span");
+                            nameElem.innerText = twitterUser;
+
+                            linkElem = document.createElement("a");
+                            linkElem.href = twitterLink;
+                            linkElem.innerText = twitterHandle;
+
+                            twitterWrapperElem.appendChild(nameElem);
+                            twitterWrapperElem.appendChild(linkElem);
+
+                            blockQuote.insertBefore(twitterWrapperElem, blockQuote.firstChild);
 
                             blockQuote.removeChild(childNode);
+                            i--;
+                        } else if (childNode.tagName === "A") {
+                            blockQuote.removeChild(childNode);
+                            i--;
                         }
                     }
                 }
@@ -266,6 +287,8 @@ define([
 
                         if (block.getElementsByClassName('quoted').length) {
                             block.classList.add('has-quote');
+                        } else if (block.getElementsByClassName('twitter-tweet').length) {
+                            block.classList.add('has-tweet');
                         }
                     }
                 }
