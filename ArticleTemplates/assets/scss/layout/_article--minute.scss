@@ -929,33 +929,47 @@ body.the-minute {
                     /* Common block styles */
                     &.is-textonly,
                     &.is-coverimage,
-                    &.is-thumbnail {
-                        &.block--live-key-event,
-                        &.block--live-summary {
-                            .block__body {
-                                width: 100%;
-                            }
+                    &.is-thumbnail,
+                    &.is-video {
+                        .block__body {
+                            width: 100%;
 
                             .from-content-api {
                                 @include minute_flex_content;
                                 height: auto;
                                 margin-top: 0;
                                 position: relative;
-                            } 
+
+                                h2 {
+                                    .counter {
+                                        margin-bottom: -12px;
+                                        display: block;
+                                        font: 100 8rem/8.4rem $egyptian-display;
+
+                                        &::after {
+                                            content:"\A";
+                                        }
+                                    }
+                                }
+                            }
                         }
 
                         &.flex-block {
-                            .from-content-api {
+                            .block__body {
                                 height: 100%;
-                            } 
+
+                                .from-content-api {
+                                    height: 100%;
+                                } 
+                            }
                         }              
                     }
 
-                    /* Common image block styles */
+                    /* Common image & video block styles */
                     &.is-coverimage,
-                    &.is-thumbnail {
-                        &.block--live-key-event,
-                        &.block--live-summary {
+                    &.is-thumbnail,
+                    &.is-video {
+                        .block__body {
                             .from-content-api {
                                 figure {
                                     position: absolute;
@@ -969,102 +983,158 @@ body.the-minute {
                         }              
                     }
 
+                    /* Common cover image & video block styles */
+                    &.is-coverimage,
+                    &.is-video {
+                        .block__body {
+                            .from-content-api {
+                                -webkit-justify-content: flex-start;
+                                justify-content: flex-start;
+
+                                &::before {
+                                    content: "";
+                                    min-height: 74px;
+                                    -webkit-flex: 1 1;
+                                    flex: 1 1;
+                                }
+
+                                h2,
+                                p {
+                                    color: $minute_main;
+                                    padding: 0 12px 0 24px;
+                                    width: 40%;
+                                }
+
+                                h2 {
+                                    font: 600 1.7rem/2.2rem $egyptian-text;
+                                }
+
+                                p {
+                                    font: 1.6rem/2.1rem $egyptian-text;
+
+                                    a {
+                                        background: transparent;
+                                        border-bottom: 1px solid $minute_main;
+                                        color: $minute_main;
+                                        position: relative;
+                                        text-shadow: none;
+                                    }
+                                }
+
+                                p:last-of-type {
+                                    margin-bottom: 0;
+                                }
+
+                                figure {
+                                    width: 55%;
+                                    top: 48px;
+
+                                    &.figure-wide {
+                                        margin: 0;
+                                    }
+                                }
+                            }                     
+                        }
+                    }
+
                     /* Cover image block styles */
                     &.is-coverimage {
-                        &.block--live-key-event {
+                        .block__body {
+                            .from-content-api {
+                                figure {
+                                    left: 40%;
+
+                                    > :first-child {
+                                        margin-top: 12px;
+                                        padding-top: 12px;
+                                        position: relative;
+
+                                        &::before {
+                                            background-color: $minute_accent;
+                                            content: "";
+                                            position: absolute;
+                                            height: 35px;
+                                            width: 125%;
+                                            margin-top: -15px;
+                                            z-index: 1;
+                                            left: -100%;
+                                        }
+                                    }
+
+                                    figcaption {
+                                        color: rgba(255, 255, 255, .9);
+                                        background-color: rgba(0, 0, 0, .4);
+                                        position: absolute;
+                                        bottom: 0;
+                                        right: 0;
+                                        padding-right: 12px;
+                                    }
+                                }
+                            }
+                        }
+
+                        &.has-quote {
                             .block__body {
-                                .from-content-api {
-                                    -webkit-justify-content: flex-start;
-                                    justify-content: flex-start;
+                                .quoted {
+                                    margin-top: 24px;
+                                    margin-left: 0;
+                                    padding-top: 12px;
 
                                     &::before {
+                                        color: $minute_accent;
+                                        font-size: 4rem;
+                                        top: -20px;
+                                        left: 10%;
+                                    }                                }
+
+                                p {
+                                    margin-top: 0;
+                                }
+                            }
+                        }
+                    }
+
+                    &.is-video {
+                        .block__body {
+                            .from-content-api {
+                                h2,
+                                p {
+                                    padding-left: 12px;
+                                    margin-left: 60%;
+                                }
+
+                                h2 {
+                                    margin-bottom: 0;
+                                }
+
+                                p:first-child {
+                                    margin-top:  12px;
+                                }
+
+                                figure {
+                                    left: 5%;
+
+                                    &::before {
+                                        background-color: $minute_accent;
                                         content: "";
-                                        min-height: 74px;
-                                        -webkit-flex: 1 1;
-                                        flex: 1 1;
+                                        position: absolute;
+                                        height: 35px;
+                                        width: 100%;
+                                        margin-top: -15px;
+                                        z-index: 1;
+                                        margin-left: 75%;
                                     }
 
-                                    h2,
-                                    p {
-                                        color: $minute_main;
-                                        padding: 0 12px 0 24px;
-                                        width: 40%;
-                                    }
-
-                                    h2 {
-                                        font: 600 1.7rem/2.2rem $egyptian-text;
-
-                                        .counter {
-                                            margin-bottom: -12px;
-                                            display: block;
-                                            font: 100 8rem/8.4rem $egyptian-display;
-
-                                            &::after {
-                                                content:"\A";
-                                            }
-                                        }
-                                    }
-
-                                    p {
-                                        font: 1.6rem/2.1rem $egyptian-text;
-
-                                        a {
-                                            background: transparent;
-                                            border-bottom: 1px solid $minute_main;
-                                            color: $minute_main;
-                                            position: relative;
-                                            text-shadow: none;
-                                        }
-                                    }
-
-                                    p:last-of-type {
-                                        margin-bottom: 0;
-                                    }
-
-                                    figure {
-                                        width: 55%;
-                                        left: 40%;
-                                        top: 48px;
-
-                                        > :nth-child(1) {
-                                            margin-top: 12px;
-                                            padding-top: 12px;
-                                            position: relative;
-
-                                            &::before {
-                                                background-color: $minute_accent;
-                                                content: "";
-                                                position: absolute;
-                                                height: 35px;
-                                                width: 200%;
-                                                margin-top: -15px;
-                                                z-index: 1;
-                                                left: -150%;
-                                            }
-                                        }
-
-                                        figcaption {
-                                            color: rgba(255, 255, 255, .9);
-                                            background-color: rgba(0, 0, 0, .4);
-                                            position: absolute;
-                                            bottom: 0;
-                                            right: 0;
-                                            padding-right: 12px;
-                                        }
-
-                                        &.figure-wide {
-                                            margin: 0;
-                                        }
-                                    }
-                                }                     
+                                    .video-URL {
+                                        background: $minute_bg;
+                                    }                              }
                             }
                         }
                     }
 
                     /* Thumbnail image block styles */
                     &.is-thumbnail {
-                        &.block--live-summary {
-                            .block__body {
+                        .block__body {
                                 .from-content-api {
                                     -webkit-justify-content: flex-start;
                                     justify-content: flex-start;
@@ -1121,94 +1191,73 @@ body.the-minute {
                                         &.figure-wide {
                                             margin: 0;
                                         }
-                                    }
 
-                                    .caption-container {
-                                        font: 1.4rem/1.7rem $agate-sans; 
-                                        color: rgba(255, 255, 255, .9);
-                                        padding: 0 12px;
-                                        width: 45%;
-                                        margin-left: 45%;
-                                    }
-                                }
-                            }
+                                        figcaption {
+                                            padding-bottom: 0;
+                                            margin-bottom: 0;
+                                            background: $minute_bg;
+                                            border: none;
+                                            font: 1.4rem/1.7rem $agate-sans; 
+                                            color: rgba(255, 255, 255, .9);
 
-                            &:not(.has-quote) {
-                                .from-content-api {
-                                    figure {
-                                        &::before {
-                                            left: 51%;
-                                        }
-                                    }
-                                }
-                            }
-
-                            &.has-quote {
-                                .block__body {
-                                    .from-content-api {
-                                        figure {
-                                            &::before {
-                                                left: -158%;
+                                            span {
+                                                display: inline;
                                             }
                                         }
                                     }
+                                }
+                        }
 
-                                    .quoted {
-                                        margin: 24px 0 0 5%;
-                                        width: 55%;
-                                        padding-top: 12px;
-
-                                        &::before {
-                                            color: $minute_accent;
-                                            font-size: 4rem;
-                                            top: -20px;
-                                            left: 20%;
-                                        }
-
-                                        p {
-                                            color: $minute_main;
-                                            font: 100 2rem/2.2rem $egyptian-display;
-                                            padding-left: 0;
-                                            margin: 0;
-                                            width: 100%;
-                                        }
+                        &:not(.has-quote) {
+                            .from-content-api {
+                                figure {
+                                    &::before {
+                                        left: 51%;
                                     }
+                                }
+                            }
+                        }
 
-                                    h2 {
-                                        margin-left: 5%;
-                                        padding-left: 0;
-                                    }
-
+                        &.has-quote {
+                            .block__body {
+                                .from-content-api {
                                     figure {
-                                        width: 35%;
-                                        left: 60%;
-                                    } 
-
-                                    .caption-container {
-                                        display: -webkit-flex;
-                                        display: flex;
-                                        -webkit-justify-content: flex-start;
-                                        justify-content: flex-start;
-                                        -webkit-flex-direction: row;
-                                        flex-direction: row;
-
                                         &::before {
-                                            content: '';
-                                            -webkit-flex: 2 2;
-                                            flex: 2 2;
-                                            // -webkit-flex: 1 1;
-                                            // flex: 1 1;
+                                            left: -158%;
                                         }
+                                    }
+                                }
 
-                                        .element-image__caption {
-                                            padding-right: 4px;
-                                        }
+                                .quoted {
+                                    margin: 24px 0 0 5%;
+                                    width: 55%;
+                                    padding-top: 12px;
 
-                                        width: 55%;
-                                        margin-left: 5%;
-                                        padding: 0;
-                                        padding-right: 12px;
-                                    }  
+                                    &::before {
+                                        color: $minute_accent;
+                                        font-size: 4rem;
+                                        top: -20px;
+                                        left: 20%;
+                                    }
+
+                                    p {
+                                        color: $minute_main;
+                                        font: 100 2rem/2.2rem $egyptian-display;
+                                        padding-left: 0;
+                                        margin: 0;
+                                        width: 100%;
+                                    }
+                                }
+
+                                p,
+                                h2 {
+                                    margin-left: 5%;
+                                    padding-left: 0;
+                                }
+
+                                figure {
+                                    width: 35%;
+                                    left: 60%;
                                 }
                             }
                         }
@@ -1216,8 +1265,7 @@ body.the-minute {
 
                     /* Text only block styles */
                     &.is-textonly {
-                        &.block--live-summary {
-                            .block__body {
+                        .block__body {
                                 height: auto;
 
                                 .from-content-api {
@@ -1253,79 +1301,82 @@ body.the-minute {
                                         }
                                     }
                                 }
-                            }
+                        }
 
-                            &.has-quote {
-                                .block__body {
-                                    .from-content-api {
-                                        &::before {
-                                            margin-left: 15%;
-                                        }
-
-                                        .quoted {
-                                            margin: 24px 0 0 15%;
-                                            width: 55%;
-                                            padding-top: 12px;
-
-                                            &::before {
-                                                color: $minute_accent;
-                                                font-size: 4rem;
-                                                top: -20px;
-                                                left: 20%;
-                                            }
-
-                                            p {
-                                                color: $minute_main;
-                                                font: 100 2rem/2.2rem $egyptian-display;
-                                                padding-left: 0;
-                                                margin: 0;
-                                                width: 100%;
-                                            }
-                                        }
-
-                                        h2 {
-                                            margin-left: 15%;
-                                            padding-left: 0;
-                                        }
-                                    }  
-                                }
-                            }
-
-                            &.has-tweet {
-                                .twitter-tweet {
-                                    margin-bottom: 0;
-
+                        &.has-quote {
+                            .block__body {
+                                .from-content-api {
                                     &::before {
-                                        content: '';
+                                        margin-left: 15%;
                                     }
 
-                                    .twitter-wrapper {
-                                        margin-left: 10%;
-                                        margin-bottom: 12px;
+                                    .quoted {
+                                        margin: 24px 0 0 15%;
+                                        width: 55%;
+                                        padding-top: 12px;
 
-                                        span,
-                                        a {
-                                            font: 1.6rem/1.8rem $agate-sans;
+                                        &::before {
+                                            color: $minute_accent;
+                                            font-size: 4rem;
+                                            top: -20px;
+                                            left: 20%;
+                                        }
+
+                                        p {
                                             color: $minute_main;
-                                        }
-
-                                        span {
-                                            font-weight: 600;
-                                            display: block;
-                                        }
-
-                                        a {
-                                            text-decoration: underline;
+                                            font: 100 2rem/2.2rem $egyptian-display;
+                                            padding-left: 0;
+                                            margin: 0;
+                                            width: 100%;
                                         }
                                     }
 
-                                    p {
-                                        margin-bottom: 0;
+                                    h2 {
+                                        margin-left: 15%;
+                                        padding-left: 0;
                                     }
-                                }
+                                }  
                             }
                         }
+
+                        &.has-tweet {
+                            .twitter-tweet {
+                                margin-bottom: 0;
+
+                                &::before {
+                                    content: '';
+                                }
+
+                                .twitter-wrapper {
+                                    margin-left: 10%;
+                                    margin-bottom: 12px;
+
+                                    span,
+                                    a {
+                                        font: 1.6rem/1.8rem $agate-sans;
+                                        color: $minute_main;
+                                    }
+
+                                    span {
+                                        font-weight: 600;
+                                        display: block;
+                                    }
+
+                                    a {
+                                        text-decoration: underline;
+                                    }
+                                }
+
+                                p {
+                                    margin-bottom: 0;
+                                }
+                            }
+                        }                    
                     }
+                }
+
+                .block:last-of-type {
+                    padding-bottom: 36px;
                 }
             }
         }

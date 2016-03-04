@@ -91,33 +91,20 @@
     __COMMENTS_MODULE__
 
     <script type="text/javascript">
-        if (document.body.classList.contains('the-minute')) {
-            // Format date and add above standfirst
-            var dateArray = document.getElementById("published-date").innerHTML.split(' ').filter(Boolean),
-                dayOfWeek = dateArray[2].replace(',',''),
-                date = dateArray[3],
-                month = dateArray[4],
-                dateDiv = document.getElementsByClassName('the-minute__date')[0];
-            // Format date & append to div
-            date = date % 10 == 1 && date % 100 !== 11 ? date + 'st' : (date % 10 == 2 && date % 100 !== 12 ? date + 'nd' : (date % 10 == 3 && date % 100 !== 13 ? date + 'rd' : date + 'th'));
-            dateDiv.innerHTML = dayOfWeek + ' ' + date + ' ' + month;
+        // if (document.body.classList.contains('the-minute')) {
+        //     // Format date and add above standfirst
+        //     var dateArray = document.getElementById("published-date").innerHTML.split(' ').filter(Boolean),
+        //         dayOfWeek = dateArray[2].replace(',',''),
+        //         date = dateArray[3],
+        //         month = dateArray[4],
+        //         dateDiv = document.getElementsByClassName('the-minute__date')[0];
+                
+        //     // Format date & append to div
+        //     date = date % 10 == 1 && date % 100 !== 11 ? date + 'st' : (date % 10 == 2 && date % 100 !== 12 ? date + 'nd' : (date % 10 == 3 && date % 100 !== 13 ? date + 'rd' : date + 'th'));
+        //     dateDiv.innerHTML = dayOfWeek + ' ' + date + ' ' + month;
+        // }
 
-            // Check for blocks contents and add class accordingly
-            var theMinuteBlocks = document.querySelectorAll('.block--live-key-event, .block--live-summary');
-            for(var i = 0; i < theMinuteBlocks.length; i++) {
-                var thumbnail = theMinuteBlocks[i].getElementsByClassName('element--thumbnail'),
-                    inlineImage = theMinuteBlocks[i].getElementsByClassName('element-image ');
-
-                if (thumbnail.length) {
-                    theMinuteBlocks[i].className += ' is-thumbnail';
-                } else if (inlineImage.length) {
-                    theMinuteBlocks[i].className += ' is-coverimage';
-                } else {
-                    theMinuteBlocks[i].className += ' is-textonly';
-                }
-            }
-        }
-        window.initTemplate();
+        // window.initTemplate();
     </script>
 </body>
 </html>

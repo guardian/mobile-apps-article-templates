@@ -136,35 +136,16 @@ define([
                 }
             },
 
-            moveFigcaption: function (figure, isCoverImage) {
+            moveFigcaption: function (figure) {
                 var figInner,
-                    captionContainer,
-                    i,
-                    spans,
-                    span,
                     figCaption = figure.querySelector("figcaption");
 
                 if (figCaption && figCaption.parentNode === figure) {
+                    figInner = figure.querySelector(".figure__inner");
 
-                    if (isCoverImage) {
-                        figInner = figure.querySelector(".figure__inner");
-
-                        if (figInner) {
-                            figInner.insertBefore(figCaption, figInner.firstChild);
-                        }
-                    } else {
-                        span = document.createElement("span");
-                        captionContainer = document.createElement("div");
-                        captionContainer.classList.add("caption-container");
-                        spans = figCaption.querySelectorAll("span");
-                        for (i = 0; i < spans.length; i++) {
-                            span.innerHTML += spans[i].innerHTML + " ";
-                        }
-                        captionContainer.appendChild(span);
-                        figure.removeChild(figCaption);
-                        figure.parentNode.insertBefore(captionContainer, figure);
+                    if (figInner) {
+                        figInner.insertBefore(figCaption, figInner.firstChild);
                     }
-
                 }
             },
 
@@ -176,12 +157,13 @@ define([
                     marginTop = 48;
 
                 for (i = 0; i < blocks.length; i++) {
-                    if (blocks[i].classList.contains('is-coverimage') || blocks[i].classList.contains('is-thumbnail')) {
-                        figure = blocks[i].querySelector('figure.element-image');
-                        isCoverImage = blocks[i].classList.contains('is-coverimage');
+                    if (!blocks[i].classList.contains('is-textonly')) {
+                        figure = blocks[i].querySelector('figure');
 
                         if (figure) {
-                            modules.moveFigcaption(figure, isCoverImage);
+                            if (blocks[i].classList.contains('is-coverimage')) {
+                                modules.moveFigcaption(figure);
+                            }
                             
                             blocks[i].classList.remove("flex-block");
                             blocks[i].style.height = "auto";
@@ -224,25 +206,25 @@ define([
                                 twitterUser = childNode.nodeValue.replace(twitterHandle[0], "").replace(/\W+/g, " ");
                                 twitterHandle = twitterHandle[0].substring(1, twitterHandle[0].length - 1);
                                 twitterLink +=  twitterHandle.replace("@", "");
+
+                                twitterWrapperElem = document.createElement("div");
+                                twitterWrapperElem.classList.add("twitter-wrapper");
+
+                                nameElem = document.createElement("span");
+                                nameElem.innerText = twitterUser;
+
+                                linkElem = document.createElement("a");
+                                linkElem.href = twitterLink;
+                                linkElem.innerText = twitterHandle;
+
+                                twitterWrapperElem.appendChild(nameElem);
+                                twitterWrapperElem.appendChild(linkElem);
+
+                                blockQuote.insertBefore(twitterWrapperElem, blockQuote.firstChild);
+
+                                blockQuote.removeChild(childNode);
+                                i--;
                             }
-
-                            twitterWrapperElem = document.createElement("div");
-                            twitterWrapperElem.classList.add("twitter-wrapper");
-
-                            nameElem = document.createElement("span");
-                            nameElem.innerText = twitterUser;
-
-                            linkElem = document.createElement("a");
-                            linkElem.href = twitterLink;
-                            linkElem.innerText = twitterHandle;
-
-                            twitterWrapperElem.appendChild(nameElem);
-                            twitterWrapperElem.appendChild(linkElem);
-
-                            blockQuote.insertBefore(twitterWrapperElem, blockQuote.firstChild);
-
-                            blockQuote.removeChild(childNode);
-                            i--;
                         } else if (childNode.tagName === "A") {
                             blockQuote.removeChild(childNode);
                             i--;
@@ -274,22 +256,20 @@ define([
                 for (i = 0; i < blocks.length; i++) {
                     block = blocks[i];
 
-                    if (block.classList.contains('block--live-key-event') || 
-                        block.classList.contains('block--live-summary')) {
-                        
-                        if (block.getElementsByClassName('element--thumbnail').length) {
-                            block.classList.add('is-thumbnail');
-                        } else if (block.getElementsByClassName('element-image ').length) {
-                            block.classList.add('is-coverimage');
-                        } else {
-                            block.classList.add('is-textonly');
-                        }
+                    if (block.getElementsByClassName('element--thumbnail').length) {
+                        block.classList.add('is-thumbnail');
+                    } else if (block.getElementsByClassName('element-image').length) {
+                        block.classList.add('is-coverimage');
+                    } else if (block.getElementsByClassName('video-URL').length) {
+                        block.classList.add('is-video');
+                    } else {
+                        block.classList.add('is-textonly');
+                    }
 
-                        if (block.getElementsByClassName('quoted').length) {
-                            block.classList.add('has-quote');
-                        } else if (block.getElementsByClassName('twitter-tweet').length) {
-                            block.classList.add('has-tweet');
-                        }
+                    if (block.getElementsByClassName('quoted').length) {
+                        block.classList.add('has-quote');
+                    } else if (block.getElementsByClassName('twitter-tweet').length) {
+                        block.classList.add('has-tweet');
                     }
                 }
             },
