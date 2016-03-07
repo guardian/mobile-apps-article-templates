@@ -166,6 +166,28 @@ define([
         updateProgressBar: function(progressBar, articleHeight) {
             var scrollPosition = (window.scrollY / articleHeight * 100) + "%";
             progressBar.css('width', scrollPosition);
+        },
+
+        setupMembershipCreative: function() {
+            var membershipScratchPad,
+                membershipCreativeContainer,
+                insertAfterElem;
+
+            membershipScratchPad = document.getElementById("membership-scratch-pad");
+
+            if (membershipScratchPad && 
+                membershipScratchPad.children.length && 
+                membershipScratchPad.children[0].classList.contains("membership-creative")) {
+
+                insertAfterElem = document.body.querySelector(".article__body > div.prose > p:nth-of-type(4) ~ p + p");
+
+                if (insertAfterElem) {
+                    membershipCreativeContainer = document.createElement("div");
+                    membershipCreativeContainer.classList.add("membership-creative-container");
+                    membershipCreativeContainer.appendChild(membershipScratchPad.children[0]);
+                    insertAfterElem.parentNode.insertBefore(membershipCreativeContainer, insertAfterElem);
+                }
+            }
         }
     },
 
@@ -179,6 +201,7 @@ define([
             modules.loadQuizzes();
             modules.formatImmersive();
             modules.richLinkTracking();
+            modules.setupMembershipCreative();
         }
     };
 
