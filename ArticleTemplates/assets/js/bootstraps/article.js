@@ -179,7 +179,7 @@ define([
                 membershipScratchPad.children.length && 
                 membershipScratchPad.children[0].classList.contains("membership-creative")) {
 
-                insertAfterElem = document.body.querySelector(".article__body > div.prose > p:nth-of-type(4) ~ p + p");
+                insertAfterElem = document.body.querySelector(".article__body > div.prose > p:nth-of-type(5) ~ p + p");
 
                 if (insertAfterElem) {
                     membershipCreativeContainer = document.createElement("div");
