@@ -182,7 +182,8 @@ define([
                 insertAfterElem = document.body.querySelector(".article__body > div.prose > p:nth-of-type(5) ~ p + p");
 
                 if (insertAfterElem) {
-                    membershipCreativeContainer = document.createElement("div");
+                    membershipCreativeContainer = document.createElement("a");
+                    membershipCreativeContainer.href = "x-gu://membership";
                     membershipCreativeContainer.classList.add("membership-creative-container");
                     membershipCreativeContainer.appendChild(membershipScratchPad.children[0]);
                     insertAfterElem.parentNode.insertBefore(membershipCreativeContainer, insertAfterElem);
