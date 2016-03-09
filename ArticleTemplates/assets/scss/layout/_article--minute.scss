@@ -140,6 +140,24 @@ $minute_accent: #ea291f;
     flex-direction: column;
 }
 
+@mixin membership_animation {
+    0% {
+        opacity: 0;
+    }
+    2% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    52% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
 body.the-minute {
 
     &:not(.advert-config--tablet) {
@@ -820,6 +838,78 @@ body.the-minute {
                     width: 1200px;
                 }
 
+                .minute-logo-container {
+                    display: block;
+                    position: absolute;
+                    height: 200px;
+                    width: 200px;
+                    top: 24px;
+                    left: 40%;
+                    z-index: 1;
+                    margin-left: -100px;
+
+                    .type{
+                        position: absolute;
+                        top: 80px;
+                        left: 30%;
+                        margin-left: -144px;
+
+                        p {
+                            font: 100 5.8rem/5.8rem $egyptian-display;
+                            float: left;
+                            color: white;
+                        }
+
+                        p:last-of-type {
+                            margin-left: 22px;
+                        }
+                    }
+                    .minute-logo {
+                        height: 100%;
+                        width: 100%;
+
+                        $a-duration: 10s;
+                        $a-total-lines: 62;
+
+                        .the__minute__line {
+                            stroke: white;
+                            opacity: 0;
+                            animation: line 10s linear;
+                            animation-iteration-count: infinite;
+                            animation-fill-mode: forwards;
+                            -webkit-animation: line 10s linear;
+                            -webkit-animation-iteration-count: infinite;
+                            -webkit-animation-fill-mode: forwards;
+                        }
+
+                        @-webkit-keyframes line {
+                            @include membership_animation;
+                        }
+                        
+                        @keyframes line {
+                            @include membership_animation;
+                        }
+
+                        @for $i from 1 to $a-total-lines {
+                            .the__minute__line--#{$i} {
+                                animation-delay: (($a-duration / 2) / $a-total-lines) * $i;
+                                -webkit-animation-delay: (($a-duration / 2) / $a-total-lines) * $i;
+                            }
+                        }
+                    }
+                }
+
+                .minute-vertical-rule {
+                    display: block;
+                    position: absolute; 
+                    top: 224px; 
+                    bottom:0; 
+                    left: 40%; 
+                    width: 1px; 
+                    border-left: 1px dashed #fff; 
+                    z-index: 11;
+                }
+
                 /* Minute Header */
                 .the-minute__header {
                     @include minute_flex_content;
@@ -830,7 +920,7 @@ body.the-minute {
                     border: 0;
 
                     // This controls the red bar above the second child
-                    > :nth-child(1) {
+                    > :first-child {
                         margin-top: 12px;
                         padding-top: 12px;
                         position: relative;
@@ -842,7 +932,7 @@ body.the-minute {
                             position: absolute;
                             top: -55px;
                             width: 115%;
-                            left: 24px;
+                            left: -48px;
                         }
                     }
 
@@ -850,8 +940,7 @@ body.the-minute {
                     .the-minute__standfirst {
                         color: $minute_main;
                         width: 50%;
-                        margin-left: 25%;
-                        padding-left: 48px;
+                        margin-left: 40%;
                         z-index: 10;
                     }
 
@@ -1232,7 +1321,7 @@ body.the-minute {
 
                                 .quoted {
                                     margin: 36px 0 0 5%;
-                                    width: 55%;
+                                    width: 35%;
                                     padding-top: 12px;
 
                                     &::before {
@@ -1253,6 +1342,7 @@ body.the-minute {
 
                                 p,
                                 h2 {
+                                    width: 35%;
                                     margin-left: 5%;
                                     padding-left: 0;
                                 }
@@ -1271,20 +1361,21 @@ body.the-minute {
                             height: auto;
 
                             .from-content-api {
+                                width: 30%;
+                                margin-left: 10%;
+
                                 &::before {
                                     background-color: #ea291f;
                                     content: "";
                                     height: 50px;
-                                    width: 45%;
-                                    margin: 25px 0 12px 10%;
+                                    width: 110%;
+                                    margin: 25px 0 12px 0;
                                 }
 
                                 h2,
                                 p {
                                     color: $minute_main;
                                     padding: 0 12px 0 0;
-                                    width: 45%;
-                                    margin-left: 10%;
                                 }
 
                                 h2 {
@@ -1308,20 +1399,21 @@ body.the-minute {
                         &.has-quote {
                             .block__body {
                                 .from-content-api {
+                                    width: 35%;
+                                    margin-left: 5%;
+
                                     &::before {
-                                        margin-left: 15%;
+                                        // margin-left: 15%;
                                     }
 
                                     .quoted {
-                                        margin: 24px 0 0 15%;
-                                        width: 55%;
+                                        margin-top: 24px;
                                         padding-top: 12px;
 
                                         &::before {
                                             color: $minute_accent;
                                             font-size: 4rem;
                                             top: -20px;
-                                            left: 20%;
                                         }
 
                                         p {
@@ -1329,13 +1421,11 @@ body.the-minute {
                                             font: 100 2rem/2.2rem $egyptian-display;
                                             padding-left: 0;
                                             margin: 0;
-                                            width: 100%;
                                         }
                                     }
 
                                     p,
                                     h2 {
-                                        margin-left: 15%;
                                         padding-left: 0;
                                     }
 
