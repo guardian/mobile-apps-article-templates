@@ -838,11 +838,11 @@ body.the-minute {
                         &::before {
                             background-color: $minute_accent;
                             content: "";
-                            height: 35px;
+                            height: 50px;
                             position: absolute;
-                            top: -40px;
+                            top: -55px;
                             width: 115%;
-                            left: 0;
+                            left: 24px;
                         }
                     }
 
@@ -860,16 +860,6 @@ body.the-minute {
                         margin-top: 0;
                         padding-top: 0;
                         margin-bottom: 12px;
-
-                        &::before {
-                            background-color: $minute_accent;
-                            content: "";
-                            height: 35px;
-                            position: absolute;
-                            top: -40px;
-                            width: 115%;
-                            left: 0;
-                        }
                     }
 
                     .the-minute__standfirst {
@@ -891,6 +881,16 @@ body.the-minute {
                             margin: 0;
                             position: relative;
                             height: 100%;
+
+                            &::before {
+                                background: linear-gradient(transparent, transparent 25%, rgba(#000, .8)); // key event (and header) gradient goes light to dark
+                                content: "";
+                                height: 100%;
+                                left: 0;
+                                position: absolute;
+                                width: 100%;
+                                z-index: 1;
+                            }
 
                             .element__inner {
                                 @include minute_page;
@@ -1053,9 +1053,9 @@ body.the-minute {
                                             background-color: $minute_accent;
                                             content: "";
                                             position: absolute;
-                                            height: 35px;
+                                            height: 50px;
                                             width: 125%;
-                                            margin-top: -15px;
+                                            margin-top: -25px;
                                             z-index: 1;
                                             left: -100%;
                                         }
@@ -1068,6 +1068,8 @@ body.the-minute {
                                         bottom: 0;
                                         right: 0;
                                         padding-right: 12px;
+                                        padding-left: 12px;
+                                        border-bottom: none;
                                     }
                                 }
                             }
@@ -1118,9 +1120,9 @@ body.the-minute {
                                         background-color: $minute_accent;
                                         content: "";
                                         position: absolute;
-                                        height: 35px;
+                                        height: 50px;
                                         width: 100%;
-                                        margin-top: -15px;
+                                        margin-top: -25px;
                                         z-index: 1;
                                         margin-left: 75%;
                                     }
@@ -1182,9 +1184,9 @@ body.the-minute {
                                         &::before {
                                             background-color: $minute_accent;
                                             content: "";
-                                            height: 35px;
+                                            height: 50px;
                                             position: absolute;
-                                            top: -15px;
+                                            top: -25px;
                                             width: 175%;
                                         }
                                         
@@ -1229,7 +1231,7 @@ body.the-minute {
                                 }
 
                                 .quoted {
-                                    margin: 24px 0 0 5%;
+                                    margin: 36px 0 0 5%;
                                     width: 55%;
                                     padding-top: 12px;
 
@@ -1266,41 +1268,41 @@ body.the-minute {
                     /* Text only block styles */
                     &.is-textonly {
                         .block__body {
-                                height: auto;
+                            height: auto;
 
-                                .from-content-api {
-                                    &::before {
-                                        background-color: #ea291f;
-                                        content: "";
-                                        height: 35px;
-                                        width: 45%;
-                                        margin: 36px 0 12px 10%;
-                                    }
+                            .from-content-api {
+                                &::before {
+                                    background-color: #ea291f;
+                                    content: "";
+                                    height: 50px;
+                                    width: 45%;
+                                    margin: 25px 0 12px 10%;
+                                }
 
-                                    h2,
-                                    p {
+                                h2,
+                                p {
+                                    color: $minute_main;
+                                    padding: 0 12px 0 0;
+                                    width: 45%;
+                                    margin-left: 10%;
+                                }
+
+                                h2 {
+                                    font: 600 1.7rem/2.2rem $egyptian-text;
+                                }
+
+                                p {
+                                    font: 1.6rem/2.1rem $egyptian-text;
+
+                                    a {
+                                        background: transparent;
+                                        border-bottom: 1px solid $minute_main;
                                         color: $minute_main;
-                                        padding: 0 12px 0 0;
-                                        width: 45%;
-                                        margin-left: 10%;
-                                    }
-
-                                    h2 {
-                                        font: 600 1.7rem/2.2rem $egyptian-text;
-                                    }
-
-                                    p {
-                                        font: 1.6rem/2.1rem $egyptian-text;
-
-                                        a {
-                                            background: transparent;
-                                            border-bottom: 1px solid $minute_main;
-                                            color: $minute_main;
-                                            position: relative;
-                                            text-shadow: none;
-                                        }
+                                        position: relative;
+                                        text-shadow: none;
                                     }
                                 }
+                            }
                         }
 
                         &.has-quote {
@@ -1331,9 +1333,14 @@ body.the-minute {
                                         }
                                     }
 
+                                    p,
                                     h2 {
                                         margin-left: 15%;
                                         padding-left: 0;
+                                    }
+
+                                    p:last-of-type {
+                                        margin-bottom: 0;
                                     }
                                 }  
                             }
@@ -1350,6 +1357,15 @@ body.the-minute {
                                 .twitter-wrapper {
                                     margin-left: 10%;
                                     margin-bottom: 12px;
+
+                                    &::before {
+                                        color: #ea291f;
+                                        content: "\e06b";
+                                        display: inline-block;
+                                        font: 400 2.8rem/1 "Guardian Icons",Georgia,serif;
+                                        margin-right: 6px;
+                                        float: left;
+                                    }
 
                                     span,
                                     a {
