@@ -179,7 +179,7 @@ define([
                     membershipCreativeContainer,
                     insertAfterElem;
 
-                insertAfterElem = document.body.querySelector(".article__body > div.prose > p:nth-of-type(5) ~ p + p");
+                insertAfterElem = document.body.querySelector(".article__body > div.prose > p:nth-of-type(6) ~ p + p");
 
                 if (insertAfterElem) {
                     //inject css
