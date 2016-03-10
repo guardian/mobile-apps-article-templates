@@ -168,24 +168,34 @@ define([
             progressBar.css('width', scrollPosition);
         },
 
-        setupMembershipCreative: function() {
-            var membershipScratchPad,
-                membershipCreativeContainer,
-                insertAfterElem;
+        setupMembershipCreative: function () {
+            window.injectInlineArticleMembershipCreative = modules.injectInlineArticleMembershipCreative;
+            window.applyNativeFunctionCall('injectInlineArticleMembershipCreative');
+        },
 
-            membershipScratchPad = document.getElementById("membership-scratch-pad");
-
-            if (membershipScratchPad && 
-                membershipScratchPad.children.length && 
-                membershipScratchPad.children[0].classList.contains("membership-creative")) {
+        injectInlineArticleMembershipCreative: function (html, css) {
+            if (html && css) {
+                var style,
+                    membershipCreativeContainer,
+                    insertAfterElem;
 
                 insertAfterElem = document.body.querySelector(".article__body > div.prose > p:nth-of-type(5) ~ p + p");
 
                 if (insertAfterElem) {
+                    //inject css
+                    style = document.createElement('style');
+                    style.type = 'text/css';
+                    if (style.styleSheet){
+                        style.styleSheet.cssText = css;
+                    } else {
+                        style.appendChild(document.createTextNode(css));
+                    }
+                    document.head.appendChild(style);
+                    // inject html
                     membershipCreativeContainer = document.createElement("a");
                     membershipCreativeContainer.href = "x-gu://membership";
                     membershipCreativeContainer.classList.add("membership-creative-container");
-                    membershipCreativeContainer.appendChild(membershipScratchPad.children[0]);
+                    membershipCreativeContainer.innerHTML = html;
                     insertAfterElem.parentNode.insertBefore(membershipCreativeContainer, insertAfterElem);
                 }
             }
