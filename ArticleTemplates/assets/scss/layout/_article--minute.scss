@@ -142,19 +142,19 @@ $minute_accent: #ea291f;
 
 @mixin membership_animation {
     0% {
-        opacity: 0;
+        opacity: 1;
     }
     2% {
-        opacity: 1;
+        opacity: 0;
     }
     50% {
-        opacity: 1;
+        opacity: 0;
     }
     52% {
-        opacity: 0;
+        opacity: 1;
     }
     100% {
-        opacity: 0;
+        opacity: 1;
     }
 }
 
@@ -809,7 +809,6 @@ body.the-minute {
     }
 
     &.advert-config--tablet {
-        background: $minute_bg;
         height: 100%;
 
         .article--liveblog {
@@ -868,16 +867,16 @@ body.the-minute {
                         height: 100%;
                         width: 100%;
 
-                        $a-duration: 10s;
+                        $a-duration: 12s;
                         $a-total-lines: 62;
 
                         .the__minute__line {
                             stroke: white;
-                            opacity: 0;
-                            animation: line 10s linear;
+                            opacity: 1;
+                            animation: line 12s linear;
                             animation-iteration-count: infinite;
                             animation-fill-mode: forwards;
-                            -webkit-animation: line 10s linear;
+                            -webkit-animation: line 12s linear;
                             -webkit-animation-iteration-count: infinite;
                             -webkit-animation-fill-mode: forwards;
                         }
@@ -902,7 +901,7 @@ body.the-minute {
                 .minute-vertical-rule {
                     display: block;
                     position: absolute; 
-                    top: 224px; 
+                    top: 228px; 
                     bottom:0; 
                     left: 40%; 
                     width: 6px; 
@@ -929,9 +928,9 @@ body.the-minute {
                         &::before {
                             background-color: $minute_accent;
                             content: "";
-                            height: 50px;
+                            height: 55px;
                             position: absolute;
-                            top: -55px;
+                            top: -60px;
                             width: 115%;
                             left: -48px;
                         }
@@ -943,7 +942,7 @@ body.the-minute {
                         width: 50%;
                         margin-left: 40%;
                         z-index: 10;
-                        padding-left: 4px;
+                        padding-left: 8px;
                     }
 
                     .the-minute__headline {
@@ -1144,9 +1143,9 @@ body.the-minute {
                                             background-color: $minute_accent;
                                             content: "";
                                             position: absolute;
-                                            height: 50px;
+                                            height: 55px;
                                             width: 125%;
-                                            margin-top: -25px;
+                                            margin-top: -30px;
                                             z-index: 1;
                                             left: -100%;
                                         }
@@ -1211,9 +1210,9 @@ body.the-minute {
                                         background-color: $minute_accent;
                                         content: "";
                                         position: absolute;
-                                        height: 50px;
+                                        height: 55px;
                                         width: 100%;
-                                        margin-top: -25px;
+                                        margin-top: -30px;
                                         z-index: 1;
                                         margin-left: 75%;
                                     }
@@ -1265,6 +1264,14 @@ body.the-minute {
                                         }
                                     }
 
+                                    p:first-of-type {
+                                        margin-top: 8px;
+                                    }
+
+                                    h2+p {
+                                        margin-top: -12px !important;
+                                    }
+
                                     figure {
                                         margin: 0; 
                                         width: 40%;
@@ -1276,9 +1283,9 @@ body.the-minute {
                                         &::before {
                                             background-color: $minute_accent;
                                             content: "";
-                                            height: 50px;
+                                            height: 55px;
                                             position: absolute;
-                                            top: -25px;
+                                            top: -30px;
                                             width: 175%;
                                         }
                                         
@@ -1370,9 +1377,9 @@ body.the-minute {
                                 &::before {
                                     background-color: #ea291f;
                                     content: "";
-                                    height: 50px;
+                                    height: 55px;
                                     width: 110%;
-                                    margin: 25px 0 12px 0;
+                                    margin: 20px 0 12px 0;
                                 }
 
                                 h2,
@@ -1436,44 +1443,60 @@ body.the-minute {
                         }
 
                         &.has-tweet {
-                            .twitter-tweet {
-                                margin-bottom: 0;
-
-                                &::before {
-                                    content: '';
-                                }
-
-                                .twitter-wrapper {
-                                    margin-left: 10%;
-                                    margin-bottom: 12px;
+                            .block__body {
+                                .from-content-api {
+                                    width: 55%;
+                                    margin-left: 40%;
 
                                     &::before {
-                                        color: #ea291f;
-                                        content: "\e06b";
-                                        display: inline-block;
-                                        font: 400 2.8rem/1 "Guardian Icons",Georgia,serif;
-                                        margin-right: 6px;
-                                        float: left;
+                                        width: 120%;
+                                        margin-left: -10%;
                                     }
 
-                                    span,
-                                    a {
-                                        font: 1.6rem/1.8rem $agate-sans;
-                                        color: $minute_main;
+                                    h2 {
+                                        padding-left: 8px;
                                     }
 
-                                    span {
-                                        font-weight: 600;
-                                        display: block;
-                                    }
+                                    .twitter-tweet {
+                                        padding-left: 8px;
+                                        margin-bottom: 0;
 
-                                    a {
-                                        text-decoration: underline;
-                                    }
-                                }
+                                        &::before {
+                                            content: '';
+                                        }
 
-                                p {
-                                    margin-bottom: 0;
+                                        .twitter-wrapper {
+                                            margin-bottom: 12px;
+
+                                            &::before {
+                                                color: #ea291f;
+                                                content: "\e06b";
+                                                display: inline-block;
+                                                font: 400 2.8rem/1 "Guardian Icons",Georgia,serif;
+                                                margin-right: 6px;
+                                                float: left;
+                                            }
+
+                                            span,
+                                            a {
+                                                font: 1.6rem/1.8rem $agate-sans;
+                                                color: $minute_main;
+                                            }
+
+                                            span {
+                                                font-weight: 600;
+                                                display: block;
+                                            }
+
+                                            a {
+                                                text-decoration: underline;
+                                            }
+                                        }
+
+                                        p {
+                                            margin-bottom: 0;
+                                        }
+                                    }
                                 }
                             }
                         }                    
