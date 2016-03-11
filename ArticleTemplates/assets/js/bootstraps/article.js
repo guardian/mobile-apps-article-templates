@@ -7,7 +7,7 @@ define([
     'modules/witness',
     'modules/outbrain',
     'modules/quiz',
-    'modules/membershipCreative',
+    'modules/membership',
     'smoothScroll'
 ], function (
     bean,
@@ -17,7 +17,7 @@ define([
     witness,
     outbrain,
     Quiz,
-    membershipCreative,
+    membership,
     smoothScroll
 ) {
     'use strict';
@@ -174,7 +174,7 @@ define([
     ready = function () {
         if (!this.initialised) {
             this.initialised = true;
-            membershipCreative.init();
+            membership.init();
             twitter.init();
             twitter.enhanceTweets();
             witness.duplicate();
