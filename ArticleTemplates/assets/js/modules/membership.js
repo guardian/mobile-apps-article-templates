@@ -16,7 +16,7 @@ define([
                 util.signalDevice("membership_ready");
             },
 
-            injectInlineArticleMembershipCreative: function (html, css) {
+            injectInlineArticleMembershipCreative: function (html, css, id) {
                 if (html && css) {
                     var style,
                         membershipCreativeContainer,
@@ -35,21 +35,23 @@ define([
                         
                         // inject html
                         membershipCreativeContainer = document.createElement("a");
-                        membershipCreativeContainer.href = "x-gu://membership_tap";
+                        membershipCreativeContainer.href = "x-gu://membership_tap?id=" + id;
                         membershipCreativeContainer.classList.add("membership-creative-container");
                         membershipCreativeContainer.innerHTML = html;
                         insertBeforeElem.parentNode.insertBefore(membershipCreativeContainer, insertBeforeElem);
 
                         // on scroll check if creative is in viewport
-                        bean.on(window, 'scroll', window.ThrottleDebounce.debounce(100, false, modules.isMembershipCreativeInView.bind(null, membershipCreativeContainer)));
+                        bean.on(window, 'scroll', window.ThrottleDebounce.debounce(100, false, modules.isMembershipCreativeInView.bind(null, membershipCreativeContainer, id)));
                     }
                 }
             },
 
-            isMembershipCreativeInView: function (membershipCreative) {
+            isMembershipCreativeInView: function (membershipCreative, id) {
+                var messageName = "membership_view?id=" + id;
+                
                 if (trackMembershipCreativeView && 
                     util.isElementPartiallyInViewport(membershipCreative)) {
-                    util.signalDevice("membership_view");
+                    util.signalDevice(messageName);
                     trackMembershipCreativeView = false;
                 }
             }
