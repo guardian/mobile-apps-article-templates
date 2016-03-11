@@ -17,7 +17,7 @@ define([
                 if (html && css) {
                     var style,
                         membershipCreativeContainer,
-                        insertBeforeElem = document.body.querySelector(".article__body > div.prose > p:nth-of-type(4) ~ p + p, .article__body > div.prose > p:nth-of-type(4) ~ p + h2");
+                        insertBeforeElem = document.body.querySelector(".article__body > div.prose > p:nth-of-type(5) ~ p + p, .article__body > div.prose > p:nth-of-type(5) ~ p + h2");
 
                     if (insertBeforeElem) {
                         //inject css
