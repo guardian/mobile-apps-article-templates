@@ -22,7 +22,7 @@ define([
         }
 
         domReady(this.onDomReady.bind(this));
-    }
+    };
 
     App.prototype.onDomReady = function() {
         var contentType = document.body.getAttribute('data-content-type');

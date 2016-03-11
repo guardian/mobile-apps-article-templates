@@ -26,5 +26,5 @@ require([
 ], function(App) {
     var app = new App();
     
-    app.init();
+    // app.init();
 });
