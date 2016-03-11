@@ -13,7 +13,7 @@ define([
             setupMembershipCreative: function () {
                 window.injectInlineArticleMembershipCreative = modules.injectInlineArticleMembershipCreative;
                 window.applyNativeFunctionCall('injectInlineArticleMembershipCreative');
-                util.signalDevice("membership/ready");
+                util.signalDevice("membership_ready");
             },
 
             injectInlineArticleMembershipCreative: function (html, css) {
@@ -35,7 +35,7 @@ define([
                         
                         // inject html
                         membershipCreativeContainer = document.createElement("a");
-                        membershipCreativeContainer.href = "x-gu://membership";
+                        membershipCreativeContainer.href = "x-gu://membership_tap";
                         membershipCreativeContainer.classList.add("membership-creative-container");
                         membershipCreativeContainer.innerHTML = html;
                         insertBeforeElem.parentNode.insertBefore(membershipCreativeContainer, insertBeforeElem);
@@ -49,7 +49,7 @@ define([
             isMembershipCreativeInView: function (membershipCreative) {
                 if (trackMembershipCreativeView && 
                     util.isElementPartiallyInViewport(membershipCreative)) {
-                    util.signalDevice("membership/view");
+                    util.signalDevice("membership_view");
                     trackMembershipCreativeView = false;
                 }
             }
