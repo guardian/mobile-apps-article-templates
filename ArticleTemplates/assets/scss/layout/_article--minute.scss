@@ -905,9 +905,10 @@ body.the-minute {
                     top: 224px; 
                     bottom:0; 
                     left: 40%; 
-                    width: 1px; 
-                    border-left: 1px dashed #fff; 
+                    width: 6px; 
                     z-index: 11;
+                    background-image: url('../img/minute-dash.svg');
+                    margin-left: -4px;
                 }
 
                 /* Minute Header */
@@ -942,6 +943,7 @@ body.the-minute {
                         width: 50%;
                         margin-left: 40%;
                         z-index: 10;
+                        padding-left: 4px;
                     }
 
                     .the-minute__headline {
@@ -1269,6 +1271,7 @@ body.the-minute {
                                         top: 48px;
                                         left: 5%;
                                         max-width: none;
+                                        background: $minute_bg;
 
                                         &::before {
                                             background-color: $minute_accent;
@@ -1286,10 +1289,10 @@ body.the-minute {
                                         figcaption {
                                             padding-bottom: 0;
                                             margin-bottom: 0;
-                                            background: $minute_bg;
                                             border: none;
                                             font: 1.4rem/1.7rem $agate-sans; 
                                             color: rgba(255, 255, 255, .9);
+                                            width: 80%;
 
                                             span {
                                                 display: inline;
