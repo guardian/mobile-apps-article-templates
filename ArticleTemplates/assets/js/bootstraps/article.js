@@ -7,6 +7,7 @@ define([
     'modules/witness',
     'modules/outbrain',
     'modules/quiz',
+    'modules/membershipCreative',
     'smoothScroll'
 ], function (
     bean,
@@ -16,11 +17,10 @@ define([
     witness,
     outbrain,
     Quiz,
+    membershipCreative,
     smoothScroll
 ) {
     'use strict';
-
-    var trackMembershipCreativeView = true;
 
     var modules = {
         richLinkTracking: function() {
@@ -168,92 +168,13 @@ define([
         updateProgressBar: function(progressBar, articleHeight) {
             var scrollPosition = (window.scrollY / articleHeight * 100) + "%";
             progressBar.css('width', scrollPosition);
-        },
-
-        setupMembershipCreative: function () {
-            window.injectInlineArticleMembershipCreative = modules.injectInlineArticleMembershipCreative;
-            window.applyNativeFunctionCall('injectInlineArticleMembershipCreative');
-        },
-
-        injectInlineArticleMembershipCreative: function (html, css) {
-            if (html && css) {
-                var style,
-                    membershipCreativeContainer,
-                    insertBeforeElem = document.body.querySelector(".article__body > div.prose > p:nth-of-type(4) ~ p + p, .article__body > div.prose > p:nth-of-type(4) ~ p + h2");
-
-                if (insertBeforeElem) {
-                    //inject css
-                    style = document.createElement('style');
-                    style.type = 'text/css';
-                    if (style.styleSheet){
-                        style.styleSheet.cssText = css;
-                    } else {
-                        style.appendChild(document.createTextNode(css));
-                    }
-                    document.head.appendChild(style);
-                    
-                    // inject html
-                    membershipCreativeContainer = document.createElement("a");
-                    membershipCreativeContainer.href = "x-gu://membership";
-                    membershipCreativeContainer.classList.add("membership-creative-container");
-                    membershipCreativeContainer.innerHTML = html;
-                    insertBeforeElem.parentNode.insertBefore(membershipCreativeContainer, insertBeforeElem);
-
-                    // on scroll check if creative is in viewport
-                    bean.on(window, 'scroll', window.ThrottleDebounce.debounce(100, false, modules.isMembershipCreativeInView.bind(null, membershipCreativeContainer)));
-                }
-            }
-        },
-
-        isMembershipCreativeInView: function (membershipCreative) {
-            if (trackMembershipCreativeView && 
-                modules.isElementPartiallyInViewport(membershipCreative)) {
-                modules.signalDevice("membership/view");
-                trackMembershipCreativeView = false;
-            }
-        }, 
-
-        isElementInViewport: function (el) {
-            var rect = el.getBoundingClientRect();
-
-            return (
-                rect.top >= 0 &&
-                rect.left >= 0 &&
-                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && 
-                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-            );
-        }, 
-
-        isElementPartiallyInViewport: function(el) {
-            var rect = el.getBoundingClientRect(),
-                windowHeight = (window.innerHeight || document.documentElement.clientHeight),
-                windowWidth = (window.innerWidth || document.documentElement.clientWidth),
-                vertInView = (rect.top <= windowHeight) && ((rect.top + rect.height) >= 0),
-                horInView = (rect.left <= windowWidth) && ((rect.left + rect.width) >= 0);
-
-            return (vertInView && horInView);
-        },
-
-        signalDevice: function (messageName) {
-            var path = 'x-gu://',
-                url = path + messageName,
-                iframe = document.createElement('iframe');
-
-            iframe.style.display = 'none';
-            iframe.src = url;
-
-            modules.doIframeMessage(iframe);
-        },
-
-        doIframeMessage: function (elem) {
-            document.documentElement.appendChild(elem);
-            document.documentElement.removeChild(elem);
         }
     },
 
     ready = function () {
         if (!this.initialised) {
             this.initialised = true;
+            membershipCreative.init();
             twitter.init();
             twitter.enhanceTweets();
             witness.duplicate();
@@ -261,7 +182,6 @@ define([
             modules.loadQuizzes();
             modules.formatImmersive();
             modules.richLinkTracking();
-            modules.setupMembershipCreative();
         }
     };
 
