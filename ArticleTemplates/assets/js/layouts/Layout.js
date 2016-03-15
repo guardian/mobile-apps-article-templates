@@ -33,15 +33,17 @@ define([
     // DES-52 TODO
         // use event delegation
         // replace click events with something more performant
+        // liveblog.js updates
+            // window.articleImageSizer() should now call this.imageSizer()
 
     var Layout = Class.extend({
         init: function() {
             this.isAndroid = document.body.classList.contains('android');
 
             this.attachFastClick();
-            this.correctCaptions();
+            this.hideEmptyCaptions();
             this.figcaptionToggle();
-            // this.imageSizer();
+            this.imageSizer();
             // this.articleContentType();
             // this.insertTags();
             // this.videoPositioning();
@@ -77,8 +79,7 @@ define([
             FastClick.attach(document.body);
         },
 
-        correctCaptions: function() {
-            // Remove empty captions from figures
+        hideEmptyCaptions: function() {
             var i,
                 figcaption,
                 figures = document.getElementsByTagName('figure');
@@ -93,7 +94,6 @@ define([
         },
 
         figcaptionToggle: function () {
-            // Show/hides figure caption
             var toggleCaptionVisibilityBound,
                 mainMediaCaption = document.querySelector('.main-media__caption__icon'),
                 mainMediaCaptionText = document.querySelector('.main-media__caption__text');
@@ -112,42 +112,48 @@ define([
             } else {
                 mainMediaCaptionText.classList.add(className)
             }
+        },
+
+        imageSizer: function () {
+            var i,
+                figure,
+                figures,
+                isThumbnail,
+                caption,
+                imageClass,
+                imageOrLinkedImage,
+                imageWrapper, 
+                captionIcon;
+
+            figures = document.querySelectorAll('figure.element-image');
+
+            for (i = 0; i < figures.length; i++) {
+                figure = figures[i];
+                isThumbnail = figure.classList.contains('element--thumbnail');
+                caption = figure.querySelector('.element-image__caption');
+                imageClass = isThumbnail && caption ? 'figure--thumbnail-with-caption' : (isThumbnail ? 'figure--thumbnail' : 'figure-wide');
+            
+                figure.classList.add(imageClass);
+
+                imageOrLinkedImage = figure.children[0];
+
+                if (imageOrLinkedImage && 
+                    !imageOrLinkedImage.classList.contains('figure__inner')) {
+
+                    imageWrapper = document.createElement('div');
+                    imageWrapper.classList.add('figure__inner');
+                    imageWrapper.appendChild(imageOrLinkedImage);
+
+                    figure.insertBefore(imageWrapper, figure.firstChild);
+                }
+
+                captionIcon = figure.querySelector('.figure__caption__icon');
+
+                if (caption && !captionIcon) {
+                    caption.innerHTML = '<span data-icon="&#xe044;" class="figure__caption__icon" aria-hidden="true"></span>' + caption.innerHTML;
+                }
+            }
         }
-
-        // imageSizer: function () {
-        //     // DES-52 TODO: window.articleImageSizer in liveblog.js needs to call this.imageSizer 
-        //     var figure,
-        //         isThumbnail,
-        //         hasCaption,
-        //         imageOrLinkedImage,
-        //         imageWrapper,
-        //         caption,
-        //         hasCaptionIcon,
-        //         imageClass;
-
-        //     $('figure.element-image').each(function (el) {
-        //         figure = $(el);
-        //         isThumbnail = figure.hasClass("element--thumbnail");
-        //         //needed for live blogs when this populates every time loading in more articles
-        //         hasCaptionIcon = el.getElementsByClassName('figure__caption__icon').length;
-        //         caption = el.getElementsByClassName('element-image__caption');
-        //         hasCaption = caption.length;
-        //         imageOrLinkedImage = bonzo.firstChild(el);
-        //         imageClass = isThumbnail && hasCaption ? 'figure--thumbnail-with-caption' : (isThumbnail ? 'figure--thumbnail' : 'figure-wide');
-
-        //         figure.addClass(imageClass);
-
-        //         if (imageOrLinkedImage && !$(imageOrLinkedImage).hasClass('figure__inner')) {
-        //            imageWrapper = document.createElement('div');
-        //            bonzo(imageWrapper).addClass('figure__inner').append(imageOrLinkedImage);
-        //            bonzo(el).prepend(imageWrapper);
-        //         }
-
-        //         if (hasCaption && !hasCaptionIcon) { 
-        //            bonzo(caption).prepend('<span data-icon="&#xe044;" class="figure__caption__icon" aria-hidden="true"></span>');
-        //         }
-        //     }); 
-        // },
 
         // articleContentType: function () {
         //     $('.article__body > .prose').each(function() {
