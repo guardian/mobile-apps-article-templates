@@ -33,6 +33,10 @@ define([
     // DES-52 TODO
         // use event delegation
         // replace click events with something more performant
+        // test
+            // this.articleContentType()
+            // this.insertTags()
+            // this.videoPositioning() on android
         // liveblog.js updates
             // window.articleImageSizer() should now call this.imageSizer()
 
@@ -44,9 +48,9 @@ define([
             this.hideEmptyCaptions();
             this.figcaptionToggle();
             this.imageSizer();
-            // this.articleContentType();
-            // this.insertTags();
-            // this.videoPositioning();
+            this.articleContentType();
+            this.insertTags();
+            this.videoPositioning();
             // this.loadComments();
             // this.loadCards();
             // this.loadEmbeds();
@@ -153,64 +157,71 @@ define([
                     caption.innerHTML = '<span data-icon="&#xe044;" class="figure__caption__icon" aria-hidden="true"></span>' + caption.innerHTML;
                 }
             }
+        },
+
+        articleContentType: function () {
+            var i,
+                proseElem,
+                proseElems = document.querySelectorAll('.article__body > .prose');
+
+            for (i = 0; i < proseElems.length; i++) {
+                proseElem = proseElems[i];
+
+                if (proseElem.querySelectorAll('.figure--thumbnail:not(.figure--thumbnail-with-caption)').length) {
+                    proseElem.classList.add('prose--is-panel');
+                }
+            }
+        },
+
+        insertTags: function () {
+            var tagsList = document.querySelector('.tags .inline-list');
+
+            window.articleTagInserter = function (html) {
+                if (tagsList) {
+                    tagsList.innerHTML += html;
+                }
+
+                MoreTags.refresh();
+            };
+
+            window.applyNativeFunctionCall('articleTagInserter');
+        },
+
+        videoPositioning: function () {
+            window.videoPositioning = this.reportVideoPositions;
+            window.applyNativeFunctionCall('videoPositioning');
+        },
+
+        reportVideoPositions: function () {
+            var i,
+                mainMediaElem,
+                mainMediaElems = document.getElementsByClassName('video-URL');
+
+            for (i = 0; i < mainMediaElems.length; i++) {
+                mainMediaElem = mainMediaElems[i];
+                window.GuardianJSInterface.videoPosition(mainMediaElem.offsetLeft, mainMediaElem.offsetTop, mainMediaElem.offsetWidth, mainMediaElem.getAttribute('href'));
+            }
+
+            setTimeout(this.videoPositioningPoller.bind(this, document.body.offsetHeight), 500);
+        },
+
+        videoPositioningPoller: function (pageHeight) {
+            var newHeight = document.body.offsetHeight;
+
+            if(pageHeight !== newHeight) {
+                this.reportVideoPositions();
+            } else {
+                setTimeout(this.videoPositioningPoller.bind(this, newHeight), 500);
+            }  
         }
 
-        // articleContentType: function () {
-        //     $('.article__body > .prose').each(function() {
-        //         // check if this is a "panel" type article by checking for thumbnail images with no captions (as these only exist as panel author thumbnails)
-        //         if (this.querySelectorAll('.figure--thumbnail:not(.figure--thumbnail-with-caption)').length) {
-        //             $(this).addClass('prose--is-panel');
-        //         }
-        //     });
-        // },
+        loadComments: function () {
+            Comments.init();
+        },
 
-        // insertTags: function () {
-        //     // DES-52 TODO: GET THIS TO WORK!
-
-        //     window.articleTagInserter = function (html) {
-        //         // setTimeout(this.showMoreTags, 0);
-
-        //         html = bonzo.create(html);
-
-        //         $(html).appendTo('.tags .inline-list');
-
-        //         MoreTags.refresh();
-        //     };
-
-        //     window.applyNativeFunctionCall('articleTagInserter');
-        // },
-
-        // videoPositioning: function () {
-        //     window.videoPositioning = function () {
-        //         var mainMedia = $('.video-URL');
-        //         if (mainMedia) {
-        //             for (var i = mainMedia.length - 1; i >= 0; i--) {
-        //                 var media = $(mainMedia[i]);
-        //                 window.GuardianJSInterface.videoPosition(media.offset().left, media.offset().top, media.offset().width, media.attr('href'));
-        //             }
-        //         }
-        //         setTimeout(window.videoPositioningPoller, 500, document.body.offsetHeight);
-        //     };
-
-        //     window.videoPositioningPoller = function(pageHeight) {
-        //         var newHeight = document.body.offsetHeight;
-        //         if(pageHeight !== newHeight) {
-        //             window.videoPositioning();
-        //         } else {
-        //             setTimeout(window.videoPositioningPoller, 500, newHeight);
-        //         }  
-        //     };
-
-        //     window.applyNativeFunctionCall('videoPositioning');
-        // },
-
-        // loadComments: function () {
-        //     Comments.init();
-        // },
-
-        // loadCards: function () {
-        //     Cards.init();
-        // },
+        loadCards: function () {
+            Cards.init();
+        },
 
         // loadEmbeds: function () {
         //     // DES-52 TODO: window.loadEmbeds in liveblog.js needs to call this.loadEmbeds 
