@@ -1,21 +1,19 @@
 .membership-creative-container {
 	color: inherit !important;
 	display: block;
-    margin: 0 auto;
  	width: 300px;
     padding-bottom: 330px;
     position: relative;
+    float: right;
+	margin-left: base-px(1.5);
+	margin-bottom: base-px(1);
 
 	@include customMQ (iP6) {
+		float: none;
+	    margin: 0 auto;
 		width: 100%;
 		padding-bottom: 110%;
     }
-
-	@include mq($from: 560px) {
-		float: right;
-		margin-left: base-px(1.5);
-		margin-bottom: base-px(1);
-	}
 
 	.membership-creative {
 		position: absolute;

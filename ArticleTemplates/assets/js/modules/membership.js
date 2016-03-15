@@ -20,9 +20,10 @@ define([
                 if (html && css) {
                     var style,
                         membershipCreativeContainer,
-                        insertBeforeElem = document.body.querySelector(".article__body > div.prose > p:nth-of-type(5) ~ p + p, .article__body > div.prose > p:nth-of-type(5) ~ p + h2");
+                        insertBeforeElem = document.querySelector(".article__body > div.prose > p:nth-of-type(5) ~ p + p, .article__body > div.prose > p:nth-of-type(5) ~ p + h2");
 
-                    if (insertBeforeElem) {
+                    if (insertBeforeElem && 
+                        !document.querySelector(".membership-creative-container")) {
                         //inject css
                         style = document.createElement('style');
                         style.type = 'text/css';
