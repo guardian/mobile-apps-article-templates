@@ -39,8 +39,6 @@ define([
 
                         app = new App();
 
-                        app.init();
-
                         expect(app).to.be.instanceOf(App);
 
                         done();
@@ -57,8 +55,6 @@ define([
 
                         dummyElem.dataset.skipStyle = "";
                         app = new App();
-
-                        app.init();
 
                         expect(App.prototype.loadCss).to.have.been.calledOnce;
                         expect(App.prototype.loadCss).to.have.been.calledWith('assets/css/style-async.css');
@@ -79,8 +75,6 @@ define([
                         dummyElem.dataset.skipStyle = "xxx";
                         app = new App();
 
-                        app.init();
-
                         expect(App.prototype.loadCss).not.to.have.been.called;
                         expect(domReadyMock).to.have.been.calledOnce;
 
@@ -96,9 +90,11 @@ define([
                     .mock('modules/monitor', monitorMock)
                     .mock('modules/ads', adsMock)
                     .require(['ArticleTemplates/assets/js/app'], function (App) {
+                        sandbox.stub(App.prototype, 'init');
+
                         app = new App();
 
-                        app.onDomReady();
+                        // app.onDomReady();
 
                         done();
                     }); 

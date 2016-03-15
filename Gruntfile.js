@@ -61,7 +61,10 @@ module.exports = function(grunt) {
                             { name: 'cricket' },
                             { name: 'bootstraps/common'},
                             { name: 'app' },
-                            { name: 'smoothScroll' }
+                            { name: 'smoothScroll' },
+                            // DES-52
+                            { name: 'layouts/Layout'},
+                            { name: 'layouts/Article'}
                         ]
                     }
                 }

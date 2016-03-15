@@ -12,19 +12,19 @@ require.config({
         fence: '../../../node_modules/fence/fence',
         smoothScroll: '../../../node_modules/smooth-scroll/dist/js/smooth-scroll',
         raven: '../../../node_modules/raven-js/dist/raven',
-        iscroll: 'components/iscroll'
+        iscroll: 'components/iscroll',
+        class: 'components/class'
     },
     shim: {
+        class: {
+            exports: 'Class'
+        },
         d3: {
             exports: 'd3'
         }
     }
 });
 
-require([
-    'app',
-], function(App) {
+require(['app'], function(App) {
     var app = new App();
-    
-    // app.init();
 });
