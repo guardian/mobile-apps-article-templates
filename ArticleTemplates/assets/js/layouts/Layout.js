@@ -60,11 +60,11 @@ define([
             this.loadEmbeds();
             this.scrollToAnchor();
             this.loadInteractives();
-            // this.offline();
-            // this.setupOfflineSwitch();
-            // this.setupAlertSwitch();
-            // this.setupTellMeWhenSwitch();
-            // this.setupFontSizing();
+            this.offline();
+            this.setupOfflineSwitch();
+            this.setupAlertSwitch();
+            this.setupTellMeWhenSwitch();
+            this.setupFontSizing();
             // this.showTabs(window);
             // this.setGlobalObject(window);
             // this.fixSeries();
@@ -328,78 +328,102 @@ define([
 
                 interactive.classList.remove('interactive--loading');
             }
+        },
+
+        offline: function () {
+            var i,
+                dummyImage,
+                image,
+                images;
+
+            if (document.body.classList.contains('offline')) {
+                images = document.querySelectorAll('.article img');
+
+                for (i = 0; i < images.length; i++) {
+                    image = images[i];
+                    dummyImage = new Image();
+                    dummyImage.onerror = this.hideImageOnError.bind(this, image);
+                    dummyImage.src = image.getAttribute('src');
+                }
+            }
+        },
+
+        hideImageOnError: function (image) {
+            var innerElem;
+
+            if (image.parentNode.classList.contains('element-image-inner')) {
+                image.style.display = 'none';
+            } else {
+                innerElem = document.createElement('div');
+                innerElem.classList.add('element-image-inner');
+                image.parentNode.replaceChild(innerElem, image);
+            }
         }
 
-        // offline: function () {
-        //     // DES-52 TODO: Does this even work now?
+        setupOfflineSwitch: function () {
+            // Called by native code
+            window.offlineSwitch = this.offlineSwitch;
+        },
 
-        //     // Function that gracefully fails when the device is offline
-        //     if ($(document.body).hasClass('offline')) {
-        //         $(".article img").each(function() {
-        //             var element = $(this);
-        //             var img = new Image();
-        //             img.onerror = function() {
-        //                 if ($(element).parent().attr("class") == "element-image-inner") {
-        //                     $(element).hide();
-        //                 } else {
-        //                     $(element).replaceWith('<div class="element-image-inner"></div>');
-        //                 }
-        //             };
-        //             img.src = $(this).attr('src');
-        //         });
-        //     }
-        // },
+        offlineSwitch: function () {
+            document.body.classList.add('offline');
+        },
 
-        // setupOfflineSwitch: function () {
-        //     // Function that allows templates to better handle offline, called by native code
-        //     window.offlineSwitch = function () {
-        //         $(document.body).addClass("offline");
-        //     };
-        // },
+        setupAlertSwitch: function () {
+            // Called by native code
+            window.alertSwitch = this.alertSwitch;
+        },
 
-        // setupAlertSwitch: function () {
-        //     // Global function to switch follow alerts, called by native code
-        //     window.alertSwitch = function (following, followid) {
-        //         var followObject = $('[data-follow-alert-id="' + followid + '"]');
+        alertSwitch: function (following, followid) {
+            var i,
+                followObject,
+                followObjects = document.querySelectorAll('[data-follow-alert-id="' + followid + '"]');
 
-        //         if (followObject.length) {
-        //             if (following == 1) {
-        //                 if (followObject.hasClass('following') === false) {
-        //                     followObject.addClass('following');
-        //                 }
-        //             } else {
-        //                 if (followObject.hasClass('following')) {
-        //                     followObject.removeClass('following');
-        //                 }
-        //             }
-        //         }
-        //     };
-        // },
+            for (i = 0; i < followObjects.length; i++) {
+                followObject = followObjects[i];
 
-        // setupTellMeWhenSwitch: function () {
-        //     // Global function to switch tell me when, called by native code
-        //     window.tellMeWhenSwitch = function (added, followid) {
-        //         var tellMeWhenLink = $('a.tell-me-when');
+                if (following === 1) {
+                    followObject.classList.add('following');
+                } else {
+                    followObject.classList.remove('following');
+                }
+            }
+        },
 
-        //         if (tellMeWhenLink.length) {
-        //             if (added == 1) {
-        //                 tellMeWhenLink.addClass('added');
-        //             } else {
-        //                 tellMeWhenLink.removeClass('added');
-        //             }
-        //         }
-        //     };
-        // },
+        setupTellMeWhenSwitch: function () {
+            // Called by native code
+            window.tellMeWhenSwitch = this.tellMeWhenSwitch;
+        },
 
-        // setupFontSizing: function () {
-        //     // Global function to resize font, called by native code
-        //     window.fontResize = function (current, replacement) {
-        //         $(document.body).removeClass(current).addClass(replacement);
-        //         var replacementStr = replacement;
-        //         var replacementInt = replacementStr.split("-");
-        //         document.body.setAttribute("data-font-size", replacementInt[2]);
-        //     };
-        // },
+        tellMeWhenSwitch: function (added) {
+            var i,
+                tellMeWhenLink,
+                tellMeWhenLinks = document.querySelectorAll('a.tell-me-when');
+
+            for (i = 0; i < tellMeWhenLinks.length; i++) {
+                tellMeWhenLink = tellMeWhenLinks[i];
+
+                if (added === 1) {
+                    tellMeWhenLink.classList.add('added');
+                } else {
+                    tellMeWhenLink.classList.remove('added');
+                }
+            }
+        },
+
+        setupFontSizing: function () {
+            // Called by native code
+            window.fontResize = this.fontResize;
+        },
+
+        fontResize: function (current, replacement) {
+            var replacementStr = replacement,
+                replacementInt = replacementStr.split("-");
+
+            document.body.classList.remove(current);
+            document.body.classList.add(replacement);  
+            document.body.dataset.fontSize = replacementInt[2];
+        }
 
         // showTabs: function (root) {
         //     // Set up tab events, show only first child
