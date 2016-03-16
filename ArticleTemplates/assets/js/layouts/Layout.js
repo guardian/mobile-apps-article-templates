@@ -31,14 +31,18 @@ define([
     'use strict';
 
     // DES-52 TODO
+        // GuardianJSInterface
         // use event delegation
         // replace click events with something more performant
         // test
             // this.articleContentType()
             // this.insertTags()
             // this.videoPositioning() on android
+            // this.loadEmbeds() && this.fixVineWidth()
         // liveblog.js updates
             // window.articleImageSizer() should now call this.imageSizer()
+            // window.loadEmbeds() should now call this.loadEmbeds()
+            // window.loadInteractives() should now call this.loadInteractives()
 
     var Layout = Class.extend({
         init: function() {
@@ -51,11 +55,11 @@ define([
             this.articleContentType();
             this.insertTags();
             this.videoPositioning();
-            // this.loadComments();
-            // this.loadCards();
-            // this.loadEmbeds();
-            // this.scrollToAnchor();
-            // this.loadInteractives();
+            this.loadComments();
+            this.loadCards();
+            this.loadEmbeds();
+            this.scrollToAnchor();
+            this.loadInteractives();
             // this.offline();
             // this.setupOfflineSwitch();
             // this.setupAlertSwitch();
@@ -213,7 +217,7 @@ define([
             } else {
                 setTimeout(this.videoPositioningPoller.bind(this, newHeight), 500);
             }  
-        }
+        },
 
         loadComments: function () {
             Comments.init();
@@ -223,95 +227,108 @@ define([
             Cards.init();
         },
 
-        // loadEmbeds: function () {
-        //     // DES-52 TODO: window.loadEmbeds in liveblog.js needs to call this.loadEmbeds 
+        loadEmbeds: function () {
+            var i, 
+                fenceElems;
 
-        //     // Fix Wine Width
-        //     this.fixVineWidth();
+            this.fixVineWidth();
 
-        //     // Boot Fenced Embeds
-        //     require(['fence'], function(fence) {
-        //         $("iframe.fenced").each(function(node) {
-        //             fence.render(node);
-        //         });
-        //     });
-        // },
+            require(['fence'], function(fence) {
+                fenceElems = document.querySelectorAll('iframe.fenced');
 
-        // fixVineWidth: function (container) {
-        //     var iframes = $('iframe[srcdoc*="https://vine.co"]:not([data-vine-fixed])', container);
+                for (i = 0; i < fenceElems.length; i++) {
+                    fence.render(fenceElems[i]);
+                }
+            });
+        },
 
-        //     iframes.each(function(iframe){
-        //         var size = iframe.parentNode.clientWidth;
-        //         var $iframe = $(iframe);
-        //         var srcdoc = $iframe.attr('srcdoc');
-        //         srcdoc = srcdoc.replace(/width="[\d]+"/,'width="' + size + '"');
-        //         srcdoc = srcdoc.replace(/height="[\d]+"/,'height="' + size + '"');
-        //         $iframe.attr('srcdoc', srcdoc);
-        //         $iframe.attr('data-vine-fixed', true);
-        //     });
-        // },
+        fixVineWidth: function () {
+            var i,
+                iframe,
+                iframes,
+                size,
+                srcdoc;
 
-        // scrollToAnchor: function () {
-        //     smoothScroll.init();
-        // },
+            iframes = document.querySelectorAll('iframe[srcdoc*="https://vine.co"]:not([data-vine-fixed])');
 
-        // loadInteractives: function (force) {
-        //     // DES-52 TODO: window.loadInteractives in liveblog.js needs to call this.loadInteractives
+            for (i = 0; i < iframes.length; i++) {
+                iframe = iframes[i];
+                size = iframe.parentNode.clientWidth;
+                srcdoc = iframe.getAttribute('srcdoc');
+                srcdoc = srcdoc.replace(/width="[\d]+"/,'width="' + size + '"');
+                srcdoc = srcdoc.replace(/height="[\d]+"/,'height="' + size + '"');
+                iframe.setAttribute('srcdoc', srcdoc);
+                iframe.dataset.vineFixed = true;
+            }
+        },
 
-        //     if((!$('body').hasClass('offline') || force) && navigator.onLine ){
-        //         $('figure.interactive').each(function (el) {
-        //             var bootUrl = el.getAttribute('data-interactive');
-        //             // The contract here is that the interactive module MUST return an object
-        //             // with a method called 'boot'.
-        //             require.undef(bootUrl);
-        //             $(el).addClass('interactive--loading');
-        //             require([bootUrl], function (interactive) {
-        //                 // We pass the standard context and config here, but also inject the
-        //                 // mediator so the external interactive can respond to our events.
-        //                 if(interactive && interactive.boot){
-        //                     $(el).removeClass('interactive--offline');
-        //                     interactive.boot(el, document.body);
-        //                 }
-        //             }, this.showOfflineInteractiveIcons);
-        //         });
-        //     } else {
-        //         this.showOfflineInteractiveIcons();
-        //     }
-        // },
+        scrollToAnchor: function () {
+            smoothScroll.init();
+        },
 
-        // showOfflineInteractiveIcons: function () {
-        //     // DES-52 TODO: TEST THIS!
+        loadInteractives: function (force) {
+            var i,
+                bootUrl,
+                interactive,
+                interactives;
 
-        //     var i,
-        //         interactive,
-        //         reloadElem,
-        //         loadingElem,
-        //         interactives;
+            if ((!document.body.classList.contains('offline') || force) && navigator.onLine) {
+                interactives = document.querySelectorAll('figure.interactive');
 
-        //     interactives = document.querySelectorAll('figure.interactive:not(.interactive--offline)');
+                for (i = 0; i < interactives.length; i++) {
+                    interactive = interactives[i];
+                    bootUrl = interactive.dataset.interactive;
 
-        //     for (i = 0; i < interactives.length; i++) {
-        //         interactive = interactives[i];
-        //         interactive.classList.add('interactive--offline');
+                    // The contract here is that the interactive module MUST return an object
+                    // with a method called 'boot'.
+                    require.undef(bootUrl);
+                    interactive.classList.add('interactive--loading');
 
-        //         reloadElem = document.createElement('div');
-        //         reloadElem.classList.add('interactive--offline--icon interactive--offline--icon--reload');
-        //         reloadElem.addEventListener('click', this.loadInteractives.bind(this, true));
-        //         interactive.appendChild(reloadElem);
+                    require([bootUrl], this.startInteractive.bind(this, interactive), this.showOfflineInteractiveIcons);
+                }
+            } else {
+                this.showOfflineInteractiveIcons();
+            }
+        },
 
-        //         loadingElem = document.createElement('div');
-        //         loadingElem.classList.add('interactive--offline--icon interactive--offline--icon--loading');
-        //         interactive.appendChild(loadingElem);
-        //     }
+        startInteractive: function (interactiveElem, interactiveObj) {
+            if (interactiveObj && interactiveObj.boot) {
+                interactiveElem.classList.remove('interactive--offline');
+                interactiveObj.boot(interactiveElem, document.body);
+            }
+        },
 
-        //     interactives = document.querySelectorAll('figure.interactive.interactive--loading');
+        showOfflineInteractiveIcons: function () {
+            var i,
+                interactive,
+                reloadElem,
+                loadingElem,
+                interactives;
 
-        //     for (i = 0; i < interactives.length; i++) {
-        //         interactive = interactives[i];
+            interactives = document.querySelectorAll('figure.interactive:not(.interactive--offline)');
 
-        //         interactive.classList.remove('interactive--loading');
-        //     }
-        // },
+            for (i = 0; i < interactives.length; i++) {
+                interactive = interactives[i];
+                interactive.classList.add('interactive--offline');
+
+                reloadElem = document.createElement('div');
+                reloadElem.classList.add('interactive--offline--icon', 'interactive--offline--icon--reload');
+                reloadElem.addEventListener('click', this.loadInteractives.bind(this, true));
+                interactive.appendChild(reloadElem);
+
+                loadingElem = document.createElement('div');
+                loadingElem.classList.add('interactive--offline--icon', 'interactive--offline--icon--loading');
+                interactive.appendChild(loadingElem);
+            }
+
+            interactives = document.querySelectorAll('figure.interactive.interactive--loading');
+
+            for (i = 0; i < interactives.length; i++) {
+                interactive = interactives[i];
+
+                interactive.classList.remove('interactive--loading');
+            }
+        }
 
         // offline: function () {
         //     // DES-52 TODO: Does this even work now?
