@@ -1,7 +1,5 @@
 /*global window,document,console,require,define,navigator */
 define([
-    // 'bean',
-    // 'bonzo',
     'fence',
     'fastClick',
     'smoothScroll',
@@ -11,11 +9,7 @@ define([
     'modules/more-tags',
     'modules/sharing',
     'throttleDebounce'
-    // 'modules/$',
-    // 'iscroll'
 ], function(
-    // bean,
-    // bonzo,
     fence,
     FastClick,
     smoothScroll,
@@ -25,8 +19,6 @@ define([
     MoreTags,
     Sharing,
     throttleDebounce
-    // $,
-    // iscroll
 ) {
     'use strict';
 
@@ -66,21 +58,18 @@ define([
             this.setupAlertSwitch();
             this.setupTellMeWhenSwitch();
             this.setupFontSizing();
+            this.setupGetArticleHeight();
             this.showTabs();
-            // this.setGlobalObject(window);
-            // this.fixSeries();
-            // this.formatThumbnailImages();
-            // this.advertUpdates();
+            this.setGlobalObject(window);
+            this.fixSeries();
+            this.formatThumbnailImages();
+            this.advertorialUpdates();
 
-            // window.getArticleHeight = this.getArticleHeight;
+            Sharing.init(window);
 
-            // window.applyNativeFunctionCall('getArticleHeight');
-
-            // Sharing.init(window);
-
-            // if (!document.body.classList.contains('no-ready')) {
-            //     window.location.href = 'x-gu://ready';
-            // }
+            if (!document.body.classList.contains('no-ready')) {
+                window.location.href = 'x-gu://ready';
+            }
         },
 
         attachFastClick: function() {
@@ -426,6 +415,35 @@ define([
             document.body.dataset.fontSize = replacementInt[2];
         },
 
+        setupGetArticleHeight: function () {
+            // Called by native code
+            window.getArticleHeight = this.getArticleHeight;
+            window.applyNativeFunctionCall('getArticleHeight');
+        },
+
+        getArticleHeight: function () {
+            this.articleHeight(this.getArticleHeightCallback);
+        },
+
+        getArticleHeightCallback: function (height) {
+            window.GuardianJSInterface.getArticleHeightCallback(height);
+        },
+
+        articleHeight: function(callback) {
+            var articleContainer,
+                contentType = document.body.getAttribute('data-content-type'),
+                height = 0;
+
+            if (contentType === 'article') {
+                articleContainer = document.querySelector('div[id$=-article-container]');
+                if (articleContainer) {
+                    height = articleContainer.offsetHeight;
+                }
+            }
+
+            return callback(height);
+        },
+
         showTabs: function () {
             var i,
                 href,
@@ -489,22 +507,22 @@ define([
                 }
 
                 switch(tabId) {
-                    case "football__tab--article":
+                    case 'football__tab--article':
                         window.location.href = 'x-gu://football_tab_report';
                         break;
-                    case "football__tab--stats":
+                    case 'football__tab--stats':
                         this.setPieChartSize();
                         window.location.href = 'x-gu://football_tab_stats';
                         break;
-                    case "football__tab--liveblog":
+                    case 'football__tab--liveblog':
                         window.location.href = 'x-gu://football_tab_liveblog';
                         break;
-                    case "cricket__tab--liveblog":
+                    case 'cricket__tab--liveblog':
                         if (this.isAndroid) {
                             window.GuardianJSInterface.cricketTabChanged('overbyover');
                         }
                         break;
-                    case "cricket__tab--stats":
+                    case 'cricket__tab--stats':
                         if (this.isAndroid) {
                             window.GuardianJSInterface.cricketTabChanged('scorecard');
                         }
@@ -513,147 +531,125 @@ define([
                         window.location.href = 'x-gu://football_tab_unknown';
                 }
             }
+        },
+
+        setPieChartSize: function () {
+            var piechart = document.querySelector('.pie-chart');
+
+            if (piechart && piechart.parentNode) {
+                piechart.style.width = piechart.parentNode.offsetWidth + 'px';
+                piechart.style.height = piechart.parentNode.offsetWidth + 'px';
+            }
+        },
+
+        setGlobalObject: function (root) {
+            var pageId = document.body.dataset.pageId;
+
+            root.guardian = {
+                config: {
+                    page: {
+                        pageId: pageId === '__PAGE_ID__' ? null : pageId
+                    }
+                }
+            };
+
+            return root.guardian;            
+        },
+
+        fixSeries: function () {
+            var i,
+                lineBreak,
+                series = document.querySelector('.content__series-label.content__labels a'),
+                spans,
+                lineWidth = 0,
+                minLastLineWidth = 80;
+
+            series.innerHTML = '<span>' + series.innerText.split(/\s+/).join(' </span><span>') + ' </span>';
+
+            spans = series.querySelectorAll('span');
+
+            for (i = spans.length - 1; i >=0; i--) {
+                lineWidth = lineWidth + spans[i].offsetWidth;
+                if (lineWidth > minLastLineWidth) {
+                    if (Math.abs(spans[i].getBoundingClientRect().top - spans[spans.length - 1].getBoundingClientRect().top) >= spans[i].offsetHeight) {
+                        lineBreak = document.createElement('br');
+                        spans[i].parentNode.insertBefore(lineBreak, spans[i]);
+                    }
+                    break;
+                }
+            }
+        },
+
+        formatThumbnailImages: function() {
+            var i,
+                isPortrait,
+                thumbnailImage,
+                thumbnailFigures = document.getElementsByClassName("element-image element--thumbnail");
+
+            for (i = 0; i < thumbnailFigures.length; i++) {
+                thumbnailImage = thumbnailFigures[i].getElementsByTagName("img")[0];
+                isPortrait = parseInt(thumbnailImage.getAttribute("height"), 10) > parseInt(thumbnailImage.getAttribute("width"), 10);
+
+                if (isPortrait) {
+                    thumbnailFigures[i].classList.add("portrait-thumbnail");
+                } else {
+                    thumbnailFigures[i].classList.add("landscape-thumbnail");
+                }
+            }
+        },
+
+        advertorialUpdates: function() {
+            var tones, tone, type, 
+                parentNodeClass, bylineElems, 
+                i, elemsToDelete, j;
+
+            tones = {
+                "tone--media": {
+                    "video": "meta__misc",
+                    "gallery": "meta__misc",
+                    "audio": "byline--mobile"
+                },
+                "tone--news": "meta",
+                "tone--feature1": "meta",
+                "tone--feature2": "meta",
+                "tone--feature3": "meta",
+                "tone--podcast": "byline--media"
+            };
+
+            if (document.body.classList.contains("is_advertising")) {
+                for (tone in tones) {
+                    if (tones.hasOwnProperty(tone)) {
+                        if (document.body.classList.contains(tone)) {
+                            if (typeof tones[tone] === 'object') {
+                                for (type in tones[tone]) {
+                                    if (tones[tone].hasOwnProperty(type)) {
+                                        if (document.body.dataset.contentType && document.body.dataset.contentType === type) {
+                                            parentNodeClass = tones[tone][type];
+                                            break;
+                                        }
+                                    }
+                                }
+                            } else {
+                                parentNodeClass = tones[tone];
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if (parentNodeClass) {
+                    bylineElems = document.getElementsByClassName("byline");
+                    if (bylineElems.length && !bylineElems[0].children.length) {
+                        elemsToDelete = document.body.getElementsByClassName(parentNodeClass);
+                        for (j = 0; j < elemsToDelete.length; j++) {
+                            if (elemsToDelete[j].parentNode && !elemsToDelete[j].getElementsByClassName("sponsorship").length) {
+                                elemsToDelete[j].parentNode.removeChild(elemsToDelete[j]);
+                            }
+                        }
+                    }
+                }
+            }
         }
-
-        // setPieChartSize: function (){
-        //     var piechart = $('.pie-chart');
-        //     var parent = piechart.parent().offset();
-        //     piechart.css({
-        //         'width': parent.width,
-        //         'height': parent.width
-        //     });
-        // },
-
-        // setGlobalObject: function (root) {
-        //     var pageId = $('body').attr('data-page-id');
-
-        //     root.guardian = {
-        //         config: {
-        //             page: {
-        //                 pageId: pageId === '__PAGE_ID__' ? null : pageId
-        //             }
-        //         }
-        //     };
-
-        //     return root.guardian;
-        // },
-
-        // fixSeries: function () {
-        //     var series = $('.content__series-label.content__labels a');
-        //     series.html('<span>' + series.text().split(/\s+/).join(' </span><span>') + ' </span>');
-
-        //     var spans = $('span', series);
-        //     var size = spans.length;
-        //     var lineWidth = 0;
-        //     var minLastLineWidth = 80; //px
-
-        //     for(var x = size - 1; x >=0; x--){
-        //         lineWidth = lineWidth + spans[x].offsetWidth;
-        //         if( lineWidth > minLastLineWidth) {
-        //             if( Math.abs(spans[x].getBoundingClientRect().top - spans[size - 1].getBoundingClientRect().top) >= spans[x].offsetHeight ){
-        //                 bonzo(spans[x]).before('</br>');
-        //             }
-        //             break;
-        //         }
-        //     }
-        // },
-
-        // formatThumbnailImages: function() {
-        //     var i,
-        //         isPortrait,
-        //         thumbnailImage,
-        //         thumbnailFigures = document.getElementsByClassName("element-image element--thumbnail");
-
-        //     for (i = 0; i < thumbnailFigures.length; i++) {
-        //         thumbnailImage = thumbnailFigures[i].getElementsByTagName("img")[0];
-        //         isPortrait = parseInt(thumbnailImage.getAttribute("height"), 10) > parseInt(thumbnailImage.getAttribute("width"), 10);
-
-        //         if (isPortrait) {
-        //             thumbnailFigures[i].classList.add("portrait-thumbnail");
-        //         } else {
-        //             thumbnailFigures[i].classList.add("landscape-thumbnail");
-        //         }
-        //     }
-        // },
-
-        // advertUpdates: function() {
-        //     var tones, tone, type, 
-        //         parentNodeClass, bylineElems, 
-        //         i, elemsToDelete, j;
-
-        //     tones = {
-        //         "tone--media": {
-        //             "video": "meta__misc",
-        //             "gallery": "meta__misc",
-        //             "audio": "byline--mobile"
-        //         },
-        //         "tone--news": "meta",
-        //         "tone--feature1": "meta",
-        //         "tone--feature2": "meta",
-        //         "tone--feature3": "meta",
-        //         "tone--podcast": "byline--media"
-        //     };
-
-        //     if (document.body.classList.contains("is_advertising")) {
-        //         for (tone in tones) {
-        //             if (tones.hasOwnProperty(tone)) {
-        //                 if (document.body.classList.contains(tone)) {
-        //                     if (typeof tones[tone] === 'object') {
-        //                         for (type in tones[tone]) {
-        //                             if (tones[tone].hasOwnProperty(type)) {
-        //                                 if (document.body.dataset.contentType && document.body.dataset.contentType === type) {
-        //                                     parentNodeClass = tones[tone][type];
-        //                                     break;
-        //                                 }
-        //                             }
-        //                         }
-        //                     } else {
-        //                         parentNodeClass = tones[tone];
-        //                         break;
-        //                     }
-        //                 }
-        //             }
-        //         }
-
-        //         if (parentNodeClass) {
-        //             bylineElems = document.getElementsByClassName("byline");
-        //             if (bylineElems.length && !bylineElems[0].children.length) {
-        //                 elemsToDelete = document.body.getElementsByClassName(parentNodeClass);
-        //                 for (j = 0; j < elemsToDelete.length; j++) {
-        //                     if (elemsToDelete[j].parentNode && !elemsToDelete[j].getElementsByClassName("sponsorship").length) {
-        //                         elemsToDelete[j].parentNode.removeChild(elemsToDelete[j]);
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //     }
-        // },
-
-        // getArticleHeight: function () {
-        //     // DES-52 TODO: TEST THIS!
-
-        //     this.articleHeight(this.getArticleHeightCallback);
-        // },
-
-        // getArticleHeightCallback: function (height) {
-        //     // DES-52 TODO: TEST THIS!
-
-        //     window.GuardianJSInterface.getArticleHeightCallback(height);
-        // },
-
-        // articleHeight: function(callback) {
-        //     // DES-52 TODO: TEST THIS!
-
-        //     var contentType = document.body.getAttribute('data-content-type'),
-        //         height = 0;
-
-        //     if (contentType === 'article') {
-        //         var articleContainer = $('div[id$=-article-container]')[0];
-        //         height = articleContainer.offsetHeight;
-        //     }
-
-        //     return callback(height);
-        // }
     });
 
     return Layout;
