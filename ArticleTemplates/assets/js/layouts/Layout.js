@@ -39,6 +39,7 @@ define([
             // this.insertTags()
             // this.videoPositioning() on android
             // this.loadEmbeds() && this.fixVineWidth()
+            // this.showTabs() on football/cricket templates
         // liveblog.js updates
             // window.articleImageSizer() should now call this.imageSizer()
             // window.loadEmbeds() should now call this.loadEmbeds()
@@ -65,7 +66,7 @@ define([
             this.setupAlertSwitch();
             this.setupTellMeWhenSwitch();
             this.setupFontSizing();
-            // this.showTabs(window);
+            this.showTabs();
             // this.setGlobalObject(window);
             // this.fixSeries();
             // this.formatThumbnailImages();
@@ -358,7 +359,7 @@ define([
                 innerElem.classList.add('element-image-inner');
                 image.parentNode.replaceChild(innerElem, image);
             }
-        }
+        },
 
         setupOfflineSwitch: function () {
             // Called by native code
@@ -423,64 +424,96 @@ define([
             document.body.classList.remove(current);
             document.body.classList.add(replacement);  
             document.body.dataset.fontSize = replacementInt[2];
+        },
+
+        showTabs: function () {
+            var i,
+                href,
+                hideElem,
+                tab,
+                tabs,
+                tabContainer = document.querySelector('.tabs');
+
+            if (tabContainer) {
+                tabs = tabContainer.getElementsByTagName('a');
+
+                for (i = 0; i < tabs.length; i++) {
+                    if (i > 0) {
+                        tab = tabs[i];
+                        href = tab.getAttribute('href');
+                        if (href) {
+                            hideElem = document.querySelector(href);
+                            if (hideElem) {
+                                hideElem.style.display = 'none';
+                            }
+                        }
+                    }
+
+                    tab.addEventListener('click', this.showTab.bind(this, tab, tabContainer));
+                }
+            }
+        },
+
+        showTab: function (tab, tabContainer, evt) {
+            var showElem,
+                hideElem,
+                href,
+                activeTab,
+                tabId;
+
+            evt.preventDefault();
+            
+            if (tab.getAttribute('aria-selected') !== 'true') {
+                activeTab = tabContainer.querySelector('[aria-selected="true"]');
+                tabId = tab.getAttribute('id');
+
+                if (activeTab) {
+                    href = activeTab.getAttribute('href');
+                    if (href) {
+                        hideElem = document.querySelector(href);
+                        if (hideElem) {
+                            hideElem.style.display = 'none';
+                            activeTab.setAttribute('aria-selected', false);
+                        }
+                    }
+                }
+
+                href = tab.getAttribute('href');
+
+                if (href) {
+                    showElem = document.querySelector(href);
+                    if (showElem) {
+                        hideElem.style.display = 'block';
+                        activeTab.setAttribute('aria-selected', true);
+                    }
+                }
+
+                switch(tabId) {
+                    case "football__tab--article":
+                        window.location.href = 'x-gu://football_tab_report';
+                        break;
+                    case "football__tab--stats":
+                        this.setPieChartSize();
+                        window.location.href = 'x-gu://football_tab_stats';
+                        break;
+                    case "football__tab--liveblog":
+                        window.location.href = 'x-gu://football_tab_liveblog';
+                        break;
+                    case "cricket__tab--liveblog":
+                        if (this.isAndroid) {
+                            window.GuardianJSInterface.cricketTabChanged('overbyover');
+                        }
+                        break;
+                    case "cricket__tab--stats":
+                        if (this.isAndroid) {
+                            window.GuardianJSInterface.cricketTabChanged('scorecard');
+                        }
+                        break;
+                    default:
+                        window.location.href = 'x-gu://football_tab_unknown';
+                }
+            }
         }
-
-        // showTabs: function (root) {
-        //     // Set up tab events, show only first child
-        //     var tabContainer = $('.tabs');
-        //     var tabs = $('a',tabContainer);
-
-        //     tabs.each(function(tab,i) {
-        //         if (i > 0) {
-        //             $(tab.getAttribute('href')).hide();
-        //         }
-        //     });
-
-        //     if(tabContainer[0]){
-        //         bean.on(tabContainer[0], 'click', 'a', function (e) {
-
-        //             e.preventDefault();
-        //             var tab = $(this);
-
-        //             if( tab.attr("aria-selected") !== 'true' ) {
-
-        //                 var activeTab = $('[aria-selected="true"]', tabContainer);
-        //                 var tabId = tab.attr("id");
-
-        //                 $(activeTab.attr('href')).hide();
-        //                 activeTab.attr("aria-selected", false);
-
-        //                 $(tab.attr('href')).show();
-        //                 tab.attr("aria-selected", true);
-
-        //                 switch(tabId) {
-        //                     case "football__tab--article":
-        //                         root.location.href = 'x-gu://football_tab_report';
-        //                         break;
-        //                     case "football__tab--stats":
-        //                         this.setPieChartSize();
-        //                         root.location.href = 'x-gu://football_tab_stats';
-        //                         break;
-        //                     case "football__tab--liveblog":
-        //                         root.location.href = 'x-gu://football_tab_liveblog';
-        //                         break;
-        //                     case "cricket__tab--liveblog":
-        //                         if (this.isAndroid) {
-        //                             window.GuardianJSInterface.cricketTabChanged('overbyover');
-        //                         }
-        //                         break;
-        //                     case "cricket__tab--stats":
-        //                         if (this.isAndroid) {
-        //                             window.GuardianJSInterface.cricketTabChanged('scorecard');
-        //                         }
-        //                         break;
-        //                     default:
-        //                         root.location.href = 'x-gu://football_tab_unknown';
-        //                 }
-        //             }
-        //         });
-        //     }
-        // },
 
         // setPieChartSize: function (){
         //     var piechart = $('.pie-chart');
