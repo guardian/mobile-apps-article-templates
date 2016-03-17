@@ -7,9 +7,8 @@ define([
     'modules/twitter',
     'modules/witness',
     'modules/outbrain',
-    'modules/quiz',
-    'smoothScroll'
-], function (
+    'modules/quiz'
+], function(
     Layout,
     // bean,
     // bonzo,
@@ -17,8 +16,7 @@ define([
     twitter,
     witness,
     outbrain,
-    Quiz,
-    smoothScroll
+    Quiz
 ) {
     'use strict';
 
@@ -26,10 +24,11 @@ define([
         // use event delegation
         // replace click events with something more performant
         // test
+            // this.richLinkTracking()
             // this.onQuoteOverlayClick()
 
     var Article = Layout.extend({
-        init: function () {
+        init: function() {
             this._super.apply(this, arguments);
             twitter.init();
             twitter.enhanceTweets();
@@ -37,26 +36,26 @@ define([
             this.insertOutbrain();
             this.loadQuizzes();
             this.formatImmersive();
-            // modules.richLinkTracking();
+            this.richLinkTracking();
         },
 
-        insertOutbrain: function () {
-            window.articleOutbrainInserter = function () {
+        insertOutbrain: function() {
+            window.articleOutbrainInserter = function() {
                 outbrain.load();
             };
             window.applyNativeFunctionCall('articleOutbrainInserter');
         },
 
-        loadQuizzes: function () {
+        loadQuizzes: function() {
             Quiz.init();
         },
 
-        formatImmersive: function () {
+        formatImmersive: function() {
             var immersives = document.querySelectorAll('.immersive');
 
             if (immersives.length) {
                 // Override tone to feature for all immersive pages
-                document.body.className = document.body.className.replace( /(tone--).+?\s/g , 'tone--feature1 ' );    
+                document.body.className = document.body.className.replace(/(tone--).+?\s/g, 'tone--feature1 ');
 
                 this.adjustHeaderImageHeight();
 
@@ -79,22 +78,22 @@ define([
             }
         },
 
-        formatImmersiveForWindows: function () {
+        formatImmersiveForWindows: function() {
             var newSrc,
                 iframe = document.querySelector('.article__header-bg .element > iframe');
-            
+
             if (iframe) {
                 newSrc = iframe[0].srcdoc
-                .replace("transform: translate(-50%, -50%);", "-webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);")
-                .replace(/-webkit-animation/g, "animation")
-                .replace(/animation/g, "-webkit-animation")
-                .replace(/-webkit-keyframes/g, "keyframes")
-                .replace(/@keyframes/g, "@-webkit-keyframes");
+                    .replace("transform: translate(-50%, -50%);", "-webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);")
+                    .replace(/-webkit-animation/g, "animation")
+                    .replace(/animation/g, "-webkit-animation")
+                    .replace(/-webkit-keyframes/g, "keyframes")
+                    .replace(/@keyframes/g, "@-webkit-keyframes");
                 iframe.srcdoc = newSrc;
             }
         },
 
-        addClassesToSectionSeparators: function () {
+        addClassesToSectionSeparators: function() {
             var i,
                 header,
                 headers = document.querySelectorAll('.article h2');
@@ -105,39 +104,39 @@ define([
                 if (header.innerHTML.trim() === '* * *') {
                     header.innerHTML = '';
                     header.classList.add('section__rule');
-                    if (header.nextSibling) {
-                        header.nextSibling.classList.add('has__dropcap');
+                    if (header.nextElementSibling) {
+                        header.nextElementSibling.classList.add('has__dropcap');
                     }
                 }
             }
         },
 
-        addClassesToElementImmersives: function () {
+        addClassesToElementImmersives: function() {
             var i,
                 elementImmersive,
                 elementImmersives = document.querySelectorAll('figure.element--immersive');
 
             for (i = 0; i < elementImmersives.length; i++) {
                 elementImmersive = elementImmersives[i];
-                if (elementImmersive.nextSibling && 
-                    elementImmersive.nextSibling.classList.contains('element-pullquote')) {
-                    elementImmersive.nextSibling.classList.add('quote--image');
+                if (elementImmersive.nextElementSibling &&
+                    elementImmersive.nextElementSibling.classList.contains('element-pullquote')) {
+                    elementImmersive.nextElementSibling.classList.add('quote--image');
                     elementImmersive.classList.add('quote--overlay');
                     elementImmersive.dataset.thing = '';
                 }
 
-                if (elementImmersive.nextSibling && 
-                    elementImmersive.nextSibling.tagName === 'H2') {
-                    elementImmersive.nextSibling.classList.add('title--image');
+                if (elementImmersive.nextElementSibling &&
+                    elementImmersive.nextElementSibling.tagName === 'H2') {
+                    elementImmersive.nextElementSibling.classList.add('title--image');
                     elementImmersive.classList.add('title--overlay');
-                    if (elementImmersive.nextSibling.nextSibling) {
-                        elementImmersive.nextSibling.nextSibling.classList.add('has__dropcap');
+                    if (elementImmersive.nextElementSibling.nextElementSibling) {
+                        elementImmersive.nextElementSibling.nextElementSibling.classList.add('has__dropcap');
                     }
                 }
             }
         },
 
-        movePullQuotes: function () {
+        movePullQuotes: function() {
             var i,
                 pullQuote,
                 pullQuotes = document.querySelectorAll('.element-pullquote');
@@ -148,7 +147,7 @@ define([
             }
         },
 
-        attachImmersiveEventHandlers: function () {
+        attachImmersiveEventHandlers: function() {
             var i,
                 quoteOverlay,
                 quoteOverlays = document.querySelectorAll('.quote--overlay'),
@@ -160,12 +159,11 @@ define([
                 quoteOverlay.addEventListener('click', this.onQuoteOverlayClick.bind(this, quoteOverlay));
             }
 
-            document.body.addEventListener('scroll', onImmersiveScrollBound);
-
+            window.addEventListener('scroll', onImmersiveScrollBound);
             window.addEventListener('resize', onResizeBound);
         },
 
-        onQuoteOverlayClick: function (quoteOverlay, evt) {
+        onQuoteOverlayClick: function(quoteOverlay, evt) {
             var figcaption;
 
             evt.preventDefault();
@@ -176,12 +174,12 @@ define([
                 if (figcaption.classList.contains('display')) {
                     figcaption.classList.remove('display')
                 } else {
-                    figcaption.classList.add('display')    
+                    figcaption.classList.add('display')
                 }
             }
         },
 
-        onImmersiveScrollBound: function () {
+        onImmersiveScroll: function () {
             var i,
                 dataOffset,
                 pullQuote,
@@ -199,11 +197,11 @@ define([
             }
         },
 
-        onResize: function () {
+        onResize: function() {
             this.adjustHeaderImageHeight();
         },
 
-        adjustHeaderImageHeight: function () {
+        adjustHeaderImageHeight: function() {
             var viewPortHeight,
                 bgHeight,
                 headerImage;
@@ -214,6 +212,29 @@ define([
 
             if (headerImage) {
                 headerImage.style.height = bgHeight;
+            }
+        },
+
+        richLinkTracking: function() {
+            var i,
+                j,
+                href,
+                link,
+                links,
+                richLink,
+                richLinks = document.querySelectorAll('.element-rich-link');
+
+            for (i = 0; i < richLinks.length; i++) {
+                richLink = richLinks[i];
+                links = richLink.querySelectorAll('a');
+
+                for (j = 0; j < links.length; j++) {
+                    link = links[j];
+                    href = link.getAttribute('href');
+                    if (href !== '') {
+                        link.setAttribute('href', href + '?ArticleReferrer=RichLink');
+                    }
+                }
             }
         }
     });
