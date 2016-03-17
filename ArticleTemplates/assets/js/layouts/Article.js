@@ -1,9 +1,9 @@
 /*global window,document,console,define */
 define([
     'layouts/Layout',
-    'bean',
-    'bonzo',
-    'modules/$',
+    // 'bean',
+    // 'bonzo',
+    // 'modules/$',
     'modules/twitter',
     'modules/witness',
     'modules/outbrain',
@@ -11,9 +11,9 @@ define([
     'smoothScroll'
 ], function (
     Layout,
-    bean,
-    bonzo,
-    $,
+    // bean,
+    // bonzo,
+    // $,
     twitter,
     witness,
     outbrain,
@@ -22,11 +22,199 @@ define([
 ) {
     'use strict';
 
+    // DES-52 TODO
+        // use event delegation
+        // replace click events with something more performant
+        // test
+            // this.onQuoteOverlayClick()
+
     var Article = Layout.extend({
         init: function () {
             this._super.apply(this, arguments);
+            twitter.init();
+            twitter.enhanceTweets();
+            witness.duplicate();
+            this.insertOutbrain();
+            this.loadQuizzes();
+            this.formatImmersive();
+            // modules.richLinkTracking();
+        },
 
-            console.log("*** Article init ***");
+        insertOutbrain: function () {
+            window.articleOutbrainInserter = function () {
+                outbrain.load();
+            };
+            window.applyNativeFunctionCall('articleOutbrainInserter');
+        },
+
+        loadQuizzes: function () {
+            Quiz.init();
+        },
+
+        formatImmersive: function () {
+            var immersives = document.querySelectorAll('.immersive');
+
+            if (immersives.length) {
+                // Override tone to feature for all immersive pages
+                document.body.className = document.body.className.replace( /(tone--).+?\s/g , 'tone--feature1 ' );    
+
+                this.adjustHeaderImageHeight();
+
+                // we actually need for the embed to be sent through with prefixed & unprefixed styles
+                if (document.body.classList.contains('windows')) {
+                    this.formatImmersiveForWindows();
+                }
+
+                // find all the section seperators & add classes
+                this.addClassesToSectionSeparators();
+
+                // for each element--immersive add extra classes depending on siblings
+                this.addClassesToElementImmersives();
+
+                // store all pullquotes top offset for later
+                this.movePullQuotes();
+
+                // attach event handlers
+                this.attachImmersiveEventHandlers();
+            }
+        },
+
+        formatImmersiveForWindows: function () {
+            var newSrc,
+                iframe = document.querySelector('.article__header-bg .element > iframe');
+            
+            if (iframe) {
+                newSrc = iframe[0].srcdoc
+                .replace("transform: translate(-50%, -50%);", "-webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);")
+                .replace(/-webkit-animation/g, "animation")
+                .replace(/animation/g, "-webkit-animation")
+                .replace(/-webkit-keyframes/g, "keyframes")
+                .replace(/@keyframes/g, "@-webkit-keyframes");
+                iframe.srcdoc = newSrc;
+            }
+        },
+
+        addClassesToSectionSeparators: function () {
+            var i,
+                header,
+                headers = document.querySelectorAll('.article h2');
+
+            for (i = 0; i < headers.length; i++) {
+                header = headers[i];
+
+                if (header.innerHTML.trim() === '* * *') {
+                    header.innerHTML = '';
+                    header.classList.add('section__rule');
+                    if (header.nextSibling) {
+                        header.nextSibling.classList.add('has__dropcap');
+                    }
+                }
+            }
+        },
+
+        addClassesToElementImmersives: function () {
+            var i,
+                elementImmersive,
+                elementImmersives = document.querySelectorAll('figure.element--immersive');
+
+            for (i = 0; i < elementImmersives.length; i++) {
+                elementImmersive = elementImmersives[i];
+                if (elementImmersive.nextSibling && 
+                    elementImmersive.nextSibling.classList.contains('element-pullquote')) {
+                    elementImmersive.nextSibling.classList.add('quote--image');
+                    elementImmersive.classList.add('quote--overlay');
+                    elementImmersive.dataset.thing = '';
+                }
+
+                if (elementImmersive.nextSibling && 
+                    elementImmersive.nextSibling.tagName === 'H2') {
+                    elementImmersive.nextSibling.classList.add('title--image');
+                    elementImmersive.classList.add('title--overlay');
+                    if (elementImmersive.nextSibling.nextSibling) {
+                        elementImmersive.nextSibling.nextSibling.classList.add('has__dropcap');
+                    }
+                }
+            }
+        },
+
+        movePullQuotes: function () {
+            var i,
+                pullQuote,
+                pullQuotes = document.querySelectorAll('.element-pullquote');
+
+            for (i = 0; i < pullQuotes.length; i++) {
+                pullQuote = pullQuotes[i];
+                pullQuote.dataset.offset = pullQuote.offsetTop;
+            }
+        },
+
+        attachImmersiveEventHandlers: function () {
+            var i,
+                quoteOverlay,
+                quoteOverlays = document.querySelectorAll('.quote--overlay'),
+                onImmersiveScrollBound = window.ThrottleDebounce.debounce(10, false, this.onImmersiveScroll.bind(this)),
+                onResizeBound = window.ThrottleDebounce.debounce(100, false, this.onResize.bind(this));
+
+            for (i = 0; i < quoteOverlays.length; i++) {
+                quoteOverlay = quoteOverlays[i];
+                quoteOverlay.addEventListener('click', this.onQuoteOverlayClick.bind(this, quoteOverlay));
+            }
+
+            document.body.addEventListener('scroll', onImmersiveScrollBound);
+
+            window.addEventListener('resize', onResizeBound);
+        },
+
+        onQuoteOverlayClick: function (quoteOverlay, evt) {
+            var figcaption;
+
+            evt.preventDefault();
+
+            figcaption = quoteOverlay.querySelector('figcaption');
+
+            if (figcaption) {
+                if (figcaption.classList.contains('display')) {
+                    figcaption.classList.remove('display')
+                } else {
+                    figcaption.classList.add('display')    
+                }
+            }
+        },
+
+        onImmersiveScrollBound: function () {
+            var i,
+                dataOffset,
+                pullQuote,
+                pullQuotes = document.querySelectorAll('.element-pullquote'),
+                viewPortHeight = document.documentElement.clientHeight,
+                pageOffset = viewPortHeight * 0.75;
+
+            for (i = 0; i < pullQuotes.length; i++) {
+                pullQuote = pullQuotes[i];
+                dataOffset = pullQuote.dataset.offset;
+
+                if (window.scrollY >= (dataOffset - pageOffset)) {
+                    pullQuote.classList.add('animated', 'fadeInUp');
+                }
+            }
+        },
+
+        onResize: function () {
+            this.adjustHeaderImageHeight();
+        },
+
+        adjustHeaderImageHeight: function () {
+            var viewPortHeight,
+                bgHeight,
+                headerImage;
+
+            viewPortHeight = document.documentElement.clientHeight;
+            bgHeight = (viewPortHeight - document.body.style.marginTop.replace('px', '')) + 'px';
+            headerImage = document.querySelector('.article__header-bg, .article__header-bg .element > iframe');
+
+            if (headerImage) {
+                headerImage.style.height = bgHeight;
+            }
         }
     });
 

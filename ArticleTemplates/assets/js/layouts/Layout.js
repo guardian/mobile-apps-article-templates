@@ -564,18 +564,20 @@ define([
                 lineWidth = 0,
                 minLastLineWidth = 80;
 
-            series.innerHTML = '<span>' + series.innerText.split(/\s+/).join(' </span><span>') + ' </span>';
+            if (series) {
+                series.innerHTML = '<span>' + series.innerText.split(/\s+/).join(' </span><span>') + ' </span>';
 
-            spans = series.querySelectorAll('span');
+                spans = series.querySelectorAll('span');
 
-            for (i = spans.length - 1; i >=0; i--) {
-                lineWidth = lineWidth + spans[i].offsetWidth;
-                if (lineWidth > minLastLineWidth) {
-                    if (Math.abs(spans[i].getBoundingClientRect().top - spans[spans.length - 1].getBoundingClientRect().top) >= spans[i].offsetHeight) {
-                        lineBreak = document.createElement('br');
-                        spans[i].parentNode.insertBefore(lineBreak, spans[i]);
+                for (i = spans.length - 1; i >=0; i--) {
+                    lineWidth = lineWidth + spans[i].offsetWidth;
+                    if (lineWidth > minLastLineWidth) {
+                        if (Math.abs(spans[i].getBoundingClientRect().top - spans[spans.length - 1].getBoundingClientRect().top) >= spans[i].offsetHeight) {
+                            lineBreak = document.createElement('br');
+                            spans[i].parentNode.insertBefore(lineBreak, spans[i]);
+                        }
+                        break;
                     }
-                    break;
                 }
             }
         },
