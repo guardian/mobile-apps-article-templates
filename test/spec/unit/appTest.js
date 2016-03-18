@@ -18,7 +18,7 @@ define([
         });
 
         afterEach(function () {
-             sandbox.restore();
+            sandbox.restore();
         });
 
         describe("App.prototype.init()", function() {
@@ -29,7 +29,7 @@ define([
                 sandbox.stub(window.document, 'getElementById').returns(dummyElem);
             });
 
-            it('app is instance of App', function(done) {
+            it('app is instance of App', function (done) {
                 injector
                     .mock('domReady', domReadyMock)
                     .mock('modules/monitor', monitorMock)
