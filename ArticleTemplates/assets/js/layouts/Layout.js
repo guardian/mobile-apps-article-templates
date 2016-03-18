@@ -1,4 +1,4 @@
-/*global window,document,console,require,define,navigator */
+/*global window,document,require,define,navigator */
 define([
     'fence',
     'fastClick',
@@ -7,8 +7,7 @@ define([
     'modules/comments',
     'modules/cards',
     'modules/more-tags',
-    'modules/sharing',
-    'throttleDebounce'
+    'modules/sharing'
 ], function(
     fence,
     FastClick,
@@ -17,8 +16,7 @@ define([
     Comments,
     Cards,
     MoreTags,
-    Sharing,
-    throttleDebounce
+    Sharing
 ) {
     'use strict';
 
@@ -106,9 +104,9 @@ define([
             var className = 'is-visible';
 
             if (mainMediaCaptionText.classList.contains(className)) {
-                mainMediaCaptionText.classList.remove(className)
+                mainMediaCaptionText.classList.remove(className);
             } else {
-                mainMediaCaptionText.classList.add(className)
+                mainMediaCaptionText.classList.add(className);
             }
         },
 
@@ -603,7 +601,7 @@ define([
         advertorialUpdates: function() {
             var tones, tone, type, 
                 parentNodeClass, bylineElems, 
-                i, elemsToDelete, j;
+                elemsToDelete, j;
 
             tones = {
                 "tone--media": {

@@ -1,11 +1,11 @@
-/*global window,document,console,define */
+/*global window,document,define */
 define([
     'layouts/Layout',
     'modules/twitter',
     'modules/witness',
     'modules/outbrain',
     'modules/quiz'
-], function(
+], function (
     Layout,
     twitter,
     witness,
@@ -22,7 +22,7 @@ define([
             // this.onQuoteOverlayClick()
 
     var Article = Layout.extend({
-        init: function() {
+        init: function () {
             this._super.apply(this, arguments);
             twitter.init();
             twitter.enhanceTweets();
@@ -33,18 +33,18 @@ define([
             this.richLinkTracking();
         },
 
-        insertOutbrain: function() {
-            window.articleOutbrainInserter = function() {
+        insertOutbrain: function () {
+            window.articleOutbrainInserter = function () {
                 outbrain.load();
             };
             window.applyNativeFunctionCall('articleOutbrainInserter');
         },
 
-        loadQuizzes: function() {
+        loadQuizzes: function () {
             Quiz.init();
         },
 
-        formatImmersive: function() {
+        formatImmersive: function () {
             var immersives = document.querySelectorAll('.immersive');
 
             if (immersives.length) {
@@ -72,7 +72,7 @@ define([
             }
         },
 
-        formatImmersiveForWindows: function() {
+        formatImmersiveForWindows: function () {
             var newSrc,
                 iframe = document.querySelector('.article__header-bg .element > iframe');
 
@@ -87,7 +87,7 @@ define([
             }
         },
 
-        addClassesToSectionSeparators: function() {
+        addClassesToSectionSeparators: function () {
             var i,
                 header,
                 headers = document.querySelectorAll('.article h2');
@@ -105,7 +105,7 @@ define([
             }
         },
 
-        addClassesToElementImmersives: function() {
+        addClassesToElementImmersives: function () {
             var i,
                 elementImmersive,
                 elementImmersives = document.querySelectorAll('figure.element--immersive');
@@ -130,7 +130,7 @@ define([
             }
         },
 
-        movePullQuotes: function() {
+        movePullQuotes: function () {
             var i,
                 pullQuote,
                 pullQuotes = document.querySelectorAll('.element-pullquote');
@@ -141,7 +141,7 @@ define([
             }
         },
 
-        attachImmersiveEventHandlers: function() {
+        attachImmersiveEventHandlers: function () {
             var i,
                 quoteOverlay,
                 quoteOverlays = document.querySelectorAll('.quote--overlay'),
@@ -157,7 +157,7 @@ define([
             window.addEventListener('resize', onResizeBound);
         },
 
-        onQuoteOverlayClick: function(quoteOverlay, evt) {
+        onQuoteOverlayClick: function (quoteOverlay, evt) {
             var figcaption;
 
             evt.preventDefault();
@@ -166,9 +166,9 @@ define([
 
             if (figcaption) {
                 if (figcaption.classList.contains('display')) {
-                    figcaption.classList.remove('display')
+                    figcaption.classList.remove('display');
                 } else {
-                    figcaption.classList.add('display')
+                    figcaption.classList.add('display');
                 }
             }
         },
@@ -191,11 +191,11 @@ define([
             }
         },
 
-        onResize: function() {
+        onResize: function () {
             this.adjustHeaderImageHeight();
         },
 
-        adjustHeaderImageHeight: function() {
+        adjustHeaderImageHeight: function () {
             var viewPortHeight,
                 bgHeight,
                 headerImage;
@@ -209,7 +209,7 @@ define([
             }
         },
 
-        richLinkTracking: function() {
+        richLinkTracking: function () {
             var i,
                 j,
                 href,

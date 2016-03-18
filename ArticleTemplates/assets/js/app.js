@@ -1,4 +1,4 @@
-/*global document,console,require */
+/*global document,require,define */
 
 define([
     'class',
@@ -59,37 +59,37 @@ define([
             } else if (contentType === 'liveblog') {
                 require(['liveblog'], function(Liveblog) {
                     monitor.setContext('liveblog', function() {
-                        // Liveblog.init();
+                        Liveblog.init();
                     });
                 });
             } else if (contentType === 'audio') {
                 require(['audio'], function(Audio) {
                     monitor.setContext('audio', function() {
-                        // Audio.init();
+                        Audio.init();
                     });
                 });
             } else if (contentType === 'gallery') {
                 require(['gallery'], function(Gallery) {
                     monitor.setContext('gallery', function() {
-                        // Gallery.init();
+                        Gallery.init();
                     });
                 });
             } else if (contentType === 'football') {
                 require(['football'], function(Football) {
                     monitor.setContext('football', function() {
-                        // Football.init();
+                        Football.init();
                     });
                 });
             } else if (contentType === 'cricket') {
                 require(['cricket'], function(Cricket) {
                     monitor.setContext('cricket', function() {
-                        // Cricket.init();
+                        Cricket.init();
                     });
                 });
             } else {
                 require(['bootstraps/common'], function(Common) {
                     monitor.setContext('common', function() {
-                        // Common.init();
+                        Common.init();
                     });
                 });
             }

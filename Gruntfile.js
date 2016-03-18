@@ -195,9 +195,45 @@ module.exports = function(grunt) {
         // jshint
         jshint: {
             options: {
+                reporter: require('jshint-summary'),
                 force: true
             },
-            dev: ['Gruntfile.js', 'ArticleTemplates/assets/js/{bootstraps,modules}/*.js', 'ArticleTemplates/assets/js/*.js']
+            uses_defaults: ['Gruntfile.js', 'ArticleTemplates/assets/js/{bootstraps,modules}/*.js', 'ArticleTemplates/assets/js/*.js'],
+            with_overrides: {
+                options: {
+                    "bitwise": true,
+                    "browser": true,
+                    "camelcase": true,
+                    "curly": true,
+                    "eqeqeq": true,
+                    "expr": true,
+                    "forin": true,
+                    "immed": true,
+                    "indent": false,
+                    "latedef": true,
+                    "maxerr": 9999,
+                    "mocha": true,
+                    "newcap": true,
+                    "noarg": true,
+                    "noempty": true,
+                    "nonew": true,
+                    "quotmark": false,
+                    "regexp": true,
+                    "strict": true,
+                    "trailing": true,
+                    "undef": true,
+                    "unused": true,
+                    "white": true,
+                    "predef": [ "-Promise" ],
+                    "globals": {
+                        "Class": true,
+                        "console": true
+                    }
+                },
+                files: {
+                    src: ['ArticleTemplates/assets/js/app.js', 'ArticleTemplates/assets/js/layouts/*.js']
+                }
+            }
         },
         // unit tests
         mocha: {
