@@ -2472,6 +2472,27 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
       max-height: 100%;
       top: 0.3em; }
 
+.membership-creative-container {
+  color: inherit !important;
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative; }
+  @media all and (min-width: 28.13em) {
+    .membership-creative-container {
+      float: right;
+      width: 300px;
+      padding-bottom: 300px;
+      margin-left: 18px;
+      margin-bottom: 12px; } }
+  .membership-creative-container .membership-creative {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0; }
+
 .article {
   overflow: hidden;
   margin-bottom: 48px;
@@ -3930,13 +3951,7 @@ body.the-minute {
         background-color: #d9d9d9; }
       .is_advertising.tone--news .article .container__outbrain, .is_advertising.tone--feature1 .article .container__outbrain, .is_advertising.tone--feature2 .article .container__outbrain, .is_advertising.tone--feature3 .article .container__outbrain, .is_advertising.tone--media .article .container__outbrain, .is_advertising.tone--podcast .article .container__outbrain {
         background-color: #CCC; } }
-  .is_advertising.tone--news .comments,
-  .is_advertising.tone--news .related-content, .is_advertising.tone--feature1 .comments,
-  .is_advertising.tone--feature1 .related-content, .is_advertising.tone--feature2 .comments,
-  .is_advertising.tone--feature2 .related-content, .is_advertising.tone--feature3 .comments,
-  .is_advertising.tone--feature3 .related-content, .is_advertising.tone--media .comments,
-  .is_advertising.tone--media .related-content, .is_advertising.tone--podcast .comments,
-  .is_advertising.tone--podcast .related-content {
+  .is_advertising.tone--news .comments, .is_advertising.tone--feature1 .comments, .is_advertising.tone--feature2 .comments, .is_advertising.tone--feature3 .comments, .is_advertising.tone--media .comments, .is_advertising.tone--podcast .comments {
     display: none; }
   .is_advertising.tone--news .container__outbrain, .is_advertising.tone--feature1 .container__outbrain, .is_advertising.tone--feature2 .container__outbrain, .is_advertising.tone--feature3 .container__outbrain, .is_advertising.tone--media .container__outbrain, .is_advertising.tone--podcast .container__outbrain {
     margin-bottom: 0; }
@@ -5406,27 +5421,30 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     display: block; }
   @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .tone--liveBlog.is-live .article__header .headline,
-    .tone--liveBlog.is-live .article__header .standfirst {
+    .tone--liveBlog.is-live .article__header .standfirst,
+    .tone--liveBlog.is-live .article__header .sponsorship {
       margin-left: 32.39437%; } }
   @media all and (min-width: 56.25em) {
     .tone--liveBlog.is-live .article__header .headline,
-    .tone--liveBlog.is-live .article__header .standfirst {
+    .tone--liveBlog.is-live .article__header .standfirst,
+    .tone--liveBlog.is-live .article__header .sponsorship {
       margin-left: 30.52632%; } }
   @media all and (min-width: 75em) {
     .tone--liveBlog.is-live .article__header .headline,
-    .tone--liveBlog.is-live .article__header .standfirst {
+    .tone--liveBlog.is-live .article__header .standfirst,
+    .tone--liveBlog.is-live .article__header .sponsorship {
       margin: 0 auto; } }
   .tone--liveBlog.is-live .article__header .standfirst {
     color: rgba(255, 255, 255, 0.8); }
     .tone--liveBlog.is-live .article__header .standfirst a {
       color: #fff; }
   .tone--liveBlog.is-live .article__header .sponsorship {
-    background-color: #fff;
+    background-color: #b51800;
     border-bottom: 0; }
-    .tone--liveBlog.is-live .article__header .sponsorship__about-uri, .tone--liveBlog.is-live .article__header .sponsorship__formatted-sponsor-name a {
-      color: #b51800; }
+    .tone--liveBlog.is-live .article__header .sponsorship__about-uri, .tone--liveBlog.is-live .article__header .sponsorship__formatted-sponsor-name, .tone--liveBlog.is-live .article__header .sponsorship__formatted-sponsor-name a {
+      color: #fff; }
   .tone--liveBlog.is-live .article__header .sponsorship__logo {
-    color: #333; }
+    color: #fff; }
 .tone--liveBlog.is-live .article--liveblog {
   border-top-color: #cc2b12; }
   @media all and (min-width: 75em) {
@@ -5942,7 +5960,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
   background-color: #fff; }
 .tone--review .article__header,
 .tone--review .section,
-.tone--review .headline,
+.tone--review .headline:not(.comments__headline),
 .tone--review .touchpoint--primary .touchpoint__button,
 .tone--review .standfirst,
 .tone--review .standfirst__inner {
@@ -6356,7 +6374,7 @@ body.immersive .article--immersive {
       body.immersive .article--immersive .prose .title--image {
         padding: 3px 0px 34px 12px;
         font-size: 3.2rem;
-        margin-top: -63px;
+        margin-top: -74px;
         width: 136%; } }
     @media all and (min-width: 75em) {
       body.immersive .article--immersive .prose .title--image {
