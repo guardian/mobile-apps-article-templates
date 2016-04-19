@@ -37,6 +37,10 @@ define(function () {
         doIframeMessage: function (elem) {
             document.documentElement.appendChild(elem);
             document.documentElement.removeChild(elem);
+        },
+
+        isOnline: function () {
+            return !document.body.classList.contains('offline') && navigator.onLine;
         }
 	};
 
