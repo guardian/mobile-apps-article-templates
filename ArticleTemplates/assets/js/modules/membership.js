@@ -17,13 +17,16 @@ define([
             },
 
             injectInlineArticleMembershipCreative: function (html, css, id) {
-                if (html && css) {
-                    var style,
-                        membershipCreativeContainer,
-                        insertBeforeElem = document.querySelector(".article__body > div.prose > p:nth-of-type(5) ~ p + p, .article__body > div.prose > p:nth-of-type(5) ~ p + h2");
+                var style,
+                    membershipCreativeContainer,
+                    insertBeforeElem;
 
-                    if (insertBeforeElem && 
-                        !document.querySelector(".membership-creative-container")) {
+                if (util.isOnline() &&
+                    !document.querySelector(".membership-creative-container")) {
+                    
+                    insertBeforeElem = modules.getInsertBeforeElem();
+
+                    if (insertBeforeElem) {
                         //inject css
                         style = document.createElement('style');
                         style.type = 'text/css';
@@ -55,6 +58,32 @@ define([
                     util.signalDevice(messageName);
                     trackMembershipCreativeView = false;
                 }
+            },
+
+            getInsertBeforeElem: function () {
+                var i,
+                    paraCount = 0,
+                    parentElem = document.querySelector(".article__body > div.prose");
+
+                for (i = 0; i < parentElem.children.length; i++) {
+                    if (parentElem.children[i].tagName === "P") {
+                        if (paraCount === 0 ||
+                            ((parentElem.children[i-1] && parentElem.children[i-1].tagName === "P") &&
+                            (parentElem.children[i+1] && (parentElem.children[i+1].tagName === "P" || parentElem.children[i+1].tagName === "H2")))) {
+
+                            paraCount++;
+
+                            if (paraCount > 4) {
+                                // return fifth paragraph 
+                                // which is preceded by a paragraph
+                                // and followed by a paragraph or header
+                                return parentElem.children[i];
+                            }
+                        }  
+                    }
+                }
+
+                return false;
             }
         };
 
