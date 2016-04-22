@@ -1,14 +1,8 @@
 /*global window,console,define */
 define([
-    'bean',
-    'bonzo',
-    'modules/$',
     'smoothScroll',
     'modules/ads'
 ], function(
-    bean,
-    bonzo,
-    $,
     smoothScroll,
     Ads
 ) {
@@ -206,8 +200,6 @@ define([
                 answerMessage.appendChild(answerText);
             },
             onAnswerClick: function (answer, answerIndex, question, questionIndex, answerMessage, answerImages) {
-                console.log(answer, answerIndex, question, questionIndex);
-
                 var answerPara,
                     correctAnswer,
                     correctAnswerWrapper,
@@ -257,24 +249,8 @@ define([
                 }
 
                 // If all questions have been answered display the score
-                if (modules.answers.length == modules.numAnswered) {
-                    // var scoreDisplayMessage = "";
-                    // for(var i = score; i >= 0; i--) {
-                    //     if (scoreMessages[i]) {
-                    //         scoreDisplayMessage = scoreMessages[i]; 
-                    //         break;
-                    //     }
-                    // }
-
-                    // // Add the score & message into resultPanel
-                    // $('.quiz-scores__correct').html(score.toString());
-                    // $('.quiz-scores__message').html(scoreDisplayMessage);
-
-                    // // Add open class to trigger transition
-                    // $('.quiz-scores').addClass('open');
-
-                    // // Scroll score panel into view
-                    // smoothScroll.animateScroll(null, '#quiz-scores', { speed: 1500, offset: 40 });
+                if (modules.answers.length === modules.numAnswered) {
+                    modules.showScore();
                 }
             },
             showMarkedAnswer: function (question) {
@@ -294,6 +270,27 @@ define([
                     thisMessage.style.top = 'calc(100% - ' + thisHeight + 'px)';
                     thisMarker.style.top = 'calc(100% - ' + (thisHeight - 7) + 'px)';
                 }
+            },
+            showScore: function () {
+                var i,
+                    scoreDisplayMessage = "";
+                
+                for (i = 0; i < modules.score; i++) {
+                    if (modules.scoreMessages[i]) {
+                        scoreDisplayMessage = modules.scoreMessages[i]; 
+                        break;
+                    }
+                }
+
+                // Add the score & message into resultPanel
+                document.querySelector('.quiz-scores__correct').innerHTML = modules.score.toString();
+                document.querySelector('.quiz-scores__message').innerHTML = scoreDisplayMessage;
+
+                // Add open class to trigger transition
+                document.querySelector('.quiz-scores').classList.add('open');
+
+                // Scroll score panel into view
+                // smoothScroll.animateScroll(null, '#quiz-scores', { speed: 1500, offset: 40 });
             }
         },
         ready = function() {
