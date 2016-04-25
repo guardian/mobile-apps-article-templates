@@ -1,128 +1,94 @@
 /*global window,console,define */
 define([
     'smoothScroll',
-    'modules/ads'
-], function(
+    'modules/ads',
+    'modules/util'
+], function (
     smoothScroll,
-    Ads
+    Ads,
+    util
 ) {
     'use strict';
 
     var modules = {
             init: function (quiz) {
-                modules.answers = document.querySelector('.quiz__correct-answers').innerHTML.split(',');
-                
                 modules.moveMPU = modules.IsAdBelowQuiz(quiz);
-
-                modules.removeAnswers();
-
-                modules.scoreMessages = modules.getScoreMessages();
-
-                modules.buildResultsPanel(quiz);
-
                 modules.setupQuestions();
-
+                modules.removeAnswers();
                 modules.numAnswered = 0;
-
                 modules.score = 0;
-
+                modules.questionCount = 0;
                 quiz.classList.add("loaded");
             },
-            IsAdBelowQuiz: function (quiz) {
-                // Do we have an MPU advert and is it below the quiz?
-                var IsAdBelowQuiz = false,
-                    mpu = document.querySelector('.advert-slot__wrapper'),
-                    mpuOffset,
-                    quizOffset;
 
-                if (mpu) {
-                    mpuOffset = mpu.offsetTop;
-                    quizOffset = quiz.offsetTop;
+            setupQuestions: function () { // DES-60
+                var i,
+                    correctAnswers = modules.getCorrectAnswers(),
+                    question,
+                    questions = document.querySelectorAll('.quiz__question'),
+                    questionObj;
 
-                    if (mpuOffset > quizOffset) {
-                        IsAdBelowQuiz = true;
+                for (i = 0; i < questions.length; i++) {
+                    question = questions[i];
+                    questionObj = {};
+                    questionObj.elem = question;
+                    questionObj.wrapper = modules.wrapQuestion(question);
+                    questionObj.correctAnswer = correctAnswers[i];
+                    modules.setupAnswers(questionObj);
+                    modules.questionCount++;
+                }
+            },
+
+            setupAnswers: function (questionObj) {
+                var i,
+                    answerCode,
+                    answers = questionObj.elem.querySelectorAll('.question__answer');
+
+                for (i = 0; i < answers.length; i++) {
+                    answerCode = String.fromCharCode(65 + i);
+                    
+                    if (answerCode === questionObj.correctAnswer.code) {
+                        answers[i].dataset.correctAnswerExplanation = questionObj.correctAnswer.explanation;
                     }
-                }
 
-                return IsAdBelowQuiz;
+                    modules.styleAnswer(answers[i]);
+
+                    answers[i].addEventListener('click', modules.onAnswerClick.bind(null, answers[i], questionObj.elem, answers[i].querySelector('img')));
+                }                
             },
-            adjustAdPosition: function (yPos, startTime, timeStamp) {
-                var newYPos,
-                    progress;
 
-                if (!startTime) {
-                    startTime = timeStamp;
-                }
+            getCorrectAnswers: function () {
+                var i,
+                    answers = [],
+                    correctAnswers = document.querySelector('.quiz__correct-answers').innerHTML.split(','),
+                    correctAnswerArray,
+                    correctAnswerCode,
+                    correctAnswerExplanation,
+                    correctAnswerObj;
+                
+                for (i = 0; i < correctAnswers.length; i++) {
+                    correctAnswerArray = correctAnswers[i].split(':')[1].split('-');
+                    correctAnswerCode = correctAnswerArray[0].trim().toUpperCase();
+                    correctAnswerExplanation = correctAnswerArray[1];
+                    correctAnswerObj = {
+                        code: correctAnswerCode,
+                        explanation: correctAnswerExplanation 
+                    };
+                    answers.push(correctAnswerObj);
+                } 
 
-                progress = timeStamp - startTime;
-                newYPos = Ads.modules.updateMPUPosition(yPos);
-
-                if (progress < 2000) {
-                    window.animFrame(modules.adjustAdPosition.bind(null, newYPos, startTime));
-                }
+                return answers;
             },
+
             removeAnswers: function () {
-                var answers = document.querySelectorAll('.quiz__correct-answers-title, .quiz__correct-answers'),
-                    i;
+                var i,
+                    answers = document.querySelectorAll('.quiz__correct-answers-title, .quiz__correct-answers');
 
                 for (i = 0; i < answers.length; i++) {
                     answers[i].parentNode.removeChild(answers[i]);
                 }
             },
-            getScoreMessages: function () {
-                var i,
-                    message,
-                    minScore,
-                    scoreElems = document.querySelectorAll('.quiz__scores > li'),
-                    scoreMessages = {};
 
-                for (i = 0; i < scoreElems.length; i++) {
-                    message = scoreElems[i].dataset.title;
-                    minScore = scoreElems[i].dataset.minScore;
-                    scoreMessages[Math.max(minScore, 0)] = message;
-                }
-
-                return scoreMessages;
-            },
-            buildResultsPanel: function (quiz) {
-                var resultPanel = document.createElement("div");
-
-                resultPanel.classList.add("quiz-scores");
-                resultPanel.id = "quiz-scores";
-                resultPanel.innerHTML = '<p class="quiz-scores__score">' +
-                    '<span class="quiz-scores__correct"></span> / <span class="quiz-scores__questions">' +
-                    modules.answers.length + '</span></p><p class="quiz-scores__message"></p>';
-
-                quiz.appendChild(resultPanel);
-            },
-            setupQuestions: function () {
-                var i,
-                    j,
-                    k,
-                    question,
-                    questionImages,
-                    questions = document.querySelectorAll('.quiz__question'),
-                    questionText,
-                    questionWrapper;
-
-                for (i = 0; i < questions.length; i++) {
-                    question = questions[i];
-                    questionWrapper = modules.wrapQuestion(question);
-                    questionImages = question.querySelectorAll(':scope > img');
-
-                    for (j = 0; j < questionImages.length; j++) {
-                        modules.adjustQuestionImage(question, questionWrapper, questionImages[j]);
-                    }
-
-                    questionText = question.querySelectorAll('.question__text');
-
-                    for (k = 0; k < questionText.length; k++) {
-                        modules.adjustQuestionText(questionWrapper, questionText[k]);
-                    }
-
-                    modules.adjustAnswers(question, i);
-                }
-            },
             wrapQuestion: function (question) {
                 var questionWrapper = document.createElement('div'),
                     questionAnswerList = question.querySelectorAll('.question__answers');
@@ -133,27 +99,8 @@ define([
 
                 return questionWrapper;
             },
-            adjustQuestionImage: function (question, questionWrapper, image) {
-                if (image.getAttribute('src') !== '') {
-                    question.classList.add('has-image');
-                    image.classList.add('question__img');
-                    questionWrapper.appendChild(image);
-                } else {
-                    image.parentNode.removeChild(image);
-                }
-            },
-            adjustQuestionText: function (questionWrapper, questionText) {
-                questionWrapper.appendChild(questionText);
-            },
-            adjustAnswers: function (question, index) {
-                var i,
-                    questionAnswers = question.querySelectorAll('.question__answer');
 
-                for (i = 0; i < questionAnswers.length; i++) {
-                    modules.styleAnswer(questionAnswers[i], i, question, index);
-                }
-            },
-            styleAnswer: function (answer, answerIndex, question, questionIndex) {
+            styleAnswer: function (answer) {
                 var answerImages = answer.querySelectorAll(':scope > img'),
                     answerMarker = document.createElement('div'),
                     answerMessage = document.createElement('div'),
@@ -178,15 +125,13 @@ define([
                 for (i = 0; i < answerImages.length; i++) {
                     modules.adjustAnswerImage(answer, answerWrapper, answerImages[i]);
                 }
-                
+
                 // Does this answer have text
                 for (j = 0; j < answerText.length; j++) {
                     modules.adjustAnswerText(answerMessage, answerText[j]);
                 }
-
-                // Set up an onclick to handle when a user selects this answer
-                answer.addEventListener('click', modules.onAnswerClick.bind(null, answer, answerIndex, question, questionIndex, answerMessage, answerImages));
             },
+
             adjustAnswerImage: function (answer, answerWrapper, image) {
                 if (image.getAttribute('src') !== '') {
                     answer.classList.add('has-image');
@@ -196,19 +141,48 @@ define([
                     image.parentNode.removeChild(image);
                 }
             },
+
             adjustAnswerText: function (answerMessage, answerText) {
                 answerMessage.appendChild(answerText);
             },
-            onAnswerClick: function (answer, answerIndex, question, questionIndex, answerMessage, answerImages) {
+
+            IsAdBelowQuiz: function (quiz) {
+                var IsAdBelowQuiz = false,
+                    mpu = document.querySelector('.advert-slot__wrapper'),
+                    mpuOffset,
+                    quizOffset;
+
+                if (mpu) {
+                    mpuOffset = mpu.offsetTop;
+                    quizOffset = quiz.offsetTop;
+
+                    if (mpuOffset > quizOffset) {
+                        IsAdBelowQuiz = true;
+                    }
+                }
+
+                return IsAdBelowQuiz;
+            },
+
+            adjustAdPosition: function (yPos, startTime, timeStamp) {
+                var newYPos,
+                    progress;
+
+                if (!startTime) {
+                    startTime = timeStamp;
+                }
+
+                progress = timeStamp - startTime;
+                newYPos = Ads.modules.updateMPUPosition(yPos);
+
+                if (progress < 2000) {
+                    window.animFrame(modules.adjustAdPosition.bind(null, newYPos, startTime));
+                }
+            },
+
+            onAnswerClick: function (answer, question, isImage) {
                 var answerPara,
-                    correctAnswer,
                     correctAnswerWrapper,
-                    correctAnswerArray = modules.answers[questionIndex].split(':')[1].split('-'),
-                    correctAnswerCode = correctAnswerArray[0].trim().toUpperCase(),
-                    correctAnswerExplanation = correctAnswerArray[1],
-                    i,
-                    markedAnswers,
-                    thisAnswer = String.fromCharCode(65 + answerIndex),
                     startTime = null,
                     yPos = null;
 
@@ -216,23 +190,21 @@ define([
                     return;
                 }
 
-                if (thisAnswer === correctAnswerCode) {
-                    correctAnswer = answer;
-                    correctAnswerWrapper = answerMessage;
-                    correctAnswer.classList.add('correct-answer');
-
-                    if (correctAnswerExplanation) {
-                        answerPara = document.createElement("p");
-                        answerPara.classList.add("answer__explanation");
-                        answerPara.innerHTML =  correctAnswerExplanation.trim();
-                        correctAnswerWrapper.appendChild(answerPara);
-                    }
-
+                if (answer.dataset.correctAnswerExplanation) {
+                    answer.classList.add('correct-answer');
                     question.classList.add('is-correct');
-                    modules.score ++;
+                    
+                    answerPara = document.createElement("p");
+                    answerPara.classList.add("answer__explanation");
+                    answerPara.innerHTML = answer.dataset.correctAnswerExplanation.trim();
+
+                    correctAnswerWrapper = answer.querySelector('.answer__message');
+                    correctAnswerWrapper.appendChild(answerPara);
+                    
+                    modules.score++;
                 } else {
-                    question.classList.add('is-wrong');
                     answer.classList.add('wrong-answer');
+                    question.classList.add('is-wrong');
                 }
 
                 question.classList.add('answered');
@@ -242,17 +214,18 @@ define([
                 if (modules.moveMPU) {
                     window.animFrame(modules.adjustAdPosition.bind(null, yPos, startTime));
                 }
-                
+
                 // When we have an image answer we need to move the positioning of the explanation and marker 
-                if (answerImages.length) {
+                if (isImage) {
                     modules.showMarkedAnswer(question);
                 }
 
                 // If all questions have been answered display the score
-                if (modules.answers.length === modules.numAnswered) {
+                if (modules.questionCount === modules.numAnswered) {
                     modules.showScore();
                 }
             },
+
             showMarkedAnswer: function (question) {
                 var i,
                     markedAnswer,
@@ -271,29 +244,28 @@ define([
                     thisMarker.style.top = 'calc(100% - ' + (thisHeight - 7) + 'px)';
                 }
             },
+
             showScore: function () {
                 var i,
                     scoreDisplayMessage = "";
-                
+
                 for (i = 0; i < modules.score; i++) {
                     if (modules.scoreMessages[i]) {
-                        scoreDisplayMessage = modules.scoreMessages[i]; 
+                        scoreDisplayMessage = modules.scoreMessages[i];
                         break;
                     }
                 }
 
-                // Add the score & message into resultPanel
                 document.querySelector('.quiz-scores__correct').innerHTML = modules.score.toString();
                 document.querySelector('.quiz-scores__message').innerHTML = scoreDisplayMessage;
-
-                // Add open class to trigger transition
                 document.querySelector('.quiz-scores').classList.add('open');
 
                 // Scroll score panel into view
-                // smoothScroll.animateScroll(null, '#quiz-scores', { speed: 1500, offset: 40 });
+                smoothScroll.animateScroll(null, '#quiz-scores', { speed: 1500, offset: 40 });
             }
         },
-        ready = function() {
+
+        ready = function () {
             var quiz;
 
             if (!this.initialised) {
