@@ -87,10 +87,12 @@ define([
                     quizBuckets = {};
 
                 for (i = 0; i < buckets.length; i++) {
-                    bucketCode = parseInt(buckets[i].dataset.title, 10);
-                    bucketCode = String.fromCharCode(65 + bucketCode - 1);
+                    // console.log(String.fromCharCode(65 + i));
+                    // bucketCode = parseInt(buckets[i].dataset.title, 10);
+                    bucketCode = String.fromCharCode(65 + i);
                     quizBuckets[bucketCode] = {
                         count: 0,
+                        title: buckets[i].dataset.title,
                         description: buckets[i].dataset.description
                     };
                 }
@@ -336,8 +338,17 @@ define([
             },
 
             onPersonalityAnswerClick: function (answer, question) {
+                var hightedAnswer;
+
                 if (question.classList.contains('answered')) {
-                    return;
+                    if (answer.classList.contains('highlight-answer')) {
+                        return;    
+                    } else {
+                        hightedAnswer = question.querySelector('.highlight-answer');
+                        hightedAnswer.classList.remove('highlight-answer');
+                        modules.quizBuckets[hightedAnswer.dataset.buckets].count--;
+                        modules.numAnswered--;
+                    }
                 }
 
                 if (modules.quizBuckets[answer.dataset.buckets]) {
@@ -407,7 +418,7 @@ define([
                             result = bucket;
                         }
                         resultMessage = result.description;
-                        resultLabel = key;
+                        resultLabel = result.title;
                     }
                 }
 
