@@ -12,16 +12,30 @@ define([
 
     var modules = {
             init: function (quiz) {
-                modules.moveMPU = modules.IsAdBelowQuiz(quiz);
-                modules.setupQuestions();
-                modules.removeAnswers();
                 modules.numAnswered = 0;
-                modules.score = 0;
                 modules.questionCount = 0;
+                modules.isPersonalityQuiz = document.querySelector('.quiz__buckets');
+                modules.moveMPU = modules.IsAdBelowQuiz(quiz);
+                
+                if (modules.isPersonalityQuiz) {
+                    quiz.classList.add('personality-quiz');
+                    modules.setupPersonalityQuizBuckets();
+                    modules.setupPersonalityQuizQuestions();
+                    modules.removePersonalityQuizAnswers();
+                    modules.buildResultsPanel(quiz);
+                } else {
+                    quiz.classList.add('news-quiz');
+                    modules.score = 0;
+                    modules.scoreMessages = modules.getScoreMessages();
+                    modules.setupNewsQuizQuestions();
+                    modules.removeNewsQuizAnswers();
+                    modules.buildScoresPanel(quiz);
+                }
+            
                 quiz.classList.add("loaded");
             },
 
-            setupQuestions: function () { // DES-60
+            setupNewsQuizQuestions: function () {
                 var i,
                     correctAnswers = modules.getCorrectAnswers(),
                     question,
@@ -34,12 +48,12 @@ define([
                     questionObj.elem = question;
                     questionObj.wrapper = modules.wrapQuestion(question);
                     questionObj.correctAnswer = correctAnswers[i];
-                    modules.setupAnswers(questionObj);
+                    modules.setupNewsQuizAnswers(questionObj);
                     modules.questionCount++;
                 }
             },
 
-            setupAnswers: function (questionObj) {
+            setupNewsQuizAnswers: function (questionObj) {
                 var i,
                     answerCode,
                     answers = questionObj.elem.querySelectorAll('.question__answer');
@@ -53,8 +67,71 @@ define([
 
                     modules.styleAnswer(answers[i]);
 
-                    answers[i].addEventListener('click', modules.onAnswerClick.bind(null, answers[i], questionObj.elem, answers[i].querySelector('img')));
+                    answers[i].addEventListener('click', modules.onNewsAnswerClick.bind(null, answers[i], questionObj.elem, answers[i].querySelector('img')));
                 }                
+            },
+
+            removeNewsQuizAnswers: function () {
+                var i,
+                    answers = document.querySelectorAll('.quiz__correct-answers-title, .quiz__correct-answers');
+
+                for (i = 0; i < answers.length; i++) {
+                    answers[i].parentNode.removeChild(answers[i]);
+                }
+            },
+
+            setupPersonalityQuizBuckets: function () {
+                var i,
+                    bucketCode,
+                    buckets = document.querySelectorAll('.quiz__bucket'),
+                    quizBuckets = {};
+
+                for (i = 0; i < buckets.length; i++) {
+                    bucketCode = parseInt(buckets[i].dataset.title, 10);
+                    bucketCode = String.fromCharCode(65 + bucketCode - 1);
+                    quizBuckets[bucketCode] = {
+                        count: 0,
+                        description: buckets[i].dataset.description
+                    };
+                }
+
+                modules.quizBuckets = quizBuckets;
+            },
+
+            setupPersonalityQuizQuestions: function () {
+                var i,
+                    question,
+                    questions = document.querySelectorAll('.quiz__question'),
+                    questionObj;
+
+                for (i = 0; i < questions.length; i++) {
+                    question = questions[i];
+                    questionObj = {};
+                    questionObj.elem = question;
+                    questionObj.wrapper = modules.wrapQuestion(question);
+                    modules.setupPersonalityQuizAnswers(questionObj);
+                    modules.questionCount++;
+                }
+            },
+
+            setupPersonalityQuizAnswers: function (questionObj) {
+                var i,
+                    answers = questionObj.elem.querySelectorAll('.question__answer');
+
+                for (i = 0; i < answers.length; i++) {
+                    modules.styleAnswer(answers[i]);
+
+                    answers[i].addEventListener('click', modules.onPersonalityAnswerClick.bind(null, answers[i], questionObj.elem));
+                }                
+            },
+
+            removePersonalityQuizAnswers: function () {
+                var i,
+                    answers = document.querySelectorAll('.quiz__buckets-title, .quiz__buckets');
+
+                for (i = 0; i < answers.length; i++) {
+                    answers[i].parentNode.removeChild(answers[i]);
+                }
             },
 
             getCorrectAnswers: function () {
@@ -80,13 +157,42 @@ define([
                 return answers;
             },
 
-            removeAnswers: function () {
+            getScoreMessages: function () {
                 var i,
-                    answers = document.querySelectorAll('.quiz__correct-answers-title, .quiz__correct-answers');
+                    message,
+                    minScore,
+                    scoreElems = document.querySelectorAll('.quiz__scores > li'),
+                    scoreMessages = {};
 
-                for (i = 0; i < answers.length; i++) {
-                    answers[i].parentNode.removeChild(answers[i]);
+                for (i = 0; i < scoreElems.length; i++) {
+                    message = scoreElems[i].dataset.title;
+                    minScore = scoreElems[i].dataset.minScore;
+                    scoreMessages[Math.max(minScore, 0)] = message;
                 }
+
+                return scoreMessages;
+            },
+
+            buildScoresPanel: function (quiz) {
+                var scoresPanel = document.createElement("div");
+
+                scoresPanel.classList.add("quiz-scores");
+                scoresPanel.id = "quiz-scores";
+                scoresPanel.innerHTML = '<p class="quiz-scores__score">' +
+                    '<span class="quiz-scores__correct"></span> / <span class="quiz-scores__questions">' +
+                    modules.questionCount + '</span></p><p class="quiz-scores__message"></p>';
+
+                quiz.appendChild(scoresPanel);
+            },
+
+            buildResultsPanel: function (quiz) {
+                var resultPanel = document.createElement("div");
+
+                resultPanel.classList.add("quiz-results");
+                resultPanel.id = "quiz-results";
+                resultPanel.innerHTML = '<p class="quiz-results__result"><span class="quiz-results__label"></span></p><p class="quiz-results__message"></p>';
+
+                quiz.appendChild(resultPanel);
             },
 
             wrapQuestion: function (question) {
@@ -119,6 +225,9 @@ define([
 
                 // Add a marker icon span
                 answerMarker.classList.add('answer__marker');
+                if (modules.isPersonalityQuiz) {
+                   answerMarker.innerHTML = '<div class="answer__marker__inner"></div>'; 
+                }
                 answerWrapper.appendChild(answerMarker);
 
                 // Does this answer have an image (if tools stripped out empty image tags some of this would be unnecessary)
@@ -180,7 +289,7 @@ define([
                 }
             },
 
-            onAnswerClick: function (answer, question, isImage) {
+            onNewsAnswerClick: function (answer, question, isImage) {
                 var answerPara,
                     correctAnswerWrapper,
                     startTime = null,
@@ -226,6 +335,24 @@ define([
                 }
             },
 
+            onPersonalityAnswerClick: function (answer, question) {
+                if (question.classList.contains('answered')) {
+                    return;
+                }
+
+                if (modules.quizBuckets[answer.dataset.buckets]) {
+                    question.classList.add('answered');
+                    answer.classList.add('highlight-answer');
+                    modules.numAnswered++;
+                    modules.quizBuckets[answer.dataset.buckets].count++;
+
+                    // If all questions have been answered display the score
+                    if (modules.questionCount === modules.numAnswered) {
+                        modules.showResult();
+                    }
+                }
+            },
+
             showMarkedAnswer: function (question) {
                 var i,
                     markedAnswer,
@@ -259,6 +386,34 @@ define([
                 document.querySelector('.quiz-scores__correct').innerHTML = modules.score.toString();
                 document.querySelector('.quiz-scores__message').innerHTML = scoreDisplayMessage;
                 document.querySelector('.quiz-scores').classList.add('open');
+
+                // Scroll score panel into view
+                smoothScroll.animateScroll(null, '#quiz-scores', { speed: 1500, offset: 40 });
+            },
+
+            showResult: function () {
+                var key,
+                    bucket,
+                    result,
+                    resultLabel,
+                    resultMessage;
+
+                for (key in modules.quizBuckets) {
+                    if (modules.quizBuckets.hasOwnProperty(key)) {
+                        bucket = modules.quizBuckets[key];
+                        if (!result) {
+                            result = bucket;
+                        } else if (bucket.count > result.count) {
+                            result = bucket;
+                        }
+                        resultMessage = result.description;
+                        resultLabel = key;
+                    }
+                }
+
+                document.querySelector('.quiz-results__message').innerHTML = resultMessage;
+                document.querySelector('.quiz-results__label').innerHTML = resultLabel;
+                document.querySelector('.quiz-results').classList.add('open');
 
                 // Scroll score panel into view
                 smoothScroll.animateScroll(null, '#quiz-scores', { speed: 1500, offset: 40 });
