@@ -1,12 +1,10 @@
 /*global window,console,define */
 define([
     'smoothScroll',
-    'modules/ads',
-    'modules/util'
+    'modules/ads'
 ], function (
     smoothScroll,
-    Ads,
-    util
+    Ads
 ) {
     'use strict';
 
@@ -63,6 +61,7 @@ define([
                     
                     if (answerCode === questionObj.correctAnswer.code) {
                         answers[i].dataset.correctAnswerExplanation = questionObj.correctAnswer.explanation;
+                        answers[i].dataset.correct = "true";
                     }
 
                     modules.styleAnswer(answers[i]);
@@ -191,12 +190,25 @@ define([
             },
 
             wrapQuestion: function (question) {
-                var questionWrapper = document.createElement('div'),
-                    questionAnswerList = question.querySelectorAll('.question__answers');
+                var i,
+                    questionWrapper = document.createElement('div'),
+                    questionAnswerList = question.querySelectorAll('.question__answers'),
+                    questionImages = question.querySelectorAll(':scope > img'),
+                    questionText = question.querySelectorAll('.question__text');
 
                 questionWrapper.classList.add('question__wrapper');
 
                 question.insertBefore(questionWrapper, questionAnswerList[0]);
+
+                // Does this answer have an image
+                for (i = 0; i < questionImages.length; i++) {
+                    modules.adjustImage(question, questionWrapper, questionImages[i], true);
+                }
+
+                // Does this question have text
+                for (i = 0; i < questionText.length; i++) {
+                    modules.adjustText(questionWrapper, questionText[i]);
+                }
 
                 return questionWrapper;
             },
@@ -207,8 +219,7 @@ define([
                     answerMessage = document.createElement('div'),
                     answerWrapper = document.createElement('div'),
                     answerText = answer.querySelectorAll('.answer__text'),
-                    i,
-                    j;
+                    i;
 
                 // Wrap answer in a div for styling
                 answerWrapper.classList.add('answer__wrapper');
@@ -225,29 +236,33 @@ define([
                 }
                 answerWrapper.appendChild(answerMarker);
 
-                // Does this answer have an image (if tools stripped out empty image tags some of this would be unnecessary)
+                // Does this answer have an image
                 for (i = 0; i < answerImages.length; i++) {
-                    modules.adjustAnswerImage(answer, answerWrapper, answerImages[i]);
+                    modules.adjustImage(answer, answerWrapper, answerImages[i], false);
                 }
 
                 // Does this answer have text
-                for (j = 0; j < answerText.length; j++) {
-                    modules.adjustAnswerText(answerMessage, answerText[j]);
+                for (i = 0; i < answerText.length; i++) {
+                    modules.adjustText(answerMessage, answerText[i]);
                 }
             },
 
-            adjustAnswerImage: function (answer, answerWrapper, image) {
+            adjustImage: function (parent, wrapper, image, isQuestion) {
                 if (image.getAttribute('src') !== '') {
-                    answer.classList.add('has-image');
-                    answer.classList.add('answer__img');
-                    answerWrapper.appendChild(image);
+                    parent.classList.add('has-image');
+                    if (isQuestion) {
+                        wrapper.parentNode.classList.add('question__img');
+                    } else {
+                        parent.classList.add('answer__img');
+                    }
+                    wrapper.appendChild(image);
                 } else {
                     image.parentNode.removeChild(image);
                 }
             },
 
-            adjustAnswerText: function (answerMessage, answerText) {
-                answerMessage.appendChild(answerText);
+            adjustText: function (parent, text) {
+                parent.appendChild(text);
             },
 
             IsAdBelowQuiz: function (quiz) {
@@ -295,20 +310,22 @@ define([
                 }
 
                 if (answer.dataset.correct === "true") {
-                    answer.classList.add('correct-answer');
-                    question.classList.add('is-correct');
-                    
-                    answerPara = document.createElement("p");
-                    answerPara.classList.add("answer__explanation");
-                    answerPara.innerHTML = answer.dataset.correctAnswerExplanation.trim();
-
-                    correctAnswerWrapper = answer.querySelector('.answer__message');
-                    correctAnswerWrapper.appendChild(answerPara);
-                    
+                    question.classList.add('is-correct');                    
                     modules.score++;
                 } else {
                     answer.classList.add('wrong-answer');
                     question.classList.add('is-wrong');
+                    answer = question.querySelector('[data-correct="true"]');
+                }
+
+                answer.classList.add('correct-answer');
+
+                if (answer.dataset.correctAnswerExplanation) {
+                    answerPara = document.createElement("p");
+                    answerPara.classList.add("answer__explanation");
+                    answerPara.innerHTML = answer.dataset.correctAnswerExplanation.trim();
+                    correctAnswerWrapper = answer.querySelector('.answer__message');
+                    correctAnswerWrapper.appendChild(answerPara);
                 }
 
                 question.classList.add('answered');
