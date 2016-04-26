@@ -87,8 +87,6 @@ define([
                     quizBuckets = {};
 
                 for (i = 0; i < buckets.length; i++) {
-                    // console.log(String.fromCharCode(65 + i));
-                    // bucketCode = parseInt(buckets[i].dataset.title, 10);
                     bucketCode = String.fromCharCode(65 + i);
                     quizBuckets[bucketCode] = {
                         count: 0,
@@ -141,18 +139,13 @@ define([
                     answers = [],
                     correctAnswers = document.querySelector('.quiz__correct-answers').innerHTML.split(','),
                     correctAnswerArray,
-                    correctAnswerCode,
-                    correctAnswerExplanation,
                     correctAnswerObj;
                 
                 for (i = 0; i < correctAnswers.length; i++) {
+                    correctAnswerObj = {};
                     correctAnswerArray = correctAnswers[i].split(':')[1].split('-');
-                    correctAnswerCode = correctAnswerArray[0].trim().toUpperCase();
-                    correctAnswerExplanation = correctAnswerArray[1];
-                    correctAnswerObj = {
-                        code: correctAnswerCode,
-                        explanation: correctAnswerExplanation 
-                    };
+                    correctAnswerObj.code = correctAnswerArray[0].trim().toUpperCase();
+                    correctAnswerObj.explanation = correctAnswerArray[1] || "";
                     answers.push(correctAnswerObj);
                 } 
 
@@ -192,7 +185,7 @@ define([
 
                 resultPanel.classList.add("quiz-results");
                 resultPanel.id = "quiz-results";
-                resultPanel.innerHTML = '<p class="quiz-results__result"><span class="quiz-results__label"></span></p><p class="quiz-results__message"></p>';
+                resultPanel.innerHTML = '<h1 class="quiz-results__title"></h1><p class="quiz-results__description"></p>';
 
                 quiz.appendChild(resultPanel);
             },
@@ -301,7 +294,7 @@ define([
                     return;
                 }
 
-                if (answer.dataset.correctAnswerExplanation) {
+                if (answer.dataset.correct === "true") {
                     answer.classList.add('correct-answer');
                     question.classList.add('is-correct');
                     
@@ -341,7 +334,8 @@ define([
                 var hightedAnswer;
 
                 if (question.classList.contains('answered')) {
-                    if (answer.classList.contains('highlight-answer')) {
+                    if (answer.classList.contains('highlight-answer') ||
+                        modules.questionCount === modules.numAnswered) {
                         return;    
                     } else {
                         hightedAnswer = question.querySelector('.highlight-answer');
@@ -406,24 +400,22 @@ define([
                 var key,
                     bucket,
                     result,
-                    resultLabel,
-                    resultMessage;
+                    resultTitle,
+                    resultDescription;
 
                 for (key in modules.quizBuckets) {
                     if (modules.quizBuckets.hasOwnProperty(key)) {
                         bucket = modules.quizBuckets[key];
-                        if (!result) {
+                        if (!result || (bucket.count > result.count)) {
                             result = bucket;
-                        } else if (bucket.count > result.count) {
-                            result = bucket;
+                            resultDescription = result.description;
+                            resultTitle = result.title;
                         }
-                        resultMessage = result.description;
-                        resultLabel = result.title;
                     }
                 }
 
-                document.querySelector('.quiz-results__message').innerHTML = resultMessage;
-                document.querySelector('.quiz-results__label').innerHTML = resultLabel;
+                document.querySelector('.quiz-results__description').innerHTML = resultDescription;
+                document.querySelector('.quiz-results__title').innerHTML = resultTitle;
                 document.querySelector('.quiz-results').classList.add('open');
 
                 // Scroll score panel into view
