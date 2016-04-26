@@ -4466,13 +4466,13 @@ Display a team line-up including substitutions and bookings.
   .element-atom .quiz .quiz-results .quiz-results__title {
     color: #4bc6df;
     font: 100 50px/55px "Guardian Egyptian Web", Georgia, serif; }
-  .element-atom .quiz.personality-quiz .question__answer .answer__text {
+  .element-atom .quiz.personality-quiz .question__answer:not(.has-image) .answer__text {
     color: #333; }
-  .element-atom .quiz.personality-quiz .question__answer .answer__marker {
+  .element-atom .quiz.personality-quiz .question__answer:not(.has-image) .answer__marker {
     border: 1px solid #333; }
-    .element-atom .quiz.personality-quiz .question__answer .answer__marker::before {
+    .element-atom .quiz.personality-quiz .question__answer:not(.has-image) .answer__marker::before {
       content: ''; }
-    .element-atom .quiz.personality-quiz .question__answer .answer__marker .answer__marker__inner {
+    .element-atom .quiz.personality-quiz .question__answer:not(.has-image) .answer__marker .answer__marker__inner {
       opacity: 0;
       background: #333;
       border-radius: 50%;
@@ -4480,10 +4480,17 @@ Display a team line-up including substitutions and bookings.
       margin: 4px;
       width: 20px;
       z-index: 1; }
-  .element-atom .quiz.personality-quiz .question__answer.highlight-answer .answer__wrapper {
+  .element-atom .quiz.personality-quiz .question__answer:not(.has-image).highlight-answer .answer__wrapper {
     background: #ff9b0b; }
-  .element-atom .quiz.personality-quiz .question__answer.highlight-answer .answer__marker__inner {
+  .element-atom .quiz.personality-quiz .question__answer:not(.has-image).highlight-answer .answer__marker__inner {
     opacity: 1; }
+  .element-atom .quiz.personality-quiz .question__answer.has-image {
+    background: #f6f6f6;
+    padding: 10px; }
+    .element-atom .quiz.personality-quiz .question__answer.has-image.highlight-answer {
+      background: #ff9b0b; }
+    .element-atom .quiz.personality-quiz .question__answer.has-image .answer__marker {
+      display: none; }
 
 /*doc
 ---

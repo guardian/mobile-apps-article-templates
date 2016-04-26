@@ -253,7 +253,7 @@ define([
                     if (isQuestion) {
                         wrapper.parentNode.classList.add('question__img');
                     } else {
-                        parent.classList.add('answer__img');
+                        image.classList.add('answer__img');
                     }
                     wrapper.appendChild(image);
                 } else {
