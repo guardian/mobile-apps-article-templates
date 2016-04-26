@@ -410,7 +410,7 @@ define([
                 document.querySelector('.quiz-scores').classList.add('open');
 
                 // Scroll score panel into view
-                smoothScroll.animateScroll(null, '#quiz-scores', { speed: 1500, offset: 40 });
+                smoothScroll.animateScroll('#quiz-scores', null, {speed: 1500, offset: 40});
             },
 
             showResult: function () {
@@ -435,8 +435,8 @@ define([
                 document.querySelector('.quiz-results__title').innerHTML = resultTitle;
                 document.querySelector('.quiz-results').classList.add('open');
 
-                // Scroll score panel into view
-                smoothScroll.animateScroll(null, '#quiz-scores', { speed: 1500, offset: 40 });
+                // Scroll result panel into view
+                smoothScroll.animateScroll('#quiz-results', null, {speed: 1500, offset: 40});
             }
         },
 
