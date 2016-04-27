@@ -10584,6 +10584,8 @@
       padding: 5px 6px 18px 60px;
       position: relative;
       width: 100%; }
+    #sandbox .element-atom .quiz .answer__buckets {
+      display: none; }
     #sandbox .element-atom .quiz .answer__text,
     #sandbox .element-atom .quiz .answer__message::before {
       color: #767676;
@@ -10705,6 +10707,7 @@
     #sandbox .element-atom .quiz .quiz__scores,
     #sandbox .element-atom .quiz .quiz__scores-title {
       display: none; }
+    #sandbox .element-atom .quiz .quiz-results,
     #sandbox .element-atom .quiz .quiz-scores {
       background: transparent;
       border-top: 2px solid #4bc6df;
@@ -10714,10 +10717,20 @@
       opacity: 0;
       padding: 0;
       transition: all 1s ease-in-out; }
+      #sandbox .element-atom .quiz .quiz-results.open,
       #sandbox .element-atom .quiz .quiz-scores.open {
         opacity: 1;
         margin-top: 30px;
         max-height: 350px; }
+    #sandbox .element-atom .quiz .quiz-scores {
+      background: transparent;
+      border-top: 2px solid #4bc6df;
+      margin: 0;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      padding: 0;
+      transition: all 1s ease-in-out; }
       #sandbox .element-atom .quiz .quiz-scores .quiz-scores__inner {
         overflow: hidden; }
       #sandbox .element-atom .quiz .quiz-scores .quiz-scores__img {
@@ -10752,6 +10765,37 @@
         color: #005689;
         font: 600 18px/1.2 "Guardian Egyptian Web", Georgia, serif;
         margin-top: 60px; }
+    #sandbox .element-atom .quiz .quiz-results .quiz-results__description {
+      color: #005689;
+      font: 600 18px/1.2 "Guardian Egyptian Web", Georgia, serif; }
+    #sandbox .element-atom .quiz .quiz-results .quiz-results__title {
+      color: #4bc6df;
+      font: 100 50px/55px "Guardian Egyptian Web", Georgia, serif; }
+    #sandbox .element-atom .quiz.personality-quiz .question__answer:not(.has-image) .answer__text {
+      color: #333; }
+    #sandbox .element-atom .quiz.personality-quiz .question__answer:not(.has-image) .answer__marker {
+      border: 1px solid #333; }
+      #sandbox .element-atom .quiz.personality-quiz .question__answer:not(.has-image) .answer__marker::before {
+        content: ''; }
+    #sandbox .element-atom .quiz.personality-quiz .question__answer:not(.has-image) .answer__marker__inner {
+      opacity: 0;
+      background: #333;
+      border-radius: 50%;
+      height: 20px;
+      margin: 4px;
+      width: 20px;
+      z-index: 1; }
+    #sandbox .element-atom .quiz.personality-quiz .question__answer:not(.has-image).highlight-answer .answer__wrapper {
+      background: #ff9b0b; }
+    #sandbox .element-atom .quiz.personality-quiz .question__answer:not(.has-image).highlight-answer .answer__marker__inner {
+      opacity: 1; }
+    #sandbox .element-atom .quiz.personality-quiz .question__answer.has-image {
+      background: #f6f6f6;
+      padding: 10px; }
+      #sandbox .element-atom .quiz.personality-quiz .question__answer.has-image.highlight-answer {
+        background: #ff9b0b; }
+      #sandbox .element-atom .quiz.personality-quiz .question__answer.has-image .answer__marker {
+        display: none; }
   #sandbox .element-witness {
     font-family: "Guardian Agate Sans 1 Web", sans-serif; }
     @media all and (max-width: 40.62em) {
