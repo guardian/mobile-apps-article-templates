@@ -44,7 +44,7 @@ define([
                     question = questions[i];
                     questionObj = {};
                     questionObj.elem = question;
-                    questionObj.wrapper = modules.wrapQuestion(question);
+                    modules.wrapQuestion(question);
                     questionObj.correctAnswer = correctAnswers[i];
                     modules.setupNewsQuizAnswers(questionObj);
                     modules.questionCount++;
@@ -107,7 +107,7 @@ define([
                     question = questions[i];
                     questionObj = {};
                     questionObj.elem = question;
-                    questionObj.wrapper = modules.wrapQuestion(question);
+                    modules.wrapQuestion(question);
                     modules.setupPersonalityQuizAnswers(questionObj);
                     modules.questionCount++;
                 }
@@ -209,8 +209,6 @@ define([
                 for (i = 0; i < questionText.length; i++) {
                     modules.adjustText(questionWrapper, questionText[i]);
                 }
-
-                return questionWrapper;
             },
 
             styleAnswer: function (answer) {
