@@ -69,6 +69,10 @@ define(function () {
             }
 
             return elem;
+        },
+
+        getStringFromUnicodeVal: function (unicodeVal) {
+            return String.fromCharCode(unicodeVal);
         }
 	};
 

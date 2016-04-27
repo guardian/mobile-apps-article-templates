@@ -1,10 +1,12 @@
 /*global window,console,define */
 define([
     'smoothScroll',
-    'modules/ads'
+    'modules/ads',
+    'modules/util'
 ], function (
     smoothScroll,
-    Ads
+    Ads,
+    util
 ) {
     'use strict';
 
@@ -30,7 +32,7 @@ define([
                     modules.buildScoresPanel(quiz);
                 }
             
-                quiz.classList.add("loaded");
+                quiz.classList.add('loaded');
             },
 
             setupNewsQuizQuestions: function () {
@@ -57,11 +59,10 @@ define([
                     answers = questionObj.elem.querySelectorAll('.question__answer');
 
                 for (i = 0; i < answers.length; i++) {
-                    answerCode = String.fromCharCode(65 + i);
-                    
+                    answerCode = util.getStringFromUnicodeVal(65 + i);
                     if (answerCode === questionObj.correctAnswer.code) {
                         answers[i].dataset.correctAnswerExplanation = questionObj.correctAnswer.explanation;
-                        answers[i].dataset.correct = "true";
+                        answers[i].dataset.correct = 'true';
                     }
 
                     modules.styleAnswer(answers[i]);
@@ -86,7 +87,7 @@ define([
                     quizBuckets = {};
 
                 for (i = 0; i < buckets.length; i++) {
-                    bucketCode = String.fromCharCode(65 + i);
+                    bucketCode = util.getStringFromUnicodeVal(65 + i);
                     quizBuckets[bucketCode] = {
                         count: 0,
                         title: buckets[i].dataset.title,
@@ -144,7 +145,7 @@ define([
                     correctAnswerObj = {};
                     correctAnswerArray = correctAnswers[i].split(':')[1].split('-');
                     correctAnswerObj.code = correctAnswerArray[0].trim().toUpperCase();
-                    correctAnswerObj.explanation = correctAnswerArray[1] || "";
+                    correctAnswerObj.explanation = correctAnswerArray[1] || '';
                     answers.push(correctAnswerObj);
                 } 
 
@@ -168,10 +169,10 @@ define([
             },
 
             buildScoresPanel: function (quiz) {
-                var scoresPanel = document.createElement("div");
+                var scoresPanel = document.createElement('div');
 
-                scoresPanel.classList.add("quiz-scores");
-                scoresPanel.id = "quiz-scores";
+                scoresPanel.classList.add('quiz-scores');
+                scoresPanel.id = 'quiz-scores';
                 scoresPanel.innerHTML = '<p class="quiz-scores__score">' +
                     '<span class="quiz-scores__correct"></span> / <span class="quiz-scores__questions">' +
                     modules.questionCount + '</span></p><p class="quiz-scores__message"></p>';
@@ -180,10 +181,10 @@ define([
             },
 
             buildResultsPanel: function (quiz) {
-                var resultPanel = document.createElement("div");
+                var resultPanel = document.createElement('div');
 
-                resultPanel.classList.add("quiz-results");
-                resultPanel.id = "quiz-results";
+                resultPanel.classList.add('quiz-results');
+                resultPanel.id = 'quiz-results';
                 resultPanel.innerHTML = '<h1 class="quiz-results__title"></h1><p class="quiz-results__description"></p>';
 
                 quiz.appendChild(resultPanel);
@@ -307,7 +308,7 @@ define([
                     return;
                 }
 
-                if (answer.dataset.correct === "true") {
+                if (answer.dataset.correct === 'true') {
                     question.classList.add('is-correct');                    
                     modules.score++;
                 } else {
@@ -319,8 +320,8 @@ define([
                 answer.classList.add('correct-answer');
 
                 if (answer.dataset.correctAnswerExplanation) {
-                    answerPara = document.createElement("p");
-                    answerPara.classList.add("answer__explanation");
+                    answerPara = document.createElement('p');
+                    answerPara.classList.add('answer__explanation');
                     answerPara.innerHTML = answer.dataset.correctAnswerExplanation.trim();
                     correctAnswerWrapper = answer.querySelector('.answer__message');
                     correctAnswerWrapper.appendChild(answerPara);
@@ -394,7 +395,7 @@ define([
 
             showScore: function () {
                 var i,
-                    scoreDisplayMessage = "";
+                    scoreDisplayMessage = '';
 
                 for (i = 0; i < modules.score; i++) {
                     if (modules.scoreMessages[i]) {
