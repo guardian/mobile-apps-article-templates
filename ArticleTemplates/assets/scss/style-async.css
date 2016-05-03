@@ -4279,6 +4279,8 @@ Display a team line-up including substitutions and bookings.
     padding: 5px 6px 18px 60px;
     position: relative;
     width: 100%; }
+  .element-atom .quiz .answer__buckets {
+    display: none; }
   .element-atom .quiz .answer__text,
   .element-atom .quiz .answer__message::before {
     color: #767676;
@@ -4400,6 +4402,7 @@ Display a team line-up including substitutions and bookings.
   .element-atom .quiz .quiz__scores,
   .element-atom .quiz .quiz__scores-title {
     display: none; }
+  .element-atom .quiz .quiz-results,
   .element-atom .quiz .quiz-scores {
     background: transparent;
     border-top: 2px solid #4bc6df;
@@ -4409,10 +4412,20 @@ Display a team line-up including substitutions and bookings.
     opacity: 0;
     padding: 0;
     transition: all 1s ease-in-out; }
+    .element-atom .quiz .quiz-results.open,
     .element-atom .quiz .quiz-scores.open {
       opacity: 1;
       margin-top: 30px;
       max-height: 350px; }
+  .element-atom .quiz .quiz-scores {
+    background: transparent;
+    border-top: 2px solid #4bc6df;
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding: 0;
+    transition: all 1s ease-in-out; }
     .element-atom .quiz .quiz-scores .quiz-scores__inner {
       overflow: hidden; }
     .element-atom .quiz .quiz-scores .quiz-scores__img {
@@ -4447,6 +4460,37 @@ Display a team line-up including substitutions and bookings.
       color: #005689;
       font: 600 18px/1.2 "Guardian Egyptian Web", Georgia, serif;
       margin-top: 60px; }
+  .element-atom .quiz .quiz-results .quiz-results__description {
+    color: #005689;
+    font: 600 18px/1.2 "Guardian Egyptian Web", Georgia, serif; }
+  .element-atom .quiz .quiz-results .quiz-results__title {
+    color: #4bc6df;
+    font: 100 50px/55px "Guardian Egyptian Web", Georgia, serif; }
+  .element-atom .quiz.personality-quiz .question__answer:not(.has-image) .answer__text {
+    color: #333; }
+  .element-atom .quiz.personality-quiz .question__answer:not(.has-image) .answer__marker {
+    border: 1px solid #333; }
+    .element-atom .quiz.personality-quiz .question__answer:not(.has-image) .answer__marker::before {
+      content: ''; }
+  .element-atom .quiz.personality-quiz .question__answer:not(.has-image) .answer__marker__inner {
+    opacity: 0;
+    background: #333;
+    border-radius: 50%;
+    height: 20px;
+    margin: 4px;
+    width: 20px;
+    z-index: 1; }
+  .element-atom .quiz.personality-quiz .question__answer:not(.has-image).highlight-answer .answer__wrapper {
+    background: #ff9b0b; }
+  .element-atom .quiz.personality-quiz .question__answer:not(.has-image).highlight-answer .answer__marker__inner {
+    opacity: 1; }
+  .element-atom .quiz.personality-quiz .question__answer.has-image {
+    background: #f6f6f6;
+    padding: 10px; }
+    .element-atom .quiz.personality-quiz .question__answer.has-image.highlight-answer {
+      background: #ff9b0b; }
+    .element-atom .quiz.personality-quiz .question__answer.has-image .answer__marker {
+      display: none; }
 
 /*doc
 ---

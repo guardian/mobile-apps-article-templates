@@ -1,251 +1,455 @@
 /*global window,console,define */
 define([
-    'bean',
-    'bonzo',
-    'modules/$',
     'smoothScroll',
-    'modules/ads'
+    'modules/ads',
+    'modules/util'
 ], function (
-    bean,
-    bonzo,
-    $,
     smoothScroll,
-    Ads
+    Ads,
+    util
 ) {
     'use strict';
 
     var modules = {
-        quizInit: function(quiz) {
-            var $quiz = $(quiz);
-
-            if (!$quiz.length) {
-                return false;
-            }
-
-            // Do we have an MPU and is it below the quiz?
-            var mpu = $('.advert-slot__wrapper').first(),
-                moveMPU = false;
-
-            if (mpu.length) {
-                var mpuOffset = mpu.offset().top,
-                    quizOffset = $quiz.offset().top;
-
-                if (mpuOffset > quizOffset) {
-                    moveMPU = true;
-                }
-            }
-
-            // Update MPU position on animation
-            var startTime = null,
-                yPos = null;
-
-            function checkMPU(timestamp) {
-                if (!startTime) {
-                    startTime = timestamp;
-                }
-
-                var progress = timestamp - startTime;
+            init: function (quiz) {
+                modules.numAnswered = 0;
+                modules.questionCount = 0;
+                modules.isPersonalityQuiz = document.querySelector('.quiz__buckets');
+                modules.moveMPU = modules.IsAdBelowQuiz(quiz);
                 
-                var newYPos = Ads.modules.updateMPUPosition(yPos);
-                yPos = newYPos;
-
-                if (progress < 2000) {
-                    window.animFrame(checkMPU);
+                if (modules.isPersonalityQuiz) {
+                    quiz.classList.add('personality-quiz');
+                    modules.setupPersonalityQuizBuckets();
+                    modules.setupPersonalityQuizQuestions();
+                    modules.removePersonalityQuizAnswers();
+                    modules.buildResultsPanel(quiz);
+                } else {
+                    quiz.classList.add('news-quiz');
+                    modules.score = 0;
+                    modules.scoreMessages = modules.getScoreMessages();
+                    modules.setupNewsQuizQuestions();
+                    modules.removeNewsQuizAnswers();
+                    modules.buildScoresPanel(quiz);
                 }
-            }
+            
+                quiz.classList.add('loaded');
+            },
 
-            // Store the answers and remove the answer elements
-            var answers = $('.quiz__correct-answers').html().split(',');
-            $('.quiz__correct-answers-title, .quiz__correct-answers').remove();
+            setupNewsQuizQuestions: function () {
+                var i,
+                    correctAnswers = modules.getCorrectAnswers(),
+                    question,
+                    questions = document.querySelectorAll('.quiz__question'),
+                    questionObj;
 
-            // Store vars for scoring the quiz
-            var numQuestions = answers.length,
-                numAnswered = 0,
-                score = 0,
-                scoreMessages = {},
-                longestMessageLength = 0,
-                longestMessage;
+                for (i = 0; i < questions.length; i++) {
+                    question = questions[i];
+                    questionObj = {};
+                    questionObj.elem = question;
+                    modules.wrapQuestion(question);
+                    questionObj.correctAnswer = correctAnswers[i];
+                    modules.setupNewsQuizAnswers(questionObj);
+                    modules.questionCount++;
+                }
+            },
 
-            // Store the result messages
-            $('.quiz__scores > li').each(function(){
-                var $this = $(this),
-                    message = $this.attr('data-title');
+            setupNewsQuizAnswers: function (questionObj) {
+                var i,
+                    answerCode,
+                    answers = questionObj.elem.querySelectorAll('.question__answer');
 
-                // Add this message to the array
-                scoreMessages[Math.max($this.attr('data-min-score'),0)] = message;
-            });
+                for (i = 0; i < answers.length; i++) {
+                    answerCode = util.getStringFromUnicodeVal(65 + i);
+                    if (answerCode === questionObj.correctAnswer.code) {
+                        answers[i].dataset.correctAnswerExplanation = questionObj.correctAnswer.explanation;
+                        answers[i].dataset.correct = 'true';
+                    }
 
-            // Build up the quiz results panel
-            $quiz.append('<div id="quiz-scores" class="quiz-scores"><p class="quiz-scores__score">' +
-                '<span class="quiz-scores__correct"></span> / <span class="quiz-scores__questions">' +
-                numQuestions + '</span></p><p class="quiz-scores__message"></p></div>');
+                    modules.styleAnswer(answers[i]);
 
-            // Loop through every question and set up the answers and click events for it's answers
-            $('.quiz__question').each(function(question, index) {
-                // Wrap question in a div for styling
-                var questionWrapper = document.createElement('div'),
-                    questionAnswerList = question.querySelectorAll('.question__answers');
-                $(questionWrapper).addClass('question__wrapper');
+                    answers[i].addEventListener('click', modules.onNewsAnswerClick.bind(null, answers[i], questionObj.elem, answers[i].querySelector('img')));
+                }                
+            },
+
+            removeNewsQuizAnswers: function () {
+                var i,
+                    answers = document.querySelectorAll('.quiz__correct-answers-title, .quiz__correct-answers');
+
+                for (i = 0; i < answers.length; i++) {
+                    answers[i].parentNode.removeChild(answers[i]);
+                }
+            },
+
+            setupPersonalityQuizBuckets: function () {
+                var i,
+                    bucketCode,
+                    buckets = document.querySelectorAll('.quiz__bucket'),
+                    quizBuckets = {};
+
+                for (i = 0; i < buckets.length; i++) {
+                    bucketCode = util.getStringFromUnicodeVal(65 + i);
+                    quizBuckets[bucketCode] = {
+                        count: 0,
+                        title: buckets[i].dataset.title,
+                        description: buckets[i].dataset.description
+                    };
+                }
+
+                modules.quizBuckets = quizBuckets;
+            },
+
+            setupPersonalityQuizQuestions: function () {
+                var i,
+                    question,
+                    questions = document.querySelectorAll('.quiz__question'),
+                    questionObj;
+
+                for (i = 0; i < questions.length; i++) {
+                    question = questions[i];
+                    questionObj = {};
+                    questionObj.elem = question;
+                    modules.wrapQuestion(question);
+                    modules.setupPersonalityQuizAnswers(questionObj);
+                    modules.questionCount++;
+                }
+            },
+
+            setupPersonalityQuizAnswers: function (questionObj) {
+                var i,
+                    answers = questionObj.elem.querySelectorAll('.question__answer');
+
+                for (i = 0; i < answers.length; i++) {
+                    modules.styleAnswer(answers[i]);
+
+                    answers[i].addEventListener('click', modules.onPersonalityAnswerClick.bind(null, answers[i], questionObj.elem));
+                }                
+            },
+
+            removePersonalityQuizAnswers: function () {
+                var i,
+                    answers = document.querySelectorAll('.quiz__buckets-title, .quiz__buckets');
+
+                for (i = 0; i < answers.length; i++) {
+                    answers[i].parentNode.removeChild(answers[i]);
+                }
+            },
+
+            getCorrectAnswers: function () {
+                var i,
+                    answers = [],
+                    correctAnswers = document.querySelector('.quiz__correct-answers').innerHTML.split(','),
+                    correctAnswerArray,
+                    correctAnswerObj;
+                
+                for (i = 0; i < correctAnswers.length; i++) {
+                    correctAnswerObj = {};
+                    correctAnswerArray = correctAnswers[i].split(':')[1].split('-');
+                    correctAnswerObj.code = correctAnswerArray[0].trim().toUpperCase();
+                    correctAnswerObj.explanation = correctAnswerArray[1] || '';
+                    answers.push(correctAnswerObj);
+                } 
+
+                return answers;
+            },
+
+            getScoreMessages: function () {
+                var i,
+                    message,
+                    minScore,
+                    scoreElems = document.querySelectorAll('.quiz__scores > li'),
+                    scoreMessages = {};
+
+                for (i = 0; i < scoreElems.length; i++) {
+                    message = scoreElems[i].dataset.title;
+                    minScore = scoreElems[i].dataset.minScore;
+                    scoreMessages[Math.max(minScore, 0)] = message;
+                }
+
+                return scoreMessages;
+            },
+
+            buildScoresPanel: function (quiz) {
+                var scoresPanel = document.createElement('div');
+
+                scoresPanel.classList.add('quiz-scores');
+                scoresPanel.id = 'quiz-scores';
+                scoresPanel.innerHTML = '<p class="quiz-scores__score">' +
+                    '<span class="quiz-scores__correct"></span> / <span class="quiz-scores__questions">' +
+                    modules.questionCount + '</span></p><p class="quiz-scores__message"></p>';
+
+                quiz.appendChild(scoresPanel);
+            },
+
+            buildResultsPanel: function (quiz) {
+                var resultPanel = document.createElement('div');
+
+                resultPanel.classList.add('quiz-results');
+                resultPanel.id = 'quiz-results';
+                resultPanel.innerHTML = '<h1 class="quiz-results__title"></h1><p class="quiz-results__description"></p>';
+
+                quiz.appendChild(resultPanel);
+            },
+
+            wrapQuestion: function (question) {
+                var i,
+                    questionWrapper = document.createElement('div'),
+                    questionAnswerList = question.querySelectorAll('.question__answers'),
+                    questionImages = question.querySelectorAll(':scope > img'),
+                    questionText = question.querySelectorAll('.question__text');
+
+                questionWrapper.classList.add('question__wrapper');
+
                 question.insertBefore(questionWrapper, questionAnswerList[0]);
 
-                // Does this question have an image (if tools stripped out empty image tags some of this would be unnecessary)
-                var questionImg = question.querySelectorAll(':scope > img');
-                if (questionImg.length) {
-                    if ($(questionImg).attr('src') !== '') {
-                        $(question).addClass('has-image');
-                        $(questionImg).addClass('question__img');
-                        $(questionWrapper).append(questionImg);
-                    } else {
-                        $(questionImg).remove();
-                    }
+                // Does this answer have an image
+                for (i = 0; i < questionImages.length; i++) {
+                    modules.adjustImage(question, questionWrapper, questionImages[i], true);
                 }
 
                 // Does this question have text
-                var questionText = question.querySelectorAll('.question__text');
-                if (questionText.length) {
-                    $(questionWrapper).append(questionText);
+                for (i = 0; i < questionText.length; i++) {
+                    modules.adjustText(questionWrapper, questionText[i]);
+                }
+            },
+
+            styleAnswer: function (answer) {
+                var answerImages = answer.querySelectorAll(':scope > img'),
+                    answerMarker = document.createElement('div'),
+                    answerMessage = document.createElement('div'),
+                    answerWrapper = document.createElement('div'),
+                    answerText = answer.querySelectorAll('.answer__text'),
+                    i;
+
+                // Wrap answer in a div for styling
+                answerWrapper.classList.add('answer__wrapper');
+                answer.appendChild(answerWrapper);
+
+                // Add an answer message div to wrap text answer, correct/wrong message and explanation response
+                answerMessage.classList.add('answer__message');
+                answerWrapper.appendChild(answerMessage);
+
+                // Add a marker icon span
+                answerMarker.classList.add('answer__marker');
+                if (modules.isPersonalityQuiz) {
+                   answerMarker.innerHTML = '<div class="answer__marker__inner"></div>'; 
+                }
+                answerWrapper.appendChild(answerMarker);
+
+                // Does this answer have an image
+                for (i = 0; i < answerImages.length; i++) {
+                    modules.adjustImage(answer, answerWrapper, answerImages[i], false);
                 }
 
-                // This question's correct answer & response text
-                var $correctAnswer,
-                    $correctAnswerWrapper,
-                    correctAnswerArray = answers[index].split(':')[1].split('-'),
-                    correctAnswerCode = correctAnswerArray[0].trim().toUpperCase(),
-                    correctAnswerExplanation = correctAnswerArray[1];
+                // Does this answer have text
+                for (i = 0; i < answerText.length; i++) {
+                    modules.adjustText(answerMessage, answerText[i]);
+                }
+            },
 
-                // All the answers for this question
-                var questionAnswers = this.querySelectorAll('.question__answer');
+            adjustImage: function (parent, wrapper, image, isQuestion) {
+                if (image.getAttribute('src') !== '') {
+                    parent.classList.add('has-image');
+                    if (isQuestion) {
+                        wrapper.parentNode.classList.add('question__img');
+                    } else {
+                        image.classList.add('answer__img');
+                    }
+                    wrapper.appendChild(image);
+                } else {
+                    image.parentNode.removeChild(image);
+                }
+            },
 
-                // Loop through each answer and set up it's styling
-                $(questionAnswers).each(function(answer, index) {
-                    // Wrap answer in a div for styling
-                    var answerWrapper = document.createElement('div');
-                    $(answerWrapper).addClass('answer__wrapper');
-                    $(answer).append(answerWrapper);
-                    
-                    // Add an answer message div to wrap text answer, correct/wrong message and explanation response
-                    var answerMessage = document.createElement('div');
-                    $(answerMessage).addClass('answer__message');
-                    $(answerWrapper).append(answerMessage);
+            adjustText: function (parent, text) {
+                parent.appendChild(text);
+            },
 
-                    // Add a marker icon span 
-                    var answerMarker = document.createElement('div');
-                    $(answerMarker).addClass('answer__marker');
-                    $(answerWrapper).append(answerMarker);
-                    
-                    // Does this answer have an image (if tools stripped out empty image tags some of this would be unnecessary)
-                    var answerImg = answer.querySelectorAll(':scope > img');
-                    if (answerImg.length) {
-                        if ($(answerImg).attr('src') !== '') {
-                            $(answer).addClass('has-image');
-                            $(answerImg).addClass('answer__img');
-                            $(answerWrapper).append(answerImg);
-                        } else {
-                            $(answerImg).remove();
-                            answerImg = '';
+            IsAdBelowQuiz: function (quiz) {
+                var IsAdBelowQuiz = false,
+                    mpu = document.querySelector('.advert-slot__wrapper'),
+                    mpuOffset,
+                    quizOffset;
+
+                if (mpu) {
+                    mpuOffset = mpu.offsetTop;
+                    quizOffset = quiz.offsetTop;
+
+                    if (mpuOffset > quizOffset) {
+                        IsAdBelowQuiz = true;
+                    }
+                }
+
+                return IsAdBelowQuiz;
+            },
+
+            adjustAdPosition: function (yPos, startTime, timeStamp) {
+                var newYPos,
+                    progress;
+
+                if (!startTime) {
+                    startTime = timeStamp;
+                }
+
+                progress = timeStamp - startTime;
+                newYPos = Ads.modules.updateMPUPosition(yPos);
+
+                if (progress < 2000) {
+                    window.animFrame(modules.adjustAdPosition.bind(null, newYPos, startTime));
+                }
+            },
+
+            onNewsAnswerClick: function (answer, question, isImage) {
+                var answerPara,
+                    correctAnswerWrapper,
+                    startTime = null,
+                    yPos = null;
+
+                if (question.classList.contains('answered')) {
+                    return;
+                }
+
+                if (answer.dataset.correct === 'true') {
+                    question.classList.add('is-correct');                    
+                    modules.score++;
+                } else {
+                    answer.classList.add('wrong-answer');
+                    question.classList.add('is-wrong');
+                    answer = question.querySelector('[data-correct="true"]');
+                }
+
+                answer.classList.add('correct-answer');
+
+                if (answer.dataset.correctAnswerExplanation) {
+                    answerPara = document.createElement('p');
+                    answerPara.classList.add('answer__explanation');
+                    answerPara.innerHTML = answer.dataset.correctAnswerExplanation.trim();
+                    correctAnswerWrapper = answer.querySelector('.answer__message');
+                    correctAnswerWrapper.appendChild(answerPara);
+                }
+
+                question.classList.add('answered');
+                modules.numAnswered++;
+
+                // If necessary set up a call to check mpu position
+                if (modules.moveMPU) {
+                    window.animFrame(modules.adjustAdPosition.bind(null, yPos, startTime));
+                }
+
+                // When we have an image answer we need to move the positioning of the explanation and marker 
+                if (isImage) {
+                    modules.showMarkedAnswer(question);
+                }
+
+                // If all questions have been answered display the score
+                if (modules.questionCount === modules.numAnswered) {
+                    modules.showScore();
+                }
+            },
+
+            onPersonalityAnswerClick: function (answer, question) {
+                var hightedAnswer;
+
+                if (question.classList.contains('answered')) {
+                    if (answer.classList.contains('highlight-answer') ||
+                        modules.questionCount === modules.numAnswered) {
+                        return;    
+                    } else {
+                        hightedAnswer = question.querySelector('.highlight-answer');
+                        hightedAnswer.classList.remove('highlight-answer');
+                        modules.quizBuckets[hightedAnswer.dataset.buckets].count--;
+                        modules.numAnswered--;
+                    }
+                }
+
+                if (modules.quizBuckets[answer.dataset.buckets]) {
+                    question.classList.add('answered');
+                    answer.classList.add('highlight-answer');
+                    modules.numAnswered++;
+                    modules.quizBuckets[answer.dataset.buckets].count++;
+
+                    // If all questions have been answered display the score
+                    if (modules.questionCount === modules.numAnswered) {
+                        modules.showResult();
+                    }
+                }
+            },
+
+            showMarkedAnswer: function (question) {
+                var i,
+                    markedAnswer,
+                    markedAnswers = question.querySelectorAll('.correct-answer, .wrong-answer'),
+                    thisMessage,
+                    thisHeight,
+                    thisMarker;
+
+                for (i = 0; i < markedAnswers.length; i++) {
+                    markedAnswer = markedAnswers[i];
+                    thisMessage = markedAnswer.querySelector('.answer__message');
+                    thisHeight = thisMessage.offsetHeight;
+                    thisMarker = markedAnswer.querySelector('.answer__marker');
+                    // position explanation to the bottom of wrapper
+                    thisMessage.style.top = 'calc(100% - ' + thisHeight + 'px)';
+                    thisMarker.style.top = 'calc(100% - ' + (thisHeight - 7) + 'px)';
+                }
+            },
+
+            showScore: function () {
+                var i,
+                    scoreDisplayMessage = '';
+
+                for (i = 0; i < modules.score; i++) {
+                    if (modules.scoreMessages[i]) {
+                        scoreDisplayMessage = modules.scoreMessages[i];
+                        break;
+                    }
+                }
+
+                document.querySelector('.quiz-scores__correct').innerHTML = modules.score.toString();
+                document.querySelector('.quiz-scores__message').innerHTML = scoreDisplayMessage;
+                document.querySelector('.quiz-scores').classList.add('open');
+
+                // Scroll score panel into view
+                smoothScroll.animateScroll('#quiz-scores', null, {speed: 1500, offset: 40});
+            },
+
+            showResult: function () {
+                var key,
+                    bucket,
+                    result,
+                    resultTitle,
+                    resultDescription;
+
+                for (key in modules.quizBuckets) {
+                    if (modules.quizBuckets.hasOwnProperty(key)) {
+                        bucket = modules.quizBuckets[key];
+                        if (!result || (bucket.count > result.count)) {
+                            result = bucket;
+                            resultDescription = result.description;
+                            resultTitle = result.title;
                         }
                     }
+                }
 
-                    // Does this answer have text
-                    var answerText = answer.querySelectorAll('.answer__text');
-                    if (answerText.length) {
-                        $(answerMessage).append(answerText);
-                    }
-                    
-                    // Find this answers alpha key
-                    var thisAnswer = String.fromCharCode(65 + index);
-                    
-                    // Is this answer the correct answer
-                    if (thisAnswer == correctAnswerCode) {
-                        $correctAnswer = $(answer);
-                        $correctAnswerWrapper = $(answerMessage);
-                    }
+                document.querySelector('.quiz-results__description').innerHTML = resultDescription;
+                document.querySelector('.quiz-results__title').innerHTML = resultTitle;
+                document.querySelector('.quiz-results').classList.add('open');
 
-                    // Set up an onclick to handle when a user selects this answer
-                    bean.on(answer, 'click', function() {
-                        if ($(question).hasClass('answered')) {
-                            // Question has already been answered 
-                            return false;
-                        } else {
-                            // Mark question as answered and keep track of total q's answered
-                            $(question).addClass('answered');
-                            numAnswered ++;
-                        }
-
-                        // If necessary set up a call to check mpu position
-                        if (moveMPU) {
-                            startTime = null;
-                            window.animFrame(checkMPU);
-                        }
-
-                        // Flag the correct answer & add response if one is available
-                        $correctAnswer.addClass('correct-answer');
-                        if (correctAnswerExplanation) {
-                            $correctAnswerWrapper.append('<p class="answer__explanation">' + correctAnswerExplanation.trim() + '</p>');
-                        }
-
-                        // Check if this answer is correct & mark question as correct or wrong
-                        if (thisAnswer == correctAnswerCode) {
-                            $(question).addClass('is-correct');
-                            score ++;
-                        } else {
-                            $(question).addClass('is-wrong');
-                            $(this).addClass('wrong-answer');
-                        }
-
-                        // When we have an image answer we need to move the positioning of the explanation and marker 
-                        if (answerImg.length) {
-                            var markedAnswers = question.querySelectorAll('.correct-answer, .wrong-answer');
-
-                            $(markedAnswers).each(function(markedAnswer, index) {
-                                var thisMessage = markedAnswer.querySelectorAll('.answer__message')[0],
-                                    thisHeight = thisMessage.offsetHeight,
-                                    thisMarker = markedAnswer.querySelectorAll('.answer__marker')[0];
-
-                                    // position explanation to the bottom of wrapper
-                                    thisMessage.style.top = 'calc(100% - ' + thisHeight + 'px)';
-                                    thisMarker.style.top = 'calc(100% - ' + (thisHeight - 7) + 'px)';
-                            });
-                        }
-                        // If all questions have been answered display the score
-                        if (numQuestions == numAnswered) {
-                            var scoreDisplayMessage = "";
-                            for(var i = score; i >= 0; i--) {
-                                if (scoreMessages[i]) {
-                                    scoreDisplayMessage = scoreMessages[i]; 
-                                    break;
-                                }
-                            }
-
-                            // Add the score & message into resultPanel
-                            $('.quiz-scores__correct').html(score.toString());
-                            $('.quiz-scores__message').html(scoreDisplayMessage);
-
-                            // Add open class to trigger transition
-                            $('.quiz-scores').addClass('open');
-
-                            // Scroll score panel into view
-                            smoothScroll.animateScroll(null, '#quiz-scores', { speed: 1500, offset: 40 });
-                        }
-                    });
-                });
-            });
-
-            // show the quiz
-            $quiz.addClass("loaded");
-        }
-    },
-
-    ready = function () {
-        if (!this.initialised) {
-            this.initialised = true;
-            var quiz = $('.element-atom .quiz');
-            if (quiz.length) {
-                // We have a quiz atom on the page so setup the quizzes
-                modules.quizInit(quiz[0]);
+                // Scroll result panel into view
+                smoothScroll.animateScroll('#quiz-results', null, {speed: 1500, offset: 40});
             }
-        }
-    };
+        },
+
+        ready = function () {
+            var quiz;
+
+            if (!this.initialised) {
+                this.initialised = true;
+                quiz = document.querySelector('.element-atom .quiz');
+                if (quiz) {
+                    modules.init(quiz);
+                }
+            }
+        };
 
     return {
         init: ready
