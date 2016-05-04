@@ -129,6 +129,10 @@
             width: 100%;
         }
 
+        .answer__buckets {
+            display: none;
+        }
+
         .answer__text,
         .answer__message::before {
             color: color(shade-2);
@@ -357,7 +361,7 @@
             display: none;
         }
 
-        // Quiz Scores
+        .quiz-results,
         .quiz-scores {
             background: transparent;
             border-top: 2px solid color(tone-news-accent);
@@ -373,6 +377,18 @@
                 margin-top: 30px;
                 max-height: 350px;
             }
+        }
+
+        // Quiz Scores
+        .quiz-scores {
+            background: transparent;
+            border-top: 2px solid color(tone-news-accent);
+            margin: 0;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            padding: 0;
+            transition: all 1s ease-in-out;
 
             .quiz-scores {
                 &__inner {
@@ -421,6 +437,70 @@
                     color: color(tone-news);
                     font: 600 18px/1.2 $egyptian-display;
                     margin-top: 60px;
+                }
+            }
+        }
+
+        // Quiz Results
+        .quiz-results {
+            .quiz-results__description {
+                color: color(tone-news);
+                font: 600 18px/1.2 $egyptian-display;
+            }
+            .quiz-results__title {
+                color: color(tone-news-accent);
+                font: 100 50px/55px $egyptian-display;    
+            }
+        }
+    
+        // Personality quiz overrides
+        &.personality-quiz {
+            .question__answer {
+                &:not(.has-image) {
+                    .answer__text {
+                        color: color(shade-1);
+                    }
+
+                    .answer__marker {
+                        border: 1px solid color(shade-1);
+
+                        &::before {
+                            content: '';
+                        }
+                    }
+
+                    .answer__marker__inner {
+                        opacity: 0;
+                        background: color(shade-1);
+                        border-radius: 50%;
+                        height: 20px;
+                        margin: 4px;
+                        width: 20px;
+                        z-index: 1;
+                    }
+
+                    &.highlight-answer {
+                        .answer__wrapper {
+                            background: color(quiz-highlight-answer);
+                        }
+
+                        .answer__marker__inner {
+                            opacity: 1;
+                        }
+                    }
+                }
+
+                &.has-image {
+                    background: color(shade-8);
+                    padding: 10px;
+
+                    &.highlight-answer {
+                        background: color(quiz-highlight-answer);
+                    }
+
+                    .answer__marker {
+                        display: none;
+                    }
                 }
             }
         }
