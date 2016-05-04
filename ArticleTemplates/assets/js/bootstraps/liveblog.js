@@ -310,6 +310,8 @@ define([
                 // liveblogElem must be first child of wrapperElem
                 wrapperElem.insertBefore(liveblogElem, wrapperElem.children[0]);
 
+                modules.removeTabletElems();
+
                 modules.setScrollDimensions(liveblogElem, wrapperElem);
 
                 // initialise scroller
@@ -370,6 +372,17 @@ define([
                     minuteNavElem.addClass("hide");
                 } else {
                     minuteNavElem.removeClass("hide");
+                }
+            },
+
+            removeTabletElems: function () {
+                var i,
+                    elems = document.querySelectorAll('.minute-logo-container, .minute-vertical-rule');
+
+                console.log(elems);    
+
+                for (i = 0; i < elems.length; i++) {
+                    elems[i].parentNode.removeChild(elems[i]);
                 }
             }
         },

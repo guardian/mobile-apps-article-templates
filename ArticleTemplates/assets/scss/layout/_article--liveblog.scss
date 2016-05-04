@@ -1,15 +1,10 @@
 body[data-content-type="liveblog"] {
     // Hide the special minute header for every other liveblog    
     &:not(.the-minute) {
+        .minute-vertical-rule,
+        .minute-logo-container,
         .the-minute__header { 
             display: none;
-        }
-
-        &:not(.advert-config--tablet) {
-            .minute-vertical-rule,
-            .minute-logo-container { 
-                display: none;
-            }
         }
     }
 }
