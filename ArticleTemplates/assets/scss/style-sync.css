@@ -2620,10 +2620,9 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
   .article--comment .figure--thumbnail-with-caption {
     background: #dedcd7; } }
 
+body[data-content-type="liveblog"]:not(.the-minute) .minute-vertical-rule,
+body[data-content-type="liveblog"]:not(.the-minute) .minute-logo-container,
 body[data-content-type="liveblog"]:not(.the-minute) .the-minute__header {
-  display: none; }
-body[data-content-type="liveblog"]:not(.the-minute):not(.advert-config--tablet) .minute-vertical-rule,
-body[data-content-type="liveblog"]:not(.the-minute):not(.advert-config--tablet) .minute-logo-container {
   display: none; }
 
 .article--liveblog {
@@ -2685,6 +2684,9 @@ body.the-minute:not(.advert-config--tablet) .article--liveblog .block .block__bo
 body.the-minute:not(.advert-config--tablet) {
   background: #005689;
   height: 100%; }
+  body.the-minute:not(.advert-config--tablet) .minute-vertical-rule,
+  body.the-minute:not(.advert-config--tablet) .minute-logo-container {
+    display: none; }
   body.the-minute:not(.advert-config--tablet) .the-minute__header {
     background: #005689;
     border: 0;

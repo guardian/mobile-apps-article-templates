@@ -4132,10 +4132,9 @@
   @media all and (max-width: 28.12em) {
     #sandbox .article--comment .figure--thumbnail-with-caption {
       background: #dedcd7; } }
+  #sandbox body[data-content-type="liveblog"]:not(.the-minute) .minute-vertical-rule,
+  #sandbox body[data-content-type="liveblog"]:not(.the-minute) .minute-logo-container,
   #sandbox body[data-content-type="liveblog"]:not(.the-minute) .the-minute__header {
-    display: none; }
-  #sandbox body[data-content-type="liveblog"]:not(.the-minute):not(.advert-config--tablet) .minute-vertical-rule,
-  #sandbox body[data-content-type="liveblog"]:not(.the-minute):not(.advert-config--tablet) .minute-logo-container {
     display: none; }
   #sandbox .article--liveblog {
     background-color: #eaeaea;
@@ -4193,6 +4192,9 @@
   #sandbox body.the-minute:not(.advert-config--tablet) {
     background: #005689;
     height: 100%; }
+    #sandbox body.the-minute:not(.advert-config--tablet) .minute-vertical-rule,
+    #sandbox body.the-minute:not(.advert-config--tablet) .minute-logo-container {
+      display: none; }
     #sandbox body.the-minute:not(.advert-config--tablet) .the-minute__header {
       background: #005689;
       border: 0;
