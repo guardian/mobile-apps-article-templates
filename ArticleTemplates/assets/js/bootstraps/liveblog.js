@@ -116,40 +116,166 @@ define([
                 window.applyNativeFunctionCall('liveblogUpdateBlock');
             },
 
-            setupTheMinute: function() {
-                // Check for blocks contents and add class accordingly
-                $('.block--live-key-event, .block--live-summary').each(function(block, index) {
-                    var thumbnail = block.getElementsByClassName('element--thumbnail'),
-                        inlineImage = block.getElementsByClassName('element-image ');
+            setupTheMinute: function () {
+                var blocks = document.getElementsByClassName('block');
 
-                    if (thumbnail.length) {
-                        $(block).addClass('is-thumbnail');
-                    } else if (inlineImage.length) {
-                        $(block).addClass('is-coverimage');
-                    } else {
-                        $(block).addClass('is-textonly');
+                modules.addClassesToMinuteBlocks(blocks);
+                modules.updateMinuteBlockTitles(blocks);
+
+                if (document.body.classList.contains('advert-config--tablet')) {
+                    modules.adjustMinuteBlocks(blocks);
+
+                    // update dimensions on orientation change
+                    bean.on(window, 'resize', window.ThrottleDebounce.debounce(100, false, modules.adjustMinuteBlocks.bind(null, blocks)));
+                } else {
+                    // If windows add background images to minute blocks
+                    if (document.body.classList.contains("windows")) {   
+                        modules.addBackgroundImagesToMinuteBlocks(blocks);
                     }
-                });
-
-                // Handle numbered headlines
-                $('.block__title').each(function(title, index) {
-                    var titleString = $(title).html().replace(/^([0-9]+)[.]*[ ]*/g, '<span class="counter">$1</span>');
-                    $(title).html(titleString);
-                });
-
-                // If windows add background images to minute blocks
-                if (document.body.classList.contains("windows")) {   
-                    modules.addBackgroundImagesToBlocks();
+                    modules.initScroller();
                 }
-
-                // Initialise the scroller
-                modules.initScroller();
             },
 
-            addBackgroundImagesToBlocks: function() {
-                var i, j, blocks, figureInners, figureImage;
+            moveFigcaption: function (figure) {
+                var figInner,
+                    figCaption = figure.querySelector("figcaption");
 
-                blocks = document.getElementsByClassName("block");
+                if (figCaption && figCaption.parentNode === figure) {
+                    figInner = figure.querySelector(".figure__inner");
+
+                    if (figInner) {
+                        figInner.insertBefore(figCaption, figInner.firstChild);
+                    }
+                }
+            },
+
+            adjustMinuteBlocks: function (blocks) {
+                var i,
+                    figure,
+                    isCoverImage,
+                    tweet,
+                    marginTop = 48;
+
+                for (i = 0; i < blocks.length; i++) {
+                    if (!blocks[i].classList.contains('is-textonly')) {
+                        figure = blocks[i].querySelector('figure');
+
+                        if (figure) {
+                            if (blocks[i].classList.contains('is-coverimage')) {
+                                modules.moveFigcaption(figure);
+                            }
+                            
+                            blocks[i].classList.remove("flex-block");
+                            blocks[i].style.height = "auto";
+
+                            if (blocks[i].offsetHeight < (figure.offsetHeight + marginTop)) {
+                                blocks[i].style.height = figure.offsetHeight + marginTop + "px";
+                                blocks[i].classList.add("flex-block");
+                            }
+                        }
+                    } else {
+                        tweet = blocks[i].querySelector('.element-tweet');
+
+                        if (tweet) {
+                            modules.adjustTweetForMinute(tweet);
+                        }
+                    }
+                }
+            },
+
+            adjustTweetForMinute: function (tweet) {
+                var i,
+                    childNode,
+                    twitterLink = "https://twitter.com/",
+                    twitterUser,
+                    twitterHandle,
+                    twitterWrapperElem,
+                    nameElem,
+                    linkElem,
+                    blockQuote = tweet.querySelector(".twitter-tweet");
+
+                if (blockQuote) {
+                    for (i = 0; i < blockQuote.childNodes.length; i++) {
+                        childNode = blockQuote.childNodes[i];
+                        if (childNode.nodeType === 3 && 
+                            childNode.nodeValue && 
+                            childNode.nodeValue.indexOf("@") !== -1) {
+                            twitterHandle = childNode.nodeValue.match(/\(([^)]*)\)/g);
+
+                            if (twitterHandle.length) {
+                                twitterUser = childNode.nodeValue.replace(twitterHandle[0], "").replace(/\W+/g, " ");
+                                twitterHandle = twitterHandle[0].substring(1, twitterHandle[0].length - 1);
+                                twitterLink +=  twitterHandle.replace("@", "");
+
+                                twitterWrapperElem = document.createElement("div");
+                                twitterWrapperElem.classList.add("twitter-wrapper");
+
+                                nameElem = document.createElement("span");
+                                nameElem.innerText = twitterUser;
+
+                                linkElem = document.createElement("a");
+                                linkElem.href = twitterLink;
+                                linkElem.innerText = twitterHandle;
+
+                                twitterWrapperElem.appendChild(nameElem);
+                                twitterWrapperElem.appendChild(linkElem);
+
+                                blockQuote.insertBefore(twitterWrapperElem, blockQuote.firstChild);
+
+                                blockQuote.removeChild(childNode);
+                                i--;
+                            }
+                        } else if (childNode.tagName === "A") {
+                            blockQuote.removeChild(childNode);
+                            i--;
+                        }
+                    }
+                }
+            },
+
+            updateMinuteBlockTitles: function (blocks) {
+                var i, 
+                    blockTitle,
+                    blockTitles = [],
+                    titleString;
+
+                for (i = 0; i < blocks.length; i++) {
+                    blockTitle = blocks[i].querySelector('.block__title');
+                    
+                    if (blockTitle) {
+                        titleString = blockTitle.innerHTML.replace(/^([0-9]+)[.]*[ ]*/g, '<span class="counter">$1</span>');
+                        blockTitle.innerHTML = titleString;
+                    }
+                }
+            },
+
+            addClassesToMinuteBlocks: function (blocks) {
+                var i,
+                    block;
+
+                for (i = 0; i < blocks.length; i++) {
+                    block = blocks[i];
+
+                    if (block.getElementsByClassName('element--thumbnail').length) {
+                        block.classList.add('is-thumbnail');
+                    } else if (block.getElementsByClassName('element-image').length) {
+                        block.classList.add('is-coverimage');
+                    } else if (block.getElementsByClassName('video-URL').length) {
+                        block.classList.add('is-video');
+                    } else {
+                        block.classList.add('is-textonly');
+                    }
+
+                    if (block.getElementsByClassName('quoted').length) {
+                        block.classList.add('has-quote');
+                    } else if (block.getElementsByClassName('twitter-tweet').length) {
+                        block.classList.add('has-tweet');
+                    }
+                }
+            },
+
+            addBackgroundImagesToMinuteBlocks: function(blocks) {
+                var i, j, figureInners, figureImage;
 
                 for (i = 0; i < blocks.length; i++) {
                     figureInners = blocks[i].getElementsByClassName("figure__inner");
@@ -184,6 +310,8 @@ define([
                 // liveblogElem must be first child of wrapperElem
                 wrapperElem.insertBefore(liveblogElem, wrapperElem.children[0]);
 
+                modules.removeTabletElems();
+
                 modules.setScrollDimensions(liveblogElem, wrapperElem);
 
                 // initialise scroller
@@ -197,11 +325,6 @@ define([
             
                 // update scroll dimensions on orientation change
                 bean.on(window, 'resize', window.ThrottleDebounce.debounce(100, false, modules.onWindowResize.bind(null, liveblogElem, wrapperElem, scroller)));
-
-                // enhance tweets in scroller for large devices only
-                if (document.body.classList.contains('advert-config--tablet')) {
-                    twitter.checkForTweets(liveblogElem);
-                }
             },
 
             onWindowResize: function (liveblogElem, wrapperElem, scroller) {
@@ -249,6 +372,17 @@ define([
                     minuteNavElem.addClass("hide");
                 } else {
                     minuteNavElem.removeClass("hide");
+                }
+            },
+
+            removeTabletElems: function () {
+                var i,
+                    elems = document.querySelectorAll('.minute-logo-container, .minute-vertical-rule');
+
+                console.log(elems);    
+
+                for (i = 0; i < elems.length; i++) {
+                    elems[i].parentNode.removeChild(elems[i]);
                 }
             }
         },
