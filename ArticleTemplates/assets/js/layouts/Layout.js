@@ -10,7 +10,7 @@ define([
     'modules/sharing'
 ], function(
     fence,
-    FastClick,
+    fastClick,
     smoothScroll,
     flipSnap,
     Comments,
@@ -72,7 +72,7 @@ define([
 
         attachFastClick: function() {
             // Polyfill to remove click delays on browsers with touch UIs
-            FastClick.attach(document.body);
+            fastClick.attach(document.body);
         },
 
         hideEmptyCaptions: function() {

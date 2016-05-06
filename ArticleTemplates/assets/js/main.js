@@ -5,7 +5,6 @@ require.config({
         d3: '../../../node_modules/d3/d3',
         domReady: '../../../node_modules/domready/ready',
         mobileSlider: 'components/mobile-range-slider',
-        throttleDebounce: 'components/throttle-debounce',
         flipSnap: 'components/flipsnap',
         fastClick: '../../../node_modules/fastclick/lib/fastclick',
         qwery: '../../../node_modules/qwery/qwery',
@@ -13,7 +12,8 @@ require.config({
         smoothScroll: '../../../node_modules/smooth-scroll/dist/js/smooth-scroll',
         raven: '../../../node_modules/raven-js/dist/raven',
         iscroll: 'components/iscroll',
-        class: 'components/class'
+        class: 'components/class',
+        lodash: 'components/lodash'
     },
     shim: {
         class: {

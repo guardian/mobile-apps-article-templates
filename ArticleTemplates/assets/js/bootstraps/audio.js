@@ -3,12 +3,14 @@ define([
     'bean',
     'bonzo',
     'mobileSlider',
-    'modules/$'
+    'modules/$',
+    'lodash/debounce'
 ], function (
     bean,
     bonzo,
     mobileSlider,
-    $
+    $,
+    debounce
 ) {
     'use strict';
 
@@ -38,9 +40,9 @@ define([
                         }
                     } else if ($(".cutout__container").attr("data-background") === null && !$("body").hasClass("media")) {
                         window.audioBackground(duration);
-                        bean.on(window, 'resize.audioPlayer orientationchange.audioPlayer', window.ThrottleDebounce.debounce(100, false, function () {
+                        bean.on(window, 'resize.audioPlayer orientationchange.audioPlayer', debounce(function () {
                             window.audioBackground(duration);
-                        }));
+                        }, 100));
                     }
 
                     $(".audio-player__slider__knob").removeAttr("style");

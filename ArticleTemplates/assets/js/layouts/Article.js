@@ -4,13 +4,15 @@ define([
     'modules/twitter',
     'modules/witness',
     'modules/outbrain',
-    'modules/quiz'
+    'modules/quiz',
+    'lodash/debounce'
 ], function (
     Layout,
     twitter,
     witness,
     outbrain,
-    Quiz
+    quiz,
+    debounce
 ) {
     'use strict';
 
@@ -41,7 +43,7 @@ define([
         },
 
         loadQuizzes: function () {
-            Quiz.init();
+            quiz.init();
         },
 
         formatImmersive: function () {
@@ -145,8 +147,8 @@ define([
             var i,
                 quoteOverlay,
                 quoteOverlays = document.querySelectorAll('.quote--overlay'),
-                onImmersiveScrollBound = window.ThrottleDebounce.debounce(10, false, this.onImmersiveScroll.bind(this)),
-                onResizeBound = window.ThrottleDebounce.debounce(100, false, this.onResize.bind(this));
+                onImmersiveScrollBound = debounce(this.onImmersiveScroll.bind(this), 10),
+                onResizeBound = debounce(this.onResize.bind(this), 100);
 
             for (i = 0; i < quoteOverlays.length; i++) {
                 quoteOverlay = quoteOverlays[i];

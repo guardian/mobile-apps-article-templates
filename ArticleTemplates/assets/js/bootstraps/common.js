@@ -10,9 +10,9 @@ define([
     'modules/cards',
     'modules/more-tags',
     'modules/sharing',
-    'throttleDebounce',
     'modules/$',
-    'iscroll'
+    'iscroll',
+    'lodash/debounce'
 ], function (
     bean,
     bonzo,
@@ -24,9 +24,9 @@ define([
     Cards,
     MoreTags,
     Sharing,
-    throttleDebounce,
     $,
-    iscroll
+    iscroll,
+    debounce
 ) {
     'use strict';
 
@@ -49,9 +49,9 @@ define([
         figcaptionToggle: function () {
             // Show/hides figure caption
             if ($('.main-media__caption__icon')[0]) {
-                bean.on($('.main-media__caption__icon')[0], 'click touchend', window.ThrottleDebounce.debounce( 250, true, function () {
+                bean.on($('.main-media__caption__icon')[0], 'click touchend', debounce(function () {
                     $('.main-media__caption__text').toggleClass('is-visible');
-                }));
+                }, 250, {leading: true}));
             }
         },
 

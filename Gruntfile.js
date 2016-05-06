@@ -57,7 +57,6 @@ module.exports = function(grunt) {
                             { name: 'football' },
                             { name: 'gallery' },
                             { name: 'liveblog' },
-                            { name: 'article' },
                             { name: 'cricket' },
                             { name: 'bootstraps/common'},
                             { name: 'app' },
@@ -301,6 +300,17 @@ module.exports = function(grunt) {
             }
         },
         // build
+        lodash: {
+            build: {
+                dest: 'ArticleTemplates/assets/js/components/lodash',
+                options: {
+                    modifier: 'modularize',
+                    modularize: true,
+                    exports: ['amd'],
+                    include: ['debounce']
+                }
+            }
+        },
         shell: {
             android: {
                 command: function(){
@@ -353,8 +363,8 @@ module.exports = function(grunt) {
 
     grunt.task.run('notify_hooks');
     grunt.registerTask('develop', ['build', 'express', 'watch']);
-    grunt.registerTask('build', ['initRequireJS', 'jshint', 'requirejs', 'scsslint','sass:dev','cssmin']);
-    grunt.registerTask('buildJS', ['initRequireJS', 'jshint', 'requirejs']);
+    grunt.registerTask('build', ['initRequireJS', 'jshint','requirejs', 'scsslint','sass:dev','cssmin']);
+    grunt.registerTask('buildJS', ['initRequireJS','jshint', 'lodash', 'requirejs']);
     grunt.registerTask('buildCSS', ['scsslint','sass:dev','cssmin']);
     grunt.registerTask('deploy', ['build','shell:ziptemplates', 'shell:deployandroid']);
     grunt.registerTask('apk', ['build', 'rsync', 'shell:android']);
