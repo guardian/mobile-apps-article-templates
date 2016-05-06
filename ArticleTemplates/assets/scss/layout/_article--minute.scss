@@ -140,658 +140,1386 @@ $minute_accent: #ea291f;
     flex-direction: column;
 }
 
-// Hide the special minute header for every other liveblog 
-body:not(.the-minute) {
-    .the-minute__header { 
-        display: none;
+@mixin membership_animation {
+    0% {
+        opacity: 1;
+    }
+    2% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    52% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
     }
 }
 
 body.the-minute {
-    background: $minute_bg;
-    height: 100%;
 
-    // Special "The Minute" header
-    .the-minute__header {
-        @include minute_page;
-        @include minute_flex_content;
-        padding-bottom: 60px;
-    }
+    &:not(.advert-config--tablet) {
+        background: $minute_bg;
+        height: 100%;
 
-    .the-minute__headline,
-    .the-minute__standfirst {
-        color: $minute_main;
-        font: 100 4.3rem/4.3rem $egyptian-display;
-        margin: 0 12px 12px;
-        max-width: 460px;
-        width: 80%;
-        z-index: 10;
-        
-        // on very small screens iphone4/s & iphone5/s make things more compact
-        @media all and (max-width: 320px) {
-            font-size: 3.5rem;
-            line-height: 3.5rem;
-            margin: 0 8px 8px;
-            width: calc(100% - 16px);
+        .minute-vertical-rule,
+        .minute-logo-container { 
+            display: none;
         }
 
-        // on longer small screens iphone5/s we can space things vertically a bit more
-        @media all and (max-width: 320px) and (min-height: 481px) {
-            margin-bottom: 12px;
+        .the-minute__header {
+            @include minute_page;
+            @include minute_flex_content;
+            padding-bottom: 60px;
         }
 
-        // on landscape tablets give a bit more spacing
-        @include mq($from: col3) {
-            margin-left: 40px;
-        }
-    }
-
-    .the-minute__standfirst {
-        font: bold 1.7rem/2.2rem $egyptian-text;
-
-        // on very small screens iphone4/s & iphone5/s make things more compact
-        @media all and (max-width: 320px) {
-            font-size: 1.5rem;
-            line-height: 1.8rem;
-        }
-
-        // on longer small screens iphone5/s we can space things vertically a bit more
-        @media all and (max-width: 320px) and (min-height: 481px) {
-            font-size: 1.6rem;
-            line-height: 2.0rem;
-        }
-
-        .the-minute__date {
-            color: $minute_accent;
-            display: block;
-            font: 600 1.7rem/2.2rem $egyptian-display;
-        }
-    }
-
-    .the-minute__main-media {
-        position: static;
-
-        figure {
-            margin: 0;
-
-            .element__inner {
-                @include minute_page;
-                padding-bottom: 0 !important; // This has to be important to override the inline padding added to normal main media images
-
-                &::before {
-                    background: linear-gradient(transparent, transparent 25%, rgba(#000, .8)); // header gradient goes light to dark
-                    content: "";
-                    height: 100%;
-                    left: 0;
-                    position: absolute;
-                    width: 100%;
-                    z-index: 1;
-
-                    // on very small screens iphone4/s & iphone5/s make things more compact
-                    @media all and (max-width: 320px) {
-                        background: linear-gradient(transparent, rgba(#000, .8)); // key event (and header) gradient goes light to dark
-                    }
-                }
-
-                &.the-minute__background-media {
-                    @include background_image;
-                }
-            }
-
-            img {
-                height: 100%;
-                object-fit: cover;
-                width: 100%;
-            }
-        }
-
-        figcaption {
-            border: 0;
-            bottom: 0;
-            color: rgba($minute_main, .75);
-            padding: 2px 80px 8px 12px;
-            position: absolute;
-            width: 100%;
-            z-index: 1;
-
+        .the-minute__headline,
+        .the-minute__standfirst {
+            color: $minute_main;
+            font: 100 4.3rem/4.3rem $egyptian-display;
+            margin: 0 12px 12px;
+            max-width: 460px;
+            width: 80%;
+            z-index: 10;
+            
             // on very small screens iphone4/s & iphone5/s make things more compact
             @media all and (max-width: 320px) {
-                padding: {
-                    left: 8px;
-                    right: 72px;
-                }
+                font-size: 3.5rem;
+                line-height: 3.5rem;
+                margin: 0 8px 8px;
+                width: calc(100% - 16px);
+            }
+
+            // on longer small screens iphone5/s we can space things vertically a bit more
+            @media all and (max-width: 320px) and (min-height: 481px) {
+                margin-bottom: 12px;
             }
 
             // on landscape tablets give a bit more spacing
             @include mq($from: col3) {
-                padding-left: 40px;
+                margin-left: 40px;
+            }
+        }
+
+        .the-minute__standfirst {
+            font: bold 1.7rem/2.2rem $egyptian-text;
+
+            // on very small screens iphone4/s & iphone5/s make things more compact
+            @media all and (max-width: 320px) {
+                font-size: 1.5rem;
+                line-height: 1.8rem;
             }
 
-            .main-media__caption__text span:first-child,
-            .main-media__caption__credit {
-                @include text-ellipses(2);
-                font-size: 1.3rem;
-                line-height: 1.6rem;
-                max-width: 460px;
+            // on longer small screens iphone5/s we can space things vertically a bit more
+            @media all and (max-width: 320px) and (min-height: 481px) {
+                font-size: 1.6rem;
+                line-height: 2.0rem;
             }
 
-            .main-media__caption__credit {
-                font-size: 1.2rem;
-                line-height: 1.5rem;
-                margin-top: 2px;
+            .the-minute__date {
+                color: $minute_accent;
+                display: block;
+                font: 600 1.7rem/2.2rem $egyptian-display;
             }
+        }
 
-            .main-media__caption__icon {
-                display: none;
-            }
+        .the-minute__main-media {
+            position: static;
 
-            .main-media__caption__text span:first-child {
-                &::before {
-                    content: "\e044";
-                    display: inline-block;
-                    font: normal 1.3rem/1 $icon;
-                    margin-right: 6px;
-                    position: relative;
-                    top: 2px;
+            figure {
+                margin: 0;
+
+                .element__inner {
+                    @include minute_page;
+                    padding-bottom: 0 !important; // This has to be important to override the inline padding added to normal main media images
+
+                    &::before {
+                        background: linear-gradient(transparent, transparent 25%, rgba(#000, .8)); // header gradient goes light to dark
+                        content: "";
+                        height: 100%;
+                        left: 0;
+                        position: absolute;
+                        width: 100%;
+                        z-index: 1;
+
+                        // on very small screens iphone4/s & iphone5/s make things more compact
+                        @media all and (max-width: 320px) {
+                            background: linear-gradient(transparent, rgba(#000, .8)); // key event (and header) gradient goes light to dark
+                        }
+                    }
+
+                    &.the-minute__background-media {
+                        @include background_image;
+                    }
                 }
-            }
-        }
-    }
 
-    .the-minute__nav {
-        border-left: 1px dotted rgba($minute_main, .75);
-        bottom: 0;
-        height: 56px;
-        position: fixed;
-        right: 0;
-        width: 70px;
-        z-index: 20;
-        -webkit-transition: opacity 100ms linear;
-        transition: opacity 100ms linear;
-        
-        @include mq($from: col4) {
-            margin-right: -600px;
-            right: 50%;
-        }
-
-        &-button {
-            border: 1px solid rgba($minute_main, .5);
-            border-radius: 50%;
-            bottom: 12px;
-            content: "";
-            height: 42px;
-            position: absolute;
-            right: 12px;
-            width: 42px;
-
-            // This controls the double chevron part of the next page icon, for all blocks but the last one
-            &::after {
-                color: $minute_main;
-                content: '\e001';
-                font-family: $icon;
-                font-size: 1.9rem;
-                left: 50%;
-                position: absolute;
-                top: 50%;
-                -webkit-transform: translateX(-50%) translateY(calc(-50% - 2px));
-                transform: translateX(-50%) translateY(calc(-50% - 2px));
-            }
-        }
-
-        &.hide {
-            opacity: 0;
-        }
-    }
-
-    // Format block elements
-    .article--liveblog {
-        @include minute_page;
-
-        @include mq($from: col4) {
-            background: darken($minute_bg, 10%);
-        }
-
-        // Format the article body to take up just the viewport
-        .article__body--liveblog {
-            @include minute_page;
-            z-index: 1;
-            -webkit-transform: translateZ(0);
-            transform: translateZ(0);
-
-            @include mq($from: col4) {
-                left: 50%;
-                margin-left: -600px;
-                width: 1200px;
-            }
-        }
-
-        // Hide elements within article
-        .article__header,
-        .article__body--liveblog__pinned {
-            display: none;
-        }
-
-        // A block represents a page of the briefing and is set to 100% of the viewport
-        .block {
-            @include minute_page;
-
-            @include mq($from: col4) {
-                &::before {
-                    background: $minute_accent;
-                    content: "";
-                    height: 2px;
-                    left: 0;
-                    position: absolute;
-                    top: 0;
+                img {
+                    height: 100%;
+                    object-fit: cover;
                     width: 100%;
                 }
             }
 
-            // This moves each block into place down the page, the header will sit at the top (i.e. 0%) so each block would
-            // move down according to it's position within the article__body, we have to consider "the-minute__header" and empty div "article__body--liveblog__pinned"
-            // so we start the loop at the 3rd child and calculate based on n-2
-            @for $i from 3 through 20 {
-                &:nth-of-type(#{$i}) {
-                    -webkit-transform: translateY(100% * ($i - 2));
-                    transform: translateY(100% * ($i - 2));
-                }
-            }
-
-            .block__time {
-                display: none;
-            }
-
-            .block__body {
+            figcaption {
+                border: 0;
+                bottom: 0;
+                color: rgba($minute_main, .75);
+                padding: 2px 80px 8px 12px;
                 position: absolute;
-                @extend %cardDimensions;
+                width: 100%;
+                z-index: 1;
+
+                // on very small screens iphone4/s & iphone5/s make things more compact
+                @media all and (max-width: 320px) {
+                    padding: {
+                        left: 8px;
+                        right: 72px;
+                    }
+                }
+
+                // on landscape tablets give a bit more spacing
+                @include mq($from: col3) {
+                    padding-left: 40px;
+                }
+
+                .main-media__caption__text span:first-child,
+                .main-media__caption__credit {
+                    @include text-ellipses(2);
+                    font-size: 1.3rem;
+                    line-height: 1.6rem;
+                    max-width: 460px;
+                }
+
+                .main-media__caption__credit {
+                    font-size: 1.2rem;
+                    line-height: 1.5rem;
+                    margin-top: 2px;
+                }
+
+                .main-media__caption__icon {
+                    display: none;
+                }
+
+                .main-media__caption__text span:first-child {
+                    &::before {
+                        content: "\e044";
+                        display: inline-block;
+                        font: normal 1.3rem/1 $icon;
+                        margin-right: 6px;
+                        position: relative;
+                        top: 2px;
+                    }
+                }
+            }
+        }
+
+        .the-minute__nav {
+            border-left: 1px dotted rgba($minute_main, .75);
+            bottom: 0;
+            height: 56px;
+            position: fixed;
+            right: 0;
+            width: 70px;
+            z-index: 20;
+            -webkit-transition: opacity 100ms linear;
+            transition: opacity 100ms linear;
+            
+            @include mq($from: col4) {
+                margin-right: -600px;
+                right: 50%;
             }
 
-            .block__updated {
+            &-button {
+                border: 1px solid rgba($minute_main, .5);
+                border-radius: 50%;
+                bottom: 12px;
+                content: "";
+                height: 42px;
+                position: absolute;
+                right: 12px;
+                width: 42px;
+
+                // This controls the double chevron part of the next page icon, for all blocks but the last one
+                &::after {
+                    color: $minute_main;
+                    content: '\e001';
+                    font-family: $icon;
+                    font-size: 1.9rem;
+                    left: 50%;
+                    position: absolute;
+                    top: 50%;
+                    -webkit-transform: translateX(-50%) translateY(calc(-50% - 2px));
+                    transform: translateX(-50%) translateY(calc(-50% - 2px));
+                }
+            }
+
+            &.hide {
+                opacity: 0;
+            }
+        }
+
+        // Format block elements
+        .article--liveblog {
+            @include minute_page;
+
+            @include mq($from: col4) {
+                background: darken($minute_bg, 10%);
+            }
+
+            // Format the article body to take up just the viewport
+            .article__body--liveblog {
+                @include minute_page;
+                z-index: 1;
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+
+                @include mq($from: col4) {
+                    left: 50%;
+                    margin-left: -600px;
+                    width: 1200px;
+                }
+            }
+
+            // Hide elements within article
+            .article__header,
+            .article__body--liveblog__pinned {
                 display: none;
             }
 
-            // These styles are common to key event and summary blocks
-            .from-content-api {
-                h2,
-                p {
-                    color: $minute_main;
-                    margin: 0 12px 18px;
-                    max-width: 460px;
-                    padding: 0;
-                    position: relative;
-                    z-index: 10;
+            // A block represents a page of the briefing and is set to 100% of the viewport
+            .block {
+                @include minute_page;
 
-                    // on very small screens iphone4/s & iphone5/s make things more compact
-                    @media all and (max-width: 320px) {
-                        margin: 0 8px 8px;
-                    }
-
-                    // on longer small screens iphone5/s we can space things vertically a bit more
-                    @media all and (max-width: 320px) and (min-height: 481px) {
-                        margin-bottom: 12px;
-                    }
-
-                    // on landscape tablets give a bit more spacing
-                    @include mq($from: col3) {
-                        margin-left: 40px;
-                    }
-                }
-
-                p {
-                    font: bold 1.6rem/2.1rem $egyptian-text;
-
-                    // on very small screens iphone4/s & iphone5/s make things more compact
-                    @media all and (max-width: 320px) {
-                        font-size: 1.6rem;
-                        line-height: 1.8rem;
-                    }
-
-                    a {
-                        background: transparent;
-                        border-bottom: 1px solid $minute_main;
-                        color: $minute_main;
-                        position: relative;
-                        text-shadow: none;
-                    }
-                }
-
-                h2 {
-                    font: 100 3.2rem/3.4rem $egyptian-display;
-
-                    // on very small screens iphone4/s & iphone5/s make things more compact
-                    @media all and (max-width: 320px) {
-                        font-size: 3rem;
-                        line-height: 3rem;
-                    }
-
-                    .counter {
-                        color: $minute_accent;
-                        display: inline-block;
-                        font-weight: 600;
-                        margin-right: 4px;
-                    }
-                }
-
-                blockquote {
-                    max-width: 460px;
-                    width: 85%;
-
-                    // on very small screens iphone4/s & iphone5/s make things more compact
-                    @media all and (max-width: 320px) {
+                @include mq($from: col4) {
+                    &::before {
+                        background: $minute_accent;
+                        content: "";
+                        height: 2px;
+                        left: 0;
+                        position: absolute;
+                        top: 0;
                         width: 100%;
                     }
+                }
 
-                    &.quoted {
+                // This moves each block into place down the page, the header will sit at the top (i.e. 0%) so each block would
+                // move down according to it's position within the article__body, we have to consider "the-minute__header" and empty div "article__body--liveblog__pinned"
+                // so we start the loop at the 3rd child and calculate based on n-2
+                @for $i from 3 through 20 {
+                    &:nth-of-type(#{$i}) {
+                        -webkit-transform: translateY(100% * ($i - 2));
+                        transform: translateY(100% * ($i - 2));
+                    }
+                }
+
+                .block__time {
+                    display: none;
+                }
+
+                .block__body {
+                    position: absolute;
+                    @extend %cardDimensions;
+                }
+
+                .block__updated {
+                    display: none;
+                }
+
+                // These styles are common to key event and summary blocks
+                .from-content-api {
+                    h2,
+                    p {
+                        color: $minute_main;
+                        margin: 0 12px 18px;
+                        max-width: 460px;
                         padding: 0;
-                        margin: 0 12px 24px;
+                        position: relative;
+                        z-index: 10;
 
-                        // on very small screens iphone4/s & iphone5/s make things more compact 
+                        // on very small screens iphone4/s & iphone5/s make things more compact
                         @media all and (max-width: 320px) {
                             margin: 0 8px 8px;
-                            width: calc(100% - 16px);
+                        }
+
+                        // on longer small screens iphone5/s we can space things vertically a bit more
+                        @media all and (max-width: 320px) and (min-height: 481px) {
+                            margin-bottom: 12px;
                         }
 
                         // on landscape tablets give a bit more spacing
                         @include mq($from: col3) {
                             margin-left: 40px;
                         }
-
-                        &::before {
-                            content: "";
-                        }
-
-                        > p {
-                            font: 600 1.7rem/2.2rem $egyptian-display;
-                            margin: -15px 0 0 0;
-                            padding: 0;
-                            width: 100%;
-
-                            // on very small screens iphone4/s & iphone5/s make things more compact
-                            @media all and (max-width: 320px) {
-                                font-size: 1.6rem;
-                                line-height: 1.8rem;
-                            }
-
-                            &::before {
-                                color: $minute_accent;
-                                content: "\e092";
-                                display: inline-block;
-                                font: normal 3rem/1 $icon;
-                                margin-right: 6px;
-                                position: relative;
-                                top: 2px;
-                            }
-                        }
-                    }
-                }
-
-                figure.element--thumbnail {
-                    @include minute_block_images(thumbnail);
-
-                    z-index: 15;
-                    z-index: 20;
-                }
-
-                figure.element-tweet {
-                    @include minute_page(false);
-                    font-size: 0; // avoid the inline-block spacing issue
-                    text-align: center;
-                    
-                    &::before {
-                        content: "";
-                        display: inline-block;
-                        height: 100%;
-                        vertical-align: middle;
                     }
 
-                    iframe {
-                        display: inline-block !important;
-                        vertical-align: middle;
+                    p {
+                        font: bold 1.6rem/2.1rem $egyptian-text;
+
+                        // on very small screens iphone4/s & iphone5/s make things more compact
+                        @media all and (max-width: 320px) {
+                            font-size: 1.6rem;
+                            line-height: 1.8rem;
+                        }
+
+                        a {
+                            background: transparent;
+                            border-bottom: 1px solid $minute_main;
+                            color: $minute_main;
+                            position: relative;
+                            text-shadow: none;
+                        }
+                    }
+
+                    h2 {
+                        font: 100 3.2rem/3.4rem $egyptian-display;
+
+                        // on very small screens iphone4/s & iphone5/s make things more compact
+                        @media all and (max-width: 320px) {
+                            font-size: 3rem;
+                            line-height: 3rem;
+                        }
+
+                        .counter {
+                            color: $minute_accent;
+                            display: inline-block;
+                            font-weight: 600;
+                            margin-right: 4px;
+                        }
                     }
 
                     blockquote {
-                        color: $minute_main;
-                        display: inline-block;
-                        margin: 0 12px 120px;
-                        max-width: 360px;
-                        position: relative;
-                        text-align: left;
-                        vertical-align: middle;
-                        width: 75%;
+                        max-width: 460px;
+                        width: 85%;
+
+                        // on very small screens iphone4/s & iphone5/s make things more compact
+                        @media all and (max-width: 320px) {
+                            width: 100%;
+                        }
+
+                        &.quoted {
+                            padding: 0;
+                            margin: 0 12px 24px;
+
+                            // on very small screens iphone4/s & iphone5/s make things more compact 
+                            @media all and (max-width: 320px) {
+                                margin: 0 8px 8px;
+                                width: calc(100% - 16px);
+                            }
+
+                            // on landscape tablets give a bit more spacing
+                            @include mq($from: col3) {
+                                margin-left: 40px;
+                            }
+
+                            &::before {
+                                content: "";
+                            }
+
+                            > p {
+                                font: 600 1.7rem/2.2rem $egyptian-display;
+                                margin: -15px 0 0 0;
+                                padding: 0;
+                                width: 100%;
+
+                                // on very small screens iphone4/s & iphone5/s make things more compact
+                                @media all and (max-width: 320px) {
+                                    font-size: 1.6rem;
+                                    line-height: 1.8rem;
+                                }
+
+                                &::before {
+                                    color: $minute_accent;
+                                    content: "\e092";
+                                    display: inline-block;
+                                    font: normal 3rem/1 $icon;
+                                    margin-right: 6px;
+                                    position: relative;
+                                    top: 2px;
+                                }
+                            }
+                        }
+                    }
+
+                    figure.element--thumbnail {
+                        @include minute_block_images(thumbnail);
+
+                        z-index: 15;
+                        z-index: 20;
+                    }
+
+                    figure.element-tweet {
+                        @include minute_page(false);
+                        font-size: 0; // avoid the inline-block spacing issue
+                        text-align: center;
+                        
+                        &::before {
+                            content: "";
+                            display: inline-block;
+                            height: 100%;
+                            vertical-align: middle;
+                        }
+
+                        iframe {
+                            display: inline-block !important;
+                            vertical-align: middle;
+                        }
+
+                        blockquote {
+                            color: $minute_main;
+                            display: inline-block;
+                            margin: 0 12px 120px;
+                            max-width: 360px;
+                            position: relative;
+                            text-align: left;
+                            vertical-align: middle;
+                            width: 75%;
+
+                            // on landscape tablets give a bit more spacing
+                            @include mq($from: col3) {
+                                margin-left: 40px;
+                            }
+
+                            // clear standard tweet icon positioning
+                            &::before {
+                                content: "";
+                            }
+
+                            p {
+                                font: 600 1.7rem/2.2rem $egyptian-display;
+                                margin: 0;
+                                padding: 0;
+                                width: 100%;
+
+                                &::before {
+                                    color: $minute_accent;
+                                    content: "\e06b";
+                                    display: inline-block;
+                                    font: normal 2.8rem/1 $icon;
+                                    margin-right: 6px;
+                                    position: relative;
+                                    top: 4px;
+                                }
+                            }
+                        }
+                    }
+
+                    aside.element-rich-link {
+                        border: none;
+                        float: none;
+                        margin: -6px 12px 18px;
+                        max-width: 460px;
+                        padding: 0;
+                        width: calc(100% - 24px);
+
+                        // on very small screens iphone4/s & iphone5/s make things more compact
+                        @media all and (max-width: 320px) {
+                            margin: {
+                                left: 8px;
+                                right: 8px;
+                                top: -3px;
+                            }
+                            width: calc(100% - 16px);
+                        }
+
+                        // on longer small screens iphone5/s we can space things vertically a bit more
+                        @media all and (max-width: 320px) and (min-height: 481px) {
+                            margin-top: 0;
+                        }
 
                         // on landscape tablets give a bit more spacing
                         @include mq($from: col3) {
                             margin-left: 40px;
                         }
 
-                        // clear standard tweet icon positioning
-                        &::before {
-                            content: "";
-                        }
-
                         p {
-                            font: 600 1.7rem/2.2rem $egyptian-display;
                             margin: 0;
                             padding: 0;
                             width: 100%;
-
-                            &::before {
-                                color: $minute_accent;
-                                content: "\e06b";
-                                display: inline-block;
-                                font: normal 2.8rem/1 $icon;
-                                margin-right: 6px;
-                                position: relative;
-                                top: 4px;
-                            }
-                        }
-                    }
-                }
-
-                aside.element-rich-link {
-                    border: none;
-                    float: none;
-                    margin: -6px 12px 18px;
-                    max-width: 460px;
-                    padding: 0;
-                    width: calc(100% - 24px);
-
-                    // on very small screens iphone4/s & iphone5/s make things more compact
-                    @media all and (max-width: 320px) {
-                        margin: {
-                            left: 8px;
-                            right: 8px;
-                            top: -3px;
-                        }
-                        width: calc(100% - 16px);
-                    }
-
-                    // on longer small screens iphone5/s we can space things vertically a bit more
-                    @media all and (max-width: 320px) and (min-height: 481px) {
-                        margin-top: 0;
-                    }
-
-                    // on landscape tablets give a bit more spacing
-                    @include mq($from: col3) {
-                        margin-left: 40px;
-                    }
-
-                    p {
-                        margin: 0;
-                        padding: 0;
-                        width: 100%;
-                    }
-
-                    a {
-                        background: transparent;
-                        border-bottom: 1px solid $minute_main;
-                        color: $minute_main !important;
-                        display: inline;
-                        position: relative;
-                        text-shadow: none;
-
-                        &::before {
-                            content: "";
-                            display: none;
-                        }
-                    }
-                }
-            }
-
-            &.is-thumbnail {
-                .from-content-api {
-                    p {
-                        font-weight: normal; // Font weight is different for thumbnail image blocks
-
-                    }
-                    
-                    // thumbnail pages are handled differently for landscape tablets
-                    @include mq($from: col3) {
-                        padding-top: 135px;
-
-                        h2 {
-                            left: 40px;
-                            margin: 0;
-                            padding: 0;
-                            position: absolute;
-                            top: 12px;
                         }
 
-                        h2:first-child + *,
-                        > *:first-child {
-                            margin-top: -15px;
-                            padding-top: 0;
-                        }
-
-                        > p,
-                        > blockquote,
-                        > aside {
-                            margin: {
-                                left: 40px;
-                                top: 0;
-                            }
-                            width: 40%;
-                        }
-
-                        figure.element--thumbnail {
-                            background: $minute_bg;
-                            max-width: 100%;
-                            position: absolute;
-                            right: 80px;
-                            top: 135px;
-                            width: calc(55% - 80px);
+                        a {
+                            background: transparent;
+                            border-bottom: 1px solid $minute_main;
+                            color: $minute_main !important;
+                            display: inline;
+                            position: relative;
+                            text-shadow: none;
 
                             &::before {
                                 content: "";
-                                background: rgba($minute_main, .3);
-                                height: 2000px;
-                                left: -6px;
-                                position: absolute;
-                                width: 1px;
+                                display: none;
                             }
+                        }
+                    }
+                }
 
-                            .figure__inner,
-                            figcaption {
-                                position: static;
-                            }
+                &.is-thumbnail {
+                    .from-content-api {
+                        p {
+                            font-weight: normal; // Font weight is different for thumbnail image blocks
 
-                            figcaption {
-                                background: transparent;
-                                color: rgba($minute_main, .7);
-                                margin: 0 0 0 2px;
+                        }
+                        
+                        // thumbnail pages are handled differently for landscape tablets
+                        @include mq($from: col3) {
+                            padding-top: 135px;
+
+                            h2 {
+                                left: 40px;
+                                margin: 0;
                                 padding: 0;
+                                position: absolute;
+                                top: 12px;
                             }
+
+                            h2:first-child + *,
+                            > *:first-child {
+                                margin-top: -15px;
+                                padding-top: 0;
+                            }
+
+                            > p,
+                            > blockquote,
+                            > aside {
+                                margin: {
+                                    left: 40px;
+                                    top: 0;
+                                }
+                                width: 40%;
+                            }
+
+                            figure.element--thumbnail {
+                                background: $minute_bg;
+                                max-width: 100%;
+                                position: absolute;
+                                right: 80px;
+                                top: 135px;
+                                width: calc(55% - 80px);
+
+                                &::before {
+                                    content: "";
+                                    background: rgba($minute_main, .3);
+                                    height: 2000px;
+                                    left: -6px;
+                                    position: absolute;
+                                    width: 1px;
+                                }
+
+                                .figure__inner,
+                                figcaption {
+                                    position: static;
+                                }
+
+                                figcaption {
+                                    background: transparent;
+                                    color: rgba($minute_main, .7);
+                                    margin: 0 0 0 2px;
+                                    padding: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // These styles are for key event blocks only
+                &.block--live-key-event {
+                    .from-content-api {
+                        @include minute_flex_content; // key events generally stick to the bottom
+
+                        // This controls the red bar above the first child  & tweets which are targetted differently
+                        > :first-child,
+                        figure.element-tweet blockquote {
+                            margin-top: 12px;
+                            padding-top: 12px;
+                            position: relative;
+
+                            // on very small screens iphone4/s & iphone5/s make things more compact
+                            @media all and (max-width: 320px) {
+                                margin-top: 8px;
+                            }
+
+                            &::before {
+                                background-color: $minute_accent;
+                                content: "";
+                                height: 5px;
+                                left: -1px;
+                                position: absolute;
+                                top: 0;
+                                width: 50%;
+                            }
+                        }
+
+                        figure:not(.element--thumbnail) {
+                            @include minute_block_images(key-event);
+                        }
+                    }
+
+                    // Special case for key event blocks containing a thumbnail
+                    &.is-thumbnail {
+                        .from-content-api {
+                            height: 50%;
+                            justify-content: flex-start;
+                        }
+                    }
+
+                    // Clears content from the bottom red bar (only happens text only key events)
+                    &.is-textonly {
+                        .from-content-api {
+                            height: calc(100% - 60px);
+                            overflow: hidden;
+                            padding-bottom: 60px;
+                        }
+                    }
+                }
+
+                // These styles are for summary blocks only
+                &.block--live-summary {
+                    .from-content-api {
+                        > :first-child {
+                            margin-top: 0;
+                            padding-top: 12px;
+
+                            // on very small screens iphone4/s & iphone5/s make things more compact
+                            @media all and (max-width: 320px) {
+                                padding-top: 8px;
+                            }
+                        }
+
+                        figure:not(.element--thumbnail) {
+                            @include minute_block_images(summary);
                         }
                     }
                 }
             }
 
-            // These styles are for key event blocks only
-            &.block--live-key-event {
-                .from-content-api {
-                    @include minute_flex_content; // key events generally stick to the bottom
+            .block--live-key-event {
+                border: none;
+            }
+        }
 
-                    // This controls the red bar above the first child  & tweets which are targetted differently
-                    > :first-child,
-                    figure.element-tweet blockquote {
+        .related-content {
+            position: absolute;
+            top: 100%;
+            width: 100%;
+        }
+
+        .loading--liveblog,
+        .more--live-blogs,
+        .tags,
+        .comments {
+            display: none;
+        }
+    }
+
+    &.advert-config--tablet {
+        height: 100%;
+
+        .article--liveblog {
+            margin: 0;
+            padding: 0;
+            border: 0;
+          
+            @include mq($from: col4) {
+                background: darken($minute_bg, 10%);
+            }
+
+            .article__header,
+            .article__body--liveblog__pinned {
+                display: none;
+            }
+
+             .article__body--liveblog {
+                margin: 0;
+                padding: 0;
+                border: 0;
+                z-index: 1;
+
+                @include mq($from: col4) {
+                    left: 50%;
+                    margin-left: -600px;
+                    width: 1200px;
+                }
+
+                .minute-logo-container {
+                    display: block;
+                    position: absolute;
+                    height: 200px;
+                    width: 200px;
+                    top: 24px;
+                    left: 40%;
+                    z-index: 1;
+                    margin-left: -100px;
+
+                    .type{
+                        position: absolute;
+                        top: 80px;
+                        left: 30%;
+                        margin-left: -144px;
+
+                        p {
+                            font: 100 5.8rem/5.8rem $egyptian-display;
+                            float: left;
+                            color: white;
+                        }
+
+                        p:last-of-type {
+                            margin-left: 22px;
+                        }
+                    }
+                    .minute-logo {
+                        height: 100%;
+                        width: 100%;
+
+                        $a-duration: 12s;
+                        $a-total-lines: 62;
+
+                        .the__minute__line {
+                            stroke: white;
+                            opacity: 1;
+                            animation: line 12s linear;
+                            animation-iteration-count: infinite;
+                            animation-fill-mode: forwards;
+                            -webkit-animation: line 12s linear;
+                            -webkit-animation-iteration-count: infinite;
+                            -webkit-animation-fill-mode: forwards;
+                        }
+
+                        @-webkit-keyframes line {
+                            @include membership_animation;
+                        }
+                        
+                        @keyframes line {
+                            @include membership_animation;
+                        }
+
+                        @for $i from 1 to $a-total-lines {
+                            .the__minute__line--#{$i} {
+                                animation-delay: (($a-duration / 2) / $a-total-lines) * $i;
+                                -webkit-animation-delay: (($a-duration / 2) / $a-total-lines) * $i;
+                            }
+                        }
+                    }
+                }
+
+                .minute-vertical-rule {
+                    display: block;
+                    position: absolute; 
+                    top: 228px; 
+                    bottom:0; 
+                    left: 40%; 
+                    width: 6px; 
+                    z-index: 11;
+                    background-image: url('../img/minute-dash.svg');
+                    margin-left: -2px;
+                }
+
+                /* Minute Header */
+                .the-minute__header {
+                    @include minute_flex_content;
+                    position: relative;
+                    height: 100vh;
+                    margin: 0;
+                    padding: 0;
+                    border: 0;
+
+                    // This controls the red bar above the second child
+                    > :first-child {
                         margin-top: 12px;
                         padding-top: 12px;
                         position: relative;
 
-                        // on very small screens iphone4/s & iphone5/s make things more compact
-                        @media all and (max-width: 320px) {
-                            margin-top: 8px;
-                        }
-
                         &::before {
                             background-color: $minute_accent;
                             content: "";
-                            height: 5px;
-                            left: -1px;
+                            height: 55px;
                             position: absolute;
-                            top: 0;
-                            width: 50%;
+                            top: -60px;
+                            width: 115%;
+                            left: -48px;
                         }
                     }
 
-                    figure:not(.element--thumbnail) {
-                        @include minute_block_images(key-event);
+                    .the-minute__headline,
+                    .the-minute__standfirst {
+                        color: $minute_main;
+                        width: 50%;
+                        margin-left: 40%;
+                        z-index: 10;
+                        padding-left: 8px;
                     }
-                }
 
-                // Special case for key event blocks containing a thumbnail
-                &.is-thumbnail {
-                    .from-content-api {
-                        height: 50%;
-                        justify-content: flex-start;
-                    }
-                }
-
-                // Clears content from the bottom red bar (only happens text only key events)
-                &.is-textonly {
-                    .from-content-api {
-                        height: calc(100% - 60px);
-                        overflow: hidden;
-                        padding-bottom: 60px;
-                    }
-                }
-            }
-
-            // These styles are for summary blocks only
-            &.block--live-summary {
-                .from-content-api {
-                    > :first-child {
+                    .the-minute__headline {
+                        font: 100 4.3rem/4.3rem $egyptian-display;
                         margin-top: 0;
-                        padding-top: 12px;
+                        padding-top: 0;
+                        margin-bottom: 12px;
+                    }
 
-                        // on very small screens iphone4/s & iphone5/s make things more compact
-                        @media all and (max-width: 320px) {
-                            padding-top: 8px;
+                    .the-minute__standfirst {
+                        font: 500 1.8rem/2.2rem $egyptian-text;
+                        margin-bottom: 36px;
+
+                        .the-minute__date {
+                            color: $minute_accent;
+                            display: block;
+                            margin-bottom: 4px;
+                            font: 600 1.8rem/2.2rem $egyptian-display;
                         }
                     }
 
-                    figure:not(.element--thumbnail) {
-                        @include minute_block_images(summary);
+                    .the-minute__main-media {
+                        @include minute_page;
+
+                        figure {
+                            margin: 0;
+                            position: relative;
+                            height: 100%;
+
+                            &::before {
+                                background: linear-gradient(transparent, transparent 25%, rgba(#000, .8)); // key event (and header) gradient goes light to dark
+                                content: "";
+                                height: 100%;
+                                left: 0;
+                                position: absolute;
+                                width: 100%;
+                                z-index: 1;
+                            }
+
+                            .element__inner {
+                                @include minute_page;
+                                padding-bottom: 0 !important;
+
+                                &.the-minute__background-media {
+                                    @include background_image;
+                                }
+                            }
+
+                            img {
+                                object-fit: cover;
+                                height: 100%;
+                                width: 100%;
+                            }
+                        }
+
+                        figcaption {
+                            display: none;
+                        }
                     }
+                }
+
+                /* Minute Blocks */
+                .block {
+                    border: 0;
+                    padding: 0;
+                    margin: 0;
+                    background: $minute_bg;
+
+                    .block__updated,
+                    .block__time {
+                        display: none;
+                    }
+
+                    /* Common block styles */
+                    &.is-textonly,
+                    &.is-coverimage,
+                    &.is-thumbnail,
+                    &.is-video {
+                        .block__body {
+                            width: 100%;
+
+                            .from-content-api {
+                                @include minute_flex_content;
+                                height: auto;
+                                margin-top: 0;
+                                position: relative;
+
+                                h2 {
+                                    .counter {
+                                        margin-bottom: -12px;
+                                        display: block;
+                                        font: 100 8rem/8.4rem $egyptian-display;
+
+                                        &::after {
+                                            content:"\A";
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        &.flex-block {
+                            .block__body {
+                                height: 100%;
+
+                                .from-content-api {
+                                    height: 100%;
+                                } 
+                            }
+                        }              
+                    }
+
+                    /* Common image & video block styles */
+                    &.is-coverimage,
+                    &.is-thumbnail,
+                    &.is-video {
+                        .block__body {
+                            .from-content-api {
+                                figure {
+                                    position: absolute;
+
+                                    .figure__inner {
+                                        margin: 0 !important;
+                                        padding: 0 !important;
+                                    }
+                                }
+                            } 
+                        }              
+                    }
+
+                    /* Common cover image & video block styles */
+                    &.is-coverimage,
+                    &.is-video {
+                        .block__body {
+                            .from-content-api {
+                                -webkit-justify-content: flex-start;
+                                justify-content: flex-start;
+
+                                &::before {
+                                    content: "";
+                                    min-height: 74px;
+                                    -webkit-flex: 1 1;
+                                    flex: 1 1;
+                                }
+
+                                h2,
+                                p {
+                                    color: $minute_main;
+                                    padding: 0 12px 0 24px;
+                                    width: 40%;
+                                }
+
+                                h2 {
+                                    font: 600 1.7rem/2.2rem $egyptian-text;
+                                }
+
+                                p {
+                                    font: 1.6rem/2.1rem $egyptian-text;
+
+                                    a {
+                                        background: transparent;
+                                        border-bottom: 1px solid $minute_main;
+                                        color: $minute_main;
+                                        position: relative;
+                                        text-shadow: none;
+                                    }
+                                }
+
+                                p:last-of-type {
+                                    margin-bottom: 0;
+                                }
+
+                                figure {
+                                    width: 55%;
+                                    top: 48px;
+
+                                    &.figure-wide {
+                                        margin: 0;
+                                    }
+                                }
+                            }                     
+                        }
+                    }
+
+                    /* Cover image block styles */
+                    &.is-coverimage {
+                        .block__body {
+                            .from-content-api {
+                                figure {
+                                    left: 40%;
+
+                                    > :first-child {
+                                        margin-top: 12px;
+                                        padding-top: 12px;
+                                        position: relative;
+
+                                        &::before {
+                                            background-color: $minute_accent;
+                                            content: "";
+                                            position: absolute;
+                                            height: 55px;
+                                            width: 125%;
+                                            margin-top: -30px;
+                                            z-index: 1;
+                                            left: -100%;
+                                        }
+                                    }
+
+                                    figcaption {
+                                        color: rgba(255, 255, 255, .9);
+                                        background-color: rgba(0, 0, 0, .4);
+                                        position: absolute;
+                                        bottom: 0;
+                                        right: 0;
+                                        padding-right: 12px;
+                                        padding-left: 12px;
+                                        border-bottom: none;
+                                    }
+                                }
+                            }
+                        }
+
+                        &.has-quote {
+                            .block__body {
+                                .quoted {
+                                    margin-top: 24px;
+                                    margin-left: 0;
+                                    padding-top: 12px;
+
+                                    &::before {
+                                        color: $minute_accent;
+                                        font-size: 4rem;
+                                        top: -20px;
+                                        left: 10%;
+                                    }                                }
+
+                                p {
+                                    margin-top: 0;
+                                }
+                            }
+                        }
+                    }
+
+                    &.is-video {
+                        .block__body {
+                            .from-content-api {
+                                h2,
+                                p {
+                                    padding-left: 12px;
+                                    margin-left: 60%;
+                                }
+
+                                h2 {
+                                    margin-bottom: 0;
+                                }
+
+                                p:first-child {
+                                    margin-top:  12px;
+                                }
+
+                                figure {
+                                    left: 5%;
+
+                                    &::before {
+                                        background-color: $minute_accent;
+                                        content: "";
+                                        position: absolute;
+                                        height: 55px;
+                                        width: 100%;
+                                        margin-top: -30px;
+                                        z-index: 1;
+                                        margin-left: 75%;
+                                    }
+
+                                    .video-URL {
+                                        background: $minute_bg;
+                                    }                              }
+                            }
+                        }
+                    }
+
+                    /* Thumbnail image block styles */
+                    &.is-thumbnail {
+                        .block__body {
+                                .from-content-api {
+                                    -webkit-justify-content: flex-start;
+                                    justify-content: flex-start;
+
+                                    &::before {
+                                        content: "";
+                                        min-height: 74px;
+                                        max-height: 74px;
+                                        -webkit-flex: 1 1;
+                                        flex: 1 1;
+                                    }
+
+                                    h2,
+                                    p {
+                                        color: $minute_main;
+                                        padding: 0 12px;
+                                        width: 45%;
+                                        margin-left: 45%;
+                                    }
+
+                                    h2 {
+                                        margin-top: 0;
+                                        font: 600 1.7rem/2.2rem $egyptian-text;
+                                    }
+
+                                    p {
+                                        font: 1.6rem/2.1rem $egyptian-text; 
+
+                                        a {
+                                            background: transparent;
+                                            border-bottom: 1px solid $minute_main;
+                                            color: $minute_main;
+                                            position: relative;
+                                            text-shadow: none;
+                                        }
+                                    }
+
+                                    p:first-of-type {
+                                        margin-top: 8px;
+                                    }
+
+                                    h2+p {
+                                        margin-top: -12px !important;
+                                    }
+
+                                    figure {
+                                        margin: 0; 
+                                        width: 40%;
+                                        top: 48px;
+                                        left: 5%;
+                                        max-width: none;
+                                        background: $minute_bg;
+
+                                        &::before {
+                                            background-color: $minute_accent;
+                                            content: "";
+                                            height: 55px;
+                                            position: absolute;
+                                            top: -30px;
+                                            width: 175%;
+                                        }
+                                        
+                                        &.figure-wide {
+                                            margin: 0;
+                                        }
+
+                                        figcaption {
+                                            padding-bottom: 0;
+                                            margin-bottom: 0;
+                                            border: none;
+                                            font: 1.4rem/1.7rem $agate-sans; 
+                                            color: rgba(255, 255, 255, .9);
+                                            width: 80%;
+
+                                            span {
+                                                display: inline;
+                                            }
+                                        }
+                                    }
+                                }
+                        }
+
+                        &:not(.has-quote) {
+                            .from-content-api {
+                                figure {
+                                    &::before {
+                                        left: 51%;
+                                    }
+                                }
+                            }
+                        }
+
+                        &.has-quote {
+                            .block__body {
+                                .from-content-api {
+                                    figure {
+                                        &::before {
+                                            left: -158%;
+                                        }
+                                    }
+                                }
+
+                                .quoted {
+                                    margin: 36px 0 0 5%;
+                                    width: 35%;
+                                    padding-top: 12px;
+
+                                    &::before {
+                                        color: $minute_accent;
+                                        font-size: 4rem;
+                                        top: -20px;
+                                        left: 20%;
+                                    }
+
+                                    p {
+                                        color: $minute_main;
+                                        font: 100 2rem/2.2rem $egyptian-display;
+                                        padding-left: 0;
+                                        margin: 0;
+                                        width: 100%;
+                                    }
+                                }
+
+                                p,
+                                h2 {
+                                    width: 35%;
+                                    margin-left: 5%;
+                                    padding-left: 0;
+                                }
+
+                                figure {
+                                    width: 35%;
+                                    left: 60%;
+                                }
+                            }
+                        }
+                    }
+
+                    /* Text only block styles */
+                    &.is-textonly {
+                        .block__body {
+                            height: auto;
+
+                            .from-content-api {
+                                width: 30%;
+                                margin-left: 10%;
+
+                                &::before {
+                                    background-color: #ea291f;
+                                    content: "";
+                                    height: 55px;
+                                    width: 110%;
+                                    margin: 20px 0 12px 0;
+                                }
+
+                                h2,
+                                p {
+                                    color: $minute_main;
+                                    padding: 0 12px 0 0;
+                                }
+
+                                h2 {
+                                    font: 600 1.7rem/2.2rem $egyptian-text;
+                                }
+
+                                p {
+                                    font: 1.6rem/2.1rem $egyptian-text;
+
+                                    a {
+                                        background: transparent;
+                                        border-bottom: 1px solid $minute_main;
+                                        color: $minute_main;
+                                        position: relative;
+                                        text-shadow: none;
+                                    }
+                                }
+                            }
+                        }
+
+                        &.has-quote {
+                            .block__body {
+                                .from-content-api {
+                                    width: 35%;
+                                    margin-left: 5%;
+
+                                    .quoted {
+                                        margin-top: 24px;
+                                        padding-top: 12px;
+
+                                        &::before {
+                                            color: $minute_accent;
+                                            font-size: 4rem;
+                                            top: -20px;
+                                        }
+
+                                        p {
+                                            color: $minute_main;
+                                            font: 100 2rem/2.2rem $egyptian-display;
+                                            padding-left: 0;
+                                            margin: 0;
+                                        }
+                                    }
+
+                                    p,
+                                    h2 {
+                                        padding-left: 0;
+                                    }
+
+                                    p:last-of-type {
+                                        margin-bottom: 0;
+                                    }
+                                }  
+                            }
+                        }
+
+                        &.has-tweet {
+                            .block__body {
+                                .from-content-api {
+                                    width: 55%;
+                                    margin-left: 40%;
+
+                                    &::before {
+                                        width: 120%;
+                                        margin-left: -10%;
+                                    }
+
+                                    h2 {
+                                        padding-left: 8px;
+                                    }
+
+                                    .twitter-tweet {
+                                        padding-left: 8px;
+                                        margin-bottom: 0;
+
+                                        &::before {
+                                            content: '';
+                                        }
+
+                                        .twitter-wrapper {
+                                            margin-bottom: 12px;
+
+                                            &::before {
+                                                color: #ea291f;
+                                                content: "\e06b";
+                                                display: inline-block;
+                                                font: 400 2.8rem/1 "Guardian Icons",Georgia,serif;
+                                                margin-right: 6px;
+                                                float: left;
+                                            }
+
+                                            span,
+                                            a {
+                                                font: 1.6rem/1.8rem $agate-sans;
+                                                color: $minute_main;
+                                            }
+
+                                            span {
+                                                font-weight: 600;
+                                                display: block;
+                                            }
+
+                                            a {
+                                                text-decoration: underline;
+                                            }
+                                        }
+
+                                        p {
+                                            margin-bottom: 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }                    
+                    }
+                }
+
+                .block:last-of-type {
+                    padding-bottom: 36px;
                 }
             }
         }
 
-        .block--live-key-event {
-            border: none;
+        .meta,
+        .loading--liveblog,
+        .more--live-blogs,
+        .tags,
+        .comments {
+            display: none;
         }
-    }
-
-    .related-content {
-        position: absolute;
-        top: 100%;
-        width: 100%;
-    }
-
-    .loading--liveblog,
-    .more--live-blogs,
-    .tags,
-    .comments {
-        display: none;
     }
 }
