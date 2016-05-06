@@ -24,16 +24,18 @@ define([
 
             domReady(this.onDomReady.bind(this));
         },
+
         loadCss: function (url) {
             var basePath = document.body.getAttribute('data-template-directory'),
-                link = document.createElement("link");
+                link = document.createElement('link');
 
-            link.type = "text/css";
-            link.rel = "stylesheet";
+            link.type = 'text/css';
+            link.rel = 'stylesheet';
             link.href = basePath + url;
 
-            document.getElementsByTagName("head")[0].appendChild(link);
+            document.getElementsByTagName('head')[0].appendChild(link);
         },
+        
         onDomReady: function () {
             var layout,
                 contentType = document.body.getAttribute('data-content-type');

@@ -18,7 +18,6 @@ requirejs.config({
         d3: 'node_modules/d3/d3',
         domReady: 'node_modules/domready/ready',
         mobileSlider: 'ArticleTemplates/assets/js/components/mobile-range-slider',
-        throttleDebounce: 'ArticleTemplates/assets/js/components/throttle-debounce',
         flipSnap: 'ArticleTemplates/assets/js/components/flipsnap',
         fastClick: 'node_modules/fastclick/lib/fastclick',
         qwery: 'node_modules/qwery/qwery',
@@ -27,6 +26,7 @@ requirejs.config({
         raven: 'node_modules/raven-js/dist/raven',
         iscroll: 'ArticleTemplates/assets/js/components/iscroll',
         class: 'ArticleTemplates/assets/js/components/class',
+        lodash: 'ArticleTemplates/assets/js/components/lodash',
         // squire for stubbing modules
         squire: 'node_modules/squirejs/src/Squire'
     },

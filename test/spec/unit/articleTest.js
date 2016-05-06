@@ -15,7 +15,8 @@ define([
             twitterMock,
             witnessMock,
             outbrainMock,
-            quizMock;
+            quizMock,
+            debounceMock;
 
         beforeEach(function() {
             layoutMock = Class.extend({
@@ -34,6 +35,7 @@ define([
             quizMock = {
                 init: sinon.spy()
             };
+            debounceMock = sinon.spy(),
             sandbox = sinon.sandbox.create();
             injector = new Squire();
         });

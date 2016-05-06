@@ -406,7 +406,7 @@ define([
 
         fontResize: function (current, replacement) {
             var replacementStr = replacement,
-                replacementInt = replacementStr.split("-");
+                replacementInt = replacementStr.split('-');
 
             document.body.classList.remove(current);
             document.body.classList.add(replacement);  
@@ -584,16 +584,16 @@ define([
             var i,
                 isPortrait,
                 thumbnailImage,
-                thumbnailFigures = document.getElementsByClassName("element-image element--thumbnail");
+                thumbnailFigures = document.getElementsByClassName('element-image element--thumbnail');
 
             for (i = 0; i < thumbnailFigures.length; i++) {
-                thumbnailImage = thumbnailFigures[i].getElementsByTagName("img")[0];
-                isPortrait = parseInt(thumbnailImage.getAttribute("height"), 10) > parseInt(thumbnailImage.getAttribute("width"), 10);
+                thumbnailImage = thumbnailFigures[i].getElementsByTagName('img')[0];
+                isPortrait = parseInt(thumbnailImage.getAttribute('height'), 10) > parseInt(thumbnailImage.getAttribute('width'), 10);
 
                 if (isPortrait) {
-                    thumbnailFigures[i].classList.add("portrait-thumbnail");
+                    thumbnailFigures[i].classList.add('portrait-thumbnail');
                 } else {
-                    thumbnailFigures[i].classList.add("landscape-thumbnail");
+                    thumbnailFigures[i].classList.add('landscape-thumbnail');
                 }
             }
         },
@@ -604,19 +604,19 @@ define([
                 elemsToDelete, j;
 
             tones = {
-                "tone--media": {
-                    "video": "meta__misc",
-                    "gallery": "meta__misc",
-                    "audio": "byline--mobile"
+                'tone--media': {
+                    'video': 'meta__misc',
+                    'gallery': 'meta__misc',
+                    'audio': 'byline--mobile'
                 },
-                "tone--news": "meta",
-                "tone--feature1": "meta",
-                "tone--feature2": "meta",
-                "tone--feature3": "meta",
-                "tone--podcast": "byline--media"
+                'tone--news': 'meta',
+                'tone--feature1': 'meta',
+                'tone--feature2': 'meta',
+                'tone--feature3': 'meta',
+                'tone--podcast': 'byline--media'
             };
 
-            if (document.body.classList.contains("is_advertising")) {
+            if (document.body.classList.contains('is_advertising')) {
                 for (tone in tones) {
                     if (tones.hasOwnProperty(tone)) {
                         if (document.body.classList.contains(tone)) {
@@ -638,11 +638,11 @@ define([
                 }
 
                 if (parentNodeClass) {
-                    bylineElems = document.getElementsByClassName("byline");
+                    bylineElems = document.getElementsByClassName('byline');
                     if (bylineElems.length && !bylineElems[0].children.length) {
                         elemsToDelete = document.body.getElementsByClassName(parentNodeClass);
                         for (j = 0; j < elemsToDelete.length; j++) {
-                            if (elemsToDelete[j].parentNode && !elemsToDelete[j].getElementsByClassName("sponsorship").length) {
+                            if (elemsToDelete[j].parentNode && !elemsToDelete[j].getElementsByClassName('sponsorship').length) {
                                 elemsToDelete[j].parentNode.removeChild(elemsToDelete[j]);
                             }
                         }
