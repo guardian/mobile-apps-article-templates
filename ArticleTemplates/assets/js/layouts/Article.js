@@ -30,10 +30,12 @@ define([
         },
 
         insertOutbrain: function () {
-            window.articleOutbrainInserter = function () {
-                outbrain.load();
-            };
+            window.articleOutbrainInserter = this.loadOutbrain;
             window.applyNativeFunctionCall('articleOutbrainInserter');
+        },
+
+        loadOutbrain: function () {
+            outbrain.load();
         },
 
         loadQuizzes: function () {
