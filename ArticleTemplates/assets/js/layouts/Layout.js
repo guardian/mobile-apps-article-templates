@@ -25,11 +25,7 @@ define([
         // use event delegation
         // replace click events with something more performant
         // test
-            // this.articleContentType()
-            // this.insertTags()
             // this.videoPositioning() on android
-            // this.loadEmbeds() && this.fixVineWidth()
-            // this.showTabs() on football/cricket templates
         // liveblog.js updates
             // window.articleImageSizer() should now call this.imageSizer()
             // window.loadEmbeds() should now call this.loadEmbeds()
@@ -166,21 +162,23 @@ define([
         },
 
         insertTags: function () {
-            var tagsList = document.querySelector('.tags .inline-list');
-
-            window.articleTagInserter = function (html) {
-                if (tagsList) {
-                    tagsList.innerHTML += html;
-                }
-
-                MoreTags.refresh();
-            };
+            window.articleTagInserter = this.articleTagInserter;
 
             window.applyNativeFunctionCall('articleTagInserter');
         },
 
+        articleTagInserter: function (html) {
+            var tagsList = document.querySelector('.tags .inline-list');
+
+            if (tagsList) {
+                tagsList.innerHTML += html;
+            }
+
+            MoreTags.refresh();
+        },
+
         videoPositioning: function () {
-            window.videoPositioning = this.reportVideoPositions;
+            window.videoPositioning = this.reportVideoPositions.bind(this);
             window.applyNativeFunctionCall('videoPositioning');
         },
 

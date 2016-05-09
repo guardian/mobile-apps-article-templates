@@ -16,13 +16,6 @@ define([
 ) {
     'use strict';
 
-    // DES-52 TODO
-        // use event delegation
-        // replace click events with something more performant
-        // test
-            // this.richLinkTracking()
-            // this.onQuoteOverlayClick()
-
     var Article = Layout.extend({
         init: function () {
             this._super.apply(this, arguments);
@@ -236,7 +229,9 @@ define([
         },
 
         loadMembershipCreative: function () {
-            this.membershipCreative = new MembershipCreative();
+            var membershipCreative;
+
+            membershipCreative = new MembershipCreative();
         }
     });
 
