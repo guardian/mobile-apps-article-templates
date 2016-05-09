@@ -4,13 +4,15 @@ define([
     'modules/twitter',
     'modules/witness',
     'modules/outbrain',
-    'modules/quiz'
+    'modules/quiz',
+    'modules/MembershipCreative'
 ], function (
     Layout,
     twitter,
     witness,
     outbrain,
-    quiz
+    quiz,
+    MembershipCreative
 ) {
     'use strict';
 
@@ -31,6 +33,7 @@ define([
             this.loadQuizzes();
             this.formatImmersive();
             this.richLinkTracking();
+            this.loadMembershipCreative();
         },
 
         insertOutbrain: function () {
@@ -145,16 +148,16 @@ define([
             var i,
                 quoteOverlay,
                 quoteOverlays = document.querySelectorAll('.quote--overlay'),
-                onImmersiveScrollBound = GU.util.debounce(this.onImmersiveScroll.bind(this), 10),
-                onResizeBound = GU.util.debounce(this.onResize.bind(this), 100);
+                onImmersiveScrollBound = this.onImmersiveScroll.bind(this),
+                onResizeBound = this.onResize.bind(this);
 
             for (i = 0; i < quoteOverlays.length; i++) {
                 quoteOverlay = quoteOverlays[i];
                 quoteOverlay.addEventListener('click', this.onQuoteOverlayClick.bind(this, quoteOverlay));
             }
 
-            window.addEventListener('scroll', onImmersiveScrollBound);
-            window.addEventListener('resize', onResizeBound);
+            window.addEventListener('scroll', GU.util.debounce(onImmersiveScrollBound), 10);
+            window.addEventListener('resize', GU.util.debounce(onResizeBound), 100);
         },
 
         onQuoteOverlayClick: function (quoteOverlay, evt) {
@@ -230,6 +233,10 @@ define([
                     }
                 }
             }
+        },
+
+        loadMembershipCreative: function () {
+            this.membershipCreative = new MembershipCreative();
         }
     });
 

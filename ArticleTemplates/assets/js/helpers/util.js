@@ -36,7 +36,7 @@ define([
                 iframe.style.display = 'none';
                 iframe.src = url;
 
-                modules.doIframeMessage(iframe);
+                GU.util.doIframeMessage(iframe);
             },
 
             doIframeMessage: function (elem) {
@@ -46,6 +46,38 @@ define([
 
             isOnline: function () {
                 return !document.body.classList.contains('offline') && navigator.onLine;
+            },
+
+            getClosestParentWithClass: function (elem, className) {
+                while (elem && (!elem.classList || !elem.classList.contains(className))) {
+                    elem = elem.parentNode;
+                }
+
+                return elem;
+            },
+
+            getClosestParentWithTag: function (elem, tagName) {
+                while (elem && (elem.tagName !== tagName)) {
+                    elem = elem.parentNode;
+                }
+
+                return elem;
+            },
+
+            getClosestParentWithData: function (elem, dataKey, dataVals) {
+                if (typeof dataVals === 'string') {
+                    dataVals = [dataVals];
+                }
+
+                while (elem && (!elem.dataset || dataVals.indexOf(elem.dataset[dataKey]) === -1)) {
+                    elem = elem.parentNode;
+                }
+
+                return elem;
+            },
+
+            getStringFromUnicodeVal: function (unicodeVal) {
+                return String.fromCharCode(unicodeVal);
             }
         };
 

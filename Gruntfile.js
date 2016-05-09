@@ -61,7 +61,6 @@ module.exports = function(grunt) {
                             { name: 'bootstraps/common'},
                             { name: 'app' },
                             { name: 'smoothScroll' },
-                            // DES-52
                             { name: 'layouts/Layout'},
                             { name: 'layouts/Article'}
                         ]

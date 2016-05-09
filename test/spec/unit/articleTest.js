@@ -16,7 +16,7 @@ define([
             witnessMock,
             outbrainMock,
             quizMock,
-            debounceMock;
+            membershipCreativeMock;
 
         beforeEach(function() {
             layoutMock = Class.extend({
@@ -34,8 +34,8 @@ define([
             };
             quizMock = {
                 init: sinon.spy()
-            };
-            debounceMock = sinon.spy(),
+            },
+            membershipCreativeMock = function () {};
             sandbox = sinon.sandbox.create();
             injector = new Squire();
         });
@@ -51,6 +51,7 @@ define([
                 .mock('modules/witness', witnessMock)
                 .mock('modules/outbrain', outbrainMock)
                 .mock('modules/quiz', quizMock)
+                .mock('modules/MembershipCreative', membershipCreativeMock)
                 .require(['ArticleTemplates/assets/js/layouts/Article'], function (Article) {
                     sandbox.stub(Article.prototype, 'insertOutbrain');
                     sandbox.stub(Article.prototype, 'loadQuizzes');
