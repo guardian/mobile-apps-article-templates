@@ -363,7 +363,7 @@ module.exports = function(grunt) {
     // grunt.task.run('notify_hooks');
     // grunt.registerTask('develop', ['build', 'express', 'watch']);
 
-    grunt.registerTask('buildJS', ['jshint', 'karma', 'initRequireJS','jshint', 'lodash', 'requirejs']);
+    grunt.registerTask('buildJS', ['lodash', 'jshint', 'karma', 'initRequireJS', 'requirejs']);
 
     grunt.registerTask('buildCSS', ['scsslint','sass:dev','cssmin']);
 

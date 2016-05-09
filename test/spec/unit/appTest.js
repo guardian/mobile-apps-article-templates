@@ -90,9 +90,9 @@ define([
                     .mock('modules/monitor', monitorMock)
                     .mock('modules/ads', adsMock)
                     .require(['ArticleTemplates/assets/js/app'], function (App) {
-                        sandbox.stub(App.prototype, 'init');
+                        // sandbox.stub(App.prototype, 'init');
 
-                        app = new App();
+                        // app = new App();
 
                         // app.onDomReady();
 
