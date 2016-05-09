@@ -7,7 +7,7 @@ define([
 
     describe('ArticleTemplates/assets/js/app', function() {
         var app, domReadyMock, monitorMock, 
-            adsMock, sandbox, injector;
+            adsMock, utilMock, sandbox, injector;
 
         beforeEach(function () {
             domReadyMock = sinon.spy();
@@ -15,6 +15,9 @@ define([
             adsMock = {};
             sandbox = sinon.sandbox.create();
             injector = new Squire();
+            utilMock = {
+                init: sinon.spy()
+            };
         });
 
         afterEach(function () {
@@ -34,6 +37,7 @@ define([
                     .mock('domReady', domReadyMock)
                     .mock('modules/monitor', monitorMock)
                     .mock('modules/ads', adsMock)
+                    .mock('helpers/util', utilMock)
                     .require(['ArticleTemplates/assets/js/app'], function (App) {
                         sandbox.stub(App.prototype, 'loadCss');
 
@@ -50,6 +54,7 @@ define([
                     .mock('domReady', domReadyMock)
                     .mock('modules/monitor', monitorMock)
                     .mock('modules/ads', adsMock)
+                    .mock('helpers/util', utilMock)
                     .require(['ArticleTemplates/assets/js/app'], function (App) {
                         sandbox.stub(App.prototype, 'loadCss');
 
@@ -69,6 +74,7 @@ define([
                     .mock('domReady', domReadyMock)
                     .mock('modules/monitor', monitorMock)
                     .mock('modules/ads', adsMock)
+                    .mock('helpers/util', utilMock)
                     .require(['ArticleTemplates/assets/js/app'], function (App) {
                         sandbox.stub(App.prototype, 'loadCss');
 
@@ -89,6 +95,7 @@ define([
                     .mock('domReady', domReadyMock)
                     .mock('modules/monitor', monitorMock)
                     .mock('modules/ads', adsMock)
+                    .mock('helpers/util', utilMock)
                     .require(['ArticleTemplates/assets/js/app'], function (App) {
                         // sandbox.stub(App.prototype, 'init');
 

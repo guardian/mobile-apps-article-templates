@@ -4,14 +4,12 @@ define([
     'bean',
     'bonzo',
     'qwery',
-    'modules/$',
-    'lodash/debounce'
+    'modules/$'
 ], function (
     bean,
     bonzo,
     qwery,
-    $,
-    debounce
+    $
 ) {
     var timeoutId;
     var body = qwery('.article__body');
@@ -26,7 +24,7 @@ define([
 
         if (!theMinute) {
             checkForTweets(document.body);
-            bean.on(window, 'scroll', debounce(enhanceTweets, 100));
+            bean.on(window, 'scroll', GU.util.debounce(enhanceTweets, 100));
         }
     }
 

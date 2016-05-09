@@ -4,12 +4,14 @@ define([
     'class',
     'domReady',
     'modules/monitor',
-    'modules/ads'
+    'modules/ads',
+    'helpers/util'
 ], function(
     Class,
     domReady,
     monitor,
-    Ads
+    Ads,
+    util
 ) {
     'use strict';
 
@@ -17,6 +19,9 @@ define([
         init: function () {
             var scriptTag = document.getElementById('gu'),
                 skipStyle = scriptTag.getAttribute('data-skip-style');
+
+            // initialise util library available as GU.util
+            util.init();
 
             if (!skipStyle) {
                 this.loadCss('assets/css/style-async.css');

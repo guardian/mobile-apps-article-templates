@@ -26,5 +26,7 @@ require.config({
 });
 
 require(['app'], function(App) {
+    window.GU = {};
+
     var app = new App();
 });

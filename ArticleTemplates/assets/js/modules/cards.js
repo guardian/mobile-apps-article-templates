@@ -3,14 +3,12 @@ define([
     'bean',
     'bonzo',
     'flipSnap',
-    'modules/$',
-    'lodash/debounce'
+    'modules/$'
 ], function (
     bean,
     bonzo,
     flipSnap,
-    $,
-    debounce
+    $
 ) {
     'use strict';
 
@@ -45,7 +43,7 @@ define([
             snapToGrid: function(el) {
                 // Setup now and re-init on resize or orientation change
                 modules.setUpFlipSnap(el);
-                bean.on(window, 'resize.cards orientationchange.cards', debounce(function () {
+                bean.on(window, 'resize.cards orientationchange.cards', GU.util.debounce(function () {
                     if (modules.flipSnap) {
                         modules.flipSnap.destroy();
                         $(el).removeAttr('style');

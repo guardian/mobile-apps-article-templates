@@ -172,7 +172,8 @@ module.exports = function(grunt) {
                     "predef": [ "-Promise" ],
                     "globals": {
                         "Class": true,
-                        "console": true
+                        "console": true,
+                        "GU": true
                     }
                 },
                 files: {

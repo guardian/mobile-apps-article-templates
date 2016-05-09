@@ -1,7 +1,11 @@
-define(function () {
+define([
+    'lodash/debounce'
+], function (
+    debounce
+) {
 	'use strict';
 
-    var init = function () {
+    var init = function () {        
         GU.util = {
             isElementInViewport: function (el) {
                 var rect = el.getBoundingClientRect();
@@ -44,6 +48,8 @@ define(function () {
                 return !document.body.classList.contains('offline') && navigator.onLine;
             }
         };
+
+        GU.util.debounce = debounce;
     };
 
     return {

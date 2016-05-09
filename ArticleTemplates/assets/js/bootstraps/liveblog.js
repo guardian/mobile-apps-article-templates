@@ -6,8 +6,7 @@ define([
     'modules/$',
     'modules/twitter',
     'modules/MyScroll',
-    'modules/ads',
-    'lodash/debounce'
+    'modules/ads'
 ], function (
     bean,
     bonzo,
@@ -15,8 +14,7 @@ define([
     $,
     twitter,
     MyScroll,
-    Ads,
-    debounce
+    Ads
 ) {
     'use strict';
 
@@ -128,7 +126,7 @@ define([
                     modules.adjustMinuteBlocks(blocks);
 
                     // update dimensions on orientation change
-                    bean.on(window, 'resize', debounce(modules.adjustMinuteBlocks.bind(null, blocks), 100));
+                    bean.on(window, 'resize', GU.util.debounce(modules.adjustMinuteBlocks.bind(null, blocks), 100));
                 } else {
                     // If windows add background images to minute blocks
                     if (document.body.classList.contains("windows")) {   
@@ -326,7 +324,7 @@ define([
                 bean.on(window, 'click', minuteNavElem, modules.scrollToNextCard.bind(null, minuteNavElem, scroller));
             
                 // update scroll dimensions on orientation change
-                bean.on(window, 'resize', debounce(modules.onWindowResize.bind(null, liveblogElem, wrapperElem, scroller), 100));
+                bean.on(window, 'resize', GU.util.debounce(modules.onWindowResize.bind(null, liveblogElem, wrapperElem, scroller), 100));
             },
 
             onWindowResize: function (liveblogElem, wrapperElem, scroller) {

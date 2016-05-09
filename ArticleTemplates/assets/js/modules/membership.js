@@ -1,12 +1,10 @@
 /*global window,document,console,define */
 define([
     'bean',
-    'modules/util',
-    'lodash/debounce'
+    'modules/util'
 ], function (
     bean,
-    util,
-    debounce
+    util
 ) {
     'use strict';
 
@@ -47,7 +45,7 @@ define([
                         insertBeforeElem.parentNode.insertBefore(membershipCreativeContainer, insertBeforeElem);
 
                         // on scroll check if creative is in viewport
-                        bean.on(window, 'scroll', debounce(modules.isMembershipCreativeInView.bind(null, membershipCreativeContainer, id), 100));
+                        bean.on(window, 'scroll', GU.util.debounce(modules.isMembershipCreativeInView.bind(null, membershipCreativeContainer, id), 100));
                     }
                 }
             },

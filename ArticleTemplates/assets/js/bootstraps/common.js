@@ -11,8 +11,7 @@ define([
     'modules/more-tags',
     'modules/sharing',
     'modules/$',
-    'iscroll',
-    'lodash/debounce'
+    'iscroll'
 ], function (
     bean,
     bonzo,
@@ -25,8 +24,7 @@ define([
     MoreTags,
     Sharing,
     $,
-    iscroll,
-    debounce
+    iscroll
 ) {
     'use strict';
 
@@ -49,7 +47,7 @@ define([
         figcaptionToggle: function () {
             // Show/hides figure caption
             if ($('.main-media__caption__icon')[0]) {
-                bean.on($('.main-media__caption__icon')[0], 'click touchend', debounce(function () {
+                bean.on($('.main-media__caption__icon')[0], 'click touchend', GU.util.debounce(function () {
                     $('.main-media__caption__text').toggleClass('is-visible');
                 }, 250, {leading: true}));
             }

@@ -3,14 +3,12 @@ define([
     'bean',
     'bonzo',
     'mobileSlider',
-    'modules/$',
-    'lodash/debounce'
+    'modules/$'
 ], function (
     bean,
     bonzo,
     mobileSlider,
-    $,
-    debounce
+    $
 ) {
     'use strict';
 
@@ -40,7 +38,7 @@ define([
                         }
                     } else if ($(".cutout__container").attr("data-background") === null && !$("body").hasClass("media")) {
                         window.audioBackground(duration);
-                        bean.on(window, 'resize.audioPlayer orientationchange.audioPlayer', debounce(function () {
+                        bean.on(window, 'resize.audioPlayer orientationchange.audioPlayer', GU.util.debounce(function () {
                             window.audioBackground(duration);
                         }, 100));
                     }

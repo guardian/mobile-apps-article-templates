@@ -2,13 +2,11 @@
 define([
     'bean',
     'modules/$',
-    'modules/collagePlus',
-    'lodash/debounce'
+    'modules/collagePlus'
 ], function (
     bean,
     $,
-    collagePlus,
-    debounce
+    collagePlus
 ) {
     'use strict';
 
@@ -16,7 +14,7 @@ define([
         galleryLayout: function () {
             collagePlus.init(".gallery", ".gallery__image");
             
-            bean.on(window, 'resize.gallery orientationchange.gallery', debounce(function () {
+            bean.on(window, 'resize.gallery orientationchange.gallery', GU.util.debounce(function () {
                 $(".gallery")[0].removeAttribute("style");
                 collagePlus.init(".gallery", ".gallery__image");
             }, 100));

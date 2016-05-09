@@ -4,15 +4,13 @@ define([
     'modules/twitter',
     'modules/witness',
     'modules/outbrain',
-    'modules/quiz',
-    'lodash/debounce'
+    'modules/quiz'
 ], function (
     Layout,
     twitter,
     witness,
     outbrain,
-    quiz,
-    debounce
+    quiz
 ) {
     'use strict';
 
@@ -147,8 +145,8 @@ define([
             var i,
                 quoteOverlay,
                 quoteOverlays = document.querySelectorAll('.quote--overlay'),
-                onImmersiveScrollBound = debounce(this.onImmersiveScroll.bind(this), 10),
-                onResizeBound = debounce(this.onResize.bind(this), 100);
+                onImmersiveScrollBound = GU.util.debounce(this.onImmersiveScroll.bind(this), 10),
+                onResizeBound = GU.util.debounce(this.onResize.bind(this), 100);
 
             for (i = 0; i < quoteOverlays.length; i++) {
                 quoteOverlay = quoteOverlays[i];

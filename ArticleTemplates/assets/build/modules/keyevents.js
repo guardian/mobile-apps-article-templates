@@ -1,0 +1,1 @@
+$(document).ready(function(){$(".FAB").click(function(){var e=$(".key__events .key__events--list ul li").length+1;for(console.log(e),i=0;i<e;i++){var l=200*i+1e3;console.log(l),$(".key__events .key__events--list ul li:nth-child("+i+")").delay(l).fadeToggle()}$(".FAB").toggleClass("close"),$(".key__events").delay(1e3).slideToggle()})});
