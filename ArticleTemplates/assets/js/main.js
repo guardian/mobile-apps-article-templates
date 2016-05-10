@@ -25,7 +25,7 @@ require.config({
     }
 });
 
-require(['app'], function(App) {
+require(['App'], function (App) {
     window.GU = {};
 
     var app = new App();

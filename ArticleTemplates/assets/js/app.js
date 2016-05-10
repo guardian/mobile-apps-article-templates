@@ -1,5 +1,3 @@
-/*global document,require,define */
-
 define([
     'class',
     'domReady',

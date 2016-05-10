@@ -59,7 +59,7 @@ module.exports = function(grunt) {
                             { name: 'liveblog' },
                             { name: 'cricket' },
                             { name: 'bootstraps/common'},
-                            { name: 'app' },
+                            { name: 'App' },
                             { name: 'smoothScroll' },
                             { name: 'layouts/Layout'},
                             { name: 'layouts/Article'}
@@ -172,7 +172,9 @@ module.exports = function(grunt) {
                     "globals": {
                         "Class": true,
                         "console": true,
-                        "GU": true
+                        "GU": true,
+                        "require": true,
+                        "define": true
                     }
                 },
                 files: {
@@ -206,7 +208,10 @@ module.exports = function(grunt) {
                     ],
                     reporters: ['mocha', 'coverage'],
                     preprocessors: {
-                        'ArticleTemplates/assets/js/**/*.js': ['coverage']
+                        'ArticleTemplates/assets/js/*.js': ['coverage'],
+                        'ArticleTemplates/assets/js/layouts/*.js': ['coverage'],
+                        'ArticleTemplates/assets/js/modules/*.js': ['coverage'],
+                        'ArticleTemplates/assets/js/helpers/*.js': ['coverage']
                     },
                     coverageReporter: {
                         reporters: [{

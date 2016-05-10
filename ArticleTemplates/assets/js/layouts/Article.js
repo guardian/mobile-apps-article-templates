@@ -1,4 +1,3 @@
-/*global window,document,define */
 define([
     'layouts/Layout',
     'modules/twitter',
@@ -30,7 +29,7 @@ define([
         },
 
         insertOutbrain: function () {
-            window.articleOutbrainInserter = this.loadOutbrain;
+            window.articleOutbrainInserter = this.loadOutbrain.bind(this);
             window.applyNativeFunctionCall('articleOutbrainInserter');
         },
 

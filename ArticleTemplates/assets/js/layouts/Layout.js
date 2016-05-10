@@ -1,4 +1,3 @@
-/*global window,document,require,define,navigator */
 define([
     'fence',
     'fastClick',
@@ -162,8 +161,7 @@ define([
         },
 
         insertTags: function () {
-            window.articleTagInserter = this.articleTagInserter;
-
+            window.articleTagInserter = this.articleTagInserter.bind(this);
             window.applyNativeFunctionCall('articleTagInserter');
         },
 
@@ -348,7 +346,7 @@ define([
 
         setupOfflineSwitch: function () {
             // Called by native code
-            window.offlineSwitch = this.offlineSwitch;
+            window.offlineSwitch = this.offlineSwitch.bind(this);
         },
 
         offlineSwitch: function () {
@@ -357,7 +355,7 @@ define([
 
         setupAlertSwitch: function () {
             // Called by native code
-            window.alertSwitch = this.alertSwitch;
+            window.alertSwitch = this.alertSwitch.bind(this);
         },
 
         alertSwitch: function (following, followid) {
@@ -378,7 +376,7 @@ define([
 
         setupTellMeWhenSwitch: function () {
             // Called by native code
-            window.tellMeWhenSwitch = this.tellMeWhenSwitch;
+            window.tellMeWhenSwitch = this.tellMeWhenSwitch.bind(this);
         },
 
         tellMeWhenSwitch: function (added) {
@@ -399,7 +397,7 @@ define([
 
         setupFontSizing: function () {
             // Called by native code
-            window.fontResize = this.fontResize;
+            window.fontResize = this.fontResize.bind(this);
         },
 
         fontResize: function (current, replacement) {
@@ -413,7 +411,7 @@ define([
 
         setupGetArticleHeight: function () {
             // Called by native code
-            window.getArticleHeight = this.getArticleHeight;
+            window.getArticleHeight = this.getArticleHeight.bind(this);
             window.applyNativeFunctionCall('getArticleHeight');
         },
 

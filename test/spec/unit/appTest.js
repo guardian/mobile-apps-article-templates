@@ -5,7 +5,7 @@ define([
 ) {
     'use strict';
 
-    describe('ArticleTemplates/assets/js/app', function() {
+    describe('ArticleTemplates/assets/js/App', function () {
         var app, domReadyMock, monitorMock, 
             adsMock, utilMock, sandbox, injector;
 
@@ -24,7 +24,7 @@ define([
             sandbox.restore();
         });
 
-        describe("App.prototype.init()", function() {
+        describe("App.prototype.init()", function () {
             var dummyElem;
 
             beforeEach(function () {
@@ -38,7 +38,7 @@ define([
                     .mock('modules/monitor', monitorMock)
                     .mock('modules/ads', adsMock)
                     .mock('helpers/util', utilMock)
-                    .require(['ArticleTemplates/assets/js/app'], function (App) {
+                    .require(['ArticleTemplates/assets/js/App'], function (App) {
                         sandbox.stub(App.prototype, 'loadCss');
 
                         app = new App();
@@ -55,7 +55,7 @@ define([
                     .mock('modules/monitor', monitorMock)
                     .mock('modules/ads', adsMock)
                     .mock('helpers/util', utilMock)
-                    .require(['ArticleTemplates/assets/js/app'], function (App) {
+                    .require(['ArticleTemplates/assets/js/App'], function (App) {
                         sandbox.stub(App.prototype, 'loadCss');
 
                         dummyElem.dataset.skipStyle = "";
@@ -75,7 +75,7 @@ define([
                     .mock('modules/monitor', monitorMock)
                     .mock('modules/ads', adsMock)
                     .mock('helpers/util', utilMock)
-                    .require(['ArticleTemplates/assets/js/app'], function (App) {
+                    .require(['ArticleTemplates/assets/js/App'], function (App) {
                         sandbox.stub(App.prototype, 'loadCss');
 
                         dummyElem.dataset.skipStyle = "xxx";
@@ -96,7 +96,7 @@ define([
                     .mock('modules/monitor', monitorMock)
                     .mock('modules/ads', adsMock)
                     .mock('helpers/util', utilMock)
-                    .require(['ArticleTemplates/assets/js/app'], function (App) {
+                    .require(['ArticleTemplates/assets/js/App'], function (App) {
                         // sandbox.stub(App.prototype, 'init');
 
                         // app = new App();
