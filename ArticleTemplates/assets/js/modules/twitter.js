@@ -124,25 +124,23 @@ define([
     }
 
     function workaroundClicks(evt) {
-        console.log("workaroundClicks ***", evt);
-        // if(isAndroid){
-        //     bean.on(evt.target.contentWindow.document, 'click', 'a', function(evt){
-        //         var anchor = evt.currentTarget;
-        //         window.open(anchor.getAttribute('href'));
-        //         evt.stopImmediatePropagation();
-        //         evt.preventDefault();
-        //     });
-        // } else {
-        //     $('a.web-intent', evt.target.contentWindow.document).removeClass('web-intent');
-        // }
+        if(isAndroid){
+            bean.on(evt.target.contentWindow.document, 'click', 'a', function(evt){
+                var anchor = evt.currentTarget;
+                window.open(anchor.getAttribute('href'));
+                evt.stopImmediatePropagation();
+                evt.preventDefault();
+            });
+        } else {
+            $('a.web-intent', evt.target.contentWindow.document).removeClass('web-intent');
+        }
     }
 
     function fixVineAutoplay(evt) {
-        console.log("fixVineAutoplay ***", evt);
-        // if(!isAndroid && $('iframe[src^="https://vine.co"],iframe[src^="https://amp.twimg.com/amplify-web-player/prod/source.html?video_url"]', evt.target.contentWindow.document)[0]){
-        //     $('.MediaCard', evt.target.contentWindow.document).remove();
-        //     $(evt.target).removeAttr('height');
-        // }
+        if(!isAndroid && $('iframe[src^="https://vine.co"],iframe[src^="https://amp.twimg.com/amplify-web-player/prod/source.html?video_url"]', evt.target.contentWindow.document)[0]){
+            $('.MediaCard', evt.target.contentWindow.document).remove();
+            $(evt.target).removeAttr('height');
+        }
     }
 
     return {

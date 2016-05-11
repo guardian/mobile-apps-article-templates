@@ -18,10 +18,6 @@ define([
 ) {
     'use strict';
 
-    // window.articleImageSizer() should now call common.imageSizer()
-    // window.loadEmbeds() should now call common.loadEmbeds()
-    // window.loadInteractives() should now call common.loadInteractives()
-
     var modules = {
             blockUpdates: function () {
                 var newBlockHtml = '',
