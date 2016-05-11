@@ -439,8 +439,9 @@ define([
                 tabs = tabContainer.getElementsByTagName('a');
 
                 for (i = 0; i < tabs.length; i++) {
+                    tab = tabs[i];
+
                     if (i > 0) {
-                        tab = tabs[i];
                         href = tab.getAttribute('href');
                         if (href) {
                             hideElem = document.querySelector(href);
@@ -484,8 +485,8 @@ define([
                 if (href) {
                     showElem = document.querySelector(href);
                     if (showElem) {
-                        hideElem.style.display = 'block';
-                        activeTab.setAttribute('aria-selected', true);
+                        showElem.style.display = 'block';
+                        tab.setAttribute('aria-selected', true);
                     }
                 }
 
