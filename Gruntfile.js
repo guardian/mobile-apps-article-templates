@@ -216,7 +216,7 @@ module.exports = function(grunt) {
                     reporters: ['mocha', 'coverage'],
                     preprocessors: {
                         'ArticleTemplates/assets/js/*.js': ['coverage'],
-                        'ArticleTemplates/assets/js/layouts/*.js': ['coverage'],
+                        'ArticleTemplates/assets/js/bootstraps/*.js': ['coverage'],
                         'ArticleTemplates/assets/js/modules/*.js': ['coverage']
                     },
                     coverageReporter: {
