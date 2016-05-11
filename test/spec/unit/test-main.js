@@ -25,14 +25,13 @@ requirejs.config({
         smoothScroll: 'node_modules/smooth-scroll/dist/js/smooth-scroll',
         raven: 'node_modules/raven-js/dist/raven',
         iscroll: 'ArticleTemplates/assets/js/components/iscroll',
-        class: 'ArticleTemplates/assets/js/components/class',
         lodash: 'ArticleTemplates/assets/js/components/lodash',
         // squire for stubbing modules
         squire: 'node_modules/squirejs/src/Squire'
     },
     shim: {
-        class: {
-            exports: 'Class'
+        iscroll: {
+            exports: 'IScroll'
         },
         d3: {
             exports: 'd3'

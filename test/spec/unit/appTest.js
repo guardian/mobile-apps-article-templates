@@ -5,9 +5,14 @@ define([
 ) {
     'use strict';
 
-    describe('ArticleTemplates/assets/js/App', function () {
-        var app, domReadyMock, monitorMock, 
-            adsMock, utilMock, sandbox, injector;
+    describe('ArticleTemplates/assets/js/app', function () {
+        var injector,
+            sandbox;
+
+        var domReadyMock,
+            monitorMock,
+            adsMock, 
+            utilMock;
 
         beforeEach(function () {
             domReadyMock = sinon.spy();
@@ -24,7 +29,7 @@ define([
             sandbox.restore();
         });
 
-        describe("App.prototype.init()", function () {
+        describe("app.init()", function () {
             var dummyElem;
 
             beforeEach(function () {
@@ -32,37 +37,19 @@ define([
                 sandbox.stub(window.document, 'getElementById').returns(dummyElem);
             });
 
-            it('app is instance of App', function (done) {
-                injector
-                    .mock('domReady', domReadyMock)
-                    .mock('modules/monitor', monitorMock)
-                    .mock('modules/ads', adsMock)
-                    .mock('helpers/util', utilMock)
-                    .require(['ArticleTemplates/assets/js/App'], function (App) {
-                        sandbox.stub(App.prototype, 'loadCss');
-
-                        app = new App();
-
-                        expect(app).to.be.instanceOf(App);
-
-                        done();
-                    });
-            });
-
             it('loadCss called if skipStyle false', function (done) {
                 injector
                     .mock('domReady', domReadyMock)
                     .mock('modules/monitor', monitorMock)
                     .mock('modules/ads', adsMock)
-                    .mock('helpers/util', utilMock)
-                    .require(['ArticleTemplates/assets/js/App'], function (App) {
-                        sandbox.stub(App.prototype, 'loadCss');
+                    .mock('modules/util', utilMock)
+                    .require(['ArticleTemplates/assets/js/app'], function (app) {
+                        sandbox.stub(app, 'loadCss');
 
-                        dummyElem.dataset.skipStyle = "";
-                        app = new App();
+                        app.init();
 
-                        expect(App.prototype.loadCss).to.have.been.calledOnce;
-                        expect(App.prototype.loadCss).to.have.been.calledWith('assets/css/style-async.css');
+                        expect(app.loadCss).to.have.been.calledOnce;
+                        expect(app.loadCss).to.have.been.calledWith('assets/css/style-async.css');
                         expect(domReadyMock).to.have.been.calledOnce;
 
                         done();
@@ -74,14 +61,15 @@ define([
                     .mock('domReady', domReadyMock)
                     .mock('modules/monitor', monitorMock)
                     .mock('modules/ads', adsMock)
-                    .mock('helpers/util', utilMock)
-                    .require(['ArticleTemplates/assets/js/App'], function (App) {
-                        sandbox.stub(App.prototype, 'loadCss');
+                    .mock('modules/util', utilMock)
+                    .require(['ArticleTemplates/assets/js/app'], function (app) {
+                        sandbox.stub(app, 'loadCss');
 
                         dummyElem.dataset.skipStyle = "xxx";
-                        app = new App();
+                        
+                        app.init()
 
-                        expect(App.prototype.loadCss).not.to.have.been.called;
+                        expect(app.loadCss).not.to.have.been.called;
                         expect(domReadyMock).to.have.been.calledOnce;
 
                         done();
@@ -89,20 +77,14 @@ define([
             }); 
         });
 
-        describe("App.prototype.onDomReady()", function () {
+        describe("app.onDomReady()", function () {
             it("creates Article if contentType is article", function (done) {
                injector
                     .mock('domReady', domReadyMock)
                     .mock('modules/monitor', monitorMock)
                     .mock('modules/ads', adsMock)
-                    .mock('helpers/util', utilMock)
-                    .require(['ArticleTemplates/assets/js/App'], function (App) {
-                        // sandbox.stub(App.prototype, 'init');
-
-                        // app = new App();
-
-                        // app.onDomReady();
-
+                    .mock('modules/util', utilMock)
+                    .require(['ArticleTemplates/assets/js/app'], function (app) {
                         done();
                     }); 
             });

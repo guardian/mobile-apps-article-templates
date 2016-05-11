@@ -1,11 +1,9 @@
 define([
-    'class',
     'domReady',
     'modules/monitor',
     'modules/ads',
-    'helpers/util'
+    'modules/util'
 ], function(
-    Class,
     domReady,
     monitor,
     Ads,
@@ -13,19 +11,18 @@ define([
 ) {
     'use strict';
 
-    var App = Class.extend({
+    var module = {
         init: function () {
             var scriptTag = document.getElementById('gu'),
                 skipStyle = scriptTag.getAttribute('data-skip-style');
 
-            // initialise util library available as GU.util
-            util.init();
+            module.initUtil();
 
             if (!skipStyle) {
-                this.loadCss('assets/css/style-async.css');
+                module.loadCss('assets/css/style-async.css');
             }
 
-            domReady(this.onDomReady.bind(this));
+            domReady(module.onDomReady);
         },
 
         loadCss: function (url) {
@@ -38,10 +35,9 @@ define([
 
             document.getElementsByTagName('head')[0].appendChild(link);
         },
-        
+            
         onDomReady: function () {
-            var layout,
-                contentType = document.body.getAttribute('data-content-type');
+            var contentType = document.body.getAttribute('data-content-type');
 
             // monitoring
             monitor.init();
@@ -56,50 +52,54 @@ define([
 
             // other article-specific functions
             if (contentType === 'article') {
-                require(['layouts/Article'], function(Article) {
-                    monitor.setContext('article', function() {
-                        layout = new Article();
+                require(['article'], function (article) {
+                    monitor.setContext('article', function () {
+                        article.init();
                     });
                 });
             } else if (contentType === 'liveblog') {
-                require(['liveblog'], function(Liveblog) {
-                    monitor.setContext('liveblog', function() {
+                require(['liveblog'], function (Liveblog) {
+                    monitor.setContext('liveblog', function () {
                         Liveblog.init();
                     });
                 });
             } else if (contentType === 'audio') {
-                require(['audio'], function(Audio) {
-                    monitor.setContext('audio', function() {
+                require(['audio'], function (Audio) {
+                    monitor.setContext('audio', function () {
                         Audio.init();
                     });
                 });
             } else if (contentType === 'gallery') {
-                require(['gallery'], function(Gallery) {
-                    monitor.setContext('gallery', function() {
+                require(['gallery'], function (Gallery) {
+                    monitor.setContext('gallery', function () {
                         Gallery.init();
                     });
                 });
             } else if (contentType === 'football') {
-                require(['football'], function(Football) {
-                    monitor.setContext('football', function() {
+                require(['football'], function (Football) {
+                    monitor.setContext('football', function () {
                         Football.init();
                     });
                 });
             } else if (contentType === 'cricket') {
-                require(['cricket'], function(Cricket) {
-                    monitor.setContext('cricket', function() {
+                require(['cricket'], function (Cricket) {
+                    monitor.setContext('cricket', function () {
                         Cricket.init();
                     });
                 });
             } else {
-                require(['bootstraps/common'], function(Common) {
-                    monitor.setContext('common', function() {
+                require(['bootstraps/common'], function (Common) {
+                    monitor.setContext('common', function () {
                         Common.init();
                     });
                 });
             }
-        }
-    });
+        },
 
-    return App;
+        initUtil: function () {
+            util.init();
+        }
+    };
+
+    return module;
 });

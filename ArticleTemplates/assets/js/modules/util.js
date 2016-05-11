@@ -5,7 +5,9 @@ define([
 ) {
 	'use strict';
 
-    var init = function () {        
+    window.GU = window.GU || {};
+
+    function init() {
         GU.util = {
             isElementInViewport: function (el) {
                 var rect = el.getBoundingClientRect();
@@ -78,13 +80,15 @@ define([
 
             getStringFromUnicodeVal: function (unicodeVal) {
                 return String.fromCharCode(unicodeVal);
-            }
+            },
+
+            debounce: debounce
         };
+    }
 
-        GU.util.debounce = debounce;
-    };
-
-    return {
+    var util = {
         init: init
     };
+
+    return util;
 });

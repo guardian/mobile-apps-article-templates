@@ -18,6 +18,10 @@ define([
 ) {
     'use strict';
 
+    // window.articleImageSizer() should now call common.imageSizer()
+    // window.loadEmbeds() should now call common.loadEmbeds()
+    // window.loadInteractives() should now call common.loadInteractives()
+
     var modules = {
             blockUpdates: function () {
                 var newBlockHtml = '',
@@ -34,11 +38,12 @@ define([
                         // Move mpu ads
                         window.updateLiveblogAdPlaceholders(true);
 
-                        // See Common bootstrap
-                        window.articleImageSizer();
+                        modules.common.imageSizer();
+                        modules.common.loadEmbeds();
+                        modules.common.loadInteractives();
+
                         window.liveblogTime();
-                        window.loadEmbeds();
-                        window.loadInteractives();
+
                         newBlockHtml = '';
                     };
 
@@ -84,11 +89,11 @@ define([
                     $('.loading--liveblog').removeClass("loading--visible");
                     $(html).appendTo('.article__body');
 
-                    // See Common bootstrap
-                    window.articleImageSizer();
+                    modules.common.imageSizer();
+                    modules.common.loadEmbeds();
+                    modules.common.loadInteractives();
+
                     window.liveblogTime();
-                    window.loadEmbeds();
-                    window.loadInteractives();
 
                     // check for tweets
                     twitter.checkForTweets(document.body);
@@ -386,9 +391,10 @@ define([
                 }
             }
         },
-
-        ready = function () {
+        ready = function (common) {
             if (!this.initialised) {
+                modules.common = common;
+
                 this.initialised = true;
                 modules.setupGlobals();
                 window.liveblogTime();

@@ -1,18 +1,18 @@
 define([
-    'bootstraps/common',
+	'bootstraps/common',
     'bootstraps/audio'
 ], function (
-    Common,
-    Audio
+	common,
+    audio
 ) {
     'use strict';
     
-    function init(){
-        Common.init();
-        Audio.init();
-    }
-
-    return {
-        init: init
+    var module = {
+        init: function () {
+        	common.init();
+            audio.init();
+        }
     };
+
+    return module;
 });

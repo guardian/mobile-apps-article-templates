@@ -1,19 +1,18 @@
 define([
-    'bootstraps/common',
-    'bootstraps/gallery'
+	'bootstraps/common',
+    'bootstraps/article'
 ], function (
-    common,
-    gallery
+	common,
+    article
 ) {
     'use strict';
     
     var module = {
         init: function () {
-            common.init();
-            gallery.init();
+        	common.init();
+            article.init();
         }
     };
 
     return module;
 });
-

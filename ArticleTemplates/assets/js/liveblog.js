@@ -2,17 +2,17 @@ define([
     'bootstraps/common',
     'bootstraps/liveblog'
 ], function (
-    Common,
-    Liveblog
+    common,
+    liveblog
 ) {
     'use strict';
     
-    function init(){
-        Common.init();
-        Liveblog.init();
-    }
-
-    return {
-        init: init
+    var module = {
+        init: function () {
+            common.init();
+            liveblog.init(common);
+        }
     };
+
+    return module;
 });

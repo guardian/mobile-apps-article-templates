@@ -1,35 +1,32 @@
 define([
-    'layouts/Layout',
     'modules/twitter',
     'modules/witness',
     'modules/outbrain',
     'modules/quiz',
-    'modules/MembershipCreative'
+    'modules/membership'
 ], function (
-    Layout,
     twitter,
     witness,
     outbrain,
     quiz,
-    MembershipCreative
+    membership
 ) {
     'use strict';
 
-    var Article = Layout.extend({
+    var module = {
         init: function () {
-            this._super.apply(this, arguments);
             twitter.init();
             twitter.enhanceTweets();
             witness.duplicate();
-            this.insertOutbrain();
-            this.loadQuizzes();
-            this.formatImmersive();
-            this.richLinkTracking();
-            this.loadMembershipCreative();
+            module.insertOutbrain();
+            module.loadQuizzes();
+            module.formatImmersive();
+            module.richLinkTracking();
+            module.loadMembershipCreative();
         },
 
         insertOutbrain: function () {
-            window.articleOutbrainInserter = this.loadOutbrain.bind(this);
+            window.articleOutbrainInserter = module.loadOutbrain;
             window.applyNativeFunctionCall('articleOutbrainInserter');
         },
 
@@ -48,24 +45,24 @@ define([
                 // Override tone to feature for all immersive pages
                 document.body.className = document.body.className.replace(/(tone--).+?\s/g, 'tone--feature1 ');
 
-                this.adjustHeaderImageHeight();
+                module.adjustHeaderImageHeight();
 
                 // we actually need for the embed to be sent through with prefixed & unprefixed styles
                 if (document.body.classList.contains('windows')) {
-                    this.formatImmersiveForWindows();
+                    module.formatImmersiveForWindows();
                 }
 
                 // find all the section seperators & add classes
-                this.addClassesToSectionSeparators();
+                module.addClassesToSectionSeparators();
 
                 // for each element--immersive add extra classes depending on siblings
-                this.addClassesToElementImmersives();
+                module.addClassesToElementImmersives();
 
                 // store all pullquotes top offset for later
-                this.movePullQuotes();
+                module.movePullQuotes();
 
                 // attach event handlers
-                this.attachImmersiveEventHandlers();
+                module.attachImmersiveEventHandlers();
             }
         },
 
@@ -141,17 +138,15 @@ define([
         attachImmersiveEventHandlers: function () {
             var i,
                 quoteOverlay,
-                quoteOverlays = document.querySelectorAll('.quote--overlay'),
-                onImmersiveScrollBound = this.onImmersiveScroll.bind(this),
-                onResizeBound = this.onResize.bind(this);
-
+                quoteOverlays = document.querySelectorAll('.quote--overlay');
+                
             for (i = 0; i < quoteOverlays.length; i++) {
                 quoteOverlay = quoteOverlays[i];
-                quoteOverlay.addEventListener('click', this.onQuoteOverlayClick.bind(this, quoteOverlay));
+                quoteOverlay.addEventListener('click', module.onQuoteOverlayClick.bind(null, quoteOverlay));
             }
 
-            window.addEventListener('scroll', GU.util.debounce(onImmersiveScrollBound), 10);
-            window.addEventListener('resize', GU.util.debounce(onResizeBound), 100);
+            window.addEventListener('scroll', GU.util.debounce(module.onImmersiveScroll), 10);
+            window.addEventListener('resize', GU.util.debounce(module.onResize), 100);
         },
 
         onQuoteOverlayClick: function (quoteOverlay, evt) {
@@ -189,7 +184,7 @@ define([
         },
 
         onResize: function () {
-            this.adjustHeaderImageHeight();
+            module.adjustHeaderImageHeight();
         },
 
         adjustHeaderImageHeight: function () {
@@ -230,11 +225,9 @@ define([
         },
 
         loadMembershipCreative: function () {
-            var membershipCreative;
-
-            membershipCreative = new MembershipCreative();
+            membership.init();
         }
-    });
+    };
 
-    return Article;
+    return module;
 });

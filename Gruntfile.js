@@ -53,16 +53,13 @@ module.exports = function(grunt) {
                         useSourceUrl: false,
                         removeCombined: true,
                         modules: [
+                            { name: 'app' },
+                            { name: 'article' },
                             { name: 'audio' },
+                            { name: 'cricket' },
                             { name: 'football' },
                             { name: 'gallery' },
-                            { name: 'liveblog' },
-                            { name: 'cricket' },
-                            { name: 'bootstraps/common'},
-                            { name: 'App' },
-                            { name: 'smoothScroll' },
-                            { name: 'layouts/Layout'},
-                            { name: 'layouts/Article'}
+                            { name: 'liveblog' }
                         ]
                     }
                 }
@@ -154,7 +151,7 @@ module.exports = function(grunt) {
                     "forin": true,
                     "immed": true,
                     "indent": false,
-                    "latedef": true,
+                    "latedef": false,
                     "maxerr": 9999,
                     "mocha": true,
                     "newcap": true,
@@ -210,8 +207,7 @@ module.exports = function(grunt) {
                     preprocessors: {
                         'ArticleTemplates/assets/js/*.js': ['coverage'],
                         'ArticleTemplates/assets/js/layouts/*.js': ['coverage'],
-                        'ArticleTemplates/assets/js/modules/*.js': ['coverage'],
-                        'ArticleTemplates/assets/js/helpers/*.js': ['coverage']
+                        'ArticleTemplates/assets/js/modules/*.js': ['coverage']
                     },
                     coverageReporter: {
                         reporters: [{

@@ -1,12 +1,11 @@
-/*global window,document,console,define */
 define(function () {
     'use strict';
 
-    var MembershipCreative = Class.extend({
+    var module = {
         init: function() {
-            this.trackMembershipCreativeView = true;
+            module.trackMembershipCreativeView = true;
 
-            window.injectInlineArticleMembershipCreative = this.injectInlineArticleMembershipCreative.bind(this);
+            window.injectInlineArticleMembershipCreative = module.injectInlineArticleMembershipCreative;
             window.applyNativeFunctionCall('injectInlineArticleMembershipCreative');
 
             GU.util.signalDevice('membership_creative_ready');
@@ -20,7 +19,7 @@ define(function () {
             if (GU.util.isOnline() &&
                 !document.querySelector('.membership-creative-container')) {
 
-                insertBeforeElem = this.getInsertBeforeElem();
+                insertBeforeElem = module.getInsertBeforeElem();
 
                 if (insertBeforeElem) {
                     //inject css
@@ -41,7 +40,7 @@ define(function () {
                     insertBeforeElem.parentNode.insertBefore(membershipCreativeContainer, insertBeforeElem);
 
                     // on scroll check if creative is in viewport
-                    window.addEventListener('scroll', GU.util.debounce(this.isMembershipCreativeInView.bind(this, membershipCreativeContainer, id), 100));
+                    window.addEventListener('scroll', GU.util.debounce(module.isMembershipCreativeInView.bind(null, membershipCreativeContainer, id), 100));
                 }
             }
         },
@@ -49,10 +48,10 @@ define(function () {
         isMembershipCreativeInView: function(membershipCreative, id) {
             var messageName = 'membership_creative_view/' + id;
 
-            if (this.trackMembershipCreativeView &&
+            if (module.trackMembershipCreativeView &&
                 GU.util.isElementPartiallyInViewport(membershipCreative)) {
                 GU.util.signalDevice(messageName);
-                this.trackMembershipCreativeView = false;
+                module.trackMembershipCreativeView = false;
             }
         },
 
@@ -81,7 +80,7 @@ define(function () {
 
             return false;
         }
-    });
+    };
 
-    return MembershipCreative;
+    return module;
 });

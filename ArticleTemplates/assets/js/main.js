@@ -12,12 +12,11 @@ require.config({
         smoothScroll: '../../../node_modules/smooth-scroll/dist/js/smooth-scroll',
         raven: '../../../node_modules/raven-js/dist/raven',
         iscroll: 'components/iscroll',
-        class: 'components/class',
         lodash: 'components/lodash'
     },
     shim: {
-        class: {
-            exports: 'Class'
+        iscroll: {
+            exports: 'IScroll'
         },
         d3: {
             exports: 'd3'
@@ -25,8 +24,6 @@ require.config({
     }
 });
 
-require(['App'], function (App) {
-    window.GU = {};
-
-    var app = new App();
+require(['app'], function (app) {
+    app.init();
 });
