@@ -40,7 +40,7 @@ define([
             sandbox.restore();
         });
 
-        describe("article.init()", function () {
+        describe('article.init()', function () {
             it('init article', function (done) {
                injector
                     .mock('modules/twitter', twitterMock)

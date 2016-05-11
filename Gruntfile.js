@@ -32,13 +32,13 @@ module.exports = function(grunt) {
         var done = this.async();
         var sys = require('sys');
         var exec = require('child_process').exec;
-        exec("git rev-parse HEAD", function(err, out){
+        exec('git rev-parse HEAD', function(err, out){
             grunt.config(['requirejs'], {
                 dev: {
                     options: {
-                        baseUrl: "ArticleTemplates/assets/js",
+                        baseUrl: 'ArticleTemplates/assets/js',
                         mainConfigFile: 'ArticleTemplates/assets/js/main.js',
-                        dir: "ArticleTemplates/assets/build",
+                        dir: 'ArticleTemplates/assets/build',
                         optimize: 'uglify2',
                         uglify2: {
                             compress: {
@@ -59,7 +59,8 @@ module.exports = function(grunt) {
                             { name: 'cricket' },
                             { name: 'football' },
                             { name: 'gallery' },
-                            { name: 'liveblog' }
+                            { name: 'liveblog' },
+                            { name: 'bootstraps/common'}
                         ]
                     }
                 }
@@ -139,43 +140,52 @@ module.exports = function(grunt) {
                 reporter: require('jshint-summary'),
                 force: true
             },
-            uses_defaults: ['Gruntfile.js', 'ArticleTemplates/assets/js/{bootstraps,modules}/*.js', 'ArticleTemplates/assets/js/*.js'],
+            uses_defaults: [
+                'Gruntfile.js', 
+                'ArticleTemplates/assets/js/{bootstraps, modules}/*.js'
+            ],
             with_overrides: {
                 options: {
-                    "bitwise": true,
-                    "browser": true,
-                    "camelcase": true,
-                    "curly": true,
-                    "eqeqeq": true,
-                    "expr": true,
-                    "forin": true,
-                    "immed": true,
-                    "indent": false,
-                    "latedef": false,
-                    "maxerr": 9999,
-                    "mocha": true,
-                    "newcap": true,
-                    "noarg": true,
-                    "noempty": true,
-                    "nonew": true,
-                    "quotmark": false,
-                    "regexp": true,
-                    "strict": true,
-                    "trailing": true,
-                    "undef": true,
-                    "unused": true,
-                    "white": true,
-                    "predef": [ "-Promise" ],
-                    "globals": {
-                        "Class": true,
-                        "console": true,
-                        "GU": true,
-                        "require": true,
-                        "define": true
+                    'bitwise': true,
+                    'browser': true,
+                    'camelcase': true,
+                    'curly': true,
+                    'eqeqeq': true,
+                    'expr': true,
+                    'forin': true,
+                    'immed': true,
+                    'indent': false,
+                    'latedef': false,
+                    'maxerr': 9999,
+                    'mocha': true,
+                    'newcap': true,
+                    'noarg': true,
+                    'noempty': true,
+                    'nonew': true,
+                    'quotmark': "single",
+                    'regexp': true,
+                    'strict': true,
+                    'trailing': true,
+                    'undef': true,
+                    'unused': true,
+                    'white': true,
+                    'predef': [ '-Promise' ],
+                    'globals': {
+                        'console': true,
+                        'GU': true,
+                        'require': true,
+                        'define': true,
+                        'sinon': true,
+                        'expect': true
                     }
                 },
                 files: {
-                    src: ['ArticleTemplates/assets/js/app.js', 'ArticleTemplates/assets/js/layouts/*.js']
+                    src: [
+                        'ArticleTemplates/assets/js/*.js',
+                        'ArticleTemplates/assets/js/bootstraps/article.js',
+                        'ArticleTemplates/assets/js/bootstraps/common.js',
+                        'test/spec/unit/**/*.js'
+                    ]
                 }
             }
         },
@@ -211,9 +221,9 @@ module.exports = function(grunt) {
                     },
                     coverageReporter: {
                         reporters: [{
-                            type: "cobertura",
-                            dir: "test/output/coverage/",
-                            file: "summary.xml"
+                            type: 'cobertura',
+                            dir: 'test/output/coverage/',
+                            file: 'summary.xml'
                         }, {
                             type : 'html',
                             dir : 'test/output/coverage/'

@@ -9,10 +9,10 @@ for (file in window.__karma__.files) {
     }
 }
 
-requirejs.config({
+require.config({
     baseUrl: '/base',
     paths: {
-        modules: "ArticleTemplates/assets/js/modules",
+        modules: 'ArticleTemplates/assets/js/modules',
         bonzo: 'node_modules/bonzo/bonzo',
         bean: 'node_modules/bean/bean',
         d3: 'node_modules/d3/d3',

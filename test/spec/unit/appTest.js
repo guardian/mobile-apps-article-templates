@@ -29,7 +29,7 @@ define([
             sandbox.restore();
         });
 
-        describe("app.init()", function () {
+        describe('app.init()', function () {
             var dummyElem;
 
             beforeEach(function () {
@@ -65,9 +65,9 @@ define([
                     .require(['ArticleTemplates/assets/js/app'], function (app) {
                         sandbox.stub(app, 'loadCss');
 
-                        dummyElem.dataset.skipStyle = "xxx";
+                        dummyElem.dataset.skipStyle = 'xxx';
                         
-                        app.init()
+                        app.init();
 
                         expect(app.loadCss).not.to.have.been.called;
                         expect(domReadyMock).to.have.been.calledOnce;
@@ -75,19 +75,6 @@ define([
                         done();
                     });
             }); 
-        });
-
-        describe("app.onDomReady()", function () {
-            it("creates Article if contentType is article", function (done) {
-               injector
-                    .mock('domReady', domReadyMock)
-                    .mock('modules/monitor', monitorMock)
-                    .mock('modules/ads', adsMock)
-                    .mock('modules/util', utilMock)
-                    .require(['ArticleTemplates/assets/js/app'], function (app) {
-                        done();
-                    }); 
-            });
         });
     });
 });

@@ -380,8 +380,6 @@ define([
                 var i,
                     elems = document.querySelectorAll('.minute-logo-container, .minute-vertical-rule');
 
-                console.log(elems);    
-
                 for (i = 0; i < elems.length; i++) {
                     elems[i].parentNode.removeChild(elems[i]);
                 }
