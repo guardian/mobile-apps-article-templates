@@ -134,6 +134,13 @@ module.exports = function(grunt) {
                 'ArticleTemplates/assets/scss/**/*.scss',
             ]
         },
+        hologram: {
+            doc: {
+                options: {
+                    config: 'hologram.yml'
+                }
+            }
+        },
         // jshint
         jshint: {
             options: {
@@ -268,124 +275,91 @@ module.exports = function(grunt) {
                     include: ['debounce']
                 }
             }
+        },
+        // notify
+        notify_hooks: {
+            options: {
+                enabled: true,
+                max_jshint_notifications: 5,
+                success: true,
+                duration: 3
+            }
+        },
+        // test
+        express: {
+            test: {
+                options: {
+                    server: 'test/server.js'
+                }
+            }
+        },
+        shell: {
+            android: {
+                command: function(){
+                    return 'echo "Building Android app with gradle" && cd ' + config.base.android + '../../../../../../ && export BUILD_NUMBER=' + (grunt.option('card') || "000") + '  && ./gradlew zipTemplates > android-build.log && ./gradlew assembleDebug >> android-build.log && cp android-news-app/build/outputs/apk/android-news-app-debug.apk ' + config.base.html;
+                }
+            },
+            ios: {
+                options: {
+                    execOptions: {
+                        maxBuffer: 30000000
+                    }
+                },
+                command: ' echo "Building iOS app with xcodebuild" && cd ' + config.base.ios + '../../GLA/ && xcodebuild clean build -configuration Debug -workspace GLA.xcworkspace -scheme GLADebug -derivedDataPath ' + config.base.html + ' > ios-build.log && xcrun -sdk iphoneos9.0 PackageApplication -v ' + config.base.html + 'Build/Products/Debug-iphoneos/GLA.app -o ' + config.base.html + 'guardian-debug.ipa' + ' --embed "' + config.ios.provisioning + '" >> ios-build.log'
+            },
+            timeline: {
+                command: function(){
+                    if( grunt.option('fixture') ){
+                        var label = grunt.option('label') || 'no-label';
+                        var baseCommand = '`which ruby` test/performance/timeline.rb ' + config.performance.server + ' ' + grunt.option('fixture') + ' ' + label;
+                        var times = parseInt(grunt.option('times'),10) || 1;
+                        var outputsString = '';
+                        for(var x = 0; x < times; x ++){
+                            outputsString += '&& ' + baseCommand;
+                        }
+                        return '`which adb` forward tcp:9222 localabstract:chrome_devtools_remote ' + outputsString;
+                    } else {
+                        return '';
+                    }
+                }
+            },
+            wraithhistory: {
+                command: 'cd ' + config.base.html + 'test/visual && rm -rf shots shots_history && wraith history ' + config.base.html + 'test/visual/visual.yaml'
+            },
+            wraith: {
+                command: 'cd ' + config.base.html + 'test/visual && wraith latest ' + config.base.html + 'test/visual/visual.yaml'
+            },
+            clean: {
+                command: 'git checkout ArticleTemplates/assets/build ArticleTemplates/assets/css ArticleTemplates/assets/scss/*.css DocumentationTemplates test'
+            },
+            ziptemplates: {
+                command: 'cd ArticleTemplates && zip -q -r ArticleTemplates.zip ./* -x "./assets/scss/*" "./assets/js/*" "*.DS_Store" "*.map" && mv ArticleTemplates.zip ../'
+            },
+            deployandroid: {
+                command: 'adb push ArticleTemplates.zip /sdcard/ArticleTemplates.zip && adb shell am startservice -n "com.guardian/.templates.UpdateTemplatesService"'
+            }
         }
-        // // scss
-        // hologram: {
-        //     doc: {
-        //         options: {
-        //             config: 'hologram.yml'
-        //         }
-        //     }
-        // },
-        // // unit tests
-        // mocha: {
-        //     dev: {
-        //         options: {
-        //             run: false,
-        //             log: true,
-        //             urls: [ 'http://localhost:3000/root/test/unit/runner.html' ],
-        //             page: {
-        //                 settings: {
-        //                     webSecurityEnabled: false,
-        //                 },
-        //             },
-        //         },
-        //     },
-        //     jenkins: {
-        //         options: {
-        //             run: false,
-        //             log: true,
-        //             reporter: 'XUnit',
-        //             urls: [ 'http://localhost:3000/root/test/unit/runner.html' ],
-        //             page: {
-        //                 settings: {
-        //                     webSecurityEnabled: false,
-        //                 },
-        //             },
-        //         },
-        //         dest: 'report.xml'
-        //     }
-        // },
-        // // notify
-        // notify_hooks: {
-        //     options: {
-        //         enabled: true,
-        //         max_jshint_notifications: 5,
-        //         success: true,
-        //         duration: 3
-        //     }
-        // },
-        // // test
-        // express: {
-        //     test: {
-        //         options: {
-        //             server: 'test/server.js'
-        //         }
-        //     }
-        // },
-        // shell: {
-        //     android: {
-        //         command: function(){
-        //             return 'echo "Building Android app with gradle" && cd ' + config.base.android + '../../../../../../ && export BUILD_NUMBER=' + (grunt.option('card') || "000") + '  && ./gradlew zipTemplates > android-build.log && ./gradlew assembleDebug >> android-build.log && cp android-news-app/build/outputs/apk/android-news-app-debug.apk ' + config.base.html;
-        //         }
-        //     },
-        //     ios: {
-        //         options: {
-        //             execOptions: {
-        //                 maxBuffer: 30000000
-        //             }
-        //         },
-        //         command: ' echo "Building iOS app with xcodebuild" && cd ' + config.base.ios + '../../GLA/ && xcodebuild clean build -configuration Debug -workspace GLA.xcworkspace -scheme GLADebug -derivedDataPath ' + config.base.html + ' > ios-build.log && xcrun -sdk iphoneos9.0 PackageApplication -v ' + config.base.html + 'Build/Products/Debug-iphoneos/GLA.app -o ' + config.base.html + 'guardian-debug.ipa' + ' --embed "' + config.ios.provisioning + '" >> ios-build.log'
-        //     },
-        //     timeline: {
-        //         command: function(){
-        //             if( grunt.option('fixture') ){
-        //                 var label = grunt.option('label') || 'no-label';
-        //                 var baseCommand = '`which ruby` test/performance/timeline.rb ' + config.performance.server + ' ' + grunt.option('fixture') + ' ' + label;
-        //                 var times = parseInt(grunt.option('times'),10) || 1;
-        //                 var outputsString = '';
-        //                 for(var x = 0; x < times; x ++){
-        //                     outputsString += '&& ' + baseCommand;
-        //                 }
-        //                 return '`which adb` forward tcp:9222 localabstract:chrome_devtools_remote ' + outputsString;
-        //             } else {
-        //                 return '';
-        //             }
-        //         }
-        //     },
-        //     wraithhistory: {
-        //         command: 'cd ' + config.base.html + 'test/visual && rm -rf shots shots_history && wraith history ' + config.base.html + 'test/visual/visual.yaml'
-        //     },
-        //     wraith: {
-        //         command: 'cd ' + config.base.html + 'test/visual && wraith latest ' + config.base.html + 'test/visual/visual.yaml'
-        //     },
-        //     clean: {
-        //         command: 'git checkout ArticleTemplates/assets/build ArticleTemplates/assets/css ArticleTemplates/assets/scss/*.css DocumentationTemplates test'
-        //     },
-        //     ziptemplates: {
-        //         command: 'cd ArticleTemplates && zip -q -r ArticleTemplates.zip ./* -x "./assets/scss/*" "./assets/js/*" "*.DS_Store" "*.map" && mv ArticleTemplates.zip ../'
-        //     },
-        //     deployandroid: {
-        //         command: 'adb push ArticleTemplates.zip /sdcard/ArticleTemplates.zip && adb shell am startservice -n "com.guardian/.templates.UpdateTemplatesService"'
-        //     }
-        // }
     });
 
-    // grunt.task.run('notify_hooks');
-    // grunt.registerTask('develop', ['build', 'express', 'watch']);
+    grunt.task.run('notify_hooks');
 
     grunt.registerTask('buildJS', ['lodash', 'jshint', 'karma', 'initRequireJS', 'requirejs']);
 
-    grunt.registerTask('buildCSS', ['scsslint','sass:dev','cssmin']);
+    grunt.registerTask('buildCSS', ['scsslint','sass:dev', 'hologram', 'cssmin']);
 
     grunt.registerTask('build', ['buildJS', 'buildCSS']);
 
     grunt.registerTask('default', 'watch');
 
-    // grunt.registerTask('deploy', ['build','shell:ziptemplates', 'shell:deployandroid']);
-    // grunt.registerTask('apk', ['build', 'rsync', 'shell:android']);
-    // grunt.registerTask('ipa', ['build', 'rsync', 'shell:ios']);
-    // grunt.registerTask('installer', ['build', 'rsync', 'shell:ios', 'shell:android']);
-    // grunt.registerTask('default', 'develop');
-    // grunt.registerTask('test', ['build', 'express', 'mocha:jenkins']);
+    grunt.registerTask('deploy', ['build','shell:ziptemplates', 'shell:deployandroid']);
+    
+    grunt.registerTask('apk', ['build', 'rsync', 'shell:android']);
+    
+    grunt.registerTask('ipa', ['build', 'rsync', 'shell:ios']);
+    
+    grunt.registerTask('installer', ['build', 'rsync', 'shell:ios', 'shell:android']);
+    
+    grunt.registerTask('default', 'develop');
+
+    grunt.registerTask('test', ['build', 'express', 'mocha:jenkins']);
 };
