@@ -252,7 +252,7 @@ module.exports = function(grunt) {
                 tasks: ['buildJS','rsync']
             },
             tests: {
-                files: ['ArticleTemplates/assets/js/**/*.js', 'test/unit/**/*.{js,html}'],
+                files: ['ArticleTemplates/assets/js/**/*.js', 'test/spec/unit/**/*.js'],
                 tasks: ['karma']
             },
             scss: {
