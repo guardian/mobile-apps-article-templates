@@ -1,12 +1,10 @@
 /*global window,console,define */
 define([
     'smoothScroll',
-    'modules/ads',
-    'modules/util'
+    'modules/ads'
 ], function (
     smoothScroll,
-    Ads,
-    util
+    Ads
 ) {
     'use strict';
 
@@ -59,7 +57,7 @@ define([
                     answers = questionObj.elem.querySelectorAll('.question__answer');
 
                 for (i = 0; i < answers.length; i++) {
-                    answerCode = util.getStringFromUnicodeVal(65 + i);
+                    answerCode = GU.util.getStringFromUnicodeVal(65 + i);
                     if (answerCode === questionObj.correctAnswer.code) {
                         answers[i].dataset.correctAnswerExplanation = questionObj.correctAnswer.explanation;
                         answers[i].dataset.correct = 'true';
@@ -87,7 +85,7 @@ define([
                     quizBuckets = {};
 
                 for (i = 0; i < buckets.length; i++) {
-                    bucketCode = util.getStringFromUnicodeVal(65 + i);
+                    bucketCode = GU.util.getStringFromUnicodeVal(65 + i);
                     quizBuckets[bucketCode] = {
                         count: 0,
                         title: buckets[i].dataset.title,

@@ -34,11 +34,12 @@ define([
                         // Move mpu ads
                         window.updateLiveblogAdPlaceholders(true);
 
-                        // See Common bootstrap
-                        window.articleImageSizer();
+                        modules.common.imageSizer();
+                        modules.common.loadEmbeds();
+                        modules.common.loadInteractives();
+
                         window.liveblogTime();
-                        window.loadEmbeds();
-                        window.loadInteractives();
+
                         newBlockHtml = '';
                     };
 
@@ -84,11 +85,11 @@ define([
                     $('.loading--liveblog').removeClass("loading--visible");
                     $(html).appendTo('.article__body');
 
-                    // See Common bootstrap
-                    window.articleImageSizer();
+                    modules.common.imageSizer();
+                    modules.common.loadEmbeds();
+                    modules.common.loadInteractives();
+
                     window.liveblogTime();
-                    window.loadEmbeds();
-                    window.loadInteractives();
 
                     // check for tweets
                     twitter.checkForTweets(document.body);
@@ -126,7 +127,7 @@ define([
                     modules.adjustMinuteBlocks(blocks);
 
                     // update dimensions on orientation change
-                    bean.on(window, 'resize', window.ThrottleDebounce.debounce(100, false, modules.adjustMinuteBlocks.bind(null, blocks)));
+                    bean.on(window, 'resize', GU.util.debounce(modules.adjustMinuteBlocks.bind(null, blocks), 100));
                 } else {
                     // If windows add background images to minute blocks
                     if (document.body.classList.contains("windows")) {   
@@ -324,7 +325,7 @@ define([
                 bean.on(window, 'click', minuteNavElem, modules.scrollToNextCard.bind(null, minuteNavElem, scroller));
             
                 // update scroll dimensions on orientation change
-                bean.on(window, 'resize', window.ThrottleDebounce.debounce(100, false, modules.onWindowResize.bind(null, liveblogElem, wrapperElem, scroller)));
+                bean.on(window, 'resize', GU.util.debounce(modules.onWindowResize.bind(null, liveblogElem, wrapperElem, scroller), 100));
             },
 
             onWindowResize: function (liveblogElem, wrapperElem, scroller) {
@@ -379,16 +380,15 @@ define([
                 var i,
                     elems = document.querySelectorAll('.minute-logo-container, .minute-vertical-rule');
 
-                console.log(elems);    
-
                 for (i = 0; i < elems.length; i++) {
                     elems[i].parentNode.removeChild(elems[i]);
                 }
             }
         },
-
-        ready = function () {
+        ready = function (common) {
             if (!this.initialised) {
+                modules.common = common;
+
                 this.initialised = true;
                 modules.setupGlobals();
                 window.liveblogTime();

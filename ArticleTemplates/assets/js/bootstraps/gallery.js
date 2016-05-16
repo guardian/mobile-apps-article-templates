@@ -13,10 +13,11 @@ define([
     var modules = {
         galleryLayout: function () {
             collagePlus.init(".gallery", ".gallery__image");
-            bean.on(window, 'resize.gallery orientationchange.gallery', window.ThrottleDebounce.debounce(100, false, function () {
+            
+            bean.on(window, 'resize.gallery orientationchange.gallery', GU.util.debounce(function () {
                 $(".gallery")[0].removeAttribute("style");
                 collagePlus.init(".gallery", ".gallery__image");
-            }));
+            }, 100));
 
             // remove this once ios stops using..
             window.redrawGallery = function() {

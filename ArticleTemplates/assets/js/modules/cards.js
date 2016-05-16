@@ -43,13 +43,13 @@ define([
             snapToGrid: function(el) {
                 // Setup now and re-init on resize or orientation change
                 modules.setUpFlipSnap(el);
-                bean.on(window, 'resize.cards orientationchange.cards', window.ThrottleDebounce.debounce(100, false, function () {
+                bean.on(window, 'resize.cards orientationchange.cards', GU.util.debounce(function () {
                     if (modules.flipSnap) {
                         modules.flipSnap.destroy();
                         $(el).removeAttr('style');
                     }
                     modules.setUpFlipSnap(el);
-                }));
+                }, 100));
             },
             setUpFlipSnap: function(el) {
                 modules.flipSnap = null;

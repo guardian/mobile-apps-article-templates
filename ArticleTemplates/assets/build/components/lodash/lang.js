@@ -1,0 +1,1 @@
+define(["./isFunction","./isObject","./isObjectLike","./isSymbol","./toNumber"],function(i,e,t,b,n){return{isFunction:i,isObject:e,isObjectLike:t,isSymbol:b,toNumber:n}});

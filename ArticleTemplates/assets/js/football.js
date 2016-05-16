@@ -1,26 +1,24 @@
 define([
     'bootstraps/common',
     'bootstraps/football',
-    'bootstraps/liveblog',
-    'modules/$'
+    'bootstraps/liveblog'
 ], function (
-    Common,
-    Football,
-    Liveblog,
-    $
+    common,
+    football,
+    liveblog
 ) {
     'use strict';
     
-    function init(){
-        Common.init();
-        Football.init();
+    var module = {
+        init: function () {
+            common.init();
+            football.init();
 
-        if ($('.article__body--liveblog').length > 0) {
-            Liveblog.init();
+            if (document.getElementsByClassName('article__body--liveblog').length > 0) {
+                liveblog.init(common);
+            }
         }
-    }
-
-    return {
-        init: init
     };
+
+    return module;
 });

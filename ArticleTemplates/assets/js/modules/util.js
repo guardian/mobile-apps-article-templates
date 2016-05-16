@@ -1,80 +1,94 @@
-define(function () {
+define([
+    'lodash/debounce'
+], function (
+    debounce
+) {
 	'use strict';
 
-	var modules = {
-	    isElementInViewport: function (el) {
-            var rect = el.getBoundingClientRect();
+    window.GU = window.GU || {};
 
-            return (
-                rect.top >= 0 &&
-                rect.left >= 0 &&
-                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && 
-                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-            );
-        }, 
+    function init() {
+        GU.util = {
+            isElementInViewport: function (el) {
+                var rect = el.getBoundingClientRect();
 
-        isElementPartiallyInViewport: function(el) {
-            var rect = el.getBoundingClientRect(),
-                windowHeight = (window.innerHeight || document.documentElement.clientHeight),
-                windowWidth = (window.innerWidth || document.documentElement.clientWidth),
-                vertInView = (rect.top <= windowHeight) && ((rect.top + rect.height) >= 0),
-                horInView = (rect.left <= windowWidth) && ((rect.left + rect.width) >= 0);
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && 
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }, 
 
-            return (vertInView && horInView);
-        },
+            isElementPartiallyInViewport: function(el) {
+                var rect = el.getBoundingClientRect(),
+                    windowHeight = (window.innerHeight || document.documentElement.clientHeight),
+                    windowWidth = (window.innerWidth || document.documentElement.clientWidth),
+                    vertInView = (rect.top <= windowHeight) && ((rect.top + rect.height) >= 0),
+                    horInView = (rect.left <= windowWidth) && ((rect.left + rect.width) >= 0);
 
-        signalDevice: function (messageName) {
-            var path = 'x-gu://',
-                url = path + messageName,
-                iframe = document.createElement('iframe');
+                return (vertInView && horInView);
+            },
 
-            iframe.style.display = 'none';
-            iframe.src = url;
+            signalDevice: function (messageName) {
+                var path = 'x-gu://',
+                    url = path + messageName,
+                    iframe = document.createElement('iframe');
 
-            modules.doIframeMessage(iframe);
-        },
+                iframe.style.display = 'none';
+                iframe.src = url;
 
-        doIframeMessage: function (elem) {
-            document.documentElement.appendChild(elem);
-            document.documentElement.removeChild(elem);
-        },
+                GU.util.doIframeMessage(iframe);
+            },
 
-        isOnline: function () {
-            return !document.body.classList.contains('offline') && navigator.onLine;
-        },
+            doIframeMessage: function (elem) {
+                document.documentElement.appendChild(elem);
+                document.documentElement.removeChild(elem);
+            },
 
-        getClosestParentWithClass: function (elem, className) {
-            while (elem && (!elem.classList || !elem.classList.contains(className))) {
-                elem = elem.parentNode;
-            }
+            isOnline: function () {
+                return !document.body.classList.contains('offline') && navigator.onLine;
+            },
 
-            return elem;
-        },
+            getClosestParentWithClass: function (elem, className) {
+                while (elem && (!elem.classList || !elem.classList.contains(className))) {
+                    elem = elem.parentNode;
+                }
 
-        getClosestParentWithTag: function (elem, tagName) {
-            while (elem && (elem.tagName !== tagName)) {
-                elem = elem.parentNode;
-            }
+                return elem;
+            },
 
-            return elem;
-        },
+            getClosestParentWithTag: function (elem, tagName) {
+                while (elem && (elem.tagName !== tagName)) {
+                    elem = elem.parentNode;
+                }
 
-        getClosestParentWithData: function (elem, dataKey, dataVals) {
-            if (typeof dataVals === 'string') {
-                dataVals = [dataVals];
-            }
+                return elem;
+            },
 
-            while (elem && (!elem.dataset || dataVals.indexOf(elem.dataset[dataKey]) === -1)) {
-                elem = elem.parentNode;
-            }
+            getClosestParentWithData: function (elem, dataKey, dataVals) {
+                if (typeof dataVals === 'string') {
+                    dataVals = [dataVals];
+                }
 
-            return elem;
-        },
+                while (elem && (!elem.dataset || dataVals.indexOf(elem.dataset[dataKey]) === -1)) {
+                    elem = elem.parentNode;
+                }
 
-        getStringFromUnicodeVal: function (unicodeVal) {
-            return String.fromCharCode(unicodeVal);
-        }
-	};
+                return elem;
+            },
 
-	return modules;
+            getStringFromUnicodeVal: function (unicodeVal) {
+                return String.fromCharCode(unicodeVal);
+            },
+
+            debounce: debounce
+        };
+    }
+
+    var util = {
+        init: init
+    };
+
+    return util;
 });

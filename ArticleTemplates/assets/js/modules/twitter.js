@@ -24,8 +24,7 @@ define([
 
         if (!theMinute) {
             checkForTweets(document.body);
-
-            bean.on(window, 'scroll', window.ThrottleDebounce.debounce(100, false, enhanceTweets));
+            bean.on(window, 'scroll', GU.util.debounce(enhanceTweets, 100));
         }
     }
 
@@ -137,7 +136,7 @@ define([
         }
     }
 
-    function fixVineAutoplay(evt){
+    function fixVineAutoplay(evt) {
         if(!isAndroid && $('iframe[src^="https://vine.co"],iframe[src^="https://amp.twimg.com/amplify-web-player/prod/source.html?video_url"]', evt.target.contentWindow.document)[0]){
             $('.MediaCard', evt.target.contentWindow.document).remove();
             $(evt.target).removeAttr('height');
