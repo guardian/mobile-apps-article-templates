@@ -6,6 +6,9 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
     <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/fonts-__PLATFORM__.css" />
     <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/style-sync.css" />
+    <script type="text/javascript">
+        window.GU = window.GU || {};
+    </script>
     <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/shim.js"></script>
 </head>
 
@@ -70,7 +73,22 @@
     </div>
 
     <script type="text/javascript">
-        window.initTemplate();
+        GU.Bootstrap.init({
+            sectionTone: '__SECTION_TONE__',
+            fontSize: '__FONT_SIZE__',
+            platform: '__PLATFORM__',
+            isOffline: '__IS_OFFLINE__',
+            contentType: 'football',
+            adsEnabled: '__ADS_ENABLED__',
+            adsEnableHiding: '__ADS_ENABLE_HIDING__',
+            adsConfig: '__ADS_CONFIG__',
+            actionBarHeight: '__ACTIONBARHEIGHT__',
+            fontSize: '__FONT_SIZE_INT__',
+            templatesDirectory: '__TEMPLATES_DIRECTORY__',
+            pageId: '__PAGE_ID__',
+            mpuAfterParagraphs: '__MPU_AFTER_PARAGRAPHS__',
+            useAdsReady: '__ADS_FAST_CALLBACK__'
+        });
     </script>
 </body>
 </html>
