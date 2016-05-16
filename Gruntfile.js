@@ -134,13 +134,13 @@ module.exports = function(grunt) {
                 'ArticleTemplates/assets/scss/**/*.scss',
             ]
         },
-        hologram: {
-            doc: {
-                options: {
-                    config: 'hologram.yml'
-                }
-            }
-        },
+        // hologram: {
+        //     doc: {
+        //         options: {
+        //             config: 'hologram.yml'
+        //         }
+        //     }
+        // },
         // jshint
         jshint: {
             options: {
@@ -345,7 +345,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('buildJS', ['lodash', 'jshint', 'karma', 'initRequireJS', 'requirejs']);
 
-    grunt.registerTask('buildCSS', ['scsslint','sass:dev', 'hologram', 'cssmin']);
+    grunt.registerTask('buildCSS', ['scsslint','sass:dev', 'cssmin']);
 
     grunt.registerTask('build', ['buildJS', 'buildCSS']);
 
