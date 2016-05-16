@@ -30,26 +30,30 @@ define([
         });
 
         describe('app.init()', function () {
-            var dummyElem;
-
             beforeEach(function () {
-                dummyElem = document.createElement('div');
-                sandbox.stub(window.document, 'getElementById').returns(dummyElem);
+                window.GU = {
+                    opts: {}
+                };
             });
 
-            it('loadCss called if skipStyle false', function (done) {
+            afterEach(function () {
+                delete window.GU;
+            });
+
+            it('loadCss called if skipStyle falsey', function (done) {
                 injector
                     .mock('domReady', domReadyMock)
                     .mock('modules/monitor', monitorMock)
                     .mock('modules/ads', adsMock)
                     .mock('modules/util', utilMock)
                     .require(['ArticleTemplates/assets/js/app'], function (app) {
+                        sandbox.stub(app, 'initUtil');
                         sandbox.stub(app, 'loadCss');
 
                         app.init();
 
+                        expect(app.initUtil).to.have.been.calledOnce;
                         expect(app.loadCss).to.have.been.calledOnce;
-                        expect(app.loadCss).to.have.been.calledWith('assets/css/style-async.css');
                         expect(domReadyMock).to.have.been.calledOnce;
 
                         done();
@@ -63,12 +67,14 @@ define([
                     .mock('modules/ads', adsMock)
                     .mock('modules/util', utilMock)
                     .require(['ArticleTemplates/assets/js/app'], function (app) {
+                        sandbox.stub(app, 'initUtil');
                         sandbox.stub(app, 'loadCss');
 
-                        dummyElem.dataset.skipStyle = 'xxx';
-                        
+                        GU.opts.skipStyle = true;
+
                         app.init();
 
+                        expect(app.initUtil).to.have.been.calledOnce;
                         expect(app.loadCss).not.to.have.been.called;
                         expect(domReadyMock).to.have.been.calledOnce;
 

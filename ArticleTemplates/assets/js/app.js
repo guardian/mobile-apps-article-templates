@@ -13,20 +13,18 @@ define([
 
     var module = {
         init: function () {
-            var scriptTag = document.getElementById('gu'),
-                skipStyle = scriptTag.getAttribute('data-skip-style');
-
             module.initUtil();
 
-            if (!skipStyle) {
-                module.loadCss('assets/css/style-async.css');
+            if (!GU.opts.skipStyle) {
+                module.loadCss();
             }
 
             domReady(module.onDomReady);
         },
 
-        loadCss: function (url) {
-            var basePath = document.body.getAttribute('data-template-directory'),
+        loadCss: function () {
+            var url = 'assets/css/style-async.css',
+                basePath = GU.opts.templatesDirectory,
                 link = document.createElement('link');
 
             link.type = 'text/css';
@@ -37,17 +35,17 @@ define([
         },
             
         onDomReady: function () {
-            var contentType = document.body.getAttribute('data-content-type');
+            var contentType = GU.opts.contentType;
 
             // monitoring
             monitor.init();
 
             // ads positioning
             Ads.init({
-                adsEnabled: document.body.getAttribute('data-ads-enabled'),
-                adsConfig: document.body.getAttribute('data-ads-config'),
-                adsType: document.getElementsByClassName('article__body--liveblog').length ? 'liveblog' : '',
-                mpuAfterParagraphs: document.body.getAttribute('data-mpu-after-paragraphs')
+                adsEnabled: GU.opts.adsEnabled,
+                adsConfig: GU.opts.adsConfig,
+                adsType: GU.opts.contentType ? 'liveblog' : '',
+                mpuAfterParagraphs: GU.opts.mpuAfterParagraphs
             });
 
             // other article-specific functions
