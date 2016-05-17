@@ -33,6 +33,10 @@ define([
 
             document.getElementsByTagName('head')[0].appendChild(link);
         },
+
+        initLayout: function (layoutName, layoutObj) {
+            monitor.setContext(layoutName, layoutObj.init);
+        },
             
         onDomReady: function () {
             var contentType = GU.opts.contentType;
@@ -48,49 +52,21 @@ define([
                 mpuAfterParagraphs: GU.opts.mpuAfterParagraphs
             });
 
-            // other article-specific functions
+            // // other article-specific functions
             if (contentType === 'article') {
-                require(['article'], function (article) {
-                    monitor.setContext('article', function () {
-                        article.init();
-                    });
-                });
+                require(['article'], module.initLayout.bind(null, 'article'));
             } else if (contentType === 'liveblog') {
-                require(['liveblog'], function (Liveblog) {
-                    monitor.setContext('liveblog', function () {
-                        Liveblog.init();
-                    });
-                });
+                require(['liveblog'], module.initLayout.bind(null, 'liveblog'));
             } else if (contentType === 'audio') {
-                require(['audio'], function (Audio) {
-                    monitor.setContext('audio', function () {
-                        Audio.init();
-                    });
-                });
+                require(['audio'], module.initLayout.bind(null, 'audio'));
             } else if (contentType === 'gallery') {
-                require(['gallery'], function (Gallery) {
-                    monitor.setContext('gallery', function () {
-                        Gallery.init();
-                    });
-                });
+                require(['gallery'], module.initLayout.bind(null, 'gallery'));
             } else if (contentType === 'football') {
-                require(['football'], function (Football) {
-                    monitor.setContext('football', function () {
-                        Football.init();
-                    });
-                });
+                require(['football'], module.initLayout.bind(null, 'football'));
             } else if (contentType === 'cricket') {
-                require(['cricket'], function (Cricket) {
-                    monitor.setContext('cricket', function () {
-                        Cricket.init();
-                    });
-                });
+                require(['cricket'], module.initLayout.bind(null, 'cricket'));
             } else {
-                require(['bootstraps/common'], function (Common) {
-                    monitor.setContext('common', function () {
-                        Common.init();
-                    });
-                });
+                require(['bootstraps/common'], module.initLayout.bind(null, 'common'));
             }
         },
 
