@@ -42,6 +42,8 @@ define([
             });
 
             afterEach(function () {
+                expect(utilMock.init).to.have.been.calledOnce;
+
                 delete window.GU;
             });
 
@@ -52,12 +54,10 @@ define([
                     .mock('modules/ads', adsMock)
                     .mock('modules/util', utilMock)
                     .require(['ArticleTemplates/assets/js/app'], function (app) {
-                        sandbox.stub(app, 'initUtil');
                         sandbox.stub(app, 'loadCss');
 
                         app.init();
 
-                        expect(app.initUtil).to.have.been.calledOnce;
                         expect(app.loadCss).to.have.been.calledOnce;
                         expect(domReadyMock).to.have.been.calledOnce;
 
@@ -72,14 +72,12 @@ define([
                     .mock('modules/ads', adsMock)
                     .mock('modules/util', utilMock)
                     .require(['ArticleTemplates/assets/js/app'], function (app) {
-                        sandbox.stub(app, 'initUtil');
                         sandbox.stub(app, 'loadCss');
 
                         GU.opts.skipStyle = true;
 
                         app.init();
 
-                        expect(app.initUtil).to.have.been.calledOnce;
                         expect(app.loadCss).not.to.have.been.called;
                         expect(domReadyMock).to.have.been.calledOnce;
 
@@ -324,23 +322,6 @@ define([
                         done();
                     });
             });
-        });
-
-        describe('app.initUtil()', function () {
-            it('calls util.init', function (done) {
-                injector
-                    .mock('domReady', domReadyMock)
-                    .mock('modules/monitor', monitorMock)
-                    .mock('modules/ads', adsMock)
-                    .mock('modules/util', utilMock)
-                    .require(['ArticleTemplates/assets/js/app'], function (app) {
-                        app.initUtil();
-
-                        expect(utilMock.init).to.have.been.calledOnce;
-                        
-                        done();
-                    });
-            }); 
         });
     });
 });

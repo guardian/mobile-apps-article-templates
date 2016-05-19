@@ -13,7 +13,7 @@ define([
 
     var module = {
         init: function () {
-            module.initUtil();
+            util.init();
 
             if (!GU.opts.skipStyle) {
                 module.loadCss();
@@ -68,10 +68,6 @@ define([
             } else {
                 require(['bootstraps/common'], module.initLayout.bind(null, 'common'));
             }
-        },
-
-        initUtil: function () {
-            util.init();
         }
     };
 
