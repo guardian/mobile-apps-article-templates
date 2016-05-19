@@ -5,8 +5,6 @@ define([
 ) {
 	'use strict';
 
-    window.GU = window.GU || {};
-
     function init() {
         GU.util = {
             isElementInViewport: function (el) {

@@ -169,7 +169,7 @@ module.exports = function(grunt) {
                     'noarg': true,
                     'noempty': true,
                     'nonew': true,
-                    'quotmark': "single",
+                    'quotmark': 'single',
                     'regexp': true,
                     'strict': true,
                     'trailing': true,
@@ -360,6 +360,4 @@ module.exports = function(grunt) {
     grunt.registerTask('installer', ['build', 'rsync', 'shell:ios', 'shell:android']);
     
     grunt.registerTask('default', 'develop');
-
-    grunt.registerTask('test', ['build', 'express', 'mocha:jenkins']);
 };

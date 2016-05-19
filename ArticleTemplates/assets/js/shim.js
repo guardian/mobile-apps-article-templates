@@ -1,17 +1,4 @@
-(function () {
-    /*
-        Native code (mostly Android) attempts to call Javascript functions
-        way too early. Most manipulate the DOM, so require DOMready at least,
-        though most come through before DOMinteractive even.
-
-        For the list of functions below, create an array to queue function calls and
-        arguments which can be requested by respective modules later when the time
-        is more appropriate.
-
-        If both Android and IOS calls are delayed until DOMready, this would
-        not be necessary.
-    */
-    
+(function() {
     'use strict';
 
     var nativeFunctionCalls = [
@@ -41,57 +28,93 @@
         'getArticleHeight'
     ];
 
-    Array.prototype.forEach.call(nativeFunctionCalls, function (name) {
-        // Create a function to catch early calls
-        window[name] = function () {
-            // Create or get the queue for this function
-            var queue = name + 'Queue';
-            window[queue] = window[queue] || [];
-            // Store arguments for each call so
-            // true function can apply these when ready
-            window[queue].push(arguments);
-        };
-    });
+    GU.Bootstrap = {
+        init: function(opts) {
+            GU.opts = opts;
 
-    window.applyNativeFunctionCall = function (name) {
-        var queue = window[name + 'Queue'];
-        
-        if (queue) {
-            Array.prototype.forEach.call(queue, function (item) {
-                window[name].apply(this, item);
-            });
-        }
-    };
+            GU.Bootstrap.catchNativeFunctionCalls();
 
-    window.animFrame = window.requestAnimationFrame || function( callback ){
-        window.setTimeout(callback, 1000 / 60);
-    };
+            window.applyNativeFunctionCall = GU.Bootstrap.applyNativeFunctionCall;
 
-    window.initTemplate = function (opts) {
-        var options = opts || {},
-            script,
-            templatePath = document.body.getAttribute('data-template-directory'),
-            addScript = function () {
-                script = document.createElement('script'),
-                script.setAttribute('src', templatePath + 'assets/build/components/require.js');
-                script.setAttribute('id', 'gu');
-                script.setAttribute('data-js-dir', templatePath + 'assets/build');
-                script.setAttribute('data-main', templatePath + 'assets/build/main.js');
-                if(options.skipStyle){
-                    script.setAttribute('data-skip-style', 'true');
-                }
-                script.async = true;
-                document.head.appendChild(script);
-            },
-            boot = function () {
-                window.animFrame(addScript);
+            if (document.readyState === 'complete') {
+                GU.Bootstrap.kickOff();
+            } else {
+                window.addEventListener('DOMContentLoaded', GU.Bootstrap.kickOff);
+            }
+        },
+        kickOff: function() {
+            window.requestAnimationFrame(GU.Bootstrap.addScript);
+        },
+        addScript: function() {
+            var script = document.createElement('script'),
+                templatePath = GU.opts.templatesDirectory;
+
+            script.setAttribute('src', templatePath + 'assets/build/components/require.js');
+            script.setAttribute('id', 'gu');
+            script.setAttribute('data-js-dir', templatePath + 'assets/build');
+            script.setAttribute('data-main', templatePath + 'assets/build/main.js');
+            script.async = true;
+
+            document.head.appendChild(script);
+        },
+        catchNativeFunctionCalls: function () {
+            Array.prototype.forEach.call(nativeFunctionCalls, GU.Bootstrap.setNativeFunctionCall);
+        },
+        setNativeFunctionCall: function (name) {
+            var queue;
+
+            // Create a function to catch early calls
+            window[name] = function() {
+                // Create or get the queue for this function
+                queue = name + 'Queue';
+
+                window[queue] = window[queue] || [];
+                // Store arguments for each call so
+                // true function can apply these when ready
+                window[queue].push(arguments);
             };
+        },
+        applyNativeFunctionCall: function(name) {
+            var queue = window[name + 'Queue'];
 
-        if (document.readyState === 'complete') {
-            boot();
-        } else {
-            window.addEventListener('DOMContentLoaded', boot);
+            if (queue) {
+                Array.prototype.forEach.call(queue, function(item) {
+                    window[name].apply(this, item);
+                });
+            }
         }
     };
 
+    // requestAnimationFrame polyfill
+    function shimRequestAnimationFrame() {
+        var lastTime = 0;
+        var vendors = ['ms', 'moz', 'webkit', 'o'];
+
+        for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+            window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
+            window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] ||
+                window[vendors[x] + 'CancelRequestAnimationFrame'];
+        }
+
+        if (!window.requestAnimationFrame) {
+            window.requestAnimationFrame = function (callback) {
+                var currTime = new Date().getTime();
+                var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+                var id = window.setTimeout(function() {
+                        callback(currTime + timeToCall);
+                    },
+                    timeToCall);
+                lastTime = currTime + timeToCall;
+                return id;
+            };
+        }
+
+        if (!window.cancelAnimationFrame) {
+            window.cancelAnimationFrame = function (id) {
+                clearTimeout(id);
+            };
+        }
+    }
+
+    shimRequestAnimationFrame();
 }());

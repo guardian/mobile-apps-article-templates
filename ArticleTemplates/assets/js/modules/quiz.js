@@ -292,7 +292,7 @@ define([
                 newYPos = Ads.modules.updateMPUPosition(yPos);
 
                 if (progress < 2000) {
-                    window.animFrame(modules.adjustAdPosition.bind(null, newYPos, startTime));
+                    window.requestAnimationFrame(modules.adjustAdPosition.bind(null, newYPos, startTime));
                 }
             },
 
@@ -330,7 +330,7 @@ define([
 
                 // If necessary set up a call to check mpu position
                 if (modules.moveMPU) {
-                    window.animFrame(modules.adjustAdPosition.bind(null, yPos, startTime));
+                    window.requestAnimationFrame(modules.adjustAdPosition.bind(null, yPos, startTime));
                 }
 
                 // When we have an image answer we need to move the positioning of the explanation and marker 
