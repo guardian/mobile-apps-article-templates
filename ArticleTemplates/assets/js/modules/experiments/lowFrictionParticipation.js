@@ -26,7 +26,7 @@ define(function() {
     var module = {
         init: function(options) {
             var lowFricContainer,
-                userVote = module.getUserVote();
+                userVote = module.getUserVote() || null;
 
             // If we can't store the user's value, don't render
             if (userVote === 'no-storage') {
@@ -40,16 +40,11 @@ define(function() {
             els.lowFricContainer.classList.add('participation-low-fric');
             els.articleBody = document.querySelector('.article__body > .prose');
 
-            if (userVote) {
-                // Render with selected item
-                module.updateState({
-                    selectedItem: userVote
-                });
-            } else {
-                // Set and render initial state
-                module.updateState({});
-                module.bindEvents();
-            }
+            module.updateState({
+                selectedItem: userVote
+            });
+  
+            module.bindEvents();
         },
 
         getUserVote: function () {
@@ -77,18 +72,13 @@ define(function() {
                     '<h2 class="participation-low-fric__title">' + settings.templateVars.title + '</h2>' +
                     '<p class="participation-low-fric__desc">' + settings.templateVars.description + '</p>' +
                     '<div class="participation-low-friction__contents">' +
-                    '<p class="review-rating"></p></div>'
-
+                    '<p class="review-rating"></p></div>';
 
                 reviewRating = els.lowFricContainer.querySelector('.review-rating')
 
                 module.createButtons(reviewRating);
 
                 els.articleBody.appendChild(els.lowFricContainer);
-
-                module.updateState({
-                    initialRender: false
-                });
             } else {
                 reviewRating = els.lowFricContainer.querySelector('.review-rating')
             }
@@ -142,8 +132,11 @@ define(function() {
 
         onButtonClick: function (rating) {
             module.updateState({
+                initialRender: false,
                 selectedItem: rating
             });
+
+            module.submitRating();
         },
 
         onTouchMove: function (evt) {
@@ -169,17 +162,37 @@ define(function() {
 
             if (rating) {
                 module.updateState({
+                    initialRender: false,
                     selectedItem: rating
                 });
             } else {
                 module.updateState({
+                    initialRender: false,
                     selectedItem: null
                 });
             }
         },
 
         onTouchEnd: function () {
+            if (touchStart) {
+                module.submitRating();
+            }
+
             touchStart = null;
+        },
+
+        submitRating: function () {
+            var currentPage = GU.opts.pageId,
+                votedPages = JSON.parse(GU.util.getLocalStorage(prefs));
+
+            // If the prefs object doesn't exist, lets create one
+            if (!votedPages) {
+                votedPages = {};
+            }
+
+            votedPages[currentPage] = currentState.selectedItem;
+
+            GU.util.setLocalStorage(prefs, JSON.stringify(votedPages));
         }
     };
 
