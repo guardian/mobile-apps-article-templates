@@ -272,7 +272,7 @@ module.exports = function(grunt) {
                     modifier: 'modularize',
                     modularize: true,
                     exports: ['amd'],
-                    include: ['debounce']
+                    include: ['debounce', 'merge']
                 }
             }
         },

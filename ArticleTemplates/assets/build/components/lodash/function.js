@@ -1,1 +1,1 @@
-define(["./debounce"],function(e){return{debounce:e}});
+define(["./debounce","./rest"],function(e,n){return{debounce:e,rest:n}});

@@ -1,7 +1,9 @@
 define([
-    'lodash/debounce'
+    'lodash/debounce',
+    'lodash/merge'
 ], function (
-    debounce
+    debounce,
+    merge
 ) {
 	'use strict';
 
@@ -80,7 +82,17 @@ define([
                 return String.fromCharCode(unicodeVal);
             },
 
-            debounce: debounce
+            getLocalStorage: function (key) {
+                return localStorage.getItem(key);
+            },
+
+            setLocalStorage: function (key, value) {
+                localStorage.setItem(key, value);
+            },
+
+            debounce: debounce,
+
+            merge: merge
         };
     }
 

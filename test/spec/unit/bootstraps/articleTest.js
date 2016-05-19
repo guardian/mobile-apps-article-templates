@@ -13,7 +13,8 @@ define([
             witnessMock,
             outbrainMock,
             quizMock,
-            membershipMock;
+            membershipMock,
+            lowFrictionParticipationMock;
 
         beforeEach(function() {
             twitterMock = {
@@ -32,6 +33,9 @@ define([
             membershipMock = {
                 init: sinon.spy()
             },
+            lowFrictionParticipationMock = {
+                init: sinon.spy()
+            },
             sandbox = sinon.sandbox.create();
             injector = new Squire();
         });
@@ -48,12 +52,14 @@ define([
                     .mock('modules/outbrain', outbrainMock)
                     .mock('modules/quiz', quizMock)
                     .mock('modules/membership', membershipMock)
+                    .mock('modules/experiments/lowFrictionParticipation', lowFrictionParticipationMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/article'], function (article) {
                         sandbox.stub(article, 'insertOutbrain');
                         sandbox.stub(article, 'loadQuizzes');
                         sandbox.stub(article, 'formatImmersive');
                         sandbox.stub(article, 'richLinkTracking');
-                        sandbox.stub(article, 'loadMembershipCreative');
+                        sandbox.stub(article, 'addMembershipCreative');
+                        sandbox.stub(article, 'addLowFrictionParticpation');
 
                         article.init();
 
@@ -64,7 +70,8 @@ define([
                         expect(article.loadQuizzes).to.have.been.calledOnce;
                         expect(article.formatImmersive).to.have.been.calledOnce;
                         expect(article.richLinkTracking).to.have.been.calledOnce;
-                        expect(article.loadMembershipCreative).to.have.been.calledOnce;
+                        expect(article.addMembershipCreative).to.have.been.calledOnce;
+                        expect(article.addLowFrictionParticpation).to.have.been.calledOnce;
 
                         done();
                     });

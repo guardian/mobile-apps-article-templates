@@ -4555,6 +4555,67 @@ Display a Guardian Witness submission.
   .element-witness--date::before {
     content: '\00B7   '; }
 
+.membership-creative-container {
+  color: inherit !important;
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative; }
+  @media all and (min-width: 28.13em) {
+    .membership-creative-container {
+      float: right;
+      width: 300px;
+      padding-bottom: 300px;
+      margin-left: 18px;
+      margin-bottom: 12px; } }
+  .membership-creative-container .membership-creative {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0; }
+
+/*doc
+---
+title: Low Friction Participation
+name: participation-low-fric
+category: Modules
+---
+Displays a low friction participation widget
+
+```html_example
+ 
+<div class="participation-low-fric">
+	<h2 class="participation-low-fric__title">Do you agree? Rate this film now</h2>
+	<p class="participation-low-fric__desc">Let us know what you think!</p>
+	<div class="participation-low-friction__contents"></div>
+	<p class="review-rating">
+		<span data-icon="&#xe036;" aria-hidden="true"></span>
+		<span data-icon="&#xe036;" aria-hidden="true"></span>
+		<span data-icon="&#xe036;" aria-hidden="true"></span>
+		<span data-icon="&#xe036;" aria-hidden="true"></span>
+		<span data-icon="&#xe036;" aria-hidden="true"></span>
+	</p>
+	<button class="participation-low-fric__confirm hide">Confirm</button>
+</div>
+
+```
+*/
+.participation-low-fric .review-rating {
+  font-size: 5.2rem;
+  line-height: 5.4rem;
+  padding-top: 8px;
+  display: inline-block; }
+.participation-low-fric .review-rating--1 .icon:nth-child(-n+1),
+.participation-low-fric .review-rating--2 .icon:nth-child(-n+2),
+.participation-low-fric .review-rating--3 .icon:nth-child(-n+3),
+.participation-low-fric .review-rating--4 .icon:nth-child(-n+4),
+.participation-low-fric .review-rating--5 .icon:nth-child(-n+5) {
+  color: #fff; }
+.participation-low-fric .participation-low-friction__contents {
+  text-align: center; }
+
 .android .discussion {
   border-top-width: 0;
   padding: 0px 12px 0px 12px; }
