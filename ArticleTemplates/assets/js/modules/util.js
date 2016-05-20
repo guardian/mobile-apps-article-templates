@@ -1,22 +1,18 @@
-define([
-    'lodash/debounce'
-], function (
-    debounce
-) {
-	'use strict';
+define(function() {
+    'use strict';
 
     function init() {
         GU.util = {
-            isElementInViewport: function (el) {
+            isElementInViewport: function(el) {
                 var rect = el.getBoundingClientRect();
 
                 return (
                     rect.top >= 0 &&
                     rect.left >= 0 &&
-                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && 
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
                     rect.right <= (window.innerWidth || document.documentElement.clientWidth)
                 );
-            }, 
+            },
 
             isElementPartiallyInViewport: function(el) {
                 var rect = el.getBoundingClientRect(),
@@ -28,7 +24,7 @@ define([
                 return (vertInView && horInView);
             },
 
-            signalDevice: function (messageName) {
+            signalDevice: function(messageName) {
                 var path = 'x-gu://',
                     url = path + messageName,
                     iframe = document.createElement('iframe');
@@ -39,16 +35,16 @@ define([
                 GU.util.doIframeMessage(iframe);
             },
 
-            doIframeMessage: function (elem) {
+            doIframeMessage: function(elem) {
                 document.documentElement.appendChild(elem);
                 document.documentElement.removeChild(elem);
             },
 
-            isOnline: function () {
+            isOnline: function() {
                 return !document.body.classList.contains('offline') && navigator.onLine;
             },
 
-            getClosestParentWithClass: function (elem, className) {
+            getClosestParentWithClass: function(elem, className) {
                 while (elem && (!elem.classList || !elem.classList.contains(className))) {
                     elem = elem.parentNode;
                 }
@@ -56,7 +52,7 @@ define([
                 return elem;
             },
 
-            getClosestParentWithTag: function (elem, tagName) {
+            getClosestParentWithTag: function(elem, tagName) {
                 while (elem && (elem.tagName !== tagName)) {
                     elem = elem.parentNode;
                 }
@@ -64,7 +60,7 @@ define([
                 return elem;
             },
 
-            getClosestParentWithData: function (elem, dataKey, dataVals) {
+            getClosestParentWithData: function(elem, dataKey, dataVals) {
                 if (typeof dataVals === 'string') {
                     dataVals = [dataVals];
                 }
@@ -76,11 +72,47 @@ define([
                 return elem;
             },
 
-            getStringFromUnicodeVal: function (unicodeVal) {
+            getStringFromUnicodeVal: function(unicodeVal) {
                 return String.fromCharCode(unicodeVal);
             },
 
-            debounce: debounce
+            getLocalStorage: function(key) {
+                return localStorage.getItem(key);
+            },
+
+            setLocalStorage: function(key, value) {
+                localStorage.setItem(key, value);
+            },
+
+            debounce: function(func, wait, immediate) {
+                var args;
+                var callNow;
+                var context;
+                var later;
+                var timeout;
+                
+                return function() {
+                    context = this;
+                    args = arguments;
+                    
+                    later = function() {
+                        timeout = null;
+                        if (!immediate) {
+                            func.apply(context, args);
+                        }
+                    };
+
+                    callNow = immediate && !timeout;
+                    
+                    clearTimeout(timeout);
+                    
+                    timeout = setTimeout(later, wait);
+                    
+                    if (callNow) {
+                        func.apply(context, args);
+                    }
+                };
+            }
         };
     }
 

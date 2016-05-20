@@ -145,8 +145,8 @@ define([
                 quoteOverlay.addEventListener('click', module.onQuoteOverlayClick.bind(null, quoteOverlay));
             }
 
-            window.addEventListener('scroll', GU.util.debounce(module.onImmersiveScroll), 10);
-            window.addEventListener('resize', GU.util.debounce(module.onResize), 100);
+            window.addEventListener('scroll', GU.util.debounce(module.onImmersiveScroll, 10));
+            window.addEventListener('resize', GU.util.debounce(module.onResize, 100));
         },
 
         onQuoteOverlayClick: function (quoteOverlay, evt) {
