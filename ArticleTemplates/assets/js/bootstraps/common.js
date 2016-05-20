@@ -6,16 +6,18 @@ define([
     'modules/comments',
     'modules/cards',
     'modules/more-tags',
-    'modules/sharing'
+    'modules/sharing',
+    'modules/experiments/ab'
 ], function(
     fence,
     fastClick,
     smoothScroll,
     flipSnap,
-    Comments,
-    Cards,
-    MoreTags,
-    Sharing
+    comments,
+    cards,
+    moreTags,
+    sharing,
+    ab
 ) {
     'use strict';
 
@@ -23,17 +25,17 @@ define([
         init: function() {
             module.isAndroid = document.body.classList.contains('android');
 
-            module.attachFastClick();
+            fastClick.attach(document.body); // polyfill to remove click delays on browsers with touch
             module.hideEmptyCaptions();
             module.figcaptionToggle();
             module.imageSizer();
             module.articleContentType();
             module.insertTags();
             module.videoPositioning();
-            module.loadComments();
-            module.loadCards();
+            comments.init(); // load comments
+            cards.init(); // load cards
             module.loadEmbeds();
-            module.scrollToAnchor();
+            smoothScroll.init(); // scroll to anchor
             module.loadInteractives();
             module.offline();
             module.setupOfflineSwitch();
@@ -46,17 +48,12 @@ define([
             module.fixSeries();
             module.formatThumbnailImages();
             module.advertorialUpdates();
-
-            Sharing.init(window);
+            ab.init(); // init ab tests
+            sharing.init(window); // init sharing
 
             if (!document.body.classList.contains('no-ready')) {
                 window.location.href = 'x-gu://ready';
             }
-        },
-
-        attachFastClick: function() {
-            // Polyfill to remove click delays on browsers with touch UIs
-            fastClick.attach(document.body);
         },
 
         hideEmptyCaptions: function() {
@@ -161,7 +158,7 @@ define([
                 tagsList.innerHTML += html;
             }
 
-            MoreTags.refresh();
+            moreTags.refresh();
         },
 
         videoPositioning: function () {
@@ -190,14 +187,6 @@ define([
             } else {
                 setTimeout(module.videoPositioningPoller.bind(null, newHeight), 500);
             }  
-        },
-
-        loadComments: function () {
-            Comments.init();
-        },
-
-        loadCards: function () {
-            Cards.init();
         },
 
         loadEmbeds: function () {
@@ -233,10 +222,6 @@ define([
                 iframe.setAttribute('srcdoc', srcdoc);
                 iframe.dataset.vineFixed = true;
             }
-        },
-
-        scrollToAnchor: function () {
-            smoothScroll.init();
         },
 
         loadInteractives: function (force) {
