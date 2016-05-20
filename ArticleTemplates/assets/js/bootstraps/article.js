@@ -3,15 +3,13 @@ define([
     'modules/witness',
     'modules/outbrain',
     'modules/quiz',
-    'modules/membership',
-    'modules/experiments/lowFrictionParticipation'
+    'modules/membership'
 ], function (
     twitter,
     witness,
     outbrain,
     quiz,
-    membership,
-    lowFrictionParticipation
+    membership
 ) {
     'use strict';
 
@@ -25,7 +23,6 @@ define([
             module.formatImmersive();
             module.richLinkTracking();
             module.addMembershipCreative();
-            module.addLowFrictionParticpation();
         },
 
         insertOutbrain: function () {
@@ -229,10 +226,6 @@ define([
 
         addMembershipCreative: function () {
             membership.init();
-        },
-
-        addLowFrictionParticpation: function () {
-            lowFrictionParticipation.init({});
         }
     };
 

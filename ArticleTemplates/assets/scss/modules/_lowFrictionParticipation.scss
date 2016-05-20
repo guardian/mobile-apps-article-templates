@@ -19,14 +19,13 @@ Displays a low friction participation widget
 		<span data-icon="&#xe036;" aria-hidden="true"></span>
 		<span data-icon="&#xe036;" aria-hidden="true"></span>
 	</p>
-	<button class="participation-low-fric__confirm hide">Confirm</button>
+	<div class="participation-low-friction__test-message show-message">Thanks for voting.</div>
 </div>
 
 ```
 */
 
 .participation-low-fric {
-
 	.review-rating {
         font-size: 5.2rem;
         line-height: 5.4rem;
@@ -45,4 +44,15 @@ Displays a low friction participation widget
     .participation-low-friction__contents {
     	text-align: center;
     }
+
+ 	.participation-low-friction__test-message {
+ 		overflow: hidden;
+ 		max-height: 0;
+    	-webkit-transition: max-height 1s linear;
+        transition: max-height 1s linear;
+
+    	&.show-message {
+    		max-height: 500px;
+    	}
+    }   
 }

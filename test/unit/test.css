@@ -2451,7 +2451,7 @@
   		<span data-icon="&#xe036;" aria-hidden="true"></span>
   		<span data-icon="&#xe036;" aria-hidden="true"></span>
   	</p>
-  	<button class="participation-low-fric__confirm hide">Confirm</button>
+  	<div class="participation-low-friction__test-message show-message">Thanks for voting.</div>
   </div>
   
   ```
@@ -11524,6 +11524,13 @@
     color: #fff; }
   #sandbox .participation-low-fric .participation-low-friction__contents {
     text-align: center; }
+  #sandbox .participation-low-fric .participation-low-friction__test-message {
+    overflow: hidden;
+    max-height: 0;
+    -webkit-transition: max-height 1s linear;
+    transition: max-height 1s linear; }
+    #sandbox .participation-low-fric .participation-low-friction__test-message.show-message {
+      max-height: 500px; }
   .android #sandbox .discussion {
     border-top-width: 0;
     padding: 0px 12px 0px 12px; }
