@@ -264,18 +264,6 @@ module.exports = function(grunt) {
                 tasks: ['rsync']
             }
         },
-        // build
-        lodash: {
-            build: {
-                dest: 'ArticleTemplates/assets/js/components/lodash',
-                options: {
-                    modifier: 'modularize',
-                    modularize: true,
-                    exports: ['amd'],
-                    include: ['debounce', 'merge']
-                }
-            }
-        },
         // notify
         notify_hooks: {
             options: {
@@ -343,7 +331,7 @@ module.exports = function(grunt) {
 
     grunt.task.run('notify_hooks');
 
-    grunt.registerTask('buildJS', ['lodash', 'jshint', 'karma', 'initRequireJS', 'requirejs']);
+    grunt.registerTask('buildJS', ['jshint', 'karma', 'initRequireJS', 'requirejs']);
 
     grunt.registerTask('buildCSS', ['scsslint','sass:dev', 'cssmin']);
 

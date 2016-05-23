@@ -1,1 +1,0 @@
-define(["./now"],function(n){return{now:n}});
