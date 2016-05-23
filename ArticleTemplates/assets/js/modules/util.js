@@ -112,6 +112,23 @@ define(function() {
                         func.apply(context, args);
                     }
                 };
+            },
+
+            merge: function (target, source) {
+                var prop;
+
+                for (prop in source) {
+                    if (source.hasOwnProperty(prop)) {
+                        if (target[prop] && typeof source[prop] === 'object') {
+                            GU.util.merge(target[prop], source[prop]);
+                        }
+                        else {
+                            target[prop] = source[prop];
+                        }
+                    }
+                }
+
+                return target;
             }
         };
     }
