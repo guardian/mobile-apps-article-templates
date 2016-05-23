@@ -3,7 +3,7 @@ define(function() {
 
     function init() {
         GU.util = {
-            isElementInViewport: function(el) {
+            isElementInViewport: function (el) {
                 var rect = el.getBoundingClientRect();
 
                 return (
@@ -14,7 +14,7 @@ define(function() {
                 );
             },
 
-            isElementPartiallyInViewport: function(el) {
+            isElementPartiallyInViewport: function (el) {
                 var rect = el.getBoundingClientRect(),
                     windowHeight = (window.innerHeight || document.documentElement.clientHeight),
                     windowWidth = (window.innerWidth || document.documentElement.clientWidth),
@@ -24,7 +24,7 @@ define(function() {
                 return (vertInView && horInView);
             },
 
-            signalDevice: function(messageName) {
+            signalDevice: function (messageName) {
                 var path = 'x-gu://',
                     url = path + messageName,
                     iframe = document.createElement('iframe');
@@ -35,7 +35,7 @@ define(function() {
                 GU.util.doIframeMessage(iframe);
             },
 
-            doIframeMessage: function(elem) {
+            doIframeMessage: function (elem) {
                 document.documentElement.appendChild(elem);
                 document.documentElement.removeChild(elem);
             },
@@ -44,7 +44,7 @@ define(function() {
                 return !document.body.classList.contains('offline') && navigator.onLine;
             },
 
-            getClosestParentWithClass: function(elem, className) {
+            getClosestParentWithClass: function (elem, className) {
                 while (elem && (!elem.classList || !elem.classList.contains(className))) {
                     elem = elem.parentNode;
                 }
@@ -52,7 +52,7 @@ define(function() {
                 return elem;
             },
 
-            getClosestParentWithTag: function(elem, tagName) {
+            getClosestParentWithTag: function (elem, tagName) {
                 while (elem && (elem.tagName !== tagName)) {
                     elem = elem.parentNode;
                 }
@@ -60,7 +60,7 @@ define(function() {
                 return elem;
             },
 
-            getClosestParentWithData: function(elem, dataKey, dataVals) {
+            getClosestParentWithData: function (elem, dataKey, dataVals) {
                 if (typeof dataVals === 'string') {
                     dataVals = [dataVals];
                 }
@@ -72,19 +72,19 @@ define(function() {
                 return elem;
             },
 
-            getStringFromUnicodeVal: function(unicodeVal) {
+            getStringFromUnicodeVal: function (unicodeVal) {
                 return String.fromCharCode(unicodeVal);
             },
 
-            getLocalStorage: function(key) {
+            getLocalStorage: function (key) {
                 return localStorage.getItem(key);
             },
 
-            setLocalStorage: function(key, value) {
+            setLocalStorage: function (key, value) {
                 localStorage.setItem(key, value);
             },
 
-            debounce: function(func, wait, immediate) {
+            debounce: function (func, wait, immediate) {
                 var args;
                 var callNow;
                 var context;
