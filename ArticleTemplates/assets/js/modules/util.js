@@ -1,9 +1,5 @@
-define([
-    'lodash/debounce'
-], function (
-    debounce
-) {
-	'use strict';
+define(function() {
+    'use strict';
 
     function init() {
         GU.util = {
@@ -13,12 +9,12 @@ define([
                 return (
                     rect.top >= 0 &&
                     rect.left >= 0 &&
-                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && 
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
                     rect.right <= (window.innerWidth || document.documentElement.clientWidth)
                 );
-            }, 
+            },
 
-            isElementPartiallyInViewport: function(el) {
+            isElementPartiallyInViewport: function (el) {
                 var rect = el.getBoundingClientRect(),
                     windowHeight = (window.innerHeight || document.documentElement.clientHeight),
                     windowWidth = (window.innerWidth || document.documentElement.clientWidth),
@@ -44,7 +40,7 @@ define([
                 document.documentElement.removeChild(elem);
             },
 
-            isOnline: function () {
+            isOnline: function() {
                 return !document.body.classList.contains('offline') && navigator.onLine;
             },
 
@@ -80,7 +76,43 @@ define([
                 return String.fromCharCode(unicodeVal);
             },
 
-            debounce: debounce
+            getLocalStorage: function (key) {
+                return localStorage.getItem(key);
+            },
+
+            setLocalStorage: function (key, value) {
+                localStorage.setItem(key, value);
+            },
+
+            debounce: function (func, wait, immediate) {
+                var args;
+                var callNow;
+                var context;
+                var later;
+                var timeout;
+                
+                return function() {
+                    context = this;
+                    args = arguments;
+                    
+                    later = function() {
+                        timeout = null;
+                        if (!immediate) {
+                            func.apply(context, args);
+                        }
+                    };
+
+                    callNow = immediate && !timeout;
+                    
+                    clearTimeout(timeout);
+                    
+                    timeout = setTimeout(later, wait);
+                    
+                    if (callNow) {
+                        func.apply(context, args);
+                    }
+                };
+            }
         };
     }
 
