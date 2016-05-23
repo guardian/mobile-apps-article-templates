@@ -23,24 +23,27 @@ define([
                 var newBlockHtml = '',
                     updateCounter = 0,
                     liveblogStartPos = $('.article__body--liveblog').offset(),
-
                     liveblogNewBlockDump = function () {
-                        newBlockHtml = bonzo.create(newBlockHtml);
-                        $(newBlockHtml).each(function() {
-                            $(this).addClass("animated slideinright");
-                        });
-                        $(".article__body--liveblog__pinned").after(newBlockHtml);
+                        if (newBlockHtml) {
+                            newBlockHtml = bonzo.create(newBlockHtml);
+                        
+                            $(newBlockHtml).each(function() {
+                                $(this).addClass("animated slideinright");
+                            });
+                            
+                            $(".article__body--liveblog__pinned").after(newBlockHtml);
 
-                        // Move mpu ads
-                        window.updateLiveblogAdPlaceholders(true);
+                            // Move mpu ads
+                            window.updateLiveblogAdPlaceholders(true);
 
-                        modules.common.imageSizer();
-                        modules.common.loadEmbeds();
-                        modules.common.loadInteractives();
+                            modules.common.imageSizer();
+                            modules.common.loadEmbeds();
+                            modules.common.loadInteractives();
 
-                        window.liveblogTime();
+                            window.liveblogTime();
 
-                        newBlockHtml = '';
+                            newBlockHtml = '';
+                        }
                     };
 
                 window.liveblogNewBlock = function (html) {
@@ -52,11 +55,11 @@ define([
 
                 window.applyNativeFunctionCall('liveblogNewBlock');
 
-                bean.on(window, 'scroll', function () {
+                window.addEventListener('scroll', GU.util.debounce(function () {
                     if (liveblogStartPos.top > window.scrollY) {
                         liveblogNewBlockDump();
                     }
-                });
+                }, 100));
             },
 
             liveMore: function () {
