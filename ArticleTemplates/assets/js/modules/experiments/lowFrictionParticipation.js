@@ -25,25 +25,31 @@ define(function() {
 
     function init(options) {
         var lowFricContainer;
-        var userVote = getUserVote() || null;
+        var userVote;
 
-        // If we can't store the user's value, don't render
-        if (userVote === 'no-storage') {
-            return;
+        if (GU.opts.sectionTone === 'review' && 
+            GU.opts.contentType === 'article') {
+
+            userVote = getUserVote() || null;
+
+            // If we can't store the user's value, don't render
+            if (userVote === 'no-storage') {
+                return;
+            }
+
+            // Create instance options
+            settings = GU.util.merge(settings, options);
+
+            els.lowFricContainer = document.createElement('div');
+            els.lowFricContainer.classList.add('participation-low-fric');
+            els.articleBody = document.querySelector('.article__body > .prose');
+
+            updateState({
+                selectedItem: userVote
+            });
+
+            bindEvents();
         }
-
-        // Create instance options
-        settings = GU.util.merge(settings, options);
-
-        els.lowFricContainer = document.createElement('div');
-        els.lowFricContainer.classList.add('participation-low-fric');
-        els.articleBody = document.querySelector('.article__body > .prose');
-
-        updateState({
-            selectedItem: userVote
-        });
-
-        bindEvents();
     }
 
     function getUserVote() {
@@ -115,6 +121,7 @@ define(function() {
     function bindEvents() {
         var i
         var rating;
+        var handleTouchMoveDebounced = GU.util.debounce(handleTouchMove, 10);
         var touchArea = els.lowFricContainer.querySelector('.participation-low-friction__contents');
         var buttons = els.lowFricContainer.querySelectorAll('.participation-low-fric--button');
 
@@ -124,8 +131,10 @@ define(function() {
             buttonPositions.push(buttons[i].offsetLeft);
         }
 
-        touchArea.addEventListener('touchmove',  GU.util.debounce(onTouchMove, 10));
-        touchArea.addEventListener('touchend',  GU.util.debounce(onTouchEnd, 10));
+        window.addEventListener('touchmove', onTouchMove.bind(null, handleTouchMoveDebounced));
+        
+        touchArea.addEventListener('touchstart', onTouchStart);
+        touchArea.addEventListener('touchend', onTouchEnd);
     }
 
     function onButtonClick(rating) {
@@ -137,7 +146,28 @@ define(function() {
         submitRating();
     }
 
-    function onTouchMove(evt) {
+    function onTouchStart(evt) {
+        var touchPos = evt.targetTouches[0].pageX;
+
+        touchStart = touchPos;
+    }
+
+    function onTouchMove(handleTouchMoveDebounced, evt) {
+        if (touchStart) {
+            evt.preventDefault();
+            handleTouchMoveDebounced(evt);
+        }
+    }
+
+    function onTouchEnd() {
+        if (touchStart) {
+            submitRating();
+        }
+
+        touchStart = null;
+    }
+
+    function handleTouchMove(evt) {
         var lastButtonPosition = buttonPositions[buttonPositions.length - 1];
         var touchPos = evt.targetTouches[0].pageX;
 
@@ -167,14 +197,6 @@ define(function() {
             initialRender: false,
             selectedItem: rating || null
         });
-    }
-
-    function onTouchEnd() {
-        if (touchStart) {
-            submitRating();
-        }
-
-        touchStart = null;
     }
 
     function submitRating() {
