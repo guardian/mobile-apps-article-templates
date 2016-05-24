@@ -27,8 +27,8 @@ define(function() {
         var lowFricContainer;
         var userVote;
 
-        if (GU.opts.sectionTone === 'review' && 
-            GU.opts.contentType === 'article') {
+        // only show on music reviews
+        if (isValid()) {
 
             userVote = getUserVote() || null;
 
@@ -50,6 +50,32 @@ define(function() {
 
             bindEvents();
         }
+    }
+
+    function isValid() {
+        return isValidArticleType() && isValidAuthor() && hasCommentsEnabled();
+    }
+
+    function isValidArticleType() {
+        return GU.opts.contentType === 'article' && GU.opts.sectionTone === 'review' && GU.opts.section === 'music';
+    }
+
+    function isValidAuthor() {
+        var i,
+            authorList = ['profile/alexispetridis','profile/kittyempire'],
+            byline = document.querySelector('.byline__author');
+
+        for (i = 0; i < authorList.length; i++) {
+            if (byline && byline.innerHTML && (byline.innerHTML.indexOf(authorList[i]) !== -1)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    function hasCommentsEnabled() {
+        return document.querySelector('.comment-count');
     }
 
     function getUserVote() {
