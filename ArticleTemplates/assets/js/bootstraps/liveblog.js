@@ -24,26 +24,24 @@ define([
                     updateCounter = 0,
                     liveblogStartPos = $('.article__body--liveblog').offset(),
                     liveblogNewBlockDump = function () {
-                        if (newBlockHtml) {
-                            newBlockHtml = bonzo.create(newBlockHtml);
+                        newBlockHtml = bonzo.create(newBlockHtml);
+                    
+                        $(newBlockHtml).each(function() {
+                            $(this).addClass("animated slideinright");
+                        });
                         
-                            $(newBlockHtml).each(function() {
-                                $(this).addClass("animated slideinright");
-                            });
-                            
-                            $(".article__body--liveblog__pinned").after(newBlockHtml);
+                        $(".article__body--liveblog__pinned").after(newBlockHtml);
 
-                            // Move mpu ads
-                            window.updateLiveblogAdPlaceholders(true);
+                        // Move mpu ads
+                        window.updateLiveblogAdPlaceholders(true);
 
-                            modules.common.imageSizer();
-                            modules.common.loadEmbeds();
-                            modules.common.loadInteractives();
+                        modules.common.imageSizer();
+                        modules.common.loadEmbeds();
+                        modules.common.loadInteractives();
 
-                            window.liveblogTime();
+                        window.liveblogTime();
 
-                            newBlockHtml = '';
-                        }
+                        newBlockHtml = '';
                     };
 
                 window.liveblogNewBlock = function (html) {
@@ -59,7 +57,7 @@ define([
                     if (liveblogStartPos.top > window.scrollY) {
                         liveblogNewBlockDump();
                     }
-                }, 100));
+                }, 100, true));
             },
 
             liveMore: function () {
