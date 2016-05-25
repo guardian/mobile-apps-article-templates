@@ -1,7 +1,7 @@
 define(function() {
     'use strict';
 
-    var storageKey = 'gu.lowFricParticipation';
+    var storageKey = 'lowFrictionParticipation';
 
     var currentState = {
         initialRender: true,
@@ -24,31 +24,16 @@ define(function() {
     var touchStart;
 
     function init(options) {
-        var lowFricContainer;
-        var userVote;
-
-        // only show on music reviews
         if (isValid()) {
-
-            userVote = getUserVote() || null;
-
-            // If we can't store the user's value, don't render
-            if (userVote === 'no-storage') {
-                return;
-            }
-
-            // Create instance options
             settings = GU.util.merge(settings, options);
 
             els.lowFricContainer = document.createElement('div');
             els.lowFricContainer.classList.add('participation-low-fric');
             els.articleBody = document.querySelector('.article__body > .prose');
 
-            updateState({
-                selectedItem: userVote
-            });
+            window.retrieveLowFrictionParticipationData = retrieveLowFrictionParticipationData.bind(null, setUpParticipation);
 
-            bindEvents();
+            getUserVote();
         }
     }
 
@@ -79,15 +64,7 @@ define(function() {
     }
 
     function getUserVote() {
-        if (!window.localStorage) {
-            return 'no-storage';
-        }
-
-        var currentPage = GU.opts.pageId;
-        var votedPages = JSON.parse(GU.util.getLocalStorage(storageKey));
-
-        // Will return result for current page if available
-        return votedPages && votedPages[currentPage];
+        GU.util.signalDevice('getTemplateStorage/' + storageKey + '/retrieveLowFrictionParticipationData');
     }
 
     function updateState(state) {
@@ -226,20 +203,24 @@ define(function() {
     }
 
     function submitRating() {
-        var currentPage = GU.opts.pageId;
-        var votedPages = JSON.parse(GU.util.getLocalStorage(storageKey));
+        window.retrieveLowFrictionParticipationData = retrieveLowFrictionParticipationData.bind(null, saveRating);
 
-        // If the storageKey object doesn't exist, lets create one
-        if (!votedPages) {
-            votedPages = {};
+        getUserVote();
+    }
+
+    function saveRating(data) {
+        var currentPage = GU.opts.pageId;
+
+        if (!data) {
+            data = {};
         }
 
-        votedPages[currentPage] = currentState.selectedItem;
+        data[currentPage] = currentState.selectedItem;
 
-        GU.util.setLocalStorage(storageKey, JSON.stringify(votedPages));
+        GU.util.signalDevice('setTemplateStorage/' + storageKey + '/' + JSON.stringify(data));
 
         addTestMessage();
-    }
+    } 
 
     function addTestMessage() {
         var testMessage = els.lowFricContainer.querySelector('.participation-low-friction__test-message');
@@ -256,6 +237,27 @@ define(function() {
     function showTestMessage(testMessage) {
         testMessage.classList.add('show-message')
     } 
+
+    function retrieveLowFrictionParticipationData(data, callback) {
+        var parsedData = JSON.parse(data);
+
+        callback(parsedData);
+    },
+
+    function setUpParticipation(data) {
+        var userVote = null;
+        var currentPage = GU.opts.pageId;
+
+        if (data && data[currentPage]) {
+            userVote = data[currentPage]
+        }
+        
+        updateState({
+            selectedItem: userVote
+        });
+
+        bindEvents();
+    }
 
     return {
         init: init
