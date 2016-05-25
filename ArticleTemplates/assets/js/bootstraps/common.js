@@ -172,13 +172,13 @@ define([
         reportVideoPositions: function () {
             var i,
                 mainMediaElem,
-                mainMediaElemRect,
+                mainMediaElemOffset,
                 mainMediaElems = document.getElementsByClassName('video-URL');
 
             for (i = 0; i < mainMediaElems.length; i++) {
                 mainMediaElem = mainMediaElems[i];
-                mainMediaElemRect = mainMediaElem.getBoundingClientRect();
-                window.GuardianJSInterface.videoPosition(mainMediaElemRect.left, mainMediaElemRect.top, mainMediaElemRect.width, mainMediaElem.getAttribute('href'));
+                mainMediaElemOffset = GU.util.getElementOffset(mainMediaElem);
+                window.GuardianJSInterface.videoPosition(mainMediaElemOffset.left, mainMediaElemOffset.top, mainMediaElemOffset.width, mainMediaElem.getAttribute('href'));
             }
 
             setTimeout(module.videoPositioningPoller.bind(null, document.body.offsetHeight), 500);
