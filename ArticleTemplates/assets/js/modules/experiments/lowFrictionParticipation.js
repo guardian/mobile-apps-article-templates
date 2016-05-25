@@ -235,14 +235,14 @@ define(function() {
     }
 
     function showTestMessage(testMessage) {
-        testMessage.classList.add('show-message')
-    } 
+        testMessage.classList.add('show-message');
+    }
 
     function retrieveLowFrictionParticipationData(data, callback) {
         var parsedData = JSON.parse(data);
 
         callback(parsedData);
-    },
+    }
 
     function setUpParticipation(data) {
         var userVote = null;
