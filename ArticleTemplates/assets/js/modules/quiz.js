@@ -269,8 +269,8 @@ define([
                     quizOffset;
 
                 if (mpu) {
-                    mpuOffset = mpu.offsetTop;
-                    quizOffset = quiz.offsetTop;
+                    mpuOffset = mpu.getBoundingClientRect().top;
+                    quizOffset = quiz.getBoundingClientRect().top;
 
                     if (mpuOffset > quizOffset) {
                         IsAdBelowQuiz = true;
