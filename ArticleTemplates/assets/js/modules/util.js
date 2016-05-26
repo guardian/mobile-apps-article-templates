@@ -24,6 +24,26 @@ define(function() {
                 return (vertInView && horInView);
             },
 
+            getElementOffset: function (elem) {
+                var de = elem.ownerDocument.documentElement,
+                    bcr = elem.getBoundingClientRect(),
+                    scroll = {
+                        x: window.pageXOffset || document.documentElement.scrollLeft, 
+                        y: window.pageYOffset || document.documentElement.scrollTop
+                    },
+                    width = elem.offsetWidth,
+                    height = elem.offsetHeight,
+                    top = bcr.top + scroll.y - Math.max(0, de && de.clientTop, document.body.clientTop),
+                    left = bcr.left + scroll.x - Math.max(0, de && de.clientLeft, document.body.clientLeft)
+
+                return {
+                    top: top,
+                    left: left,
+                    height: height,
+                    width: width
+                }
+            },
+
             signalDevice: function (messageName) {
                 var path = 'x-gu://',
                     url = path + messageName,

@@ -131,7 +131,7 @@ define([
 
             for (i = 0; i < pullQuotes.length; i++) {
                 pullQuote = pullQuotes[i];
-                pullQuote.dataset.offset = pullQuote.offsetTop;
+                pullQuote.dataset.offset = GU.util.getElementOffset(pullQuote).top;
             }
         },
 

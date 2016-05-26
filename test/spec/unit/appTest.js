@@ -174,7 +174,7 @@ define([
                 expect(adsMock.init).to.have.been.calledWith({
                     adsEnabled: GU.opts.adsEnabled,
                     adsConfig: GU.opts.adsConfig,
-                    adsType: GU.opts.contentType ? 'liveblog' : '',
+                    adsType: GU.opts.contentType === 'liveblog' ? 'liveblog' : '',
                     mpuAfterParagraphs: GU.opts.mpuAfterParagraphs
                 });
 

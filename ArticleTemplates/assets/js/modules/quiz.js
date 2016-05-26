@@ -269,8 +269,8 @@ define([
                     quizOffset;
 
                 if (mpu) {
-                    mpuOffset = mpu.offsetTop;
-                    quizOffset = quiz.offsetTop;
+                    mpuOffset = GU.util.getElementOffset(mpu).top;
+                    quizOffset = GU.util.getElementOffset(quiz).top;
 
                     if (mpuOffset > quizOffset) {
                         IsAdBelowQuiz = true;

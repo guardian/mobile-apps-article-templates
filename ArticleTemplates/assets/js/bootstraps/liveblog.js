@@ -59,7 +59,7 @@ define([
                     if (liveblogStartPos.top > window.scrollY) {
                         liveblogNewBlockDump();
                     }
-                }, 100));
+                }, 100, true));
             },
 
             liveMore: function () {
