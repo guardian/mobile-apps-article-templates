@@ -31,7 +31,7 @@ define(function() {
             els.lowFricContainer.classList.add('participation-low-fric');
             els.articleBody = document.querySelector('.article__body > .prose');
 
-            window.retrieveLowFrictionParticipationData = retrieveLowFrictionParticipationData.bind(null, setUpParticipation);
+            window.retrieveLowFrictionParticipationData = setUpParticipation;
 
             getUserVote();
         }
@@ -203,13 +203,13 @@ define(function() {
     }
 
     function submitRating() {
-        window.retrieveLowFrictionParticipationData = retrieveLowFrictionParticipationData.bind(null, saveRating);
+        window.retrieveLowFrictionParticipationData = saveRating;
 
         getUserVote();
     }
 
     function saveRating(data) {
-        var currentPage = GU.opts.pageId;
+        var currentPage = GU.opts.pageId.replace(/\//g, '_');
 
         if (!data) {
             data = {};
@@ -238,15 +238,9 @@ define(function() {
         testMessage.classList.add('show-message');
     }
 
-    function retrieveLowFrictionParticipationData(data, callback) {
-        var parsedData = JSON.parse(data);
-
-        callback(parsedData);
-    }
-
     function setUpParticipation(data) {
         var userVote = null;
-        var currentPage = GU.opts.pageId;
+        var currentPage = GU.opts.pageId.replace(/\//g, '_');
 
         if (data && data[currentPage]) {
             userVote = data[currentPage]
