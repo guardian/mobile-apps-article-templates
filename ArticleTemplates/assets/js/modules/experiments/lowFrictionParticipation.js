@@ -11,7 +11,7 @@ define(function() {
     var settings = {
         itemCount: 5,
         templateVars: {
-            title: 'Do you agree? Rate this film now',
+            title: 'Do you agree? Rate this now',
             description: 'Let us know what you think!',
             testMessage: 'Thanks for voting. This is a test. We\'re currently evaluating this as a potential new feature.'
         }
@@ -218,6 +218,8 @@ define(function() {
         data[currentPage] = currentState.selectedItem;
 
         GU.util.signalDevice('setTemplateStorage/' + storageKey + '/' + JSON.stringify(data));
+
+        GU.util.signalDevice('trackAction/lowFrictionParticipation');
 
         addTestMessage();
     } 
