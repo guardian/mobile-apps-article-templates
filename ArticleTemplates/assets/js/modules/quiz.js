@@ -35,17 +35,16 @@ define([
 
             setupNewsQuizQuestions: function () {
                 var i,
-                    correctAnswers = modules.getCorrectAnswers(),
+                    questionsAndAnswers = modules.getQuestionsAndAnswers(),
                     question,
                     questions = document.querySelectorAll('.quiz__question'),
                     questionObj;
 
                 for (i = 0; i < questions.length; i++) {
                     question = questions[i];
-                    questionObj = {};
+                    questionObj = questionsAndAnswers[i+1];
                     questionObj.elem = question;
                     modules.wrapQuestion(question);
-                    questionObj.correctAnswer = correctAnswers[i+1].correctAnswer;
                     modules.setupNewsQuizAnswers(questionObj);
                     modules.questionCount++;
                 }
@@ -132,7 +131,7 @@ define([
                 }
             },
 
-            getCorrectAnswers: function () {
+            getQuestionsAndAnswers: function () {
                 var i,
                     key,
                     answerMatch,
