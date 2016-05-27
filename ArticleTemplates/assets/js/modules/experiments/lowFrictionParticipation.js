@@ -204,7 +204,6 @@ define(function() {
 
     function submitRating() {
         window.retrieveLowFrictionParticipationData = saveRating;
-
         getUserVote();
     }
 

@@ -10,26 +10,24 @@ define([
     };
 
     function init() {
-        var testSpec;
+        var key,
+            testSpec;
 
         if (GU.opts.tests) {
             testSpec = JSON.parse(GU.opts.tests);
-            testSpec.abTests && initialiseTests(testSpec.abTests);
-        }
-    }
 
-    function initialiseTests(abTests) {
-        var i;
-
-        for (i = 0; i < abTests.length; i++) {
-            if (tests[abTests[i].id]) {
-                tests[abTests[i].id]();
+            for (key in testSpec) {
+                if (testSpec.hasOwnProperty(key) && tests[key]) {
+                    tests[key](testSpec[key]);
+                }
             }
         }
     }
 
-    function initLowFrictionParticipation() {
-        lowFrictionParticipation.init();
+    function initLowFrictionParticipation(variant) {
+        if (variant === 'true') {
+            lowFrictionParticipation.init();
+        }
     }
 
     return {
