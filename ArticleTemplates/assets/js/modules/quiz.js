@@ -45,7 +45,7 @@ define([
                     questionObj = {};
                     questionObj.elem = question;
                     modules.wrapQuestion(question);
-                    questionObj.correctAnswer = correctAnswers[i];
+                    questionObj.correctAnswer = correctAnswers[i+1].correctAnswer;
                     modules.setupNewsQuizAnswers(questionObj);
                     modules.questionCount++;
                 }
@@ -134,18 +134,35 @@ define([
 
             getCorrectAnswers: function () {
                 var i,
-                    answers = [],
-                    correctAnswers = document.querySelector('.quiz__correct-answers').innerHTML.split(','),
-                    correctAnswerArray,
-                    correctAnswerObj;
-                
-                for (i = 0; i < correctAnswers.length; i++) {
-                    correctAnswerObj = {};
-                    correctAnswerArray = correctAnswers[i].split(':')[1].split('-');
-                    correctAnswerObj.code = correctAnswerArray[0].trim().toUpperCase();
-                    correctAnswerObj.explanation = correctAnswerArray[1] || '';
-                    answers.push(correctAnswerObj);
-                } 
+                    key,
+                    answerMatch,
+                    question,
+                    answer,
+                    answers = {},
+                    correctAnswerWordList = document.querySelector('.quiz__correct-answers').innerHTML.split(' ');
+
+                for (i = 0; i < correctAnswerWordList.length; i++) {
+                    answerMatch = correctAnswerWordList[i].match(/(\d+):([A-Z])/g);
+
+                    if (answerMatch && answerMatch.length) {
+                        answer = answerMatch[0];
+                        question = answer.split(':')[0];
+                        answers[question] = {
+                            correctAnswer: answer.split(':')[1]
+                        };
+                    } else {
+                        if (!answers[question].revealText || answers[question].revealText === '- ') {
+                            answers[question].revealText = ''
+                        }
+                        answers[question].revealText += correctAnswerWordList[i] + ' ';
+                    }
+                }
+
+                for (key in answers) {
+                    if (answers.hasOwnProperty(key) && answers[key].revealText) {
+                        answers[key].revealText = answers[key].revealText.replace(/,\s*$/, "");
+                    }
+                }
 
                 return answers;
             },
