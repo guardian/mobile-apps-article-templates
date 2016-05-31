@@ -141,6 +141,7 @@ define([
                     correctAnswerWordList = document.querySelector('.quiz__correct-answers').innerHTML.split(' ');
 
                 for (i = 0; i < correctAnswerWordList.length; i++) {
+                    // Check if word in this format: 1:A
                     answerMatch = correctAnswerWordList[i].match(/(\d+):([A-Z])/g);
 
                     if (answerMatch && answerMatch.length) {
@@ -159,6 +160,7 @@ define([
 
                 for (key in answers) {
                     if (answers.hasOwnProperty(key) && answers[key].revealText) {
+                        // Remove trailing comma in revealText
                         answers[key].revealText = answers[key].revealText.replace(/,\s*$/, "");
                     }
                 }
