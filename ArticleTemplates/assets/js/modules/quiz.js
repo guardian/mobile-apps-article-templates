@@ -54,16 +54,16 @@ define([
                 var i,
                     answerCode,
                     answers = questionObj.elem.querySelectorAll('.question__answer');
-
+            
                 for (i = 0; i < answers.length; i++) {
                     answerCode = GU.util.getStringFromUnicodeVal(65 + i);
-                    if (answerCode === questionObj.correctAnswer.code) {
-                        answers[i].dataset.correctAnswerExplanation = questionObj.correctAnswer.explanation;
+                    if (answerCode === questionObj.correctAnswer) {
+                        if (questionObj.revealText) {
+                            answers[i].dataset.correctAnswerExplanation = questionObj.revealText;
+                        }
                         answers[i].dataset.correct = 'true';
                     }
-
                     modules.styleAnswer(answers[i]);
-
                     answers[i].addEventListener('click', modules.onNewsAnswerClick.bind(null, answers[i], questionObj.elem, answers[i].querySelector('img')));
                 }                
             },
