@@ -209,8 +209,8 @@ define(function() {
 
         var currentPage = GU.opts.pageId.replace(/\//g, '_');
 
-        if (!data) {
-            data = {};
+        if (typeof data === 'string') {
+            data = JSON.parse(data);
         }
 
         data[currentPage] = currentState.selectedItem;
@@ -242,8 +242,13 @@ define(function() {
         var userVote = null;
         var currentPage = GU.opts.pageId.replace(/\//g, '_');
 
-        if (data && data[currentPage]) {
-            userVote = data[currentPage]
+        if (data) {
+            if (typeof data === 'string') {
+                data = JSON.parse(data);
+            }
+            if (data[currentPage]) {
+                userVote = data[currentPage]
+            }
         }
         
         updateState({
