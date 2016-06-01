@@ -23,6 +23,8 @@ define(function() {
 
     var touchStart;
 
+    var touchMove;
+
     function init(options) {
         if (isValid()) {
             settings = GU.util.merge(settings, options);
@@ -50,12 +52,10 @@ define(function() {
     }
 
     function getUserVote() {
-        console.log('** getUserVote **');
         GU.util.signalDevice('getTemplateStorage/' + storageKey + '/retrieveLowFrictionParticipationData');
     }
 
     function updateState(state) {
-        // Render with merged state
         render(GU.util.merge(currentState, state));
     }
 
@@ -138,32 +138,35 @@ define(function() {
     function onTouchStart(evt) {
         var touchPos = evt.targetTouches[0].pageX;
 
+        touchStart = touchPos;
+
         if (window.GuardianJSInterface && 
             window.GuardianJSInterface.registerRelatedCardsTouch) {
             window.GuardianJSInterface.registerRelatedCardsTouch(true);
         }
-
-        touchStart = touchPos;
     }
 
     function onTouchMove(handleTouchMoveDebounced, evt) {
+        // touchStart true when touchMove began on touchArea
         if (touchStart) {
             evt.preventDefault();
             handleTouchMoveDebounced(evt);
+            touchMove = true;
         }
     }
 
     function onTouchEnd() {
-        if (window.GuardianJSInterface && 
-            window.GuardianJSInterface.registerRelatedCardsTouch) {
-            window.GuardianJSInterface.registerRelatedCardsTouch(false);
-        }
-
-        if (touchStart) {
+        if (touchStart && touchMove) {
             submitRating();
         }
 
         touchStart = null;
+        touchMove = null;
+
+        if (window.GuardianJSInterface && 
+            window.GuardianJSInterface.registerRelatedCardsTouch) {
+            window.GuardianJSInterface.registerRelatedCardsTouch(false);
+        }
     }
 
     function handleTouchMove(evt) {
@@ -199,17 +202,11 @@ define(function() {
     }
 
     function submitRating() {
-        console.log("** submitRating **");
-
-        saveRating();
-
-        // window.retrieveLowFrictionParticipationData = saveRating;
-        // getUserVote();
+        window.retrieveLowFrictionParticipationData = saveRating;
+        getUserVote();
     }
 
     function saveRating(data) {
-        console.log('** saveRating **', data);
-
         var currentPage = GU.opts.pageId.replace(/\//g, '_');
 
         if (data) {
