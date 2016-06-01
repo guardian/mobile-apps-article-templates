@@ -11,65 +11,65 @@ define([
 ) {
     'use strict';
 
-    var module = {
-        init: function () {
-            util.init();
+    function init() {
+        util.init();
 
-            if (!GU.opts.skipStyle) {
-                module.loadCss();
-            }
-
-            domReady(module.onDomReady);
-        },
-
-        loadCss: function () {
-            var url = 'assets/css/style-async.css',
-                basePath = GU.opts.templatesDirectory,
-                link = document.createElement('link');
-
-            link.type = 'text/css';
-            link.rel = 'stylesheet';
-            link.href = basePath + url;
-
-            document.getElementsByTagName('head')[0].appendChild(link);
-        },
-
-        initLayout: function (layoutName, layoutObj) {
-            monitor.setContext(layoutName, layoutObj.init);
-        },
-            
-        onDomReady: function () {
-            var contentType = GU.opts.contentType;
-
-            // monitoring
-            monitor.init();
-
-            // ads positioning
-            Ads.init({
-                adsEnabled: GU.opts.adsEnabled,
-                adsConfig: GU.opts.adsConfig,
-                adsType: GU.opts.contentType === 'liveblog' ? 'liveblog' : '',
-                mpuAfterParagraphs: GU.opts.mpuAfterParagraphs
-            });
-
-            // // other article-specific functions
-            if (contentType === 'article') {
-                require(['article'], module.initLayout.bind(null, 'article'));
-            } else if (contentType === 'liveblog') {
-                require(['liveblog'], module.initLayout.bind(null, 'liveblog'));
-            } else if (contentType === 'audio') {
-                require(['audio'], module.initLayout.bind(null, 'audio'));
-            } else if (contentType === 'gallery') {
-                require(['gallery'], module.initLayout.bind(null, 'gallery'));
-            } else if (contentType === 'football') {
-                require(['football'], module.initLayout.bind(null, 'football'));
-            } else if (contentType === 'cricket') {
-                require(['cricket'], module.initLayout.bind(null, 'cricket'));
-            } else {
-                require(['bootstraps/common'], module.initLayout.bind(null, 'common'));
-            }
+        if (!GU.opts.skipStyle) {
+            loadCss();
         }
-    };
 
-    return module;
+        domReady(onDomReady);
+    }
+
+    function loadCss() {
+        var url = 'assets/css/style-async.css',
+            basePath = GU.opts.templatesDirectory,
+            link = document.createElement('link');
+
+        link.type = 'text/css';
+        link.rel = 'stylesheet';
+        link.href = basePath + url;
+
+        document.getElementsByTagName('head')[0].appendChild(link);
+    }
+
+    function initLayout(layoutName, layoutObj) {
+        monitor.setContext(layoutName, layoutObj.init);
+    }
+        
+    function onDomReady() {
+        var contentType = GU.opts.contentType;
+
+        // monitoring
+        monitor.init();
+
+        // ads positioning
+        Ads.init({
+            adsEnabled: GU.opts.adsEnabled,
+            adsConfig: GU.opts.adsConfig,
+            adsType: GU.opts.contentType === 'liveblog' ? 'liveblog' : '',
+            mpuAfterParagraphs: GU.opts.mpuAfterParagraphs
+        });
+
+        // other article-specific functions
+        if (contentType === 'article') {
+            require(['article'], initLayout.bind(null, 'article'));
+        } else if (contentType === 'liveblog') {
+            require(['liveblog'], initLayout.bind(null, 'liveblog'));
+        } else if (contentType === 'audio') {
+            require(['audio'], initLayout.bind(null, 'audio'));
+        } else if (contentType === 'gallery') {
+            require(['gallery'], initLayout.bind(null, 'gallery'));
+        } else if (contentType === 'football') {
+            require(['football'], initLayout.bind(null, 'football'));
+        } else if (contentType === 'cricket') {
+            require(['cricket'], initLayout.bind(null, 'cricket'));
+        } else {
+            require(['bootstraps/common'], initLayout.bind(null, 'common'));
+        }
+    }
+
+    return {
+        init: init
+    };
 });

@@ -28,20 +28,22 @@ define([
             };
             quizMock = {
                 init: sinon.spy()
-            },
+            };
             membershipMock = {
                 init: sinon.spy()
-            },
+            };
             sandbox = sinon.sandbox.create();
             injector = new Squire();
+            window.applyNativeFunctionCall = sinon.spy();
         });
 
         afterEach(function () {
             sandbox.restore();
+            delete window.applyNativeFunctionCall;
         });
 
-        describe('article.init()', function () {
-            it('init article', function (done) {
+        describe('initialise layout', function () {
+            it('initialise twitter and witness modules', function (done) {
                injector
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/witness', witnessMock)
@@ -49,22 +51,27 @@ define([
                     .mock('modules/quiz', quizMock)
                     .mock('modules/membership', membershipMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/article'], function (article) {
-                        sandbox.stub(article, 'insertOutbrain');
-                        sandbox.stub(article, 'loadQuizzes');
-                        sandbox.stub(article, 'formatImmersive');
-                        sandbox.stub(article, 'richLinkTracking');
-                        sandbox.stub(article, 'loadMembershipCreative');
-
                         article.init();
 
                         expect(twitterMock.init).to.have.been.calledOnce;
                         expect(twitterMock.enhanceTweets).to.have.been.calledOnce;
                         expect(witnessMock.duplicate).to.have.been.calledOnce;
-                        expect(article.insertOutbrain).to.have.been.calledOnce;
-                        expect(article.loadQuizzes).to.have.been.calledOnce;
-                        expect(article.formatImmersive).to.have.been.calledOnce;
-                        expect(article.richLinkTracking).to.have.been.calledOnce;
-                        expect(article.loadMembershipCreative).to.have.been.calledOnce;
+
+                        done();
+                    });
+            });
+
+            it('applies native function call articleOutbrainInserter', function (done) {
+               injector
+                    .mock('modules/twitter', twitterMock)
+                    .mock('modules/witness', witnessMock)
+                    .mock('modules/outbrain', outbrainMock)
+                    .mock('modules/quiz', quizMock)
+                    .mock('modules/membership', membershipMock)
+                    .require(['ArticleTemplates/assets/js/bootstraps/article'], function (article) {
+                        article.init();
+
+                        expect(window.applyNativeFunctionCall).to.have.been.calledWith('articleOutbrainInserter');
 
                         done();
                     });
