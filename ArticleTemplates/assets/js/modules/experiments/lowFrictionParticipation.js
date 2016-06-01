@@ -200,8 +200,11 @@ define(function() {
 
     function submitRating() {
         console.log("** submitRating **");
-        window.retrieveLowFrictionParticipationData = saveRating;
-        getUserVote();
+
+        saveRating();
+
+        // window.retrieveLowFrictionParticipationData = saveRating;
+        // getUserVote();
     }
 
     function saveRating(data) {
@@ -209,8 +212,12 @@ define(function() {
 
         var currentPage = GU.opts.pageId.replace(/\//g, '_');
 
-        if (typeof data === 'string') {
-            data = JSON.parse(data);
+        if (data) {
+            if (typeof data === 'string') {
+                data = JSON.parse(data);
+            }
+        } else {
+            data = {};
         }
 
         data[currentPage] = currentState.selectedItem;
