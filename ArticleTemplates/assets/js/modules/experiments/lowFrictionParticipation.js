@@ -11,7 +11,7 @@ define(function() {
     var settings = {
         itemCount: 5,
         templateVars: {
-            title: 'Do you agree? Rate this now',
+            title: 'Do you agree? Rate this film now',
             description: 'Let us know what you think!',
             testMessage: 'Thanks for voting. This is a test. We\'re currently evaluating this as a potential new feature.'
         }
@@ -38,25 +38,11 @@ define(function() {
     }
 
     function isValid() {
-        return isValidArticleType() && isValidAuthor() && hasCommentsEnabled();
+        return isValidArticleType() && hasCommentsEnabled();
     }
 
     function isValidArticleType() {
-        return GU.opts.contentType === 'article' && GU.opts.sectionTone === 'review' && GU.opts.section === 'music';
-    }
-
-    function isValidAuthor() {
-        var i,
-            authorList = ['profile/alexispetridis','profile/kittyempire'],
-            byline = document.querySelector('.byline__author');
-
-        for (i = 0; i < authorList.length; i++) {
-            if (byline && byline.innerHTML && (byline.innerHTML.indexOf(authorList[i]) !== -1)) {
-                return true;
-            }
-        }
-
-        return false;
+        return GU.opts.contentType === 'article' && GU.opts.sectionTone === 'review' && GU.opts.section === 'film';
     }
 
     function hasCommentsEnabled() {
