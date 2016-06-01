@@ -50,6 +50,7 @@ define(function() {
     }
 
     function getUserVote() {
+        console.log('** getUserVote **');
         GU.util.signalDevice('getTemplateStorage/' + storageKey + '/retrieveLowFrictionParticipationData');
     }
 
@@ -121,7 +122,6 @@ define(function() {
         }
 
         window.addEventListener('touchmove', onTouchMove.bind(null, handleTouchMoveDebounced));
-        
         touchArea.addEventListener('touchstart', onTouchStart);
         touchArea.addEventListener('touchend', onTouchEnd);
     }
@@ -138,6 +138,11 @@ define(function() {
     function onTouchStart(evt) {
         var touchPos = evt.targetTouches[0].pageX;
 
+        if (window.GuardianJSInterface && 
+            window.GuardianJSInterface.registerRelatedCardsTouch) {
+            window.GuardianJSInterface.registerRelatedCardsTouch(true);
+        }
+
         touchStart = touchPos;
     }
 
@@ -149,6 +154,11 @@ define(function() {
     }
 
     function onTouchEnd() {
+        if (window.GuardianJSInterface && 
+            window.GuardianJSInterface.registerRelatedCardsTouch) {
+            window.GuardianJSInterface.registerRelatedCardsTouch(false);
+        }
+
         if (touchStart) {
             submitRating();
         }
@@ -189,11 +199,14 @@ define(function() {
     }
 
     function submitRating() {
+        console.log("** submitRating **");
         window.retrieveLowFrictionParticipationData = saveRating;
         getUserVote();
     }
 
     function saveRating(data) {
+        console.log('** saveRating **', data);
+
         var currentPage = GU.opts.pageId.replace(/\//g, '_');
 
         if (!data) {
