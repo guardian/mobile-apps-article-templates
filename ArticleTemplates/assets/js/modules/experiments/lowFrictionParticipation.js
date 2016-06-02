@@ -26,21 +26,15 @@ define(function() {
     var touchMove;
 
     function init(options) {
-        if (isValid()) {
+        if (isValidArticleType() && hasCommentsEnabled()) {
             settings = GU.util.merge(settings, options);
 
             els.lowFricContainer = document.createElement('div');
             els.lowFricContainer.classList.add('participation-low-fric');
             els.articleBody = document.querySelector('.article__body > .prose');
 
-            window.retrieveLowFrictionParticipationData = setUpParticipation;
-
-            getUserVote();
+            getUserVote(setUpParticipation);
         }
-    }
-
-    function isValid() {
-        return isValidArticleType() && hasCommentsEnabled();
     }
 
     function isValidArticleType() {
@@ -51,7 +45,8 @@ define(function() {
         return document.querySelector('.comment-count');
     }
 
-    function getUserVote() {
+    function getUserVote(callback) {
+        window.retrieveLowFrictionParticipationData = callback;
         GU.util.signalDevice('getTemplateStorage/' + storageKey + '/retrieveLowFrictionParticipationData');
     }
 
@@ -68,23 +63,22 @@ define(function() {
                 '<p class="participation-low-fric__desc">' + settings.templateVars.description + '</p>' +
                 '<div class="participation-low-friction__contents"><p class="review-rating"></p></div>';
 
-            reviewRating = els.lowFricContainer.querySelector('.review-rating')
+            reviewRating = els.lowFricContainer.querySelector('.review-rating');
 
-            createButtons(reviewRating);
+            reviewRating.innerHTML = createButtonsHTML();
 
             els.articleBody.appendChild(els.lowFricContainer);
         } else {
-            reviewRating = els.lowFricContainer.querySelector('.review-rating')
+            reviewRating = els.lowFricContainer.querySelector('.review-rating');
+            clearRating(reviewRating);
         }
-
-        clearRating(reviewRating);
 
         if (state.selectedItem) {
             reviewRating.classList.add(state.selectedItem);
         }
     }
 
-    function createButtons(reviewRating) {
+    function createButtonsHTML() {
         var i;
         var html = '';
 
@@ -92,7 +86,7 @@ define(function() {
             html += '<span data-icon="&#xe036;" aria-hidden="true" class="participation-low-fric--button"></span>';
         }
 
-        reviewRating.innerHTML = html;
+        return html;
     }
 
     function clearRating(reviewRating) {
@@ -140,6 +134,7 @@ define(function() {
 
         touchStart = touchPos;
 
+        // steal swipe from android
         if (window.GuardianJSInterface && 
             window.GuardianJSInterface.registerRelatedCardsTouch) {
             window.GuardianJSInterface.registerRelatedCardsTouch(true);
@@ -163,6 +158,7 @@ define(function() {
         touchStart = null;
         touchMove = null;
 
+        // return swipe to android
         if (window.GuardianJSInterface && 
             window.GuardianJSInterface.registerRelatedCardsTouch) {
             window.GuardianJSInterface.registerRelatedCardsTouch(false);
@@ -202,8 +198,7 @@ define(function() {
     }
 
     function submitRating() {
-        window.retrieveLowFrictionParticipationData = saveRating;
-        getUserVote();
+        getUserVote(saveRating);
     }
 
     function saveRating(data) {
