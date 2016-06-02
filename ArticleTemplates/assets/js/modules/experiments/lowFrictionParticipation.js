@@ -25,15 +25,79 @@ define(function() {
 
     var touchMove;
 
-    function init(options) {
-        if (isValidArticleType() && hasCommentsEnabled()) {
-            settings = GU.util.merge(settings, options);
+    var interactionTracked;
 
+    var isValid;
+
+    function init(variant) {
+        if (variant) {
+            isValid = isValidArticleType() && hasCommentsEnabled();
+
+            if (variant === 'control') {
+                kickOffControlTest();
+            } else {
+                kickOffVariantTest();
+            }
+        }
+    }
+
+    function kickOffVariantTest() {
+        if (isValid) {
             els.lowFricContainer = document.createElement('div');
             els.lowFricContainer.classList.add('participation-low-fric');
             els.articleBody = document.querySelector('.article__body > .prose');
 
             getUserVote(setUpParticipation);
+        }
+    }
+
+    function kickOffControlTest() {
+        // if in a film review or on a comments page
+        // check local storage to see if user has voted on this article before
+        if (isValid || (GU.opts.contentType === 'comments' && GU.opts.sectionTone === 'review')) {
+            getUserVote(hasUserSeenControlTest);
+        }
+    }
+
+    function hasUserSeenControlTest(data) {
+        var data = data || {};
+        var currentPage = GU.opts.pageId.replace(/\//g, '_');
+
+        if (typeof data === 'string') {
+            data = JSON.parse(data);
+        }
+
+        if (isValid) {
+            // if in a film review track test
+            GU.util.signalDevice('trackAction/lowFrictionParticipationControlView');
+            // if we haven't stored the test in storage before do so now
+            if (!data[currentPage]) {
+                data[currentPage] = null;
+                GU.util.signalDevice('setTemplateStorage/' + storageKey + '/' + JSON.stringify(data));
+            }
+        } else if (!data[currentPage]) {
+            // do nothing if on comments and we've never seen test on corresponding article
+            return;
+        }
+
+        // bind control test events
+        // for now stick 500ms delay to give comments time to load
+        setTimeout(bindControlEvents, 500);
+    }
+
+    function bindControlEvents() {
+        var i,
+            commentElems = document.querySelectorAll('.comments__post, .comment__reply');
+
+        for (i = 0; i < commentElems.length; i++) {
+            commentElems[i].addEventListener('click', trackCommentInteraction);
+        }
+    }
+
+    function trackCommentInteraction() {
+        if (!interactionTracked) {
+            GU.util.signalDevice('trackAction/lowFrictionParticipationControlAction');
+            interactionTracked = true;
         }
     }
 
@@ -216,7 +280,10 @@ define(function() {
 
         GU.util.signalDevice('setTemplateStorage/' + storageKey + '/' + JSON.stringify(data));
 
-        GU.util.signalDevice('trackAction/lowFrictionParticipation');
+        if (!interactionTracked) {
+             GU.util.signalDevice('trackAction/lowFrictionParticipationVariantAction');
+             interactionTracked = true;
+        }
 
         addTestMessage();
     } 
@@ -255,6 +322,8 @@ define(function() {
         });
 
         bindEvents();
+
+        GU.util.signalDevice('trackAction/lowFrictionParticipationVariantView');
     }
 
     return {

@@ -6,7 +6,7 @@ define([
     'use strict';
 
     var tests = {
-        'lowFrictionParticipation': initLowFrictionParticipation
+        'lowFrictionParticipation': lowFrictionParticipation.init
     };
 
     function init() {
@@ -21,12 +21,6 @@ define([
                     tests[key](testSpec[key]);
                 }
             }
-        }
-    }
-
-    function initLowFrictionParticipation(variant) {
-        if (variant === 'true') {
-            lowFrictionParticipation.init();
         }
     }
 
