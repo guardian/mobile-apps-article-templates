@@ -35,17 +35,16 @@ define([
 
             setupNewsQuizQuestions: function () {
                 var i,
-                    correctAnswers = modules.getCorrectAnswers(),
+                    questionsAndAnswers = modules.getQuestionsAndAnswers(),
                     question,
                     questions = document.querySelectorAll('.quiz__question'),
                     questionObj;
 
                 for (i = 0; i < questions.length; i++) {
                     question = questions[i];
-                    questionObj = {};
+                    questionObj = questionsAndAnswers[i+1];
                     questionObj.elem = question;
                     modules.wrapQuestion(question);
-                    questionObj.correctAnswer = correctAnswers[i];
                     modules.setupNewsQuizAnswers(questionObj);
                     modules.questionCount++;
                 }
@@ -55,16 +54,16 @@ define([
                 var i,
                     answerCode,
                     answers = questionObj.elem.querySelectorAll('.question__answer');
-
+            
                 for (i = 0; i < answers.length; i++) {
                     answerCode = GU.util.getStringFromUnicodeVal(65 + i);
-                    if (answerCode === questionObj.correctAnswer.code) {
-                        answers[i].dataset.correctAnswerExplanation = questionObj.correctAnswer.explanation;
+                    if (answerCode === questionObj.correctAnswer) {
+                        if (questionObj.revealText) {
+                            answers[i].dataset.correctAnswerExplanation = questionObj.revealText;
+                        }
                         answers[i].dataset.correct = 'true';
                     }
-
                     modules.styleAnswer(answers[i]);
-
                     answers[i].addEventListener('click', modules.onNewsAnswerClick.bind(null, answers[i], questionObj.elem, answers[i].querySelector('img')));
                 }                
             },
@@ -132,20 +131,39 @@ define([
                 }
             },
 
-            getCorrectAnswers: function () {
+            getQuestionsAndAnswers: function () {
                 var i,
-                    answers = [],
-                    correctAnswers = document.querySelector('.quiz__correct-answers').innerHTML.split(','),
-                    correctAnswerArray,
-                    correctAnswerObj;
-                
-                for (i = 0; i < correctAnswers.length; i++) {
-                    correctAnswerObj = {};
-                    correctAnswerArray = correctAnswers[i].split(':')[1].split('-');
-                    correctAnswerObj.code = correctAnswerArray[0].trim().toUpperCase();
-                    correctAnswerObj.explanation = correctAnswerArray[1] || '';
-                    answers.push(correctAnswerObj);
-                } 
+                    key,
+                    answerMatch,
+                    question,
+                    answer,
+                    answers = {},
+                    correctAnswerWordList = document.querySelector('.quiz__correct-answers').innerHTML.split(' ');
+
+                for (i = 0; i < correctAnswerWordList.length; i++) {
+                    // Check if word in this format: 1:A
+                    answerMatch = correctAnswerWordList[i].match(/(\d+):([A-Z])/g);
+
+                    if (answerMatch && answerMatch.length) {
+                        answer = answerMatch[0];
+                        question = answer.split(':')[0];
+                        answers[question] = {
+                            correctAnswer: answer.split(':')[1]
+                        };
+                    } else {
+                        if (!answers[question].revealText || answers[question].revealText === '- ') {
+                            answers[question].revealText = ''
+                        }
+                        answers[question].revealText += correctAnswerWordList[i] + ' ';
+                    }
+                }
+
+                for (key in answers) {
+                    if (answers.hasOwnProperty(key) && answers[key].revealText) {
+                        // Remove trailing comma in revealText
+                        answers[key].revealText = answers[key].revealText.replace(/,\s*$/, "");
+                    }
+                }
 
                 return answers;
             },
