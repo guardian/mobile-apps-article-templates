@@ -287,12 +287,14 @@ define([
                 interactive.classList.add('interactive--offline');
 
                 reloadElem = document.createElement('div');
-                reloadElem.classList.add('interactive--offline--icon', 'interactive--offline--icon--reload');
+                reloadElem.classList.add('interactive--offline--icon');
+                reloadElem.classList.add('interactive--offline--icon--reload');
                 reloadElem.addEventListener('click', module.loadInteractives.bind(null, true));
                 interactive.appendChild(reloadElem);
 
                 loadingElem = document.createElement('div');
-                loadingElem.classList.add('interactive--offline--icon', 'interactive--offline--icon--loading');
+                loadingElem.classList.add('interactive--offline--icon');
+                loadingElem.classList.add('interactive--offline--icon--loading');
                 interactive.appendChild(loadingElem);
             }
 
