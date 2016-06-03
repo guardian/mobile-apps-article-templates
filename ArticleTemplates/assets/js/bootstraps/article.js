@@ -177,7 +177,8 @@ define([
             dataOffset = pullQuote.dataset.offset;
 
             if (window.scrollY >= (dataOffset - pageOffset)) {
-                pullQuote.classList.add('animated', 'fadeInUp');
+                pullQuote.classList.add('animated');
+                pullQuote.classList.add('fadeInUp');
             }
         }
     }
