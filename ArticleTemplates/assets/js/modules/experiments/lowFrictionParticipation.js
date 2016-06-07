@@ -266,14 +266,11 @@ define(function() {
     }
 
     function saveRating(data) {
+        var data = data || {};
         var currentPage = GU.opts.pageId.replace(/\//g, '_');
 
-        if (data) {
-            if (typeof data === 'string') {
-                data = JSON.parse(data);
-            }
-        } else {
-            data = {};
+        if (typeof data === 'string') {
+            data = JSON.parse(data);
         }
 
         data[currentPage] = currentState.selectedItem;
