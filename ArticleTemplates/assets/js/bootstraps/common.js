@@ -359,7 +359,7 @@ define([
             for (i = 0; i < followObjects.length; i++) {
                 followObject = followObjects[i];
 
-                if (following === 1) {
+                if (parseInt(following, 10) === 1) {
                     followObject.classList.add('following');
                 } else {
                     followObject.classList.remove('following');
@@ -380,7 +380,7 @@ define([
             for (i = 0; i < tellMeWhenLinks.length; i++) {
                 tellMeWhenLink = tellMeWhenLinks[i];
 
-                if (added === 1) {
+                if (parseInt(added, 10) === 1) {
                     tellMeWhenLink.classList.add('added');
                 } else {
                     tellMeWhenLink.classList.remove('added');
