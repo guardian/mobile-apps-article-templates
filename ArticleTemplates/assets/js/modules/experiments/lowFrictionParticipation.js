@@ -86,8 +86,8 @@ define(function() {
     }
 
     function bindControlEvents() {
-        var i,
-            commentElems = document.querySelectorAll('.comments__post, .comment__reply');
+        var i;
+        var commentElems = document.querySelectorAll('.comments__post, .comment__reply');
 
         for (i = 0; i < commentElems.length; i++) {
             commentElems[i].addEventListener('click', trackCommentInteraction);
