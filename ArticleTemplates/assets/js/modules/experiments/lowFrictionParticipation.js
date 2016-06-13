@@ -75,7 +75,7 @@ define(function() {
                 data[currentPage] = null;
                 GU.util.signalDevice('setTemplateStorage/' + storageKey + '/' + JSON.stringify(data));
             }
-        } else if (!data[currentPage]) {
+        } else if (typeof data[currentPage] === 'undefined') {
             // do nothing if on comments and we've never seen test on corresponding article
             return;
         }
