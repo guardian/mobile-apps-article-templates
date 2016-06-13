@@ -81,8 +81,8 @@ define(function() {
         }
 
         // bind control test events
-        // for now stick 500ms delay to give comments time to load
-        setTimeout(bindControlEvents, 500);
+        // for now stick 1000ms delay to give comments time to load
+        setTimeout(bindControlEvents, 1000);
     }
 
     function bindControlEvents() {
