@@ -162,6 +162,7 @@ define(function() {
 
             if (className.indexOf('review-rating--') !== -1) {
                 reviewRating.classList.remove(className);
+                break;
             }
         }
     }
