@@ -24,9 +24,8 @@ define([
             module.isAndroid = document.body.classList.contains('android');
 
             module.attachFastClick();
-            module.hideEmptyCaptions();
+            module.formatImages();
             module.figcaptionToggle();
-            module.imageSizer();
             module.articleContentType();
             module.insertTags();
             module.videoPositioning();
@@ -34,8 +33,7 @@ define([
             module.loadCards();
             module.loadEmbeds();
             module.scrollToAnchor();
-            module.loadInteractives();
-            module.offline();
+            module.loadInteractives(); 
             module.setupOfflineSwitch();
             module.setupAlertSwitch();
             module.setupTellMeWhenSwitch();
@@ -44,7 +42,6 @@ define([
             module.showTabs();
             module.setGlobalObject(window);
             module.fixSeries();
-            module.formatThumbnailImages();
             module.advertorialUpdates();
 
             Sharing.init(window);
@@ -59,18 +56,132 @@ define([
             fastClick.attach(document.body);
         },
 
-        hideEmptyCaptions: function() {
-            var i,
-                figcaption,
-                figures = document.getElementsByTagName('figure');
+        formatImages: function() {
+            var figure,
+                figures = [],
+                i,
+                image,
+                images = document.querySelectorAll('.article img');
 
-            for (i = 0; i < figures.length; i++) {
-                figcaption = figures[i].querySelector('figcaption');
+            for (i = 0; i < images.length; i++) {
+                image = images[i];    
+                figure = GU.util.getClosestParentWithTag(image, 'figure');
                 
-                if (figcaption && figcaption.innerText === '') {
-                    figcaption.style.display = 'none';
+                if (figure) {
+                    figures.push(figure);
                 }
             }
+
+            module.formatFigures(figures);
+
+            if (GU.opts.isOffline) {
+                module.formatOfflineImages(images);
+            }
+        },
+
+        formatFigures: function (figures) {
+            var i,
+                figure;
+
+            for (i = 0; i < figures.length; i++) {
+                figure = figures[i];
+
+                module.hideFigureCaptionIfEmpty(figure);
+
+                if (figure.classList.contains('element-image')) {
+                    module.formatElementImageFigure(figure);
+
+                    if (figure.classList.contains('element-image')) {
+                        module.formatThumbnailImageFigure(figure);       
+                    }
+                }
+            }
+        },
+
+        hideFigureCaptionIfEmpty: function(figure) {
+            var figcaption = figure.querySelector('figcaption');
+                
+            if (figcaption && figcaption.innerText === '') {
+                figcaption.style.display = 'none';
+            }
+        },
+
+        formatElementImageFigure: function(figure) {
+            var caption = figure.querySelector('.element-image__caption'),
+                captionIcon = figure.querySelector('.figure__caption__icon'),
+                isThumbnail = figure.classList.contains('element--thumbnail'),
+                imageClass = isThumbnail && caption ? 'figure--thumbnail-with-caption' : (isThumbnail ? 'figure--thumbnail' : 'figure-wide'),
+                imageOrLinkedImage = figure.children[0],
+                imageWrapper;
+
+            figure.classList.add(imageClass);
+
+            if (imageOrLinkedImage && 
+                !imageOrLinkedImage.classList.contains('figure__inner')) {
+
+                imageWrapper = document.createElement('div');
+                imageWrapper.classList.add('figure__inner');
+                imageWrapper.appendChild(imageOrLinkedImage);
+
+                figure.insertBefore(imageWrapper, figure.firstChild);
+            }
+
+            if (caption && !captionIcon) {
+                caption.innerHTML = '<span data-icon="&#xe044;" class="figure__caption__icon" aria-hidden="true"></span>' + caption.innerHTML;
+            }
+        },
+
+        formatThumbnailImageFigure: function(figure) {
+            var thumbnailImage = figure.querySelector('img'),
+                isPortrait = parseInt(thumbnailImage.getAttribute('height'), 10) > parseInt(thumbnailImage.getAttribute('width'), 10);
+
+            if (isPortrait) {
+                figure.classList.add('portrait-thumbnail');
+            } else {
+                figure.classList.add('landscape-thumbnail');
+            }
+        },
+
+        formatOfflineImages: function(images) {
+            var i,
+                dummyImage,
+                image;
+
+            for (i = 0; i < images.length; i++) {
+                image = images[i];
+                dummyImage = new Image();
+                dummyImage.onerror = module.hideImageOnError.bind(null, image);
+                dummyImage.src = image.getAttribute('src');
+            }
+        },
+
+        hideImageOnError: function (image) {
+            var figure,
+                innerElem;
+
+            if (image.parentNode.classList.contains('element-image-inner')) {
+                image.style.display = 'none';
+            } else {
+                figure = GU.util.getClosestParentWithTag(image, 'figure');
+                innerElem = document.createElement('div');
+                innerElem.classList.add('element-image-inner');
+                if (figure && figure.classList.contains('element--thumbnail')) {
+                    innerElem.style.height = module.getThumbnailHeight(figure) + 'px';
+                }
+                image.parentNode.replaceChild(innerElem, image);
+            }
+        },
+
+        getThumbnailHeight: function(figure) {
+            var img = figure.querySelector('img.gu-image'),
+                imgWidth = img.getAttribute('width'),
+                imgHeight = img.getAttribute('height'),
+                figInner = figure.querySelector('.figure__inner'),
+                figInnerWidth = GU.util.getElementOffset(figInner).width,
+                scale = figInnerWidth / imgWidth,
+                newHeight = imgHeight * scale;
+
+            return Math.round(newHeight);
         },
 
         figcaptionToggle: function () {
@@ -91,47 +202,6 @@ define([
                 mainMediaCaptionText.classList.remove(className);
             } else {
                 mainMediaCaptionText.classList.add(className);
-            }
-        },
-
-        imageSizer: function () {
-            var i,
-                figure,
-                figures,
-                isThumbnail,
-                caption,
-                imageClass,
-                imageOrLinkedImage,
-                imageWrapper, 
-                captionIcon;
-
-            figures = document.querySelectorAll('figure.element-image');
-
-            for (i = 0; i < figures.length; i++) {
-                figure = figures[i];
-                isThumbnail = figure.classList.contains('element--thumbnail');
-                caption = figure.querySelector('.element-image__caption');
-                imageClass = isThumbnail && caption ? 'figure--thumbnail-with-caption' : (isThumbnail ? 'figure--thumbnail' : 'figure-wide');
-            
-                figure.classList.add(imageClass);
-
-                imageOrLinkedImage = figure.children[0];
-
-                if (imageOrLinkedImage && 
-                    !imageOrLinkedImage.classList.contains('figure__inner')) {
-
-                    imageWrapper = document.createElement('div');
-                    imageWrapper.classList.add('figure__inner');
-                    imageWrapper.appendChild(imageOrLinkedImage);
-
-                    figure.insertBefore(imageWrapper, figure.firstChild);
-                }
-
-                captionIcon = figure.querySelector('.figure__caption__icon');
-
-                if (caption && !captionIcon) {
-                    caption.innerHTML = '<span data-icon="&#xe044;" class="figure__caption__icon" aria-hidden="true"></span>' + caption.innerHTML;
-                }
             }
         },
 
@@ -304,36 +374,6 @@ define([
                 interactive = interactives[i];
 
                 interactive.classList.remove('interactive--loading');
-            }
-        },
-
-        offline: function () {
-            var i,
-                dummyImage,
-                image,
-                images;
-
-            if (document.body.classList.contains('offline')) {
-                images = document.querySelectorAll('.article img');
-
-                for (i = 0; i < images.length; i++) {
-                    image = images[i];
-                    dummyImage = new Image();
-                    dummyImage.onerror = module.hideImageOnError.bind(null, image);
-                    dummyImage.src = image.getAttribute('src');
-                }
-            }
-        },
-
-        hideImageOnError: function (image) {
-            var innerElem;
-
-            if (image.parentNode.classList.contains('element-image-inner')) {
-                image.style.display = 'none';
-            } else {
-                innerElem = document.createElement('div');
-                innerElem.classList.add('element-image-inner');
-                image.parentNode.replaceChild(innerElem, image);
             }
         },
 
@@ -566,24 +606,6 @@ define([
                         }
                         break;
                     }
-                }
-            }
-        },
-
-        formatThumbnailImages: function() {
-            var i,
-                isPortrait,
-                thumbnailImage,
-                thumbnailFigures = document.getElementsByClassName('element-image element--thumbnail');
-
-            for (i = 0; i < thumbnailFigures.length; i++) {
-                thumbnailImage = thumbnailFigures[i].getElementsByTagName('img')[0];
-                isPortrait = parseInt(thumbnailImage.getAttribute('height'), 10) > parseInt(thumbnailImage.getAttribute('width'), 10);
-
-                if (isPortrait) {
-                    thumbnailFigures[i].classList.add('portrait-thumbnail');
-                } else {
-                    thumbnailFigures[i].classList.add('landscape-thumbnail');
                 }
             }
         },
