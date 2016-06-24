@@ -339,7 +339,7 @@ define([
                     answerPara = document.createElement('p');
                     answerPara.classList.add('answer__explanation');
                     answerPara.innerHTML = answer.dataset.correctAnswerExplanation.trim();
-                    correctAnswerWrapper = answer.getElementsByClassName('answer__message');
+                    correctAnswerWrapper = answer.getElementsByClassName('answer__message')[0];
                     correctAnswerWrapper.appendChild(answerPara);
                 }
 
@@ -370,7 +370,7 @@ define([
                         modules.questionCount === modules.numAnswered) {
                         return;    
                     } else {
-                        hightedAnswer = question.getElementsByClassName('highlight-answer');
+                        hightedAnswer = question.getElementsByClassName('highlight-answer')[0];
                         hightedAnswer.classList.remove('highlight-answer');
                         modules.quizBuckets[hightedAnswer.dataset.buckets].count--;
                         modules.numAnswered--;
@@ -400,9 +400,9 @@ define([
 
                 for (i = 0; i < markedAnswers.length; i++) {
                     markedAnswer = markedAnswers[i];
-                    thisMessage = markedAnswer.getElementsByClassName('.answer__message')[0];
+                    thisMessage = markedAnswer.getElementsByClassName('answer__message')[0];
                     thisHeight = thisMessage.offsetHeight;
-                    thisMarker = markedAnswer.getElementsByClassName('.answer__marker')[0];
+                    thisMarker = markedAnswer.getElementsByClassName('answer__marker')[0];
                     // position explanation to the bottom of wrapper
                     thisMessage.style.top = 'calc(100% - ' + thisHeight + 'px)';
                     thisMarker.style.top = 'calc(100% - ' + (thisHeight - 7) + 'px)';
