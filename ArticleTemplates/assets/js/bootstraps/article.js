@@ -39,7 +39,7 @@ define([
         },
 
         formatImmersive: function () {
-            var immersives = document.querySelectorAll('.immersive');
+            var immersives = document.getElementsByClassName('immersive');
 
             if (immersives.length) {
                 // Override tone to feature for all immersive pages
@@ -127,7 +127,7 @@ define([
         movePullQuotes: function () {
             var i,
                 pullQuote,
-                pullQuotes = document.querySelectorAll('.element-pullquote');
+                pullQuotes = document.getElementsByClassName('element-pullquote');
 
             for (i = 0; i < pullQuotes.length; i++) {
                 pullQuote = pullQuotes[i];
@@ -138,7 +138,7 @@ define([
         attachImmersiveEventHandlers: function () {
             var i,
                 quoteOverlay,
-                quoteOverlays = document.querySelectorAll('.quote--overlay');
+                quoteOverlays = document.getElementsByClassName('quote--overlay');
                 
             for (i = 0; i < quoteOverlays.length; i++) {
                 quoteOverlay = quoteOverlays[i];
@@ -154,7 +154,7 @@ define([
 
             evt.preventDefault();
 
-            figcaption = quoteOverlay.querySelector('figcaption');
+            figcaption = quoteOverlay.getElementsByTagName('figcaption')[0];
 
             if (figcaption) {
                 if (figcaption.classList.contains('display')) {
@@ -169,7 +169,7 @@ define([
             var i,
                 dataOffset,
                 pullQuote,
-                pullQuotes = document.querySelectorAll('.element-pullquote'),
+                pullQuotes = document.getElementsByClassName('element-pullquote'),
                 viewPortHeight = document.documentElement.clientHeight,
                 pageOffset = viewPortHeight * 0.75;
 
@@ -209,11 +209,11 @@ define([
                 link,
                 links,
                 richLink,
-                richLinks = document.querySelectorAll('.element-rich-link');
+                richLinks = document.getElementsByClassName('element-rich-link');
 
             for (i = 0; i < richLinks.length; i++) {
                 richLink = richLinks[i];
-                links = richLink.querySelectorAll('a');
+                links = richLink.getElementsByTagName('a');
 
                 for (j = 0; j < links.length; j++) {
                     link = links[j];
