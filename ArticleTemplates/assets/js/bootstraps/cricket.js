@@ -20,8 +20,8 @@ define([
 
             var card = document.getElementById('cricket-match-summary-scorecard');
             if(sheet && card){
-                var title = card.querySelector('.cricket-scorecard-title');
-                var batsmen = sheet.querySelector('.cricket-scorecard-batsmen');
+                var title = card.getElementsByClassName('cricket-scorecard-title')[0];
+                var batsmen = sheet.getElementsByClassName('cricket-scorecard-batsmen')[0];
                 if(batsmen){
                     var batsmenHeight = batsmen.getBoundingClientRect().height;
                     var pages = Math.ceil(sheet.getBoundingClientRect().height / batsmenHeight);

@@ -99,7 +99,7 @@ define([
         },
 
         hideFigureCaptionIfEmpty: function(figure) {
-            var figcaption = figure.querySelector('figcaption');
+            var figcaption = figure.getElementsByTagName('figcaption')[0];
                 
             if (figcaption && figcaption.innerText === '') {
                 figcaption.style.display = 'none';
@@ -107,8 +107,8 @@ define([
         },
 
         formatElementImageFigure: function(figure) {
-            var caption = figure.querySelector('.element-image__caption'),
-                captionIcon = figure.querySelector('.figure__caption__icon'),
+            var caption = figure.getElementsByClassName('element-image__caption')[0],
+                captionIcon = figure.getElementsByClassName('figure__caption__icon')[0],
                 isThumbnail = figure.classList.contains('element--thumbnail'),
                 imageClass = isThumbnail && caption ? 'figure--thumbnail-with-caption' : (isThumbnail ? 'figure--thumbnail' : 'figure-wide'),
                 imageOrLinkedImage = figure.children[0],
@@ -132,7 +132,7 @@ define([
         },
 
         formatThumbnailImageFigure: function(figure) {
-            var thumbnailImage = figure.querySelector('img'),
+            var thumbnailImage = figure.getElementsByTagName('img')[0],
                 isPortrait = parseInt(thumbnailImage.getAttribute('height'), 10) > parseInt(thumbnailImage.getAttribute('width'), 10);
 
             if (isPortrait) {
@@ -176,7 +176,7 @@ define([
             var img = figure.querySelector('img.gu-image'),
                 imgWidth = img.getAttribute('width'),
                 imgHeight = img.getAttribute('height'),
-                figInner = figure.querySelector('.figure__inner'),
+                figInner = figure.getElementsByClassName('figure__inner')[0],
                 figInnerWidth = GU.util.getElementOffset(figInner).width,
                 scale = figInnerWidth / imgWidth,
                 newHeight = imgHeight * scale;
@@ -186,8 +186,8 @@ define([
 
         figcaptionToggle: function () {
             var toggleCaptionVisibilityBound,
-                mainMediaCaption = document.querySelector('.main-media__caption__icon'),
-                mainMediaCaptionText = document.querySelector('.main-media__caption__text');
+                mainMediaCaption = document.getElementsByClassName('main-media__caption__icon')[0],
+                mainMediaCaptionText = document.getElementsByClassName('main-media__caption__text')[0];
                 
             if (mainMediaCaption && mainMediaCaptionText) {
                 toggleCaptionVisibilityBound = module.toggleCaptionVisibility.bind(null, mainMediaCaptionText);
@@ -477,7 +477,7 @@ define([
                 hideElem,
                 tab,
                 tabs,
-                tabContainer = document.querySelector('.tabs');
+                tabContainer = document.getElementsByClassName('tabs')[0];
 
             if (tabContainer) {
                 tabs = tabContainer.getElementsByTagName('a');
@@ -562,7 +562,7 @@ define([
         },
 
         setPieChartSize: function () {
-            var piechart = document.querySelector('.pie-chart');
+            var piechart = document.getElementsByClassName('pie-chart')[0];
 
             if (piechart && piechart.parentNode) {
                 piechart.style.width = piechart.parentNode.offsetWidth + 'px';
@@ -595,7 +595,7 @@ define([
             if (series) {
                 series.innerHTML = '<span>' + series.innerText.split(/\s+/).join(' </span><span>') + ' </span>';
 
-                spans = series.querySelectorAll('span');
+                spans = series.getElementsByTagName('span');
 
                 for (i = spans.length - 1; i >=0; i--) {
                     lineWidth = lineWidth + spans[i].offsetWidth;

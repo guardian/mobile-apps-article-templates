@@ -12,7 +12,7 @@ define([
             init: function (quiz) {
                 modules.numAnswered = 0;
                 modules.questionCount = 0;
-                modules.isPersonalityQuiz = document.querySelector('.quiz__buckets');
+                modules.isPersonalityQuiz = document.getElementsByClassName('quiz__buckets')[0];
                 modules.moveMPU = modules.IsAdBelowQuiz(quiz);
                 
                 if (modules.isPersonalityQuiz) {
@@ -37,7 +37,7 @@ define([
                 var i,
                     questionsAndAnswers = modules.getQuestionsAndAnswers(),
                     question,
-                    questions = document.querySelectorAll('.quiz__question'),
+                    questions = document.getElementsByClassName('quiz__question'),
                     questionObj;
 
                 for (i = 0; i < questions.length; i++) {
@@ -53,7 +53,7 @@ define([
             setupNewsQuizAnswers: function (questionObj) {
                 var i,
                     answerCode,
-                    answers = questionObj.elem.querySelectorAll('.question__answer');
+                    answers = questionObj.elem.getElementsByClassName('question__answer');
             
                 for (i = 0; i < answers.length; i++) {
                     answerCode = GU.util.getStringFromUnicodeVal(65 + i);
@@ -64,7 +64,7 @@ define([
                         answers[i].dataset.correct = 'true';
                     }
                     modules.styleAnswer(answers[i]);
-                    answers[i].addEventListener('click', modules.onNewsAnswerClick.bind(null, answers[i], questionObj.elem, answers[i].querySelector('img')));
+                    answers[i].addEventListener('click', modules.onNewsAnswerClick.bind(null, answers[i], questionObj.elem, answers[i].getElementsByTagName('img')[0]));
                 }                
             },
 
@@ -80,7 +80,7 @@ define([
             setupPersonalityQuizBuckets: function () {
                 var i,
                     bucketCode,
-                    buckets = document.querySelectorAll('.quiz__bucket'),
+                    buckets = document.getElementsByClassName('quiz__bucket'),
                     quizBuckets = {};
 
                 for (i = 0; i < buckets.length; i++) {
@@ -98,7 +98,7 @@ define([
             setupPersonalityQuizQuestions: function () {
                 var i,
                     question,
-                    questions = document.querySelectorAll('.quiz__question'),
+                    questions = document.getElementsByClassName('quiz__question'),
                     questionObj;
 
                 for (i = 0; i < questions.length; i++) {
@@ -113,7 +113,7 @@ define([
 
             setupPersonalityQuizAnswers: function (questionObj) {
                 var i,
-                    answers = questionObj.elem.querySelectorAll('.question__answer');
+                    answers = questionObj.elem.getElementsByClassName('question__answer');
 
                 for (i = 0; i < answers.length; i++) {
                     modules.styleAnswer(answers[i]);
@@ -138,7 +138,7 @@ define([
                     question,
                     answer,
                     answers = {},
-                    correctAnswerWordList = document.querySelector('.quiz__correct-answers').innerHTML.split(' ');
+                    correctAnswerWordList = document.getElementsByClassName('quiz__correct-answers')[0].innerHTML.split(' ');
 
                 for (i = 0; i < correctAnswerWordList.length; i++) {
                     // Check if word in this format: 1:A
@@ -209,9 +209,9 @@ define([
             wrapQuestion: function (question) {
                 var i,
                     questionWrapper = document.createElement('div'),
-                    questionAnswerList = question.querySelectorAll('.question__answers'),
+                    questionAnswerList = question.getElementsByClassName('question__answers'),
                     questionImages = question.querySelectorAll(':scope > img'),
-                    questionText = question.querySelectorAll('.question__text');
+                    questionText = question.getElementsByClassName('question__text');
 
                 questionWrapper.classList.add('question__wrapper');
 
@@ -233,7 +233,7 @@ define([
                     answerMarker = document.createElement('div'),
                     answerMessage = document.createElement('div'),
                     answerWrapper = document.createElement('div'),
-                    answerText = answer.querySelectorAll('.answer__text'),
+                    answerText = answer.getElementsByClassName('answer__text'),
                     i;
 
                 // Wrap answer in a div for styling
@@ -282,7 +282,7 @@ define([
 
             IsAdBelowQuiz: function (quiz) {
                 var IsAdBelowQuiz = false,
-                    mpu = document.querySelector('.advert-slot__wrapper'),
+                    mpu = document.getElementsByClassName('advert-slot__wrapper')[0],
                     mpuOffset,
                     quizOffset;
 
@@ -339,7 +339,7 @@ define([
                     answerPara = document.createElement('p');
                     answerPara.classList.add('answer__explanation');
                     answerPara.innerHTML = answer.dataset.correctAnswerExplanation.trim();
-                    correctAnswerWrapper = answer.querySelector('.answer__message');
+                    correctAnswerWrapper = answer.getElementsByClassName('answer__message')[0];
                     correctAnswerWrapper.appendChild(answerPara);
                 }
 
@@ -370,7 +370,7 @@ define([
                         modules.questionCount === modules.numAnswered) {
                         return;    
                     } else {
-                        hightedAnswer = question.querySelector('.highlight-answer');
+                        hightedAnswer = question.getElementsByClassName('highlight-answer')[0];
                         hightedAnswer.classList.remove('highlight-answer');
                         modules.quizBuckets[hightedAnswer.dataset.buckets].count--;
                         modules.numAnswered--;
@@ -400,9 +400,9 @@ define([
 
                 for (i = 0; i < markedAnswers.length; i++) {
                     markedAnswer = markedAnswers[i];
-                    thisMessage = markedAnswer.querySelector('.answer__message');
+                    thisMessage = markedAnswer.getElementsByClassName('answer__message')[0];
                     thisHeight = thisMessage.offsetHeight;
-                    thisMarker = markedAnswer.querySelector('.answer__marker');
+                    thisMarker = markedAnswer.getElementsByClassName('answer__marker')[0];
                     // position explanation to the bottom of wrapper
                     thisMessage.style.top = 'calc(100% - ' + thisHeight + 'px)';
                     thisMarker.style.top = 'calc(100% - ' + (thisHeight - 7) + 'px)';
@@ -420,9 +420,9 @@ define([
                     }
                 }
 
-                document.querySelector('.quiz-scores__correct').innerHTML = modules.score.toString();
-                document.querySelector('.quiz-scores__message').innerHTML = scoreDisplayMessage;
-                document.querySelector('.quiz-scores').classList.add('open');
+                document.getElementsByClassName('quiz-scores__correct')[0].innerHTML = modules.score.toString();
+                document.getElementsByClassName('quiz-scores__message')[0].innerHTML = scoreDisplayMessage;
+                document.getElementsByClassName('quiz-scores')[0].classList.add('open');
 
                 // Scroll score panel into view
                 smoothScroll.animateScroll('#quiz-scores', null, {speed: 1500, offset: 40});
@@ -446,9 +446,9 @@ define([
                     }
                 }
 
-                document.querySelector('.quiz-results__description').innerHTML = resultDescription;
-                document.querySelector('.quiz-results__title').innerHTML = resultTitle;
-                document.querySelector('.quiz-results').classList.add('open');
+                document.getElementsByClassName('quiz-results__description')[0].innerHTML = resultDescription;
+                document.getElementsByClassName('quiz-results__title')[0].innerHTML = resultTitle;
+                document.getElementsByClassName('quiz-results')[0].classList.add('open');
 
                 // Scroll result panel into view
                 smoothScroll.animateScroll('#quiz-results', null, {speed: 1500, offset: 40});
