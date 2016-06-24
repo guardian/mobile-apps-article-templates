@@ -45,7 +45,7 @@ define(function() {
         if (isValid) {
             els.lowFricContainer = document.createElement('div');
             els.lowFricContainer.classList.add('participation-low-fric');
-            els.articleBody = document.querySelector('.article__body > .prose');
+            els.articleBody = document.getElementsByClassName('article__body > .prose')[0];
 
             getUserVote(setUpParticipation);
         }
@@ -106,7 +106,7 @@ define(function() {
     }
 
     function hasCommentsEnabled() {
-        return document.querySelector('.comment-count');
+        return document.getElementsByClassName('comment-count')[0];
     }
 
     function getUserVote(callback) {
@@ -127,13 +127,13 @@ define(function() {
                 '<p class="participation-low-fric__desc">' + settings.templateVars.description + '</p>' +
                 '<div class="participation-low-friction__contents"><p class="review-rating"></p></div>';
 
-            reviewRating = els.lowFricContainer.querySelector('.review-rating');
+            reviewRating = els.lowFricContainer.getElementsByClassName('review-rating')[0];
 
             reviewRating.innerHTML = createButtonsHTML();
 
             els.articleBody.appendChild(els.lowFricContainer);
         } else {
-            reviewRating = els.lowFricContainer.querySelector('.review-rating');
+            reviewRating = els.lowFricContainer.getElementsByClassName('review-rating')[0];
             clearRating(reviewRating);
         }
 
@@ -171,8 +171,8 @@ define(function() {
         var i
         var rating;
         var handleTouchMoveDebounced = GU.util.debounce(handleTouchMove, 10);
-        var touchArea = els.lowFricContainer.querySelector('.participation-low-friction__contents');
-        var buttons = els.lowFricContainer.querySelectorAll('.participation-low-fric--button');
+        var touchArea = els.lowFricContainer.getElementsByClassName('participation-low-friction__contents')[0];
+        var buttons = els.lowFricContainer.getElementsByClassName('participation-low-fric--button');
 
         for (i = 0; i < buttons.length; i++) {
             rating = 'review-rating--' + (i + 1);
@@ -287,7 +287,7 @@ define(function() {
     } 
 
     function addTestMessage() {
-        var testMessage = els.lowFricContainer.querySelector('.participation-low-friction__test-message');
+        var testMessage = els.lowFricContainer.getElementsByClassName('participation-low-friction__test-message')[0];
 
         if (!testMessage) {
             testMessage = document.createElement('DIV');
