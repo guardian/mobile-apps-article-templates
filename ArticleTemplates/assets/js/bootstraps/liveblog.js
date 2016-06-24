@@ -21,22 +21,36 @@ define([
     var modules = {
             blockUpdates: function () {
                 var newBlockHtml = '',
-                    updateCounter = 0,
                     liveblogStartPos = $('.article__body--liveblog').offset(),
                     liveblogNewBlockDump = function () {
+                        var images = [],
+                            blocks,
+                            counter = 0,
+                            blockCount = 0;
+
                         if (newBlockHtml) {
                             newBlockHtml = bonzo.create(newBlockHtml);
                         
                             $(newBlockHtml).each(function() {
+                                blockCount++;
                                 $(this).addClass("animated slideinright");
                             });
                             
                             $(".article__body--liveblog__pinned").after(newBlockHtml);
 
+                            blocks = document.querySelectorAll('.block--live-key-event, .block--live-blog');
+
+                            while (counter !== blockCount) {
+                                if (blocks[counter]) {
+                                    images.push.apply(images, blocks[counter].getElementsByTagName('img'));
+                                }
+                                counter++;
+                            }
+
                             // Move mpu ads
                             window.updateLiveblogAdPlaceholders(true);
 
-                            modules.common.imageSizer();
+                            modules.common.formatImages(images);
                             modules.common.loadEmbeds();
                             modules.common.loadInteractives();
 
@@ -83,12 +97,24 @@ define([
                 };
 
                 window.liveblogLoadMore = function (html) {
+                    var i,
+                        images = [],
+                        blocks,
+                        oldBlockCount = document.querySelectorAll('.block--live-key-event, .block--live-blog').length;
+
                     html = bonzo.create(html);
 
                     $('.loading--liveblog').removeClass("loading--visible");
+
                     $(html).appendTo('.article__body');
 
-                    modules.common.imageSizer();
+                    blocks = document.querySelectorAll('.block--live-key-event, .block--live-blog');
+
+                    for (i = blocks.length; i > oldBlockCount; i--) {
+                        images.push.apply(images, blocks[i-1].getElementsByTagName('img'));
+                    }
+
+                    modules.common.formatImages(images);
                     modules.common.loadEmbeds();
                     modules.common.loadInteractives();
 
