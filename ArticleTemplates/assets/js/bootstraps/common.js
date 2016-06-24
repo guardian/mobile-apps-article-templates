@@ -56,12 +56,15 @@ define([
             fastClick.attach(document.body);
         },
 
-        formatImages: function() {
+        formatImages: function(images) {
             var figure,
                 figures = [],
                 i,
-                image,
+                image;
+
+            if (!images) {
                 images = document.querySelectorAll('.article img');
+            }
 
             for (i = 0; i < images.length; i++) {
                 image = images[i];    
