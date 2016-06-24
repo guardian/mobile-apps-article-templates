@@ -23,7 +23,8 @@ define([
                 var newBlockHtml = '',
                     liveblogStartPos = $('.article__body--liveblog').offset(),
                     liveblogNewBlockDump = function () {
-                        var images = [],
+                        var articleBody = document.getElementsByClassName('article__body')[0],
+                            images = [],
                             blocks,
                             counter = 0,
                             blockCount = 0;
@@ -38,12 +39,10 @@ define([
                             
                             $(".article__body--liveblog__pinned").after(newBlockHtml);
 
-                            blocks = document.querySelectorAll('.block--live-key-event, .block--live-blog');
+                            blocks = articleBody.getElementsByClassName('block');
 
                             while (counter !== blockCount) {
-                                if (blocks[counter]) {
-                                    images.push.apply(images, blocks[counter].getElementsByTagName('img'));
-                                }
+                                images.push.apply(images, blocks[counter].getElementsByTagName('img'));
                                 counter++;
                             }
 
@@ -100,7 +99,8 @@ define([
                     var i,
                         images = [],
                         blocks,
-                        oldBlockCount = document.querySelectorAll('.block--live-key-event, .block--live-blog').length;
+                        articleBody = document.getElementsByClassName('article__body')[0],
+                        oldBlockCount = articleBody.getElementsByClassName('block').length;
 
                     html = bonzo.create(html);
 
@@ -108,7 +108,7 @@ define([
 
                     $(html).appendTo('.article__body');
 
-                    blocks = document.querySelectorAll('.block--live-key-event, .block--live-blog');
+                    blocks = articleBody.getElementsByClassName('block');
 
                     for (i = blocks.length; i > oldBlockCount; i--) {
                         images.push.apply(images, blocks[i-1].getElementsByTagName('img'));
