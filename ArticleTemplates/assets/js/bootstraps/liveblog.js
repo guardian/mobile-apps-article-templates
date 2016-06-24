@@ -142,10 +142,10 @@ define([
 
             moveFigcaption: function (figure) {
                 var figInner,
-                    figCaption = figure.querySelector("figcaption");
+                    figCaption = figure.getElementsByTagName("figcaption")[0];
 
                 if (figCaption && figCaption.parentNode === figure) {
-                    figInner = figure.querySelector(".figure__inner");
+                    figInner = figure.getElementsByClassName("figure__inner")[0];
 
                     if (figInner) {
                         figInner.insertBefore(figCaption, figInner.firstChild);
@@ -162,7 +162,7 @@ define([
 
                 for (i = 0; i < blocks.length; i++) {
                     if (!blocks[i].classList.contains('is-textonly')) {
-                        figure = blocks[i].querySelector('figure');
+                        figure = blocks[i].getElementsByTagName('figure')[0];
 
                         if (figure) {
                             if (blocks[i].classList.contains('is-coverimage')) {
@@ -178,7 +178,7 @@ define([
                             }
                         }
                     } else {
-                        tweet = blocks[i].querySelector('.element-tweet');
+                        tweet = blocks[i].getElementsByClassName('element-tweet')[0];
 
                         if (tweet) {
                             modules.adjustTweetForMinute(tweet);
@@ -196,7 +196,7 @@ define([
                     twitterWrapperElem,
                     nameElem,
                     linkElem,
-                    blockQuote = tweet.querySelector(".twitter-tweet");
+                    blockQuote = tweet.getElementsByClassName("twitter-tweet")[0];
 
                 if (blockQuote) {
                     for (i = 0; i < blockQuote.childNodes.length; i++) {
@@ -244,7 +244,7 @@ define([
                     titleString;
 
                 for (i = 0; i < blocks.length; i++) {
-                    blockTitle = blocks[i].querySelector('.block__title');
+                    blockTitle = blocks[i].getElementsByClassName('block__title')[0];
                     
                     if (blockTitle) {
                         titleString = blockTitle.innerHTML.replace(/^([0-9]+)[.]*[ ]*/g, '<span class="counter">$1</span>');
@@ -285,7 +285,7 @@ define([
                     figureInners = blocks[i].getElementsByClassName("figure__inner");
 
                     for (j = 0; j < figureInners.length; j++) {
-                        figureImage = figureInners[j].querySelector("img");
+                        figureImage = figureInners[j].getElementsByTagName("img")[0];
                         
                         if (figureImage) {
                             figureInners[j].classList.add("the-minute__background-media");
@@ -299,8 +299,8 @@ define([
             initScroller: function () {
                 var scroller,
                     minuteNavElem = $(".the-minute__nav"),
-                    wrapperElem = document.body.querySelector(".article--liveblog"),
-                    liveblogElem = wrapperElem.querySelector(".article__body--liveblog"),
+                    wrapperElem = document.body.getElementsByClassName("article--liveblog")[0],
+                    liveblogElem = wrapperElem.getElementsByClassName("article__body--liveblog")[0],
                     options = {
                         scrollX: false,
                         scrollY: true,

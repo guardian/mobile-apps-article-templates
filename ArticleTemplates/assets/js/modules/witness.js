@@ -2,9 +2,10 @@ define([], function () {
 
     var modules = {
         duplicate: function(){
-            var witness = document.querySelector('.witness');
+            var witness = document.getElementsByClassName('witness')[0];
+
             if(witness){
-                document.querySelector('.article__body').insertAdjacentHTML('afterend', '<div class="extras">' + witness.outerHTML + '</div>');
+                document.getElementsByClassName('article__body')[0].insertAdjacentHTML('afterend', '<div class="extras">' + witness.outerHTML + '</div>');
             }
         }
     };
