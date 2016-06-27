@@ -21,22 +21,35 @@ define([
     var modules = {
             blockUpdates: function () {
                 var newBlockHtml = '',
-                    updateCounter = 0,
                     liveblogStartPos = $('.article__body--liveblog').offset(),
                     liveblogNewBlockDump = function () {
+                        var articleBody = document.getElementsByClassName('article__body')[0],
+                            images = [],
+                            blocks,
+                            counter = 0,
+                            blockCount = 0;
+
                         if (newBlockHtml) {
                             newBlockHtml = bonzo.create(newBlockHtml);
                         
                             $(newBlockHtml).each(function() {
+                                blockCount++;
                                 $(this).addClass("animated slideinright");
                             });
                             
                             $(".article__body--liveblog__pinned").after(newBlockHtml);
 
+                            blocks = articleBody.getElementsByClassName('block');
+
+                            while (counter !== blockCount) {
+                                images.push.apply(images, blocks[counter].getElementsByTagName('img'));
+                                counter++;
+                            }
+
                             // Move mpu ads
                             window.updateLiveblogAdPlaceholders(true);
 
-                            modules.common.imageSizer();
+                            modules.common.formatImages(images);
                             modules.common.loadEmbeds();
                             modules.common.loadInteractives();
 
@@ -83,12 +96,25 @@ define([
                 };
 
                 window.liveblogLoadMore = function (html) {
+                    var i,
+                        images = [],
+                        blocks,
+                        articleBody = document.getElementsByClassName('article__body')[0],
+                        oldBlockCount = articleBody.getElementsByClassName('block').length;
+
                     html = bonzo.create(html);
 
                     $('.loading--liveblog').removeClass("loading--visible");
+
                     $(html).appendTo('.article__body');
 
-                    modules.common.imageSizer();
+                    blocks = articleBody.getElementsByClassName('block');
+
+                    for (i = blocks.length; i > oldBlockCount; i--) {
+                        images.push.apply(images, blocks[i-1].getElementsByTagName('img'));
+                    }
+
+                    modules.common.formatImages(images);
                     modules.common.loadEmbeds();
                     modules.common.loadInteractives();
 
@@ -142,10 +168,10 @@ define([
 
             moveFigcaption: function (figure) {
                 var figInner,
-                    figCaption = figure.querySelector("figcaption");
+                    figCaption = figure.getElementsByTagName("figcaption")[0];
 
                 if (figCaption && figCaption.parentNode === figure) {
-                    figInner = figure.querySelector(".figure__inner");
+                    figInner = figure.getElementsByClassName("figure__inner")[0];
 
                     if (figInner) {
                         figInner.insertBefore(figCaption, figInner.firstChild);
@@ -162,7 +188,7 @@ define([
 
                 for (i = 0; i < blocks.length; i++) {
                     if (!blocks[i].classList.contains('is-textonly')) {
-                        figure = blocks[i].querySelector('figure');
+                        figure = blocks[i].getElementsByTagName('figure')[0];
 
                         if (figure) {
                             if (blocks[i].classList.contains('is-coverimage')) {
@@ -178,7 +204,7 @@ define([
                             }
                         }
                     } else {
-                        tweet = blocks[i].querySelector('.element-tweet');
+                        tweet = blocks[i].getElementsByClassName('element-tweet')[0];
 
                         if (tweet) {
                             modules.adjustTweetForMinute(tweet);
@@ -196,7 +222,7 @@ define([
                     twitterWrapperElem,
                     nameElem,
                     linkElem,
-                    blockQuote = tweet.querySelector(".twitter-tweet");
+                    blockQuote = tweet.getElementsByClassName("twitter-tweet")[0];
 
                 if (blockQuote) {
                     for (i = 0; i < blockQuote.childNodes.length; i++) {
@@ -244,7 +270,7 @@ define([
                     titleString;
 
                 for (i = 0; i < blocks.length; i++) {
-                    blockTitle = blocks[i].querySelector('.block__title');
+                    blockTitle = blocks[i].getElementsByClassName('block__title')[0];
                     
                     if (blockTitle) {
                         titleString = blockTitle.innerHTML.replace(/^([0-9]+)[.]*[ ]*/g, '<span class="counter">$1</span>');
@@ -285,7 +311,7 @@ define([
                     figureInners = blocks[i].getElementsByClassName("figure__inner");
 
                     for (j = 0; j < figureInners.length; j++) {
-                        figureImage = figureInners[j].querySelector("img");
+                        figureImage = figureInners[j].getElementsByTagName("img")[0];
                         
                         if (figureImage) {
                             figureInners[j].classList.add("the-minute__background-media");
@@ -299,8 +325,8 @@ define([
             initScroller: function () {
                 var scroller,
                     minuteNavElem = $(".the-minute__nav"),
-                    wrapperElem = document.body.querySelector(".article--liveblog"),
-                    liveblogElem = wrapperElem.querySelector(".article__body--liveblog"),
+                    wrapperElem = document.body.getElementsByClassName("article--liveblog")[0],
+                    liveblogElem = wrapperElem.getElementsByClassName("article__body--liveblog")[0],
                     options = {
                         scrollX: false,
                         scrollY: true,

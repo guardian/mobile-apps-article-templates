@@ -1208,6 +1208,10 @@ body.the-minute {
                                     margin-top:  12px;
                                 }
 
+                                h2+p {
+                                    margin-top: 0;
+                                }
+
                                 figure {
                                     left: 5%;
 
@@ -1224,7 +1228,21 @@ body.the-minute {
 
                                     .video-URL {
                                         background: $minute_bg;
-                                    }                              }
+                                    }
+
+                                    figcaption {
+                                        padding-bottom: 0;
+                                        margin-bottom: 0;
+                                        border: none;
+                                        font: 1.4rem/1.7rem $agate-sans; 
+                                        color: rgba(255, 255, 255, .9);
+                                        width: 80%;
+
+                                        span {
+                                            display: inline;
+                                        }
+                                    }               
+                                }
                             }
                         }
                     }
@@ -1380,7 +1398,7 @@ body.the-minute {
                                 margin-left: 10%;
 
                                 &::before {
-                                    background-color: #ea291f;
+                                    background-color: $minute_accent;
                                     content: "";
                                     height: 55px;
                                     width: 110%;
@@ -1458,6 +1476,7 @@ body.the-minute {
                                         margin-left: -10%;
                                     }
 
+                                    > p,
                                     h2 {
                                         padding-left: 8px;
                                     }
@@ -1474,7 +1493,7 @@ body.the-minute {
                                             margin-bottom: 12px;
 
                                             &::before {
-                                                color: #ea291f;
+                                                color: $minute_accent;
                                                 content: "\e06b";
                                                 display: inline-block;
                                                 font: 400 2.8rem/1 "Guardian Icons",Georgia,serif;

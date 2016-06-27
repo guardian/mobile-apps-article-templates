@@ -20,23 +20,21 @@ define([
     'use strict';
 
     var isAndroid;
-
+        
     function init() {
         isAndroid = document.body.classList.contains('android');
 
-        attachFastClick();
-        hideEmptyCaptions();
+        fastClick.attach(document.body); // polyfill to remove click delays on browsers with touch
+        formatImages();
         figcaptionToggle();
-        imageSizer();
         articleContentType();
         insertTags();
         videoPositioning();
-        comments.init();
-        cards.init();
+        comments.init(); // load comments
+        cards.init(); // load cards
         loadEmbeds();
-        smoothScroll.init();
-        loadInteractives();
-        offline();
+        smoothScroll.init(); // scroll to anchor
+        loadInteractives(); 
         setupOfflineSwitch();
         setupAlertSwitch();
         setupTellMeWhenSwitch();
@@ -45,38 +43,149 @@ define([
         showTabs();
         setGlobalObject(window);
         fixSeries();
-        formatThumbnailImages();
         advertorialUpdates();
-        sharing.init(window);
+        sharing.init(window); // init sharing
 
         if (!document.body.classList.contains('no-ready')) {
             window.location.href = 'x-gu://ready';
         }
     }
 
-    function attachFastClick() {
-        // Polyfill to remove click delays on browsers with touch UIs
-        fastClick.attach(document.body);
+    function formatImages(images) {
+        var figure,
+            figures = [],
+            i,
+            image;
+
+        if (!images) {
+            images = document.querySelectorAll('.article img');
+        }
+
+        for (i = 0; i < images.length; i++) {
+            image = images[i];    
+            figure = GU.util.getClosestParentWithTag(image, 'figure');
+            
+            if (figure) {
+                figures.push(figure);
+            }
+        }
+
+        formatFigures(figures);
+
+        if (GU.opts.isOffline) {
+            formatOfflineImages(images);
+        }
     }
 
-    function hideEmptyCaptions() {
+    function formatFigures(figures) {
         var i,
-            figcaption,
-            figures = document.getElementsByTagName('figure');
+            figure;
 
         for (i = 0; i < figures.length; i++) {
-            figcaption = figures[i].querySelector('figcaption');
-            
-            if (figcaption && figcaption.innerText === '') {
-                figcaption.style.display = 'none';
+            figure = figures[i];
+
+            hideFigureCaptionIfEmpty(figure);
+
+            if (figure.classList.contains('element-image')) {
+                formatElementImageFigure(figure);
+
+                if (figure.classList.contains('element-image')) {
+                    formatThumbnailImageFigure(figure);       
+                }
             }
         }
     }
 
+    function hideFigureCaptionIfEmpty(figure) {
+        var figcaption = figure.getElementsByTagName('figcaption')[0];
+            
+        if (figcaption && figcaption.innerText === '') {
+            figcaption.style.display = 'none';
+        }
+    }
+
+    function formatElementImageFigure(figure) {
+        var caption = figure.getElementsByClassName('element-image__caption')[0],
+            captionIcon = figure.getElementsByClassName('figure__caption__icon')[0],
+            isThumbnail = figure.classList.contains('element--thumbnail'),
+            imageClass = isThumbnail && caption ? 'figure--thumbnail-with-caption' : (isThumbnail ? 'figure--thumbnail' : 'figure-wide'),
+            imageOrLinkedImage = figure.children[0],
+            imageWrapper;
+
+        figure.classList.add(imageClass);
+
+        if (imageOrLinkedImage && 
+            !imageOrLinkedImage.classList.contains('figure__inner')) {
+
+            imageWrapper = document.createElement('div');
+            imageWrapper.classList.add('figure__inner');
+            imageWrapper.appendChild(imageOrLinkedImage);
+
+            figure.insertBefore(imageWrapper, figure.firstChild);
+        }
+
+        if (caption && !captionIcon) {
+            caption.innerHTML = '<span data-icon="&#xe044;" class="figure__caption__icon" aria-hidden="true"></span>' + caption.innerHTML;
+        }
+    }
+
+    function formatThumbnailImageFigure(figure) {
+        var thumbnailImage = figure.getElementsByTagName('img')[0],
+            isPortrait = parseInt(thumbnailImage.getAttribute('height'), 10) > parseInt(thumbnailImage.getAttribute('width'), 10);
+
+        if (isPortrait) {
+            figure.classList.add('portrait-thumbnail');
+        } else {
+            figure.classList.add('landscape-thumbnail');
+        }
+    }
+
+    function formatOfflineImages(images) {
+        var i,
+            dummyImage,
+            image;
+
+        for (i = 0; i < images.length; i++) {
+            image = images[i];
+            dummyImage = new Image();
+            dummyImage.onerror = hideImageOnError.bind(null, image);
+            dummyImage.src = image.getAttribute('src');
+        }
+    }
+
+    function hideImageOnError(image) {
+        var figure,
+            innerElem;
+
+        if (image.parentNode.classList.contains('element-image-inner')) {
+            image.style.display = 'none';
+        } else {
+            figure = GU.util.getClosestParentWithTag(image, 'figure');
+            innerElem = document.createElement('div');
+            innerElem.classList.add('element-image-inner');
+            if (figure && figure.classList.contains('element--thumbnail')) {
+                innerElem.style.height = getThumbnailHeight(figure) + 'px';
+            }
+            image.parentNode.replaceChild(innerElem, image);
+        }
+    }
+
+    function getThumbnailHeight(figure) {
+        var img = figure.querySelector('img.gu-image'),
+            imgWidth = img.getAttribute('width'),
+            imgHeight = img.getAttribute('height'),
+            figInner = figure.getElementsByClassName('figure__inner')[0],
+            figInnerWidth = GU.util.getElementOffset(figInner).width,
+            scale = figInnerWidth / imgWidth,
+            newHeight = imgHeight * scale;
+
+        return Math.round(newHeight);
+    }
+
     function figcaptionToggle() {
         var toggleCaptionVisibilityBound,
-            mainMediaCaption = document.querySelector('.main-media__caption__icon'),
-            mainMediaCaptionText = document.querySelector('.main-media__caption__text');
+            mainMediaCaption = document.getElementsByClassName('main-media__caption__icon')[0],
+            mainMediaCaptionText = document.getElementsByClassName('main-media__caption__text')[0];
             
         if (mainMediaCaption && mainMediaCaptionText) {
             toggleCaptionVisibilityBound = toggleCaptionVisibility.bind(null, mainMediaCaptionText);
@@ -91,47 +200,6 @@ define([
             mainMediaCaptionText.classList.remove(className);
         } else {
             mainMediaCaptionText.classList.add(className);
-        }
-    }
-
-    function imageSizer() {
-        var i,
-            figure,
-            figures,
-            isThumbnail,
-            caption,
-            imageClass,
-            imageOrLinkedImage,
-            imageWrapper, 
-            captionIcon;
-
-        figures = document.querySelectorAll('figure.element-image');
-
-        for (i = 0; i < figures.length; i++) {
-            figure = figures[i];
-            isThumbnail = figure.classList.contains('element--thumbnail');
-            caption = figure.querySelector('.element-image__caption');
-            imageClass = isThumbnail && caption ? 'figure--thumbnail-with-caption' : (isThumbnail ? 'figure--thumbnail' : 'figure-wide');
-        
-            figure.classList.add(imageClass);
-
-            imageOrLinkedImage = figure.children[0];
-
-            if (imageOrLinkedImage && 
-                !imageOrLinkedImage.classList.contains('figure__inner')) {
-
-                imageWrapper = document.createElement('div');
-                imageWrapper.classList.add('figure__inner');
-                imageWrapper.appendChild(imageOrLinkedImage);
-
-                figure.insertBefore(imageWrapper, figure.firstChild);
-            }
-
-            captionIcon = figure.querySelector('.figure__caption__icon');
-
-            if (caption && !captionIcon) {
-                caption.innerHTML = '<span data-icon="&#xe044;" class="figure__caption__icon" aria-hidden="true"></span>' + caption.innerHTML;
-            }
         }
     }
 
@@ -295,36 +363,6 @@ define([
         }
     }
 
-    function offline() {
-        var i,
-            dummyImage,
-            image,
-            images;
-
-        if (document.body.classList.contains('offline')) {
-            images = document.querySelectorAll('.article img');
-
-            for (i = 0; i < images.length; i++) {
-                image = images[i];
-                dummyImage = new Image();
-                dummyImage.onerror = hideImageOnError.bind(null, image);
-                dummyImage.src = image.getAttribute('src');
-            }
-        }
-    }
-
-    function hideImageOnError(image) {
-        var innerElem;
-
-        if (image.parentNode.classList.contains('element-image-inner')) {
-            image.style.display = 'none';
-        } else {
-            innerElem = document.createElement('div');
-            innerElem.classList.add('element-image-inner');
-            image.parentNode.replaceChild(innerElem, image);
-        }
-    }
-
     function setupOfflineSwitch() {
         // Called by native code
         window.offlineSwitch = offlineSwitch;
@@ -347,7 +385,7 @@ define([
         for (i = 0; i < followObjects.length; i++) {
             followObject = followObjects[i];
 
-            if (following === 1) {
+            if (parseInt(following, 10) === 1) {
                 followObject.classList.add('following');
             } else {
                 followObject.classList.remove('following');
@@ -368,7 +406,7 @@ define([
         for (i = 0; i < tellMeWhenLinks.length; i++) {
             tellMeWhenLink = tellMeWhenLinks[i];
 
-            if (added === 1) {
+            if (parseInt(added, 10) === 1) {
                 tellMeWhenLink.classList.add('added');
             } else {
                 tellMeWhenLink.classList.remove('added');
@@ -425,7 +463,7 @@ define([
             hideElem,
             tab,
             tabs,
-            tabContainer = document.querySelector('.tabs');
+            tabContainer = document.getElementsByClassName('tabs')[0];
 
         if (tabContainer) {
             tabs = tabContainer.getElementsByTagName('a');
@@ -510,7 +548,7 @@ define([
     }
 
     function setPieChartSize() {
-        var piechart = document.querySelector('.pie-chart');
+        var piechart = document.getElementsByClassName('pie-chart')[0];
 
         if (piechart && piechart.parentNode) {
             piechart.style.width = piechart.parentNode.offsetWidth + 'px';
@@ -543,7 +581,7 @@ define([
         if (series) {
             series.innerHTML = '<span>' + series.innerText.split(/\s+/).join(' </span><span>') + ' </span>';
 
-            spans = series.querySelectorAll('span');
+            spans = series.getElementsByTagName('span');
 
             for (i = spans.length - 1; i >=0; i--) {
                 lineWidth = lineWidth + spans[i].offsetWidth;
@@ -554,24 +592,6 @@ define([
                     }
                     break;
                 }
-            }
-        }
-    }
-
-    function formatThumbnailImages() {
-        var i,
-            isPortrait,
-            thumbnailImage,
-            thumbnailFigures = document.getElementsByClassName('element-image element--thumbnail');
-
-        for (i = 0; i < thumbnailFigures.length; i++) {
-            thumbnailImage = thumbnailFigures[i].getElementsByTagName('img')[0];
-            isPortrait = parseInt(thumbnailImage.getAttribute('height'), 10) > parseInt(thumbnailImage.getAttribute('width'), 10);
-
-            if (isPortrait) {
-                thumbnailFigures[i].classList.add('portrait-thumbnail');
-            } else {
-                thumbnailFigures[i].classList.add('landscape-thumbnail');
             }
         }
     }
@@ -628,10 +648,10 @@ define([
             }
         }
     }
-
+        
     return {
         init: init,
-        imageSizer: imageSizer,
+        formatImages: formatImages,
         loadEmbeds: loadEmbeds,
         loadInteractives: loadInteractives
     };

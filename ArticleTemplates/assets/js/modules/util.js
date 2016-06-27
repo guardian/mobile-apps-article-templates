@@ -73,7 +73,7 @@ define(function() {
             },
 
             getClosestParentWithTag: function (elem, tagName) {
-                while (elem && (elem.tagName !== tagName)) {
+                while (elem && (elem.tagName !== tagName.toUpperCase())) {
                     elem = elem.parentNode;
                 }
 

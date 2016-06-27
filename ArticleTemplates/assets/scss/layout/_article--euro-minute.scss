@@ -1,0 +1,405 @@
+$minute_bg: #005689;
+$minute_main: #fff;
+$minute_accent: #4BC6DF;
+$minute_main_2: #00436A;
+
+// styles images within blocks - $type accepts "summary" and "key-event" for full cover images, or "thumbnail"
+@mixin minute_block_images($type) {
+    margin: 0;
+
+    .figure__inner {
+        background: $minute_bg;
+    }
+
+    figcaption {
+        // text colour & background colour are different for thumbnails
+        @if ($type == thumbnail) {
+            background: $minute_accent;
+            color: $minute_main_2;
+        } @else {
+            color: rgba($minute_main, .75);
+        }
+
+        // on very small screens iphone4/s & iphone5/s make things more compact
+        @media all and (max-width: 320px) {
+            @if ($type == thumbnail) {
+                background: rgba($minute_accent, .6);
+            }
+        }
+    }
+}
+
+body.the-euro-minute {
+
+    &:not(.advert-config--tablet) {
+        background: $minute_bg;
+
+        .the-minute__header {
+            background: $minute_bg;
+        }
+
+        .the-minute__headline,
+        .the-minute__standfirst {
+            color: $minute_main;
+        }
+
+        .the-minute__standfirst {
+            .the-minute__date {
+                color: $minute_accent;
+            }
+        }
+
+        .the-minute__main-media {
+            figure {
+                .element__inner {
+                    background: $minute_bg;
+                }
+            }
+
+            figcaption {
+                color: rgba($minute_main, .75);
+            }
+        }
+
+        .the-minute__nav {
+            border-left: 1px dotted rgba($minute_main, .75);
+
+            &-button {
+                border: 1px solid rgba($minute_main, .5);
+
+                // This controls the double chevron part of the next page icon, for all blocks but the last one
+                &::after {
+                    color: $minute_main;
+                }
+            }
+        }
+
+        // Format block elements
+        .article--liveblog {
+            background: $minute_bg;
+
+            @include mq($from: col4) {
+                background: darken($minute_bg, 10%);
+            }
+
+            // Format the article body to take up just the viewport
+            .article__body--liveblog {
+                background: $minute_bg;
+            }
+
+            // A block represents a page of the briefing and is set to 100% of the viewport
+            .block {
+                background: $minute_bg;
+
+                @include mq($from: col4) {
+                    &::before {
+                        background: $minute_accent;
+                    }
+                }
+
+                // These styles are common to key event and summary blocks
+                .from-content-api {
+                    h2,
+                    p {
+                        color: $minute_main;
+                    }
+
+                    p {
+                        a {
+                            border-bottom: 1px solid $minute_main;
+                            color: $minute_main;
+                        }
+                    }
+
+                    h2 {
+                        .counter {
+                            color: $minute_accent;
+                        }
+                    }
+
+                    blockquote {
+                        &.quoted {
+                            > p {
+                                &::before {
+                                    color: $minute_accent;
+                                }
+                            }
+                        }
+                    }
+
+                    figure.element--thumbnail {
+                        @include minute_block_images(thumbnail);
+                    }
+
+
+                    figure.element-tweet {
+                        blockquote {
+                            color: $minute_main;
+
+                            p {
+                                &::before {
+                                    color: $minute_accent;
+                                }
+                            }
+                        }
+                    }
+
+                    aside.element-rich-link {
+                        a {
+                            border-bottom: 1px solid $minute_main;
+                            color: $minute_main !important;
+                        }
+                    }
+                }
+
+                &.is-thumbnail {
+                    .from-content-api {
+                        // thumbnail pages are handled differently for landscape tablets
+                        @include mq($from: col3) {
+                            figure.element--thumbnail {
+                                background: $minute_bg;
+                                
+                                &::before {
+                                    background: rgba($minute_main, .3);
+                                }
+
+                                figcaption {
+                                    color: rgba($minute_main, .7);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // These styles are for key event blocks only
+                &.block--live-key-event {
+                    .from-content-api {
+                        // This controls the red bar above the first child  & tweets which are targetted differently
+                        > :first-child,
+                        figure.element-tweet blockquote {
+                            &::before {
+                                background-color: $minute_accent;
+                            }
+
+                            figure:not(.element--thumbnail) {
+                                @include minute_block_images(key-event);
+                            }
+                        }
+                    }
+                }
+
+                &.block--live-summary {
+                    .from-content-api {
+                        figure:not(.element--thumbnail) {
+                            @include minute_block_images(summary);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.advert-config--tablet {
+        .article--liveblog {
+            @include mq($from: col4) {
+                background: darken($minute_bg, 10%);
+            }
+
+             .article__body--liveblog {
+                /* Minute Header */
+                .the-minute__header {
+                    // This controls the red bar above the second child
+                    > :first-child {
+                        &::before {
+                            background-color: $minute_accent;
+                        }
+                    }
+
+                    .the-minute__headline,
+                    .the-minute__standfirst {
+                        color: $minute_main;
+                    }
+
+                    .the-minute__standfirst {
+                        .the-minute__date {
+                            color: $minute_accent;
+                        }
+                    }
+
+                    .the-minute__main-media {
+                        background: $minute_bg;
+                    }
+                }
+
+                /* Minute Blocks */
+                .block {
+                    background: $minute_bg;
+
+                    /* Common cover image & video block styles */
+                    &.is-coverimage,
+                    &.is-video {
+                        .block__body {
+                            .from-content-api {
+                                h2,
+                                p {
+                                    color: $minute_main;
+                                }
+
+                                p {
+                                    a {
+                                        border-bottom: 1px solid $minute_main;
+                                        color: $minute_main;
+                                    }
+                                }
+                            }                     
+                        }
+                    }
+
+                    /* Cover image block styles */
+                    &.is-coverimage {
+                        .block__body {
+                            .from-content-api {
+                                figure {
+                                    > :first-child {
+                                        &::before {
+                                            background-color: $minute_accent;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        &.has-quote {
+                            .block__body {
+                                .quoted {
+                                    &::before {
+                                        color: $minute_accent;
+                                    }                                
+                                }
+                            }
+                        }
+                    }
+
+                    &.is-video {
+                        .block__body {
+                            .from-content-api {
+                                figure {
+                                    &::before {
+                                        background-color: $minute_accent;
+                                    }
+
+                                    .video-URL {
+                                        background: $minute_bg;
+                                    }
+
+                                    figcaption {
+                                        color: rgba(255, 255, 255, .9);
+                                    }                      
+                                }
+                            }
+                        }
+                    }
+
+                    /* Thumbnail image block styles */
+                    &.is-thumbnail {
+                        .block__body {
+                                .from-content-api {
+                                    h2,
+                                    p {
+                                        color: $minute_main;
+                                    }
+
+                                    p {
+                                        a {
+                                            border-bottom: 1px solid $minute_main;
+                                            color: $minute_main;
+                                        }
+                                    }
+
+                                    figure {
+                                        background: $minute_bg;
+
+                                        &::before {
+                                            background-color: $minute_accent;
+                                        }
+                                    }
+                                }
+                        }
+
+                        &.has-quote {
+                            .block__body {
+                                .quoted {
+                                   &::before {
+                                        color: $minute_accent;
+                                    }
+
+                                    p {
+                                        color: $minute_main;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    /* Text only block styles */
+                    &.is-textonly {
+                        .block__body {
+                            .from-content-api {
+                                &::before {
+                                    background-color: $minute_accent;
+                                }
+
+                                h2,
+                                p {
+                                    color: $minute_main;
+                                }
+
+                                p {
+                                    a {
+                                        border-bottom: 1px solid $minute_main;
+                                        color: $minute_main;
+                                    }
+                                }
+                            }
+                        }
+
+                        &.has-quote {
+                            .block__body {
+                                .from-content-api {
+                                   .quoted {
+                                        &::before {
+                                            color: $minute_accent;
+                                        }
+
+                                        p {
+                                            color: $minute_main;
+                                        }
+                                    }
+                                }  
+                            }
+                        }
+
+                        &.has-tweet {
+                            .block__body {
+                                .from-content-api {
+                                    .twitter-tweet {
+                                        .twitter-wrapper {
+                                            &::before {
+                                                color: $minute_accent;
+                                            }
+
+                                            span,
+                                            a {
+                                                color: $minute_main;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }                    
+                    }
+                }
+            }
+        }
+    }
+}
