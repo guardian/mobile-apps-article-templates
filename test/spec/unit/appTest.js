@@ -15,6 +15,8 @@ define([
             utilMock;
 
         beforeEach(function () {
+            sandbox = sinon.sandbox.create();
+            injector = new Squire();
             domReadyMock = sinon.spy();
             monitorMock = {
                 init: sinon.spy(),
@@ -23,8 +25,6 @@ define([
             adsMock = {
                 init: sinon.spy()
             };
-            sandbox = sinon.sandbox.create();
-            injector = new Squire();
             utilMock = {
                 init: sinon.spy()
             };
@@ -34,86 +34,39 @@ define([
             sandbox.restore();
         });
 
-        describe('app.init()', function () {
-            beforeEach(function () {
-                window.GU = {
-                    opts: {}
-                };
-            });
+        describe('loading css', function () {
+            var dummyHeadElem;
 
-            afterEach(function () {
-                expect(utilMock.init).to.have.been.calledOnce;
-
-                delete window.GU;
-            });
-
-            it('loadCss called if skipStyle falsey', function (done) {
-                injector
-                    .mock('domReady', domReadyMock)
-                    .mock('modules/monitor', monitorMock)
-                    .mock('modules/ads', adsMock)
-                    .mock('modules/util', utilMock)
-                    .require(['ArticleTemplates/assets/js/app'], function (app) {
-                        sandbox.stub(app, 'loadCss');
-
-                        app.init();
-
-                        expect(app.loadCss).to.have.been.calledOnce;
-                        expect(domReadyMock).to.have.been.calledOnce;
-
-                        done();
-                    });
-            });
-
-            it('loadCss not called if skipStyle true', function (done) {
-                injector
-                    .mock('domReady', domReadyMock)
-                    .mock('modules/monitor', monitorMock)
-                    .mock('modules/ads', adsMock)
-                    .mock('modules/util', utilMock)
-                    .require(['ArticleTemplates/assets/js/app'], function (app) {
-                        sandbox.stub(app, 'loadCss');
-
-                        GU.opts.skipStyle = true;
-
-                        app.init();
-
-                        expect(app.loadCss).not.to.have.been.called;
-                        expect(domReadyMock).to.have.been.calledOnce;
-
-                        done();
-                    });
-            }); 
-        });
-
-        describe('app.loadCss()', function () {
             beforeEach(function () {
                 window.GU = {
                     opts: {
                         templatesDirectory: 'xxx/'
                     }
                 };
+
+                dummyHeadElem = {
+                    appendChild: sinon.spy()
+                };
             });
 
             afterEach(function () {
                 delete window.GU;
             });
 
-            it('adds style link to document', function (done) {
+            it('adds stylesheet if skipStyle falsey', function (done) {
                 injector
                     .mock('domReady', domReadyMock)
                     .mock('modules/monitor', monitorMock)
                     .mock('modules/ads', adsMock)
                     .mock('modules/util', utilMock)
                     .require(['ArticleTemplates/assets/js/app'], function (app) {
-                        var dummyHeadElem = {
-                            appendChild: sinon.spy()
-                        };
-
                         sandbox.stub(window.document, 'createElement').returns({});
                         sandbox.stub(window.document, 'getElementsByTagName').returns([dummyHeadElem]);
 
-                        app.loadCss();
+                        app.init();
+
+                        expect(utilMock.init).to.have.been.calledOnce;
+                        expect(domReadyMock).to.have.been.calledOnce;
 
                         expect(window.document.createElement).to.have.been.calledOnce;
                         expect(window.document.createElement).to.have.been.calledWith('link');
@@ -124,39 +77,51 @@ define([
                             type: 'text/css',
                             rel: 'stylesheet',
                             href: 'xxx/assets/css/style-async.css'
-                        });    
+                        });  
 
                         done();
                     });
-            }); 
-        });
+            });
 
-        describe('app.initLayout()', function () {
-            it('calls monitor.setContext', function (done) {
+            it('does not add stylesheet if skipStyle true', function (done) {
                 injector
                     .mock('domReady', domReadyMock)
                     .mock('modules/monitor', monitorMock)
                     .mock('modules/ads', adsMock)
                     .mock('modules/util', utilMock)
                     .require(['ArticleTemplates/assets/js/app'], function (app) {
-                        var layoutObj = {
-                            init: function() {}
-                        };
+                        sandbox.stub(window.document, 'createElement');
+                        sandbox.stub(window.document, 'getElementsByTagName');
+                        
+                        GU.opts.skipStyle = true;
 
-                        app.initLayout('xxx', layoutObj);
+                        app.init();
 
-                        expect(monitorMock.setContext).to.have.been.calledOnce;
-                        expect(monitorMock.setContext).to.have.been.calledWith('xxx', layoutObj.init);
+                        expect(utilMock.init).to.have.been.calledOnce;
+                        expect(domReadyMock).to.have.been.calledOnce;
+
+                        expect(window.document.createElement).not.to.have.been.called; 
+                        expect(window.document.getElementsByTagName).not.to.have.been.calledOnce;
+                        expect(dummyHeadElem.appendChild).not.to.have.been.calledOnce;
                         
                         done();
                     });
-            }); 
+            });
         });
 
-        describe('app.onDomReady()', function () {
-            var requireTemp;
+        describe('initialising layout', function () {
+            var dummyModule,
+                requireTemp;
 
             beforeEach(function () {
+                domReadyMock = function(next) {
+                    next();
+                };
+
+                dummyModule = {
+                    init: function(){}
+                };
+
                 requireTemp = require;
 
                 window.GU = {
@@ -183,141 +148,155 @@ define([
                 delete window.GU;
             });
 
-            it('init article if GU.opts.contentType is article', function (done) {
+            it('initialises article if GU.opts.contentType is article', function (done) {
                 injector
                     .mock('domReady', domReadyMock)
                     .mock('modules/monitor', monitorMock)
                     .mock('modules/ads', adsMock)
                     .mock('modules/util', utilMock)
                     .require(['ArticleTemplates/assets/js/app'], function (app) {
-                        require = sinon.stub();
+                        require = function(module, next) {
+                            next(dummyModule);
+                        };
 
                         GU.opts.contentType = 'article';
 
-                        app.onDomReady();
+                        app.init();
 
-                        expect(require).to.have.been.calledOnce;
-                        expect(require).to.have.been.calledWith(['article']);                        
+                        expect(monitorMock.setContext).to.have.been.calledOnce;
+                        expect(monitorMock.setContext).to.have.been.calledWith('article', dummyModule.init);
 
                         done();
                     });
             });
 
-            it('init liveblog if GU.opts.contentType is liveblog', function (done) {
+            it('initialises liveblog if GU.opts.contentType is liveblog', function (done) {
                 injector
                     .mock('domReady', domReadyMock)
                     .mock('modules/monitor', monitorMock)
                     .mock('modules/ads', adsMock)
                     .mock('modules/util', utilMock)
                     .require(['ArticleTemplates/assets/js/app'], function (app) {
-                        require = sinon.stub();
+                        require = function(module, next) {
+                            next(dummyModule);
+                        };
 
                         GU.opts.contentType = 'liveblog';
 
-                        app.onDomReady();
+                        app.init();
 
-                        expect(require).to.have.been.calledOnce;
-                        expect(require).to.have.been.calledWith(['liveblog']);                        
+                        expect(monitorMock.setContext).to.have.been.calledOnce;
+                        expect(monitorMock.setContext).to.have.been.calledWith('liveblog', dummyModule.init);
 
                         done();
                     });
             });
 
-            it('init audio if GU.opts.contentType is audio', function (done) {
+            it('initialises audio if GU.opts.contentType is audio', function (done) {
                 injector
                     .mock('domReady', domReadyMock)
                     .mock('modules/monitor', monitorMock)
                     .mock('modules/ads', adsMock)
                     .mock('modules/util', utilMock)
                     .require(['ArticleTemplates/assets/js/app'], function (app) {
-                        require = sinon.stub();
+                        require = function(module, next) {
+                            next(dummyModule);
+                        };
 
                         GU.opts.contentType = 'audio';
 
-                        app.onDomReady();
+                        app.init();
 
-                        expect(require).to.have.been.calledOnce;
-                        expect(require).to.have.been.calledWith(['audio']);                        
+                        expect(monitorMock.setContext).to.have.been.calledOnce;
+                        expect(monitorMock.setContext).to.have.been.calledWith('audio', dummyModule.init);
 
                         done();
                     });
             });
 
-            it('init gallery if GU.opts.contentType is gallery', function (done) {
+            it('initialises gallery if GU.opts.contentType is gallery', function (done) {
                 injector
                     .mock('domReady', domReadyMock)
                     .mock('modules/monitor', monitorMock)
                     .mock('modules/ads', adsMock)
                     .mock('modules/util', utilMock)
                     .require(['ArticleTemplates/assets/js/app'], function (app) {
-                        require = sinon.stub();
+                        require = function(module, next) {
+                            next(dummyModule);
+                        };
 
                         GU.opts.contentType = 'gallery';
 
-                        app.onDomReady();
+                        app.init();
 
-                        expect(require).to.have.been.calledOnce;
-                        expect(require).to.have.been.calledWith(['gallery']);                        
+                        expect(monitorMock.setContext).to.have.been.calledOnce;
+                        expect(monitorMock.setContext).to.have.been.calledWith('gallery', dummyModule.init);
 
                         done();
                     });
             });
 
-            it('init football if GU.opts.contentType is football', function (done) {
+            it('initialises football if GU.opts.contentType is football', function (done) {
                 injector
                     .mock('domReady', domReadyMock)
                     .mock('modules/monitor', monitorMock)
                     .mock('modules/ads', adsMock)
                     .mock('modules/util', utilMock)
                     .require(['ArticleTemplates/assets/js/app'], function (app) {
-                        require = sinon.stub();
+                        require = function(module, next) {
+                            next(dummyModule);
+                        };
 
                         GU.opts.contentType = 'football';
 
-                        app.onDomReady();
+                        app.init();
 
-                        expect(require).to.have.been.calledOnce;
-                        expect(require).to.have.been.calledWith(['football']);                        
+                        expect(monitorMock.setContext).to.have.been.calledOnce;
+                        expect(monitorMock.setContext).to.have.been.calledWith('football', dummyModule.init);
 
                         done();
                     });
             });
 
-            it('init cricket if GU.opts.contentType is cricket', function (done) {
+            it('initialises cricket if GU.opts.contentType is cricket', function (done) {
                 injector
                     .mock('domReady', domReadyMock)
                     .mock('modules/monitor', monitorMock)
                     .mock('modules/ads', adsMock)
                     .mock('modules/util', utilMock)
                     .require(['ArticleTemplates/assets/js/app'], function (app) {
-                        require = sinon.stub();
+                        require = function(module, next) {
+                            next(dummyModule);
+                        };
 
                         GU.opts.contentType = 'cricket';
 
-                        app.onDomReady();
+                        app.init();
 
-                        expect(require).to.have.been.calledOnce;
-                        expect(require).to.have.been.calledWith(['cricket']);                        
+                        expect(monitorMock.setContext).to.have.been.calledOnce;
+                        expect(monitorMock.setContext).to.have.been.calledWith('cricket', dummyModule.init);
 
                         done();
                     });
             });
 
-            it('init common if GU.opts.contentType is interactive', function (done) {
+            it('initialises common if GU.opts.contentType is interactive', function (done) {
                 injector
                     .mock('domReady', domReadyMock)
                     .mock('modules/monitor', monitorMock)
                     .mock('modules/ads', adsMock)
                     .mock('modules/util', utilMock)
                     .require(['ArticleTemplates/assets/js/app'], function (app) {
-                        require = sinon.stub();
+                        require = function(module, next) {
+                            next(dummyModule);
+                        };
 
                         GU.opts.contentType = 'interactive';
 
-                        app.onDomReady();
+                        app.init();
 
-                        expect(require).to.have.been.calledOnce;
-                        expect(require).to.have.been.calledWith(['bootstraps/common']);
+                        expect(monitorMock.setContext).to.have.been.calledOnce;
+                        expect(monitorMock.setContext).to.have.been.calledWith('common', dummyModule.init);
 
                         done();
                     });

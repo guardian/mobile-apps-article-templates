@@ -13,222 +13,222 @@ define([
 ) {
     'use strict';
 
-    var module = {
-        init: function () {
-            twitter.init();
-            twitter.enhanceTweets();
-            witness.duplicate();
-            module.insertOutbrain();
-            module.loadQuizzes();
-            module.formatImmersive();
-            module.richLinkTracking();
-            module.loadMembershipCreative();
-        },
+    function init() {
+        twitter.init();
+        twitter.enhanceTweets();
+        witness.duplicate();
+        insertOutbrain();
+        loadQuizzes();
+        formatImmersive();
+        richLinkTracking();
+        loadMembershipCreative();
+    }
 
-        insertOutbrain: function () {
-            window.articleOutbrainInserter = module.loadOutbrain;
-            window.applyNativeFunctionCall('articleOutbrainInserter');
-        },
+    function insertOutbrain() {
+        window.articleOutbrainInserter = loadOutbrain;
+        window.applyNativeFunctionCall('articleOutbrainInserter');
+    }
 
-        loadOutbrain: function () {
-            outbrain.load();
-        },
+    function loadOutbrain() {
+        outbrain.load();
+    }
 
-        loadQuizzes: function () {
-            quiz.init();
-        },
+    function loadQuizzes() {
+        quiz.init();
+    }
 
-        formatImmersive: function () {
-            var immersives = document.getElementsByClassName('immersive');
+    function formatImmersive() {
+        var immersives = document.getElementsByClassName('immersive');
 
-            if (immersives.length) {
-                // Override tone to feature for all immersive pages
-                document.body.className = document.body.className.replace(/(tone--).+?\s/g, 'tone--feature1 ');
+        if (immersives.length) {
+            // Override tone to feature for all immersive pages
+            document.body.className = document.body.className.replace(/(tone--).+?\s/g, 'tone--feature1 ');
 
-                module.adjustHeaderImageHeight();
+            adjustHeaderImageHeight();
 
-                // we actually need for the embed to be sent through with prefixed & unprefixed styles
-                if (document.body.classList.contains('windows')) {
-                    module.formatImmersiveForWindows();
-                }
-
-                // find all the section seperators & add classes
-                module.addClassesToSectionSeparators();
-
-                // for each element--immersive add extra classes depending on siblings
-                module.addClassesToElementImmersives();
-
-                // store all pullquotes top offset for later
-                module.movePullQuotes();
-
-                // attach event handlers
-                module.attachImmersiveEventHandlers();
-            }
-        },
-
-        formatImmersiveForWindows: function () {
-            var newSrc,
-                iframe = document.querySelector('.article__header-bg .element > iframe');
-
-            if (iframe) {
-                newSrc = iframe[0].srcdoc
-                    .replace('transform: translate(-50%, -50%);', '-webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);')
-                    .replace(/-webkit-animation/g, 'animation')
-                    .replace(/animation/g, '-webkit-animation')
-                    .replace(/-webkit-keyframes/g, 'keyframes')
-                    .replace(/@keyframes/g, '@-webkit-keyframes');
-                iframe.srcdoc = newSrc;
-            }
-        },
-
-        addClassesToSectionSeparators: function () {
-            var i,
-                header,
-                headers = document.querySelectorAll('.article h2');
-
-            for (i = 0; i < headers.length; i++) {
-                header = headers[i];
-
-                if (header.innerHTML.trim() === '* * *') {
-                    header.innerHTML = '';
-                    header.classList.add('section__rule');
-                    if (header.nextElementSibling) {
-                        header.nextElementSibling.classList.add('has__dropcap');
-                    }
-                }
-            }
-        },
-
-        addClassesToElementImmersives: function () {
-            var i,
-                elementImmersive,
-                elementImmersives = document.querySelectorAll('figure.element--immersive');
-
-            for (i = 0; i < elementImmersives.length; i++) {
-                elementImmersive = elementImmersives[i];
-                if (elementImmersive.nextElementSibling &&
-                    elementImmersive.nextElementSibling.classList.contains('element-pullquote')) {
-                    elementImmersive.nextElementSibling.classList.add('quote--image');
-                    elementImmersive.classList.add('quote--overlay');
-                    elementImmersive.dataset.thing = '';
-                }
-
-                if (elementImmersive.nextElementSibling &&
-                    elementImmersive.nextElementSibling.tagName === 'H2') {
-                    elementImmersive.nextElementSibling.classList.add('title--image');
-                    elementImmersive.classList.add('title--overlay');
-                    if (elementImmersive.nextElementSibling.nextElementSibling) {
-                        elementImmersive.nextElementSibling.nextElementSibling.classList.add('has__dropcap');
-                    }
-                }
-            }
-        },
-
-        movePullQuotes: function () {
-            var i,
-                pullQuote,
-                pullQuotes = document.getElementsByClassName('element-pullquote');
-
-            for (i = 0; i < pullQuotes.length; i++) {
-                pullQuote = pullQuotes[i];
-                pullQuote.dataset.offset = GU.util.getElementOffset(pullQuote).top;
-            }
-        },
-
-        attachImmersiveEventHandlers: function () {
-            var i,
-                quoteOverlay,
-                quoteOverlays = document.getElementsByClassName('quote--overlay');
-                
-            for (i = 0; i < quoteOverlays.length; i++) {
-                quoteOverlay = quoteOverlays[i];
-                quoteOverlay.addEventListener('click', module.onQuoteOverlayClick.bind(null, quoteOverlay));
+            // we actually need for the embed to be sent through with prefixed & unprefixed styles
+            if (document.body.classList.contains('windows')) {
+                formatImmersiveForWindows();
             }
 
-            window.addEventListener('scroll', GU.util.debounce(module.onImmersiveScroll, 10));
-            window.addEventListener('resize', GU.util.debounce(module.onResize, 100));
-        },
+            // find all the section seperators & add classes
+            addClassesToSectionSeparators();
 
-        onQuoteOverlayClick: function (quoteOverlay, evt) {
-            var figcaption;
+            // for each element--immersive add extra classes depending on siblings
+            addClassesToElementImmersives();
 
-            evt.preventDefault();
+            // store all pullquotes top offset for later
+            movePullQuotes();
 
-            figcaption = quoteOverlay.getElementsByTagName('figcaption')[0];
-
-            if (figcaption) {
-                if (figcaption.classList.contains('display')) {
-                    figcaption.classList.remove('display');
-                } else {
-                    figcaption.classList.add('display');
-                }
-            }
-        },
-
-        onImmersiveScroll: function () {
-            var i,
-                dataOffset,
-                pullQuote,
-                pullQuotes = document.getElementsByClassName('element-pullquote'),
-                viewPortHeight = document.documentElement.clientHeight,
-                pageOffset = viewPortHeight * 0.75;
-
-            for (i = 0; i < pullQuotes.length; i++) {
-                pullQuote = pullQuotes[i];
-                dataOffset = pullQuote.dataset.offset;
-
-                if (window.scrollY >= (dataOffset - pageOffset)) {
-                    pullQuote.classList.add('animated');
-                    pullQuote.classList.add('fadeInUp');
-                }
-            }
-        },
-
-        onResize: function () {
-            module.adjustHeaderImageHeight();
-        },
-
-        adjustHeaderImageHeight: function () {
-            var viewPortHeight,
-                bgHeight,
-                headerImage;
-
-            viewPortHeight = document.documentElement.clientHeight;
-            bgHeight = (viewPortHeight - document.body.style.marginTop.replace('px', '')) + 'px';
-            headerImage = document.querySelector('.article__header-bg, .article__header-bg .element > iframe');
-
-            if (headerImage) {
-                headerImage.style.height = bgHeight;
-            }
-        },
-
-        richLinkTracking: function () {
-            var i,
-                j,
-                href,
-                link,
-                links,
-                richLink,
-                richLinks = document.getElementsByClassName('element-rich-link');
-
-            for (i = 0; i < richLinks.length; i++) {
-                richLink = richLinks[i];
-                links = richLink.getElementsByTagName('a');
-
-                for (j = 0; j < links.length; j++) {
-                    link = links[j];
-                    href = link.getAttribute('href');
-                    if (href !== '') {
-                        link.setAttribute('href', href + '?ArticleReferrer=RichLink');
-                    }
-                }
-            }
-        },
-
-        loadMembershipCreative: function () {
-            membership.init();
+            // attach event handlers
+            attachImmersiveEventHandlers();
         }
-    };
+    }
 
-    return module;
+    function formatImmersiveForWindows() {
+        var newSrc,
+            iframe = document.querySelector('.article__header-bg .element > iframe');
+
+        if (iframe) {
+            newSrc = iframe[0].srcdoc
+                .replace('transform: translate(-50%, -50%);', '-webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);')
+                .replace(/-webkit-animation/g, 'animation')
+                .replace(/animation/g, '-webkit-animation')
+                .replace(/-webkit-keyframes/g, 'keyframes')
+                .replace(/@keyframes/g, '@-webkit-keyframes');
+            iframe.srcdoc = newSrc;
+        }
+    }
+
+    function addClassesToSectionSeparators() {
+        var i,
+            header,
+            headers = document.querySelectorAll('.article h2');
+
+        for (i = 0; i < headers.length; i++) {
+            header = headers[i];
+
+            if (header.innerHTML.trim() === '* * *') {
+                header.innerHTML = '';
+                header.classList.add('section__rule');
+                if (header.nextElementSibling) {
+                    header.nextElementSibling.classList.add('has__dropcap');
+                }
+            }
+        }
+    }
+
+    function addClassesToElementImmersives() {
+        var i,
+            elementImmersive,
+            elementImmersives = document.querySelectorAll('figure.element--immersive');
+
+        for (i = 0; i < elementImmersives.length; i++) {
+            elementImmersive = elementImmersives[i];
+            if (elementImmersive.nextElementSibling &&
+                elementImmersive.nextElementSibling.classList.contains('element-pullquote')) {
+                elementImmersive.nextElementSibling.classList.add('quote--image');
+                elementImmersive.classList.add('quote--overlay');
+                elementImmersive.dataset.thing = '';
+            }
+
+            if (elementImmersive.nextElementSibling &&
+                elementImmersive.nextElementSibling.tagName === 'H2') {
+                elementImmersive.nextElementSibling.classList.add('title--image');
+                elementImmersive.classList.add('title--overlay');
+                if (elementImmersive.nextElementSibling.nextElementSibling) {
+                    elementImmersive.nextElementSibling.nextElementSibling.classList.add('has__dropcap');
+                }
+            }
+        }
+    }
+
+    function movePullQuotes() {
+        var i,
+            pullQuote,
+            pullQuotes = document.getElementsByClassName('element-pullquote');
+
+        for (i = 0; i < pullQuotes.length; i++) {
+            pullQuote = pullQuotes[i];
+            pullQuote.dataset.offset = GU.util.getElementOffset(pullQuote).top;
+        }
+    }
+
+    function attachImmersiveEventHandlers() {
+        var i,
+            quoteOverlay,
+            quoteOverlays = document.getElementsByClassName('quote--overlay');
+            
+        for (i = 0; i < quoteOverlays.length; i++) {
+            quoteOverlay = quoteOverlays[i];
+            quoteOverlay.addEventListener('click', onQuoteOverlayClick.bind(null, quoteOverlay));
+        }
+
+        window.addEventListener('scroll', GU.util.debounce(onImmersiveScroll, 10));
+        window.addEventListener('resize', GU.util.debounce(onResize, 100));
+    }
+
+    function onQuoteOverlayClick(quoteOverlay, evt) {
+        var figcaption;
+
+        evt.preventDefault();
+
+        figcaption = quoteOverlay.getElementsByTagName('figcaption')[0];
+
+        if (figcaption) {
+            if (figcaption.classList.contains('display')) {
+                figcaption.classList.remove('display');
+            } else {
+                figcaption.classList.add('display');
+            }
+        }
+    }
+
+    function onImmersiveScroll() {
+        var i,
+            dataOffset,
+            pullQuote,
+            pullQuotes = document.getElementsByClassName('element-pullquote'),
+            viewPortHeight = document.documentElement.clientHeight,
+            pageOffset = viewPortHeight * 0.75;
+
+        for (i = 0; i < pullQuotes.length; i++) {
+            pullQuote = pullQuotes[i];
+            dataOffset = pullQuote.dataset.offset;
+
+            if (window.scrollY >= (dataOffset - pageOffset)) {
+                pullQuote.classList.add('animated');
+                pullQuote.classList.add('fadeInUp');
+            }
+        }
+    }
+
+    function onResize() {
+        adjustHeaderImageHeight();
+    }
+
+    function adjustHeaderImageHeight() {
+        var viewPortHeight,
+            bgHeight,
+            headerImage;
+
+        viewPortHeight = document.documentElement.clientHeight;
+        bgHeight = (viewPortHeight - document.body.style.marginTop.replace('px', '')) + 'px';
+        headerImage = document.querySelector('.article__header-bg, .article__header-bg .element > iframe');
+
+        if (headerImage) {
+            headerImage.style.height = bgHeight;
+        }
+    }
+
+    function richLinkTracking() {
+        var i,
+            j,
+            href,
+            link,
+            links,
+            richLink,
+            richLinks = document.getElementsByClassName('element-rich-link');
+
+        for (i = 0; i < richLinks.length; i++) {
+            richLink = richLinks[i];
+            links = richLink.getElementsByTagName('a');
+
+            for (j = 0; j < links.length; j++) {
+                link = links[j];
+                href = link.getAttribute('href');
+                if (href !== '') {
+                    link.setAttribute('href', href + '?ArticleReferrer=RichLink');
+                }
+            }
+        }
+    }
+
+    function loadMembershipCreative() {
+        membership.init();
+    }
+    
+    return {
+        init: init
+    };
 });
