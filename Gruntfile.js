@@ -191,6 +191,7 @@ module.exports = function(grunt) {
                         'ArticleTemplates/assets/js/*.js',
                         'ArticleTemplates/assets/js/bootstraps/article.js',
                         'ArticleTemplates/assets/js/bootstraps/common.js',
+                        'ArticleTemplates/assets/js/modules/relativeDates.js',
                         'test/spec/unit/**/*.js'
                     ]
                 }
