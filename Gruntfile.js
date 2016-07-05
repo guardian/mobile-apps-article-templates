@@ -141,6 +141,13 @@ module.exports = function(grunt) {
         //         }
         //     }
         // },
+        hologram: {
+            generate: {
+                options: {
+                    config: 'hologram.yml'
+                }
+            }
+        },
         // jshint
         jshint: {
             options: {
