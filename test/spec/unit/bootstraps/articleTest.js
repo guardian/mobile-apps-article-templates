@@ -42,7 +42,7 @@ define([
             delete window.applyNativeFunctionCall;
         });
 
-        describe('initialise layout', function () {
+        describe('init()', function () {
             it('initialise twitter and witness modules', function (done) {
                injector
                     .mock('modules/twitter', twitterMock)

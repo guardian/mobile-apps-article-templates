@@ -141,6 +141,13 @@ module.exports = function(grunt) {
         //         }
         //     }
         // },
+        hologram: {
+            generate: {
+                options: {
+                    config: 'hologram.yml'
+                }
+            }
+        },
         // jshint
         jshint: {
             options: {
@@ -338,8 +345,6 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build', ['buildJS', 'buildCSS']);
 
-    grunt.registerTask('default', 'watch');
-
     grunt.registerTask('deploy', ['build','shell:ziptemplates', 'shell:deployandroid']);
     
     grunt.registerTask('apk', ['build', 'rsync', 'shell:android']);
@@ -347,6 +352,6 @@ module.exports = function(grunt) {
     grunt.registerTask('ipa', ['build', 'rsync', 'shell:ios']);
     
     grunt.registerTask('installer', ['build', 'rsync', 'shell:ios', 'shell:android']);
-    
-    grunt.registerTask('default', 'develop');
+
+    grunt.registerTask('default', 'watch');
 };

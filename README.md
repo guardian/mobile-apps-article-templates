@@ -31,13 +31,13 @@ Article templates used within the Guardian’s next-generation iOS and Android a
 
 ## Grunt tasks
 Grunt will provide the following services:
+
 * `grunt rsync` it copies the folder `ArticleTemplates` to the iOs and Android project as specified on `base.ios` and `base.html`.
 * `grunt sass` it generated the CSS files from SASS.
 * `grunt scsslint` it launches the SASS syntax checker against our codebase.
-* `grunt hologram` it generates/updates the visual styleguide. To see the guide `grunt express watch` and then point your browser to [localhost:3000](http://localhost:3000).
 * `grunt jshint` it performs a syntax checking on the current js codebase.
-* `grunt mocha:dev` it runs the tests on PhantomJS. The tests can be also run by loading directly the [runner.html](http://localhost:3000/root/test/unit/runner.html) page in a web browser.
-* `grunt mocha:jenkins` it runs the tests on PhantomJS using the XML export.
+* `grunt karma` it runs the unit test pack from the test/spec/unit/ directory
+* `grunt hologram` it generates/updates the visual styleguide. To see the guide `grunt express watch` and then point your browser to [localhost:3000](http://localhost:3000).
 * `grunt shell:android --card=1234` it generates a `android-news-app-debug.apk` file using the current project files. The `card` parameter is used to specificy the jira card number, so if the ticket is `AND-1234` card is equal to `1234`. This command only works if the Android SDK is installed and `adb` is in `PATH`.
 * `grunt shell:ios` it generates a `guardian-debug.ipa` file using the current project files. This command only works if XCode is installed and `ios.sign` and `ios.provisioning` have been filled.
 * `grunt shell:timeline --fixture=filename --times=20` it launches a telemetry session on file `filename` repeated `times` times. See the `Experimental performance measurement` section for more information.
@@ -45,13 +45,14 @@ Grunt will provide the following services:
 * `grunt shell:wraith` it launches a wraith session for visual regression testing. Results can be found pointing the browser to [localhost:3000](localhost:3000/root/test/visual/shots/gallery.html).
 
 These services are also available packed into recipes
-* `grunt build --sentry` concatenate and minify javascript files, check javascript syntax, check scss syntax, generate css files. Use the `--sentry` flag if you want the resulting files to include the [websentry](https://getsentry.com/welcome/) integration. It uses the value of `sentry.dsn`.
+* `grunt build --sentry` buildJS and buildCSS called. Use the `--sentry` flag if you want the resulting files to include the [websentry](https://getsentry.com/welcome/) integration. It uses the value of `sentry.dsn`.
+* `grunt buildJS` concatenate and minify javascript files, check javascript syntax, and start karma unit test runner.
+* `grunt buildCSS` run scsslint, compile SCSS into CSS and minify CSS.
 * `grunt apk --card=1234` it launches `build` then `rsync` and then `shell:android` to make sure that the resulting build contains the current files from the project and not some stale files.  
 * `grunt ipa` it launches `build` then `rsync` and then `shell:ios`.
 * `grunt installer --card=1234` it launches `apk` and `ipa` in sequence.
-* `grunt test` it launches `build` and then all the test using `mocha`.
 
-_By simply running `grunt` (without any argument) the system runs the server, then it keeps watching for changes reacting with the appropriate tasks._
+_By simply running `grunt` (without any argument) the system keeps watching for changes reacting with the appropriate tasks.
 
 ## Experimental performance measurement
 ![](https://raw.githubusercontent.com/guardian/mobile-apps-article-templates/master/Performance/_cover.png)
