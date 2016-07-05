@@ -37,6 +37,7 @@ Grunt will provide the following services:
 * `grunt scsslint` it launches the SASS syntax checker against our codebase.
 * `grunt jshint` it performs a syntax checking on the current js codebase.
 * `grunt karma` it runs the unit test pack from the test/spec/unit/ directory
+* `grunt hologram` it generates/updates the visual styleguide. To see the guide `grunt express watch` and then point your browser to [localhost:3000](http://localhost:3000).
 * `grunt shell:android --card=1234` it generates a `android-news-app-debug.apk` file using the current project files. The `card` parameter is used to specificy the jira card number, so if the ticket is `AND-1234` card is equal to `1234`. This command only works if the Android SDK is installed and `adb` is in `PATH`.
 * `grunt shell:ios` it generates a `guardian-debug.ipa` file using the current project files. This command only works if XCode is installed and `ios.sign` and `ios.provisioning` have been filled.
 * `grunt shell:timeline --fixture=filename --times=20` it launches a telemetry session on file `filename` repeated `times` times. See the `Experimental performance measurement` section for more information.
