@@ -89,7 +89,7 @@ define([
             if (figure.classList.contains('element-image')) {
                 formatElementImageFigure(figure);
 
-                if (figure.classList.contains('element-image')) {
+                if (figure.classList.contains('element--thumbnail')) {
                     formatThumbnailImageFigure(figure);       
                 }
             }
