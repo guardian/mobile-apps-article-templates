@@ -46,12 +46,14 @@ define([
                                 counter++;
                             }
 
-                            // Move mpu ads
-                            window.updateLiveblogAdPlaceholders(true);
-
                             modules.common.formatImages(images);
                             modules.common.loadEmbeds();
                             modules.common.loadInteractives();
+
+                            // Move mpu ads
+                            if (window.updateLiveblogAdPlaceholders) {
+                                window.updateLiveblogAdPlaceholders(true);
+                            }
 
                             window.liveblogTime();
 
