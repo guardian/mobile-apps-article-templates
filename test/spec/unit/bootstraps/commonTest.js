@@ -10,20 +10,21 @@ define([
     function buildFigElem (opts) {
         var figElem = document.createElement('figure'),
             imgElem = document.createElement('img'),
-            figCaptionElem = document.createElement('figcaption');
+            figCaptionElem;
 
         figElem.classList.add('element-image');
-
-        if (opts.isThumbnail) {
-            figElem.classList.add('element--thumbnail');
-        }
 
         imgElem.setAttribute('src', 'xxx');
         imgElem.classList.add('gu-image');
         
         figElem.appendChild(imgElem);
         
+        if (opts.isThumbnail) {
+            figElem.classList.add('element--thumbnail');
+        }
+
         if (opts.hasCaption) {
+            figCaptionElem = document.createElement('figcaption');
             figCaptionElem.classList.add('element-image__caption');
             figElem.appendChild(figCaptionElem);
             figCaptionElem.innerText = opts.figCaption;
@@ -95,20 +96,26 @@ define([
 
         describe('formatImages(images)', function () {
             var articleElem,
-                opts;
-
+                opts,
+                dummyImage,
+                origImage;
+                
             beforeEach(function () {
+                dummyImage = {}
+                origImage = window.Image;
+                window.Image = sinon.stub().returns(dummyImage);
                 articleElem = document.createElement('div');
                 articleElem.classList.add('article');
                 document.body.appendChild(articleElem);
+                // default image is thumbnail with caption
                 opts = {
-                    figCaption: '',
                     isThumbnail: true,
                     hasCaption: true
                 };
             });
 
             afterEach(function () {
+                window.Image = origImage;
                 document.body.removeChild(articleElem);
             });
 
@@ -122,6 +129,8 @@ define([
                     .mock('modules/more-tags', moreTagsMock)
                     .mock('modules/sharing', sharingMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
+                        opts.figCaption = '';
+
                         var figElem = buildFigElem(opts);
 
                         articleElem.appendChild(figElem);
@@ -328,7 +337,7 @@ define([
                     });
             });
 
-            it('hide offline image if parentNode has class element-image-inner', function (done) {
+            it('hide unavailable image if parentNode has class element-image-inner', function (done) {
                 injector
                     .mock('fence', fenceMock)
                     .mock('fastClick', fastClickMock)
@@ -365,48 +374,123 @@ define([
                     });
             });
 
-            it('replace offline image with placeholder if parentNode does not have class element-image-inner', function (done) {
-                injector
-                    .mock('fence', fenceMock)
-                    .mock('fastClick', fastClickMock)
-                    .mock('smoothScroll', smoothScrollMock)
-                    .mock('modules/comments', commentsMock)
-                    .mock('modules/cards', cardsMock)
-                    .mock('modules/more-tags', moreTagsMock)
-                    .mock('modules/sharing', sharingMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
-                        var dummyImage = {},
-                            origImage = window.Image,
-                            figElem = buildFigElem(opts);
-                        
-                        window.Image = sinon.stub().returns(dummyImage);
+            describe('replace unavailable image with placeholder if parentNode does not have class element-image-inner', function () {
+                it('when image is portrait-thumbnail', function (done) {
+                    injector
+                        .mock('fence', fenceMock)
+                        .mock('fastClick', fastClickMock)
+                        .mock('smoothScroll', smoothScrollMock)
+                        .mock('modules/comments', commentsMock)
+                        .mock('modules/cards', cardsMock)
+                        .mock('modules/more-tags', moreTagsMock)
+                        .mock('modules/sharing', sharingMock)
+                        .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
+                            opts.isPortrait = true;
+                            opts.isThumbnail = true;
 
-                        GU.opts.isOffline = true;
+                            var figElem = buildFigElem(opts);
 
-                        articleElem.appendChild(figElem);
+                            articleElem.appendChild(figElem);
 
-                        sandbox.stub(window.GU.util, 'getElementOffset').returns({
-                            width: 304
+                            sandbox.stub(window.GU.util, 'getElementOffset').returns({
+                                width: 304
+                            });
+
+                            common.formatImages();
+
+                            expect(dummyImage.onerror).to.be.defined;
+                            expect(dummyImage.src).to.eql('xxx');
+
+                            dummyImage.onerror();
+
+                            expect(figElem.querySelectorAll('img').length).to.eql(0);
+                            
+                            var placeholder = figElem.querySelector('.element-image-inner');
+
+                            expect(placeholder).to.be.ok;
+                            expect(placeholder.style.height).to.eql('507px');
+ 
+                            done();
                         });
+                });
 
-                        common.formatImages();
+                it('when image is landscape-thumbnail', function (done) {
+                    injector
+                        .mock('fence', fenceMock)
+                        .mock('fastClick', fastClickMock)
+                        .mock('smoothScroll', smoothScrollMock)
+                        .mock('modules/comments', commentsMock)
+                        .mock('modules/cards', cardsMock)
+                        .mock('modules/more-tags', moreTagsMock)
+                        .mock('modules/sharing', sharingMock)
+                        .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
+                            opts.isPortrait = false;
+                            opts.isThumbnail = true;
 
-                        expect(dummyImage.onerror).to.be.defined;
-                        expect(dummyImage.src).to.eql('xxx');
+                            var figElem = buildFigElem(opts);
 
-                        dummyImage.onerror();
+                            articleElem.appendChild(figElem);
 
-                        expect(figElem.querySelectorAll('img').length).to.eql(0);
-                        
-                        var placeholder = figElem.querySelector('.element-image-inner');
+                            sandbox.stub(window.GU.util, 'getElementOffset').returns({
+                                width: 304
+                            });
 
-                        expect(placeholder).to.be.ok;
-                        expect(placeholder.style.height).to.eql('228px');
+                            common.formatImages();
 
-                        window.Image = origImage;
-                        
-                        done();
-                    });
+                            expect(dummyImage.onerror).to.be.defined;
+                            expect(dummyImage.src).to.eql('xxx');
+
+                            dummyImage.onerror();
+
+                            expect(figElem.querySelectorAll('img').length).to.eql(0);
+                            
+                            var placeholder = figElem.querySelector('.element-image-inner');
+
+                            expect(placeholder).to.be.ok;
+                            expect(placeholder.style.height).to.eql('182px');
+
+                            done();
+                        });
+                });
+
+                it('when image is figure-wide', function (done) {
+                    injector
+                        .mock('fence', fenceMock)
+                        .mock('fastClick', fastClickMock)
+                        .mock('smoothScroll', smoothScrollMock)
+                        .mock('modules/comments', commentsMock)
+                        .mock('modules/cards', cardsMock)
+                        .mock('modules/more-tags', moreTagsMock)
+                        .mock('modules/sharing', sharingMock)
+                        .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
+                            opts.isThumbnail = false;
+                            opts.isPortrait = false;
+
+                            var figElem = buildFigElem(opts);
+
+                            articleElem.appendChild(figElem);
+
+                            sandbox.stub(window.GU.util, 'getElementOffset').returns({
+                                width: 304
+                            });
+
+                            common.formatImages();
+
+                            expect(dummyImage.onerror).to.be.defined;
+                            expect(dummyImage.src).to.eql('xxx');
+
+                            dummyImage.onerror();
+
+                            expect(figElem.querySelectorAll('img').length).to.eql(0);
+                            
+                            var placeholder = figElem.querySelector('.element-image-inner');
+
+                            expect(placeholder).to.be.ok;
+                            expect(placeholder.style.height).to.eql('182px');
+
+                            done();
+                        });
+                });
             });
         });
     });

@@ -69,10 +69,7 @@ define([
         }
 
         formatFigures(figures);
-
-        if (GU.opts.isOffline) {
-            formatOfflineImages(images);
-        }
+        checkAvailabilityOfImages(images);
     }
 
     function formatFigures(figures) {
@@ -138,12 +135,13 @@ define([
         }
     }
 
-    function formatOfflineImages(images) {
+    function checkAvailabilityOfImages(images) {
         var i,
             dummyImage,
             image;
 
         for (i = 0; i < images.length; i++) {
+            // if image doesn't load replace with placeholder
             image = images[i];
             dummyImage = new Image();
             dummyImage.onerror = hideImageOnError.bind(null, image);
@@ -159,25 +157,40 @@ define([
             image.style.display = 'none';
         } else {
             figure = GU.util.getClosestParentWithTag(image, 'figure');
+            
             innerElem = document.createElement('div');
             innerElem.classList.add('element-image-inner');
-            if (figure && figure.classList.contains('element--thumbnail')) {
+
+            if (figure && 
+                (figure.classList.contains('element--thumbnail') || figure.classList.contains('figure-wide'))) {
                 innerElem.style.height = getThumbnailHeight(figure) + 'px';
             }
+            
             image.parentNode.replaceChild(innerElem, image);
+
+            window.addEventListener('resize', GU.util.debounce(resizeOfflinePlaceholder.bind(null, innerElem, figure), 100));
         }
     }
 
     function getThumbnailHeight(figure) {
-        var img = figure.querySelector('img.gu-image'),
-            imgWidth = img.getAttribute('width'),
-            imgHeight = img.getAttribute('height'),
+        var isPortraitThumbnail = figure.classList.contains('portrait-thumbnail'),
             figInner = figure.getElementsByClassName('figure__inner')[0],
             figInnerWidth = GU.util.getElementOffset(figInner).width,
-            scale = figInnerWidth / imgWidth,
-            newHeight = imgHeight * scale;
+            newHeight;
+
+            if (isPortraitThumbnail) {
+                // resize portrait thumbnail images to 3x5
+                newHeight = (figInnerWidth / 3) * 5;
+            }  else {
+                // resize landscape thumbnail and figure-wide images to 5x3
+                newHeight = (figInnerWidth / 5) * 3;
+            }
 
         return Math.round(newHeight);
+    }
+
+    function resizeOfflinePlaceholder(placeholder, figure) {
+        placeholder.style.height = getThumbnailHeight(figure) + 'px';
     }
 
     function figcaptionToggle() {
