@@ -15,8 +15,7 @@ define([
         figElem.classList.add('element-image');
 
         imgElem.setAttribute('src', 'xxx');
-        imgElem.classList.add('gu-image');
-        
+ 
         figElem.appendChild(imgElem);
         
         if (opts.isThumbnail) {
@@ -406,12 +405,8 @@ define([
                     .mock('modules/more-tags', moreTagsMock)
                     .mock('modules/sharing', sharingMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
-                        var dummyImage = {},
-                            origImage = window.Image,
-                            figElem = buildFigElem(opts);
+                        var figElem = buildFigElem(opts);
                         
-                        window.Image = sinon.stub().returns(dummyImage);
-
                         GU.opts.isOffline = true;
 
                         articleElem.appendChild(figElem);
@@ -427,8 +422,6 @@ define([
 
                         expect(figElem.querySelector('img').style.display).to.eql('none');
 
-                        window.Image = origImage;
-                        
                         done();
                     });
             });
@@ -444,6 +437,8 @@ define([
                     .mock('modules/sharing', sharingMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
                         var figElem = buildFigElem(opts);
+
+                        GU.opts.isOffline = true;
 
                         articleElem.appendChild(figElem);
 

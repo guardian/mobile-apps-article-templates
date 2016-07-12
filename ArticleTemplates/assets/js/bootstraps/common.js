@@ -69,7 +69,10 @@ define([
         }
 
         formatFigures(figures);
-        checkAvailabilityOfImages(images);
+
+        if (GU.opts.isOffline) {
+            checkAvailabilityOfImages(images);
+        }
     }
 
     function formatFigures(figures) {
@@ -146,7 +149,7 @@ define([
             image;
 
         for (i = 0; i < images.length; i++) {
-            // if image doesn't load replace with placeholder
+            // if image doesn't load replace with placeholder or hide
             image = images[i];
             dummyImage = new Image();
             dummyImage.onerror = hideImageOnError.bind(null, image);
@@ -169,7 +172,7 @@ define([
     }
 
     function getDesiredImageHeight(figure) {
-        var img = figure.querySelector('img.gu-image'),
+        var img = figure.querySelector('img'),
             imgWidth = img.getAttribute('width'),
             imgHeight = img.getAttribute('height'),
             figInner = figure.getElementsByClassName('figure__inner')[0],
