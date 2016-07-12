@@ -248,6 +248,36 @@ define([
                     });
             });
 
+            it('do not set image wrapper height if it is minute layout', function (done) {
+                injector
+                    .mock('fence', fenceMock)
+                    .mock('fastClick', fastClickMock)
+                    .mock('smoothScroll', smoothScrollMock)
+                    .mock('modules/comments', commentsMock)
+                    .mock('modules/cards', cardsMock)
+                    .mock('modules/more-tags', moreTagsMock)
+                    .mock('modules/sharing', sharingMock)
+                    .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
+                        GU.opts.isMinute = 'minute';
+
+                        opts.isThumbnail = false;
+                        opts.isFigureWide = true;
+
+                        var figElem = buildFigElem(opts);
+
+                        articleElem.appendChild(figElem);
+
+                        common.formatImages();
+
+                        var imageWrapper = figElem.querySelector('.figure__inner');
+
+                        expect(imageWrapper).to.be.ok;
+                        expect(imageWrapper.style.height).to.eql('');
+                        
+                        done();
+                    });
+            });
+
             it('adds icon to caption if not present', function (done) {
                 injector
                     .mock('fence', fenceMock)
@@ -454,7 +484,12 @@ define([
                         dummyImage.onerror();
 
                         expect(figElem.querySelectorAll('img').length).to.eql(0);
-                        expect(figElem.querySelector('.element-image-inner')).to.be.ok;
+
+                        var placeholder = figElem.querySelector('.element-image-inner');
+
+                        expect(placeholder).to.be.ok;
+                        expect(placeholder.getAttribute('height')).to.eql('75');
+                        expect(placeholder.getAttribute('width')).to.eql('100');
                         
                         done();
                     });

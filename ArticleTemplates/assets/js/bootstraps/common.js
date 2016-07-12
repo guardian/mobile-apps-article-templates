@@ -121,7 +121,8 @@ define([
 
             figure.insertBefore(imageWrapper, figure.firstChild);
 
-            if (isThumbnail || imageClass === 'figure-wide') {
+            // only set imageWrapper height to desired height of thumbnails/wide images on non-minute layouts
+            if (!GU.opts.isMinute && (isThumbnail || imageClass === 'figure-wide')) {
                 imageWrapper.style.height = getDesiredImageHeight(figure) + 'px';
                 window.addEventListener('resize', GU.util.debounce(resizeImageWrapper.bind(null, imageWrapper, figure), 100));
             }
@@ -167,14 +168,16 @@ define([
             figure = GU.util.getClosestParentWithTag(image, 'figure');
             innerElem = document.createElement('div');
             innerElem.classList.add('element-image-inner');
+            innerElem.setAttribute('height', image.getAttribute('height'));
+            innerElem.setAttribute('width', image.getAttribute('width'));
             image.parentNode.replaceChild(innerElem, image);
         }
     }
 
     function getDesiredImageHeight(figure) {
-        var img = figure.querySelector('img'),
-            imgWidth = img.getAttribute('width'),
-            imgHeight = img.getAttribute('height'),
+        var elem = figure.getElementsByTagName('img')[0] || figure.getElementsByClassName('element-image-inner')[0],
+            imgWidth = elem.getAttribute('width'),
+            imgHeight = elem.getAttribute('height'),
             figInner = figure.getElementsByClassName('figure__inner')[0],
             figInnerWidth = GU.util.getElementOffset(figInner).width,
             scale = figInnerWidth / imgWidth,
