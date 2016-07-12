@@ -83,10 +83,6 @@ define([
 
             if (figure.classList.contains('element-image')) {
                 formatElementImageFigure(figure);
-
-                if (figure.classList.contains('element--thumbnail')) {
-                    formatThumbnailImageFigure(figure);       
-                }
             }
         }
     }
@@ -109,6 +105,10 @@ define([
 
         figure.classList.add(imageClass);
 
+        if (isThumbnail) {
+            formatElementThumbnailFigure(figure);  
+        }
+
         if (imageOrLinkedImage && 
             !imageOrLinkedImage.classList.contains('figure__inner')) {
 
@@ -117,6 +117,11 @@ define([
             imageWrapper.appendChild(imageOrLinkedImage);
 
             figure.insertBefore(imageWrapper, figure.firstChild);
+
+            if (isThumbnail || imageClass === 'figure-wide') {
+                imageWrapper.style.height = getDesiredImageHeight(figure) + 'px';
+                window.addEventListener('resize', GU.util.debounce(resizeImageWrapper.bind(null, imageWrapper, figure), 100));
+            }
         }
 
         if (caption && !captionIcon) {
@@ -124,7 +129,7 @@ define([
         }
     }
 
-    function formatThumbnailImageFigure(figure) {
+    function formatElementThumbnailFigure(figure) {
         var thumbnailImage = figure.getElementsByTagName('img')[0],
             isPortrait = parseInt(thumbnailImage.getAttribute('height'), 10) > parseInt(thumbnailImage.getAttribute('width'), 10);
 
@@ -157,40 +162,26 @@ define([
             image.style.display = 'none';
         } else {
             figure = GU.util.getClosestParentWithTag(image, 'figure');
-            
             innerElem = document.createElement('div');
             innerElem.classList.add('element-image-inner');
-
-            if (figure && 
-                (figure.classList.contains('element--thumbnail') || figure.classList.contains('figure-wide'))) {
-                innerElem.style.height = getThumbnailHeight(figure) + 'px';
-            }
-            
             image.parentNode.replaceChild(innerElem, image);
-
-            window.addEventListener('resize', GU.util.debounce(resizeOfflinePlaceholder.bind(null, innerElem, figure), 100));
         }
     }
 
-    function getThumbnailHeight(figure) {
-        var isPortraitThumbnail = figure.classList.contains('portrait-thumbnail'),
+    function getDesiredImageHeight(figure) {
+        var img = figure.querySelector('img.gu-image'),
+            imgWidth = img.getAttribute('width'),
+            imgHeight = img.getAttribute('height'),
             figInner = figure.getElementsByClassName('figure__inner')[0],
             figInnerWidth = GU.util.getElementOffset(figInner).width,
-            newHeight;
-
-            if (isPortraitThumbnail) {
-                // resize portrait thumbnail images to 3x5
-                newHeight = (figInnerWidth / 3) * 5;
-            }  else {
-                // resize landscape thumbnail and figure-wide images to 5x3
-                newHeight = (figInnerWidth / 5) * 3;
-            }
+            scale = figInnerWidth / imgWidth,
+            newHeight = imgHeight * scale;
 
         return Math.round(newHeight);
     }
 
-    function resizeOfflinePlaceholder(placeholder, figure) {
-        placeholder.style.height = getThumbnailHeight(figure) + 'px';
+    function resizeImageWrapper(imageWrapper, figure) {
+        imageWrapper.style.height = getDesiredImageHeight(figure) + 'px';
     }
 
     function figcaptionToggle() {
