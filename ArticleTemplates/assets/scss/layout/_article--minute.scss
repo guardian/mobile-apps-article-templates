@@ -1542,3 +1542,30 @@ body.the-minute {
         }
     }
 }
+
+body.the-minute.offline {
+    &:not(.advert-config--tablet) {
+        .element-image-inner {
+            display: none;
+        }
+    }
+
+    &:not(.advert-config--mobile) {
+        .the-minute__main-media {
+            .element-image-inner {
+                display: none;
+            }
+        }
+
+        .is-video {
+            .element-image-inner {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                background: color(shade-4);
+            }
+        }
+    }
+}

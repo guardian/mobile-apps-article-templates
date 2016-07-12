@@ -168,13 +168,10 @@ define([
                 }
             },
 
-            moveFigcaption: function (figure) {
-                var figInner,
-                    figCaption = figure.getElementsByTagName("figcaption")[0];
+            moveFigcaption: function (figure, figInner) {
+                var figCaption = figure.getElementsByTagName("figcaption")[0];
 
                 if (figCaption && figCaption.parentNode === figure) {
-                    figInner = figure.getElementsByClassName("figure__inner")[0];
-
                     if (figInner) {
                         figInner.insertBefore(figCaption, figInner.firstChild);
                     }
@@ -184,6 +181,7 @@ define([
             adjustMinuteBlocks: function (blocks) {
                 var i,
                     figure,
+                    figInner,
                     isCoverImage,
                     tweet,
                     marginTop = 48;
@@ -193,8 +191,16 @@ define([
                         figure = blocks[i].getElementsByTagName('figure')[0];
 
                         if (figure) {
+                            figInner = figure.getElementsByClassName("figure__inner")[0];
+                            
+                            if (GU.opts.isOffline) {                        
+                                if (figInner) {
+                                    figInner.style.height = modules.common.getDesiredImageHeight(figure) + 'px';
+                                }
+                            }
+
                             if (blocks[i].classList.contains('is-coverimage')) {
-                                modules.moveFigcaption(figure);
+                                modules.moveFigcaption(figure, figInner);
                             }
                             
                             blocks[i].classList.remove("flex-block");

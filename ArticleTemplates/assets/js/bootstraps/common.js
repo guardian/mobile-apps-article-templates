@@ -661,6 +661,7 @@ define([
         init: init,
         formatImages: formatImages,
         loadEmbeds: loadEmbeds,
-        loadInteractives: loadInteractives
+        loadInteractives: loadInteractives,
+        getDesiredImageHeight: getDesiredImageHeight
     };
 });
