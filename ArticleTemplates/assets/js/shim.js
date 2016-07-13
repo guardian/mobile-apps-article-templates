@@ -25,7 +25,8 @@
         'getMpuPosCallback',
         'initMpuPoller',
         'videoPositioning',
-        'getArticleHeight'
+        'getArticleHeight',
+        'injectInlineArticleMembershipCreative'
     ];
 
     function init(opts) {
