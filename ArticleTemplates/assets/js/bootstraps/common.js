@@ -71,7 +71,7 @@ define([
         formatFigures(figures);
 
         if (GU.opts.isOffline) {
-            formatOfflineImages(images);
+            checkAvailabilityOfImages(images);
         }
     }
 
@@ -86,10 +86,6 @@ define([
 
             if (figure.classList.contains('element-image')) {
                 formatElementImageFigure(figure);
-
-                if (figure.classList.contains('element--thumbnail')) {
-                    formatThumbnailImageFigure(figure);       
-                }
             }
         }
     }
@@ -112,6 +108,10 @@ define([
 
         figure.classList.add(imageClass);
 
+        if (isThumbnail) {
+            formatElementThumbnailFigure(figure);  
+        }
+
         if (imageOrLinkedImage && 
             !imageOrLinkedImage.classList.contains('figure__inner')) {
 
@@ -120,6 +120,12 @@ define([
             imageWrapper.appendChild(imageOrLinkedImage);
 
             figure.insertBefore(imageWrapper, figure.firstChild);
+
+            // only set imageWrapper height to desired height of thumbnails/wide images on non-minute layouts
+            if (!GU.opts.isMinute && (isThumbnail || imageClass === 'figure-wide')) {
+                imageWrapper.style.height = getDesiredImageHeight(figure) + 'px';
+                window.addEventListener('resize', GU.util.debounce(resizeImageWrapper.bind(null, imageWrapper, figure), 100));
+            }
         }
 
         if (caption && !captionIcon) {
@@ -127,7 +133,7 @@ define([
         }
     }
 
-    function formatThumbnailImageFigure(figure) {
+    function formatElementThumbnailFigure(figure) {
         var thumbnailImage = figure.getElementsByTagName('img')[0],
             isPortrait = parseInt(thumbnailImage.getAttribute('height'), 10) > parseInt(thumbnailImage.getAttribute('width'), 10);
 
@@ -138,12 +144,13 @@ define([
         }
     }
 
-    function formatOfflineImages(images) {
+    function checkAvailabilityOfImages(images) {
         var i,
             dummyImage,
             image;
 
         for (i = 0; i < images.length; i++) {
+            // if image doesn't load replace with placeholder or hide
             image = images[i];
             dummyImage = new Image();
             dummyImage.onerror = hideImageOnError.bind(null, image);
@@ -161,23 +168,26 @@ define([
             figure = GU.util.getClosestParentWithTag(image, 'figure');
             innerElem = document.createElement('div');
             innerElem.classList.add('element-image-inner');
-            if (figure && figure.classList.contains('element--thumbnail')) {
-                innerElem.style.height = getThumbnailHeight(figure) + 'px';
-            }
+            innerElem.setAttribute('height', image.getAttribute('height'));
+            innerElem.setAttribute('width', image.getAttribute('width'));
             image.parentNode.replaceChild(innerElem, image);
         }
     }
 
-    function getThumbnailHeight(figure) {
-        var img = figure.querySelector('img.gu-image'),
-            imgWidth = img.getAttribute('width'),
-            imgHeight = img.getAttribute('height'),
+    function getDesiredImageHeight(figure) {
+        var elem = figure.getElementsByTagName('img')[0] || figure.getElementsByClassName('element-image-inner')[0],
+            imgWidth = elem.getAttribute('width'),
+            imgHeight = elem.getAttribute('height'),
             figInner = figure.getElementsByClassName('figure__inner')[0],
             figInnerWidth = GU.util.getElementOffset(figInner).width,
             scale = figInnerWidth / imgWidth,
             newHeight = imgHeight * scale;
 
         return Math.round(newHeight);
+    }
+
+    function resizeImageWrapper(imageWrapper, figure) {
+        imageWrapper.style.height = getDesiredImageHeight(figure) + 'px';
     }
 
     function figcaptionToggle() {
@@ -651,6 +661,7 @@ define([
         init: init,
         formatImages: formatImages,
         loadEmbeds: loadEmbeds,
-        loadInteractives: loadInteractives
+        loadInteractives: loadInteractives,
+        getDesiredImageHeight: getDesiredImageHeight
     };
 });

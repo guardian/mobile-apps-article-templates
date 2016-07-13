@@ -690,6 +690,11 @@ figure figcaption {
 .figure--thumbnail .element-image-inner,
 .figure--thumbnail-with-caption .element-image-inner,
 .figure-wide .element-image-inner {
+  height: 100%;
+  background: #dcdad5; }
+.figure--thumbnail .figure__inner,
+.figure--thumbnail-with-caption .figure__inner,
+.figure-wide .figure__inner {
   background: #dcdad5; }
 
 .figure--thumbnail {
@@ -2411,7 +2416,8 @@ Default styling no JavaScript enhancement:
   padding: 3px 0;
   font-weight: 500; }
 
-.element-rich-link, .element-membership {
+.element-rich-link,
+.element-membership {
   border-top: 1px dotted #bdbdbd;
   border-bottom: 1px dotted #bdbdbd;
   margin-bottom: 8px;
@@ -2420,16 +2426,20 @@ Default styling no JavaScript enhancement:
   width: 13.75rem;
   margin: 4px 20px 6px 0; }
   @media all and (min-width: 30em) {
-    .element-rich-link, .element-membership {
+    .element-rich-link,
+    .element-membership {
       width: 24.75rem;
       margin: 4px 20px 6px 0; } }
   @media all and (min-width: 54.38em) {
-    .element-rich-link, .element-membership {
+    .element-rich-link,
+    .element-membership {
       width: 30.75rem;
       margin: 4px 20px 6px 0; } }
-  .element-rich-link p, .element-membership p {
+  .element-rich-link p,
+  .element-membership p {
     margin: 12px 0px; }
-  .element-rich-link a, .element-membership a {
+  .element-rich-link a,
+  .element-membership a {
     font-size: 100%;
     font-family: "Guardian Egyptian Web", Georgia, serif;
     font-weight: 600;
@@ -2441,8 +2451,15 @@ Default styling no JavaScript enhancement:
     word-break: break-word;
     -webkit-hyphens: auto;
     hyphens: auto; }
-    .element-rich-link a:hover, .element-membership a:hover {
+    .element-rich-link a:hover,
+    .element-membership a:hover {
       text-decoration: underline !important; }
+  @media all and (max-width: 74.99em) {
+    .element-rich-link + .figure--thumbnail, .element-rich-link + .figure--thumbnail-with-caption, .element-rich-link + .figure-wide,
+    .element-membership + .figure--thumbnail,
+    .element-membership + .figure--thumbnail-with-caption,
+    .element-membership + .figure-wide {
+      clear: left; } }
 
 @media all and (max-width: 28.12em) {
   .font-size-6 .element-rich-link, .font-size-7 .element-rich-link, .font-size-8 .element-rich-link, .font-size-9 .element-rich-link, .font-size-10 .element-rich-link {

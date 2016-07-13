@@ -4144,6 +4144,18 @@ body.the-minute.advert-config--tablet {
   body.the-minute.advert-config--tablet .comments {
     display: none; }
 
+body.the-minute.offline:not(.advert-config--tablet) .element-image-inner {
+  display: none; }
+body.the-minute.offline:not(.advert-config--mobile) .the-minute__main-media .element-image-inner {
+  display: none; }
+body.the-minute.offline:not(.advert-config--mobile) .is-video .element-image-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #dcdad5; }
+
 body.the-euro-minute:not(.advert-config--tablet) {
   background: #005689; }
   body.the-euro-minute:not(.advert-config--tablet) .the-minute__header {
@@ -5785,9 +5797,9 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     .tone--feature2 .main-media figure.element-interactive figcaption,
     .tone--feature3 .main-media figure.element-interactive figcaption {
       display: none; }
-    .tone--feature1 .main-media figure .video-URL ~ figcaption,
-    .tone--feature2 .main-media figure .video-URL ~ figcaption,
-    .tone--feature3 .main-media figure .video-URL ~ figcaption {
+    .tone--feature1 .main-media figure .video-URL + figcaption,
+    .tone--feature2 .main-media figure .video-URL + figcaption,
+    .tone--feature3 .main-media figure .video-URL + figcaption {
       display: none; }
 .tone--feature1 .article--feature .article__body > .prose:not(.prose--is-panel) > p:first-of-type:first-letter,
 .tone--feature2 .article--feature .article__body > .prose:not(.prose--is-panel) > p:first-of-type:first-letter,
@@ -6943,7 +6955,7 @@ body[data-content-type="video"] .article--visual .content__labels:first-child::b
     padding-top: 0; }
     .tone--review .article__header .main-media__caption__text {
       width: 575px; } }
-.tone--review .article__header .main-media .video-URL ~ figcaption {
+.tone--review .article__header .main-media .video-URL + figcaption {
   display: none; }
 .tone--review .comment__report .touchpoint__button,
 .tone--review .touchpoint--primary .touchpoint__button {

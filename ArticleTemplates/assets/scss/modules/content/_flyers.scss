@@ -30,7 +30,8 @@ Default styling no JavaScript enhancement:
     font-weight: 500;    
 }
 
-.element-rich-link, .element-membership {
+.element-rich-link, 
+.element-membership {
     border-top: 1px dotted color(neutral-3);
     border-bottom: 1px dotted color(neutral-3);
     margin-bottom: $gs-baseline / 1.5;
@@ -66,6 +67,14 @@ Default styling no JavaScript enhancement:
         
         &:hover {
             text-decoration: underline !important;
+        }
+    }
+
+    @include mq($to: col4) {
+        & + .figure--thumbnail,
+        & + .figure--thumbnail-with-caption,
+        & + .figure-wide {
+            clear: left;
         }
     }
 }

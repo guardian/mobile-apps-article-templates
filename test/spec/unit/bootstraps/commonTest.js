@@ -10,20 +10,24 @@ define([
     function buildFigElem (opts) {
         var figElem = document.createElement('figure'),
             imgElem = document.createElement('img'),
-            figCaptionElem = document.createElement('figcaption');
+            figCaptionElem;
 
         figElem.classList.add('element-image');
 
+        imgElem.setAttribute('src', 'xxx');
+ 
+        figElem.appendChild(imgElem);
+        
         if (opts.isThumbnail) {
             figElem.classList.add('element--thumbnail');
         }
 
-        imgElem.setAttribute('src', 'xxx');
-        imgElem.classList.add('gu-image');
-        
-        figElem.appendChild(imgElem);
-        
+        if (opts.isFigureWide) {
+            figElem.classList.add('figure-wide');
+        }
+
         if (opts.hasCaption) {
+            figCaptionElem = document.createElement('figcaption');
             figCaptionElem.classList.add('element-image__caption');
             figElem.appendChild(figCaptionElem);
             figCaptionElem.innerText = opts.figCaption;
@@ -95,20 +99,26 @@ define([
 
         describe('formatImages(images)', function () {
             var articleElem,
-                opts;
-
+                opts,
+                dummyImage,
+                origImage;
+                
             beforeEach(function () {
+                dummyImage = {};
+                origImage = window.Image;
+                window.Image = sinon.stub().returns(dummyImage);
                 articleElem = document.createElement('div');
                 articleElem.classList.add('article');
                 document.body.appendChild(articleElem);
+                // default image is thumbnail with caption
                 opts = {
-                    figCaption: '',
                     isThumbnail: true,
                     hasCaption: true
                 };
             });
 
             afterEach(function () {
+                window.Image = origImage;
                 document.body.removeChild(articleElem);
             });
 
@@ -122,6 +132,8 @@ define([
                     .mock('modules/more-tags', moreTagsMock)
                     .mock('modules/sharing', sharingMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
+                        opts.figCaption = '';
+
                         var figElem = buildFigElem(opts);
 
                         articleElem.appendChild(figElem);
@@ -177,6 +189,91 @@ define([
                         expect(figElem.firstChild.classList.contains('figure__inner')).to.be.true;
                         expect(figElem.firstChild.firstChild.tagName).to.eql('IMG');
 
+                        done();
+                    });
+            });
+
+            it('set image wrapper height for thumbnail images', function (done) {
+                injector
+                    .mock('fence', fenceMock)
+                    .mock('fastClick', fastClickMock)
+                    .mock('smoothScroll', smoothScrollMock)
+                    .mock('modules/comments', commentsMock)
+                    .mock('modules/cards', cardsMock)
+                    .mock('modules/more-tags', moreTagsMock)
+                    .mock('modules/sharing', sharingMock)
+                    .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
+                        opts.isThumbnail = true;
+
+                        var figElem = buildFigElem(opts);
+
+                        articleElem.appendChild(figElem);
+
+                        common.formatImages();
+
+                        var imageWrapper = figElem.querySelector('.figure__inner');
+
+                        expect(imageWrapper).to.be.ok;
+                        expect(imageWrapper.style.height).to.eql('228px');
+                        
+                        done();
+                    });
+            });
+
+            it('set image wrapper height for figure-wide images', function (done) {
+                injector
+                    .mock('fence', fenceMock)
+                    .mock('fastClick', fastClickMock)
+                    .mock('smoothScroll', smoothScrollMock)
+                    .mock('modules/comments', commentsMock)
+                    .mock('modules/cards', cardsMock)
+                    .mock('modules/more-tags', moreTagsMock)
+                    .mock('modules/sharing', sharingMock)
+                    .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
+                        opts.isThumbnail = false;
+                        opts.isFigureWide = true;
+
+                        var figElem = buildFigElem(opts);
+
+                        articleElem.appendChild(figElem);
+
+                        common.formatImages();
+
+                        var imageWrapper = figElem.querySelector('.figure__inner');
+
+                        expect(imageWrapper).to.be.ok;
+                        expect(imageWrapper.style.height).to.eql('228px');
+                        
+                        done();
+                    });
+            });
+
+            it('do not set image wrapper height if it is minute layout', function (done) {
+                injector
+                    .mock('fence', fenceMock)
+                    .mock('fastClick', fastClickMock)
+                    .mock('smoothScroll', smoothScrollMock)
+                    .mock('modules/comments', commentsMock)
+                    .mock('modules/cards', cardsMock)
+                    .mock('modules/more-tags', moreTagsMock)
+                    .mock('modules/sharing', sharingMock)
+                    .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
+                        GU.opts.isMinute = 'minute';
+
+                        opts.isThumbnail = false;
+                        opts.isFigureWide = true;
+
+                        var figElem = buildFigElem(opts);
+
+                        articleElem.appendChild(figElem);
+
+                        common.formatImages();
+
+                        var imageWrapper = figElem.querySelector('.figure__inner');
+
+                        expect(imageWrapper).to.be.ok;
+                        expect(imageWrapper.style.height).to.eql('');
+                        
                         done();
                     });
             });
@@ -328,7 +425,7 @@ define([
                     });
             });
 
-            it('hide offline image if parentNode has class element-image-inner', function (done) {
+            it('hide unavailable image if parentNode has class element-image-inner', function (done) {
                 injector
                     .mock('fence', fenceMock)
                     .mock('fastClick', fastClickMock)
@@ -338,12 +435,8 @@ define([
                     .mock('modules/more-tags', moreTagsMock)
                     .mock('modules/sharing', sharingMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
-                        var dummyImage = {},
-                            origImage = window.Image,
-                            figElem = buildFigElem(opts);
+                        var figElem = buildFigElem(opts);
                         
-                        window.Image = sinon.stub().returns(dummyImage);
-
                         GU.opts.isOffline = true;
 
                         articleElem.appendChild(figElem);
@@ -359,13 +452,11 @@ define([
 
                         expect(figElem.querySelector('img').style.display).to.eql('none');
 
-                        window.Image = origImage;
-                        
                         done();
                     });
             });
 
-            it('replace offline image with placeholder if parentNode does not have class element-image-inner', function (done) {
+            it('replace unavailable image with placeholder if parentNode does not have class element-image-inner', function (done) {
                 injector
                     .mock('fence', fenceMock)
                     .mock('fastClick', fastClickMock)
@@ -375,11 +466,7 @@ define([
                     .mock('modules/more-tags', moreTagsMock)
                     .mock('modules/sharing', sharingMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
-                        var dummyImage = {},
-                            origImage = window.Image,
-                            figElem = buildFigElem(opts);
-                        
-                        window.Image = sinon.stub().returns(dummyImage);
+                        var figElem = buildFigElem(opts);
 
                         GU.opts.isOffline = true;
 
@@ -397,13 +484,12 @@ define([
                         dummyImage.onerror();
 
                         expect(figElem.querySelectorAll('img').length).to.eql(0);
-                        
+
                         var placeholder = figElem.querySelector('.element-image-inner');
 
                         expect(placeholder).to.be.ok;
-                        expect(placeholder.style.height).to.eql('228px');
-
-                        window.Image = origImage;
+                        expect(placeholder.getAttribute('height')).to.eql('75');
+                        expect(placeholder.getAttribute('width')).to.eql('100');
                         
                         done();
                     });
