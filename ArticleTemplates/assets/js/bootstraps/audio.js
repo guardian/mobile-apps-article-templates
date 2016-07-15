@@ -1,160 +1,207 @@
-/*global window,document,console,define */
 define([
-    'bean',
-    'bonzo',
-    'mobileSlider',
-    'modules/$'
+    'mobileSlider'
 ], function (
-    bean,
-    bonzo,
-    mobileSlider,
-    $
+    MobileRangeSlider
 ) {
     'use strict';
 
-    var modules = {
-        getColor: function(){
-            var isAdv = $("body").hasClass("is_advertising");
-            var isAudio = !$("body").hasClass("tone--podcast") && $(".article").hasClass("article--audio");
-            return isAdv ? "rgba(105, 209, 202, 0.15)" : (isAudio ? "rgba(255, 187, 0, 0.05)" : "rgba(167, 216, 242, 0.10)");
-        },
+    var initialised,
+        audioCurrent,
+        down,
+        slider1;
 
-        audioSlider: function () {
-            var audioCurrent,
-                down,
-                slider1,
+    function getColor() {
+        var isAdv = document.body.classList.contains('is_advertising'),
+            isAudio = !document.body.classList.contains('tone--podcast') && document.body.classList.contains('article--audio');
+        
+        return isAdv ? 'rgba(105, 209, 202, 0.15)' : (isAudio ? 'rgba(255, 187, 0, 0.05)' : 'rgba(167, 216, 242, 0.10)');
+    }
 
+    function secondsTimeSpanToHMS(s) {
+        var m = Math.floor(s / 60);
+        s -= m * 60;
+        return (m < 10 ? '0' + m : m) + ':' + (s < 10 ? '0' + s : s);
+    }
 
-                secondsTimeSpanToHMS = function (s) {
-                    var m = Math.floor(s / 60);
-                    s -= m * 60;
-                    return (m < 10 ? '0' + m : m) + ":" + (s < 10 ? '0' + s : s);
-                };
+    function superAudioSlider(current, duration, platform) {
+        var audioPlayerSliderKnob,
+            cutoutContainer;
 
-                window.superAudioSlider = function (current, duration, platform) {
-                    if (platform === "iOS") {
-                        if (down === 1) {
-                            return;
-                        }
-                    } else if ($(".cutout__container").attr("data-background") === null && !$("body").hasClass("media")) {
-                        window.audioBackground(duration);
-                        bean.on(window, 'resize.audioPlayer orientationchange.audioPlayer', GU.util.debounce(function () {
-                            window.audioBackground(duration);
-                        }, 100));
-                    }
+        cutoutContainer = document.getElementsByClassName('cutout__container')[0];
 
-                    $(".audio-player__slider__knob").removeAttr("style");
-                    slider1 = new MobileRangeSlider('audio-player__slider', {
-                        value: current,
-                        min: 0,
-                        max: duration,
-                        change: function (percentage) {
-                            audioCurrent = percentage;
-                            $(".audio-player__slider__played").val(secondsTimeSpanToHMS(percentage));
-                            $(".audio-player__slider__remaining").val("-" + secondsTimeSpanToHMS(duration - percentage));
-                        }
-                    });
-
-                };
-
-                window.updateSlider = function (current, platform) {
-                    if (platform === "iOS") {
-                        if (down === 1) {
-                            return;
-                        }
-                    }
-                    slider1.setValue(current);
-                };
-
-                document.addEventListener('touchstart', function () {
-                    down = 1;
-                }, false);
-
-                document.addEventListener('touchend', function () {
-                    down = 0;
-                }, false);
-
-                /* Caution: Hot Mess */
-                MobileRangeSlider.prototype.end = function () {
-                    this.removeEvents("move");
-                    this.removeEvents("end");
-                    var iframe = document.createElement("iframe");
-                    iframe.setAttribute("src", "x-gu://setPlayerTime/" + audioCurrent);
-                    document.documentElement.appendChild(iframe);
-                    iframe.parentNode.removeChild(iframe);
-                    iframe = null;
-                };
-            },
-
-            setupGlobals: function () {
-                // Global function to handle audio, called by native code
-                window.audioPlay = function () {
-                    $('.audio-player__button .touchpoint__button').attr('data-icon', '').addClass('pause').removeClass('play');
-                };
-
-                window.audioStop = function () {
-                    $('.audio-player__button .touchpoint__button').attr('data-icon', '').addClass('play').removeClass('pause');
-                };
-
-                window.audioLoad = function () {
-                    $(".audio-player__button").hide();
-                    $(".audio-player__button--loading").css('display','block');
-                };
-
-                window.audioFinishLoad = function () {
-                    $(".audio-player__button").show();
-                    $(".audio-player__button--loading").hide();
-                };
-
-                window.audioBackground = function (duration) {
-                    if ($(".cutout__background")) {
-                        $(".cutout__background").remove();
-                    }
-                    var numOfCircles = Math.min(10, Math.floor((duration / 60) / 2)) + 2,
-                        h = $(".cutout__container").offset().height,
-                        w = $(".cutout__container").offset().width,
-                        size = (h * w) / 8000,
-                        canvas = document.createElement("canvas"),
-                        ctx = canvas.getContext('2d');
-
-                    canvas.width = w;
-                    canvas.height = h;
-                    canvas.className = "cutout__background";
-
-                    // Draw Circles
-                    for (var i = 0; i < numOfCircles; i++) {
-                        var x = Math.floor(Math.random() * (w - 0) + 1);
-                        ctx.beginPath();
-                        ctx.arc(x, h / 2, size, 0, Math.PI * 2, true);
-                        ctx.closePath();
-                        ctx.fillStyle = modules.getColor();
-                        ctx.fill();
-                        size = size * 1.2;
-                    }
-
-                    $(".article__header").append(canvas);
-                    $(".cutout__container").attr("data-background", "true");
-                };
-
-                window.applyNativeFunctionCall('audioBackground');
-                window.applyNativeFunctionCall('superAudioSlider');
-                window.applyNativeFunctionCall('audioPlay');
-                window.applyNativeFunctionCall('audioStop');
+        if (platform === 'iOS') {
+            if (down === 1) {
+                return;
             }
-        },
+        } else if (cutoutContainer && !cutoutContainer.dataset.background && !document.body.classList.contains('media')) {
+            window.audioBackground(duration);
 
-        ready = function () {
-            if (!this.initialised) {
-                this.initialised = true;
-                modules.audioSlider();
-                modules.setupGlobals();
-                // console.info("Audio ready");
+            window.addEventListener('resize', GU.util.debounce(function () {
+                window.audioBackground(duration);
+            }, 100));
+        }
+
+        audioPlayerSliderKnob = document.getElementsByClassName('audio-player__slider__knob')[0];
+
+        if (audioPlayerSliderKnob) {
+            audioPlayerSliderKnob.removeAttribute('style');
+        }
+
+        slider1 = new MobileRangeSlider('audio-player__slider', {
+            value: current,
+            min: 0,
+            max: duration,
+            change: changeSlider.bind(null, duration)
+        });
+    }
+
+    function changeSlider(duration, percentage) {
+        var audioPlayerSliderPlayed = document.getElementsByClassName('audio-player__slider__played')[0],
+            audioPlayerSliderRemaining = document.getElementsByClassName('audio-player__slider__remaining')[0];            
+
+        audioCurrent = percentage;
+
+        if (audioPlayerSliderPlayed) {
+            audioPlayerSliderPlayed.value = secondsTimeSpanToHMS(percentage);
+        }
+
+        if (audioPlayerSliderRemaining) {
+            audioPlayerSliderRemaining.value = '-' + secondsTimeSpanToHMS(duration - percentage);
+        }
+    }
+
+    function updateSlider(current, platform) {
+        if (platform === 'iOS') {
+            if (down === 1) {
+                return;
             }
+        }
+
+        slider1.setValue(current);
+    }
+
+    function audioSlider() {
+        document.addEventListener('touchstart', function () {
+            down = 1;
+        }, false);
+
+        document.addEventListener('touchend', function () {
+            down = 0;
+        }, false);
+
+        /* Caution: Hot Mess */
+        MobileRangeSlider.prototype.end = function () {
+            this.removeEvents('move');
+            this.removeEvents('end');
+
+            GU.util.signalDevice('setPlayerTime/' + audioCurrent);
         };
+    }
+
+    function audioPlay() {
+        var button = document.querySelector('.audio-player__button .touchpoint__button');
+
+        if (button) {
+            button.setAttribute('data-icon', '');
+            button.classList.add('pause');
+            button.classList.remove('play');
+        }
+    }
+
+    function audioStop() {
+        var button = document.querySelector('.audio-player__button .touchpoint__button');
+
+        if (button) {
+            button.setAttribute('data-icon', '');
+            button.classList.add('play');
+            button.classList.remove('pause');
+        }
+    }
+
+    function audioLoad() {
+        var button = document.getElementsByClassName('audio-player__button')[0],
+            loadingButton = document.getElementsByClassName('audio-player__button--loading')[0];
+
+        button.style.display = 'none';
+        loadingButton.style.display = 'block';
+    }
+
+    function audioFinishLoad() {
+        var button = document.getElementsByClassName('audio-player__button')[0],
+            loadingButton = document.getElementsByClassName('audio-player__button--loading')[0];
+
+        button.style.display = 'block';
+        loadingButton.style.display = 'none';
+    }
+
+    function audioBackground(duration) {
+        var cutoutBackground = document.getElementsByClassName('cutout__background')[0],
+            cutoutContainer = document.getElementsByClassName('cutout__container')[0];
+
+        if (cutoutBackground) {
+            cutoutBackground.parentNode.removeChild(cutoutBackground);
+        }
+
+        if (cutoutContainer) {
+            styleCutoutContainer(duration, cutoutContainer);
+        }
+    }
+
+    function styleCutoutContainer(duration, cutoutContainer) {
+        var articleHeader = document.getElementsByClassName('article__header')[0],
+            numOfCircles = Math.min(10, Math.floor((duration / 60) / 2)) + 2,
+            h = GU.util.getElementOffset(cutoutContainer).height,
+            w = GU.util.getElementOffset(cutoutContainer).width,
+            size = (h * w) / 8000,
+            canvas = document.createElement('canvas'),
+            ctx = canvas.getContext('2d');
+
+        canvas.width = w;
+        canvas.height = h;
+        canvas.className = 'cutout__background';
+
+        // Draw Circles
+        for (var i = 0; i < numOfCircles; i++) {
+            var x = Math.floor(Math.random() * (w - 0) + 1);
+            ctx.beginPath();
+            ctx.arc(x, h / 2, size, 0, Math.PI * 2, true);
+            ctx.closePath();
+            ctx.fillStyle = getColor();
+            ctx.fill();
+            size = size * 1.2;
+        }
+
+
+        articleHeader.appendChild(canvas);
+        cutoutContainer.dataset.background = 'true';
+    }
+
+    function setupGlobals() {
+        // Global function to handle audio, called by native code
+        window.superAudioSlider = superAudioSlider;
+        window.updateSlider = updateSlider;
+        window.audioPlay = audioPlay;
+        window.audioStop = audioStop;
+        window.audioLoad = audioLoad;
+        window.audioFinishLoad = audioFinishLoad;
+        window.audioBackground = audioBackground;
+
+        window.applyNativeFunctionCall('audioBackground');
+        window.applyNativeFunctionCall('superAudioSlider');
+        window.applyNativeFunctionCall('audioPlay');
+        window.applyNativeFunctionCall('audioStop');
+    }
+
+    function ready() {
+        if (!initialised) {
+            initialised = true;
+
+            audioSlider();
+            setupGlobals();
+        }
+    }
 
     return {
-        init: ready,
-        modules: modules
+        init: ready
     };
-
 });

@@ -197,8 +197,10 @@ module.exports = function(grunt) {
                     src: [
                         'ArticleTemplates/assets/js/*.js',
                         'ArticleTemplates/assets/js/bootstraps/article.js',
+                        'ArticleTemplates/assets/js/bootstraps/audio.js',
                         'ArticleTemplates/assets/js/bootstraps/common.js',
                         'ArticleTemplates/assets/js/modules/relativeDates.js',
+                        'ArticleTemplates/assets/js/modules/sharing.js',
                         'test/spec/unit/**/*.js'
                     ]
                 }
