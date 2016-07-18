@@ -73,7 +73,10 @@ Default styling no JavaScript enhancement:
     @include mq($to: col4) {
         & + .figure--thumbnail,
         & + .figure--thumbnail-with-caption,
-        & + .figure-wide {
+        & + .figure-wide,
+        & + p:empty + .figure--thumbnail,
+        & + p:empty + .figure--thumbnail-with-caption,
+        & + p:empty + .figure-wide {
             clear: left;
         }
     }
