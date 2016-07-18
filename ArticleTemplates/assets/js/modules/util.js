@@ -132,6 +132,20 @@ define(function() {
                         func.apply(context, args);
                     }
                 };
+            },
+
+            getElemsFromHTML: function(html) {
+                var i,
+                    elems = [],
+                    div = document.createElement('div');
+                
+                div.innerHTML = html;
+
+                for (i = 0; i < div.childNodes.length; i++) {
+                    elems.push(div.childNodes[i]);
+                }
+                
+                return elems;
             }
         };
     }
