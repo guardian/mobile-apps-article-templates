@@ -2455,10 +2455,13 @@ Default styling no JavaScript enhancement:
     .element-membership a:hover {
       text-decoration: underline !important; }
   @media all and (max-width: 74.99em) {
-    .element-rich-link + .figure--thumbnail, .element-rich-link + .figure--thumbnail-with-caption, .element-rich-link + .figure-wide,
+    .element-rich-link + .figure--thumbnail, .element-rich-link + .figure--thumbnail-with-caption, .element-rich-link + .figure-wide, .element-rich-link + p:empty + .figure--thumbnail, .element-rich-link + p:empty + .figure--thumbnail-with-caption, .element-rich-link + p:empty + .figure-wide,
     .element-membership + .figure--thumbnail,
     .element-membership + .figure--thumbnail-with-caption,
-    .element-membership + .figure-wide {
+    .element-membership + .figure-wide,
+    .element-membership + p:empty + .figure--thumbnail,
+    .element-membership + p:empty + .figure--thumbnail-with-caption,
+    .element-membership + p:empty + .figure-wide {
       clear: left; } }
 
 @media all and (max-width: 28.12em) {

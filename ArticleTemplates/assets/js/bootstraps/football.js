@@ -141,7 +141,7 @@ define([
 
             if (matchStatus) {
                 for (i = matchStatus.classList.length; i > 0; i--) {
-                    if (matchStatus.classList[i].indexOf('match-status--') !== - 1) {
+                    if (matchStatus.classList[i-1].indexOf('match-status--') !== - 1) {
                         matchStatus.classList.remove(matchStatus.classList[i]);   
                     }
                 }
