@@ -136,14 +136,14 @@ define([
                 html = bonzo.create(html);
                 $(html).appendTo('#football__tabpanel--stats');
                 modules.footballChart(homeTeam, awayTeam);
-                if (!$('[aria-selected="true"]')) {
+                if (!$('[aria-selected="true"]').length) {
                     $('#football__tabpanel--stats').hide();
                 }
             };
 
             window.footballMatchInfoFailed = function () {
                 $('#football__tabpanel--stats').remove();
-                if ($('.tabs [href="#football__tabpanel--stats"]').attr("aria-selected") === true) {
+                if ($('.tabs [href="#football__tabpanel--stats"]').attr("aria-selected") === 'true') {
                     $('.tabs a:first-of-type').attr("aria-selected", true);
                     $($('.tabs [aria-selected="true"]').attr("href")).show();
                 }
