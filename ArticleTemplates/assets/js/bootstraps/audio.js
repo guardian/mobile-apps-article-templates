@@ -25,15 +25,13 @@ define([
 
     function superAudioSlider(current, duration, platform) {
         var audioPlayerSliderKnob,
-            cutoutContainer;
-
-        cutoutContainer = document.getElementsByClassName('cutout__container')[0];
+            cutoutContainer = document.getElementsByClassName('cutout__container')[0];
 
         if (platform === 'iOS') {
             if (down === 1) {
                 return;
             }
-        } else if (cutoutContainer && !cutoutContainer.dataset.background && !document.body.classList.contains('media')) {
+        } else if ((!cutoutContainer || !cutoutContainer.dataset.background) && !document.body.classList.contains('media')) {
             window.audioBackground(duration);
 
             window.addEventListener('resize', GU.util.debounce(function () {
