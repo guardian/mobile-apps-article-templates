@@ -44,6 +44,7 @@ define([
                     }
 
                     $(".audio-player__slider__knob").removeAttr("style");
+
                     slider1 = new MobileRangeSlider('audio-player__slider', {
                         value: current,
                         min: 0,
@@ -54,7 +55,6 @@ define([
                             $(".audio-player__slider__remaining").val("-" + secondsTimeSpanToHMS(duration - percentage));
                         }
                     });
-
                 };
 
                 window.updateSlider = function (current, platform) {

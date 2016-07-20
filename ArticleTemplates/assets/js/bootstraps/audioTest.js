@@ -1,20 +1,27 @@
 define([
+    'modules/util',
     'squire'
 ], function(
+    util,
     Squire
 ) {
     'use strict';
 
-    describe.only('ArticleTemplates/assets/js/bootstraps/audio', function() {
-        var container,
+    describe('ArticleTemplates/assets/js/bootstraps/audio', function() {
+        var sandbox,
+            container,
             injector;
-            
+
         beforeEach(function() {
             container = document.createElement('div');
             container.id = "container";
             document.body.appendChild(container);
             injector = new Squire();
             window.applyNativeFunctionCall = sinon.spy();
+            sandbox = sinon.sandbox.create();
+            
+            window.GU = {};
+            util.init();
         });
 
         afterEach(function () {
@@ -28,6 +35,14 @@ define([
             delete window.superAudioSlider;
             delete window.updateSlider;
             delete window.applyNativeFunctionCall;
+            delete window.MobileRangeSlider;
+            delete window.GU;
+            
+            sandbox.restore();
+        });
+
+        after(function(done) {
+            done();
         });
 
         describe('init()', function () {
@@ -202,12 +217,161 @@ define([
         describe('window.superAudioSlider(current, duration, platform)', function () {
             var current, 
                 duration, 
-                platform
+                platform;
 
             beforeEach(function () {
                 current = 0;
-                duration = 1000;
+                duration = 60000;
                 platform = "iOS";
+                container.innerHTML = '<div class="audio-player__slider"> <input type="text" class="audio-player__slider__played" id="audio-scrubber" disabled=""> <input type="text" class="audio-player__slider__remaining" id="audio-scrubber-left" disabled=""> <div class="audio-player__slider__track"></div><div class="audio-player__slider__knob" role="slider" id="audio-slider-knob"></div></div>';
+            });
+
+            it('does nothing if on iOS and slider is down', function (done) {
+                injector
+                    .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
+                        var touchendEvt = document.createEvent("HTMLEvents"),
+                            touchstartEvt = document.createEvent("HTMLEvents");
+
+                        audio.init();
+
+                        touchstartEvt.initEvent("touchstart", true, true);
+                        document.body.dispatchEvent(touchstartEvt);
+
+                        sandbox.stub(window, 'MobileRangeSlider', sinon.spy());
+
+                        window.superAudioSlider(current, duration, platform);
+
+                        touchendEvt.initEvent("touchend", true, true);
+                        document.body.dispatchEvent(touchendEvt);
+
+                        expect(window.MobileRangeSlider).not.to.have.been.called;
+                        
+                        done();
+                    });
+            });
+
+            it('if not iOS and background has not been set then style audio background', function (done) {
+                injector
+                    .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
+                        platform = "Android";
+
+                        audio.init();
+
+                        window.audioBackground = sinon.spy();
+
+                        sandbox.stub(window, 'MobileRangeSlider', sinon.spy());
+
+                        window.superAudioSlider(current, duration, platform);
+
+                        expect(window.audioBackground).to.have.been.calledOnce;
+                        expect(window.audioBackground).to.have.been.calledWith(duration);
+                        expect(window.MobileRangeSlider).to.have.been.calledOnce;
+
+                        done();
+                    });
+            });
+
+            it('if not iOS resize audio background on document resize', function (done) {
+                injector
+                    .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
+                        var resizeEvt = document.createEvent("HTMLEvents");
+
+                        sandbox.stub(GU.util, 'debounce', function(func) {
+                            return func;
+                        });
+
+                        platform = "Android";
+
+                        audio.init();
+
+                        window.audioBackground = sinon.spy();
+
+                        sandbox.stub(window, 'MobileRangeSlider', sinon.spy());
+
+                        window.superAudioSlider(current, duration, platform);
+
+                        resizeEvt.initEvent("resize", true, true);
+                        window.dispatchEvent(resizeEvt);
+
+                        expect(window.audioBackground).to.have.been.calledTwice;
+                        expect(window.audioBackground).to.have.been.calledWith(duration);
+
+                        done();
+                    });
+            });
+
+            it('updates values of seconds played and remaining on slider changed', function (done) {
+                injector
+                    .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
+                        var changeSlider;
+
+                        sandbox.stub(GU.util, 'debounce', function(func) {
+                            return func;
+                        });
+
+                        platform = "Android";
+
+                        audio.init();
+
+                        window.audioBackground = sinon.spy();
+
+                        sandbox.stub(window, 'MobileRangeSlider', function(selector, opts) {
+                            changeSlider = opts.change;
+                        });
+
+                        window.superAudioSlider(current, duration, platform);
+
+                        changeSlider(30000);
+
+                        expect(document.querySelector(".audio-player__slider__played").value).to.eql('500:00');
+                        expect(document.querySelector(".audio-player__slider__remaining").value).to.eql('-500:00');
+
+                        done();
+                    });
+            });
+        });
+
+        describe('window.updateSlider(current, platform)', function () {
+            var current, 
+                duration, 
+                platform,
+                dummySlider;
+
+            beforeEach(function () {
+                current = 20000;
+                duration = 60000;
+                platform = "iOS";
+                dummySlider = {
+                    setValue: sinon.spy()
+                }
+            });
+
+            it('does nothing if on iOS and slider is down', function (done) {
+                injector
+                    .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
+                        var touchendEvt = document.createEvent("HTMLEvents"),
+                            touchstartEvt = document.createEvent("HTMLEvents");
+
+                        audio.init();
+
+                        sandbox.stub(window, 'MobileRangeSlider', function () {
+                            return dummySlider;
+                        });
+
+                        window.superAudioSlider(current, duration, platform);
+
+                        touchstartEvt.initEvent("touchstart", true, true);
+                        document.body.dispatchEvent(touchstartEvt);
+
+                        window.updateSlider(current, platform);
+
+                        expect(dummySlider.setValue).not.to.have.been.called;
+
+                        touchendEvt.initEvent("touchend", true, true);
+                        document.body.dispatchEvent(touchendEvt);
+                        
+                        done();
+                    });
             });
 
             it('does nothing if on iOS and slider is down', function (done) {
@@ -215,7 +379,16 @@ define([
                     .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
                         audio.init();
 
-                        window.superAudioSlider(current, duration, platform)
+                        sandbox.stub(window, 'MobileRangeSlider', function () {
+                            return dummySlider;
+                        });
+
+                        window.superAudioSlider(current, duration, platform);
+
+                        window.updateSlider(current, platform);
+
+                        expect(dummySlider.setValue).to.have.been.calledOnce;
+                        expect(dummySlider.setValue).to.have.been.calledWith(20000);
 
                         done();
                     });
