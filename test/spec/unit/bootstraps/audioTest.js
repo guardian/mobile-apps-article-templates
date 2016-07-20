@@ -14,7 +14,7 @@ define([
 
         beforeEach(function() {
             container = document.createElement('div');
-            container.id = "container";
+            container.id = 'container';
             document.body.appendChild(container);
             injector = new Squire();
             window.applyNativeFunctionCall = sinon.spy();
@@ -218,26 +218,26 @@ define([
             beforeEach(function () {
                 current = 0;
                 duration = 60000;
-                platform = "iOS";
+                platform = 'iOS';
                 container.innerHTML = '<div class="audio-player__slider"> <input type="text" class="audio-player__slider__played" id="audio-scrubber" disabled=""> <input type="text" class="audio-player__slider__remaining" id="audio-scrubber-left" disabled=""> <div class="audio-player__slider__track"></div><div class="audio-player__slider__knob" role="slider" id="audio-slider-knob"></div></div>';
             });
 
             it('does nothing if on iOS and slider is down', function (done) {
                 injector
                     .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
-                        var touchendEvt = document.createEvent("HTMLEvents"),
-                            touchstartEvt = document.createEvent("HTMLEvents");
+                        var touchendEvt = document.createEvent('HTMLEvents'),
+                            touchstartEvt = document.createEvent('HTMLEvents');
 
                         audio.init();
 
-                        touchstartEvt.initEvent("touchstart", true, true);
+                        touchstartEvt.initEvent('touchstart', true, true);
                         document.body.dispatchEvent(touchstartEvt);
 
                         sandbox.stub(window, 'MobileRangeSlider', sinon.spy());
 
                         window.superAudioSlider(current, duration, platform);
 
-                        touchendEvt.initEvent("touchend", true, true);
+                        touchendEvt.initEvent('touchend', true, true);
                         document.body.dispatchEvent(touchendEvt);
 
                         expect(window.MobileRangeSlider).not.to.have.been.called;
@@ -249,7 +249,7 @@ define([
             it('if not iOS and background has not been set then style audio background', function (done) {
                 injector
                     .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
-                        platform = "Android";
+                        platform = 'Android';
 
                         audio.init();
 
@@ -270,13 +270,13 @@ define([
             it.skip('if not iOS resize audio background on document resize', function (done) {
                 injector
                     .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
-                        var resizeEvt = document.createEvent("HTMLEvents");
+                        var resizeEvt = document.createEvent('HTMLEvents');
 
                         sandbox.stub(GU.util, 'debounce', function(func) {
                             return func;
                         });
 
-                        platform = "Android";
+                        platform = 'Android';
 
                         audio.init();
 
@@ -286,7 +286,7 @@ define([
 
                         window.superAudioSlider(current, duration, platform);
 
-                        resizeEvt.initEvent("resize", true, true);
+                        resizeEvt.initEvent('resize', true, true);
                         window.dispatchEvent(resizeEvt);
 
                         expect(window.audioBackground).to.have.been.calledTwice;
@@ -305,7 +305,7 @@ define([
                             return func;
                         });
 
-                        platform = "Android";
+                        platform = 'Android';
 
                         audio.init();
 
@@ -319,8 +319,8 @@ define([
 
                         changeSlider(30000);
 
-                        expect(document.querySelector(".audio-player__slider__played").value).to.eql('500:00');
-                        expect(document.querySelector(".audio-player__slider__remaining").value).to.eql('-500:00');
+                        expect(document.querySelector('.audio-player__slider__played').value).to.eql('500:00');
+                        expect(document.querySelector('.audio-player__slider__remaining').value).to.eql('-500:00');
 
                         done();
                     });
@@ -336,17 +336,17 @@ define([
             beforeEach(function () {
                 current = 20000;
                 duration = 60000;
-                platform = "iOS";
+                platform = 'iOS';
                 dummySlider = {
                     setValue: sinon.spy()
-                }
+                };
             });
 
             it('does nothing if on iOS and slider is down', function (done) {
                 injector
                     .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
-                        var touchendEvt = document.createEvent("HTMLEvents"),
-                            touchstartEvt = document.createEvent("HTMLEvents");
+                        var touchendEvt = document.createEvent('HTMLEvents'),
+                            touchstartEvt = document.createEvent('HTMLEvents');
 
                         audio.init();
 
@@ -356,14 +356,14 @@ define([
 
                         window.superAudioSlider(current, duration, platform);
 
-                        touchstartEvt.initEvent("touchstart", true, true);
+                        touchstartEvt.initEvent('touchstart', true, true);
                         document.body.dispatchEvent(touchstartEvt);
 
                         window.updateSlider(current, platform);
 
                         expect(dummySlider.setValue).not.to.have.been.called;
 
-                        touchendEvt.initEvent("touchend", true, true);
+                        touchendEvt.initEvent('touchend', true, true);
                         document.body.dispatchEvent(touchendEvt);
                         
                         done();

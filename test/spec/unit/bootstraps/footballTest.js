@@ -11,7 +11,7 @@ define([
             
         beforeEach(function() {
             container = document.createElement('div');
-            container.id = "container";
+            container.id = 'container';
             document.body.appendChild(container);
             injector = new Squire();
             window.applyNativeFunctionCall = sinon.spy();
@@ -119,7 +119,7 @@ define([
                     tab.href = href;
                     tab.setAttribute('aria-selected', ariaSelected);
 
-                    return tab
+                    return tab;
                 };
 
             beforeEach(function () {
