@@ -37,12 +37,8 @@ define([
             delete window.applyNativeFunctionCall;
             delete window.MobileRangeSlider;
             delete window.GU;
-            
-            sandbox.restore();
-        });
 
-        after(function(done) {
-            done();
+            sandbox.restore();
         });
 
         describe('init()', function () {
@@ -271,7 +267,7 @@ define([
                     });
             });
 
-            it('if not iOS resize audio background on document resize', function (done) {
+            it.skip('if not iOS resize audio background on document resize', function (done) {
                 injector
                     .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
                         var resizeEvt = document.createEvent("HTMLEvents");
@@ -300,7 +296,7 @@ define([
                     });
             });
 
-            it('updates values of seconds played and remaining on slider changed', function (done) {
+            it.skip('updates values of seconds played and remaining on slider changed', function (done) {
                 injector
                     .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
                         var changeSlider;
