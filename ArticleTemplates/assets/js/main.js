@@ -24,6 +24,9 @@
             },
             d3: {
                 exports: 'd3'
+            },
+            mobileSlider: {
+                exports: 'MobileRangeSlider'
             }
         }
     });

@@ -1,6 +1,8 @@
 define([
+    'modules/util',
     'squire'
 ], function(
+    util,
     Squire
 ) {
     'use strict';
@@ -15,6 +17,8 @@ define([
             document.body.appendChild(container);
             injector = new Squire();
             window.applyNativeFunctionCall = sinon.spy();
+            window.GU = {};
+            util.init();
         });
 
         afterEach(function () {
@@ -25,6 +29,8 @@ define([
             delete window.footballGoal;
             delete window.footballStatus;
             delete window.applyNativeFunctionCall;
+
+            delete window.GU;
         });
 
         describe('init()', function () {
