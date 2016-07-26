@@ -17,7 +17,8 @@ define([
 ) {
     'use strict';
 
-    var isAndroid;
+    var isAndroid,
+        trackCommentContainerView = true;
         
     function init() {
         isAndroid = document.body.classList.contains('android');
@@ -43,6 +44,7 @@ define([
         fixSeries();
         advertorialUpdates();
         sharing.init(window); // init sharing
+        setupTracking();
 
         if (!document.body.classList.contains('no-ready')) {
             window.location.href = 'x-gu://ready';
@@ -654,6 +656,46 @@ define([
                     }
                 }
             }
+        }
+    }
+
+    function setupTracking() {
+        var commentCount = document.querySelector('.comment-count a'),
+            viewMore = document.getElementsByClassName('comments__post')[0],
+            commentContainer = document.getElementsByClassName('comments')[0];
+
+        if (commentCount) {
+            commentCount.addEventListener('click', handleCommentCountClick);
+        }
+
+        if (viewMore) {
+            viewMore.addEventListener('click', viewMoreCommentsClick);
+        }
+
+        if (commentContainer) {
+            window.addEventListener('scroll', GU.util.debounce(isCommentContainerInView.bind(null, commentContainer), 100));
+        }
+    }
+
+    function handleCommentCountClick(evt) {
+        evt.preventDefault();
+
+        GU.util.signalDevice('trackAction/comment-count-clicked');
+        GU.util.signalDevice('showcomments');        
+    }
+
+    function viewMoreCommentsClick(evt) {
+        evt.preventDefault();
+
+        GU.util.signalDevice('trackAction/view-more-comments-clicked');
+        GU.util.signalDevice('showcomments');        
+    }
+
+    function isCommentContainerInView(commentContainer) {
+        if (trackCommentContainerView &&
+            GU.util.isElementPartiallyInViewport(commentContainer)) {
+            GU.util.signalDevice('trackAction/comments-viewed');    
+            trackCommentContainerView = false;
         }
     }
         
