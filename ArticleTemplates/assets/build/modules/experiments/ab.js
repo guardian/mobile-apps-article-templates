@@ -1,1 +1,0 @@
-define([],function(){"use strict";function t(){var t,n;if(GU.opts.tests){n=JSON.parse(GU.opts.tests);for(t in n)n.hasOwnProperty(t)&&s[t]&&s[t](n[t])}}var s={};return{init:t}});

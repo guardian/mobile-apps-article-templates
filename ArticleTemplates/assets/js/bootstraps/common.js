@@ -5,7 +5,8 @@ define([
     'modules/comments',
     'modules/cards',
     'modules/more-tags',
-    'modules/sharing'
+    'modules/sharing',
+    'modules/experiments/ab'
 ], function(
     fence,
     fastClick,
@@ -13,7 +14,8 @@ define([
     comments,
     cards,
     moreTags,
-    sharing
+    sharing,
+    ab
 ) {
     'use strict';
 
@@ -43,6 +45,7 @@ define([
         fixSeries();
         advertorialUpdates();
         sharing.init(window); // init sharing
+        ab.init(); // init ab tests
 
         if (!document.body.classList.contains('no-ready')) {
             window.location.href = 'x-gu://ready';

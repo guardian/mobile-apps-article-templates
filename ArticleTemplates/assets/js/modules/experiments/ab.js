@@ -1,9 +1,12 @@
-define([], function () {
+define([
+], function (
+) {
     'use strict';
 
-
-    // Example property of tests object
-    // lowFrictionParticipation: lowFrictionParticipation.init 
+    // { 
+    //     lowFrictionParticipation: lowFrictionParticipation.init (Example test object)
+    // }
+        
     var tests = {};
 
     function init() {
