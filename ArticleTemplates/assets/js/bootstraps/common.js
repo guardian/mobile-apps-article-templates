@@ -661,7 +661,7 @@ define([
 
     function setupTracking() {
         var commentCount = document.querySelector('.comment-count a'),
-            viewMore = document.getElementsByClassName('comments__post')[0],
+            viewMore = document.getElementsByClassName('comments__viewmore')[0],
             commentContainer = document.getElementsByClassName('comments')[0];
 
         if (commentCount) {
