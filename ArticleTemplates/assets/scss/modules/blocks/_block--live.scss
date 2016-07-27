@@ -91,6 +91,12 @@ Provide a summary of events:
     }
 
     .block__body {
+        @include mq($to: col4) {
+            .element-rich-link:last-child {
+                width: 100%;
+            }
+        }
+
         @include mq($from: col2) {
             float: left;
 

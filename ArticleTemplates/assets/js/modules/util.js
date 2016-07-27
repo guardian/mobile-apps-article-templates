@@ -96,6 +96,14 @@ define(function() {
                 return String.fromCharCode(unicodeVal);
             },
 
+            getLocalStorage: function (key) {
+                return localStorage.getItem(key);
+            },
+
+            setLocalStorage: function (key, value) {
+                localStorage.setItem(key, value);
+            },
+
             debounce: function (func, wait, immediate) {
                 var args;
                 var callNow;
@@ -126,21 +134,18 @@ define(function() {
                 };
             },
 
-            merge: function (target, source) {
-                var prop;
+            getElemsFromHTML: function(html) {
+                var i,
+                    elems = [],
+                    div = document.createElement('div');
+                
+                div.innerHTML = html;
 
-                for (prop in source) {
-                    if (source.hasOwnProperty(prop)) {
-                        if (target[prop] && typeof source[prop] === 'object') {
-                            GU.util.merge(target[prop], source[prop]);
-                        }
-                        else {
-                            target[prop] = source[prop];
-                        }
-                    }
+                for (i = 0; i < div.childNodes.length; i++) {
+                    elems.push(div.childNodes[i]);
                 }
-
-                return target;
+                
+                return elems;
             }
         };
     }

@@ -1,13 +1,10 @@
-define([
-    'modules/experiments/lowFrictionParticipation'
-], function (
-    lowFrictionParticipation
-) {
+define([], function () {
     'use strict';
 
-    var tests = {
-        'lowFrictionParticipation': lowFrictionParticipation.init
-    };
+
+    // Example property of tests object
+    // lowFrictionParticipation: lowFrictionParticipation.init 
+    var tests = {};
 
     function init() {
         var key,

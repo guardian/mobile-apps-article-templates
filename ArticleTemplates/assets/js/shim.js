@@ -25,16 +25,70 @@
         'getMpuPosCallback',
         'initMpuPoller',
         'videoPositioning',
-        'getArticleHeight'
+        'getArticleHeight',
+        'injectInlineArticleMembershipCreative'
     ];
 
-    GU.Bootstrap = {
-        init: init
-    };
+    function init(opts) {
+        GU.opts = opts;
 
-    shimRequestAnimationFrame();
+        catchNativeFunctionCalls();
 
-    // requestAnimationFrame polyfill
+        window.applyNativeFunctionCall = applyNativeFunctionCall;
+
+        if (document.readyState === 'complete') {
+            kickOff();
+        } else {
+            window.addEventListener('DOMContentLoaded', kickOff);
+        }
+    }
+
+    function kickOff() {
+        window.requestAnimationFrame(addScript);
+    }
+    
+    function addScript() {
+        var script = document.createElement('script'),
+            templatePath = GU.opts.templatesDirectory;
+
+        script.setAttribute('src', templatePath + 'assets/build/components/require.js');
+        script.setAttribute('id', 'gu');
+        script.setAttribute('data-js-dir', templatePath + 'assets/build');
+        script.setAttribute('data-main', templatePath + 'assets/build/main.js');
+        script.async = true;
+
+        document.head.appendChild(script);
+    }
+
+    function catchNativeFunctionCalls() {
+        Array.prototype.forEach.call(nativeFunctionCalls, setNativeFunctionCall);
+    }
+    
+    function setNativeFunctionCall(name) {
+        var queue;
+
+        // Create a function to catch early calls
+        window[name] = function() {
+            // Create or get the queue for this function
+            queue = name + 'Queue';
+
+            window[queue] = window[queue] || [];
+            // Store arguments for each call so
+            // true function can apply these when ready
+            window[queue].push(arguments);
+        };
+    }
+
+    function applyNativeFunctionCall(name) {
+        var queue = window[name + 'Queue'];
+
+        if (queue) {
+            Array.prototype.forEach.call(queue, function(item) {
+                window[name].apply(this, item);
+            });
+        }
+    }
+
     function shimRequestAnimationFrame() {
         var lastTime = 0;
         var vendors = ['ms', 'moz', 'webkit', 'o'];
@@ -65,63 +119,9 @@
         }
     }
 
-    function init(opts) {
-        GU.opts = opts;
+    GU.Bootstrap = {
+        init: init
+    };
 
-        catchNativeFunctionCalls();
-
-        window.applyNativeFunctionCall = applyNativeFunctionCall;
-
-        if (document.readyState === 'complete') {
-            kickOff();
-        } else {
-            window.addEventListener('DOMContentLoaded', kickOff);
-        }
-    }
-
-    function kickOff() {
-        window.requestAnimationFrame(addScript);
-    }
-
-    function addScript() {
-        var script = document.createElement('script'),
-            templatePath = GU.opts.templatesDirectory;
-
-        script.setAttribute('src', templatePath + 'assets/build/components/require.js');
-        script.setAttribute('id', 'gu');
-        script.setAttribute('data-js-dir', templatePath + 'assets/build');
-        script.setAttribute('data-main', templatePath + 'assets/build/main.js');
-        script.async = true;
-
-        document.head.appendChild(script);
-    }
-
-    function catchNativeFunctionCalls() {
-        Array.prototype.forEach.call(nativeFunctionCalls, setNativeFunctionCall);
-    }
-
-    function setNativeFunctionCall(name) {
-        var queue;
-
-        // Create a function to catch early calls
-        window[name] = function() {
-            // Create or get the queue for this function
-            queue = name + 'Queue';
-
-            window[queue] = window[queue] || [];
-            // Store arguments for each call so
-            // true function can apply these when ready
-            window[queue].push(arguments);
-        };
-    }
-
-    function applyNativeFunctionCall(name) {
-        var queue = window[name + 'Queue'];
-
-        if (queue) {
-            Array.prototype.forEach.call(queue, function(item) {
-                window[name].apply(this, item);
-            });
-        }
-    }
+    shimRequestAnimationFrame();
 }());
