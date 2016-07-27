@@ -680,21 +680,21 @@ define([
     function handleCommentCountClick(evt) {
         evt.preventDefault();
 
-        GU.util.signalDevice('trackAction/comment-count-clicked');
+        GU.util.signalDevice('trackAction/comments:view more:comment count');
         GU.util.signalDevice('showcomments');        
     }
 
     function viewMoreCommentsClick(evt) {
         evt.preventDefault();
 
-        GU.util.signalDevice('trackAction/view-more-comments-clicked');
+        GU.util.signalDevice('trackAction/comments:view more');
         GU.util.signalDevice('showcomments');        
     }
 
     function isCommentContainerInView(commentContainer) {
         if (trackCommentContainerView &&
             GU.util.isElementPartiallyInViewport(commentContainer)) {
-            GU.util.signalDevice('trackAction/comments-viewed');    
+            GU.util.signalDevice('trackAction/comments:seen');    
             trackCommentContainerView = false;
         }
     }
