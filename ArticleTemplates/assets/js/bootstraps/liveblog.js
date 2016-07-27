@@ -428,18 +428,18 @@ define([
 
                 this.initialised = true;
                 modules.setupGlobals();
-                window.liveblogTime();
-                modules.blockUpdates();
-                modules.liveMore();
-                twitter.init();
-                if ($('body').hasClass('the-minute')) {
-                    // do any "the minute" js here
-                    modules.setupTheMinute();
-                } else {
-                    setInterval(window.liveblogTime, 30000);
-                    $('.the-minute__header, .the-minute__nav').remove();
-                    twitter.enhanceTweets();
-                }
+                // window.liveblogTime();
+                // modules.blockUpdates();
+                // modules.liveMore();
+                // twitter.init();
+                // if ($('body').hasClass('the-minute')) {
+                //     // do any "the minute" js here
+                //     modules.setupTheMinute();
+                // } else {
+                //     setInterval(window.liveblogTime, 30000);
+                //     $('.the-minute__header, .the-minute__nav').remove();
+                //     twitter.enhanceTweets();
+                // }
                 // console.info("Liveblog ready");
             }
         };
