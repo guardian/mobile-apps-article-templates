@@ -3,9 +3,13 @@ define([
 ) {
     'use strict';
 
-    // { 
-    //     lowFrictionParticipation: lowFrictionParticipation.init (Example test object)
+    /* --- EXAMPLE START --- */
+
+    // var tests = { 
+    //     lowFrictionParticipation: lowFrictionParticipation.init
     // }
+
+    /* --- EXAMPLE END --- */
         
     var tests = {};
 
