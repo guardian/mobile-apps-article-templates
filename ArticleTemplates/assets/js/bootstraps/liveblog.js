@@ -63,6 +63,7 @@ define([
 
                 window.liveblogNewBlock = function (html) {
                     newBlockHtml = html + newBlockHtml;
+
                     if (liveblogStartPos.top > window.scrollY) {
                         liveblogNewBlockDump();
                     }
@@ -82,7 +83,8 @@ define([
                     bean.on($('.more--live-blogs')[0], 'click', function () {
                         $(this).hide();
                         $('.loading--liveblog').addClass("loading--visible");
-                        window.location.href = 'x-gu://showmore';
+                        
+                        GU.util.signalDevice('showmore');
                     });
                 }
             },
@@ -332,9 +334,9 @@ define([
 
             initScroller: function () {
                 var scroller,
+                    liveblogElem,
                     minuteNavElem = $(".the-minute__nav"),
-                    wrapperElem = document.body.getElementsByClassName("article--liveblog")[0],
-                    liveblogElem = wrapperElem.getElementsByClassName("article__body--liveblog")[0],
+                    wrapperElem = document.getElementsByClassName("article--liveblog")[0],
                     options = {
                         scrollX: false,
                         scrollY: true,
@@ -345,24 +347,28 @@ define([
                         disablePointer: true
                     };
 
-                // liveblogElem must be first child of wrapperElem
-                wrapperElem.insertBefore(liveblogElem, wrapperElem.children[0]);
+                if (wrapperElem) {
+                    liveblogElem = wrapperElem.getElementsByClassName("article__body--liveblog")[0];
 
-                modules.removeTabletElems();
+                    // liveblogElem must be first child of wrapperElem
+                    wrapperElem.insertBefore(liveblogElem, wrapperElem.children[0]);
 
-                modules.setScrollDimensions(liveblogElem, wrapperElem);
+                    modules.removeTabletElems();
 
-                // initialise scroller
-                scroller = new MyScroll(wrapperElem, options);
+                    modules.setScrollDimensions(liveblogElem, wrapperElem);
 
-                // onScrollEnd show hide minuteNavElem
-                scroller.on('scrollEnd', modules.onScrollEnd.bind(null, minuteNavElem, scroller));
+                    // initialise scroller
+                    scroller = new MyScroll(wrapperElem, options);
 
-                // add click event handler to minuteNavElem
-                bean.on(window, 'click', minuteNavElem, modules.scrollToNextCard.bind(null, minuteNavElem, scroller));
-            
-                // update scroll dimensions on orientation change
-                bean.on(window, 'resize', GU.util.debounce(modules.onWindowResize.bind(null, liveblogElem, wrapperElem, scroller), 100));
+                    // onScrollEnd show hide minuteNavElem
+                    scroller.on('scrollEnd', modules.onScrollEnd.bind(null, minuteNavElem, scroller));
+
+                    // add click event handler to minuteNavElem
+                    bean.on(window, 'click', minuteNavElem, modules.scrollToNextCard.bind(null, minuteNavElem, scroller));
+                
+                    // update scroll dimensions on orientation change
+                    bean.on(window, 'resize', GU.util.debounce(modules.onWindowResize.bind(null, liveblogElem, wrapperElem, scroller), 100));
+                }
             },
 
             onWindowResize: function (liveblogElem, wrapperElem, scroller) {
@@ -428,18 +434,18 @@ define([
 
                 this.initialised = true;
                 modules.setupGlobals();
-                // window.liveblogTime();
-                // modules.blockUpdates();
-                // modules.liveMore();
-                // twitter.init();
-                // if ($('body').hasClass('the-minute')) {
-                //     // do any "the minute" js here
-                //     modules.setupTheMinute();
-                // } else {
-                //     setInterval(window.liveblogTime, 30000);
-                //     $('.the-minute__header, .the-minute__nav').remove();
-                //     twitter.enhanceTweets();
-                // }
+                window.liveblogTime();
+                modules.blockUpdates();
+                modules.liveMore();
+                twitter.init();
+                if ($('body').hasClass('the-minute')) {
+                    // do any "the minute" js here
+                    modules.setupTheMinute();
+                } else {
+                    setInterval(window.liveblogTime, 30000);
+                    $('.the-minute__header, .the-minute__nav').remove();
+                    twitter.enhanceTweets();
+                }
                 // console.info("Liveblog ready");
             }
         };
