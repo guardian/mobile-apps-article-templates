@@ -7,7 +7,7 @@ define([
 ) {
     'use strict';
 
-    describe('ArticleTemplates/assets/js/bootstraps/liveblog', function() {
+    describe.only('ArticleTemplates/assets/js/bootstraps/liveblog', function() {
         var dummyCommon,
             container,
             injector,
@@ -15,8 +15,7 @@ define([
 
         var relativeDatesMock,
             twitterMock,
-            MyScrollMock,
-            adsMock;
+            MyScrollMock;
             
         beforeEach(function() {
             relativeDatesMock = {
@@ -28,7 +27,6 @@ define([
                 enhanceTweets: sinon.spy()
             };
             MyScrollMock = {};
-            adsMock = {};
             dummyCommon = {
                 formatImages: sinon.spy(),
                 loadEmbeds: sinon.spy(),
@@ -80,7 +78,6 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
-                    .mock('modules/ads', adsMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         liveblog.init(dummyCommon);
 
@@ -104,7 +101,6 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
-                    .mock('modules/ads', adsMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         liveblog.init(dummyCommon);
 
@@ -120,7 +116,6 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
-                    .mock('modules/ads', adsMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         var event,
                             loadingElem = document.createElement('div'),
@@ -157,7 +152,6 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
-                    .mock('modules/ads', adsMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         document.body.classList.add('the-minute');
 
@@ -176,7 +170,6 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
-                    .mock('modules/ads', adsMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         var minuteHeader = document.createElement('div'),
                             minuteNav = document.createElement('div');
@@ -206,7 +199,6 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
-                    .mock('modules/ads', adsMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         var block = document.createElement('div');
 
@@ -234,7 +226,6 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
-                    .mock('modules/ads', adsMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         var block = document.createElement('div');
 
@@ -277,7 +268,6 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
-                    .mock('modules/ads', adsMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         var html = '',
                             blockCount = 0;
@@ -310,7 +300,6 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
-                    .mock('modules/ads', adsMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         var imgCount = 0,
                             html = '',
@@ -353,7 +342,6 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
-                    .mock('modules/ads', adsMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) { 
                         liveblogElem.classList.add('is-live');
 
@@ -373,7 +361,6 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
-                    .mock('modules/ads', adsMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) { 
                         var blockTime = document.createElement('div');
 
@@ -407,7 +394,6 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
-                    .mock('modules/ads', adsMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) { 
                         moreElem.style.display = 'block';
 
@@ -426,7 +412,6 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
-                    .mock('modules/ads', adsMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) { 
                         moreElem.style.display = 'none';
 
@@ -474,7 +459,6 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
-                    .mock('modules/ads', adsMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) { 
                         var blocks,
                             html = '<div class="block"><img></img></div><div class="block"></div>';
@@ -503,7 +487,6 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
-                    .mock('modules/ads', adsMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) { 
                         var imgCount = 0,
                             html = '<div class="block"><img></img></div><div class="block"></div>';
