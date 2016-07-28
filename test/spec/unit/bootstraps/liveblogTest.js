@@ -7,11 +7,12 @@ define([
 ) {
     'use strict';
 
-    describe.only('ArticleTemplates/assets/js/bootstraps/liveblog', function() {
+    describe('ArticleTemplates/assets/js/bootstraps/liveblog', function() {
         var dummyCommon,
             container,
             injector,
-            sandbox;
+            sandbox,
+            liveblogBody;
 
         var relativeDatesMock,
             twitterMock,
@@ -41,6 +42,10 @@ define([
             util.init();
             sandbox = sinon.sandbox.create();
             sandbox.stub(window, 'setInterval');
+
+            liveblogBody = document.createElement('div');
+            liveblogBody.classList.add('article__body--liveblog');
+            container.appendChild(liveblogBody);
         });
 
         afterEach(function () {
@@ -59,8 +64,6 @@ define([
         });
 
         describe('init()', function () {
-            var scrollHandler;
-
             beforeEach(function () {
                 sandbox.stub(GU.util, 'debounce', function(func) {
                     return func;
@@ -235,11 +238,11 @@ define([
                         
                         liveblog.init(dummyCommon);
 
-                        expect(container.firstChild.id).to.eql('testBlock');
+                        expect(container.lastChild.id).to.eql('testBlock');
 
                         window.liveblogUpdateBlock('testBlock', '<div id="newBlock"></div>');
 
-                        expect(container.firstChild.id).to.eql('newBlock');
+                        expect(container.lastChild.id).to.eql('newBlock');
 
                         done();
                     });
@@ -328,8 +331,7 @@ define([
         });
 
         describe('window.liveblogTime()', function () {
-            var liveblogElem,
-                blockTime;
+            var liveblogElem;
 
             beforeEach(function() {
                 liveblogElem = document.createElement('div');
@@ -427,8 +429,7 @@ define([
         });
 
         describe('window.liveblogNewBlock(html)', function () {
-            var liveblogBody,
-                articleBody;
+            var articleBody;
 
             beforeEach(function () {
                 window.updateLiveblogAdPlaceholders = sinon.spy();
@@ -437,11 +438,7 @@ define([
                 articleBody.classList.add('article__body');
                 articleBody.innerHTML = '<div class="article__body--liveblog__pinned"></div>';
             
-                liveblogBody = document.createElement('div');
-                liveblogBody.classList.add('article__body--liveblog');
-
                 container.appendChild(articleBody);
-                container.appendChild(liveblogBody);
             });
 
             afterEach(function () {

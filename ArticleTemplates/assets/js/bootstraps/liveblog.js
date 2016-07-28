@@ -1,22 +1,17 @@
-/*global window,console,define */
+/*global window,define */
 define([
-    'bean',
-    'bonzo',
-    'modules/$',
     'modules/relativeDates',
     'modules/twitter',
     'modules/MyScroll'
 ], function (
-    bean,
-    bonzo,
-    $,
     relativeDates,
     twitter,
     MyScroll
 ) {
     'use strict';
 
-    var common,
+    var initialised,
+        common,
         newBlockHtml,
         liveblogStartPos;
 
@@ -33,7 +28,7 @@ define([
         block.classList.add('slideinright');
 
         while (insertBeforeElem && insertBeforeElem.nodeType !== 1) {
-            insertBeforeElem = insertBeforeElem.nextSibling
+            insertBeforeElem = insertBeforeElem.nextSibling;
         }
 
         if (!insertBeforeElem) {
@@ -82,22 +77,40 @@ define([
     }
 
     function liveMore() {
-        if($('.more--live-blogs')[0]){
-            bean.on($('.more--live-blogs')[0], 'click', function () {
-                $(this).hide();
-                $('.loading--liveblog').addClass('loading--visible');
-                
-                GU.util.signalDevice('showmore');
-            });
+        var liveMoreElem = document.getElementsByClassName('more--live-blogs')[0];
+
+        if (liveMoreElem) {
+            liveMoreElem.addEventListener('click', onLiveMoreClick.bind(null, liveMoreElem));
         }
     }
 
+    function onLiveMoreClick(liveMoreElem) {
+        var loadingElem = document.getElementsByClassName('loading--liveblog')[0];
+
+        liveMoreElem.style.display = 'none';
+
+        if (loadingElem) {
+            loadingElem.classList.add('loading--visible');
+        }
+
+        GU.util.signalDevice('showmore');
+    }
+
     function liveblogDeleteBlock(blockID) {
-        $('#' + blockID).remove();
+        var block = document.getElementById(blockID);
+
+        if (block) {
+            block.parentNode.removeChild(block);
+        }
     }
 
     function liveblogUpdateBlock(blockID, html) {
-        $('#' + blockID).replaceWith(html);
+        var block = document.getElementById(blockID),
+            newBlock = GU.util.getElemsFromHTML(html)[0];
+
+        if (block && newBlock) {
+            block.parentNode.replaceChild(newBlock, block);
+        }
     }
 
     function liveblogLoadMore(html) {
@@ -105,13 +118,14 @@ define([
             images = [],
             blocks,
             articleBody = document.getElementsByClassName('article__body')[0],
-            oldBlockCount = articleBody.getElementsByClassName('block').length;
+            oldBlockCount = articleBody.getElementsByClassName('block').length,
+            newBlockElems = GU.util.getElemsFromHTML(html);
 
-        html = bonzo.create(html);
+        document.getElementsByClassName('loading--liveblog')[0].classList.remove('loading--visible');
 
-        $('.loading--liveblog').removeClass('loading--visible');
-
-        $(html).appendTo('.article__body');
+        for (i = 0; i < newBlockElems.length; i++) {
+            articleBody.appendChild(newBlockElems[i]);
+        }
 
         blocks = articleBody.getElementsByClassName('block');
 
@@ -130,20 +144,31 @@ define([
     }
 
     function liveblogTime() {
-        if ($('.tone--liveBlog').hasClass('is-live')) {
+        var i,
+            blockTimes,
+            toneLiveBlogElem = document.getElementsByClassName('tone--liveBlog')[0];
+
+        if (toneLiveBlogElem && toneLiveBlogElem.classList.contains('is-live')) {
             relativeDates.init('.block__time', 'title');
         } else {
-            $('.block__time').each(function (el) {
-                $(el).html(el.getAttribute('title'));
-            });
+            blockTimes = document.getElementsByClassName('block__time');
+
+            for (i = 0; i < blockTimes.length; i++) {
+                blockTimes[i].innerHTML = blockTimes[i].getAttribute('title');
+            }
         }
     }
 
     function showLiveMore(show) {
-        if (show) {
-            $('.more--live-blogs').show();
-        } else {
-            $('.more--live-blogs').hide();
+        var liveMoreElem = document.getElementsByClassName('more--live-blogs')[0];
+
+        if (liveMoreElem) {
+
+            if (show) {
+               liveMoreElem.style.display = 'block';
+            } else {
+                liveMoreElem.style.display = 'none';
+            }
         }
     }
 
@@ -179,8 +204,8 @@ define([
             adjustMinuteBlocks(blocks);
 
             // update dimensions on orientation change
-            bean.on(window, 'resize', GU.util.debounce(adjustMinuteBlocks.bind(null, blocks), 100));
-        } else {
+            window.addEventListener('resize', GU.util.debounce(adjustMinuteBlocks.bind(null, blocks), 100));
+
             // If windows add background images to minute blocks
             if (document.body.classList.contains('windows')) {   
                 addBackgroundImagesToMinuteBlocks(blocks);
@@ -203,7 +228,6 @@ define([
         var i,
             figure,
             figInner,
-            isCoverImage,
             tweet,
             marginTop = 48;
 
@@ -295,7 +319,6 @@ define([
     function updateMinuteBlockTitles(blocks) {
         var i, 
             blockTitle,
-            blockTitles = [],
             titleString;
 
         for (i = 0; i < blocks.length; i++) {
@@ -354,7 +377,7 @@ define([
     function initScroller() {
         var scroller,
             liveblogElem,
-            minuteNavElem = $('.the-minute__nav'),
+            minuteNavElem = document.getElementsByClassName('the-minute__nav')[0],
             wrapperElem = document.getElementsByClassName('article--liveblog')[0],
             options = {
                 scrollX: false,
@@ -383,10 +406,10 @@ define([
             scroller.on('scrollEnd', onScrollEnd.bind(null, minuteNavElem, scroller));
 
             // add click event handler to minuteNavElem
-            bean.on(window, 'click', minuteNavElem, scrollToNextCard.bind(null, minuteNavElem, scroller));
+            minuteNavElem.addEventListener('click', scrollToNextCard.bind(null, minuteNavElem, scroller));
         
             // update scroll dimensions on orientation change
-            bean.on(window, 'resize', GU.util.debounce(onWindowResize.bind(null, liveblogElem, wrapperElem, scroller), 100));
+            window.addEventListener('resize', GU.util.debounce(onWindowResize.bind(null, liveblogElem, wrapperElem, scroller), 100));
         }
     }
 
@@ -401,7 +424,6 @@ define([
     function setScrollDimensions(liveblogElem, wrapperElem) {
         var i,
             elemHeight,
-            scroller,
             scrollHeight = 0,
             windowHeight = window.innerHeight;
 
@@ -422,7 +444,7 @@ define([
         liveblogElem.style.height = scrollHeight + 'px';
     }
 
-    function scrollToNextCard(minuteNavElem, scroller, evt) {
+    function scrollToNextCard(minuteNavElem, scroller) {
         if ((scroller.currentPage.pageY + 1) !== scroller.pages[0].length) {
             scroller.goToPage(0, scroller.currentPage.pageY + 1, 600);
 
@@ -448,13 +470,16 @@ define([
     }
 
     function ready(commonObj) {
-        if (!this.initialised) {
-            this.initialised = true;
+        var minuteHeaderElem,
+            minuteNavElem;
+
+        if (!initialised) {
+            initialised = true;
 
             common = commonObj;
             newBlockHtml = '';
-            liveblogStartPos = $('.article__body--liveblog').offset();
-    
+            liveblogStartPos = GU.util.getElementOffset(document.getElementsByClassName('article__body--liveblog')[0]);
+
             setupGlobals();
             window.liveblogTime();
             window.addEventListener('scroll', GU.util.debounce(updateBlocksOnScroll, 100, true));
@@ -462,11 +487,19 @@ define([
             
             twitter.init();
             
-            if ($('body').hasClass('the-minute')) {
+            if (document.body.classList.contains('the-minute')) {
                 setupTheMinute();
             } else {
                 setInterval(window.liveblogTime, 30000);
-                $('.the-minute__header, .the-minute__nav').remove();
+
+                if (minuteHeaderElem) {
+                    minuteHeaderElem.parentNode.removeChild(minuteHeaderElem);
+                }
+
+                if (minuteNavElem) {
+                    minuteNavElem.parentNode.removeChild(minuteNavElem);
+                }
+
                 twitter.enhanceTweets();
             }
         }
