@@ -205,11 +205,12 @@ define([
 
             // update dimensions on orientation change
             window.addEventListener('resize', GU.util.debounce(adjustMinuteBlocks.bind(null, blocks), 100));
-
+        } else {
             // If windows add background images to minute blocks
             if (document.body.classList.contains('windows')) {   
                 addBackgroundImagesToMinuteBlocks(blocks);
             }
+            
             initScroller();
         }
     }
@@ -454,9 +455,9 @@ define([
 
     function onScrollEnd(minuteNavElem, scroller) {
         if ((scroller.currentPage.pageY + 1) === scroller.pages[0].length) {
-            minuteNavElem.addClass('hide');
+            minuteNavElem.classList.add('hide');
         } else {
-            minuteNavElem.removeClass('hide');
+            minuteNavElem.classList.remove('hide');
         }
     }
 
