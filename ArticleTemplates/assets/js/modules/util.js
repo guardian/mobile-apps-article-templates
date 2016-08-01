@@ -142,7 +142,9 @@ define(function() {
                 div.innerHTML = html;
 
                 for (i = 0; i < div.childNodes.length; i++) {
-                    elems.push(div.childNodes[i]);
+                    if (div.childNodes[i].nodeType === 1) {
+                        elems.push(div.childNodes[i]);
+                    }
                 }
                 
                 return elems;

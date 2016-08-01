@@ -19,12 +19,9 @@ define([
 ) {
     'use strict';
 
-    var isAndroid,
-        trackCommentContainerView = true;
+    var trackCommentContainerView = true;
         
     function init() {
-        isAndroid = document.body.classList.contains('android');
-
         fastClick.attach(document.body); // polyfill to remove click delays on browsers with touch
         formatImages();
         figcaptionToggle();
@@ -504,7 +501,8 @@ define([
             hideElem,
             href,
             activeTab,
-            tabId;
+            tabId,
+            isAndroid = document.body.classList.contains('android');
 
         evt.preventDefault();
         
