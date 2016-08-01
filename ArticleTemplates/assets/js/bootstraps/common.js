@@ -1,7 +1,6 @@
 define([
     'fence',
     'fastClick',
-    'fontFaceObserver',
     'smoothScroll',
     'modules/comments',
     'modules/cards',
@@ -11,7 +10,6 @@ define([
 ], function(
     fence,
     fastClick,
-    FontFaceObserver,
     smoothScroll,
     comments,
     cards,
@@ -25,7 +23,7 @@ define([
         
     function init() {
 
-        checkFontLoadState(); // check to see whether custom fonts available as they sometimes fail to load
+        forceReloadFontStyles(); // sometimes fonts fail to load reloading css fixes this issue
         fastClick.attach(document.body); // polyfill to remove click delays on browsers with touch
         formatImages();
         figcaptionToggle();
@@ -55,18 +53,12 @@ define([
         }
     }
 
-    function checkFontLoadState() {
-        var font = new FontFaceObserver('Guardian Icons'),
-            fontStyles = document.getElementById('fontStyles');
+    function forceReloadFontStyles() {
+        var fontStyles = document.getElementById('fontStyles');
 
-        font.load().then(function () {
-            // font available - do nothing
-        }, function () {
-            // font unavailable - reload font stylesheet
-            if (fontStyles) {
-                fontStyles.parentNode.appendChild(fontStyles);
-            }
-        });
+        if (fontStyles) {
+            fontStyles.parentNode.replaceChild(fontStyles, fontStyles);
+        }
     }
 
     function formatImages(images) {

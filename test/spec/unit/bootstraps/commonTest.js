@@ -50,7 +50,6 @@ define([
             
         var fenceMock,
             fastClickMock,
-            FontFaceObserverMock,
             smoothScrollMock,
             commentsMock,
             cardsMock,
@@ -64,7 +63,6 @@ define([
             fastClickMock = {
                 attach: sinon.spy()
             };
-            FontFaceObserverMock = sinon.spy();
             smoothScrollMock = {
                 init: sinon.spy()
             };
@@ -128,7 +126,6 @@ define([
                injector
                     .mock('fence', fenceMock)
                     .mock('fastClick', fastClickMock)
-                    .mock('fontFaceObserver', FontFaceObserverMock)
                     .mock('smoothScroll', smoothScrollMock)
                     .mock('modules/comments', commentsMock)
                     .mock('modules/cards', cardsMock)
@@ -153,7 +150,6 @@ define([
                injector
                     .mock('fence', fenceMock)
                     .mock('fastClick', fastClickMock)
-                    .mock('fontFaceObserver', FontFaceObserverMock)
                     .mock('smoothScroll', smoothScrollMock)
                     .mock('modules/comments', commentsMock)
                     .mock('modules/cards', cardsMock)
@@ -178,7 +174,6 @@ define([
                 injector
                     .mock('fence', fenceMock)
                     .mock('fastClick', fastClickMock)
-                    .mock('fontFaceObserver', FontFaceObserverMock)
                     .mock('smoothScroll', smoothScrollMock)
                     .mock('modules/comments', commentsMock)
                     .mock('modules/cards', cardsMock)
@@ -202,7 +197,6 @@ define([
                 injector
                     .mock('fence', fenceMock)
                     .mock('fastClick', fastClickMock)
-                    .mock('fontFaceObserver', FontFaceObserverMock)
                     .mock('smoothScroll', smoothScrollMock)
                     .mock('modules/comments', commentsMock)
                     .mock('modules/cards', cardsMock)
@@ -230,7 +224,6 @@ define([
                 injector
                     .mock('fence', fenceMock)
                     .mock('fastClick', fastClickMock)
-                    .mock('fontFaceObserver', FontFaceObserverMock)
                     .mock('smoothScroll', smoothScrollMock)
                     .mock('modules/comments', commentsMock)
                     .mock('modules/cards', cardsMock)
@@ -259,7 +252,6 @@ define([
                 injector
                     .mock('fence', fenceMock)
                     .mock('fastClick', fastClickMock)
-                    .mock('fontFaceObserver', FontFaceObserverMock)
                     .mock('smoothScroll', smoothScrollMock)
                     .mock('modules/comments', commentsMock)
                     .mock('modules/cards', cardsMock)
@@ -290,7 +282,6 @@ define([
                 injector
                     .mock('fence', fenceMock)
                     .mock('fastClick', fastClickMock)
-                    .mock('fontFaceObserver', FontFaceObserverMock)
                     .mock('smoothScroll', smoothScrollMock)
                     .mock('modules/comments', commentsMock)
                     .mock('modules/cards', cardsMock)
@@ -320,7 +311,6 @@ define([
                 injector
                     .mock('fence', fenceMock)
                     .mock('fastClick', fastClickMock)
-                    .mock('fontFaceObserver', FontFaceObserverMock)
                     .mock('smoothScroll', smoothScrollMock)
                     .mock('modules/comments', commentsMock)
                     .mock('modules/cards', cardsMock)
@@ -345,7 +335,6 @@ define([
                 injector
                     .mock('fence', fenceMock)
                     .mock('fastClick', fastClickMock)
-                    .mock('fontFaceObserver', FontFaceObserverMock)
                     .mock('smoothScroll', smoothScrollMock)
                     .mock('modules/comments', commentsMock)
                     .mock('modules/cards', cardsMock)
@@ -368,7 +357,6 @@ define([
                 injector
                     .mock('fence', fenceMock)
                     .mock('fastClick', fastClickMock)
-                    .mock('fontFaceObserver', FontFaceObserverMock)
                     .mock('smoothScroll', smoothScrollMock)
                     .mock('modules/comments', commentsMock)
                     .mock('modules/cards', cardsMock)
@@ -393,7 +381,6 @@ define([
                 injector
                     .mock('fence', fenceMock)
                     .mock('fastClick', fastClickMock)
-                    .mock('fontFaceObserver', FontFaceObserverMock)
                     .mock('smoothScroll', smoothScrollMock)
                     .mock('modules/comments', commentsMock)
                     .mock('modules/cards', cardsMock)
@@ -418,7 +405,6 @@ define([
                 injector
                     .mock('fence', fenceMock)
                     .mock('fastClick', fastClickMock)
-                    .mock('fontFaceObserver', FontFaceObserverMock)
                     .mock('smoothScroll', smoothScrollMock)
                     .mock('modules/comments', commentsMock)
                     .mock('modules/cards', cardsMock)
@@ -443,7 +429,6 @@ define([
                 injector
                     .mock('fence', fenceMock)
                     .mock('fastClick', fastClickMock)
-                    .mock('fontFaceObserver', FontFaceObserverMock)
                     .mock('smoothScroll', smoothScrollMock)
                     .mock('modules/comments', commentsMock)
                     .mock('modules/cards', cardsMock)
@@ -475,7 +460,6 @@ define([
                 injector
                     .mock('fence', fenceMock)
                     .mock('fastClick', fastClickMock)
-                    .mock('fontFaceObserver', FontFaceObserverMock)
                     .mock('smoothScroll', smoothScrollMock)
                     .mock('modules/comments', commentsMock)
                     .mock('modules/cards', cardsMock)
