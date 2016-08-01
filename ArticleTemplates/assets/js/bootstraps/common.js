@@ -1,6 +1,7 @@
 define([
     'fence',
     'fastClick',
+    'fontFaceObserver',
     'smoothScroll',
     'modules/comments',
     'modules/cards',
@@ -10,6 +11,7 @@ define([
 ], function(
     fence,
     fastClick,
+    FontFaceObserver,
     smoothScroll,
     comments,
     cards,
@@ -22,6 +24,8 @@ define([
     var trackCommentContainerView = true;
         
     function init() {
+
+        checkFontLoadState(); // check to see whether custom fonts available as they sometimes fail to load
         fastClick.attach(document.body); // polyfill to remove click delays on browsers with touch
         formatImages();
         figcaptionToggle();
@@ -49,6 +53,20 @@ define([
         if (!document.body.classList.contains('no-ready')) {
             window.location.href = 'x-gu://ready';
         }
+    }
+
+    function checkFontLoadState() {
+        var font = new FontFaceObserver('Guardian Icons'),
+            fontStyles = document.getElementById('fontStyles');
+
+        font.load().then(function () {
+            // font available - do nothing
+        }, function () {
+            // font unavailable - reload font stylesheet
+            if (fontStyles) {
+                fontStyles.parentNode.appendChild(fontStyles);
+            }
+        });
     }
 
     function formatImages(images) {

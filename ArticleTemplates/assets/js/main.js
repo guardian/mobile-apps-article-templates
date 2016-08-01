@@ -11,6 +11,7 @@
             mobileSlider: 'components/mobile-range-slider',
             flipSnap: 'components/flipsnap',
             fastClick: '../../../node_modules/fastclick/lib/fastclick',
+            fontFaceObserver: '../../../node_modules/fontfaceobserver/fontfaceobserver',
             qwery: '../../../node_modules/qwery/qwery',
             fence: '../../../node_modules/fence/fence',
             smoothScroll: '../../../node_modules/smooth-scroll/dist/js/smooth-scroll',
@@ -27,6 +28,9 @@
             },
             mobileSlider: {
                 exports: 'MobileRangeSlider'
+            },
+            fontFaceObserver: {
+                exports: 'FontFaceObserver'
             }
         }
     });
