@@ -146,9 +146,17 @@ define([
     function liveblogTime() {
         var i,
             blockTimes,
-            toneLiveBlogElem = document.getElementsByClassName('tone--liveBlog')[0];
+            isLive = false,
+            toneLiveBlogElems = document.getElementsByClassName('tone--liveBlog');
 
-        if (toneLiveBlogElem && toneLiveBlogElem.classList.contains('is-live')) {
+        for (i = 0; i < toneLiveBlogElems.length; i++) {
+            if (toneLiveBlogElems[i].classList.contains('is-live')) {
+                isLive = true;
+                break;
+            }
+        }
+
+        if (isLive) {
             relativeDates.init('.block__time', 'title');
         } else {
             blockTimes = document.getElementsByClassName('block__time');
