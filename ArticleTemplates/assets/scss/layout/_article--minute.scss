@@ -5,7 +5,8 @@
 
 $minute_bg: #005689;
 $minute_main: #fff;
-$minute_accent: #ea291f;
+$minute_accent: #4BC6DF;
+$minute_main_2: #00436A;
 
 @mixin minute_page($bg: true) {
     @if ($bg == true) {
@@ -82,7 +83,7 @@ $minute_accent: #ea291f;
         // text colour & background colour are different for thumbnails
         @if ($type == thumbnail) {
             background: $minute_accent;
-            color: $minute_main;
+            color: $minute_main_2;
             min-height: 60px;
         } @else {
             color: rgba($minute_main, .75);
