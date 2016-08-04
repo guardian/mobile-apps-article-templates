@@ -59,7 +59,7 @@ define([
         var font = new FontFaceObserver('Guardian Icons'),
             fontStyles = document.getElementById('fontStyles');
 
-        font.load().then(function () {
+        font.load(null, 1000).then(function () {
             // font available - do nothing
         }, function () {
             // font unavailable - reload font stylesheet
