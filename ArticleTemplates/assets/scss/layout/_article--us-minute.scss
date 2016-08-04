@@ -1,7 +1,6 @@
 $minute_bg: #005689;
 $minute_main: #fff;
-$minute_accent: #4BC6DF;
-$minute_main_2: #00436A;
+$minute_accent: #ea291f;
 
 // styles images within blocks - $type accepts "summary" and "key-event" for full cover images, or "thumbnail"
 @mixin minute_block_images($type) {
@@ -15,7 +14,7 @@ $minute_main_2: #00436A;
         // text colour & background colour are different for thumbnails
         @if ($type == thumbnail) {
             background: $minute_accent;
-            color: $minute_main_2;
+            color: $minute_main;
         } @else {
             color: rgba($minute_main, .75);
         }
@@ -29,7 +28,7 @@ $minute_main_2: #00436A;
     }
 }
 
-body.the-euro-minute {
+body.the-minute.tone--usMinute {
 
     &:not(.advert-config--tablet) {
         background: $minute_bg;

@@ -57,7 +57,7 @@ define([
         var fontStyles = document.getElementById('fontStyles');
 
         if (fontStyles) {
-            fontStyles.parentNode.replaceChild(fontStyles, fontStyles);
+            fontStyles.parentNode.appendChild(fontStyles);
         }
     }
 
