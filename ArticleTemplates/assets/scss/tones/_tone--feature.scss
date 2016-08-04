@@ -258,16 +258,6 @@
         }
     }
 
-    //TODO: specificity needed due to previous styles - improve
-    a.tell-me-when:active, a.tell-me-when.added {
-        background-color: color(tone-feature1-accent);
-        color: color(shade-7);
-    }
-    a.tell-me-when,  a.tell-me-when.added:active {
-        border-color: color(tone-feature1-accent);
-        color: color(tone-feature1-accent);
-    }
-
     // Feature Quizzes
     .quiz {
         // Question Styles
@@ -321,6 +311,30 @@
             &__message {
                 color: color(tone-feature1-accent);
             }
+        }
+    }
+
+    // Tell Me When
+    .tell-me-when-container {
+        background: #951c55; /* backgroundColour, navigationColour */
+        border-color: #fdadba; /* kickerColour, quoteColour */
+
+        .tell-me-when-banner {
+            color: #fdadba; /* kickerColour, quoteColour */
+        }
+
+        .tell-me-when-title,
+        .tell-me-when-body {
+            color: #ffffff; /* metaColour, navigationButtonColour, standfirstColour, savedForLaterTrueColour, headlineColour */
+        }
+
+        .tell-me-when-button {
+            color: #ffffff; /* metaColour, navigationButtonColour, standfirstColour, savedForLaterTrueColour, headlineColour */
+            border-color: #ffffff; /* metaColour, navigationButtonColour, standfirstColour, savedForLaterTrueColour, headlineColour */
+        }
+
+        .tell-me-when-button--remove {
+            background: #e02b7f; /* savedForLaterFalseColour, ruleColour, navigationDownColour */
         }
     }
 }

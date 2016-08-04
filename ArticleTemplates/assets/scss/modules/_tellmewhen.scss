@@ -20,60 +20,81 @@ Display an alerts toggle.
 ```
 */
 
-a.tell-me-when {
-    @include meta();
-    font-family: $agate-sans;
+.tell-me-when-container {
+    border-top: 2px solid;
     padding: base-px(.5, 1, .5, 1);
-    margin: base-px(0, 0, 1, -.3);
-    display: inline-block;
-    border-radius: 30px;
-    vertical-align: bottom;
-    max-width: 350px;
-    color: color(tone-news);
-    border: 1px solid color(tone-news);
-    transition: background-color 0.3s;
-    width: 100%;
-    position: relative;
+    background: #005689; /* backgroundColour, navigationColour */
+    border-color: #4bc6df; /* kickerColour, quoteColour */
 
-    &:active,
-    &.added {
-        background-color: color(tone-news);
-        color: color(shade-7);
+    .tell-me-when-banner,
+    .tell-me-when-title,
+    .tell-me-when-body {
+        margin-bottom: base-px(.5);
     }
 
-    span[data-icon] {
-        font-size: $body-size-2;
-        position: absolute;
-        left: 9px;
-        top: 4px;
+    .tell-me-when-banner {
+        font-weight: 600;
+        font-size: 1.8rem;
+        line-height: 1.8rem;
+        font-family: $agate-sans;
+        color: #4bc6df; /* kickerColour, quoteColour */
     }
 
-    .tell-me-when__label {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        padding-left: 26px;
-        width: 100%;
+    .tell-me-when-title {
+        font-weight: 600;
+        font-size: 2.3rem;
+        line-height: 2.3rem;
+        font-family: $egyptian-display;
+        color: #ffffff; /* metaColour, navigationButtonColour, standfirstColour, savedForLaterTrueColour, headlineColour */
+    }
+
+    .tell-me-when-body {
+        color: #ffffff; /* metaColour, navigationButtonColour, standfirstColour, savedForLaterTrueColour, headlineColour */
+    }
+
+    .tell-me-when-button {
+        @include meta();
+        font-family: $agate-sans;
+        padding: base-px(.5, 1, .5, 1);
+        margin: base-px(0, 0, 1, -.3);
         display: inline-block;
-        line-height: 1.2;
+        border-radius: 30px;
+        vertical-align: bottom;
+        border: 1px solid;
+        transition: background-color 0.3s;
+        position: relative;
+        color: #ffffff; /* metaColour, navigationButtonColour, standfirstColour, savedForLaterTrueColour, headlineColour */
+        border-color: #ffffff; /* metaColour, navigationButtonColour, standfirstColour, savedForLaterTrueColour, headlineColour */
+
+        span[data-icon] {
+            font-size: $body-size-2;
+            position: absolute;
+            left: 9px;
+            top: 4px;
+        }
+
+        .tell-me-when__label {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding-left: 26px;
+            width: 100%;
+            display: inline-block;
+            line-height: 1.2;
+        }
     }
-    
-    .tell-me-when__state--remove {
+
+    a.tell-me-when-button--remove {
         display: none;
+        background: #4bc6df; /* savedForLaterFalseColour, ruleColour, navigationDownColour */
     }
 
     &.added {
-        &:active{
-            color: color(tone-news);
-            background-color: color(shade-7);
-            border: 1px solid color(tone-news);
+        a.tell-me-when-button--remove {
+            display: inline-block;
         }
 
-        .tell-me-when__state--remove {
-            display: block;
-        }
-
-        .tell-me-when__state--add {
+        a.tell-me-when-button--add {
             display: none;
         }
     }

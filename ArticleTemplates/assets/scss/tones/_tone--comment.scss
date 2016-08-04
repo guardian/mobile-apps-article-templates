@@ -201,14 +201,27 @@
         }
     }
 
-    //TODO: specificity needed due to previous styles - improve
-    a.tell-me-when:active, a.tell-me-when.added {
-        background-color: color(tone-comment-accent);
-        color: color(shade-7);
-    }
-    
-    a.tell-me-when,  a.tell-me-when.added:active {
-        border-color: color(tone-comment-accent);
-        color: color(tone-comment-accent);
+    // Tell Me When
+    .tell-me-when-container {
+        background: #767676; /* backgroundColour, navigationColour */
+        border-color: #f39f33; /* kickerColour, quoteColour */
+
+        .tell-me-when-banner {
+            color: #f39f33; /* kickerColour, quoteColour */
+        }
+
+        .tell-me-when-title,
+        .tell-me-when-body {
+            color: #ffffff; /* metaColour, navigationButtonColour, standfirstColour, savedForLaterTrueColour, headlineColour */
+        }
+
+        .tell-me-when-button {
+            color: #ffffff; /* metaColour, navigationButtonColour, standfirstColour, savedForLaterTrueColour, headlineColour */
+            border-color: #ffffff; /* metaColour, navigationButtonColour, standfirstColour, savedForLaterTrueColour, headlineColour */
+        }
+
+        .tell-me-when-button--remove {
+            background: #676767; /* savedForLaterFalseColour, ruleColour, navigationDownColour */
+        }
     }
 }
