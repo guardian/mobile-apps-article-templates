@@ -61,17 +61,6 @@ define([
                                     } else {
                                         // Hide previously opened block
                                         $(".comment--open").removeClass("comment--open");
-                                        // Calculate height to animate initial comments
-                                        var originalHeight = block[0].clientHeight;
-                                        // 110px is the smallest height an initial comment can be with options expanded
-                                        if (originalHeight > 85) {
-                                            // 34 is the height of comment__options
-                                            block.css("min-height", originalHeight + 34);
-                                        } else {
-                                            block.css("min-height", "85px");
-                                        }
-                                        // Add comment open class to show Reply and Report
-                                        block.css("min-height", originalHeight);
                                         block.addClass('comment--open');
                                     }
                                 }
