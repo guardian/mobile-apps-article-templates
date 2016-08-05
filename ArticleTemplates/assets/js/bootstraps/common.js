@@ -428,16 +428,13 @@ define([
 
     function tellMeWhenSwitch(added) {
         var i,
-            tellMeWhenLink,
-            tellMeWhenLinks = document.querySelectorAll('a.tell-me-when');
+            tellMeWhenContainer = document.getElementsByClassName('tell-me-when-container')[0];
 
-        for (i = 0; i < tellMeWhenLinks.length; i++) {
-            tellMeWhenLink = tellMeWhenLinks[i];
-
-            if (parseInt(added, 10) === 1) {
-                tellMeWhenLink.classList.add('added');
+        if (tellMeWhenContainer) {
+            if (added) {
+                tellMeWhenContainer.classList.add('added');
             } else {
-                tellMeWhenLink.classList.remove('added');
+                tellMeWhenContainer.classList.remove('added');
             }
         }
     }
