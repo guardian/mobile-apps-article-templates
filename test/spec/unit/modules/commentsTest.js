@@ -5,7 +5,7 @@ define([
 ) {
     'use strict';
 
-    describe.only('ArticleTemplates/assets/js/modules/comments', function() {
+    describe('ArticleTemplates/assets/js/modules/comments', function() {
         var sandbox,
             container,
             injector;
@@ -438,5 +438,353 @@ define([
                     });
             });
         });
+
+        describe('window.articleCommentsInserter(html)', function () {
+            var loadingBlock; 
+
+            beforeEach(function () {
+                loadingBlock = document.createElement('div');
+
+                loadingBlock.classList.add('comments__block--loading');
+
+                container.appendChild(loadingBlock);
+            });
+
+            afterEach(function () {
+                expect(loadingBlock.style.display).to.equal('none');
+            });
+
+            it('show empty comments block if no html available', function (done) {
+               injector
+                    .mock('modules/relativeDates', relativeDatesMock)
+                    .require(['ArticleTemplates/assets/js/modules/comments'], function (comments) {
+                        var emptyCommentBlock = document.createElement('div');
+
+                        emptyCommentBlock.classList.add('comments__block--empty');
+                        emptyCommentBlock.style.display = 'none';
+
+                        container.appendChild(emptyCommentBlock);
+
+                        comments.init();
+
+                        window.articleCommentsInserter('');
+
+                        expect(emptyCommentBlock.style.display).to.not.eql('none');
+                        
+                        done();
+                    });
+            });
+
+            it('adds html to the page and calls window.commentsReplyFormatting', function (done) {
+               injector
+                    .mock('modules/relativeDates', relativeDatesMock)
+                    .require(['ArticleTemplates/assets/js/modules/comments'], function (comments) {
+                        var commentsContainer = document.createElement('div');
+
+                        commentsContainer.classList.add('comments__container');
+                
+                        container.appendChild(commentsContainer);
+
+                        comments.init();
+
+                        window.commentsReplyFormatting = sinon.spy();
+
+                        window.articleCommentsInserter('<div>Hello World</div>');
+
+                        expect(commentsContainer.firstChild.innerText).to.eql('Hello World');
+                        expect(window.commentsReplyFormatting).to.have.been.calledOnce;
+
+                        done();
+                    });
+            });
+        });
+
+        describe('window.commentsInserter(html)', function () {
+            it('if no html show emptyBlock and hode loadingBlock', function (done) {
+               injector
+                    .mock('modules/relativeDates', relativeDatesMock)
+                    .require(['ArticleTemplates/assets/js/modules/comments'], function (comments) {
+                        var emptyCommentBlock = document.createElement('div'),
+                            loadingBlock = document.createElement('div');
+
+                        loadingBlock.classList.add('comments__block--loading');
+
+                        container.appendChild(loadingBlock);
+
+                        emptyCommentBlock.classList.add('comments__block--empty');
+                        emptyCommentBlock.style.display = 'none';
+
+                        container.appendChild(emptyCommentBlock);
+
+                        comments.init();
+
+                        window.articleCommentsInserter('');
+
+                        expect(loadingBlock.style.display).to.eql('none');
+                        expect(emptyCommentBlock.style.display).to.not.eql('none');
+
+                        done();
+                    });
+            });
+
+            it('if html add to container', function (done) {
+               injector
+                    .mock('modules/relativeDates', relativeDatesMock)
+                    .require(['ArticleTemplates/assets/js/modules/comments'], function (comments) {
+                        var commentsContainer = document.createElement('div'),
+                            loadingBlock = document.createElement('div');
+
+                        loadingBlock.classList.add('comments__block--loading');
+
+                        container.appendChild(loadingBlock);
+
+                        commentsContainer.classList.add('comments__container');
+                
+                        container.appendChild(commentsContainer);
+
+                        comments.init();
+
+                        window.commentsReplyFormatting = sinon.spy();
+
+                        window.commentsInserter('<div>Hello World</div>');
+
+                        expect(commentsContainer.firstChild.innerText).to.eql('Hello World');
+                        expect(window.commentsReplyFormatting).to.have.been.calledOnce;
+                        expect(commentsContainer.childNodes[1]).to.eql(loadingBlock);
+
+                        done();
+                    });
+            });
+        });
+
+        describe('window.articleCommentsFailed()', function () {
+            it('if comments fail to load show failed comments block', function (done) {
+               injector
+                    .mock('modules/relativeDates', relativeDatesMock)
+                    .require(['ArticleTemplates/assets/js/modules/comments'], function (comments) {
+                        var commentsElem = document.createElement('div'),
+                            failedBlock = document.createElement('div'),
+                            loadingBlock = document.createElement('div');
+
+                        commentsElem.classList.add('comments');
+
+                        container.appendChild(commentsElem);  
+
+                        loadingBlock.classList.add('comments__block--loading');
+
+                        container.appendChild(loadingBlock);
+
+                        failedBlock.classList.add('comments__block--failed');
+                        failedBlock.style.display = 'none';
+
+                        container.appendChild(failedBlock);
+
+                        comments.init();
+
+                        window.articleCommentsFailed();
+
+                        expect(loadingBlock.style.display).to.eql('none');
+                        expect(failedBlock.style.display).to.not.eql('none');
+                        expect(commentsElem.classList.contains('comments-has-failed')).to.eql(true);
+
+                        done();
+                    });
+            });
+        });
+
+        describe('window.commentsFailed()', function () {
+            it('if comments fail to load show failed comments block', function (done) {
+               injector
+                    .mock('modules/relativeDates', relativeDatesMock)
+                    .require(['ArticleTemplates/assets/js/modules/comments'], function (comments) {
+                        var commentsElem = document.createElement('div'),
+                            failedBlock = document.createElement('div'),
+                            loadingBlock = document.createElement('div');
+
+                        commentsElem.classList.add('comments');
+
+                        container.appendChild(commentsElem);  
+
+                        loadingBlock.classList.add('comments__block--loading');
+
+                        container.appendChild(loadingBlock);
+
+                        failedBlock.classList.add('comments__block--failed');
+                        failedBlock.style.display = 'none';
+
+                        container.appendChild(failedBlock);
+
+                        comments.init();
+
+                        window.commentsFailed();
+
+                        expect(loadingBlock.style.display).to.eql('none');
+                        expect(failedBlock.style.display).to.not.eql('none');
+                        expect(commentsElem.classList.contains('comments-has-failed')).to.eql(true);
+
+                        done();
+                    });
+            });
+        });
+
+        describe('window.commentsEnd()', function () {
+            it('removes loadingBlock', function (done) {
+               injector
+                    .mock('modules/relativeDates', relativeDatesMock)
+                    .require(['ArticleTemplates/assets/js/modules/comments'], function (comments) {
+                        var loadingBlock = document.createElement('div');
+
+                        container.appendChild(loadingBlock);
+
+                        comments.init();
+
+                        window.commentsEnd();
+
+                        expect(loadingBlock.parentNode).to.be.falsy;
+                       
+                        done();
+                    });
+            });
+        });
+
+        describe('window.commentsClosed()', function () {
+            it('marks comments as closed', function (done) {
+               injector
+                    .mock('modules/relativeDates', relativeDatesMock)
+                    .require(['ArticleTemplates/assets/js/modules/comments'], function (comments) {
+                        var discussionElem = document.createElement('div'),
+                            commentsElem = document.createElement('div');
+
+                        discussionElem.id = 'discussion';
+
+                        container.appendChild(discussionElem);
+
+                        commentsElem.classList.add('comments');
+
+                        container.appendChild(commentsElem);
+
+                        comments.init();
+
+                        window.commentsClosed();
+
+                        expect(discussionElem.classList.contains('comments--closed')).to.eql(true);
+                        expect(commentsElem.classList.contains('comments--closed')).to.eql(true);
+                       
+                        done();
+                    });
+            });
+        });
+
+        describe('window.commentsOpen()', function () {
+            it('marks comments as open', function (done) {
+               injector
+                    .mock('modules/relativeDates', relativeDatesMock)
+                    .require(['ArticleTemplates/assets/js/modules/comments'], function (comments) {
+                        var discussionElem = document.createElement('div'),
+                            commentsElem = document.createElement('div');
+
+                        discussionElem.id = 'discussion';
+
+                        container.appendChild(discussionElem);
+
+                        commentsElem.classList.add('comments');
+
+                        container.appendChild(commentsElem);
+
+                        comments.init();
+
+                        window.commentsOpen();
+
+                        expect(discussionElem.classList.contains('comments--open')).to.eql(true);
+                        expect(commentsElem.classList.contains('comments--open')).to.eql(true);
+                       
+                        done();
+                    });
+            });
+        });
+
+        describe('window.commentTime()', function () {
+            it('marks comments as open', function (done) {
+               injector
+                    .mock('modules/relativeDates', relativeDatesMock)
+                    .require(['ArticleTemplates/assets/js/modules/comments'], function (comments) {
+                        comments.init();
+
+                        window.commentTime();
+
+                        expect(relativeDatesMock.init).to.have.been.called;
+                        expect(relativeDatesMock.init).to.have.been.calledWith('.comment__timestamp', 'title');
+                        
+                        done();
+                    });
+            });
+        });
+
+        describe('window.commentsRecommendIncrease(id, number)', function () {
+            it('marks comments as open', function (done) {
+               injector
+                    .mock('modules/relativeDates', relativeDatesMock)
+                    .require(['ArticleTemplates/assets/js/modules/comments'], function (comments) {
+                        var commentElem = document.createElement('div'),
+                            commentReccomends = document.createElement('div'),
+                            commentReccomendsCount = document.createElement('div');
+
+                        commentElem.id = 'xxx';
+
+                        comments.init();
+
+                        commentReccomends.classList.add('comment__recommend');
+
+                        commentReccomendsCount.classList.add('comment__recommend__count');
+
+                        commentReccomends.appendChild(commentReccomendsCount);
+
+                        commentElem.appendChild(commentReccomends);
+
+                        container.appendChild(commentElem);
+
+                        window.commentsRecommendIncrease('xxx', 666);
+
+                        expect(commentReccomends.classList.contains('increase')).to.eql(true);
+                        expect(commentReccomendsCount.innerText).to.eql('666');
+                        
+                        done();
+                    });
+            });
+        });
+
+        describe('window.commentsRecommendDecrease(id, number)', function () {
+            it('marks comments as open', function (done) {
+               injector
+                    .mock('modules/relativeDates', relativeDatesMock)
+                    .require(['ArticleTemplates/assets/js/modules/comments'], function (comments) {
+                        var commentElem = document.createElement('div'),
+                            commentReccomends = document.createElement('div'),
+                            commentReccomendsCount = document.createElement('div');
+
+                        commentElem.id = 'xxx';
+
+                        comments.init();
+
+                        commentReccomends.classList.add('comment__recommend');
+                        commentReccomends.classList.add('increase')
+
+                        commentReccomendsCount.classList.add('comment__recommend__count');
+
+                        commentReccomends.appendChild(commentReccomendsCount);
+
+                        commentElem.appendChild(commentReccomends);
+
+                        container.appendChild(commentElem);
+
+                        window.commentsRecommendDecrease('xxx', 666);
+
+                        expect(commentReccomends.classList.contains('increase')).to.eql(false);
+                        expect(commentReccomendsCount.innerText).to.eql('666');
+                        
+                        done();
+                    });
+            });
+        });           
     });
 });
