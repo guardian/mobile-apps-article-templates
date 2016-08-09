@@ -52,7 +52,7 @@ define([
                     moreCommentsButton.classList.add('more');
                     moreCommentsButton.classList.add('more--comments');
                     moreCommentsButton.innerHTML = '<a class="more__label"><span class="more__icon" data-icon="&#xe050;" aria-hidden="true"></span><span class="more__text">' + numOfComments + ' more replies</span></a>';
-                    moreCommentsButton.addEventListener('click', handleMoreCommentsClick);
+                    moreCommentsButton.addEventListener('click', handleMoreCommentsClick.bind(null, moreCommentsButton));
                     discussionThread.children[4].parentNode.insertBefore(moreCommentsButton, discussionThread.children[4]);
                 }
             }
@@ -65,13 +65,9 @@ define([
         }
     }
 
-    function handleMoreCommentsClick(evt) {
-        var moreCommentsButton = evt.target;
-
+    function handleMoreCommentsClick(moreCommentsButton) {
         moreCommentsButton.style.display = 'none';
         moreCommentsButton.parentNode.classList.add('expand');
-
-        evt.stopPropagation();
     }
 
     function handleCommentClick(comment, evt) {
