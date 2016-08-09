@@ -1,14 +1,8 @@
-/*global window,console,define */
+/*global window,define */
 define([
-    'bean',
-    'bonzo',
-    'modules/relativeDates',
-    'modules/$'
+    'modules/relativeDates'
 ], function(
-    bean,
-    bonzo,
-    relativeDates,
-    $
+    relativeDates
 ) {
     'use strict';
 
@@ -16,9 +10,9 @@ define([
 
     function setupGlobals() {
         window.articleCommentsInserter = articleCommentsInserter;
-        window.commentsInserter = commentsInserter;
+        window.commentsInserter = commentsInserter; // Almost the same as window.articleCommentsInserter - WHY?
         window.articleCommentsFailed = articleCommentsFailed;
-        window.commentsFailed = commentsFailed;
+        window.commentsFailed = articleCommentsFailed; // Exactly the same as window.articleCommentsFailed - WHY?
         window.commentsEnd = commentsEnd;
         window.commentsClosed = commentsClosed;
         window.commentsOpen = commentsOpen;
@@ -52,7 +46,7 @@ define([
                 numOfComments = discussionThread.children.length - 4;
 
                 if (numOfComments === 1) {
-                    discussionThread.classList.add("block--discussion-thread--orphan");
+                    discussionThread.classList.add('block--discussion-thread--orphan');
                 } else {
                     moreCommentsButton = document.createElement('div');
                     moreCommentsButton.classList.add('more');
@@ -93,7 +87,7 @@ define([
             evt.stopPropagation();
         } else if (comment.classList.contains('visible')) {
             if (comment.classList.contains('comment--open')) {
-                comment.classList.remove('comment--open')
+                comment.classList.remove('comment--open');
             } else {
                 openComments = document.getElementsByClassName('comment--open');
 
@@ -101,7 +95,7 @@ define([
                     openComments[i].classList.remove('comment--open');
                 }
 
-                comment.classList.add('comment--open')
+                comment.classList.add('comment--open');
             }
         }
     }
@@ -109,56 +103,127 @@ define([
     function targetContainsBlackListedClass(classList) {
         var stopPropagationBlackList = ['more--comments', 'comment__reply', 'comment__recommend'];
 
-        return stopPropagationBlackList.some(function (v) {
-            return classList.indexOf(v) >= 0;
+        return stopPropagationBlackList.some(function (className) {
+            return classList.indexOf(className) >= 0;
         });
     }
 
     function articleCommentsInserter(html) {
-        $('.comments__block--loading').hide();
+        var comments,
+            commentsContainer,
+            emptyCommentBlock,
+            i,
+            loadingBlock = document.getElementsByClassName('comments__block--loading')[0];
+
+        if (loadingBlock) {
+            loadingBlock.style.display = 'none';
+        }
+
         if (!html) {
-            $('.comments__block--empty').show();
+            emptyCommentBlock = document.getElementsByClassName('comments__block--empty')[0];
+
+            if (emptyCommentBlock) {
+                emptyCommentBlock.style.display = 'block';
+            }
         } else {
-            html = bonzo.create(html);
-            $(html).appendTo('.comments__container');
+            commentsContainer = document.getElementsByClassName('comments__container')[0];
+
+            if (commentsContainer) {
+                comments = GU.util.getElemsFromHTML(html);
+
+                for (i = 0; i < comments.length; i++) {
+                    commentsContainer.appendChild(comments[i]);
+                }
+            }
+
             commentsReplyFormatting();
         }
     }
 
     function commentsInserter(html) {
+        var comments,
+            commentsContainer = document.getElementsByClassName('comments__container')[0],
+            emptyCommentBlock,
+            i,
+            loadingBlock = document.getElementsByClassName('comments__block--loading')[0];
+
         if (!html) {
-            $('.comments__block--empty').show();
-            $('.comments__block--loading').hide();
+            emptyCommentBlock = document.getElementsByClassName('comments__block--empty')[0];
+
+            if (emptyCommentBlock) {
+                emptyCommentBlock.style.display = 'block';
+            }
+
+            if (loadingBlock) {
+                loadingBlock.style.display = 'none';
+            }
         } else {
-            html = bonzo.create(html);
-            $(html).appendTo($('.comments__container'));
+            if (commentsContainer) {
+                comments = GU.util.getElemsFromHTML(html);
+
+                for (i = 0; i < comments.length; i++) {
+                    commentsContainer.appendChild(comments[i]);
+                }
+            }
+
             commentsReplyFormatting();
         }
-        $('.comments__block--loading').appendTo($('.comments__container'));
+
+        if (commentsContainer && loadingBlock) {
+            commentsContainer.appendChild(loadingBlock);
+        }
     }
 
     function articleCommentsFailed() {
-        $('.comments__block--failed').show();
-        $('.comments__block--loading').hide();
-        $('.comments').addClass('comments-has-failed');
-    }
+        var commentsElem = document.getElementsByClassName('comments')[0],
+            failedBlock = document.getElementsByClassName('comments__block--failed')[0],
+            loadingBlock = document.getElementsByClassName('comments__block--loading')[0];
 
-    function commentsFailed() {
-        $('.comments__block--loading').hide();
-        $('.comments__block--failed').show();
-        $('.comments').addClass('comments-has-failed');
+        if (failedBlock) {
+            failedBlock.style.display = 'block';
+        }
+
+        if (loadingBlock) {
+            loadingBlock.style.display = 'none';
+        }
+
+        if (commentsElem) {
+            commentsElem.classList.add('comments-has-failed');
+        }
     }
 
     function commentsEnd() {
-        $('.comments__block--loading').remove();
+        var loadingBlock = document.getElementsByClassName('comments__block--loading')[0];
+
+        if (loadingBlock) {
+            loadingBlock.parentNode.removeChild(loadingBlock);
+        }
     }
 
     function commentsClosed() {
-        $(".comments, #discussion").addClass("comments--closed");
+        var commentsElem = document.getElementsByClassName('comments')[0],
+            discussionElem = document.getElementById('discussion');
+
+        if (commentsElem) {
+            commentsElem.classList.add('comments--closed');
+        }
+
+        if (discussionElem) {
+            discussionElem.classList.add('comments--closed');
+        }
     }
 
     function commentsOpen() {
-        $(".comments, #discussion").addClass("comments--open");
+        var commentsElem = document.getElementsByClassName('comments')[0],
+            discussionElem = document.getElementById('discussion');
+
+        if (commentsElem) {
+            commentsElem.classList.add('comments--open');
+        }
+
+        if (discussionElem) {
+            discussionElem.classList.add('comments--open');
+        }
     }
 
     function commentTime() {
@@ -166,15 +231,31 @@ define([
     }
 
     function commentsRecommendIncrease(id, number) {
-        var target = 'div[id="' + id + '"] .comment__recommend';
-        $(target).addClass('increase');
-        $(target + ' .comment__recommend__count').text(number);
+        var target = 'div[id="' + id + '"] .comment__recommend',
+            targetElem = document.querySelector(target),
+            countElem = document.querySelector(target + ' .comment__recommend__count');
+
+        if (targetElem) {
+            targetElem.classList.add('increase');
+        }
+
+        if (countElem) {
+            countElem.innerText = number;
+        }
     }
 
     function commentsRecommendDecrease(id, number) {
-        var target = 'div[id="' + id + '"] .comment__recommend';
-        $(target).removeClass('increase');
-        $(target + ' .comment__recommend__count').text(number);
+        var target = 'div[id="' + id + '"] .comment__recommend',
+            targetElem = document.querySelector(target),
+            countElem = document.querySelector(target + ' .comment__recommend__count');
+
+        if (targetElem) {
+            targetElem.classList.remove('increase');
+        }
+
+        if (countElem) {
+            countElem.innerText = number;
+        }
     }
 
     function ready() {

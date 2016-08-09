@@ -1,11 +1,13 @@
 define([
+    'modules/util',
     'squire'
 ], function(
+    util,
     Squire
 ) {
     'use strict';
 
-    describe.only('ArticleTemplates/assets/js/modules/comments', function() {
+    describe('ArticleTemplates/assets/js/modules/comments', function() {
         var sandbox,
             container,
             injector;
@@ -26,12 +28,16 @@ define([
             relativeDatesMock = {
                 init: sinon.spy()
             };
+
+            window.GU = {};
+            util.init();
         });
 
         afterEach(function() {
             document.body.removeChild(container);
 
             delete window.applyNativeFunctionCall;
+            delete window.util;
 
             sandbox.restore();
         });
@@ -455,7 +461,7 @@ define([
                         });
                 });
 
-                it('can close other comments on click if other comments are open', function(done) {
+                it('can close other comments on click if they are open', function(done) {
                     injector
                         .mock('modules/relativeDates', relativeDatesMock)
                         .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
@@ -882,7 +888,7 @@ define([
                         });
                 });
 
-                it('can close other comments on click if other comments are open', function(done) {
+                it('can close other comments on click if they are open', function(done) {
                     injector
                         .mock('modules/relativeDates', relativeDatesMock)
                         .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
@@ -1132,7 +1138,7 @@ define([
                         comments.init();
 
                         commentReccomends.classList.add('comment__recommend');
-                        commentReccomends.classList.add('increase')
+                        commentReccomends.classList.add('increase');
 
                         commentReccomendsCount.classList.add('comment__recommend__count');
 

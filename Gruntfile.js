@@ -203,6 +203,7 @@ module.exports = function(grunt) {
                         'ArticleTemplates/assets/js/bootstraps/liveblog.js',
                         'ArticleTemplates/assets/js/modules/relativeDates.js',
                         'ArticleTemplates/assets/js/modules/sharing.js',
+                        'ArticleTemplates/assets/js/modules/comments.js',
                         'test/spec/unit/**/*.js'
                     ]
                 }
