@@ -10,8 +10,9 @@ define([
     describe('ArticleTemplates/assets/js/bootstraps/audio', function() {
         var sandbox,
             container,
-            injector,
-            mobileSliderMock;
+            injector;
+
+        var mobileSliderMock;
 
         beforeEach(function() {
             container = document.createElement('div');
