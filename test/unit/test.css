@@ -7634,10 +7634,10 @@
     #sandbox .tone--feature3 .tell-me-when-container .tell-me-when-button {
       color: #ffffff;
       border-color: #fdadba; }
-    #sandbox .tone--feature1 .tell-me-when-container .tell-me-when-button--remove,
-    #sandbox .tone--feature2 .tell-me-when-container .tell-me-when-button--remove,
-    #sandbox .tone--feature3 .tell-me-when-container .tell-me-when-button--remove {
-      background: #fdadba; }
+      #sandbox .tone--feature1 .tell-me-when-container .tell-me-when-button.following,
+      #sandbox .tone--feature2 .tell-me-when-container .tell-me-when-button.following,
+      #sandbox .tone--feature3 .tell-me-when-container .tell-me-when-button.following {
+        background: #fdadba; }
   #sandbox .tone--liveBlog .section__container {
     border-bottom: 1px rgba(255, 255, 255, 0.4) dotted; }
   #sandbox .tone--liveBlog .section {
@@ -9589,9 +9589,7 @@
     border-top: 2px solid;
     padding: 6px 12px 6px 12px;
     background: #005689;
-    /* backgroundColour, navigationColour */
-    border-color: #4bc6df;
-    /* kickerColour, quoteColour */ }
+    border-color: #4bc6df; }
     #sandbox .tell-me-when-container .tell-me-when-banner,
     #sandbox .tell-me-when-container .tell-me-when-title,
     #sandbox .tell-me-when-container .tell-me-when-body {
@@ -9601,21 +9599,18 @@
       font-size: 1.8rem;
       line-height: 1.8rem;
       font-family: "Guardian Agate Sans 1 Web", sans-serif;
-      color: #4bc6df;
-      /* kickerColour, quoteColour */ }
+      color: #4bc6df; }
     #sandbox .tell-me-when-container .tell-me-when-title {
       font-weight: 600;
       font-size: 2.3rem;
       line-height: 2.3rem;
       font-family: "Guardian Egyptian Web", Georgia, serif;
-      color: #ffffff;
-      /* metaColour, navigationButtonColour, standfirstColour, savedForLaterTrueColour, headlineColour */ }
+      color: #ffffff; }
     #sandbox .tell-me-when-container .tell-me-when-body {
-      color: #ffffff;
-      /* metaColour, navigationButtonColour, standfirstColour, savedForLaterTrueColour, headlineColour */ }
+      color: #ffffff; }
     #sandbox .tell-me-when-container .tell-me-when-button {
       font-family: "Guardian Agate Sans 1 Web", sans-serif;
-      padding: 6px 12px 6px 12px;
+      padding: 4px 12px 8px 12px;
       margin: 0px 0px 12px -4px;
       display: inline-block;
       border-radius: 30px;
@@ -9624,9 +9619,7 @@
       transition: background-color 0.3s;
       position: relative;
       color: #ffffff;
-      /* metaColour, navigationButtonColour, standfirstColour, savedForLaterTrueColour, headlineColour */
-      border-color: #ffffff;
-      /* metaColour, navigationButtonColour, standfirstColour, savedForLaterTrueColour, headlineColour */ }
+      border-color: #ffffff; }
       @media all and (max-width: 40.62em) {
         #sandbox .tell-me-when-container .tell-me-when-button {
           font-size: 1.4rem;
@@ -9637,9 +9630,11 @@
           line-height: 2.2rem; } }
       #sandbox .tell-me-when-container .tell-me-when-button span[data-icon] {
         font-size: 1.8rem;
-        position: absolute;
-        left: 9px;
-        top: 4px; }
+        position: relative;
+        right: 3px;
+        top: 1px; }
+      #sandbox .tell-me-when-container .tell-me-when-button span.tell-me-when--label {
+        vertical-align: text-bottom; }
       #sandbox .tell-me-when-container .tell-me-when-button .tell-me-when__label {
         overflow: hidden;
         text-overflow: ellipsis;
@@ -9648,14 +9643,14 @@
         width: 100%;
         display: inline-block;
         line-height: 1.2; }
-    #sandbox .tell-me-when-container a.tell-me-when-button--remove {
-      display: none;
-      background: #4bc6df;
-      /* savedForLaterFalseColour, ruleColour, navigationDownColour */ }
-    #sandbox .tell-me-when-container.added a.tell-me-when-button--remove {
-      display: inline-block; }
-    #sandbox .tell-me-when-container.added a.tell-me-when-button--add {
-      display: none; }
+      #sandbox .tell-me-when-container .tell-me-when-button .tell-me-when-button--remove {
+        display: none; }
+      #sandbox .tell-me-when-container .tell-me-when-button.following {
+        background: #4bc6df; }
+        #sandbox .tell-me-when-container .tell-me-when-button.following .tell-me-when-button--remove {
+          display: inline-block; }
+        #sandbox .tell-me-when-container .tell-me-when-button.following .tell-me-when-button--add {
+          display: none; }
   #sandbox .related-content {
     margin: 0;
     padding: 0px 0px 24px 0px;
