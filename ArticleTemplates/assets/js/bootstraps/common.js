@@ -706,7 +706,7 @@ define([
     }
 
     function handleTellMeWhenButtonClick(button) {
-        var callToAction = 'followCTATest/' + button.dataset.followAlertId;
+        var callToAction = 'seriesCTATest/' + button.dataset.followAlertId;
 
         if (button.classList.contains('following')) {
             callToAction += '?action=remove';
