@@ -98,7 +98,7 @@ define([
 
     function targetContainsBlackListedClass(classList) {
         var stopPropagationBlackList = ['more--comments', 'comment__reply', 'comment__recommend', 
-                                        'comment__recommend', 'touchpoint__button', 'touchpoint__label'];
+                                        'touchpoint__button', 'touchpoint__label'];
 
         return stopPropagationBlackList.some(function (className) {
             return classList.indexOf(className) >= 0;
