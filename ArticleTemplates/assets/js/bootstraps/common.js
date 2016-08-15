@@ -706,7 +706,8 @@ define([
     }
 
     function handleTellMeWhenButtonClick(button) {
-        var callToAction = 'seriesCTATest/' + button.dataset.followAlertId;
+        var message,
+            callToAction = 'seriesCTATest/' + button.dataset.followAlertId;
 
         if (button.classList.contains('following')) {
             callToAction += '?action=remove';
@@ -714,7 +715,14 @@ define([
             callToAction += '?action=add';
         }
 
-        GU.util.signalDevice(callToAction);    
+        GU.util.signalDevice(callToAction);
+
+        if (button.dataset.showMessage === 'true') {
+            message = document.createElement('div');
+            message.classList.add('tell-me-when-message');
+            message.innerHTML = 'Sorry, this is currently unavailable.';
+            button.parentNode.replaceChild(message, button);
+        }
     }
         
     return {

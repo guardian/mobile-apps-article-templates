@@ -7,16 +7,21 @@ category: Modules
 Display an alerts toggle.
 
 ```html_example
-<a class="tell-me-when __TELLMEWHEN_ADDED__" href="__TELLMEWHEN_HREF__">
-    <span class="tell-me-when__state--add">
-        <span data-icon="&#xe087;" aria-hidden="true"></span>
-        <span class="tell-me-when__label">Add reminder for event</span>
-    </span>
-    <span class="tell-me-when__state--remove">
-        <span data-icon="&#xe097;" aria-hidden="true"></span>
-        <span class="tell-me-when__label">Remove reminder for event</span>
-    </span>
-</a>
+<div class="tell-me-when-container" id="tell-me-when-container">
+    <div class="tell-me-when-banner">__TELL_ME_WHEN_BANNER_TEXT__</div>
+    <div class="tell-me-when-title">__TELL_ME_WHEN_TITLE_TEXT__</div>
+    <div class="tell-me-when-body">__TELL_ME_WHEN_BODY_TEXT__</div>
+    <div class="tell-me-when-button __TELL_ME_WHEN__ADDED__" data-follow-alert-id="__TELL_ME_WHEN_SERIES_ID__">
+        <span class="tell-me-when-button--add">
+            <span data-icon="&#xe090;" aria-hidden="true"></span>
+            <span class="tell-me-when--label">__TELL_ME_WHEN_ADD_TEXT__</span>
+        </span>
+        <span class="tell-me-when-button--remove">
+            <span data-icon="&#xe062;" aria-hidden="true"></span>
+            <span class="tell-me-when--label">__TELL_ME_WHEN_REMOVE_TEXT__</span>
+        </span>
+    </div>
+</div>
 ```
 */
 
@@ -28,16 +33,25 @@ Display an alerts toggle.
 
     .tell-me-when-banner,
     .tell-me-when-title,
-    .tell-me-when-body {
+    .tell-me-when-body,
+    .tell-me-when-message {
         margin-bottom: base-px(.5);
     }
 
-    .tell-me-when-banner {
+    .tell-me-when-banner,
+    .tell-me-when-message {
         font-weight: 600;
         font-size: 1.8rem;
         line-height: 1.8rem;
         font-family: $agate-sans;
+    }
+
+    .tell-me-when-banner {
         color: #4bc6df;
+    }
+
+    .tell-me-when-message {
+        color: #ffffff;
     }
 
     .tell-me-when-title {
