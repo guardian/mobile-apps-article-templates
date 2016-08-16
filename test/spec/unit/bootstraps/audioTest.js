@@ -75,22 +75,17 @@ define([
                injector
                     .mock('mobileSlider', mobileSliderMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
-                        var playerButton = document.createElement('div'),
-                            touchPointButton = document.createElement('div');
+                        var playerButton = document.createElement('div');
 
                         playerButton.classList.add('audio-player__button');
-                        touchPointButton.classList.add('touchpoint__button');
-
-                        playerButton.appendChild(touchPointButton);
+                    
                         container.appendChild(playerButton);
 
                         audio.init();
 
                         window.audioPlay();
 
-                        expect(touchPointButton.dataset.icon).to.eql('');
-                        expect(touchPointButton.classList.contains('pause')).to.eql(true);
-                        expect(touchPointButton.classList.contains('play')).to.eql(false);
+                        expect(playerButton.classList.contains('pause')).to.eql(true);
 
                         done();
                     });
@@ -102,23 +97,18 @@ define([
                injector
                     .mock('mobileSlider', mobileSliderMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
-                        var playerButton = document.createElement('div'),
-                            touchPointButton = document.createElement('div');
+                        var playerButton = document.createElement('div');
 
                         playerButton.classList.add('audio-player__button');
-                        touchPointButton.classList.add('touchpoint__button');
 
-                        playerButton.appendChild(touchPointButton);
                         container.appendChild(playerButton);
 
                         audio.init();
 
                         window.audioStop();
 
-                        expect(touchPointButton.dataset.icon).to.eql('');
-                        expect(touchPointButton.classList.contains('pause')).to.eql(false);
-                        expect(touchPointButton.classList.contains('play')).to.eql(true);
-
+                        expect(playerButton.classList.contains('pause')).to.eql(false);
+                        
                         done();
                     });
             });
