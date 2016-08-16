@@ -65,6 +65,21 @@ Play a piece of audio, i.e. a podcast.
             background-color: color(tone-media-accent);
         }
     }
+
+    .touchpoint__button.pause {
+        display: none;
+        margin-top: 2px;
+    }
+
+    &.pause {
+        .touchpoint__button.pause {
+            display: block;
+        }
+
+        .touchpoint__button.play {
+            display: none;
+        }
+    }
 }
 
 .audio-player__button--loading {

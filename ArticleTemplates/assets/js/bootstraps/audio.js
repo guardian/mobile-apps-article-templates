@@ -97,21 +97,17 @@ define([
     }
 
     function audioPlay() {
-        var button = document.querySelector('.audio-player__button .touchpoint__button');
+        var button = document.getElementsByClassName('audio-player__button')[0];
 
         if (button) {
-            button.setAttribute('data-icon', '');
             button.classList.add('pause');
-            button.classList.remove('play');
         }
     }
 
     function audioStop() {
-        var button = document.querySelector('.audio-player__button .touchpoint__button');
+        var button = document.getElementsByClassName('audio-player__button')[0];
 
         if (button) {
-            button.setAttribute('data-icon', '');
-            button.classList.add('play');
             button.classList.remove('pause');
         }
     }
