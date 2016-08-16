@@ -720,7 +720,7 @@ define([
         if (button.dataset.showMessage === 'true') {
             message = document.createElement('div');
             message.classList.add('tell-me-when-message');
-            message.innerHTML = 'Sorry, this is currently unavailable.';
+            message.innerHTML = 'Yessss! Another click! Thanks for your interest in this feature, we’re testing demand. If enough of you like the idea, we’ll make it happen. Fingers crossed!';
             button.parentNode.replaceChild(message, button);
         }
     }
