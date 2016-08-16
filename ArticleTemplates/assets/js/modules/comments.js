@@ -1,161 +1,270 @@
-/*global window,console,define */
+/*global window,define */
 define([
-    'bean',
-    'bonzo',
-    'modules/relativeDates',
-    'modules/$'
-], function (
-    bean,
-    bonzo,
-    relativeDates,
-    $
+    'modules/relativeDates'
+], function(
+    relativeDates
 ) {
     'use strict';
 
-    var modules = {
-            setupGlobals: function () {
-                // Function that loops through comments, hides replies and enables interactivity for comments
-                window.commentsReplyFormatting = function () {
-                    var counter = 0;
-                    var stopPropagation = 0;
+    var initialised = false;
 
-                    $(".block--discussion-thread").each(function(el) {
-                        if (!$(this).hasClass("block--discussion-thread--checked")) {
-                            if (typeof $(this)[0].children[4] !== "undefined") {
-                                var blockID = "div[id='" + $(this)[0].children[3].id + "']";
-                                var numOfComments = $(this)[0].children.length - 4;
-                                if (numOfComments == 1) {
-                                    $(this).addClass("block--discussion-thread--orphan");
-                                } else {
-                                    $(blockID).after('<div class="more more--comments"><a class="more__label"><span class="more__icon" data-icon="&#xe050;" aria-hidden="true"></span><span class="more__text">' + numOfComments + ' more replies</span></a></div>');
-                                }
-                            }
-                        }
-                        $(this).addClass("block--discussion-thread--checked");
+    function setupGlobals() {
+        window.articleCommentsInserter = articleCommentsInserter;
+        window.commentsInserter = commentsInserter; // Almost the same as window.articleCommentsInserter - WHY?
+        window.articleCommentsFailed = articleCommentsFailed;
+        window.commentsFailed = articleCommentsFailed; // Exactly the same as window.articleCommentsFailed - WHY?
+        window.commentsEnd = commentsEnd;
+        window.commentsClosed = commentsClosed;
+        window.commentsOpen = commentsOpen;
+        window.commentTime = commentTime;
+        window.commentsRecommendIncrease = commentsRecommendIncrease;
+        window.commentsRecommendDecrease = commentsRecommendDecrease;
 
-                        bean.on(el, 'click', '.more--comments', function () {
-                            $(this).hide();
-                            $(this).parent().addClass("expand");
-                        });
-                    });
+        window.applyNativeFunctionCall('articleCommentsInserter');
+        window.applyNativeFunctionCall('commentsInserter');
+        window.applyNativeFunctionCall('commentsFailed');
+        window.applyNativeFunctionCall('commentsClosed');
+        window.applyNativeFunctionCall('commentsOpen');
+        window.applyNativeFunctionCall('articleCommentsFailed');
+    }
 
-                    $(".comment").each(function(el) {
+    function commentsReplyFormatting() {
+        var comments = document.getElementsByClassName('comment'),
+            discussionThread,
+            discussionThreads = document.getElementsByClassName('block--discussion-thread'),
+            i,
+            moreCommentsButton,
+            numOfComments;
 
-                        bean.on(el, 'click', 'a, .more--comments, .comment__reply, .comment__recommend', function (event) {
-                            stopPropagation = 1;
-                        });
+        for (i = 0; i < discussionThreads.length; i++) {
+            discussionThread = discussionThreads[i];
 
-                        bean.on(el, 'click', '.comment__header, .comment__body', function (event) {
-                            stopPropagation = 0;
-                        });
+            if (!discussionThread.classList.contains('block--discussion-thread--checked') &&
+                discussionThread.children &&
+                discussionThread.children.length >= 5) {
 
-                        bean.on(el, 'click', function () {
-                            if (stopPropagation === 0) {
-                                var block = $(el);
-                                // If comment is replyable allow buttons
-                                if (block.hasClass('visible')) {
-                                    // Evaluate if this comment is open or not
-                                    if (block.hasClass("comment--open")) {
-                                        // Hide the buttons
-                                        block.removeClass("comment--open");
-                                    } else {
-                                        // Hide previously opened block
-                                        $(".comment--open").removeClass("comment--open");
-                                        // Calculate height to animate initial comments
-                                        var originalHeight = block[0].clientHeight;
-                                        // 110px is the smallest height an initial comment can be with options expanded
-                                        if (originalHeight > 85) {
-                                            // 34 is the height of comment__options
-                                            block.css("min-height", originalHeight + 34);
-                                        } else {
-                                            block.css("min-height", "85px");
-                                        }
-                                        // Add comment open class to show Reply and Report
-                                        block.css("min-height", originalHeight);
-                                        block.addClass('comment--open');
-                                    }
-                                }
-                            }
-                        });
-                    });
-                };
-                // Global functions to handle comments, called by native code
-                window.articleCommentsInserter = function (html) {
-                    $('.comments__block--loading').hide();
-                    if (!html) {
-                        $('.comments__block--empty').show();
-                    } else {
-                        html = bonzo.create(html);
-                        $(html).appendTo('.comments__container');
-                        window.commentsReplyFormatting();
-                    }
-                };
-                window.commentsInserter = function (html) {
-                    if (!html) {
-                        $('.comments__block--empty').show();
-                        $('.comments__block--loading').hide();
-                    } else {
-                        html = bonzo.create(html);
-                        $(html).appendTo($('.comments__container'));
-                        window.commentsReplyFormatting();
-                    }
-                    $('.comments__block--loading').appendTo($('.comments__container'));
-                };
-                window.articleCommentsFailed = function () {
-                    $('.comments__block--failed').show();
-                    $('.comments__block--loading').hide();
-                    $('.comments').addClass('comments-has-failed');
-                };
-                window.commentsFailed = function () {
-                    $('.comments__block--loading').hide();
-                    $('.comments__block--failed').show();
-                    $('.comments').addClass('comments-has-failed');
-                };
-                window.commentsEnd = function () {
-                    $('.comments__block--loading').remove();
-                };
-                window.commentsClosed = function () {
-                    $(".comments, #discussion").addClass("comments--closed");
-                };
-                window.commentsOpen = function () {
-                    $(".comments, #discussion").addClass("comments--open");
-                };
-                window.commentTime = function () {
-                    relativeDates.init('.comment__timestamp', 'title');
-                };
+                numOfComments = discussionThread.children.length - 4;
 
-                // Functions for feedback on recommend buttons
-                window.commentsRecommendIncrease = function (id, number) {
-                    var target = 'div[id="' + id + '"] .comment__recommend';
-                    $(target).addClass('increase');
-                    $(target + ' .comment__recommend__count').text(number);
-                };
-                window.commentsRecommendDecrease = function (id, number) {
-                    var target = 'div[id="' + id + '"] .comment__recommend';
-                    $(target).removeClass('increase');
-                    $(target + ' .comment__recommend__count').text(number);
-                };
-                window.applyNativeFunctionCall('articleCommentsInserter');
-                window.applyNativeFunctionCall('commentsInserter');
-                window.applyNativeFunctionCall('commentsFailed');
-                window.applyNativeFunctionCall('commentsClosed');
-                window.applyNativeFunctionCall('commentsOpen');
-                window.applyNativeFunctionCall('articleCommentsFailed');
+                if (numOfComments === 1) {
+                    discussionThread.classList.add('block--discussion-thread--orphan');
+                } else {
+                    moreCommentsButton = document.createElement('div');
+                    moreCommentsButton.classList.add('more');
+                    moreCommentsButton.classList.add('more--comments');
+                    moreCommentsButton.innerHTML = '<a class="more__label"><span class="more__icon" data-icon="&#xe050;" aria-hidden="true"></span><span class="more__text">' + numOfComments + ' more replies</span></a>';
+                    moreCommentsButton.addEventListener('click', handleMoreCommentsClick.bind(null, moreCommentsButton));
+                    discussionThread.children[4].parentNode.insertBefore(moreCommentsButton, discussionThread.children[4]);
+                }
             }
-        },
 
-        ready = function () {
-            if (!this.initialised) {
-                this.initialised = true;
-                modules.setupGlobals();
-                window.commentTime();
-                // console.info("Comments ready");
+            discussionThread.classList.add('block--discussion-thread--checked');
+        }
+
+        for (i = 0; i < comments.length; i++) {
+            comments[i].addEventListener('click', handleCommentClick.bind(null, comments[i]));
+        }
+    }
+
+    function handleMoreCommentsClick(moreCommentsButton) {
+        moreCommentsButton.style.display = 'none';
+        moreCommentsButton.parentNode.classList.add('expand');
+    }
+
+    function handleCommentClick(comment, evt) {
+        var i,
+            classList = [],
+            openComments;
+
+        for (i = 0; i < evt.target.classList.length; i++) {
+            classList.push(evt.target.classList[i]);
+        }
+
+        if (evt.target.tagName === 'A' || targetContainsBlackListedClass(classList)) {
+            evt.stopPropagation();
+        } else if (comment.classList.contains('visible')) {
+            if (comment.classList.contains('comment--open')) {
+                comment.classList.remove('comment--open');
+            } else {
+                openComments = document.getElementsByClassName('comment--open');
+
+                for (i = 0; i < openComments.length; i++) {
+                    openComments[i].classList.remove('comment--open');
+                }
+
+                comment.classList.add('comment--open');
             }
-        };
+        }
+    }
+
+    function targetContainsBlackListedClass(classList) {
+        var stopPropagationBlackList = ['more--comments', 'comment__reply', 'comment__recommend', 
+                                        'touchpoint__button', 'touchpoint__label'];
+
+        return stopPropagationBlackList.some(function (className) {
+            return classList.indexOf(className) >= 0;
+        });
+    }
+
+    function articleCommentsInserter(html) {
+        var comments,
+            commentsContainer,
+            emptyCommentBlock,
+            i,
+            loadingBlock = document.getElementsByClassName('comments__block--loading')[0];
+
+        if (loadingBlock) {
+            loadingBlock.style.display = 'none';
+        }
+
+        if (!html) {
+            emptyCommentBlock = document.getElementsByClassName('comments__block--empty')[0];
+
+            if (emptyCommentBlock) {
+                emptyCommentBlock.style.display = 'block';
+            }
+        } else {
+            commentsContainer = document.getElementsByClassName('comments__container')[0];
+
+            if (commentsContainer) {
+                comments = GU.util.getElemsFromHTML(html);
+
+                for (i = 0; i < comments.length; i++) {
+                    commentsContainer.appendChild(comments[i]);
+                }
+            }
+
+            commentsReplyFormatting();
+        }
+    }
+
+    function commentsInserter(html) {
+        var comments,
+            commentsContainer = document.getElementsByClassName('comments__container')[0],
+            emptyCommentBlock,
+            i,
+            loadingBlock = document.getElementsByClassName('comments__block--loading')[0];
+
+        if (!html) {
+            emptyCommentBlock = document.getElementsByClassName('comments__block--empty')[0];
+
+            if (emptyCommentBlock) {
+                emptyCommentBlock.style.display = 'block';
+            }
+
+            if (loadingBlock) {
+                loadingBlock.style.display = 'none';
+            }
+        } else {
+            if (commentsContainer) {
+                comments = GU.util.getElemsFromHTML(html);
+
+                for (i = 0; i < comments.length; i++) {
+                    commentsContainer.appendChild(comments[i]);
+                }
+            }
+
+            commentsReplyFormatting();
+        }
+
+        if (commentsContainer && loadingBlock) {
+            commentsContainer.appendChild(loadingBlock);
+        }
+    }
+
+    function articleCommentsFailed() {
+        var commentsElem = document.getElementsByClassName('comments')[0],
+            failedBlock = document.getElementsByClassName('comments__block--failed')[0],
+            loadingBlock = document.getElementsByClassName('comments__block--loading')[0];
+
+        if (failedBlock) {
+            failedBlock.style.display = 'block';
+        }
+
+        if (loadingBlock) {
+            loadingBlock.style.display = 'none';
+        }
+
+        if (commentsElem) {
+            commentsElem.classList.add('comments-has-failed');
+        }
+    }
+
+    function commentsEnd() {
+        var loadingBlock = document.getElementsByClassName('comments__block--loading')[0];
+
+        if (loadingBlock) {
+            loadingBlock.parentNode.removeChild(loadingBlock);
+        }
+    }
+
+    function commentsClosed() {
+        var commentsElem = document.getElementsByClassName('comments')[0],
+            discussionElem = document.getElementById('discussion');
+
+        if (commentsElem) {
+            commentsElem.classList.add('comments--closed');
+        }
+
+        if (discussionElem) {
+            discussionElem.classList.add('comments--closed');
+        }
+    }
+
+    function commentsOpen() {
+        var commentsElem = document.getElementsByClassName('comments')[0],
+            discussionElem = document.getElementById('discussion');
+
+        if (commentsElem) {
+            commentsElem.classList.add('comments--open');
+        }
+
+        if (discussionElem) {
+            discussionElem.classList.add('comments--open');
+        }
+    }
+
+    function commentTime() {
+        relativeDates.init('.comment__timestamp', 'title');
+    }
+
+    function commentsRecommendIncrease(id, number) {
+        var target = 'div[id="' + id + '"] .comment__recommend',
+            targetElem = document.querySelector(target),
+            countElem = document.querySelector(target + ' .comment__recommend__count');
+
+        if (targetElem) {
+            targetElem.classList.add('increase');
+        }
+
+        if (countElem) {
+            countElem.innerText = number;
+        }
+    }
+
+    function commentsRecommendDecrease(id, number) {
+        var target = 'div[id="' + id + '"] .comment__recommend',
+            targetElem = document.querySelector(target),
+            countElem = document.querySelector(target + ' .comment__recommend__count');
+
+        if (targetElem) {
+            targetElem.classList.remove('increase');
+        }
+
+        if (countElem) {
+            countElem.innerText = number;
+        }
+    }
+
+    function ready() {
+        if (!initialised) {
+            initialised = true;
+            setupGlobals();
+            commentTime();
+        }
+    }
 
     return {
-        init: ready,
-        modules: modules
+        init: ready
     };
 
 });

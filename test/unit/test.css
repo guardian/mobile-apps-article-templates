@@ -820,7 +820,8 @@
       <img class="audio-player__button--loading" src="../img/loading.gif" alt="Loading…"/>
   
       <a class="audio-player__button touchpoint touchpoint--primary" href="#audio.mp3">
-          <span class="touchpoint__button" data-icon="&#xe04b;" aria-hidden="true"></span>
+          <span class="touchpoint__button play" data-icon="&#xe04b;" aria-hidden="true"></span>
+          <span class="touchpoint__button pause" data-icon="&#xe04D;" aria-hidden="true"></span>
           <span class="touchpoint__label screen-readable">Play</span>
       </a>
   
@@ -3857,6 +3858,13 @@
       background-color: #fb0; }
       #sandbox .audio-player__button.touchpoint--primary .touchpoint__button:active {
         background-color: #ffd35c; }
+    #sandbox .audio-player__button .touchpoint__button.pause {
+      display: none;
+      margin-top: 2px; }
+    #sandbox .audio-player__button.pause .touchpoint__button.pause {
+      display: block; }
+    #sandbox .audio-player__button.pause .touchpoint__button.play {
+      display: none; }
   #sandbox .audio-player__button--loading {
     position: absolute;
     top: 12px;
@@ -10332,9 +10340,7 @@
     #sandbox .block--live-summary .block__time {
       font-weight: bold; }
   #sandbox .comment {
-    font-family: "Guardian Agate Sans 1 Web", sans-serif;
-    -webkit-transition: min-height 300ms ease-in-out;
-    transition: min-height 300ms ease-in-out; }
+    font-family: "Guardian Agate Sans 1 Web", sans-serif; }
     @media all and (max-width: 40.62em) {
       #sandbox .comment {
         font-size: 1.6rem;
