@@ -47,7 +47,7 @@ define([
         fixSeries();
         advertorialUpdates();
         sharing.init(window); // init sharing
-        setupTracking();
+        setupTracking(); // track common events
         ab.init(); // init ab tests
 
         if (!document.body.classList.contains('no-ready')) {
@@ -421,27 +421,6 @@ define([
         }
     }
 
-    function setupTellMeWhenSwitch() {
-        // Called by native code
-        window.tellMeWhenSwitch = tellMeWhenSwitch;
-    }
-
-    function tellMeWhenSwitch(added) {
-        var i,
-            tellMeWhenLink,
-            tellMeWhenLinks = document.querySelectorAll('a.tell-me-when');
-
-        for (i = 0; i < tellMeWhenLinks.length; i++) {
-            tellMeWhenLink = tellMeWhenLinks[i];
-
-            if (parseInt(added, 10) === 1) {
-                tellMeWhenLink.classList.add('added');
-            } else {
-                tellMeWhenLink.classList.remove('added');
-            }
-        }
-    }
-
     function setupFontSizing() {
         // Called by native code
         window.fontResize = fontResize;
@@ -715,6 +694,34 @@ define([
             GU.util.isElementPartiallyInViewport(commentContainer)) {
             GU.util.signalDevice('trackAction/comments:seen');    
             trackCommentContainerView = false;
+        }
+    }
+
+    function setupTellMeWhenSwitch() {
+        var tellMeWhenButton = document.getElementsByClassName('tell-me-when-button')[0];
+
+        if (tellMeWhenButton) {
+            tellMeWhenButton.addEventListener('click', handleTellMeWhenButtonClick.bind(null, tellMeWhenButton));            
+        }
+    }
+
+    function handleTellMeWhenButtonClick(button) {
+        var message,
+            callToAction = 'seriesCTATest/' + button.dataset.followAlertId;
+
+        if (button.classList.contains('following')) {
+            callToAction += '?action=remove';
+        } else {
+            callToAction += '?action=add';
+        }
+
+        GU.util.signalDevice(callToAction);
+
+        if (button.dataset.showMessage === 'true') {
+            message = document.createElement('div');
+            message.classList.add('tell-me-when-message');
+            message.innerHTML = 'Yessss! Another click! Thanks for your interest in this feature, we’re testing demand. If enough of you like the idea, we’ll make it happen. Fingers crossed!';
+            button.parentNode.replaceChild(message, button);
         }
     }
         
