@@ -7,7 +7,7 @@ define([
 ) {
     'use strict';
 
-    describe.only('ArticleTemplates/assets/js/modules/comments', function() {
+    describe('ArticleTemplates/assets/js/modules/comments', function() {
         var sandbox,
             container,
             injector;
