@@ -400,21 +400,19 @@ define([
                         .mock('modules/relativeDates', relativeDatesMock)
                         .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
                             var event,
-                                commentElem = document.createElement('div'),
-                                childElem = document.createElement('div');
+                                childElem,
+                                commentElem,
+                                commentContainer = document.createElement('div');
 
-                            commentElem.classList.add('comment');
-                            commentElem.classList.add('visible');
-                            commentElem.classList.add('comment--open');
-
-                            childElem.classList.add('comment__header');
-                            commentElem.appendChild(childElem);
-
-                            container.appendChild(commentElem);
+                            commentContainer.classList.add('comments__container');
+                            container.appendChild(commentContainer);
 
                             comments.init();
 
-                            window.articleCommentsInserter('<div>Hello World</div>');
+                            window.articleCommentsInserter('<div><div class="comment visible comment--open"><div class="comment__header"></div></div></div>');
+
+                            commentElem = commentContainer.querySelector('.comment');
+                            childElem = commentElem.querySelector('.comment__header');
 
                             event = document.createEvent('HTMLEvents');
                             event.initEvent('click', true, true);
@@ -433,21 +431,19 @@ define([
                         .mock('modules/relativeDates', relativeDatesMock)
                         .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
                             var event,
-                                commentElem = document.createElement('div'),
-                                childElem = document.createElement('div');
+                                childElem,
+                                commentElem,
+                                commentContainer = document.createElement('div');
 
-                            commentElem.classList.add('comment');
-                            commentElem.classList.add('visible');
-                            commentElem.classList.add('comment--open');
-
-                            childElem.classList.add('comment__body');
-                            commentElem.appendChild(childElem);
-
-                            container.appendChild(commentElem);
+                            commentContainer.classList.add('comments__container');
+                            container.appendChild(commentContainer);
 
                             comments.init();
 
-                            window.articleCommentsInserter('<div>Hello World</div>');
+                            window.articleCommentsInserter('<div><div class="comment visible comment--open"><div class="comment__body"></div></div></div>');
+
+                            commentElem = commentContainer.querySelector('.comment');
+                            childElem = commentElem.querySelector('.comment__body');
 
                             event = document.createEvent('HTMLEvents');
                             event.initEvent('click', true, true);
@@ -466,25 +462,22 @@ define([
                         .mock('modules/relativeDates', relativeDatesMock)
                         .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
                             var event,
-                                commentElem = document.createElement('div'),
-                                otherCommentElem = document.createElement('div'),
-                                childElem = document.createElement('div');
+                                childElem,
+                                otherCommentElem,
+                                commentElem,
+                                commentContainer = document.createElement('div');
 
-                            commentElem.classList.add('comment');
-                            commentElem.classList.add('visible');
-
-                            otherCommentElem.classList.add('comment');
-                            otherCommentElem.classList.add('comment--open');
-
-                            childElem.classList.add('comment__body');
-                            commentElem.appendChild(childElem);
-
-                            container.appendChild(commentElem);
-                            container.appendChild(otherCommentElem);
+                            commentContainer.classList.add('comments__container');
+                            container.appendChild(commentContainer);
 
                             comments.init();
 
-                            window.articleCommentsInserter('<div>Hello World</div>');
+                            window.articleCommentsInserter('<div><div class="comment visible"><div class="comment__header"></div></div></div>' + 
+                                '<div><div class="comment visible comment--open"><div class="comment__header"></div></div></div>');
+
+                            commentElem = commentContainer.querySelectorAll('.comment')[0];
+                            childElem = commentElem.querySelector('.comment__header');
+                            otherCommentElem = commentContainer.querySelectorAll('.comment')[1];
 
                             event = document.createEvent('HTMLEvents');
                             event.initEvent('click', true, true);
@@ -827,21 +820,19 @@ define([
                         .mock('modules/relativeDates', relativeDatesMock)
                         .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
                             var event,
-                                commentElem = document.createElement('div'),
-                                childElem = document.createElement('div');
+                                childElem,
+                                commentElem,
+                                commentContainer = document.createElement('div');
 
-                            commentElem.classList.add('comment');
-                            commentElem.classList.add('visible');
-                            commentElem.classList.add('comment--open');
-
-                            childElem.classList.add('comment__header');
-                            commentElem.appendChild(childElem);
-
-                            container.appendChild(commentElem);
+                            commentContainer.classList.add('comments__container');
+                            container.appendChild(commentContainer);
 
                             comments.init();
 
-                            window.commentsInserter('<div>Hello World</div>');
+                            window.articleCommentsInserter('<div><div class="comment visible comment--open"><div class="comment__header"></div></div></div>');
+
+                            commentElem = commentContainer.querySelector('.comment');
+                            childElem = commentElem.querySelector('.comment__header');
 
                             event = document.createEvent('HTMLEvents');
                             event.initEvent('click', true, true);
@@ -860,21 +851,19 @@ define([
                         .mock('modules/relativeDates', relativeDatesMock)
                         .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
                             var event,
-                                commentElem = document.createElement('div'),
-                                childElem = document.createElement('div');
+                                childElem,
+                                commentElem,
+                                commentContainer = document.createElement('div');
 
-                            commentElem.classList.add('comment');
-                            commentElem.classList.add('visible');
-                            commentElem.classList.add('comment--open');
-
-                            childElem.classList.add('comment__body');
-                            commentElem.appendChild(childElem);
-
-                            container.appendChild(commentElem);
+                            commentContainer.classList.add('comments__container');
+                            container.appendChild(commentContainer);
 
                             comments.init();
 
-                            window.commentsInserter('<div>Hello World</div>');
+                            window.articleCommentsInserter('<div><div class="comment visible comment--open"><div class="comment__body"></div></div></div>');
+
+                            commentElem = commentContainer.querySelector('.comment');
+                            childElem = commentElem.querySelector('.comment__body');
 
                             event = document.createEvent('HTMLEvents');
                             event.initEvent('click', true, true);
@@ -893,25 +882,22 @@ define([
                         .mock('modules/relativeDates', relativeDatesMock)
                         .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
                             var event,
-                                commentElem = document.createElement('div'),
-                                otherCommentElem = document.createElement('div'),
-                                childElem = document.createElement('div');
+                                childElem,
+                                otherCommentElem,
+                                commentElem,
+                                commentContainer = document.createElement('div');
 
-                            commentElem.classList.add('comment');
-                            commentElem.classList.add('visible');
-
-                            otherCommentElem.classList.add('comment');
-                            otherCommentElem.classList.add('comment--open');
-
-                            childElem.classList.add('comment__body');
-                            commentElem.appendChild(childElem);
-
-                            container.appendChild(commentElem);
-                            container.appendChild(otherCommentElem);
+                            commentContainer.classList.add('comments__container');
+                            container.appendChild(commentContainer);
 
                             comments.init();
 
-                            window.articleCommentsInserter('<div>Hello World</div>');
+                            window.articleCommentsInserter('<div><div class="comment visible"><div class="comment__header"></div></div></div>' + 
+                                '<div><div class="comment visible comment--open"><div class="comment__header"></div></div></div>');
+
+                            commentElem = commentContainer.querySelectorAll('.comment')[0];
+                            childElem = commentElem.querySelector('.comment__header');
+                            otherCommentElem = commentContainer.querySelectorAll('.comment')[1];
 
                             event = document.createEvent('HTMLEvents');
                             event.initEvent('click', true, true);

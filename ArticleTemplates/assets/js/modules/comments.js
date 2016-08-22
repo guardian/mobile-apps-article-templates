@@ -29,8 +29,7 @@ define([
     }
 
     function commentsReplyFormatting() {
-        var comments = document.getElementsByClassName('comment'),
-            discussionThread,
+        var discussionThread,
             discussionThreads = document.getElementsByClassName('block--discussion-thread'),
             i,
             moreCommentsButton,
@@ -59,6 +58,11 @@ define([
 
             discussionThread.classList.add('block--discussion-thread--checked');
         }
+    }
+
+    function addClickHandlerToComments(block) {
+        var i,
+            comments = block.getElementsByClassName('comment');
 
         for (i = 0; i < comments.length; i++) {
             comments[i].addEventListener('click', handleCommentClick.bind(null, comments[i]));
@@ -106,7 +110,7 @@ define([
     }
 
     function articleCommentsInserter(html) {
-        var comments,
+        var blocks,
             commentsContainer,
             emptyCommentBlock,
             i,
@@ -126,10 +130,11 @@ define([
             commentsContainer = document.getElementsByClassName('comments__container')[0];
 
             if (commentsContainer) {
-                comments = GU.util.getElemsFromHTML(html);
+                blocks = GU.util.getElemsFromHTML(html);
 
-                for (i = 0; i < comments.length; i++) {
-                    commentsContainer.appendChild(comments[i]);
+                for (i = 0; i < blocks.length; i++) {
+                    commentsContainer.appendChild(blocks[i]);
+                    addClickHandlerToComments(blocks[i]);
                 }
             }
 
@@ -138,7 +143,7 @@ define([
     }
 
     function commentsInserter(html) {
-        var comments,
+        var blocks,
             commentsContainer = document.getElementsByClassName('comments__container')[0],
             emptyCommentBlock,
             i,
@@ -156,10 +161,11 @@ define([
             }
         } else {
             if (commentsContainer) {
-                comments = GU.util.getElemsFromHTML(html);
+                blocks = GU.util.getElemsFromHTML(html);
 
-                for (i = 0; i < comments.length; i++) {
-                    commentsContainer.appendChild(comments[i]);
+                for (i = 0; i < blocks.length; i++) {
+                    commentsContainer.appendChild(blocks[i]);
+                    addClickHandlerToComments(blocks[i]);
                 }
             }
 
