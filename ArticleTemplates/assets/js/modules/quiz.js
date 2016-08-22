@@ -307,7 +307,7 @@ define([
                 }
 
                 progress = timeStamp - startTime;
-                newYPos = Ads.modules.updateMPUPosition(yPos);
+                newYPos = Ads.updateMPUPosition(yPos);
 
                 if (progress < 2000) {
                     window.requestAnimationFrame(modules.adjustAdPosition.bind(null, newYPos, startTime));

@@ -30,7 +30,12 @@ define([
                 mpuAdsPosition: sinon.spy()
             };
 
-            window.GU = {};
+            window.GU = {
+                opts: {
+                    useAdsReady: 'true',
+                    platform: 'ios'
+                }
+            };
 
             util.init();
 
@@ -79,19 +84,7 @@ define([
                 it('if adsEnabled true and adsType is liveblog', function (done) {
                     injector
                         .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
-                            config.adsEnabled = 'true';
-                            config.adsType = 'liveblog';
-
-                            ads.init(config);
-
-                            done();
-                        });
-                });
-
-                it('if adsEnabled is "mpu" and adsType is liveblog', function (done) {
-                    injector
-                        .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
-                            config.adsEnabled = 'mpu';
+                            config.adsEnabled = true;
                             config.adsType = 'liveblog';
 
                             ads.init(config);
@@ -110,38 +103,6 @@ define([
                     expect(window.applyNativeFunctionCall).to.have.been.calledOnce;
                     expect(window.applyNativeFunctionCall).to.have.been.calledWith('initMpuPoller');
                     expect(window.updateLiveblogAdPlaceholders).to.be.undefined;
-                });
-
-                it('if adsEnabled true and is minute template', function (done) {
-                    injector
-                        .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
-                            config.adsEnabled = 'true';
-                            config.adsType = 'liveblog';
-
-                            document.body.classList.add('the-minute');
-
-                            ads.init(config);
-
-                            document.body.classList.remove('the-minute');
-
-                            done();
-                        });
-                });
-
-                it('if adsEnabled is "mpu" and adsType is minute template', function (done) {
-                    injector
-                        .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
-                            config.adsEnabled = 'mpu';
-                            config.adsType = 'liveblog';
-
-                            document.body.classList.add('the-minute');
-
-                            ads.init(config);
-
-                            document.body.classList.remove('the-minute');
-
-                            done();
-                        });
                 });
             });
 
@@ -177,21 +138,8 @@ define([
                     injector
                         .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
                             config.mpuAfterParagraphs = 3;
-                            config.adsEnabled = 'true';
-                            config.adsType = 'news';
-
-                            ads.init(config);
-
-                            done();
-                        });
-                });
-
-                it('if adsEnabled is "mpu" and adsType is not liveblog', function (done) {
-                    injector
-                        .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
-                            config.mpuAfterParagraphs = 3;
-                            config.adsEnabled = 'mpu';
-                            config.adsType = 'news';
+                            config.adsEnabled = true;
+                            config.adsType = 'default';
 
                             ads.init(config);
 
@@ -227,7 +175,7 @@ define([
                 it('if adsEnabled is not true or mpu', function (done) {
                     injector
                         .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
-                            config.adsEnabled = 'false';
+                            config.adsEnabled = false;
 
                             ads.init(config);
 
@@ -236,14 +184,82 @@ define([
                 });
             });
 
+            describe('if ios calls initMpuPoller()', function () {
+                var prose,
+                    articleBody,
+                    resizedSlotWrapper = function () {
+                        var advertSlotWrapper = document.querySelector('.advert-slot__wrapper');
+
+                        advertSlotWrapper.style.height = '100px';
+                        advertSlotWrapper.style.width = '100px';
+                        advertSlotWrapper.style.position = 'absolute';
+                        advertSlotWrapper.style.top = '25px';
+                        advertSlotWrapper.style.left = '25px';
+
+                        return advertSlotWrapper;
+                    };
+
+                beforeEach(function () {
+                    articleBody = document.createElement('div');
+                    prose = document.createElement('div');
+
+                    articleBody.classList.add('article__body');
+                    prose.classList.add('prose');
+
+                    prose.innerHTML = '<p>Hi</p><p>How</p><p>Are</p><p>You?</p>';
+                    articleBody.appendChild(prose);
+
+                    container.appendChild(articleBody);
+
+                    config = {
+                        adsEnabled: true,
+                        mpuAfterParagraphs: 3
+                    };
+                });
+
+                it('call signalDevice with ad_moved if position has changed', function (done) {
+                    injector
+                        .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
+                            var advertSlotWrapper;
+
+                            GU.util.signalDevice = sinon.spy();
+
+                            ads.init(config);
+
+                            advertSlotWrapper = resizedSlotWrapper();
+
+                            advertSlotWrapper.style.top = '50px';
+
+                            setTimeout(function() {
+                                expect(GU.util.signalDevice).to.have.been.calledOnce
+                                expect(GU.util.signalDevice).to.have.been.calledWith('ad_moved');
+                                done();
+                            }, 1100);
+                        });
+                });
+
+                it('do not call signalDevice with ad_moved if position has not changed', function (done) {
+                    injector
+                        .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
+                            GU.util.signalDevice = sinon.spy();
+
+                            ads.init(config);
+
+                            setTimeout(function() {
+                                expect(GU.util.signalDevice).to.not.have.been.called;
+                                done();
+                            }, 1100);
+                        });
+                });
+            });
+
             it('fires ads ready if has not been fired already', function (done) {
                 injector
                     .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
-                        config.adsEnabled = 'true';
+                        config.adsEnabled = true;
 
                         document.body.classList.remove('no-ready');
-                        document.body.dataset.useAdsReady = 'true';
-
+                        
                         ads.init(config);
 
                         expect(window.GU.util.signalDevice).to.have.been.calledWith('ads-ready');
@@ -255,7 +271,7 @@ define([
             it('does not fires ads ready ifit  has  been fired already', function (done) {
                 injector
                     .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
-                        config.adsEnabled = 'true';
+                        config.adsEnabled = true;
                         
                         document.body.dataset.useAdsReady = 'true';
 
@@ -287,7 +303,7 @@ define([
                 }
 
                 config = {
-                    adsEnabled: 'true',
+                    adsEnabled: true,
                     adsType: 'liveblog'
                 };
             });
@@ -331,9 +347,7 @@ define([
             it('if reset true and android calls updateAndroidPosition for liveblog', function (done) {
                 injector
                     .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
-                        document.body.classList.add('android');
-
-                        config.adsType = 'liveblog';
+                        GU.opts.platform = 'android';
 
                         ads.init(config);
 
@@ -341,7 +355,7 @@ define([
 
                         expect(window.GuardianJSInterface.mpuLiveblogAdsPosition).to.have.been.calledOnce;
 
-                        document.body.classList.remove('android');
+                        
 
                         done();
                     });
@@ -363,14 +377,14 @@ define([
                 container.appendChild(advertSlotWrapper);
 
                 config = {
-                    adsEnabled: 'true'
+                    adsEnabled: true
                 };
             });
 
             it('if first run and android updates ad position', function (done) {
                 injector
                     .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
-                        document.body.classList.add('android');
+                        GU.opts.platform = 'android';
 
                         ads.init(config);
 
@@ -378,16 +392,16 @@ define([
 
                         setTimeout(function() {
                             expect(window.GuardianJSInterface.mpuAdsPosition).to.have.been.calledOnce;
-                            document.body.classList.remove('android');
+                            
                             done();
-                        }, 1500);
+                        }, 1100);
                     });
             });
 
             it('if second run, android and position has changed update ad position', function (done) {
                 injector
                     .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
-                        document.body.classList.add('android');
+                        GU.opts.platform = 'android';
 
                         ads.init(config);
 
@@ -397,16 +411,16 @@ define([
 
                         setTimeout(function() {
                             expect(window.GuardianJSInterface.mpuAdsPosition).to.have.been.calledTwice;
-                            document.body.classList.remove('android');
+                            
                             done();
-                        }, 1500);
+                        }, 1100);
                     });
             });
 
             it('if second run, android and position has not changed does not update ad position', function (done) {
                 injector
                     .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
-                        document.body.classList.add('android');
+                        GU.opts.platform = 'android';
 
                         ads.init(config);
 
@@ -414,45 +428,9 @@ define([
 
                         setTimeout(function() {
                             expect(window.GuardianJSInterface.mpuAdsPosition).to.have.been.calledOnce;
-                            document.body.classList.remove('android');
+                            
                             done();
-                        }, 1500);
-                    });
-            });
-
-            it('if second run, ios and position has changed call signalDevice with ad_moved', function (done) {
-                injector
-                    .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
-                        GU.util.signalDevice = sinon.spy();
-
-                        ads.init(config);
-
-                        window.initMpuPoller();
-
-                        advertSlotWrapper.style.top = '50px';
-
-                        setTimeout(function() {
-                            expect(GU.util.signalDevice).to.have.been.calledTwice;
-                            expect(GU.util.signalDevice).to.have.been.calledWith('ad_moved');
-                            done();
-                        }, 1500);
-                    });
-            });
-
-            it('if second run, ios and position has not changed does not update ad position', function (done) {
-                injector
-                    .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
-                        GU.util.signalDevice = sinon.spy();
-
-                        ads.init(config);
-
-                        window.initMpuPoller();
-
-                        setTimeout(function() {
-                            expect(GU.util.signalDevice).to.have.been.calledOnce;
-                            expect(GU.util.signalDevice).to.have.been.calledWith('ad_moved');
-                            done();
-                        }, 1500);
+                        }, 1100);
                     });
             });
         });
@@ -477,7 +455,7 @@ define([
                 container.appendChild(articleBody);
 
                 config = {
-                    adsEnabled: 'true',
+                    adsEnabled: true,
                     adsType: 'liveblog'
                 };
             });
@@ -518,8 +496,8 @@ define([
         });
 
         describe('updateMPUPosition(yPos)', function () {
-            var prose,
-                config,
+            var config,
+                prose,
                 articleBody,
                 resizedSlotWrapper = function () {
                     var advertSlotWrapper = document.querySelector('.advert-slot__wrapper');
@@ -529,8 +507,6 @@ define([
                     advertSlotWrapper.style.position = 'absolute';
                     advertSlotWrapper.style.top = '25px';
                     advertSlotWrapper.style.left = '25px';
-
-                    return advertSlotWrapper;
                 };
 
             beforeEach(function () {
@@ -546,7 +522,7 @@ define([
                 container.appendChild(articleBody);
 
                 config = {
-                    adsEnabled: 'true',
+                    adsEnabled: true,
                     mpuAfterParagraphs: 3
                 };
             });
@@ -556,17 +532,15 @@ define([
                     .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
                         var advertSlotWrapper;
 
-                        document.body.classList.add('android');
+                        GU.opts.platform = 'android';
 
                         ads.init(config);
 
-                        advertSlotWrapper = resizedSlotWrapper();
+                        resizedSlotWrapper();
 
-                        ads.modules.updateMPUPosition(50);
+                        ads.updateMPUPosition(50);
 
                         expect(window.GuardianJSInterface.mpuAdsPosition).to.have.been.calledOnce;
-
-                        document.body.classList.remove('android');
 
                         done();
                     });
@@ -579,9 +553,9 @@ define([
 
                         ads.init(config);
 
-                        advertSlotWrapper = resizedSlotWrapper();
+                        resizedSlotWrapper();
 
-                        ads.modules.updateMPUPosition(50);
+                        ads.updateMPUPosition(50);
 
                         expect(window.GU.util.signalDevice).to.have.been.calledOnce;
                         expect(window.GU.util.signalDevice).to.have.been.calledWith('ad_moved');
@@ -595,15 +569,13 @@ define([
                     .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
                         var advertSlotWrapper;
 
-                        document.body.classList.add('android');
+                        GU.opts.platform = 'android';
 
                         ads.init(config);
 
-                        ads.modules.updateMPUPosition(0);
+                        ads.updateMPUPosition(128);
 
                         expect(window.GuardianJSInterface.mpuAdsPosition).to.not.have.been.called;
-
-                        document.body.classList.remove('android');
 
                         done();
                     });
@@ -616,7 +588,7 @@ define([
 
                         ads.init(config);
 
-                        ads.modules.updateMPUPosition(0);
+                        ads.updateMPUPosition(128);
 
                         expect(window.GU.util.signalDevice).to.not.have.been.called;
 

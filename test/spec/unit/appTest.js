@@ -127,8 +127,9 @@ define([
 
                     window.GU = {
                         opts: {
-                            adsEnabled: 'xxx',
+                            adsEnabled: 'true',
                             adsConfig: 'xxx',
+                            contentType: 'liveblog',
                             mpuAfterParagraphs: 0
                         }
                     };
@@ -137,13 +138,7 @@ define([
                 afterEach(function () {
                     expect(monitorMock.init).to.have.been.calledOnce;
                     expect(adsMock.init).to.have.been.calledOnce;
-                    expect(adsMock.init).to.have.been.calledWith({
-                        adsEnabled: GU.opts.adsEnabled,
-                        adsConfig: GU.opts.adsConfig,
-                        adsType: GU.opts.contentType === 'liveblog' ? 'liveblog' : '',
-                        mpuAfterParagraphs: GU.opts.mpuAfterParagraphs
-                    });
-
+                
                     require = requireTemp;
 
                     delete window.GU;
@@ -166,6 +161,12 @@ define([
 
                             expect(monitorMock.setContext).to.have.been.calledOnce;
                             expect(monitorMock.setContext).to.have.been.calledWith('article', dummyModule.init);
+                            expect(adsMock.init).to.have.been.calledWith({
+                                adsEnabled: true,
+                                adsConfig: 'xxx',
+                                adsType: 'default',
+                                mpuAfterParagraphs: 0
+                            });
 
                             done();
                         });
@@ -188,6 +189,12 @@ define([
 
                             expect(monitorMock.setContext).to.have.been.calledOnce;
                             expect(monitorMock.setContext).to.have.been.calledWith('liveblog', dummyModule.init);
+                            expect(adsMock.init).to.have.been.calledWith({
+                                adsEnabled: true,
+                                adsConfig: 'xxx',
+                                adsType: 'liveblog',
+                                mpuAfterParagraphs: 0
+                            });
 
                             done();
                         });
@@ -210,6 +217,12 @@ define([
 
                             expect(monitorMock.setContext).to.have.been.calledOnce;
                             expect(monitorMock.setContext).to.have.been.calledWith('audio', dummyModule.init);
+                            expect(adsMock.init).to.have.been.calledWith({
+                                adsEnabled: true,
+                                adsConfig: 'xxx',
+                                adsType: 'default',
+                                mpuAfterParagraphs: 0
+                            });
 
                             done();
                         });
@@ -232,6 +245,12 @@ define([
 
                             expect(monitorMock.setContext).to.have.been.calledOnce;
                             expect(monitorMock.setContext).to.have.been.calledWith('gallery', dummyModule.init);
+                            expect(adsMock.init).to.have.been.calledWith({
+                                adsEnabled: true,
+                                adsConfig: 'xxx',
+                                adsType: 'default',
+                                mpuAfterParagraphs: 0
+                            });
 
                             done();
                         });
@@ -254,6 +273,12 @@ define([
 
                             expect(monitorMock.setContext).to.have.been.calledOnce;
                             expect(monitorMock.setContext).to.have.been.calledWith('football', dummyModule.init);
+                            expect(adsMock.init).to.have.been.calledWith({
+                                adsEnabled: true,
+                                adsConfig: 'xxx',
+                                adsType: 'default',
+                                mpuAfterParagraphs: 0
+                            });
 
                             done();
                         });
@@ -276,6 +301,12 @@ define([
 
                             expect(monitorMock.setContext).to.have.been.calledOnce;
                             expect(monitorMock.setContext).to.have.been.calledWith('cricket', dummyModule.init);
+                            expect(adsMock.init).to.have.been.calledWith({
+                                adsEnabled: true,
+                                adsConfig: 'xxx',
+                                adsType: 'default',
+                                mpuAfterParagraphs: 0
+                            });
 
                             done();
                         });
@@ -298,6 +329,12 @@ define([
 
                             expect(monitorMock.setContext).to.have.been.calledOnce;
                             expect(monitorMock.setContext).to.have.been.calledWith('common', dummyModule.init);
+                            expect(adsMock.init).to.have.been.calledWith({
+                                adsEnabled: true,
+                                adsConfig: 'xxx',
+                                adsType: 'default',
+                                mpuAfterParagraphs: 0
+                            });
 
                             done();
                         });
