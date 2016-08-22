@@ -8,9 +8,9 @@ define([
 ) {
     'use strict';
 
-    var numberOfMpus = 0,
+    var positionPoller,
+        numberOfMpus = 0,
         adsType,
-
         modules = {
             insertAdPlaceholders: function (config) {
                 numberOfMpus = 1;
@@ -47,7 +47,7 @@ define([
                         if(modules.isAndroid){
                             modules.updateAndroidPosition();
                         } else {
-                            window.location.href = 'x-gu://ad_moved';
+                            GU.util.signalDevice('ad_moved');
                         }
                     }
                 };
@@ -83,6 +83,7 @@ define([
 
                     $advertSlots.each(function(ad, index) {
                         var adPos = ad.getBoundingClientRect();
+
                         if (adPos.width !== 0 && adPos.height !== 0) {
                             params.push(adPos.left + scrollLeft);
                             params.push(adPos.top + scrollTop);
@@ -151,16 +152,21 @@ define([
                     if(modules.isAndroid){
                         modules.updateAndroidPosition();
                     } else {
-                        window.location.href = 'x-gu://ad_moved';
+                        GU.util.signalDevice('ad_moved');
                     }
                 }
 
-                setTimeout(modules.poller.bind(modules, interval + 50, newAdPositions), interval);
+                positionPoller = setTimeout(modules.poller.bind(modules, interval + 50, newAdPositions), interval);
             },
 
-            fireAdsReady: function(_window) {
+            killMpuPoller: function () {
+                window.clearTimeout(positionPoller);
+                positionPoller = undefined;
+            },
+
+            fireAdsReady: function() {
                 if (!$('body').hasClass('no-ready') && $('body').attr('data-use-ads-ready') === 'true') {
-                    _window.location.href = 'x-gu://ads-ready';
+                    GU.util.signalDevice('ads-ready');
                 }
             },
 
@@ -176,7 +182,7 @@ define([
                     if(modules.isAndroid){
                         modules.updateAndroidPosition();
                     } else {
-                        window.location.href = 'x-gu://ad_moved';
+                        GU.util.signalDevice('ad_moved');
                     }
                 }
 
@@ -202,6 +208,8 @@ define([
 
                     window.initMpuPoller = modules.initMpuPoller;
                     window.applyNativeFunctionCall('initMpuPoller');
+                    window.killMpuPoller = modules.killMpuPoller;
+
                     window.getMpuPosCommaSeparated = modules.getMpuPosCommaSeparated;
 
                     if(!modules.isAndroid){
