@@ -2568,13 +2568,12 @@
     border-top: 1px solid #dcdad5;
     display: block;
     margin: 0 auto;
-    width: 300px;
-    /*  Any res above 375w e.g. iPhone 6, 6 plus */
-    /*  iPhone 6 */ }
-    @media (min-width: 375px) and (max-width: 480px) {
+    width: 300px; }
+    @media all and (max-width: 35em) {
       #sandbox .advert-slot--mpu {
-        padding-bottom: 15px;
-        width: 100%; } }
+        width: 100vw;
+        margin-left: -12px;
+        padding-bottom: 15px; } }
     @media all and (min-width: 40.63em) {
       #sandbox .advert-slot--mpu {
         margin: 0;
@@ -2605,12 +2604,11 @@
     #sandbox .advert-slot--mpu .advert-slot__wrapper {
       height: 250px;
       margin: 0 auto;
-      padding-top: 250px;
-      /*  Any res above 375w e.g. iPhone 6, 6 plus */
-      /*  iPhone 6 */ }
-      @media (min-width: 375px) and (max-width: 480px) {
+      padding-top: 250px; }
+      @media all and (max-width: 35em) {
         #sandbox .advert-slot--mpu .advert-slot__wrapper {
-          width: 300px; } }
+          margin: 0;
+          width: 100%; } }
   #sandbox .advert-slot--placeholder {
     display: none; }
     @media all and (min-width: 40.63em) and (max-width: 74.99em) {
@@ -4191,6 +4189,13 @@
       margin: 12px 0px; }
     #sandbox .article--liveblog .alerts {
       margin: 12px 12px 0px 8px; }
+    #sandbox .article--liveblog .advert-slot--mpu {
+      width: 100%;
+      margin-left: -12px;
+      padding-bottom: 15px; }
+      #sandbox .article--liveblog .advert-slot--mpu .advert-slot__wrapper {
+        margin: 0;
+        width: 100%; }
   #sandbox .android .article--liveblog .article__body--liveblog__pinned figcaption {
     padding: 6px 12px 24px 12px; }
   #sandbox body.the-minute:not(.advert-config--tablet) .article--liveblog .block .block__body {
