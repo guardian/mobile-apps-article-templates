@@ -51,7 +51,7 @@ define([
         ab.init(); // init ab tests
 
         if (!document.body.classList.contains('no-ready')) {
-            window.location.href = 'x-gu://ready';
+            GU.util.signalDevice('ready');
         }
     }
 
