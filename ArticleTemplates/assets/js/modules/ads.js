@@ -1,4 +1,4 @@
-/*global window,document,console,define */
+/*global window,document,define */
 define(function () {
     'use strict';
 
@@ -32,7 +32,6 @@ define(function () {
         var i,
             advertSlots,
             mpu,
-            mpuSibling,
             block,
             blocks = document.querySelectorAll('.article__body > .block');
 
@@ -84,7 +83,7 @@ define(function () {
                         '</div>' +
                         '<div class="advert-slot__wrapper" id="advert-slot__wrapper">' +
                         '<div class="advert-slot__wrapper__content" id="' + id + '"></div>' +
-                        '</div>'
+                        '</div>';
 
         return mpu;
     }
@@ -98,64 +97,73 @@ define(function () {
             i,
             scrollLeft = document.body.scrollLeft,
             scrollTop = document.body.scrollTop,
-            params = [];
+            params = {
+                x1: -1,
+                y1: -1,
+                w1: -1,
+                h1: -1, 
+                x2: -1, 
+                y2: -1, 
+                w2: -1,
+                h2: -1
+            };
 
         if (advertSlots.length) {
-            scrollLeft = document.body.scrollLeft;
-            scrollTop = document.body.scrollTop;
-            params = [];
-
             for (i = 0; i < advertSlots.length; i++) {
                 advertPosition = GU.util.getElementOffset(advertSlots[i]);
 
                 if (advertPosition.width !== 0 && advertPosition.height !== 0) {
-                    params.push(advertPosition.left + scrollLeft);
-                    params.push(advertPosition.top + scrollTop);
-                    params.push(advertPosition.width);
-                    params.push(advertPosition.height);
+                    params['x' + (i + 1)] = advertPosition.left + scrollLeft;
+                    params['y' + (i + 1)] = advertPosition.top + scrollTop;
+                    params['w' + (i + 1)] = advertPosition.width;
+                    params['h' + (i + 1)] = advertPosition.height;
                 }
             }
 
-            if (params.length > 4) {
-                return formatter(params[0], params[1], params[2], params[3], params[4], params[5], params[6], params[7]);
-            } else {
-                return formatter(params[0], params[1], params[2], params[3], -1, -1, -1, -1);
-            }
+            return formatter(params);
         } else {
             return null;
         }
     }
 
     function getMpuPosCommaSeparated() {
-        return getMpuPos(function(x1, y1, w1, h1, x2, y2, w2, h2) {
-            if (numberOfMpus > 1) {
-                return x1 + ',' + y1 + ',' + x2 + ',' + y2;
-            } else {
-                return x1 + ',' + y1;
-            }
-        });
+        return getMpuPos(getMpuPosCommaSeparatedCallback);
+    }
+
+    function getMpuPosCommaSeparatedCallback(params) {
+        if (numberOfMpus > 1) {
+            return params.x1 + ',' + params.y1 + ',' + params.x2 + ',' + params.y2;
+        } else {
+            return params.x1 + ',' + params.y1;
+        }
     }
 
     function getMpuOffset() {
-        return getMpuPos(function(x1, y1, w1, h1, x2, y2, w2, h2) {
-            if (numberOfMpus > 1) {
-                return x1 + "-" + y1 + ":" + x2 + "-" + y2;
-            } else {
-                return x1 + "-" + y1;
-            }
-        });
+        return getMpuPos(getMpuOffsetCallback);
+    }
+
+    function getMpuOffsetCallback(params) {
+        if (numberOfMpus > 1) {
+            return params.x1 + '-' + params.y1 + ':' + params.x2 + '-' + params.y2;
+        } else {
+            return params.x1 + '-' + params.y1;
+        }
     }
 
     function updateAndroidPosition() {
         if (adsType === 'liveblog') {
-            getMpuPos(function(x1, y1, w1, h1, x2, y2, w2, h2){
-                window.GuardianJSInterface.mpuLiveblogAdsPosition(x1, y1, w1, h1, x2, y2, w2, h2);
-            });
+            getMpuPos(updateAndroidPositionLiveblogCallback);
         } else {
-            getMpuPos(function(x1, y1, w1, h1, x2, y2, w2, h2){
-                window.GuardianJSInterface.mpuAdsPosition(x1, y1, w1, h1);
-            });
+            getMpuPos(updateAndroidPositionDefaultCallback);
         }
+    }
+
+    function updateAndroidPositionLiveblogCallback(params) {
+        window.GuardianJSInterface.mpuLiveblogAdsPosition.apply(null, params);
+    }
+
+    function updateAndroidPositionDefaultCallback(params) {
+        window.GuardianJSInterface.mpuAdsPosition.apply(null, params);
     }
 
     function initMpuPoller() {

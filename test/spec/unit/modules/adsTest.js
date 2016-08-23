@@ -231,7 +231,7 @@ define([
                             advertSlotWrapper.style.top = '50px';
 
                             setTimeout(function() {
-                                expect(GU.util.signalDevice).to.have.been.calledOnce
+                                expect(GU.util.signalDevice).to.have.been.calledOnce;
                                 expect(GU.util.signalDevice).to.have.been.calledWith('ad_moved');
                                 done();
                             }, 1100);
@@ -447,7 +447,7 @@ define([
                         block.classList.add('block');
                         articleBody.appendChild(block);
                     }
-                }
+                };
 
             beforeEach(function () {
                 articleBody = document.createElement('div');
@@ -530,8 +530,6 @@ define([
             it('updates ad position on android if it has changed', function (done) {
                 injector
                     .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
-                        var advertSlotWrapper;
-
                         GU.opts.platform = 'android';
 
                         ads.init(config);
@@ -549,8 +547,6 @@ define([
             it('updates ad position on ios if it has changed', function (done) {
                 injector
                     .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
-                        var advertSlotWrapper;
-
                         ads.init(config);
 
                         resizedSlotWrapper();
@@ -567,8 +563,6 @@ define([
             it('does not update ad position on android if it has not changed', function (done) {
                 injector
                     .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
-                        var advertSlotWrapper;
-
                         GU.opts.platform = 'android';
 
                         ads.init(config);
@@ -584,8 +578,6 @@ define([
             it('does not update ad position on ios if it has not changed', function (done) {
                 injector
                     .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
-                        var advertSlotWrapper;
-
                         ads.init(config);
 
                         ads.updateMPUPosition(128);
