@@ -10,7 +10,7 @@ define([
     var module = {
         init: function () {
             common.init();
-            liveblog.init(common);
+            liveblog.init();
         }
     };
 

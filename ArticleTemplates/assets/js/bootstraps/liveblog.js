@@ -2,16 +2,17 @@
 define([
     'modules/relativeDates',
     'modules/twitter',
-    'modules/MyScroll'
+    'modules/MyScroll',
+    'bootstraps/common'
 ], function (
     relativeDates,
     twitter,
-    MyScroll
+    MyScroll,
+    common
 ) {
     'use strict';
 
     var initialised,
-        common,
         newBlockHtml,
         liveblogStartPos;
 
@@ -478,14 +479,13 @@ define([
         }
     }
 
-    function ready(commonObj) {
+    function ready() {
         var minuteHeaderElem,
             minuteNavElem;
 
         if (!initialised) {
             initialised = true;
 
-            common = commonObj;
             newBlockHtml = '';
             liveblogStartPos = GU.util.getElementOffset(document.getElementsByClassName('article__body--liveblog')[0]);
 
