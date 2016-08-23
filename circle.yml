@@ -21,6 +21,8 @@ deployment:
       - git config --global push.default simple
       - git commit -a -m "Generate files for release [skip ci]"
       - git checkout master
+      - git fetch
+      - git reset --hard origin/master
       - git log -1
       - git merge release
       - git push origin master
