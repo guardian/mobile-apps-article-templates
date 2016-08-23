@@ -38,8 +38,8 @@ define(function () {
         if (reset) {
             advertSlots = document.getElementsByClassName('advert-slot--mpu');
 
-            for (i = 0; i < advertSlots.length; i++) {
-                advertSlots[i].parentNode.removeChild(advertSlots[i]);
+            for (i = advertSlots.length; i > 0; i--) {
+                advertSlots[i-1].parentNode.removeChild(advertSlots[i-1]);
             }
 
             numberOfMpus = 0;
@@ -88,9 +88,6 @@ define(function () {
         return mpu;
     }
 
-    // return the position of all mpus.
-    // This function is an internal function which accepts a function
-    // formatter(left1, top1, width1, height1, left2, top2, width2, height2)
     function getMpuPos(formatter) {
         var advertPosition,
             advertSlots = document.getElementsByClassName('advert-slot__wrapper'),
@@ -110,7 +107,7 @@ define(function () {
 
         if (advertSlots.length) {
             for (i = 0; i < advertSlots.length; i++) {
-                advertPosition = GU.util.getElementOffset(advertSlots[i]);
+                advertPosition = advertSlots[i].getBoundingClientRect();
 
                 if (advertPosition.width !== 0 && advertPosition.height !== 0) {
                     params['x' + (i + 1)] = advertPosition.left + scrollLeft;
@@ -159,11 +156,26 @@ define(function () {
     }
 
     function updateAndroidPositionLiveblogCallback(params) {
-        window.GuardianJSInterface.mpuLiveblogAdsPosition.apply(null, params);
+        var x1 = params.x1, 
+            y1 = params.y1, 
+            w1 = params.w1,
+            h1 = params.h1, 
+            x2 = params.x2,
+            y2 = params.y2,
+            w2 = params.w2,
+            h2 = params.h2;
+
+        window.GuardianJSInterface.mpuLiveblogAdsPosition(x1, y1, w1, h1, x2, y2, w2, h2);
+
     }
 
     function updateAndroidPositionDefaultCallback(params) {
-        window.GuardianJSInterface.mpuAdsPosition.apply(null, params);
+        var x1 = params.x1, 
+            y1 = params.y1, 
+            w1 = params.w1,
+            h1 = params.h1;
+
+        window.GuardianJSInterface.mpuAdsPosition(x1, y1, w1, h1);
     }
 
     function initMpuPoller() {
@@ -176,11 +188,11 @@ define(function () {
     function poller(interval, adPositions, firstRun) {
         var newAdPositions = getMpuOffset();
 
-        if(firstRun && GU.opts.platform === 'android'){
+        if (firstRun && GU.opts.platform === 'android') {
             updateAndroidPosition();
         }
 
-        if(newAdPositions !== adPositions){
+        if (newAdPositions !== adPositions) {
             if(GU.opts.platform === 'android'){
                 updateAndroidPosition();
             } else {
