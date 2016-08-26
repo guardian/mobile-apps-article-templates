@@ -563,11 +563,15 @@ define([
             it('does not update ad position on android if it has not changed', function (done) {
                 injector
                     .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
+                        var adSlot;
+
                         GU.opts.platform = 'android';
 
                         ads.init(config);
 
-                        ads.updateMPUPosition(128);
+                        adSlot = document.getElementsByClassName('advert-slot__wrapper')[0];
+
+                        ads.updateMPUPosition(adSlot.getBoundingClientRect().top);
 
                         expect(window.GuardianJSInterface.mpuAdsPosition).to.not.have.been.called;
 
@@ -578,9 +582,13 @@ define([
             it('does not update ad position on ios if it has not changed', function (done) {
                 injector
                     .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
+                        var adSlot;
+
                         ads.init(config);
 
-                        ads.updateMPUPosition(128);
+                        adSlot = document.getElementsByClassName('advert-slot__wrapper')[0];
+
+                        ads.updateMPUPosition(adSlot.getBoundingClientRect().top);
 
                         expect(window.GU.util.signalDevice).to.not.have.been.called;
 
