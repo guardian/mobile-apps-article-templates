@@ -54,7 +54,7 @@ define([
                     delete window.GU;
                 });
 
-                it('adds stylesheet if skipStyle falsey', function (done) {
+                it.skip('adds stylesheet if skipStyle falsey', function (done) {
                     injector
                         .mock('domReady', domReadyMock)
                         .mock('modules/monitor', monitorMock)
