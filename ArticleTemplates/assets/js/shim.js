@@ -32,6 +32,10 @@
     function init(opts) {
         GU.opts = opts;
 
+        if (!GU.opts.skipStyle) {
+            loadCss();
+        }
+
         catchNativeFunctionCalls();
 
         window.applyNativeFunctionCall = applyNativeFunctionCall;
@@ -41,6 +45,18 @@
         } else {
             window.addEventListener('DOMContentLoaded', kickOff);
         }
+    }
+
+    function loadCss() {
+        var url = 'assets/css/style-async.css',
+            basePath = GU.opts.templatesDirectory,
+            link = document.createElement('link');
+
+        link.type = 'text/css';
+        link.rel = 'stylesheet';
+        link.href = basePath + url;
+
+        document.getElementsByTagName('head')[0].appendChild(link);
     }
 
     function kickOff() {
