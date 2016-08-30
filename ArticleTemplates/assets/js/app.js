@@ -28,7 +28,7 @@ define([
 
         // ads positioning
         Ads.init({
-            adsEnabled: (GU.opts.adsEnabled === 'true') || (GU.opts.adsEnabled.indexOf('mpu') !== -1),
+            adsEnabled: (GU.opts.adsEnabled && GU.opts.adsEnabled === 'true') || (GU.opts.adsEnabled && GU.opts.adsEnabled.indexOf('mpu') !== -1),
             adsConfig: GU.opts.adsConfig,
             adsType: GU.opts.contentType === 'liveblog' && !document.body.classList.contains('the-minute') ? 'liveblog' : 'default',
             mpuAfterParagraphs: GU.opts.mpuAfterParagraphs
