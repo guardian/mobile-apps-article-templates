@@ -10,8 +10,8 @@ define([
     function footballChart(homeTeam, awayTeam) {
         var pieChart = document.getElementsByClassName('pie-chart--possession')[0],
             data = [
-                [awayTeam, pieChart.dataset.away, 'away'],
-                [homeTeam, pieChart.dataset.home, 'home']
+                [awayTeam, pieChart.getAttribute('data-away'), 'away'],
+                [homeTeam, pieChart.getAttribute('data-home'), 'home']
             ],
             width = 250,
             height = 250,
