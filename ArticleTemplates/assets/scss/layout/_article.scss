@@ -106,4 +106,14 @@
             margin-right: 0;
         }
     }
+
+    // Fixes bug on tablet when any figure which immediately follows the ad overlapped the ad
+    @include mq($from: 560px, $to: col4) {
+        .advert-slot--placeholder ~ {
+            & .element-video:first-of-type,
+            & .element-placeholder:first-of-type,
+            & .figure-wide:first-of-type {
+                display: inline-block;            }
+        }
+    }
 }
