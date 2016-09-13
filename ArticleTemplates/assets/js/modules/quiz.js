@@ -416,7 +416,6 @@ define([
                 for (i = 0; i < modules.score; i++) {
                     if (modules.scoreMessages[i]) {
                         scoreDisplayMessage = modules.scoreMessages[i];
-                        break;
                     }
                 }
 
