@@ -67,7 +67,7 @@ define([
             scriptElement = document.createElement('script');
             scriptElement.id = 'outbrain-widget';
             scriptElement.async = true;
-            scriptElement.src = 'https://widgets.outbrain.com/outbrain.js';
+            scriptElement.src = 'https://widgets.outbrain.com/outbrain.js?cachebuster=123456789';
             $(document.body).append(scriptElement);
         }
     }
