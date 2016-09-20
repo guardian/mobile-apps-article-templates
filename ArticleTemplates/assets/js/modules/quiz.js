@@ -8,7 +8,7 @@ define([
 ) {
     'use strict';
 
-    var initialised,
+    var initialised = false,
         numAnswered,
         questionCount,
         isPersonalityQuiz,
@@ -181,15 +181,15 @@ define([
             message,
             minScore,
             scoreElems = document.querySelectorAll('.quiz__scores > li'),
-            scoreMessages = {};
+            messages = {};
 
         for (i = 0; i < scoreElems.length; i++) {
             message = scoreElems[i].dataset.title;
             minScore = scoreElems[i].dataset.minScore;
-            scoreMessages[Math.max(minScore, 0)] = message;
+            messages[Math.max(minScore, 0)] = message;
         }
 
-        return scoreMessages;
+        return messages;
     }
 
     function buildScoresPanel(quiz) {
