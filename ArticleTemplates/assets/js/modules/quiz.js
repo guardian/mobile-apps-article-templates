@@ -1,4 +1,4 @@
-/*global window,console,define */
+/*global window,define */
 define([
     'smoothScroll',
     'modules/ads'
@@ -21,7 +21,7 @@ define([
         numAnswered = 0;
         questionCount = 0;
         isPersonalityQuiz = document.getElementsByClassName('quiz__buckets')[0];
-        moveMPU = IsAdBelowQuiz(quiz);
+        moveMPU = isAdBelowQuiz(quiz);
         
         if (isPersonalityQuiz) {
             quiz.classList.add('personality-quiz');
@@ -160,7 +160,7 @@ define([
                 };
             } else {
                 if (!answers[question].revealText || answers[question].revealText === '- ') {
-                    answers[question].revealText = ''
+                    answers[question].revealText = '';
                 }
                 answers[question].revealText += correctAnswerWordList[i] + ' ';
             }
@@ -169,7 +169,7 @@ define([
         for (key in answers) {
             if (answers.hasOwnProperty(key) && answers[key].revealText) {
                 // Remove trailing comma in revealText
-                answers[key].revealText = answers[key].revealText.replace(/,\s*$/, "");
+                answers[key].revealText = answers[key].revealText.replace(/,\s*$/, '');
             }
         }
 
@@ -311,8 +311,8 @@ define([
         parent.appendChild(text);
     }
 
-    function IsAdBelowQuiz(quiz) {
-        var IsAdBelowQuiz = false,
+    function isAdBelowQuiz(quiz) {
+        var adBelowQuiz = false,
             mpu = document.getElementsByClassName('advert-slot__wrapper')[0],
             mpuOffset,
             quizOffset;
@@ -322,11 +322,11 @@ define([
             quizOffset = GU.util.getElementOffset(quiz).top;
 
             if (mpuOffset > quizOffset) {
-                IsAdBelowQuiz = true;
+                adBelowQuiz = true;
             }
         }
 
-        return IsAdBelowQuiz;
+        return adBelowQuiz;
     }
 
     function adjustAdPosition(yPos, startTime, timeStamp) {

@@ -205,6 +205,7 @@ module.exports = function(grunt) {
                         'ArticleTemplates/assets/js/modules/sharing.js',
                         'ArticleTemplates/assets/js/modules/comments.js',
                         'ArticleTemplates/assets/js/modules/ads.js',
+                        'ArticleTemplates/assets/js/modules/quiz.js',
                         'test/spec/unit/**/*.js'
                     ]
                 }
