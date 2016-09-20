@@ -278,6 +278,10 @@ define([
 
             adjustText: function (parent, text) {
                 parent.appendChild(text);
+                // make sure parent height is not less than text height
+                if (parent.offsetHeight < text.offsetHeight) {
+                    parent.style.height = text.offsetHeight + 'px';
+                }
             },
 
             IsAdBelowQuiz: function (quiz) {
