@@ -82,7 +82,7 @@ define([
                     articleBody.classList.add('article__body');
 
                     for (i = 0; i < 8; i++) {
-                         html += '<div class="block"></div>'
+                         html += '<div class="block"></div>';
                     }
 
                     articleBody.innerHTML = html;
