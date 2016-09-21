@@ -2,7 +2,8 @@
 define(function () {
     'use strict';
 
-    var initialised = false,
+    var adsReady = false,
+        initialised = false,
         positionPoller,
         numberOfMpus = 0,
         adsType;
@@ -14,6 +15,13 @@ define(function () {
             placeholderSibling = document.querySelector('.article__body > div.prose > :first-child'),
             mpuSibling = document.querySelector('.article__body > div.prose > p:nth-of-type(' + nrParagraph + ') ~ p + p');
 
+        if (mpuSibling && mpuSibling.parentNode) {
+            mpuSibling.parentNode.insertBefore(mpu, mpuSibling);
+        } else {
+            // do not proceed - not enough paragraphs on page to add advert
+            return;
+        }
+
         placeholder.classList.add('advert-slot');
         placeholder.classList.add('advert-slot--placeholder');
 
@@ -23,9 +31,7 @@ define(function () {
             placeholderSibling.parentNode.insertBefore(placeholder, placeholderSibling);
         }
 
-        if (mpuSibling && mpuSibling.parentNode) {
-            mpuSibling.parentNode.insertBefore(mpu, mpuSibling);
-        }
+        adsReady = true;
     }
 
     function updateLiveblogAdPlaceholders(reset) {
@@ -251,17 +257,20 @@ define(function () {
             setupGlobals();
 
             if (adsType === 'liveblog') {
+                adsReady = true;
                 updateLiveblogAdPlaceholders();
             } else {
                 numberOfMpus = 1;
                 insertAdPlaceholders(config.mpuAfterParagraphs);
             }
 
-            if (GU.opts.platform !== 'android') {
-                initMpuPoller();
-            }
+            if (adsReady) {
+                if (GU.opts.platform !== 'android') {
+                    initMpuPoller();
+                }
 
-            fireAdsReady();
+                fireAdsReady();
+            }
         }
     }
 
