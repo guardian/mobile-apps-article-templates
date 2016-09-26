@@ -158,7 +158,7 @@ define([
         }
 
         if (isLive) {
-            relativeDates.init('.block__time', 'title');
+            relativeDates.init('.key-event__time, .block__time', 'title');
         } else {
             blockTimes = document.getElementsByClassName('block__time');
 
@@ -197,10 +197,12 @@ define([
         window.liveblogTime = liveblogTime;
         window.showLiveMore = showLiveMore;
         window.liveblogNewBlock = liveblogNewBlock;
+        window.liveblogNewKeyEvent = liveblogNewKeyEvent;
 
         window.applyNativeFunctionCall('liveblogNewBlock');
         window.applyNativeFunctionCall('liveblogDeleteBlock');
         window.applyNativeFunctionCall('liveblogUpdateBlock');
+        window.applyNativeFunctionCall('liveblogNewKeyEvent');
     }
 
     function setupTheMinute() {
@@ -479,6 +481,88 @@ define([
         }
     }
 
+    function keyEvents() {
+        var keyEventsToggle = document.getElementsByClassName('key-events__toggle')[0],
+            keyEventLinks = document.getElementsByClassName('key-event__link');
+
+        if (keyEventsToggle) {
+            keyEventsToggle.addEventListener('click', showHideKeyEvents);
+        }
+
+        if (keyEventLinks.length) {
+            captureKeyEventClicks(keyEventLinks);
+        }
+    }
+
+    function liveblogNewKeyEvent(html) {
+        var i,
+            keyEvents,
+            keyEventsCounter,
+            keyEventsList = document.getElementsByClassName('key-events__list')[0],
+            keyEventLinks,
+            oldKeyEventLinksCount,
+            newKeyEventLinksCount,
+            newKeyEventLinks = [];
+
+        if (!keyEventsList) {
+            return;
+        }
+
+        keyEventLinks = document.getElementsByClassName('key-event__link');
+
+        oldKeyEventLinksCount = keyEventLinks.length;
+
+        keyEventsList.innerHTML = html + keyEventsList.innerHTML;
+
+        keyEventLinks = document.getElementsByClassName('key-event__link');
+
+        newKeyEventLinksCount = keyEventLinks.length;
+
+        for (i = newKeyEventLinksCount; i > oldKeyEventLinksCount; i--) {
+            newKeyEventLinks.push(keyEventLinks[i - 1]);
+        }
+
+        captureKeyEventClicks(newKeyEventLinks);
+
+        keyEventsCounter = document.getElementsByClassName('key-events__counter')[0];
+
+        keyEventsCounter.innerHTML = '(' + newKeyEventLinksCount + ')';
+
+        keyEvents = document.getElementsByClassName('key-events')[0];
+
+        for (i = keyEvents.classList.length; i > 0; i--) {
+            if (keyEvents.classList[i - 1].match(/(key-events--)+[0-9]/g)) {
+                keyEvents.classList.remove(keyEvents.classList[i - 1]);
+            }    
+        }
+
+        keyEvents.classList.add('key-events--' + newKeyEventLinksCount);
+
+        window.liveblogTime();
+    }
+
+    function captureKeyEventClicks(links) {
+        var i;
+
+        for (i = 0; i < links.length; i++) {
+            links[i].addEventListener('click', handleKeyEventClick);
+        }
+    }
+
+    function handleKeyEventClick(evt) {
+        evt.preventDefault();
+    }
+
+    function showHideKeyEvents() {
+        var keyEvents = document.getElementsByClassName('key-events')[0];
+
+        if (keyEvents.classList.contains('key-events--expanded')) {
+            keyEvents.classList.remove('key-events--expanded');
+        } else {
+            keyEvents.classList.add('key-events--expanded');
+        }
+    }
+
     function ready() {
         var minuteHeaderElem,
             minuteNavElem;
@@ -490,6 +574,7 @@ define([
             liveblogStartPos = GU.util.getElementOffset(document.getElementsByClassName('article__body--liveblog')[0]);
 
             setupGlobals();
+            keyEvents();
             window.liveblogTime();
             window.addEventListener('scroll', GU.util.debounce(updateBlocksOnScroll, 100, true));
             liveMore();

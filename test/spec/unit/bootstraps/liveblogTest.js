@@ -362,7 +362,7 @@ define([
                         window.liveblogTime();
 
                         expect(relativeDatesMock.init).to.have.been.called;
-                        expect(relativeDatesMock.init).to.have.been.calledWith('.block__time', 'title');
+                        expect(relativeDatesMock.init).to.have.been.calledWith('.key-event__time, .block__time', 'title');
 
                         done();
                     });
