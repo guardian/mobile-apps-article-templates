@@ -2967,10 +2967,25 @@
     opacity: 0;
     padding: 0px 6px 0px 12px;
     position: relative;
-    transition: max-height .4s, opacity .6s;
     width: 90%; }
     #sandbox .key-event::before {
-      display: none !important; }
+      background: #bdbdbd !important;
+      border-radius: 50%;
+      content: '';
+      display: block;
+      height: 10px;
+      left: -5px;
+      position: absolute;
+      top: 4px;
+      width: 10px; }
+    #sandbox .key-event::after {
+      background: #bdbdbd;
+      content: '';
+      height: 100%;
+      left: -1px;
+      position: absolute;
+      top: 4px;
+      width: 1px; }
     .key-events--expanded #sandbox .key-event, #sandbox .key-event:first-child {
       max-height: 300px;
       opacity: 1; }
@@ -2978,37 +2993,21 @@
       color: #333;
       display: block;
       font: 600 1.5rem "Guardian Egyptian Web", Georgia, serif; }
-      #sandbox .key-event__time::before {
-        background: #bdbdbd;
-        border-radius: 50%;
-        content: '';
-        display: block;
-        height: 10px;
-        left: -5px;
-        position: absolute;
-        top: 4px;
-        width: 10px; }
-      #sandbox .key-event__time::after {
-        background: #bdbdbd;
-        content: '';
-        height: 100%;
-        left: -1px;
-        position: absolute;
-        top: 4px;
-        width: 1px; }
-    #sandbox .key-event:first-child .key-event__time::before {
+      .key-event--highlighted #sandbox .key-event__time {
+        color: #cc2b12 !important; }
+    #sandbox .key-event:first-child::before {
       height: 1px;
       left: -1px;
       top: 8px;
       width: 7px; }
-    #sandbox .key-event:first-child .key-event__time::after {
+    #sandbox .key-event:first-child::after {
       top: 8px; }
-    #sandbox .key-event:last-child .key-event__time::before {
+    #sandbox .key-event:last-child::before {
       height: 1px;
       left: -1px;
       top: 8px;
       width: 7px; }
-    #sandbox .key-event:last-child .key-event__time::after {
+    #sandbox .key-event:last-child::after {
       height: 9px;
       top: 0; }
     #sandbox .key-event__link {
@@ -3016,6 +3015,8 @@
       display: block;
       font: normal 1.6rem "Guardian Text Egyptian Web", Georgia, serif;
       padding: 6px 0px 12px 0px; }
+      .key-event--highlighted #sandbox .key-event__link {
+        color: #cc2b12 !important; }
   #sandbox .loading {
     text-align: center;
     padding: 12px; }
@@ -9214,6 +9215,55 @@
     animation-name: blink; }
   #sandbox .section__live__pulse {
     -webkit-animation: blink 1.5s ease-in infinite; }
+@-webkit-keyframes flipInX {
+  from {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0; }
+  40% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in; }
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1; }
+  80% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg); }
+  to {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px); } }
+@keyframes flipInX {
+  from {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0; }
+  40% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in; }
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1; }
+  80% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg); }
+  to {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px); } }
+  #sandbox .flipInX {
+    -webkit-backface-visibility: visible !important;
+    backface-visibility: visible !important;
+    -webkit-animation-name: flipInX;
+    animation-name: flipInX; }
   #sandbox .aside {
     margin: 24px 0px;
     border-top: 1px dotted #dcdad5;

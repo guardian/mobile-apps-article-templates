@@ -117,11 +117,31 @@
     opacity: 0; 
     padding: base-px(0, .5, 0, 1);
     position: relative;
-    transition: max-height .4s, opacity .6s;
+    transition: color .6s;
     width: 90%;
 
+    // Create bullet point for events
     &::before {
-        display: none !important;
+        background: #bdbdbd !important;
+        border-radius: 50%;
+        content: '';
+        display: block;
+        height: 10px;
+        left: -5px;
+        position: absolute;
+        top: 4px;
+        width: 10px;
+    }
+
+    // Create timeline bar for events
+    &::after {
+        background: #bdbdbd;
+        content: '';
+        height: 100%;
+        left: -1px;
+        position: absolute;
+        top: 4px;
+        width: 1px;
     }
 
     // only shown when key-events--expanded & first child always visible
@@ -136,55 +156,35 @@
         display: block;
         font: 600 1.5rem $egyptian-display;
 
-        // Create dot marker for timeline event
-        &::before {
-            background: #bdbdbd;
-            border-radius: 50%;
-            content: '';
-            display: block;
-            height: 10px;
-            left: -5px;
-            position: absolute;
-            top: 4px;
-            width: 10px;
-        }
-
-        // Create timeline bar for events
-        &::after {
-            background: #bdbdbd;
-            content: '';
-            height: 100%;
-            left: -1px;
-            position: absolute;
-            top: 4px;
-            width: 1px;
+        .key-event--highlighted & {
+            color: color(tone-live-accent) !important;
         }
     }
 
     // Create tick marks for first child instead of dot, and position start of timeline
     &:first-child {
-        .key-event__time::before {
+        &::before {
             height: 1px;
             left: -1px;
             top: 8px;
             width: 7px;
         }
 
-        .key-event__time::after {
+        &::after {
             top: 8px;
         }
     }
 
     // Create tick marks for last child instead of dot and end the timeline, and position end of timeline
     &:last-child {
-        .key-event__time::before {
+        &::before {
             height: 1px;
             left: -1px;
             top: 8px;
             width: 7px;
         }
 
-        .key-event__time::after {
+        &::after {
             height: 9px;
             top: 0;
         }
@@ -195,5 +195,9 @@
         display: block;
         font: normal 1.6rem $egyptian-text;
         padding: base-px(.5, 0, 1, 0);
+
+        .key-event--highlighted & {
+            color: color(tone-live-accent) !important;
+        }
     }
 }

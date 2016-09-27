@@ -832,10 +832,25 @@ figure figcaption {
   opacity: 0;
   padding: 0px 6px 0px 12px;
   position: relative;
-  transition: max-height .4s, opacity .6s;
   width: 90%; }
   .key-event::before {
-    display: none !important; }
+    background: #bdbdbd !important;
+    border-radius: 50%;
+    content: '';
+    display: block;
+    height: 10px;
+    left: -5px;
+    position: absolute;
+    top: 4px;
+    width: 10px; }
+  .key-event::after {
+    background: #bdbdbd;
+    content: '';
+    height: 100%;
+    left: -1px;
+    position: absolute;
+    top: 4px;
+    width: 1px; }
   .key-events--expanded .key-event, .key-event:first-child {
     max-height: 300px;
     opacity: 1; }
@@ -843,37 +858,21 @@ figure figcaption {
     color: #333;
     display: block;
     font: 600 1.5rem "Guardian Egyptian Web", Georgia, serif; }
-    .key-event__time::before {
-      background: #bdbdbd;
-      border-radius: 50%;
-      content: '';
-      display: block;
-      height: 10px;
-      left: -5px;
-      position: absolute;
-      top: 4px;
-      width: 10px; }
-    .key-event__time::after {
-      background: #bdbdbd;
-      content: '';
-      height: 100%;
-      left: -1px;
-      position: absolute;
-      top: 4px;
-      width: 1px; }
-  .key-event:first-child .key-event__time::before {
+    .key-event--highlighted .key-event__time {
+      color: #cc2b12 !important; }
+  .key-event:first-child::before {
     height: 1px;
     left: -1px;
     top: 8px;
     width: 7px; }
-  .key-event:first-child .key-event__time::after {
+  .key-event:first-child::after {
     top: 8px; }
-  .key-event:last-child .key-event__time::before {
+  .key-event:last-child::before {
     height: 1px;
     left: -1px;
     top: 8px;
     width: 7px; }
-  .key-event:last-child .key-event__time::after {
+  .key-event:last-child::after {
     height: 9px;
     top: 0; }
   .key-event__link {
@@ -881,6 +880,8 @@ figure figcaption {
     display: block;
     font: normal 1.6rem "Guardian Text Egyptian Web", Georgia, serif;
     padding: 6px 0px 12px 0px; }
+    .key-event--highlighted .key-event__link {
+      color: #cc2b12 !important; }
 
 /*doc
 ---

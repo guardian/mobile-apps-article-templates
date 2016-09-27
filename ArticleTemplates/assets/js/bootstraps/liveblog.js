@@ -496,39 +496,41 @@ define([
 
     function liveblogNewKeyEvent(html) {
         var i,
-            keyEvents,
-            keyEventsCounter,
+            j,
             keyEventsList = document.getElementsByClassName('key-events__list')[0],
-            keyEventLinks,
-            oldKeyEventLinksCount,
-            newKeyEventLinksCount,
-            newKeyEventLinks = [];
+            newKeyEventLinks;
 
         if (!keyEventsList) {
             return;
         }
 
-        keyEventLinks = document.getElementsByClassName('key-event__link');
+        newKeyEventLinks = GU.util.getElemsFromHTML(html);
 
-        oldKeyEventLinksCount = keyEventLinks.length;
-
-        keyEventsList.innerHTML = html + keyEventsList.innerHTML;
-
-        keyEventLinks = document.getElementsByClassName('key-event__link');
-
-        newKeyEventLinksCount = keyEventLinks.length;
-
-        for (i = newKeyEventLinksCount; i > oldKeyEventLinksCount; i--) {
-            newKeyEventLinks.push(keyEventLinks[i - 1]);
+        for (i = newKeyEventLinks.length; i > 0; i--) {
+            newKeyEventLinks[i - 1].classList.add('key-event--highlighted');
+            for (j = 0; j < newKeyEventLinks[i - 1].children.length; j++) {
+                newKeyEventLinks[i - 1].children[j].classList.add('flipInX');
+                newKeyEventLinks[i - 1].children[j].classList.add('animated');
+            }
+            keyEventsList.insertBefore(newKeyEventLinks[i - 1], keyEventsList.firstChild);
+            setTimeout(unhighlightKeyEventLink.bind(null, newKeyEventLinks[i - 1]), 15000);
         }
 
         captureKeyEventClicks(newKeyEventLinks);
+        updateKeyEventCount(keyEventsList.children.length);
+        window.liveblogTime();
+    }
 
-        keyEventsCounter = document.getElementsByClassName('key-events__counter')[0];
+    function unhighlightKeyEventLink(link) {
+        link.classList.remove('key-event--highlighted');
+    }
 
-        keyEventsCounter.innerHTML = '(' + newKeyEventLinksCount + ')';
+    function updateKeyEventCount(count) {
+        var i,
+            keyEventsCounter = document.getElementsByClassName('key-events__counter')[0],
+            keyEvents = document.getElementsByClassName('key-events')[0];
 
-        keyEvents = document.getElementsByClassName('key-events')[0];
+        keyEventsCounter.innerHTML = '(' + count + ')';
 
         for (i = keyEvents.classList.length; i > 0; i--) {
             if (keyEvents.classList[i - 1].match(/(key-events--)+[0-9]/g)) {
@@ -536,9 +538,7 @@ define([
             }    
         }
 
-        keyEvents.classList.add('key-events--' + newKeyEventLinksCount);
-
-        window.liveblogTime();
+        keyEvents.classList.add('key-events--' + count);
     }
 
     function captureKeyEventClicks(links) {
