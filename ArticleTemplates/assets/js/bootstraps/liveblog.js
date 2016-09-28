@@ -73,6 +73,9 @@ define([
 
             window.liveblogTime();
 
+            // check for tweets
+            twitter.checkForTweets();
+
             newBlockHtml = '';
         }
     }
@@ -141,7 +144,7 @@ define([
         window.liveblogTime();
 
         // check for tweets
-        twitter.checkForTweets(document.body);
+        twitter.checkForTweets();
     }
 
     function liveblogTime() {
@@ -494,11 +497,11 @@ define([
             window.addEventListener('scroll', GU.util.debounce(updateBlocksOnScroll, 100, true));
             liveMore();
             
-            twitter.init();
-            
             if (document.body.classList.contains('the-minute')) {
                 setupTheMinute();
             } else {
+                twitter.init();
+
                 setInterval(window.liveblogTime, 30000);
 
                 if (minuteHeaderElem) {
@@ -508,8 +511,6 @@ define([
                 if (minuteNavElem) {
                     minuteNavElem.parentNode.removeChild(minuteNavElem);
                 }
-
-                twitter.enhanceTweets();
             }
         }
     }

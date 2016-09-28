@@ -24,8 +24,7 @@ define([
             };
             twitterMock = {
                 init: sinon.spy(),
-                checkForTweets: sinon.spy(),
-                enhanceTweets: sinon.spy()
+                checkForTweets: sinon.spy()
             };
             MyScrollMock = {};
             commonMock = {
@@ -72,8 +71,38 @@ define([
                 sandbox.stub(window, 'addEventListener');
             });
 
-            afterEach(function () {
-                expect(twitterMock.init).to.have.been.calledOnce;
+            it('initialises twitter module if not the minute', function (done) {
+                injector
+                    .mock('modules/relativeDates', relativeDatesMock)
+                    .mock('modules/twitter', twitterMock)
+                    .mock('modules/MyScroll', MyScrollMock)
+                    .mock('bootstraps/common', commonMock)
+                    .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
+                        liveblog.init();
+
+                        expect(twitterMock.init).to.have.been.calledOnce;
+
+                        done();
+                    });
+            });
+
+            it('does not initialise twitter module if the minute', function (done) {
+                injector
+                    .mock('modules/relativeDates', relativeDatesMock)
+                    .mock('modules/twitter', twitterMock)
+                    .mock('modules/MyScroll', MyScrollMock)
+                    .mock('bootstraps/common', commonMock)
+                    .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
+                        document.body.classList.add('the-minute');
+
+                        liveblog.init();
+
+                        expect(twitterMock.init).not.to.have.been.called;
+
+                        document.body.classList.remove('the-minute');
+
+                        done();
+                    });
             });
 
             it('sets up global functions', function (done) {
@@ -194,7 +223,6 @@ define([
                         expect(window.setInterval).to.have.been.calledWith(window.liveblogTime);
                         expect(minuteHeader.parentNode).to.be.falsy;
                         expect(minuteNav.parentNode).to.be.falsy;
-                        expect(twitterMock.enhanceTweets).to.have.been.calledOnce;
 
                         done();
                     });
