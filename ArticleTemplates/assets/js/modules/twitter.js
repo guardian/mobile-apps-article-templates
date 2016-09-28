@@ -4,7 +4,6 @@ define(function () {
     'use strict';
 
     var articleBody,
-        timeoutId,
         isAndroid,
         tweets,
         scriptReady = false;
