@@ -44,9 +44,10 @@ define(function () {
         scriptReady = isScriptReady();
 
         if (scriptReady) {
-            window.addEventListener('scroll', GU.util.debounce(enhanceTweets, 100));
             enhanceTweets();
         }
+
+        window.addEventListener('scroll', GU.util.debounce(enhanceTweets, 100));
     }
 
     function isScriptReady() {
