@@ -118,28 +118,13 @@ define(function () {
         var i,
             webIntentLinks;
 
-        if (evt.target.contentWindow &&
+        if (!isAndroid,
+            evt.target.contentWindow &&
             evt.target.contentWindow.document) {
-            if (isAndroid) {
-                evt.target.contentWindow.document.addEventListener('click', handleTweetClick);
-            } else {
                 webIntentLinks = evt.target.contentWindow.document.querySelectorAll('a.web-intent');
-
                 for (i = 0; i < webIntentLinks.length; i++) {
                     webIntentLinks[i].classList.remove('web-intent');
                 }
-            }
-        }
-    }
-
-    function handleTweetClick(evt) {
-        var target = evt.target;
-
-        if (target.tagName === 'A' && 
-            target.hasAttribute('href')) {
-            window.open(target.getAttribute('href'));
-            evt.stopImmediatePropagation();
-            evt.preventDefault();
         }
     }
 
