@@ -121,6 +121,7 @@ define([
     function formatElementImageFigure(figure) {
         var caption = figure.getElementsByClassName('element-image__caption')[0],
             captionIcon = figure.getElementsByClassName('figure__caption__icon')[0],
+            desiredImageHeight,
             isThumbnail = figure.classList.contains('element--thumbnail'),
             imageClass = isThumbnail && caption ? 'figure--thumbnail-with-caption' : (isThumbnail ? 'figure--thumbnail' : 'figure-wide'),
             imageOrLinkedImage = figure.children[0],
@@ -143,7 +144,10 @@ define([
 
             // only set imageWrapper height to desired height of thumbnails/wide images on non-minute layouts
             if (!GU.opts.isMinute && (isThumbnail || imageClass === 'figure-wide')) {
-                imageWrapper.style.height = getDesiredImageHeight(figure) + 'px';
+                desiredImageHeight = getDesiredImageHeight(figure);
+                if (desiredImageHeight) {
+                    imageWrapper.style.height = desiredImageHeight + 'px';
+                }
                 window.addEventListener('resize', GU.util.debounce(resizeImageWrapper.bind(null, imageWrapper, figure), 100));
             }
         }
