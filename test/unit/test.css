@@ -257,6 +257,23 @@
   */
   /*doc
   ---
+  title: Figure
+  name: figure
+  category: Modules
+  ---
+  Display an embedded element. Element embeds are typically shown as figures, and can optionally include a supporting caption.
+  
+  ```html_example
+  <figure>
+      <img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/11/1402512126497/Matt-Kenyon-on-Birmingham-014.jpg?width=900&amp;height=540&amp;quality=60"/>
+      <figcaption>
+          ‘The absurdity of the inspectors’ findings is clearest in the case of Gracelands, whose staff were taken to task for failing to ensure its 2- to 4-year-olds were protected against ‘extreme and radical behaviour'.' Illustration: Matt Kenyon
+      </figcaption>
+  </figure>
+  ```
+  */
+  /*doc
+  ---
   title: Loading
   name: loading
   category: Modules
@@ -1129,23 +1146,6 @@
           </div>
       </div>
   </section>
-  ```
-  */
-  /*doc
-  ---
-  title: Figure
-  name: figure
-  category: Modules
-  ---
-  Display an embedded element. Element embeds are typically shown as figures, and can optionally include a supporting caption.
-  
-  ```html_example
-  <figure>
-      <img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/11/1402512126497/Matt-Kenyon-on-Birmingham-014.jpg?width=900&amp;height=540&amp;quality=60"/>
-      <figcaption>
-          ‘The absurdity of the inspectors’ findings is clearest in the case of Gracelands, whose staff were taken to task for failing to ensure its 2- to 4-year-olds were protected against ‘extreme and radical behaviour'.' Illustration: Matt Kenyon
-      </figcaption>
-  </figure>
   ```
   */
   /*doc
@@ -2436,7 +2436,7 @@
   </figure>
   ```
   */ }
-  #sandbox .main-media:not(.main-media--hidden-caption) .main-media__caption__icon, #sandbox .figure__caption__icon {
+  #sandbox .figure__caption__icon, #sandbox .main-media:not(.main-media--hidden-caption) .main-media__caption__icon {
     display: inline-block;
     margin-right: 7px;
     position: relative;
@@ -2750,6 +2750,135 @@
       #sandbox .cutout .cutout__image {
         background-size: contain;
         right: 14%; } }
+  #sandbox figure img {
+    display: block; }
+  #sandbox figure video {
+    width: 100%; }
+  #sandbox figure figcaption {
+    color: #767676;
+    font-family: "Guardian Agate Sans 1 Web", sans-serif;
+    border-bottom: 1px dotted rgba(153, 153, 153, 0.4);
+    padding: 6px 12px 24px 12px; }
+    @media all and (max-width: 40.62em) {
+      #sandbox figure figcaption {
+        font-size: 1.4rem;
+        line-height: 2rem; } }
+    @media all and (min-width: 40.63em) {
+      #sandbox figure figcaption {
+        font-size: 1.6rem;
+        line-height: 2.2rem; } }
+  #sandbox .figure-wide {
+    margin: 12px 0px; }
+    .main-media #sandbox .figure-wide {
+      margin: 0; }
+    #sandbox .figure-wide img {
+      height: auto; }
+    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
+      #sandbox .figure-wide figcaption {
+        padding-right: 23.94366%; } }
+    @media all and (min-width: 56.25em) {
+      #sandbox .figure-wide figcaption {
+        padding-right: 24.21053%; } }
+  #sandbox .figure-inline {
+    margin-right: 12px;
+    float: left; }
+    @media all and (min-width: 28.13em) {
+      #sandbox .figure-inline {
+        margin: 6px 12px 0px 0px;
+        float: left; }
+        #sandbox .figure-inline img {
+          width: 100%;
+          height: auto; } }
+    #sandbox .figure-inline figcaption {
+      padding-left: 0;
+      padding-right: 0; }
+  #sandbox .figure--thumbnail img,
+  #sandbox .figure--thumbnail-with-caption img,
+  #sandbox .figure-wide img {
+    width: 100%;
+    height: auto; }
+  #sandbox .figure--thumbnail figcaption,
+  #sandbox .figure--thumbnail-with-caption figcaption,
+  #sandbox .figure-wide figcaption {
+    font-size: 1.4rem; }
+  #sandbox .figure--thumbnail .element-image-inner,
+  #sandbox .figure--thumbnail-with-caption .element-image-inner,
+  #sandbox .figure-wide .element-image-inner {
+    min-width: 65px;
+    height: 100%;
+    background: #dcdad5; }
+  #sandbox .figure--thumbnail {
+    float: left;
+    max-width: 65px;
+    margin: 6px 13px 0 0; }
+    .prose #sandbox .figure--thumbnail {
+      margin-top: 6px; }
+      @media all and (min-width: 75em) {
+        .prose #sandbox .figure--thumbnail {
+          margin-left: -80px; } }
+  #sandbox .figure--thumbnail-with-caption {
+    display: block;
+    float: left;
+    margin: 4px 12px 0 0;
+    width: 50%;
+    background: #f6f6f6; }
+    #sandbox .figure--thumbnail-with-caption .figure__inner {
+      width: 100%;
+      display: block; }
+    #sandbox .figure--thumbnail-with-caption .element-image__credit {
+      display: block; }
+    #sandbox .figure--thumbnail-with-caption figcaption {
+      padding: 0 0 4px 4px;
+      border-bottom: 1px dotted rgba(153, 153, 153, 0.4); }
+    @media all and (max-width: 28.12em) {
+      #sandbox .figure--thumbnail-with-caption {
+        float: none;
+        width: 100%; }
+        #sandbox .figure--thumbnail-with-caption .figure__inner {
+          display: block; }
+        #sandbox .figure--thumbnail-with-caption.portrait-thumbnail {
+          position: relative; }
+          #sandbox .figure--thumbnail-with-caption.portrait-thumbnail .figure__inner {
+            width: 50%; }
+          #sandbox .figure--thumbnail-with-caption.portrait-thumbnail figcaption {
+            position: absolute;
+            bottom: 0;
+            top: 0;
+            left: 50%;
+            padding: 0 6px;
+            width: 50%;
+            border-top: 1px dotted rgba(153, 153, 153, 0.4); }
+          #sandbox .figure--thumbnail-with-caption.portrait-thumbnail .element-image__caption {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            display: block;
+            display: -webkit-box;
+            -webkit-line-clamp: 10;
+            -webkit-box-orient: vertical; }
+          #sandbox .figure--thumbnail-with-caption.portrait-thumbnail .element-image__credit {
+            position: absolute;
+            bottom: 0;
+            padding-bottom: 6px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            display: block;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical; }
+        #sandbox .figure--thumbnail-with-caption.landscape-thumbnail .figure__inner {
+          width: 100%; } }
+    @media all and (min-width: 28.13em) {
+      #sandbox .figure--thumbnail-with-caption {
+        width: 33%;
+        max-width: 200px; } }
+    @media all and (min-width: 40.63em) {
+      #sandbox .figure--thumbnail-with-caption {
+        margin-right: 15px; } }
+    @media all and (min-width: 75em) {
+      #sandbox .figure--thumbnail-with-caption {
+        margin: 0 0 12px -220px; } }
   #sandbox .loading {
     text-align: center;
     padding: 12px; }
@@ -4073,6 +4202,9 @@
     @media all and (min-width: 40.63em) {
       #sandbox .article__body .advert-slot--mpu {
         margin-right: 0; } }
+    @media all and (min-width: 35em) and (max-width: 74.99em) {
+      #sandbox .article__body .advert-slot--placeholder ~ .element-video:first-of-type, #sandbox .article__body .advert-slot--placeholder ~ .element-placeholder:first-of-type, #sandbox .article__body .advert-slot--placeholder ~ .figure-wide:first-of-type {
+        display: inline-block; } }
   #sandbox .article--audio .article__header {
     position: relative; }
     #sandbox .article--audio .article__header .cutout__background {
@@ -6273,10 +6405,12 @@
       #sandbox .is_advertising.tone--podcast .article .article__body .prose .element-rich-link {
         border-color: rgba(135, 135, 135, 0.4); }
       #sandbox .is_advertising.tone--news .article .article__body .prose figure.portrait-thumbnail figcaption, #sandbox .is_advertising.tone--feature1 .article .article__body .prose figure.portrait-thumbnail figcaption, #sandbox .is_advertising.tone--feature2 .article .article__body .prose figure.portrait-thumbnail figcaption, #sandbox .is_advertising.tone--feature3 .article .article__body .prose figure.portrait-thumbnail figcaption, #sandbox .is_advertising.tone--media .article .article__body .prose figure.portrait-thumbnail figcaption, #sandbox .is_advertising.tone--podcast .article .article__body .prose figure.portrait-thumbnail figcaption {
-        background: rgba(153, 153, 153, 0.6);
+        background: none;
         border-top: 1px #999 dotted;
         border-bottom: 1px #999 dotted;
         color: #484848; }
+      #sandbox .is_advertising.tone--news .article .article__body .prose figure.figure--thumbnail-with-caption, #sandbox .is_advertising.tone--feature1 .article .article__body .prose figure.figure--thumbnail-with-caption, #sandbox .is_advertising.tone--feature2 .article .article__body .prose figure.figure--thumbnail-with-caption, #sandbox .is_advertising.tone--feature3 .article .article__body .prose figure.figure--thumbnail-with-caption, #sandbox .is_advertising.tone--media .article .article__body .prose figure.figure--thumbnail-with-caption, #sandbox .is_advertising.tone--podcast .article .article__body .prose figure.figure--thumbnail-with-caption {
+        background: none; }
     #sandbox .is_advertising.tone--news .article .element-placeholder .element-placeholder__button .touchpoint__button, #sandbox .is_advertising.tone--feature1 .article .element-placeholder .element-placeholder__button .touchpoint__button, #sandbox .is_advertising.tone--feature2 .article .element-placeholder .element-placeholder__button .touchpoint__button, #sandbox .is_advertising.tone--feature3 .article .element-placeholder .element-placeholder__button .touchpoint__button, #sandbox .is_advertising.tone--media .article .element-placeholder .element-placeholder__button .touchpoint__button, #sandbox .is_advertising.tone--podcast .article .element-placeholder .element-placeholder__button .touchpoint__button {
       background-color: #69D1CA; }
       #sandbox .is_advertising.tone--news .article .element-placeholder .element-placeholder__button .touchpoint__button:active, #sandbox .is_advertising.tone--feature1 .article .element-placeholder .element-placeholder__button .touchpoint__button:active, #sandbox .is_advertising.tone--feature2 .article .element-placeholder .element-placeholder__button .touchpoint__button:active, #sandbox .is_advertising.tone--feature3 .article .element-placeholder .element-placeholder__button .touchpoint__button:active, #sandbox .is_advertising.tone--media .article .element-placeholder .element-placeholder__button .touchpoint__button:active, #sandbox .is_advertising.tone--podcast .article .element-placeholder .element-placeholder__button .touchpoint__button:active {
@@ -8483,6 +8617,9 @@
       #sandbox body.immersive .article--immersive .article__header .bullet::before,
       #sandbox body.immersive .article--immersive .article__header ul > li::before {
         background-color: rgba(255, 255, 255, 0.4); }
+      #sandbox body.immersive .article--immersive .article__header .sponsorship {
+        background: #fff;
+        border-top: 1px rgba(153, 153, 153, 0.4) dotted; }
     #sandbox body.immersive .article--immersive .article__header-bg {
       background-color: black;
       background-position: center center;
@@ -8881,7 +9018,7 @@
       animation-name: fadeInUp; }
   #sandbox body.immersive.android .article--immersive .article__header-bg {
     height: 600px; }
-  #sandbox .main-media:not(.main-media--hidden-caption) .main-media__caption__icon, #sandbox .figure__caption__icon {
+  #sandbox .figure__caption__icon, #sandbox .main-media:not(.main-media--hidden-caption) .main-media__caption__icon {
     display: inline-block;
     margin-right: 7px;
     position: relative;
@@ -9249,138 +9386,6 @@
         line-height: 44px; }
       .comments--closed #sandbox .comments__ordering {
         float: left; }
-  #sandbox figure img {
-    display: block; }
-  #sandbox figure video {
-    width: 100%; }
-  #sandbox figure figcaption {
-    color: #767676;
-    font-family: "Guardian Agate Sans 1 Web", sans-serif;
-    border-bottom: 1px dotted rgba(153, 153, 153, 0.4);
-    padding: 6px 12px 24px 12px; }
-    @media all and (max-width: 40.62em) {
-      #sandbox figure figcaption {
-        font-size: 1.4rem;
-        line-height: 2rem; } }
-    @media all and (min-width: 40.63em) {
-      #sandbox figure figcaption {
-        font-size: 1.6rem;
-        line-height: 2.2rem; } }
-  #sandbox .figure-wide {
-    margin: 12px 0px; }
-    .main-media #sandbox .figure-wide {
-      margin: 0; }
-    #sandbox .figure-wide img {
-      height: auto; }
-    @media all and (min-width: 40.63em) and (max-width: 56.24em) {
-      #sandbox .figure-wide figcaption {
-        padding-right: 23.94366%; } }
-    @media all and (min-width: 56.25em) {
-      #sandbox .figure-wide figcaption {
-        padding-right: 24.21053%; } }
-  #sandbox .figure-inline {
-    margin-right: 12px;
-    float: left; }
-    @media all and (min-width: 28.13em) {
-      #sandbox .figure-inline {
-        margin: 6px 12px 0px 0px;
-        float: left; }
-        #sandbox .figure-inline img {
-          width: 100%;
-          height: auto; } }
-    #sandbox .figure-inline figcaption {
-      padding-left: 0;
-      padding-right: 0; }
-  #sandbox .figure--thumbnail img,
-  #sandbox .figure--thumbnail-with-caption img,
-  #sandbox .figure-wide img {
-    width: 100%;
-    height: auto; }
-  #sandbox .figure--thumbnail figcaption,
-  #sandbox .figure--thumbnail-with-caption figcaption,
-  #sandbox .figure-wide figcaption {
-    font-size: 1.4rem; }
-  #sandbox .figure--thumbnail .element-image-inner,
-  #sandbox .figure--thumbnail-with-caption .element-image-inner,
-  #sandbox .figure-wide .element-image-inner {
-    height: 100%;
-    background: #dcdad5; }
-  #sandbox .figure--thumbnail .figure__inner,
-  #sandbox .figure--thumbnail-with-caption .figure__inner,
-  #sandbox .figure-wide .figure__inner {
-    background: #dcdad5; }
-  #sandbox .figure--thumbnail {
-    float: left;
-    max-width: 65px;
-    margin: 6px 13px 0 0; }
-    .prose #sandbox .figure--thumbnail {
-      margin-top: 6px; }
-      @media all and (min-width: 75em) {
-        .prose #sandbox .figure--thumbnail {
-          margin-left: -80px; } }
-  #sandbox .figure--thumbnail-with-caption {
-    display: block;
-    float: left;
-    margin: 4px 12px 0 0;
-    width: 50%;
-    background: #f6f6f6; }
-    #sandbox .figure--thumbnail-with-caption .figure__inner {
-      width: 100%;
-      display: block; }
-    #sandbox .figure--thumbnail-with-caption .element-image__credit {
-      display: block; }
-    #sandbox .figure--thumbnail-with-caption figcaption {
-      padding: 0 0 4px 4px;
-      border-bottom: 1px dotted rgba(153, 153, 153, 0.4); }
-    @media all and (max-width: 28.12em) {
-      #sandbox .figure--thumbnail-with-caption {
-        float: none;
-        width: 100%; }
-        #sandbox .figure--thumbnail-with-caption .figure__inner {
-          display: block; }
-        #sandbox .figure--thumbnail-with-caption.portrait-thumbnail {
-          position: relative; }
-          #sandbox .figure--thumbnail-with-caption.portrait-thumbnail .figure__inner {
-            width: 50%; }
-          #sandbox .figure--thumbnail-with-caption.portrait-thumbnail figcaption {
-            position: absolute;
-            bottom: 0;
-            top: 0;
-            left: 50%;
-            padding: 0 6px;
-            width: 50%;
-            border-top: 1px dotted rgba(153, 153, 153, 0.4); }
-          #sandbox .figure--thumbnail-with-caption.portrait-thumbnail .element-image__caption {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            word-wrap: break-word;
-            display: block;
-            display: -webkit-box;
-            -webkit-line-clamp: 10;
-            -webkit-box-orient: vertical; }
-          #sandbox .figure--thumbnail-with-caption.portrait-thumbnail .element-image__credit {
-            position: absolute;
-            bottom: 0;
-            padding-bottom: 6px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            word-wrap: break-word;
-            display: block;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical; }
-        #sandbox .figure--thumbnail-with-caption.landscape-thumbnail .figure__inner {
-          width: 100%; } }
-    @media all and (min-width: 28.13em) {
-      #sandbox .figure--thumbnail-with-caption {
-        width: 33%;
-        max-width: 200px; } }
-    @media all and (min-width: 40.63em) {
-      #sandbox .figure--thumbnail-with-caption {
-        margin-right: 15px; } }
-    @media all and (min-width: 75em) {
-      #sandbox .figure--thumbnail-with-caption {
-        margin: 0 0 12px -220px; } }
   #sandbox .inline-list {
     list-style: none;
     margin: 0;

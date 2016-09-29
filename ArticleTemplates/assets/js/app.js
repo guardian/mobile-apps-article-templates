@@ -13,24 +13,7 @@ define([
 
     function init() {
         util.init();
-
-        if (!GU.opts.skipStyle) {
-            loadCss();
-        }
-
         domReady(onDomReady);
-    }
-
-    function loadCss() {
-        var url = 'assets/css/style-async.css',
-            basePath = GU.opts.templatesDirectory,
-            link = document.createElement('link');
-
-        link.type = 'text/css';
-        link.rel = 'stylesheet';
-        link.href = basePath + url;
-
-        document.getElementsByTagName('head')[0].appendChild(link);
     }
 
     function initLayout(layoutName, layoutObj) {
@@ -45,7 +28,7 @@ define([
 
         // ads positioning
         Ads.init({
-            adsEnabled: (GU.opts.adsEnabled === 'true') || (GU.opts.adsEnabled.indexOf('mpu') !== -1),
+            adsEnabled: (GU.opts.adsEnabled && GU.opts.adsEnabled === 'true') || (GU.opts.adsEnabled && GU.opts.adsEnabled.indexOf('mpu') !== -1),
             adsConfig: GU.opts.adsConfig,
             adsType: GU.opts.contentType === 'liveblog' && !document.body.classList.contains('the-minute') ? 'liveblog' : 'default',
             mpuAfterParagraphs: GU.opts.mpuAfterParagraphs

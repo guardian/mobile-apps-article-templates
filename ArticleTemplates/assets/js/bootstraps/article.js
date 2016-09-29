@@ -15,7 +15,6 @@ define([
 
     function init() {
         twitter.init();
-        twitter.enhanceTweets();
         witness.duplicate();
         insertOutbrain();
         loadQuizzes();

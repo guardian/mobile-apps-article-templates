@@ -17,7 +17,7 @@ define(function () {
                 insertBeforeElem;
 
             if (GU.util.isOnline() &&
-                !document.getElementsByClassName('membership-creative-container')) {
+                !document.getElementsByClassName('membership-creative-container').length) {
 
                 insertBeforeElem = module.getInsertBeforeElem();
 

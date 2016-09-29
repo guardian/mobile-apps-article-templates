@@ -8,13 +8,13 @@ define([
     'use strict';
 
     describe('ArticleTemplates/assets/js/bootstraps/liveblog', function() {
-        var dummyCommon,
-            container,
+        var container,
             injector,
             sandbox,
             liveblogBody;
 
-        var relativeDatesMock,
+        var commonMock,
+            relativeDatesMock,
             twitterMock,
             MyScrollMock;
             
@@ -24,11 +24,10 @@ define([
             };
             twitterMock = {
                 init: sinon.spy(),
-                checkForTweets: sinon.spy(),
-                enhanceTweets: sinon.spy()
+                checkForTweets: sinon.spy()
             };
             MyScrollMock = {};
-            dummyCommon = {
+            commonMock = {
                 formatImages: sinon.spy(),
                 loadEmbeds: sinon.spy(),
                 loadInteractives: sinon.spy()
@@ -72,8 +71,38 @@ define([
                 sandbox.stub(window, 'addEventListener');
             });
 
-            afterEach(function () {
-                expect(twitterMock.init).to.have.been.calledOnce;
+            it('initialises twitter module if not the minute', function (done) {
+                injector
+                    .mock('modules/relativeDates', relativeDatesMock)
+                    .mock('modules/twitter', twitterMock)
+                    .mock('modules/MyScroll', MyScrollMock)
+                    .mock('bootstraps/common', commonMock)
+                    .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
+                        liveblog.init();
+
+                        expect(twitterMock.init).to.have.been.calledOnce;
+
+                        done();
+                    });
+            });
+
+            it('does not initialise twitter module if the minute', function (done) {
+                injector
+                    .mock('modules/relativeDates', relativeDatesMock)
+                    .mock('modules/twitter', twitterMock)
+                    .mock('modules/MyScroll', MyScrollMock)
+                    .mock('bootstraps/common', commonMock)
+                    .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
+                        document.body.classList.add('the-minute');
+
+                        liveblog.init();
+
+                        expect(twitterMock.init).not.to.have.been.called;
+
+                        document.body.classList.remove('the-minute');
+
+                        done();
+                    });
             });
 
             it('sets up global functions', function (done) {
@@ -81,8 +110,9 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
+                    .mock('bootstraps/common', commonMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
-                        liveblog.init(dummyCommon);
+                        liveblog.init();
 
                         expect(window.liveblogDeleteBlock).to.not.be.undefined;
                         expect(window.liveblogUpdateBlock).to.not.be.undefined;
@@ -104,8 +134,9 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
+                    .mock('bootstraps/common', commonMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
-                        liveblog.init(dummyCommon);
+                        liveblog.init();
 
                         expect(window.addEventListener).to.have.been.calledOnce;
                         expect(window.addEventListener).to.have.been.calledWith('scroll');
@@ -119,6 +150,7 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
+                    .mock('bootstraps/common', commonMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         var event,
                             loadingElem = document.createElement('div'),
@@ -133,7 +165,7 @@ define([
                         loadingElem.classList.add('loading--liveblog');
                         container.appendChild(loadingElem);
 
-                        liveblog.init(dummyCommon);
+                        liveblog.init();
 
                         event = document.createEvent('HTMLEvents');
                         event.initEvent('click', true, true);
@@ -155,10 +187,11 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
+                    .mock('bootstraps/common', commonMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         document.body.classList.add('the-minute');
 
-                        liveblog.init(dummyCommon);
+                        liveblog.init();
 
                         expect(window.setInterval).not.to.have.been.called;
 
@@ -173,6 +206,7 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
+                    .mock('bootstraps/common', commonMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         var minuteHeader = document.createElement('div'),
                             minuteNav = document.createElement('div');
@@ -183,13 +217,12 @@ define([
                         container.appendChild(minuteHeader);
                         container.appendChild(minuteNav);
 
-                        liveblog.init(dummyCommon);
+                        liveblog.init();
 
                         expect(window.setInterval).to.have.been.calledOnce;
                         expect(window.setInterval).to.have.been.calledWith(window.liveblogTime);
                         expect(minuteHeader.parentNode).to.be.falsy;
                         expect(minuteNav.parentNode).to.be.falsy;
-                        expect(twitterMock.enhanceTweets).to.have.been.calledOnce;
 
                         done();
                     });
@@ -202,6 +235,7 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
+                    .mock('bootstraps/common', commonMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         var block = document.createElement('div');
 
@@ -209,7 +243,7 @@ define([
 
                         container.appendChild(block);
                         
-                        liveblog.init(dummyCommon);
+                        liveblog.init();
 
                         expect(block.parentNode).to.be.truthy;
                         expect(block.parentNode).to.eql(container);
@@ -229,6 +263,7 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
+                    .mock('bootstraps/common', commonMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         var block = document.createElement('div');
 
@@ -236,7 +271,7 @@ define([
 
                         container.appendChild(block);
                         
-                        liveblog.init(dummyCommon);
+                        liveblog.init();
 
                         expect(container.lastChild.id).to.eql('testBlock');
 
@@ -271,6 +306,7 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
+                    .mock('bootstraps/common', commonMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         var html = '',
                             blockCount = 0;
@@ -280,16 +316,16 @@ define([
                             blockCount++;
                         }
 
-                        liveblog.init(dummyCommon);
+                        liveblog.init();
 
                         window.liveblogTime = sinon.spy();
 
                         window.liveblogLoadMore(html);
 
                         expect(container.getElementsByClassName('block').length).to.eql(7);
-                        expect(dummyCommon.formatImages).to.have.been.calledOnce;
-                        expect(dummyCommon.loadEmbeds).to.have.been.calledOnce;
-                        expect(dummyCommon.loadInteractives).to.have.been.calledOnce;
+                        expect(commonMock.formatImages).to.have.been.calledOnce;
+                        expect(commonMock.loadEmbeds).to.have.been.calledOnce;
+                        expect(commonMock.loadInteractives).to.have.been.calledOnce;
                         expect(window.liveblogTime).to.have.been.calledOnce;
                         expect(window.liveblogTime).to.have.been.calledOnce;
                         expect(twitterMock.checkForTweets).to.have.been.calledOnce;
@@ -303,6 +339,7 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
+                    .mock('bootstraps/common', commonMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         var imgCount = 0,
                             html = '',
@@ -313,11 +350,11 @@ define([
                             blockCount++;
                         }
 
-                        dummyCommon.formatImages = function (imgList) {
+                        commonMock.formatImages = function (imgList) {
                             imgCount = imgList.length;
                         };
 
-                        liveblog.init(dummyCommon);
+                        liveblog.init();
 
                         window.liveblogTime = sinon.spy();
 
@@ -344,10 +381,11 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
+                    .mock('bootstraps/common', commonMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) { 
                         liveblogElem.classList.add('is-live');
 
-                        liveblog.init(dummyCommon);
+                        liveblog.init();
 
                         window.liveblogTime();
 
@@ -363,6 +401,7 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
+                    .mock('bootstraps/common', commonMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) { 
                         var blockTime = document.createElement('div');
 
@@ -371,7 +410,7 @@ define([
 
                         container.appendChild(blockTime);
 
-                        liveblog.init(dummyCommon);
+                        liveblog.init();
 
                         window.liveblogTime();
 
@@ -396,10 +435,11 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
+                    .mock('bootstraps/common', commonMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) { 
                         moreElem.style.display = 'block';
 
-                        liveblog.init(dummyCommon);
+                        liveblog.init();
 
                         window.showLiveMore(false);
 
@@ -414,10 +454,11 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
+                    .mock('bootstraps/common', commonMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) { 
                         moreElem.style.display = 'none';
 
-                        liveblog.init(dummyCommon);
+                        liveblog.init();
 
                         window.showLiveMore(true);
 
@@ -442,8 +483,8 @@ define([
             });
 
             afterEach(function () {
-                expect(dummyCommon.loadEmbeds).to.have.been.calledOnce;
-                expect(dummyCommon.loadInteractives).to.have.been.calledOnce;
+                expect(commonMock.loadEmbeds).to.have.been.calledOnce;
+                expect(commonMock.loadInteractives).to.have.been.calledOnce;
                 expect(window.updateLiveblogAdPlaceholders).to.have.been.calledOnce;
                 expect(window.updateLiveblogAdPlaceholders).to.have.been.calledWith(true);
                 expect(window.liveblogTime).to.have.been.calledOnce;
@@ -456,11 +497,12 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
+                    .mock('bootstraps/common', commonMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) { 
                         var blocks,
                             html = '<div class="block"><img></img></div><div class="block"></div>';
 
-                        liveblog.init(dummyCommon);
+                        liveblog.init();
 
                         window.liveblogTime = sinon.spy();
 
@@ -473,7 +515,7 @@ define([
                             blocks[0].classList.contains('slideinright'))).to.eql(true);
                         expect((blocks[1].classList.contains('animated') && 
                             blocks[0].classList.contains('slideinright'))).to.eql(true);
-                        expect(dummyCommon.formatImages).to.have.been.calledOnce;
+                        expect(commonMock.formatImages).to.have.been.calledOnce;
 
                         done();
                     });
@@ -484,15 +526,16 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('modules/MyScroll', MyScrollMock)
+                    .mock('bootstraps/common', commonMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) { 
                         var imgCount = 0,
                             html = '<div class="block"><img></img></div><div class="block"></div>';
 
-                        liveblog.init(dummyCommon);
+                        liveblog.init();
 
                         window.liveblogTime = sinon.spy();
 
-                        dummyCommon.formatImages = function (imgList) {
+                        commonMock.formatImages = function (imgList) {
                             imgCount = imgList.length;
                         };
 

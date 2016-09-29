@@ -70,18 +70,27 @@ define([
                 config = {};
             });
 
-            describe('inserts liveblog ad placeholders', function () {
-                afterEach(function () {
-                    expect(window.initMpuPoller).to.not.be.undefined;
-                    expect(window.killMpuPoller).to.not.be.undefined;
-                    expect(window.getMpuPosCommaSeparated).to.not.be.undefined;
+            describe('if adsType is liveblog', function () {
+                var articleBody;
 
-                    expect(window.applyNativeFunctionCall).to.have.been.calledOnce;
-                    expect(window.applyNativeFunctionCall).to.have.been.calledWith('initMpuPoller');
-                    expect(window.updateLiveblogAdPlaceholders).to.not.be.undefined;
+                beforeEach(function () {
+                    var i,
+                        html = '';
+
+                    articleBody = document.createElement('div');
+
+                    articleBody.classList.add('article__body');
+
+                    for (i = 0; i < 8; i++) {
+                         html += '<div class="block"></div>';
+                    }
+
+                    articleBody.innerHTML = html;
+
+                    container.appendChild(articleBody);
                 });
 
-                it('if adsEnabled true and adsType is liveblog', function (done) {
+                it('inserts liveblog ad placeholders if adsEnabled true', function (done) {
                     injector
                         .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
                             config.adsEnabled = true;
@@ -89,24 +98,43 @@ define([
 
                             ads.init(config);
 
+                            expect(articleBody.children.length).to.eql(10);
+                            expect(articleBody.children[2].classList.contains('advert-slot')).to.eql(true);
+                            expect(articleBody.children[8].classList.contains('advert-slot')).to.eql(true);
+
+                            expect(window.initMpuPoller).to.not.be.undefined;
+                            expect(window.killMpuPoller).to.not.be.undefined;
+                            expect(window.getMpuPosCommaSeparated).to.not.be.undefined;
+
+                            expect(window.applyNativeFunctionCall).to.have.been.calledOnce;
+                            expect(window.applyNativeFunctionCall).to.have.been.calledWith('initMpuPoller');
+                            expect(window.updateLiveblogAdPlaceholders).to.not.be.undefined;
+
+                            done();
+                        });
+                });
+
+                it('does not insert liveblog ad placeholders if adsEnabled false', function (done) {
+                    injector
+                        .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
+                            config.adsEnabled = false;
+                            config.adsType = 'liveblog';
+
+                            ads.init(config);
+
+                            expect(articleBody.children.length).to.eql(8);
+
+                            expect(window.initMpuPoller).to.be.undefined;
+                            expect(window.killMpuPoller).to.be.undefined;
+                            expect(window.getMpuPosCommaSeparated).to.be.undefined;
+                            expect(window.updateLiveblogAdPlaceholders).to.be.undefined;
+
                             done();
                         });
                 });
             });
 
-            describe('does not insert liveblog ad placeholders', function () {
-                afterEach(function () {
-                    expect(window.initMpuPoller).to.not.be.undefined;
-                    expect(window.killMpuPoller).to.not.be.undefined;
-                    expect(window.getMpuPosCommaSeparated).to.not.be.undefined;
-
-                    expect(window.applyNativeFunctionCall).to.have.been.calledOnce;
-                    expect(window.applyNativeFunctionCall).to.have.been.calledWith('initMpuPoller');
-                    expect(window.updateLiveblogAdPlaceholders).to.be.undefined;
-                });
-            });
-
-            describe('inserts ad placeholders', function () {
+            describe('if adsType is not liveblog', function () {
                 var prose,
                     articleBody;
 
@@ -123,18 +151,7 @@ define([
                     container.appendChild(articleBody);
                 });
 
-                afterEach(function () {
-                    expect(window.initMpuPoller).to.not.be.undefined;
-                    expect(window.killMpuPoller).to.not.be.undefined;
-                    expect(window.getMpuPosCommaSeparated).to.not.be.undefined;
-
-                    expect(window.applyNativeFunctionCall).to.have.been.calledOnce;
-                    expect(window.applyNativeFunctionCall).to.have.been.calledWith('initMpuPoller');
-                    expect(prose.children[0].classList.contains('advert-slot--placeholder')).to.eql(true);
-                    expect(prose.children[4].classList.contains('advert-slot--mpu')).to.eql(true);
-                });
-
-                it('if adsEnabled true and adsType is not liveblog', function (done) {
+                it('inserts ad placeholder if adsEnabled true', function (done) {
                     injector
                         .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
                             config.mpuAfterParagraphs = 3;
@@ -143,41 +160,80 @@ define([
 
                             ads.init(config);
 
+                            expect(window.initMpuPoller).to.not.be.undefined;
+                            expect(window.killMpuPoller).to.not.be.undefined;
+                            expect(window.getMpuPosCommaSeparated).to.not.be.undefined;
+
+                            expect(window.applyNativeFunctionCall).to.have.been.calledOnce;
+                            expect(window.applyNativeFunctionCall).to.have.been.calledWith('initMpuPoller');
+                            expect(prose.children[0].classList.contains('advert-slot--placeholder')).to.eql(true);
+                            expect(prose.children[4].classList.contains('advert-slot--mpu')).to.eql(true);
+
                             done();
                         });
                 });
-            });
 
-            describe('does not insert ad placeholders', function () {
-                var prose,
-                    articleBody;
-
-                beforeEach(function () {
-                    articleBody = document.createElement('div');
-                    prose = document.createElement('div');
-
-                    articleBody.classList.add('article__body');
-                    prose.classList.add('prose');
-
-                    prose.innerHTML = '<p>Hi</p><p>How</p><p>Are</p><p>You?</p>';
-                    articleBody.appendChild(prose);
-
-                    container.appendChild(articleBody);
-                });
-
-                afterEach(function () {
-                    expect(window.initMpuPoller).to.be.undefined;
-                    expect(window.applyNativeFunctionCall).not.to.have.been.called;
-                    expect(prose.querySelector('.advert-slot--placeholder')).to.be.falsy;
-                    expect(prose.querySelector('.advert-slot--mpu')).to.be.falsy;
-                });
-
-                it('if adsEnabled is not true or mpu', function (done) {
+                it('does not insert ad placeholder if adsEnabled false', function (done) {
                     injector
                         .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
                             config.adsEnabled = false;
 
                             ads.init(config);
+
+                            expect(window.initMpuPoller).to.be.undefined;
+                            expect(window.applyNativeFunctionCall).not.to.have.been.called;
+                            expect(prose.querySelector('.advert-slot--placeholder')).to.be.falsy;
+                            expect(prose.querySelector('.advert-slot--mpu')).to.be.falsy;
+
+                            done();
+                        });
+                });
+
+                it('does not insert ad placeholder if too few paragraphs', function (done) {
+                    injector
+                        .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
+                            config.adsEnabled = true;
+
+                            prose.innerHTML = '<p>Hello</p><p>World</p>';
+
+                            ads.init(config);
+
+                            expect(prose.querySelector('.advert-slot--placeholder')).to.be.falsy;
+                            expect(prose.querySelector('.advert-slot--mpu')).to.be.falsy;
+
+                            done();
+                        });
+                });
+
+                it('fires ads ready if has not been fired already', function (done) {
+                    injector
+                        .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
+                            config.mpuAfterParagraphs = 3;
+                            config.adsEnabled = true;
+                            config.adsType = 'default';
+
+                            document.body.classList.remove('no-ready');
+                            
+                            ads.init(config);
+
+                            expect(window.GU.util.signalDevice).to.have.been.calledWith('ads-ready');
+
+                            done();
+                        });
+                });
+
+                it('does not fires ads ready if it  has  been fired already', function (done) {
+                    injector
+                        .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
+                            config.mpuAfterParagraphs = 3;
+                            config.adsEnabled = true;
+                            config.adsType = 'default';
+                            
+                            document.body.dataset.useAdsReady = 'true';
+
+                            ads.init(config);
+
+                            expect(window.GU.util.signalDevice).to.not.have.been.calledWith('ads-ready');
 
                             done();
                         });
@@ -251,36 +307,6 @@ define([
                             }, 1100);
                         });
                 });
-            });
-
-            it('fires ads ready if has not been fired already', function (done) {
-                injector
-                    .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
-                        config.adsEnabled = true;
-
-                        document.body.classList.remove('no-ready');
-                        
-                        ads.init(config);
-
-                        expect(window.GU.util.signalDevice).to.have.been.calledWith('ads-ready');
-
-                        done();
-                    });
-            });
-
-            it('does not fires ads ready ifit  has  been fired already', function (done) {
-                injector
-                    .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
-                        config.adsEnabled = true;
-                        
-                        document.body.dataset.useAdsReady = 'true';
-
-                        ads.init(config);
-
-                        expect(window.GU.util.signalDevice).to.not.have.been.calledWith('ads-ready');
-
-                        done();
-                    });
             });
         });
 
@@ -563,11 +589,15 @@ define([
             it('does not update ad position on android if it has not changed', function (done) {
                 injector
                     .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
+                        var adSlot;
+
                         GU.opts.platform = 'android';
 
                         ads.init(config);
 
-                        ads.updateMPUPosition(128);
+                        adSlot = document.getElementsByClassName('advert-slot__wrapper')[0];
+
+                        ads.updateMPUPosition(adSlot.getBoundingClientRect().top);
 
                         expect(window.GuardianJSInterface.mpuAdsPosition).to.not.have.been.called;
 
@@ -578,9 +608,13 @@ define([
             it('does not update ad position on ios if it has not changed', function (done) {
                 injector
                     .require(['ArticleTemplates/assets/js/modules/ads'], function (ads) {
+                        var adSlot;
+
                         ads.init(config);
 
-                        ads.updateMPUPosition(128);
+                        adSlot = document.getElementsByClassName('advert-slot__wrapper')[0];
+
+                        ads.updateMPUPosition(adSlot.getBoundingClientRect().top);
 
                         expect(window.GU.util.signalDevice).to.not.have.been.called;
 
