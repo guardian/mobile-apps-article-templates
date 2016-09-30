@@ -7266,9 +7266,7 @@ body.immersive .article--immersive {
   body.immersive .article--immersive .article__header-bg {
     background-color: black;
     background-position: center center;
-    background-size: cover;
-    height: 100vh;
-    position: relative; }
+    background-size: cover; }
     body.immersive .article--immersive .article__header-bg .element-embed {
       bottom: 0;
       left: 0;
@@ -7279,11 +7277,15 @@ body.immersive .article--immersive {
         height: 100% !important; }
         body.immersive .article--immersive .article__header-bg .element-embed iframe video {
           -webkit-transform: -50%, -50%; }
+    body.immersive .article--immersive .article__header-bg[data-full-screen] {
+      height: 100vh;
+      position: relative; }
+      body.immersive .article--immersive .article__header-bg[data-full-screen] .article__header-info {
+        bottom: 0px;
+        position: absolute; }
   body.immersive .article--immersive .article__header-info {
     background-color: rgba(0, 0, 0, 0.4);
-    bottom: 0px;
     padding: 6px 12px 24px 12px;
-    position: absolute;
     width: 100%; }
     @media all and (min-width: 56.25em) {
       body.immersive .article--immersive .article__header-info {

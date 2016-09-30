@@ -195,7 +195,8 @@ define([
         bgHeight = (viewPortHeight - document.body.style.marginTop.replace('px', '')) + 'px';
         headerImage = document.querySelector('.article__header-bg, .article__header-bg .element > iframe');
 
-        if (headerImage) {
+        if (headerImage &&
+            (headerImage.tagName === 'IFRAME' || headerImage.dataset.fullScreen)) {
             headerImage.style.height = bgHeight;
         }
     }

@@ -65,9 +65,7 @@ body.immersive .article--immersive {
             background-color: black;
             background-position: center center;
             background-size: cover;
-            height: 100vh;
-            position: relative;
-            
+    
             .element-embed {
                 // Fix embedded video transform
                 bottom: 0;
@@ -84,13 +82,21 @@ body.immersive .article--immersive {
                     }
                 }
             }
+
+            &[data-full-screen] {
+                height: 100vh;
+                position: relative;
+
+                .article__header-info {
+                    bottom: 0px;
+                    position: absolute;
+                }
+            }
         }
 
         &__header-info {
             background-color: rgba(0, 0, 0, .4);
-            bottom: 0px;
             padding: base-px(.5, 1, 2, 1);
-            position: absolute;
             width: 100%;
             
             @include mq($from: col3) {
