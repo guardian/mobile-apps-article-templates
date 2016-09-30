@@ -7267,23 +7267,31 @@ body.immersive .article--immersive {
     background-color: black;
     background-position: center center;
     background-size: cover;
-    height: 100vh;
     position: relative; }
     body.immersive .article--immersive .article__header-bg .element-embed {
-      bottom: 0;
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 0; }
+      height: 100vh; }
       body.immersive .article--immersive .article__header-bg .element-embed iframe {
         height: 100% !important; }
         body.immersive .article--immersive .article__header-bg .element-embed iframe video {
           -webkit-transform: -50%, -50%; }
+      body.immersive .article--immersive .article__header-bg .element-embed + .article__header-info {
+        bottom: 0;
+        position: absolute; }
+      body.immersive .article--immersive .article__header-bg .element-embed.height-adjusted {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: auto; }
+    body.immersive .article--immersive .article__header-bg[data-full-screen] {
+      height: 100vh; }
+      body.immersive .article--immersive .article__header-bg[data-full-screen] .article__header-info {
+        bottom: 0;
+        position: absolute; }
   body.immersive .article--immersive .article__header-info {
     background-color: rgba(0, 0, 0, 0.4);
-    bottom: 0px;
     padding: 6px 12px 24px 12px;
-    position: absolute;
     width: 100%; }
     @media all and (min-width: 56.25em) {
       body.immersive .article--immersive .article__header-info {
@@ -7660,5 +7668,14 @@ body.immersive .article--immersive {
     -webkit-animation-name: fadeInUp;
     animation-name: fadeInUp; }
 
-body.immersive.android .article--immersive .article__header-bg {
+body.immersive.android .article--immersive .article__header-bg .element-embed {
+  height: 600px; }
+  body.immersive.android .article--immersive .article__header-bg .element-embed.height-adjusted {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: auto; }
+body.immersive.android .article--immersive .article__header-bg[data-full-screen] {
   height: 600px; }

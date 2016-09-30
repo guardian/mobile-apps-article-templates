@@ -8619,23 +8619,31 @@
       background-color: black;
       background-position: center center;
       background-size: cover;
-      height: 100vh;
       position: relative; }
       #sandbox body.immersive .article--immersive .article__header-bg .element-embed {
-        bottom: 0;
-        left: 0;
-        position: absolute;
-        right: 0;
-        top: 0; }
+        height: 100vh; }
         #sandbox body.immersive .article--immersive .article__header-bg .element-embed iframe {
           height: 100% !important; }
           #sandbox body.immersive .article--immersive .article__header-bg .element-embed iframe video {
             -webkit-transform: -50%, -50%; }
+        #sandbox body.immersive .article--immersive .article__header-bg .element-embed + .article__header-info {
+          bottom: 0;
+          position: absolute; }
+        #sandbox body.immersive .article--immersive .article__header-bg .element-embed.height-adjusted {
+          bottom: 0;
+          left: 0;
+          position: absolute;
+          right: 0;
+          top: 0;
+          height: auto; }
+      #sandbox body.immersive .article--immersive .article__header-bg[data-full-screen] {
+        height: 100vh; }
+        #sandbox body.immersive .article--immersive .article__header-bg[data-full-screen] .article__header-info {
+          bottom: 0;
+          position: absolute; }
     #sandbox body.immersive .article--immersive .article__header-info {
       background-color: rgba(0, 0, 0, 0.4);
-      bottom: 0px;
       padding: 6px 12px 24px 12px;
-      position: absolute;
       width: 100%; }
       @media all and (min-width: 56.25em) {
         #sandbox body.immersive .article--immersive .article__header-info {
@@ -9011,7 +9019,16 @@
     #sandbox body.immersive .article--immersive .prose .fadeInUp {
       -webkit-animation-name: fadeInUp;
       animation-name: fadeInUp; }
-  #sandbox body.immersive.android .article--immersive .article__header-bg {
+  #sandbox body.immersive.android .article--immersive .article__header-bg .element-embed {
+    height: 600px; }
+    #sandbox body.immersive.android .article--immersive .article__header-bg .element-embed.height-adjusted {
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: auto; }
+  #sandbox body.immersive.android .article--immersive .article__header-bg[data-full-screen] {
     height: 600px; }
   #sandbox .figure__caption__icon, #sandbox .main-media:not(.main-media--hidden-caption) .main-media__caption__icon {
     display: inline-block;
