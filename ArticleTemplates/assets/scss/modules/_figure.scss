@@ -96,7 +96,6 @@ figure {
     }
 
     .element-image-inner {
-        min-width: 65px;
         height: 100%;
         background: color(shade-4);
     }
@@ -113,6 +112,12 @@ figure {
 
         @include mq($from: col4) {
             margin-left: -80px;
+        }
+    }
+
+    &:not(.figure--thumbnail-with-caption) {
+        .element-image-inner {
+            min-width: 65px;
         }
     }
 }
@@ -148,6 +153,8 @@ figure {
 
         &.portrait-thumbnail {
             position: relative;
+            float: left;
+            margin-bottom: 12px;
 
             .figure__inner {
                 width: 50%;
@@ -186,6 +193,10 @@ figure {
     @include mq($from: col1) {
         width: 33%;
         max-width: 200px;
+
+        &.portrait-thumbnail {
+            clear: left;
+        }
     }
 
     @include mq($from: col2) {
@@ -193,6 +204,6 @@ figure {
     }
 
     @include mq($from: col4) {
-        margin: 0 0 12px -220px;
+        margin: 4px 0 12px -220px;
     }
 }
