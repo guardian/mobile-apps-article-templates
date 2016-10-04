@@ -289,7 +289,6 @@ MPU
       right: 0;
       top: 0; }
   .advert-slot .advert-slot__wrapper {
-    background-color: #dcdad5;
     position: relative;
     overflow: hidden; }
   .advert-slot .advert-slot__wrapper__content {
@@ -321,13 +320,12 @@ MPU
   border-top: 1px solid #dcdad5;
   display: block;
   margin: 0 auto;
-  width: 300px;
-  /*  Any res above 375w e.g. iPhone 6, 6 plus */
-  /*  iPhone 6 */ }
-  @media (min-width: 375px) and (max-width: 480px) {
+  width: 300px; }
+  @media all and (max-width: 35em) {
     .advert-slot--mpu {
-      padding-bottom: 15px;
-      width: 100%; } }
+      width: 100vw;
+      margin-left: -12px;
+      padding-bottom: 15px; } }
   @media all and (min-width: 40.63em) {
     .advert-slot--mpu {
       margin: 0;
@@ -358,12 +356,11 @@ MPU
   .advert-slot--mpu .advert-slot__wrapper {
     height: 250px;
     margin: 0 auto;
-    padding-top: 250px;
-    /*  Any res above 375w e.g. iPhone 6, 6 plus */
-    /*  iPhone 6 */ }
-    @media (min-width: 375px) and (max-width: 480px) {
+    padding-top: 250px; }
+    @media all and (max-width: 35em) {
       .advert-slot--mpu .advert-slot__wrapper {
-        width: 300px; } }
+        margin: 0;
+        width: 100%; } }
 
 .advert-slot--placeholder {
   display: none; }
@@ -2918,6 +2915,13 @@ body[data-content-type="liveblog"]:not(.the-minute) .the-minute__header {
     margin: 12px 0px; }
   .article--liveblog .alerts {
     margin: 12px 12px 0px 8px; }
+  .article--liveblog .advert-slot--mpu {
+    width: 100%;
+    margin-left: -12px;
+    padding-bottom: 15px; }
+    .article--liveblog .advert-slot--mpu .advert-slot__wrapper {
+      margin: 0;
+      width: 100%; }
 
 .android .article--liveblog .article__body--liveblog__pinned figcaption {
   padding: 6px 12px 24px 12px; }
