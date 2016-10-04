@@ -2803,7 +2803,6 @@
   #sandbox .figure--thumbnail .element-image-inner,
   #sandbox .figure--thumbnail-with-caption .element-image-inner,
   #sandbox .figure-wide .element-image-inner {
-    min-width: 65px;
     height: 100%;
     background: #dcdad5; }
   #sandbox .figure--thumbnail {
@@ -2815,6 +2814,8 @@
       @media all and (min-width: 75em) {
         .prose #sandbox .figure--thumbnail {
           margin-left: -80px; } }
+    #sandbox .figure--thumbnail:not(.figure--thumbnail-with-caption) .element-image-inner {
+      min-width: 65px; }
   #sandbox .figure--thumbnail-with-caption {
     display: block;
     float: left;
@@ -2836,7 +2837,9 @@
         #sandbox .figure--thumbnail-with-caption .figure__inner {
           display: block; }
         #sandbox .figure--thumbnail-with-caption.portrait-thumbnail {
-          position: relative; }
+          position: relative;
+          float: left;
+          margin-bottom: 12px; }
           #sandbox .figure--thumbnail-with-caption.portrait-thumbnail .figure__inner {
             width: 50%; }
           #sandbox .figure--thumbnail-with-caption.portrait-thumbnail figcaption {
@@ -2871,13 +2874,15 @@
     @media all and (min-width: 28.13em) {
       #sandbox .figure--thumbnail-with-caption {
         width: 33%;
-        max-width: 200px; } }
+        max-width: 200px; }
+        #sandbox .figure--thumbnail-with-caption.portrait-thumbnail {
+          clear: left; } }
     @media all and (min-width: 40.63em) {
       #sandbox .figure--thumbnail-with-caption {
         margin-right: 15px; } }
     @media all and (min-width: 75em) {
       #sandbox .figure--thumbnail-with-caption {
-        margin: 0 0 12px -220px; } }
+        margin: 4px 0 12px -220px; } }
   #sandbox .loading {
     text-align: center;
     padding: 12px; }
@@ -10633,7 +10638,7 @@
       margin-bottom: 15px; } }
   @media all and (min-width: 75em) {
     #sandbox .element-rich-link {
-      margin: 0 0 0 -220px;
+      margin: 0 0 6px -220px;
       max-width: 200px; } }
   #sandbox .element-rich-link span {
     display: none; }
