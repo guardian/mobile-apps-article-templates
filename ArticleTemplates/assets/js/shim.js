@@ -4,6 +4,7 @@
     var nativeFunctionCalls = [
         'articleCommentsInserter',
         'articleCardsInserter',
+        'articleCardsFailed',
         'articleTagInserter',
         'articleOutbrainInserter',
         'audioBackground',
