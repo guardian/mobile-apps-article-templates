@@ -16,13 +16,9 @@
             fence: '../../../node_modules/fence/fence',
             smoothScroll: '../../../node_modules/smooth-scroll/dist/js/smooth-scroll',
             raven: '../../../node_modules/raven-js/dist/raven',
-            iscroll: 'components/iscroll',
             lodash: 'components/lodash'
         },
         shim: {
-            iscroll: {
-                exports: 'IScroll'
-            },
             d3: {
                 exports: 'd3'
             },
