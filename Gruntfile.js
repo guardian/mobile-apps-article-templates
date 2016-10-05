@@ -207,6 +207,7 @@ module.exports = function(grunt) {
                         'ArticleTemplates/assets/js/modules/ads.js',
                         'ArticleTemplates/assets/js/modules/quiz.js',
                         'ArticleTemplates/assets/js/modules/twitter.js',
+                        'ArticleTemplates/assets/js/modules/cards.js',
                         'test/spec/unit/**/*.js'
                     ]
                 }

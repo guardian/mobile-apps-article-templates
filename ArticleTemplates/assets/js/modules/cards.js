@@ -1,4 +1,4 @@
-/*global window,console,define */
+/*global window,define */
 define([
         'flipSnap'
     ],
@@ -7,15 +7,14 @@ define([
     ) {
     'use strict';
 
-    var flipSnap,
-        initialised = false,
-        MARGIN = 4;
+    var initialised = false;
 
     function setupGlobals() {
         window.articleCardsInserter = articleCardsInserter;
         window.articleCardsFailed = articleCardsFailed;
 
         window.applyNativeFunctionCall('articleCardsInserter');
+        window.applyNativeFunctionCall('articleCardsFailed');
     }
 
     function articleCardsInserter(html) {

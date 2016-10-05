@@ -69,6 +69,7 @@ define([
                     expect(window.articleCardsFailed).to.not.be.undefined;
 
                     expect(window.applyNativeFunctionCall).to.have.been.calledWith('articleCardsInserter');
+                    expect(window.applyNativeFunctionCall).to.have.been.calledWith('articleCardsFailed');
 
                     done();
                 });
@@ -153,8 +154,7 @@ define([
                 injector
                     .mock('flipSnap', flipSnapMock)
                     .require(['ArticleTemplates/assets/js/modules/cards'], function(cards) {
-                        var relatedContentWrapper = relatedContent.getElementsByClassName('related-content__wrapper')[0],
-                            relatedContentList;
+                        var relatedContentList;
 
                         cards.init();
 
