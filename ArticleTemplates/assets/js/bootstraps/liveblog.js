@@ -161,7 +161,7 @@ define([
         }
 
         if (isLive) {
-            relativeDates.init('.block__time', 'title');
+            relativeDates.init('.key-event__time, .block__time', 'title');
         } else {
             blockTimes = document.getElementsByClassName('block__time');
 
@@ -200,10 +200,12 @@ define([
         window.liveblogTime = liveblogTime;
         window.showLiveMore = showLiveMore;
         window.liveblogNewBlock = liveblogNewBlock;
+        window.liveblogNewKeyEvent = liveblogNewKeyEvent;
 
         window.applyNativeFunctionCall('liveblogNewBlock');
         window.applyNativeFunctionCall('liveblogDeleteBlock');
         window.applyNativeFunctionCall('liveblogUpdateBlock');
+        window.applyNativeFunctionCall('liveblogNewKeyEvent');
     }
 
     function setupTheMinute() {
@@ -482,6 +484,88 @@ define([
         }
     }
 
+    function keyEvents() {
+        var keyEventsToggle = document.getElementsByClassName('key-events__toggle')[0],
+            keyEventLinks = document.getElementsByClassName('key-event__link');
+
+        if (keyEventsToggle) {
+            keyEventsToggle.addEventListener('click', showHideKeyEvents);
+        }
+
+        if (keyEventLinks.length) {
+            captureKeyEventClicks(keyEventLinks);
+        }
+    }
+
+    function liveblogNewKeyEvent(html) {
+        var i,
+            j,
+            keyEventsList = document.getElementsByClassName('key-events__list')[0],
+            newKeyEventLinks;
+
+        if (!keyEventsList) {
+            return;
+        }
+
+        newKeyEventLinks = GU.util.getElemsFromHTML(html);
+
+        for (i = newKeyEventLinks.length; i > 0; i--) {
+            newKeyEventLinks[i - 1].classList.add('key-event--highlighted');
+            for (j = 0; j < newKeyEventLinks[i - 1].children.length; j++) {
+                newKeyEventLinks[i - 1].children[j].classList.add('flipInX');
+                newKeyEventLinks[i - 1].children[j].classList.add('animated');
+            }
+            keyEventsList.insertBefore(newKeyEventLinks[i - 1], keyEventsList.firstChild);
+            setTimeout(unhighlightKeyEventLink.bind(null, newKeyEventLinks[i - 1]), 15000);
+        }
+
+        captureKeyEventClicks(newKeyEventLinks);
+        updateKeyEventCount(keyEventsList.children.length);
+        window.liveblogTime();
+    }
+
+    function unhighlightKeyEventLink(link) {
+        link.classList.remove('key-event--highlighted');
+    }
+
+    function updateKeyEventCount(count) {
+        var i,
+            keyEventsCounter = document.getElementsByClassName('key-events__counter')[0],
+            keyEvents = document.getElementsByClassName('key-events')[0];
+
+        keyEventsCounter.innerHTML = '(' + count + ')';
+
+        for (i = keyEvents.classList.length; i > 0; i--) {
+            if (keyEvents.classList[i - 1].match(/(key-events--)+[0-9]/g)) {
+                keyEvents.classList.remove(keyEvents.classList[i - 1]);
+            }    
+        }
+
+        keyEvents.classList.add('key-events--' + count);
+    }
+
+    function captureKeyEventClicks(links) {
+        var i;
+
+        for (i = 0; i < links.length; i++) {
+            links[i].addEventListener('click', handleKeyEventClick);
+        }
+    }
+
+    function handleKeyEventClick(evt) {
+        evt.preventDefault();
+    }
+
+    function showHideKeyEvents() {
+        var keyEvents = document.getElementsByClassName('key-events')[0];
+
+        if (keyEvents.classList.contains('key-events--expanded')) {
+            keyEvents.classList.remove('key-events--expanded');
+        } else {
+            keyEvents.classList.add('key-events--expanded');
+        }
+    }
+
     function ready() {
         var minuteHeaderElem,
             minuteNavElem;
@@ -493,6 +577,7 @@ define([
             liveblogStartPos = GU.util.getElementOffset(document.getElementsByClassName('article__body--liveblog')[0]);
 
             setupGlobals();
+            keyEvents();
             window.liveblogTime();
             window.addEventListener('scroll', GU.util.debounce(updateBlocksOnScroll, 100, true));
             liveMore();

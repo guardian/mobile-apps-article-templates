@@ -23,6 +23,8 @@
         'footballMatchInfoFailed',
         'liveblogDeleteBlock',
         'liveblogNewBlock',
+        'liveblogUpdateBlock',
+        'liveblogNewKeyEvent',
         'getMpuPosCallback',
         'initMpuPoller',
         'videoPositioning',
