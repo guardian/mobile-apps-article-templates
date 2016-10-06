@@ -59,20 +59,22 @@ define([
             sandbox.restore();
         });
 
-        it('sets up global functions', function(done) {
-            injector
-                .mock('flipSnap', flipSnapMock)
-                .require(['ArticleTemplates/assets/js/modules/cards'], function(cards) {
-                    cards.init();
+        describe('init()', function () {
+            it('sets up global functions', function(done) {
+                injector
+                    .mock('flipSnap', flipSnapMock)
+                    .require(['ArticleTemplates/assets/js/modules/cards'], function(cards) {
+                        cards.init();
 
-                    expect(window.articleCardsInserter).to.not.be.undefined;
-                    expect(window.articleCardsFailed).to.not.be.undefined;
+                        expect(window.articleCardsInserter).to.not.be.undefined;
+                        expect(window.articleCardsFailed).to.not.be.undefined;
 
-                    expect(window.applyNativeFunctionCall).to.have.been.calledWith('articleCardsInserter');
-                    expect(window.applyNativeFunctionCall).to.have.been.calledWith('articleCardsFailed');
+                        expect(window.applyNativeFunctionCall).to.have.been.calledWith('articleCardsInserter');
+                        expect(window.applyNativeFunctionCall).to.have.been.calledWith('articleCardsFailed');
 
-                    done();
-                });
+                        done();
+                    });
+            });
         });
 
         describe('window.articleCardsInserter(html)', function() {

@@ -23,7 +23,7 @@ define([
                 duplicate: sinon.spy()
             };
             outbrainMock = {
-                load: sinon.spy()
+                init: sinon.spy()
             };
             quizMock = {
                 init: sinon.spy()
