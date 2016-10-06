@@ -54,22 +54,21 @@ body.immersive .article--immersive {
                     background-color: rgba(#fff, .4);
                 }
             }
+
+            .sponsorship {
+                background: #fff;
+                border-top: 1px rgba(color(shade-3), .4) dotted;
+            }
         }
 
         &__header-bg {
             background-color: black;
             background-position: center center;
             background-size: cover;
-            height: 100vh;
             position: relative;
-            
+    
             .element-embed {
-                // Fix embedded video transform
-                bottom: 0;
-                left: 0;
-                position: absolute;
-                right: 0;
-                top: 0;
+                height: 100vh;
 
                 iframe {
                     height: 100% !important;
@@ -78,14 +77,36 @@ body.immersive .article--immersive {
                         -webkit-transform: (-50%, -50%);
                     }
                 }
+
+                & + .article__header-info {
+                    bottom: 0;
+                    position: absolute;
+                }
+
+                &.height-adjusted {
+                    bottom: 0;
+                    left: 0;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    height: auto;
+                }
+            }
+
+
+            &[data-full-screen] {
+                height: 100vh;
+
+                .article__header-info {
+                    bottom: 0;
+                    position: absolute;
+                }
             }
         }
 
         &__header-info {
             background-color: rgba(0, 0, 0, .4);
-            bottom: 0px;
             padding: base-px(.5, 1, 2, 1);
-            position: absolute;
             width: 100%;
             
             @include mq($from: col3) {
@@ -632,6 +653,20 @@ body.immersive .article--immersive {
 // Hack required for Android as they don't support vh units
 body.immersive.android .article--immersive {
     .article__header-bg {
-        height: 600px; 
+        .element-embed {
+            height: 600px;
+
+            &.height-adjusted {
+                bottom: 0;
+                left: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+                height: auto;
+            }
+        }
+        &[data-full-screen] {
+            height: 600px;
+        }
     }
 }

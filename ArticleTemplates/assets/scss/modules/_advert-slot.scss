@@ -59,7 +59,6 @@ MPU
     }
 
     .advert-slot__wrapper {
-        background-color: color(shade-4);
         position: relative;
         overflow: hidden;
     }
@@ -96,10 +95,10 @@ MPU
     margin: 0 auto;
     width: 300px;
 
-    /*  Any res above 375w e.g. iPhone 6, 6 plus */
-    @include customMQ (iP6) {
+    @include mq($to: 560px) {
+        width: 100vw;
+        margin-left: base-px(-1);
         padding-bottom: 15px;
-        width: 100%;
     }
 
     @include mq($from: col2) {
@@ -144,9 +143,9 @@ MPU
         margin: 0 auto;
         padding-top: 250px;
 
-        /*  Any res above 375w e.g. iPhone 6, 6 plus */
-        @include customMQ (iP6) {
-            width: 300px;
+        @include mq($to: 560px) {
+            margin: 0;
+            width: 100%;
         }
     }
 }

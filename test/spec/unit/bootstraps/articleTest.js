@@ -17,14 +17,13 @@ define([
 
         beforeEach(function() {
             twitterMock = {
-                init: sinon.spy(),
-                enhanceTweets: sinon.spy()
+                init: sinon.spy()
             };
             witnessMock = {
                 duplicate: sinon.spy()
             };
             outbrainMock = {
-                load: sinon.spy()
+                init: sinon.spy()
             };
             quizMock = {
                 init: sinon.spy()
@@ -54,7 +53,6 @@ define([
                         article.init();
 
                         expect(twitterMock.init).to.have.been.calledOnce;
-                        expect(twitterMock.enhanceTweets).to.have.been.calledOnce;
                         expect(witnessMock.duplicate).to.have.been.calledOnce;
 
                         done();

@@ -1,101 +1,95 @@
-/*global window,console,define */
+/*global window,define */
 define([
-    'bean',
-    'bonzo',
-    'flipSnap',
-    'modules/$'
-], function (
-    bean,
-    bonzo,
-    flipSnap,
-    $
-) {
+        'flipSnap'
+    ],
+    function (
+        flipSnap
+    ) {
     'use strict';
 
-    var modules = {
-            setupGlobals: function () {
-                // Global functions to handle related content, called by native code
-                window.articleCardsInserter = function (html) {
-                    if ($('.related-content').length) {
-                        if (!html) {
-                            modules.articleCardsFailed();
-                        } else {
-                            $('.related-content__wrapper').html(html);
+    var initialised = false;
 
-                            // setup the snap to grid functionality 
-                            modules.snapToGrid('.related-content__list');
-                        }
-                    }
-                };
+    function setupGlobals() {
+        window.articleCardsInserter = articleCardsInserter;
+        window.articleCardsFailed = articleCardsFailed;
 
-                window.articleCardsFailed = function(){
-                    modules.articleCardsFailed();
-                };
+        window.applyNativeFunctionCall('articleCardsInserter');
+        window.applyNativeFunctionCall('articleCardsFailed');
+    }
 
-                window.applyNativeFunctionCall('articleCardsInserter');
-                window.applyNativeFunctionCall('articleCardsFailed');
-            },
-            articleCardsFailed: function(){
-                if ($('.related-content').length) {
-                    $('.related-content').addClass('related-content--has-failed');
-                }
-            },
-            snapToGrid: function(el) {
-                // Setup now and re-init on resize or orientation change
-                modules.setUpFlipSnap(el);
-                bean.on(window, 'resize.cards orientationchange.cards', GU.util.debounce(function () {
-                    if (modules.flipSnap) {
-                        modules.flipSnap.destroy();
-                        $(el).removeAttr('style');
-                    }
-                    modules.setUpFlipSnap(el);
-                }, 100));
-            },
-            setUpFlipSnap: function(el) {
-                modules.flipSnap = null;
-                var list = $(el),
-                    container = list.parent()[0],
-                    containerStyle = container.currentStyle || window.getComputedStyle(container),
-                    containerWidth = container.offsetWidth - parseInt(containerStyle.paddingRight.replace('px','')) - parseInt(containerStyle.paddingLeft.replace('px',''));
+    function articleCardsInserter(html) {
+        var relatedContentWrapper = document.getElementsByClassName('related-content__wrapper')[0];
 
-                // add a class with the number of child items, so we can set the widths based on that 
-                list.addClass('related-content__list--items-' + list[0].childElementCount);
-
-                // if the inner content is wider than the container set up the scrolling
-                if (list[0].scrollWidth > containerWidth) {
-                    modules.flipSnap = flipSnap(el);
-
-                    // Android needs to be notified of touch start / touch end so article navigation can be 
-                    // disabled / enabled when the using is scrolling through cards
-                    if (bonzo(document.body).hasClass('android')) {
-                        // Send true on touchstart
-                        bean.on(document.body, 'touchstart.android', el, function() {
-                            window.GuardianJSInterface.registerRelatedCardsTouch(true);
-                        });
-                        // Send false on touchend
-                        bean.on(document.body, 'touchend.android', el, function() {
-                            window.GuardianJSInterface.registerRelatedCardsTouch(false);
-                        });
-                    }
-                }
+        if (relatedContentWrapper) {
+            if (!html) {
+                articleCardsFailed();
+            } else {
+                relatedContentWrapper.innerHTML = html;
+                snapToGrid();
             }
-        },
+        }
+    }
 
-        ready = function () {
-            if (!this.initialised) {
-                this.initialised = true;
-                if ($('.related-content__list').length) {
-                    // Test pages will already have a list so just set the snap to grid
-                    modules.snapToGrid('.related-content__list');
-                } else {
-                    // Article pages need to be set up 
-                    modules.setupGlobals();
-                }
+    function articleCardsFailed() {
+        var relatedContent = document.getElementsByClassName('related-content')[0];
+
+        if (relatedContent) {
+            relatedContent.classList.add('related-content--has-failed');       
+        }
+    }
+
+    function snapToGrid() {
+        var relatedContentList = document.getElementsByClassName('related-content__list')[0];
+
+        if (relatedContentList) {
+            setUpFlipSnap(relatedContentList);
+            window.addEventListener('resize', GU.util.debounce(onResize.bind(null, relatedContentList), 100));
+        }
+    }
+
+    function onResize(relatedContentList) {
+        if (flipSnap && flipSnap.destroy && relatedContentList) {
+            flipSnap.destroy();
+            relatedContentList.removeAttribute('style');
+            setUpFlipSnap(relatedContentList);
+        }
+    }
+
+    function setUpFlipSnap(relatedContentList) {
+        var container = relatedContentList.parentNode,
+            containerStyle = container.currentStyle || window.getComputedStyle(container),
+            containerWidth = container.offsetWidth - parseInt(containerStyle.paddingRight.replace('px','')) - parseInt(containerStyle.paddingLeft.replace('px',''));
+
+        // add a class with the number of child items, so we can set the widths based on that 
+        relatedContentList.classList.add('related-content__list--items-' + relatedContentList.childElementCount);
+
+        if (relatedContentList.scrollWidth > containerWidth) {
+            flipSnap = flipSnap(relatedContentList);
+
+            // Android needs to be notified of touch start / touch end so article navigation can be disabled / enabled
+            if (document.body.classList.contains('android')) {
+                relatedContentList.addEventListener('touchstart', onTouchStart);
+                relatedContentList.addEventListener('touchend', onTouchEnd);
             }
-        };
+        }            
+    }
+
+    function onTouchStart() {
+        window.GuardianJSInterface.registerRelatedCardsTouch(true);
+    }
+
+    function onTouchEnd() {
+        window.GuardianJSInterface.registerRelatedCardsTouch(false);   
+    }
+
+    function ready() {
+        if (!initialised) {
+            initialised = true;
+            setupGlobals();
+        }
+    }
 
     return {
         init: ready
     };
-
 });

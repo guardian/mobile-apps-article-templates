@@ -1,37 +1,24 @@
 /*global twttr:false */
 
-define([
-    'bean',
-    'bonzo',
-    'qwery',
-    'modules/$'
-], function (
-    bean,
-    bonzo,
-    qwery,
-    $
-) {
-    var timeoutId;
-    var body = qwery('.article__body');
-    var isAndroid = $('body').hasClass('android');
+define(function () {
+    'use strict';
 
-    var theMinute,
+    var articleBody,
+        isAndroid,
         tweets,
         scriptReady = false;
 
-    function bootstrap() {
-        theMinute = document.body.classList.contains('the-minute');
+    function ready() {
+        isAndroid = document.body.classList.contains('android');
+        articleBody = document.getElementsByClassName('article__body')[0];
 
-        if (!theMinute) {
-            checkForTweets(document.body);
-            bean.on(window, 'scroll', GU.util.debounce(enhanceTweets, 100));
-        }
+        checkForTweets();
     }
 
-    function checkForTweets(parentElem) {
-        tweets = parentElem.querySelectorAll('blockquote.js-tweet, blockquote.twitter-tweet');
+    function checkForTweets() {
+        tweets = document.body.querySelectorAll('blockquote.js-tweet, blockquote.twitter-tweet');
 
-        if (tweets && !scriptReady) {
+        if (tweets.length && !scriptReady) {
             loadScript();
         }
     }
@@ -50,13 +37,17 @@ define([
         scriptElement.src = 'https://platform.twitter.com/widgets.js';
         scriptElement.onload = onScriptLoaded;
 
-        $(document.body).append(scriptElement);
+        document.body.appendChild(scriptElement);
     }
 
     function onScriptLoaded() {
         scriptReady = isScriptReady();
 
-        enhanceTweets();
+        if (scriptReady) {
+            enhanceTweets();
+        }
+
+        window.addEventListener('scroll', GU.util.debounce(enhanceTweets, 100));
     }
 
     function isScriptReady() {
@@ -73,8 +64,8 @@ define([
     }
 
     function isTweetInRange(tweet) {
-        var viewportHeight = bonzo.viewport().height,
-            scrollTop = bonzo(document.body).scrollTop(),
+        var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0),
+            scrollTop = document.body.scrollTop,
             offsetHeight = tweet.offsetHeight,
             offsetTop = tweet.offsetTop;
 
@@ -85,7 +76,7 @@ define([
         var tweetProcessed = false;
 
         if (isScriptReady()) {
-            if (theMinute || isTweetInRange(tweet)) {
+            if (isTweetInRange(tweet)) {
                 addTweetClass(tweet);
                 tweetProcessed = true;
             } else {
@@ -118,38 +109,45 @@ define([
             }
         }
 
-        if (processedTweets){
-            twttr.widgets.load(body);
+        if (processedTweets && articleBody){
+            twttr.widgets.load(articleBody);
         }
     }
 
     function workaroundClicks(evt) {
-        if(isAndroid){
-            bean.on(evt.target.contentWindow.document, 'click', 'a', function(evt){
-                var anchor = evt.currentTarget;
-                window.open(anchor.getAttribute('href'));
-                evt.stopImmediatePropagation();
-                evt.preventDefault();
-            });
-        } else {
-            $('a.web-intent', evt.target.contentWindow.document).removeClass('web-intent');
+        var i,
+            webIntentLinks;
+
+        if (!isAndroid,
+            evt.target.contentWindow &&
+            evt.target.contentWindow.document) {
+                webIntentLinks = evt.target.contentWindow.document.querySelectorAll('a.web-intent');
+                for (i = 0; i < webIntentLinks.length; i++) {
+                    webIntentLinks[i].classList.remove('web-intent');
+                }
         }
     }
 
     function fixVineAutoplay(evt) {
-        if(!isAndroid && $('iframe[src^="https://vine.co"],iframe[src^="https://amp.twimg.com/amplify-web-player/prod/source.html?video_url"]', evt.target.contentWindow.document)[0]){
-            $('.MediaCard', evt.target.contentWindow.document).remove();
-            $(evt.target).removeAttr('height');
+        var i,
+            mediaCards;
+
+        if (!isAndroid &&
+            evt.target.contentWindow &&
+            evt.target.contentWindow.document &&
+            evt.target.contentWindow.document.querySelectorAll('iframe[src^="https://vine.co"],iframe[src^="https://amp.twimg.com/amplify-web-player/prod/source.html?video_url"]').length) {
+                mediaCards = evt.target.contentWindow.document.getElementsByClassName('MediaCard');
+                for (i = 0; i < mediaCards.length; i++) {
+                    if (mediaCards[i].parentNode) {
+                        mediaCards[i].parentNode.removeChild(mediaCards[i]);
+                    }
+                }
+                evt.target.removeAttribute('height');
         }
     }
 
     return {
-        init: bootstrap,
-        checkForTweets: checkForTweets,
-        enhanceTweets: enhanceTweets,
-        // testing purposes
-        modules: {
-            fixVineAutoplay: fixVineAutoplay
-        }
+        init: ready,
+        checkForTweets: checkForTweets
     };
 });

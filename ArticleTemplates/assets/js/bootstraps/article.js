@@ -15,7 +15,6 @@ define([
 
     function init() {
         twitter.init();
-        twitter.enhanceTweets();
         witness.duplicate();
         insertOutbrain();
         loadQuizzes();
@@ -30,7 +29,7 @@ define([
     }
 
     function loadOutbrain() {
-        outbrain.load();
+        outbrain.init();
     }
 
     function loadQuizzes() {
@@ -188,16 +187,23 @@ define([
     }
 
     function adjustHeaderImageHeight() {
-        var viewPortHeight,
+        var embed,
+            viewPortHeight,
             bgHeight,
-            headerImage;
+            headerContainer;
 
         viewPortHeight = document.documentElement.clientHeight;
         bgHeight = (viewPortHeight - document.body.style.marginTop.replace('px', '')) + 'px';
-        headerImage = document.querySelector('.article__header-bg, .article__header-bg .element > iframe');
+        headerContainer = document.querySelector('.article__header-bg, .article__header-bg .element > iframe');
 
-        if (headerImage) {
-            headerImage.style.height = bgHeight;
+        if (headerContainer) {
+            embed = headerContainer.getElementsByClassName('element-embed')[0];
+            if (embed || headerContainer.dataset.fullScreen) {
+                headerContainer.style.height = bgHeight;
+                if (embed) {
+                    embed.classList.add('height-adjusted');
+                }
+            }
         }
     }
 

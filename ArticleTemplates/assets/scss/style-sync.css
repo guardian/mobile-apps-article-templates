@@ -289,7 +289,6 @@ MPU
       right: 0;
       top: 0; }
   .advert-slot .advert-slot__wrapper {
-    background-color: #dcdad5;
     position: relative;
     overflow: hidden; }
   .advert-slot .advert-slot__wrapper__content {
@@ -321,13 +320,12 @@ MPU
   border-top: 1px solid #dcdad5;
   display: block;
   margin: 0 auto;
-  width: 300px;
-  /*  Any res above 375w e.g. iPhone 6, 6 plus */
-  /*  iPhone 6 */ }
-  @media (min-width: 375px) and (max-width: 480px) {
+  width: 300px; }
+  @media all and (max-width: 35em) {
     .advert-slot--mpu {
-      padding-bottom: 15px;
-      width: 100%; } }
+      width: 100vw;
+      margin-left: -12px;
+      padding-bottom: 15px; } }
   @media all and (min-width: 40.63em) {
     .advert-slot--mpu {
       margin: 0;
@@ -358,12 +356,11 @@ MPU
   .advert-slot--mpu .advert-slot__wrapper {
     height: 250px;
     margin: 0 auto;
-    padding-top: 250px;
-    /*  Any res above 375w e.g. iPhone 6, 6 plus */
-    /*  iPhone 6 */ }
-    @media (min-width: 375px) and (max-width: 480px) {
+    padding-top: 250px; }
+    @media all and (max-width: 35em) {
       .advert-slot--mpu .advert-slot__wrapper {
-        width: 300px; } }
+        margin: 0;
+        width: 100%; } }
 
 .advert-slot--placeholder {
   display: none; }
@@ -669,10 +666,6 @@ figure figcaption {
 .figure-wide .element-image-inner {
   height: 100%;
   background: #dcdad5; }
-.figure--thumbnail .figure__inner,
-.figure--thumbnail-with-caption .figure__inner,
-.figure-wide .figure__inner {
-  background: #dcdad5; }
 
 .figure--thumbnail {
   float: left;
@@ -683,6 +676,8 @@ figure figcaption {
     @media all and (min-width: 75em) {
       .prose .figure--thumbnail {
         margin-left: -80px; } }
+  .figure--thumbnail:not(.figure--thumbnail-with-caption) .element-image-inner {
+    min-width: 65px; }
 
 .figure--thumbnail-with-caption {
   display: block;
@@ -705,7 +700,9 @@ figure figcaption {
       .figure--thumbnail-with-caption .figure__inner {
         display: block; }
       .figure--thumbnail-with-caption.portrait-thumbnail {
-        position: relative; }
+        position: relative;
+        float: left;
+        margin-bottom: 12px; }
         .figure--thumbnail-with-caption.portrait-thumbnail .figure__inner {
           width: 50%; }
         .figure--thumbnail-with-caption.portrait-thumbnail figcaption {
@@ -740,13 +737,15 @@ figure figcaption {
   @media all and (min-width: 28.13em) {
     .figure--thumbnail-with-caption {
       width: 33%;
-      max-width: 200px; } }
+      max-width: 200px; }
+      .figure--thumbnail-with-caption.portrait-thumbnail {
+        clear: left; } }
   @media all and (min-width: 40.63em) {
     .figure--thumbnail-with-caption {
       margin-right: 15px; } }
   @media all and (min-width: 75em) {
     .figure--thumbnail-with-caption {
-      margin: 0 0 12px -220px; } }
+      margin: 4px 0 12px -220px; } }
 
 .key-events {
   background: #f1f1f1;
@@ -832,6 +831,7 @@ figure figcaption {
   opacity: 0;
   padding: 0px 6px 0px 12px;
   position: relative;
+  transition: color .6s;
   width: 90%; }
   .key-event::before {
     background: #bdbdbd !important;
@@ -3051,6 +3051,13 @@ body[data-content-type="liveblog"]:not(.the-minute) .the-minute__header {
     margin: 12px 0px; }
   .article--liveblog .alerts {
     margin: 12px 12px 0px 8px; }
+  .article--liveblog .advert-slot--mpu {
+    width: 100%;
+    margin-left: -12px;
+    padding-bottom: 15px; }
+    .article--liveblog .advert-slot--mpu .advert-slot__wrapper {
+      margin: 0;
+      width: 100%; }
 
 .android .article--liveblog .article__body--liveblog__pinned figcaption {
   padding: 6px 12px 24px 12px; }
@@ -7398,27 +7405,38 @@ body.immersive .article--immersive {
     body.immersive .article--immersive .article__header .bullet::before,
     body.immersive .article--immersive .article__header ul > li::before {
       background-color: rgba(255, 255, 255, 0.4); }
+    body.immersive .article--immersive .article__header .sponsorship {
+      background: #fff;
+      border-top: 1px rgba(153, 153, 153, 0.4) dotted; }
   body.immersive .article--immersive .article__header-bg {
     background-color: black;
     background-position: center center;
     background-size: cover;
-    height: 100vh;
     position: relative; }
     body.immersive .article--immersive .article__header-bg .element-embed {
-      bottom: 0;
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 0; }
+      height: 100vh; }
       body.immersive .article--immersive .article__header-bg .element-embed iframe {
         height: 100% !important; }
         body.immersive .article--immersive .article__header-bg .element-embed iframe video {
           -webkit-transform: -50%, -50%; }
+      body.immersive .article--immersive .article__header-bg .element-embed + .article__header-info {
+        bottom: 0;
+        position: absolute; }
+      body.immersive .article--immersive .article__header-bg .element-embed.height-adjusted {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: auto; }
+    body.immersive .article--immersive .article__header-bg[data-full-screen] {
+      height: 100vh; }
+      body.immersive .article--immersive .article__header-bg[data-full-screen] .article__header-info {
+        bottom: 0;
+        position: absolute; }
   body.immersive .article--immersive .article__header-info {
     background-color: rgba(0, 0, 0, 0.4);
-    bottom: 0px;
     padding: 6px 12px 24px 12px;
-    position: absolute;
     width: 100%; }
     @media all and (min-width: 56.25em) {
       body.immersive .article--immersive .article__header-info {
@@ -7795,5 +7813,14 @@ body.immersive .article--immersive {
     -webkit-animation-name: fadeInUp;
     animation-name: fadeInUp; }
 
-body.immersive.android .article--immersive .article__header-bg {
+body.immersive.android .article--immersive .article__header-bg .element-embed {
+  height: 600px; }
+  body.immersive.android .article--immersive .article__header-bg .element-embed.height-adjusted {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: auto; }
+body.immersive.android .article--immersive .article__header-bg[data-full-screen] {
   height: 600px; }
