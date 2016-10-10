@@ -1,62 +1,204 @@
-.FAB{
-	border-radius: 50%;
-	width: 5rem;
-	height: 5rem;
-	background-color: color(tone-live);
-	position: fixed;
-	bottom: 20px;
-	left: 20px;
-	z-index: 30000;
+.key-events {
+    background: color(global-tags);
+    border-bottom: 2px solid color(shade-4);
+    border-top: 4px solid color(tone-live-accent);
+    margin: 0 auto;
+    max-width: 1200px;
+    overflow: hidden;
+    padding: base-px(.25, 1, 0, 1);
+    position: relative;
+    transition: padding .6s;
+
+    @include mq($from: col2) {
+        padding-top: base-px(1);
+    }
+
+    @include mq($from: col4) {
+        border-top: 0;
+    }
+
+    &__title {
+        color: color(tone-live-accent);
+        font: 600 1.8rem $egyptian-display;
+        margin-bottom: base-px(1);
+
+        @include mq($from: col2) {
+            float: left;
+            width: cols($base-3, 4, 1);
+        }
+
+        @include mq($from: col3) {
+            width: cols($base-4, 5, 1);
+        }
+
+        @include mq($from: col4) {
+            float: left;
+            margin-right: 20px;
+            width: 220px;
+        }
+
+        &::before {
+            background: color(tone-live-accent);
+            border-radius: 50%;
+            content: "";
+            display: inline-block;
+            height: 1.4rem;
+            margin-right: 6px;
+            width: 1.4rem;
+        }
+    }
+
+    &__counter {
+        opacity: 1;
+        transition: opacity .2s;
+    }
+
+    &__toggle {
+        border: 1px solid color(shade-3);
+        border-radius: 50%;
+        height: 34px;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        width: 34px;
+        
+        &-icon {
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            transition: transform .4s;
+
+            &::before {
+                color: color(shade-3);
+                font-size: 1.7rem;
+            }
+        }
+    }
+
+    &__list {
+        @include mq($from: col2) {
+            float: left;
+            width: cols($base-3, 8);
+        }
+
+        @include mq($from: col3) {
+            width: cols($base-4, 11);
+        }
+
+        @include mq($from: col4) {
+            width: 620px;
+        }
+    }
+
+    &--expanded {
+        padding-bottom: base-px(1.5);
+
+        .key-events {
+            &__toggle-icon {
+                transform: translateX(-50%) translateY(-50%) rotate(180deg);
+            }
+
+            &__counter {
+                opacity: 0;
+            }
+        }
+    }
+
+    &--0 {
+        .key-events__toggle {
+            display: none;
+        }
+    }
 }
 
-.key__events{
-	height: 500px;
-	width: 100%;
-	position: fixed;
-	bottom: 0;
-	background-color: rgba(238, 238, 232, 0.95);
-	z-index: 10000;
-	display: none;
-	background-image: url('');
-	
-	.key__events--title{
-		h3{
-			color: color(tone-live);
-			margin-left: 55px;
-		}
-	}
-	
-	.key__events--line{
-		height: 388px;
-		width: 1px;
-		position: relative;
-		border-left:color(tone-live) 1px solid;
-		margin-left: 45px;
-		float: left;
-		margin-top: 18px;
-	}
-	
-	.key__events--list{
-		float: left;
-		width: 80%;
-		font-family: 'Guardian Agate Sans 1 Web';
-		font-size: 14px;
-		line-height: 18px;
-		margin-top: 12px;
-		margin-left: 10px;
-		
-		li{
-			margin-bottom: 12px;
-			display: none;
-		}
-		
-		.key__events--time{
-		font-weight: bold;	
-		}
-		
-	}
-	
-	
-	
-}
+.key-event {
+    max-height: 0;
+    opacity: 0; 
+    padding: base-px(0, .5, 0, 1);
+    position: relative;
+    transition: color .6s;
+    width: 90%;
 
+    // Create bullet point for events
+    &::before {
+        background: #bdbdbd !important;
+        border-radius: 50%;
+        content: '';
+        display: block;
+        height: 10px;
+        left: -5px;
+        position: absolute;
+        top: 4px;
+        width: 10px;
+    }
+
+    // Create timeline bar for events
+    &::after {
+        background: #bdbdbd;
+        content: '';
+        height: 100%;
+        left: -1px;
+        position: absolute;
+        top: 4px;
+        width: 1px;
+    }
+
+    // only shown when key-events--expanded & first child always visible
+    .key-events--expanded &,
+    &:first-child {
+        max-height: 300px;
+        opacity: 1;
+    }
+
+    &__time {
+        color: color(shade-1);
+        display: block;
+        font: 600 1.5rem $egyptian-display;
+
+        .key-event--highlighted & {
+            color: color(tone-live-accent) !important;
+        }
+    }
+
+    // Create tick marks for first child instead of dot, and position start of timeline
+    &:first-child {
+        &::before {
+            height: 1px;
+            left: -1px;
+            top: 8px;
+            width: 7px;
+        }
+
+        &::after {
+            top: 8px;
+        }
+    }
+
+    // Create tick marks for last child instead of dot and end the timeline, and position end of timeline
+    &:last-child {
+        &::before {
+            height: 1px;
+            left: -1px;
+            top: 8px;
+            width: 7px;
+        }
+
+        &::after {
+            height: 9px;
+            top: 0;
+        }
+    }
+
+    &__link,
+    &__link h2 {
+        color: color(shade-1) !important;
+        display: block;
+        font: normal 1.6rem $egyptian-text;
+        padding: base-px(.5, 0, 1, 0);
+
+        .key-event--highlighted & {
+            color: color(tone-live-accent) !important;
+        }
+    }
+}

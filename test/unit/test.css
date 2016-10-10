@@ -2883,6 +2883,140 @@
     @media all and (min-width: 75em) {
       #sandbox .figure--thumbnail-with-caption {
         margin: 4px 0 12px -220px; } }
+  #sandbox .key-events {
+    background: #f1f1f1;
+    border-bottom: 2px solid #dcdad5;
+    border-top: 4px solid #cc2b12;
+    margin: 0 auto;
+    max-width: 1200px;
+    overflow: hidden;
+    padding: 3px 12px 0px 12px;
+    position: relative;
+    transition: padding .6s; }
+    @media all and (min-width: 40.63em) {
+      #sandbox .key-events {
+        padding-top: 12px; } }
+    @media all and (min-width: 75em) {
+      #sandbox .key-events {
+        border-top: 0; } }
+    #sandbox .key-events__title {
+      color: #cc2b12;
+      font: 600 1.8rem "Guardian Egyptian Web", Georgia, serif;
+      margin-bottom: 12px; }
+      @media all and (min-width: 40.63em) {
+        #sandbox .key-events__title {
+          float: left;
+          width: 33.80282%; } }
+      @media all and (min-width: 56.25em) {
+        #sandbox .key-events__title {
+          width: 31.57895%; } }
+      @media all and (min-width: 75em) {
+        #sandbox .key-events__title {
+          float: left;
+          margin-right: 20px;
+          width: 220px; } }
+      #sandbox .key-events__title::before {
+        background: #cc2b12;
+        border-radius: 50%;
+        content: "";
+        display: inline-block;
+        height: 1.4rem;
+        margin-right: 6px;
+        width: 1.4rem; }
+    #sandbox .key-events__counter {
+      opacity: 1;
+      transition: opacity .2s; }
+    #sandbox .key-events__toggle {
+      border: 1px solid #999;
+      border-radius: 50%;
+      height: 34px;
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      width: 34px; }
+      #sandbox .key-events__toggle-icon {
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        transition: transform .4s; }
+        #sandbox .key-events__toggle-icon::before {
+          color: #999;
+          font-size: 1.7rem; }
+    @media all and (min-width: 40.63em) {
+      #sandbox .key-events__list {
+        float: left;
+        width: 66.19718%; } }
+    @media all and (min-width: 56.25em) {
+      #sandbox .key-events__list {
+        width: 68.42105%; } }
+    @media all and (min-width: 75em) {
+      #sandbox .key-events__list {
+        width: 620px; } }
+    #sandbox .key-events--expanded {
+      padding-bottom: 18px; }
+      #sandbox .key-events--expanded .key-events__toggle-icon {
+        transform: translateX(-50%) translateY(-50%) rotate(180deg); }
+      #sandbox .key-events--expanded .key-events__counter {
+        opacity: 0; }
+    #sandbox .key-events--0 .key-events__toggle {
+      display: none; }
+  #sandbox .key-event {
+    max-height: 0;
+    opacity: 0;
+    padding: 0px 6px 0px 12px;
+    position: relative;
+    transition: color .6s;
+    width: 90%; }
+    #sandbox .key-event::before {
+      background: #bdbdbd !important;
+      border-radius: 50%;
+      content: '';
+      display: block;
+      height: 10px;
+      left: -5px;
+      position: absolute;
+      top: 4px;
+      width: 10px; }
+    #sandbox .key-event::after {
+      background: #bdbdbd;
+      content: '';
+      height: 100%;
+      left: -1px;
+      position: absolute;
+      top: 4px;
+      width: 1px; }
+    .key-events--expanded #sandbox .key-event, #sandbox .key-event:first-child {
+      max-height: 300px;
+      opacity: 1; }
+    #sandbox .key-event__time {
+      color: #333;
+      display: block;
+      font: 600 1.5rem "Guardian Egyptian Web", Georgia, serif; }
+      .key-event--highlighted #sandbox .key-event__time {
+        color: #cc2b12 !important; }
+    #sandbox .key-event:first-child::before {
+      height: 1px;
+      left: -1px;
+      top: 8px;
+      width: 7px; }
+    #sandbox .key-event:first-child::after {
+      top: 8px; }
+    #sandbox .key-event:last-child::before {
+      height: 1px;
+      left: -1px;
+      top: 8px;
+      width: 7px; }
+    #sandbox .key-event:last-child::after {
+      height: 9px;
+      top: 0; }
+    #sandbox .key-event__link, #sandbox .key-event__link h2 {
+      color: #333 !important;
+      display: block;
+      font: normal 1.6rem "Guardian Text Egyptian Web", Georgia, serif;
+      padding: 6px 0px 12px 0px; }
+      .key-event--highlighted #sandbox .key-event__link, .key-event--highlighted #sandbox .key-event__link h2 {
+        color: #cc2b12 !important; }
   #sandbox .loading {
     text-align: center;
     padding: 12px; }
@@ -8305,6 +8439,55 @@
     animation-name: blink; }
   #sandbox .section__live__pulse {
     -webkit-animation: blink 1.5s ease-in infinite; }
+@-webkit-keyframes flipInX {
+  from {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0; }
+  40% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in; }
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1; }
+  80% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg); }
+  to {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px); } }
+@keyframes flipInX {
+  from {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0; }
+  40% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in; }
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1; }
+  80% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg); }
+  to {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px); } }
+  #sandbox .flipInX {
+    -webkit-backface-visibility: visible !important;
+    backface-visibility: visible !important;
+    -webkit-animation-name: flipInX;
+    animation-name: flipInX; }
   #sandbox .aside {
     margin: 24px 0px;
     border-top: 1px dotted #dcdad5;

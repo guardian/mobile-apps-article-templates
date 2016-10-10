@@ -2,77 +2,76 @@
  Module: outbrain.js
  Description: show promoted content by outbrain.
  */
-define([
-    'modules/$'
-], function (
-    $
-) {
+define(function () {
     'use strict';
 
-    var isAndroid = $('body').hasClass('android');
-    var outbrain = $('.container__outbrain');
-
-    var device = function() {
-        var deviceType = document.body.getAttribute('data-ads-config');
-        return deviceType;
-    };
-
     function getSection () {
-        var sections = ['politics', 'world', 'business', 'commentisfree'];
-        var section = document.body.getAttribute('data-content-section');
+        var sections = ['politics', 'world', 'business', 'commentisfree'],
+            section = GU.opts.section;
+        
         return section.toLowerCase().match('news') || sections.indexOf(section.toLowerCase()) > 0 ? 'sections' : 'all';
     }
 
-    function load() {
-        var contentUrl = $('.outbrainImage').attr('data-src');
+    function ready() {
+        var contentUrl,
+            isTablet = GU.opts.adsConfig === 'tablet' ? true : false,
+            outbrainContainer = document.getElementsByClassName('container__outbrain')[0],
+            outbrainImage = document.getElementsByClassName('outbrainImage')[0],
+            outbrainText = document.getElementsByClassName('outbrainText')[0],
+            section = getSection(),
+            scriptElement,
+            widgetCodeText,
+            widgetConfig,
+            widgetCodeImage;
 
-        if (outbrain.length > 0 && contentUrl.length > 0) {
-            outbrain.css('display', 'block');
-                
-            var widgetConfig = {},
-                widgetCodeImage, widgetCodeText, scriptElement;
- 
-            if (device() === 'tablet') {
-                $('.outbrainText').css('display', 'block');
+        if (!outbrainContainer) {
+            return;
+        }
+
+        contentUrl = outbrainImage.dataset.src;
+
+        if (contentUrl) {
+            outbrainContainer.style.display = 'block';
+
+            if (isTablet) {
                 widgetConfig = {
                     image: {
-                        sections: isAndroid ? 'AR_25' : 'AR_24',
-                        all: isAndroid ? 'AR_19' : 'AR_18'
+                        sections: 'AR_24',
+                        all: 'AR_18'
                     },
                     text: {
-                        sections: isAndroid ? 'AR_26' : 'AR_27',
-                        all: isAndroid ?'AR_21' : 'AR_20'
+                        sections: 'AR_27',
+                        all: 'AR_20'
                     }
                 };
-                widgetCodeText = widgetConfig.text[getSection()];
-                $('.outbrainText').attr('data-widget-id', widgetCodeText);
-            } else if (device() ==='mobile') {
+                outbrainText.style.display = 'block';
+                widgetCodeText = widgetConfig.text[section];
+                outbrainText.dataset.widgetId = widgetCodeText;
+            } else {
                 widgetConfig = {
                     image: {
-                        sections: isAndroid ? 'AR_23' : 'AR_22',
-                        all: isAndroid ? 'AR_17' : 'AR_16'
+                        sections: 'AR_22',
+                        all: 'AR_16'
                     }
                 };
-
-                var parentNode = document.getElementById('outbrain');
-                var textNode = document.getElementsByClassName('outbrainText');
-                if (parentNode.childElementCount > 0 && textNode.length > 0) {
-                    parentNode.removeChild(textNode[0]);
+                if (outbrainContainer.childElementCount > 0 && outbrainText) {
+                    outbrainContainer.removeChild(outbrainText);
                 }
             }
 
-            widgetCodeImage = widgetConfig.image[getSection()];
-            $('.outbrainImage').attr('data-widget-id', widgetCodeImage);
+            widgetCodeImage = widgetConfig.image[section];
+            outbrainImage.dataset.widgetId = widgetCodeImage;
 
             scriptElement = document.createElement('script');
             scriptElement.id = 'outbrain-widget';
             scriptElement.async = true;
             scriptElement.src = 'https://widgets.outbrain.com/outbrain.js?cachebuster=123456789';
-            $(document.body).append(scriptElement);
+
+            document.body.appendChild(scriptElement);
         }
     }
 
     return {
-        load: load
+        init: ready
     };
 });

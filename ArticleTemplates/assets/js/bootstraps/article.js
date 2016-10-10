@@ -29,7 +29,7 @@ define([
     }
 
     function loadOutbrain() {
-        outbrain.load();
+        outbrain.init();
     }
 
     function loadQuizzes() {
