@@ -3,17 +3,20 @@ define([
     'modules/witness',
     'modules/outbrain',
     'modules/quiz',
-    'modules/membership'
+    'modules/membership',
+    'modules/youtube'
 ], function (
     twitter,
     witness,
     outbrain,
     quiz,
-    membership
+    membership,
+    youtube
 ) {
     'use strict';
 
     function init() {
+        youtube.init();
         twitter.init();
         witness.duplicate();
         insertOutbrain();
