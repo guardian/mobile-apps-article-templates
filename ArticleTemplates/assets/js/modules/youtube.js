@@ -7,12 +7,36 @@ define(function() {
     'use strict';
 
     var videos,
-        players = {}, 
+        players = {},
+        progressTracker = {}, 
         scriptReady = false;
+
+
+    var STATES = {
+        'ENDED': onPlayerEnded, 
+        'PLAYING': onPlayerPlaying, 
+        'PAUSED': onPlayerPaused, 
+        'BUFFERING': null, 
+        'CUED': null
+    }; 
 
     function ready() {
         checkForVideos();
     };
+
+    function setProgressTracker(id) {
+        killProgressTracker(true);
+        progressTracker.id = id;
+        progressTracker.tracker = setInterval(recordPlayerProgress.bind(null, id), 500);
+    }
+
+    function killProgressTracker(force, id) {
+        if (progressTracker.tracker && 
+            (force || id === progressTracker.id)) {
+            clearInterval(progressTracker.tracker);
+            progressTracker = {};
+        }
+    }
 
     function checkForVideos() {
         videos = document.body.querySelectorAll('iframe.youtube-video');
@@ -74,6 +98,8 @@ define(function() {
         var placeholder = players[id].placeholder,
             touchPoint = placeholder.getElementsByClassName('youtube-video__touchpoint')[0];
 
+        players[id].duration = players[id].player.getDuration();
+
         placeholder.classList.add('show-touchpoint');
         touchPoint.addEventListener('click', playVideo.bind(null, id, placeholder));
     }
@@ -84,17 +110,41 @@ define(function() {
     }
 
     function onPlayerStateChange(id, event) {
-        ['ENDED', 'PLAYING', 'PAUSED', 'BUFFERING', 'CUED'].forEach(function(status) {
-            if (event.data === window.YT.PlayerState[status]) {
-                setPlayerStatusClass(id, status);
+        Object.keys(STATES).forEach(checkState.bind(null, id, event.data));
+    }
 
-                if (status === 'PLAYING') {
-                    stopPlayers(id);
-                } else if (status === 'ENDED') {
-                    players[id].placeholder.classList.remove('hide-placeholder');    
-                }
+    function checkState(id, state, status) {
+        if (state === window.YT.PlayerState[status]) {
+            setPlayerStatusClass(id, status);
+
+            if (STATES[status]) {
+                STATES[status](id);
             }
-        });
+        }
+    }
+
+    function onPlayerPlaying(id) {
+        var currentTime = Math.round(players[id].player.getCurrentTime())
+
+        stopPlayers(id);
+        setProgressTracker(id);
+
+        if (currentTime === 0) {
+            console.log('*** track play', id);
+        } else {
+            console.log('*** track fast forward to ' + currentTime + ' seconds', id);
+        }
+    }
+
+    function onPlayerEnded(id) {
+        killProgressTracker(false, id);
+        players[id].placeholder.classList.remove('hide-placeholder');
+        console.log('*** track end', id);
+    }
+
+    function onPlayerPaused(id) {
+        killProgressTracker(false, id);
+        // console.log('*** track pause', id);
     }
 
     function stopPlayers(ignoreId) {
@@ -123,6 +173,18 @@ define(function() {
         }
 
         placeholder.classList.add(className);
+    }
+
+    function recordPlayerProgress(id) {
+        var currentTime = players[id].player.getCurrentTime(),
+            percentPlayed = Math.round(((currentTime / players[id].duration) * 100));
+
+        console.log(percentPlayed + '% played >>> ', id);
+
+        if (percentPlayed > 0 && 
+            percentPlayed % 25 === 0) {
+            console.log('*** track ' + percentPlayed + '% played >>> ', id);
+        }
     }
 
     return {
