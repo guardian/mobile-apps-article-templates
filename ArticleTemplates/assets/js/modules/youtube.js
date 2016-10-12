@@ -15,7 +15,7 @@ define(function() {
     };
 
     function checkForVideos() {
-        videos = document.body.querySelectorAll('iframe.js-youtube-video');
+        videos = document.body.querySelectorAll('iframe.youtube-video');
 
         if (videos.length && !scriptReady) {
             loadScript();
@@ -25,13 +25,13 @@ define(function() {
     function loadScript() {
         var scriptElement;
 
-        if (document.getElementById('youtube-player')) {
+        if (document.getElementById('youtube-script')) {
             return;
         }
 
         scriptElement = document.createElement('script');
 
-        scriptElement.id = 'youtube-player';
+        scriptElement.id = 'youtube-script';
         scriptElement.async = true;
         scriptElement.src = 'https://www.youtube.com/iframe_api';
         scriptElement.onload = onScriptLoaded;
@@ -51,31 +51,78 @@ define(function() {
 
         for (i = 0; i < videos.length; i++) {
             video = videos[i];
-            players[video.id] = setupPlayer(video);
+            players[video.id] = {
+                player: setupPlayer(video.id),
+                iframe: video,
+                placeholder: video.parentNode.getElementsByClassName('youtube-video__placeholder')[0]
+            }
         }
     }
 
-    function setupPlayer(video) {
-        var player = new YT.Player(video.id, {
+    function setupPlayer(id) {
+        var player = new YT.Player(id, {
             events: {
-                onReady: onPlayerReady.bind(null, video),
-                onStateChange: onPlayerStateChange.bind(null, video)
+                onReady: onPlayerReady.bind(null, id),
+                onStateChange: onPlayerStateChange.bind(null, id)
             }
         });
 
         return player;
     }
 
-    function onPlayerReady(video, event) {
-        console.log('*** READY', players[video.id]);
+    function onPlayerReady(id) {
+        var placeholder = players[id].placeholder,
+            touchPoint = placeholder.getElementsByClassName('youtube-video__touchpoint')[0];
+
+        placeholder.classList.add('show-touchpoint');
+        touchPoint.addEventListener('click', playVideo.bind(null, id, placeholder));
     }
 
-    function onPlayerStateChange(video, event) {
+    function playVideo(id, placeholder) {
+        players[id].player.playVideo();
+        placeholder.classList.add('hide-placeholder');
+    }
+
+    function onPlayerStateChange(id, event) {
         ['ENDED', 'PLAYING', 'PAUSED', 'BUFFERING', 'CUED'].forEach(function(status) {
             if (event.data === window.YT.PlayerState[status]) {
-                console.log('*** ' + status, video);
+                setPlayerStatusClass(id, status);
+
+                if (status === 'PLAYING') {
+                    stopPlayers(id);
+                } else if (status === 'ENDED') {
+                    players[id].placeholder.classList.remove('hide-placeholder');    
+                }
             }
         });
+    }
+
+    function stopPlayers(ignoreId) {
+        Object.keys(players).forEach(stopPlayer.bind(null, ignoreId));
+    }
+
+    function stopPlayer(ignoreId, stopId) {
+        if (ignoreId !== stopId) {
+            players[stopId].player.pauseVideo();
+        }
+    }
+
+    function setPlayerStatusClass(id, status) {
+        var i,
+            className = 'video-status-' + status.toLowerCase(),
+            placeholder = players[id].placeholder;
+
+        if (placeholder.classList.contains(className)) {
+            return;
+        }
+
+        for (i = placeholder.classList.length; i > 0; i--) {
+            if (placeholder.classList[i-1].indexOf('video-status-') !== -1) {
+                placeholder.classList.remove(placeholder.classList[i-1]);
+            }
+        }
+
+        placeholder.classList.add(className);
     }
 
     return {
