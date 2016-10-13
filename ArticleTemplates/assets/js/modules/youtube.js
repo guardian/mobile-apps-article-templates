@@ -86,7 +86,7 @@ define(function() {
                 players[video.id] = {
                     player: setupPlayer(video.id),
                     iframe: video,
-                    placeholder: video.parentNode.getElementsByClassName('youtube-video__placeholder')[0]
+                    placeholder: video.parentNode.getElementsByClassName('youtube-media__placeholder')[0]
                 }
             }
         }
@@ -105,7 +105,7 @@ define(function() {
 
     function onPlayerReady(id) {
         var placeholder = players[id].placeholder,
-            touchPoint = placeholder.getElementsByClassName('youtube-video__touchpoint')[0];
+            touchPoint = placeholder.getElementsByClassName('youtube-media__touchpoint')[0];
 
         players[id].duration = players[id].player.getDuration();
 
