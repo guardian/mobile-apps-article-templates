@@ -108,15 +108,17 @@ define(function() {
             touchPoint = placeholder.getElementsByClassName('youtube-media__touchpoint')[0];
 
         players[id].duration = players[id].player.getDuration();
-
-        console.log('*****************', id);
-
         placeholder.classList.add('show-touchpoint');
         touchPoint.addEventListener('click', playVideo.bind(null, id, placeholder));
     }
 
     function playVideo(id, placeholder) {
         players[id].player.playVideo();
+        placeholder.classList.add('fade-placeholder');
+        setTimeout(hidePlaceholder.bind(null, placeholder), 300);
+    }
+
+    function hidePlaceholder(placeholder) {
         placeholder.classList.add('hide-placeholder');
     }
 
@@ -125,12 +127,8 @@ define(function() {
     }
 
     function checkState(id, state, status) {
-        if (state === window.YT.PlayerState[status]) {
-            setPlayerStatusClass(id, status);
-
-            if (STATES[status]) {
-                STATES[status](id);
-            }
+        if (state === window.YT.PlayerState[status] && STATES[status]) {
+            STATES[status](id);
         }
     }
 
@@ -146,9 +144,18 @@ define(function() {
     }
 
     function onPlayerEnded(id) {
+        var placeholder = players[id].placeholder;
+
         killProgressTracker(false, id);
-        players[id].placeholder.classList.remove('hide-placeholder');
+        
+        showPlaceholder(placeholder);
+        
         console.log('*** track end', id);
+    }
+
+    function showPlaceholder(placeholder) {
+        placeholder.classList.remove('hide-placeholder');
+        placeholder.classList.remove('fade-placeholder');
     }
 
     function onPlayerPaused(id) {
@@ -163,24 +170,6 @@ define(function() {
         if (ignoreId !== stopId) {
             players[stopId].player.pauseVideo();
         }
-    }
-
-    function setPlayerStatusClass(id, status) {
-        var i,
-            className = 'video-status-' + status.toLowerCase(),
-            placeholder = players[id].placeholder;
-
-        if (placeholder.classList.contains(className)) {
-            return;
-        }
-
-        for (i = placeholder.classList.length; i > 0; i--) {
-            if (placeholder.classList[i-1].indexOf('video-status-') !== -1) {
-                placeholder.classList.remove(placeholder.classList[i-1]);
-            }
-        }
-
-        placeholder.classList.add(className);
     }
 
     function recordPlayerProgress(id) {
