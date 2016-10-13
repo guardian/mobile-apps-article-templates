@@ -22,7 +22,7 @@ define(function() {
 
     function ready() {
         checkForVideos();
-    };
+    }
 
     function setProgressTracker(id) {
         killProgressTracker(true);
@@ -39,7 +39,7 @@ define(function() {
     }
 
     function checkForVideos() {
-        videos = document.body.querySelectorAll('iframe.youtube-video');
+        videos = document.body.querySelectorAll('iframe.youtube-media');
 
         if (videos.length) {
             if (!scriptReady) {
@@ -108,6 +108,8 @@ define(function() {
             touchPoint = placeholder.getElementsByClassName('youtube-media__touchpoint')[0];
 
         players[id].duration = players[id].player.getDuration();
+
+        console.log('*****************', id);
 
         placeholder.classList.add('show-touchpoint');
         touchPoint.addEventListener('click', playVideo.bind(null, id, placeholder));
