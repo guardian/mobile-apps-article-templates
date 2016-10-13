@@ -27,7 +27,7 @@ define(function() {
     function setProgressTracker(id) {
         killProgressTracker(true);
         progressTracker.id = id;
-        progressTracker.tracker = setInterval(recordPlayerProgress.bind(null, id), 500);
+        progressTracker.tracker = setInterval(recordPlayerProgress.bind(null, id), 1000);
     }
 
     function killProgressTracker(force, id) {
@@ -41,8 +41,12 @@ define(function() {
     function checkForVideos() {
         videos = document.body.querySelectorAll('iframe.youtube-video');
 
-        if (videos.length && !scriptReady) {
-            loadScript();
+        if (videos.length) {
+            if (!scriptReady) {
+                loadScript();
+            } else {
+                initialiseVideos();
+            }
         }
     }
 
@@ -68,17 +72,22 @@ define(function() {
     }
 
     function onYouTubeIframeAPIReady() {
+        scriptReady = true;
+        initialiseVideos();
+    }
+
+    function initialiseVideos() {
         var i,
             video;
 
-        scriptReady = true;
-
         for (i = 0; i < videos.length; i++) {
             video = videos[i];
-            players[video.id] = {
-                player: setupPlayer(video.id),
-                iframe: video,
-                placeholder: video.parentNode.getElementsByClassName('youtube-video__placeholder')[0]
+            if (!players[video.id]) {
+                players[video.id] = {
+                    player: setupPlayer(video.id),
+                    iframe: video,
+                    placeholder: video.parentNode.getElementsByClassName('youtube-video__placeholder')[0]
+                }
             }
         }
     }
@@ -131,8 +140,6 @@ define(function() {
 
         if (currentTime === 0) {
             console.log('*** track play', id);
-        } else {
-            console.log('*** track fast forward to ' + currentTime + ' seconds', id);
         }
     }
 
@@ -144,7 +151,6 @@ define(function() {
 
     function onPlayerPaused(id) {
         killProgressTracker(false, id);
-        // console.log('*** track pause', id);
     }
 
     function stopPlayers(ignoreId) {
@@ -179,15 +185,14 @@ define(function() {
         var currentTime = players[id].player.getCurrentTime(),
             percentPlayed = Math.round(((currentTime / players[id].duration) * 100));
 
-        console.log(percentPlayed + '% played >>> ', id);
-
         if (percentPlayed > 0 && 
             percentPlayed % 25 === 0) {
-            console.log('*** track ' + percentPlayed + '% played >>> ', id);
+            console.log('*** track progress', percentPlayed, id);
         }
     }
 
     return {
-        init: ready
+        init: ready,
+        checkForVideos: checkForVideos
     };
 });
