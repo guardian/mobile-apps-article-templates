@@ -147,30 +147,37 @@ Display an embedded element. Element embeds are typically shown as figures, and 
                 -webkit-transition: opacity .25s ease-in-out;
             }
                      
-            &.show-touchpoint {
+            &.fade-touchpoint {
                 .youtube-media__touchpoint {
                     opacity: 1;
-                }
-            }
-
-            &.fade-placeholder {
-                opacity: 0;
-            }
-
-            &.hide-placeholder {
-                z-index: -1;
-
-                .element-placeholder__button {
-                    display: none;
                 }
             }
         }
 
         .youtube-media {
+            opacity: 0;
             z-index: 0;
             position: absolute; 
             height: 100%; 
             width: 100%;
+            transition: opacity .25s ease-in-out;
+            -webkit-transition: opacity .25s ease-in-out;
+        }
+
+        &.fade-placeholder {
+            .youtube-media__placeholder {
+                opacity: 0;
+            }
+
+            .youtube-media {
+                opacity: 1;
+            }
+        }
+
+        &.hide-placeholder {
+            .youtube-media__placeholder {
+               display: none;
+            }
         }
     }
 }

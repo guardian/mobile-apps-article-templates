@@ -2291,19 +2291,22 @@ Display an embedded element. Element embeds are typically shown as figures, and 
         opacity: 0;
         transition: opacity .25s ease-in-out;
         -webkit-transition: opacity .25s ease-in-out; }
-      .element-placeholder .element__inner .youtube-media__placeholder.show-touchpoint .youtube-media__touchpoint {
+      .element-placeholder .element__inner .youtube-media__placeholder.fade-touchpoint .youtube-media__touchpoint {
         opacity: 1; }
-      .element-placeholder .element__inner .youtube-media__placeholder.fade-placeholder {
-        opacity: 0; }
-      .element-placeholder .element__inner .youtube-media__placeholder.hide-placeholder {
-        z-index: -1; }
-        .element-placeholder .element__inner .youtube-media__placeholder.hide-placeholder .element-placeholder__button {
-          display: none; }
     .element-placeholder .element__inner .youtube-media {
+      opacity: 0;
       z-index: 0;
       position: absolute;
       height: 100%;
-      width: 100%; }
+      width: 100%;
+      transition: opacity .25s ease-in-out;
+      -webkit-transition: opacity .25s ease-in-out; }
+    .element-placeholder .element__inner.fade-placeholder .youtube-media__placeholder {
+      opacity: 0; }
+    .element-placeholder .element__inner.fade-placeholder .youtube-media {
+      opacity: 1; }
+    .element-placeholder .element__inner.hide-placeholder .youtube-media__placeholder {
+      display: none; }
 
 .offline .element-audio,
 .offline .element-embed,

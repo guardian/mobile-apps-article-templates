@@ -108,18 +108,18 @@ define(function() {
             touchPoint = placeholder.getElementsByClassName('youtube-media__touchpoint')[0];
 
         players[id].duration = players[id].player.getDuration();
-        placeholder.classList.add('show-touchpoint');
-        touchPoint.addEventListener('click', playVideo.bind(null, id, placeholder));
+        placeholder.classList.add('fade-touchpoint');
+        touchPoint.addEventListener('click', playVideo.bind(null, id, placeholder.parentNode));
     }
 
-    function playVideo(id, placeholder) {
+    function playVideo(id, placeholderParent) {
         players[id].player.playVideo();
-        placeholder.classList.add('fade-placeholder');
-        setTimeout(hidePlaceholder.bind(null, placeholder), 300);
+        placeholderParent.classList.add('fade-placeholder');
+        setTimeout(hidePlaceholder.bind(null, placeholderParent), 300);
     }
 
-    function hidePlaceholder(placeholder) {
-        placeholder.classList.add('hide-placeholder');
+    function hidePlaceholder(placeholderParent) {
+        placeholderParent.classList.add('hide-placeholder');
     }
 
     function onPlayerStateChange(id, event) {
@@ -144,18 +144,18 @@ define(function() {
     }
 
     function onPlayerEnded(id) {
-        var placeholder = players[id].placeholder;
+        var placeholderParent = players[id].placeholder.parentNode;
 
         killProgressTracker(false, id);
         
-        showPlaceholder(placeholder);
+        placeholderParent.classList.remove('hide-placeholder');
+        setTimeout(showPlaceholder.bind(null, placeholderParent), 1000);
         
         console.log('*** track end', id);
     }
 
-    function showPlaceholder(placeholder) {
-        placeholder.classList.remove('hide-placeholder');
-        placeholder.classList.remove('fade-placeholder');
+    function showPlaceholder(placeholderParent) {
+        placeholderParent.classList.remove('fade-placeholder');
     }
 
     function onPlayerPaused(id) {
