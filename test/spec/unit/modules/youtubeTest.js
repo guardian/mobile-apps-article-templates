@@ -74,8 +74,11 @@ define([
                 });
             };
 
-            Player.prototype.playVideo = sinon.spy();
-            Player.prototype.getDuration = sinon.spy();
+            Player.prototype = {
+                playVideo: function() {},
+                getDuration: function() {},
+                getCurrentTime: function() {}
+            };
 
             beforeEach(function() {
                 scriptAdded = false;
@@ -88,6 +91,20 @@ define([
                         scriptElement.onload();
                         window.onYouTubeIframeAPIReady();
                     }
+                });
+
+                sandbox.stub(Player.prototype, 'playVideo', function() {
+                    this.startTime = new Date();
+                });
+
+                sandbox.stub(Player.prototype, 'getDuration', function() {
+                    return 20000;
+                });
+
+                sandbox.stub(Player.prototype, 'getCurrentTime', function() {
+                    var currentTime = new Date();
+            
+                    return currentTime - this.startTime;
                 });
             });
 
@@ -188,6 +205,161 @@ define([
                             expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(true);
                             done();
                         }, 500);
+                    });
+            });
+
+            it('handles onPlayerStateChange when ENDED', function (done) {
+                injector
+                    .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
+                        var videoWrapper = getVideoWrapper('video1');
+
+                        videoWrapper.classList.add('hide-placeholder');
+                        videoWrapper.classList.add('fade-placeholder');
+
+                        container.appendChild(videoWrapper);
+                       
+                        youtube.init();
+
+                        expect(window.YT.players.length).to.eql(1);
+
+                        window.YT.PlayerState = {
+                            'ENDED': 1, 
+                            'PLAYING': 0, 
+                            'PAUSED': 0, 
+                            'BUFFERING': 0, 
+                            'CUED': 0
+                        };
+
+                        window.YT.players[0].onStateChange({
+                            data: 1
+                        });
+
+                        expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(false);
+
+                        setTimeout(function () {
+                            expect(videoWrapper.classList.contains('fade-placeholder')).to.eql(false);
+                            done();
+                        }, 1100);
+                    });
+            });
+
+            it('handles onPlayerStateChange when PLAYING from start', function (done) {
+                injector
+                    .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
+                        var videoWrapper = getVideoWrapper('video1');
+
+                        videoWrapper.classList.add('hide-placeholder');
+                        videoWrapper.classList.add('fade-placeholder');
+
+                        container.appendChild(videoWrapper);
+                       
+                        youtube.init();
+
+                        expect(window.YT.players.length).to.eql(1);
+
+                        window.YT.PlayerState = {
+                            'ENDED': 0, 
+                            'PLAYING':  1, 
+                            'PAUSED': 0, 
+                            'BUFFERING': 0, 
+                            'CUED': 0
+                        };
+
+                        window.YT.players[0].onStateChange({
+                            data: 1
+                        });
+
+                        expect(Player.prototype.getCurrentTime).to.have.been.called;
+                        // TODO: test tracking call made
+
+                        done();
+                    });
+            });
+
+            it('handles onPlayerStateChange when PLAYING from start', function (done) {
+                injector
+                    .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
+                        var videoWrapper = getVideoWrapper('video1');
+
+                        videoWrapper.classList.add('hide-placeholder');
+                        videoWrapper.classList.add('fade-placeholder');
+
+                        container.appendChild(videoWrapper);
+                       
+                        youtube.init();
+
+                        expect(window.YT.players.length).to.eql(1);
+
+                        window.YT.PlayerState = {
+                            'ENDED': 0, 
+                            'PLAYING':  1, 
+                            'PAUSED': 0, 
+                            'BUFFERING': 0, 
+                            'CUED': 0
+                        };
+
+                        window.YT.players[0].onStateChange({
+                            data: 1
+                        });
+
+                        expect(Player.prototype.getCurrentTime).to.have.been.called;
+                        // TODO: test tracking call not made
+
+                        done();
+                    });
+            });
+
+            it('handles onPlayerStateChange and tracks progress', function (done) {
+                this.timeout(15000);
+
+                injector
+                    .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
+                        var event = document.createEvent('HTMLEvents'),
+                            videoWrapper = getVideoWrapper('video1'),
+                            touchpoint = videoWrapper.querySelector('.youtube-media__touchpoint');
+
+                        container.appendChild(videoWrapper);
+                       
+                        youtube.init();
+
+                        expect(window.YT.players.length).to.eql(1);
+
+                        window.YT.players[0].onReady('video1');
+
+                        event.initEvent('click', true, true);
+                        touchpoint.dispatchEvent(event);
+
+                        expect(Player.prototype.playVideo).to.have.been.calledOnce;
+
+                        window.YT.PlayerState = {
+                            'ENDED': 0, 
+                            'PLAYING':  1, 
+                            'PAUSED': 0, 
+                            'BUFFERING': 0, 
+                            'CUED': 0
+                        };
+
+                        window.YT.players[0].onStateChange({
+                            data: 1
+                        });
+            
+                        setTimeout(function() {
+                            // TODO: test tracking of 25% progress
+                            
+                            window.YT.PlayerState = {
+                                'ENDED': 1, 
+                                'PLAYING':  0, 
+                                'PAUSED': 0, 
+                                'BUFFERING': 0, 
+                                'CUED': 0
+                            };
+
+                            window.YT.players[0].onStateChange({
+                                data: 1
+                            });
+
+                            done();
+                        }, 10000);
                     });
             });
         });
