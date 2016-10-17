@@ -24,7 +24,6 @@ define([
 
             iframe.classList.add('youtube-media');
             iframe.id = id;
-            iframe.src = 'https://www.youtube.com/embed/9tBGBNB2eDA?modestbranding=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1';
 
             videoWrapper.appendChild(placeholder);
             videoWrapper.appendChild(iframe);
@@ -77,7 +76,8 @@ define([
             Player.prototype = {
                 playVideo: function() {},
                 getDuration: function() {},
-                getCurrentTime: function() {}
+                getCurrentTime: function() {},
+                pauseVideo: sinon.spy()
             };
 
             beforeEach(function() {
@@ -329,6 +329,8 @@ define([
                         event.initEvent('click', true, true);
                         touchpoint.dispatchEvent(event);
 
+                        // TODO: test tracking play for video1
+
                         expect(Player.prototype.playVideo).to.have.been.calledOnce;
 
                         window.YT.PlayerState = {
@@ -344,8 +346,9 @@ define([
                         });
             
                         setTimeout(function() {
-                            // TODO: test tracking of 25% progress
-                            
+                            // TODO: test tracking of 25% progress of video1
+
+                            // kill progress tracker by ending the video
                             window.YT.PlayerState = {
                                 'ENDED': 1, 
                                 'PLAYING':  0, 
@@ -355,6 +358,76 @@ define([
                             };
 
                             window.YT.players[0].onStateChange({
+                                data: 1
+                            });
+
+                            done();
+                        }, 10000);
+                    });
+            });
+
+            it('pause video when other video begins and track new video', function (done) {
+                this.timeout(15000);
+
+                injector
+                    .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
+                        var event = document.createEvent('HTMLEvents'),
+                            videoWrapper1 = getVideoWrapper('video1'),
+                            touchpoint1 = videoWrapper1.querySelector('.youtube-media__touchpoint'),
+                            videoWrapper2 = getVideoWrapper('video2'),
+                            touchpoint2 = videoWrapper2.querySelector('.youtube-media__touchpoint');
+
+                        container.appendChild(videoWrapper1);
+                        container.appendChild(videoWrapper2);
+                       
+                        youtube.init();
+
+                        expect(window.YT.players.length).to.eql(2);
+
+                        window.YT.players[0].onReady('video1');
+                        window.YT.players[1].onReady('video2');
+
+                        event.initEvent('click', true, true);
+                        
+                        touchpoint1.dispatchEvent(event);
+
+                        // TODO: test track play for video1
+
+                        expect(Player.prototype.playVideo).to.have.been.calledOnce;
+
+                        touchpoint2.dispatchEvent(event);
+
+                        expect(Player.prototype.playVideo).to.have.been.calledTwice;
+
+                        window.YT.PlayerState = {
+                            'ENDED': 0, 
+                            'PLAYING':  1, 
+                            'PAUSED': 0, 
+                            'BUFFERING': 0, 
+                            'CUED': 0
+                        };
+
+                        window.YT.players[1].onStateChange({
+                            data: 1
+                        });
+
+                        expect(Player.prototype.pauseVideo).to.have.been.calledOnce;
+
+                        // TODO: test track play for video2
+
+                        setTimeout(function () {
+                            // TODO: test tracking of 25% progress for video2
+
+                            // kill progress tracker by ending the video
+                            window.YT.PlayerState = {
+                                'ENDED': 1, 
+                                'PLAYING':  0, 
+                                'PAUSED': 0, 
+                                'BUFFERING': 0, 
+                                'CUED': 0
+                            };
+
+                            window.YT.players[1].onStateChange({
                                 data: 1
                             });
 
