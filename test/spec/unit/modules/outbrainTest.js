@@ -5,7 +5,7 @@ define([
 ) {
     'use strict';
 
-    describe.skip('ArticleTemplates/assets/js/modules/outbrain', function () {
+    describe('ArticleTemplates/assets/js/modules/outbrain', function () {
         var sandbox,
             container,
             injector;

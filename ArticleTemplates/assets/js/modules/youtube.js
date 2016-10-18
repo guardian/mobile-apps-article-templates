@@ -1,7 +1,4 @@
-/*
- Module: youtube.js
- Description: handle youtube iframe embeds.
- */
+/*global window,define,YT */
 
 define(function() {
     'use strict';
@@ -87,7 +84,7 @@ define(function() {
                     player: setupPlayer(video.id),
                     iframe: video,
                     placeholder: video.parentNode.getElementsByClassName('youtube-media__placeholder')[0]
-                }
+                };
             }
         }
     }
@@ -141,7 +138,7 @@ define(function() {
         if (currentTime === 0) {
             trackEvent({
                 id: id,
-                eventType: "video:start"
+                eventType: 'video:start'
             });
         }
     }
@@ -156,7 +153,7 @@ define(function() {
 
         trackEvent({
             id: id,
-            eventType: "video:end"
+            eventType: 'video:end'
         });
     }
 
@@ -186,18 +183,18 @@ define(function() {
             percentPlayed % 25 === 0) {
             trackEvent({
                 id: id,
-                eventType: "video:content:" + percentPlayed
+                eventType: 'video:content:' + percentPlayed
             });
         }
     }
 
     function trackEvent(evt) {
-        // console.log('*** trackEvent', evt);
-
-        if (GU.opts.platform === 'android') {
-
+        if (GU.opts.platform === 'android' &&
+            window.GuardianJSInterface &&
+            window.GuardianJSInterface.trackAction) {
+            window.GuardianJSInterface.trackAction('youtube', evt);
         } else {
-
+            GU.util.signalDevice('youtube/' + JSON.stringify(evt));
         }
     }
 

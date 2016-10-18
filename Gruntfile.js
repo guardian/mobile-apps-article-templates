@@ -209,6 +209,7 @@ module.exports = function(grunt) {
                         'ArticleTemplates/assets/js/modules/twitter.js',
                         'ArticleTemplates/assets/js/modules/cards.js',
                         'ArticleTemplates/assets/js/modules/outbrain.js',
+                        'ArticleTemplates/assets/js/modules/youtube.js',
                         'test/spec/unit/**/*.js'
                     ]
                 }

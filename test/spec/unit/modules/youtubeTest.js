@@ -5,7 +5,7 @@ define([
 ) {
     'use strict';
 
-    describe.only('ArticleTemplates/assets/js/modules/youtube', function () {
+    describe('ArticleTemplates/assets/js/modules/youtube', function () {
         this.timeout(15000);
 
         var scriptAdded,
@@ -59,7 +59,7 @@ define([
                 onReady: options.events.onReady,
                 onStateChange: options.events.onStateChange
             });
-        };
+        }
 
         Player.prototype = {
             playVideo: function () {},
@@ -81,6 +81,9 @@ define([
             window.GU = {
                 opts: {
                     platform: 'ios'
+                },
+                util: {
+                    signalDevice: sinon.spy()
                 }
             };
 
@@ -94,6 +97,10 @@ define([
                     'CUED': 0
                 },
                 Player: Player
+            };
+
+            window.GuardianJSInterface = {
+                trackAction: sinon.spy()
             };
             
             sandbox.stub(document.body, 'appendChild', function(scriptElement) {
@@ -137,6 +144,7 @@ define([
             delete window.GU;
             delete window.YT;
             delete window.onYouTubeIframeAPIReady;
+            delete window.GuardianJSInterface;
   
             sandbox.restore();
         });
@@ -232,162 +240,348 @@ define([
                 });
         });
 
-        it('handles onPlayerStateChange when PLAYING from start', function (done) {
-            injector
-                .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
-                    var videoWrapper = getVideoWrapper('video1');
+        describe('on iOS', function() {
+            it('handles onPlayerStateChange when PLAYING from start', function (done) {
+                injector
+                    .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
+                        var videoWrapper = getVideoWrapper('video1');
 
-                    container.appendChild(videoWrapper);
-                   
-                    youtube.init();
+                        container.appendChild(videoWrapper);
+                       
+                        youtube.init();
 
-                    setPlayerState('PLAYING', window.YT.players[0]);
-
-                    expect(Player.prototype.getCurrentTime).to.have.been.called;
-                    // TODO: test tracking call start made
-
-                    done();
-                });
-        });
-
-        it('handles onPlayerStateChange when PLAYING from PAUSED position', function (done) {
-            injector
-                .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
-                    var videoWrapper = getVideoWrapper('video1');
-
-                    container.appendChild(videoWrapper);
-                   
-                    youtube.init();
-
-                    // Play Video
-                    startVideo(videoWrapper, window.YT.players[0]);
-                    setPlayerState('PLAYING', window.YT.players[0]);
-
-                    setTimeout(function () {
-                        // Pause Video
-                        setPlayerState('PAUSED', window.YT.players[0]);
-                        // Restart Video
                         setPlayerState('PLAYING', window.YT.players[0]);
-                        // End video to kill progress tracker
-                        setPlayerState('ENDED', window.YT.players[0]);
 
                         expect(Player.prototype.getCurrentTime).to.have.been.called;
-                        // TODO: test tracking call start only made once for video1
+                        expect(window.GU.util.signalDevice).to.have.been.calledOnce;
+                        expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:start'}));
 
                         done();
-                    }, 500);
-                });
-        });
+                    });
+            });
 
-        it('handles onPlayerStateChange and tracks progress', function (done) {
-            injector
-                .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
-                    var videoWrapper = getVideoWrapper('video1');
+            it('handles onPlayerStateChange when PLAYING from PAUSED position', function (done) {
+                injector
+                    .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
+                        var videoWrapper = getVideoWrapper('video1');
 
-                    container.appendChild(videoWrapper);
-                   
-                    youtube.init();
+                        container.appendChild(videoWrapper);
+                       
+                        youtube.init();
 
-                    // Play video
-                    startVideo(videoWrapper, window.YT.players[0]);
-                    setPlayerState('PLAYING', window.YT.players[0]);
+                        // Play Video
+                        setPlayerState('PLAYING', window.YT.players[0]);
+                        startVideo(videoWrapper, window.YT.players[0]);
 
-                    setTimeout(function() {
-                        // End video to kill progress tracker
+                        setTimeout(function () {
+                            // Pause Video
+                            setPlayerState('PAUSED', window.YT.players[0]);
+
+                            // Restart Video
+                            setPlayerState('PLAYING', window.YT.players[0]);
+
+                            expect(Player.prototype.getCurrentTime).to.have.been.called;
+                            expect(window.GU.util.signalDevice).to.have.been.calledOnce;
+                            expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:start'}));
+                            
+                            // End video to kill progress tracker
+                            setPlayerState('ENDED', window.YT.players[0]);
+
+                            done();
+                        }, 500);
+                    });
+            });
+
+            it('handles onPlayerStateChange and tracks progress', function (done) {
+                injector
+                    .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
+                        var videoWrapper = getVideoWrapper('video1');
+
+                        container.appendChild(videoWrapper);
+                       
+                        youtube.init();
+
+                        // Play Video
+                        setPlayerState('PLAYING', window.YT.players[0]);
+                        startVideo(videoWrapper, window.YT.players[0]);
+
+                        setTimeout(function() {
+                            expect(Player.prototype.playVideo).to.have.been.calledOnce;
+                            expect(window.GU.util.signalDevice).to.have.been.called;
+                            expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:start'}));
+                            expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:25'}));
+
+                            // End video to kill progress tracker
+                            setPlayerState('ENDED', window.YT.players[0]);
+
+                            done();
+                        }, 8000);
+                    });
+            });
+
+            it('pauses video when other video begins and track new video', function (done) {
+                injector
+                    .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
+                        var videoWrapper1 = getVideoWrapper('video1'),
+                            videoWrapper2 = getVideoWrapper('video2');
+
+                        container.appendChild(videoWrapper1);
+                        container.appendChild(videoWrapper2);
+                       
+                        youtube.init();
+
+                        // Play Video1
+                        setPlayerState('PLAYING', window.YT.players[0]);
+                        startVideo(videoWrapper1, window.YT.players[0]);
+
+                        // Play Video2
+                        setPlayerState('PLAYING', window.YT.players[1]);
+                        startVideo(videoWrapper2, window.YT.players[1]);
+
+                        setTimeout(function () {
+                            // End video to kill progress tracker
+                            setPlayerState('ENDED', window.YT.players[1]);
+
+                            expect(window.GU.util.signalDevice).to.have.been.called;
+                            expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:start'}));
+                            expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video2', eventType:'video:start'}));
+                            expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video2', eventType:'video:content:25'}));
+                            expect(window.YT.players.length).to.eql(2);
+                            expect(Player.prototype.playVideo).to.have.been.calledTwice;
+                            expect(Player.prototype.pauseVideo).to.have.been.calledTwice;
+                            
+                            done();
+                        }, 8000);
+                    });
+            });
+
+            it('handles onPlayerStateChange when PAUSED', function (done) {
+                injector
+                    .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
+                        var videoWrapper = getVideoWrapper('video1');
+
+                        container.appendChild(videoWrapper);
+                       
+                        youtube.init();
+
+                        // Play video
+                        setPlayerState('PLAYING', window.YT.players[0]);
+                        startVideo(videoWrapper, window.YT.players[0]);
+
+                        // Pause video
+                        setPlayerState('PAUSED', window.YT.players[0]);
+
+                        setTimeout(function () {        
+                            expect(Player.prototype.playVideo).to.have.been.calledOnce;
+                            expect(window.GU.util.signalDevice).to.have.been.calledOnce;
+                            expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:start'}));
+                            
+                            // End video to kill progress tracker
+                            setPlayerState('ENDED', window.YT.players[0]);
+
+                            done();
+                        }, 8000);
+                    });
+            });
+
+            it('handles onPlayerStateChange when ENDED', function (done) {
+                injector
+                    .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
+                        var videoWrapper = getVideoWrapper('video1');
+
+                        videoWrapper.classList.add('hide-placeholder');
+                        videoWrapper.classList.add('fade-placeholder');
+
+                        container.appendChild(videoWrapper);
+                       
+                        youtube.init();
+
                         setPlayerState('ENDED', window.YT.players[0]);
 
-                        // TODO: test tracking start for video1
-                        expect(Player.prototype.playVideo).to.have.been.calledOnce;
-                        // TODO: test tracking of 25% progress of video1
+                        setTimeout(function () {
+                            expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(false);
+                            expect(videoWrapper.classList.contains('fade-placeholder')).to.eql(false);
+                            expect(window.GU.util.signalDevice).to.have.been.calledOnce;
+                            expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:end'}));
 
-                        done();
-                    }, 8000);
-                });
+                            done();
+                        }, 1500);
+                    });
+            });
         });
 
-        it('pauses video when other video begins and track new video', function (done) {
-            injector
-                .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
-                    var videoWrapper1 = getVideoWrapper('video1'),
-                        videoWrapper2 = getVideoWrapper('video2');
+        describe('on Android', function() {
+            beforeEach(function () {
+                window.GU.opts.platform = 'android';
+            });
 
-                    container.appendChild(videoWrapper1);
-                    container.appendChild(videoWrapper2);
-                   
-                    youtube.init();
+            it('handles onPlayerStateChange when PLAYING from start', function (done) {
+                injector
+                    .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
+                        var videoWrapper = getVideoWrapper('video1');
 
-                    startVideo(videoWrapper1, window.YT.players[0]);
-                    setPlayerState('PLAYING', window.YT.players[0]);
+                        container.appendChild(videoWrapper);
+                       
+                        youtube.init();
 
-                    startVideo(videoWrapper2, window.YT.players[1]);
-                    setPlayerState('PLAYING', window.YT.players[1]);
+                        setPlayerState('PLAYING', window.YT.players[0]);
 
-                    setTimeout(function () {
-                        // End video to kill progress tracker
-                        setPlayerState('ENDED', window.YT.players[1]);
+                        expect(Player.prototype.getCurrentTime).to.have.been.called;
+                        expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
+                        expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', {id:'video1', eventType:'video:start'});
 
-                        // TODO: test tracking start for video1
-                        // TODO: test tracking start for video2
-                        // TODO: test tracking of 25% progress for video2
-                        expect(window.YT.players.length).to.eql(2);
-                        expect(Player.prototype.playVideo).to.have.been.calledTwice;
-                        expect(Player.prototype.pauseVideo).to.have.been.calledTwice;
-                        
                         done();
-                    }, 8000);
-                });
-        });
+                    });
+            });
 
-        it('handles onPlayerStateChange when PAUSED', function (done) {
-            injector
-                .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
-                    var videoWrapper = getVideoWrapper('video1');
+            it('handles onPlayerStateChange when PLAYING from PAUSED position', function (done) {
+                injector
+                    .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
+                        var videoWrapper = getVideoWrapper('video1');
 
-                    container.appendChild(videoWrapper);
-                   
-                    youtube.init();
+                        container.appendChild(videoWrapper);
 
-                    // Play video
-                    startVideo(videoWrapper, window.YT.players[0]);
-                    setPlayerState('PLAYING', window.YT.players[0]);
-                    // Pause
-                    setPlayerState('PAUSED', window.YT.players[0]);
+                        youtube.init();
 
-                    setTimeout(function () {
-                        // End video to kill progress tracker
+                        // Play Video
+                        setPlayerState('PLAYING', window.YT.players[0]);
+                        startVideo(videoWrapper, window.YT.players[0]);
+
+                        setTimeout(function () {
+                            // Pause Video
+                            setPlayerState('PAUSED', window.YT.players[0]);
+                            
+                            // Restart Video
+                            setPlayerState('PLAYING', window.YT.players[0]);
+
+                            expect(Player.prototype.getCurrentTime).to.have.been.called;
+                            expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
+                            expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', {id:'video1', eventType:'video:start'});
+                            
+                            // End video to kill progress tracker
+                            setPlayerState('ENDED', window.YT.players[0]);
+
+                            done();
+                        }, 500);
+                    });
+            });
+
+            it('handles onPlayerStateChange and tracks progress', function (done) {
+                injector
+                    .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
+                        var videoWrapper = getVideoWrapper('video1');
+
+                        container.appendChild(videoWrapper);
+
+                        youtube.init();
+
+                        // Play Video
+                        setPlayerState('PLAYING', window.YT.players[0]);
+                        startVideo(videoWrapper, window.YT.players[0]);
+
+                        setTimeout(function() {
+                            expect(Player.prototype.playVideo).to.have.been.calledOnce;
+                            expect(window.GuardianJSInterface.trackAction).to.have.been.called;
+                            expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', {id:'video1', eventType:'video:start'});
+                            expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', {id:'video1', eventType:'video:content:25'});
+
+                            // End video to kill progress tracker
+                            setPlayerState('ENDED', window.YT.players[0]);
+
+                            done();
+                        }, 8000);
+                    });
+            });
+
+            it('pauses video when other video begins and track new video', function (done) {
+                injector
+                    .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
+                        var videoWrapper1 = getVideoWrapper('video1'),
+                            videoWrapper2 = getVideoWrapper('video2');
+
+                        container.appendChild(videoWrapper1);
+                        container.appendChild(videoWrapper2);
+                       
+                        youtube.init();
+
+                        // Play Video1
+                        setPlayerState('PLAYING', window.YT.players[0]);
+                        startVideo(videoWrapper1, window.YT.players[0]);
+
+                        // Play Video2
+                        setPlayerState('PLAYING', window.YT.players[1]);
+                        startVideo(videoWrapper2, window.YT.players[1]);
+
+                        setTimeout(function () {
+                            // End video to kill progress tracker
+                            setPlayerState('ENDED', window.YT.players[1]);
+
+                            expect(window.GuardianJSInterface.trackAction).to.have.been.called;
+                            expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', {id:'video1', eventType:'video:start'});
+                            expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', {id:'video2', eventType:'video:start'});
+                            expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', {id:'video2', eventType:'video:content:25'});
+                            expect(window.YT.players.length).to.eql(2);
+                            expect(Player.prototype.playVideo).to.have.been.calledTwice;
+                            expect(Player.prototype.pauseVideo).to.have.been.calledTwice;
+                            
+                            done();
+                        }, 8000);
+                    });
+            });
+
+            it('handles onPlayerStateChange when PAUSED', function (done) {
+                injector
+                    .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
+                        var videoWrapper = getVideoWrapper('video1');
+
+                        container.appendChild(videoWrapper);
+                       
+                        youtube.init();
+
+                        // Play video
+                        setPlayerState('PLAYING', window.YT.players[0]);
+                        startVideo(videoWrapper, window.YT.players[0]);
+
+                        // Pause video
+                        setPlayerState('PAUSED', window.YT.players[0]);
+
+                        setTimeout(function () {        
+                            expect(Player.prototype.playVideo).to.have.been.calledOnce;
+                            expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
+                            expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', {id:'video1', eventType:'video:start'});
+                            
+                            // End video to kill progress tracker
+                            setPlayerState('ENDED', window.YT.players[0]);
+
+                            done();
+                        }, 8000);
+                    });
+            });
+
+            it('handles onPlayerStateChange when ENDED', function (done) {
+                injector
+                    .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
+                        var videoWrapper = getVideoWrapper('video1');
+
+                        videoWrapper.classList.add('hide-placeholder');
+                        videoWrapper.classList.add('fade-placeholder');
+
+                        container.appendChild(videoWrapper);
+                       
+                        youtube.init();
+
                         setPlayerState('ENDED', window.YT.players[0]);
-                        
-                        // TODO: test tracking start for video1
-                        expect(Player.prototype.playVideo).to.have.been.calledOnce;
-                        // TODO: test tracking of 25% progress of video1 NOT called 
 
-                        done();
-                    }, 8000);
-                });
-        });
+                        setTimeout(function () {
+                            expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(false);
+                            expect(videoWrapper.classList.contains('fade-placeholder')).to.eql(false);
+                            expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
+                            expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', {id:'video1', eventType:'video:end'});
 
-        it('handles onPlayerStateChange when ENDED', function (done) {
-            injector
-                .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
-                    var videoWrapper = getVideoWrapper('video1');
-
-                    videoWrapper.classList.add('hide-placeholder');
-                    videoWrapper.classList.add('fade-placeholder');
-
-                    container.appendChild(videoWrapper);
-                   
-                    youtube.init();
-
-                    setPlayerState('ENDED', window.YT.players[0]);
-
-                    setTimeout(function () {
-                        expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(false);
-                        expect(videoWrapper.classList.contains('fade-placeholder')).to.eql(false);
-                        // TODO: test tracking end for video1
-
-                        done();
-                    }, 1500);
-                });
+                            done();
+                        }, 1500);
+                    });
+            });
         });
     });
 });
