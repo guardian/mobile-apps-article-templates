@@ -133,13 +133,16 @@ define(function() {
     }
 
     function onPlayerPlaying(id) {
-        var currentTime = Math.round(players[id].player.getCurrentTime())
+        var currentTime = Math.round(players[id].player.getCurrentTime());
 
         stopPlayers(id);
         setProgressTracker(id);
 
         if (currentTime === 0) {
-            console.log('*** track play', id);
+            trackEvent({
+                id: id,
+                eventType: "video:start"
+            });
         }
     }
 
@@ -147,11 +150,14 @@ define(function() {
         var placeholderParent = players[id].placeholder.parentNode;
 
         killProgressTracker(false, id);
-        
+
         placeholderParent.classList.remove('hide-placeholder');
         setTimeout(showPlaceholder.bind(null, placeholderParent), 1000);
-        
-        console.log('*** track end', id);
+
+        trackEvent({
+            id: id,
+            eventType: "video:end"
+        });
     }
 
     function showPlaceholder(placeholderParent) {
@@ -178,7 +184,20 @@ define(function() {
 
         if (percentPlayed > 0 && 
             percentPlayed % 25 === 0) {
-            console.log('*** track progress', percentPlayed, id);
+            trackEvent({
+                id: id,
+                eventType: "video:content:" + percentPlayed
+            });
+        }
+    }
+
+    function trackEvent(evt) {
+        // console.log('*** trackEvent', evt);
+
+        if (GU.opts.platform === 'android') {
+
+        } else {
+
         }
     }
 
