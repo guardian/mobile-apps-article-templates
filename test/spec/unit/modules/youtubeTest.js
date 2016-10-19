@@ -254,7 +254,7 @@ define([
 
                         expect(Player.prototype.getCurrentTime).to.have.been.called;
                         expect(window.GU.util.signalDevice).to.have.been.calledOnce;
-                        expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:start'}));
+                        expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
 
                         done();
                     });
@@ -282,7 +282,7 @@ define([
 
                             expect(Player.prototype.getCurrentTime).to.have.been.called;
                             expect(window.GU.util.signalDevice).to.have.been.calledOnce;
-                            expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:start'}));
+                            expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
                             
                             // End video to kill progress tracker
                             setPlayerState('ENDED', window.YT.players[0]);
@@ -308,7 +308,7 @@ define([
                         setTimeout(function() {
                             expect(Player.prototype.playVideo).to.have.been.calledOnce;
                             expect(window.GU.util.signalDevice).to.have.been.called;
-                            expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:start'}));
+                            expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
                             expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:25'}));
 
                             // End video to kill progress tracker
@@ -343,8 +343,8 @@ define([
                             setPlayerState('ENDED', window.YT.players[1]);
 
                             expect(window.GU.util.signalDevice).to.have.been.called;
-                            expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:start'}));
-                            expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video2', eventType:'video:start'}));
+                            expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
+                            expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video2', eventType:'video:content:start'}));
                             expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video2', eventType:'video:content:25'}));
                             expect(window.YT.players.length).to.eql(2);
                             expect(Player.prototype.playVideo).to.have.been.calledTwice;
@@ -374,7 +374,7 @@ define([
                         setTimeout(function () {        
                             expect(Player.prototype.playVideo).to.have.been.calledOnce;
                             expect(window.GU.util.signalDevice).to.have.been.calledOnce;
-                            expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:start'}));
+                            expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
                             
                             // End video to kill progress tracker
                             setPlayerState('ENDED', window.YT.players[0]);
@@ -402,7 +402,7 @@ define([
                             expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(false);
                             expect(videoWrapper.classList.contains('fade-placeholder')).to.eql(false);
                             expect(window.GU.util.signalDevice).to.have.been.calledOnce;
-                            expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:end'}));
+                            expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:end'}));
 
                             done();
                         }, 1500);
@@ -428,7 +428,7 @@ define([
 
                         expect(Player.prototype.getCurrentTime).to.have.been.called;
                         expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
-                        expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', {id:'video1', eventType:'video:start'});
+                        expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', {id:'video1', eventType:'video:content:start'});
 
                         done();
                     });
@@ -456,7 +456,7 @@ define([
 
                             expect(Player.prototype.getCurrentTime).to.have.been.called;
                             expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
-                            expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', {id:'video1', eventType:'video:start'});
+                            expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', {id:'video1', eventType:'video:content:start'});
                             
                             // End video to kill progress tracker
                             setPlayerState('ENDED', window.YT.players[0]);
@@ -482,7 +482,7 @@ define([
                         setTimeout(function() {
                             expect(Player.prototype.playVideo).to.have.been.calledOnce;
                             expect(window.GuardianJSInterface.trackAction).to.have.been.called;
-                            expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', {id:'video1', eventType:'video:start'});
+                            expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', {id:'video1', eventType:'video:content:start'});
                             expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', {id:'video1', eventType:'video:content:25'});
 
                             // End video to kill progress tracker
@@ -517,8 +517,8 @@ define([
                             setPlayerState('ENDED', window.YT.players[1]);
 
                             expect(window.GuardianJSInterface.trackAction).to.have.been.called;
-                            expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', {id:'video1', eventType:'video:start'});
-                            expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', {id:'video2', eventType:'video:start'});
+                            expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', {id:'video1', eventType:'video:content:start'});
+                            expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', {id:'video2', eventType:'video:content:start'});
                             expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', {id:'video2', eventType:'video:content:25'});
                             expect(window.YT.players.length).to.eql(2);
                             expect(Player.prototype.playVideo).to.have.been.calledTwice;
@@ -548,7 +548,7 @@ define([
                         setTimeout(function () {        
                             expect(Player.prototype.playVideo).to.have.been.calledOnce;
                             expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
-                            expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', {id:'video1', eventType:'video:start'});
+                            expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', {id:'video1', eventType:'video:content:start'});
                             
                             // End video to kill progress tracker
                             setPlayerState('ENDED', window.YT.players[0]);
@@ -576,7 +576,7 @@ define([
                             expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(false);
                             expect(videoWrapper.classList.contains('fade-placeholder')).to.eql(false);
                             expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
-                            expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', {id:'video1', eventType:'video:end'});
+                            expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', {id:'video1', eventType:'video:content:end'});
 
                             done();
                         }, 1500);

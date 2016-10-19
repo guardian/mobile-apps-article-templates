@@ -138,7 +138,7 @@ define(function() {
         if (currentTime === 0) {
             trackEvent({
                 id: id,
-                eventType: 'video:start'
+                eventType: 'video:content:start'
             });
         }
     }
@@ -153,7 +153,7 @@ define(function() {
 
         trackEvent({
             id: id,
-            eventType: 'video:end'
+            eventType: 'video:content:end'
         });
     }
 
