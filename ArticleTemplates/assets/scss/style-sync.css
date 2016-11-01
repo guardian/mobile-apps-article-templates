@@ -626,11 +626,12 @@ figure figcaption {
       line-height: 2.2rem; } }
 
 .figure-wide {
-  margin: 12px 0px; }
+  margin: 12px 0px;
+  float: left; }
+  .figure-wide .figure__inner {
+    background: #dcdad5; }
   .main-media .figure-wide {
     margin: 0; }
-  .figure-wide img {
-    height: auto; }
   @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .figure-wide figcaption {
       padding-right: 23.94366%; } }
@@ -656,7 +657,7 @@ figure figcaption {
 .figure--thumbnail-with-caption img,
 .figure-wide img {
   width: 100%;
-  height: auto; }
+  height: 100%; }
 .figure--thumbnail figcaption,
 .figure--thumbnail-with-caption figcaption,
 .figure-wide figcaption {
@@ -687,7 +688,8 @@ figure figcaption {
   background: #f6f6f6; }
   .figure--thumbnail-with-caption .figure__inner {
     width: 100%;
-    display: block; }
+    display: block;
+    background: #dcdad5; }
   .figure--thumbnail-with-caption .element-image__credit {
     display: block; }
   .figure--thumbnail-with-caption figcaption {
