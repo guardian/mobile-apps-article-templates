@@ -15,9 +15,7 @@
             qwery: '../../../node_modules/qwery/qwery',
             fence: '../../../node_modules/fence/fence',
             smoothScroll: '../../../node_modules/smooth-scroll/dist/js/smooth-scroll',
-            raven: '../../../node_modules/raven-js/dist/raven',
-            iscroll: 'components/iscroll',
-            lodash: 'components/lodash'
+            iscroll: 'components/iscroll'
         },
         shim: {
             iscroll: {
