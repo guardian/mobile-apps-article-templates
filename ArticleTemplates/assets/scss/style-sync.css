@@ -626,8 +626,7 @@ figure figcaption {
       line-height: 2.2rem; } }
 
 .figure-wide {
-  margin: 12px 0px;
-  float: left; }
+  margin: 12px 0px; }
   .figure-wide .figure__inner {
     background: #dcdad5; }
   .main-media .figure-wide {
@@ -4666,6 +4665,23 @@ body.the-minute.tone--usMinute.advert-config--tablet .article--liveblog .article
   .article--immersive .article__body .element-placeholder {
     margin: 12px -12px;
     width: auto; }
+    @media all and (max-width: 40.62em) {
+      .article--standard .article__body .figure-wide,
+      .article--standard .article__body .element-video,
+      .article--standard .article__body .element-placeholder,
+      .article--comment .article__body .figure-wide,
+      .article--comment .article__body .element-video,
+      .article--comment .article__body .element-placeholder,
+      .article--feature .article__body .figure-wide,
+      .article--feature .article__body .element-video,
+      .article--feature .article__body .element-placeholder,
+      .article--audio .article__body .figure-wide,
+      .article--audio .article__body .element-video,
+      .article--audio .article__body .element-placeholder,
+      .article--immersive .article__body .figure-wide,
+      .article--immersive .article__body .element-video,
+      .article--immersive .article__body .element-placeholder {
+        clear: left; } }
     @media all and (min-width: 40.63em) {
       .article--standard .article__body .figure-wide,
       .article--standard .article__body .element-video,
@@ -4682,6 +4698,7 @@ body.the-minute.tone--usMinute.advert-config--tablet .article--liveblog .article
       .article--immersive .article__body .figure-wide,
       .article--immersive .article__body .element-video,
       .article--immersive .article__body .element-placeholder {
+        float: left;
         width: 135%; } }
     @media all and (min-width: 75em) {
       .article--standard .article__body .figure-wide,
