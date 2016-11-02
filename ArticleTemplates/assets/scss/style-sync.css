@@ -2256,58 +2256,68 @@ Display an embedded element. Element embeds are typically shown as figures, and 
     top: 0;
     left: 0; }
 
+.element-youtube,
 .element-placeholder {
   width: 100%; }
+  .element-youtube .element-placeholder__button,
   .element-placeholder .element-placeholder__button {
     padding: 8px;
     position: absolute;
     bottom: 0;
     z-index: 2; }
+    .element-youtube .element-placeholder__button .touchpoint__button,
     .element-placeholder .element-placeholder__button .touchpoint__button {
       color: #333;
       background-color: #fb0; }
+      .element-youtube .element-placeholder__button .touchpoint__button:active,
       .element-placeholder .element-placeholder__button .touchpoint__button:active {
         color: #fb0;
         background-color: #333; }
+    .element-youtube .element-placeholder__button .touchpoint__label,
     .element-placeholder .element-placeholder__button .touchpoint__label {
       color: #fb0;
       text-shadow: 0 0 4px rgba(0, 0, 0, 0.5); }
+  .element-youtube:active .touchpoint__button,
   .element-placeholder:active .touchpoint__button {
     color: #fb0;
     background-color: #333; }
+  .element-youtube .element__inner,
   .element-placeholder .element__inner {
     padding-bottom: 56.25%; }
-    .element-placeholder .element__inner .youtube-media__placeholder {
-      z-index: 1;
-      position: absolute;
-      height: 100%;
+
+.element-youtube {
+  padding-bottom: 0; }
+  .element-youtube .element__inner .youtube-media__placeholder {
+    z-index: 1;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+    overflow: hidden; }
+    .element-youtube .element__inner .youtube-media__placeholder .youtube-media__touchpoint {
       width: 100%;
-      transition: opacity .25s ease-in-out;
-      -webkit-transition: opacity .25s ease-in-out;
-      overflow: hidden; }
-      .element-placeholder .element__inner .youtube-media__placeholder .youtube-media__touchpoint {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        opacity: 0;
-        transition: opacity .25s ease-in-out;
-        -webkit-transition: opacity .25s ease-in-out; }
-      .element-placeholder .element__inner .youtube-media__placeholder.fade-touchpoint .youtube-media__touchpoint {
-        opacity: 1; }
-    .element-placeholder .element__inner .youtube-media {
+      height: 100%;
+      position: absolute;
       opacity: 0;
-      z-index: 0;
-      position: absolute;
-      height: 100%;
-      width: 100%;
       transition: opacity .25s ease-in-out;
       -webkit-transition: opacity .25s ease-in-out; }
-    .element-placeholder .element__inner.fade-placeholder .youtube-media__placeholder {
-      opacity: 0; }
-    .element-placeholder .element__inner.fade-placeholder .youtube-media {
+    .element-youtube .element__inner .youtube-media__placeholder.fade-touchpoint .youtube-media__touchpoint {
       opacity: 1; }
-    .element-placeholder .element__inner.hide-placeholder .youtube-media__placeholder {
-      display: none; }
+  .element-youtube .element__inner .youtube-media {
+    opacity: 0;
+    z-index: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out; }
+  .element-youtube .element__inner.fade-placeholder .youtube-media__placeholder {
+    opacity: 0; }
+  .element-youtube .element__inner.fade-placeholder .youtube-media {
+    opacity: 1; }
+  .element-youtube .element__inner.hide-placeholder .youtube-media__placeholder {
+    display: none; }
 
 .offline .element-audio,
 .offline .element-embed,

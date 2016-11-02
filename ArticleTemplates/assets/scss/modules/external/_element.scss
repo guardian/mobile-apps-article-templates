@@ -93,7 +93,8 @@ Display an embedded element. Element embeds are typically shown as figures, and 
     }
 }
 
-// Video placeholder
+// Video and Youtube atom placeholder
+.element-youtube,
 .element-placeholder {
     width: 100%;
 
@@ -128,8 +129,14 @@ Display an embedded element. Element embeds are typically shown as figures, and 
 
     .element__inner {
         padding-bottom: 56.25%; // Maintain 16:9 video ratio
+    }
+}
 
-        // youtube media atom styles
+// Youtube atom
+.element-youtube {
+    padding-bottom: 0;
+
+    .element__inner {
         .youtube-media__placeholder {
             z-index: 1;
             position: absolute;
