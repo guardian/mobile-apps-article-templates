@@ -21,9 +21,6 @@ module.exports = function(grunt) {
             ios: {
                 sign: '',
                 provisioning: ''
-            },
-            sentry: {
-                dsn: null
             }
         };
     }
@@ -40,14 +37,6 @@ module.exports = function(grunt) {
                         mainConfigFile: 'ArticleTemplates/assets/js/main.js',
                         dir: 'ArticleTemplates/assets/build',
                         optimize: 'uglify2',
-                        uglify2: {
-                            compress: {
-                                global_defs: {
-                                    GRUNT_LAST_GIT_COMMIT: out.replace(/\n/,''),
-                                    GRUNT_SENTRY_DSN: grunt.option('sentry') ? config.sentry.dsn : null
-                                }
-                            }
-                        },
                         generateSourceMaps: false,
                         preserveLicenseComments: false,
                         useSourceUrl: false,

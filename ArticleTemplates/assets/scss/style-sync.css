@@ -627,10 +627,10 @@ figure figcaption {
 
 .figure-wide {
   margin: 12px 0px; }
+  .figure-wide .figure__inner {
+    background: #dcdad5; }
   .main-media .figure-wide {
     margin: 0; }
-  .figure-wide img {
-    height: auto; }
   @media all and (min-width: 40.63em) and (max-width: 56.24em) {
     .figure-wide figcaption {
       padding-right: 23.94366%; } }
@@ -656,7 +656,7 @@ figure figcaption {
 .figure--thumbnail-with-caption img,
 .figure-wide img {
   width: 100%;
-  height: auto; }
+  height: 100%; }
 .figure--thumbnail figcaption,
 .figure--thumbnail-with-caption figcaption,
 .figure-wide figcaption {
@@ -687,7 +687,8 @@ figure figcaption {
   background: #f6f6f6; }
   .figure--thumbnail-with-caption .figure__inner {
     width: 100%;
-    display: block; }
+    display: block;
+    background: #dcdad5; }
   .figure--thumbnail-with-caption .element-image__credit {
     display: block; }
   .figure--thumbnail-with-caption figcaption {
@@ -4705,6 +4706,23 @@ body.the-minute.tone--usMinute.advert-config--tablet .article--liveblog .article
   .article--immersive .article__body .element-placeholder {
     margin: 12px -12px;
     width: auto; }
+    @media all and (max-width: 40.62em) {
+      .article--standard .article__body .figure-wide,
+      .article--standard .article__body .element-video,
+      .article--standard .article__body .element-placeholder,
+      .article--comment .article__body .figure-wide,
+      .article--comment .article__body .element-video,
+      .article--comment .article__body .element-placeholder,
+      .article--feature .article__body .figure-wide,
+      .article--feature .article__body .element-video,
+      .article--feature .article__body .element-placeholder,
+      .article--audio .article__body .figure-wide,
+      .article--audio .article__body .element-video,
+      .article--audio .article__body .element-placeholder,
+      .article--immersive .article__body .figure-wide,
+      .article--immersive .article__body .element-video,
+      .article--immersive .article__body .element-placeholder {
+        clear: left; } }
     @media all and (min-width: 40.63em) {
       .article--standard .article__body .figure-wide,
       .article--standard .article__body .element-video,
@@ -4721,6 +4739,7 @@ body.the-minute.tone--usMinute.advert-config--tablet .article--liveblog .article
       .article--immersive .article__body .figure-wide,
       .article--immersive .article__body .element-video,
       .article--immersive .article__body .element-placeholder {
+        float: left;
         width: 135%; } }
     @media all and (min-width: 75em) {
       .article--standard .article__body .figure-wide,

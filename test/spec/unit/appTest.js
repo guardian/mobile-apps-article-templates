@@ -10,7 +10,6 @@ define([
             sandbox;
 
         var domReadyMock,
-            monitorMock,
             adsMock, 
             utilMock;
 
@@ -18,10 +17,6 @@ define([
             sandbox = sinon.sandbox.create();
             injector = new Squire();
             domReadyMock = sinon.spy();
-            monitorMock = {
-                init: sinon.spy(),
-                setContext: sinon.spy()
-            };
             adsMock = {
                 init: sinon.spy()
             };
@@ -61,7 +56,6 @@ define([
                 });
 
                 afterEach(function () {
-                    expect(monitorMock.init).to.have.been.calledOnce;
                     expect(adsMock.init).to.have.been.calledOnce;
                 
                     require = requireTemp;
@@ -72,7 +66,6 @@ define([
                 it('initialises article if GU.opts.contentType is article', function (done) {
                     injector
                         .mock('domReady', domReadyMock)
-                        .mock('modules/monitor', monitorMock)
                         .mock('modules/ads', adsMock)
                         .mock('modules/util', utilMock)
                         .require(['ArticleTemplates/assets/js/app'], function (app) {
@@ -84,8 +77,6 @@ define([
 
                             app.init();
 
-                            expect(monitorMock.setContext).to.have.been.calledOnce;
-                            expect(monitorMock.setContext).to.have.been.calledWith('article', dummyModule.init);
                             expect(adsMock.init).to.have.been.calledWith({
                                 adsEnabled: true,
                                 adsConfig: 'xxx',
@@ -100,7 +91,6 @@ define([
                 it('initialises liveblog if GU.opts.contentType is liveblog', function (done) {
                     injector
                         .mock('domReady', domReadyMock)
-                        .mock('modules/monitor', monitorMock)
                         .mock('modules/ads', adsMock)
                         .mock('modules/util', utilMock)
                         .require(['ArticleTemplates/assets/js/app'], function (app) {
@@ -109,11 +99,10 @@ define([
                             };
 
                             GU.opts.contentType = 'liveblog';
+                            GU.opts.isMinute = '';
 
                             app.init();
 
-                            expect(monitorMock.setContext).to.have.been.calledOnce;
-                            expect(monitorMock.setContext).to.have.been.calledWith('liveblog', dummyModule.init);
                             expect(adsMock.init).to.have.been.calledWith({
                                 adsEnabled: true,
                                 adsConfig: 'xxx',
@@ -125,10 +114,35 @@ define([
                         });
                 });
 
+                it('set adsType to default if liveblog and GU.opts.isMinute is truthy', function (done) {
+                    injector
+                        .mock('domReady', domReadyMock)
+                        .mock('modules/ads', adsMock)
+                        .mock('modules/util', utilMock)
+                        .require(['ArticleTemplates/assets/js/app'], function (app) {
+                            require = function(module, next) {
+                                next(dummyModule);
+                            };
+
+                            GU.opts.contentType = 'liveblog';
+                            GU.opts.isMinute = 'the-minute';
+
+                            app.init();
+
+                            expect(adsMock.init).to.have.been.calledWith({
+                                adsEnabled: true,
+                                adsConfig: 'xxx',
+                                adsType: 'default',
+                                mpuAfterParagraphs: 0
+                            });
+
+                            done();
+                        });
+                });
+
                 it('initialises audio if GU.opts.contentType is audio', function (done) {
                     injector
                         .mock('domReady', domReadyMock)
-                        .mock('modules/monitor', monitorMock)
                         .mock('modules/ads', adsMock)
                         .mock('modules/util', utilMock)
                         .require(['ArticleTemplates/assets/js/app'], function (app) {
@@ -140,8 +154,6 @@ define([
 
                             app.init();
 
-                            expect(monitorMock.setContext).to.have.been.calledOnce;
-                            expect(monitorMock.setContext).to.have.been.calledWith('audio', dummyModule.init);
                             expect(adsMock.init).to.have.been.calledWith({
                                 adsEnabled: true,
                                 adsConfig: 'xxx',
@@ -156,7 +168,6 @@ define([
                 it('initialises gallery if GU.opts.contentType is gallery', function (done) {
                     injector
                         .mock('domReady', domReadyMock)
-                        .mock('modules/monitor', monitorMock)
                         .mock('modules/ads', adsMock)
                         .mock('modules/util', utilMock)
                         .require(['ArticleTemplates/assets/js/app'], function (app) {
@@ -168,8 +179,6 @@ define([
 
                             app.init();
 
-                            expect(monitorMock.setContext).to.have.been.calledOnce;
-                            expect(monitorMock.setContext).to.have.been.calledWith('gallery', dummyModule.init);
                             expect(adsMock.init).to.have.been.calledWith({
                                 adsEnabled: true,
                                 adsConfig: 'xxx',
@@ -184,7 +193,6 @@ define([
                 it('initialises football if GU.opts.contentType is football', function (done) {
                     injector
                         .mock('domReady', domReadyMock)
-                        .mock('modules/monitor', monitorMock)
                         .mock('modules/ads', adsMock)
                         .mock('modules/util', utilMock)
                         .require(['ArticleTemplates/assets/js/app'], function (app) {
@@ -196,8 +204,6 @@ define([
 
                             app.init();
 
-                            expect(monitorMock.setContext).to.have.been.calledOnce;
-                            expect(monitorMock.setContext).to.have.been.calledWith('football', dummyModule.init);
                             expect(adsMock.init).to.have.been.calledWith({
                                 adsEnabled: true,
                                 adsConfig: 'xxx',
@@ -212,7 +218,6 @@ define([
                 it('initialises cricket if GU.opts.contentType is cricket', function (done) {
                     injector
                         .mock('domReady', domReadyMock)
-                        .mock('modules/monitor', monitorMock)
                         .mock('modules/ads', adsMock)
                         .mock('modules/util', utilMock)
                         .require(['ArticleTemplates/assets/js/app'], function (app) {
@@ -224,8 +229,6 @@ define([
 
                             app.init();
 
-                            expect(monitorMock.setContext).to.have.been.calledOnce;
-                            expect(monitorMock.setContext).to.have.been.calledWith('cricket', dummyModule.init);
                             expect(adsMock.init).to.have.been.calledWith({
                                 adsEnabled: true,
                                 adsConfig: 'xxx',
@@ -240,7 +243,6 @@ define([
                 it('initialises common if GU.opts.contentType is interactive', function (done) {
                     injector
                         .mock('domReady', domReadyMock)
-                        .mock('modules/monitor', monitorMock)
                         .mock('modules/ads', adsMock)
                         .mock('modules/util', utilMock)
                         .require(['ArticleTemplates/assets/js/app'], function (app) {
@@ -252,8 +254,6 @@ define([
 
                             app.init();
 
-                            expect(monitorMock.setContext).to.have.been.calledOnce;
-                            expect(monitorMock.setContext).to.have.been.calledWith('common', dummyModule.init);
                             expect(adsMock.init).to.have.been.calledWith({
                                 adsEnabled: true,
                                 adsConfig: 'xxx',
