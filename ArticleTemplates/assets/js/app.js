@@ -1,11 +1,9 @@
 define([
     'domReady',
-    'modules/monitor',
     'modules/ads',
     'modules/util'
 ], function(
     domReady,
-    monitor,
     Ads,
     util
 ) {
@@ -16,39 +14,36 @@ define([
         domReady(onDomReady);
     }
 
-    function initLayout(layoutName, layoutObj) {
-        monitor.setContext(layoutName, layoutObj.init);
+    function initLayout(layoutObj) {
+        layoutObj.init();
     }
         
     function onDomReady() {
         var contentType = GU.opts.contentType;
 
-        // monitoring
-        monitor.init();
-
         // ads positioning
         Ads.init({
             adsEnabled: (GU.opts.adsEnabled && GU.opts.adsEnabled === 'true') || (GU.opts.adsEnabled && GU.opts.adsEnabled.indexOf('mpu') !== -1),
             adsConfig: GU.opts.adsConfig,
-            adsType: GU.opts.contentType === 'liveblog' && !document.body.classList.contains('the-minute') ? 'liveblog' : 'default',
+            adsType: GU.opts.contentType === 'liveblog' && !GU.opts.isMinute ? 'liveblog' : 'default',
             mpuAfterParagraphs: GU.opts.mpuAfterParagraphs
         });
 
         // other article-specific functions
         if (contentType === 'article') {
-            require(['article'], initLayout.bind(null, 'article'));
+            require(['article'], initLayout);
         } else if (contentType === 'liveblog') {
-            require(['liveblog'], initLayout.bind(null, 'liveblog'));
+            require(['liveblog'], initLayout);
         } else if (contentType === 'audio') {
-            require(['audio'], initLayout.bind(null, 'audio'));
+            require(['audio'], initLayout);
         } else if (contentType === 'gallery') {
-            require(['gallery'], initLayout.bind(null, 'gallery'));
+            require(['gallery'], initLayout);
         } else if (contentType === 'football') {
-            require(['football'], initLayout.bind(null, 'football'));
+            require(['football'], initLayout);
         } else if (contentType === 'cricket') {
-            require(['cricket'], initLayout.bind(null, 'cricket'));
+            require(['cricket'], initLayout);
         } else {
-            require(['bootstraps/common'], initLayout.bind(null, 'common'));
+            require(['bootstraps/common'], initLayout);
         }
     }
 
