@@ -1273,7 +1273,7 @@ Can also be displayed with the caption initially hidden:
       padding: 0;
       position: relative;
       width: 620px; }
-      .main-media figure.element.element-video {
+      .main-media figure.element.element-video:not(.element-youtube) {
         padding-bottom: 350px; }
     .main-media .main-media__caption {
       border: none;
@@ -4781,11 +4781,11 @@ body.the-minute.tone--usMinute.advert-config--tablet .article--liveblog .article
       .article--immersive .article__body .element-interactive {
         width: calc(131.94444% - 12px); } }
   @media all and (min-width: 40.63em) {
-    .article--standard .article__body .element-video,
-    .article--comment .article__body .element-video,
-    .article--feature .article__body .element-video,
-    .article--audio .article__body .element-video,
-    .article--immersive .article__body .element-video {
+    .article--standard .article__body .element-video:not(.element-youtube),
+    .article--comment .article__body .element-video:not(.element-youtube),
+    .article--feature .article__body .element-video:not(.element-youtube),
+    .article--audio .article__body .element-video:not(.element-youtube),
+    .article--immersive .article__body .element-video:not(.element-youtube) {
       padding-bottom: 75.375%; } }
 .article--standard .aside,
 .article--comment .aside,
