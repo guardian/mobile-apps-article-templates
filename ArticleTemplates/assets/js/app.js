@@ -42,6 +42,8 @@ define([
             require(['football'], initLayout);
         } else if (contentType === 'cricket') {
             require(['cricket'], initLayout);
+        } else if (contentType === 'video') {
+            require(['video'], initLayout);
         } else {
             require(['bootstraps/common'], initLayout);
         }

@@ -49,6 +49,7 @@ module.exports = function(grunt) {
                             { name: 'football' },
                             { name: 'gallery' },
                             { name: 'liveblog' },
+                            { name: 'video' },
                             { name: 'bootstraps/common'}
                         ]
                     }
