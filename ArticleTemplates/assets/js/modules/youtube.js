@@ -5,17 +5,17 @@ define(function() {
 
     var videos,
         players = {},
-        progressTracker = {}, 
+        progressTracker = {},
         scriptReady = false;
 
 
     var STATES = {
-        'ENDED': onPlayerEnded, 
-        'PLAYING': onPlayerPlaying, 
-        'PAUSED': onPlayerPaused, 
-        'BUFFERING': null, 
+        'ENDED': onPlayerEnded,
+        'PLAYING': onPlayerPlaying,
+        'PAUSED': onPlayerPaused,
+        'BUFFERING': null,
         'CUED': null
-    }; 
+    };
 
     function ready() {
         checkForVideos();
@@ -28,7 +28,7 @@ define(function() {
     }
 
     function killProgressTracker(force, id) {
-        if (progressTracker.tracker && 
+        if (progressTracker.tracker &&
             (force || id === progressTracker.id)) {
             clearInterval(progressTracker.tracker);
             progressTracker = {};
@@ -179,7 +179,7 @@ define(function() {
         var currentTime = players[id].player.getCurrentTime(),
             percentPlayed = Math.round(((currentTime / players[id].duration) * 100));
 
-        if (percentPlayed > 0 && 
+        if (percentPlayed > 0 &&
             percentPlayed % 25 === 0) {
             trackEvent({
                 id: id,
@@ -192,7 +192,7 @@ define(function() {
         if (GU.opts.platform === 'android' &&
             window.GuardianJSInterface &&
             window.GuardianJSInterface.trackAction) {
-            window.GuardianJSInterface.trackAction('youtube', evt);
+            window.GuardianJSInterface.trackAction('youtube', JSON.stringify(evt));
         } else {
             GU.util.signalDevice('youtube/' + JSON.stringify(evt));
         }
