@@ -38,13 +38,13 @@ figure {
 .figure-wide {
     margin: base-px(1, 0);
 
+    .figure__inner {
+        background: color(shade-4);
+    }
+
     //for when these are displayed in the main media area (at the top we don't need these margins)
     .main-media & {
         margin: 0;
-    }
-
-    img {
-        height: auto;
     }
 
     figcaption {
@@ -88,7 +88,7 @@ figure {
 .figure-wide {
     img {
         width: 100%;
-        height: auto;
+        height: 100%;
     }
 
     figcaption {
@@ -132,6 +132,7 @@ figure {
     .figure__inner {
         width: 100%;
         display: block;
+        background: color(shade-4);
     }
 
     .element-image__credit {
