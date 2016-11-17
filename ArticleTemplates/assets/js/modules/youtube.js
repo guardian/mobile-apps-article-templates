@@ -4,21 +4,23 @@ define(function() {
     'use strict';
 
     var videos,
+        stateHandlers,
         players = {},
         progressTracker = {},
         scriptReady = false;
 
-
-    var STATES = {
-        'ENDED': onPlayerEnded,
-        'PLAYING': onPlayerPlaying,
-        'PAUSED': onPlayerPaused,
-        'BUFFERING': null,
-        'CUED': null
-    };
-
     function ready() {
+        setStateHandlers();
         checkForVideos();
+    }
+
+    function setStateHandlers() {
+        // TODO: Add check if not android or doesn't support native youtube plays
+        stateHandlers = {
+            'ENDED': onPlayerEnded,
+            'PLAYING': onPlayerPlaying,
+            'PAUSED': onPlayerPaused
+        };
     }
 
     function setProgressTracker(id) {
@@ -120,12 +122,12 @@ define(function() {
     }
 
     function onPlayerStateChange(id, event) {
-        Object.keys(STATES).forEach(checkState.bind(null, id, event.data));
+        Object.keys(stateHandlers).forEach(checkState.bind(null, id, event.data));
     }
 
-    function checkState(id, state, status) {
-        if (state === window.YT.PlayerState[status] && STATES[status]) {
-            STATES[status](id);
+    function checkState(id, state, stateHandler) {
+        if (state === window.YT.PlayerState[stateHandler]) {
+            stateHandlers[stateHandler](id);
         }
     }
 
