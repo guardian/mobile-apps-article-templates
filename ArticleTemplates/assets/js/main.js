@@ -14,8 +14,7 @@
             fastClick: '../../../node_modules/fastclick/lib/fastclick',
             qwery: '../../../node_modules/qwery/qwery',
             fence: '../../../node_modules/fence/fence',
-            smoothScroll: '../../../node_modules/smooth-scroll/dist/js/smooth-scroll',
-            iscroll: 'components/iscroll'
+            smoothScroll: '../../../node_modules/smooth-scroll/dist/js/smooth-scroll'
         },
         shim: {
             d3: {
