@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
 
     require('load-grunt-tasks')(grunt);
-    
+
     config = {};
 
     try {
@@ -93,7 +93,7 @@ module.exports = function(grunt) {
                     'ArticleTemplates/assets/scss/style-async.css':  'ArticleTemplates/assets/scss/style-async.scss',
                     'ArticleTemplates/assets/scss/style-sync.css':  'ArticleTemplates/assets/scss/style-sync.scss',
                     'test/unit/test.css':  'ArticleTemplates/assets/scss/test.scss'
-                } 
+                }
             },
             doc: {
                 files: {
@@ -123,20 +123,6 @@ module.exports = function(grunt) {
                 'ArticleTemplates/assets/scss/**/*.scss',
             ]
         },
-        // hologram: {
-        //     doc: {
-        //         options: {
-        //             config: 'hologram.yml'
-        //         }
-        //     }
-        // },
-        hologram: {
-            generate: {
-                options: {
-                    config: 'hologram.yml'
-                }
-            }
-        },
         // jshint
         jshint: {
             options: {
@@ -144,7 +130,7 @@ module.exports = function(grunt) {
                 force: true
             },
             uses_defaults: [
-                'Gruntfile.js', 
+                'Gruntfile.js',
                 'ArticleTemplates/assets/js/{bootstraps, modules}/*.js'
             ],
             with_overrides: {
@@ -345,11 +331,11 @@ module.exports = function(grunt) {
     grunt.registerTask('build', ['buildJS', 'buildCSS']);
 
     grunt.registerTask('deploy', ['build','shell:ziptemplates', 'shell:deployandroid']);
-    
+
     grunt.registerTask('apk', ['build', 'rsync', 'shell:android']);
-    
+
     grunt.registerTask('ipa', ['build', 'rsync', 'shell:ios']);
-    
+
     grunt.registerTask('installer', ['build', 'rsync', 'shell:ios', 'shell:android']);
 
     grunt.registerTask('default', 'watch');

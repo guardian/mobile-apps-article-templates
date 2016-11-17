@@ -5,7 +5,7 @@ Article templates used within the Guardian’s next-generation iOS and Android a
 * A Mac or Linux PC.
 * [brew](http://brew.sh/) as a package manager.
 * [rbenv](https://github.com/sstephenson/rbenv). Install it using brew `brew install rbenv ruby-build`. Remember to add `eval "$(rbenv init -)"` to `~/.profile`.
-* [NVM](https://github.com/creationix/nvm). 
+* [NVM](https://github.com/creationix/nvm).
 * [NodeJS](http://nodejs.org/). Install using nvm: `nvm install v0.12.5`. Remember to add `nvm use v0.12.5` to `~/.profile`.
 * [Grunt](http://gruntjs.com/). Install using `npm install -g grunt grunt-cli`.
 * ImageMagick and PhantomJS. Install using brew: `brew install phantomjs imagemagick`.
@@ -13,7 +13,7 @@ Article templates used within the Guardian’s next-generation iOS and Android a
 ## Usage
 * checkout the project in a separate directory, outside the iOs and the Android app.
 * run `rbenv install && gem install bundler && source ~/.profile`.
-* run `npm install`. 
+* run `npm install`.
 * run `bundle install`.
 * copy config.sample.js to config.js and fill in the details
     * `base.android` is the 'ArticleTemplate' path within the Android app, eg: `'/Users/sandropaganotti/Projects/guardian-app/android-news-app/android-news-app/src/debug/assets/templatesSubmodule/ArticleTemplates/'`
@@ -26,7 +26,7 @@ Article templates used within the Guardian’s next-generation iOS and Android a
         * read the (very long) output log, at the end there are two rows `Signing Identity:` and `Provisioning Profile:`
         * use the value of `Signing Identity:` for `ios.sign`
         * look on your hard drive for a file named after the `Provisioning Profile:` - the part between the brakets, eg: if your `Provisioning Profile:` value is (`123456-3136-4783-95e8-ac71ca306f46`) you need to look for a file named `123456-3136-4783-95e8-ac71ca306f46.mobileprovision` eg: `/Users/sandropaganotti/Library/MobileDevice/Provisioning Profiles/123456-3136-4783-95e8-ac71ca306f46.mobileprovision` and use that path for the `ios.provisioning`
-* run `grunt` 
+* run `grunt`
 
 ## Grunt tasks
 Grunt will provide the following services:
@@ -36,7 +36,6 @@ Grunt will provide the following services:
 * `grunt scsslint` it launches the SASS syntax checker against our codebase.
 * `grunt jshint` it performs a syntax checking on the current js codebase.
 * `grunt karma` it runs the unit test pack from the test/spec/unit/ directory
-* `grunt hologram` it generates/updates the visual styleguide. To see the guide `grunt express watch` and then point your browser to [localhost:3000](http://localhost:3000).
 * `grunt shell:android --card=1234` it generates a `android-news-app-debug.apk` file using the current project files. The `card` parameter is used to specificy the jira card number, so if the ticket is `AND-1234` card is equal to `1234`. This command only works if the Android SDK is installed and `adb` is in `PATH`.
 * `grunt shell:ios` it generates a `guardian-debug.ipa` file using the current project files. This command only works if XCode is installed and `ios.sign` and `ios.provisioning` have been filled.
 * `grunt shell:timeline --fixture=filename --times=20` it launches a telemetry session on file `filename` repeated `times` times. See the `Experimental performance measurement` section for more information.
@@ -46,7 +45,7 @@ Grunt will provide the following services:
 These services are also available packed into recipes
 * `grunt buildJS` concatenate and minify javascript files, check javascript syntax, and start karma unit test runner.
 * `grunt buildCSS` run scsslint, compile SCSS into CSS and minify CSS.
-* `grunt apk --card=1234` it launches `build` then `rsync` and then `shell:android` to make sure that the resulting build contains the current files from the project and not some stale files.  
+* `grunt apk --card=1234` it launches `build` then `rsync` and then `shell:android` to make sure that the resulting build contains the current files from the project and not some stale files.
 * `grunt ipa` it launches `build` then `rsync` and then `shell:ios`.
 * `grunt installer --card=1234` it launches `apk` and `ipa` in sequence.
 
@@ -54,8 +53,8 @@ _By simply running `grunt` (without any argument) the system keeps watching for 
 
 ## Experimental performance measurement
 ![](https://raw.githubusercontent.com/guardian/mobile-apps-article-templates/master/Performance/_cover.png)
-This feature allows us to record several timelines from a page loaded into the device and then it extracts some 
-particular features (such as frame rate, page load time and more) and it creates a chart for it. 
+This feature allows us to record several timelines from a page loaded into the device and then it extracts some
+particular features (such as frame rate, page load time and more) and it creates a chart for it.
 To use this feature there are a few steps involved:
 * make sure to use an Android device.
 * make sure to have the Android SDK installer and `adb` in `PATH`.
@@ -80,25 +79,6 @@ Use this feature to check for CSS regressions:
 * in a separate shell run `grunt shell:wraithhistory` from the project root to collect baseline screenshots
 * when you're ready run `grunt shell:wraith` from the project root to take a new set of screenshots and compare the with the baseline
 * browse http://localhost:3000/root/test/visual/shots/gallery.html to see the differences between the to sets of shots
-
-## Updating the Documentation
-Documentation is built locally, to rebuild the documentation just type: `grunt hologram`
-
-Documentation is also available on the web at: http://guardian.github.io/mobile-apps-article-templates/, which displays the static files stored in the gh-pages branch. To update this publicly viewable site with your latest changes, run the following commands:
-
-```bash
-$ git commit -am "Commit message"
-$ git checkout gh-pages
-$ git merge master
-$ git push origin master gh-pages
-```
-
-Alternatively, you can set up your local git repository to automatically push changes to both master and gh-pages branches. Simply add the following 2 lines to the ``[remote "origin"]`` section of ``.git/config``:
-
-```
-push = +refs/heads/master:refs/heads/gh-pages
-push = +refs/heads/master:refs/heads/master
-```
 
 ## APKs and IPAs
 When everything is properly configured type `grunt installer --card 123` to create a debuggable APK and IPA in the root folder of the project. Replace `123` with the number of a relevant Jira card for this build, as it will be appended to the version number in the app for reference.
