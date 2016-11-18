@@ -37,7 +37,9 @@ define([
             document.body.appendChild(container);
             injector = new Squire();
             window.applyNativeFunctionCall = sinon.spy();
-            window.GU = {};
+            window.GU = {
+                opts: {}
+            };
             util.init();
             sandbox = sinon.sandbox.create();
             sandbox.stub(window, 'setInterval');

@@ -415,6 +415,26 @@ define([
                 window.GU.opts.platform = 'android';
             });
 
+            it('does not handle onPlayerStateChange id GU.opts.nativeYoutubeEnabled is true', function(done) {
+                injector
+                    .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
+                        var videoWrapper = getVideoWrapper('video1');
+
+                        container.appendChild(videoWrapper);
+
+                        window.GU.opts.nativeYoutubeEnabled = "true";
+
+                        youtube.init();
+
+                        setPlayerState('PLAYING', window.YT.players[0]);
+
+                        expect(Player.prototype.getCurrentTime).not.to.have.been.called;
+                        expect(window.GuardianJSInterface.trackAction).not.to.have.been.called;
+                        
+                        done();
+                    });
+            });
+
             it('handles onPlayerStateChange when PLAYING from start', function (done) {
                 injector
                     .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {

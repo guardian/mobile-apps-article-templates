@@ -4,7 +4,7 @@ define(function() {
     'use strict';
 
     var videos,
-        stateHandlers,
+        stateHandlers = {},
         players = {},
         progressTracker = {},
         scriptReady = false;
@@ -15,12 +15,13 @@ define(function() {
     }
 
     function setStateHandlers() {
-        // TODO: Add check if not android or doesn't support native youtube plays
-        stateHandlers = {
-            'ENDED': onPlayerEnded,
-            'PLAYING': onPlayerPlaying,
-            'PAUSED': onPlayerPaused
-        };
+        if (!GU.opts.nativeYoutubeEnabled || GU.opts.nativeYoutubeEnabled !== 'true') {
+            stateHandlers = {
+                'ENDED': onPlayerEnded,
+                'PLAYING': onPlayerPlaying,
+                'PAUSED': onPlayerPaused
+            };
+        }
     }
 
     function setProgressTracker(id) {
