@@ -109,7 +109,19 @@ define(function() {
 
         players[id].duration = players[id].player.getDuration();
         placeholder.classList.add('fade-touchpoint');
-        touchPoint.addEventListener('click', playVideo.bind(null, id, placeholder.parentNode));
+
+        if(!GU.opts.nativeYoutubeEnabled || GU.opts.nativeYoutubeEnabled !== 'true') {
+            touchPoint.addEventListener('click', playVideo.bind(null, id, placeholder.parentNode));
+        } else {
+            touchPoint.addEventListener('click', sendPlayEventForNativePlayer.bind(null, id));
+        }
+    }
+
+    function sendPlayEventForNativePlayer(id) {
+        trackEvent({
+                    id: id,
+                    eventType: 'video:content:start'
+                });
     }
 
     function playVideo(id, placeholderParent) {
