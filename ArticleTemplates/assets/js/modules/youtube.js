@@ -86,7 +86,8 @@ define(function() {
                 players[video.id] = {
                     player: setupPlayer(video.id),
                     iframe: video,
-                    placeholder: getPlaceholder(video)
+                    placeholder: getPlaceholder(video),
+                    trackingCalls: []
                 };
             }
         }
@@ -216,7 +217,11 @@ define(function() {
             percentPlayed = Math.round(((currentTime / players[id].duration) * 100));
 
         if (percentPlayed > 0 &&
-            percentPlayed % 25 === 0) {
+            percentPlayed % 25 === 0 &&
+            players[id].trackingCalls.indexOf(percentPlayed) === -1) {
+
+            players[id].trackingCalls.push(percentPlayed);
+
             trackEvent({
                 id: id,
                 eventType: 'video:content:' + percentPlayed
