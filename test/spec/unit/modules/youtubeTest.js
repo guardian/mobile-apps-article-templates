@@ -15,12 +15,16 @@ define([
             getVideoWrapper = function(id) {
                 var videoWrapper = document.createElement('div'),
                     placeholder = document.createElement('div'),
+                    img = document.createElement('div'),
                     touchpoint = document.createElement('div'),
                     iframe = document.createElement('iframe');
 
                 placeholder.classList.add('youtube-media__placeholder');
                 touchpoint.classList.add('youtube-media__touchpoint');
+                img.classList.add('youtube-media__placeholder__img');
+                img.setAttribute('style', 'background-image: url(xxx)');
                 placeholder.appendChild(touchpoint);
+                placeholder.appendChild(img);
 
                 iframe.classList.add('youtube-media');
                 iframe.id = id;
@@ -200,6 +204,24 @@ define([
                 });
         });
 
+        it('removes placeholder if no placeholder image provided', function (done) {
+            injector
+                .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
+                    var videoWrapper = getVideoWrapper('video1'),
+                        placeholder = videoWrapper.querySelector('.youtube-media__placeholder');
+
+                    container.appendChild(videoWrapper);
+
+                    videoWrapper.querySelector('.youtube-media__placeholder__img').setAttribute('style', 'background-image: url()');
+
+                    youtube.init();
+
+                    expect(placeholder.parentNode).to.be.falsy;
+
+                    done();
+                });
+        });
+
         it('handles onPlayerReady', function (done) {
             injector
                 .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
@@ -219,6 +241,27 @@ define([
                 });
         });
 
+        it('handles onPlayerReady if no placeholder image provided', function (done) {
+            injector
+                .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
+                    var videoWrapper = getVideoWrapper('video1'),
+                        iframe = videoWrapper.querySelector('.youtube-media'),
+                        placeholder = videoWrapper.querySelector('.youtube-media__placeholder');
+
+                    container.appendChild(videoWrapper);
+
+                    videoWrapper.querySelector('.youtube-media__placeholder__img').setAttribute('style', 'background-image: url()');
+
+                    youtube.init();
+
+                    window.YT.players[0].onReady('video1');
+
+                    expect(iframe.parentNode.classList.contains('show-video')).to.eql(true);
+
+                    done();
+                });
+        });
+
         it('plays video on touchpoint click and hides placeholder', function (done) {
             injector
                 .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
@@ -232,11 +275,57 @@ define([
 
                     setTimeout(function() {
                         expect(Player.prototype.playVideo).to.have.been.calledOnce;
-                        expect(videoWrapper.classList.contains('fade-placeholder')).to.eql(true);
+                        expect(videoWrapper.classList.contains('show-video')).to.eql(true);
                         expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(true);
 
                         done();
                     }, 500);
+                });
+        });
+
+        it('plays native video on touchpoint click if nativeYoutubeEnabled is true', function (done) {
+            injector
+                .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
+                    var videoWrapper = getVideoWrapper('video1');
+
+                    container.appendChild(videoWrapper);
+
+                    window.GU.opts.nativeYoutubeEnabled = 'true';
+
+                    youtube.init();
+
+                    startVideo(videoWrapper, window.YT.players[0]);
+
+                    setTimeout(function() {
+                        expect(Player.prototype.playVideo).not.to.have.been.calledOnce;
+                        expect(videoWrapper.classList.contains('show-video')).to.eql(false);
+                        expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(false);
+                        expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
+
+                        done();
+                    }, 500);
+                });
+        });
+
+        it("initialiseVideos if scriptReady when checkForVideos called", function (done) {
+            injector
+                .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
+                    var videoWrapper1 = getVideoWrapper('video1'),
+                        videoWrapper2 = getVideoWrapper('video2');
+
+                    container.appendChild(videoWrapper1);
+
+                    youtube.init();
+
+                    expect(window.YT.players.length).to.eql(1);
+
+                    container.appendChild(videoWrapper2);
+
+                    youtube.checkForVideos();
+
+                    expect(window.YT.players.length).to.eql(2);
+
+                    done();
                 });
         });
 
@@ -390,7 +479,7 @@ define([
                         var videoWrapper = getVideoWrapper('video1');
 
                         videoWrapper.classList.add('hide-placeholder');
-                        videoWrapper.classList.add('fade-placeholder');
+                        videoWrapper.classList.add('show-video');
 
                         container.appendChild(videoWrapper);
 
@@ -400,7 +489,7 @@ define([
 
                         setTimeout(function () {
                             expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(false);
-                            expect(videoWrapper.classList.contains('fade-placeholder')).to.eql(false);
+                            expect(videoWrapper.classList.contains('show-video')).to.eql(false);
                             expect(window.GU.util.signalDevice).to.have.been.calledOnce;
                             expect(window.GU.util.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:end'}));
 
@@ -422,7 +511,7 @@ define([
 
                         container.appendChild(videoWrapper);
 
-                        window.GU.opts.nativeYoutubeEnabled = "true";
+                        window.GU.opts.nativeYoutubeEnabled = 'true';
 
                         youtube.init();
 
@@ -584,7 +673,7 @@ define([
                         var videoWrapper = getVideoWrapper('video1');
 
                         videoWrapper.classList.add('hide-placeholder');
-                        videoWrapper.classList.add('fade-placeholder');
+                        videoWrapper.classList.add('show-video');
 
                         container.appendChild(videoWrapper);
 
@@ -594,7 +683,7 @@ define([
 
                         setTimeout(function () {
                             expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(false);
-                            expect(videoWrapper.classList.contains('fade-placeholder')).to.eql(false);
+                            expect(videoWrapper.classList.contains('show-video')).to.eql(false);
                             expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
                             expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:end'}));
 

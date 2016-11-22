@@ -86,9 +86,21 @@ define(function() {
                 players[video.id] = {
                     player: setupPlayer(video.id),
                     iframe: video,
-                    placeholder: video.parentNode.getElementsByClassName('youtube-media__placeholder')[0]
+                    placeholder: getPlaceholder(video)
                 };
             }
+        }
+    }
+
+    function getPlaceholder(video) {
+        var placeholder = video.parentNode.getElementsByClassName('youtube-media__placeholder')[0],
+            img = placeholder.getElementsByClassName('youtube-media__placeholder__img')[0];
+
+        if (img.getAttribute('style') !== 'background-image: url()') {
+            return placeholder;
+        } else {
+            placeholder.parentNode.removeChild(placeholder);
+            return false;
         }
     }
 
@@ -104,29 +116,35 @@ define(function() {
     }
 
     function onPlayerReady(id) {
-        var placeholder = players[id].placeholder,
-            touchPoint = placeholder.getElementsByClassName('youtube-media__touchpoint')[0];
+        var touchPoint;
 
         players[id].duration = players[id].player.getDuration();
-        placeholder.classList.add('fade-touchpoint');
 
-        if(!GU.opts.nativeYoutubeEnabled || GU.opts.nativeYoutubeEnabled !== 'true') {
-            touchPoint.addEventListener('click', playVideo.bind(null, id, placeholder.parentNode));
+        if (players[id].placeholder) {
+            touchPoint = players[id].placeholder.getElementsByClassName('youtube-media__touchpoint')[0];
+            
+            if(!GU.opts.nativeYoutubeEnabled || GU.opts.nativeYoutubeEnabled !== 'true') {
+                touchPoint.addEventListener('click', playVideo.bind(null, id, players[id].placeholder.parentNode));
+            } else {
+                touchPoint.addEventListener('click', sendPlayEventForNativePlayer.bind(null, id));
+            }
+            
+            players[id].placeholder.classList.add('fade-touchpoint');
         } else {
-            touchPoint.addEventListener('click', sendPlayEventForNativePlayer.bind(null, id));
+            players[id].iframe.parentNode.classList.add('show-video');
         }
     }
 
     function sendPlayEventForNativePlayer(id) {
         trackEvent({
-                    id: id,
-                    eventType: 'video:content:start'
-                });
+            id: id,
+            eventType: 'video:content:start'
+        });
     }
 
     function playVideo(id, placeholderParent) {
         players[id].player.playVideo();
-        placeholderParent.classList.add('fade-placeholder');
+        placeholderParent.classList.add('show-video');
         setTimeout(hidePlaceholder.bind(null, placeholderParent), 300);
     }
 
@@ -159,12 +177,15 @@ define(function() {
     }
 
     function onPlayerEnded(id) {
-        var placeholderParent = players[id].placeholder.parentNode;
+        var placeholderParent; 
+
+        if (players[id].placeholder) {
+            placeholderParent = players[id].placeholder.parentNode;
+            placeholderParent.classList.remove('hide-placeholder');
+            setTimeout(showPlaceholder.bind(null, placeholderParent), 1000);
+        }
 
         killProgressTracker(false, id);
-
-        placeholderParent.classList.remove('hide-placeholder');
-        setTimeout(showPlaceholder.bind(null, placeholderParent), 1000);
 
         trackEvent({
             id: id,
@@ -173,7 +194,7 @@ define(function() {
     }
 
     function showPlaceholder(placeholderParent) {
-        placeholderParent.classList.remove('fade-placeholder');
+        placeholderParent.classList.remove('show-video');
     }
 
     function onPlayerPaused(id) {
