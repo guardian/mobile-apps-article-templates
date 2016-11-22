@@ -2,12 +2,10 @@
 define([
     'modules/relativeDates',
     'modules/twitter',
-    'modules/MyScroll',
     'bootstraps/common'
 ], function (
     relativeDates,
     twitter,
-    MyScroll,
     common
 ) {
     'use strict';
@@ -213,20 +211,9 @@ define([
 
         addClassesToMinuteBlocks(blocks);
         updateMinuteBlockTitles(blocks);
-
-        if (document.body.classList.contains('advert-config--tablet')) {
-            adjustMinuteBlocks(blocks);
-
-            // update dimensions on orientation change
-            window.addEventListener('resize', GU.util.debounce(adjustMinuteBlocks.bind(null, blocks), 100));
-        } else {
-            // If windows add background images to minute blocks
-            if (document.body.classList.contains('windows')) {   
-                addBackgroundImagesToMinuteBlocks(blocks);
-            }
-            
-            initScroller();
-        }
+        adjustMinuteBlocks(blocks);
+        // update dimensions on orientation change
+        window.addEventListener('resize', GU.util.debounce(adjustMinuteBlocks.bind(null, blocks), 100));
     }
 
     function moveFigcaption(figure, figInner) {
@@ -235,6 +222,46 @@ define([
         if (figCaption && figCaption.parentNode === figure) {
             if (figInner) {
                 figInner.insertBefore(figCaption, figInner.firstChild);
+            }
+        }
+    }
+
+    function addClassesToMinuteBlocks(blocks) {
+        var i,
+            block;
+
+        for (i = 0; i < blocks.length; i++) {
+            block = blocks[i];
+
+            if (block.getElementsByClassName('element--thumbnail').length) {
+                block.classList.add('is-thumbnail');
+            } else if (block.getElementsByClassName('element-image').length) {
+                block.classList.add('is-coverimage');
+            } else if (block.getElementsByClassName('video-URL').length) {
+                block.classList.add('is-video');
+            } else {
+                block.classList.add('is-textonly');
+            }
+
+            if (block.getElementsByClassName('quoted').length) {
+                block.classList.add('has-quote');
+            } else if (block.getElementsByClassName('twitter-tweet').length) {
+                block.classList.add('has-tweet');
+            }
+        }
+    }
+
+    function updateMinuteBlockTitles(blocks) {
+        var i, 
+            blockTitle,
+            titleString;
+
+        for (i = 0; i < blocks.length; i++) {
+            blockTitle = blocks[i].getElementsByClassName('block__title')[0];
+            
+            if (blockTitle) {
+                titleString = blockTitle.innerHTML.replace(/^([0-9]+)[.]*[ ]*/g, '<span class="counter">$1</span>');
+                blockTitle.innerHTML = titleString;
             }
         }
     }
@@ -328,159 +355,6 @@ define([
                     i--;
                 }
             }
-        }
-    }
-
-    function updateMinuteBlockTitles(blocks) {
-        var i, 
-            blockTitle,
-            titleString;
-
-        for (i = 0; i < blocks.length; i++) {
-            blockTitle = blocks[i].getElementsByClassName('block__title')[0];
-            
-            if (blockTitle) {
-                titleString = blockTitle.innerHTML.replace(/^([0-9]+)[.]*[ ]*/g, '<span class="counter">$1</span>');
-                blockTitle.innerHTML = titleString;
-            }
-        }
-    }
-
-    function addClassesToMinuteBlocks(blocks) {
-        var i,
-            block;
-
-        for (i = 0; i < blocks.length; i++) {
-            block = blocks[i];
-
-            if (block.getElementsByClassName('element--thumbnail').length) {
-                block.classList.add('is-thumbnail');
-            } else if (block.getElementsByClassName('element-image').length) {
-                block.classList.add('is-coverimage');
-            } else if (block.getElementsByClassName('video-URL').length) {
-                block.classList.add('is-video');
-            } else {
-                block.classList.add('is-textonly');
-            }
-
-            if (block.getElementsByClassName('quoted').length) {
-                block.classList.add('has-quote');
-            } else if (block.getElementsByClassName('twitter-tweet').length) {
-                block.classList.add('has-tweet');
-            }
-        }
-    }
-
-    function addBackgroundImagesToMinuteBlocks(blocks) {
-        var i, j, figureInners, figureImage;
-
-        for (i = 0; i < blocks.length; i++) {
-            figureInners = blocks[i].getElementsByClassName('figure__inner');
-
-            for (j = 0; j < figureInners.length; j++) {
-                figureImage = figureInners[j].getElementsByTagName('img')[0];
-                
-                if (figureImage) {
-                    figureInners[j].classList.add('the-minute__background-media');
-                    figureInners[j].style.backgroundImage = 'url(' + figureImage.getAttribute('src') + ')';
-                    figureImage.parentNode.removeChild(figureImage);                            
-                }
-            }
-        }
-    }
-
-    function initScroller() {
-        var scroller,
-            liveblogElem,
-            minuteNavElem = document.getElementsByClassName('the-minute__nav')[0],
-            wrapperElem = document.getElementsByClassName('article--liveblog')[0],
-            options = {
-                scrollX: false,
-                scrollY: true,
-                momentum: false,
-                snap: true,
-                bounce: false,
-                snapSpeed: 600,
-                disablePointer: true
-            };
-
-        if (wrapperElem) {
-            liveblogElem = wrapperElem.getElementsByClassName('article__body--liveblog')[0];
-
-            // liveblogElem must be first child of wrapperElem
-            wrapperElem.insertBefore(liveblogElem, wrapperElem.children[0]);
-
-            removeTabletElems();
-
-            setScrollDimensions(liveblogElem, wrapperElem);
-
-            // initialise scroller
-            scroller = new MyScroll(wrapperElem, options);
-
-            // onScrollEnd show hide minuteNavElem
-            scroller.on('scrollEnd', onScrollEnd.bind(null, minuteNavElem, scroller));
-
-            // add click event handler to minuteNavElem
-            minuteNavElem.addEventListener('click', scrollToNextCard.bind(null, minuteNavElem, scroller));
-        
-            // update scroll dimensions on orientation change
-            window.addEventListener('resize', GU.util.debounce(onWindowResize.bind(null, liveblogElem, wrapperElem, scroller), 100));
-        }
-    }
-
-    function onWindowResize(liveblogElem, wrapperElem, scroller) {
-        setScrollDimensions(liveblogElem, wrapperElem);
-
-        setTimeout(function () {
-            scroller.refresh();
-        }, 0);
-    }
-
-    function setScrollDimensions(liveblogElem, wrapperElem) {
-        var i,
-            elemHeight,
-            scrollHeight = 0,
-            windowHeight = window.innerHeight;
-
-        // set height of scrollers wrapper    
-        wrapperElem.style.height = windowHeight + 'px';
-
-        // set heights of each card within scroller
-        for (i = 0; i < liveblogElem.children.length; i++) {
-            elemHeight = liveblogElem.children[i].offsetHeight;
-            
-            if (elemHeight) {
-                scrollHeight += windowHeight;
-                liveblogElem.children[i].style.height = windowHeight + 'px';
-            }
-        }
-
-        // set height of scrollable area
-        liveblogElem.style.height = scrollHeight + 'px';
-    }
-
-    function scrollToNextCard(minuteNavElem, scroller) {
-        if ((scroller.currentPage.pageY + 1) !== scroller.pages[0].length) {
-            scroller.goToPage(0, scroller.currentPage.pageY + 1, 600);
-
-            onScrollEnd(minuteNavElem, scroller);
-        }
-    }
-
-    function onScrollEnd(minuteNavElem, scroller) {
-        if ((scroller.currentPage.pageY + 1) === scroller.pages[0].length) {
-            minuteNavElem.classList.add('hide');
-        } else {
-            minuteNavElem.classList.remove('hide');
-        }
-    }
-
-    function removeTabletElems() {
-        var i,
-            elems = document.querySelectorAll('.minute-logo-container, .minute-vertical-rule');
-
-        for (i = 0; i < elems.length; i++) {
-            elems[i].parentNode.removeChild(elems[i]);
         }
     }
 
