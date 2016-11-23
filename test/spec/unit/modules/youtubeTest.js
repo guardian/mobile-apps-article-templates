@@ -245,8 +245,7 @@ define([
             injector
                 .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
                     var videoWrapper = getVideoWrapper('video1'),
-                        iframe = videoWrapper.querySelector('.youtube-media'),
-                        placeholder = videoWrapper.querySelector('.youtube-media__placeholder');
+                        iframe = videoWrapper.querySelector('.youtube-media');
 
                     container.appendChild(videoWrapper);
 
@@ -307,7 +306,7 @@ define([
                 });
         });
 
-        it("initialiseVideos if scriptReady when checkForVideos called", function (done) {
+        it('initialiseVideos if scriptReady when checkForVideos called', function (done) {
             injector
                 .require(['ArticleTemplates/assets/js/modules/youtube'], function (youtube) {
                     var videoWrapper1 = getVideoWrapper('video1'),

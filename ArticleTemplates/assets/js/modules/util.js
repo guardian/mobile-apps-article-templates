@@ -52,8 +52,6 @@ define(function() {
                 iframe.style.display = 'none';
                 iframe.src = url;
 
-                console.log('signalDevice >>>', url);
-
                 GU.util.doIframeMessage(iframe);
             },
 
