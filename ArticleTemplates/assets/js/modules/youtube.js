@@ -78,31 +78,33 @@ define(function() {
 
     function initialiseVideos() {
         var i,
+            placeholder,
             video;
 
         for (i = 0; i < videos.length; i++) {
             video = videos[i];
+            placeholder = video.parentNode.getElementsByClassName('youtube-media__placeholder')[0];
+
             if (!players[video.id]) {
                 players[video.id] = {
                     player: setupPlayer(video.id),
                     iframe: video,
-                    placeholder: getPlaceholder(video),
                     trackingCalls: []
                 };
+
+                if (hasPlaceholderImgSrc(placeholder)) {
+                    players[video.id].placeholder = placeholder; 
+                } else {
+                    placeholder.parentNode.removeChild(placeholder);
+                }
             }
         }
     }
 
-    function getPlaceholder(video) {
-        var placeholder = video.parentNode.getElementsByClassName('youtube-media__placeholder')[0],
-            img = placeholder.getElementsByClassName('youtube-media__placeholder__img')[0];
+    function hasPlaceholderImgSrc(placeholder) {
+        var img = placeholder.getElementsByClassName('youtube-media__placeholder__img')[0];
 
-        if (img.getAttribute('style') !== 'background-image: url()') {
-            return placeholder;
-        } else {
-            placeholder.parentNode.removeChild(placeholder);
-            return false;
-        }
+        return img.getAttribute('style') !== 'background-image: url()';
     }
 
     function setupPlayer(id) {
