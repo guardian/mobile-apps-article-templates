@@ -220,6 +220,7 @@ define(function() {
 
         if (percentPlayed > 0 &&
             percentPlayed % 25 === 0 &&
+            percentPlayed < 100 &&
             players[id].trackingCalls.indexOf(percentPlayed) === -1) {
 
             players[id].trackingCalls.push(percentPlayed);
