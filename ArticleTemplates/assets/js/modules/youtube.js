@@ -218,9 +218,8 @@ define(function() {
         var currentTime = players[id].player.getCurrentTime(),
             percentPlayed = Math.round(((currentTime / players[id].duration) * 100));
 
-        if (percentPlayed > 0 &&
+        if (percentPlayed > 0 && percentPlayed < 100 &&
             percentPlayed % 25 === 0 &&
-            percentPlayed < 100 &&
             players[id].trackingCalls.indexOf(percentPlayed) === -1) {
 
             players[id].trackingCalls.push(percentPlayed);
