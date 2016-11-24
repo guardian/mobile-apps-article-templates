@@ -3186,7 +3186,7 @@
         padding: 0;
         position: relative;
         width: 620px; }
-        #sandbox .main-media figure.element.element-video {
+        #sandbox .main-media figure.element.element-video:not(.element-youtube) {
           padding-bottom: 350px; }
       #sandbox .main-media .main-media__caption {
         border: none;
@@ -3827,27 +3827,74 @@
       position: absolute;
       top: 0;
       left: 0; }
+  #sandbox .element-youtube,
   #sandbox .element-placeholder {
     width: 100%; }
+    #sandbox .element-youtube .element-placeholder__button,
     #sandbox .element-placeholder .element-placeholder__button {
       padding: 8px;
       position: absolute;
       bottom: 0;
       z-index: 2; }
+      #sandbox .element-youtube .element-placeholder__button .touchpoint__button,
       #sandbox .element-placeholder .element-placeholder__button .touchpoint__button {
         color: #333;
         background-color: #fb0; }
+        #sandbox .element-youtube .element-placeholder__button .touchpoint__button:active,
         #sandbox .element-placeholder .element-placeholder__button .touchpoint__button:active {
           color: #fb0;
           background-color: #333; }
+      #sandbox .element-youtube .element-placeholder__button .touchpoint__label,
       #sandbox .element-placeholder .element-placeholder__button .touchpoint__label {
         color: #fb0;
         text-shadow: 0 0 4px rgba(0, 0, 0, 0.5); }
+    #sandbox .element-youtube:active .touchpoint__button,
     #sandbox .element-placeholder:active .touchpoint__button {
       color: #fb0;
       background-color: #333; }
+    #sandbox .element-youtube .element__inner,
     #sandbox .element-placeholder .element__inner {
       padding-bottom: 56.25%; }
+  #sandbox .element-youtube {
+    padding-bottom: 0; }
+    #sandbox .element-youtube .element__inner .youtube-media__placeholder {
+      z-index: 1;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      transition: opacity .25s ease-in-out;
+      -webkit-transition: opacity .25s ease-in-out;
+      overflow: hidden; }
+      #sandbox .element-youtube .element__inner .youtube-media__placeholder__img {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        background-size: cover;
+        background-position: 50% 50%;
+        background-repeat: no-repeat; }
+      #sandbox .element-youtube .element__inner .youtube-media__placeholder .youtube-media__touchpoint {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        opacity: 0;
+        transition: opacity .25s ease-in-out;
+        -webkit-transition: opacity .25s ease-in-out; }
+      #sandbox .element-youtube .element__inner .youtube-media__placeholder.fade-touchpoint .youtube-media__touchpoint {
+        opacity: 1; }
+    #sandbox .element-youtube .element__inner .youtube-media {
+      opacity: 0;
+      z-index: 0;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      transition: opacity .25s ease-in-out;
+      -webkit-transition: opacity .25s ease-in-out; }
+    #sandbox .element-youtube .element__inner.show-video .youtube-media__placeholder {
+      opacity: 0; }
+    #sandbox .element-youtube .element__inner.show-video .youtube-media {
+      opacity: 1; }
+    #sandbox .element-youtube .element__inner.hide-placeholder .youtube-media__placeholder {
+      display: none; }
   #sandbox .offline .element-audio,
   #sandbox .offline .element-embed,
   #sandbox .offline .element-map,
@@ -6142,11 +6189,11 @@
         #sandbox .article--immersive .article__body .element-interactive {
           width: calc(131.94444% - 12px); } }
     @media all and (min-width: 40.63em) {
-      #sandbox .article--standard .article__body .element-video,
-      #sandbox .article--comment .article__body .element-video,
-      #sandbox .article--feature .article__body .element-video,
-      #sandbox .article--audio .article__body .element-video,
-      #sandbox .article--immersive .article__body .element-video {
+      #sandbox .article--standard .article__body .element-video:not(.element-youtube),
+      #sandbox .article--comment .article__body .element-video:not(.element-youtube),
+      #sandbox .article--feature .article__body .element-video:not(.element-youtube),
+      #sandbox .article--audio .article__body .element-video:not(.element-youtube),
+      #sandbox .article--immersive .article__body .element-video:not(.element-youtube) {
         padding-bottom: 75.375%; } }
   #sandbox .article--standard .aside,
   #sandbox .article--comment .aside,

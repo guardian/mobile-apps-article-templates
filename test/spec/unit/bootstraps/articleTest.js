@@ -9,7 +9,8 @@ define([
         var injector,
             sandbox;
             
-        var twitterMock,
+        var youtubeMock,
+            twitterMock,
             witnessMock,
             outbrainMock,
             quizMock,
@@ -31,6 +32,9 @@ define([
             membershipMock = {
                 init: sinon.spy()
             };
+            youtubeMock = {
+                init: sinon.spy()
+            };
             sandbox = sinon.sandbox.create();
             injector = new Squire();
             window.applyNativeFunctionCall = sinon.spy();
@@ -49,6 +53,7 @@ define([
                     .mock('modules/outbrain', outbrainMock)
                     .mock('modules/quiz', quizMock)
                     .mock('modules/membership', membershipMock)
+                    .mock('modules/youtube', youtubeMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/article'], function (article) {
                         article.init();
 
@@ -66,6 +71,7 @@ define([
                     .mock('modules/outbrain', outbrainMock)
                     .mock('modules/quiz', quizMock)
                     .mock('modules/membership', membershipMock)
+                    .mock('modules/youtube', youtubeMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/article'], function (article) {
                         article.init();
 

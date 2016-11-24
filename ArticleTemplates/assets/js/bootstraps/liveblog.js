@@ -2,11 +2,13 @@
 define([
     'modules/relativeDates',
     'modules/twitter',
+    'modules/youtube',
     'modules/MyScroll',
     'bootstraps/common'
 ], function (
     relativeDates,
     twitter,
+    youtube,
     MyScroll,
     common
 ) {
@@ -75,6 +77,9 @@ define([
 
             // check for tweets
             twitter.checkForTweets();
+
+            // check for youtube video atoms
+            youtube.checkForVideos();
 
             newBlockHtml = '';
         }
@@ -145,6 +150,9 @@ define([
 
         // check for tweets
         twitter.checkForTweets();
+
+        // check for youtube video atoms
+        youtube.checkForVideos();
     }
 
     function liveblogTime() {
@@ -586,6 +594,7 @@ define([
                 setupTheMinute();
             } else {
                 twitter.init();
+                youtube.init();
 
                 setInterval(window.liveblogTime, 30000);
 
