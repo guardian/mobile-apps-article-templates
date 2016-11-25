@@ -217,13 +217,16 @@ define(function() {
     }
 
     function recordPlayerProgress(id) {
-        var currentTime = players[id].player.getCurrentTime(),
-            pendingTrackingCalls = players[id].pendingTrackingCalls,
-            percentPlayed = Math.round(((currentTime / players[id].duration) * 100));
+        var currentTime,
+            percentPlayed,
+            pendingTrackingCalls = players[id].pendingTrackingCalls;
 
         if (!pendingTrackingCalls.length) {
             return;
         }
+
+        currentTime = players[id].player.getCurrentTime();
+        percentPlayed = Math.round(((currentTime / players[id].duration) * 100));
 
         if (percentPlayed >= pendingTrackingCalls[0]) {
 
