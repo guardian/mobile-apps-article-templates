@@ -89,7 +89,7 @@ define(function() {
                 players[video.id] = {
                     player: setupPlayer(video.id),
                     iframe: video,
-                    trackingCalls: []
+                    pendingTrackingCalls: [25, 50]
                 };
 
                 if (hasPlaceholderImgSrc(placeholder)) {
@@ -194,6 +194,8 @@ define(function() {
             id: id,
             eventType: 'video:content:end'
         });
+
+        players[id].pendingTrackingCalls = [25, 50];
     }
 
     function showPlaceholder(placeholderParent) {
@@ -215,19 +217,25 @@ define(function() {
     }
 
     function recordPlayerProgress(id) {
-        var currentTime = players[id].player.getCurrentTime(),
-            percentPlayed = Math.round(((currentTime / players[id].duration) * 100));
+        var currentTime,
+            percentPlayed,
+            pendingTrackingCalls = players[id].pendingTrackingCalls;
 
-        if (percentPlayed > 0 && percentPlayed < 100 &&
-            percentPlayed % 25 === 0 &&
-            players[id].trackingCalls.indexOf(percentPlayed) === -1) {
+        if (!pendingTrackingCalls.length) {
+            return;
+        }
 
-            players[id].trackingCalls.push(percentPlayed);
+        currentTime = players[id].player.getCurrentTime();
+        percentPlayed = Math.round(((currentTime / players[id].duration) * 100));
+
+        if (percentPlayed >= pendingTrackingCalls[0]) {
 
             trackEvent({
                 id: id,
-                eventType: 'video:content:' + percentPlayed
+                eventType: 'video:content:' + pendingTrackingCalls[0]
             });
+
+            pendingTrackingCalls.shift();
         }
     }
 
