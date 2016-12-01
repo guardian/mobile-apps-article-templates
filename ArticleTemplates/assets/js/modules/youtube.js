@@ -127,7 +127,7 @@ define(function() {
             touchPoint = players[id].placeholder.getElementsByClassName('youtube-media__touchpoint')[0];
             
             if(!GU.opts.nativeYoutubeEnabled || GU.opts.nativeYoutubeEnabled !== 'true') {
-                players[id].placeholder.classList.add('disablePointerEvents');
+                players[id].placeholder.classList.add('disable-pointer-events');
             } else {
                 touchPoint.addEventListener('click', sendPlayEventForNativePlayer.bind(null, id));
             }
