@@ -89,7 +89,7 @@ define(function() {
                 players[video.id] = {
                     player: setupPlayer(video.id),
                     iframe: video,
-                    pendingTrackingCalls: [25, 50]
+                    pendingTrackingCalls: [25, 50, 75]
                 };
 
                 if (hasPlaceholderImgSrc(placeholder)) {
@@ -196,7 +196,7 @@ define(function() {
             eventType: 'video:content:end'
         });
 
-        players[id].pendingTrackingCalls = [25, 50];
+        players[id].pendingTrackingCalls = [25, 50, 75];
     }
 
     function showPlaceholder(placeholderParent) {
