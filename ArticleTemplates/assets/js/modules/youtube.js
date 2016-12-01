@@ -127,7 +127,7 @@ define(function() {
             touchPoint = players[id].placeholder.getElementsByClassName('youtube-media__touchpoint')[0];
             
             if(!GU.opts.nativeYoutubeEnabled || GU.opts.nativeYoutubeEnabled !== 'true') {
-                touchPoint.addEventListener('click', playVideo.bind(null, id, players[id].placeholder.parentNode));
+                players[id].placeholder.classList.add('disable-pointer-events');
             } else {
                 touchPoint.addEventListener('click', sendPlayEventForNativePlayer.bind(null, id));
             }
@@ -145,12 +145,6 @@ define(function() {
         });
     }
 
-    function playVideo(id, placeholderParent) {
-        players[id].player.playVideo();
-        placeholderParent.classList.add('show-video');
-        setTimeout(hidePlaceholder.bind(null, placeholderParent), 300);
-    }
-
     function hidePlaceholder(placeholderParent) {
         placeholderParent.classList.add('hide-placeholder');
     }
@@ -166,12 +160,19 @@ define(function() {
     }
 
     function onPlayerPlaying(id) {
-        var currentTime = Math.round(players[id].player.getCurrentTime());
+        var placeholderParent,
+            currentTime = Math.round(players[id].player.getCurrentTime());
 
         stopPlayers(id);
         setProgressTracker(id);
 
         if (currentTime === 0) {
+            if (players[id].placeholder) {
+                placeholderParent = players[id].placeholder.parentNode;
+                placeholderParent.classList.add('show-video');
+                setTimeout(hidePlaceholder.bind(null, placeholderParent), 300);
+            }
+
             trackEvent({
                 id: id,
                 eventType: 'video:content:start'
