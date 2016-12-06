@@ -1220,32 +1220,6 @@
   */
   /*doc
   ---
-  title: Tell Me When
-  name: tellmewhen
-  category: Modules
-  ---
-  Display an alerts toggle.
-  
-  ```html_example
-  <div class="tell-me-when-container" id="tell-me-when-container">
-      <div class="tell-me-when-banner">__TELL_ME_WHEN_BANNER_TEXT__</div>
-      <div class="tell-me-when-title">__TELL_ME_WHEN_TITLE_TEXT__</div>
-      <div class="tell-me-when-body">__TELL_ME_WHEN_BODY_TEXT__</div>
-      <div class="tell-me-when-button __TELL_ME_WHEN__ADDED__" data-follow-alert-id="__TELL_ME_WHEN_SERIES_ID__">
-          <span class="tell-me-when-button--add">
-              <span data-icon="&#xe090;" aria-hidden="true"></span>
-              <span class="tell-me-when--label">__TELL_ME_WHEN_ADD_TEXT__</span>
-          </span>
-          <span class="tell-me-when-button--remove">
-              <span data-icon="&#xe062;" aria-hidden="true"></span>
-              <span class="tell-me-when--label">__TELL_ME_WHEN_REMOVE_TEXT__</span>
-          </span>
-      </div>
-  </div>
-  ```
-  */
-  /*doc
-  ---
   title: Related Content
   name: related-content
   category: Modules
@@ -7974,31 +7948,6 @@
     #sandbox .tone--feature2 .quiz .quiz-scores__message,
     #sandbox .tone--feature3 .quiz .quiz-scores__message {
       color: #b82266; }
-  #sandbox .tone--feature1 .tell-me-when-container,
-  #sandbox .tone--feature2 .tell-me-when-container,
-  #sandbox .tone--feature3 .tell-me-when-container {
-    background: #951c55;
-    border-color: #fdadba; }
-    #sandbox .tone--feature1 .tell-me-when-container .tell-me-when-banner,
-    #sandbox .tone--feature2 .tell-me-when-container .tell-me-when-banner,
-    #sandbox .tone--feature3 .tell-me-when-container .tell-me-when-banner {
-      color: #fdadba; }
-    #sandbox .tone--feature1 .tell-me-when-container .tell-me-when-title,
-    #sandbox .tone--feature1 .tell-me-when-container .tell-me-when-body,
-    #sandbox .tone--feature2 .tell-me-when-container .tell-me-when-title,
-    #sandbox .tone--feature2 .tell-me-when-container .tell-me-when-body,
-    #sandbox .tone--feature3 .tell-me-when-container .tell-me-when-title,
-    #sandbox .tone--feature3 .tell-me-when-container .tell-me-when-body {
-      color: #ffffff; }
-    #sandbox .tone--feature1 .tell-me-when-container .tell-me-when-button,
-    #sandbox .tone--feature2 .tell-me-when-container .tell-me-when-button,
-    #sandbox .tone--feature3 .tell-me-when-container .tell-me-when-button {
-      color: #ffffff;
-      border-color: #fdadba; }
-      #sandbox .tone--feature1 .tell-me-when-container .tell-me-when-button.following,
-      #sandbox .tone--feature2 .tell-me-when-container .tell-me-when-button.following,
-      #sandbox .tone--feature3 .tell-me-when-container .tell-me-when-button.following {
-        background: #fdadba; }
   #sandbox .tone--liveBlog .section__container {
     border-bottom: 1px rgba(255, 255, 255, 0.4) dotted; }
   #sandbox .tone--liveBlog .section {
@@ -8428,9 +8377,9 @@
   #sandbox .tone--media[data-content-type="gallery"] .article .article__header .sponsorship {
     border-bottom: 0;
     border-top: 1px #767676 dotted; }
-  #sandbox .tone--news .article a:not(.witness__button):not(.tell-me-when-button):not(.alerts) {
+  #sandbox .tone--news .article a:not(.witness__button):not(.alerts) {
     color: #005689; }
-    #sandbox .tone--news .article a:not(.witness__button):not(.tell-me-when-button):not(.alerts):active {
+    #sandbox .tone--news .article a:not(.witness__button):not(.alerts):active {
       color: #4bc6df; }
   #sandbox .tone--news .article__body {
     background-color: #fff; }
@@ -9883,77 +9832,6 @@
   #sandbox .tags__separator {
     font-weight: bold;
     margin: 0 4px; }
-  #sandbox .tell-me-when-container {
-    border-top: 2px solid;
-    padding: 6px 12px 6px 12px;
-    background: #005689;
-    border-color: #4bc6df; }
-    #sandbox .tell-me-when-container .tell-me-when-banner,
-    #sandbox .tell-me-when-container .tell-me-when-title,
-    #sandbox .tell-me-when-container .tell-me-when-body,
-    #sandbox .tell-me-when-container .tell-me-when-message {
-      margin-bottom: 6px; }
-    #sandbox .tell-me-when-container .tell-me-when-banner,
-    #sandbox .tell-me-when-container .tell-me-when-message {
-      font-weight: 600;
-      font-size: 1.8rem;
-      line-height: 1.8rem;
-      font-family: "Guardian Agate Sans 1 Web", sans-serif; }
-    #sandbox .tell-me-when-container .tell-me-when-banner {
-      color: #4bc6df; }
-    #sandbox .tell-me-when-container .tell-me-when-message {
-      color: #ffffff; }
-    #sandbox .tell-me-when-container .tell-me-when-title {
-      font-weight: 600;
-      font-size: 2.3rem;
-      line-height: 2.3rem;
-      font-family: "Guardian Egyptian Web", Georgia, serif;
-      color: #ffffff; }
-    #sandbox .tell-me-when-container .tell-me-when-body {
-      color: #ffffff; }
-    #sandbox .tell-me-when-container .tell-me-when-button {
-      font-family: "Guardian Agate Sans 1 Web", sans-serif;
-      padding: 4px 12px 8px 12px;
-      margin: 0px 0px 12px -4px;
-      display: inline-block;
-      border-radius: 30px;
-      vertical-align: bottom;
-      border: 1px solid;
-      transition: background-color 0.3s;
-      position: relative;
-      color: #ffffff;
-      border-color: #ffffff; }
-      @media all and (max-width: 40.62em) {
-        #sandbox .tell-me-when-container .tell-me-when-button {
-          font-size: 1.4rem;
-          line-height: 2rem; } }
-      @media all and (min-width: 40.63em) {
-        #sandbox .tell-me-when-container .tell-me-when-button {
-          font-size: 1.6rem;
-          line-height: 2.2rem; } }
-      #sandbox .tell-me-when-container .tell-me-when-button span[data-icon] {
-        font-size: 1.8rem;
-        position: relative;
-        right: 3px;
-        top: 1px; }
-      #sandbox .tell-me-when-container .tell-me-when-button span.tell-me-when--label {
-        vertical-align: text-bottom; }
-      #sandbox .tell-me-when-container .tell-me-when-button .tell-me-when__label {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        padding-left: 26px;
-        width: 100%;
-        display: inline-block;
-        line-height: 1.2; }
-      #sandbox .tell-me-when-container .tell-me-when-button .tell-me-when-button--remove {
-        display: none; }
-      #sandbox .tell-me-when-container .tell-me-when-button.following {
-        background: #4bc6df; }
-        #sandbox .tell-me-when-container .tell-me-when-button.following .tell-me-when-button--remove {
-          display: inline-block; }
-        #sandbox .tell-me-when-container .tell-me-when-button.following .tell-me-when-button--add {
-          display: none; }
   #sandbox .related-content {
     margin: 0;
     padding: 0px 0px 24px 0px;

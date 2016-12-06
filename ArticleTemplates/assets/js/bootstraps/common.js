@@ -1,7 +1,6 @@
 define([
     'fence',
     'fastClick',
-    'fontFaceObserver',
     'smoothScroll',
     'modules/comments',
     'modules/cards',
@@ -11,7 +10,6 @@ define([
 ], function(
     fence,
     fastClick,
-    FontFaceObserver,
     smoothScroll,
     comments,
     cards,
@@ -24,8 +22,6 @@ define([
     var trackCommentContainerView = true;
         
     function init() {
-
-        checkFontLoadState(); // sometimes fonts fail to load reloading css fixes this issue
         fastClick.attach(document.body); // polyfill to remove click delays on browsers with touch
         formatImages();
         figcaptionToggle();
@@ -39,7 +35,6 @@ define([
         loadInteractives(); 
         setupOfflineSwitch();
         setupAlertSwitch();
-        setupTellMeWhenSwitch();
         setupFontSizing();
         setupGetArticleHeight();
         showTabs();
@@ -53,20 +48,6 @@ define([
         if (!document.body.classList.contains('no-ready')) {
             GU.util.signalDevice('ready');
         }
-    }
-
-    function checkFontLoadState() {
-        var font = new FontFaceObserver('Guardian Icons'),
-            fontStyles = document.getElementById('fontStyles');
-
-        font.load(null).then(function () {
-            // font available - do nothing
-        }, function () {
-            // font unavailable - reload font stylesheet
-            if (fontStyles) {
-                fontStyles.parentNode.appendChild(fontStyles);
-            }
-        });
     }
 
     function formatImages(images) {
@@ -698,34 +679,6 @@ define([
             GU.util.isElementPartiallyInViewport(commentContainer)) {
             GU.util.signalDevice('trackAction/comments:seen');    
             trackCommentContainerView = false;
-        }
-    }
-
-    function setupTellMeWhenSwitch() {
-        var tellMeWhenButton = document.getElementsByClassName('tell-me-when-button')[0];
-
-        if (tellMeWhenButton) {
-            tellMeWhenButton.addEventListener('click', handleTellMeWhenButtonClick.bind(null, tellMeWhenButton));            
-        }
-    }
-
-    function handleTellMeWhenButtonClick(button) {
-        var message,
-            callToAction = 'seriesCTATest/' + button.dataset.followAlertId;
-
-        if (button.classList.contains('following')) {
-            callToAction += '?action=remove';
-        } else {
-            callToAction += '?action=add';
-        }
-
-        GU.util.signalDevice(callToAction);
-
-        if (button.dataset.showMessage === 'true') {
-            message = document.createElement('div');
-            message.classList.add('tell-me-when-message');
-            message.innerHTML = 'Yessss! Another click! Thanks for your interest in this feature, we’re testing demand. If enough of you like the idea, we’ll make it happen. Fingers crossed!';
-            button.parentNode.replaceChild(message, button);
         }
     }
         
