@@ -1,4 +1,4 @@
-#!/bin/sh -xe
+#!/bin/bash -xe
 
 # check if there are changes
 if [[ `git status --porcelain` ]]; then
