@@ -1,7 +1,7 @@
 #!/bin/sh -xe
 
 # check if there are changes
-# if [[ `git status --porcelain` ]]; then
+if [[ `git status --porcelain` ]]; then
   	git status
 	git log -1
 	git config --global user.name "GuardianAndroid"
@@ -15,4 +15,4 @@
 	git merge release
 	git push origin master
 	git push origin release
-# fi
+fi
