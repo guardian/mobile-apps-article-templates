@@ -200,7 +200,7 @@ define([
         headerContainer = document.querySelector('.article__header-bg, .article__header-bg .element > iframe');
 
         if (headerContainer) {
-            embed = headerContainer.getElementsByClassName('element-embed')[0];
+            embed = headerContainer.getElementsByClassName('element-embed')[0] || headerContainer.getElementsByClassName('element-atom')[0];
             if (embed || headerContainer.dataset.fullScreen) {
                 headerContainer.style.height = bgHeight;
                 if (embed) {
