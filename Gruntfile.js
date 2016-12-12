@@ -80,25 +80,24 @@ module.exports = function(grunt) {
             }
         },
         // stylesheets
-        sass: {
-            dev: {
-                options: {
-                    sourcemap: 'none'
-                },
-                files: {
-                    'ArticleTemplates/assets/scss/fonts-android.css':  'ArticleTemplates/assets/scss/fonts-android.scss',
-                    'ArticleTemplates/assets/scss/fonts-ios.css':  'ArticleTemplates/assets/scss/fonts-ios.scss',
-                    'ArticleTemplates/assets/scss/fonts-windows.css':  'ArticleTemplates/assets/scss/fonts-windows.scss',
-                    'ArticleTemplates/assets/scss/interactive.css':  'ArticleTemplates/assets/scss/interactive.scss',
-                    'ArticleTemplates/assets/scss/outbrain.css':  'ArticleTemplates/assets/scss/outbrain.scss',
-                    'ArticleTemplates/assets/scss/style-async.css':  'ArticleTemplates/assets/scss/style-async.scss',
-                    'ArticleTemplates/assets/scss/style-sync.css':  'ArticleTemplates/assets/scss/style-sync.scss',
-                    'test/unit/test.css':  'ArticleTemplates/assets/scss/test.scss'
-                } 
+        sasslint: {
+            options: {
+                'configFile': 'ArticleTemplates/assets/scss/.sass-lint.yml'
             },
-            doc: {
+            target: [
+                'ArticleTemplates/assets/scss/**/*.scss'
+            ]
+        },
+        sass: {
+            dist: {
                 files: {
-                    'DocumentationTemplates/assets/css/style.css':  'DocumentationTemplates/assets/scss/style.scss'
+                    'ArticleTemplates/assets/css/fonts-android.css':  'ArticleTemplates/assets/scss/fonts-android.scss',
+                    'ArticleTemplates/assets/css/fonts-ios.css':  'ArticleTemplates/assets/scss/fonts-ios.scss',
+                    'ArticleTemplates/assets/css/fonts-windows.css':  'ArticleTemplates/assets/scss/fonts-windows.scss',
+                    'ArticleTemplates/assets/css/interactive.css':  'ArticleTemplates/assets/scss/interactive.scss',
+                    'ArticleTemplates/assets/css/outbrain.css':  'ArticleTemplates/assets/scss/outbrain.scss',
+                    'ArticleTemplates/assets/css/style-async.css':  'ArticleTemplates/assets/scss/style-async.scss',
+                    'ArticleTemplates/assets/css/style-sync.css':  'ArticleTemplates/assets/scss/style-sync.scss',
                 }
             }
         },
@@ -106,23 +105,12 @@ module.exports = function(grunt) {
             target: {
                 files: [{
                     expand: true,
-                    cwd: 'ArticleTemplates/assets/scss',
-                    src: ['*.css', '!*.min.css'],
+                    cwd: 'ArticleTemplates/assets/css',
+                    src: ['*.css'],
                     dest: 'ArticleTemplates/assets/css',
                     ext: '.css'
                 }]
             }
-        },
-        scsslint: {
-            options: {
-                bundleExec: true,
-                config: 'ArticleTemplates/assets/scss/.scss-lint.yml',
-                force: true,
-                maxBuffer: 300 * 1024
-            },
-            dev: [
-                'ArticleTemplates/assets/scss/**/*.scss',
-            ]
         },
         // hologram: {
         //     doc: {
@@ -342,7 +330,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('buildJS', ['jshint', 'karma', 'initRequireJS', 'requirejs']);
 
-    grunt.registerTask('buildCSS', ['scsslint','sass:dev', 'cssmin']);
+    grunt.registerTask('buildCSS', ['sasslint', 'sass', 'cssmin']);
 
     grunt.registerTask('build', ['buildJS', 'buildCSS']);
 
