@@ -82,7 +82,7 @@ module.exports = function(grunt) {
         // stylesheets
         sasslint: {
             options: {
-                'configFile': 'ArticleTemplates/assets/scss/.sass-lint.yml'
+                configFile: 'ArticleTemplates/assets/scss/sass-lint.yml'
             },
             target: [
                 'ArticleTemplates/assets/scss/**/*.scss'
@@ -110,20 +110,6 @@ module.exports = function(grunt) {
                     dest: 'ArticleTemplates/assets/css',
                     ext: '.css'
                 }]
-            }
-        },
-        // hologram: {
-        //     doc: {
-        //         options: {
-        //             config: 'hologram.yml'
-        //         }
-        //     }
-        // },
-        hologram: {
-            generate: {
-                options: {
-                    config: 'hologram.yml'
-                }
             }
         },
         // jshint
