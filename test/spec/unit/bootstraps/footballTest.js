@@ -10,8 +10,13 @@ define([
     describe('ArticleTemplates/assets/js/bootstraps/football', function() {
         var container,
             injector;
+
+        var youtubeMock;
             
         beforeEach(function() {
+            youtubeMock = {
+                init: sinon.spy()
+            };
             container = document.createElement('div');
             container.id = 'container';
             document.body.appendChild(container);
@@ -36,6 +41,7 @@ define([
         describe('init()', function () {
             it('sets up global functions', function (done) {
                injector
+                    .mock('modules/youtube', youtubeMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/football'], function (football) {
                         football.init();
 
@@ -85,6 +91,7 @@ define([
 
             it('adds football match info and hides panel', function (done) {
                injector
+                    .mock('modules/youtube', youtubeMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/football'], function (football) {
                         statsPanel.setAttribute('aria-selected', 'false');
 
@@ -100,6 +107,7 @@ define([
 
             it('adds football match info and does not hide panel', function (done) {
                injector
+                    .mock('modules/youtube', youtubeMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/football'], function (football) {
                         statsPanel.setAttribute('aria-selected', 'true');
 
@@ -149,6 +157,7 @@ define([
 
             it('removes stats panel', function (done) {
                injector
+                    .mock('modules/youtube', youtubeMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/football'], function (football) {
                         football.init();
 
@@ -162,6 +171,7 @@ define([
 
             it('if stats panel tab selected switch selected tab to first tab and remove stats panel/tab', function (done) {
                injector
+                    .mock('modules/youtube', youtubeMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/football'], function (football) {
                         football.init();
 
@@ -193,6 +203,7 @@ define([
 
             it('update score if aggScore truthy', function (done) {
                injector
+                    .mock('modules/youtube', youtubeMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/football'], function (football) {
                         football.init();
 
@@ -207,6 +218,7 @@ define([
 
             it('update score if aggScore falsy', function (done) {
                injector
+                    .mock('modules/youtube', youtubeMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/football'], function (football) {
                         football.init();
 
@@ -221,6 +233,7 @@ define([
 
             it('update match info scorer p tag', function (done) {
                injector
+                    .mock('modules/youtube', youtubeMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/football'], function (football) {
                         matchSummary.innerHTML += '<div class="match-summary__home__info"><p>Peter Beardsley</p></div>';
 
@@ -240,6 +253,7 @@ define([
         describe('window.footballStatus(className, label)', function () {
             it('clears old status and reapplies class before adding new status', function (done) {
                injector
+                    .mock('modules/youtube', youtubeMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/football'], function (football) {
                         var matchStatus = document.createElement('div'),
                             matchStatusTime = document.createElement('div');
