@@ -222,14 +222,14 @@ define([
         addClassesToMinuteBlocks(blocks);
         updateMinuteBlockTitles(blocks);
 
-        if (document.body.classList.contains('advert-config--tablet')) {
+        if (GU.opts.adsConfig === 'tablet') {
             adjustMinuteBlocks(blocks);
 
             // update dimensions on orientation change
             window.addEventListener('resize', GU.util.debounce(adjustMinuteBlocks.bind(null, blocks), 100));
         } else {
             // If windows add background images to minute blocks
-            if (document.body.classList.contains('windows')) {   
+            if (GU.opts.platform ==='windows') {   
                 addBackgroundImagesToMinuteBlocks(blocks);
             }
             
@@ -590,7 +590,7 @@ define([
             window.addEventListener('scroll', GU.util.debounce(updateBlocksOnScroll, 100, true));
             liveMore();
             
-            if (document.body.classList.contains('the-minute')) {
+            if (GU.opts.isMinute) {
                 setupTheMinute();
             } else {
                 twitter.init();
