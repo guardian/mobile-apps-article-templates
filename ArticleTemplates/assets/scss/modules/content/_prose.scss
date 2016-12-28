@@ -189,7 +189,7 @@ Adds typographic styling, typically to content fetched from the Guardian Content
 
     p,
     li {
-        @include text-underline(color(tone-news), #fff, color(tone-news-accent));
+        @include text-underline(color(tone-news), color(shade-7), color(tone-news-accent));
     }
 
     ul,
@@ -274,7 +274,7 @@ Adds typographic styling, typically to content fetched from the Guardian Content
         margin: base-px(2, 0, 2, 0);
 
         blockquote {
-           margin: 0;
+            margin: 0;
             font-style: normal;
             font-size: 2rem;
             line-height: 1.3;
@@ -313,7 +313,7 @@ Adds typographic styling, typically to content fetched from the Guardian Content
             }
         }
 
-         @include mq($from: col2) {
+        @include mq($from: col2) {
             max-width: 280px;
             margin-right: base-px(1);
             float: left;

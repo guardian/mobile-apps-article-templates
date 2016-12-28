@@ -85,7 +85,7 @@ module.exports = function(grunt) {
                 configFile: 'ArticleTemplates/assets/scss/sass-lint.yml'
             },
             target: [
-                'ArticleTemplates/assets/scss/**/*.scss'
+                'ArticleTemplates/assets/scss/**/!(vendor)/*.scss'
             ]
         },
         sass: {

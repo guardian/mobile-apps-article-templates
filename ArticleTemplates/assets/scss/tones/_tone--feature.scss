@@ -80,7 +80,7 @@
                 overflow: hidden;
                 width: 100%;
 
-               .element__inner {
+                .element__inner {
                     top: -70px;
                 }
             }
@@ -119,7 +119,7 @@
 
         .prose p,
         .prose li {
-            @include text-underline(color(tone-feature1), #fff, color(tone-feature1-accent));
+            @include text-underline(color(tone-feature1), color(shade-7), color(tone-feature1-accent));
         }
 
         .prose table,
@@ -139,23 +139,23 @@
         
         .article__header {
             a {
-                color: #fff;
+                color: color(shade-7);
 
                 &:active {
-                    color: rgba(#fff, .8);
+                    color: rgba(color(shade-7), .8);
                 }
             }
 
             .bullet,
             ul > li {
                 &::before {
-                    background-color: rgba(#fff, .4);
+                    background-color: rgba(color(shade-7), .4);
                 }
             }
 
             .section,
             .byline {
-                color: #fff;
+                color: color(shade-7);
             }
 
             .content__labels {
@@ -163,12 +163,12 @@
             }
 
             .content__series-label.content__labels {
-                color: #fff;
+                color: color(shade-7);
             }
 
             .headline {
                 background-color: color(tone-feature1);
-                color: #fff;
+                color: color(shade-7);
                 position: relative;
                 z-index: 20;
                 padding: base-px(.5, 1, 2, 1);
@@ -188,20 +188,20 @@
             }
 
             .standfirst {
-                color: #fff;
+                color: color(shade-7);
 
                 span {
-                    color: rgba(#fff, .4);
+                    color: rgba(color(shade-7), .4);
                 }
 
                 strong {
-                    color: #fff;
+                    color: color(shade-7);
                     font-weight: normal;
                 }
             }
 
             .review-rating {
-                color: rgba(#fff, .4);
+                color: rgba(color(shade-7), .4);
             }
 
             .review-rating--1 .icon:nth-child(-n+1),
@@ -209,7 +209,7 @@
             .review-rating--3 .icon:nth-child(-n+3),
             .review-rating--4 .icon:nth-child(-n+4),
             .review-rating--5 .icon:nth-child(-n+5) {
-                color: #fff;
+                color: color(shade-7);
             }
         }
 
@@ -231,11 +231,11 @@
 
         .meta,
         .meta__pubdate {
-            color: rgba(#fff, .8);
+            color: rgba(color(shade-7), .8);
         }
 
         .meta__misc {
-             @include mq($from: col4) {
+            @include mq($from: col4) {
                 padding: {
                     left: 0;
                     right: 0;
