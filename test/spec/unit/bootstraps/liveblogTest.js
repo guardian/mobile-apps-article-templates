@@ -38,7 +38,9 @@ define([
             injector = new Squire();
             window.applyNativeFunctionCall = sinon.spy();
             window.GU = {
-                opts: {}
+                opts: {
+                    isMinute: ''
+                }
             };
             util.init();
             sandbox = sinon.sandbox.create();
@@ -95,13 +97,11 @@ define([
                     .mock('modules/MyScroll', MyScrollMock)
                     .mock('bootstraps/common', commonMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
-                        document.body.classList.add('the-minute');
+                        window.GU.opts.isMinute = true;
 
                         liveblog.init();
 
                         expect(twitterMock.init).not.to.have.been.called;
-
-                        document.body.classList.remove('the-minute');
 
                         done();
                     });
@@ -191,13 +191,11 @@ define([
                     .mock('modules/MyScroll', MyScrollMock)
                     .mock('bootstraps/common', commonMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
-                        document.body.classList.add('the-minute');
+                        window.GU.opts.isMinute = true;
 
                         liveblog.init();
 
                         expect(window.setInterval).not.to.have.been.called;
-
-                        document.body.classList.remove('the-minute');
 
                         done();
                     });
