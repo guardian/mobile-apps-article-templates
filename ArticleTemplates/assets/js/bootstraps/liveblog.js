@@ -158,17 +158,9 @@ define([
     function liveblogTime() {
         var i,
             blockTimes,
-            isLive = false,
             toneLiveBlogElems = document.getElementsByClassName('tone--liveBlog');
 
-        for (i = 0; i < toneLiveBlogElems.length; i++) {
-            if (toneLiveBlogElems[i].classList.contains('is-live')) {
-                isLive = true;
-                break;
-            }
-        }
-
-        if (isLive) {
+        if (toneLiveBlogElems.length && GU.opts.isLive) {
             relativeDates.init('.key-event__time, .block__time', 'title');
         } else {
             blockTimes = document.getElementsByClassName('block__time');

@@ -223,22 +223,23 @@
         <script type="text/javascript">
             GU.Bootstrap.init({
                 sectionTone: 'feature1',
-                isImmersive: 'immersive',
-                isAdvertising: '',
+                isImmersive: 'immersive' ? true : false,
+                isAdvertising: '' ? true : false,
                 fontSize: 'font-size-4',
                 platform: 'ios',
-                isOffline: '',
+                isOffline: '' ? true : false,
                 contentType: 'article',
                 adsEnabled: '',
-                adsEnableHiding: 'true',
+                adsEnableHiding: 'true' === 'true' ? true : false,
                 adsConfig: 'mobile',
                 actionBarHeight: '0',
                 fontSize: '4',
                 templatesDirectory: '../../ArticleTemplates/',
                 pageId: 'uk-news/2016/jul/09/iraq-war-after-blair-and-bush-met-the-tempo-changed',
                 mpuAfterParagraphs: '3',
-                useAdsReady: 'true',
-                section: 'UK'
+                useAdsReady: 'true' === 'true' ? true : false,
+                section: 'UK',
+                nativeYoutubeEnabled: '' === 'true' ? true : false
             });
         </script>
 

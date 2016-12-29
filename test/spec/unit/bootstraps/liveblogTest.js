@@ -383,7 +383,7 @@ define([
                     .mock('modules/MyScroll', MyScrollMock)
                     .mock('bootstraps/common', commonMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) { 
-                        liveblogElem.classList.add('is-live');
+                        window.GU.opts.isLive = true;
 
                         liveblog.init();
 
@@ -404,6 +404,8 @@ define([
                     .mock('bootstraps/common', commonMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) { 
                         var blockTime = document.createElement('div');
+
+                        window.GU.opts.isLive = false;
 
                         blockTime.classList.add('block__time');
                         blockTime.setAttribute('title', 'xxx');

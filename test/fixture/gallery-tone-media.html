@@ -83,21 +83,22 @@
         <script type="text/javascript">
             GU.Bootstrap.init({
                 sectionTone: 'media',
-                isAdvertising: '',
+                isAdvertising: '' ? true : false,
                 fontSize: 'font-size-4',
                 platform: 'ios',
-                isOffline: '',
+                isOffline: '' ? true : false,
                 contentType: 'gallery',
                 adsEnabled: 'mpu',
-                adsEnableHiding: 'true',
+                adsEnableHiding: 'true' === 'true' ? true : false,
                 adsConfig: 'mobile',
                 actionBarHeight: '0',
                 fontSize: '4',
                 templatesDirectory: '../../ArticleTemplates/',
                 pageId: 'stage/gallery/2016/may/17/west-end-designing-harry-potter-and-the-cursed-child-palace-theatre-in-pictures',
                 mpuAfterParagraphs: '3',
-                useAdsReady: 'true',
-                section: 'stage'
+                useAdsReady: 'true' === 'true' ? true : false,
+                section: 'stage',
+                nativeYoutubeEnabled: '' === 'true' ? true : false
             });
         </script>
     </body>

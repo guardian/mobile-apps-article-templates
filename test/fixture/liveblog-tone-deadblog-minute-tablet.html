@@ -414,23 +414,24 @@
 
             GU.Bootstrap.init({
                 sectionTone: 'usMinute',
-                isLive: '',
-                isMinute: 'the-minute',
-                isAdvertising: '',
+                isLive: '' ? true : false,
+                isMinute: 'the-minute' ? true : false,
+                isAdvertising: '' ? true : false,
                 fontSize: 'font-size-4',
                 platform: 'ios',
-                isOffline: '',
+                isOffline: '' ? true : false,
                 contentType: 'liveblog',
                 adsEnabled: '',
-                adsEnableHiding: 'true',
+                adsEnableHiding: 'true' === 'true' ? true : false,
                 adsConfig: 'tablet',
                 actionBarHeight: '0',
                 fontSize: '4',
                 templatesDirectory: '../../ArticleTemplates/',
                 pageId: 'us-news/live/2016/may/16/donald-trump-on-women-blames-media',
                 mpuAfterParagraphs: '3',
-                useAdsReady: 'true',
-                section: 'US'
+                useAdsReady: 'true' === 'true' ? true : false,
+                section: 'US',
+                nativeYoutubeEnabled: '' === 'true' ? true : false
             });
         </script>
 
