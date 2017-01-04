@@ -289,7 +289,7 @@ define([
 
                     container.appendChild(videoWrapper);
 
-                    window.GU.opts.nativeYoutubeEnabled = 'true';
+                    window.GU.opts.nativeYoutubeEnabled = true;
 
                     youtube.init();
 
@@ -509,7 +509,7 @@ define([
 
                         container.appendChild(videoWrapper);
 
-                        window.GU.opts.nativeYoutubeEnabled = 'true';
+                        window.GU.opts.nativeYoutubeEnabled = true;
 
                         youtube.init();
 

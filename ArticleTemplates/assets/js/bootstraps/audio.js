@@ -11,10 +11,9 @@ define([
         slider1;
 
     function getColor() {
-        var isAdv = document.body.classList.contains('is_advertising'),
-            isAudio = !document.body.classList.contains('tone--podcast') && document.body.classList.contains('article--audio');
+        var isAudio = !document.body.classList.contains('tone--podcast') && document.body.classList.contains('article--audio');
         
-        return isAdv ? 'rgba(105, 209, 202, 0.15)' : (isAudio ? 'rgba(255, 187, 0, 0.05)' : 'rgba(167, 216, 242, 0.10)');
+        return GU.opts.isAdvertising ? 'rgba(105, 209, 202, 0.15)' : (isAudio ? 'rgba(255, 187, 0, 0.05)' : 'rgba(167, 216, 242, 0.10)');
     }
 
     function secondsTimeSpanToHMS(s) {

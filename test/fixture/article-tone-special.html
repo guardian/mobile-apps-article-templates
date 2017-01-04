@@ -147,22 +147,23 @@
         <script type="text/javascript">
             GU.Bootstrap.init({
                 sectionTone: 'special',
-                isImmersive: '',
-                isAdvertising: '',
+                isImmersive: '' ? true : false,
+                isAdvertising: '' ? true : false,
                 fontSize: 'font-size-4',
                 platform: 'ios',
-                isOffline: '',
+                isOffline: '' ? true : false,
                 contentType: 'article',
                 adsEnabled: 'mpu',
-                adsEnableHiding: 'true',
+                adsEnableHiding: 'true' === 'true' ? true : false,
                 adsConfig: 'mobile',
                 actionBarHeight: '0',
                 fontSize: '4',
                 templatesDirectory: '../../ArticleTemplates/',
                 pageId: 'news/2015/feb/18/hsbc-swiss-bank-searched-as-officials-launch-money-laundering-inquiry',
                 mpuAfterParagraphs: '3',
-                useAdsReady: 'true',
-                section: 'News'
+                useAdsReady: 'true' === 'true' ? true : false,
+                section: 'News',
+                nativeYoutubeEnabled: '' === 'true' ? true : false
             });
         </script>
     </body>

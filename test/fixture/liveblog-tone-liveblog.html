@@ -598,23 +598,24 @@
 
             GU.Bootstrap.init({
                 sectionTone: 'liveBlog',
-                isLive: 'is-live',
-                isMinute: '',
-                isAdvertising: '',
+                isLive: 'is-live' ? true : false,
+                isMinute: '' ? true : false,
+                isAdvertising: '' ? true : false,
                 fontSize: 'font-size-4',
                 platform: 'ios',
-                isOffline: '',
+                isOffline: '' ? true : false,
                 contentType: 'liveblog',
                 adsEnabled: 'mpu',
-                adsEnableHiding: 'true',
+                adsEnableHiding: 'true' === 'true' ? true : false,
                 adsConfig: 'mobile',
                 actionBarHeight: '0',
                 fontSize: '4',
                 templatesDirectory: '../../ArticleTemplates/',
                 pageId: 'politics/live/2016/jun/28/brexit-live-cameron-eu-leaders-brussels-corbyn-confidence',
                 mpuAfterParagraphs: '3',
-                useAdsReady: 'true',
-                section: 'politics'
+                useAdsReady: 'true' === 'true' ? true : false,
+                section: 'politics',
+                nativeYoutubeEnabled: '' === 'true' ? true : false
             });
         </script>
 

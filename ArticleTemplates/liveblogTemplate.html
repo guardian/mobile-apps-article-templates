@@ -180,25 +180,25 @@
 
         GU.Bootstrap.init({
             sectionTone: '__SECTION_TONE__',
-            isLive: '__IS_LIVE__',
-            isMinute: '__THE_MINUTE__',
-            isAdvertising: '__IS_ADVERTISING__',
+            isLive: '__IS_LIVE__' ? true : false,
+            isMinute: '__THE_MINUTE__' ? true : false,
+            isAdvertising: '__IS_ADVERTISING__' ? true : false,
             fontSize: '__FONT_SIZE__',
             platform: '__PLATFORM__',
-            isOffline: '__IS_OFFLINE__',
+            isOffline: '__IS_OFFLINE__' ? true : false,
             contentType: 'liveblog',
             adsEnabled: '__ADS_ENABLED__',
-            adsEnableHiding: '__ADS_ENABLE_HIDING__',
+            adsEnableHiding: '__ADS_ENABLE_HIDING__' === 'true' ? true : false,
             adsConfig: '__ADS_CONFIG__',
             actionBarHeight: '__ACTIONBARHEIGHT__',
             fontSize: '__FONT_SIZE_INT__',
             templatesDirectory: '__TEMPLATES_DIRECTORY__',
             pageId: '__PAGE_ID__',
             mpuAfterParagraphs: '__MPU_AFTER_PARAGRAPHS__',
-            useAdsReady: '__ADS_FAST_CALLBACK__',
+            useAdsReady: '__ADS_FAST_CALLBACK__' === 'true' ? true : false,
             section: '__SECTION__',
             tests: '__TEST_SPEC__',
-            nativeYoutubeEnabled: '__NATIVE_YOUTUBE_ENABLED__'
+            nativeYoutubeEnabled: '__NATIVE_YOUTUBE_ENABLED__' === 'true' ? true : false
         });
     </script>
 </body>

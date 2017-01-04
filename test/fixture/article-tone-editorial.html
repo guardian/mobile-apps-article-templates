@@ -118,22 +118,23 @@
     <script type="text/javascript">
         GU.Bootstrap.init({
             sectionTone: 'editorial',
-            isImmersive: '',
-            isAdvertising: '',
+            isImmersive: '' ? true : false,
+            isAdvertising: '' ? true : false,
             fontSize: 'font-size-4',
             platform: 'ios',
-            isOffline: '',
+            isOffline: '' ? true : false,
             contentType: 'article',
             adsEnabled: 'mpu',
-            adsEnableHiding: 'true',
+            adsEnableHiding: 'true' === 'true' ? true : false,
             adsConfig: 'mobile',
             actionBarHeight: '0',
             fontSize: '4',
             templatesDirectory: '../../ArticleTemplates/',
             pageId: 'commentisfree/2016/apr/25/the-guardian-view-on-bhs-on-the-high-street',
             mpuAfterParagraphs: '3',
-            useAdsReady: 'true',
-            section: 'opinion'
+            useAdsReady: 'true' === 'true' ? true : false,
+            section: 'opinion',
+            nativeYoutubeEnabled: '' === 'true' ? true : false
         });
     </script>
 

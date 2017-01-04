@@ -316,7 +316,7 @@ define([
             interactive,
             interactives;
 
-        if ((!document.body.classList.contains('offline') || force) && navigator.onLine) {
+        if ((!GU.opts.isOffline || force) && navigator.onLine) {
             interactives = document.querySelectorAll('figure.interactive');
 
             for (i = 0; i < interactives.length; i++) {
@@ -382,6 +382,7 @@ define([
     }
 
     function offlineSwitch() {
+        GU.opts.isOffline = true;
         document.body.classList.add('offline');
     }
 
@@ -483,8 +484,7 @@ define([
             hideElem,
             href,
             activeTab,
-            tabId,
-            isAndroid = document.body.classList.contains('android');
+            tabId;
 
         evt.preventDefault();
         
@@ -525,12 +525,12 @@ define([
                     window.location.href = 'x-gu://football_tab_liveblog';
                     break;
                 case 'cricket__tab--liveblog':
-                    if (isAndroid) {
+                    if (GU.opts.platform === 'android') {
                         window.GuardianJSInterface.cricketTabChanged('overbyover');
                     }
                     break;
                 case 'cricket__tab--stats':
-                    if (isAndroid) {
+                    if (GU.opts.platform === 'android') {
                         window.GuardianJSInterface.cricketTabChanged('scorecard');
                     }
                     break;
@@ -607,7 +607,7 @@ define([
             'tone--podcast': 'byline--media'
         };
 
-        if (document.body.classList.contains('is_advertising')) {
+        if (GU.opts.isAdvertising) {
             for (tone in tones) {
                 if (tones.hasOwnProperty(tone)) {
                     if (document.body.classList.contains(tone)) {

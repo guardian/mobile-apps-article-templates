@@ -20,7 +20,11 @@ define([
             injector = new Squire();
             sandbox = sinon.sandbox.create();
 
-            window.GU = {};
+            window.GU = {
+                opts: {
+                    isMinute: false
+                }
+            };
 
             util.init();
         });

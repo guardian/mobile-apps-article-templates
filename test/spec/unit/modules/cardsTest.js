@@ -28,7 +28,9 @@ define([
             
             window.applyNativeFunctionCall = sinon.spy();
 
-            window.GU = {};
+            window.GU = {
+                opts: {}
+            };
 
             window.GuardianJSInterface = {
                 registerRelatedCardsTouch: sinon.spy()
@@ -178,7 +180,7 @@ define([
                             relatedContentList,
                             touchstartEvt = document.createEvent('HTMLEvents');
 
-                        document.body.classList.add('android');
+                        window.GU.opts.platform = 'android';
 
                         relatedContentWrapper.style.width = '300px';
 
@@ -195,8 +197,6 @@ define([
                         expect(window.GuardianJSInterface.registerRelatedCardsTouch).to.have.been.called;
                         expect(window.GuardianJSInterface.registerRelatedCardsTouch).to.have.been.calledWith(true);                        
 
-                        document.body.classList.remove('android');
-
                         done();
                     });
             });
@@ -209,7 +209,7 @@ define([
                             relatedContentList,
                             touchendEvt = document.createEvent('HTMLEvents');
 
-                        document.body.classList.add('android');
+                        window.GU.opts.platform = 'android';
 
                         relatedContentWrapper.style.width = '300px';
 
@@ -225,8 +225,6 @@ define([
 
                         expect(window.GuardianJSInterface.registerRelatedCardsTouch).to.have.been.called;
                         expect(window.GuardianJSInterface.registerRelatedCardsTouch).to.have.been.calledWith(false);                        
-
-                        document.body.classList.remove('android');
 
                         done();
                     });

@@ -27,7 +27,7 @@ define(function () {
     };
 
     function bootstrap(_window) {
-        if (document.body.classList.contains('ios')) {
+        if (GU.opts.platform === 'ios') {
             _window.nativeSharing = modules.nativeSharing.bind(modules, _window);
         }
     }

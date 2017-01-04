@@ -471,23 +471,24 @@
 
         GU.Bootstrap.init({
             sectionTone: 'deadBlog',
-            isLive: '',
-            isMinute: '',
-            isAdvertising: '',
+            isLive: '' ? true : false,
+            isMinute: '' ? true : false,
+            isAdvertising: '' ? true : false,
             fontSize: 'font-size-4',
             platform: 'ios',
-            isOffline: '',
+            isOffline: '' ? true : false,
             contentType: 'liveblog',
             adsEnabled: 'mpu',
-            adsEnableHiding: 'true',
+            adsEnableHiding: 'true' === 'true' ? true : false,
             adsConfig: 'mobile',
             actionBarHeight: '0',
             fontSize: '4',
             templatesDirectory: '../../ArticleTemplates/',
             pageId: 'world/live/2015/sep/25/pope-francis-in-new-york-pontiff-addresses-un-and-visits-911-memorial-live-updates',
             mpuAfterParagraphs: '3',
-            useAdsReady: 'true',
-            section: 'world'
+            useAdsReady: 'true' === 'true' ? true : false,
+            section: 'world',
+            nativeYoutubeEnabled: '' === 'true' ? true : false
         });
     </script>
 
