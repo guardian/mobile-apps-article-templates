@@ -49,7 +49,7 @@ define([
             adjustHeaderImageHeight();
 
             // we actually need for the embed to be sent through with prefixed & unprefixed styles
-            if (document.body.classList.contains('windows')) {
+            if (GU.opts.platform === 'windows') {
                 formatImmersiveForWindows();
             }
 

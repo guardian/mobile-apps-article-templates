@@ -99,7 +99,7 @@ define([
                             };
 
                             GU.opts.contentType = 'liveblog';
-                            GU.opts.isMinute = '';
+                            GU.opts.isMinute = false;
 
                             app.init();
 
@@ -125,7 +125,7 @@ define([
                             };
 
                             GU.opts.contentType = 'liveblog';
-                            GU.opts.isMinute = 'the-minute';
+                            GU.opts.isMinute = true;
 
                             app.init();
 

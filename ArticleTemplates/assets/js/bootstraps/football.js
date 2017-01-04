@@ -1,7 +1,9 @@
 define([
-    'd3'
+    'd3',
+    'modules/youtube'
 ], function (
-    d3
+    d3,
+    youtube
 ) {
     'use strict';
 
@@ -220,8 +222,8 @@ define([
     function ready() {
         if (!initialised) {
             initialised = true;
-
             setupGlobals();
+            youtube.init();
         }
     }
 

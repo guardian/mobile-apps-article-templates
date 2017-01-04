@@ -15,7 +15,7 @@ define(function() {
     }
 
     function setStateHandlers() {
-        if (!GU.opts.nativeYoutubeEnabled || GU.opts.nativeYoutubeEnabled !== 'true') {
+        if (!GU.opts.nativeYoutubeEnabled) {
             stateHandlers = {
                 'ENDED': onPlayerEnded,
                 'PLAYING': onPlayerPlaying,
@@ -126,7 +126,7 @@ define(function() {
         if (players[id].placeholder) {
             touchPoint = players[id].placeholder.getElementsByClassName('youtube-media__touchpoint')[0];
             
-            if(!GU.opts.nativeYoutubeEnabled || GU.opts.nativeYoutubeEnabled !== 'true') {
+            if (!GU.opts.nativeYoutubeEnabled) {
                 players[id].placeholder.classList.add('disable-pointer-events');
             } else {
                 touchPoint.addEventListener('click', sendPlayEventForNativePlayer.bind(null, id));

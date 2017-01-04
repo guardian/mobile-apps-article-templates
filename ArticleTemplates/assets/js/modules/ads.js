@@ -215,7 +215,7 @@ define(function () {
     }
 
     function fireAdsReady() {
-        if (!document.body.classList.contains('no-ready') && GU.opts.useAdsReady === 'true') {
+        if (!document.body.classList.contains('no-ready') && GU.opts.useAdsReady) {
             GU.util.signalDevice('ads-ready');
         }
     }

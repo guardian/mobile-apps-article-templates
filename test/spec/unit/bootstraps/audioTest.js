@@ -24,7 +24,11 @@ define([
 
             mobileSliderMock = sinon.spy();
             
-            window.GU = {};
+            window.GU = {
+                opts: {
+                    isAdvertising: ''
+                }
+            };
             util.init();
         });
 

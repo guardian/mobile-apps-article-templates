@@ -158,17 +158,9 @@ define([
     function liveblogTime() {
         var i,
             blockTimes,
-            isLive = false,
             toneLiveBlogElems = document.getElementsByClassName('tone--liveBlog');
 
-        for (i = 0; i < toneLiveBlogElems.length; i++) {
-            if (toneLiveBlogElems[i].classList.contains('is-live')) {
-                isLive = true;
-                break;
-            }
-        }
-
-        if (isLive) {
+        if (toneLiveBlogElems.length && GU.opts.isLive) {
             relativeDates.init('.key-event__time, .block__time', 'title');
         } else {
             blockTimes = document.getElementsByClassName('block__time');
@@ -222,14 +214,14 @@ define([
         addClassesToMinuteBlocks(blocks);
         updateMinuteBlockTitles(blocks);
 
-        if (document.body.classList.contains('advert-config--tablet')) {
+        if (GU.opts.adsConfig === 'tablet') {
             adjustMinuteBlocks(blocks);
 
             // update dimensions on orientation change
             window.addEventListener('resize', GU.util.debounce(adjustMinuteBlocks.bind(null, blocks), 100));
         } else {
             // If windows add background images to minute blocks
-            if (document.body.classList.contains('windows')) {   
+            if (GU.opts.platform ==='windows') {   
                 addBackgroundImagesToMinuteBlocks(blocks);
             }
             
@@ -590,7 +582,7 @@ define([
             window.addEventListener('scroll', GU.util.debounce(updateBlocksOnScroll, 100, true));
             liveMore();
             
-            if (document.body.classList.contains('the-minute')) {
+            if (GU.opts.isMinute) {
                 setupTheMinute();
             } else {
                 twitter.init();
