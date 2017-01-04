@@ -869,8 +869,25 @@ body.the-minute {
                             -webkit-animation-fill-mode: forwards;
                         }
 
-                        @keyframes line,
                         @-webkit-keyframes line {
+                            0% {
+                                opacity: 1;
+                            }
+                            2% {
+                                opacity: 0;
+                            }
+                            50% {
+                                opacity: 0;
+                            }
+                            52% {
+                                opacity: 1;
+                            }
+                            100% {
+                                opacity: 1;
+                            }
+                        }
+
+                        @keyframes line {
                             0% {
                                 opacity: 1;
                             }
