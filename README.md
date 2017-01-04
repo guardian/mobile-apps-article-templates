@@ -34,7 +34,7 @@ Grunt will provide the following services:
 
 * `grunt rsync` it copies the folder `ArticleTemplates` to the iOs and Android project as specified on `base.ios` and `base.html`.
 * `grunt sass` it generated the CSS files from SASS.
-* `grunt scsslint` it launches the SASS syntax checker against our codebase.
+* `grunt sasslint` it launches the SASS syntax checker against our codebase.
 * `grunt jshint` it performs a syntax checking on the current js codebase.
 * `grunt karma` it runs the unit test pack from the test/spec/unit/ directory
 * `grunt shell:android --card=1234` it generates a `android-news-app-debug.apk` file using the current project files. The `card` parameter is used to specificy the jira card number, so if the ticket is `AND-1234` card is equal to `1234`. This command only works if the Android SDK is installed and `adb` is in `PATH`.
