@@ -12,91 +12,92 @@ Displays a 'content unavailable' instead of an interactive if there is no connec
 */
 
 body[data-fullscreen-interactive] {
-	margin: 0;
+    margin: 0;
 }
 
-.interactive--offline{
-	background-color: color(shade-5);
-	text-align: center;
-	padding: 1px 0;
-	font-family: $agate-sans;
-	@include meta();
-	color: color(shade-2);
-	clear: both;
-	margin: 0;
+.interactive--offline {
+    background-color: color(shade-5);
+    text-align: center;
+    padding: 1px 0;
+    font-family: $agate-sans;
+    @include meta();
+    color: color(shade-2);
+    clear: both;
+    margin: 0;
 
-	body:not([data-fullscreen-interactive]) &{
-		margin: 0 base-px(-1) 0 base-px(-1) !important; // to override _element.scss:74
-	}
+    body:not([data-fullscreen-interactive]) & {
+        margin: 0 base-px(-1) !important; // to override _element.scss:74
+    }
 
-	body[data-fullscreen-interactive] &{
-		@include meta(1.4);
-	}
+    body[data-fullscreen-interactive] & {
+        @include meta(1.4);
+    }
 
-	&:before{
-		content: "Sorry, we are unable to display\Athis content as you have\Ano internet connection.\APlease try again.";
-		white-space: pre;
-		display: block;
-		vertical-align: middle;
-		margin-top: 3.5em;
-		padding-top: 2.5em;
-		background: transparent url("../img/unsmiley.png") no-repeat center top;
-		background-size: 2em;
-	}
+    &:before {
+        content: 'Sorry, we are unable to display\Athis content as you have\Ano internet connection.\APlease try again.';
+        white-space: pre;
+        display: block;
+        vertical-align: middle;
+        margin-top: 3.5em;
+        padding-top: 2.5em;
+        background: transparent url('../img/unsmiley.png') no-repeat center top;
+        background-size: 2em;
+    }
 
-	* {
-		display: none;
-	}
+    * {
+        display: none;
+    }
 
-	.interactive--offline--icon{
-		display: inline-block;
-		margin-top: 1em;
-		margin-bottom: 3.5em;
-		color: color(shade-2);
-		font-family: $icon;
-		-webkit-tap-highlight-color: transparent;
+    .interactive--offline--icon {
+        display: inline-block;
+        margin-top: 1em;
+        margin-bottom: 3.5em;
+        color: color(shade-2);
+        font-family: $icon;
+        -webkit-tap-highlight-color: transparent;
 
-		&:after{
-			display: inline-block;
-			padding: 7px 10px 13px 10px;
-			font-size: 1.5em;
-		}
+        &:after {
+            display: inline-block;
+            padding: 7px 10px 13px;
+            font-size: 1.5em;
+        }
 
-		&.interactive--offline--icon--reload{
-			&:after{
-				content: '\00e045';
-				border: 1px solid color(shade-2);
-				border-radius: 50%;
-			}
-			&:active{
-				color: color(shade-7);
-				&:after{
-					border: 1px solid color(shade-7);
-				}
-			}
-		}
+        &.interactive--offline--icon--reload {
+            &:after {
+                content: '\00e045';
+                border: 1px solid color(shade-2);
+                border-radius: 50%;
+            }
+            &:active {
+                color: color(shade-7);
 
-		&.interactive--offline--icon--loading{
-			display: none;
-			-webkit-animation: fadeIn;
-			-webkit-animation-direction: alternate;
-			-webkit-animation-iteration-count: infinite;
-			-webkit-animation-duration: 1s;
-			&:after{
-				content: '\00e00c';
-				padding: 7px 10px 15px 10px;
-			}
-		}
-	}
+                &:after {
+                    border: 1px solid color(shade-7);
+                }
+            }
+        }
 
-	&.interactive--loading{
-		.interactive--offline--icon--reload{
-			display: none;
-		}
-		.interactive--offline--icon--loading{
-			display: block;
-		}
-	}
+        &.interactive--offline--icon--loading {
+            display: none;
+            -webkit-animation: fadeIn;
+            -webkit-animation-direction: alternate;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-duration: 1s;
+            &:after {
+                content: '\00e00c';
+                padding: 7px 10px 15px;
+            }
+        }
+    }
+
+    &.interactive--loading {
+        .interactive--offline--icon--reload {
+            display: none;
+        }
+        .interactive--offline--icon--loading {
+            display: block;
+        }
+    }
 }
 
 @-webkit-keyframes fadeIn {

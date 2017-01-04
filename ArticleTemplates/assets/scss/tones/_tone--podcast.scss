@@ -56,7 +56,7 @@
 
         .headline {
             margin-top: base-px(.5);
-            color: #fff;
+            color: color(shade-7);
 
             .headline__accent {
                 color: color(shade-1);
@@ -113,7 +113,7 @@
     }
 
     .meta__misc {
-         @include mq($from: col4) {
+        @include mq($from: col4) {
             padding: {
                 left: 0;
                 right: 0;
@@ -134,11 +134,11 @@
         margin-top: 3px;
     }
 
-    &.android .article__header .card__title--audio::before{
+    &.android .article__header .card__title--audio::before {
         margin-top: -3px;
     }
     
-    &.is_advertising{
+    &.is_advertising {
         .alerts,
         .alerts.following:active {
             border-color: rgba(color(shade-1), .5);

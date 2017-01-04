@@ -1,4 +1,4 @@
-body[data-content-type="liveblog"] {
+body[data-content-type='liveblog'] {
     // Hide the special minute header for every other liveblog    
     &:not(.the-minute) {
         .minute-vertical-rule,
@@ -15,14 +15,14 @@ body[data-content-type="liveblog"] {
     border-bottom: 0;
 
     .article__header {
-        background-color: #fff;
+        background-color: color(shade-7);
 
         .section {
             position: relative;
         }
 
         .section__live {
-            color: #fff;
+            color: color(shade-7);
             padding: base-px(.16, 0, .16, 0);
             display: none; // Default
             position: absolute;
@@ -72,8 +72,8 @@ body[data-content-type="liveblog"] {
         }
 
         figcaption {
-            color: #fff;
-            border-bottom: none;
+            color: color(shade-7);
+            border-bottom: 0;
         }
     }
 
@@ -100,7 +100,7 @@ body[data-content-type="liveblog"] {
     }
 
     .alerts {
-        margin: base-px(1, 1, 0, 0.7);
+        margin: base-px(1, 1, 0, .7);
     }
 
     .advert-slot--mpu {

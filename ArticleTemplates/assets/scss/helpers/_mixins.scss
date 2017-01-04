@@ -98,13 +98,13 @@ $body-lead-2: 2.6rem;
 // Custom media queries 
 @mixin customMQ($point) {
     /*  iPhone 6 */ 
-  @if $point == iP6 {
-    @media (min-width: 375px) and (max-width: 480px) { @content; }
-  }
-  /*  iPhone 6 Plus */ 
-  @else if $point == iP6P {
-    @media (min-width: 414px) and (max-width: 480px) { @content; }
-  }
+    @if $point == iP6 {
+        @media (min-width: 375px) and (max-width: 480px) { @content; }
+    }
+    /*  iPhone 6 Plus */ 
+    @else if $point == iP6P {
+        @media (min-width: 414px) and (max-width: 480px) { @content; }
+    }
 }
 
 // Meta font sizing
@@ -133,15 +133,15 @@ $meta-lead-2: 2.2rem;
         text-decoration: none;
 
         // Underline via gradient background
-        background-image: linear-gradient(rgba($color, 0.25) 0%, $color 100%);
+        background-image: linear-gradient(rgba($color, .25) 0%, $color 100%);
         background-repeat: repeat-x; 
         background-size: 1px 1px;
         background-position: 0 bottom;
         
         // Tweak position + thickness for high res (1.75x and up) displays
         @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
-          background-image: linear-gradient(rgba($color, 0.25) 0%, $color 100%);
-          background-position: 0 93%;
+            background-image: linear-gradient(rgba($color, .25) 0%, $color 100%);
+            background-position: 0 93%;
         }
 
         // Clear descendors from underline
@@ -228,23 +228,23 @@ $meta-lead-2: 2.2rem;
 }
 
 // template for tags
-@mixin tag-button($text-color, $background-color, $process: "darken", $tone-change: 10%){
+@mixin tag-button($text-color, $background-color, $process: 'darken', $tone-change: 10%) {
     color: $text-color;
     background-color: $background-color;
 
     &:active {
-        color: if($process == "darken", darken($text-color, $tone-change), lighten($text-color, $tone-change));
-        background-color: if($process == "darken", darken($background-color, $tone-change), lighten($background-color, $tone-change));
+        color: if($process == 'darken', darken($text-color, $tone-change), lighten($text-color, $tone-change));
+        background-color: if($process == 'darken', darken($background-color, $tone-change), lighten($background-color, $tone-change));
     }
 }
 
-@mixin tag-more-button($text-color, $border-color, $process: "darken", $tone-change: 10%){
+@mixin tag-more-button($text-color, $border-color, $process: 'darken', $tone-change: 10%) {
     color: $text-color;
     border: 1px solid $border-color;
 
     &:active {
-        color: if($process == "darken", darken($text-color, $tone-change), lighten($text-color, $tone-change));
-        border: 1px solid if($process == "darken", darken($border-color, $tone-change), lighten($border-color, $tone-change));;
+        color: if($process == 'darken', darken($text-color, $tone-change), lighten($text-color, $tone-change));
+        border: 1px solid if($process == 'darken', darken($border-color, $tone-change), lighten($border-color, $tone-change));;
     }    
 }
 
@@ -252,13 +252,13 @@ $meta-lead-2: 2.2rem;
     color: $color;
     display: block;
     font-weight: bold;
-    border: none;
+    border: 0;
     position: absolute;
     bottom: 8px;
     left: 40px;
     padding: 0;
     line-height: 20px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,.5);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
 
     @include mq(col2, col3) {
         bottom: 8px * $related-card-upsize-col2;

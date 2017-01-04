@@ -51,12 +51,12 @@ body.immersive .article--immersive {
             .bullet,
             ul > li {
                 &::before {
-                    background-color: rgba(#fff, .4);
+                    background-color: rgba(color(shade-7), .4);
                 }
             }
 
             .sponsorship {
-                background: #fff;
+                background: color(shade-7);
                 border-top: 1px rgba(color(shade-3), .4) dotted;
             }
         }
@@ -127,7 +127,7 @@ body.immersive .article--immersive {
             padding-bottom: 12px;
             
             > a, & {
-                color: #fff;
+                color: color(shade-7);
                 font: 600 1.8rem $egyptian-display;
             }
 
@@ -146,7 +146,7 @@ body.immersive .article--immersive {
         }
 
         &__headline {
-            color: #fff;
+            color: color(shade-7);
             font-size: 3.5rem !important;
             line-height: 3.3rem;
             padding: 0 0 24px;
@@ -175,12 +175,12 @@ body.immersive .article--immersive {
 
         &__byline {
             background-color: none;
-            color: #fff;
+            color: color(shade-7);
             padding: 0;
         }
 
         &__body {
-            background: #fff;
+            background: color(shade-7);
 
             p {
                 a {
@@ -194,7 +194,7 @@ body.immersive .article--immersive {
         }
 
         &__meta {
-            background: #fff;
+            background: color(shade-7);
             margin: 0 auto;
             max-width: 1200px;
             padding-top: 6px;
@@ -202,7 +202,7 @@ body.immersive .article--immersive {
     }
 
     .standfirst {
-        color: #fff;
+        color: color(shade-7);
         background: none;
 
         a {
@@ -263,7 +263,7 @@ body.immersive .article--immersive {
 
             &:before {
                 border-bottom: 2px solid #dcdad5;
-                content: " ";
+                content: '';
                 height: 10px;
                 margin: 0 0 0 1px;
                 width: 100px;
@@ -279,7 +279,7 @@ body.immersive .article--immersive {
     .immersive__meta {
         color: color(shade-2);
         font: 1.6rem/1.4rem $agate-sans;
-        padding: base-px(0,1,2,1);
+        padding: base-px(0, 1, 2, 1);
         
         @include mq($from: col4) {
             padding-left: 240px;
@@ -304,12 +304,12 @@ body.immersive .article--immersive {
     .section__rule {
         border-bottom: 2px solid color(shade-4);
         height: 10px;
-        margin: base-px(0,0,1,.1);
+        margin: base-px(0, 0, 1, .1);
         width: 100px;
     }
 
     .review-rating {
-        color: rgba(#fff, .4);
+        color: rgba(color(shade-7), .4);
     }
 
     .review-rating--1 .icon:nth-child(-n+1),
@@ -317,13 +317,13 @@ body.immersive .article--immersive {
     .review-rating--3 .icon:nth-child(-n+3),
     .review-rating--4 .icon:nth-child(-n+4),
     .review-rating--5 .icon:nth-child(-n+5) {
-        color: #fff;
+        color: color(shade-7);
     }
 
     .prose {
         p,
         li {
-            @include text-underline(color(tone-feature1), #fff, color(tone-feature1-accent));
+            @include text-underline(color(tone-feature1), color(shade-7), color(tone-feature1-accent));
         }
 
         table,
@@ -333,7 +333,7 @@ body.immersive .article--immersive {
 
         .element-pullquote {
             blockquote {
-            footer,
+                footer,
                 &::after,
                 &::before {
                     color: color(tone-feature1);
@@ -342,8 +342,8 @@ body.immersive .article--immersive {
         }
 
         .title--image {
-            background-color: rgba(0,0,0,0.6);
-            color: #fff;
+            background-color: rgba(0, 0, 0, .6);
+            color: color(shade-7);
             font-size: 2rem;
             font-weight: 200;
             line-height: 2.6rem;
@@ -352,20 +352,20 @@ body.immersive .article--immersive {
                 left: -12px;
                 top: -53px;
             } 
-            padding: base-px(0.25, 0, 2, 1);
+            padding: base-px(.25, 0, 2, 1);
             position: relative;
             width: 108%;
             z-index: 1;
 
             @include mq($from: col2) {
-                padding: base-px(0.25, 0, 2.8, 1);
+                padding: base-px(.25, 0, 2.8, 1);
                 font-size: 3.2rem;
                 margin-top: -74px;
                 width: 136%;
             }
             
             @include mq($from: col4) {
-                width:1200px;
+                width: 1200px;
                 margin-left: -240px;
                 padding-left: 240px;
             }
@@ -373,7 +373,7 @@ body.immersive .article--immersive {
         
         .section__header {
             background-color: color(tone-feature1-accent) !important;
-            color: #fff;
+            color: color(shade-7);
             height: 180px;
             margin: {
                 bottom: 24px;
@@ -391,10 +391,10 @@ body.immersive .article--immersive {
 
             blockquote {
                 border-top: 1px solid color(tone-feature1-accent2) !important;
-                border-bottom: none !important;
-                background-color: rgba(0, 0, 0, 0.65);
-                color: #fff !important;
-                padding: base-px(0.5) base-px(0.5) base-px(2) base-px(0.5); 
+                border-bottom: 0 !important;
+                background-color: rgba(0, 0, 0, .65);
+                color: color(shade-7) !important;
+                padding: base-px(.5) base-px(.5) base-px(2); 
                 
                 &::before {
                     color: color(tone-feature1-accent2) !important;
@@ -412,8 +412,8 @@ body.immersive .article--immersive {
             position: relative;
 
             &::before {
-                background-color: rgba(0,0,0,0.6);
-                color: #fff;
+                background-color: rgba(0, 0, 0, .6);
+                color: color(shade-7);
                 content: attr(data-content) '';
                 font-family: $icon;
                 height: 30px;
@@ -424,11 +424,11 @@ body.immersive .article--immersive {
             }
 
             figcaption {
-                background-color: rgba(0,0,0,0.6);
-                color: #fff;
+                background-color: rgba(0, 0, 0, .6);
+                color: color(shade-7);
                 display: none;
                 position: absolute;
-                top:0;
+                top: 0;
                 width: 90%;
                 
                 &.display {
@@ -466,14 +466,14 @@ body.immersive .article--immersive {
                 }
 
                 cite {
-                  color: color(shade-3);
-                  font-size: 2rem;
-                  line-height: 2.4rem;
+                    color: color(shade-3);
+                    font-size: 2rem;
+                    line-height: 2.4rem;
 
-                   @include mq($from: col2) {
+                    @include mq($from: col2) {
                         font-size: 3.2rem;
                         line-height: 3.2rem;
-                   }
+                    }
                 }
 
                 &::before {
@@ -484,14 +484,14 @@ body.immersive .article--immersive {
                     margin-right: 8px;
                     position: relative;
 
-                     @include mq($from: col2) {
+                    @include mq($from: col2) {
                         font-size: 4rem;
                         line-height: 1.3rem;
                     }
                 }
 
                 &::after {
-                    content:"";
+                    content: '';
                 }
             }
             
@@ -515,7 +515,7 @@ body.immersive .article--immersive {
 
         .element-image {
             &.element--immersive {
-               @include mq($from: col4) {
+                @include mq($from: col4) {
                     margin-left: -240px;
                     width: 1200px;
 

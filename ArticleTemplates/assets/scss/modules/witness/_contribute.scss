@@ -20,7 +20,7 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
 ```
 */
 
-.witness{
+.witness {
     margin: base-px(2, 1, 1, 1);
 
     @include mq($to: col2) {
@@ -31,7 +31,7 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
         font-size: 1.6rem;
     }
 
-    .witness__button{
+    .witness__button {
         background-color: color(witness-bg);
         border-radius: 50px;
         margin-right: base-px(1);
@@ -44,35 +44,35 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
         color: color(shade-7);
         white-space: nowrap;
 
-        &:before{
+        &:before {
             content: '\e050';
             color: color(shade-7);
             font-family: $icon;
             display: inline-block;
             position: relative;
             top: 1px;
-            padding: 0 0.5em 0 1em;
+            padding: 0 .5em 0 1em;
         }
 
-        &:after{
+        &:after {
             content: '';
             display: inline-block;
             vertical-align: middle;
             height: 100%;
         }
 
-        &:active{
+        &:active {
             color: color(witness-active);
         }
     } 
 
-    .witness__logo{
+    .witness__logo {
         vertical-align: middle;
         display: inline-block;
         width: 8em;
         height: 100%;
         position: relative;
-        .ios &{
+        .ios & {
             bottom: 2px;
             @include mq($from: col2) {
                 bottom: 1px;
@@ -88,11 +88,11 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
         background-size: contain;
     }
 
-    .witness__sponsor-logo{
+    .witness__sponsor-logo {
         fill: #676868;
     }
 
-    .witness__sponsor{
+    .witness__sponsor {
         //display: inline-block;
         display: none;
         vertical-align: middle;
@@ -105,10 +105,10 @@ Display a call-to-action asking for contributions to a Guardian Witness assignme
         @include mq($from: col3) {
             width: 6%;
         }
-        svg{
+        svg {
             position: relative;
             max-height: 100%;
-            top: 0.3em;
+            top: .3em;
         }
     }
 }
