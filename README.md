@@ -6,7 +6,7 @@ Article templates used within the Guardian’s next-generation iOS and Android a
 * [brew](http://brew.sh/) as a package manager.
 * [rbenv](https://github.com/sstephenson/rbenv). Install it using brew `brew install rbenv ruby-build`. Remember to add `eval "$(rbenv init -)"` to your preferred shell startup file (e.g. `~/.profile`, `~/.zshrc`, etc).
 * [NVM](https://github.com/creationix/nvm).
-* [NodeJS](http://nodejs.org/). Install using nvm: `nvm install v0.12.5`. Remember to add `nvm use v0.12.5` to your preferred shell startup file.
+* [NodeJS](http://nodejs.org/). Install using nvm: `nvm install v6.9.2`. Remember to add `nvm use v6.9.2` to your preferred shell startup file.
 * [Grunt](http://gruntjs.com/). Install using `npm install -g grunt grunt-cli`.
 * ImageMagick and PhantomJS. Install using brew: `brew install phantomjs imagemagick`.
 * It is recommended you restart your shell to ensure changes added the startup file are applied.
@@ -37,7 +37,6 @@ Grunt will provide the following services:
 * `grunt scsslint` it launches the SASS syntax checker against our codebase.
 * `grunt jshint` it performs a syntax checking on the current js codebase.
 * `grunt karma` it runs the unit test pack from the test/spec/unit/ directory
-* `grunt hologram` it generates/updates the visual styleguide. To see the guide `grunt express watch` and then point your browser to [localhost:3000](http://localhost:3000).
 * `grunt shell:android --card=1234` it generates a `android-news-app-debug.apk` file using the current project files. The `card` parameter is used to specificy the jira card number, so if the ticket is `AND-1234` card is equal to `1234`. This command only works if the Android SDK is installed and `adb` is in `PATH`.
 * `grunt shell:ios` it generates a `guardian-debug.ipa` file using the current project files. This command only works if XCode is installed and `ios.sign` and `ios.provisioning` have been filled.
 * `grunt shell:timeline --fixture=filename --times=20` it launches a telemetry session on file `filename` repeated `times` times. See the `Experimental performance measurement` section for more information.
@@ -81,25 +80,6 @@ Use this feature to check for CSS regressions:
 * in a separate shell run `grunt shell:wraithhistory` from the project root to collect baseline screenshots
 * when you're ready run `grunt shell:wraith` from the project root to take a new set of screenshots and compare the with the baseline
 * browse http://localhost:3000/root/test/visual/shots/gallery.html to see the differences between the to sets of shots
-
-## Updating the Documentation
-Documentation is built locally, to rebuild the documentation just type: `grunt hologram`
-
-Documentation is also available on the web at: http://guardian.github.io/mobile-apps-article-templates/, which displays the static files stored in the gh-pages branch. To update this publicly viewable site with your latest changes, run the following commands:
-
-```bash
-$ git commit -am "Commit message"
-$ git checkout gh-pages
-$ git merge master
-$ git push origin master gh-pages
-```
-
-Alternatively, you can set up your local git repository to automatically push changes to both master and gh-pages branches. Simply add the following 2 lines to the ``[remote "origin"]`` section of ``.git/config``:
-
-```
-push = +refs/heads/master:refs/heads/gh-pages
-push = +refs/heads/master:refs/heads/master
-```
 
 ## APKs and IPAs
 When everything is properly configured type `grunt installer --card 123` to create a debuggable APK and IPA in the root folder of the project. Replace `123` with the number of a relevant Jira card for this build, as it will be appended to the version number in the app for reference.
