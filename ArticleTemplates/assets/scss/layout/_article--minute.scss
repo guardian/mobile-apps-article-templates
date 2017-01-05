@@ -298,51 +298,6 @@ body.the-minute {
             }
         }
 
-        .the-minute__nav {
-            border-left: 1px dotted rgba($minute_main, .75);
-            bottom: 0;
-            height: 56px;
-            position: fixed;
-            right: 0;
-            width: 70px;
-            z-index: 20;
-            -webkit-transition: opacity 100ms linear;
-            transition: opacity 100ms linear;
-            
-            @include mq($from: col4) {
-                margin-right: -600px;
-                right: 50%;
-            }
-
-            &-button {
-                border: 1px solid rgba($minute_main, .5);
-                border-radius: 50%;
-                bottom: 12px;
-                content: '';
-                height: 42px;
-                position: absolute;
-                right: 12px;
-                width: 42px;
-
-                // This controls the double chevron part of the next page icon, for all blocks but the last one
-                &::after {
-                    color: $minute_main;
-                    content: '\e001';
-                    font-family: $icon;
-                    font-size: 1.9rem;
-                    left: 50%;
-                    position: absolute;
-                    top: 50%;
-                    -webkit-transform: translateX(-50%) translateY(calc(-50% - 2px));
-                    transform: translateX(-50%) translateY(calc(-50% - 2px));
-                }
-            }
-
-            &.hide {
-                opacity: 0;
-            }
-        }
-
         // Format block elements
         .article--liveblog {
             @include minute_page;

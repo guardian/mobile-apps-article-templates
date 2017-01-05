@@ -3,13 +3,11 @@ define([
     'modules/relativeDates',
     'modules/twitter',
     'modules/youtube',
-    'modules/MyScroll',
     'bootstraps/common'
 ], function (
     relativeDates,
     twitter,
     youtube,
-    MyScroll,
     common
 ) {
     'use strict';
@@ -225,7 +223,7 @@ define([
                 addBackgroundImagesToMinuteBlocks(blocks);
             }
             
-            initScroller();
+            initMinuteForPhone();
         }
     }
 
@@ -389,20 +387,9 @@ define([
         }
     }
 
-    function initScroller() {
-        var scroller,
-            liveblogElem,
-            minuteNavElem = document.getElementsByClassName('the-minute__nav')[0],
-            wrapperElem = document.getElementsByClassName('article--liveblog')[0],
-            options = {
-                scrollX: false,
-                scrollY: true,
-                momentum: false,
-                snap: true,
-                bounce: false,
-                snapSpeed: 600,
-                disablePointer: true
-            };
+    function initMinuteForPhone() {
+        var liveblogElem,
+            wrapperElem = document.getElementsByClassName('article--liveblog')[0];
 
         if (wrapperElem) {
             liveblogElem = wrapperElem.getElementsByClassName('article__body--liveblog')[0];
@@ -411,67 +398,6 @@ define([
             wrapperElem.insertBefore(liveblogElem, wrapperElem.children[0]);
 
             removeTabletElems();
-
-            setScrollDimensions(liveblogElem, wrapperElem);
-
-            // initialise scroller
-            scroller = new MyScroll(wrapperElem, options);
-
-            // onScrollEnd show hide minuteNavElem
-            scroller.on('scrollEnd', onScrollEnd.bind(null, minuteNavElem, scroller));
-
-            // add click event handler to minuteNavElem
-            minuteNavElem.addEventListener('click', scrollToNextCard.bind(null, minuteNavElem, scroller));
-        
-            // update scroll dimensions on orientation change
-            window.addEventListener('resize', GU.util.debounce(onWindowResize.bind(null, liveblogElem, wrapperElem, scroller), 100));
-        }
-    }
-
-    function onWindowResize(liveblogElem, wrapperElem, scroller) {
-        setScrollDimensions(liveblogElem, wrapperElem);
-
-        setTimeout(function () {
-            scroller.refresh();
-        }, 0);
-    }
-
-    function setScrollDimensions(liveblogElem, wrapperElem) {
-        var i,
-            elemHeight,
-            scrollHeight = 0,
-            windowHeight = window.innerHeight;
-
-        // set height of scrollers wrapper    
-        wrapperElem.style.height = windowHeight + 'px';
-
-        // set heights of each card within scroller
-        for (i = 0; i < liveblogElem.children.length; i++) {
-            elemHeight = liveblogElem.children[i].offsetHeight;
-            
-            if (elemHeight) {
-                scrollHeight += windowHeight;
-                liveblogElem.children[i].style.height = windowHeight + 'px';
-            }
-        }
-
-        // set height of scrollable area
-        liveblogElem.style.height = scrollHeight + 'px';
-    }
-
-    function scrollToNextCard(minuteNavElem, scroller) {
-        if ((scroller.currentPage.pageY + 1) !== scroller.pages[0].length) {
-            scroller.goToPage(0, scroller.currentPage.pageY + 1, 600);
-
-            onScrollEnd(minuteNavElem, scroller);
-        }
-    }
-
-    function onScrollEnd(minuteNavElem, scroller) {
-        if ((scroller.currentPage.pageY + 1) === scroller.pages[0].length) {
-            minuteNavElem.classList.add('hide');
-        } else {
-            minuteNavElem.classList.remove('hide');
         }
     }
 
