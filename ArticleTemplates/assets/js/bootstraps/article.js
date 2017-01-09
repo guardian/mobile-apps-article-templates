@@ -49,7 +49,7 @@ define([
             adjustHeaderImageHeight();
 
             // we actually need for the embed to be sent through with prefixed & unprefixed styles
-            if (document.body.classList.contains('windows')) {
+            if (GU.opts.platform === 'windows') {
                 formatImmersiveForWindows();
             }
 
@@ -103,23 +103,28 @@ define([
     function addClassesToElementImmersives() {
         var i,
             elementImmersive,
-            elementImmersives = document.querySelectorAll('figure.element--immersive');
+            elementImmersives = document.querySelectorAll('figure.element--immersive'),
+            nextSibling;
 
         for (i = 0; i < elementImmersives.length; i++) {
             elementImmersive = elementImmersives[i];
-            if (elementImmersive.nextElementSibling &&
-                elementImmersive.nextElementSibling.classList.contains('element-pullquote')) {
-                elementImmersive.nextElementSibling.classList.add('quote--image');
+
+            nextSibling = elementImmersive.nextElementSibling;
+            
+            if (nextSibling &&
+                nextSibling.classList.contains('element-pullquote')) {
+                nextSibling.classList.add('quote--image');
                 elementImmersive.classList.add('quote--overlay');
                 elementImmersive.dataset.thing = '';
             }
 
-            if (elementImmersive.nextElementSibling &&
-                elementImmersive.nextElementSibling.tagName === 'H2') {
-                elementImmersive.nextElementSibling.classList.add('title--image');
+            if (nextSibling &&
+                nextSibling.tagName === 'H2') {
                 elementImmersive.classList.add('title--overlay');
-                if (elementImmersive.nextElementSibling.nextElementSibling) {
-                    elementImmersive.nextElementSibling.nextElementSibling.classList.add('has__dropcap');
+                nextSibling.classList.add('title--image');
+
+                if (nextSibling.nextElementSibling) {
+                    nextSibling.nextElementSibling.classList.add('has__dropcap');
                 }
             }
         }

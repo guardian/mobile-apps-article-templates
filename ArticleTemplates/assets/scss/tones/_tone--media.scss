@@ -205,7 +205,7 @@
             text-align: right;
 
             .aside-witness__sponsor__graphic__text {
-                fill: #fff;
+                fill: color(shade-7);
             }
 
             .aside-witness__sponsor__graphic__logo {
@@ -232,10 +232,10 @@
     }
 }
 
-.tone--media[data-content-type="video"] {
+.tone--media[data-content-type='video'] {
     .article {
         .tags {
-            border-top: none;
+            border-top: 0;
         }
         .article {
             &__header {
@@ -249,13 +249,13 @@
                 }
 
                 .sponsorship {
-                    padding: 8px 0 0 0;
+                    padding: 8px 0 0;
                     border-bottom: 0;
                 }
 
                 .meta {
                     @include mq($from: col2) {
-                        border-top: none;
+                        border-top: 0;
                     }
                     
                     .meta__misc {
@@ -269,7 +269,7 @@
     }
 }
 
-.tone--media[data-content-type="gallery"] {
+.tone--media[data-content-type='gallery'] {
     .article {
         .article {
             &__header {

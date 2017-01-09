@@ -9,7 +9,7 @@ define(function () {
         scriptReady = false;
 
     function ready() {
-        isAndroid = document.body.classList.contains('android');
+        isAndroid = GU.opts.platform === 'android';
         articleBody = document.getElementsByClassName('article__body')[0];
 
         checkForTweets();

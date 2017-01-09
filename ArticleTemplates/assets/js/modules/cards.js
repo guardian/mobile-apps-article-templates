@@ -67,7 +67,7 @@ define([
             flipSnap = flipSnap(relatedContentList);
 
             // Android needs to be notified of touch start / touch end so article navigation can be disabled / enabled
-            if (document.body.classList.contains('android')) {
+            if (GU.opts.platform === 'android') {
                 relatedContentList.addEventListener('touchstart', onTouchStart);
                 relatedContentList.addEventListener('touchend', onTouchEnd);
             }

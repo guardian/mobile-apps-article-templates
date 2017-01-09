@@ -306,22 +306,23 @@
         <script type="text/javascript">
             GU.Bootstrap.init({
                 sectionTone: 'news',
-                isImmersive: '',
-                isAdvertising: '',
+                isImmersive: '' ? true : false,
+                isAdvertising: '' ? true : false,
                 fontSize: 'font-size-4',
                 platform: 'ios',
-                isOffline: '',
+                isOffline: '' ? true : false,
                 contentType: 'article',
                 adsEnabled: 'mpu',
-                adsEnableHiding: 'true',
+                adsEnableHiding: 'true' === 'true' ? true : false,
                 adsConfig: 'mobile',
                 actionBarHeight: '0',
                 fontSize: '4',
                 templatesDirectory: '../../ArticleTemplates/',
                 pageId: 'global-development/2016/may/20/humanitarian-aid-quiz-are-you-good-in-a-crisis',
                 mpuAfterParagraphs: '3',
-                useAdsReady: 'true',
-                section: 'development'
+                useAdsReady: 'true' === 'true' ? true : false,
+                section: 'development',
+                nativeYoutubeEnabled: '' === 'true' ? true : false
             });
         </script>
 

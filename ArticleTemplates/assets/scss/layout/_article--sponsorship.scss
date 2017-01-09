@@ -101,7 +101,7 @@
                     }
 
                     .headline {
-                         padding-bottom: 18px;
+                        padding-bottom: 18px;
                     }
 
                     .meta__misc,
@@ -139,17 +139,17 @@
 
                     .prose p, 
                     .prose li {
-                        @include text-underline(color(global-adv-shade-1), color(global-adv-bg), lighten(color(global-adv-shade-1),10%));
+                        @include text-underline(color(global-adv-shade-1), color(global-adv-bg), lighten(color(global-adv-shade-1), 10%));
                     }
 
                     .prose .advert-slot--mpu {
-                        border-top: none;
+                        border-top: 0;
                     }
 
                     .prose .element-pullquote blockquote cite,
                     .prose .element-pullquote blockquote::before,
                     .prose .element-pullquote blockquote::after {
-                      color: color(global-adv-shade-1);
+                        color: color(global-adv-shade-1);
                     }
 
                     .prose figure figcaption,
@@ -171,16 +171,16 @@
             }
 
             .element-placeholder .element-placeholder__button {
-                .touchpoint__button{
+                .touchpoint__button {
                     background-color: color(global-adv-shade-2);
 
-                    &:active{
+                    &:active {
                         color: color(global-adv-bands);
                         background-color: color(global-adv-text);
                     }
                 }
 
-                .touchpoint__label{
+                .touchpoint__label {
                     color: color(global-adv-shade-2);
                     text-shadow: 0 0 4px  rgba(0, 0, 0, .5);
                 }
@@ -241,27 +241,27 @@
                     }
 
                     .meta {
-                        border-bottom: none;
+                        border-bottom: 0;
                         border-top: 1px rgba(color(global-adv-bands), .4) dotted;
                     }
 
                     .main-media {
                         figcaption {
-                            border-bottom: none;
+                            border-bottom: 0;
                         }
                         @include mq($from: col4) {
-                            border-bottom: none;
+                            border-bottom: 0;
                         }
                     }
                 }
 
                 &__body {
-                     border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
+                    border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
                 }
             }
 
             .tags {
-                border-top: none;
+                border-top: 0;
             }
         }
 
@@ -278,7 +278,7 @@
     &.tone--feature3 {
         .article {
             a:active {
-                color: lighten(color(global-adv-text),10%);
+                color: lighten(color(global-adv-text), 10%);
             }
 
             .article__body > .prose:not(.prose--has-thumbnails-without-caps) > p {
@@ -301,52 +301,52 @@
     }
 
     /* Video overrides */
-    &.tone--news[data-content-type="video"],
-    &.tone--media[data-content-type="video"] {
+    &.tone--news[data-content-type='video'],
+    &.tone--media[data-content-type='video'] {
         .article {
             .article {
                 &__header {
                     .meta {
                         border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
+                    }
 
-                        .meta__misc {
-                            border-top: 1px rgba(color(global-adv-bands), .4) dotted;
+                    .meta .meta__misc {
+                        border-top: 1px rgba(color(global-adv-bands), .4) dotted;
 
-                            .sponsorship {
-                                padding-top: 0;
-
-                                &__inner {
-                                    padding: 0;
-                                }
-                            }
-
-                            .sponsorship__formatted-sponsor-name {
-                                padding-left: 0;
-                            }
-
-                            @include mq($from: col2) {
-                                border-top: none;
-                                border-left: 1px rgba(color(global-adv-bands), .4) dotted;
-
-                                .sponsorship__formatted-sponsor-name {
-                                    display: block;
-                                    padding-top: 0;
-                                    padding-bottom: 0;
-                                }
-
-                                .sponsorship__logo {
-                                    margin-left: 0;
-                                }
-                            }
+                        .sponsorship {
+                            padding-top: 0;
                         }
 
-                        .standfirst {
-                            background-color: color(global-adv-bg);
-                            
-                            @include mq($from: col4) {
-                                padding-left: 0;
-                                padding-right: 0;
+                        .sponsorship__inner {
+                            padding: 0;
+                        }
+
+                        .sponsorship__formatted-sponsor-name {
+                            padding-left: 0;
+                        }
+
+                        @include mq($from: col2) {
+                            border-top: 0;
+                            border-left: 1px rgba(color(global-adv-bands), .4) dotted;
+
+                            .sponsorship__formatted-sponsor-name {
+                                display: block;
+                                padding-top: 0;
+                                padding-bottom: 0;
                             }
+
+                            .sponsorship__logo {
+                                margin-left: 0;
+                            }
+                        }
+                    }
+
+                    .meta .standfirst {
+                        background-color: color(global-adv-bg);
+                        
+                        @include mq($from: col4) {
+                            padding-left: 0;
+                            padding-right: 0;
                         }
                     }
                 }
@@ -356,8 +356,8 @@
 
     /* Audio overrides */
     &.tone--podcast,
-    &.tone--news[data-content-type="audio"],
-    &.tone--media[data-content-type="audio"] {
+    &.tone--news[data-content-type='audio'],
+    &.tone--media[data-content-type='audio'] {
         .article {
             &__header {
                 .headline {
@@ -389,7 +389,7 @@
                 }
 
                 .audio-player__button.touchpoint--primary .touchpoint__button,
-                .audio-player__slider__knob{
+                .audio-player__slider__knob {
                     background-color: color(global-adv-shade-2);
 
                     &:active {
@@ -397,7 +397,7 @@
                     }
                 }
 
-                .audio-player__slider__track{
+                .audio-player__slider__track {
                     background-color: color(tone-podcast-adv-ply-range);
                 }
             }
@@ -425,15 +425,15 @@
                 .standfirst,
                 .prose p {
                     color: color(global-adv-text);
-                    @include text-underline(color(global-adv-shade-1), color(global-adv-bg), lighten(color(global-adv-shade-1),10%));
+                    @include text-underline(color(global-adv-shade-1), color(global-adv-bg), lighten(color(global-adv-shade-1), 10%));
                 }
             }
         }
     }
 
     /* Gallery overrides */
-    &.tone--news[data-content-type="gallery"],
-    &.tone--media[data-content-type="gallery"] {
+    &.tone--news[data-content-type='gallery'],
+    &.tone--media[data-content-type='gallery'] {
         .article {
             .article {
                 &__header {

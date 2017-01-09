@@ -149,20 +149,21 @@
                 sectionTone: 'podcast',
                 fontSize: 'font-size-4',
                 platform: 'ios',
-                isOffline: '',
-                isAdvertising: '',
+                isOffline: '' ? true : false,
+                isAdvertising: '' ? true : false,
                 contentType: 'audio',
                 adsEnabled: '',
-                adsEnableHiding: 'true',
+                adsEnableHiding: 'true' === 'true' ? true : false,
                 adsConfig: 'mobile',
                 actionBarHeight: '0',
                 fontSize: '4',
                 templatesDirectory: '../../ArticleTemplates/',
                 pageId: 'football/blog/audio/2016/aug/15/arsenal-exposed-by-jurgen-klopp-and-liverpool-football-weekly',
                 mpuAfterParagraphs: '3',
-                useAdsReady: 'true',
+                useAdsReady: 'true' === 'true' ? true : false,
                 section: 'football',
-                tests: '{"MockTemplateTest":"MockControl"}'
+                tests: '{}',
+                nativeYoutubeEnabled: '' === 'true' ? true : false
             });
         </script>
     </body>

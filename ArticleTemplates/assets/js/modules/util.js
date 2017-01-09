@@ -61,7 +61,7 @@ define(function() {
             },
 
             isOnline: function() {
-                return !document.body.classList.contains('offline') && navigator.onLine;
+                return !GU.opts.isOffline && navigator.onLine;
             },
 
             getClosestParentWithClass: function (elem, className) {

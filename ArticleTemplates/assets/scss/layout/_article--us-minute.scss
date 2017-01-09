@@ -1,5 +1,5 @@
 $minute_bg: #005689;
-$minute_main: #fff;
+$minute_main: color(shade-7);
 $minute_accent: #ea291f;
 
 // styles images within blocks - $type accepts "summary" and "key-event" for full cover images, or "thumbnail"
@@ -204,16 +204,14 @@ body.the-minute.tone--usMinute {
                 background: darken($minute_bg, 10%);
             }
 
-             .article__body--liveblog {
+            .article__body--liveblog {
                 /* Minute Header */
                 .the-minute__header {
                     // This controls the red bar above the second child
-                    > :first-child {
-                        &::before {
-                            background-color: $minute_accent;
-                        }
+                    > :first-child::before {
+                        background-color: $minute_accent;
                     }
-
+                    
                     .the-minute__headline,
                     .the-minute__standfirst {
                         color: $minute_main;
@@ -259,11 +257,10 @@ body.the-minute.tone--usMinute {
                         .block__body {
                             .from-content-api {
                                 figure {
-                                    > :first-child {
-                                        &::before {
-                                            background-color: $minute_accent;
-                                        }
+                                    > :first-child::before {
+                                        background-color: $minute_accent;
                                     }
+                                    
                                 }
                             }
                         }
@@ -302,33 +299,33 @@ body.the-minute.tone--usMinute {
                     /* Thumbnail image block styles */
                     &.is-thumbnail {
                         .block__body {
-                                .from-content-api {
-                                    h2,
-                                    p {
+                            .from-content-api {
+                                h2,
+                                p {
+                                    color: $minute_main;
+                                }
+
+                                p {
+                                    a {
+                                        border-bottom: 1px solid $minute_main;
                                         color: $minute_main;
                                     }
+                                }
 
-                                    p {
-                                        a {
-                                            border-bottom: 1px solid $minute_main;
-                                            color: $minute_main;
-                                        }
-                                    }
+                                figure {
+                                    background: $minute_bg;
 
-                                    figure {
-                                        background: $minute_bg;
-
-                                        &::before {
-                                            background-color: $minute_accent;
-                                        }
+                                    &::before {
+                                        background-color: $minute_accent;
                                     }
                                 }
+                            }
                         }
 
                         &.has-quote {
                             .block__body {
                                 .quoted {
-                                   &::before {
+                                    &::before {
                                         color: $minute_accent;
                                     }
 
@@ -365,7 +362,7 @@ body.the-minute.tone--usMinute {
                         &.has-quote {
                             .block__body {
                                 .from-content-api {
-                                   .quoted {
+                                    .quoted {
                                         &::before {
                                             color: $minute_accent;
                                         }
@@ -382,15 +379,13 @@ body.the-minute.tone--usMinute {
                             .block__body {
                                 .from-content-api {
                                     .twitter-tweet {
-                                        .twitter-wrapper {
-                                            &::before {
-                                                color: $minute_accent;
-                                            }
+                                        .twitter-wrapper::before {
+                                            color: $minute_accent;
+                                        }
 
-                                            span,
-                                            a {
-                                                color: $minute_main;
-                                            }
+                                        .twitter-wrapper span,
+                                        .twitter-wrapper a {
+                                            color: $minute_main;
                                         }
                                     }
                                 }

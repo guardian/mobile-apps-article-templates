@@ -71,7 +71,7 @@ Display an embedded element. Element embeds are typically shown as figures, and 
 
 // Video
 .element-video {
-    background-color: #000;
+    background-color: color(shade-9);
     padding-bottom: 56.25%;
     width: 100%;
     position: relative;
@@ -195,10 +195,8 @@ Display an embedded element. Element embeds are typically shown as figures, and 
             }
         }
 
-        &.hide-placeholder {
-            .youtube-media__placeholder {
-               display: none;
-            }
+        &.hide-placeholder .youtube-media__placeholder {
+            display: none;
         }
     }
 }
@@ -230,7 +228,7 @@ Display an embedded element. Element embeds are typically shown as figures, and 
         }
 
         figcaption {
-            background-color: #fff;
+            background-color: color(shade-7);
         }
     }
 }
