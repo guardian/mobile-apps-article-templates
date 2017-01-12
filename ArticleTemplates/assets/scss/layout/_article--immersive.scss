@@ -10,8 +10,12 @@ body.immersive .article--immersive {
         }
     }
 
-    .article__body .section__rule + p {
-        @include immersive-dropcap(color(tone-feature1));
+    .article__body .section__rule {
+        clear: left;
+
+        + p {
+            @include immersive-dropcap(color(tone-feature1));
+        }
     }
 
     // progress bar at top of article
@@ -520,12 +524,17 @@ body.immersive .article--immersive {
                     clear: left;
                     margin-left: -240px;
                     width: 1200px;
+                    float: none;
 
                     &:not(.quote--overlay) > figcaption {
                         border: 0;
                         float: left;
                         padding-right: 0;
                         width: 240px;
+                    }
+
+                    + .section__rule {
+                        clear: none;
                     }
                 }
             }
