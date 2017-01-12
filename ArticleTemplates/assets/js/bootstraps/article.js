@@ -119,7 +119,8 @@ define([
             }
 
             if (nextSibling &&
-                nextSibling.tagName === 'H2') {
+                nextSibling.tagName === 'H2' &&
+                !nextSibling.classList.contains('section__rule')) {
                 elementImmersive.classList.add('title--overlay');
                 nextSibling.classList.add('title--image');
 
