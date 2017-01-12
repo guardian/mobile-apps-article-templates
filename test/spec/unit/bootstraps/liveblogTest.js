@@ -15,7 +15,8 @@ define([
 
         var commonMock,
             relativeDatesMock,
-            twitterMock;
+            twitterMock,
+            minuteMock;
             
         beforeEach(function() {
             relativeDatesMock = {
@@ -30,6 +31,9 @@ define([
                 loadEmbeds: sinon.spy(),
                 loadInteractives: sinon.spy()
             };
+            minuteMock = {
+                init: sinon.spy()
+            };
             container = document.createElement('div');
             container.id = 'container';
             document.body.appendChild(container);
@@ -37,7 +41,8 @@ define([
             window.applyNativeFunctionCall = sinon.spy();
             window.GU = {
                 opts: {
-                    isMinute: ''
+                    isMinute: '',
+                    adsConfig: 'mobile'
                 }
             };
             util.init();
@@ -73,11 +78,45 @@ define([
                 sandbox.stub(window, 'addEventListener');
             });
 
+            it('does not initialise minute module if not the minute', function (done) {
+                injector
+                    .mock('modules/relativeDates', relativeDatesMock)
+                    .mock('modules/twitter', twitterMock)
+                    .mock('bootstraps/common', commonMock)
+                    .mock('modules/minute', minuteMock)
+                    .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
+                        liveblog.init();
+
+                        expect(minuteMock.init).not.to.have.been.called;
+
+                        done();
+                    });
+            });
+
+            it('initialise minute module if the minute', function (done) {
+                injector
+                    .mock('modules/relativeDates', relativeDatesMock)
+                    .mock('modules/twitter', twitterMock)
+                    .mock('bootstraps/common', commonMock)
+                    .mock('modules/minute', minuteMock)
+                    .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
+                        window.GU.opts.isMinute = true;
+                        window.GU.opts.adsConfig = 'tablet';
+
+                        liveblog.init();
+
+                        expect(minuteMock.init).to.have.been.calledOnce;
+
+                        done();
+                    });
+            });
+
             it('initialises twitter module if not the minute', function (done) {
                 injector
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('bootstraps/common', commonMock)
+                    .mock('modules/minute', minuteMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         liveblog.init();
 
@@ -92,8 +131,10 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('bootstraps/common', commonMock)
+                    .mock('modules/minute', minuteMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         window.GU.opts.isMinute = true;
+                        window.GU.opts.adsConfig = 'tablet';
 
                         liveblog.init();
 
@@ -108,6 +149,7 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('bootstraps/common', commonMock)
+                    .mock('modules/minute', minuteMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         liveblog.init();
 
@@ -131,6 +173,7 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('bootstraps/common', commonMock)
+                    .mock('modules/minute', minuteMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         liveblog.init();
 
@@ -146,6 +189,7 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('bootstraps/common', commonMock)
+                    .mock('modules/minute', minuteMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         var event,
                             loadingElem = document.createElement('div'),
@@ -182,8 +226,10 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('bootstraps/common', commonMock)
+                    .mock('modules/minute', minuteMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         window.GU.opts.isMinute = true;
+                        window.GU.opts.adsConfig = 'tablet';
 
                         liveblog.init();
 
@@ -198,6 +244,7 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('bootstraps/common', commonMock)
+                    .mock('modules/minute', minuteMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         var minuteHeader = document.createElement('div'),
                             minuteNav = document.createElement('div');
@@ -226,6 +273,7 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('bootstraps/common', commonMock)
+                    .mock('modules/minute', minuteMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         var block = document.createElement('div');
 
@@ -253,6 +301,7 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('bootstraps/common', commonMock)
+                    .mock('modules/minute', minuteMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         var block = document.createElement('div');
 
@@ -295,6 +344,7 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('bootstraps/common', commonMock)
+                    .mock('modules/minute', minuteMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         var html = '',
                             blockCount = 0;
@@ -327,6 +377,7 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('bootstraps/common', commonMock)
+                    .mock('modules/minute', minuteMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) {
                         var imgCount = 0,
                             html = '',
@@ -368,6 +419,7 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('bootstraps/common', commonMock)
+                    .mock('modules/minute', minuteMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) { 
                         window.GU.opts.isLive = true;
 
@@ -387,6 +439,7 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('bootstraps/common', commonMock)
+                    .mock('modules/minute', minuteMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) { 
                         var blockTime = document.createElement('div');
 
@@ -422,6 +475,7 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('bootstraps/common', commonMock)
+                    .mock('modules/minute', minuteMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) { 
                         moreElem.style.display = 'block';
 
@@ -440,6 +494,7 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('bootstraps/common', commonMock)
+                    .mock('modules/minute', minuteMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) { 
                         moreElem.style.display = 'none';
 
@@ -482,6 +537,7 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('bootstraps/common', commonMock)
+                    .mock('modules/minute', minuteMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) { 
                         var blocks,
                             html = '<div class="block"><img></img></div><div class="block"></div>';
@@ -510,6 +566,7 @@ define([
                     .mock('modules/relativeDates', relativeDatesMock)
                     .mock('modules/twitter', twitterMock)
                     .mock('bootstraps/common', commonMock)
+                    .mock('modules/minute', minuteMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (liveblog) { 
                         var imgCount = 0,
                             html = '<div class="block"><img></img></div><div class="block"></div>';

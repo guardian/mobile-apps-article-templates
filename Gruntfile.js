@@ -174,6 +174,7 @@ module.exports = function(grunt) {
                         'ArticleTemplates/assets/js/modules/cards.js',
                         'ArticleTemplates/assets/js/modules/outbrain.js',
                         'ArticleTemplates/assets/js/modules/youtube.js',
+                        'ArticleTemplates/assets/js/modules/minute.js',
                         'test/spec/unit/**/*.js'
                     ]
                 }
