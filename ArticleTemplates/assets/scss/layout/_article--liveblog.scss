@@ -1,6 +1,8 @@
 body[data-content-type='liveblog'] {
-    // Hide the special minute header for every other liveblog    
+    // Hide the special minute header unless minute on tablet   
+    &.advert-config--mobile.the-minute,
     &:not(.the-minute) {
+        .minute-logo-container,
         .minute-vertical-rule,
         .minute-logo-container,
         .the-minute__header { 

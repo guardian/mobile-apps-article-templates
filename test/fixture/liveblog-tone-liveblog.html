@@ -104,11 +104,7 @@
                         </li>
                     </ul>
                 </div>
-                
-            </div>
 
-            <div class="the-minute__nav">
-                <span class="the-minute__nav-button"></span>
             </div>
 
             <div class="article__body article__body--liveblog" id="liveblog-body">
@@ -583,7 +579,7 @@
         </section>
 
         <script type="text/javascript">
-            if (document.body.classList.contains('the-minute')) {
+            if (document.body.classList.contains('the-minute') && 'mobile' === 'tablet') {
                 // Format date and add above standfirst
                 var dateArray = document.getElementById("published-date").innerHTML.split(' ').filter(Boolean),
                     dayOfWeek = dateArray[2].replace(',',''),
