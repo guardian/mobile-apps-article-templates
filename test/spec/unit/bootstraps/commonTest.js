@@ -73,7 +73,7 @@ define([
                 init: sinon.spy()
             };
             moreTagsMock = {
-                refresh: sinon.spy()
+                init: sinon.spy()
             };
             sharingMock = {
                 init: sinon.spy()

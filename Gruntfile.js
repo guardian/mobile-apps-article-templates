@@ -175,6 +175,7 @@ module.exports = function(grunt) {
                         'ArticleTemplates/assets/js/modules/outbrain.js',
                         'ArticleTemplates/assets/js/modules/youtube.js',
                         'ArticleTemplates/assets/js/modules/minute.js',
+                        'ArticleTemplates/assets/js/modules/more-tags.js',
                         'test/spec/unit/**/*.js'
                     ]
                 }

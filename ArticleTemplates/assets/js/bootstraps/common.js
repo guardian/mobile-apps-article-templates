@@ -240,9 +240,8 @@ define([
 
         if (tagsList) {
             tagsList.innerHTML += html;
+            moreTags.init();
         }
-
-        moreTags.refresh();
     }
 
     function videoPositioning() {
