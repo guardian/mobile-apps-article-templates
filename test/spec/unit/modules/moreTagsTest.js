@@ -7,7 +7,7 @@ define([
 ) {
     'use strict';
 
-    describe.only('ArticleTemplates/assets/js/modules/more-tags', function() {
+    describe('ArticleTemplates/assets/js/modules/more-tags', function() {
         var container,
             sandbox,
             injector,
@@ -22,7 +22,7 @@ define([
                 html += '</ul></div>';
 
                 return html;
-            }
+            };
 
         beforeEach(function() {
             container = document.createElement('div');
@@ -75,10 +75,14 @@ define([
                         expect(moreTagsContainer).to.not.eql(null);
                         expect(inlineList.childNodes[6]).to.eql(moreTagsContainer);
 
-                        inlineListItems = container.querySelectorAll('.inline-list__item')
+                        inlineListItems = container.querySelectorAll('.inline-list__item:not(.screen-readable):not(.more-button)');
 
                         for (i = 0; i < inlineListItems.length; i++) {
-                            // expect(inlineListItems[i].classList.contains('hide-tags')).to.eql(true);
+                            if (i < 5) {
+                                expect(inlineListItems[i].classList.contains('hide-tags')).to.eql(false);
+                            } else {
+                                expect(inlineListItems[i].classList.contains('hide-tags')).to.eql(true);
+                            }
                         }
 
                         done();
@@ -88,9 +92,31 @@ define([
             it('show tags on click of more button', function(done) {
                 injector
                     .require(['ArticleTemplates/assets/js/modules/more-tags'], function(moreTags) {
-                        // moreTags.init();
+                        var moreTagsContainer,
+                            event = document.createEvent('HTMLEvents'),
+                            lastInlineListItem;
 
-                        done();
+                        container.innerHTML = getTagsHTML(6);
+
+                        moreTags.init();
+
+                        moreTagsContainer = container.querySelector('#more-tags-container');
+
+                        moreTagsContainer.style.display = 'block';
+
+                        lastInlineListItem = container.querySelectorAll('.inline-list__item:not(.screen-readable):not(.more-button)')[5];
+
+                        expect(lastInlineListItem.classList.contains('hide-tags')).to.eql(true);
+
+                        event.initEvent('click', true, true);
+                        moreTagsContainer.dispatchEvent(event);
+
+                        setTimeout(function() {
+                            expect(moreTagsContainer.style.display).to.eql('none');
+                            expect(lastInlineListItem.classList.contains('hide-tags')).to.eql(false);
+
+                            done();
+                        }, 250);
                     });
             });
         });

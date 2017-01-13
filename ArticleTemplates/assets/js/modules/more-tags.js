@@ -2,41 +2,72 @@
  Module: more-tags.js
  Description: upgrades the 'Tags' list on content with a show more.
  */
-define([
-    'modules/$',
-    'bean',
-    'bonzo'
-], function (
-    $,
-    bean,
-    bonzo
-) {
+define(function () {
+    'use strict';
 
     var SHOW_TAGS = 5;
     var initialised;
     var moreButton;
+    var hiddenTags;
 
     function init() {
-        if ($('.tags .inline-list .inline-list__item').length > SHOW_TAGS + 1) {
-            moreButton = bonzo.create("<li id='more-tags-container' class='inline-list__item more-button js-more-button'><a id='more'>More...</a></li>").pop();
-    
-            bean.on(moreButton, 'click', show);
+        var firstHiddenTag,
+            tags;
 
-            $(moreButton).insertAfter('.tags .inline-list .inline-list__item:nth-child('+ (SHOW_TAGS + 1) + ')');
+        if (!initialised) {
+            initialised = true;
+            tags = document.querySelectorAll('.tags .inline-list .inline-list__item');
+
+            if (tags.length > SHOW_TAGS + 1) {
+                moreButton = document.createElement('li');
+                moreButton.id = 'more-tags-container';
+                moreButton.classList.add('inline-list__item');
+                moreButton.classList.add('more-button');
+                moreButton.classList.add('js-more-button');
+                moreButton.innerHTML = '<a id="more">More...</a>';
+
+                moreButton.addEventListener('click', show);
+
+                firstHiddenTag = tags[SHOW_TAGS + 1];
+
+                firstHiddenTag.parentNode.insertBefore(moreButton, firstHiddenTag);
+
+                hiddenTags = document.querySelectorAll('#more-tags-container ~ .inline-list__item');
             
-            $('#more-tags-container ~ .inline-list__item').addClass('hide-tags');
+                hideTags();
+            }
         }
-
     }
 
-    function show() {            
-        $(moreButton).hide();
-        
-        setTimeout(function(){ $('#more-tags-container ~ .hide-tags').removeClass('hide-tags'); }, 200);
+    function show() {
+        var i;
+
+        moreButton.style.display = 'none';
+
+        for (i = 0; i < hiddenTags.length; i++) {
+            hiddenTags[i].classList.remove('hide-tags');   
+        }
+
+        setTimeout(showTags, 200);
+    }
+
+    function hideTags() {
+        var i;
+
+        for (i = 0; i < hiddenTags.length; i++) {
+            hiddenTags[i].classList.add('hide-tags');   
+        }
+    }
+
+    function showTags() {
+        var i;
+
+        for (i = 0; i < hiddenTags.length; i++) {
+            hiddenTags[i].classList.remove('hide-tags');   
+        }
     }
 
     return {
         init: init
-    }
-
+    };
 });
