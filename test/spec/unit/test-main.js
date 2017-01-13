@@ -24,15 +24,11 @@ require.config({
         fence: 'node_modules/fence/fence',
         smoothScroll: 'node_modules/smooth-scroll/dist/js/smooth-scroll',
         raven: 'node_modules/raven-js/dist/raven',
-        iscroll: 'ArticleTemplates/assets/js/components/iscroll',
         lodash: 'ArticleTemplates/assets/js/components/lodash',
         // squire for stubbing modules
         squire: 'node_modules/squirejs/src/Squire'
     },
     shim: {
-        iscroll: {
-            exports: 'IScroll'
-        },
         d3: {
             exports: 'd3'
         },
