@@ -165,6 +165,7 @@ module.exports = function(grunt) {
                         'ArticleTemplates/assets/js/bootstraps/common.js',
                         'ArticleTemplates/assets/js/bootstraps/football.js',
                         'ArticleTemplates/assets/js/bootstraps/liveblog.js',
+                        'ArticleTemplates/assets/js/bootstraps/gallery.js',
                         'ArticleTemplates/assets/js/modules/relativeDates.js',
                         'ArticleTemplates/assets/js/modules/sharing.js',
                         'ArticleTemplates/assets/js/modules/comments.js',
