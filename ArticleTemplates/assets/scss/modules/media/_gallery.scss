@@ -22,18 +22,55 @@ Display a selection of images that form a gallery.
 ```
 */
 
+$galleryGutter: 4px;
+
 .gallery {
-    padding: base-px(1, 1, 0, 1);
+    padding: $galleryGutter;
+    overflow: hidden;
 
-    @include mq($to: col1) {
-        padding: base-px(.3333);
+    .gallery__image-container {
+        display: inline-block;
+        padding: $galleryGutter;
+        box-sizing: border-box;
+        float: left;
+
+        &--flex1 {
+            width: 100%;
+        }
+
+        &--flex2 {
+            width: 50%;
+        }
+
+        &--flex3 {
+            width: 33.33%;
+        }
+
+        &--flex4 {
+            width: 25%;
+        }
+
+        &--flex5 {
+            width: 20%;
+        }
+
+        .gallery__link {
+            background-color: lighten(color(shade-1), 10%);
+            position: relative;
+            padding-bottom: 100%;
+            display: -webkit-box;
+
+            img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
     }
-}
 
-.gallery__link {
-    background-color: lighten(color(shade-1), 10%);
-}
-
-.gallery__image {
-    vertical-align: bottom;
+    @include mq($from: col4) {
+        margin: 0 auto;
+        max-width: 1200 + ($galleryGutter * 4);
+    }
 }
