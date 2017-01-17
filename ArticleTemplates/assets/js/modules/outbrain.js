@@ -1,7 +1,3 @@
-/*
- Module: outbrain.js
- Description: show promoted content by outbrain.
- */
 define(function () {
     'use strict';
 

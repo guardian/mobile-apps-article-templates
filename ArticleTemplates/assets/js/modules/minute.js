@@ -1,4 +1,3 @@
-/*global window,define */
 define([
     'bootstraps/common'
 ], function (

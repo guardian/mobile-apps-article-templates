@@ -37,7 +37,7 @@ define([
                 }
             };
 
-            util.init();
+            window.GU.util = util;
 
             window.GU.util.signalDevice = sinon.spy();
         });

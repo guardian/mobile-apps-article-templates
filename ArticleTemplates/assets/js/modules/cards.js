@@ -1,4 +1,3 @@
-/*global window,define */
 define([
         'flipSnap'
     ],

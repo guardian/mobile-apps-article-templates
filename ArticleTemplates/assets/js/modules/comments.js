@@ -1,4 +1,3 @@
-/*global window,define */
 define([
     'modules/relativeDates'
 ], function(

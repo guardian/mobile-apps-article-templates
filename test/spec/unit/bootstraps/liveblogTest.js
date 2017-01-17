@@ -45,7 +45,7 @@ define([
                     adsConfig: 'mobile'
                 }
             };
-            util.init();
+            window.GU.util = util;
             sandbox = sinon.sandbox.create();
             sandbox.stub(window, 'setInterval');
 

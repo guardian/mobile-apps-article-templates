@@ -26,7 +26,7 @@ define([
                 }
             };
 
-            util.init();
+            window.GU.util = util;
         });
 
         afterEach(function () {

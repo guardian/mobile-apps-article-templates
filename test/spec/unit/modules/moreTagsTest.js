@@ -1,8 +1,6 @@
 define([
-    'modules/util',
     'squire'
 ], function(
-    util,
     Squire
 ) {
     'use strict';

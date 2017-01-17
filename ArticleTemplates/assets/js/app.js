@@ -10,7 +10,7 @@ define([
     'use strict';
 
     function init() {
-        util.init();
+        GU.util = util;
         domReady(onDomReady);
     }
 

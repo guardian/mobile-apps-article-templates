@@ -7,13 +7,13 @@ define([
 ) {
     'use strict';
     
-    var module = {
-        init: function () {
-            common.init();
-            gallery.init();
-        }
-    };
+    function init() {
+        common.init();
+        gallery.init();
+    }
 
-    return module;
+    return {
+        init: init
+    };
 });
 

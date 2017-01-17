@@ -154,29 +154,16 @@ module.exports = function(grunt) {
                         'require': true,
                         'define': true,
                         'sinon': true,
-                        'expect': true
+                        'expect': true,
+                        'twttr': true,
+                        'YT': true
                     }
                 },
                 files: {
                     src: [
                         'ArticleTemplates/assets/js/*.js',
-                        'ArticleTemplates/assets/js/bootstraps/article.js',
-                        'ArticleTemplates/assets/js/bootstraps/audio.js',
-                        'ArticleTemplates/assets/js/bootstraps/common.js',
-                        'ArticleTemplates/assets/js/bootstraps/football.js',
-                        'ArticleTemplates/assets/js/bootstraps/liveblog.js',
-                        'ArticleTemplates/assets/js/bootstraps/gallery.js',
-                        'ArticleTemplates/assets/js/modules/relativeDates.js',
-                        'ArticleTemplates/assets/js/modules/sharing.js',
-                        'ArticleTemplates/assets/js/modules/comments.js',
-                        'ArticleTemplates/assets/js/modules/ads.js',
-                        'ArticleTemplates/assets/js/modules/quiz.js',
-                        'ArticleTemplates/assets/js/modules/twitter.js',
-                        'ArticleTemplates/assets/js/modules/cards.js',
-                        'ArticleTemplates/assets/js/modules/outbrain.js',
-                        'ArticleTemplates/assets/js/modules/youtube.js',
-                        'ArticleTemplates/assets/js/modules/minute.js',
-                        'ArticleTemplates/assets/js/modules/more-tags.js',
+                        'ArticleTemplates/assets/js/bootstraps/*.js',
+                        'ArticleTemplates/assets/js/modules/*.js',
                         'test/spec/unit/**/*.js'
                     ]
                 }

@@ -9,16 +9,16 @@ define([
 ) {
     'use strict';
     
-    var module = {
-        init: function () {
-            common.init();
-            football.init();
+    function init() {
+        common.init();
+        football.init();
 
-            if (document.getElementsByClassName('article__body--liveblog').length > 0) {
-                liveblog.init(common);
-            }
+        if (document.getElementsByClassName('article__body--liveblog').length > 0) {
+            liveblog.init(common);
         }
-    };
+    }
 
-    return module;
+    return {
+        init: init
+    };
 });

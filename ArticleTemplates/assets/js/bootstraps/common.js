@@ -41,7 +41,7 @@ define([
         setGlobalObject(window);
         fixSeries();
         advertorialUpdates();
-        sharing.init(window); // init sharing
+        sharing.init(); // init sharing
         setupTracking(); // track common events
         ab.init(); // init ab tests
 

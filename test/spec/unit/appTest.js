@@ -20,9 +20,7 @@ define([
             adsMock = {
                 init: sinon.spy()
             };
-            utilMock = {
-                init: sinon.spy()
-            };
+            utilMock = {};
         });
 
         afterEach(function () {

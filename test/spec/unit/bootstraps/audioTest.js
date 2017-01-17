@@ -21,15 +21,13 @@ define([
             injector = new Squire();
             window.applyNativeFunctionCall = sinon.spy();
             sandbox = sinon.sandbox.create();
-
             mobileSliderMock = sinon.spy();
-            
             window.GU = {
                 opts: {
                     isAdvertising: ''
                 }
             };
-            util.init();
+            window.GU.util = util;
         });
 
         afterEach(function () {

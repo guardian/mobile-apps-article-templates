@@ -1,5 +1,3 @@
-/*global twttr:false */
-
 define(function () {
     'use strict';
 

@@ -18,7 +18,7 @@ define([
     function init() {
         youtube.init();
         twitter.init();
-        witness.duplicate();
+        witness.init();
         insertOutbrain();
         loadQuizzes();
         formatImmersive();
