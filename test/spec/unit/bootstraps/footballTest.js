@@ -23,7 +23,7 @@ define([
             injector = new Squire();
             window.applyNativeFunctionCall = sinon.spy();
             window.GU = {};
-            util.init();
+            window.GU.util = util;
         });
 
         afterEach(function () {

@@ -7,12 +7,12 @@ define([
 ) {
     'use strict';
     
-    var module = {
-        init: function () {
-            common.init();
-            liveblog.init();
-        }
-    };
+    function init() {
+        common.init();
+        liveblog.init();
+    }
 
-    return module;
+    return {
+        init: init
+    };
 });

@@ -36,7 +36,7 @@ define([
                 registerRelatedCardsTouch: sinon.spy()
             };
 
-            util.init();
+            window.GU.util = util;
 
             sandbox.stub(GU.util, 'debounce', function(func) {
                 return func;

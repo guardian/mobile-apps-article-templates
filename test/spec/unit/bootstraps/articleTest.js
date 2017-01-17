@@ -21,7 +21,7 @@ define([
                 init: sinon.spy()
             };
             witnessMock = {
-                duplicate: sinon.spy()
+                init: sinon.spy()
             };
             outbrainMock = {
                 init: sinon.spy()
@@ -58,7 +58,7 @@ define([
                         article.init();
 
                         expect(twitterMock.init).to.have.been.calledOnce;
-                        expect(witnessMock.duplicate).to.have.been.calledOnce;
+                        expect(witnessMock.init).to.have.been.calledOnce;
 
                         done();
                     });

@@ -7,12 +7,12 @@ define([
 ) {
     'use strict';
     
-    var module = {
-        init: function () {
-        	common.init();
-            audio.init();
-        }
-    };
+    function init() {
+        common.init();
+        audio.init();
+    }
 
-    return module;
+    return {
+        init: init
+    };
 });

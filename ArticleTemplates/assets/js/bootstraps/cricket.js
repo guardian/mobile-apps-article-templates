@@ -1,4 +1,3 @@
-/*global window,document,console,define */
 define([
     'bean',
     'modules/$'
@@ -38,7 +37,7 @@ define([
 
                         updatePosition = function(){
                             currentPage = ++currentPage % pages;
-                            sheet.style.webkitTransform = sheet.style.transform = "TranslateY(" + ( -1 * currentPage * batsmenHeight) + "px)";
+                            sheet.style.webkitTransform = sheet.style.transform = 'TranslateY(' + ( -1 * currentPage * batsmenHeight) + 'px)';
                             wrap.style.opacity = 0;
                             for(var bullet = 0; bullet < htmlBullets.length; bullet++){
                                 if(currentPage === bullet){
@@ -78,9 +77,9 @@ define([
 
             $('#cricket__tab--stats').remove();
             $('#cricket__tabpanel--stats').remove();
-            if ($('.tabs [href="#cricket__tabpanel--stats"]').attr("aria-selected") === true) {
-                $('.tabs a:first-of-type').attr("aria-selected", true);
-                $($('.tabs [aria-selected="true"]').attr("href")).show();
+            if ($('.tabs [href="#cricket__tabpanel--stats"]').attr('aria-selected') === true) {
+                $('.tabs a:first-of-type').attr('aria-selected', true);
+                $($('.tabs [aria-selected="true"]').attr('href')).show();
             }
 
             header.remove();

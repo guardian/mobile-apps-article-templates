@@ -1,7 +1,3 @@
-/*
- Module: more-tags.js
- Description: upgrades the 'Tags' list on content with a show more.
- */
 define(function () {
     'use strict';
 

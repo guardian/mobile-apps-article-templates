@@ -30,7 +30,7 @@ define([
             };
 
             window.GU = {};
-            util.init();
+            window.GU.util = util;
         });
 
         afterEach(function() {

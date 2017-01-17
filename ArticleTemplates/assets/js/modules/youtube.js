@@ -1,5 +1,3 @@
-/*global window,define,YT */
-
 define(function() {
     'use strict';
 
