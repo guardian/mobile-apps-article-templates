@@ -13,18 +13,13 @@ require.config({
     baseUrl: '/base',
     paths: {
         modules: 'ArticleTemplates/assets/js/modules',
-        bonzo: 'node_modules/bonzo/bonzo',
-        bean: 'node_modules/bean/bean',
         d3: 'node_modules/d3/d3',
         domReady: 'node_modules/domready/ready',
         mobileSlider: 'ArticleTemplates/assets/js/components/mobile-range-slider',
         flipSnap: 'ArticleTemplates/assets/js/components/flipsnap',
         fastClick: 'node_modules/fastclick/lib/fastclick',
-        qwery: 'node_modules/qwery/qwery',
         fence: 'node_modules/fence/fence',
         smoothScroll: 'node_modules/smooth-scroll/dist/js/smooth-scroll',
-        raven: 'node_modules/raven-js/dist/raven',
-        lodash: 'ArticleTemplates/assets/js/components/lodash',
         // squire for stubbing modules
         squire: 'node_modules/squirejs/src/Squire'
     },
