@@ -178,15 +178,11 @@ module.exports = function(grunt) {
                     files: [
                         {pattern: 'ArticleTemplates/assets/js/**/*.js' , included: false},
                         {pattern: 'test/spec/unit/**/*.js', included: false},
-                        {pattern: 'node_modules/bonzo/bonzo.js', included: false},
-                        {pattern: 'node_modules/bean/bean.js', included: false},
                         {pattern: 'node_modules/d3/d3.js', included: false},
                         {pattern: 'node_modules/domready/ready.js', included: false},
                         {pattern: 'node_modules/fastclick/lib/fastclick.js', included: false},
-                        {pattern: 'node_modules/qwery/qwery.js', included: false},
                         {pattern: 'node_modules/fence/fence.js', included: false},
                         {pattern: 'node_modules/smooth-scroll/dist/js/smooth-scroll.js', included: false},
-                        {pattern: 'node_modules/raven-js/dist/raven.js', included: false},
                         {pattern: 'node_modules/squirejs/src/Squire.js', included: false},
                         'test/spec/unit/test-main.js'
                     ],
