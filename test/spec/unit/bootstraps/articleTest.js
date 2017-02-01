@@ -6,15 +6,15 @@ define([
     'use strict';
 
     describe('ArticleTemplates/assets/js/bootstraps/article', function() {
-        var injector,
-            sandbox;
+        var injector;
             
         var youtubeMock,
             twitterMock,
             witnessMock,
             outbrainMock,
             quizMock,
-            membershipMock;
+            membershipMock,
+            immersiveMock;
 
         beforeEach(function() {
             twitterMock = {
@@ -35,14 +35,24 @@ define([
             youtubeMock = {
                 init: sinon.spy()
             };
-            sandbox = sinon.sandbox.create();
+            immersiveMock = {
+                init: sinon.spy()
+            };
+            
             injector = new Squire();
+            
+            window.GU = {
+                opts: {
+                    isImmersive: false
+                }
+            };
+
             window.applyNativeFunctionCall = sinon.spy();
         });
 
         afterEach(function () {
-            sandbox.restore();
             delete window.applyNativeFunctionCall;
+            delete window.GU;
         });
 
         describe('init()', function () {
@@ -54,6 +64,7 @@ define([
                     .mock('modules/quiz', quizMock)
                     .mock('modules/membership', membershipMock)
                     .mock('modules/youtube', youtubeMock)
+                    .mock('modules/immersive', immersiveMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/article'], function (article) {
                         article.init();
 
@@ -72,6 +83,7 @@ define([
                     .mock('modules/quiz', quizMock)
                     .mock('modules/membership', membershipMock)
                     .mock('modules/youtube', youtubeMock)
+                    .mock('modules/immersive', immersiveMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/article'], function (article) {
                         article.init();
 
