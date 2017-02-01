@@ -289,6 +289,15 @@ define([
         }
     }
 
+    function removeMinuteElems() {
+        var i,
+            minuteElems = document.querySelectorAll('.minute-logo-container, .minute-vertical-rule, .the-minute__header');
+
+        for (i = minuteElems.length; i > 0; i--) {
+            minuteElems[i-1].parentNode.removeChild(minuteElems[i-1]);
+        }
+    }
+
     function ready() {
         if (!initialised) {
             initialised = true;
@@ -305,6 +314,7 @@ define([
             if (GU.opts.isMinute && GU.opts.adsConfig === 'tablet') {
                 minute.init();
             } else {
+                removeMinuteElems();
                 twitter.init();
                 youtube.init();
 
