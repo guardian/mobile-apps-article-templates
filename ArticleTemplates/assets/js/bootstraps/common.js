@@ -258,7 +258,9 @@ define([
         for (i = 0; i < mainMediaElems.length; i++) {
             mainMediaElem = mainMediaElems[i];
             mainMediaElemOffset = GU.util.getElementOffset(mainMediaElem);
-            window.GuardianJSInterface.videoPosition(mainMediaElemOffset.left, mainMediaElemOffset.top, mainMediaElemOffset.width, mainMediaElem.getAttribute('href'));
+            if (mainMediaElemOffset.height && mainMediaElemOffset.width) {
+                window.GuardianJSInterface.videoPosition(mainMediaElemOffset.left, mainMediaElemOffset.top, mainMediaElemOffset.width, mainMediaElem.getAttribute('href'));
+            }
         }
 
         setTimeout(videoPositioningPoller.bind(null, document.body.offsetHeight), 500);
