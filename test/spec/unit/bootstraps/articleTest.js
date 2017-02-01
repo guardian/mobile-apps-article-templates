@@ -13,7 +13,7 @@ define([
             witnessMock,
             outbrainMock,
             quizMock,
-            membershipMock,
+            creativeInjectorMock,
             immersiveMock;
 
         beforeEach(function() {
@@ -29,7 +29,7 @@ define([
             quizMock = {
                 init: sinon.spy()
             };
-            membershipMock = {
+            creativeInjectorMock = {
                 init: sinon.spy()
             };
             youtubeMock = {
@@ -62,7 +62,7 @@ define([
                     .mock('modules/witness', witnessMock)
                     .mock('modules/outbrain', outbrainMock)
                     .mock('modules/quiz', quizMock)
-                    .mock('modules/membership', membershipMock)
+                    .mock('modules/creativeInjector', creativeInjectorMock)
                     .mock('modules/youtube', youtubeMock)
                     .mock('modules/immersive', immersiveMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/article'], function (article) {
@@ -81,7 +81,7 @@ define([
                     .mock('modules/witness', witnessMock)
                     .mock('modules/outbrain', outbrainMock)
                     .mock('modules/quiz', quizMock)
-                    .mock('modules/membership', membershipMock)
+                    .mock('modules/creativeInjector', creativeInjectorMock)
                     .mock('modules/youtube', youtubeMock)
                     .mock('modules/immersive', immersiveMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/article'], function (article) {
