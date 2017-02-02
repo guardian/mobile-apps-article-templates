@@ -52,7 +52,7 @@ define(function () {
     function isInlineCreativeInView(inlineCreativeContainer, id) {
         var messageName = 'inline_creative_view/' + id;
 
-        if (trackedImpressions.indexOf(id) !== -1 && GU.util.isElementPartiallyInViewport(inlineCreativeContainer)) {
+        if (trackedImpressions.indexOf(id) === -1 && GU.util.isElementPartiallyInViewport(inlineCreativeContainer)) {
             GU.util.signalDevice(messageName);
             
             trackedImpressions.push(id);
