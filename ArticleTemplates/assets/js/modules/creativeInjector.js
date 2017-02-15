@@ -8,12 +8,12 @@ define(function () {
         if (!initialised) {
             initialised = true;
 
-            window.injectInlineCreative = injectInlineCreative;
+            window.injectCreative = injectCreative;
             window.applyNativeFunctionCall('injectInlineCreative');
         }
     }
 
-    function injectInlineCreative(html, css, id, type) {
+    function injectCreative(html, css, id, type) {
         if (GU.util.isOnline() && !document.getElementById(id)) {   
             injectCSS(css);
             injectHTML(html, id, type);
@@ -38,7 +38,6 @@ define(function () {
         var creativeContainer = document.createElement('div');
         
         creativeContainer.classList.add(type + '-creative-container');
-        creativeContainer.id = id;
         creativeContainer.innerHTML = html;
 
         if (type === 'inline-article') {
@@ -46,23 +45,21 @@ define(function () {
         } else {
             injectEpicCreative(creativeContainer);
         }
+
+        window.addEventListener('scroll', GU.util.debounce(isCreativeInView.bind(null, creativeContainer, id), 100));
     }
 
     function injectInlineCreative(creativeContainer) {
         var i,
             prose = document.querySelector('.article__body > div.prose'),
-            paragraphs = prose.querySelectorAll('p');
+            paragraphs = prose.querySelectorAll('p:nth-child(n+4)');
 
-        if (paragraphs.length < 4) {
-            return;
-        }
-
-        // loop through paragraphs after 3rd paragraph 
-        // insert creativeContainer after any paragraph which is followed by a paragraph or header
-        for (i = 3; i < paragraphs.length; i++) {
-            if (paragraphs[i].nextSibling && 
-                (paragraphs[i].nextSibling.tagName === 'P' || paragraphs[i].nextSibling.tagName === 'H1')) {
-                paragraphs[i].nextSibling.parentNode.insertBeforeElem(creativeContainer, paragraphs[i].nextSibling);
+        // loop through paragraphs from 4th paragraph
+        // insert creativeContainer if paragraph which is followed by a p or h1 elem
+        for (i = 0; i < paragraphs.length; i++) {
+            if (paragraphs[i].nextElementSibling && 
+                (paragraphs[i].nextElementSibling.tagName === 'P' || paragraphs[i].nextElementSibling.tagName === 'H1')) {
+                paragraphs[i].nextElementSibling.parentNode.insertBefore(creativeContainer, paragraphs[i].nextElementSibling);
                 break;
             }
         }
@@ -73,12 +70,11 @@ define(function () {
             
         if (prose) {
             prose.appendChild(creativeContainer);
-            window.addEventListener('scroll', GU.util.debounce(isInlineCreativeInView.bind(null, creativeContainer, id), 100));
         }
     }
 
-    function isInlineCreativeInView(creativeContainer, id) {
-        var messageName = 'inline_creative_view/' + id;
+    function isCreativeInView(creativeContainer, id) {
+        var messageName = 'creative_impression/' + id;
 
         if (trackedImpressions.indexOf(id) === -1 && GU.util.isElementPartiallyInViewport(creativeContainer)) {
             GU.util.signalDevice(messageName);
