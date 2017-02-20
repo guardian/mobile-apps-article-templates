@@ -37,6 +37,7 @@ define(function () {
     function injectHTML(html, id, type) {
         var creativeContainer = document.createElement('div');
         
+        creativeContainer.id = id;
         creativeContainer.classList.add(type + '-creative-container');
         creativeContainer.innerHTML = html;
 
