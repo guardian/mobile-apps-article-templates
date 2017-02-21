@@ -38,6 +38,7 @@ define(function () {
         var creativeContainer = document.createElement('div');
         
         creativeContainer.id = id;
+        creativeContainer.classList.add('creative-container');
         creativeContainer.classList.add(type + '-creative-container');
         creativeContainer.innerHTML = html;
 
