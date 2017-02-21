@@ -11,7 +11,7 @@ define(function () {
     function isNonCompliant() {
         var prose = document.querySelector('.article__body > div.prose ');
 
-        if (prose && prose.lastChild && prose.lastChild.classList.contains('creative-container')) {
+        if (prose && prose.lastElementChild && prose.lastElementChild.classList.contains('creative-container')) {
             return true;
         }
 
@@ -95,7 +95,7 @@ define(function () {
             scriptElement = document.createElement('script');
             scriptElement.id = 'outbrain-widget';
             scriptElement.async = true;
-            scriptElement.src = 'https://widgets.outbrain.com/outbrain.js?cachebuster=123456789';
+            scriptElement.src = 'https://widgets.outbrain.com/outbrain.js';
 
             document.body.appendChild(scriptElement);
         }
