@@ -3,7 +3,7 @@ define([
     'modules/witness',
     'modules/outbrain',
     'modules/quiz',
-    'modules/membership',
+    'modules/creativeInjector',
     'modules/youtube',
     'modules/immersive'
 ], function (
@@ -11,7 +11,7 @@ define([
     witness,
     outbrain,
     quiz,
-    membership,
+    creativeInjector,
     youtube,
     immersive
 ) {
@@ -30,7 +30,7 @@ define([
                 immersive.init();
             }
             richLinkTracking();
-            membership.init();
+            creativeInjector.init();
             initialised = true;
         }
     }
