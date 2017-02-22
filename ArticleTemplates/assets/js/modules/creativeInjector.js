@@ -57,7 +57,7 @@ define(function () {
             paragraphs = prose.querySelectorAll('p:nth-child(n+4)');
 
         // loop through paragraphs from 4th paragraph
-        // insert creativeContainer if paragraph which is followed by a p or h1 elem
+        // insert creativeContainer if paragraph is followed by a p or h1 elem
         for (i = 0; i < paragraphs.length; i++) {
             if (paragraphs[i].nextElementSibling && 
                 (paragraphs[i].nextElementSibling.tagName === 'P' || paragraphs[i].nextElementSibling.tagName === 'H1')) {
