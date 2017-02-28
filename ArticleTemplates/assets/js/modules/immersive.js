@@ -50,13 +50,21 @@ define(function () {
         for (i = 0; i < headers.length; i++) {
             header = headers[i];
 
-            if (header.innerHTML.trim() === '* * *') {
+            if (header.innerText.trim() === '* * *') {
                 header.innerHTML = '';
                 header.classList.add('section__rule');
-                if (header.nextElementSibling) {
-                    header.nextElementSibling.classList.add('has__dropcap');
-                }
+                addDropCapToNextElementSibling(header);
             }
+        }
+    }
+
+    function addDropCapToNextElementSibling(element) {
+        var nextParagraphSibling = element.nextElementSibling;
+
+        if (nextParagraphSibling &&
+            nextParagraphSibling.tagName === 'P' && 
+            (!nextParagraphSibling.firstElementChild || nextParagraphSibling.firstElementChild.tagName !== 'STRONG')) {
+            nextParagraphSibling.classList.add('has__dropcap');
         }
     }
 
@@ -84,9 +92,7 @@ define(function () {
                 elementImmersive.classList.add('title--overlay');
                 nextSibling.classList.add('title--image');
 
-                if (nextSibling.nextElementSibling) {
-                    nextSibling.nextElementSibling.classList.add('has__dropcap');
-                }
+                addDropCapToNextElementSibling(nextSibling);
             }
         }
     }
