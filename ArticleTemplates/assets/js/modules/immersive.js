@@ -50,7 +50,7 @@ define(function () {
         for (i = 0; i < headers.length; i++) {
             header = headers[i];
 
-            if (header.innerText.trim() === '* * *') {
+            if (header.innerText.trim() === '* * *' || header.classList.contains('section__rule')) {
                 header.innerHTML = '';
                 header.classList.add('section__rule');
                 addDropCapToNextElementSibling(header);
@@ -63,7 +63,8 @@ define(function () {
 
         if (nextParagraphSibling &&
             nextParagraphSibling.tagName === 'P' && 
-            (!nextParagraphSibling.firstElementChild || nextParagraphSibling.firstElementChild.tagName !== 'STRONG')) {
+            nextParagraphSibling.firstChild && 
+            nextParagraphSibling.firstChild.tagName !== 'STRONG') {
             nextParagraphSibling.classList.add('has__dropcap');
         }
     }
