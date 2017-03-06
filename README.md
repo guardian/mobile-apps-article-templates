@@ -4,29 +4,19 @@ Article templates used within the Guardian’s next-generation iOS and Android a
 ## Requirements
 * A Mac or Linux PC.
 * [brew](http://brew.sh/) as a package manager.
-* [rbenv](https://github.com/sstephenson/rbenv). Install it using brew `brew install rbenv ruby-build`. Remember to add `eval "$(rbenv init -)"` to your preferred shell startup file (e.g. `~/.profile`, `~/.zshrc`, etc).
 * [NVM](https://github.com/creationix/nvm).
 * [NodeJS](http://nodejs.org/). Install using nvm: `nvm install v6.9.2`. Remember to add `nvm use v6.9.2` to your preferred shell startup file.
 * [Grunt](http://gruntjs.com/). Install using `npm install -g grunt grunt-cli`.
-* ImageMagick and PhantomJS. Install using brew: `brew install phantomjs imagemagick`.
+
 * It is recommended you restart your shell to ensure changes added the startup file are applied.
 
 ## Usage
 * checkout the project in a separate directory, outside the iOS and the Android app.
-* run `rbenv install && gem install bundler`.
 * run `npm install`.
-* run `bundle install`.
 * copy config.sample.js to config.js and fill in the details
     * `base.android` is the 'ArticleTemplate' path within the Android app, eg: `/Users/sandropaganotti/Projects/android-news-app/android-news-app/src/main/assets/templates/`
     * `base.ios` is the 'ArticleTemplate' path within the iOs app, eg: `/Users/sandropaganotti/Projects/ios-live/mobile-apps-article-templates/ArticleTemplates/`
     * `base.html` is the path where this repository has been checked out, eg: `/Users/sandropaganotti/Projects/mobile-apps-article-templates/`
-    * `performance.server` is the URL that points to your local machine, you can use `http://127.0.0.1` temporarily but you'll need to switch it to the LAN IP if you want to use the performance testing on an external device.
-    * `ios.sign` and `ios.provisioning`. These fields can be set to empty strings for testing on an iOS device simulator. If you need to test on a physical provisioned device, the correct values can be extracted following this procedure:
-        * from a terminal go to the folder `GLA` within the `ios-live` repository
-        * run `xcodebuild build -sdk iphoneos8.3 -configuration Debug -workspace GLA.xcworkspace -scheme GLADebug`
-        * read the (very long) output log, at the end there are two rows `Signing Identity:` and `Provisioning Profile:`
-        * use the value of `Signing Identity:` for `ios.sign`
-        * look on your hard drive for a file named after the `Provisioning Profile:` - the part between the brackets, eg: if your `Provisioning Profile:` value is (`123456-3136-4783-95e8-ac71ca306f46`) you need to look for a file named `123456-3136-4783-95e8-ac71ca306f46.mobileprovision` eg: `/Users/sandropaganotti/Library/MobileDevice/Provisioning Profiles/123456-3136-4783-95e8-ac71ca306f46.mobileprovision` and use that path for the `ios.provisioning`
 * run `grunt`
 
 ## Grunt tasks
@@ -37,49 +27,10 @@ Grunt will provide the following services:
 * `grunt sasslint` it launches the SASS syntax checker against our codebase.
 * `grunt jshint` it performs a syntax checking on the current js codebase.
 * `grunt karma` it runs the unit test pack from the test/spec/unit/ directory
-* `grunt shell:android --card=1234` it generates a `android-news-app-debug.apk` file using the current project files. The `card` parameter is used to specificy the jira card number, so if the ticket is `AND-1234` card is equal to `1234`. This command only works if the Android SDK is installed and `adb` is in `PATH`.
-* `grunt shell:ios` it generates a `guardian-debug.ipa` file using the current project files. This command only works if XCode is installed and `ios.sign` and `ios.provisioning` have been filled.
-* `grunt shell:timeline --fixture=filename --times=20` it launches a telemetry session on file `filename` repeated `times` times. See the `Experimental performance measurement` section for more information.
-* `grunt shell:wraithhistory` it setup a [wraith](https://github.com/BBC-News/wraith) session for visual regression testing. See the `Visual Regression` section for more information.
-* `grunt shell:wraith` it launches a wraith session for visual regression testing. Results can be found pointing the browser to [localhost:3000](localhost:3000/root/test/visual/shots/gallery.html).
 
 These services are also available packed into recipes
+* `grunt build` runs buildJS and buildCSS
 * `grunt buildJS` concatenate and minify javascript files, check javascript syntax, and start karma unit test runner.
 * `grunt buildCSS` run scsslint, compile SCSS into CSS and minify CSS.
-* `grunt apk --card=1234` it launches `build` then `rsync` and then `shell:android` to make sure that the resulting build contains the current files from the project and not some stale files.
-* `grunt ipa` it launches `build` then `rsync` and then `shell:ios`.
-* `grunt installer --card=1234` it launches `apk` and `ipa` in sequence.
 
 _By simply running `grunt` (without any argument) the system keeps watching for changes reacting with the appropriate tasks.
-
-## Experimental performance measurement
-![](https://raw.githubusercontent.com/guardian/mobile-apps-article-templates/master/Performance/_cover.png)
-This feature allows us to record several timelines from a page loaded into the device and then it extracts some
-particular features (such as frame rate, page load time and more) and it creates a chart for it.
-To use this feature there are a few steps involved:
-* make sure to use an Android device.
-* make sure to have the Android SDK installer and `adb` in `PATH`.
-* make sure your device can reach your laptop over LAN and fill the `performance.server` field in `config.js` with your laptop LAN address (eg: `http://192.168.1.1`)
-    * a nice way to achieve this is by using bluetooth tethering between the laptop and the device.
-* connect your device over USB and open chrome
-* collect the page you want to test under test/fixture folder and be sure to add the session name to each page. Session names should be used during measurements to describe the device used and any other extra features, e.g.
-```bash
-<!--
-article1_s3_nocss
--->
-```
-* run `grunt`
-* in a separate shell run `grunt shell:timeline --fixture=article1.html --times=10` where `article1.html` is the name of the fixture you want to load and 10 is the number of timelines you want to record
-* head to `http://localhost:3000/performances/#yoursession` to see the results
-
-## Visual Regressions
-![](https://raw.githubusercontent.com/guardian/mobile-apps-article-templates/master/test/visual/_cover.png)
-Use this feature to check for CSS regressions:
-* install imagemagick and phantomjs (eg: `brew install phantomjs imagemagick`)
-* run `grunt`
-* in a separate shell run `grunt shell:wraithhistory` from the project root to collect baseline screenshots
-* when you're ready run `grunt shell:wraith` from the project root to take a new set of screenshots and compare the with the baseline
-* browse http://localhost:3000/root/test/visual/shots/gallery.html to see the differences between the to sets of shots
-
-## APKs and IPAs
-When everything is properly configured type `grunt installer --card 123` to create a debuggable APK and IPA in the root folder of the project. Replace `123` with the number of a relevant Jira card for this build, as it will be appended to the version number in the app for reference.
