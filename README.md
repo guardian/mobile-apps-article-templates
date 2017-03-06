@@ -7,7 +7,6 @@ Article templates used within the Guardian’s next-generation iOS and Android a
 * [NVM](https://github.com/creationix/nvm).
 * [NodeJS](http://nodejs.org/). Install using nvm: `nvm install v6.9.2`. Remember to add `nvm use v6.9.2` to your preferred shell startup file.
 * [Grunt](http://gruntjs.com/). Install using `npm install -g grunt grunt-cli`.
-
 * It is recommended you restart your shell to ensure changes added the startup file are applied.
 
 ## Usage
@@ -33,4 +32,4 @@ These services are also available packed into recipes
 * `grunt buildJS` concatenate and minify javascript files, check javascript syntax, and start karma unit test runner.
 * `grunt buildCSS` run scsslint, compile SCSS into CSS and minify CSS.
 
-_By simply running `grunt` (without any argument) the system keeps watching for changes reacting with the appropriate tasks.
+By simply running `grunt` (without any argument) the system keeps watching for changes reacting with the appropriate tasks.
