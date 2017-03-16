@@ -8,7 +8,7 @@ define(function () {
         document.body.className = document.body.className.replace(/(tone--).+?\s/g, 'tone--feature1 ');
 
         // we actually need for the embed to be sent through with prefixed & unprefixed styles
-        if (GU.opts.platform !== 'ios') {
+        if (GU.opts.platform === 'windows') {
             adjustHeaderImageHeight();
             formatImmersiveForWindows();
         }
@@ -183,7 +183,7 @@ define(function () {
         var viewPortHeight = document.documentElement.clientHeight,
             marginTop = document.body.style.marginTop.replace('px', '');
 
-        return viewPortHeight - marginTop;;
+        return viewPortHeight - marginTop;
     }
 
     function init() {
