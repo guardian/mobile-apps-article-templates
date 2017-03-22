@@ -677,25 +677,3 @@ body.immersive .article--immersive {
         }
     }
 }
-
-// Hack required for Android as they don't support vh units
-body.immersive.android .article--immersive {
-    .article__header-bg {
-        .element-atom,
-        .element-embed {
-            height: 600px;
-
-            &.height-adjusted {
-                bottom: 0;
-                left: 0;
-                position: absolute;
-                right: 0;
-                top: 0;
-                height: auto;
-            }
-        }
-        &[data-full-screen] {
-            height: 600px;
-        }
-    }
-}

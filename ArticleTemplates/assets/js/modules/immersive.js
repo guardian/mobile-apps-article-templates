@@ -7,7 +7,9 @@ define(function () {
         // Override tone to feature for all immersive pages
         document.body.className = document.body.className.replace(/(tone--).+?\s/g, 'tone--feature1 ');
 
-        adjustHeaderImageHeight();
+        if (GU.opts.platform !== 'ios') {
+            adjustHeaderImageHeight();
+        }
 
         // we actually need for the embed to be sent through with prefixed & unprefixed styles
         if (GU.opts.platform === 'windows') {
@@ -120,7 +122,10 @@ define(function () {
         }
 
         window.addEventListener('scroll', GU.util.debounce(onImmersiveScroll, 10));
-        window.addEventListener('resize', GU.util.debounce(onResize, 100));
+        
+        if (GU.opts.platform !== 'ios') {
+            window.addEventListener('resize', GU.util.debounce(adjustHeaderImageHeight, 100));
+        }
     }
 
     function onQuoteOverlayClick(quoteOverlay, evt) {
@@ -158,29 +163,26 @@ define(function () {
         }
     }
 
-    function onResize() {
-        adjustHeaderImageHeight();
-    }
-
     function adjustHeaderImageHeight() {
         var embed,
-            viewPortHeight,
-            bgHeight,
-            headerContainer;
-
-        viewPortHeight = document.documentElement.clientHeight;
-        bgHeight = (viewPortHeight - document.body.style.marginTop.replace('px', '')) + 'px';
-        headerContainer = document.querySelector('.article__header-bg, .article__header-bg .element > iframe');
+            headerContainer = document.querySelector('.article__header-bg, .article__header-bg .element > iframe');
 
         if (headerContainer) {
             embed = headerContainer.getElementsByClassName('element-embed')[0] || headerContainer.getElementsByClassName('element-atom')[0];
             if (embed || headerContainer.dataset.fullScreen) {
-                headerContainer.style.height = bgHeight;
+                headerContainer.style.height = getImageHeight() + 'px';
                 if (embed) {
                     embed.classList.add('height-adjusted');
                 }
             }
         }
+    }
+
+    function getImageHeight() {
+        var viewPortHeight = document.documentElement.clientHeight,
+            marginTop = document.body.style.marginTop.replace('px', '');
+
+        return viewPortHeight - marginTop;
     }
 
     function init() {
