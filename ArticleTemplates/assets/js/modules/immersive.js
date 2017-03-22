@@ -7,9 +7,12 @@ define(function () {
         // Override tone to feature for all immersive pages
         document.body.className = document.body.className.replace(/(tone--).+?\s/g, 'tone--feature1 ');
 
+        if (GU.opts.platform !== 'ios') {
+            adjustHeaderImageHeight();
+        }
+
         // we actually need for the embed to be sent through with prefixed & unprefixed styles
         if (GU.opts.platform === 'windows') {
-            adjustHeaderImageHeight();
             formatImmersiveForWindows();
         }
 
@@ -121,7 +124,7 @@ define(function () {
         window.addEventListener('scroll', GU.util.debounce(onImmersiveScroll, 10));
         
         if (GU.opts.platform !== 'ios') {
-            window.addEventListener('resize', GU.util.debounce(onResize, 100));
+            window.addEventListener('resize', GU.util.debounce(adjustHeaderImageHeight, 100));
         }
     }
 
@@ -158,10 +161,6 @@ define(function () {
                 pullQuote.classList.add('fadeInUp');
             }
         }
-    }
-
-    function onResize() {
-        adjustHeaderImageHeight();
     }
 
     function adjustHeaderImageHeight() {
