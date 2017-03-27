@@ -62,9 +62,16 @@ Display a match summary. The score is updated during the match.
 
 .match-summary {
     background-color: color(shade-7);
-    padding: base-px(1, 1, 0, 1);
+    padding-top: base-px(1);
     position: relative;
     overflow: hidden;
+
+
+    .match-summary__team--home,
+    .match-summary__team--away {
+        padding-left: base-px(1);
+        padding-right: base-px(1);
+    }
 
     @include mq($from: col1) {
         padding: base-px(.5, 1, 0, 1);
@@ -104,6 +111,7 @@ Display a match summary. The score is updated during the match.
         @include mq($to: col1) {
             float: left;
             width: 44px;
+            margin: base-px(0, 1);
         }
 
         @include mq($from: col1) {

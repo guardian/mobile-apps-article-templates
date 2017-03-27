@@ -14,19 +14,31 @@
             border-top-color: color(tone-live-accent);
         }
     }
+
+    .alerts {
+        margin-top: base-px(1);
+        margin-left: 0;
+    }
 }
 
 // Tab containers
 .football__tabpanel {
     .article {
         border-top-width: 2px;
-        background: color(shade-7);
+    }
+    .article--liveblog,
+    .article__header  {
+        background-color: color(shade-5);
+    }
+    .meta {
+        border-top: 1px dotted grey;
+        border-bottom: 0;
     }
 }
 
 #football__tabpanel--article {
     .section {
-        display: none;
+        display: 0;
     }
 
     .headline {
@@ -36,6 +48,7 @@
 
 #football__tabpanel--stats {
     font-family: $agate-sans;
+    background-color: color(shade-7);
 }
 
 // Helpers (headings and columns)
