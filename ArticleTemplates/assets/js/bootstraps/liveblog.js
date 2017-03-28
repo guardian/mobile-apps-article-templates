@@ -78,7 +78,8 @@ define([
             twitter.checkForTweets();
 
             // check for youtube video atoms
-            youtube.checkForVideos();
+            // timeout required to allow slideinright animation to finish
+            setTimeout(youtube.checkForVideos, 650);
 
             newBlockHtml = '';
         }

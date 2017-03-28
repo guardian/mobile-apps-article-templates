@@ -6,10 +6,12 @@ define(function() {
         players = {},
         progressTracker = {},
         scriptReady = false,
-        sdkPlaceholders,
+        sdkPlaceholders = [],
         sdkReport,
         sdkPollCount = 0,
-        sdkMaxPollCount = 20;
+        sdkMaxPollCount = 20,
+        sdkReportInitialised = false,
+        sdkPoller;
 
     function ready() {
         setStateHandlers();
@@ -42,19 +44,26 @@ define(function() {
 
     function checkForVideos() {
         var iframes = document.body.querySelectorAll('iframe.youtube-media');
+        
         var hasPreviousElementImage = function (element) {
             var previousElementSibling = element.previousElementSibling;
 
             return previousElementSibling && previousElementSibling.classList.contains('element-image');
         };
-        
-        sdkPlaceholders = Array.prototype.filter.call(iframes, function (iframe) {
-            return hasPreviousElementImage(iframe);
-        });
 
         videos = Array.prototype.filter.call(iframes, function (iframe) {
             return !hasPreviousElementImage(iframe);
         });
+        
+        sdkPlaceholders = Array.prototype.map.call(iframes, function (iframe) {
+             if (hasPreviousElementImage(iframe)) {
+                var previousElementSibling = iframe.previousElementSibling;
+                
+                iframe.remove();
+
+                return previousElementSibling;
+             }
+        }).filter(Boolean).concat(sdkPlaceholders);
 
         if (videos.length) {
             if (!scriptReady) {
@@ -67,14 +76,22 @@ define(function() {
         if (sdkPlaceholders.length) {
             buildAndSendSdkReport();
 
-            window.addEventListener('resize', buildAndSendSdkReport);
+            if (!sdkReportInitialised) {
+                window.addEventListener('resize', buildAndSendSdkReport);
 
-            var poller = setInterval(function () {
+                sdkReportInitialised = true;
+            }
+
+            if (sdkPoller) {
+                clearInterval(sdkPoller);
+            }
+
+            sdkPoller = setInterval(function () {
                 if (sdkPollCount < sdkMaxPollCount) {
                      buildAndSendSdkReport();
                      sdkPollCount++;
                 } else {
-                    clearInterval(poller);
+                    clearInterval(sdkPoller);
                 }
             }, 1000);
         }
@@ -93,11 +110,11 @@ define(function() {
         return JSON.stringify(sdkPlaceholders.map(getSdkReportPosProps));
     }
 
-    function getSdkReportPosProps(iframe) {
-        var sdkPlaceholder = iframe.previousElementSibling;
+    function getSdkReportPosProps(sdkPlaceholder) {
         var posProps = GU.util.getElementOffset(sdkPlaceholder);
+        var atom = sdkPlaceholder.closest('[data-media-atom-id]');
 
-        posProps.id = iframe.dataset.id;
+        posProps.id = atom.dataset.mediaAtomId;
 
         return posProps;
     }
