@@ -1,11 +1,15 @@
 define(function() {
     'use strict';
 
-    var videos,
+    var videos = [],
         stateHandlers = {},
         players = {},
         progressTracker = {},
-        scriptReady = false;
+        scriptReady = false,
+        sdkPlaceholders,
+        sdkReport,
+        sdkPollCount = 0,
+        sdkMaxPollCount = 20;
 
     function ready() {
         setStateHandlers();
@@ -37,7 +41,20 @@ define(function() {
     }
 
     function checkForVideos() {
-        videos = document.body.querySelectorAll('iframe.youtube-media');
+        var iframes = document.body.querySelectorAll('iframe.youtube-media');
+        var hasPreviousElementImage = function (element) {
+            var previousElementSibling = element.previousElementSibling;
+
+            return previousElementSibling && previousElementSibling.classList.contains('element-image');
+        };
+        
+        sdkPlaceholders = Array.prototype.filter.call(iframes, function (iframe) {
+            return hasPreviousElementImage(iframe);
+        });
+
+        videos = Array.prototype.filter.call(iframes, function (iframe) {
+            return !hasPreviousElementImage(iframe);
+        });
 
         if (videos.length) {
             if (!scriptReady) {
@@ -46,6 +63,43 @@ define(function() {
                 initialiseVideos();
             }
         }
+
+        if (sdkPlaceholders.length) {
+            buildAndSendSdkReport();
+
+            window.addEventListener('resize', buildAndSendSdkReport);
+
+            var poller = setInterval(function () {
+                if (sdkPollCount < sdkMaxPollCount) {
+                     buildAndSendSdkReport();
+                     sdkPollCount++;
+                } else {
+                    clearInterval(poller);
+                }
+            }, 1000);
+        }
+    }
+
+    function buildAndSendSdkReport() {
+        var newSdkReport = buildSdkReport();
+
+        if (newSdkReport !== sdkReport) {
+            GU.util.signalDevice('youtubeAtomPosition/' + newSdkReport);
+            sdkReport = newSdkReport;
+        }
+    }
+
+    function buildSdkReport() {
+        return JSON.stringify(sdkPlaceholders.map(getSdkReportPosProps));
+    }
+
+    function getSdkReportPosProps(iframe) {
+        var sdkPlaceholder = iframe.previousElementSibling;
+        var posProps = GU.util.getElementOffset(sdkPlaceholder);
+
+        posProps.id = iframe.dataset.id;
+
+        return posProps;
     }
 
     function loadScript() {

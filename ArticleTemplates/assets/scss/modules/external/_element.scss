@@ -136,6 +136,12 @@ Display an embedded element. Element embeds are typically shown as figures, and 
 .element-youtube {
     padding-bottom: 0;
 
+    &--sdk {
+        .element__inner {
+             padding-bottom: 0; 
+        }
+    }
+
     .element__inner {
         .youtube-media__placeholder {
             z-index: 1;
@@ -198,6 +204,10 @@ Display an embedded element. Element embeds are typically shown as figures, and 
         &.hide-placeholder .youtube-media__placeholder {
             display: none;
         }
+    }
+
+    .element-image + .youtube-media {
+        display: none;
     }
 }
 
