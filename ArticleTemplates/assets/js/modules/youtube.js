@@ -114,7 +114,7 @@ define(function() {
         var posProps = GU.util.getElementOffset(sdkPlaceholder);
         var atom = sdkPlaceholder.closest('[data-media-atom-id]');
 
-        posProps.id = atom.dataset.mediaAtomId;
+        posProps.id = atom.dataset.atomId;
 
         return posProps;
     }
