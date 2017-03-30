@@ -73,6 +73,8 @@ define(function() {
             }
         }
 
+        console.log('sdkPlaceholders ------->', sdkPlaceholders.length);
+
         if (sdkPlaceholders.length) {
             buildAndSendSdkReport();
 
