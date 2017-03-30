@@ -50,12 +50,8 @@ define(function() {
         iframe.style.display = 'none';
         iframe.src = url;
 
-        doIframeMessage(iframe);
-    }
-
-    function doIframeMessage(elem) {
-        document.documentElement.appendChild(elem);
-        document.documentElement.removeChild(elem);
+        document.documentElement.appendChild(iframe);
+        document.documentElement.removeChild(iframe);
     }
 
     function isOnline() {
