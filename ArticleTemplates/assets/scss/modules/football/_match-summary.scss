@@ -67,10 +67,9 @@ Display a match summary. The score is updated during the match.
     overflow: hidden;
 
 
-    .match-summary__team--home,
-    .match-summary__team--away {
-        padding-left: base-px(1);
-        padding-right: base-px(1);
+    .match-summary__team {
+        margin-left: base-px(1);
+        margin-right: base-px(1);
     }
 
     @include mq($from: col1) {
@@ -173,6 +172,7 @@ Display a match summary. The score is updated during the match.
 
     @include mq($to: col1) {
         padding: base-px(0, 3, 1, 4.5);
+        border-bottom: 1px dotted color(shade-4);
     }
 
     @include mq($from: col1) {
@@ -196,7 +196,6 @@ Display a match summary. The score is updated during the match.
     min-height: 60px;
 
     @include mq($to: col1) {
-        width: 100%;
         padding: base-px(1, 0, 2.5, 0);
         position: relative;
     }
@@ -274,10 +273,6 @@ Display a match summary. The score is updated during the match.
 }
 
 .match-summary__team--home {
-    @include mq($to: col1) {
-        border-top: 1px dotted color(shade-4);
-    }
-
     .match-summary__score {
         @include mq($from: col1) {
             text-align: right;
