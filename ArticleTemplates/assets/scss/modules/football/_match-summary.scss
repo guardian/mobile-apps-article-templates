@@ -66,10 +66,11 @@ Display a match summary. The score is updated during the match.
     position: relative;
     overflow: hidden;
 
-
-    .match-summary__team {
-        margin-left: base-px(1);
-        margin-right: base-px(1);
+    @include mq($to: col1) {
+        .match-summary__team {
+            margin-left: base-px(1);
+            margin-right: base-px(1);
+        }
     }
 
     @include mq($from: col1) {
