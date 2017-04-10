@@ -1,7 +1,9 @@
 define([
-    'bootstraps/common'
+    'bootstraps/common',
+    'modules/util'
 ], function (
-    common
+    common,
+    util
 ) {
     'use strict';
 
@@ -157,7 +159,7 @@ define([
             addClassesToMinuteBlocks(blocks);
             updateMinuteBlockTitles(blocks);
             adjustMinuteBlocks(blocks);
-            window.addEventListener('resize', GU.util.debounce(adjustMinuteBlocks.bind(null, blocks), 100));
+            window.addEventListener('resize', util.debounce(adjustMinuteBlocks.bind(null, blocks), 100));
         }
     }
 

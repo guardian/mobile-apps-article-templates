@@ -3,13 +3,15 @@ define([
     'modules/twitter',
     'modules/youtube',
     'modules/minute',
-    'bootstraps/common'
+    'bootstraps/common',
+    'modules/util'
 ], function (
     relativeDates,
     twitter,
     youtube,
     minute,
-    common
+    common,
+    util
 ) {
     'use strict';
 
@@ -50,7 +52,7 @@ define([
             i;
 
         if (newBlockHtml) {
-            newBlockElems = GU.util.getElemsFromHTML(newBlockHtml);
+            newBlockElems = util.getElemsFromHTML(newBlockHtml);
 
             for (i = newBlockElems.length; i > 0; i--) {
                 addNewBlockToBlog(insertAfterElem, newBlockElems[i - 1]);
@@ -101,7 +103,7 @@ define([
             loadingElem.classList.add('loading--visible');
         }
 
-        GU.util.signalDevice('showmore');
+        util.signalDevice('showmore');
     }
 
     function liveblogDeleteBlock(blockID) {
@@ -114,7 +116,7 @@ define([
 
     function liveblogUpdateBlock(blockID, html) {
         var block = document.getElementById(blockID),
-            newBlock = GU.util.getElemsFromHTML(html)[0];
+            newBlock = util.getElemsFromHTML(html)[0];
 
         if (block && newBlock) {
             block.parentNode.replaceChild(newBlock, block);
@@ -127,7 +129,7 @@ define([
             blocks,
             articleBody = document.getElementsByClassName('article__body')[0],
             oldBlockCount = articleBody.getElementsByClassName('block').length,
-            newBlockElems = GU.util.getElemsFromHTML(html);
+            newBlockElems = util.getElemsFromHTML(html);
 
         document.getElementsByClassName('loading--liveblog')[0].classList.remove('loading--visible');
 
@@ -230,7 +232,7 @@ define([
             return;
         }
 
-        newKeyEventLinks = GU.util.getElemsFromHTML(html);
+        newKeyEventLinks = util.getElemsFromHTML(html);
 
         for (i = newKeyEventLinks.length; i > 0; i--) {
             newKeyEventLinks[i - 1].classList.add('key-event--highlighted');
@@ -303,12 +305,12 @@ define([
             initialised = true;
 
             newBlockHtml = '';
-            liveblogStartPos = GU.util.getElementOffset(document.getElementsByClassName('article__body--liveblog')[0]);
+            liveblogStartPos = util.getElementOffset(document.getElementsByClassName('article__body--liveblog')[0]);
 
             setupGlobals();
             keyEvents();
             window.liveblogTime();
-            window.addEventListener('scroll', GU.util.debounce(updateBlocksOnScroll, 100, true));
+            window.addEventListener('scroll', util.debounce(updateBlocksOnScroll, 100, true));
             liveMore();
             
             if (GU.opts.isMinute && GU.opts.adsConfig === 'tablet') {

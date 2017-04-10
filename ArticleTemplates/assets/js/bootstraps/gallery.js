@@ -1,4 +1,9 @@
-define(function () {
+define([
+    'modules/util'
+],
+function (
+    util
+) {
     'use strict';
 
     var initialised,
@@ -23,7 +28,7 @@ define(function () {
 
             buildGallery();
 
-            window.addEventListener('resize', GU.util.debounce(buildGallery, 100));
+            window.addEventListener('resize', util.debounce(buildGallery, 100));
         }
     }
 

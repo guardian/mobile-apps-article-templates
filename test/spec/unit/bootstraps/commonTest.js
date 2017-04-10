@@ -1,8 +1,6 @@
 define([
-    'modules/util',
     'squire'
 ], function(
-    util,
     Squire
 ) {
     'use strict';
@@ -44,7 +42,7 @@ define([
         return figElem;
     }
 
-    describe('ArticleTemplates/assets/js/bootstraps/common', function() {
+    describe.only('ArticleTemplates/assets/js/bootstraps/common', function() {
         var injector,
             sandbox;
             
@@ -54,32 +52,40 @@ define([
             commentsMock,
             cardsMock,
             moreTagsMock,
-            sharingMock;
+            sharingMock,
+            utilMock;
 
         beforeEach(function() {
+            sandbox = sinon.sandbox.create();
+
             fenceMock = {
-                render: sinon.spy()
+                render: sandbox.spy()
             };
             fastClickMock = {
-                attach: sinon.spy()
+                attach: sandbox.spy()
             };
             smoothScrollMock = {
-                init: sinon.spy()
+                init: sandbox.spy()
             };
             commentsMock = {
-                init: sinon.spy()
+                init: sandbox.spy()
             };
             cardsMock = {
-                init: sinon.spy()
+                init: sandbox.spy()
             };
             moreTagsMock = {
-                init: sinon.spy()
+                init: sandbox.spy()
             };
             sharingMock = {
-                init: sinon.spy()
+                init: sandbox.spy()
             };
-
-            sandbox = sinon.sandbox.create();
+            utilMock = {
+                getClosestParentWithTag: sandbox.spy(),
+                getElementOffset: sandbox.stub().returns({
+                    width: 400
+                }),
+                debounce: sandbox.spy()
+            };
             
             injector = new Squire();
             
@@ -88,8 +94,6 @@ define([
                     isOffline: false
                 }
             };
-
-            window.GU.util = util;
         });
 
         afterEach(function () {
@@ -99,400 +103,257 @@ define([
 
         describe('formatImages(images)', function () {
             var articleElem,
+                figElem,
                 opts,
                 dummyImage,
-                origImage;
+                origImage,
+                common;
                 
-            beforeEach(function () {
+            beforeEach(function (done) {
+                // stub Image to test onerror handling
                 dummyImage = {};
                 origImage = window.Image;
                 window.Image = sinon.stub().returns(dummyImage);
+                
+                // add article element to page, we inject figElem into this element
                 articleElem = document.createElement('div');
                 articleElem.classList.add('article');
                 document.body.appendChild(articleElem);
+             
                 // default image is thumbnail with caption
                 opts = {
                     isThumbnail: true,
                     hasCaption: true
                 };
+
+                // mock util method getClosestParentWithTag to return figElem
+                utilMock.getClosestParentWithTag = function () {
+                    return figElem;
+                };
+
+                injector
+                    .mock('fence', fenceMock)
+                    .mock('fastClick', fastClickMock)
+                    .mock('smoothScroll', smoothScrollMock)
+                    .mock('modules/comments', commentsMock)
+                    .mock('modules/cards', cardsMock)
+                    .mock('modules/more-tags', moreTagsMock)
+                    .mock('modules/sharing', sharingMock)
+                    .mock('modules/util', utilMock)
+                    .require(['ArticleTemplates/assets/js/bootstraps/common'], function (sut) {
+                        common = sut;
+                        done();
+                    });
             });
 
             afterEach(function () {
-                window.Image = origImage;
+                // window.Image = origImage;
                 document.body.removeChild(articleElem);
             });
 
-            it('hides figure caption if empty', function (done) {
-               injector
-                    .mock('fence', fenceMock)
-                    .mock('fastClick', fastClickMock)
-                    .mock('smoothScroll', smoothScrollMock)
-                    .mock('modules/comments', commentsMock)
-                    .mock('modules/cards', cardsMock)
-                    .mock('modules/more-tags', moreTagsMock)
-                    .mock('modules/sharing', sharingMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
-                        opts.figCaption = '';
+            it('hides figure caption if empty', function () {
+                opts.figCaption = '';
 
-                        var figElem = buildFigElem(opts);
+                figElem = buildFigElem(opts);
+          
+                articleElem.appendChild(figElem);
 
-                        articleElem.appendChild(figElem);
+                common.formatImages();
 
-                        common.formatImages();
-
-                        expect(figElem.querySelector('figcaption').style.display).to.eql('none');
-
-                        done();
-                    });
+                expect(figElem.querySelector('figcaption').style.display).to.eql('none');
             });
 
-            it('does not hide figure caption if not empty', function (done) {
-               injector
-                    .mock('fence', fenceMock)
-                    .mock('fastClick', fastClickMock)
-                    .mock('smoothScroll', smoothScrollMock)
-                    .mock('modules/comments', commentsMock)
-                    .mock('modules/cards', cardsMock)
-                    .mock('modules/more-tags', moreTagsMock)
-                    .mock('modules/sharing', sharingMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
-                        opts.figCaption = 'hello world';
+            it('does not hide figure caption if not empty', function () {
+                opts.figCaption = 'hello world';
 
-                        var figElem = buildFigElem(opts);
+                figElem = buildFigElem(opts);
 
-                        articleElem.appendChild(figElem);
+                articleElem.appendChild(figElem);
 
-                        common.formatImages();
+                common.formatImages();
 
-                        expect(figElem.querySelector('figcaption').style.display).to.not.eql('none');
-
-                        done();
-                    });
+                expect(figElem.querySelector('figcaption').style.display).to.not.eql('none');
             });
 
-            it('adds image wrapper if first child of figure does not have class figure__inner', function (done) {
-                injector
-                    .mock('fence', fenceMock)
-                    .mock('fastClick', fastClickMock)
-                    .mock('smoothScroll', smoothScrollMock)
-                    .mock('modules/comments', commentsMock)
-                    .mock('modules/cards', cardsMock)
-                    .mock('modules/more-tags', moreTagsMock)
-                    .mock('modules/sharing', sharingMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
-                        var figElem = buildFigElem(opts);
+            it('adds image wrapper if first child of figure does not have class figure__inner', function () {
+                figElem = buildFigElem(opts);
 
-                        articleElem.appendChild(figElem);
+                articleElem.appendChild(figElem);
 
-                        common.formatImages();
+                common.formatImages();
 
-                        expect(figElem.firstChild.classList.contains('figure__inner')).to.be.true;
-                        expect(figElem.firstChild.firstChild.tagName).to.eql('IMG');
-
-                        done();
-                    });
+                expect(figElem.firstChild.classList.contains('figure__inner')).to.be.true;
+                expect(figElem.firstChild.firstChild.tagName).to.eql('IMG');
             });
 
-            it('set image wrapper height for thumbnail images', function (done) {
-                injector
-                    .mock('fence', fenceMock)
-                    .mock('fastClick', fastClickMock)
-                    .mock('smoothScroll', smoothScrollMock)
-                    .mock('modules/comments', commentsMock)
-                    .mock('modules/cards', cardsMock)
-                    .mock('modules/more-tags', moreTagsMock)
-                    .mock('modules/sharing', sharingMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
-                        opts.isThumbnail = true;
+            it('set image wrapper height for thumbnail images', function () {
+                opts.isThumbnail = true;
 
-                        var figElem = buildFigElem(opts);
+                figElem = buildFigElem(opts);
 
-                        articleElem.appendChild(figElem);
+                articleElem.appendChild(figElem);
 
-                        common.formatImages();
+                common.formatImages();
 
-                        var imageWrapper = figElem.querySelector('.figure__inner');
+                var imageWrapper = figElem.querySelector('.figure__inner');
 
-                        expect(imageWrapper).to.be.ok;
-                        expect(imageWrapper.style.height).to.eql('228px');
-                        
-                        done();
-                    });
+                expect(imageWrapper).to.be.ok;
+                expect(imageWrapper.style.height).to.eql('300px');
             });
 
-            it('set image wrapper height for figure-wide images', function (done) {
-                injector
-                    .mock('fence', fenceMock)
-                    .mock('fastClick', fastClickMock)
-                    .mock('smoothScroll', smoothScrollMock)
-                    .mock('modules/comments', commentsMock)
-                    .mock('modules/cards', cardsMock)
-                    .mock('modules/more-tags', moreTagsMock)
-                    .mock('modules/sharing', sharingMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
-                        opts.isThumbnail = false;
-                        opts.isFigureWide = true;
+            it('set image wrapper height for figure-wide images', function () {
+                opts.isThumbnail = false;
+                opts.isFigureWide = true;
 
-                        var figElem = buildFigElem(opts);
+                figElem = buildFigElem(opts);
 
-                        articleElem.appendChild(figElem);
+                articleElem.appendChild(figElem);
 
-                        common.formatImages();
+                common.formatImages();
 
-                        var imageWrapper = figElem.querySelector('.figure__inner');
+                var imageWrapper = figElem.querySelector('.figure__inner');
 
-                        expect(imageWrapper).to.be.ok;
-                        expect(imageWrapper.style.height).to.eql('228px');
-                        
-                        done();
-                    });
+                expect(imageWrapper).to.be.ok;
+                expect(imageWrapper.style.height).to.eql('300px');
             });
 
-            it('do not set image wrapper height if it is minute layout', function (done) {
-                injector
-                    .mock('fence', fenceMock)
-                    .mock('fastClick', fastClickMock)
-                    .mock('smoothScroll', smoothScrollMock)
-                    .mock('modules/comments', commentsMock)
-                    .mock('modules/cards', cardsMock)
-                    .mock('modules/more-tags', moreTagsMock)
-                    .mock('modules/sharing', sharingMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
-                        GU.opts.isMinute = 'minute';
+            it('do not set image wrapper height if it is minute layout', function () {
+                GU.opts.isMinute = 'minute';
 
-                        opts.isThumbnail = false;
-                        opts.isFigureWide = true;
+                opts.isThumbnail = false;
+                opts.isFigureWide = true;
 
-                        var figElem = buildFigElem(opts);
+                figElem = buildFigElem(opts);
 
-                        articleElem.appendChild(figElem);
+                articleElem.appendChild(figElem);
 
-                        common.formatImages();
+                common.formatImages();
 
-                        var imageWrapper = figElem.querySelector('.figure__inner');
+                var imageWrapper = figElem.querySelector('.figure__inner');
 
-                        expect(imageWrapper).to.be.ok;
-                        expect(imageWrapper.style.height).to.eql('');
-                        
-                        done();
-                    });
+                expect(imageWrapper).to.be.ok;
+                expect(imageWrapper.style.height).to.eql('');
             });
 
-            it('adds icon to caption if not present', function (done) {
-                injector
-                    .mock('fence', fenceMock)
-                    .mock('fastClick', fastClickMock)
-                    .mock('smoothScroll', smoothScrollMock)
-                    .mock('modules/comments', commentsMock)
-                    .mock('modules/cards', cardsMock)
-                    .mock('modules/more-tags', moreTagsMock)
-                    .mock('modules/sharing', sharingMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
-                        opts.figCaption = 'hello world';
+            it('adds icon to caption if not present', function () {
+                opts.figCaption = 'hello world';
 
-                        var figElem = buildFigElem(opts);
+                figElem = buildFigElem(opts);
 
-                        articleElem.appendChild(figElem);
+                articleElem.appendChild(figElem);
 
-                        common.formatImages();
+                common.formatImages();
 
-                        var captionIcon = figElem.querySelector('.element-image__caption').firstChild;
+                var captionIcon = figElem.querySelector('.element-image__caption').firstChild;
 
-                        expect(captionIcon).to.be.ok;
-                        expect(captionIcon.tagName).to.eql('SPAN');
-                        expect(captionIcon.classList.contains('figure__caption__icon')).to.be.true;   
-                        expect(captionIcon.parentNode.innerText).to.eql('hello world');
-
-                        done();
-                    });
+                expect(captionIcon).to.be.ok;
+                expect(captionIcon.tagName).to.eql('SPAN');
+                expect(captionIcon.classList.contains('figure__caption__icon')).to.be.true;   
+                expect(captionIcon.parentNode.innerText).to.eql('hello world');
             });
 
-            it('adds figure-wide class to figure if not a thumbnail', function (done) {
-                injector
-                    .mock('fence', fenceMock)
-                    .mock('fastClick', fastClickMock)
-                    .mock('smoothScroll', smoothScrollMock)
-                    .mock('modules/comments', commentsMock)
-                    .mock('modules/cards', cardsMock)
-                    .mock('modules/more-tags', moreTagsMock)
-                    .mock('modules/sharing', sharingMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
-                        opts.isThumbnail = false;
+            it('adds figure-wide class to figure if not a thumbnail', function () {
+                opts.isThumbnail = false;
 
-                        var figElem = buildFigElem(opts);
+                figElem = buildFigElem(opts);
 
-                        articleElem.appendChild(figElem);
+                articleElem.appendChild(figElem);
 
-                        common.formatImages();
+                common.formatImages();
 
-                        expect(figElem.classList.contains('figure-wide')).to.be.true;
-                        
-                        done();
-                    });
+                expect(figElem.classList.contains('figure-wide')).to.be.true;
             });
 
-            it('adds figure--thumbnail-with-caption class to figure a thumbnail with caption', function (done) {
-                injector
-                    .mock('fence', fenceMock)
-                    .mock('fastClick', fastClickMock)
-                    .mock('smoothScroll', smoothScrollMock)
-                    .mock('modules/comments', commentsMock)
-                    .mock('modules/cards', cardsMock)
-                    .mock('modules/more-tags', moreTagsMock)
-                    .mock('modules/sharing', sharingMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
-                        var figElem = buildFigElem(opts);
+            it('adds figure--thumbnail-with-caption class to figure a thumbnail with caption', function () {
+                figElem = buildFigElem(opts);
 
-                        articleElem.appendChild(figElem);
+                articleElem.appendChild(figElem);
 
-                        common.formatImages();
+                common.formatImages();
 
-                        expect(figElem.classList.contains('figure--thumbnail-with-caption')).to.be.true;
-                        
-                        done();
-                    });
+                expect(figElem.classList.contains('figure--thumbnail-with-caption')).to.be.true;
             });
 
-            it('adds figure--thumbnail class to figure a thumbnail without caption', function (done) {
-                injector
-                    .mock('fence', fenceMock)
-                    .mock('fastClick', fastClickMock)
-                    .mock('smoothScroll', smoothScrollMock)
-                    .mock('modules/comments', commentsMock)
-                    .mock('modules/cards', cardsMock)
-                    .mock('modules/more-tags', moreTagsMock)
-                    .mock('modules/sharing', sharingMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
-                        opts.hasCaption = false;    
+            it('adds figure--thumbnail class to figure a thumbnail without caption', function () {
+                opts.hasCaption = false;    
 
-                        var figElem = buildFigElem(opts);
+                figElem = buildFigElem(opts);
 
-                        articleElem.appendChild(figElem);
+                articleElem.appendChild(figElem);
 
-                        common.formatImages();
+                common.formatImages();
 
-                        expect(figElem.classList.contains('figure--thumbnail')).to.be.true;
-                        
-                        done();
-                    });
+                expect(figElem.classList.contains('figure--thumbnail')).to.be.true;
             });
 
             it('adds portrait class to portrait thumbnail', function (done) {
-                injector
-                    .mock('fence', fenceMock)
-                    .mock('fastClick', fastClickMock)
-                    .mock('smoothScroll', smoothScrollMock)
-                    .mock('modules/comments', commentsMock)
-                    .mock('modules/cards', cardsMock)
-                    .mock('modules/more-tags', moreTagsMock)
-                    .mock('modules/sharing', sharingMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
-                        opts.isPortrait = true;
+                opts.isPortrait = true;
 
-                        var figElem = buildFigElem(opts);
+                figElem = buildFigElem(opts);
 
-                        articleElem.appendChild(figElem);
+                articleElem.appendChild(figElem);
 
-                        common.formatImages();
+                common.formatImages();
 
-                        expect(figElem.classList.contains('portrait-thumbnail')).to.be.true;
-                        
-                        done();
-                    });
+                expect(figElem.classList.contains('portrait-thumbnail')).to.be.true;
+                
+                done();
             });
 
             it('adds landscape class to landscape thumbnail', function (done) {
-                injector
-                    .mock('fence', fenceMock)
-                    .mock('fastClick', fastClickMock)
-                    .mock('smoothScroll', smoothScrollMock)
-                    .mock('modules/comments', commentsMock)
-                    .mock('modules/cards', cardsMock)
-                    .mock('modules/more-tags', moreTagsMock)
-                    .mock('modules/sharing', sharingMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
-                        opts.isPortrait = false;
+                opts.isPortrait = false;
 
-                        var figElem = buildFigElem(opts);
+                figElem = buildFigElem(opts);
 
-                        articleElem.appendChild(figElem);
+                articleElem.appendChild(figElem);
 
-                        common.formatImages();
+                common.formatImages();
 
-                        expect(figElem.classList.contains('landscape-thumbnail')).to.be.true;
-                        
-                        done();
-                    });
+                expect(figElem.classList.contains('landscape-thumbnail')).to.be.true;
+                
+                done();
             });
 
-            it('hide unavailable image if parentNode has class element-image-inner', function (done) {
-                injector
-                    .mock('fence', fenceMock)
-                    .mock('fastClick', fastClickMock)
-                    .mock('smoothScroll', smoothScrollMock)
-                    .mock('modules/comments', commentsMock)
-                    .mock('modules/cards', cardsMock)
-                    .mock('modules/more-tags', moreTagsMock)
-                    .mock('modules/sharing', sharingMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
-                        var figElem = buildFigElem(opts);
-                        
-                        GU.opts.isOffline = true;
+            it('hide unavailable image if parentNode has class element-image-inner', function () {
+                GU.opts.isOffline = true;
 
-                        articleElem.appendChild(figElem);
+                figElem = buildFigElem(opts);
 
-                        common.formatImages();
+                articleElem.appendChild(figElem);
 
-                        expect(dummyImage.onerror).to.be.defined;
-                        expect(dummyImage.src).to.eql('xxx');
+                common.formatImages();
 
-                        figElem.firstChild.classList.add('element-image-inner');
+                expect(dummyImage.onerror).to.be.defined;
+                expect(dummyImage.src).to.eql('xxx');
 
-                        dummyImage.onerror();
+                figElem.firstChild.classList.add('element-image-inner');
 
-                        expect(figElem.querySelector('img').style.display).to.eql('none');
+                dummyImage.onerror();
 
-                        done();
-                    });
+                expect(figElem.querySelector('img').style.display).to.eql('none');
             });
 
-            it('replace unavailable image with placeholder if parentNode does not have class element-image-inner', function (done) {
-                injector
-                    .mock('fence', fenceMock)
-                    .mock('fastClick', fastClickMock)
-                    .mock('smoothScroll', smoothScrollMock)
-                    .mock('modules/comments', commentsMock)
-                    .mock('modules/cards', cardsMock)
-                    .mock('modules/more-tags', moreTagsMock)
-                    .mock('modules/sharing', sharingMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/common'], function (common) {
-                        var figElem = buildFigElem(opts);
+            it('replace unavailable image with placeholder if parentNode does not have class element-image-inner', function () {
+                GU.opts.isOffline = true;
 
-                        GU.opts.isOffline = true;
+                figElem = buildFigElem(opts);
 
-                        articleElem.appendChild(figElem);
+                articleElem.appendChild(figElem);
 
-                        sandbox.stub(window.GU.util, 'getElementOffset').returns({
-                            width: 304
-                        });
+                common.formatImages();
 
-                        common.formatImages();
+                expect(dummyImage.onerror).to.be.defined;
+                expect(dummyImage.src).to.eql('xxx');
 
-                        expect(dummyImage.onerror).to.be.defined;
-                        expect(dummyImage.src).to.eql('xxx');
+                dummyImage.onerror();
 
-                        dummyImage.onerror();
+                expect(figElem.querySelectorAll('img').length).to.eql(0);
 
-                        expect(figElem.querySelectorAll('img').length).to.eql(0);
+                var placeholder = figElem.querySelector('.element-image-inner');
 
-                        var placeholder = figElem.querySelector('.element-image-inner');
-
-                        expect(placeholder).to.be.ok;
-                        expect(placeholder.getAttribute('height')).to.eql('75');
-                        expect(placeholder.getAttribute('width')).to.eql('100');
-                        
-                        done();
-                    });
+                expect(placeholder).to.be.ok;
+                expect(placeholder.getAttribute('height')).to.eql('75');
+                expect(placeholder.getAttribute('width')).to.eql('100');
             });
         });
     });

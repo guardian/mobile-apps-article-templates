@@ -1,8 +1,8 @@
 define([
-    'modules/util',
+    // 'modules/util',
     'squire'
 ], function(
-    util,
+    // util,
     Squire
 ) {
     'use strict';
@@ -12,7 +12,8 @@ define([
             container,
             injector;
 
-        var mobileSliderMock;
+        var utilMock,
+            mobileSliderMock;
 
         beforeEach(function() {
             container = document.createElement('div');
@@ -27,7 +28,18 @@ define([
                     isAdvertising: ''
                 }
             };
-            window.GU.util = util;
+            utilMock = {
+                debounce: function (func) {
+                    return func;
+                },
+                getElementOffset: function() {
+                    return {
+                        height: 300,
+                        width : 500
+                    }
+                }
+            };
+            // window.GU.util = util;
         });
 
         afterEach(function () {
@@ -51,6 +63,7 @@ define([
             it('sets up global functions', function (done) {
                injector
                     .mock('mobileSlider', mobileSliderMock)
+                    .mock('modules/util', utilMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
                         audio.init();
 
@@ -76,6 +89,7 @@ define([
             it('updates touchPointButton', function (done) {
                injector
                     .mock('mobileSlider', mobileSliderMock)
+                    .mock('modules/util', utilMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
                         var playerButton = document.createElement('div');
 
@@ -98,6 +112,7 @@ define([
             it('updates touchPointButton', function (done) {
                injector
                     .mock('mobileSlider', mobileSliderMock)
+                    .mock('modules/util', utilMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
                         var playerButton = document.createElement('div');
 
@@ -120,6 +135,7 @@ define([
             it('hides audio player button and shows loading icon', function (done) {
                injector
                     .mock('mobileSlider', mobileSliderMock)
+                    .mock('modules/util', utilMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
                         var playerButton = document.createElement('div'),
                             loadingIcon = document.createElement('div');
@@ -148,6 +164,7 @@ define([
             it('hides loading icon and shows audio player button', function (done) {
                injector
                     .mock('mobileSlider', mobileSliderMock)
+                    .mock('modules/util', utilMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
                         var playerButton = document.createElement('div'),
                             loadingIcon = document.createElement('div');
@@ -177,6 +194,7 @@ define([
             it('removes cutout background and adds new background', function (done) {
                 injector
                     .mock('mobileSlider', mobileSliderMock)
+                    .mock('modules/util', utilMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
                         var newCutoutBackground,
                             cutoutBackground = document.createElement('canvas'),
@@ -189,8 +207,6 @@ define([
                         container.appendChild(cutoutBackground);
 
                         cutoutContainer.classList.add('cutout__container');
-                        cutoutContainer.style.height = '300px';
-                        cutoutContainer.style.width = '500px';
 
                         container.appendChild(cutoutContainer);
 
@@ -228,14 +244,12 @@ define([
                         resizeHandler = handler;
                     }
                 });
-                sandbox.stub(GU.util, 'debounce', function(func) {
-                    return func;
-                });
             });
 
             it('does nothing if on iOS and slider is down', function (done) {
                 injector
                     .mock('mobileSlider', mobileSliderMock)
+                    .mock('modules/util', utilMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
                         var touchendEvt = document.createEvent('HTMLEvents'),
                             touchstartEvt = document.createEvent('HTMLEvents');
@@ -259,6 +273,7 @@ define([
             it('if not iOS and background has not been set then style audio background', function (done) {
                 injector
                     .mock('mobileSlider', mobileSliderMock)
+                    .mock('modules/util', utilMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
                         platform = 'Android';
 
@@ -280,6 +295,7 @@ define([
             it('if not iOS resize audio background on document resize', function (done) {
                 injector
                     .mock('mobileSlider', mobileSliderMock)
+                    .mock('modules/util', utilMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
                         platform = 'Android';
 
@@ -310,6 +326,7 @@ define([
                 it('updates values of seconds played and remaining on slider changed', function (done) {
                     injector
                         .mock('mobileSlider', mobileSliderMock)
+                        .mock('modules/util', utilMock)
                         .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
                             platform = 'Android';
 
@@ -351,6 +368,7 @@ define([
             it('does nothing if on iOS and slider is down', function (done) {
                 injector
                     .mock('mobileSlider', mobileSliderMock)
+                    .mock('modules/util', utilMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
                         var touchendEvt = document.createEvent('HTMLEvents'),
                             touchstartEvt = document.createEvent('HTMLEvents');
@@ -376,6 +394,7 @@ define([
             it('does nothing if on iOS and slider is down', function (done) {
                 injector
                     .mock('mobileSlider', mobileSliderMock)
+                    .mock('modules/util', utilMock)
                     .require(['ArticleTemplates/assets/js/bootstraps/audio'], function (audio) {
                         audio.init();
 

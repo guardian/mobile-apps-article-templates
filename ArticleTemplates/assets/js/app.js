@@ -1,16 +1,13 @@
 define([
     'domReady',
-    'modules/ads',
-    'modules/util'
+    'modules/ads'
 ], function(
     domReady,
-    Ads,
-    util
+    Ads
 ) {
     'use strict';
 
     function init() {
-        GU.util = util;
         domReady(onDomReady);
     }
 

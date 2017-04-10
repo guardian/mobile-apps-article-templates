@@ -1,9 +1,11 @@
 define([
     'smoothScroll',
-    'modules/ads'
+    'modules/ads',
+    'modules/util'
 ], function (
     smoothScroll,
-    Ads
+    Ads,
+    util
 ) {
     'use strict';
 
@@ -63,7 +65,7 @@ define([
             answers = questionObj.elem.getElementsByClassName('question__answer');
     
         for (i = 0; i < answers.length; i++) {
-            answerCode = GU.util.getStringFromUnicodeVal(65 + i);
+            answerCode = util.getStringFromUnicodeVal(65 + i);
             if (answerCode === questionObj.correctAnswer) {
                 if (questionObj.revealText) {
                     answers[i].dataset.correctAnswerExplanation = questionObj.revealText;
@@ -91,7 +93,7 @@ define([
             quizBuckets = {};
 
         for (i = 0; i < buckets.length; i++) {
-            bucketCode = GU.util.getStringFromUnicodeVal(65 + i);
+            bucketCode = util.getStringFromUnicodeVal(65 + i);
             quizBuckets[bucketCode] = {
                 count: 0,
                 title: buckets[i].dataset.title,
@@ -317,8 +319,8 @@ define([
             quizOffset;
 
         if (mpu) {
-            mpuOffset = GU.util.getElementOffset(mpu).top;
-            quizOffset = GU.util.getElementOffset(quiz).top;
+            mpuOffset = util.getElementOffset(mpu).top;
+            quizOffset = util.getElementOffset(quiz).top;
 
             if (mpuOffset > quizOffset) {
                 adBelowQuiz = true;
