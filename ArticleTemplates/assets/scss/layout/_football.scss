@@ -20,14 +20,21 @@
 .football__tabpanel {
     .article {
         border-top-width: 2px;
+        background-color: color(shade-7);
     }
+
     .article--liveblog,
     .article__header  {
         background-color: color(shade-5);
     }
+
     .meta {
-        border-top: 1px dotted grey;
+        border-top: 1px dotted color(shade-4);
         border-bottom: 0;
+
+        .meta__pubdate {
+            color: color(shade-2);
+        }
     }
 }
 
@@ -43,9 +50,6 @@
 
 #football__tabpanel--stats {
     font-family: $agate-sans;
-    .article {
-        background-color: color(shade-7);
-    }
 }
 
 // Helpers (headings and columns)
