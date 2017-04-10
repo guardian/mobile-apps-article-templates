@@ -451,39 +451,39 @@
     </section>
 
     <script type="text/javascript">
-        if (document.body.classList.contains('the-minute') && 'mobile' === 'tablet') {
+        if (document.body.classList.contains("the-minute") && "mobile" === "tablet") {
             // Format date and add above standfirst
-            var dateArray = document.getElementById("published-date").innerHTML.split(' ').filter(Boolean),
-                dayOfWeek = dateArray[2].replace(',', ''),
+            var dateArray = document.getElementById("published-date").innerHTML.split(" ").filter(Boolean),
+                dayOfWeek = dateArray[2].replace(",", ""),
                 date = dateArray[3],
                 month = dateArray[4],
-                dateDiv = document.getElementsByClassName('the-minute__date')[0];
+                dateDiv = document.getElementsByClassName("the-minute__date")[0];
 
             // Format date & append to div
-            date = date % 10 == 1 && date % 100 !== 11 ? date + 'st' : (date % 10 == 2 && date % 100 !== 12 ? date + 'nd' : (date % 10 == 3 && date % 100 !== 13 ? date + 'rd' : date + 'th'));
-            dateDiv.innerHTML = dayOfWeek + ' ' + date + ' ' + month;
+            date = date % 10 == 1 && date % 100 !== 11 ? date + "st" : (date % 10 == 2 && date % 100 !== 12 ? date + "nd" : (date % 10 == 3 && date % 100 !== 13 ? date + "rd" : date + "th"));
+            dateDiv.innerHTML = dayOfWeek + " " + date + " " + month;
         }
 
         GU.Bootstrap.init({
-            sectionTone: 'deadBlog',
-            isLive: '' ? true : false,
-            isMinute: '' ? true : false,
-            isAdvertising: '' ? true : false,
-            fontSize: 'font-size-4',
-            platform: 'ios',
-            isOffline: '' ? true : false,
-            contentType: 'liveblog',
-            adsEnabled: 'mpu',
-            adsEnableHiding: 'true' === 'true' ? true : false,
-            adsConfig: 'mobile',
-            actionBarHeight: '0',
-            fontSize: '4',
-            templatesDirectory: '../../ArticleTemplates/',
-            pageId: 'world/live/2015/sep/25/pope-francis-in-new-york-pontiff-addresses-un-and-visits-911-memorial-live-updates',
-            mpuAfterParagraphs: '3',
-            useAdsReady: 'true' === 'true' ? true : false,
-            section: 'world',
-            nativeYoutubeEnabled: '' === 'true' ? true : false
+            sectionTone: "deadBlog",
+            isLive: "" ? true : false,
+            isMinute: "" ? true : false,
+            isAdvertising: "" ? true : false,
+            fontSize: "font-size-4",
+            platform: "ios",
+            isOffline: "" ? true : false,
+            contentType: "liveblog",
+            adsEnabled: "mpu",
+            adsEnableHiding: "true" === "true" ? true : false,
+            adsConfig: "mobile",
+            actionBarHeight: "0",
+            fontSize: "4",
+            templatesDirectory: "../../ArticleTemplates/",
+            pageId: "world/live/2015/sep/25/pope-francis-in-new-york-pontiff-addresses-un-and-visits-911-memorial-live-updates",
+            mpuAfterParagraphs: "3",
+            useAdsReady: "true" === "true" ? true : false,
+            section: "world",
+            nativeYoutubeEnabled: "" === "true" ? true : false
         });
     </script>
 
