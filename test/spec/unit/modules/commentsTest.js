@@ -1,81 +1,82 @@
 define([
-    'modules/util',
     'squire'
-], function(
-    util,
+], function (
     Squire
 ) {
     'use strict';
 
-    describe('ArticleTemplates/assets/js/modules/comments', function() {
-        var sandbox,
-            container,
-            injector;
+    describe('ArticleTemplates/assets/js/modules/comments', function () {
+        var comments,
+            sandbox,
+            container;
 
-        var relativeDatesMock;
+        var utilMock,
+            relativeDatesMock;
 
-        beforeEach(function() {
+        beforeEach(function (done) {
+            var injector = new Squire();
+
+            sandbox = sinon.sandbox.create();
+
             container = document.createElement('div');
             container.id = 'container';
             document.body.appendChild(container);
 
-            injector = new Squire();
-
-            sandbox = sinon.sandbox.create();
-
-            window.applyNativeFunctionCall = sinon.spy();
+            window.applyNativeFunctionCall = sandbox.spy();
 
             relativeDatesMock = {
-                init: sinon.spy()
+                init: sandbox.spy()
+            };
+            utilMock = {
+
             };
 
-            window.GU = {};
-            window.GU.util = util;
+            injector
+                .mock('modules/relativeDates', relativeDatesMock)
+                .mock('modules/util', utilMock)
+                .require(['ArticleTemplates/assets/js/modules/comments'], function (sut) {
+                    comments = sut;
+
+                    done();
+                });
         });
 
-        afterEach(function() {
+        afterEach(function () {
             document.body.removeChild(container);
 
             delete window.applyNativeFunctionCall;
-            delete window.util;
 
             sandbox.restore();
         });
 
-        describe('init()', function() {
-            it('sets up global functions', function(done) {
-                injector
-                    .mock('modules/relativeDates', relativeDatesMock)
-                    .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                        comments.init();
+        describe('init()', function () {
+            it('sets up global functions', function () {
+                comments.init();
 
-                        expect(window.articleCommentsInserter).to.not.be.undefined;
-                        expect(window.commentsInserter).to.not.be.undefined;
-                        expect(window.articleCommentsFailed).to.not.be.undefined;
-                        expect(window.commentsFailed).to.not.be.undefined;
-                        expect(window.commentsEnd).to.not.be.undefined;
-                        expect(window.commentsClosed).to.not.be.undefined;
-                        expect(window.commentsOpen).to.not.be.undefined;
-                        expect(window.commentTime).to.not.be.undefined;
-                        expect(window.commentsRecommendIncrease).to.not.be.undefined;
-                        expect(window.commentsRecommendDecrease).to.not.be.undefined;
+                expect(window.articleCommentsInserter).to.not.be.undefined;
+                expect(window.commentsInserter).to.not.be.undefined;
+                expect(window.articleCommentsFailed).to.not.be.undefined;
+                expect(window.commentsFailed).to.not.be.undefined;
+                expect(window.commentsEnd).to.not.be.undefined;
+                expect(window.commentsClosed).to.not.be.undefined;
+                expect(window.commentsOpen).to.not.be.undefined;
+                expect(window.commentTime).to.not.be.undefined;
+                expect(window.commentsRecommendIncrease).to.not.be.undefined;
+                expect(window.commentsRecommendDecrease).to.not.be.undefined;
 
-                        expect(window.applyNativeFunctionCall).to.have.been.calledWith('articleCommentsInserter');
-                        expect(window.applyNativeFunctionCall).to.have.been.calledWith('commentsInserter');
-                        expect(window.applyNativeFunctionCall).to.have.been.calledWith('commentsFailed');
-                        expect(window.applyNativeFunctionCall).to.have.been.calledWith('commentsClosed');
-                        expect(window.applyNativeFunctionCall).to.have.been.calledWith('commentsOpen');
-                        expect(window.applyNativeFunctionCall).to.have.been.calledWith('articleCommentsFailed');
-
-                        done();
-                    });
+                expect(window.applyNativeFunctionCall).to.have.been.calledWith('articleCommentsInserter');
+                expect(window.applyNativeFunctionCall).to.have.been.calledWith('commentsInserter');
+                expect(window.applyNativeFunctionCall).to.have.been.calledWith('commentsFailed');
+                expect(window.applyNativeFunctionCall).to.have.been.calledWith('commentsClosed');
+                expect(window.applyNativeFunctionCall).to.have.been.calledWith('commentsOpen');
+                expect(window.applyNativeFunctionCall).to.have.been.calledWith('articleCommentsFailed');
             });
         });
 
-        describe('window.articleCommentsInserter(html)', function() {
+        describe('window.articleCommentsInserter(html)', function () {
             var loadingBlock;
 
-            beforeEach(function() {
+            beforeEach(function () {
                 loadingBlock = document.createElement('div');
 
                 loadingBlock.classList.add('comments__block--loading');
@@ -83,32 +84,26 @@ define([
                 container.appendChild(loadingBlock);
             });
 
-            afterEach(function() {
+            afterEach(function () {
                 expect(loadingBlock.style.display).to.equal('none');
             });
 
-            it('show empty comments block if no html available', function(done) {
-                injector
-                    .mock('modules/relativeDates', relativeDatesMock)
-                    .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                        var emptyCommentBlock = document.createElement('div');
+            it('show empty comments block if no html available', function () {
+                var emptyCommentBlock = document.createElement('div');
 
-                        emptyCommentBlock.classList.add('comments__block--empty');
-                        emptyCommentBlock.style.display = 'none';
+                emptyCommentBlock.classList.add('comments__block--empty');
+                emptyCommentBlock.style.display = 'none';
 
-                        container.appendChild(emptyCommentBlock);
+                container.appendChild(emptyCommentBlock);
 
-                        comments.init();
+                comments.init();
 
-                        window.articleCommentsInserter('');
+                window.articleCommentsInserter('');
 
-                        expect(emptyCommentBlock.style.display).to.not.eql('none');
-
-                        done();
-                    });
+                expect(emptyCommentBlock.style.display).to.not.eql('none');
             });
 
-            describe('adds html to the page and calls commentsReplyFormatting', function() {
+            describe('adds html to the page and calls commentsReplyFormatting', function () {
                 var buildDiscussionBlockElem = function(checked, childCount) {
                     var i,
                         childElem,
@@ -129,1018 +124,530 @@ define([
                     return discussionBlockElem;
                 };
 
-                it('adds html to the page and calls window.commentsReplyFormatting', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var commentsContainer = document.createElement('div');
+                it('adds html to the page and calls window.commentsReplyFormatting', function () {
+                    var commentElem = document.createElement('div'),
+                        commentsContainer = document.createElement('div');
 
-                            commentsContainer.classList.add('comments__container');
+                    commentElem.innerText = 'Hello World';
 
-                            container.appendChild(commentsContainer);
+                    commentsContainer.classList.add('comments__container');
 
-                            comments.init();
+                    container.appendChild(commentsContainer);
 
-                            window.articleCommentsInserter('<div>Hello World</div>');
+                    comments.init();
 
-                            expect(commentsContainer.firstChild.innerText).to.eql('Hello World');
+                    utilMock.getElemsFromHTML = sandbox.stub().returns([commentElem]);
 
-                            done();
-                        });
+                    window.articleCommentsInserter(commentElem.outerHTML);
+
+                    expect(commentsContainer.firstChild.innerText).to.eql('Hello World');
                 });
 
-                it('add more replies button if discussion block has not been checked and has more than 5 chidren', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var moreRepliesButton,
-                                discussionBlockElem = buildDiscussionBlockElem(false, 10);
+                it('add more replies button if discussion block has not been checked and has more than 5 chidren', function () {
+                    var moreRepliesButton,
+                        discussionBlockElem = buildDiscussionBlockElem(false, 10);
 
-                            container.appendChild(discussionBlockElem);
+                    container.appendChild(discussionBlockElem);
 
-                            comments.init();
+                    comments.init();
 
-                            window.articleCommentsInserter('<div>Hello World</div>');
+                    window.articleCommentsInserter('<div>Hello World</div>');
 
-                            moreRepliesButton = discussionBlockElem.getElementsByClassName('more--comments')[0];
+                    moreRepliesButton = discussionBlockElem.getElementsByClassName('more--comments')[0];
 
-                            expect(moreRepliesButton).to.not.be.undefined;
-                            expect(moreRepliesButton.getElementsByClassName('more__text')[0].innerText).to.eql('6 more replies');
-                            expect(discussionBlockElem.classList.contains('block--discussion-thread--checked')).to.eql(true);
-
-                            done();
-                        });
+                    expect(moreRepliesButton).to.not.be.undefined;
+                    expect(moreRepliesButton.getElementsByClassName('more__text')[0].innerText).to.eql('6 more replies');
+                    expect(discussionBlockElem.classList.contains('block--discussion-thread--checked')).to.eql(true);
                 });
 
-                it('does not add more replies button if discussion block has been checked', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var moreRepliesButton,
-                                discussionBlockElem = buildDiscussionBlockElem(true, 10);
+                it('does not add more replies button if discussion block has been checked', function () {
+                    var moreRepliesButton,
+                        discussionBlockElem = buildDiscussionBlockElem(true, 10);
 
-                            container.appendChild(discussionBlockElem);
+                    container.appendChild(discussionBlockElem);
 
-                            comments.init();
+                    comments.init();
 
-                            window.articleCommentsInserter('<div>Hello World</div>');
+                    window.articleCommentsInserter('<div>Hello World</div>');
 
-                            moreRepliesButton = discussionBlockElem.getElementsByClassName('more--comments')[0];
+                    moreRepliesButton = discussionBlockElem.getElementsByClassName('more--comments')[0];
 
-                            expect(moreRepliesButton).to.be.undefined;
-
-                            done();
-                        });
+                    expect(moreRepliesButton).to.be.undefined;
                 });
 
-                it('does not add more replies button if discussion block has less than 5 children', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var moreRepliesButton,
-                                discussionBlockElem = buildDiscussionBlockElem(false, 4);
+                it('does not add more replies button if discussion block has less than 5 children', function () {
+                    var moreRepliesButton,
+                        discussionBlockElem = buildDiscussionBlockElem(false, 4);
 
-                            container.appendChild(discussionBlockElem);
+                    container.appendChild(discussionBlockElem);
 
-                            comments.init();
+                    comments.init();
 
-                            window.articleCommentsInserter('<div>Hello World</div>');
+                    window.articleCommentsInserter('<div>Hello World</div>');
 
-                            moreRepliesButton = discussionBlockElem.getElementsByClassName('more--comments')[0];
+                    moreRepliesButton = discussionBlockElem.getElementsByClassName('more--comments')[0];
 
-                            expect(moreRepliesButton).to.be.undefined;
-                            expect(discussionBlockElem.classList.contains('block--discussion-thread--checked')).to.eql(true);
-
-                            done();
-                        });
+                    expect(moreRepliesButton).to.be.undefined;
+                    expect(discussionBlockElem.classList.contains('block--discussion-thread--checked')).to.eql(true);
                 });
 
-                it('adds orphan class to block if it has 5 children', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var discussionBlockElem = buildDiscussionBlockElem(false, 5);
+                it('adds orphan class to block if it has 5 children', function () {
+                    var discussionBlockElem = buildDiscussionBlockElem(false, 5);
 
-                            container.appendChild(discussionBlockElem);
+                    container.appendChild(discussionBlockElem);
 
-                            comments.init();
+                    comments.init();
 
-                            window.articleCommentsInserter('<div>Hello World</div>');
+                    window.articleCommentsInserter('<div>Hello World</div>');
 
-                            expect(discussionBlockElem.classList.contains('block--discussion-thread--orphan')).to.eql(true);
-                            expect(discussionBlockElem.classList.contains('block--discussion-thread--checked')).to.eql(true);
-
-                            done();
-                        });
+                    expect(discussionBlockElem.classList.contains('block--discussion-thread--orphan')).to.eql(true);
+                    expect(discussionBlockElem.classList.contains('block--discussion-thread--checked')).to.eql(true);
                 });
 
-                it('can handle click on more replies button', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var event,
-                                moreRepliesButton,
-                                discussionBlockElem = buildDiscussionBlockElem(false, 10);
+                it('can handle click on more replies button', function (done) {
+                    var event,
+                        moreRepliesButton,
+                        discussionBlockElem = buildDiscussionBlockElem(false, 10);
 
-                            container.appendChild(discussionBlockElem);
+                    container.appendChild(discussionBlockElem);
 
-                            comments.init();
+                    comments.init();
 
-                            window.articleCommentsInserter('<div>Hello World</div>');
+                    window.articleCommentsInserter('<div>Hello World</div>');
 
-                            moreRepliesButton = discussionBlockElem.getElementsByClassName('more--comments')[0];
-                            moreRepliesButton.style.display = 'block';
+                    moreRepliesButton = discussionBlockElem.getElementsByClassName('more--comments')[0];
+                    moreRepliesButton.style.display = 'block';
 
-                            event = document.createEvent('HTMLEvents');
-                            event.initEvent('click', true, true);
-                            moreRepliesButton.dispatchEvent(event);
+                    event = document.createEvent('HTMLEvents');
+                    event.initEvent('click', true, true);
+                    moreRepliesButton.dispatchEvent(event);
 
-                            setTimeout(function() {
-                                expect(moreRepliesButton.style.display).to.eql('none');
-                                expect(discussionBlockElem.classList.contains('expand')).to.eql(true);
-
-                                done();
-                            }, 500);
-                        });
-                });
-
-                it('ignores click on comment child which matches querySelector: a', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var event,
-                                commentElem = document.createElement('div'),
-                                childElem = document.createElement('a');
-
-                            commentElem.classList.add('comment');
-                            commentElem.classList.add('visible');
-                            commentElem.classList.add('comment--open');
-
-                            commentElem.appendChild(childElem);
-
-                            container.appendChild(commentElem);
-
-                            comments.init();
-
-                            window.articleCommentsInserter('<div>Hello World</div>');
-
-                            event = document.createEvent('HTMLEvents');
-                            event.initEvent('click', true, true);
-                            childElem.dispatchEvent(event);
-
-                            setTimeout(function() {
-                                expect(commentElem.classList.contains('comment--open')).to.eql(true);
-
-                                done();
-                            }, 500);
-                        });
-                });
-
-                it('ignores click on comment child which matches querySelector: .more--comments', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var event,
-                                commentElem = document.createElement('div'),
-                                childElem = document.createElement('div');
-
-                            commentElem.classList.add('comment');
-                            commentElem.classList.add('visible');
-                            commentElem.classList.add('comment--open');
-
-                            childElem.classList.add('more--comments');
-                            commentElem.appendChild(childElem);
-
-                            container.appendChild(commentElem);
-
-                            comments.init();
-
-                            window.articleCommentsInserter('<div>Hello World</div>');
-
-                            event = document.createEvent('HTMLEvents');
-                            event.initEvent('click', true, true);
-                            childElem.dispatchEvent(event);
-
-                            setTimeout(function() {
-                                expect(commentElem.classList.contains('comment--open')).to.eql(true);
-
-                                done();
-                            }, 500);
-                        });
-                });
-
-                it('ignores click on comment child which matches querySelector: .comment__reply', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var event,
-                                commentElem = document.createElement('div'),
-                                childElem = document.createElement('div');
-
-                            commentElem.classList.add('comment');
-                            commentElem.classList.add('visible');
-                            commentElem.classList.add('comment--open');
-
-                            childElem.classList.add('comment__reply');
-                            commentElem.appendChild(childElem);
-
-                            container.appendChild(commentElem);
-
-                            comments.init();
-
-                            window.articleCommentsInserter('<div>Hello World</div>');
-
-                            event = document.createEvent('HTMLEvents');
-                            event.initEvent('click', true, true);
-                            childElem.dispatchEvent(event);
-
-                            setTimeout(function() {
-                                expect(commentElem.classList.contains('comment--open')).to.eql(true);
-
-                                done();
-                            }, 500);
-                        });
-                });
-
-                it('ignores click on comment child which matches querySelector: .comment__recommend', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var event,
-                                commentElem = document.createElement('div'),
-                                childElem = document.createElement('div');
-
-                            commentElem.classList.add('comment');
-                            commentElem.classList.add('visible');
-                            commentElem.classList.add('comment--open');
-
-                            childElem.classList.add('comment__recommend');
-                            commentElem.appendChild(childElem);
-
-                            container.appendChild(commentElem);
-
-                            comments.init();
-
-                            window.articleCommentsInserter('<div>Hello World</div>');
-
-                            event = document.createEvent('HTMLEvents');
-                            event.initEvent('click', true, true);
-                            childElem.dispatchEvent(event);
-
-                            setTimeout(function() {
-                                expect(commentElem.classList.contains('comment--open')).to.eql(true);
-
-                                done();
-                            }, 500);
-                        });
-                });
-
-                it('can handle click on comment child which matches querySelector: .comment__header', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var event,
-                                childElem,
-                                commentElem,
-                                commentContainer = document.createElement('div');
-
-                            commentContainer.classList.add('comments__container');
-                            container.appendChild(commentContainer);
-
-                            comments.init();
-
-                            window.articleCommentsInserter('<div><div class="comment visible comment--open"><div class="comment__header"></div></div></div>');
-
-                            commentElem = commentContainer.querySelector('.comment');
-                            childElem = commentElem.querySelector('.comment__header');
-
-                            event = document.createEvent('HTMLEvents');
-                            event.initEvent('click', true, true);
-                            childElem.dispatchEvent(event);
-
-                            setTimeout(function() {
-                                expect(commentElem.classList.contains('comment--open')).to.eql(false);
-
-                                done();
-                            }, 500);
-                        });
-                });
-
-                it('can handle click on comment child which matches querySelector: .comment__body', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var event,
-                                childElem,
-                                commentElem,
-                                commentContainer = document.createElement('div');
-
-                            commentContainer.classList.add('comments__container');
-                            container.appendChild(commentContainer);
-
-                            comments.init();
-
-                            window.articleCommentsInserter('<div><div class="comment visible comment--open"><div class="comment__body"></div></div></div>');
-
-                            commentElem = commentContainer.querySelector('.comment');
-                            childElem = commentElem.querySelector('.comment__body');
-
-                            event = document.createEvent('HTMLEvents');
-                            event.initEvent('click', true, true);
-                            childElem.dispatchEvent(event);
-
-                            setTimeout(function() {
-                                expect(commentElem.classList.contains('comment--open')).to.eql(false);
-
-                                done();
-                            }, 500);
-                        });
-                });
-
-                it('can close other comments on click if they are open', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var event,
-                                childElem,
-                                otherCommentElem,
-                                commentElem,
-                                commentContainer = document.createElement('div');
-
-                            commentContainer.classList.add('comments__container');
-                            container.appendChild(commentContainer);
-
-                            comments.init();
-
-                            window.articleCommentsInserter('<div><div class="comment visible"><div class="comment__header"></div></div></div>' + 
-                                '<div><div class="comment visible comment--open"><div class="comment__header"></div></div></div>');
-
-                            commentElem = commentContainer.querySelectorAll('.comment')[0];
-                            childElem = commentElem.querySelector('.comment__header');
-                            otherCommentElem = commentContainer.querySelectorAll('.comment')[1];
-
-                            event = document.createEvent('HTMLEvents');
-                            event.initEvent('click', true, true);
-                            childElem.dispatchEvent(event);
-
-                            setTimeout(function() {
-                                expect(otherCommentElem.classList.contains('comment--open')).to.eql(false);
-                                expect(commentElem.classList.contains('comment--open')).to.eql(true);
-
-                                done();
-                            }, 500);
-                        });
-                });
-            });
-        });
-
-        describe('window.commentsInserter(html)', function() {
-            it('if no html show emptyBlock and hode loadingBlock', function(done) {
-                injector
-                    .mock('modules/relativeDates', relativeDatesMock)
-                    .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                        var emptyCommentBlock = document.createElement('div'),
-                            loadingBlock = document.createElement('div');
-
-                        loadingBlock.classList.add('comments__block--loading');
-
-                        container.appendChild(loadingBlock);
-
-                        emptyCommentBlock.classList.add('comments__block--empty');
-                        emptyCommentBlock.style.display = 'none';
-
-                        container.appendChild(emptyCommentBlock);
-
-                        comments.init();
-
-                        window.commentsInserter('');
-
-                        expect(loadingBlock.style.display).to.eql('none');
-                        expect(emptyCommentBlock.style.display).to.not.eql('none');
+                    setTimeout(function() {
+                        expect(moreRepliesButton.style.display).to.eql('none');
+                        expect(discussionBlockElem.classList.contains('expand')).to.eql(true);
 
                         done();
-                    });
-            });
+                    }, 500);
+                });
 
-            describe('adds html to the page and calls commentsReplyFormatting', function() {
-                var buildDiscussionBlockElem = function(checked, childCount) {
-                    var i,
+                it('ignores click on comment child which matches querySelector: a', function (done) {
+                    var event,
                         childElem,
-                        discussionBlockElem = document.createElement('div');
+                        commentElem = document.createElement('div'),
+                        commentContainer = document.createElement('div');
 
-                    discussionBlockElem.classList.add('block--discussion-thread');
+                    commentElem.innerHTML = '<div class="comment visible comment--open"><a></a></div>';
 
-                    if (checked) {
-                        discussionBlockElem.classList.add('block--discussion-thread--checked');
-                    }
+                    commentContainer.classList.add('comments__container');
+                    container.appendChild(commentContainer);
 
-                    for (i = 0; i < childCount; i++) {
-                        childElem = document.createElement('div');
-                        childElem.id = 'child' + i;
-                        discussionBlockElem.appendChild(childElem);
-                    }
+                    comments.init();
 
-                    return discussionBlockElem;
-                };
+                    utilMock.getElemsFromHTML = sandbox.stub().returns([commentElem]);
 
-                it('if html add to container', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var commentsContainer = document.createElement('div'),
-                                loadingBlock = document.createElement('div');
+                    comments.init();
 
-                            loadingBlock.classList.add('comments__block--loading');
+                    window.articleCommentsInserter(commentElem.outerHTML);
 
-                            container.appendChild(loadingBlock);
+                    childElem = commentElem.querySelector('a');
+                    event = document.createEvent('HTMLEvents');
+                    event.initEvent('click', true, true);
+                    childElem.dispatchEvent(event);
 
-                            commentsContainer.classList.add('comments__container');
+                    setTimeout(function() {
+                        expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(true);
 
-                            container.appendChild(commentsContainer);
-
-                            comments.init();
-
-                            window.commentsInserter('<div>Hello World</div>');
-
-                            expect(commentsContainer.firstChild.innerText).to.eql('Hello World');
-                            expect(commentsContainer.childNodes[1]).to.eql(loadingBlock);
-
-                            done();
-                        });
+                        done();
+                    }, 500);
                 });
 
-                it('add more replies button if discussion block has not been checked and has more than 5 chidren', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var moreRepliesButton,
-                                discussionBlockElem = buildDiscussionBlockElem(false, 10);
+                it('ignores click on comment child which matches querySelector: .more--comments', function (done) {
+                    var event,
+                        childElem,
+                        commentElem = document.createElement('div'),
+                        commentContainer = document.createElement('div');
 
-                            container.appendChild(discussionBlockElem);
+                    commentElem.innerHTML = '<div class="comment visible comment--open"><div class="more--comments"></div></div>';
 
-                            comments.init();
+                    commentContainer.classList.add('comments__container');
+                    container.appendChild(commentContainer);
 
-                            window.commentsInserter('<div>Hello World</div>');
+                    comments.init();
 
-                            moreRepliesButton = discussionBlockElem.getElementsByClassName('more--comments')[0];
+                    utilMock.getElemsFromHTML = sandbox.stub().returns([commentElem]);
 
-                            expect(moreRepliesButton).to.not.be.undefined;
-                            expect(moreRepliesButton.getElementsByClassName('more__text')[0].innerText).to.eql('6 more replies');
-                            expect(discussionBlockElem.classList.contains('block--discussion-thread--checked')).to.eql(true);
+                    comments.init();
 
-                            done();
-                        });
+                    window.articleCommentsInserter(commentElem.outerHTML);
+
+                    childElem = commentElem.querySelector('.more--comments');
+                    event = document.createEvent('HTMLEvents');
+                    event.initEvent('click', true, true);
+                    childElem.dispatchEvent(event);
+
+                    setTimeout(function() {
+                        expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(true);
+
+                        done();
+                    }, 500);
                 });
 
-                it('does not add more replies button if discussion block has been checked', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var moreRepliesButton,
-                                discussionBlockElem = buildDiscussionBlockElem(true, 10);
+                it('ignores click on comment child which matches querySelector: .comment__reply', function (done) {
+                    var event,
+                        childElem,
+                        commentElem = document.createElement('div'),
+                        commentContainer = document.createElement('div');
 
-                            container.appendChild(discussionBlockElem);
+                    commentElem.innerHTML = '<div class="comment visible comment--open"><div class="comment__reply"></div></div>';
 
-                            comments.init();
+                    commentContainer.classList.add('comments__container');
+                    container.appendChild(commentContainer);
 
-                            window.commentsInserter('<div>Hello World</div>');
+                    comments.init();
 
-                            moreRepliesButton = discussionBlockElem.getElementsByClassName('more--comments')[0];
+                    utilMock.getElemsFromHTML = sandbox.stub().returns([commentElem]);
 
-                            expect(moreRepliesButton).to.be.undefined;
+                    comments.init();
 
-                            done();
-                        });
+                    window.articleCommentsInserter(commentElem.outerHTML);
+
+                    childElem = commentElem.querySelector('.comment__reply');
+                    event = document.createEvent('HTMLEvents');
+                    event.initEvent('click', true, true);
+                    childElem.dispatchEvent(event);
+
+                    setTimeout(function() {
+                        expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(true);
+
+                        done();
+                    }, 500);
                 });
 
-                it('does not add more replies button if discussion block has less than 5 children', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var moreRepliesButton,
-                                discussionBlockElem = buildDiscussionBlockElem(false, 4);
+                it('ignores click on comment child which matches querySelector: .comment__recommend', function (done) {
+                    var event,
+                        childElem,
+                        commentElem = document.createElement('div'),
+                        commentContainer = document.createElement('div');
 
-                            container.appendChild(discussionBlockElem);
+                    commentElem.innerHTML = '<div class="comment visible comment--open"><div class="comment__recommend"></div></div>';
 
-                            comments.init();
+                    commentContainer.classList.add('comments__container');
+                    container.appendChild(commentContainer);
 
-                            window.commentsInserter('<div>Hello World</div>');
+                    comments.init();
 
-                            moreRepliesButton = discussionBlockElem.getElementsByClassName('more--comments')[0];
+                    utilMock.getElemsFromHTML = sandbox.stub().returns([commentElem]);
 
-                            expect(moreRepliesButton).to.be.undefined;
-                            expect(discussionBlockElem.classList.contains('block--discussion-thread--checked')).to.eql(true);
+                    comments.init();
 
-                            done();
-                        });
+                    window.articleCommentsInserter(commentElem.outerHTML);
+
+                    childElem = commentElem.querySelector('.comment__recommend');
+                    event = document.createEvent('HTMLEvents');
+                    event.initEvent('click', true, true);
+                    childElem.dispatchEvent(event);
+
+                    setTimeout(function() {
+                        expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(true);
+
+                        done();
+                    }, 500);
                 });
 
-                it('adds orphan class to block if it has 5 children', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var discussionBlockElem = buildDiscussionBlockElem(false, 5);
+                it('can handle click on comment child which matches querySelector: .comment__header', function (done) {
+                    var event,
+                        childElem,
+                        commentElem = document.createElement('div'),
+                        commentContainer = document.createElement('div');
 
-                            container.appendChild(discussionBlockElem);
+                    commentElem.innerHTML = '<div class="comment visible comment--open"><div class="comment__header"></div></div>';
 
-                            comments.init();
+                    commentContainer.classList.add('comments__container');
+                    container.appendChild(commentContainer);
 
-                            window.commentsInserter('<div>Hello World</div>');
+                    comments.init();
 
-                            expect(discussionBlockElem.classList.contains('block--discussion-thread--orphan')).to.eql(true);
-                            expect(discussionBlockElem.classList.contains('block--discussion-thread--checked')).to.eql(true);
+                    utilMock.getElemsFromHTML = sandbox.stub().returns([commentElem]);
 
-                            done();
-                        });
+                    window.articleCommentsInserter(commentElem.outerHTML);
+                    
+                    childElem = commentElem.querySelector('.comment__header');
+                    event = document.createEvent('HTMLEvents');
+                    event.initEvent('click', true, true);
+                    childElem.dispatchEvent(event);
+
+                    setTimeout(function() {
+                        expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(false);
+
+                        done();
+                    }, 500);
                 });
 
-                it('can handle click on more replies button', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var event,
-                                moreRepliesButton,
-                                discussionBlockElem = buildDiscussionBlockElem(false, 10);
+                it('can handle click on comment child which matches querySelector: .comment__body', function (done) {
+                    var event,
+                        childElem,
+                        commentElem = document.createElement('div'),
+                        commentContainer = document.createElement('div');
 
-                            container.appendChild(discussionBlockElem);
+                    commentElem.innerHTML = '<div class="comment visible comment--open"><div class="comment__body"></div></div>';
 
-                            comments.init();
+                    commentContainer.classList.add('comments__container');
+                    container.appendChild(commentContainer);
 
-                            window.commentsInserter('<div>Hello World</div>');
+                    comments.init();
 
-                            moreRepliesButton = discussionBlockElem.getElementsByClassName('more--comments')[0];
-                            moreRepliesButton.style.display = 'block';
+                    utilMock.getElemsFromHTML = sandbox.stub().returns([commentElem]);
 
-                            event = document.createEvent('HTMLEvents');
-                            event.initEvent('click', true, true);
-                            moreRepliesButton.dispatchEvent(event);
+                    window.articleCommentsInserter(commentElem.outerHTML);
 
-                            setTimeout(function() {
-                                expect(moreRepliesButton.style.display).to.eql('none');
-                                expect(discussionBlockElem.classList.contains('expand')).to.eql(true);
+                    childElem = commentElem.querySelector('.comment__body');
+                    event = document.createEvent('HTMLEvents');
+                    event.initEvent('click', true, true);
+                    childElem.dispatchEvent(event);
 
-                                done();
-                            }, 500);
-                        });
+                    setTimeout(function() {
+                        expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(false);
+
+                        done();
+                    }, 500);
                 });
 
-                it('ignores click on comment child which matches querySelector: a', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var event,
-                                commentElem = document.createElement('div'),
-                                childElem = document.createElement('a');
+                it('can close other comments on click if they are open', function (done) {
+                    var event,
+                        childElem,
+                        commentElem = document.createElement('div'),
+                        otherCommentElem = document.createElement('div'),
+                        commentContainer = document.createElement('div');
 
-                            commentElem.classList.add('comment');
-                            commentElem.classList.add('visible');
-                            commentElem.classList.add('comment--open');
+                    commentElem.innerHTML = '<div class="comment visible"><div class="comment__header"></div></div>'; 
+                    otherCommentElem.innerHTML = '<div class="comment visible comment--open"><div class="comment__header"></div></div>';
 
-                            commentElem.appendChild(childElem);
+                    commentContainer.classList.add('comments__container');
+                    container.appendChild(commentContainer);
 
-                            container.appendChild(commentElem);
+                    comments.init();
 
-                            comments.init();
+                    utilMock.getElemsFromHTML = sandbox.stub().returns([commentElem, otherCommentElem]);
 
-                            window.commentsInserter('<div>Hello World</div>');
+                    window.articleCommentsInserter(commentElem.outerHTML + otherCommentElem.outerHTML);
 
-                            event = document.createEvent('HTMLEvents');
-                            event.initEvent('click', true, true);
-                            childElem.dispatchEvent(event);
+                    childElem = commentElem.querySelector('.comment__header');
+                    event = document.createEvent('HTMLEvents');
+                    event.initEvent('click', true, true);
+                    childElem.dispatchEvent(event);
 
-                            setTimeout(function() {
-                                expect(commentElem.classList.contains('comment--open')).to.eql(true);
+                    setTimeout(function() {
+                        expect(otherCommentElem.firstElementChild.classList.contains('comment--open')).to.eql(false);
+                        expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(true);
 
-                                done();
-                            }, 500);
-                        });
-                });
-
-                it('ignores click on comment child which matches querySelector: .more--comments', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var event,
-                                commentElem = document.createElement('div'),
-                                childElem = document.createElement('div');
-
-                            commentElem.classList.add('comment');
-                            commentElem.classList.add('visible');
-                            commentElem.classList.add('comment--open');
-
-                            childElem.classList.add('more--comments');
-                            commentElem.appendChild(childElem);
-
-                            container.appendChild(commentElem);
-
-                            comments.init();
-
-                            window.commentsInserter('<div>Hello World</div>');
-
-                            event = document.createEvent('HTMLEvents');
-                            event.initEvent('click', true, true);
-                            childElem.dispatchEvent(event);
-
-                            setTimeout(function() {
-                                expect(commentElem.classList.contains('comment--open')).to.eql(true);
-
-                                done();
-                            }, 500);
-                        });
-                });
-
-                it('ignores click on comment child which matches querySelector: .comment__reply', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var event,
-                                commentElem = document.createElement('div'),
-                                childElem = document.createElement('div');
-
-                            commentElem.classList.add('comment');
-                            commentElem.classList.add('visible');
-                            commentElem.classList.add('comment--open');
-
-                            childElem.classList.add('comment__reply');
-                            commentElem.appendChild(childElem);
-
-                            container.appendChild(commentElem);
-
-                            comments.init();
-
-                            window.commentsInserter('<div>Hello World</div>');
-
-                            event = document.createEvent('HTMLEvents');
-                            event.initEvent('click', true, true);
-                            childElem.dispatchEvent(event);
-
-                            setTimeout(function() {
-                                expect(commentElem.classList.contains('comment--open')).to.eql(true);
-
-                                done();
-                            }, 500);
-                        });
-                });
-
-                it('ignores click on comment child which matches querySelector: .comment__recommend', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var event,
-                                commentElem = document.createElement('div'),
-                                childElem = document.createElement('div');
-
-                            commentElem.classList.add('comment');
-                            commentElem.classList.add('visible');
-                            commentElem.classList.add('comment--open');
-
-                            childElem.classList.add('comment__recommend');
-                            commentElem.appendChild(childElem);
-
-                            container.appendChild(commentElem);
-
-                            comments.init();
-
-                            window.commentsInserter('<div>Hello World</div>');
-
-                            event = document.createEvent('HTMLEvents');
-                            event.initEvent('click', true, true);
-                            childElem.dispatchEvent(event);
-
-                            setTimeout(function() {
-                                expect(commentElem.classList.contains('comment--open')).to.eql(true);
-
-                                done();
-                            }, 500);
-                        });
-                });
-
-                it('can handle click on comment child which matches querySelector: .comment__header', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var event,
-                                childElem,
-                                commentElem,
-                                commentContainer = document.createElement('div');
-
-                            commentContainer.classList.add('comments__container');
-                            container.appendChild(commentContainer);
-
-                            comments.init();
-
-                            window.articleCommentsInserter('<div><div class="comment visible comment--open"><div class="comment__header"></div></div></div>');
-
-                            commentElem = commentContainer.querySelector('.comment');
-                            childElem = commentElem.querySelector('.comment__header');
-
-                            event = document.createEvent('HTMLEvents');
-                            event.initEvent('click', true, true);
-                            childElem.dispatchEvent(event);
-
-                            setTimeout(function() {
-                                expect(commentElem.classList.contains('comment--open')).to.eql(false);
-
-                                done();
-                            }, 500);
-                        });
-                });
-
-                it('can handle click on comment child which matches querySelector: .comment__body', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var event,
-                                childElem,
-                                commentElem,
-                                commentContainer = document.createElement('div');
-
-                            commentContainer.classList.add('comments__container');
-                            container.appendChild(commentContainer);
-
-                            comments.init();
-
-                            window.articleCommentsInserter('<div><div class="comment visible comment--open"><div class="comment__body"></div></div></div>');
-
-                            commentElem = commentContainer.querySelector('.comment');
-                            childElem = commentElem.querySelector('.comment__body');
-
-                            event = document.createEvent('HTMLEvents');
-                            event.initEvent('click', true, true);
-                            childElem.dispatchEvent(event);
-
-                            setTimeout(function() {
-                                expect(commentElem.classList.contains('comment--open')).to.eql(false);
-
-                                done();
-                            }, 500);
-                        });
-                });
-
-                it('can close other comments on click if they are open', function(done) {
-                    injector
-                        .mock('modules/relativeDates', relativeDatesMock)
-                        .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                            var event,
-                                childElem,
-                                otherCommentElem,
-                                commentElem,
-                                commentContainer = document.createElement('div');
-
-                            commentContainer.classList.add('comments__container');
-                            container.appendChild(commentContainer);
-
-                            comments.init();
-
-                            window.articleCommentsInserter('<div><div class="comment visible"><div class="comment__header"></div></div></div>' + 
-                                '<div><div class="comment visible comment--open"><div class="comment__header"></div></div></div>');
-
-                            commentElem = commentContainer.querySelectorAll('.comment')[0];
-                            childElem = commentElem.querySelector('.comment__header');
-                            otherCommentElem = commentContainer.querySelectorAll('.comment')[1];
-
-                            event = document.createEvent('HTMLEvents');
-                            event.initEvent('click', true, true);
-                            childElem.dispatchEvent(event);
-
-                            setTimeout(function() {
-                                expect(otherCommentElem.classList.contains('comment--open')).to.eql(false);
-                                expect(commentElem.classList.contains('comment--open')).to.eql(true);
-
-                                done();
-                            }, 500);
-                        });
+                        done();
+                    }, 500);
                 });
             });
         });
 
-        describe('window.articleCommentsFailed()', function() {
-            it('if comments fail to load show failed comments block', function(done) {
-                injector
-                    .mock('modules/relativeDates', relativeDatesMock)
-                    .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                        var commentsElem = document.createElement('div'),
-                            failedBlock = document.createElement('div'),
-                            loadingBlock = document.createElement('div');
+        describe('window.commentsInserter(html)', function () {
+            it('if no html show emptyBlock and hode loadingBlock', function () {
+                var emptyCommentBlock = document.createElement('div'),
+                    loadingBlock = document.createElement('div');
 
-                        commentsElem.classList.add('comments');
+                loadingBlock.classList.add('comments__block--loading');
 
-                        container.appendChild(commentsElem);
+                container.appendChild(loadingBlock);
 
-                        loadingBlock.classList.add('comments__block--loading');
+                emptyCommentBlock.classList.add('comments__block--empty');
+                emptyCommentBlock.style.display = 'none';
 
-                        container.appendChild(loadingBlock);
+                container.appendChild(emptyCommentBlock);
 
-                        failedBlock.classList.add('comments__block--failed');
-                        failedBlock.style.display = 'none';
+                comments.init();
 
-                        container.appendChild(failedBlock);
+                window.commentsInserter('');
 
-                        comments.init();
-
-                        window.articleCommentsFailed();
-
-                        expect(loadingBlock.style.display).to.eql('none');
-                        expect(failedBlock.style.display).to.not.eql('none');
-                        expect(commentsElem.classList.contains('comments-has-failed')).to.eql(true);
-
-                        done();
-                    });
+                expect(loadingBlock.style.display).to.eql('none');
+                expect(emptyCommentBlock.style.display).to.not.eql('none');
             });
         });
 
-        describe('window.commentsFailed()', function() {
-            it('if comments fail to load show failed comments block', function(done) {
-                injector
-                    .mock('modules/relativeDates', relativeDatesMock)
-                    .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                        var commentsElem = document.createElement('div'),
-                            failedBlock = document.createElement('div'),
-                            loadingBlock = document.createElement('div');
+        describe('window.articleCommentsFailed()', function () {
+            it('if comments fail to load show failed comments block', function () {
+                var commentsElem = document.createElement('div'),
+                    failedBlock = document.createElement('div'),
+                    loadingBlock = document.createElement('div');
 
-                        commentsElem.classList.add('comments');
+                commentsElem.classList.add('comments');
 
-                        container.appendChild(commentsElem);
+                container.appendChild(commentsElem);
 
-                        loadingBlock.classList.add('comments__block--loading');
+                loadingBlock.classList.add('comments__block--loading');
 
-                        container.appendChild(loadingBlock);
+                container.appendChild(loadingBlock);
 
-                        failedBlock.classList.add('comments__block--failed');
-                        failedBlock.style.display = 'none';
+                failedBlock.classList.add('comments__block--failed');
+                failedBlock.style.display = 'none';
 
-                        container.appendChild(failedBlock);
+                container.appendChild(failedBlock);
 
-                        comments.init();
+                comments.init();
 
-                        window.commentsFailed();
+                window.articleCommentsFailed();
 
-                        expect(loadingBlock.style.display).to.eql('none');
-                        expect(failedBlock.style.display).to.not.eql('none');
-                        expect(commentsElem.classList.contains('comments-has-failed')).to.eql(true);
-
-                        done();
-                    });
+                expect(loadingBlock.style.display).to.eql('none');
+                expect(failedBlock.style.display).to.not.eql('none');
+                expect(commentsElem.classList.contains('comments-has-failed')).to.eql(true);
             });
         });
 
-        describe('window.commentsEnd()', function() {
-            it('removes loadingBlock', function(done) {
-                injector
-                    .mock('modules/relativeDates', relativeDatesMock)
-                    .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                        var loadingBlock = document.createElement('div');
+        describe('window.commentsFailed()', function () {
+            it('if comments fail to load show failed comments block', function () {
+                var commentsElem = document.createElement('div'),
+                    failedBlock = document.createElement('div'),
+                    loadingBlock = document.createElement('div');
 
-                        container.appendChild(loadingBlock);
+                commentsElem.classList.add('comments');
 
-                        comments.init();
+                container.appendChild(commentsElem);
 
-                        window.commentsEnd();
+                loadingBlock.classList.add('comments__block--loading');
 
-                        expect(loadingBlock.parentNode).to.be.falsy;
+                container.appendChild(loadingBlock);
 
-                        done();
-                    });
+                failedBlock.classList.add('comments__block--failed');
+                failedBlock.style.display = 'none';
+
+                container.appendChild(failedBlock);
+
+                comments.init();
+
+                window.commentsFailed();
+
+                expect(loadingBlock.style.display).to.eql('none');
+                expect(failedBlock.style.display).to.not.eql('none');
+                expect(commentsElem.classList.contains('comments-has-failed')).to.eql(true);
             });
         });
 
-        describe('window.commentsClosed()', function() {
-            it('marks comments as closed', function(done) {
-                injector
-                    .mock('modules/relativeDates', relativeDatesMock)
-                    .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                        var discussionElem = document.createElement('div'),
-                            commentsElem = document.createElement('div');
+        describe('window.commentsEnd()', function () {
+            it('removes loadingBlock', function () {
+                var loadingBlock = document.createElement('div');
 
-                        discussionElem.id = 'discussion';
+                container.appendChild(loadingBlock);
 
-                        container.appendChild(discussionElem);
+                comments.init();
 
-                        commentsElem.classList.add('comments');
+                window.commentsEnd();
 
-                        container.appendChild(commentsElem);
-
-                        comments.init();
-
-                        window.commentsClosed();
-
-                        expect(discussionElem.classList.contains('comments--closed')).to.eql(true);
-                        expect(commentsElem.classList.contains('comments--closed')).to.eql(true);
-
-                        done();
-                    });
+                expect(loadingBlock.parentNode).to.be.falsy;
             });
         });
 
-        describe('window.commentsOpen()', function() {
-            it('marks comments as open', function(done) {
-                injector
-                    .mock('modules/relativeDates', relativeDatesMock)
-                    .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                        var discussionElem = document.createElement('div'),
-                            commentsElem = document.createElement('div');
+        describe('window.commentsClosed()', function () {
+            it('marks comments as closed', function () {
+                var discussionElem = document.createElement('div'),
+                    commentsElem = document.createElement('div');
 
-                        discussionElem.id = 'discussion';
+                discussionElem.id = 'discussion';
 
-                        container.appendChild(discussionElem);
+                container.appendChild(discussionElem);
 
-                        commentsElem.classList.add('comments');
+                commentsElem.classList.add('comments');
 
-                        container.appendChild(commentsElem);
+                container.appendChild(commentsElem);
 
-                        comments.init();
+                comments.init();
 
-                        window.commentsOpen();
+                window.commentsClosed();
 
-                        expect(discussionElem.classList.contains('comments--open')).to.eql(true);
-                        expect(commentsElem.classList.contains('comments--open')).to.eql(true);
+                expect(discussionElem.classList.contains('comments--closed')).to.eql(true);
+                expect(commentsElem.classList.contains('comments--closed')).to.eql(true);
+            });
+        });
 
-                        done();
-                    });
+        describe('window.commentsOpen()', function () {
+            it('marks comments as open', function () {
+                var discussionElem = document.createElement('div'),
+                    commentsElem = document.createElement('div');
+
+                discussionElem.id = 'discussion';
+
+                container.appendChild(discussionElem);
+
+                commentsElem.classList.add('comments');
+
+                container.appendChild(commentsElem);
+
+                comments.init();
+
+                window.commentsOpen();
+
+                expect(discussionElem.classList.contains('comments--open')).to.eql(true);
+                expect(commentsElem.classList.contains('comments--open')).to.eql(true);
             });
         });
 
         describe('window.commentTime()', function() {
-            it('marks comments as open', function(done) {
-                injector
-                    .mock('modules/relativeDates', relativeDatesMock)
-                    .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                        comments.init();
+            it('marks comments as open', function () {
+                comments.init();
 
-                        window.commentTime();
+                window.commentTime();
 
-                        expect(relativeDatesMock.init).to.have.been.called;
-                        expect(relativeDatesMock.init).to.have.been.calledWith('.comment__timestamp', 'title');
-
-                        done();
-                    });
+                expect(relativeDatesMock.init).to.have.been.called;
+                expect(relativeDatesMock.init).to.have.been.calledWith('.comment__timestamp', 'title');
             });
         });
 
-        describe('window.commentsRecommendIncrease(id, number)', function() {
-            it('marks comments as open', function(done) {
-                injector
-                    .mock('modules/relativeDates', relativeDatesMock)
-                    .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                        var commentElem = document.createElement('div'),
-                            commentReccomends = document.createElement('div'),
-                            commentReccomendsCount = document.createElement('div');
+        describe('window.commentsRecommendIncrease(id, number)', function () {
+            it('marks comments as open', function () {
+                var commentElem = document.createElement('div'),
+                    commentReccomends = document.createElement('div'),
+                    commentReccomendsCount = document.createElement('div');
 
-                        commentElem.id = 'xxx';
+                commentElem.id = 'xxx';
 
-                        comments.init();
+                comments.init();
 
-                        commentReccomends.classList.add('comment__recommend');
+                commentReccomends.classList.add('comment__recommend');
 
-                        commentReccomendsCount.classList.add('comment__recommend__count');
+                commentReccomendsCount.classList.add('comment__recommend__count');
 
-                        commentReccomends.appendChild(commentReccomendsCount);
+                commentReccomends.appendChild(commentReccomendsCount);
 
-                        commentElem.appendChild(commentReccomends);
+                commentElem.appendChild(commentReccomends);
 
-                        container.appendChild(commentElem);
+                container.appendChild(commentElem);
 
-                        window.commentsRecommendIncrease('xxx', 666);
+                window.commentsRecommendIncrease('xxx', 666);
 
-                        expect(commentReccomends.classList.contains('increase')).to.eql(true);
-                        expect(commentReccomendsCount.innerText).to.eql('666');
-
-                        done();
-                    });
+                expect(commentReccomends.classList.contains('increase')).to.eql(true);
+                expect(commentReccomendsCount.innerText).to.eql('666');
             });
         });
 
         describe('window.commentsRecommendDecrease(id, number)', function() {
-            it('marks comments as open', function(done) {
-                injector
-                    .mock('modules/relativeDates', relativeDatesMock)
-                    .require(['ArticleTemplates/assets/js/modules/comments'], function(comments) {
-                        var commentElem = document.createElement('div'),
-                            commentReccomends = document.createElement('div'),
-                            commentReccomendsCount = document.createElement('div');
+            it('marks comments as open', function () {
+                var commentElem = document.createElement('div'),
+                    commentReccomends = document.createElement('div'),
+                    commentReccomendsCount = document.createElement('div');
 
-                        commentElem.id = 'xxx';
+                commentElem.id = 'xxx';
 
-                        comments.init();
+                comments.init();
 
-                        commentReccomends.classList.add('comment__recommend');
-                        commentReccomends.classList.add('increase');
+                commentReccomends.classList.add('comment__recommend');
+                commentReccomends.classList.add('increase');
 
-                        commentReccomendsCount.classList.add('comment__recommend__count');
+                commentReccomendsCount.classList.add('comment__recommend__count');
 
-                        commentReccomends.appendChild(commentReccomendsCount);
+                commentReccomends.appendChild(commentReccomendsCount);
 
-                        commentElem.appendChild(commentReccomends);
+                commentElem.appendChild(commentReccomends);
 
-                        container.appendChild(commentElem);
+                container.appendChild(commentElem);
 
-                        window.commentsRecommendDecrease('xxx', 666);
+                window.commentsRecommendDecrease('xxx', 666);
 
-                        expect(commentReccomends.classList.contains('increase')).to.eql(false);
-                        expect(commentReccomendsCount.innerText).to.eql('666');
-
-                        done();
-                    });
+                expect(commentReccomends.classList.contains('increase')).to.eql(false);
+                expect(commentReccomendsCount.innerText).to.eql('666');
             });
         });
     });
