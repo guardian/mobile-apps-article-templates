@@ -1,4 +1,8 @@
-define(function () {
+define([
+    'squire'
+], function (
+    Squire
+) {
     'use strict';
 
     describe('ArticleTemplates/assets/js/bootstraps/cricket', function() {
@@ -6,15 +10,18 @@ define(function () {
             container;
             
         beforeEach(function (done) {
+            var injector = new Squire();
+
             container = document.createElement('div');
             container.id = 'container';
             document.body.appendChild(container);
 
-            require(['ArticleTemplates/assets/js/bootstraps/cricket'], function (sut) {
-                cricket = sut;
-                
-                done();
-            });
+            injector
+                .require(['ArticleTemplates/assets/js/bootstraps/cricket'], function (sut) {
+                    cricket = sut;
+                    
+                    done();
+                });
         });
 
         afterEach(function () {
