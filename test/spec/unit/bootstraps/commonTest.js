@@ -42,8 +42,8 @@ define([
         return figElem;
     }
 
-    describe.only('ArticleTemplates/assets/js/bootstraps/common', function() {
-        var injector,
+    describe('ArticleTemplates/assets/js/bootstraps/common', function() {
+        var common,
             sandbox;
             
         var fenceMock,
@@ -55,7 +55,9 @@ define([
             sharingMock,
             utilMock;
 
-        beforeEach(function() {
+        beforeEach(function(done) {
+            var injector = new Squire();
+
             sandbox = sinon.sandbox.create();
 
             fenceMock = {
@@ -87,13 +89,25 @@ define([
                 debounce: sandbox.spy()
             };
             
-            injector = new Squire();
-            
             window.GU = {
                 opts: {
                     isOffline: false
                 }
             };
+
+            injector
+                .mock('fence', fenceMock)
+                .mock('fastClick', fastClickMock)
+                .mock('smoothScroll', smoothScrollMock)
+                .mock('modules/comments', commentsMock)
+                .mock('modules/cards', cardsMock)
+                .mock('modules/more-tags', moreTagsMock)
+                .mock('modules/sharing', sharingMock)
+                .mock('modules/util', utilMock)
+                .require(['ArticleTemplates/assets/js/bootstraps/common'], function (sut) {
+                    common = sut;
+                    done();
+                });
         });
 
         afterEach(function () {
@@ -106,14 +120,13 @@ define([
                 figElem,
                 opts,
                 dummyImage,
-                origImage,
-                common;
+                origImage;
                 
-            beforeEach(function (done) {
+            beforeEach(function () {
                 // stub Image to test onerror handling
                 dummyImage = {};
                 origImage = window.Image;
-                window.Image = sinon.stub().returns(dummyImage);
+                window.Image = sandbox.stub().returns(dummyImage);
                 
                 // add article element to page, we inject figElem into this element
                 articleElem = document.createElement('div');
@@ -130,20 +143,6 @@ define([
                 utilMock.getClosestParentWithTag = function () {
                     return figElem;
                 };
-
-                injector
-                    .mock('fence', fenceMock)
-                    .mock('fastClick', fastClickMock)
-                    .mock('smoothScroll', smoothScrollMock)
-                    .mock('modules/comments', commentsMock)
-                    .mock('modules/cards', cardsMock)
-                    .mock('modules/more-tags', moreTagsMock)
-                    .mock('modules/sharing', sharingMock)
-                    .mock('modules/util', utilMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/common'], function (sut) {
-                        common = sut;
-                        done();
-                    });
             });
 
             afterEach(function () {

@@ -1,29 +1,39 @@
 define([
-    'modules/util',
     'squire'
-], function(
-    util,
+], function (
     Squire
 ) {
     'use strict';
 
-    describe('ArticleTemplates/assets/js/bootstraps/football', function() {
-        var container,
-            injector;
+    describe('ArticleTemplates/assets/js/bootstraps/football', function () {
+        var football,
+            container,
+            sandbox;
 
         var youtubeMock;
             
-        beforeEach(function() {
+        beforeEach(function (done) {
+            var injector = new Squire();
+            
+            sandbox = sinon.sandbox.create();
+
             youtubeMock = {
-                init: sinon.spy()
+                init: sandbox.spy()
             };
+
             container = document.createElement('div');
             container.id = 'container';
             document.body.appendChild(container);
-            injector = new Squire();
-            window.applyNativeFunctionCall = sinon.spy();
-            window.GU = {};
-            window.GU.util = util;
+            
+            window.applyNativeFunctionCall = sandbox.spy();
+            
+            injector
+                .mock('modules/youtube', youtubeMock)
+                .require(['ArticleTemplates/assets/js/bootstraps/football'], function (sut) {
+                    football = sut;
+
+                    done();
+                });
         });
 
         afterEach(function () {
@@ -35,26 +45,19 @@ define([
             delete window.footballStatus;
             delete window.applyNativeFunctionCall;
 
-            delete window.GU;
+            sandbox.restore();
         });
 
         describe('init()', function () {
-            it('sets up global functions', function (done) {
-               injector
-                    .mock('modules/youtube', youtubeMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/football'], function (football) {
-                        football.init();
+            it('sets up global functions', function () {
+                football.init();
 
-                        expect(window.footballMatchInfo).to.not.be.undefined;
-                        expect(window.footballMatchInfoFailed).to.not.be.undefined;
-                        expect(window.footballGoal).to.not.be.undefined;
-                        expect(window.footballStatus).to.not.be.undefined;
-
-                        expect(window.applyNativeFunctionCall).to.have.been.calledWith('footballMatchInfo');
-                        expect(window.applyNativeFunctionCall).to.have.been.calledWith('footballMatchInfoFailed');
-
-                        done();
-                    });
+                expect(window.footballMatchInfo).to.not.be.undefined;
+                expect(window.footballMatchInfoFailed).to.not.be.undefined;
+                expect(window.footballGoal).to.not.be.undefined;
+                expect(window.footballStatus).to.not.be.undefined;
+                expect(window.applyNativeFunctionCall).to.have.been.calledWith('footballMatchInfo');
+                expect(window.applyNativeFunctionCall).to.have.been.calledWith('footballMatchInfoFailed');
             });
         });
 
@@ -89,36 +92,24 @@ define([
                 expect(pieChart.firstChild.classList.contains('pie-chart__inner')).to.eql(true);
             });
 
-            it('adds football match info and hides panel', function (done) {
-               injector
-                    .mock('modules/youtube', youtubeMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/football'], function (football) {
-                        statsPanel.setAttribute('aria-selected', 'false');
+            it('adds football match info and hides panel', function () {
+                statsPanel.setAttribute('aria-selected', 'false');
 
-                        football.init();
+                football.init();
 
-                        window.footballMatchInfo(html, null, 'liverpool', 'arsenal');
+                window.footballMatchInfo(html, null, 'liverpool', 'arsenal');
 
-                        expect(statsPanel.style.display).to.eql('none');
-               
-                        done();
-                    });
+                expect(statsPanel.style.display).to.eql('none');
             });
 
-            it('adds football match info and does not hide panel', function (done) {
-               injector
-                    .mock('modules/youtube', youtubeMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/football'], function (football) {
-                        statsPanel.setAttribute('aria-selected', 'true');
+            it('adds football match info and does not hide panel', function () {
+                statsPanel.setAttribute('aria-selected', 'true');
 
-                        football.init();
+                football.init();
 
-                        window.footballMatchInfo(html, null, 'liverpool', 'arsenal');
+                window.footballMatchInfo(html, null, 'liverpool', 'arsenal');
 
-                        expect(statsPanel.style.display).to.eql('block');
-               
-                        done();
-                    });
+                expect(statsPanel.style.display).to.eql('block');
             });
         });
 
@@ -155,37 +146,25 @@ define([
                 container.appendChild(statsTab);
             });
 
-            it('removes stats panel', function (done) {
-               injector
-                    .mock('modules/youtube', youtubeMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/football'], function (football) {
-                        football.init();
+            it('removes stats panel', function () {
+               football.init();
 
-                        window.footballMatchInfoFailed();
+                window.footballMatchInfoFailed();
 
-                        expect(statsPanel.parentNode).to.be.falsy;
-               
-                        done();
-                    });
+                expect(statsPanel.parentNode).to.be.falsy;
             });
 
-            it('if stats panel tab selected switch selected tab to first tab and remove stats panel/tab', function (done) {
-               injector
-                    .mock('modules/youtube', youtubeMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/football'], function (football) {
-                        football.init();
+            it('if stats panel tab selected switch selected tab to first tab and remove stats panel/tab', function () {
+                football.init();
 
-                        expect(infoTab.getAttribute('aria-selected')).to.eql('false');
-                        expect(infoPanel.style.display).to.eql('none');
+                expect(infoTab.getAttribute('aria-selected')).to.eql('false');
+                expect(infoPanel.style.display).to.eql('none');
 
-                        window.footballMatchInfoFailed();
+                window.footballMatchInfoFailed();
 
-                        expect(infoTab.getAttribute('aria-selected')).to.eql('true');
-                        expect(infoPanel.style.display).not.to.eql('none');
-                        expect(statsTab.parentNode).to.be.falsy;
-
-                        done();
-                    });
+                expect(infoTab.getAttribute('aria-selected')).to.eql('true');
+                expect(infoPanel.style.display).not.to.eql('none');
+                expect(statsTab.parentNode).to.be.falsy;
             });
         });
 
@@ -201,80 +180,56 @@ define([
                 container.appendChild(matchSummary);
             });
 
-            it('update score if aggScore truthy', function (done) {
-               injector
-                    .mock('modules/youtube', youtubeMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/football'], function (football) {
-                        football.init();
+            it('update score if aggScore truthy', function () {
+                football.init();
 
-                        window.footballGoal('home', 1, '<p>Alan Shearer</p>', 3);
+                window.footballGoal('home', 1, '<p>Alan Shearer</p>', 3);
 
-                        expect(matchSummary.classList.contains('is-agg')).to.eql(true);
-                        expect(matchSummary.querySelector('.match-summary__home__score__label').innerHTML).to.eql(1 + ' <span class="match-summary__score__agg">' + 3 + '</span>');
-               
-                        done();
-                    });
+                expect(matchSummary.classList.contains('is-agg')).to.eql(true);
+                expect(matchSummary.querySelector('.match-summary__home__score__label').innerHTML).to.eql(1 + ' <span class="match-summary__score__agg">' + 3 + '</span>');
             });
 
-            it('update score if aggScore falsy', function (done) {
-               injector
-                    .mock('modules/youtube', youtubeMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/football'], function (football) {
-                        football.init();
+            it('update score if aggScore falsy', function () {
+                football.init();
 
-                        window.footballGoal('home', 1, '<p>Alan Shearer</p>');
+                window.footballGoal('home', 1, '<p>Alan Shearer</p>');
 
-                        expect(matchSummary.classList.contains('is-agg')).to.eql(false);
-                        expect(matchSummary.querySelector('.match-summary__home__score__label').innerHTML).to.eql(1 + ' <span class="match-summary__score__agg"></span>');
-               
-                        done();
-                    });
+                expect(matchSummary.classList.contains('is-agg')).to.eql(false);
+                expect(matchSummary.querySelector('.match-summary__home__score__label').innerHTML).to.eql(1 + ' <span class="match-summary__score__agg"></span>');
             });
 
-            it('update match info scorer p tag', function (done) {
-               injector
-                    .mock('modules/youtube', youtubeMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/football'], function (football) {
-                        matchSummary.innerHTML += '<div class="match-summary__home__info"><p>Peter Beardsley</p></div>';
+            it('update match info scorer p tag', function () {
+                matchSummary.innerHTML += '<div class="match-summary__home__info"><p>Peter Beardsley</p></div>';
 
-                        football.init();
+                football.init();
 
-                        expect(matchSummary.querySelector('.match-summary__home__info').innerHTML).to.eql('<p>Peter Beardsley</p>');
+                expect(matchSummary.querySelector('.match-summary__home__info').innerHTML).to.eql('<p>Peter Beardsley</p>');
 
-                        window.footballGoal('home', 1, '<p>Alan Shearer</p>');
+                window.footballGoal('home', 1, '<p>Alan Shearer</p>');
 
-                        expect(matchSummary.querySelector('.match-summary__home__info').innerHTML).to.eql('<p>Alan Shearer</p>');
-
-                        done();
-                    });
+                expect(matchSummary.querySelector('.match-summary__home__info').innerHTML).to.eql('<p>Alan Shearer</p>');
             });
         });
 
         describe('window.footballStatus(className, label)', function () {
-            it('clears old status and reapplies class before adding new status', function (done) {
-               injector
-                    .mock('modules/youtube', youtubeMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/football'], function (football) {
-                        var matchStatus = document.createElement('div'),
-                            matchStatusTime = document.createElement('div');
+            it('clears old status and reapplies class before adding new status', function () {
+                var matchStatus = document.createElement('div'),
+                    matchStatusTime = document.createElement('div');
 
-                        matchStatus.classList.add('match-status');
-                        matchStatus.classList.add('match-status--xxx');
-                        matchStatusTime.classList.add('match-status__time');
+                matchStatus.classList.add('match-status');
+                matchStatus.classList.add('match-status--xxx');
+                matchStatusTime.classList.add('match-status__time');
 
-                        container.appendChild(matchStatus);
-                        container.appendChild(matchStatusTime);
+                container.appendChild(matchStatus);
+                container.appendChild(matchStatusTime);
 
-                        football.init();
+                football.init();
 
-                        window.footballStatus('yyy', 'hello world');
+                window.footballStatus('yyy', 'hello world');
 
-                        expect(matchStatus.classList.contains('match-status')).to.eql(true);
-                        expect(matchStatus.classList.contains('match-status--yyy')).to.eql(true);
-                        expect(matchStatusTime.innerText).to.eql('hello world');
-
-                        done();
-                    });
+                expect(matchStatus.classList.contains('match-status')).to.eql(true);
+                expect(matchStatus.classList.contains('match-status--yyy')).to.eql(true);
+                expect(matchStatusTime.innerText).to.eql('hello world');
             });
         });
     });

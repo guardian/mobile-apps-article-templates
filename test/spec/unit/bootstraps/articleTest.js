@@ -1,12 +1,13 @@
 define([
     'squire'
-], function(
+], function (
     Squire
 ) {
     'use strict';
 
-    describe('ArticleTemplates/assets/js/bootstraps/article', function() {
-        var injector;
+    describe('ArticleTemplates/assets/js/bootstraps/article', function(done) {
+        var article,
+            sandbox;
             
         var youtubeMock,
             twitterMock,
@@ -16,30 +17,32 @@ define([
             creativeInjectorMock,
             immersiveMock;
 
-        beforeEach(function() {
+        beforeEach(function (done) {
+            var injector = new Squire();
+            
+            sandbox = sinon.sandbox.create();
+
             twitterMock = {
-                init: sinon.spy()
+                init: sandbox.spy()
             };
             witnessMock = {
-                init: sinon.spy()
+                init: sandbox.spy()
             };
             outbrainMock = {
-                init: sinon.spy()
+                init: sandbox.spy()
             };
             quizMock = {
-                init: sinon.spy()
+                init: sandbox.spy()
             };
             creativeInjectorMock = {
-                init: sinon.spy()
+                init: sandbox.spy()
             };
             youtubeMock = {
-                init: sinon.spy()
+                init: sandbox.spy()
             };
             immersiveMock = {
-                init: sinon.spy()
+                init: sandbox.spy()
             };
-            
-            injector = new Squire();
             
             window.GU = {
                 opts: {
@@ -47,50 +50,41 @@ define([
                 }
             };
 
-            window.applyNativeFunctionCall = sinon.spy();
+            window.applyNativeFunctionCall = sandbox.spy();
+
+            injector
+                .mock('modules/twitter', twitterMock)
+                .mock('modules/witness', witnessMock)
+                .mock('modules/outbrain', outbrainMock)
+                .mock('modules/quiz', quizMock)
+                .mock('modules/creativeInjector', creativeInjectorMock)
+                .mock('modules/youtube', youtubeMock)
+                .mock('modules/immersive', immersiveMock)
+                .require(['ArticleTemplates/assets/js/bootstraps/article'], function (sut) {
+                    article = sut;
+
+                    done();
+                });
         });
 
         afterEach(function () {
             delete window.applyNativeFunctionCall;
             delete window.GU;
+            sandbox.restore();
         });
 
         describe('init()', function () {
-            it('initialise twitter and witness modules', function (done) {
-               injector
-                    .mock('modules/twitter', twitterMock)
-                    .mock('modules/witness', witnessMock)
-                    .mock('modules/outbrain', outbrainMock)
-                    .mock('modules/quiz', quizMock)
-                    .mock('modules/creativeInjector', creativeInjectorMock)
-                    .mock('modules/youtube', youtubeMock)
-                    .mock('modules/immersive', immersiveMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/article'], function (article) {
-                        article.init();
+            it('initialise twitter and witness modules', function () {
+                article.init();
 
-                        expect(twitterMock.init).to.have.been.calledOnce;
-                        expect(witnessMock.init).to.have.been.calledOnce;
-
-                        done();
-                    });
+                expect(twitterMock.init).to.have.been.calledOnce;
+                expect(witnessMock.init).to.have.been.calledOnce;
             });
 
-            it('applies native function call articleOutbrainInserter', function (done) {
-               injector
-                    .mock('modules/twitter', twitterMock)
-                    .mock('modules/witness', witnessMock)
-                    .mock('modules/outbrain', outbrainMock)
-                    .mock('modules/quiz', quizMock)
-                    .mock('modules/creativeInjector', creativeInjectorMock)
-                    .mock('modules/youtube', youtubeMock)
-                    .mock('modules/immersive', immersiveMock)
-                    .require(['ArticleTemplates/assets/js/bootstraps/article'], function (article) {
-                        article.init();
+            it('applies native function call articleOutbrainInserter', function () {
+                article.init();
 
-                        expect(window.applyNativeFunctionCall).to.have.been.calledWith('articleOutbrainInserter');
-
-                        done();
-                    });
+                expect(window.applyNativeFunctionCall).to.have.been.calledWith('articleOutbrainInserter');
             });
         });
     });
