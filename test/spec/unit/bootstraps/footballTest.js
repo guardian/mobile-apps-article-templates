@@ -118,7 +118,7 @@ define([
                 statsTab,
                 infoPanel,
                 statsPanel,
-                buildTab = function(href, ariaSelected) {
+                buildTab = function (href, ariaSelected) {
                     var tab = document.createElement('a');
 
                     tab.href = href;

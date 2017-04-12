@@ -8,7 +8,7 @@ define([
     describe('ArticleTemplates/assets/js/modules/more-tags', function () {
         var moreTags,
             container,
-            getTagsHTML = function(count) {
+            getTagsHTML = function (count) {
                 var i,
                     html = '<div class="tags" id="tags"><ul class="inline-list" id="tag-list"><li class="inline-list__item screen-readable">Tags:</li>';
 
@@ -97,7 +97,7 @@ define([
                 event.initEvent('click', true, true);
                 moreTagsContainer.dispatchEvent(event);
 
-                setTimeout(function() {
+                setTimeout(function () {
                     expect(moreTagsContainer.style.display).to.eql('none');
                     expect(lastInlineListItem.classList.contains('hide-tags')).to.eql(false);
 

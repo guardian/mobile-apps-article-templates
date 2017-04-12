@@ -164,7 +164,7 @@ define([
                 event.initEvent('click', true, true);
                 loadMoreElem.dispatchEvent(event);
 
-                setTimeout(function() {
+                setTimeout(function () {
                     expect(loadMoreElem.style.display).not.to.eql('block');
                     expect(loadingElem.classList.contains('loading--visible')).to.eql(true);
                     expect(utilMock.signalDevice).to.have.been.calledOnce;
@@ -322,7 +322,7 @@ define([
         describe('window.liveblogTime()', function () {
             var liveblogElem;
 
-            beforeEach(function() {
+            beforeEach(function () {
                 liveblogElem = document.createElement('div');
                 liveblogElem.classList.add('tone--liveBlog');
                 container.appendChild(liveblogElem);
@@ -360,7 +360,7 @@ define([
         describe('window.showLiveMore(show)', function () {
             var moreElem;
 
-            beforeEach(function() {
+            beforeEach(function () {
                 moreElem = document.createElement('div');
                 moreElem.classList.add('more--live-blogs');
                 container.appendChild(moreElem);

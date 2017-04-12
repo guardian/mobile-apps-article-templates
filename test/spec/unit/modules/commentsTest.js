@@ -104,7 +104,7 @@ define([
             });
 
             describe('adds html to the page and calls commentsReplyFormatting', function () {
-                var buildDiscussionBlockElem = function(checked, childCount) {
+                var buildDiscussionBlockElem = function (checked, childCount) {
                     var i,
                         childElem,
                         discussionBlockElem = document.createElement('div');
@@ -222,7 +222,7 @@ define([
                     event.initEvent('click', true, true);
                     moreRepliesButton.dispatchEvent(event);
 
-                    setTimeout(function() {
+                    setTimeout(function () {
                         expect(moreRepliesButton.style.display).to.eql('none');
                         expect(discussionBlockElem.classList.contains('expand')).to.eql(true);
 
@@ -254,7 +254,7 @@ define([
                     event.initEvent('click', true, true);
                     childElem.dispatchEvent(event);
 
-                    setTimeout(function() {
+                    setTimeout(function () {
                         expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(true);
 
                         done();
@@ -285,7 +285,7 @@ define([
                     event.initEvent('click', true, true);
                     childElem.dispatchEvent(event);
 
-                    setTimeout(function() {
+                    setTimeout(function () {
                         expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(true);
 
                         done();
@@ -316,7 +316,7 @@ define([
                     event.initEvent('click', true, true);
                     childElem.dispatchEvent(event);
 
-                    setTimeout(function() {
+                    setTimeout(function () {
                         expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(true);
 
                         done();
@@ -347,7 +347,7 @@ define([
                     event.initEvent('click', true, true);
                     childElem.dispatchEvent(event);
 
-                    setTimeout(function() {
+                    setTimeout(function () {
                         expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(true);
 
                         done();
@@ -376,7 +376,7 @@ define([
                     event.initEvent('click', true, true);
                     childElem.dispatchEvent(event);
 
-                    setTimeout(function() {
+                    setTimeout(function () {
                         expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(false);
 
                         done();
@@ -405,7 +405,7 @@ define([
                     event.initEvent('click', true, true);
                     childElem.dispatchEvent(event);
 
-                    setTimeout(function() {
+                    setTimeout(function () {
                         expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(false);
 
                         done();
@@ -436,7 +436,7 @@ define([
                     event.initEvent('click', true, true);
                     childElem.dispatchEvent(event);
 
-                    setTimeout(function() {
+                    setTimeout(function () {
                         expect(otherCommentElem.firstElementChild.classList.contains('comment--open')).to.eql(false);
                         expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(true);
 
@@ -585,7 +585,7 @@ define([
             });
         });
 
-        describe('window.commentTime()', function() {
+        describe('window.commentTime()', function () {
             it('marks comments as open', function () {
                 comments.init();
 
@@ -623,7 +623,7 @@ define([
             });
         });
 
-        describe('window.commentsRecommendDecrease(id, number)', function() {
+        describe('window.commentsRecommendDecrease(id, number)', function () {
             it('marks comments as open', function () {
                 var commentElem = document.createElement('div'),
                     commentReccomends = document.createElement('div'),

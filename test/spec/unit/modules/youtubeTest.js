@@ -12,7 +12,7 @@ define([
             scriptAdded,
             sandbox,
             container,
-            getVideoWrapper = function(id) {
+            getVideoWrapper = function (id) {
                 var videoWrapper = document.createElement('div'),
                     placeholder = document.createElement('div'),
                     img = document.createElement('div'),
@@ -109,7 +109,7 @@ define([
                 trackAction: sinon.spy()
             };
 
-            sandbox.stub(document.body, 'appendChild', function(scriptElement) {
+            sandbox.stub(document.body, 'appendChild', function (scriptElement) {
                 if (scriptElement.id === 'youtube-script') {
                     scriptAdded = true;
                     scriptElement.onload();
@@ -117,11 +117,11 @@ define([
                 }
             });
 
-            sandbox.stub(Player.prototype, 'getDuration', function() {
+            sandbox.stub(Player.prototype, 'getDuration', function () {
                 return 20000;
             });
 
-            sandbox.stub(Player.prototype, 'getCurrentTime', function() {
+            sandbox.stub(Player.prototype, 'getCurrentTime', function () {
                 var currentTime = new Date();
 
                 if (this.startTime) {
@@ -248,7 +248,7 @@ define([
             window.YT.players[0].onReady('video1');
             startVideoWithTap(videoWrapper, window.YT.players[0]);
 
-            setTimeout(function() {
+            setTimeout(function () {
                 expect(videoWrapper.classList.contains('show-video')).to.eql(true);
                 expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(true);
 
@@ -268,7 +268,7 @@ define([
             window.YT.players[0].onReady('video1');
             startVideoWithTap(videoWrapper, window.YT.players[0], true);
 
-            setTimeout(function() {
+            setTimeout(function () {
                 expect(videoWrapper.classList.contains('show-video')).to.eql(false);
                 expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(false);
                 expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
@@ -294,7 +294,7 @@ define([
             expect(window.YT.players.length).to.eql(2);
         });
 
-        describe('on iOS', function() {
+        describe('on iOS', function () {
             it('handles onPlayerStateChange when PLAYING from start', function () {
                 var videoWrapper = getVideoWrapper('video1');
 
@@ -351,7 +351,7 @@ define([
                 window.YT.players[0].onReady('video1');
                 setPlayerState('PLAYING', window.YT.players[0]);
 
-                setTimeout(function() {
+                setTimeout(function () {
                     expect(utilMock.signalDevice).to.have.been.called;
                     expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
                     expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:25'}));
@@ -445,7 +445,7 @@ define([
             });
         });
 
-        describe('on Android', function() {
+        describe('on Android', function () {
             beforeEach(function () {
                 window.GU.opts.platform = 'android';
             });
@@ -523,7 +523,7 @@ define([
                 window.YT.players[0].onReady('video1');
                 setPlayerState('PLAYING', window.YT.players[0]);
 
-                setTimeout(function() {
+                setTimeout(function () {
                     expect(window.GuardianJSInterface.trackAction).to.have.been.called;
                     expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:start'}));
                     expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:25'}));

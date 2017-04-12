@@ -5,7 +5,7 @@ define([
 ) {
     'use strict';
 
-    describe('ArticleTemplates/assets/js/bootstraps/cricket', function() {
+    describe('ArticleTemplates/assets/js/bootstraps/cricket', function () {
         var cricket,
             container;
             

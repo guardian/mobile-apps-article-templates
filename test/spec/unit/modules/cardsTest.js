@@ -47,7 +47,7 @@ define([
             injector
                 .mock('flipSnap', flipSnapMock)
                 .mock('modules/util', utilMock)
-                .require(['ArticleTemplates/assets/js/modules/cards'], function(sut) {
+                .require(['ArticleTemplates/assets/js/modules/cards'], function (sut) {
                     cards = sut;
 
                     done();
@@ -78,7 +78,7 @@ define([
             });
         });
 
-        describe('window.articleCardsInserter(html)', function() {
+        describe('window.articleCardsInserter(html)', function () {
             var html,
                 relatedContent,
                 resizeHandler;

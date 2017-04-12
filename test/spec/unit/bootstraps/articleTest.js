@@ -5,7 +5,7 @@ define([
 ) {
     'use strict';
 
-    describe('ArticleTemplates/assets/js/bootstraps/article', function(done) {
+    describe('ArticleTemplates/assets/js/bootstraps/article', function () {
         var article,
             sandbox;
             

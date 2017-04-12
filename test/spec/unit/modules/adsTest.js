@@ -254,7 +254,7 @@ define([
 
                     advertSlotWrapper.style.top = '50px';
 
-                    setTimeout(function() {
+                    setTimeout(function () {
                         expect(utilMock.signalDevice).to.have.been.calledOnce;
                         expect(utilMock.signalDevice).to.have.been.calledWith('ad_moved');
                         done();
@@ -264,7 +264,7 @@ define([
                 it('do not call signalDevice with ad_moved if position has not changed', function (done) {
                     ads.init(config);
 
-                    setTimeout(function() {
+                    setTimeout(function () {
                         expect(utilMock.signalDevice).to.not.have.been.called;
                         done();
                     }, 1100);
@@ -362,7 +362,7 @@ define([
 
                 window.initMpuPoller();
 
-                setTimeout(function() {
+                setTimeout(function () {
                     expect(window.GuardianJSInterface.mpuAdsPosition).to.have.been.calledOnce;
 
                     done();
@@ -378,7 +378,7 @@ define([
 
                 advertSlotWrapper.style.top = '50px';
 
-                setTimeout(function() {
+                setTimeout(function () {
                     expect(window.GuardianJSInterface.mpuAdsPosition).to.have.been.calledTwice;
                     
                     done();
@@ -392,7 +392,7 @@ define([
 
                 window.initMpuPoller();
 
-                setTimeout(function() {
+                setTimeout(function () {
                     expect(window.GuardianJSInterface.mpuAdsPosition).to.have.been.calledOnce;
                     
                     done();
@@ -403,7 +403,7 @@ define([
         describe('getMpuPosCommaSeparated()', function () {
             var articleBody,
                 config,
-                addBlocks = function(count) {
+                addBlocks = function (count) {
                     var i,
                         block;
 

@@ -1,6 +1,6 @@
 define([
     'squire'
-], function(
+], function (
     Squire
 ) {
     'use strict';
@@ -42,7 +42,7 @@ define([
         return figElem;
     }
 
-    describe('ArticleTemplates/assets/js/bootstraps/common', function() {
+    describe('ArticleTemplates/assets/js/bootstraps/common', function () {
         var common,
             sandbox;
             
@@ -55,7 +55,7 @@ define([
             sharingMock,
             utilMock;
 
-        beforeEach(function(done) {
+        beforeEach(function (done) {
             var injector = new Squire();
 
             sandbox = sinon.sandbox.create();

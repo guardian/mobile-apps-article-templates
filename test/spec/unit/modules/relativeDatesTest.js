@@ -1,11 +1,11 @@
 define([
     'squire'
-], function(
+], function (
     Squire
 ) {
     'use strict';
 
-    describe('ArticleTemplates/assets/js/modules/relativeDates', function() {
+    describe('ArticleTemplates/assets/js/modules/relativeDates', function () {
         var relativeDates,
             clock,
             now = new Date('2016-06-28T22:00:00Z');
@@ -21,7 +21,7 @@ define([
                 });
         });
 
-        describe('replace valid timestamps', function() {
+        describe('replace valid timestamps', function () {
             var tests = [{
                 description: 'when input time less than a minutes ago',
                 dateTime: '2016-06-28T21:59:30Z',
@@ -56,7 +56,7 @@ define([
                 assertion: '23h ago'
             }];
 
-            describe('when elems has no child with class timestamp__text', function() {
+            describe('when elems has no child with class timestamp__text', function () {
                 tests.forEach(function (test) {
                     it(test.description, function () {
                         var timeElem = document.createElement('div');
@@ -79,8 +79,8 @@ define([
                 });
             });
 
-            describe('when elem has child with class timestamp__text', function() {
-                tests.forEach(function(test) {
+            describe('when elem has child with class timestamp__text', function () {
+                tests.forEach(function (test) {
                     it(test.description, function () {
                         var timeElem = document.createElement('div'),
                             timeStampElem = document.createElement('div');

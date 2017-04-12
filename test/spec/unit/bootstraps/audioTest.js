@@ -5,7 +5,7 @@ define([
 ) {
     'use strict';
 
-    describe('ArticleTemplates/assets/js/bootstraps/audio', function() {
+    describe('ArticleTemplates/assets/js/bootstraps/audio', function () {
         var audio,
             sandbox,
             container,
@@ -20,7 +20,7 @@ define([
             mobileSliderCount++;
         }
 
-        beforeEach(function(done) {
+        beforeEach(function (done) {
             var injector = new Squire();
             
             mobileSliderCount = 0;
@@ -48,11 +48,11 @@ define([
                 debounce: function (func) {
                     return func;
                 },
-                getElementOffset: function() {
+                getElementOffset: function () {
                     return {
                         height: 300,
                         width : 500
-                    }
+                    };
                 }
             };
 
