@@ -136,7 +136,7 @@ define([
                         }
                     },
                     widgets: {
-                        load: sinon.spy()
+                        load: sandbox.spy()
                     }
                 };
 
@@ -165,10 +165,10 @@ define([
 
                 window.twttr = {
                     events: {
-                        bind: sinon.spy()
+                        bind: sandbox.spy()
                     },
                     widgets: {
-                        load: sinon.spy()
+                        load: sandbox.spy()
                     }
                 };
 

@@ -106,7 +106,7 @@ define([
             };
 
             window.GuardianJSInterface = {
-                trackAction: sinon.spy()
+                trackAction: sandbox.spy()
             };
 
             sandbox.stub(document.body, 'appendChild', function (scriptElement) {
@@ -437,8 +437,6 @@ define([
                     expect(videoWrapper.classList.contains('show-video')).to.eql(false);
                     expect(utilMock.signalDevice).to.have.been.calledOnce;
                     expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:end'}));
-
-                    console.log('*** t8 ***');
 
                     done();
                 }, 1500);
