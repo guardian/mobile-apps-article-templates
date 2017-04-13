@@ -4,13 +4,14 @@ define([
     'modules/util'
 ], function(
     domReady,
-    Ads,
+    ads,
     util
 ) {
     'use strict';
 
     function init() {
-        GU.util = util;
+        // expose util in GU namespace for interactives
+        window.GU.util = util;
         domReady(onDomReady);
     }
 
@@ -22,7 +23,7 @@ define([
         var contentType = GU.opts.contentType;
 
         // ads positioning
-        Ads.init({
+        ads.init({
             adsEnabled: (GU.opts.adsEnabled && GU.opts.adsEnabled === 'true') || (GU.opts.adsEnabled && GU.opts.adsEnabled.indexOf('mpu') !== -1),
             adsConfig: GU.opts.adsConfig,
             adsType: GU.opts.contentType === 'liveblog' && !GU.opts.isMinute ? 'liveblog' : 'default',

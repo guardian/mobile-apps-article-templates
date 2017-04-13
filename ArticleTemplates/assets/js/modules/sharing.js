@@ -1,4 +1,8 @@
-define(function () {
+define([
+    'modules/util'
+], function (
+    util
+) {
 
     'use strict';
 
@@ -20,7 +24,7 @@ define(function () {
                 action = action + '&title=' + encodeURIComponent(title);
             }
 
-            GU.util.signalDevice(action);
+            util.signalDevice(action);
         }
     }
 

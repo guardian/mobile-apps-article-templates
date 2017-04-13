@@ -1,4 +1,9 @@
-define(function () {
+define([
+    'modules/util'
+], 
+function (
+    util
+) {
     'use strict';
 
     var initialised;
@@ -14,7 +19,7 @@ define(function () {
     }
 
     function injectCreative(html, css, id, type) {
-        if (GU.util.isOnline() && !document.getElementById(id)) {   
+        if (util.isOnline() && !document.getElementById(id)) {   
             injectCSS(css);
             injectHTML(html, id, type);
         }
@@ -48,7 +53,7 @@ define(function () {
             injectEpicCreative(creativeContainer);
         }
 
-        window.addEventListener('scroll', GU.util.debounce(isCreativeInView.bind(null, creativeContainer, id), 100));
+        window.addEventListener('scroll', util.debounce(isCreativeInView.bind(null, creativeContainer, id), 100));
     }
 
     function injectInlineCreative(creativeContainer) {
@@ -78,8 +83,8 @@ define(function () {
     function isCreativeInView(creativeContainer, id) {
         var messageName = 'creative_impression/' + id;
 
-        if (trackedImpressions.indexOf(id) === -1 && GU.util.isElementPartiallyInViewport(creativeContainer)) {
-            GU.util.signalDevice(messageName);
+        if (trackedImpressions.indexOf(id) === -1 && util.isElementPartiallyInViewport(creativeContainer)) {
+            util.signalDevice(messageName);
             
             trackedImpressions.push(id);
         }

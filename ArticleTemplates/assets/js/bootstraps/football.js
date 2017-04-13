@@ -1,9 +1,11 @@
 define([
     'd3',
-    'modules/youtube'
+    'modules/youtube',
+    'modules/util'
 ], function (
     d3,
-    youtube
+    youtube,
+    util
 ) {
     'use strict';
 
@@ -168,7 +170,7 @@ define([
             footballStatsPanel.removeChild(footballStatsPanel.firstChild);
         }
 
-        elemsToAppend = GU.util.getElemsFromHTML(html);
+        elemsToAppend = util.getElemsFromHTML(html);
 
         for (i = 0; i < elemsToAppend.length; i++) {
             footballStatsPanel.appendChild(elemsToAppend[i]);

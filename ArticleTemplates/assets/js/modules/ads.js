@@ -1,4 +1,9 @@
-define(function () {
+define([
+    'modules/util'
+], 
+function (
+    util
+) {
     'use strict';
 
     var adsReady = false,
@@ -69,7 +74,7 @@ define(function () {
             if (GU.opts.platform === 'android') {
                 updateAndroidPosition();
             } else {
-                GU.util.signalDevice('ad_moved');
+                util.signalDevice('ad_moved');
             }
         }
     }
@@ -201,7 +206,7 @@ define(function () {
             if(GU.opts.platform === 'android'){
                 updateAndroidPosition();
             } else {
-                GU.util.signalDevice('ad_moved');
+                util.signalDevice('ad_moved');
             }
         }
 
@@ -215,7 +220,7 @@ define(function () {
 
     function fireAdsReady() {
         if (!document.body.classList.contains('no-ready') && GU.opts.useAdsReady) {
-            GU.util.signalDevice('ads-ready');
+            util.signalDevice('ads-ready');
         }
     }
 
@@ -225,13 +230,13 @@ define(function () {
             newYPos;
 
         if (advertSlot) {
-            newYPos = GU.util.getElementOffset(advertSlot).top;
+            newYPos = util.getElementOffset(advertSlot).top;
 
             if(newYPos !== yPos){
                 if (GU.opts.platform === 'android') {
                     updateAndroidPosition();
                 } else {
-                    GU.util.signalDevice('ad_moved');
+                    util.signalDevice('ad_moved');
                 }
             }
         }
