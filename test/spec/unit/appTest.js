@@ -119,6 +119,27 @@ define([
                     });
                 });
 
+                it('set adsType to liveblog if page contains .article__body--liveblog', function () {
+                    var liveblogElem = document.createElement('div');
+
+                    liveblogElem.classList.add('article__body--liveblog');
+
+                    document.body.appendChild(liveblogElem);
+
+                    GU.opts.contentType = 'football';
+
+                    app.init();
+
+                    expect(adsMock.init).to.have.been.calledWith({
+                        adsEnabled: true,
+                        adsConfig: 'xxx',
+                        adsType: 'liveblog',
+                        mpuAfterParagraphs: 0
+                    });
+
+                    liveblogElem.remove();
+                });
+
                 it('initialises audio if GU.opts.contentType is audio', function () {
                     GU.opts.contentType = 'audio';
 

@@ -18,6 +18,15 @@ define([
     function initLayout(layoutObj) {
         layoutObj.init();
     }
+
+    function getAdType() {
+        if ((GU.opts.contentType === 'liveblog' && !GU.opts.isMinute) || 
+            (GU.opts.contentType !== 'liveblog' && document.querySelector('.article__body--liveblog'))) {
+            return 'liveblog';
+        }
+
+        return 'default';
+    }
         
     function onDomReady() {
         var contentType = GU.opts.contentType;
@@ -26,7 +35,7 @@ define([
         ads.init({
             adsEnabled: (GU.opts.adsEnabled && GU.opts.adsEnabled === 'true') || (GU.opts.adsEnabled && GU.opts.adsEnabled.indexOf('mpu') !== -1),
             adsConfig: GU.opts.adsConfig,
-            adsType: GU.opts.contentType === 'liveblog' && !GU.opts.isMinute ? 'liveblog' : 'default',
+            adsType: getAdType(),
             mpuAfterParagraphs: GU.opts.mpuAfterParagraphs
         });
 
