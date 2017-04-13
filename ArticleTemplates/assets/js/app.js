@@ -19,9 +19,9 @@ define([
         layoutObj.init();
     }
 
-    function getAdType() {
-        if ((GU.opts.contentType === 'liveblog' && !GU.opts.isMinute) || 
-            (GU.opts.contentType !== 'liveblog' && document.querySelector('.article__body--liveblog'))) {
+    function getAdType(contentType) {
+        if ((contentType === 'liveblog' && !GU.opts.isMinute) || 
+            (contentType !== 'liveblog' && document.querySelector('.article__body--liveblog'))) {
             return 'liveblog';
         }
 
@@ -35,7 +35,7 @@ define([
         ads.init({
             adsEnabled: (GU.opts.adsEnabled && GU.opts.adsEnabled === 'true') || (GU.opts.adsEnabled && GU.opts.adsEnabled.indexOf('mpu') !== -1),
             adsConfig: GU.opts.adsConfig,
-            adsType: getAdType(),
+            adsType: getAdType(contentType),
             mpuAfterParagraphs: GU.opts.mpuAfterParagraphs
         });
 
