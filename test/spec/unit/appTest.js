@@ -71,11 +71,33 @@ define([
 
                 afterEach(function () {
                     expect(window.GU.util).to.not.be.undefined;
-                    expect(adsMock.init).to.have.been.calledOnce;
-                
+                    
                     require = requireTemp;
 
                     delete window.GU;
+                });
+
+                it('does not initialise ads module if GU.opts.adsEnabled is "false"', function () {
+                    GU.opts.contentType = 'article';
+                    GU.opts.adsEnabled = 'false';
+
+                    app.init();
+
+                    expect(adsMock.init).not.to.have.been.called;
+                });
+
+                it('initialises ads module if GU.opts.adsEnabled contains "mpu"', function () {
+                    GU.opts.contentType = 'article';
+                    GU.opts.adsEnabled = 'mpu';
+
+                    app.init();
+
+                    expect(adsMock.init).to.have.been.calledOnce;
+                    expect(adsMock.init).to.have.been.calledWith({
+                        adsConfig: 'xxx',
+                        adsType: 'default',
+                        mpuAfterParagraphs: 0
+                    });
                 });
 
                 it('initialises article if GU.opts.contentType is article', function () {
@@ -83,8 +105,8 @@ define([
 
                     app.init();
 
+                    expect(adsMock.init).to.have.been.calledOnce;
                     expect(adsMock.init).to.have.been.calledWith({
-                        adsEnabled: true,
                         adsConfig: 'xxx',
                         adsType: 'default',
                         mpuAfterParagraphs: 0
@@ -97,8 +119,8 @@ define([
 
                     app.init();
 
+                    expect(adsMock.init).to.have.been.calledOnce;
                     expect(adsMock.init).to.have.been.calledWith({
-                        adsEnabled: true,
                         adsConfig: 'xxx',
                         adsType: 'liveblog',
                         mpuAfterParagraphs: 0
@@ -111,8 +133,8 @@ define([
 
                     app.init();
 
+                    expect(adsMock.init).to.have.been.calledOnce;
                     expect(adsMock.init).to.have.been.calledWith({
-                        adsEnabled: true,
                         adsConfig: 'xxx',
                         adsType: 'default',
                         mpuAfterParagraphs: 0
@@ -130,8 +152,8 @@ define([
 
                     app.init();
 
+                    expect(adsMock.init).to.have.been.calledOnce;
                     expect(adsMock.init).to.have.been.calledWith({
-                        adsEnabled: true,
                         adsConfig: 'xxx',
                         adsType: 'liveblog',
                         mpuAfterParagraphs: 0
@@ -145,8 +167,8 @@ define([
 
                     app.init();
 
+                    expect(adsMock.init).to.have.been.calledOnce;
                     expect(adsMock.init).to.have.been.calledWith({
-                        adsEnabled: true,
                         adsConfig: 'xxx',
                         adsType: 'default',
                         mpuAfterParagraphs: 0
@@ -158,8 +180,8 @@ define([
 
                     app.init();
 
+                    expect(adsMock.init).to.have.been.calledOnce;
                     expect(adsMock.init).to.have.been.calledWith({
-                        adsEnabled: true,
                         adsConfig: 'xxx',
                         adsType: 'default',
                         mpuAfterParagraphs: 0
@@ -171,8 +193,8 @@ define([
 
                     app.init();
 
+                    expect(adsMock.init).to.have.been.calledOnce;
                     expect(adsMock.init).to.have.been.calledWith({
-                        adsEnabled: true,
                         adsConfig: 'xxx',
                         adsType: 'default',
                         mpuAfterParagraphs: 0
@@ -184,8 +206,8 @@ define([
 
                     app.init();
 
+                    expect(adsMock.init).to.have.been.calledOnce;
                     expect(adsMock.init).to.have.been.calledWith({
-                        adsEnabled: true,
                         adsConfig: 'xxx',
                         adsType: 'default',
                         mpuAfterParagraphs: 0
@@ -197,8 +219,8 @@ define([
 
                     app.init();
 
+                    expect(adsMock.init).to.have.been.calledOnce;
                     expect(adsMock.init).to.have.been.calledWith({
-                        adsEnabled: true,
                         adsConfig: 'xxx',
                         adsType: 'default',
                         mpuAfterParagraphs: 0

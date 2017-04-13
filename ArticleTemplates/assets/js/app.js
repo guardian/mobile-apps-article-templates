@@ -29,15 +29,17 @@ define([
     }
         
     function onDomReady() {
-        var contentType = GU.opts.contentType;
+        var contentType = GU.opts.contentType,
+            adsEnabled = GU.opts.adsEnabled && (GU.opts.adsEnabled === 'true' || GU.opts.adsEnabled.indexOf('mpu') !== -1);
 
         // ads positioning
-        ads.init({
-            adsEnabled: (GU.opts.adsEnabled && GU.opts.adsEnabled === 'true') || (GU.opts.adsEnabled && GU.opts.adsEnabled.indexOf('mpu') !== -1),
-            adsConfig: GU.opts.adsConfig,
-            adsType: getAdType(contentType),
-            mpuAfterParagraphs: GU.opts.mpuAfterParagraphs
-        });
+        if (adsEnabled) {
+            ads.init({
+                adsConfig: GU.opts.adsConfig,
+                adsType: getAdType(contentType),
+                mpuAfterParagraphs: GU.opts.mpuAfterParagraphs
+            });
+        }
 
         // other article-specific functions
         if (contentType === 'article') {

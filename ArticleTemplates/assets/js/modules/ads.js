@@ -254,7 +254,7 @@ function (
     }
 
     function ready(config) {
-        if (!initialised && config.adsEnabled) {
+        if (!initialised) {
             initialised = true;
             adsType = config.adsType;
 

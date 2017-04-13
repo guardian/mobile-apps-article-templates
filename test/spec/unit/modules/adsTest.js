@@ -97,8 +97,7 @@ define([
                     container.appendChild(articleBody);
                 });
 
-                it('inserts liveblog ad placeholders if adsEnabled true', function () {
-                    config.adsEnabled = true;
+                it('inserts liveblog ad placeholders', function () {
                     config.adsType = 'liveblog';
 
                     ads.init(config);
@@ -114,20 +113,6 @@ define([
                     expect(window.applyNativeFunctionCall).to.have.been.calledOnce;
                     expect(window.applyNativeFunctionCall).to.have.been.calledWith('initMpuPoller');
                     expect(window.updateLiveblogAdPlaceholders).to.not.be.undefined;
-                });
-
-                it('does not insert liveblog ad placeholders if adsEnabled false', function () {
-                    config.adsEnabled = false;
-                    config.adsType = 'liveblog';
-
-                    ads.init(config);
-
-                    expect(articleBody.children.length).to.eql(8);
-
-                    expect(window.initMpuPoller).to.be.undefined;
-                    expect(window.killMpuPoller).to.be.undefined;
-                    expect(window.getMpuPosCommaSeparated).to.be.undefined;
-                    expect(window.updateLiveblogAdPlaceholders).to.be.undefined;
                 });
             });
 
@@ -148,9 +133,8 @@ define([
                     container.appendChild(articleBody);
                 });
 
-                it('inserts ad placeholder if adsEnabled true', function () {
+                it('inserts ad placeholder', function () {
                     config.mpuAfterParagraphs = 3;
-                    config.adsEnabled = true;
                     config.adsType = 'default';
 
                     ads.init(config);
@@ -165,20 +149,7 @@ define([
                     expect(prose.children[4].classList.contains('advert-slot--mpu')).to.eql(true);
                 });
 
-                it('does not insert ad placeholder if adsEnabled false', function () {
-                    config.adsEnabled = false;
-
-                    ads.init(config);
-
-                    expect(window.initMpuPoller).to.be.undefined;
-                    expect(window.applyNativeFunctionCall).not.to.have.been.called;
-                    expect(prose.querySelector('.advert-slot--placeholder')).to.be.falsy;
-                    expect(prose.querySelector('.advert-slot--mpu')).to.be.falsy;
-                });
-
                 it('does not insert ad placeholder if too few paragraphs', function () {
-                    config.adsEnabled = true;
-
                     prose.innerHTML = '<p>Hello</p><p>World</p>';
 
                     ads.init(config);
@@ -189,7 +160,6 @@ define([
 
                 it('fires ads ready if has not been fired already', function () {
                     config.mpuAfterParagraphs = 3;
-                    config.adsEnabled = true;
                     config.adsType = 'default';
 
                     document.body.classList.remove('no-ready');
@@ -201,7 +171,6 @@ define([
 
                 it('does not fires ads ready if it  has  been fired already', function () {
                     config.mpuAfterParagraphs = 3;
-                    config.adsEnabled = true;
                     config.adsType = 'default';
 
                     document.body.dataset.useAdsReady = 'true';
@@ -240,7 +209,6 @@ define([
                     container.appendChild(articleBody);
 
                     config = {
-                        adsEnabled: true,
                         mpuAfterParagraphs: 3
                     };
                 });
@@ -291,7 +259,6 @@ define([
                 }
 
                 config = {
-                    adsEnabled: true,
                     adsType: 'liveblog'
                 };
             });
@@ -351,7 +318,7 @@ define([
                 container.appendChild(advertSlotWrapper);
 
                 config = {
-                    adsEnabled: true
+                    adsType: 'default'
                 };
             });
 
@@ -420,7 +387,6 @@ define([
                 container.appendChild(articleBody);
 
                 config = {
-                    adsEnabled: true,
                     adsType: 'liveblog'
                 };
             });
@@ -468,7 +434,6 @@ define([
                 container.appendChild(articleBody);
 
                 config = {
-                    adsEnabled: true,
                     mpuAfterParagraphs: 3
                 };
 
