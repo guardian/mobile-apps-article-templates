@@ -4,7 +4,10 @@
   "description": "Templates for articles on both iOS and Android next-gen apps",
   "main": "ArticleTemplates/",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "grunt karma",
+    "validate": "grunt sasslint && grunt jshint",
+    "build": "grunt build",
+    "watch": "grunt watch"
   },
   "repository": {
     "type": "git",
