@@ -15,11 +15,12 @@ define([
             relativeDatesMock,
             twitterMock,
             minuteMock,
+            creativeInjectorMock,
             utilMock;
-            
+
         beforeEach(function (done) {
             var injector = new Squire();
-            
+
             container = document.createElement('div');
             container.id = 'container';
             document.body.appendChild(container);
@@ -55,6 +56,10 @@ define([
             minuteMock = {
                 init: sandbox.spy()
             };
+            creativeInjectorMock = {
+                init: sandbox.spy(),
+                trackLiveBlogEpic: sandbox.spy()
+            };
             utilMock = {
                 debounce: sandbox.spy(),
                 getElementOffset: sandbox.spy()
@@ -65,6 +70,7 @@ define([
                 .mock('modules/twitter', twitterMock)
                 .mock('bootstraps/common', commonMock)
                 .mock('modules/minute', minuteMock)
+                .mock('modules/creativeInjector', creativeInjectorMock)
                 .mock('modules/util', utilMock)
                 .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (sut) {
                     liveblog = sut;
@@ -140,7 +146,6 @@ define([
             it('sets up scroll event listener', function () {
                 liveblog.init();
 
-                expect(window.addEventListener).to.have.been.calledOnce;
                 expect(window.addEventListener).to.have.been.calledWith('scroll');
             });
 

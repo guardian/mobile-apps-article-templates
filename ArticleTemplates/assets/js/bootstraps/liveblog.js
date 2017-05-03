@@ -4,14 +4,16 @@ define([
     'modules/youtube',
     'modules/minute',
     'bootstraps/common',
-    'modules/util'
+    'modules/util',
+    'modules/creativeInjector'
 ], function (
     relativeDates,
     twitter,
     youtube,
     minute,
     common,
-    util
+    util,
+    creativeInjector
 ) {
     'use strict';
 
@@ -40,6 +42,17 @@ define([
         } else {
             insertAfterElem.parentNode.insertBefore(block, insertBeforeElem);
         }
+    }
+
+    function checkInjectedComponents() {
+      // check for tweets
+      twitter.checkForTweets();
+
+      // check for youtube video atoms
+      youtube.checkForVideos();
+
+      // if there is a contributions epic, track it
+      creativeInjector.trackLiveBlogEpic();
     }
 
     function liveblogNewBlockDump() {
@@ -76,11 +89,7 @@ define([
 
             window.liveblogTime();
 
-            // check for tweets
-            twitter.checkForTweets();
-
-            // check for youtube video atoms
-            youtube.checkForVideos();
+            checkInjectedComponents();
 
             newBlockHtml = '';
         }
@@ -149,11 +158,7 @@ define([
 
         window.liveblogTime();
 
-        // check for tweets
-        twitter.checkForTweets();
-
-        // check for youtube video atoms
-        youtube.checkForVideos();
+        checkInjectedComponents();
     }
 
     function liveblogTime() {
@@ -312,7 +317,7 @@ define([
             window.liveblogTime();
             window.addEventListener('scroll', util.debounce(updateBlocksOnScroll, 100, true));
             liveMore();
-            
+
             if (GU.opts.isMinute && GU.opts.adsConfig === 'tablet') {
                 minute.init();
             } else {
