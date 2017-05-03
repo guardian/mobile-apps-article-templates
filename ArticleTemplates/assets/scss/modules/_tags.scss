@@ -23,9 +23,6 @@ Display which keywords an article has been tagged with.
     background-color: color(shade-7);
     color: color(shade-3);
     font-family: $agate-sans;
-    border-bottom: 2px solid color(shade-4);
-    border-top: 1px dotted color(shade-4);
-    padding: base-px(.4, 1, 1.7, .7);
     width: 100%;
     clear: both;
 
@@ -46,43 +43,50 @@ Display which keywords an article has been tagged with.
         display: inline-block;
     }
 
-    .inline-list {
-        @include mq($from: col4) {
-            margin-left: 232px; // 240 - 4 (item padding offset) - 4 (visually offset rounded items);
-            width: 940px;
-        }
-
-        &__item {
-            margin: 1rem 0;
-            a {
-                white-space: nowrap;
-                padding: base-px(.3, 1.3, .7, 1.3);
-                border-radius: 30px;
-                margin: 4px;
-                text-overflow: ellipsis;
-                max-width: 18.75rem;
-                @include tag-button(color(shade-1), color(global-tags));
-            }
-            &.more-button a {
-                background-color: transparent !important;
-                @include tag-more-button(color(shade-1), darken(color(global-tags), 10%));
-            }
-
-            &:first-of-type {
-                font-weight: bold;
-            }
-
-            &:last-child {
-                .tags__separator {
-                    display: none;
-                    visibility: hidden;
-                }
-            }
-        }
-    }
-
     .witness + & {
         margin-top: base-px(2);
+    }
+}
+
+.tags__inline-list {
+    display: none;
+}
+
+.tags__inline-list:not(:empty) {
+    display: block;
+    border-bottom: 2px solid color(shade-4);
+    border-top: 1px dotted color(shade-4);
+    padding: base-px(.4, 1, 1.7, .7);
+
+    @include mq($from: col4) {
+        margin-left: 232px; // 240 - 4 (item padding offset) - 4 (visually offset rounded items);
+        width: 940px;
+    }
+}
+
+.tags__list-item {
+    margin: 1rem 0;
+
+    a {
+        white-space: nowrap;
+        padding: base-px(.3, 1.3, .7, 1.3);
+        border-radius: 30px;
+        margin: 4px;
+        text-overflow: ellipsis;
+        max-width: 18.75rem;
+        @include tag-button(color(shade-1), color(global-tags));
+    }
+
+    &.more-button a {
+        background-color: transparent !important;
+        @include tag-more-button(color(shade-1), darken(color(global-tags), 10%));
+    }
+
+    &:last-child {
+        .tags__separator {
+            display: none;
+            visibility: hidden;
+        }
     }
 }
 
