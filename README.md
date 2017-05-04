@@ -6,12 +6,13 @@ Article templates used within the Guardian’s next-generation iOS and Android a
 * [brew](http://brew.sh/) as a package manager.
 * [NVM](https://github.com/creationix/nvm).
 * [NodeJS](http://nodejs.org/). Install using nvm: `nvm install v6.9.2`. Remember to add `nvm use v6.9.2` to your preferred shell startup file.
-* [Grunt](http://gruntjs.com/). Install using `npm install -g grunt grunt-cli`.
+* [Yarn] (https://yarnpkg.com). Yarn is a package manager. Install using brew install yarn.
+* [Grunt](http://gruntjs.com/). Install using `yarn global add grunt grunt-cli`.
 * It is recommended you restart your shell to ensure changes added the startup file are applied.
 
 ## Usage
 * checkout the project in a separate directory, outside the iOS and the Android app.
-* run `npm install`.
+* run `yarn`.
 * copy config.sample.js to config.js and fill in the details
     * `base.android` is the 'ArticleTemplate' path within the Android app, eg: `/Users/sandropaganotti/Projects/android-news-app/android-news-app/src/main/assets/templates/`
     * `base.ios` is the 'ArticleTemplate' path within the iOs app, eg: `/Users/sandropaganotti/Projects/ios-live/mobile-apps-article-templates/ArticleTemplates/`
