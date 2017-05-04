@@ -1,13 +1,12 @@
 # Article Templates for Mobile Apps
-Article templates used within the Guardian’s next-generation iOS and Android applications. This repo also contains documentation that describes the components and layouts used across these templates.
+Article templates used within the Guardian’s next-generation iOS, Android and Windows applications. This repo also contains documentation that describes the components and layouts used across these templates.
 
 ## Requirements
 * A Mac or Linux computer.
 * [brew](http://brew.sh/) as a package manager.
 * [NVM](https://github.com/creationix/nvm).
 * [NodeJS](http://nodejs.org/). Install using nvm: `nvm install v6.9.2`. Remember to add `nvm use v6.9.2` to your preferred shell startup file.
-* [Yarn] (https://yarnpkg.com). Yarn is a package manager. Install using brew install yarn.
-* [Grunt](http://gruntjs.com/). Install using `yarn global add grunt grunt-cli`.
+* [Yarn](https://yarnpkg.com). Yarn is a package manager. Install using `brew install yarn`.
 * It is recommended you restart your shell to ensure changes added the startup file are applied.
 
 ## Usage
@@ -19,18 +18,14 @@ Article templates used within the Guardian’s next-generation iOS and Android a
     * `base.html` is the path where this repository has been checked out, eg: `/Users/sandropaganotti/Projects/mobile-apps-article-templates/`
 * run `grunt`
 
-## Grunt tasks
-Grunt will provide the following services:
+## Yarn scripts
+Yarn will provide the following services:
 
-* `grunt rsync` it copies the folder `ArticleTemplates` to the iOS and Android project as specified on `base.ios` and `base.html`.
-* `grunt sass` it generated the CSS files from SASS.
-* `grunt sasslint` it launches the SASS syntax checker against our codebase.
-* `grunt jshint` it performs a syntax checking on the current js codebase.
-* `grunt karma` it runs the unit test pack from the test/spec/unit/ directory
-
-These services are also available packed into recipes
-* `grunt build` runs buildJS and buildCSS
-* `grunt buildJS` concatenate and minify javascript files, check javascript syntax, and start karma unit test runner.
-* `grunt buildCSS` run scsslint, compile SCSS into CSS and minify CSS.
-
-By simply running `grunt` (without any argument) the system keeps watching for changes reacting with the appropriate tasks.
+* `yarn test` it runs the unit test pack from the test/spec/unit/ directory
+* `yarn validate` it launches the SASS syntax checker against our codebase and it performs a syntax checking on the current JS codebase
+* `yarn buildJS` concatenate and minify javascript files, check javascript syntax, and start karma unit test runner
+* `yarn buildCSS` run scsslint, compile SCSS into CSS and minify CSS.
+* `yarn build` runs buildJS and buildCSS
+* `yarn sync` it copies the folder `ArticleTemplates` to the iOS and Android project as specified on `base.ios` and `base.html`
+* `yarn watch` on changes to CSS/JS run build and sync
+* `yarn develop` runs build and watch

@@ -240,5 +240,5 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build', ['buildJS', 'buildCSS']);
 
-    grunt.registerTask('default', 'watch');
+    grunt.registerTask('default', ['build', 'watch']);
 };
