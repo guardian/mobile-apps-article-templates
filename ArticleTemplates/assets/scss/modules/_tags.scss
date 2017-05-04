@@ -10,9 +10,9 @@ Display which keywords an article has been tagged with.
 <div class="tags">
     <ul class="inline-list">
         <li class="inline-list__item screen-readable">Tags:</li><!--
-     --><li class="inline-list__item"><a href="#">Guardian</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
-     --><li class="inline-list__item"><a href="#">Mobile</a><span class="tags__separator" aria-hidden="true">&#183;</span></li><!--
-     --><li class="inline-list__item"><a href="#">Applications</a><span class="tags__separator" aria-hidden="true">&#183;</span></li>
+     --><li class="inline-list__item"><a href="#">Guardian</a></li><!--
+     --><li class="inline-list__item"><a href="#">Mobile</a></li><!--
+     --><li class="inline-list__item"><a href="#">Applications</a></li>
     </ul>
 </div>
 ```
@@ -81,16 +81,4 @@ Display which keywords an article has been tagged with.
         background-color: transparent !important;
         @include tag-more-button(color(shade-1), darken(color(global-tags), 10%));
     }
-
-    &:last-child {
-        .tags__separator {
-            display: none;
-            visibility: hidden;
-        }
-    }
-}
-
-.tags__separator {
-    font-weight: bold;
-    margin: 0 4px;
 }
