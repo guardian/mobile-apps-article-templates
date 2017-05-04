@@ -10,10 +10,10 @@ define([
             container,
             getTagsHTML = function (count) {
                 var i,
-                    html = '<div class="tags" id="tags"><ul class="inline-list" id="tag-list"><li class="inline-list__item screen-readable">Tags:</li>';
+                    html = '<div class="tags" id="tags"><span class="screen-readable">Tags:</span><ul class="inline-list tags__inline-list" id="tag-list">';
 
                 for (i = 0; i < count; i++) {
-                    html += '<li class="inline-list__item"></li>';
+                    html += '<li class="inline-list__item tags__list-item"></li>';
                 }
 
                 html += '</ul></div>';
@@ -39,7 +39,7 @@ define([
             document.body.removeChild(container);
         });
 
-        describe('init()', function () {
+        describe.only('init()', function () {
             it('does not add more button if 5 tags or less', function () {
                 container.innerHTML = getTagsHTML(5);
 
@@ -62,11 +62,11 @@ define([
 
                 expect(moreTagsContainer).to.not.eql(null);
 
-                inlineList = container.querySelector('.inline-list');
+                inlineList = container.querySelector('.tags__inline-list');
 
-                expect(inlineList.childNodes[6]).to.eql(moreTagsContainer);
+                expect(inlineList.childNodes[5]).to.eql(moreTagsContainer);
 
-                inlineListItems = container.querySelectorAll('.inline-list__item:not(.screen-readable):not(.more-button)');
+                inlineListItems = container.querySelectorAll('.tags__list-item:not(.more-button)');
 
                 for (i = 0; i < inlineListItems.length; i++) {
                     if (i < 5) {
@@ -90,7 +90,7 @@ define([
 
                 moreTagsContainer.style.display = 'block';
 
-                lastInlineListItem = container.querySelectorAll('.inline-list__item:not(.screen-readable):not(.more-button)')[5];
+                lastInlineListItem = container.querySelectorAll('.tags__list-item:not(.more-button)')[5];
 
                 expect(lastInlineListItem.classList.contains('hide-tags')).to.eql(true);
 
