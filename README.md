@@ -2,7 +2,7 @@
 Article templates used within the Guardian’s next-generation iOS and Android applications. This repo also contains documentation that describes the components and layouts used across these templates.
 
 ## Requirements
-* A Mac or Linux PC.
+* A Mac or Linux computer.
 * [brew](http://brew.sh/) as a package manager.
 * [NVM](https://github.com/creationix/nvm).
 * [NodeJS](http://nodejs.org/). Install using nvm: `nvm install v6.9.2`. Remember to add `nvm use v6.9.2` to your preferred shell startup file.
@@ -15,14 +15,14 @@ Article templates used within the Guardian’s next-generation iOS and Android a
 * run `yarn`.
 * copy config.sample.js to config.js and fill in the details
     * `base.android` is the 'ArticleTemplate' path within the Android app, eg: `/Users/sandropaganotti/Projects/android-news-app/android-news-app/src/main/assets/templates/`
-    * `base.ios` is the 'ArticleTemplate' path within the iOs app, eg: `/Users/sandropaganotti/Projects/ios-live/mobile-apps-article-templates/ArticleTemplates/`
+    * `base.ios` is the 'ArticleTemplate' path within the iOS app, eg: `/Users/sandropaganotti/Projects/ios-live/mobile-apps-article-templates/ArticleTemplates/`
     * `base.html` is the path where this repository has been checked out, eg: `/Users/sandropaganotti/Projects/mobile-apps-article-templates/`
 * run `grunt`
 
 ## Grunt tasks
 Grunt will provide the following services:
 
-* `grunt rsync` it copies the folder `ArticleTemplates` to the iOs and Android project as specified on `base.ios` and `base.html`.
+* `grunt rsync` it copies the folder `ArticleTemplates` to the iOS and Android project as specified on `base.ios` and `base.html`.
 * `grunt sass` it generated the CSS files from SASS.
 * `grunt sasslint` it launches the SASS syntax checker against our codebase.
 * `grunt jshint` it performs a syntax checking on the current js codebase.
