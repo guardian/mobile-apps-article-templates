@@ -6,8 +6,11 @@
   "scripts": {
     "test": "grunt karma",
     "validate": "grunt sasslint && grunt jshint",
-    "build": "grunt build",
-    "watch": "grunt watch"
+    "buildJS": "grunt buildJS",
+    "buildCSS": "grunt buildCSS",
+    "build": "yarn buildJS && yarn buildCSS",
+    "sync": "grunt rsync",
+    "develop": "grunt"
   },
   "repository": {
     "type": "git",
@@ -56,15 +59,10 @@
     "squirejs": "^0.2.1"
   },
   "dependencies": {
-    "bean": "^1.0.15",
-    "bonzo": "^2.0.0",
     "d3": "^3.5.4",
     "domready": "^1.0.7",
     "fastclick": "^1.0.6",
     "fence": "git://github.com/guardian/fence",
-    "phantomjs-prebuilt": "2.1.5",
-    "qwery": "^4.0.0",
-    "raven-js": "^1.1.18",
     "smooth-scroll": "git://github.com/cferdinandi/smooth-scroll"
   },
   "engines": {
