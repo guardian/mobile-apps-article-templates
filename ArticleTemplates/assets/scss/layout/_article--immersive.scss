@@ -555,6 +555,7 @@ body.immersive .article--immersive {
 
             &.element--supporting {
                 width: auto;
+                margin: 0;
 
                 .figure__inner {
                     @include mq($from: col2) {
@@ -564,6 +565,10 @@ body.immersive .article--immersive {
                             right: 20px;
                             top: 6px;
                         }
+                        width: 274px;
+                    }
+
+                    @include mq($from: col3) {
                         width: 380px;
                     }
 
@@ -581,7 +586,11 @@ body.immersive .article--immersive {
                         border: 0;
                         float: left;
                         margin-right: 20px;
-                        padding: 6px 12px;
+                        padding: 6px 0;
+                        width: 274px;
+                    }
+
+                    @include mq($from: col3) {
                         width: 380px;
                     }
 
