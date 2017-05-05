@@ -21,11 +21,7 @@ Article templates used within the Guardian’s next-generation iOS, Android and 
 ## Yarn scripts
 Yarn will provide the following services:
 
-* `yarn test` it runs the unit test pack from the test/spec/unit/ directory
-* `yarn validate` it launches the SASS syntax checker against our codebase and it performs a syntax checking on the current JS codebase
-* `yarn buildJS` concatenate and minify javascript files, check javascript syntax, and start karma unit test runner
-* `yarn buildCSS` run scsslint, compile SCSS into CSS and minify CSS.
-* `yarn build` runs buildJS and buildCSS
-* `yarn sync` it copies the folder `ArticleTemplates` to the iOS and Android project as specified on `base.ios` and `base.html`
-* `yarn watch` on changes to CSS/JS run build and sync
-* `yarn develop` runs build and watch
+* `yarn test` runs the JS unit tests from the test/spec/unit/ directory
+* `yarn validate` runs sasslint checks on SCSS and jshint checks on JS
+* `yarn build` builds JS/CSS assets, used on CI environment for building assets
+* `yarn develop` builds JS/CSS assets and watches for changes to JS/CSS. If changes then rebuilds and copies assets to iOS/Android to the iOS and Android projects as specified in config.js
