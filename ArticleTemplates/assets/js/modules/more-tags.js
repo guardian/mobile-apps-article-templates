@@ -14,7 +14,7 @@ define(function () {
             initialised = true;
             tags = document.querySelectorAll('.tags__list-item');
 
-            if (tags.length > SHOW_TAGS + 1) {
+            if (tags.length > SHOW_TAGS) {
                 moreButton = document.createElement('li');
                 moreButton.id = 'more-tags-container';
                 moreButton.classList.add('inline-list__item');
@@ -25,7 +25,7 @@ define(function () {
 
                 moreButton.addEventListener('click', show);
 
-                firstHiddenTag = tags[SHOW_TAGS + 1];
+                firstHiddenTag = tags[SHOW_TAGS];
 
                 firstHiddenTag.parentNode.insertBefore(moreButton, firstHiddenTag);
 
