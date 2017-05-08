@@ -11,12 +11,11 @@ Article templates used within the Guardian’s next-generation iOS, Android and 
 
 ## Usage
 * checkout the project in a separate directory, outside the iOS and the Android app.
-* run `yarn`.
 * copy config.sample.js to config.js and fill in the details
     * `base.android` is the 'ArticleTemplate' path within the Android app, eg: `/Users/sandropaganotti/Projects/android-news-app/android-news-app/src/main/assets/templates/`
     * `base.ios` is the 'ArticleTemplate' path within the iOS app, eg: `/Users/sandropaganotti/Projects/ios-live/mobile-apps-article-templates/ArticleTemplates/`
     * `base.html` is the path where this repository has been checked out, eg: `/Users/sandropaganotti/Projects/mobile-apps-article-templates/`
-* run `grunt`
+* run `yarn` to install dependencies.
 
 ## Yarn scripts
 Yarn will provide the following services:
