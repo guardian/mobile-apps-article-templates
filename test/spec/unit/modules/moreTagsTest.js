@@ -39,7 +39,7 @@ define([
             document.body.removeChild(container);
         });
 
-        describe.only('init()', function () {
+        describe('init()', function () {
             it('does not add more button if 5 tags or less', function () {
                 container.innerHTML = getTagsHTML(5);
 
