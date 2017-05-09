@@ -20,16 +20,19 @@ function (
 
     function trackLiveBlogEpic() {
         // if there is already a data-tracked attribute than we don't need to set up tracking again
-        var liveBlogEpicContainer = document.querySelectorAll('.contributions-epic:not([data-tracked])');
+        var liveBlogEpicContainers = document.querySelectorAll('.contributions-epic:not([data-tracked])');
         var liveBlogEpicContainerId;
+        var i;
+        var liveBlogEpicContainer;
 
-        if (liveBlogEpicContainer) {
+        for (i = 0; i < liveBlogEpicContainers.length; i++) {
+            liveBlogEpicContainer = liveBlogEpicContainers[i];
             liveBlogEpicContainerId = liveBlogEpicContainer.getAttribute('id');
 
             liveBlogEpicContainer.setAttribute('data-tracked', 'true');
 
             addEventListenerScroll(liveBlogEpicContainer, liveBlogEpicContainerId);
-        }
+        };
     }
 
     function injectCreative(html, css, id, type) {

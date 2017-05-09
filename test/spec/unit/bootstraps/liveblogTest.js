@@ -292,7 +292,8 @@ define([
                 expect(window.liveblogTime).to.have.been.calledOnce;
                 expect(window.liveblogTime).to.have.been.calledOnce;
                 expect(twitterMock.checkForTweets).to.have.been.calledOnce;
-                expect(creativeInjectorMock.trackLiveBlogEpic).to.have.been.calledOnce;
+                // Called once when the liveblog loads, another time when a block comes in
+                expect(creativeInjectorMock.trackLiveBlogEpic).to.have.been.calledTwice;
             });
 
             it('pass images in new blocks to be formatted', function () {

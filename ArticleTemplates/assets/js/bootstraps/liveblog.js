@@ -317,6 +317,7 @@ define([
             window.liveblogTime();
             window.addEventListener('scroll', util.debounce(updateBlocksOnScroll, 100, true));
             liveMore();
+            creativeInjector.trackLiveBlogEpic();
 
             if (GU.opts.isMinute && GU.opts.adsConfig === 'tablet') {
                 minute.init();
