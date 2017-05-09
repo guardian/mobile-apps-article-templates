@@ -25,7 +25,7 @@
                 </div>
             </div>
             <h1 class="headline selectable">__TITLE__</h1>
-            
+
             <div class="standfirst selectable">
                 <div class="standfirst__inner">__STANDFIRST__</div>
             </div>
@@ -56,7 +56,7 @@
                     <p>minute</p>
                 </div>
                 <svg version="1.1" id="Layer_1" x="0px" y="0px" width="397.445px" height="397.445px" viewBox="0 0 397.445 397.445" enable-background="new 0 0 397.445 397.445"xml:space="preserve" class="minute-logo">
-                    <line fill="none" class="js-flashing-image the__minute__line the__minute__line--61" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="198.723" y1="0" x2="198.723" y2="10"/> 
+                    <line fill="none" class="js-flashing-image the__minute__line the__minute__line--61" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="198.723" y1="0" x2="198.723" y2="10"/>
                     <line fill="none" class="js-flashing-image the__minute__line the__minute__line--60" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="177.951" y1="1.089" x2="178.996" y2="11.034"/>
                     <line fill="none" class="js-flashing-image the__minute__line the__minute__line--59" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="157.406" y1="4.343" x2="159.485" y2="14.125"/>
                     <line fill="none" class="js-flashing-image the__minute__line the__minute__line--58" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="137.314" y1="9.727" x2="140.405" y2="19.237"/>
@@ -121,9 +121,9 @@
             </div>
             <div class="minute-vertical-rule">
             </div>
-            <div class="the-minute__header">    
+            <div class="the-minute__header">
                 <h1 class="the-minute__headline selectable">__TITLE__</h1>
-                
+
                 <div class="the-minute__standfirst selectable">
                     <div class="the-minute__standfirst-inner">
                         <span class="the-minute__date"></span>
@@ -166,7 +166,7 @@
                 date = dateArray[3],
                 month = dateArray[4],
                 dateDiv = document.getElementsByClassName("the-minute__date")[0];
-                
+
             // Format date & append to div
             date = date % 10 == 1 && date % 100 !== 11 ? date + "st" : (date % 10 == 2 && date % 100 !== 12 ? date + "nd" : (date % 10 == 3 && date % 100 !== 13 ? date + "rd" : date + "th"));
             dateDiv.innerHTML = dayOfWeek + " " + date + " " + month;
