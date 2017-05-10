@@ -20,7 +20,7 @@ function (
 
     function trackLiveBlogEpic() {
         // if there is already a data-tracked attribute than we don't need to set up tracking again
-        var liveBlogEpicContainers = document.querySelectorAll('.contributions-epic:not([data-tracked])');
+        var liveBlogEpicContainers = document.querySelectorAll('.contributions-epic__container:not([data-tracked])');
         var liveBlogEpicContainerId;
         var i;
         var liveBlogEpicContainer;
@@ -32,7 +32,7 @@ function (
             liveBlogEpicContainer.setAttribute('data-tracked', 'true');
 
             addEventListenerScroll(liveBlogEpicContainer, liveBlogEpicContainerId);
-        };
+        }
     }
 
     function injectCreative(html, css, id, type) {

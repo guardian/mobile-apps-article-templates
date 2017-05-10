@@ -104,7 +104,7 @@ define([
 
                     expect(articleBody.children.length).to.eql(10);
                     expect(articleBody.children[2].classList.contains('advert-slot')).to.eql(true);
-                    expect(articleBody.children[8].classList.contains('advert-slot')).to.eql(true);
+                    expect(articleBody.children[9].classList.contains('advert-slot')).to.eql(true);
 
                     expect(window.initMpuPoller).to.not.be.undefined;
                     expect(window.killMpuPoller).to.not.be.undefined;
@@ -263,7 +263,7 @@ define([
                 };
             });
 
-            it('inserts liveblog ads after 1st and 7th blocks', function (done) {
+            it('inserts liveblog ads after 2nd and 7th blocks', function (done) {
                 ads.init(config);
 
                 expect(articleBody.children[2].classList.contains('advert-slot--mpu')).to.eql(true);
@@ -302,6 +302,45 @@ define([
             });
         });
 
+        describe('if there is a contribution epic after the 2nd block', function () {
+            var articleBody,
+                config;
+
+            beforeEach(function () {
+                var i,
+                    block;
+
+                articleBody = document.createElement('div');
+                articleBody.classList.add('article__body');
+
+                container.appendChild(articleBody);
+
+                var epic = document.createElement('div');
+                epic.classList.add('contributions-epic__container');
+
+                for (i = 0; i < 5; i++) {
+                    block = document.createElement('div');
+                    block.classList.add('block', i);
+                    articleBody.appendChild(block);
+                }
+
+                articleBody.insertBefore(epic, articleBody.children[2]);
+
+                config = {
+                    adsType: 'liveblog'
+                };
+            });
+
+
+
+            it('inserts liveblog ad after the 3rd block instead', function (done) {
+                ads.init(config);
+
+                expect(articleBody.children[4].classList.contains('advert-slot--mpu')).to.eql(true);
+
+                done();
+            });
+        });
 
         describe('window.initMpuPoller()', function () {
             var advertSlotWrapper,

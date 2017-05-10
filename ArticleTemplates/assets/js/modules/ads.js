@@ -39,17 +39,19 @@ function (
     }
 
     function updateLiveblogAdPlaceholders(reset) {
-        var i,
-            advertSlots,
-            mpu,
-            block,
-            blocks = document.querySelectorAll('.article__body > .block');
+        var i;
+        var advertSlots;
+        var mpu;
+        var block;
+        // The selector here is taking all .block elements within article body
+        // which are not siblings of contributions-epic__container
+        var blocks = document.querySelectorAll('.article__body > .block:first-child, .article__body > div:not(.contributions-epic__container) + .block');
 
         if (reset) {
             advertSlots = document.getElementsByClassName('advert-slot--mpu');
 
-            for (i = advertSlots.length; i > 0; i--) {
-                advertSlots[i-1].parentNode.removeChild(advertSlots[i-1]);
+            while(advertSlots.length > 0){
+                advertSlots[0].parentNode.removeChild(advertSlots[0]);
             }
 
             numberOfMpus = 0;
@@ -58,12 +60,12 @@ function (
         for (i = 0; i < blocks.length; i++) {
             block = blocks[i];
 
-            if (i === 1 || i === 6) {
+            if (i === 2 || i === 7) {
                 numberOfMpus++;
                 mpu = createMpu(numberOfMpus);
 
                 if (block.nextSibling) {
-                    block.parentNode.insertBefore(mpu, block.nextSibling);
+                    block.parentNode.insertBefore(mpu, block);
                 } else {
                     block.parentNode.appendChild(mpu);
                 }
