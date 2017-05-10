@@ -1,11 +1,8 @@
 # How to release your changes
 
-1. Locally make sure you have an up to date `master` and `release` branch
-2. Merge master into release and push up that branch
-3. Cicle CI is listening to the release branch and will run test and build the branch
-4. If the Cicle CI build is successful, it merges release back into master with the updated build files.
+1. When you merge your changes into master, Circle CI should pick them up and run the tests and validations
+2. Once that is successful it will build the project committing those changes
+3. The updated branch will then be pushed back to the `master` branch, as well as the `release` branch.
+4. The release branch is then used in a Jenkins task to deploy to IOS and Android.
 
-
-# Jenkins
-
-coming soon ...
+_Note:_ We would like to simplify step 4, but for now talk to @GHaberis.

@@ -24,3 +24,7 @@ Yarn will provide the following services:
 * `yarn validate` runs sasslint checks on SCSS and jshint checks on JS
 * `yarn build` builds JS/CSS assets, used on CI environment for building assets
 * `yarn develop` builds JS/CSS assets and watches for changes to JS/CSS. If changes then rebuilds and copies assets to iOS/Android to the iOS and Android projects as specified in config.js
+
+## deploying
+
+[How to deploy](docs/how-to-deploy.md)
