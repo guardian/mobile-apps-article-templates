@@ -32,7 +32,7 @@ function (
             liveBlogEpicContainer.setAttribute('data-tracked', 'true');
 
             addEventListenerScroll(liveBlogEpicContainer, liveBlogEpicContainerId);
-        };
+        }
     }
 
     function injectCreative(html, css, id, type) {
