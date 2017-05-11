@@ -8,17 +8,12 @@ dependencies:
   cache_directories:
     - ~/.cache/yarn
 
-general:
-  branches:
-    only:
-      - release
-
 test:
   override:
     - yarn build
 
 deployment:
   release:
-    branch: release
+    branch: master
     commands:
       - ./circle.sh
