@@ -8,6 +8,6 @@ if [[ `git status --porcelain` ]]; then
   	git config --global user.email "guardian.android@gmail.com"
   	git config --global push.default simple
   	git commit -a -m "Generate files for release [skip ci]"
-    git push origin release
+    git push origin release -f
     git push origin master
 fi
