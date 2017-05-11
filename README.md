@@ -16,6 +16,7 @@ Article templates used within the Guardian’s next-generation iOS, Android and 
     * `base.ios` is the 'ArticleTemplate' path within the iOS app, eg: `/Users/sandropaganotti/Projects/ios-live/mobile-apps-article-templates/ArticleTemplates/`
     * `base.html` is the path where this repository has been checked out, eg: `/Users/sandropaganotti/Projects/mobile-apps-article-templates/`
 * run `yarn` to install dependencies.
+* run `yarn setup` to locally ignore build files so they are not checked into master
 
 ## Yarn scripts
 Yarn will provide the following services:

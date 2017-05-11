@@ -4,6 +4,7 @@
   "description": "Templates for articles on both iOS and Android next-gen apps",
   "main": "ArticleTemplates/",
   "scripts": {
+    "setup": "echo ArticleTemplates/assets/css/ >> .git/info/exclude && echo ArticleTemplates/assets/build/ >> .git/info/exclude",
     "test": "grunt karma",
     "validate": "grunt sasslint && grunt jshint",
     "buildJS": "grunt buildJS",
