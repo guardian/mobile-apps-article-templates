@@ -9,7 +9,7 @@ Article templates used within the Guardian’s next-generation iOS, Android and 
 * [Yarn](https://yarnpkg.com). Yarn is a package manager. Install using `brew install yarn`.
 * It is recommended you restart your shell to ensure changes added the startup file are applied.
 
-## Usage
+## Developing
 * checkout the project in a separate directory, outside the iOS and the Android app.
 * copy config.sample.js to config.js and fill in the details
     * `base.android` is the 'ArticleTemplate' path within the Android app, eg: `/Users/sandropaganotti/Projects/android-news-app/android-news-app/src/main/assets/templates/`
@@ -17,6 +17,12 @@ Article templates used within the Guardian’s next-generation iOS, Android and 
     * `base.html` is the path where this repository has been checked out, eg: `/Users/sandropaganotti/Projects/mobile-apps-article-templates/`
 * run `yarn` to install dependencies.
 * run `yarn setup` to locally ignore build files so they are not checked into master
+
+## IOS and Android devs
+If you are developing against a branch which is not `release`, please follow the steps below:
+* Pull down the branch which you are developing against
+* Please follow the requirements and developing steps
+* run `yarn sync` which will build the project, and move the build into the individual Android and IOS projects
 
 ## Yarn scripts
 Yarn will provide the following services:
