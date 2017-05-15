@@ -13,7 +13,7 @@ if [[ `git status --porcelain` ]]; then
     git commit -m "Generate files for release [skip ci]"
     git checkout release
     git reset --hard origin/release
-    git merge master
+    git merge master -m "Merge master into release"
     git log -1
     git push origin release
 fi
