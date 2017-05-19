@@ -15,7 +15,9 @@ if [[ `git status --porcelain` ]]; then
     git reset --hard origin/release
     git merge master -m "Merge master into release"
     git log -1
-    npm --no-git-tag-version version patch -m "Update version to be %s"
+    npm --no-git-tag-version version patch 
+    git add package.json
+    git commit -m "Update version to be %s"
     git push origin release
     npm publish
 fi
