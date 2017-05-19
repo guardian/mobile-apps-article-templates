@@ -10,10 +10,12 @@ if [[ `git status --porcelain` ]]; then
     git status
     git add .
     git status
-    git commit -m "Generate files for release [skip ci]"
+    git commit -m "Generate files for release"
     git checkout release
     git reset --hard origin/release
     git merge master -m "Merge master into release"
     git log -1
+    npm --no-git-tag-version version patch -m "Update version to be %s"
     git push origin release
+    npm publish
 fi
