@@ -17,7 +17,7 @@ if [[ `git status --porcelain` ]]; then
     git log -1
     npm --no-git-tag-version version patch 
     git add package.json
-    git commit -m "Update version to be %s"
+    git commit -m "Update version"
     git push origin release
     npm publish
 fi
