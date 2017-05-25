@@ -28,21 +28,17 @@ define([
         var hostRX = /(https?):\/\/([\w\d-]+(?:\.[\w\d-]+)*(?:\:\d+))/
         for(var i = 0, ii = iframes.length; i < ii; i++) {
             if (!iframes[i].classList.contains('atom-embed')) {
-              console.log('zut');
               continue;
             }
 
             var matches = iframes[i].src.match(hostRX);
             if (!matches) {
-              console.log('zat');
               continue;
             }
 
             allowedHosts.push(matches[1] + '://' + matches[2]);
             iframes[i].contentWindow.postMessage('go', '*');
         }
-
-        console.dir(allowedHosts);
     }
 
     function register(type, callback, options) {
@@ -102,8 +98,6 @@ define([
     }
 
     function onMessage(event) {
-        console.log('received a message');
-
         // We only allow communication with selected hosts
         if (allowedHosts.indexOf(event.origin) < 0) {
             return;
@@ -114,8 +108,6 @@ define([
         if (!isValidPayload(data)) {
             return;
         }
-
-        console.log('received a message for the ' + data.type + ' event');
 
         if (Array.isArray(listeners[data.type]) && listeners[data.type].length) {
             // Because any listener can have side-effects (by unregistering itself),
