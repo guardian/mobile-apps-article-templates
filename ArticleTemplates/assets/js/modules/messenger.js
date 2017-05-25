@@ -1,6 +1,9 @@
+/* global Promise */
 define([
     'modules/post-message'
 ], function (postMessage) {
+    'use strict';
+
     var allowedHosts = [
         location.protocol + '//' + location.host
     ];
@@ -12,8 +15,35 @@ define([
 
     return {
         register: register,
-        unregister: unregister
+        unregister: unregister,
+        start: start
     };
+
+    function start(modules) {
+        modules.forEach(function (module) {
+            module.init(register);
+        });
+
+        var iframes = document.getElementsByTagName('iframe');
+        var hostRX = /(https?):\/\/([\w\d-]+(?:\.[\w\d-]+)*(?:\:\d+))/
+        for(var i = 0, ii = iframes.length; i < ii; i++) {
+            if (!iframes[i].classList.contains('atom-embed')) {
+              console.log('zut');
+              continue;
+            }
+
+            var matches = iframes[i].src.match(hostRX);
+            if (!matches) {
+              console.log('zat');
+              continue;
+            }
+
+            allowedHosts.push(matches[1] + '://' + matches[2]);
+            iframes[i].contentWindow.postMessage('go', '*');
+        }
+
+        console.dir(allowedHosts);
+    }
 
     function register(type, callback, options) {
         options || (options = {});
@@ -72,23 +102,20 @@ define([
     }
 
     function onMessage(event) {
+        console.log('received a message');
+
         // We only allow communication with selected hosts
         if (allowedHosts.indexOf(event.origin) < 0) {
             return;
         }
 
-        try {
-            // Even though the postMessage API allows passing objects as-is, the
-            // serialisation/deserialisation is slower than using JSON
-            // Source: https://bugs.chromium.org/p/chromium/issues/detail?id=536620#c11
-            var data = JSON.parse(event.data);
-        } catch( ex ) {
-            return;
-        }
+        var data = getData(event.data);
 
         if (!isValidPayload(data)) {
             return;
         }
+
+        console.log('received a message for the ' + data.type + ' event');
 
         if (Array.isArray(listeners[data.type]) && listeners[data.type].length) {
             // Because any listener can have side-effects (by unregistering itself),
@@ -109,7 +136,7 @@ define([
                 return promise.then(function promiseCallback(ret) {
                     var iframe = getIframe(data);
                     if (!iframe) {
-                        throw new Error(formatError(error500, "iframe element not found"));
+                        throw new Error(formatError(error500, 'iframe element not found'));
                     }
                     var thisRet = listener(data.value, ret, iframe);
                     return thisRet === undefined ? ret : thisRet;
@@ -136,6 +163,18 @@ define([
         }
     }
 
+    function getData(data) {
+        try {
+            // Even though the postMessage API allows passing objects as-is, the
+            // serialisation/deserialisation is slower than using JSON
+            // Source: https://bugs.chromium.org/p/chromium/issues/detail?id=536620#c11
+            return JSON.parse(data);
+        } catch( ex ) {
+            return {};
+        }
+    }
+
+
     // Just some housekeeping to avoid malformed messages from coming through
     function isValidPayload(payload) {
         return 'type' in payload &&
@@ -147,7 +186,7 @@ define([
     // Incoming messages contain the ID of the iframe into which the
     // source window is embedded.
     function getIframe(data) {
-        return document.querySelector('iframe[name="' + data.id + '"]');
+        return document.getElementById(data.id);
     }
 
     // Cheap string formatting function. It accepts as its first argument

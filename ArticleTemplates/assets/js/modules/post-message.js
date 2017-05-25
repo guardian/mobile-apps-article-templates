@@ -1,4 +1,6 @@
 define(function () {
+    'use strict';
+
     return postMessage;
 
     function postMessage(message, targetWindow, targetOrigin) {
