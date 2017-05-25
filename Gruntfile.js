@@ -210,11 +210,11 @@ module.exports = function(grunt) {
         watch: {
             js: {
                 files: ['ArticleTemplates/assets/js/**/*.js'],
-                tasks: ['devJS','rsync']
+                tasks: ['buildJS','rsync']
             },
             scss: {
                 files: ['ArticleTemplates/assets/scss/**/*.scss'],
-                tasks: ['devCSS','rsync']
+                tasks: ['buildCSS','rsync']
             },
             copy: {
                 files: ['ArticleTemplates/*.html', 'ArticleTemplates/assets/img/**'],
@@ -233,10 +233,6 @@ module.exports = function(grunt) {
     });
 
     grunt.task.run('notify_hooks');
-
-    grunt.registerTask('devJS', ['initRequireJS', 'requirejs']);
-
-    grunt.registerTask('devCSS', ['sass', 'cssmin']);
 
     grunt.registerTask('buildJS', ['jshint', 'karma', 'initRequireJS', 'requirejs']);
 
