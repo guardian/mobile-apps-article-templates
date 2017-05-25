@@ -23,14 +23,14 @@ body.immersive .article--immersive {
             overflow: hidden;
             width: 1200px;
         }
-        
+
         &__bar {
             background-color: color(tone-feature1-accent);
             height: 6px;
             margin-top: 0px;
             width: 0;
         }
-        
+
         &__chapter {
             background-color: color(tone-feature1-accent2);
             height: 6px;
@@ -62,7 +62,7 @@ body.immersive .article--immersive {
             background-position: center center;
             background-size: cover;
             position: relative;
-    
+
             .element-atom,
             .element-embed {
                 height: 100vh;
@@ -105,7 +105,7 @@ body.immersive .article--immersive {
             background-color: rgba(0, 0, 0, .4);
             padding: base-px(.5, 1, 2, 1);
             width: 100%;
-            
+
             @include mq($from: col3) {
                 padding-top: base-px(1);
             }
@@ -121,7 +121,7 @@ body.immersive .article--immersive {
         &__series {
             display: block;
             padding-bottom: 12px;
-            
+
             > a, & {
                 color: color(shade-7);
                 font: 600 1.8rem $egyptian-display;
@@ -237,7 +237,7 @@ body.immersive .article--immersive {
         &--tablet {
             padding: 0;
             display: none;
-            
+
             @include mq($from: col2) {
                 display: block;
             }
@@ -276,12 +276,12 @@ body.immersive .article--immersive {
         color: color(shade-2);
         font: 1.6rem/1.4rem $agate-sans;
         padding: base-px(0, 1, 2, 1);
-        
+
         @include mq($from: col4) {
             padding-left: 240px;
             width: 620px;
         }
-        
+
         .comment-count {
             border: 0;
             color: color(tone-feature1-accent2);
@@ -353,7 +353,7 @@ body.immersive .article--immersive {
                 bottom: base-px(2);
                 left: -12px;
                 top: -65px;
-            } 
+            }
             padding: base-px(.25, 0, 2, 1);
             position: relative;
             width: 108%;
@@ -366,7 +366,7 @@ body.immersive .article--immersive {
                 width: 136%;
                 float: left;
             }
-            
+
             @include mq($from: col4) {
                 width: 1200px;
                 margin-left: -240px;
@@ -377,7 +377,7 @@ body.immersive .article--immersive {
                 @include immersive-dropcap(color(tone-feature1));
             }
         }
-        
+
         .section__header {
             background-color: color(tone-feature1-accent) !important;
             color: color(shade-7);
@@ -413,8 +413,8 @@ body.immersive .article--immersive {
                 border-bottom: 0 !important;
                 background-color: rgba(0, 0, 0, .65);
                 color: color(shade-7) !important;
-                padding: base-px(.5) base-px(.5) base-px(2); 
-                
+                padding: base-px(.5) base-px(.5) base-px(2);
+
                 &::before {
                     color: color(tone-feature1-accent2) !important;
                 }
@@ -449,19 +449,19 @@ body.immersive .article--immersive {
                 position: absolute;
                 top: 0;
                 width: 90%;
-                
+
                 &.display {
                     display: block;
                 }
             }
         }
-        
+
         .title--overlay {
             figcaption {
                 display: none !important;
             }
         }
-        
+
         .element-pullquote {
             margin-bottom: base-px(2);
             visibility: hidden;
@@ -479,7 +479,7 @@ body.immersive .article--immersive {
                     font-size: 3.2rem;
                     line-height: 3.4rem;
                 }
-                
+
                 p {
                     margin-top: 28px;
                 }
@@ -513,7 +513,7 @@ body.immersive .article--immersive {
                     content: '';
                 }
             }
-            
+
             @include mq($from: col2) {
                 float: left;
                 margin-right: base-px(1);
@@ -555,22 +555,23 @@ body.immersive .article--immersive {
 
             &.element--supporting {
                 width: auto;
-
-                @include mq($from: col2) {
-                    width: 100%;
-                }
+                margin: 0;
 
                 .figure__inner {
-                    @include mq($from: col3) {
+                    @include mq($from: col2) {
                         float: left;
                         margin: {
                             left: 0;
                             right: 20px;
                             top: 6px;
                         }
+                        width: 274px;
+                    }
+
+                    @include mq($from: col3) {
                         width: 380px;
                     }
-                    
+
                     @include mq($from: col4) {
                         margin: {
                             bottom: 0;
@@ -580,12 +581,16 @@ body.immersive .article--immersive {
                 }
 
                 figcaption {
-                    @include mq($from: col3) {
+                    @include mq($from: col2) {
                         clear: both;
                         border: 0;
                         float: left;
                         margin-right: 20px;
-                        padding: 6px 12px;
+                        padding: 6px 0;
+                        width: 274px;
+                    }
+
+                    @include mq($from: col3) {
                         width: 380px;
                     }
 
@@ -599,6 +604,10 @@ body.immersive .article--immersive {
                         width: 220px;
                     }
                 }
+
+                + .section__rule {
+                    clear: none;
+                }
             }
 
             &.element--showcase {
@@ -607,7 +616,7 @@ body.immersive .article--immersive {
                 @include mq($from: col2) {
                     width: 135%;
                 }
-                
+
                 @include mq($from: col4) {
                     float: none;
 
@@ -642,7 +651,7 @@ body.immersive .article--immersive {
             animation-fill-mode: both;
             visibility: visible;
         }
-        
+
         @-webkit-keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -670,7 +679,7 @@ body.immersive .article--immersive {
                 transform: none;
             }
         }
-        
+
         .fadeInUp {
             -webkit-animation-name: fadeInUp;
             animation-name: fadeInUp;

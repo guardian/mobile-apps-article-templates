@@ -1,9 +1,11 @@
 define([
-        'flipSnap'
-    ],
-    function (
-        flipSnap
-    ) {
+    'flipSnap',
+    'modules/util'
+],
+function (
+    flipSnap,
+    util
+) {
     'use strict';
 
     var initialised = false;
@@ -42,7 +44,7 @@ define([
 
         if (relatedContentList) {
             setUpFlipSnap(relatedContentList);
-            window.addEventListener('resize', GU.util.debounce(onResize.bind(null, relatedContentList), 100));
+            window.addEventListener('resize', util.debounce(onResize.bind(null, relatedContentList), 100));
         }
     }
 

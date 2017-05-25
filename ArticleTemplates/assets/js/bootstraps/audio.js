@@ -1,7 +1,9 @@
 define([
-    'mobileSlider'
+    'mobileSlider',
+    'modules/util'
 ], function (
-    MobileRangeSlider
+    MobileRangeSlider,
+    util
 ) {
     'use strict';
 
@@ -33,7 +35,7 @@ define([
         } else if ((!cutoutContainer || !cutoutContainer.dataset.background) && !document.body.classList.contains('media')) {
             window.audioBackground(duration);
 
-            window.addEventListener('resize', GU.util.debounce(function () {
+            window.addEventListener('resize', util.debounce(function () {
                 window.audioBackground(duration);
             }, 100));
         }
@@ -91,7 +93,7 @@ define([
             this.removeEvents('move');
             this.removeEvents('end');
 
-            GU.util.signalDevice('setPlayerTime/' + audioCurrent);
+            util.signalDevice('setPlayerTime/' + audioCurrent);
         };
     }
 
@@ -143,8 +145,8 @@ define([
     function styleCutoutContainer(duration, cutoutContainer) {
         var articleHeader = document.getElementsByClassName('article__header')[0],
             numOfCircles = Math.min(10, Math.floor((duration / 60) / 2)) + 2,
-            h = GU.util.getElementOffset(cutoutContainer).height,
-            w = GU.util.getElementOffset(cutoutContainer).width,
+            h = util.getElementOffset(cutoutContainer).height,
+            w = util.getElementOffset(cutoutContainer).width,
             size = (h * w) / 8000,
             canvas = document.createElement('canvas'),
             ctx = canvas.getContext('2d');

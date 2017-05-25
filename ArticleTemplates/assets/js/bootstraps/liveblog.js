@@ -3,13 +3,17 @@ define([
     'modules/twitter',
     'modules/youtube',
     'modules/minute',
-    'bootstraps/common'
+    'bootstraps/common',
+    'modules/util',
+    'modules/creativeInjector'
 ], function (
     relativeDates,
     twitter,
     youtube,
     minute,
-    common
+    common,
+    util,
+    creativeInjector
 ) {
     'use strict';
 
@@ -40,6 +44,17 @@ define([
         }
     }
 
+    function checkInjectedComponents() {
+      // check for tweets
+      twitter.checkForTweets();
+
+      // check for youtube video atoms
+      youtube.checkForVideos();
+
+      // if there is a contributions epic, track it
+      creativeInjector.trackLiveBlogEpic();
+    }
+
     function liveblogNewBlockDump() {
         var articleBody = document.getElementsByClassName('article__body')[0],
             images = [],
@@ -50,7 +65,7 @@ define([
             i;
 
         if (newBlockHtml) {
-            newBlockElems = GU.util.getElemsFromHTML(newBlockHtml);
+            newBlockElems = util.getElemsFromHTML(newBlockHtml);
 
             for (i = newBlockElems.length; i > 0; i--) {
                 addNewBlockToBlog(insertAfterElem, newBlockElems[i - 1]);
@@ -74,12 +89,7 @@ define([
 
             window.liveblogTime();
 
-            // check for tweets
-            twitter.checkForTweets();
-
-            // check for youtube video atoms
-            // timeout required to allow slideinright animation to finish
-            setTimeout(youtube.checkForVideos, 650);
+            checkInjectedComponents();
 
             newBlockHtml = '';
         }
@@ -102,7 +112,7 @@ define([
             loadingElem.classList.add('loading--visible');
         }
 
-        GU.util.signalDevice('showmore');
+        util.signalDevice('showmore');
     }
 
     function liveblogDeleteBlock(blockID) {
@@ -115,7 +125,7 @@ define([
 
     function liveblogUpdateBlock(blockID, html) {
         var block = document.getElementById(blockID),
-            newBlock = GU.util.getElemsFromHTML(html)[0];
+            newBlock = util.getElemsFromHTML(html)[0];
 
         if (block && newBlock) {
             block.parentNode.replaceChild(newBlock, block);
@@ -128,7 +138,7 @@ define([
             blocks,
             articleBody = document.getElementsByClassName('article__body')[0],
             oldBlockCount = articleBody.getElementsByClassName('block').length,
-            newBlockElems = GU.util.getElemsFromHTML(html);
+            newBlockElems = util.getElemsFromHTML(html);
 
         document.getElementsByClassName('loading--liveblog')[0].classList.remove('loading--visible');
 
@@ -148,11 +158,7 @@ define([
 
         window.liveblogTime();
 
-        // check for tweets
-        twitter.checkForTweets();
-
-        // check for youtube video atoms
-        youtube.checkForVideos();
+        checkInjectedComponents();
     }
 
     function liveblogTime() {
@@ -231,7 +237,7 @@ define([
             return;
         }
 
-        newKeyEventLinks = GU.util.getElemsFromHTML(html);
+        newKeyEventLinks = util.getElemsFromHTML(html);
 
         for (i = newKeyEventLinks.length; i > 0; i--) {
             newKeyEventLinks[i - 1].classList.add('key-event--highlighted');
@@ -304,14 +310,15 @@ define([
             initialised = true;
 
             newBlockHtml = '';
-            liveblogStartPos = GU.util.getElementOffset(document.getElementsByClassName('article__body--liveblog')[0]);
+            liveblogStartPos = util.getElementOffset(document.getElementsByClassName('article__body--liveblog')[0]);
 
             setupGlobals();
             keyEvents();
             window.liveblogTime();
-            window.addEventListener('scroll', GU.util.debounce(updateBlocksOnScroll, 100, true));
+            window.addEventListener('scroll', util.debounce(updateBlocksOnScroll, 100, true));
             liveMore();
-            
+            creativeInjector.trackLiveBlogEpic();
+
             if (GU.opts.isMinute && GU.opts.adsConfig === 'tablet') {
                 minute.init();
             } else {

@@ -1,4 +1,8 @@
-define(function() {
+define([
+    'modules/util'
+], function(
+    util
+) {
     'use strict';
 
     var videos = [],
@@ -315,7 +319,7 @@ define(function() {
             window.GuardianJSInterface.trackAction) {
             window.GuardianJSInterface.trackAction('youtube', JSON.stringify(evt));
         } else {
-            GU.util.signalDevice('youtube/' + JSON.stringify(evt));
+            util.signalDevice('youtube/' + JSON.stringify(evt));
         }
     }
 

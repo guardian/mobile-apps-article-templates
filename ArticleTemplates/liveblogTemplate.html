@@ -25,7 +25,7 @@
                 </div>
             </div>
             <h1 class="headline selectable">__TITLE__</h1>
-            
+
             <div class="standfirst selectable">
                 <div class="standfirst__inner">__STANDFIRST__</div>
             </div>
@@ -56,7 +56,7 @@
                     <p>minute</p>
                 </div>
                 <svg version="1.1" id="Layer_1" x="0px" y="0px" width="397.445px" height="397.445px" viewBox="0 0 397.445 397.445" enable-background="new 0 0 397.445 397.445"xml:space="preserve" class="minute-logo">
-                    <line fill="none" class="js-flashing-image the__minute__line the__minute__line--61" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="198.723" y1="0" x2="198.723" y2="10"/> 
+                    <line fill="none" class="js-flashing-image the__minute__line the__minute__line--61" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="198.723" y1="0" x2="198.723" y2="10"/>
                     <line fill="none" class="js-flashing-image the__minute__line the__minute__line--60" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="177.951" y1="1.089" x2="178.996" y2="11.034"/>
                     <line fill="none" class="js-flashing-image the__minute__line the__minute__line--59" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="157.406" y1="4.343" x2="159.485" y2="14.125"/>
                     <line fill="none" class="js-flashing-image the__minute__line the__minute__line--58" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="137.314" y1="9.727" x2="140.405" y2="19.237"/>
@@ -121,9 +121,9 @@
             </div>
             <div class="minute-vertical-rule">
             </div>
-            <div class="the-minute__header">    
+            <div class="the-minute__header">
                 <h1 class="the-minute__headline selectable">__TITLE__</h1>
-                
+
                 <div class="the-minute__standfirst selectable">
                     <div class="the-minute__standfirst-inner">
                         <span class="the-minute__date"></span>
@@ -149,11 +149,9 @@
             <img src="__TEMPLATES_DIRECTORY__assets/img/loading.gif" alt="Loading…"/>
         </div>
 
-        <div class="tags">
-            <ul class="inline-list">
-                <li class="inline-list__item screen-readable">Tags:</li>
-                
-            </ul>
+        <div class="tags" id="tags">
+            <span class="screen-readable">Tags:</span>
+            <ul class="inline-list tags__inline-list" id="tag-list"></ul>
         </div>
     </div>
 
@@ -161,40 +159,40 @@
     __COMMENTS_MODULE__
 
     <script type="text/javascript">
-        if (document.body.classList.contains('the-minute') && '__ADS_CONFIG__' === 'tablet') {
+        if (document.body.classList.contains("the-minute") && "__ADS_CONFIG__" === "tablet") {
             // Format date and add above standfirst
-            var dateArray = document.getElementById("published-date").innerHTML.split(' ').filter(Boolean),
-                dayOfWeek = dateArray[2].replace(',',''),
+            var dateArray = document.getElementById("published-date").innerHTML.split(" ").filter(Boolean),
+                dayOfWeek = dateArray[2].replace(",",""),
                 date = dateArray[3],
                 month = dateArray[4],
-                dateDiv = document.getElementsByClassName('the-minute__date')[0];
-                
+                dateDiv = document.getElementsByClassName("the-minute__date")[0];
+
             // Format date & append to div
-            date = date % 10 == 1 && date % 100 !== 11 ? date + 'st' : (date % 10 == 2 && date % 100 !== 12 ? date + 'nd' : (date % 10 == 3 && date % 100 !== 13 ? date + 'rd' : date + 'th'));
-            dateDiv.innerHTML = dayOfWeek + ' ' + date + ' ' + month;
+            date = date % 10 == 1 && date % 100 !== 11 ? date + "st" : (date % 10 == 2 && date % 100 !== 12 ? date + "nd" : (date % 10 == 3 && date % 100 !== 13 ? date + "rd" : date + "th"));
+            dateDiv.innerHTML = dayOfWeek + " " + date + " " + month;
         }
 
         GU.Bootstrap.init({
-            sectionTone: '__SECTION_TONE__',
-            isLive: '__IS_LIVE__' ? true : false,
-            isMinute: '__THE_MINUTE__' ? true : false,
-            isAdvertising: '__IS_ADVERTISING__' ? true : false,
-            fontSize: '__FONT_SIZE__',
-            platform: '__PLATFORM__',
-            isOffline: '__IS_OFFLINE__' ? true : false,
-            contentType: 'liveblog',
-            adsEnabled: '__ADS_ENABLED__',
-            adsEnableHiding: '__ADS_ENABLE_HIDING__' === 'true' ? true : false,
-            adsConfig: '__ADS_CONFIG__',
-            actionBarHeight: '__ACTIONBARHEIGHT__',
-            fontSize: '__FONT_SIZE_INT__',
-            templatesDirectory: '__TEMPLATES_DIRECTORY__',
-            pageId: '__PAGE_ID__',
-            mpuAfterParagraphs: '__MPU_AFTER_PARAGRAPHS__',
-            useAdsReady: '__ADS_FAST_CALLBACK__' === 'true' ? true : false,
-            section: '__SECTION__',
+            sectionTone: "__SECTION_TONE__",
+            isLive: "__IS_LIVE__" ? true : false,
+            isMinute: "__THE_MINUTE__" ? true : false,
+            isAdvertising: "__IS_ADVERTISING__" ? true : false,
+            fontSize: "__FONT_SIZE__",
+            platform: "__PLATFORM__",
+            isOffline: "__IS_OFFLINE__" ? true : false,
+            contentType: "liveblog",
+            adsEnabled: "__ADS_ENABLED__",
+            adsEnableHiding: "__ADS_ENABLE_HIDING__" === "true" ? true : false,
+            adsConfig: "__ADS_CONFIG__",
+            actionBarHeight: "__ACTIONBARHEIGHT__",
+            fontSize: "__FONT_SIZE_INT__",
+            templatesDirectory: "__TEMPLATES_DIRECTORY__",
+            pageId: "__PAGE_ID__",
+            mpuAfterParagraphs: "__MPU_AFTER_PARAGRAPHS__",
+            useAdsReady: "__ADS_FAST_CALLBACK__" === "true" ? true : false,
+            section: "__SECTION__",
             tests: '__TEST_SPEC__',
-            nativeYoutubeEnabled: '__NATIVE_YOUTUBE_ENABLED__' === 'true' ? true : false
+            nativeYoutubeEnabled: "__NATIVE_YOUTUBE_ENABLED__" === "true" ? true : false
         });
     </script>
 </body>

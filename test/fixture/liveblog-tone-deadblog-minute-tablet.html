@@ -302,7 +302,7 @@
 
                     <div class="block__body">
                         <div class="from-content-api prose resizable selectable">
-                            <h2 class="block__title">'They're very nasty statements'</h2>
+                            <h2 class="block__title">"They're very nasty statements"</h2>
                             <div>
                                 <figure class="element element-placeholder">
                                     <a class="element__inner video-URL" href="x-gu://playvideo/cdn.theguardian.tv/HLS/2016/05/16/160516trumpmorgan.x.m3u8">
@@ -369,11 +369,9 @@
                 <img src="../../ArticleTemplates/assets/img/loading.gif" alt="Loading…">
             </div>
 
-            <div class="tags">
-                <ul class="inline-list">
-                    <li class="inline-list__item screen-readable">Tags:</li>
-
-                </ul>
+            <div class="tags" id="tags">
+                <span class="screen-readable">Tags:</span>
+                <ul class="inline-list tags__inline-list" id="tag-list"></ul>
             </div>
         </div>
 
@@ -395,39 +393,39 @@
 
 
         <script type="text/javascript">
-            if (document.body.classList.contains('the-minute') && 'tablet' === 'tablet') {
+            if (document.body.classList.contains("the-minute") && "tablet" === "tablet") {
                 // Format date and add above standfirst
-                var dateArray = document.getElementById("published-date").innerHTML.split(' ').filter(Boolean),
-                    dayOfWeek = dateArray[2].replace(',', ''),
+                var dateArray = document.getElementById("published-date").innerHTML.split(" ").filter(Boolean),
+                    dayOfWeek = dateArray[2].replace(",", ""),
                     date = dateArray[3],
                     month = dateArray[4],
-                    dateDiv = document.getElementsByClassName('the-minute__date')[0];
+                    dateDiv = document.getElementsByClassName("the-minute__date")[0];
 
                 // Format date & append to div
-                date = date % 10 == 1 && date % 100 !== 11 ? date + 'st' : (date % 10 == 2 && date % 100 !== 12 ? date + 'nd' : (date % 10 == 3 && date % 100 !== 13 ? date + 'rd' : date + 'th'));
-                dateDiv.innerHTML = dayOfWeek + ' ' + date + ' ' + month;
+                date = date % 10 == 1 && date % 100 !== 11 ? date + "st" : (date % 10 == 2 && date % 100 !== 12 ? date + "nd" : (date % 10 == 3 && date % 100 !== 13 ? date + "rd" : date + "th"));
+                dateDiv.innerHTML = dayOfWeek + " " + date + " " + month;
             }
 
             GU.Bootstrap.init({
-                sectionTone: 'usMinute',
-                isLive: '' ? true : false,
-                isMinute: 'the-minute' ? true : false,
-                isAdvertising: '' ? true : false,
-                fontSize: 'font-size-4',
-                platform: 'ios',
-                isOffline: '' ? true : false,
-                contentType: 'liveblog',
-                adsEnabled: '',
-                adsEnableHiding: 'true' === 'true' ? true : false,
-                adsConfig: 'tablet',
-                actionBarHeight: '0',
-                fontSize: '4',
-                templatesDirectory: '../../ArticleTemplates/',
-                pageId: 'us-news/live/2016/may/16/donald-trump-on-women-blames-media',
-                mpuAfterParagraphs: '3',
-                useAdsReady: 'true' === 'true' ? true : false,
-                section: 'US',
-                nativeYoutubeEnabled: '' === 'true' ? true : false
+                sectionTone: "usMinute",
+                isLive: "" ? true : false,
+                isMinute: "the-minute" ? true : false,
+                isAdvertising: "" ? true : false,
+                fontSize: "font-size-4",
+                platform: "ios",
+                isOffline: "" ? true : false,
+                contentType: "liveblog",
+                adsEnabled: "",
+                adsEnableHiding: "true" === "true" ? true : false,
+                adsConfig: "tablet",
+                actionBarHeight: "0",
+                fontSize: "4",
+                templatesDirectory: "../../ArticleTemplates/",
+                pageId: "us-news/live/2016/may/16/donald-trump-on-women-blames-media",
+                mpuAfterParagraphs: "3",
+                useAdsReady: "true" === "true" ? true : false,
+                section: "US",
+                nativeYoutubeEnabled: "" === "true" ? true : false
             });
         </script>
 

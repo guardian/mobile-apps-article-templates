@@ -1,55 +1,60 @@
 define([
-    'modules/util',
     'squire'
-], function(
-    util,
+], function (
     Squire
 ) {
     'use strict';
 
-    describe('ArticleTemplates/assets/js/modules/cards', function() {
-        var container,
-            sandbox,
-            injector;
+    describe('ArticleTemplates/assets/js/modules/cards', function () {
+        var cards,
+            container,
+            sandbox;
 
         var destroySpy,
+            utilMock,
             flipSnapMock;
 
-        beforeEach(function() {
-            container = document.createElement('div');
-            
-            container.id = 'container';
-            
-            document.body.appendChild(container);
-            
-            injector = new Squire();
+        beforeEach(function (done) {
+            var injector = new Squire();
             
             sandbox = sinon.sandbox.create();
+
+            container = document.createElement('div');
+            container.id = 'container';
+            document.body.appendChild(container);
             
-            window.applyNativeFunctionCall = sinon.spy();
+            window.applyNativeFunctionCall = sandbox.spy();
 
             window.GU = {
                 opts: {}
             };
 
             window.GuardianJSInterface = {
-                registerRelatedCardsTouch: sinon.spy()
+                registerRelatedCardsTouch: sandbox.spy()
             };
 
-            window.GU.util = util;
+            destroySpy = sandbox.spy();
 
-            sandbox.stub(GU.util, 'debounce', function(func) {
-                return func;
-            });
-
-            destroySpy = sinon.spy();
-            
-            flipSnapMock = sinon.stub().returns({
+            utilMock = {
+                debounce: function (fn) {
+                    return fn;
+                }
+            };
+            flipSnapMock = sandbox.stub().returns({
                 destroy: destroySpy
             });
+
+            injector
+                .mock('flipSnap', flipSnapMock)
+                .mock('modules/util', utilMock)
+                .require(['ArticleTemplates/assets/js/modules/cards'], function (sut) {
+                    cards = sut;
+
+                    done();
+                });
         });
 
-        afterEach(function() {
+        afterEach(function () {
             document.body.removeChild(container);
 
             delete window.articleCardsInserter;
@@ -62,24 +67,18 @@ define([
         });
 
         describe('init()', function () {
-            it('sets up global functions', function(done) {
-                injector
-                    .mock('flipSnap', flipSnapMock)
-                    .require(['ArticleTemplates/assets/js/modules/cards'], function(cards) {
-                        cards.init();
+            it('sets up global functions', function () {
+                cards.init();
 
-                        expect(window.articleCardsInserter).to.not.be.undefined;
-                        expect(window.articleCardsFailed).to.not.be.undefined;
+                expect(window.articleCardsInserter).to.not.be.undefined;
+                expect(window.articleCardsFailed).to.not.be.undefined;
 
-                        expect(window.applyNativeFunctionCall).to.have.been.calledWith('articleCardsInserter');
-                        expect(window.applyNativeFunctionCall).to.have.been.calledWith('articleCardsFailed');
-
-                        done();
-                    });
+                expect(window.applyNativeFunctionCall).to.have.been.calledWith('articleCardsInserter');
+                expect(window.applyNativeFunctionCall).to.have.been.calledWith('articleCardsFailed');
             });
         });
 
-        describe('window.articleCardsInserter(html)', function() {
+        describe('window.articleCardsInserter(html)', function () {
             var html,
                 relatedContent,
                 resizeHandler;
@@ -103,160 +102,119 @@ define([
                 });
             });
 
-            it('adds errror if no html passed', function(done) {
-                injector
-                    .mock('flipSnap', flipSnapMock)
-                    .require(['ArticleTemplates/assets/js/modules/cards'], function(cards) {
-                        cards.init();
+            it('adds errror if no html passed', function () {
+                cards.init();
 
-                        window.articleCardsInserter();
+                window.articleCardsInserter();
 
-                        expect(relatedContent.classList.contains('related-content--has-failed')).to.eql(true);
-
-                        done();
-                    });
+                expect(relatedContent.classList.contains('related-content--has-failed')).to.eql(true);
             });
 
-            it('adds html to relatedContent if html passed', function(done) {
-                injector
-                    .mock('flipSnap', flipSnapMock)
-                    .require(['ArticleTemplates/assets/js/modules/cards'], function(cards) {
-                        cards.init();
+            it('adds html to relatedContent if html passed', function () {
+                cards.init();
 
-                        window.articleCardsInserter(html);
+                window.articleCardsInserter(html);
 
-                        expect(relatedContent.getElementsByClassName('related-content__card').length).to.equal(2);
-
-                        done();
-                    });
+                expect(relatedContent.getElementsByClassName('related-content__card').length).to.equal(2);
             });
 
-            it('sets up flipSnap if list width is greater than wrapper width', function(done) {
-                injector
-                    .mock('flipSnap', flipSnapMock)
-                    .require(['ArticleTemplates/assets/js/modules/cards'], function(cards) {
-                        var relatedContentWrapper = relatedContent.getElementsByClassName('related-content__wrapper')[0],
-                            relatedContentList;
+            it('sets up flipSnap if list width is greater than wrapper width', function () {
+                var relatedContentWrapper = relatedContent.getElementsByClassName('related-content__wrapper')[0],
+                    relatedContentList;
 
-                        relatedContentWrapper.style.width = '300px';
+                relatedContentWrapper.style.width = '300px';
 
-                        cards.init();
+                cards.init();
 
-                        window.articleCardsInserter(html);
+                window.articleCardsInserter(html);
 
-                        relatedContentList = relatedContent.getElementsByClassName('related-content__list')[0];
+                relatedContentList = relatedContent.getElementsByClassName('related-content__list')[0];
 
-                        expect(relatedContentList.classList.contains('related-content__list--items-2')).to.eql(true);
-                        expect(flipSnapMock).to.have.been.calledOnce;
-                        expect(flipSnapMock).to.have.been.calledWith(relatedContentList);
-
-                        done();
-                    });
+                expect(relatedContentList.classList.contains('related-content__list--items-2')).to.eql(true);
+                expect(flipSnapMock).to.have.been.calledOnce;
+                expect(flipSnapMock).to.have.been.calledWith(relatedContentList);
             });
 
-            it('does not set up flipSnap if list width is less than wrapper width', function(done) {
-                injector
-                    .mock('flipSnap', flipSnapMock)
-                    .require(['ArticleTemplates/assets/js/modules/cards'], function(cards) {
-                        var relatedContentList;
+            it('does not set up flipSnap if list width is less than wrapper width', function () {
+                var relatedContentList;
 
-                        cards.init();
+                cards.init();
 
-                        window.articleCardsInserter(html);
+                window.articleCardsInserter(html);
 
-                        relatedContentList = relatedContent.getElementsByClassName('related-content__list')[0];
+                relatedContentList = relatedContent.getElementsByClassName('related-content__list')[0];
 
-                        expect(relatedContentList.classList.contains('related-content__list--items-2')).to.eql(true);
-                        expect(flipSnapMock).not.to.have.been.called;
-                        done();
-                    });
+                expect(relatedContentList.classList.contains('related-content__list--items-2')).to.eql(true);
+                expect(flipSnapMock).not.to.have.been.called;
             });
 
-            it('if android handles touchstart on relatedContentList', function(done) {
-                injector
-                    .mock('flipSnap', flipSnapMock)
-                    .require(['ArticleTemplates/assets/js/modules/cards'], function(cards) {
-                        var relatedContentWrapper = relatedContent.getElementsByClassName('related-content__wrapper')[0],
-                            relatedContentList,
-                            touchstartEvt = document.createEvent('HTMLEvents');
+            it('if android handles touchstart on relatedContentList', function () {
+                var relatedContentWrapper = relatedContent.getElementsByClassName('related-content__wrapper')[0],
+                    relatedContentList,
+                    touchstartEvt = document.createEvent('HTMLEvents');
 
-                        window.GU.opts.platform = 'android';
+                window.GU.opts.platform = 'android';
 
-                        relatedContentWrapper.style.width = '300px';
+                relatedContentWrapper.style.width = '300px';
 
-                        cards.init();
+                cards.init();
 
-                        window.articleCardsInserter(html);
+                window.articleCardsInserter(html);
 
-                        relatedContentList = relatedContent.getElementsByClassName('related-content__list')[0];
+                relatedContentList = relatedContent.getElementsByClassName('related-content__list')[0];
 
-                        touchstartEvt.initEvent('touchstart', true, true);
-                        
-                        relatedContentList.dispatchEvent(touchstartEvt);
+                touchstartEvt.initEvent('touchstart', true, true);
+                
+                relatedContentList.dispatchEvent(touchstartEvt);
 
-                        expect(window.GuardianJSInterface.registerRelatedCardsTouch).to.have.been.called;
-                        expect(window.GuardianJSInterface.registerRelatedCardsTouch).to.have.been.calledWith(true);                        
-
-                        done();
-                    });
+                expect(window.GuardianJSInterface.registerRelatedCardsTouch).to.have.been.called;
+                expect(window.GuardianJSInterface.registerRelatedCardsTouch).to.have.been.calledWith(true); 
             });
 
-            it('if android handles touchend on relatedContentList', function(done) {
-                injector
-                    .mock('flipSnap', flipSnapMock)
-                    .require(['ArticleTemplates/assets/js/modules/cards'], function(cards) {
-                        var relatedContentWrapper = relatedContent.getElementsByClassName('related-content__wrapper')[0],
-                            relatedContentList,
-                            touchendEvt = document.createEvent('HTMLEvents');
+            it('if android handles touchend on relatedContentList', function () {
+                var relatedContentWrapper = relatedContent.getElementsByClassName('related-content__wrapper')[0],
+                    relatedContentList,
+                    touchendEvt = document.createEvent('HTMLEvents');
 
-                        window.GU.opts.platform = 'android';
+                window.GU.opts.platform = 'android';
 
-                        relatedContentWrapper.style.width = '300px';
+                relatedContentWrapper.style.width = '300px';
 
-                        cards.init();
+                cards.init();
 
-                        window.articleCardsInserter(html);
+                window.articleCardsInserter(html);
 
-                        relatedContentList = relatedContent.getElementsByClassName('related-content__list')[0];
+                relatedContentList = relatedContent.getElementsByClassName('related-content__list')[0];
 
-                        touchendEvt.initEvent('touchend', true, true);
-                        
-                        relatedContentList.dispatchEvent(touchendEvt);
+                touchendEvt.initEvent('touchend', true, true);
+                
+                relatedContentList.dispatchEvent(touchendEvt);
 
-                        expect(window.GuardianJSInterface.registerRelatedCardsTouch).to.have.been.called;
-                        expect(window.GuardianJSInterface.registerRelatedCardsTouch).to.have.been.calledWith(false);                        
-
-                        done();
-                    });
+                expect(window.GuardianJSInterface.registerRelatedCardsTouch).to.have.been.called;
+                expect(window.GuardianJSInterface.registerRelatedCardsTouch).to.have.been.calledWith(false);                        
             });
 
-            it('it handles resize of window and destroys flipSnap', function(done) {
-                injector
-                    .mock('flipSnap', flipSnapMock)
-                    .require(['ArticleTemplates/assets/js/modules/cards'], function(cards) {
-                        var relatedContentList,
-                            relatedContentWrapper = relatedContent.getElementsByClassName('related-content__wrapper')[0];
+            it('it handles resize of window and destroys flipSnap', function () {
+                var relatedContentList,
+                    relatedContentWrapper = relatedContent.getElementsByClassName('related-content__wrapper')[0];
 
-                        relatedContentWrapper.style.width = '300px';
+                relatedContentWrapper.style.width = '300px';
 
-                        cards.init();
+                cards.init();
 
-                        window.articleCardsInserter(html);
+                window.articleCardsInserter(html);
 
-                        relatedContentList = relatedContent.getElementsByClassName('related-content__list')[0];
+                relatedContentList = relatedContent.getElementsByClassName('related-content__list')[0];
 
-                        expect(window.addEventListener).to.have.been.calledOnce;
-                        expect(window.addEventListener).to.have.been.calledWith('resize');
+                expect(window.addEventListener).to.have.been.calledOnce;
+                expect(window.addEventListener).to.have.been.calledWith('resize');
 
-                        expect(flipSnapMock).to.have.been.calledOnce;
-                        expect(flipSnapMock).to.have.been.calledWith(relatedContentList);
+                expect(flipSnapMock).to.have.been.calledOnce;
+                expect(flipSnapMock).to.have.been.calledWith(relatedContentList);
 
-                        resizeHandler(relatedContentList);
+                resizeHandler(relatedContentList);
 
-                        expect(destroySpy).to.have.been.calledOnce;
-
-                        done();
-                    });
+                expect(destroySpy).to.have.been.calledOnce;
             });
         });
     });

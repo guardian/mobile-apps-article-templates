@@ -1,4 +1,8 @@
-define(function () {
+define([
+    'modules/util'
+], function (
+    util
+) {
     'use strict';
 
     var articleBody,
@@ -45,7 +49,7 @@ define(function () {
             enhanceTweets();
         }
 
-        window.addEventListener('scroll', GU.util.debounce(enhanceTweets, 100));
+        window.addEventListener('scroll', util.debounce(enhanceTweets, 100));
     }
 
     function isScriptReady() {

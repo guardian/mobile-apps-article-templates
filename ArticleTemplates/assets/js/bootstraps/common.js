@@ -6,7 +6,8 @@ define([
     'modules/cards',
     'modules/more-tags',
     'modules/sharing',
-    'modules/experiments/ab'
+    'modules/experiments/ab',
+    'modules/util'
 ], function(
     fence,
     fastClick,
@@ -15,7 +16,8 @@ define([
     cards,
     moreTags,
     sharing,
-    ab
+    ab,
+    util
 ) {
     'use strict';
 
@@ -46,7 +48,7 @@ define([
         ab.init(); // init ab tests
 
         if (!document.body.classList.contains('no-ready')) {
-            GU.util.signalDevice('ready');
+            util.signalDevice('ready');
         }
     }
 
@@ -62,7 +64,7 @@ define([
 
         for (i = 0; i < images.length; i++) {
             image = images[i];    
-            figure = GU.util.getClosestParentWithTag(image, 'figure');
+            figure = util.getClosestParentWithTag(image, 'figure');
             
             if (figure) {
                 figures.push(figure);
@@ -129,7 +131,7 @@ define([
                 if (desiredImageHeight) {
                     imageWrapper.style.height = desiredImageHeight + 'px';
                 }
-                window.addEventListener('resize', GU.util.debounce(resizeImageWrapper.bind(null, imageWrapper, figure), 100));
+                window.addEventListener('resize', util.debounce(resizeImageWrapper.bind(null, imageWrapper, figure), 100));
             }
         }
 
@@ -170,7 +172,7 @@ define([
         if (image.parentNode.classList.contains('element-image-inner')) {
             image.style.display = 'none';
         } else {
-            figure = GU.util.getClosestParentWithTag(image, 'figure');
+            figure = util.getClosestParentWithTag(image, 'figure');
             innerElem = document.createElement('div');
             innerElem.classList.add('element-image-inner');
             innerElem.setAttribute('height', image.getAttribute('height'));
@@ -184,7 +186,7 @@ define([
             imgWidth = elem.getAttribute('width'),
             imgHeight = elem.getAttribute('height'),
             figInner = figure.getElementsByClassName('figure__inner')[0],
-            figInnerWidth = GU.util.getElementOffset(figInner).width,
+            figInnerWidth = util.getElementOffset(figInner).width,
             scale = figInnerWidth / imgWidth,
             newHeight = imgHeight * scale;
 
@@ -257,7 +259,7 @@ define([
 
         for (i = 0; i < mainMediaElems.length; i++) {
             mainMediaElem = mainMediaElems[i];
-            mainMediaElemOffset = GU.util.getElementOffset(mainMediaElem);
+            mainMediaElemOffset = util.getElementOffset(mainMediaElem);
             if (mainMediaElemOffset.height && mainMediaElemOffset.width) {
                 window.GuardianJSInterface.videoPosition(mainMediaElemOffset.left, mainMediaElemOffset.top, mainMediaElemOffset.width, mainMediaElem.getAttribute('href'));
             }
@@ -657,28 +659,28 @@ define([
         }
 
         if (commentContainer) {
-            window.addEventListener('scroll', GU.util.debounce(isCommentContainerInView.bind(null, commentContainer), 100));
+            window.addEventListener('scroll', util.debounce(isCommentContainerInView.bind(null, commentContainer), 100));
         }
     }
 
     function handleCommentCountClick(evt) {
         evt.preventDefault();
 
-        GU.util.signalDevice('trackAction/comments:view more:comment count');
-        GU.util.signalDevice('showcomments');        
+        util.signalDevice('trackAction/comments:view more:comment count');
+        util.signalDevice('showcomments');        
     }
 
     function viewMoreCommentsClick(evt) {
         evt.preventDefault();
 
-        GU.util.signalDevice('trackAction/comments:view more');
-        GU.util.signalDevice('showcomments');        
+        util.signalDevice('trackAction/comments:view more');
+        util.signalDevice('showcomments');        
     }
 
     function isCommentContainerInView(commentContainer) {
         if (trackCommentContainerView &&
-            GU.util.isElementPartiallyInViewport(commentContainer)) {
-            GU.util.signalDevice('trackAction/comments:seen');    
+            util.isElementPartiallyInViewport(commentContainer)) {
+            util.signalDevice('trackAction/comments:seen');    
             trackCommentContainerView = false;
         }
     }

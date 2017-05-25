@@ -1,4 +1,8 @@
-define(function () {
+define([
+    'modules/util'
+], function (
+    util
+) {
     'use strict';
 
     var initialised;
@@ -107,7 +111,7 @@ define(function () {
 
         for (i = 0; i < pullQuotes.length; i++) {
             pullQuote = pullQuotes[i];
-            pullQuote.dataset.offset = GU.util.getElementOffset(pullQuote).top;
+            pullQuote.dataset.offset = util.getElementOffset(pullQuote).top;
         }
     }
 
@@ -121,10 +125,10 @@ define(function () {
             quoteOverlay.addEventListener('click', onQuoteOverlayClick.bind(null, quoteOverlay));
         }
 
-        window.addEventListener('scroll', GU.util.debounce(onImmersiveScroll, 10));
+        window.addEventListener('scroll', util.debounce(onImmersiveScroll, 10));
         
         if (GU.opts.platform !== 'ios') {
-            window.addEventListener('resize', GU.util.debounce(adjustHeaderImageHeight, 100));
+            window.addEventListener('resize', util.debounce(adjustHeaderImageHeight, 100));
         }
     }
 

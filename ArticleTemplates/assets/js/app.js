@@ -4,30 +4,42 @@ define([
     'modules/util'
 ], function(
     domReady,
-    Ads,
+    ads,
     util
 ) {
     'use strict';
 
     function init() {
-        GU.util = util;
+        // expose util in GU namespace for interactives
+        window.GU.util = util;
         domReady(onDomReady);
     }
 
     function initLayout(layoutObj) {
         layoutObj.init();
     }
+
+    function getAdType(contentType) {
+        if ((contentType === 'liveblog' && !GU.opts.isMinute) || 
+            (contentType !== 'liveblog' && document.querySelector('.article__body--liveblog'))) {
+            return 'liveblog';
+        }
+
+        return 'default';
+    }
         
     function onDomReady() {
-        var contentType = GU.opts.contentType;
+        var contentType = GU.opts.contentType,
+            adsEnabled = GU.opts.adsEnabled && (GU.opts.adsEnabled === 'true' || GU.opts.adsEnabled.indexOf('mpu') !== -1);
 
         // ads positioning
-        Ads.init({
-            adsEnabled: (GU.opts.adsEnabled && GU.opts.adsEnabled === 'true') || (GU.opts.adsEnabled && GU.opts.adsEnabled.indexOf('mpu') !== -1),
-            adsConfig: GU.opts.adsConfig,
-            adsType: GU.opts.contentType === 'liveblog' && !GU.opts.isMinute ? 'liveblog' : 'default',
-            mpuAfterParagraphs: GU.opts.mpuAfterParagraphs
-        });
+        if (adsEnabled) {
+            ads.init({
+                adsConfig: GU.opts.adsConfig,
+                adsType: getAdType(contentType),
+                mpuAfterParagraphs: GU.opts.mpuAfterParagraphs
+            });
+        }
 
         // other article-specific functions
         if (contentType === 'article') {

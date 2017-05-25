@@ -1,7 +1,9 @@
 define([
-    'modules/relativeDates'
+    'modules/relativeDates',
+    'modules/util'
 ], function(
-    relativeDates
+    relativeDates,
+    util
 ) {
     'use strict';
 
@@ -129,7 +131,7 @@ define([
             commentsContainer = document.getElementsByClassName('comments__container')[0];
 
             if (commentsContainer) {
-                blocks = GU.util.getElemsFromHTML(html);
+                blocks = util.getElemsFromHTML(html);
 
                 for (i = 0; i < blocks.length; i++) {
                     commentsContainer.appendChild(blocks[i]);
@@ -160,7 +162,7 @@ define([
             }
         } else {
             if (commentsContainer) {
-                blocks = GU.util.getElemsFromHTML(html);
+                blocks = util.getElemsFromHTML(html);
 
                 for (i = 0; i < blocks.length; i++) {
                     commentsContainer.appendChild(blocks[i]);

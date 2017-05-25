@@ -1,14 +1,21 @@
-general:
-  branches:
-    only:
-      - release
+machine:
+  environment:
+    PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+
+dependencies:
+  pre:
+      - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+  override:
+    - yarn
+  cache_directories:
+    - ~/.cache/yarn
 
 test:
   override:
-    - grunt build
+    - yarn build
 
 deployment:
   release:
-    branch: release
+    branch: master
     commands:
       - ./circle.sh

@@ -1,24 +1,25 @@
 define([
-    'modules/util',
     'squire'
 ], function (
-    util,
     Squire
 ) {
     'use strict';
 
     describe('ArticleTemplates/assets/js/modules/twitter', function () {
-        var sandbox,
-            container,
-            injector;
+        var twitter,
+            sandbox,
+            container;
 
-        beforeEach(function () {
+        var utilMock;
+
+        beforeEach(function (done) {
+            var injector = new Squire();
+            
+            sandbox = sinon.sandbox.create();
+
             container = document.createElement('div');
             container.id = 'container';
             document.body.appendChild(container);
-
-            injector = new Squire();
-            sandbox = sinon.sandbox.create();
 
             window.GU = {
                 opts: {
@@ -26,7 +27,17 @@ define([
                 }
             };
 
-            window.GU.util = util;
+            utilMock = {
+                debounce: sandbox.spy()
+            };
+
+            injector
+                .mock('modules/util', utilMock)
+                .require(['ArticleTemplates/assets/js/modules/twitter'], function (sut) {
+                    twitter = sut;
+
+                    done();
+                }); 
         });
 
         afterEach(function () {
@@ -44,167 +55,135 @@ define([
         });
 
         describe('init()', function () {
-            it('does not add twitter script if no tweet on page', function (done) {
-                injector
-                    .require(['ArticleTemplates/assets/js/modules/twitter'], function (twitter) {
-                        twitter.init();
+            it('does not add twitter script if no tweet on page', function () {
+                twitter.init();
 
-                        expect(document.querySelectorAll('#twitter-widget').length).to.eql(0);
-
-                        done();
-                    });
+                expect(document.querySelectorAll('#twitter-widget').length).to.eql(0);
             });
 
-            it('adds twitter script if not the minute and js-tweet tweet on page', function (done) {
-                injector
-                    .require(['ArticleTemplates/assets/js/modules/twitter'], function (twitter) {
-                        container.innerHTML = '<blockquote class="js-tweet"></blockquote>';
+            it('adds twitter script if not the minute and js-tweet tweet on page', function () {
+                container.innerHTML = '<blockquote class="js-tweet"></blockquote>';
 
-                        twitter.init();
+                twitter.init();
 
-                        expect(document.querySelectorAll('#twitter-widget').length).to.eql(1);
-
-                        done();
-                    });
+                expect(document.querySelectorAll('#twitter-widget').length).to.eql(1);
             });
 
-            it('adds twitter script if not the minute and twitter-tweet tweet on page', function (done) {
-                injector
-                    .require(['ArticleTemplates/assets/js/modules/twitter'], function (twitter) {
-                        container.innerHTML = '<blockquote class="twitter-tweet"></blockquote>';
+            it('adds twitter script if not the minute and twitter-tweet tweet on page', function () {
+                container.innerHTML = '<blockquote class="twitter-tweet"></blockquote>';
 
-                        twitter.init();
+                twitter.init();
 
-                        expect(document.querySelectorAll('#twitter-widget').length).to.eql(1);
-
-                        done();
-                    });
+                expect(document.querySelectorAll('#twitter-widget').length).to.eql(1);
             });
 
-            it('remove web-intent class on links in tweet on iOS', function (done) {
-                injector
-                    .require(['ArticleTemplates/assets/js/modules/twitter'], function (twitter) {
-                        var dummyTweet = document.createElement('iframe'),
-                            blockquote = document.createElement('blockquote');
+            it('remove web-intent class on links in tweet on iOS', function () {
+                var dummyTweet = document.createElement('iframe'),
+                    blockquote = document.createElement('blockquote');
 
-                        blockquote.classList.add('twitter-tweet');
-                        container.appendChild(dummyTweet);
-                        container.appendChild(blockquote);
-                        dummyTweet.contentWindow.document.body.innerHTML = '<a class="web-intent" href="xxx"></a><a id="myLink" class="web-intent" href="xxx"></a><a class="web-intent" href="xxx"></a>';
+                blockquote.classList.add('twitter-tweet');
+                container.appendChild(dummyTweet);
+                container.appendChild(blockquote);
+                dummyTweet.contentWindow.document.body.innerHTML = '<a class="web-intent" href="xxx"></a><a id="myLink" class="web-intent" href="xxx"></a><a class="web-intent" href="xxx"></a>';
 
-                        window.twttr = {
-                            events: {
-                                bind: function (type, callback) {
-                                    if (type === 'rendered') {
-                                        callback({
-                                            target: dummyTweet
-                                        });
-                                    }
-                                }
-                            },
-                            widgets: {
-                                load: sinon.spy()
+                window.twttr = {
+                    events: {
+                        bind: function (type, callback) {
+                            if (type === 'rendered') {
+                                callback({
+                                    target: dummyTweet
+                                });
                             }
-                        };
+                        }
+                    },
+                    widgets: {
+                        load: sandbox.spy()
+                    }
+                };
 
-                        // intercept appendChild and force load event on script
-                        sandbox.stub(document.body, 'appendChild', function (script) {
-                            script.onload();
-                        });
+                // intercept appendChild and force load event on script
+                sandbox.stub(document.body, 'appendChild', function (script) {
+                    script.onload();
+                });
 
-                        var myLink = dummyTweet.contentWindow.document.getElementById('myLink'); 
+                var myLink = dummyTweet.contentWindow.document.getElementById('myLink'); 
 
-                        expect(myLink.classList.contains('web-intent')).to.eql(true);
+                expect(myLink.classList.contains('web-intent')).to.eql(true);
 
-                        twitter.init();
+                twitter.init();
 
-                        expect(myLink.classList.contains('web-intent')).to.eql(false);
-
-                        done();
-                    });
+                expect(myLink.classList.contains('web-intent')).to.eql(false);
             });
 
-            it('fix vine autoPlays on iOS', function (done) {
-                injector
-                    .require(['ArticleTemplates/assets/js/modules/twitter'], function (twitter) {
-                        var dummyTweet = document.createElement('iframe'),
-                            blockquote = document.createElement('blockquote');
+            it('fix vine autoPlays on iOS', function () {
+                var dummyTweet = document.createElement('iframe'),
+                    blockquote = document.createElement('blockquote');
 
-                        blockquote.classList.add('twitter-tweet');
-                        container.appendChild(dummyTweet);
-                        container.appendChild(blockquote);
-                        dummyTweet.contentWindow.document.body.innerHTML = '<div class="MediaCard"></div><iframe src="https://vine.com"></iframe>';
-                        dummyTweet.setAttribute('height', 100);
+                blockquote.classList.add('twitter-tweet');
+                container.appendChild(dummyTweet);
+                container.appendChild(blockquote);
+                dummyTweet.contentWindow.document.body.innerHTML = '<div class="MediaCard"></div><iframe src="https://vine.com"></iframe>';
+                dummyTweet.setAttribute('height', 100);
 
-                        window.twttr = {
-                            events: {
-                                bind: function (type, callback) {
-                                    if (type === 'rendered') {
-                                        callback({
-                                            target: dummyTweet
-                                        });
-                                    }
-                                }
-                            },
-                            widgets: {
-                                load: sinon.spy()
+                window.twttr = {
+                    events: {
+                        bind: function (type, callback) {
+                            if (type === 'rendered') {
+                                callback({
+                                    target: dummyTweet
+                                });
                             }
-                        };
+                        }
+                    },
+                    widgets: {
+                        load: sandbox.spy()
+                    }
+                };
 
-                        // intercept appendChild and force load event on script
-                        sandbox.stub(document.body, 'appendChild', function (script) {
-                            script.onload();
-                        });
+                // intercept appendChild and force load event on script
+                sandbox.stub(document.body, 'appendChild', function (script) {
+                    script.onload();
+                });
 
-                        var mediaCard = dummyTweet.contentWindow.document.querySelector('.MediaCard'); 
+                var mediaCard = dummyTweet.contentWindow.document.querySelector('.MediaCard'); 
 
-                        expect(mediaCard.parentNode).to.eql(dummyTweet.contentWindow.document.body);
-                        expect(dummyTweet.hasAttribute('height')).to.eql(true);
+                expect(mediaCard.parentNode).to.eql(dummyTweet.contentWindow.document.body);
+                expect(dummyTweet.hasAttribute('height')).to.eql(true);
 
-                        twitter.init();
+                twitter.init();
 
-                        expect(mediaCard.parentNode).to.not.eql(dummyTweet.contentWindow.document.body);
-                        expect(dummyTweet.hasAttribute('height')).to.eql(false);
-
-                        done();
-                    });
+                expect(mediaCard.parentNode).to.not.eql(dummyTweet.contentWindow.document.body);
+                expect(dummyTweet.hasAttribute('height')).to.eql(false);
             });
 
-            it('add scroll event listener to enhances tweets on scroll', function (done) {
-                injector
-                    .require(['ArticleTemplates/assets/js/modules/twitter'], function (twitter) {
-                        var blockquote = document.createElement('blockquote');
+            it('add scroll event listener to enhances tweets on scroll', function () {
+                var blockquote = document.createElement('blockquote');
 
-                        blockquote.classList.add('twitter-tweet');
+                blockquote.classList.add('twitter-tweet');
 
-                        container.appendChild(blockquote);
+                container.appendChild(blockquote);
 
-                        window.twttr = {
-                            events: {
-                                bind: sinon.spy()
-                            },
-                            widgets: {
-                                load: sinon.spy()
-                            }
-                        };
+                window.twttr = {
+                    events: {
+                        bind: sandbox.spy()
+                    },
+                    widgets: {
+                        load: sandbox.spy()
+                    }
+                };
 
-                        // intercept appendChild and force load event on script
-                        sandbox.stub(document.body, 'appendChild', function (script) {
-                            script.onload();
-                        });
+                // intercept appendChild and force load event on script
+                sandbox.stub(document.body, 'appendChild', function (script) {
+                    script.onload();
+                });
 
-                        sandbox.stub(window, 'addEventListener');
+                sandbox.stub(window, 'addEventListener');
 
-                        sandbox.stub(window.GU.util, 'debounce');
+                twitter.init();
 
-                        twitter.init();
-
-                        expect(window.addEventListener).to.have.been.calledOnce;
-                        expect(window.addEventListener).to.have.been.calledWith('scroll');
-                        expect(window.GU.util.debounce).to.have.been.calledOnce;
-
-                        done();
-                    });
+                expect(window.addEventListener).to.have.been.calledOnce;
+                expect(window.addEventListener).to.have.been.calledWith('scroll');
+                expect(utilMock.debounce).to.have.been.calledOnce;
             });
         });
     });
