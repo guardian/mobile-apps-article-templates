@@ -49,18 +49,29 @@ define([
     function checkForVideos() {
         var iframes = document.body.querySelectorAll('iframe.youtube-media');
         
-        var hasPreviousElementImage = function (element) {
+        var isPreviousElementSDKPlaceholder = function (element) {
             var previousElementSibling = element.previousElementSibling;
 
-            return previousElementSibling && previousElementSibling.classList.contains('element-image');
+            return previousElementSibling && previousElementSibling.classList.contains('youtube-media__sdk-placeholder');
         };
 
+        /**
+            if a youtube iframe doesn't have 
+            the sdk placeholder (youtubeAtomPositionPlaceholder.html) 
+            as it's preceeding sibling then it is to be initialised by JS
+        **/
         videos = Array.prototype.filter.call(iframes, function (iframe) {
-            return !hasPreviousElementImage(iframe);
+            return !isPreviousElementSDKPlaceholder(iframe);
         });
         
+        /**
+            if a youtube iframe does have 
+            the sdk placeholder (youtubeAtomPositionPlaceholder.html) 
+            as it's preceeding sibling then we must report it's position to
+            the native layer
+        **/
         sdkPlaceholders = Array.prototype.map.call(iframes, function (iframe) {
-             if (hasPreviousElementImage(iframe)) {
+             if (isPreviousElementSDKPlaceholder(iframe)) {
                 var previousElementSibling = iframe.previousElementSibling;
                 
                 iframe.remove();
@@ -68,6 +79,9 @@ define([
                 return previousElementSibling;
              }
         }).filter(Boolean).concat(sdkPlaceholders);
+
+        console.log('videos ----->', videos);
+        console.log('sdkPlaceholders ----->', sdkPlaceholders);
 
         if (videos.length) {
             if (!scriptReady) {
