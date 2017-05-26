@@ -61,9 +61,7 @@ define([
         }
     }
 
-    function unregister(type, callback, options) {
-        options || (options = {});
-
+    function unregister(type, callback) {
         if (listeners[type] === undefined) {
             throw new Error(formatError(error405, type));
         }
