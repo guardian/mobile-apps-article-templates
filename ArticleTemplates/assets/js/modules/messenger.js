@@ -5,7 +5,9 @@ define([
     'use strict';
 
     var allowedHosts = [
-        location.protocol + '//' + location.host
+        location.protocol + '//' + location.host,
+        'http://localhost:9000',
+        'https://api.nextgen.guardianapps.co.uk'
     ];
     var listeners = {};
     var registeredListeners = 0;
@@ -25,18 +27,11 @@ define([
         });
 
         var iframes = document.getElementsByTagName('iframe');
-        var hostRX = /(https?):\/\/([\w\d-]+(?:\.[\w\d-]+)*(?:\:\d+))/
         for(var i = 0, ii = iframes.length; i < ii; i++) {
             if (!iframes[i].classList.contains('atom-embed')) {
               continue;
             }
 
-            var matches = iframes[i].src.match(hostRX);
-            if (!matches) {
-              continue;
-            }
-
-            allowedHosts.push(matches[1] + '://' + matches[2]);
             iframes[i].contentWindow.postMessage('go', '*');
         }
     }
