@@ -165,13 +165,14 @@ define([
         return 'type' in payload &&
             'value' in payload &&
             'id' in payload &&
+            'iframeId' in payload &&
             payload.type in listeners;
     }
 
     // Incoming messages contain the ID of the iframe into which the
     // source window is embedded.
     function getIframe(data) {
-        return document.getElementById(data.id);
+        return document.getElementById(data.iframeId);
     }
 
     // Cheap string formatting function. It accepts as its first argument
