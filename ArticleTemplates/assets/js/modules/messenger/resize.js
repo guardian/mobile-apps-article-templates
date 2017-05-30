@@ -14,17 +14,13 @@ define(function () {
             return null;
         }
 
-        var styles = {};
-
         if (specs.width) {
-            styles.width = normalise(specs.width);
+            iframe.style.width = normalise(specs.width);
         }
 
         if (specs.height) {
-            styles.height = normalise(specs.height);
+            iframe.style.height = normalise(specs.height);
         }
-
-        Object.assign(iframe.style, styles);
     }
 
     function normalise(length) {
