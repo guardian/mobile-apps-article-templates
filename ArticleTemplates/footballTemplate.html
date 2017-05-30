@@ -9,7 +9,9 @@
     <script type="text/javascript">
         window.GU = window.GU || {};
     </script>
-    <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/shim.js"></script>
+    <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/polyfills/promise.js"></script>
+    <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/polyfills/requestAnimationFrame.js"></script>
+    <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/bootstrap.js"></script>
 </head>
 
 <body class="tone--__SECTION_TONE__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__ advert-config--__ADS_CONFIG__" data-content-type="football" data-ads-enabled="__ADS_ENABLED__" data-ads-enable-hiding="__ADS_ENABLE_HIDING__" style="margin-top: __ACTIONBARHEIGHT__px;" data-ads-config="__ADS_CONFIG__" data-font-size="__FONT_SIZE_INT__" data-template-directory="__TEMPLATES_DIRECTORY__" data-page-id="__PAGE_ID__" data-mpu-after-paragraphs="__MPU_AFTER_PARAGRAPHS__" data-use-ads-ready="__ADS_FAST_CALLBACK__">
@@ -73,7 +75,7 @@
     </div>
 
     <script type="text/javascript">
-        GU.Bootstrap.init({
+        GU.bootstrap.init({
             sectionTone: "__SECTION_TONE__",
             fontSize: "__FONT_SIZE__",
             isLive: "__IS_LIVE__" ? true : false,
