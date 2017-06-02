@@ -25,15 +25,6 @@ define([
         modules.forEach(function (module) {
             module.init(register);
         });
-
-        var iframes = document.getElementsByTagName('iframe');
-        for(var i = 0, ii = iframes.length; i < ii; i++) {
-            if (!iframes[i].classList.contains('atom-embed')) {
-              continue;
-            }
-
-            iframes[i].contentWindow.postMessage('go', '*');
-        }
     }
 
     function register(type, callback, options) {
