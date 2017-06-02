@@ -22,6 +22,10 @@ define([
     };
 
     function start(modules) {
+        register('syn', function() {
+            return 'ack';
+        });
+
         modules.forEach(function (module) {
             module.init(register);
         });
