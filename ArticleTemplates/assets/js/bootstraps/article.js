@@ -7,8 +7,7 @@ define([
     'modules/youtube',
     'modules/immersive',
     'modules/messenger',
-    'modules/messenger/resize',
-    'modules/messenger/webfonts'
+    'modules/messenger/resize'
 ], function (
     twitter,
     witness,
@@ -18,8 +17,7 @@ define([
     youtube,
     immersive,
     messenger,
-    resize,
-    webfonts
+    resize
 ) {
     'use strict';
 
@@ -37,7 +35,7 @@ define([
             }
             richLinkTracking();
             creativeInjector.init();
-            messenger.start([resize, webfonts]);
+            messenger.start([resize]);
             initialised = true;
         }
     }
