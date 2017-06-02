@@ -50,7 +50,7 @@ define([
 
     function getFontsStylesheet() {
         var i = -1, ii = document.styleSheets.length;
-        var fileRX = /fonts-(ios|android)\.css$/;
+        var fileRX = /fonts-(ios|android|windows)\.css$/;
         while (++i < ii) {
             var s = document.styleSheets[i];
             if (fileRX.test(s.href)) {
@@ -77,7 +77,7 @@ define([
             var style = normaliseStyle(rule.style.fontStyle);
             fontMap[family][weight] || (fontMap[family][weight] = {});
             if (base64RX.test(fileSrc)) {
-                fontMap[family][weight][style] = fileSrc.substring(4, fileSrc.length - 2);
+                fontMap[family][weight][style] = fileSrc.substring(4, fileSrc.length - 1);
             } else {
                 fileSrc = fileSrc.substring(5, fileSrc.length - 2);
                 a.setAttribute('href', fileSrc);
