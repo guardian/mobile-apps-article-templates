@@ -20,5 +20,5 @@ if [[ `git status --porcelain` ]]; then
     PACKAGE_VERSION=$(node -p "require('./package.json').version")
     git commit -m "$(printf "Update to version $PACKAGE_VERSION")"
     git push origin release
-    npm publish
+    npm publish --access public
 fi
