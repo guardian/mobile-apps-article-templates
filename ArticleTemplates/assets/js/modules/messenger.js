@@ -174,17 +174,13 @@ define([
     //
     // returns `{ message: "Regis, you are so lovely" }`. Oh, thank you!
     function formatError() {
-        if (arguments.length < 2) {
-            return arguments[0] || '';
-        }
-
         var error = arguments[0];
-        Array.prototype.slice.call(arguments, 1).forEach(function (arg) {
+        var args = Array.prototype.slice.call(arguments, 1);
+        return args.reduce(function (e, arg) {
             // Keep in mind that when the first argument is a string,
             // String.replace only replaces the first occurence
-            error.message = error.message.replace('%%', arg);
-        });
-
-        return error;
+            e.message = e.message.replace('%%', arg);
+            return e;
+        }, error);
     }
 });
