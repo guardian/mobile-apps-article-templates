@@ -38,8 +38,6 @@ define([
     };
 
     function getWebfonts(specs) {
-        console.log("looking up these webfonts:");
-        console.dir(specs);
         return specs.map(function (fontDescription) {
             var fontName = fontNameMap[fontDescription.family];
             return getFont(
