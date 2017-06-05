@@ -1,4 +1,3 @@
-/* global Promise */
 define([
     'modules/post-message'
 ], function (postMessage) {
