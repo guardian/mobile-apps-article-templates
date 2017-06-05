@@ -139,7 +139,6 @@ module.exports = function(grunt) {
                     'undef': true,
                     'unused': true,
                     'white': true,
-                    'predef': [ '-Promise' ],
                     'globals': {
                         'console': true,
                         'GU': true,
@@ -148,7 +147,8 @@ module.exports = function(grunt) {
                         'sinon': true,
                         'expect': true,
                         'twttr': true,
-                        'YT': true
+                        'YT': true,
+                        'Promise': true
                     }
                 },
                 files: {
