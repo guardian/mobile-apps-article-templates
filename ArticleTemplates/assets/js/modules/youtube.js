@@ -23,6 +23,11 @@ define([
     }
 
     function setStateHandlers() {
+        /** 
+            nativeYoutubeEnabled can be enabled on Android
+            if nativeYoutubeEnabled is false we will track
+            video state within the template 
+        **/
         if (!GU.opts.nativeYoutubeEnabled) {
             stateHandlers = {
                 'ENDED': onPlayerEnded,
@@ -79,9 +84,6 @@ define([
                 return previousElementSibling;
              }
         }).filter(Boolean).concat(sdkPlaceholders);
-
-        console.log('videos ----->', videos);
-        console.log('sdkPlaceholders ----->', sdkPlaceholders);
 
         if (videos.length) {
             if (!scriptReady) {
