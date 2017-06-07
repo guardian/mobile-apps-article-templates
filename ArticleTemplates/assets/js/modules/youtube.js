@@ -25,8 +25,9 @@ define([
     function setStateHandlers() {
         /** 
             nativeYoutubeEnabled can be enabled on Android
-            if nativeYoutubeEnabled is false we will track
-            video state within the template 
+            if nativeYoutubeEnabled is true we won't track
+            state ended, playing, paused from within the template
+            as this is handled by Android
         **/
         if (!GU.opts.nativeYoutubeEnabled) {
             stateHandlers = {
