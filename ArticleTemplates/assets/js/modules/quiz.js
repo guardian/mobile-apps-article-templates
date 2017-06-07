@@ -416,7 +416,7 @@ define([
             numAnswered--;
         }
 
-        // update answer to answer buckets
+        // update answer buckets
         answerBuckets = answer.dataset.buckets.split(',');
         answerBuckets.forEach(function (bucketId) {
             bucketId = bucketId.trim();
