@@ -51,12 +51,12 @@ define([
         if (newBlocksAdded) {
             /**
                 If newBlocksAdded wait 700ms to
-                check for youtube video atoms as blocks animate in
-                over 600ms.
+                check for youtube video atoms as blocks slides in
+                from right over 600ms.
             **/
             setTimeout(function() {
                 youtube.checkForVideos();
-            }, 700);
+            }, 650);
         } else {
             youtube.checkForVideos();
         }
