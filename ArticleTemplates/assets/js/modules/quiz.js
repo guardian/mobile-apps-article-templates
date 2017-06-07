@@ -395,30 +395,43 @@ define([
     }
 
     function onPersonalityAnswerClick(answer, question) {
-        var hightedAnswer;
+        var highlightedAnswer,
+            answerBuckets,
+            highlightedAnswerBuckets;
 
-        if (question.classList.contains('answered')) {
-            if (answer.classList.contains('highlight-answer') ||
-                questionCount === numAnswered) {
-                return;    
-            } else {
-                hightedAnswer = question.getElementsByClassName('highlight-answer')[0];
-                hightedAnswer.classList.remove('highlight-answer');
-                personalityQuizBuckets[hightedAnswer.dataset.buckets].count--;
-                numAnswered--;
-            }
+        // if the question has been answered already
+        // and the the new answer selected is not the highlighted answer
+        // remove answer from highlighted answer buckets
+        if (question.classList.contains('answered') &&
+            !(answer.classList.contains('highlight-answer') || questionCount === numAnswered)) {
+            highlightedAnswer = question.getElementsByClassName('highlight-answer')[0];
+            highlightedAnswer.classList.remove('highlight-answer');
+            highlightedAnswerBuckets = highlightedAnswer.dataset.buckets.split(',');
+            highlightedAnswerBuckets.forEach(function(bucketId) {
+                bucketId = bucketId.trim();
+                if (personalityQuizBuckets[bucketId]) {
+                    personalityQuizBuckets[bucketId].count--;
+                }
+            });
+            numAnswered--;
         }
 
-        if (personalityQuizBuckets[answer.dataset.buckets]) {
-            question.classList.add('answered');
-            answer.classList.add('highlight-answer');
-            numAnswered++;
-            personalityQuizBuckets[answer.dataset.buckets].count++;
-
-            // If all questions have been answered display the score
-            if (questionCount === numAnswered) {
-                showResult();
+        // update answer to answer buckets
+        answerBuckets = answer.dataset.buckets.split(',');
+        answerBuckets.forEach(function (bucketId) {
+            bucketId = bucketId.trim();
+            if (personalityQuizBuckets[bucketId]) {
+                personalityQuizBuckets[bucketId].count++;
             }
+        });
+
+        // mark question as answered
+        question.classList.add('answered');
+        answer.classList.add('highlight-answer');
+        numAnswered++;
+        // If all questions have been answered display the score
+        if (questionCount === numAnswered) {
+            showResult();
         }
     }
 
