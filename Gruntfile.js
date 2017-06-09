@@ -244,5 +244,5 @@ module.exports = function(grunt) {
 
     grunt.registerTask('buildCSS', ['sass', 'cssmin']);
 
-    grunt.registerTask('default', ['buildJS', 'buildCSS', 'watch']);
+    grunt.registerTask('default', ['buildJS', 'buildCSS', 'rsync', 'watch']);
 };
