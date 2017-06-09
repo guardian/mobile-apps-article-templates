@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
 
     require('load-grunt-tasks')(grunt);
-    
+
     config = {};
 
     try {
@@ -111,7 +111,7 @@ module.exports = function(grunt) {
                 force: true
             },
             uses_defaults: [
-                'Gruntfile.js', 
+                'Gruntfile.js',
                 'ArticleTemplates/assets/js/{bootstraps, modules}/*.js'
             ],
             with_overrides: {
@@ -210,18 +210,18 @@ module.exports = function(grunt) {
         watch: {
             js: {
                 files: ['ArticleTemplates/assets/js/**/*.js'],
-                tasks: ['buildJS','rsync']
+                tasks: ['validateJS', 'testJS', 'buildJS','rsync']
             },
             scss: {
                 files: ['ArticleTemplates/assets/scss/**/*.scss'],
-                tasks: ['buildCSS','rsync']
+                tasks: ['validateCSS', 'buildCSS','rsync']
             },
             copy: {
                 files: ['ArticleTemplates/*.html', 'ArticleTemplates/assets/img/**'],
                 tasks: ['rsync']
             }
         },
-        // desktop notifications for Grunt errors 
+        // desktop notifications for Grunt errors
         notify_hooks: {
             options: {
                 enabled: true,
@@ -234,9 +234,15 @@ module.exports = function(grunt) {
 
     grunt.task.run('notify_hooks');
 
-    grunt.registerTask('buildJS', ['jshint', 'karma', 'initRequireJS', 'requirejs']);
+    grunt.registerTask('testJS', ['karma']);
 
-    grunt.registerTask('buildCSS', ['sasslint', 'sass', 'cssmin']);
+    grunt.registerTask('validateJS', ['jshint']);
+
+    grunt.registerTask('validateCSS', ['sasslint']);
+
+    grunt.registerTask('buildJS', ['initRequireJS', 'requirejs']);
+
+    grunt.registerTask('buildCSS', ['sass', 'cssmin']);
 
     grunt.registerTask('default', ['buildJS', 'buildCSS', 'watch']);
 };
