@@ -8,10 +8,10 @@
     $headline-lead-3: 4.8rem;
     $headline-size-4: 3.6rem;
     $headline-lead-4: 3.6rem;
-    
+
     font-size: $headline-size-1 * $multiple;
     line-height: $headline-lead-1 * $multiple;
-    
+
     @include mq($from: col2) {
         font-size: $headline-size-2 * $multiple;
         line-height: $headline-lead-2 * $multiple;
@@ -34,7 +34,7 @@
     $standfirst-lead-1: 2.2rem;
     $standfirst-size-2: 2.2rem;
     $standfirst-lead-2: 3rem;
-    
+
     @include mq($to: col2) {
         font-size: $standfirst-size-1 * $multiple;
         line-height: $standfirst-lead-1 * $multiple;
@@ -51,7 +51,7 @@
     $review-lead-1: 2.4rem;
     $review-size-2: 3rem;
     $review-lead-2: 3.2rem;
-    
+
     @include mq($to: col1) {
         font-size: $review-size-1;
         line-height: $review-lead-1;
@@ -95,13 +95,13 @@ $body-lead-2: 2.6rem;
     }
 }
 
-// Custom media queries 
+// Custom media queries
 @mixin customMQ($point) {
-    /*  iPhone 6 */ 
+    /*  iPhone 6 */
     @if $point == iP6 {
         @media (min-width: 375px) and (max-width: 480px) { @content; }
     }
-    /*  iPhone 6 Plus */ 
+    /*  iPhone 6 Plus */
     @else if $point == iP6P {
         @media (min-width: 414px) and (max-width: 480px) { @content; }
     }
@@ -123,6 +123,8 @@ $meta-lead-2: 2.2rem;
         font-size: $meta-size-2 * $multiple;
         line-height: $meta-lead-2 * $multiple;
     }
+
+    -webkit-text-size-adjust: none;
 }
 
 
@@ -134,10 +136,10 @@ $meta-lead-2: 2.2rem;
 
         // Underline via gradient background
         background-image: linear-gradient(rgba($color, .25) 0%, $color 100%);
-        background-repeat: repeat-x; 
+        background-repeat: repeat-x;
         background-size: 1px 1px;
         background-position: 0 bottom;
-        
+
         // Tweak position + thickness for high res (1.75x and up) displays
         @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
             background-image: linear-gradient(rgba($color, .25) 0%, $color 100%);
@@ -146,7 +148,7 @@ $meta-lead-2: 2.2rem;
 
         // Clear descendors from underline
         text-shadow: 3px 0 $background, 2px 0 $background, 1px 0 $background, -1px 0 $background, -2px 0 $background, -3px 0 $background;
-        
+
         a:active,
         &:hover {
             color: $color-accent;
@@ -245,7 +247,7 @@ $meta-lead-2: 2.2rem;
     &:active {
         color: if($process == 'darken', darken($text-color, $tone-change), lighten($text-color, $tone-change));
         border: 1px solid if($process == 'darken', darken($border-color, $tone-change), lighten($border-color, $tone-change));;
-    }    
+    }
 }
 
 @mixin related-card-duration($color) {
