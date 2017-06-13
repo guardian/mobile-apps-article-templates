@@ -5,8 +5,8 @@
   "main": "ArticleTemplates/",
   "scripts": {
     "setup": "if [ ! -d .git/info ]; then  mkdir -p .git/info; fi; echo ArticleTemplates/assets/css/ >> .git/info/exclude && echo ArticleTemplates/assets/build/ >> .git/info/exclude",
-    "test": "grunt karma",
-    "validate": "grunt sasslint && grunt jshint",
+    "test": "grunt testJS",
+    "validate": "grunt validateJS && grunt validateCSS",
     "buildJS": "grunt buildJS",
     "buildCSS": "grunt buildCSS",
     "build": "yarn buildJS && yarn buildCSS",
