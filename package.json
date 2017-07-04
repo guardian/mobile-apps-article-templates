@@ -1,12 +1,12 @@
 {
-  "name": "guardian-mobile-apps-article-templates",
+  "name": "@guardian/mobile-apps-article-templates",
   "version": "1.0.0",
   "description": "Templates for articles on both iOS and Android next-gen apps",
   "main": "ArticleTemplates/",
   "scripts": {
     "setup": "if [ ! -d .git/info ]; then  mkdir -p .git/info; fi; echo ArticleTemplates/assets/css/ >> .git/info/exclude && echo ArticleTemplates/assets/build/ >> .git/info/exclude",
-    "test": "grunt karma",
-    "validate": "grunt sasslint && grunt jshint",
+    "test": "grunt testJS",
+    "validate": "grunt validateJS && grunt validateCSS",
     "buildJS": "grunt buildJS",
     "buildCSS": "grunt buildCSS",
     "build": "yarn buildJS && yarn buildCSS",
@@ -27,6 +27,10 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "d3": "^3.5.4",
+    "domready": "^1.0.7",
+    "fastclick": "^1.0.6",
+    "fence": "git://github.com/guardian/fence",
     "grunt": "^0.4.5",
     "grunt-contrib-cssmin": "^0.14.0",
     "grunt-contrib-jshint": "^1.0.0",
@@ -53,14 +57,8 @@
     "requirejs": "^2.3.3",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
+    "smooth-scroll": "git://github.com/cferdinandi/smooth-scroll",
     "squirejs": "^0.2.1"
-  },
-  "dependencies": {
-    "d3": "^3.5.4",
-    "domready": "^1.0.7",
-    "fastclick": "^1.0.6",
-    "fence": "git://github.com/guardian/fence",
-    "smooth-scroll": "git://github.com/cferdinandi/smooth-scroll"
   },
   "engines": {
     "node": "6.9.2"

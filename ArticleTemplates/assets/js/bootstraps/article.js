@@ -5,7 +5,9 @@ define([
     'modules/quiz',
     'modules/creativeInjector',
     'modules/youtube',
-    'modules/immersive'
+    'modules/immersive',
+    'modules/messenger',
+    'modules/messenger/resize'
 ], function (
     twitter,
     witness,
@@ -13,7 +15,9 @@ define([
     quiz,
     creativeInjector,
     youtube,
-    immersive
+    immersive,
+    messenger,
+    resize
 ) {
     'use strict';
 
@@ -31,6 +35,7 @@ define([
             }
             richLinkTracking();
             creativeInjector.init();
+            messenger.start([resize]);
             initialised = true;
         }
     }
@@ -62,7 +67,7 @@ define([
             }
         }
     }
-    
+
     return {
         init: init
     };

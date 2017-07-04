@@ -8,7 +8,9 @@
     <script type="text/javascript">
         window.GU = window.GU || {};
     </script>
-    <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/shim.js"></script>
+    <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/polyfills/promise.js"></script>
+    <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/polyfills/requestAnimationFrame.js"></script>
+    <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/bootstrap.js"></script>
 </head>
 
 <body class="tone--news __FONT_SIZE__ __PLATFORM__" data-content-type="error" data-ads-enabled="false" style="margin-top: __ACTIONBARHEIGHT__px;" data-font-size="__FONT_SIZE_INT__" data-template-directory="__TEMPLATES_DIRECTORY__">
@@ -23,7 +25,7 @@
     </div>
 
     <script type="text/javascript">
-        GU.Bootstrap.init({
+        GU.bootstrap.init({
             fontSize: "__FONT_SIZE__",
             platform: "__PLATFORM__",
             contentType: "error",
