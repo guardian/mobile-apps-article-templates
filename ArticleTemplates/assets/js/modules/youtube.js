@@ -5,11 +5,17 @@ define([
 ) {
     'use strict';
 
-    var videos,
+    var videos = [],
         stateHandlers = {},
         players = {},
         progressTracker = {},
-        scriptReady = false;
+        scriptReady = false,
+        sdkPlaceholders = [],
+        sdkReport,
+        sdkPollCount = 0,
+        sdkMaxPollCount = 20,
+        sdkReportInitialised = false,
+        sdkPoller;
 
     function ready() {
         setStateHandlers();
@@ -17,6 +23,12 @@ define([
     }
 
     function setStateHandlers() {
+        /** 
+            nativeYoutubeEnabled can be enabled on Android
+            if nativeYoutubeEnabled is true we won't track
+            state ended, playing, paused from within the template
+            as this is handled by Android
+        **/
         if (!GU.opts.nativeYoutubeEnabled) {
             stateHandlers = {
                 'ENDED': onPlayerEnded,
@@ -41,7 +53,38 @@ define([
     }
 
     function checkForVideos() {
-        videos = document.body.querySelectorAll('iframe.youtube-media');
+        var iframes = document.body.querySelectorAll('iframe.youtube-media');
+        
+        var isPreviousElementSDKPlaceholder = function (element) {
+            var previousElementSibling = element.previousElementSibling;
+
+            return previousElementSibling && previousElementSibling.classList.contains('youtube-media__sdk-placeholder');
+        };
+
+        /**
+            if a youtube iframe doesn't have 
+            the sdk placeholder (youtubeAtomPositionPlaceholder.html) 
+            as it's preceeding sibling then it is to be initialised by JS
+        **/
+        videos = Array.prototype.filter.call(iframes, function (iframe) {
+            return !isPreviousElementSDKPlaceholder(iframe);
+        });
+        
+        /**
+            if a youtube iframe does have 
+            the sdk placeholder (youtubeAtomPositionPlaceholder.html) 
+            as it's preceeding sibling then we must report it's position to
+            the native layer
+        **/
+        sdkPlaceholders = Array.prototype.map.call(iframes, function (iframe) {
+             if (isPreviousElementSDKPlaceholder(iframe)) {
+                var previousElementSibling = iframe.previousElementSibling;
+                
+                iframe.remove();
+
+                return previousElementSibling;
+             }
+        }).filter(Boolean).concat(sdkPlaceholders);
 
         if (videos.length) {
             if (!scriptReady) {
@@ -50,6 +93,51 @@ define([
                 initialiseVideos();
             }
         }
+
+        if (sdkPlaceholders.length) {
+            buildAndSendSdkReport();
+
+            if (!sdkReportInitialised) {
+                window.addEventListener('resize', buildAndSendSdkReport);
+
+                sdkReportInitialised = true;
+            }
+
+            if (sdkPoller) {
+                clearInterval(sdkPoller);
+            }
+
+            sdkPoller = setInterval(function () {
+                if (sdkPollCount < sdkMaxPollCount) {
+                     buildAndSendSdkReport();
+                     sdkPollCount++;
+                } else {
+                    clearInterval(sdkPoller);
+                }
+            }, 1000);
+        }
+    }
+
+    function buildAndSendSdkReport() {
+        var newSdkReport = buildSdkReport();
+
+        if (newSdkReport !== sdkReport) {
+            GU.util.signalDevice('youtubeAtomPosition/' + newSdkReport);
+            sdkReport = newSdkReport;
+        }
+    }
+
+    function buildSdkReport() {
+        return JSON.stringify(sdkPlaceholders.map(getSdkReportPosProps));
+    }
+
+    function getSdkReportPosProps(sdkPlaceholder) {
+        var posProps = GU.util.getElementOffset(sdkPlaceholder);
+        var atom = sdkPlaceholder.closest('[data-atom-id]');
+
+        posProps.id = atom.dataset.atomId;
+
+        return posProps;
     }
 
     function loadScript() {

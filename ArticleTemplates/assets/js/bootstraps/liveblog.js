@@ -44,15 +44,25 @@ define([
         }
     }
 
-    function checkInjectedComponents() {
-      // check for tweets
-      twitter.checkForTweets();
+    function checkInjectedComponents(newBlocksAdded) {
+        // check for tweets
+        twitter.checkForTweets();
 
-      // check for youtube video atoms
-      youtube.checkForVideos();
+        if (newBlocksAdded) {
+            /**
+                If newBlocksAdded wait 700ms to
+                check for youtube video atoms as blocks slides in
+                from right over 600ms.
+            **/
+            setTimeout(function() {
+                youtube.checkForVideos();
+            }, 650);
+        } else {
+            youtube.checkForVideos();
+        }
 
-      // if there is a contributions epic, track it
-      creativeInjector.trackLiveBlogEpic();
+        // if there is a contributions epic, track it
+        creativeInjector.trackLiveBlogEpic();
     }
 
     function liveblogNewBlockDump() {
@@ -89,7 +99,7 @@ define([
 
             window.liveblogTime();
 
-            checkInjectedComponents();
+            checkInjectedComponents(true);
 
             newBlockHtml = '';
         }
@@ -158,7 +168,7 @@ define([
 
         window.liveblogTime();
 
-        checkInjectedComponents();
+        checkInjectedComponents(false);
     }
 
     function liveblogTime() {
