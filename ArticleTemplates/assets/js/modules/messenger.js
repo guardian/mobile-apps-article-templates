@@ -22,7 +22,10 @@ define([
 
     function start(modules) {
         register('syn', function() {
-            return 'ack';
+            return {
+              msg: 'ack',
+              src: location.pathname
+            };
         });
 
         modules.forEach(function (module) {
