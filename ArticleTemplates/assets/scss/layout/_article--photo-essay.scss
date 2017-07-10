@@ -11,6 +11,11 @@
 }
 
 .photo-essay .prose {
+    figure.element-image {
+        clear: both;
+    }
+
+
     figure.element-image.element--halfWidth {
     	@include halfWidth;
 
@@ -47,7 +52,7 @@
     figure.element-image:not(.element--halfWidth) + ul {
         display: none;
     }
-
+    
     figure.element-image.element--halfWidth + ul {
         clear: both;
         list-style: none;
