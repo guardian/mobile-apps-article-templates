@@ -4,83 +4,103 @@
     margin-top: 0;
     margin-bottom: 2%;
     margin-left: 0;
-
-    figcaption {
-        display: none;
-    }
 }
 
-.photo-essay .prose {
+.display-hint--photoEssay .prose {
     figure.element-image {
         clear: both;
     }
 
+    figure.element-image figcaption {
+        display: none;
+    }
 
     figure.element-image.element--halfWidth {
     	@include halfWidth;
+    }
 
-    	// Makes sure that elements which come after the block of images are no longer floating
-    	& + p, & + blockquote, & + .element-pullquote:not(.element--halfWidth) {
-    	    clear: both;
-    	    padding-top: $gs-baseline / 2;
-    	}
+    // Makes sure that elements which come after the block of images are no longer floating
+    figure.element-image.element--halfWidth + p, 
+    figure.element-image.element--halfWidth + blockquote, 
+    figure.element-image.element--halfWidth + .element-pullquote:not(.element--halfWidth) {
+        clear: both;
+        padding-top: $gs-baseline / 2;
+    }
 
-        &:nth-child(odd) {
-            margin-right: 2%;
-        }
+    figure.element-image.element--halfWidth:nth-child(odd) {
+        margin-right: 2%;
+    }
 
-        &:nth-child(even) {
-            clear: none;
-        }
+    figure.element-image.element--halfWidth:nth-child(even) {
+        clear: none;
     }
 
     aside.element-pullquote {
         max-width: none;
         margin: 0 0 $gs-baseline * 2;
-
-        &.element--halfWidth {
-            @include halfWidth;
-
-            // Makes sure that elements which come after the block of images are no longer floating
-            & + p, & + blockquote, & + .element-image:not(.element--halfWidth) {
-                clear: both;
-                padding-top: $gs-baseline / 2;
-            }
-        }
     }
 
-    figure.element-image:not(.element--halfWidth) + ul {
-        display: none;
+    aside.element-pullquote.element--halfWidth {
+        @include halfWidth;
     }
-    
-    figure.element-image.element--halfWidth + ul {
+
+    // Makes sure that elements which come after the block of images are no longer floating
+    aside.element-pullquote.element--halfWidth + p,
+    aside.element-pullquote.element--halfWidth + blockquote,
+    aside.element-pullquote.element--halfWidth + .element-image:not(.element--halfWidth) {
+        clear: both;
+        padding-top: $gs-baseline / 2;
+    }
+
+    // Style list items that follow images to look like figCaption
+    figure.element-image + ul {
         clear: both;
         list-style: none;
         position: relative;
         top: -12px;
-        
-        li {
-            @extend %caption-icon;
-            font-size: 1.4rem;
-            color: color(shade-2);
-            font-family: $agate-sans;
-            border-bottom: 1px dotted rgba(color(shade-3), .4);
-            padding: base-px(.5, 1, 2, 1);
-            display: block;
-            padding-left: 0;
-            margin: 0;
+    }
 
-            &::before {
-                font-family: $icon;
-                content: '\e044';
-                background: none;
-                border: none;
-                margin-right: 6px;
-                height: auto;
-                width: auto;
-                position: relative;
-                top: 2px;
-            }    
+    figure.element-image.figure-wide:not(.element--halfWidth) + ul {
+        margin: 0 -12px 12px -12px;
+
+        @include mq($from: col2) {
+            width: 135%;
+            margin: 0 -12px 12px -12px;
         }
+
+        @include mq($from: col4) {
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
+            clear: none;
+        }
+    }
+
+    figure.element-image + ul li {
+        @extend %caption-icon;
+        font-size: 1.4rem;
+        color: color(shade-2);
+        font-family: $agate-sans;
+        border-bottom: 1px dotted rgba(color(shade-3), .4);
+        padding: base-px(.5, 1, 2, 1);
+        display: block;
+        padding-left: 0;  
+        margin: 0;
+    }
+
+    figure.element-image + ul li::before {
+        font-family: $icon;
+        content: '\e044';
+        background: none;
+        border: none;
+        margin-right: 6px;
+        height: auto;
+        width: auto;
+        position: relative;
+        top: 2px;
+    }
+
+    figure.element-image:not(.element--halfWidth) + ul li {
+        padding-left: 12px;
     }
 }
