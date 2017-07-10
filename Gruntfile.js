@@ -81,6 +81,9 @@ module.exports = function(grunt) {
             ]
         },
         sass: {
+            options: {
+                sourceMap: true
+            },
             dist: {
                 files: {
                     'ArticleTemplates/assets/css/fonts-android.css':  'ArticleTemplates/assets/scss/fonts-android.scss',
@@ -94,6 +97,9 @@ module.exports = function(grunt) {
             }
         },
         cssmin: {
+            options: {
+                sourceMap: true
+            },
             target: {
                 files: [{
                     expand: true,
