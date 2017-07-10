@@ -125,6 +125,7 @@ figure {
 .figure--thumbnail-with-caption {
     display: block;
     float: left;
+    clear: left;
     margin: 4px 12px 0 0;
     width: 50%;
     background: #f6f6f6;
@@ -154,7 +155,6 @@ figure {
 
         &.portrait-thumbnail {
             position: relative;
-            float: left;
             margin-bottom: 12px;
 
             .figure__inner {
@@ -194,10 +194,6 @@ figure {
     @include mq($from: col1) {
         width: 33%;
         max-width: 200px;
-
-        &.portrait-thumbnail {
-            clear: left;
-        }
     }
 
     @include mq($from: col2) {
@@ -206,9 +202,5 @@ figure {
 
     @include mq($from: col4) {
         margin: 4px 0 12px -220px;
-    }
-
-    & + .figure--thumbnail-with-caption {
-        clear: left;
     }
 }
