@@ -85,19 +85,9 @@ define([
         for (i = 0; i < figures.length; i++) {
             figure = figures[i];
 
-            hideFigureCaptionIfEmpty(figure);
-
             if (figure.classList.contains('element-image')) {
                 formatElementImageFigure(figure);
             }
-        }
-    }
-
-    function hideFigureCaptionIfEmpty(figure) {
-        var figcaption = figure.getElementsByTagName('figcaption')[0];
-            
-        if (figcaption && figcaption.innerText === '') {
-            figcaption.style.display = 'none';
         }
     }
 
