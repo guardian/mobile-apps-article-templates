@@ -27,11 +27,11 @@
         padding-top: $gs-baseline / 2;
     }
 
-    figure.element-image.element--halfWidth:nth-child(odd) {
+    .element--halfWidth:nth-child(odd) {
         margin-right: 2%;
     }
 
-    figure.element-image.element--halfWidth:nth-child(even) {
+    .element--halfWidth:nth-child(even) {
         clear: none;
     }
 
@@ -52,7 +52,7 @@
         padding-top: $gs-baseline / 2;
     }
 
-    // Style list items that follow images to look like figCaption
+    // Style lists that immediately follow images to look like captions
     figure.element-image + ul {
         clear: both;
         list-style: none;
@@ -65,7 +65,6 @@
 
         @include mq($from: col2) {
             width: 135%;
-            margin: 0 -12px 12px -12px;
         }
 
         @include mq($from: col4) {
