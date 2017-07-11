@@ -16,12 +16,12 @@
     }
 
     figure.element-image.element--halfWidth {
-    	@include halfWidth;
+        @include halfWidth;
     }
 
     // Makes sure that elements which come after the block of images are no longer floating
-    figure.element-image.element--halfWidth + p, 
-    figure.element-image.element--halfWidth + blockquote, 
+    figure.element-image.element--halfWidth + p,
+    figure.element-image.element--halfWidth + blockquote,
     figure.element-image.element--halfWidth + .element-pullquote:not(.element--halfWidth) {
         clear: both;
         padding-top: $gs-baseline / 2;
@@ -34,7 +34,6 @@
     .element--halfWidth:nth-child(even) {
         clear: none;
     }
-
     aside.element-pullquote {
         max-width: none;
         margin: 0 0 $gs-baseline * 2;
@@ -57,16 +56,14 @@
         clear: both;
         list-style: none;
         position: relative;
-        top: -12px;
+        top: -$gs-baseline;
     }
 
     figure.element-image.figure-wide:not(.element--halfWidth):not(.element--showcase) + ul {
-        margin: 0 -12px 12px -12px;
-
+        margin: 0 -$gs-baseline $gs-baseline;
         @include mq($from: col2) {
             width: 135%;
         }
-
         @include mq($from: col4) {
             margin-left: 0;
             margin-right: 0;
@@ -83,7 +80,7 @@
         border-bottom: 1px dotted rgba(color(shade-3), .4);
         padding: base-px(.5, 1, 2, 1);
         display: block;
-        padding-left: 0;  
+        padding-left: 0;
         margin: 0;
     }
 
@@ -91,8 +88,8 @@
         font-family: $icon;
         content: '\e044';
         background: none;
-        border: none;
-        margin-right: 6px;
+        border: 0;
+        margin-right: $gs-baseline / 2;
         height: auto;
         width: auto;
         position: relative;
@@ -100,7 +97,7 @@
     }
 
     figure.element-image:not(.element--halfWidth) + ul li {
-        padding-left: 12px;
+        padding-left: $gs-baseline;
     }
 
     figure.element-image.element--showcase + ul {
@@ -108,15 +105,14 @@
             float: left;
             margin-left: -240px;
             margin-top: -3px;
-            padding: 12px;
+            padding: $gs-baseline;
             width: 220px;
             clear: both;
-
             li {
                 padding-left: 0;
                 padding-top: 0;
                 padding-right: 0;
-                padding-bottom: 12px;
+                padding-bottom: $gs-baseline;
             }
         }
     }
