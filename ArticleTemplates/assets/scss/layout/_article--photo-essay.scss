@@ -60,7 +60,7 @@
         top: -12px;
     }
 
-    figure.element-image.figure-wide:not(.element--halfWidth) + ul {
+    figure.element-image.figure-wide:not(.element--halfWidth):not(.element--showcase) + ul {
         margin: 0 -12px 12px -12px;
 
         @include mq($from: col2) {
@@ -101,5 +101,23 @@
 
     figure.element-image:not(.element--halfWidth) + ul li {
         padding-left: 12px;
+    }
+
+    figure.element-image.element--showcase + ul {
+        @include mq($from: col4) {
+            float: left;
+            margin-left: -240px;
+            margin-top: -3px;
+            padding: 12px;
+            width: 220px;
+            clear: both;
+
+            li {
+                padding-left: 0;
+                padding-top: 0;
+                padding-right: 0;
+                padding-bottom: 12px;
+            }
+        }
     }
 }
