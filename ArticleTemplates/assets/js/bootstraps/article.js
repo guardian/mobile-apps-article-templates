@@ -30,7 +30,7 @@ define([
             twitter.init();
             witness.init();
             quiz.init();
-            if (GU.opts.isImmersive) {
+            if (document.body.classList.contains("display-hint--immersive")) {
                 immersive.init();
             }
             richLinkTracking();
