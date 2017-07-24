@@ -7,14 +7,6 @@
 }
 
 .display-hint--photoEssay .prose {
-    figure.element-image {
-        clear: both;
-    }
-
-    figure.element-image figcaption {
-        display: none;
-    }
-
     figure.element-image.element--halfWidth {
         @include halfWidth;
     }
@@ -27,12 +19,16 @@
         padding-top: $gs-baseline / 2;
     }
 
+    figure.element-image.element--halfWidth + .element-pullquote:not(.element--halfWidth) {
+        top: $gs-baseline / 2;
+    }
+
     .element--halfWidth:nth-child(odd) {
-        margin-right: 2%;
+        clear: none;
     }
 
     .element--halfWidth:nth-child(even) {
-        clear: none;
+        margin-right: 2%;
     }
     aside.element-pullquote {
         max-width: none;
@@ -50,8 +46,15 @@
         clear: both;
         padding-top: $gs-baseline / 2;
     }
+}
 
-    // Style lists that immediately follow images to look like captions
+// Style lists that immediately follow images to look like captions
+.display-hint--photoEssay .prose,
+.display-hint--articleImmersive .prose {
+    figure.element-image figcaption {
+        display: none;
+    }
+
     figure.element-image + ul {
         clear: both;
         list-style: none;
@@ -59,12 +62,19 @@
         top: -$gs-baseline;
     }
 
-    figure.element-image.figure-wide:not(.element--halfWidth):not(.element--showcase) + ul {
-        margin: 0 -$gs-baseline $gs-baseline;
+    figure.element-image.figure-wide:not(.element--halfWidth) + ul {
+        margin-top: 0;
+        margin-left: -$gs-baseline;
+        margin-right: -$gs-baseline;
+        margin-bottom: $gs-baseline;
+
         @include mq($from: col2) {
             width: 135%;
         }
+
         @include mq($from: col4) {
+            padding-left: 0;
+            padding-right: 0;
             margin-left: 0;
             margin-right: 0;
             width: 100%;
