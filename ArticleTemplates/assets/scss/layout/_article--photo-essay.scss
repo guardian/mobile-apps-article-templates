@@ -12,9 +12,10 @@
     }
 
     // Makes sure that elements which come after the block of images are no longer floating
-    figure.element-image.element--halfWidth + p,
-    figure.element-image.element--halfWidth + blockquote,
-    figure.element-image.element--halfWidth + .element-pullquote:not(.element--halfWidth) {
+    .element--halfWidth + p,
+    .element--halfWidth + blockquote,
+    .element--halfWidth + .element-pullquote:not(.element--halfWidth),
+    .element--halfWidth + .element-image:not(.element--halfWidth) {
         clear: both;
         padding-top: $gs-baseline / 2;
     }
@@ -30,6 +31,7 @@
     .element--halfWidth:nth-child(even) {
         margin-right: 2%;
     }
+
     aside.element-pullquote {
         max-width: none;
         margin: 0 0 $gs-baseline * 2;
@@ -38,17 +40,8 @@
     aside.element-pullquote.element--halfWidth {
         @include halfWidth;
     }
-
-    // Makes sure that elements which come after the block of images are no longer floating
-    aside.element-pullquote.element--halfWidth + p,
-    aside.element-pullquote.element--halfWidth + blockquote,
-    aside.element-pullquote.element--halfWidth + .element-image:not(.element--halfWidth) {
-        clear: both;
-        padding-top: $gs-baseline / 2;
-    }
 }
 
-// Style lists that immediately follow images to look like captions
 .display-hint--photoEssay .prose,
 .display-hint--articleImmersive .prose {
     figure.element-image figcaption {
@@ -73,12 +66,12 @@
         }
 
         @include mq($from: col4) {
+            clear: none;
             padding-left: 0;
             padding-right: 0;
             margin-left: 0;
             margin-right: 0;
             width: 100%;
-            clear: none;
         }
     }
 
@@ -94,6 +87,10 @@
         margin: 0;
     }
 
+    figure.element-image:not(.element--halfWidth) + ul li {
+        padding-left: $gs-baseline;
+    }
+
     figure.element-image + ul li::before {
         font-family: $icon;
         content: '\e044';
@@ -106,12 +103,22 @@
         top: 2px;
     }
 
-    figure.element-image:not(.element--halfWidth) + ul li {
-        padding-left: $gs-baseline;
+    figure.element-image.figure-wide.element--showcase {
+        @include mq($from: col4) {
+            float: none;
+
+            .figure__inner {
+                float: left;
+                margin-bottom: 10px;
+                margin-left: -240px;
+                width: 860px;
+            }
+        }
     }
 
-    figure.element-image.element--showcase + ul {
+    figure.element-image.figure-wide.element--showcase + ul {
         @include mq($from: col4) {
+            display: inline-block;
             float: left;
             margin-left: -240px;
             margin-top: -3px;
@@ -126,4 +133,18 @@
             }
         }
     }
+
+    figure.element-image.figure-wide.element--showcase + ul + figure.element--halfWidth {
+        @include mq($from: col4) {
+            clear: none;
+        }
+    }
+
+    figure.element-image.figure-wide.element--showcase + ul + figure.element-image.figure-wide:not(.element--showcase):not(.element--immersive) {
+        @include mq($from: col4) {
+            float: left;
+            clear: none;
+        }
+    }   
 }
+        
