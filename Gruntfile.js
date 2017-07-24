@@ -82,7 +82,7 @@ module.exports = function(grunt) {
         },
         sass: {
             options: {
-                sourceMap: true
+                sourceMap: grunt.option('sourceMap')
             },
             dist: {
                 files: {
@@ -98,7 +98,7 @@ module.exports = function(grunt) {
         },
         cssmin: {
             options: {
-                sourceMap: true
+                sourceMap: grunt.option('sourceMap')
             },
             target: {
                 files: [{
