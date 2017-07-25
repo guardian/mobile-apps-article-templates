@@ -118,25 +118,22 @@ function (
             },
             mpuOffsetTop = getMpuTop(scrollTop);
 
-            if (advertSlots.length) {
-                for (i = 0; i < advertSlots.length; i++) {
-                    advertPosition = advertSlots[i].getBoundingClientRect();
+        if (advertSlots.length) {
+            for (i = 0; i < advertSlots.length; i++) {
+                advertPosition = advertSlots[i].getBoundingClientRect();
 
-                    if (advertPosition.width !== 0 && advertPosition.height !== 0) {
-                        params['x' + (i + 1)] = advertPosition.left + scrollLeft;
-                        
-                        params['y' + (i + 1)] = (advertPosition.top - mpuOffsetTop) + scrollTop;
-                        // params['y' + (i + 1)] = advertPosition.top + scrollTop;
-                        
-                        params['w' + (i + 1)] = advertPosition.width;
-                        params['h' + (i + 1)] = advertPosition.height;
-                    }
+                if (advertPosition.width !== 0 && advertPosition.height !== 0) {
+                    params['x' + (i + 1)] = advertPosition.left + scrollLeft;
+                    params['y' + (i + 1)] = (advertPosition.top - mpuOffsetTop) + scrollTop;
+                    params['w' + (i + 1)] = advertPosition.width;
+                    params['h' + (i + 1)] = advertPosition.height;
                 }
-
-                return formatter(params);
-            } else {
-                return null;
             }
+
+            return formatter(params);
+        } else {
+            return null;
+        }
     }
 
     /**
