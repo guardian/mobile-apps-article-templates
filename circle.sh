@@ -19,10 +19,10 @@ PACKAGE_VERSION=$(node -p "require('./package.json').version")
 git commit -m "$(printf "Update to version $PACKAGE_VERSION")"
 git push origin release
 npm publish --access public
-# git clone -b gh-use-npm-templates git@github.com:guardian/ios-live.git
-# cd ios-live    
-# jq ".dependencies[\"@guardian/mobile-apps-article-templates\"] = \"${PACKAGE_VERSION}\"" package.json > tmp
-# mv tmp package.json
-# git add package.json
-# git commit -m "$(printf "Update to mobile-apps-article-templates version $PACKAGE_VERSION")"
-# git push origin gh-use-npm-templates
+git clone -b gh-use-npm-templates git@github.com:guardian/ios-live.git
+cd ios-live    
+jq ".dependencies[\"@guardian/mobile-apps-article-templates\"] = \"${PACKAGE_VERSION}\"" package.json > tmp
+mv tmp package.json
+git add package.json
+git commit -m "$(printf "Update to mobile-apps-article-templates version $PACKAGE_VERSION")"
+git push origin gh-use-npm-templates
