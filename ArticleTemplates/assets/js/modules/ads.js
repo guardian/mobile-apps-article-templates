@@ -115,7 +115,8 @@ function (
                 y2: -1, 
                 w2: -1,
                 h2: -1
-            };
+            },
+            mpuOffsetTop = getMpuTop(scrollTop);
 
         if (advertSlots.length) {
             for (i = 0; i < advertSlots.length; i++) {
@@ -123,7 +124,7 @@ function (
 
                 if (advertPosition.width !== 0 && advertPosition.height !== 0) {
                     params['x' + (i + 1)] = advertPosition.left + scrollLeft;
-                    params['y' + (i + 1)] = advertPosition.top + scrollTop;
+                    params['y' + (i + 1)] = (advertPosition.top - mpuOffsetTop) + scrollTop;
                     params['w' + (i + 1)] = advertPosition.width;
                     params['h' + (i + 1)] = advertPosition.height;
                 }
@@ -133,6 +134,19 @@ function (
         } else {
             return null;
         }
+    }
+
+    /**
+        bodyTop and offsetTop added to fix issue on iOS11
+        where ad position was misreported.
+    **/
+    function getMpuTop(scrollTop) {
+        if (GU.opts.platform === 'android') {
+            return 0;
+        }
+
+        var bodyTop = document.body.getBoundingClientRect().top,
+            offsetTop = scrollTop + bodyTop;
     }
 
     function getMpuPosCommaSeparated() {
