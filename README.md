@@ -13,7 +13,7 @@ Article templates used within the Guardian’s next-generation iOS, Android and 
 
 ## Developing
 * checkout the project in a separate directory, outside the iOS and the Android app.
-* copy config.sample.js to config.js and fill in the details
+* copy `config.sample.js` to `config.js` and fill in the details
     * `base.android` is the 'ArticleTemplate' path within the Android app, eg: `/Users/sandropaganotti/Projects/android-news-app/android-news-app/src/main/assets/templates/`
     * `base.ios` is the 'ArticleTemplate' path within the iOS app, eg: `/Users/sandropaganotti/Projects/ios-live/mobile-apps-article-templates/ArticleTemplates/`
     * `base.html` is the path where this repository has been checked out, eg: `/Users/sandropaganotti/Projects/mobile-apps-article-templates/`
@@ -29,7 +29,7 @@ If you are developing against a branch which is not `release`, please follow the
 ## Yarn scripts
 Yarn will provide the following services:
 
-* `yarn test` runs the JS unit tests from the test/spec/unit/ directory
+* `yarn test` runs the JS unit tests from the `test/spec/unit/` directory
 * `yarn validate` runs sasslint checks on SCSS and jshint checks on JS
 * `yarn build` builds JS/CSS assets, used on CI environment for building assets
 * `yarn develop` builds JS and CSS (with source maps) assets and watches for changes to JS/CSS. If changes then rebuilds and copies assets to iOS/Android to the iOS and Android projects as specified in config.js
