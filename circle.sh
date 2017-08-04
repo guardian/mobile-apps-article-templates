@@ -33,4 +33,4 @@ jq ".dependencies[\"@guardian/mobile-apps-article-templates\"] = \"${PACKAGE_VER
 mv tmp package.json
 git add package.json
 git commit -m "$(printf "Update to mobile-apps-article-templates version $PACKAGE_VERSION")"
-git push origin master
+git push origin npm-templates
