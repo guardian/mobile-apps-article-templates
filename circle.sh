@@ -9,7 +9,7 @@ git status
 npm --no-git-tag-version version patch
 git add package.json
 PACKAGE_VERSION=$(node -p "require('./package.json').version")
-git commit -m "$(printf "Update to version $PACKAGE_VERSION")"
+git commit -m "$(printf "Update to version $PACKAGE_VERSION  [skip ci]")"
 git push origin master
 npm publish --access public
 git clone git@github.com:guardian/ios-live.git
