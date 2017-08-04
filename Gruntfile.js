@@ -52,7 +52,7 @@ module.exports = function(grunt) {
     });
 
     grunt.initConfig({
-        // sync templates to local ios/android projects
+        // sync templates to local android projects
         rsync: {
             options: {
                 recursive: true,
@@ -62,12 +62,6 @@ module.exports = function(grunt) {
                 options: {
                     src: 'ArticleTemplates/',
                     dest: config.base.android
-                }
-            },
-            ios: {
-                options: {
-                    src: 'ArticleTemplates/',
-                    dest: config.base.ios
                 }
             }
         },
