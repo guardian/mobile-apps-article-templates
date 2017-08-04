@@ -6,7 +6,6 @@ git config --global user.name "GuardianAndroid"
 git config --global user.email "guardian.android@gmail.com"
 git config --global push.default simple
 git status
-git reset --hard origin/master
 npm --no-git-tag-version version patch
 git add package.json
 PACKAGE_VERSION=$(node -p "require('./package.json').version")
