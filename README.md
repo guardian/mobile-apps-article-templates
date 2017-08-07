@@ -14,8 +14,20 @@ preferred shell startup file.
 * It is recommended you restart your shell to ensure changes added the startup file are applied.
 
 ## Developing
-* Run `git clone git@github.com:guardian/mobile-apps-article-templates.git`
-* run `yarn` to install dependencies.
+**Clone**
+```bash
+$ git clone git@github.com:guardian/mobile-apps-article-templates.git
+```
+
+**Install**
+```bash
+$ yarn
+```
+
+**Watch**
+```bash
+$ yarn develop
+```
 
 ## Mobile apps developers
 If you are developing against a branch of `mobile-apps-article-templates` which is not `master`:
@@ -36,6 +48,6 @@ Yarn will provide the following services:
 * `yarn develop` builds JS and CSS (with source maps) assets and watches for changes to JS/CSS. On change, it rebuilds
 assets and source maps
 
-## deploying
+## Deploying
 
 [How to deploy](docs/how-to-deploy.md)
