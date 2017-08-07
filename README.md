@@ -13,11 +13,7 @@ Article templates used within the Guardian’s next-generation iOS, Android and 
 
 ## Developing
 * checkout the project in a separate directory, outside the iOS and the Android app.
-* copy config.sample.js to config.js and fill in the details
-    * `base.android` is the 'ArticleTemplate' path within the Android app, eg: `/Users/sandropaganotti/Projects/android-news-app/android-news-app/src/main/assets/templates/`
-    * `base.html` is the path where this repository has been checked out, eg: `/Users/sandropaganotti/Projects/mobile-apps-article-templates/`
 * run `yarn` to install dependencies.
-* run `yarn setup` to locally ignore build files so they are not checked into master
 
 ## IOS and Android devs
 If you are developing against a branch which is not `release`, please follow the steps below:
@@ -25,13 +21,11 @@ If you are developing against a branch which is not `release`, please follow the
 * Pull down the branch which you are developing against
 * Follow the 'requirements' and 'developing' steps outlined above
 
-## IOS devs
-* run `yarn build` 
-* Within the root of ios-live open the package.json and update the dependency "@guardian/mobile-apps-article-templates" to point towards "file:../mobile-apps-article-templates"
-* next time you build using xcode it will use your local version of mobile-apps-article-templates
-
-## Android devs
-* run `yarn sync` which will build the project, and move the build into the Android
+## Mobile apps devs
+* run `yarn build`
+* run `npm link`
+* within the root of ios-live or android-news-app run `npm link @guardian/mobile-apps-article-templates`
+* next time you build the app it will use your local version of mobile-apps-article-templates
 
 ## Yarn scripts
 Yarn will provide the following services:
