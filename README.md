@@ -47,7 +47,3 @@ Yarn will provide the following services:
 * `yarn build` builds JS/CSS assets, used on CI environment for building assets
 * `yarn develop` builds JS and CSS (with source maps) assets and watches for changes to JS/CSS. On change, it rebuilds
 assets and source maps
-
-## Deploying
-
-[How to deploy](docs/how-to-deploy.md)
