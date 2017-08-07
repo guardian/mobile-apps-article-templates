@@ -52,19 +52,6 @@ module.exports = function(grunt) {
     });
 
     grunt.initConfig({
-        // sync templates to local android projects
-        rsync: {
-            options: {
-                recursive: true,
-                delete: true
-            },
-            android: {
-                options: {
-                    src: 'ArticleTemplates/',
-                    dest: config.base.android
-                }
-            }
-        },
         // stylesheets
         sasslint: {
             options: {
@@ -210,15 +197,11 @@ module.exports = function(grunt) {
         watch: {
             js: {
                 files: ['ArticleTemplates/assets/js/**/*.js'],
-                tasks: ['validateJS', 'testJS', 'buildJS','rsync']
+                tasks: ['validateJS', 'testJS', 'buildJS']
             },
             scss: {
                 files: ['ArticleTemplates/assets/scss/**/*.scss'],
-                tasks: ['validateCSS', 'buildCSS','rsync']
-            },
-            copy: {
-                files: ['ArticleTemplates/*.html', 'ArticleTemplates/assets/img/**'],
-                tasks: ['rsync']
+                tasks: ['validateCSS', 'buildCSS']
             }
         },
         // desktop notifications for Grunt errors
@@ -244,5 +227,5 @@ module.exports = function(grunt) {
 
     grunt.registerTask('buildCSS', ['sass', 'cssmin']);
 
-    grunt.registerTask('default', ['buildJS', 'buildCSS', 'rsync', 'watch']);
+    grunt.registerTask('default', ['buildJS', 'buildCSS', 'watch']);
 };
