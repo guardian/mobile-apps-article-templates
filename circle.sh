@@ -21,7 +21,7 @@ git commit -m "$(printf "Update to mobile-apps-article-templates version $PACKAG
 git push origin master
 cd ..
 git clone git@github.com:guardian/android-news-app.git
-cd android-news-app
+cd android-news-app/android-news-app
 jq ".dependencies[\"@guardian/mobile-apps-article-templates\"] = \"${PACKAGE_VERSION}\"" package.json > tmp
 mv tmp package.json
 git add package.json
