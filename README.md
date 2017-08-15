@@ -37,7 +37,7 @@ If you are developing against a branch of `mobile-apps-article-templates` which 
 * Run `npm link`
 * Within the root of `ios-live` or `android-news-app` run `npm link @guardian/mobile-apps-article-templates`
 
-Next time you build the app it will use the currently checkout-out branch of `mobile-apps-article-templates`
+Next time you build the app it will use the currently checked-out branch of `mobile-apps-article-templates`
 
 ## Yarn scripts
 Yarn will provide the following services:
