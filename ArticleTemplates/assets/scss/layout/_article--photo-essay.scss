@@ -1,16 +1,10 @@
 @mixin halfWidth {
     width: 49%;
     float: left;
-    margin-top: 0;
-    margin-bottom: 2%;
-    margin-left: 0;
+    margin: 0 0 2% 0;
 }
 
 .display-hint--photoEssay .prose {
-    figure.element-image.element--halfWidth {
-        @include halfWidth;
-    }
-
     // Makes sure that elements which come after the block of images are no longer floating
     .element--halfWidth + p,
     .element--halfWidth + blockquote,
@@ -20,25 +14,35 @@
         padding-top: $gs-baseline / 2;
     }
 
-    figure.element-image.element--halfWidth + .element-pullquote:not(.element--halfWidth) {
-        top: $gs-baseline / 2;
+    figure.element-image.element--halfWidth,
+    aside.element-pullquote.element--halfWidth {
+        @include halfWidth;
     }
 
-    .element--halfWidth:nth-child(odd) {
+    figure.element-image.element--halfWidth {
         clear: none;
     }
 
-    .element--halfWidth:nth-child(even) {
-        margin-right: 2%;
-    }
-
-    aside.element-pullquote {
-        max-width: none;
-        margin: 0 0 $gs-baseline * 2;
+    figure.element-image.element--halfWidth + figure.element-image.element--halfWidth {
+        margin-left: 2%;
     }
 
     aside.element-pullquote.element--halfWidth {
-        @include halfWidth;
+        clear: both;
+    }
+
+    aside.element-pullquote {
+        margin: 0 0 $gs-baseline * 2;
+    }
+
+    aside.element-pullquote:not(.element--halfWidth) {
+        @include mq($from: col2) {
+            padding-right: $gs-baseline / 2;
+        }
+    }
+
+    figure.element-image.element--halfWidth + aside.element-pullquote {
+        top: $gs-baseline / 2;
     }
 }
 
