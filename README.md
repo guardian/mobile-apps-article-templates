@@ -34,8 +34,12 @@ If you are developing against a branch of `mobile-apps-article-templates` which 
 
 * Checkout the branch you are developing against
 * Run `yarn build`
-* Run `npm link`
-* Within the root of `ios-live` or `android-news-app` run `npm link @guardian/mobile-apps-article-templates`
+* Edit the `package.json` file in the root of `ios-live` /`android-news-app`, replacing the version of the `@guardian/mobile-apps-article-templates` dependency with the relative path of the local templates repo, e.g. (if your repositories are in the same folder):
+```
+"dependencies": {
+    "@guardian/mobile-apps-article-templates": "file:../mobile-apps-article-templates"
+}
+```
 
 Next time you build the app it will use the currently checked-out branch of `mobile-apps-article-templates`
 
