@@ -150,30 +150,6 @@ define([
                 document.body.removeChild(articleElem);
             });
 
-            it('hides figure caption if empty', function () {
-                opts.figCaption = '';
-
-                figElem = buildFigElem(opts);
-          
-                articleElem.appendChild(figElem);
-
-                common.formatImages();
-
-                expect(figElem.querySelector('figcaption').style.display).to.eql('none');
-            });
-
-            it('does not hide figure caption if not empty', function () {
-                opts.figCaption = 'hello world';
-
-                figElem = buildFigElem(opts);
-
-                articleElem.appendChild(figElem);
-
-                common.formatImages();
-
-                expect(figElem.querySelector('figcaption').style.display).to.not.eql('none');
-            });
-
             it('adds image wrapper if first child of figure does not have class figure__inner', function () {
                 figElem = buildFigElem(opts);
 

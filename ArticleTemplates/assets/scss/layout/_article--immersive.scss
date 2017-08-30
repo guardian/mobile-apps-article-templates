@@ -1,5 +1,7 @@
 // Specificity required to override tones (!important also needed to override tone - if the immersive is meant to appear in feature colours they should set it to tone--feature!! - need to look at better way to do this..)
-body.immersive .article--immersive {
+
+.display-hint--immersive .article--immersive,
+.display-hint--articleImmersive .article--immersive {
     border-top: 0;
 
     a {
@@ -607,39 +609,6 @@ body.immersive .article--immersive {
 
                 + .section__rule {
                     clear: none;
-                }
-            }
-
-            &.element--showcase {
-                width: auto;
-
-                @include mq($from: col2) {
-                    width: 135%;
-                }
-
-                @include mq($from: col4) {
-                    float: none;
-
-                    .figure__inner {
-                        float: left;
-                        margin: {
-                            bottom: 10px;
-                            left: -240px;
-                        }
-                        width: 860px;
-                    }
-
-                    figcaption {
-                        border: 0;
-                        clear: both;
-                        float: left;
-                        margin: {
-                            left: -240px;
-                            top: -3px;
-                        }
-                        padding: 0 12px;
-                        width: 220px;
-                    }
                 }
             }
         }
