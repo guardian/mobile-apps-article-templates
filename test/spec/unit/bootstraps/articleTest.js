@@ -43,12 +43,6 @@ define([
             immersiveMock = {
                 init: sandbox.spy()
             };
-            
-            window.GU = {
-                opts: {
-                    isImmersive: false
-                }
-            };
 
             window.applyNativeFunctionCall = sandbox.spy();
 
