@@ -104,8 +104,8 @@ function (
         var advertPosition,
             advertSlots = document.getElementsByClassName('advert-slot__wrapper'),
             i,
-            scrollLeft = document.body.scrollLeft,
-            scrollTop = document.body.scrollTop,
+            scrollLeft = document.scrollingElement.scrollLeft,
+            scrollTop = document.scrollingElement.scrollTop,
             params = {
                 x1: -1,
                 y1: -1,
