@@ -242,22 +242,18 @@ define([
         });
 
          it('xxx', function () {
-            expect(true).to.eql(true);
-        //     var videoWrapper = getVideoWrapper('video1'),
-        //         iframe = videoWrapper.querySelector('.youtube-media');
+            var videoWrapper = getVideoWrapper('video1'),
+                iframe = videoWrapper.querySelector('.youtube-media');
 
-        //     container.appendChild(videoWrapper);
+            container.appendChild(videoWrapper);
+            
+            videoWrapper.querySelector('.youtube-media__placeholder__img').setAttribute('style', 'background-image: url()');
 
-        //     console.log('***', videoWrapper.querySelector('.youtube-media__placeholder__img'));
-        //     console.log('****', iframe);
+            youtube.init();
 
-        //     videoWrapper.querySelector('.youtube-media__placeholder__img').setAttribute('style', 'background-image: url()');
+            window.YT.players[0].onReady('video1');
 
-        //     youtube.init();
-
-        //     window.YT.players[0].onReady('video1');
-
-        //     expect(iframe.parentNode.classList.contains('show-video')).to.eql(true);
+            expect(iframe.parentNode.classList.contains('show-video')).to.eql(true);
         });
 
         it('plays native video on touchpoint click if nativeYoutubeEnabled is true', function (done) {
