@@ -256,43 +256,43 @@ define([
             }, 500);
         });
 
-        // it('plays native video on touchpoint click if nativeYoutubeEnabled is true', function (done) {
-        //     var videoWrapper = getVideoWrapper('video1');
+        it('plays native video on touchpoint click if nativeYoutubeEnabled is true', function (done) {
+            var videoWrapper = getVideoWrapper('video1');
 
-        //     container.appendChild(videoWrapper);
+            container.appendChild(videoWrapper);
 
-        //     window.GU.opts.nativeYoutubeEnabled = true;
+            window.GU.opts.nativeYoutubeEnabled = true;
 
-        //     youtube.init();
+            youtube.init();
 
-        //     window.YT.players[0].onReady('video1');
-        //     startVideoWithTap(videoWrapper, window.YT.players[0], true);
+            window.YT.players[0].onReady('video1');
+            startVideoWithTap(videoWrapper, window.YT.players[0], true);
 
-        //     setTimeout(function () {
-        //         expect(videoWrapper.classList.contains('show-video')).to.eql(false);
-        //         expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(false);
-        //         expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
+            setTimeout(function () {
+                expect(videoWrapper.classList.contains('show-video')).to.eql(false);
+                expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(false);
+                expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
 
-        //         done();
-        //     }, 500);
-        // });
+                done();
+            }, 500);
+        });
 
-        // it('initialiseVideos if scriptReady when checkForVideos called', function () {
-        //     var videoWrapper1 = getVideoWrapper('video1'),
-        //         videoWrapper2 = getVideoWrapper('video2');
+        it('initialiseVideos if scriptReady when checkForVideos called', function () {
+            var videoWrapper1 = getVideoWrapper('video1'),
+                videoWrapper2 = getVideoWrapper('video2');
 
-        //     container.appendChild(videoWrapper1);
+            container.appendChild(videoWrapper1);
 
-        //     youtube.init();
+            youtube.init();
 
-        //     expect(window.YT.players.length).to.eql(1);
+            expect(window.YT.players.length).to.eql(1);
 
-        //     container.appendChild(videoWrapper2);
+            container.appendChild(videoWrapper2);
 
-        //     youtube.checkForVideos();
+            youtube.checkForVideos();
 
-        //     expect(window.YT.players.length).to.eql(2);
-        // });
+            expect(window.YT.players.length).to.eql(2);
+        });
 
         // describe('on iOS', function () {
         //     it('handles onPlayerStateChange when PLAYING from start', function () {
