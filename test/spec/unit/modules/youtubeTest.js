@@ -165,119 +165,134 @@ define([
             sandbox.restore();
         });
 
-        it('does not add youtube script if no youtube iframe on page', function () {
-            youtube.init();
+        // it('does not add youtube script if no youtube iframe on page', function () {
+        //     youtube.init();
 
-            expect(scriptAdded).to.eql(false);
-        });
+        //     expect(scriptAdded).to.eql(false);
+        // });
 
-        it('sets up iframe players when script ready', function () {
-            container.appendChild(getVideoWrapper('video1'));
+        // it('sets up iframe players when script ready', function () {
+        //     container.appendChild(getVideoWrapper('video1'));
 
-            youtube.init();
+        //     youtube.init();
 
-            expect(scriptAdded).to.eql(true);
-        });
+        //     expect(scriptAdded).to.eql(true);
+        // });
 
-        it('does not add youtube script if youtube script already on page', function () {
-            container.innerHTML = '<script id="youtube-script" src=""></script>';
-            container.appendChild(getVideoWrapper('video1'));
+        // it('does not add youtube script if youtube script already on page', function () {
+        //     container.innerHTML = '<script id="youtube-script" src=""></script>';
+        //     container.appendChild(getVideoWrapper('video1'));
 
-            youtube.init();
+        //     youtube.init();
 
-            expect(scriptAdded).to.eql(false);
-        });
+        //     expect(scriptAdded).to.eql(false);
+        // });
 
-        it('sets up new player', function () {
-            container.appendChild(getVideoWrapper('video1'));
+        // it('sets up new player', function () {
+        //     container.appendChild(getVideoWrapper('video1'));
 
-            youtube.init();
+        //     youtube.init();
 
-            expect(window.YT.players.length).to.eql(1);
-        });
+        //     expect(window.YT.players.length).to.eql(1);
+        // });
 
-        it('removes placeholder if no placeholder image provided', function () {
-            var videoWrapper = getVideoWrapper('video1'),
-                placeholder = videoWrapper.querySelector('.youtube-media__placeholder');
+        // it('removes placeholder if no placeholder image provided', function () {
+        //     var videoWrapper = getVideoWrapper('video1'),
+        //         placeholder = videoWrapper.querySelector('.youtube-media__placeholder');
 
-            container.appendChild(videoWrapper);
+        //     container.appendChild(videoWrapper);
 
-            videoWrapper.querySelector('.youtube-media__placeholder__img').setAttribute('style', 'background-image: url()');
+        //     videoWrapper.querySelector('.youtube-media__placeholder__img').setAttribute('style', 'background-image: url()');
 
-            youtube.init();
+        //     youtube.init();
 
-            expect(placeholder.parentNode).to.be.falsy;
-        });
+        //     expect(placeholder.parentNode).to.be.falsy;
+        // });
 
-        it('handles onPlayerReady', function () {
-            var videoWrapper = getVideoWrapper('video1'),
-                placeholder = videoWrapper.querySelector('.youtube-media__placeholder');
+        // it('handles onPlayerReady', function () {
+        //     var videoWrapper = getVideoWrapper('video1'),
+        //         placeholder = videoWrapper.querySelector('.youtube-media__placeholder');
 
-            container.appendChild(videoWrapper);
+        //     container.appendChild(videoWrapper);
 
-            youtube.init();
+        //     youtube.init();
 
-            window.YT.players[0].onReady('video1');
+        //     window.YT.players[0].onReady('video1');
 
-            expect(Player.prototype.getDuration).to.have.been.calledOnce;
-            expect(placeholder.classList.contains('fade-touchpoint')).to.eql(true);
-        });
+        //     expect(Player.prototype.getDuration).to.have.been.calledOnce;
+        //     expect(placeholder.classList.contains('fade-touchpoint')).to.eql(true);
+        // });
 
-        it('plays video on placeholder click and hides placeholder', function (done) {
-            var videoWrapper = getVideoWrapper('video1');
+        // it('handles onPlayerReady if no placeholder image provided', function () {
+        //     var videoWrapper = getVideoWrapper('video1'),
+        //         iframe = videoWrapper.querySelector('.youtube-media');
 
-            container.appendChild(videoWrapper);
+        //     container.appendChild(videoWrapper);
 
-            youtube.init();
+        //     videoWrapper.querySelector('.youtube-media__placeholder__img').setAttribute('style', 'background-image: url()');
 
-            window.YT.players[0].onReady('video1');
-            startVideoWithTap(videoWrapper, window.YT.players[0]);
+        //     youtube.init();
 
-            setTimeout(function () {
-                expect(videoWrapper.classList.contains('show-video')).to.eql(true);
-                expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(true);
+        //     window.YT.players[0].onReady('video1');
 
-                done();
-            }, 500);
-        });
+        //     expect(iframe.parentNode.classList.contains('show-video')).to.eql(true);
+        // });
 
-        it('plays native video on touchpoint click if nativeYoutubeEnabled is true', function (done) {
-            var videoWrapper = getVideoWrapper('video1');
+        // it('plays video on placeholder click and hides placeholder', function (done) {
+        //     var videoWrapper = getVideoWrapper('video1');
 
-            container.appendChild(videoWrapper);
+        //     container.appendChild(videoWrapper);
 
-            window.GU.opts.nativeYoutubeEnabled = true;
+        //     youtube.init();
 
-            youtube.init();
+        //     window.YT.players[0].onReady('video1');
+        //     startVideoWithTap(videoWrapper, window.YT.players[0]);
 
-            window.YT.players[0].onReady('video1');
-            startVideoWithTap(videoWrapper, window.YT.players[0], true);
+        //     setTimeout(function () {
+        //         expect(videoWrapper.classList.contains('show-video')).to.eql(true);
+        //         expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(true);
 
-            setTimeout(function () {
-                expect(videoWrapper.classList.contains('show-video')).to.eql(false);
-                expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(false);
-                expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
+        //         done();
+        //     }, 500);
+        // });
 
-                done();
-            }, 500);
-        });
+        // it('plays native video on touchpoint click if nativeYoutubeEnabled is true', function (done) {
+        //     var videoWrapper = getVideoWrapper('video1');
 
-        it('initialiseVideos if scriptReady when checkForVideos called', function () {
-            var videoWrapper1 = getVideoWrapper('video1'),
-                videoWrapper2 = getVideoWrapper('video2');
+        //     container.appendChild(videoWrapper);
 
-            container.appendChild(videoWrapper1);
+        //     window.GU.opts.nativeYoutubeEnabled = true;
 
-            youtube.init();
+        //     youtube.init();
 
-            expect(window.YT.players.length).to.eql(1);
+        //     window.YT.players[0].onReady('video1');
+        //     startVideoWithTap(videoWrapper, window.YT.players[0], true);
 
-            container.appendChild(videoWrapper2);
+        //     setTimeout(function () {
+        //         expect(videoWrapper.classList.contains('show-video')).to.eql(false);
+        //         expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(false);
+        //         expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
 
-            youtube.checkForVideos();
+        //         done();
+        //     }, 500);
+        // });
 
-            expect(window.YT.players.length).to.eql(2);
-        });
+        // it('initialiseVideos if scriptReady when checkForVideos called', function () {
+        //     var videoWrapper1 = getVideoWrapper('video1'),
+        //         videoWrapper2 = getVideoWrapper('video2');
+
+        //     container.appendChild(videoWrapper1);
+
+        //     youtube.init();
+
+        //     expect(window.YT.players.length).to.eql(1);
+
+        //     container.appendChild(videoWrapper2);
+
+        //     youtube.checkForVideos();
+
+        //     expect(window.YT.players.length).to.eql(2);
+        // });
 
         describe('on iOS', function () {
             it('handles onPlayerStateChange when PLAYING from start', function () {
