@@ -443,174 +443,174 @@ define([
             });
         });
 
-        // describe('on Android', function () {
-        //     beforeEach(function () {
-        //         window.GU.opts.platform = 'android';
-        //     });
+        describe('on Android', function () {
+            beforeEach(function () {
+                window.GU.opts.platform = 'android';
+            });
 
-        //     it('does not handle onPlayerStateChange id GU.opts.nativeYoutubeEnabled is true', function () {
-        //         var videoWrapper = getVideoWrapper('video1');
+            it('does not handle onPlayerStateChange id GU.opts.nativeYoutubeEnabled is true', function () {
+                var videoWrapper = getVideoWrapper('video1');
 
-        //         container.appendChild(videoWrapper);
+                container.appendChild(videoWrapper);
 
-        //         window.GU.opts.nativeYoutubeEnabled = true;
+                window.GU.opts.nativeYoutubeEnabled = true;
 
-        //         youtube.init();
+                youtube.init();
 
-        //         setPlayerState('PLAYING', window.YT.players[0]);
+                setPlayerState('PLAYING', window.YT.players[0]);
 
-        //         expect(Player.prototype.getCurrentTime).not.to.have.been.called;
-        //         expect(window.GuardianJSInterface.trackAction).not.to.have.been.called;
-        //     });
+                expect(Player.prototype.getCurrentTime).not.to.have.been.called;
+                expect(window.GuardianJSInterface.trackAction).not.to.have.been.called;
+            });
 
-        //     it('handles onPlayerStateChange when PLAYING from start', function (done) {
-        //         var videoWrapper = getVideoWrapper('video1');
+            it('handles onPlayerStateChange when PLAYING from start', function (done) {
+                var videoWrapper = getVideoWrapper('video1');
 
-        //         container.appendChild(videoWrapper);
+                container.appendChild(videoWrapper);
 
-        //         youtube.init();
+                youtube.init();
 
-        //         // Play Video
-        //         window.YT.players[0].onReady('video1');
-        //         setPlayerState('PLAYING', window.YT.players[0]);
+                // Play Video
+                window.YT.players[0].onReady('video1');
+                setPlayerState('PLAYING', window.YT.players[0]);
 
-        //         expect(Player.prototype.getCurrentTime).to.have.been.called;
-        //         expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
-        //         expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:start'}));
+                expect(Player.prototype.getCurrentTime).to.have.been.called;
+                expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
+                expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:start'}));
 
-        //         done();
-        //     });
+                done();
+            });
 
-        //     it('handles onPlayerStateChange when PLAYING from PAUSED position', function (done) {
-        //         var videoWrapper = getVideoWrapper('video1');
+            it('handles onPlayerStateChange when PLAYING from PAUSED position', function (done) {
+                var videoWrapper = getVideoWrapper('video1');
 
-        //         container.appendChild(videoWrapper);
+                container.appendChild(videoWrapper);
 
-        //         youtube.init();
+                youtube.init();
 
-        //         // Play Video
-        //         window.YT.players[0].onReady('video1');
-        //         setPlayerState('PLAYING', window.YT.players[0]);
+                // Play Video
+                window.YT.players[0].onReady('video1');
+                setPlayerState('PLAYING', window.YT.players[0]);
 
-        //         setTimeout(function () {
-        //             // Pause Video
-        //             setPlayerState('PAUSED', window.YT.players[0]);
+                setTimeout(function () {
+                    // Pause Video
+                    setPlayerState('PAUSED', window.YT.players[0]);
 
-        //             // Restart Video
-        //             setPlayerState('PLAYING', window.YT.players[0]);
+                    // Restart Video
+                    setPlayerState('PLAYING', window.YT.players[0]);
 
-        //             expect(Player.prototype.getCurrentTime).to.have.been.called;
-        //             expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
-        //             expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:start'}));
+                    expect(Player.prototype.getCurrentTime).to.have.been.called;
+                    expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
+                    expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:start'}));
 
-        //             // End video to kill progress tracker
-        //             setPlayerState('ENDED', window.YT.players[0]);
+                    // End video to kill progress tracker
+                    setPlayerState('ENDED', window.YT.players[0]);
 
-        //             done();
-        //         }, 500);
-        //     });
+                    done();
+                }, 500);
+            });
 
-        //     it('handles onPlayerStateChange and tracks progress', function (done) {
-        //         var videoWrapper = getVideoWrapper('video1');
+            it('handles onPlayerStateChange and tracks progress', function (done) {
+                var videoWrapper = getVideoWrapper('video1');
 
-        //         container.appendChild(videoWrapper);
+                container.appendChild(videoWrapper);
 
-        //         youtube.init();
+                youtube.init();
 
-        //         // Play Video
-        //         window.YT.players[0].onReady('video1');
-        //         setPlayerState('PLAYING', window.YT.players[0]);
+                // Play Video
+                window.YT.players[0].onReady('video1');
+                setPlayerState('PLAYING', window.YT.players[0]);
 
-        //         setTimeout(function () {
-        //             expect(window.GuardianJSInterface.trackAction).to.have.been.called;
-        //             expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:start'}));
-        //             expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:25'}));
+                setTimeout(function () {
+                    expect(window.GuardianJSInterface.trackAction).to.have.been.called;
+                    expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:start'}));
+                    expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:25'}));
 
-        //             // End video to kill progress tracker
-        //             setPlayerState('ENDED', window.YT.players[0]);
+                    // End video to kill progress tracker
+                    setPlayerState('ENDED', window.YT.players[0]);
 
-        //             done();
-        //         }, 8000);
-        //     });
+                    done();
+                }, 8000);
+            });
 
-        //     it('pauses video when other video begins and track new video', function (done) {
-        //         var videoWrapper1 = getVideoWrapper('video1'),
-        //             videoWrapper2 = getVideoWrapper('video2');
+            it('pauses video when other video begins and track new video', function (done) {
+                var videoWrapper1 = getVideoWrapper('video1'),
+                    videoWrapper2 = getVideoWrapper('video2');
 
-        //         container.appendChild(videoWrapper1);
-        //         container.appendChild(videoWrapper2);
+                container.appendChild(videoWrapper1);
+                container.appendChild(videoWrapper2);
 
-        //         youtube.init();
+                youtube.init();
 
-        //         // Play Video1
-        //         window.YT.players[0].onReady('video1');
-        //         setPlayerState('PLAYING', window.YT.players[0]);
+                // Play Video1
+                window.YT.players[0].onReady('video1');
+                setPlayerState('PLAYING', window.YT.players[0]);
 
-        //         // Play Video2
-        //         window.YT.players[1].onReady('video2');
-        //         setPlayerState('PLAYING', window.YT.players[1]);
+                // Play Video2
+                window.YT.players[1].onReady('video2');
+                setPlayerState('PLAYING', window.YT.players[1]);
 
-        //         setTimeout(function () {
-        //             // End video to kill progress tracker
-        //             setPlayerState('ENDED', window.YT.players[1]);
+                setTimeout(function () {
+                    // End video to kill progress tracker
+                    setPlayerState('ENDED', window.YT.players[1]);
 
-        //             expect(window.GuardianJSInterface.trackAction).to.have.been.called;
-        //             expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:start'}));
-        //             expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video2', eventType:'video:content:start'}));
-        //             expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video2', eventType:'video:content:25'}));
-        //             expect(window.YT.players.length).to.eql(2);
-        //             expect(Player.prototype.pauseVideo).to.have.been.calledTwice;
+                    expect(window.GuardianJSInterface.trackAction).to.have.been.called;
+                    expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:start'}));
+                    expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video2', eventType:'video:content:start'}));
+                    expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video2', eventType:'video:content:25'}));
+                    expect(window.YT.players.length).to.eql(2);
+                    expect(Player.prototype.pauseVideo).to.have.been.calledTwice;
 
-        //             done();
-        //         }, 8000);
-        //     });
+                    done();
+                }, 8000);
+            });
 
-        //     it('handles onPlayerStateChange when PAUSED', function (done) {
-        //         var videoWrapper = getVideoWrapper('video1');
+            it('handles onPlayerStateChange when PAUSED', function (done) {
+                var videoWrapper = getVideoWrapper('video1');
 
-        //         container.appendChild(videoWrapper);
+                container.appendChild(videoWrapper);
 
-        //         youtube.init();
+                youtube.init();
 
-        //         // Play Video
-        //         window.YT.players[0].onReady('video1');
-        //         setPlayerState('PLAYING', window.YT.players[0]);
+                // Play Video
+                window.YT.players[0].onReady('video1');
+                setPlayerState('PLAYING', window.YT.players[0]);
 
-        //         // Pause video
-        //         setPlayerState('PAUSED', window.YT.players[0]);
+                // Pause video
+                setPlayerState('PAUSED', window.YT.players[0]);
 
-        //         setTimeout(function () {
-        //             expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
-        //             expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:start'}));
+                setTimeout(function () {
+                    expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
+                    expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:start'}));
 
-        //             // End video to kill progress tracker
-        //             setPlayerState('ENDED', window.YT.players[0]);
+                    // End video to kill progress tracker
+                    setPlayerState('ENDED', window.YT.players[0]);
 
-        //             done();
-        //         }, 8000);
-        //     });
+                    done();
+                }, 8000);
+            });
 
-        //     it('handles onPlayerStateChange when ENDED', function (done) {
-        //         var videoWrapper = getVideoWrapper('video1');
+            it('handles onPlayerStateChange when ENDED', function (done) {
+                var videoWrapper = getVideoWrapper('video1');
 
-        //         videoWrapper.classList.add('hide-placeholder');
-        //         videoWrapper.classList.add('show-video');
+                videoWrapper.classList.add('hide-placeholder');
+                videoWrapper.classList.add('show-video');
 
-        //         container.appendChild(videoWrapper);
+                container.appendChild(videoWrapper);
 
-        //         youtube.init();
+                youtube.init();
 
-        //         setPlayerState('ENDED', window.YT.players[0]);
+                setPlayerState('ENDED', window.YT.players[0]);
 
-        //         setTimeout(function () {
-        //             expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(false);
-        //             expect(videoWrapper.classList.contains('show-video')).to.eql(false);
-        //             expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
-        //             expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:end'}));
+                setTimeout(function () {
+                    expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(false);
+                    expect(videoWrapper.classList.contains('show-video')).to.eql(false);
+                    expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
+                    expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:end'}));
 
-        //             done();
-        //         }, 1500);
-        //     });
-        // });
+                    done();
+                }, 1500);
+            });
+        });
     });
 });
