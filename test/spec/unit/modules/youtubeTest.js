@@ -223,20 +223,20 @@ define([
             expect(placeholder.classList.contains('fade-touchpoint')).to.eql(true);
         });
 
-        // it('handles onPlayerReady if no placeholder image provided', function () {
-        //     var videoWrapper = getVideoWrapper('video1'),
-        //         iframe = videoWrapper.querySelector('.youtube-media');
+        it('handles onPlayerReady if no placeholder image provided', function () {
+            var videoWrapper = getVideoWrapper('video1'),
+                iframe = videoWrapper.querySelector('.youtube-media');
 
-        //     container.appendChild(videoWrapper);
+            container.appendChild(videoWrapper);
 
-        //     videoWrapper.querySelector('.youtube-media__placeholder__img').setAttribute('style', 'background-image: url()');
+            videoWrapper.querySelector('.youtube-media__placeholder__img').setAttribute('style', 'background-image: url()');
 
-        //     youtube.init();
+            youtube.init();
 
-        //     window.YT.players[0].onReady('video1');
+            // window.YT.players[0].onReady('video1');
 
         //     expect(iframe.parentNode.classList.contains('show-video')).to.eql(true);
-        // });
+        });
 
         it('plays video on placeholder click and hides placeholder', function (done) {
             var videoWrapper = getVideoWrapper('video1');
