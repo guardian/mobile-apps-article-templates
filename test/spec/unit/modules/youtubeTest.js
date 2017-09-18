@@ -229,13 +229,16 @@ define([
 
             container.appendChild(videoWrapper);
 
-            videoWrapper.querySelector('.youtube-media__placeholder__img').setAttribute('style', 'background-image: url()');
+            console.log('***', videoWrapper.querySelector('.youtube-media__placeholder__img'));
+            console.log('****', iframe);
+
+            // videoWrapper.querySelector('.youtube-media__placeholder__img').setAttribute('style', 'background-image: url()');
 
             // youtube.init();
 
             // window.YT.players[0].onReady('video1');
 
-            //     expect(iframe.parentNode.classList.contains('show-video')).to.eql(true);
+            // expect(iframe.parentNode.classList.contains('show-video')).to.eql(true);
         });
 
         it('plays video on placeholder click and hides placeholder', function (done) {
