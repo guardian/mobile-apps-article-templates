@@ -597,7 +597,7 @@ define([
                 var bylineElem = metaContainer.getElementsByClassName('byline')[0];
 
                 if (bylineElem && 
-                    bylineElem.innerHTML === "" &&
+                    bylineElem.innerHTML === '' &&
                     !metaContainer.getElementsByClassName('sponsorship').length) {
                     var metaParent = metaContainer.parentNode;
 
