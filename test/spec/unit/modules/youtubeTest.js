@@ -238,23 +238,23 @@ define([
         //     expect(iframe.parentNode.classList.contains('show-video')).to.eql(true);
         // });
 
-        // it('plays video on placeholder click and hides placeholder', function (done) {
-            // var videoWrapper = getVideoWrapper('video1');
+        it('plays video on placeholder click and hides placeholder', function (done) {
+            var videoWrapper = getVideoWrapper('video1');
 
-            // container.appendChild(videoWrapper);
+            container.appendChild(videoWrapper);
 
-            // youtube.init();
+            youtube.init();
 
-            // window.YT.players[0].onReady('video1');
-            // startVideoWithTap(videoWrapper, window.YT.players[0]);
+            window.YT.players[0].onReady('video1');
+            startVideoWithTap(videoWrapper, window.YT.players[0]);
 
-            // setTimeout(function () {
-                // expect(videoWrapper.classList.contains('show-video')).to.eql(true);
-                // expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(true);
+            setTimeout(function () {
+                expect(videoWrapper.classList.contains('show-video')).to.eql(true);
+                expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(true);
 
-                // done();
-            // }, 500);
-        // });
+                done();
+            }, 500);
+        });
 
         // it('plays native video on touchpoint click if nativeYoutubeEnabled is true', function (done) {
         //     var videoWrapper = getVideoWrapper('video1');
