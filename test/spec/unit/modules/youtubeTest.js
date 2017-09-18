@@ -224,13 +224,13 @@ define([
         });
 
         it('handles onPlayerReady if no placeholder image provided', function () {
-            var videoWrapper = getVideoWrapper('video1'),
-                iframe = videoWrapper.querySelector('.youtube-media');
+            // var videoWrapper = getVideoWrapper('video1'),
+                // iframe = videoWrapper.querySelector('.youtube-media');
 
-            container.appendChild(videoWrapper);
+            // container.appendChild(videoWrapper);
 
-            console.log('***', videoWrapper.querySelector('.youtube-media__placeholder__img'));
-            console.log('****', iframe);
+            // console.log('***', videoWrapper.querySelector('.youtube-media__placeholder__img'));
+            // console.log('****', iframe);
 
             // videoWrapper.querySelector('.youtube-media__placeholder__img').setAttribute('style', 'background-image: url()');
 
