@@ -238,22 +238,7 @@ define([
                 expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(true);
 
                 done();
-            }, 750);
-        });
-
-         it('xxx', function () {
-            var videoWrapper = getVideoWrapper('video1'),
-                iframe = videoWrapper.querySelector('.youtube-media');
-
-            container.appendChild(videoWrapper);
-            
-            videoWrapper.querySelector('.youtube-media__placeholder__img').setAttribute('style', 'background-image: url()');
-
-            youtube.init();
-
-            window.YT.players[0].onReady('video1');
-
-            expect(iframe.parentNode.classList.contains('show-video')).to.eql(true);
+            }, 500);
         });
 
         it('plays native video on touchpoint click if nativeYoutubeEnabled is true', function (done) {
@@ -274,7 +259,7 @@ define([
                 expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
 
                 done();
-            }, 750);
+            }, 500);
         });
 
         it('initialiseVideos if scriptReady when checkForVideos called', function () {
@@ -337,7 +322,7 @@ define([
                     setPlayerState('ENDED', window.YT.players[0]);
 
                     done();
-                }, 750);
+                }, 500);
             });
 
             it('handles onPlayerStateChange and tracks progress', function (done) {
@@ -507,7 +492,7 @@ define([
                     setPlayerState('ENDED', window.YT.players[0]);
 
                     done();
-                }, 750);
+                }, 500);
             });
 
             it('handles onPlayerStateChange and tracks progress', function (done) {
