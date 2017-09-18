@@ -183,8 +183,10 @@ define([
                 };
 
                 if (hasPlaceholderImgSrc(placeholder)) {
+                    console.log('**** T1 ****');
                     players[video.id].placeholder = placeholder; 
                 } else {
+                    console.log('**** T2 ****');
                     placeholder.parentNode.removeChild(placeholder);
                 }
             }

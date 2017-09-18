@@ -239,6 +239,18 @@ define([
             // window.YT.players[0].onReady('video1');
 
             // expect(iframe.parentNode.classList.contains('show-video')).to.eql(true);
+
+            var videoWrapper = getVideoWrapper('video1'),
+                placeholder = videoWrapper.querySelector('.youtube-media__placeholder');
+
+            container.appendChild(videoWrapper);
+
+            youtube.init();
+
+            window.YT.players[0].onReady('video1');
+
+            expect(Player.prototype.getDuration).to.have.been.calledOnce;
+            expect(placeholder.classList.contains('fade-touchpoint')).to.eql(true);
         });
 
         it('plays video on placeholder click and hides placeholder', function (done) {
