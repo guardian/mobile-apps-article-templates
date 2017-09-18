@@ -231,11 +231,11 @@ define([
 
             videoWrapper.querySelector('.youtube-media__placeholder__img').setAttribute('style', 'background-image: url()');
 
-            youtube.init();
+            // youtube.init();
 
             // window.YT.players[0].onReady('video1');
 
-        //     expect(iframe.parentNode.classList.contains('show-video')).to.eql(true);
+            //     expect(iframe.parentNode.classList.contains('show-video')).to.eql(true);
         });
 
         it('plays video on placeholder click and hides placeholder', function (done) {
