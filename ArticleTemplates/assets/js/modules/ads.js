@@ -117,8 +117,6 @@ function (
                 h2: -1
             };
 
-        console.log('***', document.scrollingElement);
-
         if (advertSlots.length) {
             for (i = 0; i < advertSlots.length; i++) {
                 advertPosition = advertSlots[i].getBoundingClientRect();
