@@ -104,8 +104,8 @@ function (
         var advertPosition,
             advertSlots = document.getElementsByClassName('advert-slot__wrapper'),
             i,
-            scrollLeft = document.scrollingElement? document.scrollingElement.scrollLeft : document.documentElement.scrollLeft,
-            scrollTop = document.scrollingElement ? document.scrollingElement.scrollTop : document.documentElement.scrollTop,
+            scrollLeft = document.scrollingElement ? document.scrollingElement.scrollLeft : document.body.scrollLeft,
+            scrollTop = document.scrollingElement ? document.scrollingElement.scrollTop : document.body.scrollTop,
             params = {
                 x1: -1,
                 y1: -1,
@@ -116,6 +116,8 @@ function (
                 w2: -1,
                 h2: -1
             };
+
+        console.log('***', document.scrollingElement);
 
         if (advertSlots.length) {
             for (i = 0; i < advertSlots.length; i++) {
