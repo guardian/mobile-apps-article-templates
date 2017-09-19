@@ -6,6 +6,9 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
     <link rel="stylesheet" type="text/css" media="all" id="fontStyles" href="__TEMPLATES_DIRECTORY__assets/css/fonts-__PLATFORM__.css" />
     <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/style-sync.css" />
+    <style>/* <-- */
+        __ATOMS_CSS__
+    /* --> */</style>
     <script type="text/javascript">
         window.GU = window.GU || {};
     </script>
@@ -37,7 +40,8 @@
             useAdsReady: "__ADS_FAST_CALLBACK__" === "true" ? true : false,
             section: "__SECTION__",
             tests: '__TEST_SPEC__',
-            nativeYoutubeEnabled: "__NATIVE_YOUTUBE_ENABLED__" === "true" ? true : false
+            nativeYoutubeEnabled: "__NATIVE_YOUTUBE_ENABLED__" === "true" ? true : false,
+            atoms: __ATOMS_JS__
         });
     </script>
 </body>
