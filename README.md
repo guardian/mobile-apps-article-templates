@@ -11,7 +11,7 @@ contains documentation that describes the components and layouts used across the
 * [NodeJS](http://nodejs.org/). Install using nvm: `nvm install v6.9.2`. Remember to add `nvm use v6.9.2` to your 
 preferred shell startup file.
 * [Yarn](https://yarnpkg.com). Yarn is a package manager. Install using `brew install yarn`.
-* It is recommended you restart your shell to ensure changes added the startup file are applied.
+* It is recommended you restart your shell to ensure changes added to the startup file are applied.
 
 ## Developing
 **Clone**
@@ -34,7 +34,7 @@ If you are developing against a branch of `mobile-apps-article-templates` which 
 
 * Checkout the branch you are developing against
 * Run `yarn build`
-* Edit the `package.json` file in the root of `ios-live` /`android-news-app`, replacing the version of the `@guardian/mobile-apps-article-templates` dependency with the relative path of the local templates repo, e.g. (if your repositories are in the same folder):
+* Edit the `package.json` file in the root of `ios-live` / `android-news-app`, replacing the version of the `@guardian/mobile-apps-article-templates` dependency with the relative path of the local templates repo, e.g. (if your repositories are in the same folder):
 ```
 "dependencies": {
     "@guardian/mobile-apps-article-templates": "file:../mobile-apps-article-templates"
