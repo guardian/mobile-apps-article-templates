@@ -26,7 +26,7 @@ define([
           }
         }
       });
-      var atoms = document.querySelectorAll('[data-atom-type="' + atomType + '"]');
+      var atoms = document.querySelectorAll('.element-atom[data-atom-type="' + atomType + '"]');
       for( var i = 0; i < atoms.length; i++ ) {
         var atom = atomBuilder(atoms[i]).runTry();
         atom.start();
