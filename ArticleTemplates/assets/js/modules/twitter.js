@@ -18,6 +18,10 @@ define([
     }
 
     function checkForTweets() {
+        if (GU.opts.disableEnhancedTweets) {
+            return;
+        }
+
         tweets = document.body.querySelectorAll('blockquote.js-tweet, blockquote.twitter-tweet');
 
         if (tweets.length && !scriptReady) {
