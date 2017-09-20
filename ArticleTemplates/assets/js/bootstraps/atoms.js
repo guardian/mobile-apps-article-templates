@@ -24,6 +24,10 @@ define([
             console.log("ophan called with:");
             console.dir(arguments);
           }
+        },
+        dom: {
+          write: function(f) { f(); },
+          read: function(f)  { f(); }
         }
       });
       var atoms = document.querySelectorAll('.element-atom[data-atom-type="' + atomType + '"]');
