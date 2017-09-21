@@ -1,35 +1,21 @@
 define([
+  'modules/atoms/services'
 ], function (
+  services
 ) {
     'use strict';
 
     function init() {
       var atomTypes = GU.opts.atoms;
       Object.keys(atomTypes).forEach(function (t) {
+        var f = atomTypes[t];
+        if( typeof f.default !== 'function' || f.default.length !== 1 ) return;
         bootAtomType(t, atomTypes[t]);
       });
     }
 
     function bootAtomType(atomType, atomFactory) {
-      // Need to pass in the API to native services, something that looks
-      // like this: 
-      // {
-      //    ophan:    { record: function(obj) { ... } },
-      //    identity: { ... },
-      //    ...
-      // }
-      var atomBuilder = atomFactory.default({
-        ophan: {
-          record: function() {
-            console.log("ophan called with:");
-            console.dir(arguments);
-          }
-        },
-        dom: {
-          write: function(f) { f(); },
-          read: function(f)  { f(); }
-        }
-      });
+      var atomBuilder = atomFactory.default(services);
       var atoms = document.querySelectorAll('.element-atom[data-atom-type="' + atomType + '"]');
       for( var i = 0; i < atoms.length; i++ ) {
         var atom = atomBuilder(atoms[i]).runTry();
