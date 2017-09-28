@@ -122,7 +122,7 @@ define([
         var newSdkReport = buildSdkReport();
 
         if (newSdkReport !== sdkReport) {
-            GU.util.signalDevice('youtubeAtomPosition/' + newSdkReport);
+            util.signalDevice('youtubeAtomPosition/' + newSdkReport);
             sdkReport = newSdkReport;
         }
     }
@@ -132,7 +132,7 @@ define([
     }
 
     function getSdkReportPosProps(sdkPlaceholder) {
-        var posProps = GU.util.getElementOffset(sdkPlaceholder);
+        var posProps = util.getElementOffset(sdkPlaceholder);
         var atom = sdkPlaceholder.closest('[data-atom-id]');
 
         posProps.id = atom.dataset.atomId;
