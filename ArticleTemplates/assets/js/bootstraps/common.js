@@ -85,19 +85,9 @@ define([
         for (i = 0; i < figures.length; i++) {
             figure = figures[i];
 
-            hideFigureCaptionIfEmpty(figure);
-
             if (figure.classList.contains('element-image')) {
                 formatElementImageFigure(figure);
             }
-        }
-    }
-
-    function hideFigureCaptionIfEmpty(figure) {
-        var figcaption = figure.getElementsByTagName('figcaption')[0];
-            
-        if (figcaption && figcaption.innerText === '') {
-            figcaption.style.display = 'none';
         }
     }
 
@@ -593,54 +583,29 @@ define([
     }
 
     function advertorialUpdates() {
-        var tones, tone, type, 
-            parentNodeClass, bylineElems, 
-            elemsToDelete, j;
-
-        tones = {
-            'tone--media': {
-                'video': 'meta__misc',
-                'gallery': 'meta__misc',
-                'audio': 'byline--mobile'
-            },
-            'tone--news': 'meta',
-            'tone--feature1': 'meta',
-            'tone--feature2': 'meta',
-            'tone--feature3': 'meta',
-            'tone--podcast': 'byline--media'
-        };
-
         if (GU.opts.isAdvertising) {
-            for (tone in tones) {
-                if (tones.hasOwnProperty(tone)) {
-                    if (document.body.classList.contains(tone)) {
-                        if (typeof tones[tone] === 'object') {
-                            for (type in tones[tone]) {
-                                if (tones[tone].hasOwnProperty(type)) {
-                                    if (document.body.dataset.contentType && document.body.dataset.contentType === type) {
-                                        parentNodeClass = tones[tone][type];
-                                        break;
-                                    }
-                                }
-                            }
-                        } else {
-                            parentNodeClass = tones[tone];
-                            break;
-                        }
-                    }
-                }
-            }
+            /**
+             * Remove element with class 'meta'
+             * if it's child element with class 'byline' is empty
+             * and it has no children with class 'sponsorship'
+             */
+            var i;
+            var metaContainers = document.getElementsByClassName('meta');
 
-            if (parentNodeClass) {
-                bylineElems = document.getElementsByClassName('byline');
-                if (bylineElems.length && !bylineElems[0].children.length) {
-                    elemsToDelete = document.body.getElementsByClassName(parentNodeClass);
-                    for (j = 0; j < elemsToDelete.length; j++) {
-                        if (elemsToDelete[j].parentNode && !elemsToDelete[j].getElementsByClassName('sponsorship').length) {
-                            elemsToDelete[j].parentNode.removeChild(elemsToDelete[j]);
-                        }
+            for (i = 0; i < metaContainers.length; i++) {
+                var metaContainer = metaContainers[i];
+                var bylineElem = metaContainer.getElementsByClassName('byline')[0];
+
+                if (bylineElem && 
+                    bylineElem.innerHTML === '' &&
+                    !metaContainer.getElementsByClassName('sponsorship').length) {
+                    var metaParent = metaContainer.parentNode;
+
+                    if (metaParent) {
+                        metaParent.removeChild(metaContainer);
                     }
                 }
+
             }
         }
     }
