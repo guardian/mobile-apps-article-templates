@@ -16,6 +16,19 @@ define(function () {
     dom: {
       write: function(f) { f(); },
       read: function(f)  { f(); }
+    },
+    viewport: {
+      observe: function(element, threshold, callback) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            callback(entry.intersectionRatio);
+          });
+        }, { threshold: threshold });
+        observer.observe(element);
+      },
+      unobserve: function() { 
+        console.log("Unobserving element...");
+      }
     }
   };
 })
