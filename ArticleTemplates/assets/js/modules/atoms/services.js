@@ -1,6 +1,8 @@
 define([
+  'modules/util',
   'modules/services/viewport'
 ], function (
+  util,
   viewport
 ) {
   // Need to pass in the API to native services, something that looks
@@ -12,9 +14,13 @@ define([
   // }
   return {
     ophan: {
-      record: function() {
-        console.log("ophan called with:");
-        console.dir(arguments);
+      record: function(obj) {
+        // Pass obj to native layer be tracked in Ophan
+        if (window.GuardianJSInterface && window.GuardianJSInterface.trackComponentEvent) {
+            window.GuardianJSInterface.trackComponentEvent(obj);
+        } else {
+            util.signalDevice('trackComponentEvent/' + JSON.stringify(obj));
+        }
       }
     },
     dom: {
