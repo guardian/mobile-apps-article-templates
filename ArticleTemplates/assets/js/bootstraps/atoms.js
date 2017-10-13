@@ -19,7 +19,11 @@ define([
       var atoms = document.querySelectorAll('.element-atom[data-atom-type="' + atomType + '"]');
       for( var i = 0; i < atoms.length; i++ ) {
         var atom = atomBuilder(atoms[i]).runTry();
-        atom.start();
+        if (typeof atom === 'string') {
+          console.log('Failed to initialise atom [' + atomType + '/' + atom.getAttribute('data-atom-id') + ']: ' + atom);
+        } else {
+          atom.start();
+        }
       }
     }
 
