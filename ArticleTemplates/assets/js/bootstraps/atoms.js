@@ -20,7 +20,7 @@ define([
       for( var i = 0; i < atoms.length; i++ ) {
         var atom = atomBuilder(atoms[i]).runTry();
         if (typeof atom === 'string') {
-          console.log('Failed to initialise atom [' + atomType + '/' + atom.getAttribute('data-atom-id') + ']: ' + atom);
+          console.log('Failed to initialise atom [' + atomType + '/' + atoms[i].getAttribute('data-atom-id') + ']: ' + atom);
         } else {
           atom.start();
         }
