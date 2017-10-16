@@ -33,7 +33,7 @@ define([
         comments.init(); // load comments
         cards.init(); // load cards
         loadEmbeds();
-        smoothScroll.init(); // scroll to anchor
+        // smoothScroll.init(); // scroll to anchor
         loadInteractives(); 
         setupOfflineSwitch();
         setupAlertSwitch();
