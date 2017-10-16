@@ -6,6 +6,7 @@ define(function() {
   function observe(element, threshold, callback) {
     if (!listening) {
       window.addEventListener('scroll', onScroll);
+      listening = true;
     }
 
     elements[threshold] || (elements[threshold] = []);
@@ -25,6 +26,7 @@ define(function() {
 
     if (elementCount === 0) {
       window.removeEventListener('scroll', onScroll);
+      listening = false;
     }
   }
 
@@ -41,8 +43,9 @@ define(function() {
           ? 0
           : rect.top >= viewportHeight
           ? 0
-          : (Math.max(viewportHeight, rect.bottom) - Math.min(0, rect.top)) * (rect.right - rect.left);
-        if (isNotHidden && visibleArea >= threshold) {
+          : (Math.min(viewportHeight, rect.bottom) - Math.max(0, rect.top)) * (rect.right - rect.left);
+        var intersectionRatio = visibleArea / area;
+        if (isNotHidden && intersectionRatio >= threshold) {
           setTimeout(record.callback, 0, visibleArea);
         }
       });
