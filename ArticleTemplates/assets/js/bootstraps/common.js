@@ -33,7 +33,6 @@ define([
         comments.init(); // load comments
         cards.init(); // load cards
         loadEmbeds();
-        // smoothScroll.init(); // scroll to anchor
         loadInteractives(); 
         setupOfflineSwitch();
         setupAlertSwitch();
@@ -47,6 +46,10 @@ define([
         setupTracking(); // track common events
         ab.init(); // init ab tests
 
+        if (smoothScroll !== undefined && typeof smoothScroll.init === 'function') {
+            smoothScroll.init(); // scroll to anchor
+        }
+        
         if (!document.body.classList.contains('no-ready')) {
             util.signalDevice('ready');
         }
