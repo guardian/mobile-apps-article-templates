@@ -1,15 +1,18 @@
 define([
 	'bootstraps/common',
-    'bootstraps/article'
+    'bootstraps/article',
+    'bootstraps/atoms'
 ], function (
 	common,
-    article
+    article,
+    atoms
 ) {
     'use strict';
     
     function init() {
         common.init();
         article.init();
+        atoms.init();
     }
 
     return {

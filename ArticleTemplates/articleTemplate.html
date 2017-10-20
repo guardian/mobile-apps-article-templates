@@ -6,6 +6,9 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
     <link rel="stylesheet" type="text/css" media="all" id="fontStyles" href="__TEMPLATES_DIRECTORY__assets/css/fonts-__PLATFORM__.css" />
     <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/style-sync.css" />
+    <style>/* <-- */
+        __ATOMS_CSS__
+    /* --> */</style>
     <script type="text/javascript">
         window.GU = window.GU || {};
     </script>
@@ -18,6 +21,12 @@
     __ARTICLE_CONTAINER__
 
     <script type="text/javascript">
+    (function () {
+        var atoms = {};
+        function readAtoms() {
+            __ATOMS_JS__
+        }
+        readAtoms.call(atoms);
         GU.bootstrap.init({
             sectionTone: "__SECTION_TONE__",
             isAdvertising: "__IS_ADVERTISING__" ? true : false,
@@ -37,8 +46,10 @@
             section: "__SECTION__",
             tests: '__TEST_SPEC__',
             nativeYoutubeEnabled: "__NATIVE_YOUTUBE_ENABLED__" === "true" ? true : false,
-            disableEnhancedTweets: "__DISABLE_ENHANCED_TWEETS__" === "true" ? true : false
+            disableEnhancedTweets: "__DISABLE_ENHANCED_TWEETS__" === "true" ? true : false,
+            atoms: atoms
         });
+    }());
     </script>
 </body>
 </html>
