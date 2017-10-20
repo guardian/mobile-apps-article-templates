@@ -9,13 +9,7 @@ define(function () {
     }
 
     function isNonCompliant() {
-        var prose = document.querySelector('.article__body > div.prose ');
-
-        if (prose && prose.lastElementChild && prose.lastElementChild.classList.contains('creative-container')) {
-            return true;
-        }
-
-        return false;
+        return GU.opts.hasEpic;
     }
 
     function ready() {
