@@ -71,7 +71,7 @@ define([
         if (window.GuardianJSInterface && window.GuardianJSInterface.trackComponentEvent) {
             window.GuardianJSInterface.trackComponentEvent(newObj);
         } else {
-            util.signalDevice('trackComponentEvent/' + JSON.stringify(newObj));
+            util.signalDevice('trackComponentEvent/' + encodeURIComponent(JSON.stringify(newObj)));
         }
       }
     },
