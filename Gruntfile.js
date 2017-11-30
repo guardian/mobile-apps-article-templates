@@ -74,6 +74,9 @@ module.exports = function(grunt) {
                     'ArticleTemplates/assets/css/outbrain.css':  'ArticleTemplates/assets/scss/outbrain.scss',
                     'ArticleTemplates/assets/css/style-async.css':  'ArticleTemplates/assets/scss/style-async.scss',
                     'ArticleTemplates/assets/css/style-sync.css':  'ArticleTemplates/assets/scss/style-sync.scss',
+
+                    'ArticleTemplates/assets/css/garnett-style-async.css':  'ArticleTemplates/assets/scss/garnett-style-async.scss',
+                    'ArticleTemplates/assets/css/garnett-style-sync.css':  'ArticleTemplates/assets/scss/garnett-style-sync.scss'
                 }
             }
         },
