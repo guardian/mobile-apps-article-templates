@@ -76,7 +76,12 @@ module.exports = function(grunt) {
                     'ArticleTemplates/assets/css/style-sync.css':  'ArticleTemplates/assets/scss/style-sync.scss',
 
                     'ArticleTemplates/assets/css/garnett-style-async.css':  'ArticleTemplates/assets/scss/garnett-style-async.scss',
-                    'ArticleTemplates/assets/css/garnett-style-sync.css':  'ArticleTemplates/assets/scss/garnett-style-sync.scss'
+                    'ArticleTemplates/assets/css/garnett-style-sync.css':  'ArticleTemplates/assets/scss/garnett-style-sync.scss',
+
+                    'ArticleTemplates/assets/css/garnett-fonts-android.css':  'ArticleTemplates/assets/scss/garnett-fonts-android.scss',
+                    'ArticleTemplates/assets/css/garnett-fonts-ios.css':  'ArticleTemplates/assets/scss/garnett-fonts-ios.scss',
+                    'ArticleTemplates/assets/css/garnett-interactive.css':  'ArticleTemplates/assets/scss/garnett-interactive.scss',
+                    'ArticleTemplates/assets/css/garnett-outbrain.css':  'ArticleTemplates/assets/scss/garnett-outbrain.scss'
                 }
             }
         },
