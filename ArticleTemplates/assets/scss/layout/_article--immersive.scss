@@ -127,7 +127,7 @@
 
             > a, & {
                 color: color(shade-7);
-                font: 700 2rem $egyptian-display;
+                font: 600 1.8rem $egyptian-display;
             }
 
             @include mq($from: col2) {
@@ -146,14 +146,14 @@
 
         &__headline {
             color: color(shade-7);
-            font-size: 3.5rem;
+            font-size: 3.5rem !important;
             line-height: 1.04;
             padding: 0;
             z-index: 1;
-            font-weight: 700;
 
             @include mq($from: col2) {
-                font-size: 2.8em;
+                font-size: 2.8em !important;
+                font-weight: 100;
                 margin-bottom: 24px;
             }
 
@@ -202,9 +202,6 @@
     .standfirst {
         color: color(shade-7);
         background: none;
-        font-family: $egyptian-display;
-        font-weight: 500;
-
 
         a {
             border-bottom: 1px solid color(tone-feature1-accent2);
