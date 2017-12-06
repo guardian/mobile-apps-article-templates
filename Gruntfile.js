@@ -212,9 +212,7 @@ module.exports = function(grunt) {
             },
             scss: {
                 files: ['ArticleTemplates/assets/scss/**/*.scss'],
-                // tasks: ['buildCSS', 'validateCSS' ]
-                // validateCSS is failing inexplicably
-                tasks: ['buildCSS' ]
+                tasks: ['buildCSS', 'validateCSS' ]
             }
         },
         // local server
