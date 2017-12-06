@@ -1,43 +1,43 @@
-/*doc
----
-title: Related Content
-name: related-content
-category: Modules
----
-Related Content / More on this story section
-
-```html_example
-<section class="related-content">
-    <h2 class="related-content__header">
-        More on this story
-    </h2> 
-    <div class="related-content__container">
-        <ul class="related-content__list">
-            <li class="related-content__card related-content__card--news has-image">
-                <a class="related-content__link" href="x-gu://related_item/mobile-apps.guardianapis.com/items/us-news/2014/nov/16/barack-obama-basks-success-asia-pacific-sweep">
-                    <h3 class="related-content__title">
-                        President Barack Obama basks in success of Asia-Pacific sweep
-                    </h3>
-                    <div class="related-content__meta">
-                        <span class="related-content__timestamp">
-                            <span data-icon="" aria-hidden="true"></span>
-                            12w
-                        </span>
-                        <span class="related-content__comments">
-                            <span data-icon="" aria-hidden="true"></span>
-                            196
-                        </span>
-                    </div>
-                    <div class="related-content__main">
-                        <img class="related-content__image" src="http://images.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2014/11/16/1416150105650/cb470b62-604d-42b9-bdd8-d154a2af547c-2060x1236.jpeg?width=256&amp;height=-&amp;quality=60">
-                    </div>
-                </a>
-            </li>
-        </ul>
-    </div>
-</section>
-```
-*/
+// /*doc
+// ---
+// title: Related Content
+// name: related-content
+// category: Modules
+// ---
+// Related Content / More on this story section
+//
+// ```html_example
+// <section class="related-content">
+//     <h2 class="related-content__header">
+//         More on this story
+//     </h2>
+//     <div class="related-content__container">
+//         <ul class="related-content__list">
+//             <li class="related-content__card related-content__card--news has-image">
+//                 <a class="related-content__link" href="x-gu://related_item/mobile-apps.guardianapis.com/items/us-news/2014/nov/16/barack-obama-basks-success-asia-pacific-sweep">
+//                     <h3 class="related-content__title">
+//                         President Barack Obama basks in success of Asia-Pacific sweep
+//                     </h3>
+//                     <div class="related-content__meta">
+//                         <span class="related-content__timestamp">
+//                             <span data-icon="" aria-hidden="true"></span>
+//                             12w
+//                         </span>
+//                         <span class="related-content__comments">
+//                             <span data-icon="" aria-hidden="true"></span>
+//                             196
+//                         </span>
+//                     </div>
+//                     <div class="related-content__main">
+//                         <img class="related-content__image" src="http://images.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2014/11/16/1416150105650/cb470b62-604d-42b9-bdd8-d154a2af547c-2060x1236.jpeg?width=256&amp;height=-&amp;quality=60">
+//                     </div>
+//                 </a>
+//             </li>
+//         </ul>
+//     </div>
+// </section>
+// ```
+// */
 
 // using the card upsize variables to enable us to upsize the different card measurements in a single place. -- using fixed widths for card 2 size due to ipad card cutting off at unfortunate point
 $related-card-gutter-col2: 5px;
@@ -74,7 +74,7 @@ $related-card-width-col3: $related-card-width * $related-card-upsize-col3;
             max-width: 1200px;
         }
     }
-    
+
     &__header {
         margin: base-px(.5, 1, 1, 1);
         @include body-font(1.5, $egyptian-display, 600);
@@ -179,7 +179,7 @@ $related-card-width-col3: $related-card-width * $related-card-upsize-col3;
 
     &__title,
     &__series {
-        // General styles for title icons 
+        // General styles for title icons
         &:before {
             display: inline-block;
             margin: base-px(-1, 1/3, 0, 0);
@@ -254,7 +254,7 @@ $related-card-width-col3: $related-card-width * $related-card-upsize-col3;
         content: ' / ';
     }
 
-    &__meta { 
+    &__meta {
         position: absolute;
         bottom: 0;
         color: color(shade-3);
@@ -275,7 +275,7 @@ $related-card-width-col3: $related-card-width * $related-card-upsize-col3;
     &__duration {
         float: left;
         height: 20px;
-        padding-left: base-px(.5); 
+        padding-left: base-px(.5);
     }
 
     &__timestamp {
@@ -296,7 +296,7 @@ $related-card-width-col3: $related-card-width * $related-card-upsize-col3;
         padding: 0;
         height: $related-card-width * .6; // height should cater for standard landscape image ratio
         overflow: hidden;
-        
+
         .has-image & {
             margin-bottom: 0;
         }
@@ -446,7 +446,7 @@ $related-card-width-col3: $related-card-width * $related-card-upsize-col3;
     &__card--feature3 {
         background-color: color(tone-feature1);
         border-top-color: color(tone-feature1-accent);
-        
+
         * {
             color: color(shade-7);
         }
@@ -472,7 +472,7 @@ $related-card-width-col3: $related-card-width * $related-card-upsize-col3;
     &__card--liveBlog {
         background-color: color(tone-live);
         border-top-color: color(tone-live-accent);
-        
+
         * {
             color: color(shade-7);
         }
