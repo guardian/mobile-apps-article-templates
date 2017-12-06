@@ -217,15 +217,6 @@ module.exports = function(grunt) {
                 tasks: ['buildCSS' ]
             }
         },
-        // desktop notifications for Grunt errors
-        notify_hooks: {
-            options: {
-                enabled: true,
-                max_jshint_notifications: 5,
-                success: true,
-                duration: 3
-            }
-        },
         // local server
         connect: {
           server: {
