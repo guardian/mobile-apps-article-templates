@@ -458,7 +458,7 @@ define([
         var i,
             scoreDisplayMessage = '';
 
-        for (i = 0; i < score; i++) {
+        for (i = 0; i <= score; i++) {
             if (scoreMessages[i]) {
                 scoreDisplayMessage = scoreMessages[i];
             }
