@@ -1,4 +1,15 @@
-$c-pillar-main: #f7691c;
-$c-pillar-alt: #f7691c;
-$c-pillar-inverted: #ff7f0f;
-$c-pillar-soft: #e8e7e3;
+$p-kicker: #f7691c; // MAPI: kicker text
+$p-feature-headline: #ff7c36; // MAPI: feature headline
+$p-soft: #dbc19a; // MAPI: ? needs to be added?
+$p-inverted: #ff7f0f; // MAPI: light kicker — need to update MAPI for news
+$p-background: #e8e7e3; // MAPI: card background
+
+.garnett--pillar-opinion {
+    @include pillar-colour(
+        $p-kicker,
+        $p-feature-headline,
+        $p-soft,
+        $p-inverted,
+        $p-background
+    );
+}

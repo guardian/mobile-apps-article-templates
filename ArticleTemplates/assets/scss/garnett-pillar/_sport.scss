@@ -1,4 +1,15 @@
-$c-pillar-main: #056da1;
-$c-pillar-alt: #1896d7;
-$c-pillar-inverted: #00b2ff;
-$c-pillar-soft: #e6f5ff;
+$p-kicker: #056da1; // MAPI: kicker text
+$p-feature-headline: #1896d7; // MAPI: feature headline
+$p-soft: #e6f5ff; // MAPI: ?
+$p-inverted: #00b2ff; // MAPI: light kicker — need to update MAPI for news
+$p-background: #ffffff; // MAPI: card background
+
+.garnett--pillar-sport {
+    @include pillar-colour(
+        $p-kicker,
+        $p-feature-headline,
+        $p-soft,
+        $p-inverted,
+        $p-background
+    );
+}
