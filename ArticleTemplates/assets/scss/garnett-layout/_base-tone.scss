@@ -17,13 +17,15 @@ body {
             }
         }
 
-        // to-do: remove?
+        .section {
+            margin-bottom: 0;
+        }
+
         .section__container,
         .comment-count {
             border-color: rgba(color(shade-3), .4);
         }
 
-        // to-do: remove?
         .headline {
             p.review-rating {
                 @include rating;
@@ -46,7 +48,6 @@ body {
             }
         }
 
-        // to-do: remove?
         .meta__misc {
             @include mq($from: col4) {
                 padding: {
@@ -56,10 +57,26 @@ body {
             }
         }
 
-        // to-do: remove?
-        .main-media,
-        .main-media__caption {
-            background-color: color(shade-7);
+        .main-media {
+            @include mq($from: col4) {
+                padding-top: 0;
+
+                &__caption__text {
+                    width: 575px; // 620px width of main media - 45 for show/hide icon
+                }
+            }
+
+            .video-URL + figcaption {
+                display: none;
+            }
+        }
+
+
+        .headline {
+            p.review-rating {
+                @include rating;
+                padding-top: base-px(.7);
+            }
         }
 
         // to-do: move to sponsorship?
