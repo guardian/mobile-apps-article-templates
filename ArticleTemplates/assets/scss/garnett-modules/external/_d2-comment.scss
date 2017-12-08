@@ -1,0 +1,61 @@
+// /*doc
+// ---
+// title: D2 comment embed
+// name: d2-comment
+// category: External
+// ---
+// Display a comment taken from the discussion API.
+//
+// ```html_example
+// <div class="d2-comment-embedded" itemtype="http://schema.org/Comment">
+//     <div class="d2-left-col">
+//         <a title="View Sionnaich’s profile" href="http://www.theguardian.com/discussion/user/id/10070969">
+//             <img class="d2-avatar" alt="User avatar for Sionnaich" width="40" height="40" src="http://static.guim.co.uk/sys-images/discussion/avatars/2014/06/10/10070969/3b591e34-2dd6-4d4f-b6ee-dc49fd769967/60x60.png">
+//         </a>
+//     </div>
+//     <div class="d2-right-col">
+//         <div itemtype="http://schema.org/Person" itemprop="author">
+//             <a class="d2-username" itemprop="url" title="View Sionnaich’s profile" href="http://www.theguardian.com/discussion/user/id/10070969"><span itemprop="givenName">Sionnaich</span></a>
+//         </div>
+//         <div class="d2-permalink">
+//             <a class="d2-datetime" itemprop="datePublished" title="Link to this comment" href="http://discussion.theguardian.com/comment-permalink/36818018">11 June 2014 9:23am</a>
+//         </div>
+//         <div class="d2-body" itemprop="text">
+//             <p>Morning pop fans. Who's up for a bit of BTL The Knowledge?</p>
+//             <p>I was thinking that the Italian forward Ciro Immobiles name is a little unfortunate for a striker. Can anyone think of any other footballers with a name ill fitting for their position? The only other one I can think of is the French goalkeeper in 1978, <a rel="nofollow" href="http://en.wikipedia.org/wiki/Dominique_Dropsy">Dominique Dropsy</a></p>
+//         </div>
+//     </div>
+// </div>
+// ```
+// */
+
+.d2-comment-embedded {
+    font-family: $agate-sans;
+    font-size: $meta-size;
+    line-height: $meta-lead;
+}
+
+.d2-avatar {
+    margin: base-px(.25, .5, 0, 0);
+    border-radius: 100%;
+    float: left;
+    width: 44px;
+    height: 44px;
+}
+
+.d2-username {
+    color: color(shade-1);
+    font-weight: bold;
+}
+
+.d2-datetime {
+    color: color(shade-3);
+}
+
+.d2-badge {
+    display: none;
+}
+
+.d2-body {
+    clear: left;
+}
