@@ -1,113 +1,113 @@
-/*doc
----
-title: Team line-up
-name: team-lineup
-category: Football
----
-Display a team line-up including substitutions and bookings.
-
-```html_example
-<table class="team-lineup">
-    <caption class="team-lineup__name">Arsenal</caption>
-    <tbody>
-        <tr class="team-lineup__player">
-            <td class="team-lineup__player__number">21</td>
-            <td class="team-lineup__player__name"><span>
-                <span class="team-lineup__player__forename">Lukasz</span> <span class="team-lineup__player__surname">Fabianski</span>
-                <span class="team-lineup__player__replacement"> ()</span>
-            </span></td>
-        </tr>
-         <tr class="team-lineup__player">
-            <td class="team-lineup__player__number">3</td>
-            <td class="team-lineup__player__name"><span>
-                <span class="team-lineup__player__forename">Bacary</span> <span class="team-lineup__player__surname">Sagna</span>
-            </span></td>
-        </tr>
-        <tr class="team-lineup__player">
-            <td class="team-lineup__player__number">4</td>
-            <td class="team-lineup__player__name"><span>
-                <span class="team-lineup__player__forename">Per</span> <span class="team-lineup__player__surname">Mertesacker</span>
-            </span></td>
-        </tr>
-        <tr class="team-lineup__player">
-            <td class="team-lineup__player__number">6</td>
-            <td class="team-lineup__player__name"><span>
-                <span class="team-lineup__player__forename">Laurent</span> <span class="team-lineup__player__surname">Koscielny</span>
-            </span></td>
-        </tr>
-         <tr class="team-lineup__player">
-            <td class="team-lineup__player__number">28</td>
-            <td class="team-lineup__player__name"><span>
-                <span class="team-lineup__player__forename">Kieran</span> <span class="team-lineup__player__surname">Gibbs</span>
-            </span></td>
-        </tr>
-         <tr class="team-lineup__player">
-            <td class="team-lineup__player__number">8</td>
-            <td class="team-lineup__player__name"><span>
-                <span class="team-lineup__player__forename">Mikel</span> <span class="team-lineup__player__surname yellow-red">Arteta</span>
-            </span></td>
-        </tr>
-         <tr class="team-lineup__player">
-            <td class="team-lineup__player__number">16</td>
-            <td class="team-lineup__player__name"><span>
-                <span class="team-lineup__player__forename">Aaron</span> <span class="team-lineup__player__surname red">Ramsey</span>
-            </span></td>
-        </tr>
-         <tr class="team-lineup__player">
-            <td class="team-lineup__player__number">19</td>
-            <td class="team-lineup__player__name"><span class="replacement">
-                <span class="team-lineup__player__forename">Santi</span> <span class="team-lineup__player__surname">Cazorla</span>
-                <span class="team-lineup__player__replacement">(<span class="yellow">Rosicky</span> 106)</span>
-            </span></td>
-        </tr>
-         <tr class="team-lineup__player">
-            <td class="team-lineup__player__number">11</td>
-            <td class="team-lineup__player__name"><span class="replacement">
-                <span class="team-lineup__player__forename">Mesut</span> <span class="team-lineup__player__surname">Ozil</span>
-                <span class="team-lineup__player__replacement">(<span class="red">Wilshere</span> 106)</span>
-            </span></td>
-        </tr>
-         <tr class="team-lineup__player">
-            <td class="team-lineup__player__number">9</td>
-            <td class="team-lineup__player__name"><span class="replacement">
-                <span class="team-lineup__player__forename">Lukas</span> <span class="team-lineup__player__surname">Podolski</span>
-                <span class="team-lineup__player__replacement">(Sanogo 61)</span>
-            </span></td>
-        </tr>
-         <tr class="team-lineup__player">
-            <td class="team-lineup__player__number">12</td>
-            <td class="team-lineup__player__name"><span>
-                <span class="team-lineup__player__forename">Olivier</span> <span class="team-lineup__player__surname yellow">Giroud</span>
-            </span></td>
-        </tr>
-         <tr class="team-lineup__player">
-            <td class="team-lineup__player__number">Subs</td>
-            <td class="team-lineup__player__name"><span>
-                <span class="team-lineup__player__forename">Wojciech</span> <span class="team-lineup__player__surname">Szczesny</span>, 
-            </span>
-            <span>
-                <span class="team-lineup__player__forename">Thomas</span> <span class="team-lineup__player__surname">Vermaelen</span>, 
-            </span>
-            <span class="used">
-                <span class="team-lineup__player__forename">Tomas</span> <span class="team-lineup__player__surname">Rosicky</span>, 
-            </span>
-            <span class="used">
-                <span class="team-lineup__player__forename">Jack</span> <span class="team-lineup__player__surname">Wilshere</span>, 
-            </span>
-            <span>
-                <span class="team-lineup__player__forename">Nacho</span> <span class="team-lineup__player__surname">Monreal</span>, 
-            </span>
-            <span>
-                <span class="team-lineup__player__forename">Mathieu</span> <span class="team-lineup__player__surname">Flamini</span>, 
-            </span>
-            <span class="used">
-                <span class="team-lineup__player__forename">Yaya</span> <span class="team-lineup__player__surname">Sanogo</span>
-            </span></td>
-        </tr>
-    </tbody>
-</table>
-```
-*/
+// /*doc
+// ---
+// title: Team line-up
+// name: team-lineup
+// category: Football
+// ---
+// Display a team line-up including substitutions and bookings.
+//
+// ```html_example
+// <table class="team-lineup">
+//     <caption class="team-lineup__name">Arsenal</caption>
+//     <tbody>
+//         <tr class="team-lineup__player">
+//             <td class="team-lineup__player__number">21</td>
+//             <td class="team-lineup__player__name"><span>
+//                 <span class="team-lineup__player__forename">Lukasz</span> <span class="team-lineup__player__surname">Fabianski</span>
+//                 <span class="team-lineup__player__replacement"> ()</span>
+//             </span></td>
+//         </tr>
+//          <tr class="team-lineup__player">
+//             <td class="team-lineup__player__number">3</td>
+//             <td class="team-lineup__player__name"><span>
+//                 <span class="team-lineup__player__forename">Bacary</span> <span class="team-lineup__player__surname">Sagna</span>
+//             </span></td>
+//         </tr>
+//         <tr class="team-lineup__player">
+//             <td class="team-lineup__player__number">4</td>
+//             <td class="team-lineup__player__name"><span>
+//                 <span class="team-lineup__player__forename">Per</span> <span class="team-lineup__player__surname">Mertesacker</span>
+//             </span></td>
+//         </tr>
+//         <tr class="team-lineup__player">
+//             <td class="team-lineup__player__number">6</td>
+//             <td class="team-lineup__player__name"><span>
+//                 <span class="team-lineup__player__forename">Laurent</span> <span class="team-lineup__player__surname">Koscielny</span>
+//             </span></td>
+//         </tr>
+//          <tr class="team-lineup__player">
+//             <td class="team-lineup__player__number">28</td>
+//             <td class="team-lineup__player__name"><span>
+//                 <span class="team-lineup__player__forename">Kieran</span> <span class="team-lineup__player__surname">Gibbs</span>
+//             </span></td>
+//         </tr>
+//          <tr class="team-lineup__player">
+//             <td class="team-lineup__player__number">8</td>
+//             <td class="team-lineup__player__name"><span>
+//                 <span class="team-lineup__player__forename">Mikel</span> <span class="team-lineup__player__surname yellow-red">Arteta</span>
+//             </span></td>
+//         </tr>
+//          <tr class="team-lineup__player">
+//             <td class="team-lineup__player__number">16</td>
+//             <td class="team-lineup__player__name"><span>
+//                 <span class="team-lineup__player__forename">Aaron</span> <span class="team-lineup__player__surname red">Ramsey</span>
+//             </span></td>
+//         </tr>
+//          <tr class="team-lineup__player">
+//             <td class="team-lineup__player__number">19</td>
+//             <td class="team-lineup__player__name"><span class="replacement">
+//                 <span class="team-lineup__player__forename">Santi</span> <span class="team-lineup__player__surname">Cazorla</span>
+//                 <span class="team-lineup__player__replacement">(<span class="yellow">Rosicky</span> 106)</span>
+//             </span></td>
+//         </tr>
+//          <tr class="team-lineup__player">
+//             <td class="team-lineup__player__number">11</td>
+//             <td class="team-lineup__player__name"><span class="replacement">
+//                 <span class="team-lineup__player__forename">Mesut</span> <span class="team-lineup__player__surname">Ozil</span>
+//                 <span class="team-lineup__player__replacement">(<span class="red">Wilshere</span> 106)</span>
+//             </span></td>
+//         </tr>
+//          <tr class="team-lineup__player">
+//             <td class="team-lineup__player__number">9</td>
+//             <td class="team-lineup__player__name"><span class="replacement">
+//                 <span class="team-lineup__player__forename">Lukas</span> <span class="team-lineup__player__surname">Podolski</span>
+//                 <span class="team-lineup__player__replacement">(Sanogo 61)</span>
+//             </span></td>
+//         </tr>
+//          <tr class="team-lineup__player">
+//             <td class="team-lineup__player__number">12</td>
+//             <td class="team-lineup__player__name"><span>
+//                 <span class="team-lineup__player__forename">Olivier</span> <span class="team-lineup__player__surname yellow">Giroud</span>
+//             </span></td>
+//         </tr>
+//          <tr class="team-lineup__player">
+//             <td class="team-lineup__player__number">Subs</td>
+//             <td class="team-lineup__player__name"><span>
+//                 <span class="team-lineup__player__forename">Wojciech</span> <span class="team-lineup__player__surname">Szczesny</span>,
+//             </span>
+//             <span>
+//                 <span class="team-lineup__player__forename">Thomas</span> <span class="team-lineup__player__surname">Vermaelen</span>,
+//             </span>
+//             <span class="used">
+//                 <span class="team-lineup__player__forename">Tomas</span> <span class="team-lineup__player__surname">Rosicky</span>,
+//             </span>
+//             <span class="used">
+//                 <span class="team-lineup__player__forename">Jack</span> <span class="team-lineup__player__surname">Wilshere</span>,
+//             </span>
+//             <span>
+//                 <span class="team-lineup__player__forename">Nacho</span> <span class="team-lineup__player__surname">Monreal</span>,
+//             </span>
+//             <span>
+//                 <span class="team-lineup__player__forename">Mathieu</span> <span class="team-lineup__player__surname">Flamini</span>,
+//             </span>
+//             <span class="used">
+//                 <span class="team-lineup__player__forename">Yaya</span> <span class="team-lineup__player__surname">Sanogo</span>
+//             </span></td>
+//         </tr>
+//     </tbody>
+// </table>
+// ```
+// */
 
 .team-lineup {
     font-family: $agate-sans;

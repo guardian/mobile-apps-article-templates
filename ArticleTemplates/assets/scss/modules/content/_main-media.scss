@@ -1,43 +1,43 @@
-/*doc
----
-title: Main media
-name: main-media
-category: Content
----
-Display the main visual media for an article.
-
-```html_example
-<div class="main-media">
-    <figure class="element element-image figure-wide">
-        <div class="element__inner" style="padding-bottom: 60%;">
-            <img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/13/1402658128646/Ambassadors-014.jpg?width=900&amp;height=540&amp;quality=60">
-        </div>
-        <figcaption class="main-media__caption">
-            <span class="main-media__caption__icon" href="#">
-                <span data-icon="&#xe044;" aria-hidden="true"></span>
-            </span>
-            <span class="main-media__caption__text">David Mitchell and Robert Webb in The Ambassadors. Photograph: Colin Hutton/BBC/Big Talk</span>
-        </figcaption>
-    </figure>
-</div>
-```
-
-Can also be displayed with the caption initially hidden:
-
-```html_example
-<div class="main-media main-media--hidden-caption">
-    <figure class="element element-image figure-wide">
-        <div class="element__inner" style="padding-bottom: 60%;">
-            <img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/13/1402658128646/Ambassadors-014.jpg?width=900&amp;height=540&amp;quality=60">
-        </div>
-        <figcaption class="main-media__caption">
-            <span class="main-media__caption__icon" href="#"><span class="icon">&#xe044;</span></span>
-            <span class="main-media__caption__text">David Mitchell and Robert Webb in The Ambassadors. Photograph: Colin Hutton/BBC/Big Talk</span>
-        </figcaption>
-    </figure>
-</div>
-```
-*/
+// /*doc
+// ---
+// title: Main media
+// name: main-media
+// category: Content
+// ---
+// Display the main visual media for an article.
+//
+// ```html_example
+// <div class="main-media">
+//     <figure class="element element-image figure-wide">
+//         <div class="element__inner" style="padding-bottom: 60%;">
+//             <img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/13/1402658128646/Ambassadors-014.jpg?width=900&amp;height=540&amp;quality=60">
+//         </div>
+//         <figcaption class="main-media__caption">
+//             <span class="main-media__caption__icon" href="#">
+//                 <span data-icon="&#xe044;" aria-hidden="true"></span>
+//             </span>
+//             <span class="main-media__caption__text">David Mitchell and Robert Webb in The Ambassadors. Photograph: Colin Hutton/BBC/Big Talk</span>
+//         </figcaption>
+//     </figure>
+// </div>
+// ```
+//
+// Can also be displayed with the caption initially hidden:
+//
+// ```html_example
+// <div class="main-media main-media--hidden-caption">
+//     <figure class="element element-image figure-wide">
+//         <div class="element__inner" style="padding-bottom: 60%;">
+//             <img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/13/1402658128646/Ambassadors-014.jpg?width=900&amp;height=540&amp;quality=60">
+//         </div>
+//         <figcaption class="main-media__caption">
+//             <span class="main-media__caption__icon" href="#"><span class="icon">&#xe044;</span></span>
+//             <span class="main-media__caption__text">David Mitchell and Robert Webb in The Ambassadors. Photograph: Colin Hutton/BBC/Big Talk</span>
+//         </figcaption>
+//     </figure>
+// </div>
+// ```
+// */
 
 .main-media:not(.main-media--hidden-caption) .main-media__caption__icon {
     @extend %caption-icon;
@@ -62,7 +62,7 @@ Can also be displayed with the caption initially hidden:
 
             // element-video gets position absolutely so needs padding on the wrapper
             &.element-video:not(.element-youtube) {
-                padding-bottom: 350px; // since container width is not 100% the padding bottom here is set at 56.25% of 620px 
+                padding-bottom: 350px; // since container width is not 100% the padding bottom here is set at 56.25% of 620px
             }
         }
 
@@ -145,7 +145,7 @@ Can also be displayed with the caption initially hidden:
     }
 }
 
-.main-media .interactive-atom-fence { 
+.main-media .interactive-atom-fence {
     width: 100%;
-    display: block; 
+    display: block;
 }

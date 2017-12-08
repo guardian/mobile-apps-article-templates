@@ -203,25 +203,33 @@ module.exports = function(grunt) {
         },
         // watch
         watch: {
+            options: {
+              livereload: true,
+            },
             js: {
                 files: ['ArticleTemplates/assets/js/**/*.js'],
                 tasks: ['validateJS', 'testJS', 'buildJS']
             },
             scss: {
                 files: ['ArticleTemplates/assets/scss/**/*.scss'],
-                tasks: ['validateCSS', 'buildCSS']
+                tasks: ['buildCSS', 'validateCSS' ]
             }
         },
-        // desktop notifications for Grunt errors
-        notify_hooks: {
+        // local server
+        connect: {
+          server: {
             options: {
-                enabled: true,
-                max_jshint_notifications: 5,
-                success: true,
-                duration: 3
+              // uncomment below to use https server
+              // protocol: 'https',
+              livereload: true,
+              port: 8000,
+              // useAvailablePort: true,
+              base: '.'
             }
+          }
         }
     });
+
 
     grunt.task.run('notify_hooks');
 
@@ -235,5 +243,8 @@ module.exports = function(grunt) {
 
     grunt.registerTask('buildCSS', ['sass', 'cssmin']);
 
-    grunt.registerTask('default', ['buildJS', 'buildCSS', 'watch']);
+    grunt.registerTask('default', ['buildJS', 'buildCSS', 'connect', 'watch']);
+
+
+
 };

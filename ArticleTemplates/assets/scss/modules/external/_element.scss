@@ -1,46 +1,46 @@
-/*doc
----
-title: Element
-name: element
-category: External
----
-Display an embedded element. Element embeds are typically shown as figures, and can optionally include a supporting caption.
-
-```html_example
-<figure class="element element-image">
-    <div class="element__inner">
-        <img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/11/1402512126497/Matt-Kenyon-on-Birmingham-014.jpg?width=900&amp;height=540&amp;quality=60"/>
-    </div>
-</figure>
-```
-
-```html_example
-<figure class="element element-video">
-    <iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/hBpN5ngEIo4?wmode=opaque&amp;feature=oembed&amp;start=19" height="259" width="460"></iframe>
-</figure>
-```
-
-```html_example
-<figure class="element element-placeholder">
-    <div class="element__inner">
-        <img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/audio/video/2014/6/11/1402520604664/An-Iraqi-Kurdish-security-011.jpg?width=900&amp;height=540&amp;quality=60"/>
-        <span class="element-placeholder__button touchpoint">
-            <span class="touchpoint__button" data-icon="&#xe04b;" aria-hidden="true"></span>
-            <span class="touchpoint__label"><span class="screen-readable">Play Video. Duration: </span>1:31</span>
-        </span>
-    </div>
-</figure>
-```
-
-```html_example
-<figure class="element element-embed">
-    <iframe class="fenced" srcdoc="&lt;img src=&quot;http://static.guim.co.uk/ni/1400070661837/Romania_bison_release2.svg&quot; style=&quot;width:100%;&quot; /&gt;"></iframe>
-    <figcaption>
-        The European bison's initial range covers 15 hectares, but by September the animals would be able to roam freely over a 160-hectare area.
-    </figcaption>
-</figure>
-```
-*/
+// /*doc
+// ---
+// title: Element
+// name: element
+// category: External
+// ---
+// Display an embedded element. Element embeds are typically shown as figures, and can optionally include a supporting caption.
+//
+// ```html_example
+// <figure class="element element-image">
+//     <div class="element__inner">
+//         <img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/11/1402512126497/Matt-Kenyon-on-Birmingham-014.jpg?width=900&amp;height=540&amp;quality=60"/>
+//     </div>
+// </figure>
+// ```
+//
+// ```html_example
+// <figure class="element element-video">
+//     <iframe allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/hBpN5ngEIo4?wmode=opaque&amp;feature=oembed&amp;start=19" height="259" width="460"></iframe>
+// </figure>
+// ```
+//
+// ```html_example
+// <figure class="element element-placeholder">
+//     <div class="element__inner">
+//         <img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/audio/video/2014/6/11/1402520604664/An-Iraqi-Kurdish-security-011.jpg?width=900&amp;height=540&amp;quality=60"/>
+//         <span class="element-placeholder__button touchpoint">
+//             <span class="touchpoint__button" data-icon="&#xe04b;" aria-hidden="true"></span>
+//             <span class="touchpoint__label"><span class="screen-readable">Play Video. Duration: </span>1:31</span>
+//         </span>
+//     </div>
+// </figure>
+// ```
+//
+// ```html_example
+// <figure class="element element-embed">
+//     <iframe class="fenced" srcdoc="&lt;img src=&quot;http://static.guim.co.uk/ni/1400070661837/Romania_bison_release2.svg&quot; style=&quot;width:100%;&quot; /&gt;"></iframe>
+//     <figcaption>
+//         The European bison's initial range covers 15 hectares, but by September the animals would be able to roam freely over a 160-hectare area.
+//     </figcaption>
+// </figure>
+// ```
+// */
 
 // Maintain ratio of embedded media item
 .element__inner {
@@ -134,7 +134,7 @@ Display an embedded element. Element embeds are typically shown as figures, and 
 
     &--sdk {
         .element__inner {
-            padding-bottom: 0; 
+            padding-bottom: 0;
         }
     }
 
@@ -162,14 +162,14 @@ Display an embedded element. Element embeds are typically shown as figures, and 
             }
 
             .youtube-media__touchpoint {
-                width: 100%; 
+                width: 100%;
                 height: 100%;
                 position: absolute;
                 opacity: 0;
                 transition: opacity .25s ease-in-out;
                 -webkit-transition: opacity .25s ease-in-out;
             }
-                     
+
             &.fade-touchpoint {
                 .youtube-media__touchpoint {
                     opacity: 1;
@@ -180,8 +180,8 @@ Display an embedded element. Element embeds are typically shown as figures, and 
         .youtube-media {
             opacity: 0;
             z-index: 0;
-            position: absolute; 
-            height: 100%; 
+            position: absolute;
+            height: 100%;
             width: 100%;
             transition: opacity .25s ease-in-out;
             -webkit-transition: opacity .25s ease-in-out;

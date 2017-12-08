@@ -1,41 +1,41 @@
-/*doc
----
-title: Container
-name: container
-category: Containers
----
-Display a titled container for comments, cards or other components that should be visually grouped.
-
-```html_example
-<div class="container">
-    <div class="container__header">
-        <div class="container__title">
-            <h2 class="container__title__label"><a class="container__title__link" href="#">Comments <span class="container__title__meta">350</span></a></h2>
-        </div>
-        
-        <div class="container__action container__action--comment">
-            <a class="touchpoint touchpoint--primary" href="#">
-                <span class="touchpoint__label">Leave a comment</span>
-                <span class="touchpoint__button icon">&#xe03d;</span>
-            </a>
-        </div>
-    </div>
-
-    <div class="container__body">
-        <p>Container content</p>
-    </div>
-
-    <div class="container__footer">
-        <div class="container__action container__action--view-more">
-            <a class="touchpoint touchpoint--secondary" href="#">
-                <span class="touchpoint__label">View more</span>
-                <span class="touchpoint__button icon">&#xe00b;</span>
-            </a>
-        </div>
-    </div>
-</div>
-```
-*/
+// /*doc
+// ---
+// title: Container
+// name: container
+// category: Containers
+// ---
+// Display a titled container for comments, cards or other components that should be visually grouped.
+//
+// ```html_example
+// <div class="container">
+//     <div class="container__header">
+//         <div class="container__title">
+//             <h2 class="container__title__label"><a class="container__title__link" href="#">Comments <span class="container__title__meta">350</span></a></h2>
+//         </div>
+//
+//         <div class="container__action container__action--comment">
+//             <a class="touchpoint touchpoint--primary" href="#">
+//                 <span class="touchpoint__label">Leave a comment</span>
+//                 <span class="touchpoint__button icon">&#xe03d;</span>
+//             </a>
+//         </div>
+//     </div>
+//
+//     <div class="container__body">
+//         <p>Container content</p>
+//     </div>
+//
+//     <div class="container__footer">
+//         <div class="container__action container__action--view-more">
+//             <a class="touchpoint touchpoint--secondary" href="#">
+//                 <span class="touchpoint__label">View more</span>
+//                 <span class="touchpoint__button icon">&#xe00b;</span>
+//             </a>
+//         </div>
+//     </div>
+// </div>
+// ```
+// */
 
 .container {
     margin: base-px(0, 0, 2, 0);
@@ -88,7 +88,7 @@ Display a titled container for comments, cards or other components that should b
     display: table-cell;
 
     &.container__action--sort {
-        padding-top: 12px;   
+        padding-top: 12px;
     }
 }
 
@@ -161,7 +161,7 @@ Display a titled container for comments, cards or other components that should b
         .touchpoint--primary {
             display: none !important;
         }
-        
+
         .comments-closed-label {
             .touchpoint__label {
                 display: none;
@@ -173,13 +173,13 @@ Display a titled container for comments, cards or other components that should b
 .comments--open {
     .container__header {
         height: 54px;
-        
-        .container__action { 
+
+        .container__action {
             .touchpoint--primary {
                 display: block !important;
             }
         }
-        
+
         .comments-closed-label .touchpoint__label {
             display: none !important;
         }
@@ -197,10 +197,10 @@ Display a titled container for comments, cards or other components that should b
 
 .container__outbrain {
     overflow: hidden;
-    display: none; 
+    display: none;
 }
 
-/* Android Tweaks - Displays Leave a comment icon by default */ 
+/* Android Tweaks - Displays Leave a comment icon by default */
 
 .android {
     .container {
@@ -209,7 +209,7 @@ Display a titled container for comments, cards or other components that should b
                 display: none !important;
             }
         }
-        
+
         .container__action .touchpoint--primary {
             display: block !important;
         }
