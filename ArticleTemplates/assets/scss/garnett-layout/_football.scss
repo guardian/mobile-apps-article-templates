@@ -1,0 +1,143 @@
+.football {
+    @include mq($from: col1) {
+        border-top: 4px solid color(shade-2);
+    }
+
+    @include mq($from: col4) {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .tabs {
+        [href='#football__tabpanel--liveblog'][aria-selected='true'] {
+            color: color(tone-live);
+            border-top-color: color(tone-live-accent);
+        }
+    }
+}
+
+// Tab containers
+.football__tabpanel {
+    .article {
+        border-top-width: 2px;
+        background-color: color(shade-7);
+    }
+
+    .article--liveblog {
+        background-color: color(shade-5);
+    }
+
+    .meta {
+        border-bottom: 1px dotted color(shade-4);
+
+        .meta__pubdate {
+            color: color(shade-2);
+        }
+    }
+}
+
+#football__tabpanel--article {
+    .section {
+        display: none;
+    }
+
+    .headline {
+        padding-top: base-px(.5);
+    }
+}
+
+#football__tabpanel--stats {
+    font-family: $agate-sans;
+}
+
+// Helpers (headings and columns)
+.football__label {
+    font-family: $egyptian-display;
+    @include body();
+    @include mq($from: col1) {
+        padding: base-px(0, 0, 0, 5);
+    }
+}
+
+.football__sublabel {
+    @include meta();
+    margin-bottom: 4px;
+}
+
+.football__column {
+    padding: base-px(0, 0, 1, 0);
+    width: 50%;
+    float: left;
+
+    @include mq($from: col1) {
+        padding: base-px(0, 0, 1, 5);
+    }
+
+    @include mq($from: col3) {
+        padding: base-px(0, 5, 1, 5);
+    }
+}
+
+// Match info page layout
+.football__lineups {
+    padding: base-px(1);
+    overflow-y: hidden;
+
+    .football__column {
+        @include mq($from: col1) {
+            padding: base-px(0, 0, 1, 0);
+        }
+    }
+}
+
+.football__stats,
+.football__today {
+    .football__column {
+        @include mq($to: col1) {
+            width: 100%;
+            float: none;
+        }
+    }
+}
+
+.football__stats {
+    border-top: 1px dotted color(shade-4);
+    padding: base-px(1);
+    overflow-y: auto;
+    position: relative;
+}
+
+.football__today {
+    border-top: 1px dotted color(shade-4);
+    padding: base-px(1);
+
+    @include mq($from: col1) {
+        display: table;
+        width: 100%;
+    }
+}
+
+.football__today__fixtures {
+    @include mq($from: col1) {
+        padding-right: base-px(1);
+    }
+}
+
+.football__today__fixtures,
+.football__today__table {
+    @include mq($from: col1) {
+        vertical-align: top;
+        width: 50%;
+        display: inline-block;
+    }
+}
+
+.football__lineups .team-lineup__player__number,
+.football__today__fixtures .football-match--status,
+.football__today__table .football-stat--postition {
+    width: 42px; // x3.5
+
+    @include mq($from: col1) {
+        width: 60px; // x5
+    }
+}
