@@ -1,25 +1,25 @@
-/*doc
----
-title: Advert slot
-name: advert-slot
-category: Modules
----
-Create a placeholder tp allow an advert to be placed with an article.
-
-MPU
-
-```html_example
-<div class="advert-slot advert-slot--mpu">
-    <div class="advert-slot__label">Advertisement</div>
-    <div class="advert-slot__wrapper">
-        <div class="advert-slot__wrapper__content">
-            <!-- Advert injected here using JavaScript -->
-        </div>
-    </div>
-</div>
-```
-
-*/
+// /*doc
+// ---
+// title: Advert slot
+// name: advert-slot
+// category: Modules
+// ---
+// Create a placeholder tp allow an advert to be placed with an article.
+//
+// MPU
+//
+// ```html_example
+// <div class="advert-slot advert-slot--mpu">
+//     <div class="advert-slot__label">Advertisement</div>
+//     <div class="advert-slot__wrapper">
+//         <div class="advert-slot__wrapper__content">
+//             <!-- Advert injected here using JavaScript -->
+//         </div>
+//     </div>
+// </div>
+// ```
+//
+// */
 
 .advert-slot {
     @include meta();
@@ -130,7 +130,7 @@ MPU
 
         margin: 0 auto;
         padding: base-px(.5, 0, 2, .5);
-        
+
         .advert-slot__action {
             right: base-px(.5);
         }
@@ -152,7 +152,7 @@ MPU
 
 .advert-slot--placeholder {
     display: none;
-    
+
     @include mq($from: col2, $to: col4) {
         background: transparent;
         display: block;

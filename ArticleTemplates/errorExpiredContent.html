@@ -4,7 +4,7 @@
     <title>Page has been removed</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
-    <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/style-sync.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/__SYNC_STYLES__.css" />
     <script type="text/javascript">
         window.GU = window.GU || {};
     </script>
@@ -13,7 +13,7 @@
     <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/bootstrap.js"></script>
 </head>
 
-<body class="tone--news __FONT_SIZE__ __PLATFORM__" data-content-type="error" data-ads-enabled="false" style="margin-top: __ACTIONBARHEIGHT__px;" data-font-size="__FONT_SIZE_INT__" data-template-directory="__TEMPLATES_DIRECTORY__">
+<body class="type-__GARNETT_TYPE__ pillar-__GARNETT_PILLAR__ tone--news __FONT_SIZE__ __PLATFORM__" data-content-type="error" data-ads-enabled="false" style="margin-top: __ACTIONBARHEIGHT__px;" data-font-size="__FONT_SIZE_INT__" data-template-directory="__TEMPLATES_DIRECTORY__">
     
     <div class="error-message error-message--expired-content">
         <h1 class="headline error-message__title">Sorry – the page you are looking for has been removed.</h1>
@@ -25,7 +25,8 @@
     </div>
 
     <script type="text/javascript">
-        GU.bootstrap.init({
+        GU.bootstrap.init({             
+            asyncStylesFilename: "__ASYNC_STYLES__",
             fontSize: "__FONT_SIZE__",
             platform: "__PLATFORM__",
             contentType: "error",

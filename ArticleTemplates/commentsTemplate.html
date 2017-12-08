@@ -5,8 +5,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
         <link rel="stylesheet" type="text/css" media="all" id="fontStyles" href="__TEMPLATES_DIRECTORY__assets/css/fonts-__PLATFORM__.css" />
-        <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/style-sync.css" />
-        <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/style-async.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/__SYNC_STYLES__.css" />
         <script type="text/javascript">
             window.GU = window.GU || {};
         </script>
@@ -14,7 +13,7 @@
         <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/polyfills/requestAnimationFrame.js"></script>
         <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/bootstrap.js"></script>
     </head>
-    <body class="tone--__SECTION_TONE__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__" data-font-size="__FONT_SIZE_INT__" data-template-directory="__TEMPLATES_DIRECTORY__" data-page-id="__PAGE_ID__">
+    <body class="type-__GARNETT_TYPE__ pillar-__GARNETT_PILLAR__ tone--__SECTION_TONE__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__" data-font-size="__FONT_SIZE_INT__" data-template-directory="__TEMPLATES_DIRECTORY__" data-page-id="__PAGE_ID__">
         <section class="comments comments--page comments-__COMMENTS_COUNT__">
             <div class="comments__wrapper">
                 <div class="comments__header">
@@ -52,7 +51,8 @@
             </div>
         </section>
         <script type="text/javascript">
-            GU.bootstrap.init({
+            GU.bootstrap.init({             
+                asyncStylesFilename: "__ASYNC_STYLES__",
                 sectionTone: "__SECTION_TONE__",
                 fontSize: "__FONT_SIZE__",
                 platform: "__PLATFORM__",

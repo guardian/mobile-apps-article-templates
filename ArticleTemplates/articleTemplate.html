@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
     <link rel="stylesheet" type="text/css" media="all" id="fontStyles" href="__TEMPLATES_DIRECTORY__assets/css/fonts-__PLATFORM__.css" />
-    <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/style-sync.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/__SYNC_STYLES__.css" />
     <style>/* <-- */
         __ATOMS_CSS__
     /* --> */</style>
@@ -16,7 +16,7 @@
     <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/polyfills/requestAnimationFrame.js"></script>
     <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/bootstrap.js"></script>
 </head>
-<body class="tone--__SECTION_TONE__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__ advert-config--__ADS_CONFIG__ __IS_ADVERTISING__ __DISPLAY_HINT__" data-content-type="article" data-ads-enabled="__ADS_ENABLED__" data-ads-enable-hiding="__ADS_ENABLE_HIDING__" data-ads-config="__ADS_CONFIG__" style="margin-top: __ACTIONBARHEIGHT__px;" data-font-size="__FONT_SIZE_INT__" data-template-directory="__TEMPLATES_DIRECTORY__" data-page-id="__PAGE_ID__" data-mpu-after-paragraphs="__MPU_AFTER_PARAGRAPHS__" data-use-ads-ready="__ADS_FAST_CALLBACK__" data-content-section="__SECTION__">
+<body class="type-__GARNETT_TYPE__ pillar-__GARNETT_PILLAR__ tone--__SECTION_TONE__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__ advert-config--__ADS_CONFIG__ __IS_ADVERTISING__ __DISPLAY_HINT__" data-content-type="article" data-ads-enabled="__ADS_ENABLED__" data-ads-enable-hiding="__ADS_ENABLE_HIDING__" data-ads-config="__ADS_CONFIG__" style="margin-top: __ACTIONBARHEIGHT__px;" data-font-size="__FONT_SIZE_INT__" data-template-directory="__TEMPLATES_DIRECTORY__" data-page-id="__PAGE_ID__" data-mpu-after-paragraphs="__MPU_AFTER_PARAGRAPHS__" data-use-ads-ready="__ADS_FAST_CALLBACK__" data-content-section="__SECTION__">
 
     __ARTICLE_CONTAINER__
 
@@ -28,6 +28,7 @@
         }
         readAtoms.call(atoms);
         GU.bootstrap.init({
+            asyncStylesFilename: "__ASYNC_STYLES__",
             sectionTone: "__SECTION_TONE__",
             isAdvertising: "__IS_ADVERTISING__" ? true : false,
             fontSize: "__FONT_SIZE__",

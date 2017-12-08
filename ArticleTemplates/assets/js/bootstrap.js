@@ -37,7 +37,7 @@
             'injectInlineArticleMembershipCreative'
         ],
         loadCss = function() {
-            var url = 'assets/css/style-async.css',
+            var url = 'assets/css/' + opts.asyncStylesFilename + '.css',
                 basePath = GU.opts.templatesDirectory,
                 link = document.createElement('link');
 

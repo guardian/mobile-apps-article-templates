@@ -1,26 +1,26 @@
-/*doc
----
-title: Gallery
-name: gallery
-category: Media
----
-Display a selection of images that form a gallery.
-
-```html_example
-<div class="gallery">
-    <a class="gallery__link" href="x-gu://openimage/http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402415665511/5656c800-f265-4bac-aa0f-fe9cdd346872-2060x1236.jpeg"><img class="gallery__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402415665511/5656c800-f265-4bac-aa0f-fe9cdd346872-2060x1236.jpeg?width=600&amp;height=360&amp;quality=60" width="600" height="360"/></a>
-    <a class="gallery__link" href="x-gu://openimage/http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402412129620/5cdfa90e-cc39-41f8-970d-c347b94f74a0-1024x768.jpeg"><img class="gallery__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402412129620/5cdfa90e-cc39-41f8-970d-c347b94f74a0-1024x768.jpeg?width=600&amp;height=360&amp;quality=60" width="480" height="360"/></a>
-    <a class="gallery__link" href="x-gu://openimage/http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402413376596/90fc39c1-eddf-4933-a8d6-2df50285c449-2060x1236.jpeg"><img class="gallery__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402413376596/90fc39c1-eddf-4933-a8d6-2df50285c449-2060x1236.jpeg?width=600&amp;height=360&amp;quality=60" width="600" height="360"/></a>
-    <a class="gallery__link" href="x-gu://openimage/http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402414174263/1ab8f4b4-c2fd-44cf-bb26-79e9c4d34908-2060x1236.jpeg"><img class="gallery__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402414174263/1ab8f4b4-c2fd-44cf-bb26-79e9c4d34908-2060x1236.jpeg?width=600&amp;height=360&amp;quality=60" width="600" height="360"/></a>
-    <a class="gallery__link" href="x-gu://openimage/http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402414409152/1d6d3927-84b3-4d00-879e-baef04a19ee6-2060x1236.jpeg"><img class="gallery__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402414409152/1d6d3927-84b3-4d00-879e-baef04a19ee6-2060x1236.jpeg?width=600&amp;height=360&amp;quality=60" width="600" height="360"/></a>
-    <a class="gallery__link" href="x-gu://openimage/http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402414956768/8b58f39b-76fd-4a91-8a7a-c2333f53f9fa-2060x1236.jpeg"><img class="gallery__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402414956768/8b58f39b-76fd-4a91-8a7a-c2333f53f9fa-2060x1236.jpeg?width=600&amp;height=360&amp;quality=60" width="600" height="360"/></a>
-    <a class="gallery__link" href="x-gu://openimage/http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402415182146/307995e0-e92d-4fb5-b3da-2ad39396c63c-2060x1236.jpeg"><img class="gallery__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402415182146/307995e0-e92d-4fb5-b3da-2ad39396c63c-2060x1236.jpeg?width=600&amp;height=360&amp;quality=60" width="600" height="360"/></a>
-    <a class="gallery__link" href="x-gu://openimage/http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402415424833/87354be9-99ba-4e82-bae3-1aec477c9a7f-2060x1236.jpeg"><img class="gallery__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402415424833/87354be9-99ba-4e82-bae3-1aec477c9a7f-2060x1236.jpeg?width=600&amp;height=360&amp;quality=60" width="600" height="360"/></a>
-    <a class="gallery__link" href="x-gu://openimage/http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402417018688/f79d8724-dae0-4c2c-953c-215be13030a2-2060x1236.jpeg"><img class="gallery__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402417018688/f79d8724-dae0-4c2c-953c-215be13030a2-2060x1236.jpeg?width=600&amp;height=360&amp;quality=60" width="600" height="360"/></a>
-    <a class="gallery__link" href="x-gu://openimage/http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402415839526/bfeafe56-a533-4b58-a508-ae94fb686a46-2060x1236.jpeg"><img class="gallery__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402415839526/bfeafe56-a533-4b58-a508-ae94fb686a46-2060x1236.jpeg?width=600&amp;height=360&amp;quality=60" width="600" height="360"/></a>
-</div>
-```
-*/
+// /*doc
+// ---
+// title: Gallery
+// name: gallery
+// category: Media
+// ---
+// Display a selection of images that form a gallery.
+//
+// ```html_example
+// <div class="gallery">
+//     <a class="gallery__link" href="x-gu://openimage/http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402415665511/5656c800-f265-4bac-aa0f-fe9cdd346872-2060x1236.jpeg"><img class="gallery__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402415665511/5656c800-f265-4bac-aa0f-fe9cdd346872-2060x1236.jpeg?width=600&amp;height=360&amp;quality=60" width="600" height="360"/></a>
+//     <a class="gallery__link" href="x-gu://openimage/http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402412129620/5cdfa90e-cc39-41f8-970d-c347b94f74a0-1024x768.jpeg"><img class="gallery__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402412129620/5cdfa90e-cc39-41f8-970d-c347b94f74a0-1024x768.jpeg?width=600&amp;height=360&amp;quality=60" width="480" height="360"/></a>
+//     <a class="gallery__link" href="x-gu://openimage/http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402413376596/90fc39c1-eddf-4933-a8d6-2df50285c449-2060x1236.jpeg"><img class="gallery__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402413376596/90fc39c1-eddf-4933-a8d6-2df50285c449-2060x1236.jpeg?width=600&amp;height=360&amp;quality=60" width="600" height="360"/></a>
+//     <a class="gallery__link" href="x-gu://openimage/http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402414174263/1ab8f4b4-c2fd-44cf-bb26-79e9c4d34908-2060x1236.jpeg"><img class="gallery__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402414174263/1ab8f4b4-c2fd-44cf-bb26-79e9c4d34908-2060x1236.jpeg?width=600&amp;height=360&amp;quality=60" width="600" height="360"/></a>
+//     <a class="gallery__link" href="x-gu://openimage/http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402414409152/1d6d3927-84b3-4d00-879e-baef04a19ee6-2060x1236.jpeg"><img class="gallery__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402414409152/1d6d3927-84b3-4d00-879e-baef04a19ee6-2060x1236.jpeg?width=600&amp;height=360&amp;quality=60" width="600" height="360"/></a>
+//     <a class="gallery__link" href="x-gu://openimage/http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402414956768/8b58f39b-76fd-4a91-8a7a-c2333f53f9fa-2060x1236.jpeg"><img class="gallery__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402414956768/8b58f39b-76fd-4a91-8a7a-c2333f53f9fa-2060x1236.jpeg?width=600&amp;height=360&amp;quality=60" width="600" height="360"/></a>
+//     <a class="gallery__link" href="x-gu://openimage/http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402415182146/307995e0-e92d-4fb5-b3da-2ad39396c63c-2060x1236.jpeg"><img class="gallery__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402415182146/307995e0-e92d-4fb5-b3da-2ad39396c63c-2060x1236.jpeg?width=600&amp;height=360&amp;quality=60" width="600" height="360"/></a>
+//     <a class="gallery__link" href="x-gu://openimage/http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402415424833/87354be9-99ba-4e82-bae3-1aec477c9a7f-2060x1236.jpeg"><img class="gallery__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402415424833/87354be9-99ba-4e82-bae3-1aec477c9a7f-2060x1236.jpeg?width=600&amp;height=360&amp;quality=60" width="600" height="360"/></a>
+//     <a class="gallery__link" href="x-gu://openimage/http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402417018688/f79d8724-dae0-4c2c-953c-215be13030a2-2060x1236.jpeg"><img class="gallery__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402417018688/f79d8724-dae0-4c2c-953c-215be13030a2-2060x1236.jpeg?width=600&amp;height=360&amp;quality=60" width="600" height="360"/></a>
+//     <a class="gallery__link" href="x-gu://openimage/http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402415839526/bfeafe56-a533-4b58-a508-ae94fb686a46-2060x1236.jpeg"><img class="gallery__image" src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/10/1402415839526/bfeafe56-a533-4b58-a508-ae94fb686a46-2060x1236.jpeg?width=600&amp;height=360&amp;quality=60" width="600" height="360"/></a>
+// </div>
+// ```
+// */
 
 $galleryGutter: 4px;
 

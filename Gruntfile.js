@@ -74,6 +74,14 @@ module.exports = function(grunt) {
                     'ArticleTemplates/assets/css/outbrain.css':  'ArticleTemplates/assets/scss/outbrain.scss',
                     'ArticleTemplates/assets/css/style-async.css':  'ArticleTemplates/assets/scss/style-async.scss',
                     'ArticleTemplates/assets/css/style-sync.css':  'ArticleTemplates/assets/scss/style-sync.scss',
+
+                    'ArticleTemplates/assets/css/garnett-style-async.css':  'ArticleTemplates/assets/scss/garnett-style-async.scss',
+                    'ArticleTemplates/assets/css/garnett-style-sync.css':  'ArticleTemplates/assets/scss/garnett-style-sync.scss',
+
+                    'ArticleTemplates/assets/css/garnett-fonts-android.css':  'ArticleTemplates/assets/scss/garnett-fonts-android.scss',
+                    'ArticleTemplates/assets/css/garnett-fonts-ios.css':  'ArticleTemplates/assets/scss/garnett-fonts-ios.scss',
+                    'ArticleTemplates/assets/css/garnett-interactive.css':  'ArticleTemplates/assets/scss/garnett-interactive.scss',
+                    'ArticleTemplates/assets/css/garnett-outbrain.css':  'ArticleTemplates/assets/scss/garnett-outbrain.scss'
                 }
             }
         },
@@ -195,25 +203,33 @@ module.exports = function(grunt) {
         },
         // watch
         watch: {
+            options: {
+              livereload: true,
+            },
             js: {
                 files: ['ArticleTemplates/assets/js/**/*.js'],
                 tasks: ['validateJS', 'testJS', 'buildJS']
             },
             scss: {
                 files: ['ArticleTemplates/assets/scss/**/*.scss'],
-                tasks: ['validateCSS', 'buildCSS']
+                tasks: ['buildCSS', 'validateCSS' ]
             }
         },
-        // desktop notifications for Grunt errors
-        notify_hooks: {
+        // local server
+        connect: {
+          server: {
             options: {
-                enabled: true,
-                max_jshint_notifications: 5,
-                success: true,
-                duration: 3
+              // uncomment below to use https server
+              // protocol: 'https',
+              livereload: true,
+              port: 8000,
+              // useAvailablePort: true,
+              base: '.'
             }
+          }
         }
     });
+
 
     grunt.task.run('notify_hooks');
 
@@ -227,5 +243,8 @@ module.exports = function(grunt) {
 
     grunt.registerTask('buildCSS', ['sass', 'cssmin']);
 
-    grunt.registerTask('default', ['buildJS', 'buildCSS', 'watch']);
+    grunt.registerTask('default', ['buildJS', 'buildCSS', 'connect', 'watch']);
+
+
+
 };
