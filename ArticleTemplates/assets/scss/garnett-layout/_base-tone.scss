@@ -1,0 +1,142 @@
+body {
+    .article__body {
+        background-color: color(shade-7);
+    }
+
+    .article__header {
+        background-color: color(shade-7);
+
+        @include mq($from: col4) {
+            background-color: color(shade-5);
+
+            .section,
+            .headline,
+            .standfirst__inner,
+            .meta {
+                background-color: color(shade-7);
+            }
+        }
+
+        // to-do: remove?
+        .section__container,
+        .comment-count {
+            border-color: rgba(color(shade-3), .4);
+        }
+
+        // to-do: remove?
+        .headline {
+            p.review-rating {
+                @include rating;
+                padding-top: 12px;
+            }
+        }
+
+        // to-do: remove?
+        .meta__misc {
+            @include mq($from: col4) {
+                padding: {
+                    left: 0;
+                    right: 0;
+                }
+            }
+        }
+
+        // to-do: remove?
+        .main-media__caption {
+            background-color: color(shade-7);
+        }
+
+        // to-do: move to sponsorship?
+        .sponsorship {
+            @include mq($from: col4) {
+                border-bottom: 0;
+            }
+        }
+    }
+
+    .witness {
+        margin: 0;
+        padding: base-px(1);
+
+        @include mq($from: col4) {
+            padding: {
+                left: 240px;
+                top: 8px;
+            }
+        }
+    }
+
+    .article__body + .extras > .witness {
+        margin-left: -4px;
+        padding-top: 0;
+    }
+
+    .extras {
+        background: color(shade-7);
+
+        @include mq($from: col4) {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    }
+
+
+    &:not(.is_advertising) .main-media {
+        background: color(shade-7);
+    }
+
+    &.is_advertising {
+        .alerts,
+        .alerts.following:active {
+            border-color: rgba(color(shade-1), .5);
+            color: color(shade-1);
+        }
+
+        .alerts:active,
+        .alerts.following {
+            background-color: color(shade-1);
+            color: color(shade-7);
+        }
+    }
+
+    // to-do: move to video content-type?
+    &[data-content-type='video'],
+    &.garnett--type-video {
+        .article {
+            .tags {
+                border-top: 0;
+            }
+            .article {
+                &__header {
+                    .sponsorship {
+                        padding: 8px 0 0;
+                        border-top: 0;
+                        border-bottom: 0;
+                    }
+
+                    .meta {
+                        padding: 0;
+
+                        @include mq($from: col2) {
+                            border-top: 0;
+                        }
+
+                        .meta__misc {
+                            padding: 0;
+
+                            .sponsorship,
+                            .meta__byline {
+                                padding-top: 8px;
+                                padding-left: 12px;
+                            }
+
+                            .sponsorship__inner {
+                                margin: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
