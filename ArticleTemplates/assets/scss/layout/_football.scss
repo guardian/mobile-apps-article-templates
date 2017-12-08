@@ -1,13 +1,13 @@
 .football {
     @include mq($from: col1) {
-        border-top: 4px solid color(shade-2);
+        border-top: 4px solid color(tone-news-accent);
     }
 
     @include mq($from: col4) {
         max-width: 1200px;
         margin: 0 auto;
     }
-
+    
     .tabs {
         [href='#football__tabpanel--liveblog'][aria-selected='true'] {
             color: color(tone-live);
@@ -20,12 +20,12 @@
 .football__tabpanel {
     .article {
         border-top-width: 2px;
-        background-color: color(shade-7);
+        background-color: color(shade-7);   
     }
 
     .article--liveblog {
-        background-color: color(shade-5);
-    }
+        background-color: color(shade-5);   
+    }    
 
     .meta {
         border-bottom: 1px dotted color(shade-4);
