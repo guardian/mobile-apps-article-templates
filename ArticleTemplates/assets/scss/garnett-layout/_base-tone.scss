@@ -31,6 +31,21 @@ body {
             }
         }
 
+        .cutout {
+            &__container {
+                background-color: color(shade-7);
+                border-bottom: 1px dotted darken(color(shade-4), 10%);
+                @include mq($from: col4) {
+                    margin: 0 auto;
+                    max-width: 1200px;
+                }
+            }
+            &__image {
+                z-index: 2;
+                background-size: auto 220px;
+            }
+        }
+
         // to-do: remove?
         .meta__misc {
             @include mq($from: col4) {
@@ -100,8 +115,17 @@ body {
         }
     }
 
-    // to-do: move to video content-type?
-    &[data-content-type='video'],
+
+    .tags {
+        .inline-list__item {
+            &.more-button a {
+                @include tag-more-button(color(shade-1), color(global-tags));
+            }
+        }
+    }
+
+
+    // to-do: move to video content-type
     &.garnett--type-video {
         .article {
             .tags {
@@ -140,4 +164,5 @@ body {
             }
         }
     }
+
 }
