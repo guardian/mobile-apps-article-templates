@@ -1,12 +1,14 @@
 
 @mixin pillar-colour($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-background) {
 
+    // Author names
     .byline,
     .byline__author,
     .byline__author a {
         color: $p-kicker;
     }
 
+    // feature headlines
     &.garnett--type-feature,
     &.garnett--type-review,
     &.garnett--type-recipe {
@@ -15,15 +17,25 @@
         }
     }
 
+    // in-article text links
     .prose p,
     .prose li {
         @include text-underline($p-kicker, $p-background, $p-feature-headline);
     }
 
-    .article__header .section {
-        &,
-        & a {
-            color: $p-kicker;
+    .article__header {
+        // main tag and comment count on top of the screen
+        .section {
+            &,
+            & a {
+                color: $p-kicker;
+            }
         }
     }
+
+    &.display-hint--articleImmersive .article--immersive .article__series,
+    &.display-hint--articleImmersive .article--immersive .article__series>a {
+        color: $p-inverted;
+    }
+
 }
