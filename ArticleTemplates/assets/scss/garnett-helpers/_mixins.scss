@@ -16,36 +16,32 @@
 
 // Standfirst font sizing
 @mixin standfirst($multiple: 1) {
-    $standfirst-size-1: 1.7rem;
-    $standfirst-lead-1: 2.2rem;
-    $standfirst-size-2: 2.2rem;
-    $standfirst-lead-2: 3rem;
+    $standfirst-size-small: 1.6rem;
+    $standfirst-lead-small: 2.2rem;
+    $standfirst-size-large: 2.2rem;
+    $standfirst-lead-large: 2.8rem;
 
-    @include mq($to: col2) {
-        font-size: $standfirst-size-1 * $multiple;
-        line-height: $standfirst-lead-1 * $multiple;
-    }
+    font-size: $standfirst-size-small * $multiple;
+    line-height: $standfirst-lead-small * $multiple;
 
     @include mq($from: col2) {
-        font-size: $standfirst-size-2 * $multiple;
-        line-height: $standfirst-lead-2 * $multiple;
+        font-size: $standfirst-size-large * $multiple;
+        line-height: $standfirst-lead-large * $multiple;
     }
 }
 
-@mixin rating() {
-    $review-size-1: 2.2rem;
-    $review-lead-1: 2.4rem;
-    $review-size-2: 3rem;
-    $review-lead-2: 3.2rem;
+@mixin rating($multiple: 1) {
+    $review-size-small: 1.6rem;
+    $review-lead-small: 2.2rem;
+    $review-size-large: 2.2rem;
+    $review-lead-large: 2.8rem;
 
-    @include mq($to: col1) {
-        font-size: $review-size-1;
-        line-height: $review-lead-1;
-    }
+    font-size: $review-size-small * $multiple;
+    line-height: $review-lead-small * $multiple;
 
-    @include mq(col1, col2) {
-        font-size: $review-size-2;
-        line-height: $review-lead-2;
+    @include mq($from: col1) {
+        font-size: $review-size-large * $multiple;
+        line-height: $review-lead-large * $multiple;
     }
 
 }
