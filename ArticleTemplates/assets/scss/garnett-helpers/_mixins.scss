@@ -1,30 +1,16 @@
 // Headline font sizing
 @mixin headline($multiple: 1) {
-    $headline-size-1: 2.8rem;
-    $headline-lead-1: 3.2rem;
-    $headline-size-2: 3.4rem;
-    $headline-lead-2: 3.8rem;
-    $headline-size-3: 3.4rem;
-    $headline-lead-3: 3.8rem;
-    $headline-size-4: 3.4rem;
-    $headline-lead-4: 3.8rem;
+    $headline-size-small: 2.8rem;
+    $headline-lead-small: 3.2rem;
+    $headline-size-large: 3.4rem;
+    $headline-lead-large: 3.8rem;
 
-    font-size: $headline-size-1 * $multiple;
-    line-height: $headline-lead-1 * $multiple;
+    font-size: $headline-size-small * $multiple;
+    line-height: $headline-lead-small * $multiple;
 
     @include mq($from: col2) {
-        font-size: $headline-size-2 * $multiple;
-        line-height: $headline-lead-2 * $multiple;
-    }
-
-    @include mq($from: col3) {
-        font-size: $headline-size-3 * $multiple;
-        line-height: $headline-lead-3 * $multiple;
-    }
-
-    @include mq($from: col4) {
-        font-size: $headline-size-4 * $multiple;
-        line-height: $headline-lead-4 * $multiple;
+        font-size: $headline-size-large * $multiple;
+        line-height: $headline-lead-large * $multiple;
     }
 }
 
