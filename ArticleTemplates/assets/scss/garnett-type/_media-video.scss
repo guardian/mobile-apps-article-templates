@@ -5,6 +5,15 @@
         }
         .article {
             &__header {
+                .standfirst {
+                    @include mq($from: col4) {
+                        padding: {
+                            left: 0;
+                            right: 0;
+                        }
+                    }
+                }
+
                 .sponsorship {
                     padding: 8px 0 0;
                     border-top: 0;

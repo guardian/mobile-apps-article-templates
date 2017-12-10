@@ -2,4 +2,232 @@
 .garnett--type-video,
 .garnett--type-gallery {
 
+    @include mq($from: col4) {
+        .comments,
+        .related-content {
+            background: color(shade-5);
+        }
+    }
+
+    .witness .witness__sponsor-logo {
+        fill: color(shade-7);
+    }
+
+    .section__container {
+        border-bottom: 1px color(shade-2) dotted;
+        color: color(shade-5);
+
+        .content__series-label,
+        .content__series-label a {
+            color: color(shade-5);  // Content Label Series
+        }
+    }
+
+    .article a,
+    .comments__block a,
+    .comments__ordering {
+        color: darken(color(tone-media), 5%);
+
+        &:active {
+            color: color(tone-media-accent);
+        }
+    }
+
+    .tags {
+
+        .inline-list__item {
+            a {
+                @include tag-button(color(shade-7), color(shade-6), 'lighter');
+            }
+
+            &.more-button a {
+                @include tag-more-button(color(shade-7), color(shade-6), 'lighter');
+            }
+        }
+    }
+
+    .comment__report,
+    .touchpoint--primary {
+        .touchpoint__button {
+            background-color: color(tone-media);
+        }
+
+        &:active .touchpoint__button {
+            background-color: color(tone-media-accent);
+        }
+
+        .touchpoint__label {
+            color: color(tone-media);
+        }
+
+        &:active .touchpoint__label {
+            color: color(tone-media-accent);
+        }
+    }
+
+    .comments__viewmore {
+        .comments__viewmore--label {
+            color: color(tone-media);
+        }
+
+        &:active .comments__viewmore--label {
+            color: color(tone-media-accent);
+        }
+    }
+
+    // Sponsorship alt text when sponsor logo unavailable
+    .sponsorship__logo {
+        color: color(global-sponsored-label);
+    }
+
+    .article--audio,
+    .article--visual {
+        border-top-color: color(tone-media);
+        background-color: color(shade-1);
+
+        @include mq($from: col4) {
+            background-color: #303030;
+        }
+
+        .prose p,
+        .prose li {
+            @include text-underline(darken(color(tone-media), 5%), color(shade-1), color(tone-media-accent));
+        }
+
+        .prose table,
+        .table {
+            border-top-color: color(tone-media);
+        }
+
+        .prose .element-pullquote {
+            blockquote {
+                color: color(shade-7);
+
+                footer,
+                &::after,
+                &::before {
+                    color: color(tone-media);
+                }
+            }
+        }
+
+        .audio-player__wrapper,
+        .audio-player {
+            background-color: darken(color(shade-1), 10%);
+        }
+
+        .article__header,
+        .article__body {
+            background-color: color(shade-1);
+
+            @include mq($from: col4) {
+                background-color: #303030;
+            }
+        }
+
+        .tags {
+            background-color: color(shade-1);
+        }
+
+        .section > div {
+            color: color(tone-media);
+        }
+
+        .headline,
+        .standfirst,
+        .prose {
+            color: color(shade-7);
+        }
+
+        .byline {
+            border-color: color(shade-2);
+            color: color(shade-3);
+        }
+
+        .meta,
+        .comment-count {
+            border-color: color(shade-2);
+        }
+
+        @include mq($from: col4) {
+            .section,
+            .headline,
+            .main-media,
+            .meta,
+            .sponsorship {
+                background-color: color(shade-1);
+            }
+
+            .standfirst {
+                padding-bottom: base-px(2);
+                width: 620px;
+            }
+
+            .article__header .standfirst {
+                margin-left: 240px;
+            }
+
+            .article__header .standfirst__inner {
+                padding-left: 0;
+                padding-right: 0;
+                width: 620px;
+            }
+
+            .main-media {
+                padding-bottom: base-px(2);
+            }
+
+            .meta {
+                border-top: 1px dotted color(shade-2);
+            }
+
+            .meta__misc {
+                padding: {
+                    left: 10px;
+                    right: 10px;
+                }
+            }
+        }
+
+        .aside {
+            border-color: color(shade-2);
+            margin-bottom: 0;
+            border-bottom: 0;
+        }
+
+        .tags {
+            border-color: color(shade-2);
+        }
+
+        .aside-witness__sponsor {
+            width: 33%;
+            text-align: right;
+
+            .aside-witness__sponsor__graphic__text {
+                fill: color(shade-7);
+            }
+
+            .aside-witness__sponsor__graphic__logo {
+                fill: #ffe600; // EE Yellow
+            }
+        }
+    }
+
+    // Template specific styles
+    .article--audio {
+        .meta {
+            border-top-width: 1px;
+            border-top-style: dotted;
+        }
+
+        .article__header {
+            background-image: -webkit-canvas(circles);
+        }
+
+        .headline,
+        .meta {
+            background-color: transparent;
+        }
+    }
+
 }
