@@ -3,9 +3,6 @@
         border-bottom: 1px rgba(234, 234, 234, .3) dotted;
         color: color(shade-5);
 
-        > div {
-            color: color(tone-podcast); // Content Label Section
-        }
 
         .content__series-label,
         .content__series-label a {
@@ -20,51 +17,9 @@
         z-index: 1;
     }
 
-    .audio-player__button {
-        &.touchpoint--primary .touchpoint__button {
-            background-color: color(tone-podcast);
-            color: color(tone-podcast-ply-background);
-
-            &:active {
-                background-color: color(tone-news-accent); /* NB Need new colour???!!! */
-            }
-        }
-    }
-
-    .audio-player__slider__knob {
-        background-color: color(tone-podcast);
-    }
-
-    .section__container {
-        background-color: color(shade-6);
-    }
-
-    .article {
-        border-top-color: color(tone-podcast);
-    }
-
-    .article__body {
-        background-color: color(shade-7);
-    }
-
     .article__header {
-        background-color: color(shade-6);
-
-        .section {
-            display: block;
-        }
-
         .cutout__container {
             background-color: inherit;
-        }
-
-        .headline {
-            color: color(shade-7);
-
-            .headline__accent {
-                color: color(shade-1);
-                display: block;
-            }
         }
 
         .card__titletext {
@@ -81,56 +36,20 @@
             .byline {
                 color: color(shade-7);
             }
-
-            .byline__author a {
-                color: color(tone-podcast);
-            }
         }
-
-        .comment-count a {
-            color: color(tone-podcast);
-        }
-    }
-
-    @include mq($from: col4) {
-        .cutout {
-            background-color: darken(color(shade-6), 5%);
-
-            .cutout__container {
-                background-color: transparent;
-            }
-        }
-    }
-
-    .standfirst {
-        color: color(shade-1);
     }
 
     .meta,
     .meta__pubdate {
-        color: rgba(color(shade-7), .8);
+        color: rgba(color(shade-7), .75);
     }
 
     .meta {
-        border-top: 1px rgba(color(shade-7), .4) dotted;
-    }
-
-    .meta__misc {
-        @include mq($from: col4) {
-            padding: {
-                left: 0;
-                right: 0;
-            }
-        }
+        border-top: 1px rgba(color(shade-7), .2) dotted;
     }
 
     .comment-count {
-        color: color(tone-podcast);
         border-left-color: rgba(color(shade-7), .4);
-
-        a {
-            color: color(tone-podcast);
-        }
     }
 
     &.ios .article__header .card__title--audio::before {

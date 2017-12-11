@@ -25,6 +25,8 @@
         .article__header,
         .article__body {
             background-color: $p-media-background;
+        }
+        .article__header {
             @include mq($from: col4) {
                 background-color: darken($p-media-background, 5%);
             }
@@ -46,7 +48,19 @@
             @include mq($from: col4) {
                 background-color: darken($p-media-background, 5%);
             }
+        }
 
+        .audio-player__container {
+            .audio-player {
+                background-color: transparent;
+            }
+            .audio-player__wrapper {
+                background-color: $p-media-background;
+                border-bottom: 1px color(shade-2) dotted;
+            }
+            @include mq($from: col4) {
+                background-color: darken($p-media-background, 5%);
+            }
         }
 
         // hide horizontal white line above video cover image
