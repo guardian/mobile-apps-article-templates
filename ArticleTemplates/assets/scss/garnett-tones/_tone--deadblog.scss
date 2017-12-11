@@ -1,0 +1,234 @@
+/*.tone--deadBlog {
+    .section {
+        color: color(tone-liveBlogSection); // Default
+        font-family: $egyptian-display;
+        font-weight: 600;
+        @include headline(.5);
+        float: left;
+        padding-bottom: 0;
+
+        &::before {
+            margin-right: base-px(.66666);
+            line-height: 92%; // Offset for different font
+            vertical-align: bottom;
+        }
+    }
+
+    .content__series-label {
+        color: color(tone-liveBlogSeriesLabel);
+        font-weight: normal;
+        font-family: $egyptian-display;
+        @include headline(.5);
+        padding: 6px 12px 0 0;
+        padding-bottom: 0;
+        float: left;
+    }
+
+} */
+
+.tone--deadBlog {
+    .witness {
+        margin-top: base-px(1);
+
+        @include mq($from: col4) {
+            margin-left: 240px;
+        }
+    }
+
+    a.touchpoint:active {
+        color: color(tone-deadblog);
+    }
+
+    #comments .touchpoint--primary {
+        .touchpoint__button {
+            background-color: color(tone-deadblog);
+        }
+
+        &:active .touchpoint__button {
+            background-color: color(tone-deadblog);
+        }
+    }
+
+    // Template specific styles
+    .article--liveblog {
+        border-top-color: color(tone-deadblog);
+
+        .prose table,
+        .table {
+            border-top-color: color(tone-deadblog);
+        }
+
+        .meta {
+            background-color: color(shade-8);
+            border: 0;
+            border-left: 1px dotted rgba(color(shade-7), .2);
+            margin: 0;
+
+            @include mq($from: col4) {
+                background-color: darken(color(shade-8), 10%);
+                border: 0;
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .meta__pubdate {
+                color: rgba(color(shade-3), .8);
+            }
+        }
+
+        .meta__misc {
+            @include mq($from: col4) {
+                background-color: color(shade-8);
+                margin: 0 auto;
+                padding: {
+                    left: 240px;
+                    right: 340px;
+                }
+                width: 1200px;
+            }
+        }
+    }
+
+    .article__header {
+        background-color: color(shade-7);
+
+        @include mq($from: col4) {
+            background-color: color(shade-5);
+
+            .section,
+            .headline,
+            .standfirst__inner,
+            .main-media {
+                background-color: color(shade-7);
+            }
+        }
+
+        .byline__author,
+        .byline__author a {
+            color: color(shade-1);
+        }
+
+        a {
+            color: color(tone-deadblog);
+
+            &:active {
+                opacity: rgba(color(tone-deadblog), .8);
+            }
+        }
+
+        .bullet,
+        ul > li {
+            &::before {
+                background-color: color(shade-2);
+            }
+        }
+
+        .headline {
+            color: color(shade-1);
+        }
+
+        .content__series-label,
+        .content__series-label a {
+            color: color(shade-2);
+        }
+
+        .section {
+            @include headline(.5);
+            color: color(tone-deadblog); // Default
+            font-family: $egyptian-display;
+            font-weight: 600;
+
+            &::before {
+                margin-right: base-px(.66666);
+                line-height: 92%; // Offset for different font
+                vertical-align: bottom;
+            }
+        }
+
+        .section__live {
+            display: block;
+        }
+
+        .standfirst {
+            color: color(shade-2);
+
+            a {
+                color: color(tone-deadblog);
+            }
+        }
+
+        .sponsorship {
+            background-color: color(shade-7);
+            border-bottom: 0;
+
+            &__about-uri {
+                color: color(global-sponsored-about);
+            }
+        }
+    }
+
+    .tags {
+        background-color: color(shade-5);
+        border-bottom: 0;
+        padding-left: 0;
+
+        .inline-list__item {
+            a {
+                @include tag-button(color(shade-1), color(blogs-tags));
+            }
+
+            &.more-button a {
+                @include tag-more-button(color(shade-1), darken(color(blogs-tags), 10%));
+            }
+        }
+    }
+
+    .block--live-summary {
+        background-color: color(shade-7);
+        border-top: 1px solid color(shade-3);
+
+        .prose p,
+        .prose li {
+            @include text-underline(color(tone-news), color(tone-news-accent));
+        }
+
+        .block__time {
+            font-weight: bold;
+        }
+    }
+
+    .alerts:active,
+    .alerts.following {
+        background-color: color(tone-live);
+        color: color(shade-7);
+    }
+
+    .alerts,
+    .alerts.following:active {
+        border-color: rgba(color(tone-live), .5);
+        color: color(tone-live);
+    }
+
+    .cricket {
+        .article--liveblog {
+            border-top: 0;
+        }
+
+        a.alerts {
+            margin: 0;
+        }
+
+        a.alerts:active,
+        a.alerts.following {
+            background-color: color(shade-3);
+            color: color(shade-7);
+        }
+
+        a.alerts,
+        a.alerts.following:active {
+            border-color: rgba(color(shade-4), .5);
+            background-color: transparent;
+            color: color(shade-3);
+        }
+    }
+}

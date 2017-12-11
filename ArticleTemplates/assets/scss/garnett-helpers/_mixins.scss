@@ -109,7 +109,7 @@ $meta-lead: 2.2rem;
 
 
 // Link Underline Style
-@mixin text-underline($color, $background, $color-accent) {
+@mixin text-underline($color, $color-accent) {
     a {
         color: $color;
         text-decoration: none;
@@ -126,25 +126,10 @@ $meta-lead: 2.2rem;
             background-position: 0 93%;
         }
 
-        // Clear descendors from underline
-        text-shadow: 3px 0 $background, 2px 0 $background, 1px 0 $background, -1px 0 $background, -2px 0 $background, -3px 0 $background;
-
         a:active,
         &:hover {
             color: $color-accent;
             background-image: linear-gradient(to bottom, darken($color-accent, 6%) 0%, darken($color-accent, 6%) 100%);
-        }
-
-        // Style selected links (or else text-shadow makes it look crazy ugly)
-        // Pseudo selectors must go separately, or they break each other
-        &,
-        > * {
-            &::selection {
-                text-shadow: none;
-            }
-            &::-moz-selection {
-                text-shadow: none;
-            }
         }
     }
 }
