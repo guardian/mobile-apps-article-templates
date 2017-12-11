@@ -114,22 +114,13 @@ $meta-lead: 2.2rem;
         color: $color;
         text-decoration: none;
 
-        // Underline via gradient background
-        background-image: linear-gradient(rgba($color, .25) 0%, $color 100%);
-        background-repeat: repeat-x;
-        background-size: 1px 1px;
-        background-position: 0 bottom;
-
-        // Tweak position + thickness for high res (1.75x and up) displays
-        @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
-            background-image: linear-gradient(rgba($color, .25) 0%, $color 100%);
-            background-position: 0 93%;
-        }
+        padding-bottom: 1px;
+        border-bottom: 1px solid rgba($color, .3);
 
         a:active,
         &:hover {
             color: $color-accent;
-            background-image: linear-gradient(to bottom, darken($color-accent, 6%) 0%, darken($color-accent, 6%) 100%);
+            border-bottom: 1px solid rgba($color-accent, .4);
         }
     }
 }
