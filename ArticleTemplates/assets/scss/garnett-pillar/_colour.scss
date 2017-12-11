@@ -1,0 +1,105 @@
+
+@mixin pillar-colour($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-background, $p-media-background) {
+
+    // Feature headlines
+    &.garnett--type-feature,
+    &.garnett--type-review,
+    &.garnett--type-recipe {
+        .headline {
+            color: $p-kicker;
+        }
+    }
+
+
+    // Immersive top tags
+    &.display-hint--articleImmersive .article--immersive .article__series,
+    &.display-hint--articleImmersive .article--immersive .article__series>a {
+        color: $p-inverted;
+    }
+
+
+    // Media pages
+    &.garnett--type-audio,
+    &.garnett--type-video,
+    &.garnett--type-gallery {
+        .article__header,
+        .article__body {
+            background-color: $p-media-background;
+            @include mq($from: col4) {
+                background-color: darken($p-media-background, 5%);
+            }
+        }
+
+        .section,
+        .headline,
+        .main-media,
+        .meta,
+        .sponsorship {
+            background-color: $p-media-background;
+        }
+
+        .article--audio,
+        .article--visual {
+            border-top-color: color($p-soft);
+            background-color: $p-media-background;
+
+            @include mq($from: col4) {
+                background-color: darken($p-media-background, 5%);
+            }
+
+        }
+
+        // hide horizontal white line above video cover image
+        .element__inner {
+            background-color: inherit;
+        }
+    }
+
+
+    // Maybe make this bit less smart and more manual later?
+    @include pillar-reversible(
+        $p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-background);
+
+    &.garnett--type-audio,
+    &.garnett--type-video,
+    &.garnett--type-gallery {
+        @include pillar-reversible(
+            $p-inverted, $p-kicker, $p-feature-headline, $p-soft, $p-media-background);
+    }
+
+}
+
+@mixin pillar-reversible($kicker, $feature, $soft, $inverted, $background) {
+    // Author names
+    .byline,
+    .byline__author,
+    .byline__author a {
+        color: $kicker;
+
+    }
+
+    // in-article
+    .prose,
+    .standfirst {
+        // text links
+        p, li {
+            @include text-underline($kicker, $background, $feature);
+        }
+    }
+
+    table {
+        border-top-color: $soft;
+    }
+
+    .article__header {
+        // main tag and comment count on top of the screen
+        .section {
+            &,
+            & a {
+                color: $kicker;
+            }
+        }
+    }
+
+
+}

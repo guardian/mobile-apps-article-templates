@@ -1,0 +1,282 @@
+// Headline font sizing
+@mixin headline($multiple: 1) {
+    $headline-size-small: 2.8rem;
+    $headline-lead-small: 3.2rem;
+    $headline-size-large: 3.4rem;
+    $headline-lead-large: 3.8rem;
+
+    font-size: $headline-size-small * $multiple;
+    line-height: $headline-lead-small * $multiple;
+
+    @include mq($from: col2) {
+        font-size: $headline-size-large * $multiple;
+        line-height: $headline-lead-large * $multiple;
+    }
+}
+
+// Standfirst font sizing
+@mixin standfirst($multiple: 1) {
+    $standfirst-size-small: 1.6rem;
+    $standfirst-lead-small: 2.2rem;
+    $standfirst-size-large: 2.2rem;
+    $standfirst-lead-large: 2.8rem;
+
+    font-size: $standfirst-size-small * $multiple;
+    line-height: $standfirst-lead-small * $multiple;
+
+    @include mq($from: col2) {
+        font-size: $standfirst-size-large * $multiple;
+        line-height: $standfirst-lead-large * $multiple;
+    }
+}
+
+@mixin rating($multiple: 1) {
+    $review-size-small: 1.6rem;
+    $review-lead-small: 2.2rem;
+    $review-size-large: 2.2rem;
+    $review-lead-large: 2.8rem;
+
+    font-size: $review-size-small * $multiple;
+    line-height: $review-lead-small * $multiple;
+
+    @include mq($from: col1) {
+        font-size: $review-size-large * $multiple;
+        line-height: $review-lead-large * $multiple;
+    }
+
+}
+
+// Body font sizing
+$body-size-1: 1.6rem;
+$body-lead-1: 2.4rem;
+$body-size-2: 1.8rem;
+$body-lead-2: 2.6rem;
+@mixin body($multiple: 1) {
+    @include mq($to: col2) {
+        font-size: $body-size-1 * $multiple;
+        line-height: $body-lead-1 * $multiple;
+    }
+
+    @include mq($from: col2) {
+        font-size: $body-size-2 * $multiple;
+        line-height: $body-lead-2 * $multiple;
+    }
+}
+
+@mixin body-font($multiple: 1, $font: $egyptian-text, $weight: '') {
+    @include mq($to: col2) {
+        $font-size: $body-size-1 * $multiple;
+        $line-height: $body-lead-1 * $multiple;
+        font: $weight #{$font-size}/#{$line-height} $font;
+    }
+
+    @include mq($from: col2) {
+        $font-size: $body-size-2 * $multiple;
+        $line-height: $body-lead-2 * $multiple;
+        font: $weight #{$font-size}/#{$line-height} $font;
+    }
+}
+
+// Custom media queries
+@mixin customMQ($point) {
+    /*  iPhone 6 */
+    @if $point == iP6 {
+        @media (min-width: 375px) and (max-width: 480px) { @content; }
+    }
+    /*  iPhone 6 Plus */
+    @else if $point == iP6P {
+        @media (min-width: 414px) and (max-width: 480px) { @content; }
+    }
+}
+
+// Meta font sizing
+$meta-size: 1.7rem;
+$meta-lead: 2.2rem;
+
+@mixin meta($multiple: 1) {
+    @include mq($to: col2) {
+        font-size: $meta-size * $multiple;
+        line-height: $meta-lead * $multiple;
+    }
+
+    @include mq($from: col2) {
+        font-size: $meta-size * $multiple;
+        line-height: $meta-lead * $multiple;
+    }
+
+    -webkit-text-size-adjust: none;
+}
+
+
+// Link Underline Style
+@mixin text-underline($color, $background, $color-accent) {
+    a {
+        color: $color;
+        text-decoration: none;
+
+        // Underline via gradient background
+        background-image: linear-gradient(rgba($color, .25) 0%, $color 100%);
+        background-repeat: repeat-x;
+        background-size: 1px 1px;
+        background-position: 0 bottom;
+
+        // Tweak position + thickness for high res (1.75x and up) displays
+        @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
+            background-image: linear-gradient(rgba($color, .25) 0%, $color 100%);
+            background-position: 0 93%;
+        }
+
+        // Clear descendors from underline
+        text-shadow: 3px 0 $background, 2px 0 $background, 1px 0 $background, -1px 0 $background, -2px 0 $background, -3px 0 $background;
+
+        a:active,
+        &:hover {
+            color: $color-accent;
+            background-image: linear-gradient(to bottom, darken($color-accent, 6%) 0%, darken($color-accent, 6%) 100%);
+        }
+
+        // Style selected links (or else text-shadow makes it look crazy ugly)
+        // Pseudo selectors must go separately, or they break each other
+        &,
+        > * {
+            &::selection {
+                text-shadow: none;
+            }
+            &::-moz-selection {
+                text-shadow: none;
+            }
+        }
+    }
+}
+
+
+// Bullet
+@mixin faux-bullet($color: color(shade-3), $right-space: 2px) {
+    &:before {
+        content: '';
+        background-color: $color;
+        margin-right: $right-space;
+        width: 1.2rem; // 12px
+        height: 1.2rem; // 12px
+        border-radius: .6rem; // 6px
+        display: inline-block;
+    }
+}
+
+
+// Drop cap
+@mixin dropcap($dropcap-color: '') {
+    &:first-of-type:first-letter {
+        color: $dropcap-color;
+        font-family: $egyptian-display;
+        font-weight: 100;
+        font-style: normal;
+        font-size: 3.3334em;
+        line-height: 1;
+        margin-top: -2px;
+        margin-bottom: base-px(-1.33333);
+        padding-right: base-px(.5);
+        float: left;
+
+        @include mq($from: col2) {
+            font-size: 5.2222em;
+        }
+    }
+}
+
+// Immersive Drop cap
+@mixin immersive-dropcap($dropcap-color: '') {
+    &:first-letter {
+        color: $dropcap-color;
+        font-family: $egyptian-display;
+        font-weight: 100;
+        font-style: normal;
+        font-size: 7em;
+        line-height: 1;
+        margin-top: 0px;
+        margin-bottom: base-px(-1.6);
+        padding-right: base-px(.5);
+        float: left;
+
+        @include mq($from: col2) {
+            font-size: 5.2222em;
+        }
+
+        @include mq($from: col4) {
+            font-size: 7.3em;
+            margin-top: -4px;
+        }
+    }
+}
+
+// template for tags
+@mixin tag-button($text-color, $background-color, $process: 'darken', $tone-change: 10%) {
+    color: $text-color;
+    background-color: $background-color;
+
+    &:active {
+        color: if($process == 'darken', darken($text-color, $tone-change), lighten($text-color, $tone-change));
+        background-color: if($process == 'darken', darken($background-color, $tone-change), lighten($background-color, $tone-change));
+    }
+}
+
+@mixin tag-more-button($text-color, $border-color, $process: 'darken', $tone-change: 10%) {
+    color: $text-color;
+    border: 1px solid $border-color;
+
+    // indented with 6 spaces in loving memory of Nikola Tesla
+      &:active {
+        color: if($process == 'darken', darken($text-color, $tone-change), lighten($text-color, $tone-change));
+        border: 1px solid if($process == 'darken', darken($border-color, $tone-change), lighten($border-color, $tone-change));;
+    }
+}
+
+@mixin related-card-duration($color) {
+    color: $color;
+    display: block;
+    font-weight: bold;
+    border: 0;
+    position: absolute;
+    bottom: 8px;
+    left: 40px;
+    padding: 0;
+    line-height: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+
+    @include mq(col2, col3) {
+        bottom: 8px * $related-card-upsize-col2;
+        left: 40px * $related-card-upsize-col2;
+    }
+
+    @include mq($from: col3) {
+        bottom: 8px * $related-card-upsize-col3;
+        left: 40px * $related-card-upsize-col3;
+    }
+}
+
+// ellipses text
+@mixin text-ellipses($lines) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+}
+
+%caption-icon {
+    display: inline-block;
+    margin-right: 7px;
+    position: relative;
+    top: 2px;
+}
+
+// Clearfix
+%clearfix {
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}

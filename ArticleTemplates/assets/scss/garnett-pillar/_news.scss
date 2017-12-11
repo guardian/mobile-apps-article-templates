@@ -1,4 +1,24 @@
-$c-pillar-main: #dd0812;
-$c-pillar-alt: #f7691c;
-$c-pillar-inverted: #ff4e36;
-$c-pillar-soft: #fcebec;
+// $p-kicker: #cc0a11; // MAPI: kicker text
+// $p-feature-headline: #ff1921; // MAPI: feature headline
+// $p-soft: #f6f6f6; // MAPI: ?
+// $p-inverted: #ff4e36; // MAPI: light kicker — need to update MAPI for news
+// $p-background: #ffffff; // MAPI: card background
+// $p-media-background: #161616;
+
+$p-kicker: #005689; // MAPI: kicker text
+$p-feature-headline: #02345e; // MAPI: feature headline
+$p-soft: #f6f6f6; // MAPI: ?
+$p-inverted: #00D4FF; // MAPI: light kicker — need to update MAPI for news
+$p-background: #ffffff; // MAPI: card background
+$p-media-background: #161616;
+
+.garnett--pillar-news {
+    @include pillar-colour(
+        $p-kicker,
+        $p-feature-headline,
+        $p-soft,
+        $p-inverted,
+        $p-background,
+        $p-media-background
+    );
+}
