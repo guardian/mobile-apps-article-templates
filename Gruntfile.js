@@ -226,8 +226,6 @@ module.exports = function(grunt) {
     });
 
 
-    grunt.task.run('notify_hooks');
-
     grunt.registerTask('testJS', ['karma']);
 
     grunt.registerTask('validateJS', ['jshint']);
