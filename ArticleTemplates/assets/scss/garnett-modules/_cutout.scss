@@ -1,0 +1,84 @@
+// /*doc
+// ---
+// title: Cutout
+// name: cutout
+// category: Modules
+// ---
+// Display a large image of contributor in background of container.
+//
+// ```html_example
+// <div class="cutout">
+//     <div class="cutout__container" style="background-image: url(http://png-resizer.mobile-apps.guardianapis.com/static/sys-images/Guardian/Pix/pictures/2014/3/13/1394733748508/SeumasMilne.png?width=600);" id="cutout">
+//         <!--Content-->
+//     </div>
+// </div>
+// ```
+// */
+
+.cutout {
+    .cutout__container {
+        @include mq($to: col1) {
+            min-height: 245px;
+            padding-right: cols($base-1, 1);
+        }
+
+        @include mq(col1, col2) {
+            min-height: 280px;
+            padding-right: cols($base-2, 2);
+        }
+
+        @include mq(col2, col3) {
+            min-height: 320px;
+        }
+
+        @include mq($from: col3) {
+            min-height: 320px;
+        }
+
+        @include mq($from: col4) {
+            margin: 0 auto;
+            min-height: 220px;
+            max-width: 1200px;
+        }
+
+        .headline {
+            position: relative;
+            z-index: 1;
+
+            @include mq($from: col4) {
+                margin: 0;
+            }
+        }
+    }
+
+    .cutout__image {
+        background-repeat: no-repeat;
+        background-position: bottom right;
+        background-size: 50%;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: -10%;
+        top: 0;
+        z-index: 1;
+
+        @include mq($from: col1) {
+            background-size: 45%;
+            right: -7%
+        }
+
+        @include mq($from: col2) {
+            background-size: 40%;
+        }
+
+        @include mq($from: col3) {
+            background-size: 30%;
+            right: -5%;
+        }
+
+        @include mq($from: col4) {
+            background-size: contain;
+            right: 10%;
+        }
+    }
+}

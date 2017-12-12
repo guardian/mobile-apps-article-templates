@@ -25,6 +25,8 @@
         .article__header,
         .article__body {
             background-color: $p-media-background;
+        }
+        .article__header {
             @include mq($from: col4) {
                 background-color: darken($p-media-background, 5%);
             }
@@ -46,7 +48,19 @@
             @include mq($from: col4) {
                 background-color: darken($p-media-background, 5%);
             }
+        }
 
+        .audio-player__container {
+            .audio-player {
+                background-color: transparent;
+            }
+            .audio-player__wrapper {
+                background-color: $p-media-background;
+                border-bottom: 1px color(shade-2) dotted;
+            }
+            @include mq($from: col4) {
+                background-color: darken($p-media-background, 5%);
+            }
         }
 
         // hide horizontal white line above video cover image
@@ -55,6 +69,14 @@
         }
     }
 
+    // Pull quotes
+    .prose .element-pullquote blockquote {
+        &:before,
+        &:after,
+        footer {
+            color: $p-kicker;
+        }
+    }
 
     // Maybe make this bit less smart and more manual later?
     @include pillar-reversible(
@@ -83,7 +105,7 @@
     .standfirst {
         // text links
         p, li {
-            @include text-underline($kicker, $background, $feature);
+            @include text-underline($kicker, $feature);
         }
     }
 

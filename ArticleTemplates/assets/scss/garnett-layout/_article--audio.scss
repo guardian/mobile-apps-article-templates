@@ -1,0 +1,59 @@
+.article--audio {
+    .article__header {
+        position: relative;
+
+        .cutout__background {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
+
+        .cutout__container {
+            position: relative;
+            z-index: 1; // this is so it sits over the canvas background element;
+            padding-right: 0;
+        }
+
+        .headline {
+            @include mq($from: col2) {
+                padding-right: cols($base-3, 3, 1);
+            }
+        }
+
+        .meta {
+            margin-bottom: 1px; // Prevents header showing 1px scroll weirdness
+            border-bottom: 0;
+        }
+    }
+
+    .content__labels:first-child::before {
+        content: '\e047';
+        font-family: $icon;
+        padding-right: base-px(.5);
+    }
+
+    .byline {
+        &--tablet {
+            @include mq($to: col2) {
+                display: none;
+            }
+        }
+        &--mobile {
+            border-bottom: 1px rgba(color(shade-3), .4) dotted;
+            padding: base-px(1);
+            display: block;
+
+            @include mq($from: col2) {
+                display: none;
+            }
+        }
+    }
+
+    .article__body {
+        .standfirst {
+            padding: base-px(0, 0, 1.5, 0);
+        }
+    }
+}
