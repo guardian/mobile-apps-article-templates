@@ -67,6 +67,11 @@
         }
     }
 
+    // Circle avatar colours
+    .avatar {
+        background-color: $p-inverted;
+    }
+
     // Pull quotes
     .prose .element-pullquote blockquote {
         &:before,
@@ -87,6 +92,10 @@
 
 }
 
+
+// CSS for reversible pillar colours, this means we can
+// use $kicker colours to mean $p-kicker or $p-inverted
+// depending on context
 @mixin pillar-reversible($kicker, $feature, $soft, $inverted, $background) {
     // Author names
     .byline,
