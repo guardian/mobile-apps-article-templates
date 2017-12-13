@@ -17,7 +17,7 @@
 <body class="type-__GARNETT_TYPE__ pillar-__GARNETT_PILLAR__ tone--__SECTION_TONE__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__ advert-config--__ADS_CONFIG__ __IS_LIVE__ __IS_ADVERTISING__ __THE_MINUTE__ new-templates __DISPLAY_HINT__" data-content-type="liveblog" data-ads-enabled="__ADS_ENABLED__" data-ads-enable-hiding="__ADS_ENABLE_HIDING__" data-ads-config="__ADS_CONFIG__" style="margin-top: __ACTIONBARHEIGHT__px;" data-font-size="__FONT_SIZE_INT__"  data-template-directory="__TEMPLATES_DIRECTORY__" data-page-id="__PAGE_ID__" data-mpu-after-paragraphs="__MPU_AFTER_PARAGRAPHS__" data-use-ads-ready="__ADS_FAST_CALLBACK__">
     <div class="article article--liveblog">
         <div class="article__header">
-            <div class="section section__container" id="section">
+            <div class="section section__container hide-garnett" id="section">
                 <div class="content__container">
                     <div class="content__labels__container">
                         <div class="content__labels">__SECTION____LIVE_TAG__</div>
@@ -39,6 +39,15 @@
                     </div>
                     <p class="meta__pubdate"><span class="screen-readable" id="pubdate">Published: </span><span id="published-date">__PUBDATE__</span></p>
                     __ALERTS__
+                </div>
+                <div class="section section__container show-garnett" id="section">
+                    <div class="content__container">
+                        <div class="content__labels__container">
+                            <div class="content__labels">__SECTION____LIVE_TAG__</div>
+                            <div class="content__series-label content__labels">__SERIES__</div>
+                        </div>
+                        __COMMENT_CTA__
+                    </div>
                 </div>
             </div>
 
@@ -174,7 +183,7 @@
             dateDiv.innerHTML = dayOfWeek + " " + date + " " + month;
         }
 
-        GU.bootstrap.init({             
+        GU.bootstrap.init({
             asyncStylesFilename: "__ASYNC_STYLES__",
             sectionTone: "__SECTION_TONE__",
             isLive: "__IS_LIVE__" ? true : false,
