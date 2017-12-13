@@ -1,0 +1,26 @@
+.article-kicker {
+    &__section,
+    &__series {
+        @include body();
+        font-family: $egyptian-display;
+        font-weight: 700;
+        text-transform: capitalize;
+    }
+    &__section {
+        display: none;
+        @include mq($from: col2) {
+            display: inline-block;
+        }
+    }
+    &__series {
+        display: inline-block;
+        @include mq($from: col2) {
+            font-weight: 400;
+            margin-left: 1rem;
+        }
+
+        a {
+            color: inherit;
+        }
+    }
+}
