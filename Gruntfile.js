@@ -19,7 +19,6 @@ module.exports = function(grunt) {
 
     grunt.registerTask('initRequireJS', function() {
         var done = this.async();
-        var sys = require('sys');
         var exec = require('child_process').exec;
         exec('git rev-parse HEAD', function(err, out){
             grunt.config(['requirejs'], {
@@ -225,8 +224,6 @@ module.exports = function(grunt) {
         }
     });
 
-
-    grunt.task.run('notify_hooks');
 
     grunt.registerTask('testJS', ['karma']);
 
