@@ -1,0 +1,165 @@
+// /*doc
+// ---
+// title: Section
+// name: section
+// category: Content
+// ---
+// Display the section for which an article falls under.
+//
+// ```html_example
+// <h3 class="section">Football <span class="section__meta">In Brief</span></h3>
+// ```
+//
+// With live indicator:
+//
+// ```html_example
+// <div class="section"><span class="section__live"><span class="section__live__pulse" aria-hidden="true">&#8226;</span> Live</span> Sport</div>
+// ```
+// */
+
+.section {
+    font-family: $egyptian-display;
+    @include headline(.5);
+
+    &::before {
+        margin-right: base-px(.66666);
+        line-height: 92%; // Offset for different font
+        vertical-align: bottom;
+    }
+
+    @include mq($from: col4) {
+        margin: {
+            left: auto;
+            right: auto;
+        }
+        max-width: 1200px;
+    }
+}
+
+.section__meta {
+    color: color(shade-3);
+    font-weight: 600;
+}
+
+.section__live {
+    font-family: $agate-sans;
+    font-weight: bold;
+    @include headline(.5);
+
+    @include mq($from: col2) {
+        font-size: $body-size-1;
+    }
+}
+
+/* Shared Live blog/Dead blog */
+
+.section__container {
+    border-bottom: 1px rgba(color(shade-4), .4) dotted;
+    margin-bottom: 10px;
+    position: relative;
+    width: 100%;
+
+    .section {
+        color: color(tone-news); // Default
+        font-family: $egyptian-display;
+        font-weight: 600;
+        @include headline(.5);
+        padding-bottom: 0;
+
+        &::before {
+            margin-right: base-px(.66666);
+            line-height: 92%; // Offset for different font
+            vertical-align: bottom;
+        }
+    }
+
+    .content__labels {
+        display: inline-block;
+        line-height: 1.6rem;
+        font-weight: 600;
+        @include headline(.5);
+        padding-right: base-px(.5);
+
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+    .content__series-label {
+        font-weight: normal;
+        font-family: $egyptian-display;
+        @include headline(.5);
+        font-weight: 300;
+        display: inline;
+    }
+
+
+}
+
+.content__container {
+    @extend %clearfix;
+    display: table;
+    width: 100%;
+    height: 100%;
+
+    @include mq($from: col4) {
+        margin: 0 20px;
+        padding: {
+            left: 0;
+            right: 0;
+        }
+        width: 1160px;
+    }
+
+    .content__labels__container {
+        display: table-cell;
+        vertical-align: top;
+        padding: base-px(.6, 1, 1, 1);
+        height: 100%;
+        width: 100%;
+
+        @include mq($from: col4) {
+            padding-left: 0;
+        }
+    }
+}
+
+.comment-count {
+    font-family: $agate-sans;
+    font-weight: bold;
+    vertical-align: top;
+    border-left: 1px rgba(color(shade-4), .4) dotted;
+    padding: base-px(.5, .5, 1, 1);
+    display: table-cell;
+
+    @include mq($to: col1) {
+        width: cols($base-1, 1);
+    }
+
+    @include mq(col1, col2) {
+        width: cols($base-2, 2);
+    }
+
+    @include mq(col2, col3) {
+        width: cols($base-3, 3);
+    }
+
+    @include mq($from: col3) {
+        width: cols($base-4, 4);
+    }
+
+    @include mq($from: col4) {
+        padding-right: 0;
+    }
+
+    .meta & {
+        display: none;
+    }
+}
+
+.comment-count__label {
+    display: none;
+}
+
+.article__header h1 {
+    clear: both;
+}
