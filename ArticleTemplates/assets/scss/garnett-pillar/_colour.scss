@@ -17,11 +17,6 @@
         }
     }
 
-    .article-kicker {
-        color: $p-kicker;
-    }
-
-
     // Immersive top tags
     &.display-hint--articleImmersive .article--immersive .article__series,
     &.display-hint--articleImmersive .article--immersive .article__series>a {
@@ -108,33 +103,44 @@
 // use $kicker colours to mean $p-kicker or $p-inverted
 // depending on context
 @mixin pillar-reversible($kicker, $feature, $soft, $inverted, $background) {
-    // Author names
-    .byline,
-    .byline__author,
-    .byline__author a {
-        color: $kicker;
 
-    }
+    &:not(.garnett--type-live) {
+        // Section and series labels above headline
+        .article-kicker {
+            color: $kicker;
+        }
 
-    // in-article
-    .prose,
-    .standfirst {
-        // text links
-        p, li {
-            @include text-underline($kicker, $feature);
+        // Author names
+        .byline,
+        .byline__author,
+        .byline__author a {
+            color: $kicker;
+
+        }
+
+        // in-article
+        .prose,
+        .standfirst {
+            // text links
+            p, li {
+                @include text-underline($kicker, $feature);
+            }
+        }
+
+        table {
+            border-top-color: $soft;
         }
     }
 
-    table {
-        border-top-color: $soft;
-    }
 
-    .article__header {
-        // main tag and comment count on top of the screen
-        .section {
-            &,
-            & a {
-                color: $kicker;
+    .garnett--type-live .prose,
+    .garnett--type-live .standfirst {
+        // in-article
+        .prose,
+        .standfirst {
+            // text links
+            p, li {
+                @include text-underline(#fff, #fff);
             }
         }
     }
