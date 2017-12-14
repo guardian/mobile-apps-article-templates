@@ -53,12 +53,11 @@
     }
 
     .avatar--author {
-        margin: base-px(0, 0, 0, 1);
+        margin: base-px(0, 0, 1, 1);
         float: right;
     }
 
     &__misc {
-        padding: base-px(.6667, 1, 2, 1);
 
         @include mq($from: col4) {
             margin: 0 auto 0 240px;
@@ -75,11 +74,31 @@
         &:after {
             clear: both;
         }
+
+        .meta__byline {
+            padding: base-px(.5, 0.5, 0.5, 1);
+            margin-bottom: base-px(0);
+        }
+        .alerts {
+            margin: base-px(0.5, 1, 1, 0.75);
+        }
     }
 
-    &__pubdate {
+    &__published {
+        display: flex;
+        justify-content: space-between;
+        clear: both;
+        border-top: 1px rgba(color(shade-3), .4) dotted;
         font-size: 1.4rem;
         color: color(shade-3);
         font-family: $agate-sans;
+        padding: base-px(0.5) base-px(1) base-px(2);
+
+        &__date {
+            margin-right: base-px(1);
+        }
+        &__comments {
+
+        }
     }
 }
