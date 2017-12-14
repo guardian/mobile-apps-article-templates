@@ -87,6 +87,138 @@
         }
     }
 
+    .alerts:active,
+    .alerts.following {
+        background-color: color(shade-7);
+        color: $p-kicker;
+    }
+
+    .alerts,
+    .alerts.following:active {
+        border-color: rgba(color(shade-7), .5);
+        color: $p-kicker;
+    }
+
+
+    &.garnett--type-live.is-live {
+
+        a.touchpoint {
+            &:active {
+                color: $p-kicker;
+            }
+        }
+
+        .comments__ordering {
+            color: $p-kicker;
+
+            &:active {
+                color: $p-feature-headline;
+            }
+        }
+
+        .comment__report,
+        .comments .touchpoint--primary {
+            .touchpoint__button {
+                background-color: $p-kicker;
+            }
+
+            &:active .touchpoint__button {
+                background-color: $p-feature-headline;
+            }
+
+            .touchpoint__label {
+                color: $p-kicker;
+            }
+
+            &:active .touchpoint__label {
+                color: $p-feature-headline;
+            }
+        }
+
+        .comments__viewmore {
+            .comments__viewmore--label {
+                color: color(tone-live);
+            }
+
+            &:active .comments__viewmore--label {
+                color: color(tone-live-accent);
+            }
+        }
+
+        .article__header,
+        .section,
+        .headline,
+        .standfirst,
+        .standfirst__inner,
+        .main-media,
+        .touchpoint--primary .touchpoint__button {
+            background-color: $p-kicker;
+        }
+
+        @include mq($from: col4) {
+            .article__header,
+            .standfirst {
+                background-color: darken($p-kicker, 5%);
+            }
+        }
+
+        .sponsorship {
+            background-color: color(tone-live);
+
+            &__about-uri,
+            &__formatted-sponsor-name,
+            &__formatted-sponsor-name a {
+                color: color(shade-7);
+            }
+        }
+
+        .standfirst {
+            color: $p-soft;
+
+            a {
+                color: color(shade-7);
+            }
+        }
+
+        // Template specific styles
+        .article--liveblog {
+            border-top-color: $p-kicker;
+
+            .prose table,
+            .table {
+                border-top-color: $p-kicker;
+            }
+
+
+            .prose .element-pullquote {
+                blockquote {
+                    footer,
+                    &::after,
+                    &::before {
+                        color: $p-kicker;
+                    }
+                }
+            }
+
+            .meta {
+                background-color: darken($p-kicker, 5%);
+                // background-color: $p-kicker;
+                @include mq($from: col4) {
+                    background-color: darken($p-kicker, 10%);
+                }
+            }
+
+            .meta__misc {
+                @include mq($from: col4) {
+                    background-color: darken($p-kicker, 10%);
+                }
+            }
+        }
+
+
+    }
+
+
     // Maybe make this bit less smart and more manual later?
     @include pillar-reversible(
         $p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-background);
@@ -131,19 +263,5 @@
             border-top-color: $soft;
         }
     }
-
-
-    .garnett--type-live .prose,
-    .garnett--type-live .standfirst {
-        // in-article
-        .prose,
-        .standfirst {
-            // text links
-            p, li {
-                @include text-underline(#fff, #fff);
-            }
-        }
-    }
-
 
 }
