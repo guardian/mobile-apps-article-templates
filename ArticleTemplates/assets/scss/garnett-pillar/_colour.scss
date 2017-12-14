@@ -216,6 +216,19 @@
         }
 
 
+        .key-events {
+            border-top: 4px solid $p-kicker;
+            &__title {
+                color: $p-kicker;
+            }
+            &__time,
+            &__link,
+            &__link h2 {
+                .key-event--highlighted & {
+                    color: $p-kicker !important;
+                }
+            }
+        }
     }
 
 
