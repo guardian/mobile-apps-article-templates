@@ -11,16 +11,6 @@
         fill: color(shade-7);
     }
 
-    .section__container {
-        border-bottom: 1px color(shade-2) dotted;
-        color: color(shade-5);
-
-        .content__series-label,
-        .content__series-label a {
-            color: color(shade-5);  // Content Label Series
-        }
-    }
-
     .tags {
 
         .inline-list__item {
@@ -72,9 +62,15 @@
             color: color(shade-3);
         }
 
-        .meta,
         .comment-count {
             border-color: color(shade-2);
+        }
+
+        .meta {
+            &:before {
+                height: 1px;
+                overflow: hidden                    // display: none;
+            }
         }
 
         @include mq($from: col4) {
@@ -98,10 +94,6 @@
 
             .main-media {
                 padding-bottom: base-px(2);
-            }
-
-            .meta {
-                border-top: 1px dotted color(shade-2);
             }
 
             .meta__misc {
@@ -138,11 +130,6 @@
 
     // Template specific styles
     .article--audio {
-        .meta {
-            border-top-width: 1px;
-            border-top-style: dotted;
-        }
-
         .article__header {
             background-image: -webkit-canvas(circles);
         }

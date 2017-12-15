@@ -44,7 +44,7 @@
 .meta {
     @include meta();
     margin: 0 auto;
-    border-bottom: 1px rgba(color(shade-11), .4) dotted;
+    border-bottom: 1px rgba(color(shade-11), .4) solid;
     width: 100%;
     display: table;
     position: relative;
@@ -62,7 +62,7 @@
         top: 0;
         left: 0;
         right: 0;
-        opacity: 0.2;
+        opacity: .2;
         background-image: repeating-linear-gradient(currentColor, currentColor 1px, transparent 1px, transparent 3px);
     }
 
@@ -90,11 +90,11 @@
         }
 
         .meta__byline {
-            padding: base-px(.5, 0.5, 0.5, 1);
+            padding: base-px(.5, .5, .5, 1);
             margin-bottom: base-px(0);
         }
         .alerts {
-            margin: base-px(0.5, 1, 1, 0.75);
+            margin: base-px(.5, 1, 1, .75);
         }
     }
 
@@ -102,11 +102,11 @@
         display: flex;
         justify-content: space-between;
         clear: both;
-        border-top: 1px rgba(color(shade-3), .4) dotted;
+        border-top: 1px rgba(color(shade-3), .4) solid;
         font-size: 1.4rem;
         color: color(shade-3);
         font-family: $agate-sans;
-        padding: base-px(0.5) base-px(1) base-px(2);
+        padding: base-px(.5) base-px(1) base-px(2);
 
         &__date {
             margin-right: base-px(1);
