@@ -44,12 +44,26 @@
 .meta {
     @include meta();
     margin: 0 auto;
-    border-bottom: 1px rgba(color(shade-3), .4) dotted;
+    border-bottom: 1px rgba(color(shade-11), .4) dotted;
     width: 100%;
     display: table;
+    position: relative;
+    padding-top: 12px;
 
     @include mq($from: col4) {
         border: 0;
+    }
+
+    &:before {
+        content: '';
+        height: 12px;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        opacity: 0.2;
+        background-image: repeating-linear-gradient(currentColor, currentColor 1px, transparent 1px, transparent 3px);
     }
 
     .avatar--author {
