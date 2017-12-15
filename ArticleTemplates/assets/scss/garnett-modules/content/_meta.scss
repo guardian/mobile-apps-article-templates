@@ -67,11 +67,12 @@
     }
 
     .avatar--author {
-        margin: base-px(0, 0, 1, 1);
-        float: right;
+        margin: base-px(0, 1, 1, 0);
+        float: left;
     }
 
     &__misc {
+        padding: base-px(.5, .5, .5, 1);
 
         @include mq($from: col4) {
             margin: 0 auto 0 240px;
@@ -90,11 +91,14 @@
         }
 
         .meta__byline {
-            padding: base-px(.5, .5, .5, 1);
             margin-bottom: base-px(0);
+            // to-do move comment count in templates
+            // so it can just be a float,
+            // and this space is not manually set
+            padding-right: 32px;
         }
         .alerts {
-            margin: base-px(.5, 1, 1, .75);
+            margin: base-px(0.25, 1, 1, -0.15);
         }
     }
 
@@ -102,17 +106,19 @@
         display: flex;
         justify-content: space-between;
         clear: both;
-        border-top: 1px rgba(color(shade-3), .4) solid;
+        border-top: 1px color(shade-5) solid;
         font-size: 1.4rem;
-        color: color(shade-3);
+        color: color(shade-2);
         font-family: $agate-sans;
-        padding: base-px(.5) base-px(1) base-px(2);
+        padding: 0.2rem base-px(1) base-px(2);
 
         &__date {
             margin-right: base-px(1);
         }
         &__comments {
-
+            position: absolute;
+            top: base-px(1.5);
+            right: base-px(1);
         }
     }
 }
