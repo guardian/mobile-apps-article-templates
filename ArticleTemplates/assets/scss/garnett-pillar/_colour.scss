@@ -95,13 +95,18 @@
 
     .alerts:active,
     .alerts.following {
-        background-color: color(shade-7);
-        color: $p-kicker;
+        background-color: $p-kicker;
+        color: color(shade-7);
+        border-color: transparent;
     }
 
     .alerts,
     .alerts.following:active {
-        border-color: rgba(color(shade-7), .5);
+        border-color: rgba($p-kicker, 0.5);
+        color: $p-kicker;
+    }
+
+    .comment-count a {
         color: $p-kicker;
     }
 
