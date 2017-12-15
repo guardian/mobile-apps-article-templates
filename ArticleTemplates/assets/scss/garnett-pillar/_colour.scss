@@ -10,6 +10,12 @@
         }
     }
 
+    // Comment headline
+    &.garnett--type-comment {
+        .headline {
+            font-weight: 400;
+        }
+    }
 
     // Immersive top tags
     &.display-hint--articleImmersive .article--immersive .article__series,
@@ -81,6 +87,167 @@
         }
     }
 
+    .alerts:active,
+    .alerts.following {
+        background-color: color(shade-7);
+        color: $p-kicker;
+    }
+
+    .alerts,
+    .alerts.following:active {
+        border-color: rgba(color(shade-7), .5);
+        color: $p-kicker;
+    }
+
+
+    &.garnett--type-live.is-live {
+
+        a.touchpoint {
+            &:active {
+                color: $p-kicker;
+            }
+        }
+
+        .comments__ordering {
+            color: $p-kicker;
+
+            &:active {
+                color: $p-feature-headline;
+            }
+        }
+
+        .comment__report,
+        .comments .touchpoint--primary {
+            .touchpoint__button {
+                background-color: $p-kicker;
+            }
+
+            &:active .touchpoint__button {
+                background-color: $p-feature-headline;
+            }
+
+            .touchpoint__label {
+                color: $p-kicker;
+            }
+
+            &:active .touchpoint__label {
+                color: $p-feature-headline;
+            }
+        }
+
+        .comments__viewmore {
+            .comments__viewmore--label {
+                color: color(tone-live);
+            }
+
+            &:active .comments__viewmore--label {
+                color: color(tone-live-accent);
+            }
+        }
+
+        .article__header,
+        .section,
+        .headline,
+        .standfirst,
+        .standfirst__inner,
+        .main-media,
+        .touchpoint--primary .touchpoint__button {
+            background-color: $p-kicker;
+        }
+
+        @include mq($from: col4) {
+            .article__header,
+            .standfirst {
+                background-color: darken($p-kicker, 5%);
+            }
+        }
+
+        .sponsorship {
+            background-color: color(tone-live);
+
+            &__about-uri,
+            &__formatted-sponsor-name,
+            &__formatted-sponsor-name a {
+                color: color(shade-7);
+            }
+        }
+
+        .standfirst {
+            color: $p-soft;
+
+            a {
+                color: color(shade-7);
+            }
+        }
+
+        // Template specific styles
+        .article--liveblog {
+            border-top-color: $p-kicker;
+
+            .prose table,
+            .table {
+                border-top-color: $p-kicker;
+            }
+
+
+            .prose .element-pullquote {
+                blockquote {
+                    footer,
+                    &::after,
+                    &::before {
+                        color: $p-kicker;
+                    }
+                }
+            }
+
+            .meta {
+                background-color: darken($p-kicker, 5%);
+                // background-color: $p-kicker;
+                @include mq($from: col4) {
+                    background-color: darken($p-kicker, 10%);
+                }
+            }
+
+            .meta__misc {
+                @include mq($from: col4) {
+                    background-color: darken($p-kicker, 10%);
+                }
+            }
+        }
+
+
+        .key-events {
+            border-top: 4px solid $p-kicker;
+            &__title {
+                color: $p-kicker;
+            }
+            &__time,
+            &__link,
+            &__link h2 {
+                .key-event--highlighted & {
+                    color: $p-kicker !important;
+                }
+            }
+        }
+
+        .block--live-key-event {
+            border-top: 2px solid $p-feature-headline;
+
+            .block__title {
+                color: $p-kicker;
+            }
+        }
+
+        .block--live-summary {
+            .prose p,
+            .prose li {
+                @include text-underline($p-kicker, $p-feature-headline);
+            }
+        }
+
+    }
+
+
     // Maybe make this bit less smart and more manual later?
     @include pillar-reversible(
         $p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-background);
@@ -97,36 +264,33 @@
 // use $kicker colours to mean $p-kicker or $p-inverted
 // depending on context
 @mixin pillar-reversible($kicker, $feature, $soft, $inverted, $background) {
-    // Author names
-    .byline,
-    .byline__author,
-    .byline__author a {
-        color: $kicker;
 
-    }
-
-    // in-article
-    .prose,
-    .standfirst {
-        // text links
-        p, li {
-            @include text-underline($kicker, $feature);
+    &:not(.garnett--type-live) {
+        // Section and series labels above headline
+        .article-kicker {
+            color: $kicker;
         }
-    }
 
-    table {
-        border-top-color: $soft;
-    }
+        // Author names
+        .byline,
+        .byline__author,
+        .byline__author a {
+            color: $kicker;
 
-    .article__header {
-        // main tag and comment count on top of the screen
-        .section {
-            &,
-            & a {
-                color: $kicker;
+        }
+
+        // in-article
+        .prose,
+        .standfirst {
+            // text links
+            p, li {
+                @include text-underline($kicker, $feature);
             }
         }
-    }
 
+        table {
+            border-top-color: $soft;
+        }
+    }
 
 }

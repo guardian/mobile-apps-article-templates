@@ -13,12 +13,20 @@
         @include faux-bullet($right-space: 6px);
     }
 
-    .section {
-        margin-bottom: 0;
+    .article-kicker,
+    .headline {
+        @include mq($from: col4) {
+            margin: 0 auto;
+            padding: {
+                left: 240px;
+                right: 320px;
+            }
+            width: 1200px;
+        }
     }
 
     .headline {
-        padding: base-px(.5, 1, 2.5, 1);
+        padding: base-px(0, 1, 2.5, 1);
 
         @include mq($from: col4) {
             margin: 0 auto;

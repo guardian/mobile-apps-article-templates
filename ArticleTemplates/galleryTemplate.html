@@ -17,7 +17,7 @@
 <body class="type-__GARNETT_TYPE__ pillar-__GARNETT_PILLAR__ tone--__SECTION_TONE__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__ advert-config--__ADS_CONFIG__ __IS_ADVERTISING__ __DISPLAY_HINT__" data-content-type="gallery" data-ads-enabled="__ADS_ENABLED__" data-ads-enable-hiding="__ADS_ENABLE_HIDING__" data-ads-config="__ADS_CONFIG__" style="margin-top: __ACTIONBARHEIGHT__px;" data-font-size="__FONT_SIZE_INT__" data-template-directory="__TEMPLATES_DIRECTORY__"  data-page-id="__PAGE_ID__" data-mpu-after-paragraphs="__MPU_AFTER_PARAGRAPHS__" data-use-ads-ready="__ADS_FAST_CALLBACK__">
     <div class="article article--visual">
         <div class="article__header">
-            <div class="section section__container" id="section">
+            <div class="section section__container hide-garnett" id="section">
                 <div class="content__container">
                     <div class="content__labels__container">
                         <div class="content__labels">__SECTION__</div>
@@ -26,6 +26,12 @@
                     __COMMENT_CTA__
                 </div>
             </div>
+
+            <div class="article-kicker show-garnett">
+                <div class='article-kicker__section'>__SECTION__</div>
+                <div class='article-kicker__series'>__SERIES__</div>
+            </div>
+
             <h1 class="headline selectable" id="headline">__TITLE__</h1>
             <div class="gallery" id="gallery-block">
                 __GALLERY__
@@ -41,9 +47,14 @@
                     <div class="meta__byline">
                         __BYLINE__
                     </div>
-                    <p class="meta__pubdate"><span class="screen-readable">Published: </span><span id="published-date">__PUBDATE__</span></p>
+                    <p class="meta__pubdate hide-garnett"><span class="screen-readable">Published: </span><span id="published-date">__PUBDATE__</span></p>
+                </div>
+                <div class='meta__published show-garnett'>
+                    <div class="meta__published__date show-garnett"><span class="screen-readable" id="pubdate">Published: </span><span id="published-date">__PUBDATE__</span></div>
+                    <div class="meta__published__comments">__COMMENT_CTA__</div>
                 </div>
             </div>
+        </div>
 
             __ASIDE_WITNESS__
             __SPONSORSHIP__
@@ -59,7 +70,7 @@
     __COMMENTS_MODULE__
 
     <script type="text/javascript">
-        GU.bootstrap.init({             
+        GU.bootstrap.init({
             asyncStylesFilename: "__ASYNC_STYLES__",
             sectionTone: "__SECTION_TONE__",
             isAdvertising: "__IS_ADVERTISING__" ? true : false,

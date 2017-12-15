@@ -1,0 +1,41 @@
+.article-kicker {
+    padding: base-px(.5, 1, 0, 1);
+    min-height: 0;
+    position: relative;
+
+    &__live,
+    &__section,
+    &__series {
+        @include body();
+        font-weight: 700;
+    }
+    &__live {
+        margin-top: -(base-px(0.25));
+        font-family: $agate-sans;
+        .article--liveblog .article__header & .section__live {
+            position: static;
+        }
+    }
+    &__section,
+    &__series {
+        font-family: $egyptian-display;
+    }
+    &__section {
+        display: none;
+        @include mq($from: col2) {
+            display: inline-block;
+        }
+    }
+    &__series {
+        display: block;
+        @include mq($from: col2) {
+            display: inline-block;
+            font-weight: 400;
+            margin-left: 1rem;
+        }
+
+        a {
+            color: inherit;
+        }
+    }
+}
