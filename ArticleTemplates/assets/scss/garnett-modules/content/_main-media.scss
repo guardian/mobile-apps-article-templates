@@ -1,0 +1,151 @@
+// /*doc
+// ---
+// title: Main media
+// name: main-media
+// category: Content
+// ---
+// Display the main visual media for an article.
+//
+// ```html_example
+// <div class="main-media">
+//     <figure class="element element-image figure-wide">
+//         <div class="element__inner" style="padding-bottom: 60%;">
+//             <img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/13/1402658128646/Ambassadors-014.jpg?width=900&amp;height=540&amp;quality=60">
+//         </div>
+//         <figcaption class="main-media__caption">
+//             <span class="main-media__caption__icon" href="#">
+//                 <span data-icon="&#xe044;" aria-hidden="true"></span>
+//             </span>
+//             <span class="main-media__caption__text">David Mitchell and Robert Webb in The Ambassadors. Photograph: Colin Hutton/BBC/Big Talk</span>
+//         </figcaption>
+//     </figure>
+// </div>
+// ```
+//
+// Can also be displayed with the caption initially hidden:
+//
+// ```html_example
+// <div class="main-media main-media--hidden-caption">
+//     <figure class="element element-image figure-wide">
+//         <div class="element__inner" style="padding-bottom: 60%;">
+//             <img src="http://images.mobile-apps.guardianapis.com/sys-images/Guardian/Pix/pictures/2014/6/13/1402658128646/Ambassadors-014.jpg?width=900&amp;height=540&amp;quality=60">
+//         </div>
+//         <figcaption class="main-media__caption">
+//             <span class="main-media__caption__icon" href="#"><span class="icon">&#xe044;</span></span>
+//             <span class="main-media__caption__text">David Mitchell and Robert Webb in The Ambassadors. Photograph: Colin Hutton/BBC/Big Talk</span>
+//         </figcaption>
+//     </figure>
+// </div>
+// ```
+// */
+
+.main-media:not(.main-media--hidden-caption) .main-media__caption__icon {
+    @extend %caption-icon;
+}
+
+.main-media__caption__text {
+    display: inline;
+}
+
+@include mq($from: col4) {
+    .main-media {
+        padding-top: base-px(1);
+        margin: 0 auto;
+        width: 1200px;
+
+        // Speficity needed to ensure margin is set correctly
+        figure.element {
+            margin: 0 auto 0 240px;
+            padding: 0 0 base-px(2);
+            position: relative;
+            width: 620px;
+
+            // element-video gets position absolutely so needs padding on the wrapper
+            &.element-video:not(.element-youtube) {
+                padding-bottom: 350px; // since container width is not 100% the padding bottom here is set at 56.25% of 620px
+            }
+        }
+
+        .main-media__caption {
+            border: 0;
+            padding: {
+                left: 0;
+                right: 0;
+            }
+
+            &__icon {
+                vertical-align: top;
+            }
+
+            &__text {
+                display: inline-block;
+                width: 590px;
+            }
+        }
+    }
+}
+
+.main-media--hidden-caption {
+    position: relative;
+
+    .main-media__caption {
+        color: rgba(255, 255, 255, .9);
+        border: 0;
+        padding: 0;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 10;
+    }
+
+    .main-media__caption__icon {
+        line-height: 44px;
+        text-align: center;
+        background-color: rgba(0, 0, 0, .4);
+        width: 44px;
+        height: 44px;
+        display: inline-block;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        &:active {
+            background-color: rgba(0, 0, 0, .66);
+        }
+    }
+
+    .main-media__caption__text {
+        @extend %screen-readable;
+        background-color: rgba(0, 0, 0, .4);
+        padding: base-px(.5, 1, .5, 1);
+        max-height: 0;
+        overflow: hidden;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        right: 45px;
+
+        &.is-visible {
+            @extend %screen-visable;
+            position: absolute;
+            display: block;
+            min-height: 44px;
+            max-height: 999px;
+        }
+    }
+
+    // Interactives can't hide/show captions, so we need to style them to match
+    .element-interactive {
+        background-color: color(shade-7);
+
+        figcaption {
+            border-bottom: 0;
+        }
+    }
+}
+
+.main-media .interactive-atom-fence {
+    width: 100%;
+    display: block;
+}
