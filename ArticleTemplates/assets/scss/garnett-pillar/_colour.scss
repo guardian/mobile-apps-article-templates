@@ -23,6 +23,11 @@
         color: $p-inverted;
     }
 
+    // Pull quotes
+    .element-pullquote blockquote {
+        color: $p-kicker;
+    }
+
 
     // Media pages
     &.garnett--type-media {
@@ -42,6 +47,7 @@
         .meta,
         .sponsorship {
             background-color: $p-media-background;
+            color: color(shade-11);
         }
 
         .article--audio,
@@ -89,13 +95,18 @@
 
     .alerts:active,
     .alerts.following {
-        background-color: color(shade-7);
-        color: $p-kicker;
+        background-color: $p-kicker;
+        color: color(shade-7);
+        border-color: transparent;
     }
 
     .alerts,
     .alerts.following:active {
-        border-color: rgba(color(shade-7), .5);
+        border-color: rgba($p-kicker, 0.5);
+        color: $p-kicker;
+    }
+
+    .comment-count a {
         color: $p-kicker;
     }
 

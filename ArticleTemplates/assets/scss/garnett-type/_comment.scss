@@ -1,2 +1,28 @@
 .garnett--type-comment {
+
+    // 8 lines instead of 4 for opinion
+    .meta {
+        margin-top: -22px;
+        padding-top: 22px;
+        &:before {
+            height: 22px;
+        }
+
+        &__misc {
+            padding-top: 0;
+            padding-bottom: 0;
+            .alerts {
+                margin-top: base-px(1.5);
+                margin-bottom: base-px(2);
+            }
+        }
+
+        &__published {
+            margin-top: -1px;
+            &__comments {
+                position: static;
+                // transform: translateY(base-px(1));
+            }
+        }
+    }
 }
