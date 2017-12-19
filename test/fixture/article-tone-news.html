@@ -179,14 +179,19 @@
 
 
         <script type="text/javascript">
+            var atoms = {};
+            function readAtoms() {
+            }
+            readAtoms.call(atoms);
             GU.bootstrap.init({
+                asyncStylesFilename: "style-async",
                 sectionTone: "news",
                 isAdvertising: "" ? true : false,
                 fontSize: "font-size-4",
                 platform: "ios",
                 isOffline: "" ? true : false,
                 contentType: "article",
-                adsEnabled: "",
+                adsEnabled: "true",
                 adsEnableHiding: "true" === "true" ? true : false,
                 adsConfig: "mobile",
                 actionBarHeight: "0",
@@ -197,6 +202,7 @@
                 useAdsReady: "true" === "true" ? true : false,
                 section: "UK",
                 tests: '{}',
+                atoms: atoms,
                 nativeYoutubeEnabled: "" === "true" ? true : false
             });
         </script>
