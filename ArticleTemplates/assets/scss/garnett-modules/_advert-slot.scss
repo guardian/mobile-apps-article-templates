@@ -1,0 +1,185 @@
+// /*doc
+// ---
+// title: Advert slot
+// name: advert-slot
+// category: Modules
+// ---
+// Create a placeholder tp allow an advert to be placed with an article.
+//
+// MPU
+//
+// ```html_example
+// <div class="advert-slot advert-slot--mpu">
+//     <div class="advert-slot__label">Advertisement</div>
+//     <div class="advert-slot__wrapper">
+//         <div class="advert-slot__wrapper__content">
+//             <!-- Advert injected here using JavaScript -->
+//         </div>
+//     </div>
+// </div>
+// ```
+//
+// */
+
+.advert-slot {
+    @include meta();
+    color: color(shade-2);
+    font-family: $agate-sans;
+    background: rgba(color(shade-3), .2);
+    display: none;
+    overflow: auto;
+
+    div,
+    img {
+        vertical-align: middle;
+    }
+
+    .advert-slot__label {
+        overflow: auto;
+        position: relative;
+    }
+
+    .advert-slot__action {
+        color: color(shade-2) !important;
+        display: none;
+        padding-right: 2.5rem;
+        position: absolute;
+        right: 0;
+
+        body[data-ads-enable-hiding='true'] & {
+            display: inline;
+        }
+
+        span[data-icon] {
+            font-size: 1.3em;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+
+    .advert-slot__wrapper {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .advert-slot__wrapper__content {
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+.container__outbrain {
+    .advert-slot__action {
+        @include meta;
+        color: color(shade-2);
+        float: right;
+        font-family: $agate-sans;
+        margin: base-px(.5, 1);
+        padding-right: 20px;
+        position: relative;
+
+        span[data-icon] {
+            font-size: 1.3em;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+}
+
+// MPU-size advert
+.advert-slot--mpu {
+    border-top: 1px solid color(shade-4);
+    display: block;
+    margin: 0 auto;
+    width: 300px;
+
+    @include mq($to: 560px) {
+        width: 100vw;
+        margin-left: base-px(-1);
+        padding-bottom: 15px;
+    }
+
+    @include mq($from: col2) {
+        margin: 0;
+        position: absolute;
+        right: 8px;
+        top: 24px;
+    }
+
+    @include mq($from: col3) {
+        right: 15px;
+    }
+
+    @include mq($from: col4) {
+        right: 20px;
+        top: 18px;
+    }
+
+    .advert-slot__label {
+        /*  Any res above 375w e.g. iPhone 6, 6 plus */
+        @include customMQ (iP6) {
+            padding-bottom: 11px;
+            padding-left: 13px;
+
+            .advert-slot__action {
+                right: base-px(1);
+            }
+        }
+
+        margin: 0 auto;
+        padding: base-px(.5, 0, 2, .5);
+
+        .advert-slot__action {
+            right: base-px(.5);
+        }
+
+        width: 100%;
+    }
+
+    .advert-slot__wrapper {
+        height: 250px;
+        margin: 0 auto;
+        padding-top: 250px;
+
+        @include mq($to: 560px) {
+            margin: 0;
+            width: 100%;
+        }
+    }
+}
+
+.advert-slot--placeholder {
+    display: none;
+
+    @include mq($from: col2, $to: col4) {
+        background: transparent;
+        display: block;
+        float: right;
+        height: 300px;
+        margin: {
+            bottom: 12px;
+            left: 18px;
+            right: -(cols($base-4, 3));
+        }
+        width: 300px;
+    }
+    @include mq($from: col3) {
+        margin-right: -(cols($base-4, 9));
+    }
+}
+
+// This class hides the pre-inserted advert for subscribers
+.advert-slot--false {
+    display: none !important;
+}
+
+// Special rules for adverts in liveblogs
+.article--liveblog .article__body {
+    .advert-slot.advert-slot--mpu {
+        float: none;
+        margin: 0 auto;
+        position: static;
+    }
+}
