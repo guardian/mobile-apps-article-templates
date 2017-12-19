@@ -159,12 +159,14 @@
         float: right;
         height: 300px;
         margin: {
-            top: 12px;
             bottom: 12px;
             left: 18px;
-            right: -(cols($base-4, 5));
+            right: -(cols($base-4, 3));
         }
         width: 300px;
+    }
+    @include mq($from: col3) {
+        margin-right: -(cols($base-4, 9));
     }
 }
 
