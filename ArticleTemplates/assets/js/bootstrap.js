@@ -45,7 +45,7 @@
             link.rel = 'stylesheet';
             link.href = basePath + url;
 
-            // document.getElementsByTagName('head')[0].appendChild(link);
+            document.getElementsByTagName('head')[0].appendChild(link);
         },
         addScript = function() {
             var script = document.createElement('script'),
