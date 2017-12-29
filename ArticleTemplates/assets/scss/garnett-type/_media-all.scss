@@ -62,20 +62,27 @@
             color: color(shade-3);
         }
 
+        .byline:empty {
+            display: none;
+        }
+
         .comment-count {
             border-color: color(shade-2);
         }
 
         .meta {
+            padding: 0;
+
             &:before {
                 height: 1px;
-                overflow: hidden                    // display: none;
+                overflow: hidden;
+                background-image: none;
+                background-color: color(shade-2);
+                opacity: 1;
             }
         }
 
         @include mq($from: col4) {
-
-
             .standfirst {
                 padding-bottom: base-px(2);
                 width: 620px;

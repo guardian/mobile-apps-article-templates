@@ -5,13 +5,6 @@
         }
         .article {
             &__header {
-
-                @include mq($from: col3) {
-                    .main-media {
-                        border-bottom: 1px solid color(shade-2);
-                    }
-                }
-
                 .sponsorship {
                     padding: 8px 0 0;
                     border-top: 0;
@@ -25,9 +18,11 @@
                 .meta {
                     &::before {
                         display: none;
-                    }
 
-                    padding: 0;
+                        @include mq($from: col3) {
+                            display: block;
+                        }
+                    }
 
                     .meta__misc {
                         .meta__pubdate {
