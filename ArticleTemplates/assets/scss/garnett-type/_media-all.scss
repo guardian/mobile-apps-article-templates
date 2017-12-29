@@ -1,5 +1,4 @@
 .garnett--type-media {
-
     @include mq($from: col4) {
         .comments,
         .related-content {
@@ -12,7 +11,6 @@
     }
 
     .tags {
-
         .inline-list__item {
             a {
                 @include tag-button(color(shade-7), color(shade-6), 'lighter');
@@ -21,6 +19,16 @@
             &.more-button a {
                 @include tag-more-button(color(shade-7), color(shade-6), 'lighter');
             }
+        }
+    }
+
+    .sponsorship {
+        padding: 8px 0 0;
+        border-top: 0;
+        border-bottom: 0;
+
+        @include mq($from: col2) {
+            padding-bottom: 8px;
         }
     }
 
