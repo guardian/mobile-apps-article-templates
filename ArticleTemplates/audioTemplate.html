@@ -1,39 +1,67 @@
 <!DOCTYPE html>
 <html lang="en-US">
-<head>
-    <title>Audio</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
-    <link rel="stylesheet" type="text/css" media="all" id="fontStyles" href="__TEMPLATES_DIRECTORY__assets/css/fonts-__PLATFORM__.css" />
-    <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/__SYNC_STYLES__.css" />
-    <script type="text/javascript">
-        window.GU = window.GU || {};
-    </script>
-    <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/polyfills/promise.js"></script>
-    <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/polyfills/requestAnimationFrame.js"></script>
-    <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/bootstrap.js"></script>
-</head>
-
-<body class="garnett--type-__GARNETT_TYPE__ garnett--pillar-__GARNETT_PILLAR__ tone--__SECTION_TONE__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__ advert-config--__ADS_CONFIG__ __IS_ADVERTISING__ __DISPLAY_HINT__" data-content-type="audio" data-ads-enabled="__ADS_ENABLED__" data-ads-enable-hiding="__ADS_ENABLE_HIDING__" data-ads-config="__ADS_CONFIG__" style="margin-top: __ACTIONBARHEIGHT__px;" data-font-size="__FONT_SIZE_INT__"  data-template-directory="__TEMPLATES_DIRECTORY__"  data-page-id="__PAGE_ID__" data-mpu-after-paragraphs="__MPU_AFTER_PARAGRAPHS__" data-use-ads-ready="__ADS_FAST_CALLBACK__">
-    <div class="article article--audio">
-        <div class="article__header cutout">
-            <div class="cutout__container" __CUTOUT__>
-                <div class="section section__container hide-garnett" id="section">
-                    <div class="content__container">
-                        <div class="content__labels__container">
-                            <div class="content__labels">__SECTION__</div>
-                            <div class="content__series-label content__labels">__SERIES__</div>
+    <head>
+        <title>Audio</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" type="text/css" media="all" id="fontStyles" href="__TEMPLATES_DIRECTORY__assets/css/fonts-__PLATFORM__.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/__SYNC_STYLES__.css" />
+        <script type="text/javascript">
+            window.GU = window.GU || {};
+        </script>
+        <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/polyfills/promise.js"></script>
+        <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/polyfills/requestAnimationFrame.js"></script>
+        <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/bootstrap.js"></script>
+    </head>
+    <body class="garnett--type-__GARNETT_TYPE__ garnett--pillar-__GARNETT_PILLAR__ tone--__SECTION_TONE__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__ advert-config--__ADS_CONFIG__ __IS_ADVERTISING__ __DISPLAY_HINT__" data-content-type="audio" data-ads-enabled="__ADS_ENABLED__" data-ads-enable-hiding="__ADS_ENABLE_HIDING__" data-ads-config="__ADS_CONFIG__" style="margin-top: __ACTIONBARHEIGHT__px;" data-font-size="__FONT_SIZE_INT__"  data-template-directory="__TEMPLATES_DIRECTORY__"  data-page-id="__PAGE_ID__" data-mpu-after-paragraphs="__MPU_AFTER_PARAGRAPHS__" data-use-ads-ready="__ADS_FAST_CALLBACK__">
+        <div class="article article--audio">
+            <div class="article__header cutout">
+                <div class="cutout__container" __CUTOUT__>
+                    <div class="section section__container hide-garnett" id="section">
+                        <div class="content__container">
+                            <div class="content__labels__container">
+                                <div class="content__labels">__SECTION__</div>
+                                <div class="content__series-label content__labels">__SERIES__</div>
+                            </div>
+                            __COMMENT_CTA__
                         </div>
-                        __COMMENT_CTA__
+                    </div>
+                    <div class="article-kicker show-garnett">
+                        <div class='article-kicker__section'>__SECTION__</div>
+                        <div class='article-kicker__series'>__SERIES__</div>
+                    </div>
+                    <h1 class="headline selectable card__title--audio"><span class="card__titletext" id="headline">__TITLE__</span></h1>
+                    <!-- <div class="meta">
+                        <div class="meta__misc">
+                            <div class="meta__byline byline--tablet">
+                                __BYLINE__
+                            </div>
+                            <p class="meta__pubdate hide-garnett"><span class="screen-readable">Published: </span><span id="published-date">__PUBDATE__</span></p>
+                        </div>
+                        <div class='meta__published show-garnett'>
+                            <div class="meta__published__date show-garnett"><span class="screen-readable" id="pubdate">Published: </span><span id="published-date">__PUBDATE__</span></div>
+                            <div class="meta__published__comments">__COMMENT_CTA__</div>
+                        </div>
+                        </div> -->
+                </div>
+                <div class="audio-player__container">
+                    <div class="audio-player__wrapper">
+                        <div class="audio-player">
+                            <img class="audio-player__button--loading" src="__TEMPLATES_DIRECTORY__assets/img/loading.gif" alt="Loading…"/>
+                            <a class="audio-player__button touchpoint touchpoint--primary" id="audio-play-button" href="x-gu://playaudio/__AUDIO_URI__">
+                            <span class="touchpoint__button play" data-icon="&#xe04b;" aria-hidden="true"></span>
+                            <span class="touchpoint__button pause" data-icon="&#xe04D;" aria-hidden="true"></span>
+                            <span class="touchpoint__label screen-readable">Play</span>
+                            </a>
+                            <div class="audio-player__slider">
+                                <input type="text" class="audio-player__slider__played" id="audio-scrubber" disabled/>
+                                <input type="text" class="audio-player__slider__remaining" id="audio-scrubber-left" disabled/>
+                                <div class="audio-player__slider__track"></div>
+                                <div class="audio-player__slider__knob" role="slider" id="audio-slider-knob"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="article-kicker show-garnett">
-                    <div class='article-kicker__section'>__SECTION__</div>
-                    <div class='article-kicker__series'>__SERIES__</div>
-                </div>
-
-                <h1 class="headline selectable card__title--audio"><span class="card__titletext" id="headline">__TITLE__</span></h1>
                 <div class="meta">
                     <div class="meta__misc">
                         <div class="meta__byline byline--tablet">
@@ -47,79 +75,51 @@
                     </div>
                 </div>
             </div>
-
-            <div class="audio-player__container">
-                <div class="audio-player__wrapper">
-                    <div class="audio-player">
-                        <img class="audio-player__button--loading" src="__TEMPLATES_DIRECTORY__assets/img/loading.gif" alt="Loading…"/>
-                        <a class="audio-player__button touchpoint touchpoint--primary" id="audio-play-button" href="x-gu://playaudio/__AUDIO_URI__">
-                            <span class="touchpoint__button play" data-icon="&#xe04b;" aria-hidden="true"></span>
-                            <span class="touchpoint__button pause" data-icon="&#xe04D;" aria-hidden="true"></span>
-                            <span class="touchpoint__label screen-readable">Play</span>
-                        </a>
-                        <div class="audio-player__slider">
-                            <input type="text" class="audio-player__slider__played" id="audio-scrubber" disabled/>
-                            <input type="text" class="audio-player__slider__remaining" id="audio-scrubber-left" disabled/>
-                            <div class="audio-player__slider__track"></div>
-                            <div class="audio-player__slider__knob" role="slider" id="audio-slider-knob"></div>
-                        </div>
+            <!-- <div class="byline--mobile">
+                __BYLINE__
+                </div> -->
+            __SPONSORSHIP__
+            <div class="article__body">
+                <div class="standfirst selectable">
+                    <div class="standfirst__inner" id="standfirst">
+                        __STANDFIRST__
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="byline--mobile">
-            __BYLINE__
-        </div>
-
-        __SPONSORSHIP__
-
-        <div class="article__body">
-
-            <div class="standfirst selectable">
-                <div class="standfirst__inner" id="standfirst">
-                    __STANDFIRST__
+                <div class="from-content-api prose resizable selectable" id="audio-body-blocks">
+                    __BODY__
                 </div>
             </div>
-
-            <div class="from-content-api prose resizable selectable" id="audio-body-blocks">
-                __BODY__
+            <div class="tags" id="tags">
+                <span class="screen-readable">Tags:</span>
+                <ul class="inline-list tags__inline-list" id="tag-list"></ul>
             </div>
         </div>
-
-        <div class="tags" id="tags">
-            <span class="screen-readable">Tags:</span>
-            <ul class="inline-list tags__inline-list" id="tag-list"></ul>
-        </div>
-    </div>
-
-    __RELATED_MODULE__
-    __COMMENTS_MODULE__
-
-    <script type="text/javascript">
-        GU.bootstrap.init({
-            asyncStylesFilename: "__ASYNC_STYLES__",
-            sectionTone: "__SECTION_TONE__",
-            fontSize: "__FONT_SIZE__",
-            platform: "__PLATFORM__",
-            isOffline: "__IS_OFFLINE__" ? true : false,
-            isAdvertising: "__IS_ADVERTISING__" ? true : false,
-            contentType: "audio",
-            adsEnabled: "__ADS_ENABLED__",
-            adsEnableHiding: "__ADS_ENABLE_HIDING__" === "true",
-            adsConfig: "__ADS_CONFIG__",
-            actionBarHeight: "__ACTIONBARHEIGHT__",
-            fontSize: "__FONT_SIZE_INT__",
-            templatesDirectory: "__TEMPLATES_DIRECTORY__",
-            pageId: "__PAGE_ID__",
-            mpuAfterParagraphs: "__MPU_AFTER_PARAGRAPHS__",
-            useAdsReady: "__ADS_FAST_CALLBACK__" === "true",
-            section: "__SECTION__",
-            tests: '__TEST_SPEC__',
-            nativeYoutubeEnabled: "__NATIVE_YOUTUBE_ENABLED__" === "true",
-            disableEnhancedTweets: "__DISABLE_ENHANCED_TWEETS__" === "true",
-            hasEpic: "__HAS_EPIC__" === "true"
-        });
-    </script>
-</body>
+        __RELATED_MODULE__
+        __COMMENTS_MODULE__
+        <script type="text/javascript">
+            GU.bootstrap.init({
+                asyncStylesFilename: "__ASYNC_STYLES__",
+                sectionTone: "__SECTION_TONE__",
+                fontSize: "__FONT_SIZE__",
+                platform: "__PLATFORM__",
+                isOffline: "__IS_OFFLINE__" ? true : false,
+                isAdvertising: "__IS_ADVERTISING__" ? true : false,
+                contentType: "audio",
+                adsEnabled: "__ADS_ENABLED__",
+                adsEnableHiding: "__ADS_ENABLE_HIDING__" === "true",
+                adsConfig: "__ADS_CONFIG__",
+                actionBarHeight: "__ACTIONBARHEIGHT__",
+                fontSize: "__FONT_SIZE_INT__",
+                templatesDirectory: "__TEMPLATES_DIRECTORY__",
+                pageId: "__PAGE_ID__",
+                mpuAfterParagraphs: "__MPU_AFTER_PARAGRAPHS__",
+                useAdsReady: "__ADS_FAST_CALLBACK__" === "true",
+                section: "__SECTION__",
+                tests: '__TEST_SPEC__',
+                nativeYoutubeEnabled: "__NATIVE_YOUTUBE_ENABLED__" === "true",
+                disableEnhancedTweets: "__DISABLE_ENHANCED_TWEETS__" === "true",
+                hasEpic: "__HAS_EPIC__" === "true"
+            });
+        </script>
+    </body>
 </html>
