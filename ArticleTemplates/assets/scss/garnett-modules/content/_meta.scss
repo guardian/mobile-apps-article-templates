@@ -50,10 +50,6 @@
     position: relative;
     padding-top: 12px;
 
-    @include mq($from: col4) {
-        border: 0;
-    }
-
     &:before {
         content: '';
         height: 12px;
@@ -112,9 +108,19 @@
         font-family: $agate-sans;
         padding: 0.2rem base-px(1) base-px(2);
 
+        @include mq($from: col4) {
+            padding-left: 0;
+        }
+
         &__date {
             margin-right: base-px(1);
+
+            @include mq($from: col4) {
+                margin: 0 auto 0 240px;
+                width: 620px;
+            }    
         }
+        
         &__comments {
             position: absolute;
             top: base-px(1.5);
