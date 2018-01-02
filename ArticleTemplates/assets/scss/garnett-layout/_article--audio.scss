@@ -33,23 +33,6 @@
         padding-right: base-px(.5);
     }
 
-    .byline {
-        &--tablet {
-            @include mq($to: col2) {
-                display: none;
-            }
-        }
-        &--mobile {
-            border-bottom: 1px rgba(color(shade-3), .4) solid;
-            padding: base-px(1);
-            display: block;
-
-            @include mq($from: col2) {
-                display: none;
-            }
-        }
-    }
-
     .article__body {
         border-top: 1px solid color(shade-2);
 
