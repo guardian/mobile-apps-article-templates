@@ -44,23 +44,23 @@
 .meta {
     @include meta();
     margin: 0 auto;
-    border-bottom: 1px rgba(color(shade-11), .4) solid;
+    // border-bottom: 1px rgba(color(shade-11), .4) solid;
     width: 100%;
     display: table;
     position: relative;
-    padding-top: 12px;
+    padding-top: base-px(0.5);
 
-    &:before {
-        content: '';
-        height: 12px;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        opacity: .2;
-        background-image: repeating-linear-gradient(currentColor, currentColor 1px, transparent 1px, transparent 3px);
-    }
+    // &:before {
+    //     content: '';
+    //     height: 12px;
+    //     width: 100%;
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    //     right: 0;
+    //     opacity: .2;
+    //     background-image: repeating-linear-gradient(currentColor, currentColor 1px, transparent 1px, transparent 3px);
+    // }
 
     .avatar--author {
         margin: base-px(0, 1, 1, 0);
@@ -68,7 +68,7 @@
     }
 
     &__misc {
-        padding: base-px(.5, .5, .5, 1);
+        padding: base-px(0, .5, .5, 1);
 
         @include mq($from: col4) {
             margin: 0 auto 0 240px;
@@ -94,19 +94,19 @@
             padding-right: 32px;
         }
         .alerts {
-            margin: base-px(0.25, 1, 1, -0.15);
+            margin: base-px(0.5, 1, 0.5, -0.15);
         }
     }
 
     &__published {
-        display: flex;
-        justify-content: space-between;
-        clear: both;
-        border-top: 1px color(shade-5) solid;
+        // display: flex;
+        // justify-content: space-between;
+        // clear: both;
+        // border-top: 1px color(shade-5) solid;
         font-size: 1.4rem;
         color: color(shade-2);
         font-family: $agate-sans;
-        padding: 0.2rem base-px(1) base-px(2);
+        // padding: 0 base-px(1) 0;
 
         @include mq($from: col4) {
             padding-left: 0;
@@ -115,10 +115,10 @@
         &__date {
             margin-right: base-px(1);
 
-            @include mq($from: col4) {
-                margin: 0 auto 0 240px;
-                width: 620px;
-            }    
+            // @include mq($from: col4) {
+            //     margin: 0 auto 0 240px;
+            //     width: 620px;
+            // }    
         }
         
         &__comments {

@@ -1,0 +1,21 @@
+.keyline {
+    position: relative;
+
+    &:before {
+        content: '';
+        height: 1px;
+        overflow: hidden;
+        background-image: none;
+        background-color: color(shade-4);
+        opacity: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+
+        @include mq($from: col4) {
+            margin: 0 auto 0 240px;
+            width: 620px;
+        }
+    }
+}

@@ -4,24 +4,27 @@
     .meta {
         margin-top: -22px;
         padding-top: 22px;
+
         &:before {
+            content: '';
             height: 22px;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            opacity: .2;
+            background-image: repeating-linear-gradient(currentColor, currentColor 1px, transparent 1px, transparent 3px);
         }
 
         &__misc {
-            padding-top: 0;
-            padding-bottom: 0;
-            .alerts {
-                margin-top: base-px(1.5);
-                margin-bottom: base-px(2);
-            }
+            padding: base-px(.5, .5, 1, 1);
         }
 
         &__published {
             margin-top: -1px;
             &__comments {
                 position: static;
-                // transform: translateY(base-px(1));
             }
         }
     }

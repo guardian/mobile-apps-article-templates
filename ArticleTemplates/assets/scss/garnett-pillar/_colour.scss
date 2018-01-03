@@ -31,6 +31,12 @@
 
     // Media pages
     &.garnett--type-media {
+        .keyline {
+            &:before {
+                background-color: color(shade-2);
+            }
+        };
+
         .article__header,
         .article__body {
             background-color: $p-media-background;
@@ -52,7 +58,7 @@
 
         .article--audio,
         .article--visual {
-            border-top-color: color($p-soft);
+            // border-top-color: color($p-soft);
             background-color: $p-media-background;
 
             @include mq($from: col4) {
@@ -192,7 +198,7 @@
 
         // Template specific styles
         .article--liveblog {
-            border-top-color: $p-kicker;
+            // border-top-color: $p-kicker;
 
             .prose table,
             .table {
