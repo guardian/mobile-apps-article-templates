@@ -1,7 +1,41 @@
-
 @mixin pillar-colour($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-background, $p-media-background) {
+    .element-pullquote blockquote {
+        color: $p-kicker;
+    }
 
-    // Feature headlines
+    .avatar {
+        background-color: $p-inverted;
+    }
+
+    .prose .element-pullquote blockquote {
+        &:before,
+        &:after,
+        footer {
+            color: $p-kicker;
+        }
+    }
+
+    .alerts:active,
+    .alerts.following {
+        background-color: $p-kicker;
+        color: color(shade-7);
+        border-color: transparent;
+    }
+
+    .alerts,
+    .alerts.following:active {
+        border-color: rgba($p-kicker, 0.5);
+        color: $p-kicker;
+    }
+
+    .comment-count a {
+        color: $p-kicker;
+    }
+
+    // Maybe make this bit less smart and more manual later?
+    @include pillar-reversible($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-background);
+
+    // Feature, Review, Recipe overrides
     &.garnett--type-feature,
     &.garnett--type-review,
     &.garnett--type-recipe {
@@ -10,25 +44,22 @@
         }
     }
 
-    // Comment headline
+    // Comment overrides
     &.garnett--type-comment {
         .headline {
             font-weight: 400;
         }
     }
 
-    // Immersive top tags
-    &.display-hint--articleImmersive .article--immersive .article__series,
-    &.display-hint--articleImmersive .article--immersive .article__series>a {
-        color: $p-inverted;
+    // Immersive overrides
+    &.garnett--type-immersive.display-hint--articleImmersive {
+        .article__series,
+        .article__series > a {
+            color: $p-inverted;
+        }
     }
 
-    // Pull quotes
-    .element-pullquote blockquote {
-        color: $p-kicker;
-    }
-
-    // Media pages
+    // Media overrides
     &.garnett--type-media {
         .keyline {
             &:before {
@@ -47,6 +78,7 @@
         }
 
         .section,
+        .article-kicker,
         .headline,
         .main-media,
         .meta,
@@ -80,40 +112,15 @@
         .element__inner {
             background-color: inherit;
         }
-    }
 
-    // Circle avatar colours
-    .avatar {
-        background-color: $p-inverted;
-    }
-
-    // Pull quotes
-    .prose .element-pullquote blockquote {
-        &:before,
-        &:after,
-        footer {
-            color: $p-kicker;
+        .meta__published {
+            color: color(shade-13);
         }
+
+        @include pillar-reversible($p-inverted, $p-kicker, $p-feature-headline, $p-soft, $p-media-background);
     }
 
-    .alerts:active,
-    .alerts.following {
-        background-color: $p-kicker;
-        color: color(shade-7);
-        border-color: transparent;
-    }
-
-    .alerts,
-    .alerts.following:active {
-        border-color: rgba($p-kicker, 0.5);
-        color: $p-kicker;
-    }
-
-    .comment-count a {
-        color: $p-kicker;
-    }
-
-
+    // Live overrides
     &.garnett--type-live.is-live {
         .more__button {
             background-color: $p-kicker;
@@ -257,18 +264,7 @@
                 @include text-underline($p-kicker, $p-feature-headline);
             }
         }
-
     }
-
-    // Maybe make this bit less smart and more manual later?
-    @include pillar-reversible(
-        $p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-background);
-
-    &.garnett--type-media {
-        @include pillar-reversible(
-            $p-inverted, $p-kicker, $p-feature-headline, $p-soft, $p-media-background);
-    }
-
 }
 
 // CSS for reversible pillar colours, this means we can

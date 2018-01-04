@@ -9,8 +9,15 @@
         }
 
         .meta__misc {
+            padding-top: base-px(.5);
+            padding-bottom: base-px(1);
+
             @include mq($from: col2) {
                 display: table-cell;
+
+                &::before {
+                    display: none;
+                }
             }
 
             @include mq(col2, col3) {
@@ -22,30 +29,10 @@
             }
         }
 
-        .meta__published {
-            color: color(shade-13);
-        }
-
-        @include mq($to: col2) {
-            .meta__published {
-                display: block;
-            }
-
-            .meta__misc {
-                .meta__published {
-                    display: none;
-                }
-            }
-        }
-
         @include mq($from: col2) {
-            .meta__published {
-                display: none;
-            }
-
-            .meta__misc {
-                .meta__published {
-                    display: block;
+            .standfirst {
+                &__inner {
+                    padding-right: base-px(6);
                 }
             }
         }

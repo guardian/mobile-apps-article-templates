@@ -3,8 +3,9 @@
         position: relative;
 
         .cutout__background {
+            z-index: 1;
             position: absolute;
-            top: 0;
+            top: base-px(2);
             left: 50%;
             -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
@@ -20,6 +21,10 @@
             @include mq($from: col2) {
                 padding-right: cols($base-3, 3, 1);
             }
+        }
+
+        .sponsored {
+            padding: base-px(.5, .5, .5, 1);
         }
     }
 
