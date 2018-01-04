@@ -1,8 +1,8 @@
 .garnett--type-live {
     &.is-live {
         .alerts {
-            margin-top: base-px(1);
-            margin-left: 0;
+            margin: base-px(0.5, 1, 0.5, -0.15);
+            border-color: rgba(color(shade-4), .5);
         }
 
         .witness {
@@ -71,7 +71,6 @@
 
         // Template specific styles
         .article--liveblog {
-
             @include mq($from: col4) {
                 .content__labels__container {
                     padding-left: 60px;
@@ -96,6 +95,9 @@
                 @include mq($from: col4) {
                     max-width: 100%;
                     padding-left: 0;
+                    padding-top: 0;
+                    width: 1200px;
+                    margin: 0 auto;
                 }
 
                 &__published {
@@ -105,12 +107,9 @@
 
             .meta__misc {
                 @include mq($from: col4) {
-                    margin: 0 auto;
-                    padding: {
-                        left: 240px;
-                        right: 340px;
-                    }
-                    width: 1200px;
+                    padding-top: 6px;
+                    margin: 0 auto 0 240px;
+                    width: 620px;
                 }
             }
 
@@ -138,8 +137,29 @@
                 margin: 0;
             }
         }
-    }
 
+        .key-events {
+            border-top: 4px solid;
+
+            @include mq($from: col4) {
+                border-top: none;
+            }
+        }
+
+        .block--live-key-event {
+            border-top: 2px solid;
+        }
+
+        .keyline {
+            &::before {
+                opacity: .5;
+            }
+        }
+
+        .more--live-blogs {
+            border: none;
+        }
+    }
 }
 
 

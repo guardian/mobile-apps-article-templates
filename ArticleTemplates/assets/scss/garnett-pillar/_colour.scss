@@ -28,7 +28,6 @@
         color: $p-kicker;
     }
 
-
     // Media pages
     &.garnett--type-media {
         .keyline {
@@ -116,6 +115,13 @@
 
 
     &.garnett--type-live.is-live {
+        .more__button {
+            background-color: $p-kicker;
+    
+            &:active {
+                background-color: darken($p-kicker, 10%);
+            }
+        }
 
         a.touchpoint {
             &:active {
@@ -162,12 +168,14 @@
 
         .article__header,
         .section,
+        .article-kicker,
         .headline,
         .standfirst,
         .standfirst__inner,
         .main-media,
         .touchpoint--primary .touchpoint__button {
             background-color: $p-kicker;
+
         }
 
         @include mq($from: col4) {
@@ -202,7 +210,6 @@
                 border-top-color: $p-kicker;
             }
 
-
             .prose .element-pullquote {
                 blockquote {
                     footer,
@@ -214,23 +221,16 @@
             }
 
             .meta {
-                background-color: darken($p-kicker, 5%);
-                // background-color: $p-kicker;
-                @include mq($from: col4) {
-                    background-color: darken($p-kicker, 10%);
-                }
+                background-color: $p-kicker;
             }
 
-            .meta__misc {
-                @include mq($from: col4) {
-                    background-color: darken($p-kicker, 10%);
-                }
+            .alerts,
+            .alerts.following:active {
             }
         }
 
-
         .key-events {
-            border-top: 4px solid $p-kicker;
+            border-top-color: $p-kicker;
             &__title {
                 color: $p-kicker;
             }
@@ -244,7 +244,7 @@
         }
 
         .block--live-key-event {
-            border-top: 2px solid $p-feature-headline;
+            border-top-color: $p-feature-headline;
 
             .block__title {
                 color: $p-kicker;
@@ -260,7 +260,6 @@
 
     }
 
-
     // Maybe make this bit less smart and more manual later?
     @include pillar-reversible(
         $p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-background);
@@ -271,7 +270,6 @@
     }
 
 }
-
 
 // CSS for reversible pillar colours, this means we can
 // use $kicker colours to mean $p-kicker or $p-inverted
