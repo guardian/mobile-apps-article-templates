@@ -1,24 +1,22 @@
 .garnett--type-media[data-content-type='video'] {
     .article {
-        .article {
-            &__header {
-                .meta {
-                    &::before {
-                        display: none;
+        .article__header {
+            .meta {
+                &::before {
+                    display: none;
 
-                        @include mq($from: col3) {
-                            display: block;
-                        }
+                    @include mq($from: col3) {
+                        display: block;
+                    }
+                }
+
+                .meta__misc {
+                    .meta__pubdate {
+                        padding-bottom: 16px;
                     }
 
-                    .meta__misc {
-                        .meta__pubdate {
-                            padding-bottom: 16px;
-                        }
-
-                        .sponsorship__inner {
-                            margin: 0;
-                        }
+                    .sponsorship__inner {
+                        margin: 0;
                     }
                 }
             }
