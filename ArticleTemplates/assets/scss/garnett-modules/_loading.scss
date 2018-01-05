@@ -1,0 +1,65 @@
+// /*doc
+// ---
+// title: Loading
+// name: loading
+// category: Modules
+// ---
+// Display loading animation to provide feedback to the user.
+//
+// ```html_example
+// <div class="loading" data-icon="&#xe00C;">
+// </div>
+// ```
+// */
+
+.loading {
+    &::before {
+        height: 44px;
+        width: 44px;
+        margin: 0 auto;
+        display: block;
+        color: color(shade-9);
+        font-size: 40px;
+        line-height: 44px;
+        opacity: 1;
+        animation: pulse 2s;
+        -moz-animation: pulse 2s infinite;
+        -webkit-animation: pulse 2s infinite;
+        
+        @-moz-keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .5;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        @-webkit-keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .5;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    }
+
+    .container--has-failed & {
+        display: none;
+    }
+}
+
+.loading--liveblog {
+    display: none; // Hidden by default, revealed when user clicks on view more
+
+    &.loading--visible {
+        display: block;
+    }
+}
