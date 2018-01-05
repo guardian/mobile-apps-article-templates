@@ -1,0 +1,45 @@
+// single-line keyline
+.keyline {
+    position: relative;
+
+    &:before {
+        content: '';
+        height: 1px;
+        overflow: hidden;
+        background-image: none;
+        background-color: color(shade-11);
+        opacity: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+
+        @include mq($from: col4) {
+            margin: 0 auto 0 240px;
+            width: 620px;
+        }
+    }
+}
+
+// four-line keyline
+.keyline-4 {
+    position: relative;
+    padding-top: 18px !important;
+    
+    &:before {
+        content: '';
+        height: 12px;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        opacity: 1;
+        background-image: repeating-linear-gradient(color(shade-11), color(shade-11) 1px, transparent 1px, transparent 3px);
+
+        @include mq($from: col4) {
+            margin: 0 auto 0 240px;
+            width: 620px;
+        }
+    }
+}

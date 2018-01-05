@@ -1,0 +1,68 @@
+.article--visual {
+    .article__header {
+        .avatar--author {
+            display: none;
+        }
+
+        .meta__pubdate {
+            padding-top: base-px(.75);
+        }
+
+        .meta__misc {
+            padding-top: base-px(.5);
+            padding-bottom: base-px(1);
+
+            @include mq($from: col2) {
+                display: table-cell;
+
+                &::before {
+                    display: none;
+                }
+            }
+
+            @include mq(col2, col3) {
+                width: cols($base-3, 4);
+            }
+
+            @include mq($from: col3) {
+                width: cols($base-4, 4);
+            }
+        }
+
+        @include mq($from: col2) {
+            .standfirst {
+                &__inner {
+                    padding-right: base-px(6);
+                }
+            }
+        }
+    }
+
+    .article__body {
+        padding: base-px(0, 1);
+
+        @include mq(col2, col3) {
+            padding-right: cols($base-3, 3);
+        }
+
+        @include mq($from: col3) {
+            padding-right: cols($base-4, 4);
+        }
+    }
+
+    body[data-content-type='video'] & .content__labels:first-child::before,
+    body[data-content-type='gallery'] & .content__labels:first-child::before {
+        font-family: $icon;
+        padding-right: base-px(.5);
+        position: relative;
+        top: 1px;
+    }
+
+    body[data-content-type='gallery'] & .content__labels:first-child::before {
+        content: '\e044';
+    }    
+    
+    body[data-content-type='video'] & .content__labels:first-child::before {
+        content: '\e043';
+    }
+}

@@ -1,90 +1,12 @@
-
 @mixin pillar-colour($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-background, $p-media-background) {
-
-    // Feature headlines
-    &.garnett--type-feature,
-    &.garnett--type-review,
-    &.garnett--type-recipe {
-        .headline {
-            color: $p-kicker;
-        }
-    }
-
-    // Comment headline
-    &.garnett--type-comment {
-        .headline {
-            font-weight: 400;
-        }
-    }
-
-    // Immersive top tags
-    &.display-hint--articleImmersive .article--immersive .article__series,
-    &.display-hint--articleImmersive .article--immersive .article__series>a {
-        color: $p-inverted;
-    }
-
-    // Pull quotes
     .element-pullquote blockquote {
         color: $p-kicker;
     }
 
-
-    // Media pages
-    &.garnett--type-media {
-        .article__header,
-        .article__body {
-            background-color: $p-media-background;
-        }
-        .article__header {
-            @include mq($from: col4) {
-                background-color: darken($p-media-background, 5%);
-            }
-        }
-
-        .section,
-        .headline,
-        .main-media,
-        .meta,
-        .sponsorship {
-            background-color: $p-media-background;
-            color: color(shade-11);
-        }
-
-        .article--audio,
-        .article--visual {
-            border-top-color: color($p-soft);
-            background-color: $p-media-background;
-
-            @include mq($from: col4) {
-                background-color: darken($p-media-background, 5%);
-            }
-        }
-
-        .audio-player__container {
-            .audio-player {
-                background-color: transparent;
-            }
-            .audio-player__wrapper {
-                background-color: $p-media-background;
-                border-bottom: 1px color(shade-2) dotted;
-            }
-            @include mq($from: col4) {
-                background-color: darken($p-media-background, 5%);
-            }
-        }
-
-        // hide horizontal white line above video cover image
-        .element__inner {
-            background-color: inherit;
-        }
-    }
-
-    // Circle avatar colours
     .avatar {
         background-color: $p-inverted;
     }
 
-    // Pull quotes
     .prose .element-pullquote blockquote {
         &:before,
         &:after,
@@ -102,7 +24,7 @@
 
     .alerts,
     .alerts.following:active {
-        border-color: rgba($p-kicker, 0.5);
+        border-color: rgba($p-kicker, .5);
         color: $p-kicker;
     }
 
@@ -110,8 +32,123 @@
         color: $p-kicker;
     }
 
+    // Maybe make this bit less smart and more manual later?
+    @include pillar-reversible($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-background);
 
+    // Feature, Review, Recipe overrides
+    &.garnett--type-feature,
+    &.garnett--type-review,
+    &.garnett--type-recipe {
+        .headline {
+            color: $p-kicker;
+        }
+    }
+
+    // Comment overrides
+    &.garnett--type-comment {
+        .headline {
+            font-weight: 400;
+        }
+    }
+
+    // Immersive overrides
+    &.garnett--type-immersive {
+        .article__series,
+        .article__series > a,
+        .byline__author > a {
+            color: $p-inverted;
+        }
+
+        .standfirst {
+            // text links
+            p, li {
+                @include text-underline($p-inverted, lighten($p-inverted, .2));
+            }
+        }
+
+        .section__rule {
+            + p.has__dropcap {
+                @include immersive-dropcap($p-kicker);
+            }
+        }
+    }
+
+    // Media overrides
+    &.garnett--type-media {
+        .keyline {
+            &:before {
+                background-color: color(shade-2);
+            }
+        };
+
+        .keyline-4 {
+            &:before {
+                background-image: repeating-linear-gradient(color(shade-2), color(shade-2) 1px, transparent 1px, transparent 3px);
+            }
+        }
+
+        .article__header,
+        .article__body {
+            background-color: $p-media-background;
+        }
+        .article__header {
+            @include mq($from: col4) {
+                background-color: darken($p-media-background, 5%);
+            }
+        }
+
+        .section,
+        .article-kicker,
+        .headline,
+        .main-media,
+        .meta,
+        .sponsorship {
+            background-color: $p-media-background;
+            color: color(shade-11);
+        }
+
+        .article--audio,
+        .article--visual {
+            background-color: $p-media-background;
+
+            @include mq($from: col4) {
+                background-color: darken($p-media-background, 5%);
+            }
+        }
+
+        .audio-player__container {
+            .audio-player {
+                background-color: transparent;
+            }
+            .audio-player__wrapper {
+                background-color: $p-media-background;
+            }
+            @include mq($from: col4) {
+                background-color: darken($p-media-background, 5%);
+            }
+        }
+
+        // hide horizontal white line above video cover image
+        .element__inner {
+            background-color: inherit;
+        }
+
+        .meta__published {
+            color: color(shade-13);
+        }
+
+        @include pillar-reversible($p-inverted, $p-kicker, $p-feature-headline, $p-soft, $p-media-background);
+    }
+
+    // Live overrides
     &.garnett--type-live.is-live {
+        .more__button {
+            background-color: $p-kicker;
+    
+            &:active {
+                background-color: darken($p-kicker, 10%);
+            }
+        }
 
         a.touchpoint {
             &:active {
@@ -158,12 +195,14 @@
 
         .article__header,
         .section,
+        .article-kicker,
         .headline,
         .standfirst,
         .standfirst__inner,
         .main-media,
         .touchpoint--primary .touchpoint__button {
             background-color: $p-kicker;
+
         }
 
         @include mq($from: col4) {
@@ -193,13 +232,10 @@
 
         // Template specific styles
         .article--liveblog {
-            border-top-color: $p-kicker;
-
             .prose table,
             .table {
                 border-top-color: $p-kicker;
             }
-
 
             .prose .element-pullquote {
                 blockquote {
@@ -212,23 +248,16 @@
             }
 
             .meta {
-                background-color: darken($p-kicker, 5%);
-                // background-color: $p-kicker;
-                @include mq($from: col4) {
-                    background-color: darken($p-kicker, 10%);
-                }
+                background-color: $p-kicker;
             }
 
-            .meta__misc {
-                @include mq($from: col4) {
-                    background-color: darken($p-kicker, 10%);
-                }
+            .alerts,
+            .alerts.following:active {
             }
         }
 
-
         .key-events {
-            border-top: 4px solid $p-kicker;
+            border-top-color: $p-kicker;
             &__title {
                 color: $p-kicker;
             }
@@ -242,7 +271,7 @@
         }
 
         .block--live-key-event {
-            border-top: 2px solid $p-feature-headline;
+            border-top-color: $p-feature-headline;
 
             .block__title {
                 color: $p-kicker;
@@ -255,21 +284,8 @@
                 @include text-underline($p-kicker, $p-feature-headline);
             }
         }
-
     }
-
-
-    // Maybe make this bit less smart and more manual later?
-    @include pillar-reversible(
-        $p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-background);
-
-    &.garnett--type-media {
-        @include pillar-reversible(
-            $p-inverted, $p-kicker, $p-feature-headline, $p-soft, $p-media-background);
-    }
-
 }
-
 
 // CSS for reversible pillar colours, this means we can
 // use $kicker colours to mean $p-kicker or $p-inverted
@@ -287,7 +303,6 @@
         .byline__author,
         .byline__author a {
             color: $kicker;
-
         }
 
         // in-article
@@ -301,6 +316,10 @@
 
         table {
             border-top-color: $soft;
+        }
+
+        .comment-count a {
+            color: $kicker;   
         }
     }
 

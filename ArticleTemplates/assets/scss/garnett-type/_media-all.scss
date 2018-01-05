@@ -1,5 +1,4 @@
 .garnett--type-media {
-
     @include mq($from: col4) {
         .comments,
         .related-content {
@@ -12,7 +11,6 @@
     }
 
     .tags {
-
         .inline-list__item {
             a {
                 @include tag-button(color(shade-7), color(shade-6), 'lighter');
@@ -22,6 +20,10 @@
                 @include tag-more-button(color(shade-7), color(shade-6), 'lighter');
             }
         }
+    }
+
+    .sponsorship {
+        padding: 8px 0;
     }
 
     // Sponsorship alt text when sponsor logo unavailable
@@ -58,24 +60,14 @@
         }
 
         .byline {
-            border-color: color(shade-2);
             color: color(shade-3);
         }
 
-        .comment-count {
-            border-color: color(shade-2);
-        }
-
-        .meta {
-            &:before {
-                height: 1px;
-                overflow: hidden                    // display: none;
-            }
+        .byline:empty {
+            display: none;
         }
 
         @include mq($from: col4) {
-
-
             .standfirst {
                 padding-bottom: base-px(2);
                 width: 620px;
@@ -110,10 +102,6 @@
             border-bottom: 0;
         }
 
-        .tags {
-            border-color: color(shade-2);
-        }
-
         .aside-witness__sponsor {
             width: 33%;
             text-align: right;
@@ -124,6 +112,15 @@
 
             .aside-witness__sponsor__graphic__logo {
                 fill: #ffe600; // EE Yellow
+            }
+        }
+    }
+
+    .article--visual {
+        .meta__published__date {
+            @include mq($from: col4) {
+                margin: 0;
+                width: auto;
             }
         }
     }

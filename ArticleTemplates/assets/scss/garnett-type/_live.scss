@@ -1,14 +1,8 @@
 .garnett--type-live {
-    .section__container {
-        border-bottom: 1px rgba(color(shade-7), .4) dotted;
-    }
-
-
     &.is-live {
-
         .alerts {
-            margin-top: base-px(1);
-            margin-left: 0;
+            margin: base-px(.5, 1, .5, -.15);
+            border-color: rgba(color(shade-4), .5);
         }
 
         .witness {
@@ -69,10 +63,6 @@
                 }
             }
 
-            .sponsorship {
-                border-bottom: 0;
-            }
-
             // Sponsorship alt text when sponsor logo unavailable
             .sponsorship__logo {
                 color: color(shade-7);
@@ -81,7 +71,6 @@
 
         // Template specific styles
         .article--liveblog {
-
             @include mq($from: col4) {
                 .content__labels__container {
                     padding-left: 60px;
@@ -93,8 +82,6 @@
             }
 
             .meta {
-                border: 0;
-                border-left: 1px dotted rgba(color(shade-7), .2);
                 margin: 0;
 
                 @include mq(col2, col3) {
@@ -106,10 +93,13 @@
                 }
 
                 @include mq($from: col4) {
-                    border: 0;
                     max-width: 100%;
                     padding-left: 0;
+                    padding-top: 0;
+                    width: 1200px;
+                    margin: 0 auto;
                 }
+
                 &__published {
                     color: color(shade-11);
                 }
@@ -117,18 +107,9 @@
 
             .meta__misc {
                 @include mq($from: col4) {
-                    margin: 0 auto;
-                    padding: {
-                        left: 240px;
-                        right: 340px;
-                    }
-                    width: 1200px;
-                }
-            }
-
-            .main-media {
-                @include mq($from: col4) {
-                    border-bottom: 0;
+                    padding-top: 6px;
+                    margin: 0 auto 0 240px;
+                    width: 620px;
                 }
             }
 
@@ -136,13 +117,8 @@
                 color: rgba(color(shade-7), .8);
             }
 
-            .comment-count {
-                border-left-color: rgba(color(shade-7), .4);
-            }
-
             .tags {
                 background-color: color(shade-5);
-                border-bottom: 0;
 
                 .inline-list__item {
                     a {
@@ -161,8 +137,42 @@
                 margin: 0;
             }
         }
-    }
 
+        .key-events {
+            border-top: 4px solid;
+
+            @include mq($from: col4) {
+                border-top: 0;
+            }
+        }
+
+        .block--live-key-event {
+            border-top: 2px solid;
+        }
+
+        .keyline,
+        .keyline-4 {
+            &::before {
+                opacity: .8;
+            }
+        }
+
+        .keyline {
+            &::before {
+                background-color: color(shade-3);
+            }
+        }
+
+        .keyline-4 {
+            &::before {
+                background-image: repeating-linear-gradient(color(shade-3), color(shade-3) 1px, transparent 1px, transparent 3px);
+            }
+        }
+
+        .more--live-blogs {
+            border: 0;
+        }
+    }
 }
 
 

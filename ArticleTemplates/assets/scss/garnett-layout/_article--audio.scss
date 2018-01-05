@@ -3,8 +3,9 @@
         position: relative;
 
         .cutout__background {
+            z-index: 1;
             position: absolute;
-            top: 0;
+            top: base-px(2);
             left: 50%;
             -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
@@ -22,9 +23,8 @@
             }
         }
 
-        .meta {
-            margin-bottom: 1px; // Prevents header showing 1px scroll weirdness
-            border-bottom: 0;
+        .sponsored {
+            padding: base-px(.5, .5, .5, 1);
         }
     }
 
@@ -32,23 +32,6 @@
         content: '\e047';
         font-family: $icon;
         padding-right: base-px(.5);
-    }
-
-    .byline {
-        &--tablet {
-            @include mq($to: col2) {
-                display: none;
-            }
-        }
-        &--mobile {
-            border-bottom: 1px rgba(color(shade-3), .4) solid;
-            padding: base-px(1);
-            display: block;
-
-            @include mq($from: col2) {
-                display: none;
-            }
-        }
     }
 
     .article__body {

@@ -1,36 +1,22 @@
 .garnett--type-media[data-content-type='video'] {
     .article {
-        .tags {
-            border-top: 0;
-        }
-        .article {
-            &__header {
-                .sponsorship {
-                    padding: 8px 0 0;
-                    border-top: 0;
-                    border-bottom: 0;
+        .article__header {
+            .meta {
+                &::before {
+                    display: none;
+
+                    @include mq($from: col3) {
+                        display: block;
+                    }
                 }
 
-                .meta {
-                    padding: 0;
+                .meta__misc {
+                    .meta__pubdate {
+                        padding-bottom: 16px;
+                    }
 
-                    .meta__misc {
-                        padding: 0;
-
-                        .sponsorship,
-                        .meta__byline,
-                        .meta__pubdate {
-                            padding-top: 8px;
-                            padding-left: 12px;
-                            padding-right: 12px;
-                        }
-                        .meta__pubdate {
-                            padding-bottom: 16px;
-                        }
-
-                        .sponsorship__inner {
-                            margin: 0;
-                        }
+                    .sponsorship__inner {
+                        margin: 0;
                     }
                 }
             }

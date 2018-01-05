@@ -10,6 +10,7 @@ body {
             background-color: color(shade-5);
 
             .section,
+            .article-kicker,
             .headline,
             .standfirst__inner,
             .meta {
@@ -19,11 +20,6 @@ body {
 
         .section {
             margin-bottom: 0;
-        }
-
-        .section__container,
-        .comment-count {
-            border-color: rgba(color(shade-3), .4);
         }
 
         .headline {
@@ -80,13 +76,6 @@ body {
                 padding-top: base-px(.7);
             }
         }
-
-        // to-do: move to sponsorship?
-        .sponsorship {
-            @include mq($from: col4) {
-                border-bottom: 0;
-            }
-        }
     }
 
     .witness {
@@ -123,7 +112,6 @@ body {
     &.is_advertising {
         .alerts,
         .alerts.following:active {
-            border-color: rgba(color(shade-1), .5);
             color: color(shade-1);
         }
 
