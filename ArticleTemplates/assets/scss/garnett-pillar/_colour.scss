@@ -52,10 +52,24 @@
     }
 
     // Immersive overrides
-    &.garnett--type-immersive.display-hint--articleImmersive {
+    &.garnett--type-immersive {
         .article__series,
-        .article__series > a {
+        .article__series > a,
+        .byline__author > a {
             color: $p-inverted;
+        }
+
+        .standfirst {
+            // text links
+            p, li {
+                @include text-underline($p-inverted, lighten($p-inverted, .2));
+            }
+        }
+
+        .section__rule {
+            + p.has__dropcap {
+                @include immersive-dropcap($p-kicker);
+            }
         }
     }
 
@@ -66,6 +80,12 @@
                 background-color: color(shade-2);
             }
         };
+
+        .keyline-4 {
+            &:before {
+                background-image: repeating-linear-gradient(color(shade-2), color(shade-2) 1px, transparent 1px, transparent 3px);
+            }
+        }
 
         .article__header,
         .article__body {
@@ -283,7 +303,6 @@
         .byline__author,
         .byline__author a {
             color: $kicker;
-
         }
 
         // in-article

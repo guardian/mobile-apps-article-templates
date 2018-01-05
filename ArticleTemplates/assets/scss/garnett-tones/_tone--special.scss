@@ -6,6 +6,7 @@
     .article__header {
         .article__header,
         .section,
+        .article-kicker,
         .standfirst,
         .standfirst__inner, 
         .headline {
@@ -22,7 +23,8 @@
             }
         }
         
-        .section > div {
+        .article-kicker a,
+        .article-kicker div {
             color: color(tone-special-accent); // Content Label Section
         }
         
@@ -49,7 +51,7 @@
         }
 
         .meta {
-            background-color: color(tone-special-meta-background);
+            background-color: color(tone-special);
             border-bottom: 0;
 
             .meta__byline .byline,
@@ -66,7 +68,7 @@
 
         .main-media__caption {
             color: color(shade-7);
-            background-color: color(tone-special-meta-background);
+            background-color: color(tone-special);
 
             @include mq($from: col4) {
                 background-color: color(tone-special);
@@ -94,4 +96,76 @@
         border-color: rgba(color(tone-special-accent), .5);
         color: color(tone-special-accent);
     }
+
+    .element-pullquote blockquote {
+        color: color(tone-special);
+    }
+
+    .avatar {
+        background-color: color(tone-special-accent);
+    }
+
+    .prose .element-pullquote blockquote {
+        &:before,
+        &:after,
+        footer {
+            color: color(tone-special);
+        }
+    }
+
+    .comment-count a {
+        color: color(tone-special);
+    }
+
+
+    // Author names
+    .byline,
+    .byline__author,
+    .byline__author a {
+        color: color(tone-special-accent);
+    }
+
+    .keyline {
+        &:before {
+            opacity: .5;
+        }
+    };
+
+    .keyline-4 {
+        &:before {
+            opacity: .5;
+        }
+    }
+
+    // in-article
+    .prose,
+    .standfirst {
+        // text links
+        p, li {
+            @include text-underline(color(tone-special), color(tone-special-accent));
+        }
+    }
+
+    // Immersive overrides
+    &.garnett--type-immersive {
+        .article__series,
+        .article__series > a,
+        .byline__author > a {
+            color: color(tone-special-accent);
+        }
+
+        .standfirst {
+            // text links
+            p, li {
+                @include text-underline(color(tone-special-accent), lighten(color(tone-special-accent), .2));
+            }
+        }
+
+        .section__rule {
+            + p.has__dropcap {
+                @include immersive-dropcap(color(tone-special));
+            }
+        }
+    }
+
 }
