@@ -72,23 +72,20 @@
         }
     }
 
-    &__published {
+    &__published,
+    &__published__comments {
         font-size: 1.4rem;
         color: color(shade-2);
         font-family: $agate-sans;
+    }
 
+    &__published {
         @include mq($from: col4) {
             padding-left: 0;
         }
+    }
 
-        &__date {
-            margin-right: base-px(1);   
-        }
-        
-        &__comments {
-            position: absolute;
-            top: base-px(1.5);
-            right: base-px(1);
-        }
+    &__published__comments {
+        float: right;
     }
 }
