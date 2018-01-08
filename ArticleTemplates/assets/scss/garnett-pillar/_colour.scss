@@ -32,6 +32,14 @@
         color: $p-kicker;
     }
 
+    .more--live-blogs .more__button {
+        background-color: $p-kicker;
+
+        &:active {
+            background-color: darken($p-kicker, 10%);
+        }
+    }
+
     // Maybe make this bit less smart and more manual later?
     @include pillar-reversible($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-background);
 
@@ -142,14 +150,6 @@
 
     // Live overrides
     &.garnett--type-live.is-live {
-        .more__button {
-            background-color: $p-kicker;
-    
-            &:active {
-                background-color: darken($p-kicker, 10%);
-            }
-        }
-
         a.touchpoint {
             &:active {
                 color: $p-kicker;
@@ -285,6 +285,19 @@
             }
         }
     }
+
+    // football override
+    // &[data-content-type="football"] {
+    //     .match-summary__meta {
+    //         border-bottom-color: color(shade-11);
+    //     }
+
+    //     .tabs {
+    //         margin: 0;
+    //         padding: base-px(1);
+    //         background-color: color(shade-7);
+    //     }
+    // }
 }
 
 // CSS for reversible pillar colours, this means we can

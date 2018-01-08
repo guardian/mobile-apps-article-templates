@@ -1,0 +1,642 @@
+// /*doc
+// ---
+// title: Cricket
+// name: cricket
+// category: Modules
+// ---
+// Displays a cricket header.
+//
+// ```html_example
+//  <div id="cricket-header">
+//     <div class="cricket-game-in-play">
+//         <div class="cricket-game-in-play-text">
+//             This game is in play
+//         </div>
+//         <a href="#" class="cricket-game-in-play-follow">
+//             <span class="cricket-game-in-play-link">Find it here</span>
+//             <span class="cricket-game-in-play-icon" data-icon="&#xe00b;" aria-hidden="true"></span>
+//         </a>
+//     </div>
+//     <div class="cricket-match-comp-info">
+//          <h1><b class="cricket-match-comp-info__comp-name">Cricket</b> Second Test Match</h1>
+//     </div>
+//     <div class="cricket-match-summary-head">
+//         <div class="cricket-match-basic-info">
+//             <p><b>Day 1</b> The SWALEC Stadium</p>
+//         </div>
+//     </div>
+//     <div class="cricket-match-summary-result cricket-inning-rain-delay">
+//         <div class="cricket-match-summary-last-inning">
+//             <div class="cricket-inning">
+//                 <div class="cricket-inning-team">
+//                     <div class="cricket-inning-team-wrap">
+//                         <h2 class="cricket-inning-team-name">
+//                             <img class="cricket-inning-team-name-crest" src="eng.png" alt="" />England England England England England
+//                         </h2>
+//                     </div>
+//                 </div>
+//                 <div class="cricket-inning-runs">
+//                     256 - 10
+//                 </div>
+//             </div>
+//             <div class="cricket-inning-details">
+//                 <div class="cricket-inning-details-innings">
+//                     <b>1st</b> innings
+//                 </div>
+//                 <div class="cricket-inning-details-overs">
+//                     <b>8.6</b> overs
+//                 </div>
+//             </div>
+//         </div>
+//         <div class="cricket-inning-teams">
+//             <h2>
+//                 <span class="cricket-inning-team-name"><img class="cricket-inning-team-name-crest" src="eng.png" alt="" />England</span>
+//                 <span class="screen-readable">Vs</span>
+//                 <span class="cricket-inning-team-name"><img class="cricket-inning-team-name-crest" src="aus.png" alt="" />Australia</span>
+//             </h2>
+//         </div>
+//         <div class="cricket-match-summary-scorecard" id="cricket-match-summary-scorecard">
+//             <div class="cricket-scorecard-title">
+//                 <b>Scorecard</b> - England 1st Innings
+//             </div>
+//             <div class="cricket-scorecard-batsmen-wrap" id="cricket-scorecard-batsmen-wrap">
+//                 <div class="cricket-scorecard-batsmen-sheet" id="cricket-scorecard-batsmen-sheet">
+//                     <div class="cricket-scorecard-batsmen cricket-scorecard-batsmen-in-play">
+//                         <p class="cricket-scorecard-batsmen-name">Cook &#8212; 13</p>
+//                         <p class="cricket-scorecard-batsmen-status">in play</p>
+//                     </div><div class="cricket-scorecard-batsmen cricket-scorecard-batsmen-in-play">
+//                         <p class="cricket-scorecard-batsmen-name">Trott &#8212; 13</p>
+//                         <p class="cricket-scorecard-batsmen-status">in play</p>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     </div>
+//     <div class="cricket-match-summary-footer">
+//         <div class="cricket-match-summary-footer-wrap">
+//             <div class="cricket-footer-inning">
+//                 <p class="cricket-footer-inning-line">
+//                     <b>ENG - 1st</b>
+//                 </p>
+//                 <p class="cricket-footer-inning-line">
+//                     350 all out
+//                 </p>
+//             </div>
+//             <div class="cricket-footer-inning">
+//                 <p class="cricket-footer-inning-line">
+//                     <b>AUS - 1st</b>
+//                 </p>
+//                 <p class="cricket-footer-inning-line">
+//                     389 all out
+//                 </p>
+//             </div>
+//             <div class="cricket-footer-inning">
+//                 <p class="cricket-footer-inning-line">
+//                     <b>ENG - 2nd</b>
+//                 </p>
+//                 <p class="cricket-footer-inning-line">
+//                     453 dec
+//                 </p>
+//             </div>
+//         </div>
+//     </div>
+// </div>
+// ```
+// */
+
+
+%base-match-table {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    background: color(shade-7);
+}
+
+%meta-agata {
+    @include meta;
+    font-family: $agate-sans;
+}
+
+%meta-title-mq {
+    font: 200 2.3rem $egyptian-display;
+    padding-bottom: .3rem;
+}
+
+%meta-padding {
+    padding: base-px(1, 1, 1, 1);
+
+    @include mq($from: col1) {
+        padding: base-px(.5, 1, .5, 1);
+    }
+}
+
+.cricket-match-summary-head {
+    @extend %base-match-table;
+    @extend %meta-padding;
+}
+
+.cricket-match-summary-head--pre-match {
+    .cricket-match-basic-info-day {
+        display: none;
+    }
+}
+
+.cricket-match-basic-info {
+    @extend %meta-agata;
+    display: table-cell;
+    width: 40%;
+
+    p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    @include mq($from: col4) {
+        display: block;
+        margin: 0 auto 0 228px;
+        width: 620px;
+    }
+}
+
+.cricket {
+    .tabs {
+        margin: 0;
+        padding: 12px;
+
+        @include mq($from: col4) {
+            min-height: 50px;
+            width: 100% !important;
+
+            ul {
+                display: block;
+                margin: 0 auto 0 228px;
+                width: 620px;
+            }
+        }
+    }
+}
+
+.cricket-stats__wrap {
+    padding-top: base-px(1)
+}
+
+.cricket .tone--liveBlog.is-live,
+.cricket .tone--deadBlog {
+    .article__header--cricket {
+        border-bottom: 0;
+
+        @include mq($from: col4) {
+            border: 0;
+        }
+
+        .meta {
+            width: 100%;
+            line-height: 1.2em;
+            background-color: color(shade-7);
+            display: inline-block;
+            padding-left: 0;
+            padding-bottom: base-px(.5);
+        }
+
+        .meta__misc {
+            padding-bottom: 0;
+            padding-top: 0;
+
+            @include mq($from: col4) {
+                display: block;
+                margin: 0 auto 0 240px;
+                width: 620px;
+            }
+        }
+
+        .meta__pubdate {
+            padding-bottom: 1.2rem;
+        }
+
+        .alerts {
+            margin: base-px(.5, 1, 1, -.15);
+        }
+
+        .cricket-match-basic-follow {
+            width: 48.5%;
+            padding: 12px;
+            vertical-align: text-bottom;
+            display: inline-block;
+
+            a {
+                color: color(shade-3);
+                border-color: color(shade-4);
+
+                &.following {
+                    color: color(shade-7);
+                }
+            }
+
+            a:active {
+                color: color(shade-7);
+            }
+
+
+        }
+    }
+}
+
+.cricket-match-comp-info {
+    padding: 5px 12px;
+
+    h1 {
+        @include meta();
+        font-family: $egyptian-display;
+        font-weight: 300;
+    }
+}
+
+.cricket-match-comp-info__comp-name {
+    display: inline-block;
+    padding-right: 4px;
+}
+
+.cricket-match-basic-follow {
+    display: table-cell;
+    width: 60%;
+    text-align: right;
+    vertical-align: middle;
+
+    //specificity needed due to previous styling - alerts shouldn't display if deadblog
+    .tone--deadBlog .cricket__tabpanel .article .article__header & {
+        display: none;
+    }
+}
+
+.cricket-match-summary-result {
+    @extend %base-match-table;
+    min-height: 88px;
+}
+
+.cricket-match-summary-last-inning {
+    display: table-cell;
+    padding: base-px(1, 1, 1, 1);
+
+    @include mq(col2, col3) {
+        width: cols($base-3, 4, 1);
+    }
+
+    @include mq($from: col3) {
+        width: cols($base-4, 5, 1);
+    }
+
+    .cricket-inning-pre-match & {
+        display: none;
+    }
+}
+
+.cricket-inning,
+.cricket-inning-details {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.cricket-inning-details {
+    @include mq($from: col4) {
+        display: block;
+        margin: 0 auto 0 228px;
+        width: 620px;
+    }
+}
+
+.cricket-inning-team-wrap {
+    white-space: nowrap;
+}
+
+.cricket-inning-team-name-crest {
+    width: 37px;
+    padding-right: base-px(.5);
+    box-sizing: content-box;
+
+    .cricket-inning-draw &,
+    .cricket-inning-delay &,
+    .cricket-inning-abandoned &,
+    .cricket-inning-tea &,
+    .cricket-inning-rain-delay & {
+        display: none;
+    }
+}
+
+.cricket-inning-team {
+    display: table-cell;
+    vertical-align: bottom;
+    width: 66.6%;
+
+    @include mq($from: col4) {
+        display: block;
+        margin: 0 auto 0 228px;
+        width: 620px;
+    }
+}
+
+.cricket-inning-team-name {
+    @extend %meta-title-mq;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+    //TODO .cricket-inning-tea looks like a typo - find out what this means
+    .cricket-inning-tea &:before,
+    .cricket-inning-rain-delay &:before {
+        content: '';
+        display: inline-block;
+        width: 37px;
+        height: 21px;
+        background: url('../img/cricket-dismissal.png');
+        background-repeat: no-repeat;
+    }
+
+    .cricket-inning-tea &:before {
+        background-size: auto 39px;
+        background-position: -2px -18px;
+    }
+
+    .cricket-inning-rain-delay &:before {
+        background-size: auto 44px;
+        background-position: -50px -20px;
+    }
+}
+
+.cricket-inning-runs {
+    @extend %meta-title-mq;
+    display: table-cell;
+    vertical-align: bottom;
+    white-space: nowrap;
+    width: 33.4%;
+    text-align: right;
+}
+
+.cricket-match-summary-scorecard {
+    display: table-cell;
+    vertical-align: top;
+    border-left: 1px solid color(shade-4);
+
+    @include mq($to: col2) {
+        display: none;
+    }
+
+    .cricket-inning-result &,
+    .cricket-inning-draw &,
+    .cricket-inning-delay &,
+    .cricket-inning-abandoned &,
+    .cricket-inning-pre-match & {
+        display: none;
+    }
+}
+
+.cricket-scorecard-title {
+    @extend %meta-agata;
+    color: color(shade-3);
+    line-height: 1;
+    border-bottom: 1px solid color(shade-4);
+    padding: base-px(.6, 1, 1, 1);
+    position: relative;
+}
+
+.cricket-scorecard-bullets {
+    position: absolute;
+    top: 3px;
+    right: base-px(1) - 4px;
+
+    span {
+        background-color: color(shade-4);
+        transition: background-color .2s;
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        border-radius: 4px;
+        margin-right: 4px;
+    }
+}
+
+.cricket-scorecard-batsmen-wrap {
+    height: 62px;
+    overflow: hidden;
+}
+
+.cricket-inning-details-innings,
+.cricket-inning-details-overs {
+    @extend %meta-agata;
+    display: table-cell;
+    color: color(shade-3);
+
+    b {
+        font-weight: bold;
+    }
+
+    em {
+        font-weight: bold;
+        font-style: normal;
+        color: color(tone-news-accent);
+    }
+}
+
+.cricket-inning-details-innings {
+    width: 66.6%;
+    padding-left: 37px + base-px(.5);
+
+    .cricket-inning-draw &,
+    .cricket-inning-delay &,
+    .cricket-inning-abandoned & {
+        padding-left: 0;
+    }
+}
+
+.cricket-inning-details-innings {
+    @include mq($from: col4) {
+        padding-left: 0 ;
+    }
+}
+
+.cricket-inning-details-overs {
+    text-align: right;
+    width: 33.4%;
+}
+
+.cricket-footer-times,
+.cricket-inning-teams {
+    .cricket-inning-result &,
+    .cricket-inning-draw &,
+    .cricket-inning-delay &,
+    .cricket-inning-rain-delay &,
+    .cricket-inning-abandoned & {
+        display: none;
+    }
+}
+
+.cricket-inning-teams {
+    padding: base-px(1.5, 1, 0, 1);
+
+    .cricket-inning-team-name {
+        display: block;
+        padding-bottom: base-px(1.5);
+    }
+
+    .cricket-inning-team-name-crest {
+        padding-right: 14px;
+    }
+}
+
+.cricket-footer-times__time {
+    @extend %meta-agata;
+
+    line-height: 1.4em;
+    margin-bottom: base-px(1);
+
+    time {
+        padding-right: base-px(.5);
+        font-weight: 700;
+    }
+}
+
+.cricket-scorecard-batsmen {
+    @extend %meta-agata;
+    padding: base-px(.5, 1, 1, 1);
+    display: inline-block;
+
+    &-in-play,
+    &-duck {
+        .cricket-scorecard-batsmen-name:before {
+            content: '';
+            display: inline-block;
+            position: relative;
+            bottom: -3px;
+            height: 20px;
+            width: 20px;
+            margin-right: 4px;
+            background: url('../img/cricket-dismissal.png');
+            background-repeat: no-repeat;
+            background-size: auto 48px;
+        }
+    }
+
+    .cricket-scorecard-batsmen-status {
+        margin-top: -2px;
+
+        em {
+            font-style: normal;
+            color: color(shade-2);
+        }
+    }
+
+    &-in-play {
+        .cricket-scorecard-batsmen-name {
+            font-weight: bold;
+        }
+
+        .cricket-scorecard-batsmen-status {
+            color: color(shade-2);
+        }
+    }
+
+    &-duck {
+        .cricket-scorecard-batsmen-name:before {
+            background-position: -24px 0;
+        }
+    }
+}
+
+.cricket-match-summary-footer {
+    @extend %base-match-table;
+    white-space: nowrap;
+}
+
+.cricket-match-summary-footer-wrap {
+    @extend %meta-padding;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    @include mq($from: col4) {
+        display: block;
+        margin: 0 auto 0 228px;
+        width: 620px;
+    }
+}
+
+.cricket-footer-inning {
+    @extend %meta-agata;
+    line-height: 1.2;
+    margin-right: base-px(1);
+    display: inline-block;
+}
+
+.cricket-game-in-play {
+    background-color: color(tone-live);
+    display: table;
+    width: 100%;
+    padding: base-px(.5) base-px(1);
+    table-layout: fixed;
+
+    & + .cricket-match-summary-head {
+        border-top: 0;
+    }
+}
+
+.cricket-game-in-play-text,
+.cricket-game-in-play-follow {
+    @extend %meta-agata;
+    line-height: 1;
+    display: table-cell;
+    color: color(shade-7);
+    vertical-align: middle;
+}
+
+.cricket-game-in-play-text {
+    font-weight: bold;
+}
+
+.cricket-game-in-play-text,
+.cricket-game-in-play-link {
+    position: relative;
+    top: -2px;
+}
+
+.cricket-game-in-play-follow {
+    text-align: right;
+
+    &:active {
+        color: transparentize(color(shade-7), .4);
+
+        .cricket-game-in-play-icon {
+            border-color: transparentize(color(shade-7), .4);
+        }
+    }
+}
+
+.cricket-game-in-play-icon {
+    display: inline-block;
+    border: 1px solid color(shade-7);
+    line-height: 28px;
+    width: 30px;
+    border-radius: 15px;
+    box-sizing: content-box;
+    text-align: center;
+}
+
+$animationTime: 5s;
+$fadeOutInTime: .7s;
+$inTime: (100% * ($fadeOutInTime/2)) / $animationTime;
+$outTime: (100% * ($animationTime - ($fadeOutInTime/2))) / $animationTime;
+
+.cricket-match-summary-scorecard[data-pages] .cricket-scorecard-batsmen-wrap {
+    animation: fadeOutIn #{$animationTime} infinite forwards;
+    -webkit-animation: fadeOutIn #{$animationTime} infinite forwards;
+}
+
+@-webkit-keyframes fadeOutIn {
+    #{$inTime} { opacity: 1; }
+    #{$outTime} { opacity: 1; }
+    to { opacity: 0; }
+}
+@keyframes fadeOutIn {
+    #{$inTime} { opacity: 1; }
+    #{$outTime} { opacity: 1; }
+    to { opacity: 0; }
+}
