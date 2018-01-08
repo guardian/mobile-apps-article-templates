@@ -39,6 +39,43 @@
             background-color: darken($p-kicker, 10%);
         }
     }
+    
+    .comments__ordering {
+        color: color(shade-9);
+
+        &:active {
+            color: color(shade-9);
+        }
+    }
+
+    .comment__report,
+    .comments .touchpoint--primary {
+        .touchpoint__button {
+            background-color: color(shade-9);
+        }
+
+        &:active .touchpoint__button {
+            background-color: color(shade-9);
+        }
+
+        .touchpoint__label {
+            color: color(shade-9);
+        }
+
+        &:active .touchpoint__label {
+            color: color(shade-9);
+        }
+    }
+
+    .comments__viewmore {
+        .comments__viewmore--label {
+            color: color(shade-9);
+        }
+
+        &:active .comments__viewmore--label {
+            color: color(shade-9);
+        }
+    }
 
     // Maybe make this bit less smart and more manual later?
     @include pillar-reversible($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-background);
@@ -156,43 +193,6 @@
             }
         }
 
-        .comments__ordering {
-            color: $p-kicker;
-
-            &:active {
-                color: $p-feature-headline;
-            }
-        }
-
-        .comment__report,
-        .comments .touchpoint--primary {
-            .touchpoint__button {
-                background-color: $p-kicker;
-            }
-
-            &:active .touchpoint__button {
-                background-color: $p-feature-headline;
-            }
-
-            .touchpoint__label {
-                color: $p-kicker;
-            }
-
-            &:active .touchpoint__label {
-                color: $p-feature-headline;
-            }
-        }
-
-        .comments__viewmore {
-            .comments__viewmore--label {
-                color: color(tone-live);
-            }
-
-            &:active .comments__viewmore--label {
-                color: color(tone-live-accent);
-            }
-        }
-
         .article__header,
         .section,
         .article-kicker,
@@ -200,7 +200,7 @@
         .standfirst,
         .standfirst__inner,
         .main-media,
-        .touchpoint--primary .touchpoint__button {
+        .touchpoint--primary:not(.comments__post) .touchpoint__button {
             background-color: $p-kicker;
 
         }
@@ -249,10 +249,6 @@
 
             .meta {
                 background-color: $p-kicker;
-            }
-
-            .alerts,
-            .alerts.following:active {
             }
         }
 
