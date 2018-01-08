@@ -1,21 +1,39 @@
-// .garnett--type-article {
-//     &[data-content-type="football"] {
-//         .match-summary__meta {
-//             border-bottom-style: solid;
-//         }
-//     }
+.garnett--type-article {
+    &[data-content-type="football"] {
+        .match-summary__meta {
+            border-bottom-style: solid;
+        }
 
-//     &[data-content-type="cricket"] {
-//         .meta {
-//             background-color: color(shade-7);
-//         }
+        .tabs {
+            margin: 0;
+            padding: base-px(1);
 
-//         .meta__misc {
-//             padding: base-px(.5, .5, 1, 1);
-//         }
+            @include mq($from: col4) {
+                .inline-list {
+                    display: block;
+                    margin: 0 auto 0 228px;
+                    width: 620px;
+                }
+            }
+        }
 
-//         .alerts {
-//             margin: base-px(.5, 1, .5, -.15);
-//         }
-//     }
-// }
+        .article.article--liveblog {
+            margin-bottom: base-px(1);
+        }
+
+        .article__body.article__body--liveblog {
+            background-color: transparent;
+
+            .advert-slot--mpu {
+                float: none;
+                margin: 0 auto;
+                position: static;
+                width: 100%;
+            }
+        }
+
+        .more--live-blogs {
+            border: 0;
+        }
+    }
+}
