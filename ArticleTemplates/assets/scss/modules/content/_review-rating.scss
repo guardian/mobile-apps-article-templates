@@ -65,12 +65,9 @@
 
 .review-rating {
     margin-top: base-px(0.5);
-    @include mq($from: col1) {
-        font-size: 3.0rem;
-    }
-    line-height: 0.7rem;
     display: block;
     margin-bottom: base-px(2);
+
     span {
         display: block;
         float: left;
@@ -78,8 +75,8 @@
         color: color(shade-1);
         padding: 0 0.2rem 0.2rem;
         font-size: inherit;
+
         &:before {
-            // font-size: 0.9rem;
             content: '\2606';
             font-weight: 400;
         }
@@ -98,7 +95,6 @@
 .review-rating--3 [data-icon]:nth-child(-n+3),
 .review-rating--4 [data-icon]:nth-child(-n+4),
 .review-rating--5 [data-icon]:nth-child(-n+5) {
-    // color: color(tone-review-accent);
     &:before {
         content: '\2605';
     }
