@@ -1,3 +1,15 @@
+// Note the variable naming differences between the app templates adn MAPI:
+//
+// App templates name — MAPI name
+// $p-kicker — main and pillar
+// $p-feature-headline — featureHeadline
+// $p-soft — no correspondence
+// $p-inverted — mediaMain and elementBackground
+// $p-background — no correspondence
+// $p-media-background — 'background' override in media cards
+// in addition, MAPI includes pillar-toned liveblogBackground and liveblogMain
+
+
 @mixin pillar-colour($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-background, $p-media-background) {
     .element-pullquote blockquote {
         color: $p-kicker;
@@ -30,6 +42,14 @@
 
     .comment-count a {
         color: $p-kicker;
+    }
+
+    .more--live-blogs .more__button {
+        background-color: $p-kicker;
+
+        &:active {
+            background-color: darken($p-kicker, 10%);
+        }
     }
 
     .comments__ordering {
@@ -179,14 +199,6 @@
 
     // Live overrides
     &.garnett--type-live.is-live {
-        .more__button {
-            background-color: $p-kicker;
-    
-            &:active {
-                background-color: darken($p-kicker, 10%);
-            }
-        }
-
         a.touchpoint {
             &:active {
                 color: $p-kicker;
@@ -315,7 +327,7 @@
         }
 
         .comment-count a {
-            color: $kicker;   
+            color: $kicker;
         }
     }
 
