@@ -14,4 +14,74 @@ $p-media-background: #161616;
         $p-background,
         $p-media-background
     );
+
+    // Common
+    .tabs {
+        background-color: color(shade-7);
+    }
+
+    .cricket .tabs [href='#cricket__tabpanel--liveblog'][aria-selected=true], 
+    .cricket .tabs [href='#cricket__tabpanel--stats'][aria-selected=true],
+    .football .tabs [href='#football__tabpanel--liveblog'][aria-selected=true], 
+    .football .tabs [href='#football__tabpanel--stats'][aria-selected=true] {
+        color: $p-kicker;
+        border-top-color: $p-kicker;
+    }
+
+    // Cricket
+    .cricket .tone--deadBlog,
+    .cricket .tone--liveBlog.is-live {
+        .cricket-match-comp-info {
+            background-color: $p-kicker;
+        }
+    
+        .cricket-scorecard-bullets {
+            span {
+                background-color: color(shade-4);
+                
+                &.cricket-scorecard-bullets--active {
+                    background-color: $p-kicker;
+                }
+            }
+        }
+    
+        .cricket-match-basic-info {
+            color: color(shade-1);
+        }
+
+        .byline,
+        .byline__author a {
+            color: $p-kicker;
+        }
+
+        a.alerts {
+            border-color: rgba(color(shade-4), .5);
+            background-color: transparent;
+            color: color(shade-3);
+        }
+
+        @include mq($from: col4) {
+            background-color: color(shade-7);
+        }
+    }
+
+    .cricket .tone--liveBlog.is-live {
+        a.alerts {
+            border-color: $p-kicker;
+            background-color: transparent;
+            color: $p-kicker;
+        }
+
+        a.alerts:active,
+        a.alerts.following {
+            background-color: $p-kicker;
+            color: color(shade-7);
+            border-color: transparent;
+        }
+    }
+
+    .cricket-match-comp-info {
+        color: color(shade-7);
+        background-color: $p-kicker;
+    }
 }

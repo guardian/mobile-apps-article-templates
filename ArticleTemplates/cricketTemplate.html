@@ -19,7 +19,7 @@
         <div id="cricket-header">
             __CRICKET_HEADER__
         </div>
-        <div role="tablist" class="tabs">
+        <div role="tablist" class="tabs keyline">
             <ul class="inline-list">
                 <li role="presentation" class="inline-list__item">
                     <a role="tab" class="tab" id="cricket__tab--liveblog" href="#cricket__tabpanel--liveblog" aria-controls="cricket__tabpanel--liveblog" aria-selected="true">Over by over</a>
@@ -33,12 +33,15 @@
         <div role="tabpanel" class="cricket__tabpanel tone--__SECTION_TONE__ __IS_LIVE__" id="cricket__tabpanel--liveblog" aria-labelledby="cricket__tab--liveblog">
             <div class="article article--liveblog">
                 <div class="article__header article__header--cricket">
-                    <div class="meta">
+                    <div class="meta keyline-4">
                         <div class="meta__misc">
                             <div class="meta__byline">
                                 __BYLINE__
                             </div>
-                            <p class="meta__pubdate"><span class="screen-readable">Published: </span>__PUBDATE__</p>
+                            <p class="meta__pubdate hide-garnett"><span class="screen-readable" id="pubdate">Published: </span><span id="published-date">__PUBDATE__</span></p>
+                            <div class='meta__published show-garnett'>
+                                <div class="meta__published__date show-garnett"><span class="screen-readable" id="pubdate">Published: </span><span id="published-date">__PUBDATE__</span></div>
+                            </div>
                             __CRICKET_ALERT__
                         </div>
                         __COMMENT_CTA__

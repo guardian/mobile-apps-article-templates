@@ -44,6 +44,14 @@
         color: $p-kicker;
     }
 
+    .more--live-blogs .more__button {
+        background-color: $p-kicker;
+
+        &:active {
+            background-color: darken($p-kicker, 10%);
+        }
+    }
+
     .comments__ordering {
         color: color(shade-9);
 
@@ -191,14 +199,6 @@
 
     // Live overrides
     &.garnett--type-live.is-live {
-        .more__button {
-            background-color: $p-kicker;
-
-            &:active {
-                background-color: darken($p-kicker, 10%);
-            }
-        }
-
         a.touchpoint {
             &:active {
                 color: $p-kicker;
