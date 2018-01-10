@@ -28,9 +28,12 @@ figure {
     figcaption {
         color: color(shade-2);
         font-family: $agate-sans;
-        padding: base-px(.5, 1, 2, 1);
         font-size: 1.4rem;
         line-height: 1.6rem;
+        padding: base-px(0, 1);
+        @include mq($from: col2) {
+            padding: 0;
+        }
     }
 
     figcaption:empty {
