@@ -28,8 +28,12 @@ figure {
     figcaption {
         color: color(shade-2);
         font-family: $agate-sans;
-        @include meta();
-        padding: base-px(.5, 1, 2, 1);
+        font-size: 1.4rem;
+        line-height: 1.6rem;
+        padding: base-px(0, 1);
+        @include mq($from: col2) {
+            padding: 0;
+        }
     }
 
     figcaption:empty {
@@ -48,16 +52,6 @@ figure {
     //for when these are displayed in the main media area (at the top we don't need these margins)
     .main-media & {
         margin: 0;
-    }
-
-    figcaption {
-        @include mq(col2, col3) {
-            padding-right: cols($base-3, 3);
-        }
-
-        @include mq($from: col3) {
-            padding-right: cols($base-4, 4);
-        }
     }
 }
 
@@ -96,6 +90,7 @@ figure {
 
     figcaption {
         font-size: 1.4rem;
+        line-height: 1.6rem;
     }
 
     .element-image-inner {
