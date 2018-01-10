@@ -5,12 +5,12 @@
 // $p-feature-headline — featureHeadline
 // $p-soft — no correspondence
 // $p-inverted — mediaMain and elementBackground
-// $p-background — no correspondence
+// $p-liveblog-background — liveblogBackground
 // $p-media-background — 'background' override in media cards
 // in addition, MAPI includes pillar-toned liveblogBackground and liveblogMain
 
 
-@mixin pillar-colour($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-background, $p-media-background) {
+@mixin pillar-colour($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-liveblog-background, $p-media-background) {
     .element-pullquote blockquote {
         color: $p-kicker;
     }
@@ -90,7 +90,7 @@
     }
 
     // Maybe make this bit less smart and more manual later?
-    @include pillar-reversible($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-background);
+    @include pillar-reversible($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-liveblog-background);
 
     // Feature, Review, Recipe overrides
     &.garnett--type-feature,
@@ -236,8 +236,11 @@
         .standfirst__inner,
         .main-media,
         .touchpoint--primary:not(.comments__post) .touchpoint__button {
-            background-color: $p-kicker;
+            background-color: $p-liveblog-background;
+        }
 
+        .avatar {
+            background-color: $p-kicker;
         }
 
         @include mq($from: col4) {
@@ -283,7 +286,7 @@
             }
 
             .meta {
-                background-color: $p-kicker;
+                background-color: $p-liveblog-background;
             }
         }
 
