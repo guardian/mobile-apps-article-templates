@@ -2,7 +2,7 @@ $p-kicker: #0084c6; // MAPI: kicker text
 $p-feature-headline: #005689; // MAPI: feature headline
 $p-soft: #e6f5ff; // MAPI: ?
 $p-inverted: #00b2ff; // MAPI: light kicker — need to update MAPI for news
-$p-background: #ffffff; // MAPI: card background
+$p-liveblog-background: #ffffff; // MAPI: card background
 $p-media-background: #161616;
 
 .garnett--pillar-sport {
@@ -11,7 +11,7 @@ $p-media-background: #161616;
         $p-feature-headline,
         $p-soft,
         $p-inverted,
-        $p-background,
+        $p-liveblog-background,
         $p-media-background
     );
 
@@ -20,9 +20,9 @@ $p-media-background: #161616;
         background-color: color(shade-7);
     }
 
-    .cricket .tabs [href='#cricket__tabpanel--liveblog'][aria-selected=true], 
+    .cricket .tabs [href='#cricket__tabpanel--liveblog'][aria-selected=true],
     .cricket .tabs [href='#cricket__tabpanel--stats'][aria-selected=true],
-    .football .tabs [href='#football__tabpanel--liveblog'][aria-selected=true], 
+    .football .tabs [href='#football__tabpanel--liveblog'][aria-selected=true],
     .football .tabs [href='#football__tabpanel--stats'][aria-selected=true] {
         color: $p-kicker;
         border-top-color: $p-kicker;
@@ -34,17 +34,17 @@ $p-media-background: #161616;
         .cricket-match-comp-info {
             background-color: $p-kicker;
         }
-    
+
         .cricket-scorecard-bullets {
             span {
                 background-color: color(shade-4);
-                
+
                 &.cricket-scorecard-bullets--active {
                     background-color: $p-kicker;
                 }
             }
         }
-    
+
         .cricket-match-basic-info {
             color: color(shade-1);
         }
