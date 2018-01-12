@@ -1,3 +1,21 @@
 .garnett--type-analysis {
-
+    .headline {
+        font-weight: 200;
+        line-height: 3.6rem;
+        background-image: repeating-linear-gradient(to bottom, transparent, transparent calc(3.6rem - 1px), color(shade-1));
+        background-size: 100vw 3.6rem;
+        background-position: base-px(1) 0;
+        background-repeat: repeat-y;
+        @include mq($from: col2) {
+            background-clip: content-box;
+            line-height: 4.4rem;
+            background-image: repeating-linear-gradient(to bottom, transparent, transparent calc(4.4rem - 1px), color(shade-1));
+            background-size: 100vw 4.4rem;
+        }
+        @include mq($from: col4) {
+            background-clip: border-box;
+            background-position: 240px 0;
+            background-size: 620px 4.4rem;
+        }
+    }
 }
