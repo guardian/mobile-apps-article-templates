@@ -48,8 +48,11 @@
 }
 
 .main-media {
-    figcaption {
-        padding-bottom: base-px(2);
+    figure figcaption {
+        padding: base-px(0, 1, 2, 1);
+        @include mq($from: col4) {
+            padding: base-px(0, 0, 2, 0);
+        }
     }
 }
 
