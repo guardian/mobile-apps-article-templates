@@ -19,6 +19,15 @@
         position: relative;
         margin-top: -22px;
         padding: 22px 0;
+        @include mq($from: col4) {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 0;
+            &__inner {
+                padding-bottom: 22px;
+            }
+        }
 
         &:before {
             content: '';
