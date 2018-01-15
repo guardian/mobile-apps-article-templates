@@ -1,9 +1,33 @@
 .garnett--type-comment {
 
-    // 8 lines instead of 4 for opinion
     .meta {
+        padding-top: 0;
+        &__misc {
+            padding: base-px(.5, .5, 1, 1);
+        }
+
+        &__published {
+            margin-top: -1px;
+            &__comments {
+                position: static;
+            }
+        }
+    }
+
+    // 8 lines instead of 4 for comment
+    .standfirst {
+        position: relative;
         margin-top: -22px;
-        padding-top: 22px;
+        padding: 22px 0;
+        @include mq($from: col4) {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 0;
+            &__inner {
+                padding-bottom: 22px;
+            }
+        }
 
         &:before {
             content: '';
@@ -15,17 +39,6 @@
             right: 0;
             opacity: .2;
             background-image: repeating-linear-gradient(currentColor, currentColor 1px, transparent 1px, transparent 3px);
-        }
-
-        &__misc {
-            padding: base-px(.5, 1, 1, 1);
-        }
-
-        &__published {
-            margin-top: -1px;
-            &__comments {
-                position: static;
-            }
         }
     }
 }
