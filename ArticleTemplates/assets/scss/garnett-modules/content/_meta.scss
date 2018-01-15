@@ -80,14 +80,35 @@
     }
 
     &__published {
+        padding-top: .25em;
+        line-height: 1.1em;
+        padding-bottom: .25em;
         @include mq($from: col4) {
             padding-left: 0;
         }
     }
 
     &__published__comments {
-        margin-left: 12px;
-        margin-bottom: 12px;
         float: right;
+        text-align: right;
+        font-weight: 600;
+        font-size: 1.8rem;
+        line-height: 1.8rem;
+        border-left: 1px solid color(shade-11);
+        margin-bottom: base-px(.5);
+        a {
+            position: relative;
+            display: block;
+            margin: base-px(0, -.5, 0, 0);
+            padding: base-px(2, .5, .5, 1);
+        }
+        [data-icon] {
+            position: absolute;
+            top: 0;
+            right: base-px(.4);
+        }
+        .screen-readable {
+            max-width: 0;
+        }
     }
 }
