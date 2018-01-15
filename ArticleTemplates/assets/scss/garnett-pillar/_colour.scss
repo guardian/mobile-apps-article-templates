@@ -126,10 +126,12 @@
             color: $p-inverted;
         }
 
-        .standfirst {
-            // text links
-            p, li {
-                @include text-underline($p-inverted, lighten($p-inverted, .2));
+        @include mq($from: col2) {
+            // text links on tablet standfirst
+            .standfirst {
+                p, li {
+                    @include text-underline($p-inverted, lighten($p-inverted, .2));
+                }
             }
         }
 
