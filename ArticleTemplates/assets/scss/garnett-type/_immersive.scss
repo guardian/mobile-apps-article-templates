@@ -193,6 +193,14 @@
             margin: 0 auto;
             max-width: 1200px;
             padding-top: 6px;
+
+            // no keylines from tablet
+            @include mq($from: col2) {
+                padding-top: base-px(.5) !important;
+                &:before {
+                    display: none;
+                }
+            }
         }
     }
 
