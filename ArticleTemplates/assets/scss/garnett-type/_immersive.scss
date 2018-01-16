@@ -101,8 +101,8 @@
         }
 
         &__header-info {
-            background-color: rgba(0, 0, 0, .4);
-            padding: base-px(.5, 1, 2, 1);
+            background-color: rgba(0, 0, 0, .6);
+            padding: base-px(.25, 1, 2, 1);
             width: 100%;
 
             @include mq($from: col3) {
@@ -168,12 +168,6 @@
             }
         }
 
-        &__byline {
-            background-color: none;
-            color: color(shade-7);
-            padding: 0;
-        }
-
         &__body {
             background: color(shade-7);
 
@@ -193,6 +187,14 @@
             margin: 0 auto;
             max-width: 1200px;
             padding-top: 6px;
+
+            // no keylines from tablet
+            @include mq($from: col2) {
+                padding-top: base-px(.5) !important;
+                &:before {
+                    display: none;
+                }
+            }
         }
     }
 
@@ -224,7 +226,8 @@
         }
 
         &--mobile {
-            background-color: color(shade-2);
+            background-color: color(shade-7);
+            color: color(shade-1);
             padding: base-px(.5, 1, 1.5, 1);
 
             @include mq($from: col2) {
@@ -282,19 +285,6 @@
         @include mq($from: col4) {
             padding-left: 240px;
             width: 620px;
-        }
-
-        .comment-count {
-            border: 0;
-            color: color(tone-feature1-accent2);
-
-            a {
-                color: color(tone-feature1) !important;
-
-                &:active {
-                    color: color(tone-feature1-accent);
-                }
-            }
         }
     }
 
