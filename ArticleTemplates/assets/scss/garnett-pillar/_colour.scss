@@ -142,6 +142,28 @@
         }
     }
 
+
+    // play buttons
+    .audio-player__button.touchpoint--primary .touchpoint__button,
+    .element-placeholder .element-placeholder__button .touchpoint__button,
+    .element-youtube .element-placeholder__button .touchpoint__button,
+    .audio-player__slider__knob {
+        background-color: $p-inverted;
+    }
+
+    .element-placeholder .element-placeholder__button .touchpoint__button,
+    .element-youtube .element-placeholder__button .touchpoint__button,
+    .audio-player__button.touchpoint--primary .touchpoint__button {
+        &:before {
+            color: color(shade-7);
+        }
+    }
+
+    .element-placeholder .element-placeholder__button .touchpoint__label,
+    .element-youtube .element-placeholder__button .touchpoint__label {
+        color: color(shade-7);
+    }
+
     // Media overrides
     &.garnett--type-media {
         .keyline {
@@ -165,28 +187,6 @@
                 background-color: darken($p-media-background, 5%);
             }
         }
-
-        // play buttons
-        .audio-player__button.touchpoint--primary .touchpoint__button,
-        .element-placeholder .element-placeholder__button .touchpoint__button,
-        .element-youtube .element-placeholder__button .touchpoint__button,
-        .audio-player__slider__knob {
-            background-color: $p-inverted;
-        }
-
-        .element-placeholder .element-placeholder__button .touchpoint__button,
-        .element-youtube .element-placeholder__button .touchpoint__button,
-        .audio-player__button.touchpoint--primary .touchpoint__button {
-            &:before {
-                color: color(shade-7);
-            }
-        }
-
-        .element-placeholder .element-placeholder__button .touchpoint__label,
-        .element-youtube .element-placeholder__button .touchpoint__label {
-            color: color(shade-7);
-        }
-
 
 
         .section,
