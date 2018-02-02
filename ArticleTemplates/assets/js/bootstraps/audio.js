@@ -81,10 +81,16 @@ define([
 
     function audioSlider() {
         document.addEventListener('touchstart', function () {
+            if (GU.opts.platform === 'android') {
+                window.GuardianJSInterface.registerRelatedCardsTouch(true);
+            }
             down = 1;
         }, false);
 
         document.addEventListener('touchend', function () {
+            if (GU.opts.platform === 'android') {
+                window.GuardianJSInterface.registerRelatedCardsTouch(false);
+            }
             down = 0;
         }, false);
 
