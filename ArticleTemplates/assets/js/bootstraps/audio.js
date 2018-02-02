@@ -81,21 +81,30 @@ define([
 
     function audioSlider() {
         document.addEventListener('touchstart', function () {
-            if (GU.opts.platform === 'android') {
-                window.GuardianJSInterface.registerRelatedCardsTouch(true);
-            }
             down = 1;
         }, false);
 
         document.addEventListener('touchend', function () {
-            if (GU.opts.platform === 'android') {
-                window.GuardianJSInterface.registerRelatedCardsTouch(false);
-            }
             down = 0;
         }, false);
 
         /* Caution: Hot Mess */
+        MobileRangeSlider.prototype.start = function () {
+            if (GU.opts.platform === 'android') {
+                window.GuardianJSInterface.registerRelatedCardsTouch(true);
+            }
+
+            this.addEvents("move");
+            this.addEvents("end");
+            this.handle(event);
+        };
+
+        /* Caution: Hot Mess */
         MobileRangeSlider.prototype.end = function () {
+            if (GU.opts.platform === 'android') {
+                window.GuardianJSInterface.registerRelatedCardsTouch(false);
+            }
+
             this.removeEvents('move');
             this.removeEvents('end');
 
