@@ -111,8 +111,8 @@
     .main-media__caption__icon {
         line-height: 30px;
         text-align: center;
-        background-color: rgba(0, 0, 0, .5);
-        color: color(shade-8);
+        background-color: color(tone-highlight);
+        color: color(shade-1);
         width: 32px;
         height: 32px;
         display: inline-block;
@@ -121,16 +121,12 @@
         right: base-px(.5);
         border-radius: 100%;
         z-index: 11;
-
-        &:hover,
-        &:active {
-            background-color: color(shade-1);
-        }
+        font-size: 1.6rem;
     }
 
     .main-media__caption__text {
         @extend %screen-readable;
-        background-color: rgba(0, 0, 0, .5);
+        background-color: rgba(0, 0, 0, .8);
         padding: base-px(.5, 1, 1, 1);
         max-height: 0;
         overflow: hidden;
