@@ -1,6 +1,6 @@
 $p-kicker: #ed6300;
 $p-feature-headline: #f5be2c;
-$p-soft: #dbc19a;
+$p-soft: #fef9f5;
 $p-inverted: #ff7f0f;
 $p-liveblog-background: #f5be2c;
 $p-media-background: #161616;
@@ -14,6 +14,36 @@ $p-media-background: #161616;
         $p-liveblog-background,
         $p-media-background
     );
+
+    // Light background in opinion articles
+    &:not(.garnett--type-media) {
+
+        .article__header .cutout__container,
+        .article__body,
+        .article__meta,
+        .tags {
+            background-color: $p-soft;
+        }
+
+        @include mq($to: col4) {
+            .article__header {
+                background-color: $p-soft;
+            }
+        }
+        @include mq($from: col4) {
+            .article__header {
+                .article-kicker,
+                .standfirst__inner,
+                .meta,
+                .main-media {
+                    background-color: $p-soft;
+                }
+            }
+            &:not(.garnett--type-comment, .garnett--type-immersive) .article__header .headline {
+                background-color: $p-soft;
+            }
+        }
+    }
 }
 
 // Comment articles in news showuld have opinion colours
