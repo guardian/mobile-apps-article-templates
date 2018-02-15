@@ -89,7 +89,22 @@ define([
         }, false);
 
         /* Caution: Hot Mess */
+        MobileRangeSlider.prototype.start = function () {
+            if (GU.opts.platform === 'android') {
+                window.GuardianJSInterface.registerRelatedCardsTouch(true);
+            }
+
+            this.addEvents("move");
+            this.addEvents("end");
+            this.handle(event);
+        };
+
+        /* Caution: Hot Mess */
         MobileRangeSlider.prototype.end = function () {
+            if (GU.opts.platform === 'android') {
+                window.GuardianJSInterface.registerRelatedCardsTouch(false);
+            }
+
             this.removeEvents('move');
             this.removeEvents('end');
 
