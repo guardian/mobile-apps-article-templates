@@ -1,11 +1,11 @@
 body[data-content-type='liveblog'] {
-    // Hide the special minute header unless minute on tablet   
+    // Hide the special minute header unless minute on tablet
     &.advert-config--mobile.the-minute,
     &:not(.the-minute) {
         .minute-logo-container,
         .minute-vertical-rule,
         .minute-logo-container,
-        .the-minute__header { 
+        .the-minute__header {
             display: none;
         }
     }
@@ -18,6 +18,10 @@ body[data-content-type='liveblog'] {
 
     .article__header {
         background-color: color(shade-7);
+
+        .article-kicker__series {
+            min-height: base-px(0.25);
+        }
 
         .section {
             position: relative;
@@ -70,7 +74,7 @@ body[data-content-type='liveblog'] {
             figcaption {
                 padding-left: 0px;
                 padding-right: 0px;
-            }            
+            }
         }
 
         figcaption {
