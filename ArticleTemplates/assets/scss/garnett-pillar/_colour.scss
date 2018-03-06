@@ -237,15 +237,13 @@
         .section,
         .article-kicker,
         .headline,
-        .standfirst,
-        .standfirst__inner,
         .main-media,
         .touchpoint--primary:not(.comments__post) .touchpoint__button {
-            background-color: $p-liveblog-background;
+            background-color: $p-kicker;
         }
 
         .avatar {
-            background-color: $p-kicker;
+            background-color: $p-feature-headline;
         }
 
         @include mq($from: col4) {
@@ -290,6 +288,8 @@
                 }
             }
 
+            .standfirst,
+            .standfirst__inner,
             .meta {
                 background-color: $p-liveblog-background;
             }
