@@ -35,16 +35,11 @@
     @include meta(.875);
     font-family: $agate-sans;
     white-space: nowrap;
-    padding: base-px(.3, 1, .7, 1);
-    margin: base-px(.5, 0, 0, -.3);
+    margin: base-px(0);
     display: inline-block;
     border-radius: 30px;
-    text-overflow: ellipsis;
-    vertical-align: bottom;
-    overflow: hidden;
     max-width: 100%;
     color: color(shade-1);
-    border: 1px solid rgba(color(shade-2), .5);
     transition: background-color .3s;
 
     &:active,
@@ -55,12 +50,18 @@
 
     span[data-icon] {
         display: inline-block;
-        vertical-align: bottom;
-        font-size: $body-size-2;
-        position: relative;
-        right: 5px;
-        top: 1px;
-        transform: scale(.875);
+        vertical-align: middle;
+        border-radius: 100%;
+
+        width: 24px;
+        height: 24px;
+        line-height: 20px;
+        background-color: currentColor;
+        text-align: center;
+        font-size: 15px;
+        &:before {
+            color: #fff;
+        }
     }
 
     &__label {
