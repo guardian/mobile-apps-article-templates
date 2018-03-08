@@ -104,7 +104,10 @@
             background-color: color(shade-1);
             color: color(shade-7);
             padding: base-px(.25, 1, 2, 1);
-            width: 100%;
+            margin: base-px(-6, 0, 1, 0);
+            width: calc(100% - 32px);
+            position: relative;
+            z-index: 10;
 
             @include mq($from: col3) {
                 padding-top: base-px(1);
