@@ -17,33 +17,17 @@
 
 .cutout {
     .cutout__container {
-        @include mq($to: col1) {
-            min-height: 245px;
-            padding-right: cols($base-1, 1);
-        }
-
-        @include mq(col1, col2) {
-            min-height: 280px;
-            padding-right: cols($base-2, 2);
-        }
-
-        @include mq(col2, col3) {
-            min-height: 320px;
-        }
-
-        @include mq($from: col3) {
-            min-height: 320px;
-        }
-
         @include mq($from: col4) {
-            margin: 0 auto;
             min-height: 220px;
-            max-width: 1200px;
         }
 
         .headline {
             position: relative;
             z-index: 30;
+
+            @include mq($to: col2) {
+                padding-bottom: base-px(6);
+            }
 
             @include mq($from: col4) {
                 margin: 0;
@@ -51,34 +35,29 @@
         }
     }
 
+    .headline__byline {
+        @include mq($to: col2) {
+            margin-right: 110px;
+        }
+    }
+
     .cutout__image {
         background-repeat: no-repeat;
         background-position: bottom right;
-        background-size: 50%;
+        background-size: auto 160px;
         bottom: 0;
         left: 0;
         position: absolute;
-        right: -10%;
+        right: -40px;
         top: 0;
         z-index: 1;
 
-        @include mq($from: col1) {
-            background-size: 45%;
-            right: -7%
-        }
-
         @include mq($from: col2) {
-            background-size: 40%;
-        }
-
-        @include mq($from: col3) {
-            background-size: 30%;
-            right: -5%;
+            background-size: auto 200px;
         }
 
         @include mq($from: col4) {
-            background-size: contain;
-            right: 10%;
+            right: 40px;
         }
     }
 }
