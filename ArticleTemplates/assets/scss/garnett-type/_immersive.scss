@@ -143,16 +143,24 @@
             }
         }
 
-        &__headline.headline {
-            color: color(shade-7);
+        &__headline.headline,
+        &__series a {
             font-size: 3.5rem;
             line-height: 1.04;
-            padding: 0;
-            z-index: 1;
             font-weight: 700;
 
             @include mq($from: col2) {
                 font-size: 2.8em;
+                margin-bottom: 24px;
+            }
+        }
+
+        &__headline.headline {
+            color: color(shade-7);
+            padding: 0;
+            z-index: 1;
+
+            @include mq($from: col2) {
                 margin-bottom: 24px;
             }
 
