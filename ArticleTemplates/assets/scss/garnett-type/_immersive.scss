@@ -104,33 +104,39 @@
             color: color(shade-7);
             padding: base-px(.25, 1, 2, 1);
             margin: base-px(-6.5, 0, 0, 0);
-            width: calc(100% - 32px);
             position: relative;
             z-index: 10;
+            width: calc(100% - 32px);
+            @include mq($to: mobileMedium) {
+                width: calc(100% - 24px);
+            }
+
+            @include mq($from: col2) {
+                padding-top: base-px(.5);
+            }
+
+            @include mq(col2, col3) {
+                width: calc(100% - cols($base-3, 1));
+                opacity: 0.8;
+            }
 
             @include mq($from: col3) {
-                padding-top: base-px(1);
+                padding-right: cols($base-4, 4);
             }
 
             @include mq($from: col4) {
+                margin: 0 auto;
                 padding: {
-                    left: 0;
-                    right: 0;
+                    left: 240px;
+                    right: 340px;
                 }
+                width: 1200px;
             }
+
         }
 
         &__series {
             display: block;
-
-            > a, & {
-                color: color(shade-7);
-                font: 700 2rem $egyptian-display;
-            }
-
-            @include mq($from: col2) {
-                margin-bottom: base-px(1);
-            }
 
             @include mq($from: col4) {
                 margin: 0 auto;
@@ -144,15 +150,13 @@
 
         &__headline.headline,
         &__series a {
+            font-family: $egyptian-display;
             font-size: 3.5rem;
             line-height: 1.04;
             font-weight: 700;
-
-            @include mq($from: col2) {
-                font-size: 2.8em;
-                margin-bottom: 24px;
-            }
         }
+
+
 
         &__headline.headline {
             color: color(shade-7);
