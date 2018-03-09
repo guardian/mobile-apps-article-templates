@@ -213,11 +213,16 @@
         background: none;
         font-family: $egyptian-display;
         font-weight: 500;
+        background-color: color(shade-7);
+        color: color(shade-1);
+        padding: base-px(.5, 1, 1.5, 1);
+
+        .section__rule {
+            margin-bottom: 2px;
+        }
 
 
         a {
-            // border-bottom: 1px solid color(tone-feature1-accent2);
-            // color: color(tone-feature1-accent2) !important;
             display: inline-block;
 
             &:active {
@@ -235,56 +240,6 @@
             }
         }
 
-        &--mobile {
-            background-color: color(shade-7);
-            color: color(shade-1);
-            padding: base-px(.5, 1, 1.5, 1);
-
-            @include mq($from: col2) {
-                display: none;
-            }
-
-            .section__rule {
-                margin-bottom: 2px;
-            }
-        }
-
-        &--tablet {
-            padding: 0;
-            display: none;
-
-            @include mq($from: col2) {
-                display: block;
-            }
-
-            @include mq($from: col3) {
-                padding-right: cols($base-4, 4);
-            }
-
-            @include mq($from: col4) {
-                font-size: 2rem;
-                line-height: 2.8rem;
-                margin: 0 auto;
-                max-width: 1200px;
-                padding: {
-                    left: 240px;
-                    right: 320px;
-                }
-            }
-
-            &:before {
-                border-bottom: 2px solid #dcdad5;
-                content: '';
-                height: 10px;
-                margin: 0 0 0 1px;
-                width: 100px;
-                display: block;
-            }
-
-            .section__rule {
-                margin-bottom: 0;
-            }
-        }
     }
 
     .immersive__meta {
