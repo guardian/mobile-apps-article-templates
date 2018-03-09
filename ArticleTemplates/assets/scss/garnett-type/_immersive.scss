@@ -216,10 +216,16 @@
         color: color(shade-7);
         background: none;
         font-family: $egyptian-display;
-        font-weight: 500;
+        font-weight: 300;
         background-color: color(shade-7);
         color: color(shade-1);
         padding: base-px(.5, 1, 1.5, 1);
+        font-size: 2rem;
+        line-height: 2.4rem;
+        padding-right: 32px;
+        @include mq($to: mobileMedium) {
+            padding-right: 24px;
+        }
 
         a {
             display: inline-block;
