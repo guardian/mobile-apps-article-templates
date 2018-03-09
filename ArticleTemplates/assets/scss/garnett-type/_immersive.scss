@@ -112,16 +112,16 @@
             }
 
             @include mq($from: col2) {
+                width: auto;
                 padding-top: base-px(.5);
             }
 
             @include mq(col2, col3) {
-                width: calc(100% - cols($base-3, 1));
-                opacity: 0.8;
+                margin-right: cols($base-3, 2);
             }
 
-            @include mq($from: col3) {
-                padding-right: cols($base-4, 4);
+            @include mq(col3, col4) {
+                margin-right: cols($base-4, 6);
             }
 
             @include mq($from: col4) {
@@ -165,10 +165,6 @@
 
             @include mq($from: col2) {
                 margin-bottom: 24px;
-            }
-
-            @include mq($from: col3) {
-                padding-right: cols($base-4, 4);
             }
 
             @include mq($from: col4) {
@@ -225,6 +221,14 @@
         padding-right: 32px;
         @include mq($to: mobileMedium) {
             padding-right: 24px;
+        }
+
+        @include mq(col2, col3) {
+            padding-right: cols($base-3, 2);
+        }
+
+        @include mq(col3, col4) {
+            padding-right: cols($base-4, 6);
         }
 
         a {
