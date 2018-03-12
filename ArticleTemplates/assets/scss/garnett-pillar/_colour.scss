@@ -237,21 +237,19 @@
         .section,
         .article-kicker,
         .headline,
-        .standfirst,
-        .standfirst__inner,
         .main-media,
         .touchpoint--primary:not(.comments__post) .touchpoint__button {
-            background-color: $p-liveblog-background;
+            background-color: $p-kicker;
         }
 
         .avatar {
-            background-color: $p-kicker;
+            background-color: $p-feature-headline;
         }
 
         @include mq($from: col4) {
             .article__header,
             .standfirst {
-                background-color: darken($p-kicker, 5%);
+                background-color: darken($p-liveblog-background, 5%);
             }
         }
 
@@ -290,8 +288,14 @@
                 }
             }
 
-            .meta {
+            .standfirst,
+            .standfirst__inner,
+            .meta,
+            .main-media {
                 background-color: $p-liveblog-background;
+            }
+            .meta__published__comments {
+                border-left-color: rgba(color(shade-4), .5);
             }
         }
 
@@ -358,9 +362,6 @@
             border-top-color: $soft;
         }
 
-        .comment-count a {
-            color: $kicker;
-        }
     }
 
 }

@@ -51,15 +51,49 @@
             .standfirst,
             .sponsorship {
                 @include mq(col2, col3) {
-                    margin-left: cols($base-3, 4);
+                    padding-left: cols($base-3, 4);
                 }
 
                 @include mq($from: col3) {
-                    margin-left: cols($base-4, 5);
+                    padding-left: cols($base-4, 5);
                 }
 
+            }
+
+            .headline,
+            .standfirst,
+            .sponsorship {
                 @include mq($from: col4) {
+                    padding-left: 0;
                     margin: 0 auto;
+                    max-width: 1200px;
+                }
+            }
+
+            .article-kicker,
+            .headline {
+                @include mq($from: col4) {
+                    padding-left: 240px;
+                    margin: 0 auto;
+                    max-width: 1200px;
+                }
+            }
+
+            .standfirst__inner,
+            .meta__misc {
+                @include mq(col2, col4) {
+                    padding-left: 0;
+                }
+                @include mq(col2, col4) {
+                    padding-left: 0;
+                }
+            }
+
+            .meta .avatar--author {
+                @include mq(col2, col4) {
+                    position: absolute;
+                    transform: translateX(-100%);
+                    margin-left: base-px(-1);
                 }
             }
 
