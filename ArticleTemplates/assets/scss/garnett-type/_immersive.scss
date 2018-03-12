@@ -125,27 +125,30 @@
             }
 
             @include mq($from: col4) {
-                margin: 0 auto;
+                margin-left: auto;
+                margin-right: auto;
                 padding: {
-                    left: 240px;
+                    left: base-px(1);
                     right: 340px;
                 }
                 width: 1200px;
+                transform: translateX(228px); //240 - 8
+                position: relative;
+                &:before {
+                    content: '';
+                    background-color: #fff;
+                    position: absolute;
+                    left: -228px;
+                    bottom: 0;
+                    top: 78px;
+                    width: 228px;
+                }
             }
 
         }
 
         &__series {
             display: block;
-
-            @include mq($from: col4) {
-                margin: 0 auto;
-                max-width: 1200px;
-                padding: {
-                    left: 240px;
-                    right: 320px;
-                }
-            }
         }
 
         &__headline.headline,
@@ -169,12 +172,6 @@
 
             @include mq($from: col4) {
                 background-color: transparent;
-                margin: 0 auto;
-                max-width: 1200px;
-                padding: {
-                    left: 240px;
-                    right: 320px;
-                }
             }
         }
 
@@ -229,6 +226,13 @@
 
         @include mq(col3, col4) {
             padding-right: cols($base-4, 6);
+        }
+
+        @include mq($from: col4) {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding-left: 240px;
+          padding-right: 420px;
         }
 
         a {
