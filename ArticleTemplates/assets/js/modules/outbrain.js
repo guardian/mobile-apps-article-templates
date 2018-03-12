@@ -9,7 +9,7 @@ define(function () {
     }
 
     function isNonCompliant() {
-        return GU.opts.hasEpic;
+        return GU.opts.hasEpic || GU.opts.hasCallout;
     }
 
     function ready() {
