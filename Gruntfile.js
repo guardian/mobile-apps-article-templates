@@ -209,19 +209,6 @@ module.exports = function(grunt) {
                 tasks: ['buildCSS', 'validateCSS' ]
             }
         },
-        // local server
-        connect: {
-          server: {
-            options: {
-              // uncomment below to use https server
-              // protocol: 'https',
-              livereload: true,
-              port: 8000,
-              // useAvailablePort: true,
-              base: '.'
-            }
-          }
-        }
     });
 
 
@@ -235,7 +222,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('buildCSS', ['sass', 'cssmin']);
 
-    grunt.registerTask('default', ['buildJS', 'buildCSS', 'connect', 'watch']);
+    grunt.registerTask('default', ['buildJS', 'buildCSS', 'watch']);
 
 
 
