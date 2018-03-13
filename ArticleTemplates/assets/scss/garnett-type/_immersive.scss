@@ -41,7 +41,6 @@
 
     .article {
         &__header {
-            background-color: transparent;
 
             .bullet,
             ul > li {
@@ -101,70 +100,83 @@
         }
 
         &__header-info {
-            background-color: rgba(0, 0, 0, .6);
+            background-color: color(shade-1);
+            color: color(shade-7);
             padding: base-px(.25, 1, 2, 1);
-            width: 100%;
+            margin: base-px(-6.5, 0, 0, 0);
+            position: relative;
+            z-index: 10;
+            width: calc(100% - 32px);
+            @include mq($to: mobileMedium) {
+                width: calc(100% - 24px);
+            }
 
-            @include mq($from: col3) {
-                padding-top: base-px(1);
+            @include mq($from: col2) {
+                width: auto;
+                padding-top: base-px(.5);
+            }
+
+            @include mq(col2, col3) {
+                margin-right: cols($base-3, 2);
+            }
+
+            @include mq(col3, col4) {
+                margin-right: cols($base-4, 6);
             }
 
             @include mq($from: col4) {
+                margin-left: auto;
+                margin-right: auto;
                 padding: {
-                    left: 0;
-                    right: 0;
+                    left: base-px(1);
+                    right: 340px;
+                }
+                width: 1200px;
+                transform: translateX(240px - base-px(1));
+                position: relative;
+                &:before {
+                    content: '';
+                    background-color: color(shade-7);
+                    position: absolute;
+                    left: -(240px - base-px(1));
+                    bottom: 0;
+                    top: 78px;
+                    width: 240px - base-px(1);
                 }
             }
+
         }
 
         &__series {
             display: block;
-            padding-bottom: 6px;
+        }
 
-            > a, & {
-                color: color(shade-7);
-                font: 700 2rem $egyptian-display;
-            }
+        &__headline.headline,
+        &__series a {
+            font-family: $egyptian-display;
+            font-size: 3.5rem;
+            line-height: 1.04;
+            font-weight: 700;
 
-            @include mq($from: col2) {
-                margin-bottom: base-px(1);
-            }
-
-            @include mq($from: col4) {
-                margin: 0 auto;
-                max-width: 1200px;
-                padding: {
-                    left: 240px;
-                    right: 320px;
-                }
+            @include mq(col4) {
+                max-width: 620px;
+                margin: 0;
             }
         }
 
+
+
         &__headline.headline {
             color: color(shade-7);
-            font-size: 3.5rem;
-            line-height: 1.04;
             padding: 0;
             z-index: 1;
-            font-weight: 700;
 
             @include mq($from: col2) {
-                font-size: 2.8em;
                 margin-bottom: 24px;
-            }
-
-            @include mq($from: col3) {
-                padding-right: cols($base-4, 4);
             }
 
             @include mq($from: col4) {
                 background-color: transparent;
-                margin: 0 auto;
-                max-width: 1200px;
-                padding: {
-                    left: 240px;
-                    right: 320px;
-                }
             }
         }
 
@@ -202,12 +214,33 @@
         color: color(shade-7);
         background: none;
         font-family: $egyptian-display;
-        font-weight: 500;
+        font-weight: 300;
+        background-color: color(shade-7);
+        color: color(shade-1);
+        padding: base-px(.5, 1, 1.5, 1);
+        font-size: 2rem;
+        line-height: 2.4rem;
+        padding-right: 32px;
+        @include mq($to: mobileMedium) {
+            padding-right: 24px;
+        }
 
+        @include mq(col2, col3) {
+            padding-right: cols($base-3, 2);
+        }
+
+        @include mq(col3, col4) {
+            padding-right: cols($base-4, 6);
+        }
+
+        @include mq($from: col4) {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 240px;
+            padding-right: 420px;
+        }
 
         a {
-            // border-bottom: 1px solid color(tone-feature1-accent2);
-            // color: color(tone-feature1-accent2) !important;
             display: inline-block;
 
             &:active {
@@ -218,63 +251,8 @@
 
         &__text {
             margin: base-px(0, 0, 1, 0);
-
-            + .section__rule {
-                margin-left: -1px;
-                margin-top: base-px(2);
-            }
         }
 
-        &--mobile {
-            background-color: color(shade-7);
-            color: color(shade-1);
-            padding: base-px(.5, 1, 1.5, 1);
-
-            @include mq($from: col2) {
-                display: none;
-            }
-
-            .section__rule {
-                margin-bottom: 2px;
-            }
-        }
-
-        &--tablet {
-            padding: 0;
-            display: none;
-
-            @include mq($from: col2) {
-                display: block;
-            }
-
-            @include mq($from: col3) {
-                padding-right: cols($base-4, 4);
-            }
-
-            @include mq($from: col4) {
-                font-size: 2rem;
-                line-height: 2.8rem;
-                margin: 0 auto;
-                max-width: 1200px;
-                padding: {
-                    left: 240px;
-                    right: 320px;
-                }
-            }
-
-            &:before {
-                border-bottom: 2px solid #dcdad5;
-                content: '';
-                height: 10px;
-                margin: 0 0 0 1px;
-                width: 100px;
-                display: block;
-            }
-
-            .section__rule {
-                margin-bottom: 0;
-            }
-        }
     }
 
     .immersive__meta {
@@ -283,7 +261,9 @@
         padding: base-px(0, 1, 2, 1);
 
         @include mq($from: col4) {
-            padding-left: 240px;
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: 240px;
             width: 620px;
         }
     }
