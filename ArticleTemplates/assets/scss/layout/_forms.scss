@@ -4,8 +4,25 @@
 }
 
 .form_input {
-    margin: 10px 0;
+    margin: 12px 0;
+    
+    &--multi {
+        label {
+            align-items: baseline;
+            display: flex;
+            padding: 5px 0;
+    
+            input {
+                margin-right: 10px;
+            }
+    
+            span {
+                flex: 1;
+            }
+        }
+    }
 }
+
 
 .form_field {
     display: flex;
@@ -13,5 +30,18 @@
 
     input {
         align-self: justify;
+        padding: 3px 5px 4px;
+    }
+
+    input,
+    select,
+    textarea {
+        border: 1px solid var(--c-garnett-neutral-8);
+        font-family: $agate-sans;
     }
 }
+
+.form_field_label {
+    font-weight: bold;
+}
+

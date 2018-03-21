@@ -1,0 +1,107 @@
+:root {
+    --c-garnett-neutral-1: #121212;
+    --c-garnett-neutral-2: #999999;
+    --c-garnett-neutral-3: #f6f6f6;
+    --c-garnett-neutral-4: #dcdcdc;
+    --c-garnett-neutral-5: #ffffff;
+    --c-garnett-neutral-6: #767676;
+    --c-garnett-neutral-7: #444444;
+    --c-garnett-neutral-8: #ededed;
+}
+
+.garnett--pillar-news      { --c-pillar-main: #c70000; }
+.garnett--pillar-opinion   { --c-pillar-main: #e05e00; }
+.garnett--pillar-sports    { --c-pillar-main: #0084c6; }
+.garnett--pillar-arts      { --c-pillar-main: #a1845c; }
+.garnett--pillar-lifestyle { --c-pillar-main: #bb3b80; }
+
+details[open] .is-off,
+details:not([open]) .is-on { 
+    display: none; 
+}
+
+.article_callout {
+    border-color: var(--c-garnett-neutral-4);
+    border-style: solid;
+    border-width: 1px 0;
+    padding: 0 5px 24px;
+    position: relative;
+
+    &[open] {
+        background: var(--c-garnett-neutral-8);
+    }
+}
+
+.article_callout_heading {
+    &::-webkit-details-marker {
+        display: none;
+    }
+    display: flex;
+    align-items: flex-start;
+}
+
+.article_callout_kicker,
+.article_callout_title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    margin: 0 0 24px;
+}
+
+.article_callout_title {
+    padding: 6px 0 0;
+}
+        
+.article_callout_description {
+    font-weight: 400;
+}
+
+.article_callout_kicker {
+    background: var(--c-pillar-main);
+    color: white;
+    margin-bottom: 24px;
+    margin-left: -5px;
+    margin-right: 10px;
+    padding: 6px 10px 8px;
+
+    &.speech-bubble::after {
+        background: var(--c-pillar-main);
+    }
+}
+
+.article_callout_handle {
+    background: var(--c-garnett-neutral-1);
+    bottom: 0;
+    color: white;
+    font-size: 13px;
+    height: 30px;
+    padding: 0 15px 0 7px;
+    position: absolute;
+    transform: translate(0, 50%);
+
+    &:hover,
+    &:focus {
+        background: var(--c-pillar-main);
+    }
+}
+
+.speech-bubble {
+    position: relative;
+
+    &::after {
+        content: '';
+        width: 14px;
+        height: 14px;
+        border-radius: 0 0 14px 0;
+        position: absolute;
+        bottom: -14px;
+        left: 10px;
+        background: white;
+    }
+}
+
+.article_callout_body {
+    border-top: 1px solid var(--c-garnett-neutral-4);
+    font-size: 14px;
+    line-height: 21px;
+}
