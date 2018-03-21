@@ -105,7 +105,7 @@
 
         .byline__author,
         .byline__author a {
-            color: color(shade-1);
+            color: color(brightness-7);
         }
 
         a {
@@ -124,7 +124,7 @@
         }
 
         .headline {
-            color: color(shade-1);
+            color: color(brightness-7);
         }
 
         .content__series-label,
@@ -174,11 +174,11 @@
 
         .inline-list__item {
             a {
-                @include tag-button(color(shade-1), color(blogs-tags));
+                @include tag-button(color(brightness-7), color(blogs-tags));
             }
 
             &.more-button a {
-                @include tag-more-button(color(shade-1), darken(color(blogs-tags), 10%));
+                @include tag-more-button(color(brightness-7), darken(color(blogs-tags), 10%));
             }
         }
     }
@@ -191,7 +191,7 @@
         .prose li {
             @include text-underline(color(tone-news), color(brightness-100), color(tone-news-accent));
         }
-        
+
         .block__time {
             font-weight: bold;
         }

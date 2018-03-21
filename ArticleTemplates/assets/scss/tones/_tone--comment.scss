@@ -55,7 +55,7 @@
         }
     }
 
-    .section__container, 
+    .section__container,
     figure figcaption {
         border-bottom: 1px darken(color(shade-4), 10%) dotted;
     }
@@ -63,7 +63,7 @@
     .tags {
         .inline-list__item {
             &.more-button a {
-                @include tag-more-button(color(shade-1), color(global-tags));
+                @include tag-more-button(color(brightness-7), color(global-tags));
             }
         }
     }
@@ -81,7 +81,7 @@
         .touchpoint__label {
             color: color(tone-comment);
         }
-        
+
         &:active .touchpoint__label {
             color: color(tone-comment-accent);
         }
@@ -91,7 +91,7 @@
         .comments__viewmore--label {
             color: color(tone-comment);
         }
-        
+
         &:active .comments__viewmore--label {
             color: color(tone-comment-accent);
         }
@@ -105,7 +105,7 @@
     .article--comment {
         background-color: color(tone-comment-bg);
         border-top-color: color(tone-comment-accent);
-        
+
         @include mq($from: col4) {
             background-color: darken(color(tone-comment-bg), 5%);
         }
@@ -190,13 +190,13 @@
     &.is_advertising {
         a.alerts,
         a.alerts.following:active {
-            border-color: rgba(color(shade-1), .5);
-            color: color(shade-1);
+            border-color: rgba(color(brightness-7), .5);
+            color: color(brightness-7);
         }
 
         a.alerts:active,
         a.alerts.following {
-            background-color: color(shade-1);
+            background-color: color(brightness-20);
             color: color(brightness-100);
         }
     }

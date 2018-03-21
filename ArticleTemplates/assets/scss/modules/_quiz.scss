@@ -14,7 +14,7 @@
 
         // Quiz title
         .quiz__title {
-            color: color(shade-1);
+            color: color(brightness-7);
             font: 200 26px/1.2 $egyptian-display;
             margin-bottom: 36px;
 
@@ -49,7 +49,7 @@
         }
 
         .question__text {
-            color: color(shade-1);
+            color: color(brightness-7);
             font: 600 18px/1.2 $egyptian-display;
             min-height: 50px;
             padding: 0 0 6px 60px;
@@ -92,7 +92,7 @@
             }
 
             .question__text {
-                background: rgba(color(shade-1), .5);
+                background: rgba(color(brightness-20), .5);
                 bottom: 0;
                 color: color(brightness-100);
                 display: block;
@@ -104,7 +104,7 @@
                 }
                 position: absolute;
                 width: 100%;
-            
+
                 &::before {
                     color: color(brightness-100);
                     left: 12px;
@@ -218,7 +218,7 @@
             .answer__marker {
                 border: 0;
                 text-align: center;
-                
+
                 &::before {
                     color: color(brightness-100);
                     font-family: $icon;
@@ -237,7 +237,7 @@
                 }
             }
         }
-        
+
         // Common style for correct answer whether question is-correct or is-wrong
         .correct-answer {
             .answer__marker {
@@ -318,7 +318,7 @@
                 }
 
                 .answer__message::before {
-                    color: color(shade-1);
+                    color: color(brightness-7);
                     content: 'Wrong!'
                 }
 
@@ -453,20 +453,20 @@
             }
             .quiz-results__title {
                 color: color(tone-news-accent);
-                font: 100 50px/55px $egyptian-display;    
+                font: 100 50px/55px $egyptian-display;
             }
         }
-    
+
         // Personality quiz overrides
         &.personality-quiz {
             .question__answer {
                 &:not(.has-image) {
                     .answer__text {
-                        color: color(shade-1);
+                        color: color(brightness-7);
                     }
 
                     .answer__marker {
-                        border: 1px solid color(shade-1);
+                        border: 1px solid color(brightness-20);
 
                         &::before {
                             content: '';
@@ -475,7 +475,7 @@
 
                     .answer__marker__inner {
                         opacity: 0;
-                        background: color(shade-1);
+                        background: color(brightness-20);
                         border-radius: 50%;
                         height: 20px;
                         margin: 4px;

@@ -44,7 +44,7 @@
         }
 
         .headline {
-            color: color(shade-1); // Headline
+            color: color(brightness-7); // Headline
 
             p.review-rating {
                 @include rating;
@@ -62,7 +62,7 @@
 
         .meta {
             .meta__byline .byline,
-            .meta__byline a, 
+            .meta__byline a,
             .comment-count,
             .comment-count a {
                 color: color(tone-news);
@@ -112,7 +112,7 @@
 
     .extras {
         background: color(brightness-100);
-        
+
         @include mq($from: col4) {
             max-width: 1200px;
             margin: 0 auto;
@@ -139,13 +139,13 @@
     &.is_advertising {
         .alerts,
         .alerts.following:active {
-            border-color: rgba(color(shade-1), .5);
-            color: color(shade-1);
+            border-color: rgba(color(brightness-20), .5);
+            color: color(brightness-7);
         }
 
         .alerts:active,
         .alerts.following {
-            background-color: color(shade-1);
+            background-color: color(brightness-20);
             color: color(brightness-100);
         }
     }
@@ -170,7 +170,7 @@
                     @include mq($from: col2) {
                         border-top: 0;
                     }
-                    
+
                     .meta__misc {
                         padding: 0;
 
@@ -189,4 +189,3 @@
         }
     }
 }
-

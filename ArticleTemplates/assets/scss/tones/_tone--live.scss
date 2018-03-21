@@ -1,6 +1,6 @@
 .tone--liveBlog {
     .section__container {
-        border-bottom: 1px rgba(color(brightness-100), .4) dotted; 
+        border-bottom: 1px rgba(color(brightness-100), .4) dotted;
     }
 
     .section {
@@ -25,7 +25,7 @@
 
         .witness {
             margin-top: base-px(1);
-            
+
             @include mq(col2, col3) {
                 margin-left: cols($base-3, 4, 1);
             }
@@ -39,7 +39,7 @@
             }
         }
 
-        .comments__ordering { 
+        .comments__ordering {
             color: color(tone-live);
 
             &:active {
@@ -60,7 +60,7 @@
             .touchpoint__label {
                 color: color(tone-live);
             }
-            
+
             &:active .touchpoint__label {
                 color: color(tone-live-accent);
             }
@@ -70,7 +70,7 @@
             .comments__viewmore--label {
                 color: color(tone-live);
             }
-            
+
             &:active .comments__viewmore--label {
                 color: color(tone-live-accent);
             }
@@ -131,9 +131,9 @@
 
             .section {
                 position: relative;
-                
+
                 @include mq($to: col1) {
-                    padding-left: base-px(4.7); 
+                    padding-left: base-px(4.7);
                 }
 
                 @include mq(col1, col2) {
@@ -212,7 +212,7 @@
             .table {
                 border-top-color: color(tone-live);
             }
-            
+
             .cricket & {
                 border-top: 0;
             }
@@ -226,7 +226,7 @@
                     }
                 }
             }
-            
+
             .meta {
                 background-color: color(tone-live-accent);
                 border: 0;
@@ -281,11 +281,11 @@
 
                 .inline-list__item {
                     a {
-                        @include tag-button(color(shade-1), color(blogs-tags));
+                        @include tag-button(color(brightness-7), color(blogs-tags));
                     }
 
                     &.more-button a {
-                        @include tag-more-button(color(shade-1), darken(color(blogs-tags), 10%));
+                        @include tag-more-button(color(brightness-7), darken(color(blogs-tags), 10%));
                     }
                 }
             }
