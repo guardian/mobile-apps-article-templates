@@ -1,11 +1,28 @@
 <details class="article_callout">
   <summary class="article_callout_heading">
+    <div class="article_callout_kicker speech-bubble">
+      __CALLOUT_KICKER__
+    </div>
     <div class="article_callout_title">
       __CALLOUT_TITLE__
+      __CALLOUT_DESCRIPTION__
     </div>
-    __CALLOUT_DESCRIPTION__
+    <span aria-hidden="true" class="button button--rounded article_callout_handle">
+      <span class="is-off">
+        <svg class="icon icon--plus " viewBox="0 0 18 18">
+          <path d="M8.2 0h1.6l.4 7.8 7.8.4v1.6l-7.8.4-.4 7.8H8.2l-.4-7.8L0 9.8V8.2l7.8-.4.4-7.8z"></path>
+        </svg>
+        Tell us
+      </span>
+      <span class="is-on">
+        <svg class="icon icon--minus " viewBox="0 0 32 32">
+          <rect x="5" y="15" width="22" height="3"></rect>
+        </svg>
+        Hide
+      </span>
+    </span>
   </summary>
-  <form method="post" class="form" action="x-gu://participate/__CALLOUT_ID__" class="article_callout_body">
+  <form method="post" class="form article_callout_body" action="x-gu://participate/__CALLOUT_ID__">
     __CALLOUT_BODY__
   </form>
 </details>
