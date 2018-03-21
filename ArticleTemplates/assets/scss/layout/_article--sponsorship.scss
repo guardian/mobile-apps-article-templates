@@ -44,7 +44,7 @@
 
     /* Common */
     &.tone--news,
-    &.tone--feature1, 
+    &.tone--feature1,
     &.tone--feature2,
     &.tone--feature3,
     &.tone--media,
@@ -120,12 +120,12 @@
 
                     ul > li::before,
                     .bullet::before {
-                        background-color: color(global-adv-bands);    
+                        background-color: color(global-adv-bands);
                     }
 
                     ul > li,
                     ul > li strong {
-                        color: color(shade-1);    
+                        color: color(shade-1);
                     }
 
                     ul > li strong {
@@ -137,7 +137,7 @@
                     color: color(global-adv-text);
                     background-color: color(global-adv-bg);
 
-                    .prose p, 
+                    .prose p,
                     .prose li {
                         @include text-underline(color(global-adv-shade-1), color(global-adv-bg), lighten(color(global-adv-shade-1), 10%));
                     }
@@ -161,7 +161,7 @@
                         background: none;
                         border-top: 1px color(brightness-60) dotted;
                         border-bottom: 1px color(brightness-60) dotted;
-                        color: color(shade-6);
+                        color: color(brightness-20);
                     }
 
                     .prose figure.figure--thumbnail-with-caption {
@@ -271,7 +271,7 @@
             }
         }
     }
-  
+
     /* Feature overrides */
     &.tone--feature1,
     &.tone--feature2,
@@ -296,7 +296,7 @@
                         border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
                     }
                 }
-            }         
+            }
         }
     }
 
@@ -343,7 +343,7 @@
 
                     .meta .standfirst {
                         background-color: color(global-adv-bg);
-                        
+
                         @include mq($from: col4) {
                             padding-left: 0;
                             padding-right: 0;
@@ -363,7 +363,7 @@
                 .headline {
                     margin-top: 0;
                 }
-                
+
                 .meta {
                     display: none;
                 }
@@ -374,7 +374,7 @@
 
                 .cutout__container {
                     min-height: 155px;
-                    background-color: color(global-adv-bg);  
+                    background-color: color(global-adv-bg);
                 }
 
                 @include mq($from: col4) {
@@ -393,7 +393,7 @@
                     background-color: color(global-adv-shade-2);
 
                     &:active {
-                        background-color: darken(color(global-adv-shade-2), 10%); 
+                        background-color: darken(color(global-adv-shade-2), 10%);
                     }
                 }
 
@@ -483,6 +483,6 @@
                     }
                 }
             }
-        }        
+        }
     }
 }
