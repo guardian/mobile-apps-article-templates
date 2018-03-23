@@ -1,19 +1,19 @@
 :root {
-    --c-garnett-neutral-1: #121212;
-    --c-garnett-neutral-2: #999999;
-    --c-garnett-neutral-3: #f6f6f6;
-    --c-garnett-neutral-4: #dcdcdc;
-    --c-garnett-neutral-5: #ffffff;
-    --c-garnett-neutral-6: #767676;
-    --c-garnett-neutral-7: #444444;
-    --c-garnett-neutral-8: #ededed;
+    #{--c-garnett-neutral-1}: #121212;
+    #{--c-garnett-neutral-2}: #999999;
+    #{--c-garnett-neutral-3}: #f6f6f6;
+    #{--c-garnett-neutral-4}: #dcdcdc;
+    #{--c-garnett-neutral-5}: #ffffff;
+    #{--c-garnett-neutral-6}: #767676;
+    #{--c-garnett-neutral-7}: #444444;
+    #{--c-garnett-neutral-8}: #ededed;
 }
 
-.garnett--pillar-news      { --c-pillar-main: #c70000; }
-.garnett--pillar-opinion   { --c-pillar-main: #e05e00; }
-.garnett--pillar-sports    { --c-pillar-main: #0084c6; }
-.garnett--pillar-arts      { --c-pillar-main: #a1845c; }
-.garnett--pillar-lifestyle { --c-pillar-main: #bb3b80; }
+.garnett--pillar-news      { #{--c-pillar-main}: #c70000; }
+.garnett--pillar-opinion   { #{--c-pillar-main}: #e05e00; }
+.garnett--pillar-sports    { #{--c-pillar-main}: #0084c6; }
+.garnett--pillar-arts      { #{--c-pillar-main}: #a1845c; }
+.garnett--pillar-lifestyle { #{--c-pillar-main}: #bb3b80; }
 
 details[open] .is-off,
 details:not([open]) .is-on { 
@@ -21,14 +21,14 @@ details:not([open]) .is-on {
 }
 
 .article_callout {
-    border-color: var(--c-garnett-neutral-4);
+    border-color: var(#{--c-garnett-neutral-4});
     border-style: solid;
     border-width: 1px 0;
     padding: 0 5px 24px;
     position: relative;
 
     &[open] {
-        background: var(--c-garnett-neutral-8);
+        background: var(#{--c-garnett-neutral-8});
     }
 }
 
@@ -57,19 +57,21 @@ details:not([open]) .is-on {
 }
 
 .article_callout_kicker {
-    background: var(--c-pillar-main);
+    background: $p-kicker;
+    background: var(#{--c-pillar-main});
     color: white;
     margin-left: -5px;
     margin-right: 10px;
     padding: 6px 10px 8px;
 
     &.speech-bubble::after {
-        background: var(--c-pillar-main);
+        background: $p-kicker;
+        background: var(#{--c-pillar-main});
     }
 }
 
 .article_callout_handle {
-    background: var(--c-garnett-neutral-1);
+    background: var(#{--c-garnett-neutral-1});
     bottom: 0;
     color: white;
     font-size: 13px;
@@ -80,7 +82,8 @@ details:not([open]) .is-on {
 
     &:hover,
     &:focus {
-        background: var(--c-pillar-main);
+        background: $p-kicker;
+        background: var(#{--c-pillar-main});
     }
 }
 
@@ -100,12 +103,13 @@ details:not([open]) .is-on {
 }
 
 .article_callout_body {
-    border-top: 1px solid var(--c-garnett-neutral-4);
+    border-top: 1px solid var(#{--c-garnett-neutral-4});
     font-size: 14px;
     line-height: 21px;
 
     .form_submit .button {
-        background: var(--c-pillar-main);
+        background: $p-kicker;
+        background: var(#{--c-pillar-main});
         color: white;
         height: 30px;
         line-height: 30px;
