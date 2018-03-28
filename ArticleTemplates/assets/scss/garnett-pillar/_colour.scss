@@ -6,11 +6,10 @@
 // $p-soft — no correspondence
 // $p-inverted — mediaMain and elementBackground
 // $p-liveblog-background — liveblogBackground
-// $p-media-background — 'background' override in media cards
 // in addition, MAPI includes pillar-toned liveblogBackground and liveblogMain
 
 
-@mixin pillar-colour($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-liveblog-background, $p-media-background) {
+@mixin pillar-colour($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-liveblog-background) {
     .element-pullquote blockquote {
         color: $p-kicker;
     }
@@ -90,7 +89,7 @@
     }
 
     // Maybe make this bit less smart and more manual later?
-    @include pillar-reversible($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-liveblog-background);
+    @include pillar-reversible($p-kicker, $p-feature-headline, $p-soft, $p-inverted);
 
     // Feature, Review, Recipe overrides
     &.garnett--type-feature,
@@ -173,11 +172,11 @@
 
         .article__header,
         .article__body {
-            background-color: $p-media-background;
+            background-color: color(tone-media-background);
         }
         .article__header {
             @include mq($from: col4) {
-                background-color: darken($p-media-background, 5%);
+                background-color: darken(color(tone-media-background), 5%);
             }
         }
 
@@ -188,16 +187,16 @@
         .main-media,
         .meta,
         .sponsorship {
-            background-color: $p-media-background;
+            background-color: color(tone-media-background);
             color: color(brightness-86);
         }
 
         .article--audio,
         .article--visual {
-            background-color: $p-media-background;
+            background-color: color(tone-media-background);
 
             @include mq($from: col4) {
-                background-color: darken($p-media-background, 5%);
+                background-color: darken(color(tone-media-background), 5%);
             }
         }
 
@@ -206,10 +205,10 @@
                 background-color: transparent;
             }
             .audio-player__wrapper {
-                background-color: $p-media-background;
+                background-color: color(tone-media-background);
             }
             @include mq($from: col4) {
-                background-color: darken($p-media-background, 5%);
+                background-color: darken(color(tone-media-background), 5%);
             }
         }
 
@@ -222,7 +221,7 @@
             color: color(brightness-93);
         }
 
-        @include pillar-reversible($p-inverted, $p-kicker, $p-feature-headline, $p-soft, $p-media-background);
+        @include pillar-reversible($p-inverted, $p-kicker, $p-feature-headline, $p-soft);
     }
 
     // Live overrides
@@ -333,7 +332,7 @@
 // CSS for reversible pillar colours, this means we can
 // use $kicker colours to mean $p-kicker or $p-inverted
 // depending on context
-@mixin pillar-reversible($kicker, $feature, $soft, $inverted, $background) {
+@mixin pillar-reversible($kicker, $feature, $soft, $inverted) {
 
     &:not(.garnett--type-live) {
         // Section and series labels above headline
