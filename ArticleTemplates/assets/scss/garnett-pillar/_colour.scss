@@ -118,15 +118,6 @@
             color: $p-inverted;
         }
 
-        @include mq($from: col2) {
-            // text links on tablet standfirst
-            .standfirst {
-                p, li {
-                    @include text-underline($p-inverted, lighten($p-inverted, .2));
-                }
-            }
-        }
-
         .section__rule {
             + p.has__dropcap {
                 @include immersive-dropcap($p-kicker);
