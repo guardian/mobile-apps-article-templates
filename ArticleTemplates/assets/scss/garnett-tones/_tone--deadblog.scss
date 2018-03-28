@@ -60,22 +60,22 @@
     }
 
     .article__header {
-        background-color: color(shade-7);
+        background-color: color(brightness-100);
 
         @include mq($from: col4) {
-            background-color: color(shade-5);
+            background-color: color(brightness-93);
 
             .section,
             .headline,
             .standfirst__inner,
             .main-media {
-                background-color: color(shade-7);
+                background-color: color(brightness-100);
             }
         }
 
         .byline__author,
         .byline__author a {
-            color: color(shade-1);
+            color: color(brightness-7);
         }
 
         a {
@@ -89,17 +89,17 @@
         .bullet,
         ul > li {
             &::before {
-                background-color: color(shade-2);
+                background-color: color(brightness-46);
             }
         }
 
         .headline {
-            color: color(shade-1);
+            color: color(brightness-7);
         }
 
         .content__series-label,
         .content__series-label a {
-            color: color(shade-2);
+            color: color(brightness-46);
         }
 
         .section {
@@ -120,7 +120,7 @@
         }
 
         .standfirst {
-            color: color(shade-2);
+            color: color(brightness-46);
 
             a {
                 color: color(tone-deadblog);
@@ -128,7 +128,7 @@
         }
 
         .sponsorship {
-            background-color: color(shade-7);
+            background-color: color(brightness-100);
 
             &__about-uri {
                 color: color(global-sponsored-about);
@@ -137,23 +137,23 @@
     }
 
     .tags {
-        background-color: color(shade-5);
+        background-color: color(brightness-93);
         padding-left: 0;
 
         .inline-list__item {
             a {
-                @include tag-button(color(shade-1), color(blogs-tags));
+                @include tag-button(color(brightness-7), color(blogs-tags));
             }
 
             &.more-button a {
-                @include tag-more-button(color(shade-1), darken(color(blogs-tags), 10%));
+                @include tag-more-button(color(brightness-7), darken(color(blogs-tags), 10%));
             }
         }
     }
 
     .block--live-summary {
-        background-color: color(shade-7);
-        border-top: 1px solid color(shade-3);
+        background-color: color(brightness-100);
+        border-top: 1px solid color(brightness-60);
 
         .prose p,
         .prose li {

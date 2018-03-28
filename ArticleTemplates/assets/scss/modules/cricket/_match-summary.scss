@@ -109,8 +109,8 @@
     display: table;
     width: 100%;
     table-layout: fixed;
-    border-bottom: 1px dotted color(shade-4);
-    background: color(shade-7);
+    border-bottom: 1px dotted color(tone-sandy-light);
+    background: color(brightness-100);
 }
 
 %meta-agata {
@@ -120,7 +120,7 @@
 
 %meta-title-mq {
     font: 200 2.3rem $egyptian-display;
-    color: color(shade-1);
+    color: color(brightness-7);
     padding-bottom: .3rem;
 }
 
@@ -147,7 +147,7 @@
     @extend %meta-agata;
     display: table-cell;
     width: 40%;
-    color: color(shade-1);
+    color: color(brightness-7);
 
     p {
         white-space: nowrap;
@@ -182,7 +182,7 @@
         .meta__pubdate,
         a,
         .byline {
-            color: color(shade-1);
+            color: color(brightness-7);
         }
 
         .byline__author a {
@@ -218,16 +218,16 @@
             display: inline-block;
 
             a {
-                color: color(shade-3);
-                border-color: color(shade-4);
+                color: color(brightness-60);
+                border-color: color(tone-sandy-light);
 
                 &.following {
-                    color: color(shade-7);
+                    color: color(brightness-100);
                 }
             }
 
             a:active {
-                color: color(shade-7);
+                color: color(brightness-100);
             }
 
 
@@ -237,7 +237,7 @@
 
 .cricket-match-comp-info {
     background: color(tone-live-accent);
-    color: color(shade-7);
+    color: color(brightness-100);
     padding: 5px 12px;
 
     h1 {
@@ -357,7 +357,7 @@
 .cricket-match-summary-scorecard {
     display: table-cell;
     vertical-align: top;
-    border-left: 1px solid color(shade-4);
+    border-left: 1px solid color(tone-sandy-light);
 
     @include mq($to: col2) {
         display: none;
@@ -374,9 +374,9 @@
 
 .cricket-scorecard-title {
     @extend %meta-agata;
-    color: color(shade-3);
+    color: color(brightness-60);
     line-height: 1;
-    border-bottom: 1px solid color(shade-4);
+    border-bottom: 1px solid color(tone-sandy-light);
     padding: base-px(.6, 1, 1, 1);
     position: relative;
 }
@@ -387,7 +387,7 @@
     right: base-px(1) - 4px;
 
     span {
-        background-color: color(shade-4);
+        background-color: color(tone-sandy-light);
         transition: background-color .2s;
         display: inline-block;
         width: 7px;
@@ -410,7 +410,7 @@
 .cricket-inning-details-overs {
     @extend %meta-agata;
     display: table-cell;
-    color: color(shade-3);
+    color: color(brightness-60);
 
     b {
         font-weight: bold;
@@ -501,7 +501,7 @@
 
         em {
             font-style: normal;
-            color: color(shade-2);
+            color: color(brightness-46);
         }
     }
 
@@ -511,7 +511,7 @@
         }
 
         .cricket-scorecard-batsmen-status {
-            color: color(shade-2);
+            color: color(brightness-46);
         }
     }
 
@@ -525,7 +525,7 @@
 .cricket-match-summary-footer {
     @extend %base-match-table;
     white-space: nowrap;
-    border-bottom: 1px solid color(shade-4);
+    border-bottom: 1px solid color(tone-sandy-light);
 }
 
 .cricket-match-summary-footer-wrap {
@@ -558,7 +558,7 @@
     @extend %meta-agata;
     line-height: 1;
     display: table-cell;
-    color: color(shade-7);
+    color: color(brightness-100);
     vertical-align: middle;
 }
 
@@ -576,17 +576,17 @@
     text-align: right;
 
     &:active {
-        color: transparentize(color(shade-7), .4);
+        color: transparentize(color(brightness-100), .4);
 
         .cricket-game-in-play-icon {
-            border-color: transparentize(color(shade-7), .4);
+            border-color: transparentize(color(brightness-100), .4);
         }
     }
 }
 
 .cricket-game-in-play-icon {
     display: inline-block;
-    border: 1px solid color(shade-7);
+    border: 1px solid color(brightness-100);
     line-height: 28px;
     width: 30px;
     border-radius: 15px;

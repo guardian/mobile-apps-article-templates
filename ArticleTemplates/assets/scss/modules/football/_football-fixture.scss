@@ -41,7 +41,7 @@
 // */
 
 .football-fixture {
-    color: color(shade-1);
+    color: color(brightness-7);
     font-family: $agate-sans;
     @include body();
     display: table;
@@ -50,14 +50,14 @@
 
     // Match
     &.match {
-        background-color: color(shade-7);
+        background-color: color(brightness-100);
 
         .football-fixture__data {
             border-top-color: color(tone-news-accent);
         }
 
         .football-fixture__data--1 {
-            color: color(shade-2);
+            color: color(brightness-46);
             padding: base-px(0, .5, 0, .5);
 
             @include mq($to: col1) {
@@ -70,7 +70,7 @@
         }
 
         .football-fixture__data--3 {
-            color: color(shade-2);
+            color: color(brightness-46);
             text-align: center;
         }
     }
@@ -79,7 +79,7 @@
     &.has-ended {
         .football-fixture__data--1 {
             font-weight: bold;
-            color: color(shade-1);
+            color: color(brightness-7);
         }
     }
 
@@ -134,7 +134,7 @@
         }
 
         .football-fixture__data--4 {
-            color: color(shade-2);
+            color: color(brightness-46);
 
             @include mq($to: col1) {
                 display: none;
@@ -145,13 +145,13 @@
     &.competition {
         .football-fixture__data--1 {
             font-weight: normal;
-            color: color(shade-2);
+            color: color(brightness-46);
         }
     }
 }
 
 .football-fixture__data {
-    border-top: 1px solid color(shade-4);
+    border-top: 1px solid color(tone-sandy-light);
     padding: base-px(.25, .5, 1, .5);
     display: table-cell;
 

@@ -39,12 +39,12 @@
     background-color: color(global-adv-bg);
 
     @include mq($from: col4) {
-        background-color: color(shade-11);
+        background-color: color(brightness-86);
     }
 
     /* Common */
     &.tone--news,
-    &.tone--feature1, 
+    &.tone--feature1,
     &.tone--feature2,
     &.tone--feature3,
     &.tone--media,
@@ -120,12 +120,12 @@
 
                     ul > li::before,
                     .bullet::before {
-                        background-color: color(global-adv-bands);    
+                        background-color: color(global-adv-bands);
                     }
 
                     ul > li,
                     ul > li strong {
-                        color: color(shade-1);    
+                        color: color(brightness-7);
                     }
 
                     ul > li strong {
@@ -137,7 +137,7 @@
                     color: color(global-adv-text);
                     background-color: color(global-adv-bg);
 
-                    .prose p, 
+                    .prose p,
                     .prose li {
                         @include text-underline(color(global-adv-shade-1), color(global-adv-bg), lighten(color(global-adv-shade-1), 10%));
                     }
@@ -159,9 +159,9 @@
 
                     .prose figure.portrait-thumbnail figcaption {
                         background: none;
-                        border-top: 1px color(shade-3) dotted;
-                        border-bottom: 1px color(shade-3) dotted;
-                        color: color(shade-6);
+                        border-top: 1px color(brightness-60) dotted;
+                        border-bottom: 1px color(brightness-60) dotted;
+                        color: color(brightness-20);
                     }
 
                     .prose figure.figure--thumbnail-with-caption {
@@ -195,7 +195,7 @@
                 border-color: rgba(color(global-adv-bands), .4);
 
                 .inline-list .inline-list__item a {
-                    color: color(shade-7);
+                    color: color(brightness-100);
                     background-color: color(global-adv-bands);
                 }
 
@@ -207,12 +207,12 @@
             }
 
             @include mq($from: col4) {
-                background-color: color(shade-11);
+                background-color: color(brightness-86);
 
                 .article {
                     &__header,
                     &__header .standfirst {
-                        background-color: color(shade-11);
+                        background-color: color(brightness-86);
                     }
                 }
 
@@ -267,11 +267,11 @@
 
         @include mq($from: col4) {
             .audio-player__container {
-                background: color(shade-5);
+                background: color(brightness-93);
             }
         }
     }
-  
+
     /* Feature overrides */
     &.tone--feature1,
     &.tone--feature2,
@@ -288,7 +288,7 @@
             .article {
                 &__header {
                     .headline {
-                        background-color: color(shade-12);
+                        background-color: color(brightness-74);
                     }
 
                     .standfirst__inner,
@@ -296,7 +296,7 @@
                         border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
                     }
                 }
-            }         
+            }
         }
     }
 
@@ -343,7 +343,7 @@
 
                     .meta .standfirst {
                         background-color: color(global-adv-bg);
-                        
+
                         @include mq($from: col4) {
                             padding-left: 0;
                             padding-right: 0;
@@ -363,7 +363,7 @@
                 .headline {
                     margin-top: 0;
                 }
-                
+
                 .meta {
                     display: none;
                 }
@@ -374,12 +374,12 @@
 
                 .cutout__container {
                     min-height: 155px;
-                    background-color: color(global-adv-bg);  
+                    background-color: color(global-adv-bg);
                 }
 
                 @include mq($from: col4) {
                     .audio-player__container {
-                        background-color: color(shade-11);
+                        background-color: color(brightness-86);
                     }
                 }
 
@@ -393,7 +393,7 @@
                     background-color: color(global-adv-shade-2);
 
                     &:active {
-                        background-color: darken(color(global-adv-shade-2), 10%); 
+                        background-color: darken(color(global-adv-shade-2), 10%);
                     }
                 }
 
@@ -483,6 +483,6 @@
                     }
                 }
             }
-        }        
+        }
     }
 }

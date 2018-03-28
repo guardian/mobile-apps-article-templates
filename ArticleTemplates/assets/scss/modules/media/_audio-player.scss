@@ -27,7 +27,7 @@
 // */
 
 .audio-player {
-    background-color: color(shade-1);
+    background-color: color(brightness-20);
     padding: base-px(1);
     padding-left: 68px;
     position: relative;
@@ -38,11 +38,11 @@
 
 @include mq($from: col4) {
     .audio-player__container {
-        background-color: darken(color(shade-1), 5%);
+        background-color: darken(color(brightness-20), 5%);
     }
 
     .audio-player__wrapper {
-        background-color: color(shade-1);
+        background-color: color(brightness-20);
         margin: 0 auto;
         width: 1200px;
     }
@@ -59,7 +59,7 @@
     left: base-px(1);
 
     &.touchpoint--primary .touchpoint__button {
-        color: color(shade-1);
+        color: color(brightness-7);
         background-color: color(tone-media);
 
         &:active {
@@ -94,7 +94,7 @@
     border-top-left-radius: 30px;
     border-bottom-left-radius: 29px;
     border-bottom-right-radius: 29px;
-    border: 2px solid color(shade-7);
+    border: 2px solid color(brightness-100);
     display: none;
 }
 
@@ -112,7 +112,7 @@
 .audio-player__slider__played,
 .audio-player__slider__remaining {
     @include meta;
-    color: color(shade-7);
+    color: color(brightness-100);
     opacity: 1;
     font-family: $agate-sans;
     font-weight: normal;
@@ -130,7 +130,7 @@
 }
 
 .audio-player__slider__track {
-    background-color: color(shade-3);
+    background-color: color(brightness-60);
     height: 2px;
     width: 100%;
     position: absolute;
