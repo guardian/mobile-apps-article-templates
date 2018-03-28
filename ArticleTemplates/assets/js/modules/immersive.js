@@ -8,9 +8,6 @@ define([
     var initialised;
 
     function formatImmersive() {
-        // Override tone to feature for all immersive pages
-        document.body.className = document.body.className.replace(/(tone--).+?\s/g, 'tone--feature1 ');
-
         if (GU.opts.platform !== 'ios') {
             adjustHeaderImageHeight();
         }
