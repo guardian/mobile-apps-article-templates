@@ -1,3 +1,48 @@
-.tone--special {
+$special-highlight: #ABC2C9;
+$p-liveblog-background: #ae0000;
+$p-media-background: #161616;
 
+.tone--special {
+    @include pillar-colour(
+        color(tone-special-dark),
+        color(tone-special-dark),
+        color(tone-special-light),
+        color(tone-special-mid),
+        $p-liveblog-background,
+        $p-media-background
+    );
+
+    // Light background in opinion articles
+    &:not(.garnett--type-media) {
+
+        .article__header .cutout__container,
+        .article__body,
+        .article__meta,
+        .tags {
+            background-color: color(tone-special-light);
+        }
+
+        @include mq($to: col4) {
+            .article__header {
+                background-color: color(tone-special-light);
+            }
+        }
+        @include mq($from: col4) {
+            .article__header {
+                .article-kicker,
+                .standfirst__inner,
+                .meta,
+                .main-media {
+                    background-color: color(tone-special-light);
+                }
+            }
+            &:not(.garnett--type-comment, .garnett--type-immersive) .article__header .headline {
+                background-color: color(tone-special-light);
+            }
+        }
+
+        .headline {
+            color: color(tone-special-dark);
+        }
+    }
 }
