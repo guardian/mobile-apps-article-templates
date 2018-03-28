@@ -1,9 +1,72 @@
 .garnett--type-media {
+
+    .article__header,
+    .article__body {
+        background-color: color(tone-media-background);
+    }
+    .article__header {
+        @include mq($from: col4) {
+            background-color: darken(color(tone-media-background), 5%);
+        }
+    }
+
     @include mq($from: col4) {
         .comments,
         .related-content {
             background: color(brightness-93);
         }
+    }
+
+    .keyline {
+        &:before {
+            background-color: color(brightness-46);
+        }
+    };
+
+    .keyline-4 {
+        &:before {
+            background-image: repeating-linear-gradient(color(brightness-46), color(brightness-46) 1px, transparent 1px, transparent 3px);
+        }
+    }
+
+    .section,
+    .article-kicker,
+    .headline,
+    .main-media,
+    .meta,
+    .sponsorship {
+        background-color: color(tone-media-background);
+        color: color(brightness-86);
+    }
+
+    .article--audio,
+    .article--visual {
+        background-color: color(tone-media-background);
+
+        @include mq($from: col4) {
+            background-color: darken(color(tone-media-background), 5%);
+        }
+    }
+
+    .audio-player__container {
+        .audio-player {
+            background-color: transparent;
+        }
+        .audio-player__wrapper {
+            background-color: color(tone-media-background);
+        }
+        @include mq($from: col4) {
+            background-color: darken(color(tone-media-background), 5%);
+        }
+    }
+
+    // hide horizontal white line above video cover image
+    .element__inner {
+        background-color: inherit;
+    }
+
+    .meta__published {
+        color: color(brightness-93);
     }
 
     .witness .witness__sponsor-logo {
