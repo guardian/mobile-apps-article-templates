@@ -43,12 +43,6 @@
     transition: background-color .3s;
     transform: translateX(-1px);
 
-    &:active,
-    &.following {
-        background-color: color(brightness-20);
-        color: color(brightness-100);
-    }
-
     span[data-icon] {
         display: inline-block;
         vertical-align: middle;
@@ -74,12 +68,6 @@
     }
 
     &.following {
-        &:active {
-            color: color(brightness-7);
-            background-color: color(brightness-100);
-            border: 1px solid rgba(color(brightness-46), .5);
-        }
-
         .alerts__state--follow {
             display: block;
         }
