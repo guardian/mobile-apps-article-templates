@@ -1,18 +1,11 @@
-$p-kicker: #0084c6;
-$p-feature-headline: #005689;
-$p-soft: #e6f5ff;
-$p-inverted: #00b2ff;
-$p-liveblog-background: #005689;
-$p-media-background: #161616;
-
 .garnett--pillar-sport {
     @include pillar-colour(
-        $p-kicker,
-        $p-feature-headline,
-        $p-soft,
-        $p-inverted,
-        $p-liveblog-background,
-        $p-media-background
+        color(sport-kicker),
+        color(sport-feature-headline),
+        color(sport-soft),
+        color(sport-inverted),
+        color(sport-liveblog-background),
+        color(sport-media-background)
     );
 
     // Common
@@ -24,15 +17,15 @@ $p-media-background: #161616;
     .cricket .tabs [href='#cricket__tabpanel--stats'][aria-selected=true],
     .football .tabs [href='#football__tabpanel--liveblog'][aria-selected=true],
     .football .tabs [href='#football__tabpanel--stats'][aria-selected=true] {
-        color: $p-kicker;
-        border-top-color: $p-kicker;
+        color: color(sport-kicker);
+        border-top-color: color(sport-kicker);
     }
 
     // Cricket
     .cricket .tone--deadBlog,
     .cricket .tone--liveBlog.is-live {
         .cricket-match-comp-info {
-            background-color: $p-kicker;
+            background-color: color(sport-kicker);
         }
 
         .cricket-scorecard-bullets {
@@ -40,7 +33,7 @@ $p-media-background: #161616;
                 background-color: color(tone-sandy-light);
 
                 &.cricket-scorecard-bullets--active {
-                    background-color: $p-kicker;
+                    background-color: color(sport-kicker);
                 }
             }
         }
@@ -51,7 +44,7 @@ $p-media-background: #161616;
 
         .byline,
         .byline__author a {
-            color: $p-kicker;
+            color: color(sport-kicker);
         }
 
         a.alerts {
@@ -67,14 +60,14 @@ $p-media-background: #161616;
 
     .cricket .tone--liveBlog.is-live {
         a.alerts {
-            border-color: $p-kicker;
+            border-color: color(sport-kicker);
             background-color: transparent;
-            color: $p-kicker;
+            color: color(sport-kicker);
         }
 
         a.alerts:active,
         a.alerts.following {
-            background-color: $p-kicker;
+            background-color: color(sport-kicker);
             color: color(brightness-100);
             border-color: transparent;
         }
@@ -82,6 +75,6 @@ $p-media-background: #161616;
 
     .cricket-match-comp-info {
         color: color(brightness-100);
-        background-color: $p-kicker;
+        background-color: color(sport-kicker);
     }
 }

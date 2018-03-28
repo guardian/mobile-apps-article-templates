@@ -1,18 +1,11 @@
-$p-kicker: #e05e00;
-$p-feature-headline: #bd5318;
-$p-soft: #fef9f5;
-$p-inverted: #ff7f0f;
-$p-liveblog-background: #bd5318;
-$p-media-background: #161616;
-
 .garnett--pillar-opinion {
     @include pillar-colour(
-        $p-kicker,
-        $p-feature-headline,
-        $p-soft,
-        $p-inverted,
-        $p-liveblog-background,
-        $p-media-background
+        color(opinion-kicker),
+        color(opinion-feature-headline),
+        color(opinion-soft),
+        color(opinion-inverted),
+        color(opinion-liveblog-background),
+        color(opinion-media-background)
     );
 
     // Light background in opinion articles
@@ -22,12 +15,12 @@ $p-media-background: #161616;
         .article__body,
         .article__meta,
         .tags {
-            background-color: $p-soft;
+            background-color: color(opinion-soft);
         }
 
         @include mq($to: col4) {
             .article__header {
-                background-color: $p-soft;
+                background-color: color(opinion-soft);
             }
         }
         @include mq($from: col4) {
@@ -36,11 +29,11 @@ $p-media-background: #161616;
                 .standfirst__inner,
                 .meta,
                 .main-media {
-                    background-color: $p-soft;
+                    background-color: color(opinion-soft);
                 }
             }
             &:not(.garnett--type-comment, .garnett--type-immersive) .article__header .headline {
-                background-color: $p-soft;
+                background-color: color(opinion-soft);
             }
         }
     }
@@ -49,11 +42,11 @@ $p-media-background: #161616;
 // Comment articles in news showuld have opinion colours
 .garnett--type-comment.garnett--pillar-news {
     @include pillar-colour(
-        $p-kicker,
-        $p-feature-headline,
-        $p-soft,
-        $p-inverted,
-        $p-liveblog-background,
-        $p-media-background
+        color(opinion-kicker),
+        color(opinion-feature-headline),
+        color(opinion-soft),
+        color(opinion-inverted),
+        color(opinion-liveblog-background),
+        color(opinion-media-background)
     );
 }
