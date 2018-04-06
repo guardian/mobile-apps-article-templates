@@ -28,7 +28,9 @@
                 <div class="article-kicker show-garnett">
                     <div class='article-kicker__live'>__LIVE_TAG__</div>
                     <div class='article-kicker__section'>__SECTION__</div>
-                    <div class='article-kicker__series'>__SERIES__</div>
+                    <div class='article-kicker__series'>
+                        <span class='article-kicker__highlight'>__SERIES__</span>
+                    </div>
                 </div>
                 <h1 class="headline selectable">__TITLE__</h1>
                 <div class="standfirst selectable">
@@ -160,12 +162,12 @@
                     date = dateArray[3],
                     month = dateArray[4],
                     dateDiv = document.getElementsByClassName("the-minute__date")[0];
-            
+
                 // Format date & append to div
                 date = date % 10 == 1 && date % 100 !== 11 ? date + "st" : (date % 10 == 2 && date % 100 !== 12 ? date + "nd" : (date % 10 == 3 && date % 100 !== 13 ? date + "rd" : date + "th"));
                 dateDiv.innerHTML = dayOfWeek + " " + date + " " + month;
             }
-            
+
             GU.bootstrap.init({
                 asyncStylesFilename: "__ASYNC_STYLES__",
                 sectionTone: "__SECTION_TONE__",

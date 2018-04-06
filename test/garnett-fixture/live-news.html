@@ -33,7 +33,9 @@
                 <div class="article-kicker show-garnett">
                     <div class='article-kicker__live'><span class="section__live"><span class="section__live__pulse" aria-hidden="true">&#8226;</span> Live</span></div>
                     <div class='article-kicker__section'>business</div>
-                    <div class='article-kicker__series'><a href="x-gu://list/mobile.guardianapis.com/lists/tag/business/series/guardian-business-live">Business live</a></div>
+                    <div class='article-kicker__series'>
+                        <span class='article-kicker__highlight'><a href="x-gu://list/mobile.guardianapis.com/lists/tag/business/series/guardian-business-live">Business live</a></span>
+                    </div>
                 </div>
                 <h1 class="headline selectable">Bitcoin heads towards $15,000 as RBS chair calls for 'Dante's Inferno' warning – business live</h1>
                 <div class="standfirst selectable">
@@ -464,7 +466,7 @@
                     Related Stories
                 </h2>
                 <div class="loading loading--related" data-icon="&#xe00C;">
-                    
+
                 </div>
                 <div class="block block--failed" id="related-module-failed-block">
                     <div class="block__body">
@@ -499,7 +501,7 @@
                         </p>
                     </div>
                     <div class="comments__block comments__block--loading loading" data-icon="&#xe00C;">
-                        
+
                     </div>
                 </div>
                 <div class="comments__footer">
@@ -518,12 +520,12 @@
                     date = dateArray[3],
                     month = dateArray[4],
                     dateDiv = document.getElementsByClassName("the-minute__date")[0];
-            
+
                 // Format date & append to div
                 date = date % 10 == 1 && date % 100 !== 11 ? date + "st" : (date % 10 == 2 && date % 100 !== 12 ? date + "nd" : (date % 10 == 3 && date % 100 !== 13 ? date + "rd" : date + "th"));
                 dateDiv.innerHTML = dayOfWeek + " " + date + " " + month;
             }
-            
+
             GU.bootstrap.init({
                 asyncStylesFilename: "garnett-style-async",
                 sectionTone: "liveBlog",

@@ -1,6 +1,6 @@
 .tone--special {
     .article__body {
-        background-color: color(shade-7);
+        background-color: color(brightness-100);
     }
 
     .article__header {
@@ -9,90 +9,90 @@
         .standfirst,
         .standfirst__inner, 
         .headline {
-            background-color: color(tone-special);
+            background-color: color(tone-special-dark);
         }
 
         @include mq($from: col4) {
             .main-media {
-                background-color: color(tone-special);
+                background-color: color(tone-special-dark);
             }
 
             .standfirst {
-                background-color: color(shade-5);
+                background-color: color(brightness-93);
             }
         }
         
         .section > div {
-            color: color(tone-special-accent); // Content Label Section
+            color: color(tone-highlight); // Content Label Section
         }
         
         .section__container,
         .content__series-label,
         .content__series-label a {
-            color: color(shade-7);  // Content Label Series
+            color: color(brightness-100);  // Content Label Series
         }
 
         .comment-count a {
-            color: color(tone-special-accent);
+            color: color(tone-highlight);
         }
 
         .headline {
-            color: color(shade-7);
+            color: color(brightness-100);
         }
 
         .standfirst {
-            color: color(shade-7);
+            color: color(brightness-100);
         }
 
         .selectable a {
-            color: color(shade-7) !important;
+            color: color(brightness-100) !important;
         }
 
         .meta {
-            background-color: color(tone-special-meta-background);
+            background-color: color(tone-special-light);
             border-bottom: 0;
 
             .meta__byline .byline,
             .meta__byline a, 
             .comment-count,
             .comment-count a {
-                color: color(tone-special-accent);
+                color: color(tone-highlight);
             }
 
             .meta__pubdate {
-                color: color(shade-7);
+                color: color(brightness-100);
             }
         }
 
         .main-media__caption {
-            color: color(shade-7);
-            background-color: color(tone-special-meta-background);
-            border-bottom: 1px rgba(color(shade-4), .4) dotted;
+            color: color(brightness-100);
+            background-color: color(tone-special-light);
+            border-bottom: 1px rgba(color(tone-sandy-light), .4) dotted;
 
             @include mq($from: col4) {
-                background-color: color(tone-special);
+                background-color: color(tone-special-dark);
 
                 &__icon,
                 &__text {
-                    color: color(shade-7);
+                    color: color(brightness-100);
                 }
             }
         }
         
         .sponsorship {
-            background-color: color(shade-7);
+            background-color: color(brightness-100);
         }
     }
 
     .alerts:active,
     .alerts.following {
-        background-color: color(tone-special-accent);
-        color: color(tone-special);
+        background-color: color(tone-highlight);
+        color: color(tone-special-dark);
     }
     
     .alerts,
     .alerts.following:active {
-        border-color: rgba(color(tone-special-accent), .5);
-        color: color(tone-special-accent);
+        border-color: rgba(color(tone-highlight), .5);
+        color: color(tone-highlight);
     }
 }

@@ -1,15 +1,15 @@
 .tone--podcast {
     .section__container {
         border-bottom: 1px rgba(234, 234, 234, .3) dotted;
-        color: color(shade-5);
-        
+        color: color(brightness-93);
+
         > div {
             color: color(tone-podcast); // Content Label Section
         }
-        
+
         .content__series-label,
         .content__series-label a {
-            color: color(shade-5);  // Content Label Series
+            color: color(brightness-93);  // Content Label Series
         }
     }
 
@@ -36,7 +36,7 @@
     }
 
     .section__container {
-        background-color: color(shade-6);
+        background-color: color(brightness-46);
     }
 
     .article {
@@ -44,22 +44,22 @@
     }
 
     .article__body {
-        background-color: color(shade-7);
+        background-color: color(brightness-100);
     }
 
     .article__header {
-        background-color: color(shade-6);
-        
+        background-color: color(brightness-46);
+
         .section {
             display: block;
         }
 
         .headline {
             margin-top: base-px(.5);
-            color: color(shade-7);
+            color: color(brightness-100);
 
             .headline__accent {
-                color: color(shade-1);
+                color: color(brightness-7);
                 display: block;
             }
         }
@@ -76,7 +76,7 @@
 
         .meta__byline {
             .byline {
-                color: color(shade-7);
+                color: color(brightness-100);
             }
 
             .byline__author a {
@@ -91,7 +91,7 @@
 
     @include mq($from: col4) {
         .cutout {
-            background-color: darken(color(shade-6), 5%);
+            background-color: darken(color(brightness-46), 5%);
 
             .cutout__container {
                 background-color: transparent;
@@ -100,16 +100,16 @@
     }
 
     .standfirst {
-        color: color(shade-1);
+        color: color(brightness-7);
     }
 
     .meta,
     .meta__pubdate {
-        color: rgba(color(shade-7), .8);
+        color: rgba(color(brightness-100), .8);
     }
 
     .meta {
-        border-top: 1px rgba(color(shade-7), .4) dotted;
+        border-top: 1px rgba(color(brightness-100), .4) dotted;
     }
 
     .meta__misc {
@@ -123,8 +123,8 @@
 
     .comment-count {
         color: color(tone-podcast);
-        border-left-color: rgba(color(shade-7), .4);
-        
+        border-left-color: rgba(color(brightness-100), .4);
+
         a {
             color: color(tone-podcast);
         }
@@ -137,12 +137,12 @@
     &.android .article__header .card__title--audio::before {
         margin-top: -3px;
     }
-    
+
     &.is_advertising {
         .alerts,
         .alerts.following:active {
-            border-color: rgba(color(shade-1), .5);
-            color: color(shade-1);
+            border-color: rgba(color(brightness-20), .5);
+            color: color(brightness-7);
         }
     }
 }

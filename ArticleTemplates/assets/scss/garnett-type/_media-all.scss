@@ -1,23 +1,86 @@
 .garnett--type-media {
-    @include mq($from: col4) {
-        .comments,
-        .related-content {
-            background: color(shade-5);
+
+    .article__header,
+    .article__body {
+        background-color: color(tone-media-background);
+    }
+    .article__header {
+        @include mq($from: col4) {
+            background-color: darken(color(tone-media-background), 5%);
         }
     }
 
+    @include mq($from: col4) {
+        .comments,
+        .related-content {
+            background: color(brightness-93);
+        }
+    }
+
+    .keyline {
+        &:before {
+            background-color: color(brightness-46);
+        }
+    };
+
+    .keyline-4 {
+        &:before {
+            background-image: repeating-linear-gradient(color(brightness-46), color(brightness-46) 1px, transparent 1px, transparent 3px);
+        }
+    }
+
+    .section,
+    .article-kicker,
+    .headline,
+    .main-media,
+    .meta,
+    .sponsorship {
+        background-color: color(tone-media-background);
+        color: color(brightness-86);
+    }
+
+    .article--audio,
+    .article--visual {
+        background-color: color(tone-media-background);
+
+        @include mq($from: col4) {
+            background-color: darken(color(tone-media-background), 5%);
+        }
+    }
+
+    .audio-player__container {
+        .audio-player {
+            background-color: transparent;
+        }
+        .audio-player__wrapper {
+            background-color: color(tone-media-background);
+        }
+        @include mq($from: col4) {
+            background-color: darken(color(tone-media-background), 5%);
+        }
+    }
+
+    // hide horizontal white line above video cover image
+    .element__inner {
+        background-color: inherit;
+    }
+
+    .meta__published {
+        color: color(brightness-93);
+    }
+
     .witness .witness__sponsor-logo {
-        fill: color(shade-7);
+        fill: color(brightness-100);
     }
 
     .tags {
         .inline-list__item {
             a {
-                @include tag-button(color(shade-7), color(shade-6), 'lighter');
+                @include tag-button(color(brightness-100), color(brightness-46), 'lighter');
             }
 
             &.more-button a {
-                @include tag-more-button(color(shade-7), color(shade-6), 'lighter');
+                @include tag-more-button(color(brightness-100), color(brightness-46), 'lighter');
             }
         }
     }
@@ -35,32 +98,32 @@
     .article--visual {
         .prose .element-pullquote {
             blockquote {
-                color: color(shade-7);
+                color: color(brightness-100);
 
                 footer,
                 &::after,
                 &::before {
-                    color: color(shade-1);
+                    color: color(brightness-7);
                 }
             }
         }
 
         .audio-player__wrapper {
-            background-color: darken(color(shade-1), 10%);
+            background-color: darken(color(brightness-20), 10%);
         }
 
         .tags {
-            background-color: color(shade-1);
+            background-color: color(brightness-20);
         }
 
         .headline,
         .standfirst,
         .prose {
-            color: color(shade-7);
+            color: color(brightness-100);
         }
 
         .byline {
-            color: color(shade-3);
+            color: color(brightness-60);
         }
 
         .byline:empty {
@@ -97,7 +160,7 @@
         }
 
         .aside {
-            border-color: color(shade-2);
+            border-color: color(brightness-46);
             margin-bottom: 0;
             border-bottom: 0;
         }
@@ -107,7 +170,7 @@
             text-align: right;
 
             .aside-witness__sponsor__graphic__text {
-                fill: color(shade-7);
+                fill: color(brightness-100);
             }
 
             .aside-witness__sponsor__graphic__logo {

@@ -20,8 +20,8 @@
 
 .tags {
     @include meta;
-    background-color: color(shade-7);
-    color: color(shade-3);
+    background-color: color(brightness-100);
+    color: color(brightness-60);
     font-family: $agate-sans;
     width: 100%;
     clear: both;
@@ -54,8 +54,8 @@
 
 .tags__inline-list:not(:empty) {
     display: block;
-    border-bottom: 2px solid color(shade-4);
-    border-top: 1px dotted color(shade-4);
+    border-bottom: 2px solid color(tone-sandy-light);
+    border-top: 1px dotted color(tone-sandy-light);
     padding: base-px(.4, 1, 1.7, .7);
 
     @include mq($from: col4) {
@@ -74,11 +74,11 @@
         margin: 4px;
         text-overflow: ellipsis;
         max-width: 18.75rem;
-        @include tag-button(color(shade-1), color(global-tags));
+        @include tag-button(color(brightness-7), color(global-tags));
     }
 
     &.more-button a {
         background-color: transparent !important;
-        @include tag-more-button(color(shade-1), darken(color(global-tags), 10%));
+        @include tag-more-button(color(brightness-7), darken(color(global-tags), 10%));
     }
 }

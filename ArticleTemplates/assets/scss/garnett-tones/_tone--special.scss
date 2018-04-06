@@ -1,171 +1,49 @@
 .tone--special {
-    .article__body {
-        background-color: color(shade-7);
-    }
+    @include pillar-colour(
+        color(tone-special-dark),
+        color(tone-special-dark),
+        color(tone-special-light),
+        color(tone-special-mid),
+        color(news-liveblog-background)
+    );
 
-    .article__header {
-        .article__header,
-        .section,
-        .article-kicker,
-        .standfirst,
-        .standfirst__inner, 
-        .headline {
-            background-color: color(tone-special);
+    // Light background in opinion articles
+    &:not(.garnett--type-media) {
+
+        .article__header .cutout__container,
+        .article__body,
+        .article__meta,
+        .tags {
+            background-color: color(tone-special-light);
         }
 
+        @include mq($to: col4) {
+            .article__header {
+                background-color: color(tone-special-light);
+            }
+        }
         @include mq($from: col4) {
-            .main-media {
-                background-color: color(tone-special);
-            }
-
-            .standfirst {
-                background-color: color(shade-5);
-            }
-        }
-        
-        .article-kicker a,
-        .article-kicker div {
-            color: color(tone-special-accent); // Content Label Section
-        }
-        
-        .section__container,
-        .content__series-label,
-        .content__series-label a {
-            color: color(shade-7);  // Content Label Series
-        }
-
-        .comment-count a {
-            color: color(tone-special-accent);
-        }
-
-        .headline {
-            color: color(shade-7);
-        }
-
-        .standfirst {
-            color: color(shade-7);
-        }
-
-        .selectable a {
-            color: color(shade-7) !important;
-        }
-
-        .meta {
-            background-color: color(tone-special);
-            border-bottom: 0;
-
-            .meta__byline .byline,
-            .meta__byline a, 
-            .comment-count,
-            .comment-count a {
-                color: color(tone-special-accent);
-            }
-
-            .meta__published__date {
-                color: color(shade-7);
-            }
-        }
-
-        .main-media__caption {
-            color: color(shade-7);
-            background-color: color(tone-special);
-
-            @include mq($from: col4) {
-                background-color: color(tone-special);
-
-                &__icon,
-                &__text {
-                    color: color(shade-7);
+            .article__header {
+                .article-kicker,
+                .standfirst__inner,
+                .meta,
+                .main-media {
+                    background-color: color(tone-special-light);
                 }
             }
-        }
-        
-        .sponsorship {
-            background-color: color(shade-7);
-        }
-    }
-
-    .alerts:active,
-    .alerts.following {
-        background-color: color(tone-special-accent);
-        color: color(tone-special);
-    }
-    
-    .alerts,
-    .alerts.following:active {
-        border-color: rgba(color(tone-special-accent), .5);
-        color: color(tone-special-accent);
-    }
-
-    .element-pullquote blockquote {
-        color: color(tone-special);
-    }
-
-    .avatar {
-        background-color: color(tone-special-accent);
-    }
-
-    .prose .element-pullquote blockquote {
-        &:before,
-        &:after,
-        footer {
-            color: color(tone-special);
-        }
-    }
-
-    .comment-count a {
-        color: color(tone-special);
-    }
-
-
-    // Author names
-    .byline,
-    .byline__author,
-    .byline__author a {
-        color: color(tone-special-accent);
-    }
-
-    .keyline {
-        &:before {
-            opacity: .5;
-        }
-    };
-
-    .keyline-4 {
-        &:before {
-            opacity: .5;
-        }
-    }
-
-    // in-article
-    .prose,
-    .standfirst {
-        // text links
-        p, li {
-            @include text-underline(color(tone-special), color(tone-special-accent));
-        }
-    }
-
-    // Immersive overrides
-    &.garnett--type-immersive {
-        .article__series,
-        .article__series > a,
-        .byline__author > a {
-            color: color(tone-special-accent);
-        }
-
-        .standfirst {
-            // text links
-            p, li {
-                @include text-underline(color(tone-special-accent), lighten(color(tone-special-accent), .2));
+            &:not(.garnett--type-comment, .garnett--type-immersive) .article__header .headline {
+                background-color: color(tone-special-light);
             }
         }
 
-        .section__rule {
-            + p.has__dropcap {
-                @include immersive-dropcap(color(tone-special));
-            }
+        .headline {
+            color: color(tone-special-dark);
+        }
+
+        .article-kicker__highlight {
+            background-color: color(tone-highlight);
+            box-shadow: 0 0 0 2px color(tone-highlight);
+            padding: 0 2px;
         }
     }
-
 }

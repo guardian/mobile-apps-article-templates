@@ -6,11 +6,10 @@
 // $p-soft — no correspondence
 // $p-inverted — mediaMain and elementBackground
 // $p-liveblog-background — liveblogBackground
-// $p-media-background — 'background' override in media cards
 // in addition, MAPI includes pillar-toned liveblogBackground and liveblogMain
 
 
-@mixin pillar-colour($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-liveblog-background, $p-media-background) {
+@mixin pillar-colour($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-liveblog-background) {
     .element-pullquote blockquote {
         color: $p-kicker;
     }
@@ -27,7 +26,15 @@
         }
     }
 
-    .alerts {
+    .alerts:active,
+    .alerts.following {
+        background-color: $p-kicker;
+        color: color(brightness-100);
+        border-color: transparent;
+    }
+
+    .alerts,
+    .alerts.following:active {
         border-color: rgba($p-kicker, .5);
         color: $p-kicker;
     }
@@ -45,44 +52,44 @@
     }
 
     .comments__ordering {
-        color: color(shade-9);
+        color: color(brightness-0);
 
         &:active {
-            color: color(shade-9);
+            color: color(brightness-0);
         }
     }
 
     .comment__report,
     .comments .touchpoint--primary {
         .touchpoint__button {
-            background-color: color(shade-9);
+            background-color: color(brightness-0);
         }
 
         &:active .touchpoint__button {
-            background-color: color(shade-9);
+            background-color: color(brightness-0);
         }
 
         .touchpoint__label {
-            color: color(shade-9);
+            color: color(brightness-0);
         }
 
         &:active .touchpoint__label {
-            color: color(shade-9);
+            color: color(brightness-0);
         }
     }
 
     .comments__viewmore {
         .comments__viewmore--label {
-            color: color(shade-9);
+            color: color(brightness-0);
         }
 
         &:active .comments__viewmore--label {
-            color: color(shade-9);
+            color: color(brightness-0);
         }
     }
 
     // Maybe make this bit less smart and more manual later?
-    @include pillar-reversible($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-liveblog-background);
+    @include pillar-reversible($p-kicker, $p-feature-headline, $p-soft, $p-inverted);
 
     // Feature, Review, Recipe overrides
     &.garnett--type-feature,
@@ -140,81 +147,18 @@
     .element-youtube .element-placeholder__button .touchpoint__button,
     .audio-player__button.touchpoint--primary .touchpoint__button {
         &:before {
-            color: color(shade-7);
+            color: color(brightness-100);
         }
     }
 
     .element-placeholder .element-placeholder__button .touchpoint__label,
     .element-youtube .element-placeholder__button .touchpoint__label {
-        color: color(shade-7);
+        color: color(brightness-100);
     }
 
     // Media overrides
     &.garnett--type-media {
-        .keyline {
-            &:before {
-                background-color: color(shade-2);
-            }
-        };
-
-        .keyline-4 {
-            &:before {
-                background-image: repeating-linear-gradient(color(shade-2), color(shade-2) 1px, transparent 1px, transparent 3px);
-            }
-        }
-
-        .article__header,
-        .article__body {
-            background-color: $p-media-background;
-        }
-        .article__header {
-            @include mq($from: col4) {
-                background-color: darken($p-media-background, 5%);
-            }
-        }
-
-
-        .section,
-        .article-kicker,
-        .headline,
-        .main-media,
-        .meta,
-        .sponsorship {
-            background-color: $p-media-background;
-            color: color(shade-11);
-        }
-
-        .article--audio,
-        .article--visual {
-            background-color: $p-media-background;
-
-            @include mq($from: col4) {
-                background-color: darken($p-media-background, 5%);
-            }
-        }
-
-        .audio-player__container {
-            .audio-player {
-                background-color: transparent;
-            }
-            .audio-player__wrapper {
-                background-color: $p-media-background;
-            }
-            @include mq($from: col4) {
-                background-color: darken($p-media-background, 5%);
-            }
-        }
-
-        // hide horizontal white line above video cover image
-        .element__inner {
-            background-color: inherit;
-        }
-
-        .meta__published {
-            color: color(shade-13);
-        }
-
-        @include pillar-reversible($p-inverted, $p-kicker, $p-feature-headline, $p-soft, $p-media-background);
+        @include pillar-reversible($p-inverted, $p-kicker, $p-feature-headline, $p-soft);
     }
 
     // Live overrides
@@ -223,6 +167,10 @@
             &:active {
                 color: $p-kicker;
             }
+        }
+
+        .alerts span[data-icon]:before {
+            color: $p-kicker;
         }
 
         .article__header,
@@ -251,7 +199,7 @@
             &__about-uri,
             &__formatted-sponsor-name,
             &__formatted-sponsor-name a {
-                color: color(shade-7);
+                color: color(brightness-100);
             }
         }
 
@@ -259,7 +207,7 @@
             color: $p-soft;
 
             a {
-                color: color(shade-7);
+                color: color(brightness-100);
             }
         }
 
@@ -287,7 +235,7 @@
                 background-color: $p-liveblog-background;
             }
             .meta__published__comments {
-                border-left-color: rgba(color(shade-4), .5);
+                border-left-color: rgba(color(tone-sandy-light), .5);
             }
         }
 
@@ -325,7 +273,7 @@
 // CSS for reversible pillar colours, this means we can
 // use $kicker colours to mean $p-kicker or $p-inverted
 // depending on context
-@mixin pillar-reversible($kicker, $feature, $soft, $inverted, $background) {
+@mixin pillar-reversible($kicker, $feature, $soft, $inverted) {
 
     &:not(.garnett--type-live) {
         // Section and series labels above headline

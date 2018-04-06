@@ -180,7 +180,7 @@
     hr {
         border: 0;
         height: 1px;
-        background: color(shade-4);
+        background: color(tone-sandy-light);
     }
 
     p {
@@ -189,7 +189,7 @@
 
     p,
     li {
-        @include text-underline(color(tone-news), color(shade-7), color(tone-news-accent));
+        @include text-underline(color(tone-news), color(brightness-100), color(tone-news-accent));
     }
 
     ul,
@@ -227,12 +227,12 @@
     }
 
     blockquote {
-        color: color(shade-2);
+        color: color(brightness-46);
         font-style: italic;
         margin: base-px(2);
 
         &::before {
-            color: color(shade-3);
+            color: color(brightness-60);
             @extend %quoteIconSharedStyles
         }
 
@@ -261,7 +261,7 @@
             }
 
             p {
-                color: color(shade-2);
+                color: color(brightness-46);
                 font-size: $meta-size-2;
                 line-height: $meta-lead-2;
                 margin: base-px(.5, 0);
@@ -355,7 +355,7 @@
     }
 
     td {
-        border-top: 1px solid color(shade-5);
+        border-top: 1px solid color(brightness-93);
         padding: base-px(.25, 1, 1, 0);
     }
 }
