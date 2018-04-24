@@ -61,7 +61,12 @@
         }
     }
 
-    .tags__list-item a {
-       @include tag-button(color(brightness-7), color(brightness-86));
-   }
+    .tags__list-item {
+        a {
+            @include tag-button(color(brightness-7), color(brightness-86));
+        }
+        &.more-button a {
+            @include tag-more-button(color(brightness-7), darken(color(brightness-86), 10%));
+        }
+    }
 }
