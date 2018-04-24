@@ -36,6 +36,12 @@
     </div>
 
     <script type="text/javascript">
+    (function () {
+        var atoms = {};
+        function readAtoms() {
+            __ATOMS_JS__
+        }
+        readAtoms.call(atoms);
         GU.bootstrap.init({             
             asyncStylesFilename: "__ASYNC_STYLES__",
             sectionTone: "__SECTION_TONE__",
@@ -56,8 +62,10 @@
             tests: '__TEST_SPEC__',
             nativeYoutubeEnabled: "__NATIVE_YOUTUBE_ENABLED__" === "true",
             disableEnhancedTweets: "__DISABLE_ENHANCED_TWEETS__" === "true",
+            atoms: atoms,
             hasEpic: "__HAS_EPIC__" === "true"
         });
+    }());
     </script>
 </body>
 </html>
