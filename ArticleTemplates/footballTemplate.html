@@ -6,6 +6,9 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
     <link rel="stylesheet" type="text/css" media="all" id="fontStyles" href="__TEMPLATES_DIRECTORY__assets/css/fonts-__PLATFORM__.css" />
     <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/__SYNC_STYLES__.css" />
+    <style>/* <-- */
+        __ATOMS_CSS__
+    /* --> */</style>
     <script type="text/javascript">
         window.GU = window.GU || {};
     </script>
@@ -33,6 +36,12 @@
     </div>
 
     <script type="text/javascript">
+    (function () {
+        var atoms = {};
+        function readAtoms() {
+            __ATOMS_JS__
+        }
+        readAtoms.call(atoms);
         GU.bootstrap.init({             
             asyncStylesFilename: "__ASYNC_STYLES__",
             sectionTone: "__SECTION_TONE__",
@@ -53,8 +62,10 @@
             tests: '__TEST_SPEC__',
             nativeYoutubeEnabled: "__NATIVE_YOUTUBE_ENABLED__" === "true",
             disableEnhancedTweets: "__DISABLE_ENHANCED_TWEETS__" === "true",
+            atoms: atoms,
             hasEpic: "__HAS_EPIC__" === "true"
         });
+    }());
     </script>
 </body>
 </html>
