@@ -1,5 +1,5 @@
 (function () {
-    
+
     'use strict';
 
     require.config({
@@ -10,7 +10,8 @@
             flipSnap: 'components/flipsnap',
             fastClick: '../../../node_modules/fastclick/lib/fastclick',
             fence: '../../../node_modules/fence/fence',
-            smoothScroll: '../../../node_modules/smooth-scroll/dist/js/smooth-scroll'
+            smoothScroll: '../../../node_modules/smooth-scroll/dist/js/smooth-scroll',
+            hammer: '../../../node_modules/hammerjs/hammer.min'
         },
         shim: {
             d3: {
