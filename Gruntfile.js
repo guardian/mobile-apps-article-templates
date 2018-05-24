@@ -202,7 +202,8 @@ module.exports = function(grunt) {
             },
             js: {
                 files: ['ArticleTemplates/assets/js/**/*.js'],
-                tasks: ['validateJS', 'testJS', 'buildJS']
+                // tasks: ['validateJS', 'testJS', 'buildJS']
+                tasks: ['validateJS', 'buildJS']
             },
             scss: {
                 files: ['ArticleTemplates/assets/scss/**/*.scss'],
