@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Gallery</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" type="text/css" media="all" id="fontStyles" href="__TEMPLATES_DIRECTORY__assets/css/fonts-__PLATFORM__.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/__SYNC_STYLES__.css" />
+        <script type="text/javascript">
+            window.GU = window.GU || {};
+        </script>
+        <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/polyfills/promise.js"></script>
+        <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/polyfills/requestAnimationFrame.js"></script>
+        <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/bootstrap.js"></script>
+    </head>
+    <body class="garnett--type-__GARNETT_TYPE__ garnett--pillar-__GARNETT_PILLAR__ tone--__SECTION_TONE__ __FONT_SIZE__ __PLATFORM__ __IS_OFFLINE__ advert-config--__ADS_CONFIG__ __IS_ADVERTISING__ __DISPLAY_HINT__" data-content-type="gallery" data-ads-enabled="__ADS_ENABLED__" data-ads-enable-hiding="__ADS_ENABLE_HIDING__" data-ads-config="__ADS_CONFIG__" style="margin-top: __ACTIONBARHEIGHT__px;" data-font-size="__FONT_SIZE_INT__" data-template-directory="__TEMPLATES_DIRECTORY__"  data-page-id="__PAGE_ID__" data-mpu-after-paragraphs="__MPU_AFTER_PARAGRAPHS__" data-use-ads-ready="__ADS_FAST_CALLBACK__">
+        <div class="article article--visual">
+            <div class="article__header">
+
+                <div class='article__header-info'>
+
+                    <!-- TO-DO: add something like this -->
+                    <!-- <div class="article__header-bg" data-full-screen="true" style="background-image:url('https://i.guim.co.uk/img/media/cf6ea112d4ba46fa83d4409ba1ecf9742049e6d1/616_476_1744_1046/master/1744.jpg?w=1500&q=55&auto=format&usm=12&fit=max&s=6e84c26a11374aed1f8ce42f0c9afe07'); height: calc(100vh - - __BODY_OFFSET_TOP__px 80px);"></div> -->
+
+                    <div class="article-kicker show-garnett">
+                        <div class='article-kicker__section'>__SECTION__</div>
+                        <div class='article-kicker__series'>
+                            <span class='article-kicker__highlight'>__SERIES__</span>
+                        </div>
+                    </div>
+                    <h1 class="headline selectable" id="headline">__TITLE__</h1>
+                    <div class="standfirst selectable">
+                        <div class="standfirst__inner" id="standfirst">
+                            __STANDFIRST__
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery" id="gallery-block">
+                    __GALLERY__
+                </div>
+
+                <div class="meta">
+                    <div class="meta__misc keyline-4">
+                        <div class="meta__published__comments">__COMMENT_CTA__</div>
+                        <div class="meta__byline">
+                            __BYLINE__
+                        </div>
+                        <p class="meta__pubdate hide-garnett"><span class="screen-readable">Published: </span><span id="published-date">__PUBDATE__</span></p>
+                        __SPONSORSHIP__
+                        <div class='meta__published show-garnett'>
+                            <div class="meta__published__date show-garnett"><span class="screen-readable" id="pubdate">Published: </span><span id="published-date">__PUBDATE__</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            __ASIDE_WITNESS__
+            <div class="tags" id="tags">
+                <span class="screen-readable">Tags:</span>
+                <ul class="inline-list tags__inline-list" id="tag-list"></ul>
+            </div>
+        </div>
+        </div>
+        __RELATED_MODULE__
+        __COMMENTS_MODULE__
+        <script type="text/javascript">
+            GU.bootstrap.init({
+                asyncStylesFilename: "__ASYNC_STYLES__",
+                sectionTone: "__SECTION_TONE__",
+                isAdvertising: "__IS_ADVERTISING__" ? true : false,
+                fontSize: "__FONT_SIZE__",
+                platform: "__PLATFORM__",
+                isOffline: "__IS_OFFLINE__" ? true : false,
+                contentType: "gallery",
+                adsEnabled: "__ADS_ENABLED__",
+                adsEnableHiding: "__ADS_ENABLE_HIDING__" === "true",
+                adsConfig: "__ADS_CONFIG__",
+                actionBarHeight: "__ACTIONBARHEIGHT__",
+                fontSize: "__FONT_SIZE_INT__",
+                templatesDirectory: "__TEMPLATES_DIRECTORY__",
+                pageId: "__PAGE_ID__",
+                mpuAfterParagraphs: "__MPU_AFTER_PARAGRAPHS__",
+                useAdsReady: "__ADS_FAST_CALLBACK__" === "true",
+                section: "__SECTION__",
+                tests: '__TEST_SPEC__',
+                nativeYoutubeEnabled: "__NATIVE_YOUTUBE_ENABLED__" === "true",
+                disableEnhancedTweets: "__DISABLE_ENHANCED_TWEETS__" === "true",
+                hasEpic: "__HAS_EPIC__" === "true"
+            });
+        </script>
+    </body>
+</html>
