@@ -6,9 +6,9 @@ contains documentation that describes the components and layouts used across the
 
 ## Requirements
 * A Mac or Linux computer.
-* [brew](http://brew.sh/) as a package manager.
+* [brew](https://brew.sh/) as a package manager.
 * [NVM](https://github.com/creationix/nvm).
-* [NodeJS](http://nodejs.org/). Install using nvm: `nvm install v6.9.2`. Remember to add `nvm use v6.9.2` to your 
+* [NodeJS](https://nodejs.org/). Install using nvm: `nvm install v6.9.2`. Remember to add `nvm use v6.9.2` to your 
 preferred shell startup file.
 * [Yarn](https://yarnpkg.com). Yarn is a package manager. Install using `brew install yarn`.
 * It is recommended you restart your shell to ensure changes added the startup file are applied.
@@ -46,7 +46,7 @@ Next time you build the app it will use the currently checked-out branch of `mob
 ## Yarn scripts
 Yarn will provide the following services:
 
-* `yarn test` runs the JS unit tests from the test/spec/unit/ directory
+* `yarn test` runs the JS unit tests from the `test/spec/unit/` directory
 * `yarn validate` runs `sasslint` checks on SCSS and `jshint` checks on JS
 * `yarn build` builds JS/CSS assets, used on CI environment for building assets
 * `yarn develop` builds JS and CSS (with source maps) assets and watches for changes to JS/CSS. On change, it rebuilds
