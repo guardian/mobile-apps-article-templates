@@ -10,74 +10,47 @@ function (
         var myElement = document.querySelector('.touch-gallery__images');
 
         var mc = new Hammer.Manager(myElement);
-
-        var pan = new Hammer.Pan();
         var pinch = new Hammer.Pinch();
-        var rotate = new Hammer.Rotate();
-
-        pinch.recognizeWith(rotate);
-        mc.add([pan, pinch, rotate]);
+        mc.add(pinch);
 
 
-        // // TODO:
-        // max left / right panning (bounce back?)
-        // bounceToInitialPosition on scroll
-        // make bounceToInitialPosition bounce instead of snapping
+        mc.on('pinch', function(ev) {
+            var desiredScale = ev.scale;
+            var pinchCentre = getPinchCentre(myElement);
 
-        // save pinch ending-scale
-        mc.on('rotateend', function(ev) {
-            var p = calcPinch(myElement, ev);
+            console.log(pinchCentre.x+'% '+pinchCentre.y+'%');
 
-            if (p.scale < 1) {
-                bounceToInitialPosition(myElement);
-            } else {
-                myElement.dataset.baseScale = p.scale;
-                myElement.dataset.baseRotation = p.rotation;
-            }
-
+            myElement.style.transformOrigin = pinchCentre.x+'% '+pinchCentre.y+'%';
+            myElement.style.transform = 'scale('+desiredScale+')';
         });
 
-        mc.on('rotate', function(ev) {
-            var p = calcPinch(myElement, ev);
-            myElement.style.transform = 'scale('+p.scale+') rotate('+p.rotation+'deg)';
+        mc.on('pinchstart', function(ev) {
+            saveTouchCentre(myElement, ev);
         });
 
-        mc.on('pan', function(ev) {
-            var p = calcPan(myElement, ev);
-            myElement.style.left = p.panX + 'px';
-            myElement.style.top = p.panY + 'px';
+        mc.on('pinchend', function() {
+            bounceToInitialPosition(myElement);
         });
 
-        mc.on('panend', function(ev) {
-            var p = calcPan(myElement, ev);
-            myElement.dataset.basePanX = p.panX;
-            myElement.dataset.basePanY = p.panY;
-        });
-
-        function calcPan(el, ev) {
-            var basePanX = el.dataset.basePanX;
-            basePanX = basePanX!==undefined ? parseFloat(basePanX) : 0;
-
-            var basePanY = el.dataset.basePanY;
-            basePanY = basePanY!==undefined ? parseFloat(basePanY) : 0;
-
-            var desiredPanX = basePanX+ev.deltaX;
-            var desiredPanY = basePanY+ev.deltaY;
-
-            return {panX: desiredPanX, panY: desiredPanY};
+        function getPinchCentre(el) {
+            var pinchX = el.dataset.pinchCentreX;
+            var pinchY = el.dataset.pinchCentreY;
+            return {x: pinchX, y: pinchY};
         }
+        function saveTouchCentre(el, ev) {
 
-        function calcPinch(el, ev) {
-            var baseScale = el.dataset.baseScale;
-            baseScale = baseScale!==undefined ? parseFloat(baseScale) : 1;
+            var elXStart = myElement.getBoundingClientRect().x;
+            var elXEnd = myElement.getBoundingClientRect().width;
+            var pinchX = ev.center.x;
+            var pinchXRelative = Math.round((pinchX-elXStart)/(elXEnd)*100);
 
-            var baseRotation = el.dataset.baseRotation;
-            baseRotation = baseRotation!==undefined ? parseFloat(baseRotation) : 0;
+            var elYStart = myElement.getBoundingClientRect().y;
+            var elYEnd = myElement.getBoundingClientRect().height;
+            var pinchY = ev.center.y;
+            var pinchYRelative = Math.round((pinchY-elYStart)/(elYEnd)*100);
 
-            var desiredScale = baseScale*ev.scale;
-            var desiredRotation = baseRotation+ev.rotation;
-
-            return {scale: desiredScale, rotation: desiredRotation};
+            el.dataset.pinchCentreX = pinchXRelative;
+            el.dataset.pinchCentreY = pinchYRelative;
         }
 
         function bounceToInitialPosition(el) {
