@@ -25,7 +25,7 @@ function (
         });
 
         mc.on('pinchstart', function(ev) {
-            saveTouchCentre(myElement, ev);
+            savePinchCentre(myElement, ev);
         });
 
         mc.on('pinchend', function() {
@@ -37,20 +37,29 @@ function (
             var pinchY = el.dataset.pinchCentreY;
             return {x: pinchX, y: pinchY};
         }
-        function saveTouchCentre(el, ev) {
 
-            var elXStart = myElement.getBoundingClientRect().x;
-            var elXEnd = myElement.getBoundingClientRect().width;
-            var pinchX = ev.center.x;
-            var pinchXRelative = Math.round((pinchX-elXStart)/(elXEnd)*100);
+        function calcPinchCentre(elBounds, pinchCentre, axis, dimension) {
+            var elStart = elBounds[axis];
+            var elEnd = elBounds[dimension];
+            var pinch = pinchCentre[axis];
 
-            var elYStart = myElement.getBoundingClientRect().y;
-            var elYEnd = myElement.getBoundingClientRect().height;
-            var pinchY = ev.center.y;
-            var pinchYRelative = Math.round((pinchY-elYStart)/(elYEnd)*100);
+            var pinchRel = (pinch-elStart)/(elEnd);
+            if (pinchRel > 0.80) {
+                return 100
+            } else if (pinchRel < 0.20) {
+                return 0
+            } else {
+                return Math.round(pinchRel*100);
+            }
+        }
 
-            el.dataset.pinchCentreX = pinchXRelative;
-            el.dataset.pinchCentreY = pinchYRelative;
+        function savePinchCentre(el, ev) {
+            var elBounds = el.getBoundingClientRect();
+            var pinchCentreX = calcPinchCentre(elBounds, ev.center, 'x', 'width');
+            var pinchCentreY = calcPinchCentre(elBounds, ev.center, 'y', 'height');
+
+            el.dataset.pinchCentreX = pinchCentreX;
+            el.dataset.pinchCentreY = pinchCentreY;
         }
 
         function bounceToInitialPosition(el) {
