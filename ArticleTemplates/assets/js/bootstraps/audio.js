@@ -14,7 +14,7 @@ define([
 
     function getColor() {
         var isAudio = !document.body.classList.contains('tone--podcast') && document.body.classList.contains('article--audio');
-        
+
         return GU.opts.isAdvertising ? 'rgba(105, 209, 202, 0.15)' : (isAudio ? 'rgba(255, 187, 0, 0.05)' : 'rgba(167, 216, 242, 0.10)');
     }
 
@@ -56,7 +56,7 @@ define([
 
     function changeSlider(duration, percentage) {
         var audioPlayerSliderPlayed = document.getElementsByClassName('audio-player__slider__played')[0],
-            audioPlayerSliderRemaining = document.getElementsByClassName('audio-player__slider__remaining')[0];            
+            audioPlayerSliderRemaining = document.getElementsByClassName('audio-player__slider__remaining')[0];
 
         audioCurrent = percentage;
 
@@ -94,8 +94,8 @@ define([
                 window.GuardianJSInterface.registerRelatedCardsTouch(true);
             }
 
-            this.addEvents("move");
-            this.addEvents("end");
+            this.addEvents('move');
+            this.addEvents('end');
             this.handle(event);
         };
 
