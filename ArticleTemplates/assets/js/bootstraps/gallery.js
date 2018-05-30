@@ -7,7 +7,7 @@ function (
     'use strict';
 
     function init() {
-        var myElement = document.querySelector('.hammer-test__inner');
+        var myElement = document.querySelector('.touch-gallery__images');
 
         var mc = new Hammer.Manager(myElement);
 
