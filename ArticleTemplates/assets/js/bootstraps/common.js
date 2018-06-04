@@ -6,7 +6,8 @@ define([
     'modules/more-tags',
     'modules/sharing',
     'modules/experiments/ab',
-    'modules/util'
+    'modules/util',
+    'modules/cards'
 ], function(
     fence,
     fastClick,
@@ -15,7 +16,8 @@ define([
     moreTags,
     sharing,
     ab,
-    util
+    util,
+    cards
 ) {
     'use strict';
 
@@ -29,6 +31,7 @@ define([
         insertTags();
         videoPositioning();
         comments.init(); // load comments
+        cards.init();
         loadEmbeds();
         loadInteractives(); 
         setupOfflineSwitch();

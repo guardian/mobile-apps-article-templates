@@ -32,7 +32,8 @@
             'initMpuPoller',
             'videoPositioning',
             'getArticleHeight',
-            'injectInlineArticleMembershipCreative'
+            'injectInlineArticleMembershipCreative',
+            'getRelatedContentPosition'
         ],
         loadCss = function() {
             var url = 'assets/css/' + opts.asyncStylesFilename + '.css',
