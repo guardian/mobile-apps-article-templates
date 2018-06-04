@@ -3,7 +3,6 @@ define([
     'fastClick',
     'smoothScroll',
     'modules/comments',
-    'modules/cards',
     'modules/more-tags',
     'modules/sharing',
     'modules/experiments/ab',
@@ -13,7 +12,6 @@ define([
     fastClick,
     smoothScroll,
     comments,
-    cards,
     moreTags,
     sharing,
     ab,
@@ -31,7 +29,6 @@ define([
         insertTags();
         videoPositioning();
         comments.init(); // load comments
-        cards.init(); // load cards
         loadEmbeds();
         loadInteractives(); 
         setupOfflineSwitch();
