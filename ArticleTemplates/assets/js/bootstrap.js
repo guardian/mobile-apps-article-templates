@@ -8,8 +8,6 @@
     function init(opts) {
         var nativeFunctionCalls = [
             'articleCommentsInserter',
-            'articleCardsInserter',
-            'articleCardsFailed',
             'articleTagInserter',
             'articleOutbrainInserter',
             'audioBackground',
