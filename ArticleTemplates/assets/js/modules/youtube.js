@@ -179,7 +179,8 @@ define([
                 players[video.id] = {
                     player: setupPlayer(video.id),
                     iframe: video,
-                    pendingTrackingCalls: [25, 50, 75]
+                    pendingTrackingCalls: [25, 50, 75],
+                    currentState: 'PAUSED'
                 };
 
                 if (hasPlaceholderImgSrc(placeholder)) {
@@ -256,18 +257,20 @@ define([
         stopPlayers(id);
         setProgressTracker(id);
 
-        if (currentTime === 0) {
+        if (players[id].currentState !== 'PLAYING') {
             if (players[id].placeholder) {
                 placeholderParent = players[id].placeholder.parentNode;
                 placeholderParent.classList.add('show-video');
                 setTimeout(hidePlaceholder.bind(null, placeholderParent), 300);
             }
-
+    
             trackEvent({
                 id: id,
                 eventType: 'video:content:start'
             });
         }
+
+        players[id].currentState = 'PLAYING';
     }
 
     function onPlayerEnded(id) {
@@ -287,6 +290,7 @@ define([
         });
 
         players[id].pendingTrackingCalls = [25, 50, 75];
+        players[id].currentState = 'ENDED';
     }
 
     function showPlaceholder(placeholderParent) {
@@ -295,6 +299,7 @@ define([
 
     function onPlayerPaused(id) {
         killProgressTracker(false, id);
+        players[id].currentState = 'PAUSED';
     }
 
     function stopPlayers(ignoreId) {
