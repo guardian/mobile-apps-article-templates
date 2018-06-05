@@ -17,6 +17,10 @@ define([
         sdkReportInitialised = false,
         sdkPoller;
 
+    var PLAY_STATE = 'PLAYING';
+    var END_STATE = 'ENDED';
+    var PAUSE_STATE = 'PAUSED';
+
     function ready() {
         setStateHandlers();
         checkForVideos();
@@ -30,11 +34,10 @@ define([
             as this is handled by Android
         **/
         if (!GU.opts.nativeYoutubeEnabled) {
-            stateHandlers = {
-                'ENDED': onPlayerEnded,
-                'PLAYING': onPlayerPlaying,
-                'PAUSED': onPlayerPaused
-            };
+            stateHandlers = {}
+            stateHandlers[END_STATE] = onPlayerEnded;
+            stateHandlers[PLAY_STATE] = onPlayerPlaying;
+            stateHandlers[PAUSE_STATE] = onPlayerPaused;
         }
     }
 
@@ -180,7 +183,7 @@ define([
                     player: setupPlayer(video.id),
                     iframe: video,
                     pendingTrackingCalls: [25, 50, 75],
-                    currentState: 'PAUSED'
+                    currentState: PAUSE_STATE
                 };
 
                 if (hasPlaceholderImgSrc(placeholder)) {
@@ -257,7 +260,7 @@ define([
         stopPlayers(id);
         setProgressTracker(id);
 
-        if (players[id].currentState !== 'PLAYING') {
+        if (players[id].currentState !== PLAY_STATE) {
             if (players[id].placeholder) {
                 placeholderParent = players[id].placeholder.parentNode;
                 placeholderParent.classList.add('show-video');
@@ -270,7 +273,7 @@ define([
             });
         }
 
-        players[id].currentState = 'PLAYING';
+        players[id].currentState = PLAY_STATE;
     }
 
     function onPlayerEnded(id) {
@@ -290,7 +293,7 @@ define([
         });
 
         players[id].pendingTrackingCalls = [25, 50, 75];
-        players[id].currentState = 'ENDED';
+        players[id].currentState = END_STATE;
     }
 
     function showPlaceholder(placeholderParent) {
@@ -299,7 +302,7 @@ define([
 
     function onPlayerPaused(id) {
         killProgressTracker(false, id);
-        players[id].currentState = 'PAUSED';
+        players[id].currentState = PAUSE_STATE;
     }
 
     function stopPlayers(ignoreId) {
