@@ -33,7 +33,8 @@
             'videoPositioning',
             'getArticleHeight',
             'injectInlineArticleMembershipCreative',
-            'getRelatedContentPosition'
+            'getRelatedContentPosition',
+            'setRelatedItemsHeight'
         ],
         loadCss = function() {
             var url = 'assets/css/' + opts.asyncStylesFilename + '.css',

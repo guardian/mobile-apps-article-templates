@@ -22,9 +22,15 @@ function (
         }
     }
 
+    function setRelatedItemsHeight(height) {
+        document.querySelector('.related-content').style.height = height + 'px';
+    }
+
     function setupGlobals() {
         window.getRelatedContentPosition = getRelatedContentPosition;
         window.applyNativeFunctionCall("getRelatedContentPosition");
+        window.setRelatedItemsHeight = setRelatedItemsHeight;
+        window.applyNativeFunctionCall("setRelatedItemsHeight");
     }
 
     return {
