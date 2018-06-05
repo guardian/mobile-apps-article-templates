@@ -101,7 +101,7 @@ define([
                 event.initEvent('click', true, true);
                 moreTagsContainer.dispatchEvent(event);
 
-                clock.tick(200)
+                clock.tick(200);
 
                 expect(moreTagsContainer.style.display).to.eql('none');
                 expect(lastInlineListItem.classList.contains('hide-tags')).to.eql(false);

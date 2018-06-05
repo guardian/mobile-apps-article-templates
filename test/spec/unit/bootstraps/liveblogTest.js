@@ -173,7 +173,7 @@ define([
                 event.initEvent('click', true, true);
                 loadMoreElem.dispatchEvent(event);
 
-                clock.tick(1500)
+                clock.tick(1500);
 
                 expect(loadMoreElem.style.display).not.to.eql('block');
                 expect(loadingElem.classList.contains('loading--visible')).to.eql(true);
