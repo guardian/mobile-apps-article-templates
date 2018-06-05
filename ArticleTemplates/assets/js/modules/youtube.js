@@ -34,7 +34,6 @@ define([
             as this is handled by Android
         **/
         if (!GU.opts.nativeYoutubeEnabled) {
-            stateHandlers = {}
             stateHandlers[END_STATE] = onPlayerEnded;
             stateHandlers[PLAY_STATE] = onPlayerPlaying;
             stateHandlers[PAUSE_STATE] = onPlayerPaused;
