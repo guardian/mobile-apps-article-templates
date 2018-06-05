@@ -202,7 +202,7 @@ module.exports = function(grunt) {
             },
             js: {
                 files: ['ArticleTemplates/assets/js/**/*.js'],
-                tasks: ['validateJS', 'testJS', 'buildJS']
+                tasks: ['validateJS', 'buildJS']
             },
             scss: {
                 files: ['ArticleTemplates/assets/scss/**/*.scss'],
@@ -211,16 +211,14 @@ module.exports = function(grunt) {
         },
         // local server
         connect: {
-          server: {
-            options: {
-              // uncomment below to use https server
-              // protocol: 'https',
-              livereload: true,
-              port: 8000,
-              // useAvailablePort: true,
-              base: '.'
+            server: {
+                options: {
+                    livereload: true,
+                    port: 8000,
+                    base: '.',
+                    open: true
+                }
             }
-          }
         }
     });
 
@@ -236,7 +234,4 @@ module.exports = function(grunt) {
     grunt.registerTask('buildCSS', ['sass', 'cssmin']);
 
     grunt.registerTask('default', ['buildJS', 'buildCSS', 'connect', 'watch']);
-
-
-
 };

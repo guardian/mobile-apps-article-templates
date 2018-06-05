@@ -94,8 +94,8 @@ define([
                 window.GuardianJSInterface.registerRelatedCardsTouch(true);
             }
 
-            this.addEvents("move");
-            this.addEvents("end");
+            this.addEvents('move');
+            this.addEvents('end');
             this.handle(event);
         };
 

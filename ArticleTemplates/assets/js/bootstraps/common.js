@@ -24,6 +24,8 @@ define([
     var trackCommentContainerView = true;
         
     function init() {
+        console.log('**');
+
         fastClick.attach(document.body); // polyfill to remove click delays on browsers with touch
         formatImages();
         figcaptionToggle();
