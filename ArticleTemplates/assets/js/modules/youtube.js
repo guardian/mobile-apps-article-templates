@@ -20,6 +20,7 @@ define([
     var PLAY_STATE = 'PLAYING';
     var END_STATE = 'ENDED';
     var PAUSE_STATE = 'PAUSED';
+    var CUED_STATE = 'CUED';
 
     function ready() {
         setStateHandlers();
@@ -182,7 +183,7 @@ define([
                     player: setupPlayer(video.id),
                     iframe: video,
                     pendingTrackingCalls: [25, 50, 75],
-                    currentState: PAUSE_STATE
+                    currentState: CUED_STATE
                 };
 
                 if (hasPlaceholderImgSrc(placeholder)) {
@@ -259,7 +260,7 @@ define([
         stopPlayers(id);
         setProgressTracker(id);
 
-        if (players[id].currentState !== PLAY_STATE) {
+        if (players[id].currentState === CUED_STATE) {
             if (players[id].placeholder) {
                 placeholderParent = players[id].placeholder.parentNode;
                 placeholderParent.classList.add('show-video');
@@ -292,7 +293,7 @@ define([
         });
 
         players[id].pendingTrackingCalls = [25, 50, 75];
-        players[id].currentState = END_STATE;
+        players[id].currentState = CUED_STATE;
     }
 
     function showPlaceholder(placeholderParent) {
