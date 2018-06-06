@@ -12,7 +12,7 @@ define([], function () {
       campaign.onSubmit(function () {
         const data = new FormData(campaign);
         const json = {};
-        for([key, value] of data.entries) {
+        for([key, value] of data.entries()) {
           json[key] = value;
         }
         location.hash = JSON.stringify(json);
