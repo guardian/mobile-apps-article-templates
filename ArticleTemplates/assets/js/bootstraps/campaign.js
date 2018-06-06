@@ -9,7 +9,7 @@ define([], function () {
     }
 
     function initCampaign(campaign) {
-      campaign.onSubmit(() => {
+      campaign.onSubmit(function () {
         const data = new FormData(campaign);
         // TODO form submission URL
         const request = new XMLHttpRequest('POST', '#');
@@ -24,8 +24,8 @@ define([], function () {
     }
 
     function displayError(campaign) {
-      if (! (campaign.firstChild.nodeType == Node.ELEMENT_NODE && campaign.firstChild.className === 'campaign__error') ) {
-        campaign.insertAdjacentHTML('afterbegin', '<p class="campaign__error">Sorry, there was an error submitting your contribution. Please, try again.</p>')
+      if (! (campaign.firstChild.nodeType === Node.ELEMENT_NODE && campaign.firstChild.className === 'campaign__error') ) {
+        campaign.insertAdjacentHTML('afterbegin', '<p class="campaign__error">Sorry, there was an error submitting your contribution. Please, try again.</p>');
       }
     }
 
