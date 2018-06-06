@@ -8,7 +8,6 @@ module.exports = {
       filename: '[name].js',
       chunkFilename: '[name].js',
       path: path.resolve(__dirname, 'ArticleTemplates/assets/build'),
-      publicPath: "../../ArticleTemplates/assets/build/"
     },
     module: {
       rules: [

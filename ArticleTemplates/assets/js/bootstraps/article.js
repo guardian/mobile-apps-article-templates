@@ -1,74 +1,82 @@
-define([
-    'modules/twitter',
-    'modules/witness',
-    'modules/outbrain',
-    'modules/quiz',
-    'modules/creativeInjector',
-    'modules/youtube',
-    'modules/immersive',
-    'modules/messenger',
-    'modules/messenger/resize'
-], function (
-    twitter,
-    witness,
-    outbrain,
-    quiz,
-    creativeInjector,
-    youtube,
-    immersive,
-    messenger,
-    resize
-) {
-    'use strict';
+const init = () => {
+    console.log('article do sutin');
+}
 
-    var initialised;
+export {
+    init,
+};
 
-    function init() {
-        if (!initialised) {
-            setupGlobals();
-            youtube.init();
-            twitter.init();
-            witness.init();
-            quiz.init();
-            if (document.body.classList.contains('display-hint--immersive') || document.body.classList.contains('display-hint--articleImmersive')) {
-                immersive.init();
-            }
-            richLinkTracking();
-            creativeInjector.init();
-            messenger.start([resize]);
-            initialised = true;
-        }
-    }
+// define([
+//     'modules/twitter',
+//     'modules/witness',
+//     'modules/outbrain',
+//     'modules/quiz',
+//     'modules/creativeInjector',
+//     'modules/youtube',
+//     'modules/immersive',
+//     'modules/messenger',
+//     'modules/messenger/resize'
+// ], function (
+//     twitter,
+//     witness,
+//     outbrain,
+//     quiz,
+//     creativeInjector,
+//     youtube,
+//     immersive,
+//     messenger,
+//     resize
+// ) {
+//     'use strict';
 
-    function setupGlobals() {
-        window.articleOutbrainInserter = outbrain.init;
-        window.applyNativeFunctionCall('articleOutbrainInserter');
-    }
+//     var initialised;
 
-    function richLinkTracking() {
-        var i,
-            j,
-            href,
-            link,
-            links,
-            richLink,
-            richLinks = document.getElementsByClassName('element-rich-link');
+//     function init() {
+//         if (!initialised) {
+//             setupGlobals();
+//             youtube.init();
+//             twitter.init();
+//             witness.init();
+//             quiz.init();
+//             if (document.body.classList.contains('display-hint--immersive') || document.body.classList.contains('display-hint--articleImmersive')) {
+//                 immersive.init();
+//             }
+//             richLinkTracking();
+//             creativeInjector.init();
+//             messenger.start([resize]);
+//             initialised = true;
+//         }
+//     }
 
-        for (i = 0; i < richLinks.length; i++) {
-            richLink = richLinks[i];
-            links = richLink.getElementsByTagName('a');
+//     function setupGlobals() {
+//         window.articleOutbrainInserter = outbrain.init;
+//         window.applyNativeFunctionCall('articleOutbrainInserter');
+//     }
 
-            for (j = 0; j < links.length; j++) {
-                link = links[j];
-                href = link.getAttribute('href');
-                if (href !== '') {
-                    link.setAttribute('href', href + '?ArticleReferrer=RichLink');
-                }
-            }
-        }
-    }
+//     function richLinkTracking() {
+//         var i,
+//             j,
+//             href,
+//             link,
+//             links,
+//             richLink,
+//             richLinks = document.getElementsByClassName('element-rich-link');
 
-    return {
-        init: init
-    };
-});
+//         for (i = 0; i < richLinks.length; i++) {
+//             richLink = richLinks[i];
+//             links = richLink.getElementsByTagName('a');
+
+//             for (j = 0; j < links.length; j++) {
+//                 link = links[j];
+//                 href = link.getAttribute('href');
+//                 if (href !== '') {
+//                     link.setAttribute('href', href + '?ArticleReferrer=RichLink');
+//                 }
+//             }
+//         }
+//     }
+
+//     return {
+//         init: init
+//     };
+// });
