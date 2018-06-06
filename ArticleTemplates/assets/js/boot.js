@@ -7,6 +7,8 @@ import ads from './modules/ads';
 const init = opts => {
     window.GU.opts = opts;
 
+    __webpack_public_path__ = `${opts.templatesDirectory}/assets/build/`;
+
     const nativeFunctionCalls = [
         'articleCommentsInserter',
         'articleCardsInserter',
@@ -107,7 +109,7 @@ const init = opts => {
         if (contentType === 'article') {
             import(/* webpackChunkName: "article" */ './article').then(article => {
                 article.init()
-            })
+            });
         } else if (contentType === 'liveblog') {
             // require(['liveblog'], initLayout);
         } else if (contentType === 'audio') {
