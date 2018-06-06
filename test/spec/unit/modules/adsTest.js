@@ -6,7 +6,8 @@ define([
     'use strict';
 
     describe('ArticleTemplates/assets/js/modules/ads', function () {
-        var ads,
+        var clock,
+            ads,
             sandbox,
             container;
 
@@ -14,6 +15,8 @@ define([
 
         beforeEach(function (done) {
             var injector = new Squire();
+
+            clock = sinon.useFakeTimers();
 
             sandbox = sinon.sandbox.create();
 
@@ -68,6 +71,7 @@ define([
             delete window.GuardianJSInterface;
 
             sandbox.restore();
+            clock.restore();
         });
 
         describe('init(config)', function () {
@@ -213,7 +217,7 @@ define([
                     };
                 });
 
-                it('call signalDevice with ad_moved if position has changed', function (done) {
+                it('call signalDevice with ad_moved if position has changed', function () {
                     var advertSlotWrapper;
 
                     ads.init(config);
@@ -222,20 +226,18 @@ define([
 
                     advertSlotWrapper.style.top = '50px';
 
-                    setTimeout(function () {
-                        expect(utilMock.signalDevice).to.have.been.calledOnce;
-                        expect(utilMock.signalDevice).to.have.been.calledWith('ad_moved');
-                        done();
-                    }, 1100);
+                    clock.tick(1100);
+
+                    expect(utilMock.signalDevice).to.have.been.calledOnce;
+                    expect(utilMock.signalDevice).to.have.been.calledWith('ad_moved');
                 });
 
-                it('do not call signalDevice with ad_moved if position has not changed', function (done) {
+                it('do not call signalDevice with ad_moved if position has not changed', function () {
                     ads.init(config);
 
-                    setTimeout(function () {
-                        expect(utilMock.signalDevice).to.not.have.been.called;
-                        done();
-                    }, 1100);
+                    clock.tick(1100);
+
+                    expect(utilMock.signalDevice).to.not.have.been.called;
                 });
             });
         });
@@ -263,13 +265,11 @@ define([
                 };
             });
 
-            it('inserts liveblog ads after 2nd and 7th blocks', function (done) {
+            it('inserts liveblog ads after 2nd and 7th blocks', function () {
                 ads.init(config);
 
                 expect(articleBody.children[2].classList.contains('advert-slot--mpu')).to.eql(true);
                 expect(articleBody.children[8].classList.contains('advert-slot--mpu')).to.eql(true);
-
-                done();
             });
 
             it('if reset true replaces liveblog ads and calls signalDevice with ad_moved', function () {
@@ -333,12 +333,10 @@ define([
 
 
 
-            it('inserts liveblog ad after the 3rd block instead', function (done) {
+            it('inserts liveblog ad after the 3rd block instead', function () {
                 ads.init(config);
 
                 expect(articleBody.children[4].classList.contains('advert-slot--mpu')).to.eql(true);
-
-                done();
             });
         });
 
@@ -361,21 +359,19 @@ define([
                 };
             });
 
-            it('if first run and android updates ad position', function (done) {
+            it('if first run and android updates ad position', function () {
                 GU.opts.platform = 'android';
 
                 ads.init(config);
 
                 window.initMpuPoller();
 
-                setTimeout(function () {
-                    expect(window.GuardianJSInterface.mpuAdsPosition).to.have.been.calledOnce;
+                clock.tick(1100);
 
-                    done();
-                }, 1100);
+                expect(window.GuardianJSInterface.mpuAdsPosition).to.have.been.calledOnce;
             });
 
-            it('if second run, android and position has changed update ad position', function (done) {
+            it('if second run, android and position has changed update ad position', function () {
                 GU.opts.platform = 'android';
 
                 ads.init(config);
@@ -384,25 +380,21 @@ define([
 
                 advertSlotWrapper.style.top = '50px';
 
-                setTimeout(function () {
-                    expect(window.GuardianJSInterface.mpuAdsPosition).to.have.been.calledTwice;
-                    
-                    done();
-                }, 1100);
+                clock.tick(1100);
+
+                expect(window.GuardianJSInterface.mpuAdsPosition).to.have.been.calledTwice;
             });
 
-            it('if second run, android and position has not changed does not update ad position', function (done) {
+            it('if second run, android and position has not changed does not update ad position', function () {
                 GU.opts.platform = 'android';
 
                 ads.init(config);
 
                 window.initMpuPoller();
 
-                setTimeout(function () {
-                    expect(window.GuardianJSInterface.mpuAdsPosition).to.have.been.calledOnce;
-                    
-                    done();
-                }, 1100);
+                clock.tick(1100);
+
+                expect(window.GuardianJSInterface.mpuAdsPosition).to.have.been.calledOnce;
             });
         });
 

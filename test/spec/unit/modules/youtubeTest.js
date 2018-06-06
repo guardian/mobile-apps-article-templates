@@ -10,10 +10,9 @@ define([
      * causing tests to intermittently fail on CircleCI.
      * Skipping for now, but we should revisit.
      */
-    describe.skip('ArticleTemplates/assets/js/modules/youtube', function () {
-        this.timeout(15000);
-
-        var youtube,
+    describe('ArticleTemplates/assets/js/modules/youtube', function () {
+        var clock,
+            youtube,
             scriptAdded,
             sandbox,
             container,
@@ -83,6 +82,8 @@ define([
 
         beforeEach(function (done) {
             var injector = new Squire();
+
+            clock = sinon.useFakeTimers();
 
             sandbox = sinon.sandbox.create();
 
@@ -168,6 +169,7 @@ define([
             delete window.GuardianJSInterface;
 
             sandbox.restore();
+            clock.restore();
         });
 
         it('does not add youtube script if no youtube iframe on page', function () {
@@ -243,7 +245,7 @@ define([
             expect(iframe.parentNode.classList.contains('show-video')).to.eql(true);
         });
 
-        it('plays video on placeholder click and hides placeholder', function (done) {
+        it('plays video on placeholder click and hides placeholder', function () {
             var videoWrapper = getVideoWrapper('video1');
 
             container.appendChild(videoWrapper);
@@ -253,15 +255,13 @@ define([
             window.YT.players[0].onReady('video1');
             startVideoWithTap(videoWrapper, window.YT.players[0]);
 
-            setTimeout(function () {
-                expect(videoWrapper.classList.contains('show-video')).to.eql(true);
-                expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(true);
+            clock.tick(500);
 
-                done();
-            }, 500);
+            expect(videoWrapper.classList.contains('show-video')).to.eql(true);
+            expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(true);
         });
 
-        it('plays native video on touchpoint click if nativeYoutubeEnabled is true', function (done) {
+        it('plays native video on touchpoint click if nativeYoutubeEnabled is true', function () {
             var videoWrapper = getVideoWrapper('video1');
 
             container.appendChild(videoWrapper);
@@ -273,13 +273,11 @@ define([
             window.YT.players[0].onReady('video1');
             startVideoWithTap(videoWrapper, window.YT.players[0], true);
 
-            setTimeout(function () {
-                expect(videoWrapper.classList.contains('show-video')).to.eql(false);
-                expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(false);
-                expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
+            clock.tick(500);
 
-                done();
-            }, 500);
+            expect(videoWrapper.classList.contains('show-video')).to.eql(false);
+            expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(false);
+            expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
         });
 
         it('initialiseVideos if scriptReady when checkForVideos called', function () {
@@ -316,7 +314,7 @@ define([
                 expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
             });
 
-            it('handles onPlayerStateChange when PLAYING from PAUSED position', function (done) {
+            it('handles onPlayerStateChange when PLAYING from PAUSED position', function () {
                 var videoWrapper = getVideoWrapper('video1');
 
                 container.appendChild(videoWrapper);
@@ -327,25 +325,23 @@ define([
                 window.YT.players[0].onReady('video1');
                 setPlayerState('PLAYING', window.YT.players[0]);
 
-                setTimeout(function () {
-                    // Pause Video
-                    setPlayerState('PAUSED', window.YT.players[0]);
+                clock.tick(500);
 
-                    // Restart Video
-                    setPlayerState('PLAYING', window.YT.players[0]);
+                // Pause Video
+                setPlayerState('PAUSED', window.YT.players[0]);
 
-                    expect(Player.prototype.getCurrentTime).to.have.been.called;
-                    expect(utilMock.signalDevice).to.have.been.calledOnce;
-                    expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
+                // Restart Video
+                setPlayerState('PLAYING', window.YT.players[0]);
 
-                    // End video to kill progress tracker
-                    setPlayerState('ENDED', window.YT.players[0]);
+                expect(Player.prototype.getCurrentTime).to.have.been.called;
+                expect(utilMock.signalDevice).to.have.been.calledOnce;
+                expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
 
-                    done();
-                }, 500);
+                // End video to kill progress tracker
+                setPlayerState('ENDED', window.YT.players[0]);
             });
 
-            it('handles onPlayerStateChange and tracks progress', function (done) {
+            it('handles onPlayerStateChange and tracks progress', function () {
                 var videoWrapper = getVideoWrapper('video1');
 
                 container.appendChild(videoWrapper);
@@ -356,19 +352,17 @@ define([
                 window.YT.players[0].onReady('video1');
                 setPlayerState('PLAYING', window.YT.players[0]);
 
-                setTimeout(function () {
-                    expect(utilMock.signalDevice).to.have.been.called;
-                    expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
-                    expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:25'}));
+                clock.tick(8000);
 
-                    // End video to kill progress tracker
-                    setPlayerState('ENDED', window.YT.players[0]);
+                expect(utilMock.signalDevice).to.have.been.called;
+                expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
+                expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:25'}));
 
-                    done();
-                }, 8000);
+                // End video to kill progress tracker
+                setPlayerState('ENDED', window.YT.players[0]);
             });
 
-            it('pauses video when other video begins and track new video', function (done) {
+            it('pauses video when other video begins and track new video', function () {
                 var videoWrapper1 = getVideoWrapper('video1'),
                     videoWrapper2 = getVideoWrapper('video2');
 
@@ -385,22 +379,19 @@ define([
                 window.YT.players[1].onReady('video2');
                 setPlayerState('PLAYING', window.YT.players[1]);
 
-                setTimeout(function () {
-                    // End video to kill progress tracker
-                    setPlayerState('ENDED', window.YT.players[1]);
+                clock.tick(8000);
 
-                    expect(utilMock.signalDevice).to.have.been.called;
-                    expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
-                    expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video2', eventType:'video:content:start'}));
-                    expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video2', eventType:'video:content:25'}));
-                    expect(window.YT.players.length).to.eql(2);
-                    expect(Player.prototype.pauseVideo).to.have.been.calledTwice;
+                setPlayerState('ENDED', window.YT.players[1]);
 
-                    done();
-                }, 8000);
+                expect(utilMock.signalDevice).to.have.been.called;
+                expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
+                expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video2', eventType:'video:content:start'}));
+                expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video2', eventType:'video:content:25'}));
+                expect(window.YT.players.length).to.eql(2);
+                expect(Player.prototype.pauseVideo).to.have.been.calledTwice;
             });
 
-            it('handles onPlayerStateChange when PAUSED', function (done) {
+            it('handles onPlayerStateChange when PAUSED', function () {
                 var videoWrapper = getVideoWrapper('video1');
 
                 container.appendChild(videoWrapper);
@@ -414,18 +405,16 @@ define([
                 // Pause video
                 setPlayerState('PAUSED', window.YT.players[0]);
 
-                setTimeout(function () {
-                    expect(utilMock.signalDevice).to.have.been.calledOnce;
-                    expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
+                clock.tick(8000);
 
-                    // End video to kill progress tracker
-                    setPlayerState('ENDED', window.YT.players[0]);
+                expect(utilMock.signalDevice).to.have.been.calledOnce;
+                expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
 
-                    done();
-                }, 8000);
+                // End video to kill progress tracker
+                setPlayerState('ENDED', window.YT.players[0]);
             });
 
-            it('handles onPlayerStateChange when ENDED', function (done) {
+            it('handles onPlayerStateChange when ENDED', function () {
                 var videoWrapper = getVideoWrapper('video1');
 
                 videoWrapper.classList.add('hide-placeholder');
@@ -437,14 +426,12 @@ define([
 
                 setPlayerState('ENDED', window.YT.players[0]);
 
-                setTimeout(function () {
-                    expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(false);
-                    expect(videoWrapper.classList.contains('show-video')).to.eql(false);
-                    expect(utilMock.signalDevice).to.have.been.calledOnce;
-                    expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:end'}));
+                clock.tick(1500);
 
-                    done();
-                }, 1500);
+                expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(false);
+                expect(videoWrapper.classList.contains('show-video')).to.eql(false);
+                expect(utilMock.signalDevice).to.have.been.calledOnce;
+                expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:end'}));
             });
         });
 
@@ -468,7 +455,7 @@ define([
                 expect(window.GuardianJSInterface.trackAction).not.to.have.been.called;
             });
 
-            it('handles onPlayerStateChange when PLAYING from start', function (done) {
+            it('handles onPlayerStateChange when PLAYING from start', function () {
                 var videoWrapper = getVideoWrapper('video1');
 
                 container.appendChild(videoWrapper);
@@ -482,11 +469,9 @@ define([
                 expect(Player.prototype.getCurrentTime).to.have.been.called;
                 expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
                 expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:start'}));
-
-                done();
             });
 
-            it('handles onPlayerStateChange when PLAYING from PAUSED position', function (done) {
+            it('handles onPlayerStateChange when PLAYING from PAUSED position', function () {
                 var videoWrapper = getVideoWrapper('video1');
 
                 container.appendChild(videoWrapper);
@@ -497,25 +482,22 @@ define([
                 window.YT.players[0].onReady('video1');
                 setPlayerState('PLAYING', window.YT.players[0]);
 
-                setTimeout(function () {
-                    // Pause Video
-                    setPlayerState('PAUSED', window.YT.players[0]);
+                clock.tick(500);
 
-                    // Restart Video
-                    setPlayerState('PLAYING', window.YT.players[0]);
+                setPlayerState('PAUSED', window.YT.players[0]);
 
-                    expect(Player.prototype.getCurrentTime).to.have.been.called;
-                    expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
-                    expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:start'}));
+                // Restart Video
+                setPlayerState('PLAYING', window.YT.players[0]);
 
-                    // End video to kill progress tracker
-                    setPlayerState('ENDED', window.YT.players[0]);
+                expect(Player.prototype.getCurrentTime).to.have.been.called;
+                expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
+                expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:start'}));
 
-                    done();
-                }, 500);
+                // End video to kill progress tracker
+                setPlayerState('ENDED', window.YT.players[0]);
             });
 
-            it('handles onPlayerStateChange and tracks progress', function (done) {
+            it('handles onPlayerStateChange and tracks progress', function () {
                 var videoWrapper = getVideoWrapper('video1');
 
                 container.appendChild(videoWrapper);
@@ -526,19 +508,17 @@ define([
                 window.YT.players[0].onReady('video1');
                 setPlayerState('PLAYING', window.YT.players[0]);
 
-                setTimeout(function () {
-                    expect(window.GuardianJSInterface.trackAction).to.have.been.called;
-                    expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:start'}));
-                    expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:25'}));
+                clock.tick(8000);
 
-                    // End video to kill progress tracker
-                    setPlayerState('ENDED', window.YT.players[0]);
+                expect(window.GuardianJSInterface.trackAction).to.have.been.called;
+                expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:start'}));
+                expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:25'}));
 
-                    done();
-                }, 8000);
+                // End video to kill progress tracker
+                setPlayerState('ENDED', window.YT.players[0]);
             });
 
-            it('pauses video when other video begins and track new video', function (done) {
+            it('pauses video when other video begins and track new video', function () {
                 var videoWrapper1 = getVideoWrapper('video1'),
                     videoWrapper2 = getVideoWrapper('video2');
 
@@ -555,22 +535,20 @@ define([
                 window.YT.players[1].onReady('video2');
                 setPlayerState('PLAYING', window.YT.players[1]);
 
-                setTimeout(function () {
-                    // End video to kill progress tracker
-                    setPlayerState('ENDED', window.YT.players[1]);
+                clock.tick(8000);
 
-                    expect(window.GuardianJSInterface.trackAction).to.have.been.called;
-                    expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:start'}));
-                    expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video2', eventType:'video:content:start'}));
-                    expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video2', eventType:'video:content:25'}));
-                    expect(window.YT.players.length).to.eql(2);
-                    expect(Player.prototype.pauseVideo).to.have.been.calledTwice;
+                // End video to kill progress tracker
+                setPlayerState('ENDED', window.YT.players[1]);
 
-                    done();
-                }, 8000);
+                expect(window.GuardianJSInterface.trackAction).to.have.been.called;
+                expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:start'}));
+                expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video2', eventType:'video:content:start'}));
+                expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video2', eventType:'video:content:25'}));
+                expect(window.YT.players.length).to.eql(2);
+                expect(Player.prototype.pauseVideo).to.have.been.calledTwice;
             });
 
-            it('handles onPlayerStateChange when PAUSED', function (done) {
+            it('handles onPlayerStateChange when PAUSED', function () {
                 var videoWrapper = getVideoWrapper('video1');
 
                 container.appendChild(videoWrapper);
@@ -584,18 +562,16 @@ define([
                 // Pause video
                 setPlayerState('PAUSED', window.YT.players[0]);
 
-                setTimeout(function () {
-                    expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
-                    expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:start'}));
+                clock.tick(8000);
 
-                    // End video to kill progress tracker
-                    setPlayerState('ENDED', window.YT.players[0]);
+                expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
+                expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:start'}));
 
-                    done();
-                }, 8000);
+                // End video to kill progress tracker
+                setPlayerState('ENDED', window.YT.players[0]);
             });
 
-            it('handles onPlayerStateChange when ENDED', function (done) {
+            it('handles onPlayerStateChange when ENDED', function () {
                 var videoWrapper = getVideoWrapper('video1');
 
                 videoWrapper.classList.add('hide-placeholder');
@@ -607,14 +583,12 @@ define([
 
                 setPlayerState('ENDED', window.YT.players[0]);
 
-                setTimeout(function () {
-                    expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(false);
-                    expect(videoWrapper.classList.contains('show-video')).to.eql(false);
-                    expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
-                    expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:end'}));
+                clock.tick(1500);
 
-                    done();
-                }, 1500);
+                expect(videoWrapper.classList.contains('hide-placeholder')).to.eql(false);
+                expect(videoWrapper.classList.contains('show-video')).to.eql(false);
+                expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
+                expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:end'}));
             });
         });
     });
