@@ -1,6 +1,3 @@
-/**
- * polyfill for older devices
-**/
 import 'core-js/fn/promise';
 import 'raf/polyfill';
 import domready from 'domready';
@@ -108,7 +105,7 @@ const init = opts => {
 
         // other article-specific functions
         if (contentType === 'article') {
-            import(/* webpackChunkName: "article" */ "./article").then(article => {
+            import(/* webpackChunkName: "article" */ './article').then(article => {
                 article.init()
             })
         } else if (contentType === 'liveblog') {
