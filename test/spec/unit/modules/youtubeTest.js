@@ -11,8 +11,6 @@ define([
      * Skipping for now, but we should revisit.
      */
     describe('ArticleTemplates/assets/js/modules/youtube', function () {
-        // this.timeout(15000);
-
         var clock,
             youtube,
             scriptAdded,
