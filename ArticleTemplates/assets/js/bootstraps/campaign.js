@@ -11,11 +11,11 @@ define([], function () {
     function initCampaign(campaign) {
       campaign.onSubmit(function () {
         const data = new FormData(campaign);
-        // TODO form submission URL
-        const request = new XMLHttpRequest('POST', '#');
-        request.onload(displayConfirmation.bind(null, campaign));
-        request.onerror(displayError.bind(null, campaign));
-        request.send(data);
+        const json = {};
+        for([key, value] of data.entries) {
+          json[key] = value;
+        }
+        location.hash = JSON.stringify(json);
       });
     }
 
