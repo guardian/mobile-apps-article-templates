@@ -7,7 +7,7 @@ module.exports = {
     entry: {
       boot: './ArticleTemplates/assets/js/boot.js',
       'garnett-style-sync': './ArticleTemplates/assets/scss/garnett-style-sync.scss',
-      'garnett-style-async': './ArticleTemplates/assets/scss/garnett-style-sync.scss',
+      'garnett-style-async': './ArticleTemplates/assets/scss/garnett-style-async.scss',
       'fonts-ios': './ArticleTemplates/assets/scss/fonts-ios.scss',
       // 'fonts-android': './ArticleTemplates/assets/scss/fonts-android.scss',
       'outbrain': './ArticleTemplates/assets/scss/outbrain.scss',
