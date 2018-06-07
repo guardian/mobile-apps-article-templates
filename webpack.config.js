@@ -32,6 +32,10 @@ module.exports = {
           from: './node_modules/curl/dist/curl', 
           to: path.resolve(__dirname, 'ArticleTemplates/assets/build'),
         },
+        { 
+          from: './node_modules/mobile-range-slider/mobile-range-slider.js', 
+          to: path.resolve(__dirname, 'ArticleTemplates/assets/build'),
+        },
       ])
     ],
   };

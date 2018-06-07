@@ -113,7 +113,9 @@ const init = opts => {
         } else if (contentType === 'liveblog') {
             // require(['liveblog'], initLayout);
         } else if (contentType === 'audio') {
-            // require(['audio'], initLayout);
+            import(/* webpackChunkName: "audio" */ './audio').then(audio => {
+                audio.init()
+            });
         } else if (contentType === 'gallery') {
             // require(['gallery'], initLayout);
         } else if (contentType === 'football') {
