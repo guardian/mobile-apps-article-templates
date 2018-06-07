@@ -108,28 +108,34 @@ const init = opts => {
         // other article-specific functions
         if (contentType === 'article') {
             import(/* webpackChunkName: "article" */ './article').then(article => {
-                article.init()
+                article.init();
             });
         } else if (contentType === 'liveblog') {
             import(/* webpackChunkName: "liveblog" */ './liveblog').then(liveblog => {
-                liveblog.init()
+                liveblog.init();
             });
         } else if (contentType === 'audio') {
             import(/* webpackChunkName: "audio" */ './audio').then(audio => {
-                audio.init()
+                audio.init();
             });
         } else if (contentType === 'gallery') {
-            // require(['gallery'], initLayout);
+            import(/* webpackChunkName: "gallery" */ './gallery').then(gallery => {
+                gallery.init();
+            });
         } else if (contentType === 'football') {
-            // require(['football'], initLayout);
+            
         } else if (contentType === 'cricket') {
             import(/* webpackChunkName: "cricket" */ './cricket').then(cricket => {
-                cricket.init()
+                cricket.init();
             });
         } else if (contentType === 'video') {
-            // require(['video'], initLayout);
+            import(/* webpackChunkName: "video" */ './video').then(video => {
+                video.init();
+            });
         } else {
-            // require(['bootstraps/common'], initLayout);
+            import(/* webpackChunkName: "common" */ './bootstraps/common').then(common => {
+                common.init();
+            });
         }
     };
 
