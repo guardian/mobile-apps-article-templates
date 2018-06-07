@@ -1,3 +1,5 @@
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+
 const path = require('path');
 
 module.exports = {
@@ -23,5 +25,13 @@ module.exports = {
         path.resolve(__dirname, './ArticleTemplates/assets/js'),
         "node_modules"
       ]
-    }
+    },
+    plugins: [
+      new CopyWebpackPlugin([
+        { 
+          from: './node_modules/curl/dist/curl', 
+          to: path.resolve(__dirname, 'ArticleTemplates/assets/build'),
+        },
+      ])
+    ],
   };
