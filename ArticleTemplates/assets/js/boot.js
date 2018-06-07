@@ -123,7 +123,9 @@ const init = opts => {
                 gallery.init();
             });
         } else if (contentType === 'football') {
-            
+            import(/* webpackChunkName: "football" */ './football').then(football => {
+                football.init();
+            });
         } else if (contentType === 'cricket') {
             import(/* webpackChunkName: "cricket" */ './cricket').then(cricket => {
                 cricket.init();
