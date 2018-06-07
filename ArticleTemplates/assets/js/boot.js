@@ -111,7 +111,9 @@ const init = opts => {
                 article.init()
             });
         } else if (contentType === 'liveblog') {
-            // require(['liveblog'], initLayout);
+            import(/* webpackChunkName: "liveblog" */ './liveblog').then(liveblog => {
+                liveblog.init()
+            });
         } else if (contentType === 'audio') {
             import(/* webpackChunkName: "audio" */ './audio').then(audio => {
                 audio.init()
@@ -121,7 +123,9 @@ const init = opts => {
         } else if (contentType === 'football') {
             // require(['football'], initLayout);
         } else if (contentType === 'cricket') {
-            // require(['cricket'], initLayout);
+            import(/* webpackChunkName: "cricket" */ './cricket').then(cricket => {
+                cricket.init()
+            });
         } else if (contentType === 'video') {
             // require(['video'], initLayout);
         } else {
