@@ -143,7 +143,6 @@ function removePersonalityQuizAnswers() {
 
 function getQuestionsAndAnswers() {
     let i,
-        key,
         answerMatch,
         question,
         answer,
@@ -168,12 +167,12 @@ function getQuestionsAndAnswers() {
         }
     }
 
-    for (key in answers) {
-        if (answers.hasOwnProperty(key) && answers[key].revealText) {
-            // Remove trailing comma in revealText
+    Object.keys(answers).forEach(key => {
+        // Remove trailing comma in revealText
+        if (answers[key].revealText) {
             answers[key].revealText = answers[key].revealText.replace(/,\s*$/, '');
         }
-    }
+    });
 
     return answers;
 }
@@ -474,22 +473,21 @@ function showScore() {
 }
 
 function showResult() {
-    let key,
-        bucket,
+    let bucket,
         result,
         resultTitle,
         resultDescription;
 
-    for (key in personalityQuizBuckets) {
-        if (personalityQuizBuckets.hasOwnProperty(key)) {
-            bucket = personalityQuizBuckets[key];
-            if (!result || (bucket.count > result.count)) {
-                result = bucket;
-                resultDescription = result.description;
-                resultTitle = result.title;
-            }
+
+    Object.keys(personalityQuizBuckets).forEach(key => {
+        bucket = personalityQuizBuckets[key];
+
+        if (!result || (bucket.count > result.count)) {
+            result = bucket;
+            resultDescription = result.description;
+            resultTitle = result.title;
         }
-    }
+    });
 
     document.getElementsByClassName('quiz-results__description')[0].innerHTML = resultDescription;
     document.getElementsByClassName('quiz-results__title')[0].innerHTML = resultTitle;

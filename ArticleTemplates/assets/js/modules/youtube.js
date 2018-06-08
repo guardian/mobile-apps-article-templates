@@ -75,14 +75,14 @@ function checkForVideos() {
         as it's preceeding sibling then we must report it's position to
         the native layer
     * */
-    sdkPlaceholders = Array.prototype.map.call(iframes, (iframe) => {
+
+    sdkPlaceholders = [...iframes].map(iframe => {
         if (isPreviousElementSDKPlaceholder(iframe)) {
             const previousElementSibling = iframe.previousElementSibling;
-
             iframe.remove();
-
             return previousElementSibling;
         }
+        return false;
     }).filter(Boolean).concat(sdkPlaceholders);
 
     if (videos.length) {
@@ -121,7 +121,7 @@ function buildAndSendSdkReport() {
     const newSdkReport = buildSdkReport();
 
     if (newSdkReport !== sdkReport) {
-        util.signalDevice(`youtubeAtomPosition/${newSdkReport}`);
+        signalDevice(`youtubeAtomPosition/${newSdkReport}`);
         sdkReport = newSdkReport;
     }
 }
@@ -131,7 +131,7 @@ function buildSdkReport() {
 }
 
 function getSdkReportPosProps(sdkPlaceholder) {
-    const posProps = util.getElementOffset(sdkPlaceholder);
+    const posProps = getElementOffset(sdkPlaceholder);
     const atom = sdkPlaceholder.closest('[data-atom-id]');
 
     posProps.id = atom.dataset.atomId;
@@ -250,8 +250,7 @@ function checkState(id, state, stateHandler) {
 }
 
 function onPlayerPlaying(id) {
-    let placeholderParent,
-        currentTime = Math.round(players[id].player.getCurrentTime());
+    let placeholderParent;
 
     stopPlayers(id);
     setProgressTracker(id);
@@ -339,7 +338,7 @@ function trackEvent(evt) {
         window.GuardianJSInterface.trackAction) {
         window.GuardianJSInterface.trackAction('youtube', JSON.stringify(evt));
     } else {
-        util.signalDevice(`youtube/${JSON.stringify(evt)}`);
+        signalDevice(`youtube/${JSON.stringify(evt)}`);
     }
 }
 

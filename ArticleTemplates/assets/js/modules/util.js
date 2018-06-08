@@ -96,15 +96,13 @@ function setLocalStorage(key, value) {
 }
 
 function debounce(func, wait, immediate) {
-    let args;
     let callNow;
     let context;
     let later;
     let timeout;
 
-    return function () {
+    return function (...args) {
         context = this;
-        args = arguments;
 
         later = function () {
             timeout = null;

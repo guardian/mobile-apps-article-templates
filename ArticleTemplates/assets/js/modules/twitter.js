@@ -119,9 +119,7 @@ function workaroundClicks(evt) {
     let i,
         webIntentLinks;
 
-    if (!isAndroid,
-    evt.target.contentWindow &&
-        evt.target.contentWindow.document) {
+    if (!isAndroid && evt.target.contentWindow && evt.target.contentWindow.document) {
         webIntentLinks = evt.target.contentWindow.document.querySelectorAll('a.web-intent');
         for (i = 0; i < webIntentLinks.length; i++) {
             webIntentLinks[i].classList.remove('web-intent');

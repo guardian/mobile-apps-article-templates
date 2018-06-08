@@ -24,7 +24,7 @@ function isValidDate(date) {
     if (Object.prototype.toString.call(date) !== '[object Date]') {
         return false;
     }
-    return !isNaN(date.getTime());
+    return !Number.isNaN(date.getTime());
 }
 
 function makeRelativeDate(epoch) {
