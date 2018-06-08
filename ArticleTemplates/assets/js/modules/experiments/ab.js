@@ -15,11 +15,11 @@ function init() {
     if (GU.opts.tests) {
         testSpec = JSON.parse(GU.opts.tests);
 
-        for (key in testSpec) {
-            if (testSpec.hasOwnProperty(key) && tests[key]) {
+        Object.keys(testSpec).forEach(key => {
+            if (tests[key]) {
                 tests[key](testSpec[key]);
             }
-        }
+        });
     }
 }
 
