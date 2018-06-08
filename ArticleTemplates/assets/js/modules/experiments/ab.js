@@ -9,8 +9,7 @@
 var tests = {};
 
 function init() {
-    var key,
-        testSpec;
+    var testSpec;
 
     if (GU.opts.tests) {
         testSpec = JSON.parse(GU.opts.tests);

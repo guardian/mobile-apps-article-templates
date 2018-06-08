@@ -24,6 +24,7 @@ module.exports = {
         "import/prefer-default-export": 0,
         "arrow-parens": 0,
         "func-names": 0,
+        "vars-on-top": 0,
         // temporary
         "no-param-reassign": 0,
         "no-use-before-define": 0,
@@ -35,7 +36,7 @@ module.exports = {
         "no-mixed-operators": 0,
         "no-nested-ternary": 0,
         "max-len": 0,
-        "no-loop-func": 0
+        "no-loop-func": 0,
     },
     'globals': {
         '__webpack_public_path__': true,
