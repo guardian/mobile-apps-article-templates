@@ -1,11 +1,9 @@
 function init() {
-    var witness = document.getElementsByClassName('witness')[0];
+    const witness = document.getElementsByClassName('witness')[0];
 
     if (witness) {
-        document.getElementsByClassName('article__body')[0].insertAdjacentHTML('afterend', '<div class="extras">' + witness.outerHTML + '</div>');
+        document.getElementsByClassName('article__body')[0].insertAdjacentHTML('afterend', `<div class="extras">${witness.outerHTML}</div>`);
     }
 }
 
-export {
-    init
-};
+export { init };

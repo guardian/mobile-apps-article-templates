@@ -15,19 +15,19 @@ function formatImmersive() {
 
     // find all the section seperators & add classes
     addClassesToSectionSeparators();
-    
+
     // for each element--immersive add extra classes depending on siblings
     addClassesToElementImmersives();
-    
+
     // store all pullquotes top offset for later
     movePullQuotes();
-    
+
     // attach event handlers
     attachImmersiveEventHandlers();
 }
 
 function formatImmersiveForWindows() {
-    var newSrc,
+    let newSrc,
         iframe = document.querySelector('.article__header-bg .element > iframe');
 
     if (iframe) {
@@ -42,7 +42,7 @@ function formatImmersiveForWindows() {
 }
 
 function addClassesToSectionSeparators() {
-    var i,
+    let i,
         header,
         headers = document.querySelectorAll('.article h2');
 
@@ -58,18 +58,18 @@ function addClassesToSectionSeparators() {
 }
 
 function addDropCapToNextElementSibling(element) {
-    var nextParagraphSibling = element.nextElementSibling;
+    const nextParagraphSibling = element.nextElementSibling;
 
     if (nextParagraphSibling &&
-        nextParagraphSibling.tagName === 'P' && 
-        nextParagraphSibling.firstChild && 
+        nextParagraphSibling.tagName === 'P' &&
+        nextParagraphSibling.firstChild &&
         nextParagraphSibling.firstChild.tagName !== 'STRONG') {
         nextParagraphSibling.classList.add('has__dropcap');
     }
 }
 
 function addClassesToElementImmersives() {
-    var i,
+    let i,
         elementImmersive,
         elementImmersives = document.querySelectorAll('figure.element--immersive'),
         nextSibling;
@@ -78,7 +78,7 @@ function addClassesToElementImmersives() {
         elementImmersive = elementImmersives[i];
 
         nextSibling = elementImmersive.nextElementSibling;
-        
+
         if (nextSibling &&
             nextSibling.classList.contains('element-pullquote')) {
             nextSibling.classList.add('quote--image');
@@ -98,7 +98,7 @@ function addClassesToElementImmersives() {
 }
 
 function movePullQuotes() {
-    var i,
+    let i,
         pullQuote,
         pullQuotes = document.getElementsByClassName('element-pullquote');
 
@@ -109,24 +109,24 @@ function movePullQuotes() {
 }
 
 function attachImmersiveEventHandlers() {
-    var i,
+    let i,
         quoteOverlay,
         quoteOverlays = document.getElementsByClassName('quote--overlay');
-        
+
     for (i = 0; i < quoteOverlays.length; i++) {
         quoteOverlay = quoteOverlays[i];
         quoteOverlay.addEventListener('click', onQuoteOverlayClick.bind(null, quoteOverlay));
     }
 
     window.addEventListener('scroll', debounce(onImmersiveScroll, 10));
-    
+
     if (GU.opts.platform !== 'ios') {
         window.addEventListener('resize', debounce(adjustHeaderImageHeight, 100));
     }
 }
 
 function onQuoteOverlayClick(quoteOverlay, evt) {
-    var figcaption;
+    let figcaption;
 
     evt.preventDefault();
 
@@ -142,7 +142,7 @@ function onQuoteOverlayClick(quoteOverlay, evt) {
 }
 
 function onImmersiveScroll() {
-    var i,
+    let i,
         dataOffset,
         pullQuote,
         pullQuotes = document.getElementsByClassName('element-pullquote'),
@@ -161,13 +161,13 @@ function onImmersiveScroll() {
 }
 
 function adjustHeaderImageHeight() {
-    var embed,
+    let embed,
         headerContainer = document.querySelector('.article__header-bg, .article__header-bg .element > iframe');
 
     if (headerContainer) {
         embed = headerContainer.getElementsByClassName('element-embed')[0] || headerContainer.getElementsByClassName('element-atom')[0];
         if (embed || headerContainer.dataset.fullScreen) {
-            headerContainer.style.height = getImageHeight() + 'px';
+            headerContainer.style.height = `${getImageHeight()}px`;
             if (embed) {
                 embed.classList.add('height-adjusted');
             }
@@ -176,20 +176,18 @@ function adjustHeaderImageHeight() {
 }
 
 function getImageHeight() {
-    var viewPortHeight = document.documentElement.clientHeight,
+    let viewPortHeight = document.documentElement.clientHeight,
         marginTop = document.body.style.marginTop.replace('px', '');
 
     return viewPortHeight - marginTop;
 }
 
 function init() {
-    var isImmersive = document.body.classList.contains('display-hint--immersive') || document.body.classList.contains('display-hint--articleImmersive');
+    const isImmersive = document.body.classList.contains('display-hint--immersive') || document.body.classList.contains('display-hint--articleImmersive');
 
     if (isImmersive) {
         formatImmersive();
     }
 }
 
-export {
-    init
-};
+export { init };

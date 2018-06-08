@@ -1,5 +1,5 @@
 function isElementInViewport(el) {
-    var rect = el.getBoundingClientRect();
+    const rect = el.getBoundingClientRect();
 
     return (
         rect.top >= 0 &&
@@ -10,7 +10,7 @@ function isElementInViewport(el) {
 }
 
 function isElementPartiallyInViewport(el) {
-    var rect = el.getBoundingClientRect(),
+    let rect = el.getBoundingClientRect(),
         windowHeight = (window.innerHeight || document.documentElement.clientHeight),
         windowWidth = (window.innerWidth || document.documentElement.clientWidth),
         vertInView = (rect.top <= windowHeight) && ((rect.top + rect.height) >= 0),
@@ -20,11 +20,11 @@ function isElementPartiallyInViewport(el) {
 }
 
 function getElementOffset(elem) {
-    var de = elem.ownerDocument.documentElement,
+    let de = elem.ownerDocument.documentElement,
         bcr = elem.getBoundingClientRect(),
         scroll = {
-            x: window.pageXOffset || document.documentElement.scrollLeft, 
-            y: window.pageYOffset || document.documentElement.scrollTop
+            x: window.pageXOffset || document.documentElement.scrollLeft,
+            y: window.pageYOffset || document.documentElement.scrollTop,
         },
         width = elem.offsetWidth,
         height = elem.offsetHeight,
@@ -32,15 +32,15 @@ function getElementOffset(elem) {
         left = bcr.left + scroll.x - Math.max(0, de && de.clientLeft, document.body.clientLeft);
 
     return {
-        top: top,
-        left: left,
-        height: height,
-        width: width
+        top,
+        left,
+        height,
+        width,
     };
 }
 
 function signalDevice(messageName) {
-    var path = 'x-gu://',
+    let path = 'x-gu://',
         url = path + messageName,
         iframe = document.createElement('iframe');
 
@@ -96,17 +96,17 @@ function setLocalStorage(key, value) {
 }
 
 function debounce(func, wait, immediate) {
-    var args;
-    var callNow;
-    var context;
-    var later;
-    var timeout;
-    
-    return function() {
+    let args;
+    let callNow;
+    let context;
+    let later;
+    let timeout;
+
+    return function () {
         context = this;
         args = arguments;
-        
-        later = function() {
+
+        later = function () {
             timeout = null;
             if (!immediate) {
                 func.apply(context, args);
@@ -114,11 +114,11 @@ function debounce(func, wait, immediate) {
         };
 
         callNow = immediate && !timeout;
-        
+
         clearTimeout(timeout);
-        
+
         timeout = setTimeout(later, wait);
-        
+
         if (callNow) {
             func.apply(context, args);
         }
@@ -126,10 +126,10 @@ function debounce(func, wait, immediate) {
 }
 
 function getElemsFromHTML(html) {
-    var i,
+    let i,
         elems = [],
         div = document.createElement('div');
-    
+
     div.innerHTML = html;
 
     for (i = 0; i < div.childNodes.length; i++) {
@@ -137,7 +137,7 @@ function getElemsFromHTML(html) {
             elems.push(div.childNodes[i]);
         }
     }
-    
+
     return elems;
 }
 

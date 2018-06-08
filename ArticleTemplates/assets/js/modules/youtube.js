@@ -1,9 +1,9 @@
-import { 
+import {
     signalDevice,
-    getElementOffset
+    getElementOffset,
 } from 'modules/util';
 
-var videos = [],
+let videos = [],
     stateHandlers = {},
     players = {},
     progressTracker = {},
@@ -15,10 +15,10 @@ var videos = [],
     sdkReportInitialised = false,
     sdkPoller;
 
-var PLAY_STATE = 'PLAYING';
-var END_STATE = 'ENDED';
-var PAUSE_STATE = 'PAUSED';
-var CUED_STATE = 'CUED';
+const PLAY_STATE = 'PLAYING';
+const END_STATE = 'ENDED';
+const PAUSE_STATE = 'PAUSED';
+const CUED_STATE = 'CUED';
 
 function init() {
     setStateHandlers();
@@ -26,12 +26,12 @@ function init() {
 }
 
 function setStateHandlers() {
-    /** 
+    /**
         nativeYoutubeEnabled can be enabled on Android
         if nativeYoutubeEnabled is true we won't track
         state ended, playing, paused from within the template
         as this is handled by Android
-    **/
+    * */
     if (!GU.opts.nativeYoutubeEnabled) {
         stateHandlers[END_STATE] = onPlayerEnded;
         stateHandlers[PLAY_STATE] = onPlayerPlaying;
@@ -54,37 +54,35 @@ function killProgressTracker(force, id) {
 }
 
 function checkForVideos() {
-    var iframes = document.body.querySelectorAll('iframe.youtube-media');
-    
-    var isPreviousElementSDKPlaceholder = function (element) {
-        var previousElementSibling = element.previousElementSibling;
+    const iframes = document.body.querySelectorAll('iframe.youtube-media');
+
+    const isPreviousElementSDKPlaceholder = function (element) {
+        const previousElementSibling = element.previousElementSibling;
 
         return previousElementSibling && previousElementSibling.classList.contains('youtube-media__sdk-placeholder');
     };
 
     /**
-        if a youtube iframe doesn't have 
-        the sdk placeholder (youtubeAtomPositionPlaceholder.html) 
+        if a youtube iframe doesn't have
+        the sdk placeholder (youtubeAtomPositionPlaceholder.html)
         as it's preceeding sibling then it is to be initialised by JS
-    **/
-    videos = Array.prototype.filter.call(iframes, function (iframe) {
-        return !isPreviousElementSDKPlaceholder(iframe);
-    });
-    
+    * */
+    videos = Array.prototype.filter.call(iframes, (iframe) => !isPreviousElementSDKPlaceholder(iframe));
+
     /**
-        if a youtube iframe does have 
-        the sdk placeholder (youtubeAtomPositionPlaceholder.html) 
+        if a youtube iframe does have
+        the sdk placeholder (youtubeAtomPositionPlaceholder.html)
         as it's preceeding sibling then we must report it's position to
         the native layer
-    **/
-    sdkPlaceholders = Array.prototype.map.call(iframes, function (iframe) {
-            if (isPreviousElementSDKPlaceholder(iframe)) {
-            var previousElementSibling = iframe.previousElementSibling;
-            
+    * */
+    sdkPlaceholders = Array.prototype.map.call(iframes, (iframe) => {
+        if (isPreviousElementSDKPlaceholder(iframe)) {
+            const previousElementSibling = iframe.previousElementSibling;
+
             iframe.remove();
 
             return previousElementSibling;
-            }
+        }
     }).filter(Boolean).concat(sdkPlaceholders);
 
     if (videos.length) {
@@ -108,10 +106,10 @@ function checkForVideos() {
             clearInterval(sdkPoller);
         }
 
-        sdkPoller = setInterval(function () {
+        sdkPoller = setInterval(() => {
             if (sdkPollCount < sdkMaxPollCount) {
-                    buildAndSendSdkReport();
-                    sdkPollCount++;
+                buildAndSendSdkReport();
+                sdkPollCount++;
             } else {
                 clearInterval(sdkPoller);
             }
@@ -120,10 +118,10 @@ function checkForVideos() {
 }
 
 function buildAndSendSdkReport() {
-    var newSdkReport = buildSdkReport();
+    const newSdkReport = buildSdkReport();
 
     if (newSdkReport !== sdkReport) {
-        util.signalDevice('youtubeAtomPosition/' + newSdkReport);
+        util.signalDevice(`youtubeAtomPosition/${newSdkReport}`);
         sdkReport = newSdkReport;
     }
 }
@@ -133,8 +131,8 @@ function buildSdkReport() {
 }
 
 function getSdkReportPosProps(sdkPlaceholder) {
-    var posProps = util.getElementOffset(sdkPlaceholder);
-    var atom = sdkPlaceholder.closest('[data-atom-id]');
+    const posProps = util.getElementOffset(sdkPlaceholder);
+    const atom = sdkPlaceholder.closest('[data-atom-id]');
 
     posProps.id = atom.dataset.atomId;
 
@@ -142,7 +140,7 @@ function getSdkReportPosProps(sdkPlaceholder) {
 }
 
 function loadScript() {
-    var scriptElement;
+    let scriptElement;
 
     if (document.getElementById('youtube-script')) {
         return;
@@ -168,7 +166,7 @@ function onYouTubeIframeAPIReady() {
 }
 
 function initialiseVideos() {
-    var i,
+    let i,
         placeholder,
         video;
 
@@ -181,11 +179,11 @@ function initialiseVideos() {
                 player: setupPlayer(video.id),
                 iframe: video,
                 pendingTrackingCalls: [25, 50, 75],
-                currentState: CUED_STATE
+                currentState: CUED_STATE,
             };
 
             if (hasPlaceholderImgSrc(placeholder)) {
-                players[video.id].placeholder = placeholder; 
+                players[video.id].placeholder = placeholder;
             } else {
                 placeholder.parentNode.removeChild(placeholder);
             }
@@ -194,36 +192,36 @@ function initialiseVideos() {
 }
 
 function hasPlaceholderImgSrc(placeholder) {
-    var img = placeholder.getElementsByClassName('youtube-media__placeholder__img')[0];
+    const img = placeholder.getElementsByClassName('youtube-media__placeholder__img')[0];
 
     return img.getAttribute('style') !== 'background-image: url()';
 }
 
 function setupPlayer(id) {
-    var player = new YT.Player(id, {
+    const player = new YT.Player(id, {
         events: {
             onReady: onPlayerReady.bind(null, id),
-            onStateChange: onPlayerStateChange.bind(null, id)
-        }
+            onStateChange: onPlayerStateChange.bind(null, id),
+        },
     });
 
     return player;
 }
 
 function onPlayerReady(id) {
-    var touchPoint;
+    let touchPoint;
 
     players[id].duration = players[id].player.getDuration();
 
     if (players[id].placeholder) {
         touchPoint = players[id].placeholder.getElementsByClassName('youtube-media__touchpoint')[0];
-        
+
         if (!GU.opts.nativeYoutubeEnabled) {
             players[id].placeholder.classList.add('disable-pointer-events');
         } else {
             touchPoint.addEventListener('click', sendPlayEventForNativePlayer.bind(null, id));
         }
-        
+
         players[id].placeholder.classList.add('fade-touchpoint');
     } else {
         players[id].iframe.parentNode.classList.add('show-video');
@@ -232,8 +230,8 @@ function onPlayerReady(id) {
 
 function sendPlayEventForNativePlayer(id) {
     trackEvent({
-        id: id,
-        eventType: 'video:content:start'
+        id,
+        eventType: 'video:content:start',
     });
 }
 
@@ -252,7 +250,7 @@ function checkState(id, state, stateHandler) {
 }
 
 function onPlayerPlaying(id) {
-    var placeholderParent,
+    let placeholderParent,
         currentTime = Math.round(players[id].player.getCurrentTime());
 
     stopPlayers(id);
@@ -266,8 +264,8 @@ function onPlayerPlaying(id) {
         }
 
         trackEvent({
-            id: id,
-            eventType: 'video:content:start'
+            id,
+            eventType: 'video:content:start',
         });
     }
 
@@ -275,7 +273,7 @@ function onPlayerPlaying(id) {
 }
 
 function onPlayerEnded(id) {
-    var placeholderParent; 
+    let placeholderParent;
 
     if (players[id].placeholder) {
         placeholderParent = players[id].placeholder.parentNode;
@@ -286,8 +284,8 @@ function onPlayerEnded(id) {
     killProgressTracker(false, id);
 
     trackEvent({
-        id: id,
-        eventType: 'video:content:end'
+        id,
+        eventType: 'video:content:end',
     });
 
     players[id].pendingTrackingCalls = [25, 50, 75];
@@ -314,7 +312,7 @@ function stopPlayer(ignoreId, stopId) {
 }
 
 function recordPlayerProgress(id) {
-    var currentTime,
+    let currentTime,
         percentPlayed,
         pendingTrackingCalls = players[id].pendingTrackingCalls;
 
@@ -326,10 +324,9 @@ function recordPlayerProgress(id) {
     percentPlayed = Math.round(((currentTime / players[id].duration) * 100));
 
     if (percentPlayed >= pendingTrackingCalls[0]) {
-
         trackEvent({
-            id: id,
-            eventType: 'video:content:' + pendingTrackingCalls[0]
+            id,
+            eventType: `video:content:${pendingTrackingCalls[0]}`,
         });
 
         pendingTrackingCalls.shift();
@@ -342,11 +339,11 @@ function trackEvent(evt) {
         window.GuardianJSInterface.trackAction) {
         window.GuardianJSInterface.trackAction('youtube', JSON.stringify(evt));
     } else {
-        util.signalDevice('youtube/' + JSON.stringify(evt));
+        util.signalDevice(`youtube/${JSON.stringify(evt)}`);
     }
 }
 
 export {
     init,
-    checkForVideos
+    checkForVideos,
 };

@@ -5,7 +5,7 @@ import {
     isElementPartiallyInViewport,
 } from 'modules/util';
 
-var trackedImpressions = [];
+const trackedImpressions = [];
 
 function init() {
     window.injectCreative = injectCreative;
@@ -14,10 +14,10 @@ function init() {
 
 function trackLiveBlogEpic() {
     // if there is already a data-tracked attribute than we don't need to set up tracking again
-    var liveBlogEpicContainers = document.querySelectorAll('.contributions-epic__container:not([data-tracked])');
-    var liveBlogEpicContainerId;
-    var i;
-    var liveBlogEpicContainer;
+    const liveBlogEpicContainers = document.querySelectorAll('.contributions-epic__container:not([data-tracked])');
+    let liveBlogEpicContainerId;
+    let i;
+    let liveBlogEpicContainer;
 
     for (i = 0; i < liveBlogEpicContainers.length; i++) {
         liveBlogEpicContainer = liveBlogEpicContainers[i];
@@ -37,7 +37,7 @@ function injectCreative(html, css, id, type) {
 }
 
 function injectCSS(css) {
-    var style = document.createElement('style');
+    const style = document.createElement('style');
 
     style.type = 'text/css';
 
@@ -55,11 +55,11 @@ function addEventListenerScroll(creativeContainer, id) {
 }
 
 function injectHTML(html, id, type) {
-    var creativeContainer = document.createElement('div');
+    const creativeContainer = document.createElement('div');
 
     creativeContainer.id = id;
     creativeContainer.classList.add('creative-container');
-    creativeContainer.classList.add(type + '-creative-container');
+    creativeContainer.classList.add(`${type}-creative-container`);
     creativeContainer.innerHTML = html;
 
     if (type === 'inline-article') {
@@ -72,7 +72,7 @@ function injectHTML(html, id, type) {
 }
 
 function injectInlineCreative(creativeContainer) {
-    var i,
+    let i,
         prose = document.querySelector('.article__body > div.prose'),
         paragraphs = prose.querySelectorAll('p:nth-child(n+4)');
 
@@ -88,7 +88,7 @@ function injectInlineCreative(creativeContainer) {
 }
 
 function injectEpicCreative(creativeContainer) {
-    var prose = document.querySelector('.article__body > div.prose');
+    const prose = document.querySelector('.article__body > div.prose');
 
     if (prose) {
         prose.appendChild(creativeContainer);
@@ -96,7 +96,7 @@ function injectEpicCreative(creativeContainer) {
 }
 
 function isCreativeInView(creativeContainer, id) {
-    var messageName = 'creative_impression/' + id;
+    const messageName = `creative_impression/${id}`;
 
     if (trackedImpressions.indexOf(id) === -1 && isElementPartiallyInViewport(creativeContainer)) {
         signalDevice(messageName);

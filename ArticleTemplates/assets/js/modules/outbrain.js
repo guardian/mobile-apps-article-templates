@@ -1,7 +1,7 @@
-function getSection () {
-    var sections = ['politics', 'world', 'business', 'commentisfree'],
+function getSection() {
+    let sections = ['politics', 'world', 'business', 'commentisfree'],
         section = GU.opts.section;
-    
+
     return section.toLowerCase().match('news') || sections.indexOf(section.toLowerCase()) > 0 ? 'sections' : 'all';
 }
 
@@ -10,8 +10,8 @@ function isNonCompliant() {
 }
 
 function init() {
-    var contentUrl,
-        isTablet = GU.opts.adsConfig === 'tablet' ? true : false,
+    let contentUrl,
+        isTablet = GU.opts.adsConfig === 'tablet',
         outbrainContainer = document.getElementsByClassName('container__outbrain')[0],
         outbrainImage = document.getElementsByClassName('outbrainImage')[0],
         outbrainText = document.getElementsByClassName('outbrainText')[0],
@@ -35,26 +35,26 @@ function init() {
                 widgetConfig = {
                     image: {
                         sections: 'AR_30',
-                        all: 'AR_30'
+                        all: 'AR_30',
                     },
                     text: {
                         sections: 'AR_31',
-                        all: 'AR_31'
-                    }
+                        all: 'AR_31',
+                    },
                 };
             } else {
                 widgetConfig = {
                     image: {
                         sections: 'AR_24',
-                        all: 'AR_18'
+                        all: 'AR_18',
                     },
                     text: {
                         sections: 'AR_27',
-                        all: 'AR_20'
-                    }
+                        all: 'AR_20',
+                    },
                 };
-            } 
-            
+            }
+
             outbrainText.style.display = 'block';
             widgetCodeText = widgetConfig.text[section];
             outbrainText.dataset.widgetId = widgetCodeText;
@@ -63,18 +63,18 @@ function init() {
                 widgetConfig = {
                     image: {
                         sections: 'AR_29',
-                        all: 'AR_29'
-                    }
+                        all: 'AR_29',
+                    },
                 };
             } else {
                 widgetConfig = {
                     image: {
                         sections: 'AR_22',
-                        all: 'AR_16'
-                    }
+                        all: 'AR_16',
+                    },
                 };
             }
-            
+
             if (outbrainContainer.childElementCount > 0 && outbrainText) {
                 outbrainContainer.removeChild(outbrainText);
             }
@@ -92,6 +92,4 @@ function init() {
     }
 }
 
-export {
-    init
-};
+export { init };

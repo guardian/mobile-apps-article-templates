@@ -2,7 +2,7 @@ import { getDesiredImageHeight } from 'bootstraps/common';
 import { debounce } from 'modules/util';
 
 function adjustMinuteBlocks(blocks) {
-    var i,
+    let i,
         figure,
         figInner,
         tweet,
@@ -14,22 +14,22 @@ function adjustMinuteBlocks(blocks) {
 
             if (figure) {
                 figInner = figure.getElementsByClassName('figure__inner')[0];
-                
-                if (GU.opts.isOffline) {                        
+
+                if (GU.opts.isOffline) {
                     if (figInner) {
-                        figInner.style.height = getDesiredImageHeight(figure) + 'px';
+                        figInner.style.height = `${getDesiredImageHeight(figure)}px`;
                     }
                 }
 
                 if (blocks[i].classList.contains('is-coverimage')) {
                     moveFigcaption(figure, figInner);
                 }
-                
+
                 blocks[i].classList.remove('flex-block');
                 blocks[i].style.height = 'auto';
 
                 if (blocks[i].offsetHeight < (figure.offsetHeight + marginTop)) {
-                    blocks[i].style.height = figure.offsetHeight + marginTop + 'px';
+                    blocks[i].style.height = `${figure.offsetHeight + marginTop}px`;
                     blocks[i].classList.add('flex-block');
                 }
             }
@@ -44,7 +44,7 @@ function adjustMinuteBlocks(blocks) {
 }
 
 function moveFigcaption(figure, figInner) {
-    var figCaption = figure.getElementsByTagName('figcaption')[0];
+    const figCaption = figure.getElementsByTagName('figcaption')[0];
 
     if (figCaption && figCaption.parentNode === figure) {
         if (figInner) {
@@ -54,7 +54,7 @@ function moveFigcaption(figure, figInner) {
 }
 
 function adjustTweetForMinute(tweet) {
-    var i,
+    let i,
         childNode,
         twitterLink = 'https://twitter.com/',
         twitterUser,
@@ -67,15 +67,15 @@ function adjustTweetForMinute(tweet) {
     if (blockQuote) {
         for (i = 0; i < blockQuote.childNodes.length; i++) {
             childNode = blockQuote.childNodes[i];
-            if (childNode.nodeType === 3 && 
-                childNode.nodeValue && 
+            if (childNode.nodeType === 3 &&
+                childNode.nodeValue &&
                 childNode.nodeValue.indexOf('@') !== -1) {
                 twitterHandle = childNode.nodeValue.match(/\(([^)]*)\)/g);
 
                 if (twitterHandle.length) {
                     twitterUser = childNode.nodeValue.replace(twitterHandle[0], '').replace(/\W+/g, ' ');
                     twitterHandle = twitterHandle[0].substring(1, twitterHandle[0].length - 1);
-                    twitterLink +=  twitterHandle.replace('@', '');
+                    twitterLink += twitterHandle.replace('@', '');
 
                     twitterWrapperElem = document.createElement('div');
                     twitterWrapperElem.classList.add('twitter-wrapper');
@@ -104,13 +104,13 @@ function adjustTweetForMinute(tweet) {
 }
 
 function updateMinuteBlockTitles(blocks) {
-    var i, 
+    let i,
         blockTitle,
         titleString;
 
     for (i = 0; i < blocks.length; i++) {
         blockTitle = blocks[i].getElementsByClassName('block__title')[0];
-        
+
         if (blockTitle) {
             titleString = blockTitle.innerHTML.replace(/^([0-9]+)[.]*[ ]*/g, '<span class="counter">$1</span>');
             blockTitle.innerHTML = titleString;
@@ -119,7 +119,7 @@ function updateMinuteBlockTitles(blocks) {
 }
 
 function addClassesToMinuteBlocks(blocks) {
-    var i,
+    let i,
         block;
 
     for (i = 0; i < blocks.length; i++) {
@@ -144,7 +144,7 @@ function addClassesToMinuteBlocks(blocks) {
 }
 
 function init() {
-    var blocks = document.getElementsByClassName('block');
+    const blocks = document.getElementsByClassName('block');
 
     addClassesToMinuteBlocks(blocks);
     updateMinuteBlockTitles(blocks);
@@ -152,6 +152,4 @@ function init() {
     window.addEventListener('resize', debounce(adjustMinuteBlocks.bind(null, blocks), 100));
 }
 
-export {
-    init
-};
+export { init };

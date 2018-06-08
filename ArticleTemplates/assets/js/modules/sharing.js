@@ -1,21 +1,21 @@
 import { signalDevice } from 'modules/util';
 
-function nativeSharing(service, url, title){
-    var action;
+function nativeSharing(service, url, title) {
+    let action;
 
     if (service === 'facebook') {
         action = 'facebookshare/';
     }
-    
+
     if (service === 'twitter') {
         action = 'twittershare/';
     }
 
     if (action && url) {
-        action = action + '?url=' + encodeURIComponent(url);
+        action = `${action}?url=${encodeURIComponent(url)}`;
 
         if (title) {
-            action = action + '&title=' + encodeURIComponent(title);
+            action = `${action}&title=${encodeURIComponent(title)}`;
         }
 
         signalDevice(action);
@@ -28,6 +28,4 @@ function init() {
     }
 }
 
-export {
-    init
-};
+export { init };

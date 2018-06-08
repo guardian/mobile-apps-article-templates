@@ -22,7 +22,7 @@ function setupGlobals() {
 }
 
 function commentsReplyFormatting() {
-    var discussionThread,
+    let discussionThread,
         discussionThreads = document.getElementsByClassName('block--discussion-thread'),
         i,
         moreCommentsButton,
@@ -34,7 +34,6 @@ function commentsReplyFormatting() {
         if (!discussionThread.classList.contains('block--discussion-thread--checked') &&
             discussionThread.children &&
             discussionThread.children.length >= 5) {
-
             numOfComments = discussionThread.children.length - 4;
 
             if (numOfComments === 1) {
@@ -43,7 +42,7 @@ function commentsReplyFormatting() {
                 moreCommentsButton = document.createElement('div');
                 moreCommentsButton.classList.add('more');
                 moreCommentsButton.classList.add('more--comments');
-                moreCommentsButton.innerHTML = '<a class="more__label"><span class="more__icon" data-icon="&#xe050;" aria-hidden="true"></span><span class="more__text">' + numOfComments + ' more replies</span></a>';
+                moreCommentsButton.innerHTML = `<a class="more__label"><span class="more__icon" data-icon="&#xe050;" aria-hidden="true"></span><span class="more__text">${numOfComments} more replies</span></a>`;
                 moreCommentsButton.addEventListener('click', handleMoreCommentsClick.bind(null, moreCommentsButton));
                 discussionThread.children[4].parentNode.insertBefore(moreCommentsButton, discussionThread.children[4]);
             }
@@ -54,7 +53,7 @@ function commentsReplyFormatting() {
 }
 
 function addClickHandlerToComments(block) {
-    var i,
+    let i,
         comments = block.getElementsByClassName('comment');
 
     for (i = 0; i < comments.length; i++) {
@@ -68,7 +67,7 @@ function handleMoreCommentsClick(moreCommentsButton) {
 }
 
 function handleCommentClick(comment, evt) {
-    var i,
+    let i,
         classList = [],
         openComments;
 
@@ -94,16 +93,14 @@ function handleCommentClick(comment, evt) {
 }
 
 function targetContainsBlackListedClass(classList) {
-    var stopPropagationBlackList = ['more--comments', 'comment__reply', 'comment__recommend', 
-                                    'touchpoint__button', 'touchpoint__label'];
+    const stopPropagationBlackList = ['more--comments', 'comment__reply', 'comment__recommend',
+        'touchpoint__button', 'touchpoint__label'];
 
-    return stopPropagationBlackList.some(function (className) {
-        return classList.indexOf(className) >= 0;
-    });
+    return stopPropagationBlackList.some((className) => classList.indexOf(className) >= 0);
 }
 
 function articleCommentsInserter(html) {
-    var blocks,
+    let blocks,
         commentsContainer,
         emptyCommentBlock,
         i,
@@ -136,7 +133,7 @@ function articleCommentsInserter(html) {
 }
 
 function commentsInserter(html) {
-    var blocks,
+    let blocks,
         commentsContainer = document.getElementsByClassName('comments__container')[0],
         emptyCommentBlock,
         i,
@@ -171,7 +168,7 @@ function commentsInserter(html) {
 }
 
 function articleCommentsFailed() {
-    var commentsElem = document.getElementsByClassName('comments')[0],
+    let commentsElem = document.getElementsByClassName('comments')[0],
         failedBlock = document.getElementsByClassName('comments__block--failed')[0],
         loadingBlock = document.getElementsByClassName('comments__block--loading')[0];
 
@@ -189,7 +186,7 @@ function articleCommentsFailed() {
 }
 
 function commentsEnd() {
-    var loadingBlock = document.getElementsByClassName('comments__block--loading')[0];
+    const loadingBlock = document.getElementsByClassName('comments__block--loading')[0];
 
     if (loadingBlock) {
         loadingBlock.parentNode.removeChild(loadingBlock);
@@ -197,7 +194,7 @@ function commentsEnd() {
 }
 
 function commentsClosed() {
-    var commentsElem = document.getElementsByClassName('comments')[0],
+    let commentsElem = document.getElementsByClassName('comments')[0],
         discussionElem = document.getElementById('discussion');
 
     if (commentsElem) {
@@ -210,7 +207,7 @@ function commentsClosed() {
 }
 
 function commentsOpen() {
-    var commentsElem = document.getElementsByClassName('comments')[0],
+    let commentsElem = document.getElementsByClassName('comments')[0],
         discussionElem = document.getElementById('discussion');
 
     if (commentsElem) {
@@ -227,9 +224,9 @@ function commentTime() {
 }
 
 function commentsRecommendIncrease(id, number) {
-    var target = 'div[id="' + id + '"] .comment__recommend',
+    let target = `div[id="${id}"] .comment__recommend`,
         targetElem = document.querySelector(target),
-        countElem = document.querySelector(target + ' .comment__recommend__count');
+        countElem = document.querySelector(`${target} .comment__recommend__count`);
 
     if (targetElem) {
         targetElem.classList.add('increase');
@@ -241,9 +238,9 @@ function commentsRecommendIncrease(id, number) {
 }
 
 function commentsRecommendDecrease(id, number) {
-    var target = 'div[id="' + id + '"] .comment__recommend',
+    let target = `div[id="${id}"] .comment__recommend`,
         targetElem = document.querySelector(target),
-        countElem = document.querySelector(target + ' .comment__recommend__count');
+        countElem = document.querySelector(`${target} .comment__recommend__count`);
 
     if (targetElem) {
         targetElem.classList.remove('increase');
@@ -259,6 +256,4 @@ function init() {
     commentTime();
 }
 
-export {
-    init
-};
+export { init };

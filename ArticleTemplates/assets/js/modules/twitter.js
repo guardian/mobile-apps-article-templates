@@ -1,8 +1,6 @@
-import {
-    debounce,
-} from './util';
+import { debounce } from './util';
 
-var articleBody,
+let articleBody,
     isAndroid,
     tweets,
     scriptReady = false;
@@ -27,7 +25,7 @@ function checkForTweets() {
 }
 
 function loadScript() {
-    var scriptElement;
+    let scriptElement;
 
     if (document.getElementById('twitter-widget')) {
         return;
@@ -67,16 +65,16 @@ function isScriptReady() {
 }
 
 function isTweetInRange(tweet) {
-    var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0),
+    let viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0),
         scrollTop = document.body.scrollTop,
         offsetHeight = tweet.offsetHeight,
         offsetTop = tweet.offsetTop;
 
-    return ((scrollTop + (viewportHeight * 2.5)) > offsetTop) && (scrollTop < (offsetTop + offsetHeight));        
+    return ((scrollTop + (viewportHeight * 2.5)) > offsetTop) && (scrollTop < (offsetTop + offsetHeight));
 }
 
 function enhanceTweet(tweet) {
-    var tweetProcessed = false;
+    let tweetProcessed = false;
 
     if (isScriptReady()) {
         if (isTweetInRange(tweet)) {
@@ -100,10 +98,10 @@ function addTweetClass(tweet) {
 function removeTweetClass(tweet) {
     tweet.classList.remove('twitter-tweet');
     tweet.classList.add('js-tweet');
-} 
+}
 
 function enhanceTweets() {
-    var i,
+    let i,
         processedTweets = 0;
 
     for (i = 0; i < tweets.length; i++) {
@@ -112,40 +110,40 @@ function enhanceTweets() {
         }
     }
 
-    if (processedTweets && articleBody){
+    if (processedTweets && articleBody) {
         twttr.widgets.load(articleBody);
     }
 }
 
 function workaroundClicks(evt) {
-    var i,
+    let i,
         webIntentLinks;
 
     if (!isAndroid,
-        evt.target.contentWindow &&
+    evt.target.contentWindow &&
         evt.target.contentWindow.document) {
-            webIntentLinks = evt.target.contentWindow.document.querySelectorAll('a.web-intent');
-            for (i = 0; i < webIntentLinks.length; i++) {
-                webIntentLinks[i].classList.remove('web-intent');
-            }
+        webIntentLinks = evt.target.contentWindow.document.querySelectorAll('a.web-intent');
+        for (i = 0; i < webIntentLinks.length; i++) {
+            webIntentLinks[i].classList.remove('web-intent');
+        }
     }
 }
 
 function fixVineAutoplay(evt) {
-    var i,
+    let i,
         mediaCards;
 
     if (!isAndroid &&
         evt.target.contentWindow &&
         evt.target.contentWindow.document &&
         evt.target.contentWindow.document.querySelectorAll('iframe[src^="https://vine.co"],iframe[src^="https://amp.twimg.com/amplify-web-player/prod/source.html?video_url"]').length) {
-            mediaCards = evt.target.contentWindow.document.getElementsByClassName('MediaCard');
-            for (i = 0; i < mediaCards.length; i++) {
-                if (mediaCards[i].parentNode) {
-                    mediaCards[i].parentNode.removeChild(mediaCards[i]);
-                }
+        mediaCards = evt.target.contentWindow.document.getElementsByClassName('MediaCard');
+        for (i = 0; i < mediaCards.length; i++) {
+            if (mediaCards[i].parentNode) {
+                mediaCards[i].parentNode.removeChild(mediaCards[i]);
             }
-            evt.target.removeAttribute('height');
+        }
+        evt.target.removeAttribute('height');
     }
 }
 

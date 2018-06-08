@@ -1,9 +1,9 @@
-var SHOW_TAGS = 5;
-var moreButton;
-var hiddenTags;
+const SHOW_TAGS = 5;
+let moreButton;
+let hiddenTags;
 
 function init() {
-    var firstHiddenTag,
+    let firstHiddenTag,
         tags = document.querySelectorAll('.tags__list-item');
 
     if (tags.length > SHOW_TAGS) {
@@ -28,7 +28,7 @@ function init() {
 }
 
 function show() {
-    var i;
+    let i;
 
     moreButton.style.display = 'none';
 
@@ -40,7 +40,7 @@ function show() {
 }
 
 function hideTags() {
-    var i;
+    let i;
 
     for (i = 0; i < hiddenTags.length; i++) {
         hiddenTags[i].classList.add('hide-tags');
@@ -48,13 +48,11 @@ function hideTags() {
 }
 
 function showTags() {
-    var i;
+    let i;
 
     for (i = 0; i < hiddenTags.length; i++) {
         hiddenTags[i].classList.remove('hide-tags');
     }
 }
 
-export {
-    init
-};
+export { init };

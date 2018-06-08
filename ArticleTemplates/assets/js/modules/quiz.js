@@ -1,11 +1,11 @@
 import { animateScroll } from 'smooth-scroll';
 import { updateMPUPosition } from 'modules/ads';
-import { 
-    getStringFromUnicodeVal, 
+import {
+    getStringFromUnicodeVal,
     getElementOffset,
 } from 'modules/util';
 
-var numAnswered,
+let numAnswered,
     questionCount,
     isPersonalityQuiz,
     moveMPU,
@@ -14,8 +14,8 @@ var numAnswered,
     personalityQuizBuckets;
 
 function init() {
-    var quiz = document.querySelector('.element-atom .quiz');
-        
+    const quiz = document.querySelector('.element-atom .quiz');
+
     if (!quiz) {
         return;
     }
@@ -24,7 +24,7 @@ function init() {
     questionCount = 0;
     isPersonalityQuiz = document.getElementsByClassName('quiz__buckets')[0];
     moveMPU = isAdBelowQuiz(quiz);
-    
+
     if (isPersonalityQuiz) {
         quiz.classList.add('personality-quiz');
         setupPersonalityQuizBuckets();
@@ -44,7 +44,7 @@ function init() {
 }
 
 function setupNewsQuizQuestions() {
-    var i,
+    let i,
         questionsAndAnswers = getQuestionsAndAnswers(),
         question,
         questions = document.getElementsByClassName('quiz__question'),
@@ -52,7 +52,7 @@ function setupNewsQuizQuestions() {
 
     for (i = 0; i < questions.length; i++) {
         question = questions[i];
-        questionObj = questionsAndAnswers[i+1];
+        questionObj = questionsAndAnswers[i + 1];
         questionObj.elem = question;
         wrapQuestion(question);
         setupNewsQuizAnswers(questionObj);
@@ -61,7 +61,7 @@ function setupNewsQuizQuestions() {
 }
 
 function setupNewsQuizAnswers(questionObj) {
-    var i,
+    let i,
         answerCode,
         answers = questionObj.elem.getElementsByClassName('question__answer');
 
@@ -75,11 +75,11 @@ function setupNewsQuizAnswers(questionObj) {
         }
         styleAnswer(answers[i]);
         answers[i].addEventListener('click', onNewsAnswerClick.bind(null, answers[i], questionObj.elem, answers[i].getElementsByTagName('img')[0]));
-    }                
+    }
 }
 
 function removeNewsQuizAnswers() {
-    var i,
+    let i,
         answers = document.querySelectorAll('.quiz__correct-answers-title, .quiz__correct-answers');
 
     for (i = 0; i < answers.length; i++) {
@@ -88,7 +88,7 @@ function removeNewsQuizAnswers() {
 }
 
 function setupPersonalityQuizBuckets() {
-    var i,
+    let i,
         bucketCode,
         buckets = document.getElementsByClassName('quiz__bucket'),
         quizBuckets = {};
@@ -98,7 +98,7 @@ function setupPersonalityQuizBuckets() {
         quizBuckets[bucketCode] = {
             count: 0,
             title: buckets[i].dataset.title,
-            description: buckets[i].dataset.description
+            description: buckets[i].dataset.description,
         };
     }
 
@@ -106,7 +106,7 @@ function setupPersonalityQuizBuckets() {
 }
 
 function setupPersonalityQuizQuestions() {
-    var i,
+    let i,
         question,
         questions = document.getElementsByClassName('quiz__question'),
         questionObj;
@@ -122,18 +122,18 @@ function setupPersonalityQuizQuestions() {
 }
 
 function setupPersonalityQuizAnswers(questionObj) {
-    var i,
+    let i,
         answers = questionObj.elem.getElementsByClassName('question__answer');
 
     for (i = 0; i < answers.length; i++) {
         styleAnswer(answers[i]);
 
         answers[i].addEventListener('click', onPersonalityAnswerClick.bind(null, answers[i], questionObj.elem));
-    }                
+    }
 }
 
 function removePersonalityQuizAnswers() {
-    var i,
+    let i,
         answers = document.querySelectorAll('.quiz__buckets-title, .quiz__buckets');
 
     for (i = 0; i < answers.length; i++) {
@@ -142,7 +142,7 @@ function removePersonalityQuizAnswers() {
 }
 
 function getQuestionsAndAnswers() {
-    var i,
+    let i,
         key,
         answerMatch,
         question,
@@ -158,13 +158,13 @@ function getQuestionsAndAnswers() {
             answer = answerMatch[0];
             question = answer.split(':')[0];
             answers[question] = {
-                correctAnswer: answer.split(':')[1]
+                correctAnswer: answer.split(':')[1],
             };
         } else {
             if (!answers[question].revealText || answers[question].revealText === '- ') {
                 answers[question].revealText = '';
             }
-            answers[question].revealText += correctAnswerWordList[i] + ' ';
+            answers[question].revealText += `${correctAnswerWordList[i]} `;
         }
     }
 
@@ -179,7 +179,7 @@ function getQuestionsAndAnswers() {
 }
 
 function getScoreMessages() {
-    var i,
+    let i,
         message,
         minScore,
         scoreElems = document.querySelectorAll('.quiz__scores > li'),
@@ -195,19 +195,19 @@ function getScoreMessages() {
 }
 
 function buildScoresPanel(quiz) {
-    var scoresPanel = document.createElement('div');
+    const scoresPanel = document.createElement('div');
 
     scoresPanel.classList.add('quiz-scores');
     scoresPanel.id = 'quiz-scores';
-    scoresPanel.innerHTML = '<p class="quiz-scores__score">' +
-        '<span class="quiz-scores__correct"></span> / <span class="quiz-scores__questions">' +
-        questionCount + '</span></p><p class="quiz-scores__message"></p>';
+    scoresPanel.innerHTML = `${'<p class="quiz-scores__score">' +
+        '<span class="quiz-scores__correct"></span> / <span class="quiz-scores__questions">'}${
+        questionCount}</span></p><p class="quiz-scores__message"></p>`;
 
     quiz.appendChild(scoresPanel);
 }
 
 function buildResultsPanel(quiz) {
-    var resultPanel = document.createElement('div');
+    const resultPanel = document.createElement('div');
 
     resultPanel.classList.add('quiz-results');
     resultPanel.id = 'quiz-results';
@@ -217,7 +217,7 @@ function buildResultsPanel(quiz) {
 }
 
 function wrapQuestion(question) {
-    var i,
+    let i,
         questionWrapper = document.createElement('div'),
         questionAnswerList = question.getElementsByClassName('question__answers'),
         questionImages = question.querySelectorAll(':scope > img'),
@@ -239,7 +239,7 @@ function wrapQuestion(question) {
 }
 
 function styleAnswer(answer) {
-    var answerImages = answer.querySelectorAll(':scope > img'),
+    let answerImages = answer.querySelectorAll(':scope > img'),
         answerMarker = document.createElement('div'),
         answerMessage = document.createElement('div'),
         answerWrapper = document.createElement('div'),
@@ -257,7 +257,7 @@ function styleAnswer(answer) {
     // Add a marker icon span
     answerMarker.classList.add('answer__marker');
     if (isPersonalityQuiz) {
-        answerMarker.innerHTML = '<div class="answer__marker__inner"></div>'; 
+        answerMarker.innerHTML = '<div class="answer__marker__inner"></div>';
     }
     answerWrapper.appendChild(answerMarker);
 
@@ -273,7 +273,7 @@ function styleAnswer(answer) {
 }
 
 function adjustImage(parent, wrapper, image, isQuestion) {
-    var src = image.getAttribute('src');
+    const src = image.getAttribute('src');
 
     if (src !== '') {
         parent.classList.add('has-image');
@@ -291,7 +291,7 @@ function adjustImage(parent, wrapper, image, isQuestion) {
 }
 
 function checkWrapperHeight(src, image, wrapper) {
-    var dummyImage,
+    let dummyImage,
         text = wrapper.getElementsByClassName('question__text')[0];
 
     if (!text) {
@@ -305,7 +305,7 @@ function checkWrapperHeight(src, image, wrapper) {
 
 function adjustWrapperHeight(image, text, wrapper) {
     if (image.offsetHeight < text.offsetHeight) {
-        wrapper.style.height = text.offsetHeight + 'px';
+        wrapper.style.height = `${text.offsetHeight}px`;
     }
 }
 
@@ -314,7 +314,7 @@ function adjustText(parent, text) {
 }
 
 function isAdBelowQuiz(quiz) {
-    var adBelowQuiz = false,
+    let adBelowQuiz = false,
         mpu = document.getElementsByClassName('advert-slot__wrapper')[0],
         mpuOffset,
         quizOffset;
@@ -332,7 +332,7 @@ function isAdBelowQuiz(quiz) {
 }
 
 function adjustAdPosition(yPos, startTime, timeStamp) {
-    var newYPos,
+    let newYPos,
         progress;
 
     if (!startTime) {
@@ -348,7 +348,7 @@ function adjustAdPosition(yPos, startTime, timeStamp) {
 }
 
 function onNewsAnswerClick(answer, question, isImage) {
-    var answerPara,
+    let answerPara,
         correctAnswerWrapper,
         startTime = null,
         yPos = null;
@@ -358,7 +358,7 @@ function onNewsAnswerClick(answer, question, isImage) {
     }
 
     if (answer.dataset.correct === 'true') {
-        question.classList.add('is-correct');                    
+        question.classList.add('is-correct');
         score++;
     } else {
         answer.classList.add('wrong-answer');
@@ -384,7 +384,7 @@ function onNewsAnswerClick(answer, question, isImage) {
         window.requestAnimationFrame(adjustAdPosition.bind(null, yPos, startTime));
     }
 
-    // When we have an image answer we need to move the positioning of the explanation and marker 
+    // When we have an image answer we need to move the positioning of the explanation and marker
     if (isImage) {
         showMarkedAnswer(question);
     }
@@ -396,7 +396,7 @@ function onNewsAnswerClick(answer, question, isImage) {
 }
 
 function onPersonalityAnswerClick(answer, question) {
-    var highlightedAnswer,
+    let highlightedAnswer,
         answerBuckets,
         highlightedAnswerBuckets;
 
@@ -408,7 +408,7 @@ function onPersonalityAnswerClick(answer, question) {
         highlightedAnswer = question.getElementsByClassName('highlight-answer')[0];
         highlightedAnswer.classList.remove('highlight-answer');
         highlightedAnswerBuckets = highlightedAnswer.dataset.buckets.split(',');
-        highlightedAnswerBuckets.forEach(function(bucketId) {
+        highlightedAnswerBuckets.forEach((bucketId) => {
             bucketId = bucketId.trim();
             if (personalityQuizBuckets[bucketId]) {
                 personalityQuizBuckets[bucketId].count--;
@@ -419,7 +419,7 @@ function onPersonalityAnswerClick(answer, question) {
 
     // update answer buckets
     answerBuckets = answer.dataset.buckets.split(',');
-    answerBuckets.forEach(function (bucketId) {
+    answerBuckets.forEach((bucketId) => {
         bucketId = bucketId.trim();
         if (personalityQuizBuckets[bucketId]) {
             personalityQuizBuckets[bucketId].count++;
@@ -437,7 +437,7 @@ function onPersonalityAnswerClick(answer, question) {
 }
 
 function showMarkedAnswer(question) {
-    var i,
+    let i,
         markedAnswer,
         markedAnswers = question.querySelectorAll('.correct-answer, .wrong-answer'),
         thisMessage,
@@ -450,13 +450,13 @@ function showMarkedAnswer(question) {
         thisHeight = thisMessage.offsetHeight;
         thisMarker = markedAnswer.getElementsByClassName('answer__marker')[0];
         // position explanation to the bottom of wrapper
-        thisMessage.style.top = 'calc(100% - ' + thisHeight + 'px)';
-        thisMarker.style.top = 'calc(100% - ' + (thisHeight - 7) + 'px)';
+        thisMessage.style.top = `calc(100% - ${thisHeight}px)`;
+        thisMarker.style.top = `calc(100% - ${thisHeight - 7}px)`;
     }
 }
 
 function showScore() {
-    var i,
+    let i,
         scoreDisplayMessage = '';
 
     for (i = 0; i <= score; i++) {
@@ -470,11 +470,11 @@ function showScore() {
     document.getElementsByClassName('quiz-scores')[0].classList.add('open');
 
     // Scroll score panel into view
-    animateScroll('#quiz-scores', null, {speed: 1500, offset: 40});
+    animateScroll('#quiz-scores', null, { speed: 1500, offset: 40 });
 }
 
 function showResult() {
-    var key,
+    let key,
         bucket,
         result,
         resultTitle,
@@ -496,9 +496,7 @@ function showResult() {
     document.getElementsByClassName('quiz-results')[0].classList.add('open');
 
     // Scroll result panel into view
-    animateScroll('#quiz-results', null, {speed: 1500, offset: 40});
+    animateScroll('#quiz-results', null, { speed: 1500, offset: 40 });
 }
 
-export {
-    init
-};
+export { init };

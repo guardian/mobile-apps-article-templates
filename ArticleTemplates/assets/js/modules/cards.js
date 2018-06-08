@@ -1,7 +1,5 @@
 import flipSnap from 'flipsnap';
-import {
-    debounce
-} from 'modules/util';
+import { debounce } from 'modules/util';
 
 function init() {
     window.articleCardsInserter = articleCardsInserter;
@@ -12,7 +10,7 @@ function init() {
 }
 
 function articleCardsInserter(html) {
-    var relatedContentWrapper = document.getElementsByClassName('related-content__wrapper')[0];
+    const relatedContentWrapper = document.getElementsByClassName('related-content__wrapper')[0];
 
     if (relatedContentWrapper) {
         if (!html) {
@@ -25,15 +23,15 @@ function articleCardsInserter(html) {
 }
 
 function articleCardsFailed() {
-    var relatedContent = document.getElementsByClassName('related-content')[0];
+    const relatedContent = document.getElementsByClassName('related-content')[0];
 
     if (relatedContent) {
-        relatedContent.classList.add('related-content--has-failed');       
+        relatedContent.classList.add('related-content--has-failed');
     }
 }
 
 function snapToGrid() {
-    var relatedContentList = document.getElementsByClassName('related-content__list')[0];
+    const relatedContentList = document.getElementsByClassName('related-content__list')[0];
 
     if (relatedContentList) {
         setUpFlipSnap(relatedContentList);
@@ -50,12 +48,12 @@ function onResize(relatedContentList) {
 }
 
 function setUpFlipSnap(relatedContentList) {
-    var container = relatedContentList.parentNode,
+    let container = relatedContentList.parentNode,
         containerStyle = container.currentStyle || window.getComputedStyle(container),
-        containerWidth = container.offsetWidth - parseInt(containerStyle.paddingRight.replace('px','')) - parseInt(containerStyle.paddingLeft.replace('px',''));
+        containerWidth = container.offsetWidth - parseInt(containerStyle.paddingRight.replace('px', '')) - parseInt(containerStyle.paddingLeft.replace('px', ''));
 
-    // add a class with the number of child items, so we can set the widths based on that 
-    relatedContentList.classList.add('related-content__list--items-' + relatedContentList.childElementCount);
+    // add a class with the number of child items, so we can set the widths based on that
+    relatedContentList.classList.add(`related-content__list--items-${relatedContentList.childElementCount}`);
 
     if (relatedContentList.scrollWidth > containerWidth) {
         flipSnap(relatedContentList);
@@ -65,7 +63,7 @@ function setUpFlipSnap(relatedContentList) {
             relatedContentList.addEventListener('touchstart', onTouchStart);
             relatedContentList.addEventListener('touchend', onTouchEnd);
         }
-    }            
+    }
 }
 
 function onTouchStart() {
@@ -73,9 +71,7 @@ function onTouchStart() {
 }
 
 function onTouchEnd() {
-    window.GuardianJSInterface.registerRelatedCardsTouch(false);   
+    window.GuardianJSInterface.registerRelatedCardsTouch(false);
 }
 
-export {
-    init
-};
+export { init };
