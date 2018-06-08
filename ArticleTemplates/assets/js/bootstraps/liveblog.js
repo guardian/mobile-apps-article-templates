@@ -1,5 +1,5 @@
 import { init as initRelativeDates } from 'modules/relativeDates';
-import { 
+import {
     init as initTwitter,
     checkForTweets,
 } from 'modules/twitter';
@@ -21,7 +21,7 @@ import {
 } from 'modules/util';
 import { trackLiveBlogEpic } from 'modules/creativeInjector';
 
-var newBlockHtml,
+let newBlockHtml,
     liveblogStartPos;
 
 function updateBlocksOnScroll() {
@@ -31,7 +31,7 @@ function updateBlocksOnScroll() {
 }
 
 function addNewBlockToBlog(insertAfterElem, block) {
-    var insertBeforeElem = insertAfterElem.nextSibling;
+    let insertBeforeElem = insertAfterElem.nextSibling;
 
     block.classList.add('animated');
     block.classList.add('slideinright');
@@ -56,8 +56,8 @@ function checkInjectedComponents(newBlocksAdded) {
             If newBlocksAdded wait 700ms to
             check for youtube video atoms as blocks slides in
             from right over 600ms.
-        **/
-        setTimeout(function() {
+        * */
+        setTimeout(() => {
             checkForVideos();
         }, 650);
     } else {
@@ -69,7 +69,7 @@ function checkInjectedComponents(newBlocksAdded) {
 }
 
 function liveblogNewBlockDump() {
-    var articleBody = document.getElementsByClassName('article__body')[0],
+    let articleBody = document.getElementsByClassName('article__body')[0],
         images = [],
         blocks,
         counter = 0,
@@ -82,12 +82,12 @@ function liveblogNewBlockDump() {
 
         for (i = newBlockElems.length; i > 0; i--) {
             addNewBlockToBlog(insertAfterElem, newBlockElems[i - 1]);
-        }            
+        }
 
         blocks = articleBody.getElementsByClassName('block');
 
         while (counter !== newBlockElems.length) {
-            images.push.apply(images, blocks[counter].getElementsByTagName('img'));
+            images.push(...blocks[counter].getElementsByTagName('img'));
             counter++;
         }
 
@@ -109,7 +109,7 @@ function liveblogNewBlockDump() {
 }
 
 function liveMore() {
-    var liveMoreElem = document.getElementsByClassName('more--live-blogs')[0];
+    const liveMoreElem = document.getElementsByClassName('more--live-blogs')[0];
 
     if (liveMoreElem) {
         liveMoreElem.addEventListener('click', onLiveMoreClick.bind(null, liveMoreElem));
@@ -117,7 +117,7 @@ function liveMore() {
 }
 
 function onLiveMoreClick(liveMoreElem) {
-    var loadingElem = document.getElementsByClassName('loading--liveblog')[0];
+    const loadingElem = document.getElementsByClassName('loading--liveblog')[0];
 
     liveMoreElem.style.display = 'none';
 
@@ -129,7 +129,7 @@ function onLiveMoreClick(liveMoreElem) {
 }
 
 function liveblogDeleteBlock(blockID) {
-    var block = document.getElementById(blockID);
+    const block = document.getElementById(blockID);
 
     if (block) {
         block.parentNode.removeChild(block);
@@ -137,7 +137,7 @@ function liveblogDeleteBlock(blockID) {
 }
 
 function liveblogUpdateBlock(blockID, html) {
-    var block = document.getElementById(blockID),
+    let block = document.getElementById(blockID),
         newBlock = getElemsFromHTML(html)[0];
 
     if (block && newBlock) {
@@ -146,7 +146,7 @@ function liveblogUpdateBlock(blockID, html) {
 }
 
 function liveblogLoadMore(html) {
-    var i,
+    let i,
         images = [],
         blocks,
         articleBody = document.getElementsByClassName('article__body')[0],
@@ -162,7 +162,7 @@ function liveblogLoadMore(html) {
     blocks = articleBody.getElementsByClassName('block');
 
     for (i = blocks.length; i > oldBlockCount; i--) {
-        images.push.apply(images, blocks[i-1].getElementsByTagName('img'));
+        images.push(...blocks[i - 1].getElementsByTagName('img'));
     }
 
     formatImages(images);
@@ -175,7 +175,7 @@ function liveblogLoadMore(html) {
 }
 
 function liveblogTime() {
-    var i,
+    let i,
         blockTimes,
         toneLiveBlogElems = document.getElementsByClassName('tone--liveBlog');
 
@@ -191,10 +191,9 @@ function liveblogTime() {
 }
 
 function showLiveMore(show) {
-    var liveMoreElem = document.getElementsByClassName('more--live-blogs')[0];
+    const liveMoreElem = document.getElementsByClassName('more--live-blogs')[0];
 
     if (liveMoreElem) {
-
         if (show) {
             liveMoreElem.style.display = 'block';
         } else {
@@ -228,7 +227,7 @@ function setupGlobals() {
 }
 
 function keyEvents() {
-    var keyEventsToggle = document.getElementsByClassName('key-events__toggle')[0],
+    let keyEventsToggle = document.getElementsByClassName('key-events__toggle')[0],
         keyEventLinks = document.getElementsByClassName('key-event__link');
 
     if (keyEventsToggle) {
@@ -241,7 +240,7 @@ function keyEvents() {
 }
 
 function liveblogNewKeyEvent(html) {
-    var i,
+    let i,
         j,
         keyEventsList = document.getElementsByClassName('key-events__list')[0],
         newKeyEventLinks;
@@ -272,23 +271,23 @@ function unhighlightKeyEventLink(link) {
 }
 
 function updateKeyEventCount(count) {
-    var i,
+    let i,
         keyEventsCounter = document.getElementsByClassName('key-events__counter')[0],
         keyEvents = document.getElementsByClassName('key-events')[0];
 
-    keyEventsCounter.innerHTML = '(' + count + ')';
+    keyEventsCounter.innerHTML = `(${count})`;
 
     for (i = keyEvents.classList.length; i > 0; i--) {
         if (keyEvents.classList[i - 1].match(/(key-events--)+[0-9]/g)) {
             keyEvents.classList.remove(keyEvents.classList[i - 1]);
-        }    
+        }
     }
 
-    keyEvents.classList.add('key-events--' + count);
+    keyEvents.classList.add(`key-events--${count}`);
 }
 
 function captureKeyEventClicks(links) {
-    var i;
+    let i;
 
     for (i = 0; i < links.length; i++) {
         links[i].addEventListener('click', handleKeyEventClick);
@@ -300,7 +299,7 @@ function handleKeyEventClick(evt) {
 }
 
 function showHideKeyEvents() {
-    var keyEvents = document.getElementsByClassName('key-events')[0];
+    const keyEvents = document.getElementsByClassName('key-events')[0];
 
     if (keyEvents.classList.contains('key-events--expanded')) {
         keyEvents.classList.remove('key-events--expanded');
@@ -310,11 +309,11 @@ function showHideKeyEvents() {
 }
 
 function removeMinuteElems() {
-    var i,
+    let i,
         minuteElems = document.querySelectorAll('.minute-logo-container, .minute-vertical-rule, .the-minute__header');
 
     for (i = minuteElems.length; i > 0; i--) {
-        minuteElems[i-1].parentNode.removeChild(minuteElems[i-1]);
+        minuteElems[i - 1].parentNode.removeChild(minuteElems[i - 1]);
     }
 }
 
@@ -340,6 +339,4 @@ function init() {
     }
 }
 
-export {
-    init
-};
+export { init };

@@ -8,6 +8,34 @@ import { init as creativeInjectorInit } from 'modules/creativeInjector';
 import { init as messengerInit } from 'modules/messenger';
 import { init as resizeInit } from 'modules/messenger/resize';
 
+function setupGlobals() {
+    window.articleOutbrainInserter = initOutbrain;
+    window.applyNativeFunctionCall('articleOutbrainInserter');
+}
+
+function richLinkTracking() {
+    let i;
+    let j;
+    let href;
+    let link;
+    let links;
+    let richLink;
+    const richLinks = document.getElementsByClassName('element-rich-link');
+
+    for (i = 0; i < richLinks.length; i++) {
+        richLink = richLinks[i];
+        links = richLink.getElementsByTagName('a');
+
+        for (j = 0; j < links.length; j++) {
+            link = links[j];
+            href = link.getAttribute('href');
+            if (href !== '') {
+                link.setAttribute('href', `${href}?ArticleReferrer=RichLink`);
+            }
+        }
+    }
+}
+
 function init() {
     setupGlobals();
     youtubeInit();
@@ -20,34 +48,4 @@ function init() {
     richLinkTracking();
 }
 
-function setupGlobals() {
-    window.articleOutbrainInserter = initOutbrain;
-    window.applyNativeFunctionCall('articleOutbrainInserter');
-}
-
-function richLinkTracking() {
-    var i,
-        j,
-        href,
-        link,
-        links,
-        richLink,
-        richLinks = document.getElementsByClassName('element-rich-link');
-
-    for (i = 0; i < richLinks.length; i++) {
-        richLink = richLinks[i];
-        links = richLink.getElementsByTagName('a');
-
-        for (j = 0; j < links.length; j++) {
-            link = links[j];
-            href = link.getAttribute('href');
-            if (href !== '') {
-                link.setAttribute('href', href + '?ArticleReferrer=RichLink');
-            }
-        }
-    }
-}
-
-export {
-    init,
-};
+export { init };

@@ -1,19 +1,19 @@
 import { debounce } from 'modules/util';
 
-var galleryProps,
+let galleryProps,
     galleryRows;
 
-var PROPS = {
-        0 :{
-            imagesPerRow: 3
-        },
-        650: {
-            imagesPerRow: 4
-        },
-        1200: {
-            imagesPerRow: 5
-        }
-    };
+const PROPS = {
+    0: {
+        imagesPerRow: 3,
+    },
+    650: {
+        imagesPerRow: 4,
+    },
+    1200: {
+        imagesPerRow: 5,
+    },
+};
 
 function init() {
     buildGallery();
@@ -27,10 +27,10 @@ function buildGallery() {
 }
 
 function setGalleryProps() {
-    var width;
+    let width;
 
     for (width in PROPS) {
-        if(PROPS.hasOwnProperty(width)) {
+        if (PROPS.hasOwnProperty(width)) {
             if (window.innerWidth > parseInt(width, 10)) {
                 galleryProps = PROPS[width];
             } else {
@@ -41,15 +41,15 @@ function setGalleryProps() {
 }
 
 function addImagesToRows() {
-    var i,
+    let i,
         images = document.body.getElementsByClassName('gallery__image-container'),
         rows = [
-            []
+            [],
         ];
 
-    // loop through images and add to rows  
+    // loop through images and add to rows
     for (i = images.length - 1; i >= 0; i--) {
-        // if current row is full create new row 
+        // if current row is full create new row
         if (rows[0].length === galleryProps.imagesPerRow) {
             rows.unshift([]);
         }
@@ -66,7 +66,9 @@ function addImagesToRows() {
 }
 
 function moveImagesToRows(rows) {
-    var i, j, offset;
+    let i,
+        j,
+        offset;
 
     for (i = 0; i < rows.length; i++) {
         if (i === rows.length - 1) {
@@ -85,10 +87,11 @@ function moveImagesToRows(rows) {
             }
         }
     }
-} 
+}
 
 function addFlexClass() {
-    var i, j;
+    let i,
+        j;
 
     // for each row
     for (i = 0; i < galleryRows.length; i++) {
@@ -97,13 +100,13 @@ function addFlexClass() {
             // remove flex class
             removeFlexClass(galleryRows[i][j]);
             // add new flex class
-            galleryRows[i][j].classList.add('gallery__image-container--flex' + galleryRows[i].length);
+            galleryRows[i][j].classList.add(`gallery__image-container--flex${galleryRows[i].length}`);
         }
     }
 }
 
 function removeFlexClass(imageElem) {
-    var i;
+    let i;
 
     // if imageElem has class name with "flex" in it then remove class
     for (i = 0; i < imageElem.classList.length; i++) {
@@ -113,6 +116,4 @@ function removeFlexClass(imageElem) {
     }
 }
 
-export {
-    init
-};
+export { init };

@@ -1,37 +1,37 @@
 function newCricketData(newHeader, newScorecard) {
-    var header = document.getElementById('cricket-header');
-    var scorecard = document.getElementById('cricket-scorecard');
+    const header = document.getElementById('cricket-header');
+    const scorecard = document.getElementById('cricket-scorecard');
 
     if (header) {
         header.innerHTML = newHeader;
     }
-    
+
     if (scorecard) {
         scorecard.innerHTML = newScorecard;
     }
 }
 
 function newCricketStatus(matchStatus) {
-    var cricketWrapper = document.getElementsByClassName('cricket')[0];
-    
+    const cricketWrapper = document.getElementsByClassName('cricket')[0];
+
     if (cricketWrapper && matchStatus === 'pre-match') {
-        cricketWrapper.classList.add('cricket--' + matchStatus);
+        cricketWrapper.classList.add(`cricket--${matchStatus}`);
     } else {
         cricketWrapper.classList.remove('cricket--pre-match');
     }
 }
 
 function cricketMatchInfoFailed() {
-    var header = document.getElementById('cricket-header');
-    var scorecard = document.getElementById('cricket-scorecard');
-    var cricketTabStats = document.getElementById('cricket__tab--stats');
-    var cricketTabPanelStats = document.getElementById('cricket__tabpanel--stats');
+    const header = document.getElementById('cricket-header');
+    const scorecard = document.getElementById('cricket-scorecard');
+    const cricketTabStats = document.getElementById('cricket__tab--stats');
+    const cricketTabPanelStats = document.getElementById('cricket__tabpanel--stats');
 
     if (cricketTabStats && cricketTabStats.getAttribute('aria-selected') === 'true') {
-        var firstTab = document.querySelector('.tabs a:first-of-type');
+        const firstTab = document.querySelector('.tabs a:first-of-type');
 
         if (firstTab) {
-            var firstPanel = document.querySelector(firstTab.getAttribute('href'));
+            const firstPanel = document.querySelector(firstTab.getAttribute('href'));
 
             firstTab.setAttribute('aria-selected', 'true');
             firstPanel.style.display = 'block';
@@ -57,6 +57,4 @@ function init() {
     window.cricketMatchInfoFailed = cricketMatchInfoFailed;
 }
 
-export {
-    init
-};
+export { init };

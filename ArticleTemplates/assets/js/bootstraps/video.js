@@ -6,6 +6,4 @@ const init = () => {
     youtubeInit();
 };
 
-export {
-    init
-};
+export { init };

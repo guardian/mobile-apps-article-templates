@@ -1,4 +1,4 @@
-import { 
+import {
     svg,
     layout,
     select,
@@ -7,32 +7,30 @@ import { init as initYoutube } from 'modules/youtube';
 import { getElemsFromHTML } from 'modules/util';
 
 function footballChart(homeTeam, awayTeam) {
-    var pieChart = document.getElementsByClassName('pie-chart--possession')[0],
+    let pieChart = document.getElementsByClassName('pie-chart--possession')[0],
         data = [
             [awayTeam, (pieChart && pieChart.getAttribute('data-away')) || null, 'away'],
-            [homeTeam, (pieChart && pieChart.getAttribute('data-home')) || null, 'home']
+            [homeTeam, (pieChart && pieChart.getAttribute('data-home')) || null, 'home'],
         ],
         width = 250,
         height = 250,
         radius = Math.min(height, width) / 2,
 
-    arc = svg.arc()
-        .outerRadius(radius)
-        .innerRadius(radius / 3),
+        arc = svg.arc()
+            .outerRadius(radius)
+            .innerRadius(radius / 3),
 
-    pie = layout.pie()
-        .sort(null)
-        .value(function (d) {
-            return d[1];
-        }),
+        pie = layout.pie()
+            .sort(null)
+            .value((d) => d[1]),
 
-    // Init d3 chart
-    vis = select('.pie-chart')
-        .attr('preserveAspectRatio', 'xMinYMin slice')
-        .attr('viewBox', '0 0 250 250')
-        .append('g')
-        .attr('class', 'pie-chart__inner')
-        .attr('transform', 'translate(' + width / 2 + ',' + width / 2 + ')');
+        // Init d3 chart
+        vis = select('.pie-chart')
+            .attr('preserveAspectRatio', 'xMinYMin slice')
+            .attr('viewBox', '0 0 250 250')
+            .append('g')
+            .attr('class', 'pie-chart__inner')
+            .attr('transform', `translate(${width / 2},${width / 2})`);
 
     // Add percentage symbol to center
     vis.append('text')
@@ -41,11 +39,11 @@ function footballChart(homeTeam, awayTeam) {
         .attr('transform', 'translate(-18,15)');
 
     // Background
-    var backgroundData = [['null', 100]],
+    let backgroundData = [['null', 100]],
 
-    backgroundarc = svg.arc()
-        .outerRadius(radius - 1)
-        .innerRadius((radius / 3) + 1);
+        backgroundarc = svg.arc()
+            .outerRadius(radius - 1)
+            .innerRadius((radius / 3) + 1);
 
     vis.append('path')
         .data(pie(backgroundData))
@@ -53,33 +51,29 @@ function footballChart(homeTeam, awayTeam) {
         .attr('d', backgroundarc);
 
     // Draw Segements
-    var g = vis.selectAll('.pie-chart__segment')
+    const g = vis.selectAll('.pie-chart__segment')
         .data(pie(data))
         .enter().append('g')
         .attr('class', 'pie-chart__segment');
 
     g.append('path')
-        .attr('class', function(d) {
-            return 'pie-chart__segment-arc pie-chart__segment-arc--' + d.data[2];
-        })
+        .attr('class', (d) => `pie-chart__segment-arc pie-chart__segment-arc--${d.data[2]}`)
         .attr('d', arc);
 
     // Add Text Labels
-    var tblock = vis.selectAll('.pie-chart__label')
+    const tblock = vis.selectAll('.pie-chart__label')
         .data(pie(data))
         .enter().append('foreignObject')
-        .attr('class', function(d) {
-            return 'pie-chart__label pie-chart__label--' + d.data[2];
-        })
+        .attr('class', (d) => `pie-chart__label pie-chart__label--${d.data[2]}`)
         .attr('width', 75)
         .attr('height', 50)
         .attr('text-anchor', 'middle')
-        .attr('transform', function (d) {
+        .attr('transform', (d) => {
             d.innerRadius = 0;
             d.outerRadius = radius;
-            var textpoint = arc.centroid(d);
+            let textpoint = arc.centroid(d);
             textpoint = [textpoint[0] - 35, textpoint[1] - 25];
-            return 'translate(' + textpoint + ')';
+            return `translate(${textpoint})`;
         });
 
     tblock.append('xhtml:div')
@@ -87,38 +81,34 @@ function footballChart(homeTeam, awayTeam) {
         .attr('width', '50')
         .attr('x', 0)
         .attr('dy', '1.2em')
-        .text(function (d) {
-            return d.data[0];
-        });
+        .text((d) => d.data[0]);
 
     tblock.append('xhtml:div')
         .attr('class', 'pie-chart__label-value')
         .attr('x', 0)
         .attr('dy', '1.2em')
-        .text(function (d) {
-            return d.data[1];
-        });
+        .text((d) => d.data[1]);
 }
 
 function footballGoal(side, newScore, scorerHtml, aggScore) {
-    var i,
+    let i,
         matchSummary,
-        matchSummarySide = document.getElementsByClassName('match-summary__' + side + '__score__label')[0],
-        matchSummaryParagraphs = document.querySelectorAll('.match-summary__' + side + '__info p'),
-        matchSummaryInfo = document.getElementsByClassName('match-summary__' + side + '__info')[0];
+        matchSummarySide = document.getElementsByClassName(`match-summary__${side}__score__label`)[0],
+        matchSummaryParagraphs = document.querySelectorAll(`.match-summary__${side}__info p`),
+        matchSummaryInfo = document.getElementsByClassName(`match-summary__${side}__info`)[0];
 
     if (aggScore) {
-        matchSummary = document.getElementsByClassName('match-summary')[0];    
-        
+        matchSummary = document.getElementsByClassName('match-summary')[0];
+
         if (matchSummary) {
             matchSummary.classList.add('is-agg');
         }
-        
+
         if (matchSummarySide) {
-            matchSummarySide.innerHTML = newScore + ' <span class="match-summary__score__agg">' + aggScore + '</span>';
+            matchSummarySide.innerHTML = `${newScore} <span class="match-summary__score__agg">${aggScore}</span>`;
         }
     } else if (matchSummarySide) {
-        matchSummarySide.innerHTML = newScore + ' <span class="match-summary__score__agg"></span>';
+        matchSummarySide.innerHTML = `${newScore} <span class="match-summary__score__agg"></span>`;
     }
 
     for (i = 0; i < matchSummaryParagraphs.length; i++) {
@@ -126,12 +116,12 @@ function footballGoal(side, newScore, scorerHtml, aggScore) {
     }
 
     if (matchSummaryInfo) {
-        matchSummaryInfo.innerHTML = matchSummaryInfo.innerHTML + scorerHtml;
+        matchSummaryInfo.innerHTML += scorerHtml;
     }
 }
 
 function footballStatus(className, label) {
-    var i,
+    let i,
         matchStatus,
         matchTime;
 
@@ -140,24 +130,24 @@ function footballStatus(className, label) {
 
         if (matchStatus) {
             for (i = matchStatus.classList.length; i > 0; i--) {
-                if (matchStatus.classList[i-1].indexOf('match-status--') !== - 1) {
-                    matchStatus.classList.remove(matchStatus.classList[i]);   
+                if (matchStatus.classList[i - 1].indexOf('match-status--') !== -1) {
+                    matchStatus.classList.remove(matchStatus.classList[i]);
                 }
             }
 
-            matchStatus.classList.add('match-status--' + className);
-            
+            matchStatus.classList.add(`match-status--${className}`);
+
             matchTime = document.getElementsByClassName('match-status__time')[0];
 
             if (matchTime) {
-                matchTime.innerText = label;    
+                matchTime.innerText = label;
             }
         }
     }
 }
 
 function footballMatchInfo(html, replaceContent, homeTeam, awayTeam) {
-    var elemsToAppend,
+    let elemsToAppend,
         footballStatsPanel = document.getElementById('football__tabpanel--stats'),
         i;
 
@@ -170,7 +160,7 @@ function footballMatchInfo(html, replaceContent, homeTeam, awayTeam) {
     for (i = 0; i < elemsToAppend.length; i++) {
         footballStatsPanel.appendChild(elemsToAppend[i]);
     }
-    
+
     footballChart(homeTeam, awayTeam);
 
     if (document.querySelectorAll('[aria-selected="true"]').length === 0) {
@@ -179,7 +169,7 @@ function footballMatchInfo(html, replaceContent, homeTeam, awayTeam) {
 }
 
 function footballMatchInfoFailed() {
-    var tabToShow,
+    let tabToShow,
         panelToShow,
         footballStatsPanel = document.getElementById('football__tabpanel--stats'),
         footballStatsTab = document.querySelector('.tabs [href="#football__tabpanel--stats"]');
@@ -221,6 +211,4 @@ function init() {
     initYoutube();
 }
 
-export {
-    init
-};
+export { init };

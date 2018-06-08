@@ -1,28 +1,49 @@
 import {
     getElementOffset,
     debounce,
-    signalDevice
+    signalDevice,
 } from 'modules/util';
 
-var audioCurrent,
-    down,
-    slider1;
+let audioCurrent;
+let down;
+let slider1;
 
 function getColor() {
-    var isAudio = !document.body.classList.contains('tone--podcast') && document.body.classList.contains('article--audio');
-    
-    return GU.opts.isAdvertising ? 'rgba(105, 209, 202, 0.15)' : (isAudio ? 'rgba(255, 187, 0, 0.05)' : 'rgba(167, 216, 242, 0.10)');
+    const isAudio = !document.body.classList.contains('tone--podcast') && document.body.classList.contains('article--audio');
+
+    if (GU.opts.isAdvertising) {
+        return 'rgba(105, 209, 202, 0.15)';
+    } else if (isAudio) {
+        return 'rgba(255, 187, 0, 0.05)';
+    }
+
+    return 'rgba(167, 216, 242, 0.10)';
 }
 
 function secondsTimeSpanToHMS(s) {
-    var m = Math.floor(s / 60);
-    s -= m * 60;
-    return (m < 10 ? '0' + m : m) + ':' + (s < 10 ? '0' + s : s);
+    const mins = Math.floor(s / 60);
+    const secs = (s - mins) * 60;
+
+    return `${mins < 10 ? `0${mins}` : mins}:${secs < 10 ? `0${secs}` : secs}`;
+}
+
+function changeSlider(duration, percentage) {
+    const audioPlayerSliderPlayed = document.getElementsByClassName('audio-player__slider__played')[0];
+    const audioPlayerSliderRemaining = document.getElementsByClassName('audio-player__slider__remaining')[0];
+
+    audioCurrent = percentage;
+
+    if (audioPlayerSliderPlayed) {
+        audioPlayerSliderPlayed.value = secondsTimeSpanToHMS(percentage);
+    }
+
+    if (audioPlayerSliderRemaining) {
+        audioPlayerSliderRemaining.value = `-${secondsTimeSpanToHMS(duration - percentage)}`;
+    }
 }
 
 function superAudioSlider(current, duration, platform) {
-    var audioPlayerSliderKnob,
-        cutoutContainer = document.getElementsByClassName('cutout__container')[0];
+    const cutoutContainer = document.getElementsByClassName('cutout__container')[0];
 
     if (platform === 'iOS') {
         if (down === 1) {
@@ -31,12 +52,12 @@ function superAudioSlider(current, duration, platform) {
     } else if ((!cutoutContainer || !cutoutContainer.dataset.background) && !document.body.classList.contains('media')) {
         window.audioBackground(duration);
 
-        window.addEventListener('resize', debounce(function () {
+        window.addEventListener('resize', debounce(() => {
             window.audioBackground(duration);
         }, 100));
     }
 
-    audioPlayerSliderKnob = document.getElementsByClassName('audio-player__slider__knob')[0];
+    const audioPlayerSliderKnob = document.getElementsByClassName('audio-player__slider__knob')[0];
 
     if (audioPlayerSliderKnob) {
         audioPlayerSliderKnob.removeAttribute('style');
@@ -46,23 +67,8 @@ function superAudioSlider(current, duration, platform) {
         value: current,
         min: 0,
         max: duration,
-        change: changeSlider.bind(null, duration)
+        change: changeSlider.bind(null, duration),
     });
-}
-
-function changeSlider(duration, percentage) {
-    var audioPlayerSliderPlayed = document.getElementsByClassName('audio-player__slider__played')[0],
-        audioPlayerSliderRemaining = document.getElementsByClassName('audio-player__slider__remaining')[0];            
-
-    audioCurrent = percentage;
-
-    if (audioPlayerSliderPlayed) {
-        audioPlayerSliderPlayed.value = secondsTimeSpanToHMS(percentage);
-    }
-
-    if (audioPlayerSliderRemaining) {
-        audioPlayerSliderRemaining.value = '-' + secondsTimeSpanToHMS(duration - percentage);
-    }
 }
 
 function updateSlider(current, platform) {
@@ -78,16 +84,16 @@ function updateSlider(current, platform) {
 }
 
 function audioSlider() {
-    document.addEventListener('touchstart', function () {
+    document.addEventListener('touchstart', () => {
         down = 1;
     }, false);
 
-    document.addEventListener('touchend', function () {
+    document.addEventListener('touchend', () => {
         down = 0;
     }, false);
 
     /* Caution: Hot Mess */
-    MobileRangeSlider.prototype.start = function () {
+    MobileRangeSlider.prototype.start = function (event) {
         if (GU.opts.platform === 'android') {
             window.GuardianJSInterface.registerRelatedCardsTouch(true);
         }
@@ -106,12 +112,12 @@ function audioSlider() {
         this.removeEvents('move');
         this.removeEvents('end');
 
-        signalDevice('setPlayerTime/' + audioCurrent);
+        signalDevice(`setPlayerTime/${audioCurrent}`);
     };
 }
 
 function audioPlay() {
-    var button = document.getElementsByClassName('audio-player__button')[0];
+    const button = document.getElementsByClassName('audio-player__button')[0];
 
     if (button) {
         button.classList.add('pause');
@@ -119,7 +125,7 @@ function audioPlay() {
 }
 
 function audioStop() {
-    var button = document.getElementsByClassName('audio-player__button')[0];
+    const button = document.getElementsByClassName('audio-player__button')[0];
 
     if (button) {
         button.classList.remove('pause');
@@ -127,24 +133,53 @@ function audioStop() {
 }
 
 function audioLoad() {
-    var button = document.getElementsByClassName('audio-player__button')[0],
-        loadingButton = document.getElementsByClassName('audio-player__button--loading')[0];
+    const button = document.getElementsByClassName('audio-player__button')[0];
+    const loadingButton = document.getElementsByClassName('audio-player__button--loading')[0];
 
     button.style.display = 'none';
     loadingButton.style.display = 'block';
 }
 
 function audioFinishLoad() {
-    var button = document.getElementsByClassName('audio-player__button')[0],
-        loadingButton = document.getElementsByClassName('audio-player__button--loading')[0];
+    const button = document.getElementsByClassName('audio-player__button')[0];
+    const loadingButton = document.getElementsByClassName('audio-player__button--loading')[0];
 
     button.style.display = 'block';
     loadingButton.style.display = 'none';
 }
 
+function styleCutoutContainer(duration, cutoutContainer) {
+    const articleHeader = document.getElementsByClassName('article__header')[0];
+    const numOfCircles = Math.min(10, Math.floor((duration / 60) / 2)) + 2;
+    const h = getElementOffset(cutoutContainer).height;
+    const w = getElementOffset(cutoutContainer).width;
+    let size = (h * w) / 8000;
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = w;
+    canvas.height = h;
+    canvas.className = 'cutout__background';
+
+    // Draw Circles
+    for (let i = 0; i < numOfCircles; i++) {
+        const x = Math.floor((Math.random() * (w - 0)) + 1);
+        ctx.beginPath();
+        ctx.arc(x, h / 2, size, 0, Math.PI * 2, true);
+        ctx.closePath();
+        ctx.fillStyle = getColor();
+        ctx.fill();
+        size *= 1.2;
+    }
+
+
+    articleHeader.appendChild(canvas);
+    cutoutContainer.dataset.background = 'true';
+}
+
 function audioBackground(duration) {
-    var cutoutBackground = document.getElementsByClassName('cutout__background')[0],
-        cutoutContainer = document.getElementsByClassName('cutout__container')[0];
+    const cutoutBackground = document.getElementsByClassName('cutout__background')[0];
+    const cutoutContainer = document.getElementsByClassName('cutout__container')[0];
 
     if (cutoutBackground) {
         cutoutBackground.parentNode.removeChild(cutoutBackground);
@@ -153,35 +188,6 @@ function audioBackground(duration) {
     if (cutoutContainer) {
         styleCutoutContainer(duration, cutoutContainer);
     }
-}
-
-function styleCutoutContainer(duration, cutoutContainer) {
-    var articleHeader = document.getElementsByClassName('article__header')[0],
-        numOfCircles = Math.min(10, Math.floor((duration / 60) / 2)) + 2,
-        h = getElementOffset(cutoutContainer).height,
-        w = getElementOffset(cutoutContainer).width,
-        size = (h * w) / 8000,
-        canvas = document.createElement('canvas'),
-        ctx = canvas.getContext('2d');
-
-    canvas.width = w;
-    canvas.height = h;
-    canvas.className = 'cutout__background';
-
-    // Draw Circles
-    for (var i = 0; i < numOfCircles; i++) {
-        var x = Math.floor(Math.random() * (w - 0) + 1);
-        ctx.beginPath();
-        ctx.arc(x, h / 2, size, 0, Math.PI * 2, true);
-        ctx.closePath();
-        ctx.fillStyle = getColor();
-        ctx.fill();
-        size = size * 1.2;
-    }
-
-
-    articleHeader.appendChild(canvas);
-    cutoutContainer.dataset.background = 'true';
 }
 
 function setupGlobals() {
@@ -205,6 +211,4 @@ function init() {
     setupGlobals();
 }
 
-export {
-    init
-};
+export { init };
