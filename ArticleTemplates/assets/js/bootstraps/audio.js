@@ -42,7 +42,7 @@ function superAudioSlider(current, duration, platform) {
         audioPlayerSliderKnob.removeAttribute('style');
     }
 
-    slider1 = new MobileRangeSlider('audio-player__slider', {
+    slider1 = new MobileRangeSlider(document.querySelector('.audio-player__slider'), {
         value: current,
         min: 0,
         max: duration,
@@ -72,7 +72,9 @@ function updateSlider(current, platform) {
         }
     }
 
-    slider1.setValue(current);
+    if (slider1) {
+        slider1.setValue(current);
+    }
 }
 
 function audioSlider() {

@@ -62,6 +62,9 @@ module.exports = (env, argv) => {
                 {
                     from: './node_modules/mobile-range-slider/mobile-range-slider.js',
                     to: path.resolve(__dirname, 'ArticleTemplates/assets/build'),
+                }, {
+                    from: './node_modules/smooth-scroll/dist/js/smooth-scroll.min.js',
+                    to: path.resolve(__dirname, 'ArticleTemplates/assets/build'),
                 },
             ]),
             new MiniCssExtractPlugin({
