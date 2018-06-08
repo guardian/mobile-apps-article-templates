@@ -1,7 +1,5 @@
 function init(register) {
-    register('resize', function(specs, ret, iframe) {
-        return resize(specs, iframe);
-    });
+    register('resize', (specs, ret, iframe) => resize(specs, iframe));
 }
 
 function resize(specs, iframe) {
@@ -28,6 +26,4 @@ function normalise(length) {
     return matches[1] + (matches[2] === undefined ? defaultUnit : matches[2]);
 }
 
-export {
-    init
-};
+export { init };

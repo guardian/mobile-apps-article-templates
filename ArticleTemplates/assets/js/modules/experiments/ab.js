@@ -1,11 +1,11 @@
 /* --- EXAMPLE START --- */
 
-// var tests = { 
+// var tests = {
 //     lowFrictionParticipation: lowFrictionParticipation.init
 // }
 
 /* --- EXAMPLE END --- */
-    
+
 var tests = {};
 
 function init() {
@@ -23,6 +23,4 @@ function init() {
     }
 }
 
-export {
-    init
-};
+export { init };

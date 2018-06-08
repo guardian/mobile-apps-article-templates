@@ -25,9 +25,9 @@ module.exports = (env, argv) => {
                     exclude: /node_modules/,
                     use: [
                         "babel-loader",
-                        // {
-                        //     loader: "eslint-loader",
-                        // }
+                        {
+                            loader: "eslint-loader",
+                        }
                     ],
                 },
                 {
