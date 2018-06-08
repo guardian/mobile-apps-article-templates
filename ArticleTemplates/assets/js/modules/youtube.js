@@ -15,6 +15,11 @@ var videos = [],
     sdkReportInitialised = false,
     sdkPoller;
 
+var PLAY_STATE = 'PLAYING';
+var END_STATE = 'ENDED';
+var PAUSE_STATE = 'PAUSED';
+var CUED_STATE = 'CUED';
+
 function init() {
     setStateHandlers();
     checkForVideos();
@@ -28,11 +33,9 @@ function setStateHandlers() {
         as this is handled by Android
     **/
     if (!GU.opts.nativeYoutubeEnabled) {
-        stateHandlers = {
-            'ENDED': onPlayerEnded,
-            'PLAYING': onPlayerPlaying,
-            'PAUSED': onPlayerPaused
-        };
+        stateHandlers[END_STATE] = onPlayerEnded;
+        stateHandlers[PLAY_STATE] = onPlayerPlaying;
+        stateHandlers[PAUSE_STATE] = onPlayerPaused;
     }
 }
 
@@ -120,7 +123,7 @@ function buildAndSendSdkReport() {
     var newSdkReport = buildSdkReport();
 
     if (newSdkReport !== sdkReport) {
-        signalDevice('youtubeAtomPosition/' + newSdkReport);
+        util.signalDevice('youtubeAtomPosition/' + newSdkReport);
         sdkReport = newSdkReport;
     }
 }
@@ -130,7 +133,7 @@ function buildSdkReport() {
 }
 
 function getSdkReportPosProps(sdkPlaceholder) {
-    var posProps = getElementOffset(sdkPlaceholder);
+    var posProps = util.getElementOffset(sdkPlaceholder);
     var atom = sdkPlaceholder.closest('[data-atom-id]');
 
     posProps.id = atom.dataset.atomId;
@@ -177,7 +180,8 @@ function initialiseVideos() {
             players[video.id] = {
                 player: setupPlayer(video.id),
                 iframe: video,
-                pendingTrackingCalls: [25, 50, 75]
+                pendingTrackingCalls: [25, 50, 75],
+                currentState: CUED_STATE
             };
 
             if (hasPlaceholderImgSrc(placeholder)) {
@@ -254,7 +258,7 @@ function onPlayerPlaying(id) {
     stopPlayers(id);
     setProgressTracker(id);
 
-    if (currentTime === 0) {
+    if (players[id].currentState === CUED_STATE) {
         if (players[id].placeholder) {
             placeholderParent = players[id].placeholder.parentNode;
             placeholderParent.classList.add('show-video');
@@ -266,6 +270,8 @@ function onPlayerPlaying(id) {
             eventType: 'video:content:start'
         });
     }
+
+    players[id].currentState = PLAY_STATE;
 }
 
 function onPlayerEnded(id) {
@@ -285,6 +291,7 @@ function onPlayerEnded(id) {
     });
 
     players[id].pendingTrackingCalls = [25, 50, 75];
+    players[id].currentState = CUED_STATE;
 }
 
 function showPlaceholder(placeholderParent) {
@@ -293,6 +300,7 @@ function showPlaceholder(placeholderParent) {
 
 function onPlayerPaused(id) {
     killProgressTracker(false, id);
+    players[id].currentState = PAUSE_STATE;
 }
 
 function stopPlayers(ignoreId) {
@@ -334,7 +342,7 @@ function trackEvent(evt) {
         window.GuardianJSInterface.trackAction) {
         window.GuardianJSInterface.trackAction('youtube', JSON.stringify(evt));
     } else {
-        signalDevice('youtube/' + JSON.stringify(evt));
+        util.signalDevice('youtube/' + JSON.stringify(evt));
     }
 }
 
