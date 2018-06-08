@@ -145,13 +145,11 @@ function checkAvailabilityOfImages(images) {
 }
 
 function hideImageOnError(image) {
-    let figure,
-        innerElem;
+    let innerElem;
 
     if (image.parentNode.classList.contains('element-image-inner')) {
         image.style.display = 'none';
     } else {
-        figure = getClosestParentWithTag(image, 'figure');
         innerElem = document.createElement('div');
         innerElem.classList.add('element-image-inner');
         innerElem.setAttribute('height', image.getAttribute('height'));
@@ -254,7 +252,7 @@ function videoPositioningPoller(pageHeight) {
 
 function loadEmbeds() {
     var i,
-        fenceElems = fenceElems = document.querySelectorAll('iframe.fenced');
+        fenceElems = document.querySelectorAll('iframe.fenced');
 
     for (i = 0; i < fenceElems.length; i++) {
         render(fenceElems[i]);

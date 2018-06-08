@@ -50,7 +50,7 @@ function onResize(relatedContentList) {
 function setUpFlipSnap(relatedContentList) {
     let container = relatedContentList.parentNode,
         containerStyle = container.currentStyle || window.getComputedStyle(container),
-        containerWidth = container.offsetWidth - parseInt(containerStyle.paddingRight.replace('px', '')) - parseInt(containerStyle.paddingLeft.replace('px', ''));
+        containerWidth = container.offsetWidth - parseInt(containerStyle.paddingRight.replace('px', ''), 10) - parseInt(containerStyle.paddingLeft.replace('px', ''), 10);
 
     // add a class with the number of child items, so we can set the widths based on that
     relatedContentList.classList.add(`related-content__list--items-${relatedContentList.childElementCount}`);

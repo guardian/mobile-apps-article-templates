@@ -27,17 +27,11 @@ function buildGallery() {
 }
 
 function setGalleryProps() {
-    let width;
-
-    for (width in PROPS) {
-        if (PROPS.hasOwnProperty(width)) {
-            if (window.innerWidth > parseInt(width, 10)) {
-                galleryProps = PROPS[width];
-            } else {
-                break;
-            }
+    Object.keys(PROPS).forEach(width => {
+        if (window.innerWidth > parseInt(width, 10) && !galleryProps) {
+            galleryProps = PROPS[width];
         }
-    }
+    });
 }
 
 function addImagesToRows() {

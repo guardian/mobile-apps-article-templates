@@ -273,17 +273,17 @@ function unhighlightKeyEventLink(link) {
 function updateKeyEventCount(count) {
     let i,
         keyEventsCounter = document.getElementsByClassName('key-events__counter')[0],
-        keyEvents = document.getElementsByClassName('key-events')[0];
+        keyEventElems = document.getElementsByClassName('key-events')[0];
 
     keyEventsCounter.innerHTML = `(${count})`;
 
-    for (i = keyEvents.classList.length; i > 0; i--) {
-        if (keyEvents.classList[i - 1].match(/(key-events--)+[0-9]/g)) {
-            keyEvents.classList.remove(keyEvents.classList[i - 1]);
+    for (i = keyEventElems.classList.length; i > 0; i--) {
+        if (keyEventElems.classList[i - 1].match(/(key-events--)+[0-9]/g)) {
+            keyEventElems.classList.remove(keyEventElems.classList[i - 1]);
         }
     }
 
-    keyEvents.classList.add(`key-events--${count}`);
+    keyEventElems.classList.add(`key-events--${count}`);
 }
 
 function captureKeyEventClicks(links) {
@@ -299,12 +299,12 @@ function handleKeyEventClick(evt) {
 }
 
 function showHideKeyEvents() {
-    const keyEvents = document.getElementsByClassName('key-events')[0];
+    const keyEventElems = document.getElementsByClassName('key-events')[0];
 
-    if (keyEvents.classList.contains('key-events--expanded')) {
-        keyEvents.classList.remove('key-events--expanded');
+    if (keyEventElems.classList.contains('key-events--expanded')) {
+        keyEventElems.classList.remove('key-events--expanded');
     } else {
-        keyEvents.classList.add('key-events--expanded');
+        keyEventElems.classList.add('key-events--expanded');
     }
 }
 
