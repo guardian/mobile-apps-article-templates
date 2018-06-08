@@ -23,7 +23,12 @@ module.exports = (env, argv) => {
             rules: [{
                     test: /\.js$/,
                     exclude: /node_modules/,
-                    loader: "babel-loader",
+                    use: [
+                        "babel-loader",
+                        // {
+                        //     loader: "eslint-loader",
+                        // }
+                    ],
                 },
                 {
                     test: /\.scss$/,
