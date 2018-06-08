@@ -21,10 +21,11 @@ function getColor() {
 }
 
 function secondsTimeSpanToHMS(s) {
-    const mins = Math.floor(s / 60);
-    const secs = (s - mins) * 60;
+    var m = Math.floor(s / 60);
+    
+    s -= m * 60;	
 
-    return `${mins < 10 ? `0${mins}` : mins}:${secs < 10 ? `0${secs}` : secs}`;
+    return (m < 10 ? '0' + m : m) + ':' + (s < 10 ? '0' + s : s);
 }
 
 function changeSlider(duration, percentage) {
