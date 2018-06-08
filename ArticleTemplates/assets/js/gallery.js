@@ -6,6 +6,4 @@ const init = () => {
     galleryInit();
 };
 
-export {
-    init
-};
+export { init };

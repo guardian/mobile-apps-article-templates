@@ -10,6 +10,4 @@ const init = () => {
     }
 };
 
-export {
-    init
-};
+export { init };

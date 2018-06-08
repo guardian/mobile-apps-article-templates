@@ -6,8 +6,6 @@ const init = () => {
     commonInit();
     articleInit();
     atomsInit();
-}
-
-export {
-    init,
 };
+
+export { init };

@@ -7,7 +7,7 @@ import ads from './modules/ads';
 const init = opts => {
     window.GU.opts = opts;
 
-    __webpack_public_path__ = `${opts.templatesDirectory}/assets/build/`;
+    __webpack_public_path__ = `${opts.templatesDirectory}/assets/build/`; // eslint-disable-line camelcase
 
     const nativeFunctionCalls = [
         'articleCommentsInserter',
@@ -37,24 +37,24 @@ const init = opts => {
         'initMpuPoller',
         'videoPositioning',
         'getArticleHeight',
-        'injectInlineArticleMembershipCreative'
+        'injectInlineArticleMembershipCreative',
     ];
 
     const applyNativeFunctionCall = name => {
-        const queue = window[name + 'Queue'];
+        const queue = window[`${name}Queue`];
 
         if (queue) {
-            Array.prototype.forEach.call(queue, function(item) {
+            Array.prototype.forEach.call(queue, (item) => {
                 window[name].apply(this, item);
             });
         }
     };
 
     const setNativeFunctionCall = name => {
-        const queue = name + 'Queue';
+        const queue = `${name}Queue`;
 
         // Create a function to catch early calls
-        window[name] = function() {
+        window[name] = () => {
             window[queue] = window[queue] || [];
             // Store arguments for each call so
             // true function can apply these when ready
@@ -83,17 +83,17 @@ const init = opts => {
             loadCss();
         }
 
-        const getAdType = () => {
-            const contentType = opts.contentType;
+        const { contentType } = opts;
 
-            if ((contentType === 'liveblog' && !GU.opts.isMinute) || 
+        const getAdType = () => {
+            if ((contentType === 'liveblog' && !GU.opts.isMinute) ||
                 (contentType !== 'liveblog' && document.querySelector('.article__body--liveblog'))) {
                 return 'liveblog';
             }
-    
+
             return 'default';
         };
-        const contentType = opts.contentType;
+
         const adsEnabled = opts.adsEnabled === 'true' || opts.adsEnabled === 'mpu';
 
         // ads positioning
@@ -101,7 +101,7 @@ const init = opts => {
             ads.init({
                 adsConfig: opts.adsConfig,
                 adsType: getAdType(),
-                mpuAfterParagraphs: opts.mpuAfterParagraphs
+                mpuAfterParagraphs: opts.mpuAfterParagraphs,
             });
         }
 
@@ -142,11 +142,11 @@ const init = opts => {
     };
 
     domready(kickOff);
-}
+};
 
 const go = () => {
     window.GU.bootstrap = {
-        init
+        init,
     };
 };
 
