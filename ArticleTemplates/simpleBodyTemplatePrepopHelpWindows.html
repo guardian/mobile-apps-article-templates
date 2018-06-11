@@ -45,7 +45,10 @@
 
     <script type="text/javascript" src="__TEMPLATES_DIRECTORY__assets/build/smooth-scroll.min.js"></script>
     <script type="text/javascript">
-        smoothScroll.init();
+        if (SmoothScroll) {
+            var smoothScroll = new SmoothScroll();
+            smoothScroll.init();
+        }
     </script>
 </body>
 </html>
