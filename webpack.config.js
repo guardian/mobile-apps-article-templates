@@ -7,12 +7,12 @@ module.exports = (env, argv) => {
     const config = {
         entry: {
             boot: './ArticleTemplates/assets/js/boot.js',
-            // 'garnett-style-sync': './ArticleTemplates/assets/scss/garnett-style-sync.scss',
-            // 'garnett-style-async': './ArticleTemplates/assets/scss/garnett-style-async.scss',
-            // 'fonts-ios': './ArticleTemplates/assets/scss/fonts-ios.scss',
-            // 'fonts-android': './ArticleTemplates/assets/scss/fonts-android.scss',
-            // 'outbrain': './ArticleTemplates/assets/scss/outbrain.scss',
-            // 'interactive': './ArticleTemplates/assets/scss/interactive.scss',
+            'garnett-style-sync': './ArticleTemplates/assets/scss/garnett-style-sync.scss',
+            'garnett-style-async': './ArticleTemplates/assets/scss/garnett-style-async.scss',
+            'fonts-ios': './ArticleTemplates/assets/scss/fonts-ios.scss',
+            'fonts-android': './ArticleTemplates/assets/scss/fonts-android.scss',
+            'outbrain': './ArticleTemplates/assets/scss/outbrain.scss',
+            'interactive': './ArticleTemplates/assets/scss/interactive.scss',
         },
         output: {
             filename: '[name].js',
@@ -25,9 +25,9 @@ module.exports = (env, argv) => {
                     exclude: /node_modules/,
                     use: [
                         "babel-loader",
-                        {
-                            loader: "eslint-loader",
-                        }
+                        // {
+                        //     loader: "eslint-loader",
+                        // }
                     ],
                 },
                 {
