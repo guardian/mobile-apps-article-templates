@@ -25,6 +25,7 @@ module.exports = {
         "arrow-parens": 0,
         "func-names": 0,
         "vars-on-top": 0,
+        "import/no-extraneous-dependencies": 0,
         // TODO: remove temporary overrides
         "no-param-reassign": 0,
         "no-use-before-define": 0,
