@@ -1,21 +1,9 @@
-define([
-    'modules/youtube'
-], function (
-    youtube
-) {
-    'use strict';
+import { init as commonInit } from 'bootstraps/common';
+import { init as youtubeInit } from 'modules/youtube';
 
-    var initialised;
+const init = () => {
+    commonInit();
+    youtubeInit();
+};
 
-    function ready() {
-        if (!initialised) {
-            initialised = true;
-
-            youtube.init();
-        }
-    }
-
-    return {
-        init: ready
-    };
-});
+export { init };

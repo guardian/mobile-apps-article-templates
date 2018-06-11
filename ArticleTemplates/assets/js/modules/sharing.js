@@ -1,40 +1,31 @@
-define([
-    'modules/util'
-], function (
-    util
-) {
+import { signalDevice } from 'modules/util';
 
-    'use strict';
+function nativeSharing(service, url, title) {
+    let action;
 
-    function nativeSharing(service, url, title){
-        var action;
-
-        if (service === 'facebook') {
-            action = 'facebookshare/';
-        }
-        
-        if (service === 'twitter') {
-            action = 'twittershare/';
-        }
-
-        if (action && url) {
-            action = action + '?url=' + encodeURIComponent(url);
-
-            if (title) {
-                action = action + '&title=' + encodeURIComponent(title);
-            }
-
-            util.signalDevice(action);
-        }
+    if (service === 'facebook') {
+        action = 'facebookshare/';
     }
 
-    function init() {
-        if (GU.opts.platform === 'ios') {
-            window.nativeSharing = nativeSharing;
-        }
+    if (service === 'twitter') {
+        action = 'twittershare/';
     }
 
-    return {
-        init: init
-    };
-});
+    if (action && url) {
+        action = `${action}?url=${encodeURIComponent(url)}`;
+
+        if (title) {
+            action = `${action}&title=${encodeURIComponent(title)}`;
+        }
+
+        signalDevice(action);
+    }
+}
+
+function init() {
+    if (GU.opts.platform === 'ios') {
+        window.nativeSharing = nativeSharing;
+    }
+}
+
+export { init };

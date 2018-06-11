@@ -1,70 +1,58 @@
-define(function () {
-    'use strict';
+const SHOW_TAGS = 5;
+let moreButton;
+let hiddenTags;
 
-    var SHOW_TAGS = 5;
-    var initialised;
-    var moreButton;
-    var hiddenTags;
+function init() {
+    let firstHiddenTag,
+        tags = document.querySelectorAll('.tags__list-item');
 
-    function init() {
-        var firstHiddenTag,
-            tags;
+    if (tags.length > SHOW_TAGS) {
+        moreButton = document.createElement('li');
+        moreButton.id = 'more-tags-container';
+        moreButton.classList.add('inline-list__item');
+        moreButton.classList.add('tags__list-item');
+        moreButton.classList.add('more-button');
+        moreButton.classList.add('js-more-button');
+        moreButton.innerHTML = '<a id="more">More...</a>';
 
-        if (!initialised) {
-            initialised = true;
-            tags = document.querySelectorAll('.tags__list-item');
+        moreButton.addEventListener('click', show);
 
-            if (tags.length > SHOW_TAGS) {
-                moreButton = document.createElement('li');
-                moreButton.id = 'more-tags-container';
-                moreButton.classList.add('inline-list__item');
-                moreButton.classList.add('tags__list-item');
-                moreButton.classList.add('more-button');
-                moreButton.classList.add('js-more-button');
-                moreButton.innerHTML = '<a id="more">More...</a>';
+        firstHiddenTag = tags[SHOW_TAGS];
 
-                moreButton.addEventListener('click', show);
+        firstHiddenTag.parentNode.insertBefore(moreButton, firstHiddenTag);
 
-                firstHiddenTag = tags[SHOW_TAGS];
+        hiddenTags = document.querySelectorAll('#more-tags-container ~ .tags__list-item');
 
-                firstHiddenTag.parentNode.insertBefore(moreButton, firstHiddenTag);
+        hideTags();
+    }
+}
 
-                hiddenTags = document.querySelectorAll('#more-tags-container ~ .tags__list-item');
+function show() {
+    let i;
 
-                hideTags();
-            }
-        }
+    moreButton.style.display = 'none';
+
+    for (i = 0; i < hiddenTags.length; i++) {
+        hiddenTags[i].classList.remove('hide-tags');
     }
 
-    function show() {
-        var i;
+    setTimeout(showTags, 200);
+}
 
-        moreButton.style.display = 'none';
+function hideTags() {
+    let i;
 
-        for (i = 0; i < hiddenTags.length; i++) {
-            hiddenTags[i].classList.remove('hide-tags');
-        }
-
-        setTimeout(showTags, 200);
+    for (i = 0; i < hiddenTags.length; i++) {
+        hiddenTags[i].classList.add('hide-tags');
     }
+}
 
-    function hideTags() {
-        var i;
+function showTags() {
+    let i;
 
-        for (i = 0; i < hiddenTags.length; i++) {
-            hiddenTags[i].classList.add('hide-tags');
-        }
+    for (i = 0; i < hiddenTags.length; i++) {
+        hiddenTags[i].classList.remove('hide-tags');
     }
+}
 
-    function showTags() {
-        var i;
-
-        for (i = 0; i < hiddenTags.length; i++) {
-            hiddenTags[i].classList.remove('hide-tags');
-        }
-    }
-
-    return {
-        init: init
-    };
-});
+export { init };
