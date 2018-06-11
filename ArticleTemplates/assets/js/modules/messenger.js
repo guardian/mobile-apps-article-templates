@@ -1,7 +1,7 @@
 import { postMessage } from 'modules/post-message';
 
 const allowedHosts = [
-    `${location.protocol}//${location.host}`,
+    `${window.location.protocol}//${window.location.host}`,
     'http://localhost:9000',
     'https://api.nextgen.guardianapps.co.uk',
 ];
@@ -14,14 +14,12 @@ const error500 = { code: 500, message: 'Internal server error\n\n%%' };
 function init(moduleInits) {
     register('syn', () => 'ack');
 
-    moduleInits.forEach((init) => {
-        init(register);
+    moduleInits.forEach((moduleInit) => {
+        moduleInit(register);
     });
 }
 
-function register(type, callback, options) {
-    options || (options = {});
-
+function register(type, callback, options = {}) {
     if (registeredListeners === 0) {
         on(window);
     }
@@ -31,7 +29,10 @@ function register(type, callback, options) {
         listeners[type] = callback;
         registeredListeners += 1;
     } else {
-        listeners[type] || (listeners[type] = []);
+        if (!listeners[type]) {
+            listeners[type] = [];
+        }
+
         if (listeners[type].indexOf(callback) === -1) {
             listeners[type].push(callback);
             registeredListeners += 1;
@@ -98,7 +99,7 @@ function onMessage(event) {
         // We don't know what each callack will be made of, we don't want to.
         // And so we wrap each call in a promise chain, in case one drops the
         // occasional fastdom bomb in the middle.
-            .reduce((promise, listener) => promise.then((ret) => {
+            .reduce((accumulatorPromise, listener) => accumulatorPromise.then((ret) => {
                 const iframe = getIframe(data);
                 if (!iframe) {
                     throw new Error(formatError(error500, 'iframe element not found'));
@@ -107,6 +108,7 @@ function onMessage(event) {
                 return thisRet === undefined ? ret : thisRet;
             }), Promise.resolve(true));
 
+        // eslint-disable-next-line consistent-return
         return promise.then((response) => {
             respond(null, response);
         }).catch((ex) => {
@@ -161,9 +163,8 @@ function getIframe(data) {
 // formatError({ message: "%%, you are so %%" }, "Regis", "lovely")
 //
 // returns `{ message: "Regis, you are so lovely" }`. Oh, thank you!
-function formatError() {
-    const error = arguments[0];
-    const args = Array.prototype.slice.call(arguments, 1);
+function formatError(...args) {
+    const error = args[0];
     return args.reduce((e, arg) => {
         // Keep in mind that when the first argument is a string,
         // String.replace only replaces the first occurence

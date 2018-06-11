@@ -8,7 +8,10 @@ function observe(element, threshold, callback) {
         listening = true;
     }
 
-    elements[threshold] || (elements[threshold] = []);
+    if (!elements[threshold]) {
+        elements[threshold] = [];
+    }
+
     elements[threshold].push({ element, callback });
     elementCount += 1;
 }
@@ -31,7 +34,7 @@ function onScroll() {
     var viewportHeight = window.innerHeight;
 
     Object.keys(elements).forEach((threshold) => {
-        var visibleElements = elements[threshold].forEach((record) => {
+        elements[threshold].forEach((record) => {
             var rect = record.element.getBoundingClientRect();
             var isNotHidden =
             rect.top + rect.left + rect.right + rect.bottom !== 0;

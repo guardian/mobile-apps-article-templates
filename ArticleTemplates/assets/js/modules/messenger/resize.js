@@ -2,6 +2,7 @@ function init(register) {
     register('resize', (specs, ret, iframe) => resize(specs, iframe));
 }
 
+// eslint-disable-next-line consistent-return
 function resize(specs, iframe) {
     if (!specs || !('height' in specs || 'width' in specs)) {
         return null;
