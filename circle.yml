@@ -2,7 +2,7 @@ machine:
   environment:
     PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"    
   node:
-    version: 6.9.2
+    version: 8.11.2
 
 
 dependencies:
@@ -16,7 +16,7 @@ dependencies:
 
 test:
   override:
-    - yarn build && yarn validate && yarn test
+    - yarn build
 
 deployment:
   release:

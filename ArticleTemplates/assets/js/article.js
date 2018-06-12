@@ -1,21 +1,13 @@
-define([
-	'bootstraps/common',
-    'bootstraps/article',
-    'bootstraps/atoms'
-], function (
-	common,
-    article,
-    atoms
-) {
-    'use strict';
-    
-    function init() {
-        common.init();
-        article.init();
-        atoms.init();
-    }
+import { init as commonInit } from 'bootstraps/common';
+import { init as articleInit } from 'bootstraps/article';
+import { init as atomsInit } from 'bootstraps/atoms';
 
-    return {
-        init: init
-    };
-});
+const init = () => {
+    commonInit();
+    articleInit();
+    atomsInit();
+}
+
+export {
+    init,
+};

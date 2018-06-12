@@ -1,18 +1,11 @@
-define([
-	'bootstraps/common',
-    'bootstraps/video'
-], function (
-	common,
-    video
-) {
-    'use strict';
-    
-    function init() {
-        common.init();
-        video.init();
-    }
+import { init as commonInit } from 'bootstraps/common';
+import { init as videoInit } from 'bootstraps/video';
 
-    return {
-        init: init
-    };
-});
+const init = () => {
+    commonInit();
+    videoInit();
+}
+
+export {
+    init
+};

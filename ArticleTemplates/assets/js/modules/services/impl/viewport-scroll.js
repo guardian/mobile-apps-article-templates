@@ -1,5 +1,4 @@
-define(function() {
-  var listening = false;
+var listening = false;
   var elements = Object.create(null);
   var elementCount = 0;
 
@@ -52,8 +51,7 @@ define(function() {
     });
   }
   
-  return {
+  export default {
     observe: observe,
     unobserve: unobserve
   };
-});
