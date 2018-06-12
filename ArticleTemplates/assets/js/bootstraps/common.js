@@ -39,8 +39,6 @@ function init() {
     const smoothScroll = new SmoothScroll();
     smoothScroll.init();
 
-    console.log()
-
     if (!document.body.classList.contains('no-ready')) {
         signalDevice('ready');
     }
