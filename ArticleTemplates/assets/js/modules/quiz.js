@@ -1,10 +1,12 @@
+import SmoothScroll from 'smooth-scroll';
 import { updateMPUPosition } from 'modules/ads';
 import { 
     getStringFromUnicodeVal, 
     getElementOffset,
 } from 'modules/util';
 
-var numAnswered,
+var smoothScroll,
+    numAnswered,
     questionCount,
     isPersonalityQuiz,
     moveMPU,
@@ -18,6 +20,9 @@ function init() {
     if (!quiz) {
         return;
     }
+
+    smoothScroll = new SmoothScroll();
+    smoothScroll.init();
 
     numAnswered = 0;
     questionCount = 0;
@@ -467,6 +472,9 @@ function showScore() {
     document.getElementsByClassName('quiz-scores__correct')[0].innerHTML = score.toString();
     document.getElementsByClassName('quiz-scores__message')[0].innerHTML = scoreDisplayMessage;
     document.getElementsByClassName('quiz-scores')[0].classList.add('open');
+
+    // Scroll score panel into view
+    smoothScroll.animateScroll('#quiz-scores', null, {speed: 1500, offset: 40});
 }
 
 function showResult() {
@@ -490,6 +498,9 @@ function showResult() {
     document.getElementsByClassName('quiz-results__description')[0].innerHTML = resultDescription;
     document.getElementsByClassName('quiz-results__title')[0].innerHTML = resultTitle;
     document.getElementsByClassName('quiz-results')[0].classList.add('open');
+
+    // Scroll result panel into view
+    smoothScroll.animateScroll('#quiz-results', null, {speed: 1500, offset: 40});
 }
 
 export {

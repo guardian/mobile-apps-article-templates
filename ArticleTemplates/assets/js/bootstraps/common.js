@@ -1,5 +1,6 @@
 import { attach } from 'fastclick';
 import { render } from 'fence';
+import SmoothScroll from 'smooth-scroll';
 
 import {
     getClosestParentWithTag,
@@ -34,6 +35,11 @@ function init() {
     initSharing(); // init sharing
     setupTracking(); // track common events
     initAB(); // init ab tests
+    
+    const smoothScroll = new SmoothScroll();
+    smoothScroll.init();
+
+    console.log()
 
     if (!document.body.classList.contains('no-ready')) {
         signalDevice('ready');
