@@ -9,7 +9,7 @@ define([], function () {
     }
 
     function initCampaign(campaign) {
-      campaign.onSubmit(function () {
+      campaign.addEventListener('submit', function () {
         const data = new FormData(campaign);
         const json = {};
         for([key, value] of data.entries()) {
