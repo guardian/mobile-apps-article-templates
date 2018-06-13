@@ -9,14 +9,25 @@ define([], function () {
     }
 
     function initCampaign(campaign) {
-      campaign.addEventListener('submit', function () {
+      campaign.onSubmit(function () {
         const data = new FormData(campaign);
         const json = {};
         for([key, value] of data.entries()) {
           json[key] = value;
         }
-        location.hash = JSON.stringify(json);
+        
+        submit(json, campaign);
       });
+    }
+
+    function submit(json, campaign) {
+      const req = new XMLHttpRequest();
+      req.open('POST', rootPath);
+      req.setRequestHeader('Accept', 'application/json');
+      req.setRequestHeader('Content-Type', 'application/json');
+      req.onload = displayConfirmation.bind(null, campaign);
+      req.onerror = displayError.bind(null, campaign);
+      req.send(JSON.stringify(json));
     }
 
     function displayConfirmation(campaign) {
