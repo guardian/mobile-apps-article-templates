@@ -1,7 +1,7 @@
 define([], function () {
     'use strict';
 
-    const rootPath = 'https://api.nextgen.guardianapps.co.uk/formstack-campaign/submit'
+    const rootPath = 'https://code.api.nextgen.guardianapps.co.uk/formstack-campaign/submit'
 
     function init() {
       const campaign = document.querySelector('.campaign--snippet form');
@@ -18,10 +18,11 @@ define([], function () {
       window.addEventListener('online', hideOfflineMessage.bind(null, campaign));
       window.addEventListener('offline', displayOfflineMessage.bind(null, campaign));
 
-      campaign.addEventListener('submit', function () {
+      campaign.addEventListener('submit', function (e) {
+        e.preventDefault();
         const data = new FormData(campaign);
         const json = {};
-        for([key, value] of data.entries()) {
+        for(let [key, value] of data.entries()) {
           json[key] = value;
         }
         
@@ -34,6 +35,8 @@ define([], function () {
       req.open('POST', rootPath);
       req.setRequestHeader('Accept', 'application/json');
       req.setRequestHeader('Content-Type', 'application/json');
+      req.setRequestHeader('X-Requested-With', 'Guardian Mobile App');
+      req.withCredentials = true;
       req.onload = displayConfirmation.bind(null, campaign);
       req.onerror = displayError.bind(null, campaign);
       req.send(JSON.stringify(json));
