@@ -254,8 +254,7 @@ define([
     }
 
     function onPlayerPlaying(id) {
-        var placeholderParent,
-            currentTime = Math.round(players[id].player.getCurrentTime());
+        var placeholderParent;
 
         stopPlayers(id);
         setProgressTracker(id);
