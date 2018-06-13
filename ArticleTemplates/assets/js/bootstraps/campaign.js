@@ -11,6 +11,13 @@ define([], function () {
     }
 
     function initCampaign(campaign) {
+      if (!navigator.onLine) {
+        displayOfflineMessage(campaign);
+      }
+
+      window.addEventListener('online', hideOfflineMessage.bind(null, campaign));
+      window.addEventListener('offline', displayOfflineMessage.bind(null, campaign));
+
       campaign.addEventListener('submit', function () {
         const data = new FormData(campaign);
         const json = {};
@@ -30,6 +37,16 @@ define([], function () {
       req.onload = displayConfirmation.bind(null, campaign);
       req.onerror = displayError.bind(null, campaign);
       req.send(JSON.stringify(json));
+    }
+
+    function displayOfflineMessage(campaign) {
+      campaign.insertAdjacentHTML('afterbegin', '<p class="campaign__offline">You seem to have no connection to the Internet. You won\'t be able to send us anything until you have one.</p>')
+    }
+
+    function hideOfflineMessage(campaign) {
+      if (campaign.firstElementChild.className === 'campaign__offline') {
+        campaign.removeChild(campaign.firstElementChild);
+      }
     }
 
     function displayConfirmation(campaign) {
