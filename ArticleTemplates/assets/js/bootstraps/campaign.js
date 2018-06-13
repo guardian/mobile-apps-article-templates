@@ -1,6 +1,8 @@
 define([], function () {
     'use strict';
 
+    const rootPath = 'https://api.nextgen.guardianapps.co.uk/formstack-campaign/submit'
+
     function init() {
       const campaign = document.querySelector('.campaign--snippet form');
       if (campaign) {
@@ -9,7 +11,7 @@ define([], function () {
     }
 
     function initCampaign(campaign) {
-      campaign.onSubmit(function () {
+      campaign.addEventListener('submit', function () {
         const data = new FormData(campaign);
         const json = {};
         for([key, value] of data.entries()) {
