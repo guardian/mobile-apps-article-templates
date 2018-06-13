@@ -309,7 +309,6 @@ define([
                 window.YT.players[0].onReady('video1');
                 setPlayerState('PLAYING', window.YT.players[0]);
 
-                expect(Player.prototype.getCurrentTime).to.have.been.called;
                 expect(utilMock.signalDevice).to.have.been.calledOnce;
                 expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
             });
@@ -333,7 +332,6 @@ define([
                 // Restart Video
                 setPlayerState('PLAYING', window.YT.players[0]);
 
-                expect(Player.prototype.getCurrentTime).to.have.been.called;
                 expect(utilMock.signalDevice).to.have.been.calledOnce;
                 expect(utilMock.signalDevice).to.have.been.calledWith('youtube/' + JSON.stringify({id:'video1', eventType:'video:content:start'}));
 
@@ -451,7 +449,6 @@ define([
 
                 setPlayerState('PLAYING', window.YT.players[0]);
 
-                expect(Player.prototype.getCurrentTime).not.to.have.been.called;
                 expect(window.GuardianJSInterface.trackAction).not.to.have.been.called;
             });
 
@@ -466,7 +463,6 @@ define([
                 window.YT.players[0].onReady('video1');
                 setPlayerState('PLAYING', window.YT.players[0]);
 
-                expect(Player.prototype.getCurrentTime).to.have.been.called;
                 expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
                 expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:start'}));
             });
@@ -489,7 +485,6 @@ define([
                 // Restart Video
                 setPlayerState('PLAYING', window.YT.players[0]);
 
-                expect(Player.prototype.getCurrentTime).to.have.been.called;
                 expect(window.GuardianJSInterface.trackAction).to.have.been.calledOnce;
                 expect(window.GuardianJSInterface.trackAction).to.have.been.calledWith('youtube', JSON.stringify({id:'video1', eventType:'video:content:start'}));
 
