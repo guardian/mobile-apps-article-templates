@@ -16,7 +16,6 @@ require.config({
         d3: 'node_modules/d3/d3',
         domReady: 'node_modules/domready/ready',
         mobileSlider: 'ArticleTemplates/assets/js/components/mobile-range-slider',
-        flipSnap: 'ArticleTemplates/assets/js/components/flipsnap',
         fastClick: 'node_modules/fastclick/lib/fastclick',
         fence: 'node_modules/fence/fence',
         smoothScroll: 'node_modules/smooth-scroll/dist/js/smooth-scroll',
