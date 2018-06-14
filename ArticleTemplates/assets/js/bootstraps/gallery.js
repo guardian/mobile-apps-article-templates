@@ -69,14 +69,18 @@ function (
         }
 
         function bounceToInitialPosition(el) {
-            el.style.transform = '';
-            el.style.top = '';
-            el.style.left = '';
-
-            el.dataset.baseScale = 1;
-            el.dataset.baseRotation = 0;
-            el.dataset.basePanX = 0;
-            el.dataset.basePanY = 0;
+            var currentScale = (el.getBoundingClientRect().width/el.offsetWidth);
+            var newScale = currentScale + (1-currentScale)/5;
+            if (newScale > 0.99 && newScale < 1.01) {
+                el.style.transform = 'scale(1)';
+                console.log('finished');
+            } else {
+                el.style.transform = 'scale('+newScale+')';
+                console.log(newScale);
+                requestAnimationFrame(function() {
+                    bounceToInitialPosition(el);
+                });
+            }
         }
 
     }
