@@ -59,9 +59,9 @@ function (
             var pinch = pinchCentre[axis];
 
             var pinchRel = (pinch-elStart)/(elEnd);
-            if (pinchRel > 0.80) {
+            if (pinchRel > 0.75) {
                 return 100
-            } else if (pinchRel < 0.20) {
+            } else if (pinchRel < 0.25) {
                 return 0
             } else {
                 return Math.round(pinchRel*100);
