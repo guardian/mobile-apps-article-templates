@@ -7,6 +7,7 @@ function (
     'use strict';
 
     var initialised = false;
+    var observer = null;
 
     function ready(config) {
         if (!initialised) {
@@ -18,6 +19,7 @@ function (
     function getRelatedContentPosition() {
         var relatedContent = document.querySelector('.related-content');
         if (relatedContent) {
+            observer.observe(relatedContent, { attributes: true });
             return util.getElementOffset(relatedContent);
         }
     }
@@ -29,8 +31,12 @@ function (
     function setupGlobals() {
         window.getRelatedContentPosition = getRelatedContentPosition;
         window.applyNativeFunctionCall("getRelatedContentPosition");
-        window.setRelatedItemsHeight = setRelatedItemsHeight;
-        window.applyNativeFunctionCall("setRelatedItemsHeight");
+        window.setRelatedContentHeight = setRelatedContentHeight;
+        window.applyNativeFunctionCall("setRelatedContentHeight");
+        observer = new window.MutationObserver(function(mutations) {
+            window.webkit.messageHandlers.notification.postMessage({body: {} });
+        });
+        observer.observe(window.document.body, { attributes: true,  childList: true, subtree: true });
     }
 
     return {
