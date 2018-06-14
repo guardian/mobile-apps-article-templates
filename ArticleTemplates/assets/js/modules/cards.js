@@ -24,7 +24,7 @@ function (
         }
     }
 
-    function setRelatedItemsHeight(height) {
+    function setRelatedContentHeight(height) {
         document.querySelector('.related-content').style.height = height + 'px';
     }
 
