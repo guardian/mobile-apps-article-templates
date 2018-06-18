@@ -18,7 +18,7 @@ require.config({
         mobileSlider: 'ArticleTemplates/assets/js/components/mobile-range-slider',
         fastClick: 'node_modules/fastclick/lib/fastclick',
         fence: 'node_modules/fence/fence',
-        smoothScroll: 'node_modules/smooth-scroll/dist/js/smooth-scroll',
+        smoothScroll: 'node_modules/smooth-scroll/dist/smooth-scroll',
         // squire for stubbing modules
         squire: 'node_modules/squirejs/src/Squire'
     },

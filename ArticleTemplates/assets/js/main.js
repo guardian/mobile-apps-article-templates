@@ -9,7 +9,7 @@
             mobileSlider: 'components/mobile-range-slider',
             fastClick: '../../../node_modules/fastclick/lib/fastclick',
             fence: '../../../node_modules/fence/fence',
-            smoothScroll: '../../../node_modules/smooth-scroll/dist/js/smooth-scroll'
+            smoothScroll: '../../../node_modules/smooth-scroll/dist/smooth-scroll'
         },
         shim: {
             d3: {
