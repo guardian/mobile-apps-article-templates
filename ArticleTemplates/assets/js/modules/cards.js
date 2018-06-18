@@ -34,7 +34,7 @@ function (
         window.setRelatedContentHeight = setRelatedContentHeight;
         window.applyNativeFunctionCall("setRelatedContentHeight");
         observer = new window.MutationObserver(function(mutations) {
-            window.webkit.messageHandlers.notification.postMessage({body: {} });
+            window.webkit.messageHandlers.bodyMutationNotification.postMessage({body: {} });
         });
         observer.observe(window.document.body, { attributes: true,  childList: true, subtree: true });
     }
