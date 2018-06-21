@@ -22,9 +22,9 @@ function (
     function getRelatedContentPosition() {
         var relatedContent = document.querySelector('.related-content');
         if (relatedContent) {
-            observer.observe(relatedContent, { attributes: true });
             return util.getElementOffset(relatedContent);
         }
+        return null;
     }
 
     function setRelatedContentHeight(height) {
