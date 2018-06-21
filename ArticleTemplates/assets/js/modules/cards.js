@@ -25,7 +25,10 @@ function (
     }
 
     function setRelatedContentHeight(height) {
-        document.querySelector('.related-content').style.height = height + 'px';
+        var relatedContent = document.querySelector('.related-content')
+        if (relatedContent) {
+            relatedContent.style.height = height + 'px';
+        }
     }
 
     function setupGlobals() {
