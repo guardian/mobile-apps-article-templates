@@ -7,11 +7,14 @@ function (
     'use strict';
 
     var initialised = false;
-    var observer = null;
 
     function ready(config) {
         if (!initialised) {
             initialised = true;
+            new window.MutationObserver(function(mutations) {
+                // The native layer defines bodyMutationNotification.
+                window.webkit.messageHandlers.bodyMutationNotification.postMessage({rect: getRelatedContentPosition() });
+            }).observe(window.document.body, { attributes: true, subtree: true });
             setupGlobals();
         }
     }
@@ -36,10 +39,6 @@ function (
         window.applyNativeFunctionCall("getRelatedContentPosition");
         window.setRelatedContentHeight = setRelatedContentHeight;
         window.applyNativeFunctionCall("setRelatedContentHeight");
-        observer = new window.MutationObserver(function(mutations) {
-            window.webkit.messageHandlers.bodyMutationNotification.postMessage({body: {} });
-        });
-        observer.observe(window.document.body, { attributes: true,  childList: true, subtree: true });
     }
 
     return {
