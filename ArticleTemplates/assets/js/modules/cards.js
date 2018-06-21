@@ -9,7 +9,7 @@ function (
     var initialised = false;
 
     function ready(config) {
-        if (!initialised) {
+        if (!initialised && GU.opts.platform === 'ios') {
             initialised = true;
             new window.MutationObserver(function(mutations) {
                 // The native layer defines bodyMutationNotification.
