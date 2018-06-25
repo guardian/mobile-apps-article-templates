@@ -250,29 +250,6 @@ $meta-lead-2: 2.2rem;
     }
 }
 
-@mixin related-card-duration($color) {
-    color: $color;
-    display: block;
-    font-weight: bold;
-    border: 0;
-    position: absolute;
-    bottom: 8px;
-    left: 40px;
-    padding: 0;
-    line-height: 20px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
-
-    @include mq(col2, col3) {
-        bottom: 8px * $related-card-upsize-col2;
-        left: 40px * $related-card-upsize-col2;
-    }
-
-    @include mq($from: col3) {
-        bottom: 8px * $related-card-upsize-col3;
-        left: 40px * $related-card-upsize-col3;
-    }
-}
-
 // ellipses text
 @mixin text-ellipses($lines) {
     overflow: hidden;

@@ -163,7 +163,7 @@ module.exports = function(grunt) {
                         {pattern: 'node_modules/domready/ready.js', included: false},
                         {pattern: 'node_modules/fastclick/lib/fastclick.js', included: false},
                         {pattern: 'node_modules/fence/fence.js', included: false},
-                        {pattern: 'node_modules/smooth-scroll/dist/js/smooth-scroll.js', included: false},
+                        {pattern: 'node_modules/smooth-scroll/dist/smooth-scroll.js', included: false},
                         {pattern: 'node_modules/squirejs/src/Squire.js', included: false},
                         'test/spec/unit/test-main.js'
                     ],

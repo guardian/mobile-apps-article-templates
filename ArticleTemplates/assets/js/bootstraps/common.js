@@ -3,21 +3,21 @@ define([
     'fastClick',
     'smoothScroll',
     'modules/comments',
-    'modules/cards',
     'modules/more-tags',
     'modules/sharing',
     'modules/experiments/ab',
-    'modules/util'
+    'modules/util',
+    'modules/cards'
 ], function(
     fence,
     fastClick,
     smoothScroll,
     comments,
-    cards,
     moreTags,
     sharing,
     ab,
-    util
+    util,
+    cards
 ) {
     'use strict';
 
@@ -31,7 +31,7 @@ define([
         insertTags();
         videoPositioning();
         comments.init(); // load comments
-        cards.init(); // load cards
+        cards.init();
         loadEmbeds();
         loadInteractives(); 
         setupOfflineSwitch();

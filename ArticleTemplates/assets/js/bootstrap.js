@@ -8,8 +8,6 @@
     function init(opts) {
         var nativeFunctionCalls = [
             'articleCommentsInserter',
-            'articleCardsInserter',
-            'articleCardsFailed',
             'articleTagInserter',
             'articleOutbrainInserter',
             'audioBackground',
@@ -34,7 +32,9 @@
             'initMpuPoller',
             'videoPositioning',
             'getArticleHeight',
-            'injectInlineArticleMembershipCreative'
+            'injectInlineArticleMembershipCreative',
+            'getRelatedContentPosition',
+            'setRelatedContentHeight'
         ],
         loadCss = function() {
             var url = 'assets/css/' + opts.asyncStylesFilename + '.css',
