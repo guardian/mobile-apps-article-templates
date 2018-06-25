@@ -7,13 +7,18 @@ function (
     'use strict';
 
     var initialised = false;
+    var existingRelatedContentPosition;
 
     function ready(config) {
         if (!initialised && GU.opts.platform === 'ios') {
             initialised = true;
             new window.MutationObserver(function(mutations) {
-                // The native layer defines bodyMutationNotification.
-                window.webkit.messageHandlers.bodyMutationNotification.postMessage({rect: getRelatedContentPosition() });
+                var newRelatedContentPosition = getRelatedContentPosition();
+                if (newRelatedContentPosition !== existingRelatedContentPosition) {
+                    existingRelatedContentPosition = newRelatedContentPosition;
+                    // The native layer defines bodyMutationNotification.
+                    window.webkit.messageHandlers.bodyMutationNotification.postMessage({rect: newRelatedContentPosition });
+                }
             }).observe(window.document.body, { attributes: true, subtree: true });
             setupGlobals();
         }
