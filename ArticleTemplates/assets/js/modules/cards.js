@@ -14,7 +14,7 @@ function (
             initialised = true;
             new window.MutationObserver(function(mutations) {
                 var newRelatedContentPosition = getRelatedContentPosition();
-                if (newRelatedContentPosition !== existingRelatedContentPosition) {
+                if (JSON.stringify(newRelatedContentPosition) !== JSON.stringify(existingRelatedContentPosition)) {
                     existingRelatedContentPosition = newRelatedContentPosition;
                     // The native layer defines bodyMutationNotification.
                     window.webkit.messageHandlers.bodyMutationNotification.postMessage({rect: newRelatedContentPosition });
