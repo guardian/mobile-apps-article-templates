@@ -429,7 +429,6 @@ define([
 
         document.body.classList.remove(current);
         document.body.classList.add(replacement);  
-        document.body.dataset.lineHeight = replacementInt[2];
     }
 
     function setupGetArticleHeight() {
