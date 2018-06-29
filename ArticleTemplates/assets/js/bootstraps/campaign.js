@@ -21,25 +21,17 @@ define([], function () {
       campaign.addEventListener('submit', function (e) {
         e.preventDefault();
         const data = new FormData(campaign);
-        const json = {};
-        for(let [key, value] of data.entries()) {
-          json[key] = value;
-        }
-        
-        submit(json, campaign);
+        submit(data, campaign);
       });
     }
 
-    function submit(json, campaign) {
+    function submit(data, campaign) {
       const req = new XMLHttpRequest();
       req.open('POST', endpoint);
-      req.setRequestHeader('Accept', 'application/json');
-      req.setRequestHeader('Content-Type', 'application/json');
-      req.setRequestHeader('X-Requested-With', 'Guardian Mobile App');
       req.withCredentials = true;
       req.onload = displayConfirmation.bind(null, campaign);
       req.onerror = displayError.bind(null, campaign);
-      req.send(JSON.stringify(json));
+      req.send(data);
     }
 
     function displayOfflineMessage(campaign) {
