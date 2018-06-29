@@ -1,7 +1,7 @@
 define([], function () {
     'use strict';
 
-    const rootPath = 'https://code.api.nextgen.guardianapps.co.uk/formstack-campaign/submit'
+    const endpoint = 'https://mobile.guardianapis.com/callouts';
 
     function init() {
       const campaign = document.querySelector('.campaign--snippet form');
@@ -32,7 +32,7 @@ define([], function () {
 
     function submit(json, campaign) {
       const req = new XMLHttpRequest();
-      req.open('POST', rootPath);
+      req.open('POST', endpoint);
       req.setRequestHeader('Accept', 'application/json');
       req.setRequestHeader('Content-Type', 'application/json');
       req.setRequestHeader('X-Requested-With', 'Guardian Mobile App');
