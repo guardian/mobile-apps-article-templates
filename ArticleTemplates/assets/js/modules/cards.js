@@ -19,7 +19,7 @@ function (
                     // The native layer defines bodyMutationNotification.
                     window.webkit.messageHandlers.bodyMutationNotification.postMessage({rect: newRelatedContentPosition });
                 }
-            }).observe(window.document.body, { attributes: true, subtree: true });
+            }).observe(window.document.body, { attributes: true, childList: true, subtree: true });
             setupGlobals();
         }
     }
