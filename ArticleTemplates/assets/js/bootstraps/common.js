@@ -3,21 +3,21 @@ define([
     'fastClick',
     'smoothScroll',
     'modules/comments',
-    'modules/cards',
     'modules/more-tags',
     'modules/sharing',
     'modules/experiments/ab',
-    'modules/util'
+    'modules/util',
+    'modules/cards'
 ], function(
     fence,
     fastClick,
     smoothScroll,
     comments,
-    cards,
     moreTags,
     sharing,
     ab,
-    util
+    util,
+    cards
 ) {
     'use strict';
 
@@ -31,12 +31,13 @@ define([
         insertTags();
         videoPositioning();
         comments.init(); // load comments
-        cards.init(); // load cards
+        cards.init();
         loadEmbeds();
         loadInteractives(); 
         setupOfflineSwitch();
         setupAlertSwitch();
         setupFontSizing();
+        setupLineHeightSizing();
         setupGetArticleHeight();
         showTabs();
         setGlobalObject(window);
@@ -408,6 +409,11 @@ define([
         window.fontResize = fontResize;
     }
 
+    function setupLineHeightSizing() {
+        // Called by native code
+        window.lineHeightResize = lineHeightResize;
+    }
+
     function fontResize(current, replacement) {
         var replacementStr = replacement,
             replacementInt = replacementStr.split('-');
@@ -415,6 +421,14 @@ define([
         document.body.classList.remove(current);
         document.body.classList.add(replacement);  
         document.body.dataset.fontSize = replacementInt[2];
+    }
+
+    function lineHeightResize(current, replacement) {
+        var replacementStr = replacement,
+            replacementInt = replacementStr.split('-');
+
+        document.body.classList.remove(current);
+        document.body.classList.add(replacement);  
     }
 
     function setupGetArticleHeight() {
