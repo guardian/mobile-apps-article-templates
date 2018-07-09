@@ -8,20 +8,42 @@ function (
 
     var initialised = false;
     var existingRelatedContentPosition;
+    var positionPoller = null;
+    var maxPollCount = 20;
+    var pollCount;
 
-    function ready(config) {
+    function ready() {
         if (!initialised && GU.opts.platform === 'ios') {
             initialised = true;
-            new window.MutationObserver(function(mutations) {
-                var newRelatedContentPosition = getRelatedContentPosition();
-                if (JSON.stringify(newRelatedContentPosition) !== JSON.stringify(existingRelatedContentPosition)) {
-                    existingRelatedContentPosition = newRelatedContentPosition;
-                    // The native layer defines bodyMutationNotification.
-                    window.webkit.messageHandlers.bodyMutationNotification.postMessage({rect: newRelatedContentPosition });
-                }
-            }).observe(window.document.body, { attributes: true, childList: true, subtree: true });
             setupGlobals();
+            initPositionPoller();
         }
+    }
+
+    function initPositionPoller() {
+        pollCount = 0;
+
+        if (positionPoller !== null) {
+            window.clearTimeout(positionPoller);
+        }
+
+        poller(1000);
+    }
+
+    function poller(interval) {
+        var newRelatedContentPosition = getRelatedContentPosition();
+
+        if (JSON.stringify(newRelatedContentPosition) !== JSON.stringify(existingRelatedContentPosition)) {
+            window.webkit.messageHandlers.bodyMutationNotification.postMessage({rect: newRelatedContentPosition });
+        }
+
+        if (pollCount < maxPollCount) {
+            positionPoller = setTimeout(function() {
+                poller(interval + 250);
+            }, interval);
+        }
+
+        pollCount++;
     }
 
     function getRelatedContentPosition() {
@@ -33,7 +55,8 @@ function (
     }
 
     function setRelatedContentHeight(height) {
-        var relatedContent = document.querySelector('.related-content')
+        var relatedContent = document.querySelector('.related-content');
+
         if (relatedContent) {
             relatedContent.style.height = height + 'px';
         }
@@ -41,12 +64,13 @@ function (
 
     function setupGlobals() {
         window.getRelatedContentPosition = getRelatedContentPosition;
-        window.applyNativeFunctionCall("getRelatedContentPosition");
+        window.applyNativeFunctionCall('getRelatedContentPosition');
         window.setRelatedContentHeight = setRelatedContentHeight;
-        window.applyNativeFunctionCall("setRelatedContentHeight");
+        window.applyNativeFunctionCall('setRelatedContentHeight');
     }
 
     return {
-        init: ready
+        init: ready,
+        initPositionPoller: initPositionPoller
     };
 });

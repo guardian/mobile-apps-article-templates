@@ -5,7 +5,8 @@ define([
     'modules/minute',
     'bootstraps/common',
     'modules/util',
-    'modules/creativeInjector'
+    'modules/creativeInjector',
+    'modules/cards'
 ], function (
     relativeDates,
     twitter,
@@ -13,7 +14,8 @@ define([
     minute,
     common,
     util,
-    creativeInjector
+    creativeInjector,
+    cards
 ) {
     'use strict';
 
@@ -56,6 +58,8 @@ define([
             **/
             setTimeout(function() {
                 youtube.checkForVideos();
+                // When a block has loaded check position of related cards placeholder
+                cards.initPositionPoller();
             }, 650);
         } else {
             youtube.checkForVideos();
