@@ -1,7 +1,9 @@
 define([
-    'modules/util'
+    'modules/util',
+    'modules/cards'
 ], function (
-    util
+    util,
+    cards
 ) {
     'use strict';
 
@@ -117,6 +119,8 @@ define([
 
         if (processedTweets && articleBody){
             twttr.widgets.load(articleBody);
+            // When a tweets been enhanced check position of related cards placeholder
+            cards.initPositionPoller();
         }
     }
 

@@ -17,7 +17,8 @@ define([
             twitterMock,
             minuteMock,
             creativeInjectorMock,
-            utilMock;
+            utilMock,
+            cardsMock;
 
         beforeEach(function (done) {
             var injector = new Squire();
@@ -67,6 +68,9 @@ define([
                 debounce: sandbox.spy(),
                 getElementOffset: sandbox.spy()
             };
+            cardsMock = {
+                initPositionPoller: sandbox.spy()
+            };
 
             injector
                 .mock('modules/relativeDates', relativeDatesMock)
@@ -75,6 +79,7 @@ define([
                 .mock('modules/minute', minuteMock)
                 .mock('modules/creativeInjector', creativeInjectorMock)
                 .mock('modules/util', utilMock)
+                .mock('modules/cards', cardsMock)
                 .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (sut) {
                     liveblog = sut;
 
