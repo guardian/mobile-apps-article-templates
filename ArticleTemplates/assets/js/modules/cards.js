@@ -30,7 +30,7 @@ function (
     function poller(interval) {
         var newRelatedContentPosition = getRelatedContentPosition();
 
-        if (newRelatedContentPosition && existingRelatedContentPosition &&
+        if (newRelatedContentPosition &&
             (JSON.stringify(newRelatedContentPosition) !== JSON.stringify(existingRelatedContentPosition))
         ) {
             window.webkit.messageHandlers.bodyMutationNotification.postMessage({rect: newRelatedContentPosition });
