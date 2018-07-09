@@ -47,6 +47,9 @@ define([
     }
 
     function checkInjectedComponents(newBlocksAdded) {
+        // When a block has loaded check position of related cards placeholder
+        cards.initPositionPoller();
+        
         // check for tweets
         twitter.checkForTweets();
 
@@ -58,8 +61,6 @@ define([
             **/
             setTimeout(function() {
                 youtube.checkForVideos();
-                // When a block has loaded check position of related cards placeholder
-                cards.initPositionPoller();
             }, 650);
         } else {
             youtube.checkForVideos();
