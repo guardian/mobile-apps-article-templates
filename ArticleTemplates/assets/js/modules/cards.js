@@ -9,8 +9,7 @@ function (
     var initialised = false;
     var existingRelatedContentPosition;
     var positionPoller = null;
-    var maxPollCount = 20;
-    var pollCount;
+    var maxPollInterval = 4000;
 
     function ready() {
         if (!initialised && GU.opts.platform === 'ios') {
@@ -21,13 +20,11 @@ function (
     }
 
     function initPositionPoller() {
-        pollCount = 0;
-
         if (positionPoller !== null) {
             window.clearTimeout(positionPoller);
         }
 
-        poller(1000);
+        poller(500);
     }
 
     function poller(interval) {
@@ -37,13 +34,10 @@ function (
             window.webkit.messageHandlers.bodyMutationNotification.postMessage({rect: newRelatedContentPosition });
         }
 
-        if (pollCount < maxPollCount) {
-            positionPoller = setTimeout(function() {
-                poller(interval + 250);
-            }, interval);
-        }
-
-        pollCount++;
+        positionPoller = setTimeout(function() {
+            var pollInterval = interval < maxPollInterval ? interval + 500 : maxPollInterval;
+            poller(pollInterval);
+        }, interval);
     }
 
     function getRelatedContentPosition() {
