@@ -16,6 +16,8 @@ function (
             initialised = true;
             setupGlobals();
             initPositionPoller();
+            // on orientation change restart the position poller
+            window.addEventListener("orientationchange", initPositionPoller);
         }
     }
 
