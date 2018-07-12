@@ -2,18 +2,24 @@
 
     .touch-gallery {
         &__images {
+            display: block;
             &__image {
-
-            }
-            &__low-res {
                 width: 100%;
+                display: block;
             }
             &__high-res {
                 display: none;
             }
+            &.high-res-loaded {
+                .touch-gallery__images__low-res {
+                    display: none;
+                }
+                .touch-gallery__images__high-res {
+                    display: block;
+                }
+            }
         }
         &__caption {
-
             padding: 0 $gs-unit $gs-unit*4;
             color: color(brightness-100);
 
@@ -26,7 +32,7 @@
             &__heading {
                 font-family: $egyptian-display;
                 font-weight: 600;
-                margin-top: -3px;
+                margin-top: 3px;
             }
             &__caption {
                 font-family: $egyptian-text;

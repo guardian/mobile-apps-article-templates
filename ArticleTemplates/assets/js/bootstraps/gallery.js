@@ -30,6 +30,7 @@ function (
 
             mc.on('pinchstart', function(ev) {
                 savePinchCentre(galleryImage, ev);
+                loadHighRes(galleryImage);
             });
 
             mc.on('pinchend', function() {
@@ -37,6 +38,17 @@ function (
             });
 
         });
+
+        function loadHighRes(el) {
+            if (!el.classList.contains('high-res-setup')) {
+                el.classList.add('high-res-setup');
+                var highRes = el.querySelector('.touch-gallery__images__high-res');
+                highRes.setAttribute('src', highRes.dataset.src);
+                highRes.addEventListener('load', function() {
+                    el.classList.add('high-res-loaded');
+                })
+            }
+        }
 
         function getPinchCentre(el) {
             var pinchX = el.dataset.pinchCentreX;
