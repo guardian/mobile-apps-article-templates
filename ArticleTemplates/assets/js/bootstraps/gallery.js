@@ -29,11 +29,13 @@ function (
             });
 
             mc.on('pinchstart', function(ev) {
+                lockArticleSwipe(true);
                 savePinchCentre(galleryImage, ev);
                 loadHighRes(galleryImage);
             });
 
             mc.on('pinchend', function() {
+                lockArticleSwipe(false);
                 bounceToInitialPosition(galleryImage);
             });
 
@@ -47,6 +49,13 @@ function (
                 highRes.addEventListener('load', function() {
                     el.classList.add('high-res-loaded');
                 })
+            }
+        }
+
+        function lockArticleSwipe(toggle) {
+            var isAndroidApp = (window.location.origin === "file://" && /(android)/i.test(navigator.userAgent) ) ? true : false;
+            if (isAndroidApp) {
+                window.GuardianJSInterface.registerRelatedCardsTouch(toggle);
             }
         }
 
@@ -85,10 +94,9 @@ function (
             var newScale = currentScale + (1-currentScale)/5;
             if (newScale > 0.99 && newScale < 1.01) {
                 el.style.transform = 'scale(1)';
-                console.log('finished');
+                lockArticleSwipe(false);
             } else {
                 el.style.transform = 'scale('+newScale+')';
-                console.log(newScale);
                 requestAnimationFrame(function() {
                     bounceToInitialPosition(el);
                 });
