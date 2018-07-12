@@ -424,9 +424,6 @@ define([
     }
 
     function lineHeightResize(current, replacement) {
-        var replacementStr = replacement,
-            replacementInt = replacementStr.split('-');
-
         document.body.classList.remove(current);
         document.body.classList.add(replacement);  
     }
