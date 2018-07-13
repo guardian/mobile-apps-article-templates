@@ -5,9 +5,6 @@
     position: relative;
     padding: 0;
     margin: 16px -10px 36px;
-    @include mq(phablet) {
-        margin: 16px 0 36px -10px;
-    }
 
     &:not([open]) .is-on,
     &[open] .is-off {
@@ -206,10 +203,6 @@
 
 .campaign--snippet__header {
     margin: 0 0 6px;
-
-    @include mq(mobileMedium) {
-        margin: 0 0 20px;
-    }
 }
 
 .campaign--snippet__headline {
@@ -445,11 +438,6 @@
 
             &:hover {
                 text-decoration: underline;
-            }
-
-            @include mq(mobileMedium) {
-                font-size: 14px;
-                margin: 8px 10px 0 0;
             }
         }
     }
