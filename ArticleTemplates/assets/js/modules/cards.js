@@ -33,7 +33,8 @@ function (
         var newRelatedContentPosition = getRelatedContentPosition();
 
         if (newRelatedContentPosition &&
-            (JSON.stringify(newRelatedContentPosition) !== JSON.stringify(existingRelatedContentPosition))
+            (JSON.stringify(newRelatedContentPosition) !== JSON.stringify(existingRelatedContentPosition)) &&
+            (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.bodyMutationNotification)
         ) {
             window.webkit.messageHandlers.bodyMutationNotification.postMessage({rect: newRelatedContentPosition });
             existingRelatedContentPosition = newRelatedContentPosition;
