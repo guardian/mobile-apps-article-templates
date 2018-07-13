@@ -41,14 +41,6 @@
         // Interactives within article body
         .element-interactive {
             width: auto;
-
-            @include mq(col2, col3) {
-                width: calc(#{(100% / (100% - cols($base-3, 3))) * 100%} - #{base-px(1)});
-            }
-
-            @include mq($from: col3) {
-                width: calc(#{(100% / (100% - cols($base-4, 4))) * 100%} - #{base-px(1)});
-            }
         }
 
         .element-video:not(.element-youtube) {

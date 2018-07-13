@@ -50,7 +50,6 @@ define([
             fastClickMock,
             smoothScrollMock,
             commentsMock,
-            cardsMock,
             moreTagsMock,
             sharingMock,
             utilMock;
@@ -70,9 +69,6 @@ define([
                 init: sandbox.spy()
             };
             commentsMock = {
-                init: sandbox.spy()
-            };
-            cardsMock = {
                 init: sandbox.spy()
             };
             moreTagsMock = {
@@ -100,7 +96,6 @@ define([
                 .mock('fastClick', fastClickMock)
                 .mock('smoothScroll', smoothScrollMock)
                 .mock('modules/comments', commentsMock)
-                .mock('modules/cards', cardsMock)
                 .mock('modules/more-tags', moreTagsMock)
                 .mock('modules/sharing', sharingMock)
                 .mock('modules/util', utilMock)

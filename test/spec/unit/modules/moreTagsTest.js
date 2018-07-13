@@ -6,7 +6,8 @@ define([
     'use strict';
 
     describe('ArticleTemplates/assets/js/modules/more-tags', function () {
-        var moreTags,
+        var clock,
+            moreTags,
             container,
             getTagsHTML = function (count) {
                 var i,
@@ -24,6 +25,8 @@ define([
         beforeEach(function (done) {
             var injector = new Squire();
 
+            clock = sinon.useFakeTimers();
+
             container = document.createElement('div');
             container.id = 'container';
             document.body.appendChild(container);
@@ -37,6 +40,7 @@ define([
 
         afterEach(function () {
             document.body.removeChild(container);
+            clock.restore();
         });
 
         describe('init()', function () {
@@ -77,7 +81,7 @@ define([
                 }
             });
 
-            it('show tags on click of more button', function (done) {
+            it('show tags on click of more button', function () {
                 var moreTagsContainer,
                     event = document.createEvent('HTMLEvents'),
                     lastInlineListItem;
@@ -97,12 +101,10 @@ define([
                 event.initEvent('click', true, true);
                 moreTagsContainer.dispatchEvent(event);
 
-                setTimeout(function () {
-                    expect(moreTagsContainer.style.display).to.eql('none');
-                    expect(lastInlineListItem.classList.contains('hide-tags')).to.eql(false);
+                clock.tick(200);
 
-                    done();
-                }, 250);
+                expect(moreTagsContainer.style.display).to.eql('none');
+                expect(lastInlineListItem.classList.contains('hide-tags')).to.eql(false);
             });
         });
     });

@@ -6,7 +6,8 @@ define([
     'use strict';
 
     describe('ArticleTemplates/assets/js/modules/comments', function () {
-        var comments,
+        var clock,
+            comments,
             sandbox,
             container;
 
@@ -17,6 +18,8 @@ define([
             var injector = new Squire();
 
             sandbox = sinon.sandbox.create();
+
+            clock = sinon.useFakeTimers();
 
             container = document.createElement('div');
             container.id = 'container';
@@ -47,6 +50,7 @@ define([
             delete window.applyNativeFunctionCall;
 
             sandbox.restore();
+            clock.restore();
         });
 
         describe('init()', function () {
@@ -204,7 +208,7 @@ define([
                     expect(discussionBlockElem.classList.contains('block--discussion-thread--checked')).to.eql(true);
                 });
 
-                it('can handle click on more replies button', function (done) {
+                it('can handle click on more replies button', function () {
                     var event,
                         moreRepliesButton,
                         discussionBlockElem = buildDiscussionBlockElem(false, 10);
@@ -222,15 +226,13 @@ define([
                     event.initEvent('click', true, true);
                     moreRepliesButton.dispatchEvent(event);
 
-                    setTimeout(function () {
-                        expect(moreRepliesButton.style.display).to.eql('none');
-                        expect(discussionBlockElem.classList.contains('expand')).to.eql(true);
+                    clock.tick(500);
 
-                        done();
-                    }, 500);
+                    expect(moreRepliesButton.style.display).to.eql('none');
+                    expect(discussionBlockElem.classList.contains('expand')).to.eql(true);
                 });
 
-                it('ignores click on comment child which matches querySelector: a', function (done) {
+                it('ignores click on comment child which matches querySelector: a', function () {
                     var event,
                         childElem,
                         commentElem = document.createElement('div'),
@@ -254,14 +256,12 @@ define([
                     event.initEvent('click', true, true);
                     childElem.dispatchEvent(event);
 
-                    setTimeout(function () {
-                        expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(true);
+                    clock.tick(500);
 
-                        done();
-                    }, 500);
+                    expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(true);
                 });
 
-                it('ignores click on comment child which matches querySelector: .more--comments', function (done) {
+                it('ignores click on comment child which matches querySelector: .more--comments', function () {
                     var event,
                         childElem,
                         commentElem = document.createElement('div'),
@@ -285,14 +285,12 @@ define([
                     event.initEvent('click', true, true);
                     childElem.dispatchEvent(event);
 
-                    setTimeout(function () {
-                        expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(true);
+                    clock.tick(500);
 
-                        done();
-                    }, 500);
+                    expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(true);
                 });
 
-                it('ignores click on comment child which matches querySelector: .comment__reply', function (done) {
+                it('ignores click on comment child which matches querySelector: .comment__reply', function () {
                     var event,
                         childElem,
                         commentElem = document.createElement('div'),
@@ -316,14 +314,12 @@ define([
                     event.initEvent('click', true, true);
                     childElem.dispatchEvent(event);
 
-                    setTimeout(function () {
-                        expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(true);
+                    clock.tick(500);
 
-                        done();
-                    }, 500);
+                    expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(true);
                 });
 
-                it('ignores click on comment child which matches querySelector: .comment__recommend', function (done) {
+                it('ignores click on comment child which matches querySelector: .comment__recommend', function () {
                     var event,
                         childElem,
                         commentElem = document.createElement('div'),
@@ -347,14 +343,12 @@ define([
                     event.initEvent('click', true, true);
                     childElem.dispatchEvent(event);
 
-                    setTimeout(function () {
-                        expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(true);
+                    clock.tick(500);
 
-                        done();
-                    }, 500);
+                    expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(true);
                 });
 
-                it('can handle click on comment child which matches querySelector: .comment__header', function (done) {
+                it('can handle click on comment child which matches querySelector: .comment__header', function () {
                     var event,
                         childElem,
                         commentElem = document.createElement('div'),
@@ -376,14 +370,12 @@ define([
                     event.initEvent('click', true, true);
                     childElem.dispatchEvent(event);
 
-                    setTimeout(function () {
-                        expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(false);
+                    clock.tick(500);
 
-                        done();
-                    }, 500);
+                    expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(false);
                 });
 
-                it('can handle click on comment child which matches querySelector: .comment__body', function (done) {
+                it('can handle click on comment child which matches querySelector: .comment__body', function () {
                     var event,
                         childElem,
                         commentElem = document.createElement('div'),
@@ -405,14 +397,12 @@ define([
                     event.initEvent('click', true, true);
                     childElem.dispatchEvent(event);
 
-                    setTimeout(function () {
-                        expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(false);
+                    clock.tick(500);
 
-                        done();
-                    }, 500);
+                    expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(false);
                 });
 
-                it('can close other comments on click if they are open', function (done) {
+                it('can close other comments on click if they are open', function () {
                     var event,
                         childElem,
                         commentElem = document.createElement('div'),
@@ -436,12 +426,10 @@ define([
                     event.initEvent('click', true, true);
                     childElem.dispatchEvent(event);
 
-                    setTimeout(function () {
-                        expect(otherCommentElem.firstElementChild.classList.contains('comment--open')).to.eql(false);
-                        expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(true);
+                    clock.tick(500);
 
-                        done();
-                    }, 500);
+                    expect(otherCommentElem.firstElementChild.classList.contains('comment--open')).to.eql(false);
+                    expect(commentElem.firstElementChild.classList.contains('comment--open')).to.eql(true);
                 });
             });
         });

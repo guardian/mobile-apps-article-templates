@@ -9,7 +9,9 @@ define([
       var atomTypes = GU.opts.atoms;
       Object.keys(atomTypes).forEach(function (t) {
         var f = atomTypes[t];
-        if( typeof f.default !== 'function' || f.default.length !== 1 ) { return; }
+        if ( typeof f.default !== 'function' || f.default.length !== 1 ) {
+          return;
+        }
         bootAtomType(t, atomTypes[t]);
       });
     }

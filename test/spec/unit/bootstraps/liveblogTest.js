@@ -6,7 +6,8 @@ define([
     'use strict';
 
     describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
-        var liveblog,
+        var clock,
+            liveblog,
             container,
             sandbox,
             liveblogBody;
@@ -16,10 +17,13 @@ define([
             twitterMock,
             minuteMock,
             creativeInjectorMock,
-            utilMock;
+            utilMock,
+            cardsMock;
 
         beforeEach(function (done) {
             var injector = new Squire();
+
+            clock = sinon.useFakeTimers();
 
             container = document.createElement('div');
             container.id = 'container';
@@ -64,6 +68,9 @@ define([
                 debounce: sandbox.spy(),
                 getElementOffset: sandbox.spy()
             };
+            cardsMock = {
+                initPositionPoller: sandbox.spy()
+            };
 
             injector
                 .mock('modules/relativeDates', relativeDatesMock)
@@ -72,6 +79,7 @@ define([
                 .mock('modules/minute', minuteMock)
                 .mock('modules/creativeInjector', creativeInjectorMock)
                 .mock('modules/util', utilMock)
+                .mock('modules/cards', cardsMock)
                 .require(['ArticleTemplates/assets/js/bootstraps/liveblog'], function (sut) {
                     liveblog = sut;
 
@@ -91,6 +99,7 @@ define([
             delete window.GU;
 
             sandbox.restore();
+            clock.restore();
         });
 
         describe('init()', function () {
@@ -149,7 +158,7 @@ define([
                 expect(window.addEventListener).to.have.been.calledWith('scroll');
             });
 
-            it('add click listener on load more element', function (done) {
+            it('add click listener on load more element', function () {
                 var event,
                     loadingElem = document.createElement('div'),
                     loadMoreElem = document.createElement('div');
@@ -169,14 +178,12 @@ define([
                 event.initEvent('click', true, true);
                 loadMoreElem.dispatchEvent(event);
 
-                setTimeout(function () {
-                    expect(loadMoreElem.style.display).not.to.eql('block');
-                    expect(loadingElem.classList.contains('loading--visible')).to.eql(true);
-                    expect(utilMock.signalDevice).to.have.been.calledOnce;
-                    expect(utilMock.signalDevice).to.have.been.calledWith('showmore');
+                clock.tick(1500);
 
-                    done();
-                }, 1000);
+                expect(loadMoreElem.style.display).not.to.eql('block');
+                expect(loadingElem.classList.contains('loading--visible')).to.eql(true);
+                expect(utilMock.signalDevice).to.have.been.calledOnce;
+                expect(utilMock.signalDevice).to.have.been.calledWith('showmore');
             });
 
             it('does not setup liveblogTime interval if the minute', function () {
