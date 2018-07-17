@@ -34,7 +34,8 @@
             'getArticleHeight',
             'injectInlineArticleMembershipCreative',
             'getRelatedContentPosition',
-            'setRelatedContentHeight'
+            'setRelatedContentHeight',
+            'scrollToBlock'
         ],
         loadCss = function() {
             var url = 'assets/css/' + opts.asyncStylesFilename + '.css',
