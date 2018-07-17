@@ -3,6 +3,11 @@
     .touch-gallery {
         &__images {
             display: block;
+            margin: 0 (-$gs-unit);
+            @include mq(col2) {
+                margin: 0;
+            }
+
             &__image {
                 width: 100%;
                 display: block;
@@ -20,7 +25,7 @@
             }
         }
         &__caption {
-            padding: 0 $gs-unit $gs-unit*4;
+            padding: 0 0 $gs-unit*4;
             color: color(brightness-100);
 
             &__heading,
