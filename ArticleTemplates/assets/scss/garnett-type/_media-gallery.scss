@@ -1,5 +1,13 @@
 .garnett--type-media[data-content-type='gallery'] {
 
+    .article__header {
+        &-bg {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+    }
+
     .touch-gallery {
         &__images {
             display: block;
@@ -9,8 +17,11 @@
             }
 
             &__image {
-                width: 100%;
                 display: block;
+                max-width: 100%;
+                max-height: 100vh;
+                width: auto;
+                height: auto;
             }
             &__high-res {
                 display: none;
