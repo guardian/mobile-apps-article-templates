@@ -1,12 +1,23 @@
+$text-column-width: 620px;
+$left-gutter: 10*$gs-unit;
+
 .text-column {
     width: 100%;
     padding: 0 $gs-unit;
     @include mq(col2) {
         padding: 0;
         margin: 0 2*$gs-unit 0;
-        max-width: 620px;
+        max-width: $text-column-width;
     }
     @include mq(col3) {
-        margin-left: 10*$gs-unit;
+        margin-left: $left-gutter;
+    }
+    @include mq(col4) {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-left: $left-gutter;
+        padding-right: 1200px - $text-column-width - $left-gutter;
+        border-left: 1px solid color(brightness-20);
+        border-right: 1px solid color(brightness-20);
     }
 }
