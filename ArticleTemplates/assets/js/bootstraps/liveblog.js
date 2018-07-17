@@ -6,7 +6,8 @@ define([
     'bootstraps/common',
     'modules/util',
     'modules/creativeInjector',
-    'modules/cards'
+    'modules/cards',
+    'smoothScroll'
 ], function (
     relativeDates,
     twitter,
@@ -15,7 +16,8 @@ define([
     common,
     util,
     creativeInjector,
-    cards
+    cards,
+    SmoothScroll
 ) {
     'use strict';
 
@@ -26,6 +28,14 @@ define([
     function updateBlocksOnScroll() {
         if (liveblogStartPos.top > window.scrollY) {
             liveblogNewBlockDump();
+        }
+    }
+
+    function scrollToBlock(id) {  
+        var smoothScroll = new SmoothScroll();
+        var element = document.querySelector('#block-' + id);
+        if (element) {
+            smoothScroll.animateScroll(element);
         }
     }
 
@@ -222,11 +232,13 @@ define([
         window.showLiveMore = showLiveMore;
         window.liveblogNewBlock = liveblogNewBlock;
         window.liveblogNewKeyEvent = liveblogNewKeyEvent;
+        window.scrollToBlock = scrollToBlock;
 
         window.applyNativeFunctionCall('liveblogNewBlock');
         window.applyNativeFunctionCall('liveblogDeleteBlock');
         window.applyNativeFunctionCall('liveblogUpdateBlock');
         window.applyNativeFunctionCall('liveblogNewKeyEvent');
+        window.applyNativeFunctionCall('scrollToBlock');
     }
 
     function keyEvents() {
