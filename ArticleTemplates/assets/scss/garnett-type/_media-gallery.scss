@@ -6,11 +6,51 @@
             background-size: cover;
             background-position: center;
         }
+        .article-kicker {
+            display: none;
+        }
+        .headline {
+            font-size: 3.6rem;
+            line-height: 4rem;
+            padding: 0 0 5*$gs-unit;
+            font-weight: 600;
+            @include mq(col4) {
+                background-color: transparent;
+                width: auto;
+            }
+        }
+        .standfirst {
+            font-size: 1.6rem;
+            line-height: 2rem;
+            font-family: $egyptian-text;
+            @include mq(col4) {
+                padding-bottom: 0;
+                margin-left: 0;
+            }
+        }
+        .header-photo-credit {
+            color: color(brightness-74);
+            font-family: $agate-sans;
+            font-size: 1.4rem;
+            line-height: 1.6rem;
+            margin: $gs-unit 0 2*$gs-unit;
+        }
+        .meta {
+            padding: $gs-unit 0;
+            @include mq(col4) {
+                background-color: transparent;
+            }
+        }
+        .meta__misc {
+            padding: 0;
+        }
     }
 
     .touch-gallery {
         &__images {
             display: block;
+            position: relative;
+            z-index: 2;
             margin: 0 (-$gs-unit);
             @include mq(col2) {
                 margin: 0;
@@ -58,6 +98,21 @@
                 font-family: $agate-sans;
                 font-size: 1.4rem;
                 line-height: 1.6rem;
+            }
+        }
+    }
+
+    .tags {
+        background-color: transparent;
+        width: auto;
+        .inline-list {
+            padding: 0 0 5*$gs-unit;
+            margin: 0 -5px;
+            width: auto;
+            &__item {
+                &:before {
+                    display: none;
+                }
             }
         }
     }
