@@ -36,7 +36,9 @@ define([
         var element = document.querySelector('#block-' + id);
         if (element) {
             smoothScroll.animateScroll(element);
+            return true;
         }
+        return false;
     }
 
     function addNewBlockToBlog(insertAfterElem, block) {
