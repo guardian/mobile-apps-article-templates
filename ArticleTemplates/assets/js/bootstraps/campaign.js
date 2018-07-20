@@ -49,7 +49,7 @@ define([], function () {
     }
 
     function displayError(campaign) {
-      if (! (campaign.firstChild.nodeType === Node.ELEMENT_NODE && campaign.firstChild.className === 'campaign__error') ) {
+      if (campaign.firstElementChild.className === 'campaign__error') {
         campaign.insertAdjacentHTML('afterbegin', '<p class="campaign__error">Sorry, there was an error submitting your contribution. Please, try again.</p>');
       }
     }
