@@ -1,7 +1,8 @@
 define([], function () {
     'use strict';
 
-    const endpoint = 'https://mobile.guardianapis.com/callouts';
+    const endpoint = GU.opts.campaignsUrl;
+console.log(endpoint);
 
     function init() {
       const campaign = document.querySelector('.campaign--snippet');
@@ -21,12 +22,13 @@ define([], function () {
       const form = campaign.querySelector('form');
       form.addEventListener('submit', function (e) {
         e.preventDefault();
-        const data = form.elements.reduce(function (o, e) {
+        const data = Array.from(form.elements).reduce(function (o, e) {
           if (o[e.name]) {
             o[e.name] += '\n' + e.value;
           } else {
             o[e.name] = e.value;
           }
+          return o;
         }, {});
         submit(data, campaign);
       });
