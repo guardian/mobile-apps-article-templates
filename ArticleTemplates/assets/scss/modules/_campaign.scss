@@ -22,6 +22,26 @@
         font-weight: 400;
         padding-top: 2px;
     }
+
+    &.campaign--success {
+        color: color(brightness-7);
+        padding: 8px 0px 10px 10px;
+        p {
+            font-weight: 700;
+            font-family: $agate-sans;
+        }
+    }
+            
+}
+
+.campaign__error {
+    padding: 0px 0px 10px 23px;
+    color: color(news-feature-headline);
+    margin-top: -35px;
+    margin-bottom: 20px;
+    p {
+        font-family: $agate-sans;
+    }
 }
 
 .campaign--snippet .form_submit button {
@@ -30,26 +50,41 @@
     .garnett--pillar-news & {
         color: color(brightness-100);
         background-color: color(news-kicker);
+        &:hover, :active {
+            background-color: darken(color(news-kicker), 5%);
+        }
     }
 
     .garnett--pillar-sport & {
         color: color(brightness-100);
         background-color: color(sport-feature-headline);
+        &:hover, :active {
+            background-color: darken(color(sport-feature-headline), 5%);
+        }
     }
 
     .garnett--pillar-opinion & {
         color: color(brightness-100);
         background-color: color(opinion-feature-headline);
+        &:hover, :active {
+            background-color: darken(color(opinion-feature-headline), 5%);
+        }
     }
 
     .garnett--pillar-arts & {
         color: color(brightness-100);
-        background-color: color(ars-feature-headline);
+        background-color: color(arts-feature-headline);
+        &:hover, :active {
+            background-color: darken(color(arts-feature-headline), 5%);
+        }
     }
 
     .garnett--pillar-lifestyle & {
         color: color(brightness-100);
         background-color: color(lifestyle-kicker);
+        &:hover, :active {
+            background-color: darken(color(lifestyle-kicker), 5%);
+        }
     }
 }
 
