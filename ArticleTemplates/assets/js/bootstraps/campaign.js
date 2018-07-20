@@ -21,7 +21,13 @@ define([], function () {
       const form = campaign.querySelector('form');
       form.addEventListener('submit', function (e) {
         e.preventDefault();
-        const data = new FormData(form);
+        const data = form.elements.reduce(function (o, e) {
+          if (o[e.name]) {
+            o[e.name] += '\n' + e.value;
+          } else {
+            o[e.name] = e.value;
+          }
+        }, {});
         submit(data, campaign);
       });
     }
@@ -29,10 +35,12 @@ define([], function () {
     function submit(data, campaign) {
       const req = new XMLHttpRequest();
       req.open('POST', endpoint);
+      req.setRequestHeader('Content-Type', 'application/json');
+      req.setRequestHeader('Accept', 'application/json');
       req.withCredentials = true;
       req.onload = displayConfirmation.bind(null, campaign);
       req.onerror = displayError.bind(null, campaign);
-      req.send(data);
+      req.send(JSON.stringify(data));
     }
 
     function displayOfflineMessage(campaign) {
