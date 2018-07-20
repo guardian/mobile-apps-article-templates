@@ -4,7 +4,7 @@ define([], function () {
     const endpoint = 'https://mobile.guardianapis.com/callouts';
 
     function init() {
-      const campaign = document.querySelector('.campaign--snippet form');
+      const campaign = document.querySelector('.campaign--snippet');
       if (campaign) {
         initCampaign(campaign);
       }
@@ -18,9 +18,10 @@ define([], function () {
       window.addEventListener('online', hideOfflineMessage.bind(null, campaign));
       window.addEventListener('offline', displayOfflineMessage.bind(null, campaign));
 
-      campaign.addEventListener('submit', function (e) {
+      const form = campaign.querySelector('form');
+      form.addEventListener('submit', function (e) {
         e.preventDefault();
-        const data = new FormData(campaign);
+        const data = new FormData(form);
         submit(data, campaign);
       });
     }
@@ -46,6 +47,7 @@ define([], function () {
 
     function displayConfirmation(campaign) {
       campaign.innerHTML = '<p>Thank you for your contribution</p>';
+      campaign.className += ' campaign--success'
     }
 
     function displayError(campaign) {
