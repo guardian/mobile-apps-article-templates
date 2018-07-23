@@ -23,8 +23,10 @@ console.log(endpoint);
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         const data = Array.from(form.elements).reduce(function (o, e) {
-          if (o[e.name]) {
-            o[e.name] += '\n' + e.value;
+          if (e.type == 'checkbox') {
+            if (e.checked) {
+              o[e.name] = o[e.name] ? o[e.name] + '\n' + e.value : e.value;
+            }
           } else {
             o[e.name] = e.value;
           }
