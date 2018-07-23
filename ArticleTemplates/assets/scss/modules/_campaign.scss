@@ -23,7 +23,7 @@
         padding-top: 2px;
     }
 
-    &.campaign--success {
+    &.campaign--success form {
         color: color(brightness-7);
         padding: 8px 0px 10px 10px;
         p {
@@ -45,7 +45,11 @@
 }
 
 .campaign--snippet .form_submit button {
-    color: color(brightness-7);
+    color: color(brightness-100);
+    background-color: color(news-kicker);
+    &:hover, :active {
+        background-color: darken(color(news-kicker), 5%);
+    }
 
     .garnett--pillar-news & {
         color: color(brightness-100);
