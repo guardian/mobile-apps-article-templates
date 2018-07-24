@@ -27,11 +27,12 @@ console.log(endpoint);
             if (e.checked) {
               o[e.name] = o[e.name] ? o[e.name] + '\n' + e.value : e.value;
             }
-          } else {
+          } else if (e.value) {
             o[e.name] = e.value;
           }
           return o;
         }, {});
+        disableButton(form);
         submit(data, campaign, form);
       });
     }
@@ -61,10 +62,21 @@ console.log(endpoint);
       campaign.className += ' campaign--success'
     }
 
-    function displayError(campaign) {
+    function displayError(campaign, form) {
       if (form.firstElementChild.className === 'campaign__error') {
         form.insertAdjacentHTML('afterbegin', '<p class="campaign__error">Sorry, there was an error submitting your contribution. Please, try again.</p>');
       }
+      enableButton(form);
+    }
+
+    function disableButton(form) {
+      const button = form.querySelector('button');
+      button.disabled = true;
+    }
+
+    function enableButton(form) {
+      const button = form.querySelector('button');
+      button.disabled = false;
     }
 
     return {
