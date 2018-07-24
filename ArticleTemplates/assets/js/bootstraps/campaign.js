@@ -23,25 +23,27 @@ console.log(endpoint);
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         const data = Array.from(form.elements).reduce(function (o, e) {
-          if (o[e.name]) {
-            o[e.name] += '\n' + e.value;
-          } else {
+          if (e.type == 'checkbox') {
+            if (e.checked) {
+              o[e.name] = o[e.name] ? o[e.name] + '\n' + e.value : e.value;
+            }
+          } else if (e.value) {
             o[e.name] = e.value;
           }
           return o;
         }, {});
-        submit(data, campaign);
+        disableButton(form);
+        submit(data, campaign, form);
       });
     }
 
-    function submit(data, campaign) {
+    function submit(data, campaign, form) {
       const req = new XMLHttpRequest();
       req.open('POST', endpoint);
       req.setRequestHeader('Content-Type', 'application/json');
       req.setRequestHeader('Accept', 'application/json');
-      req.withCredentials = true;
-      req.onload = displayConfirmation.bind(null, campaign);
-      req.onerror = displayError.bind(null, campaign);
+      req.onload = displayConfirmation.bind(null, campaign, form);
+      req.onerror = displayError.bind(null, campaign, form);
       req.send(JSON.stringify(data));
     }
 
@@ -55,15 +57,26 @@ console.log(endpoint);
       }
     }
 
-    function displayConfirmation(campaign) {
-      campaign.innerHTML = '<p>Thank you for your contribution</p>';
+    function displayConfirmation(campaign, form) {
+      form.innerHTML = '<p>Thank you for your contribution</p>';
       campaign.className += ' campaign--success'
     }
 
-    function displayError(campaign) {
-      if (campaign.firstElementChild.className === 'campaign__error') {
-        campaign.insertAdjacentHTML('afterbegin', '<p class="campaign__error">Sorry, there was an error submitting your contribution. Please, try again.</p>');
+    function displayError(campaign, form) {
+      if (form.firstElementChild.className === 'campaign__error') {
+        form.insertAdjacentHTML('afterbegin', '<p class="campaign__error">Sorry, there was an error submitting your contribution. Please, try again.</p>');
       }
+      enableButton(form);
+    }
+
+    function disableButton(form) {
+      const button = form.querySelector('button');
+      button.disabled = true;
+    }
+
+    function enableButton(form) {
+      const button = form.querySelector('button');
+      button.disabled = false;
     }
 
     return {

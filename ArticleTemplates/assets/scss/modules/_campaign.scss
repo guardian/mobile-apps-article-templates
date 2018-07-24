@@ -23,7 +23,7 @@
         padding-top: 2px;
     }
 
-    &.campaign--success {
+    &.campaign--success form {
         color: color(brightness-7);
         padding: 8px 0px 10px 10px;
         p {
@@ -45,46 +45,91 @@
 }
 
 .campaign--snippet .form_submit button {
-    color: color(brightness-7);
+    color: color(brightness-100);
+    background-color: color(news-kicker);
+
+    &:enabled {
+        &:hover, :active {
+            background-color: darken(color(news-kicker), 5%);
+        }
+    
+        .garnett--pillar-news & {
+            &:hover, &:active {
+                background-color: darken(color(news-kicker), 5%);
+            }
+        }
+
+    
+        .garnett--pillar-sport & {
+            &:hover, &:active {
+                background-color: darken(color(sport-feature-headline), 5%);
+            }
+        }
+    
+        .garnett--pillar-opinion & {
+            &:hover, &:active {
+                background-color: darken(color(opinion-feature-headline), 5%);
+            }
+        }
+    
+        .garnett--pillar-arts & {
+            &:hover, &:active {
+                background-color: darken(color(arts-feature-headline), 5%);
+            }
+        }
+    
+        .garnett--pillar-lifestyle & {
+            &:hover, &:active {
+                background-color: darken(color(lifestyle-kicker), 5%);
+            }
+        }
+    }
+
+    &:disabled {
+        .garnett--pillar-news & {
+            background-color: lighten(color(news-kicker), 5%);
+        }
+
+        .garnett--pillar-sport & {
+            background-color: lighten(color(sport-feature-headline), 5%);
+        }
+
+        .garnett--pillar-opinion & {
+            background-color: lighten(color(opinion-feature-headline), 5%);
+        }
+
+        .garnett--pillar-arts & {
+            background-color: lighten(color(arts-feature-headline), 5%);
+        }
+
+        .garnett--pillar-lifestyle & {
+            background-color: lighten(color(lifestyle-kicker), 5%);
+        }
+    }
 
     .garnett--pillar-news & {
         color: color(brightness-100);
         background-color: color(news-kicker);
-        &:hover, :active {
-            background-color: darken(color(news-kicker), 5%);
-        }
     }
 
     .garnett--pillar-sport & {
         color: color(brightness-100);
         background-color: color(sport-feature-headline);
-        &:hover, :active {
-            background-color: darken(color(sport-feature-headline), 5%);
-        }
     }
 
     .garnett--pillar-opinion & {
         color: color(brightness-100);
         background-color: color(opinion-feature-headline);
-        &:hover, :active {
-            background-color: darken(color(opinion-feature-headline), 5%);
-        }
     }
 
     .garnett--pillar-arts & {
         color: color(brightness-100);
         background-color: color(arts-feature-headline);
-        &:hover, :active {
-            background-color: darken(color(arts-feature-headline), 5%);
-        }
     }
 
     .garnett--pillar-lifestyle & {
         color: color(brightness-100);
         background-color: color(lifestyle-kicker);
-        &:hover, :active {
-            background-color: darken(color(lifestyle-kicker), 5%);
-        }
     }
 }
 
