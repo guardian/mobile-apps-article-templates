@@ -2,7 +2,6 @@ define([], function () {
     'use strict';
 
     const endpoint = GU.opts.campaignsUrl;
-console.log(endpoint);
 
     function init() {
       const campaign = document.querySelector('.campaign--snippet');
