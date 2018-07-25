@@ -1,4 +1,6 @@
-define([], function () {
+define([
+  'modules/cards'
+], function (cards) {
     'use strict';
 
     const endpoint = GU.opts.campaignsUrl;
@@ -15,6 +17,7 @@ define([], function () {
         displayOfflineMessage(campaign);
       }
 
+      campaign.addEventListener('toggle', cards.initPositionPoller);
       window.addEventListener('online', hideOfflineMessage.bind(null, campaign));
       window.addEventListener('offline', displayOfflineMessage.bind(null, campaign));
 
