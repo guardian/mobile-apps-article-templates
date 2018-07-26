@@ -1,7 +1,9 @@
 define([
-  'modules/atoms/services'
+  'modules/atoms/services',
+  'modules/cards'
 ], function (
-  services
+  services,
+  cards
 ) {
     'use strict';
 
@@ -24,9 +26,16 @@ define([
         if (typeof atom === 'string') {
           console.log('Failed to initialise atom [' + atomType + '/' + atoms[i].getAttribute('data-atom-id') + ']: ' + atom);
         } else {
+          initExpandables(atoms[i]);
           atom.start();
         }
       }
+    }
+
+    function initExpandables(atom) {
+      Array.from(atom.getElementsByTagName('details')).forEach(function (d) {
+        d.addEventListener('toggle', cards.initPositionPoller);
+      });
     }
 
     return {
