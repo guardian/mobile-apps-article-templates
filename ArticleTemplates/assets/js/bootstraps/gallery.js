@@ -13,11 +13,17 @@ function (
 
         var galleryImages = document.querySelectorAll('.touch-gallery__images');
         galleryImages.forEach(function(galleryImage) {
-            var mc = new Hammer.Manager(galleryImage);
+            var hammerSettings = (GU.opts.platform === 'ios' ? { touchAction: 'auto' } : {})
+            var mc = new Hammer.Manager(galleryImage, hammerSettings);
             var pinch = new Hammer.Pinch();
+
             mc.add(pinch);
 
             mc.on('pinch', function(ev) {
+                if (GU.opts.platform === 'ios') {
+                    ev.preventDefault();
+                }
+
                 var desiredScale = ev.scale;
                 var pinchCentre = getPinchCentre(galleryImage);
 
