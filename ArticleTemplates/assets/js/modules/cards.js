@@ -6,22 +6,32 @@ function (
 ) {
     'use strict';
 
-    var initialised = false;
     var existingRelatedContentPosition;
     var positionPoller = null;
     var maxPollInterval = 4000;
+    var relatedContentElem;
+    var shouldRun = false;
 
     function ready() {
-        if (!initialised && GU.opts.platform === 'ios') {
-            initialised = true;
-            setupGlobals();
-            initPositionPoller();
-            // on orientation change restart the position poller
-            window.addEventListener('orientationchange', initPositionPoller);
+        relatedContentElem = document.querySelector('.related-content');
+
+        if (relatedContentElem && GU.opts.platform === 'ios') {
+            shouldRun = true;
+        } else {
+            return;
         }
+
+        setupGlobals();
+        initPositionPoller();
+        // on orientation change restart the position poller
+        window.addEventListener('orientationchange', initPositionPoller);
     }
 
     function initPositionPoller() {
+        if (!shouldRun) {
+            return;
+        }
+
         if (positionPoller !== null) {
             window.clearTimeout(positionPoller);
         }
@@ -47,18 +57,16 @@ function (
     }
 
     function getRelatedContentPosition() {
-        var relatedContent = document.querySelector('.related-content');
-        if (relatedContent) {
-            return util.getElementOffset(relatedContent);
+        if (relatedContentElem) {
+            return util.getElementOffset(relatedContentElem);
         }
+
         return null;
     }
 
     function setRelatedContentHeight(height) {
-        var relatedContent = document.querySelector('.related-content');
-
-        if (relatedContent) {
-            relatedContent.style.height = height + 'px';
+        if (relatedContentElem) {
+            relatedContentElem.style.height = height + 'px';
         }
     }
 
