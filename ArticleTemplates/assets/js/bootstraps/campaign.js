@@ -3,10 +3,10 @@ define([
 ], function (cards) {
     'use strict';
 
-    const endpoint = GU.opts.campaignsUrl;
+    var endpoint = GU.opts.campaignsUrl;
 
     function init() {
-      const campaign = document.querySelector('.campaign--snippet');
+      var campaign = document.querySelector('.campaign--snippet');
       if (campaign) {
         initCampaign(campaign);
       }
@@ -21,11 +21,11 @@ define([
       window.addEventListener('online', hideOfflineMessage.bind(null, campaign));
       window.addEventListener('offline', displayOfflineMessage.bind(null, campaign));
 
-      const form = campaign.querySelector('form');
+      var form = campaign.querySelector('form');
       form.addEventListener('submit', function (e) {
         e.preventDefault();
-        const data = Array.from(form.elements).reduce(function (o, e) {
-          if (e.type == 'checkbox') {
+        var data = Array.from(form.elements).reduce(function (o, e) {
+          if (e.type === 'checkbox') {
             if (e.checked) {
               o[e.name] = o[e.name] ? o[e.name] + '\n' + e.value : e.value;
             }
@@ -40,7 +40,7 @@ define([
     }
 
     function submit(data, campaign, form) {
-      const req = new XMLHttpRequest();
+      var req = new XMLHttpRequest();
       req.open('POST', endpoint);
       req.setRequestHeader('Content-Type', 'application/json');
       req.setRequestHeader('Accept', 'application/json');
@@ -50,7 +50,7 @@ define([
     }
 
     function displayOfflineMessage(campaign) {
-      campaign.insertAdjacentHTML('afterbegin', '<p class="campaign__offline">You seem to have no connection to the Internet. You won\'t be able to send us anything until you have one.</p>')
+      campaign.insertAdjacentHTML('afterbegin', '<p class="campaign__offline">You seem to have no connection to the Internet. You won\'t be able to send us anything until you have one.</p>');
     }
 
     function hideOfflineMessage(campaign) {
@@ -61,7 +61,7 @@ define([
 
     function displayConfirmation(campaign, form) {
       form.innerHTML = '<p>Thank you for your contribution</p>';
-      campaign.className += ' campaign--success'
+      campaign.className += ' campaign--success';
     }
 
     function displayError(campaign, form) {
@@ -72,12 +72,12 @@ define([
     }
 
     function disableButton(form) {
-      const button = form.querySelector('button');
+      var button = form.querySelector('button');
       button.disabled = true;
     }
 
     function enableButton(form) {
-      const button = form.querySelector('button');
+      var button = form.querySelector('button');
       button.disabled = false;
     }
 
