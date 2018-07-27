@@ -9,10 +9,7 @@ function (
     function init() {
 
         // TODO:
-        // + dont block scrolling
-        // + bounce
-        // - android: lock article swipe
-        // - header CSS
+        // "underlay"
 
         var galleryImages = document.querySelectorAll('.touch-gallery__images');
         galleryImages.forEach(function(galleryImage) {
