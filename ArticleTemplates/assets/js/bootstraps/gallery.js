@@ -26,6 +26,7 @@ function (
             });
 
             mc.on('pinchstart', function(ev) {
+                galleryImage.classList.add('touch-gallery__images--pinch');
                 lockArticleSwipe(true);
                 savePinchCentre(galleryImage, ev);
                 loadHighRes(galleryImage);
@@ -45,7 +46,7 @@ function (
                 highRes.setAttribute('src', highRes.dataset.src);
                 highRes.addEventListener('load', function() {
                     el.classList.add('high-res-loaded');
-                })
+                });
             }
         }
 
@@ -90,8 +91,9 @@ function (
             var currentScale = (el.getBoundingClientRect().width/el.offsetWidth);
             var newScale = currentScale + (1-currentScale)/5;
             if (newScale > 0.99 && newScale < 1.01) {
-                el.style.transform = 'scale(1)';
                 lockArticleSwipe(false);
+                el.style.transform = 'scale(1)';
+                el.classList.remove('touch-gallery__images--pinch');
             } else {
                 el.style.transform = 'scale('+newScale+')';
                 requestAnimationFrame(function() {
