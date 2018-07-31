@@ -44,7 +44,6 @@ define([
       req.open('POST', endpoint);
       req.setRequestHeader('Content-Type', 'application/json');
       req.setRequestHeader('Accept', 'application/json');
-      req.withCredentials = true;
       req.onload = displayConfirmation.bind(null, campaign, form);
       req.onerror = displayError.bind(null, campaign, form);
       req.send(JSON.stringify(data));
