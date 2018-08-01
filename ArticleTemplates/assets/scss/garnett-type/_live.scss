@@ -63,8 +63,7 @@
 
             .article-kicker,
             .headline,
-            .standfirst,
-            .sponsorship {
+            .standfirst {
                 @include mq(col2, col3) {
                     padding-left: cols($base-3, 4);
                 }
@@ -76,10 +75,17 @@
             }
 
             .headline,
-            .standfirst,
-            .sponsorship {
+            .standfirst {
                 @include mq($from: col4) {
                     padding-left: 0;
+                    margin: 0 auto;
+                    max-width: 1200px;
+                }
+            }
+
+            .sponsorship {
+                @include mq($from: col4) {
+                    padding-left: 12px;
                     margin: 0 auto;
                     max-width: 1200px;
                 }
