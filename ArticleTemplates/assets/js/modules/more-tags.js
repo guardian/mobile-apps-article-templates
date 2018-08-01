@@ -65,7 +65,7 @@ function (cards) {
 
         for (i = 0; i < hiddenTags.length; i++) {
             hiddenTags[i].classList.remove('hide-tags');
-        }        
+        }
     }
 
     return {
