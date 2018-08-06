@@ -105,9 +105,19 @@
     // Immersive overrides
     &.garnett--type-immersive {
         .article__series,
-        .article__series > a,
         .byline__author > a {
             color: $p-inverted;
+        }
+
+        .article__series > a {
+            padding: base-px(0.25, 0.5, 0.25, 1);
+            -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+            font-size: 1rem;
+            position: absolute;
+            color: white;
+            background-color: $p-kicker;
+            white-space: nowrap;
         }
 
         .section__rule {
