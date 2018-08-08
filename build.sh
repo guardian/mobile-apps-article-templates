@@ -4,6 +4,8 @@ mv tmp package.json
 
 yarn 
 yarn build
+yarn validate
+yarn test
 yarn pack
 ls
 echo "Would do a release to npm here."
