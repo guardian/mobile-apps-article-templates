@@ -109,15 +109,13 @@
             color: $p-inverted;
         }
 
-        .article__series > a {
-            padding: base-px(0.25, 0.5, 0.25, 1);
-            -webkit-transform: translateY(-100%);
-            transform: translateY(-100%);
-            font-size: 1.75rem;
-            position: absolute;
-            color: $p-soft;
+        .article__series > a > span {
+            color: color(brightness-100);
             background-color: $p-kicker;
-            white-space: nowrap;
+        }
+
+        &.tone--special a span {
+            color: color(tone-highlight);
         }
 
         .section__rule {
