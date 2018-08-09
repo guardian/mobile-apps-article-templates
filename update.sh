@@ -12,8 +12,7 @@ git clone https://GuardianAndroid@github.com/guardian/${REPO_NAME}.git
 
 cd ${REPO_NAME}
 echo "Updating templates to ${PACKAGE_VERSION}"
-jq ".dependencies[\"@guardian/mobile-apps-article-templates\"] = \"${PACKAGE_VERSION}\"" package.json > tmp
-mv tmp package.json
+npm --no-git-tag-version version 1.0.${BUILD_NUMBER}
 git add package.json
 git commit -m "$(printf "Update to mobile-apps-article-templates version $PACKAGE_VERSION")"
 git push origin $BRANCH
