@@ -1,6 +1,4 @@
 #!/bin/bash -xe
-jq ".version = \"1.0.${BUILD_NUMBER}\"" package.json > tmp
-mv tmp package.json
 
 yarn 
 yarn build
