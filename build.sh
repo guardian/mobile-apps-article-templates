@@ -5,7 +5,6 @@ yarn
 yarn build
 yarn validate
 yarn test
-yarn pack
 
 # Publish
 echo "//registry.npmjs.org/:_authToken=$NODE_TOKEN" >> ~/.npmrc
