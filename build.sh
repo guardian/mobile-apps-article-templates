@@ -6,6 +6,7 @@ yarn validate
 yarn test
 yarn pack
 ls
+echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
 echo "Would do a release to npm here."
 
 # ./update.sh ios-live 1.0.${BUILD_NUMBER} ${BRANCH_NAME}
