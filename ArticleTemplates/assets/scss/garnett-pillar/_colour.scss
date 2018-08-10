@@ -88,11 +88,13 @@
         }
     }
 
-    .more__label {
-        background-color: $p-kicker;
+    .more.more--comments .more__label {
+        color: $p-kicker;
+        border: solid 1px rgba($p-kicker, .5);
 
         &:active {
-            background-color: darken($p-kicker, 10%);
+            color: darken($p-kicker, 10%);
+            border-color: rgba(darken($p-kicker, 10%), .5);
         }
     }
 
