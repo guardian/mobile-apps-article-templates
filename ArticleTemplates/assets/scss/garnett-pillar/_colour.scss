@@ -88,6 +88,14 @@
         }
     }
 
+    .more__label {
+        background-color: $p-kicker;
+
+        &:active {
+            background-color: darken($p-kicker, 10%);
+        }
+    }
+
     // Maybe make this bit less smart and more manual later?
     @include pillar-reversible($p-kicker, $p-feature-headline, $p-soft, $p-inverted);
 
