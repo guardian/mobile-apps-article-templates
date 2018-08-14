@@ -1,4 +1,7 @@
-define(function () {
+define([
+    'modules/cards'
+],
+function (cards) {
     'use strict';
 
     var SHOW_TAGS = 5;
@@ -45,6 +48,7 @@ define(function () {
             hiddenTags[i].classList.remove('hide-tags');
         }
 
+        cards.initPositionPoller();
         setTimeout(showTags, 200);
     }
 

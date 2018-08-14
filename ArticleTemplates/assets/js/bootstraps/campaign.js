@@ -40,6 +40,7 @@ define([
     }
 
     function submit(data, campaign, form) {
+      displayWaiting(form);
       var req = new XMLHttpRequest();
       req.open('POST', endpoint);
       req.setRequestHeader('Content-Type', 'application/json');
@@ -71,6 +72,12 @@ define([
       enableButton(form);
     }
 
+    function displayWaiting(form) {
+      var button = form.querySelector('.form_submit button');
+      button.textContent = 'Sending...';
+      disableButton(form);
+    }
+
     function disableButton(form) {
       var button = form.querySelector('button');
       button.disabled = true;
@@ -79,6 +86,7 @@ define([
     function enableButton(form) {
       var button = form.querySelector('button');
       button.disabled = false;
+      button.textContent = 'Share with the Guardian';
     }
 
     return {
