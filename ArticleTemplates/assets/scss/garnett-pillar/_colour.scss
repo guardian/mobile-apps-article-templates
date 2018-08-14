@@ -123,9 +123,17 @@
     // Immersive overrides
     &.garnett--type-immersive {
         .article__series,
-        .article__series > a,
         .byline__author > a {
             color: $p-inverted;
+        }
+
+        .article__series > a > span {
+            color: color(brightness-100);
+            background-color: $p-kicker;
+        }
+
+        &.tone--special .article__series a span {
+            color: color(tone-highlight);
         }
 
         .section__rule {

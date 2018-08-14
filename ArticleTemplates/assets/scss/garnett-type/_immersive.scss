@@ -103,13 +103,31 @@
         }
 
         &__header-info {
-            background-color: color(brightness-20);
+            background-color: color(brightness-7);
             color: color(brightness-100);
-            padding: base-px(.25, 1, 2, 1);
+            padding: base-px(.5, 1, 2, 1);
             margin: base-px(-6.5, 0, 0, 0);
             position: relative;
             z-index: 10;
             width: calc(100% - 32px);
+
+            .article__series > a {
+                padding: 8px 0;
+                -webkit-transform: translateY(calc(-100% + 2px));
+                transform: translateY(calc(-100% + 2px));
+                margin-left: -12px;
+                position: absolute;
+                margin: 0 0 0 -12px;
+            }
+
+            .article__series > a > span {
+                padding: 0px 10px;
+                font-size: 16px;
+                line-height: 32px;
+                height: 32px;
+                display: block;
+            }
+
             @include mq($to: mobileMedium) {
                 width: calc(100% - 24px);
             }
@@ -147,7 +165,6 @@
                     width: 240px - base-px(1);
                 }
             }
-
         }
 
         &__series {
