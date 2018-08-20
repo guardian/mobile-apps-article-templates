@@ -10,6 +10,7 @@
 
 
 @mixin pillar-colour($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-liveblog-background) {
+    .comment-count a,
     .element-pullquote blockquote {
         color: $p-kicker;
     }
@@ -19,6 +20,7 @@
     }
 
     .prose .element-pullquote blockquote {
+        color: $p-kicker;
         &:before,
         &:after,
         footer {
@@ -28,10 +30,6 @@
 
     .alerts {
         border-color: rgba($p-kicker, .5);
-        color: $p-kicker;
-    }
-
-    .comment-count a {
         color: $p-kicker;
     }
 
