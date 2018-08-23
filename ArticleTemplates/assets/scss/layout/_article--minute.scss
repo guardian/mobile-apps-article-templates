@@ -1,0 +1,810 @@
+$minute_bg: #005689;
+$minute_main: color(brightness-100);
+$minute_accent: #4bc6df;
+
+@mixin minute_page($bg: true) {
+    @if ($bg == true) {
+        background: $minute_bg;
+    }
+    border: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+@mixin background_image {
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+@mixin minute_flex_content {
+    display: -webkit-flex;
+    display: flex;
+    height: 100%;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    width: 100%;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+body.the-minute.advert-config--tablet {
+    height: 100%;
+
+    .article--liveblog {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      
+        @include mq($from: col4) {
+            background: darken($minute_bg, 10%);
+        }
+
+        .article__header,
+        .article__body--liveblog__pinned {
+            display: none;
+        }
+
+        .article__body--liveblog {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            z-index: 1;
+
+            @include mq($from: col4) {
+                left: 50%;
+                margin-left: -600px;
+                width: 1200px;
+            }
+
+            .minute-logo-container {
+                display: block;
+                position: absolute;
+                height: 200px;
+                width: 200px;
+                top: 24px;
+                left: 40%;
+                z-index: 1;
+                margin-left: -100px;
+
+                .type {
+                    position: absolute;
+                    top: 80px;
+                    left: 30%;
+                    margin-left: -144px;
+
+                    p {
+                        font: 100 5.8rem/5.8rem $egyptian-display;
+                        float: left;
+                        color: white;
+                    }
+
+                    p:last-of-type {
+                        margin-left: 22px;
+                    }
+                }
+                .minute-logo {
+                    height: 100%;
+                    width: 100%;
+
+                    $a-duration: 12s;
+                    $a-total-lines: 62;
+
+                    .the__minute__line {
+                        stroke: white;
+                        opacity: 1;
+                        animation: line 12s linear;
+                        animation-iteration-count: infinite;
+                        animation-fill-mode: forwards;
+                        -webkit-animation: line 12s linear;
+                        -webkit-animation-iteration-count: infinite;
+                        -webkit-animation-fill-mode: forwards;
+                    }
+
+                    @-webkit-keyframes line {
+                        0% {
+                            opacity: 1;
+                        }
+                        2% {
+                            opacity: 0;
+                        }
+                        50% {
+                            opacity: 0;
+                        }
+                        52% {
+                            opacity: 1;
+                        }
+                        100% {
+                            opacity: 1;
+                        }
+                    }
+
+                    @keyframes line {
+                        0% {
+                            opacity: 1;
+                        }
+                        2% {
+                            opacity: 0;
+                        }
+                        50% {
+                            opacity: 0;
+                        }
+                        52% {
+                            opacity: 1;
+                        }
+                        100% {
+                            opacity: 1;
+                        }
+                    }
+
+                    @for $i from 1 to $a-total-lines {
+                        .the__minute__line--#{$i} {
+                            animation-delay: (($a-duration / 2) / $a-total-lines) * $i;
+                            -webkit-animation-delay: (($a-duration / 2) / $a-total-lines) * $i;
+                        }
+                    }
+                }
+            }
+
+            .minute-vertical-rule {
+                display: block;
+                position: absolute; 
+                top: 228px; 
+                bottom: 0; 
+                left: 40%; 
+                width: 6px; 
+                z-index: 11;
+                background-image: url('../img/minute-dash.svg');
+                margin-left: -2px;
+            }
+
+            /* Minute Header */
+            .the-minute__header {
+                @include minute_flex_content;
+                position: relative;
+                height: 100vh;
+                margin: 0;
+                padding: 0;
+                border: 0;
+
+                // This controls the red bar above the second child
+                > :first-child {
+                    margin-top: 12px;
+                    padding-top: 12px;
+                    position: relative;
+
+                    &::before {
+                        background-color: $minute_accent;
+                        content: '';
+                        height: 55px;
+                        position: absolute;
+                        top: -60px;
+                        width: 115%;
+                        left: -48px;
+                    }
+                }
+
+                .the-minute__headline,
+                .the-minute__standfirst {
+                    color: $minute_main;
+                    width: 50%;
+                    margin-left: 40%;
+                    z-index: 10;
+                    padding-left: 8px;
+                }
+
+                .the-minute__headline {
+                    font: 100 4.3rem/4.3rem $egyptian-display;
+                    margin-top: 0;
+                    padding-top: 0;
+                    margin-bottom: 12px;
+                }
+
+                .the-minute__standfirst {
+                    font: 500 1.8rem/2.2rem $egyptian-text;
+                    margin-bottom: 36px;
+
+                    .the-minute__date {
+                        color: $minute_accent;
+                        display: block;
+                        margin-bottom: 4px;
+                        font: 600 1.8rem/2.2rem $egyptian-display;
+                    }
+                }
+
+                .the-minute__main-media {
+                    @include minute_page;
+
+                    figure {
+                        margin: 0;
+                        position: relative;
+                        height: 100%;
+
+                        &::before {
+                            background: linear-gradient(transparent, transparent 25%, rgba(color(brightness-0), .8)); // key event (and header) gradient goes light to dark
+                            content: '';
+                            height: 100%;
+                            left: 0;
+                            position: absolute;
+                            width: 100%;
+                            z-index: 1;
+                        }
+
+                        .element__inner {
+                            @include minute_page;
+                            padding-bottom: 0 !important;
+
+                            &.the-minute__background-media {
+                                @include background_image;
+                            }
+                        }
+
+                        img {
+                            object-fit: cover;
+                            height: 100%;
+                            width: 100%;
+                        }
+                    }
+
+                    figcaption {
+                        display: none;
+                    }
+                }
+            }
+
+            /* Minute Blocks */
+            .block {
+                border: 0;
+                padding: 0;
+                margin: 0;
+                background: $minute_bg;
+
+                .block__updated,
+                .block__time {
+                    display: none;
+                }
+
+                /* Common block styles */
+                &.is-textonly,
+                &.is-coverimage,
+                &.is-thumbnail,
+                &.is-video {
+                    .block__body {
+                        width: 100%;
+
+                        .from-content-api {
+                            @include minute_flex_content;
+                            height: auto;
+                            margin-top: 0;
+                            position: relative;
+
+                            h2 {
+                                .counter {
+                                    margin-bottom: -12px;
+                                    display: block;
+                                    font: 100 8rem/8.4rem $egyptian-display;
+                                }
+
+                                .counter::after {
+                                    content: '\A';
+                                }
+                            }
+                        }
+                    }
+
+                    &.flex-block {
+                        .block__body {
+                            height: 100%;
+
+                            .from-content-api {
+                                height: 100%;
+                            } 
+                        }
+                    }              
+                }
+
+                /* Common image & video block styles */
+                &.is-coverimage,
+                &.is-thumbnail,
+                &.is-video {
+                    .block__body {
+                        .from-content-api {
+                            figure {
+                                position: absolute;
+
+                                .figure__inner {
+                                    margin: 0 !important;
+                                    padding: 0 !important;
+                                }
+                            }
+                        } 
+                    }              
+                }
+
+                /* Common cover image & video block styles */
+                &.is-coverimage,
+                &.is-video {
+                    .block__body {
+                        .from-content-api {
+                            -webkit-justify-content: flex-start;
+                            justify-content: flex-start;
+
+                            &::before {
+                                content: '';
+                                min-height: 74px;
+                                -webkit-flex: 1 1;
+                                flex: 1 1;
+                            }
+
+                            h2,
+                            p {
+                                color: $minute_main;
+                                padding: 0 12px 0 24px;
+                                width: 40%;
+                            }
+
+                            h2 {
+                                font: 600 1.7rem/2.2rem $egyptian-text;
+                            }
+
+                            p {
+                                font: 1.6rem/2.1rem $egyptian-text;
+
+                                a {
+                                    background: transparent;
+                                    border-bottom: 1px solid $minute_main;
+                                    color: $minute_main;
+                                    position: relative;
+                                    text-shadow: none;
+                                }
+                            }
+
+                            p:last-of-type {
+                                margin-bottom: 0;
+                            }
+
+                            figure {
+                                width: 55%;
+                                top: 48px;
+
+                                &.figure-wide {
+                                    margin: 0;
+                                }
+                            }
+                        }                     
+                    }
+                }
+
+                /* Cover image block styles */
+                &.is-coverimage {
+                    .block__body {
+                        .from-content-api {
+                            figure {
+                                left: 40%;
+
+                                > :first-child {
+                                    margin-top: 12px;
+                                    padding-top: 12px;
+                                    position: relative;
+                                }
+
+                                > :first-child::before {
+                                    background-color: $minute_accent;
+                                    content: '';
+                                    position: absolute;
+                                    height: 55px;
+                                    width: 125%;
+                                    margin-top: -30px;
+                                    z-index: 1;
+                                    left: -100%;
+                                }
+
+                                figcaption {
+                                    color: rgba(255, 255, 255, .9);
+                                    background-color: rgba(0, 0, 0, .4);
+                                    position: absolute;
+                                    bottom: 0;
+                                    right: 0;
+                                    padding-right: 12px;
+                                    padding-left: 12px;
+                                    border-bottom: 0;
+                                }
+                            }
+                        }
+                    }
+
+                    &.has-quote {
+                        .block__body {
+                            .quoted {
+                                margin-top: 24px;
+                                margin-left: 0;
+                                padding-top: 12px;
+
+                                &::before {
+                                    color: $minute_accent;
+                                    font-size: 4rem;
+                                    top: -20px;
+                                    left: 10%;
+                                }                                }
+
+                            p {
+                                margin-top: 0;
+                            }
+                        }
+                    }
+                }
+
+                &.is-video {
+                    .block__body {
+                        .from-content-api {
+                            h2,
+                            p {
+                                padding-left: 12px;
+                                margin-left: 60%;
+                            }
+
+                            h2 {
+                                margin-bottom: 0;
+                            }
+
+                            p:first-child {
+                                margin-top:  12px;
+                            }
+
+                            h2+p {
+                                margin-top: 0;
+                            }
+
+                            figure {
+                                left: 5%;
+
+                                &::before {
+                                    background-color: $minute_accent;
+                                    content: '';
+                                    position: absolute;
+                                    height: 55px;
+                                    width: 100%;
+                                    margin-top: -30px;
+                                    z-index: 1;
+                                    margin-left: 75%;
+                                }
+
+                                .video-URL {
+                                    background: $minute_bg;
+                                }
+
+                                figcaption {
+                                    padding-bottom: 0;
+                                    margin-bottom: 0;
+                                    border: 0;
+                                    font: 1.4rem/1.7rem $agate-sans; 
+                                    color: rgba(255, 255, 255, .9);
+                                    width: 80%;
+
+                                    span {
+                                        display: inline;
+                                    }
+                                }               
+                            }
+                        }
+                    }
+                }
+
+                /* Thumbnail image block styles */
+                &.is-thumbnail {
+                    .block__body {
+                        .from-content-api {
+                            -webkit-justify-content: flex-start;
+                            justify-content: flex-start;
+
+                            &::before {
+                                content: '';
+                                min-height: 74px;
+                                max-height: 74px;
+                                -webkit-flex: 1 1;
+                                flex: 1 1;
+                            }
+
+                            h2,
+                            p {
+                                color: $minute_main;
+                                padding: 0 12px;
+                                width: 45%;
+                                margin-left: 45%;
+                            }
+
+                            h2 {
+                                margin-top: 0;
+                                font: 600 1.7rem/2.2rem $egyptian-text;
+                            }
+
+                            p {
+                                font: 1.6rem/2.1rem $egyptian-text; 
+
+                                a {
+                                    background: transparent;
+                                    border-bottom: 1px solid $minute_main;
+                                    color: $minute_main;
+                                    position: relative;
+                                    text-shadow: none;
+                                }
+                            }
+
+                            p:first-of-type {
+                                margin-top: 8px;
+                            }
+
+                            h2+p {
+                                margin-top: -12px !important;
+                            }
+
+                            figure {
+                                margin: 0; 
+                                width: 40%;
+                                top: 48px;
+                                left: 5%;
+                                max-width: none;
+                                background: $minute_bg;
+
+                                &::before {
+                                    background-color: $minute_accent;
+                                    content: '';
+                                    height: 55px;
+                                    position: absolute;
+                                    top: -30px;
+                                    width: 175%;
+                                }
+                                
+                                &.figure-wide {
+                                    margin: 0;
+                                }
+
+                                figcaption {
+                                    padding-bottom: 0;
+                                    margin-bottom: 0;
+                                    border: 0;
+                                    font: 1.4rem/1.7rem $agate-sans; 
+                                    color: rgba(255, 255, 255, .9);
+                                    width: 80%;
+
+                                    span {
+                                        display: inline;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &:not(.has-quote) {
+                        .from-content-api {
+                            figure {
+                                &::before {
+                                    left: 51%;
+                                }
+                            }
+                        }
+                    }
+
+                    &.has-quote {
+                        .block__body {
+                            .from-content-api {
+                                figure {
+                                    &::before {
+                                        left: -158%;
+                                    }
+                                }
+                            }
+
+                            .quoted {
+                                margin: 36px 0 0 5%;
+                                width: 35%;
+                                padding-top: 12px;
+
+                                &::before {
+                                    color: $minute_accent;
+                                    font-size: 4rem;
+                                    top: -20px;
+                                    left: 20%;
+                                }
+
+                                p {
+                                    color: $minute_main;
+                                    font: 100 2rem/2.2rem $egyptian-display;
+                                    padding-left: 0;
+                                    margin: 0;
+                                    width: 100%;
+                                }
+                            }
+
+                            p,
+                            h2 {
+                                width: 35%;
+                                margin-left: 5%;
+                                padding-left: 0;
+                            }
+
+                            figure {
+                                width: 35%;
+                                left: 60%;
+                            }
+                        }
+                    }
+                }
+
+                /* Text only block styles */
+                &.is-textonly {
+                    .block__body {
+                        height: auto;
+
+                        .from-content-api {
+                            width: 30%;
+                            margin-left: 10%;
+
+                            &::before {
+                                background-color: $minute_accent;
+                                content: '';
+                                height: 55px;
+                                width: 110%;
+                                margin: 20px 0 12px;
+                            }
+
+                            h2,
+                            p {
+                                color: $minute_main;
+                                padding: 0 12px 0 0;
+                            }
+
+                            h2 {
+                                font: 600 1.7rem/2.2rem $egyptian-text;
+                            }
+
+                            p {
+                                font: 1.6rem/2.1rem $egyptian-text;
+
+                                a {
+                                    background: transparent;
+                                    border-bottom: 1px solid $minute_main;
+                                    color: $minute_main;
+                                    position: relative;
+                                    text-shadow: none;
+                                }
+                            }
+                        }
+                    }
+
+                    &.has-quote {
+                        .block__body {
+                            .from-content-api {
+                                width: 35%;
+                                margin-left: 5%;
+
+                                .quoted {
+                                    margin-top: 24px;
+                                    padding-top: 12px;
+
+                                    &::before {
+                                        color: $minute_accent;
+                                        font-size: 4rem;
+                                        top: -20px;
+                                    }
+
+                                    p {
+                                        color: $minute_main;
+                                        font: 100 2rem/2.2rem $egyptian-display;
+                                        padding-left: 0;
+                                        margin: 0;
+                                    }
+                                }
+
+                                p,
+                                h2 {
+                                    padding-left: 0;
+                                }
+
+                                p:last-of-type {
+                                    margin-bottom: 0;
+                                }
+                            }  
+                        }
+                    }
+
+                    &.has-tweet {
+                        .block__body {
+                            .from-content-api {
+                                width: 55%;
+                                margin-left: 40%;
+
+                                &::before {
+                                    width: 120%;
+                                    margin-left: -10%;
+                                }
+
+                                > p,
+                                h2 {
+                                    padding-left: 8px;
+                                }
+
+                                .twitter-tweet {
+                                    padding-left: 8px;
+                                    margin-bottom: 0;
+
+                                    &::before {
+                                        content: '';
+                                    }
+
+                                    .twitter-wrapper {
+                                        margin-bottom: 12px;
+
+                                        &::before {
+                                            color: $minute_accent;
+                                            content: '\e06b';
+                                            display: inline-block;
+                                            font: 400 2.8rem/1 'Guardian Icons', Georgia, serif;
+                                            margin-right: 6px;
+                                            float: left;
+                                        }
+
+                                        span,
+                                        a {
+                                            font: 1.6rem/1.8rem $agate-sans;
+                                            color: $minute_main;
+                                        }
+
+                                        span {
+                                            font-weight: 600;
+                                            display: block;
+                                        }
+
+                                        a {
+                                            text-decoration: underline;
+                                        }
+                                    }
+
+                                    p {
+                                        margin-bottom: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }                    
+                }
+            }
+
+            .block:last-of-type {
+                padding-bottom: 36px;
+            }
+        }
+    }
+
+    .meta,
+    .loading--liveblog,
+    .more--live-blogs,
+    .tags,
+    .comments {
+        display: none;
+    }
+
+    &.offline {
+        .the-minute__main-media {
+            .element-image-inner {
+                display: none;
+            }
+        }
+
+        .is-video {
+            .element-image-inner {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                background: color(tone-sandy-light);
+            }
+        }
+    }
+}
