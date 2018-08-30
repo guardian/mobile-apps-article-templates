@@ -282,7 +282,7 @@
         width: cols($base-3, 4, 1);
     }
 
-    @include mq($from: col3) {
+    @include mq(col3, col4) {
         width: cols($base-4, 5, 1);
     }
 
@@ -380,6 +380,12 @@
 
     @include mq($to: col2) {
         display: none;
+    }
+
+    @include mq($from: col4) {
+        .cricket-scorecard-title {
+            border-bottom: none;
+        }
     }
 
     .cricket-inning-result &,
