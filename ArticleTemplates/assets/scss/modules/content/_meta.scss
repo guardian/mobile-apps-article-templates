@@ -44,21 +44,18 @@
 .meta {
     @include meta();
     margin: 0 auto;
-    border-bottom: 1px rgba(color(brightness-60), .4) dotted;
     width: 100%;
     display: table;
-
-    @include mq($from: col4) {
-        border: 0;
-    }
+    position: relative;
+    padding-top: base-px(.5);
 
     .avatar--author {
-        margin: base-px(0, .75, 0, 0);
+        margin: base-px(0, 1, 1, 0);
         float: left;
     }
 
     &__misc {
-        padding: base-px(.6667, 1, 2, 1);
+        padding: base-px(0, 1, .5, 1);
 
         @include mq($from: col4) {
             margin: 0 auto 0 240px;
@@ -66,19 +63,61 @@
             width: 620px;
         }
 
-        &:before,
-        &:after {
-            content: '';
-            display: table;
+        .meta__byline {
+            margin-bottom: 0;
         }
 
-        &:after {
-            clear: both;
+        .byline {
+            font-family: $egyptian-text;
+            font-weight: 400;
+            font-style: italic;
+            a {
+                font-weight: 800;
+                font-style: normal;
+            }
         }
     }
 
-    &__pubdate {
-        color: color(brightness-60);
+    &__published,
+    &__published__comments {
+        font-size: 1.4rem;
+        color: color(brightness-46);
         font-family: $agate-sans;
+    }
+
+    &__published {
+        padding-top: 0;
+        line-height: 1.2em;
+        padding-bottom: .25em;
+        @include mq($from: col4) {
+            padding-left: 0;
+        }
+    }
+
+    &__published__comments {
+        float: right;
+        text-align: right;
+        font-weight: 600;
+        font-size: 1.8rem;
+        line-height: 1.8rem;
+        margin-left: base-px(.5);
+        border-left: 1px solid color(brightness-86);
+        margin-bottom: base-px(.5);
+        margin-top: base-px(-.5);
+        a {
+            position: relative;
+            display: block;
+            margin: base-px(0, -.5, 0, 0);
+            padding: base-px(2.25, .5, 0, 1);
+            min-width: 36px;
+        }
+        [data-icon] {
+            position: absolute;
+            top: base-px(.5);
+            right: 4px;
+        }
+        .screen-readable {
+            max-width: 0;
+        }
     }
 }

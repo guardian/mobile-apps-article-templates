@@ -32,34 +32,31 @@
 // */
 
 .alerts {
-    @include meta();
+    @include meta(.875);
     font-family: $agate-sans;
     white-space: nowrap;
-    padding: base-px(.3, 1, .7, 1);
-    margin: base-px(.5, 0, 0, -.3);
+    margin: base-px(0);
     display: inline-block;
     border-radius: 30px;
-    text-overflow: ellipsis;
-    vertical-align: bottom;
-    overflow: hidden;
     max-width: 100%;
-    color: color(tone-news);
-    border: 1px solid rgba(color(tone-news), .5);
+    color: color(brightness-7);
     transition: background-color .3s;
-
-    &:active,
-    &.following {
-        background-color: color(tone-news);
-        color: color(brightness-100);
-    }
+    transform: translateX(-1px);
 
     span[data-icon] {
         display: inline-block;
-        vertical-align: bottom;
-        font-size: $body-size-2;
-        position: relative;
-        right: 3px;
-        top: 1px;
+        vertical-align: middle;
+        border-radius: 100%;
+
+        width: 24px;
+        height: 24px;
+        line-height: 20px;
+        background-color: currentColor;
+        text-align: center;
+        font-size: 15px;
+        &:before {
+            color: color(brightness-100);
+        }
     }
 
     &__label {
@@ -71,12 +68,6 @@
     }
 
     &.following {
-        &:active {
-            color: color(tone-news);
-            background-color: color(brightness-100);
-            border: 1px solid rgba(color(tone-news), .5);
-        }
-
         .alerts__state--follow {
             display: block;
         }

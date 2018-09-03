@@ -9,13 +9,15 @@
         }
 
         .meta__misc {
-            @include mq($to: col2) {
-                border-top: 1px dotted color(brightness-46);
-            }
+            padding-top: base-px(.5);
+            padding-bottom: base-px(1);
 
             @include mq($from: col2) {
                 display: table-cell;
-                border-left: 1px dotted color(brightness-46);
+
+                &::before {
+                    display: none;
+                }
             }
 
             @include mq(col2, col3) {
@@ -24,6 +26,14 @@
 
             @include mq($from: col3) {
                 width: cols($base-4, 4);
+            }
+        }
+
+        @include mq($from: col2) {
+            .standfirst {
+                &__inner {
+                    padding-right: base-px(6);
+                }
             }
         }
     }
@@ -38,10 +48,6 @@
         @include mq($from: col3) {
             padding-right: cols($base-4, 4);
         }
-    }
-
-    .tags {
-        border-top-color: color(brightness-46);
     }
 
     body[data-content-type='video'] & .content__labels:first-child::before,

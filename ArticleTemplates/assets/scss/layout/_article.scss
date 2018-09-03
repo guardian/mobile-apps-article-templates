@@ -1,10 +1,12 @@
 .article {
     overflow: hidden;
-    margin-bottom: base-px(4);
-    border-top-width: 0;
 
     @include mq($from: col4) {
         background-color: color(brightness-93);
+    }
+
+    img {
+        color: color(tone-sandy-light);
     }
 }
 
@@ -13,12 +15,20 @@
         @include faux-bullet($right-space: 6px);
     }
 
-    .section {
-        margin-bottom: 0;
+    .article-kicker,
+    .headline {
+        @include mq($from: col4) {
+            margin: 0 auto;
+            padding: {
+                left: 240px;
+                right: 320px;
+            }
+            width: 1200px;
+        }
     }
 
     .headline {
-        padding: base-px(.5, 1, 2.5, 1);
+        padding: base-px(0, 1, 2.5, 1);
 
         @include mq($from: col4) {
             margin: 0 auto;
@@ -32,7 +42,7 @@
 
     .standfirst {
         &__inner {
-            padding: base-px(.5, 1, 1.5, 1);
+            padding: base-px(.5, 1, .5, 1);
         }
 
         &__inner:empty {
@@ -52,13 +62,6 @@
                 }
                 width: 1200px;
             }
-        }
-    }
-
-    @include mq($from: col4) {
-        .meta,
-        .main-media {
-            border-bottom: 1px dotted rgba(color(brightness-60), .4);
         }
     }
 
@@ -108,6 +111,7 @@
 
         @include mq($from: col2) {
             margin-right: 0;
+            margin-top: -(base-px(1));
         }
     }
 

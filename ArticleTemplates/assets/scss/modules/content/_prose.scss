@@ -187,11 +187,6 @@
         margin: base-px(1, 0);
     }
 
-    p,
-    li {
-        @include text-underline(color(tone-news), color(brightness-100), color(tone-news-accent));
-    }
-
     ul,
     ol,
     dl {
@@ -243,7 +238,7 @@
 
             &::before {
                 position: relative;
-                content: '\E092';
+                content: '\e11c';
                 line-height: 0;
                 font-size: 3rem;
                 margin-bottom: 25px;
@@ -253,17 +248,19 @@
         &.twitter-tweet,
         &.js-tweet {
             font-family: $agate-sans;
-            font-size: $meta-size-1;
-            line-height: $meta-lead-1;
+            font-size: $meta-size;
+            line-height: $meta-lead;
 
             &::before {
                 content: '\e06b';
+                padding-bottom: base-px(1);
+                font-size: 3rem;
             }
 
             p {
                 color: color(brightness-46);
-                font-size: $meta-size-2;
-                line-height: $meta-lead-2;
+                font-size: $meta-size;
+                line-height: $meta-lead;
                 margin: base-px(.5, 0);
             }
         }
@@ -271,18 +268,28 @@
 
     .element-pullquote {
         position: relative;
-        margin: base-px(2, 0, 2, 0);
+        margin: base-px(1, 0, 2, 0);
 
         blockquote {
-            margin: 0;
+            font-family: $egyptian-display;
             font-style: normal;
-            font-size: 2rem;
+            font-weight: 200;
+            font-size: 2.2rem;
             line-height: 1.3;
-            padding: 25px 0;
-
+            margin: 0;
+            @include mq($to: col2) {
+                padding-right: base-px(4);
+            }
 
             p {
                 margin: 0;
+                &::before {
+                    @extend %quoteIconSharedStyles;
+                    font-size: 2.2rem;
+                    content: '\e11c';
+                    display: inline-block;
+                    margin-right: base-px(.5);
+                }
             }
 
             cite {
@@ -290,32 +297,12 @@
                 font-size: 1.8rem;
             }
 
-            &::before,
-            &::after {
-                @extend %quoteIconSharedStyles;
-                font-size: 3rem;
-                color: color(tone-news);
-                content: '\E092';
-                position: absolute;
-                top: 2px;
-                left: 0;
-                line-height: 0;
-            }
-
-            &::after {
-                content: '\E096';
-                top: auto;
-                bottom: 19px;
-            }
-
-            footer {
-                color: color(tone-news);
-            }
         }
 
         @include mq($from: col2) {
             max-width: 280px;
-            margin-right: base-px(1);
+            margin-top: 0;
+            margin-right: base-px(2);
             float: left;
          }
 
@@ -327,7 +314,7 @@
     }
 
     .advert-slot--placeholder + *,
-    *:first-child:not(.advert-slot--placeholder) {
+    *:first-child {
         margin-top: 0;
 
         .aside {
@@ -342,7 +329,7 @@
     font-family: $agate-sans;
     @include meta();
     margin: base-px(1, 0);
-    border-top: 2px solid color(tone-news-accent);
+    border-top: 2px solid color(brightness-46);
 
     td,
     th {

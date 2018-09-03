@@ -1,13 +1,16 @@
 .key-events {
     background: color(brightness-96);
     border-bottom: 2px solid color(tone-sandy-light);
-    border-top: 4px solid color(tone-live-accent);
     margin: 0 auto;
     max-width: 1200px;
     overflow: hidden;
     padding: base-px(.25, 1, 0, 1);
     position: relative;
     transition: padding .6s;
+
+    &--0 {
+        display: none;
+    }
 
     @include mq($from: col2) {
         padding-top: base-px(1);
@@ -18,7 +21,6 @@
     }
 
     &__title {
-        color: color(tone-live-accent);
         font: 600 1.8rem $egyptian-display;
         margin-bottom: base-px(1);
 
@@ -36,16 +38,6 @@
             margin-right: 20px;
             width: 220px;
         }
-
-        &::before {
-            background: color(tone-live-accent);
-            border-radius: 50%;
-            content: '';
-            display: inline-block;
-            height: 1.4rem;
-            margin-right: 6px;
-            width: 1.4rem;
-        }
     }
 
     &__counter {
@@ -61,7 +53,7 @@
         right: 15px;
         top: 15px;
         width: 34px;
-        
+
         &-icon {
             left: 50%;
             position: absolute;
@@ -114,7 +106,7 @@
 
 .key-event {
     max-height: 0;
-    opacity: 0; 
+    opacity: 0;
     padding: base-px(0, .5, 0, 1);
     position: relative;
     transition: color .6s;
@@ -155,10 +147,6 @@
         color: color(brightness-7);
         display: block;
         font: 600 1.5rem $egyptian-display;
-
-        .key-event--highlighted & {
-            color: color(tone-live-accent) !important;
-        }
     }
 
     // Create tick marks for first child instead of dot, and position start of timeline
@@ -196,9 +184,5 @@
         display: block;
         font: normal 1.6rem $egyptian-text;
         padding: base-px(.5, 0, 1, 0);
-
-        .key-event--highlighted & {
-            color: color(tone-live-accent) !important;
-        }
     }
 }
