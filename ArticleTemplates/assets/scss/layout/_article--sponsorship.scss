@@ -38,6 +38,10 @@
 .is_advertising {
     background-color: color(global-adv-bg);
 
+    .article-kicker {
+        background-color: color(global-adv-bg);
+    }
+
     @include mq($from: col4) {
         background-color: color(brightness-86);
     }
@@ -146,6 +150,7 @@
                         border-top: 0;
                     }
 
+                    .prose .element-pullquote blockquote,
                     .prose .element-pullquote blockquote cite,
                     .prose .element-pullquote blockquote::before,
                     .prose .element-pullquote blockquote::after {
