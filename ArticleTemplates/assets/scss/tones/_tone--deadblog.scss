@@ -57,36 +57,6 @@
         .table {
             border-top-color: color(tone-deadblog);
         }
-
-        .meta {
-            background-color: color(brightness-96);
-            border: 0;
-            border-left: 1px dotted rgba(color(brightness-100), .2);
-            margin: 0;
-
-            @include mq($from: col4) {
-                background-color: darken(color(brightness-96), 10%);
-                border: 0;
-                max-width: 100%;
-                width: 100%;
-            }
-
-            .meta__pubdate {
-                color: rgba(color(brightness-60), .8);
-            }
-        }
-
-        .meta__misc {
-            @include mq($from: col4) {
-                background-color: color(brightness-96);
-                margin: 0 auto;
-                padding: {
-                    left: 240px;
-                    right: 340px;
-                }
-                width: 1200px;
-            }
-        }
     }
 
     .article__header {
@@ -159,7 +129,6 @@
 
         .sponsorship {
             background-color: color(brightness-100);
-            border-bottom: 0;
 
             &__about-uri {
                 color: color(global-sponsored-about);
@@ -169,18 +138,7 @@
 
     .tags {
         background-color: color(brightness-93);
-        border-bottom: 0;
         padding-left: 0;
-
-        .inline-list__item {
-            a {
-                @include tag-button(color(brightness-7), color(brightness-93));
-            }
-
-            &.more-button a {
-                @include tag-more-button(color(brightness-7), darken(color(brightness-93), 10%));
-            }
-        }
     }
 
     .block--live-summary {
@@ -189,46 +147,11 @@
 
         .prose p,
         .prose li {
-            @include text-underline(color(tone-news), color(brightness-100), color(tone-news-accent));
+            @include text-underline(color(tone-news), color(tone-news-accent));
         }
 
         .block__time {
             font-weight: bold;
-        }
-    }
-
-    .alerts:active,
-    .alerts.following {
-        background-color: color(tone-live);
-        color: color(brightness-100);
-    }
-
-    .alerts,
-    .alerts.following:active {
-        border-color: rgba(color(tone-live), .5);
-        color: color(tone-live);
-    }
-
-    .cricket {
-        .article--liveblog {
-            border-top: 0;
-        }
-
-        a.alerts {
-            margin: 0;
-        }
-
-        a.alerts:active,
-        a.alerts.following {
-            background-color: color(brightness-60);
-            color: color(brightness-100);
-        }
-
-        a.alerts,
-        a.alerts.following:active {
-            border-color: rgba(color(tone-sandy-light), .5);
-            background-color: transparent;
-            color: color(brightness-60);
         }
     }
 }

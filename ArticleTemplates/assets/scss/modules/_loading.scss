@@ -7,19 +7,48 @@
 // Display loading animation to provide feedback to the user.
 //
 // ```html_example
-// <div class="loading">
-//     <img src="/ArticleTemplates/assets/img/loading.gif" alt="Loading…"/>
+// <div class="loading" data-icon="&#xe00C;">
 // </div>
 // ```
 // */
 
 .loading {
-    text-align: center;
-    padding: base-px(1);
-
-    img {
-        width: 44px;
-        height: 44px;
+    &::before {
+        height: 50px;
+        width: 50px;
+        margin: 0 auto;
+        display: block;
+        color: color(brightness-0);
+        font-size: 44px;
+        opacity: 1;
+        text-align: center;
+        animation: pulse 2s;
+        -moz-animation: pulse 2s infinite;
+        -webkit-animation: pulse 2s infinite;
+        
+        @-moz-keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .5;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        @-webkit-keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .5;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
     }
 
     .container--has-failed & {

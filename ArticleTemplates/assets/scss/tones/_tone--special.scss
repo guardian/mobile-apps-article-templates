@@ -1,98 +1,72 @@
 .tone--special {
-    .article__body {
-        background-color: color(brightness-100);
-    }
+    @include pillar-colour(
+        color(tone-special-dark),
+        color(tone-special-dark),
+        color(tone-special-light),
+        color(tone-special-mid),
+        color(news-liveblog-background)
+    );
 
-    .article__header {
-        .article__header,
-        .section,
-        .standfirst,
-        .standfirst__inner, 
-        .headline {
-            background-color: color(tone-special-dark);
+    // Light background in opinion articles
+    &:not(.garnett--type-media) {
+
+        .article__header .cutout__container,
+        .article__body,
+        .article__meta,
+        .tags {
+            background-color: color(tone-special-light);
         }
 
+        @include mq($to: col4) {
+            .article__header {
+                background-color: color(tone-special-light);
+            }
+        }
         @include mq($from: col4) {
-            .main-media {
-                background-color: color(tone-special-dark);
-            }
-
-            .standfirst {
-                background-color: color(brightness-93);
-            }
-        }
-        
-        .section > div {
-            color: color(tone-highlight); // Content Label Section
-        }
-        
-        .section__container,
-        .content__series-label,
-        .content__series-label a {
-            color: color(brightness-100);  // Content Label Series
-        }
-
-        .comment-count a {
-            color: color(tone-highlight);
-        }
-
-        .headline {
-            color: color(brightness-100);
-        }
-
-        .standfirst {
-            color: color(brightness-100);
-        }
-
-        .selectable a {
-            color: color(brightness-100) !important;
-        }
-
-        .meta {
-            background-color: color(tone-special-light);
-            border-bottom: 0;
-
-            .meta__byline .byline,
-            .meta__byline a, 
-            .comment-count,
-            .comment-count a {
-                color: color(tone-highlight);
-            }
-
-            .meta__pubdate {
-                color: color(brightness-100);
-            }
-        }
-
-        .main-media__caption {
-            color: color(brightness-100);
-            background-color: color(tone-special-light);
-            border-bottom: 1px rgba(color(tone-sandy-light), .4) dotted;
-
-            @include mq($from: col4) {
-                background-color: color(tone-special-dark);
-
-                &__icon,
-                &__text {
-                    color: color(brightness-100);
+            .article__header {
+                .article-kicker,
+                .standfirst__inner,
+                .meta,
+                .main-media {
+                    background-color: color(tone-special-light);
                 }
             }
+            &:not(.garnett--type-comment, .garnett--type-immersive) .article__header .headline {
+                background-color: color(tone-special-light);
+            }
         }
-        
-        .sponsorship {
-            background-color: color(brightness-100);
+
+        .headline {
+            color: color(tone-special-dark);
+        }
+
+        .article-kicker__highlight {
+            background-color: color(tone-highlight);
+            box-shadow: 0 0 0 2px color(tone-highlight);
+            padding: 0 2px;
         }
     }
 
-    .alerts:active,
-    .alerts.following {
-        background-color: color(tone-highlight);
-        color: color(tone-special-dark);
+    &.garnett--type-immersive {
+        .standfirst,
+        .article__header-info:before {
+            background-color: color(tone-special-light);
+        }
+
+        .headline {
+            color: color(brightness-100);
+        }
+        .article__series a {
+            color: color(tone-highlight);
+        }
     }
-    
-    .alerts,
-    .alerts.following:active {
-        border-color: rgba(color(tone-highlight), .5);
-        color: color(tone-highlight);
+
+    .tags__list-item {
+        a {
+            @include tag-button(color(brightness-7), color(brightness-86));
+        }
+        &.more-button a {
+            @include tag-more-button(color(brightness-7), darken(color(brightness-86), 10%));
+        }
     }
 }

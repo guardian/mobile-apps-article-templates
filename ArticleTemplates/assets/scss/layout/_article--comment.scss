@@ -6,13 +6,27 @@
             clear: left;
             overflow: hidden;
             width: 100%;
+
+            @include mq($from: col4) {
+                margin: 0 auto;
+                max-width: 1200px;
+            }
         }
 
-        .byline__author {
+        .headline__byline {
             display: block;
+            font-style: italic;
+            font-weight: 100;
+            .byline__author {
+                display: inline;
+            }
+        }
+        .byline__author {
+            display: inline-block;
         }
 
         .standfirst {
+            font-weight: 200;
             color: color(tone-comment-text);
 
             @include mq($to: col2) {

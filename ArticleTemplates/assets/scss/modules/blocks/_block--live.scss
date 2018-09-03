@@ -92,7 +92,7 @@
 
     .block__body {
         @include mq($to: col4) {
-            .element-rich-link:last-child {
+            .element-rich-link {
                 width: 100%;
             }
         }
@@ -249,22 +249,9 @@
     }
 }
 
-.block--live-key-event {
-    border-top: 2px solid color(tone-live-accent);
-
-    .block__title {
-        color: color(tone-live);
-    }
-}
-
 .block--live-summary {
     background-color: darken(color(brightness-93), 4%);
-    border: 1px dotted color(tone-sandy-light);
-
-    .prose p,
-    .prose li {
-        @include text-underline(color(tone-news), darken(color(brightness-93), 4%), color(tone-news-accent));
-    }
+    border: 1px solid color(tone-sandy-light);
 
     .block__time {
         font-weight: bold;

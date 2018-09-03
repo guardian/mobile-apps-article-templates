@@ -18,7 +18,7 @@
 // */
 
 .avatar {
-    background-color: rgba(color(brightness-20), .075);
+    border-radius: 100%;
     border-radius: 100%;
     overflow: hidden;
     display: block;
@@ -30,12 +30,20 @@
 }
 
 .avatar--author {
-    width: 74px;
-    height: 74px;
+    width: 68px;
+    height: 68px;
 
     .avatar__img {
-        width: auto;
-        margin-left: -10%;
+        width: 100%;
+        height: auto;
+        transform-origin: top center;
+        transform: scale(1.6) translate(-1px, -1px);
+
+        // width: auto;
+        // margin-left: -10%;
+        // margin-top: 0;
+        // height: 100%;
+
     }
 }
 
