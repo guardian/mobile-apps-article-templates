@@ -8,4 +8,16 @@
             padding: 0;
         }
     }
+
+    &.is_advertising {
+        .article-kicker {
+            background-color: color(global-adv-bg);
+        }
+
+        @include mq($from: col4) {
+            .article-header .article-kicker {
+                background-color: color(global-adv-bg);
+            }
+        }
+    }
 }
