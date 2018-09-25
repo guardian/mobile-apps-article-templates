@@ -48,7 +48,11 @@
             }
 
             .ob-widget-header {
-                margin-left: 0 !important;
+                margin: 16px 0 !important;
+
+                span {
+                    margin-left: 16px !important;
+                }
             }
 
             .ob_what {
@@ -60,7 +64,7 @@
             }
 
             .ob-dynamic-rec-container {
-                margin-right: 5px !important;
+                margin-right: 16px !important;
                 max-width: 173.25px;
 
                 &:last-child {
@@ -80,6 +84,7 @@
             .ob-dynamic-rec-link {
                 .ob-rec-source {
                     max-height: 50px !important;
+                    font-size: 1.2rem;
                 }
             }
 
@@ -91,6 +96,12 @@
                 }
             }
         }
+
+        .AR_31.ob-strip-layout .ob-rec-text {
+            margin-top: 25px !important;
+            border-top: .0625rem solid #979797 !important;
+            padding: 8px .3125rem .5em !important;
+        }
     }
 
     @include mq($from: col3) {
@@ -99,14 +110,28 @@
                 display: block !important;
                 float: left !important;
                 padding-top: 20px;
-                width: 858px !important;
+                width: 100% !important;
+            }
+
+            .ob-unit {
+                padding-top: 8px;
             }
 
             .ob-dynamic-rec-container {
-                margin-right: 6px !important;
+                margin-right: 16px !important;
                 max-width: 210px !important;
                 width: 210px !important;
             }
+        }
+
+        .AR_31.ob-strip-layout .ob-rec-text {
+            margin-top: -25px !important;
+            border-top: .0625rem solid #979797 !important;
+            padding: 8px .3125rem .5em !important;
+        }
+
+        .AR_31.ob-strip-layout .ob-rec-link {
+            padding-bottom: 24px;
         }
     }
 
@@ -120,8 +145,9 @@
             }
 
             .ob-widget-header {
-                margin: 20px !important;
                 width: 200px !important;
+                margin-bottom: 0px !important;
+                padding-top: 1.2rem !important;
             }
 
             .ob-dynamic-rec-container {
