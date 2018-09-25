@@ -25,6 +25,21 @@
         padding: 0;
     }
 
+    @include mq($to: col2) {
+        .ob-widget {
+            .ob-unit {
+                padding-left: 8px;
+            }
+
+            .ob-widget-header {
+                span {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+
     @include mq($from: col2) {
         .ob-widget {
             padding: {
@@ -34,6 +49,10 @@
 
             .ob-widget-header {
                 margin-left: 0 !important;
+            }
+
+            .ob_what {
+                width: 130px;
             }
 
             .ob-widget-items-container {
