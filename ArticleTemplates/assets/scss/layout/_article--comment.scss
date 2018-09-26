@@ -6,25 +6,33 @@
             clear: left;
             overflow: hidden;
             width: 100%;
+
+            @include mq($from: col4) {
+                margin: 0 auto;
+                max-width: 1200px;
+            }
         }
 
-        .byline__author {
+        .headline__byline {
             display: block;
+            font-style: italic;
+            font-weight: 100;
+            .byline__author {
+                display: inline;
+            }
+        }
+        .byline__author {
+            display: inline-block;
         }
 
         .standfirst {
+            font-weight: 200;
             color: color(tone-comment-text);
 
             @include mq($to: col2) {
                 font-size: 1.25em;
                 line-height: 1.25em;
             }
-        }
-    }
-
-    .figure--thumbnail-with-caption {
-        @include mq($to: col1) {
-            background: #dedcd7;
         }
     }
 }

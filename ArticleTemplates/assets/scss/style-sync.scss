@@ -2,8 +2,8 @@
 @import 'helpers/variables';
 @import 'helpers/functions';
 @import 'helpers/mixins';
-@import 'helpers/vendor/sass-mq';
-@import 'helpers/vendor/sass-flex';
+@import 'helpers/third-party/sass-mq';
+@import 'helpers/third-party/sass-flex';
 
 // Base
 @import 'base/colour';
@@ -18,6 +18,7 @@
 @import 'modules/bullet';
 @import 'modules/cutout';
 @import 'modules/figure';
+@import 'modules/keyline';
 @import 'modules/key-events';
 @import 'modules/loading';
 @import 'modules/screen-readable';
@@ -30,7 +31,7 @@
 @import 'modules/content/main-media';
 @import 'modules/content/meta';
 @import 'modules/content/review-rating';
-@import 'modules/content/section';
+@import 'modules/content/article-kicker';
 @import 'modules/content/standfirst';
 @import 'modules/cricket/match-summary';
 @import 'modules/external/element';
@@ -38,7 +39,7 @@
 @import 'modules/media/audio-player';
 @import 'modules/media/gallery';
 @import 'modules/witness/contribute';
-@import 'modules/show-garnett';
+@import 'modules/hide-garnett';
 
 // Layout
 @import 'layout/article';
@@ -53,19 +54,32 @@
 @import 'layout/article--photo-essay';
 @import 'layout/cricket';
 @import 'layout/front';
+@import 'layout/base-tone';
+
+// Content types
+@import 'type/analysis';
+@import 'type/article';
+@import 'type/comment';
+@import 'type/feature';
+@import 'type/immersive';
+@import 'type/live';
+@import 'type/media-all';
+@import 'type/media-audio';
+@import 'type/media-video';
+@import 'type/guardianlabs';
+@import 'type/guardianview';
+@import 'type/matchreport';
+@import 'type/collection';
+
+
+// Pillars
+@import 'pillar/colour';
+@import 'pillar/news';
+@import 'pillar/opinion';
+@import 'pillar/sport';
+@import 'pillar/arts';
+@import 'pillar/lifestyle';
 
 // Tones
-@import 'tones/tone--analysis';
-@import 'tones/tone--comment';
 @import 'tones/tone--deadblog';
-@import 'tones/tone--editorial';
-@import 'tones/tone--feature';
-@import 'tones/tone--live';
-@import 'tones/tone--media';
-@import 'tones/tone--news';
-@import 'tones/tone--podcast';
-@import 'tones/tone--review';
 @import 'tones/tone--special';
-
-// Special Immersive styles (import last to override tones)
-@import 'layout/article--immersive';

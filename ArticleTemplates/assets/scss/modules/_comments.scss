@@ -39,7 +39,7 @@
 //                 </div>
 //             </div>
 //             <div class="comments__block comments__block--loading block loading" style="display:none;">
-//                 <img src="../../ArticleTemplates/assets/img/loading.gif" alt="Loading…">
+//                 <img src="" alt="Loading…">
 //             </div>
 //             <div class="block block--discussion-thread block--discussion-thread--checked">
 //                 SEE blocks/_comment
@@ -125,6 +125,13 @@
                 width: 200px;
             }
         }
+
+        .touchpoint__button {
+            &::before {
+                position: relative;
+                top: -2px;
+            }
+        }
     }
 
     &__title {
@@ -142,7 +149,8 @@
     }
 
     &__link,
-    &__link:active {
+    &__link:active,
+    .comments__link {
         color: color(brightness-7);
     }
 
@@ -283,6 +291,13 @@
         .comments-1 &,
         .container--has-failed & {
             display: none;
+        }
+
+        &--button {
+            &::before {
+                position: relative;
+                top: -2px;
+            }
         }
     }
 

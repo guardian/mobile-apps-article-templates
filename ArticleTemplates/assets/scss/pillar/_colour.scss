@@ -10,6 +10,7 @@
 
 
 @mixin pillar-colour($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-liveblog-background) {
+    .comment-count a,
     .element-pullquote blockquote {
         color: $p-kicker;
     }
@@ -19,6 +20,7 @@
     }
 
     .prose .element-pullquote blockquote {
+        color: $p-kicker;
         &:before,
         &:after,
         footer {
@@ -28,10 +30,6 @@
 
     .alerts {
         border-color: rgba($p-kicker, .5);
-        color: $p-kicker;
-    }
-
-    .comment-count a {
         color: $p-kicker;
     }
 
@@ -80,6 +78,24 @@
         }
     }
 
+    .comment__recommend {
+        &.increase .touchpoint__button {
+            color: color(brightness-100);
+            background-color: $p-kicker;
+            border-color: transparent;
+        }
+    }
+
+    .more.more--comments .more__label {
+        color: $p-kicker;
+        border: solid 1px rgba($p-kicker, .5);
+
+        &:active {
+            color: darken($p-kicker, 10%);
+            border-color: rgba(darken($p-kicker, 10%), .5);
+        }
+    }
+
     // Maybe make this bit less smart and more manual later?
     @include pillar-reversible($p-kicker, $p-feature-headline, $p-soft, $p-inverted);
 
@@ -105,9 +121,17 @@
     // Immersive overrides
     &.garnett--type-immersive {
         .article__series,
-        .article__series > a,
         .byline__author > a {
             color: $p-inverted;
+        }
+
+        .article__series > a > span {
+            color: color(brightness-100);
+            background-color: $p-kicker;
+        }
+
+        &.tone--special .article__series a span {
+            color: color(tone-highlight);
         }
 
         .section__rule {
@@ -176,7 +200,14 @@
             }
         }
 
-        .sponsorship {
+        &.garnett--pillar-sport .sponsorship {
+            background-color: color(news-soft);
+            &__about-uri {
+                color: color(brightness-7);
+            }
+        }
+
+        &.garnett--pillar-news .sponsorship {
             background-color: color(tone-live);
 
             &__about-uri,
@@ -255,7 +286,7 @@
 // depending on context
 @mixin pillar-reversible($kicker, $feature, $soft, $inverted) {
 
-    &:not(.garnett--type-live) {
+    &:not(.garnett--type-live):not(.garnett--type-guardianlabs) {
         // Section and series labels above headline
         .article-kicker {
             color: $kicker;
@@ -281,5 +312,4 @@
         }
 
     }
-
 }

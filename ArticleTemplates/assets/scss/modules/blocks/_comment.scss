@@ -252,6 +252,7 @@
 
     @include mq($to: col2) {
         display: inline;
+        white-space: nowrap;
     }
 }
 
@@ -287,6 +288,11 @@
         background-color: transparent;
         font-size: 14px;
 
+        &::before {
+            position: relative;
+            top: -1px;
+        }
+
         @include mq($from: col2) {
             margin: 0 auto;
             display: block;
@@ -298,12 +304,6 @@
             color: color(brightness-100);
             background-color: color(tone-sandy-light);
         }
-    }
-
-    &.increase .touchpoint__button {
-        color: color(brightness-100);
-        background-color: color(tone-news-accent);
-        border-color: transparent;
     }
 
     .touchpoint__label {
@@ -423,6 +423,7 @@
         height: 100px;
         overflow: hidden;
         text-overflow: ellipsis;
+        font-family: $egyptian-text;
 
         &::after {
             content: '';
@@ -434,6 +435,14 @@
             bottom: 0;
             left: 0;
             z-index: 2;
+        }
+
+        .prose blockquote {
+            color: color(brightness-100);
+        }
+
+        a {
+            color: color(brightness-100);
         }
     }
 

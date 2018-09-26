@@ -47,6 +47,15 @@
     display: inline;
 }
 
+.main-media {
+    figure figcaption {
+        padding: base-px(0, 1, 2, 1);
+        @include mq($from: col4) {
+            padding: base-px(0, 0, 2, 0);
+        }
+    }
+}
+
 @include mq($from: col4) {
     .main-media {
         padding-top: base-px(1);
@@ -100,35 +109,40 @@
     }
 
     .main-media__caption__icon {
-        line-height: 44px;
+        line-height: 30px;
         text-align: center;
-        background-color: rgba(0, 0, 0, .4);
-        width: 44px;
-        height: 44px;
+        background-color: color(tone-highlight);
+        color: color(brightness-7);
+        width: 32px;
+        height: 32px;
         display: inline-block;
         position: absolute;
-        bottom: 0;
-        right: 0;
-
-        &:active {
-            background-color: rgba(0, 0, 0, .66);
-        }
+        bottom: base-px(.5);
+        right: base-px(.5);
+        border-radius: 100%;
+        z-index: 11;
+        font-size: 1.6rem;
     }
 
     .main-media__caption__text {
         @extend %screen-readable;
-        background-color: rgba(0, 0, 0, .4);
-        padding: base-px(.5, 1, .5, 1);
+        background-color: rgba(0, 0, 0, .8);
+        padding: base-px(.5, 1, 1, 1);
         max-height: 0;
         overflow: hidden;
         position: absolute;
         right: 0;
         bottom: 0;
-        right: 45px;
+        right: 0;
+        padding-right: 48px;
+        z-index: 10;
+        line-height: 1.6rem;
+        color: color(brightness-100);
 
         &.is-visible {
             @extend %screen-visable;
             position: absolute;
+            left: 0;
             display: block;
             min-height: 44px;
             max-height: 999px;

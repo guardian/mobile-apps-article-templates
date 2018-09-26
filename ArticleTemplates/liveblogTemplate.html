@@ -5,7 +5,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
         <link rel="stylesheet" type="text/css" media="all" id="fontStyles" href="__TEMPLATES_DIRECTORY__assets/css/fonts-__PLATFORM__.css" />
-        <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/__SYNC_STYLES__.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="__TEMPLATES_DIRECTORY__assets/css/style-sync.css" />
         <style>/* <-- */
             __ATOMS_CSS__
         /* --> */</style>
@@ -28,7 +28,7 @@
                         __COMMENT_CTA__
                     </div>
                 </div>
-                <div class="article-kicker show-garnett">
+                <div class="article-kicker">
                     <div class='article-kicker__live'>__LIVE_TAG__</div>
                     <div class='article-kicker__section'>__SECTION__</div>
                     <div class='article-kicker__series'>
@@ -46,8 +46,8 @@
                             __BYLINE__
                         </div>
                         <p class="meta__pubdate hide-garnett"><span class="screen-readable" id="pubdate">Published: </span><span id="published-date">__PUBDATE__</span></p>
-                        <div class='meta__published show-garnett'>
-                            <div class="meta__published__date show-garnett"><span class="screen-readable" id="pubdate">Published: </span><span id="published-date">__PUBDATE__</span></div>
+                        <div class='meta__published'>
+                            <div class="meta__published__date"><span class="screen-readable" id="pubdate">Published: </span><span id="published-date">__PUBDATE__</span></div>
                         </div>
                         __ALERTS__
                     </div>
@@ -178,7 +178,7 @@
             readAtoms.call(atoms);
 
             GU.bootstrap.init({
-                asyncStylesFilename: "__ASYNC_STYLES__",
+                asyncStylesFilename: "style-async",
                 sectionTone: "__SECTION_TONE__",
                 isLive: "__IS_LIVE__" ? true : false,
                 isMinute: "__THE_MINUTE__" ? true : false,

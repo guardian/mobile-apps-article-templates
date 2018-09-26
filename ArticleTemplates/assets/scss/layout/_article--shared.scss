@@ -7,13 +7,13 @@
         padding: base-px(1);
 
         @include mq(col2, col3) {
-            padding-right: cols($base-3, 3);
+            padding-right: cols($base-3, 2);
         }
 
         @include mq($from: col3) {
-            padding-right: cols($base-4, 4);
+            padding-right: cols($base-4, 6);
         }
-    
+
         @include mq($from: col4) {
             margin: 0 auto;
             padding: {
@@ -32,10 +32,6 @@
             clear: left;
 
             @include mq($from: col2) {
-                width: 135%;
-            }
-
-            @include mq($from: col4) {
                 margin-left: 0;
                 margin-right: 0;
                 width: 100%;
@@ -45,14 +41,6 @@
         // Interactives within article body
         .element-interactive {
             width: auto;
-
-            @include mq(col2, col3) {
-                width: calc(#{(100% / (100% - cols($base-3, 3))) * 100%} - #{base-px(1)});
-            }
-
-            @include mq($from: col3) {
-                width: calc(#{(100% / (100% - cols($base-4, 4))) * 100%} - #{base-px(1)});
-            }
         }
 
         .element-video:not(.element-youtube) {
@@ -119,7 +107,7 @@ body:not(.is-live) .article--liveblog {
             .headline {
                 padding-right: 340px;
             }
-            
+
             .standfirst {
                 padding-right: 0;
             }

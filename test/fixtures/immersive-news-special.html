@@ -1,412 +1,1488 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
     <title>Article</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
-    <link rel="stylesheet" type="text/css" media="all" id="fontStyles" href="../../ArticleTemplates/assets/css/fonts-ios.css" />
-    <link rel="stylesheet" type="text/css" media="all" href="../../ArticleTemplates/assets/css/garnett-style-sync.css" />
-    <style>/* <-- */
-        .atom__button{display:inline-flex;align-items:center;border:0;margin:0}.atom__button>.icon{fill:currentColor}.atom__button--large{height:2.25em}.atom__button--bordered{border-width:1px;border-style:solid}.atom__button--round{border-radius:100%}.atom__button--rounded{border-radius:100em}.atom__button--rounded-left{border-top-left-radius:100em;border-bottom-left-radius:100em}.atom__button--rounded-right{border-top-right-radius:100em;border-bottom-right-radius:100em}.atom--snippet>summary{outline:none}.atom--snippet>summary::-webkit-details-marker{display:none}.atom--snippet{border-image:repeating-linear-gradient(to bottom, #dcdcdc, #dcdcdc 1px, transparent 1px, transparent 4px) 13;border-top:13px solid black;border-left:0;border-right:0;border-bottom:0;background:#f1f1f1;position:relative;padding:0 5px 6px;margin:16px 0 36px}.atom--snippet a{color:#005689;border-bottom-color:#bdbdbd}.atom--snippet[open] .atom--snippet__handle>:nth-child(1),.atom--snippet:not([open]) .atom--snippet__handle>:nth-child(2){display:none}.atom--snippet__header{margin:0 0 16px;font-weight:bold}.atom--snippet__label{display:block;color:var(--c-pillar--main)}.atom--snippet__label,.atom--snippet__headline{font-size:18px;line-height:22px;font-family:'Guardian Egyptian Web', Georgia, serif;font-weight:500}.atom--snippet__handle,.atom--snippet__feedback,.atom--snippet__credit{font-family:'Guardian Agate Sans 1 Web', sans-serif}.atom--snippet__handle{font-size:13px;position:absolute;bottom:0;transform:translate(0, 50%);padding:0 15px 0 7px}.atom--snippet__handle,.atom--snippet__feedback .atom__button{background:#121212;color:#ffffff}.atom--snippet__feedback .atom__button:hover,.atom--snippet__feedback .atom__button:focus,.atom--snippet__handle:hover,.atom--snippet__handle:focus{background-color:var(--c-pillar--main)}.atom--snippet__handle span{display:inline-flex;align-items:center}.atom--snippet__handle .icon{fill:white;width:20px;height:20px;margin-right:10px}.atom--snippet__body{overflow:hidden}.atom--snippet__body>p::before{background-color:#197caa}.atom--snippet__footer{font-size:13px;line-height:16px;display:flex;justify-content:flex-end}.atom--snippet__feedback:not([hidden]){display:flex;align-items:center}.atom--snippet__feedback .atom__button{margin:0 0 0 5px;padding:0;width:28px;height:28px}.atom--snippet__feedback .atom__button[value='dislike']{transform:rotate(180deg)}.atom--snippet__feedback .atom__button,.atom--snippet__feedback .icon{display:inline-flex;align-items:center;justify-content:center}.atom--snippet__feedback .icon{width:16px;height:16px}.atom--snippet__feedback path{fill:currentColor}.atom--snippet__image{float:left;margin-right:10px;margin-bottom:6px;width:100px;height:100px;object-fit:cover;border-radius:50%}.atom--snippet__heading{font-family:'Guardian Egyptian Web', Georgia, serif;font-weight:500}.atom--snippet__credit{font-size:13px;line-height:16px;margin:12px 0}.atom--snippet__credit>.inline-icon{display:inline-flex;background:#bdbdbd;border-radius:100%;width:16px;height:16px;align-items:center;justify-content:center;margin-right:5px}.atom--snippet__credit>.inline-icon>.icon{height:12px}
- .atom--explainer{padding:6px 5px;background-color:#005689;color:#ffffff;position:relative}.atom--explainer__header{font-size:20px;line-height:24px;font-weight:900;min-height:24px;padding-bottom:18px}.atom--explainer ol,.atom--explainer p,.atom--explainer ul{font-size:14px;line-height:20px;margin:0 0 6px}
+    <link rel="stylesheet" type="text/css" media="all" id="fontStyles" href="../../ArticleTemplates/assets/css/fonts-ios.css"
+/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../ArticleTemplates/assets/css/style-sync.css" />
+    <style>
+        .atom__button {
+            display: inline-flex;
+            align-items: center;
+            border: 0;
+            margin: 0
+        }
 
-    /* --> */</style>
+        .atom__button>.icon {
+            fill: currentColor
+        }
+
+        .atom__button--large {
+            height: 2.25em
+        }
+
+        .atom__button--bordered {
+            border-width: 1px;
+            border-style: solid
+        }
+
+        .atom__button--round {
+            border-radius: 100%
+        }
+
+        .atom__button--rounded {
+            border-radius: 100em
+        }
+
+        .atom__button--rounded-left {
+            border-top-left-radius: 100em;
+            border-bottom-left-radius: 100em
+        }
+
+        .atom__button--rounded-right {
+            border-top-right-radius: 100em;
+            border-bottom-right-radius: 100em
+        }
+
+        .atom--snippet>summary {
+            outline: none
+        }
+
+        .atom--snippet>summary::-webkit-details-marker {
+            display: none
+        }
+
+        .atom--snippet {
+            border-image: repeating-linear-gradient(to bottom, #dcdcdc, #dcdcdc 1px, transparent 1px, transparent 4px) 13;
+            border-top: 13px solid black;
+            border-left: 0;
+            border-right: 0;
+            border-bottom: 0;
+            background: #f1f1f1;
+            position: relative;
+            padding: 0 5px 6px;
+            margin: 16px 0 36px
+        }
+
+        .atom--snippet a {
+            color: #005689;
+            border-bottom-color: #bdbdbd
+        }
+
+        .atom--snippet[open] .atom--snippet__handle>:nth-child(1),
+        .atom--snippet:not([open]) .atom--snippet__handle>:nth-child(2) {
+            display: none
+        }
+
+        .atom--snippet__header {
+            margin: 0 0 16px;
+            font-weight: bold
+        }
+
+        .atom--snippet__label {
+            display: block;
+            color: var(--c-pillar--main)
+        }
+
+        .atom--snippet__label,
+        .atom--snippet__headline {
+            font-size: 18px;
+            line-height: 22px;
+            font-family: 'Guardian Egyptian Web', Georgia, serif;
+            font-weight: 500
+        }
+
+        .atom--snippet__handle,
+        .atom--snippet__feedback,
+        .atom--snippet__credit {
+            font-family: 'Guardian Agate Sans 1 Web', sans-serif
+        }
+
+        .atom--snippet__handle {
+            font-size: 13px;
+            position: absolute;
+            bottom: 0;
+            transform: translate(0, 50%);
+            padding: 0 15px 0 7px
+        }
+
+        .atom--snippet__handle,
+        .atom--snippet__feedback .atom__button {
+            background: #121212;
+            color: #ffffff
+        }
+
+        .atom--snippet__feedback .atom__button:hover,
+        .atom--snippet__feedback .atom__button:focus,
+        .atom--snippet__handle:hover,
+        .atom--snippet__handle:focus {
+            background-color: var(--c-pillar--main)
+        }
+
+        .atom--snippet__handle span {
+            display: inline-flex;
+            align-items: center
+        }
+
+        .atom--snippet__handle .icon {
+            fill: white;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px
+        }
+
+        .atom--snippet__body {
+            overflow: hidden
+        }
+
+        .atom--snippet__body>p::before {
+            background-color: #197caa
+        }
+
+        .atom--snippet__footer {
+            font-size: 13px;
+            line-height: 16px;
+            display: flex;
+            justify-content: flex-end
+        }
+
+        .atom--snippet__feedback:not([hidden]) {
+            display: flex;
+            align-items: center
+        }
+
+        .atom--snippet__feedback .atom__button {
+            margin: 0 0 0 5px;
+            padding: 0;
+            width: 28px;
+            height: 28px
+        }
+
+        .atom--snippet__feedback .atom__button[value='dislike'] {
+            transform: rotate(180deg)
+        }
+
+        .atom--snippet__feedback .atom__button,
+        .atom--snippet__feedback .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .atom--snippet__feedback .icon {
+            width: 16px;
+            height: 16px
+        }
+
+        .atom--snippet__feedback path {
+            fill: currentColor
+        }
+
+        .atom--snippet__image {
+            float: left;
+            margin-right: 10px;
+            margin-bottom: 6px;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%
+        }
+
+        .atom--snippet__heading {
+            font-family: 'Guardian Egyptian Web', Georgia, serif;
+            font-weight: 500
+        }
+
+        .atom--snippet__credit {
+            font-size: 13px;
+            line-height: 16px;
+            margin: 12px 0
+        }
+
+        .atom--snippet__credit>.inline-icon {
+            display: inline-flex;
+            background: #bdbdbd;
+            border-radius: 100%;
+            width: 16px;
+            height: 16px;
+            align-items: center;
+            justify-content: center;
+            margin-right: 5px
+        }
+
+        .atom--snippet__credit>.inline-icon>.icon {
+            height: 12px
+        }
+
+        .atom--explainer {
+            padding: 6px 5px;
+            background-color: #005689;
+            color: #ffffff;
+            position: relative
+        }
+
+        .atom--explainer__header {
+            font-size: 20px;
+            line-height: 24px;
+            font-weight: 900;
+            min-height: 24px;
+            padding-bottom: 18px
+        }
+
+        .atom--explainer ol,
+        .atom--explainer p,
+        .atom--explainer ul {
+            font-size: 14px;
+            line-height: 20px;
+            margin: 0 0 6px
+        }
+
+    </style>
     <script type="text/javascript">
         window.GU = window.GU || {};
+
     </script>
     <script type="text/javascript" src="../../ArticleTemplates/assets/build/polyfills/promise.js"></script>
     <script type="text/javascript" src="../../ArticleTemplates/assets/build/polyfills/requestAnimationFrame.js"></script>
     <script type="text/javascript" src="../../ArticleTemplates/assets/build/bootstrap.js"></script>
 </head>
-<body class="garnett--type-immersive garnett--pillar-news tone--special font-size-4 ios  advert-config--mobile  display-hint--articleImmersive" data-content-type="article" data-ads-enabled="mpu" data-ads-enable-hiding="true" data-ads-config="mobile" style="margin-top: 0px;" data-font-size="4" data-template-directory="../../ArticleTemplates/" data-page-id="news/2018/mar/17/data-war-whistleblower-christopher-wylie-faceook-nix-bannon-trump" data-mpu-after-paragraphs="3" data-use-ads-ready="true" data-content-section="Cambridge Analytica">
+
+<body class="garnett--type-immersive garnett--pillar-news tone--special font-size-4 ios  advert-config--mobile  display-hint--articleImmersive"
+    data-content-type="article" data-ads-enabled="mpu" data-ads-enable-hiding="true" data-ads-config="mobile" style="margin-top: 0px;"
+    data-font-size="4" data-template-directory="../../ArticleTemplates/" data-page-id="news/2018/mar/17/data-war-whistleblower-christopher-wylie-faceook-nix-bannon-trump"
+    data-mpu-after-paragraphs="3" data-use-ads-ready="true" data-content-section="Cambridge Analytica">
 
     <div class="article article--immersive">
-    <!-- <div class="progress">
+        <!-- <div class="progress">
         <div class="progress__bar"></div>
     </div> -->
-    <div class="article__header">
-        <div class="article__header-bg" data-full-screen="true" style="background-image:url('https://i.guim.co.uk/img/media/e5e109603b17efa4cb266d7c289d5be97829639c/82_0_4133_2480/master/4133.jpg?w=4446&h=-&quality=35&sig-ignores-params=true&s=eebe16f0b48f38688bcccb4e48a0c8dd'); height: calc(100vh - 64px);">
+        <div class="article__header">
+            <div class="article__header-bg" data-full-screen="true" style="background-image:url('https://i.guim.co.uk/img/media/e5e109603b17efa4cb266d7c289d5be97829639c/82_0_4133_2480/master/4133.jpg?w=4446&h=-&quality=35&sig-ignores-params=true&s=eebe16f0b48f38688bcccb4e48a0c8dd'); height: calc(100vh - 64px);">
 
-        </div>
+            </div>
 
-        <div class="article__header-info">
-            <span class="article__series">
-    <a href="x-gu://list/mobile.guardianapis.com/lists/tag/news/series/cambridge-analytica-files">The Cambridge Analytica Files</a>
-</span>
-            <h1 class="article__headline headline selectable">
-                ‘I made Steve Bannon’s psychological warfare tool’: meet the data war whistleblower
-            </h1>
-        </div>
+            <div class="article__header-info">
+                <span class="article__series">
+                    <a href="x-gu://list/mobile.guardianapis.com/lists/tag/news/series/cambridge-analytica-files">
+                        <span>Cambridge Analytica Files</span>
+                    </a>
+                </span>
+                <h1 class="article__headline headline selectable">
+                    ‘I made Steve Bannon’s psychological warfare tool’: meet the data war whistleblower
+                </h1>
+            </div>
 
-        <div class="standfirst">
-            <div class="standfirst__text"><p>For more than a year we’ve been investigating Cambridge Analytica and its links to the Brexit Leave campaign in the UK and Team Trump in the US presidential election. Now, 28-year-old Christopher Wylie goes on the record to discuss his role in hijacking the profiles of millions of Facebook users in order to target the US electorate</p></div>
-            <p class="article__byline">
-    by <span class="byline__author"><a href="x-gu://list/mobile.guardianapis.com/lists/tag/profile/carolecadwalladr">Carole Cadwalladr</a></span>
-</p>
+            <div class="standfirst">
+                <div class="standfirst__text">
+                    <p>For more than a year we’ve been investigating Cambridge Analytica and its links to the Brexit Leave campaign
+                        in the UK and Team Trump in the US presidential election. Now, 28-year-old Christopher Wylie goes
+                        on the record to discuss his role in hijacking the profiles of millions of Facebook users in order
+                        to target the US electorate</p>
+                </div>
+                <p class="article__byline">
+                    by
+                    <span class="byline__author">
+                        <a href="x-gu://list/mobile.guardianapis.com/lists/tag/profile/carolecadwalladr">Carole Cadwalladr</a>
+                    </span>
+                </p>
 
-        </div>
+            </div>
 
-        <div class="article__meta keyline-4">
-            <div class="immersive__meta">
-                <div class="meta__published__comments"></div>
-                <div class='meta__published show-garnett'>
-                    <div class="meta__published__date show-garnett"><span class="screen-readable" id="pubdate">Published: </span><span id="published-date">09:44 GMT Sunday, 18 March 2018</span></div>
+            <div class="article__meta keyline-4">
+                <div class="immersive__meta">
+                    <div class="meta__published__comments"></div>
+                    <div class='meta__published'>
+                        <div class="meta__published__date">
+                            <span class="screen-readable" id="pubdate">Published: </span>
+                            <span id="published-date">09:44 GMT Sunday, 18 March 2018</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-
-
-    </div>
-
-    <div class="article__body" id="article-body">
-        <div class="from-content-api prose resizable selectable">
-            <h2 class="section__rule"></h2>
-            <p>The first time I met Christopher Wylie, he didn’t yet have pink hair. That comes later. As does his mission to rewind time. To put the genie back in the bottle.</p>
-<p>By the time <a href="x-gu://item/mobile.guardianapis.com/uk/items/uk-news/video/2018/mar/17/cambridge-analytica-whistleblower-we-spent-1m-harvesting-millions-of-facebook-profiles-video">I met him in person</a>, I’d already been talking to him on a daily basis for hours at a time. On the phone, he was clever, funny, bitchy, profound, intellectually ravenous, compelling. A master storyteller. A politicker. A data science nerd.</p>
-<figure class="element element-atom" data-atom-id="2d4f7d67-1de4-4846-856f-7ffb63908c1b" data-atom-type="media">
- <div class="element element-video element-youtube __YOUTUBE_MEDIA_SDK_CLASS_NAME__">
-  <div style="font-size:0" class="element__inner">
-    <div class="youtube-media__placeholder">
-    <div class="youtube-media__placeholder__img" style="background-image: url(https://i.guim.co.uk/img/media/255d5a66dba9abd473a51b29c0eb5c4db5f3a241/0_654_6720_3780/master/6720.jpg?w=750&h=450&quality=35&sig-ignores-params=true&s=71a0b67f285147bfecc8b688b145416b)"></div>
-    <div class="youtube-media__touchpoint touchpoint">
-        <span class="element-placeholder__button">
-            <span class="touchpoint__button video-play-button" data-icon="" aria-hidden="true"></span>
-            <span class="touchpoint__label"><span class="screen-readable">Play Video. Duration: </span>13:04</span>
-        </span>
-    </div>
-</div>
-   <iframe id="gu-video-youtube-2d4f7d67-1de4-4846-856f-7ffb63908c1b" class="youtube-media" src="https://www.youtube.com/embed/FXdYSQ6nu-M?modestbranding=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" frameborder="0" allowfullscreen=""></iframe>
-  </div>
- </div>
-</figure>
-<p>Two months later, when he arrived in London from Canada, he was all those things in the flesh. And yet the flesh was impossibly young. He was 27 then (he’s 28 now), a fact that has always seemed glaringly at odds with what he has done. He may have played a pivotal role in the momentous political upheavals of 2016. At the very least, he played a consequential role. At 24, he came up with an idea that led to the foundation of a company called Cambridge Analytica, a data analytics firm that went on to claim a major role in the Leave campaign for Britain’s EU membership referendum, and later became a key figure in digital operations during <a href="x-gu://item/mobile.guardianapis.com/uk/items/us-news/2016/nov/09/how-did-donald-trump-win-analysis">Donald Trump’s election</a> campaign.</p>
-<p>Or, as Wylie describes it, he was the gay Canadian vegan who somehow ended up creating “<a href="x-gu://list/mobile.guardianapis.com/uk/lists/tag/us-news/steve-bannon">Steve Bannon</a>’s psychological warfare mindfuck tool”.</p>
-<p>In 2014, Steve Bannon – then executive chairman of the “alt-right” news network <a href="x-gu://list/mobile.guardianapis.com/uk/lists/tag/media/breitbart">Breitbart</a> – was Wylie’s boss. And <a href="x-gu://item/mobile.guardianapis.com/uk/items/politics/2017/feb/26/robert-mercer-breitbart-war-on-media-steve-bannon-donald-trump-nigel-farage">Robert Mercer</a>, the secretive US hedge-fund billionaire and Republican donor, was Cambridge Analytica’s investor. And the idea they bought into was to bring big data and social media to an established military methodology – “information operations” – then turn it on the US electorate.</p>
-<p>It was Wylie who came up with that idea and oversaw its realisation. And it was Wylie who, last spring, became my source. In May 2017, I wrote an article headlined <a href="x-gu://item/mobile.guardianapis.com/uk/items/technology/2017/may/07/the-great-british-brexit-robbery-hijacked-democracy">“The great British Brexit robbery”</a>, which set out a skein of threads that linked Brexit to Trump to Russia. Wylie was one of a handful of individuals who provided the evidence behind it. I found him, via another Cambridge Analytica ex-employee, lying low in Canada: guilty, brooding, indignant, confused. “I haven’t talked about this to anyone,” he said at the time. And then he couldn’t stop talking.</p>
-<figure class="element element-interactive interactive element--supporting" data-interactive="https://interactive.guim.co.uk/embed/iframe-wrapper/0.1/boot.js" data-canonical-url="https://interactive.guim.co.uk/embed/article-embeds/Sidebar-ca/embed.html" data-alt="Explainer embed">
- <a href="https://interactive.guim.co.uk/embed/article-embeds/Sidebar-ca/embed.html">Explainer embed</a>
-</figure>
-<p>By that time, Steve Bannon had become Trump’s chief strategist. Cambridge Analytica’s parent company, SCL, had won contracts with the US State Department and was pitching to the Pentagon, and Wylie was genuinely freaked out. “It’s insane,” he told me one night. “The company has created psychological profiles of 230 million Americans. And now they want to work with the Pentagon? It’s like Nixon on steroids.”</p>
-<p>He ended up showing me a tranche of documents that laid out the secret workings behind Cambridge Analytica. And in the months following publication of my article in May,<strong> </strong>it was revealed that the company had “reached out” to WikiLeaks to help distribute <a href="x-gu://item/mobile.guardianapis.com/uk/items/us-news/2017/jun/30/russia-hackers-clinton-emails-mike-flynn">Hillary Clinton’s stolen emails</a> in 2016. And then we watched as it became a subject of special counsel <a href="x-gu://list/mobile.guardianapis.com/uk/lists/tag/us-news/robert-mueller">Robert Mueller</a>’s investigation into possible Russian collusion in the US election.</p>
-<p>The <em><a href="x-gu://item/mobile.guardianapis.com/uk/items/about/2018/jan/15/the-new-guardian-and-observer">Observer</a></em> also received the first of three letters from Cambridge Analytica threatening to sue Guardian News and Media for defamation. We are still only just starting to understand the maelstrom of forces that came together to create the conditions for what Mueller confirmed last month was “information warfare”. But Wylie offers a unique, worm’s-eye view of the events of 2016. Of how Facebook was hijacked, repurposed to become a theatre of war: how it became a launchpad for what seems to be an extraordinary attack on the US’s democratic process.</p>
-<p>Wylie oversaw what may have been the first critical breach. Aged 24, while studying for a PhD in fashion trend forecasting, he came up with a plan to <a href="x-gu://item/mobile.guardianapis.com/uk/items/news/2018/mar/17/cambridge-analytica-facebook-influence-us-election">harvest the Facebook profiles</a> of millions of people in the US, and to use their private and personal information to create <a href="x-gu://item/mobile.guardianapis.com/uk/items/technology/2018/mar/17/facebook-cambridge-analytica-kogan-data-algorithm">sophisticated psychological and political profiles</a>. And then target them with political ads designed to work on their particular psychological makeup.</p>
-<p>“We ‘broke’ Facebook,” he says.</p>
-<p>And he did it on behalf of his new boss, Steve Bannon.</p>
-<p>“Is it fair to say you ‘hacked’ Facebook?” I ask him one night.</p>
-<p>He hesitates. “I’ll point out that I assumed it was entirely legal and above board.”</p>
-<p>Last month, Facebook’s UK director of policy, Simon Milner, told British MPs on a select committee inquiry into fake news, chaired by Conservative MP Damian Collins, that Cambridge Analytica did not have Facebook data. The official Hansard extract reads:</p>
-<p>Christian Matheson (MP for Chester): “Have you ever passed any user information over to Cambridge Analytica or any of its associated companies?”</p>
-<p>Simon Milner: “No.”</p>
-<p>Matheson: “But they do hold a large chunk of Facebook’s user data, don’t they?”</p>
-<p>Milner: “No. They may have lots of data, but it will not be Facebook user data. It may be data about people who are on Facebook that they have gathered themselves, but it is not data that we have provided.”</p>
-<figure class="element element-image" data-media-id="9a9762f17474b2c58859eb62912ca5b856adafb9">
- <a href="x-gu://gallery/https://i.guim.co.uk/img/media/9a9762f17474b2c58859eb62912ca5b856adafb9/0_0_7360_4912/master/7360.jpg?w=#{width}&h=#{height}&quality=#{quality}&sig-ignores-params=true&s=74e03ecc478a3cc4a078cb3f92e0d9c4"><img src="https://media.guim.co.uk/9a9762f17474b2c58859eb62912ca5b856adafb9/0_0_7360_4912/1000.jpg" alt="Alexander Nix" width="1000" height="667" class="gu-image"></a>
- <figcaption>
-  <span class="element-image__caption">Alexander Nix, Cambridge Analytica CEO.</span>
-  <span class="element-image__credit">Photograph: The Washington Post/Getty Images</span>
- </figcaption>
-</figure>
-<p>Two weeks later, on 27 February, as part of the same parliamentary inquiry, Rebecca Pow, MP for Taunton Deane, asked Cambridge Analytica’s CEO, <a href="x-gu://item/mobile.guardianapis.com/uk/items/politics/2018/feb/27/cambridge-analytica-boss-denies-working-brexit-campaign">Alexander Nix</a>: “Does any of the data come from Facebook?” Nix replied: “We do not work with Facebook data and we do not have Facebook data.”</p>
-<p>And through it all, Wylie and I, plus a handful of editors and a small, international group of academics and researchers, have known that – at least in 2014 – that certainly wasn’t the case, because Wylie has the paper trail. In our first phone call, he told me he had the receipts, invoices, emails, legal letters – records that showed how, between June and August 2014, the profiles of more than 50 million Facebook users had been harvested. Most damning of all, he had a letter from Facebook’s own lawyers admitting that Cambridge Analytica had acquired the data illegitimately.</p>
-<p>Going public involves an enormous amount of risk. Wylie is breaking a non-disclosure agreement and risks being sued. He is breaking the confidence of Steve Bannon and Robert Mercer.</p>
-<p>It’s taken a rollercoaster of a year to help get Wylie to a place where it’s possible for him to finally come forward. A year in which Cambridge Analytica has been the subject of investigations on both sides of the Atlantic – Robert Mueller’s in the US, and separate inquiries by the Electoral Commission and the Information Commissioner’s Office in the UK, both triggered in February 2017, after <a href="x-gu://item/mobile.guardianapis.com/uk/items/politics/2017/feb/26/us-billionaire-mercer-helped-back-brexit">the<em> Observer</em>’s first article</a> in this investigation.</p>
-<p>It has been a year, too, in which Wylie has been trying his best to rewind – to undo events that he set in motion. Earlier this month, he submitted a dossier of evidence to the Information Commissioner’s Office and the National Crime Agency’s cybercrime unit. He is now in a position to go on the record: the data nerd who came in from the cold.</p>
-<p>There are many points where this story could begin. One is in 2012, when Wylie was 21 and working for the Liberal Democrats in the UK, then in government as junior coalition partners. His career trajectory has been, like most aspects of his life so far, extraordinary, preposterous, implausible.</p>
-<figure class="element element-atom" data-atom-id="0ee855ed-c4df-49ab-8c93-baf93b54276e" data-atom-type="profile">
- <details data-snippet-id="0ee855ed-c4df-49ab-8c93-baf93b54276e" data-snippet-type="profile" class="atom atom--snippet atom--snippet--profile">
-  <summary class="atom--snippet__header"> <span class="atom--snippet__label">Profile</span> <h4 class="atom--snippet__headline">Cambridge Analytica: the key players</h4> <button class="atom__button atom__button--large atom__button--rounded atom--snippet__handle" aria-hidden="true"> <span class="is-on">
-     <svg class="icon icon--plus " width="18px" height="18px" viewbox="0 0 18 18">
-      <path d="M8.2 0h1.6l.4 7.8 7.8.4v1.6l-7.8.4-.4 7.8H8.2l-.4-7.8L0 9.8V8.2l7.8-.4.4-7.8z" />
-     </svg> Show</span> <span class="is-off">
-     <svg class="icon icon--minus " width="32px" height="32px" viewbox="0 0 32 32">
-      <rect x="5" y="15" width="22" height="3"></rect>
-     </svg> Hide</span> </button> </summary>
-  <div class="atom--snippet__body">
-   <div class="atom--snippet__item">
-    <div class="atom--snippet__heading">
-     <b>Alexander Nix, CEO</b>
-    </div>
-    <p>An Old Etonian with a degree from Manchester University, Nix, 42, worked as a financial analyst in Mexico and the UK before joining SCL, a strategic communications firm, in 2003. From 2007 he took over the company’s elections division, and claims to have worked on 260 campaigns globally. He set up Cambridge Analytica to work in America, with investment from Robert&nbsp;Mercer.&nbsp;</p>
-   </div>
-   <div class="atom--snippet__item">
-    <div class="atom--snippet__heading">
-     <b>Aleksandr Kogan, data miner</b>
-    </div>
-    <p>Aleksandr Kogan was born in Moldova and lived in Moscow until the age of seven, then moved with his family to the US, where he became a naturalised citizen. He studied at the University of California, Berkeley, and got his PhD at the University of Hong Kong before joining Cambridge as a lecturer in psychology and expert in social media psychometrics. He set up Global Science Research (GSR) to carry out CA’s data research. While at Cambridge he accepted a position at St Petersburg State University, and also took Russian government grants for research. He changed his name to Spectre when he married, but later reverted to Kogan.</p>
-   </div>
-   <div class="atom--snippet__item">
-    <div class="atom--snippet__heading">
-     <b>Steve Bannon, former board member</b>
-    </div>
-    <p>A former investment banker turned “alt-right” media svengali, Steve Bannon was boss at website Breitbart when he met Christopher Wylie and Nix and advised Robert Mercer to invest in political data research by setting up CA. In August 2016 he became Donald Trump’s campaign CEO. Bannon encouraged the reality TV star to embrace the “populist, economic nationalist” agenda that would carry him into the White House. That earned Bannon the post of chief strategist to the president and for a while he was arguably the second most powerful man in America. By August 2017 his relationship with Trump had soured and he was out.<br></p>
-   </div>
-   <div class="atom--snippet__item">
-    <div class="atom--snippet__heading">
-     <b>Robert Mercer, investor</b>
-    </div>
-    <p>Robert Mercer, 71, is a computer scientist and hedge fund billionaire, who used his fortune to become one of the most influential men in US politics as a top Republican donor. An AI expert, he made a fortune with quantitative trading pioneers Renaissance Technologies, then built a $60m war chest to back conservative causes by using an offshore investment vehicle to avoid US tax.&nbsp;<br></p>
-   </div>
-   <div class="atom--snippet__item">
-    <div class="atom--snippet__heading">
-     <b>Rebekah Mercer, investor</b>
-    </div>
-    <p>Rebekah Mercer has a maths degree from Stanford, and worked as a trader, but her influence comes primarily from her father’s billions. The fortysomething, the second of Mercer’s three daughters, heads up the family foundation which channels money to rightwing groups. The conservative mega‑donors backed Breitbart, Bannon and, most influentially, poured millions into Trump’s presidential campaign.<br></p>
-   </div>
-  </div>
-  <footer class="atom--snippet__footer">
-   <div class="atom--snippet__feedback">
-    <div>
-     Was this helpful?
-    </div>
-    <button class="atom__button atom__button--round" value="like" aria-label="Yes">
-     <svg class="icon icon--thumb " width="40px" height="40px" viewbox="0 0 40 40">
-      <path fill="#FFF" d="M33.78 22.437l-4.228 13.98L27.93 37.5 5.062 34.14V15.503l7.8-1.517L24.354 2.5h1.624L28.9 5.426l-4.548 8.67h.107l10.477 1.31"></path>
-     </svg></button>
-    <button class="atom__button atom__button--round" value="dislike" aria-label="No">
-     <svg class="icon icon--thumb " width="40px" height="40px" viewbox="0 0 40 40">
-      <path fill="#FFF" d="M33.78 22.437l-4.228 13.98L27.93 37.5 5.062 34.14V15.503l7.8-1.517L24.354 2.5h1.624L28.9 5.426l-4.548 8.67h.107l10.477 1.31"></path>
-     </svg></button>
-   </div>
-   <div class="atom--snippet__ack" hidden aria-role="alert" aria-live="polite">
-     Thank you for your feedback.
-   </div>
-  </footer>
- </details>
-</figure>
-<p>Wylie grew up in British Columbia and as a teenager he was diagnosed with ADHD and dyslexia. He left school at 16 without a single qualification. Yet at 17, he was working in the office of the leader of the Canadian opposition; at 18, he went to learn all things data from Obama’s national director of targeting, which he then introduced to Canada for the <a href="https://www.liberal.ca/">Liberal party</a>. At 19, he taught himself to code, and in 2010, age 20, he came to London to study law at the London School of Economics.</p>
-<p>“Politics is like the mob, though,” he says. “You never really leave. I got a call from the Lib Dems. They wanted to upgrade their databases and voter targeting. So, I combined working for them with studying for my degree.”</p>
-<p>Politics is also where he feels most comfortable. He hated school, but as an intern in the Canadian parliament he discovered a world where he could talk to adults and they would listen. He was the kid who did the internet stuff and within a year he was working for the leader of the opposition.</p>
-<aside class="element element-pullquote element--supporting">
- <blockquote>
-  <p>It showed these odd patterns. People who liked 'I hate Israel' on Facebook also tended to like KitKats</p>
- </blockquote>
-</aside>
-<p>“He’s one of the brightest people you will ever meet,” a senior politician who’s known Wylie since he was 20 told me. “Sometimes that’s a blessing and sometimes a curse.”</p>
-<p>Meanwhile, at <a href="https://www.psychometrics.cam.ac.uk/">Cambridge University’s Psychometrics Centre</a>, two psychologists, Michal Kosinski and David Stillwell, were experimenting with a way of studying personality – by quantifying it.</p>
-<p>Starting in 2007,<strong> </strong>Stillwell, while a student, had devised various apps for Facebook, one of which, a personality quiz called <a href="https://www.gsb.stanford.edu/sites/gsb/files/conf-presentations/stillwell_and_kosinski_2012.pdf">myPersonality</a>, had gone viral. Users were scored on “big five” personality traits – Openness, Conscientiousness, Extroversion, Agreeableness and Neuroticism – and in exchange, 40% of them consented to give him access to their Facebook profiles. Suddenly, there was a way of measuring personality traits across the population and correlating scores against Facebook “likes” across millions of people.</p>
-<figure class="element element-image element--supporting" data-media-id="5100b3f2d26e66b983dcc70d8cb3ed90f10601e5">
- <a href="x-gu://gallery/https://i.guim.co.uk/img/media/5100b3f2d26e66b983dcc70d8cb3ed90f10601e5/204_346_2035_2156/master/2035.jpg?w=#{width}&h=#{height}&quality=#{quality}&sig-ignores-params=true&s=801e7309600e0428c527c496c850ca73"><img src="https://media.guim.co.uk/5100b3f2d26e66b983dcc70d8cb3ed90f10601e5/204_346_2035_2156/944.jpg" alt="An example of the visual messages trialled by GSR’s online profiling test." width="944" height="1000" class="gu-image"></a>
- <figcaption>
-  <span class="element-image__caption">Examples, above and below, of the visual messages trialled by GSR’s online profiling test. Respondents were asked: How important should this message be to all Americans?</span>
- </figcaption>
-</figure>
-<p>The research was original, groundbreaking and had obvious possibilities. “They had a lot of approaches from the security services,” a member of the centre told me. “There was one called You Are What You Like and it was demonstrated to the intelligence services. And it showed these odd patterns; that, for example, people who liked ‘I hate Israel’ on Facebook also tended to like Nike shoes and KitKats.</p>
-<p>“There are agencies that fund research on behalf of the intelligence services. And they were all over this research. That one was nicknamed Operation KitKat.”</p>
-<p>The defence and military establishment were the first to see the potential of the research. Boeing, a major US defence contractor, funded Kosinski’s PhD and <a href="https://www.darpa.mil/">Darpa</a>, the US government’s secretive Defense Advanced Research Projects Agency, is cited in at least two academic papers supporting Kosinski’s work.</p>
-<p>But when, in 2013, the first major paper was published, others saw this potential too, including Wylie. He had finished his degree and had started his PhD in fashion forecasting, and was thinking about the Lib Dems. It is fair to say that he didn’t have a clue what he was walking into.</p>
-<figure class="element element-image element--supporting" data-media-id="b2bb7646b4bfffc278b2deafc90eda41c9ac8a96">
- <a href="x-gu://gallery/https://i.guim.co.uk/img/media/b2bb7646b4bfffc278b2deafc90eda41c9ac8a96/0_0_500_500/master/500.jpg?w=#{width}&h=#{height}&quality=#{quality}&sig-ignores-params=true&s=656edc7409471574ee197c7c2c29b175"><img src="https://media.guim.co.uk/b2bb7646b4bfffc278b2deafc90eda41c9ac8a96/0_0_500_500/500.jpg" alt="An example of the visual messages trialled by GSR’s online profiling test. Respondents were asked: How important should this message be to all Americans?" width="500" height="500" class="gu-image"></a>
-</figure>
-<p>“I wanted to know why the Lib Dems sucked at winning elections when they used to run the country up to the end of the 19th century,” Wylie explains. “And I began looking at consumer and demographic data to see what united Lib Dem voters, because apart from bits of Wales and the Shetlands it’s weird, disparate regions. And what I found is there were no strong correlations. There was no signal in the data.</p>
-<p>“And then I came across a paper about how personality traits could be a precursor to political behaviour, and it suddenly made sense. Liberalism is correlated with high openness and low conscientiousness, and when you think of Lib Dems they’re absent-minded professors and hippies. They’re the early adopters… they’re highly open to new ideas. And it just clicked all of a sudden.” </p>
-<p>Here was a way for the party to identify potential new voters. The only problem was that the Lib Dems weren’t interested.</p>
-<p>“I did this presentation at which I told them they would lose half their 57 seats, and they were like: ‘Why are you so pessimistic?’ They actually lost all but eight of their seats, FYI.”</p>
-<p>Another Lib Dem connection introduced Wylie to a company called <a href="https://sclgroup.cc/home">SCL Group</a>, one of whose subsidiaries, SCL Elections, would go on to create Cambridge Analytica (an incorporated venture between SCL Elections and Robert Mercer, funded by the latter). For all intents and purposes, SCL/Cambridge Analytica are one and the same.</p>
-<p>Alexander Nix, then CEO of SCL Elections, made Wylie an offer he couldn’t resist. “He said: ‘We’ll give you total freedom. Experiment. Come and test out all your crazy ideas.’”</p>
-<figure class="element element-image element--supporting" data-media-id="9f592db63a1925549ce2bdc936e8ff8ba612f42b">
- <a href="x-gu://gallery/https://i.guim.co.uk/img/media/9f592db63a1925549ce2bdc936e8ff8ba612f42b/0_0_500_500/master/500.jpg?w=#{width}&h=#{height}&quality=#{quality}&sig-ignores-params=true&s=6de722618ec5b901e3408ea31578e021"><img src="https://media.guim.co.uk/9f592db63a1925549ce2bdc936e8ff8ba612f42b/0_0_500_500/500.jpg" alt="An example of the visual messages trialled by GSR’s online profiling test. Respondents were asked: How important should this message be to all Americans?" width="500" height="500" class="gu-image"></a>
- <figcaption>
-  <span class="element-image__caption">Another example of the visual messages trialled by GSR’s online profiling test.</span>
- </figcaption>
-</figure>
-<p>In the history of bad ideas, this turned out to be one of the worst. The job was research director across the SCL group, a private contractor that has both defence and elections operations. Its defence arm was a contractor to the UK’s Ministry of Defence and the US’s Department of Defense, among others. Its expertise was in “psychological operations” – or psyops –<strong> </strong>changing people’s minds not through persuasion but through “informational dominance”, a set of techniques that includes rumour, disinformation and fake news.</p>
-<p>SCL Elections had used a similar suite of tools in more than 200 elections around the world, mostly in undeveloped democracies that Wylie would come to realise were unequipped to defend themselves.</p>
-<p>Wylie holds a British Tier 1 Exceptional Talent visa – a UK work visa given to just 200 people a year. He was working inside government (with the Lib Dems) as a political strategist with advanced data science skills. But no one, least of all him, could have predicted what came next. When he turned up at SCL’s offices in Mayfair, he had no clue that he was walking into the middle of a nexus of defence and intelligence projects, private contractors and cutting-edge cyberweaponry.</p>
-<p>“The thing I think about all the time is, what if I’d taken a job at Deloitte instead? They offered me one. I just think if I’d taken literally any other job, Cambridge Analytica wouldn’t exist. You have no idea how much I brood on this.”</p>
-<p>A few months later, in autumn 2013, Wylie met Steve Bannon. At the time, he was editor-in-chief of Breitbart, which he had brought to Britain to support his friend Nigel Farage in his mission to take Britain out of the <a href="x-gu://list/mobile.guardianapis.com/uk/lists/tag/politics/eu-referendum">European Union</a>.</p>
-<p>What was he like?</p>
-<p>“Smart,” says Wylie. “Interesting. Really interested in ideas. He’s the only straight man I’ve ever talked to about <a href="http://intersectionalfeminism101.tumblr.com/faq">intersectional feminist theory</a>. He saw its relevance straightaway to the oppressions that conservative, young white men feel.”</p>
-<p>Wylie meeting Bannon was the moment petrol was poured on a flickering flame. Wylie lives for ideas. He speaks 19 to the dozen for hours at a time. He had a theory to prove. And at the time, this was a purely intellectual problem. Politics was like fashion, he told Bannon.</p>
-<aside class="element element-pullquote element--supporting">
- <blockquote>
-  <p>If you do not respect the agency of people, anything you do after that point is not conducive to democracy</p>
-  <footer>
-   <cite>Christopher Wylie</cite>
-  </footer>
- </blockquote>
-</aside>
-<p>“[Bannon] got it immediately. He believes in the whole <a href="https://en.wikipedia.org/wiki/Andrew_Breitbart">Andrew Breitbart</a> doctrine that politics is downstream from culture, so to change politics you need to change culture. And fashion trends are a useful proxy for that. Trump is like a pair of Uggs, or Crocs, basically. So how do you get from people thinking ‘Ugh. Totally ugly’ to the moment when everyone is wearing them? That was the inflection point he was looking for.”</p>
-<p>But Wylie wasn’t just talking about fashion. He had recently been exposed to a new discipline: “information operations”, which ranks alongside land, sea, air and space in the US military’s doctrine of the “five-dimensional battle space”. His brief ranged across the SCL Group – the British government has paid SCL to conduct counter-extremism operations in the Middle East, and the US Department of Defense has contracted it to work in Afghanistan.</p>
-<p>I tell him that another former employee described the firm as “MI6 for hire”, and I’d never quite understood it.</p>
-<p>“It’s like dirty MI6 because you’re not constrained. There’s no having to go to a judge to apply for permission. It’s normal for a ‘market research company’ to amass data on domestic populations. And if you’re working in some country and there’s an auxiliary benefit to a current client with aligned interests, well that’s just a bonus.”</p>
-<p>When I ask how Bannon even found SCL, Wylie tells me what sounds like a tall tale, though it’s one he can back up with an email about how <a href="https://en.wikipedia.org/wiki/Mark_Block">Mark Block</a>, a veteran Republican strategist, happened to sit next to a cyberwarfare expert for the US air force on a plane. “And the cyberwarfare guy is like, ‘Oh, you should meet SCL. They do cyberwarfare for elections.’”</p>
-<figure class="element element-image" data-media-id="264eb18152cdb6c5307ecb7e0ec9e1a0458b6236">
- <a href="x-gu://gallery/https://i.guim.co.uk/img/media/264eb18152cdb6c5307ecb7e0ec9e1a0458b6236/0_0_3500_2420/master/3500.jpg?w=#{width}&h=#{height}&quality=#{quality}&sig-ignores-params=true&s=b85b612aa630f51f2ab90b8ea877624d"><img src="https://media.guim.co.uk/264eb18152cdb6c5307ecb7e0ec9e1a0458b6236/0_0_3500_2420/1000.jpg" alt="U.S. President Trump’s former chief strategist Bannon walks in Piazza Navona in Rome" width="1000" height="691" class="gu-image"></a>
- <figcaption>
-  <span class="element-image__caption">Steve Bannon: ‘He loved the gays,’ says Wylie. ‘He saw us as early adopters.’</span>
-  <span class="element-image__credit">Photograph: Tony Gentile/Reuters</span>
- </figcaption>
-</figure>
-<p>It was Bannon who took this idea to the Mercers: Robert Mercer – the co-CEO of the hedge fund <a href="https://en.wikipedia.org/wiki/Renaissance_Technologies">Renaissance Technologies</a>, who used his billions to pursue a rightwing agenda, donating to Republican causes and supporting Republican candidates – and his daughter <a href="x-gu://item/mobile.guardianapis.com/uk/items/us-news/2018/jan/25/american-museum-of-natural-history-rebekah-mercer">Rebekah</a>.</p>
-<p>Nix and Wylie flew to New York to meet the Mercers in Rebekah’s Manhattan apartment.</p>
-<p>“She loved me. She was like, ‘Oh we need more of your type on our side!’” </p>
-<p>Your type?</p>
-<p>“The gays. She loved the gays. So did Steve [Bannon]. He saw us as early adopters. He figured, if you can get the gays on board, everyone else will follow. It’s why he was so into the whole <a href="x-gu://item/mobile.guardianapis.com/uk/items/world/2017/feb/21/milo-yiannopoulos-rise-and-fall-shallow-actor-bad-guy-hate-speech">Milo [Yiannopoulos]</a> thing.”</p>
-<p>Robert Mercer was a pioneer in AI and machine translation. He helped invent algorithmic trading – which replaced hedge fund managers with computer programs – and he listened to Wylie’s pitch. It was for a new kind of political message-targeting based on an influential and groundbreaking <a href="http://www.pnas.org/content/112/4/1036">2014 paper</a> researched at Cambridge’s <a href="https://www.psychometrics.cam.ac.uk/">Psychometrics Centre</a>, called: “Computer-based personality judgments are more accurate than those made by humans”.</p>
-<p>“In politics, the money man is usually the dumbest person in the room. Whereas it’s the opposite way around with Mercer,” says Wylie. “He said very little, but he really listened. He wanted to understand the science. And he wanted proof that it worked.”</p>
-<p>And to do that, Wylie needed data.</p>
-<p>How Cambridge Analytica acquired the data has been the subject of internal reviews at Cambridge University, of many news articles and much speculation and rumour.</p>
-<p>When Nix was interviewed by MPs last month, Damian Collins asked him:</p>
-<p>“Does any of your data come from Global Science Research company?”</p>
-<p>Nix: “GSR?”</p>
-<p>Collins: “Yes.”</p>
-<p>Nix: “We had a relationship with GSR. They did some research for us back in 2014. That research proved to be fruitless and so the answer is no.”</p>
-<p>Collins: “They have not supplied you with data or information?”</p>
-<p>Nix: “No.”</p>
-<p>Collins: “Your datasets are not based on information you have received from them?”</p>
-<p>Nix: “No.”</p>
-<p>Collins: “At all?”</p>
-<p>Nix: “At all.”</p>
-<p>The problem with Nix’s response to Collins is that Wylie has a copy of an executed contract, dated 4 June 2014, which confirms that SCL, the parent company of Cambridge Analytica, entered into a commercial arrangement with a company called Global Science Research (GSR), owned by Cambridge-based academic Aleksandr Kogan, specifically premised on the harvesting and processing of Facebook data, so that it could be matched to personality traits and voter rolls.</p>
-<p>He has receipts showing that Cambridge Analytica spent $7m to amass this data, about $1m of it with GSR. He has the bank records and wire transfers. Emails reveal Wylie first negotiated with Michal Kosinski, one of the co-authors of the original myPersonality research paper, to use the myPersonality database. But when negotiations broke down, another psychologist, Aleksandr Kogan, offered a solution that many of his colleagues considered unethical. He offered to replicate Kosinski and Stillwell’s research and cut them out of the deal. For Wylie it seemed a perfect solution. “Kosinski was asking for $500,000 for the IP but Kogan said he could replicate it and just harvest his own set of data.” (Kosinski says the fee was to fund further research.)</p>
-<figure class="element element-image" data-media-id="7e585984fe7dc1861115c853a21930d2402b4e75">
- <a href="x-gu://gallery/https://i.guim.co.uk/img/media/7e585984fe7dc1861115c853a21930d2402b4e75/0_0_590_288/master/590.jpg?w=#{width}&h=#{height}&quality=#{quality}&sig-ignores-params=true&s=183acc709cb6732b232b1566585cb579"><img src="https://media.guim.co.uk/7e585984fe7dc1861115c853a21930d2402b4e75/0_0_590_288/500.jpg" alt="Dr Aleksandr Kogan" width="500" height="244" class="gu-image"></a>
- <figcaption>
-  <span class="element-image__caption">An unethical solution? Dr Aleksandr Kogan</span>
-  <span class="element-image__credit">Photograph: alex kogan</span>
- </figcaption>
-</figure>
-<p>Kogan then set up GSR to do the work, and proposed to Wylie they use the data to set up an interdisciplinary institute working across the social sciences. “What happened to that idea,” I ask Wylie. “It never happened. I don’t know why. That’s one of the things that upsets me the most.”</p>
-<p>It was Bannon’s interest in culture as war that ignited Wylie’s intellectual concept. But it was Robert Mercer’s millions that created a firestorm. Kogan was able to throw money at the hard problem of acquiring personal data: he advertised for people who were willing to be paid to take a personality quiz on Amazon’s <a href="https://www.mturk.com/">Mechanical Turk</a> and <a href="https://www.qualtrics.com/">Qualtrics</a>. At the end of which Kogan’s app, called thisismydigitallife, gave him permission to access their Facebook profiles. And not just theirs, but their friends’ too. On average, each “seeder” – the people who had taken the personality test, around 320,000 in total – unwittingly gave access to at least 160 other people’s profiles, none of whom would have known or had reason to suspect.</p>
-<p>What the email correspondence between Cambridge Analytica employees and Kogan shows is that Kogan had collected millions of profiles in a matter of weeks. But neither Wylie nor anyone else at Cambridge Analytica had checked that it was legal. It certainly wasn’t authorised. Kogan did have permission to pull Facebook data, but for academic purposes only. What’s more, under British data protection laws, it’s illegal for personal data to be sold to a third party without consent.</p>
-<p>“Facebook could see it was happening,” says Wylie. “Their security protocols were triggered because Kogan’s apps were pulling this enormous amount of data, but apparently Kogan told them it was for academic use. So they were like, ‘Fine’.”</p>
-<p>Kogan maintains that everything he did was legal and he had a “close working relationship” with Facebook, which had granted him permission for his apps.</p>
-<p>Cambridge Analytica had its data. This was the foundation of everything it did next – how it extracted psychological insights from the “seeders” and then built an algorithm to profile millions more.<strong> </strong></p>
-<p>For more than a year, the reporting around what Cambridge Analytica did or didn’t do for Trump has revolved around the question of “psychographics”, but Wylie points out: “Everything was built on the back of that data. The models, the algorithm. Everything. Why wouldn’t you use it in your biggest campaign ever?”</p>
-<p>In December 2015, the<em> Guardian</em>’s Harry Davies published <a href="x-gu://item/mobile.guardianapis.com/uk/items/us-news/2015/dec/11/senator-ted-cruz-president-campaign-facebook-user-data">the first report</a> about Cambridge Analytica acquiring Facebook data and using it to support Ted Cruz in his campaign to be the US Republican candidate. But it wasn’t until many months later that Facebook took action. And then, all they did was write a letter. In August 2016, shortly before the US election, and two years after the breach took place, Facebook’s lawyers wrote to Wylie, who left Cambridge Analytica in 2014, and told him the data had been illicitly obtained and that “GSR was not authorised to share or sell it”. They said it must be deleted immediately.</p>
-<figure class="element element-image element--supporting" data-media-id="d59ef780ad6aa2d138bfe571b7d9680f16a335c3">
- <a href="x-gu://gallery/https://i.guim.co.uk/img/media/d59ef780ad6aa2d138bfe571b7d9680f16a335c3/0_1150_4480_5570/master/4480.jpg?w=#{width}&h=#{height}&quality=#{quality}&sig-ignores-params=true&s=9922acf38f4558380610f7013ae0e5e8"><img src="https://media.guim.co.uk/d59ef780ad6aa2d138bfe571b7d9680f16a335c3/0_1150_4480_5570/804.jpg" alt="Christopher Wylie" width="804" height="1000" class="gu-image"></a>
- <figcaption>
-  <span class="element-image__caption">Christopher Wylie: ‘It’s like Nixon on steroids’</span>
- </figcaption>
-</figure>
-<p>“I already had. But literally all I had to do was tick a box and sign it and send it back, and that was it,” says Wylie. “Facebook made zero effort to get the data back.”</p>
-<p>There were multiple copies of it. It had been emailed in unencrypted files.</p>
-<p>Cambridge Analytica rejected all allegations the <em>Observer</em> put to them.</p>
-<p>Dr Kogan – who later changed his name to Dr Spectre, but has subsequently changed it back to Dr Kogan – is still a faculty member at Cambridge University, a senior research associate. But what his fellow academics didn’t know until Kogan revealed it in emails to the <em>Observer</em> (although Cambridge University says that Kogan told the head of the psychology department), is that he is also an associate professor at St Petersburg University. Further research revealed that he’s received grants from the Russian government to research “Stress, health and psychological wellbeing in social networks”. The opportunity came about on a trip to the city to visit friends and family, he said. <strong> </strong></p>
-<p>There are other dramatic documents in Wylie’s stash, including a pitch made by Cambridge Analytica to <a href="http://www.lukoil.com/">Lukoil</a>, Russia’s <a href="https://www.investopedia.com/articles/markets/100515/5-biggest-russian-oil-companies.asp">second biggest oil producer</a>. In an email dated 17 July 2014, about the US presidential primaries, Nix wrote to Wylie: “We have been asked to write a memo to Lukoil (the Russian oil and gas company) to explain to them how our services are going to apply to the petroleum business. Nix said that “they understand behavioural microtargeting in the context of elections” but that they were “failing to make the connection between voters and their consumers”. The work, he said, would be “shared with the CEO of the business”, a former Soviet oil minister and associate of Putin, <a href="http://www.lukoil.com/Company/CorporateGovernance/BoardofDirectors/VagitAlekperov">Vagit Alekperov</a>.</p>
-<p>“It didn’t make any sense to me,” says Wylie. “I didn’t understand either the email or the pitch presentation we did. Why would a Russian oil company want to target information on American voters?”</p>
-<p>Mueller’s investigation traces the first stages of the Russian operation to disrupt the 2016 US election back to 2014, when the Russian state made what appears to be its first concerted efforts to harness the power of America’s social media platforms, including Facebook. And it was in late summer of the same year that Cambridge Analytica presented the Russian oil company with an outline of its datasets, capabilities and methodology. The presentation had little to do with “consumers”. Instead, documents show it focused on election disruption techniques. The first slide illustrates how a “rumour campaign” spread fear in the 2007 Nigerian election – in which the company worked – by spreading the idea that the “election would be rigged”. The final slide, branded with Lukoil’s logo and that of SCL Group and SCL Elections, headlines its “deliverables”: “psychographic messaging”.</p>
-<figure class="element element-image" data-media-id="e594f2abca62b61526393a50aa5881e2af20a751">
- <a href="x-gu://gallery/https://i.guim.co.uk/img/media/e594f2abca62b61526393a50aa5881e2af20a751/304_179_1827_1096/master/1827.jpg?w=#{width}&h=#{height}&quality=#{quality}&sig-ignores-params=true&s=bea5e0fac6c0514b3af1966e32e9c54d"><img src="https://media.guim.co.uk/e594f2abca62b61526393a50aa5881e2af20a751/304_179_1827_1096/1000.jpg" alt="Robert Mercer with his daughter Rebekah." width="1000" height="600" class="gu-image"></a>
- <figcaption>
-  <span class="element-image__caption">Robert Mercer with his daughter Rebekah.</span>
-  <span class="element-image__credit">Photograph: Sean Zanni/Getty Images</span>
- </figcaption>
-</figure>
-<p>Lukoil is a private company, but its CEO, Alekperov, answers to Putin, and it’s been used as a vehicle of Russian influence in Europe and elsewhere – including in the Czech Republic, where in 2016 it was revealed that an adviser to the strongly <a href="x-gu://item/mobile.guardianapis.com/uk/items/world/2018/jan/27/czech-president-milos-zeman-wins-second-term">pro-Russian Czech president</a> was being paid by the company.</p>
-<p>When I asked Bill Browder – an Anglo-American businessman who is leading a global campaign for a <a href="https://en.wikipedia.org/wiki/Magnitsky_Act">Magnitsky Act</a> to enforce sanctions against Russian individuals – what he made of it, he said: “Everyone in Russia is subordinate to Putin. One should be highly suspicious of any Russian company pitching anything outside its normal business activities.”</p>
-<p>Last month, Nix told MPs on the parliamentary committee investigating fake news: “We have never worked with a Russian organisation in Russia or any other company. We do not have any relationship with Russia or Russian individuals.”</p>
-<p>There’s no evidence that Cambridge Analytica ever did any work for Lukoil. What these documents show, though, is that in 2014 one of Russia’s biggest companies was fully briefed on: Facebook, microtargeting, data, election disruption.</p>
-<p>Cambridge Analytica is “Chris’s Frankenstein”, says a friend of his. “He created it. It’s his data Frankenmonster. And now he’s trying to put it right.”</p>
-<p>Only once has Wylie made the case of pointing out that he was 24 at the time. But he was. He thrilled to the intellectual possibilities of it. He didn’t think of the consequences. And I wonder how much he’s processed his own role or responsibility in it. Instead, he’s determined to go on the record and undo this thing he has created.</p>
-<p>Because the past few months have been like watching a tornado gathering force. And when Wylie turns the full force of his attention to something – his strategic brain, his attention to detail, his ability to plan 12 moves ahead – it is sometimes slightly terrifying to behold. Dealing with someone trained in information warfare has its own particular challenges, and his suite of extraordinary talents include the kind of high-level political skills that makes <em>House of Cards</em> look like <em>The Great British</em> <em>Bake Off</em>. And not everyone’s a fan. Any number of ex-colleagues – even the ones who love him – call him “Machiavellian”. Another described the screaming matches he and Nix would have.</p>
-<p>“What do your parents make of your decision to come forward?” I ask him.</p>
-<p>“They get it. My dad sent me a cartoon today, which had two characters hanging off a cliff, and the first one’s saying ‘Hang in there.’ And the other is like: ‘Fuck you.’”</p>
-<p>Which are you?</p>
-<p>“Probably both.”</p>
-<p>What isn’t in doubt is what a long, fraught journey it has been to get to this stage. And how fearless he is.</p>
-<p>After many months, I learn the terrible, dark backstory that throws some light on his determination, and which he discusses candidly. At six, while at school, Wylie was abused by a mentally unstable person. The school tried to cover it up, blaming his parents, and a long court battle followed. Wylie’s childhood and school career never recovered. His parents – his father is a doctor and his mother is a psychiatrist – were wonderful, he says. “But they knew the trajectory of people who are put in that situation, so I think it was particularly difficult for them, because they had a deeper understanding of what that does to a person long term.”</p>
-<aside class="element element-pullquote element--supporting">
- <blockquote>
-  <p>Facebook has denied and denied this. It has failed in its duties to respect the law</p>
-  <footer>
-   <cite>Paul-Olivier Dehaye</cite>
-  </footer>
- </blockquote>
-</aside>
-<p>He says he grew up listening to psychologists discuss him in the third person, and, aged 14, he successfully sued the British Columbia Ministry of Education and forced it to change its inclusion policies around bullying. What I observe now is how much he loves the law, lawyers, precision, order. I come to think of his pink hair as a false-flag operation. What he cannot tolerate is bullying.</p>
-<p>Is what Cambridge Analytica does akin to bullying?</p>
-<p>“I think it’s worse than bullying,” Wylie says. “Because people don’t necessarily know it’s being done to them. At least bullying respects the agency of people because they know. So it’s worse, because if you do not respect the agency of people, anything that you’re doing after that point is not conducive to a democracy. And fundamentally, information warfare is not conducive to democracy.”</p>
-<p>Russia, Facebook, Trump, Mercer, Bannon, Brexit. Every one of these threads runs through Cambridge Analytica. Even in the past few weeks, it seems as if the understanding of Facebook’s role has broadened and deepened. The Mueller indictments were part of that, but <a href="http://paulolivier.dehaye.org/">Paul-Olivier Dehaye</a> – a data expert and academic based in Switzerland, who published some of the first <a href="https://medium.com/personaldata-io/cambridge-analytica-demonstrably-non-compliant-with-data-protection-law-95ec5712b61">research into Cambridge Analytica’s processes</a><strong> </strong>– says it’s become increasingly apparent that Facebook is “abusive by design”. If there is evidence of collusion between the Trump campaign and Russia, it will be in the platform’s data flows, he says. And Wylie’s revelations only move it on again.</p>
-<p>“Facebook has denied and denied and denied this,” Dehaye says when told of the<em> Observer</em>’s new evidence. “It has misled MPs and congressional investigators and it’s failed in its duties to respect the law. It has a legal obligation to inform regulators and individuals about this data breach, and it hasn’t. It’s failed time and time again to be open and transparent.”</p>
-<aside class="element element-rich-link element--thumbnail">
- <p> <span>Related: </span><a href="x-gu://item/mobile.guardianapis.com/uk/items/technology/2017/may/07/the-great-british-brexit-robbery-hijacked-democracy">The great British Brexit robbery: how our democracy was hijacked</a> </p>
-</aside>
-<p>Facebook denies that the data transfer was a breach. In addition, a spokesperson said: “Protecting people’s information is at the heart of everything we do, and we require the same from people who operate apps on Facebook. If these reports are true, it’s a serious abuse of our rules. Both Aleksandr Kogan as well as the SCL Group and Cambridge Analytica certified to us that they destroyed the data in question.”</p>
-<p>Millions of people’s personal information was stolen and used to target them in ways they wouldn’t have seen, and couldn’t have known about, by a mercenary outfit, Cambridge Analytica, who, Wylie says, “would work for anyone”. Who would pitch to Russian oil companies. Would they subvert elections abroad on behalf of foreign governments?</p>
-<p>It occurs to me to ask Wylie this one night.</p>
-<p>“Yes.”</p>
-<p>Nato or non-Nato?</p>
-<p>“Either. I mean they’re mercenaries. They’ll work for pretty much anyone who pays.”</p>
-<p>It’s an incredible revelation. It also encapsulates all of the problems of outsourcing – at a global scale, with added cyberweapons. And in the middle of it all are the public – our intimate family connections, our “likes”, our crumbs of personal data, all sucked into a swirling black hole that’s expanding and growing and is now owned by a politically motivated billionaire.</p>
-<p>The Facebook data is out in the wild. And for all Wylie’s efforts, there’s no turning the clock back.</p>
-<p><a href="https://tamsinshaw.com/">Tamsin Shaw</a>, a philosophy professor at New York University, and the author of a recent <a href="http://www.nybooks.com/contributors/tamsin-shaw/"><em>New York Review of Books</em></a> article on cyberwar and the Silicon Valley economy, told me that she’d pointed to the possibility of private contractors obtaining cyberweapons that had at least been in part funded by US defence.</p>
-<p>She calls Wylie’s disclosures “wild” and points out that “the whole Facebook project” has only been allowed to become as vast and powerful as it has because of the US national security establishment.</p>
-<p>“It’s a form of very deep but soft power that’s been seen as an asset for the US. Russia has been so explicit about this, paying for the ads in roubles and so on. It’s making this point, isn’t it? That Silicon Valley is a US national security asset that they’ve turned on itself.”</p>
-<p>Or, more simply: blowback.</p>
-<p><span class="bullet">•</span> <a href="x-gu://item/mobile.guardianapis.com/uk/items/news/2018/mar/17/cambridge-analytica-facebook-influence-us-election">Revealed: 50m Facebook profiles harvested in major data breach</a><br><span class="bullet">•</span> <a href="x-gu://item/mobile.guardianapis.com/uk/items/technology/2018/mar/17/facebook-cambridge-analytica-kogan-data-algorithm">How ‘likes’ became a political weapon</a></p>
-<p><em>This article was amended on 18 March 2018 to clarify the full title of the British Columbia Ministry of Education </em></p>
-<figure class="element element-atom" data-atom-id="42721f31-41c4-4046-9456-9934895dfb91" data-atom-type="explainer">
- <div class="atom atom--explainer">
-  <h4 class="atom--explainer__header"> The Observer </h4>
-  <p>The Observer is the world's oldest Sunday newspaper, founded in 1791. It is published by Guardian News &amp; Media and is editorially independent.</p>
- </div>
-</figure>
-        </div>
-    </div>
-
-    <div class="tags" id="tags">
-        <span class="screen-readable">Tags:</span>
-        <ul class="inline-list tags__inline-list" id="tag-list"></ul>
-    </div>
-</div>
-
-<section class="related-content">
-    <div class="related-content__wrapper">
-        <h2 class="related-content__header">
-            Related Stories
-        </h2>
-        <div class="loading loading--related" data-icon="&#xe00C;"></div>
-        <div class="block block--failed" id="related-module-failed-block">
-            <div class="block__body">
-                <p>Related stories are currently unavailable. Please try again later.</p>
+        <div class="article__body" id="article-body">
+            <div class="from-content-api prose resizable selectable">
+                <h2 class="section__rule"></h2>
+                <p>The first time I met Christopher Wylie, he didn’t yet have pink hair. That comes later. As does his mission
+                    to rewind time. To put the genie back in the bottle.</p>
+                <p>By the time
+                    <a href="x-gu://item/mobile.guardianapis.com/uk/items/uk-news/video/2018/mar/17/cambridge-analytica-whistleblower-we-spent-1m-harvesting-millions-of-facebook-profiles-video">I met him in person</a>, I’d already been talking to him on a daily basis for hours at a time. On the
+                    phone, he was clever, funny, bitchy, profound, intellectually ravenous, compelling. A master storyteller.
+                    A politicker. A data science nerd.</p>
+                <figure class="element element-atom" data-atom-id="2d4f7d67-1de4-4846-856f-7ffb63908c1b" data-atom-type="media">
+                    <div class="element element-video element-youtube __YOUTUBE_MEDIA_SDK_CLASS_NAME__">
+                        <div style="font-size:0" class="element__inner">
+                            <div class="youtube-media__placeholder">
+                                <div class="youtube-media__placeholder__img" style="background-image: url(https://i.guim.co.uk/img/media/255d5a66dba9abd473a51b29c0eb5c4db5f3a241/0_654_6720_3780/master/6720.jpg?w=750&h=450&quality=35&sig-ignores-params=true&s=71a0b67f285147bfecc8b688b145416b)"></div>
+                                <div class="youtube-media__touchpoint touchpoint">
+                                    <span class="element-placeholder__button">
+                                        <span class="touchpoint__button video-play-button" data-icon="" aria-hidden="true"></span>
+                                        <span class="touchpoint__label">
+                                            <span class="screen-readable">Play Video. Duration: </span>13:04</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <iframe id="gu-video-youtube-2d4f7d67-1de4-4846-856f-7ffb63908c1b" class="youtube-media" src="https://www.youtube.com/embed/FXdYSQ6nu-M?modestbranding=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
+                                frameborder="0" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                </figure>
+                <p>Two months later, when he arrived in London from Canada, he was all those things in the flesh. And yet the
+                    flesh was impossibly young. He was 27 then (he’s 28 now), a fact that has always seemed glaringly at
+                    odds with what he has done. He may have played a pivotal role in the momentous political upheavals of
+                    2016. At the very least, he played a consequential role. At 24, he came up with an idea that led to the
+                    foundation of a company called Cambridge Analytica, a data analytics firm that went on to claim a major
+                    role in the Leave campaign for Britain’s EU membership referendum, and later became a key figure in digital
+                    operations during
+                    <a href="x-gu://item/mobile.guardianapis.com/uk/items/us-news/2016/nov/09/how-did-donald-trump-win-analysis">Donald Trump’s election</a> campaign.</p>
+                <p>Or, as Wylie describes it, he was the gay Canadian vegan who somehow ended up creating “
+                    <a href="x-gu://list/mobile.guardianapis.com/uk/lists/tag/us-news/steve-bannon">Steve Bannon</a>’s psychological warfare mindfuck tool”.</p>
+                <p>In 2014, Steve Bannon – then executive chairman of the “alt-right” news network
+                    <a href="x-gu://list/mobile.guardianapis.com/uk/lists/tag/media/breitbart">Breitbart</a> – was Wylie’s boss. And
+                    <a href="x-gu://item/mobile.guardianapis.com/uk/items/politics/2017/feb/26/robert-mercer-breitbart-war-on-media-steve-bannon-donald-trump-nigel-farage">Robert Mercer</a>, the secretive US hedge-fund billionaire and Republican donor, was Cambridge Analytica’s
+                    investor. And the idea they bought into was to bring big data and social media to an established military
+                    methodology – “information operations” – then turn it on the US electorate.</p>
+                <p>It was Wylie who came up with that idea and oversaw its realisation. And it was Wylie who, last spring, became
+                    my source. In May 2017, I wrote an article headlined
+                    <a href="x-gu://item/mobile.guardianapis.com/uk/items/technology/2017/may/07/the-great-british-brexit-robbery-hijacked-democracy">“The great British Brexit robbery”</a>, which set out a skein of threads that linked Brexit to Trump
+                    to Russia. Wylie was one of a handful of individuals who provided the evidence behind it. I found him,
+                    via another Cambridge Analytica ex-employee, lying low in Canada: guilty, brooding, indignant, confused.
+                    “I haven’t talked about this to anyone,” he said at the time. And then he couldn’t stop talking.</p>
+                <figure class="element element-interactive interactive element--supporting" data-interactive="https://interactive.guim.co.uk/embed/iframe-wrapper/0.1/boot.js"
+                    data-canonical-url="https://interactive.guim.co.uk/embed/article-embeds/Sidebar-ca/embed.html" data-alt="Explainer embed">
+                    <a href="https://interactive.guim.co.uk/embed/article-embeds/Sidebar-ca/embed.html">Explainer embed</a>
+                </figure>
+                <p>By that time, Steve Bannon had become Trump’s chief strategist. Cambridge Analytica’s parent company, SCL,
+                    had won contracts with the US State Department and was pitching to the Pentagon, and Wylie was genuinely
+                    freaked out. “It’s insane,” he told me one night. “The company has created psychological profiles of
+                    230 million Americans. And now they want to work with the Pentagon? It’s like Nixon on steroids.”</p>
+                <p>He ended up showing me a tranche of documents that laid out the secret workings behind Cambridge Analytica.
+                    And in the months following publication of my article in May,
+                    <strong> </strong>it was revealed that the company had “reached out” to WikiLeaks to help distribute
+                    <a href="x-gu://item/mobile.guardianapis.com/uk/items/us-news/2017/jun/30/russia-hackers-clinton-emails-mike-flynn">Hillary Clinton’s stolen emails</a> in 2016. And then we watched as it became a subject of special counsel
+                    <a href="x-gu://list/mobile.guardianapis.com/uk/lists/tag/us-news/robert-mueller">Robert Mueller</a>’s investigation into possible Russian collusion in the US election.</p>
+                <p>The
+                    <em>
+                        <a href="x-gu://item/mobile.guardianapis.com/uk/items/about/2018/jan/15/the-new-guardian-and-observer">Observer</a>
+                    </em> also received the first of three letters from Cambridge Analytica threatening to sue Guardian News and
+                    Media for defamation. We are still only just starting to understand the maelstrom of forces that came
+                    together to create the conditions for what Mueller confirmed last month was “information warfare”. But
+                    Wylie offers a unique, worm’s-eye view of the events of 2016. Of how Facebook was hijacked, repurposed
+                    to become a theatre of war: how it became a launchpad for what seems to be an extraordinary attack on
+                    the US’s democratic process.</p>
+                <p>Wylie oversaw what may have been the first critical breach. Aged 24, while studying for a PhD in fashion
+                    trend forecasting, he came up with a plan to
+                    <a href="x-gu://item/mobile.guardianapis.com/uk/items/news/2018/mar/17/cambridge-analytica-facebook-influence-us-election">harvest the Facebook profiles</a> of millions of people in the US, and to use their private and personal
+                    information to create
+                    <a href="x-gu://item/mobile.guardianapis.com/uk/items/technology/2018/mar/17/facebook-cambridge-analytica-kogan-data-algorithm">sophisticated psychological and political profiles</a>. And then target them with political ads designed
+                    to work on their particular psychological makeup.</p>
+                <p>“We ‘broke’ Facebook,” he says.</p>
+                <p>And he did it on behalf of his new boss, Steve Bannon.</p>
+                <p>“Is it fair to say you ‘hacked’ Facebook?” I ask him one night.</p>
+                <p>He hesitates. “I’ll point out that I assumed it was entirely legal and above board.”</p>
+                <p>Last month, Facebook’s UK director of policy, Simon Milner, told British MPs on a select committee inquiry
+                    into fake news, chaired by Conservative MP Damian Collins, that Cambridge Analytica did not have Facebook
+                    data. The official Hansard extract reads:</p>
+                <p>Christian Matheson (MP for Chester): “Have you ever passed any user information over to Cambridge Analytica
+                    or any of its associated companies?”</p>
+                <p>Simon Milner: “No.”</p>
+                <p>Matheson: “But they do hold a large chunk of Facebook’s user data, don’t they?”</p>
+                <p>Milner: “No. They may have lots of data, but it will not be Facebook user data. It may be data about people
+                    who are on Facebook that they have gathered themselves, but it is not data that we have provided.”</p>
+                <figure class="element element-image" data-media-id="9a9762f17474b2c58859eb62912ca5b856adafb9">
+                    <a href="x-gu://gallery/https://i.guim.co.uk/img/media/9a9762f17474b2c58859eb62912ca5b856adafb9/0_0_7360_4912/master/7360.jpg?w=#{width}&h=#{height}&quality=#{quality}&sig-ignores-params=true&s=74e03ecc478a3cc4a078cb3f92e0d9c4">
+                        <img src="https://media.guim.co.uk/9a9762f17474b2c58859eb62912ca5b856adafb9/0_0_7360_4912/1000.jpg" alt="Alexander Nix"
+                            width="1000" height="667" class="gu-image">
+                    </a>
+                    <figcaption>
+                        <span class="element-image__caption">Alexander Nix, Cambridge Analytica CEO.</span>
+                        <span class="element-image__credit">Photograph: The Washington Post/Getty Images</span>
+                    </figcaption>
+                </figure>
+                <p>Two weeks later, on 27 February, as part of the same parliamentary inquiry, Rebecca Pow, MP for Taunton Deane,
+                    asked Cambridge Analytica’s CEO,
+                    <a href="x-gu://item/mobile.guardianapis.com/uk/items/politics/2018/feb/27/cambridge-analytica-boss-denies-working-brexit-campaign">Alexander Nix</a>: “Does any of the data come from Facebook?” Nix replied: “We do not work with Facebook
+                    data and we do not have Facebook data.”</p>
+                <p>And through it all, Wylie and I, plus a handful of editors and a small, international group of academics
+                    and researchers, have known that – at least in 2014 – that certainly wasn’t the case, because Wylie has
+                    the paper trail. In our first phone call, he told me he had the receipts, invoices, emails, legal letters
+                    – records that showed how, between June and August 2014, the profiles of more than 50 million Facebook
+                    users had been harvested. Most damning of all, he had a letter from Facebook’s own lawyers admitting
+                    that Cambridge Analytica had acquired the data illegitimately.</p>
+                <p>Going public involves an enormous amount of risk. Wylie is breaking a non-disclosure agreement and risks
+                    being sued. He is breaking the confidence of Steve Bannon and Robert Mercer.</p>
+                <p>It’s taken a rollercoaster of a year to help get Wylie to a place where it’s possible for him to finally
+                    come forward. A year in which Cambridge Analytica has been the subject of investigations on both sides
+                    of the Atlantic – Robert Mueller’s in the US, and separate inquiries by the Electoral Commission and
+                    the Information Commissioner’s Office in the UK, both triggered in February 2017, after
+                    <a href="x-gu://item/mobile.guardianapis.com/uk/items/politics/2017/feb/26/us-billionaire-mercer-helped-back-brexit">the
+                        <em> Observer</em>’s first article</a> in this investigation.</p>
+                <p>It has been a year, too, in which Wylie has been trying his best to rewind – to undo events that he set in
+                    motion. Earlier this month, he submitted a dossier of evidence to the Information Commissioner’s Office
+                    and the National Crime Agency’s cybercrime unit. He is now in a position to go on the record: the data
+                    nerd who came in from the cold.</p>
+                <p>There are many points where this story could begin. One is in 2012, when Wylie was 21 and working for the
+                    Liberal Democrats in the UK, then in government as junior coalition partners. His career trajectory has
+                    been, like most aspects of his life so far, extraordinary, preposterous, implausible.</p>
+                <figure class="element element-atom" data-atom-id="0ee855ed-c4df-49ab-8c93-baf93b54276e" data-atom-type="profile">
+                    <details data-snippet-id="0ee855ed-c4df-49ab-8c93-baf93b54276e" data-snippet-type="profile" class="atom atom--snippet atom--snippet--profile">
+                        <summary class="atom--snippet__header">
+                            <span class="atom--snippet__label">Profile</span>
+                            <h4 class="atom--snippet__headline">Cambridge Analytica: the key players</h4>
+                            <button class="atom__button atom__button--large atom__button--rounded atom--snippet__handle"
+                                aria-hidden="true">
+                                <span class="is-on">
+                                    <svg class="icon icon--plus " width="18px" height="18px" viewbox="0 0 18 18">
+                                        <path d="M8.2 0h1.6l.4 7.8 7.8.4v1.6l-7.8.4-.4 7.8H8.2l-.4-7.8L0 9.8V8.2l7.8-.4.4-7.8z" />
+                                    </svg> Show</span>
+                                <span class="is-off">
+                                    <svg class="icon icon--minus " width="32px" height="32px" viewbox="0 0 32 32">
+                                        <rect x="5" y="15" width="22" height="3"></rect>
+                                    </svg> Hide</span>
+                            </button>
+                        </summary>
+                        <div class="atom--snippet__body">
+                            <div class="atom--snippet__item">
+                                <div class="atom--snippet__heading">
+                                    <b>Alexander Nix, CEO</b>
+                                </div>
+                                <p>An Old Etonian with a degree from Manchester University, Nix, 42, worked as a financial analyst
+                                    in Mexico and the UK before joining SCL, a strategic communications firm, in 2003. From
+                                    2007 he took over the company’s elections division, and claims to have worked on 260
+                                    campaigns globally. He set up Cambridge Analytica to work in America, with investment
+                                    from Robert&nbsp;Mercer.&nbsp;</p>
+                            </div>
+                            <div class="atom--snippet__item">
+                                <div class="atom--snippet__heading">
+                                    <b>Aleksandr Kogan, data miner</b>
+                                </div>
+                                <p>Aleksandr Kogan was born in Moldova and lived in Moscow until the age of seven, then moved
+                                    with his family to the US, where he became a naturalised citizen. He studied at the University
+                                    of California, Berkeley, and got his PhD at the University of Hong Kong before joining
+                                    Cambridge as a lecturer in psychology and expert in social media psychometrics. He set
+                                    up Global Science Research (GSR) to carry out CA’s data research. While at Cambridge
+                                    he accepted a position at St Petersburg State University, and also took Russian government
+                                    grants for research. He changed his name to Spectre when he married, but later reverted
+                                    to Kogan.</p>
+                            </div>
+                            <div class="atom--snippet__item">
+                                <div class="atom--snippet__heading">
+                                    <b>Steve Bannon, former board member</b>
+                                </div>
+                                <p>A former investment banker turned “alt-right” media svengali, Steve Bannon was boss at website
+                                    Breitbart when he met Christopher Wylie and Nix and advised Robert Mercer to invest in
+                                    political data research by setting up CA. In August 2016 he became Donald Trump’s campaign
+                                    CEO. Bannon encouraged the reality TV star to embrace the “populist, economic nationalist”
+                                    agenda that would carry him into the White House. That earned Bannon the post of chief
+                                    strategist to the president and for a while he was arguably the second most powerful
+                                    man in America. By August 2017 his relationship with Trump had soured and he was out.
+                                    <br>
+                                </p>
+                            </div>
+                            <div class="atom--snippet__item">
+                                <div class="atom--snippet__heading">
+                                    <b>Robert Mercer, investor</b>
+                                </div>
+                                <p>Robert Mercer, 71, is a computer scientist and hedge fund billionaire, who used his fortune
+                                    to become one of the most influential men in US politics as a top Republican donor. An
+                                    AI expert, he made a fortune with quantitative trading pioneers Renaissance Technologies,
+                                    then built a $60m war chest to back conservative causes by using an offshore investment
+                                    vehicle to avoid US tax.&nbsp;
+                                    <br>
+                                </p>
+                            </div>
+                            <div class="atom--snippet__item">
+                                <div class="atom--snippet__heading">
+                                    <b>Rebekah Mercer, investor</b>
+                                </div>
+                                <p>Rebekah Mercer has a maths degree from Stanford, and worked as a trader, but her influence
+                                    comes primarily from her father’s billions. The fortysomething, the second of Mercer’s
+                                    three daughters, heads up the family foundation which channels money to rightwing groups.
+                                    The conservative mega‑donors backed Breitbart, Bannon and, most influentially, poured
+                                    millions into Trump’s presidential campaign.
+                                    <br>
+                                </p>
+                            </div>
+                        </div>
+                        <footer class="atom--snippet__footer">
+                            <div class="atom--snippet__feedback">
+                                <div>
+                                    Was this helpful?
+                                </div>
+                                <button class="atom__button atom__button--round" value="like" aria-label="Yes">
+                                    <svg class="icon icon--thumb " width="40px" height="40px" viewbox="0 0 40 40">
+                                        <path fill="#FFF" d="M33.78 22.437l-4.228 13.98L27.93 37.5 5.062 34.14V15.503l7.8-1.517L24.354 2.5h1.624L28.9 5.426l-4.548 8.67h.107l10.477 1.31"></path>
+                                    </svg>
+                                </button>
+                                <button class="atom__button atom__button--round" value="dislike" aria-label="No">
+                                    <svg class="icon icon--thumb " width="40px" height="40px" viewbox="0 0 40 40">
+                                        <path fill="#FFF" d="M33.78 22.437l-4.228 13.98L27.93 37.5 5.062 34.14V15.503l7.8-1.517L24.354 2.5h1.624L28.9 5.426l-4.548 8.67h.107l10.477 1.31"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="atom--snippet__ack" hidden aria-role="alert" aria-live="polite">
+                                Thank you for your feedback.
+                            </div>
+                        </footer>
+                    </details>
+                </figure>
+                <p>Wylie grew up in British Columbia and as a teenager he was diagnosed with ADHD and dyslexia. He left school
+                    at 16 without a single qualification. Yet at 17, he was working in the office of the leader of the Canadian
+                    opposition; at 18, he went to learn all things data from Obama’s national director of targeting, which
+                    he then introduced to Canada for the
+                    <a href="https://www.liberal.ca/">Liberal party</a>. At 19, he taught himself to code, and in 2010, age 20, he came to London to study
+                    law at the London School of Economics.</p>
+                <p>“Politics is like the mob, though,” he says. “You never really leave. I got a call from the Lib Dems. They
+                    wanted to upgrade their databases and voter targeting. So, I combined working for them with studying
+                    for my degree.”</p>
+                <p>Politics is also where he feels most comfortable. He hated school, but as an intern in the Canadian parliament
+                    he discovered a world where he could talk to adults and they would listen. He was the kid who did the
+                    internet stuff and within a year he was working for the leader of the opposition.</p>
+                <aside class="element element-pullquote element--supporting">
+                    <blockquote>
+                        <p>It showed these odd patterns. People who liked 'I hate Israel' on Facebook also tended to like KitKats</p>
+                    </blockquote>
+                </aside>
+                <p>“He’s one of the brightest people you will ever meet,” a senior politician who’s known Wylie since he was
+                    20 told me. “Sometimes that’s a blessing and sometimes a curse.”</p>
+                <p>Meanwhile, at
+                    <a href="https://www.psychometrics.cam.ac.uk/">Cambridge University’s Psychometrics Centre</a>, two psychologists, Michal Kosinski and David Stillwell,
+                    were experimenting with a way of studying personality – by quantifying it.</p>
+                <p>Starting in 2007,
+                    <strong> </strong>Stillwell, while a student, had devised various apps for Facebook, one of which, a personality
+                    quiz called
+                    <a href="https://www.gsb.stanford.edu/sites/gsb/files/conf-presentations/stillwell_and_kosinski_2012.pdf">myPersonality</a>, had gone viral. Users were scored on “big five” personality traits – Openness, Conscientiousness,
+                    Extroversion, Agreeableness and Neuroticism – and in exchange, 40% of them consented to give him access
+                    to their Facebook profiles. Suddenly, there was a way of measuring personality traits across the population
+                    and correlating scores against Facebook “likes” across millions of people.</p>
+                <figure class="element element-image element--supporting" data-media-id="5100b3f2d26e66b983dcc70d8cb3ed90f10601e5">
+                    <a href="x-gu://gallery/https://i.guim.co.uk/img/media/5100b3f2d26e66b983dcc70d8cb3ed90f10601e5/204_346_2035_2156/master/2035.jpg?w=#{width}&h=#{height}&quality=#{quality}&sig-ignores-params=true&s=801e7309600e0428c527c496c850ca73">
+                        <img src="https://media.guim.co.uk/5100b3f2d26e66b983dcc70d8cb3ed90f10601e5/204_346_2035_2156/944.jpg"
+                            alt="An example of the visual messages trialled by GSR’s online profiling test." width="944" height="1000"
+                            class="gu-image">
+                    </a>
+                    <figcaption>
+                        <span class="element-image__caption">Examples, above and below, of the visual messages trialled by GSR’s online profiling test. Respondents
+                            were asked: How important should this message be to all Americans?</span>
+                    </figcaption>
+                </figure>
+                <p>The research was original, groundbreaking and had obvious possibilities. “They had a lot of approaches from
+                    the security services,” a member of the centre told me. “There was one called You Are What You Like and
+                    it was demonstrated to the intelligence services. And it showed these odd patterns; that, for example,
+                    people who liked ‘I hate Israel’ on Facebook also tended to like Nike shoes and KitKats.</p>
+                <p>“There are agencies that fund research on behalf of the intelligence services. And they were all over this
+                    research. That one was nicknamed Operation KitKat.”</p>
+                <p>The defence and military establishment were the first to see the potential of the research. Boeing, a major
+                    US defence contractor, funded Kosinski’s PhD and
+                    <a href="https://www.darpa.mil/">Darpa</a>, the US government’s secretive Defense Advanced Research Projects Agency, is cited in at least
+                    two academic papers supporting Kosinski’s work.</p>
+                <p>But when, in 2013, the first major paper was published, others saw this potential too, including Wylie. He
+                    had finished his degree and had started his PhD in fashion forecasting, and was thinking about the Lib
+                    Dems. It is fair to say that he didn’t have a clue what he was walking into.</p>
+                <figure class="element element-image element--supporting" data-media-id="b2bb7646b4bfffc278b2deafc90eda41c9ac8a96">
+                    <a href="x-gu://gallery/https://i.guim.co.uk/img/media/b2bb7646b4bfffc278b2deafc90eda41c9ac8a96/0_0_500_500/master/500.jpg?w=#{width}&h=#{height}&quality=#{quality}&sig-ignores-params=true&s=656edc7409471574ee197c7c2c29b175">
+                        <img src="https://media.guim.co.uk/b2bb7646b4bfffc278b2deafc90eda41c9ac8a96/0_0_500_500/500.jpg" alt="An example of the visual messages trialled by GSR’s online profiling test. Respondents were asked: How important should this message be to all Americans?"
+                            width="500" height="500" class="gu-image">
+                    </a>
+                </figure>
+                <p>“I wanted to know why the Lib Dems sucked at winning elections when they used to run the country up to the
+                    end of the 19th century,” Wylie explains. “And I began looking at consumer and demographic data to see
+                    what united Lib Dem voters, because apart from bits of Wales and the Shetlands it’s weird, disparate
+                    regions. And what I found is there were no strong correlations. There was no signal in the data.</p>
+                <p>“And then I came across a paper about how personality traits could be a precursor to political behaviour,
+                    and it suddenly made sense. Liberalism is correlated with high openness and low conscientiousness, and
+                    when you think of Lib Dems they’re absent-minded professors and hippies. They’re the early adopters…
+                    they’re highly open to new ideas. And it just clicked all of a sudden.” </p>
+                <p>Here was a way for the party to identify potential new voters. The only problem was that the Lib Dems weren’t
+                    interested.</p>
+                <p>“I did this presentation at which I told them they would lose half their 57 seats, and they were like: ‘Why
+                    are you so pessimistic?’ They actually lost all but eight of their seats, FYI.”</p>
+                <p>Another Lib Dem connection introduced Wylie to a company called
+                    <a href="https://sclgroup.cc/home">SCL Group</a>, one of whose subsidiaries, SCL Elections, would go on to create Cambridge Analytica (an
+                    incorporated venture between SCL Elections and Robert Mercer, funded by the latter). For all intents
+                    and purposes, SCL/Cambridge Analytica are one and the same.</p>
+                <p>Alexander Nix, then CEO of SCL Elections, made Wylie an offer he couldn’t resist. “He said: ‘We’ll give you
+                    total freedom. Experiment. Come and test out all your crazy ideas.’”</p>
+                <figure class="element element-image element--supporting" data-media-id="9f592db63a1925549ce2bdc936e8ff8ba612f42b">
+                    <a href="x-gu://gallery/https://i.guim.co.uk/img/media/9f592db63a1925549ce2bdc936e8ff8ba612f42b/0_0_500_500/master/500.jpg?w=#{width}&h=#{height}&quality=#{quality}&sig-ignores-params=true&s=6de722618ec5b901e3408ea31578e021">
+                        <img src="https://media.guim.co.uk/9f592db63a1925549ce2bdc936e8ff8ba612f42b/0_0_500_500/500.jpg" alt="An example of the visual messages trialled by GSR’s online profiling test. Respondents were asked: How important should this message be to all Americans?"
+                            width="500" height="500" class="gu-image">
+                    </a>
+                    <figcaption>
+                        <span class="element-image__caption">Another example of the visual messages trialled by GSR’s online profiling test.</span>
+                    </figcaption>
+                </figure>
+                <p>In the history of bad ideas, this turned out to be one of the worst. The job was research director across
+                    the SCL group, a private contractor that has both defence and elections operations. Its defence arm was
+                    a contractor to the UK’s Ministry of Defence and the US’s Department of Defense, among others. Its expertise
+                    was in “psychological operations” – or psyops –
+                    <strong> </strong>changing people’s minds not through persuasion but through “informational dominance”, a set
+                    of techniques that includes rumour, disinformation and fake news.</p>
+                <p>SCL Elections had used a similar suite of tools in more than 200 elections around the world, mostly in undeveloped
+                    democracies that Wylie would come to realise were unequipped to defend themselves.</p>
+                <p>Wylie holds a British Tier 1 Exceptional Talent visa – a UK work visa given to just 200 people a year. He
+                    was working inside government (with the Lib Dems) as a political strategist with advanced data science
+                    skills. But no one, least of all him, could have predicted what came next. When he turned up at SCL’s
+                    offices in Mayfair, he had no clue that he was walking into the middle of a nexus of defence and intelligence
+                    projects, private contractors and cutting-edge cyberweaponry.</p>
+                <p>“The thing I think about all the time is, what if I’d taken a job at Deloitte instead? They offered me one.
+                    I just think if I’d taken literally any other job, Cambridge Analytica wouldn’t exist. You have no idea
+                    how much I brood on this.”</p>
+                <p>A few months later, in autumn 2013, Wylie met Steve Bannon. At the time, he was editor-in-chief of Breitbart,
+                    which he had brought to Britain to support his friend Nigel Farage in his mission to take Britain out
+                    of the
+                    <a href="x-gu://list/mobile.guardianapis.com/uk/lists/tag/politics/eu-referendum">European Union</a>.</p>
+                <p>What was he like?</p>
+                <p>“Smart,” says Wylie. “Interesting. Really interested in ideas. He’s the only straight man I’ve ever talked
+                    to about
+                    <a href="http://intersectionalfeminism101.tumblr.com/faq">intersectional feminist theory</a>. He saw its relevance straightaway to the oppressions that conservative,
+                    young white men feel.”</p>
+                <p>Wylie meeting Bannon was the moment petrol was poured on a flickering flame. Wylie lives for ideas. He speaks
+                    19 to the dozen for hours at a time. He had a theory to prove. And at the time, this was a purely intellectual
+                    problem. Politics was like fashion, he told Bannon.</p>
+                <aside class="element element-pullquote element--supporting">
+                    <blockquote>
+                        <p>If you do not respect the agency of people, anything you do after that point is not conducive to
+                            democracy</p>
+                        <footer>
+                            <cite>Christopher Wylie</cite>
+                        </footer>
+                    </blockquote>
+                </aside>
+                <p>“[Bannon] got it immediately. He believes in the whole
+                    <a href="https://en.wikipedia.org/wiki/Andrew_Breitbart">Andrew Breitbart</a> doctrine that politics is downstream from culture, so to change politics you need
+                    to change culture. And fashion trends are a useful proxy for that. Trump is like a pair of Uggs, or Crocs,
+                    basically. So how do you get from people thinking ‘Ugh. Totally ugly’ to the moment when everyone is
+                    wearing them? That was the inflection point he was looking for.”</p>
+                <p>But Wylie wasn’t just talking about fashion. He had recently been exposed to a new discipline: “information
+                    operations”, which ranks alongside land, sea, air and space in the US military’s doctrine of the “five-dimensional
+                    battle space”. His brief ranged across the SCL Group – the British government has paid SCL to conduct
+                    counter-extremism operations in the Middle East, and the US Department of Defense has contracted it to
+                    work in Afghanistan.</p>
+                <p>I tell him that another former employee described the firm as “MI6 for hire”, and I’d never quite understood
+                    it.</p>
+                <p>“It’s like dirty MI6 because you’re not constrained. There’s no having to go to a judge to apply for permission.
+                    It’s normal for a ‘market research company’ to amass data on domestic populations. And if you’re working
+                    in some country and there’s an auxiliary benefit to a current client with aligned interests, well that’s
+                    just a bonus.”</p>
+                <p>When I ask how Bannon even found SCL, Wylie tells me what sounds like a tall tale, though it’s one he can
+                    back up with an email about how
+                    <a href="https://en.wikipedia.org/wiki/Mark_Block">Mark Block</a>, a veteran Republican strategist, happened to sit next to a cyberwarfare expert for the
+                    US air force on a plane. “And the cyberwarfare guy is like, ‘Oh, you should meet SCL. They do cyberwarfare
+                    for elections.’”</p>
+                <figure class="element element-image" data-media-id="264eb18152cdb6c5307ecb7e0ec9e1a0458b6236">
+                    <a href="x-gu://gallery/https://i.guim.co.uk/img/media/264eb18152cdb6c5307ecb7e0ec9e1a0458b6236/0_0_3500_2420/master/3500.jpg?w=#{width}&h=#{height}&quality=#{quality}&sig-ignores-params=true&s=b85b612aa630f51f2ab90b8ea877624d">
+                        <img src="https://media.guim.co.uk/264eb18152cdb6c5307ecb7e0ec9e1a0458b6236/0_0_3500_2420/1000.jpg" alt="U.S. President Trump’s former chief strategist Bannon walks in Piazza Navona in Rome"
+                            width="1000" height="691" class="gu-image">
+                    </a>
+                    <figcaption>
+                        <span class="element-image__caption">Steve Bannon: ‘He loved the gays,’ says Wylie. ‘He saw us as early adopters.’</span>
+                        <span class="element-image__credit">Photograph: Tony Gentile/Reuters</span>
+                    </figcaption>
+                </figure>
+                <p>It was Bannon who took this idea to the Mercers: Robert Mercer – the co-CEO of the hedge fund
+                    <a href="https://en.wikipedia.org/wiki/Renaissance_Technologies">Renaissance Technologies</a>, who used his billions to pursue a rightwing agenda, donating to Republican
+                    causes and supporting Republican candidates – and his daughter
+                    <a href="x-gu://item/mobile.guardianapis.com/uk/items/us-news/2018/jan/25/american-museum-of-natural-history-rebekah-mercer">Rebekah</a>.</p>
+                <p>Nix and Wylie flew to New York to meet the Mercers in Rebekah’s Manhattan apartment.</p>
+                <p>“She loved me. She was like, ‘Oh we need more of your type on our side!’” </p>
+                <p>Your type?</p>
+                <p>“The gays. She loved the gays. So did Steve [Bannon]. He saw us as early adopters. He figured, if you can
+                    get the gays on board, everyone else will follow. It’s why he was so into the whole
+                    <a href="x-gu://item/mobile.guardianapis.com/uk/items/world/2017/feb/21/milo-yiannopoulos-rise-and-fall-shallow-actor-bad-guy-hate-speech">Milo [Yiannopoulos]</a> thing.”</p>
+                <p>Robert Mercer was a pioneer in AI and machine translation. He helped invent algorithmic trading – which replaced
+                    hedge fund managers with computer programs – and he listened to Wylie’s pitch. It was for a new kind
+                    of political message-targeting based on an influential and groundbreaking
+                    <a href="http://www.pnas.org/content/112/4/1036">2014 paper</a> researched at Cambridge’s
+                    <a href="https://www.psychometrics.cam.ac.uk/">Psychometrics Centre</a>, called: “Computer-based personality judgments are more accurate than those
+                    made by humans”.</p>
+                <p>“In politics, the money man is usually the dumbest person in the room. Whereas it’s the opposite way around
+                    with Mercer,” says Wylie. “He said very little, but he really listened. He wanted to understand the science.
+                    And he wanted proof that it worked.”</p>
+                <p>And to do that, Wylie needed data.</p>
+                <p>How Cambridge Analytica acquired the data has been the subject of internal reviews at Cambridge University,
+                    of many news articles and much speculation and rumour.</p>
+                <p>When Nix was interviewed by MPs last month, Damian Collins asked him:</p>
+                <p>“Does any of your data come from Global Science Research company?”</p>
+                <p>Nix: “GSR?”</p>
+                <p>Collins: “Yes.”</p>
+                <p>Nix: “We had a relationship with GSR. They did some research for us back in 2014. That research proved to
+                    be fruitless and so the answer is no.”</p>
+                <p>Collins: “They have not supplied you with data or information?”</p>
+                <p>Nix: “No.”</p>
+                <p>Collins: “Your datasets are not based on information you have received from them?”</p>
+                <p>Nix: “No.”</p>
+                <p>Collins: “At all?”</p>
+                <p>Nix: “At all.”</p>
+                <p>The problem with Nix’s response to Collins is that Wylie has a copy of an executed contract, dated 4 June
+                    2014, which confirms that SCL, the parent company of Cambridge Analytica, entered into a commercial arrangement
+                    with a company called Global Science Research (GSR), owned by Cambridge-based academic Aleksandr Kogan,
+                    specifically premised on the harvesting and processing of Facebook data, so that it could be matched
+                    to personality traits and voter rolls.</p>
+                <p>He has receipts showing that Cambridge Analytica spent $7m to amass this data, about $1m of it with GSR.
+                    He has the bank records and wire transfers. Emails reveal Wylie first negotiated with Michal Kosinski,
+                    one of the co-authors of the original myPersonality research paper, to use the myPersonality database.
+                    But when negotiations broke down, another psychologist, Aleksandr Kogan, offered a solution that many
+                    of his colleagues considered unethical. He offered to replicate Kosinski and Stillwell’s research and
+                    cut them out of the deal. For Wylie it seemed a perfect solution. “Kosinski was asking for $500,000 for
+                    the IP but Kogan said he could replicate it and just harvest his own set of data.” (Kosinski says the
+                    fee was to fund further research.)</p>
+                <figure class="element element-image" data-media-id="7e585984fe7dc1861115c853a21930d2402b4e75">
+                    <a href="x-gu://gallery/https://i.guim.co.uk/img/media/7e585984fe7dc1861115c853a21930d2402b4e75/0_0_590_288/master/590.jpg?w=#{width}&h=#{height}&quality=#{quality}&sig-ignores-params=true&s=183acc709cb6732b232b1566585cb579">
+                        <img src="https://media.guim.co.uk/7e585984fe7dc1861115c853a21930d2402b4e75/0_0_590_288/500.jpg" alt="Dr Aleksandr Kogan"
+                            width="500" height="244" class="gu-image">
+                    </a>
+                    <figcaption>
+                        <span class="element-image__caption">An unethical solution? Dr Aleksandr Kogan</span>
+                        <span class="element-image__credit">Photograph: alex kogan</span>
+                    </figcaption>
+                </figure>
+                <p>Kogan then set up GSR to do the work, and proposed to Wylie they use the data to set up an interdisciplinary
+                    institute working across the social sciences. “What happened to that idea,” I ask Wylie. “It never happened.
+                    I don’t know why. That’s one of the things that upsets me the most.”</p>
+                <p>It was Bannon’s interest in culture as war that ignited Wylie’s intellectual concept. But it was Robert Mercer’s
+                    millions that created a firestorm. Kogan was able to throw money at the hard problem of acquiring personal
+                    data: he advertised for people who were willing to be paid to take a personality quiz on Amazon’s
+                    <a
+                        href="https://www.mturk.com/">Mechanical Turk</a> and
+                        <a href="https://www.qualtrics.com/">Qualtrics</a>. At the end of which Kogan’s app, called thisismydigitallife, gave him permission to
+                        access their Facebook profiles. And not just theirs, but their friends’ too. On average, each “seeder”
+                        – the people who had taken the personality test, around 320,000 in total – unwittingly gave access
+                        to at least 160 other people’s profiles, none of whom would have known or had reason to suspect.</p>
+                <p>What the email correspondence between Cambridge Analytica employees and Kogan shows is that Kogan had collected
+                    millions of profiles in a matter of weeks. But neither Wylie nor anyone else at Cambridge Analytica had
+                    checked that it was legal. It certainly wasn’t authorised. Kogan did have permission to pull Facebook
+                    data, but for academic purposes only. What’s more, under British data protection laws, it’s illegal for
+                    personal data to be sold to a third party without consent.</p>
+                <p>“Facebook could see it was happening,” says Wylie. “Their security protocols were triggered because Kogan’s
+                    apps were pulling this enormous amount of data, but apparently Kogan told them it was for academic use.
+                    So they were like, ‘Fine’.”</p>
+                <p>Kogan maintains that everything he did was legal and he had a “close working relationship” with Facebook,
+                    which had granted him permission for his apps.</p>
+                <p>Cambridge Analytica had its data. This was the foundation of everything it did next – how it extracted psychological
+                    insights from the “seeders” and then built an algorithm to profile millions more.
+                    <strong> </strong>
+                </p>
+                <p>For more than a year, the reporting around what Cambridge Analytica did or didn’t do for Trump has revolved
+                    around the question of “psychographics”, but Wylie points out: “Everything was built on the back of that
+                    data. The models, the algorithm. Everything. Why wouldn’t you use it in your biggest campaign ever?”</p>
+                <p>In December 2015, the
+                    <em> Guardian</em>’s Harry Davies published
+                    <a href="x-gu://item/mobile.guardianapis.com/uk/items/us-news/2015/dec/11/senator-ted-cruz-president-campaign-facebook-user-data">the first report</a> about Cambridge Analytica acquiring Facebook data and using it to support Ted Cruz
+                    in his campaign to be the US Republican candidate. But it wasn’t until many months later that Facebook
+                    took action. And then, all they did was write a letter. In August 2016, shortly before the US election,
+                    and two years after the breach took place, Facebook’s lawyers wrote to Wylie, who left Cambridge Analytica
+                    in 2014, and told him the data had been illicitly obtained and that “GSR was not authorised to share
+                    or sell it”. They said it must be deleted immediately.</p>
+                <figure class="element element-image element--supporting" data-media-id="d59ef780ad6aa2d138bfe571b7d9680f16a335c3">
+                    <a href="x-gu://gallery/https://i.guim.co.uk/img/media/d59ef780ad6aa2d138bfe571b7d9680f16a335c3/0_1150_4480_5570/master/4480.jpg?w=#{width}&h=#{height}&quality=#{quality}&sig-ignores-params=true&s=9922acf38f4558380610f7013ae0e5e8">
+                        <img src="https://media.guim.co.uk/d59ef780ad6aa2d138bfe571b7d9680f16a335c3/0_1150_4480_5570/804.jpg"
+                            alt="Christopher Wylie" width="804" height="1000" class="gu-image">
+                    </a>
+                    <figcaption>
+                        <span class="element-image__caption">Christopher Wylie: ‘It’s like Nixon on steroids’</span>
+                    </figcaption>
+                </figure>
+                <p>“I already had. But literally all I had to do was tick a box and sign it and send it back, and that was it,”
+                    says Wylie. “Facebook made zero effort to get the data back.”</p>
+                <p>There were multiple copies of it. It had been emailed in unencrypted files.</p>
+                <p>Cambridge Analytica rejected all allegations the
+                    <em>Observer</em> put to them.</p>
+                <p>Dr Kogan – who later changed his name to Dr Spectre, but has subsequently changed it back to Dr Kogan – is
+                    still a faculty member at Cambridge University, a senior research associate. But what his fellow academics
+                    didn’t know until Kogan revealed it in emails to the
+                    <em>Observer</em> (although Cambridge University says that Kogan told the head of the psychology department),
+                    is that he is also an associate professor at St Petersburg University. Further research revealed that
+                    he’s received grants from the Russian government to research “Stress, health and psychological wellbeing
+                    in social networks”. The opportunity came about on a trip to the city to visit friends and family, he
+                    said.
+                    <strong> </strong>
+                </p>
+                <p>There are other dramatic documents in Wylie’s stash, including a pitch made by Cambridge Analytica to
+                    <a
+                        href="http://www.lukoil.com/">Lukoil</a>, Russia’s
+                        <a href="https://www.investopedia.com/articles/markets/100515/5-biggest-russian-oil-companies.asp">second biggest oil producer</a>. In an email dated 17 July 2014, about the US presidential primaries,
+                        Nix wrote to Wylie: “We have been asked to write a memo to Lukoil (the Russian oil and gas company)
+                        to explain to them how our services are going to apply to the petroleum business. Nix said that “they
+                        understand behavioural microtargeting in the context of elections” but that they were “failing to
+                        make the connection between voters and their consumers”. The work, he said, would be “shared with
+                        the CEO of the business”, a former Soviet oil minister and associate of Putin,
+                        <a href="http://www.lukoil.com/Company/CorporateGovernance/BoardofDirectors/VagitAlekperov">Vagit Alekperov</a>.</p>
+                <p>“It didn’t make any sense to me,” says Wylie. “I didn’t understand either the email or the pitch presentation
+                    we did. Why would a Russian oil company want to target information on American voters?”</p>
+                <p>Mueller’s investigation traces the first stages of the Russian operation to disrupt the 2016 US election
+                    back to 2014, when the Russian state made what appears to be its first concerted efforts to harness the
+                    power of America’s social media platforms, including Facebook. And it was in late summer of the same
+                    year that Cambridge Analytica presented the Russian oil company with an outline of its datasets, capabilities
+                    and methodology. The presentation had little to do with “consumers”. Instead, documents show it focused
+                    on election disruption techniques. The first slide illustrates how a “rumour campaign” spread fear in
+                    the 2007 Nigerian election – in which the company worked – by spreading the idea that the “election would
+                    be rigged”. The final slide, branded with Lukoil’s logo and that of SCL Group and SCL Elections, headlines
+                    its “deliverables”: “psychographic messaging”.</p>
+                <figure class="element element-image" data-media-id="e594f2abca62b61526393a50aa5881e2af20a751">
+                    <a href="x-gu://gallery/https://i.guim.co.uk/img/media/e594f2abca62b61526393a50aa5881e2af20a751/304_179_1827_1096/master/1827.jpg?w=#{width}&h=#{height}&quality=#{quality}&sig-ignores-params=true&s=bea5e0fac6c0514b3af1966e32e9c54d">
+                        <img src="https://media.guim.co.uk/e594f2abca62b61526393a50aa5881e2af20a751/304_179_1827_1096/1000.jpg"
+                            alt="Robert Mercer with his daughter Rebekah." width="1000" height="600" class="gu-image">
+                    </a>
+                    <figcaption>
+                        <span class="element-image__caption">Robert Mercer with his daughter Rebekah.</span>
+                        <span class="element-image__credit">Photograph: Sean Zanni/Getty Images</span>
+                    </figcaption>
+                </figure>
+                <p>Lukoil is a private company, but its CEO, Alekperov, answers to Putin, and it’s been used as a vehicle of
+                    Russian influence in Europe and elsewhere – including in the Czech Republic, where in 2016 it was revealed
+                    that an adviser to the strongly
+                    <a href="x-gu://item/mobile.guardianapis.com/uk/items/world/2018/jan/27/czech-president-milos-zeman-wins-second-term">pro-Russian Czech president</a> was being paid by the company.</p>
+                <p>When I asked Bill Browder – an Anglo-American businessman who is leading a global campaign for a
+                    <a href="https://en.wikipedia.org/wiki/Magnitsky_Act">Magnitsky Act</a> to enforce sanctions against Russian individuals – what he made of it, he said: “Everyone
+                    in Russia is subordinate to Putin. One should be highly suspicious of any Russian company pitching anything
+                    outside its normal business activities.”</p>
+                <p>Last month, Nix told MPs on the parliamentary committee investigating fake news: “We have never worked with
+                    a Russian organisation in Russia or any other company. We do not have any relationship with Russia or
+                    Russian individuals.”</p>
+                <p>There’s no evidence that Cambridge Analytica ever did any work for Lukoil. What these documents show, though,
+                    is that in 2014 one of Russia’s biggest companies was fully briefed on: Facebook, microtargeting, data,
+                    election disruption.</p>
+                <p>Cambridge Analytica is “Chris’s Frankenstein”, says a friend of his. “He created it. It’s his data Frankenmonster.
+                    And now he’s trying to put it right.”</p>
+                <p>Only once has Wylie made the case of pointing out that he was 24 at the time. But he was. He thrilled to
+                    the intellectual possibilities of it. He didn’t think of the consequences. And I wonder how much he’s
+                    processed his own role or responsibility in it. Instead, he’s determined to go on the record and undo
+                    this thing he has created.</p>
+                <p>Because the past few months have been like watching a tornado gathering force. And when Wylie turns the full
+                    force of his attention to something – his strategic brain, his attention to detail, his ability to plan
+                    12 moves ahead – it is sometimes slightly terrifying to behold. Dealing with someone trained in information
+                    warfare has its own particular challenges, and his suite of extraordinary talents include the kind of
+                    high-level political skills that makes
+                    <em>House of Cards</em> look like
+                    <em>The Great British</em>
+                    <em>Bake Off</em>. And not everyone’s a fan. Any number of ex-colleagues – even the ones who love him – call
+                    him “Machiavellian”. Another described the screaming matches he and Nix would have.</p>
+                <p>“What do your parents make of your decision to come forward?” I ask him.</p>
+                <p>“They get it. My dad sent me a cartoon today, which had two characters hanging off a cliff, and the first
+                    one’s saying ‘Hang in there.’ And the other is like: ‘Fuck you.’”</p>
+                <p>Which are you?</p>
+                <p>“Probably both.”</p>
+                <p>What isn’t in doubt is what a long, fraught journey it has been to get to this stage. And how fearless he
+                    is.</p>
+                <p>After many months, I learn the terrible, dark backstory that throws some light on his determination, and
+                    which he discusses candidly. At six, while at school, Wylie was abused by a mentally unstable person.
+                    The school tried to cover it up, blaming his parents, and a long court battle followed. Wylie’s childhood
+                    and school career never recovered. His parents – his father is a doctor and his mother is a psychiatrist
+                    – were wonderful, he says. “But they knew the trajectory of people who are put in that situation, so
+                    I think it was particularly difficult for them, because they had a deeper understanding of what that
+                    does to a person long term.”</p>
+                <aside class="element element-pullquote element--supporting">
+                    <blockquote>
+                        <p>Facebook has denied and denied this. It has failed in its duties to respect the law</p>
+                        <footer>
+                            <cite>Paul-Olivier Dehaye</cite>
+                        </footer>
+                    </blockquote>
+                </aside>
+                <p>He says he grew up listening to psychologists discuss him in the third person, and, aged 14, he successfully
+                    sued the British Columbia Ministry of Education and forced it to change its inclusion policies around
+                    bullying. What I observe now is how much he loves the law, lawyers, precision, order. I come to think
+                    of his pink hair as a false-flag operation. What he cannot tolerate is bullying.</p>
+                <p>Is what Cambridge Analytica does akin to bullying?</p>
+                <p>“I think it’s worse than bullying,” Wylie says. “Because people don’t necessarily know it’s being done to
+                    them. At least bullying respects the agency of people because they know. So it’s worse, because if you
+                    do not respect the agency of people, anything that you’re doing after that point is not conducive to
+                    a democracy. And fundamentally, information warfare is not conducive to democracy.”</p>
+                <p>Russia, Facebook, Trump, Mercer, Bannon, Brexit. Every one of these threads runs through Cambridge Analytica.
+                    Even in the past few weeks, it seems as if the understanding of Facebook’s role has broadened and deepened.
+                    The Mueller indictments were part of that, but
+                    <a href="http://paulolivier.dehaye.org/">Paul-Olivier Dehaye</a> – a data expert and academic based in Switzerland, who published some of the
+                    first
+                    <a href="https://medium.com/personaldata-io/cambridge-analytica-demonstrably-non-compliant-with-data-protection-law-95ec5712b61">research into Cambridge Analytica’s processes</a>
+                    <strong> </strong>– says it’s become increasingly apparent that Facebook is “abusive by design”. If there is evidence
+                    of collusion between the Trump campaign and Russia, it will be in the platform’s data flows, he says.
+                    And Wylie’s revelations only move it on again.</p>
+                <p>“Facebook has denied and denied and denied this,” Dehaye says when told of the
+                    <em> Observer</em>’s new evidence. “It has misled MPs and congressional investigators and it’s failed in its
+                    duties to respect the law. It has a legal obligation to inform regulators and individuals about this
+                    data breach, and it hasn’t. It’s failed time and time again to be open and transparent.”</p>
+                <aside class="element element-rich-link element--thumbnail">
+                    <p>
+                        <span>Related: </span>
+                        <a href="x-gu://item/mobile.guardianapis.com/uk/items/technology/2017/may/07/the-great-british-brexit-robbery-hijacked-democracy">The great British Brexit robbery: how our democracy was hijacked</a>
+                    </p>
+                </aside>
+                <p>Facebook denies that the data transfer was a breach. In addition, a spokesperson said: “Protecting people’s
+                    information is at the heart of everything we do, and we require the same from people who operate apps
+                    on Facebook. If these reports are true, it’s a serious abuse of our rules. Both Aleksandr Kogan as well
+                    as the SCL Group and Cambridge Analytica certified to us that they destroyed the data in question.”</p>
+                <p>Millions of people’s personal information was stolen and used to target them in ways they wouldn’t have seen,
+                    and couldn’t have known about, by a mercenary outfit, Cambridge Analytica, who, Wylie says, “would work
+                    for anyone”. Who would pitch to Russian oil companies. Would they subvert elections abroad on behalf
+                    of foreign governments?</p>
+                <p>It occurs to me to ask Wylie this one night.</p>
+                <p>“Yes.”</p>
+                <p>Nato or non-Nato?</p>
+                <p>“Either. I mean they’re mercenaries. They’ll work for pretty much anyone who pays.”</p>
+                <p>It’s an incredible revelation. It also encapsulates all of the problems of outsourcing – at a global scale,
+                    with added cyberweapons. And in the middle of it all are the public – our intimate family connections,
+                    our “likes”, our crumbs of personal data, all sucked into a swirling black hole that’s expanding and
+                    growing and is now owned by a politically motivated billionaire.</p>
+                <p>The Facebook data is out in the wild. And for all Wylie’s efforts, there’s no turning the clock back.</p>
+                <p>
+                    <a href="https://tamsinshaw.com/">Tamsin Shaw</a>, a philosophy professor at New York University, and the author of a recent
+                    <a href="http://www.nybooks.com/contributors/tamsin-shaw/">
+                        <em>New York Review of Books</em>
+                    </a> article on cyberwar and the Silicon Valley economy, told me that she’d pointed to the possibility of
+                    private contractors obtaining cyberweapons that had at least been in part funded by US defence.</p>
+                <p>She calls Wylie’s disclosures “wild” and points out that “the whole Facebook project” has only been allowed
+                    to become as vast and powerful as it has because of the US national security establishment.</p>
+                <p>“It’s a form of very deep but soft power that’s been seen as an asset for the US. Russia has been so explicit
+                    about this, paying for the ads in roubles and so on. It’s making this point, isn’t it? That Silicon Valley
+                    is a US national security asset that they’ve turned on itself.”</p>
+                <p>Or, more simply: blowback.</p>
+                <p>
+                    <span class="bullet">•</span>
+                    <a href="x-gu://item/mobile.guardianapis.com/uk/items/news/2018/mar/17/cambridge-analytica-facebook-influence-us-election">Revealed: 50m Facebook profiles harvested in major data breach</a>
+                    <br>
+                    <span class="bullet">•</span>
+                    <a href="x-gu://item/mobile.guardianapis.com/uk/items/technology/2018/mar/17/facebook-cambridge-analytica-kogan-data-algorithm">How ‘likes’ became a political weapon</a>
+                </p>
+                <p>
+                    <em>This article was amended on 18 March 2018 to clarify the full title of the British Columbia Ministry
+                        of Education </em>
+                </p>
+                <figure class="element element-atom" data-atom-id="42721f31-41c4-4046-9456-9934895dfb91" data-atom-type="explainer">
+                    <div class="atom atom--explainer">
+                        <h4 class="atom--explainer__header"> The Observer </h4>
+                        <p>The Observer is the world's oldest Sunday newspaper, founded in 1791. It is published by Guardian
+                            News &amp; Media and is editorially independent.</p>
+                    </div>
+                </figure>
             </div>
         </div>
+
+        <div class="tags" id="tags">
+            <span class="screen-readable">Tags:</span>
+            <ul class="inline-list tags__inline-list" id="tag-list"></ul>
+        </div>
     </div>
-</section>
-<div class="container container__outbrain" id="outbrain">
-	<div class="OUTBRAIN outbrainImage" data-widget-id="<%=widgetCode%>" data-src="https://www.theguardian.com/news/2018/mar/17/data-war-whistleblower-christopher-wylie-faceook-nix-bannon-trump" data-ob-template="guardian" data-ob-user-id=""></div>
-	<div class="OUTBRAIN outbrainText" data-widget-id="<%=widgetCode%>" data-src="https://www.theguardian.com/news/2018/mar/17/data-war-whistleblower-christopher-wylie-faceook-nix-bannon-trump" data-ob-template="guardian" data-ob-user-id=""></div>
-</div>
-<!--- Pulling this in here after the outbrain styles so we can override them -->
-<link rel="stylesheet" type="text/css" media="all" href="../../ArticleTemplates/assets/css/outbrain.css" />
+
+    <section class="related-content">
+        <div class="related-content__wrapper">
+            <h2 class="related-content__header">
+                Related Stories
+            </h2>
+            <div class="loading loading--related" data-icon="&#xe00C;"></div>
+            <div class="block block--failed" id="related-module-failed-block">
+                <div class="block__body">
+                    <p>Related stories are currently unavailable. Please try again later.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container container__outbrain" id="outbrain">
+        <div class="OUTBRAIN outbrainImage" data-widget-id="<%=widgetCode%>" data-src="https://www.theguardian.com/news/2018/mar/17/data-war-whistleblower-christopher-wylie-faceook-nix-bannon-trump"
+            data-ob-template="guardian" data-ob-user-id=""></div>
+        <div class="OUTBRAIN outbrainText" data-widget-id="<%=widgetCode%>" data-src="https://www.theguardian.com/news/2018/mar/17/data-war-whistleblower-christopher-wylie-faceook-nix-bannon-trump"
+            data-ob-template="guardian" data-ob-user-id=""></div>
+    </div>
+    <!--- Pulling this in here after the outbrain styles so we can override them -->
+    <link rel="stylesheet" type="text/css" media="all" href="../../ArticleTemplates/assets/css/outbrain.css" />
 
 
 
     <script type="text/javascript">
-    (function () {
-        var atoms = {};
-        function readAtoms() {
-            this.profile=function(n){function t(r){if(e[r])return e[r].exports;var u=e[r]={i:r,l:!1,exports:{}};return n[r].call(u.exports,u,u.exports,t),u.l=!0,u.exports}var e={};return t.m=n,t.c=e,t.d=function(n,e,r){t.o(n,e)||Object.defineProperty(n,e,{configurable:!1,enumerable:!0,get:r})},t.n=function(n){var e=n&&n.__esModule?function(){return n.default}:function(){return n};return t.d(e,"a",e),e},t.o=function(n,t){return Object.prototype.hasOwnProperty.call(n,t)},t.p="",t(t.s=1)}([function(n,t,e){"use strict";e.d(t,"b",function(){return r}),e.d(t,"a",function(){return u});var r={READERS_QUESTIONS_ATOM:"READERS_QUESTIONS_ATOM",QANDA_ATOM:"QANDA_ATOM",PROFILE_ATOM:"PROFILE_ATOM",GUIDE_ATOM:"GUIDE_ATOM",TIMELINE_ATOM:"TIMELINE_ATOM",NEWSLETTER_SUBSCRIPTION:"NEWSLETTER_SUBSCRIPTION",SURVEYS_QUESTIONS:"SURVEYS_QUESTIONS",ACQUISITIONS_EPIC:"ACQUISITIONS_EPIC",ACQUISITIONS_ENGAGEMENT_BANNER:"ACQUISITIONS_ENGAGEMENT_BANNER",ACQUISITIONS_THANK_YOU_EPIC:"ACQUISITIONS_THANK_YOU_EPIC",ACQUISITIONS_HEADER:"ACQUISITIONS_HEADER",ACQUISITIONS_FOOTER:"ACQUISITIONS_FOOTER",ACQUISITIONS_INTERACTIVE_SLICE:"ACQUISITIONS_INTERACTIVE_SLICE",ACQUISITIONS_NUGGET:"ACQUISITIONS_NUGGET",ACQUISITIONS_STANDFIRST:"ACQUISITIONS_STANDFIRST",ACQUISITIONS_THRASHER:"ACQUISITIONS_THRASHER",ACQUISITIONS_EDITORIAL_LINK:"ACQUISITIONS_EDITORIAL_LINK",ACQUISITIONS_MANAGE_MY_ACCOUNT:"ACQUISITIONS_MANAGE_MY_ACCOUNT",ACQUISITIONS_BUTTON:"ACQUISITIONS_BUTTON",ACQUISITIONS_OTHER:"ACQUISITIONS_OTHER"},u={INSERT:"INSERT",VIEW:"VIEW",EXPAND:"EXPAND",LIKE:"LIKE",DISLIKE:"DISLIKE",SUBSCRIBE:"SUBSCRIBE",ANSWER:"ANSWER",VOTE:"VOTE",CLICK:"CLICK"}},function(n,t,e){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=e(2),u=e(0);t.default=Object(r.a)(u.b.PROFILE_ATOM)},function(n,t,e){"use strict";var r=e(0),u=e(3);t.a=function(n){return function(t){var e=t.ophan,o=t.dom,i=t.viewport;return function(t){var I=void 0,c=void 0,a=void 0,f=function(){I.close(),c.close(),i.unobserve(t,1,a)},S=function(n){return function(t){T(n.snippetId,t),o.write(function(){n.ack.hidden=!1,n.question.hidden=!0})}},s=function(n){return function(t){T(n.snippetId,t)}},l=function(n){return function(e){e>=1&&(T(n.snippetId,r.a.VIEW),i.unobserve(t,1,a))}},T=function(t,r){e.record({componentEvent:{component:{componentType:n,id:t,products:[],labels:[]},action:r}})};return Object.freeze({runTry:function(){var n=t.querySelector(".atom--snippet__header"),e=t.querySelector(".atom--snippet__feedback"),o=t.querySelector(".atom--snippet__ack"),T=t.querySelector(".atom--snippet");return n&&e&&o&&T?Object.freeze({atomId:t.id,snippetId:T.dataset.snippetId,snippetType:T.dataset.snippetType,header:n,question:e,ack:o,stop:f,start:function(){return function(n){return(I=Object(u.a)("click",n.question).map(function(n){return n.target.closest(".atom__button")}).filter(function(n){return!!n}).map(function(n){return n&&"like"===n.value?r.a.LIKE:r.a.DISLIKE}).takeN(1)).tap(S(n)),(c=Object(u.a)("click",n.header).map(function(n){return r.a.EXPAND}).takeN(1)).tap(s(n)),a=l(n),i.observe(t,1,a),Promise.resolve()}(this)}}):"Some elements were missing when initialising atom"}})}}}},function(n,t,e){"use strict";e.d(t,"a",function(){return u});var r=e(4),u=function(n,t){var e=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{},u=e.preventDefault,o=void 0!==u&&u,i=e.stopPropagation,I=void 0!==i&&i,c=function(n){o&&n.preventDefault(),I&&n.stopPropagation(),a.putAsync(n)},a=Object(r.a)(function(){t.removeEventListener(n,c)});return t.addEventListener(n,c),a}},function(n,t,e){"use strict";e.d(t,"a",function(){return u});var r=function(){return function(n,t){if(Array.isArray(n))return n;if(Symbol.iterator in Object(n))return function(n,t){var e=[],r=!0,u=!1,o=void 0;try{for(var i,I=n[Symbol.iterator]();!(r=(i=I.next()).done)&&(e.push(i.value),!t||e.length!==t);r=!0);}catch(n){u=!0,o=n}finally{try{!r&&I.return&&I.return()}finally{if(u)throw o}}return e}(n,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),u=function n(t){var e=!1,u=void 0,i=function(){if(a()){var n=u;return u=null,["resume",n]}return e?["resume",null]:["park",null]},I=function(n){return e?["resume",!1]:c()?(u=n,["resume",!0]):["park",null]},c=function(){return!0},a=function(){return!!u},f=function(){return new Promise(function(n){!function t(){var e=i();"resume"===e[0]?n(e[1]):"requestIdleCallback"in window?window.requestIdleCallback(t):setTimeout(t,25)}()})},S=Object.freeze({put:I,take:i,putAsync:function(n){return new Promise(function(t){!function e(){var r=I(n);"resume"===r[0]?t(r[1]):setTimeout(e,0)}()})},takeAsync:f,close:function(){e||(t&&t(),e=!0)},isClosed:e,map:function(t){var e=n();return function n(){f().then(function(r){null===r?e.close():(e.put(t(r)),n())})}(),e},filter:function(t){var e=n();return function n(){f().then(function(r){null===r?e.close():(t(r)&&e.put(r),n())})}(),e},apply:function(t){var e=n();return function n(){Promise.all([t.takeAsync(),f()]).then(function(t){var u=r(t,2),o=u[0],i=u[1];null===o||null===i?e.close():(e.put(o(i)),n())})}(),e},merge:function(t){var e=n(),r=function n(t){t.takeAsync().then(function(r){null===r||(e.put(r),n(t))})};return r(S),r(t),e},dropRepeats:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:o,e=n();return function n(){f().then(function(r){null===r?e.close():(t([r,void 0])||e.put(r),n())})}(),e},takeN:function(t){var e=n();return function n(t){0===t?e.close():f().then(function(r){null===r?e.close():(e.put(r),n(t-1))})}(t),e},dropN:function(t){var e=n();return function n(t){f().then(function(r){null===r?e.close():0===t?(e.put(r),n(0)):n(t-1)})}(t),e},tap:function(n){!function t(){f().then(function(e){null!==e&&(n(e),t())})}()}});return S},o=function(n){var t=r(n,2);return t[0]===t[1]}}]); this.explainer=function(t){function r(n){if(e[n])return e[n].exports;var u=e[n]={i:n,l:!1,exports:{}};return t[n].call(u.exports,u,u.exports,r),u.l=!0,u.exports}var e={};return r.m=t,r.c=e,r.d=function(t,e,n){r.o(t,e)||Object.defineProperty(t,e,{configurable:!1,enumerable:!0,get:n})},r.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return r.d(e,"a",e),e},r.o=function(t,r){return Object.prototype.hasOwnProperty.call(t,r)},r.p="",r(r.s=0)}([function(t,r,e){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.default=function(t){return function(t){return{runTry:function(){return{start:function(){return Promise.resolve()},stop:function(){},atomId:""}}}}}}]);
-        }
-        readAtoms.call(atoms);
-        GU.bootstrap.init({
-            asyncStylesFilename: "garnett-style-async",
-            sectionTone: "feature1",
-            isAdvertising: "" ? true : false,
-            fontSize: "font-size-4",
-            platform: "ios",
-            isOffline: "" ? true : false,
-            contentType: "article",
-            adsEnabled: "mpu",
-            adsEnableHiding: "true" === "true",
-            adsConfig: "mobile",
-            actionBarHeight: "0",
-            fontSizeInt: "4",
-            templatesDirectory: "../../ArticleTemplates/",
-            pageId: "news/2018/mar/17/data-war-whistleblower-christopher-wylie-faceook-nix-bannon-trump",
-            mpuAfterParagraphs: "3",
-            useAdsReady: "true" === "true",
-            section: "Cambridge Analytica",
-            tests: '{}',
-            nativeYoutubeEnabled: "" === "true" ? true : false,
-            disableEnhancedTweets: "" === "true" ? true : false,
-            atoms: atoms,
-            hasEpic: "true" === "true"
-        });
-    }());
+        (function () {
+            var atoms = {};
+
+            function readAtoms() {
+                this.profile = function (n) {
+                    function t(r) {
+                        if (e[r]) return e[r].exports;
+                        var u = e[r] = {
+                            i: r,
+                            l: !1,
+                            exports: {}
+                        };
+                        return n[r].call(u.exports, u, u.exports, t), u.l = !0, u.exports
+                    }
+                    var e = {};
+                    return t.m = n, t.c = e, t.d = function (n, e, r) {
+                        t.o(n, e) || Object.defineProperty(n, e, {
+                            configurable: !1,
+                            enumerable: !0,
+                            get: r
+                        })
+                    }, t.n = function (n) {
+                        var e = n && n.__esModule ? function () {
+                            return n.default
+                        } : function () {
+                            return n
+                        };
+                        return t.d(e, "a", e), e
+                    }, t.o = function (n, t) {
+                        return Object.prototype.hasOwnProperty.call(n, t)
+                    }, t.p = "", t(t.s = 1)
+                }([function (n, t, e) {
+                    "use strict";
+                    e.d(t, "b", function () {
+                        return r
+                    }), e.d(t, "a", function () {
+                        return u
+                    });
+                    var r = {
+                            READERS_QUESTIONS_ATOM: "READERS_QUESTIONS_ATOM",
+                            QANDA_ATOM: "QANDA_ATOM",
+                            PROFILE_ATOM: "PROFILE_ATOM",
+                            GUIDE_ATOM: "GUIDE_ATOM",
+                            TIMELINE_ATOM: "TIMELINE_ATOM",
+                            NEWSLETTER_SUBSCRIPTION: "NEWSLETTER_SUBSCRIPTION",
+                            SURVEYS_QUESTIONS: "SURVEYS_QUESTIONS",
+                            ACQUISITIONS_EPIC: "ACQUISITIONS_EPIC",
+                            ACQUISITIONS_ENGAGEMENT_BANNER: "ACQUISITIONS_ENGAGEMENT_BANNER",
+                            ACQUISITIONS_THANK_YOU_EPIC: "ACQUISITIONS_THANK_YOU_EPIC",
+                            ACQUISITIONS_HEADER: "ACQUISITIONS_HEADER",
+                            ACQUISITIONS_FOOTER: "ACQUISITIONS_FOOTER",
+                            ACQUISITIONS_INTERACTIVE_SLICE: "ACQUISITIONS_INTERACTIVE_SLICE",
+                            ACQUISITIONS_NUGGET: "ACQUISITIONS_NUGGET",
+                            ACQUISITIONS_STANDFIRST: "ACQUISITIONS_STANDFIRST",
+                            ACQUISITIONS_THRASHER: "ACQUISITIONS_THRASHER",
+                            ACQUISITIONS_EDITORIAL_LINK: "ACQUISITIONS_EDITORIAL_LINK",
+                            ACQUISITIONS_MANAGE_MY_ACCOUNT: "ACQUISITIONS_MANAGE_MY_ACCOUNT",
+                            ACQUISITIONS_BUTTON: "ACQUISITIONS_BUTTON",
+                            ACQUISITIONS_OTHER: "ACQUISITIONS_OTHER"
+                        },
+                        u = {
+                            INSERT: "INSERT",
+                            VIEW: "VIEW",
+                            EXPAND: "EXPAND",
+                            LIKE: "LIKE",
+                            DISLIKE: "DISLIKE",
+                            SUBSCRIBE: "SUBSCRIBE",
+                            ANSWER: "ANSWER",
+                            VOTE: "VOTE",
+                            CLICK: "CLICK"
+                        }
+                }, function (n, t, e) {
+                    "use strict";
+                    Object.defineProperty(t, "__esModule", {
+                        value: !0
+                    });
+                    var r = e(2),
+                        u = e(0);
+                    t.default = Object(r.a)(u.b.PROFILE_ATOM)
+                }, function (n, t, e) {
+                    "use strict";
+                    var r = e(0),
+                        u = e(3);
+                    t.a = function (n) {
+                        return function (t) {
+                            var e = t.ophan,
+                                o = t.dom,
+                                i = t.viewport;
+                            return function (t) {
+                                var I = void 0,
+                                    c = void 0,
+                                    a = void 0,
+                                    f = function () {
+                                        I.close(), c.close(), i.unobserve(t, 1, a)
+                                    },
+                                    S = function (n) {
+                                        return function (t) {
+                                            T(n.snippetId, t), o.write(function () {
+                                                n.ack.hidden = !1, n.question.hidden = !
+                                                    0
+                                            })
+                                        }
+                                    },
+                                    s = function (n) {
+                                        return function (t) {
+                                            T(n.snippetId, t)
+                                        }
+                                    },
+                                    l = function (n) {
+                                        return function (e) {
+                                            e >= 1 && (T(n.snippetId, r.a.VIEW), i.unobserve(
+                                                t, 1, a))
+                                        }
+                                    },
+                                    T = function (t, r) {
+                                        e.record({
+                                            componentEvent: {
+                                                component: {
+                                                    componentType: n,
+                                                    id: t,
+                                                    products: [],
+                                                    labels: []
+                                                },
+                                                action: r
+                                            }
+                                        })
+                                    };
+                                return Object.freeze({
+                                    runTry: function () {
+                                        var n = t.querySelector(
+                                                ".atom--snippet__header"),
+                                            e = t.querySelector(
+                                                ".atom--snippet__feedback"),
+                                            o = t.querySelector(
+                                                ".atom--snippet__ack"),
+                                            T = t.querySelector(
+                                                ".atom--snippet");
+                                        return n && e && o && T ? Object.freeze({
+                                                atomId: t.id,
+                                                snippetId: T.dataset.snippetId,
+                                                snippetType: T.dataset.snippetType,
+                                                header: n,
+                                                question: e,
+                                                ack: o,
+                                                stop: f,
+                                                start: function () {
+                                                    return function (n) {
+                                                        return (I =
+                                                                Object(
+                                                                    u
+                                                                    .a
+                                                                )(
+                                                                    "click",
+                                                                    n
+                                                                    .question
+                                                                ).map(
+                                                                    function (
+                                                                        n
+                                                                    ) {
+                                                                        return n
+                                                                            .target
+                                                                            .closest(
+                                                                                ".atom__button"
+                                                                            )
+                                                                    }
+                                                                ).filter(
+                                                                    function (
+                                                                        n
+                                                                    ) {
+                                                                        return !
+                                                                            !
+                                                                            n
+                                                                    }
+                                                                ).map(
+                                                                    function (
+                                                                        n
+                                                                    ) {
+                                                                        return n &&
+                                                                            "like" ===
+                                                                            n
+                                                                            .value ?
+                                                                            r
+                                                                            .a
+                                                                            .LIKE :
+                                                                            r
+                                                                            .a
+                                                                            .DISLIKE
+                                                                    }
+                                                                ).takeN(
+                                                                    1
+                                                                )).tap(
+                                                                S(n)
+                                                            ), (c =
+                                                                Object(
+                                                                    u
+                                                                    .a
+                                                                )(
+                                                                    "click",
+                                                                    n
+                                                                    .header
+                                                                ).map(
+                                                                    function (
+                                                                        n
+                                                                    ) {
+                                                                        return r
+                                                                            .a
+                                                                            .EXPAND
+                                                                    }
+                                                                ).takeN(
+                                                                    1
+                                                                )).tap(
+                                                                s(n)
+                                                            ), a =
+                                                            l(n), i
+                                                            .observe(
+                                                                t,
+                                                                1,
+                                                                a),
+                                                            Promise
+                                                            .resolve()
+                                                    }(this)
+                                                }
+                                            }) :
+                                            "Some elements were missing when initialising atom"
+                                    }
+                                })
+                            }
+                        }
+                    }
+                }, function (n, t, e) {
+                    "use strict";
+                    e.d(t, "a", function () {
+                        return u
+                    });
+                    var r = e(4),
+                        u = function (n, t) {
+                            var e = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : {},
+                                u = e.preventDefault,
+                                o = void 0 !== u && u,
+                                i = e.stopPropagation,
+                                I = void 0 !== i && i,
+                                c = function (n) {
+                                    o && n.preventDefault(), I && n.stopPropagation(), a.putAsync(n)
+                                },
+                                a = Object(r.a)(function () {
+                                    t.removeEventListener(n, c)
+                                });
+                            return t.addEventListener(n, c), a
+                        }
+                }, function (n, t, e) {
+                    "use strict";
+                    e.d(t, "a", function () {
+                        return u
+                    });
+                    var r = function () {
+                            return function (n, t) {
+                                if (Array.isArray(n)) return n;
+                                if (Symbol.iterator in Object(n)) return function (n, t) {
+                                    var e = [],
+                                        r = !0,
+                                        u = !1,
+                                        o = void 0;
+                                    try {
+                                        for (var i, I = n[Symbol.iterator](); !(r = (i = I.next())
+                                                .done) && (e.push(i.value), !t || e.length !==
+                                                t); r = !0);
+                                    } catch (n) {
+                                        u = !0, o = n
+                                    } finally {
+                                        try {
+                                            !r && I.return && I.return()
+                                        } finally {
+                                            if (u) throw o
+                                        }
+                                    }
+                                    return e
+                                }(n, t);
+                                throw new TypeError(
+                                    "Invalid attempt to destructure non-iterable instance")
+                            }
+                        }(),
+                        u = function n(t) {
+                            var e = !1,
+                                u = void 0,
+                                i = function () {
+                                    if (a()) {
+                                        var n = u;
+                                        return u = null, ["resume", n]
+                                    }
+                                    return e ? ["resume", null] : ["park", null]
+                                },
+                                I = function (n) {
+                                    return e ? ["resume", !1] : c() ? (u = n, ["resume", !0]) : ["park",
+                                        null
+                                    ]
+                                },
+                                c = function () {
+                                    return !0
+                                },
+                                a = function () {
+                                    return !!u
+                                },
+                                f = function () {
+                                    return new Promise(function (n) {
+                                        ! function t() {
+                                            var e = i();
+                                            "resume" === e[0] ? n(e[1]) : "requestIdleCallback" in
+                                                window ? window.requestIdleCallback(t) :
+                                                setTimeout(t, 25)
+                                        }()
+                                    })
+                                },
+                                S = Object.freeze({
+                                    put: I,
+                                    take: i,
+                                    putAsync: function (n) {
+                                        return new Promise(function (t) {
+                                            ! function e() {
+                                                var r = I(n);
+                                                "resume" === r[0] ? t(r[1]) :
+                                                    setTimeout(e, 0)
+                                            }()
+                                        })
+                                    },
+                                    takeAsync: f,
+                                    close: function () {
+                                        e || (t && t(), e = !0)
+                                    },
+                                    isClosed: e,
+                                    map: function (t) {
+                                        var e = n();
+                                        return function n() {
+                                            f().then(function (r) {
+                                                null === r ? e.close() : (e.put(t(r)),
+                                                    n())
+                                            })
+                                        }(), e
+                                    },
+                                    filter: function (t) {
+                                        var e = n();
+                                        return function n() {
+                                            f().then(function (r) {
+                                                null === r ? e.close() : (t(r) && e
+                                                    .put(r), n())
+                                            })
+                                        }(), e
+                                    },
+                                    apply: function (t) {
+                                        var e = n();
+                                        return function n() {
+                                            Promise.all([t.takeAsync(), f()]).then(function (
+                                                t) {
+                                                var u = r(t, 2),
+                                                    o = u[0],
+                                                    i = u[1];
+                                                null === o || null === i ? e.close() :
+                                                    (e.put(o(i)), n())
+                                            })
+                                        }(), e
+                                    },
+                                    merge: function (t) {
+                                        var e = n(),
+                                            r = function n(t) {
+                                                t.takeAsync().then(function (r) {
+                                                    null === r || (e.put(r), n(t))
+                                                })
+                                            };
+                                        return r(S), r(t), e
+                                    },
+                                    dropRepeats: function () {
+                                        var t = arguments.length > 0 && void 0 !== arguments[0] ?
+                                            arguments[0] : o,
+                                            e = n();
+                                        return function n() {
+                                            f().then(function (r) {
+                                                null === r ? e.close() : (t([r,
+                                                    void 0
+                                                ]) || e.put(r), n())
+                                            })
+                                        }(), e
+                                    },
+                                    takeN: function (t) {
+                                        var e = n();
+                                        return function n(t) {
+                                            0 === t ? e.close() : f().then(function (r) {
+                                                null === r ? e.close() : (e.put(r),
+                                                    n(t - 1))
+                                            })
+                                        }(t), e
+                                    },
+                                    dropN: function (t) {
+                                        var e = n();
+                                        return function n(t) {
+                                            f().then(function (r) {
+                                                null === r ? e.close() : 0 === t ?
+                                                    (e.put(r), n(0)) : n(t - 1)
+                                            })
+                                        }(t), e
+                                    },
+                                    tap: function (n) {
+                                        ! function t() {
+                                            f().then(function (e) {
+                                                null !== e && (n(e), t())
+                                            })
+                                        }()
+                                    }
+                                });
+                            return S
+                        },
+                        o = function (n) {
+                            var t = r(n, 2);
+                            return t[0] === t[1]
+                        }
+                }]);
+                this.explainer = function (t) {
+                    function r(n) {
+                        if (e[n]) return e[n].exports;
+                        var u = e[n] = {
+                            i: n,
+                            l: !1,
+                            exports: {}
+                        };
+                        return t[n].call(u.exports, u, u.exports, r), u.l = !0, u.exports
+                    }
+                    var e = {};
+                    return r.m = t, r.c = e, r.d = function (t, e, n) {
+                        r.o(t, e) || Object.defineProperty(t, e, {
+                            configurable: !1,
+                            enumerable: !0,
+                            get: n
+                        })
+                    }, r.n = function (t) {
+                        var e = t && t.__esModule ? function () {
+                            return t.default
+                        } : function () {
+                            return t
+                        };
+                        return r.d(e, "a", e), e
+                    }, r.o = function (t, r) {
+                        return Object.prototype.hasOwnProperty.call(t, r)
+                    }, r.p = "", r(r.s = 0)
+                }([function (t, r, e) {
+                    "use strict";
+                    Object.defineProperty(r, "__esModule", {
+                        value: !0
+                    }), r.default = function (t) {
+                        return function (t) {
+                            return {
+                                runTry: function () {
+                                    return {
+                                        start: function () {
+                                            return Promise.resolve()
+                                        },
+                                        stop: function () {},
+                                        atomId: ""
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }]);
+            }
+            readAtoms.call(atoms);
+            GU.bootstrap.init({
+                asyncStylesFilename: "style-async",
+                sectionTone: "feature1",
+                isAdvertising: "" ? true : false,
+                fontSize: "font-size-4",
+                platform: "ios",
+                isOffline: "" ? true : false,
+                contentType: "article",
+                adsEnabled: "mpu",
+                adsEnableHiding: "true" === "true",
+                adsConfig: "mobile",
+                actionBarHeight: "0",
+                fontSizeInt: "4",
+                templatesDirectory: "../../ArticleTemplates/",
+                pageId: "news/2018/mar/17/data-war-whistleblower-christopher-wylie-faceook-nix-bannon-trump",
+                mpuAfterParagraphs: "3",
+                useAdsReady: "true" === "true",
+                section: "Cambridge Analytica",
+                tests: '{}',
+                nativeYoutubeEnabled: "" === "true" ? true : false,
+                disableEnhancedTweets: "" === "true" ? true : false,
+                atoms: atoms,
+                hasEpic: "true" === "true"
+            });
+        }());
+
     </script>
 </body>
+
 </html>
