@@ -172,11 +172,6 @@ define([
             innerElem.setAttribute('height', image.getAttribute('height'));
             innerElem.setAttribute('width', image.getAttribute('width'));
             image.parentNode.replaceChild(innerElem, image);
-
-            if (figure.parentNode.classList.contains('main-media')) {
-                var mainMediaCaptionText = document.getElementsByClassName('main-media__caption__text')[0];
-                toggleCaptionVisibility(mainMediaCaptionText);
-            }
         }
     }
 
