@@ -205,8 +205,11 @@ define([
                     }
                 }
             }
-
-            footballStatsTab.parentNode.removeChild(footballStatsTab);
+            footballStatsTab.classList.add('unavailable');
+            footballStatsTab.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            });
         }
     }
 
