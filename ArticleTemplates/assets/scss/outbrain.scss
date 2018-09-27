@@ -25,6 +25,22 @@
         padding: 0;
     }
 
+    @include mq($to: col2) {
+        .ob-widget {
+            .ob-unit {
+                padding-left: 6px;
+            }
+
+            .ob-widget-header {
+                margin: 12px 0;
+                span {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+
     @include mq($from: col2) {
         .ob-widget {
             padding: {
@@ -33,7 +49,16 @@
             }
 
             .ob-widget-header {
-                margin-left: 0 !important;
+                margin: 12px 0 !important;
+
+                span {
+                    margin-left: 12px !important;
+                }
+            }
+
+            .ob_what {
+                width: 130px;
+                float: left;
             }
 
             .ob-widget-items-container {
@@ -41,7 +66,7 @@
             }
 
             .ob-dynamic-rec-container {
-                margin-right: 5px !important;
+                margin-right: 16px !important;
                 max-width: 173.25px;
 
                 &:last-child {
@@ -61,6 +86,8 @@
             .ob-dynamic-rec-link {
                 .ob-rec-source {
                     max-height: 50px !important;
+                    font-size: 1.2rem;
+                    padding-bottom: 18px;
                 }
             }
 
@@ -72,6 +99,15 @@
                 }
             }
         }
+
+        .AR_31.ob-strip-layout .ob-rec-text {
+            margin-top: 25px !important;
+            padding: 6px .3125rem .5em !important;
+        }
+
+        .ob-unit {
+            padding-top: 6px;
+        }
     }
 
     @include mq($from: col3) {
@@ -80,14 +116,19 @@
                 display: block !important;
                 float: left !important;
                 padding-top: 20px;
-                width: 858px !important;
+                width: 100% !important;
             }
 
             .ob-dynamic-rec-container {
-                margin-right: 6px !important;
+                margin-right: 16px !important;
                 max-width: 210px !important;
                 width: 210px !important;
             }
+        }
+
+        .AR_31.ob-strip-layout .ob-rec-text {
+            margin-top: -25px !important;
+            padding: 6px .3125rem .5em !important;
         }
     }
 
@@ -101,7 +142,6 @@
             }
 
             .ob-widget-header {
-                margin: 20px !important;
                 width: 200px !important;
             }
 
@@ -125,6 +165,10 @@
             .ob-widget-items-container {
                 margin-left: 240px !important;
             }
+        }
+
+        .AR_31.ob-strip-layout .ob-rec-link {
+            padding-bottom: 18px;
         }
     }
 
