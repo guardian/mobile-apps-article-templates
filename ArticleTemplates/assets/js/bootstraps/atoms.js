@@ -33,7 +33,7 @@ define([
     }
 
     function initExpandables(atom) {
-      Array.from(atom.getElementsByTagName('details')).forEach(function (d) {
+      Array.prototype.slice.call(atom.getElementsByTagName('details')).forEach(function(d) {
         d.addEventListener('toggle', cards.initPositionPoller);
       });
     }
