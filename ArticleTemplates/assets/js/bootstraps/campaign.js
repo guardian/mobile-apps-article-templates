@@ -1,6 +1,7 @@
 define([
-  'modules/cards'
-], function (cards) {
+  'modules/cards',
+  'modules/ads'
+], function (cards, ads) {
     'use strict';
 
     var endpoint = GU.opts.campaignsUrl;
@@ -17,7 +18,10 @@ define([
         displayOfflineMessage(campaign);
       }
 
-      campaign.addEventListener('toggle', cards.initPositionPoller);
+      campaign.addEventListener('toggle', function() {
+        cards.initPositionPoller();
+        ads.initMpuPoller(0);
+      });
       window.addEventListener('online', hideOfflineMessage.bind(null, campaign));
       window.addEventListener('offline', displayOfflineMessage.bind(null, campaign));
 
