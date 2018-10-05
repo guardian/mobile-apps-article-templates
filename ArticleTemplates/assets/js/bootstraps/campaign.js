@@ -1,7 +1,10 @@
 define([
   'modules/cards',
   'modules/ads'
-], function (cards, ads) {
+], function (
+    cards,
+    ads
+  ) {
     'use strict';
 
     var endpoint = GU.opts.campaignsUrl;
