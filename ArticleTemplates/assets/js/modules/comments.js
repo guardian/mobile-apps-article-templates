@@ -206,10 +206,14 @@ define([
 
     function commentsClosed() {
         var commentsElem = document.getElementsByClassName('comments')[0],
-            discussionElem = document.getElementById('discussion');
+            discussionElem = document.getElementById('discussion'),
+            openElem = document.getElementsByClassName('comments__block--empty')[0];
 
         if (commentsElem) {
             commentsElem.classList.add('comments--closed');
+            if (openElem) {
+                openElem.style.display = 'none';
+            }
         }
 
         if (discussionElem) {
