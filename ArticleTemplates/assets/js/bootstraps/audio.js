@@ -65,7 +65,8 @@ define([
         }
 
         if (audioPlayerSliderRemaining) {
-            audioPlayerSliderRemaining.value = '-' + secondsTimeSpanToHMS(duration - percentage);
+            var remaining = secondsTimeSpanToHMS(duration - percentage);
+            audioPlayerSliderRemaining.value = percentage ? '-' + remaining : '' + remaining;
         }
     }
 

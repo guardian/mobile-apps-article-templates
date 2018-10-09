@@ -164,6 +164,7 @@ if (!Function.prototype.bind) {
       position = Math.round((value - this.options.min) * width / range);
     
     this.setKnobPosition(position);
+    this.setTrackPosition(position);
     
     this.value = value;
     this.callback(value);
@@ -180,6 +181,22 @@ if (!Function.prototype.bind) {
       this.knob.style.OTransform = 
       this.knob.style.transform = 'translateX(' + x + 'px)';
     }
+  };
+
+  MobileRangeSlider.prototype.setTrackPosition = function(x){
+    var trackPlayedWidth = x < 1 ? 0 : Math.ceil((x / this.track.offsetWidth) * 100);
+    this.track.setAttribute(
+      'style',
+      'background: -webkit-linear-gradient(left, #ffe500, #ffe500 ' +
+      trackPlayedWidth +
+      '%, #999 ' +
+      trackPlayedWidth +
+      '%, #999); background: linear-gradient(left, #ffe500, #ffe500 ' +
+      trackPlayedWidth +
+      '%, #999 ' +
+      trackPlayedWidth +
+      '%, #999)'
+    );
   };
 
   // handle a mouse event
@@ -205,6 +222,7 @@ if (!Function.prototype.bind) {
     position = Math.max(position - knobWidth, 0);
   
     this.setKnobPosition(position);
+    this.setTrackPosition(position);
   
     // update
     value = this.options.min + Math.round(position * range / width);
