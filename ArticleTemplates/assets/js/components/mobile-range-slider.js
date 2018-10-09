@@ -184,7 +184,8 @@ if (!Function.prototype.bind) {
   };
 
   MobileRangeSlider.prototype.setTrackPosition = function(x){
-    var trackPlayedWidth = x < 1 ? 0 : Math.ceil((x / this.track.offsetWidth) * 100);
+    var trackWidth = this.track.offsetWidth;
+    var trackPlayedWidth = (x < 1) || (trackWidth < 1) ? 0 : Math.ceil((x / trackWidth) * 100);
     this.track.setAttribute(
       'style',
       'background: -webkit-linear-gradient(left, #ffe500, #ffe500 ' +
