@@ -7,6 +7,15 @@
 
 // This whole stylesheet is horrible, but needs to be imported last and have importants to overide the outbrain css
 
+// Avoid hover state within apps
+
+.AR_30.ob-widget, .AR_31.ob-widget {
+    .ob-dynamic-rec-link:hover .ob-unit.ob-rec-text {
+        color: #005689;
+        text-decoration: none;
+    }
+}
+
 .outbrainText {
     display: none;
 }
@@ -151,6 +160,10 @@
 
             .ob-widget-header {
                 width: 200px !important;
+
+                span {
+                    margin-left: 0 !important;
+                }
             }
 
             .ob-dynamic-rec-container {
@@ -160,18 +173,11 @@
             }
 
             .ob_what {
-                margin-left: 20px !important;
+                margin-top: 10px !important;
             }
 
             .ob_about_this_content {
                 left: 20px !important;
-            }
-        }
-
-        // The text list doesn't have the header next to it to push it into place.
-        &.outbrainText {
-            .ob-widget-items-container {
-                margin-left: 240px !important;
             }
         }
 

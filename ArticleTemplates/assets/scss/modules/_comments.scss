@@ -100,7 +100,7 @@
         @include mq($from: col4) {
             .comments--module & {
                 float: left;
-                margin: 0 20px;
+                margin: 0;
                 width: 200px;
             }
 
@@ -260,6 +260,10 @@
 
         // If comment loading has failed then show the --failed block
         &--failed {
+            @include mq($from: col2, $to: col4) {
+                margin-left: 12px;
+            }
+
             .comments-has-failed & {
                 display: block;
             }
