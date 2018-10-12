@@ -11,7 +11,7 @@ define(function() {
         for (var i = 0; i < richLinks.length; i++) {
             var currentLink = richLinks[i];
             var sibling = currentLink.nextElementSibling;
-            if (hasClass(sibling, 'element-atom')) {
+            if (sibling && hasClass(sibling, 'element-atom')) {
                 currentLink.style.width = "100%";
                 sibling.style.clear = "both";
             }
