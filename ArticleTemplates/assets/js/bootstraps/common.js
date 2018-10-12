@@ -7,7 +7,8 @@ define([
     'modules/sharing',
     'modules/experiments/ab',
     'modules/util',
-    'modules/cards'
+    'modules/cards',
+    'modules/rich-links'
 ], function(
     fence,
     fastClick,
@@ -17,7 +18,8 @@ define([
     sharing,
     ab,
     util,
-    cards
+    cards,
+    richLinks
 ) {
     'use strict';
 
@@ -43,9 +45,10 @@ define([
         setGlobalObject(window);
         fixSeries();
         advertorialUpdates();
-        sharing.init(); // init sharing
+        sharing.init();
         setupTracking(); // track common events
-        ab.init(); // init ab tests
+        ab.init();
+        richLinks.init();
 
         if (smoothScroll !== undefined && typeof smoothScroll.init === 'function') {
             smoothScroll.init(); // scroll to anchor
