@@ -10,9 +10,10 @@ define(function() {
 
         for (var i = 0; i < richLinks.length; i++) {
             var currentLink = richLinks[i];
-            if (hasClass(currentLink.nextElementSibling, 'element-atom')) {
+            var sibling = currentLink.nextElementSibling;
+            if (hasClass(sibling, 'element-atom')) {
                 currentLink.style.width = "100%";
-                currentLink.nextElementSibling.style.clear = "both";
+                sibling.style.clear = "both";
             }
         }
     }
