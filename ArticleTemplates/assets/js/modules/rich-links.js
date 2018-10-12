@@ -2,7 +2,7 @@ define(function() {
     'use strict';
 
     function hasClass(element, className) {
-        return (' ' + element.className).indexOf(' ' + className) > -1;
+        return ('' + element.className).indexOf('' + className) > -1;
     }
 
     function init() {
