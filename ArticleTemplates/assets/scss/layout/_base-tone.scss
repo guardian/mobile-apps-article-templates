@@ -3,21 +3,25 @@ body {
         background-color: color(brightness-100);
     }
 
-    .article__header {
-        background-color: color(brightness-100);
+    &:not(.garnett--type-media) {
+        .article__header {
+            background-color: color(brightness-100);
 
-        @include mq($from: col4) {
-            background-color: color(brightness-93);
+            @include mq($from: col4) {
+                background-color: color(brightness-93);
 
-            .section,
-            .article-kicker,
-            .headline,
-            .standfirst__inner,
-            .meta {
-                background-color: color(brightness-100);
+                .section,
+                .article-kicker,
+                .headline,
+                .standfirst__inner,
+                .meta {
+                    background-color: color(brightness-100);
+                }
             }
         }
+    }
 
+    .article__header {
         .section {
             margin-bottom: 0;
         }
@@ -88,7 +92,7 @@ body {
     }
 
 
-    &:not(.is_advertising) .main-media {
+    &:not(.is_advertising, .garnett--type-media) .main-media {
         background: color(brightness-100);
     }
 
