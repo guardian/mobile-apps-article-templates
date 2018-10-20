@@ -286,7 +286,7 @@
 // depending on context
 @mixin pillar-reversible($kicker, $feature, $soft, $inverted) {
 
-    &:not(.garnett--type-live), &:not(.garnett--type-guardianlabs) {
+    &:not(.garnett--type-live):not(.garnett--type-guardianlabs) {
         // Section and series labels above headline
         .article-kicker {
             color: $kicker;
