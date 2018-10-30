@@ -39,6 +39,14 @@
                 text-align: right;
                 padding-bottom: 6px;
             }
+
+            .prose {
+                @include text-underline(color(comment-highlighted-link), color(comment-highlighted-link));
+
+                blockquote {
+                    color: color(brightness-7);
+                }
+            }
         }
 
         .comment__recommend {

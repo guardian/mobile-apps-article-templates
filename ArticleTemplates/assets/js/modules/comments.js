@@ -18,6 +18,7 @@ define([
         window.commentsClosed = commentsClosed;
         window.commentsOpen = commentsOpen;
         window.commentTime = commentTime;
+        window.showStaffBadges = showStaffBadges;
         window.commentsRecommendIncrease = commentsRecommendIncrease;
         window.commentsRecommendDecrease = commentsRecommendDecrease;
 
@@ -140,6 +141,7 @@ define([
             }
 
             commentsReplyFormatting();
+            showStaffBadges();
         }
     }
 
@@ -176,6 +178,8 @@ define([
         if (commentsContainer && loadingBlock) {
             commentsContainer.appendChild(loadingBlock);
         }
+
+        showStaffBadges();
     }
 
     function articleCommentsFailed() {
@@ -263,6 +267,15 @@ define([
 
         if (countElem) {
             countElem.innerText = number;
+        }
+    }
+
+    function showStaffBadges() {
+        var roles = document.getElementsByClassName('comment__role');
+        for (var i = 0; i < roles.length; i++) {
+            if (!roles[i].getAttribute('data-role')) {
+                roles[i].style.display = "none";
+            }
         }
     }
 
