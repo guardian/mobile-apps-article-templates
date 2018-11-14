@@ -256,6 +256,9 @@
         vertical-align: top;
         margin-left: 2px;
     }
+    @include mq($from: col2) {
+        display: inline-block;
+    }
 }
 
 .comment__pick {
@@ -268,6 +271,19 @@
     width: 18px;
     height: 18px;
     padding-top: 4px;
+}
+
+.comment__meta {
+    display: inline-block;
+    width: 140px;
+
+    @include mq($from: col2) {
+        width: 340px;
+    }
+
+    @include mq($from: col3) {
+        width: 440px;
+    }
 }
 
 .comment__username {
@@ -383,7 +399,7 @@
 
         @include mq($to: col2) {
             margin-left: base-px(4.33333);
-            padding-right: base-px(5.33333);
+            margin-right: base-px(5.33333);
         }
 
         @include mq(col2, col3) {
@@ -427,6 +443,8 @@
 
     .comment__recommend {
         margin: base-px(.75, 0, 0, 0);
+        background: white;
+        padding-left: 9px;
     }
 }
 
