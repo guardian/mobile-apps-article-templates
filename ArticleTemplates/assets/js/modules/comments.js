@@ -218,7 +218,9 @@ define([
     function scrollToHighlighted(commentId) {
         var scroll = new SmoothScroll();
         var comment = document.getElementById(commentId);
-        scroll.animateScroll(comment, {speed: 1500});
+        setTimeout(function() {
+            scroll.animateScroll(comment, {speed: 1500})
+        }, 100);
     }
 
     function commentsClosed() {
