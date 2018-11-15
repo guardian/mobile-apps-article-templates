@@ -219,7 +219,7 @@ define([
         var scroll = new SmoothScroll();
         var comment = document.getElementById(commentId);
         setTimeout(function() {
-            scroll.animateScroll(comment, {speed: 1500})
+            scroll.animateScroll(comment, {speed: 1500});
         }, 100);
     }
 

@@ -12,8 +12,8 @@ define(function() {
             var currentLink = richLinks[i];
             var sibling = currentLink.nextElementSibling;
             if (sibling && hasClass(sibling, 'element-atom')) {
-                currentLink.style.width = "100%";
-                sibling.style.clear = "both";
+                currentLink.style.width = '100%';
+                sibling.style.clear = 'both';
             }
         }
     }
