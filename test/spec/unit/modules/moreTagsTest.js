@@ -25,6 +25,13 @@ define([
         beforeEach(function (done) {
             var injector = new Squire();
 
+            window.GU = {
+                opts: {
+                    useAdsReady: 'true',
+                    platform: 'ios'
+                }
+            };
+
             clock = sinon.useFakeTimers();
 
             container = document.createElement('div');
