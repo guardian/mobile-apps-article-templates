@@ -7,6 +7,7 @@ define([
     'modules/util',
     'modules/creativeInjector',
     'modules/cards',
+    'modules/ads',
     'smoothScroll'
 ], function (
     relativeDates,
@@ -17,6 +18,7 @@ define([
     util,
     creativeInjector,
     cards,
+    ads,
     SmoothScroll
 ) {
     'use strict';
@@ -61,6 +63,7 @@ define([
     function checkInjectedComponents(newBlocksAdded) {
         // When a block has loaded check position of related cards placeholder
         cards.initPositionPoller();
+        ads.initMpuPoller(0);
         
         // check for tweets
         twitter.checkForTweets();

@@ -190,8 +190,13 @@ function (
         window.GuardianJSInterface.mpuAdsPosition(x1, y1, w1, h1);
     }
 
-    function initMpuPoller() {
-        poller(1000,
+    function initMpuPoller(interval) {
+        interval = typeof interval !== 'undefined' ? interval : 1000;
+        if (positionPoller !== null) {
+            window.clearTimeout(positionPoller);
+        }
+
+        poller(interval,
             getMpuOffset(),
             true
         );
@@ -282,7 +287,8 @@ function (
 
     return {
         init: ready,
-        updateMPUPosition: updateMPUPosition
+        updateMPUPosition: updateMPUPosition,
+        initMpuPoller: initMpuPoller
     };
 
 });

@@ -1,9 +1,11 @@
 define([
     'modules/util',
-    'modules/cards'
+    'modules/cards',
+    'modules/ads'
 ], function (
     util,
-    cards
+    cards,
+    ads
 ) {
     'use strict';
 
@@ -121,6 +123,7 @@ define([
             twttr.widgets.load(articleBody);
             // When a tweets been enhanced check position of related cards placeholder
             cards.initPositionPoller();
+            ads.initMpuPoller(0);
         }
     }
 

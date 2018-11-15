@@ -1,7 +1,8 @@
 define([
-    'modules/cards'
+    'modules/cards',
+    'modules/ads'
 ],
-function (cards) {
+function (cards, ads) {
     'use strict';
 
     var SHOW_TAGS = 5;
@@ -49,6 +50,7 @@ function (cards) {
         }
 
         cards.initPositionPoller();
+        ads.initMpuPoller(0);
         setTimeout(showTags, 200);
     }
 
