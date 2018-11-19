@@ -62,9 +62,10 @@
     margin: 0;
     padding: base-px(0, 0, 2, 0);
     overflow: hidden;
+    background: color(brightness-96);
 
     &--module {
-        border-top: 2px solid color(brightness-20);
+        border-top: 1px solid color(brightness-46);
     }
 
     &__wrapper {
@@ -85,10 +86,10 @@
     &__header {
         position: relative;
         margin: base-px(1);
-        min-height: 44px;
 
         @include mq($from: col2) {
             margin: base-px(1, 1, 1.5, 1);
+            min-height: 44px;
         }
 
         .android & {
@@ -142,9 +143,7 @@
         }
 
         @include mq($from: col4) {
-            font-size: 2.3rem;
-            line-height: 2.3rem;
-            margin-bottom: 15px;
+            margin-bottom: 6px;
         }
     }
 
@@ -152,6 +151,8 @@
     &__link:active,
     .comments__link {
         color: color(brightness-7);
+        font-size: 2.0rem;
+        line-height: 2.3rem;
     }
 
     &__count {
@@ -253,6 +254,10 @@
 
         // If comment count is 0 then show the --empty block
         &--empty {
+            @include mq($from: col2, $to: col4) {
+                margin-left: 12px;
+            }
+
             .comments-0:not(.comments--closed) & {
                 display: block;
             }
@@ -272,6 +277,9 @@
 
     .block {
         margin: base-px(1);
+        border: solid 1px #dcdad5;
+        border-top: 1px solid #999999;
+        border-bottom: 2px solid #dcdad5;
 
         @include mq($from: col4) {
             margin: base-px(1, 0);

@@ -83,6 +83,17 @@ body[data-content-type='liveblog'] {
         }
     }
 
+    .tags__inline-list:not(:empty) {
+        @include mq($from: col3) {
+            margin-left: cols($base-4, 5, 1);
+        }
+
+        @include mq($from: col4) {
+            margin-left: 232px; // 240 - 4 (item padding offset) - 4 (visually offset rounded items);
+            width: 940px;
+        }
+    }
+
     .tags {
         border-top: 0;
 
