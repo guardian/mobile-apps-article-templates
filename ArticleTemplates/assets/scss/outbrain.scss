@@ -44,7 +44,7 @@
         }
     }
 
-    @for $i from 10 through 35 {
+    @for $i from 15 through 35 {
         .AR_#{$i}.ob-strip-layout {
             .ob-widget-header, .ob-widget-header div {
                 color: #121212;
@@ -53,9 +53,10 @@
                 font-size: 2.0rem;
                 line-height: 2.3rem;
                 padding-bottom: 0;
-
-                &::first-letter {
-                    text-transform: capitalize;
+                @include mq($to: col4) {
+                    &::first-letter {
+                        text-transform: capitalize;
+                    }
                 }
             }
         }
@@ -97,9 +98,10 @@
                 color: #121212;
                 font-family: "Guardian Headline","Guardian Egyptian Web",Georgia,serif;
                 font-weight: 600;
-
-                &::first-letter {
-                    text-transform: capitalize;
+                @include mq($to: col4) {
+                    &::first-letter {
+                        text-transform: capitalize;
+                    }
                 }
 
                 span {
