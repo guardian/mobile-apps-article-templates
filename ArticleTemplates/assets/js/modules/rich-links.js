@@ -11,9 +11,15 @@ define(function() {
         for (var i = 0; i < richLinks.length; i++) {
             var currentLink = richLinks[i];
             var sibling = currentLink.nextElementSibling;
-            if (sibling && hasClass(sibling, 'element-atom')) {
-                currentLink.style.width = "100%";
-                sibling.style.clear = "both";
+            if (sibling) {
+                if (
+                    hasClass(sibling, 'element-atom') ||
+                    hasClass(sibling, 'element-embed') ||
+                    hasClass(sibling, 'element-tweet')
+                ) {
+                    currentLink.style.width = '100%';
+                    sibling.style.clear = 'both';
+                }
             }
         }
     }
