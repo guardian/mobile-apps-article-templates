@@ -53,6 +53,13 @@
             .sponsorship {
                 background: color(brightness-100);
             }
+
+
+            .article__headline.headline {
+                @include mq($from: col4) {
+                    background-color: transparent;
+                }
+            }
         }
 
         &__header-bg {
@@ -195,10 +202,6 @@
 
             @include mq($from: col2) {
                 margin-bottom: 24px;
-            }
-
-            @include mq($from: col4) {
-                background-color: transparent;
             }
         }
 

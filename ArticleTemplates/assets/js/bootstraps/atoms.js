@@ -1,9 +1,11 @@
 define([
   'modules/atoms/services',
-  'modules/cards'
+  'modules/cards',
+  'modules/ads'
 ], function (
   services,
-  cards
+  cards,
+  ads
 ) {
     'use strict';
 
@@ -34,7 +36,10 @@ define([
 
     function initExpandables(atom) {
       Array.prototype.slice.call(atom.getElementsByTagName('details')).forEach(function(d) {
-        d.addEventListener('toggle', cards.initPositionPoller);
+        d.addEventListener('click', function() {
+          cards.initPositionPoller();
+          ads.initMpuPoller(0);
+        });
       });
     }
 
