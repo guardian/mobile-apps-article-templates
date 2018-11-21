@@ -61,6 +61,22 @@ define([
         }
     }
 
+    function checkForZero() {
+        var comments = document.getElementsByClassName("comments-0")[0];
+        if (comments) {
+            if ([].slice.call(comments.getElementsByClassName("block--discussion-thread")).length > 0) {
+                var emptyCommentBlock = comments.getElementsByClassName("comments__block--empty")[0];
+                var commentCount = comments.getElementsByClassName("comments__count")[0];
+                if (emptyCommentBlock) {
+                    emptyCommentBlock.style.display = "none";
+                }
+                if (commentCount) {
+                    commentCount.style.display = "none";
+                }
+            }
+        }
+    }
+
     function addClickHandlerToComments(block) {
         var i,
             comments = block.getElementsByClassName('comment');
@@ -140,6 +156,7 @@ define([
             }
 
             commentsReplyFormatting();
+            checkForZero();
         }
     }
 
@@ -171,6 +188,7 @@ define([
             }
 
             commentsReplyFormatting();
+            checkForZero();
         }
 
         if (commentsContainer && loadingBlock) {
