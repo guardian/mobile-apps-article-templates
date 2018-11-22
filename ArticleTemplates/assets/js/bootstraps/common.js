@@ -26,7 +26,7 @@ define([
     var trackCommentContainerView = true;
         
     function init() {
-        if (GU.opts.platform === 'android') {
+        if (GU && GU.opts && GU.opts.platform === 'android') {
             // polyfill to remove click delays on browsers with touch
             fastClick.attach(document.body);
         }
