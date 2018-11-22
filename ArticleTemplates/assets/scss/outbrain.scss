@@ -8,11 +8,14 @@
 // This whole stylesheet is horrible, but needs to be imported last and have importants to overide the outbrain css
 
 // Avoid hover state within apps
-
-.AR_30.ob-widget, .AR_31.ob-widget {
-    .ob-dynamic-rec-link:hover .ob-unit.ob-rec-text {
+@for $i from 15 through 35 {
+    .AR_#{$i}.ob-widget .ob-dynamic-rec-link:hover .ob-unit.ob-rec-text {
         color: #005689;
         text-decoration: none;
+    }
+
+    .AR_#{$i}.ob-widget:hover .ob_logo {
+        background-position: unset;
     }
 }
 
@@ -26,11 +29,36 @@
 
 
 .OUTBRAIN {
+    .ob-unit.ob-rec-text {
+        @include mq($from: col2) {
+            font-size: 1.3rem !important;
+            line-height: 1.6rem !important;
+        }
+    }
+
     .ob-dynamic-rec-link {
         .ob-rec-source {
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
+        }
+    }
+
+    @for $i from 15 through 35 {
+        .AR_#{$i}.ob-strip-layout {
+            .ob-widget-header, .ob-widget-header div {
+                color: color(brightness-7);
+                font-family: "Guardian Sans","Guardian Egyptian Web",Georgia,serif;
+                font-weight: 600;
+                font-size: 2.0rem;
+                line-height: 2.3rem;
+                padding-bottom: 0;
+                @include mq($to: col4) {
+                    &::first-letter {
+                        text-transform: capitalize;
+                    }
+                }
+            }
         }
     }
 
@@ -52,6 +80,7 @@
                 margin: 12px 0;
                 span {
                     font-size: 14px;
+                    font-family: "Guardian Agate Sans 1 Web", "Guardian Egyptian Web", Georgia, serif;
                 }
             }
         }
@@ -67,9 +96,18 @@
 
             .ob-widget-header {
                 margin: 12px 0 !important;
+                color: color(brightness-7);
+                font-family: "Guardian Sans", "Guardian Egyptian Web", Georgia, serif;
+                font-weight: 600;
+                @include mq($to: col4) {
+                    &::first-letter {
+                        text-transform: capitalize;
+                    }
+                }
 
                 span {
                     margin-left: 12px !important;
+                    font-family: "Guardian Agate Sans 1 Web", "Guardian Egyptian Web", Georgia, serif;
                 }
             }
 
@@ -138,12 +176,12 @@
 
             .ob-dynamic-rec-container {
                 margin-right: 16px !important;
-                max-width: 210px !important;
-                width: 210px !important;
+                max-width: 230px !important;
+                width: 230px !important;
             }
         }
 
-        .AR_31.ob-strip-layout .ob-rec-text {
+        .AR_31.ob-strip-layout .ob-rec-text, .AR_20.ob-strip-layout .ob-rec-text {
             margin-top: -25px !important;
             padding: 6px .3125rem .5em !important;
         }
@@ -153,11 +191,12 @@
         margin: 0 auto !important;
         max-width: 1200px !important;
 
-        .ob-widget.AR_30 {
+        .ob-widget.AR_30, .ob-widget.AR_18 {
             .ob-widget-items-container {
-                margin-top: -135px !important;
+                margin-top: -106px !important;
             }
         }
+
         .ob-widget {
             .ob-widget-items-container {
                 margin-left: 240px !important;
