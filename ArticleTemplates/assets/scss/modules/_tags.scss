@@ -56,6 +56,10 @@
     display: block;
     padding: base-px(.4, 1, 1.7, .7);
 
+    @include mq($from: col2) {
+        padding: base-px(0, 1, 1.7, 0);
+    }
+
     @include mq($from: col4) {
         margin-left: 232px; // 240 - 4 (item padding offset) - 4 (visually offset rounded items);
         width: 940px;
