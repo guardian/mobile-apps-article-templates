@@ -26,7 +26,10 @@ define([
     var trackCommentContainerView = true;
         
     function init() {
-        fastClick.attach(document.body); // polyfill to remove click delays on browsers with touch
+        if (GU && GU.opts && GU.opts.platform === 'android') {
+            // polyfill to remove click delays on browsers with touch
+            fastClick.attach(document.body);
+        }
         formatImages();
         figcaptionToggle();
         articleContentType();
