@@ -1,9 +1,11 @@
 define([
     'modules/relativeDates',
-    'modules/util'
+    'modules/util',
+    'smoothScroll'
 ], function(
     relativeDates,
-    util
+    util,
+    SmoothScroll
 ) {
     'use strict';
 
@@ -15,6 +17,8 @@ define([
         window.articleCommentsFailed = articleCommentsFailed;
         window.commentsFailed = articleCommentsFailed; // Exactly the same as window.articleCommentsFailed - WHY?
         window.commentsEnd = commentsEnd;
+        window.commentsExpand = commentsExpand;
+        window.scrollToHighlighted = scrollToHighlighted;
         window.commentsClosed = commentsClosed;
         window.commentsOpen = commentsOpen;
         window.commentTime = commentTime;
@@ -58,6 +62,13 @@ define([
             }
 
             discussionThread.classList.add('block--discussion-thread--checked');
+        }
+    }
+
+    function commentsExpand() {
+        var moreButtons = document.getElementsByClassName('more--comments');
+        for (var i = 0; i < moreButtons.length; i++) {
+            handleMoreCommentsClick(moreButtons[i]);
         }
     }
 
@@ -220,6 +231,14 @@ define([
         if (loadingBlock) {
             loadingBlock.parentNode.removeChild(loadingBlock);
         }
+    }
+
+    function scrollToHighlighted(commentId) {
+        var scroll = new SmoothScroll();
+        var comment = document.getElementById(commentId);
+        setTimeout(function() {
+            scroll.animateScroll(comment, {speed: 1500});
+        }, 100);
     }
 
     function commentsClosed() {

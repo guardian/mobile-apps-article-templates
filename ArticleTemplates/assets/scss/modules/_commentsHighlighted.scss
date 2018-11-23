@@ -1,0 +1,75 @@
+.comments {
+    .block--highlighted {
+        margin: 12px 12px 24px;
+
+        .comment__container {
+            padding: 12px;
+            margin-bottom: 32px;
+            background: color(comment-highlighted);
+
+            .comment__options {
+                background-color: color(comment-highlighted)
+            }
+
+            &:after {
+                content: '';
+                width: 24px;
+                height: 24px;
+                border-radius: 0 0 24px;
+                position: absolute;
+                bottom: -24px;
+                left: 22px;
+                background-color: color(comment-highlighted);
+                
+                @include mq(col2, col3) {
+                    left: cols($base-3, 4, 1);
+                }
+            
+                @include mq($from: col3) {
+                    left: cols($base-4, 5, 1);
+                }
+            
+            }
+
+            .comment__viewthread {
+                display: block;
+                text-align: right;
+                padding-bottom: 6px;
+            }
+
+            .prose {
+                @include text-underline(color(comment-highlighted-link), color(comment-highlighted-link));
+
+                blockquote {
+                    color: color(brightness-7);
+                }
+            }
+        }
+
+        .comment__recommend {
+            text-align: right;
+            position: relative;
+            float: right;
+            margin-right: 18px;
+            margin-top: 4px;
+        }
+
+        .avatar {
+            display: inline-block;
+            margin: 4px 6px 0 12px;
+
+            @include mq(col2, col3) {
+                margin-left: cols($base-3, 4, 1);
+            }
+        
+            @include mq($from: col3) {
+                margin-left: cols($base-4, 5, 1);
+            }
+        }
+
+        .author-meta {
+            display: inline-block;
+            vertical-align: top;
+        }
+    }
+}
