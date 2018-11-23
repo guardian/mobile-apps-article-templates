@@ -78,6 +78,9 @@ define([
         }
 
         slider1.setValue(current);
+        if (current > 0) {
+            audioPlaying();
+        }
     }
 
     function audioSlider() {
@@ -115,9 +118,22 @@ define([
 
     function audioPlay() {
         var button = document.getElementsByClassName('audio-player__button')[0];
+        var loading = document.getElementsByClassName('audio-player__button--loading')[0];
 
-        if (button) {
+        if (button && loading) {
+            loading.style.display = "block";
+            button.style.display = "none";
+        }
+    }
+
+    function audioPlaying() {
+        var button = document.getElementsByClassName('audio-player__button')[0];
+        var loading = document.getElementsByClassName('audio-player__button--loading')[0];
+
+        if (button && loading) {
             button.classList.add('pause');
+            loading.style.display = "none";
+            button.style.display = "block";
         }
     }
 
