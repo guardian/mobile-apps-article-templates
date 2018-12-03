@@ -1,166 +1,156 @@
-define([
-    'modules/util',
-    'modules/cards',
-    'modules/ads'
-], function (
-    util,
-    cards,
-    ads
-) {
-    'use strict';
+import { debounce } from 'modules/util';
+import { initPositionPoller } from 'modules/cards';
+import { initMpuPoller } from 'modules/ads';
 
-    var articleBody,
-        isAndroid,
-        tweets,
-        scriptReady = false;
 
-    function ready() {
-        isAndroid = GU.opts.platform === 'android';
-        articleBody = document.getElementsByClassName('article__body')[0];
+let articleBody;
+let isAndroid;
+let tweets;
+let scriptReady = false;
 
-        checkForTweets();
+function init() {
+    isAndroid = GU.opts.platform === 'android';
+    articleBody = document.getElementsByClassName('article__body')[0];
+
+    checkForTweets();
+}
+
+function checkForTweets() {
+    if (GU.opts.disableEnhancedTweets) {
+        return;
     }
 
-    function checkForTweets() {
-        if (GU.opts.disableEnhancedTweets) {
-            return;
-        }
+    tweets = document.body.querySelectorAll('blockquote.js-tweet, blockquote.twitter-tweet');
 
-        tweets = document.body.querySelectorAll('blockquote.js-tweet, blockquote.twitter-tweet');
+    if (tweets.length && !scriptReady) {
+        loadScript();
+    }
+}
 
-        if (tweets.length && !scriptReady) {
-            loadScript();
-        }
+function loadScript() {
+    let scriptElement;
+
+    if (document.getElementById('twitter-widget')) {
+        return;
     }
 
-    function loadScript() {
-        var scriptElement;
+    scriptElement = document.createElement('script');
 
-        if (document.getElementById('twitter-widget')) {
-            return;
-        }
+    scriptElement.id = 'twitter-widget';
+    scriptElement.async = true;
+    scriptElement.src = 'https://platform.twitter.com/widgets.js';
+    scriptElement.onload = onScriptLoaded;
 
-        scriptElement = document.createElement('script');
+    document.body.appendChild(scriptElement);
+}
 
-        scriptElement.id = 'twitter-widget';
-        scriptElement.async = true;
-        scriptElement.src = 'https://platform.twitter.com/widgets.js';
-        scriptElement.onload = onScriptLoaded;
+function onScriptLoaded() {
+    scriptReady = isScriptReady();
 
-        document.body.appendChild(scriptElement);
+    if (scriptReady) {
+        enhanceTweets();
     }
 
-    function onScriptLoaded() {
-        scriptReady = isScriptReady();
+    window.addEventListener('scroll', debounce(enhanceTweets, 100));
+}
 
-        if (scriptReady) {
-            enhanceTweets();
-        }
-
-        window.addEventListener('scroll', util.debounce(enhanceTweets, 100));
+function isScriptReady() {
+    if (scriptReady) {
+        return true;
+    } else if (typeof twttr !== 'undefined' && 'widgets' in twttr && 'load' in twttr.widgets) {
+        twttr.events.bind('rendered', workaroundClicks);
+        twttr.events.bind('rendered', fixVineAutoplay);
+        scriptReady = true;
+        return true;
     }
 
-    function isScriptReady() {
-        if (scriptReady) {
-            return true;
-        } else if (typeof twttr !== 'undefined' && 'widgets' in twttr && 'load' in twttr.widgets) {
-            twttr.events.bind('rendered', workaroundClicks);
-            twttr.events.bind('rendered', fixVineAutoplay);
-            scriptReady = true;
-            return true;
-        }
+    return false;
+}
 
-        return false;
-    }
+function isTweetInRange(tweet) {
+    const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    const scrollTop = document.body.scrollTop;
+    const offsetHeight = tweet.offsetHeight;
+    const offsetTop = tweet.offsetTop;
 
-    function isTweetInRange(tweet) {
-        var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0),
-            scrollTop = document.body.scrollTop,
-            offsetHeight = tweet.offsetHeight,
-            offsetTop = tweet.offsetTop;
+    return ((scrollTop + (viewportHeight * 2.5)) > offsetTop) && (scrollTop < (offsetTop + offsetHeight));
+}
 
-        return ((scrollTop + (viewportHeight * 2.5)) > offsetTop) && (scrollTop < (offsetTop + offsetHeight));        
-    }
+function enhanceTweet(tweet) {
+    let tweetProcessed = false;
 
-    function enhanceTweet(tweet) {
-        var tweetProcessed = false;
-
-        if (isScriptReady()) {
-            if (isTweetInRange(tweet)) {
-                addTweetClass(tweet);
-                tweetProcessed = true;
-            } else {
-                removeTweetClass(tweet);
-            }
+    if (isScriptReady()) {
+        if (isTweetInRange(tweet)) {
+            addTweetClass(tweet);
+            tweetProcessed = true;
         } else {
             removeTweetClass(tweet);
         }
-
-        return tweetProcessed;
+    } else {
+        removeTweetClass(tweet);
     }
 
-    function addTweetClass(tweet) {
-        tweet.classList.add('twitter-tweet');
-        tweet.classList.remove('js-tweet');
+    return tweetProcessed;
+}
+
+function addTweetClass(tweet) {
+    tweet.classList.add('twitter-tweet');
+    tweet.classList.remove('js-tweet');
+}
+
+function removeTweetClass(tweet) {
+    tweet.classList.remove('twitter-tweet');
+    tweet.classList.add('js-tweet');
+}
+
+function enhanceTweets() {
+    let i;
+    let processedTweets = 0;
+
+    for (i = 0; i < tweets.length; i++) {
+        if (enhanceTweet(tweets[i])) {
+            processedTweets++;
+        }
     }
 
-    function removeTweetClass(tweet) {
-        tweet.classList.remove('twitter-tweet');
-        tweet.classList.add('js-tweet');
-    } 
+    if (processedTweets && articleBody){
+        twttr.widgets.load(articleBody);
+        // When a tweets been enhanced check position of related cards placeholder
+        initPositionPoller();
+        initMpuPoller(0);
+    }
+}
 
-    function enhanceTweets() {
-        var i,
-            processedTweets = 0;
+function workaroundClicks(evt) {
+    let i;
+    let webIntentLinks;
 
-        for (i = 0; i < tweets.length; i++) {
-            if (enhanceTweet(tweets[i])) {
-                processedTweets++;
+    if (!isAndroid,
+        evt.target.contentWindow &&
+        evt.target.contentWindow.document) {
+            webIntentLinks = evt.target.contentWindow.document.querySelectorAll('a.web-intent');
+            for (i = 0; i < webIntentLinks.length; i++) {
+                webIntentLinks[i].classList.remove('web-intent');
             }
-        }
-
-        if (processedTweets && articleBody){
-            twttr.widgets.load(articleBody);
-            // When a tweets been enhanced check position of related cards placeholder
-            cards.initPositionPoller();
-            ads.initMpuPoller(0);
-        }
     }
+}
 
-    function workaroundClicks(evt) {
-        var i,
-            webIntentLinks;
+function fixVineAutoplay(evt) {
+    let i;
+    let mediaCards;
 
-        if (!isAndroid,
-            evt.target.contentWindow &&
-            evt.target.contentWindow.document) {
-                webIntentLinks = evt.target.contentWindow.document.querySelectorAll('a.web-intent');
-                for (i = 0; i < webIntentLinks.length; i++) {
-                    webIntentLinks[i].classList.remove('web-intent');
+    if (!isAndroid &&
+        evt.target.contentWindow &&
+        evt.target.contentWindow.document &&
+        evt.target.contentWindow.document.querySelectorAll('iframe[src^="https://vine.co"],iframe[src^="https://amp.twimg.com/amplify-web-player/prod/source.html?video_url"]').length) {
+            mediaCards = evt.target.contentWindow.document.getElementsByClassName('MediaCard');
+            for (i = 0; i < mediaCards.length; i++) {
+                if (mediaCards[i].parentNode) {
+                    mediaCards[i].parentNode.removeChild(mediaCards[i]);
                 }
-        }
+            }
+            evt.target.removeAttribute('height');
     }
+}
 
-    function fixVineAutoplay(evt) {
-        var i,
-            mediaCards;
-
-        if (!isAndroid &&
-            evt.target.contentWindow &&
-            evt.target.contentWindow.document &&
-            evt.target.contentWindow.document.querySelectorAll('iframe[src^="https://vine.co"],iframe[src^="https://amp.twimg.com/amplify-web-player/prod/source.html?video_url"]').length) {
-                mediaCards = evt.target.contentWindow.document.getElementsByClassName('MediaCard');
-                for (i = 0; i < mediaCards.length; i++) {
-                    if (mediaCards[i].parentNode) {
-                        mediaCards[i].parentNode.removeChild(mediaCards[i]);
-                    }
-                }
-                evt.target.removeAttribute('height');
-        }
-    }
-
-    return {
-        init: ready,
-        checkForTweets: checkForTweets
-    };
-});
+export { init, checkForTweets };

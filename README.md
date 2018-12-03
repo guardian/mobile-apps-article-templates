@@ -24,11 +24,6 @@ $ git clone git@github.com:guardian/mobile-apps-article-templates.git
 $ yarn
 ```
 
-**Watch**
-```bash
-$ yarn develop
-```
-
 ## Mobile apps developers
 If you are developing against a branch of `mobile-apps-article-templates` which is not `master`:
 
@@ -49,4 +44,4 @@ Yarn will provide the following services:
 * `yarn test` runs the JS unit tests from the `test/spec/unit/` directory
 * `yarn validate` runs `sasslint` checks on SCSS and `jshint` checks on JS
 * `yarn build` builds JS/CSS assets, used on CI environment for building assets
-* `yarn develop` builds JS and CSS (with source maps) assets and watches for changes to JS/CSS. On change, it rebuilds assets and source maps. After running this you can browse test fixtures at `http://localhost:8000/test/fixtures/`
+* `yarn dev` builds JS and CSS (with source maps).

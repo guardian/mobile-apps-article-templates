@@ -1,76 +1,58 @@
-define([
-    'modules/cards',
-    'modules/ads'
-],
-function (cards, ads) {
-    'use strict';
+import { initMpuPoller } from 'modules/ads';
+import { initPositionPoller } from 'modules/cards';
 
-    var SHOW_TAGS = 5;
-    var initialised;
-    var moreButton;
-    var hiddenTags;
+const SHOW_TAGS = 5;
+let moreButton;
+let hiddenTags;
 
-    function init() {
-        var firstHiddenTag,
-            tags;
+function init() {
+    let firstHiddenTag;
+    let tags = document.querySelectorAll('.tags__list-item');
 
-        if (!initialised) {
-            initialised = true;
-            tags = document.querySelectorAll('.tags__list-item');
+    if (tags.length > SHOW_TAGS) {
+        moreButton = document.createElement('li');
+        moreButton.id = 'more-tags-container';
+        moreButton.classList.add('inline-list__item');
+        moreButton.classList.add('tags__list-item');
+        moreButton.classList.add('more-button');
+        moreButton.classList.add('js-more-button');
+        moreButton.innerHTML = '<a id="more">More...</a>';
+        moreButton.addEventListener('click', show);
+        firstHiddenTag = tags[SHOW_TAGS];
+        firstHiddenTag.parentNode.insertBefore(moreButton, firstHiddenTag);
+        hiddenTags = document.querySelectorAll('#more-tags-container ~ .tags__list-item');
+        hideTags();
+    }
+}
 
-            if (tags.length > SHOW_TAGS) {
-                moreButton = document.createElement('li');
-                moreButton.id = 'more-tags-container';
-                moreButton.classList.add('inline-list__item');
-                moreButton.classList.add('tags__list-item');
-                moreButton.classList.add('more-button');
-                moreButton.classList.add('js-more-button');
-                moreButton.innerHTML = '<a id="more">More...</a>';
+function show() {
+    let i;
 
-                moreButton.addEventListener('click', show);
+    moreButton.style.display = 'none';
 
-                firstHiddenTag = tags[SHOW_TAGS];
-
-                firstHiddenTag.parentNode.insertBefore(moreButton, firstHiddenTag);
-
-                hiddenTags = document.querySelectorAll('#more-tags-container ~ .tags__list-item');
-
-                hideTags();
-            }
-        }
+    for (i = 0; i < hiddenTags.length; i++) {
+        hiddenTags[i].classList.remove('hide-tags');
     }
 
-    function show() {
-        var i;
+    initPositionPoller();
+    initMpuPoller(0);
+    setTimeout(showTags, 200);
+}
 
-        moreButton.style.display = 'none';
+function hideTags() {
+    let i;
 
-        for (i = 0; i < hiddenTags.length; i++) {
-            hiddenTags[i].classList.remove('hide-tags');
-        }
-
-        cards.initPositionPoller();
-        ads.initMpuPoller(0);
-        setTimeout(showTags, 200);
+    for (i = 0; i < hiddenTags.length; i++) {
+        hiddenTags[i].classList.add('hide-tags');
     }
+}
 
-    function hideTags() {
-        var i;
+function showTags() {
+    let i;
 
-        for (i = 0; i < hiddenTags.length; i++) {
-            hiddenTags[i].classList.add('hide-tags');
-        }
+    for (i = 0; i < hiddenTags.length; i++) {
+        hiddenTags[i].classList.remove('hide-tags');
     }
+}
 
-    function showTags() {
-        var i;
-
-        for (i = 0; i < hiddenTags.length; i++) {
-            hiddenTags[i].classList.remove('hide-tags');
-        }
-    }
-
-    return {
-        init: init
-    };
-});
+export { init };

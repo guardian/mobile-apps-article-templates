@@ -1,18 +1,9 @@
-define([
-	'bootstraps/common',
-    'bootstraps/audio'
-], function (
-	common,
-    audio
-) {
-    'use strict';
-    
-    function init() {
-        common.init();
-        audio.init();
-    }
+import { init as commonInit } from 'bootstraps/common';
+import { init as audioInit } from 'bootstraps/audio';
 
-    return {
-        init: init
-    };
-});
+const init = () => {
+    commonInit();
+    audioInit();
+}
+
+export { init };

@@ -76,12 +76,12 @@ if (!Function.prototype.bind) {
     
     // store references to DOM elements
     if (typeof element === 'string'){
-      this.element = document.getElementsByClassName(element)[0];
+      this.element = document.getElementById(element);
     }
         
-    this.knob = this.element.getElementsByClassName('audio-player__slider__knob')[0];
-    this.track = this.element.getElementsByClassName('audio-player__slider__track')[0];
-
+    this.knob = this.element.getElementsByClassName('knob')[0];
+    this.track = this.element.getElementsByClassName('track')[0];
+    
     // set context for event handlers
     this.start = this.start.bind(this);
     this.move = this.move.bind(this);

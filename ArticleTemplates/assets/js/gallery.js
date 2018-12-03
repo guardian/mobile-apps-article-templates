@@ -1,19 +1,9 @@
-define([
-    'bootstraps/common',
-    'bootstraps/gallery'
-], function (
-    common,
-    gallery
-) {
-    'use strict';
-    
-    function init() {
-        common.init();
-        gallery.init();
-    }
+import { init as commonInit } from 'bootstraps/common';
+import { init as galleryInit } from 'bootstraps/gallery';
 
-    return {
-        init: init
-    };
-});
+const init = () => {
+    commonInit();
+    galleryInit();
+}
 
+export { init };
