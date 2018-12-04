@@ -26,6 +26,15 @@ module.exports = (env, argv) => {
           ],
         },
         {
+          test: /\.js$/,
+          exclude: [
+            /node_modules/,
+            path.resolve(__dirname, "ArticleTemplates/assets/js/bootstraps/"),
+            path.resolve(__dirname, "ArticleTemplates/assets/js/modules/")
+          ],
+          use: ['babel-loader', 'eslint-loader']
+        },
+        {
           test: /\.scss$/,
           use: [{
             loader: MiniCssExtractPlugin.loader,

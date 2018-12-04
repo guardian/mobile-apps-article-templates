@@ -17,25 +17,6 @@ const END_STATE = 'ENDED';
 const PAUSE_STATE = 'PAUSED';
 const CUED_STATE = 'CUED';
 
-function init() {
-    setStateHandlers();
-    checkForVideos();
-}
-
-function setStateHandlers() {
-    /**
-        nativeYoutubeEnabled can be enabled on Android
-        if nativeYoutubeEnabled is true we won't track
-        state ended, playing, paused from within the template
-        as this is handled by Android
-    **/
-    if (!GU.opts.nativeYoutubeEnabled) {
-        stateHandlers[END_STATE] = onPlayerEnded;
-        stateHandlers[PLAY_STATE] = onPlayerPlaying;
-        stateHandlers[PAUSE_STATE] = onPlayerPaused;
-    }
-}
-
 function setProgressTracker(id) {
     killProgressTracker(true);
     progressTracker.id = id;
@@ -338,6 +319,25 @@ function trackEvent(evt) {
     } else {
         signalDevice(`youtube/${JSON.stringify(evt)}`);
     }
+}
+
+function setStateHandlers() {
+    /**
+     * nativeYoutubeEnabled can be enabled on Android
+     * if nativeYoutubeEnabled is true we won't track state ended,
+     * playing, paused from within the template
+     * as this is handled by Android
+     */
+    if (!GU.opts.nativeYoutubeEnabled) {
+        stateHandlers[END_STATE] = onPlayerEnded;
+        stateHandlers[PLAY_STATE] = onPlayerPlaying;
+        stateHandlers[PAUSE_STATE] = onPlayerPaused;
+    }
+}
+
+function init() {
+    setStateHandlers();
+    checkForVideos();
 }
 
 export { init, checkForVideos };

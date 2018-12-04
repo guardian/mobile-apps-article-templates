@@ -8,18 +8,6 @@ import { init as creativeInjectorInit } from 'modules/creativeInjector';
 import { init as messengerInit } from 'modules/messenger';
 import resizeInit from 'modules/messenger/resize';
 
-function init() {
-    setupGlobals();
-    youtubeInit();
-    twitterInit();
-    witnessInit();
-    quizInit();
-    immersiveInit();
-    creativeInjectorInit();
-    messengerInit([resizeInit]);
-    richLinkTracking();
-}
-
 function setupGlobals() {
     window.articleOutbrainInserter = initOutbrain;
     window.applyNativeFunctionCall('articleOutbrainInserter');
@@ -46,6 +34,18 @@ function richLinkTracking() {
             }
         }
     }
+}
+
+function init() {
+    setupGlobals();
+    youtubeInit();
+    twitterInit();
+    witnessInit();
+    quizInit();
+    immersiveInit();
+    creativeInjectorInit();
+    messengerInit([resizeInit]);
+    richLinkTracking();
 }
 
 export { init };

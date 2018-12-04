@@ -4,6 +4,6 @@ import { init as galleryInit } from 'bootstraps/gallery';
 const init = () => {
     commonInit();
     galleryInit();
-}
+};
 
 export { init };

@@ -1,16 +1,5 @@
 import services from 'modules/atoms/services';
 
-function init() {
-    const atomTypes = GU.opts.atoms;
-    Object.keys(atomTypes).forEach(t => {
-        const f = atomTypes[t];
-        if (typeof f.default !== 'function' || f.default.length !== 1) {
-            return;
-        }
-        bootAtomType(t, atomTypes[t]);
-    });
-}
-
 function bootAtomType(atomType, atomFactory) {
     const atomBuilder = atomFactory.default(services);
     const atoms = document.querySelectorAll(`.element-atom[data-atom-type="${atomType}"]`);
@@ -24,4 +13,15 @@ function bootAtomType(atomType, atomFactory) {
     }
 }
 
-export { init }
+function init() {
+    const atomTypes = GU.opts.atoms;
+    Object.keys(atomTypes).forEach(t => {
+        const f = atomTypes[t];
+        if (typeof f.default !== 'function' || f.default.length !== 1) {
+            return;
+        }
+        bootAtomType(t, atomTypes[t]);
+    });
+}
+
+export { init };

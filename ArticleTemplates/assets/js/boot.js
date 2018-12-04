@@ -39,7 +39,7 @@ const init = opts => {
     ];
 
     const applyNativeFunctionCall = name => {
-    const queue = window[name + 'Queue'];
+        const queue = window[name + 'Queue'];
         if (queue) {
             Array.prototype.forEach.call(queue, function(item) {
                 window[name].apply(this, item);
@@ -57,10 +57,10 @@ const init = opts => {
             window[queue].push(arguments);
         };
     };
-    
+
     nativeFunctionCalls.forEach(setNativeFunctionCall);
     window.applyNativeFunctionCall = applyNativeFunctionCall;
-    
+
     const loadCss = () => {
         const url = `assets/css/${opts.asyncStylesFilename}.css`;
         const basePath = opts.templatesDirectory;
@@ -78,16 +78,20 @@ const init = opts => {
 
         const getAdType = () => {
             const contentType = opts.contentType;
-            if ((contentType === 'liveblog' && !GU.opts.isMinute) || 
+            if ((contentType === 'liveblog' && !GU.opts.isMinute) ||
                 (contentType !== 'liveblog' && document.querySelector('.article__body--liveblog'))) {
                 return 'liveblog';
             }
-    
+
             return 'default';
         };
 
-        const { contentType, adsEnabled, adsConfig, mpuAfterParagraphs } = GU.opts;
-        let modulePromise;
+        const {
+            contentType,
+            adsEnabled,
+            adsConfig,
+            mpuAfterParagraphs
+        } = GU.opts;
 
         // ads positioning
         if (adsEnabled && (adsEnabled === 'true' || adsEnabled.includes('mpu'))) {
@@ -97,7 +101,7 @@ const init = opts => {
                 mpuAfterParagraphs
             });
         }
-    
+
         if (contentType === 'article') {
             import(/* webpackChunkName: "article" */ './article').then(article => {
                 article.init();
@@ -134,12 +138,12 @@ const init = opts => {
     };
 
     domready(kickOff);
-}
- 
+};
+
 const go = () => {
     window.GU.bootstrap = {
         init
     };
 };
 
-go(); 
+go();
