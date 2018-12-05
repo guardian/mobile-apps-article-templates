@@ -4,10 +4,17 @@
   "description": "Templates for articles on both iOS and Android next-gen apps",
   "main": "ArticleTemplates/",
   "scripts": {
-    "test": "",
+    "test": "jest",
     "validate": "",
     "dev": "webpack --mode development --watch",
     "build": "webpack --mode production"
+  },
+  "jest": {
+    "moduleDirectories": [
+      "node_modules",
+      "ArticleTemplates/assets/js"
+    ],
+    "setupFiles": ["jest-canvas-mock"]
   },
   "repository": {
     "type": "git",
@@ -24,6 +31,7 @@
   "devDependencies": {
     "@babel/core": "^7.1.6",
     "@babel/preset-env": "^7.1.6",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
@@ -56,6 +64,8 @@
     "grunt-sass-lint": "^0.2.2",
     "grunt-shell": "^1.1.1",
     "image-webpack-loader": "^4.3.0",
+    "jest": "^23.6.0",
+    "jest-canvas-mock": "^1.1.0",
     "jshint-summary": "^0.4.0",
     "karma": "^0.13.21",
     "karma-chai-sinon": "^0.1.5",
@@ -75,7 +85,6 @@
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
     "smooth-scroll": "^14.2.0",
-    "squirejs": "^0.2.1",
     "style-loader": "^0.21.0",
     "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2"

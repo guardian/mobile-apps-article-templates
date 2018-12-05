@@ -16,8 +16,6 @@ function secondsTimeSpanToHMS(s) {
 }
 
 function superAudioSlider(current, duration, platform) {
-    setInterval(() => console.log("superAudioSlider called"), 1000)
-
     let audioPlayerSliderKnob;
     const cutoutContainer = document.getElementsByClassName('cutout__container')[0];
 
@@ -69,8 +67,6 @@ function updateSlider(current, platform) {
             return;
         }
     }
-    setInterval(() => console.log(slider1), 1000)
-
     slider1.setValue(current);
 }
 
@@ -202,4 +198,4 @@ function init() {
     setupGlobals();
 }
 
-export { init };
+export { init, changeSlider };
