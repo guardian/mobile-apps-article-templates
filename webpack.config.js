@@ -27,12 +27,17 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.js$/,
+          exclude: [/node_modules/],
+          use: ['babel-loader']
+        },
+        {
+          test: /\.js$/,
           exclude: [
             /node_modules/,
             path.resolve(__dirname, "ArticleTemplates/assets/js/bootstraps/"),
             path.resolve(__dirname, "ArticleTemplates/assets/js/modules/")
           ],
-          use: ['babel-loader', 'eslint-loader']
+          use: ['eslint-loader']
         },
         {
           test: /\.scss$/,
