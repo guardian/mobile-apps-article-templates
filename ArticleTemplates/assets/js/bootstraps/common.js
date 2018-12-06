@@ -317,9 +317,7 @@ function loadInteractives(force) {
 
             interactive.classList.add('interactive--loading');
 
-            curl([bootUrl], interactiveObj => {
-                startInteractive(interactive, interactiveObj);
-            }, showOfflineInteractiveIcons);
+            curl([bootUrl], startInteractive.bind(null, interactive), showOfflineInteractiveIcons);
         }
     } else {
         showOfflineInteractiveIcons();
