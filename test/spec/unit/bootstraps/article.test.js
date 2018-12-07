@@ -15,13 +15,13 @@ jest.mock('modules/quiz');
 jest.mock('modules/creativeInjector');
 
 describe('ArticleTemplates/assets/js/bootstraps/article', function () {
+    beforeEach(() => {
+        window.applyNativeFunctionCall = jest.fn();
+    });
+
     afterEach(() => {
         delete window.applyNativeFunctionCall;
         delete window.GU;
-    });
-
-    beforeEach(() => {
-        window.applyNativeFunctionCall = jest.fn();
     });
 
     it('initialises modules', function () {
