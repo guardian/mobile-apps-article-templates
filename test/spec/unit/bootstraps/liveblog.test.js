@@ -1,35 +1,20 @@
 import { init } from 'bootstraps/liveblog';
-import * as minute from "modules/minute";
-import * as twitter from "modules/twitter";
-import * as util from "modules/util";
+import * as minute from 'modules/minute';
+import * as twitter from 'modules/twitter';
+import * as util from 'modules/util';
+import * as common from 'bootstraps/common';
+import * as creative from 'modules/creativeInjector';
+import * as relativeDates from 'modules/relativeDates';
 
 jest.mock('fence', () => {});
-// jest.mock('modules/minute', () => {
-//     return {
-//         init: jest.fn()
-//     };
-// });
-
 
 describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
-    var clock,
-        liveblog,
-        sandbox;
-
-    var commonMock,
-        relativeDatesMock,
-        twitterMock,
-        minuteMock,
-        creativeInjectorMock,
-        utilMock,
-        cardsMock;
-
     let container;
     let liveblogBody;
     let minuteInitMock;
     let twitterInitMock
 
-    beforeEach(function () {
+    beforeEach(() => {
         container = document.createElement('div');
         container.id = 'container';
         document.body.appendChild(container);
@@ -53,7 +38,7 @@ describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
         twitterInitMock = jest.spyOn(twitter, "init");
     });
 
-    afterEach(function () {
+    afterEach(() => {
         document.body.removeChild(container);
 
         delete window.liveblogDeleteBlock;
@@ -107,9 +92,9 @@ describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
         });
 
         it('add click listener on load more element', function () {
-            var event,
-                loadingElem = document.createElement('div'),
-                loadMoreElem = document.createElement('div');
+            let event;
+            let loadingElem = document.createElement('div');
+            let loadMoreElem = document.createElement('div');
 
             loadMoreElem.classList.add('more--live-blogs');
             loadMoreElem.style.display = 'block';
@@ -125,8 +110,6 @@ describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
             event = document.createEvent('HTMLEvents');
             event.initEvent('click', true, true);
             loadMoreElem.dispatchEvent(event);
-
-            // clock.tick(1500);
 
             expect(loadMoreElem.style.display).not.toEqual('block');
             expect(loadingElem.classList.contains('loading--visible')).toEqual(true);
@@ -144,8 +127,8 @@ describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
         });
 
         it('setup liveblogTime interval and remove minute relate elements if not the minute', function () {
-            var minuteHeader = document.createElement('div'),
-                minuteNav = document.createElement('div');
+            let minuteHeader = document.createElement('div');
+            let minuteNav = document.createElement('div');
 
             minuteHeader.classList.add('the-minute__header');
             minuteNav.classList.add('the-minute__nav');
@@ -163,7 +146,7 @@ describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
 
     describe('window.liveblogDeleteBlock(blockID)', function () {
         it('deletes block with matching ID', function () {
-            var block = document.createElement('div');
+            let block = document.createElement('div');
 
             block.id = 'testBlock';
 
@@ -182,8 +165,8 @@ describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
 
     describe('window.liveblogUpdateBlock(blockID, html)', function () {
         it('replace block with new block html', function () {
-            var block = document.createElement('div'),
-                newBlock = document.createElement('div');
+            let block = document.createElement('div');
+            let newBlock = document.createElement('div');
 
             block.id = 'testBlock';
             newBlock.id = 'newBlock';
@@ -194,24 +177,17 @@ describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
 
             expect(container.lastChild.id).toEqual('testBlock');
 
-            // utilMock.getElemsFromHTML = sandbox.stub().returns([newBlock]);
-            // jest.mock('modules/minute', () => {
-            //     return {
-            //         init: jest.fn()
-            //     };
-            // });
-
             window.liveblogUpdateBlock('testBlock', newBlock.outerHTML);
 
-            // expect(container.lastChild.id).to.eql('newBlock');
+            expect(container.lastChild.id).toEqual('newBlock');
         });
     });
 
     describe('window.liveblogLoadMore(html)', function () {
-        var loadingLiveblog,
-            articleBody;
+        let loadingLiveblog;
+        let articleBody;
 
-        beforeEach(function () {
+        beforeEach(() => {
             articleBody = document.createElement('div');
             articleBody.classList.add('article__body');
             articleBody.innerHTML = '<div class="block"><img></img></div><div class="block"></div>';
@@ -225,9 +201,9 @@ describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
         });
 
         it('loads new HTML blocks into page', function () {
-            var block,
-                blockList = [],
-                html = '';
+            let block;
+            let blockList = [];
+            let html = '';
 
             while (blockList.length < 5) {
                 block = document.createElement('div');
@@ -238,28 +214,29 @@ describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
 
             init();
 
-            // window.liveblogTime = sandbox.spy();
-
-            // utilMock.getElemsFromHTML = sandbox.stub().returns(blockList);
+            window.liveblogTime = jest.fn();
+            const formatImagesMock = jest.spyOn(common, "formatImages");
+            const loadEmbedsMock = jest.spyOn(common, "loadEmbeds");
+            const loadInteractivesMock = jest.spyOn(common, "loadInteractives");
+            const checkForTweetsMock = jest.spyOn(twitter, "checkForTweets");
+            const trackLiveBlogEpicMock = jest.spyOn(creative, "trackLiveBlogEpic");
 
             window.liveblogLoadMore(html);
 
-            // expect(container.getElementsByClassName('block').length).to.eql(7);
-            // expect(commonMock.formatImages).to.have.been.calledOnce;
-            // expect(commonMock.loadEmbeds).to.have.been.calledOnce;
-            // expect(commonMock.loadInteractives).to.have.been.calledOnce;
-            // expect(window.liveblogTime).to.have.been.calledOnce;
-            // expect(window.liveblogTime).to.have.been.calledOnce;
-            // expect(twitterMock.checkForTweets).to.have.been.calledOnce;
-            // Called once when the liveblog loads, another time when a block comes in
-            // expect(creativeInjectorMock.trackLiveBlogEpic).to.have.been.calledTwice;
+            expect(container.getElementsByClassName('block').length).toEqual(7);
+            expect(formatImagesMock).toBeCalledTimes(1);
+            expect(loadEmbedsMock).toBeCalledTimes(1);
+            expect(loadInteractivesMock).toBeCalledTimes(1);
+            expect(window.liveblogTime).toBeCalledTimes(1);
+            expect(checkForTweetsMock).toBeCalledTimes(1);
+            expect(trackLiveBlogEpicMock).toBeCalledTimes(1);
         });
 
         it('pass images in new blocks to be formatted', function () {
-            var block,
-                imgCount = 0,
-                blockList = [],
-                html = '';
+            let block;
+            let imgCount = 0;
+            let blockList = [];
+            let html = '';
 
             while (blockList.length < 5) {
                 block = document.createElement('div');
@@ -269,29 +246,30 @@ describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
                 html += block.outerHTML;
             }
 
-            // commonMock.formatImages = function (imgList) {
-            //     imgCount = imgList.length;
-            // };
+            const formatImagesMock = jest.spyOn(common, "formatImages");
+
+            formatImagesMock.mockImplementation((imgList) => {
+                imgCount = imgList.length;
+            });
 
             init();
 
-            // window.liveblogTime = sandbox.spy();
-
-            // utilMock.getElemsFromHTML = sandbox.stub().returns(blockList);
-
+            window.liveblogTime = jest.fn();
             window.liveblogLoadMore(html);
 
-            // expect(imgCount).to.eql(5);
+            expect(imgCount).toEqual(5);
         });
     });
 
     describe('window.liveblogTime()', function () {
-        var liveblogElem;
+        let liveblogElem;
+        let relativeDatesMock;
 
         beforeEach(function () {
             liveblogElem = document.createElement('div');
             liveblogElem.classList.add('tone--liveBlog');
             container.appendChild(liveblogElem);
+            relativeDatesMock = jest.spyOn(relativeDates, "init");
         });
 
         it('Updates liveblog time if blog is live', function () {
@@ -301,8 +279,8 @@ describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
 
             window.liveblogTime();
 
-            // expect(relativeDatesMock.init).to.have.been.called;
-            // expect(relativeDatesMock.init).to.have.been.calledWith('.key-event__time, .block__time', 'title');
+            expect(relativeDatesMock).toBeCalled();
+            expect(relativeDatesMock).toBeCalledWith('.key-event__time, .block__time', 'title');
         });
 
         it('Updates liveblog time if blog is not live', function () {
@@ -319,14 +297,14 @@ describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
 
             window.liveblogTime();
 
-            // expect(blockTime.innerHTML).to.eql('xxx');
+            expect(blockTime.innerHTML).toEqual('xxx');
         });
     });
 
     describe('window.showLiveMore(show)', function () {
-        var moreElem;
+        let moreElem;
 
-        beforeEach(function () {
+        beforeEach(() => {
             moreElem = document.createElement('div');
             moreElem.classList.add('more--live-blogs');
             container.appendChild(moreElem);
@@ -339,7 +317,7 @@ describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
 
             window.showLiveMore(false);
 
-            // expect(moreElem.style.display).not.to.eql('block');
+            expect(moreElem.style.display).not.toEqual('block');
         });
 
         it('show elem if show value is true', function () {
@@ -349,17 +327,17 @@ describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
 
             window.showLiveMore(true);
 
-            // expect(moreElem.style.display).not.to.eql('none');
+            expect(moreElem.style.display).not.toEqual('none');
         });
     });
 
     describe('window.liveblogNewBlock(html)', function () {
-        var articleBody,
-            blockWithImage,
-            blockWithoutImage,
-            html;
+        let articleBody;
+        let blockWithImage;
+        let blockWithoutImage;
+        let html;
 
-        beforeEach(function () {
+        beforeEach(() => {
             blockWithImage = document.createElement('div'),
             blockWithoutImage = document.createElement('div'),
             html;
@@ -371,14 +349,18 @@ describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
 
             html = blockWithImage.outerHTML + blockWithoutImage.outerHTML;
 
-            // utilMock.getElemsFromHTML = sandbox.stub().returns([blockWithImage, blockWithoutImage]);
+            const getElemsFromHTMLMock = jest.spyOn(util, "getElemsFromHTML");
+            getElemsFromHTMLMock.mockImplementation(() => [blockWithImage, blockWithoutImage]);
 
-            // utilMock.getElementOffset = sandbox.stub().returns({
-            //     width: 100,
-            //     height: 100,
-            //     left: 100,
-            //     top: 100
-            // });
+            const getElementOffsetMock = jest.spyOn(util, "getElementOffset");
+            getElementOffsetMock.mockImplementation(() => {
+                return {
+                    "width": 100,
+                    "height": 100,
+                    "left": 100,
+                    "top": 100
+                };
+            });
 
             window.updateLiveblogAdPlaceholders = jest.fn();
 
@@ -389,49 +371,43 @@ describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
             container.appendChild(articleBody);
         });
 
-        afterEach(function () {
-            // expect(commonMock.loadEmbeds).to.have.been.calledOnce;
-            // expect(commonMock.loadInteractives).to.have.been.calledOnce;
-            // expect(window.updateLiveblogAdPlaceholders).to.have.been.calledOnce;
-            // expect(window.updateLiveblogAdPlaceholders).to.have.been.calledWith(true);
-            // expect(window.liveblogTime).to.have.been.calledOnce;
-
-            delete window.updateLiveblogAdPlaceholders;
+        afterEach(() => {
+            expect(window.updateLiveblogAdPlaceholders).toHaveBeenCalledTimes(1);
+            expect(window.updateLiveblogAdPlaceholders).toBeCalledWith(true);
         });
 
         it('add new blocks to article body', function () {
-            var blocks;
+            let blocks;
 
             init();
 
-            // window.liveblogTime = sandbox.spy();
+            window.liveblogTime = jest.fn();
 
             window.liveblogNewBlock(html);
 
             blocks = document.getElementsByClassName('block');
 
-            // expect(blocks.length).to.eql(2);
-            // expect((blocks[0].classList.contains('animated') && 
-            // blocks[0].classList.contains('slideinright').to.eql(true);
-            // expect((blocks[1].classList.contains('animated') && 
-            // blocks[0].classList.contains('slideinright').to.eql(true);
-            // expect(commonMock.formatImages).to.have.been.calledOnce;
+            expect(blocks.length).toEqual(2);
+            expect(blocks[0].classList.contains('animated') && blocks[0].classList.contains('slideinright')).toEqual(true);
+            expect(blocks[1].classList.contains('animated') && blocks[0].classList.contains('slideinright')).toEqual(true);
         });
 
         it('pass images in new blocks to be formatted', function () {
-            var imgCount = 0;
+            let imgCount = 0;
 
             init();
 
-            // window.liveblogTime = sandbox.spy();
+            window.liveblogTime = jest.fn();
 
-            // commonMock.formatImages = function (imgList) {
-            //     imgCount = imgList.length;
-            // };
+            const formatImagesMock = jest.spyOn(common, "formatImages");
+
+            formatImagesMock.mockImplementation((imgList) => {
+                imgCount = imgList.length;
+            });
 
             window.liveblogNewBlock(html);
 
-            // expect(imgCount).to.eql(1);
+            expect(imgCount).toEqual(1);
         });
     });
 });

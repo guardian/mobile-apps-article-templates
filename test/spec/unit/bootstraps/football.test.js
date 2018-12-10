@@ -41,9 +41,9 @@ describe('ArticleTemplates/assets/js/bootstraps/football', function () {
     });
 
     describe('window.footballMatchInfo(html, replaceContent, homeTeam, awayTeam)', function () {
-        var pieChart,
-            statsPanel,
-            html;
+        let pieChart;
+        let statsPanel;
+        let html;
 
         beforeEach(function () {
             statsPanel = document.createElement('div');
@@ -93,20 +93,20 @@ describe('ArticleTemplates/assets/js/bootstraps/football', function () {
     });
 
     describe('window.footballMatchInfoFailed()', function () {
-        var infoTab,
-            statsTab,
-            infoPanel,
-            statsPanel,
-            buildTab = function (href, ariaSelected) {
-                var tab = document.createElement('a');
+        let infoTab;
+        let statsTab;
+        let infoPanel;
+        let statsPanel;
+        const buildTab = function (href, ariaSelected) {
+            var tab = document.createElement('a');
 
-                tab.href = href;
-                tab.setAttribute('aria-selected', ariaSelected);
+            tab.href = href;
+            tab.setAttribute('aria-selected', ariaSelected);
 
-                return tab;
-            };
+            return tab;
+        };
 
-        beforeEach(function () {
+        beforeEach(() => {
             container.classList.add('tabs');
 
             infoPanel = document.createElement('div');

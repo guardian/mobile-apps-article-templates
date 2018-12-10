@@ -3,13 +3,13 @@ import { init } from 'bootstraps/cricket';
 describe('ArticleTemplates/assets/js/bootstraps/cricket', function () {
     let container;
         
-    beforeEach(function () {
+    beforeEach(() => {
         container = document.createElement('div');
         container.id = 'container';
         document.body.appendChild(container);
     });
 
-    afterEach(function () {
+    afterEach(() => {
         document.body.removeChild(container);
     });
 
@@ -25,10 +25,10 @@ describe('ArticleTemplates/assets/js/bootstraps/cricket', function () {
 
     describe('window.newCricketData(newHeader, newScorecard)', function () {
         it('adds newCricketData to header and scorecard', function () {
-            var newHeaderHTML = '<div id="newHeader"></div>';
-            var newScorecardHTML = '<div id="newScorecard"></div>';
-            var newHeader = document.createElement('div');
-            var newScorecard = document.createElement('div');
+            let newHeaderHTML = '<div id="newHeader"></div>';
+            let newScorecardHTML = '<div id="newScorecard"></div>';
+            let newHeader = document.createElement('div');
+            let newScorecard = document.createElement('div');
 
             newHeader.id = 'cricket-header';
             newScorecard.id = 'cricket-scorecard';
@@ -65,8 +65,7 @@ describe('ArticleTemplates/assets/js/bootstraps/cricket', function () {
             expect(cricketWrapper.classList.contains('cricket--pre-match')).toEqual(false);
         });
 
-        it('add pre-match class to cricketWrapper', function () {
-            
+        it('add pre-match class to cricketWrapper', function () {   
             var matchStatus = 'pre-match';
             var cricketWrapper = document.createElement('div');
 
@@ -84,10 +83,10 @@ describe('ArticleTemplates/assets/js/bootstraps/cricket', function () {
 
     describe('window.cricketMatchInfoFailed()', function () {
         it('removes elements on cricketMatchInfoFailed', function () {
-            var newHeader = document.createElement('div');
-            var newScorecard = document.createElement('div');
-            var cricketTabStats = document.createElement('a');
-            var cricketTabPanelStats = document.createElement('div');
+            let newHeader = document.createElement('div');
+            let newScorecard = document.createElement('div');
+            let cricketTabStats = document.createElement('a');
+            let cricketTabPanelStats = document.createElement('div');
 
             newHeader.id = 'cricket-header';
             newScorecard.id = 'cricket-scorecard';
@@ -115,10 +114,10 @@ describe('ArticleTemplates/assets/js/bootstraps/cricket', function () {
         });
 
         it('switches to first tab if stats panel selected', function () {
-            var otherTab = document.createElement('a');
-            var otherPanel = document.createElement('div');
-            var cricketTabStats = document.createElement('a');
-            var cricketTabPanelStats = document.createElement('div');
+            let otherTab = document.createElement('a');
+            let otherPanel = document.createElement('div');
+            let cricketTabStats = document.createElement('a');
+            let cricketTabPanelStats = document.createElement('div');
 
             otherTab.id = 'otherTab';
             otherTab.href = '#otherPanel';

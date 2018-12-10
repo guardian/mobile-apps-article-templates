@@ -1,12 +1,6 @@
 import { init, formatImages } from 'bootstraps/common';
 
 jest.mock('fence', () => {});
-// jest.mock('smooth-scroll');
-// jest.mock('modules/comments');
-// jest.mock('modules/cards');
-// jest.mock('modules/more-tags');
-// jest.mock('modules/sharing');
-// jest.mock('modules/experiments/ab');
 
 function buildFigElem (opts) {
     let figElem = document.createElement('figure');
@@ -46,16 +40,7 @@ function buildFigElem (opts) {
 }
 
 describe('ArticleTemplates/assets/js/bootstraps/common', function () {
-    let utilMock;
     beforeEach(() => {
-        utilMock = {
-            getClosestParentWithTag: jest.fn(),
-            getElementOffset: jest.fn().mockReturnValueOnce({
-                width: 400
-            }),
-            debounce: jest.fn()
-        };
-
         window.GU = {
             opts: {
                 isOffline: false
@@ -68,11 +53,11 @@ describe('ArticleTemplates/assets/js/bootstraps/common', function () {
     });
 
     describe('formatImages(images)', function () {
-        var articleElem,
-            figElem,
-            opts,
-            dummyImage,
-            origImage;
+        let articleElem;
+        let figElem;
+        let opts;
+        let dummyImage;
+        let origImage;
             
         beforeEach(() => {
             // stub Image to test onerror handling
@@ -89,11 +74,6 @@ describe('ArticleTemplates/assets/js/bootstraps/common', function () {
             opts = {
                 isThumbnail: true,
                 hasCaption: true
-            };
-
-            // mock util method getClosestParentWithTag to return figElem
-            utilMock.getClosestParentWithTag = function () {
-                return figElem;
             };
         });
 
@@ -124,8 +104,7 @@ describe('ArticleTemplates/assets/js/bootstraps/common', function () {
             formatImages();
 
             const imageWrapper = figElem.querySelector('.figure__inner');
-            // expect(imageWrapper).to.be.ok;
-            // expect(imageWrapper.style.height).toEqual('300px');
+            expect(imageWrapper).toBeTruthy();
         });
 
 
@@ -138,9 +117,9 @@ describe('ArticleTemplates/assets/js/bootstraps/common', function () {
 
             formatImages();
 
-            var captionIcon = figElem.querySelector('.element-image__caption').firstChild;
+            const captionIcon = figElem.querySelector('.element-image__caption').firstChild;
 
-            // expect(captionIcon).to.be.ok;
+            expect(captionIcon).toBeTruthy();
             expect(captionIcon.tagName).toEqual('SPAN');
             expect(captionIcon.classList.contains('figure__caption__icon')).toBe(true);   
             expect(captionIcon.parentNode.innerText).toEqual('hello world');

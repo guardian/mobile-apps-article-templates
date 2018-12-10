@@ -42,7 +42,7 @@ describe('ArticleTemplates/assets/js/bootstraps/audio', function () {
 
     describe('window.audioPlay()', function () {
         it('updates touchPointButton', function () {
-            var playerButton = document.createElement('div');
+            const playerButton = document.createElement('div');
 
             playerButton.classList.add('audio-player__button');
 
@@ -58,7 +58,7 @@ describe('ArticleTemplates/assets/js/bootstraps/audio', function () {
 
     describe('window.audioStop()', function () {
         it('updates touchPointButton', function () {
-            var playerButton = document.createElement('div');
+            const playerButton = document.createElement('div');
 
             playerButton.classList.add('audio-player__button');
 
@@ -142,10 +142,10 @@ describe('ArticleTemplates/assets/js/bootstraps/audio', function () {
     });
 
     describe('window.superAudioSlider(current, duration, platform)', function () {
-        var current, 
-            duration, 
-            platform,
-            resizeHandler;
+        let current;
+        let duration;
+        let platform;
+        let resizeHandler;
 
         beforeEach(function () {
             current = 0;
