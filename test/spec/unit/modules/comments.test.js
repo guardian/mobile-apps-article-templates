@@ -4,7 +4,6 @@ import * as relativeDates from 'modules/relativeDates';
 
 describe('ArticleTemplates/assets/js/modules/comments', function () {
     let container;
-    let comments;
 
     beforeEach(() => {
         container = document.createElement('div');
