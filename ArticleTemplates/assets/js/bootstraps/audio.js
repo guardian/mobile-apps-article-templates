@@ -115,17 +115,21 @@ define([
 
     function audioPlay() {
         var button = document.getElementsByClassName('audio-player__button')[0];
+        var screenReadable = document.getElementsByClassName('audio-player-readable')[0];
 
-        if (button) {
+        if (button && screenReadable) {
             button.classList.add('pause');
+            screenReadable.innerHTML = "Pause";
         }
     }
 
     function audioStop() {
         var button = document.getElementsByClassName('audio-player__button')[0];
+        var screenReadable = document.getElementsByClassName('audio-player-readable')[0];
 
-        if (button) {
+        if (button && screenReadable) {
             button.classList.remove('pause');
+            screenReadable.innerHTML = "Play";
         }
     }
 
