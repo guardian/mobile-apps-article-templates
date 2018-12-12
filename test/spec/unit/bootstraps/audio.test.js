@@ -59,10 +59,13 @@ describe('ArticleTemplates/assets/js/bootstraps/audio', function () {
     describe('window.audioStop()', function () {
         it('updates touchPointButton', function () {
             const playerButton = document.createElement('div');
+            const screenReaderLabel = document.createElement('span');
 
             playerButton.classList.add('audio-player__button');
+            screenReaderLabel.classList.add('audio-player-readable');
 
             container.appendChild(playerButton);
+            container.appendChild(screenReaderLabel);
 
             init();
 

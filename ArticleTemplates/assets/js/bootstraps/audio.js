@@ -105,17 +105,21 @@ function audioSlider() {
 
 function audioPlay() {
     const button = document.getElementsByClassName('audio-player__button')[0];
+    const screenReadable = document.getElementsByClassName('audio-player-readable')[0];
 
-    if (button) {
+    if (button && screenReadable) {
         button.classList.add('pause');
+        screenReadable.innerHTML = "Pause";
     }
 }
 
 function audioStop() {
     const button = document.getElementsByClassName('audio-player__button')[0];
+    const screenReadable = document.getElementsByClassName('audio-player-readable')[0];
 
-    if (button) {
+    if (button && screenReadable) {
         button.classList.remove('pause');
+        screenReadable.innerHTML = "Play";
     }
 }
 
