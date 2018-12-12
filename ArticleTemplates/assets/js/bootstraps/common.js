@@ -11,8 +11,7 @@ import {
 import { init as initComments } from 'modules/comments';
 import { init as initCards } from 'modules/cards';
 import { init as initMoreTags } from 'modules/more-tags';
-import { init as initSharing } from 'modules/sharing';
-import { init as initRichLinks } from 'modules/sharing';
+import { init as initRichLinks } from 'modules/rich-links';
 import { init as initAB } from 'modules/experiments/ab';
 
 
@@ -41,7 +40,6 @@ function init() {
     setGlobalObject(window);
     fixSeries();
     advertorialUpdates();
-    initSharing();
     setupTracking(); // track common events
     initAB();
     initRichLinks();
