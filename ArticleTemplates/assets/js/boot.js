@@ -4,8 +4,12 @@ import domready from 'domready';
 import { init as adsInit } from 'modules/ads';
 
 const init = opts => {
+    const { test } = window.GU.opts;
     window.GU.opts = opts;
-    __webpack_public_path__ = `${opts.templatesDirectory}/assets/build/`;
+
+    if (!test) {
+        __webpack_public_path__ = `${opts.templatesDirectory}/assets/build/`;
+    }
 
     const nativeFunctionCalls = [
         'articleCommentsInserter',
@@ -91,7 +95,7 @@ const init = opts => {
             adsEnabled,
             adsConfig,
             mpuAfterParagraphs
-        } = GU.opts;
+        } = window.GU.opts;
 
         // ads positioning
         if (adsEnabled && (adsEnabled === 'true' || adsEnabled.includes('mpu'))) {
@@ -137,13 +141,21 @@ const init = opts => {
         }
     };
 
+    if (test) {
+        kickOff();
+    }
+
     domready(kickOff);
 };
 
 const go = () => {
-    window.GU.bootstrap = {
-        init
-    };
+    if (window.GU) {
+        window.GU.bootstrap = {
+            init
+        };
+    }
 };
 
 go();
+
+export { init, go };
