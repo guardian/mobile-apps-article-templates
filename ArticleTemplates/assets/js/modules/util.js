@@ -136,6 +136,10 @@ function getElemsFromHTML(html) {
     return elems;
 }
 
+function append(scriptElement) {
+    document.body.appendChild(scriptElement);
+}
+
 export {
     isElementInViewport,
     isElementPartiallyInViewport,
@@ -149,5 +153,6 @@ export {
     getLocalStorage,
     setLocalStorage,
     debounce,
-    getElemsFromHTML
+    getElemsFromHTML,
+    append
 };

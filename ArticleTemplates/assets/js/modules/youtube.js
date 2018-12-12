@@ -1,4 +1,4 @@
-import { signalDevice, getElementOffset } from 'modules/util';
+import { signalDevice, getElementOffset, append } from 'modules/util';
 
 let videos = [];
 const stateHandlers = {};
@@ -130,8 +130,7 @@ function loadScript() {
     scriptElement.async = true;
     scriptElement.src = 'https://www.youtube.com/iframe_api';
     scriptElement.onload = onScriptLoaded;
-
-    document.body.appendChild(scriptElement);
+    append(scriptElement);
 }
 
 function onScriptLoaded() {
@@ -340,4 +339,4 @@ function init() {
     checkForVideos();
 }
 
-export { init, checkForVideos };
+export { init, checkForVideos, append };
