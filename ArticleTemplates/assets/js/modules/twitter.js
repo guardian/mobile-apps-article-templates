@@ -1,11 +1,13 @@
 define([
     'modules/util',
     'modules/cards',
-    'modules/ads'
+    'modules/ads',
+    'modules/youtube'
 ], function (
     util,
     cards,
-    ads
+    ads,
+    youtube
 ) {
     'use strict';
 
@@ -124,6 +126,7 @@ define([
             // When a tweets been enhanced check position of related cards placeholder
             cards.initPositionPoller();
             ads.initMpuPoller(0);
+            youtube.resetAndCheckForVideos()
         }
     }
 
