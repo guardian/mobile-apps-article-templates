@@ -129,19 +129,23 @@ define([
     function audioPlaying() {
         var button = document.getElementsByClassName('audio-player__button')[0];
         var loading = document.getElementsByClassName('audio-player__button--loading')[0];
+        var screenReadable = document.getElementsByClassName('audio-player-readable')[0];
 
-        if (button && loading) {
+        if (button && loading && screenReadable) {
             button.classList.add('pause');
             loading.style.display = "none";
             button.style.display = "block";
+            screenReadable.innerHTML = "Pause";
         }
     }
 
     function audioStop() {
         var button = document.getElementsByClassName('audio-player__button')[0];
+        var screenReadable = document.getElementsByClassName('audio-player-readable')[0];
 
-        if (button) {
+        if (button && screenReadable) {
             button.classList.remove('pause');
+            screenReadable.innerHTML = "Play";
         }
     }
 
