@@ -1,8 +1,7 @@
 # Article Templates for Mobile Apps
 [![cicle ci badge](https://circleci.com/gh/guardian/mobile-apps-article-templates/tree/master.svg?style=shield)](https://circleci.com/gh/guardian/mobile-apps-article-templates) [![npm version](https://badge.fury.io/js/%40guardian%2Fmobile-apps-article-templates.svg)](https://badge.fury.io/js/%40guardian%2Fmobile-apps-article-templates)
 
-Article templates used within the Guardian’s next-generation iOS, Android and Windows applications. This repo also 
-contains documentation that describes the components and layouts used across these templates.
+Article templates used within the Guardian’s next-generation iOS and Android applications. This repo also contains documentation that describes the components and layouts used across these templates.
 
 ## Requirements
 * A Mac or Linux computer.
