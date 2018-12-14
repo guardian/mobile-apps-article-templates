@@ -157,7 +157,7 @@
     &__count {
         font-family: $egyptian-display;
         color: color(brightness-60);
-
+        margin-left: 4px;
         .comments--page & {
             @include headline(.5);
             margin-bottom: base-px(1);
@@ -170,6 +170,9 @@
         font-weight: bold;
         color: color(brightness-46);
         display: none;
+        font-family: "Guardian Headline","Guardian Egyptian Web",Georgia,serif;
+        color: color(brightness-60);
+        font-weight: 600;
 
         .comments--closed & {
             display: block;
@@ -181,8 +184,21 @@
     }
 
     &__post {
+        padding: 12px;
+        margin: -12px;
         position: absolute;
         right: 0;
+
+        .touchpoint__button {
+            line-height: 22px;
+            width: 32px;
+            height: 32px;
+            font-size: 16px;
+
+            &::before {
+                top: 3px;
+            }
+        }
 
         .comments--module & {
             top: 0;
@@ -285,11 +301,13 @@
 
     &__footer {
         overflow: hidden;
-        margin: base-px(1);
+        margin: base-px(2, 1, 0, 0);
     }
 
     &__viewmore {
         float: right;
+        padding: 12px;
+        margin: -12px;
 
         .comments-0 &,
         .comments-1 &,
@@ -298,9 +316,15 @@
         }
 
         &--button {
+            line-height: 22px;
+            width: 32px;
+            height: 32px;
+            transform: rotate(90deg);
+            font-size: 16px;
+
             &::before {
                 position: relative;
-                top: -2px;
+                top: 3px;
             }
         }
     }

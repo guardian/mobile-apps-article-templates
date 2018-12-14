@@ -251,6 +251,8 @@
 }
 
 .comment__role {
+    text-transform: capitalize;
+
     &[data-role=''] {
         display: none;
     }
@@ -352,6 +354,7 @@
     .touchpoint__label {
         color: color(brightness-60);
         font-weight: normal;
+        min-width: 38px;
 
         @include mq($from: col2) {
             margin-top: 1px;
@@ -446,9 +449,10 @@
     }
 
     .comment__recommend {
-        margin: base-px(.75, 0, 0, 0);
+        padding: base-px(.75, 0, 0, 0);
         background: white;
         padding-left: 9px;
+        border-top: #dcdad5 1px dotted;
     }
 }
 
