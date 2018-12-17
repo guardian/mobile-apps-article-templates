@@ -161,7 +161,7 @@ function articleCommentsInserter(html) {
 }
 
 function commentsInserter(html) {
-    let blocks;
+    let blocks = [];
     const commentsContainer = document.getElementsByClassName('comments__container')[0];
     let emptyCommentBlock;
     let i;
@@ -193,6 +193,11 @@ function commentsInserter(html) {
 
     if (commentsContainer && loadingBlock) {
         commentsContainer.appendChild(loadingBlock);
+    }
+
+    let commentCount = document.getElementsByClassName("comments__count")[0];
+    if (commentCount && blocks.length === parseInt(commentCount.innerHTML)) {
+        commentsEnd();
     }
 }
 
