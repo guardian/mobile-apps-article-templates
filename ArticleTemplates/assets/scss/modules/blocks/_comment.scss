@@ -354,8 +354,6 @@
     .touchpoint__label {
         color: color(brightness-60);
         font-weight: normal;
-        min-width: 38px;
-        text-align: left;
 
         @include mq($from: col2) {
             margin-top: 1px;
@@ -364,6 +362,20 @@
             text-align: center;
         }
     }
+
+    @include mq($from: col2) {
+        display: flex;
+        flex-direction: column;
+
+        .comment__recommend__count {
+            order: 2;
+        }
+
+        .touchpoint__button {
+            order: 1;
+        }
+    }
+
 }
 
 .comment__options {

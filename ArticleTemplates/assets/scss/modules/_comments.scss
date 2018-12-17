@@ -64,6 +64,13 @@
     overflow: hidden;
     background: color(brightness-96);
 
+    .comment__recommend, .comments__viewmore--button {
+        .touchpoint__button, &.touchpoint__button {
+            border: solid 1px rgba(18, 18, 18, .5);
+            color: #121212;
+        }
+    }
+
     &--module {
         border-top: 1px solid color(brightness-46);
     }
@@ -200,13 +207,13 @@
         .comments--module & {
             top: 0;
 
-            @include mq($from: col2) {
-                margin-top: 6px;
-            }
-
             @include mq($from: col4) {
-                position: static;
-                margin-top: 15px;
+                position: relative;
+                margin-top: 6px;
+
+                .touchpoint__label {
+                    padding: 0;
+                }
             }
 
             @include mq($to: col1) {
@@ -226,6 +233,8 @@
 
         .touchpoint__label {
             padding-left: 0;
+            padding: 0 4px;
+            margin-top: -1px;
         }
     }
 
@@ -290,10 +299,6 @@
         border: solid 1px color(tone-sandy-light);
         border-top: 1px solid color(brightness-60);
         border-bottom: 2px solid color(tone-sandy-light);
-
-        @include mq($from: col4) {
-            margin: base-px(1, 0);
-        }
     }
 
     &__footer {
@@ -323,6 +328,11 @@
                 position: relative;
                 top: 3px;
             }
+        }
+
+        &--label {
+            padding: 0px 4px;
+            margin-top: -1px;
         }
     }
 
