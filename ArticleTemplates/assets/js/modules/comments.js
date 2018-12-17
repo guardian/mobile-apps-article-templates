@@ -172,7 +172,7 @@ define([
     }
 
     function commentsInserter(html) {
-        var blocks,
+        var blocks = [],
             commentsContainer = document.getElementsByClassName('comments__container')[0],
             emptyCommentBlock,
             i,
@@ -204,6 +204,11 @@ define([
 
         if (commentsContainer && loadingBlock) {
             commentsContainer.appendChild(loadingBlock);
+        }
+
+        var commentCount = document.getElementsByClassName("comments__count")[0];
+        if (commentCount && blocks.length === parseInt(commentCount.innerHTML)) {
+            commentsEnd();
         }
     }
 
