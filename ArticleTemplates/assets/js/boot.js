@@ -4,7 +4,7 @@ import domready from 'domready';
 import { init as adsInit } from 'modules/ads';
 
 const init = opts => {
-    const { test } = window.GU.opts;
+    const { GU: { opts: { test = false } = {} } = {} } = window;
     window.GU.opts = opts;
 
     if (!test) {
