@@ -59,6 +59,17 @@
         left: 0;
     }
 }
+@include mq($to: col2) {
+    .element-embed,
+    .element-instagram {
+        overflow-x: hidden;
+    }
+
+    .element-instagram .instagram-media,
+    .element-embed iframe {
+        width: calc(100vw - #{base-px(2)}) !important;
+    }
+}
 
 // Audio, generic embeds and maps
 .element-audio,

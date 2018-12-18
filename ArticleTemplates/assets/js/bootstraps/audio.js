@@ -10,7 +10,8 @@ define([
     var initialised,
         audioCurrent,
         down,
-        slider1;
+        slider1,
+        previous = 0;
 
     function getColor() {
         var isAudio = !document.body.classList.contains('tone--podcast') && document.body.classList.contains('article--audio');
@@ -78,8 +79,11 @@ define([
         }
 
         slider1.setValue(current);
-        if (current > 0) {
+        if (current > previous) {
             audioPlaying();
+            previous = current;
+        } else if (current === previous) {
+            audioStop();
         }
     }
 

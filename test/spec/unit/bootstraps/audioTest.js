@@ -105,10 +105,13 @@ define([
         describe('window.audioPlay()', function () {
             it('updates touchPointButton', function () {
                 var playerButton = document.createElement('div');
+                var screenReaderLabel = document.createElement('span');
 
                 playerButton.classList.add('audio-player__button');
+                screenReaderLabel.classList.add('audio-player-readable');
 
                 container.appendChild(playerButton);
+                container.appendChild(screenReaderLabel);
 
                 audio.init();
 
