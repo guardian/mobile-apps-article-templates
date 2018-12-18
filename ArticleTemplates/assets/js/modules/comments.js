@@ -127,7 +127,7 @@ function targetContainsBlackListedClass(classList) {
 }
 
 function articleCommentsInserter(html) {
-    let blocks;
+    let blocks = [];
     let commentsContainer;
     let emptyCommentBlock;
     let i;
@@ -157,6 +157,11 @@ function articleCommentsInserter(html) {
 
         commentsReplyFormatting();
         checkForZero();
+
+        let commentCount = document.getElementsByClassName("comments__count")[0];
+        if (commentCount && blocks.length === parseInt(commentCount.innerHTML)) {
+            commentsEnd();
+        }
     }
 }
 
