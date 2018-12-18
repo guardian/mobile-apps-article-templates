@@ -15,7 +15,7 @@ define([
 
     function getColor() {
         var isAudio = !document.body.classList.contains('tone--podcast') && document.body.classList.contains('article--audio');
-        
+
         return GU.opts.isAdvertising ? 'rgba(105, 209, 202, 0.15)' : (isAudio ? 'rgba(255, 187, 0, 0.05)' : 'rgba(167, 216, 242, 0.10)');
     }
 
@@ -57,7 +57,7 @@ define([
 
     function changeSlider(duration, percentage) {
         var audioPlayerSliderPlayed = document.getElementsByClassName('audio-player__slider__played')[0],
-            audioPlayerSliderRemaining = document.getElementsByClassName('audio-player__slider__remaining')[0];            
+            audioPlayerSliderRemaining = document.getElementsByClassName('audio-player__slider__remaining')[0];
 
         audioCurrent = percentage;
 
@@ -121,24 +121,21 @@ define([
     }
 
     function audioPlay() {
-        var button = document.getElementsByClassName('audio-player__button')[0];
-        var loading = document.getElementsByClassName('audio-player__button--loading')[0];
+        var audioPlayer = document.getElementsByClassName('audio-player')[0];
 
-        if (button && loading) {
-            loading.style.display = "block";
-            button.style.display = "none";
+        if (audioPlayer) {
+            audioPlayer.classList.add('loading');
         }
     }
 
     function audioPlaying() {
         var button = document.getElementsByClassName('audio-player__button')[0];
-        var loading = document.getElementsByClassName('audio-player__button--loading')[0];
+        var audioPlayer = document.getElementsByClassName('audio-player')[0];
         var screenReadable = document.getElementsByClassName('audio-player-readable')[0];
 
-        if (button && loading && screenReadable) {
+        if (button && audioPlayer && screenReadable) {
             button.classList.add('pause');
-            loading.style.display = "none";
-            button.style.display = "block";
+            audioPlayer.classList.remove('loading');
             screenReadable.innerHTML = "Pause";
         }
     }
@@ -154,19 +151,13 @@ define([
     }
 
     function audioLoad() {
-        var button = document.getElementsByClassName('audio-player__button')[0],
-            loadingButton = document.getElementsByClassName('audio-player__button--loading')[0];
-
-        button.style.display = 'none';
-        loadingButton.style.display = 'block';
+        var audioPlayer = document.getElementsByClassName('audio-player')[0];
+        audioPlayer.classList.add('loading');
     }
 
     function audioFinishLoad() {
-        var button = document.getElementsByClassName('audio-player__button')[0],
-            loadingButton = document.getElementsByClassName('audio-player__button--loading')[0];
-
-        button.style.display = 'block';
-        loadingButton.style.display = 'none';
+        var audioPlayer = document.getElementsByClassName('audio-player')[0];
+        audioPlayer.classList.remove('loading');
     }
 
     function audioBackground(duration) {
