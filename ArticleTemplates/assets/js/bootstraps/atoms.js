@@ -1,11 +1,13 @@
 define([
   'modules/atoms/services',
   'modules/cards',
-  'modules/ads'
+  'modules/ads',
+  'modules/youtube'
 ], function (
   services,
   cards,
-  ads
+  ads,
+  youtube
 ) {
     'use strict';
 
@@ -39,6 +41,7 @@ define([
         d.addEventListener('click', function() {
           cards.initPositionPoller();
           ads.initMpuPoller(0);
+          youtube.resetAndCheckForVideos();
         });
       });
     }

@@ -13,7 +13,7 @@ define([
         sdkPlaceholders = [],
         sdkReport,
         sdkPollCount = 0,
-        sdkMaxPollCount = 20,
+        sdkMaxPollCount = 100,
         sdkReportInitialised = false,
         sdkPoller;
 
@@ -117,17 +117,21 @@ define([
                 } else {
                     clearInterval(sdkPoller);
                 }
-            }, 1000);
+            }, 200);
         }
     }
 
     function buildAndSendSdkReport() {
         var newSdkReport = buildSdkReport();
-
         if (newSdkReport !== sdkReport) {
             util.signalDevice('youtubeAtomPosition/' + newSdkReport);
             sdkReport = newSdkReport;
         }
+    }
+
+    function resetAndCheckForVideos() {
+        sdkPollCount = 0;
+        checkForVideos();
     }
 
     function buildSdkReport() {
@@ -349,6 +353,7 @@ define([
 
     return {
         init: ready,
-        checkForVideos: checkForVideos
+        checkForVideos: checkForVideos,
+        resetAndCheckForVideos: resetAndCheckForVideos
     };
 });

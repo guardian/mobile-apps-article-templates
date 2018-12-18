@@ -64,6 +64,7 @@ define([
         // When a block has loaded check position of related cards placeholder
         cards.initPositionPoller();
         ads.initMpuPoller(0);
+        youtube.resetAndCheckForVideos()
         
         // check for tweets
         twitter.checkForTweets();
