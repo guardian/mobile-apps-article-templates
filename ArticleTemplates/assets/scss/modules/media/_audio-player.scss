@@ -58,6 +58,15 @@
     top: base-px(1);
     left: base-px(1);
 
+    transform: scale(1);
+    transition: all 300ms;
+    z-index: 10;
+    .loading & {
+        transform: scale(0.5);
+        transition: all 1ms;
+        z-index: -1;
+    }
+
     &.touchpoint--primary .touchpoint__button {
         color: color(brightness-7);
         background-color: color(tone-media);
@@ -86,30 +95,37 @@
     position: absolute;
     top: base-px(1);
     left: base-px(1);
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
+    visibility: hidden;
     .pulse {
-        transform: scale(.5);
-        &,
-        &:before,
-        &:after {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 100%;
-            background-color: color(tone-highlight);
-            transition: transform 500ms linear;
-        }
-        &:before,
-        &:after {
-            animation: pulseOut 2s ease-out infinite;
-        }
-        &:before {
-            animation-delay: 1s;
+        transform: scale(1);
+        transition: transform 300ms ease-in-out;
+        .loading & {
+            visibility: visible;
+            transform: scale(0.5);
+            &:before,
+            &:after,
+            & {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 100%;
+                background-color: color(tone-highlight);
+            }
+            &:before,
+            &:after {
+                opacity: 0;
+                transform: scale(0);
+                animation: pulseOut 2s ease-out infinite;
+            }
+            &:after {
+                animation-delay: 1s;
+            }
         }
     }
     @keyframes pulseOut {
