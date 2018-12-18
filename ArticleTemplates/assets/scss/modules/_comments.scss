@@ -64,6 +64,13 @@
     overflow: hidden;
     background: color(brightness-96);
 
+    .comment__recommend, .comments__viewmore--button {
+        .touchpoint__button, &.touchpoint__button {
+            border: solid 1px rgba(18, 18, 18, .5);
+            color: color(brightness-7);
+        }
+    }
+
     &--module {
         border-top: 1px solid color(brightness-46);
     }
@@ -157,7 +164,7 @@
     &__count {
         font-family: $egyptian-display;
         color: color(brightness-60);
-
+        margin-left: 4px;
         .comments--page & {
             @include headline(.5);
             margin-bottom: base-px(1);
@@ -166,10 +173,10 @@
 
     &__closed {
         @include meta;
-        font-family: $agate-sans;
-        font-weight: bold;
-        color: color(brightness-46);
         display: none;
+        font-family: 'Guardian Headline', 'Guardian Egyptian Web', Georgia, serif;
+        color: color(brightness-60);
+        font-weight: 600;
 
         .comments--closed & {
             display: block;
@@ -181,19 +188,32 @@
     }
 
     &__post {
+        padding: 12px;
+        margin: -12px;
         position: absolute;
         right: 0;
+
+        .touchpoint__button {
+            line-height: 22px;
+            width: 32px;
+            height: 32px;
+            font-size: 16px;
+
+            &::before {
+                top: 3px;
+            }
+        }
 
         .comments--module & {
             top: 0;
 
-            @include mq($from: col2) {
-                margin-top: 6px;
-            }
-
             @include mq($from: col4) {
-                position: static;
-                margin-top: 15px;
+                position: relative;
+                margin-top: 6px;
+
+                .touchpoint__label {
+                    padding: 0;
+                }
             }
 
             @include mq($to: col1) {
@@ -213,6 +233,8 @@
 
         .touchpoint__label {
             padding-left: 0;
+            padding: 0 4px;
+            margin-top: -1px;
         }
     }
 
@@ -277,19 +299,17 @@
         border: solid 1px color(tone-sandy-light);
         border-top: 1px solid color(brightness-60);
         border-bottom: 2px solid color(tone-sandy-light);
-
-        @include mq($from: col4) {
-            margin: base-px(1, 0);
-        }
     }
 
     &__footer {
         overflow: hidden;
-        margin: base-px(1);
+        margin: base-px(2, 1, 0, 0);
     }
 
     &__viewmore {
         float: right;
+        padding: 12px;
+        margin: -12px;
 
         .comments-0 &,
         .comments-1 &,
@@ -298,10 +318,20 @@
         }
 
         &--button {
+            line-height: 22px;
+            width: 32px;
+            height: 32px;
+            font-size: 16px;
+
             &::before {
                 position: relative;
-                top: -2px;
+                top: 3px;
             }
+        }
+
+        &--label {
+            padding: 0px 4px;
+            margin-top: -1px;
         }
     }
 
