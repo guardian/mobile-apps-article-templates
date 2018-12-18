@@ -1,6 +1,7 @@
 import services from 'modules/atoms/services';
 import { initPositionPoller } from 'modules/cards';
 import { initMpuPoller } from 'modules/ads';
+import { resetAndCheckForVideos } from 'modules/youtube';
 
 function init() {
     const atomTypes = GU.opts.atoms;
@@ -32,6 +33,7 @@ function initExpandables(atom) {
         d.addEventListener('click', function() {
             initPositionPoller();
             initMpuPoller(0);
+            resetAndCheckForVideos();
         });
     });
 }

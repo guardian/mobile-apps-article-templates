@@ -8,7 +8,7 @@ let scriptReady = false;
 let sdkPlaceholders = [];
 let sdkReport;
 let sdkPollCount = 0;
-const sdkMaxPollCount = 20;
+const sdkMaxPollCount = 100;
 let sdkReportInitialised = false;
 let sdkPoller;
 
@@ -91,7 +91,7 @@ function checkForVideos() {
             } else {
                 clearInterval(sdkPoller);
             }
-        }, 1000);
+        }, 200);
     }
 }
 
@@ -102,6 +102,11 @@ function buildAndSendSdkReport() {
         signalDevice(`youtubeAtomPosition/${newSdkReport}`);
         sdkReport = newSdkReport;
     }
+}
+
+function resetAndCheckForVideos() {
+    sdkPollCount = 0;
+    checkForVideos();
 }
 
 function buildSdkReport() {
@@ -339,4 +344,4 @@ function init() {
     checkForVideos();
 }
 
-export { init, checkForVideos, append };
+export { init, checkForVideos, append, resetAndCheckForVideos };

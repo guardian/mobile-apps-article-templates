@@ -1,7 +1,7 @@
 import { debounce } from 'modules/util';
 import { initPositionPoller } from 'modules/cards';
 import { initMpuPoller } from 'modules/ads';
-
+import { resetAndCheckForVideos } from 'modules/youtube';
 
 let articleBody;
 let isAndroid;
@@ -118,6 +118,7 @@ function enhanceTweets() {
         // When a tweets been enhanced check position of related cards placeholder
         initPositionPoller();
         initMpuPoller(0);
+        resetAndCheckForVideos();
     }
 }
 
