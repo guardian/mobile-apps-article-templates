@@ -79,12 +79,12 @@ define([
         }
 
         slider1.setValue(current);
-        if (current > previous) {
+        if (current - previous === 1) {
             audioPlaying();
-            previous = current;
         } else if (current === previous) {
             audioStop();
         }
+        previous = current;
     }
 
     function audioSlider() {
