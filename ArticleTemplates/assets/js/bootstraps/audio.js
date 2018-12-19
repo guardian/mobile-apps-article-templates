@@ -3,6 +3,7 @@ import { getElementOffset, debounce, signalDevice } from 'modules/util';
 let audioCurrent;
 let down;
 let slider1;
+let previous = 0;
 
 function getColor() {
     const isAudio = !document.body.classList.contains('tone--podcast') && document.body.classList.contains('article--audio');
@@ -68,6 +69,12 @@ function updateSlider(current, platform) {
         }
     }
     slider1.setValue(current);
+    if (current - previous === 1) {
+        audioPlaying();
+    } else if (current === previous) {
+        audioStop();
+    }
+    previous = current;
 }
 
 function audioSlider() {
@@ -104,11 +111,21 @@ function audioSlider() {
 }
 
 function audioPlay() {
+    const audioPlayer = document.getElementsByClassName('audio-player')[0];
+
+     if (audioPlayer) {
+        audioPlayer.classList.add('loading');
+    }
+}
+
+function audioPlaying() {
     const button = document.getElementsByClassName('audio-player__button')[0];
+    const audioPlayer = document.getElementsByClassName('audio-player')[0];
     const screenReadable = document.getElementsByClassName('audio-player-readable')[0];
 
-    if (button && screenReadable) {
+    if (button && audioPlayer && screenReadable) {
         button.classList.add('pause');
+        audioPlayer.classList.remove('loading');
         screenReadable.innerHTML = "Pause";
     }
 }
@@ -124,19 +141,13 @@ function audioStop() {
 }
 
 function audioLoad() {
-    const button = document.getElementsByClassName('audio-player__button')[0];
-    const loadingButton = document.getElementsByClassName('audio-player__button--loading')[0];
-
-    button.style.display = 'none';
-    loadingButton.style.display = 'block';
+    const audioPlayer = document.getElementsByClassName('audio-player')[0];
+    audioPlayer.classList.add('loading');
 }
 
 function audioFinishLoad() {
-    const button = document.getElementsByClassName('audio-player__button')[0];
-    const loadingButton = document.getElementsByClassName('audio-player__button--loading')[0];
-
-    button.style.display = 'block';
-    loadingButton.style.display = 'none';
+    var audioPlayer = document.getElementsByClassName('audio-player')[0];
+    audioPlayer.classList.remove('loading');
 }
 
 function audioBackground(duration) {

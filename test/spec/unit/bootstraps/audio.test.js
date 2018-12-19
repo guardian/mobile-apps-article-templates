@@ -45,7 +45,7 @@ describe('ArticleTemplates/assets/js/bootstraps/audio', function () {
             const playerButton = document.createElement('div');
             const screenReaderLabel = document.createElement('span');
 
-            playerButton.classList.add('audio-player__button');
+            playerButton.classList.add('audio-player');
             screenReaderLabel.classList.add('audio-player-readable');
 
             container.appendChild(playerButton);
@@ -55,7 +55,7 @@ describe('ArticleTemplates/assets/js/bootstraps/audio', function () {
 
             window.audioPlay();
 
-            expect(playerButton.classList.contains('pause')).toEqual(true);
+            expect(playerButton.classList.contains('loading')).toEqual(true);
         });
     });
 
@@ -79,47 +79,40 @@ describe('ArticleTemplates/assets/js/bootstraps/audio', function () {
     });
 
     describe('window.audioLoad()', function () {
-        it('hides audio player button and shows loading icon', function () {
+        it('Shows loading animation once loaded', function () {
             let playerButton = document.createElement('div');
-            let loadingIcon = document.createElement('div');
 
-            playerButton.classList.add('audio-player__button');
+            playerButton.classList.add('audio-player');
             playerButton.style.display = 'block';
 
-            loadingIcon.classList.add('audio-player__button--loading');
-
             container.appendChild(playerButton);
-            container.appendChild(loadingIcon);
 
             init();
 
+            expect(playerButton.classList.contains('loading')).toEqual(false);
+
             window.audioLoad();
-            
-            expect(playerButton.style.display).not.toEqual('block');
-            expect(loadingIcon.style.display).toEqual('block');
+
+            expect(playerButton.style.display).toEqual('block');
+            expect(playerButton.classList.contains('loading')).toEqual(true);
         });
     });
 
     describe('window.audioFinishLoad()', function () {
         it('hides loading icon and shows audio player button', function () {
-            let playerButton = document.createElement('div');
-            let loadingIcon = document.createElement('div');
+            const playerButton = document.createElement('div');
 
-            playerButton.classList.add('audio-player__button');
-            playerButton.style.display = 'none';
-
-            loadingIcon.classList.add('audio-player__button--loading');
-            loadingIcon.style.display = 'block';
+            playerButton.classList.add('audio-player');
+            playerButton.style.display = 'block';
 
             container.appendChild(playerButton);
-            container.appendChild(loadingIcon);
 
             init();
-
+            window.audioLoad();
             window.audioFinishLoad();
 
-            expect(playerButton.style.display).not.toEqual('none');
-            expect(loadingIcon.style.display).not.toEqual('block');
+            expect(playerButton.style.display).toEqual('block');
+            expect(playerButton.classList.contains('loading')).toEqual(false);
         });
     });
 
