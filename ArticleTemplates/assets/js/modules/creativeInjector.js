@@ -69,7 +69,7 @@ function (
         creativeContainer.innerHTML = html;
 
         if (type === 'inline' && id === 'in-article-signup-test') {
-            injectInlineCreativeWithoutEpic(creativeContainer);
+            injectInlineCreativeIfLength(creativeContainer, 10);
         } else if (type === 'inline-article') {
             injectInlineCreative(creativeContainer);
         } else {
@@ -79,13 +79,13 @@ function (
         addEventListenerScroll(creativeContainer, id);
     }
 
-    function injectInlineCreativeWithoutEpic(creativeContainer) {
+    function injectInlineCreativeIfLength(creativeContainer, minParagraphs) {
         var i,
             prose = document.querySelector('.article__body > div.prose'),
             paragraphs = prose.querySelectorAll('p:nth-child(n+6)');
 
         // Don't show creative if less than 10 paragraphs
-        if (document.querySelectorAll('.article__body > div.prose > p').length < 10) {
+        if (document.querySelectorAll('.article__body > div.prose > p').length < minParagraphs) {
             return;
         }
 
