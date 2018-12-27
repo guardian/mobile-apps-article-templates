@@ -317,6 +317,16 @@ define([
 
     function handleKeyEventClick(evt) {
         evt.preventDefault();
+        var id = this.href.split('#block-')[1];
+        var element = document.querySelector('#block-' + id);
+        if (element) {
+            scrollToBlock(id);
+        } else {
+            console.log('loadblock/' + id);
+            util.signalDevice('loadblock/' + id);
+            // use new endpoint to fetch content
+            // and then scroll to block
+        }
     }
 
     function showHideKeyEvents() {
