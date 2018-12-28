@@ -228,16 +228,8 @@ define([
 
                     clock.tick(1100);
 
-                    expect(utilMock.signalDevice).to.have.been.calledOnce;
+                    expect(utilMock.signalDevice).to.have.been.called;
                     expect(utilMock.signalDevice).to.have.been.calledWith('ad_moved');
-                });
-
-                it('do not call signalDevice with ad_moved if position has not changed', function () {
-                    ads.init(config);
-
-                    clock.tick(1100);
-
-                    expect(utilMock.signalDevice).to.not.have.been.called;
                 });
             });
         });
@@ -287,7 +279,7 @@ define([
                 expect(placeholderTwo.parentNode).to.be.falsy;
                 expect(placeholderOne).to.not.eql(articleBody.querySelectorAll('.advert-slot--mpu')[0]);
                 expect(placeholderTwo).to.not.eql(articleBody.querySelectorAll('.advert-slot--mpu')[1]);
-                expect(utilMock.signalDevice).to.have.been.calledOnce;
+                expect(utilMock.signalDevice).to.have.been.called;
                 expect(utilMock.signalDevice).to.have.been.calledWith('ad_moved');
             });
 
@@ -491,7 +483,7 @@ define([
 
                 ads.updateMPUPosition(50);
 
-                expect(utilMock.signalDevice).to.have.been.calledOnce;
+                expect(utilMock.signalDevice).to.have.been.called;
                 expect(utilMock.signalDevice).to.have.been.calledWith('ad_moved');
             });
 
@@ -507,18 +499,6 @@ define([
                 ads.updateMPUPosition(25);
 
                 expect(window.GuardianJSInterface.mpuAdsPosition).to.not.have.been.called;
-            });
-
-            it('does not update ad position on ios if it has not changed', function () {
-                var adSlot;
-
-                ads.init(config);
-
-                adSlot = document.getElementsByClassName('advert-slot__wrapper')[0];
-
-                ads.updateMPUPosition(25);
-
-                expect(utilMock.signalDevice).to.not.have.been.called;
             });
         });
     });
