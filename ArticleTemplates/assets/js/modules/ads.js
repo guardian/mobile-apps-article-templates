@@ -205,7 +205,8 @@ function (
 
     function poller(interval, adPositions, firstRun) {
         var newAdPositions = getMpuOffset();
-        var currentOffset = document.getElementsByClassName('advert-slot--mpu')[0].offsetTop;
+        var adSlot = document.getElementsByClassName('advert-slot--mpu')[0];
+        var currentOffset = adSlot ? adSlot.offsetTop : 0;
 
         if (firstRun && GU.opts.platform === 'android') {
             updateAndroidPosition();
