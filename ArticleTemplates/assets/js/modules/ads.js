@@ -10,7 +10,8 @@ function (
         initialised = false,
         positionPoller,
         numberOfMpus = 0,
-        adsType;
+        adsType,
+        adOffset = 0;
 
     function insertAdPlaceholders(mpuAfterParagraphs) {
         var mpu = createMpu(numberOfMpus),
@@ -204,17 +205,20 @@ function (
 
     function poller(interval, adPositions, firstRun) {
         var newAdPositions = getMpuOffset();
+        var adSlot = document.getElementsByClassName('advert-slot--mpu')[0];
+        var currentOffset = adSlot ? adSlot.offsetTop : 0;
 
         if (firstRun && GU.opts.platform === 'android') {
             updateAndroidPosition();
         }
 
-        if (newAdPositions !== adPositions) {
-            if(GU.opts.platform === 'android'){
+        if (newAdPositions !== adPositions || currentOffset !== adOffset) {
+            if (GU.opts.platform === 'android'){
                 updateAndroidPosition();
             } else {
                 util.signalDevice('ad_moved');
             }
+            adOffset = currentOffset;
         }
 
         positionPoller = setTimeout(poller.bind(null, interval + 50, newAdPositions), interval);
