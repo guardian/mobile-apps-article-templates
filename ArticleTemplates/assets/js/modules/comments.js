@@ -63,18 +63,18 @@ function commentsExpand() {
     }
 }
 
-function checkForZero() {
-    const comments = document.getElementsByClassName("comments-0")[0];
-    if (comments) {
-        if ([].slice.call(comments.getElementsByClassName("block--discussion-thread")).length > 0) {
-            const emptyCommentBlock = comments.getElementsByClassName("comments__block--empty")[0];
-            const commentCount = comments.getElementsByClassName("comments__count")[0];
-            if (emptyCommentBlock) {
-                emptyCommentBlock.style.display = "none";
-            }
-            if (commentCount) {
-                commentCount.style.display = "none";
-            }
+function checkForCorrectCount() {
+    const actualCommentCount = document.getElementsByClassName("block--discussion-thread").length;
+    const correctCount = !!document.getElementsByClassName("comments-" + actualCommentCount).length;
+
+    if (!correctCount) {
+        const emptyCommentBlock = document.getElementsByClassName("comments__block--empty")[0];
+        const commentCount = document.getElementsByClassName("comments__count")[0];
+        if (emptyCommentBlock) {
+            emptyCommentBlock.style.display = "none";
+        }
+        if (commentCount) {
+            commentCount.style.display = "none";
         }
     }
 }
@@ -156,7 +156,7 @@ function articleCommentsInserter(html) {
         }
 
         commentsReplyFormatting();
-        checkForZero();
+        checkForCorrectCount();
 
         let commentCount = document.getElementsByClassName("comments__count")[0];
         if (commentCount && blocks.length === parseInt(commentCount.innerHTML)) {
@@ -193,7 +193,7 @@ function commentsInserter(html) {
         }
 
         commentsReplyFormatting();
-        checkForZero();
+        checkForCorrectCount();
     }
 
     if (commentsContainer && loadingBlock) {
