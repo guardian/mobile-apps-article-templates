@@ -4,7 +4,6 @@ let adsReady = false;
 let numberOfMpus = 0;
 let positionPoller;
 let adsType;
-let adOffset = 0;
 
 function insertAdPlaceholders(mpuAfterParagraphs) {
     const mpu = createMpu(numberOfMpus);
@@ -177,20 +176,17 @@ function initMpuPoller(interval = 1000) {
 
 function poller(interval, adPositions, firstRun) {
     let newAdPositions = getMpuOffset();
-    let adSlot = document.getElementsByClassName('advert-slot--mpu')[0];
-    let currentOffset = adSlot ? adSlot.offsetTop : 0;
 
     if (firstRun && GU.opts.platform === 'android') {
         updateAndroidPosition();
     }
 
-    if (newAdPositions !== adPositions || currentOffset !== adOffset) {
+    if (newAdPositions !== adPositions) {
         if(GU.opts.platform === 'android'){
             updateAndroidPosition();
         } else {
             signalDevice('ad_moved');
         }
-        adOffset = currentOffset;
     }
 
     positionPoller = setTimeout(poller.bind(null, interval + 50, newAdPositions), interval);
