@@ -72,18 +72,18 @@ define([
         }
     }
 
-    function checkForZero() {
-        var comments = document.getElementsByClassName("comments-0")[0];
-        if (comments) {
-            if ([].slice.call(comments.getElementsByClassName("block--discussion-thread")).length > 0) {
-                var emptyCommentBlock = comments.getElementsByClassName("comments__block--empty")[0];
-                var commentCount = comments.getElementsByClassName("comments__count")[0];
-                if (emptyCommentBlock) {
-                    emptyCommentBlock.style.display = "none";
-                }
-                if (commentCount) {
-                    commentCount.style.display = "none";
-                }
+    function checkForCorrectCount() {
+        var actualCommentCount = document.getElementsByClassName("block--discussion-thread").length;
+        var correctCount = !!document.getElementsByClassName("comments-" + actualCommentCount).length;
+
+        if (!correctCount) {
+            var emptyCommentBlock = document.getElementsByClassName("comments__block--empty")[0];
+            var commentCount = document.getElementsByClassName("comments__count")[0];
+            if (emptyCommentBlock) {
+                emptyCommentBlock.style.display = "none";
+            }
+            if (commentCount) {
+                commentCount.style.display = "none";
             }
         }
     }
@@ -167,7 +167,7 @@ define([
             }
 
             commentsReplyFormatting();
-            checkForZero();
+            checkForCorrectCount();
         }
     }
 
@@ -199,7 +199,7 @@ define([
             }
 
             commentsReplyFormatting();
-            checkForZero();
+            checkForCorrectCount();
         }
 
         if (commentsContainer && loadingBlock) {
