@@ -5,8 +5,8 @@ module.exports = (env, argv) => {
   const config = {
     entry: {
       boot: './ArticleTemplates/assets/js/boot.js',
-        'garnett-style-sync': './ArticleTemplates/assets/scss/style-sync.scss',
-        'garnett-style-async': './ArticleTemplates/assets/scss/style-async.scss',
+        'style-sync': './ArticleTemplates/assets/scss/style-sync.scss',
+        'style-async': './ArticleTemplates/assets/scss/style-async.scss',
         'fonts-ios': './ArticleTemplates/assets/scss/fonts-ios.scss',
         'fonts-android': './ArticleTemplates/assets/scss/fonts-android.scss',
         'outbrain': './ArticleTemplates/assets/scss/outbrain.scss',
