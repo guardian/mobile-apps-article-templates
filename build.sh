@@ -3,7 +3,6 @@
 # Build
 yarn 
 yarn build
-yarn validate
 yarn test
 
 # Publish
