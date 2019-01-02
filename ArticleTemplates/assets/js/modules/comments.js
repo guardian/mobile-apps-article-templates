@@ -67,7 +67,7 @@ function checkForCorrectCount() {
     const actualCommentCount = document.getElementsByClassName("block--discussion-thread").length;
     const correctCount = !!document.getElementsByClassName("comments-" + actualCommentCount).length;
 
-    if (!correctCount) {
+    if (!correctCount && actualCommentCount < 3) {
         const emptyCommentBlock = document.getElementsByClassName("comments__block--empty")[0];
         const commentCount = document.getElementsByClassName("comments__count")[0];
         if (emptyCommentBlock) {
