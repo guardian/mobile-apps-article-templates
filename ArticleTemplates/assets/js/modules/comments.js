@@ -76,7 +76,7 @@ define([
         var actualCommentCount = document.getElementsByClassName("block--discussion-thread").length;
         var correctCount = !!document.getElementsByClassName("comments-" + actualCommentCount).length;
 
-        if (!correctCount) {
+        if (!correctCount && actualCommentCount < 3) {
             var emptyCommentBlock = document.getElementsByClassName("comments__block--empty")[0];
             var commentCount = document.getElementsByClassName("comments__count")[0];
             if (emptyCommentBlock) {
