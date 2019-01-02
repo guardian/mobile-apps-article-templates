@@ -15,7 +15,8 @@ define(function() {
                 if (
                     hasClass(sibling, 'element-atom') ||
                     hasClass(sibling, 'element-embed') ||
-                    hasClass(sibling, 'element-tweet')
+                    hasClass(sibling, 'element-tweet') ||
+                    hasClass(sibling, 'element-image')
                 ) {
                     currentLink.style.width = '100%';
                     sibling.style.clear = 'both';
