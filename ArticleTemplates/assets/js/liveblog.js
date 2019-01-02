@@ -1,18 +1,9 @@
-define([
-    'bootstraps/common',
-    'bootstraps/liveblog'
-], function (
-    common,
-    liveblog
-) {
-    'use strict';
-    
-    function init() {
-        common.init();
-        liveblog.init();
-    }
+import { init as commonInit } from 'bootstraps/common';
+import { init as liveblogInit } from 'bootstraps/liveblog';
 
-    return {
-        init: init
-    };
-});
+const init = () => {
+    commonInit();
+    liveblogInit();
+};
+
+export { init };

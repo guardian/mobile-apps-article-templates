@@ -1,24 +1,13 @@
-define([
-	'bootstraps/common',
-    'bootstraps/article',
-    'bootstraps/atoms',
-    'bootstraps/campaign'
-], function (
-	common,
-    article,
-    atoms,
-    campaign
-) {
-    'use strict';
-    
-    function init() {
-        common.init();
-        article.init();
-        atoms.init();
-        campaign.init();
-    }
+import { init as commonInit } from 'bootstraps/common';
+import { init as articleInit } from 'bootstraps/article';
+import { init as atomsInit } from 'bootstraps/atoms';
+import { init as campaignInit } from 'bootstraps/campaign';
 
-    return {
-        init: init
-    };
-});
+const init = () => {
+    commonInit();
+    articleInit();
+    atomsInit();
+    campaignInit();
+};
+
+export { init };

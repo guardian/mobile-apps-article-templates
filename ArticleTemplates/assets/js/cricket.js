@@ -1,24 +1,13 @@
-define([
-    'bootstraps/common',
-    'bootstraps/cricket',
-    'bootstraps/liveblog'
-], function (
-    common,
-    cricket,
-    liveblog
-) {
-    'use strict';
-    
-    function init() {
-        common.init();
-        cricket.init();
+import { init as initCommon } from 'bootstraps/common';
+import { init as initCricket } from 'bootstraps/cricket';
+import { init as initLiveblog } from 'bootstraps/liveblog';
 
-        if (document.getElementsByClassName('article__body--liveblog').length > 0) {
-            liveblog.init(common);
-        }
+const init = () => {
+    initCommon();
+    initCricket();
+    if (document.getElementsByClassName('article__body--liveblog').length > 0) {
+        initLiveblog();
     }
+};
 
-    return {
-        init: init
-    };
-});
+export { init };

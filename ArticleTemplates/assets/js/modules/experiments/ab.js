@@ -1,34 +1,23 @@
-define([
-], function (
-) {
-    'use strict';
+//  --- EXAMPLE ---
+// var tests = {
+//     lowFrictionParticipation: lowFrictionParticipation.init
+// }
 
-    /* --- EXAMPLE START --- */
+const tests = {};
 
-    // var tests = { 
-    //     lowFrictionParticipation: lowFrictionParticipation.init
-    // }
+function init() {
+    let key;
+    let testSpec;
 
-    /* --- EXAMPLE END --- */
-        
-    var tests = {};
+    if (GU.opts.tests) {
+        testSpec = JSON.parse(GU.opts.tests);
 
-    function init() {
-        var key,
-            testSpec;
-
-        if (GU.opts.tests) {
-            testSpec = JSON.parse(GU.opts.tests);
-
-            for (key in testSpec) {
-                if (testSpec.hasOwnProperty(key) && tests[key]) {
-                    tests[key](testSpec[key]);
-                }
+        for (key in testSpec) {
+            if (testSpec.hasOwnProperty(key) && tests[key]) {
+                tests[key](testSpec[key]);
             }
         }
     }
+}
 
-    return {
-        init: init
-    };
-});
+export { init };
