@@ -68,7 +68,7 @@ function (
         creativeContainer.classList.add(type + '-creative-container');
         creativeContainer.innerHTML = html;
 
-        if (type === 'inline' && id === 'in-article-signup-test') {
+        if (type === 'inline' && id === 'midarticle') {
             injectInlineCreativeIfLength(creativeContainer, 10);
         } else if (type === 'inline-article') {
             injectInlineCreative(creativeContainer);
