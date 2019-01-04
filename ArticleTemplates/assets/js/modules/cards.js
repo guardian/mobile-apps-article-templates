@@ -1,5 +1,4 @@
 
-import flipSnap from 'flipsnap';
 import { getElementOffset } from 'modules/util';
 
 let existingRelatedContentPosition;
