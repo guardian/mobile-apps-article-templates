@@ -18,10 +18,8 @@ import { init as initAB } from 'modules/experiments/ab';
 let trackCommentContainerView = true;
         
 function init() {
-    if (GU && GU.opts && GU.opts.platform === 'android') {
-        // polyfill to remove click delays on browsers with touch
-        attach(document.body);
-    }
+    // polyfill to remove click delays on browsers with touch
+    attach(document.body);
     formatImages();
     figcaptionToggle();
     articleContentType();
