@@ -13,7 +13,8 @@ function init() {
                 hasClass(sibling, 'element-atom') ||
                 hasClass(sibling, 'element-embed') ||
                 hasClass(sibling, 'element-tweet') ||
-                hasClass(sibling, 'element-image')
+                hasClass(sibling, 'element-image') ||
+                hasClass(sibling, 'element-interactive')
             ) {
                 currentLink.style.width = '100%';
                 sibling.style.clear = 'both';
