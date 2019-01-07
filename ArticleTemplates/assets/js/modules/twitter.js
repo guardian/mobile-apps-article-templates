@@ -113,10 +113,11 @@ function enhanceTweets() {
         }
     }
 
-    if (processedTweets && articleBody){
+    // Removes fastclick
+    document.querySelectorAll('.twitter-tweet-rendered').forEach(tweet => tweet.classList.add('needsclick'));
+
+    if (processedTweets && articleBody) {
         twttr.widgets.load(articleBody);
-        // Removes fastclick
-        document.querySelectorAll('.twitter-tweet-rendered').forEach(tweet => tweet.classList.add('needsclick'));
         // When a tweets been enhanced check position of related cards placeholder
         initPositionPoller();
         initMpuPoller(0);
