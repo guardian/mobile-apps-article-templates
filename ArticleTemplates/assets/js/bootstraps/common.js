@@ -43,6 +43,7 @@ function init() {
     setupTracking(); // track common events
     initAB();
     initRichLinks();
+    setupForms();
 
     if (SmoothScroll !== undefined && typeof SmoothScroll.init === 'function') {
         SmoothScroll.init(); // scroll to anchor
@@ -262,7 +263,7 @@ function reportVideoPositions() {
 function videoPositioningPoller(pageHeight) {
     const newHeight = document.body.offsetHeight;
 
-    if(pageHeight !== newHeight) {
+    if (pageHeight !== newHeight) {
         reportVideoPositions();
     } else {
         setTimeout(videoPositioningPoller.bind(null, newHeight), 500);
@@ -649,6 +650,30 @@ function isCommentContainerInView(commentContainer) {
         isElementPartiallyInViewport(commentContainer)) {
         signalDevice('trackAction/comments:seen');
         trackCommentContainerView = false;
+    }
+}
+
+function setupForms() {
+    let fenceElems = document.querySelectorAll('iframe.fenced');
+    let checkForLinks;
+    let attempts = 0;
+    if (fenceElems) {
+        checkForLinks = setInterval(() => {
+            attempts += 1;
+            fenceElems.forEach(elem => {
+                elem.contentWindow.document.querySelectorAll('.fsBody link').forEach(link => {
+                    if (link.href.startsWith("file:")) {
+                        link.href = link.href.replace('file:', 'http:');
+                    } else if (link.href.startsWith("//")) {
+                        link.href = link.href.replace('//', 'http://');
+                    }
+                });
+            });
+        }, 1000);
+
+        if (attempts > 10) {
+            clearInterval(checkForLinks);
+        }
     }
 }
 
