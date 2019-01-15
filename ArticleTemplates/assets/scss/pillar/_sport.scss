@@ -15,7 +15,8 @@
     .cricket .tabs [href='#cricket__tabpanel--liveblog'][aria-selected=true],
     .cricket .tabs [href='#cricket__tabpanel--stats'][aria-selected=true],
     .football .tabs [href='#football__tabpanel--liveblog'][aria-selected=true],
-    .football .tabs [href='#football__tabpanel--stats'][aria-selected=true] {
+    .football .tabs [href='#football__tabpanel--stats'][aria-selected=true],
+    .football .tabs [href='#football__tabpanel--article'][aria-selected=true] {
         color: color(sport-kicker);
         border-top-color: color(sport-kicker);
     }
@@ -75,5 +76,85 @@
     .cricket-match-comp-info {
         color: color(brightness-100);
         background-color: color(sport-kicker);
+    }
+
+    .football, .cricket {
+        .standfirst:not([data-summary='']) {
+            padding: 12px;
+            color: color(brightness-7);
+            font-family: "Guardian Text Egyptian Web", Georgia, serif;
+            font-weight: 600;
+            font-size: 1.6rem;
+            line-height: 2rem;
+    
+            p {
+                margin-bottom: 12px;
+
+                &:last-of-type {
+                    margin-bottom: 0px;
+                }
+            }
+    
+            p + ul {
+                margin-top: 12px;
+            }
+    
+            ul {
+                li {
+                    padding-left: 2.4rem;
+                    padding-bottom: 6px;
+    
+                    a {
+                        background-image: none !important;
+                        border-bottom: 0.0625rem solid color(brightness-86);
+                    }
+                }
+    
+                li:before {
+                    content: '';
+                    background-color: color(brightness-60);
+                    margin-right: 12px;
+                    width: 1.2rem;
+                    height: 1.2rem;
+                    border-radius: .6rem;
+                    display: inline-block;
+                    clear: both;
+                    margin-left: -2.4rem;
+                }
+            }
+    
+            .bullet {
+                margin-top: 2px;
+                display: inline-block;
+                width: 5%;
+                float: left;
+    
+                & + a {
+                    width: 95%;
+                    margin-bottom: 12px;
+                    margin-top: 10px;
+                    text-decoration: none;
+                    background-image: none !important;
+                    border-bottom: 0.0625rem solid color(brightness-86);
+
+                    &:last-of-type {
+                        margin-bottom: 0px;
+                    }
+                }
+            }
+    
+            &.live-content {
+                background: color(sport-liveblog-background);
+                color: color(brightness-100);
+                ul li:before, .bullet:before {
+                    background-color: #ffffff80;
+                }
+    
+                a {
+                    color: color(sport-soft) !important;
+                    border-bottom: 0.0625rem solid color(brightness-86);
+                }
+            }
+        }
     }
 }
