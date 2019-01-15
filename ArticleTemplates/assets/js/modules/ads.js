@@ -179,10 +179,12 @@ function poller(interval, adPositions, firstRun) {
 
     if (firstRun && GU.opts.platform === 'android') {
         updateAndroidPosition();
+    } else if (firstRun) {
+        signalDevice('ad_moved');
     }
 
     if (newAdPositions !== adPositions) {
-        if(GU.opts.platform === 'android'){
+        if (GU.opts.platform === 'android'){
             updateAndroidPosition();
         } else {
             signalDevice('ad_moved');
