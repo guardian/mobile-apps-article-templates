@@ -163,14 +163,14 @@ function updateAndroidPositionDefaultCallback({ x1, y1, w1, h1 }) {
     window.GuardianJSInterface.mpuAdsPosition(x1, y1, w1, h1);
 }
 
-function initMpuPoller(interval = 1000) {
+function initMpuPoller(interval = 1000, firstRun = true) {
     if (positionPoller !== null) {
         window.clearTimeout(positionPoller);
     }
 
     poller(interval,
         getMpuOffset(),
-        true
+        firstRun
     );
 }
 
