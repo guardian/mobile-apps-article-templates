@@ -7,7 +7,7 @@ Article templates used within the Guardian’s next-generation iOS and Android a
 * A Mac or Linux computer.
 * [brew](https://brew.sh/) as a package manager.
 * [NVM](https://github.com/creationix/nvm).
-* [NodeJS](https://nodejs.org/). Install using nvm: `nvm install v6.9.2`. Remember to add `nvm use v6.9.2` to your 
+* [NodeJS](https://nodejs.org/). Install using nvm: `nvm install v8.11.2`. Remember to add `nvm use v8.11.2` to your 
 preferred shell startup file.
 * [Yarn](https://yarnpkg.com). Yarn is a package manager. Install using `brew install yarn`.
 * It is recommended you restart your shell to ensure changes added the startup file are applied.
@@ -41,6 +41,5 @@ Next time you build the app it will use the currently checked-out branch of `mob
 Yarn will provide the following services:
 
 * `yarn test` runs the JS unit tests from the `test/spec/unit/` directory
-* `yarn validate` runs `sasslint` checks on SCSS and `jshint` checks on JS
 * `yarn build` builds JS/CSS assets, used on CI environment for building assets
 * `yarn dev` builds JS and CSS (with source maps).

@@ -188,15 +188,8 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
                 advertSlotWrapper.style.top = '50px';
                 
                 const signalDeviceMock = jest.spyOn(util, "signalDevice");
-                expect(signalDeviceMock).toHaveBeenCalledTimes(1);
+                expect(signalDeviceMock).toHaveBeenCalled();
                 expect(signalDeviceMock).toHaveBeenCalledWith('ads-ready');
-            });
-
-            it('do not call signalDevice with ad_moved if position has not changed', function () {
-                init(config);
-
-                const signalDeviceMock = jest.spyOn(util, "signalDevice");
-                expect(signalDeviceMock).not.toHaveBeenCalledWith('ad_moved');
             });
         });
     });
