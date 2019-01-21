@@ -12,6 +12,19 @@ body[data-content-type='liveblog'] {
 }
 
 .article--liveblog {
+    .tags {
+        background-color: color(brightness-96);
+
+        .inline-list__item {
+            a {
+                @include tag-button(color(brightness-7), color(brightness-93), 'lighter');
+            }
+
+            &.more-button a {
+                @include tag-more-button(color(brightness-7), color(brightness-93), 'lighter');
+            }
+        }
+    }
 
     background-color: color(brightness-96);
     border-bottom: 0;
