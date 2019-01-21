@@ -669,11 +669,11 @@ function setupForms() {
                     }
                 });
             });
-        }, 1000);
 
-        if (attempts > 10) {
-            clearInterval(checkForLinks);
-        }
+            if (attempts >= 5) {
+                clearInterval(checkForLinks);
+            }
+        }, 1000);
     }
 }
 
