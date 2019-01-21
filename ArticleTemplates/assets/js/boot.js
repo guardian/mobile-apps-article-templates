@@ -32,7 +32,7 @@ const init = opts => {
         'footballMatchInfo',
         'footballMatchInfoFailed',
         'liveblogDeleteBlock',
-        'liveblogNewBlock',
+        'liveblockInsertBlocks',
         'liveblogUpdateBlock',
         'liveblogNewKeyEvent',
         'getMpuPosCallback',
