@@ -127,13 +127,37 @@ function showLiveMore(show) {
     }
 }
 
-function insertAfter(newNode, referenceNode) {
+function insertAfter(referenceNode, newNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+
+function liveblogInsertGap(afterBlockId, olderPagination, newerPagination) {
+    let before = document.createElement('div');
+    let after = document.createElement('div');
+    before.innerHTML = `
+        <div class="more more--live-blogs-blocks">
+            <a href="${olderPagination}" class="more__button">
+    	        <span class="more__icon" data-icon="&#xe050;" aria-hidden="true"></span>
+    	        <span class="more__text">Load more</span>
+            </a>
+        </div>
+    `;
+
+    after.innerHTML = `
+        <div class="more more--live-blogs-blocks">
+            <a href="${newerPagination}" class="more__button">
+                <span class="more__icon" data-icon="&#xe050;" aria-hidden="true"></span>
+                <span class="more__text">Load more</span>
+            </a>
+        </div>
+    `;
+    insertAfter(document.getElementById(afterBlockId), after);
+    insertAfter(document.getElementById(afterBlockId), before);
 }
 
 function liveblockInsertBlocks(afterBlockId, html) {
     let i;
-    const images = [];
+    let images = [];
     let blocks;
     const articleBody = document.getElementsByClassName('article__body')[0];
     const oldBlockCount = articleBody.getElementsByClassName('block').length;
@@ -145,7 +169,9 @@ function liveblockInsertBlocks(afterBlockId, html) {
         if (afterBlockId) {
             addNewBlockToBlog(document.getElementById(afterBlockId), newBlockElems[i])
         } else {
-            articleBody.appendChild(newBlockElems[i]);
+            newBlockElems[i].classList.add('animated');
+            newBlockElems[i].classList.add('slideinright');
+            articleBody.prepend(newBlockElems[i]);
         }
     }
 
@@ -171,10 +197,12 @@ function setupGlobals() {
     window.liveblogTime = liveblogTime;
     window.showLiveMore = showLiveMore;
     window.liveblockInsertBlocks = liveblockInsertBlocks;
+    window.liveblogInsertGap = liveblogInsertGap;
     window.liveblogNewKeyEvent = liveblogNewKeyEvent;
     window.scrollToBlock = scrollToBlock;
 
     window.applyNativeFunctionCall('liveblockInsertBlocks');
+    window.applyNativeFunctionCall('liveblogInsertGap');
     window.applyNativeFunctionCall('liveblogDeleteBlock');
     window.applyNativeFunctionCall('liveblogUpdateBlock');
     window.applyNativeFunctionCall('liveblogNewKeyEvent');
@@ -273,9 +301,6 @@ function removeMinuteElems() {
 }
 
 function init() {
-    newBlockHtml = '';
-    liveblogStartPos = getElementOffset(document.getElementsByClassName('article__body--liveblog')[0]);
-
     setupGlobals();
     keyEvents();
     window.liveblogTime();

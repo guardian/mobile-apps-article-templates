@@ -23,7 +23,7 @@
 // */
 
 .more {
-    padding: base-px(1, 0, 2, 0);
+    padding: base-px(2, 0);
 
     .more__label,
     .more__button {
@@ -84,7 +84,13 @@
 // View more live/dead blog updates
 .more--live-blogs {
     border-bottom: 1px dotted color(tone-sandy-light);
+}
 
+.more--live-blogs-blocks {
+    text-align: center;
+}
+
+.more--live-blogs, .more--live-blogs-blocks {
     @include mq($to: col2) {
         margin: base-px(0, 1);
     }
