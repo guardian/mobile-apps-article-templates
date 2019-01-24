@@ -34,23 +34,23 @@ function init() {
             if (isNonCompliant()) {
                 widgetConfig = {
                     image: {
-                        sections: 'AR_30',
-                        all: 'AR_30'
+                        sections: 'AR_20',
+                        all: 'AR_20'
                     },
                     text: {
-                        sections: 'AR_31',
-                        all: 'AR_31'
+                        sections: 'AR_20',
+                        all: 'AR_20'
                     }
                 };
             } else {
                 widgetConfig = {
                     image: {
-                        sections: 'AR_24',
-                        all: 'AR_18'
+                        sections: 'AR_12',
+                        all: 'AR_12'
                     },
                     text: {
-                        sections: 'AR_27',
-                        all: 'AR_20'
+                        sections: 'AR_12',
+                        all: 'AR_12'
                     }
                 };
             }
@@ -69,7 +69,7 @@ function init() {
             } else {
                 widgetConfig = {
                     image: {
-                        sections: 'AR_22',
+                        sections: 'AR_16',
                         all: 'AR_16'
                     }
                 };
