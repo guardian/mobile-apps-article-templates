@@ -23,22 +23,17 @@ describe('ArticleTemplates/assets/js/modules/outbrain', function () {
 
     describe('init()', function () {
         let outbrainContainer;
-        let outbrainText;
-        let outbrainImage;
+        let outbrainWidget;
 
         beforeEach(() => {
             outbrainContainer = document.createElement('div');
             outbrainContainer.classList.add('container__outbrain');
             container.appendChild(outbrainContainer);
 
-            outbrainImage = document.createElement('div');
-            outbrainImage.classList.add('outbrainImage');
-            outbrainImage.dataset.src = 'xxx';
-            outbrainContainer.appendChild(outbrainImage);
-
-            outbrainText = document.createElement('div');
-            outbrainText.classList.add('outbrainText');
-            outbrainContainer.appendChild(outbrainText);
+            outbrainWidget = document.createElement('div');
+            outbrainWidget.classList.add('OUTBRAIN');
+            outbrainWidget.dataset.src = 'xxx';
+            outbrainContainer.appendChild(outbrainWidget);
         });
 
         it('does nothing if no outbrain outbrain container', function () {
@@ -48,49 +43,66 @@ describe('ArticleTemplates/assets/js/modules/outbrain', function () {
         });
 
         it('does nothing if no outbrainImage.dataset.src not set', function () {
-            outbrainImage.dataset.src = '';
+            outbrainWidget.dataset.src = '';
             init();
             expect(document.getElementById('outbrain-widget')).toBeFalsy();
         });
 
-        it('sets up outbrain on tablet in news section', function () {
+        it('sets up outbrain on non compliant tablet', function () {
+            window.GU.opts.contentType = 'liveblog';
+            window.GU.opts.adsConfig = 'tablet';
             init();
 
-            expect(outbrainText.style.display).toEqual('block');
-            expect(outbrainText.dataset.widgetId).toEqual('AR_27');
-            expect(outbrainImage.dataset.widgetId).toEqual('AR_24');
+            expect(outbrainWidget.dataset.widgetId).toEqual('AR_20');
             expect(document.getElementById('outbrain-widget')).toBeTruthy();
         });
 
-        it('sets up outbrain on tablet in non-news section', function () {
-            window.GU.opts.section = 'sport';
-
+        it('sets up outbrain on compliant tablet with epic', function () {
+            window.GU.opts.contentType = 'article';
+            window.GU.opts.adsConfig = 'tablet';
+            GU.opts.hasEpic = true;
             init();
 
-            expect(outbrainText.style.display).toEqual('block');
-            expect(outbrainText.dataset.widgetId).toEqual('AR_20');
-            expect(outbrainImage.dataset.widgetId).toEqual('AR_18');
+            expect(outbrainWidget.dataset.widgetId).toEqual('AR_24');
             expect(document.getElementById('outbrain-widget')).toBeTruthy();
         });
 
-        it('sets up outbrain on mobile in news section', function () {
+        it('sets up outbrain on compliant tablet without epic', function () {
+            window.GU.opts.contentType = 'article';
+            window.GU.opts.adsConfig = 'tablet';
+            GU.opts.hasEpic = false;
+            init();
+
+            expect(outbrainWidget.dataset.widgetId).toEqual('AR_12');
+            expect(document.getElementById('outbrain-widget')).toBeTruthy();
+        });
+
+        it('sets up outbrain on non compliant mobile', function () {
+            window.GU.opts.contentType = 'liveblog';
             window.GU.opts.adsConfig = 'mobile';
-
             init();
 
-            expect(outbrainText.parentNode).toBeFalsy();
-            expect(outbrainImage.dataset.widgetId).toEqual('AR_22');
+            expect(outbrainWidget.dataset.widgetId).toEqual('AR_29');
             expect(document.getElementById('outbrain-widget')).toBeTruthy();
         });
 
-        it('sets up outbrain on mobile in non-news section', function () {
+        it('sets up outbrain on compliant mobile with epic', function () {
+            window.GU.opts.contentType = 'article';
             window.GU.opts.adsConfig = 'mobile';
-            window.GU.opts.section = 'sport';
-
+            GU.opts.hasEpic = true;
             init();
 
-            expect(outbrainText.parentNode).toBeFalsy();
-            expect(outbrainImage.dataset.widgetId).toEqual('AR_16');
+            expect(outbrainWidget.dataset.widgetId).toEqual('AR_22');
+            expect(document.getElementById('outbrain-widget')).toBeTruthy();
+        });
+
+        it('sets up outbrain on compliant mobile without epic', function () {
+            window.GU.opts.contentType = 'article';
+            window.GU.opts.adsConfig = 'mobile';
+            GU.opts.hasEpic = false;
+            init();
+
+            expect(outbrainWidget.dataset.widgetId).toEqual('AR_16');
             expect(document.getElementById('outbrain-widget')).toBeTruthy();
         });
     });
