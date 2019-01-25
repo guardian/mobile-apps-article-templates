@@ -11,7 +11,7 @@ import { initPositionPoller } from 'modules/cards';
 let newBlockHtml;
 let liveblogStartPos;
 
- function updateBlocksOnScroll() {
+function updateBlocksOnScroll() {
     if (liveblogStartPos.top > window.scrollY) {
         liveblogNewBlockDump();
     }
@@ -79,16 +79,16 @@ function liveblogNewBlockDump() {
     let newBlockElems;
     let i;
 
-     if (newBlockHtml) {
+    if (newBlockHtml) {
         newBlockElems = getElemsFromHTML(newBlockHtml);
 
-         for (i = newBlockElems.length; i > 0; i--) {
+        for (i = newBlockElems.length; i > 0; i--) {
             addNewBlockToBlog(insertAfterElem, newBlockElems[i - 1]);
         }
 
-         blocks = articleBody.getElementsByClassName('block');
+        blocks = articleBody.getElementsByClassName('block');
 
-         while (counter !== newBlockElems.length) {
+        while (counter !== newBlockElems.length) {
             images.push(...blocks[counter].getElementsByTagName('img'));
             counter++;
         }
@@ -102,11 +102,11 @@ function liveblogNewBlockDump() {
             window.updateLiveblogAdPlaceholders(true);
         }
 
-         window.liveblogTime();
+        window.liveblogTime();
 
-         checkInjectedComponents(true);
+        checkInjectedComponents(true);
 
-         newBlockHtml = '';
+        newBlockHtml = '';
     }
 }
 
@@ -161,9 +161,9 @@ function liveblogLoadMore(html) {
         articleBody.appendChild(newBlockElems[i]);
     }
 
-     blocks = articleBody.getElementsByClassName('block');
+    blocks = articleBody.getElementsByClassName('block');
 
-     for (i = blocks.length; i > oldBlockCount; i--) {
+    for (i = blocks.length; i > oldBlockCount; i--) {
         images.push(...blocks[i-1].getElementsByTagName('img'));
     }
 
@@ -391,6 +391,7 @@ function removeMinuteElems() {
 function init() {
     newBlockHtml = '';
     liveblogStartPos = getElementOffset(document.getElementsByClassName('article__body--liveblog')[0]);
+
     setupGlobals();
     keyEvents();
     window.liveblogTime();
