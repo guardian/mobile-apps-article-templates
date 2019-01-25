@@ -203,7 +203,7 @@
 
         .ob-widget {
             .ob-widget-items-container {
-                margin-left: 212px !important;
+                margin-left: 240px !important;
                 padding-bottom: 0px;
                 padding-top: 20px;
             }
@@ -229,7 +229,7 @@
 
             .ob_what {
                 margin-top: 10px !important;
-                margin-left: 212px !important;
+                margin-left: 240px !important;
             }
 
             .ob_about_this_content {
@@ -245,6 +245,31 @@
     .ob_about_this_content {
         a {
             color: #00456e;
+        }
+    }
+
+    // Outbrain send specific styles for this screen width which only gets applied to iPad Pro 11-inch
+    @media screen and (max-width: 1300px) and (min-width: 1140px) {
+        .ob-widget {
+            .ob-strip-layout .ob-widget-header {
+                width: 13.75rem !important;
+            }
+
+            .ob-widget-items-container {
+                width: calc(100% - 13.75rem) !important;
+                padding-top: 12px;
+                float: right !important;
+            }
+
+            .ob_what {
+                margin-left: 13.75rem;
+            }
+
+            .ob-widget-header span {
+                margin-left: 0px !important;
+                margin-top: 12px !important;
+                line-height: 1.8rem !important;
+            }
         }
     }
 }
