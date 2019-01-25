@@ -8,6 +8,15 @@ import { trackLiveBlogEpic } from 'modules/creativeInjector';
 import { initMpuPoller } from 'modules/ads';
 import { initPositionPoller } from 'modules/cards';
 
+let newBlockHtml;
+let liveblogStartPos;
+
+ function updateBlocksOnScroll() {
+    if (liveblogStartPos.top > window.scrollY) {
+        liveblogNewBlockDump();
+    }
+}
+
 function scrollToBlock(id) {
     const smoothScroll = new SmoothScroll();
     const element = document.querySelector(`#block-${id}`);
@@ -61,6 +70,46 @@ function checkInjectedComponents(newBlocksAdded) {
     trackLiveBlogEpic();
 }
 
+function liveblogNewBlockDump() {
+    const articleBody = document.getElementsByClassName('article__body')[0];
+    const images = [];
+    let blocks;
+    let counter = 0;
+    const insertAfterElem = document.getElementsByClassName('article__body--liveblog__pinned')[0];
+    let newBlockElems;
+    let i;
+
+     if (newBlockHtml) {
+        newBlockElems = getElemsFromHTML(newBlockHtml);
+
+         for (i = newBlockElems.length; i > 0; i--) {
+            addNewBlockToBlog(insertAfterElem, newBlockElems[i - 1]);
+        }
+
+         blocks = articleBody.getElementsByClassName('block');
+
+         while (counter !== newBlockElems.length) {
+            images.push(...blocks[counter].getElementsByTagName('img'));
+            counter++;
+        }
+
+        formatImages(images);
+        loadEmbeds();
+        loadInteractives();
+
+        // Move mpu ads
+        if (window.updateLiveblogAdPlaceholders) {
+            window.updateLiveblogAdPlaceholders(true);
+        }
+
+         window.liveblogTime();
+
+         checkInjectedComponents(true);
+
+         newBlockHtml = '';
+    }
+}
+
 function liveMore() {
     const liveMoreElem = document.getElementsByClassName('more--live-blogs')[0];
 
@@ -98,6 +147,35 @@ function liveblogUpdateBlock(blockID, html) {
     }
 }
 
+function liveblogLoadMore(html) {
+    let i;
+    const images = [];
+    let blocks;
+    const articleBody = document.getElementsByClassName('article__body')[0];
+    const oldBlockCount = articleBody.getElementsByClassName('block').length;
+    const newBlockElems = getElemsFromHTML(html);
+
+    document.getElementsByClassName('loading--liveblog')[0].classList.remove('loading--visible');
+
+    for (i = 0; i < newBlockElems.length; i++) {
+        articleBody.appendChild(newBlockElems[i]);
+    }
+
+     blocks = articleBody.getElementsByClassName('block');
+
+     for (i = blocks.length; i > oldBlockCount; i--) {
+        images.push(...blocks[i-1].getElementsByTagName('img'));
+    }
+
+    formatImages(images);
+    loadEmbeds();
+    loadInteractives();
+
+    window.liveblogTime();
+
+    checkInjectedComponents(false);
+}
+
 function liveblogTime() {
     let i;
     let blockTimes;
@@ -124,6 +202,13 @@ function showLiveMore(show) {
         } else {
             liveMoreElem.style.display = 'none';
         }
+    }
+}
+
+function liveblogNewBlock(html) {
+    newBlockHtml = html + newBlockHtml;
+    if (liveblogStartPos.top > window.scrollY) {
+        liveblogNewBlockDump();
     }
 }
 
@@ -194,13 +279,16 @@ function setupGlobals() {
     // Global function to handle liveblogs, called by native code
     window.liveblogDeleteBlock = liveblogDeleteBlock;
     window.liveblogUpdateBlock = liveblogUpdateBlock;
+    window.liveblogLoadMore = liveblogLoadMore;
     window.liveblogTime = liveblogTime;
     window.showLiveMore = showLiveMore;
+    window.liveblogNewBlock = liveblogNewBlock;
     window.liveblockInsertBlocks = liveblockInsertBlocks;
     window.liveblogInsertGap = liveblogInsertGap;
     window.liveblogNewKeyEvent = liveblogNewKeyEvent;
     window.scrollToBlock = scrollToBlock;
 
+    window.applyNativeFunctionCall('liveblogNewBlock');
     window.applyNativeFunctionCall('liveblockInsertBlocks');
     window.applyNativeFunctionCall('liveblogInsertGap');
     window.applyNativeFunctionCall('liveblogDeleteBlock');
@@ -301,6 +389,8 @@ function removeMinuteElems() {
 }
 
 function init() {
+    newBlockHtml = '';
+    liveblogStartPos = getElementOffset(document.getElementsByClassName('article__body--liveblog')[0]);
     setupGlobals();
     keyEvents();
     window.liveblogTime();

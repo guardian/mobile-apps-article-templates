@@ -32,6 +32,7 @@ const init = opts => {
         'footballMatchInfo',
         'footballMatchInfoFailed',
         'liveblogDeleteBlock',
+        'liveblogNewBlock',
         'liveblockInsertBlocks',
         'liveblogInsertGap',
         'liveblogUpdateBlock',
