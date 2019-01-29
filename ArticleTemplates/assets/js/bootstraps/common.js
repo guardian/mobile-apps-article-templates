@@ -13,7 +13,7 @@ import { init as initCards } from 'modules/cards';
 import { init as initMoreTags } from 'modules/more-tags';
 import { init as initRichLinks } from 'modules/rich-links';
 import { init as initAB } from 'modules/experiments/ab';
-
+import { init as initSentry, Transports } from '@sentry/browser';
 
 let trackCommentContainerView = true;
         
@@ -44,6 +44,12 @@ function init() {
     initAB();
     initRichLinks();
     setupForms();
+
+    initSentry({
+        transport: Transports.FetchTransport,
+        dsn: '',
+        release: '__LOCAL_RELEASE__'
+    });
 
     if (SmoothScroll !== undefined && typeof SmoothScroll.init === 'function') {
         SmoothScroll.init(); // scroll to anchor
