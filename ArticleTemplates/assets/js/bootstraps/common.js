@@ -48,7 +48,7 @@ function init() {
     initSentry({
         transport: Transports.FetchTransport,
         dsn: '',
-        release: '__LOCAL_RELEASE__'
+        release: `${BUILD_NUMBER}`
     });
 
     if (SmoothScroll !== undefined && typeof SmoothScroll.init === 'function') {

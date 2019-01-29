@@ -1,6 +1,8 @@
+const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require('path');
+
 module.exports = (env, argv) => {
   const config = {
     entry: {
@@ -67,6 +69,9 @@ module.exports = (env, argv) => {
         ]
       },
       plugins: [
+        new webpack.DefinePlugin({
+          BUILD_NUMBER: process.env.BUILD_NUMBER || 0
+        }),
         new CopyWebpackPlugin([{
           from: './node_modules/curl/dist/curl',
           to: path.resolve(__dirname, 'ArticleTemplates/assets/build'),
