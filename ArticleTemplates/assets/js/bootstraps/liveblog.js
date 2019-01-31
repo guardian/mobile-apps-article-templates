@@ -240,7 +240,7 @@ function liveblogInsertGap(afterBlockId, olderPagination, newerPagination) {
     insertAfter(document.getElementById(afterBlockId), before);
 }
 
-function liveblockInsertBlocks(afterBlockId, html) {
+function liveblogInsertBlocks(afterBlockId, html) {
     let i;
     let images = [];
     let blocks;
@@ -283,13 +283,13 @@ function setupGlobals() {
     window.liveblogTime = liveblogTime;
     window.showLiveMore = showLiveMore;
     window.liveblogNewBlock = liveblogNewBlock;
-    window.liveblockInsertBlocks = liveblockInsertBlocks;
+    window.liveblogInsertBlocks = liveblogInsertBlocks;
     window.liveblogInsertGap = liveblogInsertGap;
     window.liveblogNewKeyEvent = liveblogNewKeyEvent;
     window.scrollToBlock = scrollToBlock;
 
     window.applyNativeFunctionCall('liveblogNewBlock');
-    window.applyNativeFunctionCall('liveblockInsertBlocks');
+    window.applyNativeFunctionCall('liveblogInsertBlocks');
     window.applyNativeFunctionCall('liveblogInsertGap');
     window.applyNativeFunctionCall('liveblogDeleteBlock');
     window.applyNativeFunctionCall('liveblogUpdateBlock');
