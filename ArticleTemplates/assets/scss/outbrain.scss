@@ -33,7 +33,7 @@
 }
 
 .AR_18, .AR_24, .AR_20, .AR_16, .AR_22, .AR_29 {
-    @include mq($to: col4) {
+    @include mq($from: col2, $to: 1139px) {
         .ob-widget-header span {
             margin-left: 8px !important;
         }
@@ -46,6 +46,14 @@
     &.ob-strip-layout .ob-rec-text {
         max-height: 78px !important;
     }
+
+    &.ob-widget .ob_what {
+        padding: 12px 0px 0px;
+        width: 100%;
+        @include mq($from: col2, $to: col3) {
+            width: 720px !important;
+        }
+    }
 }
 
 .ob-dynamic-rec-link {
@@ -57,13 +65,23 @@
 }
 
 @include mq($to: col2) {
+    .OUTBRAIN .ob-widget .ob-unit {
+        padding-left: 6px;
+    }
+
+    .ob-widget-header {
+        &::first-letter {
+            text-transform: capitalize;
+        }
+    }
+
     .ob-widget {
         .ob-unit {
             padding-left: 6px;
         }
 
         .ob-widget-header {
-            margin: 12px 0;
+            margin: 12px 0 !important;
             span {
                 font-size: 14px;
                 font-family: "Guardian Agate Sans 1 Web", "Guardian Egyptian Web", Georgia, serif;
