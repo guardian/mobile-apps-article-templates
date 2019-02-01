@@ -26,6 +26,7 @@ $ yarn
 ## Mobile apps developers
 If you are developing against a branch of `mobile-apps-article-templates` which is not `master`:
 
+# Building locally
 * Checkout the branch you are developing against
 * Run `yarn build`
 * Edit the `package.json` file in the root of `ios-live` /`android-news-app`, replacing the version of the `@guardian/mobile-apps-article-templates` dependency with the relative path of the local templates repo, e.g. (if your repositories are in the same folder):
@@ -36,6 +37,18 @@ If you are developing against a branch of `mobile-apps-article-templates` which 
 ```
 
 Next time you build the app it will use the currently checked-out branch of `mobile-apps-article-templates`
+
+# Building from s3
+* Find the branch you want to test on [teamCity](https://teamcity.gutools.co.uk/viewType.html?buildTypeId=Apps_Templates_TemplatesS3v2)
+* Click run to build the branch and upload to s3
+* You can find the s3 package in `bundle-url.txt` under `artifacts`
+
+Update your package.json:
+```
+"dependencies": {
+    "@guardian/mobile-apps-article-templates": "https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/guardian-mobile-apps-article-templates-v1.0.190.tgz"
+}
+```
 
 ## Yarn scripts
 Yarn will provide the following services:
