@@ -73,7 +73,7 @@ describe('ArticleTemplates/assets/js/modules/outbrain', function () {
             GU.opts.hasEpic = false;
             init();
 
-            expect(outbrainWidget.dataset.widgetId).toEqual('AR_12');
+            expect(outbrainWidget.dataset.widgetId).toEqual('AR_18');
             expect(document.getElementById('outbrain-widget')).toBeTruthy();
         });
 

@@ -26,7 +26,7 @@ function init() {
         outbrainContainer.style.display = 'block';
 
         if (isTablet) {
-            widgetConfig = isNonCompliant() ? 'AR_20' : (hasEpic() ? 'AR_24' : 'AR_12');
+            widgetConfig = isNonCompliant() ? 'AR_20' : (hasEpic() ? 'AR_24' : 'AR_18');
         } else {
             widgetConfig = isNonCompliant() ? 'AR_29' : (hasEpic() ? 'AR_22' : 'AR_16');
         }
