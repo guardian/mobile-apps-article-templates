@@ -26,9 +26,9 @@ function init() {
         outbrainContainer.style.display = 'block';
 
         if (isTablet) {
-            widgetConfig = isNonCompliant() ? 'AR_20' : (hasEpic() ? 'AR_24' : 'AR_18');
+            widgetConfig = isNonCompliant() ? 'AR_62' : (hasEpic() ? 'AR_61' : 'AR_60');
         } else {
-            widgetConfig = isNonCompliant() ? 'AR_29' : (hasEpic() ? 'AR_22' : 'AR_16');
+            widgetConfig = isNonCompliant() ? 'AR_65' : (hasEpic() ? 'AR_64' : 'AR_63');
         }
 
         outbrainWidget.dataset.widgetId = widgetConfig;

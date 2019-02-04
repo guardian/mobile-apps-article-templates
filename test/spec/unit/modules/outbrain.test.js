@@ -53,7 +53,7 @@ describe('ArticleTemplates/assets/js/modules/outbrain', function () {
             window.GU.opts.adsConfig = 'tablet';
             init();
 
-            expect(outbrainWidget.dataset.widgetId).toEqual('AR_20');
+            expect(outbrainWidget.dataset.widgetId).toEqual('AR_62');
             expect(document.getElementById('outbrain-widget')).toBeTruthy();
         });
 
@@ -63,7 +63,7 @@ describe('ArticleTemplates/assets/js/modules/outbrain', function () {
             GU.opts.hasEpic = true;
             init();
 
-            expect(outbrainWidget.dataset.widgetId).toEqual('AR_24');
+            expect(outbrainWidget.dataset.widgetId).toEqual('AR_61');
             expect(document.getElementById('outbrain-widget')).toBeTruthy();
         });
 
@@ -73,7 +73,7 @@ describe('ArticleTemplates/assets/js/modules/outbrain', function () {
             GU.opts.hasEpic = false;
             init();
 
-            expect(outbrainWidget.dataset.widgetId).toEqual('AR_18');
+            expect(outbrainWidget.dataset.widgetId).toEqual('AR_60');
             expect(document.getElementById('outbrain-widget')).toBeTruthy();
         });
 
@@ -82,7 +82,7 @@ describe('ArticleTemplates/assets/js/modules/outbrain', function () {
             window.GU.opts.adsConfig = 'mobile';
             init();
 
-            expect(outbrainWidget.dataset.widgetId).toEqual('AR_29');
+            expect(outbrainWidget.dataset.widgetId).toEqual('AR_65');
             expect(document.getElementById('outbrain-widget')).toBeTruthy();
         });
 
@@ -92,7 +92,7 @@ describe('ArticleTemplates/assets/js/modules/outbrain', function () {
             GU.opts.hasEpic = true;
             init();
 
-            expect(outbrainWidget.dataset.widgetId).toEqual('AR_22');
+            expect(outbrainWidget.dataset.widgetId).toEqual('AR_64');
             expect(document.getElementById('outbrain-widget')).toBeTruthy();
         });
 
@@ -102,7 +102,7 @@ describe('ArticleTemplates/assets/js/modules/outbrain', function () {
             GU.opts.hasEpic = false;
             init();
 
-            expect(outbrainWidget.dataset.widgetId).toEqual('AR_16');
+            expect(outbrainWidget.dataset.widgetId).toEqual('AR_63');
             expect(document.getElementById('outbrain-widget')).toBeTruthy();
         });
     });
