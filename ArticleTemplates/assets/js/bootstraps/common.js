@@ -51,10 +51,6 @@ function init() {
         release: `${BUILD_NUMBER}`
     });
 
-    if (SmoothScroll !== undefined && typeof SmoothScroll.init === 'function') {
-        SmoothScroll.init(); // scroll to anchor
-    }
-
     if (!document.body.classList.contains('no-ready')) {
         signalDevice('ready');
     }
