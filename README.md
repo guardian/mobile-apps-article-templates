@@ -6,8 +6,7 @@ Article templates used within the Guardian’s next-generation iOS and Android a
 ## Requirements
 * A Mac or Linux computer.
 * [NVM](https://github.com/creationix/nvm).
-* [NodeJS](https://nodejs.org/). Install using nvm: `nvm install v8.15.0`. Remember to add `nvm use v8.15.0` to your
-preferred shell startup file.
+* [NodeJS](https://nodejs.org/). Install using nvm: `nvm install v8.15.0`. Remember to add `nvm use v8.15.0` to your preferred shell startup file.
 * It is recommended you restart your shell to ensure changes added the startup file are applied.
 
 ## Developing
