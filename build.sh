@@ -1,9 +1,9 @@
 #!/bin/bash -xe
 
 # Build
-yarn 
-yarn build
-yarn test
+npm install
+npm run build
+npm run test
 
 # Publish
 echo "//registry.npmjs.org/:_authToken=$NODE_TOKEN" >> ~/.npmrc
