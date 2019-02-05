@@ -15,6 +15,7 @@ function setupGlobals() {
     window.commentTime = commentTime;
     window.commentsRecommendIncrease = commentsRecommendIncrease;
     window.commentsRecommendDecrease = commentsRecommendDecrease;
+    window.checkForCorrectCount = checkForCorrectCount;
 
     window.applyNativeFunctionCall('articleCommentsInserter');
     window.applyNativeFunctionCall('commentsInserter');
@@ -70,17 +71,9 @@ function checkForCorrectCount() {
     const correctCount = !!document.getElementsByClassName("comments-" + actualCommentCount).length;
     const commentCount = document.getElementsByClassName("comments__count")[0];
 
-    if (firstPage) {
-        if (!correctCount && actualCommentBlocks < 3) {
-            if (commentCount) {
-                commentCount.style.display = "none";
-            }
-        }
-    } else {
-        if (!correctCount && actualCommentBlocks < 20) {
-            if (commentCount) {
-                commentCount.style.display = "none";
-            }
+    if (firstPage && !correctCount && actualCommentBlocks < 3) {
+        if (commentCount) {
+            commentCount.style.display = "none";
         }
     }
 
@@ -91,9 +84,9 @@ function checkForCorrectCount() {
         }
 
         if (commentCount) {
-            const shownCount = parseInt(commentCount.innerHTML)
+            const shownCount = parseInt(commentCount.innerHTML);
             if (shownCount < actualCommentCount) {
-                commentCount.style.display = "none";
+                commentCount.innerHTML = actualCommentCount;
             }
         }
     }
