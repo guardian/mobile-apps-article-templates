@@ -77,6 +77,13 @@ function checkForCorrectCount() {
             commentCount.style.display = "none";
         }
     }
+
+    if (actualCommentCount) {
+        const emptyCommentBlock = document.getElementsByClassName("comments__block--empty")[0];
+        if (emptyCommentBlock) {
+            emptyCommentBlock.style.display = "none";
+        }
+    }
 }
 
 function addClickHandlerToComments(block) {
