@@ -67,14 +67,17 @@ function checkForCorrectCount() {
     const actualCommentCount = document.getElementsByClassName("block--discussion-thread").length;
     const correctCount = !!document.getElementsByClassName("comments-" + actualCommentCount).length;
 
-    if (!correctCount && actualCommentCount < 3) {
-        const emptyCommentBlock = document.getElementsByClassName("comments__block--empty")[0];
+    if (!correctCount && actualCommentCount <= 3) {
         const commentCount = document.getElementsByClassName("comments__count")[0];
-        if (emptyCommentBlock) {
-            emptyCommentBlock.style.display = "none";
-        }
         if (commentCount) {
             commentCount.style.display = "none";
+        }
+    }
+
+    if (actualCommentCount) {
+        const emptyCommentBlock = document.getElementsByClassName("comments__block--empty")[0];
+        if (emptyCommentBlock) {
+            emptyCommentBlock.style.display = "none";
         }
     }
 }
