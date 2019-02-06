@@ -217,12 +217,23 @@ function insertAfter(referenceNode, newNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
+function onGapClick(e, afterBlockId, paginationLink) {
+    e.preventDefault();
+    Array.from(document.getElementsByClassName(`after-${afterBlockId}`)).forEach(gap => {
+        gap.parentNode.removeChild(gap);
+    });
+    document.getElementById(`loading-${afterBlockId}`).style.display = "block";
+    window.location.href = paginationLink;
+}
+
 function liveblogInsertGap(afterBlockId, olderPagination, newerPagination) {
     let before = document.createElement('div');
     let after = document.createElement('div');
+    let loading = document.createElement('div');
+
     before.innerHTML = `
-        <div class="more more--live-blogs-blocks">
-            <a href="${olderPagination}" class="more__button">
+        <div onclick="return onGapClick(event, '${afterBlockId}', '${olderPagination}')" class="more more--live-blogs-blocks after-${afterBlockId}">
+            <a href="#" class="more__button">
     	        <span class="more__icon" data-icon="&#xe050;" aria-hidden="true"></span>
     	        <span class="more__text">Load more</span>
             </a>
@@ -230,14 +241,17 @@ function liveblogInsertGap(afterBlockId, olderPagination, newerPagination) {
     `;
 
     after.innerHTML = `
-        <div class="more more--live-blogs-blocks">
-            <a href="${newerPagination}" class="more__button">
+        <div onclick="return onGapClick(event, '${afterBlockId}', '${newerPagination}')" class="more more--live-blogs-blocks after-${afterBlockId}">
+            <a href="#" class="more__button">
                 <span class="more__icon" data-icon="&#xe050;" aria-hidden="true"></span>
                 <span class="more__text">Load more</span>
             </a>
         </div>
     `;
+
+    loading.innerHTML = `<div style="display: none" id="loading-${afterBlockId}" class="loading" data-icon="&#xe00C;">`
     insertAfter(document.getElementById(afterBlockId), after);
+    insertAfter(document.getElementById(afterBlockId), loading);
     insertAfter(document.getElementById(afterBlockId), before);
 }
 
@@ -289,6 +303,7 @@ function setupGlobals() {
     window.liveblogNewKeyEvent = liveblogNewKeyEvent;
     window.scrollToBlock = scrollToBlock;
     window.articleOutbrainInserter = initOutbrain;
+    window.onGapClick = onGapClick;
 
     window.applyNativeFunctionCall('liveblogNewBlock');
     window.applyNativeFunctionCall('liveblogInsertBlocks');
