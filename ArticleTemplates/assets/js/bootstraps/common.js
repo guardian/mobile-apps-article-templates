@@ -322,6 +322,12 @@ function loadInteractives(force) {
         }
     } else {
         showOfflineInteractiveIcons();
+        if (!bootUrl) {
+            const reload = document.getElementsByClassName("interactive--offline--icon--reload")[0];
+            if (reload) {
+                reload.style.display = "none";
+            }
+        }
     }
 }
 
