@@ -318,7 +318,15 @@ function loadInteractives(force) {
 
             interactive.classList.add('interactive--loading');
 
-            curl([bootUrl], startInteractive.bind(null, interactive));
+            curl([bootUrl], startInteractive.bind(null, interactive), showOfflineInteractiveIcons);
+        }
+    } else {
+        showOfflineInteractiveIcons();
+        if (!bootUrl) {
+            const reload = document.getElementsByClassName("interactive--offline--icon--reload")[0];
+            if (reload) {
+                reload.style.display = "none";
+            }
         }
     }
 }
@@ -327,6 +335,40 @@ function startInteractive(interactiveElem, interactiveObj) {
     if (interactiveObj && interactiveObj.boot) {
         interactiveElem.classList.remove('interactive--offline');
         interactiveObj.boot(interactiveElem, document.body);
+    }
+}
+
+function showOfflineInteractiveIcons() {
+    let i;
+    let interactive;
+    let reloadElem;
+    let loadingElem;
+    let interactives;
+
+    interactives = document.querySelectorAll('figure.interactive:not(.interactive--offline)');
+
+    for (i = 0; i < interactives.length; i++) {
+        interactive = interactives[i];
+        interactive.classList.add('interactive--offline');
+
+        reloadElem = document.createElement('div');
+        reloadElem.classList.add('interactive--offline--icon');
+        reloadElem.classList.add('interactive--offline--icon--reload');
+        reloadElem.addEventListener('click', loadInteractives.bind(null, true));
+        interactive.appendChild(reloadElem);
+
+        loadingElem = document.createElement('div');
+        loadingElem.classList.add('interactive--offline--icon');
+        loadingElem.classList.add('interactive--offline--icon--loading');
+        interactive.appendChild(loadingElem);
+    }
+
+    interactives = document.querySelectorAll('figure.interactive.interactive--loading');
+
+    for (i = 0; i < interactives.length; i++) {
+        interactive = interactives[i];
+
+        interactive.classList.remove('interactive--loading');
     }
 }
 
