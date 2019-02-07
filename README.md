@@ -35,7 +35,7 @@ If you are developing against a branch of `mobile-apps-article-templates` which 
 }
 ```
 
-Next time you build the app it will use the currently checked-out branch of `mobile-apps-article-templates`
+Next time you build the app it will use the currently checked-out branch of `mobile-apps-article-templates` as part of a _Run Script_ build phase using `build-post.sh`.
 
 ### Building locally Android
 * Checkout the branch you are developing against
