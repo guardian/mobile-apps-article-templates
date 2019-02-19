@@ -143,7 +143,7 @@
         font-family: 'Guardian Headline', 'Guardian Egyptian Web', Georgia, serif;
         font-weight: 600;
         font-size: 2rem;
-        line-height: 2.3rem;
+        line-height: 2.2rem;
         padding-bottom: 0;
 
         @include mq($from: col2) {
@@ -159,8 +159,8 @@
     &__link:active,
     .comments__link {
         color: color(brightness-7);
-        font-size: 2.0rem;
-        line-height: 2.3rem;
+        font-size: 2.2rem;
+        line-height: 2.2rem;
     }
 
     &__count {
@@ -208,15 +208,6 @@
 
         .comments--module & {
             top: 0;
-
-            @include mq($from: col4) {
-                position: relative;
-                margin-top: 6px;
-
-                .touchpoint__label {
-                    padding: 0;
-                }
-            }
 
             @include mq($to: col1) {
                 .touchpoint__label {
@@ -349,6 +340,27 @@
 
         .comments--closed & {
             float: left;
+        }
+    }
+
+    .comments__header {
+        .comments__post {
+            @include mq($from: col4) {
+                display: none;
+            }
+        }
+    }
+
+    .comments__footer {
+        .comments__post {
+            display: none;
+
+            @include mq($from: col4) {
+                display: block;
+                position: relative;
+                left: 240px;
+                top: 32px;
+            }
         }
     }
 }
