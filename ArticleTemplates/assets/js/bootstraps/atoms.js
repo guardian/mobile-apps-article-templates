@@ -31,7 +31,7 @@ function bootAtomType(atomType, atomFactory) {
 function initExpandables(atom) {
     Array.prototype.slice.call(atom.getElementsByTagName('details')).forEach(function(d) {
         d.addEventListener('click', function() {
-            initPositionPoller();
+            initPositionPoller(0);
             initMpuPoller(0, false);
             resetAndCheckForVideos();
         });
