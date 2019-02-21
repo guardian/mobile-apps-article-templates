@@ -1,4 +1,4 @@
-import { signalDevice, getElementOffset, append } from 'modules/util';
+import { signalDevice, getElementOffset, append, insertAfter } from 'modules/util';
 
 let videos = [];
 const stateHandlers = {};
@@ -339,9 +339,28 @@ function setStateHandlers() {
     }
 }
 
+function addCaptions() {
+    const body = document.getElementsByClassName('article__body')[0];
+    Array.from(body.querySelectorAll('[data-title]')).forEach(placeholder => {
+        let caption = document.createElement('div');
+        const title = placeholder.getAttribute('data-title');
+
+        if (title) {
+            caption.innerHTML = `
+                <span class="youtube-sdk-caption">
+                    <span data-icon="&#xe043;" class="figure__caption__icon" aria-hidden="true"></span>
+                    ${title}
+                </span>
+           `;
+           insertAfter(caption, placeholder.parentNode.parentNode.parentNode);
+        }
+    });
+}
+
 function init() {
     setStateHandlers();
     checkForVideos();
+    addCaptions();
 }
 
 export { init, checkForVideos, append, resetAndCheckForVideos };
