@@ -352,7 +352,7 @@ function addCaptions() {
                     ${title}
                 </span>
            `;
-           insertAfter(caption, placeholder.parentNode.parentNode.parentNode);
+           insertAfter(caption, placeholder.closest('.element-atom'));
         }
     });
 }
