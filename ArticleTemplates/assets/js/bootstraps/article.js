@@ -1,6 +1,5 @@
 import { init as youtubeInit } from 'modules/youtube';
 import { init as twitterInit } from 'modules/twitter';
-import { init as witnessInit } from 'modules/witness';
 import { init as initOutbrain } from 'modules/outbrain';
 import { init as quizInit } from 'modules/quiz';
 import { init as immersiveInit } from 'modules/immersive';
@@ -40,7 +39,6 @@ function init() {
     setupGlobals();
     youtubeInit();
     twitterInit();
-    witnessInit();
     quizInit();
     immersiveInit();
     creativeInjectorInit();
