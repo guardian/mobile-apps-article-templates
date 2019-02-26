@@ -1,5 +1,4 @@
 .garnett--type-media[data-content-type='gallery'] {
-
     .article__header {
         &-bg {
             background-repeat: no-repeat;
@@ -65,6 +64,9 @@
                 max-height: 100vh;
                 width: auto;
                 height: auto;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
             }
             &__high-res {
                 display: none;
@@ -88,19 +90,22 @@
             padding: 0 0 $gs-unit*4;
             color: color(brightness-100);
 
-            &__heading,
             &__caption,
             &__credit {
                 font-size: 1.6rem;
                 line-height: 2rem;
             }
-            &__heading {
-                font-family: $egyptian-display;
-                font-weight: 600;
-                margin-top: 3px;
-            }
             &__caption {
+                margin-top: $gs-unit/2;
                 font-family: $egyptian-text;
+                strong:first-child {
+                    font-family: $egyptian-display;
+                    font-weight: 600;
+                    display: block;
+                    &+ br {
+                        display: none;
+                    }
+                }
             }
             &__credit {
                 color: color(brightness-74);
@@ -115,7 +120,7 @@
         background-color: transparent;
         width: auto;
         .inline-list {
-            padding: 0 0 5*$gs-unit;
+            padding: 2*$gs-unit 0;
             margin: 0 -5px;
             width: auto;
             &__item {
@@ -125,17 +130,4 @@
             }
         }
     }
-
-
-    // For fashion galleries with light backgrounds
-    &.garnett--pillar-lifestyle .gallery {
-        background-color: color(brightness-93);
-        .touch-gallery__caption {
-            color: color(brightness-7);
-            &__credit {
-                color: color(brightness-20);
-            }
-        }
-    }
-
 }
