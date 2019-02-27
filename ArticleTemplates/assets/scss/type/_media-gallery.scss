@@ -37,15 +37,6 @@
             line-height: 1.6rem;
             margin: $gs-unit 0 2*$gs-unit;
         }
-        .meta {
-            padding: $gs-unit 0;
-            @include mq(col4) {
-                background-color: transparent;
-            }
-        }
-        .meta__misc {
-            padding: 0;
-        }
     }
 
     .touch-gallery {
@@ -54,8 +45,12 @@
             position: relative;
             z-index: 2;
             margin: 0 (-$gs-unit);
-            @include mq(col2) {
+            @include mq(col3) {
                 margin: 0;
+                float: left;
+                width: 70%;
+                margin-bottom: 4*$gs-unit;
+
             }
 
             &__image {
@@ -90,6 +85,12 @@
             padding: 0 0 $gs-unit*4;
             color: color(brightness-100);
 
+            @include mq(col3) {
+                padding: 0 0 6*$gs-unit $gs-unit;
+                float: left;
+                width: 30%;
+            }
+
             &__caption,
             &__credit {
                 font-size: 1.6rem;
@@ -106,6 +107,10 @@
                         display: none;
                     }
                 }
+
+                @include mq(col3) {
+                    margin-top: 0;
+                }
             }
             &__credit {
                 color: color(brightness-74);
@@ -113,6 +118,17 @@
                 font-size: 1.4rem;
                 line-height: 1.6rem;
             }
+        }
+    }
+
+    .meta__misc {
+        padding: 0;
+    }
+
+    .meta__misc, .sponsorship, .tags {
+        @include mq(col3) {
+            width: 70%;
+            max-width: 70%;
         }
     }
 
