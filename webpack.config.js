@@ -79,7 +79,11 @@ module.exports = (env, argv) => {
         {
           from: 'ArticleTemplates/assets/js/modules/mobile-range-slider.js',
           to: path.resolve(__dirname, 'ArticleTemplates/assets/build'),
-        }, 
+        },
+        {
+          from: './node_modules/intersection-observer/intersection-observer.js',
+          to: path.resolve(__dirname, 'ArticleTemplates/assets/build'),
+        },
         {
           from: './node_modules/smooth-scroll/dist/smooth-scroll.polyfills.min.js',
           to: path.resolve(__dirname, 'ArticleTemplates/assets/build'),

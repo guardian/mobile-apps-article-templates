@@ -1,6 +1,7 @@
 import Hammer from 'hammerjs';
 
 function init() {
+    lazyLoadImages();
     var galleryImages = document.querySelectorAll('.touch-gallery__images');
     galleryImages.forEach(function(galleryImage) {
         var hammerSettings = (GU.opts.platform === 'ios' ? { touchAction: 'auto' } : {})
@@ -25,7 +26,6 @@ function init() {
             galleryImage.classList.add('touch-gallery__images--pinch');
             lockArticleSwipe(true);
             savePinchCentre(galleryImage, ev);
-            loadHighRes(galleryImage);
         });
 
         mc.on('pinchend', function() {
@@ -34,17 +34,6 @@ function init() {
         });
 
     });
-
-    function loadHighRes(el) {
-        if (!el.classList.contains('high-res-setup')) {
-            el.classList.add('high-res-setup');
-            var highRes = el.querySelector('.touch-gallery__images__high-res');
-            highRes.setAttribute('src', highRes.dataset.src);
-            highRes.addEventListener('load', function() {
-                el.classList.add('high-res-loaded');
-            });
-        }
-    }
 
     function lockArticleSwipe(toggle) {
         var isAndroidApp = (window.location.origin === "file://" && /(android)/i.test(navigator.userAgent) ) ? true : false;
@@ -97,6 +86,29 @@ function init() {
             });
         }
     }
+}
+
+function lazyLoadImages() {
+    const options = {
+        rootMargin: '1500px',
+        threshold: 0.01
+      };
+
+      const handleIntersection = (entries) => {
+        entries.forEach(entry => {
+          if (entry.intersectionRatio > 0) {
+            entry.target.style.backgroundImage = `url(${entry.target.dataset.src})`;
+          }
+        })
+      }
+
+      const observer = new IntersectionObserver(handleIntersection, options);
+
+      const images = document.querySelectorAll('.touch-gallery__images__image');
+
+      images.forEach(img => {
+        observer.observe(img);
+      });
 }
 
 export { init };
