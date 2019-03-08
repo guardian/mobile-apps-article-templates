@@ -23,12 +23,16 @@
         clear: none;
     }
 
-    figure.element-image.element--halfWidth--odd {
+    figure.element-image + figure.element-image.element--halfWidth--odd {
         margin-left: 2%;
+    }
 
-        & + figure.element-image.element--halfWidth {
-            clear: both;
-        }
+    p + figure.element-image.element--halfWidth--odd {
+        margin-right: 2%;
+    }
+
+    figure.element-image.element--halfWidth + figure.element-image.element--halfWidth--odd + figure.element-image.element--halfWidth {
+        clear: both;
     }
 
     aside.element-pullquote.element--halfWidth {
