@@ -1,7 +1,7 @@
 @mixin halfWidth {
     width: 49%;
     float: left;
-    margin: 0 0 2%;
+    margin: 2% 0;
 }
 
 .display-hint--photoEssay .prose {
@@ -11,7 +11,7 @@
     .element--halfWidth + .element-pullquote:not(.element--halfWidth),
     .element--halfWidth + .element-image:not(.element--halfWidth) {
         clear: both;
-        padding-top: $gs-baseline / 2;
+        margin-top: $gs-baseline / 2;
     }
 
     figure.element-image.element--halfWidth,
@@ -25,6 +25,10 @@
 
     figure.element-image.element--halfWidth--odd {
         margin-left: 2%;
+
+        & + figure.element-image.element--halfWidth {
+            clear: both;
+        }
     }
 
     aside.element-pullquote.element--halfWidth {
@@ -59,7 +63,7 @@
         clear: both;
         list-style: none;
         position: relative;
-        top: -$gs-baseline;
+        top: -$gs-baseline / 2;
     }
 
     figure.element-image.figure-wide:not(.element--halfWidth) + ul {
