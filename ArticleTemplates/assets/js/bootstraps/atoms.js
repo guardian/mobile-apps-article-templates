@@ -7,14 +7,14 @@ function init() {
     const atomTypes = GU.opts.atoms;
     Object.keys(atomTypes).forEach(t => {
         const f = atomTypes[t];
-        if (typeof f.default !== 'function' || f.default.length !== 1) {
+        if (t === 'chart' || typeof f.default !== 'function' || f.default.length !== 1) {
             return;
         }
         bootAtomType(t, atomTypes[t]);
-        if (t === 'chart') {
-            initCharts();
-        }
     });
+    if ('chart' in atomTypes) {
+        initCharts();
+    }
 }
 
 function initCharts() {
