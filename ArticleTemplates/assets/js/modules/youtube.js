@@ -355,6 +355,8 @@ function addCaptions() {
                `;
                insertAfter(caption, placeholder.closest('.element-atom'));
             }
+
+            placeholder.setAttribute('data-title', '');
         });
     }
 }
