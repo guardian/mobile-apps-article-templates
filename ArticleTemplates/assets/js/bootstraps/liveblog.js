@@ -242,7 +242,9 @@ function keyEvents() {
         keyEventsToggle.addEventListener('click', showHideKeyEvents);
     }
 
-    if (keyEventLinks.length) {
+    if (keyEventLinks.length === 1) {
+        document.querySelector('.key-events__toggle').style.display = 'none';
+    } else if (keyEventLinks.length) {
         captureKeyEventClicks(keyEventLinks);
     }
 }
