@@ -342,9 +342,9 @@ function setStateHandlers() {
 function addCaptions() {
     const body = document.getElementsByClassName('article__body')[0];
     if (body) {
-        Array.from(body.querySelectorAll('[data-title]')).forEach(placeholder => {
+        Array.from(body.querySelectorAll('[data-youtube-title]')).forEach(placeholder => {
             let caption = document.createElement('div');
-            const title = placeholder.getAttribute('data-title');
+            const title = placeholder.getAttribute('data-youtube-title');
 
             if (title) {
                 caption.innerHTML = `
