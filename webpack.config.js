@@ -11,7 +11,6 @@ module.exports = (env, argv) => {
         'style-async': './ArticleTemplates/assets/scss/style-async.scss',
         'fonts-ios': './ArticleTemplates/assets/scss/fonts-ios.scss',
         'fonts-android': './ArticleTemplates/assets/scss/fonts-android.scss',
-        'outbrain': './ArticleTemplates/assets/scss/outbrain.scss',
         'interactive': './ArticleTemplates/assets/scss/interactive.scss',
       },
       output: {
