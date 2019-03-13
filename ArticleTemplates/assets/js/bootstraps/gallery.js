@@ -90,7 +90,7 @@ function init() {
 
 function lazyLoadImages() {
     const options = {
-        rootMargin: '1500px',
+        rootMargin: '2000px',
         threshold: 0.01
       };
 

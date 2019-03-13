@@ -11,7 +11,7 @@
         .headline {
             font-size: 3.6rem;
             line-height: 4rem;
-            padding: 0 0 5*$gs-unit;
+            padding: 0 $gs-unit 5*$gs-unit $gs-unit;
             font-weight: 600;
             @include mq(col4) {
                 background-color: transparent;
@@ -19,6 +19,7 @@
             }
         }
         .standfirst {
+            padding: 0 $gs-unit;
             font-size: 1.6rem;
             line-height: 2rem;
             font-family: $egyptian-text;
@@ -35,7 +36,7 @@
             font-family: $agate-sans;
             font-size: 1.4rem;
             line-height: 1.6rem;
-            margin: $gs-unit 0 2*$gs-unit;
+            margin: $gs-unit $gs-unit 2*$gs-unit $gs-unit;
         }
     }
 
@@ -45,10 +46,14 @@
             position: relative;
             z-index: 2;
             margin: 0 (-$gs-unit);
+
+            @include mq(col2) {
+                margin: 0 $gs-unit;
+            }
+
             @include mq(col3) {
-                margin: 0;
                 float: left;
-                width: 70%;
+                width: calc(70% - #{$gs-unit}*2);
                 margin-bottom: 4*$gs-unit;
 
             }
@@ -82,7 +87,7 @@
 
         }
         &__caption {
-            padding: 0 0 $gs-unit*4;
+            padding: 0 $gs-unit $gs-unit*4 $gs-unit;
             color: color(brightness-100);
 
             @include mq(col3) {
@@ -125,6 +130,7 @@
         @include mq(col3) {
             width: 70%;
             max-width: 70%;
+            margin: 8px;
         }
     }
 
@@ -140,6 +146,23 @@
                     display: none;
                 }
             }
+        }
+    }
+
+    @include mq(col4) {
+        .keyline:before {
+            margin: 0;
+            width: auto;
+        }
+
+        .meta, .sponsorship {
+            background: black;
+        }
+    }
+
+    @include mq($to: col4) {
+        .meta, .tags {
+            padding: 0 8px;
         }
     }
 }
