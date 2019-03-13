@@ -17,6 +17,7 @@ $ git clone git@github.com:guardian/mobile-apps-article-templates.git
 
 **Install**
 ```bash
+$ cd mobile-apps-article-templates
 $ npm install
 ```
 
