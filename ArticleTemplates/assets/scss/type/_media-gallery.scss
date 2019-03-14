@@ -1,4 +1,5 @@
-.garnett--type-media[data-content-type='gallery'] {
+.garnett--type-media[data-content-type='gallery'],
+.is_advertising.garnett--type-guardianlabs[data-content-type='gallery'] .article {
     .article__header {
         &-bg {
             background-repeat: no-repeat;
@@ -22,18 +23,12 @@
             padding: 0 $gs-unit;
             font-size: 1.6rem;
             line-height: 2rem;
-            font-family: $egyptian-text;
             @include mq(col4) {
                 padding-bottom: 0;
                 margin-left: 0;
             }
         }
         .header-photo-credit {
-            &:before {
-                content: 'Header image:';
-            }
-            color: color(brightness-74);
-            font-family: $agate-sans;
             font-size: 1.4rem;
             line-height: 1.6rem;
             margin: $gs-unit $gs-unit 2*$gs-unit $gs-unit;
@@ -88,7 +83,6 @@
         }
         &__caption {
             padding: 0 $gs-unit $gs-unit*4 $gs-unit;
-            color: color(brightness-100);
 
             @include mq(col3) {
                 padding: 0 0 6*$gs-unit $gs-unit;
@@ -103,9 +97,7 @@
             }
             &__caption {
                 margin-top: $gs-unit/2;
-                font-family: $egyptian-text;
                 strong:first-child {
-                    font-family: $egyptian-display;
                     font-weight: 600;
                 }
 
@@ -114,10 +106,7 @@
                 }
             }
             &__credit {
-                color: color(brightness-74);
-                font-family: $agate-sans;
                 font-size: 1.4rem;
-                line-height: 1.6rem;
             }
         }
     }
@@ -154,15 +143,83 @@
             margin: 0;
             width: auto;
         }
-
-        .meta, .sponsorship {
-            background: black;
-        }
     }
 
     @include mq($to: col4) {
         .meta, .tags {
             padding: 0 8px;
+        }
+
+        .sponsorship {
+            padding: 8px;
+        }
+    }
+}
+
+.garnett--type-media[data-content-type='gallery'] {
+    .article__header {
+        .standfirst {
+            font-family: $egyptian-text;
+        }
+        .header-photo-credit {
+            &:before {
+                content: 'Header image:';
+            }
+
+            color: color(brightness-74);
+            font-family: $agate-sans;
+        }
+
+        .header-photo-credit[data-media-credit=''] {
+            &:before {
+                content: '';
+            }
+        }
+    }
+
+    .touch-gallery {
+        &__caption {
+            color: color(brightness-100);
+
+            &__caption {
+                font-family: $egyptian-text;
+                strong:first-child {
+                    font-family: $egyptian-display;
+                }
+            }
+            &__credit {
+                color: color(brightness-74);
+                font-family: $agate-sans;
+            }
+        }
+    }
+
+    @include mq(col4) {
+        .keyline:before {
+            margin: 0;
+            width: auto;
+        }
+
+        .meta, .sponsorship {
+            background: black;
+        }
+    }
+}
+
+.is_advertising.garnett--type-guardianlabs[data-content-type='gallery'] .article {
+    .article__header .headline {
+        padding-top: $gs-unit / 2;
+    }
+
+    @include mq(col3) {
+        .header-photo-credit, .gallery, .touch-gallery__images, &.article--visual {
+            background: color(global-adv-bg) !important;
+        }
+
+        .sponsorship__inner {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            background: color(global-adv-bg);
         }
     }
 }
