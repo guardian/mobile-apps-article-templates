@@ -2,33 +2,34 @@ import Hammer from 'hammerjs';
 
 function init() {
     lazyLoadImages();
-    var galleryImages = document.querySelectorAll('.touch-gallery__images');
-    galleryImages.forEach(function(galleryImage) {
-        var hammerSettings = (GU.opts.platform === 'ios' ? { touchAction: 'auto' } : {})
-        var mc = new Hammer.Manager(galleryImage, hammerSettings);
-        var pinch = new Hammer.Pinch();
+    const galleryImages = document.querySelectorAll('.touch-gallery__images');
+    const hammerSettings = (GU.opts.platform === 'ios' ? { touchAction: 'auto' } : {})
+
+    galleryImages.forEach(galleryImage => {
+        const mc = new Hammer.Manager(galleryImage, hammerSettings);
+        const pinch = new Hammer.Pinch();
 
         mc.add(pinch);
 
-        mc.on('pinch', function(ev) {
+        mc.on('pinch', ev => {
             if (GU.opts.platform === 'ios') {
                 ev.preventDefault();
             }
 
-            var desiredScale = ev.scale;
-            var pinchCentre = getPinchCentre(galleryImage);
+            const desiredScale = ev.scale;
+            const pinchCentre = getPinchCentre(galleryImage);
 
-            galleryImage.style.transformOrigin = pinchCentre.x+'% '+pinchCentre.y+'%';
-            galleryImage.style.transform = 'scale('+desiredScale+')';
+            galleryImage.style.transformOrigin = `${pinchCentre.x}% ${pinchCentre.y}%`;
+            galleryImage.style.transform = `scale(${desiredScale})`;
         });
 
-        mc.on('pinchstart', function(ev) {
+        mc.on('pinchstart', ev => {
             galleryImage.classList.add('touch-gallery__images--pinch');
             lockArticleSwipe(true);
             savePinchCentre(galleryImage, ev);
         });
 
-        mc.on('pinchend', function() {
+        mc.on('pinchend', () => {
             lockArticleSwipe(false);
             bounceToInitialPosition(galleryImage);
         });
@@ -36,33 +37,32 @@ function init() {
     });
 
     function lockArticleSwipe(toggle) {
-        var isAndroidApp = (window.location.origin === "file://" && /(android)/i.test(navigator.userAgent) ) ? true : false;
-        if (isAndroidApp) {
+        if (GU.opts.platform === 'android') {
             window.GuardianJSInterface.registerRelatedCardsTouch(toggle);
         }
     }
 
-    function getPinchCentre(el) {
-        var pinchX = el.dataset.pinchCentreX;
-        var pinchY = el.dataset.pinchCentreY;
+    function getPinchCentre({dataset}) {
+        const pinchX = dataset.pinchCentreX;
+        const pinchY = dataset.pinchCentreY;
         return {x: pinchX, y: pinchY};
     }
 
-    function savePinchCentre(el, ev) {
-        var elBounds = el.getBoundingClientRect();
-        var pinchCentreX = calcPinchCentre(elBounds, ev.center, 'x', 'width');
-        var pinchCentreY = calcPinchCentre(elBounds, ev.center, 'y', 'height');
+    function savePinchCentre(el, {center}) {
+        const elBounds = el.getBoundingClientRect();
+        const pinchCentreX = calcPinchCentre(elBounds, center, 'x', 'width');
+        const pinchCentreY = calcPinchCentre(elBounds, center, 'y', 'height');
 
         el.dataset.pinchCentreX = pinchCentreX;
         el.dataset.pinchCentreY = pinchCentreY;
     }
 
     function calcPinchCentre(elBounds, pinchCentre, axis, dimension) {
-        var elStart = elBounds[axis];
-        var elEnd = elBounds[dimension];
-        var pinch = pinchCentre[axis];
+        const elStart = elBounds[axis];
+        const elEnd = elBounds[dimension];
+        const pinch = pinchCentre[axis];
 
-        var pinchRel = (pinch-elStart)/(elEnd);
+        const pinchRel = (pinch-elStart)/(elEnd);
         if (pinchRel > 0.75) {
             return 100
         } else if (pinchRel < 0.25) {
@@ -73,15 +73,15 @@ function init() {
     }
 
     function bounceToInitialPosition(el) {
-        var currentScale = (el.getBoundingClientRect().width/el.offsetWidth);
-        var newScale = currentScale + (1-currentScale)/5;
+        const currentScale = (el.getBoundingClientRect().width/el.offsetWidth);
+        const newScale = currentScale + (1-currentScale)/5;
         if (newScale > 0.99 && newScale < 1.01) {
             lockArticleSwipe(false);
             el.style.transform = 'scale(1)';
             el.classList.remove('touch-gallery__images--pinch');
         } else {
-            el.style.transform = 'scale('+newScale+')';
-            requestAnimationFrame(function() {
+            el.style.transform = `scale(${newScale})`;
+            requestAnimationFrame(() => {
                 bounceToInitialPosition(el);
             });
         }
@@ -95,9 +95,9 @@ function lazyLoadImages() {
       };
 
       const handleIntersection = (entries) => {
-        entries.forEach(entry => {
-          if (entry.intersectionRatio > 0) {
-            entry.target.style.backgroundImage = `url(${entry.target.dataset.src})`;
+        entries.forEach(({intersectionRatio, target}) => {
+          if (intersectionRatio > 0) {
+            target.style.backgroundImage = `url(${target.dataset.src})`;
           }
         })
       }
