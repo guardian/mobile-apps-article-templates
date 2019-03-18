@@ -60,6 +60,7 @@
         margin-left: 232px; // 240 - 4 (item padding offset) - 4 (visually offset rounded items);
         width: 940px;
     }
+
 }
 
 .tags__list-item {
@@ -78,5 +79,9 @@
     &.more-button a {
         background-color: transparent !important;
         @include tag-more-button(color(brightness-7), darken(color(brightness-96), 10%));
+    }
+
+    @media (inverted-colors: inverted) {
+        filter: invert(100%);
     }
 }
