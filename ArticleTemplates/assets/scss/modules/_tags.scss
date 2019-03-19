@@ -81,6 +81,12 @@
         @include tag-more-button(color(brightness-7), darken(color(brightness-96), 10%));
     }
 
+    #more {
+        @media (inverted-colors: inverted) {
+            filter: invert(100%);
+        }
+    }
+
     @media (inverted-colors: inverted) {
         filter: invert(100%);
     }
