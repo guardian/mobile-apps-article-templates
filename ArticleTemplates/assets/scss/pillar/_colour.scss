@@ -268,8 +268,9 @@
         .block--live-key-event {
             border-top-color: $p-feature-headline;
 
-            .block__title {
-                color: $p-kicker;
+            .block__title .highlight {
+                background-color: color(tone-highlight);
+                padding: 0.25rem 0.125rem;
             }
         }
 
@@ -287,7 +288,7 @@
 // depending on context
 @mixin pillar-reversible($kicker, $feature, $soft, $inverted) {
 
-    &:not(.garnett--type-live):not(.garnett--type-guardianlabs) {
+    &:not(.garnett--type-guardianlabs) {
         // Section and series labels above headline
         .article-kicker {
             color: $kicker;
