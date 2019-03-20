@@ -52,9 +52,7 @@
         top: 0;
         z-index: 35;
 
-        @media (inverted-colors: inverted) {
-            filter: invert(100%);
-        }
+        @include inverted-colors;
 
         @include mq($from: col2) {
             background-size: auto 200px;

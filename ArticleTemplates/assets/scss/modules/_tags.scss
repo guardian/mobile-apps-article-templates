@@ -64,6 +64,7 @@
 
 .tags__list-item {
     margin: 1rem 0;
+    @include inverted-colors;
 
     a {
         white-space: nowrap;
@@ -81,12 +82,6 @@
     }
 
     #more {
-        @media (inverted-colors: inverted) {
-            filter: invert(100%);
-        }
-    }
-
-    @media (inverted-colors: inverted) {
-        filter: invert(100%);
+        @include inverted-colors
     }
 }
