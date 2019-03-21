@@ -267,7 +267,7 @@ describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
 
         beforeEach(function () {
             liveblogElem = document.createElement('div');
-            liveblogElem.classList.add('tone--liveBlog');
+            liveblogElem.classList.add('garnett--type-live');
             container.appendChild(liveblogElem);
             relativeDatesMock = jest.spyOn(relativeDates, "init");
         });
