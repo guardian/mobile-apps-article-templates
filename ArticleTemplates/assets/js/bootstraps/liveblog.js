@@ -180,7 +180,7 @@ function liveblogLoadMore(html) {
 function liveblogTime() {
     let i;
     let blockTimes;
-    const toneLiveBlogElems = document.getElementsByClassName('tone--liveBlog');
+    const toneLiveBlogElems = document.getElementsByClassName('garnett--type-live');
 
     if (toneLiveBlogElems.length && GU.opts.isLive) {
         initRelativeDates('.key-event__time, .block__time', 'title');
