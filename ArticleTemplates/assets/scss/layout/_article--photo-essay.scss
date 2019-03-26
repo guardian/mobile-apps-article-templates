@@ -1,17 +1,21 @@
 @mixin halfWidth {
-    width: 49%;
+    width: calc(50% - 6px);
     float: left;
-    margin: 0 0 2%;
+    margin: 6px 0;
 }
 
 .display-hint--photoEssay .prose {
+    figure, .figure-wide {
+        margin-bottom: 6px;
+    }
+
     // Makes sure that elements which come after the block of images are no longer floating
     .element--halfWidth + p,
     .element--halfWidth + blockquote,
     .element--halfWidth + .element-pullquote:not(.element--halfWidth),
     .element--halfWidth + .element-image:not(.element--halfWidth) {
         clear: both;
-        padding-top: $gs-baseline / 2;
+        margin-top: $gs-baseline / 2;
     }
 
     figure.element-image.element--halfWidth,
@@ -24,7 +28,15 @@
     }
 
     figure.element-image.element--halfWidth--odd {
-        margin-left: 2%;
+        margin-left: 12px;
+    }
+
+    p + figure.element-image.element--halfWidth--odd {
+        margin-right: 2%;
+    }
+
+    figure.element-image.element--halfWidth + figure.element-image.element--halfWidth--odd + figure.element-image.element--halfWidth {
+        clear: both;
     }
 
     aside.element-pullquote.element--halfWidth {
@@ -59,15 +71,10 @@
         clear: both;
         list-style: none;
         position: relative;
-        top: -$gs-baseline;
+        margin-top: -$gs-baseline;
     }
 
     figure.element-image.figure-wide:not(.element--halfWidth) + ul {
-        margin-top: 0;
-        margin-left: -$gs-baseline;
-        margin-right: -$gs-baseline;
-        margin-bottom: $gs-baseline;
-
         @include mq($from: col4) {
             clear: none;
             padding-left: 0;
@@ -85,14 +92,10 @@
         color: color(brightness-46);
         font-family: $agate-sans;
         border-bottom: 1px dotted rgba(color(brightness-60), .4);
-        padding: base-px(.5, 1, 2, 1);
+        padding: base-px(1);
         display: block;
         padding-left: 0;
         margin: 0;
-    }
-
-    figure.element-image:not(.element--halfWidth) + ul li {
-        padding-left: $gs-baseline;
     }
 
     figure.element-image + ul li::before {
@@ -124,8 +127,8 @@
             display: inline-block;
             float: left;
             margin-left: -240px;
-            margin-top: -3px;
-            padding: $gs-baseline;
+            margin-top: 0;
+            padding: 0 $gs-baseline;
             width: 220px;
             clear: both;
             li {

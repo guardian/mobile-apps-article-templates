@@ -180,7 +180,7 @@ function liveblogLoadMore(html) {
 function liveblogTime() {
     let i;
     let blockTimes;
-    const toneLiveBlogElems = document.getElementsByClassName('tone--liveBlog');
+    const toneLiveBlogElems = document.getElementsByClassName('garnett--type-live');
 
     if (toneLiveBlogElems.length && GU.opts.isLive) {
         initRelativeDates('.key-event__time, .block__time', 'title');
@@ -242,7 +242,9 @@ function keyEvents() {
         keyEventsToggle.addEventListener('click', showHideKeyEvents);
     }
 
-    if (keyEventLinks.length) {
+    if (keyEventLinks.length === 1) {
+        document.querySelector('.key-events__toggle').style.display = 'none';
+    } else if (keyEventLinks.length) {
         captureKeyEventClicks(keyEventLinks);
     }
 }

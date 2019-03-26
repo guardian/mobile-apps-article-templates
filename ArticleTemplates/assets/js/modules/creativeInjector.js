@@ -4,7 +4,7 @@ const trackedImpressions = [];
 
 function init() {
     window.injectCreative = injectCreative;
-    window.applyNativeFunctionCall('injectInlineCreative');
+    window.applyNativeFunctionCall('injectCreative');
 }
 
 function trackLiveBlogEpic() {
