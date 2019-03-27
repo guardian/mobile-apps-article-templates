@@ -1,3 +1,4 @@
+import { signalDevice } from 'modules/util';
 import Hammer from 'hammerjs';
 
 function init() {
@@ -27,6 +28,7 @@ function init() {
             galleryImage.classList.add('touch-gallery__images--pinch');
             lockArticleSwipe(true);
             savePinchCentre(galleryImage, ev);
+            signalDevice('trackAction/galleries:pinched');
         });
 
         mc.on('pinchend', () => {
