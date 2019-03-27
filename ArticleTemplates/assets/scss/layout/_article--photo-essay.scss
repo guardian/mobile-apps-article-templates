@@ -1,7 +1,7 @@
 @mixin halfWidth {
     width: calc(50% - 6px);
     float: left;
-    margin: 6px 0;
+    margin: 12px 0;
 }
 
 .display-hint--photoEssay .prose {
@@ -92,6 +92,10 @@
         display: block;
         padding-left: 0;
         margin: 0;
+    }
+
+    figure.element-image.element--halfWidth + ul li {
+        padding-top: 0;
     }
 
     figure.element-image + ul li::before {
