@@ -101,15 +101,19 @@ figure {
 
 .figure--thumbnail {
     float: left;
-    max-width: 65px; //fixed width throughout
+    max-width: 33.33%;
     margin: 6px 13px 0 0;
 
+    @include mq($from: col4) {
+        max-width: 140px;
+    }
+
     .prose & {
-        //extra specificity for overiding style to override styles in prose
+        // extra specificity for overiding style to override styles in prose
         margin-top: 6px;
 
         @include mq($from: col4) {
-            margin-left: -80px;
+            margin-left: -180px;
         }
     }
 
