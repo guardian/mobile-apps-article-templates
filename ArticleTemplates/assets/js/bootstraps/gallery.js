@@ -3,6 +3,7 @@ import Hammer from 'hammerjs';
 function init() {
     lazyLoadImages();
     const galleryImages = document.querySelectorAll('.touch-gallery__images');
+    const overlay = document.getElementById('gallery-overlay');
     const hammerSettings = (GU.opts.platform === 'ios' ? { touchAction: 'auto' } : {})
 
     galleryImages.forEach(galleryImage => {
@@ -24,12 +25,14 @@ function init() {
         });
 
         mc.on('pinchstart', ev => {
+            overlay.classList.add('active');
             galleryImage.classList.add('touch-gallery__images--pinch');
             lockArticleSwipe(true);
             savePinchCentre(galleryImage, ev);
         });
 
         mc.on('pinchend', () => {
+            overlay.classList.remove('active');
             lockArticleSwipe(false);
             bounceToInitialPosition(galleryImage);
         });
