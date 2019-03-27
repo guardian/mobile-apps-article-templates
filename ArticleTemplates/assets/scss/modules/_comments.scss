@@ -111,7 +111,7 @@
             .comments--module & {
                 float: left;
                 margin: 0;
-                width: 200px;
+                width: 100px;
             }
         }
     }
@@ -167,6 +167,10 @@
         font-family: $egyptian-display;
         color: color(brightness-60);
         margin-left: 4px;
+        @include mq($from: col4) {
+            margin: 4px 0;
+            display: block;
+        }
         .comments--page & {
             @include headline(.5);
             margin-bottom: base-px(1);
@@ -293,6 +297,10 @@
         border: solid 1px color(tone-sandy-light);
         border-top: 1px solid color(brightness-60);
         border-bottom: 2px solid color(tone-sandy-light);
+
+        @include mq($from: col4) {
+            margin-right: 0;
+        }
     }
 
     &__footer {
@@ -358,7 +366,7 @@
             @include mq($from: col4) {
                 display: block;
                 position: relative;
-                left: 240px;
+                left: 140px;
                 top: 32px;
             }
         }
