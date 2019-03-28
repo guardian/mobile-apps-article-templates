@@ -137,4 +137,4 @@ function fixVineAutoplay(evt) {
     }
 }
 
-export { init, checkForTweets };
+export { init, checkForTweets, enhanceTweets };

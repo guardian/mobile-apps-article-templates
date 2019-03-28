@@ -1,5 +1,5 @@
 import { init as initRelativeDates } from 'modules/relativeDates';
-import { init as initTwitter, checkForTweets } from 'modules/twitter';
+import { init as initTwitter, checkForTweets, enhanceTweets } from 'modules/twitter';
 import { init as initYoutube, checkForVideos, resetAndCheckForVideos } from 'modules/youtube';
 import { init as initMinute } from 'modules/minute';
 import { init as initOutbrain } from 'modules/outbrain';
@@ -171,10 +171,9 @@ function liveblogLoadMore(html) {
     formatImages(images);
     loadEmbeds();
     loadInteractives();
-
     window.liveblogTime();
-
     checkInjectedComponents(false);
+    enhanceTweets();
 }
 
 function liveblogTime() {
