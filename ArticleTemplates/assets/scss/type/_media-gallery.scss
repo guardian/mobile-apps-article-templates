@@ -1,5 +1,20 @@
 .garnett--type-media[data-content-type='gallery'],
 .is_advertising.garnett--type-guardianlabs[data-content-type='gallery'] .article {
+    .article--visual {
+        position: relative;
+    }
+
+    #gallery-overlay.active {
+        position: absolute;
+        top: -50px;
+        left: 0;
+        width: 100%;
+        height: calc(100% + 50px);
+        background-color: rgba(0,0,0,0.8);
+        transition: background-color .3s;
+        z-index: 3;
+    }
+
     .article__header {
         &-bg {
             background-repeat: no-repeat;
