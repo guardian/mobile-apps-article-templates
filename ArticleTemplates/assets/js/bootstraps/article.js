@@ -30,7 +30,6 @@ function richLinkTracking() {
 }
 
 function init() {
-    setupGlobals();
     youtubeInit();
     twitterInit();
     quizInit();
