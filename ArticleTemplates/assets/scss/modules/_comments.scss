@@ -112,6 +112,10 @@
                 float: left;
                 margin: 0;
                 width: 100px;
+
+                .comments__post {
+                    display: none;
+                }
             }
         }
     }
@@ -247,8 +251,10 @@
         @include mq($from: col4) {
             margin: {
                 top: 20px;
-            };
-            padding-left: 28px;
+            }
+            .comments--module & {
+                padding-left: 28px;
+            }
         }
     }
 
@@ -348,14 +354,6 @@
 
         .comments--closed & {
             float: left;
-        }
-    }
-
-    .comments__header {
-        .comments__post {
-            @include mq($from: col4) {
-                display: none;
-            }
         }
     }
 
