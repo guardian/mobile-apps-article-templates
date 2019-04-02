@@ -1,13 +1,11 @@
 import { init as initRelativeDates } from 'modules/relativeDates';
 import { init as initTwitter, checkForTweets, enhanceTweets } from 'modules/twitter';
-import { init as initYoutube, checkForVideos, resetAndCheckForVideos } from 'modules/youtube';
+import { init as initYoutube, checkForVideos } from 'modules/youtube';
 import { init as initMinute } from 'modules/minute';
 import { init as initOutbrain } from 'modules/outbrain';
 import { formatImages, loadEmbeds, loadInteractives } from 'bootstraps/common';
 import { getElemsFromHTML, signalDevice, getElementOffset, debounce } from 'modules/util';
 import { trackLiveBlogEpic } from 'modules/creativeInjector';
-import { initMpuPoller } from 'modules/ads';
-import { initPositionPoller } from 'modules/cards';
 
 let newBlockHtml;
 let liveblogStartPos;
@@ -46,11 +44,6 @@ function addNewBlockToBlog(insertAfterElem, block) {
 }
 
 function checkInjectedComponents(newBlocksAdded) {
-    // When a block has loaded check position of related cards placeholder
-    initPositionPoller();
-    initMpuPoller(0);
-    resetAndCheckForVideos();
-
     // check for tweets
     checkForTweets();
 

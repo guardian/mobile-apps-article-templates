@@ -13,7 +13,10 @@ import { init as initMoreTags } from 'modules/more-tags';
 import { init as initRichLinks } from 'modules/rich-links';
 import { init as initAB } from 'modules/experiments/ab';
 import { init as initSentry, Transports } from '@sentry/browser';
+
+import { initPositionPoller } from 'modules/cards';
 import { initMpuPoller } from 'modules/ads';
+import { resetAndCheckForVideos } from 'modules/youtube';
 
 let trackCommentContainerView = true;
         
@@ -44,7 +47,7 @@ function init() {
     initAB();
     initRichLinks();
     setupForms();
-
+    notifyNativeLayers();
     initSentry({
         transport: Transports.FetchTransport,
         dsn: 'https://8abc43d4e79b425eb6d4b5659ccd4020@sentry.io/40557',
@@ -492,7 +495,6 @@ function showTab(tab, tabContainer, evt) {
     let activeTab;
     let tabId;
 
-    initMpuPoller();
     evt.preventDefault();
 
     if (tab.getAttribute('aria-selected') !== 'true') {
@@ -684,6 +686,19 @@ function setupForms() {
             }
         }, 1000);
     }
+}
+
+function notifyNativeLayers() {
+    const targetNode = document.getElementsByTagName('body')[0];
+    const config = { attributes: true, childList: true, subtree: true };
+    const observer = new MutationObserver(sendUpdatesToNative);
+    observer.observe(targetNode, config);
+}
+
+function sendUpdatesToNative() {
+    initPositionPoller(0);
+    initMpuPoller(0);
+    resetAndCheckForVideos();
 }
 
 export {
