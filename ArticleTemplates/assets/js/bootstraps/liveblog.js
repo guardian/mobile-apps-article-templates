@@ -1,7 +1,6 @@
 import { init as initRelativeDates } from 'modules/relativeDates';
 import { init as initTwitter, checkForTweets, enhanceTweets } from 'modules/twitter';
 import { init as initYoutube, checkForVideos, resetAndCheckForVideos } from 'modules/youtube';
-import { init as initMinute } from 'modules/minute';
 import { init as initOutbrain } from 'modules/outbrain';
 import { formatImages, loadEmbeds, loadInteractives } from 'bootstraps/common';
 import { getElemsFromHTML, signalDevice, getElementOffset, debounce } from 'modules/util';
@@ -317,15 +316,6 @@ function showHideKeyEvents() {
     }
 }
 
-function removeMinuteElems() {
-    let i;
-    const minuteElems = document.querySelectorAll('.minute-logo-container, .minute-vertical-rule, .the-minute__header');
-
-    for (i = minuteElems.length; i > 0; i--) {
-        minuteElems[i-1].parentNode.removeChild(minuteElems[i-1]);
-    }
-}
-
 function init() {
     newBlockHtml = '';
     liveblogStartPos = getElementOffset(document.getElementsByClassName('article__body--liveblog')[0]);
@@ -336,15 +326,9 @@ function init() {
     window.addEventListener('scroll', debounce(updateBlocksOnScroll, 100, true));
     liveMore();
     trackLiveBlogEpic();
-
-    if (GU.opts.isMinute && GU.opts.adsConfig === 'tablet') {
-        initMinute();
-    } else {
-        removeMinuteElems();
-        initTwitter();
-        initYoutube();
-        setInterval(window.liveblogTime, 30000);
-    }
+    initTwitter();
+    initYoutube();
+    setInterval(window.liveblogTime, 30000);
 }
 
 export { init };
