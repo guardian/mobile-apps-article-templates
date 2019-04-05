@@ -47,7 +47,7 @@ function init() {
 
     initSentry({
         transport: Transports.FetchTransport,
-        dsn: 'https://8abc43d4e79b425eb6d4b5659ccd4020@sentry.io/40557',
+        dsn: 'https://58e74a81f92943ce92acf0940ec70c6f@sentry.io/1432082',
         release: `${BUILD_NUMBER}`
     });
 
