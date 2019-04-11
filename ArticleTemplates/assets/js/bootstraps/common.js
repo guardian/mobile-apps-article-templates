@@ -12,7 +12,6 @@ import { init as initCards } from 'modules/cards';
 import { init as initMoreTags } from 'modules/more-tags';
 import { init as initRichLinks } from 'modules/rich-links';
 import { init as initAB } from 'modules/experiments/ab';
-import { init as initSentry, Transports } from '@sentry/browser';
 import { initMpuPoller } from 'modules/ads';
 
 let trackCommentContainerView = true;
@@ -44,12 +43,6 @@ function init() {
     initAB();
     initRichLinks();
     setupForms();
-
-    initSentry({
-        transport: Transports.FetchTransport,
-        dsn: 'https://8abc43d4e79b425eb6d4b5659ccd4020@sentry.io/40557',
-        release: `${BUILD_NUMBER}`
-    });
 
     if (!document.body.classList.contains('no-ready')) {
         signalDevice('ready');
