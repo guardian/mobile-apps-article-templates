@@ -111,6 +111,14 @@ function formatElementImageFigure(figure) {
         imageWrapper.appendChild(imageOrLinkedImage);
 
         figure.insertBefore(imageWrapper, figure.firstChild);
+
+        if (isThumbnail || imageClass === 'figure-wide') {
+            desiredImageHeight = getDesiredImageHeight(figure);
+            if (desiredImageHeight) {
+                imageWrapper.style.height = `${desiredImageHeight}px`;
+            }
+            window.addEventListener('resize', debounce(resizeImageWrapper.bind(null, imageWrapper, figure), 100));
+        }
     }
 
     if (caption && !captionIcon) {
