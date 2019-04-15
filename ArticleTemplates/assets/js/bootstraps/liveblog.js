@@ -1,6 +1,6 @@
 import { init as initRelativeDates } from 'modules/relativeDates';
 import { init as initTwitter, checkForTweets, enhanceTweets } from 'modules/twitter';
-import { init as initYoutube, checkForVideos } from 'modules/youtube';
+import { init as initYoutube, videoPositionUpdate } from 'modules/youtube';
 import { init as initMinute } from 'modules/minute';
 import { init as initOutbrain } from 'modules/outbrain';
 import { formatImages, loadEmbeds, loadInteractives } from 'bootstraps/common';
@@ -44,23 +44,7 @@ function addNewBlockToBlog(insertAfterElem, block) {
 }
 
 function checkInjectedComponents(newBlocksAdded) {
-    // check for tweets
     checkForTweets();
-
-    if (newBlocksAdded) {
-        /**
-            If newBlocksAdded wait 700ms to
-            check for youtube video atoms as blocks slides in
-            from right over 600ms.
-        **/
-        setTimeout(() => {
-            checkForVideos();
-        }, 650);
-    } else {
-        checkForVideos();
-    }
-
-    // if there is a contributions epic, track it
     trackLiveBlogEpic();
 }
 

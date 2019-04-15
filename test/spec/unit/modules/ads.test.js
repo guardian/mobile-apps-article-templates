@@ -34,12 +34,6 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
 
         document.body.classList.remove('no-ready');
 
-        if (window.killMpuPoller) {
-            window.killMpuPoller();
-        }
-
-        delete window.initMpuPoller;
-        delete window.killMpuPoller;
         delete window.updateLiveblogAdPlaceholders;
         delete window.getMpuPosCommaSeparated;
         delete window.applyNativeFunctionCall;
@@ -83,12 +77,8 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
                 expect(articleBody.children[2].classList.contains('advert-slot')).toEqual(true);
                 expect(articleBody.children[9].classList.contains('advert-slot')).toEqual(true);
 
-                expect(window.initMpuPoller).toBeDefined();
-                expect(window.killMpuPoller).toBeDefined();
                 expect(window.getMpuPosCommaSeparated).toBeDefined();
 
-                expect(window.applyNativeFunctionCall).toHaveBeenCalledTimes(1);
-                expect(window.applyNativeFunctionCall).toHaveBeenCalledWith('initMpuPoller');
                 expect(window.updateLiveblogAdPlaceholders).toBeDefined();
             });
         });
@@ -116,12 +106,8 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
 
                 init(config);
 
-                expect(window.initMpuPoller).toBeDefined();
-                expect(window.killMpuPoller).toBeDefined();
                 expect(window.getMpuPosCommaSeparated).toBeDefined();
 
-                expect(window.applyNativeFunctionCall).toHaveBeenCalledTimes(1);
-                expect(window.applyNativeFunctionCall).toHaveBeenCalledWith('initMpuPoller');
                 expect(prose.children[0].classList.contains('advert-slot--placeholder')).toEqual(true);
                 expect(prose.children[4].classList.contains('advert-slot--mpu')).toEqual(true);
             });
@@ -148,7 +134,7 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
             });
         });
 
-        describe('if ios calls initMpuPoller()', function () {
+        describe('if ios sets ads', function () {
             let prose;
             let articleBody;
             const resizedSlotWrapper = function () {
@@ -289,36 +275,6 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
             init(config);
 
             expect(articleBody.children[4].classList.contains('advert-slot--mpu')).toEqual(true);
-        });
-    });
-
-    describe('window.initMpuPoller()', function () {
-        let advertSlotWrapper;
-        let config;
-
-        beforeEach(function () {
-            advertSlotWrapper = document.createElement('div');
-            advertSlotWrapper.classList.add('advert-slot__wrapper');
-            advertSlotWrapper.style.height = '100px';
-            advertSlotWrapper.style.width = '100px';
-            advertSlotWrapper.style.position = 'absolute';
-            advertSlotWrapper.style.top = '25px';
-            advertSlotWrapper.style.left = '25px';
-            container.appendChild(advertSlotWrapper);
-
-            config = {
-                adsType: 'default'
-            };
-        });
-
-        it('if first run and android updates ad position', function () {
-            GU.opts.platform = 'android';
-
-            init(config);
-
-            window.initMpuPoller();
-
-            expect(window.GuardianJSInterface.mpuAdsPosition).toHaveBeenCalledTimes(1);
         });
     });
 
