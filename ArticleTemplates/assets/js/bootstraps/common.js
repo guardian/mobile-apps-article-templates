@@ -118,8 +118,7 @@ function formatElementImageFigure(figure) {
 
         figure.insertBefore(imageWrapper, figure.firstChild);
 
-        // only set imageWrapper height to desired height of thumbnails/wide images on non-minute layouts
-        if (!GU.opts.isMinute && (isThumbnail || imageClass === 'figure-wide')) {
+        if (isThumbnail || imageClass === 'figure-wide') {
             desiredImageHeight = getDesiredImageHeight(figure);
             if (desiredImageHeight) {
                 imageWrapper.style.height = `${desiredImageHeight}px`;

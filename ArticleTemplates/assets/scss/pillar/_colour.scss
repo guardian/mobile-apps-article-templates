@@ -1,5 +1,4 @@
-// Note the variable naming differences between the app templates adn MAPI:
-//
+// Note the variable naming differences between the app templates and MAPI:
 // App templates name — MAPI name
 // $p-kicker — main and pillar
 // $p-feature-headline — featureHeadline
@@ -167,6 +166,10 @@
     // Media overrides
     &.garnett--type-media {
         @include pillar-reversible($p-inverted, $p-kicker, $p-feature-headline, $p-soft);
+
+        &:not(.garnett--type-guardianlabs) .byline {
+            color: color(brightness-100);
+        }
     }
 
     // Live overrides
