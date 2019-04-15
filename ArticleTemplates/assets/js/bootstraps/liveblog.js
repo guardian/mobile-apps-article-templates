@@ -166,7 +166,6 @@ function liveblogLoadMore(html) {
     loadInteractives();
     window.liveblogTime();
     checkInjectedComponents(false);
-    enhanceTweets();
 }
 
 function liveblogTime() {
