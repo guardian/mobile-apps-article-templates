@@ -1,7 +1,6 @@
 import { init as initRelativeDates } from 'modules/relativeDates';
-import { init as initTwitter, checkForTweets } from 'modules/twitter';
+import { init as initTwitter, checkForTweets, enhanceTweets } from 'modules/twitter';
 import { init as initYoutube, checkForVideos, resetAndCheckForVideos } from 'modules/youtube';
-import { init as initMinute } from 'modules/minute';
 import { init as initOutbrain } from 'modules/outbrain';
 import { formatImages, loadEmbeds, loadInteractives } from 'bootstraps/common';
 import { getElemsFromHTML, signalDevice, getElementOffset, debounce } from 'modules/util';
@@ -171,16 +170,14 @@ function liveblogLoadMore(html) {
     formatImages(images);
     loadEmbeds();
     loadInteractives();
-
     window.liveblogTime();
-
     checkInjectedComponents(false);
 }
 
 function liveblogTime() {
     let i;
     let blockTimes;
-    const toneLiveBlogElems = document.getElementsByClassName('tone--liveBlog');
+    const toneLiveBlogElems = document.getElementsByClassName('garnett--type-live');
 
     if (toneLiveBlogElems.length && GU.opts.isLive) {
         initRelativeDates('.key-event__time, .block__time', 'title');
@@ -323,7 +320,9 @@ function keyEvents() {
         keyEventsToggle.addEventListener('click', showHideKeyEvents);
     }
 
-    if (keyEventLinks.length) {
+    if (keyEventLinks.length === 1) {
+        document.querySelector('.key-events__toggle').style.display = 'none';
+    } else if (keyEventLinks.length) {
         captureKeyEventClicks(keyEventLinks);
     }
 }
@@ -397,15 +396,6 @@ function showHideKeyEvents() {
     }
 }
 
-function removeMinuteElems() {
-    let i;
-    const minuteElems = document.querySelectorAll('.minute-logo-container, .minute-vertical-rule, .the-minute__header');
-
-    for (i = minuteElems.length; i > 0; i--) {
-        minuteElems[i-1].parentNode.removeChild(minuteElems[i-1]);
-    }
-}
-
 function init() {
     newBlockHtml = '';
     liveblogStartPos = getElementOffset(document.getElementsByClassName('article__body--liveblog')[0]);
@@ -416,15 +406,9 @@ function init() {
     window.addEventListener('scroll', debounce(updateBlocksOnScroll, 100, true));
     liveMore();
     trackLiveBlogEpic();
-
-    if (GU.opts.isMinute && GU.opts.adsConfig === 'tablet') {
-        initMinute();
-    } else {
-        removeMinuteElems();
-        initTwitter();
-        initYoutube();
-        setInterval(window.liveblogTime, 30000);
-    }
+    initTwitter();
+    initYoutube();
+    setInterval(window.liveblogTime, 30000);
 }
 
 export { init };

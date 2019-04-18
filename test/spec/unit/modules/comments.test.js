@@ -5,6 +5,26 @@ import * as relativeDates from 'modules/relativeDates';
 describe('ArticleTemplates/assets/js/modules/comments', function () {
     let container;
 
+    const buildDiscussionBlockElem = function (checked, childCount) {
+        let i;
+        let childElem;
+        let discussionBlockElem = document.createElement('div');
+
+        discussionBlockElem.classList.add('block--discussion-thread');
+
+        if (checked) {
+            discussionBlockElem.classList.add('block--discussion-thread--checked');
+        }
+
+        for (i = 0; i < childCount; i++) {
+            childElem = document.createElement('div');
+            childElem.id = 'child' + i;
+            discussionBlockElem.appendChild(childElem);
+        }
+
+        return discussionBlockElem;
+    };
+
     beforeEach(() => {
         container = document.createElement('div');
         container.id = 'container';
@@ -71,26 +91,6 @@ describe('ArticleTemplates/assets/js/modules/comments', function () {
         });
 
         describe('adds html to the page and calls commentsReplyFormatting', function () {
-            const buildDiscussionBlockElem = function (checked, childCount) {
-                let i;
-                let childElem;
-                let discussionBlockElem = document.createElement('div');
-
-                discussionBlockElem.classList.add('block--discussion-thread');
-
-                if (checked) {
-                    discussionBlockElem.classList.add('block--discussion-thread--checked');
-                }
-
-                for (i = 0; i < childCount; i++) {
-                    childElem = document.createElement('div');
-                    childElem.id = 'child' + i;
-                    discussionBlockElem.appendChild(childElem);
-                }
-
-                return discussionBlockElem;
-            };
-
             it('adds html to the page and calls window.commentsReplyFormatting', function () {
                 let commentElem = document.createElement('div');
                 let commentsContainer = document.createElement('div');
@@ -601,6 +601,89 @@ describe('ArticleTemplates/assets/js/modules/comments', function () {
 
             expect(commentReccomends.classList.contains('increase')).toEqual(false);
             expect(commentReccomendsCount.innerText).toEqual('888');
+        });
+    });
+
+    describe('checkForCorrectCount()', function () {
+        let discussionBlockElem;
+        let discussionBlockElemResponse;
+        let emptyCommentBlock;
+        let titleBlock;
+        let commentCountBlock;
+        let commentAmountBlock;
+
+        beforeEach(() => {
+            discussionBlockElem = document.createElement('div');
+            discussionBlockElem.classList.add('block--discussion-thread');
+
+            discussionBlockElemResponse = document.createElement('div');
+            discussionBlockElemResponse.classList.add('is-response');
+
+            emptyCommentBlock = document.createElement('div');
+            emptyCommentBlock.classList.add('comments__block--empty');
+
+            titleBlock = document.createElement('div');
+            titleBlock.classList.add('comments__title');
+
+            commentCountBlock = document.createElement('div');
+            commentCountBlock.classList.add('comments__count');
+            commentCountBlock.innerHTML = "5";
+
+            commentAmountBlock = document.createElement('div');
+            commentAmountBlock.classList.add('comments-5');
+        });
+
+        it('Hides comment count on first page when known to be incorrect', function () {
+
+            init();
+
+            container.appendChild(titleBlock);
+            container.appendChild(emptyCommentBlock);
+            container.appendChild(commentCountBlock);
+            container.appendChild(commentAmountBlock);
+
+            container.appendChild(discussionBlockElem);
+            container.appendChild(discussionBlockElem);
+
+            expect(commentCountBlock.style.display).toEqual('');
+            window.checkForCorrectCount();
+            expect(commentCountBlock.style.display).toEqual('none');
+        });
+
+        it('Hides empty comment block when comments show', function () {
+            init();
+
+            container.appendChild(titleBlock);
+            container.appendChild(emptyCommentBlock);
+            container.appendChild(commentCountBlock);
+            container.appendChild(commentAmountBlock);
+            container.appendChild(discussionBlockElem);
+
+            window.checkForCorrectCount();
+            expect(emptyCommentBlock.style.display).toEqual('none');
+        });
+
+        it('Sets the correct count when we have more comments that the total count', function () {
+            container.appendChild(emptyCommentBlock);
+            container.appendChild(commentCountBlock);
+            container.appendChild(commentAmountBlock);
+
+            for (let i = 0; i < 18; i++) {
+                container.appendChild(discussionBlockElem.cloneNode(true));
+            }
+
+            expect(commentCountBlock.innerHTML).toEqual('5');
+            expect(commentAmountBlock.classList.contains('comments-5')).toEqual(true);
+
+            window.checkForCorrectCount();
+            expect(commentCountBlock.innerHTML).toEqual('18');
+
+            for (let i = 0; i < 8; i++) {
+                container.appendChild(discussionBlockElemResponse.cloneNode(true));
+            }
+
+            window.checkForCorrectCount();
+            expect(commentCountBlock.innerHTML).toEqual('26');
         });
     });
 });

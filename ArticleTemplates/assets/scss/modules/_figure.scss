@@ -30,7 +30,7 @@ figure {
         font-family: $agate-sans;
         font-size: 1.4rem;
         line-height: 1.6rem;
-        padding: base-px(0, 1);
+        padding: base-px(0.25, 1);
         @include mq($from: col2) {
             padding: 0;
         }
@@ -49,7 +49,7 @@ figure {
         background: color(tone-sandy-light);
     }
 
-    //for when these are displayed in the main media area (at the top we don't need these margins)
+    // for when these are displayed in the main media area (at the top we don't need these margins)
     .main-media & {
         margin: 0;
     }
@@ -101,15 +101,19 @@ figure {
 
 .figure--thumbnail {
     float: left;
-    max-width: 65px; //fixed width throughout
+    max-width: 33.33%;
     margin: 6px 13px 0 0;
 
+    @include mq($from: col4) {
+        max-width: 140px;
+    }
+
     .prose & {
-        //extra specificity for overiding style to override styles in prose
+        // extra specificity for overiding style to override styles in prose
         margin-top: 6px;
 
         @include mq($from: col4) {
-            margin-left: -80px;
+            margin-left: -180px;
         }
     }
 
@@ -173,5 +177,38 @@ figure {
 
     @include mq($from: col4) {
         margin: 4px 0 12px -220px;
+    }
+}
+
+.youtube-sdk-caption {
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    color: color(brightness-46);
+    font-family: "Guardian Agate Sans 1 Web", sans-serif;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin-right: 3px;
+}
+
+.ios {
+    .youtube-sdk-caption {
+        .figure__caption__icon {
+            top: 1px;
+        }
+    }
+}
+
+.element-embed {
+    .js-email-sub__iframe + figcaption {
+        margin-bottom: 8px;
+
+        @include mq($to: col2) {
+            text-align: center;
+        }
+
+        strong {
+            font-weight: normal;
+        }
     }
 }

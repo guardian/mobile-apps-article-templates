@@ -1,7 +1,7 @@
 @mixin halfWidth {
-    width: 49%;
+    width: calc(50% - 6px);
     float: left;
-    margin: 0 0 2%;
+    margin: 12px 0;
 }
 
 .display-hint--photoEssay .prose {
@@ -11,7 +11,7 @@
     .element--halfWidth + .element-pullquote:not(.element--halfWidth),
     .element--halfWidth + .element-image:not(.element--halfWidth) {
         clear: both;
-        padding-top: $gs-baseline / 2;
+        margin-top: $gs-baseline / 2;
     }
 
     figure.element-image.element--halfWidth,
@@ -21,10 +21,12 @@
 
     figure.element-image.element--halfWidth {
         clear: none;
+        margin-left: 3px;
+        margin-right: 3px;
     }
 
-    figure.element-image.element--halfWidth--odd {
-        margin-left: 2%;
+    figure.element-image.element--halfWidth + figure.element-image.element--halfWidth--odd + figure.element-image.element--halfWidth {
+        clear: both;
     }
 
     aside.element-pullquote.element--halfWidth {
@@ -32,7 +34,7 @@
     }
 
     aside.element-pullquote {
-        margin: 0 0 $gs-baseline * 2;
+        margin: $gs-baseline * 2 0;
     }
 
     aside.element-pullquote:not(.element--halfWidth) {
@@ -50,6 +52,12 @@
     figure.element-image figcaption {
         display: none;
     }
+
+    figure &.element--supporting {
+        figcaption {
+            padding: base-px(0.25, 0);
+        }
+    }
 }
 
 .display-hint--photoEssay .prose,
@@ -59,15 +67,12 @@
         clear: both;
         list-style: none;
         position: relative;
-        top: -$gs-baseline;
+        margin-top: -$gs-baseline;
+        padding-left: 3px;
+        padding-right: 3px;
     }
 
     figure.element-image.figure-wide:not(.element--halfWidth) + ul {
-        margin-top: 0;
-        margin-left: -$gs-baseline;
-        margin-right: -$gs-baseline;
-        margin-bottom: $gs-baseline;
-
         @include mq($from: col4) {
             clear: none;
             padding-left: 0;
@@ -85,14 +90,14 @@
         color: color(brightness-46);
         font-family: $agate-sans;
         border-bottom: 1px dotted rgba(color(brightness-60), .4);
-        padding: base-px(.5, 1, 2, 1);
+        padding: base-px(1);
         display: block;
         padding-left: 0;
         margin: 0;
     }
 
-    figure.element-image:not(.element--halfWidth) + ul li {
-        padding-left: $gs-baseline;
+    figure.element-image.element--halfWidth + ul li {
+        padding-top: 0;
     }
 
     figure.element-image + ul li::before {
@@ -124,8 +129,8 @@
             display: inline-block;
             float: left;
             margin-left: -240px;
-            margin-top: -3px;
-            padding: $gs-baseline;
+            margin-top: 0;
+            padding: 0 $gs-baseline;
             width: 220px;
             clear: both;
             li {

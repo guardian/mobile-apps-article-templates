@@ -34,7 +34,9 @@ const componentTypes = {
     ACQUISITIONS_EDITORIAL_LINK: 17,
     ACQUISITIONS_MANAGE_MY_ACCOUNT: 18,
     ACQUISITIONS_BUTTON: 19,
-    ACQUISITIONS_OTHER: 20
+    ACQUISITIONS_OTHER: 20,
+    AUDIO_ATOM: 34,
+    CHART_ATOM: 35
 };
 
 // Temporary fix:
@@ -43,11 +45,13 @@ const componentTypes = {
 // equivalent in order to be processed by the apps
 // correctly
 function convertEnums(obj) {
-    if (!'componentEvent' in obj) return obj;
-    if (!'component' in obj.componentEvent) return obj;
+    if (typeof obj !== 'object') return null;
+    if (!('componentEvent' in obj)) return obj;
+    if (!('component' in obj.componentEvent)) return obj;
     const newObj = JSON.parse(JSON.stringify(obj));
     newObj.componentEvent.action = actions[obj.componentEvent.action];
-    newObj.componentEvent.component.componentType = componentTypes[obj.componentEvent.component.componentType];
+    newObj.componentEvent.component.componentType =
+        componentTypes[obj.componentEvent.component.componentType];
     return newObj;
 }
 

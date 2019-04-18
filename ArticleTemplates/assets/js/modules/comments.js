@@ -15,6 +15,7 @@ function setupGlobals() {
     window.commentTime = commentTime;
     window.commentsRecommendIncrease = commentsRecommendIncrease;
     window.commentsRecommendDecrease = commentsRecommendDecrease;
+    window.checkForCorrectCount = checkForCorrectCount;
 
     window.applyNativeFunctionCall('articleCommentsInserter');
     window.applyNativeFunctionCall('commentsInserter');
@@ -64,15 +65,13 @@ function commentsExpand() {
 }
 
 function checkForCorrectCount() {
-    const actualCommentCount = document.getElementsByClassName("block--discussion-thread").length;
+    const firstPage = !!document.getElementsByClassName("comments__title").length;
+    const actualCommentBlocks = document.getElementsByClassName("block--discussion-thread").length;
+    const actualCommentCount = actualCommentBlocks + document.getElementsByClassName("is-response").length;
     const correctCount = !!document.getElementsByClassName("comments-" + actualCommentCount).length;
+    const commentCount = document.getElementsByClassName("comments__count")[0];
 
-    if (!correctCount && actualCommentCount < 3) {
-        const emptyCommentBlock = document.getElementsByClassName("comments__block--empty")[0];
-        const commentCount = document.getElementsByClassName("comments__count")[0];
-        if (emptyCommentBlock) {
-            emptyCommentBlock.style.display = "none";
-        }
+    if (firstPage && !correctCount && actualCommentBlocks < 3) {
         if (commentCount) {
             commentCount.style.display = "none";
         }
@@ -82,6 +81,13 @@ function checkForCorrectCount() {
         const emptyCommentBlock = document.getElementsByClassName("comments__block--empty")[0];
         if (emptyCommentBlock) {
             emptyCommentBlock.style.display = "none";
+        }
+
+        if (commentCount) {
+            const shownCount = parseInt(commentCount.innerHTML);
+            if (shownCount < actualCommentCount) {
+                commentCount.innerHTML = actualCommentCount;
+            }
         }
     }
 }

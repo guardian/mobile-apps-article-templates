@@ -19,10 +19,10 @@ function init() {
     setupGlobals();
     initPositionPoller();
     // on orientation change restart the position poller
-    window.addEventListener('orientationchange', initPositionPoller);
+    window.addEventListener('orientationchange', initPositionPoller.bind(this, 0));
 }
 
-function initPositionPoller() {
+function initPositionPoller(time = 500) {
     if (!shouldRun) {
         return;
     }
@@ -31,7 +31,7 @@ function initPositionPoller() {
         window.clearTimeout(positionPoller);
     }
 
-    poller(500);
+    poller(time);
 }
 
 function poller(interval) {

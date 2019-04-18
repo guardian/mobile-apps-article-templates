@@ -27,7 +27,7 @@
         .figure-wide,
         .element-video,
         .element-placeholder {
-            margin: base-px(1, -1);
+            margin: base-px(1, -1, 0, -1);
             width: auto;
             clear: left;
 
@@ -36,11 +36,15 @@
                 margin-right: 0;
                 width: 100%;
             }
+
+            @include inverted-colors
         }
 
         // Interactives within article body
         .element-interactive {
             width: auto;
+
+            @include inverted-colors
         }
 
         .element--thumbnail.element-interactive {

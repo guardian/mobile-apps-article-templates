@@ -1,5 +1,4 @@
 import { init } from 'bootstraps/liveblog';
-import * as minute from 'modules/minute';
 import * as twitter from 'modules/twitter';
 import * as util from 'modules/util';
 import * as common from 'bootstraps/common';
@@ -11,7 +10,6 @@ jest.mock('fence', () => {});
 describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
     let container;
     let liveblogBody;
-    let minuteInitMock;
     let twitterInitMock
 
     beforeEach(() => {
@@ -29,12 +27,10 @@ describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
         
         window.GU = {
             opts: {
-                isMinute: '',
                 adsConfig: 'mobile'
             }
         };
 
-        minuteInitMock = jest.spyOn(minute, "init");
         twitterInitMock = jest.spyOn(twitter, "init");
     });
 
@@ -53,21 +49,6 @@ describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
     describe('init()', function () {
         beforeEach(function () {
             window.addEventListener = jest.fn();
-        });
-
-        it('does not initialise minute module if not the minute', function () {
-            init();
-
-            expect(minuteInitMock).not.toBeCalled();
-        });
-
-        it('initialise minute module if the minute', function () {
-            window.GU.opts.isMinute = true;
-            window.GU.opts.adsConfig = 'tablet';
-
-            init();
-
-            expect(minuteInitMock).toHaveBeenCalledTimes(1);
         });
 
         it('sets up global functions', function () {
@@ -116,32 +97,6 @@ describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
             expect(signalDeviceMock).toHaveBeenCalledTimes(1);
             expect(signalDeviceMock).toBeCalledWith('showmore');
         });
-
-        it('does not setup liveblogTime interval if the minute', function () {
-            window.GU.opts.isMinute = true;
-            window.GU.opts.adsConfig = 'tablet';
-
-            init();
-
-            expect(window.setInterval).not.toBeCalled();
-        });
-
-        it('setup liveblogTime interval and remove minute relate elements if not the minute', function () {
-            let minuteHeader = document.createElement('div');
-            let minuteNav = document.createElement('div');
-
-            minuteHeader.classList.add('the-minute__header');
-            minuteNav.classList.add('the-minute__nav');
-
-            container.appendChild(minuteHeader);
-            container.appendChild(minuteNav);
-
-            init();
-
-            expect(window.setInterval).toBeCalled();
-            expect(window.setInterval).toBeCalledWith(window.liveblogTime, 30000);
-            expect(minuteHeader.parentNode).toBeFalsy();
-        });        
     });
 
     describe('window.liveblogDeleteBlock(blockID)', function () {
@@ -267,7 +222,7 @@ describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
 
         beforeEach(function () {
             liveblogElem = document.createElement('div');
-            liveblogElem.classList.add('tone--liveBlog');
+            liveblogElem.classList.add('garnett--type-live');
             container.appendChild(liveblogElem);
             relativeDatesMock = jest.spyOn(relativeDates, "init");
         });
