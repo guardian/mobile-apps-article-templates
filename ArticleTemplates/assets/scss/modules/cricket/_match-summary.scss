@@ -321,6 +321,18 @@
     }
 }
 
+.cricket-inning-team {
+    display: table-cell;
+    vertical-align: bottom;
+    width: 66.6%;
+
+    @include mq($from: col4) {
+        display: block;
+        margin: 0 auto 0 228px;
+        width: 620px;
+    }
+}
+
 .cricket-inning-team-name {
     @extend %meta-title-mq;
     text-overflow: ellipsis;
