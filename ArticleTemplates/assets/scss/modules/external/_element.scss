@@ -61,6 +61,14 @@
 }
 
 @include mq($to: col2) {
+    .article__header {
+        .element-instagram iframe.instagram-media-rendered {
+            transition: .2s width;
+            transition-delay: .3s;
+            width: 100% !important;
+        }
+    }
+
     .article__body {
         .element-embed,
         .element-instagram {
