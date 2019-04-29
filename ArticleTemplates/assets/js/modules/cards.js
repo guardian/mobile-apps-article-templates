@@ -1,4 +1,3 @@
-
 import { getElementOffset } from 'modules/util';
 
 let existingRelatedContentPosition;
