@@ -17,7 +17,7 @@ import { initMpuPoller } from 'modules/ads';
 let trackCommentContainerView = true;
         
 function init() {
-    if (GU && GU.opts && GU.opts.platform === 'android') {
+    if ((GU && GU.opts && GU.opts.platform === 'android') || instagramHeader()) {
         // polyfill to remove click delays on browsers with touch
         attach(document.body);
     }
@@ -676,6 +676,10 @@ function setupForms() {
             }
         }, 1000);
     }
+}
+
+function instagramHeader() {
+    return !!document.querySelector('.article__header #main-media .element-instagram');
 }
 
 export {
