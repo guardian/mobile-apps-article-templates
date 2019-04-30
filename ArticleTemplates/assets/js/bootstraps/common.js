@@ -269,6 +269,7 @@ function loadEmbeds() {
     let fenceElems = document.querySelectorAll('iframe.fenced');
 
     fixVineWidth();
+    fixEmbedHeights();
 
     for (i = 0; i < fenceElems.length; i++) {
         render(fenceElems[i]);
@@ -292,6 +293,17 @@ function fixVineWidth() {
         srcdoc = srcdoc.replace(/height="[\d]+"/,`height="${size}"`);
         iframe.setAttribute('srcdoc', srcdoc);
         iframe.dataset.vineFixed = true;
+    }
+}
+
+function fixEmbedHeights() {
+    let i;
+    let iframe;
+    const iframes = document.querySelectorAll('.element-embed .email-sub__iframe');
+    for (i = 0; i < iframes.length; i++) {
+        iframe = iframes[i];
+        iframe.setAttribute('height', '50px');
+        iframe.style.marginTop = '12px';
     }
 }
 
