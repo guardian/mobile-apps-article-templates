@@ -1,5 +1,6 @@
 import 'core-js/fn/promise';
 import 'raf/polyfill';
+import '@babel/polyfill';
 import domready from 'domready';
 import { init as adsInit } from 'modules/ads';
 
