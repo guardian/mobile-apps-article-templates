@@ -53,6 +53,8 @@ function init() {
     if (!document.body.classList.contains('no-ready')) {
         signalDevice('ready');
     }
+
+    window.bodyHeight = window.document.body.clientHeight;
 }
 
 function formatImages(images) {
@@ -702,10 +704,22 @@ function notifyNativeLayers() {
     observer.observe(targetNode, config);
 }
 
-function sendUpdatesToNative() {
-    relatedContentPositionUpdate();
-    adPositionUpdate();
-    videoPositionUpdate();
+function sendUpdatesToNative(mutation) {
+    bodyHeightChange();
+    // After most animations
+    setTimeout(bodyHeightChange, 300);
+    // After LiveBlog animations
+    setTimeout(bodyHeightChange, 700);
+}
+
+function bodyHeightChange() {
+    const currentBodyHeight = window.document.body.clientHeight;
+    if (window.bodyHeight !== currentBodyHeight) {
+        relatedContentPositionUpdate();
+        adPositionUpdate();
+        videoPositionUpdate();
+        window.bodyHeight = currentBodyHeight;
+    }
 }
 
 function instagramHeader() {
