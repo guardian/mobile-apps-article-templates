@@ -171,6 +171,12 @@
             margin-top: base-px(-1);
         }
 
+        @include mq($to: col2) {
+            & + .element-embed {
+                margin-top: base-px(-1);
+            }
+        }
+
         strong,
         b {
             font-weight: bold;
@@ -252,7 +258,7 @@
 
         &.twitter-tweet,
         &.js-tweet {
-            font-family: $agate-sans;
+            font-family: $guardian-sans;
             font-size: $meta-size;
             line-height: $meta-lead;
 
@@ -331,7 +337,7 @@
 
 .prose table,
 .table {
-    font-family: $agate-sans;
+    font-family: $guardian-sans;
     @include meta();
     margin: base-px(1, 0);
     border-top: 2px solid color(brightness-46);

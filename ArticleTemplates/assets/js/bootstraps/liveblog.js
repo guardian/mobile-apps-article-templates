@@ -149,6 +149,9 @@ function liveblogLoadMore(html) {
     loadInteractives();
     window.liveblogTime();
     checkInjectedComponents(false);
+    if (typeof twttr !== 'undefined' && 'widgets' in twttr && 'load' in twttr.widgets) {
+        enhanceTweets();
+    }
 }
 
 function liveblogTime() {

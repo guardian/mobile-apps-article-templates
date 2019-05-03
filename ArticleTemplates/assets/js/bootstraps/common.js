@@ -22,7 +22,7 @@ import { videoPositionUpdate } from 'modules/youtube';
 let trackCommentContainerView = true;
         
 function init() {
-    if (GU && GU.opts && GU.opts.platform === 'android') {
+    if ((GU && GU.opts && GU.opts.platform === 'android') || instagramHeader()) {
         // polyfill to remove click delays on browsers with touch
         attach(document.body);
     }
@@ -275,6 +275,7 @@ function loadEmbeds() {
     let fenceElems = document.querySelectorAll('iframe.fenced');
 
     fixVineWidth();
+    fixEmbedHeights();
 
     for (i = 0; i < fenceElems.length; i++) {
         render(fenceElems[i]);
@@ -298,6 +299,17 @@ function fixVineWidth() {
         srcdoc = srcdoc.replace(/height="[\d]+"/,`height="${size}"`);
         iframe.setAttribute('srcdoc', srcdoc);
         iframe.dataset.vineFixed = true;
+    }
+}
+
+function fixEmbedHeights() {
+    let i;
+    let iframe;
+    const iframes = document.querySelectorAll('.element-embed .email-sub__iframe');
+    for (i = 0; i < iframes.length; i++) {
+        iframe = iframes[i];
+        iframe.setAttribute('height', '50px');
+        iframe.style.marginTop = '12px';
     }
 }
 
@@ -694,6 +706,10 @@ function sendUpdatesToNative() {
     relatedContentPositionUpdate();
     adPositionUpdate();
     videoPositionUpdate();
+}
+
+function instagramHeader() {
+    return !!document.querySelector('.article__header #main-media .element-instagram');
 }
 
 export {
