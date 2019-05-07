@@ -63,15 +63,12 @@ function changeSlider(duration, percentage) {
 }
 
 function updateSlider(current, platform) {
-    console.log('updateSlider')
     if (platform === 'iOS') {
         if (down === 1) {
             return;
         }
     }
     slider1.setValue(current);
-    console.log(current)
-    console.log(previous)
     if (current - previous === 1) {
         audioPlaying();
     } else if (current === previous) {
@@ -114,7 +111,6 @@ function audioSlider() {
 }
 
 function audioPlay() {
-    console.log("audioPlay")
     const audioPlayer = document.getElementsByClassName('audio-player')[0];
 
      if (audioPlayer) {
@@ -123,7 +119,6 @@ function audioPlay() {
 }
 
 function audioPlaying() {
-    console.log("audioPlaying")
     const button = document.getElementsByClassName('audio-player__button')[0];
     const audioPlayer = document.getElementsByClassName('audio-player')[0];
     const screenReadable = document.getElementsByClassName('audio-player-readable')[0];
@@ -169,7 +164,6 @@ function audioBackground(duration) {
 }
 
 function styleCutoutContainer(duration, cutoutContainer) {
-    console.log("draw circles")
     const articleHeader = document.getElementsByClassName('article__header')[0];
     const numOfCircles = Math.min(10, Math.floor((duration / 60) / 2)) + 2;
     const h = getElementOffset(cutoutContainer).height;
