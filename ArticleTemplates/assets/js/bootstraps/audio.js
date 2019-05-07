@@ -206,7 +206,6 @@ function setupGlobals() {
     window.applyNativeFunctionCall('superAudioSlider');
     window.applyNativeFunctionCall('audioPlay');
     window.applyNativeFunctionCall('audioStop');
-    window.applyNativeFunctionCall('updateSlider');
 }
 
 function init() {
