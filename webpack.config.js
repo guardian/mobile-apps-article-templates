@@ -85,6 +85,10 @@ module.exports = (env, argv) => {
           to: path.resolve(__dirname, 'ArticleTemplates/assets/build'),
         },
         {
+          from: './node_modules/classlist-polyfill/src/index.js',
+          to: path.resolve(__dirname, 'ArticleTemplates/assets/build'),
+        },
+        {
           from: './node_modules/smooth-scroll/dist/smooth-scroll.polyfills.min.js',
           to: path.resolve(__dirname, 'ArticleTemplates/assets/build'),
         }]),
