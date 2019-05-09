@@ -42,10 +42,6 @@
     .show-tags {
         display: inline-block;
     }
-
-    .witness + & {
-        margin-top: base-px(2);
-    }
 }
 
 .tags__inline-list {
@@ -68,6 +64,7 @@
 
 .tags__list-item {
     margin: 1rem 0;
+    @include inverted-colors;
 
     a {
         white-space: nowrap;
@@ -82,5 +79,9 @@
     &.more-button a {
         background-color: transparent !important;
         @include tag-more-button(color(brightness-7), darken(color(brightness-96), 10%));
+    }
+
+    #more {
+        @include inverted-colors
     }
 }

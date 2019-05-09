@@ -127,9 +127,11 @@
             .bullet {
                 margin-top: 2px;
                 display: inline-block;
-                width: 5%;
                 float: left;
-    
+                @include mq($to: col2) {
+                    width: 5%;
+                }
+
                 & + a {
                     width: 95%;
                     margin-bottom: 12px;

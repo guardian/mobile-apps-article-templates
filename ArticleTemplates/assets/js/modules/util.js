@@ -140,6 +140,10 @@ function append(scriptElement) {
     document.body.appendChild(scriptElement);
 }
 
+function insertAfter(newNode, referenceNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+
 export {
     isElementInViewport,
     isElementPartiallyInViewport,
@@ -154,5 +158,6 @@ export {
     setLocalStorage,
     debounce,
     getElemsFromHTML,
-    append
+    append,
+    insertAfter
 };

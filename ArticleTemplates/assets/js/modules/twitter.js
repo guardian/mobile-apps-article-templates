@@ -6,12 +6,12 @@ import { resetAndCheckForVideos } from 'modules/youtube';
 let articleBody;
 let isAndroid;
 let tweets;
+let tweetHeights = [];
 let scriptReady = false;
 
 function init() {
     isAndroid = GU.opts.platform === 'android';
     articleBody = document.getElementsByClassName('article__body')[0];
-
     checkForTweets();
 }
 
@@ -67,30 +67,12 @@ function isScriptReady() {
     return false;
 }
 
-function isTweetInRange(tweet) {
-    const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-    const scrollTop = document.body.scrollTop;
-    const offsetHeight = tweet.offsetHeight;
-    const offsetTop = tweet.offsetTop;
-
-    return ((scrollTop + (viewportHeight * 2.5)) > offsetTop) && (scrollTop < (offsetTop + offsetHeight));
-}
-
 function enhanceTweet(tweet) {
-    let tweetProcessed = false;
-
     if (isScriptReady()) {
-        if (isTweetInRange(tweet)) {
-            addTweetClass(tweet);
-            tweetProcessed = true;
-        } else {
-            removeTweetClass(tweet);
-        }
+        addTweetClass(tweet);
     } else {
         removeTweetClass(tweet);
     }
-
-    return tweetProcessed;
 }
 
 function addTweetClass(tweet) {
@@ -105,15 +87,16 @@ function removeTweetClass(tweet) {
 
 function enhanceTweets() {
     let i;
-    let processedTweets = 0;
-
+    let tweetHeightChange = false;
     for (i = 0; i < tweets.length; i++) {
-        if (enhanceTweet(tweets[i])) {
-            processedTweets++;
+        enhanceTweet(tweets[i])
+        if (tweetHeights[i] !== tweets[i].clientHeight) {
+            tweetHeightChange = true;
+            tweetHeights[i] = tweets[i].clientHeight;
         }
     }
 
-    if (processedTweets && articleBody){
+    if (tweetHeightChange && articleBody){
         twttr.widgets.load(articleBody);
         // When a tweets been enhanced check position of related cards placeholder
         initPositionPoller();
@@ -154,4 +137,4 @@ function fixVineAutoplay(evt) {
     }
 }
 
-export { init, checkForTweets };
+export { init, checkForTweets, enhanceTweets };

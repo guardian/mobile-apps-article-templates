@@ -84,7 +84,7 @@ const init = opts => {
 
         const getAdType = () => {
             const contentType = opts.contentType;
-            if ((contentType === 'liveblog' && !GU.opts.isMinute) ||
+            if ((contentType === 'liveblog') ||
                 (contentType !== 'liveblog' && document.querySelector('.article__body--liveblog'))) {
                 return 'liveblog';
             }

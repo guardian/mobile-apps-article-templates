@@ -111,7 +111,11 @@
             .comments--module & {
                 float: left;
                 margin: 0;
-                width: 200px;
+                width: 100px;
+
+                .comments__post {
+                    display: none;
+                }
             }
         }
     }
@@ -141,9 +145,9 @@
 
     &__title {
         font-family: 'Guardian Headline', 'Guardian Egyptian Web', Georgia, serif;
-        font-weight: 600;
-        font-size: 2rem;
-        line-height: 2.3rem;
+        font-weight: 700;
+        font-size: 1.9rem;
+        line-height: 1.9rem;
         padding-bottom: 0;
 
         @include mq($from: col2) {
@@ -159,14 +163,18 @@
     &__link:active,
     .comments__link {
         color: color(brightness-7);
-        font-size: 2.0rem;
-        line-height: 2.3rem;
+        font-size: 1.9rem;
+        line-height: 1.9rem;
     }
 
     &__count {
         font-family: $egyptian-display;
         color: color(brightness-60);
         margin-left: 4px;
+        @include mq($from: col4) {
+            margin: 4px 0;
+            display: block;
+        }
         .comments--page & {
             @include headline(.5);
             margin-bottom: base-px(1);
@@ -209,15 +217,6 @@
         .comments--module & {
             top: 0;
 
-            @include mq($from: col4) {
-                position: relative;
-                margin-top: 6px;
-
-                .touchpoint__label {
-                    padding: 0;
-                }
-            }
-
             @include mq($to: col1) {
                 .touchpoint__label {
                     display: none;
@@ -252,8 +251,10 @@
         @include mq($from: col4) {
             margin: {
                 top: 20px;
-            };
-            padding-left: 28px;
+            }
+            .comments--module & {
+                padding-left: 28px;
+            }
         }
     }
 
@@ -302,6 +303,10 @@
         border: solid 1px color(tone-sandy-light);
         border-top: 1px solid color(brightness-60);
         border-bottom: 2px solid color(tone-sandy-light);
+
+        @include mq($from: col4) {
+            margin-right: 0;
+        }
     }
 
     &__footer {
@@ -349,6 +354,19 @@
 
         .comments--closed & {
             float: left;
+        }
+    }
+
+    .comments__footer {
+        .comments__post {
+            display: none;
+
+            @include mq($from: col4) {
+                display: block;
+                position: relative;
+                left: 140px;
+                top: 32px;
+            }
         }
     }
 }
