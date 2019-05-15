@@ -125,6 +125,12 @@ function insertAfter(newNode, referenceNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
+function getAndroidVersion() {
+    const ua = navigator.userAgent.toLowerCase();
+    const match = ua.match(/android\s([0-9\.]*)/);
+    return match ? match[1] : undefined;
+};
+
 export {
     isElementPartiallyInViewport,
     getElementOffset,
@@ -137,5 +143,6 @@ export {
     debounce,
     getElemsFromHTML,
     append,
-    insertAfter
+    insertAfter,
+    getAndroidVersion
 };
