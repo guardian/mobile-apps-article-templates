@@ -698,7 +698,7 @@ function setupForms() {
 }
 
 function notifyNativeLayers() {
-    const targetNode = document.getElementsByTagName('body')[0];
+    const targetNode = document.body;
     const config = { attributes: true, childList: true, subtree: true };
     const observer = new MutationObserver(sendUpdatesToNative);
     observer.observe(targetNode, config);
