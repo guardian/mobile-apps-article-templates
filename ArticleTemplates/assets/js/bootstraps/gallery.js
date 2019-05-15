@@ -1,4 +1,4 @@
-import { signalDevice } from 'modules/util';
+import { signalDevice, getAndroidVersion } from 'modules/util';
 import Hammer from 'hammerjs';
 
 function init() {
@@ -94,6 +94,15 @@ function init() {
 }
 
 function lazyLoadImages() {
+    if (parseInt(getAndroidVersion()) === 5) {
+        let i;
+        const images = document.querySelectorAll('.touch-gallery__images__image');
+        for (i = 0; i < images.length; i++) {
+            images[i].style.backgroundImage = "url(" + images[i].dataset.src + ")";
+        }
+        return;
+    }
+
     const options = {
         rootMargin: '2000px',
         threshold: 0.01
