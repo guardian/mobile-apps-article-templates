@@ -1,5 +1,6 @@
 import { attach } from 'fastclick';
 import { render } from 'fence';
+
 import {
     getClosestParentWithTag,
     debounce,
@@ -7,12 +8,16 @@ import {
     signalDevice,
     isElementPartiallyInViewport,
 } from 'modules/util';
+
 import { init as initComments } from 'modules/comments';
 import { init as initCards } from 'modules/cards';
 import { init as initMoreTags } from 'modules/more-tags';
 import { init as initRichLinks } from 'modules/rich-links';
 import { init as initAB } from 'modules/experiments/ab';
-import { initMpuPoller } from 'modules/ads';
+
+import { relatedContentPositionUpdate } from 'modules/cards';
+import { adPositionUpdate } from 'modules/ads';
+import { videoPositionUpdate } from 'modules/youtube';
 
 let trackCommentContainerView = true;
         
@@ -39,14 +44,17 @@ function init() {
     setGlobalObject(window);
     fixSeries();
     advertorialUpdates();
-    setupTracking(); // track common events
+    setupTracking();
     initAB();
     initRichLinks();
     setupForms();
+    notifyNativeLayers();
 
     if (!document.body.classList.contains('no-ready')) {
         signalDevice('ready');
     }
+
+    window.bodyHeight = window.document.body.clientHeight;
 }
 
 function formatImages(images) {
@@ -496,7 +504,6 @@ function showTab(tab, tabContainer, evt) {
     let activeTab;
     let tabId;
 
-    initMpuPoller();
     evt.preventDefault();
 
     if (tab.getAttribute('aria-selected') !== 'true') {
@@ -687,6 +694,31 @@ function setupForms() {
                 clearInterval(checkForLinks);
             }
         }, 1000);
+    }
+}
+
+function notifyNativeLayers() {
+    const targetNode = document.body;
+    const config = { attributes: true, childList: true, subtree: true };
+    const observer = new MutationObserver(sendUpdatesToNative);
+    observer.observe(targetNode, config);
+}
+
+function sendUpdatesToNative(mutation) {
+    bodyHeightChange();
+    // After most animations
+    setTimeout(bodyHeightChange, 300);
+    // After LiveBlog animations
+    setTimeout(bodyHeightChange, 700);
+}
+
+function bodyHeightChange() {
+    const currentBodyHeight = window.document.body.clientHeight;
+    if (window.bodyHeight !== currentBodyHeight) {
+        relatedContentPositionUpdate();
+        adPositionUpdate();
+        videoPositionUpdate();
+        window.bodyHeight = currentBodyHeight;
     }
 }
 
