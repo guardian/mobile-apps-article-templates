@@ -302,8 +302,6 @@ function keyEvents() {
 
     if (keyEventLinks.length === 1) {
         document.querySelector('.key-events__toggle').style.display = 'none';
-    } else if (keyEventLinks.length) {
-        captureKeyEventClicks(keyEventLinks);
     }
 }
 
@@ -352,18 +350,6 @@ function updateKeyEventCount(count) {
     }
 
     keyEvents.classList.add(`key-events--${count}`);
-}
-
-function captureKeyEventClicks(links) {
-    let i;
-
-    for (i = 0; i < links.length; i++) {
-        links[i].addEventListener('click', handleKeyEventClick);
-    }
-}
-
-function handleKeyEventClick(evt) {
-    evt.preventDefault();
 }
 
 function showHideKeyEvents() {
