@@ -39,7 +39,6 @@ const init = opts => {
         'liveblogUpdateBlock',
         'liveblogNewKeyEvent',
         'getMpuPosCallback',
-        'initMpuPoller',
         'videoPositioning',
         'getArticleHeight',
         'injectInlineArticleMembershipCreative'
