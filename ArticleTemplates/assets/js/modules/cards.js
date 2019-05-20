@@ -1,37 +1,8 @@
 import { getElementOffset } from 'modules/util';
 
-let existingRelatedContentPosition;
+let existingPosition;
 let relatedContentElem;
 let shouldRun = false;
-
-function init() {
-    relatedContentElem = document.querySelector('.related-content');
-
-    if (relatedContentElem && GU.opts.platform === 'ios') {
-        shouldRun = true;
-    } else {
-        return;
-    }
-
-    setupGlobals();
-    window.addEventListener('orientationchange', relatedContentPositionUpdate);
-}
-
-function relatedContentPositionUpdate() {
-    if (!shouldRun) {
-        return;
-    }
-
-    const newRelatedContentPosition = getRelatedContentPosition();
-
-    if (newRelatedContentPosition &&
-        (JSON.stringify(newRelatedContentPosition) !== JSON.stringify(existingRelatedContentPosition)) &&
-        (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.bodyMutationNotification)
-    ) {
-        window.webkit.messageHandlers.bodyMutationNotification.postMessage({rect: newRelatedContentPosition });
-        existingRelatedContentPosition = newRelatedContentPosition;
-    }
-}
 
 function getRelatedContentPosition() {
     if (relatedContentElem) {
@@ -52,6 +23,41 @@ function setupGlobals() {
     window.applyNativeFunctionCall('getRelatedContentPosition');
     window.setRelatedContentHeight = setRelatedContentHeight;
     window.applyNativeFunctionCall('setRelatedContentHeight');
+}
+
+function hasBodyMutation() {
+    return window.webkit &&
+        window.webkit.messageHandlers &&
+        window.webkit.messageHandlers.bodyMutationNotification;
+}
+
+function relatedContentPositionUpdate() {
+    if (!shouldRun) {
+        return;
+    }
+
+    const newPosition = getRelatedContentPosition();
+
+    if (newPosition &&
+        (JSON.stringify(newPosition) !== JSON.stringify(existingPosition)) &&
+        hasBodyMutation()
+    ) {
+        window.webkit.messageHandlers.bodyMutationNotification.postMessage({ rect: newPosition });
+        existingPosition = newPosition;
+    }
+}
+
+function init() {
+    relatedContentElem = document.querySelector('.related-content');
+
+    if (relatedContentElem && GU.opts.platform === 'ios') {
+        shouldRun = true;
+    } else {
+        return;
+    }
+
+    setupGlobals();
+    window.addEventListener('orientationchange', relatedContentPositionUpdate);
 }
 
 export { init, relatedContentPositionUpdate };
