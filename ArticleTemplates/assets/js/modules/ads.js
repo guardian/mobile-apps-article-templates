@@ -1,78 +1,9 @@
-import { signalDevice, getElementOffset } from "modules/util";
+import { signalDevice, getElementOffset } from 'modules/util';
 
 let adsReady = false;
 let numberOfMpus = 0;
 let adsType;
 let adPositions;
-
-function insertAdPlaceholders(mpuAfterParagraphs) {
-    const mpu = createMpu(numberOfMpus);
-    const nrParagraph = (parseInt(mpuAfterParagraphs, 10) || 6) - 1;
-    const placeholder = document.createElement('div');
-    const placeholderSibling = document.querySelector('.article__body > div.prose > :first-child');
-    const mpuSibling = document.querySelector(`.article__body > div.prose > p:nth-of-type(${nrParagraph}) ~ p + p`);
-
-    if (!(mpuSibling && mpuSibling.parentNode)) {
-        // Not enough paragraphs on page to add advert
-        return;
-    }
-
-    mpuSibling.parentNode.insertBefore(mpu, mpuSibling);
-
-    placeholder.classList.add('advert-slot');
-    placeholder.classList.add('advert-slot--placeholder');
-
-    // To mimic the correct positioning on full width tablet view, we will need an 
-    // empty div to pad out the text so we can position absolutely over it.
-    if (placeholderSibling && placeholderSibling.parentNode) {
-        placeholderSibling.parentNode.insertBefore(placeholder, placeholderSibling);
-    }
-
-    adsReady = true;
-}
-
-function updateLiveblogAdPlaceholders(reset) {
-    let i;
-    let advertSlots;
-    let mpu;
-    let block;
-    // The selector here is taking all .block elements within article body
-    // which are not siblings of contributions-epic__container
-    const blocks = document.querySelectorAll('.article__body > .block:first-child, .article__body > div:not(.contributions-epic__container) + .block');
-
-    if (reset) {
-        advertSlots = document.getElementsByClassName('advert-slot--mpu');
-
-        while(advertSlots.length > 0){
-            advertSlots[0].parentNode.removeChild(advertSlots[0]);
-        }
-
-        numberOfMpus = 0;
-    }
-
-    for (i = 0; i < blocks.length; i++) {
-        block = blocks[i];
-
-        if (i === 2 || i === 7) {
-            numberOfMpus++;
-            mpu = createMpu(numberOfMpus);
-
-            if (block.nextSibling) {
-                block.parentNode.insertBefore(mpu, block);
-            } else {
-                block.parentNode.appendChild(mpu);
-            }
-        }
-    }
-
-    if (reset) {
-        if (GU.opts.platform === 'android') {
-            updateAndroidPosition();
-        } else {
-            signalDevice('ad_moved');
-        }
-    }
-}
 
 function createMpu(id) {
     const mpu = document.createElement('div');
@@ -91,10 +22,40 @@ function createMpu(id) {
     return mpu;
 }
 
+function insertAdPlaceholders(mpuAfterParagraphs) {
+    const mpu = createMpu(numberOfMpus);
+    const nrParagraph = (parseInt(mpuAfterParagraphs, 10) || 6) - 1;
+    const placeholder = document.createElement('div');
+    const placeholderSibling = document.querySelector('.article__body > div.prose > :first-child');
+    const mpuSibling = document.querySelector(`.article__body > div.prose > p:nth-of-type(${nrParagraph}) ~ p + p`);
+
+    if (!(mpuSibling && mpuSibling.parentNode)) {
+        // Not enough paragraphs on page to add advert
+        return;
+    }
+
+    mpuSibling.parentNode.insertBefore(mpu, mpuSibling);
+
+    placeholder.classList.add('advert-slot');
+    placeholder.classList.add('advert-slot--placeholder');
+
+    // To mimic the correct positioning on full width tablet view, we will need an
+    // empty div to pad out the text so we can position absolutely over it.
+    if (placeholderSibling && placeholderSibling.parentNode) {
+        placeholderSibling.parentNode.insertBefore(placeholder, placeholderSibling);
+    }
+
+    adsReady = true;
+}
+
 function getMpuPos(formatter) {
     const advertSlots = document.getElementsByClassName('advert-slot__wrapper');
-    const scrollLeft = document.scrollingElement ? document.scrollingElement.scrollLeft : document.body.scrollLeft;
-    const scrollTop = document.scrollingElement ? document.scrollingElement.scrollTop : document.body.scrollTop;
+    const scrollLeft = document.scrollingElement
+        ? document.scrollingElement.scrollLeft
+        : document.body.scrollLeft;
+    const scrollTop = document.scrollingElement
+        ? document.scrollingElement.scrollTop
+        : document.body.scrollTop;
     let advertPosition;
     let i;
 
@@ -127,24 +88,16 @@ function getMpuPos(formatter) {
     return null;
 }
 
-function getMpuPosCommaSeparated() {
-    return getMpuPos(getMpuPosCommaSeparatedCallback);
+function updateAndroidPositionLiveblogCallback({
+    x1, y1, w1, h1, x2, y2, w2, h2
+}) {
+    window.GuardianJSInterface.mpuLiveblogAdsPosition(x1, y1, w1, h1, x2, y2, w2, h2);
 }
 
-function getMpuPosCommaSeparatedCallback(params) {
-    return (numberOfMpus > 1)
-        ? `${params.x1},${params.y1},${params.x2},${params.y2}`
-        : `${params.x1},${params.y1}`;
-}
-
-function getMpuOffset() {
-    return getMpuPos(getMpuOffsetCallback);
-}
-
-function getMpuOffsetCallback(params) {
-    return (numberOfMpus > 1)
-        ? `${params.x1}-${params.y1}:${params.x2}-${params.y2}`
-        : `${params.x1}-${params.y1}`;
+function updateAndroidPositionDefaultCallback({
+    x1, y1, w1, h1
+}) {
+    window.GuardianJSInterface.mpuAdsPosition(x1, y1, w1, h1);
 }
 
 function updateAndroidPosition() {
@@ -155,19 +108,74 @@ function updateAndroidPosition() {
     }
 }
 
-function updateAndroidPositionLiveblogCallback({ x1, y1, w1, h1, x2, y2, w2, h2 }) {
-    window.GuardianJSInterface.mpuLiveblogAdsPosition(x1, y1, w1, h1, x2, y2, w2, h2);
+function updateLiveblogAdPlaceholders(reset) {
+    let i;
+    let advertSlots;
+    let mpu;
+    let block;
+    // The selector here is taking all .block elements within article body
+    // which are not siblings of contributions-epic__container
+    const blocks = document.querySelectorAll('.article__body > .block:first-child, .article__body > div:not(.contributions-epic__container) + .block');
+
+    if (reset) {
+        advertSlots = document.getElementsByClassName('advert-slot--mpu');
+
+        while (advertSlots.length > 0) {
+            advertSlots[0].parentNode.removeChild(advertSlots[0]);
+        }
+
+        numberOfMpus = 0;
+    }
+
+    for (i = 0; i < blocks.length; i++) {
+        block = blocks[i];
+
+        if (i === 2 || i === 7) {
+            numberOfMpus++;
+            mpu = createMpu(numberOfMpus);
+
+            if (block.nextSibling) {
+                block.parentNode.insertBefore(mpu, block);
+            } else {
+                block.parentNode.appendChild(mpu);
+            }
+        }
+    }
+
+    if (reset) {
+        if (GU.opts.platform === 'android') {
+            updateAndroidPosition();
+        } else {
+            signalDevice('ad_moved');
+        }
+    }
 }
 
-function updateAndroidPositionDefaultCallback({ x1, y1, w1, h1 }) {
-    window.GuardianJSInterface.mpuAdsPosition(x1, y1, w1, h1);
+function getMpuPosCommaSeparatedCallback(params) {
+    return (numberOfMpus > 1)
+        ? `${params.x1},${params.y1},${params.x2},${params.y2}`
+        : `${params.x1},${params.y1}`;
+}
+
+function getMpuOffsetCallback(params) {
+    return (numberOfMpus > 1)
+        ? `${params.x1}-${params.y1}:${params.x2}-${params.y2}`
+        : `${params.x1}-${params.y1}`;
+}
+
+function getMpuPosCommaSeparated() {
+    return getMpuPos(getMpuPosCommaSeparatedCallback);
+}
+
+function getMpuOffset() {
+    return getMpuPos(getMpuOffsetCallback);
 }
 
 function adPositionUpdate() {
     let newAdPositions = getMpuOffset();
 
     if (newAdPositions !== adPositions) {
-        if (GU.opts.platform === 'android'){
+        if (GU.opts.platform === 'android') {
             updateAndroidPosition();
         } else {
             signalDevice('ad_moved');
@@ -191,7 +199,7 @@ function updateMPUPosition(yPos) {
     if (advertSlot) {
         newYPos = getElementOffset(advertSlot).top;
 
-        if (newYPos !== yPos){
+        if (newYPos !== yPos) {
             if (GU.opts.platform === 'android') {
                 updateAndroidPosition();
             } else {
@@ -219,7 +227,7 @@ function init(config) {
         numberOfMpus = 1;
         insertAdPlaceholders(config.mpuAfterParagraphs);
     }
- 
+
     if (adsReady) {
         fireAdsReady();
     }
