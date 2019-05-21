@@ -2,6 +2,34 @@ const SHOW_TAGS = 5;
 let moreButton;
 let hiddenTags;
 
+function hideTags() {
+    let i;
+
+    for (i = 0; i < hiddenTags.length; i++) {
+        hiddenTags[i].classList.add('hide-tags');
+    }
+}
+
+function showTags() {
+    let i;
+
+    for (i = 0; i < hiddenTags.length; i++) {
+        hiddenTags[i].classList.remove('hide-tags');
+    }
+}
+
+function show() {
+    let i;
+
+    moreButton.style.display = 'none';
+
+    for (i = 0; i < hiddenTags.length; i++) {
+        hiddenTags[i].classList.remove('hide-tags');
+    }
+
+    setTimeout(showTags, 200);
+}
+
 function init() {
     let firstHiddenTag;
     let tags = document.querySelectorAll('.tags__list-item');
@@ -19,34 +47,6 @@ function init() {
         firstHiddenTag.parentNode.insertBefore(moreButton, firstHiddenTag);
         hiddenTags = document.querySelectorAll('#more-tags-container ~ .tags__list-item');
         hideTags();
-    }
-}
-
-function show() {
-    let i;
-
-    moreButton.style.display = 'none';
-
-    for (i = 0; i < hiddenTags.length; i++) {
-        hiddenTags[i].classList.remove('hide-tags');
-    }
-
-    setTimeout(showTags, 200);
-}
-
-function hideTags() {
-    let i;
-
-    for (i = 0; i < hiddenTags.length; i++) {
-        hiddenTags[i].classList.add('hide-tags');
-    }
-}
-
-function showTags() {
-    let i;
-
-    for (i = 0; i < hiddenTags.length; i++) {
-        hiddenTags[i].classList.remove('hide-tags');
     }
 }
 
