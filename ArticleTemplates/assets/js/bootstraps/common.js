@@ -20,6 +20,7 @@ import { adPositionUpdate } from 'modules/ads';
 import { videoPositionUpdate } from 'modules/youtube';
 
 let trackCommentContainerView = true;
+let mutationTimeout;
         
 function init() {
     if ((GU && GU.opts && GU.opts.platform === 'android') || instagramHeader()) {
@@ -704,12 +705,12 @@ function notifyNativeLayers() {
     observer.observe(targetNode, config);
 }
 
-function sendUpdatesToNative(mutation) {
+function sendUpdatesToNative(mutationsList, observer, interval = 50) {
     bodyHeightChange();
-    // After most animations
-    setTimeout(bodyHeightChange, 300);
-    // After LiveBlog animations
-    setTimeout(bodyHeightChange, 700);
+    if (mutationTimeout) {
+        clearTimeout(mutationTimeout);
+    }
+    mutationTimeout = setTimeout(sendUpdatesToNative.bind(null, null, null, interval + 50), interval);
 }
 
 function bodyHeightChange() {
