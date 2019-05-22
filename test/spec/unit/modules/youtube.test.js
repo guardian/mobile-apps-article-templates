@@ -186,7 +186,7 @@ describe('ArticleTemplates/assets/js/modules/youtube', function () {
         expect(videoWrapper.classList.contains('hide-placeholder')).toEqual(false);
     });
 
-    it('initialiseVideos if scriptReady when videoPositionUpdate called', function () {
+    it('initialiseVideos if scriptReady when checkForVideos called', function () {
         var videoWrapper1 = getVideoWrapper('video1'),
             videoWrapper2 = getVideoWrapper('video2');
 
@@ -198,7 +198,7 @@ describe('ArticleTemplates/assets/js/modules/youtube', function () {
 
         container.appendChild(videoWrapper2);
 
-        youtube.videoPositionUpdate();
+        youtube.checkForVideos();
 
         expect(window.YT.players.length).toEqual(2);
     });

@@ -1,4 +1,7 @@
-const endpoint = GU.opts.campaignsUrl;
+import { initPositionPoller } from 'modules/cards';
+import { initMpuPoller } from 'modules/ads';
+  
+var endpoint = GU.opts.campaignsUrl;
 
 function init() {
     var campaign = document.querySelector('.campaign--snippet');
@@ -11,6 +14,11 @@ function initCampaign(campaign) {
     if (!navigator.onLine) {
         displayOfflineMessage(campaign);
     }
+
+    campaign.addEventListener('toggle', function() {
+        initPositionPoller();
+        initMpuPoller(0);
+    });
 
     window.addEventListener('online', hideOfflineMessage.bind(null, campaign));
     window.addEventListener('offline', displayOfflineMessage.bind(null, campaign));

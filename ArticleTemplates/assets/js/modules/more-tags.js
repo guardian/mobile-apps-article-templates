@@ -1,3 +1,6 @@
+import { initMpuPoller } from 'modules/ads';
+import { initPositionPoller } from 'modules/cards';
+
 const SHOW_TAGS = 5;
 let moreButton;
 let hiddenTags;
@@ -31,6 +34,8 @@ function show() {
         hiddenTags[i].classList.remove('hide-tags');
     }
 
+    initPositionPoller();
+    initMpuPoller(0);
     setTimeout(showTags, 200);
 }
 
