@@ -1,8 +1,6 @@
 import { getElementOffset } from 'modules/util';
 
 let existingRelatedContentPosition;
-let positionPoller = null;
-const maxPollInterval = 4000;
 let relatedContentElem;
 let shouldRun = false;
 
@@ -16,24 +14,14 @@ function init() {
     }
 
     setupGlobals();
-    initPositionPoller();
-    // on orientation change restart the position poller
-    window.addEventListener('orientationchange', initPositionPoller.bind(this, 0));
+    window.addEventListener('orientationchange', relatedContentPositionUpdate);
 }
 
-function initPositionPoller(time = 500) {
+function relatedContentPositionUpdate() {
     if (!shouldRun) {
         return;
     }
 
-    if (positionPoller !== null) {
-        window.clearTimeout(positionPoller);
-    }
-
-    poller(time);
-}
-
-function poller(interval) {
     const newRelatedContentPosition = getRelatedContentPosition();
 
     if (newRelatedContentPosition &&
@@ -43,11 +31,6 @@ function poller(interval) {
         window.webkit.messageHandlers.bodyMutationNotification.postMessage({rect: newRelatedContentPosition });
         existingRelatedContentPosition = newRelatedContentPosition;
     }
-
-    positionPoller = setTimeout(() => {
-        const pollInterval = interval < maxPollInterval ? interval + 500 : maxPollInterval;
-        poller(pollInterval);
-    }, interval);
 }
 
 function getRelatedContentPosition() {
@@ -71,4 +54,4 @@ function setupGlobals() {
     window.applyNativeFunctionCall('setRelatedContentHeight');
 }
 
-export { init, initPositionPoller };
+export { init, relatedContentPositionUpdate };
