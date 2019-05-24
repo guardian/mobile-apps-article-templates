@@ -1,85 +1,15 @@
-@mixin halfWidth {
-    width: calc(50% - 6px);
-    float: left;
-    margin: 12px 0;
-}
-
 .display-hint--photoEssay .prose {
-    // Makes sure that elements which come after the block of images are no longer floating
-    .element--halfWidth + p,
-    .element--halfWidth + blockquote,
-    .element--halfWidth + .element-pullquote:not(.element--halfWidth),
-    .element--halfWidth + .element-image:not(.element--halfWidth) {
-        clear: both;
-        margin-top: $gs-baseline / 2;
-    }
 
-    .element--halfWidth + h2 {
-        clear: both;
-    }
+    .figure-wide:not(.element--halfWidth) {
+        margin: base-px(0.5, 0);
 
-    figure.element-image.element--halfWidth,
-    aside.element-pullquote.element--halfWidth {
-        @include halfWidth;
-    }
-
-    figure.element-image.element--halfWidth {
-        clear: none;
-        margin-left: 3px;
-        margin-right: 3px;
-    }
-
-    figure.element-image.element--halfWidth + figure.element-image.element--halfWidth--odd + figure.element-image.element--halfWidth {
-        clear: both;
-    }
-
-    aside.element-pullquote.element--halfWidth {
-        clear: both;
-    }
-
-    aside.element-pullquote {
-        margin: $gs-baseline * 2 0;
-    }
-
-    aside.element-pullquote:not(.element--halfWidth) {
-        @include mq($from: col2) {
-            padding-right: $gs-baseline / 2;
-            max-width: 100%;
+        @include mq($to: col2) {
+            margin: base-px(0.5, -1);
         }
     }
-
-    figure.element-image.element--halfWidth + aside.element-pullquote {
-        top: $gs-baseline / 2;
-    }
-}
-
-.display-hint--photoEssay .prose {
-    figure.element-image figcaption {
-        display: none;
-    }
-}
-
-.display-hint--photoEssay .prose,
-.display-hint--articleImmersive .prose {
 
     figure.element-image + ul {
-        clear: both;
-        list-style: none;
-        position: relative;
-        margin-top: -$gs-baseline;
-        padding-left: 3px;
-        padding-right: 3px;
-    }
-
-    figure.element-image.figure-wide:not(.element--halfWidth) + ul {
-        @include mq($from: col4) {
-            clear: none;
-            padding-left: 0;
-            padding-right: 0;
-            margin-left: 0;
-            margin-right: 0;
-            width: 100%;
-        }
+        margin: base-px(0.5, 0, 1, 0);
     }
 
     figure.element-image + ul li {
@@ -89,67 +19,33 @@
         color: color(brightness-46);
         font-family: $guardian-sans;
         border-bottom: 1px dotted rgba(color(brightness-60), .4);
-        padding: base-px(1, 0, .5, 0);
-        display: block;
-        margin: 0;
-    }
+        top: 0px;
+        width: 100%;
+        padding-bottom: 3px;
 
-    figure.element-image.element--halfWidth + ul li {
-        padding-top: 0;
-    }
-
-    figure.element-image + ul li::before {
-        font-family: $icon;
-        content: '\e044';
-        background: none;
-        border: 0;
-        height: auto;
-        width: auto;
-        position: relative;
-        top: 2px;
-    }
-
-    figure.element-image.figure-wide.element--showcase {
-        @include mq($from: col4) {
-            float: none;
-
-            .figure__inner {
-                float: left;
-                margin-bottom: 10px;
-                margin-left: -240px;
-                width: 860px;
-            }
+        &::before {
+            display: none;
         }
     }
 
-    figure.element-image.figure-wide.element--showcase + ul {
-        @include mq($from: col4) {
-            display: inline-block;
-            float: left;
-            margin-left: -240px;
-            margin-top: 0;
-            padding: 0 $gs-baseline;
-            width: 220px;
+    .element--halfWidth {
+        width: calc(50% - 3px);
+        float: left;
+        margin-top: 0;
+        margin-bottom: 6px;
+
+        & + p,
+        & + h2,
+        & + blockquote {
             clear: both;
-            li {
-                padding-left: 0;
-                padding-top: 0;
-                padding-right: 0;
-                padding-bottom: $gs-baseline;
-            }
         }
     }
 
-    figure.element-image.figure-wide.element--showcase + ul + figure.element--halfWidth {
-        @include mq($from: col4) {
-            clear: none;
-        }
+    .element--halfWidth.element--halfWidth--odd {
+        margin-left: 6px;
     }
 
-    figure.element-image.figure-wide.element--showcase + ul + figure.element-image.figure-wide:not(.element--showcase):not(.element--immersive) {
-        @include mq($from: col4) {
-            float: left;
-            clear: none;
-        }
+    figcaption {
+        display: none;
     }
 }
