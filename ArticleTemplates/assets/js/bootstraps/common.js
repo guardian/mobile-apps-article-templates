@@ -705,12 +705,12 @@ function notifyNativeLayers() {
     observer.observe(targetNode, config);
 }
 
-function sendUpdatesToNative(mutationsList, observer, interval = 50) {
+function sendUpdatesToNative(mutationsList, observer, interval = 150) {
     bodyHeightChange();
     if (mutationTimeout) {
         clearTimeout(mutationTimeout);
     }
-    mutationTimeout = setTimeout(sendUpdatesToNative.bind(null, null, null, interval + 50), interval);
+    mutationTimeout = setTimeout(sendUpdatesToNative.bind(null, null, null, interval + 150), interval);
 }
 
 function bodyHeightChange() {
