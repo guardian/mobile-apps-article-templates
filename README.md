@@ -22,7 +22,6 @@ $ cd mobile-apps-article-templates
 $ npm install
 ```
 
-## Mobile apps developers
 If you are developing against a branch of `mobile-apps-article-templates` which is not `master`:
 
 ### Building locally iOS
