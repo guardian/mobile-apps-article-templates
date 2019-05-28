@@ -13,6 +13,7 @@ import { init as initMoreTags } from 'modules/more-tags';
 import { init as initRichLinks } from 'modules/rich-links';
 import { init as initAB } from 'modules/experiments/ab';
 import { initMpuPoller } from 'modules/ads';
+import { init as initHttp, GET } from 'modules/http';
 
 let trackCommentContainerView = true;
         
@@ -42,6 +43,7 @@ function init() {
     setupTracking(); // track common events
     initAB();
     initRichLinks();
+    initHttp();
     setupForms();
 
     if (!document.body.classList.contains('no-ready')) {
