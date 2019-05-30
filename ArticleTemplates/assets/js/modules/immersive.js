@@ -1,21 +1,14 @@
 import { getElementOffset, debounce } from 'modules/util';
 
-function formatImmersive() {
-    if (GU.opts.platform !== 'ios') {
-        adjustHeaderImageHeight();
+function addDropCapToNextElementSibling(element) {
+    const nextParagraphSibling = element.nextElementSibling;
+
+    if (nextParagraphSibling &&
+        nextParagraphSibling.tagName === 'P' &&
+        nextParagraphSibling.firstChild &&
+        nextParagraphSibling.firstChild.tagName !== 'STRONG') {
+        nextParagraphSibling.classList.add('has__dropcap');
     }
-
-    // find all the section seperators & add classes
-    addClassesToSectionSeparators();
-
-    // for each element--immersive add extra classes depending on siblings
-    addClassesToElementImmersives();
-
-    // store all pullquotes top offset for later
-    movePullQuotes();
-
-    // attach event handlers
-    attachImmersiveEventHandlers();
 }
 
 function addClassesToSectionSeparators() {
@@ -31,17 +24,6 @@ function addClassesToSectionSeparators() {
             header.classList.add('section__rule');
             addDropCapToNextElementSibling(header);
         }
-    }
-}
-
-function addDropCapToNextElementSibling(element) {
-    const nextParagraphSibling = element.nextElementSibling;
-
-    if (nextParagraphSibling &&
-        nextParagraphSibling.tagName === 'P' &&
-        nextParagraphSibling.firstChild &&
-        nextParagraphSibling.firstChild.tagName !== 'STRONG') {
-        nextParagraphSibling.classList.add('has__dropcap');
     }
 }
 
@@ -85,23 +67,6 @@ function movePullQuotes() {
     }
 }
 
-function attachImmersiveEventHandlers() {
-    let i;
-    let quoteOverlay;
-    const quoteOverlays = document.getElementsByClassName('quote--overlay');
-
-    for (i = 0; i < quoteOverlays.length; i++) {
-        quoteOverlay = quoteOverlays[i];
-        quoteOverlay.addEventListener('click', onQuoteOverlayClick.bind(null, quoteOverlay));
-    }
-
-    window.addEventListener('scroll', debounce(onImmersiveScroll, 10));
-
-    if (GU.opts.platform !== 'ios') {
-        window.addEventListener('resize', debounce(adjustHeaderImageHeight, 100));
-    }
-}
-
 function onQuoteOverlayClick(quoteOverlay, evt) {
     let figcaption;
 
@@ -137,6 +102,13 @@ function onImmersiveScroll() {
     }
 }
 
+function getImageHeight() {
+    const viewPortHeight = document.documentElement.clientHeight;
+    const marginTop = document.body.style.marginTop.replace('px', '');
+
+    return viewPortHeight - marginTop;
+}
+
 function adjustHeaderImageHeight() {
     let embed;
     const headerContainer = document.querySelector('.article__header-bg, .article__header-bg .element > iframe');
@@ -152,11 +124,39 @@ function adjustHeaderImageHeight() {
     }
 }
 
-function getImageHeight() {
-    const viewPortHeight = document.documentElement.clientHeight;
-    const marginTop = document.body.style.marginTop.replace('px', '');
+function attachImmersiveEventHandlers() {
+    let i;
+    let quoteOverlay;
+    const quoteOverlays = document.getElementsByClassName('quote--overlay');
 
-    return viewPortHeight - marginTop;
+    for (i = 0; i < quoteOverlays.length; i++) {
+        quoteOverlay = quoteOverlays[i];
+        quoteOverlay.addEventListener('click', onQuoteOverlayClick.bind(null, quoteOverlay));
+    }
+
+    window.addEventListener('scroll', debounce(onImmersiveScroll, 10));
+
+    if (GU.opts.platform !== 'ios') {
+        window.addEventListener('resize', debounce(adjustHeaderImageHeight, 100));
+    }
+}
+
+function formatImmersive() {
+    if (GU.opts.platform !== 'ios') {
+        adjustHeaderImageHeight();
+    }
+
+    // find all the section seperators & add classes
+    addClassesToSectionSeparators();
+
+    // for each element--immersive add extra classes depending on siblings
+    addClassesToElementImmersives();
+
+    // store all pullquotes top offset for later
+    movePullQuotes();
+
+    // attach event handlers
+    attachImmersiveEventHandlers();
 }
 
 function init() {

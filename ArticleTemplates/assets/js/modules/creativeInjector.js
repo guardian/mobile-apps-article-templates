@@ -1,10 +1,23 @@
-import { debounce, isOnline, signalDevice, isElementPartiallyInViewport } from 'modules/util';
+import {
+    debounce,
+    isOnline,
+    signalDevice,
+    isElementPartiallyInViewport
+} from 'modules/util';
 
 const trackedImpressions = [];
 
-function init() {
-    window.injectCreative = injectCreative;
-    window.applyNativeFunctionCall('injectCreative');
+function isCreativeInView(creativeContainer, id) {
+    const messageName = `creative_impression/${id}`;
+
+    if (!trackedImpressions.includes(id) && isElementPartiallyInViewport(creativeContainer)) {
+        signalDevice(messageName);
+        trackedImpressions.push(id);
+    }
+}
+
+function addEventListenerScroll(creativeContainer, id) {
+    window.addEventListener('scroll', debounce(isCreativeInView.bind(null, creativeContainer, id), 100));
 }
 
 function trackLiveBlogEpic() {
@@ -24,10 +37,33 @@ function trackLiveBlogEpic() {
     }
 }
 
-function injectCreative(html, css, id, type) {
-    if (isOnline() && !document.getElementById(id)) {
-        injectCSS(css);
-        injectHTML(html, id, type);
+function injectInlineCreative(creativeContainer, minParagraphs) {
+    let i;
+    let prose = document.querySelector('.article__body > div.prose');
+    let paragraphs = prose.querySelectorAll('.advert-slot--mpu ~ p');
+
+    // Don't show creative if less than 10 paragraphs
+    if (document.querySelectorAll('.article__body > div.prose > p').length < minParagraphs) {
+        return;
+    }
+
+    // Insert creative two paragraphs below advert
+    // Insert creativeContainer if paragraph is followed by a p or h1 elem
+    for (i = 1; i < paragraphs.length; i++) {
+        if (paragraphs[i].nextElementSibling &&
+            (paragraphs[i].nextElementSibling.tagName === 'P' || paragraphs[i].nextElementSibling.tagName === 'H1')) {
+            const nextSibling = paragraphs[i].nextElementSibling;
+            nextSibling.parentNode.insertBefore(creativeContainer, nextSibling);
+            break;
+        }
+    }
+}
+
+function injectEpicCreative(creativeContainer) {
+    const prose = document.querySelector('.article__body > div.prose');
+
+    if (prose) {
+        prose.appendChild(creativeContainer);
     }
 }
 
@@ -43,10 +79,6 @@ function injectCSS(css) {
     }
 
     document.head.appendChild(style);
-}
-
-function addEventListenerScroll(creativeContainer, id) {
-    window.addEventListener('scroll', debounce(isCreativeInView.bind(null, creativeContainer, id), 100));
 }
 
 function injectHTML(html, id, type) {
@@ -66,42 +98,16 @@ function injectHTML(html, id, type) {
     addEventListenerScroll(creativeContainer, id);
 }
 
-function injectInlineCreative(creativeContainer, minParagraphs) {
-    let i;
-    let prose = document.querySelector('.article__body > div.prose');
-    let paragraphs = prose.querySelectorAll('.advert-slot--mpu ~ p');
-
-     // Don't show creative if less than 10 paragraphs
-    if (document.querySelectorAll('.article__body > div.prose > p').length < minParagraphs) {
-        return;
-    }
-
-    // Insert creative two paragraphs below advert
-    // Insert creativeContainer if paragraph is followed by a p or h1 elem
-    for (i = 1; i < paragraphs.length; i++) {
-        if (paragraphs[i].nextElementSibling &&
-            (paragraphs[i].nextElementSibling.tagName === 'P' || paragraphs[i].nextElementSibling.tagName === 'H1')) {
-            paragraphs[i].nextElementSibling.parentNode.insertBefore(creativeContainer, paragraphs[i].nextElementSibling);
-            break;
-        }
+function injectCreative(html, css, id, type) {
+    if (isOnline() && !document.getElementById(id)) {
+        injectCSS(css);
+        injectHTML(html, id, type);
     }
 }
 
-function injectEpicCreative(creativeContainer) {
-    const prose = document.querySelector('.article__body > div.prose');
-
-    if (prose) {
-        prose.appendChild(creativeContainer);
-    }
-}
-
-function isCreativeInView(creativeContainer, id) {
-    const messageName = `creative_impression/${id}`;
-
-    if (!trackedImpressions.includes(id) && isElementPartiallyInViewport(creativeContainer)) {
-        signalDevice(messageName);
-        trackedImpressions.push(id);
-    }
+function init() {
+    window.injectCreative = injectCreative;
+    window.applyNativeFunctionCall('injectCreative');
 }
 
 export { init, trackLiveBlogEpic };
