@@ -1,8 +1,54 @@
 import { getElementOffset } from 'modules/util';
 
-let existingPosition;
+let existingRelatedContentPosition;
+let positionPoller = null;
+const maxPollInterval = 4000;
 let relatedContentElem;
 let shouldRun = false;
+
+function init() {
+    relatedContentElem = document.querySelector('.related-content');
+
+    if (relatedContentElem && GU.opts.platform === 'ios') {
+        shouldRun = true;
+    } else {
+        return;
+    }
+
+    setupGlobals();
+    initPositionPoller();
+    // on orientation change restart the position poller
+    window.addEventListener('orientationchange', initPositionPoller.bind(this, 0));
+}
+
+function initPositionPoller(time = 500) {
+    if (!shouldRun) {
+        return;
+    }
+
+    if (positionPoller !== null) {
+        window.clearTimeout(positionPoller);
+    }
+
+    poller(time);
+}
+
+function poller(interval) {
+    const newRelatedContentPosition = getRelatedContentPosition();
+
+    if (newRelatedContentPosition &&
+        (JSON.stringify(newRelatedContentPosition) !== JSON.stringify(existingRelatedContentPosition)) &&
+        (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.bodyMutationNotification)
+    ) {
+        window.webkit.messageHandlers.bodyMutationNotification.postMessage({rect: newRelatedContentPosition });
+        existingRelatedContentPosition = newRelatedContentPosition;
+    }
+
+    positionPoller = setTimeout(() => {
+        const pollInterval = interval < maxPollInterval ? interval + 500 : maxPollInterval;
+        poller(pollInterval);
+    }, interval);
+}
 
 function getRelatedContentPosition() {
     if (relatedContentElem) {
@@ -25,39 +71,4 @@ function setupGlobals() {
     window.applyNativeFunctionCall('setRelatedContentHeight');
 }
 
-function hasBodyMutation() {
-    return window.webkit &&
-        window.webkit.messageHandlers &&
-        window.webkit.messageHandlers.bodyMutationNotification;
-}
-
-function relatedContentPositionUpdate() {
-    if (!shouldRun) {
-        return;
-    }
-
-    const newPosition = getRelatedContentPosition();
-
-    if (newPosition &&
-        (JSON.stringify(newPosition) !== JSON.stringify(existingPosition)) &&
-        hasBodyMutation()
-    ) {
-        window.webkit.messageHandlers.bodyMutationNotification.postMessage({ rect: newPosition });
-        existingPosition = newPosition;
-    }
-}
-
-function init() {
-    relatedContentElem = document.querySelector('.related-content');
-
-    if (relatedContentElem && GU.opts.platform === 'ios') {
-        shouldRun = true;
-    } else {
-        return;
-    }
-
-    setupGlobals();
-    window.addEventListener('orientationchange', relatedContentPositionUpdate);
-}
-
-export { init, relatedContentPositionUpdate };
+export { init, initPositionPoller };
