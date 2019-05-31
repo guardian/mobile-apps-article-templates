@@ -22,9 +22,7 @@ $ cd mobile-apps-article-templates
 $ npm install
 ```
 
-If you are developing against a branch of `mobile-apps-article-templates` which is not `master`:
-
-### Building locally iOS
+### Running on iOS simulator
 * Checkout the branch you are developing against
 * Run `npm run build`
 * Checkout the [`ios-live`](https://github.com/guardian/ios-live/) project
@@ -35,7 +33,7 @@ If you are developing against a branch of `mobile-apps-article-templates` which 
 }
 ```
 
-### Building locally Android
+### Running on Android simulator
 * Checkout the branch you are developing against
 * Run `npm run build`
 * Checkout the [`android-news-app/`](https://github.com/guardian/android-news-app) project
@@ -46,7 +44,7 @@ If you are developing against a branch of `mobile-apps-article-templates` which 
 }
 ```
 
-### Building from s3
+### Building from s3 (iOS or Android)
 * Find the branch you want to test on [teamCity](https://teamcity.gutools.co.uk/viewType.html?buildTypeId=Apps_Templates_TemplatesS3v2)
 * Click run to build the branch and upload to s3
 * You can find the s3 package in `bundle-url.txt` under `artifacts`
