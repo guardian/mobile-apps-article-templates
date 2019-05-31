@@ -44,7 +44,7 @@ $ npm install
 }
 ```
 
-### Building from s3 (iOS or Android)
+### Building from S3 (iOS or Android)
 * Find the branch you want to test on [teamCity](https://teamcity.gutools.co.uk/viewType.html?buildTypeId=Apps_Templates_TemplatesS3v2)
 * Click run to build the branch and upload to s3
 * You can find the s3 package in `bundle-url.txt` under `artifacts`
