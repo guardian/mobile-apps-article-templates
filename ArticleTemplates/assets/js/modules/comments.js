@@ -76,7 +76,7 @@ function commentsReplyFormatting() {
             }
         }
 
-        discussionThread.classList.add('block--discussion-thread--checked');
+        thread.classList.add('block--discussion-thread--checked');
     }
 }
 
