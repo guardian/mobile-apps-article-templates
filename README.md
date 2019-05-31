@@ -34,8 +34,6 @@ If you are developing against a branch of `mobile-apps-article-templates` which 
     "@guardian/mobile-apps-article-templates": "file:../mobile-apps-article-templates"
 }
 ```
-* Run the app in Xcode
-
 
 ### Building locally Android
 * Checkout the branch you are developing against
@@ -47,7 +45,6 @@ If you are developing against a branch of `mobile-apps-article-templates` which 
     "@guardian/mobile-apps-article-templates": "../../mobile-apps-article-templates"
 }
 ```
-* Run the app in Android Studio
 
 ### Building from s3
 * Find the branch you want to test on [teamCity](https://teamcity.gutools.co.uk/viewType.html?buildTypeId=Apps_Templates_TemplatesS3v2)
