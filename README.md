@@ -61,3 +61,18 @@ NPM will provide the following services:
 * `npm run test` runs the JS unit tests from the `test/spec/unit/` directory
 * `npm run build` builds JS/CSS assets, used on CI environment for building assets
 * `npm run dev` builds JS and CSS (with source maps).
+
+## Example templates
+These are examples of the main templates used across apps:
+
+| Template | Article |
+| --- | --- |
+| Article | https://www.theguardian.com/cities/2019/may/31/madrid-set-to-end-clean-air-project-in-rightwing-power-switch |
+| Podcast | https://www.theguardian.com/news/audio/2019/may/31/trump-coming-to-see-the-queen-but-what-actually-happens-on-a-state-visit-podcast |
+| Video | https://www.theguardian.com/global/video/2019/may/17/labours-laura-parker-farage-winning-would-be-uks-worst-legacy |
+| Gallery | https://www.theguardian.com/film/gallery/2019/may/30/the-horror-apocalypse-now-unseen-in-pictures |
+| Immersive | https://www.theguardian.com/sport/2019/may/31/i-wouldnt-be-the-refugee-id-be-the-girl-who-kicked-ass-how-taekwondo-made-me |
+| Liveblog | https://www.theguardian.com/sport/live/2019/may/31/west-indies-v-pakistan-cricket-world-cup-2019-live |
+| Immersive interactive | https://www.theguardian.com/us-news/ng-interactive/2019/may/29/chemical-checkout-what-might-be-hiding-in-your-groceries |
+| Photo essay | https://www.theguardian.com/society/2019/may/31/amish-on-holiday-sarasota-florida-dina-litovsky-photo-essay |
+| Guardian labs | https://www.theguardian.com/behind-every-great-holiday/2019/apr/23/the-a-list-the-top-10-things-to-do-in-california |
