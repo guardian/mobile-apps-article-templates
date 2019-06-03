@@ -69,6 +69,9 @@ module.exports = (env, argv) => {
         ]
       },
       plugins: [
+        new webpack.optimize.LimitChunkCountPlugin({
+          maxChunks: 1,
+        }),
         new webpack.DefinePlugin({
           BUILD_NUMBER: process.env.BUILD_NUMBER || 0
         }),
