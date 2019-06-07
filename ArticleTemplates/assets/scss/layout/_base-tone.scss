@@ -9,8 +9,6 @@ body {
             background-color: color(brightness-100);
 
             @include mq($from: col4) {
-                background-color: color(brightness-96);
-
                 .section,
                 .article-kicker,
                 .headline,
@@ -18,6 +16,12 @@ body {
                 .meta {
                     background-color: color(brightness-100);
                 }
+            }
+        }
+
+        .article__header {
+            @include mq($from: col4) {
+                background-color: color(brightness-96);
             }
         }
     }
