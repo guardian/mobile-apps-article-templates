@@ -302,14 +302,18 @@
         .byline__author,
         .byline__author a,
         .touch-gallery__caption__caption a,
-        .gallery-caption a {
+        .gallery-caption a,
+        .sponsorship__about-uri {
             color: $kicker;
         }
 
         // in-article
-        .prose,
-        .standfirst {
+        .prose {
             @include text-underline($kicker, $feature);
+        }
+
+        .standfirst {
+            @include text-underline($kicker, $feature, $bottom-space: 0);
         }
 
         table {
