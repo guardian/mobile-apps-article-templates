@@ -168,7 +168,7 @@
 // */
 
 .comment {
-    font-family: $agate-sans;
+    font-family: $guardian-sans;
     @include body();
 
     // Open
@@ -218,6 +218,7 @@
     @include mq($from: col3) {
         width: cols($base-4, 5, 1);
         float: left;
+        overflow: hidden;
     }
 
     .avatar--user {
@@ -258,7 +259,7 @@
     }
 
     &__title {
-        line-height: 22px;
+        line-height: 30px;
         vertical-align: top;
         margin-left: 2px;
     }
@@ -268,7 +269,7 @@
 }
 
 .comment__pick {
-    line-height: 22px;
+    line-height: 28px;
     vertical-align: top;
     margin-left: 2px;
 }
@@ -314,7 +315,7 @@
 
 .comment__timestamp {
     color: color(brightness-60);
-    font-family: $agate-sans;
+    font-family: $guardian-sans;
     @include meta();
     display: block;
     white-space: nowrap;
@@ -354,9 +355,9 @@
     .touchpoint__label {
         color: color(brightness-60);
         font-weight: normal;
+        margin-top: 4px;
 
         @include mq($from: col2) {
-            margin-top: 1px;
             padding: 0;
             display: block;
             text-align: center;

@@ -114,7 +114,7 @@
 
 %meta-agata {
     @include meta;
-    font-family: $agate-sans;
+    font-family: $guardian-sans;
 }
 
 %meta-title-mq {
@@ -167,12 +167,6 @@
         @include mq($from: col4) {
             min-height: 50px;
             width: 100% !important;
-
-            ul {
-                display: block;
-                margin: 0 auto 0 228px;
-                width: 620px;
-            }
         }
     }
 }
@@ -202,12 +196,6 @@
         .meta__misc {
             padding-bottom: 0;
             padding-top: 0;
-
-            @include mq($from: col4) {
-                display: block;
-                margin: 0 auto 0 240px;
-                width: 620px;
-            }
         }
 
         .meta__pubdate {
@@ -236,8 +224,6 @@
             a:active {
                 color: color(brightness-100);
             }
-
-
         }
     }
 }
@@ -318,7 +304,6 @@
     .cricket-inning-draw &,
     .cricket-inning-delay &,
     .cricket-inning-abandoned &,
-    .cricket-inning-tea &,
     .cricket-inning-rain-delay & {
         display: none;
     }
@@ -342,8 +327,6 @@
     white-space: nowrap;
     overflow: hidden;
 
-    //TODO .cricket-inning-tea looks like a typo - find out what this means
-    .cricket-inning-tea &:before,
     .cricket-inning-rain-delay &:before {
         content: '';
         display: inline-block;
@@ -351,11 +334,6 @@
         height: 21px;
         background: url('../img/cricket-dismissal.png');
         background-repeat: no-repeat;
-    }
-
-    .cricket-inning-tea &:before {
-        background-size: auto 39px;
-        background-position: -2px -18px;
     }
 
     .cricket-inning-rain-delay &:before {

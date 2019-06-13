@@ -23,14 +23,14 @@
 // */
 
 .more {
-    padding: base-px(1, 0, 2, 0);
+    padding: base-px(2, 0);
 
     .more__label,
     .more__button {
         display: inline-block;
         vertical-align: middle;
         color: color(brightness-100);
-        font-family: $agate-sans;
+        font-family: $guardian-sans;
         font-weight: bold;
         @include body(.875);
         padding: base-px(.5, 1.5, .5, 1.166);
@@ -58,8 +58,11 @@
     .more__icon {
         display: inline-block;
         padding: base-px(0, .5);
+    }
+
+    .more__text {
         vertical-align: top;
-        margin-top: -1px;
+        margin-top: 2px;
     }
 }
 
@@ -84,7 +87,13 @@
 // View more live/dead blog updates
 .more--live-blogs {
     border-bottom: 1px dotted color(tone-sandy-light);
+}
 
+.more--live-blogs-blocks {
+    text-align: center;
+}
+
+.more--live-blogs, .more--live-blogs-blocks {
     @include mq($to: col2) {
         margin: base-px(0, 1);
     }

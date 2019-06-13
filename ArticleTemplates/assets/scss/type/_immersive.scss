@@ -9,36 +9,6 @@
         }
     }
 
-    // progress bar at top of article
-    .progress {
-        background-color: rgba(255, 255, 255, .8);
-        height: 6px;
-        position: fixed;
-        top: 0px;
-        width: 100%;
-        z-index: 2;
-
-        @include mq($from: col4) {
-            overflow: hidden;
-            width: 1200px;
-        }
-
-        &__bar {
-            background-color: color(tone-feature1-accent);
-            height: 6px;
-            margin-top: 0px;
-            width: 0;
-        }
-
-        &__chapter {
-            background-color: color(tone-feature1-accent2);
-            height: 6px;
-            position: absolute;
-            top: 0;
-            width: 2px;
-        }
-    }
-
     .article {
         &__header {
             &-info {
@@ -119,6 +89,8 @@
             position: relative;
             z-index: 10;
             width: calc(100% - 32px);
+            min-height: 120px;
+            z-index: 25;
 
             .article__series > a {
                 padding: 8px 0;
@@ -266,7 +238,7 @@
         }
 
         a {
-            display: inline-block;
+            display: inline;
 
             &:active {
                 border-color: color(tone-feature1-accent);
@@ -282,7 +254,7 @@
 
     .immersive__meta {
         color: color(brightness-46);
-        font: 1.6rem/1.4rem $agate-sans;
+        font: 1.8rem/1.4rem $guardian-sans;
         padding: base-px(0, 1, 2, 1);
 
         @include mq($from: col4) {
@@ -368,10 +340,6 @@
                 margin-left: -240px;
                 padding-left: 240px;
             }
-
-            // + p.has__dropcap {
-            //     @include immersive-dropcap(color(tone-feature1));
-            // }
         }
 
         .section__header {
@@ -395,10 +363,6 @@
             + p {
                 margin-top: 0;
             }
-
-            // + p.has__dropcap {
-            //     @include immersive-dropcap(color(tone-feature1));
-            // }
         }
 
         .quote--image {
@@ -577,6 +541,8 @@
                 }
 
                 figcaption {
+                    padding: base-px(.125, 0);
+
                     @include mq($from: col2) {
                         clear: both;
                         border: 0;

@@ -27,12 +27,24 @@ figure {
 
     figcaption {
         color: color(brightness-46);
-        font-family: $agate-sans;
+        font-family: $guardian-sans;
         font-size: 1.4rem;
-        line-height: 1.6rem;
-        padding: base-px(0.25, 1);
+        line-height: 1.8rem;
         @include mq($from: col2) {
             padding: 0;
+        }
+    }
+
+    &.element--supporting,
+    &.element-interactive {
+        figcaption {
+            padding: base-px(0.125, 0);
+        }
+    }
+
+    &.figure-wide {
+        figcaption {
+            padding: base-px(0.125, 1);
         }
     }
 
@@ -46,10 +58,10 @@ figure {
     margin: base-px(1, 0);
 
     .figure__inner {
-        background: color(tone-sandy-light);
+        background: color(brightness-93);
     }
 
-    //for when these are displayed in the main media area (at the top we don't need these margins)
+    // for when these are displayed in the main media area (at the top we don't need these margins)
     .main-media & {
         margin: 0;
     }
@@ -90,26 +102,30 @@ figure {
 
     figcaption {
         font-size: 1.4rem;
-        line-height: 1.6rem;
+        line-height: 1.8rem;
     }
 
     .element-image-inner {
         height: 100%;
-        background: color(tone-sandy-light);
+        background: color(brightness-96);
     }
 }
 
 .figure--thumbnail {
     float: left;
-    max-width: 65px; //fixed width throughout
+    max-width: 33.33%;
     margin: 6px 13px 0 0;
 
+    @include mq($from: col4) {
+        max-width: 140px;
+    }
+
     .prose & {
-        //extra specificity for overiding style to override styles in prose
+        // extra specificity for overiding style to override styles in prose
         margin-top: 6px;
 
         @include mq($from: col4) {
-            margin-left: -80px;
+            margin-left: -180px;
         }
     }
 
@@ -124,7 +140,7 @@ figure {
     display: block;
     float: left;
     clear: left;
-    margin: 8px 8px 8px 0;
+    margin: base-px(.5, .75, .5, 0);
     width: 50%;
 
     .figure__inner {
@@ -148,7 +164,6 @@ figure {
 
         &.portrait-thumbnail {
             position: relative;
-            margin-bottom: 12px;
 
             .element-image__caption {
                 @include text-ellipses(10);
@@ -178,13 +193,12 @@ figure {
 
 .youtube-sdk-caption {
     font-size: 1.4rem;
-    line-height: 1.6rem;
+    line-height: 1.8rem;
     color: color(brightness-46);
-    font-family: "Guardian Agate Sans 1 Web", sans-serif;
+    font-family: $guardian-sans;
     margin: 0;
-    padding: 0;
+    padding: 3px 0;
     display: inline-block;
-    margin-right: 3px;
 }
 
 .ios {
@@ -197,11 +211,8 @@ figure {
 
 .element-embed {
     .js-email-sub__iframe + figcaption {
-        margin-bottom: 8px;
-
-        @include mq($to: col2) {
-            text-align: center;
-        }
+        margin-bottom: 12px;
+        padding: 0;
 
         strong {
             font-weight: normal;

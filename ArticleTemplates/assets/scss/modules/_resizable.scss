@@ -20,6 +20,27 @@
     }
 }
 
+.resizable-media {
+    .garnett--type-media[data-content-type='gallery'] & {
+        font-size: 1.6rem;
+        line-height: 2.0rem;
+    }
+
+    @for $i from 1 through 3 {
+        .garnett--type-media.font-size-#{$i} & {
+            font-size: 60% + ($i * 10%);
+            line-height: 1.6rem + ($i * 0.1rem);
+        }
+    }
+
+    @for $i from 5 through 10 {
+        .garnett--type-media.font-size-#{$i} & {
+            font-size: 60% + ($i * 10%);
+            line-height: 1.6rem + ($i * 0.2rem);
+        }
+    }
+}
+
 .resizable-line-height {
     @for $i from 0 through 10 {
         .line-height-#{$i} & {

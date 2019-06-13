@@ -10,9 +10,7 @@ describe('ArticleTemplates/assets/js/modules/twitter', function () {
         document.body.appendChild(container);
 
         window.GU = {
-            opts: {
-                isMinute: false
-            }
+            opts: {}
         };
 
         jest.spyOn(util, 'debounce').mockImplementation(() => jest.fn());
@@ -39,22 +37,6 @@ describe('ArticleTemplates/assets/js/modules/twitter', function () {
             init();
 
             expect(document.querySelectorAll('#twitter-widget').length).toEqual(0);
-        });
-
-        it('adds twitter script if not the minute and js-tweet tweet on page', function () {
-            container.innerHTML = '<blockquote class="js-tweet"></blockquote>';
-
-            init();
-
-            expect(document.querySelectorAll('#twitter-widget').length).toEqual(1);
-        });
-
-        it('adds twitter script if not the minute and twitter-tweet tweet on page', function () {
-            container.innerHTML = '<blockquote class="twitter-tweet"></blockquote>';
-
-            init();
-
-            expect(document.querySelectorAll('#twitter-widget').length).toEqual(1);
         });
 
         it('add scroll event listener to enhances tweets on scroll', function () {

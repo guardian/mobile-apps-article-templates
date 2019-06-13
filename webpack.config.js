@@ -68,6 +68,9 @@ module.exports = (env, argv) => {
         ]
       },
       plugins: [
+        new webpack.optimize.LimitChunkCountPlugin({
+          maxChunks: 1,
+        }),
         new webpack.DefinePlugin({
           BUILD_NUMBER: process.env.BUILD_NUMBER || 0
         }),
@@ -78,7 +81,15 @@ module.exports = (env, argv) => {
         {
           from: 'ArticleTemplates/assets/js/modules/mobile-range-slider.js',
           to: path.resolve(__dirname, 'ArticleTemplates/assets/build'),
-        }, 
+        },
+        {
+          from: './node_modules/intersection-observer/intersection-observer.js',
+          to: path.resolve(__dirname, 'ArticleTemplates/assets/build'),
+        },
+        {
+          from: './node_modules/classlist-polyfill/src/index.js',
+          to: path.resolve(__dirname, 'ArticleTemplates/assets/build/classlist-polyfill'),
+        },
         {
           from: './node_modules/smooth-scroll/dist/smooth-scroll.polyfills.min.js',
           to: path.resolve(__dirname, 'ArticleTemplates/assets/build'),

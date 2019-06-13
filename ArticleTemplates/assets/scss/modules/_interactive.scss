@@ -13,13 +13,17 @@
 
 body[data-fullscreen-interactive] {
     margin: 0;
+
+    a {
+        text-decoration: none;
+    }
 }
 
 .interactive--offline {
     background-color: color(brightness-96);
     text-align: center;
     padding: 1px 0;
-    font-family: $agate-sans;
+    font-family: $guardian-sans;
     @include meta();
     color: color(brightness-46);
     clear: both;
@@ -100,4 +104,15 @@ body[data-fullscreen-interactive] {
 @-webkit-keyframes fadeIn {
     from {opacity: 0;}
     to {opacity: 1;}
+}
+
+// Hide interactive nav - Content funding on the Guardian
+.element-interactive .nav_wrapper.element {
+    display: none;
+}
+
+body[data-fullscreen-interactive] {
+    .element-interactive .nav_wrapper.element {
+        display: initial;
+    }
 }

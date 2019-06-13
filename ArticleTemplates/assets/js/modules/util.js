@@ -1,14 +1,3 @@
-function isElementInViewport(el) {
-    const rect = el.getBoundingClientRect();
-
-    return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-}
-
 function isElementPartiallyInViewport(el) {
     const rect = el.getBoundingClientRect();
     const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
@@ -82,14 +71,6 @@ function getStringFromUnicodeVal(unicodeVal) {
     return String.fromCharCode(unicodeVal);
 }
 
-function getLocalStorage(key) {
-    return localStorage.getItem(key);
-}
-
-function setLocalStorage(key, value) {
-    localStorage.setItem(key, value);
-}
-
 function debounce(func, wait, immediate) {
     let args;
     let callNow;
@@ -144,8 +125,13 @@ function insertAfter(newNode, referenceNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
+function getAndroidVersion() {
+    const ua = navigator.userAgent.toLowerCase();
+    const match = ua.match(/android\s([0-9\.]*)/);
+    return match ? match[1] : undefined;
+};
+
 export {
-    isElementInViewport,
     isElementPartiallyInViewport,
     getElementOffset,
     signalDevice,
@@ -154,10 +140,9 @@ export {
     getClosestParentWithTag,
     getClosestParentWithData,
     getStringFromUnicodeVal,
-    getLocalStorage,
-    setLocalStorage,
     debounce,
     getElemsFromHTML,
     append,
-    insertAfter
+    insertAfter,
+    getAndroidVersion
 };

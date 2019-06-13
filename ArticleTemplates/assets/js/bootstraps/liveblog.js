@@ -1,5 +1,5 @@
 import { init as initRelativeDates } from 'modules/relativeDates';
-import { init as initTwitter, checkForTweets } from 'modules/twitter';
+import { init as initTwitter, checkForTweets, enhanceTweets } from 'modules/twitter';
 import { init as initYoutube, checkForVideos, resetAndCheckForVideos } from 'modules/youtube';
 import { init as initMinute } from 'modules/minute';
 import { formatImages, loadEmbeds, loadInteractives } from 'bootstraps/common';
@@ -170,16 +170,17 @@ function liveblogLoadMore(html) {
     formatImages(images);
     loadEmbeds();
     loadInteractives();
-
     window.liveblogTime();
-
     checkInjectedComponents(false);
+    if (typeof twttr !== 'undefined' && 'widgets' in twttr && 'load' in twttr.widgets) {
+        enhanceTweets();
+    }
 }
 
 function liveblogTime() {
     let i;
     let blockTimes;
-    const toneLiveBlogElems = document.getElementsByClassName('tone--liveBlog');
+    const toneLiveBlogElems = document.getElementsByClassName('garnett--type-live');
 
     if (toneLiveBlogElems.length && GU.opts.isLive) {
         initRelativeDates('.key-event__time, .block__time', 'title');
@@ -207,10 +208,86 @@ function showLiveMore(show) {
 
 function liveblogNewBlock(html) {
     newBlockHtml = html + newBlockHtml;
-
     if (liveblogStartPos.top > window.scrollY) {
         liveblogNewBlockDump();
     }
+}
+
+function insertAfter(referenceNode, newNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+
+function onGapClick(e, afterBlockId, paginationLink) {
+    e.preventDefault();
+    Array.from(document.getElementsByClassName(`after-${afterBlockId}`)).forEach(gap => {
+        gap.parentNode.removeChild(gap);
+    });
+    document.getElementById(`loading-${afterBlockId}`).style.display = "block";
+    window.location.href = paginationLink;
+}
+
+function liveblogInsertGap(afterBlockId, olderPagination, newerPagination) {
+    let before = document.createElement('div');
+    let after = document.createElement('div');
+    let loading = document.createElement('div');
+
+    before.innerHTML = `
+        <div onclick="return onGapClick(event, '${afterBlockId}', '${olderPagination}')" class="more more--live-blogs-blocks after-${afterBlockId}">
+            <a href="#" class="more__button">
+    	        <span class="more__icon" data-icon="&#xe050;" aria-hidden="true"></span>
+    	        <span class="more__text">Load more</span>
+            </a>
+        </div>
+    `;
+
+    after.innerHTML = `
+        <div onclick="return onGapClick(event, '${afterBlockId}', '${newerPagination}')" class="more more--live-blogs-blocks after-${afterBlockId}">
+            <a href="#" class="more__button">
+                <span class="more__icon" data-icon="&#xe050;" aria-hidden="true"></span>
+                <span class="more__text">Load more</span>
+            </a>
+        </div>
+    `;
+
+    loading.innerHTML = `<div style="display: none" id="loading-${afterBlockId}" class="loading" data-icon="&#xe00C;">`
+    insertAfter(document.getElementById(afterBlockId), after);
+    insertAfter(document.getElementById(afterBlockId), loading);
+    insertAfter(document.getElementById(afterBlockId), before);
+}
+
+function liveblogInsertBlocks(afterBlockId, html) {
+    let i;
+    let images = [];
+    let blocks;
+    const articleBody = document.getElementsByClassName('article__body')[0];
+    const oldBlockCount = articleBody.getElementsByClassName('block').length;
+    const newBlockElems = getElemsFromHTML(html);
+
+    document.getElementsByClassName('loading--liveblog')[0].classList.remove('loading--visible');
+
+    for (i = 0; i < newBlockElems.length; i++) {
+        if (afterBlockId) {
+            addNewBlockToBlog(document.getElementById(afterBlockId), newBlockElems[i])
+        } else {
+            newBlockElems[i].classList.add('animated');
+            newBlockElems[i].classList.add('slideinright');
+            articleBody.prepend(newBlockElems[i]);
+        }
+    }
+
+    blocks = articleBody.getElementsByClassName('block');
+
+    for (i = blocks.length; i > oldBlockCount; i--) {
+        images.push(...blocks[i-1].getElementsByTagName('img'));
+    }
+
+    formatImages(images);
+    loadEmbeds();
+    loadInteractives();
+
+    window.liveblogTime();
+
+    checkInjectedComponents(false);
 }
 
 function setupGlobals() {
@@ -221,10 +298,15 @@ function setupGlobals() {
     window.liveblogTime = liveblogTime;
     window.showLiveMore = showLiveMore;
     window.liveblogNewBlock = liveblogNewBlock;
+    window.liveblogInsertBlocks = liveblogInsertBlocks;
+    window.liveblogInsertGap = liveblogInsertGap;
     window.liveblogNewKeyEvent = liveblogNewKeyEvent;
     window.scrollToBlock = scrollToBlock;
+    window.onGapClick = onGapClick;
 
     window.applyNativeFunctionCall('liveblogNewBlock');
+    window.applyNativeFunctionCall('liveblogInsertBlocks');
+    window.applyNativeFunctionCall('liveblogInsertGap');
     window.applyNativeFunctionCall('liveblogDeleteBlock');
     window.applyNativeFunctionCall('liveblogUpdateBlock');
     window.applyNativeFunctionCall('liveblogNewKeyEvent');
@@ -315,15 +397,6 @@ function showHideKeyEvents() {
     }
 }
 
-function removeMinuteElems() {
-    let i;
-    const minuteElems = document.querySelectorAll('.minute-logo-container, .minute-vertical-rule, .the-minute__header');
-
-    for (i = minuteElems.length; i > 0; i--) {
-        minuteElems[i-1].parentNode.removeChild(minuteElems[i-1]);
-    }
-}
-
 function init() {
     newBlockHtml = '';
     liveblogStartPos = getElementOffset(document.getElementsByClassName('article__body--liveblog')[0]);
@@ -334,15 +407,9 @@ function init() {
     window.addEventListener('scroll', debounce(updateBlocksOnScroll, 100, true));
     liveMore();
     trackLiveBlogEpic();
-
-    if (GU.opts.isMinute && GU.opts.adsConfig === 'tablet') {
-        initMinute();
-    } else {
-        removeMinuteElems();
-        initTwitter();
-        initYoutube();
-        setInterval(window.liveblogTime, 30000);
-    }
+    initTwitter();
+    initYoutube();
+    setInterval(window.liveblogTime, 30000);
 }
 
 export { init };

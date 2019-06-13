@@ -12,13 +12,12 @@ import { init as initCards } from 'modules/cards';
 import { init as initMoreTags } from 'modules/more-tags';
 import { init as initRichLinks } from 'modules/rich-links';
 import { init as initAB } from 'modules/experiments/ab';
-import { init as initSentry, Transports } from '@sentry/browser';
 import { initMpuPoller } from 'modules/ads';
 
 let trackCommentContainerView = true;
         
 function init() {
-    if (GU && GU.opts && GU.opts.platform === 'android') {
+    if ((GU && GU.opts && GU.opts.platform === 'android') || instagramHeader()) {
         // polyfill to remove click delays on browsers with touch
         attach(document.body);
     }
@@ -44,12 +43,6 @@ function init() {
     initAB();
     initRichLinks();
     setupForms();
-
-    initSentry({
-        transport: Transports.FetchTransport,
-        dsn: 'https://8abc43d4e79b425eb6d4b5659ccd4020@sentry.io/40557',
-        release: `${BUILD_NUMBER}`
-    });
 
     if (!document.body.classList.contains('no-ready')) {
         signalDevice('ready');
@@ -119,8 +112,7 @@ function formatElementImageFigure(figure) {
 
         figure.insertBefore(imageWrapper, figure.firstChild);
 
-        // only set imageWrapper height to desired height of thumbnails/wide images on non-minute layouts
-        if (!GU.opts.isMinute && (isThumbnail || imageClass === 'figure-wide')) {
+        if (isThumbnail || imageClass === 'figure-wide') {
             desiredImageHeight = getDesiredImageHeight(figure);
             if (desiredImageHeight) {
                 imageWrapper.style.height = `${desiredImageHeight}px`;
@@ -277,6 +269,7 @@ function loadEmbeds() {
     let fenceElems = document.querySelectorAll('iframe.fenced');
 
     fixVineWidth();
+    fixEmbedHeights();
 
     for (i = 0; i < fenceElems.length; i++) {
         render(fenceElems[i]);
@@ -300,6 +293,17 @@ function fixVineWidth() {
         srcdoc = srcdoc.replace(/height="[\d]+"/,`height="${size}"`);
         iframe.setAttribute('srcdoc', srcdoc);
         iframe.dataset.vineFixed = true;
+    }
+}
+
+function fixEmbedHeights() {
+    let i;
+    let iframe;
+    const iframes = document.querySelectorAll('.element-embed .email-sub__iframe');
+    for (i = 0; i < iframes.length; i++) {
+        iframe = iframes[i];
+        iframe.setAttribute('height', '50px');
+        iframe.style.marginTop = '12px';
     }
 }
 
@@ -684,6 +688,10 @@ function setupForms() {
             }
         }, 1000);
     }
+}
+
+function instagramHeader() {
+    return !!document.querySelector('.article__header #main-media .element-instagram');
 }
 
 export {

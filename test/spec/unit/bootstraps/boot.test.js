@@ -63,7 +63,6 @@ describe('ArticleTemplates/assets/js/app', function () {
 
             it('initialises liveblog if GU.opts.contentType is liveblog', function () {
                 window.GU.opts.contentType = 'liveblog';
-                window.GU.opts.isMinute = false;
 
                 boot.init(window.GU.opts);
                 
@@ -72,21 +71,6 @@ describe('ArticleTemplates/assets/js/app', function () {
                 expect(initMock).toHaveBeenCalledWith({
                     adsConfig: 'xxx',
                     adsType: 'liveblog',
-                    mpuAfterParagraphs: 0
-                });
-            });
-
-            it('set adsType to default if liveblog and GU.opts.isMinute is truthy', function () {
-                window.GU.opts.contentType = 'liveblog';
-                window.GU.opts.isMinute = true;
-
-                boot.init(window.GU.opts);
-                
-                const initMock = jest.spyOn(ads, 'init').mockImplementation(() => jest.fn())
-                expect(initMock).toHaveBeenCalled();
-                expect(initMock).toHaveBeenCalledWith({
-                    adsConfig: 'xxx',
-                    adsType: 'default',
                     mpuAfterParagraphs: 0
                 });
             });

@@ -1,5 +1,4 @@
-// Note the variable naming differences between the app templates adn MAPI:
-//
+// Note the variable naming differences between the app templates and MAPI:
 // App templates name — MAPI name
 // $p-kicker — main and pillar
 // $p-feature-headline — featureHeadline
@@ -33,7 +32,7 @@
         color: $p-kicker;
     }
 
-    .more--live-blogs .more__button {
+    .more--live-blogs .more__button, .more--live-blogs-blocks .more__button {
         background-color: $p-kicker;
 
         &:active {
@@ -167,6 +166,10 @@
     // Media overrides
     &.garnett--type-media {
         @include pillar-reversible($p-inverted, $p-kicker, $p-feature-headline, $p-soft);
+
+        &:not(.garnett--type-guardianlabs) .byline {
+            color: color(brightness-100);
+        }
     }
 
     // Live overrides
@@ -195,9 +198,8 @@
         }
 
         @include mq($from: col4) {
-            .article__header,
-            .standfirst {
-                background-color: darken($p-liveblog-background, 5%);
+            .article__header {
+                background-color: color(brightness-96);
             }
         }
 
@@ -266,10 +268,11 @@
         }
 
         .block--live-key-event {
-            border-top-color: $p-feature-headline;
+            border-top-color: $p-kicker;
 
-            .block__title {
-                color: $p-kicker;
+            .block__title .highlight {
+                background-color: color(tone-highlight);
+                padding: 0.25rem 0.125rem;
             }
         }
 
@@ -287,7 +290,7 @@
 // depending on context
 @mixin pillar-reversible($kicker, $feature, $soft, $inverted) {
 
-    &:not(.garnett--type-live):not(.garnett--type-guardianlabs) {
+    &:not(.garnett--type-guardianlabs) {
         // Section and series labels above headline
         .article-kicker {
             color: $kicker;
@@ -297,20 +300,24 @@
         .byline,
         .headline__byline,
         .byline__author,
-        .byline__author a {
+        .byline__author a,
+        .touch-gallery__caption__caption a,
+        .gallery-caption a,
+        .sponsorship__about-uri {
             color: $kicker;
         }
 
         // in-article
-        .prose,
-        .standfirst {
-            // text links
+        .prose {
             @include text-underline($kicker, $feature);
+        }
+
+        .standfirst {
+            @include text-underline($kicker, $feature, $bottom-space: 0);
         }
 
         table {
             border-top-color: $soft;
         }
-
     }
 }

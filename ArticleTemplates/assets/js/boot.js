@@ -1,5 +1,6 @@
 import 'core-js/fn/promise';
 import 'raf/polyfill';
+import '@babel/polyfill';
 import domready from 'domready';
 import { init as adsInit } from 'modules/ads';
 
@@ -32,6 +33,8 @@ const init = opts => {
         'footballMatchInfoFailed',
         'liveblogDeleteBlock',
         'liveblogNewBlock',
+        'liveblogInsertBlocks',
+        'liveblogInsertGap',
         'liveblogUpdateBlock',
         'liveblogNewKeyEvent',
         'getMpuPosCallback',
@@ -81,7 +84,7 @@ const init = opts => {
 
         const getAdType = () => {
             const contentType = opts.contentType;
-            if ((contentType === 'liveblog' && !GU.opts.isMinute) ||
+            if ((contentType === 'liveblog') ||
                 (contentType !== 'liveblog' && document.querySelector('.article__body--liveblog'))) {
                 return 'liveblog';
             }

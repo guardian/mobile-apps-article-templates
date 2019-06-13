@@ -165,11 +165,7 @@
         font-family: $egyptian-display;
         font-weight: 600;
         font-size: 1em;
-        margin: .75em 0;
-
-        & + p {
-            margin-top: base-px(-1);
-        }
+        margin: base-px(1, 0);
 
         strong,
         b {
@@ -239,6 +235,7 @@
             position: relative;
             margin-top: 0;
             padding-top: 12px;
+            color: color(brightness-7);
 
             &::before {
                 position: relative;
@@ -251,7 +248,7 @@
 
         &.twitter-tweet,
         &.js-tweet {
-            font-family: $agate-sans;
+            font-family: $guardian-sans;
             font-size: $meta-size;
             line-height: $meta-lead;
 
@@ -330,7 +327,7 @@
 
 .prose table,
 .table {
-    font-family: $agate-sans;
+    font-family: $guardian-sans;
     @include meta();
     margin: base-px(1, 0);
     border-top: 2px solid color(brightness-46);

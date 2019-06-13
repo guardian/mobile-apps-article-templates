@@ -66,7 +66,7 @@
     .block__time {
         color: color(brightness-46);
         display: inline-block;
-        font-family: $agate-sans;
+        font-family: $guardian-sans;
         padding: base-px(1, 0);
         vertical-align: top;
 
@@ -134,8 +134,9 @@
     .block__updated {
         clear: both;
         color: color(brightness-60);
-        font-family: $agate-sans;
-        @include meta();
+        font-family: $guardian-sans;
+        font-size: 1.3rem;
+        line-height: 2.2rem;
     }
 
     .block__byline {
@@ -213,7 +214,7 @@
         }
 
         figcaption {
-            padding: base-px(.5, 0, 1, .33);
+            padding: base-px(.125, 0, 1, .33);
         }
 
         @include mq($to: col1) {
@@ -245,6 +246,7 @@
 
         h2:first-child {
             margin-top: -3px;
+            margin-bottom: 1em;
         }
     }
 }

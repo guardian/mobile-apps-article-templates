@@ -4,12 +4,11 @@ body {
     }
 
     &:not(.garnett--type-media) {
-        .article__header {
+        .article__header,
+        .sponsorship {
             background-color: color(brightness-100);
 
             @include mq($from: col4) {
-                background-color: color(brightness-96);
-
                 .section,
                 .article-kicker,
                 .headline,
@@ -17,6 +16,12 @@ body {
                 .meta {
                     background-color: color(brightness-100);
                 }
+            }
+        }
+
+        .article__header {
+            @include mq($from: col4) {
+                background-color: color(brightness-96);
             }
         }
     }
@@ -47,7 +52,7 @@ body {
                 padding-top: 0;
 
                 &__caption__text {
-                    width: 575px; // 620px width of main media - 45 for show/hide icon
+                    width: 100%;
                 }
             }
 

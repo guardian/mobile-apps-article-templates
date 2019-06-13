@@ -2,108 +2,11 @@ import { init as initRelativeDates } from 'modules/relativeDates';
 import { getElemsFromHTML } from 'modules/util';
 import SmoothScroll from 'smooth-scroll';
 
-function setupGlobals() {
-    window.articleCommentsInserter = articleCommentsInserter;
-    window.commentsInserter = commentsInserter; // Almost the same as window.articleCommentsInserter - WHY?
-    window.articleCommentsFailed = articleCommentsFailed;
-    window.commentsFailed = articleCommentsFailed; // Exactly the same as window.articleCommentsFailed - WHY?
-    window.commentsEnd = commentsEnd;
-    window.commentsExpand = commentsExpand;
-    window.scrollToHighlighted = scrollToHighlighted;
-    window.commentsClosed = commentsClosed;
-    window.commentsOpen = commentsOpen;
-    window.commentTime = commentTime;
-    window.commentsRecommendIncrease = commentsRecommendIncrease;
-    window.commentsRecommendDecrease = commentsRecommendDecrease;
-    window.checkForCorrectCount = checkForCorrectCount;
+function targetContainsBlackListedClass(classList) {
+    const stopPropagationBlackList = ['more--comments', 'comment__reply', 'comment__recommend',
+        'touchpoint__button', 'touchpoint__label'];
 
-    window.applyNativeFunctionCall('articleCommentsInserter');
-    window.applyNativeFunctionCall('commentsInserter');
-    window.applyNativeFunctionCall('commentsFailed');
-    window.applyNativeFunctionCall('commentsClosed');
-    window.applyNativeFunctionCall('commentsOpen');
-    window.applyNativeFunctionCall('articleCommentsFailed');
-}
-
-function commentsReplyFormatting() {
-    let discussionThread;
-    const discussionThreads = document.getElementsByClassName('block--discussion-thread');
-    let i;
-    let moreCommentsButton;
-    let numOfComments;
-
-    for (i = 0; i < discussionThreads.length; i++) {
-        discussionThread = discussionThreads[i];
-
-        if (!discussionThread.classList.contains('block--discussion-thread--checked') &&
-            discussionThread.children &&
-            discussionThread.children.length >= 5) {
-
-            numOfComments = discussionThread.children.length - 4;
-
-            if (numOfComments === 1) {
-                discussionThread.classList.add('block--discussion-thread--orphan');
-            } else {
-                moreCommentsButton = document.createElement('div');
-                moreCommentsButton.classList.add('more');
-                moreCommentsButton.classList.add('more--comments');
-                moreCommentsButton.innerHTML = `<a class="more__label"><span class="more__icon" data-icon="&#xe050;" aria-hidden="true"></span><span class="more__text">${numOfComments} more replies</span></a>`;
-                moreCommentsButton.addEventListener('click', handleMoreCommentsClick.bind(null, moreCommentsButton));
-                discussionThread.children[4].parentNode.insertBefore(moreCommentsButton, discussionThread.children[4]);
-            }
-        }
-
-        discussionThread.classList.add('block--discussion-thread--checked');
-    }
-}
-
-function commentsExpand() {
-    const moreButtons = document.getElementsByClassName('more--comments');
-    for (let i = 0; i < moreButtons.length; i++) {
-        handleMoreCommentsClick(moreButtons[i]);
-    }
-}
-
-function checkForCorrectCount() {
-    const firstPage = !!document.getElementsByClassName("comments__title").length;
-    const actualCommentBlocks = document.getElementsByClassName("block--discussion-thread").length;
-    const actualCommentCount = actualCommentBlocks + document.getElementsByClassName("is-response").length;
-    const correctCount = !!document.getElementsByClassName("comments-" + actualCommentCount).length;
-    const commentCount = document.getElementsByClassName("comments__count")[0];
-
-    if (firstPage && !correctCount && actualCommentBlocks < 3) {
-        if (commentCount) {
-            commentCount.style.display = "none";
-        }
-    }
-
-    if (actualCommentCount) {
-        const emptyCommentBlock = document.getElementsByClassName("comments__block--empty")[0];
-        if (emptyCommentBlock) {
-            emptyCommentBlock.style.display = "none";
-        }
-
-        if (commentCount) {
-            const shownCount = parseInt(commentCount.innerHTML);
-            if (shownCount < actualCommentCount) {
-                commentCount.innerHTML = actualCommentCount;
-            }
-        }
-    }
-}
-
-function addClickHandlerToComments(block) {
-    let i;
-    const comments = block.getElementsByClassName('comment');
-
-    for (i = 0; i < comments.length; i++) {
-        comments[i].addEventListener('click', handleCommentClick.bind(null, comments[i]));
-    }
-}
-
-function handleMoreCommentsClick(moreCommentsButton) {
-    moreCommentsButton.style.display = 'none';
-    moreCommentsButton.parentNode.classList.add('expand');
+    return stopPropagationBlackList.some(className => classList.includes(className));
 }
 
 function handleCommentClick(comment, evt) {
@@ -132,11 +35,85 @@ function handleCommentClick(comment, evt) {
     }
 }
 
-function targetContainsBlackListedClass(classList) {
-    const stopPropagationBlackList = ['more--comments', 'comment__reply', 'comment__recommend',
-                                    'touchpoint__button', 'touchpoint__label'];
+function addClickHandlerToComments(block) {
+    let i;
+    const comments = block.getElementsByClassName('comment');
 
-    return stopPropagationBlackList.some(className => classList.includes(className));
+    for (i = 0; i < comments.length; i++) {
+        comments[i].addEventListener('click', handleCommentClick.bind(null, comments[i]));
+    }
+}
+
+function handleMoreCommentsClick(moreButton) {
+    moreButton.style.display = 'none';
+    moreButton.parentNode.classList.add('expand');
+}
+
+function commentsReplyFormatting() {
+    const threads = document.getElementsByClassName('block--discussion-thread');
+    let thread;
+    let moreButton;
+    let numOfComments;
+    let i;
+
+    for (i = 0; i < threads.length; i++) {
+        thread = threads[i];
+
+        if (!thread.classList.contains('block--discussion-thread--checked') &&
+            thread.children &&
+            thread.children.length >= 5) {
+            numOfComments = thread.children.length - 4;
+
+            if (numOfComments === 1) {
+                thread.classList.add('block--discussion-thread--orphan');
+            } else {
+                moreButton = document.createElement('div');
+                moreButton.classList.add('more');
+                moreButton.classList.add('more--comments');
+                moreButton.innerHTML = `<a class="more__label"><span class="more__icon" data-icon="&#xe050;" aria-hidden="true"></span><span class="more__text">${numOfComments} more replies</span></a>`;
+                moreButton.addEventListener('click', handleMoreCommentsClick.bind(null, moreButton));
+                thread.children[4].parentNode.insertBefore(moreButton, thread.children[4]);
+            }
+        }
+
+        thread.classList.add('block--discussion-thread--checked');
+    }
+}
+
+function checkForCorrectCount() {
+    const firstPage = !!document.getElementsByClassName('comments__title').length;
+    const actualCommentBlocks = document.getElementsByClassName('block--discussion-thread').length;
+    const actualCommentCount = actualCommentBlocks + document.getElementsByClassName('is-response').length;
+    const correctCount = !!document.getElementsByClassName('comments-' + actualCommentCount).length;
+    const commentCount = document.getElementsByClassName('comments__count')[0];
+
+    if (firstPage && !correctCount && actualCommentBlocks < 3) {
+        if (commentCount) {
+            commentCount.style.display = 'none';
+        }
+    }
+
+    if (actualCommentCount) {
+        const emptyCommentBlock = document.getElementsByClassName('comments__block--empty')[0];
+        if (emptyCommentBlock) {
+            emptyCommentBlock.style.display = 'none';
+        }
+
+        if (commentCount) {
+            const shownCount = parseInt(commentCount.innerHTML);
+            if (shownCount < actualCommentCount) {
+                commentCount.innerHTML = actualCommentCount;
+            }
+        }
+    }
+}
+
+function commentsEnd() {
+    const loadingBlock = document.getElementsByClassName('comments__block--loading')[0];
+
+    if (loadingBlock) {
+        loadingBlock.parentNode.removeChild(loadingBlock);
+    }
 }
 
 function articleCommentsInserter(html) {
@@ -171,10 +148,17 @@ function articleCommentsInserter(html) {
         commentsReplyFormatting();
         checkForCorrectCount();
 
-        let commentCount = document.getElementsByClassName("comments__count")[0];
+        let commentCount = document.getElementsByClassName('comments__count')[0];
         if (commentCount && blocks.length === parseInt(commentCount.innerHTML)) {
             commentsEnd();
         }
+    }
+}
+
+function commentsExpand() {
+    const moreButtons = document.getElementsByClassName('more--comments');
+    for (let i = 0; i < moreButtons.length; i++) {
+        handleMoreCommentsClick(moreButtons[i]);
     }
 }
 
@@ -213,7 +197,7 @@ function commentsInserter(html) {
         commentsContainer.appendChild(loadingBlock);
     }
 
-    let commentCount = document.getElementsByClassName("comments__count")[0];
+    let commentCount = document.getElementsByClassName('comments__count')[0];
     if (commentCount && blocks.length === parseInt(commentCount.innerHTML)) {
         commentsEnd();
     }
@@ -237,19 +221,11 @@ function articleCommentsFailed() {
     }
 }
 
-function commentsEnd() {
-    const loadingBlock = document.getElementsByClassName('comments__block--loading')[0];
-
-    if (loadingBlock) {
-        loadingBlock.parentNode.removeChild(loadingBlock);
-    }
-}
-
 function scrollToHighlighted(commentId) {
     const scroll = new SmoothScroll();
     const comment = document.getElementById(commentId);
     setTimeout(() => {
-        scroll.animateScroll(comment, {speed: 1500});
+        scroll.animateScroll(comment, { speed: 1500 });
     }, 100);
 }
 
@@ -313,6 +289,31 @@ function commentsRecommendDecrease(id, number) {
     if (countElem) {
         countElem.innerText = number;
     }
+}
+
+function setupGlobals() {
+    window.articleCommentsInserter = articleCommentsInserter;
+    // Almost the same as window.articleCommentsInserter - WHY?
+    window.commentsInserter = commentsInserter;
+    window.articleCommentsFailed = articleCommentsFailed;
+    // Exactly the same as window.articleCommentsFailed - WHY?
+    window.commentsFailed = articleCommentsFailed;
+    window.commentsEnd = commentsEnd;
+    window.commentsExpand = commentsExpand;
+    window.scrollToHighlighted = scrollToHighlighted;
+    window.commentsClosed = commentsClosed;
+    window.commentsOpen = commentsOpen;
+    window.commentTime = commentTime;
+    window.commentsRecommendIncrease = commentsRecommendIncrease;
+    window.commentsRecommendDecrease = commentsRecommendDecrease;
+    window.checkForCorrectCount = checkForCorrectCount;
+
+    window.applyNativeFunctionCall('articleCommentsInserter');
+    window.applyNativeFunctionCall('commentsInserter');
+    window.applyNativeFunctionCall('commentsFailed');
+    window.applyNativeFunctionCall('commentsClosed');
+    window.applyNativeFunctionCall('commentsOpen');
+    window.applyNativeFunctionCall('articleCommentsFailed');
 }
 
 function init() {

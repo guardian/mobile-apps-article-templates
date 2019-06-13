@@ -111,7 +111,11 @@
             .comments--module & {
                 float: left;
                 margin: 0;
-                width: 200px;
+                width: 100px;
+
+                .comments__post {
+                    display: none;
+                }
             }
         }
     }
@@ -167,6 +171,10 @@
         font-family: $egyptian-display;
         color: color(brightness-60);
         margin-left: 4px;
+        @include mq($from: col4) {
+            margin: 4px 0;
+            display: block;
+        }
         .comments--page & {
             @include headline(.5);
             margin-bottom: base-px(1);
@@ -227,7 +235,7 @@
         .touchpoint__label {
             padding-left: 0;
             padding: 0 4px;
-            margin-top: -1px;
+            margin-top: 2px;
         }
     }
 
@@ -243,13 +251,15 @@
         @include mq($from: col4) {
             margin: {
                 top: 20px;
-            };
-            padding-left: 28px;
+            }
+            .comments--module & {
+                padding-left: 28px;
+            }
         }
     }
 
     &__block {
-        font-family: $agate-sans;
+        font-family: $guardian-sans;
 
         @include mq($to: col3) {
             margin: base-px(1);
@@ -293,6 +303,10 @@
         border: solid 1px color(tone-sandy-light);
         border-top: 1px solid color(brightness-60);
         border-bottom: 2px solid color(tone-sandy-light);
+
+        @include mq($from: col4) {
+            margin-right: 0;
+        }
     }
 
     &__footer {
@@ -325,13 +339,13 @@
 
         &--label {
             padding: 0px 4px;
-            margin-top: -1px;
+            margin-top: 2px;
         }
     }
 
     &__ordering {
         @include meta;
-        font-family: $agate-sans;
+        font-family: $guardian-sans;
         font-weight: 700;
 
         .comments--open & {
@@ -343,14 +357,6 @@
         }
     }
 
-    .comments__header {
-        .comments__post {
-            @include mq($from: col4) {
-                display: none;
-            }
-        }
-    }
-
     .comments__footer {
         .comments__post {
             display: none;
@@ -358,7 +364,7 @@
             @include mq($from: col4) {
                 display: block;
                 position: relative;
-                left: 240px;
+                left: 140px;
                 top: 32px;
             }
         }

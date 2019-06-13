@@ -25,14 +25,6 @@
         .tabs {
             margin: 0;
             padding: base-px(1);
-
-            @include mq($from: col4) {
-                .inline-list {
-                    display: block;
-                    margin: 0 auto 0 228px;
-                    width: 620px;
-                }
-            }
         }
 
         .article.article--liveblog {
@@ -50,8 +42,23 @@
             }
         }
 
-        .more--live-blogs {
+        .more--live-blogs, .more--live-blogs-blocks {
             border: 0;
+        }
+    }
+
+    &[data-content-type='cricket'],
+    &[data-content-type='football'] {
+        @include mq($from: col4) {
+            .keyline-4:before {
+                margin: 0;
+                width: auto;
+            }
+
+            .meta__misc {
+                margin: base-px(0, 0, 0, 1);
+                width: auto;
+            }
         }
     }
 }
