@@ -1,7 +1,6 @@
 import { init as initRelativeDates } from 'modules/relativeDates';
 import { init as initTwitter, checkForTweets, enhanceTweets } from 'modules/twitter';
 import { init as initYoutube, checkForVideos, resetAndCheckForVideos } from 'modules/youtube';
-import { init as initMinute } from 'modules/minute';
 import { formatImages, loadEmbeds, loadInteractives } from 'bootstraps/common';
 import { getElemsFromHTML, signalDevice, getElementOffset, debounce } from 'modules/util';
 import { trackLiveBlogEpic } from 'modules/creativeInjector';
