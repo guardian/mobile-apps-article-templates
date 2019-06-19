@@ -267,20 +267,20 @@
             }
         }
 
-        .block--live-key-event {
-            border-top-color: $p-kicker;
-
-            .block__title .highlight {
-                background-color: color(tone-highlight);
-                padding: 0.25rem 0.125rem;
-            }
-        }
-
         .block--live-summary {
             .prose p,
             .prose li {
                 @include text-underline($p-kicker, $p-feature-headline);
             }
+        }
+    }
+
+    .block--live-key-event, .block--live-summary {
+        border-top-color: $p-kicker;
+
+        .block__title .highlight {
+            background-color: color(tone-highlight);
+            padding: 0.25rem 0.125rem;
         }
     }
 }
