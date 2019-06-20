@@ -129,4 +129,12 @@
             }
         }
     }
+
+    // Only show one discalimer on gallery pages
+    .affiliate-links-disclaimer {
+        display: none;
+        &:nth-of-type(1) {
+            display: inherit;
+        }
+    }
 }
