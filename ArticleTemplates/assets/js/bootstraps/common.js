@@ -670,11 +670,13 @@ function setupForms() {
     let fenceElems = document.querySelectorAll('iframe.fenced');
     let checkForLinks;
     let attempts = 0;
+    let replaced = false;
     if (fenceElems) {
         checkForLinks = setInterval(() => {
             attempts += 1;
             fenceElems.forEach(elem => {
                 elem.contentWindow.document.querySelectorAll('.fsBody link').forEach(link => {
+                    replaced = true;
                     if (link.href.startsWith("file:")) {
                         link.href = link.href.replace('file:', 'http:');
                     } else if (link.href.startsWith("//")) {
@@ -683,10 +685,10 @@ function setupForms() {
                 });
             });
 
-            if (attempts >= 5) {
+            if (attempts >= 20 || replaced) {
                 clearInterval(checkForLinks);
             }
-        }, 1000);
+        }, 500);
     }
 }
 
