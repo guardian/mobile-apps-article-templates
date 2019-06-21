@@ -1,5 +1,5 @@
 import { initPositionPoller } from 'modules/cards';
-import { initMpuPoller } from 'modules/ads';
+ import { POST } from 'modules/http';
   
 var endpoint = GU.opts.campaignsUrl;
 
@@ -44,13 +44,10 @@ function initCampaign(campaign) {
 
 function submit(data, campaign, form) {
     displayWaiting(form);
-    var req = new XMLHttpRequest();
-    req.open('POST', endpoint);
-    req.setRequestHeader('Content-Type', 'application/json');
-    req.setRequestHeader('Accept', 'application/json');
-    req.onload = displayConfirmation.bind(null, campaign, form);
-    req.onerror = displayError.bind(null, campaign, form);
-    req.send(JSON.stringify(data));
+    // {"formId":"3493221","field_78989435":"Sdsds","field_78989436":"Sdsd","field_78989451":"Sdsd","field_78989440":"Sdsd","field_78989441":"No, this is information only","field_78989442":"Sdsd","field_78989443":"Sdsd"}
+    const onLoadCallout = displayConfirmation.bind(null, campaign, form);
+    const onErrorCallout = displayError.bind(null, campaign, form);
+    POST(endpoint, onLoadCallout, onErrorCallout, JSON.stringify(data))
 }
 
 function displayOfflineMessage(campaign) {
