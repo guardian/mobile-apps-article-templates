@@ -25,7 +25,7 @@ function POST(url, successCallback, errorCallback,  data) {
     url = encodeURIComponent(url)
     data = encodeURIComponent(data)
 
-    signalDevice(`POST/${url}?data=${data}&successCallback=window.callbacks.${successCallback.name}&errorCallback=window.callbacks.${errorCallback.name}`);
+    signalDevice(`POST/${url}?data=${data}&successCallback=window.callbacks['${successCallback.name}']&errorCallback=window.callbacks['${errorCallback.name}']`);
 }
 
 

@@ -1,5 +1,5 @@
 import { initPositionPoller } from 'modules/cards';
- import { POST } from 'modules/http';
+import { POST } from 'modules/http';
   
 var endpoint = GU.opts.campaignsUrl;
 
@@ -47,7 +47,7 @@ function submit(data, campaign, form) {
     // {"formId":"3493221","field_78989435":"Sdsds","field_78989436":"Sdsd","field_78989451":"Sdsd","field_78989440":"Sdsd","field_78989441":"No, this is information only","field_78989442":"Sdsd","field_78989443":"Sdsd"}
     const onLoadCallout = displayConfirmation.bind(null, campaign, form);
     const onErrorCallout = displayError.bind(null, campaign, form);
-    POST(endpoint, onLoadCallout, onErrorCallout, JSON.stringify(data))
+    POST("https://callouts.code.dev-guardianapis.com/formstack-campaign/submit", onLoadCallout, onErrorCallout, JSON.stringify(data))
 }
 
 function displayOfflineMessage(campaign) {
