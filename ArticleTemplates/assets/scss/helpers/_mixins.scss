@@ -108,11 +108,11 @@ $meta-lead: 2.2rem;
 
 
 // Link Underline Style
-@mixin text-underline($color, $color-accent) {
+@mixin text-underline($color, $color-accent, $bottom-space: .15em) {
     a:not(.video-URL) {
         color: $color;
         text-decoration: none;
-        padding-bottom: .2em;
+        padding-bottom: $bottom-space;
 
         // Underline via gradient background
         background-image: linear-gradient(rgba($color, .33) 0%, rgba($color, .33) 100%);
@@ -136,11 +136,11 @@ $meta-lead: 2.2rem;
 
 
 // Bullet
-@mixin faux-bullet($color: color(brightness-60), $right-space: 2px) {
+@mixin faux-bullet($color: color(brightness-60), $right-space: 4px) {
     &:before {
         content: '';
         background-color: $color;
-        margin-right: $right-space*2;
+        margin-right: $right-space;
         width: 1.2rem; // 12px
         height: 1.2rem; // 12px
         border-radius: .6rem; // 6px
@@ -229,7 +229,7 @@ $meta-lead: 2.2rem;
 
 %caption-icon {
     display: inline-block;
-    margin-right: 3px;
+    margin-right: 6px;
     position: relative;
     top: 2px;
 }

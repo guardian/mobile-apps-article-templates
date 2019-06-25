@@ -12,7 +12,7 @@
 
 .article__header {
     ul > li {
-        @include faux-bullet($color: color(brightness-86), $right-space: 6px);
+        @include faux-bullet($color: color(brightness-86));
     }
 
     .article-kicker,
@@ -90,6 +90,10 @@
 
     .video-URL {
         clear: both; // floating asides can cause video to display incorrectly
+
+        & + figcaption {
+            padding: 0 base-px(1);
+        }
     }
 
     // Football player cards should appear floated right above mobile breakpoint
@@ -123,6 +127,14 @@
             & .figure-wide:first-of-type {
                 display: inline-block;            
             }
+        }
+    }
+
+    // Only show one discalimer on gallery pages
+    .affiliate-links-disclaimer {
+        display: none;
+        &:nth-of-type(1) {
+            display: inherit;
         }
     }
 }

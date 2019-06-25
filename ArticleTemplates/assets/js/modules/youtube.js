@@ -350,7 +350,7 @@ function addCaptions() {
                 caption.innerHTML = `
                     <span class="youtube-sdk-caption">
                         <span data-icon="&#xe043;" class="figure__caption__icon" aria-hidden="true"></span>
-                        ${title}
+                        ${title.replace(" – video", "")}
                     </span>
                `;
                insertAfter(caption, placeholder.closest('.element-atom'));

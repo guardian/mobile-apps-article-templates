@@ -165,17 +165,9 @@
         font-family: $egyptian-display;
         font-weight: 600;
         font-size: 1em;
-        margin: .75em 0;
-
-        & + p {
-            margin-top: base-px(-1);
-        }
-
-        @include mq($to: col2) {
-            & + .element-embed {
-                margin-top: base-px(-1);
-            }
-        }
+        margin: base-px(1, 0);
+        overflow: hidden;
+        text-overflow: ellipsis;
 
         strong,
         b {

@@ -44,7 +44,7 @@
 
 // Maintain ratio of embedded media item
 .element__inner {
-    background-color: color(tone-sandy-light);
+    background-color: color(brightness-96);
     padding-bottom: 60%;
     position: relative;
     overflow: hidden;
@@ -85,6 +85,10 @@
             .element-instagram .instagram-media,
             .element-embed iframe {
                 width: calc(100vw - #{base-px(4)}) !important;
+            }
+
+            .element-embed iframe.email-sub__iframe {
+                width: calc(100vw - #{base-px(4.5)}) !important;
             }
         }
     }
@@ -173,6 +177,7 @@
         padding: base-px(.5, 1);
         background-color: color(brightness-20);
         font-size: 1.4rem;
+        line-height: 1.8rem;
     }
 
     .element__inner {
@@ -252,13 +257,13 @@
     .element-video {
         overflow: hidden;
         position: relative;
-        background-color: color(tone-sandy-light);
+        background-color: color(brightness-96);
 
         &::before {
             content: '';
             width: 100%;
             height: 100%;
-            background-color: color(tone-sandy-light);
+            background-color: color(brightness-96);
             position: absolute;
             z-index: 20;
         }
@@ -274,4 +279,8 @@
             background-color: color(brightness-100);
         }
     }
+}
+
+.element.element-tweet {
+    clear: both;
 }

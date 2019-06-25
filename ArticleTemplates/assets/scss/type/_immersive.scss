@@ -89,6 +89,8 @@
             position: relative;
             z-index: 10;
             width: calc(100% - 32px);
+            min-height: 120px;
+            z-index: 25;
 
             .article__series > a {
                 padding: 8px 0;
@@ -100,10 +102,10 @@
             }
 
             .article__series > a > span {
-                padding: 0px 10px;
+                padding: base-px(.5, 1);
                 font-size: 16px;
-                line-height: 32px;
-                height: 32px;
+                line-height: 1.25;
+                min-height: 32px;
                 display: block;
             }
 
@@ -252,7 +254,7 @@
 
     .immersive__meta {
         color: color(brightness-46);
-        font: 1.6rem/1.4rem $guardian-sans;
+        font: 1.8rem/1.4rem $guardian-sans;
         padding: base-px(0, 1, 2, 1);
 
         @include mq($from: col4) {
@@ -539,7 +541,7 @@
                 }
 
                 figcaption {
-                    padding: base-px(.25, 0);
+                    padding: base-px(.125, 0);
 
                     @include mq($from: col2) {
                         clear: both;
