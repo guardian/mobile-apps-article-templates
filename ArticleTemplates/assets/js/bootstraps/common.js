@@ -13,7 +13,7 @@ import { init as initMoreTags } from 'modules/more-tags';
 import { init as initRichLinks } from 'modules/rich-links';
 import { init as initAB } from 'modules/experiments/ab';
 import { initMpuPoller } from 'modules/ads';
-import { init as initHttp, GET } from 'modules/http';
+import { init as initHttp } from 'modules/http';
 
 let trackCommentContainerView = true;
         

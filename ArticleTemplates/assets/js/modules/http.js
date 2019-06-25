@@ -1,15 +1,5 @@
 import { signalDevice } from 'modules/util';
 
-function GET(url, callback) {
-    // callback needs to be a named function
-    if (typeof callback !== "function" || callback.name === "") {
-        return;
-    }
-
-    window['callbacks'][callback.name] = callback;
-    signalDevice(`GET/${callback.name}/${url}`);
-}
-
 function POST(url, successCallback, errorCallback,  data) {
     // callbacks needs to be a named function
     if (typeof successCallback !== "function" ||
@@ -19,18 +9,18 @@ function POST(url, successCallback, errorCallback,  data) {
         return;
     }
 
-    window['callbacks'][successCallback.name] = successCallback;
-    window['callbacks'][errorCallback.name] = errorCallback;
+    window['httpCallbacks'][successCallback.name] = successCallback;
+    window['httpCallbacks'][errorCallback.name] = errorCallback;
 
     url = encodeURIComponent(url)
     data = encodeURIComponent(data)
 
-    signalDevice(`POST/${url}?data=${data}&successCallback=window.callbacks['${successCallback.name}']&errorCallback=window.callbacks['${errorCallback.name}']`);
+    signalDevice(`POST/${url}?data=${data}&successCallback=window.httpCallbacks['${successCallback.name}']&errorCallback=window.httpCallbacks['${errorCallback.name}']`);
 }
 
 
 function init() {
-    window.callbacks = {};
+    window.httpCallbacks = {};
 }
 
-export { init, GET, POST };
+export { init, POST };
