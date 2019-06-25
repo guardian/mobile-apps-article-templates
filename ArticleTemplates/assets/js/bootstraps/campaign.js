@@ -2,7 +2,7 @@ import { initPositionPoller } from 'modules/cards';
 import { resetAndCheckForVideos } from 'modules/youtube';
 import { initMpuPoller } from 'modules/ads';
 import { POST } from 'modules/http';
-  
+
 function init() {
     var campaign = document.querySelector('.campaign--snippet');
     if (campaign) {

@@ -18,7 +18,6 @@ function POST(url, successCallback, errorCallback,  data) {
     signalDevice(`POST/${url}?data=${data}&successCallback=window.httpCallbacks['${successCallback.name}']&errorCallback=window.httpCallbacks['${errorCallback.name}']`);
 }
 
-
 function init() {
     window.httpCallbacks = {};
 }
