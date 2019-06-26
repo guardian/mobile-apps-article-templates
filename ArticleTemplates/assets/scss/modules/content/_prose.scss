@@ -176,12 +176,18 @@
     }
 
     p + h2,
-    figure + h2 {
+    figure + h2,
+    div + h2 {
         margin: base-px(2, 0, 0, 0);
     }
 
-    h2 + p {
-        margin: base-px(.5, 0, 0, 0);
+    h2 + p,
+    h2 + figure {
+        margin: base-px(.5, 0);
+    }
+
+    h2 + .figure--thumbnail-with-caption {
+        margin: 18px 9px 6px 0;
     }
 
     hr {
