@@ -1,7 +1,7 @@
 import { initPositionPoller } from 'modules/cards';
+import { resetAndCheckForVideos } from 'modules/youtube';
 import { initMpuPoller } from 'modules/ads';
-  
-var endpoint = GU.opts.campaignsUrl;
+import { POST } from 'modules/http';
 
 function init() {
     var campaign = document.querySelector('.campaign--snippet');
@@ -16,6 +16,7 @@ function initCampaign(campaign) {
     }
 
     campaign.addEventListener('toggle', function() {
+        resetAndCheckForVideos();
         initPositionPoller();
         initMpuPoller(0);
     });
@@ -43,14 +44,11 @@ function initCampaign(campaign) {
 }
 
 function submit(data, campaign, form) {
+    hideError();
     displayWaiting(form);
-    var req = new XMLHttpRequest();
-    req.open('POST', endpoint);
-    req.setRequestHeader('Content-Type', 'application/json');
-    req.setRequestHeader('Accept', 'application/json');
-    req.onload = displayConfirmation.bind(null, campaign, form);
-    req.onerror = displayError.bind(null, campaign, form);
-    req.send(JSON.stringify(data));
+    const onLoadCallout = displayConfirmation.bind(null, campaign, form);
+    const onErrorCallout = displayError.bind(null, campaign, form);
+    POST("https://callouts.code.dev-guardianapis.com/formstack-campaign/submit", onLoadCallout, onErrorCallout, JSON.stringify(data))
 }
 
 function displayOfflineMessage(campaign) {
@@ -66,13 +64,24 @@ function hideOfflineMessage(campaign) {
 function displayConfirmation(campaign, form) {
     form.innerHTML = '<p>Thank you for your contribution</p>';
     campaign.className += ' campaign--success';
+    resetAndCheckForVideos();
+    initPositionPoller();
+    initMpuPoller(0);
 }
 
 function displayError(campaign, form) {
-    if (form.firstElementChild.className === 'campaign__error') {
-        form.insertAdjacentHTML('afterbegin', '<p class="campaign__error">Sorry, there was an error submitting your contribution. Please, try again.</p>');
+    const formError = document.querySelector('.js-form-error');
+    if (formError) {
+        formError.style.display = 'block';
     }
     enableButton(form);
+}
+
+function hideError() {
+    const formError = document.querySelector('.js-form-error');
+    if (formError) {
+        formError.style.display = 'none';
+    }
 }
 
 function displayWaiting(form) {
