@@ -3,6 +3,8 @@ import { resetAndCheckForVideos } from 'modules/youtube';
 import { initMpuPoller } from 'modules/ads';
 import { POST } from 'modules/http';
 
+const endpoint = GU.opts.campaignSubmissionEndpoint || "https://callouts.code.dev-guardianapis.com/formstack-campaign/submit";
+
 function init() {
     var campaign = document.querySelector('.campaign--snippet');
     if (campaign) {
@@ -48,7 +50,7 @@ function submit(data, campaign, form) {
     displayWaiting(form);
     const onLoadCallout = displayConfirmation.bind(null, campaign, form);
     const onErrorCallout = displayError.bind(null, campaign, form);
-    POST("https://callouts.code.dev-guardianapis.com/formstack-campaign/submit", onLoadCallout, onErrorCallout, JSON.stringify(data))
+    POST(endpoint, onLoadCallout, onErrorCallout, JSON.stringify(data))
 }
 
 function displayOfflineMessage(campaign) {
