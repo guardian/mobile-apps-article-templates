@@ -2,6 +2,7 @@ import { initPositionPoller } from 'modules/cards';
 import { resetAndCheckForVideos } from 'modules/youtube';
 import { initMpuPoller } from 'modules/ads';
 import { POST } from 'modules/http';
+import { scrollToElement } from 'modules/util';
 
 const endpoint = GU.opts.campaignSubmissionEndpoint || "https://callouts.code.dev-guardianapis.com/formstack-campaign/submit";
 
@@ -66,6 +67,7 @@ function hideOfflineMessage(campaign) {
 function displayConfirmation(campaign, form) {
     form.innerHTML = '<p>Thank you for your contribution</p>';
     campaign.className += ' campaign--success';
+    scrollToElement(campaign);
     resetAndCheckForVideos();
     initPositionPoller();
     initMpuPoller(0);
