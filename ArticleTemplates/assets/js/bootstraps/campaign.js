@@ -4,7 +4,7 @@ import { initMpuPoller } from 'modules/ads';
 import { POST } from 'modules/http';
 import { scrollToElement } from 'modules/util';
 
-const endpoint = GU.opts.campaignSubmissionEndpoint || "https://callouts.code.dev-guardianapis.com/formstack-campaign/submit";
+const endpoint = GU.opts.campaignsUrl;
 
 function init() {
     var campaign = document.querySelector('.campaign--snippet');
