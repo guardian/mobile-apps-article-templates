@@ -1,10 +1,20 @@
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
 const path = require('path');
 
 module.exports = (env, argv) => {
   const config = {
+    optimization: {
+      minimizer: [
+        new TerserPlugin({
+          terserOptions: {
+            keep_fnames: true,
+          }
+        })
+      ]
+    },
     entry: {
       boot: './ArticleTemplates/assets/js/boot.js',
         'style-sync': './ArticleTemplates/assets/scss/style-sync.scss',
@@ -106,4 +116,4 @@ module.exports = (env, argv) => {
     }
     
     return config;
-}; 
+};
