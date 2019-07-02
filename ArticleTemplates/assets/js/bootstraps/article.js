@@ -1,16 +1,10 @@
 import { init as youtubeInit } from 'modules/youtube';
 import { init as twitterInit } from 'modules/twitter';
-import { init as initOutbrain } from 'modules/outbrain';
 import { init as quizInit } from 'modules/quiz';
 import { init as immersiveInit } from 'modules/immersive';
 import { init as creativeInjectorInit } from 'modules/creativeInjector';
 import { init as messengerInit } from 'modules/messenger';
 import resizeInit from 'modules/messenger/resize';
-
-function setupGlobals() {
-    window.articleOutbrainInserter = initOutbrain;
-    window.applyNativeFunctionCall('articleOutbrainInserter');
-}
 
 function richLinkTracking() {
     let i;
@@ -36,7 +30,6 @@ function richLinkTracking() {
 }
 
 function init() {
-    setupGlobals();
     youtubeInit();
     twitterInit();
     quizInit();

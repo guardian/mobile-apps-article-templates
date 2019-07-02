@@ -17,7 +17,6 @@ const init = opts => {
         'articleCardsInserter',
         'articleCardsFailed',
         'articleTagInserter',
-        'articleOutbrainInserter',
         'audioBackground',
         'superAudioSlider',
         'audioPlay',

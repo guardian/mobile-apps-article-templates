@@ -1,7 +1,6 @@
 import { init as initRelativeDates } from 'modules/relativeDates';
 import { init as initTwitter, checkForTweets, enhanceTweets } from 'modules/twitter';
 import { init as initYoutube, checkForVideos, resetAndCheckForVideos } from 'modules/youtube';
-import { init as initOutbrain } from 'modules/outbrain';
 import { formatImages, loadEmbeds, loadInteractives } from 'bootstraps/common';
 import { getElemsFromHTML, signalDevice, getElementOffset, debounce } from 'modules/util';
 import { trackLiveBlogEpic } from 'modules/creativeInjector';
@@ -302,7 +301,6 @@ function setupGlobals() {
     window.liveblogInsertGap = liveblogInsertGap;
     window.liveblogNewKeyEvent = liveblogNewKeyEvent;
     window.scrollToBlock = scrollToBlock;
-    window.articleOutbrainInserter = initOutbrain;
     window.onGapClick = onGapClick;
 
     window.applyNativeFunctionCall('liveblogNewBlock');
@@ -312,7 +310,6 @@ function setupGlobals() {
     window.applyNativeFunctionCall('liveblogUpdateBlock');
     window.applyNativeFunctionCall('liveblogNewKeyEvent');
     window.applyNativeFunctionCall('scrollToBlock');
-    window.applyNativeFunctionCall('articleOutbrainInserter');
 }
 
 function keyEvents() {
