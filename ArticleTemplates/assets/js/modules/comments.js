@@ -1,6 +1,5 @@
 import { init as initRelativeDates } from 'modules/relativeDates';
-import { getElemsFromHTML } from 'modules/util';
-import SmoothScroll from 'smooth-scroll';
+import { getElemsFromHTML, scrollToElement } from 'modules/util';
 
 function targetContainsBlackListedClass(classList) {
     const stopPropagationBlackList = ['more--comments', 'comment__reply', 'comment__recommend',
@@ -222,10 +221,8 @@ function articleCommentsFailed() {
 }
 
 function scrollToHighlighted(commentId) {
-    const scroll = new SmoothScroll();
-    const comment = document.getElementById(commentId);
     setTimeout(() => {
-        scroll.animateScroll(comment, { speed: 1500 });
+        scrollToElement(document.getElementById(commentId));
     }, 100);
 }
 

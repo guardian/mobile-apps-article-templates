@@ -2,6 +2,9 @@ import { initPositionPoller } from 'modules/cards';
 import { resetAndCheckForVideos } from 'modules/youtube';
 import { initMpuPoller } from 'modules/ads';
 import { POST } from 'modules/http';
+import { scrollToElement } from 'modules/util';
+
+const endpoint = GU.opts.campaignsUrl;
 
 function init() {
     var campaign = document.querySelector('.campaign--snippet');
@@ -48,7 +51,7 @@ function submit(data, campaign, form) {
     displayWaiting(form);
     const onLoadCallout = displayConfirmation.bind(null, campaign, form);
     const onErrorCallout = displayError.bind(null, campaign, form);
-    POST("https://callouts.code.dev-guardianapis.com/formstack-campaign/submit", onLoadCallout, onErrorCallout, JSON.stringify(data))
+    POST(endpoint, onLoadCallout, onErrorCallout, JSON.stringify(data))
 }
 
 function displayOfflineMessage(campaign) {
@@ -64,6 +67,7 @@ function hideOfflineMessage(campaign) {
 function displayConfirmation(campaign, form) {
     form.innerHTML = '<p>Thank you for your contribution</p>';
     campaign.className += ' campaign--success';
+    scrollToElement(campaign);
     resetAndCheckForVideos();
     initPositionPoller();
     initMpuPoller(0);
