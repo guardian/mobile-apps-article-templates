@@ -13,6 +13,28 @@ function init() {
     }
 }
 
+function readFile(file, campaign, form) {
+    new Promise(res => {
+        const reader = new FileReader();
+        reader.addEventListener(
+            'load',
+            () => {
+                const fileAsBase64 = reader.result
+                    .toString()
+                    .split(';base64,')[1];
+                // remove data:*/*;base64, from the start of the base64 string
+                res(fileAsBase64);
+            },
+            false
+        );
+        reader.addEventListener('error', () => {
+            displayError(campaign, form);
+            // 'Sorry there was a problem with the file you uploaded above. Check the size and type. We only accept images, pdfs and .doc or .docx files'
+        });
+        reader.readAsDataURL(file);
+    });
+}
+
 function initCampaign(campaign) {
     if (!navigator.onLine) {
         displayOfflineMessage(campaign);
@@ -35,6 +57,8 @@ function initCampaign(campaign) {
                 if (e.checked) {
                     o[e.name] = o[e.name] ? o[e.name] + '\n' + e.value : e.value;
                 }
+            } else if (element.type === 'file'){
+                o[e.name] = readFile(element.files[0], campaign, form);
             } else if (e.value) {
                 o[e.name] = e.value;
             }
