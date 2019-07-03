@@ -6,7 +6,9 @@ let positionPoller;
 let adsType;
 
 function insertAdPlaceholders(mpuAfterParagraphs, amountOfMpu) {
-    for (let i = 1; numberOfMpus < amountOfMpu; i=i+2) {
+    const maxNumberofMpu = parseInt(amountOfMpu, 10) || 2;
+
+    for (let i = 1; numberOfMpus < maxNumberofMpu; i=i+2) {
         const mpu = createMpu(i);
         const nrParagraph = (parseInt(mpuAfterParagraphs * i, 10) || 6 * i) - 1;
         const placeholder = document.createElement('div');
@@ -246,7 +248,7 @@ function init(config) {
         adsReady = true;
         updateLiveblogAdPlaceholders();
     } else {
-        insertAdPlaceholders(config.mpuAfterParagraphs, 2);
+        insertAdPlaceholders(config.mpuAfterParagraphs, config.maxNumberofMpu);
     }
  
     if (adsReady) {

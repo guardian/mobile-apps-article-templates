@@ -96,7 +96,8 @@ const init = opts => {
             contentType,
             adsEnabled,
             adsConfig,
-            mpuAfterParagraphs
+            mpuAfterParagraphs,
+            maxNumberofMpu
         } = window.GU.opts;
 
         // ads positioning
@@ -104,7 +105,8 @@ const init = opts => {
             adsInit({
                 adsConfig,
                 adsType: getAdType(contentType),
-                mpuAfterParagraphs
+                mpuAfterParagraphs,
+                maxNumberofMpu
             });
         }
 
