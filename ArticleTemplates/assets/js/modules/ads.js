@@ -5,27 +5,31 @@ let numberOfMpus = 0;
 let positionPoller;
 let adsType;
 
-function insertAdPlaceholders(mpuAfterParagraphs) {
-    const mpu = createMpu(numberOfMpus);
-    const nrParagraph = (parseInt(mpuAfterParagraphs, 10) || 6) - 1;
-    const placeholder = document.createElement('div');
-    const placeholderSibling = document.querySelector('.article__body > div.prose > :first-child');
-    const mpuSibling = document.querySelector(`.article__body > div.prose > p:nth-of-type(${nrParagraph}) ~ p + p`);
+function insertAdPlaceholders(mpuAfterParagraphs, amountOfMpu) {
+    for (let i = 1; numberOfMpus < amountOfMpu; i=i+2) {
+        const mpu = createMpu(i);
+        const nrParagraph = (parseInt(mpuAfterParagraphs * i, 10) || 6 * i) - 1;
+        const placeholder = document.createElement('div');
+        const placeholderSibling = document.querySelector('.article__body > div.prose > :first-child');
+        const mpuSibling = document.querySelector(`.article__body > div.prose > p:nth-of-type(${nrParagraph}) ~ p + p`);
+    
+        if (!(mpuSibling && mpuSibling.parentNode)) {
+            // Not enough paragraphs on page to add advert
+            return;
+        }
+    
+        mpuSibling.parentNode.insertBefore(mpu, mpuSibling);
+    
+        placeholder.classList.add('advert-slot');
+        placeholder.classList.add('advert-slot--placeholder');
+    
+        // To mimic the correct positioning on full width tablet view, we will need an 
+        // empty div to pad out the text so we can position absolutely over it.
+        if (placeholderSibling && placeholderSibling.parentNode) {
+            placeholderSibling.parentNode.insertBefore(placeholder, placeholderSibling);
+        }
 
-    if (!(mpuSibling && mpuSibling.parentNode)) {
-        // Not enough paragraphs on page to add advert
-        return;
-    }
-
-    mpuSibling.parentNode.insertBefore(mpu, mpuSibling);
-
-    placeholder.classList.add('advert-slot');
-    placeholder.classList.add('advert-slot--placeholder');
-
-    // To mimic the correct positioning on full width tablet view, we will need an 
-    // empty div to pad out the text so we can position absolutely over it.
-    if (placeholderSibling && placeholderSibling.parentNode) {
-        placeholderSibling.parentNode.insertBefore(placeholder, placeholderSibling);
+        numberOfMpus++;
     }
 
     adsReady = true;
@@ -159,8 +163,8 @@ function updateAndroidPositionLiveblogCallback({ x1, y1, w1, h1, x2, y2, w2, h2 
     window.GuardianJSInterface.mpuLiveblogAdsPosition(x1, y1, w1, h1, x2, y2, w2, h2);
 }
 
-function updateAndroidPositionDefaultCallback({ x1, y1, w1, h1 }) {
-    window.GuardianJSInterface.mpuAdsPosition(x1, y1, w1, h1);
+function updateAndroidPositionDefaultCallback({ x1, y1, w1, h1, x2, y2, w2, h2 }) {
+    window.GuardianJSInterface.mpuAdsPosition(x1, y1, w1, h1, x2, y2, w2, h2);
 }
 
 function initMpuPoller(interval = 1000, firstRun = true) {
@@ -242,8 +246,7 @@ function init(config) {
         adsReady = true;
         updateLiveblogAdPlaceholders();
     } else {
-        numberOfMpus = 1;
-        insertAdPlaceholders(config.mpuAfterParagraphs);
+        insertAdPlaceholders(config.mpuAfterParagraphs, 2);
     }
  
     if (adsReady) {
