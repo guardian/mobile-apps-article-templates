@@ -409,6 +409,17 @@ function init() {
     initTwitter();
     initYoutube();
     setInterval(window.liveblogTime, 30000);
+
+    const articleBody = document.getElementsByClassName('article__body')[0];
+
+    let images = [];
+    Array.from(articleBody.getElementsByClassName('block')).forEach(block => {
+        images.push(...block.getElementsByTagName('img'));
+    })
+
+    setTimeout(() => {
+        formatImages(images)
+    }, 0);
 }
 
 export { init };

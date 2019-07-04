@@ -17,12 +17,14 @@ import { init as initHttp } from 'modules/http';
 
 let trackCommentContainerView = true;
         
-function init() {
+function init(liveBlog = false) {
     if ((GU && GU.opts && GU.opts.platform === 'android') || instagramHeader()) {
         // polyfill to remove click delays on browsers with touch
         attach(document.body);
     }
-    formatImages();
+    if (!liveBlog) {
+        formatImages();
+    }
     figcaptionToggle();
     articleContentType();
     insertTags();
