@@ -32,7 +32,7 @@ function readFile(file, campaign, form) {
             // 'Sorry there was a problem with the file you uploaded above. Check the size and type. We only accept images, pdfs and .doc or .docx files'
         });
         reader.readAsDataURL(file);
-    });
+    }).then(data => data)
 }
 
 function initCampaign(campaign) {
@@ -57,8 +57,8 @@ function initCampaign(campaign) {
                 if (e.checked) {
                     o[e.name] = o[e.name] ? o[e.name] + '\n' + e.value : e.value;
                 }
-            } else if (element.type === 'file'){
-                o[e.name] = readFile(element.files[0], campaign, form);
+            } else if (e.type === 'file'){
+                o[e.name] = readFile(e.files[0], campaign, form);
             } else if (e.value) {
                 o[e.name] = e.value;
             }
