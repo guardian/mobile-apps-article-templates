@@ -14,7 +14,7 @@ function init() {
 }
 
 function readFile(file, campaign, form) {
-    return new Promise(res => {
+    return new Promise((resolve, reject) => {
         const reader = new FileReader();
 
         reader.addEventListener('load', () => {
@@ -22,13 +22,12 @@ function readFile(file, campaign, form) {
                     .toString()
                     .split(';base64,')[1];
                 // remove data:*/*;base64, from the start of the base64 string
-                res(fileAsBase64);
+                resolve(fileAsBase64);
             }
         );
 
         reader.addEventListener('error', () => {
-            displayFileError(campaign, form);
-            res(null);
+            reject();
         });
 
         reader.readAsDataURL(file);
@@ -49,7 +48,9 @@ function initCampaign(campaign) {
     window.addEventListener('online', hideOfflineMessage.bind(null, campaign));
     window.addEventListener('offline', displayOfflineMessage.bind(null, campaign));
 
-    var form = campaign.querySelector('form');
+    let form = campaign.querySelector('form');
+    let promises = [];
+    let keys = [];
     form.addEventListener('submit', function (e) {
         displayWaiting(form);
         e.preventDefault();
@@ -59,7 +60,10 @@ function initCampaign(campaign) {
                     o[e.name] = o[e.name] ? o[e.name] + '\n' + e.value : e.value;
                 }
             } else if (e.type === 'file') {
-                o[e.name] = readFile(e.files[0], campaign, form);
+                const filePromise = readFile(e.files[0], campaign, form);
+                promises.push(filePromise);
+                keys.push(e.name);
+                o[e.name] = filePromise;
             } else if (e.value) {
                 o[e.name] = e.value;
             }
@@ -67,22 +71,14 @@ function initCampaign(campaign) {
             return o;    
         }, {});
 
-        let promises = [];
-        let keys = [];
-        for (var key in data) {
-            if (data.hasOwnProperty(key) && data[key] instanceof Promise) {
-                keys.push(key)
-                promises.push(data[key]);
-            }
-        }
-
         Promise.all(promises).then(results => {
             results.map((result, index) => {
                 data[keys[index]] = result;
             })
 
-            disableButton(form);
             submit(data, campaign, form);
+        }).catch(() => {
+            displayFileError(campaign, form);
         })
     });
 }
