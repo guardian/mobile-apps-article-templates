@@ -14,25 +14,26 @@ function init() {
 }
 
 function readFile(file, campaign, form) {
-    new Promise(res => {
+    return new Promise(res => {
         const reader = new FileReader();
-        reader.addEventListener(
-            'load',
-            () => {
+
+        reader.addEventListener('load', () => {
                 const fileAsBase64 = reader.result
                     .toString()
                     .split(';base64,')[1];
                 // remove data:*/*;base64, from the start of the base64 string
                 res(fileAsBase64);
-            },
-            false
+            }
         );
+
         reader.addEventListener('error', () => {
             displayError(campaign, form);
+            res(null);
             // 'Sorry there was a problem with the file you uploaded above. Check the size and type. We only accept images, pdfs and .doc or .docx files'
         });
+
         reader.readAsDataURL(file);
-    }).then(data => data)
+    })
 }
 
 function initCampaign(campaign) {
@@ -51,6 +52,7 @@ function initCampaign(campaign) {
 
     var form = campaign.querySelector('form');
     form.addEventListener('submit', function (e) {
+        displayWaiting(form);
         e.preventDefault();
         var data = Array.from(form.elements).reduce(function (o, e) {
             if (e.type === 'checkbox') {
@@ -65,14 +67,29 @@ function initCampaign(campaign) {
             
             return o;    
         }, {});
-        disableButton(form);
-        submit(data, campaign, form);
+
+        let promises = [];
+        let keys = [];
+        for (var key in data) {
+            if (data.hasOwnProperty(key) && data[key] instanceof Promise) {
+                keys.push(key)
+                promises.push(data[key]);
+            }
+        }
+
+        Promise.all(promises).then(results => {
+            results.map((result, index) => {
+                data[keys[index]] = result;
+            })
+
+            disableButton(form);
+            submit(data, campaign, form);
+        })
     });
 }
 
 function submit(data, campaign, form) {
     hideError();
-    displayWaiting(form);
     const onLoadCallout = displayConfirmation.bind(null, campaign, form);
     const onErrorCallout = displayError.bind(null, campaign, form);
     POST(endpoint, onLoadCallout, onErrorCallout, JSON.stringify(data))
