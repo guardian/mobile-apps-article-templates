@@ -218,7 +218,7 @@ function insertAfter(referenceNode, newNode) {
 
 function onGapClick(e, afterBlockId, paginationLink) {
     e.preventDefault();
-    Array.from(document.getElementsByClassName(`after-${afterBlockId}`)).forEach(gap => {
+    [].slice.call(document.getElementsByClassName(`after-${afterBlockId}`)).forEach(gap => {
         gap.parentNode.removeChild(gap);
     });
     document.getElementById(`loading-${afterBlockId}`).style.display = "block";
@@ -412,14 +412,16 @@ function init() {
 
     const articleBody = document.getElementsByClassName('article__body')[0];
 
-    let images = [];
-    Array.from(articleBody.getElementsByClassName('block')).forEach(block => {
-        images.push(...block.getElementsByTagName('img'));
-    })
+    if (articleBody) {
+        let images = [];
+        [].slice.call(articleBody.getElementsByClassName('block')).forEach(block => {
+            images.push(...block.getElementsByTagName('img'));
+        })
 
-    setTimeout(() => {
-        formatImages(images)
-    }, 0);
+        setTimeout(() => {
+            formatImages(images)
+        }, 0);
+    }
 }
 
 export { init };
