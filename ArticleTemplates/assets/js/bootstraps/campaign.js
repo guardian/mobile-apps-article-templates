@@ -27,9 +27,8 @@ function readFile(file, campaign, form) {
         );
 
         reader.addEventListener('error', () => {
-            displayError(campaign, form);
+            displayFileError(campaign, form);
             res(null);
-            // 'Sorry there was a problem with the file you uploaded above. Check the size and type. We only accept images, pdfs and .doc or .docx files'
         });
 
         reader.readAsDataURL(file);
@@ -59,7 +58,7 @@ function initCampaign(campaign) {
                 if (e.checked) {
                     o[e.name] = o[e.name] ? o[e.name] + '\n' + e.value : e.value;
                 }
-            } else if (e.type === 'file'){
+            } else if (e.type === 'file') {
                 o[e.name] = readFile(e.files[0], campaign, form);
             } else if (e.value) {
                 o[e.name] = e.value;
@@ -122,10 +121,23 @@ function displayError(campaign, form) {
     enableButton(form);
 }
 
+function displayFileError(campaign, form) {
+    const fileError = document.querySelector('.js-file-error');
+    if (fileError) {
+        fileError.style.display = 'block';
+    }
+    enableButton(form);
+}
+
 function hideError() {
     const formError = document.querySelector('.js-form-error');
+    const fileError = document.querySelector('.js-file-error');
     if (formError) {
         formError.style.display = 'none';
+    }
+
+    if (fileError) {
+        fileError.style.display = 'none';
     }
 }
 
