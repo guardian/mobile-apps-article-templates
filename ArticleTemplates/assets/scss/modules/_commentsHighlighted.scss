@@ -1,6 +1,6 @@
 .comments {
     .block--highlighted {
-        margin: 12px 12px 24px;
+        margin: 12px 8px 24px 8px;
 
         .comment__container {
             padding: 12px;
@@ -75,6 +75,11 @@
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
+        }
+
+        @include mq($from: col4) {
+            margin-right: 0;
+            margin-left: 12px;
         }
     }
 }
