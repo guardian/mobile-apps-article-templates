@@ -5,6 +5,27 @@ let numberOfMpus = 0;
 let positionPoller;
 let adsType;
 
+function insertAdPlaceholdersGallery(mpuAfterImages) {
+    const mpu = createMpu(numberOfMpus);
+    const nrImages = (parseInt(mpuAfterImages, 10) || 6) - 1;
+    const placeholder = document.createElement('div');
+    const images = document.querySelectorAll(`.gallery .touch-gallery .touch-gallery__images`);
+
+    if (nrImages > images.length) {
+        // Not enough images
+        return;
+    }
+
+    const image = images[nrImages];
+
+    image.parentNode.insertBefore(mpu, image);
+
+    placeholder.classList.add('advert-slot');
+    placeholder.classList.add('advert-slot--placeholder');
+
+    adsReady = true;
+}
+
 function insertAdPlaceholders(mpuAfterParagraphs) {
     const mpu = createMpu(numberOfMpus);
     const nrParagraph = (parseInt(mpuAfterParagraphs, 10) || 6) - 1;
@@ -241,6 +262,10 @@ function init(config) {
     if (adsType === 'liveblog') {
         adsReady = true;
         updateLiveblogAdPlaceholders();
+    } else if (adsType === 'gallery') {
+        numberOfMpus = 1;
+        const mpuAfterImages = 4;
+        insertAdPlaceholdersGallery(mpuAfterImages);
     } else {
         numberOfMpus = 1;
         insertAdPlaceholders(config.mpuAfterParagraphs);
