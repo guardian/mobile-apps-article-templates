@@ -121,6 +121,12 @@
             color: color(brightness-100);
         }
 
+        .standfirst {
+            ul > li {
+                @include faux-bullet();
+            }
+        }
+
         .byline {
             color: color(brightness-60);
         }
@@ -174,7 +180,6 @@
         }
     }
 
-    // Template specific styles
     .article--audio {
         .article__header {
             background-image: -webkit-canvas(circles);
@@ -194,5 +199,4 @@
             background-color: transparent;
         }
     }
-
 }
