@@ -30,6 +30,8 @@ function readFile(file, campaign, form) {
             reject();
         });
 
+        setTimeout(reject, 30000);
+
         reader.readAsDataURL(file);
     })
 }
