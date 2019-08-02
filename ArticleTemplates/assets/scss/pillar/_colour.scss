@@ -310,6 +310,23 @@
             }
         }
     }
+    .prose, .article__header {
+        .bullet {
+            @include faux-bullet($color: $p-kicker, $right-space: 4px);
+        }
+
+        ul > li {
+            @include faux-bullet();
+        }
+    }
+
+    &.garnett--type-media, &.garnett--type-guardianlabs {
+        .article__header, .prose {
+            ul > li, .bullet {
+                @include faux-bullet($color: color(brightness-60));
+            }
+        }
+    }
 }
 
 // CSS for reversible pillar colours, this means we can
