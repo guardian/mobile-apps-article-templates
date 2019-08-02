@@ -17,6 +17,8 @@ function readFile(file, campaign, form) {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
 
+        setTimeout(reject, 30000);
+
         reader.addEventListener('load', () => {
                 const fileAsBase64 = reader.result
                     .toString()
@@ -29,8 +31,6 @@ function readFile(file, campaign, form) {
         reader.addEventListener('error', () => {
             reject();
         });
-
-        setTimeout(reject, 30000);
 
         reader.readAsDataURL(file);
     })
@@ -61,7 +61,7 @@ function initCampaign(campaign) {
                 if (e.checked) {
                     o[e.name] = o[e.name] ? o[e.name] + '\n' + e.value : e.value;
                 }
-            } else if (e.type === 'file') {
+            } else if (e.type === 'file' && e.files.length) {
                 const filePromise = readFile(e.files[0], campaign, form);
                 promises.push(filePromise);
                 keys.push(e.name);
