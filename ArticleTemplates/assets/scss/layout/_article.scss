@@ -11,9 +11,6 @@
 }
 
 .article__header {
-    ul > li {
-        @include faux-bullet($color: color(brightness-86), $right-space: 6px);
-    }
 
     .article-kicker,
     .headline {
@@ -90,6 +87,10 @@
 
     .video-URL {
         clear: both; // floating asides can cause video to display incorrectly
+
+        & + figcaption {
+            padding: 2px base-px(1);
+        }
     }
 
     // Football player cards should appear floated right above mobile breakpoint
@@ -121,8 +122,16 @@
             & .element-video:first-of-type,
             & .element-placeholder:first-of-type,
             & .figure-wide:first-of-type {
-                display: inline-block;            
+                display: inline-block;
             }
+        }
+    }
+
+    // Only show one discalimer on gallery pages
+    .affiliate-links-disclaimer {
+        display: none;
+        &:nth-of-type(1) {
+            display: inherit;
         }
     }
 }

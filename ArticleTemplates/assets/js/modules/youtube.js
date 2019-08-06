@@ -7,7 +7,10 @@ let progressTracker = {};
 let scriptReady = false;
 let sdkPlaceholders = [];
 let sdkReport;
+let sdkPollCount = 0;
+const sdkMaxPollCount = 100;
 let sdkReportInitialised = false;
+let sdkPoller;
 
 const PLAY_STATE = 'PLAYING';
 const END_STATE = 'ENDED';
@@ -28,7 +31,7 @@ function killProgressTracker(force, id) {
     }
 }
 
-function videoPositionUpdate() {
+function checkForVideos() {
     const iframes = document.body.querySelectorAll('iframe.youtube-media');
 
     const isPreviousElementSDKPlaceholder = element => {
@@ -76,6 +79,19 @@ function videoPositionUpdate() {
 
             sdkReportInitialised = true;
         }
+
+        if (sdkPoller) {
+            clearInterval(sdkPoller);
+        }
+
+        sdkPoller = setInterval(() => {
+            if (sdkPollCount < sdkMaxPollCount) {
+                 buildAndSendSdkReport();
+                 sdkPollCount++;
+            } else {
+                clearInterval(sdkPoller);
+            }
+        }, 200);
     }
 }
 
@@ -86,6 +102,11 @@ function buildAndSendSdkReport() {
         signalDevice(`youtubeAtomPosition/${newSdkReport}`);
         sdkReport = newSdkReport;
     }
+}
+
+function resetAndCheckForVideos() {
+    sdkPollCount = 0;
+    checkForVideos();
 }
 
 function buildSdkReport() {
@@ -329,7 +350,7 @@ function addCaptions() {
                 caption.innerHTML = `
                     <span class="youtube-sdk-caption">
                         <span data-icon="&#xe043;" class="figure__caption__icon" aria-hidden="true"></span>
-                        ${title}
+                        ${title.replace(" – video", "")}
                     </span>
                `;
                insertAfter(caption, placeholder.closest('.element-atom'));
@@ -342,8 +363,8 @@ function addCaptions() {
 
 function init() {
     setStateHandlers();
-    videoPositionUpdate();
+    checkForVideos();
     addCaptions();
 }
 
-export { init, append, videoPositionUpdate };
+export { init, checkForVideos, append, resetAndCheckForVideos };

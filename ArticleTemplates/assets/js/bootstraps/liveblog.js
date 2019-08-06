@@ -1,10 +1,11 @@
 import { init as initRelativeDates } from 'modules/relativeDates';
 import { init as initTwitter, checkForTweets, enhanceTweets } from 'modules/twitter';
-import { init as initYoutube } from 'modules/youtube';
-import { init as initOutbrain } from 'modules/outbrain';
+import { init as initYoutube, checkForVideos, resetAndCheckForVideos } from 'modules/youtube';
 import { formatImages, loadEmbeds, loadInteractives } from 'bootstraps/common';
 import { getElemsFromHTML, signalDevice, getElementOffset, debounce } from 'modules/util';
 import { trackLiveBlogEpic } from 'modules/creativeInjector';
+import { initMpuPoller } from 'modules/ads';
+import { initPositionPoller } from 'modules/cards';
 
 let newBlockHtml;
 let liveblogStartPos;
@@ -43,7 +44,28 @@ function addNewBlockToBlog(insertAfterElem, block) {
 }
 
 function checkInjectedComponents(newBlocksAdded) {
+    // When a block has loaded check position of related cards placeholder
+    initPositionPoller();
+    initMpuPoller(0);
+    resetAndCheckForVideos();
+
+    // check for tweets
     checkForTweets();
+
+    if (newBlocksAdded) {
+        /**
+            If newBlocksAdded wait 700ms to
+            check for youtube video atoms as blocks slides in
+            from right over 600ms.
+        **/
+        setTimeout(() => {
+            checkForVideos();
+        }, 650);
+    } else {
+        checkForVideos();
+    }
+
+    // if there is a contributions epic, track it
     trackLiveBlogEpic();
 }
 
@@ -196,7 +218,7 @@ function insertAfter(referenceNode, newNode) {
 
 function onGapClick(e, afterBlockId, paginationLink) {
     e.preventDefault();
-    Array.from(document.getElementsByClassName(`after-${afterBlockId}`)).forEach(gap => {
+    [].slice.call(document.getElementsByClassName(`after-${afterBlockId}`)).forEach(gap => {
         gap.parentNode.removeChild(gap);
     });
     document.getElementById(`loading-${afterBlockId}`).style.display = "block";
@@ -279,7 +301,6 @@ function setupGlobals() {
     window.liveblogInsertGap = liveblogInsertGap;
     window.liveblogNewKeyEvent = liveblogNewKeyEvent;
     window.scrollToBlock = scrollToBlock;
-    window.articleOutbrainInserter = initOutbrain;
     window.onGapClick = onGapClick;
 
     window.applyNativeFunctionCall('liveblogNewBlock');
@@ -289,7 +310,6 @@ function setupGlobals() {
     window.applyNativeFunctionCall('liveblogUpdateBlock');
     window.applyNativeFunctionCall('liveblogNewKeyEvent');
     window.applyNativeFunctionCall('scrollToBlock');
-    window.applyNativeFunctionCall('articleOutbrainInserter');
 }
 
 function keyEvents() {
@@ -375,6 +395,19 @@ function init() {
     initTwitter();
     initYoutube();
     setInterval(window.liveblogTime, 30000);
+
+    const articleBody = document.getElementsByClassName('article__body')[0];
+
+    if (articleBody) {
+        let images = [];
+        [].slice.call(articleBody.getElementsByClassName('block')).forEach(block => {
+            images.push(...block.getElementsByTagName('img'));
+        })
+
+        setTimeout(() => {
+            formatImages(images)
+        }, 0);
+    }
 }
 
 export { init };

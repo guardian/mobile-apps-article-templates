@@ -13,6 +13,10 @@
 
 body[data-fullscreen-interactive] {
     margin: 0;
+
+    a {
+        text-decoration: none;
+    }
 }
 
 .interactive--offline {
@@ -100,4 +104,15 @@ body[data-fullscreen-interactive] {
 @-webkit-keyframes fadeIn {
     from {opacity: 0;}
     to {opacity: 1;}
+}
+
+// Hide interactive nav - Content funding on the Guardian
+.element-interactive .nav_wrapper.element {
+    display: none;
+}
+
+body[data-fullscreen-interactive] {
+    .element-interactive .nav_wrapper.element {
+        display: initial;
+    }
 }

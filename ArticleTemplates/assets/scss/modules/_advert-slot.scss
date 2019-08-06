@@ -25,7 +25,7 @@
     @include meta();
     color: color(brightness-46);
     font-family: $guardian-sans;
-    background: rgba(color(brightness-60), .2);
+    background: color(brightness-93);
     display: none;
     overflow: auto;
 
@@ -71,28 +71,10 @@
     }
 }
 
-.container__outbrain {
-    .advert-slot__action {
-        @include meta;
-        color: color(brightness-46);
-        float: right;
-        font-family: $guardian-sans;
-        margin: base-px(.5, 1);
-        padding-right: 20px;
-        position: relative;
-
-        span[data-icon] {
-            font-size: 1.3em;
-            position: absolute;
-            right: 0;
-            top: 0;
-        }
-    }
-}
-
 // MPU-size advert
 .advert-slot--mpu {
     border-top: 1px solid color(tone-sandy-light);
+    border-bottom: 1px solid color(tone-sandy-light);
     display: block;
     margin: 0 auto;
     width: 300px;
@@ -183,5 +165,30 @@
         float: none;
         margin: 0 auto;
         position: static;
+    }
+}
+
+.garnett--type-media {
+    .advert-slot {
+        background: color(brightness-46);
+        color: color(brightness-100);
+
+        .advert-slot__action {
+            color: color(brightness-100) !important;
+        }
+    }
+
+    .advert-slot--mpu {
+        border-top: 1px solid color(brightness-20);
+        border-bottom: 1px solid color(brightness-20);
+        margin: 0 0 32px 0;
+
+        @include mq($from: col2) {
+            clear: both;
+            position: relative;
+            top: auto;
+            right: auto;
+            margin-left: 8px;
+        }
     }
 }

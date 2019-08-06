@@ -137,6 +137,7 @@
         font-family: $guardian-sans;
         font-size: 1.3rem;
         line-height: 2.2rem;
+        margin-top: base-px(1);
     }
 
     .block__byline {
@@ -214,7 +215,7 @@
         }
 
         figcaption {
-            padding: base-px(.25, 0, 1, .33);
+            padding: base-px(.125, 0, 1, .33);
         }
 
         @include mq($to: col1) {
@@ -248,14 +249,10 @@
             margin-top: -3px;
             margin-bottom: 1em;
         }
-    }
-}
 
-.block--live-summary {
-    background-color: darken(color(brightness-93), 4%);
-    border: 1px solid color(tone-sandy-light);
-
-    .block__time {
-        font-weight: bold;
+        h2 + .figure--thumbnail-with-caption,
+        h2 + .figure--thumbnail {
+            margin: 6px 9px 6px 0;
+        }
     }
 }

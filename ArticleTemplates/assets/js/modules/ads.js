@@ -2,8 +2,29 @@ import { signalDevice, getElementOffset } from "modules/util";
 
 let adsReady = false;
 let numberOfMpus = 0;
+let positionPoller;
 let adsType;
-let adPositions;
+
+function insertAdPlaceholdersGallery(mpuAfterImages) {
+    const mpu = createMpu(numberOfMpus);
+    const nrImages = (parseInt(mpuAfterImages, 10) || 6) - 1;
+    const placeholder = document.createElement('div');
+    const images = document.querySelectorAll(`.gallery .touch-gallery .touch-gallery__images`);
+
+    if (nrImages > images.length) {
+        // Not enough images
+        return;
+    }
+
+    const image = images[nrImages];
+
+    image.parentNode.insertBefore(mpu, image);
+
+    placeholder.classList.add('advert-slot');
+    placeholder.classList.add('advert-slot--placeholder');
+
+    adsReady = true;
+}
 
 function insertAdPlaceholders(mpuAfterParagraphs) {
     const mpu = createMpu(numberOfMpus);
@@ -163,8 +184,25 @@ function updateAndroidPositionDefaultCallback({ x1, y1, w1, h1 }) {
     window.GuardianJSInterface.mpuAdsPosition(x1, y1, w1, h1);
 }
 
-function adPositionUpdate() {
+function initMpuPoller(interval = 1000, firstRun = true) {
+    if (positionPoller !== null) {
+        window.clearTimeout(positionPoller);
+    }
+
+    poller(interval,
+        getMpuOffset(),
+        firstRun
+    );
+}
+
+function poller(interval, adPositions, firstRun) {
     let newAdPositions = getMpuOffset();
+
+    if (firstRun && GU.opts.platform === 'android') {
+        updateAndroidPosition();
+    } else if (firstRun) {
+        signalDevice('ad_moved');
+    }
 
     if (newAdPositions !== adPositions) {
         if (GU.opts.platform === 'android'){
@@ -172,9 +210,14 @@ function adPositionUpdate() {
         } else {
             signalDevice('ad_moved');
         }
-
-        adPositions = newAdPositions;
     }
+
+    positionPoller = setTimeout(poller.bind(null, interval + 50, newAdPositions), interval);
+}
+
+function killMpuPoller() {
+    window.clearTimeout(positionPoller);
+    positionPoller = null;
 }
 
 function fireAdsReady() {
@@ -204,8 +247,12 @@ function updateMPUPosition(yPos) {
 }
 
 function setupGlobals() {
+    window.initMpuPoller = initMpuPoller;
+    window.killMpuPoller = killMpuPoller;
     window.getMpuPosCommaSeparated = getMpuPosCommaSeparated;
     window.updateLiveblogAdPlaceholders = updateLiveblogAdPlaceholders;
+
+    window.applyNativeFunctionCall('initMpuPoller');
 }
 
 function init(config) {
@@ -215,14 +262,21 @@ function init(config) {
     if (adsType === 'liveblog') {
         adsReady = true;
         updateLiveblogAdPlaceholders();
+    } else if (adsType === 'gallery') {
+        numberOfMpus = 1;
+        const mpuAfterImages = 4;
+        insertAdPlaceholdersGallery(mpuAfterImages);
     } else {
         numberOfMpus = 1;
         insertAdPlaceholders(config.mpuAfterParagraphs);
     }
  
     if (adsReady) {
+        if (GU.opts.platform !== 'android') {
+            initMpuPoller();
+        }
         fireAdsReady();
     }
 }
 
-export { init, updateMPUPosition, adPositionUpdate };
+export { init, updateMPUPosition, initMpuPoller };

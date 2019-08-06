@@ -1,6 +1,5 @@
 import { attach } from 'fastclick';
 import { render } from 'fence';
-
 import {
     getClosestParentWithTag,
     debounce,
@@ -8,25 +7,24 @@ import {
     signalDevice,
     isElementPartiallyInViewport,
 } from 'modules/util';
-
 import { init as initComments } from 'modules/comments';
 import { init as initCards } from 'modules/cards';
 import { init as initMoreTags } from 'modules/more-tags';
 import { init as initRichLinks } from 'modules/rich-links';
 import { init as initAB } from 'modules/experiments/ab';
-
-import { relatedContentPositionUpdate } from 'modules/cards';
-import { adPositionUpdate } from 'modules/ads';
-import { videoPositionUpdate } from 'modules/youtube';
+import { initMpuPoller } from 'modules/ads';
+import { init as initHttp } from 'modules/http';
 
 let trackCommentContainerView = true;
         
-function init() {
+function init(liveBlog = false) {
     if ((GU && GU.opts && GU.opts.platform === 'android') || instagramHeader()) {
         // polyfill to remove click delays on browsers with touch
         attach(document.body);
     }
-    formatImages();
+    if (!liveBlog) {
+        formatImages();
+    }
     figcaptionToggle();
     articleContentType();
     insertTags();
@@ -44,17 +42,15 @@ function init() {
     setGlobalObject(window);
     fixSeries();
     advertorialUpdates();
-    setupTracking();
+    setupTracking(); // track common events
     initAB();
     initRichLinks();
+    initHttp();
     setupForms();
-    notifyNativeLayers();
 
     if (!document.body.classList.contains('no-ready')) {
         signalDevice('ready');
     }
-
-    window.bodyHeight = window.document.body.clientHeight;
 }
 
 function formatImages(images) {
@@ -504,6 +500,7 @@ function showTab(tab, tabContainer, evt) {
     let activeTab;
     let tabId;
 
+    initMpuPoller();
     evt.preventDefault();
 
     if (tab.getAttribute('aria-selected') !== 'true') {
@@ -677,11 +674,13 @@ function setupForms() {
     let fenceElems = document.querySelectorAll('iframe.fenced');
     let checkForLinks;
     let attempts = 0;
+    let replaced = false;
     if (fenceElems) {
         checkForLinks = setInterval(() => {
             attempts += 1;
             fenceElems.forEach(elem => {
                 elem.contentWindow.document.querySelectorAll('.fsBody link').forEach(link => {
+                    replaced = true;
                     if (link.href.startsWith("file:")) {
                         link.href = link.href.replace('file:', 'http:');
                     } else if (link.href.startsWith("//")) {
@@ -690,35 +689,10 @@ function setupForms() {
                 });
             });
 
-            if (attempts >= 5) {
+            if (attempts >= 20 || replaced) {
                 clearInterval(checkForLinks);
             }
-        }, 1000);
-    }
-}
-
-function notifyNativeLayers() {
-    const targetNode = document.body;
-    const config = { attributes: true, childList: true, subtree: true };
-    const observer = new MutationObserver(sendUpdatesToNative);
-    observer.observe(targetNode, config);
-}
-
-function sendUpdatesToNative(mutation) {
-    bodyHeightChange();
-    // After most animations
-    setTimeout(bodyHeightChange, 300);
-    // After LiveBlog animations
-    setTimeout(bodyHeightChange, 700);
-}
-
-function bodyHeightChange() {
-    const currentBodyHeight = window.document.body.clientHeight;
-    if (window.bodyHeight !== currentBodyHeight) {
-        relatedContentPositionUpdate();
-        adPositionUpdate();
-        videoPositionUpdate();
-        window.bodyHeight = currentBodyHeight;
+        }, 500);
     }
 }
 

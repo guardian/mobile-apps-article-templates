@@ -1,6 +1,7 @@
 import SmoothScroll from 'smooth-scroll';
 import { updateMPUPosition } from 'modules/ads';
 import { getStringFromUnicodeVal, getElementOffset } from 'modules/util';
+import { initPositionPoller } from 'modules/cards';
 
 let numAnswered;
 let questionCount;
@@ -340,6 +341,7 @@ function adjustAdPosition(yPos, startTime, timeStamp) {
 }
 
 function onNewsAnswerClick(answer, question, isImage) {
+    initPositionPoller();
     let answerPara;
     let correctAnswerWrapper;
     const startTime = null;
@@ -388,6 +390,7 @@ function onNewsAnswerClick(answer, question, isImage) {
 }
 
 function onPersonalityAnswerClick(answer, question) {
+    initPositionPoller();
     let highlightedAnswer;
     let answerBuckets;
     let highlightedAnswerBuckets;
@@ -460,6 +463,7 @@ function showScore() {
     document.getElementsByClassName('quiz-scores__correct')[0].innerHTML = score.toString();
     document.getElementsByClassName('quiz-scores__message')[0].innerHTML = scoreDisplayMessage;
     document.getElementsByClassName('quiz-scores')[0].classList.add('open');
+    initPositionPoller();
 
     // Scroll score panel into view
     const scroll = new SmoothScroll();
@@ -487,6 +491,7 @@ function showResult() {
     document.getElementsByClassName('quiz-results__description')[0].innerHTML = resultDescription;
     document.getElementsByClassName('quiz-results__title')[0].innerHTML = resultTitle;
     document.getElementsByClassName('quiz-results')[0].classList.add('open');
+    initPositionPoller();
 
     // Scroll result panel into view
     const scroll = new SmoothScroll();

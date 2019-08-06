@@ -1,17 +1,26 @@
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
 const path = require('path');
 
 module.exports = (env, argv) => {
   const config = {
+    optimization: {
+      minimizer: [
+        new TerserPlugin({
+          terserOptions: {
+            keep_fnames: true,
+          }
+        })
+      ]
+    },
     entry: {
       boot: './ArticleTemplates/assets/js/boot.js',
         'style-sync': './ArticleTemplates/assets/scss/style-sync.scss',
         'style-async': './ArticleTemplates/assets/scss/style-async.scss',
         'fonts-ios': './ArticleTemplates/assets/scss/fonts-ios.scss',
         'fonts-android': './ArticleTemplates/assets/scss/fonts-android.scss',
-        'outbrain': './ArticleTemplates/assets/scss/outbrain.scss',
         'interactive': './ArticleTemplates/assets/scss/interactive.scss',
       },
       output: {
@@ -69,6 +78,9 @@ module.exports = (env, argv) => {
         ]
       },
       plugins: [
+        new webpack.optimize.LimitChunkCountPlugin({
+          maxChunks: 1,
+        }),
         new webpack.DefinePlugin({
           BUILD_NUMBER: process.env.BUILD_NUMBER || 0
         }),
@@ -103,4 +115,4 @@ module.exports = (env, argv) => {
     }
     
     return config;
-}; 
+};

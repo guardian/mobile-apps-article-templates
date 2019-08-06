@@ -165,23 +165,30 @@
         font-family: $egyptian-display;
         font-weight: 600;
         font-size: 1em;
-        margin: .75em 0;
-        clear: both;
-
-        & + p {
-            margin-top: base-px(-1);
-        }
-
-        @include mq($to: col2) {
-            & + .element-embed {
-                margin-top: base-px(-1);
-            }
-        }
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 0;
 
         strong,
         b {
             font-weight: bold;
         }
+    }
+
+    p + h2,
+    figure.figure-wide + h2,
+    div + h2 {
+        margin: base-px(2, 0, 0, 0);
+    }
+
+    h2 + p,
+    h2 + figure {
+        margin: base-px(.5, 0, 1, 0);
+    }
+
+    h2 + .figure--thumbnail-with-caption,
+    h2 + .figure--thumbnail {
+        margin: 18px 9px 6px 0;
     }
 
     hr {
@@ -206,8 +213,6 @@
     }
 
     ul > li {
-        @include faux-bullet();
-
         p {
             display: inline;
         }

@@ -1,3 +1,5 @@
+import SmoothScroll from 'smooth-scroll';
+
 function isElementPartiallyInViewport(el) {
     const rect = el.getBoundingClientRect();
     const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
@@ -129,7 +131,12 @@ function getAndroidVersion() {
     const ua = navigator.userAgent.toLowerCase();
     const match = ua.match(/android\s([0-9\.]*)/);
     return match ? match[1] : undefined;
-};
+}
+
+function scrollToElement(element) {
+    const scroll = new SmoothScroll();
+    scroll.animateScroll(element, { speed: 1500 });
+}
 
 export {
     isElementPartiallyInViewport,
@@ -144,5 +151,6 @@ export {
     getElemsFromHTML,
     append,
     insertAfter,
-    getAndroidVersion
+    getAndroidVersion,
+    scrollToElement
 };

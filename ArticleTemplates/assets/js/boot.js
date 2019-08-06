@@ -17,7 +17,6 @@ const init = opts => {
         'articleCardsInserter',
         'articleCardsFailed',
         'articleTagInserter',
-        'articleOutbrainInserter',
         'audioBackground',
         'superAudioSlider',
         'audioPlay',
@@ -39,6 +38,7 @@ const init = opts => {
         'liveblogUpdateBlock',
         'liveblogNewKeyEvent',
         'getMpuPosCallback',
+        'initMpuPoller',
         'videoPositioning',
         'getArticleHeight',
         'injectInlineArticleMembershipCreative'
@@ -87,6 +87,10 @@ const init = opts => {
             if ((contentType === 'liveblog') ||
                 (contentType !== 'liveblog' && document.querySelector('.article__body--liveblog'))) {
                 return 'liveblog';
+            }
+
+            if (contentType === 'gallery') {
+                return 'gallery';
             }
 
             return 'default';
