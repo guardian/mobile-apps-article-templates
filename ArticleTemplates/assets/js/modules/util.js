@@ -138,6 +138,10 @@ function scrollToElement(element) {
     scroll.animateScroll(element, { speed: 1500 });
 }
 
+function isAdvertising() {
+    return !!document.querySelector('body.is_advertising');
+}
+
 export {
     isElementPartiallyInViewport,
     getElementOffset,
@@ -152,5 +156,6 @@ export {
     append,
     insertAfter,
     getAndroidVersion,
-    scrollToElement
+    scrollToElement,
+    isAdvertising
 };

@@ -1,4 +1,4 @@
-import { signalDevice, getElementOffset } from "modules/util";
+import { signalDevice, getElementOffset, isAdvertising } from "modules/util";
 
 let adsReady = false;
 let numberOfMpus = 0;
@@ -262,7 +262,7 @@ function init(config) {
     if (adsType === 'liveblog') {
         adsReady = true;
         updateLiveblogAdPlaceholders();
-    } else if (adsType === 'gallery') {
+    } else if (adsType === 'gallery' && !isAdvertising()) {
         numberOfMpus = 1;
         const mpuAfterImages = 4;
         insertAdPlaceholdersGallery(mpuAfterImages);
