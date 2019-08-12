@@ -1,4 +1,4 @@
-import { signalDevice, getElementOffset, isAdvertising } from "modules/util";
+import { signalDevice, getElementOffset } from "modules/util";
 
 let adsReady = false;
 let numberOfMpus = 0;
@@ -43,7 +43,7 @@ function insertAdPlaceholders(mpuAfterParagraphs) {
     placeholder.classList.add('advert-slot');
     placeholder.classList.add('advert-slot--placeholder');
 
-    // To mimic the correct positioning on full width tablet view, we will need an 
+    // To mimic the correct positioning on full width tablet view, we will need an
     // empty div to pad out the text so we can position absolutely over it.
     if (placeholderSibling && placeholderSibling.parentNode) {
         placeholderSibling.parentNode.insertBefore(placeholder, placeholderSibling);
@@ -262,7 +262,7 @@ function init(config) {
     if (adsType === 'liveblog') {
         adsReady = true;
         updateLiveblogAdPlaceholders();
-    } else if (adsType === 'gallery' && !isAdvertising()) {
+    } else if (adsType === 'gallery') {
         numberOfMpus = 1;
         const mpuAfterImages = 4;
         insertAdPlaceholdersGallery(mpuAfterImages);
@@ -270,7 +270,7 @@ function init(config) {
         numberOfMpus = 1;
         insertAdPlaceholders(config.mpuAfterParagraphs);
     }
- 
+
     if (adsReady) {
         if (GU.opts.platform !== 'android') {
             initMpuPoller();
