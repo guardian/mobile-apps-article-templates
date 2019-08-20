@@ -283,6 +283,50 @@
             padding: 0.25rem 0.125rem;
         }
     }
+
+    // quiz styles
+    .element-atom {
+        .quiz {
+            .question__wrapper {
+                border-top: 2px solid $p-kicker;
+            }
+
+            .question__text {
+                &::before {
+                    color: $p-kicker;
+                }
+            }
+
+            .quiz-scores,
+            .quiz-results {
+                border-color: $p-kicker;
+                border-top: 2px solid $p-kicker;
+            }
+
+            .quiz-scores .quiz-scores__score {
+                border-top: 2px solid $p-kicker;
+                background: $p-feature-headline;
+                color: $p-inverted;
+            }
+        }
+    }
+    .prose, .article__header {
+        .bullet {
+            @include faux-bullet($color: $p-kicker, $right-space: 4px);
+        }
+
+        ul > li {
+            @include faux-bullet();
+        }
+    }
+
+    &.garnett--type-media, &.garnett--type-guardianlabs {
+        .article__header, .prose {
+            ul > li, .bullet {
+                @include faux-bullet($color: color(brightness-60));
+            }
+        }
+    }
 }
 
 // CSS for reversible pillar colours, this means we can

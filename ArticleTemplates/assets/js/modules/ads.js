@@ -1,9 +1,31 @@
-import { signalDevice, getElementOffset } from "modules/util";
+import { signalDevice, getElementOffset, isAdvertising } from "modules/util";
 
 let adsReady = false;
 let numberOfMpus = 0;
 let positionPoller;
 let adsType;
+
+
+function insertAdPlaceholdersGallery(mpuAfterImages) {
+    const mpu = createMpu(numberOfMpus);
+    const nrImages = (parseInt(mpuAfterImages, 10) || 6) - 1;
+    const placeholder = document.createElement('div');
+    const images = document.querySelectorAll(`.gallery .touch-gallery .touch-gallery__images`);
+
+    if (nrImages > images.length) {
+        // Not enough images
+        return;
+    }
+
+    const image = images[nrImages];
+
+    image.parentNode.insertBefore(mpu, image);
+
+    placeholder.classList.add('advert-slot');
+    placeholder.classList.add('advert-slot--placeholder');
+
+    adsReady = true;
+}
 
 function insertAdPlaceholders(mpuAfterParagraphs, amountOfMpu) {
     for (let i = 1; numberOfMpus < amountOfMpu; i=i+2) {
@@ -28,7 +50,6 @@ function insertAdPlaceholders(mpuAfterParagraphs, amountOfMpu) {
         if (placeholderSibling && placeholderSibling.parentNode) {
             placeholderSibling.parentNode.insertBefore(placeholder, placeholderSibling);
         }
-
         numberOfMpus++;
     }
 
@@ -245,6 +266,10 @@ function init(config) {
     if (adsType === 'liveblog') {
         adsReady = true;
         updateLiveblogAdPlaceholders();
+    } else if (adsType === 'gallery' && !isAdvertising()) {
+        numberOfMpus = 1;
+        const mpuAfterImages = 4;
+        insertAdPlaceholdersGallery(mpuAfterImages);
     } else {
         insertAdPlaceholders(config.mpuAfterParagraphs, 2);
     }

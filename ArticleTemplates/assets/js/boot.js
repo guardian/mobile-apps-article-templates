@@ -89,6 +89,10 @@ const init = opts => {
                 return 'liveblog';
             }
 
+            if (contentType === 'gallery') {
+                return 'gallery';
+            }
+
             return 'default';
         };
 

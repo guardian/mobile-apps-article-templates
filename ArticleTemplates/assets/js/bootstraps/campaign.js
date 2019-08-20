@@ -13,6 +13,29 @@ function init() {
     }
 }
 
+function readFile(file, campaign, form) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+
+        setTimeout(reject, 30000);
+
+        reader.addEventListener('load', () => {
+                const fileAsBase64 = reader.result
+                    .toString()
+                    .split(';base64,')[1];
+                // remove data:*/*;base64, from the start of the base64 string
+                resolve(fileAsBase64);
+            }
+        );
+
+        reader.addEventListener('error', () => {
+            reject();
+        });
+
+        reader.readAsDataURL(file);
+    })
+}
+
 function initCampaign(campaign) {
     if (!navigator.onLine) {
         displayOfflineMessage(campaign);
@@ -27,28 +50,43 @@ function initCampaign(campaign) {
     window.addEventListener('online', hideOfflineMessage.bind(null, campaign));
     window.addEventListener('offline', displayOfflineMessage.bind(null, campaign));
 
-    var form = campaign.querySelector('form');
+    let form = campaign.querySelector('form');
+    let promises = [];
+    let keys = [];
     form.addEventListener('submit', function (e) {
+        displayWaiting(form);
         e.preventDefault();
         var data = Array.from(form.elements).reduce(function (o, e) {
             if (e.type === 'checkbox') {
                 if (e.checked) {
                     o[e.name] = o[e.name] ? o[e.name] + '\n' + e.value : e.value;
                 }
+            } else if (e.type === 'file' && e.files.length) {
+                const filePromise = readFile(e.files[0], campaign, form);
+                promises.push(filePromise);
+                keys.push(e.name);
+                o[e.name] = filePromise;
             } else if (e.value) {
                 o[e.name] = e.value;
             }
             
             return o;    
         }, {});
-        disableButton(form);
-        submit(data, campaign, form);
+
+        Promise.all(promises).then(results => {
+            results.map((result, index) => {
+                data[keys[index]] = result;
+            })
+
+            submit(data, campaign, form);
+        }).catch(() => {
+            displayFileError(campaign, form);
+        })
     });
 }
 
 function submit(data, campaign, form) {
     hideError();
-    displayWaiting(form);
     const onLoadCallout = displayConfirmation.bind(null, campaign, form);
     const onErrorCallout = displayError.bind(null, campaign, form);
     POST(endpoint, onLoadCallout, onErrorCallout, JSON.stringify(data))
@@ -81,10 +119,23 @@ function displayError(campaign, form) {
     enableButton(form);
 }
 
+function displayFileError(campaign, form) {
+    const fileError = document.querySelector('.js-file-error');
+    if (fileError) {
+        fileError.style.display = 'block';
+    }
+    enableButton(form);
+}
+
 function hideError() {
     const formError = document.querySelector('.js-form-error');
+    const fileError = document.querySelector('.js-file-error');
     if (formError) {
         formError.style.display = 'none';
+    }
+
+    if (fileError) {
+        fileError.style.display = 'none';
     }
 }
 
