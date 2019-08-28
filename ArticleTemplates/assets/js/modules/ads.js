@@ -22,7 +22,6 @@ function insertAdPlaceholdersGallery(mpuAfterImages) {
     image.parentNode.insertBefore(mpu, image);
 
     placeholder.classList.add('advert-slot');
-    placeholder.classList.add('advert-slot--placeholder');
 
     adsReady = true;
 }
@@ -43,7 +42,6 @@ function insertAdPlaceholders(mpuAfterParagraphs, amountOfMpu) {
         mpuSibling.parentNode.insertBefore(mpu, mpuSibling);
     
         placeholder.classList.add('advert-slot');
-        placeholder.classList.add('advert-slot--placeholder');
     
         // To mimic the correct positioning on full width tablet view, we will need an 
         // empty div to pad out the text so we can position absolutely over it.
@@ -104,6 +102,11 @@ function createMpu(id) {
 
     mpu.classList.add('advert-slot');
     mpu.classList.add('advert-slot--mpu');
+
+    if (id === 1) {
+        mpu.classList.add('first');
+    }
+
     mpu.innerHTML = `
         <div class="advert-slot__label">
             Advertisement<a class="advert-slot__action" href="x-gu://subscribe">Hide<span data-icon="&#xe04F;"></span></a>

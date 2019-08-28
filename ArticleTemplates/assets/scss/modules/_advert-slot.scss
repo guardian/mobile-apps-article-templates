@@ -85,20 +85,17 @@
         padding-bottom: 15px;
     }
 
-    @include mq($from: col2) {
-        margin: 0;
-        position: absolute;
-        right: 8px;
-        top: 24px;
-    }
-
     @include mq($from: col3) {
+        position: absolute;
         right: 15px;
+        margin: 0;
+        top: 424px;
     }
 
-    @include mq($from: col4) {
-        right: 20px;
-        top: 18px;
+    &.first {
+        @include mq($from: col3) {
+            top: 24px;
+        }
     }
 
     .advert-slot__label {
@@ -131,26 +128,6 @@
             margin: 0;
             width: 100%;
         }
-    }
-}
-
-.advert-slot--placeholder {
-    display: none;
-
-    @include mq($from: col2, $to: col4) {
-        background: transparent;
-        display: block;
-        float: right;
-        height: 300px;
-        margin: {
-            bottom: 12px;
-            left: 18px;
-            right: -(cols($base-4, 3));
-        }
-        width: 300px;
-    }
-    @include mq($from: col3) {
-        margin-right: -(cols($base-4, 9));
     }
 }
 
