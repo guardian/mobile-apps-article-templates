@@ -15,7 +15,13 @@ function POST(url, successCallback, errorCallback,  data) {
     url = encodeURIComponent(url)
     data = encodeURIComponent(data)
 
-    signalDevice(`POST/${url}?data=${data}&successCallback=window.httpCallbacks['${successCallback.name}']&errorCallback=window.httpCallbacks['${errorCallback.name}']`);
+    const postUrl = `POST/${url}?data=${data}&successCallback=window.httpCallbacks['${successCallback.name}']&errorCallback=window.httpCallbacks['${errorCallback.name}']`;
+
+    if (window.GU && window.GU.opts && window.GU.opts.platform === 'android' && window.GuardianJSInterface && window.GuardianJSInterface.post) {
+        window.GuardianJSInterface.post(postUrl);
+    } else {
+        signalDevice(postUrl);
+    }
 }
 
 function init() {
