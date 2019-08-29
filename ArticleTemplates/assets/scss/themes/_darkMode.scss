@@ -10,6 +10,10 @@
         .main-media--hidden-caption .main-media__caption__icon {
             background-color: rgba(255, 255, 255, .7);
         }
+
+        .main-media--hidden-caption .main-media__caption__text {
+            color: $warmGreyFour;
+        }
         
         // News tone
         .article-kicker,
@@ -29,13 +33,16 @@
         }
 
         .headline,
+        &.garnett--type-feature .headline,
         .article__body,
         .tags {
             color: $whiteTwo;
         }
 
         .standfirst,
-        #published-date {
+        .article__header ul > li:before,
+        #published-date,
+        figure figcaption {
             color: $warmGreyFour;
         }
 
