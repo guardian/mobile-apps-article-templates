@@ -14,48 +14,50 @@
         .main-media--hidden-caption .main-media__caption__text {
             color: $warmGreyFour;
         }
-        
-        // News tone
-        .article-kicker,
-        .headline,
-        .article__body,
-        .tags,
-        .standfirst,
-        .meta {
-            background-color: $backgroundBlack;
-        }
 
-        .article-kicker,
-        .meta .byline__author a,
-        .meta .alerts,
-        .article__body .from-content-api.prose a {
-            color: $p-inverted;
-        }
-
-        .headline,
-        &.garnett--type-feature .headline,
-        .article__body,
-        .tags {
-            color: $whiteTwo;
-        }
-
-        .standfirst,
-        .article__header ul > li:before,
-        #published-date,
-        figure figcaption {
-            color: $warmGreyFour;
-        }
-
-        .keyline-4:before {
-            background-image: repeating-linear-gradient($blackTwo, $blackTwo 1px, transparent 1px, transparent 3px);
-        }
-    
-        .element-rich-link a {
-            color: $whiteTwo !important;
-        }
-    
         .creative-container {
             color: color(brightness-7);
+        }
+        
+        // News tone
+        &.garnett--type-article {
+            .article-kicker,
+            .headline,
+            .article__body,
+            .tags,
+            .standfirst,
+            .meta {
+                background-color: $backgroundBlack;
+            }
+
+            .article-kicker,
+            .meta .byline__author a,
+            .meta .alerts,
+            .article__body .from-content-api.prose a {
+                color: $p-inverted;
+            }
+
+            .headline,
+            &.garnett--type-feature .headline,
+            .article__body,
+            .tags {
+                color: $whiteTwo;
+            }
+
+            .standfirst,
+            .article__header ul > li:before,
+            #published-date,
+            figure figcaption {
+                color: $warmGreyFour;
+            }
+
+            .keyline-4:before {
+                background-image: repeating-linear-gradient($blackTwo, $blackTwo 1px, transparent 1px, transparent 3px);
+            }
+        
+            .element-rich-link a {
+                color: $whiteTwo !important;
+            }
         }
     }
 }
