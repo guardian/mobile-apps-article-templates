@@ -122,7 +122,6 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
 
                 expect(window.applyNativeFunctionCall).toHaveBeenCalledTimes(1);
                 expect(window.applyNativeFunctionCall).toHaveBeenCalledWith('initMpuPoller');
-                expect(prose.children[0].classList.contains('advert-slot--placeholder')).toEqual(true);
                 expect(prose.children[4].classList.contains('advert-slot--mpu')).toEqual(true);
             });
 
@@ -131,7 +130,6 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
 
                 init(config);
 
-                expect(prose.querySelector('.advert-slot--placeholder')).toBeFalsy();
                 expect(prose.querySelector('.advert-slot--mpu')).toBeFalsy();
             });
 

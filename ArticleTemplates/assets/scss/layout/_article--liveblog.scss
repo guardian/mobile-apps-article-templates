@@ -112,11 +112,15 @@
     .advert-slot--mpu {
         width: 100%;
         margin-left: base-px(-1);
-        padding-bottom: 15px;
 
         .advert-slot__wrapper {
             margin: 0;
             width: 100%;
+
+            @include mq($from: col2) {
+                margin-top: -24px;
+                margin-bottom: 12px;
+            }
         }
     }
 }

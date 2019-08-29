@@ -103,26 +103,18 @@
 
     // Positon of adverts within article body
     .advert-slot--mpu {
-        @include mq($from: 560px) {
+        @include mq($from: col2, $to: col3) {
+            margin: 12px 0;
+        }
+
+        @include mq($from: col3) {
             float: right;
             margin-left: base-px(1.5);
             margin-bottom: base-px(1);
         }
 
-        @include mq($from: col2) {
+        @include mq($from: col3) {
             margin-right: 0;
-            margin-top: -(base-px(1));
-        }
-    }
-
-    // Fixes bug on tablet when any figure which immediately follows the ad overlapped the ad
-    @include mq($from: 560px, $to: col4) {
-        .advert-slot--placeholder ~ {
-            & .element-video:first-of-type,
-            & .element-placeholder:first-of-type,
-            & .figure-wide:first-of-type {
-                display: inline-block;
-            }
         }
     }
 
