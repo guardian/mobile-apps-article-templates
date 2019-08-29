@@ -17,7 +17,7 @@ function POST(url, successCallback, errorCallback,  data) {
 
     const postUrl = `POST/${url}?data=${data}&successCallback=window.httpCallbacks['${successCallback.name}']&errorCallback=window.httpCallbacks['${errorCallback.name}']`;
 
-    if (GU && GU.opts && GU.opts.platform === 'android' && window.GuardianJSInterface && window.GuardianJSInterface.post) {
+    if (window.GU && window.GU.opts && window.GU.opts.platform === 'android' && window.GuardianJSInterface && window.GuardianJSInterface.post) {
         window.GuardianJSInterface.post(postUrl);
     } else {
         signalDevice(postUrl);
