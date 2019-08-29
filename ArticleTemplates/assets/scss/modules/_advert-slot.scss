@@ -134,9 +134,18 @@
         }
 
         @include mq($from: col2, $to: col3) {
-            margin-left: calc(50% - 150px);
-            margin-top: -34px;
+            margin-top: -24px;
             margin-bottom: 12px;
+        }
+    }
+}
+
+.ios {
+    .advert-slot--mpu {
+        .advert-slot__wrapper {
+            @include mq($from: col2, $to: col3) {
+                margin-left: calc(50% - 150px);
+            }
         }
     }
 }
