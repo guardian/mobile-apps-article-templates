@@ -19,8 +19,8 @@
             color: color(brightness-7);
         }
         
-        // News tone
-        &.garnett--type-article {
+        // News and feature type
+        &.garnett--type-article, &.garnett--type-feature {
             .article-kicker,
             .main-media,
             .headline,
@@ -34,7 +34,10 @@
             .article-kicker,
             .meta .byline__author a,
             .meta .alerts,
-            .article__body .from-content-api.prose a {
+            .article__body .from-content-api.prose a,
+            .comment-count a,
+            .prose .element-pullquote blockquote,
+            .article__header .bullet:before {
                 color: $p-inverted;
             }
 
@@ -58,6 +61,12 @@
         
             .element-rich-link a {
                 color: $whiteTwo !important;
+            }
+
+            @include mq($to: col4) {
+                .standfirst {
+                    background-color: $backgroundBlack;
+                }
             }
 
             @include mq($from: col4) {
