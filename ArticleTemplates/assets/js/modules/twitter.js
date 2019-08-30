@@ -23,6 +23,12 @@ function checkForTweets() {
     tweets = document.body.querySelectorAll('blockquote.js-tweet, blockquote.twitter-tweet');
 
     if (tweets.length && !scriptReady) {
+        if (window.matchMedia) {
+            const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.getElementById('twitter-theme').setAttribute('content', isDark? 'dark' : 'light');
+        }
+
+        window.enhanceTweets = enhanceTweets;
         loadScript();
     }
 }
