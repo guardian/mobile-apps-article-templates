@@ -22,10 +22,11 @@
         // News tone
         &.garnett--type-article {
             .article-kicker,
+            .main-media,
             .headline,
             .article__body,
             .tags,
-            .standfirst,
+            .standfirst__inner,
             .meta {
                 background-color: $backgroundBlack;
             }
@@ -57,6 +58,17 @@
         
             .element-rich-link a {
                 color: $whiteTwo !important;
+            }
+
+            @include mq($from: col4) {
+                .article__header {
+                    .article-kicker,
+                    .headline,
+                    .standfirst__inner,
+                    .meta {
+                        background-color: $backgroundBlack;
+                    }
+                }
             }
         }
     }
