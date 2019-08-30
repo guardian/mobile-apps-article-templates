@@ -28,7 +28,6 @@ function checkForTweets() {
             document.getElementById('twitter-theme').setAttribute('content', isDark? 'dark' : 'light');
         }
 
-        window.enhanceTweets = enhanceTweets;
         loadScript();
     }
 }
