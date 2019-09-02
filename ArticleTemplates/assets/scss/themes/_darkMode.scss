@@ -3,8 +3,9 @@
         $whiteTwo: rgb(220, 220, 220);
         $warmGreyFour: rgb(153, 153, 153);
         $blackTwo: rgb(51, 51, 51);
-
+        $blackThree: #121212;
         $backgroundBlack: #1a1a1a;
+        $ratingYellow: #f3c200;
 
         // Shared
         .main-media--hidden-caption .main-media__caption__icon {
@@ -18,11 +19,17 @@
         .creative-container {
             color: color(brightness-7);
         }
+
+        .review-rating span {
+            background-color: $ratingYellow;
+        }
         
         // News and feature type
         &.garnett--type-article,
         &.garnett--type-feature,
-        &.garnett--type-immersive {
+        &.garnett--type-immersive,
+        &.garnett--type-review,
+        &.garnett--type-interview {
             .article__header,
             .article-kicker,
             .main-media,
@@ -31,18 +38,21 @@
             .tags,
             .standfirst__inner,
             .meta,
-            .article__meta {
+            .article__meta,
+            .sponsorship,
+            .keyline:before {
                 background-color: $backgroundBlack;
             }
 
             .article-kicker,
             .meta .byline__author a,
             .standfirst .byline__author a,
-            .meta .alerts,
+            .standfirst .standfirst__inner a,
             .article__body .from-content-api.prose a,
             .comment-count a,
             .prose .element-pullquote blockquote,
-            .article__header .bullet:before {
+            .article__header .bullet:before,
+            .sponsorship__about-uri {
                 color: $p-inverted;
             }
 
@@ -55,8 +65,15 @@
 
             .standfirst,
             #published-date,
-            figure figcaption {
+            figure figcaption,
+            .byline,
+            .alerts,
+            .sponsorship__formatted-sponsor-name {
                 color: $warmGreyFour;
+            }
+
+            .alerts span[data-icon]:before {
+                color: $blackThree;
             }
 
             .article__header ul > li:before {
@@ -70,6 +87,20 @@
         
             .element-rich-link a {
                 color: $whiteTwo !important;
+            }
+
+            .tags {
+                .tags__list-item {
+                    a {
+                        color: $whiteTwo;
+                        background-color: $blackTwo;
+                    }
+
+                    &.more-button a {
+                        color: $whiteTwo;
+                        border: 1px solid $blackTwo;
+                    }
+                }
             }
 
             @include mq($to: col4) {
