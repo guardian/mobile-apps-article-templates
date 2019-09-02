@@ -20,19 +20,24 @@
         }
         
         // News and feature type
-        &.garnett--type-article, &.garnett--type-feature {
+        &.garnett--type-article,
+        &.garnett--type-feature,
+        &.garnett--type-immersive {
+            .article__header,
             .article-kicker,
             .main-media,
             .headline,
             .article__body,
             .tags,
             .standfirst__inner,
-            .meta {
+            .meta,
+            .article__meta {
                 background-color: $backgroundBlack;
             }
 
             .article-kicker,
             .meta .byline__author a,
+            .standfirst .byline__author a,
             .meta .alerts,
             .article__body .from-content-api.prose a,
             .comment-count a,
@@ -49,10 +54,14 @@
             }
 
             .standfirst,
-            .article__header ul > li:before,
             #published-date,
             figure figcaption {
                 color: $warmGreyFour;
+            }
+
+            .article__header ul > li:before {
+                color: $warmGreyFour;
+                background-color: $warmGreyFour;
             }
 
             .keyline-4:before {
