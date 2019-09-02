@@ -5,7 +5,6 @@ let numberOfMpus = 0;
 let positionPoller;
 let adsType;
 
-
 function insertAdPlaceholdersGallery(mpuAfterImages) {
     const mpu = createMpu(numberOfMpus);
     const nrImages = (parseInt(mpuAfterImages, 10) || 6) - 1;
@@ -274,6 +273,7 @@ function init(config) {
         const mpuAfterImages = 4;
         insertAdPlaceholdersGallery(mpuAfterImages);
     } else {
+        numberOfMpus = 0;
         insertAdPlaceholders(config.mpuAfterParagraphs, 2);
     }
  

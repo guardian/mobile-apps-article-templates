@@ -350,7 +350,7 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
             init(config);
 
             const mpuPosCommaSeparated = window.getMpuPosCommaSeparated();
-            expect(mpuPosCommaSeparated.split(',').length).toEqual(4);
+            expect(mpuPosCommaSeparated.split(',').length).toEqual(2);
         });
 
         it('returns dimensions of 2 advertSlotWrappers', function () {
