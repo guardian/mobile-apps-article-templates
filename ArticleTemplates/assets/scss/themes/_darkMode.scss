@@ -24,7 +24,6 @@
             background-color: $ratingYellow;
         }
         
-        // News and feature type
         &.garnett--type-article,
         &.garnett--type-feature,
         &.garnett--type-immersive,
@@ -51,8 +50,7 @@
             .article__body .from-content-api.prose a,
             .comment-count a,
             .prose .element-pullquote blockquote,
-            .article__header .bullet:before,
-            .sponsorship__about-uri {
+            .article__header .bullet:before {
                 color: $p-inverted;
             }
 
@@ -61,6 +59,16 @@
             .article__body,
             .tags {
                 color: $whiteTwo;
+            }
+
+            .sponsorship img {
+                background-color: $whiteTwo;
+                padding: 8px;
+            }
+
+            .sponsorship__about-uri {
+                color: $warmGreyFour;
+                text-decoration: underline;
             }
 
             .standfirst,
@@ -118,6 +126,51 @@
                         background-color: $backgroundBlack;
                     }
                 }
+            }
+        }
+
+        &.garnett--type-live {
+            .article__body,
+            .key-events,
+            .article--liveblog {
+                background: black;
+            }
+
+            .key-events {
+                border-color: $blackTwo;
+            }
+
+            .key-event__time,
+            .key-events__toggle-icon::before {
+                color: $warmGreyFour;
+            }
+
+            .key-event__link h2 {
+                color: $whiteTwo !important;
+            }
+
+            .key-events__toggle {
+                border: solid 1px $warmGreyFour;
+            }
+
+            .is-live .key-events__title {
+                color: $p-inverted;
+            }
+
+            .block {
+                background-color: $blackThree;
+                border: solid 1px $blackTwo;
+                border-bottom: 2px solid $blackTwo;
+                color: $whiteTwo;
+            }
+
+            .block--live-key-event, .block--live-summary {
+                border-top: solid 1px $p-kicker;
+            }
+
+            .block--live-key-event .block__title .highlight {
+                background-color: $ratingYellow;
+                color: $blackThree;
             }
         }
     }
