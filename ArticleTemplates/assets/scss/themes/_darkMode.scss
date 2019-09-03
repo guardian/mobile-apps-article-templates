@@ -1,4 +1,4 @@
-@mixin pillar-colour-dark($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-liveblog-background) {
+@mixin pillar-colour-dark($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-liveblog-background, $dark-1, $dark-2, $dark-3) {
     @media (prefers-color-scheme: dark) {
         $whiteTwo: rgb(220, 220, 220);
         $warmGreyFour: rgb(153, 153, 153);
@@ -23,7 +23,34 @@
         .review-rating span {
             background-color: $ratingYellow;
         }
-        
+
+        .element-rich-link {
+            border-top: solid 1px $warmGreyFour;
+            border-bottom: solid 1px $warmGreyFour;
+
+            a {
+                color: $whiteTwo !important;
+            }
+
+            a::before {
+                color: $warmGreyFour;
+            }
+        }
+
+        .tags {
+            .tags__list-item {
+                a {
+                    color: $whiteTwo;
+                    background-color: $blackTwo;
+                }
+
+                &.more-button a {
+                    color: $whiteTwo;
+                    border: 1px solid $blackTwo;
+                }
+            }
+        }
+
         &.garnett--type-article,
         &.garnett--type-feature,
         &.garnett--type-immersive,
@@ -97,20 +124,6 @@
                 color: $whiteTwo !important;
             }
 
-            .tags {
-                .tags__list-item {
-                    a {
-                        color: $whiteTwo;
-                        background-color: $blackTwo;
-                    }
-
-                    &.more-button a {
-                        color: $whiteTwo;
-                        border: 1px solid $blackTwo;
-                    }
-                }
-            }
-
             @include mq($to: col4) {
                 .standfirst {
                     background-color: $backgroundBlack;
@@ -133,16 +146,69 @@
             .article__body,
             .key-events,
             .article--liveblog {
-                background: black;
+                background-color: black;
             }
 
-            .key-events {
+            &.is-live {
+                .headline, .article-kicker {
+                    background-color: $dark-1;
+                }
+
+                .article-kicker {
+                    color: $dark-3;
+                }
+
+                .headline {
+                    color: color(brightness-93);
+                }
+
+                .article--liveblog {
+                    .standfirst, .standfirst__inner, .meta {
+                        background-color: $dark-2;
+                        color: $dark-3;
+
+                        ul li {
+                            a {
+                                color: $dark-3;
+                            }
+
+                            &::before{
+                                color: $dark-3;
+                                background-color: $dark-3;
+                                opacity: 0.8;
+                            }
+                        }
+                    }
+
+                    .meta__published__date, .alerts {
+                        color: $dark-3;
+                    }
+                }
+            }
+
+            &.is-live .key-events {
                 border-color: $blackTwo;
+                border-top-color: $dark-2;
+
+                .key-events__title {
+                    color: $dark-3;
+                }
             }
 
             .key-event__time,
-            .key-events__toggle-icon::before {
+            .key-events__toggle-icon::before,
+            [class*='block--live-'] .block__time,
+            [class*='block--live-'] .block__updated,
+            [class*='block--live-'] .prose figcaption {
                 color: $warmGreyFour;
+            }
+
+            [class*='block--live-'] .block__byline {
+                border: solid 1px $warmGreyFour;
+            }
+
+            [class*='block--live-'] .block__avatar {
+                background-color: $warmGreyFour;
             }
 
             .key-event__link h2 {
@@ -151,10 +217,6 @@
 
             .key-events__toggle {
                 border: solid 1px $warmGreyFour;
-            }
-
-            .is-live .key-events__title {
-                color: $p-inverted;
             }
 
             .block {
@@ -171,6 +233,15 @@
             .block--live-key-event .block__title .highlight {
                 background-color: $ratingYellow;
                 color: $blackThree;
+            }
+
+            .prose blockquote.quoted,
+            .prose blockquote.quoted::before {
+                color: $whiteTwo;
+            }
+
+            .tags {
+                background: black;
             }
         }
     }
