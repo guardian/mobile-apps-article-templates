@@ -216,12 +216,10 @@ function insertAfter(referenceNode, newNode) {
 }
 
 function onGapClick(e, afterBlockId, paginationLink) {
-    e.preventDefault();
     [].slice.call(document.getElementsByClassName(`after-${afterBlockId}`)).forEach(gap => {
         gap.parentNode.removeChild(gap);
     });
     document.getElementById(`loading-${afterBlockId}`).style.display = "block";
-    window.location.href = paginationLink;
 }
 
 function liveblogInsertGap(afterBlockId, olderPagination, newerPagination) {
@@ -231,7 +229,7 @@ function liveblogInsertGap(afterBlockId, olderPagination, newerPagination) {
 
     before.innerHTML = `
         <div onclick="return onGapClick(event, '${afterBlockId}', '${olderPagination}')" class="more more--live-blogs-blocks after-${afterBlockId}">
-            <a href="#" class="more__button">
+            <a href="${olderPagination}" class="more__button">
     	        <span class="more__icon" data-icon="&#xe050;" aria-hidden="true"></span>
     	        <span class="more__text">Load more</span>
             </a>
@@ -240,7 +238,7 @@ function liveblogInsertGap(afterBlockId, olderPagination, newerPagination) {
 
     after.innerHTML = `
         <div onclick="return onGapClick(event, '${afterBlockId}', '${newerPagination}')" class="more more--live-blogs-blocks after-${afterBlockId}">
-            <a href="#" class="more__button">
+            <a href="${newerPagination}" class="more__button">
                 <span class="more__icon" data-icon="&#xe050;" aria-hidden="true"></span>
                 <span class="more__text">Load more</span>
             </a>
