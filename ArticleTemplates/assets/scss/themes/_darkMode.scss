@@ -17,6 +17,10 @@
             color: $warmGreyFour;
         }
 
+        .keyline-4:before {
+            background-image: repeating-linear-gradient($blackTwo, $blackTwo 1px, transparent 1px, transparent 3px);
+        }
+
         .creative-container {
             color: color(brightness-7);
         }
@@ -57,6 +61,10 @@
             border-bottom: solid 1px $warmGrey;
             background: $blackTwo;
             color: $whiteTwo;
+
+            .advert-slot__action {
+                color: $whiteTwo !important;
+            }
         }
 
         @include mq($from: col4) {
@@ -65,11 +73,17 @@
             }
         }
 
+        &.garnett--type-analysis .headline {
+            background-image: repeating-linear-gradient(to bottom, transparent, transparent calc(3.6rem - 1px), $whiteTwo);
+        }
+
+        // News articles
         &.garnett--type-article,
         &.garnett--type-feature,
         &.garnett--type-immersive,
         &.garnett--type-review,
-        &.garnett--type-interview {
+        &.garnett--type-interview,
+        &.garnett--type-analysis {
             .article__header,
             .article-kicker,
             .main-media,
@@ -129,10 +143,6 @@
                 color: $warmGreyFour;
                 background-color: $warmGreyFour;
             }
-
-            .keyline-4:before {
-                background-image: repeating-linear-gradient($blackTwo, $blackTwo 1px, transparent 1px, transparent 3px);
-            }
         
             .element-rich-link a {
                 color: $whiteTwo !important;
@@ -157,6 +167,7 @@
             }
         }
 
+        // Liveblogs
         &.garnett--type-live {
             .article__body,
             .key-events,
@@ -269,6 +280,39 @@
 
                 .main-media {
                     border-bottom: none;
+                }
+            }
+        }
+
+        // Cricket
+        .cricket {
+            .cricket-match-summary-head, .cricket-match-summary-result, .cricket-match-summary-footer {
+                background-color: $ratingYellow;
+            }
+
+            .tone--liveBlog.is-live .article__header--cricket .meta,
+            .tone--deadBlog .article__header--cricket .meta,
+            .tabs {
+                background-color: $backgroundBlack;
+                [href='#cricket__tabpanel--liveblog'][aria-selected=true],
+                [href='#cricket__tabpanel--stats'][aria-selected=true] {
+                    color: $whiteTwo !important;
+                    border-top-color: $whiteTwo !important;
+                }
+
+                .tab {
+                    border-top: 4px solid $warmGreyFour;
+                    color: $warmGreyFour;
+                }
+            }
+
+            .key-events {
+                border: none;
+                border-top: 1px solid $blackTwo;
+                border-bottom: 2px solid $blackTwo;
+
+                .key-events__title {
+                    color: $p-kicker;
                 }
             }
         }
