@@ -1,6 +1,7 @@
 @mixin pillar-colour-dark($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-liveblog-background, $dark-1, $dark-2, $dark-3) {
     @media (prefers-color-scheme: dark) {
         $whiteTwo: rgb(220, 220, 220);
+        $warmGrey: rgb(118, 118, 118);
         $warmGreyFour: rgb(153, 153, 153);
         $blackTwo: rgb(51, 51, 51);
         $blackThree: #121212;
@@ -48,6 +49,19 @@
                     color: $whiteTwo;
                     border: 1px solid $blackTwo;
                 }
+            }
+        }
+
+        .advert-slot--mpu {
+            border-top: solid 1px $warmGrey;
+            border-bottom: solid 1px $warmGrey;
+            background: $blackTwo;
+            color: $whiteTwo;
+        }
+
+        @include mq($from: col4) {
+            .article {
+                background-color: $blackThree;
             }
         }
 
@@ -132,6 +146,7 @@
 
             @include mq($from: col4) {
                 .article__header {
+                    background-color: $blackThree;
                     .article-kicker,
                     .headline,
                     .standfirst__inner,
@@ -146,7 +161,7 @@
             .article__body,
             .key-events,
             .article--liveblog {
-                background-color: black;
+                background-color: $blackThree;
             }
 
             &.is-live {
@@ -163,7 +178,10 @@
                 }
 
                 .article--liveblog {
-                    .standfirst, .standfirst__inner, .meta {
+                    .standfirst,
+                    .standfirst__inner,
+                    .meta,
+                    .main-media {
                         background-color: $dark-2;
                         color: $dark-3;
 
@@ -204,7 +222,7 @@
             }
 
             [class*='block--live-'] .block__byline {
-                border: solid 1px $warmGreyFour;
+                border-left: solid 1px $warmGreyFour;
             }
 
             [class*='block--live-'] .block__avatar {
@@ -241,7 +259,17 @@
             }
 
             .tags {
-                background: black;
+                background: $blackThree;
+            }
+
+            @include mq($from: col4) {
+                &.is-live .article__header {
+                    background-color: $blackThree;
+                }
+
+                .main-media {
+                    border-bottom: none;
+                }
             }
         }
     }
