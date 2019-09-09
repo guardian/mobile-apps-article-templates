@@ -142,6 +142,14 @@ function isAdvertising() {
     return !!document.querySelector('body.is_advertising');
 }
 
+function isDarkMode() {
+    if (window.matchMedia) {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+
+    return false;
+}
+
 export {
     isElementPartiallyInViewport,
     getElementOffset,
@@ -157,5 +165,6 @@ export {
     insertAfter,
     getAndroidVersion,
     scrollToElement,
-    isAdvertising
+    isAdvertising,
+    isDarkMode
 };

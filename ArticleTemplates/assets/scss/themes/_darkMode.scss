@@ -198,7 +198,7 @@
 
         // Liveblogs
         &.garnett--type-live,
-        &.garnett--type-article {
+        &.garnett--type-article.tone--deadBlog {
             .article__body,
             .key-events,
             .article--liveblog {
@@ -384,6 +384,66 @@
                         }
                     }
                 }
+            }
+        }
+
+        // Media
+        .audio-player__button.touchpoint--primary .touchpoint__button,
+        .audio-player__slider__knob {
+            background-color: $ratingYellow;
+
+            &:active {
+                background-color: $ratingYellow;
+            }
+        }
+
+        &.garnett--type-media {
+            .article--audio,
+            .article--visual {
+                &.article {
+                    background-color:#090909;
+                }
+
+                .headline,
+                .audio-player__slider__played,
+                .audio-player__slider__remaining,
+                .standfirst,
+                .prose {
+                    color: $whiteTwo;
+                }
+
+                .article-kicker,
+                .headline,
+                .meta,
+                .standfirst,
+                .article__body,
+                .tags {
+                    background: $backgroundBlack;
+                }
+            }
+
+            .audio-player__button--loading {
+                .pulse {
+                    &:before,
+                    &:after,
+                    & {
+                        background-color: $ratingYellow;
+                    }
+                }
+            }
+        }
+
+        &.garnett--type-media[data-content-type='audio'],
+        &.garnett--type-media[data-content-type='video'] {
+            .article__header .meta__byline .byline,
+            .meta__published {
+                color: $warmGreyFour;
+            }
+        }
+
+        @include mq($from: col4) {
+            .cutout .cutout__container {
+                min-height: 0;
             }
         }
     }

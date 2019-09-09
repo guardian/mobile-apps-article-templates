@@ -12,6 +12,15 @@
 
 // function.bind() polyfill
 // taken from: https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/bind#Compatibility
+
+function isDark() {
+  if (window.matchMedia) {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+
+  return false;
+}
+
 if (!Function.prototype.bind) {
   Function.prototype.bind = function (oThis) {
     if (typeof this !== "function") {
@@ -186,13 +195,14 @@ if (!Function.prototype.bind) {
   MobileRangeSlider.prototype.setTrackPosition = function(x){
     var trackWidth = this.track.offsetWidth;
     var trackPlayedWidth = (x < 1) || (trackWidth < 1) ? 0 : Math.ceil((x / trackWidth) * 100);
+    var colour = isDark() ? '#f3c200' : '#ffe500'
     this.track.setAttribute(
       'style',
-      'background: -webkit-linear-gradient(left, #ffe500, #ffe500 ' +
+      'background: -webkit-linear-gradient(left, ' + colour + ', ' + colour + ' ' +
       trackPlayedWidth +
       '%, #999 ' +
       trackPlayedWidth +
-      '%, #999); background: linear-gradient(left, #ffe500, #ffe500 ' +
+      '%, #999); background: linear-gradient(left, ' + colour + ', ' + colour + ' ' +
       trackPlayedWidth +
       '%, #999 ' +
       trackPlayedWidth +

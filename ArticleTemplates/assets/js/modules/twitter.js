@@ -1,4 +1,4 @@
-import { debounce } from 'modules/util';
+import { debounce, isDarkMode } from 'modules/util';
 import { initPositionPoller } from 'modules/cards';
 import { initMpuPoller } from 'modules/ads';
 import { resetAndCheckForVideos } from 'modules/youtube';
@@ -24,9 +24,8 @@ function checkForTweets() {
 
     if (tweets.length && !scriptReady) {
         const themeMeta = document.getElementById('twitter-theme');
-        if (window.matchMedia && themeMeta) {
-            const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            themeMeta.setAttribute('content', isDark? 'dark' : 'light');
+        if (isDarkMode() && themeMeta) {
+            themeMeta.setAttribute('content', 'dark');
         }
 
         loadScript();
