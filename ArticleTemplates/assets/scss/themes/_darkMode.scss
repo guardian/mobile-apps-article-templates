@@ -400,8 +400,8 @@
         &.garnett--type-media {
             .article--audio,
             .article--visual {
-                &.article {
-                    background-color:#090909;
+                &.article, .gallery {
+                    background-color: $backgroundBlack;
                 }
 
                 .headline,
@@ -434,16 +434,36 @@
         }
 
         &.garnett--type-media[data-content-type='audio'],
-        &.garnett--type-media[data-content-type='video'] {
+        &.garnett--type-media[data-content-type='video'],
+        &.garnett--type-media[data-content-type='gallery'] {
             .article__header .meta__byline .byline,
-            .meta__published {
+            .meta__published,
+            .article__header .header-photo-credit,
+            .touch-gallery__caption__credit {
                 color: $warmGreyFour;
+            }
+
+            .touch-gallery__caption {
+                color: $whiteTwo;
             }
         }
 
         @include mq($from: col4) {
             .cutout .cutout__container {
                 min-height: 0;
+            }
+        }
+
+
+        // Immersive
+        &.garnett--type-immersive {
+            .article__header-info {
+                background-color: $blackThree;
+            }
+
+            .standfirst,
+            .article__header-info::before {
+                background-color: $backgroundBlack;
             }
         }
     }
