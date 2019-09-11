@@ -9,6 +9,22 @@
         $ratingYellow: #f3c200;
 
         // Shared
+        .figure--thumbnail .element-image-inner,
+        .figure--thumbnail-with-caption .element-image-inner,
+        .figure-wide .element-image-inner,
+        .element__inner {
+            background-color: $blackTwo;
+        }
+
+        &.offline .element-audio,
+        &.offline .element-embed,
+        &.offline .element-map,
+        &.offline .element-video {
+            &::before {
+                background-color: $blackTwo;
+            }
+        }
+
         .main-media--hidden-caption .main-media__caption__icon {
             background-color: rgba(255, 255, 255, .7);
         }
@@ -103,7 +119,9 @@
         &.garnett--type-interview,
         &.garnett--type-analysis,
         &.garnett--type-comment,
-        &.garnett--type-guardianview {
+        &.garnett--type-guardianview,
+        &.garnett--type-recipe,
+        &.tone--deadBlog {
             .article__header,
             .article-kicker,
             .main-media,
@@ -129,15 +147,12 @@
                 color: $p-inverted;
             }
 
-            .headline,
+            .article__header .headline,
             &.garnett--type-feature .headline,
             .article__body,
-            .tags {
+            .tags,
+            .loading--liveblog::before {
                 color: $whiteTwo;
-            }
-
-            .comment-count a {
-                color: $p-kicker;
             }
 
             .sponsorship img {
@@ -251,7 +266,7 @@
                 border-top-color: $dark-2;
 
                 .key-events__title {
-                    color: $dark-3;
+                    color: $p-inverted;
                 }
             }
 
@@ -279,7 +294,7 @@
                 border: solid 1px $warmGreyFour;
             }
 
-            .block {
+            .block:not(.block--discussion-thread) {
                 background-color: $blackThree;
                 border: solid 1px $blackTwo;
                 border-bottom: 2px solid $blackTwo;
@@ -349,8 +364,37 @@
                 border-bottom: 2px solid $blackTwo;
 
                 .key-events__title {
-                    color: $p-kicker;
+                    color: $p-inverted;
                 }
+            }
+
+            .cricket__tabpanel {
+                background: $backgroundBlack;
+            }
+
+            .cricket-stats__table-wrap {
+                background: $blackTwo;
+                color: $whiteTwo;
+            }
+
+            .cricket-stats__table tr {
+                background: $blackThree;
+            }
+
+            .cricket-stats__innings {
+                border: solid 1px $warmGreyFour;
+                background: $backgroundBlack;
+                padding-bottom: 0;
+                margin-bottom: 24px;
+            }
+
+            .cricket-stats__table th.cricket-stats__table--title,
+            .cricket-stats__table td.cricket-stats__table--strong {
+                color: $whiteTwo;
+            }
+
+            .cricket-stats__table tr {
+                border-bottom: 1px solid $warmGreyFour;
             }
         }
 
