@@ -81,7 +81,9 @@
             font-weight: 400;
         }
         &:nth-child(1) {
-            margin-left: -.5rem;
+            @include mq($to: col2) {
+                margin-left: -.5rem;
+            }
             padding-left: .5rem;
         }
         &:nth-child(5) {
