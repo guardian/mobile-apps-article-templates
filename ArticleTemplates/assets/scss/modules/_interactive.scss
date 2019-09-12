@@ -18,13 +18,15 @@ body[data-fullscreen-interactive] {
         text-decoration: none;
     }
 
-    @media (prefers-color-scheme: dark) {
-        background: #1a1a1a !important;
-        color: #dcdcdc !important;
-
-        .element-atom, .interactive-atom {
+    &.offline {
+        @media (prefers-color-scheme: dark) {
             background: #1a1a1a !important;
             color: #dcdcdc !important;
+
+            .element-atom, .interactive-atom {
+                background: #1a1a1a !important;
+                color: #dcdcdc !important;
+            }
         }
     }
 }
