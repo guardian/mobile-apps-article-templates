@@ -1,0 +1,100 @@
+.figure--thumbnail .element-image-inner,
+.figure--thumbnail-with-caption .element-image-inner,
+.figure-wide .element-image-inner,
+.element__inner {
+    background-color: $blackTwo;
+}
+
+&.offline .element-audio,
+&.offline .element-embed,
+&.offline .element-map,
+&.offline .element-video {
+    &::before {
+        background-color: $blackTwo;
+    }
+}
+
+.main-media--hidden-caption .main-media__caption__icon {
+    background-color: rgba(255, 255, 255, .7);
+}
+
+.main-media--hidden-caption .main-media__caption__text {
+    color: $warmGreyFour;
+}
+
+.keyline-4:before {
+    background-image: repeating-linear-gradient($blackTwo, $blackTwo 1px, transparent 1px, transparent 3px);
+}
+
+.meta__published__comments {
+    border-left: solid 1px $blackTwo;
+}
+
+.creative-container {
+    .contributions-epic {
+        background-color: $blackTwo;
+        .contributions-epic-highlight {
+            color: color(brightness-7);
+        }
+    }
+}
+
+.atom--snippet {
+    background: $blackTwo;
+    border-image: repeating-linear-gradient(to bottom, $warmGrey, $warmGrey 1px, transparent 1px, transparent 4px) 13;
+    .atom--snippet__label {
+        color: $p-inverted;
+    }
+}
+
+.review-rating span {
+    background-color: $ratingYellow;
+}
+
+.element-rich-link {
+    border-top: solid 1px $warmGreyFour;
+    border-bottom: solid 1px $warmGreyFour;
+
+    a {
+        color: $whiteTwo !important;
+    }
+
+    a::before {
+        color: $warmGreyFour;
+    }
+}
+
+.tags {
+    .tags__list-item {
+        a {
+            color: $whiteTwo;
+            background-color: $blackTwo;
+        }
+
+        &.more-button a {
+            color: $whiteTwo;
+            border: 1px solid $blackTwo;
+        }
+    }
+}
+
+.advert-slot--mpu {
+    border-top: solid 1px $warmGrey;
+    border-bottom: solid 1px $warmGrey;
+    background: $blackTwo;
+    color: $whiteTwo;
+
+    .advert-slot__action {
+        color: $whiteTwo !important;
+    }
+}
+
+@include mq($from: col4) {
+    .article {
+        background-color: $blackThree;
+    }
+}
+
+&.garnett--type-analysis .headline {
+    background-image: repeating-linear-gradient(to bottom, transparent, transparent calc(3.6rem - 1px), $whiteTwo);
+}

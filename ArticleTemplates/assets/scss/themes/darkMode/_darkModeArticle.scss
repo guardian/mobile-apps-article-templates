@@ -1,0 +1,100 @@
+// News articles
+&.garnett--type-article,
+&.garnett--type-matchreport,
+&.garnett--type-feature,
+&.garnett--type-immersive,
+&.garnett--type-review,
+&.garnett--type-interview,
+&.garnett--type-analysis,
+&.garnett--type-comment,
+&.garnett--type-guardianview,
+&.garnett--type-recipe,
+&.tone--deadBlog {
+    .article__header,
+    .article-kicker,
+    .main-media,
+    .headline,
+    .article__body,
+    .tags,
+    .standfirst__inner,
+    .meta,
+    .article__meta,
+    .sponsorship,
+    .keyline:before {
+        background-color: $backgroundBlack;
+    }
+
+    .article-kicker,
+    .meta .byline__author a,
+    .standfirst .byline__author a,
+    .standfirst .standfirst__inner a,
+    .article__body .from-content-api.prose a,
+    .comment-count a,
+    .prose .element-pullquote blockquote,
+    .article__header .bullet:before {
+        color: $p-inverted;
+    }
+
+    .article__header .headline,
+    &.garnett--type-feature .headline,
+    .article__body,
+    .tags,
+    .loading--liveblog::before {
+        color: $whiteTwo;
+    }
+
+    .sponsorship img {
+        background-color: $whiteTwo;
+        padding: 8px;
+    }
+
+    .element-interactive {
+        background-color: white;
+        padding: 8px;
+    }
+
+    .sponsorship__about-uri {
+        color: $warmGreyFour;
+        text-decoration: underline;
+    }
+
+    .standfirst,
+    #published-date,
+    figure figcaption,
+    .byline,
+    .alerts,
+    .sponsorship__formatted-sponsor-name {
+        color: $warmGreyFour;
+    }
+
+    .alerts span[data-icon]:before {
+        color: $blackThree;
+    }
+
+    .article__header ul > li:before {
+        color: $warmGreyFour;
+        background-color: $warmGreyFour;
+    }
+
+    .element-rich-link a {
+        color: $whiteTwo !important;
+    }
+
+    @include mq($to: col4) {
+        .standfirst {
+            background-color: $backgroundBlack;
+        }
+    }
+
+    @include mq($from: col4) {
+        .article__header {
+            background-color: $blackThree;
+            .article-kicker,
+            .headline,
+            .standfirst__inner,
+            .meta {
+                background-color: $backgroundBlack;
+            }
+        }
+    }
+}

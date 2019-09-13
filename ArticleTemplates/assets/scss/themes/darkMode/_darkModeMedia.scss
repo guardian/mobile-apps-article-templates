@@ -1,0 +1,78 @@
+.audio-player__button.touchpoint--primary .touchpoint__button,
+.audio-player__slider__knob {
+    background-color: $ratingYellow;
+
+    &:active {
+        background-color: $ratingYellow;
+    }
+}
+
+&.garnett--type-media {
+    .article--audio,
+    .article--visual {
+        &.article, .gallery {
+            background-color: $backgroundBlack;
+        }
+
+        .headline,
+        .audio-player__slider__played,
+        .audio-player__slider__remaining,
+        .standfirst,
+        .prose {
+            color: $whiteTwo;
+        }
+
+        .article-kicker,
+        .headline,
+        .meta,
+        .standfirst,
+        .article__body,
+        .tags {
+            background: $backgroundBlack;
+        }
+    }
+
+    .audio-player__button--loading {
+        .pulse {
+            &:before,
+            &:after,
+            & {
+                background-color: $ratingYellow;
+            }
+        }
+    }
+}
+
+&.garnett--type-media[data-content-type='audio'],
+&.garnett--type-media[data-content-type='video'],
+&.garnett--type-media[data-content-type='gallery'] {
+    .article__header .meta__byline .byline,
+    .meta__published,
+    .article__header .header-photo-credit,
+    .touch-gallery__caption__credit {
+        color: $warmGreyFour;
+    }
+
+    .touch-gallery__caption {
+        color: $whiteTwo;
+    }
+}
+
+@include mq($from: col4) {
+    .cutout .cutout__container {
+        min-height: 0;
+    }
+}
+
+&.garnett--type-media[data-content-type='video'],
+&.garnett--type-media[data-content-type='audio'] {
+    .main-media {
+        background: $backgroundBlack;
+    }
+
+    @include mq($from: col4) {
+        .article {
+            background: black;
+        }
+    }
+}
