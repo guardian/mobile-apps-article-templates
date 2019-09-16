@@ -400,7 +400,6 @@ function init() {
     window.liveblogTime();
     window.addEventListener('scroll', debounce(updateBlocksOnScroll, 100, true));
     liveMore();
-    trackLiveBlogEpic();
     initTwitter();
     initYoutube();
     setInterval(window.liveblogTime, 30000);
