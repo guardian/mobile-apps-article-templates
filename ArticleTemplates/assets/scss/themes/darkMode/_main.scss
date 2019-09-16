@@ -10,14 +10,16 @@
         $wrongQuizAnswer: #8b0000;
         $correctQuizAnswer: #236925;
 
-        @import "darkModeShared";
-        @import "darkModeArticle";
-        @import "darkModeLiveblog";
-        @import "darkModeCricket";
-        @import "darkModeFootball";
-        @import "darkModeOpinion";
-        @import "darkModeMedia";
-        @import "darkModeImmersive";
-        @import "darkModeQuiz";
+        &:not(.garnett--type-guardianlabs) {
+            @import "darkModeShared";
+            @import "darkModeArticle";
+            @import "darkModeLiveblog";
+            @import "darkModeCricket";
+            @import "darkModeFootball";
+            @import "darkModeOpinion";
+            @import "darkModeMedia";
+            @import "darkModeImmersive";
+            @import "darkModeQuiz";
+        }
     }
 }
