@@ -3,7 +3,6 @@ import { init as initTwitter, checkForTweets, enhanceTweets } from 'modules/twit
 import { init as initYoutube, checkForVideos, resetAndCheckForVideos } from 'modules/youtube';
 import { formatImages, loadEmbeds, loadInteractives } from 'bootstraps/common';
 import { getElemsFromHTML, signalDevice, getElementOffset, debounce, scrollToElement } from 'modules/util';
-import { trackLiveBlogEpic } from 'modules/creativeInjector';
 import { initMpuPoller } from 'modules/ads';
 import { initPositionPoller } from 'modules/cards';
 
@@ -63,9 +62,6 @@ function checkInjectedComponents(newBlocksAdded) {
     } else {
         checkForVideos();
     }
-
-    // if there is a contributions epic, track it
-    trackLiveBlogEpic();
 }
 
 function liveblogNewBlockDump() {

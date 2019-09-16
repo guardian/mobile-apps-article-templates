@@ -5,58 +5,42 @@ import {
     isElementPartiallyInViewport
 } from 'modules/util';
 
-const trackedImpressions = [];
+let impressionSeen = false;
 
-function isCreativeInView(creativeContainer, id) {
-    const messageName = `creative_impression/${id}`;
+function buttonHtml(buttonText) {
+    return `
+        <div>
+            <a class="epic-button" href="x-gu://creative_tap/premium">
+                ${buttonText}
+                <svg class="epic-button-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="5 5 20 20">
+                    <path fill="#121212" d="M22.8 14.6L15.2 7l-.7.7 5.5 6.6H6v1.5h14l-5.5 6.6.7.7 7.6-7.6v-.9"/>
+                </svg>
+            </a>
+        </div>`;
+}
 
-    if (!trackedImpressions.includes(id) && isElementPartiallyInViewport(creativeContainer)) {
+function epicHtml(title, body, firstButton, secondButton) {
+    return `
+        <h1>${title}</h1>
+        <div>${body}</div>
+        <div class="button-container">
+            ${buttonHtml(firstButton)}
+            ${secondButton ? buttonHtml(secondButton) : ''}
+        </div>
+`;
+}
+
+function isCreativeInView(creativeContainer) {
+    const messageName = `creative_impression`;
+
+    if (!impressionSeen && isElementPartiallyInViewport(creativeContainer)) {
         signalDevice(messageName);
-        trackedImpressions.push(id);
+        impressionSeen = true;
     }
 }
 
-function addEventListenerScroll(creativeContainer, id) {
-    window.addEventListener('scroll', debounce(isCreativeInView.bind(null, creativeContainer, id), 100));
-}
-
-function trackLiveBlogEpic() {
-    // if there is already a data-tracked attribute than we don't need to set up tracking again
-    const liveBlogEpicContainers = document.querySelectorAll('.contributions-epic__container:not([data-tracked])');
-    let liveBlogEpicContainerId;
-    let i;
-    let liveBlogEpicContainer;
-
-    for (i = 0; i < liveBlogEpicContainers.length; i++) {
-        liveBlogEpicContainer = liveBlogEpicContainers[i];
-        liveBlogEpicContainerId = liveBlogEpicContainer.getAttribute('id');
-
-        liveBlogEpicContainer.setAttribute('data-tracked', 'true');
-
-        addEventListenerScroll(liveBlogEpicContainer, liveBlogEpicContainerId);
-    }
-}
-
-function injectInlineCreative(creativeContainer, minParagraphs) {
-    let i;
-    let prose = document.querySelector('.article__body > div.prose');
-    let paragraphs = prose.querySelectorAll('.advert-slot--mpu ~ p');
-
-    // Don't show creative if less than 10 paragraphs
-    if (document.querySelectorAll('.article__body > div.prose > p').length < minParagraphs) {
-        return;
-    }
-
-    // Insert creative two paragraphs below advert
-    // Insert creativeContainer if paragraph is followed by a p or h1 elem
-    for (i = 1; i < paragraphs.length; i++) {
-        if (paragraphs[i].nextElementSibling &&
-            (paragraphs[i].nextElementSibling.tagName === 'P' || paragraphs[i].nextElementSibling.tagName === 'H1')) {
-            const nextSibling = paragraphs[i].nextElementSibling;
-            nextSibling.parentNode.insertBefore(creativeContainer, nextSibling);
-            break;
-        }
-    }
+function addEventListenerScroll(creativeContainer) {
+    window.addEventListener('scroll', debounce(isCreativeInView.bind(null, creativeContainer), 100));
 }
 
 function injectEpicCreative(creativeContainer) {
@@ -67,41 +51,13 @@ function injectEpicCreative(creativeContainer) {
     }
 }
 
-function injectCSS(css) {
-    const style = document.createElement('style');
-
-    style.type = 'text/css';
-
-    if (style.styleSheet) {
-        style.styleSheet.cssText = css;
-    } else {
-        style.appendChild(document.createTextNode(css));
-    }
-
-    document.head.appendChild(style);
-}
-
-function injectHTML(html, id, type) {
-    const creativeContainer = document.createElement('div');
-
-    creativeContainer.id = id;
-    creativeContainer.classList.add('creative-container');
-    creativeContainer.classList.add(`${type}-creative-container`);
-    creativeContainer.innerHTML = html;
-
-    if (type === 'inline-article') {
-        injectInlineCreative(creativeContainer, 10);
-    } else {
+function injectCreative(title, body, firstButton, secondButton) {
+    if (isOnline() && !document.getElementById('creative-container')) {
+        const creativeContainer = document.createElement('div');
+        creativeContainer.id = 'creative-container';
+        creativeContainer.innerHTML = epicHtml(title, body, firstButton, secondButton);
         injectEpicCreative(creativeContainer);
-    }
-
-    addEventListenerScroll(creativeContainer, id);
-}
-
-function injectCreative(html, css, id, type) {
-    if (isOnline() && !document.getElementById(id)) {
-        injectCSS(css);
-        injectHTML(html, id, type);
+        addEventListenerScroll(creativeContainer);
     }
 }
 
@@ -110,4 +66,4 @@ function init() {
     window.applyNativeFunctionCall('injectCreative');
 }
 
-export { init, trackLiveBlogEpic };
+export { init };
