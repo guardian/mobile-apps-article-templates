@@ -35,7 +35,7 @@ function insertAdPlaceholders(mpuAfterParagraphs, amountOfMpu) {
     
         if (!(mpuSibling && mpuSibling.parentNode)) {
             // Not enough paragraphs on page to add advert
-            return;
+            break;
         }
     
         mpuSibling.parentNode.insertBefore(mpu, mpuSibling);
