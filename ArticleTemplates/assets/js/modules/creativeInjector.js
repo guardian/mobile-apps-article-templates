@@ -51,7 +51,7 @@ function injectEpicCreative(creativeContainer) {
     }
 }
 
-function injectCreative(title, body, firstButton, secondButton) {
+function injectEpic(title, body, firstButton, secondButton) {
     if (isOnline() && !document.getElementById('creative-container')) {
         const creativeContainer = document.createElement('div');
         creativeContainer.id = 'creative-container';
@@ -62,8 +62,8 @@ function injectCreative(title, body, firstButton, secondButton) {
 }
 
 function init() {
-    window.injectCreative = injectCreative;
-    window.applyNativeFunctionCall('injectCreative');
+    window.injectEpic = injectEpic;
+    window.applyNativeFunctionCall('injectEpic');
 }
 
 export { init };
