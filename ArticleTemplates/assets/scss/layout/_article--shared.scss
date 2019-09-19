@@ -6,6 +6,10 @@
     .article__body {
         padding: base-px(1);
 
+        @include mq($from: col2) {
+            min-height: 700px;
+        }
+
         @include mq(col2, col3) {
             padding-right: cols($base-3, 2);
         }
