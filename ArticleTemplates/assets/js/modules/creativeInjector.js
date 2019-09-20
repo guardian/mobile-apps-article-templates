@@ -7,10 +7,10 @@ import {
 
 let impressionSeen = false;
 
-function buttonHtml(buttonText) {
+function buttonHtml(buttonText, buttonName) {
     return `
         <div>
-            <a class="epic-button" href="x-gu://creative_tap/premium">
+            <a class="epic-button" href="x-gu://creative_tap/${buttonName}">
                 ${buttonText}
                 <svg class="epic-button-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="5 5 20 20">
                     <path fill="#121212" d="M22.8 14.6L15.2 7l-.7.7 5.5 6.6H6v1.5h14l-5.5 6.6.7.7 7.6-7.6v-.9"/>
@@ -19,22 +19,20 @@ function buttonHtml(buttonText) {
         </div>`;
 }
 
-function epicHtml(title, body, firstButton, secondButton) {
+function epicHtml(title, body, premiumButton, contributeButton) {
     return `
         <h1>${title}</h1>
         <div>${body}</div>
         <div class="button-container">
-            ${buttonHtml(firstButton)}
-            ${secondButton ? buttonHtml(secondButton) : ''}
+            ${buttonHtml(premiumButton, 'premium_button')}
+            ${contributeButton ? buttonHtml(contributeButton, 'contribute_button') : ''}
         </div>
 `;
 }
 
 function isCreativeInView(creativeContainer) {
-    const messageName = `creative_impression`;
-
     if (!impressionSeen && isElementPartiallyInViewport(creativeContainer)) {
-        signalDevice(messageName);
+        signalDevice('creative_impression');
         impressionSeen = true;
     }
 }
