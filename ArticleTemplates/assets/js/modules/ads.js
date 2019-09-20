@@ -1,4 +1,4 @@
-import { signalDevice, getElementOffset, isAdvertising } from "modules/util";
+import { signalDevice, getElementOffset } from "modules/util";
 
 let adsReady = false;
 let numberOfMpus = 0;
@@ -32,17 +32,17 @@ function insertAdPlaceholders(mpuAfterParagraphs, amountOfMpu) {
         const placeholder = document.createElement('div');
         const placeholderSibling = document.querySelector('.article__body > div.prose > :first-child');
         const mpuSibling = document.querySelector(`.article__body > div.prose > p:nth-of-type(${nrParagraph}) ~ p + p`);
-    
+
         if (!(mpuSibling && mpuSibling.parentNode)) {
             // Not enough paragraphs on page to add advert
             break;
         }
-    
+
         mpuSibling.parentNode.insertBefore(mpu, mpuSibling);
-    
+
         placeholder.classList.add('advert-slot');
-    
-        // To mimic the correct positioning on full width tablet view, we will need an 
+
+        // To mimic the correct positioning on full width tablet view, we will need an
         // empty div to pad out the text so we can position absolutely over it.
         if (placeholderSibling && placeholderSibling.parentNode) {
             placeholderSibling.parentNode.insertBefore(placeholder, placeholderSibling);
@@ -268,7 +268,7 @@ function init(config) {
     if (adsType === 'liveblog') {
         adsReady = true;
         updateLiveblogAdPlaceholders();
-    } else if (adsType === 'gallery' && !isAdvertising()) {
+    } else if (adsType === 'gallery') {
         numberOfMpus = 1;
         const mpuAfterImages = 4;
         insertAdPlaceholdersGallery(mpuAfterImages);
@@ -276,7 +276,7 @@ function init(config) {
         numberOfMpus = 0;
         insertAdPlaceholders(config.mpuAfterParagraphs, 2);
     }
- 
+
     if (adsReady) {
         if (GU.opts.platform !== 'android') {
             initMpuPoller();

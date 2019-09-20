@@ -83,7 +83,7 @@ function debounce(func, wait, immediate) {
     return function() {
         context = this;
         args = arguments;
-        
+
         later = () => {
             timeout = null;
             if (!immediate) {
@@ -92,7 +92,7 @@ function debounce(func, wait, immediate) {
         }
 
         callNow = immediate && !timeout;
-        
+
         clearTimeout(timeout);
 
         timeout = setTimeout(later, wait);
@@ -138,10 +138,6 @@ function scrollToElement(element) {
     scroll.animateScroll(element, { speed: 1500 });
 }
 
-function isAdvertising() {
-    return !!document.querySelector('body.is_advertising');
-}
-
 export {
     isElementPartiallyInViewport,
     getElementOffset,
@@ -156,6 +152,5 @@ export {
     append,
     insertAfter,
     getAndroidVersion,
-    scrollToElement,
-    isAdvertising
+    scrollToElement
 };
