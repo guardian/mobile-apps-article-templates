@@ -33,8 +33,15 @@
 .creative-container {
     .contributions-epic {
         background-color: $blackTwo;
+        border-top: solid 1px $ratingYellow;
+
         .contributions-epic-highlight {
+            background: $ratingYellow;
             color: color(brightness-7);
+        }
+
+        .contributions-epic_button {
+            background: $ratingYellow;
         }
     }
 }
@@ -97,4 +104,22 @@
 
 &.garnett--type-analysis .headline {
     background-image: repeating-linear-gradient(to bottom, transparent, transparent calc(3.6rem - 1px), $whiteTwo);
+}
+
+.element-interactive {
+    background-color: white;
+    padding: 8px;
+}
+
+.player-card {
+    background: $backgroundBlack;
+    border-top: 2px solid $warmGreyFour;
+}
+
+.player-card__position {
+    color: $warmGreyFour;
+}
+
+.player-card__stat-value {
+    border-top: solid 1px $blackTwo;
 }
