@@ -83,7 +83,7 @@ function debounce(func, wait, immediate) {
     return function() {
         context = this;
         args = arguments;
-        
+
         later = () => {
             timeout = null;
             if (!immediate) {
@@ -92,7 +92,7 @@ function debounce(func, wait, immediate) {
         }
 
         callNow = immediate && !timeout;
-        
+
         clearTimeout(timeout);
 
         timeout = setTimeout(later, wait);
