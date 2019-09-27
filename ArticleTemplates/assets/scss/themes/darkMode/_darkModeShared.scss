@@ -49,8 +49,18 @@
 .atom--snippet {
     background: $blackTwo;
     border-image: repeating-linear-gradient(to bottom, $warmGrey, $warmGrey 1px, transparent 1px, transparent 4px) 13;
+
+    &__handle {
+        background: $blackThree !important;
+    }
+
     .atom--snippet__label {
         color: $p-inverted;
+    }
+
+    &--timeline .atom--snippet__event-date {
+        background-color: $ratingYellow;
+        color: $blackThree;
     }
 }
 
@@ -122,4 +132,14 @@
 
 .player-card__stat-value {
     border-top: solid 1px $blackTwo;
+}
+
+.loading {
+    &::before {
+        color: $warmGreyFour;
+    }
+}
+
+.prose a:not(.video-URL) {
+    color: $p-inverted;
 }

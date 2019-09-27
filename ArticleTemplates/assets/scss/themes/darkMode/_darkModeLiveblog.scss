@@ -50,7 +50,6 @@
     &.is-live .key-events,
     .key-events {
         border-color: $blackTwo;
-        border-top-color: $dark-2;
 
         .key-events__title {
             color: $p-inverted;
@@ -98,9 +97,11 @@
         border-top: solid 1px $p-kicker;
     }
 
-    .block--live-key-event .block__title .highlight {
-        background-color: $ratingYellow;
-        color: $blackThree;
+    .block--live-key-event, .block--live-summary {
+        .block__title .highlight {
+            background-color: $ratingYellow;
+            color: $blackThree;
+        }
     }
 
     .prose blockquote.quoted,
