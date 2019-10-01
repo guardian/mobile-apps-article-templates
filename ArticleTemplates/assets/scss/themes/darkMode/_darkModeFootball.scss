@@ -1,10 +1,12 @@
-&.garnett--type-article.tone--football .football {
+&.garnett--type-article.tone--football .football,
+&.garnett--type-matchreport.tone--football .football {
     .standfirst:not([data-summary='']) p {
         color: $warmGreyFour;
     }
 
     .tabs {
         background-color: $backgroundBlack;
+        [href='#football__tabpanel--article'][aria-selected=true],
         [href='#football__tabpanel--liveblog'][aria-selected=true],
         [href='#football__tabpanel--stats'][aria-selected=true] {
             color: $whiteTwo !important;

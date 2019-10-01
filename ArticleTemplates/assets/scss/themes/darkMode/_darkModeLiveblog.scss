@@ -4,7 +4,7 @@
     .article__body,
     .key-events,
     .article--liveblog {
-        background-color: $blackThree;
+        background-color: #000000;
     }
 
     &.is-live {
@@ -12,11 +12,13 @@
             background-color: $dark-1;
         }
 
-        .article-kicker {
+        .article-kicker__highlight a {
             color: $dark-3;
         }
 
-        .headline {
+        .headline,
+        .article__header .byline__author a,
+        .article__header .comment-count a {
             color: color(brightness-93);
         }
 
@@ -44,6 +46,17 @@
             .meta__published__date, .alerts {
                 color: $dark-3;
             }
+        }
+
+        .block--live-summary .prose p a:not(.video-URL),
+        .block--live-summary .prose li a:not(.video-URL),
+        .prose a:not(.video-URL) {
+            background-image: linear-gradient(rgba(220, 220, 220, 0.33) 0%, rgba(220, 220, 220, 0.5) 100%);
+            color: $whiteTwo;
+        }
+
+        .avatar {
+            background-color: $p-inverted;
         }
     }
 
@@ -87,14 +100,15 @@
     }
 
     .block:not(.block--discussion-thread) {
-        background-color: $blackThree;
+        background-color: $backgroundBlack;
         border: solid 1px $blackTwo;
         border-bottom: 2px solid $blackTwo;
         color: $whiteTwo;
-    }
 
-    .block--live-key-event, .block--live-summary {
-        border-top: solid 1px $p-kicker;
+        &.block--live-key-event,
+        &.block--live-summary {
+            border-top: solid 1px $p-inverted;
+        }
     }
 
     .block--live-key-event, .block--live-summary {
@@ -104,9 +118,10 @@
         }
     }
 
+    .prose blockquote,
     .prose blockquote.quoted,
     .prose blockquote.quoted::before {
-        color: $whiteTwo;
+        color: $warmGreyFour;
     }
 
     .tags {
