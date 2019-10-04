@@ -4,6 +4,7 @@ import {
     signalDevice,
     isElementPartiallyInViewport
 } from 'modules/util';
+import { initPositionPoller } from 'modules/cards';
 
 let impressionSeen = false;
 
@@ -56,6 +57,7 @@ function injectEpic(title, body, firstButton, secondButton) {
         creativeContainer.innerHTML = epicHtml(title, body, firstButton, secondButton);
         injectEpicCreative(creativeContainer);
         addEventListenerScroll(creativeContainer);
+        initPositionPoller();
     }
 }
 
