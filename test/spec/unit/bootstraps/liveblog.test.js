@@ -174,7 +174,6 @@ describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
             const loadEmbedsMock = jest.spyOn(common, "loadEmbeds");
             const loadInteractivesMock = jest.spyOn(common, "loadInteractives");
             const checkForTweetsMock = jest.spyOn(twitter, "checkForTweets");
-            const trackLiveBlogEpicMock = jest.spyOn(creative, "trackLiveBlogEpic");
 
             window.liveblogLoadMore(html);
 
@@ -184,7 +183,6 @@ describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
             expect(loadInteractivesMock).toBeCalledTimes(1);
             expect(window.liveblogTime).toBeCalledTimes(1);
             expect(checkForTweetsMock).toBeCalledTimes(1);
-            expect(trackLiveBlogEpicMock).toBeCalledTimes(1);
         });
 
         it('pass images in new blocks to be formatted', function () {

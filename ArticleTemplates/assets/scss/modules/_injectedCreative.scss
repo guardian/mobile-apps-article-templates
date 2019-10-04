@@ -1,19 +1,46 @@
-.creative-container {
+#creative-container {
     margin: base-px(1, 0);
     clear: both;
-}
 
-.inline-article-creative-container {
-    color: inherit !important;
-    margin: 0 auto;
+    border-top: 1px solid color(tone-highlight);
+    background: color(brightness-96);
     width: 100%;
-    clear: both;
+    padding: 12px;
+    font-family: "Guardian Headline", "Guardian Text Egyptian Web", Georgia, serif;
+    clear: left;
+
+    h1:first-of-type {
+        font-size: 20px;
+        font-weight: 900;
+        font-family: "Guardian Egyptian Web", "Guardian Headline", "Guardian Text Egyptian Web", Georgia, serif;
+        margin-bottom: 12px;
+    }
     
-    @include mq($from: col1) {
-        float: right;
-        width: 300px;
-        margin-top: base-px(1);
-        margin-left: base-px(1.5);
-        margin-bottom: base-px(1);
+    .epic-button {
+        display: inline-block;
+        background-image: none;
+        color: color(brightness-7);
+        background: color(tone-highlight);
+        border-radius: 100px;
+        margin: 0 12px 12px 0;
+        padding: 6px 6px 4px 15px;
+        font-size: 16px;
+        font-weight: 900;
+        font-family: "Guardian Text Sans Web", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        line-height: 26px;
+    }
+    
+    .button-container {
+        margin-top: 24px;
+    }
+    
+    .epic-button-arrow {
+        margin-left: 6px;
+        vertical-align: middle;
+    }
+    
+    mark {
+        background: color(tone-highlight);
+        padding: 4px 0;
     }
 }
