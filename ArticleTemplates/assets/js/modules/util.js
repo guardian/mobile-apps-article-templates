@@ -143,6 +143,10 @@ function isAdvertising() {
 }
 
 function isDarkMode() {
+    if (document.querySelector('.dark-mode-on')) {
+        return true;
+    }
+
     if (window.matchMedia) {
         return window.matchMedia('(prefers-color-scheme: dark)').matches;
     }

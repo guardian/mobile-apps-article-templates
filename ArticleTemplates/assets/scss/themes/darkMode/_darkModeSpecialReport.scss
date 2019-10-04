@@ -1,14 +1,4 @@
-&.garnett--type-article,
-&.garnett--type-matchreport,
-&.garnett--type-feature,
-&.garnett--type-immersive,
-&.garnett--type-review,
-&.garnett--type-interview,
-&.garnett--type-analysis,
-&.garnett--type-comment,
-&.garnett--type-guardianview,
-&.garnett--type-recipe,
-&.tone--deadBlog {
+&.garnett--type-specialreport.tone--special {
     .article__header,
     .article-kicker,
     .main-media,
@@ -23,15 +13,14 @@
         background-color: $backgroundBlack;
     }
 
-    .article-kicker,
-    .meta .byline__author a,
-    .standfirst .byline__author a,
-    .standfirst .standfirst__inner a,
-    .comment-count a,
-    .prose .element-pullquote blockquote,
-    .prose .element-pullquote blockquote footer,
-    .article__header .bullet:before {
-        color: $p-inverted;
+    &:not(.garnett--type-media) .article-kicker__highlight {
+        background: $ratingYellow;
+        color: $blackThree;
+    }
+
+    .byline__author,
+    .meta .byline__author a {
+        color: color(tone-special-mid);
     }
 
     .article__body .from-content-api.prose a {
@@ -43,7 +32,8 @@
     &.garnett--type-feature .headline,
     .article__body,
     .tags,
-    .loading--liveblog::before {
+    .loading--liveblog::before,
+    .standfirst {
         color: $whiteTwo;
     }
 
@@ -57,7 +47,6 @@
         text-decoration: underline;
     }
 
-    .standfirst,
     #published-date,
     figure figcaption,
     .byline,
