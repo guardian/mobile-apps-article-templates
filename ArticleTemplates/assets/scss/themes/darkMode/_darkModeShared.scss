@@ -116,9 +116,14 @@
     background-image: repeating-linear-gradient(to bottom, transparent, transparent calc(3.6rem - 1px), $whiteTwo);
 }
 
-.element-interactive {
+.interactive {
     background-color: white;
     padding: 8px;
+
+    a {
+        color: $blackThree !important;
+        background-image: linear-gradient(rgba(18, 18, 18, 0.5) 0%, rgba(18, 18, 18, 0.5) 100%) !important;
+    }
 }
 
 .player-card {
@@ -141,6 +146,6 @@
 }
 
 .prose a:not(.video-URL) {
-    background-image: linear-gradient(rgba(220, 220, 220, 0.33) 0%, rgba(220, 220, 220, 0.5) 100%);
+    background-image: linear-gradient(rgba(220, 220, 220, 0.5) 0%, rgba(220, 220, 220, 0.5) 100%);
     color: $whiteTwo;
 }
