@@ -1,4 +1,6 @@
-&.garnett--type-specialreport.tone--special {
+&.tone--special,
+&.garnett--type-specialreport.tone--special,
+&.garnett--type-specialreport {
     .article__header,
     .article-kicker,
     .main-media,
@@ -15,11 +17,15 @@
 
     &:not(.garnett--type-media) .article-kicker__highlight {
         background: $ratingYellow;
+        box-shadow: 0 0 0 2px $ratingYellow;
         color: $blackThree;
     }
 
     .byline__author,
-    .meta .byline__author a {
+    .meta .byline__author a,
+    .byline__author a,
+    .comment-count a,
+    .atom--snippet .atom--snippet__label {
         color: color(tone-special-mid);
     }
 
@@ -33,7 +39,8 @@
     .article__body,
     .tags,
     .loading--liveblog::before,
-    .standfirst {
+    .standfirst,
+    .standfirst a:not(.Video-URL) {
         color: $whiteTwo;
     }
 
@@ -55,6 +62,10 @@
         color: $warmGreyFour;
     }
 
+    .audio-player {
+        background-color: transparent;
+    }
+
     .alerts span[data-icon]:before {
         color: $blackThree;
     }
@@ -66,6 +77,19 @@
 
     .element-rich-link a {
         color: $whiteTwo !important;
+    }
+
+    &.garnett--type-immersive {
+        .article__series a span {
+            color: $blackThree;
+            background: $ratingYellow;
+        }
+
+        .prose .section__rule {
+            & + p.has__dropcap:first-letter {
+                color: $ratingYellow;
+            }
+        }
     }
 
     @include mq($to: col4) {
