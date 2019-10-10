@@ -4,7 +4,6 @@
     padding: 0;
     display: block;
     position: relative;
-    border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
     font-size: 1.6rem;
 
     .sponsorship__inner {
@@ -32,6 +31,10 @@
         padding: {
             left: 0;
         }
+    }
+
+    &.keyline::before {
+        background-color: transparent;
     }
 }
 
@@ -231,13 +234,8 @@
         .article {
             .article {
                 &__header {
-                    .sponsorship {
-                        border-top: 1px rgba(color(global-adv-bands), .4) dotted;
-                    }
-
                     .meta {
                         border-bottom: 0;
-                        border-top: 1px rgba(color(global-adv-bands), .4) dotted;
                     }
 
                     .main-media {
