@@ -43,10 +43,39 @@
 
     .article__header .headline,
     &.garnett--type-feature .headline,
-    .article__body,
     .tags,
     .loading--liveblog::before {
         color: $whiteTwo;
+    }
+
+    .article__body .from-content-api.prose {
+        & > p,
+        & > span,
+        & > em,
+        & > ul,
+        & > ol,
+        & > figure[data-atom-type="guide"],
+        & > figure[data-atom-type="audio"],
+        & > figure[data-atom-type="commondivision"],
+        & > figure[data-atom-type="cta"],
+        & > figure[data-atom-type="explainer"],
+        & > figure[data-atom-type="media"],
+        & > figure[data-atom-type="profile"],
+        & > figure[data-atom-type="qanda"],
+        & > figure[data-atom-type="quiz"],
+        & > figure[data-atom-type="recipe"],
+        & > figure[data-atom-type="review"],
+        & > figure[data-atom-type="shared"],
+        & > figure[data-atom-type="storyquestions"],
+        & > figure[data-atom-type="timeline"],
+        & > h2,
+        & > h1,
+        & > h3,
+        & > h4,
+        & > h5,
+        & > h6 {
+            color: $whiteTwo;
+        }
     }
 
     .sponsorship__about-uri {
