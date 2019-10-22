@@ -16,7 +16,7 @@ function updateBlocksOnScroll() {
 }
 
 function scrollToBlock(id) {
-    const block = document.querySelector(`#block-${id}`);
+    const block = document.querySelector(`#${id}`);
     if (block) {
         scrollToElement(block)
         return true;
