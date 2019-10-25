@@ -255,7 +255,8 @@ function liveblogInsertBlocks(afterBlockId, html) {
     const oldBlockCount = articleBody.getElementsByClassName('block').length;
     const newBlockElems = getElemsFromHTML(html);
 
-    document.getElementsByClassName('loading--liveblog')[0].classList.remove('loading--visible');
+    [].slice.call(document.getElementsByClassName('loading--liveblog'))
+        .forEach(loadingIcon => loadingIcon.style.display = 'none')
 
     for (i = 0; i < newBlockElems.length; i++) {
         if (afterBlockId) {
