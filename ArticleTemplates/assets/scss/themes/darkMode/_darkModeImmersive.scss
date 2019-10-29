@@ -1,0 +1,33 @@
+&.garnett--type-immersive {
+    .article__header-info {
+        background-color: $blackThree;
+
+        .article__headline.headline.selectable {
+            background-color: $blackThree;
+        }
+    }
+
+    .standfirst .byline__author a {
+        background-image: linear-gradient(rgba(153, 153, 153, 0.33) 0%, rgba(153, 153, 153, 0.5) 100%);
+        color: $warmGrey;
+    }
+
+
+    .standfirst a:not(.video-URL) {
+        background-image: linear-gradient(rgba(153, 153, 153, 0.33) 0%, rgba(153, 153, 153, 0.5) 100%);
+        color: $warmGrey;
+    }
+
+    .standfirst,
+    .article__header-info::before {
+        background-color: $backgroundBlack;
+    }
+
+    .prose .section__rule {
+        border-bottom: solid 2px $warmGrey;
+
+        & + p.has__dropcap:first-letter {
+            color: $p-inverted;
+        }
+    }
+}

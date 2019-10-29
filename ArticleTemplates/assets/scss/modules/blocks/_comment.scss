@@ -222,7 +222,7 @@
     }
 
     .avatar--user {
-        margin: base-px(.33333, .66666, 0, 0);
+        margin: base-px(.33333, .66666, .66666, 0);
         float: left;
     }
 }
@@ -409,8 +409,7 @@
     }
 }
 
-// Response
-.is-response { // TODO: Rename .comment--response
+.is-response {
     .comment__header {
         border-top: color(tone-sandy-light) 1px dotted;
         width: auto;
@@ -420,7 +419,6 @@
 
         @include mq($to: col2) {
             margin-left: base-px(4.33333);
-            margin-right: base-px(5.33333);
         }
 
         @include mq(col2, col3) {
@@ -441,6 +439,12 @@
 
         p:last-child {
             margin-bottom: 0;
+        }
+    }
+
+    .comment__options {
+        @include mq($to: col2) {
+            margin-left: base-px(4.33333);
         }
     }
 
@@ -517,7 +521,6 @@
     .comment__username {
         color: color(tone-news-accent);
     }
-
 
     .comment__pick, .comment__role {
         color: color(brightness-100);

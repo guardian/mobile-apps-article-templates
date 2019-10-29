@@ -1,0 +1,66 @@
+.cricket {
+    .cricket-match-summary-head,
+    .cricket-match-summary-result,
+    .cricket-match-summary-footer {
+        background-color: $ratingYellow;
+    }
+
+    .standfirst:not([data-summary='']) p {
+        color: $warmGreyFour;
+    }
+
+    .tone--liveBlog.is-live .article__header--cricket .meta,
+    .tone--deadBlog .article__header--cricket .meta,
+    .tabs {
+        background-color: $backgroundBlack;
+        [href='#cricket__tabpanel--liveblog'][aria-selected=true],
+        [href='#cricket__tabpanel--stats'][aria-selected=true] {
+            color: $whiteTwo !important;
+            border-top-color: $whiteTwo !important;
+        }
+
+        .tab {
+            border-top: 4px solid $warmGreyFour;
+            color: $warmGreyFour;
+        }
+    }
+
+    .key-events {
+        border: none;
+        border-top: 1px solid $blackTwo;
+        border-bottom: 2px solid $blackTwo;
+
+        .key-events__title {
+            color: $p-inverted;
+        }
+    }
+
+    .cricket__tabpanel {
+        background: $backgroundBlack;
+    }
+
+    .cricket-stats__table-wrap {
+        background: $blackTwo;
+        color: $whiteTwo;
+    }
+
+    .cricket-stats__table tr {
+        background: $blackThree;
+    }
+
+    .cricket-stats__innings {
+        border: solid 1px $warmGreyFour;
+        background: $backgroundBlack;
+        padding-bottom: 0;
+        margin-bottom: 24px;
+    }
+
+    .cricket-stats__table th.cricket-stats__table--title,
+    .cricket-stats__table td.cricket-stats__table--strong {
+        color: $whiteTwo;
+    }
+
+    .cricket-stats__table tr {
+        border-bottom: 1px solid $warmGreyFour;
+    }
+}

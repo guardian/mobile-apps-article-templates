@@ -1,0 +1,35 @@
+&.garnett--type-comment,
+&.garnett--type-guardianview {
+    .article__header {
+        .headline.selectable {
+            background-color: transparent;
+        }
+    }
+
+    .meta__published__comments {
+        border-left: solid 1px $blackTwoOpinionKeyline;
+    }
+
+    &:not(.garnett--type-media) {
+        .cutout__container#cutout-container,
+        .article__body,
+        .tags {
+            background-color: $backgroundBlack;
+        }
+
+        .keyline:before {
+            background-color: $blackTwo;
+        }
+
+        @include mq($from: col4) {
+            .article__header {
+                .article-kicker,
+                .standfirst__inner,
+                .meta,
+                .main-media {
+                    background-color: $backgroundBlack;
+                }
+            }
+        }
+    }
+}

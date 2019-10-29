@@ -7,6 +7,14 @@
         color(sport-liveblog-background)
     );
 
+    @include pillar-colour-dark(
+        color(sport-kicker),
+        color(sport-inverted),
+        color(sport-dark-1),
+        color(sport-dark-2),
+        color(sport-dark-3)
+    );
+
     // Common
     .tabs {
         background-color: color(brightness-100);
@@ -163,4 +171,17 @@
             }
         }
     }
+}
+
+
+// This is a darkmode fallback for some matchreports
+// Mapi and iOS/Android don't always set a pillar type on these pages
+.garnett--pillar- {
+    @include pillar-colour-dark(
+        color(sport-kicker),
+        color(sport-inverted),
+        color(sport-dark-1),
+        color(sport-dark-2),
+        color(sport-dark-3)
+    );
 }

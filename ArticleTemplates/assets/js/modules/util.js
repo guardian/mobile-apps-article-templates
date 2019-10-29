@@ -138,6 +138,22 @@ function scrollToElement(element) {
     scroll.animateScroll(element, { speed: 1500 });
 }
 
+function isAdvertising() {
+    return !!document.querySelector('body.is_advertising');
+}
+
+function isDarkMode() {
+    if (document.querySelector('.dark-mode-on')) {
+        return true;
+    }
+
+    if (window.matchMedia) {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+
+    return false;
+}
+
 export {
     isElementPartiallyInViewport,
     getElementOffset,
@@ -152,5 +168,7 @@ export {
     append,
     insertAfter,
     getAndroidVersion,
-    scrollToElement
+    scrollToElement,
+    isAdvertising,
+    isDarkMode
 };
