@@ -241,7 +241,7 @@ function liveblogInsertGap(afterBlockId, olderPagination, newerPagination) {
         </div>
     `;
 
-    loading.innerHTML = `<div style="display: none" id="loading-${afterBlockId}" class="loading" data-icon="&#xe00C;">`
+    loading.innerHTML = `<div style="display: none" id="loading-${afterBlockId}" class="loading gap-loading" data-icon="&#xe00C;">`
     insertAfter(document.getElementById(afterBlockId), after);
     insertAfter(document.getElementById(afterBlockId), loading);
     insertAfter(document.getElementById(afterBlockId), before);
@@ -255,8 +255,10 @@ function liveblogInsertBlocks(afterBlockId, html) {
     const oldBlockCount = articleBody.getElementsByClassName('block').length;
     const newBlockElems = getElemsFromHTML(html);
 
-    [].slice.call(document.getElementsByClassName('loading--liveblog'))
-        .forEach(loadingIcon => loadingIcon.style.display = 'none')
+    const icons = [].slice.call(document.getElementsByClassName('gap-loading'));
+    icons.forEach(loadingIcon => loadingIcon.parentNode.removeChild(loadingIcon))
+
+    document.getElementsByClassName('loading--liveblog')[0].classList.remove('loading--visible');
 
     for (i = 0; i < newBlockElems.length; i++) {
         if (afterBlockId) {
@@ -270,7 +272,9 @@ function liveblogInsertBlocks(afterBlockId, html) {
 
     blocks = articleBody.getElementsByClassName('block');
 
-    for (i = blocks.length; i > oldBlockCount; i--) {
+    const lastLoadedBlock = afterBlockId ? 9 : oldBlockCount;
+
+    for (i = blocks.length; i > lastLoadedBlock; i--) {
         images.push(...blocks[i-1].getElementsByTagName('img'));
     }
 
