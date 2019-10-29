@@ -1,0 +1,44 @@
+@mixin pillar-colour-dark($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3) {
+    $whiteTwo: #dcdcdc;
+    $warmGreyFour: #999999;
+    $warmGrey: #767676;
+    $blackTwo: #333333;
+    $blackTwoOpinionKeyline: rgba(51,51,51,.2);
+    $blackThree: #121212;
+    $backgroundBlack: #1a1a1a;
+    $ratingYellow: #f3c200;
+    $wrongQuizAnswer: #8b0000;
+    $correctQuizAnswer: #236925;
+    $guardianLabsLight: #69d1c8;
+
+    @media (prefers-color-scheme: dark) {
+        @import "darkModeShared";
+        @import "darkModeArticle";
+        @import "darkModeLiveblog";
+        @import "darkModeCricket";
+        @import "darkModeFootball";
+        @import "darkModeOpinion";
+        @import "darkModeMedia";
+        @import "darkModeImmersive";
+        @import "darkModeQuiz";
+        @import "darkModeSpecialReport";
+        @import "darkModeGuardianLabs";
+        @import "darkModeRelatedContent";
+        @import "darkModeComments";
+    }
+
+    // Fallback for Android
+    &.dark-mode-on {
+        @import "darkModeShared";
+        @import "darkModeArticle";
+        @import "darkModeLiveblog";
+        @import "darkModeCricket";
+        @import "darkModeFootball";
+        @import "darkModeOpinion";
+        @import "darkModeMedia";
+        @import "darkModeImmersive";
+        @import "darkModeQuiz";
+        @import "darkModeSpecialReport";
+        @import "darkModeGuardianLabs";
+    }
+}

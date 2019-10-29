@@ -1,11 +1,11 @@
 .key-events {
     background: color(brightness-96);
-    border: 1px solid color(tone-sandy-light);
-    border-bottom: 2px solid color(tone-sandy-light);
+    border-bottom: 1px solid color(tone-sandy-light);
+    border-top: none;
     margin: 0 auto;
     max-width: 1200px;
     overflow: hidden;
-    padding: base-px(.25, 1, 0, 1);
+    padding: base-px(1, 1, 0, 1);
     position: relative;
     transition: padding .6s;
 
@@ -15,6 +15,7 @@
 
     @include mq($from: col2) {
         padding-top: base-px(1);
+        border: 1px solid color(tone-sandy-light);
     }
 
     &__title {
@@ -45,11 +46,11 @@
     &__toggle {
         border: 1px solid color(brightness-60);
         border-radius: 50%;
-        height: 34px;
+        height: 32px;
         position: absolute;
-        right: 15px;
-        top: 15px;
-        width: 34px;
+        right: 6px;
+        top: 12px;
+        width: 32px;
 
         &-icon {
             left: 50%;

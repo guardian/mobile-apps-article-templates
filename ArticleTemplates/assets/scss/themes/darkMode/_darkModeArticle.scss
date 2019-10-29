@@ -1,0 +1,129 @@
+&.garnett--type-article,
+&.garnett--type-matchreport,
+&.garnett--type-feature,
+&.garnett--type-immersive,
+&.garnett--type-review,
+&.garnett--type-interview,
+&.garnett--type-analysis,
+&.garnett--type-comment,
+&.garnett--type-guardianview,
+&.garnett--type-recipe,
+&.tone--deadBlog {
+    background-color: $blackThree;
+
+    .article__header,
+    .article-kicker,
+    .main-media,
+    .headline,
+    .article__body,
+    .tags,
+    .standfirst__inner,
+    .meta,
+    .article__meta,
+    .sponsorship,
+    .keyline:before {
+        background-color: $backgroundBlack;
+    }
+
+    .article-kicker,
+    .meta .byline__author a,
+    .standfirst .byline__author a,
+    .comment-count a,
+    .prose .element-pullquote blockquote,
+    .prose .element-pullquote blockquote footer,
+    .article__header .bullet:before {
+        color: $p-inverted;
+    }
+
+    .standfirst .standfirst__inner a {
+        background-image: linear-gradient(rgba(153, 153, 153, 0.33) 0%, rgba(153, 153, 153, 0.5) 100%);
+        color: $warmGreyFour;
+    }
+
+    .article__body .from-content-api.prose a {
+        background-image: linear-gradient(rgba(220, 220, 220, 0.33) 0%, rgba(220, 220, 220, 0.5) 100%);
+        color: $whiteTwo;
+    }
+
+    .article__header .headline,
+    &.garnett--type-feature .headline,
+    .tags,
+    .loading--liveblog::before {
+        color: $whiteTwo;
+    }
+
+    .article__body .from-content-api.prose {
+        & > p,
+        & > span,
+        & > em,
+        & > ul,
+        & > ol,
+        & > figure[data-atom-type="guide"],
+        & > figure[data-atom-type="audio"],
+        & > figure[data-atom-type="commondivision"],
+        & > figure[data-atom-type="cta"],
+        & > figure[data-atom-type="explainer"],
+        & > figure[data-atom-type="media"],
+        & > figure[data-atom-type="profile"],
+        & > figure[data-atom-type="qanda"],
+        & > figure[data-atom-type="quiz"],
+        & > figure[data-atom-type="recipe"],
+        & > figure[data-atom-type="review"],
+        & > figure[data-atom-type="shared"],
+        & > figure[data-atom-type="storyquestions"],
+        & > figure[data-atom-type="timeline"],
+        & > h2,
+        & > h1,
+        & > h3,
+        & > h4,
+        & > h5,
+        & > h6 {
+            color: $whiteTwo;
+        }
+    }
+
+    .sponsorship__about-uri {
+        color: $warmGreyFour;
+        text-decoration: underline;
+    }
+
+    .standfirst,
+    #published-date,
+    figure figcaption,
+    .byline,
+    .alerts,
+    .sponsorship__formatted-sponsor-name {
+        color: $warmGreyFour;
+    }
+
+    .alerts span[data-icon]:before {
+        color: $blackThree;
+    }
+
+    .article__header ul > li:before {
+        color: $warmGreyFour;
+        background-color: $warmGreyFour;
+    }
+
+    .element-rich-link a {
+        color: $whiteTwo !important;
+    }
+
+    @include mq($to: col4) {
+        .standfirst {
+            background-color: $backgroundBlack;
+        }
+    }
+
+    @include mq($from: col4) {
+        .article__header {
+            background-color: $blackThree;
+            .article-kicker,
+            .headline,
+            .standfirst__inner,
+            .meta {
+                background-color: $backgroundBlack;
+            }
+        }
+    }
+}

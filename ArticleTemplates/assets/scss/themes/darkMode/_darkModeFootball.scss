@@ -1,0 +1,49 @@
+&.garnett--type-article.tone--football .football,
+&.garnett--type-matchreport.tone--football .football,
+&.garnett--type-.tone-- .football {
+    background-color: $backgroundBlack;
+
+    .standfirst:not([data-summary='']) p {
+        color: $warmGreyFour;
+    }
+
+    .tabs {
+        background-color: $backgroundBlack;
+        [href='#football__tabpanel--article'][aria-selected=true],
+        [href='#football__tabpanel--liveblog'][aria-selected=true],
+        [href='#football__tabpanel--stats'][aria-selected=true] {
+            color: $whiteTwo !important;
+            border-top-color: $whiteTwo !important;
+        }
+
+        .tab {
+            border-top: 4px solid $warmGreyFour;
+            color: $warmGreyFour;
+        }
+    }
+
+    .key-events {
+        border: none;
+        border-top: 1px solid $blackTwo;
+        border-bottom: 2px solid $blackTwo;
+
+        .key-events__title {
+            color: $p-inverted;
+        }
+    }
+
+    .football__tabpanel .article {
+        background-color: $backgroundBlack;
+    }
+
+    .football__lineups,
+    .football__today,
+    .football__stats,
+    .match-stats__caption {
+        color: $whiteTwo;
+    }
+
+    .team-lineup__player__number {
+        color: $warmGreyFour;
+    }
+}

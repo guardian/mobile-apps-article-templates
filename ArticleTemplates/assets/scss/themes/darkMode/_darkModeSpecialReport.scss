@@ -1,0 +1,141 @@
+&.tone--special,
+&.garnett--type-specialreport.tone--special,
+&.garnett--type-specialreport {
+    &:not(.garnett--type-guardianlabs) {
+        .article__header,
+        .article-kicker,
+        .main-media,
+        .headline,
+        .article__body,
+        .tags,
+        .standfirst__inner,
+        .meta,
+        .article__meta,
+        .sponsorship,
+        .keyline:before {
+            background-color: $backgroundBlack;
+        }
+
+        &:not(.garnett--type-media) .article-kicker__highlight {
+            background: $ratingYellow;
+            box-shadow: 0 0 0 2px $ratingYellow;
+            color: $blackThree;
+        }
+
+        .byline__author,
+        .meta .byline__author a,
+        .byline__author a,
+        .comment-count a,
+        .atom--snippet .atom--snippet__label {
+            color: color(tone-special-mid);
+        }
+
+        .article__body .from-content-api.prose a {
+            background-image: linear-gradient(rgba(220, 220, 220, 0.33) 0%, rgba(220, 220, 220, 0.5) 100%);
+            color: $whiteTwo;
+        }
+
+        .article__header .headline,
+        &.garnett--type-feature .headline,
+        .article__body,
+        .tags,
+        .loading--liveblog::before,
+        .standfirst,
+        .standfirst a:not(.Video-URL) {
+            color: $whiteTwo;
+        }
+
+        .sponsorship img {
+            background-color: $whiteTwo;
+            padding: 8px;
+        }
+
+        .sponsorship__about-uri {
+            color: $warmGreyFour;
+            text-decoration: underline;
+        }
+
+        #published-date,
+        figure figcaption,
+        .byline,
+        .alerts,
+        .sponsorship__formatted-sponsor-name {
+            color: $warmGreyFour;
+        }
+
+        .audio-player {
+            background-color: transparent;
+        }
+
+        .alerts span[data-icon]:before {
+            color: $blackThree;
+        }
+
+        .article__header ul > li:before {
+            color: $warmGreyFour;
+            background-color: $warmGreyFour;
+        }
+
+        .element-rich-link a {
+            color: $whiteTwo !important;
+        }
+
+        &.garnett--type-immersive {
+            .article__series a span {
+                color: $blackThree;
+                background: $ratingYellow;
+            }
+
+            .prose .section__rule {
+                & + p.has__dropcap:first-letter {
+                    color: $ratingYellow;
+                }
+            }
+        }
+
+        @include mq($to: col4) {
+            .standfirst {
+                background-color: $backgroundBlack;
+            }
+        }
+
+        @include mq($from: col4) {
+            .article__header {
+                background-color: $blackThree;
+                .article-kicker,
+                .headline,
+                .standfirst__inner,
+                .meta {
+                    background-color: $backgroundBlack;
+                }
+            }
+        }
+
+        .standfirst__inner p,
+        .meta.keyline-4 {
+            background: $backgroundBlack !important;
+            box-shadow: none !important;
+        }
+    }
+
+    &.garnett--type-analysis .headline {
+        background-image: repeating-linear-gradient(to bottom, transparent, transparent calc(3.6rem - 1px), rgba(220, 220, 220, 0.5));
+    }
+
+    .comments {
+        .comments__link {
+            color: $whiteTwo;
+        }
+
+        .touchpoint--primary {
+            .touchpoint__button {
+                background: $warmGreyFour;
+                color: black;
+            }
+
+            .touchpoint__label {
+                color: $warmGreyFour;
+            }
+        }
+    }
+}

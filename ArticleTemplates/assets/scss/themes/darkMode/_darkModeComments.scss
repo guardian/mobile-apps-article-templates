@@ -1,0 +1,100 @@
+.comments {
+    background: $blackThree;
+
+    .comments__headline.headline {
+        color: $p-inverted;
+        background: $blackThree;
+    }
+
+    .comments__link,
+    .comments__ordering {
+        color: $whiteTwo;
+    }
+
+    .comment__report .touchpoint__label {
+        color: $warmGreyFour;
+    }
+
+    .comment__options {
+        background: $backgroundBlack;
+    }
+
+    .touchpoint--primary {
+        .touchpoint__button {
+            background: $warmGreyFour;
+            color: black;
+        }
+
+        .touchpoint__label {
+            color: $warmGreyFour;
+        }
+    }
+
+    .comment__username,
+    .comments__viewmore .comments__viewmore--label {
+        color: $warmGreyFour;
+    }
+
+    .block.block--discussion-thread,
+    .block--highlighted.block--discussion-thread {
+        .comment__recommend {
+            padding-left: 0px;
+
+            .touchpoint__button {
+                color: $warmGreyFour;
+                border: solid 1px rgba(220, 220, 220, 0.5);
+
+                &::before {
+                    color: $warmGreyFour;                        
+                }
+            }
+        }
+
+        .block.block--discussion-thread {
+            .comment__recommend {
+                background-color: $blackTwo;
+            }
+        }
+    }
+
+    .block.block--discussion-thread {
+        background-color: $backgroundBlack;
+        border: solid 1px $backgroundBlack;
+        border-bottom: 2px solid $backgroundBlack;
+        color: $whiteTwo;
+    }
+
+    .comments__viewmore--button.touchpoint__button {
+        color: $warmGreyFour;
+        border: solid 1px rgba(220, 220, 220, 0.5);
+
+        &::before {
+            color: $warmGreyFour;                        
+        }
+    }
+
+    .is-response .comment__body {
+        color: $warmGreyFour;
+    }
+
+    .is-response .comment__header,
+    .is-response .comment__recommend {
+        border-top: dotted 1px $warmGreyFour;
+        background: $backgroundBlack;
+    }
+
+    .more.more--comments .more__label {
+        border: solid 1px rgba(220, 220, 220, .5);
+        color: rgba(220, 220, 220, 0.5);
+    }
+
+    .prose a:not(.video-URL) {
+        color: $warmGreyFour !important;
+    }
+}
+
+&.garnett--type-live {
+    .comments {
+        background: black;
+    }
+}
