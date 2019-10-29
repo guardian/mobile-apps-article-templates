@@ -9,6 +9,12 @@ import { initPositionPoller } from 'modules/cards';
 let newBlockHtml;
 let liveblogStartPos;
 
+function safeEnhanceTweets() {
+    if (typeof twttr !== 'undefined' && 'widgets' in twttr && 'load' in twttr.widgets) {
+        enhanceTweets();
+    }
+}
+
 function updateBlocksOnScroll() {
     if (liveblogStartPos.top > window.scrollY) {
         liveblogNewBlockDump();
@@ -166,9 +172,7 @@ function liveblogLoadMore(html) {
     loadInteractives();
     window.liveblogTime();
     checkInjectedComponents(false);
-    if (typeof twttr !== 'undefined' && 'widgets' in twttr && 'load' in twttr.widgets) {
-        enhanceTweets();
-    }
+    safeEnhanceTweets();
 }
 
 function liveblogTime() {
@@ -285,6 +289,7 @@ function liveblogInsertBlocks(afterBlockId, html) {
     window.liveblogTime();
 
     checkInjectedComponents(false);
+    safeEnhanceTweets();
 }
 
 function setupGlobals() {
