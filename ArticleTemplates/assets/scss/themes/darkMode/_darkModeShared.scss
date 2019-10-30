@@ -1,7 +1,8 @@
 .figure--thumbnail .element-image-inner,
 .figure--thumbnail-with-caption .element-image-inner,
 .figure-wide .element-image-inner,
-.element__inner {
+.element__inner,
+.figure-wide .figure__inner {
     background-color: $blackTwo;
 }
 
@@ -30,19 +31,18 @@
     border-left: solid 1px $blackTwo;
 }
 
-.creative-container {
-    .contributions-epic {
-        background-color: $blackTwo;
-        border-top: solid 1px $ratingYellow;
+#creative-container {
+    background-color: $blackTwo;
+    border-top: solid 1px $ratingYellow;
+    color: $whiteTwo;
 
-        .contributions-epic-highlight {
-            background: $ratingYellow;
-            color: color(brightness-7);
-        }
+    mark {
+        background: $ratingYellow;
+        color: color(brightness-7);
+    }
 
-        .contributions-epic_button {
-            background: $ratingYellow;
-        }
+    .epic-button {
+        background: $ratingYellow;
     }
 }
 
