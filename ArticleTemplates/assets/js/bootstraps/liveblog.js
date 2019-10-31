@@ -394,7 +394,6 @@ function init() {
     window.liveblogTime();
     window.addEventListener('scroll', debounce(updateBlocksOnScroll, 100, true));
     liveMore();
-    initTwitter();
     initYoutube();
     setInterval(window.liveblogTime, 30000);
 
@@ -410,6 +409,8 @@ function init() {
             formatImages(images)
         }, 0);
     }
+
+    initTwitter(() => signalDevice('ready'));
 }
 
 export { init };

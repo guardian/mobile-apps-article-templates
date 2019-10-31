@@ -133,15 +133,9 @@ function getAndroidVersion() {
     return match ? match[1] : undefined;
 }
 
-const reportScrollFinish = event => {
-    signalDevice(`scrollFinished/${event.detail.anchor.id}`);
-    document.removeEventListener('scrollStop', reportScrollFinish, false);
-}
-
 function scrollToElement(element) {
     const scroll = new SmoothScroll();
     scroll.animateScroll(element, { speed: 1500 });
-    document.addEventListener('scrollStop', reportScrollFinish, false);
 }
 
 function isAdvertising() {
