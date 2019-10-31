@@ -133,9 +133,15 @@ function getAndroidVersion() {
     return match ? match[1] : undefined;
 }
 
+const reportScrollFinish = event =>
+    signalDevice(`scrollFinished/${event.detail.anchor}`);
+
 function scrollToElement(element) {
     const scroll = new SmoothScroll();
     scroll.animateScroll(element, { speed: 1500 });
+    if (!getEventListeners(document).scrollStop) {
+        document.addEventListener('scrollStop', reportScrollFinish, false);
+    }
 }
 
 function isAdvertising() {
