@@ -49,9 +49,7 @@ function init(liveBlog = false) {
     setupForms();
 
     if (!document.body.classList.contains('no-ready')) {
-        if (!liveBlog) {
-            signalDevice('ready');
-        }
+        signalDevice('ready');
     }
 }
 
