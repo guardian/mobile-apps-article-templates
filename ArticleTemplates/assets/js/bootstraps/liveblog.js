@@ -9,12 +9,6 @@ import { initPositionPoller } from 'modules/cards';
 let newBlockHtml;
 let liveblogStartPos;
 
-function safeEnhanceTweets() {
-    if (typeof twttr !== 'undefined' && 'widgets' in twttr && 'load' in twttr.widgets) {
-        enhanceTweets();
-    }
-}
-
 function updateBlocksOnScroll() {
     if (liveblogStartPos.top > window.scrollY) {
         liveblogNewBlockDump();
@@ -172,7 +166,9 @@ function liveblogLoadMore(html) {
     loadInteractives();
     window.liveblogTime();
     checkInjectedComponents(false);
-    safeEnhanceTweets();
+    if (typeof twttr !== 'undefined' && 'widgets' in twttr && 'load' in twttr.widgets) {
+        enhanceTweets();
+    }
 }
 
 function liveblogTime() {
@@ -245,7 +241,7 @@ function liveblogInsertGap(afterBlockId, olderPagination, newerPagination) {
         </div>
     `;
 
-    loading.innerHTML = `<div style="display: none" id="loading-${afterBlockId}" class="loading gap-loading" data-icon="&#xe00C;">`
+    loading.innerHTML = `<div style="display: none" id="loading-${afterBlockId}" class="loading" data-icon="&#xe00C;">`
     insertAfter(document.getElementById(afterBlockId), after);
     insertAfter(document.getElementById(afterBlockId), loading);
     insertAfter(document.getElementById(afterBlockId), before);
@@ -258,9 +254,6 @@ function liveblogInsertBlocks(afterBlockId, html) {
     const articleBody = document.getElementsByClassName('article__body')[0];
     const oldBlockCount = articleBody.getElementsByClassName('block').length;
     const newBlockElems = getElemsFromHTML(html);
-
-    const icons = [].slice.call(document.getElementsByClassName('gap-loading'));
-    icons.forEach(loadingIcon => loadingIcon.parentNode.removeChild(loadingIcon))
 
     document.getElementsByClassName('loading--liveblog')[0].classList.remove('loading--visible');
 
@@ -276,9 +269,7 @@ function liveblogInsertBlocks(afterBlockId, html) {
 
     blocks = articleBody.getElementsByClassName('block');
 
-    const lastLoadedBlock = afterBlockId ? 9 : oldBlockCount;
-
-    for (i = blocks.length; i > lastLoadedBlock; i--) {
+    for (i = blocks.length; i > oldBlockCount; i--) {
         images.push(...blocks[i-1].getElementsByTagName('img'));
     }
 
@@ -289,7 +280,6 @@ function liveblogInsertBlocks(afterBlockId, html) {
     window.liveblogTime();
 
     checkInjectedComponents(false);
-    safeEnhanceTweets();
 }
 
 function setupGlobals() {
@@ -394,6 +384,7 @@ function init() {
     window.liveblogTime();
     window.addEventListener('scroll', debounce(updateBlocksOnScroll, 100, true));
     liveMore();
+    initTwitter();
     initYoutube();
     setInterval(window.liveblogTime, 30000);
 
@@ -409,8 +400,6 @@ function init() {
             formatImages(images)
         }, 0);
     }
-
-    initTwitter(() => signalDevice('ready'));
 }
 
 export { init };

@@ -1,4 +1,4 @@
-import { isDarkMode } from 'modules/util';
+import { debounce, isDarkMode } from 'modules/util';
 import { initPositionPoller } from 'modules/cards';
 import { initMpuPoller } from 'modules/ads';
 import { resetAndCheckForVideos } from 'modules/youtube';
@@ -9,13 +9,13 @@ let tweets;
 let tweetHeights = [];
 let scriptReady = false;
 
-function init(readyCallback) {
+function init() {
     isAndroid = GU.opts.platform === 'android';
     articleBody = document.getElementsByClassName('article__body')[0];
-    checkForTweets(readyCallback);
+    checkForTweets();
 }
 
-function checkForTweets(readyCallback) {
+function checkForTweets() {
     if (GU.opts.disableEnhancedTweets) {
         return;
     }
@@ -28,11 +28,11 @@ function checkForTweets(readyCallback) {
             themeMeta.setAttribute('content', 'dark');
         }
 
-        loadScript(readyCallback);
+        loadScript();
     }
 }
 
-function loadScript(readyCallback) {
+function loadScript() {
     let scriptElement;
 
     if (document.getElementById('twitter-widget')) {
@@ -44,29 +44,27 @@ function loadScript(readyCallback) {
     scriptElement.id = 'twitter-widget';
     scriptElement.async = true;
     scriptElement.src = 'https://platform.twitter.com/widgets.js';
-    scriptElement.onload = onScriptLoaded.bind(null, readyCallback);
+    scriptElement.onload = onScriptLoaded;
 
     document.body.appendChild(scriptElement);
 }
 
-function onScriptLoaded(readyCallback) {
-    scriptReady = isScriptReady(readyCallback);
+function onScriptLoaded() {
+    scriptReady = isScriptReady();
+
+    if (scriptReady) {
+        enhanceTweets();
+    }
+
+    window.addEventListener('scroll', debounce(enhanceTweets, 100));
 }
 
-function isScriptReady(readyCallback) {
+function isScriptReady() {
     if (scriptReady) {
         return true;
     } else if (typeof twttr !== 'undefined' && 'widgets' in twttr && 'load' in twttr.widgets) {
         twttr.events.bind('rendered', workaroundClicks);
         twttr.events.bind('rendered', fixVineAutoplay);
-        twttr.events.bind(
-            'loaded',
-            function (event) {
-                if (readyCallback) {
-                    readyCallback()
-                }
-            }
-        );
         scriptReady = true;
         return true;
     }
