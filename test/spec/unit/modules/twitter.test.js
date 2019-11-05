@@ -38,37 +38,5 @@ describe('ArticleTemplates/assets/js/modules/twitter', function () {
 
             expect(document.querySelectorAll('#twitter-widget').length).toEqual(0);
         });
-
-        it('add scroll event listener to enhances tweets on scroll', function () {
-            var blockquote = document.createElement('blockquote');
-
-            blockquote.classList.add('twitter-tweet');
-
-            container.appendChild(blockquote);
-
-            window.twttr = {
-                events: {
-                    bind: jest.fn()
-                },
-                widgets: {
-                    load: jest.fn()
-                }
-            };
-
-            // intercept appendChild and force load event on script
-            jest.spyOn(document.body, 'appendChild').mockImplementation((script) => {
-                if (script.tagName.toLowerCase() === 'script') {
-                    script.onload();
-                }
-            });
-
-            jest.spyOn(window, 'addEventListener').mockImplementation(() => jest.fn());
-
-            init();
-
-            expect(window.addEventListener).toHaveBeenCalledTimes(1);
-            expect(window.addEventListener).toHaveBeenCalledWith('scroll', expect.any(Function));
-            expect(util.debounce).toHaveBeenCalledTimes(1);
-        });
     });
 });
