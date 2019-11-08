@@ -22,6 +22,10 @@ function checkForTweets(readyCallback) {
 
     tweets = document.body.querySelectorAll('blockquote.js-tweet, blockquote.twitter-tweet');
 
+    if (!tweets.length && readyCallback) {
+        readyCallback();
+    }
+
     if (tweets.length && !scriptReady) {
         const themeMeta = document.getElementById('twitter-theme');
         if (isDarkMode() && themeMeta) {
