@@ -1,4 +1,4 @@
-import { debounce, isDarkMode } from 'modules/util';
+import { isDarkMode } from 'modules/util';
 import { initPositionPoller } from 'modules/cards';
 import { initMpuPoller } from 'modules/ads';
 import { resetAndCheckForVideos } from 'modules/youtube';
@@ -9,13 +9,13 @@ let tweets;
 let tweetHeights = [];
 let scriptReady = false;
 
-function init() {
+function init(readyCallback) {
     isAndroid = GU.opts.platform === 'android';
     articleBody = document.getElementsByClassName('article__body')[0];
-    checkForTweets();
+    checkForTweets(readyCallback);
 }
 
-function checkForTweets() {
+function checkForTweets(readyCallback) {
     if (GU.opts.disableEnhancedTweets) {
         return;
     }
@@ -28,11 +28,11 @@ function checkForTweets() {
             themeMeta.setAttribute('content', 'dark');
         }
 
-        loadScript();
+        loadScript(readyCallback);
     }
 }
 
-function loadScript() {
+function loadScript(readyCallback) {
     let scriptElement;
 
     if (document.getElementById('twitter-widget')) {
@@ -44,27 +44,29 @@ function loadScript() {
     scriptElement.id = 'twitter-widget';
     scriptElement.async = true;
     scriptElement.src = 'https://platform.twitter.com/widgets.js';
-    scriptElement.onload = onScriptLoaded;
+    scriptElement.onload = onScriptLoaded.bind(null, readyCallback);
 
     document.body.appendChild(scriptElement);
 }
 
-function onScriptLoaded() {
-    scriptReady = isScriptReady();
-
-    if (scriptReady) {
-        enhanceTweets();
-    }
-
-    window.addEventListener('scroll', debounce(enhanceTweets, 100));
+function onScriptLoaded(readyCallback) {
+    scriptReady = isScriptReady(readyCallback);
 }
 
-function isScriptReady() {
+function isScriptReady(readyCallback) {
     if (scriptReady) {
         return true;
     } else if (typeof twttr !== 'undefined' && 'widgets' in twttr && 'load' in twttr.widgets) {
         twttr.events.bind('rendered', workaroundClicks);
         twttr.events.bind('rendered', fixVineAutoplay);
+        twttr.events.bind(
+            'loaded',
+            function (event) {
+                if (readyCallback) {
+                    readyCallback()
+                }
+            }
+        );
         scriptReady = true;
         return true;
     }
