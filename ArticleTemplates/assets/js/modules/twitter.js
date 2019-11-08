@@ -8,6 +8,7 @@ let isAndroid;
 let tweets;
 let tweetHeights = [];
 let scriptReady = false;
+let signaledReady = false;
 
 function init(readyCallback) {
     isAndroid = GU.opts.platform === 'android';
@@ -21,6 +22,11 @@ function checkForTweets(readyCallback) {
     }
 
     tweets = document.body.querySelectorAll('blockquote.js-tweet, blockquote.twitter-tweet');
+
+    if (!tweets.length && readyCallback && !signaledReady) {
+        signaledReady = true;
+        readyCallback();
+    }
 
     if (tweets.length && !scriptReady) {
         const themeMeta = document.getElementById('twitter-theme');
@@ -62,7 +68,8 @@ function isScriptReady(readyCallback) {
         twttr.events.bind(
             'loaded',
             function (event) {
-                if (readyCallback) {
+                if (readyCallback && !signaledReady) {
+                    signaledReady = true;
                     readyCallback()
                 }
             }
