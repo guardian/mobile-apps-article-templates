@@ -32,6 +32,7 @@ $ npm install
     "@guardian/mobile-apps-article-templates": "file:../mobile-apps-article-templates"
 }
 ```
+* Run `npm install` in the root of the `ios-live` repo.
 
 ### Running on Android simulator
 * Checkout the branch you are developing against
