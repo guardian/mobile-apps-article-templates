@@ -1,6 +1,8 @@
 .article-kicker {
     padding: base-px(.5, 1, 0, 1);
     min-height: 0;
+    display: flex;
+    align-items: flex-start;
     position: relative;
 
     &__live,
@@ -36,6 +38,41 @@
 
         a {
             color: inherit;
+        }
+    }
+    &__copy {
+        vertical-align: top;
+        @include mq($from: col2) {
+            display: inline-flex;
+        }
+    }
+    .article-badge {
+        width: 55px;
+        margin-right: 8px;
+        padding-top: base-px(0.5);
+        padding-bottom: 8px;
+
+        @include mq($from: col2) {
+            width: 70px;
+        }
+
+        & ~ .article-kicker__copy {
+            display: inline-flex;
+            flex-direction: column;
+
+            .article-kicker__section {
+                display: block;
+                line-height: 20px;
+                margin-top: 2px;
+            }
+
+            .article-kicker__series {
+                display: block;
+                line-height: 20px;
+                margin-bottom: 14px;
+                font-weight: 400;
+                margin-left: 0;
+            }
         }
     }
 }
