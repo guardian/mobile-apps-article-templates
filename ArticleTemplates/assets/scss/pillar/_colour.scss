@@ -123,15 +123,23 @@
         .article__series,
         .byline__author > a {
             color: $p-inverted;
-        }
-
-        .article__series > a > span {
-            color: color(brightness-100);
             background-color: $p-kicker;
         }
 
-        &.tone--special .article__series a span {
+        .article__series-copy {
+            color: color(brightness-100);
+
+            a {
+                color: color(brightness-100);
+            }
+        }
+
+        &.tone--special .article__series-copy {
             color: color(tone-highlight);
+
+            a {
+                color: color(brightness-100);
+            }
         }
 
         .section__rule {
