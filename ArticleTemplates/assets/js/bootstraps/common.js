@@ -6,6 +6,7 @@ import {
     getElementOffset,
     signalDevice,
     isElementPartiallyInViewport,
+    isDarkMode
 } from 'modules/util';
 import { init as initComments } from 'modules/comments';
 import { init as initCards } from 'modules/cards';
@@ -47,11 +48,18 @@ function init(liveBlog = false) {
     initRichLinks();
     initHttp();
     setupForms();
+    darkModeSetup();
 
     if (!document.body.classList.contains('no-ready')) {
         if (!liveBlog) {
             signalDevice('ready');
         }
+    }
+}
+
+function darkModeSetup() {
+    if (isDarkMode()) {
+        document.getElementsByTagName('html')[0].style.background = "transparent";
     }
 }
 
