@@ -276,10 +276,8 @@ function liveblogInsertBlocks(afterBlockId, html) {
 
     blocks = articleBody.getElementsByClassName('block');
 
-    const lastLoadedBlock = afterBlockId ? 9 : oldBlockCount;
-
-    for (i = blocks.length; i > lastLoadedBlock; i--) {
-        images.push(...blocks[i-1].getElementsByTagName('img'));
+    for (i = 0; i < blocks.length; i++) {
+        images.push(...blocks[i].getElementsByTagName('img'));
     }
 
     formatImages(images);
