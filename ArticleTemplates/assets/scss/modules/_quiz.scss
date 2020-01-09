@@ -426,6 +426,11 @@
         // Personality quiz overrides
         &.personality-quiz {
             .question__answer {
+                &.highlight-answer.answer .answer__wrapper,
+                &.highlight-answer.answer.has-image {
+                    background-color: color(opinion-inverted);
+                }
+
                 &:not(.has-image) {
                     .answer__text {
                         color: color(brightness-7);
