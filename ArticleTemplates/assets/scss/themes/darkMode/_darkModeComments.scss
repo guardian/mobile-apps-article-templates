@@ -98,3 +98,33 @@
         background: black;
     }
 }
+
+.comments .block--highlighted .comment__container {
+    background: #8d2800;
+    color: color(brightness-93);
+
+    .comment__viewthread {
+        color: color(brightness-93);
+    }
+
+    &:after {
+        background: #8d2800;
+    }
+
+    .comment__options {
+        background: #8d2800;
+        color: color(brightness-93);
+    }
+
+    .prose {
+        @include text-underline(color(brightness-93), color(brightness-93));
+
+        a {
+            color: color(brightness-93) !important;
+        }
+
+        blockquote {
+            color: color(brightness-93);
+        }
+    }
+}
