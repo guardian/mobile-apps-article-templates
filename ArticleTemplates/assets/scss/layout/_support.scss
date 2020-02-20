@@ -23,4 +23,35 @@
             @include body();
         }
     }
+
+    @media (prefers-color-scheme: dark) {
+        $whiteTwo: #dcdcdc;
+        $blackThree: #121212;
+        background-color: $blackThree;
+
+        .prose {
+            p,
+            h2,
+            h3,
+            ul {
+                color: $whiteTwo;
+            }
+        }
+    }
+}
+
+// Android dark mode styles
+.body.dark-mode-on .support {
+    $whiteTwo: #dcdcdc;
+    $blackThree: #121212;
+    background-color: $blackThree;
+
+    .prose {
+        p,
+        h2,
+        h3,
+        ul {
+            color: $whiteTwo;
+        }
+    }
 }
