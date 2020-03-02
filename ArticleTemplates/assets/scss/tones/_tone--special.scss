@@ -42,7 +42,11 @@
 
         // Prevents highlight overlapping section copy
         .article-kicker__copy .article-kicker__series {
-            line-height: 22px;
+            line-height: 2.2rem;
+
+            @include mq($from: col2) {
+                line-height: 2.8rem;
+            }
         }
 
         .article-kicker__highlight {
