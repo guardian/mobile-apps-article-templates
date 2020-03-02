@@ -40,10 +40,14 @@
             color: color(tone-special-dark);
         }
 
+        // Prevents highlight overlapping section copy
+        .article-kicker__copy .article-kicker__series {
+            line-height: 22px;
+        }
+
         .article-kicker__highlight {
             background-color: color(tone-highlight);
-            box-shadow: 0 0 0 2px color(tone-highlight);
-            padding: 0 2px;
+            box-shadow: 2px 0 color(tone-highlight), -2px 0 color(tone-highlight);
         }
     }
 
