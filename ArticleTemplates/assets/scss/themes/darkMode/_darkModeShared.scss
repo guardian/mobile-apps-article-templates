@@ -167,9 +167,11 @@ figure[data-alt="Subscribe to the Guardian morning briefing"] {
 }
 
 .prose blockquote,
-.prose blockquote.quoted,
-.prose blockquote.quoted::before {
+.prose blockquote.quoted {
     color: $whiteTwo;
+    &::before {
+        color: $warmGreyFour;
+    }    
 }
 
 .campaign--snippet {
