@@ -9,6 +9,7 @@
 &.garnett--type-guardianview,
 &.garnett--type-recipe,
 &.garnett--type-quiz,
+&.garnett--type-media,
 &.tone--deadBlog {
     background-color: $blackThree;
 
@@ -36,9 +37,10 @@
         color: $p-inverted;
     }
 
-    .standfirst .standfirst__inner a {
-        background-image: linear-gradient(rgba(153, 153, 153, 0.33) 0%, rgba(153, 153, 153, 0.5) 100%);
-        color: $warmGreyFour;
+    .standfirst .standfirst__inner a,
+    .standfirst a {
+        background-image: linear-gradient(rgba(153, 153, 153, 0.33) 0%, rgba(153, 153, 153, 0.5) 100%) !important;
+        color: $warmGreyFour !important;
     }
 
     .article__body .from-content-api.prose a {
@@ -102,7 +104,7 @@
     .byline,
     .alerts,
     .sponsorship__formatted-sponsor-name {
-        color: $warmGreyFour;
+        color: $warmGreyFour !important;
     }
 
     .alerts span[data-icon]:before {
@@ -116,6 +118,7 @@
 
     .element-rich-link a {
         color: $whiteTwo !important;
+        text-decoration: none;
     }
 
     @include mq($to: col4) {
