@@ -17,11 +17,8 @@ function insertAdPlaceholdersGallery(mpuAfterImages) {
     }
 
     const image = images[nrImages];
-
     image.parentNode.insertBefore(mpu, image);
-
     placeholder.classList.add('advert-slot');
-
     adsReady = true;
 }
 
@@ -39,7 +36,6 @@ function insertAdPlaceholders(mpuAfterParagraphs, amountOfMpu) {
         }
 
         mpuSibling.parentNode.insertBefore(mpu, mpuSibling);
-
         placeholder.classList.add('advert-slot');
 
         // To mimic the correct positioning on full width tablet view, we will need an
@@ -74,11 +70,9 @@ function updateLiveblogAdPlaceholders(reset) {
 
     for (i = 0; i < blocks.length; i++) {
         block = blocks[i];
-
         if (i === 2 || i === 7) {
             numberOfMpus++;
             mpu = createMpu(numberOfMpus);
-
             if (block.nextSibling) {
                 block.parentNode.insertBefore(mpu, block);
             } else {
@@ -122,46 +116,32 @@ function getMpuPos(formatter) {
     const advertSlots = document.getElementsByClassName('advert-slot__wrapper');
     const scrollLeft = document.scrollingElement ? document.scrollingElement.scrollLeft : document.body.scrollLeft;
     const scrollTop = document.scrollingElement ? document.scrollingElement.scrollTop : document.body.scrollTop;
+    const params = [];
     let advertPosition;
-    let i;
-
-    const params = {
-        x1: -1,
-        y1: -1,
-        w1: -1,
-        h1: -1,
-        x2: -1,
-        y2: -1,
-        w2: -1,
-        h2: -1
-    };
 
     if (advertSlots.length) {
-        for (i = 0; i < advertSlots.length; i++) {
+        for (let i = 0; i < advertSlots.length; i++) {
             advertPosition = advertSlots[i].getBoundingClientRect();
 
             if (advertPosition.width !== 0 && advertPosition.height !== 0) {
-                params[`x${i + 1}`] = advertPosition.left + scrollLeft;
-                params[`y${i + 1}`] = advertPosition.top + scrollTop;
-                params[`w${i + 1}`] = advertPosition.width;
-                params[`h${i + 1}`] = advertPosition.height;
+                params.push({
+                    x: advertPosition.left + scrollLeft,
+                    y: advertPosition.top + scrollTop,
+                    width: advertPosition.width,
+                    height: advertPosition.height
+                })
             }
         }
 
-        return formatter(params);
+        return formatter ? formatter(params) : params;
     }
 
     return null;
 }
 
+// this function is called by iOS
 function getMpuPosCommaSeparated() {
-    return getMpuPos(getMpuPosCommaSeparatedCallback);
-}
-
-function getMpuPosCommaSeparatedCallback(params) {
-    return (numberOfMpus > 1)
-        ? `${params.x1},${params.y1},${params.x2},${params.y2}`
-        : `${params.x1},${params.y1}`;
+    return getMpuPos();
 }
 
 function getMpuOffset() {
@@ -186,8 +166,8 @@ function updateAndroidPositionLiveblogCallback({ x1, y1, w1, h1, x2, y2, w2, h2 
     window.GuardianJSInterface.mpuLiveblogAdsPosition(x1, y1, w1, h1, x2, y2, w2, h2);
 }
 
-function updateAndroidPositionDefaultCallback({ x1, y1, w1, h1, x2, y2, w2, h2 }) {
-    window.GuardianJSInterface.mpuAdsPosition(x1, y1, w1, h1, x2, y2, w2, h2);
+function updateAndroidPositionDefaultCallback(adSlots) {
+    window.GuardianJSInterface.mpuAdsPosition(JSON.stringify(adSlots));
 }
 
 function initMpuPoller(interval = 1000, firstRun = true) {
@@ -274,7 +254,7 @@ function init(config) {
         insertAdPlaceholdersGallery(mpuAfterImages);
     } else {
         numberOfMpus = 0;
-        insertAdPlaceholders(config.mpuAfterParagraphs, 2);
+        insertAdPlaceholders(config.mpuAfterParagraphs, 15);
     }
 
     if (adsReady) {
