@@ -239,6 +239,7 @@ function setupGlobals() {
 
 function init(config) {
     adsType = config.adsType;
+    const maximumAdverts = config.maximumAdverts;
     setupGlobals();
 
     if (adsType === 'liveblog') {
@@ -248,9 +249,9 @@ function init(config) {
         numberOfMpus = 1;
         const mpuAfterImages = 4;
         insertAdPlaceholdersGallery(mpuAfterImages);
-    } else {
+    } else if (maximumAdverts) {
         numberOfMpus = 0;
-        insertAdPlaceholders(config.mpuAfterParagraphs, 15);
+        insertAdPlaceholders(config.mpuAfterParagraphs, maximumAdverts);
     }
 
     if (adsReady) {
