@@ -76,6 +76,7 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
 
             it('inserts liveblog ad placeholders', function () {
                 config.adsType = 'liveblog';
+                config.maximumAdverts = 2;
 
                 init(config);
 
@@ -113,6 +114,7 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
             it('inserts ad placeholder', function () {
                 config.mpuAfterParagraphs = 3;
                 config.adsType = 'default';
+                config.maximumAdverts = 2;
 
                 init(config);
 
@@ -136,6 +138,7 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
             it('fires ads ready if has not been fired already', function () {
                 config.mpuAfterParagraphs = 3;
                 config.adsType = 'default';
+                config.maximumAdverts = 2;
 
                 document.body.classList.remove('no-ready');
 
@@ -174,7 +177,9 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
                 container.appendChild(articleBody);
 
                 config = {
-                    mpuAfterParagraphs: 3
+                    mpuAfterParagraphs: 3,
+                    maximumAdverts: 2
+
                 };
             });
 
@@ -211,7 +216,8 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
             }
 
             config = {
-                adsType: 'liveblog'
+                adsType: 'liveblog',
+                maximumAdverts: 2
             };
         });
 
@@ -279,7 +285,8 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
             articleBody.insertBefore(epic, articleBody.children[2]);
 
             config = {
-                adsType: 'liveblog'
+                adsType: 'liveblog',
+                maximumAdverts: 2
             };
         });
 
@@ -305,7 +312,8 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
             container.appendChild(advertSlotWrapper);
 
             config = {
-                adsType: 'default'
+                adsType: 'default',
+                maximumAdverts: 2
             };
         });
 
@@ -340,7 +348,8 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
             container.appendChild(articleBody);
 
             config = {
-                adsType: 'liveblog'
+                adsType: 'liveblog',
+                maximumAdverts: 2
             };
 
             Element.prototype.getBoundingClientRect = jest.fn(() => {
@@ -401,7 +410,8 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
             container.appendChild(articleBody);
 
             config = {
-                mpuAfterParagraphs: 3
+                mpuAfterParagraphs: 3,
+                maximumAdverts: 2
             };
 
             const getElementOffsetMock = jest.spyOn(util, "getElementOffset");
