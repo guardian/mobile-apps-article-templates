@@ -96,10 +96,6 @@ function createMpu(id) {
     mpu.classList.add('advert-slot');
     mpu.classList.add('advert-slot--mpu');
 
-    if (id === 1) {
-        mpu.classList.add('first');
-    }
-
     mpu.innerHTML = `
         <div class="advert-slot__label">
             Advertisement<a class="advert-slot__action" href="x-gu://subscribe">Hide<span data-icon="&#xe04F;"></span></a>
