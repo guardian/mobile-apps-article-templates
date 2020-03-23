@@ -108,6 +108,7 @@ function createMpu(id) {
     return mpu;
 }
 
+// this function is called by iOS
 function getMpuPos(formatter) {
     const advertSlots = document.getElementsByClassName('advert-slot__wrapper');
     const scrollLeft = document.scrollingElement ? document.scrollingElement.scrollLeft : document.body.scrollLeft;
@@ -135,11 +136,6 @@ function getMpuPos(formatter) {
     return null;
 }
 
-// this function is called by iOS
-function getMpuPosCommaSeparated() {
-    return getMpuPos();
-}
-
 function updateAndroidPosition() {
     if (adsType === 'liveblog') {
         getMpuPos(updateAndroidPositionLiveblogCallback);
@@ -162,13 +158,13 @@ function initMpuPoller(interval = 1000, firstRun = true) {
     }
 
     poller(interval,
-        getMpuPosCommaSeparated(),
+        getMpuPos(),
         firstRun
     );
 }
 
 function poller(interval, adPositions, firstRun) {
-    let newAdPositions = getMpuPosCommaSeparated();
+    let newAdPositions = getMpuPos();
 
     if (firstRun && GU.opts.platform === 'android') {
         updateAndroidPosition();
@@ -221,7 +217,7 @@ function updateMPUPosition(yPos) {
 function setupGlobals() {
     window.initMpuPoller = initMpuPoller;
     window.killMpuPoller = killMpuPoller;
-    window.getMpuPosCommaSeparated = getMpuPosCommaSeparated;
+    window.getMpuPos = getMpuPos;
     window.updateLiveblogAdPlaceholders = updateLiveblogAdPlaceholders;
 
     window.applyNativeFunctionCall('initMpuPoller');
