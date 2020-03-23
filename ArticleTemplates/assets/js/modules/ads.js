@@ -70,7 +70,7 @@ function updateLiveblogAdPlaceholders(reset) {
 
     for (i = 0; i < blocks.length; i++) {
         block = blocks[i];
-        if (i === 2 || i === 7) {
+        if (i === 2 || i === 6 || i === 9) {
             numberOfMpus++;
             mpu = createMpu(numberOfMpus);
             if (block.nextSibling) {
