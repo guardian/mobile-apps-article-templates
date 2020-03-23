@@ -140,16 +140,6 @@ function getMpuPosCommaSeparated() {
     return getMpuPos();
 }
 
-function getMpuOffset() {
-    return getMpuPos(getMpuOffsetCallback);
-}
-
-function getMpuOffsetCallback(params) {
-    return (numberOfMpus > 1)
-        ? `${params.x1}-${params.y1}:${params.x2}-${params.y2}`
-        : `${params.x1}-${params.y1}`;
-}
-
 function updateAndroidPosition() {
     if (adsType === 'liveblog') {
         getMpuPos(updateAndroidPositionLiveblogCallback);
@@ -172,13 +162,13 @@ function initMpuPoller(interval = 1000, firstRun = true) {
     }
 
     poller(interval,
-        getMpuOffset(),
+        getMpuPosCommaSeparated(),
         firstRun
     );
 }
 
 function poller(interval, adPositions, firstRun) {
-    let newAdPositions = getMpuOffset();
+    let newAdPositions = getMpuPosCommaSeparated();
 
     if (firstRun && GU.opts.platform === 'android') {
         updateAndroidPosition();
@@ -186,7 +176,7 @@ function poller(interval, adPositions, firstRun) {
         signalDevice('ad_moved');
     }
 
-    if (newAdPositions !== adPositions) {
+    if (JSON.stringify(newAdPositions) !== JSON.stringify(adPositions)) {
         if (GU.opts.platform === 'android'){
             updateAndroidPosition();
         } else {
@@ -239,7 +229,7 @@ function setupGlobals() {
 
 function init(config) {
     adsType = config.adsType;
-    const maximumAdverts = config.maximumAdverts;
+    const maximumAdverts = config.maximumAdverts || 15;
     setupGlobals();
 
     if (adsType === 'liveblog') {
