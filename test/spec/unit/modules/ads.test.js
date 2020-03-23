@@ -76,13 +76,12 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
 
             it('inserts liveblog ad placeholders', function () {
                 config.adsType = 'liveblog';
-                config.maximumAdverts = 2;
 
                 init(config);
 
                 expect(articleBody.children.length).toEqual(10);
                 expect(articleBody.children[2].classList.contains('advert-slot')).toEqual(true);
-                expect(articleBody.children[9].classList.contains('advert-slot')).toEqual(true);
+                expect(articleBody.children[7].classList.contains('advert-slot')).toEqual(true);
 
                 expect(window.initMpuPoller).toBeDefined();
                 expect(window.killMpuPoller).toBeDefined();
@@ -114,7 +113,6 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
             it('inserts ad placeholder', function () {
                 config.mpuAfterParagraphs = 3;
                 config.adsType = 'default';
-                config.maximumAdverts = 2;
 
                 init(config);
 
@@ -138,7 +136,6 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
             it('fires ads ready if has not been fired already', function () {
                 config.mpuAfterParagraphs = 3;
                 config.adsType = 'default';
-                config.maximumAdverts = 2;
 
                 document.body.classList.remove('no-ready');
 
@@ -177,9 +174,7 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
                 container.appendChild(articleBody);
 
                 config = {
-                    mpuAfterParagraphs: 3,
-                    maximumAdverts: 2
-
+                    mpuAfterParagraphs: 3
                 };
             });
 
@@ -209,23 +204,22 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
             articleBody.classList.add('article__body');
             container.appendChild(articleBody);
 
-            for (i = 0; i < 10; i++) {
+            for (i = 0; i <= 10; i++) {
                 block = document.createElement('div');
                 block.classList.add('block');
                 articleBody.appendChild(block);
             }
 
             config = {
-                adsType: 'liveblog',
-                maximumAdverts: 2
-            };
+                adsType: 'liveblog'            };
         });
 
-        it('inserts liveblog ads after 2nd and 7th blocks', function () {
+        it('inserts liveblog ads after 2nd, 6th and 9th blocks', function () {
             init(config);
 
             expect(articleBody.children[2].classList.contains('advert-slot--mpu')).toEqual(true);
-            expect(articleBody.children[8].classList.contains('advert-slot--mpu')).toEqual(true);
+            expect(articleBody.children[7].classList.contains('advert-slot--mpu')).toEqual(true);
+            expect(articleBody.children[11].classList.contains('advert-slot--mpu')).toEqual(true);
         });
 
         it('if reset true replaces liveblog ads and calls signalDevice with ad_moved', function () {
@@ -285,9 +279,7 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
             articleBody.insertBefore(epic, articleBody.children[2]);
 
             config = {
-                adsType: 'liveblog',
-                maximumAdverts: 2
-            };
+                adsType: 'liveblog'            };
         });
 
         it('inserts liveblog ad after the 3rd block instead', function () {
@@ -312,8 +304,7 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
             container.appendChild(advertSlotWrapper);
 
             config = {
-                adsType: 'default',
-                maximumAdverts: 2
+                adsType: 'default'
             };
         });
 
@@ -348,8 +339,7 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
             container.appendChild(articleBody);
 
             config = {
-                adsType: 'liveblog',
-                maximumAdverts: 2
+                adsType: 'liveblog'
             };
 
             Element.prototype.getBoundingClientRect = jest.fn(() => {
@@ -379,7 +369,7 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
             init(config);
 
             const adSlotArray = window.getMpuPos();
-            expect(adSlotArray.length).toEqual(2);
+            expect(adSlotArray.length).toEqual(3);
         });
 
         it('maximum 2 adSlot objects', function () {
@@ -388,7 +378,7 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
             init(config);
 
             const adSlotArray = window.getMpuPos();
-            expect(adSlotArray.length).toEqual(2);
+            expect(adSlotArray.length).toEqual(3);
         });
     });
 
@@ -410,8 +400,7 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
             container.appendChild(articleBody);
 
             config = {
-                mpuAfterParagraphs: 3,
-                maximumAdverts: 2
+                mpuAfterParagraphs: 3
             };
 
             const getElementOffsetMock = jest.spyOn(util, "getElementOffset");
