@@ -41,7 +41,7 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
         delete window.initMpuPoller;
         delete window.killMpuPoller;
         delete window.updateLiveblogAdPlaceholders;
-        delete window.getMpuPosCommaSeparated;
+        delete window.getMpuPos;
         delete window.applyNativeFunctionCall;
         delete window.GU;
         delete window.GuardianJSInterface;
@@ -86,7 +86,7 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
 
                 expect(window.initMpuPoller).toBeDefined();
                 expect(window.killMpuPoller).toBeDefined();
-                expect(window.getMpuPosCommaSeparated).toBeDefined();
+                expect(window.getMpuPos).toBeDefined();
 
                 expect(window.applyNativeFunctionCall).toHaveBeenCalledTimes(1);
                 expect(window.applyNativeFunctionCall).toHaveBeenCalledWith('initMpuPoller');
@@ -120,7 +120,7 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
 
                 expect(window.initMpuPoller).toBeDefined();
                 expect(window.killMpuPoller).toBeDefined();
-                expect(window.getMpuPosCommaSeparated).toBeDefined();
+                expect(window.getMpuPos).toBeDefined();
 
                 expect(window.applyNativeFunctionCall).toHaveBeenCalledTimes(1);
                 expect(window.applyNativeFunctionCall).toHaveBeenCalledWith('initMpuPoller');
@@ -369,7 +369,7 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
 
             init(config);
 
-            const adSlotArray = window.getMpuPosCommaSeparated();
+            const adSlotArray = window.getMpuPos();
             expect(adSlotArray.length).toEqual(1);
         });
 
@@ -378,7 +378,7 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
 
             init(config);
 
-            const adSlotArray = window.getMpuPosCommaSeparated();
+            const adSlotArray = window.getMpuPos();
             expect(adSlotArray.length).toEqual(2);
         });
 
@@ -387,7 +387,7 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
 
             init(config);
 
-            const adSlotArray = window.getMpuPosCommaSeparated();
+            const adSlotArray = window.getMpuPos();
             expect(adSlotArray.length).toEqual(2);
         });
     });
