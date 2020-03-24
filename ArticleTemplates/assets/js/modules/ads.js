@@ -144,8 +144,8 @@ function updateAndroidPosition() {
     }
 }
 
-function updateAndroidPositionLiveblogCallback({ x1, y1, w1, h1, x2, y2, w2, h2 }) {
-    window.GuardianJSInterface.mpuLiveblogAdsPosition(x1, y1, w1, h1, x2, y2, w2, h2);
+function updateAndroidPositionLiveblogCallback(adSlots) {
+    window.GuardianJSInterface.mpuLiveblogAdsPosition(JSON.stringify(adSlots));
 }
 
 function updateAndroidPositionDefaultCallback(adSlots) {
