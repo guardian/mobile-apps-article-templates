@@ -49,7 +49,7 @@ function insertAdPlaceholders(mpuAfterParagraphs, amountOfMpu) {
     adsReady = true;
 }
 
-function updateLiveblogAdPlaceholders(reset) {
+function updateLiveblogAdPlaceholders(reset, indicies = [2, 6, 9]) {
     let i;
     let advertSlots;
     let mpu;
@@ -70,7 +70,7 @@ function updateLiveblogAdPlaceholders(reset) {
 
     for (i = 0; i < blocks.length; i++) {
         block = blocks[i];
-        if (i === 2 || i === 6 || i === 9) {
+        if (indicies.indexOf(i) >= 0) {
             numberOfMpus++;
             mpu = createMpu(numberOfMpus);
             if (block.nextSibling) {

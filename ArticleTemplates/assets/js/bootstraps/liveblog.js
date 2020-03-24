@@ -254,9 +254,8 @@ function liveblogInsertGap(afterBlockId, olderPagination, newerPagination) {
 function liveblogInsertBlocks(afterBlockId, html) {
     let i;
     let images = [];
-    let blocks;
     const articleBody = document.getElementsByClassName('article__body')[0];
-    const oldBlockCount = articleBody.getElementsByClassName('block').length;
+    const oldBlocks = articleBody.getElementsByClassName('block');
     const newBlockElems = getElemsFromHTML(html);
 
     const icons = [].slice.call(document.getElementsByClassName('gap-loading'));
@@ -274,7 +273,7 @@ function liveblogInsertBlocks(afterBlockId, html) {
         }
     }
 
-    blocks = articleBody.getElementsByClassName('block');
+    const blocks = articleBody.getElementsByClassName('block');
 
     for (i = 0; i < blocks.length; i++) {
         images.push(...blocks[i].getElementsByTagName('img'));
@@ -288,6 +287,11 @@ function liveblogInsertBlocks(afterBlockId, html) {
 
     checkInjectedComponents(false);
     safeEnhanceTweets();
+
+    if (afterBlockId) {
+        const advertIndices = [2, 7].map(index => oldBlocks.length + index - 10);
+        setTimeout(updateLiveblogAdPlaceholders(false, advertIndices), 700);
+    }
 }
 
 function setupGlobals() {
@@ -393,7 +397,6 @@ function init() {
     window.addEventListener('scroll', debounce(updateBlocksOnScroll, 100, true));
     liveMore();
     initYoutube();
-    setInterval(window.liveblogTime, 30000);
 
     const articleBody = document.getElementsByClassName('article__body')[0];
 
