@@ -211,7 +211,8 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
             }
 
             config = {
-                adsType: 'liveblog'            };
+                adsType: 'liveblog'
+            };
         });
 
         it('inserts liveblog ads after 2nd, 6th and 9th blocks', function () {
@@ -279,7 +280,8 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
             articleBody.insertBefore(epic, articleBody.children[2]);
 
             config = {
-                adsType: 'liveblog'            };
+                adsType: 'liveblog'
+            };
         });
 
         it('inserts liveblog ad after the 3rd block instead', function () {
