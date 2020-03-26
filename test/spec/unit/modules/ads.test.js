@@ -401,8 +401,7 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
             container.appendChild(articleBody);
 
             config = {
-                mpuAfterParagraphs: 3,
-                maximumAdverts: 2
+                mpuAfterParagraphs: 3
             };
 
             const getElementOffsetMock = jest.spyOn(util, "getElementOffset");
