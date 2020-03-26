@@ -87,19 +87,12 @@
 
     @include mq($from: col2, $to: col3) {
         width: 100%;
+        margin: 12px 0;
     }
 
     @include mq($from: col3) {
-        position: absolute;
-        right: 15px;
-        margin: 0;
-        top: 348px;
-    }
-
-    &.first {
-        @include mq($from: col3) {
-            top: 24px;
-        }
+        float: right;
+        margin: 0 -300px base-px(1) 24px;
     }
 
     .advert-slot__label {

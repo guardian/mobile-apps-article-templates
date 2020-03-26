@@ -41,7 +41,7 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
         delete window.initMpuPoller;
         delete window.killMpuPoller;
         delete window.updateLiveblogAdPlaceholders;
-        delete window.getMpuPosCommaSeparated;
+        delete window.getMpuPos;
         delete window.applyNativeFunctionCall;
         delete window.GU;
         delete window.GuardianJSInterface;
@@ -85,7 +85,7 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
 
                 expect(window.initMpuPoller).toBeDefined();
                 expect(window.killMpuPoller).toBeDefined();
-                expect(window.getMpuPosCommaSeparated).toBeDefined();
+                expect(window.getMpuPos).toBeDefined();
 
                 expect(window.applyNativeFunctionCall).toHaveBeenCalledTimes(1);
                 expect(window.applyNativeFunctionCall).toHaveBeenCalledWith('initMpuPoller');
@@ -118,7 +118,7 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
 
                 expect(window.initMpuPoller).toBeDefined();
                 expect(window.killMpuPoller).toBeDefined();
-                expect(window.getMpuPosCommaSeparated).toBeDefined();
+                expect(window.getMpuPos).toBeDefined();
 
                 expect(window.applyNativeFunctionCall).toHaveBeenCalledTimes(1);
                 expect(window.applyNativeFunctionCall).toHaveBeenCalledWith('initMpuPoller');
@@ -342,24 +342,44 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
             config = {
                 adsType: 'liveblog'
             };
+
+            Element.prototype.getBoundingClientRect = jest.fn(() => {
+                return {
+                    width: 120,
+                    height: 120,
+                    top: 0,
+                    left: 0,
+                    bottom: 0,
+                    right: 0,
+                }
+            });
         });
 
-        it('returns dimensions of 1 advertSlotWrapper', function () {
+        it('contains 1 adSlot object', function () {
             addBlocks(5);
 
             init(config);
 
-            const mpuPosCommaSeparated = window.getMpuPosCommaSeparated();
-            expect(mpuPosCommaSeparated.split(',').length).toEqual(2);
+            const adSlotArray = window.getMpuPos();
+            expect(adSlotArray.length).toEqual(1);
         });
 
-        it('returns dimensions of 2 advertSlotWrappers', function () {
+        it('contains 2 adSlot objects', function () {
             addBlocks(10);
 
             init(config);
 
-            const mpuPosCommaSeparated = window.getMpuPosCommaSeparated();
-            expect(mpuPosCommaSeparated.split(',').length).toEqual(4);
+            const adSlotArray = window.getMpuPos();
+            expect(adSlotArray.length).toEqual(2);
+        });
+
+        it('maximum 2 adSlot objects', function () {
+            addBlocks(25);
+
+            init(config);
+
+            const adSlotArray = window.getMpuPos();
+            expect(adSlotArray.length).toEqual(2);
         });
     });
 
@@ -381,7 +401,8 @@ describe('ArticleTemplates/assets/js/modules/ads', function () {
             container.appendChild(articleBody);
 
             config = {
-                mpuAfterParagraphs: 3
+                mpuAfterParagraphs: 3,
+                maximumAdverts: 2
             };
 
             const getElementOffsetMock = jest.spyOn(util, "getElementOffset");
