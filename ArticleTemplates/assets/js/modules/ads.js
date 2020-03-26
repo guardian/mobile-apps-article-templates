@@ -225,7 +225,7 @@ function setupGlobals() {
 
 function init(config) {
     adsType = config.adsType;
-    const maximumAdverts = config.maximumAdverts || 15;
+    const maximumAdverts = 15;
     setupGlobals();
 
     if (adsType === 'liveblog') {
