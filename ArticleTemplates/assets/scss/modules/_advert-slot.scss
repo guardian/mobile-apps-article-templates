@@ -183,8 +183,21 @@
             clear: both;
             position: relative;
             top: auto;
-            right: auto;
             margin-left: 8px;
+            margin-right: 8px;
+            width: calc(100% - 8px*2);
+            display: block;
+
+            .advert-slot__wrapper {
+                margin-left: calc(50% - 150px);
+                margin-top: -24px;
+                margin-bottom: 12px;
+            }
+        }
+
+        @include mq($from: col3) {
+            float: left;
+            width: calc(70% - #{$gs-unit}*2);
         }
     }
 }
