@@ -1,11 +1,16 @@
 &.garnett--type-guardianlabs.is_advertising {
+    background-color: $blackThree;
     .article {
+        background-color: $blackThree;
         .article__header {
+            background-color: $blackThree;
+
             .article-kicker,
             .headline,
             .meta,
             .extras,
-            .extras .sponsorship {
+            .extras .sponsorship,
+            .main-media {
                 background-color: $blackThree;
                 color: $whiteTwo;
             }
@@ -16,9 +21,24 @@
                 color: $warmGreyFour;
             }
 
+            &#video-header {
+                .standfirst,
+                .standfirst__inner {
+                    color: $whiteTwo;
+                }
+            }
+
             a {
                 color: $guardianLabsLight !important;
             }
+        }
+
+        .sponsorship__inner {
+            background-color: $blackThree;
+        }
+
+        .meta__published {
+            padding: .5em 0;
         }
 
         .article__body {
