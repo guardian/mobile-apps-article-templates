@@ -1,3 +1,5 @@
+$specialReportBackground: rgb(34, 37, 39);
+
 &.tone--special,
 &.garnett--type-specialreport.tone--special,
 &.garnett--type-specialreport {
@@ -8,12 +10,14 @@
         .headline,
         .article__body,
         .tags,
+        .standfirst,
         .standfirst__inner,
         .meta,
         .article__meta,
         .sponsorship,
-        .keyline:before {
-            background-color: $backgroundBlack;
+        .keyline:before,
+        .cutout__container#cutout-container {
+            background-color: $specialReportBackground;
         }
 
         &:not(.garnett--type-media) .article-kicker__highlight {
@@ -42,7 +46,7 @@
         .loading--liveblog::before,
         .standfirst,
         .standfirst a:not(.Video-URL) {
-            color: $whiteTwo;
+            color: $whiteTwo !important;
         }
 
         .sponsorship img {
@@ -60,11 +64,21 @@
         .byline,
         .alerts,
         .sponsorship__formatted-sponsor-name {
-            color: $warmGreyFour;
+            color: $whiteTwo !important;
         }
 
         .audio-player {
             background-color: transparent;
+        }
+
+        .audio-player__button.touchpoint--primary .touchpoint__button,
+        .element-youtube .element-placeholder__button .touchpoint__button,
+        .audio-player__slider__knob {
+            background-color: $ratingYellow;
+
+            &:active {
+                background-color: $ratingYellow;
+            }
         }
 
         .alerts span[data-icon]:before {
@@ -95,7 +109,7 @@
 
         @include mq($to: col4) {
             .standfirst {
-                background-color: $backgroundBlack;
+                background-color: $specialReportBackground;
             }
         }
 
@@ -106,14 +120,14 @@
                 .headline,
                 .standfirst__inner,
                 .meta {
-                    background-color: $backgroundBlack;
+                    background-color: $specialReportBackground;
                 }
             }
         }
 
         .standfirst__inner p,
         .meta.keyline-4 {
-            background: $backgroundBlack !important;
+            background: $specialReportBackground !important;
             box-shadow: none !important;
         }
     }
