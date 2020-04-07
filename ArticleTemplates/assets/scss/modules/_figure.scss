@@ -124,6 +124,11 @@ figure {
         // extra specificity for overiding style to override styles in prose
         margin-top: 6px;
 
+        @include mq($from: col3) {
+            clear: both;
+            margin-bottom: 12px;
+        }
+
         @include mq($from: col4) {
             margin-left: -180px;
         }
