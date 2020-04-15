@@ -17,14 +17,20 @@
     }
 
     .sponsorship__formatted-sponsor-name {
-        padding: 0 0 0 12px;
+        @include mq($to: col4) {
+            padding: 0 0 0 12px;
+        }
         display: inline-block;
         vertical-align: middle;
     }
 
     .sponsorship__logo {
-        display: inline-block;
-        vertical-align: middle;
+        vertical-align: top;
+
+        @include mq($to: col2) {
+            float: right;
+            margin-right: 12px;
+        }
     }
 
     @include mq($from: col4) {
@@ -39,8 +45,6 @@
 }
 
 .is_advertising {
-    background-color: color(global-adv-bg);
-
     @include mq($from: col4) {
         background-color: color(brightness-96);
     }
@@ -92,19 +96,18 @@
                         color: color(global-adv-text);
                     }
 
-                    .main-media,
-                    .headline,
-                    .standfirst,
-                    .standfirst__inner,
-                    .sponsorship,
-                    .meta,
-                    .content__labels,
-                    .main-media figcaption {
-                        background-color: color(global-adv-bg);
-                    }
-
                     .headline {
                         padding-bottom: 18px;
+                    }
+
+                    .meta__misc .sponsorship__logo {
+                        @include mq($to: col2) {
+                            margin-right: 0px;
+                        }
+                    }
+
+                    .meta__misc .byline {
+                        font-style: normal;
                     }
 
                     .meta__misc,
@@ -138,7 +141,6 @@
 
                 &__body {
                     color: color(global-adv-text);
-                    background-color: color(global-adv-bg);
 
                     .prose p,
                     .prose li {
@@ -195,9 +197,6 @@
             }
 
             .tags {
-                background-color: color(global-adv-bg);
-                border-color: rgba(color(global-adv-bands), .4);
-
                 .inline-list .inline-list__item a {
                     color: color(brightness-100);
                     background-color: color(global-adv-bands);
@@ -206,7 +205,6 @@
                 .inline-list .inline-list__item.more-button a {
                     border: 1px solid rgba(color(global-adv-bands), 1);
                     color: color(global-adv-text);
-                    background-color: color(global-adv-bg);
                 }
             }
 
@@ -303,6 +301,10 @@
                         border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
                     }
 
+                    .meta__published {
+                        padding: 12px 0;
+                    }
+
                     .meta .meta__misc {
                         border-top: 1px rgba(color(global-adv-bands), .4) dotted;
 
@@ -337,8 +339,6 @@
                     }
 
                     .meta .standfirst {
-                        background-color: color(global-adv-bg);
-
                         @include mq($from: col4) {
                             padding-left: 0;
                             padding-right: 0;
@@ -369,7 +369,6 @@
 
                 .cutout__container {
                     min-height: 155px;
-                    background-color: color(global-adv-bg);
                 }
 
                 @include mq($from: col4) {
@@ -407,7 +406,6 @@
 
             .sponsorship,
             .byline--mobile {
-                background-color: color(global-adv-bg);
                 border-bottom: 1px rgba(color(global-adv-bands), .4) dotted;
             }
 
@@ -432,12 +430,6 @@
         .article {
             .article {
                 &__header {
-                    background-color: color(global-adv-bg);
-
-                    .gallery {
-                        background-color: color(global-adv-bg);
-                    }
-
                     .meta {
                         border-bottom: 0;
 
@@ -473,7 +465,6 @@
 
                         .standfirst {
                             border-bottom: 0;
-                            background-color: color(global-adv-bg);
                         }
                     }
                 }
