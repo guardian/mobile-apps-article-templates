@@ -20,15 +20,16 @@ function addStyledLinkAtSectionEnd() {
 }
 
 function addFalseH3() {
-    console.log('addFalseH3');
 
-    // Frontend equivalent for reference:
-    // document.select("p > strong").asScala.foreach{ strong =>
-    //     val p = strong.parent();
-    //     if (p.is("p:matchesOwn(^$)") && !p.children().is("a")) {
-    //       p.addClass("falseH3")
-    //     }
-    //   }
+    const allFalseH3 = document.querySelectorAll("p > strong");
+    allFalseH3.forEach((el) => {
+        const pEl = el.parentElement;
+        const pElLinks = pEl.querySelectorAll('a');
+        if (pEl.innerText === el.innerText && pElLinks.length == 0) {
+            pEl.classList.add('falseH3');
+            console.log('falseH3', pEl);
+        }
+    });
 
 }
 
