@@ -3,10 +3,12 @@
 function addStarClassToRatings() {
     console.log('addStarClassToRatings');
 
-    // Frontend equivalent for reference:
-    // document.select("p:containsOwn(★)").asScala.foreach { star =>
-    //     star.addClass("stars")
-    //   }
+    const pElAll = document.querySelectorAll('.prose > p');
+    pElAll.forEach((el) => {
+        if (el.innerText.indexOf('★') >= 0) {
+            el.classList.add('stars');
+        }
+    })
 
 }
 
