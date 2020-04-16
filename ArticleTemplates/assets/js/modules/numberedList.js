@@ -27,7 +27,6 @@ function addFalseH3() {
         const pElLinks = pEl.querySelectorAll('a');
         if (pEl.innerText === el.innerText && pElLinks.length == 0) {
             pEl.classList.add('falseH3');
-            console.log('falseH3', pEl);
         }
     });
 
