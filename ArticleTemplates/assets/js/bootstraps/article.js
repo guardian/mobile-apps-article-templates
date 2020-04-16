@@ -2,6 +2,7 @@ import { init as youtubeInit } from 'modules/youtube';
 import { init as twitterInit } from 'modules/twitter';
 import { init as quizInit } from 'modules/quiz';
 import { init as immersiveInit } from 'modules/immersive';
+import { init as numberedListInit } from 'modules/numberedList';
 import { init as creativeInjectorInit } from 'modules/creativeInjector';
 import { init as messengerInit } from 'modules/messenger';
 import resizeInit from 'modules/messenger/resize';
@@ -34,6 +35,7 @@ function init() {
     twitterInit();
     quizInit();
     immersiveInit();
+    numberedListInit();
     creativeInjectorInit();
     messengerInit([resizeInit]);
     richLinkTracking();
