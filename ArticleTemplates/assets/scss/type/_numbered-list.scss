@@ -146,41 +146,42 @@
             }
          }
 
-    // p tags containing ONLY a strong tag will be styled as H3 level headings
-    .falseH3 {
-        font-family: $egyptian-display;
-        border-top: 1px solid color(brightness-86);
-        color: color(brightness-7);
-        margin-top: $gs-unit * 2;
-        margin-bottom: $gs-unit;
-        margin-left: -1.5*$gs-unit;
-        margin-right: -1.5*$gs-unit;
-        padding: 0 1.5*$gs-unit $gs-unit/2;
+        // p tags containing ONLY a strong tag will be styled as H3 level headings
+        .falseH3 {
+            font-family: $egyptian-display;
+            border-top: 1px solid color(brightness-86);
+            color: color(brightness-7);
+            margin-top: $gs-unit * 2;
+            margin-bottom: $gs-unit;
+            margin-left: -1.5*$gs-unit;
+            margin-right: -1.5*$gs-unit;
+            padding: 0 1.5*$gs-unit $gs-unit/2;
 
-        @include mq(col4) {
-            margin-left: -$gs-unit*2;
-            padding-left: $gs-unit*2;
+            @include mq(col4) {
+                margin-left: -$gs-unit*2;
+                padding-left: $gs-unit*2;
+            }
         }
-    }
 
-    // Star glyphs eg: ★, ☆ will be styled with yellow background
-    .stars {
-        box-sizing: border-box;
-        font-size: 20px;
-        line-height: 1.1;
-        height: 30px;
-        letter-spacing: 2px;
-        margin: $gs-unit 0 $gs-unit*2 (-1.5*$gs-unit);
-        padding: $gs-unit/2 $gs-unit $gs-unit/2 $gs-unit*1.5;
-        position: relative;
-        display: inline-block;
-        background-color: color(tone-highlight);
+        // Star glyphs eg: ★, ☆ will be styled with yellow background
+        .stars {
+            box-sizing: border-box;
+            font-size: 20px;
+            line-height: 1.1;
+            height: 30px;
+            letter-spacing: 2px;
+            margin: $gs-unit 0 $gs-unit*2 (-1.5*$gs-unit);
+            padding: $gs-unit/2 $gs-unit $gs-unit/2 $gs-unit*1.5;
+            position: relative;
+            display: inline-block;
+            background-color: color(tone-highlight);
+            color: color(brightness-7);
 
-        @include mq(col4) {
-            margin-left: 0;
-            padding: $gs-unit/2 $gs-unit;
+            @include mq(col4) {
+                margin-left: 0;
+                padding: $gs-unit/2 $gs-unit;
+            }
         }
-    }
 
     }
 }
