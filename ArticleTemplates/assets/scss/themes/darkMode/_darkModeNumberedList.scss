@@ -1,0 +1,37 @@
+&.display-hint--numberedList {
+
+    .article__body {
+
+        ul.article-link {
+            &:after,
+            li {
+                border-color: color(brightness-20);
+            }
+            li strong {
+                color: color(brightness-60);
+            }
+        }
+
+        .prose > h2 {
+            border-color: color(brightness-20);
+            strong {
+                color: $p-inverted;
+            }
+            &:before {
+                border-color: color(brightness-20);
+                color: color(brightness-7);
+                -webkit-text-stroke-color: color(brightness-60);
+            }
+        }
+
+        .falseH3 {
+            border-color: color(brightness-20);
+        }
+
+        p.stars {
+            background-color: $ratingYellow;
+            color: color(brightness-7) !important;
+        }
+
+    }
+}
