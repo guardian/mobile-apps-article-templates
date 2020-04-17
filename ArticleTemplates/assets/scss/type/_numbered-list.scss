@@ -164,34 +164,23 @@
     }
 
     // Star glyphs eg: ★, ☆ will be styled with yellow background
-    // .stars {
-    //     box-sizing: border-box;
-    //     font-size: 20px;
-    //     line-height: 1;
-    //     height: 30px;
-    //     letter-spacing: 2px;
-    //     margin: 0 0 $gs-baseline (-$gs-gutter / 2);
-    //     position: relative;
-    //     z-index: $zindex-ui;
+    .stars {
+        box-sizing: border-box;
+        font-size: 20px;
+        line-height: 1.1;
+        height: 30px;
+        letter-spacing: 2px;
+        margin: $gs-unit 0 $gs-unit*2 (-1.5*$gs-unit);
+        padding: $gs-unit/2 $gs-unit $gs-unit/2 $gs-unit*1.5;
+        position: relative;
+        display: inline-block;
+        background-color: color(tone-highlight);
 
-    //     @include mq(mobileLandscape) {
-    //         margin-left: -$gs-gutter;
-    //     }
-
-    //     @include mq(tablet) {
-    //         margin-left: 0;
-    //     }
-
-    //     @include mq(leftCol) {
-    //         margin-left: -$gs-gutter / 2;
-    //     }
-
-    //     & + .element-image {
-    //         @include mq(leftCol) {
-    //             margin-top: -42px;
-    //         }
-    //     }
-    // }
+        @include mq(col4) {
+            margin-left: 0;
+            padding: $gs-unit/2 $gs-unit;
+        }
+    }
 
     }
 }
