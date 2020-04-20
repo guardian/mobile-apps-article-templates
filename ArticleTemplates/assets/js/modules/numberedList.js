@@ -1,7 +1,6 @@
 // import { getElementOffset, debounce } from 'modules/util';
 
 function addStarClassToRatings() {
-    console.log('addStarClassToRatings');
 
     const pElAll = document.querySelectorAll('.prose > p');
     pElAll.forEach((el) => {
@@ -23,12 +22,16 @@ function addStyledLinkAtSectionEnd() {
 
 function addFalseH3() {
 
-    const allFalseH3 = document.querySelectorAll("p > strong");
-    allFalseH3.forEach((el) => {
-        const pEl = el.parentElement;
-        const pElLinks = pEl.querySelectorAll('a');
-        if (pEl.innerText === el.innerText && pElLinks.length == 0) {
-            pEl.classList.add('falseH3');
+    const allFalseH3Candidates = document.querySelectorAll(".prose > p");
+    allFalseH3Candidates.forEach((el) => {
+        const elStrongText = Array.from(el.children).filter((child) => {
+            return (child.tagName == 'STRONG');
+        }).map((strongChild) => {
+            return strongChild.innerText;
+        }).join('');
+
+        if (elStrongText == el.innerText) {
+            el.classList.add('falseH3');
         }
     });
 
