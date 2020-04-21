@@ -108,6 +108,7 @@
         }
     }
 
+
     // Analysis overrides
     &.garnett--type-analysis {
         .headline {
@@ -154,6 +155,13 @@
 
     // Numbered list displayHint
     &.display-hint--numberedList {
+        .article__header {
+            .article-kicker,
+            .headline {
+                background-color: $p-kicker;
+                color: color(brightness-100);
+            }
+        }
         h2 strong {
             color: $p-kicker;
         }

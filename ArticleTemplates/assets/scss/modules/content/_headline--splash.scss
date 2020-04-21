@@ -1,0 +1,96 @@
+// currently splash headline is only in numberedList templates,
+// but can potentially be applied separately with a body-level class
+// NB: type/_feature is also needed for splash headline
+.display-hint--numberedList .article .article__header {
+    .main-media__caption__icon {
+        display: none;
+    }
+    .article-kicker,
+    .headline {
+        width: calc(100% - #{$gs-unit*6});
+        margin-top: -$gs-unit*4;
+        position: relative;
+        @include mq(col2) {
+            width: auto;
+            margin-right: cols($base-3, 2);
+        }
+        @include mq(col3) {
+            margin-right: cols($base-4, 6);
+        }
+    }
+    .article-kicker {
+        top: -4*$gs-unit;
+        border-bottom: 1px solid color(brightness-100);
+        padding-top: 0;
+        &__copy {
+            width: 100%;
+            a {
+                display: block;
+                padding-bottom: $gs-unit;
+            }
+        }
+    }
+    .headline {
+        padding-top: 0.5*$gs-unit;
+    }
+    @include mq(col4) {
+        .headline,
+        .standfirst,
+        .article-kicker {
+            margin-left: auto;
+            margin-right: auto;
+            width: calc(1200px - #{$gs-unit*42});
+            transform: translateX(-21*$gs-unit);
+            max-width: none;
+        }
+        .headline {
+            padding-right: 2*$gs-unit;
+            &:before,
+            &:after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                background-color: color(brightness-100);
+            }
+            &:before {
+                top: 0;
+                left: $gs-unit*28;
+                width: 1px;
+            }
+            &:after {
+                right: -42*$gs-unit;
+                width: 42*$gs-unit;
+                top: 4*$gs-unit;
+            }
+        }
+        .article-kicker {
+            border-bottom: 0;
+            padding-top: 0;
+            z-index: 30;
+            &__section,
+            &__series {
+                margin: 0;
+                a {
+                    padding: 0.5*$gs-unit $gs-unit;
+                    margin-left: -$gs-unit;
+                }
+            }
+            &__section {
+                font-weight: 400;
+            }
+            &__series {
+                font-weight: 700;
+                min-height: 0.5*$gs-unit;
+            }
+            &__copy {
+                flex-direction: column-reverse;
+                position: absolute;
+                top: -1.5*$gs-unit;
+                left: 0;
+                width: $gs-unit*28;
+                border-bottom: 0;
+                padding: $gs-unit*2;
+            }
+        }
+    }
+}
