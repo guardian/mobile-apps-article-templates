@@ -336,37 +336,6 @@
             }
         }
 
-        .title--image {
-            background-color: rgba(0, 0, 0, .6);
-            color: color(brightness-100);
-            font-size: 2rem;
-            font-weight: 200;
-            line-height: 2.6rem;
-            margin: {
-                bottom: base-px(2);
-                left: -12px;
-                top: -65px;
-            }
-            padding: base-px(.25, 0, 2, 1);
-            position: relative;
-            width: 108%;
-            z-index: 1;
-
-            @include mq($from: col2) {
-                padding: base-px(.25, 0, 2.8, 1);
-                font-size: 3.2rem;
-                margin-top: -74px;
-                width: 136%;
-                float: left;
-            }
-
-            @include mq($from: col4) {
-                width: 1200px;
-                margin-left: -240px;
-                padding-left: 240px;
-            }
-        }
-
         .section__header {
             background-color: color(tone-feature1-accent) !important;
             color: color(brightness-100);
@@ -448,73 +417,7 @@
         }
 
         .element-pullquote {
-            margin-bottom: base-px(2);
             visibility: hidden;
-
-            blockquote {
-                border: {
-                    bottom: 1px solid #e0e0e0;
-                    top: 1px solid #e0e0e0;
-                };
-                color: color(tone-feature1);
-                font: 200 2rem/2.4rem $egyptian-display;
-                padding-top: 0px;
-
-                @include mq($from: col2) {
-                    font-size: 3.2rem;
-                    line-height: 3.4rem;
-                }
-
-                p {
-                    margin: 14px 0;
-                }
-
-                cite {
-                    color: color(brightness-60);
-                    font-size: 2rem;
-                    line-height: 2.4rem;
-
-                    @include mq($from: col2) {
-                        font-size: 3.2rem;
-                        line-height: 3.2rem;
-                    }
-                }
-
-                &::before {
-                    color: color(brightness-60);
-                    float: left;
-                    font-size: 2.8rem;
-                    line-height: 1.6rem;
-                    margin-right: 8px;
-                    position: relative;
-
-                    @include mq($from: col2) {
-                        font-size: 4rem;
-                        line-height: 1.3rem;
-                    }
-                }
-
-                &::after {
-                    content: '';
-                }
-            }
-
-            @include mq($from: col2) {
-                float: left;
-                margin-right: base-px(1);
-                max-width: 100%;
-            }
-
-            @include mq($from: col3) {
-                max-width: 100%;
-            }
-
-            @include mq($from: col4) {
-                margin: {
-                    left: 0;
-                    right: 0;
-                };
-            }
         }
 
         .element-image {
@@ -637,6 +540,111 @@
         .fadeInUp {
             -webkit-animation-name: fadeInUp;
             animation-name: fadeInUp;
+        }
+    }
+}
+
+
+.garnett--type-immersive:not(.display-hint--photoEssay) {
+    .prose {
+        .title--image {
+            background-color: rgba(0, 0, 0, .6);
+            color: color(brightness-100);
+            font-size: 2rem;
+            font-weight: 200;
+            line-height: 2.6rem;
+            margin: {
+                bottom: base-px(2);
+                left: -12px;
+                top: -65px;
+            }
+            padding: base-px(.25, 0, 2, 1);
+            position: relative;
+            width: 108%;
+            z-index: 1;
+
+            @include mq($from: col2) {
+                padding: base-px(.25, 0, 2.8, 1);
+                font-size: 3.2rem;
+                margin-top: -74px;
+                width: 136%;
+                float: left;
+            }
+
+            @include mq($from: col4) {
+                width: 1200px;
+                margin-left: -240px;
+                padding-left: 240px;
+            }
+        }
+
+        .element-pullquote {
+            margin-bottom: base-px(2);
+
+            blockquote {
+                border: {
+                    bottom: 1px solid #e0e0e0;
+                    top: 1px solid #e0e0e0;
+                };
+                color: color(tone-feature1);
+                font: 200 2rem/2.4rem $egyptian-display;
+                padding-top: 0px;
+
+                @include mq($from: col2) {
+                    font-size: 3.2rem;
+                    line-height: 3.4rem;
+                }
+
+                p {
+                    margin: 14px 0;
+                }
+
+                cite {
+                    color: color(brightness-60);
+                    font-size: 2rem;
+                    line-height: 2.4rem;
+
+                    @include mq($from: col2) {
+                        font-size: 3.2rem;
+                        line-height: 3.2rem;
+                    }
+                }
+
+                &::before {
+                    color: color(brightness-60);
+                    float: left;
+                    font-size: 2.8rem;
+                    line-height: 1.6rem;
+                    margin-right: 8px;
+                    position: relative;
+
+                    @include mq($from: col2) {
+                        font-size: 4rem;
+                        line-height: 1.3rem;
+                    }
+                }
+
+                &::after {
+                    content: '';
+                }
+            }
+
+            @include mq($from: col2) {
+                float: left;
+                margin-right: base-px(1);
+                max-width: 100%;
+            }
+
+            @include mq($from: col3) {
+                max-width: 100%;
+            }
+
+            @include mq($from: col4) {
+                margin: {
+                    left: 0;
+                    right: 0;
+                };
+            }
         }
     }
 }
