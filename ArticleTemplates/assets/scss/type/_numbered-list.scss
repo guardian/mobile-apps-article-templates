@@ -90,6 +90,7 @@
             margin-right: -$gs-unit*1.5;
             margin-top: $gs-unit * 6;
             padding: ($gs-unit / 2) ($gs-unit * 1.5) $gs-unit ($small-number + $gs-unit*3);
+            overflow: visible;
 
             @include mq(col2) {
                 font-size: 28px;
@@ -161,8 +162,10 @@
                 line-height: 24px;
             }
             @include mq(col4) {
-                margin-left: -$gs-unit*2;
-                padding-left: $gs-unit*2;
+                margin-right: 0;
+            }
+            strong a {
+                background-position: 0 26px;
             }
         }
 
