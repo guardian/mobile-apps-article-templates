@@ -188,7 +188,9 @@
 
     h2 + .figure--thumbnail-with-caption,
     h2 + .figure--thumbnail {
-        margin: 18px 9px 6px 0;
+        @include mq($to: col3) {
+            margin: 18px 9px 6px 0;
+        }
     }
 
     hr {

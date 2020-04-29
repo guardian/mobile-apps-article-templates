@@ -5,43 +5,44 @@
     border-top: 1px solid color(tone-highlight);
     background: color(brightness-96);
     width: 100%;
-    padding: 12px;
-    font-family: "Guardian Headline", "Guardian Text Egyptian Web", Georgia, serif;
+    padding: $gs-unit/2 $gs-unit 2*$gs-unit;
+    font-family: $egyptian-text;
     clear: left;
 
     h1:first-of-type {
         font-size: 20px;
         font-weight: 900;
-        font-family: "Guardian Egyptian Web", "Guardian Headline", "Guardian Text Egyptian Web", Georgia, serif;
-        margin-bottom: 12px;
+        font-family: $egyptian-display;
+        margin-bottom: $gs-unit*1.5;
         line-height: 1.4;
     }
-    
+
     .epic-button {
         display: inline-block;
         background-image: none;
         color: color(brightness-7);
         background: color(tone-highlight);
         border-radius: 100px;
-        margin: 0 12px 12px 0;
-        padding: 6px 6px 4px 15px;
+        margin: 0 0 $gs-unit*1.5;
+        padding: $gs-unit/4 $gs-unit*1.5 0 $gs-unit*2;
         font-size: 16px;
-        font-weight: 900;
-        font-family: "Guardian Text Sans Web", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-        line-height: 26px;
+        font-weight: 700;
+        font-family: $guardian-sans;
+        line-height: $gs-unit*4.75;
     }
-    
+
     .button-container {
-        margin-top: 24px;
+        margin-top: $gs-unit*3;
     }
-    
+
     .epic-button-arrow {
         margin-left: 6px;
         vertical-align: middle;
     }
-    
+
     mark {
         background: color(tone-highlight);
         padding: 4px 0;
+        color: color(brightness-7);
     }
 }
