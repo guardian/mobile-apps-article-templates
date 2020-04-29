@@ -12,7 +12,12 @@
         &:after {
             background-color: $backgroundBlack;
         }
-    }
+        &:before {
+            @include mq(col4) {
+                background-color: color(brightness-46);
+            }
+        }
+}
     .article__body {
 
         ul.article-link {
