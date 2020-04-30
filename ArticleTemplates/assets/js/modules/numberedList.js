@@ -1,5 +1,3 @@
-// import { getElementOffset, debounce } from 'modules/util';
-
 function addStarClassToRatings() {
 
     const pElAll = document.querySelectorAll('.prose > p');
