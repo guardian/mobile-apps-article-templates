@@ -12,9 +12,12 @@
         &:after {
             background-color: $backgroundBlack;
         }
-        &:before {
-            @include mq(col4) {
+        @include mq(col4) {
+            &:before {
                 background-color: color(brightness-46);
+            }
+            &:after {
+                background-color: $backgroundBlack;
             }
         }
 }
