@@ -1,19 +1,16 @@
 import { getElementOffset } from 'modules/util';
 
 let existingRelatedContentPosition;
-let existingOutbrainPosition;
 let positionPoller = null;
 const maxPollInterval = 4000;
 let relatedContentElem;
-let outbrainElem;
 let shouldRun = false;
 
 function init() {
     relatedContentElem = document.querySelector('.related-content');
-    outbrainElem = document.querySelector('.outbrain');
 
     if (GU.opts.platform === 'ios') {
-        if (relatedContentElem || outbrainElem) {
+        if (relatedContentElem) {
             shouldRun = true;
         }
     } else {
@@ -49,16 +46,6 @@ function poller(interval) {
         existingRelatedContentPosition = newRelatedContentPosition;
     }
 
-    const newOutbrainPosition = getOutbrainPosition();
-
-    if (newOutbrainPosition &&
-        (JSON.stringify(newOutbrainPosition) !== JSON.stringify(existingOutbrainPosition)) &&
-        (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.outbrainFrameChangeMessage)
-    ) {
-        window.webkit.messageHandlers.outbrainFrameChangeMessage.postMessage({rect: newOutbrainPosition });
-        existingOutbrainPosition = newOutbrainPosition;
-    }
-
     positionPoller = setTimeout(() => {
         const pollInterval = interval < maxPollInterval ? interval + 500 : maxPollInterval;
         poller(pollInterval);
@@ -73,23 +60,9 @@ function getRelatedContentPosition() {
     return null;
 }
 
-function getOutbrainPosition() {
-    if (outbrainElem) {
-        return getElementOffset(outbrainElem);
-    }
-
-    return null;
-}
-
 function setRelatedContentHeight(height) {
     if (relatedContentElem) {
         relatedContentElem.style.height = `${height}px`;
-    }
-}
-
-function setOutbrainHeight(height) {
-    if (outbrainElem) {
-        outbrainElem.style.height = `${height}px`;
     }
 }
 
@@ -98,10 +71,6 @@ function setupGlobals() {
     window.applyNativeFunctionCall('getRelatedContentPosition');
     window.setRelatedContentHeight = setRelatedContentHeight;
     window.applyNativeFunctionCall('setRelatedContentHeight');
-    window.getOutbrainPosition = getOutbrainPosition;
-    window.applyNativeFunctionCall('getOutbrainPosition');
-    window.setOutbrainHeight = setOutbrainHeight;
-    window.applyNativeFunctionCall('setOutbrainHeight');
 }
 
 export { init, initPositionPoller };
