@@ -29,7 +29,9 @@
     }
 
     .prose .section__rule {
-        border-bottom: solid 2px $warmGrey;
+        &:nth-of-type(n+2) {
+            border-bottom: solid 2px $blackTwo;
+        }
 
         & + p.has__dropcap:first-letter {
             color: $p-inverted;
