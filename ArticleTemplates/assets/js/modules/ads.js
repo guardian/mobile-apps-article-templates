@@ -4,6 +4,7 @@ let adsReady = false;
 let numberOfMpus = 0;
 let positionPoller;
 let adsType;
+let hideAdsTest = 0;
 
 function insertAdPlaceholdersGallery(mpuAfterImages) {
     const mpu = createMpu(numberOfMpus);
@@ -96,16 +97,44 @@ function createMpu(id) {
     mpu.classList.add('advert-slot');
     mpu.classList.add('advert-slot--mpu');
 
-    mpu.innerHTML = `
-        <div class="advert-slot__label">
-            Advertisement<a class="advert-slot__action" href="x-gu://subscribe">Hide<span data-icon="&#xe04F;"></span></a>
-        </div>
-        <div class="advert-slot__wrapper" id="advert-slot__wrapper">
-            <div class="advert-slot__wrapper__content" id="${id}"></div>
-        </div>
-    `;
+    switch (hideAdsTest) {
+        case 0:
+            mpu.innerHTML = `
+                <div class="advert-slot__label">
+                    Advertisement<a class="advert-slot__action" href="x-gu://subscribe">Hide<span data-icon="&#xe04F;"></span></a>
+                </div>
+                <div class="advert-slot__wrapper" id="advert-slot__wrapper">
+                    <div class="advert-slot__wrapper__content" id="${id}"></div>
+                </div>
+            `;
+            return mpu;
 
-    return mpu;
+        case 1:
+            mpu.innerHTML = `
+                <div class="advert-slot__label">
+                    <a class="advert-slot__action test" href="x-gu://subscribe">Hide this and other advertisements<span data-icon="&#xe04F;"></span></a>
+                </div>
+                <div class="advert-slot__wrapper test" id="advert-slot__wrapper">
+                    <div class="advert-slot__wrapper__content" id="${id}"></div>
+                </div>
+            `;
+            return mpu;
+
+        case 2:
+            mpu.innerHTML = `
+            <div class="advert-slot__label">
+                Advertisement
+            </div>
+            <div class="advert-slot__wrapper test__banner" id="advert-slot__wrapper">
+                <div class="advert-slot__wrapper__content" id="${id}"></div>
+            </div>
+            <div class="advert-slot__upgrade">
+                <h1>Upgrade to Premium and enjoy the app ad-free.</h1>
+                <a href="x-gu://subscribe" role="button">Upgrade to Premium</a>
+            </div>
+        `;
+        return mpu;
+    }
 }
 
 // this function is called by iOS
@@ -225,6 +254,7 @@ function setupGlobals() {
 
 function init(config) {
     adsType = config.adsType;
+    hideAdsTest = config.hideAdsTest || 0;
     const maximumAdverts = 15;
     setupGlobals();
 

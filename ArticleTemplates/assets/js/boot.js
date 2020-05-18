@@ -96,11 +96,19 @@ const init = opts => {
             return 'default';
         };
 
+        const getHideAdsTest = (tests) => {
+            if (!tests) return 2;
+            const parsedTests = JSON.parse(tests);
+            if (!parsedTests.hideAdsTest) return 0;
+            return parsedTests.hideAdsTest;
+        };
+
         const {
             contentType,
             adsEnabled,
             adsConfig,
-            mpuAfterParagraphs
+            mpuAfterParagraphs,
+            tests
         } = window.GU.opts;
 
         // ads positioning
@@ -108,7 +116,8 @@ const init = opts => {
             adsInit({
                 adsConfig,
                 adsType: getAdType(contentType),
-                mpuAfterParagraphs
+                mpuAfterParagraphs,
+                hideAdsTest: getHideAdsTest(tests)
             });
         }
 
