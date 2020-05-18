@@ -97,7 +97,7 @@ const init = opts => {
         };
 
         const getHideAdsTest = (tests) => {
-            if (!tests) return 2;
+            if (!tests) return 0;
             const parsedTests = JSON.parse(tests);
             if (!parsedTests.hideAdsTest) return 0;
             return parsedTests.hideAdsTest;
