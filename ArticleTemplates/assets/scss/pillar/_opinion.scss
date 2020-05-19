@@ -1,12 +1,4 @@
 .garnett--pillar-opinion {
-    @include pillar-colour(
-        color(opinion-kicker),
-        color(opinion-feature-headline),
-        color(opinion-soft),
-        color(opinion-inverted),
-        color(opinion-liveblog-background)
-    );
-
     @include pillar-colour-dark(
         color(opinion-kicker),
         color(opinion-inverted),
@@ -14,53 +6,10 @@
         color(opinion-dark-2),
         color(opinion-dark-3)
     );
-
-    // Light background in opinion articles
-    &:not(.garnett--type-media) {
-
-        .article__header .cutout__container,
-        .article__body,
-        .article__meta,
-        .tags {
-            background-color: color(opinion-soft);
-        }
-
-        @include mq($to: col4) {
-            .article__header {
-                background-color: color(opinion-soft);
-            }
-        }
-        @include mq($from: col4) {
-            .article__header {
-                .article-kicker,
-                .standfirst__inner,
-                .meta,
-                .main-media {
-                    background-color: color(opinion-soft);
-                }
-            }
-
-            &.garnett--type-guardianview .article__header .headline {
-                background-color: color(opinion-soft);
-            }
-
-            &:not(.garnett--type-immersive, .garnett--type-guardianview) .article__header .headline {
-                background-color: transparent;
-            }
-        }
-    }
 }
 
 // Comment articles in news showuld have opinion colours
 .garnett--type-comment.garnett--pillar-news {
-    @include pillar-colour(
-        color(opinion-kicker),
-        color(opinion-feature-headline),
-        color(opinion-soft),
-        color(opinion-inverted),
-        color(opinion-liveblog-background)
-    );
-
     @include pillar-colour-dark(
         color(opinion-kicker),
         color(opinion-inverted),

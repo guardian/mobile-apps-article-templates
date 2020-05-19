@@ -1,17 +1,5 @@
-&.garnett--type-article,
-&.garnett--type-matchreport,
-&.garnett--type-feature,
-&.garnett--type-immersive,
-&.garnett--type-review,
-&.garnett--type-interview,
-&.garnett--type-analysis,
-&.garnett--type-comment,
-&.garnett--type-guardianview,
-&.garnett--type-recipe,
-&.garnett--type-quiz,
-&.garnett--type-media,
-&.tone--deadBlog {
-    background-color: $blackThree;
+&.garnett--type-article {
+    background-color: #fff;
 
     .article__header,
     .article-kicker,
@@ -24,7 +12,7 @@
     .article__meta,
     .sponsorship,
     .keyline:before {
-        background-color: $backgroundBlack;
+        background-color: #fff;
     }
 
     .article-kicker,
@@ -34,25 +22,24 @@
     .prose .element-pullquote blockquote,
     .prose .element-pullquote blockquote footer,
     .article__header .bullet:before {
-        color: $p-inverted;
+        color: $p-kicker;
     }
 
     .standfirst .standfirst__inner a,
     .standfirst a {
         background-image: linear-gradient(rgba(153, 153, 153, 0.33) 0%, rgba(153, 153, 153, 0.5) 100%) !important;
-        color: $warmGreyFour !important;
+        color: $p-kicker;
     }
 
-    .article__body .from-content-api.prose a {
-        background-image: linear-gradient(rgba(220, 220, 220, 0.33) 0%, rgba(220, 220, 220, 0.5) 100%);
-        color: $whiteTwo;
+    .article__body .from-content-api.prose {
+        @include text-underline($p-kicker, $p-kicker);
     }
 
     .article__header .headline,
     &.garnett--type-feature .headline,
     .tags,
     .loading--liveblog::before {
-        color: $whiteTwo;
+        color: #121212;
     }
 
     .article__body .from-content-api.prose {
@@ -81,39 +68,29 @@
         & > h4,
         & > h5,
         & > h6 {
-            color: $whiteTwo;
+            color: #121212;
         }
-    }
-
-    .atom--audio {
-        background: $blackTwo;
-        border-image: repeating-linear-gradient(to bottom, black, black 1px, transparent 1px, transparent 4px) 13;
-        .atom--audio__label {
-            color: $p-inverted;
-        }
-    }
-
-    .sponsorship__about-uri {
-        color: $warmGreyFour;
-        text-decoration: underline;
     }
 
     .standfirst,
     #published-date,
     figure figcaption,
     .byline,
-    .alerts,
     .sponsorship__formatted-sponsor-name {
-        color: $warmGreyFour !important;
+        color: #121212 !important;
+    }
+
+    .alerts {
+        color: $p-kicker !important;
     }
 
     .alerts span[data-icon]:before {
-        color: $blackThree;
+        color: #fff;
     }
 
     .article__header ul > li:before {
-        color: $warmGreyFour;
-        background-color: $warmGreyFour;
+        color: #121212;
+        background-color: #fff;
     }
 
     .element-rich-link a {
@@ -121,20 +98,26 @@
         text-decoration: none;
     }
 
+    .element-rich-link {    
+        a {
+            color: color(neutral-1) !important;
+        }
+    }
+
     @include mq($to: col4) {
         .standfirst {
-            background-color: $backgroundBlack;
+            background-color: #fff;
         }
     }
 
     @include mq($from: col4) {
         .article__header {
-            background-color: $blackThree;
+            background-color: #fff;
             .article-kicker,
             .headline,
             .standfirst__inner,
             .meta {
-                background-color: $backgroundBlack;
+                background-color: #fff;
             }
         }
     }

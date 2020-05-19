@@ -3,7 +3,7 @@
 .figure-wide .element-image-inner,
 .element__inner,
 .figure-wide .figure__inner {
-    background-color: $blackTwo;
+    background: color(brightness-93);
 }
 
 &.offline .element-audio,
@@ -11,119 +11,83 @@
 &.offline .element-map,
 &.offline .element-video {
     &::before {
-        background-color: $blackTwo;
+        background-color: color(brightness-0);
     }
 }
 
 .main-media--hidden-caption .main-media__caption__icon {
-    background-color: rgba(255, 255, 255, .7);
+    background-color: color(tone-highlight);
+    color: color(brightness-7);
 }
 
 .main-media--hidden-caption .main-media__caption__text {
-    color: $warmGreyFour;
+    color: color(brightness-100);
 }
 
 .keyline-4:before {
-    background-image: repeating-linear-gradient($blackTwo, $blackTwo 1px, transparent 1px, transparent 3px);
+    background-image: repeating-linear-gradient(color(brightness-86), color(brightness-86) 1px, transparent 1px, transparent 3px);
 }
 
 .meta__published__comments {
-    border-left: solid 1px $blackTwo;
-}
-
-#creative-container {
-    background-color: $blackTwo;
-    border-top: solid 1px $ratingYellow;
-    color: $whiteTwo;
-
-    mark {
-        background: $ratingYellow;
-        color: color(brightness-7);
-    }
-
-    .epic-button {
-        background: $ratingYellow;
-    }
-}
-
-.atom--snippet {
-    background: $blackTwo;
-    border-image: repeating-linear-gradient(to bottom, $warmGrey, $warmGrey 1px, transparent 1px, transparent 4px) 13;
-
-    &__handle {
-        background: $blackThree !important;
-    }
-
-    .atom--snippet__label {
-        color: $p-inverted;
-    }
-
-    &--timeline .atom--snippet__event-date {
-        background-color: $ratingYellow;
-        color: $blackThree;
-    }
-}
-
-.review-rating span {
-    background-color: $ratingYellow;
+    border-left-color: rgba(color(tone-sandy-light), .5);
 }
 
 .element-rich-link {
-    border-top: solid 1px $blackTwo;
-    border-bottom: solid 1px $blackTwo;
+    border-top: solid 1px rgba(color(global-adv-bands), .4);
+    border-bottom: solid 1px rgba(color(global-adv-bands), .4);
 
     a {
-        color: $whiteTwo !important;
+        color: color(neutral-1) !important;
     }
 
     a::before {
-        color: $warmGreyFour;
+        color: color(neutral-1) !important;
     }
 }
 
 .tags {
     .tags__list-item {
         a {
-            color: $whiteTwo;
-            background-color: $blackTwo;
+            white-space: nowrap;
+            padding: base-px(.5, 1.3);
+            border-radius: 30px;
+            text-overflow: ellipsis;
+            max-width: 18.75rem;
+            @include tag-button(color(brightness-7), color(brightness-96));
+
         }
 
         &.more-button a {
-            color: $whiteTwo;
-            border: 1px solid $blackTwo;
+            background-color: transparent !important;
+            @include tag-more-button(color(brightness-7), darken(color(brightness-96), 10%));
         }
     }
 }
 
 .advert-slot--mpu {
-    border-top: solid 1px $warmGrey;
-    border-bottom: solid 1px $warmGrey;
-    background: $blackTwo;
-    color: $whiteTwo;
+    color: color(brightness-46);
+    background: color(brightness-93);
+    border-top: 1px solid color(tone-sandy-light);
+    border-bottom: 1px solid color(tone-sandy-light);
+
 
     .advert-slot__action {
-        color: $whiteTwo !important;
+        color: color(brightness-46) !important;
     }
 }
 
 @include mq($from: col4) {
     .article {
-        background-color: $blackThree;
+        background-color: color(brightness-96);
     }
-}
-
-&.garnett--type-analysis .headline {
-    background-image: repeating-linear-gradient(to bottom, transparent, transparent calc(3.6rem - 1px), $whiteTwo);
 }
 
 .interactive,
 figure[data-atom-type="interactive"] {
-    background-color: white;
-    padding: 8px;
+    padding: 0px;
 }
 
 .element-embed {
-    background-color: white;
     @include mq($to: col2) {
         padding: 8px;
         margin-left: -12px;
@@ -132,67 +96,21 @@ figure[data-atom-type="interactive"] {
     }
 }
 
-figure[data-alt="The Fiver: sign up and get our daily football email."],
-figure[data-alt="Subscribe to the Guardian morning briefing"],
-figure[data-alt="Sign up to the daily Business Today email"] {
-    background: none;
-}
-
-.player-card {
-    background: $backgroundBlack;
-    border-top: 2px solid $warmGreyFour;
-}
-
-.player-card__position {
-    color: $warmGreyFour;
-}
-
-.player-card__stat-value {
-    border-top: solid 1px $blackTwo;
-}
-
 .loading {
     &::before {
-        color: $warmGreyFour;
+        color: color(brightness-0);
     }
 }
 
-.prose a:not(.video-URL) {
-    background-image: linear-gradient(rgba(220, 220, 220, 0.5) 0%, rgba(220, 220, 220, 0.5) 100%);
-    color: $whiteTwo;
-}
-
-.sponsorship img {
-    background-color: $whiteTwo;
-    padding: 8px;
+.prose {
+    @include text-underline($p-kicker, $p-kicker);
 }
 
 .prose blockquote,
 .prose blockquote.quoted {
-    color: $whiteTwo;
+    color: color(brightness-46);
+
     &::before {
-        color: $warmGreyFour;
+        color: color(brightness-60);
     }    
-}
-
-.campaign--snippet {
-    a {
-        color: $blackThree !important;
-    }
-}
-
-.campaign--snippet[open] {
-    .heading,
-    .t_and_c,
-    a {
-        color: $blackThree !important;
-    }
-}
-
-.element.element-code pre {
-    color: $whiteTwo;
-}
-
-figure[data-interactive="https://interactive.guim.co.uk/page-enhancers/nav/boot.js"] {
-    background-color: $blackThree;
 }
