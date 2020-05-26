@@ -43,7 +43,7 @@ function init(liveBlog = false) {
     setGlobalObject(window);
     fixSeries();
     advertorialUpdates();
-    setupTracking(); // track common events
+    setupTracking();
     initAB();
     initRichLinks();
     initHttp();

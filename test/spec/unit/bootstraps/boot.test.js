@@ -12,6 +12,7 @@ describe('ArticleTemplates/assets/js/app', function () {
                         adsEnabled: 'true',
                         adsConfig: 'xxx',
                         contentType: 'liveblog',
+                        hideAdsTest: 0,
                         mpuAfterParagraphs: 0,
                         templatesDirectory: "",
                         test: true
@@ -43,7 +44,8 @@ describe('ArticleTemplates/assets/js/app', function () {
                 expect(initMock).toHaveBeenCalledWith({
                     adsConfig: 'xxx',
                     adsType: 'default',
-                    mpuAfterParagraphs: 0
+                    mpuAfterParagraphs: 0,
+                    hideAdsTest: 0
                 });
             });
 
@@ -57,7 +59,8 @@ describe('ArticleTemplates/assets/js/app', function () {
                 expect(initMock).toHaveBeenCalledWith({
                     adsConfig: 'xxx',
                     adsType: 'default',
-                    mpuAfterParagraphs: 0
+                    mpuAfterParagraphs: 0,
+                    hideAdsTest: 0
                 });
             });
 
@@ -71,7 +74,8 @@ describe('ArticleTemplates/assets/js/app', function () {
                 expect(initMock).toHaveBeenCalledWith({
                     adsConfig: 'xxx',
                     adsType: 'liveblog',
-                    mpuAfterParagraphs: 0
+                    mpuAfterParagraphs: 0,
+                    hideAdsTest: 0
                 });
             });
 
@@ -91,7 +95,8 @@ describe('ArticleTemplates/assets/js/app', function () {
                 expect(initMock).toHaveBeenCalledWith({
                     adsConfig: 'xxx',
                     adsType: 'liveblog',
-                    mpuAfterParagraphs: 0
+                    mpuAfterParagraphs: 0,
+                    hideAdsTest: 0
                 });
 
                 liveblogElem.remove();
@@ -107,7 +112,8 @@ describe('ArticleTemplates/assets/js/app', function () {
                 expect(initMock).toHaveBeenCalledWith({
                     adsConfig: 'xxx',
                     adsType: 'default',
-                    mpuAfterParagraphs: 0
+                    mpuAfterParagraphs: 0,
+                    hideAdsTest: 0
                 });
             });
 
@@ -121,7 +127,8 @@ describe('ArticleTemplates/assets/js/app', function () {
                 expect(initMock).toHaveBeenCalledWith({
                     adsConfig: 'xxx',
                     adsType: 'default',
-                    mpuAfterParagraphs: 0
+                    mpuAfterParagraphs: 0,
+                    hideAdsTest: 0
                 });
             });
 
@@ -135,7 +142,8 @@ describe('ArticleTemplates/assets/js/app', function () {
                 expect(initMock).toHaveBeenCalledWith({
                     adsConfig: 'xxx',
                     adsType: 'default',
-                    mpuAfterParagraphs: 0
+                    mpuAfterParagraphs: 0,
+                    hideAdsTest: 0
                 });
             });
 
@@ -149,7 +157,8 @@ describe('ArticleTemplates/assets/js/app', function () {
                 expect(initMock).toHaveBeenCalledWith({
                     adsConfig: 'xxx',
                     adsType: 'default',
-                    mpuAfterParagraphs: 0
+                    mpuAfterParagraphs: 0,
+                    hideAdsTest: 0
                 });
             });
 
@@ -163,7 +172,8 @@ describe('ArticleTemplates/assets/js/app', function () {
                 expect(initMock).toHaveBeenCalledWith({
                     adsConfig: 'xxx',
                     adsType: 'default',
-                    mpuAfterParagraphs: 0
+                    mpuAfterParagraphs: 0,
+                    hideAdsTest: 0
                 });
             });
         });
