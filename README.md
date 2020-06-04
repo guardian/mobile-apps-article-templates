@@ -3,6 +3,8 @@
 
 Article templates used within the Guardian’s next-generation iOS and Android applications. This repo also contains documentation that describes the components and layouts used across these templates.
 
+Dummy README change.
+
 ## Requirements
 * A Mac or Linux computer.
 * [NVM](https://github.com/creationix/nvm).
