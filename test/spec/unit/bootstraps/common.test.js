@@ -105,6 +105,7 @@ describe('ArticleTemplates/assets/js/bootstraps/common', function () {
 
             const imageWrapper = figElem.querySelector('.figure__inner');
             expect(imageWrapper).toBeTruthy();
+            expect(true).toBe(false);
         });
 
 
