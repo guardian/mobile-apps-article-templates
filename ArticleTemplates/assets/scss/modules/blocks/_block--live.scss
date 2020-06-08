@@ -49,7 +49,7 @@
 // ```
 // */
 
-[class*="block--live-"] {
+[class*='block--live-'] {
     padding-top: 0;
 
     @include mq($from: col2) {
@@ -143,7 +143,7 @@
     .block__byline {
         border-left: 1px solid color(brightness-93);
         display: inline-block;
-        padding: base-px(0.5, 1);
+        padding: base-px(.5, 1);
         margin: base-px(0, 0, 1, 1);
         vertical-align: top;
 
@@ -164,7 +164,7 @@
         border-radius: 50%;
         display: inline-block;
         height: 40px;
-        margin-right: base-px(0.5);
+        margin-right: base-px(.5);
         overflow: hidden;
         position: relative;
         vertical-align: middle;
@@ -215,7 +215,7 @@
         }
 
         figcaption {
-            padding: base-px(0.125, 0, 1, 0.33);
+            padding: base-px(.125, 0, 1, .33);
         }
 
         @include mq($to: col1) {
@@ -229,13 +229,12 @@
                         @include text-ellipses(9);
                     }
                 }
-            }
+           }
         }
 
         @include mq($from: col1, $to: col4) {
             figure {
-                &.portrait-thumbnail,
-                &.landscape-thumbnail {
+                &.portrait-thumbnail, &.landscape-thumbnail {
                     margin-bottom: 2px;
                 }
             }
