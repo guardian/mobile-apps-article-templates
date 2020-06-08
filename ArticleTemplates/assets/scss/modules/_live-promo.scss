@@ -2,11 +2,18 @@
     background-color: color(tone-highlight);
     border: 0;
     padding-bottom: 0;
+    padding-top: 0;
 
-    & .block__body {
+    .block__body {
         font-family: "Guardian Headline";
         display: flex;
         flex-direction: row;
+    }
+
+    .block__time {
+        @include mq($to: col1) {
+            display: none;
+        }
     }
 }
 
