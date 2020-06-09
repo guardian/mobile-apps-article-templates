@@ -131,8 +131,8 @@ function onLiveMoreClick(liveMoreElem) {
 }
 
 function setupTryLive() {
-    const elem = document.getElementsByClassName('block--live-promo')[0];
-    if (elem == null) return;
+    const elem = document.querySelector('.block--live-promo');
+    if (elem === undefined) return;
 
     let tryLiveButton = elem.getElementsByClassName('live-promo__button')[0];
     tryLiveButton.addEventListener('touchstart', () => {
