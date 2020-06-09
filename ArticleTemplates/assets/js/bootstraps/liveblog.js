@@ -130,6 +130,22 @@ function onLiveMoreClick(liveMoreElem) {
     signalDevice('showmore');
 }
 
+function setupTryLive() {
+    const elems = document.getElementsByClassName('live-promo__button');
+    for (let i = 0; i < elems.length; ++i) {
+        let elem = elems[i];
+        elem.addEventListener('touchstart', () => {
+            elem.classList.add('pressed');
+        });
+        elem.addEventListener('touchend', () => {
+            elem.classList.remove('pressed');
+        });
+        elem.addEventListener('click', () => {
+            signalDevice('try-live');
+        });
+    }
+}
+
 function liveblogDeleteBlock(blockID) {
     const block = document.getElementById(blockID);
 
@@ -392,6 +408,7 @@ function init() {
     window.liveblogTime();
     window.addEventListener('scroll', debounce(updateBlocksOnScroll, 100, true));
     liveMore();
+    setupTryLive();
     initYoutube();
     setInterval(window.liveblogTime, 30000);
 

@@ -1,0 +1,70 @@
+.block--live-promo {
+    background-color: color(tone-highlight);
+    border: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+    color: color(brightness-7);
+
+    .block__body {
+        font-family: "Guardian Headline";
+        display: flex;
+        flex-direction: row;
+    }
+
+    .block__time {
+        @include mq($to: col1) {
+            display: none;
+        }
+    }
+}
+
+.live-promo {
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        flex-grow: 1;
+    }
+
+    &__title {
+        margin: 8px 0;
+        font-size: 28px;
+        line-height: 32px;
+    }
+
+    &__body {
+        font-size: 18px;
+        margin: 8px 0;
+        flex-grow: 1;
+    }
+
+    &__button {
+        background-color: color(news-kicker);
+        color: color(brightness-100);
+        border-radius: 20px;
+        border: 0;
+        padding: 10px 20px;
+        font-family: "Guardian Text Sans Web";
+        font-size: 17px;
+        line-height: 21px;
+        font-weight: bold;
+        margin: 12px 0;
+
+        &__icon {
+            margin-left: 10px;
+        }
+
+        &.pressed {
+            background-color: color(news-dark-1);
+        }
+    }
+
+    &__artwork {
+        display: flex;
+        flex-direction: column;
+
+        svg {
+            display: block;
+        }
+    }
+}
