@@ -131,17 +131,31 @@ function onLiveMoreClick(liveMoreElem) {
 }
 
 function setupTryLive() {
-    const elems = document.getElementsByClassName('live-promo__button');
+    const elems = document.getElementsByClassName('block--live-promo');
     for (let i = 0; i < elems.length; ++i) {
         let elem = elems[i];
-        elem.addEventListener('touchstart', () => {
-            elem.classList.add('pressed');
+
+        let tryLiveButton = elem.getElementsByClassName('live-promo__button')[0];
+        tryLiveButton.addEventListener('touchstart', () => {
+            tryLiveButton.classList.add('pressed');
         });
-        elem.addEventListener('touchend', () => {
-            elem.classList.remove('pressed');
+        tryLiveButton.addEventListener('touchend', () => {
+            tryLiveButton.classList.remove('pressed');
         });
-        elem.addEventListener('click', () => {
+        tryLiveButton.addEventListener('click', () => {
             signalDevice('try-live');
+        });
+
+        let closeButton = elem.getElementsByClassName('live-promo__close-button')[0];
+        closeButton.addEventListener('touchstart', () => {
+            closeButton.classList.add('pressed');
+        });
+        closeButton.addEventListener('touchend', () => {
+            closeButton.classList.remove('pressed');
+        });
+        closeButton.addEventListener('click', () => {
+            elem.remove();
+            signalDevice('close-try-live');
         });
     }
 }
