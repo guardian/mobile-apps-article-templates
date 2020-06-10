@@ -143,6 +143,11 @@ function setupTryLive() {
     });
     tryLiveButton.addEventListener('click', () => {
         signalDevice('try-live');
+        // Wait a little bit before removing in case there is some
+        // animation to open the Live tab.
+        setTimeout(() => {
+            elem.remove();
+        }, 1000);
     });
 
     let closeButton = elem.getElementsByClassName('live-promo__close-button')[0];
