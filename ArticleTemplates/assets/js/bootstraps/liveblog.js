@@ -147,6 +147,7 @@ function setupTryLive() {
         // animation to open the Live tab.
         setTimeout(() => {
             elem.remove();
+            checkInjectedComponents(false);
         }, 1000);
     });
 
@@ -160,6 +161,7 @@ function setupTryLive() {
     closeButton.addEventListener('click', () => {
         elem.remove();
         signalDevice('close-try-live');
+        checkInjectedComponents(false);
     });
 }
 
