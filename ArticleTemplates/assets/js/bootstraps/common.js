@@ -15,9 +15,10 @@ import { init as initRichLinks } from 'modules/rich-links';
 import { init as initAB } from 'modules/experiments/ab';
 import { initMpuPoller } from 'modules/ads';
 import { init as initHttp } from 'modules/http';
+import { init as ophanIframeInit } from 'modules/ophan-iframe';
 
 let trackCommentContainerView = true;
-        
+
 function init(liveBlog = false) {
     if ((GU && GU.opts && GU.opts.platform === 'android') || instagramHeader()) {
         // polyfill to remove click delays on browsers with touch
@@ -49,6 +50,7 @@ function init(liveBlog = false) {
     initHttp();
     setupForms();
     darkModeSetup();
+    ophanIframeInit();
 
     if (!document.body.classList.contains('no-ready')) {
         if (!liveBlog) {
@@ -76,7 +78,7 @@ function formatImages(images) {
     for (i = 0; i < images.length; i++) {
         image = images[i];
         figure = getClosestParentWithTag(image, 'figure');
-        
+
         if (figure) {
             figures.push(figure);
         }
@@ -628,7 +630,7 @@ function advertorialUpdates() {
             const metaContainer = metaContainers[i];
             const bylineElem = metaContainer.getElementsByClassName('byline')[0];
 
-            if (bylineElem && 
+            if (bylineElem &&
                 bylineElem.innerHTML === '' &&
                 !metaContainer.getElementsByClassName('sponsorship').length) {
                 const metaParent = metaContainer.parentNode;
