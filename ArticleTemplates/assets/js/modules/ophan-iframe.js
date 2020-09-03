@@ -12,7 +12,7 @@ const handleIframeMessage = (messageEvent) => {
 };
 
 const init = () => {
-    window.top.addEventListener('message', handleIframeMessage, false);
+    window.addEventListener('message', handleIframeMessage, false);
 };
 
 export {
