@@ -1,4 +1,4 @@
-import 'core-js/fn/promise';
+import 'core-js/stable/promise';
 import 'raf/polyfill';
 import '@babel/polyfill';
 import domready from 'domready';
