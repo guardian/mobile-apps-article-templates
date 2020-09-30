@@ -1,6 +1,6 @@
-import { svg, layout, select } from 'd3';
 import { init as initYoutube } from 'modules/youtube';
 import { getElemsFromHTML } from 'modules/util';
+import { arc, pie, select } from 'd3';
 
 function footballChart(homeTeam, awayTeam) {
     const pieChart = document.getElementsByClassName('pie-chart--possession')[0];
@@ -14,21 +14,21 @@ function footballChart(homeTeam, awayTeam) {
     const height = 250;
     const radius = Math.min(height, width) / 2;
 
-    const arc = svg.arc()
+    const arcShape = arc()
         .outerRadius(radius)
         .innerRadius(radius / 3);
 
-    const pie = layout.pie()
+    const pieShape = pie()
         .sort(null)
         .value(d => d[1]);
 
     const // Init d3 chart
-    vis = select('.pie-chart')
-        .attr('preserveAspectRatio', 'xMinYMin slice')
-        .attr('viewBox', '0 0 250 250')
-        .append('g')
-        .attr('class', 'pie-chart__inner')
-        .attr('transform', `translate(${width / 2},${width / 2})`);
+        vis = select('.pie-chart')
+            .attr('preserveAspectRatio', 'xMinYMin slice')
+            .attr('viewBox', '0 0 250 250')
+            .append('g')
+            .attr('class', 'pie-chart__inner')
+            .attr('transform', `translate(${width / 2},${width / 2})`);
 
     // Add percentage symbol to center
     vis.append('text')
@@ -39,28 +39,28 @@ function footballChart(homeTeam, awayTeam) {
     // Background
     const backgroundData = [['null', 100]];
 
-    const backgroundarc = svg.arc()
+    const backgroundarc = arc()
         .outerRadius(radius - 1)
         .innerRadius((radius / 3) + 1);
 
     vis.append('path')
-        .data(pie(backgroundData))
+        .data(pieShape(backgroundData))
         .attr('class', 'pie-chart__pie')
         .attr('d', backgroundarc);
 
     // Draw Segements
     const g = vis.selectAll('.pie-chart__segment')
-        .data(pie(data))
+        .data(pieShape(data))
         .enter().append('g')
         .attr('class', 'pie-chart__segment');
 
     g.append('path')
         .attr('class', d => `pie-chart__segment-arc pie-chart__segment-arc--${d.data[2]}`)
-        .attr('d', arc);
+        .attr('d', arcShape);
 
     // Add Text Labels
     const tblock = vis.selectAll('.pie-chart__label')
-        .data(pie(data))
+        .data(pieShape(data))
         .enter().append('foreignObject')
         .attr('class', d => `pie-chart__label pie-chart__label--${d.data[2]}`)
         .attr('width', 75)
@@ -69,7 +69,7 @@ function footballChart(homeTeam, awayTeam) {
         .attr('transform', d => {
             d.innerRadius = 0;
             d.outerRadius = radius;
-            let textpoint = arc.centroid(d);
+            let textpoint = arc().centroid(d);
             textpoint = [textpoint[0] - 35, textpoint[1] - 25];
             return `translate(${textpoint})`;
         });
@@ -114,7 +114,7 @@ function footballGoal(side, newScore, scorerHtml, aggScore) {
     }
 
     if (matchSummaryInfo) {
-        matchSummaryInfo.innerHTML = matchSummaryInfo.innerHTML + scorerHtml;
+        matchSummaryInfo.innerHTML += scorerHtml;
     }
 }
 
@@ -128,7 +128,7 @@ function footballStatus(className, label) {
 
         if (matchStatus) {
             for (i = matchStatus.classList.length; i > 0; i--) {
-                if (matchStatus.classList[i-1].includes('match-status--')) {
+                if (matchStatus.classList[i - 1].includes('match-status--')) {
                     matchStatus.classList.remove(matchStatus.classList[i]);
                 }
             }
