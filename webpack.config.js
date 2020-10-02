@@ -59,7 +59,6 @@ module.exports = (env, argv) => {
             loader: "css-loader",
               options: {
                 url: false,
-                minimize: true,
                 sourceMap: argv.mode !== 'production',
               }
           },
@@ -111,10 +110,10 @@ module.exports = (env, argv) => {
           chunkFilename: "../css/[name].css",
         })],
     };
-    
+
     if (argv.mode !== 'production') {
       config.devtool = 'source-map';
     }
-    
+
     return config;
 };
