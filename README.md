@@ -75,4 +75,4 @@ These are examples of the main templates used across apps:
 | Liveblog | https://www.theguardian.com/sport/live/2019/may/31/west-indies-v-pakistan-cricket-world-cup-2019-live |
 | Immersive interactive | https://www.theguardian.com/us-news/ng-interactive/2019/may/29/chemical-checkout-what-might-be-hiding-in-your-groceries |
 | Photo essay | https://www.theguardian.com/society/2019/may/31/amish-on-holiday-sarasota-florida-dina-litovsky-photo-essay |
-| Guardian labs | https://www.theguardian.com/behind-every-great-holiday/2019/apr/23/the-a-list-the-top-10-things-to-do-in-california |
+| Guardian labs | https://www.theguardian.com/the-abcs-of-recruiting-teachers-remotely/2020/may/01/the-new-rules-of-remote-recruiting-how-to-prepare-for-an-online-interview |
