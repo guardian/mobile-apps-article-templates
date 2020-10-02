@@ -69,7 +69,7 @@ function footballChart(homeTeam, awayTeam) {
         .attr('transform', d => {
             d.innerRadius = 0;
             d.outerRadius = radius;
-            let textpoint = arc().centroid(d);
+            let textpoint = arcShape.centroid(d);
             textpoint = [textpoint[0] - 35, textpoint[1] - 25];
             return `translate(${textpoint})`;
         });
