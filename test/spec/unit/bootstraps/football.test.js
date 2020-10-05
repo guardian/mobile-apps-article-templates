@@ -8,12 +8,12 @@ jest.mock('modules/youtube', () => {
 
 describe('ArticleTemplates/assets/js/bootstraps/football', function () {
     let container;
-        
+
     beforeEach(function () {
         container = document.createElement('div');
         container.id = 'container';
         document.body.appendChild(container);
-        
+
         window.applyNativeFunctionCall = jest.fn();
     });
 
@@ -190,8 +190,8 @@ describe('ArticleTemplates/assets/js/bootstraps/football', function () {
 
     describe('window.footballStatus(className, label)', function () {
         it('clears old status and reapplies class before adding new status', function () {
-            var matchStatus = document.createElement('div'),
-                matchStatusTime = document.createElement('div');
+            var matchStatus = document.createElement('div');
+            var matchStatusTime = document.createElement('div');
 
             matchStatus.classList.add('match-status');
             matchStatus.classList.add('match-status--xxx');
