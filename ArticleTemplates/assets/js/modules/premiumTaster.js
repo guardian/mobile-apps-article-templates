@@ -31,7 +31,7 @@ function init() {
 function isAdFreePremiumTasterInView(AdFreePremiumTaster) {
     if (isElementPartiallyInViewport(AdFreePremiumTaster)) {
         console.log("taster in viewport, report to native layers");
-        signalDevice('trackAction/AdFreePremiumTaster:seen');
+        signalDevice('trackPremiumTaster/AdFreePremiumTaster');
     }
 }
 
