@@ -4,6 +4,8 @@ import {
     isElementPartiallyInViewport,
 } from 'modules/util';
 
+let scrollListenerFunction;
+
 function init() {
     try {
         const showAdFreeTaster = window.GU.opts.showAdFreeTaster;
@@ -22,7 +24,8 @@ function init() {
         
         placeholder.classList.add('ad-free-taster');
         adFreeTasterSibling.parentNode.insertBefore(placeholder, adFreeTasterSibling);
-        window.addEventListener('scroll', debounce(isAdFreePremiumTasterInView.bind(null, placeholder), 200));
+        scrollListenerFunction = debounce(isAdFreePremiumTasterInView.bind(null, placeholder), 100);
+        window.addEventListener('scroll', scrollListenerFunction);
     } catch (e) {
         console.error(e);
     }
@@ -31,7 +34,8 @@ function init() {
 function isAdFreePremiumTasterInView(AdFreePremiumTaster) {
     if (isElementPartiallyInViewport(AdFreePremiumTaster)) {
         console.log("taster in viewport, report to native layers");
-        signalDevice('trackPremiumTaster/AdFreePremiumTaster');
+        signalDevice('trackPremiumTaster/AdFreePremiumTasterSeen');
+        window.removeEventListener('scroll', scrollListenerFunction);
     }
 }
 
