@@ -56,8 +56,7 @@ function adFreeTasterSetup() {
 
 function isAdFreePremiumTasterInView(AdFreePremiumTaster) {
     if (isElementPartiallyInViewport(AdFreePremiumTaster)) {
-        console.log("taster in viewport, report to native layers");
-        signalDevice('trackPremiumTaster/AdFreePremiumTasterSeen');
+        signalDevice('premiumTaster/adFreePremiumTasterSeen');
         window.removeEventListener('scroll', scrollListenerFunction);
     }
 }
@@ -66,7 +65,6 @@ function setupButton() {
     const adFreeTasterContainer = document.querySelector('.js-ad-free-taster');
     const button = adFreeTasterContainer.querySelector('button');
     button.addEventListener('click', () => {
-        console.log("removing ad free button")
         adFreeTasterContainer.remove()
     })
 }
