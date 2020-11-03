@@ -24,37 +24,34 @@ const svg = `
     </svg>
 `
 function init() {
-    try {
-        const showAdFreeTaster = window.GU.opts.showAdFreeTaster;
-        if (!showAdFreeTaster) {
-            return;
-        }
+    window.adFreeTasterSetup = adFreeTasterSetup
+}
 
-        const afterParagraphs = 3;
-        const placeholder = document.createElement('div');
-        const adFreeTasterSibling = document.querySelector(`.article__body > div.prose > p:nth-of-type(${afterParagraphs - 1}) ~ p + p`);
+function adFreeTasterSetup() {
+    const afterParagraphs = 3;
+    const placeholder = document.createElement('div');
+    const adFreeTasterSibling = document.querySelector(`.article__body > div.prose > p:nth-of-type(${afterParagraphs - 1}) ~ p + p`);
 
-        if (!(adFreeTasterSibling && adFreeTasterSibling.parentNode)) {
-            // Not enough paragraphs on page to add adFree taster
-            return;
-        }
-        
-        const node = document.createElement('div');
-
-        node.innerHTML = `
-            <span class="icon">${svg}</span>
-            Experiencing the app ad free is a Premium feature. As a new user you can enjoy it for <strong>free for one week.</strong>
-            <button>OK</button>
-        `;
-
-        placeholder.appendChild(node);
-        placeholder.classList.add('ad-free-taster');
-        adFreeTasterSibling.parentNode.insertBefore(placeholder, adFreeTasterSibling);
-        scrollListenerFunction = debounce(isAdFreePremiumTasterInView.bind(null, placeholder), 100);
-        window.addEventListener('scroll', scrollListenerFunction);
-    } catch (e) {
-        console.error(e);
+    if (!(adFreeTasterSibling && adFreeTasterSibling.parentNode)) {
+        // Not enough paragraphs on page to add adFree taster
+        return;
     }
+
+    const node = document.createElement('div');
+
+    node.innerHTML = `
+        <span class="icon">${svg}</span>
+        Experiencing the app ad free is a Premium feature. As a new user you can enjoy it for <strong>free for one week.</strong>
+        <button>OK</button>
+    `;
+
+    placeholder.appendChild(node);
+    placeholder.classList.add('ad-free-taster', 'js-ad-free-taster');
+    adFreeTasterSibling.parentNode.insertBefore(placeholder, adFreeTasterSibling);
+    scrollListenerFunction = debounce(isAdFreePremiumTasterInView.bind(null, placeholder), 100);
+    window.addEventListener('scroll', scrollListenerFunction);
+
+    setupButton();
 }
 
 function isAdFreePremiumTasterInView(AdFreePremiumTaster) {
@@ -63,6 +60,15 @@ function isAdFreePremiumTasterInView(AdFreePremiumTaster) {
         signalDevice('trackPremiumTaster/AdFreePremiumTasterSeen');
         window.removeEventListener('scroll', scrollListenerFunction);
     }
+}
+
+function setupButton() {
+    const adFreeTasterContainer = document.querySelector('.js-ad-free-taster');
+    const button = adFreeTasterContainer.querySelector('button');
+    button.addEventListener('click', () => {
+        console.log("removing ad free button")
+        adFreeTasterContainer.remove()
+    })
 }
 
 export { init };
