@@ -65,6 +65,7 @@ function setupButton() {
     const adFreeTasterContainer = document.querySelector('.js-ad-free-taster');
     const button = adFreeTasterContainer.querySelector('button');
     button.addEventListener('click', () => {
+        signalDevice('premiumTaster/adFreePremiumTasterDismissed');
         adFreeTasterContainer.remove()
     })
 }
