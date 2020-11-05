@@ -6,7 +6,7 @@ import {
 
 let scrollListenerFunction;
 
-const svg = `
+const adFreeSvg = `
     <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
         <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="80" height="80">
             <circle cx="40" cy="40" r="40" fill="#C4C4C4"/>
@@ -23,51 +23,106 @@ const svg = `
         </g>
     </svg>
 `
+
+let offlineSvg = `
+    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="80" height="80">
+            <circle cx="40" cy="40" r="40" fill="#C4C4C4"/>
+        </mask>
+        <g mask="url(#mask0)">
+            <rect x="-10.5263" y="-6.31543" width="212.632" height="168.421" fill="#C1D8FC"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M57.7512 32.5835C59.1565 31.9993 60.6809 31.7222 62.2009 31.7222C68.5426 31.7222 73.6842 36.8639 73.6842 43.2055C73.6842 49.5471 68.5426 54.6887 62.2009 54.6887H54.3062L54.3039 54.6846H43.6717C43.6441 54.686 43.6163 54.6874 43.5885 54.6887C40.5091 54.8385 22.0096 54.6887 22.0096 54.6887C15.678 54.6887 10.5263 49.5371 10.5263 43.2055C10.5263 38.6969 13.6038 34.3261 17.8469 32.4399C17.8469 24.1289 24.6694 17.3682 33.0622 17.3682C39.5947 17.3682 45.1569 21.871 47.1292 28.1337C51.1383 27.9557 55.0828 29.5677 57.7512 32.5835ZM36.8421 50.3825H22.0096C17.9933 50.3825 14.8325 47.1744 14.8325 43.2055C14.8325 39.9098 17.4966 36.8696 20.5742 36.0285L21.866 38.8993L23.5885 38.3251C23.5583 38.2432 23.528 38.1615 23.4978 38.0799C22.8164 36.2388 22.1531 34.4466 22.1531 32.4399C22.1531 26.493 27.0306 21.6744 33.0622 21.6744C39.0866 21.6744 43.5407 27.2136 43.5407 33.1576C48.6033 30.9471 54.912 33.5294 56.4593 38.8993C57.7799 37.138 60.0033 36.0285 62.2009 36.0285C66.1655 36.0285 69.378 39.2423 69.378 43.2055C69.378 47.1686 66.1655 50.3825 62.2009 50.3825H57.8947V50.3793H36.8421V50.3825Z" fill="#001536"/>
+            <rect x="11.3158" y="61.7559" width="69.4737" height="3.94737" transform="rotate(-45 11.3158 61.7559)" fill="#001536"/>
+            <rect x="14.107" y="64.5469" width="69.4737" height="3.94737" transform="rotate(-45 14.107 64.5469)" fill="#C1D8FC"/>
+        </g>
+    </svg>
+`
+
+const signalPaths = {
+    adFree: {
+        seen: 'premiumTaster/adFreePremiumTasterSeen',
+        dismissed: 'premiumTaster/adFreePremiumTasterDismissed'
+    },
+    offline: {
+        seen: 'premiumTaster/offlinePremiumTasterSeen',
+        dismissed: 'premiumTaster/offlinePremiumTasterDismissed'
+    }
+}
 function init() {
     window.adFreeTasterSetup = adFreeTasterSetup
+    window.offlineTasterSetup = offlineTasterSetup
+    window.indicatorHtml  = indicatorHtml
 }
 
-function adFreeTasterSetup() {
+function indicatorHtml(taster) {
+    console.log("before check")
+    if (taster !== "adFree" && taster !== "offline") return "";
+    console.log("after check")
+    var text = ""
+    var svg = ""
+    if (taster === "adFree") {
+        text = "Experiencing the app ad free is a Premium feature. As a new user you can enjoy it for <strong>free for one week.</strong>"
+        svg = adFreeSvg
+    }
+
+    if (taster === "offline") {
+        text = "Enhanced offline reading is a Premium feature. As a new user you can enjoy it for <strong>free for one week.</strong>"
+        svg = offlineSvg
+    }
+
+    return `
+        <span class="icon">${svg}</span>
+        ${text}
+        <button>OK</button>
+    `
+}
+
+function setupTasterIndicator(html, signalPath) {
     const afterParagraphs = 3;
     const placeholder = document.createElement('div');
-    const adFreeTasterSibling = document.querySelector(`.article__body > div.prose > p:nth-of-type(${afterParagraphs - 1}) ~ p + p`);
+    const premiumTasterIndicatorSibling = document.querySelector(`.article__body > div.prose > p:nth-of-type(${afterParagraphs - 1}) ~ p + p`);
 
-    if (!(adFreeTasterSibling && adFreeTasterSibling.parentNode)) {
-        // Not enough paragraphs on page to add adFree taster
+    if (!(premiumTasterIndicatorSibling && premiumTasterIndicatorSibling.parentNode)) {
+        // Not enough paragraphs on page to add premium taster indicator
         return;
     }
 
     const node = document.createElement('div');
 
-    node.innerHTML = `
-        <span class="icon">${svg}</span>
-        Experiencing the app ad free is a Premium feature. As a new user you can enjoy it for <strong>free for one week.</strong>
-        <button>OK</button>
-    `;
+    node.innerHTML = html;
 
     placeholder.appendChild(node);
-    placeholder.classList.add('ad-free-taster', 'js-ad-free-taster');
-    adFreeTasterSibling.parentNode.insertBefore(placeholder, adFreeTasterSibling);
-    scrollListenerFunction = debounce(isAdFreePremiumTasterInView.bind(null, placeholder), 100);
+    placeholder.classList.add("premium-taster-indicator", "js-premium-taster-indicator");
+    premiumTasterIndicatorSibling.parentNode.insertBefore(placeholder, premiumTasterIndicatorSibling);
+    scrollListenerFunction = debounce(isIndicatorInView.bind(null, placeholder), 100);
     window.addEventListener('scroll', scrollListenerFunction);
 
     setupButton();
-}
 
-function isAdFreePremiumTasterInView(AdFreePremiumTaster) {
-    if (isElementPartiallyInViewport(AdFreePremiumTaster)) {
-        signalDevice('premiumTaster/adFreePremiumTasterSeen');
-        window.removeEventListener('scroll', scrollListenerFunction);
+    function isIndicatorInView(indicator) {
+        if (isElementPartiallyInViewport(indicator)) {
+            signalDevice(signalPath.seen);
+            window.removeEventListener('scroll', scrollListenerFunction);
+        }
+    }
+
+    function setupButton() {
+        const indicatorTasterContainer = document.querySelector(".js-premium-taster-indicator");
+        const button = indicatorTasterContainer.querySelector('button');
+        button.addEventListener('click', () => {
+            signalDevice(signalPath.dismissed);
+            indicatorTasterContainer.remove()
+        })
     }
 }
 
-function setupButton() {
-    const adFreeTasterContainer = document.querySelector('.js-ad-free-taster');
-    const button = adFreeTasterContainer.querySelector('button');
-    button.addEventListener('click', () => {
-        signalDevice('premiumTaster/adFreePremiumTasterDismissed');
-        adFreeTasterContainer.remove()
-    })
+function offlineTasterSetup() {
+    setupTasterIndicator(indicatorHtml("offline"), signalPaths.offline)
 }
+
+function adFreeTasterSetup() {
+    setupTasterIndicator(indicatorHtml("adFree"), signalPaths.adFree)
+}
+
 
 export { init };
