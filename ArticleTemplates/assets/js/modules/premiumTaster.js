@@ -24,7 +24,7 @@ const adFreeSvg = `
     </svg>
 `
 
-let offlineSvg = `
+const offlineSvg = `
     <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
         <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="80" height="80">
             <circle cx="40" cy="40" r="40" fill="#C4C4C4"/>
@@ -55,11 +55,9 @@ function init() {
 }
 
 function indicatorHtml(taster) {
-    console.log("before check")
     if (taster !== "adFree" && taster !== "offline") return "";
-    console.log("after check")
-    var text = ""
-    var svg = ""
+    let text = ""
+    let svg = ""
     if (taster === "adFree") {
         text = "Experiencing the app ad free is a Premium feature. As a new user you can enjoy it for <strong>free for one week.</strong>"
         svg = adFreeSvg
