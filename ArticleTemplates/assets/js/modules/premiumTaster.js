@@ -57,20 +57,23 @@ function init() {
 function indicatorHtml(taster) {
     if (taster !== "adFree" && taster !== "offline") return "";
     let text = ""
+    let accessibilityText = ""
     let svg = ""
     if (taster === "adFree") {
         text = "Experiencing the app ad free is a Premium feature. As a new user you can enjoy it for <strong>free for one week.</strong>"
+        accessibilityText = "Experiencing the app ad-free is a Premium feature. As a new user you can enjoy it for free for one week."
         svg = adFreeSvg
     }
 
     if (taster === "offline") {
         text = "Enhanced offline reading is a Premium feature. As a new user you can enjoy it for <strong>free for one week.</strong>"
+        accessibilityText = "Enhanced off-line reeding is a Premium feature. As a new user you can enjoy it for free for one week."
         svg = offlineSvg
     }
 
     return `
         <span class="icon">${svg}</span>
-        ${text}
+        <section role="text" aria-label="${accessibilityText}">${text}</section>
         <button>OK</button>
     `
 }
