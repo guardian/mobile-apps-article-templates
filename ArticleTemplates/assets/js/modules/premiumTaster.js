@@ -71,8 +71,6 @@ function indicatorHtml(taster) {
         svg = offlineSvg
     }
 
-    window.a11yText = accessibilityText
-
     return `
         <span class="icon">${svg}</span>
         <section role="text" aria-label="${accessibilityText}">${text}</section>
