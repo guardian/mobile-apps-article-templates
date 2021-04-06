@@ -1,5 +1,3 @@
-import SmoothScroll from 'smooth-scroll';
-
 function isElementPartiallyInViewport(el) {
     const rect = el.getBoundingClientRect();
     const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
@@ -134,8 +132,7 @@ function getAndroidVersion() {
 }
 
 function scrollToElement(element) {
-    const scroll = new SmoothScroll();
-    scroll.animateScroll(element, { speed: 1500 });
+    element.scrollIntoView()
 }
 
 function isAdvertising() {
