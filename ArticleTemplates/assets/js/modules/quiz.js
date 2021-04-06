@@ -1,4 +1,3 @@
-import SmoothScroll from 'smooth-scroll';
 import { updateMPUPosition } from 'modules/ads';
 import { getStringFromUnicodeVal, getElementOffset } from 'modules/util';
 import { initPositionPoller } from 'modules/cards';
@@ -466,8 +465,8 @@ function showScore() {
     initPositionPoller();
 
     // Scroll score panel into view
-    const scroll = new SmoothScroll();
-    scroll.animateScroll('#quiz-scores', null, {speed: 1500, offset: 40});
+    const scoresElement = document.getElementsByClassName('quiz-scores')[0]
+    scoresElement.scrollIntoView()
 }
 
 function showResult() {
