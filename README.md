@@ -22,6 +22,8 @@ $ cd mobile-apps-article-templates
 $ npm install
 ```
 
+* If you get an error on this step regarding `lib/node_modules/npm/node_modules/promise-retry/index.js` or another module, running `npm install -g npm` and re-running `npm install` may fix it.
+
 ### Running on iOS simulator
 * Checkout the branch you are developing against
 * Run `npm run build`
