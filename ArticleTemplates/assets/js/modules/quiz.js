@@ -465,8 +465,10 @@ function showScore() {
     initPositionPoller();
 
     // Scroll score panel into view
-    const scoresElement = document.getElementsByClassName('quiz-scores')[0]
-    scoresElement.scrollIntoView()
+    const scoresElement = document.getElementById('quiz-scores')
+    if (scoresElement !== undefined) {
+        scoresElement.scrollIntoView()
+    }
 }
 
 function showResult() {
