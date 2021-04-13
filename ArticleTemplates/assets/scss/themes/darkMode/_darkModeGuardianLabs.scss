@@ -1,58 +1,62 @@
-&.garnett--type-guardianlabs.is_advertising {
-    background-color: $blackThree;
-    .article {
+@import "colours";
+
+@mixin darkModeGuardianLabs($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3) {
+    &.garnett--type-guardianlabs.is_advertising {
         background-color: $blackThree;
-        .article__header {
+        .article {
             background-color: $blackThree;
-
-            a,
-            .byline {
-                color: color(global-adv-shade-2) !important;
-            }
-
-            .article-kicker,
-            .headline,
-            .meta,
-            .extras,
-            .extras .sponsorship,
-            .main-media {
+            .article__header {
                 background-color: $blackThree;
-                color: $whiteTwo;
-            }
 
-            .standfirst,
-            .standfirst__inner {
-                background-color: $blackThree;
-                color: $warmGreyFour;
-            }
+                a,
+                .byline {
+                    color: color(global-adv-shade-2) !important;
+                }
 
-            &#video-header {
+                .article-kicker,
+                .headline,
+                .meta,
+                .extras,
+                .extras .sponsorship,
+                .main-media {
+                    background-color: $blackThree;
+                    color: $whiteTwo;
+                }
+
                 .standfirst,
                 .standfirst__inner {
-                    color: $whiteTwo;
+                    background-color: $blackThree;
+                    color: $warmGreyFour;
+                }
+
+                &#video-header {
+                    .standfirst,
+                    .standfirst__inner {
+                        color: $whiteTwo;
+                    }
+                }
+
+                a {
+                    color: $guardianLabsLight !important;
                 }
             }
 
-            a {
-                color: $guardianLabsLight !important;
+            .sponsorship__inner {
+                background-color: $blackThree;
             }
-        }
 
-        .sponsorship__inner {
-            background-color: $blackThree;
-        }
+            .meta__published {
+                padding: .5em 0;
+            }
 
-        .meta__published {
-            padding: .5em 0;
-        }
-
-        .article__body {
-            background-color: $blackThree;
-            color: $whiteTwo;
-
-            .prose a:not(.video-URL) {
-                background-image: linear-gradient(rgba(220, 220, 220, 0.5) 0%, rgba(220, 220, 220, 0.5) 100%);
+            .article__body {
+                background-color: $blackThree;
                 color: $whiteTwo;
+
+                .prose a:not(.video-URL) {
+                    background-image: linear-gradient(rgba(220, 220, 220, 0.5) 0%, rgba(220, 220, 220, 0.5) 100%);
+                    color: $whiteTwo;
+                }
             }
         }
     }

@@ -1,48 +1,52 @@
-@mixin pillar-colour-dark($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3) {
-    $whiteTwo: #dcdcdc;
-    $warmGreyFour: #999999;
-    $warmGrey: #767676;
-    $blackTwo: #333333;
-    $blackTwoOpinionKeyline: rgba(51,51,51,.2);
-    $blackThree: #121212;
-    $backgroundBlack: #1a1a1a;
-    $ratingYellow: #f3c200;
-    $wrongQuizAnswer: #8b0000;
-    $correctQuizAnswer: #236925;
-    $guardianLabsLight: #69d1c8;
+@import "darkModeShared";
+@import "darkModeArticle";
+@import "darkModeLiveblog";
+@import "darkModeCricket";
+@import "darkModeFootball";
+@import "darkModeOpinion";
+@import "darkModeMedia";
+@import "darkModeImmersive";
+@import "darkModeNumberedList";
+@import "darkModeQuiz";
+@import "darkModeSpecialReport";
+@import "darkModeGuardianLabs";
+@import "darkModeRelatedContent";
+@import "darkModeComments";
+@import "darkModeLivePromo";
 
+@mixin pillar-colour-dark($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3) {
     @media (prefers-color-scheme: dark) {
-        @import "darkModeShared";
-        @import "darkModeArticle";
-        @import "darkModeLiveblog";
-        @import "darkModeCricket";
-        @import "darkModeFootball";
-        @import "darkModeOpinion";
-        @import "darkModeMedia";
-        @import "darkModeImmersive";
-        @import "darkModeNumberedList";
-        @import "darkModeQuiz";
-        @import "darkModeSpecialReport";
-        @import "darkModeGuardianLabs";
-        @import "darkModeRelatedContent";
-        @import "darkModeComments";
-        @import "darkModeLivePromo";
+        @include darkModeShared($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeArticle($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeLiveblog($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeCricket($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeFootball($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeOpinion($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeMedia($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeImmersive($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeNumberedList($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeQuiz($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeSpecialReport($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeGuardianLabs($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeRelatedContent($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeComments($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeLivePromo($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
     }
 
     // Fallback for Android
     &.dark-mode-on {
-        @import "darkModeShared";
-        @import "darkModeArticle";
-        @import "darkModeLiveblog";
-        @import "darkModeCricket";
-        @import "darkModeFootball";
-        @import "darkModeOpinion";
-        @import "darkModeMedia";
-        @import "darkModeImmersive";
-        @import "darkModeNumberedList";
-        @import "darkModeQuiz";
-        @import "darkModeSpecialReport";
-        @import "darkModeGuardianLabs";
-        @import "darkModeLivePromo";
+        @include darkModeShared($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeArticle($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeLiveblog($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeCricket($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeFootball($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeOpinion($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeMedia($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeImmersive($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeNumberedList($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeQuiz($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeSpecialReport($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeGuardianLabs($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeLivePromo($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
     }
 }

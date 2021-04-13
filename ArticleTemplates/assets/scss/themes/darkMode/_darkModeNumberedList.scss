@@ -1,55 +1,59 @@
-&.display-hint--numberedList {
+@import "colours";
 
-    .article__header {
-        .article-kicker,
-        .headline {
-            background-color: $dark-1;
-            color: color(brightness-93);
+@mixin darkModeNumberedList($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3) {
+    &.display-hint--numberedList {
+
+        .article__header {
+            .article-kicker,
+            .headline {
+                background-color: $dark-1;
+                color: color(brightness-93);
+            }
         }
+
+        .article__header .headline {
+            &:after {
+                background-color: $backgroundBlack;
+            }
+            @include mq(col4) {
+                &:before {
+                    background-color: rgba(color(brightness-93), 0.5);
+                }
+            }
     }
+        .article__body {
 
-    .article__header .headline {
-        &:after {
-            background-color: $backgroundBlack;
-        }
-        @include mq(col4) {
-            &:before {
-                background-color: rgba(color(brightness-93), 0.5);
+            ul.article-link {
+                &:after,
+                li {
+                    border-color: color(brightness-20);
+                }
+                li strong {
+                    color: color(brightness-60);
+                }
             }
-        }
-}
-    .article__body {
 
-        ul.article-link {
-            &:after,
-            li {
+            .prose > h2 {
+                border-color: color(brightness-20);
+                strong {
+                    color: $p-inverted;
+                }
+                &:before {
+                    border-color: color(brightness-20);
+                    color: color(brightness-7);
+                    -webkit-text-stroke-color: color(brightness-60);
+                }
+            }
+
+            .falseH3 {
                 border-color: color(brightness-20);
             }
-            li strong {
-                color: color(brightness-60);
+
+            p.stars {
+                background-color: $ratingYellow;
+                color: color(brightness-7) !important;
             }
-        }
 
-        .prose > h2 {
-            border-color: color(brightness-20);
-            strong {
-                color: $p-inverted;
-            }
-            &:before {
-                border-color: color(brightness-20);
-                color: color(brightness-7);
-                -webkit-text-stroke-color: color(brightness-60);
-            }
         }
-
-        .falseH3 {
-            border-color: color(brightness-20);
-        }
-
-        p.stars {
-            background-color: $ratingYellow;
-            color: color(brightness-7) !important;
-        }
-
     }
 }

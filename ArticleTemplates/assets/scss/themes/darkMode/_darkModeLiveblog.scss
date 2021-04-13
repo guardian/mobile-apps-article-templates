@@ -1,158 +1,162 @@
-&.garnett--type-live,
-&.garnett--type-article.tone--deadBlog,
-&.garnett--type-specialreport.tone--deadBlog,
-&.garnett--type-article.tone--football {
-    background-color: black;
+@import "colours";
 
-    .article__body,
-    .key-events,
-    .article--liveblog {
+@mixin darkModeLiveblog($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3) {
+    &.garnett--type-live,
+    &.garnett--type-article.tone--deadBlog,
+    &.garnett--type-specialreport.tone--deadBlog,
+    &.garnett--type-article.tone--football {
         background-color: black;
-    }
 
-    &.is-live {
-        .headline, .article-kicker {
-            background-color: $dark-1;
-        }
-
-        .article-kicker__highlight a {
-            color: $dark-3;
-        }
-
-        .headline,
-        .article__header .byline__author a,
-        .article__header .comment-count a {
-            color: color(brightness-93);
-        }
-
+        .article__body,
+        .key-events,
         .article--liveblog {
-            .standfirst,
-            .standfirst__inner,
-            .meta,
-            .main-media {
-                background-color: $dark-2;
-                color: $dark-3;
-
-                ul li {
-                    a {
-                        color: $dark-3;
-                    }
-
-                    &::before{
-                        color: $dark-3;
-                        background-color: $dark-3;
-                        opacity: 0.8;
-                    }
-                }
-            }
-
-            .meta__published__date, .alerts {
-                color: $dark-3;
-            }
-        }
-
-        .block--live-summary .prose p a:not(.video-URL),
-        .block--live-summary .prose li a:not(.video-URL),
-        .prose a:not(.video-URL) {
-            background-image: linear-gradient(rgba(220, 220, 220, 0.33) 0%, rgba(220, 220, 220, 0.5) 100%);
-            color: $whiteTwo;
-        }
-
-        .avatar {
-            background-color: $p-inverted;
-        }
-    }
-
-    &.is-live .key-events,
-    .key-events {
-        border-color: $blackTwo;
-
-        .key-events__title {
-            color: $p-inverted;
-        }
-
-        .key-event {
-            &::before, &::after {
-                background: $blackTwo !important;
-            }
-        }
-    }
-
-    .key-event__time,
-    .key-events__toggle-icon::before,
-    [class*='block--live-'] .block__time,
-    [class*='block--live-'] .block__updated,
-    [class*='block--live-'] .prose figcaption {
-        color: $warmGreyFour;
-    }
-
-    [class*='block--live-'] .block__byline {
-        border-left: solid 1px $blackTwo;
-    }
-
-    [class*='block--live-'] .block__avatar {
-        background-color: $warmGreyFour;
-    }
-
-    .key-event__link h2,
-    .key-event__link {
-        color: $whiteTwo !important;
-    }
-
-    .key-events__toggle {
-        border: solid 1px $warmGreyFour;
-    }
-
-    .block:not(.block--discussion-thread) {
-        background-color: $backgroundBlack;
-        border: solid 1px $blackTwo;
-        border-bottom: 2px solid $blackTwo;
-        color: $whiteTwo;
-
-        &.block--live-key-event,
-        &.block--live-summary {
-            border-top: solid 1px $p-inverted;
-        }
-    }
-
-    .block--live-key-event, .block--live-summary {
-        .block__title .highlight {
-            background-color: $ratingYellow;
-            color: black;
-        }
-    }
-
-    .more__button {
-        background-color: $dark-1;
-    }
-
-    .tags {
-        background: black;
-    }
-
-    @include mq($from: col4) {
-        &.is-live .article__header {
             background-color: black;
         }
 
-        .main-media {
-            border-bottom: none;
+        &.is-live {
+            .headline, .article-kicker {
+                background-color: $dark-1;
+            }
+
+            .article-kicker__highlight a {
+                color: $dark-3;
+            }
+
+            .headline,
+            .article__header .byline__author a,
+            .article__header .comment-count a {
+                color: color(brightness-93);
+            }
+
+            .article--liveblog {
+                .standfirst,
+                .standfirst__inner,
+                .meta,
+                .main-media {
+                    background-color: $dark-2;
+                    color: $dark-3;
+
+                    ul li {
+                        a {
+                            color: $dark-3;
+                        }
+
+                        &::before{
+                            color: $dark-3;
+                            background-color: $dark-3;
+                            opacity: 0.8;
+                        }
+                    }
+                }
+
+                .meta__published__date, .alerts {
+                    color: $dark-3;
+                }
+            }
+
+            .block--live-summary .prose p a:not(.video-URL),
+            .block--live-summary .prose li a:not(.video-URL),
+            .prose a:not(.video-URL) {
+                background-image: linear-gradient(rgba(220, 220, 220, 0.33) 0%, rgba(220, 220, 220, 0.5) 100%);
+                color: $whiteTwo;
+            }
+
+            .avatar {
+                background-color: $p-inverted;
+            }
+        }
+
+        &.is-live .key-events,
+        .key-events {
+            border-color: $blackTwo;
+
+            .key-events__title {
+                color: $p-inverted;
+            }
+
+            .key-event {
+                &::before, &::after {
+                    background: $blackTwo !important;
+                }
+            }
+        }
+
+        .key-event__time,
+        .key-events__toggle-icon::before,
+        [class*='block--live-'] .block__time,
+        [class*='block--live-'] .block__updated,
+        [class*='block--live-'] .prose figcaption {
+            color: $warmGreyFour;
+        }
+
+        [class*='block--live-'] .block__byline {
+            border-left: solid 1px $blackTwo;
+        }
+
+        [class*='block--live-'] .block__avatar {
+            background-color: $warmGreyFour;
+        }
+
+        .key-event__link h2,
+        .key-event__link {
+            color: $whiteTwo !important;
+        }
+
+        .key-events__toggle {
+            border: solid 1px $warmGreyFour;
+        }
+
+        .block:not(.block--discussion-thread) {
+            background-color: $backgroundBlack;
+            border: solid 1px $blackTwo;
+            border-bottom: 2px solid $blackTwo;
+            color: $whiteTwo;
+
+            &.block--live-key-event,
+            &.block--live-summary {
+                border-top: solid 1px $p-inverted;
+            }
+        }
+
+        .block--live-key-event, .block--live-summary {
+            .block__title .highlight {
+                background-color: $ratingYellow;
+                color: black;
+            }
+        }
+
+        .more__button {
+            background-color: $dark-1;
+        }
+
+        .tags {
+            background: black;
+        }
+
+        @include mq($from: col4) {
+            &.is-live .article__header {
+                background-color: black;
+            }
+
+            .main-media {
+                border-bottom: none;
+            }
+        }
+
+        .d2-comment-embedded {
+            border: solid 1px $blackTwo;
         }
     }
 
-    .d2-comment-embedded {
-        border: solid 1px $blackTwo;
-    }
-}
 
+    &.garnett--type-live.is-live {
+        .keyline-4:before {
+            background-image: repeating-linear-gradient($dark-1, $dark-1 1px, transparent 1px, transparent 3px);
+            opacity: 1;
+        }
 
-&.garnett--type-live.is-live {
-    .keyline-4:before {
-        background-image: repeating-linear-gradient($dark-1, $dark-1 1px, transparent 1px, transparent 3px);
-        opacity: 1;
-    }
-
-    .article--liveblog .meta__published__comments {
-        border-left: solid 1px $dark-1;
+        .article--liveblog .meta__published__comments {
+            border-left: solid 1px $dark-1;
+        }
     }
 }

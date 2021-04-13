@@ -1,85 +1,89 @@
-.audio-player__button.touchpoint--primary .touchpoint__button,
-.element-youtube .element-placeholder__button .touchpoint__button,
-.audio-player__slider__knob {
-    background-color: $ratingYellow;
+@import "colours";
 
-    &:active {
+@mixin darkModeMedia($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3) {
+    .audio-player__button.touchpoint--primary .touchpoint__button,
+    .element-youtube .element-placeholder__button .touchpoint__button,
+    .audio-player__slider__knob {
         background-color: $ratingYellow;
-    }
-}
 
-&.garnett--type-media {
-    .article--audio,
-    .article--visual {
-        &.article, .gallery {
-            background-color: $backgroundBlack;
-        }
-
-        .headline,
-        .audio-player__slider__played,
-        .audio-player__slider__remaining,
-        .standfirst,
-        .prose {
-            color: $whiteTwo;
-        }
-
-        .article-kicker,
-        .headline,
-        .meta,
-        .standfirst,
-        .article__body,
-        .tags {
-            background: $backgroundBlack;
+        &:active {
+            background-color: $ratingYellow;
         }
     }
 
-    .audio-player__button--loading {
-        .pulse {
-            &:before,
-            &:after,
-            & {
-                background-color: $ratingYellow;
+    &.garnett--type-media {
+        .article--audio,
+        .article--visual {
+            &.article, .gallery {
+                background-color: $backgroundBlack;
+            }
+
+            .headline,
+            .audio-player__slider__played,
+            .audio-player__slider__remaining,
+            .standfirst,
+            .prose {
+                color: $whiteTwo;
+            }
+
+            .article-kicker,
+            .headline,
+            .meta,
+            .standfirst,
+            .article__body,
+            .tags {
+                background: $backgroundBlack;
             }
         }
+
+        .audio-player__button--loading {
+            .pulse {
+                &:before,
+                &:after,
+                & {
+                    background-color: $ratingYellow;
+                }
+            }
+        }
+
+        .article__body .from-content-api.prose a,
+        .standfirst a:not(.video-URL) {
+            background-image: linear-gradient(rgba(220, 220, 220, 0.33) 0%, rgba(220, 220, 220, 0.5) 100%);
+            color: $whiteTwo;
+        }
     }
 
-    .article__body .from-content-api.prose a,
-    .standfirst a:not(.video-URL) {
-        background-image: linear-gradient(rgba(220, 220, 220, 0.33) 0%, rgba(220, 220, 220, 0.5) 100%);
-        color: $whiteTwo;
-    }
-}
+    &.garnett--type-media[data-content-type='audio'],
+    &.garnett--type-media[data-content-type='video'],
+    &.garnett--type-media[data-content-type='gallery'] {
+        .article__header .meta__byline .byline,
+        .meta__published,
+        .article__header .header-photo-credit,
+        .touch-gallery__caption__credit {
+            color: $warmGreyFour;
+        }
 
-&.garnett--type-media[data-content-type='audio'],
-&.garnett--type-media[data-content-type='video'],
-&.garnett--type-media[data-content-type='gallery'] {
-    .article__header .meta__byline .byline,
-    .meta__published,
-    .article__header .header-photo-credit,
-    .touch-gallery__caption__credit {
-        color: $warmGreyFour;
-    }
-
-    .touch-gallery__caption {
-        color: $whiteTwo;
-    }
-}
-
-@include mq($from: col4) {
-    .cutout .cutout__container {
-        min-height: 0;
-    }
-}
-
-&.garnett--type-media[data-content-type='video'],
-&.garnett--type-media[data-content-type='audio'] {
-    .main-media {
-        background: $backgroundBlack;
+        .touch-gallery__caption {
+            color: $whiteTwo;
+        }
     }
 
     @include mq($from: col4) {
-        .article {
-            background: black;
+        .cutout .cutout__container {
+            min-height: 0;
+        }
+    }
+
+    &.garnett--type-media[data-content-type='video'],
+    &.garnett--type-media[data-content-type='audio'] {
+        .main-media {
+            background: $backgroundBlack;
+        }
+
+        @include mq($from: col4) {
+            .article {
+                background: black;
+            }
         }
     }
 }

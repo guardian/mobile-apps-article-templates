@@ -1,4 +1,8 @@
-&.garnett--type-live .block:not(.block--discussion-thread).block--live-promo {
-    background-color: color(tone-highlight-dark);
-    color: color(brightness-7);
+@import "colours";
+
+@mixin darkModeLivePromo($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3) {
+    &.garnett--type-live .block:not(.block--discussion-thread).block--live-promo {
+        background-color: color(tone-highlight-dark);
+        color: color(brightness-7);
+    }
 }
