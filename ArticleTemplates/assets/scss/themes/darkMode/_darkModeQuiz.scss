@@ -1,60 +1,64 @@
-.element-atom .quiz {
-    .question__text {
-        color: $whiteTwo;
+@import "colours";
 
-        &::before {
-            color: $warmGreyFour;
+@mixin darkModeQuiz($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3) {
+    .element-atom .quiz {
+        .question__text {
+            color: $whiteTwo;
+
+            &::before {
+                color: $warmGreyFour;
+            }
         }
-    }
 
-    .answer__text,
-    .answer__message::before {
-        color: $whiteTwo;
-    }
-
-    .question__wrapper {
-        border-color: $blackTwo;
-    }
-
-    .answer__wrapper {
-        color: $whiteTwo;
-        background: $blackTwo;
-
-        .answer__marker {
-            border-color: $warmGreyFour;
+        .answer__text,
+        .answer__message::before {
+            color: $whiteTwo;
         }
-    }
 
-    .question.answered .answer__wrapper {
-        background: $blackTwo;
-    }
+        .question__wrapper {
+            border-color: $blackTwo;
+        }
 
-    .question.is-wrong .wrong-answer .answer__wrapper,
-    .question.is-wrong .wrong-answer .answer__message {
-        background: $wrongQuizAnswer;
-    }
+        .answer__wrapper {
+            color: $whiteTwo;
+            background: $blackTwo;
 
-    .question.is-correct .correct-answer .answer__wrapper,
-    .question.is-correct .correct-answer .answer__message {
-        background: $correctQuizAnswer;
-    }
+            .answer__marker {
+                border-color: $warmGreyFour;
+            }
+        }
 
-    .quiz-scores,
-    .quiz-results {
-        border-top: 2px solid $blackTwo;
-    }
+        .question.answered .answer__wrapper {
+            background: $blackTwo;
+        }
 
-    .quiz-scores .quiz-scores__score {
-        border-top: none;
-        background: $whiteTwo;
-        color: $blackThree;
-    }
+        .question.is-wrong .wrong-answer .answer__wrapper,
+        .question.is-wrong .wrong-answer .answer__message {
+            background: $wrongQuizAnswer;
+        }
 
-    .quiz-scores .quiz-scores__score::before {
-        color: $blackThree;
-    }
+        .question.is-correct .correct-answer .answer__wrapper,
+        .question.is-correct .correct-answer .answer__message {
+            background: $correctQuizAnswer;
+        }
 
-    .quiz-scores .quiz-scores__message {
-        color: $whiteTwo;
+        .quiz-scores,
+        .quiz-results {
+            border-top: 2px solid $blackTwo;
+        }
+
+        .quiz-scores .quiz-scores__score {
+            border-top: none;
+            background: $whiteTwo;
+            color: $blackThree;
+        }
+
+        .quiz-scores .quiz-scores__score::before {
+            color: $blackThree;
+        }
+
+        .quiz-scores .quiz-scores__message {
+            color: $whiteTwo;
+        }
     }
 }

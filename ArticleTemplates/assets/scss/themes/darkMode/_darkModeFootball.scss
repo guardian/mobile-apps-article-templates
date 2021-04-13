@@ -1,65 +1,69 @@
-&.garnett--type-article.tone--football .football,
-&.garnett--type-matchreport.tone--football .football,
-&.garnett--type-.tone-- .football {
-    background-color: $backgroundBlack;
+@import "colours";
 
-    .standfirst:not([data-summary='']) p {
-        color: $warmGreyFour;
-    }
-
-    .tabs {
+@mixin darkModeFootball($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3) {
+    &.garnett--type-article.tone--football .football,
+    &.garnett--type-matchreport.tone--football .football,
+    &.garnett--type-.tone-- .football {
         background-color: $backgroundBlack;
-        [href='#football__tabpanel--article'][aria-selected=true],
-        [href='#football__tabpanel--liveblog'][aria-selected=true],
-        [href='#football__tabpanel--stats'][aria-selected=true] {
-            color: $whiteTwo !important;
-            border-top-color: $whiteTwo !important;
+
+        .standfirst:not([data-summary='']) p {
+            color: $warmGreyFour;
         }
 
-        .tab {
-            border-top: 4px solid $warmGreyFour;
+        .tabs {
+            background-color: $backgroundBlack;
+            [href='#football__tabpanel--article'][aria-selected=true],
+            [href='#football__tabpanel--liveblog'][aria-selected=true],
+            [href='#football__tabpanel--stats'][aria-selected=true] {
+                color: $whiteTwo !important;
+                border-top-color: $whiteTwo !important;
+            }
+
+            .tab {
+                border-top: 4px solid $warmGreyFour;
+                color: $warmGreyFour;
+            }
+        }
+
+        .key-events {
+            border: none;
+            border-top: 1px solid $blackTwo;
+            border-bottom: 2px solid $blackTwo;
+
+            .key-events__title {
+                color: $p-inverted;
+            }
+        }
+
+        .football__tabpanel .article {
+            background-color: $backgroundBlack;
+
+            &.article--liveblog {
+                background-color: black;
+            }
+        }
+
+        .football__lineups,
+        .football__today,
+        .football__stats,
+        .match-stats__caption {
+            color: $whiteTwo;
+        }
+
+        .team-lineup__player__number {
             color: $warmGreyFour;
         }
     }
 
-    .key-events {
-        border: none;
-        border-top: 1px solid $blackTwo;
-        border-bottom: 2px solid $blackTwo;
-
-        .key-events__title {
-            color: $p-inverted;
+    .table--football {
+        color: color(brightness-86);
+        
+        td.football-stat--postition {
+            color: color(brightness-60);
         }
-    }
 
-    .football__tabpanel .article {
-        background-color: $backgroundBlack;
-
-        &.article--liveblog {
-            background-color: black;
+        td, tr {
+            border-bottom: 1px solid color(brightness-46);
         }
-    }
-
-    .football__lineups,
-    .football__today,
-    .football__stats,
-    .match-stats__caption {
-        color: $whiteTwo;
-    }
-
-    .team-lineup__player__number {
-        color: $warmGreyFour;
-    }
-}
-
-.table--football {
-    color: color(brightness-86);
-    
-    td.football-stat--postition {
-        color: color(brightness-60);
-    }
-
-    td, tr {
-        border-bottom: 1px solid color(brightness-46);
     }
 }

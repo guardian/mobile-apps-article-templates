@@ -1,9 +1,13 @@
-.related-content {
-    background: $blackThree;
-}
+@import "colours";
 
-&.garnett--type-live {
+@mixin darkModeRelatedContent($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3) {
     .related-content {
-        background: black;
+        background: $blackThree;
+    }
+
+    &.garnett--type-live {
+        .related-content {
+            background: black;
+        }
     }
 }

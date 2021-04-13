@@ -1,40 +1,44 @@
-&.garnett--type-immersive {
-    .article__header-info {
-        background-color: $blackThree;
+@import "colours";
 
-        .article__headline.headline.selectable {
+@mixin darkModeImmersive($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3) {
+    &.garnett--type-immersive {
+        .article__header-info {
             background-color: $blackThree;
-        }
-    }
 
-    .standfirst .byline__author a {
-        background-image: linear-gradient(rgba(153, 153, 153, 0.33) 0%, rgba(153, 153, 153, 0.5) 100%);
-        color: $warmGrey;
-    }
-
-
-    .standfirst a:not(.video-URL) {
-        background-image: linear-gradient(rgba(153, 153, 153, 0.33) 0%, rgba(153, 153, 153, 0.5) 100%);
-        color: $warmGrey;
-    }
-
-    .standfirst,
-    .article__header-info::before {
-        background-color: $backgroundBlack;
-    }
-
-    .prose .element-pullquote blockquote {
-        border-bottom: 1px solid $blackTwo;
-        border-top: 1px solid $blackTwo;
-    }
-
-    .prose .section__rule {
-        &:nth-of-type(n+2) {
-            border-bottom: solid 2px $blackTwo;
+            .article__headline.headline.selectable {
+                background-color: $blackThree;
+            }
         }
 
-        & + p.has__dropcap:first-letter {
-            color: $p-inverted;
+        .standfirst .byline__author a {
+            background-image: linear-gradient(rgba(153, 153, 153, 0.33) 0%, rgba(153, 153, 153, 0.5) 100%);
+            color: $warmGrey;
+        }
+
+
+        .standfirst a:not(.video-URL) {
+            background-image: linear-gradient(rgba(153, 153, 153, 0.33) 0%, rgba(153, 153, 153, 0.5) 100%);
+            color: $warmGrey;
+        }
+
+        .standfirst,
+        .article__header-info::before {
+            background-color: $backgroundBlack;
+        }
+
+        .prose .element-pullquote blockquote {
+            border-bottom: 1px solid $blackTwo;
+            border-top: 1px solid $blackTwo;
+        }
+
+        .prose .section__rule {
+            &:nth-of-type(n+2) {
+                border-bottom: solid 2px $blackTwo;
+            }
+
+            & + p.has__dropcap:first-letter {
+                color: $p-inverted;
+            }
         }
     }
 }
