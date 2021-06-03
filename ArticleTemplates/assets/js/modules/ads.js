@@ -103,7 +103,7 @@ function createMpu(id) {
                 <div class="advert-slot__label">
                     Advertisement<a class="advert-slot__action" href="x-gu://subscribe">Hide<span data-icon="&#xe04F;"></span></a>
                 </div>
-                <div class="advert-slot__wrapper" id="advert-slot__wrapper">
+                <div class="advert-slot__wrapper advert-slot__wrapper--${id}" id="advert-slot__wrapper">
                     <div class="advert-slot__wrapper__content" id="${id}"></div>
                 </div>
             `;
@@ -114,7 +114,7 @@ function createMpu(id) {
                 <div class="advert-slot__label">
                     <a class="advert-slot__action test" href="x-gu://subscribe">Hide this and other advertisements<span data-icon="&#xe04F;"></span></a>
                 </div>
-                <div class="advert-slot__wrapper test" id="advert-slot__wrapper">
+                <div class="advert-slot__wrapper advert-slot__wrapper--${id} test" id="advert-slot__wrapper">
                     <div class="advert-slot__wrapper__content" id="${id}"></div>
                 </div>
             `;
@@ -125,7 +125,7 @@ function createMpu(id) {
             <div class="advert-slot__label">
                 Advertisement
             </div>
-            <div class="advert-slot__wrapper test__banner" id="advert-slot__wrapper">
+            <div class="advert-slot__wrapper advert-slot__wrapper--${id} test__banner" id="advert-slot__wrapper">
                 <div class="advert-slot__wrapper__content" id="${id}"></div>
             </div>
             <div class="advert-slot__upgrade">
