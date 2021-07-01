@@ -144,11 +144,14 @@
         }
     }
 
+    // The first ad slot is square on narrower breakpoints
     .advert-slot__wrapper--1 {
-        height: 344px;
-        width: 320px;
-        margin-left: auto;
-        margin-right: auto;
+        @include mq($to: col3) {
+            height: 344px;
+            width: 320px;
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
 
     .advert-slot__wrapper.test__banner {
