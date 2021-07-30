@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime';
 import { init } from 'bootstraps/football';
 
 jest.mock('modules/youtube', () => {
