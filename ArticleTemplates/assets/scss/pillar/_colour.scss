@@ -341,8 +341,51 @@
                 background: $p-feature-headline;
                 color: $p-inverted;
             }
+
+            &.personality-quiz {
+                .question__wrapper {
+                    border-top: 2px solid color(brightness-7);
+                }
+
+                .question__text {
+                    &::before {
+                        color:  color(brightness-7);
+                    }
+                }
+
+                .quiz-scores,
+                .quiz-results {
+                    border-color: color(brightness-7);
+                    border-top: 2px solid color(brightness-7);
+                }
+            }
         }
     }
+
+    @media (prefers-color-scheme: dark) {
+        .element-atom {
+            .quiz {
+                &.personality-quiz {
+                    .question__wrapper {
+                        border-top: 2px solid #707070;
+                    }
+
+                    .question__text {
+                        &::before {
+                            color: #707070;
+                        }
+                    }
+
+                    .quiz-scores,
+                    .quiz-results {
+                        border-color: #707070;
+                        border-top: 2px solid #707070;
+                    }
+                }
+            }
+        }
+    }
+
     .prose, .article__header {
         .bullet {
             @include faux-bullet($color: $p-kicker, $right-space: 4px);

@@ -425,10 +425,26 @@
 
         // Personality quiz overrides
         &.personality-quiz {
+            .question__wrapper .question__text {
+                font-family: $egyptian-display;
+                font-weight: 600;
+                font-size: 18px;
+                line-height: 21px;
+
+                &::before {
+                    content: counter(question-counter);
+                    font: 50px/1 $egyptian-display;
+                    left: 0;
+                    position: absolute;
+                    top: 3px;
+                    width: 60px;
+                }
+            }
+
             .question__answer {
                 &.highlight-answer.answer .answer__wrapper,
                 &.highlight-answer.answer.has-image {
-                    background-color: color(opinion-inverted);
+                    background-color: color(brightness-86);
                 }
 
                 &:not(.has-image) {
@@ -437,7 +453,7 @@
                     }
 
                     .answer__marker {
-                        border: 1px solid color(brightness-20);
+                        border: 1px solid color(brightness-60);
 
                         &::before {
                             content: '';
@@ -448,9 +464,9 @@
                         opacity: 0;
                         background: color(brightness-20);
                         border-radius: 50%;
-                        height: 20px;
-                        margin: 4px;
-                        width: 20px;
+                        height: 16px;
+                        margin: 5.5px;
+                        width: 16px;
                         z-index: 1;
                     }
                 }
@@ -461,6 +477,183 @@
 
                     .answer__marker {
                         display: none;
+                    }
+                }
+            }
+
+            .question__answer {
+                &.highlight-answer.answer .answer__marker__inner {
+                    opacity: 1;
+                    background: color(brightness-7);
+                }
+
+                &.highlight-answer.answer .answer__marker {
+                    border: 1px solid color(brightness-7);
+                }
+            }
+
+            .question.answered .answer__wrapper {
+                background: color(brightness-93);
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            &.personality-quiz {
+                .question__wrapper .question__text {
+                    color: color(brightness-86);
+
+                    &::before {
+                        color: color(brightness-86);
+                    }
+                }
+
+                .question__answer .answer__text {
+                    color: color(brightness-86);
+                }
+
+                .question__answer {
+                    &.highlight-answer.answer .answer__wrapper,
+                    &.highlight-answer.answer.has-image {
+                        background-color: #707070;
+                    }
+
+                    &:not(.has-image) {
+                        .answer__text {
+                            color: color(brightness-86);
+                        }
+
+                        .answer__marker {
+                            border: 1px solid color(brightness-60);
+
+                            &::before {
+                                content: '';
+                            }
+                        }
+                    }
+                }
+
+                .question__answer {
+                    &.highlight-answer.answer .answer__marker__inner {
+                        opacity: 1;
+                        background: color(brightness-96);
+                    }
+
+                    &.highlight-answer.answer .answer__marker {
+                        border: 1px solid color(brightness-96);
+                    }
+
+                    &.highlight-answer.answer .answer__text {
+                        color: color(brightness-96);
+                    }
+                }
+
+                .question.answered .answer__wrapper {
+                    background: color(brightness-20);
+                }
+
+                .quiz-results__title .quiz-results__description {
+                    color: color(brightness-86);
+                }
+            }
+        }
+    }
+}
+
+//labs personality quizzes
+.garnett--type-guardianlabs {
+    .element-atom {
+        .quiz {
+            &.personality-quiz {
+                .question__wrapper .question__text {
+                    font-family: $guardian-sans;
+                    font-weight: 700;
+                    font-size: 18px;
+                    line-height: 21px;
+
+                    &::before {
+                        content: counter(question-counter);
+                        font: 50px/1 $guardian-sans;
+                        left: 0;
+                        position: absolute;
+                        top: 3px;
+                        width: 60px;
+                    }
+                }
+
+                .question__answer .answer__text {
+                    font-family: $guardian-sans;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 20px;
+                }
+
+                .question__answer {
+                    &.highlight-answer.answer .answer__wrapper,
+                    &.highlight-answer.answer.has-image {
+                        background-color: color(brightness-86);
+                        font-family: $guardian-sans;
+                        font-size: 16px;
+                        line-height: 20px;
+                    }
+                }
+            }
+
+            @media (prefers-color-scheme: dark) {
+                &.personality-quiz {
+                    .question__wrapper .question__text {
+                        color: color(brightness-86);
+
+                        &::before {
+                            color: color(brightness-86);
+                        }
+                    }
+
+                    .question__answer .answer__text {
+                        color: color(brightness-86);
+                    }
+
+                    .question__answer {
+                        &.highlight-answer.answer .answer__wrapper,
+                        &.highlight-answer.answer.has-image {
+                            background-color: #707070;
+                        }
+
+                        &:not(.has-image) {
+                            .answer__text {
+                                color: color(brightness-86);
+                            }
+
+                            .answer__marker {
+                                border: 1px solid color(brightness-60);
+
+                                &::before {
+                                    content: '';
+                                }
+                            }
+                        }
+                    }
+
+                    .question__answer {
+                        &.highlight-answer.answer .answer__marker__inner {
+                            opacity: 1;
+                            background: color(brightness-96);
+                        }
+
+                        &.highlight-answer.answer .answer__marker {
+                            border: 1px solid color(brightness-96);
+                        }
+
+                        &.highlight-answer.answer .answer__text {
+                            color: color(brightness-96);
+                        }
+                    }
+
+                    .question.answered .answer__wrapper {
+                        background: color(brightness-20);
+                    }
+
+                    .quiz-results__title .quiz-results__description {
+                        color: color(brightness-86);
                     }
                 }
             }
