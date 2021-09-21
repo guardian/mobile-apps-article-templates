@@ -64,65 +64,67 @@
 }
 
 @mixin darkModePersonalityQuiz($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3) {
-    //editorial personality quiz
-    &.personality-quiz {
-        .question__wrapper .question__text {
-            color: color(brightness-86);
-
-            &::before {
+    .element-atom .quiz {
+        //editorial personality quiz
+        &.personality-quiz {
+            .question__wrapper .question__text {
                 color: color(brightness-86);
-            }
-        }
 
-        .question__answer .answer__text {
-            color: color(brightness-86);
-        }
-
-        .question__answer {
-            &.highlight-answer.answer .answer__wrapper,
-            &.highlight-answer.answer.has-image {
-                background-color: #707070;
-            }
-
-            &:not(.has-image) {
-                .answer__text {
+                &::before {
                     color: color(brightness-86);
                 }
+            }
 
-                .answer__marker {
-                    border: 1px solid color(brightness-60);
+            .question__answer .answer__text {
+                color: color(brightness-86);
+            }
 
-                    &::before {
-                        content: '';
+            .question__answer {
+                &.highlight-answer.answer .answer__wrapper,
+                &.highlight-answer.answer.has-image {
+                    background-color: #707070;
+                }
+
+                &:not(.has-image) {
+                    .answer__text {
+                        color: color(brightness-86);
+                    }
+
+                    .answer__marker {
+                        border: 1px solid color(brightness-60);
+
+                        &::before {
+                            content: '';
+                        }
                     }
                 }
             }
-        }
 
-        .question__answer {
-            &.highlight-answer.answer .answer__marker__inner {
-                opacity: 1;
-                background: color(brightness-96);
+            .question__answer {
+                &.highlight-answer.answer .answer__marker__inner {
+                    opacity: 1;
+                    background: color(brightness-96);
+                }
+
+                &.highlight-answer.answer .answer__marker {
+                    border: 1px solid color(brightness-96);
+                }
+
+                &.highlight-answer.answer .answer__text {
+                    color: color(brightness-96);
+                }
             }
 
-            &.highlight-answer.answer .answer__marker {
-                border: 1px solid color(brightness-96);
+            .question.answered .answer__wrapper {
+                background: color(brightness-20);
             }
 
-            &.highlight-answer.answer .answer__text {
-                color: color(brightness-96);
+            .quiz-results__title .quiz-results__description {
+                color: color(brightness-86);
             }
-        }
-
-        .question.answered .answer__wrapper {
-            background: color(brightness-20);
-        }
-
-        .quiz-results__title .quiz-results__description {
-            color: color(brightness-86);
         }
     }
-    
+
     //labs personality quiz
     &.garnett--type-guardianlabs {
         .element-atom {

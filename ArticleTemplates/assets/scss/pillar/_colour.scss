@@ -363,52 +363,12 @@
     }
 
     @media (prefers-color-scheme: dark) {
-        .element-atom {
-            .quiz {
-                &.personality-quiz {
-                    .question__wrapper {
-                        border-top: 2px solid #707070;
-                    }
-
-                    .question__text {
-                        &::before {
-                            color: #707070;
-                        }
-                    }
-
-                    .quiz-scores,
-                    .quiz-results {
-                        border-color: #707070;
-                        border-top: 2px solid #707070;
-                    }
-                }
-            }
-        }
+        @include personality-quiz-dark-mode;
     }
 
     //for android
     .body .dark-mode-on {
-        .element-atom {
-            .quiz {
-                &.personality-quiz {
-                    .question__wrapper {
-                        border-top: 2px solid #707070;
-                    }
-
-                    .question__text {
-                        &::before {
-                            color: #707070;
-                        }
-                    }
-
-                    .quiz-scores,
-                    .quiz-results {
-                        border-color: #707070;
-                        border-top: 2px solid #707070;
-                    }
-                }
-            }
-        }
+        @include personality-quiz-dark-mode;
     }
 
     .prose, .article__header {
@@ -425,6 +385,31 @@
         .article__header, .prose {
             ul > li, .bullet {
                 @include faux-bullet($color: color(brightness-60));
+            }
+        }
+    }
+}
+
+@mixin personality-quiz-dark-mode {
+    .element-atom {
+        .quiz {
+            &.personality-quiz {
+                .question__wrapper {
+                    border-top: 2px solid #707070;
+                }
+
+                .question__text {
+                    &::before {
+                        color: #707070;
+                    }
+                }
+
+                .quiz-scores,
+                .quiz-results {
+                    border-color: #707070;
+                    border-top: 2px solid #707070;
+                    color: color(brightness-86);
+                }
             }
         }
     }
