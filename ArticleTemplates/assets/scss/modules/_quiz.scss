@@ -423,7 +423,7 @@
             }
         }
 
-        // Personality quiz overrides
+        // Editorial personality quiz
         &.personality-quiz {
             .question__wrapper .question__text {
                 font-family: $egyptian-display;
@@ -496,66 +496,6 @@
                 background: color(brightness-93);
             }
         }
-
-        @media (prefers-color-scheme: dark) {
-            &.personality-quiz {
-                .question__wrapper .question__text {
-                    color: color(brightness-86);
-
-                    &::before {
-                        color: color(brightness-86);
-                    }
-                }
-
-                .question__answer .answer__text {
-                    color: color(brightness-86);
-                }
-
-                .question__answer {
-                    &.highlight-answer.answer .answer__wrapper,
-                    &.highlight-answer.answer.has-image {
-                        background-color: #707070;
-                    }
-
-                    &:not(.has-image) {
-                        .answer__text {
-                            color: color(brightness-86);
-                        }
-
-                        .answer__marker {
-                            border: 1px solid color(brightness-60);
-
-                            &::before {
-                                content: '';
-                            }
-                        }
-                    }
-                }
-
-                .question__answer {
-                    &.highlight-answer.answer .answer__marker__inner {
-                        opacity: 1;
-                        background: color(brightness-96);
-                    }
-
-                    &.highlight-answer.answer .answer__marker {
-                        border: 1px solid color(brightness-96);
-                    }
-
-                    &.highlight-answer.answer .answer__text {
-                        color: color(brightness-96);
-                    }
-                }
-
-                .question.answered .answer__wrapper {
-                    background: color(brightness-20);
-                }
-
-                .quiz-results__title .quiz-results__description {
-                    color: color(brightness-86);
-                }
-            }
-        }
     }
 }
 
@@ -590,71 +530,15 @@
                 .question__answer {
                     &.highlight-answer.answer .answer__wrapper,
                     &.highlight-answer.answer.has-image {
-                        background-color: color(brightness-86);
                         font-family: $guardian-sans;
                         font-size: 16px;
                         line-height: 20px;
+                        background-color: color(brightness-86);
                     }
                 }
-            }
 
-            @media (prefers-color-scheme: dark) {
-                &.personality-quiz {
-                    .question__wrapper .question__text {
-                        color: color(brightness-86);
-
-                        &::before {
-                            color: color(brightness-86);
-                        }
-                    }
-
-                    .question__answer .answer__text {
-                        color: color(brightness-86);
-                    }
-
-                    .question__answer {
-                        &.highlight-answer.answer .answer__wrapper,
-                        &.highlight-answer.answer.has-image {
-                            background-color: #707070;
-                        }
-
-                        &:not(.has-image) {
-                            .answer__text {
-                                color: color(brightness-86);
-                            }
-
-                            .answer__marker {
-                                border: 1px solid color(brightness-60);
-
-                                &::before {
-                                    content: '';
-                                }
-                            }
-                        }
-                    }
-
-                    .question__answer {
-                        &.highlight-answer.answer .answer__marker__inner {
-                            opacity: 1;
-                            background: color(brightness-96);
-                        }
-
-                        &.highlight-answer.answer .answer__marker {
-                            border: 1px solid color(brightness-96);
-                        }
-
-                        &.highlight-answer.answer .answer__text {
-                            color: color(brightness-96);
-                        }
-                    }
-
-                    .question.answered .answer__wrapper {
-                        background: color(brightness-20);
-                    }
-
-                    .quiz-results__title .quiz-results__description {
-                        color: color(brightness-86);
-                    }
+                .question.answered .answer__wrapper {
+                    background: color(brightness-93);
                 }
             }
         }
