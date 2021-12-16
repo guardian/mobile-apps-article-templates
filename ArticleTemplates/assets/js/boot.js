@@ -160,7 +160,7 @@ const init = opts => {
         }
 
         const listenForEmailEmbedIFrameResize = () => {
-            const allowedOrigins = ['https://www.theguardian.com/'];
+            const allowedOrigins = ['https://www.theguardian.com'];
 
             const allIframes = [].slice.call(
                 document.querySelectorAll('.email-sub__iframe')
