@@ -158,6 +158,37 @@ const init = opts => {
                 common.init();
             });
         }
+
+        const listenForEmailEmbedIFrameResize = () => {
+            const allIframes = [].slice.call(
+                document.querySelectorAll('.email-sub__iframe')
+            );
+            window.addEventListener('message', (event) => {
+                const iframes = allIframes.filter((i) => {
+                    try {
+                        return i.contentWindow === event.source;
+                    } catch (e) {
+                        return false;
+                    }
+                });
+                if (iframes.length !== 0) {
+                    try {
+                        const message = JSON.parse(event.data);
+                        switch (message.type) {
+                        case 'set-height':
+                            iframes.forEach((iframe) => {
+                                iframe.height = message.value;
+                            });
+                            break;
+                        default:
+                        }
+                        // eslint-disable-next-line no-empty
+                    } catch (e) {}
+                }
+            });
+        };
+
+        listenForEmailEmbedIFrameResize();
     };
 
     if (test) {
