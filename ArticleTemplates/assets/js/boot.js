@@ -160,10 +160,14 @@ const init = opts => {
         }
 
         const listenForEmailEmbedIFrameResize = () => {
+            const allowedOrigins = ['https://www.theguardian.com/'];
+
             const allIframes = [].slice.call(
                 document.querySelectorAll('.email-sub__iframe')
             );
             window.addEventListener('message', (event) => {
+                if (!allowedOrigins.includes(event.origin)) return;
+
                 const iframes = allIframes.filter((i) => {
                     try {
                         return i.contentWindow === event.source;
