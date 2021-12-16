@@ -179,11 +179,15 @@ const init = opts => {
                     try {
                         const message = JSON.parse(event.data);
                         switch (message.type) {
-                        case 'set-height':
+                        case 'set-height': {
+                            const value = parseInt(message.value);
+                            if (!Number.isInteger(value)) return;
+
                             iframes.forEach((iframe) => {
-                                iframe.height = message.value;
+                                iframe.height = value;
                             });
                             break;
+                        }
                         default:
                         }
                         // eslint-disable-next-line no-empty
