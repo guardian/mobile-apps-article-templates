@@ -184,7 +184,7 @@ const init = opts => {
                             if (!Number.isInteger(value)) return;
 
                             iframes.forEach((iframe) => {
-                                iframe.height = value;
+                                iframe.height = `${value}`;
                             });
                             break;
                         }
