@@ -286,6 +286,7 @@ function loadEmbeds() {
 
     fixVineWidth();
     fixEmbedHeights();
+    listenForEmailEmbedIFrameResize();
 
     for (i = 0; i < fenceElems.length; i++) {
         render(fenceElems[i]);
@@ -321,6 +322,43 @@ function fixEmbedHeights() {
         iframe.setAttribute('height', '50px');
         iframe.style.marginTop = '12px';
     }
+}
+
+function listenForEmailEmbedIFrameResize() {
+    const allowedOrigins = ['https://www.theguardian.com'];
+
+    const allIframes = [].slice.call(
+        document.querySelectorAll('.email-sub__iframe')
+    );
+    window.addEventListener('message', (event) => {
+        if (!allowedOrigins.includes(event.origin)) return;
+
+        const iframes = allIframes.filter((i) => {
+            try {
+                return i.contentWindow === event.source;
+            } catch (e) {
+                return false;
+            }
+        });
+        if (iframes.length !== 0) {
+            try {
+                const message = JSON.parse(event.data);
+                switch (message.type) {
+                case 'set-height': {
+                    const value = parseInt(message.value);
+                    if (!Number.isInteger(value)) return;
+
+                    iframes.forEach((iframe) => {
+                        iframe.height = `${value}`;
+                    });
+                    break;
+                }
+                default:
+                }
+                // eslint-disable-next-line no-empty
+            } catch (e) {}
+        }
+    });
 }
 
 function loadInteractives(force) {
