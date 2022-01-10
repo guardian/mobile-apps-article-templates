@@ -335,10 +335,11 @@ function listenForEmailEmbedIFrameResize() {
 
         const iframes = allIframes.filter((i) => {
             try {
-                return i.contentWindow === event.source;
+                if (i.contentWindow && event.source) return i.contentWindow === event.source;
             } catch (e) {
                 return false;
             }
+            return false;
         });
         if (iframes.length !== 0) {
             try {
