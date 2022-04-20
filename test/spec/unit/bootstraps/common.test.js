@@ -1,6 +1,6 @@
 import { init, formatImages } from 'bootstraps/common';
 
-jest.mock('fence', () => {});
+jest.mock('@guardian/fence', () => {});
 
 function buildFigElem (opts) {
     let figElem = document.createElement('figure');
