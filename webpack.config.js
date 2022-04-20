@@ -85,7 +85,7 @@ module.exports = (env, argv) => {
         }),
         new CopyWebpackPlugin({
           patterns: [{
-            from: './node_modules/curl/dist/curl',
+            from: './node_modules/curl-amd/dist/curl',
             to: path.resolve(__dirname, 'ArticleTemplates/assets/build'),
           },
           {

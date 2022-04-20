@@ -5,7 +5,7 @@ import * as common from 'bootstraps/common';
 import * as creative from 'modules/creativeInjector';
 import * as relativeDates from 'modules/relativeDates';
 
-jest.mock('fence', () => {});
+jest.mock('@guardian/fence', () => {});
 
 describe('ArticleTemplates/assets/js/bootstraps/liveblog', function () {
     let container;

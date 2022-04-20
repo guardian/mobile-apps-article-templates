@@ -1,5 +1,5 @@
 import { attach } from 'fastclick';
-import { render } from 'fence';
+import { render } from '@guardian/fence';
 import {
     getClosestParentWithTag,
     debounce,
