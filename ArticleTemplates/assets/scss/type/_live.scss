@@ -1,8 +1,39 @@
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    10% {
+        opacity: .25;
+    }
+    40% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .garnett--type-live {
-    &.is-live {
+    &.is-live{
         .alerts {
             margin: base-px(.5, 1, .5, -.15);
             border-color: rgba(color(tone-sandy-light), .5);
+        }
+
+        .pulsing-dot {
+            animation: pulse 1s infinite;
+            color: color(brightness-100);
+            &:before {
+                border-radius: 62.5rem;
+                display: inline-block;
+                position: relative;
+                background-color: currentColor;
+                width: 0.75em;
+                height: 0.75em;
+                content: '';
+                margin-right: 0.1875rem;
+                vertical-align: initial;
+            }
         }
 
         .article__header {
