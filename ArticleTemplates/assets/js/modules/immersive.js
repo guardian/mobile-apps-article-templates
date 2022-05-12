@@ -103,7 +103,7 @@ function onImmersiveScroll() {
 }
 
 function getImageHeight() {
-    const viewPortHeight = document.documentElement.clientHeight;
+    const viewPortHeight = document.documentElement.clientHeight * 0.9;
     const marginTop = document.body.style.marginTop.replace('px', '');
 
     return viewPortHeight - marginTop;
