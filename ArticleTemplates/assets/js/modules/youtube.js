@@ -53,7 +53,7 @@ function checkForVideos() {
         as it's preceeding sibling then we must report it's position to
         the native layer
     **/
-    sdkPlaceholders = Array.prototype.map.call(iframes, iframe => {
+    sdkPlaceholders = sdkPlaceholders.concat(Array.prototype.map.call(iframes, iframe => {
          if (isPreviousElementSDKPlaceholder(iframe)) {
             const previousElementSibling = iframe.previousElementSibling;
 
@@ -61,7 +61,7 @@ function checkForVideos() {
 
             return previousElementSibling;
          }
-    }).filter(Boolean).concat(sdkPlaceholders);
+    }).filter(Boolean));
 
     if (videos.length) {
         if (!scriptReady) {
