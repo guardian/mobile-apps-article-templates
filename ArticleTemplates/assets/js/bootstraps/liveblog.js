@@ -110,6 +110,13 @@ function liveblogNewBlockDump() {
     }
 }
 
+function decideKicker() {
+    if (document.getElementsByClassName('article-kicker__highlight')[0].innerHTML === '') {
+        document.getElementsByClassName('article-kicker__highlight')[0].style.color = '#F09686';
+        document.getElementsByClassName('article-kicker__highlight')[0].innerHTML = document.getElementsByClassName('article-kicker__section')[0].innerHTML;
+    }
+}
+
 function liveMore() {
     const liveMoreElem = document.getElementsByClassName('more--live-blogs')[0];
 
@@ -430,6 +437,7 @@ function init() {
     setupTryLive();
     initYoutube();
     setInterval(window.liveblogTime, 30000);
+    decideKicker();
 
     const articleBody = document.getElementsByClassName('article__body')[0];
 
