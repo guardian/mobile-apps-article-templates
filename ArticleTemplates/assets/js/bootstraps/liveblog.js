@@ -111,7 +111,7 @@ function liveblogNewBlockDump() {
 }
 
 function decideKicker() {
-    if (document.getElementsByClassName('article-kicker__highlight') !== undefined) {
+    if (document.getElementsByClassName('article-kicker__highlight')[0] !== undefined) {
         if (document.getElementsByClassName('article-kicker__highlight')[0].innerHTML === '') {
             document.getElementsByClassName('article-kicker__highlight')[0].style.color = '#F09686';
             document.getElementsByClassName('article-kicker__highlight')[0].innerHTML = document.getElementsByClassName('article-kicker__section')[0].innerHTML;
