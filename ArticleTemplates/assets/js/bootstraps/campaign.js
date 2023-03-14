@@ -5,6 +5,7 @@ import { POST } from 'modules/http';
 import { scrollToElement } from 'modules/util';
 
 const endpoint = GU.opts.campaignsUrl;
+const pageId = document.body.dataset.pageId;
 
 function init() {
     var campaign = document.querySelector('.campaign--snippet');
@@ -66,11 +67,13 @@ function initCampaign(campaign) {
                 promises.push(filePromise);
                 keys.push(e.name);
                 o[e.name] = filePromise;
+            } else if (e.type === 'hidden') {
+                o[e.name] = pageId;
             } else if (e.value) {
                 o[e.name] = e.value;
             }
-            
-            return o;    
+
+            return o;
         }, {});
 
         Promise.all(promises).then(results => {
