@@ -1,0 +1,789 @@
+.campaign--snippet {
+    position: relative;
+    padding: 12px;
+    margin: 16px -10px 36px;
+
+    &:not([open]) .is-on,
+    &[open] .is-off {
+        display: none;
+    }
+
+    &[open] {
+        background: color(brightness-93);
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 18px;
+        font-family: $guardian-sans;
+        font-weight: 400;
+        padding-top: 2px;
+    }
+
+    &.campaign--success form {
+        color: color(brightness-7);
+        padding: 8px 0px 10px 10px;
+        p {
+            font-weight: 700;
+            font-family: $guardian-sans;
+        }
+    }
+}
+
+.campaign__error {
+    padding: 0 12px 24px 12px;
+    margin-top: -35px;
+    margin-bottom: 20px;
+    color: color(news-feature-headline);
+
+    p {
+        font-family: $guardian-sans;
+        padding-top: 0;
+    }
+}
+
+p.campaign__info {
+    color: color(global-adv-shade-1);
+    font-family: $guardian-sans;
+}
+
+.campaign--snippet .form_submit button {
+    color: color(brightness-100);
+    background-color: color(news-kicker);
+
+    &:enabled {
+        &:hover,
+        :active {
+            background-color: darken(color(news-kicker), 5%);
+        }
+
+        .garnett--pillar-news & {
+            &:hover,
+            &:active {
+                background-color: darken(color(news-kicker), 5%);
+            }
+        }
+
+        .garnett--pillar-sport & {
+            &:hover,
+            &:active {
+                background-color: darken(color(sport-feature-headline), 5%);
+            }
+        }
+
+        .garnett--pillar-opinion & {
+            &:hover,
+            &:active {
+                background-color: darken(color(opinion-feature-headline), 5%);
+            }
+        }
+
+        .garnett--pillar-arts & {
+            &:hover,
+            &:active {
+                background-color: darken(color(arts-feature-headline), 5%);
+            }
+        }
+
+        .garnett--pillar-lifestyle & {
+            &:hover,
+            &:active {
+                background-color: darken(color(lifestyle-kicker), 5%);
+            }
+        }
+    }
+
+    &:disabled {
+        .garnett--pillar-news & {
+            background-color: lighten(color(news-kicker), 5%);
+        }
+
+        .garnett--pillar-sport & {
+            background-color: lighten(color(sport-feature-headline), 5%);
+        }
+
+        .garnett--pillar-opinion & {
+            background-color: lighten(color(opinion-feature-headline), 5%);
+        }
+
+        .garnett--pillar-arts & {
+            background-color: lighten(color(arts-feature-headline), 5%);
+        }
+
+        .garnett--pillar-lifestyle & {
+            background-color: lighten(color(lifestyle-kicker), 5%);
+        }
+    }
+
+    .garnett--pillar-news & {
+        color: color(brightness-100);
+        background-color: color(news-kicker);
+    }
+
+    .garnett--pillar-sport & {
+        color: color(brightness-100);
+        background-color: color(sport-feature-headline);
+    }
+
+    .garnett--pillar-opinion & {
+        color: color(brightness-100);
+        background-color: color(opinion-feature-headline);
+    }
+
+    .garnett--pillar-arts & {
+        color: color(brightness-100);
+        background-color: color(arts-feature-headline);
+    }
+
+    .garnett--pillar-lifestyle & {
+        color: color(brightness-100);
+        background-color: color(lifestyle-kicker);
+    }
+}
+
+.campaign--snippet__handle {
+    color: color(brightness-100);
+    background-color: color(brightness-7);
+
+    &:hover,
+    :active {
+        color: color(brightness-7);
+        .icon {
+            fill: color(brightness-7);
+        }
+    }
+
+    .garnett--pillar-news & {
+        &:hover,
+        :active {
+            color: color(brightness-100);
+            background-color: color(news-kicker);
+            .icon {
+                fill: color(brightness-100);
+            }
+        }
+    }
+
+    .garnett--pillar-sport & {
+        &:hover,
+        :active {
+            color: color(brightness-100);
+            background-color: color(sport-feature-headline);
+            .icon {
+                fill: color(brightness-100);
+            }
+        }
+    }
+
+    .garnett--pillar-opinion & {
+        &:hover,
+        :active {
+            color: color(brightness-100);
+            background-color: color(opinion-feature-headline);
+            .icon {
+                fill: color(brightness-100);
+            }
+        }
+    }
+
+    .garnett--pillar-arts & {
+        &:hover,
+        :active {
+            color: color(brightness-100);
+            background-color: color(arts-feature-headline);
+
+            .icon {
+                fill: color(brightness-100);
+            }
+        }
+    }
+
+    .garnett--pillar-lifestyle & {
+        &:hover,
+        :active {
+            color: color(brightness-100);
+            background-color: color(lifestyle-kicker);
+            .icon {
+                fill: color(brightness-100);
+            }
+        }
+    }
+}
+
+/* SUMMARY */
+
+.campaign--snippet > summary {
+    outline: none;
+    padding: 0;
+    list-style: none;
+
+    &::-webkit-details-marker {
+        display: none;
+    }
+
+    .campaign--kicker {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+
+        .heading {
+            margin-right: 10px;
+        }
+
+        > .campaign--snippet__heading-logo {
+            -webkit-box-flex: initial;
+            -ms-flex: initial;
+            flex: initial;
+            margin-right: 10px;
+
+            .speech-bubble {
+                color: color(brightness-7);
+                background-color: color(tone-highlight);
+                padding: 6px 10px 10px;
+                line-height: 18px;
+                min-width: 84px;
+
+                &::after {
+                    color: color(brightness-7);
+                    background-color: color(tone-highlight);
+                }
+
+                .garnett--pillar-news & {
+                    color: color(brightness-100);
+                    background-color: color(news-kicker);
+                    &::after {
+                        color: color(brightness-100);
+                        background-color: color(news-kicker);
+                    }
+                }
+
+                .garnett--pillar-sport & {
+                    color: color(brightness-100);
+                    background-color: color(sport-feature-headline);
+                    &::after {
+                        color: color(brightness-100);
+                        background-color: color(sport-feature-headline);
+                    }
+                }
+
+                .garnett--pillar-opinion & {
+                    color: color(brightness-100);
+                    background-color: color(opinion-feature-headline);
+                    &::after {
+                        background-color: color(opinion-feature-headline);
+                    }
+                }
+
+                .garnett--pillar-arts & {
+                    color: color(brightness-100);
+                    background-color: color(arts-feature-headline);
+                    &::after {
+                        background-color: color(arts-feature-headline);
+                    }
+                }
+
+                .garnett--pillar-lifestyle & {
+                    color: color(brightness-100);
+                    background-color: color(lifestyle-kicker);
+                    &::after {
+                        background-color: color(lifestyle-kicker);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.campaign--snippet__header {
+    margin: 0 0 6px;
+}
+
+.campaign--snippet__headline {
+    font-size: 18px;
+    line-height: 22px;
+    font-family: $guardian-sans;
+    font-weight: 500;
+    padding-top: 1px;
+}
+
+.campaign--snippet__heading-logo {
+    font-size: 18px;
+    font-family: $guardian-sans;
+    font-weight: 500;
+}
+
+.campaign--snippet__handle {
+    font-family: $guardian-sans;
+    font-size: 13px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 0;
+    -webkit-transform: translate(0, 50%);
+    -ms-transform: translate(0, 50%);
+    transform: translate(0, 50%);
+    padding: 3px 15px 0 6px;
+    margin-left: 5px;
+    span {
+        display: -webkit-inline-box;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .icon {
+        fill: color(brightness-100);
+        width: 16px;
+        height: 16px;
+        margin: -3px 6px 0 4px;
+    }
+}
+
+.campaign__button--rounded {
+    border-radius: 100em;
+}
+.campaign__button--large {
+    height: 2.25em;
+}
+
+.campaign__button {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border: 0;
+    margin: 0 0 0 10px;
+
+    svg:not(:root) {
+        overflow: hidden;
+    }
+}
+
+.garnett--pillar-news .campaign--snippet__handle:focus {
+    background-color: color(news-kicker);
+}
+
+.speech-bubble {
+    position: relative;
+
+    &::after {
+        content: "";
+        width: 20px;
+        height: 22px;
+        border-radius: 0 0 18px;
+        position: absolute;
+        bottom: -12px;
+        left: 10px;
+    }
+}
+
+/* FORM */
+
+.campaign--snippet form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+
+    [type="radio"],
+    [type="checkbox"] {
+        margin-left: 0;
+    }
+}
+
+.campaign--snippet .form_input {
+    &:not(:first-child) {
+        margin: 0 0 20px;
+    }
+    &.form_input--radio .form_field,
+    &.form_input--checkbox .form_field {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        label {
+            -webkit-box-flex: initial;
+            -ms-flex: initial;
+            flex: initial;
+        }
+        input {
+            -webkit-box-flex: initial;
+            -ms-flex: initial;
+            flex: initial;
+            margin: 2px 4px 0 13px;
+            min-width: 16px;
+        }
+    }
+
+    textarea {
+        max-width: 100%;
+        min-height: 80px;
+    }
+
+    .form_option_container {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        padding-right: 10px;
+
+        label {
+            -webkit-box-flex: initial;
+            -ms-flex: initial;
+            flex: initial;
+            margin: 2px 0 0 4px;
+            font-size: 14px;
+            line-height: 18px;
+            font-weight: 400;
+            font-family: $guardian-sans;
+        }
+    }
+}
+
+.form_field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    label {
+        font-weight: 700;
+    }
+}
+
+.campaign--snippet .form_field {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+
+    input {
+        -ms-flex-item-align: stretch;
+        -ms-grid-row-align: stretch;
+        align-self: stretch;
+        padding: 10px 0 10px 4px;
+    }
+
+    input,
+    select,
+    textarea {
+        border: 1px solid #707070;
+        font-family: $guardian-sans;
+        font-size: 14px;
+        line-height: 20px;
+        margin: 0 10px;
+    }
+
+    .form_field_label {
+        margin: 1px 0 6px 3px;
+        padding: 0 10px;
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 700;
+        font-family: $guardian-sans;
+
+        span {
+            font-weight: 200;
+            margin-right: 10px;
+        }
+    }
+}
+.form_footer {
+    display: flex;
+    justify-content: center;
+}
+
+.campaign--snippet .form_footer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    // border-top: 1px color(brightness-86) solid;
+    padding-right: 12px;
+    display: flex;
+    justify-content: center;
+
+    .form_submit {
+        -webkit-box-flex: 1;
+        -ms-flex: auto;
+        flex: auto;
+        padding: 4px 0 40px 10px;
+        .button {
+            padding: 6px 16px;
+            border: 0;
+        }
+    }
+
+    .t_and_c {
+        -webkit-box-flex: 1;
+        -ms-flex: auto;
+        flex: auto;
+        text-align: right;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        font-family: $guardian-sans;
+        font-size: 12px;
+
+        a {
+            -webkit-box-flex: 1;
+            -ms-flex: auto;
+            flex: auto;
+            color: color(brightness-7);
+            margin: 8px 0 0;
+            background-image: none !important;
+        }
+    }
+}
+
+.form_field_description {
+    color: #707070;
+}
+
+input[type="file"]::file-selector-button {
+    margin-top: 10px;
+    background-color: white;
+    border: black 1px solid;
+    font-family: $guardian-sans;
+    font-weight: 700;
+    color: black;
+}
+
+.containerStyling {
+    display: block;
+    position: relative;
+}
+
+.detailStyling {
+    margin: 16px 0 36px;
+    background: #f6f6f6;
+    color: black;
+    padding: 0 5px 6px;
+    border-image: repeating-linear-gradient(
+            to bottom,
+            #dcdcdc,
+            #dcdcdc 1px,
+            transparent 1px,
+            transparent 4px
+        )
+        13;
+    border-top: 13px solid black;
+    position: relative;
+}
+
+summary {
+    list-style: none;
+    margin: 0 0 16px;
+}
+summary::-webkit-details-marker {
+    display: none;
+}
+summary:focus {
+    outline: none;
+}
+
+.showLess,
+.showMore {
+    align-items: center;
+}
+
+.showLess,
+details[open] > summary .showMore {
+    display: none;
+}
+
+.showMore,
+details[open] > summary .showLess {
+    display: flex;
+    align-items: start;
+    padding-top: 4px;
+}
+.titleStyling {
+    font-weight: "medium";
+    margin: 0;
+    line-height: 22px;
+}
+
+.plusStyling {
+
+    margin-top: 4px;
+    svg {
+        margin-right: 12px;
+        fill: white;
+    }
+}
+
+.minusStyling {
+    margin-right: 14px;
+    margin-bottom: 6px;
+    width: 30px;
+    fill: white;
+    height: 25px;
+    padding-left: 4px;
+}
+
+.atomTitleStyling {
+    display: block;
+    font-weight: 700;
+    color: #0077b6;
+}
+
+.showHideStyling {
+    font-family: $guardian-sans;
+    font-weight: 700;
+    background: black;
+    color: white;
+    height: 33px;
+    position: absolute;
+    bottom: 0;
+    transform: translate(0, 50%);
+    padding: 0 18px;
+    border-radius: 100em;
+    cursor: pointer;
+    border: 0;
+    margin: 0;
+}
+
+.bodyArea {
+    height: auto;
+    margin-bottom: 36px;
+}
+
+.shareContainer {
+    margin: 12px 0px;
+    display: flex;
+    flex-direction: row;
+}
+.shareIcon {
+    border: 1px #0077b6 solid;
+    height: 32px;
+    width: 32px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    flex-shrink: 0;
+
+    svg {
+        height: 16px;
+        width: 16px;
+        fill: #0077b6;
+    }
+}
+
+.tab,
+.message {
+    padding: 0px 8px;
+}
+
+.tabContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    padding: 0px 8px;
+    position: relative;
+}
+
+.tabContainer::before {
+    content: "";
+    display: block;
+    width: 14px;
+    height: 1px;
+    background-color: #999999;
+    bottom: 0;
+    position: absolute;
+    left: -5px;
+}
+.tabContainer::after {
+    content: "";
+    display: block;
+    width: 14px;
+    height: 1px;
+    background-color: #999999;
+    bottom: 0;
+    position: absolute;
+    right: -5px;
+}
+
+.tabButton {
+    width: 100%;
+    height: 65px;
+    padding: 12px 0px;
+    gap: 10px;
+    background: #f6f6f6;
+    border-left: 1px solid #999999;
+    border-top: 1px solid #999999;
+    border-right: 1px solid #999999;
+    font-family: $guardian-sans;
+    font-weight: 700;
+}
+
+.tabButtonLeft {
+    border-radius: 8px 0px 0px 0px;
+    border-bottom-width: 0px;
+}
+
+.tabButtonRight {
+    border-radius: 0px 8px 0px 0px;
+    border-bottom: 1px solid #999999;
+}
+
+.message {
+    height: auto;
+    display: flex;
+}
+.socialMessageButton {
+    all: unset;
+    cursor: pointer;
+    margin: 6px 0px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    width: 280px;
+    height: 44px;
+    background: #052962;
+    border: 1px solid #052962;
+    border-radius: 30px;
+    color: white;
+    font-family: $guardian-sans;
+    font-weight: 700;
+    font-size: 17px;
+    svg {
+        margin-right: 8px;
+    }
+}
+
+.messageTabBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.termsAndConditionsStyles {
+    margin-bottom: 16px;
+}
+
+.contact-URL {
+    @include text-underline(color(brand500), color(brand400));
+}
