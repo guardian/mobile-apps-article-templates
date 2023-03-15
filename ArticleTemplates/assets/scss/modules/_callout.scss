@@ -1,25 +1,26 @@
-.campaign--snippet {
+.callout--container {
+    display: block;
     position: relative;
-    padding: 12px;
-    margin: 16px -10px 36px;
+}
 
-    &:not([open]) .is-on,
-    &[open] .is-off {
-        display: none;
-    }
+.callout--details {
+    margin: 16px 0 36px;
+    background: #f6f6f6;
+    color: black;
+    padding: 0 5px 6px;
+    border-image: repeating-linear-gradient(
+            to bottom,
+            #dcdcdc,
+            #dcdcdc 1px,
+            transparent 1px,
+            transparent 4px
+        )
+        13;
+    border-top: 13px solid black;
+    position: relative;
+}
 
-    &[open] {
-        background: color(brightness-93);
-    }
-
-    p {
-        font-size: 14px;
-        line-height: 18px;
-        font-family: $guardian-sans;
-        font-weight: 400;
-        padding-top: 2px;
-    }
-
+.callout--snippet {
     &.campaign--success form {
         color: color(brightness-7);
         padding: 8px 0px 10px 10px;
@@ -56,157 +57,6 @@ p.campaign__info {
         :active {
             background-color: darken(color(news-kicker), 5%);
         }
-
-        .garnett--pillar-news & {
-            &:hover,
-            &:active {
-                background-color: darken(color(news-kicker), 5%);
-            }
-        }
-
-        .garnett--pillar-sport & {
-            &:hover,
-            &:active {
-                background-color: darken(color(sport-feature-headline), 5%);
-            }
-        }
-
-        .garnett--pillar-opinion & {
-            &:hover,
-            &:active {
-                background-color: darken(color(opinion-feature-headline), 5%);
-            }
-        }
-
-        .garnett--pillar-arts & {
-            &:hover,
-            &:active {
-                background-color: darken(color(arts-feature-headline), 5%);
-            }
-        }
-
-        .garnett--pillar-lifestyle & {
-            &:hover,
-            &:active {
-                background-color: darken(color(lifestyle-kicker), 5%);
-            }
-        }
-    }
-
-    &:disabled {
-        .garnett--pillar-news & {
-            background-color: lighten(color(news-kicker), 5%);
-        }
-
-        .garnett--pillar-sport & {
-            background-color: lighten(color(sport-feature-headline), 5%);
-        }
-
-        .garnett--pillar-opinion & {
-            background-color: lighten(color(opinion-feature-headline), 5%);
-        }
-
-        .garnett--pillar-arts & {
-            background-color: lighten(color(arts-feature-headline), 5%);
-        }
-
-        .garnett--pillar-lifestyle & {
-            background-color: lighten(color(lifestyle-kicker), 5%);
-        }
-    }
-
-    .garnett--pillar-news & {
-        color: color(brightness-100);
-        background-color: color(news-kicker);
-    }
-
-    .garnett--pillar-sport & {
-        color: color(brightness-100);
-        background-color: color(sport-feature-headline);
-    }
-
-    .garnett--pillar-opinion & {
-        color: color(brightness-100);
-        background-color: color(opinion-feature-headline);
-    }
-
-    .garnett--pillar-arts & {
-        color: color(brightness-100);
-        background-color: color(arts-feature-headline);
-    }
-
-    .garnett--pillar-lifestyle & {
-        color: color(brightness-100);
-        background-color: color(lifestyle-kicker);
-    }
-}
-
-.campaign--snippet__handle {
-    color: color(brightness-100);
-    background-color: color(brightness-7);
-
-    &:hover,
-    :active {
-        color: color(brightness-7);
-        .icon {
-            fill: color(brightness-7);
-        }
-    }
-
-    .garnett--pillar-news & {
-        &:hover,
-        :active {
-            color: color(brightness-100);
-            background-color: color(news-kicker);
-            .icon {
-                fill: color(brightness-100);
-            }
-        }
-    }
-
-    .garnett--pillar-sport & {
-        &:hover,
-        :active {
-            color: color(brightness-100);
-            background-color: color(sport-feature-headline);
-            .icon {
-                fill: color(brightness-100);
-            }
-        }
-    }
-
-    .garnett--pillar-opinion & {
-        &:hover,
-        :active {
-            color: color(brightness-100);
-            background-color: color(opinion-feature-headline);
-            .icon {
-                fill: color(brightness-100);
-            }
-        }
-    }
-
-    .garnett--pillar-arts & {
-        &:hover,
-        :active {
-            color: color(brightness-100);
-            background-color: color(arts-feature-headline);
-
-            .icon {
-                fill: color(brightness-100);
-            }
-        }
-    }
-
-    .garnett--pillar-lifestyle & {
-        &:hover,
-        :active {
-            color: color(brightness-100);
-            background-color: color(lifestyle-kicker);
-            .icon {
-                fill: color(brightness-100);
-            }
-        }
     }
 }
 
@@ -219,167 +69,6 @@ p.campaign__info {
 
     &::-webkit-details-marker {
         display: none;
-    }
-
-    .campaign--kicker {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-        flex-direction: row;
-
-        .heading {
-            margin-right: 10px;
-        }
-
-        > .campaign--snippet__heading-logo {
-            -webkit-box-flex: initial;
-            -ms-flex: initial;
-            flex: initial;
-            margin-right: 10px;
-
-            .speech-bubble {
-                color: color(brightness-7);
-                background-color: color(tone-highlight);
-                padding: 6px 10px 10px;
-                line-height: 18px;
-                min-width: 84px;
-
-                &::after {
-                    color: color(brightness-7);
-                    background-color: color(tone-highlight);
-                }
-
-                .garnett--pillar-news & {
-                    color: color(brightness-100);
-                    background-color: color(news-kicker);
-                    &::after {
-                        color: color(brightness-100);
-                        background-color: color(news-kicker);
-                    }
-                }
-
-                .garnett--pillar-sport & {
-                    color: color(brightness-100);
-                    background-color: color(sport-feature-headline);
-                    &::after {
-                        color: color(brightness-100);
-                        background-color: color(sport-feature-headline);
-                    }
-                }
-
-                .garnett--pillar-opinion & {
-                    color: color(brightness-100);
-                    background-color: color(opinion-feature-headline);
-                    &::after {
-                        background-color: color(opinion-feature-headline);
-                    }
-                }
-
-                .garnett--pillar-arts & {
-                    color: color(brightness-100);
-                    background-color: color(arts-feature-headline);
-                    &::after {
-                        background-color: color(arts-feature-headline);
-                    }
-                }
-
-                .garnett--pillar-lifestyle & {
-                    color: color(brightness-100);
-                    background-color: color(lifestyle-kicker);
-                    &::after {
-                        background-color: color(lifestyle-kicker);
-                    }
-                }
-            }
-        }
-    }
-}
-
-.campaign--snippet__header {
-    margin: 0 0 6px;
-}
-
-.campaign--snippet__headline {
-    font-size: 18px;
-    line-height: 22px;
-    font-family: $guardian-sans;
-    font-weight: 500;
-    padding-top: 1px;
-}
-
-.campaign--snippet__heading-logo {
-    font-size: 18px;
-    font-family: $guardian-sans;
-    font-weight: 500;
-}
-
-.campaign--snippet__handle {
-    font-family: $guardian-sans;
-    font-size: 13px;
-    font-weight: bold;
-    position: absolute;
-    bottom: 0;
-    -webkit-transform: translate(0, 50%);
-    -ms-transform: translate(0, 50%);
-    transform: translate(0, 50%);
-    padding: 3px 15px 0 6px;
-    margin-left: 5px;
-    span {
-        display: -webkit-inline-box;
-        display: -ms-inline-flexbox;
-        display: inline-flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-    }
-    .icon {
-        fill: color(brightness-100);
-        width: 16px;
-        height: 16px;
-        margin: -3px 6px 0 4px;
-    }
-}
-
-.campaign__button--rounded {
-    border-radius: 100em;
-}
-.campaign__button--large {
-    height: 2.25em;
-}
-
-.campaign__button {
-    display: -webkit-inline-box;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    border: 0;
-    margin: 0 0 0 10px;
-
-    svg:not(:root) {
-        overflow: hidden;
-    }
-}
-
-.garnett--pillar-news .campaign--snippet__handle:focus {
-    background-color: color(news-kicker);
-}
-
-.speech-bubble {
-    position: relative;
-
-    &::after {
-        content: "";
-        width: 20px;
-        height: 22px;
-        border-radius: 0 0 18px;
-        position: absolute;
-        bottom: -12px;
-        left: 10px;
     }
 }
 
@@ -513,7 +202,6 @@ p.campaign__info {
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
     flex-direction: row;
-    // border-top: 1px color(brightness-86) solid;
     padding-right: 12px;
     display: flex;
     justify-content: center;
@@ -526,27 +214,6 @@ p.campaign__info {
         .button {
             padding: 6px 16px;
             border: 0;
-        }
-    }
-
-    .t_and_c {
-        -webkit-box-flex: 1;
-        -ms-flex: auto;
-        flex: auto;
-        text-align: right;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        font-family: $guardian-sans;
-        font-size: 12px;
-
-        a {
-            -webkit-box-flex: 1;
-            -ms-flex: auto;
-            flex: auto;
-            color: color(brightness-7);
-            margin: 8px 0 0;
-            background-image: none !important;
         }
     }
 }
@@ -562,28 +229,6 @@ input[type="file"]::file-selector-button {
     font-family: $guardian-sans;
     font-weight: 700;
     color: black;
-}
-
-.containerStyling {
-    display: block;
-    position: relative;
-}
-
-.detailStyling {
-    margin: 16px 0 36px;
-    background: #f6f6f6;
-    color: black;
-    padding: 0 5px 6px;
-    border-image: repeating-linear-gradient(
-            to bottom,
-            #dcdcdc,
-            #dcdcdc 1px,
-            transparent 1px,
-            transparent 4px
-        )
-        13;
-    border-top: 13px solid black;
-    position: relative;
 }
 
 summary {
