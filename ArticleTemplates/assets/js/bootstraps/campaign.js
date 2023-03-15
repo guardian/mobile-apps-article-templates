@@ -67,7 +67,7 @@ function initCampaign(campaign) {
                 promises.push(filePromise);
                 keys.push(e.name);
                 o[e.name] = filePromise;
-            } else if (e.type === 'hidden') {
+            } else if (e.type === 'hidden' & e.name !== "formId") {
                 o[e.name] = pageId;
             } else if (e.value) {
                 o[e.name] = e.value;
