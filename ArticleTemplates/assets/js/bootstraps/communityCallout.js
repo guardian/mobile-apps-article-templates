@@ -1,7 +1,8 @@
+import { initCampaign } from "./campaign";
+
 function init() {
     let i;
     var tabs = document.getElementsByClassName("tabButton");
-
     if (tabs) {
         for (i = 0; i < tabs.length; i++) {
             tabs[i].addEventListener(
@@ -13,6 +14,11 @@ function init() {
     document
         .querySelector(".share-link")
         .addEventListener("click", onShare.bind(null));
+
+    var callout = document.querySelector(".callout--container");
+    if (callout) {
+        initCampaign(callout);
+    }
 }
 
 function handleTabClick(tab, evt) {
