@@ -2,7 +2,7 @@ import { initCampaign } from "./campaign";
 
 function init() {
     let i;
-    var tabs = document.getElementsByClassName("tabButton");
+    var tabs = document.getElementsByClassName("tab__button");
     if (tabs) {
         for (i = 0; i < tabs.length; i++) {
             tabs[i].addEventListener(
@@ -22,10 +22,10 @@ function init() {
 }
 
 function handleTabClick(tab, evt) {
-    const messageUs = document.querySelector(".messageTabBody");
-    const form = document.querySelector(".formTabBody");
-    const formTab = document.querySelector(".tabButtonTell");
-    const messageTab = document.querySelector(".tabButtonMessage");
+    const messageUs = document.querySelector(".message__body");
+    const form = document.querySelector(".form__body");
+    const formTab = document.querySelector(".tab__button--form");
+    const messageTab = document.querySelector(".tab__button--message");
 
     messageUs.style.display = "flex";
     if (evt.target.id === "messageTab") {
@@ -69,7 +69,7 @@ function handleTabClick(tab, evt) {
 const onShare = async () => {
     const url = window.location.href;
     console.log("url", url);
-    const title = document.querySelector(".titleStyling").innerHTML;
+    const title = document.querySelector(".calllout--snippet_title").innerHTML;
     const formId = document.querySelector(".formId").value;
 
     if ("share" in navigator) {

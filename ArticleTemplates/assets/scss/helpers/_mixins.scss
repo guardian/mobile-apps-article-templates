@@ -109,7 +109,7 @@ $meta-lead: 2.2rem;
 
 // Link Underline Style
 @mixin text-underline($color, $color-accent, $bottom-space: .15em) {
-    a:not(.video-URL, .social-URL) {
+    a:not(.video-URL, .contact-URL, .social-URL) {
         color: $color;
         text-decoration: none;
         padding-bottom: $bottom-space;
@@ -127,8 +127,8 @@ $meta-lead: 2.2rem;
         }
     }
 
-    a:not(.video-URL, .social-URL) a:active,
-    a:not(.video-URL, .social-URL):hover {
+    a:not(.video-URL, .contact-URL, .social-URL) a:active,
+    a:not(.video-URL, .contact-URL, .social-URL):hover {
         color: $color-accent;
         background-image: linear-gradient(to bottom, darken($color-accent, 6%) 0%, darken($color-accent, 6%) 100%);
     }

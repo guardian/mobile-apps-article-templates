@@ -69,8 +69,8 @@ function initCampaign(campaign) {
             } else if (e.value) {
                 o[e.name] = e.value;
             }
-            
-            return o;    
+
+            return o;
         }, {});
 
         Promise.all(promises).then(results => {
@@ -156,4 +156,4 @@ function enableButton(form) {
     button.textContent = 'Share with the Guardian';
 }
 
-export { init };
+export { init, initCampaign };
