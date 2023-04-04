@@ -5,7 +5,7 @@ import { POST } from 'modules/http';
 import { scrollToElement } from 'modules/util';
 
 const endpoint = GU.opts.campaignsUrl;
-
+const confirmationHtml = '<div class="success__container"><div class="success__icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32ZM13.1636 19.435L9.53052 15.9642L8.25228 17.2425L12.5856 23.3091H13.3114L25.2403 10.9631L23.9273 9.68294L13.1636 19.435Z" fill="#22874D" /></svg></div><div class="success__header">Thank you!</div><div class="success__body">Your story has been submitted successfully. One of our journalists will be in touch if we wish to take your submission further.</div></div>';
 function init() {
     var campaign = document.querySelector('.campaign--snippet');
     if (campaign) {
@@ -77,7 +77,6 @@ function initCampaign(campaign) {
             results.map((result, index) => {
                 data[keys[index]] = result;
             })
-
             submit(data, campaign, form);
         }).catch(() => {
             displayFileError(campaign, form);
@@ -103,8 +102,7 @@ function hideOfflineMessage(campaign) {
 }
 
 function displayConfirmation(campaign, form) {
-    form.innerHTML = '<p>Thank you for your contribution</p>';
-    campaign.className += ' campaign--success';
+    form.innerHTML = confirmationHtml
     scrollToElement(campaign);
     resetAndCheckForVideos();
     initPositionPoller();
