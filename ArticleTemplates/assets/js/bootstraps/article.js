@@ -5,7 +5,6 @@ import { init as immersiveInit } from 'modules/immersive';
 import { init as numberedListInit } from 'modules/numberedList';
 import { init as creativeInjectorInit } from 'modules/creativeInjector';
 import { init as messengerInit } from 'modules/messenger';
-import { init as premiumTasterInit } from 'modules/premiumTaster';
 import resizeInit from 'modules/messenger/resize';
 
 function richLinkTracking() {
@@ -40,7 +39,6 @@ function init() {
     creativeInjectorInit();
     messengerInit([resizeInit]);
     richLinkTracking();
-    premiumTasterInit();
 }
 
 export { init };
