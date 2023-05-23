@@ -128,7 +128,7 @@
                 display: flex;
                 align-items: flex-start;
             }
-            
+
             .article__series-copy > a > span {
                 font-size: 16px;
                 display: block;
@@ -288,6 +288,23 @@
             margin-left: 240px;
             width: 620px;
         }
+    }
+
+    .immersive__caption {
+        color: color(brightness-46);
+        font: 1.8rem/1.4rem $guardian-sans;
+        padding: base-px(0, 1, 1, 1);
+
+        @include mq($from: col4) {
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: 240px;
+            width: 620px;
+        }
+    }
+
+    .immersive-caption--hidden {
+        display: none;
     }
 
     .section__rule {
