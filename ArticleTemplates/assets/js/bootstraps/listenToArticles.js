@@ -3,10 +3,7 @@ import {
 } from '../modules/util';
 
 function init() {
-    window.listenToArticleSetup = listenToArticleSetup
-}
-
-function listenToArticleSetup() {
+    window.listenToArticleSetup = listenToArticleSetup;
     const placeholder = document.createElement('div');
     const listenToArticleSibling = document.querySelector('.standfirst');
 
@@ -22,9 +19,13 @@ function listenToArticleSetup() {
     placeholder.appendChild(node);
     placeholder.classList.add('transparent-box');
     listenToArticleSibling.parentNode.insertBefore(placeholder, listenToArticleSibling.nextSibling);
-    signalDevice('listenToArticle/listenToArticleSeen');
+    // signalDevice('listenToArticle/listenToArticleSeen');
 
     // setupButton();
+}
+
+function listenToArticleSetup() {
+
 }
 
 // function isListenToArticleInView(listenToArticle) {
