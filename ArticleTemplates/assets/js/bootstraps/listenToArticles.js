@@ -3,14 +3,14 @@ import {
 } from '../modules/util';
 
 function init() {
-    window.listenToArticleSetup = listenToArticleSetup;
+    // window.listenToArticleSetup = listenToArticleSetup;
     const placeholder = document.createElement('div');
     const listenToArticleSibling = document.querySelector('.standfirst');
 
-    if (!(listenToArticleSibling && listenToArticleSibling.parentNode)) {
-        // Not enough paragraphs on page to add adFree taster
-        return;
-    }
+    // if (!(listenToArticleSibling && listenToArticleSibling.parentNode)) {
+    //     // Not enough paragraphs on page to add adFree taster
+    //     return;
+    // }
 
     const node = document.createElement('div');
     node.textContent = 'my div';
@@ -24,9 +24,9 @@ function init() {
     // setupButton();
 }
 
-function listenToArticleSetup() {
+// function listenToArticleSetup() {
 
-}
+// }
 
 // function isListenToArticleInView(listenToArticle) {
 //     if (isElementPartiallyInViewport(listenToArticle)) {

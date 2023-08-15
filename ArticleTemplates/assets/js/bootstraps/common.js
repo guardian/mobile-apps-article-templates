@@ -51,6 +51,7 @@ function init(liveBlog = false) {
     setupForms();
     darkModeSetup();
     ophanIframeInit();
+    setupListenToArticle();
 
     if (!document.body.classList.contains('no-ready')) {
         if (!liveBlog) {
@@ -58,6 +59,33 @@ function init(liveBlog = false) {
         }
     }
 }
+
+function setupListenToArticle() {
+    // Called by native code
+    window.listenToArticle = listenToArticle;
+}
+
+function listenToArticle() {
+    // window.listenToArticleSetup = listenToArticleSetup;
+    const placeholder = document.createElement('div');
+    const listenToArticleSibling = document.querySelector('.standfirst');
+
+    // if (!(listenToArticleSibling && listenToArticleSibling.parentNode)) {
+    //     // Not enough paragraphs on page to add adFree taster
+    //     return;
+    // }
+
+    const node = document.createElement('div');
+    // node.className = 'transparent-box';
+
+    placeholder.appendChild(node);
+    placeholder.classList.add('transparent-box', 'listen-to-article');
+    listenToArticleSibling.parentNode.insertBefore(placeholder, listenToArticleSibling.nextSibling);
+    // signalDevice('listenToArticle/listenToArticleSeen');
+
+    // setupButton();
+}
+
 
 function darkModeSetup() {
     if (isDarkMode()) {
