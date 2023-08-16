@@ -51,7 +51,7 @@ function init(liveBlog = false) {
     setupForms();
     darkModeSetup();
     ophanIframeInit();
-    setupListenToArticle();
+    setupArticlePlayback();
 
     if (!document.body.classList.contains('no-ready')) {
         if (!liveBlog) {
@@ -60,32 +60,34 @@ function init(liveBlog = false) {
     }
 }
 
-function setupListenToArticle() {
+function setupArticlePlayback() {
     // Called by native code
-    window.listenToArticle = listenToArticle;
+    window.setupArticlePlayback = addPlaceholderToArticle;
 }
 
-function listenToArticle() {
-    // window.listenToArticleSetup = listenToArticleSetup;
+function addPlaceholderToArticle() {
     const placeholder = document.createElement('div');
+    // we put the audio player just below the standfirst
     const listenToArticleSibling = document.querySelector('.standfirst');
-
-    // if (!(listenToArticleSibling && listenToArticleSibling.parentNode)) {
-    //     // Not enough paragraphs on page to add adFree taster
-    //     return;
-    // }
-
     const node = document.createElement('div');
-    // node.className = 'transparent-box';
-
     placeholder.appendChild(node);
     placeholder.classList.add('transparent-box', 'listen-to-article');
     listenToArticleSibling.parentNode.insertBefore(placeholder, listenToArticleSibling.nextSibling);
-    // signalDevice('listenToArticle/listenToArticleSeen');
-
-    // setupButton();
+    sendPlayerPositionToNative()
 }
 
+function sendPlayerPositionToNative() {
+    const elem = document.querySelector('.listen-to-article');
+    // get the position of the article player
+    const sdkReport = JSON.stringify(getElementOffset(elem));
+    signalDevice(`articlePlayerPosition/${sdkReport}`);
+}
+
+
+function buildSdkReport(elem) {
+    const posProps = ;
+
+}
 
 function darkModeSetup() {
     if (isDarkMode()) {
