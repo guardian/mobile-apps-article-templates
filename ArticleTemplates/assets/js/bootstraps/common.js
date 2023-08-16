@@ -83,12 +83,6 @@ function sendPlayerPositionToNative() {
     signalDevice(`articlePlayerPosition/${sdkReport}`);
 }
 
-
-function buildSdkReport(elem) {
-    const posProps = ;
-
-}
-
 function darkModeSetup() {
     if (isDarkMode()) {
         document.getElementsByTagName('html')[0].style.background = "transparent";
