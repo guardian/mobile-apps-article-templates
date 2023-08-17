@@ -34,6 +34,7 @@ $ npm install
     "@guardian/mobile-apps-article-templates": "file:../mobile-apps-article-templates"
 }
 ```
+* You will then need to run `npm install` in the `ios-live` directory that contains the `package.json` in the repo.
 
 ### Running on Android simulator
 * Checkout the branch you are developing against
@@ -45,6 +46,7 @@ $ npm install
     "@guardian/mobile-apps-article-templates": "../../mobile-apps-article-templates"
 }
 ```
+* You will then need to run `npm install` in the `android-news-app/android-news-app` directory that contains the `package.json` in the repo.
 
 ### Building from S3 (iOS or Android)
 * Find the branch you want to test on [teamCity](https://teamcity.gutools.co.uk/viewType.html?buildTypeId=Apps_Templates_TemplatesS3v2)
