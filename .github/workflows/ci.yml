@@ -1,0 +1,53 @@
+name: Build mobile-apps-article-templates
+
+on:
+    pull_request:
+        branches:
+            - master
+    push:
+        branches:
+            - master
+    workflow_dispatch:
+        inputs:
+            manual_trigger:
+                description: "Manually trigger the workflow"
+                required: false
+
+jobs:
+    CI:
+        if: github.actor != 'dependabot[bot]'
+        permissions:
+            id-token: write
+            contents: read
+        name: mobile-apps-article-templates build
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Setup Node
+              uses: actions/setup-node@v3
+              with:
+                  node-version-file: "./.nvmrc"
+                  cache: "npm"
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Build and test
+              run: |
+                  npm run build
+                  npm run test
+
+            - name: Set up npm auth token
+              run: echo "//registry.npmjs.org/:_authToken=\${NODE_TOKEN}" >> ~/.npmrc
+
+            - name: Bump version and publish
+              run: |
+                  OFFSET=858
+                  PATCH_VERSION=$((OFFSET + ${{ github.run_number }}))
+
+                  npm --no-git-tag-version version 1.0.${PATCH_VERSION}
+                  npm publish --access public
+              env:
+                  NODE_TOKEN: ${{ secrets.NPM_TOKEN }}
