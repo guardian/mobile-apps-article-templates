@@ -52,11 +52,10 @@ jobs:
                   NODE_TOKEN: ${{ secrets.NPM_TOKEN }}
 
             - name: Bump version and publish if not Dependabot
+              if: success() && github.actor != 'dependabot[bot]'
               run: |
-                  if [[ ${{ github.actor }} != 'dependabot[bot]' ]]; then
-                      OFFSET=858
-                      PATCH_VERSION=$((OFFSET + ${{ github.run_number }}))
+                  OFFSET=858
+                  PATCH_VERSION=$((OFFSET + ${{ github.run_number }}))
 
-                      npm --no-git-tag-version version 1.0.${PATCH_VERSION}
-                      npm publish --access public
-                  fi
+                  npm --no-git-tag-version version 1.0.${PATCH_VERSION}
+                  npm publish --access public
