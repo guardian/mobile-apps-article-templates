@@ -53,6 +53,7 @@ jobs:
 
             - name: Bump version and publish
               run: |
+                  set -e
                   OFFSET=858
                   PATCH_VERSION=$((OFFSET + ${{ github.run_number }}))
 
