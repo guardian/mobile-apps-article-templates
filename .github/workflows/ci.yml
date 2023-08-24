@@ -12,6 +12,7 @@ jobs:
     build_and_test:
         name: Build and Test
         runs-on: ubuntu-latest
+        if: github.event_name == 'pull_request'
         steps:
             - name: Checkout
               uses: actions/checkout@v2
@@ -46,7 +47,7 @@ jobs:
               run: npm install
 
             - name: Set up npm auth token
-              run: echo "//registry.npmjs.org/:_authToken=\${NODE_TOKEN}" >> ~/.npmrc
+              run: echo "//registry.npmjs.org/:_authToken=$${NODE_TOKEN}" >> ~/.npmrc
               env:
                   NODE_TOKEN: ${{ secrets.NPM_TOKEN }}
 
