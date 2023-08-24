@@ -1,39 +1,25 @@
-name: Build mobile-apps-article-templates
+name: Build and Publish mobile-apps-article-templates
 
 on:
-    pull_request:
-        branches:
-            - master
     push:
         branches:
             - master
-    workflow_dispatch:
-        inputs:
-            manual_trigger:
-                description: "Manually trigger the workflow"
-                required: false
+    pull_request:
+        branches:
+            - master
 
 jobs:
-    CI:
-        if: github.actor != 'dependabot[bot]'
-        permissions:
-            id-token: write
-            contents: read
-        name: mobile-apps-article-templates build
+    build_and_test:
+        name: Build and Test
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
               uses: actions/checkout@v2
 
-            - name: Read Node version from .nvmrc
-              id: read-node-version
-              run: echo "::set-output name=node_version::$(cat .nvmrc)"
-
             - name: Setup Node
               uses: actions/setup-node@v2
               with:
-                  node-version: ${{ steps.read-node-version.outputs.node_version }}
-                  cache: "npm"
+                  node-version: 14
 
             - name: Install dependencies
               run: npm install
@@ -43,16 +29,28 @@ jobs:
                   npm run build
                   npm run test
 
-            - name: Set up npm auth token if not Dependabot
-              run: |
-                  if [[ ${{ github.actor }} != 'dependabot[bot]' ]]; then
-                      echo "//registry.npmjs.org/:_authToken=${NODE_TOKEN}" >> ~/.npmrc
-                  fi
+    publish:
+        name: Publish
+        if: github.actor != 'dependabot[bot]' && github.ref == 'refs/heads/master' && success()
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+
+            - name: Setup Node
+              uses: actions/setup-node@v2
+              with:
+                  node-version: 14
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Set up npm auth token
+              run: echo "//registry.npmjs.org/:_authToken=\${NODE_TOKEN}" >> ~/.npmrc
               env:
                   NODE_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-            - name: Bump version and publish if not Dependabot
-              if: success() && github.actor != 'dependabot[bot]'
+            - name: Bump version and publish
               run: |
                   OFFSET=858
                   PATCH_VERSION=$((OFFSET + ${{ github.run_number }}))
