@@ -59,3 +59,61 @@ jobs:
 
                   npm --no-git-tag-version version 1.0.${PATCH_VERSION}
                   npm publish --access public
+
+    bump_version:
+        name: Bump Version in Another Repository
+        needs: publish
+        runs-on: ubuntu-latest
+        env:
+            GITHUB_PAT: ${{ secrets.IOS_LIVE_PAT }}
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+
+            - name: Setup Node
+              uses: actions/setup-node@v2
+              with:
+                  node-version: 14
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Configure Git
+              run: |
+                  git config user.email "thomas.king@guardian.co.uk"
+                  git config user.name "tkgnm"
+
+            - name: Bump version and create PR
+              run: |
+                  set -e
+                  ORGANIZATION="guardian"
+                  REPOSITORY="ios-live"
+                  OFFSET=858
+                  PATCH_VERSION=$((OFFSET + ${{ github.run_number }}))
+
+                  # Create a new branch
+                  BRANCH_NAME="bump-version-${{ github.run_id }}"
+                  git checkout -b $BRANCH_NAME
+
+                  # Update the version in the package.json file
+                  sed -i 's/"version": ".*"/"version": "1.0.'${PATCH_VERSION}'"/' package.json
+
+                  # Commit and push the changes
+                  git add package.json
+                  git commit -m "Bump version to 1.0.${PATCH_VERSION}"
+                  git push origin $BRANCH_NAME
+
+                  # Create a pull request
+                  curl -X POST \
+                    -H "Authorization: token $GITHUB_PAT" \
+                    -d '{
+                      "title": "Bump version",
+                      "body": "Bump version to 1.0.'${PATCH_VERSION}'",
+                      "head": "'$BRANCH_NAME'",
+                      "base": "main"
+                    }' \
+                    "https://api.github.com/repos/$ORGANIZATION/$REPOSITORY/pulls"
+
+                  # Clean up the branch
+                  git checkout main
+                  git branch -D $BRANCH_NAME
