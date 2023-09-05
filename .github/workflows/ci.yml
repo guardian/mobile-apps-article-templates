@@ -32,7 +32,8 @@ jobs:
 
     publish:
         name: Publish
-        if: github.actor != 'dependabot[bot]' && github.ref == 'refs/heads/master' && success()
+        if: github.actor != 'dependabot[bot]'
+        needs: build_and_test
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
