@@ -68,11 +68,6 @@ jobs:
         env:
             GITHUB_PAT: ${{ secrets.IOS_LIVE_PAT }}
         steps:
-            - name: Configure Git
-              run: |
-                  git config user.email "thomas.king@guardian.co.uk"
-                  git config user.name "tkgnm"
-
             - name: Bump version and create PR
               run: |
                   set -e
@@ -85,6 +80,9 @@ jobs:
                   git clone https://github.com/$ORGANIZATION/$REPOSITORY.git target-repo
                   cd target-repo
                   BRANCH_NAME="bump-version-${{ github.run_id }}"
+
+                  git config user.email "thomas.king@guardian.co.uk"
+                  git config user.name "tkgnm"
 
                   # Update the version in the package.json file
                   sed -i 's/"version": ".*"/"version": "1.0.'${PATCH_VERSION}'"/' package.json
