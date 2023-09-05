@@ -11,7 +11,7 @@ on:
 jobs:
     bump_version:
         name: Bump Version in Another Repository
-        needs: publish
+        if: github.event_name == 'pull_request'
         runs-on: ubuntu-latest
         env:
             GITHUB_PAT: ${{ secrets.IOS_LIVE_PAT }}
