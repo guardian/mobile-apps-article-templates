@@ -46,6 +46,12 @@ jobs:
             - name: Install dependencies
               run: npm install
 
+            - name: Test
+              run: npm run test
+            
+            - name: Build
+              run: npm run build
+
             - name: Set up npm auth token
               run: echo "//registry.npmjs.org/:_authToken=${NODE_TOKEN}" >> ~/.npmrc
               env:
