@@ -74,6 +74,8 @@ function addPlaceholderToArticle() {
     placeholder.classList.add('transparent-box', 'listen-to-article');
     listenToArticleSibling.parentNode.insertBefore(placeholder, listenToArticleSibling.nextSibling);
     sendPlayerPositionToNative()
+    const elem = document.querySelector('.listen-to-article');
+    return getElementOffset(elem);
 }
 
 function sendPlayerPositionToNative() {
