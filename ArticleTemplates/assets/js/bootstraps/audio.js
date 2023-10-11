@@ -195,8 +195,10 @@ function styleCutoutContainer(duration, cutoutContainer) {
 /**
  * Hide the existing podcast controls and adjust the height they take up
  * so they can be replaced by native controls.
+ * When called returns (and sends via signalDevice) the relative position and size of the player container area
+ * By relative this means relative to the top left corner of the page, it does not change as page is scrolled.
  * @param {number} desiredHeight - Height of native player that will replace this player
- * @returns {object} elementOffset - { top, left, height, width }
+ * @returns {object} elementOffset - { top, left, height, width } (object can be null if container not found)
  */
 function hidePodcastPlayer(desiredHeight) {
     const playerContainer = document.getElementsByClassName('audio-player__container')[0];
