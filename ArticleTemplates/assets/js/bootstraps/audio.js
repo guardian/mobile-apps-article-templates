@@ -192,6 +192,30 @@ function styleCutoutContainer(duration, cutoutContainer) {
     cutoutContainer.dataset.background = 'true';
 }
 
+/**
+ * Hide the existing podcast controls and adjust the height they take up
+ * so they can be replaced by native controls.
+ * When called returns (and sends via signalDevice) the relative position and size of the player container area
+ * By relative this means relative to the top left corner of the page, it does not change as page is scrolled.
+ * @param {number} desiredHeight - Height of native player that will replace this player
+ * @returns {object} elementOffset - { top, left, height, width } (object can be null if container not found)
+ */
+function hidePodcastPlayer(desiredHeight) {
+    const playerContainer = document.getElementsByClassName('audio-player__container')[0];
+    if (playerContainer) {
+        if (desiredHeight > 0) {
+            playerContainer.style.opacity = 0;
+            playerContainer.style.height = desiredHeight + 'px';
+        } else {
+            playerContainer.style.display = 'none';
+        }
+        const offset = getElementOffset(playerContainer);
+        signalDevice(JSON.stringify(offset));
+        return offset;
+    }
+    return null;
+}
+
 function setupGlobals() {
     // Global function to handle audio, called by native code
     window.superAudioSlider = superAudioSlider;
@@ -201,6 +225,7 @@ function setupGlobals() {
     window.audioLoad = audioLoad;
     window.audioFinishLoad = audioFinishLoad;
     window.audioBackground = audioBackground;
+    window.hidePodcastPlayer = hidePodcastPlayer;
 
     window.applyNativeFunctionCall('audioBackground');
     window.applyNativeFunctionCall('superAudioSlider');
