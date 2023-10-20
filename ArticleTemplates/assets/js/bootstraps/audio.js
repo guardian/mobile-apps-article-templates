@@ -216,6 +216,19 @@ function hidePodcastPlayer(desiredHeight) {
     return null;
 }
 
+function showNewPodcastPlayer() {
+    const playerContainer = document.getElementsByClassName('audio-player__container')[0];
+    if (playerContainer) {
+        playerContainer.style.display = 'none';
+    }
+
+    const playerContainerNew = document.getElementsByClassName('audio-player__container__new')[0];
+    if (playerContainerNew) {
+        playerContainerNew.style.display = 'block';
+    }
+}
+
+
 function setupGlobals() {
     // Global function to handle audio, called by native code
     window.superAudioSlider = superAudioSlider;
@@ -226,11 +239,13 @@ function setupGlobals() {
     window.audioFinishLoad = audioFinishLoad;
     window.audioBackground = audioBackground;
     window.hidePodcastPlayer = hidePodcastPlayer;
+    window.showNewPodcastPlayer = showNewPodcastPlayer;
 
     window.applyNativeFunctionCall('audioBackground');
     window.applyNativeFunctionCall('superAudioSlider');
     window.applyNativeFunctionCall('audioPlay');
     window.applyNativeFunctionCall('audioStop');
+    // showNewPodcastPlayer();
 }
 
 function init() {

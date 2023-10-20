@@ -36,6 +36,7 @@
                     </div>
                     <h1 class="headline selectable card__title--audio"><span class="card__titletext" id="headline">__TITLE__</span></h1>
                 </div>
+
                 <div class="audio-player__container">
                     <div class="audio-player__wrapper">
                         <div class="audio-player">
@@ -47,9 +48,30 @@
                                 <span class="touchpoint__button pause" data-icon="&#xe04D;" aria-hidden="true"></span>
                                 <span class="touchpoint__label screen-readable audio-player-readable">Play</span>
                             </a>
+                            <div class="audio-player__slider">
+                                <input type="text" class="audio-player__slider__played" id="audio-scrubber" disabled/>
+                                <input type="text" class="audio-player__slider__remaining" id="audio-scrubber-left" disabled/>
+                                <div class="audio-player__slider__track track"></div>
+                                <div class="audio-player__slider__knob knob" role="slider" id="audio-slider-knob"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="audio-player__container_new">
+                    <div class="audio-player__wrapper">
+                        <div class="audio-player">
+                            <div class="audio-player__button--loading ">
+                                <div class='pulse touchpoint__button'></div>
+                            </div>
+                            <a role="button" aria-role="button" class="audio-player__button touchpoint touchpoint--primary" id="audio-play-button" href="x-gu://playaudio/__AUDIO_URI__">
+                                <span class="touchpoint__button play" data-icon="&#xe04b;" aria-hidden="true"></span>
+                                <span class="touchpoint__button pause" data-icon="&#xe04D;" aria-hidden="true"></span>
+                                <span class="touchpoint__label screen-readable audio-player-readable">Play</span>
+                            </a>
                             <div class="audio-player__info">
-                                <div class="audio-player__info__label">Listen to article</div>
-                                <div class="audio-player__info__duration">10:15</div>
+                                <div class="audio-player__info__label">Listen to this podcast</div>
+                                <!-- <div class="audio-player__info__duration">10:15</div> -->
                             </div>
                         </div>
                     </div>
