@@ -175,6 +175,26 @@
     right: 0;
 }
 
+.audio-player__info__label,
+.audio-player__info__duration {
+    @include meta;
+    color: color(brightness-100);
+    opacity: 1;
+    font-family: $guardian-sans;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.audio-player__info__label {
+    font-weight: bold;
+}
+
+.audio-player__info__duration {
+    font-weight: normal;
+}
+
 .audio-player__slider__track {
     background-color: color(brightness-60);
     height: 2px;
