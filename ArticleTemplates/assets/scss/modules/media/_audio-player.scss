@@ -36,6 +36,12 @@
     z-index: 2;
 }
 
+.audio-player__container_new .audio-player {
+    padding-left: 68px;
+    padding-bottom: 4px;
+    height: 60px;
+}
+
 @keyframes pulseOut {
     0% {
         transform: scale(0);
@@ -48,7 +54,7 @@
 }
 
 @include mq($from: col4) {
-    .audio-player__container, audio-player__container_new {
+    .audio-player__container, .audio-player__container_new {
         background-color: darken(color(brightness-20), 5%);
     }
 
@@ -123,7 +129,7 @@
             width: 100%;
             height: 100%;
             border-radius: 100%;
-            background-color: color(tone-audio-button-outer);
+            background-color: color(tone-highlight);
         }
         &:before,
         &:after {
@@ -193,6 +199,14 @@
 
 .audio-player__info__duration {
     font-weight: normal;
+}
+
+.audio-player__waveform {
+    height: 32px;
+    background-image: url('../img/audio-waveform.svg');
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: repeat-x;
 }
 
 .audio-player__slider__track {
