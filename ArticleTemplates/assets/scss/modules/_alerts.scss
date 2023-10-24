@@ -66,6 +66,13 @@
         width: 24px;
         stroke: currentColor;
         fill: none;
+        stroke-width: 1px;
+    }
+    svg.circle_full {
+        height: 24px;
+        width: 24px;
+        stroke: currentColor;
+        fill: currentColor;
     }
     svg.plus {
         position: absolute;
@@ -75,19 +82,34 @@
         width: 14px;
         fill: currentColor;
     }
+    svg.tick {
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        height: 14px;
+        width: 14px;
+        fill: white;
+    }
 
     &__label {
         font-weight: normal;
-        margin-left: 2px;
+        margin-left: 4px;
+        font-size: 15px;
+        color: color(brightness-0);
     }
-
     &__state--follow {
         display: none;
     }
-
+    .alerts__state--unfollow {
+        display: flex;
+        height: 28px;
+        align-items: center;
+    }
     &.following {
         .alerts__state--follow {
-            display: block;
+            display: flex;
+            height: 28px;
+            align-items: center;
         }
 
         .alerts__state--unfollow {
