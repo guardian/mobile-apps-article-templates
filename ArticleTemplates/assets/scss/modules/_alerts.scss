@@ -43,24 +43,6 @@
     transition: background-color .3s;
     transform: translateX(-1px);
 
-    span[data-icon] {
-        display: inline-block;
-        vertical-align: middle;
-        border-radius: 100%;
-
-        width: 24px;
-        height: 24px;
-        line-height: 20px;
-        background-color: currentColor;
-        text-align: center;
-        font-size: 15px;
-        &:before {
-            color: color(brightness-100);
-            padding-top: 1px;
-            display: block;
-        }
-    }
-
     svg.circle {
         height: 24px;
         width: 24px;
@@ -90,17 +72,41 @@
         width: 14px;
         fill: white;
     }
-
+    svg.notifications_off {
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        height: 14px;
+        width: 14px;
+    }
+    svg.notifications_off path {
+        fill: currentColor;
+    }
+    svg.notifications_on{
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        height: 14px;
+        width: 14px;
+    }
+    svg.notifications_on path {
+        fill: white;
+    }
     &__label {
         font-weight: normal;
         margin-left: 4px;
         font-size: 15px;
         color: color(brightness-0);
     }
+    .alerts__state--unfollow {
+        display: flex;
+        height: 28px;
+        align-items: center;
+    }
     &__state--follow {
         display: none;
     }
-    .alerts__state--unfollow {
+    .alerts__state--notifications-off {
         display: flex;
         height: 28px;
         align-items: center;
@@ -115,5 +121,10 @@
         .alerts__state--unfollow {
             display: none;
         }
+    }
+    .alerts__state--notifications-on {
+        display: flex;
+        height: 28px;
+        align-items: center;
     }
 }
