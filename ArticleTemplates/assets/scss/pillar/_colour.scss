@@ -8,7 +8,7 @@
 // in addition, MAPI includes pillar-toned liveblogBackground and liveblogMain
 
 
-@mixin pillar-colour($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-liveblog-background) {
+@mixin pillar-colour($p-kicker, $p-feature-headline, $p-soft, $p-inverted, $p-liveblog-background, $p-media-main) {
     .comment-count a,
     .element-pullquote blockquote {
         color: $p-kicker;
@@ -176,7 +176,7 @@
     }
 
     .audio-player__button.touchpoint--primary .touchpoint__button {
-        background-color: color(tone-audio-button-outer);
+        background-color: $p-media-main;
     }
 
     .audio-player__button.touchpoint--primary .touchpoint__button,

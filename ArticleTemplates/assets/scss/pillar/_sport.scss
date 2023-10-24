@@ -4,7 +4,8 @@
         color(sport-feature-headline),
         color(sport-soft),
         color(sport-inverted),
-        color(sport-liveblog-background)
+        color(sport-liveblog-background),
+        color(sport-media-main),
     );
 
     @include pillar-colour-dark(
@@ -85,7 +86,7 @@
             font-weight: 600;
             font-size: 1.6rem;
             line-height: 2rem;
-    
+
             p {
                 margin-bottom: 12px;
 
@@ -93,11 +94,11 @@
                     margin-bottom: 0px;
                 }
             }
-    
+
             p + ul {
                 margin-top: 12px;
             }
-    
+
             ul {
                 li {
                     padding: 3px 0px;
@@ -108,7 +109,7 @@
                         padding-bottom: 0.05em !important;
                     }
                 }
-    
+
                 li:before {
                     content: '';
                     background-color: color(brightness-60);
@@ -122,7 +123,7 @@
                     margin-top: 2px;
                 }
             }
-    
+
             .bullet {
                 margin-top: 2px;
                 display: inline-block;
@@ -145,14 +146,14 @@
                     }
                 }
             }
-    
+
             &.live-content {
                 background: color(sport-liveblog-background);
                 color: color(brightness-100);
                 ul li:before, .bullet:before {
                     background-color: #ffffff80;
                 }
-    
+
                 a {
                     color: color(sport-soft) !important;
                     border-bottom: 0.0625rem solid color(brightness-86);
