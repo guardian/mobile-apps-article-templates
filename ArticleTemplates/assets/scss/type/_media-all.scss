@@ -51,7 +51,7 @@
         }
     }
 
-    .audio-player__container {
+    .audio-player__container, .audio-player__container_new {
         .audio-player {
             background-color: transparent;
         }
@@ -61,6 +61,10 @@
         @include mq($from: col4) {
             background-color: darken(color(tone-media-background), 5%);
         }
+    }
+
+    .audio-player__container_new {
+        display: none;
     }
 
     // hide horizontal white line above video cover image
@@ -107,7 +111,8 @@
             }
         }
 
-        .audio-player__wrapper {
+        .audio-player__wrapper,
+        .audio-player__waveform {
             background-color: darken(color(brightness-20), 10%);
         }
 

@@ -216,6 +216,69 @@ function hidePodcastPlayer(desiredHeight) {
     return null;
 }
 
+function showNewAudioPlayer() {
+    const playerContainer = document.getElementsByClassName('audio-player__container')[0];
+    if (playerContainer) {
+        playerContainer.style.display = 'none';
+    }
+
+    const playerContainerNew = document.getElementsByClassName('audio-player__container_new')[0];
+    if (playerContainerNew) {
+        playerContainerNew.style.display = 'block';
+    }
+}
+
+function setAudioDuration(duration) {
+    const audioDuration = document.getElementsByClassName('audio-player__info__duration')[0];
+    if (audioDuration) {
+        audioDuration.textContent = duration;
+    }
+}
+
+function newAudioPlayerLoading() {
+    const newAudioPlayerContainer = document.getElementsByClassName('audio-player__container_new')[0];
+    if (newAudioPlayerContainer) {
+        const audioPlayer = newAudioPlayerContainer.getElementsByClassName('audio-player')[0];
+        if (audioPlayer) {
+            audioPlayer.classList.add('loading');
+        }
+    }
+}
+
+function newAudioPlayerPlaying() {
+    const newAudioPlayerContainer = document.getElementsByClassName('audio-player__container_new')[0];
+    if (newAudioPlayerContainer) {
+        const button = newAudioPlayerContainer.getElementsByClassName('audio-player__button')[0];
+        const audioPlayer = newAudioPlayerContainer.getElementsByClassName('audio-player')[0];
+        const screenReadable = newAudioPlayerContainer.getElementsByClassName('audio-player-readable')[0];
+
+        if (button && audioPlayer && screenReadable) {
+            const href = button.getAttribute('href');
+            button.setAttribute('href', href.replace(/x-gu:\/\/(playaudio|pauseaudio)\/(.*)/, 'x-gu://pauseaudio/$2'));
+            button.classList.add('pause');
+            audioPlayer.classList.remove('loading');
+            screenReadable.innerHTML = 'Pause';
+        }
+    }
+}
+
+function newAudioPlayerStopped() {
+    const newAudioPlayerContainer = document.getElementsByClassName('audio-player__container_new')[0];
+    if (newAudioPlayerContainer) {
+        const button = newAudioPlayerContainer.getElementsByClassName('audio-player__button')[0];
+        const audioPlayer = newAudioPlayerContainer.getElementsByClassName('audio-player')[0];
+        const screenReadable = newAudioPlayerContainer.getElementsByClassName('audio-player-readable')[0];
+
+        if (button && audioPlayer && screenReadable) {
+            const href = button.getAttribute('href');
+            button.setAttribute('href', href.replace(/x-gu:\/\/(playaudio|pauseaudio)\/(.*)/, 'x-gu://playaudio/$2'));
+            button.classList.remove('pause');
+            audioPlayer.classList.remove('loading');
+            screenReadable.innerHTML = "Play";
+        }
+    }
+}
+
 function setupGlobals() {
     // Global function to handle audio, called by native code
     window.superAudioSlider = superAudioSlider;
@@ -226,6 +289,11 @@ function setupGlobals() {
     window.audioFinishLoad = audioFinishLoad;
     window.audioBackground = audioBackground;
     window.hidePodcastPlayer = hidePodcastPlayer;
+    window.showNewAudioPlayer = showNewAudioPlayer;
+    window.setAudioDuration = setAudioDuration;
+    window.newAudioPlayerLoading = newAudioPlayerLoading;
+    window.newAudioPlayerPlaying = newAudioPlayerPlaying;
+    window.newAudioPlayerStopped = newAudioPlayerStopped;
 
     window.applyNativeFunctionCall('audioBackground');
     window.applyNativeFunctionCall('superAudioSlider');
