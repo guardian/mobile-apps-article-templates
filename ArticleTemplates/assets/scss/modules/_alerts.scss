@@ -58,16 +58,11 @@
     svg {
         position: absolute;
         left: 5px;
-        top: 4px;
+        top: 6px;
         height: 15px;
         width: 14px;
         fill: currentColor;
         fill-opacity: 1;
-    }
-    .turn_off {
-        svg {
-           fill: white;
-        }
     }
     &__label {
         font-weight: normal;
@@ -77,6 +72,12 @@
     }
     &__state--follow  {
         display: none;
+    }
+
+    &__state--follow, &__state--notifications-on {
+        svg {
+           fill: white;
+        }
     }
     &__state--unfollow, &__state--notifications-off, &__state--notifications-on {
         display: flex;
