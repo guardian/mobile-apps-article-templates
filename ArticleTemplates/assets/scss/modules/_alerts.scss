@@ -43,38 +43,29 @@
     transition: background-color .3s;
     transform: translateX(-1px);
 
-    &__icon_background {
+    &__icon_background, &__icon_background_full {
         height: 24px;
         width: 24px;
         border: currentColor 1px solid;
         border-radius: 50%;
         display: inline-block;
+        background-color: none;
     }
     &__icon_background_full {
-        height: 24px;
-        width: 24px;
-        border: currentColor 1px solid;
         background-color: currentColor;
-        border-radius: 50%;
-        display: inline-block;
+        z-index: -1;
     }
-    .turn_on {
-        svg {
-            position: absolute;
-            left: 5px;
-            top: 5px;
-            height: 14px;
-            width: 14px;
-            fill: currentColor;
-        }
+    svg {
+        position: absolute;
+        left: 5px;
+        top: 4px;
+        height: 15px;
+        width: 14px;
+        fill: currentColor;
+        fill-opacity: 1;
     }
     .turn_off {
         svg {
-           position: absolute;
-           left: 5px;
-           top: 5px;
-           height: 14px;
-           width: 14px;
            fill: white;
         }
     }
@@ -84,23 +75,14 @@
         font-size: 15px;
         color: color(brightness-0);
     }
-    .alerts__state--unfollow {
-        display: flex;
-        height: 28px;
-        align-items: center;
-    }
-    &__state--follow {
+    &__state--follow  {
         display: none;
     }
-    .alerts__state--notifications-off {
+    &__state--unfollow, &__state--notifications-off, &__state--notifications-on {
         display: flex;
         height: 28px;
         align-items: center;
-    }
-    .alerts__state--notifications-on {
-        display: flex;
-        height: 28px;
-        align-items: center;
+        position: relative;
     }
     &.following {
         .alerts__state--unfollow {
@@ -110,7 +92,7 @@
             display: flex;
             height: 28px;
             align-items: center;
+            position: relative;
         }
     }
-
 }
