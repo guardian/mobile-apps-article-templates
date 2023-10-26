@@ -1,6 +1,6 @@
 @import "colours";
 
-@mixin darkModeMedia($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3) {
+@mixin darkModeMedia($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3, $media-main) {
     .audio-player__button.touchpoint--primary .touchpoint__button,
     .element-youtube .element-placeholder__button .touchpoint__button,
     .audio-player__slider__knob {
@@ -42,6 +42,15 @@
                 &:after,
                 & {
                     background-color: $ratingYellow;
+                }
+            }
+        }
+        .audio-player__container_new .audio-player__button--loading {
+            .pulse {
+                &:before,
+                &:after,
+                & {
+                    background-color: $media-main;
                 }
             }
         }
