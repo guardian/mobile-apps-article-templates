@@ -14,7 +14,7 @@
 @import "darkModeComments";
 @import "darkModeLivePromo";
 
-@mixin pillar-colour-dark($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3) {
+@mixin pillar-colour-dark($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3, $media-main) {
     @media (prefers-color-scheme: dark) {
         @include darkModeShared($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
         @include darkModeArticle($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
@@ -22,7 +22,7 @@
         @include darkModeCricket($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
         @include darkModeFootball($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
         @include darkModeOpinion($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
-        @include darkModeMedia($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeMedia($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3, $media-main);
         @include darkModeImmersive($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
         @include darkModeNumberedList($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
         @include darkModeQuiz($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
@@ -42,7 +42,7 @@
         @include darkModeCricket($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
         @include darkModeFootball($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
         @include darkModeOpinion($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
-        @include darkModeMedia($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
+        @include darkModeMedia($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3, $media-main);
         @include darkModeImmersive($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
         @include darkModeNumberedList($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
         @include darkModeQuiz($p-kicker, $p-inverted, $dark-1, $dark-2, $dark-3);
