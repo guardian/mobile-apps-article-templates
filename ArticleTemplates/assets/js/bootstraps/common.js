@@ -16,6 +16,7 @@ import { init as initAB } from 'modules/experiments/ab';
 import { initMpuPoller } from 'modules/ads';
 import { init as initHttp } from 'modules/http';
 import { init as ophanIframeInit } from 'modules/ophan-iframe';
+import { init as myGuardianFollowInit } from 'modules/myGuardianFollowButton';
 
 let trackCommentContainerView = true;
 
@@ -51,6 +52,7 @@ function init(liveBlog = false) {
     setupForms();
     darkModeSetup();
     ophanIframeInit();
+    myGuardianFollowInit();
 
     if (!document.body.classList.contains('no-ready')) {
         if (!liveBlog) {

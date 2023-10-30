@@ -31,6 +31,12 @@
 // ```
 // */
 
+#my-guardian-follow-tag {
+    display: none;
+}
+#my-guardian-follow-tag.myGuardianEnabled {
+    display: block;
+}
 .alerts {
     @include meta(.875);
     font-family: $guardian-sans;
@@ -96,7 +102,7 @@
             position: relative;
         }
     }
-    &.followingTag {    
+    &.followingTag {
         .alerts__state--unfollow-tag {
             display: none;
         }
