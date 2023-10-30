@@ -444,6 +444,8 @@ function offlineSwitch() {
 function setupAlertSwitch() {
     // Called by native code
     window.alertSwitch = alertSwitch;
+    // TODO - should this have its own init function?
+    window.followTagSwitch = followTagSwitch;
 }
 
 function alertSwitch(following, followid) {
@@ -458,6 +460,22 @@ function alertSwitch(following, followid) {
             followObject.classList.add('following');
         } else {
             followObject.classList.remove('following');
+        }
+    }
+}
+
+function followTagSwitch(following, followid) {
+    let i;
+    let followObject;
+    const followObjects = document.querySelectorAll(`[data-follow-tag-alert-id="${followid}"]`);
+
+    for (i = 0; i < followObjects.length; i++) {
+        followObject = followObjects[i];
+
+        if (parseInt(following, 10) === 1) {
+            followObject.classList.add('followingTag');
+        } else {
+            followObject.classList.remove('followingTag');
         }
     }
 }

@@ -70,7 +70,7 @@
         font-size: 15px;
         color: color(brightness-0);
     }
-    &__state--follow  {
+    &__state--follow, &__state--follow-tag {
         display: none;
     }
 
@@ -79,7 +79,7 @@
            fill: white;
         }
     }
-    &__state--unfollow, &__state--unfollow-tag, &__state--follow-tag {
+    &__state--unfollow, &__state--unfollow-tag {
         display: flex;
         height: 28px;
         align-items: center;
@@ -90,6 +90,17 @@
             display: none;
         }
         .alerts__state--follow {
+            display: flex;
+            height: 28px;
+            align-items: center;
+            position: relative;
+        }
+    }
+    &.followingTag {    
+        .alerts__state--unfollow-tag {
+            display: none;
+        }
+        .alerts__state--follow-tag {
             display: flex;
             height: 28px;
             align-items: center;
