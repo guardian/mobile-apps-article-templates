@@ -43,39 +43,59 @@
     transition: background-color .3s;
     transform: translateX(-1px);
 
-    span[data-icon] {
-        display: inline-block;
-        vertical-align: middle;
-        border-radius: 100%;
-
-        width: 24px;
+    svg {
+        position: absolute;
+        top: 6px;
+        left: 5px;
+        height: 18px;
+        width: 18px;
+    }
+    .alerts__icon {
         height: 24px;
-        line-height: 20px;
+	    width: 24px;
+	    border-radius: 50%;
+        display: inline-block;
+    }
+    .alerts__icon.following {
         background-color: currentColor;
-        text-align: center;
-        font-size: 15px;
-        &:before {
-            color: color(brightness-100);
-            padding-top: 1px;
-            display: block;
+        svg {
+            fill: white;
         }
     }
-
+    .alerts__icon.not-following {
+        background-color: none;
+        border: 1px solid currentColor;
+        svg {
+            fill: currentColor;
+        }
+    }
     &__label {
         font-weight: normal;
-        margin-left: 2px;
+        margin-left: 4px;
+        font-size: 15px;
+        color: color(brightness-0);
     }
 
-    &__state--follow-contributor {
+    .alerts__state--follow-contributor {
         display: none;
+    }
+
+    .alerts__state--unfollow-contributor {
+        display: flex;
+        height: 28px;
+        align-items: center;
+        position: relative;
     }
 
     &.following {
         .alerts__state--follow-contributor {
-            display: block;
+            display: flex;
+            height: 28px;
+            align-items: center;
+            position: relative;
         }
 
-        .alerts__state--unfollow-contributor-contributor {
+        .alerts__state--unfollow-contributor {
             display: none;
         }
     }
