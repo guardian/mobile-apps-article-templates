@@ -47,23 +47,37 @@
         display: inline-block;
         vertical-align: middle;
         border-radius: 100%;
-
         width: 24px;
         height: 24px;
         line-height: 20px;
-        background-color: currentColor;
         text-align: center;
         font-size: 15px;
         &:before {
-            color: color(brightness-100);
             padding-top: 1px;
             display: block;
         }
     }
 
+    span.following[data-icon] {
+        background-color: currentColor;
+        &:before {
+            color: color(brightness-100);
+        }
+    }
+
+    span.not-following[data-icon] {
+        border: 1px solid currentColor;
+        background-color: none;
+        &:before {
+            color: currentColor;
+        }
+    }
+
     &__label {
         font-weight: normal;
-        margin-left: 2px;
+        margin-left: 4px;
+        font-size: 15px;
+        color: color(brightness-0);
     }
 
     &__state--follow-contributor {
