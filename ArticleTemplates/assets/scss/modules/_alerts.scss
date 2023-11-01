@@ -8,22 +8,22 @@
 //
 // ```html_example
 // <a class="alerts " href="x-gu://follow/tag-contributor///profile/nicholaswatt" data-follow-alert-id="tag-contributor///profile/nicholaswatt">
-//     <span class="alerts__state--unfollow-contributor">
+//     <span class="alerts__state--unfollow-notifications">
 //         <span data-icon="" aria-hidden="true"></span>
 //         <span class="alerts__label">Follow Nicholas Watt</span>
 //     </span>
-//     <span class="alerts__state--follow-contributor">
+//     <span class="alerts__state--follow-notifications">
 //         <span data-icon="" aria-hidden="true"></span>
 //         <span class="alerts__label">Following Nicholas Watt</span>
 //     </span>
 // </a>
 //
 // <a class="alerts following" href="x-gu://follow/tag-contributor///profile/nicholaswatt" data-follow-alert-id="tag-contributor///profile/nicholaswatt">
-//     <span class="alerts__state--unfollow-contributor">
+//     <span class="alerts__state--unfollow-notifications">
 //         <span data-icon="" aria-hidden="true"></span>
 //         <span class="alerts__label">Follow Nicholas Watt</span>
 //     </span>
-//     <span class="alerts__state--follow-contributor">
+//     <span class="alerts__state--follow-notifications">
 //         <span data-icon="" aria-hidden="true"></span>
 //         <span class="alerts__label">Following Nicholas Watt</span>
 //     </span>
@@ -80,16 +80,16 @@
         color: color(brightness-0);
     }
 
-    &__state--follow-contributor {
+    &__state--follow-notifications {
         display: none;
     }
 
     &.following {
-        .alerts__state--follow-contributor {
+        .alerts__state--follow-notifications {
             display: block;
         }
 
-        .alerts__state--unfollow-contributor {
+        .alerts__state--unfollow-notifications {
             display: none;
         }
     }
