@@ -106,13 +106,17 @@
         #published-date,
         figure figcaption,
         .byline,
-        .alerts,
         .sponsorship__formatted-sponsor-name {
             color: $warmGreyFour !important;
         }
 
-        .alerts span[data-icon]:before {
-            color: $blackThree;
+        .alerts span.following[data-icon] {
+            &:before {
+                color: $blackThree;
+            }
+        }
+        .alerts__label {
+            color: $warmGreyFour;
         }
 
         .article__header ul > li:before {
