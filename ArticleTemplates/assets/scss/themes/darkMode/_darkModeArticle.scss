@@ -111,8 +111,17 @@
         }
 
         .alerts span.following[data-icon] {
+            background-color: $p-inverted;
             &:before {
                 color: $blackThree;
+            }
+        }
+
+        span.not-following[data-icon] {
+            border: 1px solid $p-inverted;
+            background-color: none;
+            &:before {
+                color: $p-inverted;
             }
         }
         .alerts__label {
