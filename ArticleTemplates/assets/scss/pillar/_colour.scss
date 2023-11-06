@@ -218,8 +218,21 @@
             }
         }
 
-        .alerts span[data-icon]:before {
-            color: $p-kicker;
+
+        .alerts {
+            span.following[data-icon] {
+                background-color: color(news-liveblog-icon);
+                &:before {
+                    color: $p-kicker;
+                }
+            }
+            span.not-following[data-icon] {
+                background-color: none;
+                border: 1px solid color(news-liveblog-icon);
+                &:before {
+                    color: color(news-liveblog-icon);
+                }
+            }
         }
 
         .article__header,
