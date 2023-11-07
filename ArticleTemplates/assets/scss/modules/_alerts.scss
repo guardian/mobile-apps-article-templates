@@ -75,12 +75,12 @@
 
     &__label {
         font-weight: normal;
-        margin-left: 4px;
+        margin-left: 2px;
         font-size: 15px;
         color: color(brightness-0);
     }
 
-    &__state--follow-notifications {
+    &__state--follow-notifications, &__state--follow-tag {
         display: none;
     }
 
@@ -90,6 +90,15 @@
         }
 
         .alerts__state--unfollow-notifications {
+            display: none;
+        }
+    }
+    &.followingTag {
+        .alerts__state--follow-tag {
+            display: block;
+        }
+
+        .alerts__state--unfollow-tag {
             display: none;
         }
     }
