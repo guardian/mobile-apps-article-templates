@@ -37,6 +37,7 @@ function init(liveBlog = false) {
     loadInteractives();
     setupOfflineSwitch();
     setupAlertSwitch();
+    setupTagFollowSwitch();
     setupFontSizing();
     setupLineHeightSizing();
     setupGetArticleHeight();
@@ -446,6 +447,26 @@ function setupAlertSwitch() {
     window.alertSwitch = alertSwitch;
 }
 
+function setupTagFollowSwitch() {
+    // TODO - put this behind a switch
+    window.followTagSwitch = followTagSwitch;
+}
+
+function followTagSwitch(following, followid) {
+    let i;
+    let followObject;
+    const followObjects = document.querySelectorAll(`[data-follow-tag-id="${followid}"]`);
+
+    for (i = 0; i < followObjects.length; i++) {
+        followObject = followObjects[i];
+
+        if (parseInt(following, 10) === 1) {
+            followObject.classList.add('followingTag');
+        } else {
+            followObject.classList.remove('followingTag');
+        }
+    }
+}
 function alertSwitch(following, followid) {
     let i;
     let followObject;
