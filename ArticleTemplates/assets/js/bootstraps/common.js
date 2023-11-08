@@ -16,6 +16,7 @@ import { init as initAB } from 'modules/experiments/ab';
 import { initMpuPoller } from 'modules/ads';
 import { init as initHttp } from 'modules/http';
 import { init as ophanIframeInit } from 'modules/ophan-iframe';
+import { init as myGuardianFollowInit } from 'modules/myGuardianFollowInit';
 
 let trackCommentContainerView = true;
 
@@ -52,6 +53,7 @@ function init(liveBlog = false) {
     setupForms();
     darkModeSetup();
     ophanIframeInit();
+    myGuardianFollowInit();
 
     if (!document.body.classList.contains('no-ready')) {
         if (!liveBlog) {
@@ -448,8 +450,9 @@ function setupAlertSwitch() {
 }
 
 function setupTagFollowSwitch() {
-    // TODO - put this behind a switch
-    window.followTagSwitch = followTagSwitch;
+    if (GU.opts.myGuardianEnabled) {
+        window.followTagSwitch = followTagSwitch;
+    }
 }
 
 function followTagSwitch(following, followid) {

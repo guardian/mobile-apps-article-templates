@@ -30,18 +30,22 @@
 // </a>
 // ```
 // */
-
 .alerts {
     @include meta(.875);
     font-family: $guardian-sans;
     white-space: nowrap;
     margin: base-px(0);
-    display: inline-block;
+    display: block;
     border-radius: 30px;
     max-width: 100%;
     color: color(brightness-7);
     transition: background-color .3s;
     transform: translateX(-1px);
+    padding-bottom: .25em;
+
+    &.my-guardian-follow-tag {
+        display: none;
+    }
 
     span[data-icon] {
         display: inline-block;
