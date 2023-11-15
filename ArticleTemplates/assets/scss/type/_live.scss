@@ -17,7 +17,26 @@
     &.is-live{
         .alerts {
             margin: base-px(.5, 1, .5, -.15);
-            border-color: rgba(color(tone-sandy-light), .5);
+            &__label {
+                font-weight: normal;
+                margin-left: 4px;
+                font-size: 15px;
+                color: color(brightness-100);
+            }
+            span.following[data-icon] {
+                background-color: color(brightness-100);
+                &:before {
+                    color: color(brightness-7);
+                }
+            }
+            span.not-following[data-icon] {
+                background-color: color(brightness-100);
+                border: 1px solid color(brightness-7);
+                &:before {
+                    color: color(brightness-7);
+                }
+            }
+
         }
 
         .pulsing-dot {

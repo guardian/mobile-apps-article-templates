@@ -8,22 +8,22 @@
 //
 // ```html_example
 // <a class="alerts " href="x-gu://follow/tag-contributor///profile/nicholaswatt" data-follow-alert-id="tag-contributor///profile/nicholaswatt">
-//     <span class="alerts__state--unfollow">
+//     <span class="alerts__state--unfollow-notifications">
 //         <span data-icon="" aria-hidden="true"></span>
 //         <span class="alerts__label">Follow Nicholas Watt</span>
 //     </span>
-//     <span class="alerts__state--follow">
+//     <span class="alerts__state--follow-notifications">
 //         <span data-icon="" aria-hidden="true"></span>
 //         <span class="alerts__label">Following Nicholas Watt</span>
 //     </span>
 // </a>
 //
 // <a class="alerts following" href="x-gu://follow/tag-contributor///profile/nicholaswatt" data-follow-alert-id="tag-contributor///profile/nicholaswatt">
-//     <span class="alerts__state--unfollow">
+//     <span class="alerts__state--unfollow-notifications">
 //         <span data-icon="" aria-hidden="true"></span>
 //         <span class="alerts__label">Follow Nicholas Watt</span>
 //     </span>
-//     <span class="alerts__state--follow">
+//     <span class="alerts__state--follow-notifications">
 //         <span data-icon="" aria-hidden="true"></span>
 //         <span class="alerts__label">Following Nicholas Watt</span>
 //     </span>
@@ -47,35 +47,49 @@
         display: inline-block;
         vertical-align: middle;
         border-radius: 100%;
-
         width: 24px;
         height: 24px;
         line-height: 20px;
-        background-color: currentColor;
         text-align: center;
         font-size: 15px;
         &:before {
-            color: color(brightness-100);
             padding-top: 1px;
             display: block;
         }
     }
 
-    &__label {
-        font-weight: normal;
-        margin-left: 2px;
+    span.following[data-icon] {
+        background-color: currentColor;
+        &:before {
+            color: color(brightness-100);
+        }
     }
 
-    &__state--follow {
+    span.not-following[data-icon] {
+        border: 1px solid currentColor;
+        background-color: none;
+        &:before {
+            color: currentColor;
+        }
+    }
+
+    &__label {
+        font-weight: normal;
+        margin-left: 4px;
+        font-size: 15px;
+        color: color(brightness-0);
+    }
+
+    &__state--follow-notifications {
         display: none;
     }
 
     &.following {
-        .alerts__state--follow {
+        .alerts__state--follow-notifications {
             display: block;
         }
 
-        .alerts__state--unfollow {
+        .alerts__state--unfollow-notifications {
             display: none;
         }
     }
