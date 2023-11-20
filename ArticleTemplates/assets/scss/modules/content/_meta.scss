@@ -53,9 +53,6 @@
         margin: base-px(0, 1, 1, 0);
     }
 
-    &__temp {
-        display: flex;
-    }
     &__misc {
         padding: base-px(0, 1, .5, 1);
 
@@ -67,6 +64,7 @@
 
         .meta__byline {
             margin-bottom: 0;
+            padding-bottom: 8px;
         }
 
         .byline {
@@ -78,6 +76,10 @@
                 font-style: normal;
             }
         }
+    }
+
+    &__alerts {
+        margin: 8px 0;
     }
 
     &__image__caption__icon,
@@ -98,8 +100,8 @@
     &__image__caption__icon,
     &__image__caption__text,
     &__published {
-        padding-top: 0;
-        padding-bottom: .25em;
+        padding-top: 8px;
+        padding-bottom: 8px;
         @include mq($from: col4) {
             padding-left: 0;
         }
