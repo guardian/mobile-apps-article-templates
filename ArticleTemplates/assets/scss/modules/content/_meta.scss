@@ -45,7 +45,6 @@
     @include meta();
     margin: 0 auto;
     width: 100%;
-    display: table;
     position: relative;
     padding-top: base-px(.5);
 
@@ -54,6 +53,7 @@
     }
 
     &__misc {
+
         padding: base-px(0, 1, .5, 1);
 
         @include mq($from: col4) {
@@ -64,7 +64,6 @@
 
         .meta__byline {
             margin-bottom: 0;
-            padding-bottom: 8px;
         }
 
         .byline {
@@ -78,10 +77,16 @@
         }
     }
 
+    &__temp {
+        display: flex;
+        justify-content: space-between;
+    }
+
     &__alerts {
         margin: 8px 0;
     }
 
+    &__author__image,
     &__image__caption__icon,
     &__image__caption__text,
     &__published,
@@ -92,7 +97,7 @@
         font-family: $guardian-sans;
 
         #comment-count {
-            display: block;
+            // display: block;
             margin-top: base-px(.5);
         }
     }
@@ -112,26 +117,24 @@
     }
 
     &__published__comments {
-        float: right;
-        text-align: right;
         font-weight: 600;
         font-size: 1.8rem;
         line-height: 1.8rem;
-        margin-left: base-px(.5);
+        // margin-left: base-px(.5);
         border-left: 1px solid color(brightness-86);
-        margin-bottom: base-px(.5);
-        margin-top: base-px(-.5);
+        // margin-bottom: base-px(.5);
+        // margin-top: base-px(-.5);
         a {
-            position: relative;
+            // position: relative;
             display: block;
             margin: base-px(0, -.5, 0, 0);
             padding: base-px(2.25, .5, 0, 1);
             min-width: 36px;
         }
         [data-icon] {
-            position: absolute;
-            top: base-px(.5);
-            right: 4px;
+            // position: absolute;
+            // top: base-px(.5);
+            // right: 4px;
         }
         .screen-readable {
             max-width: 0;
