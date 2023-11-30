@@ -77,15 +77,15 @@
         }
     }
 
-    &__temp {
-        display: flex;
-        justify-content: space-between;
+    &__grid {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
     }
 
-    &__temp2 {
-        display: flex;
-        justify-content: flex-start;
+    &__main {
+        grid-column-start: 2;
     }
+
     &__alerts {
         margin: 8px 0;
     }
@@ -101,7 +101,6 @@
         font-family: $guardian-sans;
 
         #comment-count {
-            // display: block;
             margin-top: base-px(.5);
         }
     }
