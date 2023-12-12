@@ -1,12 +1,10 @@
-name: Build and Publish mobile-apps-article-templates
+name: Test changesets
 
 on:
-    push:
-        branches:
-            - master
     pull_request:
         branches:
-            - master
+            - publish-with-changesets
+    workflow_dispatch:
 
 jobs:
     build_and_test:
@@ -32,7 +30,6 @@ jobs:
 
     publish:
         name: Publish
-        if: github.actor != 'dependabot[bot]' && github.ref == 'refs/heads/master' && success()
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
