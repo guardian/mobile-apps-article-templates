@@ -1,12 +1,14 @@
-name: Build and Publish mobile-apps-article-templates
+name: Test changesets
 
 on:
-    push:
-        branches:
-            - master
     pull_request:
-        branches:
-            - master
+        paths:
+            - .github/workflows/release.yml
+    workflow_dispatch:
+
+permissions:
+    contents: write
+    pull-requests: write
 
 jobs:
     build_and_test:
@@ -32,7 +34,6 @@ jobs:
 
     publish:
         name: Publish
-        if: github.actor != 'dependabot[bot]' && github.ref == 'refs/heads/master' && success()
         runs-on: ubuntu-latest
         permissions:
             contents: write

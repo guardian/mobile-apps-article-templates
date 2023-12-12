@@ -1,13 +1,14 @@
 {
   "name": "@guardian/mobile-apps-article-templates",
-  "version": "1.0.157",
+  "version": "1.0.936",
   "description": "Templates for articles on both iOS and Android next-gen apps",
   "main": "ArticleTemplates/",
   "scripts": {
     "test": "jest",
     "validate": "",
     "dev": "webpack --mode development --watch",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "release": "npx changeset"
   },
   "jest": {
     "moduleDirectories": [
@@ -64,6 +65,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
+    "@changesets/cli": "^2.27.1",
     "@guardian/fence": "^0.2.12",
     "classlist-polyfill": "^1.2.0",
     "curl-amd": "^0.8.12",
