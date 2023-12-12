@@ -1,10 +1,11 @@
 name: Test changesets
 
 on:
-    pull_request:
-        paths:
-            - .github/workflows/release.yml
     workflow_dispatch:
+
+permissions:
+    contents: write
+    pull-requests: write
 
 jobs:
     build_and_test:
