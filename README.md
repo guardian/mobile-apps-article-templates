@@ -73,7 +73,7 @@ This repository has changed to `changesets` to publish the package to NPM packag
 * Add the changeset file generated undder `.changeset` directory, commit and push to github
 * When your PR is merged, the github action for CI will create a release pull request ([example](https://github.com/guardian/mobile-apps-article-templates/pull/1693))
 * You can merge this release pull request if you want to publish the package to npm repository.
-* Alternatively, you may leave the release pull request open.  If other PR are merged, their change sets will just be added to this release pull requests.
+* Alternatively, you may leave the release pull request open.  If other PR are merged, their change sets will just be added to this release pull request.
 
 ## Example templates
 These are examples of the main templates used across apps:
