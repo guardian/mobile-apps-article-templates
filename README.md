@@ -69,7 +69,7 @@ NPM will provide the following services:
 
 ## Publish to npm repository
 This repository has changed to `changesets` to publish the package to NPM package.
-* In your feature branch, run `npm run release` to generate the changeset file.  For article templates, it is usually just a patch version bump.
+* In your feature branch, run `npm run release` to generate the changeset file.  We usually just bump the patch version number.
 * Add the changeset file generated undder `.changeset` directory, commit and push to github
 * When your PR is merged, the github action for CI will create a release pull request ([example](https://github.com/guardian/mobile-apps-article-templates/pull/1693))
 * You can merge this release pull request if you want to publish the package to npm repository.
