@@ -65,6 +65,15 @@ NPM will provide the following services:
 * `npm run test` runs the JS unit tests from the `test/spec/unit/` directory
 * `npm run build` builds JS/CSS assets, used on CI environment for building assets
 * `npm run dev` builds JS and CSS (with source maps).
+* `npm run release` generates a changeset file, which makes `changesets` to create a release pull request when the PR is merged
+
+## Publish to npm repository
+This repository has changed to `changesets` to publish the package to NPM package.
+* In your feature branch, run `npm run release` to generate the changeset file.  We usually just bump the patch version number.
+* Add the changeset file generated undder `.changeset` directory, commit and push to github
+* When your PR is merged, the github action for CI will create a release pull request ([example](https://github.com/guardian/mobile-apps-article-templates/pull/1693))
+* You can merge this release pull request if you want to publish the package to npm repository.
+* Alternatively, you may leave the release pull request open.  If other PR are merged, their change sets will just be added to this release pull request.
 
 ## Example templates
 These are examples of the main templates used across apps:
