@@ -8,6 +8,10 @@ on:
         branches:
             - master
 
+permissions:
+    contents: write
+    pull-requests: write
+
 jobs:
     build_and_test:
         name: Build and Test
@@ -34,6 +38,10 @@ jobs:
         name: Publish
         if: github.actor != 'dependabot[bot]' && github.ref == 'refs/heads/master' && success()
         runs-on: ubuntu-latest
+        permissions:
+            contents: write
+            id-token: write
+            pull-requests: write
         steps:
             - name: Checkout
               uses: actions/checkout@v2
@@ -48,20 +56,17 @@ jobs:
 
             - name: Test
               run: npm run test
-            
+
             - name: Build
               run: npm run build
 
-            - name: Set up npm auth token
-              run: echo "//registry.npmjs.org/:_authToken=${NODE_TOKEN}" >> ~/.npmrc
+            - name: Create Release Pull Request or Publish to npm
+              id: changesets
+              uses: changesets/action@v1
+              with:
+                  publish: npx changeset publish
+                  title: "🦋 Release package updates"
+                  commit: "Bump package version"
               env:
-                  NODE_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-            - name: Bump version and publish
-              run: |
-                  set -e
-                  OFFSET=858
-                  PATCH_VERSION=$((OFFSET + ${{ github.run_number }}))
-
-                  npm --no-git-tag-version version 1.0.${PATCH_VERSION}
-                  npm publish --access public
+                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                 NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
