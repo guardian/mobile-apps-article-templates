@@ -7,41 +7,66 @@
 // Display an alerts toggle.
 //
 // ```html_example
-// <a class="alerts " href="x-gu://follow/tag-contributor///profile/nicholaswatt" data-follow-alert-id="tag-contributor///profile/nicholaswatt">
+// <a class="alerts my-guardian-follow-tag " href="x-gu://follow-contributor-tag/tag-contributor///profile/elle-hunt" data-follow-tag-id="tag-contributor///profile/elle-hunt" style="display: block;">
+//     <span class="alerts__state--unfollow-tag">
+//         <span data-icon="" aria-hidden="true" class="not-following"></span>
+//         <span class="alerts__label">Follow Elle Hunt</span>
+//     </span>
+//     <span class="alerts__state--follow-tag">
+//         <span data-icon="" aria-hidden="true" class="following"></span>
+//         <span class="alerts__label">Following Elle Hunt</span>
+//     </span>
+// </a>
+// <a class="alerts " href="x-gu://follow/tag-contributor///profile/elle-hunt" data-follow-alert-id="tag-contributor///profile/elle-hunt">
 //     <span class="alerts__state--unfollow-notifications">
-//         <span data-icon="" aria-hidden="true"></span>
-//         <span class="alerts__label">Follow Nicholas Watt</span>
+//         <span data-icon="" aria-hidden="true" class="not-following"></span>
+//         <span class="alerts__label">Notifications off</span>
 //     </span>
 //     <span class="alerts__state--follow-notifications">
-//         <span data-icon="" aria-hidden="true"></span>
-//         <span class="alerts__label">Following Nicholas Watt</span>
+//         <span data-icon="" aria-hidden="true" class="following"></span>
+//         <span class="alerts__label">Notifications on</span>
 //     </span>
 // </a>
 //
-// <a class="alerts following" href="x-gu://follow/tag-contributor///profile/nicholaswatt" data-follow-alert-id="tag-contributor///profile/nicholaswatt">
+//
+// <a class="alerts my-guardian-follow-tag  followingTag" href="x-gu://follow-contributor-tag/tag-contributor///profile/elle-hunt" data-follow-tag-id="tag-contributor///profile/elle-hunt" style="display: block;">
+//     <span class="alerts__state--unfollow-tag">
+//         <span data-icon="" aria-hidden="true" class="not-following"></span>
+//         <span class="alerts__label">Follow Elle Hunt</span>
+//     </span>
+//     <span class="alerts__state--follow-tag">
+//         <span data-icon="" aria-hidden="true" class="following"></span>
+//         <span class="alerts__label">Following Elle Hunt</span>
+//     </span>
+// </a>
+// <a class="alerts  following" href="x-gu://follow/tag-contributor///profile/elle-hunt" data-follow-alert-id="tag-contributor///profile/elle-hunt">
 //     <span class="alerts__state--unfollow-notifications">
-//         <span data-icon="" aria-hidden="true"></span>
-//         <span class="alerts__label">Follow Nicholas Watt</span>
+//         <span data-icon="" aria-hidden="true" class="not-following"></span>
+//         <span class="alerts__label">Notifications off</span>
 //     </span>
 //     <span class="alerts__state--follow-notifications">
-//         <span data-icon="" aria-hidden="true"></span>
-//         <span class="alerts__label">Following Nicholas Watt</span>
+//         <span data-icon="" aria-hidden="true" class="following"></span>
+//         <span class="alerts__label">Notifications on</span>
 //     </span>
 // </a>
 // ```
 // */
-
 .alerts {
     @include meta(.875);
     font-family: $guardian-sans;
     white-space: nowrap;
     margin: base-px(0);
-    display: inline-block;
+    display: block;
     border-radius: 30px;
     max-width: 100%;
     color: color(brightness-7);
     transition: background-color .3s;
     transform: translateX(-1px);
+    padding-bottom: .25em;
+
+    &.my-guardian-follow-tag {
+        display: none;
+    }
 
     span[data-icon] {
         display: inline-block;
@@ -75,12 +100,12 @@
 
     &__label {
         font-weight: normal;
-        margin-left: 4px;
+        margin-left: 2px;
         font-size: 15px;
         color: color(brightness-0);
     }
 
-    &__state--follow-notifications {
+    &__state--follow-notifications, &__state--follow-tag {
         display: none;
     }
 
@@ -90,6 +115,15 @@
         }
 
         .alerts__state--unfollow-notifications {
+            display: none;
+        }
+    }
+    &.followingTag {
+        .alerts__state--follow-tag {
+            display: block;
+        }
+
+        .alerts__state--unfollow-tag {
             display: none;
         }
     }

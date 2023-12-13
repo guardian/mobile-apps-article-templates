@@ -16,6 +16,7 @@ import { init as initAB } from 'modules/experiments/ab';
 import { initMpuPoller } from 'modules/ads';
 import { init as initHttp } from 'modules/http';
 import { init as ophanIframeInit } from 'modules/ophan-iframe';
+import { init as myGuardianFollowInit } from 'modules/myGuardianFollowInit';
 
 let trackCommentContainerView = true;
 
@@ -37,6 +38,7 @@ function init(liveBlog = false) {
     loadInteractives();
     setupOfflineSwitch();
     setupAlertSwitch();
+    setupTagFollowSwitch();
     setupFontSizing();
     setupLineHeightSizing();
     setupGetArticleHeight();
@@ -51,6 +53,7 @@ function init(liveBlog = false) {
     setupForms();
     darkModeSetup();
     ophanIframeInit();
+    myGuardianFollowInit();
 
     if (!document.body.classList.contains('no-ready')) {
         if (!liveBlog) {
@@ -446,6 +449,27 @@ function setupAlertSwitch() {
     window.alertSwitch = alertSwitch;
 }
 
+function setupTagFollowSwitch() {
+    if (GU.opts.myGuardianEnabled) {
+        window.followTagSwitch = followTagSwitch;
+    }
+}
+
+function followTagSwitch(following, followid) {
+    let i;
+    let followObject;
+    const followObjects = document.querySelectorAll(`[data-follow-tag-id="${followid}"]`);
+
+    for (i = 0; i < followObjects.length; i++) {
+        followObject = followObjects[i];
+
+        if (parseInt(following, 10) === 1) {
+            followObject.classList.add('followingTag');
+        } else {
+            followObject.classList.remove('followingTag');
+        }
+    }
+}
 function alertSwitch(following, followid) {
     let i;
     let followObject;
