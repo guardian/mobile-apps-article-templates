@@ -1,4 +1,5 @@
 import { init as initYoutube } from 'modules/youtube';
+import { init as initListenToArticle } from 'modules/listen-to-article';
 import { getElemsFromHTML } from 'modules/util';
 import { arc, pie, select } from 'd3';
 
@@ -209,6 +210,7 @@ function setupGlobals() {
 function init() {
     setupGlobals();
     initYoutube();
+    initListenToArticle();
 }
 
 export { init };
