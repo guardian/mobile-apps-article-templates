@@ -78,5 +78,7 @@ export default {
         write(f) { f(); },
         read(f) { f(); }
     },
+    consent: { acast: false },
+    commercial: { isAdFree: true },
     viewport
 };
