@@ -1,5 +1,11 @@
 # @guardian/mobile-apps-article-templates
 
+## 1.0.940
+
+### Patch Changes
+
+- ceb4651: Fix audio atoms
+
 ## 1.0.939
 
 ### Patch Changes
