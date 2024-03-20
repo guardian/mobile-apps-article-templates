@@ -68,41 +68,23 @@
         display: none;
     }
 
-    span[data-icon] {
-        display: inline-block;
-        vertical-align: middle;
-        border-radius: 100%;
-        width: 24px;
-        height: 24px;
-        line-height: 20px;
-        text-align: center;
-        font-size: 15px;
-        &:before {
-            padding-top: 1px;
-            display: block;
-        }
-    }
-
-    span.following[data-icon] {
-        background-color: currentColor;
-        &:before {
-            color: color(brightness-100);
-        }
-    }
-
-    span.not-following[data-icon] {
-        border: 1px solid currentColor;
-        background-color: none;
-        &:before {
-            color: currentColor;
+    svg {
+        path {
+            fill: currentColor;
         }
     }
 
     &__label {
         font-weight: normal;
         margin-left: 2px;
+        margin-top: 4px;
         font-size: 15px;
         color: color(brightness-0);
+    }
+
+    &__state--unfollow-notifications, &__state--unfollow-tag {
+        display: flex;
+        align-items: center;
     }
 
     &__state--follow-notifications, &__state--follow-tag {
@@ -111,7 +93,8 @@
 
     &.following {
         .alerts__state--follow-notifications {
-            display: block;
+            display: flex;
+            align-items: center;
         }
 
         .alerts__state--unfollow-notifications {
@@ -120,7 +103,8 @@
     }
     &.followingTag {
         .alerts__state--follow-tag {
-            display: block;
+            display: flex;
+            align-items: center;
         }
 
         .alerts__state--unfollow-tag {
