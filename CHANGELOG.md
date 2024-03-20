@@ -1,5 +1,11 @@
 # @guardian/mobile-apps-article-templates
 
+## 1.0.941
+
+### Patch Changes
+
+- 9586c2c: Fix the alignment issue for display follow icons
+
 ## 1.0.940
 
 ### Patch Changes
