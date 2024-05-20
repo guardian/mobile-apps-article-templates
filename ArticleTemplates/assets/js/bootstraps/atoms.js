@@ -15,6 +15,9 @@ function init() {
     if ('chart' in atomTypes) {
         initCharts();
     }
+    if ('interactive' in atomTypes) {
+        initInteractives();
+    }
 }
 
 function initCharts() {
@@ -76,6 +79,47 @@ function initExpandables(atom) {
             initMpuPoller(0, false);
             resetAndCheckForVideos();
         });
+    });
+}
+
+function scrollListener() {
+    const containers = [...document.querySelectorAll('figure[data-atom-type="interactive"]')].flatMap(element => element instanceof HTMLElement ? [element] : []);
+    containers.forEach(function (container) {
+        const rect = container.getBoundingClientRect();
+        const iframe = container.querySelector('iframe');
+        let scroll = -rect.top;
+        if (rect.top > 0) {
+            scroll = 0;
+        } else if (rect.top < -rect.height) {
+            scroll = rect.height;
+        }
+        iframe?.contentWindow?.postMessage({
+            kind: 'interactive:scroll',
+            scroll
+        }, '*');
+    })
+}
+
+function initInteractives() {
+    const iframes = [...document.querySelectorAll('figure[data-atom-type="interactive"] > iframe')].flatMap(element => element instanceof HTMLIFrameElement ? [element] : []);
+    window.addEventListener('message', function (event) {
+        var iframe = iframes.find(function({ name }) { return name === event.source.name; });
+        if (!iframe) return;
+        try {
+            const message = JSON.parse(event.data);
+            switch (message.kind) {
+            case 'interactive:height':
+                iframe.height = message.height;
+                break;
+            case 'interactive:scroll':
+                window.addEventListener('scroll', scrollListener)
+                iframe.classList.add('scrolly');
+                break;
+            default:
+            }
+        } catch (e) {
+        // do nothing
+        }
     });
 }
 
