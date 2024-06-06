@@ -1,5 +1,11 @@
 # @guardian/mobile-apps-article-templates
 
+## 1.1.0
+
+### Minor Changes
+
+- bc6012d: Enable safe scrollies, which do not break out of their iframes
+
 ## 1.0.941
 
 ### Patch Changes
