@@ -181,6 +181,26 @@ function hasPlaceholderImgSrc(placeholder) {
 
 function setupPlayer(id) {
     const player = new YT.Player(id, {
+        height: '100%',
+        width: '100%',
+        videoId: id,
+        playerVars: {
+            enablejsapi: 1,
+            modestbranding: 1,
+            origin: 'https://www.theguardian.com',
+            playsinline: 1,
+            rel: 0
+        },
+        embedConfig: {
+            adsConfig: {
+                adTagParameters: {
+                    cmpGdpr: 1,
+                    cmpGvcd: '1~',
+                    cmpVcd: 'CQAC8MAQAC8MABwABCENA4EgAAAAAAAAAAwIAAAAAAAA.YAAAAAAAAAAA'
+                },
+                nonPersonalizedAd: true
+            }
+        },
         events: {
             onReady: onPlayerReady.bind(null, id),
             onStateChange: onPlayerStateChange.bind(null, id)
