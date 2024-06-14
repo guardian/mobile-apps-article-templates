@@ -35,6 +35,7 @@ $ npm install
 }
 ```
 * You will then need to run `npm install` in the `ios-live` directory that contains the `package.json` in the repo.
+* If you find that the app is not using the expected version of the dependency (from your branch), try deleting `package-lock.json` and `node_modules` before running `npm install`.
 
 ### Running on Android simulator
 * Checkout the branch you are developing against
