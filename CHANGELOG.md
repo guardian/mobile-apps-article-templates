@@ -1,5 +1,11 @@
 # @guardian/mobile-apps-article-templates
 
+## 1.1.1
+
+### Patch Changes
+
+- ad467a0: Update lock file to resolve dependency vulnerabilities
+
 ## 1.1.0
 
 ### Minor Changes
