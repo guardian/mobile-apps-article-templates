@@ -1,5 +1,11 @@
 # @guardian/mobile-apps-article-templates
 
+## 1.1.2
+
+### Patch Changes
+
+- 8d5ad18: Upgrade micromatch
+
 ## 1.1.1
 
 ### Patch Changes
