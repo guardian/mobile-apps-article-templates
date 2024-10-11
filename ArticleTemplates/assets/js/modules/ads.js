@@ -128,10 +128,6 @@ function createMpu(id) {
             <div class="advert-slot__wrapper advert-slot__wrapper--${id} test__banner" id="advert-slot__wrapper">
                 <div class="advert-slot__wrapper__content" id="${id}"></div>
             </div>
-            <div class="advert-slot__upgrade">
-                <h1>Support the Guardian and enjoy the app ad-free.</h1>
-                <a href="x-gu://subscribe" role="button">Support the Guardian</a>
-            </div>
         `;
         return mpu;
     }
