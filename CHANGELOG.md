@@ -1,5 +1,11 @@
 # @guardian/mobile-apps-article-templates
 
+## 1.2.0
+
+### Minor Changes
+
+- 4f6e4a4: Remove ad upsell
+
 ## 1.1.2
 
 ### Patch Changes
