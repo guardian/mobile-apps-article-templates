@@ -1,5 +1,11 @@
 # @guardian/mobile-apps-article-templates
 
+## 1.2.1
+
+### Patch Changes
+
+- d5417bc: Fix match reports dark mode
+
 ## 1.2.0
 
 ### Minor Changes
