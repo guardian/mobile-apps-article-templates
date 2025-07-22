@@ -1,4 +1,4 @@
-import { init, changeSlider } from 'bootstraps/audio';
+import { changeSlider, init } from 'bootstraps/audio';
 
 describe('ArticleTemplates/assets/js/bootstraps/audio', function () {
     let container;
@@ -11,7 +11,7 @@ describe('ArticleTemplates/assets/js/bootstraps/audio', function () {
                 isAdvertising: ''
             }
         };
-        
+
         container = document.createElement('div');
         container.id = 'container';
         document.body.appendChild(container);
@@ -20,7 +20,7 @@ describe('ArticleTemplates/assets/js/bootstraps/audio', function () {
     afterEach(() => {
         document.body.removeChild(container);
     });
-    
+
     describe('init()', function () {
         it('sets up global functions', function () {
             init();
@@ -184,7 +184,7 @@ describe('ArticleTemplates/assets/js/bootstraps/audio', function () {
 
             resizeHandler();
 
-            expect(window.audioBackground).toBeCalledWith(duration); 
+            expect(window.audioBackground).toBeCalledWith(duration);
         });
 
         it('updates values of seconds played and remaining on slider changed', function () {
