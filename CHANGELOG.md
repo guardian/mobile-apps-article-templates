@@ -1,5 +1,11 @@
 # @guardian/mobile-apps-article-templates
 
+## 1.2.2
+
+### Patch Changes
+
+- cf08438: Update lock file to resolve dependency vulnerabilities
+
 ## 1.2.1
 
 ### Patch Changes
