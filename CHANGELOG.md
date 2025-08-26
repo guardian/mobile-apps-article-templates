@@ -1,5 +1,12 @@
 # @guardian/mobile-apps-article-templates
 
+## 1.2.2
+
+### Patch Changes
+
+- 2f9da8b: Fix bug by updating the surrounding html tag for gallery caption
+- cf08438: Update lock file to resolve dependency vulnerabilities
+
 ## 1.2.1
 
 ### Patch Changes
