@@ -1,0 +1,44 @@
+name: Build and Publish mobile-apps-article-templates
+
+on:
+    workflow_dispatch:
+      inputs:
+        gitref:
+          description: Branch or tag to deploy
+          required: true
+          type: string
+        tagversion:
+          description: Version tag for NPM release
+          required: true
+          type: string
+
+jobs:
+    publish:
+        name: Manual Publish
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+              with:
+                ref: ${{ inputs.gitref }}
+
+            - name: Setup Node
+              uses: actions/setup-node@v2
+              with:
+                  node-version: 14
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Compile code
+              run: npm run build
+
+            - name: Set up npm auth token
+              run: echo "//registry.npmjs.org/:_authToken=${NODE_TOKEN}" >> ~/.npmrc
+              env:
+                  NODE_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+            - name: Bump version and publish
+              run: |
+                  npm --no-git-tag-version version ${{inputs.tagversion}}
+                  npm publish --access public
