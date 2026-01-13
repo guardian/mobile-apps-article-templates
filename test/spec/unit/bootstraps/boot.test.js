@@ -1,6 +1,17 @@
 import * as boot from 'boot';
 import * as ads from 'modules/ads';
 
+jest.mock('@guardian/fence', () => {});
+jest.mock('bootstraps/atoms');
+jest.mock('bootstraps/campaign');
+jest.mock('bootstraps/communityCallout');
+jest.mock('article');
+jest.mock('liveblog');
+jest.mock('audio');
+jest.mock('gallery');
+jest.mock('football');
+jest.mock('cricket');
+
 describe('ArticleTemplates/assets/js/app', function () {
     describe('init()', function () {
         describe('initialising layouts', function () {
@@ -15,7 +26,8 @@ describe('ArticleTemplates/assets/js/app', function () {
                         hideAdsTest: 0,
                         mpuAfterParagraphs: 0,
                         templatesDirectory: "",
-                        test: true
+                        test: true,
+                        atoms: {}
                     }
                 };
             });
